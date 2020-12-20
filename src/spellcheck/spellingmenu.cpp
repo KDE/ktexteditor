@@ -107,7 +107,7 @@ void KateSpellingMenu::caretEnteredMisspelledRange(KTextEditor::MovingRange *ran
 void KateSpellingMenu::caretExitedMisspelledRange(KTextEditor::MovingRange *range)
 {
     if (range != m_currentCaretMisspelledRange) { // order of 'exit' and 'entered' signals
-        return;                                   // was wrong
+        return; // was wrong
     }
     setEnabled(false);
     m_currentCaretMisspelledRange = nullptr;
@@ -124,7 +124,7 @@ void KateSpellingMenu::mouseEnteredMisspelledRange(KTextEditor::MovingRange *ran
 void KateSpellingMenu::mouseExitedMisspelledRange(KTextEditor::MovingRange *range)
 {
     if (range != m_currentMouseMisspelledRange) { // order of 'exit' and 'entered' signals
-        return;                                   // was wrong
+        return; // was wrong
     }
     m_currentMouseMisspelledRange = nullptr;
 }
@@ -171,7 +171,9 @@ void KateSpellingMenu::populateSuggestionsMenu()
     for (QStringList::const_iterator i = m_currentSuggestions.cbegin(); i != m_currentSuggestions.cend() && counter < 10; ++i) {
         const QString &suggestion = *i;
         QAction *action = new QAction(suggestion, m_spellingMenu);
-        connect(action, &QAction::triggered, this, [suggestion, this]() { replaceWordBySuggestion(suggestion); });
+        connect(action, &QAction::triggered, this, [suggestion, this]() {
+            replaceWordBySuggestion(suggestion);
+        });
         m_spellingMenu->addAction(action);
         ++counter;
     }

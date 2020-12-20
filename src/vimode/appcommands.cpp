@@ -60,7 +60,7 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
 
     QRegularExpressionMatch match;
     if ((match = re_write.match(command)).hasMatch()) { // TODO: handle writing to specific file
-        if (!match.captured(1).isEmpty()) {             // [a]ll
+        if (!match.captured(1).isEmpty()) { // [a]ll
             const auto docs = app->documents();
             for (KTextEditor::Document *doc : docs) {
                 doc->save();
@@ -73,10 +73,12 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
     }
     // Other buffer commands are implemented by the KateFileTree plugin
     else if ((match = re_close.match(command)).hasMatch()) {
-        QTimer::singleShot(0, [app, view]() { app->closeDocument(view->document()); });
+        QTimer::singleShot(0, [app, view]() {
+            app->closeDocument(view->document());
+        });
     } else if ((match = re_quit.match(command)).hasMatch()) {
-        const bool save = !match.captured(1).isEmpty();               // :[w]q
-        const bool allDocuments = !match.captured(2).isEmpty();       // :q[all]
+        const bool save = !match.captured(1).isEmpty(); // :[w]q
+        const bool allDocuments = !match.captured(2).isEmpty(); // :q[all]
         const bool doNotPromptForSave = !match.captured(3).isEmpty(); // :q[!]
 
         if (allDocuments) {
@@ -139,7 +141,9 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         if (argument.isEmpty() || argument == QLatin1String("!")) {
             if ((match = re_tabedit.match(command)).hasMatch()) {
                 if (auto doc = app->openUrl(QUrl())) {
-                    QTimer::singleShot(0, [mainWin, doc]() { mainWin->activateView(doc); });
+                    QTimer::singleShot(0, [mainWin, doc]() {
+                        mainWin->activateView(doc);
+                    });
                 }
             } else {
                 view->document()->documentReload();
@@ -148,9 +152,9 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
             QUrl base = view->document()->url();
             QUrl url;
             QUrl arg2path(argument);
-            if (base.isValid()) {                                                            // first try to use the same path as the current open document has
-                url = QUrl(base.resolved(arg2path));                                         // resolved handles the case where the args is a relative path, and is the same as using QUrl(args) elsewise
-            } else {                                                                         // else use the cwd
+            if (base.isValid()) { // first try to use the same path as the current open document has
+                url = QUrl(base.resolved(arg2path)); // resolved handles the case where the args is a relative path, and is the same as using QUrl(args) elsewise
+            } else { // else use the cwd
                 url = QUrl(QUrl(QDir::currentPath() + QLatin1Char('/')).resolved(arg2path)); // + "/" is needed because of https://lists.qt-project.org/pipermail/qt-interest-old/2011-May/033913.html
             }
             QFileInfo file(url.toLocalFile());
@@ -167,7 +171,9 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
                 }
             }
             if (doc) {
-                QTimer::singleShot(0, [mainWin, doc]() { mainWin->activateView(doc); });
+                QTimer::singleShot(0, [mainWin, doc]() {
+                    mainWin->activateView(doc);
+                });
             }
         }
         // splitView() orientations are reversed from the usual editor convention.
@@ -293,7 +299,9 @@ void AppCommands::closeCurrentDocument()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::Document *doc = app->activeMainWindow()->activeView()->document();
-    QTimer::singleShot(0, [app, doc]() { app->closeDocument(doc); });
+    QTimer::singleShot(0, [app, doc]() {
+        app->closeDocument(doc);
+    });
 }
 
 void AppCommands::closeCurrentView()
@@ -489,7 +497,9 @@ void BufferCommands::lastTab(KTextEditor::View *view)
 void BufferCommands::activateDocument(KTextEditor::View *view, KTextEditor::Document *doc)
 {
     KTextEditor::MainWindow *mainWindow = view->mainWindow();
-    QTimer::singleShot(0, [mainWindow, doc]() { mainWindow->activateView(doc); });
+    QTimer::singleShot(0, [mainWindow, doc]() {
+        mainWindow->activateView(doc);
+    });
 }
 
 QList<KTextEditor::Document *> BufferCommands::documents()

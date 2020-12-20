@@ -185,7 +185,7 @@ public:
      */
     enum InputMode {
         NormalInputMode = 0, /**< Normal Mode. */
-        ViInputMode = 1      /**< Vi mode. The view will behave like the editor vi(m) */
+        ViInputMode = 1 /**< Vi mode. The view will behave like the editor vi(m) */
     };
 
     /**
@@ -193,7 +193,7 @@ public:
      * These correspond to various modes the text editor might be in.
      */
     enum ViewMode {
-        NormalModeInsert = 0,    /**< Insert mode. Characters will be added. */
+        NormalModeInsert = 0, /**< Insert mode. Characters will be added. */
         NormalModeOverwrite = 1, /**< Overwrite mode. Characters will be replaced. */
 
         ViModeNormal = 10,
@@ -209,7 +209,7 @@ public:
      * \since 5.33
      */
     enum LineType {
-        RealLine = 0,   /**< Real line */
+        RealLine = 0, /**< Real line */
         VisibleLine = 1 /**< Visible line. Line that is not folded. */
     };
     /**

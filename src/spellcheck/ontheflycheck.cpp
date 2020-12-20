@@ -50,7 +50,9 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document *)), this, SLOT(updateConfig()));
     connect(&document->buffer(), SIGNAL(respellCheckBlock(int, int)), this, SLOT(handleRespellCheckBlock(int, int)));
 
-    connect(document, &KTextEditor::Document::reloaded, this, [this](KTextEditor::Document *) { refreshSpellCheck(); });
+    connect(document, &KTextEditor::Document::reloaded, this, [this](KTextEditor::Document *) {
+        refreshSpellCheck();
+    });
 
     // load the settings for the speller
     updateConfig();
@@ -216,7 +218,7 @@ void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, const KTe
     // don't consider a range that is behind the end of the document
     const KTextEditor::Range documentIntersection = m_document->documentRange().intersect(range);
     if (!documentIntersection.isValid()) { // the intersection might however be empty if the last
-        return;                            // word has been removed, for example
+        return; // word has been removed, for example
     }
 
     // for performance reasons we only want to schedule spellchecks for ranges that are visible
@@ -819,7 +821,7 @@ void KateOnTheFlyChecker::viewRefreshTimeout()
 
 void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view)
 {
-    if (m_refreshView && view != m_refreshView) {   // a new view should be refreshed
+    if (m_refreshView && view != m_refreshView) { // a new view should be refreshed
         updateInstalledMovingRanges(m_refreshView); // so refresh the old one first
     }
     m_refreshView = view;

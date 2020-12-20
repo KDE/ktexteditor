@@ -242,9 +242,9 @@ void KateMessageWidget::messageDestroyed(KTextEditor::Message *message)
 void KateMessageWidget::startAutoHideTimer()
 {
     // message does not want autohide, or timer already running
-    if (!m_currentMessage                        // no message, nothing to do
-        || m_autoHideTime < 0                    // message does not want auto-hide
-        || m_autoHideTimer->isActive()           // auto-hide timer is already active
+    if (!m_currentMessage // no message, nothing to do
+        || m_autoHideTime < 0 // message does not want auto-hide
+        || m_autoHideTimer->isActive() // auto-hide timer is already active
         || m_animation->isHideAnimationRunning() // widget is in hide animation phase
         || m_animation->isShowAnimationRunning() // widget is in show animation phase
     ) {

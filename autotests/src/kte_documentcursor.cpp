@@ -71,7 +71,7 @@ void DocumentCursorTest::testConvenienceApi()
     DocumentCursor moving(&doc);
     moving.setPosition(Cursor(2, 2));
     QVERIFY(moving.atEndOfLine()); // at 2, 2
-    QVERIFY(moving.move(-1));      // at 2, 1
+    QVERIFY(moving.move(-1)); // at 2, 1
     QCOMPARE(moving.toCursor(), Cursor(2, 1));
     QVERIFY(!moving.atEndOfLine());
     QVERIFY(moving.move(-1)); // at 2, 0
@@ -95,7 +95,7 @@ void DocumentCursorTest::testConvenienceApi()
 
     // still at invalid text position. move one char to wrap around
     QVERIFY(!moving.isValidTextPosition()); // at 3, 13
-    QVERIFY(moving.move(1));                // at 4, 0
+    QVERIFY(moving.move(1)); // at 4, 0
     QCOMPARE(moving.toCursor(), Cursor(4, 0));
 
     // moving 11 characters in wrap mode moves to (5, 6), which is not a valid

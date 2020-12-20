@@ -996,7 +996,7 @@ private:
      * Message widgets showing KTextEditor::Messages.
      * The index of the array maps to the enum KTextEditor::Message::MessagePosition.
      */
-    std::array<KateMessageWidget *, 5> m_messageWidgets {{nullptr}};
+    std::array<KateMessageWidget *, 5> m_messageWidgets{{nullptr}};
     /** Layout for floating notifications */
     KateMessageLayout *m_notificationLayout = nullptr;
 

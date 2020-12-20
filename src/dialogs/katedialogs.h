@@ -371,7 +371,7 @@ private Q_SLOTS:
 
 private Q_SLOTS:
     void slotDataAvailable(); ///< read data from the process
-    void slotPDone();         ///< Runs the diff file when done
+    void slotPDone(); ///< Runs the diff file when done
 
 private:
     KTextEditor::DocumentPrivate *m_doc;

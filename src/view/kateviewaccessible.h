@@ -31,7 +31,9 @@ public:
         , m_lastPosition(-1)
     {
         // to invalidate positionFromCursor cache when the document is changed
-        m_conn = QObject::connect(view->view()->document(), &KTextEditor::Document::textChanged, [this]() { m_lastPosition = -1; });
+        m_conn = QObject::connect(view->view()->document(), &KTextEditor::Document::textChanged, [this]() {
+            m_lastPosition = -1;
+        });
     }
 
     void *interface_cast(QAccessible::InterfaceType t) override

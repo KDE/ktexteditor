@@ -37,9 +37,9 @@ public:
      */
     TextLoader(const QString &filename, KEncodingProber::ProberType proberType)
         : m_codec(nullptr)
-        , m_eof(false)             // default to not eof
+        , m_eof(false) // default to not eof
         , m_lastWasEndOfLine(true) // at start of file, we had a virtual newline
-        , m_lastWasR(false)        // we have not found a \r as last char
+        , m_lastWasR(false) // we have not found a \r as last char
         , m_position(0)
         , m_lastLineStart(0)
         , m_eol(TextBuffer::eolUnknown) // no eol type detected atm

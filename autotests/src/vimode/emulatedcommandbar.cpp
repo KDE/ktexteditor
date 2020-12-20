@@ -2574,7 +2574,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/replace/g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
     TestPressKey("\\ctrl-c"); // Dismiss bar.
-    clearSearchHistory();     // Now do the same, but with a different delimiter.
+    clearSearchHistory(); // Now do the same, but with a different delimiter.
     vi_global->searchHistory()->append("search");
     vi_global->searchHistory()->append("aa:aa\\:a");
     vi_global->searchHistory()->append("ss:ss");
@@ -2624,7 +2624,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/replace/g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
     TestPressKey("\\ctrl-c"); // Dismiss bar.
-    clearReplaceHistory();    // Now do the same, but with a different delimiter.
+    clearReplaceHistory(); // Now do the same, but with a different delimiter.
     vi_global->replaceHistory()->append("replace");
     vi_global->replaceHistory()->append("aa:aa\\:a");
     vi_global->replaceHistory()->append("ss:ss");

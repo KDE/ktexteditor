@@ -380,7 +380,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
         if (m_completionRanges.contains(model)) {
             if (*m_completionRanges[model].range == range) {
                 continue; // Leave it running as it is
-            } else {      // delete the range that was used previously
+            } else { // delete the range that was used previously
                 KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
                 // qCDebug(LOG_KTE)<<"removing completion range 2";
                 m_completionRanges.remove(model);

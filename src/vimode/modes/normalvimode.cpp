@@ -129,8 +129,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     m_keysVerbatim.append(KeyParser::self()->decodeKeySequence(key));
 
     if ((keyCode >= Qt::Key_0 && keyCode <= Qt::Key_9 && lastChar != QLatin1Char('"')) // key 0-9
-        && (m_countTemp != 0 || keyCode != Qt::Key_0)                                  // first digit can't be 0
-        && (!waitingForRegisterOrCharToSearch)                                         // Not in the middle of "find char" motions or replacing char.
+        && (m_countTemp != 0 || keyCode != Qt::Key_0) // first digit can't be 0
+        && (!waitingForRegisterOrCharToSearch) // Not in the middle of "find char" motions or replacing char.
         && e->modifiers() == Qt::NoModifier) {
         m_countTemp *= 10;
         m_countTemp += keyCode - Qt::Key_0;
@@ -3753,9 +3753,9 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
             textToInsert.append(QLatin1Char('\n')); // Re-add the temporarily removed last '\n'.
         }
         if (pasteLocation == AfterCurrentPosition) {
-            textToInsert.chop(1);                                 // remove the last \n
+            textToInsert.chop(1); // remove the last \n
             pasteAt.setColumn(doc()->lineLength(pasteAt.line())); // paste after the current line and ...
-            textToInsert.prepend(QLatin1Char('\n'));              // ... prepend a \n, so the text starts on a new line
+            textToInsert.prepend(QLatin1Char('\n')); // ... prepend a \n, so the text starts on a new line
 
             cursorAfterPaste.setLine(cursorAfterPaste.line() + 1);
         }

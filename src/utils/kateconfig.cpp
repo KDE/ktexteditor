@@ -243,7 +243,9 @@ KateGlobalConfig::KateGlobalConfig()
 
     // init all known config entries
     addConfigEntry(ConfigEntry(EncodingProberType, "Encoding Prober Type", QString(), KEncodingProber::Universal));
-    addConfigEntry(ConfigEntry(FallbackEncoding, "Fallback Encoding", QString(), QStringLiteral("ISO 8859-15"), [](const QVariant &value) { return isEncodingOk(value.toString()); }));
+    addConfigEntry(ConfigEntry(FallbackEncoding, "Fallback Encoding", QString(), QStringLiteral("ISO 8859-15"), [](const QVariant &value) {
+        return isEncodingOk(value.toString());
+    }));
 
     // finalize the entries, e.g. hashs them
     finalizeConfigEntries();
@@ -300,8 +302,12 @@ KateDocumentConfig::KateDocumentConfig()
     s_global = this;
 
     // init all known config entries
-    addConfigEntry(ConfigEntry(TabWidth, "Tab Width", QStringLiteral("tab-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
-    addConfigEntry(ConfigEntry(IndentationWidth, "Indentation Width", QStringLiteral("indent-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
+    addConfigEntry(ConfigEntry(TabWidth, "Tab Width", QStringLiteral("tab-width"), 4, [](const QVariant &value) {
+        return value.toInt() >= 1;
+    }));
+    addConfigEntry(ConfigEntry(IndentationWidth, "Indentation Width", QStringLiteral("indent-width"), 4, [](const QVariant &value) {
+        return value.toInt() >= 1;
+    }));
     addConfigEntry(ConfigEntry(OnTheFlySpellCheck, "On-The-Fly Spellcheck", QStringLiteral("on-the-fly-spellcheck"), false));
     addConfigEntry(ConfigEntry(IndentOnTextPaste, "Indent On Text Paste", QStringLiteral("indent-pasted-text"), false));
     addConfigEntry(ConfigEntry(ReplaceTabsWithSpaces, "ReplaceTabsDyn", QStringLiteral("replace-tabs"), true));
@@ -312,7 +318,9 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(IndentationMode, "Indentation Mode", QString(), QStringLiteral("normal")));
     addConfigEntry(ConfigEntry(TabHandlingMode, "Tab Handling", QString(), KateDocumentConfig::tabSmart));
     addConfigEntry(ConfigEntry(StaticWordWrap, "Word Wrap", QString(), false));
-    addConfigEntry(ConfigEntry(StaticWordWrapColumn, "Word Wrap Column", QString(), 80, [](const QVariant &value) { return value.toInt() >= 1; }));
+    addConfigEntry(ConfigEntry(StaticWordWrapColumn, "Word Wrap Column", QString(), 80, [](const QVariant &value) {
+        return value.toInt() >= 1;
+    }));
     addConfigEntry(ConfigEntry(PageUpDownMovesCursor, "PageUp/PageDown Moves Cursor", QString(), false));
     addConfigEntry(ConfigEntry(SmartHome, "Smart Home", QString(), true));
     addConfigEntry(ConfigEntry(ShowTabs, "Show Tabs", QString(), true));
@@ -324,7 +332,9 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(RemoveSpacesMode, "Remove Spaces", QString(), 0));
     addConfigEntry(ConfigEntry(NewlineAtEOF, "Newline at End of File", QString(), true));
     addConfigEntry(ConfigEntry(OverwriteMode, "Overwrite Mode", QString(), false));
-    addConfigEntry(ConfigEntry(Encoding, "Encoding", QString(), QStringLiteral("UTF-8"), [](const QVariant &value) { return isEncodingOk(value.toString()); }));
+    addConfigEntry(ConfigEntry(Encoding, "Encoding", QString(), QStringLiteral("UTF-8"), [](const QVariant &value) {
+        return isEncodingOk(value.toString());
+    }));
     addConfigEntry(ConfigEntry(EndOfLine, "End of Line", QString(), 0));
     addConfigEntry(ConfigEntry(AllowEndOfLineDetection, "Allow End of Line Detection", QString(), true));
     addConfigEntry(ConfigEntry(ByteOrderMark, "BOM", QString(), false));
@@ -457,19 +467,31 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
     addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QString()));
-    addConfigEntry(ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) { return isPositive(value); }));
-    addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) { return inBounds(1, value, 100); }));
-    addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) { return inBounds(1, value, 3); }));
+    addConfigEntry(ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) {
+        return isPositive(value);
+    }));
+    addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) {
+        return inBounds(1, value, 100);
+    }));
+    addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) {
+        return inBounds(1, value, 3);
+    }));
     addConfigEntry(ConfigEntry(DynWrapAnywhere, "Dynamic Wrap not at word boundaries", QStringLiteral("dynamic-word-wrap-anywhere"), false));
     addConfigEntry(ConfigEntry(DynWrapAtStaticMarker, "Dynamic Word Wrap At Static Marker", QString(), false));
     addConfigEntry(ConfigEntry(DynamicWordWrap, "Dynamic Word Wrap", QStringLiteral("dynamic-word-wrap"), true));
     addConfigEntry(ConfigEntry(FoldFirstLine, "Fold First Line", QString(), false));
-    addConfigEntry(ConfigEntry(InputMode, "Input Mode", QString(), 0, [](const QVariant &value) { return isPositive(value); }));
+    addConfigEntry(ConfigEntry(InputMode, "Input Mode", QString(), 0, [](const QVariant &value) {
+        return isPositive(value);
+    }));
     addConfigEntry(ConfigEntry(KeywordCompletion, "Keyword Completion", QStringLiteral("keyword-completion"), true));
-    addConfigEntry(ConfigEntry(MaxHistorySize, "Maximum Search History Size", QString(), 100, [](const QVariant &value) { return inBounds(0, value, 999); }));
+    addConfigEntry(ConfigEntry(MaxHistorySize, "Maximum Search History Size", QString(), 100, [](const QVariant &value) {
+        return inBounds(0, value, 999);
+    }));
     addConfigEntry(ConfigEntry(MousePasteAtCursorPosition, "Mouse Paste At Cursor Position", QString(), false));
     addConfigEntry(ConfigEntry(PersistentSelection, "Persistent Selection", QStringLiteral("persistent-selectionq"), false));
-    addConfigEntry(ConfigEntry(ScrollBarMiniMapWidth, "Scroll Bar Mini Map Width", QString(), 60, [](const QVariant &value) { return inBounds(0, value, 999); }));
+    addConfigEntry(ConfigEntry(ScrollBarMiniMapWidth, "Scroll Bar Mini Map Width", QString(), 60, [](const QVariant &value) {
+        return inBounds(0, value, 999);
+    }));
     addConfigEntry(ConfigEntry(ScrollPastEnd, "Scroll Past End", QString(), false));
     addConfigEntry(ConfigEntry(SearchFlags, "Search/Replace Flags", QString(), IncFromCursor | PowerMatchCase | PowerModePlainText));
     addConfigEntry(ConfigEntry(ShowBracketMatchPreview, "Bracket Match Preview", QStringLiteral("bracket-match-preview"), false));
@@ -483,7 +505,9 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowScrollBarMiniMap, "Scroll Bar MiniMap", QStringLiteral("scrollbar-minimap"), true));
     addConfigEntry(ConfigEntry(ShowScrollBarMiniMapAll, "Scroll Bar Mini Map All", QString(), true));
     addConfigEntry(ConfigEntry(ShowScrollBarPreview, "Scroll Bar Preview", QStringLiteral("scrollbar-preview"), true));
-    addConfigEntry(ConfigEntry(ShowScrollbars, "Show Scrollbars", QString(), AlwaysOn, [](const QVariant &value) { return inBounds(0, value, 2); }));
+    addConfigEntry(ConfigEntry(ShowScrollbars, "Show Scrollbars", QString(), AlwaysOn, [](const QVariant &value) {
+        return inBounds(0, value, 2);
+    }));
     addConfigEntry(ConfigEntry(ShowWordCount, "Show Word Count", QString(), false));
     addConfigEntry(ConfigEntry(TextDragAndDrop, "Text Drag And Drop", QString(), true));
     addConfigEntry(ConfigEntry(SmartCopyCut, "Smart Copy Cut", QString(), false));
@@ -491,7 +515,9 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ViInputModeStealKeys, "Vi Input Mode Steal Keys", QString(), false));
     addConfigEntry(ConfigEntry(ViRelativeLineNumbers, "Vi Relative Line Numbers", QString(), false));
     addConfigEntry(ConfigEntry(WordCompletion, "Word Completion", QString(), true));
-    addConfigEntry(ConfigEntry(WordCompletionMinimalWordLength, "Word Completion Minimal Word Length", QString(), 3, [](const QVariant &value) { return inBounds(0, value, 99); }));
+    addConfigEntry(ConfigEntry(WordCompletionMinimalWordLength, "Word Completion Minimal Word Length", QString(), 3, [](const QVariant &value) {
+        return inBounds(0, value, 99);
+    }));
     addConfigEntry(ConfigEntry(WordCompletionRemoveTail, "Word Completion Remove Tail", QString(), true));
 
     // Never forget to finalize or the <CommandName> becomes not available

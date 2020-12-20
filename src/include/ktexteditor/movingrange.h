@@ -163,7 +163,7 @@ public:
      * Behavior of range if it becomes empty.
      */
     enum EmptyBehavior {
-        AllowEmpty = 0x0,       ///< allow range to be empty
+        AllowEmpty = 0x0, ///< allow range to be empty
         InvalidateIfEmpty = 0x1 ///< invalidate range, if it becomes empty
     };
 

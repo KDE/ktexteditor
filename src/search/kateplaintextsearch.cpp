@@ -58,7 +58,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
 
     if (needleLines.count() > 1) {
         // multi-line plaintext search (both forwards or backwards)
-        const int forMin = inputRange.start().line();                         // first line in range
+        const int forMin = inputRange.start().line(); // first line in range
         const int forMax = inputRange.end().line() + 1 - needleLines.count(); // last line in range
         const int forInit = backwards ? forMax : forMin;
         const int forInc = backwards ? -1 : +1;

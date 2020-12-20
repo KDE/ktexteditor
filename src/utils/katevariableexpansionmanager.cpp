@@ -61,7 +61,12 @@ static void registerVariables(KateVariableExpansionManager &mng)
         },
         false));
     mng.addVariable(Variable(
-        QStringLiteral("Document:Text"), i18n("Contents of the current document."), [](const QStringView &, KTextEditor::View *view) { return view ? view->document()->text() : QString(); }, false));
+        QStringLiteral("Document:Text"),
+        i18n("Contents of the current document."),
+        [](const QStringView &, KTextEditor::View *view) {
+            return view ? view->document()->text() : QString();
+        },
+        false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Path"),
         i18n("Full path of the current document excluding the file name."),
@@ -89,64 +94,125 @@ static void registerVariables(KateVariableExpansionManager &mng)
     mng.addVariable(Variable(
         QStringLiteral("Document:Cursor:Line"),
         i18n("Line number of the text cursor position in current document (starts with 0)."),
-        [](const QStringView &, KTextEditor::View *view) { return view ? QString::number(view->cursorPosition().line()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return view ? QString::number(view->cursorPosition().line()) : QString();
+        },
         false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Cursor:Column"),
         i18n("Column number of the text cursor position in current document (starts with 0)."),
-        [](const QStringView &, KTextEditor::View *view) { return view ? QString::number(view->cursorPosition().column()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return view ? QString::number(view->cursorPosition().column()) : QString();
+        },
         false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Cursor:XPos"),
         i18n("X component in global screen coordinates of the cursor position."),
-        [](const QStringView &, KTextEditor::View *view) { return view ? QString::number(view->mapToGlobal(view->cursorPositionCoordinates()).x()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return view ? QString::number(view->mapToGlobal(view->cursorPositionCoordinates()).x()) : QString();
+        },
         false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Cursor:YPos"),
         i18n("Y component in global screen coordinates of the cursor position."),
-        [](const QStringView &, KTextEditor::View *view) { return view ? QString::number(view->mapToGlobal(view->cursorPositionCoordinates()).y()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return view ? QString::number(view->mapToGlobal(view->cursorPositionCoordinates()).y()) : QString();
+        },
         false));
     mng.addVariable(Variable(
-        QStringLiteral("Document:Selection:Text"), i18n("Text selection of the current document."), [](const QStringView &, KTextEditor::View *view) { return (view && view->selection()) ? view->selectionText() : QString(); }, false));
+        QStringLiteral("Document:Selection:Text"),
+        i18n("Text selection of the current document."),
+        [](const QStringView &, KTextEditor::View *view) {
+            return (view && view->selection()) ? view->selectionText() : QString();
+        },
+        false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Selection:StartLine"),
         i18n("Start line of selected text of the current document."),
-        [](const QStringView &, KTextEditor::View *view) { return (view && view->selection()) ? QString::number(view->selectionRange().start().line()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return (view && view->selection()) ? QString::number(view->selectionRange().start().line()) : QString();
+        },
         false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Selection:StartColumn"),
         i18n("Start column of selected text of the current document."),
-        [](const QStringView &, KTextEditor::View *view) { return (view && view->selection()) ? QString::number(view->selectionRange().start().column()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return (view && view->selection()) ? QString::number(view->selectionRange().start().column()) : QString();
+        },
         false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Selection:EndLine"),
         i18n("End line of selected text of the current document."),
-        [](const QStringView &, KTextEditor::View *view) { return (view && view->selection()) ? QString::number(view->selectionRange().end().line()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return (view && view->selection()) ? QString::number(view->selectionRange().end().line()) : QString();
+        },
         false));
     mng.addVariable(Variable(
         QStringLiteral("Document:Selection:EndColumn"),
         i18n("End column of selected text of the current document."),
-        [](const QStringView &, KTextEditor::View *view) { return (view && view->selection()) ? QString::number(view->selectionRange().end().column()) : QString(); },
+        [](const QStringView &, KTextEditor::View *view) {
+            return (view && view->selection()) ? QString::number(view->selectionRange().end().column()) : QString();
+        },
         false));
     mng.addVariable(Variable(
-        QStringLiteral("Document:RowCount"), i18n("Number of rows of the current document."), [](const QStringView &, KTextEditor::View *view) { return view ? QString::number(view->document()->lines()) : QString(); }, false));
+        QStringLiteral("Document:RowCount"),
+        i18n("Number of rows of the current document."),
+        [](const QStringView &, KTextEditor::View *view) {
+            return view ? QString::number(view->document()->lines()) : QString();
+        },
+        false));
 
     mng.addVariable(Variable(
-        QStringLiteral("Date:Locale"), i18n("The current date in current locale format."), [](const QStringView &, KTextEditor::View *) { return QLocale().toString(QDate::currentDate(), QLocale::ShortFormat); }, false));
+        QStringLiteral("Date:Locale"),
+        i18n("The current date in current locale format."),
+        [](const QStringView &, KTextEditor::View *) {
+            return QLocale().toString(QDate::currentDate(), QLocale::ShortFormat);
+        },
+        false));
     mng.addVariable(Variable(
-        QStringLiteral("Date:ISO"), i18n("The current date (ISO)."), [](const QStringView &, KTextEditor::View *) { return QDate::currentDate().toString(Qt::ISODate); }, false));
+        QStringLiteral("Date:ISO"),
+        i18n("The current date (ISO)."),
+        [](const QStringView &, KTextEditor::View *) {
+            return QDate::currentDate().toString(Qt::ISODate);
+        },
+        false));
     mng.addVariable(Variable(
-        QStringLiteral("Date:"), i18n("The current date (QDate formatstring)."), [](const QStringView &str, KTextEditor::View *) { return QDate::currentDate().toString(str.mid(5)); }, true));
+        QStringLiteral("Date:"),
+        i18n("The current date (QDate formatstring)."),
+        [](const QStringView &str, KTextEditor::View *) {
+            return QDate::currentDate().toString(str.mid(5));
+        },
+        true));
 
     mng.addVariable(Variable(
-        QStringLiteral("Time:Locale"), i18n("The current time in current locale format."), [](const QStringView &, KTextEditor::View *) { return QLocale().toString(QTime::currentTime(), QLocale::ShortFormat); }, false));
+        QStringLiteral("Time:Locale"),
+        i18n("The current time in current locale format."),
+        [](const QStringView &, KTextEditor::View *) {
+            return QLocale().toString(QTime::currentTime(), QLocale::ShortFormat);
+        },
+        false));
     mng.addVariable(Variable(
-        QStringLiteral("Time:ISO"), i18n("The current time (ISO)."), [](const QStringView &, KTextEditor::View *) { return QTime::currentTime().toString(Qt::ISODate); }, false));
+        QStringLiteral("Time:ISO"),
+        i18n("The current time (ISO)."),
+        [](const QStringView &, KTextEditor::View *) {
+            return QTime::currentTime().toString(Qt::ISODate);
+        },
+        false));
     mng.addVariable(Variable(
-        QStringLiteral("Time:"), i18n("The current time (QTime formatstring)."), [](const QStringView &str, KTextEditor::View *) { return QTime::currentTime().toString(str.mid(5)); }, true));
+        QStringLiteral("Time:"),
+        i18n("The current time (QTime formatstring)."),
+        [](const QStringView &str, KTextEditor::View *) {
+            return QTime::currentTime().toString(str.mid(5));
+        },
+        true));
 
     mng.addVariable(Variable(
-        QStringLiteral("ENV:"), i18n("Access to environment variables."), [](const QStringView &str, KTextEditor::View *) { return QString::fromLocal8Bit(qgetenv(str.mid(4).toLocal8Bit().constData())); }, true));
+        QStringLiteral("ENV:"),
+        i18n("Access to environment variables."),
+        [](const QStringView &str, KTextEditor::View *) {
+            return QString::fromLocal8Bit(qgetenv(str.mid(4).toLocal8Bit().constData()));
+        },
+        true));
 
     mng.addVariable(Variable(
         QStringLiteral("JS:"),
@@ -159,10 +225,20 @@ static void registerVariables(KateVariableExpansionManager &mng)
         true));
 
     mng.addVariable(Variable(
-        QStringLiteral("PercentEncoded:"), i18n("Encode text to make it URL compatible."), [](const QStringView &str, KTextEditor::View *) { return QString::fromUtf8(QUrl::toPercentEncoding(str.mid(15).toString())); }, true));
+        QStringLiteral("PercentEncoded:"),
+        i18n("Encode text to make it URL compatible."),
+        [](const QStringView &str, KTextEditor::View *) {
+            return QString::fromUtf8(QUrl::toPercentEncoding(str.mid(15).toString()));
+        },
+        true));
 
     mng.addVariable(Variable(
-        QStringLiteral("UUID"), i18n("Generate a new UUID."), [](const QStringView &, KTextEditor::View *) { return QUuid::createUuid().toString(QUuid::WithoutBraces); }, false));
+        QStringLiteral("UUID"),
+        i18n("Generate a new UUID."),
+        [](const QStringView &, KTextEditor::View *) {
+            return QUuid::createUuid().toString(QUuid::WithoutBraces);
+        },
+        false));
 }
 
 KateVariableExpansionManager::KateVariableExpansionManager(QObject *parent)
@@ -178,7 +254,9 @@ bool KateVariableExpansionManager::addVariable(const KTextEditor::Variable &var)
         return false;
 
     // reject duplicates
-    const auto alreadyExists = std::any_of(m_variables.begin(), m_variables.end(), [&var](const KTextEditor::Variable &v) { return var.name() == v.name(); });
+    const auto alreadyExists = std::any_of(m_variables.begin(), m_variables.end(), [&var](const KTextEditor::Variable &v) {
+        return var.name() == v.name();
+    });
     if (alreadyExists) {
         return false;
     }
@@ -193,7 +271,9 @@ bool KateVariableExpansionManager::addVariable(const KTextEditor::Variable &var)
 
 bool KateVariableExpansionManager::removeVariable(const QString &name)
 {
-    auto it = std::find_if(m_variables.begin(), m_variables.end(), [&name](const KTextEditor::Variable &var) { return var.name() == name; });
+    auto it = std::find_if(m_variables.begin(), m_variables.end(), [&name](const KTextEditor::Variable &var) {
+        return var.name() == name;
+    });
     if (it != m_variables.end()) {
         m_variables.erase(it);
         return true;
@@ -203,7 +283,9 @@ bool KateVariableExpansionManager::removeVariable(const QString &name)
 
 KTextEditor::Variable KateVariableExpansionManager::variable(const QString &name) const
 {
-    auto it = std::find_if(m_variables.begin(), m_variables.end(), [&name](const KTextEditor::Variable &var) { return var.name() == name; });
+    auto it = std::find_if(m_variables.begin(), m_variables.end(), [&name](const KTextEditor::Variable &var) {
+        return var.name() == name;
+    });
     if (it != m_variables.end()) {
         return *it;
     }
@@ -243,7 +325,9 @@ QString KateVariableExpansionManager::expandText(const QString &text, KTextEdito
 void KateVariableExpansionManager::showDialog(const QVector<QWidget *> &widgets, const QStringList &names) const
 {
     // avoid any work in case no widgets or only nullptrs were provided
-    if (widgets.isEmpty() || std::all_of(widgets.cbegin(), widgets.cend(), [](const QWidget *w) { return w == nullptr; })) {
+    if (widgets.isEmpty() || std::all_of(widgets.cbegin(), widgets.cend(), [](const QWidget *w) {
+            return w == nullptr;
+        })) {
         return;
     }
 

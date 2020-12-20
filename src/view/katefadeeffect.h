@@ -86,8 +86,8 @@ protected Q_SLOTS:
     void animationFinished();
 
 private:
-    QPointer<QWidget> m_widget;                ///< the fading widget
-    QTimeLine *m_timeLine;                     ///< update time line
+    QPointer<QWidget> m_widget; ///< the fading widget
+    QTimeLine *m_timeLine; ///< update time line
     QPointer<QGraphicsOpacityEffect> m_effect; ///< graphics opacity effect
 };
 

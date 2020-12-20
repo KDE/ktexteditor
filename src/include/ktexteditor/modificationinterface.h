@@ -74,9 +74,9 @@ public:
      */
     enum ModifiedOnDiskReason {
         OnDiskUnmodified = 0, ///< Not modified
-        OnDiskModified = 1,   ///< The file was modified by another program
-        OnDiskCreated = 2,    ///< The file was created by another program
-        OnDiskDeleted = 3     ///< The file was deleted
+        OnDiskModified = 1, ///< The file was modified by another program
+        OnDiskCreated = 2, ///< The file was created by another program
+        OnDiskDeleted = 3 ///< The file was deleted
     };
 
 public:

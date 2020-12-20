@@ -1478,7 +1478,7 @@ void KeysTest::MacroTests()
         fakeCodeCompletionModel->setFailTestOnInvocation(false);
         // Record 'a'.
         TestPressKey("qafta\\ctrl- \\enterfirstArg\\ctrl-c"); // Function with args.
-        TestPressKey("\\enterea\\ctrl- \\enter\\ctrl-c");     // Function no args.
+        TestPressKey("\\enterea\\ctrl- \\enter\\ctrl-c"); // Function no args.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
         TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-c"); // Cut off tail.

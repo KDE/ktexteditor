@@ -18,11 +18,11 @@
 #include <KSharedConfig>
 
 #include <QApplication>
+#include <QMarginsF>
+#include <QPageLayout>
 #include <QPrintDialog>
 #include <QPrintPreviewDialog>
 #include <QPrinter>
-#include <QPageLayout>
-#include <QMarginsF>
 
 #include "printconfigwidgets.h"
 #include "printpainter.h"

@@ -183,8 +183,8 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    QRegExp startOfWord(startOfWordPattern);                  // start of a word
-    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S"));      // non-space right after space
+    QRegExp startOfWord(startOfWordPattern); // start of a word
+    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S")); // non-space right after space
     QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
 
     int l = fromLine;
@@ -363,10 +363,10 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    QRegExp startOfWord(startOfWordPattern);                  // start of a word
-    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S"));      // non-space right after space
+    QRegExp startOfWord(startOfWordPattern); // start of a word
+    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S")); // non-space right after space
     QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
-    QRegExp startOfLine(QLatin1String("^\\S"));               // non-space at start of line
+    QRegExp startOfLine(QLatin1String("^\\S")); // non-space at start of line
 
     int l = fromLine;
     int c = fromColumn;

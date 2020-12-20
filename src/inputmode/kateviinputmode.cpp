@@ -70,7 +70,7 @@ void KateViInputMode::activate()
 {
     m_activated = true;
     setCaretStyle(KateRenderer::Block); // TODO: can we end up in insert mode?
-    reset();                            // TODO: is this necessary? (well, not anymore I guess)
+    reset(); // TODO: is this necessary? (well, not anymore I guess)
 
     if (view()->selection()) {
         m_viModeManager->changeViMode(KateVi::VisualMode);

@@ -519,7 +519,7 @@ class Factory
 {
 private:
     friend KateModeMenuList;
-    Factory() {};
+    Factory(){};
     static ListView *createListView(KateModeMenuList *parentMenu)
     {
         return new ListView(parentMenu);

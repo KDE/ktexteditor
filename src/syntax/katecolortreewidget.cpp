@@ -224,8 +224,8 @@ KateColorTreeWidget::KateColorTreeWidget(QWidget *parent)
     setItemDelegate(new KateColorTreeDelegate(this));
 
     QStringList headers;
-    headers << QString()  // i18nc("@title:column the color name", "Color Role")
-            << QString()  // i18nc("@title:column a color button", "Color")
+    headers << QString() // i18nc("@title:column the color name", "Color Role")
+            << QString() // i18nc("@title:column a color button", "Color")
             << QString(); // i18nc("@title:column use default color", "Reset")
     setHeaderLabels(headers);
     setHeaderHidden(true);

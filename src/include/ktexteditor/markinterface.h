@@ -338,7 +338,7 @@ public:
      * \see markChanged()
      */
     enum MarkChangeAction {
-        MarkAdded = 0,  /**< action: a mark was added.  */
+        MarkAdded = 0, /**< action: a mark was added.  */
         MarkRemoved = 1 /**< action: a mark was removed. */
     };
 

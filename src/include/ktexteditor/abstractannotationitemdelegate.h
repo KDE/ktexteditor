@@ -72,9 +72,9 @@ public:
      */
     enum AnnotationItemGroupPosition {
         InvalidGroupPosition = 0, ///< Position not specified or not belonging to a group
-        InGroup = 0x1 << 0,       ///< Real line belongs to a group
-        GroupBegin = 0x1 << 1,    ///< Real line is first of consecutive lines from same group
-        GroupEnd = 0x1 << 2,      ///< Real line is last of consecutive lines from same group
+        InGroup = 0x1 << 0, ///< Real line belongs to a group
+        GroupBegin = 0x1 << 1, ///< Real line is first of consecutive lines from same group
+        GroupEnd = 0x1 << 2, ///< Real line is last of consecutive lines from same group
     };
     /// Stores a combination of #AnnotationItemGroupPosition values.
     Q_DECLARE_FLAGS(AnnotationItemGroupPositions, AnnotationItemGroupPosition)

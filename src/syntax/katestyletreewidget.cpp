@@ -97,8 +97,8 @@ private:
        when a property is changed and we are using default style. */
 
     KTextEditor::Attribute::Ptr currentStyle, // the style currently in use (was "is")
-        defaultStyle;                         // default style for hl mode contexts and default styles (was "ds")
-    KTextEditor::Attribute::Ptr actualStyle;  // itemdata for hl mode contexts (was "st")
+        defaultStyle; // default style for hl mode contexts and default styles (was "ds")
+    KTextEditor::Attribute::Ptr actualStyle; // itemdata for hl mode contexts (was "st")
 };
 // END
 

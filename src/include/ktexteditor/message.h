@@ -105,9 +105,9 @@ public:
      */
     enum MessageType {
         Positive = 0, ///< positive information message
-        Information,  ///< information message type
-        Warning,      ///< warning message type
-        Error         ///< error message type
+        Information, ///< information message type
+        Warning, ///< warning message type
+        Error ///< error message type
     };
 
     /**
@@ -133,7 +133,7 @@ public:
      * @see setAutoHide(), autoHide()
      */
     enum AutoHideMode {
-        Immediate = 0,       ///< auto-hide is triggered as soon as the message is shown
+        Immediate = 0, ///< auto-hide is triggered as soon as the message is shown
         AfterUserInteraction ///< auto-hide is triggered only after the user interacted with the view
     };
 

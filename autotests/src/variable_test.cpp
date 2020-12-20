@@ -35,7 +35,9 @@ void VariableTest::testReturnValues()
     auto editor = KTextEditor::Editor::instance();
 
     const QString name = QStringLiteral("Document:");
-    auto func = [](const QStringView &, KTextEditor::View *) { return QString(); };
+    auto func = [](const QStringView &, KTextEditor::View *) {
+        return QString();
+    };
 
     // exact matches
     QVERIFY(!editor->unregisterVariableMatch(name));
@@ -78,7 +80,9 @@ void VariableTest::testExactMatch()
     doc->setText(text);
 
     const QString name = QStringLiteral("Doc:Text");
-    auto func = [](const QStringView &, KTextEditor::View *view) { return view->document()->text(); };
+    auto func = [](const QStringView &, KTextEditor::View *view) {
+        return view->document()->text();
+    };
 
     QVERIFY(editor->registerVariableMatch(name, "Document Text", func));
 
@@ -137,7 +141,9 @@ void VariableTest::testRecursiveMatch()
     doc->setText(QStringLiteral("Text"));
 
     const QString name = QStringLiteral("Doc:Text");
-    auto func = [](const QStringView &, KTextEditor::View *view) { return view->document()->text(); };
+    auto func = [](const QStringView &, KTextEditor::View *view) {
+        return view->document()->text();
+    };
     QVERIFY(editor->registerVariableMatch(name, "Document Text", func));
 
     // Test recursive expansion

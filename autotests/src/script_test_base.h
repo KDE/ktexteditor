@@ -39,7 +39,7 @@ protected:
     bool m_outputWasCustomised;
     QStringList m_commands;
     KTextEditor::ViewPrivate *m_view;
-    QString m_section;    // dir name in testdata/
+    QString m_section; // dir name in testdata/
     QString m_script_dir; // dir name in part/script/data/
 
 public:

@@ -261,9 +261,9 @@ bool InsertViMode::commandInsertContentOfRegister()
     }
 
     if (m == LineWise) {
-        textToInsert.chop(1);                     // remove the last \n
+        textToInsert.chop(1); // remove the last \n
         c.setColumn(doc()->lineLength(c.line())); // paste after the current line and ...
-        textToInsert.prepend(QLatin1Char('\n'));  // ... prepend a \n, so the text starts on a new line
+        textToInsert.prepend(QLatin1Char('\n')); // ... prepend a \n, so the text starts on a new line
 
         cAfter.setLine(cAfter.line() + 1);
         cAfter.setColumn(0);

@@ -100,12 +100,12 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo bar foo bar", "#xlll#x", "foo ar oo bar");
     DoTest("(foo (bar (foo( bar))))", "#xll#x", "(foo (ar (oo( bar))))");
     DoTest("(foo (bar (foo( bar))))", "*x", "(foo (bar (oo( bar))))");
-    DoTest("foo bar foobar foo", "*rX", "foo bar foobar Xoo");  // Whole word only.
+    DoTest("foo bar foobar foo", "*rX", "foo bar foobar Xoo"); // Whole word only.
     DoTest("foo bar foobar foo", "$#rX", "Xoo bar foobar foo"); // Whole word only.
-    DoTest("fOo foo fOo", "*rX", "fOo Xoo fOo");                // Case insensitive.
-    DoTest("fOo foo fOo", "$#rX", "fOo Xoo fOo");               // Case insensitive.
-    DoTest("fOo foo fOo", "*ggnrX", "fOo Xoo fOo");             // Flag that the search to repeat is case insensitive.
-    DoTest("fOo foo fOo", "$#ggNrX", "fOo Xoo fOo");            // Flag that the search to repeat is case insensitive.
+    DoTest("fOo foo fOo", "*rX", "fOo Xoo fOo"); // Case insensitive.
+    DoTest("fOo foo fOo", "$#rX", "fOo Xoo fOo"); // Case insensitive.
+    DoTest("fOo foo fOo", "*ggnrX", "fOo Xoo fOo"); // Flag that the search to repeat is case insensitive.
+    DoTest("fOo foo fOo", "$#ggNrX", "fOo Xoo fOo"); // Flag that the search to repeat is case insensitive.
     DoTest("bar foo", "$*rX", "bar Xoo");
     DoTest("bar foo", "$#rX", "bar Xoo");
     // Test that calling # on the last, blank line of a document does not go into an infinite loop.

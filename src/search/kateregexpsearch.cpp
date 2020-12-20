@@ -44,11 +44,11 @@ public:
     };
 
     enum CaseConversion {
-        upperCase,      ///< \U ... uppercase from now on
+        upperCase, ///< \U ... uppercase from now on
         upperCaseFirst, ///< \u ... uppercase the first letter
-        lowerCase,      ///< \L ... lowercase from now on
+        lowerCase, ///< \L ... lowercase from now on
         lowerCaseFirst, ///< \l ... lowercase the first letter
-        keepCase        ///< \E ... back to original case
+        keepCase ///< \E ... back to original case
     };
 
 public:

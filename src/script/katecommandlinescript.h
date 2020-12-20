@@ -41,7 +41,7 @@ public:
 
 private:
     QStringList m_functions; ///< the functions the script contains
-    QJsonArray m_actions;    ///< the action for this script
+    QJsonArray m_actions; ///< the action for this script
 };
 
 /**

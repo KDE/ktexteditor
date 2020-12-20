@@ -34,7 +34,7 @@ public:
      */
     enum EffectType {
         FadeEffect = 0, ///< fade in/out
-        GrowEffect      ///< grow / shrink
+        GrowEffect ///< grow / shrink
     };
 
 public:
@@ -79,7 +79,7 @@ Q_SIGNALS:
 
 private:
     QPointer<KMessageWidget> m_widget; ///< the widget to animate
-    KateFadeEffect *m_fadeEffect;      ///< the fade effect
+    KateFadeEffect *m_fadeEffect; ///< the fade effect
 };
 
 #endif

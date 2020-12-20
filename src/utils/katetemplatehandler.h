@@ -197,10 +197,10 @@ private:
         // default value, if applicable; else empty
         QString defaultValue;
         enum Kind {
-            Invalid,            // not an actual field
-            Editable,           // normal, user-editable field (green by default) [non-dependent field]
-            Mirror,             // field mirroring contents of another field [dependent field]
-            FunctionCall,       // field containing the up-to-date result of a function call [dependent field]
+            Invalid, // not an actual field
+            Editable, // normal, user-editable field (green by default) [non-dependent field]
+            Mirror, // field mirroring contents of another field [dependent field]
+            FunctionCall, // field containing the up-to-date result of a function call [dependent field]
             FinalCursorPosition // field marking the final cursor position
         };
         Kind kind = Invalid;

@@ -1156,7 +1156,7 @@ void KateCompletionModel::hideOrShowGroup(Group *g, bool notifyModel)
     if (g == m_argumentHints) {
         emit argumentHintsChanged();
         m_updateBestMatchesTimer->start(200); // We have new argument-hints, so we have new best matches
-        return;                               // Never show argument-hints in the normal completion-list
+        return; // Never show argument-hints in the normal completion-list
     }
 
     if (!g->isEmpty) {

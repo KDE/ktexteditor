@@ -162,7 +162,7 @@ public:
 
 public:
     void setValueByString(const QString &value) override; // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const override;               // Same as value() in this case, implemented for uniformity
+    QString valueAsString() const override; // Same as value() in this case, implemented for uniformity
     VariableEditor *createEditor(QWidget *parent) override;
 
 private:
@@ -182,7 +182,7 @@ public:
 
 public:
     void setValueByString(const QString &value) override; // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const override;               // Same as value() in this case, implemented for uniformity
+    QString valueAsString() const override; // Same as value() in this case, implemented for uniformity
     VariableEditor *createEditor(QWidget *parent) override;
 
 private:
@@ -201,7 +201,7 @@ public:
 
 public:
     void setValueByString(const QString &value) override; // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const override;               // Same as value() in this case, implemented for uniformity
+    QString valueAsString() const override; // Same as value() in this case, implemented for uniformity
     VariableEditor *createEditor(QWidget *parent) override;
 
 private:

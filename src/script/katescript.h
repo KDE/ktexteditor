@@ -90,10 +90,10 @@ public:
     }
 
 private:
-    QString m_license;                                         ///< the script's license, e.g. LGPL
-    QString m_author;                                          ///< the script author, e.g. "John Smith <john@example.com>"
-    int m_revision = 0;                                        ///< script revision, a simple number, e.g. 1, 2, 3, ...
-    QString m_kateVersion;                                     ///< required katepart version
+    QString m_license; ///< the script's license, e.g. LGPL
+    QString m_author; ///< the script author, e.g. "John Smith <john@example.com>"
+    int m_revision = 0; ///< script revision, a simple number, e.g. 1, 2, 3, ...
+    QString m_kateVersion; ///< required katepart version
     Kate::ScriptType m_scriptType = Kate::ScriptType::Unknown; ///< the script type
 };
 // END

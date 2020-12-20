@@ -287,11 +287,11 @@ KTextEditor::Range KateWordCompletionModel::completionRange(KTextEditor::View *v
 // BEGIN KateWordCompletionView
 struct KateWordCompletionViewPrivate {
     KTextEditor::MovingRange *liRange; // range containing last inserted text
-    KTextEditor::Range dcRange;        // current range to be completed by directional completion
-    KTextEditor::Cursor dcCursor;      // directional completion search cursor
+    KTextEditor::Range dcRange; // current range to be completed by directional completion
+    KTextEditor::Cursor dcCursor; // directional completion search cursor
     QRegularExpression wordRegEx;
     int directionalPos; // be able to insert "" at the correct time
-    bool isCompleting;  // true when the directional completion is doing a completion
+    bool isCompleting; // true when the directional completion is doing a completion
 };
 
 KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionCollection *ac)

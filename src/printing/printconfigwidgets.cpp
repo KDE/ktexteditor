@@ -13,11 +13,11 @@
 #include "katesyntaxmanager.h"
 
 #include <KColorButton>
-#include <QComboBox>
 #include <KConfigGroup>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KSharedConfig>
+#include <QComboBox>
 
 #include <QBoxLayout>
 #include <QCheckBox>

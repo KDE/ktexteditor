@@ -206,7 +206,7 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
                 }
             }
         } // for
-    }     // Marks
+    } // Marks
 
     if (markCount) {
         markRed /= markCount;
@@ -1045,7 +1045,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
                 QTextCharFormat text_char_format;
                 text_char_format.setFontLetterSpacing(width);
                 text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
-                decorations.append(QTextLayout::FormatRange {column - 1, 1, text_char_format});
+                decorations.append(QTextLayout::FormatRange{column - 1, 1, text_char_format});
             }
         }
     }

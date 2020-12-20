@@ -348,7 +348,7 @@ private:
 
     Group *m_ungrouped;
     Group *m_argumentHints; // The argument-hints will be passed on to another model, to be shown in another widget
-    Group *m_bestMatches;   // A temporary group used for holding the best matches of all visible items
+    Group *m_bestMatches; // A temporary group used for holding the best matches of all visible items
 
     // Storing the sorted order
     QList<Group *> m_rowTable;

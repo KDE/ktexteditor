@@ -2118,7 +2118,7 @@ bool KTextEditor::DocumentPrivate::handleMarkClick(int line)
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        emit markClicked(this, KTextEditor::Mark {line, 0}, handled);
+        emit markClicked(this, KTextEditor::Mark{line, 0}, handled);
     } else {
         emit markClicked(this, *mark, handled);
     }
@@ -2131,7 +2131,7 @@ bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint positi
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        emit markContextMenuRequested(this, KTextEditor::Mark {line, 0}, position, handled);
+        emit markContextMenuRequested(this, KTextEditor::Mark{line, 0}, position, handled);
     } else {
         emit markContextMenuRequested(this, *mark, position, handled);
     }
@@ -3130,7 +3130,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     bool skipAutobrace = closingBracket == QLatin1Char('\'');
     if (highlight() && skipAutobrace) {
         // skip adding ' in spellchecked areas, because those are text
-        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor {0, 1});
+        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
     }
 
     const auto cursorPos(view->cursorPosition());
@@ -3150,12 +3150,12 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
 
     if (!closingBracket.isNull() && !skipAutobrace) {
         // add bracket to the view
-        const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor {0, 1}}).trimmed();
+        const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
         if (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber()) {
             insertText(view->cursorPosition(), QString(closingBracket));
             const auto insertedAt(view->cursorPosition());
             view->setCursorPosition(cursorPos);
-            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor {0, 1}, insertedAt}, KTextEditor::MovingRange::DoNotExpand));
+            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt}, KTextEditor::MovingRange::DoNotExpand));
             connect(view, &View::cursorPositionChanged, this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
 
             // add bracket to chars inserted! needed for correct signals + indent
@@ -3213,7 +3213,7 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
     // first: wrap line
     editWrapLine(c.line(), c.column());
 
-    //update highlighting to have updated HL in userTypedChar!
+    // update highlighting to have updated HL in userTypedChar!
     m_buffer->updateHighlighting();
 
     // second: if "indent" is true, indent the new line, if needed...
@@ -4673,7 +4673,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
         var = match.captured(1);
         val = match.captured(2).trimmed();
         bool state; // store booleans here
-        int n;      // store ints here
+        int n; // store ints here
 
         // only apply view & renderer config stuff
         if (onlyViewAndRenderer) {
@@ -5655,7 +5655,9 @@ void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRang
 {
     qCDebug(LOG_KTE) << "deleting" << movingRange;
 
-    auto finder = [=](const QPair<KTextEditor::MovingRange *, QString> &item) -> bool { return item.first == movingRange; };
+    auto finder = [=](const QPair<KTextEditor::MovingRange *, QString> &item) -> bool {
+        return item.first == movingRange;
+    };
 
     auto it = std::find_if(m_dictionaryRanges.begin(), m_dictionaryRanges.end(), finder);
 

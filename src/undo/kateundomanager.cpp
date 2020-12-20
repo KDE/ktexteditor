@@ -197,7 +197,7 @@ void KateUndoManager::undoSafePoint()
 
 void KateUndoManager::addUndoItem(KateUndo *undo)
 {
-    Q_ASSERT(undo != nullptr);              // don't add null pointers to our history
+    Q_ASSERT(undo != nullptr); // don't add null pointers to our history
     Q_ASSERT(m_editCurrentUndo != nullptr); // make sure there is an undo group for our item
 
     m_editCurrentUndo->addItem(undo);

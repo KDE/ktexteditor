@@ -42,7 +42,7 @@ public:
     enum ExpansionType {
         NotExpanded = 0,
         ExpandDownwards, // The additional(expanded) information is shown UNDER the original information
-        ExpandUpwards    // The additional(expanded) information is shown ABOVE the original information
+        ExpandUpwards // The additional(expanded) information is shown ABOVE the original information
     };
 
     /// Returns whether the given index is currently partially expanded. Does not do any other checks like calling models for data.
@@ -122,7 +122,7 @@ private:
     // Store expanding-widgets and cache whether items can be expanded
     mutable QMap<QModelIndex, ExpandingType> m_expandState;
     QMap<QModelIndex, QPointer<QWidget>> m_expandingWidgets; // Map rows to their expanding-widgets
-    QMap<QModelIndex, int> m_contextMatchQualities;          // Map rows to their context-match qualities(undefined if unknown, else 0 to 10). Not used yet, eventually remove.
+    QMap<QModelIndex, int> m_contextMatchQualities; // Map rows to their context-match qualities(undefined if unknown, else 0 to 10). Not used yet, eventually remove.
 };
 
 /**

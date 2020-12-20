@@ -194,7 +194,7 @@ private:
     {
         QStyleOption sopt;
         sopt.initFrom(parentWidget());
-        const int topMargin = 0;   // style()->pixelMetric(QStyle::PM_LayoutTopMargin, &sopt, parentWidget());
+        const int topMargin = 0; // style()->pixelMetric(QStyle::PM_LayoutTopMargin, &sopt, parentWidget());
         const int rightMargin = 0; // style()->pixelMetric(QStyle::PM_LayoutRightMargin, &sopt, parentWidget());
         if (isLeftToRight()) {
             move(parentSize.width() - width() - rightMargin, topMargin);

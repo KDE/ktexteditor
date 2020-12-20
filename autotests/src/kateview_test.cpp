@@ -499,10 +499,11 @@ void KateViewTest::testGotoMatchingBracket()
 void KateViewTest::testFindSelected()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setText("foo\n"
-                "bar\n"
-                "foo\n"
-                "bar\n");
+    doc.setText(
+        "foo\n"
+        "bar\n"
+        "foo\n"
+        "bar\n");
     //           0123456789
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);

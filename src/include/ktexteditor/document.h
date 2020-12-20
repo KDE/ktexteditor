@@ -50,11 +50,11 @@ enum SearchOption {
 
     // options for all modes
     CaseInsensitive = 1 << 4, ///< Ignores cases, e.g. "a" matches "A"
-    Backwards = 1 << 5,       ///< Searches in backward direction
+    Backwards = 1 << 5, ///< Searches in backward direction
 
     // options for plaintext
     EscapeSequences = 1 << 10, ///< Plaintext mode: Processes escape sequences
-    WholeWords = 1 << 11,      ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
+    WholeWords = 1 << 11, ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
 
     MaxSearchOption = 1 << 31 ///< Placeholder for binary compatibility
 };

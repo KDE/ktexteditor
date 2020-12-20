@@ -218,10 +218,10 @@ public Q_SLOTS:
      */
 private:
     KTextEditor::DocumentPrivate *doc; //!< the document the indenter works on
-    int tabWidth;                      //!< The number of characters simulated for a tab
-    int indentWidth;                   //!< The number of characters used when tabs are replaced by spaces
-    bool useSpaces;                    //!< Should we use spaces or tabs to indent
-    bool keepExtra;                    //!< Keep indentation that is not on indentation boundaries
+    int tabWidth; //!< The number of characters simulated for a tab
+    int indentWidth; //!< The number of characters used when tabs are replaced by spaces
+    bool useSpaces; //!< Should we use spaces or tabs to indent
+    bool keepExtra; //!< Keep indentation that is not on indentation boundaries
     QString m_mode;
     KateIndentScript *m_script;
 };

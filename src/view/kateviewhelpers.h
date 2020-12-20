@@ -631,8 +631,8 @@ private:
     KateCommandLineBar *m_bar;
     bool m_msgMode;
     QString m_oldText;
-    uint m_histpos;                  ///< position in the history
-    uint m_cmdend;                   ///< the point where a command ends in the text, if we have a valid one.
+    uint m_histpos; ///< position in the history
+    uint m_cmdend; ///< the point where a command ends in the text, if we have a valid one.
     KTextEditor::Command *m_command; ///< For completing flags/args and interactiveness
     class KateCmdLnWhatsThis *m_help;
 

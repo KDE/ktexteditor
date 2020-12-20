@@ -710,7 +710,7 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->addAction(QStringLiteral("dynamic_word_wrap_indicators"), a);
     a->setWhatsThis(i18n("Choose when the Dynamic Word Wrap Indicators should be displayed"));
     connect(m_setDynWrapIndicators, SIGNAL(triggered(int)), this, SLOT(setDynWrapIndicators(int)));
-    const QStringList list2 {i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On")};
+    const QStringList list2{i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On")};
     m_setDynWrapIndicators->setItems(list2);
     m_setDynWrapIndicators->setEnabled(m_toggleDynWrap->isChecked()); // only synced on real change, later
 
@@ -798,7 +798,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
     ac->addAction(QStringLiteral("set_eol"), a);
     a->setWhatsThis(i18n("Choose which line endings should be used, when you save the document"));
-    const QStringList list {i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
+    const QStringList list{i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
     m_setEndOfLine->setItems(list);
     m_setEndOfLine->setCurrentItem(doc()->config()->eol());
     connect(m_setEndOfLine, SIGNAL(triggered(int)), this, SLOT(setEol(int)));

@@ -90,7 +90,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // Test that FakeCodeCompletionTestModel behaves similar to the code-completion in e.g. KDevelop.
     const bool oldStealKeys = KateViewConfig::global()->viInputModeStealKeys();
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For Ctrl-P, Ctrl-N etc
-    ensureKateViewVisible();                                                        // KTextEditor::ViewPrivate needs to be visible for the completion widget.
+    ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     FakeCodeCompletionTestModel *fakeCodeCompletionModel = new FakeCodeCompletionTestModel(kate_view);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
@@ -430,7 +430,7 @@ void CompletionTest::CompletionTests()
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
 
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For Ctrl-P, Ctrl-N etc
-    ensureKateViewVisible();                                                        // KTextEditor::ViewPrivate needs to be visible for the completion widget.
+    ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     VimCodeCompletionTestModel *testModel = new VimCodeCompletionTestModel(kate_view);
 
     BeginTest("");
@@ -546,7 +546,7 @@ void CompletionTest::CompletionTests()
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     // Record 'a'.
     TestPressKey("i\\right\\right\\right\\right\\right\\ctrl- \\enterfirstArg"); // Function with args.
-    TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter");            // Function no args.
+    TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter"); // Function no args.
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter"); // Cut off tail.

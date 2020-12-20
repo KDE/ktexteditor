@@ -236,8 +236,9 @@ void UndoManagerTest::testUndoIndentBug373009()
 
     doc.setMode("C");
 
-    QString text = QString::fromLatin1("    while (whatever) printf (\"please fix indentation.\\n\");\n"
-                                       "    return 0;");
+    QString text = QString::fromLatin1(
+        "    while (whatever) printf (\"please fix indentation.\\n\");\n"
+        "    return 0;");
     doc.setText(text);
 
     // position cursor right before return

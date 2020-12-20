@@ -63,14 +63,14 @@ public:
      */
     enum InsertBehavior {
         StayOnInsert = 0x0, ///< stay on insert
-        MoveOnInsert = 0x1  ///< move on insert
+        MoveOnInsert = 0x1 ///< move on insert
     };
 
     /**
      * Wrap behavior for end of line treatement used in move().
      */
     enum WrapBehavior {
-        Wrap = 0x0,  ///< wrap at end of line
+        Wrap = 0x0, ///< wrap at end of line
         NoWrap = 0x1 ///< do not wrap at end of line
     };
 

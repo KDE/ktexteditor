@@ -208,9 +208,9 @@ public:
      * A toolview can only be at one side at a time.
      */
     enum ToolViewPosition {
-        Left = 0,  /**< Left side. */
+        Left = 0, /**< Left side. */
         Right = 1, /**< Right side. */
-        Top = 2,   /**< Top side. */
+        Top = 2, /**< Top side. */
         Bottom = 3 /**< Bottom side. */
     };
 

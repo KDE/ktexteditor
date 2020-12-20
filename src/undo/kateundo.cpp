@@ -409,5 +409,7 @@ bool KateUndoGroup::isOnlyType(KateUndo::UndoType type) const
         return false;
     }
 
-    return std::all_of(m_items.begin(), m_items.end(), [type](const KateUndo *item) { return (item->type() == type); });
+    return std::all_of(m_items.begin(), m_items.end(), [type](const KateUndo *item) {
+        return (item->type() == type);
+    });
 }

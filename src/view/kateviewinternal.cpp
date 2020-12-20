@@ -3923,7 +3923,7 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData &noteData) const
     auto noteStartPos = mapToGlobal(cursorToCoordinate(noteCursor, true, false));
 
     // compute the note's rect
-    auto globalNoteRect = QRect(noteStartPos + QPoint {extraOffset, 0}, QSize(noteWidth, renderer()->lineHeight()));
+    auto globalNoteRect = QRect(noteStartPos + QPoint{extraOffset, 0}, QSize(noteWidth, renderer()->lineHeight()));
 
     return globalNoteRect;
 }

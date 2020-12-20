@@ -63,7 +63,9 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view, Cursor 
     // then delete the selected text (if any); it was replaced by the template
     doc()->removeText(selection->toRange());
 
-    const bool have_editable_field = std::any_of(m_fields.constBegin(), m_fields.constEnd(), [](const TemplateField &field) { return (field.kind == TemplateField::Editable); });
+    const bool have_editable_field = std::any_of(m_fields.constBegin(), m_fields.constEnd(), [](const TemplateField &field) {
+        return (field.kind == TemplateField::Editable);
+    });
     // only do complex stuff when required
     if (have_editable_field) {
         const auto views = doc()->views();
