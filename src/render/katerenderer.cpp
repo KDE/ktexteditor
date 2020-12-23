@@ -219,7 +219,8 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
     paint.fillRect(0, 0, xEnd - xStart, lineHeight() * layout->viewLineCount(), backgroundColor);
 
     // paint the current line background if we're on the current line
-    if (currentViewLine != -1) {
+    const bool currentLineHasSelection = m_view && m_view->selection() && m_view->selectionRange().overlapsLine(layout->line());
+    if (currentViewLine != -1 && !currentLineHasSelection) {
         if (markCount) {
             markRed /= markCount;
             markGreen /= markCount;
