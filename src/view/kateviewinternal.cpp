@@ -2302,6 +2302,15 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             return true;
         }
 
+        // CompletionReplayer.replay only gets called when a Ctrl-Space gets to InsertViMode::handleKeyPress
+        // Workaround for BUG: 334032 (https://bugs.kde.org/show_bug.cgi?id=334032)
+        if (k->key() == Qt::Key_Space && k->modifiers() == Qt::ControlModifier) {
+            keyPressEvent(k);
+            if (k->isAccepted()) {
+                return true;
+            }
+        }
+
     } break;
 
     case QEvent::KeyPress: {
