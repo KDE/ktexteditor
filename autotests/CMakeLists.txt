@@ -150,11 +150,6 @@ ecm_add_tests(
   LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test
 )
 
-if (BENCH_SEARCH)
-add_executable(bench_search bench_search.cpp)
-target_link_libraries(bench_search PRIVATE ${KTEXTEDITOR_TEST_LINK_LIBS})
-endif()
-
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
 ktexteditor_unit_test(commands_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(scripting_test src/script_test_base.cpp src/testutils.cpp)
@@ -165,3 +160,7 @@ ktexteditor_unit_test(bug205447 src/testutils.cpp)
 if (BUILD_VIMODE)
   add_subdirectory(src/vimode)
 endif()
+
+# benchmarking tests
+add_executable(bench_search src/benchmarks/bench_search.cpp)
+target_link_libraries(bench_search PRIVATE ${KTEXTEDITOR_TEST_LINK_LIBS})
