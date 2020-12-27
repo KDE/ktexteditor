@@ -2674,7 +2674,15 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
     bool ok = false;
     int mib = q->mibForName(action->text(), &ok);
     if (ok) {
+#if KWIDGETSADDONS_BUILD_DEPRECATED_SINCE(5, 78)
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_CLANG("-Wdeprecated-declarations")
+QT_WARNING_DISABLE_GCC("-Wdeprecated-declarations")
         emit q->KSelectAction::triggered(action->text());
+QT_WARNING_POP
+#else
+        emit q->textTriggered(action->text());
+#endif
         emit q->triggered(q->codecForMib(mib));
     }
 }
@@ -2689,7 +2697,7 @@ KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_do
     d->init();
 
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
-    connect(this, SIGNAL(triggered(QString)), this, SLOT(setEncoding(QString)));
+    connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
 }
 
 KateViewEncodingAction::~KateViewEncodingAction()
@@ -2763,7 +2771,7 @@ QTextCodec *KateViewEncodingAction::currentCodec() const
 
 bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
 {
-    disconnect(this, SIGNAL(triggered(QString)), this, SLOT(setEncoding(QString)));
+    disconnect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
 
     int i, j;
     for (i = 0; i < actions().size(); ++i) {
@@ -2786,7 +2794,7 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
         }
     }
 
-    connect(this, SIGNAL(triggered(QString)), this, SLOT(setEncoding(QString)));
+    connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
     return true;
 }
 
