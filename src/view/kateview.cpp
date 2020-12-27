@@ -709,7 +709,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setDynWrapIndicators = new KSelectAction(i18n("Dynamic Word Wrap Indicators"), this);
     ac->addAction(QStringLiteral("dynamic_word_wrap_indicators"), a);
     a->setWhatsThis(i18n("Choose when the Dynamic Word Wrap Indicators should be displayed"));
-    connect(m_setDynWrapIndicators, SIGNAL(triggered(int)), this, SLOT(setDynWrapIndicators(int)));
+    connect(m_setDynWrapIndicators, &KSelectAction::indexTriggered, this, &ViewPrivate::setDynWrapIndicators);
     const QStringList list2{i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On")};
     m_setDynWrapIndicators->setItems(list2);
     m_setDynWrapIndicators->setEnabled(m_toggleDynWrap->isChecked()); // only synced on real change, later
@@ -801,7 +801,7 @@ void KTextEditor::ViewPrivate::setupActions()
     const QStringList list{i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
     m_setEndOfLine->setItems(list);
     m_setEndOfLine->setCurrentItem(doc()->config()->eol());
-    connect(m_setEndOfLine, SIGNAL(triggered(int)), this, SLOT(setEol(int)));
+    connect(m_setEndOfLine, &KSelectAction::indexTriggered, this, &ViewPrivate::setEol);
 
     a = m_addBom = new KToggleAction(i18n("Add &Byte Order Mark (BOM)"), this);
     m_addBom->setChecked(doc()->config()->bom());
