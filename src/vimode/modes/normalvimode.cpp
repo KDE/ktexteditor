@@ -260,12 +260,13 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     bool motionExecuted = false;
     if (checkFrom < m_keys.size()) {
         for (int i = 0; i < m_motions.size(); i++) {
-            if (m_motions.at(i)->matches(m_keys.mid(checkFrom))) {
+            const QString motion = m_keys.mid(checkFrom);
+            if (m_motions.at(i)->matches(motion)) {
                 m_lastMotionWasLinewiseInnerBlock = false;
                 m_matchingMotions.push_back(i);
 
                 // if it matches exact, we have found the motion command to execute
-                if (m_motions.at(i)->matchesExact(m_keys.mid(checkFrom))) {
+                if (m_motions.at(i)->matchesExact(motion)) {
                     m_currentMotionWasVisualLineUpOrDown = false;
                     motionExecuted = true;
                     if (checkFrom == 0) {
@@ -274,11 +275,15 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         Range r = m_motions.at(i)->execute();
                         m_motionCanChangeWholeVisualModeSelection = m_motions.at(i)->canChangeWholeVisualModeSelection();
 
-                        // jump over folding regions since we are just moving the cursor
-                        int currLine = m_view->cursorPosition().line();
-                        int delta = r.endLine - currLine;
-                        int vline = m_view->textFolding().lineToVisibleLine(currLine);
-                        r.endLine = m_view->textFolding().visibleLineToLine(qMax(vline + delta, 0) /* ensure we have a valid line */);
+                        if (motion != QLatin1String("n") && motion != QLatin1String("N")) {
+                            // jump over folding regions since we are just moving the cursor
+                            // except when jumping to search matches since they can be inside folds
+                            int currLine = m_view->cursorPosition().line();
+                            int delta = r.endLine - currLine;
+                            int vline = m_view->textFolding().lineToVisibleLine(currLine);
+                            r.endLine = m_view->textFolding().visibleLineToLine(qMax(vline + delta, 0) /* ensure we have a valid line */);
+                        }
+
                         if (r.endLine >= doc()->lines()) {
                             r.endLine = doc()->lines() - 1;
                         }
