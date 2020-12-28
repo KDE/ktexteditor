@@ -3246,7 +3246,19 @@ void KateViewInternal::doDrag()
     m_dragInfo.state = diDragging;
     m_dragInfo.dragObject = new QDrag(this);
     QMimeData *mimeData = new QMimeData();
-    mimeData->setText(view()->selectionText());
+    const QString text = view()->selectionText();
+    mimeData->setText(text);
+
+    const QFontMetricsF& fm = renderer()->currentFontMetrics();
+    const QRectF rect(0, 0, fm.horizontalAdvance(text), fm.height());
+    QPixmap pixmap(rect.width(), rect.height());
+    pixmap.fill(Qt::transparent);
+    QPainter painter(&pixmap);
+    painter.setFont(renderer()->currentFont());
+    painter.drawText(rect, Qt::AlignCenter, text);
+
+    m_dragInfo.dragObject->setPixmap(pixmap);
+    m_dragInfo.dragObject->setHotSpot(QPoint(pixmap.width() / 2, 0));
     m_dragInfo.dragObject->setMimeData(mimeData);
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }
