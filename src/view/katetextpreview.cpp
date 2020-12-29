@@ -98,17 +98,10 @@ void KateTextPreview::paintInto(QPaintDevice *d, int xStart, int endLine, int xE
     }
 
     KateRenderer *const renderer = view()->renderer();
-    const int lastLine = showFoldedLines() ? view()->document()->lines() : view()->textFolding().visibleLines();
 
     const QRectF r = contentsRect(); // already subtracted QFrame's frame width
     const int lineHeight = qMax(1, renderer->lineHeight());
     const int lineCount = ceil(static_cast<qreal>(r.height()) / (lineHeight * m_scale));
-    int startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0));
-    // at the very end of the document, make sure the preview is filled
-    if (qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0)) + lineCount - 1 > lastLine) {
-        m_line = qMax(0.0, lastLine - static_cast<qreal>(r.height()) / (lineHeight * m_scale) + floor(lineCount / 2.0) - 1);
-        startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0) + 1);
-    }
 
     QPainter paint(d);
     paint.scale(m_scale, m_scale);
@@ -133,7 +126,7 @@ void KateTextPreview::paintInto(QPaintDevice *d, int xStart, int endLine, int xE
         paint.setClipRegion(drawRegion);
     }
 
-    for (int line = startLine; line <= endLine; ++line) {
+    for (int line = m_line; line <= endLine; ++line) {
         // get real line, skip if invalid!
         const int realLine = showFoldedLines() ? line : view()->textFolding().visibleLineToLine(line);
         if (realLine < 0 || realLine >= renderer->doc()->lines()) {

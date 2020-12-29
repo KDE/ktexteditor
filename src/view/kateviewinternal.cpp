@@ -3251,13 +3251,18 @@ void KateViewInternal::doDrag()
     const auto startCur = view()->selectionRange().start();
     const auto endCur = view()->selectionRange().end();
     int startLine = startCur.line();
-    const int endLine = endCur.line();
+    int endLine = endCur.line();
 
     // get visible selected lines
     for (int l = startLine; l <= endLine; ++l) {
         if (l >= this->startLine())
             break;
         ++startLine;
+    }
+    for (int l = endLine; l >= startLine; --l) {
+        if (l <= this->endLine())
+            break;
+        --endLine;
     }
 
     // calculate the height / width / scale
@@ -3275,8 +3280,11 @@ void KateViewInternal::doDrag()
         auto rc = toRealCursor(startCur);
         sX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
     }
-    auto rc = toRealCursor(endCur);
-    int eX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+    int eX = 0;
+    if (endLine == endCur.line()) {
+        auto rc = toRealCursor(endCur);
+        eX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+    }
 
     QPixmap pixmap(w, h);
     pixmap.fill(Qt::transparent);
