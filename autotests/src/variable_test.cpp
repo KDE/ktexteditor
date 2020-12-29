@@ -258,7 +258,7 @@ void VariableTest::testBuiltins()
     QCOMPARE(out, QStringLiteral("2"));
 
     // Document:Variable:<variable>, since KF 5.78
-    editor->expandText(QStringLiteral("%{Document:Variable:cow-sound}"), view, out);
+    editor->expandText(QStringLiteral("%{Variable:cow-sound}"), view, out);
     QCOMPARE(out, QStringLiteral("moo"));
 
     // Date:Locale

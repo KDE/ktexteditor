@@ -162,10 +162,10 @@ static void registerVariables(KateVariableExpansionManager &mng)
         },
         false));
     mng.addVariable(Variable(
-        QStringLiteral("Document:Variable:"),
+        QStringLiteral("Variable:"),
         i18n("Read a document variable."),
         [](const QStringView &str, KTextEditor::View *view) {
-            return view ? qobject_cast<KTextEditor::DocumentPrivate*>(view->document())->variable(str.mid(18).toString()) : QString();
+            return view ? qobject_cast<KTextEditor::DocumentPrivate*>(view->document())->variable(str.mid(9).toString()) : QString();
         },
         true));
 
