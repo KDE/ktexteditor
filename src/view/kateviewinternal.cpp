@@ -3246,19 +3246,51 @@ void KateViewInternal::doDrag()
     m_dragInfo.state = diDragging;
     m_dragInfo.dragObject = new QDrag(this);
     QMimeData *mimeData = new QMimeData();
-    const QString text = view()->selectionText();
-    mimeData->setText(text);
+    mimeData->setText(view()->selectionText());
 
+    const auto startCur = view()->selectionRange().start();
+    const auto endCur = view()->selectionRange().end();
+    int startLine = startCur.line();
+    const int endLine = endCur.line();
+
+    // get visible selected lines
+    for (int l = startLine; l <= endLine; ++l) {
+        if (l >= this->startLine())
+            break;
+        ++startLine;
+    }
+
+    // calculate the height / width / scale
+    int w = 0;
+    int h = 0;
     const QFontMetricsF& fm = renderer()->currentFontMetrics();
-    const QRectF rect(0, 0, fm.horizontalAdvance(text), fm.height());
-    QPixmap pixmap(rect.width(), rect.height());
+    for (int l = startLine; l <= endLine; ++l) {
+        w = std::max((int)fm.horizontalAdvance(doc()->line(l)), w);
+        h += fm.height();
+    }
+    qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
+
+    int sX = 0;
+    if (startLine == startCur.line()) {
+        auto rc = toRealCursor(startCur);
+        sX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+    }
+    auto rc = toRealCursor(endCur);
+    int eX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+
+    QPixmap pixmap(w, h);
     pixmap.fill(Qt::transparent);
-    QPainter painter(&pixmap);
-    painter.setFont(renderer()->currentFont());
-    painter.drawText(rect, Qt::AlignCenter, text);
+    m_bmPreview.reset(new KateTextPreview(m_view, this));
+    m_bmPreview->setScaleFactor(scale);
+    m_bmPreview->setLine(startLine + 1);
+    m_bmPreview->paintInto(&pixmap, sX, endCur.line(), eX);
+
+    int ax = 0;
+    int ay = lineToY(startLine);
+    QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(ax, ay);
 
     m_dragInfo.dragObject->setPixmap(pixmap);
-    m_dragInfo.dragObject->setHotSpot(QPoint(pixmap.width() / 2, 0));
+    m_dragInfo.dragObject->setHotSpot(pos);
     m_dragInfo.dragObject->setMimeData(mimeData);
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }

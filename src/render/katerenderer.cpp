@@ -551,7 +551,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 
     if (range->layout()) {
-        bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line());
+        bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line()) && !flags.testFlag(SkipDrawLineSelection);
         // Draw selection in block selection mode. We need 2 kinds of selections that QTextLayout::draw can't render:
         //   - past-end-of-line selection and
         //   - 0-column-wide selection (used to indicate where text will be typed)

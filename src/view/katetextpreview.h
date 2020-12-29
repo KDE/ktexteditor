@@ -80,6 +80,15 @@ public:
      */
     bool showFoldedLines() const;
 
+    /**
+     * @brief paints text into given paintdevice
+     * @param d
+     * @param xStart start pos on startLine in pixels
+     * @param endLine
+     * @param xEnd end pos on endLine in pixels
+     */
+    void paintInto(QPaintDevice* d, int xStart, int endLine, int xEnd);
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 

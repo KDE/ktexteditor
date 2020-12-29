@@ -331,6 +331,11 @@ public:
          * Skip drawing the dashed underline at the start of a folded block of text?
          */
         SkipDrawFirstInvisibleLineUnderlined = 0x1,
+        /**
+         * Skip drawing the line selection
+         * This is useful when we are drawing the draggable pixmap for drag event
+         */
+        SkipDrawLineSelection = 0x2
     };
     Q_DECLARE_FLAGS(PaintTextLineFlags, PaintTextLineFlag)
 

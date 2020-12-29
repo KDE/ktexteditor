@@ -91,6 +91,69 @@ bool KateTextPreview::showFoldedLines() const
     return m_showFoldedLines;
 }
 
+void KateTextPreview::paintInto(QPaintDevice *d, int xStart, int endLine, int xEnd)
+{
+    if (!d) {
+        return;
+    }
+
+    KateRenderer *const renderer = view()->renderer();
+    const int lastLine = showFoldedLines() ? view()->document()->lines() : view()->textFolding().visibleLines();
+
+    const QRectF r = contentsRect(); // already subtracted QFrame's frame width
+    const int lineHeight = qMax(1, renderer->lineHeight());
+    const int lineCount = ceil(static_cast<qreal>(r.height()) / (lineHeight * m_scale));
+    int startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0));
+    // at the very end of the document, make sure the preview is filled
+    if (qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0)) + lineCount - 1 > lastLine) {
+        m_line = qMax(0.0, lastLine - static_cast<qreal>(r.height()) / (lineHeight * m_scale) + floor(lineCount / 2.0) - 1);
+        startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0) + 1);
+    }
+
+    QPainter paint(d);
+    paint.scale(m_scale, m_scale);
+
+    if (m_center && m_line - ceil(lineCount / 2.0) > 0.0) {
+        paint.translate(0, -lineHeight * (m_line - static_cast<int>(m_line)));
+    }
+
+    // clip out non selected parts of start / end line
+    {
+        QRect mainRect(0, 0, d->width(), d->height());
+        QRegion main(mainRect);
+        // start line
+        QRect startRect(0, 0, xStart, lineHeight);
+        QRegion startRegion(startRect);
+
+        // end line
+        QRect endRect(mainRect.bottomLeft().x() + xEnd, mainRect.bottomRight().y() - lineHeight, mainRect.width() - xEnd, lineHeight);
+
+        QRegion drawRegion = main.subtracted(startRegion).subtracted(QRegion(endRect));
+
+        paint.setClipRegion(drawRegion);
+    }
+
+    for (int line = startLine; line <= endLine; ++line) {
+        // get real line, skip if invalid!
+        const int realLine = showFoldedLines() ? line : view()->textFolding().visibleLineToLine(line);
+        if (realLine < 0 || realLine >= renderer->doc()->lines()) {
+            continue;
+        }
+
+        // compute layout WITHOUT cache to not poison it + render it
+        KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer));
+        lineLayout->setLine(realLine, -1);
+        renderer->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+        KateRenderer::PaintTextLineFlags flags;
+        flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
+        flags.setFlag(KateRenderer::SkipDrawLineSelection);
+        renderer->paintTextLine(paint, lineLayout, 0, 0, nullptr, flags);
+
+        // translate for next line
+        paint.translate(0, lineHeight);
+    }
+}
+
 void KateTextPreview::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);
