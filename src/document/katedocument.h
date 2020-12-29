@@ -608,6 +608,8 @@ public:
      * If the Document does not have a variable called @p name,
      * an empty QString() is returned.
      *
+     * // TODO KF6: expose in KTextEditor::Document?
+     *
      * @param name variable to query
      * @return value of the variable @p name
      * @see setVariable()
@@ -619,6 +621,8 @@ public:
      * has immediate effect on the Document. For instance, setting the variable
      * @e indent-mode to @e cstyle will immediately cause the Document to load
      * the C Style indenter.
+     *
+     * // TODO KF6: expose in KTextEditor::Document?
      *
      * @param name the variable name
      * @param value the value to be set
