@@ -3288,10 +3288,7 @@ void KateViewInternal::doDrag()
 
     QPixmap pixmap(w, h);
     pixmap.fill(Qt::transparent);
-    m_bmPreview.reset(new KateTextPreview(m_view, this));
-    m_bmPreview->setScaleFactor(scale);
-    m_bmPreview->setLine(startLine + 1);
-    m_bmPreview->paintInto(&pixmap, sX, endCur.line(), eX);
+    renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
 
     int ax = 0;
     int ay = lineToY(startLine);
