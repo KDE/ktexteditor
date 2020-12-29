@@ -7,9 +7,8 @@
 #include "katevariableexpansionmanager.h"
 #include "katevariableexpansionhelpers.h"
 
+#include "katedocument.h"
 #include "kateglobal.h"
-#include <KTextEditor/Editor>
-#include <KTextEditor/VariableInterface>
 
 #include <KLocalizedString>
 
@@ -166,7 +165,7 @@ static void registerVariables(KateVariableExpansionManager &mng)
         QStringLiteral("Document:Variable:"),
         i18n("Read a document variable."),
         [](const QStringView &str, KTextEditor::View *view) {
-            return view ? qobject_cast<KTextEditor::VariableInterface*>(view->document())->variable(str.mid(18)) : QString();
+            return view ? qobject_cast<KTextEditor::DocumentPrivate*>(view->document())->variable(str.mid(18).toString()) : QString();
         },
         true));
 
