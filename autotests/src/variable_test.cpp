@@ -8,6 +8,7 @@
 #include "variable_test.h"
 #include "moc_variable_test.cpp"
 
+#include <katedocument.h>
 #include <kateglobal.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
@@ -161,7 +162,8 @@ void VariableTest::testBuiltins()
     auto editor = KTextEditor::Editor::instance();
     auto doc = editor->createDocument(nullptr);
     doc->openUrl(QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/kate-v5.tar.gz")));
-    doc->setText(QStringLiteral("get an edge in editing\n:-)\nkate: cow-sound:moo;"));
+    doc->setText(QStringLiteral("get an edge in editing\n:-)"));
+    qobject_cast<KTextEditor::DocumentPrivate *>(doc)->setVariable(QStringLiteral("cow-sound"), QStringLiteral("moo"));
     auto view = doc->createView(nullptr);
     view->setCursorPosition(KTextEditor::Cursor(1, 2));
     view->show();
