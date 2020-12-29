@@ -161,7 +161,7 @@ void VariableTest::testBuiltins()
     auto editor = KTextEditor::Editor::instance();
     auto doc = editor->createDocument(nullptr);
     doc->openUrl(QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/kate-v5.tar.gz")));
-    doc->setText(QStringLiteral("get an edge in editing\n:-)"));
+    doc->setText(QStringLiteral("get an edge in editing\n:-)\nkate: cow-sound:moo;"));
     auto view = doc->createView(nullptr);
     view->setCursorPosition(KTextEditor::Cursor(1, 2));
     view->show();
@@ -254,6 +254,10 @@ void VariableTest::testBuiltins()
     // Document:RowCount
     editor->expandText(QStringLiteral("%{Document:RowCount}"), view, out);
     QCOMPARE(out, QStringLiteral("2"));
+
+    // Document:Variable:<variable>, since KF 5.78
+    editor->expandText(QStringLiteral("%{Document:Variable:cow-sound}"), view, out);
+    QCOMPARE(out, QStringLiteral("moo"));
 
     // Date:Locale
     editor->expandText(QStringLiteral("%{Date:Locale}"), view, out);
