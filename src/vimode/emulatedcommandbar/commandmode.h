@@ -77,7 +77,6 @@ private:
      * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
      */
     CommandMode::ParsedSedExpression parseAsSedExpression();
-    void replaceCommandBeforeCursorWith(const QString &newCommand);
     int commandBeforeCursorBegin();
     QLineEdit *m_edit;
     InteractiveSedReplaceMode *m_interactiveSedReplaceMode;
