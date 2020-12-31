@@ -310,10 +310,12 @@ bool KateVariableExpansionManager::expandVariable(const QString &name, KTextEdit
     auto var = variable(name);
     if (!var.isValid()) {
         // try prefix matching
-        const int colonIndex = name.indexOf(QLatin1Char(':'));
-        if (colonIndex >= 0) {
-            var = variable(name.left(colonIndex + 1));
-        }
+        for (auto & v : m_variables) {
+            if (v.isPrefixMatch() && name.startsWith(v.name())) {
+                var = v;
+                break;
+            }
+        };
     }
 
     if (var.isValid()) {
