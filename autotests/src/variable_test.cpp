@@ -163,7 +163,6 @@ void VariableTest::testBuiltins()
     auto doc = editor->createDocument(nullptr);
     doc->openUrl(QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/kate-v5.tar.gz")));
     doc->setText(QStringLiteral("get an edge in editing\n:-)"));
-    qobject_cast<KTextEditor::DocumentPrivate *>(doc)->setVariable(QStringLiteral("cow-sound"), QStringLiteral("moo"));
     auto view = doc->createView(nullptr);
     view->setCursorPosition(KTextEditor::Cursor(1, 2));
     view->show();
@@ -258,7 +257,8 @@ void VariableTest::testBuiltins()
     QCOMPARE(out, QStringLiteral("2"));
 
     // Document:Variable:<variable>, since KF 5.78
-    editor->expandText(QStringLiteral("%{Variable:cow-sound}"), view, out);
+    qobject_cast<KTextEditor::DocumentPrivate *>(doc)->setVariable(QStringLiteral("cow-sound"), QStringLiteral("moo"));
+    editor->expandText(QStringLiteral("%{Document:Variable:cow-sound}"), view, out);
     QCOMPARE(out, QStringLiteral("moo"));
 
     // Date:Locale
