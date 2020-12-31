@@ -2675,11 +2675,11 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
     int mib = q->mibForName(action->text(), &ok);
     if (ok) {
 #if KWIDGETSADDONS_BUILD_DEPRECATED_SINCE(5, 78)
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_CLANG("-Wdeprecated-declarations")
-QT_WARNING_DISABLE_GCC("-Wdeprecated-declarations")
+        QT_WARNING_PUSH
+        QT_WARNING_DISABLE_CLANG("-Wdeprecated-declarations")
+        QT_WARNING_DISABLE_GCC("-Wdeprecated-declarations")
         emit q->KSelectAction::triggered(action->text());
-QT_WARNING_POP
+        QT_WARNING_POP
 #else
         emit q->textTriggered(action->text());
 #endif

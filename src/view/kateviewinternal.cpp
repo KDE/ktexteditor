@@ -3268,7 +3268,7 @@ void KateViewInternal::doDrag()
     // calculate the height / width / scale
     int w = 0;
     int h = 0;
-    const QFontMetricsF& fm = renderer()->currentFontMetrics();
+    const QFontMetricsF &fm = renderer()->currentFontMetrics();
     for (int l = startLine; l <= endLine; ++l) {
         w = std::max((int)fm.horizontalAdvance(doc()->line(l)), w);
         h += fm.height();
