@@ -3247,6 +3247,55 @@ void KateViewInternal::doDrag()
     m_dragInfo.dragObject = new QDrag(this);
     QMimeData *mimeData = new QMimeData();
     mimeData->setText(view()->selectionText());
+
+    const auto startCur = view()->selectionRange().start();
+    const auto endCur = view()->selectionRange().end();
+    int startLine = startCur.line();
+    int endLine = endCur.line();
+
+    // get visible selected lines
+    for (int l = startLine; l <= endLine; ++l) {
+        if (l >= this->startLine())
+            break;
+        ++startLine;
+    }
+    for (int l = endLine; l >= startLine; --l) {
+        if (l <= this->endLine())
+            break;
+        --endLine;
+    }
+
+    // calculate the height / width / scale
+    int w = 0;
+    int h = 0;
+    const QFontMetricsF &fm = renderer()->currentFontMetrics();
+    for (int l = startLine; l <= endLine; ++l) {
+        w = std::max((int)fm.horizontalAdvance(doc()->line(l)), w);
+        h += fm.height();
+    }
+    qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
+
+    int sX = 0;
+    if (startLine == startCur.line()) {
+        auto rc = toRealCursor(startCur);
+        sX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+    }
+    int eX = 0;
+    if (endLine == endCur.line()) {
+        auto rc = toRealCursor(endCur);
+        eX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+    }
+
+    QPixmap pixmap(w, h);
+    pixmap.fill(Qt::transparent);
+    renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
+
+    int ax = 0;
+    int ay = lineToY(startLine);
+    QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(ax, ay);
+
+    m_dragInfo.dragObject->setPixmap(pixmap);
+    m_dragInfo.dragObject->setHotSpot(pos);
     m_dragInfo.dragObject->setMimeData(mimeData);
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }

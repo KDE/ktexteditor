@@ -105,9 +105,6 @@ public:
     Qt::CaseSensitivity sortingCaseSensitivity() const;
     void setSortingCaseSensitivity(Qt::CaseSensitivity cs);
 
-    bool isSortingReverse() const;
-    void setSortingReverse(bool reverse);
-
     // Filtering
     bool isFilteringEnabled() const;
 

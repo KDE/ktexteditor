@@ -331,6 +331,11 @@ public:
          * Skip drawing the dashed underline at the start of a folded block of text?
          */
         SkipDrawFirstInvisibleLineUnderlined = 0x1,
+        /**
+         * Skip drawing the line selection
+         * This is useful when we are drawing the draggable pixmap for drag event
+         */
+        SkipDrawLineSelection = 0x2
     };
     Q_DECLARE_FLAGS(PaintTextLineFlags, PaintTextLineFlag)
 
@@ -374,6 +379,21 @@ public:
      */
     KTextEditor::Attribute::Ptr attribute(uint pos) const;
     KTextEditor::Attribute::Ptr specificAttribute(int context) const;
+
+    /**
+     * Paints a range of text into @a d. This function is mainly used to paint the pixmap
+     * when dragging text.
+     *
+     * Please note that this will not paint the selection background but only the text.
+     *
+     * @param d                 the paint device
+     * @param startLine         start line
+     * @param xStart            start pos on @a startLine in pixels
+     * @param endLine           end line
+     * @param xEnd              end pos on @a endLine in pixels
+     * @param scale             the amount of scaling to apply. Default is 1.0, negative values are not supported
+     */
+    void paintSelection(QPaintDevice *d, int startLine, int xStart, int endLine, int xEnd, qreal scale = 1.0);
 
 private:
     /**

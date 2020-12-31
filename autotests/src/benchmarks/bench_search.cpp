@@ -1,15 +1,15 @@
 #include <QApplication>
-#include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <QCommandLineParser>
 
+#include <KMainWindow>
+#include <katedocument.h>
 #include <katesearchbar.h>
 #include <kateview.h>
-#include <katedocument.h>
-#include <KMainWindow>
 
 static constexpr int lines = 100000;
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     bool ok = false;
     int iters = p.value(iterOpt).toInt(&ok);
 
-    KMainWindow* w = new KMainWindow;
+    KMainWindow *w = new KMainWindow;
     app.setActiveWindow(w);
 
     KTextEditor::DocumentPrivate doc;
@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
     KateViewConfig config(&view);
     KateSearchBar bar(true, &view, &config);
 
-    int linesInText = ok ? ( iters > 0 ? iters : lines) : lines;
+    int linesInText = ok ? (iters > 0 ? iters : lines) : lines;
 
     QStringList l;
     l.reserve(linesInText);
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
     }
     doc.setText(l);
 
-    QObject::connect(&bar, &KateSearchBar::findOrReplaceAllFinished, [&w](){
+    QObject::connect(&bar, &KateSearchBar::findOrReplaceAllFinished, [&w]() {
         w->close();
     });
 

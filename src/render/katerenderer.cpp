@@ -551,7 +551,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 
     if (range->layout()) {
-        bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line());
+        bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line()) && !flags.testFlag(SkipDrawLineSelection);
         // Draw selection in block selection mode. We need 2 kinds of selections that QTextLayout::draw can't render:
         //   - past-end-of-line selection and
         //   - 0-column-wide selection (used to indicate where text will be typed)
@@ -1188,4 +1188,47 @@ KTextEditor::Cursor KateRenderer::xToCursor(const KateTextLayout &range, int x, 
 void KateRenderer::setCaretOverrideColor(const QColor &color)
 {
     m_caretOverrideColor = color;
+}
+
+void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, int endLine, int xEnd, qreal scale)
+{
+    if (!d || scale < 0.0) {
+        return;
+    }
+
+    const int lineHeight = std::max(1, this->lineHeight());
+    QPainter paint(d);
+    paint.scale(scale, scale);
+
+    // clip out non selected parts of start / end line
+    {
+        QRect mainRect(0, 0, d->width(), d->height());
+        QRegion main(mainRect);
+        // start line
+        QRect startRect(0, 0, xStart, lineHeight);
+        QRegion startRegion(startRect);
+        // end line
+        QRect endRect(mainRect.bottomLeft().x() + xEnd, mainRect.bottomRight().y() - lineHeight, mainRect.width() - xEnd, lineHeight);
+        QRegion drawRegion = main.subtracted(startRegion).subtracted(QRegion(endRect));
+        paint.setClipRegion(drawRegion);
+    }
+
+    for (int line = startLine; line <= endLine; ++line) {
+        // get real line, skip if invalid!
+        if (line < 0 || line >= doc()->lines()) {
+            continue;
+        }
+
+        // compute layout WITHOUT cache to not poison it + render it
+        KateLineLayoutPtr lineLayout(new KateLineLayout(*this));
+        lineLayout->setLine(line, -1);
+        layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+        KateRenderer::PaintTextLineFlags flags;
+        flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
+        flags.setFlag(KateRenderer::SkipDrawLineSelection);
+        paintTextLine(paint, lineLayout, 0, 0, nullptr, flags);
+
+        // translate for next line
+        paint.translate(0, lineHeight);
+    }
 }
