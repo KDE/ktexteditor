@@ -315,7 +315,7 @@ bool KateVariableExpansionManager::expandVariable(const QString &name, KTextEdit
                 var = v;
                 break;
             }
-        };
+        }
     }
 
     if (var.isValid()) {
