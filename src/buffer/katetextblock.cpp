@@ -629,11 +629,6 @@ void TextBlock::updateRange(TextRange *range)
     const int endLine = range->endInternal().lineInternal();
     const bool isSingleLine = startLine == endLine;
 
-    // The range is still a multi-line range, and is already in the correct set.
-    if (!isSingleLine && m_uncachedRanges.contains(range)) {
-        return;
-    }
-
     // perhaps remove range and be done
     if ((endLine < m_startLine) || (startLine >= (m_startLine + lines()))) {
         removeRange(range);
@@ -642,6 +637,11 @@ void TextBlock::updateRange(TextRange *range)
 
     // The range is still a single-line range, and is still cached to the correct line.
     if (isSingleLine && m_cachedLineForRanges.contains(range) && (m_cachedLineForRanges.value(range) == startLine - m_startLine)) {
+        return;
+    }
+
+    // The range is still a multi-line range, and is already in the correct set.
+    if (!isSingleLine && m_uncachedRanges.contains(range)) {
         return;
     }
 
