@@ -201,15 +201,15 @@ void TextRange::fixLookup(int oldStartLine, int oldEndLine, int startLine, int e
     }
 
     // get start block
-    int blockIndex = m_buffer.blockForLine(startLineMin);
-    Q_ASSERT(blockIndex >= 0);
+    int blockIdx = m_buffer.blockForLine(startLineMin);
+    Q_ASSERT(blockIdx >= 0);
+
+    size_t blockIndex = blockIdx;
 
     // remove this range from m_ranges
-    auto it = m_buffer.m_blocks.cbegin() + blockIndex;
-    auto end = m_buffer.m_blocks.cend();
-    for (; it != end; ++it) {
+    for (; blockIndex <  m_buffer.m_blocks.size(); ++blockIndex) {
         // either insert or remove range
-        TextBlock* block = *it;
+        TextBlock* block = m_buffer.m_blocks[blockIndex];
         if ((endLine < block->startLine()) || (startLine >= (block->startLine() + block->lines()))) {
             block->removeRange(this);
         } else {
