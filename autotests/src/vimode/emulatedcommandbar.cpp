@@ -775,7 +775,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     const QColor searchHighlightColour = kate_view->renderer()->config()->searchHighlightColor();
     BeginTest("foo bar xyz");
     // Sanity test.
-    const QList<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
+    const QVector<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
     FinishTest("foo bar xyz");
 
@@ -3324,7 +3324,7 @@ QStringList EmulatedCommandBarTest::replaceHistory()
     return vi_global->replaceHistory()->items();
 }
 
-QList<Kate::TextRange *> EmulatedCommandBarTest::rangesOnFirstLine()
+QVector<Kate::TextRange *> EmulatedCommandBarTest::rangesOnFirstLine()
 {
     return kate_document->buffer().rangesForLine(0, kate_view, true);
 }
