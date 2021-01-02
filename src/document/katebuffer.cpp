@@ -397,7 +397,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
         qCDebug(LOG_KTE) << "HIGHLIGHTED TAG LINES: " << startLine << current_line;
 #endif
 
-        emit tagLines(startLine, qMax(current_line, oldHighlighted));
+        emit tagLines({startLine, qMax(current_line, oldHighlighted)});
 
         if (start_spellchecking >= 0 && lines() > 0) {
             emit respellCheckBlock(start_spellchecking, qMin(lines() - 1, (last_line_spellchecking == -1) ? qMax(current_line, oldHighlighted) : last_line_spellchecking));

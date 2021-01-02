@@ -18,6 +18,7 @@
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/texthintinterface.h>
 #include <ktexteditor/view.h>
+#include <ktexteditor/linerange.h>
 
 #include <QMenu>
 #include <QModelIndex>
@@ -371,7 +372,7 @@ public:
     bool tagLine(const KTextEditor::Cursor &virtualCursor);
 
     bool tagRange(const KTextEditor::Range &range, bool realLines = false);
-    bool tagLines(int start, int end, bool realLines = false);
+    bool tagLines(const KTextEditor::LineRange &lineRange, bool realLines = false);
     bool tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors = false);
     bool tagLines(KTextEditor::Range range, bool realRange = false);
 
@@ -963,14 +964,9 @@ private:
     bool m_delayedUpdateTriggered;
 
     /**
-     * minimal line to update
+     * line range to update
      */
-    int m_lineToUpdateMin;
-
-    /**
-     * maximal line to update
-     */
-    int m_lineToUpdateMax;
+    KTextEditor::LineRange m_lineToUpdateRange;
 
     /**
      * set of ranges which had the mouse inside last time

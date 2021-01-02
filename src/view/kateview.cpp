@@ -125,8 +125,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_spellingMenu(new KateSpellingMenu(this))
     , m_userContextMenuSet(false)
     , m_delayedUpdateTriggered(false)
-    , m_lineToUpdateMin(-1)
-    , m_lineToUpdateMax(-1)
+    , m_lineToUpdateRange(KTextEditor::LineRange::invalid())
     , m_mainWindow(mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow()) // use dummy window if no window there!
     , m_statusBar(nullptr)
     , m_temporaryAutomaticInvocationDisabled(false)
@@ -2128,9 +2127,9 @@ bool KTextEditor::ViewPrivate::tagRange(const KTextEditor::Range &range, bool re
     return m_viewInternal->tagRange(range, realLines);
 }
 
-bool KTextEditor::ViewPrivate::tagLines(int start, int end, bool realLines)
+bool KTextEditor::ViewPrivate::tagLines(const KTextEditor::LineRange &lineRange, bool realLines)
 {
-    return m_viewInternal->tagLines(start, end, realLines);
+    return m_viewInternal->tagLines(lineRange.start(), lineRange.end(), realLines);
 }
 
 bool KTextEditor::ViewPrivate::tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors)
@@ -2360,19 +2359,11 @@ void KTextEditor::ViewPrivate::tagSelection(const KTextEditor::Range &oldSelecti
 
         } else {
             if (oldSelection.start() != m_selection.start()) {
-                if (oldSelection.start() < m_selection.start()) {
-                    tagLines(oldSelection.start(), m_selection.start(), true);
-                } else {
-                    tagLines(m_selection.start(), oldSelection.start(), true);
-                }
+                tagLines(KTextEditor::LineRange(oldSelection.start().line(), m_selection.start().line()), true);
             }
 
             if (oldSelection.end() != m_selection.end()) {
-                if (oldSelection.end() < m_selection.end()) {
-                    tagLines(oldSelection.end(), m_selection.end(), true);
-                } else {
-                    tagLines(m_selection.end(), oldSelection.end(), true);
-                }
+                tagLines(KTextEditor::LineRange(oldSelection.end().line(), m_selection.end().line()), true);
             }
         }
 
@@ -3535,13 +3526,11 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine
     // first call:
     if (!m_delayedUpdateTriggered) {
         m_delayedUpdateTriggered = true;
-        m_lineToUpdateMin = -1;
-        m_lineToUpdateMax = -1;
+        m_lineToUpdateRange = KTextEditor::LineRange::invalid();
 
         // only set initial line range, if range with attribute!
         if (rangeWithAttribute) {
-            m_lineToUpdateMin = startLine;
-            m_lineToUpdateMax = endLine;
+            m_lineToUpdateRange.setRange(startLine, endLine);
         }
 
         // emit queued signal and be done
@@ -3555,12 +3544,12 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine
     }
 
     // update line range
-    if (startLine != -1 && (m_lineToUpdateMin == -1 || startLine < m_lineToUpdateMin)) {
-        m_lineToUpdateMin = startLine;
+    if (startLine != -1 && (m_lineToUpdateRange.start() == -1 || startLine < m_lineToUpdateRange.start())) {
+        m_lineToUpdateRange.setStart(startLine);
     }
 
-    if (endLine != -1 && endLine > m_lineToUpdateMax) {
-        m_lineToUpdateMax = endLine;
+    if (endLine != -1 && endLine > m_lineToUpdateRange.end()) {
+        m_lineToUpdateRange.setEnd(endLine);
     }
 }
 
@@ -3572,7 +3561,7 @@ void KTextEditor::ViewPrivate::slotDelayedUpdateOfView()
 
 #ifdef VIEW_RANGE_DEBUG
     // output args
-    qCDebug(LOG_KTE) << "delayed attribute changed from" << m_lineToUpdateMin << "to" << m_lineToUpdateMax;
+    qCDebug(LOG_KTE) << "delayed attribute changed in line range" << m_lineToUpdateRange;
 #endif
 
     // update ranges in
@@ -3580,15 +3569,14 @@ void KTextEditor::ViewPrivate::slotDelayedUpdateOfView()
     updateRangesIn(KTextEditor::Attribute::ActivateCaretIn);
 
     // update view, if valid line range, else only feedback update wanted anyway
-    if (m_lineToUpdateMin != -1 && m_lineToUpdateMax != -1) {
-        tagLines(m_lineToUpdateMin, m_lineToUpdateMax, true);
+    if (m_lineToUpdateRange.isValid()) {
+        tagLines(m_lineToUpdateRange, true);
         updateView(true);
     }
 
     // reset flags
     m_delayedUpdateTriggered = false;
-    m_lineToUpdateMin = -1;
-    m_lineToUpdateMax = -1;
+    m_lineToUpdateRange = KTextEditor::LineRange::invalid();
 }
 
 void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::ActivationType activationType)
@@ -3893,7 +3881,7 @@ QRect KTextEditor::ViewPrivate::inlineNoteRect(const KateInlineNoteData &note) c
 void KTextEditor::ViewPrivate::inlineNotesReset()
 {
     m_viewInternal->m_activeInlineNote = {};
-    tagLines(0, doc()->lastLine(), true);
+    tagLines(KTextEditor::LineRange(0, doc()->lastLine()), true);
 }
 
 void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
@@ -3901,7 +3889,7 @@ void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
     if (line == m_viewInternal->m_activeInlineNote.m_position.line()) {
         m_viewInternal->m_activeInlineNote = {};
     }
-    tagLines(line, line, true);
+    tagLines({line, line}, true);
 }
 
 // END KTextEditor::InlineNoteInterface

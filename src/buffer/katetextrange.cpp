@@ -35,7 +35,7 @@ TextRange::~TextRange()
     m_feedback = nullptr;
 
     // remove range from m_ranges
-    fixLookup(m_start.line(), m_end.line(), -1, -1);
+    fixLookup(toLineRange(), KTextEditor::LineRange::invalid());
 
     // remove this range from the buffer
     m_buffer.m_ranges.remove(this);
@@ -104,8 +104,7 @@ void TextRange::setRange(const KTextEditor::Range &range)
     }
 
     // remember old line range
-    int oldStartLine = m_start.line();
-    int oldEndLine = m_end.line();
+    const auto oldLineRange = toLineRange();
 
     // change start and end cursor
     m_start.setPosition(range.start());
@@ -113,7 +112,7 @@ void TextRange::setRange(const KTextEditor::Range &range)
 
     // check if range now invalid, don't emit feedback here, will be handled below
     // otherwise you can't delete ranges in feedback!
-    checkValidity(oldStartLine, oldEndLine, false);
+    checkValidity(oldLineRange, false);
 
     // no attribute or feedback set, be done
     if (!m_attribute && !m_feedback) {
@@ -121,13 +120,13 @@ void TextRange::setRange(const KTextEditor::Range &range)
     }
 
     // get full range
-    int startLineMin = oldStartLine;
-    if (oldStartLine == -1 || (m_start.line() != -1 && m_start.line() < oldStartLine)) {
+    int startLineMin = oldLineRange.start();
+    if (oldLineRange.start() == -1 || (m_start.line() != -1 && m_start.line() < oldLineRange.start())) {
         startLineMin = m_start.line();
     }
 
-    int endLineMax = oldEndLine;
-    if (oldEndLine == -1 || m_end.line() > oldEndLine) {
+    int endLineMax = oldLineRange.end();
+    if (oldLineRange.end() == -1 || m_end.line() > oldLineRange.end()) {
         endLineMax = m_end.line();
     }
 
@@ -146,7 +145,7 @@ void TextRange::setRange(const KTextEditor::Range &range)
     }
 }
 
-void TextRange::checkValidity(int oldStartLine, int oldEndLine, bool notifyAboutChange)
+void TextRange::checkValidity(const KTextEditor::LineRange oldLineRange, bool notifyAboutChange)
 {
     // in any case: reset the flag, to avoid multiple runs
     m_isCheckValidityRequired = false;
@@ -163,7 +162,7 @@ void TextRange::checkValidity(int oldStartLine, int oldEndLine, bool notifyAbout
     }
 
     // fix lookup
-    fixLookup(oldStartLine, oldEndLine, m_start.line(), m_end.line());
+    fixLookup(oldLineRange, toLineRange());
 
     // perhaps need to notify stuff!
     if (notifyAboutChange && m_feedback) {
@@ -178,26 +177,26 @@ void TextRange::checkValidity(int oldStartLine, int oldEndLine, bool notifyAbout
     }
 }
 
-void TextRange::fixLookup(int oldStartLine, int oldEndLine, int startLine, int endLine)
+void TextRange::fixLookup(const KTextEditor::LineRange oldLineRange, const KTextEditor::LineRange lineRange)
 {
     // nothing changed?
-    if (oldStartLine == startLine && oldEndLine == endLine) {
+    if (oldLineRange == lineRange) {
         return;
     }
 
     // now, not both can be invalid
-    Q_ASSERT(oldStartLine >= 0 || startLine >= 0);
-    Q_ASSERT(oldEndLine >= 0 || endLine >= 0);
+    Q_ASSERT(oldLineRange.start() >= 0 || lineRange.start() >= 0);
+    Q_ASSERT(oldLineRange.end() >= 0 || lineRange.end() >= 0);
 
     // get full range
-    int startLineMin = oldStartLine;
-    if (oldStartLine == -1 || (startLine != -1 && startLine < oldStartLine)) {
-        startLineMin = startLine;
+    int startLineMin = oldLineRange.start();
+    if (oldLineRange.start() == -1 || (lineRange.start() != -1 && lineRange.start() < oldLineRange.start())) {
+        startLineMin = lineRange.start();
     }
 
-    int endLineMax = oldEndLine;
-    if (oldEndLine == -1 || endLine > oldEndLine) {
-        endLineMax = endLine;
+    int endLineMax = oldLineRange.end();
+    if (oldLineRange.end() == -1 || lineRange.end()> oldLineRange.end()) {
+        endLineMax = lineRange.end();
     }
 
     // get start block
@@ -210,7 +209,7 @@ void TextRange::fixLookup(int oldStartLine, int oldEndLine, int startLine, int e
         TextBlock *block = m_buffer.m_blocks.at(blockIndex);
 
         // either insert or remove range
-        if ((endLine < block->startLine()) || (startLine >= (block->startLine() + block->lines()))) {
+        if ((lineRange.end() < block->startLine()) || (lineRange.start() >= (block->startLine() + block->lines()))) {
             block->removeRange(this);
         } else {
             block->updateRange(this);

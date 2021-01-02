@@ -244,7 +244,7 @@ Q_SIGNALS:
      * Emitted when the highlighting of a certain range has
      * changed.
      */
-    void tagLines(int start, int end);
+    void tagLines(KTextEditor::LineRange lineRange);
     void respellCheckBlock(int start, int end);
 
 private:

@@ -808,7 +808,8 @@ public:
     KateHighlighting *highlight() const;
 
 public Q_SLOTS:
-    void tagLines(int start, int end);
+    void tagLines(const KTextEditor::LineRange lineRange);
+    void tagLine(int line);
 
 private Q_SLOTS:
     void internalHlChanged();

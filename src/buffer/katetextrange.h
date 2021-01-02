@@ -283,20 +283,17 @@ private:
      *
      * IMPORTANT: Notifications might need to deletion of this range!
      *
-     * @param oldStartLine old start line of this range before changing of cursors, needed to add/remove range from m_ranges in blocks
-     * @param oldEndLine old end line of this range
+     * @param oldLineRange lien range of this range before changing of cursors, needed to add/remove range from m_ranges in blocks
      * @param notifyAboutChange should feedback be emitted or not?
      */
-    void checkValidity(int oldStartLine = -1, int oldEndLine = -1, bool notifyAboutChange = true);
+    void checkValidity(const KTextEditor::LineRange oldLineRange = KTextEditor::LineRange::invalid(), bool notifyAboutChange = true);
 
     /**
      * Add/Remove range from the lookup m_ranges hash of each block
-     * @param oldStartLine old start line of this range before changing of cursors, needed to add/remove range from m_ranges in blocks
-     * @param oldEndLine old end line of this range
-     * @param startLine start line to start looking for the range to remove
-     * @param endLine end line of this range
+     * @param oldLineRange old line range before changing of cursors, needed to add/remove range from m_ranges in blocks
+     * @param lineRange line range to start looking for the range to remove
      */
-    void fixLookup(int oldStartLine, int oldEndLine, int startLine, int endLine);
+    void fixLookup(const KTextEditor::LineRange oldLineRange, const KTextEditor::LineRange lineRange);
 
     /**
      * Mark this range for later validity checking.

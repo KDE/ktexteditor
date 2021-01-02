@@ -222,7 +222,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     m_swapfile = (config()->swapFileMode() == KateDocumentConfig::DisableSwapFile) ? nullptr : new Kate::SwapFile(this);
 
     // some nice signals from the buffer
-    connect(m_buffer, SIGNAL(tagLines(int, int)), this, SLOT(tagLines(int, int)));
+    connect(m_buffer, &KateBuffer::tagLines, this, &KTextEditor::DocumentPrivate::tagLines);
 
     // if the user changes the highlight with the dialog, notify the doc
     connect(KateHlManager::self(), SIGNAL(changed()), SLOT(internalHlChanged()));
@@ -2015,7 +2015,7 @@ void KTextEditor::DocumentPrivate::clearMark(int line)
     emit markChanged(this, *mark, MarkRemoved);
     emit marksChanged(this);
     delete mark;
-    tagLines(line, line);
+    tagLine(line);
     repaintViews(true);
 }
 
@@ -2055,7 +2055,7 @@ void KTextEditor::DocumentPrivate::addMark(int line, uint markType)
     emit markChanged(this, temp, MarkAdded);
 
     emit marksChanged(this);
-    tagLines(line, line);
+    tagLine(line);
     repaintViews(true);
 }
 
@@ -2093,7 +2093,7 @@ void KTextEditor::DocumentPrivate::removeMark(int line, uint markType)
     }
 
     emit marksChanged(this);
-    tagLines(line, line);
+    tagLine(line);
     repaintViews(true);
 }
 
@@ -2148,7 +2148,7 @@ void KTextEditor::DocumentPrivate::clearMarks()
         m_marks.erase(it);
 
         emit markChanged(this, mark, MarkRemoved);
-        tagLines(mark.line, mark.line);
+        tagLine(mark.line);
     }
 
     m_marks.clear();
@@ -4062,11 +4062,16 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
     editEnd();
 }
 
-void KTextEditor::DocumentPrivate::tagLines(int start, int end)
+void KTextEditor::DocumentPrivate::tagLines(const KTextEditor::LineRange lineRange)
 {
     for (auto view : qAsConst(m_views)) {
-        view->tagLines(start, end, true);
+        view->tagLines(lineRange, true);
     }
+}
+
+void KTextEditor::DocumentPrivate::tagLine(int line)
+{
+    tagLines({line, line});
 }
 
 void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
