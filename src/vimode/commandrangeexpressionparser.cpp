@@ -19,11 +19,11 @@
 
 using namespace KateVi;
 
-#define RegExp(name, pattern)                                                                                                                                                                                                                  \
-    inline const QRegularExpression &name()                                                                                                                                                                                                    \
-    {                                                                                                                                                                                                                                          \
-        static const QRegularExpression regex(QStringLiteral(pattern));                                                                                                                                                                        \
-        return regex;                                                                                                                                                                                                                          \
+#define RegExp(name, pattern)                                                                                                                                  \
+    inline const QRegularExpression &name()                                                                                                                    \
+    {                                                                                                                                                          \
+        static const QRegularExpression regex(QStringLiteral(pattern));                                                                                        \
+        return regex;                                                                                                                                          \
     }
 
 namespace
@@ -38,8 +38,8 @@ namespace
 #define RE_OFFSET "[+-](?:" RE_BASE ")?"
 #define RE_POSITION "(" RE_BASE ")((?:" RE_OFFSET ")*)"
 
-RegExp(RE_Line, RE_LINE) RegExp(RE_LastLine, RE_LASTLINE) RegExp(RE_ThisLine, RE_THISLINE) RegExp(RE_Mark, RE_MARK) RegExp(RE_ForwardSearch, "^/([^/]*)/?$") RegExp(RE_BackwardSearch, "^\\?([^?]*)\\??$")
-    RegExp(RE_CalculatePositionSplit, "[-+](?!([+-]|$))")
+RegExp(RE_Line, RE_LINE) RegExp(RE_LastLine, RE_LASTLINE) RegExp(RE_ThisLine, RE_THISLINE) RegExp(RE_Mark, RE_MARK) RegExp(RE_ForwardSearch, "^/([^/]*)/?$")
+    RegExp(RE_BackwardSearch, "^\\?([^?]*)\\??$") RegExp(RE_CalculatePositionSplit, "[-+](?!([+-]|$))")
     // The range regexp contains seven groups: the first is the start position, the second is
     // the base of the start position, the third is the offset of the start position, the
     // fourth is the end position including a leading comma, the fifth is end position
@@ -136,7 +136,8 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string) const
 
         ++pos;
 
-        matchLineNumber(line, values) || matchLastLine(line, values) || matchThisLine(line, values) || matchMark(line, values) || matchForwardSearch(line, values) || matchBackwardSearch(line, values);
+        matchLineNumber(line, values) || matchLastLine(line, values) || matchThisLine(line, values) || matchMark(line, values)
+            || matchForwardSearch(line, values) || matchBackwardSearch(line, values);
     }
 
     if (values.isEmpty()) {

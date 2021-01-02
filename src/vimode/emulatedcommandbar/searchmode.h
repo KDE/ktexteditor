@@ -28,7 +28,11 @@ QStringList reversed(const QStringList &originalList);
 class SearchMode : public ActiveMode
 {
 public:
-    SearchMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, QLineEdit *edit);
+    SearchMode(EmulatedCommandBar *emulatedCommandBar,
+               MatchHighlighter *matchHighlighter,
+               InputModeManager *viInputModeManager,
+               KTextEditor::ViewPrivate *view,
+               QLineEdit *edit);
     ~SearchMode() override
     {
     }

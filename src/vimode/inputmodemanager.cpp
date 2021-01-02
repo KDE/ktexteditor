@@ -103,7 +103,8 @@ bool InputModeManager::handleKeypress(const QKeyEvent *e)
     // of a mapping, we don't want to record them when they are played back by m_keyMapper, hence
     // the "!isPlayingBackRejectedKeys()". And obviously, since we're recording keys before they are mapped, we don't
     // want to also record the executed mapping, as when we replayed the macro, we'd get duplication!
-    if (m_macroRecorder->isRecording() && !m_macroRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress && !keyMapper()->isExecutingMapping() && !keyMapper()->isPlayingBackRejectedKeys() && !lastChangeRecorder()->isReplaying()) {
+    if (m_macroRecorder->isRecording() && !m_macroRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress && !keyMapper()->isExecutingMapping()
+        && !keyMapper()->isPlayingBackRejectedKeys() && !lastChangeRecorder()->isReplaying()) {
         m_macroRecorder->record(*e);
     }
 
@@ -160,7 +161,8 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
             decoded.remove(decoded.indexOf(QLatin1Char('>')), 1);
 
             // check if one or more modifier keys where used
-            if (decoded.indexOf(QLatin1String("s-")) != -1 || decoded.indexOf(QLatin1String("c-")) != -1 || decoded.indexOf(QLatin1String("m-")) != -1 || decoded.indexOf(QLatin1String("a-")) != -1) {
+            if (decoded.indexOf(QLatin1String("s-")) != -1 || decoded.indexOf(QLatin1String("c-")) != -1 || decoded.indexOf(QLatin1String("m-")) != -1
+                || decoded.indexOf(QLatin1String("a-")) != -1) {
                 int s = decoded.indexOf(QLatin1String("s-"));
                 if (s != -1) {
                     mods |= Qt::ShiftModifier;

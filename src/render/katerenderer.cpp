@@ -212,7 +212,9 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
         markRed /= markCount;
         markGreen /= markCount;
         markBlue /= markCount;
-        backgroundColor.setRgb(int((backgroundColor.red() * 0.9) + (markRed * 0.1)), int((backgroundColor.green() * 0.9) + (markGreen * 0.1)), int((backgroundColor.blue() * 0.9) + (markBlue * 0.1)));
+        backgroundColor.setRgb(int((backgroundColor.red() * 0.9) + (markRed * 0.1)),
+                               int((backgroundColor.green() * 0.9) + (markGreen * 0.1)),
+                               int((backgroundColor.blue() * 0.9) + (markBlue * 0.1)));
     }
 
     // Draw line background
@@ -225,7 +227,9 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
             markRed /= markCount;
             markGreen /= markCount;
             markBlue /= markCount;
-            currentLineColor.setRgb(int((currentLineColor.red() * 0.9) + (markRed * 0.1)), int((currentLineColor.green() * 0.9) + (markGreen * 0.1)), int((currentLineColor.blue() * 0.9) + (markBlue * 0.1)));
+            currentLineColor.setRgb(int((currentLineColor.red() * 0.9) + (markRed * 0.1)),
+                                    int((currentLineColor.green() * 0.9) + (markGreen * 0.1)),
+                                    int((currentLineColor.blue() * 0.9) + (markBlue * 0.1)));
         }
 
         paint.fillRect(0, lineHeight() * currentViewLine, xEnd - xStart, lineHeight(), currentLineColor);
@@ -361,7 +365,8 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return false;
 }
 
-QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, bool completionHighlight, bool completionSelected) const
+QVector<QTextLayout::FormatRange>
+KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, bool completionHighlight, bool completionSelected) const
 {
     // limit number of attributes we can highlight in reasonable time
     const int limitOfRanges = 1024;
@@ -393,7 +398,8 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
         const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : nullptr;
         bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
 
-        // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart rangs behavior ;)
+        // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart
+        // rangs behavior ;)
         std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
 
         // loop over all ranges
@@ -425,7 +431,8 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
     }
 
     // Add selection highlighting if we're creating the selection decorations
-    if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected) || (m_view && m_view->blockSelection())) {
+    if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected)
+        || (m_view && m_view->blockSelection())) {
         auto &currentRange = renderRanges.pushNewRange();
 
         // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?
@@ -551,7 +558,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 
     if (range->layout()) {
-        bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line()) && !flags.testFlag(SkipDrawLineSelection);
+        bool drawSelection =
+            m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line()) && !flags.testFlag(SkipDrawLineSelection);
         // Draw selection in block selection mode. We need 2 kinds of selections that QTextLayout::draw can't render:
         //   - past-end-of-line selection and
         //   - 0-column-wide selection (used to indicate where text will be typed)
@@ -564,7 +572,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 if (selectionEndColumn > lastLine.startCol()) {
                     int selectionStartX = (selectionStartColumn > lastLine.startCol()) ? cursorToX(lastLine, selectionStartColumn, true) : 0;
                     int selectionEndX = cursorToX(lastLine, selectionEndColumn, true);
-                    paint.fillRect(QRect(selectionStartX - xStart, (int)lastLine.lineLayout().y(), selectionEndX - selectionStartX, lineHeight()), selectionBrush);
+                    paint.fillRect(QRect(selectionStartX - xStart, (int)lastLine.lineLayout().y(), selectionEndX - selectionStartX, lineHeight()),
+                                   selectionBrush);
                 }
             } else {
                 const int selectStickWidth = 2;
@@ -734,7 +743,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             if (showNonPrintableSpaces()) {
                 const int y = lineHeight() * i + fm.ascent();
 
-                static const QRegularExpression nonPrintableSpacesRegExp(QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
+                static const QRegularExpression nonPrintableSpacesRegExp(
+                    QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
                 QRegularExpressionMatchIterator i = nonPrintableSpacesRegExp.globalMatch(text, line.lineLayout().xToCursor(xStart));
 
                 while (i.hasNext()) {
@@ -754,7 +764,11 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         if ((range->viewLineCount() > 1) && range->shiftX() && (range->shiftX() > xStart)) {
             if (backgroundBrushSet)
                 paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1), backgroundBrush);
-            paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1), QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
+            paint.fillRect(0,
+                           lineHeight(),
+                           range->shiftX() - xStart,
+                           lineHeight() * (range->viewLineCount() - 1),
+                           QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
         }
 
         // Draw caret

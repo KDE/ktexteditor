@@ -39,7 +39,10 @@ public:
         selcol = c;
     }
 
-    void addItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
+    void addItem(QTreeWidgetItem *parent,
+                 const QString &styleName,
+                 KTextEditor::Attribute::Ptr defaultstyle,
+                 KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
     void addItem(const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
 
     void resizeColumns();

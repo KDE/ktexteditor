@@ -11,7 +11,10 @@
 
 using namespace KateVi;
 
-InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view)
+InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar *emulatedCommandBar,
+                                                     MatchHighlighter *matchHighlighter,
+                                                     InputModeManager *viInputModeManager,
+                                                     KTextEditor::ViewPrivate *view)
     : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view)
     , m_isActive(false)
 {
@@ -21,7 +24,9 @@ InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar *emulate
 
 void InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
-    Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
+    Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(),
+               "startInteractiveSearchAndReplace",
+               "KateCommands shouldn't initiate an interactive sed replace with no initial match");
 
     m_isActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;

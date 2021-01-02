@@ -217,7 +217,8 @@ void KateViewTest::testSelection()
 
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseMove, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView,
+                                new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     QVERIFY(!view->selection());

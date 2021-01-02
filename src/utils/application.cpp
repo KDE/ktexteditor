@@ -69,7 +69,8 @@ KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &enco
 {
     // dispatch to parent
     KTextEditor::Document *document = nullptr;
-    QMetaObject::invokeMethod(parent(), "openUrl", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::Document *, document), Q_ARG(QUrl, url), Q_ARG(QString, encoding));
+    QMetaObject::invokeMethod(
+        parent(), "openUrl", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::Document *, document), Q_ARG(QUrl, url), Q_ARG(QString, encoding));
     return document;
 }
 

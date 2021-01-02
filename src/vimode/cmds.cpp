@@ -82,8 +82,8 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
 
     NormalViMode *nm = m_viInputModeManager->getViNormalMode();
 
-    if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") || cmd == QLatin1String("c") || cmd == QLatin1String("change") || cmd == QLatin1String("<") || cmd == QLatin1String(">") ||
-        cmd == QLatin1String("y") || cmd == QLatin1String("yank")) {
+    if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") || cmd == QLatin1String("c") || cmd == QLatin1String("change")
+        || cmd == QLatin1String("<") || cmd == QLatin1String(">") || cmd == QLatin1String("y") || cmd == QLatin1String("yank")) {
         KTextEditor::Cursor start_cursor_position = v->cursorPosition();
 
         int count = 1;
@@ -100,7 +100,9 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
             }
 
             QChar r = args.at(i).at(0);
-            if (args.at(i).size() == 1 && ((r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*'))) {
+            if (args.at(i).size() == 1
+                && ((r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('-') || r == QLatin1Char('+')
+                    || r == QLatin1Char('*'))) {
                 nm->setRegister(r);
             }
         }
@@ -171,8 +173,8 @@ bool Commands::supportsRange(const QString &range)
     static QStringList l;
 
     if (l.isEmpty())
-        l << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") << QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank")
-          << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k");
+        l << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<")
+          << QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank") << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k");
 
     return l.contains(range.split(QLatin1Char(' ')).at(0));
 }
@@ -198,9 +200,10 @@ const QStringList &Commands::mappingCommands()
 {
     static QStringList mappingsCommands;
     if (mappingsCommands.isEmpty()) {
-        mappingsCommands << QStringLiteral("nmap") << QStringLiteral("nm") << QStringLiteral("noremap") << QStringLiteral("nnoremap") << QStringLiteral("nn") << QStringLiteral("no") << QStringLiteral("vmap") << QStringLiteral("vm")
-                         << QStringLiteral("vnoremap") << QStringLiteral("vn") << QStringLiteral("imap") << QStringLiteral("im") << QStringLiteral("inoremap") << QStringLiteral("ino") << QStringLiteral("cmap") << QStringLiteral("cm")
-                         << QStringLiteral("cnoremap") << QStringLiteral("cno");
+        mappingsCommands << QStringLiteral("nmap") << QStringLiteral("nm") << QStringLiteral("noremap") << QStringLiteral("nnoremap") << QStringLiteral("nn")
+                         << QStringLiteral("no") << QStringLiteral("vmap") << QStringLiteral("vm") << QStringLiteral("vnoremap") << QStringLiteral("vn")
+                         << QStringLiteral("imap") << QStringLiteral("im") << QStringLiteral("inoremap") << QStringLiteral("ino") << QStringLiteral("cmap")
+                         << QStringLiteral("cm") << QStringLiteral("cnoremap") << QStringLiteral("cno");
 
         mappingsCommands << QStringLiteral("nunmap") << QStringLiteral("vunmap") << QStringLiteral("iunmap") << QStringLiteral("cunmap");
     }

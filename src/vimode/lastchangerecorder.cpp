@@ -16,7 +16,8 @@ bool KateVi::isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKe
     if (keyEventLog.empty())
         return false;
     const QKeyEvent &lastKeyPress = keyEventLog.last();
-    if (lastKeyPress.type() == QEvent::ShortcutOverride && currentKeyPress.type() == QEvent::KeyPress && lastKeyPress.key() == currentKeyPress.key() && lastKeyPress.modifiers() == currentKeyPress.modifiers()) {
+    if (lastKeyPress.type() == QEvent::ShortcutOverride && currentKeyPress.type() == QEvent::KeyPress && lastKeyPress.key() == currentKeyPress.key()
+        && lastKeyPress.modifiers() == currentKeyPress.modifiers()) {
         return true;
     }
     return false;

@@ -78,7 +78,13 @@ protected:
     void TestPressKey(const QString &str);
     void BeginTest(const QString &original);
     void FinishTest_(int line, const char *file, const QString &expected, Expectation expectation = ShouldPass, const QString &failureReason = QString());
-    void DoTest_(int line, const char *file, const QString &original, const QString &command, const QString &expected, Expectation expectation = ShouldPass, const QString &failureReason = QString());
+    void DoTest_(int line,
+                 const char *file,
+                 const QString &original,
+                 const QString &command,
+                 const QString &expected,
+                 Expectation expectation = ShouldPass,
+                 const QString &failureReason = QString());
 
     // Parsing keys.
 

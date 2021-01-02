@@ -51,13 +51,31 @@ private:
 class KateStyleTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-    KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
-    KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
+    KateStyleTreeWidgetItem(QTreeWidgetItem *parent,
+                            const QString &styleName,
+                            KTextEditor::Attribute::Ptr defaultstyle,
+                            KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
+    KateStyleTreeWidgetItem(QTreeWidget *parent,
+                            const QString &styleName,
+                            KTextEditor::Attribute::Ptr defaultstyle,
+                            KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
     ~KateStyleTreeWidgetItem() override
     {
     }
 
-    enum columns { Context = 0, Bold, Italic, Underline, StrikeOut, Foreground, SelectedForeground, Background, SelectedBackground, UseDefaultStyle, NumColumns };
+    enum columns {
+        Context = 0,
+        Bold,
+        Italic,
+        Underline,
+        StrikeOut,
+        Foreground,
+        SelectedForeground,
+        Background,
+        SelectedBackground,
+        UseDefaultStyle,
+        NumColumns
+    };
 
     /* initializes the style from the default and the hldata */
     void initStyle();
@@ -110,8 +128,9 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
     setRootIsDecorated(false);
 
     QStringList headers;
-    headers << i18nc("@title:column Meaning of text in editor", "Context") << QString() << QString() << QString() << QString() << i18nc("@title:column Text style", "Normal") << i18nc("@title:column Text style", "Selected")
-            << i18nc("@title:column Text style", "Background") << i18nc("@title:column Text style", "Background Selected");
+    headers << i18nc("@title:column Meaning of text in editor", "Context") << QString() << QString() << QString() << QString()
+            << i18nc("@title:column Text style", "Normal") << i18nc("@title:column Text style", "Selected") << i18nc("@title:column Text style", "Background")
+            << i18nc("@title:column Text style", "Background Selected");
     if (showUseDefaults) {
         headers << i18n("Use Default Style");
     }
@@ -335,7 +354,8 @@ void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 {
     static QSet<int> columns;
     if (columns.isEmpty()) {
-        columns << KateStyleTreeWidgetItem::Foreground << KateStyleTreeWidgetItem::SelectedForeground << KateStyleTreeWidgetItem::Background << KateStyleTreeWidgetItem::SelectedBackground;
+        columns << KateStyleTreeWidgetItem::Foreground << KateStyleTreeWidgetItem::SelectedForeground << KateStyleTreeWidgetItem::Background
+                << KateStyleTreeWidgetItem::SelectedBackground;
     }
 
     if (index.column() == KateStyleTreeWidgetItem::Context) {
@@ -385,7 +405,10 @@ void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
     }
 }
 
-KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &stylename, KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
+KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent,
+                                                 const QString &stylename,
+                                                 KTextEditor::Attribute::Ptr defaultAttribute,
+                                                 KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent)
     , currentStyle(nullptr)
     , defaultStyle(std::move(defaultAttribute))
@@ -395,7 +418,10 @@ KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const 
     setText(0, stylename);
 }
 
-KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &stylename, KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
+KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidget *parent,
+                                                 const QString &stylename,
+                                                 KTextEditor::Attribute::Ptr defaultAttribute,
+                                                 KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent)
     , currentStyle(nullptr)
     , defaultStyle(std::move(defaultAttribute))
@@ -460,9 +486,12 @@ QVariant KateStyleTreeWidgetItem::data(int column, int role) const
         case UseDefaultStyle:
             /* can't compare all attributes, currentStyle has always more than defaultStyle (e.g. the item's name),
              * so we just compare the important ones:*/
-            return toCheckState(currentStyle->foreground() == defaultStyle->foreground() && currentStyle->background() == defaultStyle->background() && currentStyle->selectedForeground() == defaultStyle->selectedForeground() &&
-                                currentStyle->selectedBackground() == defaultStyle->selectedBackground() && currentStyle->fontBold() == defaultStyle->fontBold() && currentStyle->fontItalic() == defaultStyle->fontItalic() &&
-                                currentStyle->fontUnderline() == defaultStyle->fontUnderline() && currentStyle->fontStrikeOut() == defaultStyle->fontStrikeOut());
+            return toCheckState(currentStyle->foreground() == defaultStyle->foreground() && currentStyle->background() == defaultStyle->background()
+                                && currentStyle->selectedForeground() == defaultStyle->selectedForeground()
+                                && currentStyle->selectedBackground() == defaultStyle->selectedBackground()
+                                && currentStyle->fontBold() == defaultStyle->fontBold() && currentStyle->fontItalic() == defaultStyle->fontItalic()
+                                && currentStyle->fontUnderline() == defaultStyle->fontUnderline()
+                                && currentStyle->fontStrikeOut() == defaultStyle->fontStrikeOut());
         }
     }
 
@@ -598,7 +627,10 @@ void KateStyleTreeWidgetItem::changeProperty(int p)
 void KateStyleTreeWidgetItem::toggleDefStyle()
 {
     if (*currentStyle == *defaultStyle) {
-        KMessageBox::information(treeWidget(), i18n("\"Use Default Style\" will be automatically unset when you change any style properties."), i18n("Kate Styles"), QStringLiteral("Kate hl config use defaults"));
+        KMessageBox::information(treeWidget(),
+                                 i18n("\"Use Default Style\" will be automatically unset when you change any style properties."),
+                                 i18n("Kate Styles"),
+                                 QStringLiteral("Kate hl config use defaults"));
     } else {
         currentStyle = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(*defaultStyle));
         updateStyle();

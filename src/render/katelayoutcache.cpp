@@ -232,7 +232,8 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
 
         if (i < m_textLayouts.count()) {
             bool dirty = false;
-            if (m_textLayouts[i].line() != realLine || m_textLayouts[i].viewLine() != _viewLine || (!m_textLayouts[i].isValid() && l->viewLine(_viewLine).isValid())) {
+            if (m_textLayouts[i].line() != realLine || m_textLayouts[i].viewLine() != _viewLine
+                || (!m_textLayouts[i].isValid() && l->viewLine(_viewLine).isValid())) {
                 dirty = true;
             }
             m_textLayouts[i] = l->viewLine(_viewLine);
@@ -244,8 +245,8 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
             m_textLayouts.append(l->viewLine(_viewLine));
         }
 
-        // qCDebug(LOG_KTE) << "Laid out line " << realLine << " (" << l << "), viewLine " << _viewLine << " (" << m_textLayouts[i].kateLineLayout().data() << ")";
-        // m_textLayouts[i].debugOutput();
+        // qCDebug(LOG_KTE) << "Laid out line " << realLine << " (" << l << "), viewLine " << _viewLine << " (" << m_textLayouts[i].kateLineLayout().data() <<
+        // ")"; m_textLayouts[i].debugOutput();
 
         _viewLine++;
 

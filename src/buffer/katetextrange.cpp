@@ -200,15 +200,15 @@ void TextRange::fixLookup(const KTextEditor::LineRange oldLineRange, const KText
     }
 
     // get start block
-    int blockIndex = m_buffer.blockForLine(startLineMin);
-    Q_ASSERT(blockIndex >= 0);
+    int blockIdx = m_buffer.blockForLine(startLineMin);
+    Q_ASSERT(blockIdx >= 0);
+
+    size_t blockIndex = blockIdx;
 
     // remove this range from m_ranges
     for (; blockIndex < m_buffer.m_blocks.size(); ++blockIndex) {
-        // get block
-        TextBlock *block = m_buffer.m_blocks.at(blockIndex);
-
         // either insert or remove range
+        TextBlock *block = m_buffer.m_blocks[blockIndex];
         if ((lineRange.end() < block->startLine()) || (lineRange.start() >= (block->startLine() + block->lines()))) {
             block->removeRange(this);
         } else {

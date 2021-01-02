@@ -182,7 +182,8 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
                     m_partiallyExpanded.insert(idx, ExpandDownwards);
                 }
 
-                // Say that one row above until one row below has changed, so no items will need to be moved(the space that is taken from one item is given to the other)
+                // Say that one row above until one row below has changed, so no items will need to be moved(the space that is taken from one item is given to
+                // the other)
                 if (oldIndex.isValid() && oldIndex < idx) {
                     emit dataChanged(oldIndex, idx);
 

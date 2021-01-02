@@ -587,7 +587,8 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                     encodedSequence.append(QLatin1Char(' '));
                     i += rest.indexOf(QLatin1Char('>'), 1);
                     continue;
-                } else if (rest.indexOf(QLatin1Char('>'), 1) == -1 || (rest.indexOf(QLatin1Char('<'), 1) < rest.indexOf(QLatin1Char('>'), 1) && rest.indexOf(QLatin1Char('<'), 1) != -1)) {
+                } else if (rest.indexOf(QLatin1Char('>'), 1) == -1
+                           || (rest.indexOf(QLatin1Char('<'), 1) < rest.indexOf(QLatin1Char('>'), 1) && rest.indexOf(QLatin1Char('<'), 1) != -1)) {
                     encodedSequence.append(c);
                     continue;
                 }
@@ -656,7 +657,8 @@ const QChar KeyParser::KeyEventToQChar(const QKeyEvent &keyEvent)
         return (!text.isEmpty()) ? text.at(0) : QChar();
     }
 
-    if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || keyCode == Qt::Key_Delete || (mods != Qt::NoModifier && mods != Qt::ShiftModifier && mods != Qt::KeypadModifier)) {
+    if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || keyCode == Qt::Key_Delete
+        || (mods != Qt::NoModifier && mods != Qt::ShiftModifier && mods != Qt::KeypadModifier)) {
         QString keyPress;
 
         keyPress.append(QLatin1Char('<'));

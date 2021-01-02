@@ -23,10 +23,13 @@ using namespace KateVi;
 AppCommands *AppCommands::m_instance = nullptr;
 
 AppCommands::AppCommands()
-    : KTextEditor::Command({QStringLiteral("q"),      QStringLiteral("qa"),  QStringLiteral("qall"),    QStringLiteral("q!"),   QStringLiteral("qa!"),      QStringLiteral("qall!"), QStringLiteral("w"),    QStringLiteral("wq"),
-                            QStringLiteral("wa"),     QStringLiteral("wqa"), QStringLiteral("x"),       QStringLiteral("xa"),   QStringLiteral("new"),      QStringLiteral("vnew"),  QStringLiteral("e"),    QStringLiteral("edit"),
-                            QStringLiteral("enew"),   QStringLiteral("sp"),  QStringLiteral("split"),   QStringLiteral("vs"),   QStringLiteral("vsplit"),   QStringLiteral("only"),  QStringLiteral("tabe"), QStringLiteral("tabedit"),
-                            QStringLiteral("tabnew"), QStringLiteral("bd"),  QStringLiteral("bdelete"), QStringLiteral("tabc"), QStringLiteral("tabclose"), QStringLiteral("clo"),   QStringLiteral("close")})
+    : KTextEditor::Command({QStringLiteral("q"),      QStringLiteral("qa"),      QStringLiteral("qall"), QStringLiteral("q!"),       QStringLiteral("qa!"),
+                            QStringLiteral("qall!"),  QStringLiteral("w"),       QStringLiteral("wq"),   QStringLiteral("wa"),       QStringLiteral("wqa"),
+                            QStringLiteral("x"),      QStringLiteral("xa"),      QStringLiteral("new"),  QStringLiteral("vnew"),     QStringLiteral("e"),
+                            QStringLiteral("edit"),   QStringLiteral("enew"),    QStringLiteral("sp"),   QStringLiteral("split"),    QStringLiteral("vs"),
+                            QStringLiteral("vsplit"), QStringLiteral("only"),    QStringLiteral("tabe"), QStringLiteral("tabedit"),  QStringLiteral("tabnew"),
+                            QStringLiteral("bd"),     QStringLiteral("bdelete"), QStringLiteral("tabc"), QStringLiteral("tabclose"), QStringLiteral("clo"),
+                            QStringLiteral("close")})
     , re_write(QStringLiteral("^w(a)?$"))
     , re_close(QStringLiteral("^bd(elete)?|tabc(lose)?$"))
     , re_quit(QStringLiteral("^(w)?q(a|all)?(!)?$"))
@@ -153,9 +156,11 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
             QUrl url;
             QUrl arg2path(argument);
             if (base.isValid()) { // first try to use the same path as the current open document has
-                url = QUrl(base.resolved(arg2path)); // resolved handles the case where the args is a relative path, and is the same as using QUrl(args) elsewise
+                url =
+                    QUrl(base.resolved(arg2path)); // resolved handles the case where the args is a relative path, and is the same as using QUrl(args) elsewise
             } else { // else use the cwd
-                url = QUrl(QUrl(QDir::currentPath() + QLatin1Char('/')).resolved(arg2path)); // + "/" is needed because of https://lists.qt-project.org/pipermail/qt-interest-old/2011-May/033913.html
+                url = QUrl(QUrl(QDir::currentPath() + QLatin1Char('/'))
+                               .resolved(arg2path)); // + "/" is needed because of https://lists.qt-project.org/pipermail/qt-interest-old/2011-May/033913.html
             }
             QFileInfo file(url.toLocalFile());
 

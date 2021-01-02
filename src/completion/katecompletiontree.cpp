@@ -117,7 +117,12 @@ void KateCompletionTree::resizeColumnsSlot()
  * If the model is a tree model, and @p current points to a leaf, and the max height
  * is not exceeded, then iteration will continue from the next parent sibling.
  */
-static bool measureColumnSizes(const KateCompletionTree *tree, QModelIndex current, QVarLengthArray<int, 8> &columnSize, int &currentYPos, const int maxHeight, bool recursed = false)
+static bool measureColumnSizes(const KateCompletionTree *tree,
+                               QModelIndex current,
+                               QVarLengthArray<int, 8> &columnSize,
+                               int &currentYPos,
+                               const int maxHeight,
+                               bool recursed = false)
 {
     while (current.isValid() && currentYPos < maxHeight) {
         currentYPos += tree->sizeHintForIndex(current).height();

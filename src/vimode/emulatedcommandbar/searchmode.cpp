@@ -138,7 +138,8 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
             // not a curly closing bracket, or is a curly closing bracket
             // that is not matched.
             for (int matchingClosedCurlyPos : qAsConst(matchingClosedCurlyBracketPositions)) {
-                QString chunkExcludingMatchingCurlyClosed = qtRegexPattern.mid(previousNonMatchingClosedCurlyPos, matchingClosedCurlyPos - previousNonMatchingClosedCurlyPos);
+                QString chunkExcludingMatchingCurlyClosed =
+                    qtRegexPattern.mid(previousNonMatchingClosedCurlyPos, matchingClosedCurlyPos - previousNonMatchingClosedCurlyPos);
                 chunkExcludingMatchingCurlyClosed = toggledEscaped(chunkExcludingMatchingCurlyClosed, QLatin1Char('{'));
                 chunkExcludingMatchingCurlyClosed = toggledEscaped(chunkExcludingMatchingCurlyClosed, QLatin1Char('}'));
                 qtRegexPatternNonMatchingCurliesToggled += chunkExcludingMatchingCurlyClosed + qtRegexPattern[matchingClosedCurlyPos];
@@ -182,7 +183,8 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
         // either not a square bracket, or is a square bracket but
         // which is not matched.
         for (int matchingSquareBracketPos : qAsConst(matchingSquareBracketPositions)) {
-            QString chunkExcludingMatchingSquareBrackets = qtRegexPattern.mid(previousNonMatchingSquareBracketPos, matchingSquareBracketPos - previousNonMatchingSquareBracketPos);
+            QString chunkExcludingMatchingSquareBrackets =
+                qtRegexPattern.mid(previousNonMatchingSquareBracketPos, matchingSquareBracketPos - previousNonMatchingSquareBracketPos);
             chunkExcludingMatchingSquareBrackets = ensuredCharEscaped(chunkExcludingMatchingSquareBrackets, QLatin1Char('['));
             chunkExcludingMatchingSquareBrackets = ensuredCharEscaped(chunkExcludingMatchingSquareBrackets, QLatin1Char(']'));
             qtRegexPatternNonMatchingSquaresMadeLiteral += chunkExcludingMatchingSquareBrackets + qtRegexPattern[matchingSquareBracketPos];
@@ -235,7 +237,11 @@ QStringList KateVi::reversed(const QStringList &originalList)
     return reversedList;
 }
 
-SearchMode::SearchMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, QLineEdit *edit)
+SearchMode::SearchMode(EmulatedCommandBar *emulatedCommandBar,
+                       MatchHighlighter *matchHighlighter,
+                       InputModeManager *viInputModeManager,
+                       KTextEditor::ViewPrivate *view,
+                       QLineEdit *edit)
     : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view)
     , m_edit(edit)
 {
@@ -282,7 +288,8 @@ void SearchMode::editTextChanged(const QString &newText)
     // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
     // the right one to handle the counted search.
     int c = viInputModeManager()->getCurrentViModeHandler()->getCount();
-    KTextEditor::Range match = viInputModeManager()->searcher()->findPattern(m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
+    KTextEditor::Range match = viInputModeManager()->searcher()->findPattern(
+        m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
 
     if (match.isValid()) {
         // The returned range ends one past the last character of the match, so adjust.

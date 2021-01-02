@@ -24,7 +24,10 @@ class MatchHighlighter;
 class InteractiveSedReplaceMode : public ActiveMode
 {
 public:
-    InteractiveSedReplaceMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view);
+    InteractiveSedReplaceMode(EmulatedCommandBar *emulatedCommandBar,
+                              MatchHighlighter *matchHighlighter,
+                              InputModeManager *viInputModeManager,
+                              KTextEditor::ViewPrivate *view);
     ~InteractiveSedReplaceMode() override
     {
     }

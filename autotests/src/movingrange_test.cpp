@@ -210,7 +210,8 @@ void MovingRangeTest::testFeedbackInvalidRange()
     RangeFeedback rf;
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
+    MovingRange *range =
+        doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
     range->setFeedback(&rf);
     rf.verifyReset();
 
@@ -284,7 +285,9 @@ void MovingRangeTest::testFeedbackCaret()
     {
         view->setCursorPosition(Cursor(1, 6));
 
-        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight, KTextEditor::MovingRange::InvalidateIfEmpty);
+        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                                KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                KTextEditor::MovingRange::InvalidateIfEmpty);
         rf.reset();
         range->setFeedback(&rf);
         rf.verifyReset();
@@ -331,7 +334,8 @@ void MovingRangeTest::testFeedbackCaret()
     {
         view->setCursorPosition(Cursor(1, 6));
 
-        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
+        MovingRange *range =
+            doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
         rf.reset();
         range->setFeedback(&rf);
         rf.verifyReset();
@@ -398,7 +402,9 @@ void MovingRangeTest::testFeedbackMouse()
     QVERIFY(!rf.mouseExitedRangeCalled());
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight, KTextEditor::MovingRange::InvalidateIfEmpty);
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                            KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                            KTextEditor::MovingRange::InvalidateIfEmpty);
     range->setFeedback(&rf);
     rf.verifyReset();
 

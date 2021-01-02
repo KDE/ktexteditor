@@ -103,7 +103,16 @@ private:
     // Line modification system
     //
 public:
-    enum ModificationFlag { UndoLine1Modified = 1, UndoLine2Modified = 2, UndoLine1Saved = 4, UndoLine2Saved = 8, RedoLine1Modified = 16, RedoLine2Modified = 32, RedoLine1Saved = 64, RedoLine2Saved = 128 };
+    enum ModificationFlag {
+        UndoLine1Modified = 1,
+        UndoLine2Modified = 2,
+        UndoLine1Saved = 4,
+        UndoLine2Saved = 8,
+        RedoLine1Modified = 16,
+        RedoLine2Modified = 32,
+        RedoLine1Saved = 64,
+        RedoLine2Saved = 128
+    };
 
     inline void setFlag(ModificationFlag flag)
     {

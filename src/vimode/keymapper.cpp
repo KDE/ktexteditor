@@ -37,8 +37,10 @@ void KeyMapper::executeMapping()
     m_mappingKeys.clear();
     m_mappingTimer->stop();
     m_numMappingsBeingExecuted++;
-    const QString mappedKeypresses = m_viInputModeManager->globalState()->mappings()->get(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch, false, true);
-    if (!m_viInputModeManager->globalState()->mappings()->isRecursive(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch)) {
+    const QString mappedKeypresses = m_viInputModeManager->globalState()->mappings()->get(
+        Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch, false, true);
+    if (!m_viInputModeManager->globalState()->mappings()->isRecursive(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()),
+                                                                      m_fullMappingMatch)) {
         m_doNotExpandFurtherMappings = true;
     }
     m_doc->editBegin();

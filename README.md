@@ -65,7 +65,7 @@ All files shall contain a proper "SPDX-License-Identifier: LGPL-2.0-or-later" id
 
 ```cpp
 /*
-    SPDX-FileCopyrightText: 2020 Christoph Cullmann <cullmann@kde.org>
+    SPDX-FileCopyrightText: 2021 Christoph Cullmann <cullmann@kde.org>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */

@@ -121,7 +121,8 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
 
             const int offset = (line == startLine) ? startCol : 0;
             const int line_end = (line == endLine) ? endCol : textLine.length();
-            const int foundAt = backwards ? textLine.lastIndexOf(text, line_end - text.length(), m_caseSensitivity) : textLine.indexOf(text, offset, m_caseSensitivity);
+            const int foundAt =
+                backwards ? textLine.lastIndexOf(text, line_end - text.length(), m_caseSensitivity) : textLine.indexOf(text, offset, m_caseSensitivity);
 
             if ((offset <= foundAt) && (foundAt + text.length() <= line_end)) {
                 return KTextEditor::Range(line, foundAt, line, foundAt + text.length());

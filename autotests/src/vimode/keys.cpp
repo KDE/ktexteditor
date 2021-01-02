@@ -146,14 +146,17 @@ void KeysTest::MappingTests()
     // change, etc.).  We use BeginTest & FinishTest for the setup and teardown etc, but this is
     // not an actual test - it's just computing the expected result of the real test!
     const QString multiVirtualLineText =
-        "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo "
+        "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo "
+        "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo "
         "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo";
     ensureKateViewVisible(); // Needs to be visible in order for virtual lines to make sense.
     KateViewConfig::global()->setDynWordWrap(true);
     BeginTest(multiVirtualLineText);
     TestPressKey("gjrX");
     const QString expectedAfterVirtualLineDownAndChange = kate_document->text();
-    Q_ASSERT_X(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'), "setting up j->gj testcase data", "gj doesn't seem to have worked correctly!");
+    Q_ASSERT_X(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'),
+               "setting up j->gj testcase data",
+               "gj doesn't seem to have worked correctly!");
     FinishTest(expectedAfterVirtualLineDownAndChange);
 
     // Test that non-recursive mappings are not expanded.
@@ -1504,7 +1507,9 @@ void KeysTest::MacroTests()
         fakeCodeCompletionModel->setFailTestOnInvocation(true);
         kate_document->setText("funct\nnoa\ncomtail\ncomtail\ncom");
         TestPressKey("gg@a\\enter@b");
-        FinishTest("functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail\ncompletionB\nsemicolonfunctionwithargs(X);\nsemicolonfunctionnoargs();X");
+        FinishTest(
+            "functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail\ncompletionB\nsemicolonfunctionwithargs(X);\nsemicolonfunctionnoargs();"
+            "X");
     }
 
     // Check that undo/redo operations work properly with macros.

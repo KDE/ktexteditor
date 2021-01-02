@@ -180,7 +180,9 @@ public:
      * Invoke code completion over a given range, with specific models and invocation type.
      * \param models list of models to start. If this is an empty list, all registered models are started.
      */
-    virtual void startCompletion(const Range &word, const QList<CodeCompletionModel *> &models = QList<CodeCompletionModel *>(), CodeCompletionModel::InvocationType invocationType = CodeCompletionModel::ManualInvocation) = 0;
+    virtual void startCompletion(const Range &word,
+                                 const QList<CodeCompletionModel *> &models = QList<CodeCompletionModel *>(),
+                                 CodeCompletionModel::InvocationType invocationType = CodeCompletionModel::ManualInvocation) = 0;
     using CodeCompletionInterface::startCompletion;
 
     /**

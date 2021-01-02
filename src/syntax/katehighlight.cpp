@@ -115,7 +115,11 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 }
 
-void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, const Kate::TextLineData *nextLine, bool &ctxChanged, int tabWidth)
+void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
+                                   Kate::TextLineData *textLine,
+                                   const Kate::TextLineData *nextLine,
+                                   bool &ctxChanged,
+                                   int tabWidth)
 {
     // default: no context change
     ctxChanged = false;
@@ -167,7 +171,8 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::Tex
     // check for indentation based folding
     if (m_foldingIndentationSensitive && (tabWidth > 0) && !textLine->markedAsFoldingStartAttribute()) {
         // compute if we increase indentation in next line
-        if (endOfLineState.indentationBasedFoldingEnabled() && !isEmptyLine(textLine) && !isEmptyLine(nextLine) && (textLine->indentDepth(tabWidth) < nextLine->indentDepth(tabWidth))) {
+        if (endOfLineState.indentationBasedFoldingEnabled() && !isEmptyLine(textLine) && !isEmptyLine(nextLine)
+            && (textLine->indentDepth(tabWidth) < nextLine->indentDepth(tabWidth))) {
             textLine->markAsFoldingStartIndentation();
         }
     }
@@ -252,12 +257,14 @@ KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) c
 QString KateHighlighting::nameForAttrib(int attrib) const
 {
     const auto &format = m_formats.at(sanitizeFormatIndex(attrib));
-    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.name() + QLatin1Char(':') + QString(format.isValid() ? format.name() : QStringLiteral("Normal"));
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.name() + QLatin1Char(':')
+        + QString(format.isValid() ? format.name() : QStringLiteral("Normal"));
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return !m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.isWordDelimiter(c) && !c.isSpace() && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
+    return !m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.isWordDelimiter(c) && !c.isSpace() && c != QLatin1Char('"')
+        && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
 
 bool KateHighlighting::canBreakAt(QChar c, int attrib) const
@@ -274,7 +281,9 @@ bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
     const auto startProperties = m_propertiesForFormat.at(sanitizeFormatIndex(startAttrib));
     const auto endProperties = m_propertiesForFormat.at(sanitizeFormatIndex(endAttrib));
-    return (startProperties == endProperties && ((!startProperties->multiLineCommentStart.isEmpty() && !startProperties->multiLineCommentEnd.isEmpty()) || !startProperties->singleLineCommentMarker.isEmpty()));
+    return (startProperties == endProperties
+            && ((!startProperties->multiLineCommentStart.isEmpty() && !startProperties->multiLineCommentEnd.isEmpty())
+                || !startProperties->singleLineCommentMarker.isEmpty()));
 }
 
 QString KateHighlighting::getCommentStart(int attrib) const

@@ -135,7 +135,12 @@ bool KateCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *,
     return false;
 }
 
-bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &destDelim, int &destFindBeginPos, int &destFindEndPos, int &destReplaceBeginPos, int &destReplaceEndPos)
+bool KateCommands::SedReplace::parse(const QString &sedReplaceString,
+                                     QString &destDelim,
+                                     int &destFindBeginPos,
+                                     int &destFindEndPos,
+                                     int &destReplaceBeginPos,
+                                     int &destReplaceEndPos)
 {
     // valid delimiters are all non-word, non-space characters plus '_'
     QRegularExpression delim(QStringLiteral("^s\\s*([^\\w\\s]|_)"));
@@ -147,7 +152,8 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
     const QString d = match.captured(1);
     qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
-    QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
+    QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\") + d
+                                + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
     match = splitter.match(sedReplaceString);
     if (!match.hasMatch()) {
         return false;
@@ -165,7 +171,13 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
     return true;
 }
 
-KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine)
+KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc,
+                                                                         const QString &findPattern,
+                                                                         const QString &replacePattern,
+                                                                         bool caseSensitive,
+                                                                         bool onlyOnePerLine,
+                                                                         int startLine,
+                                                                         int endLine)
     : m_findPattern(findPattern)
     , m_replacePattern(replacePattern)
     , m_onlyOnePerLine(onlyOnePerLine)
@@ -222,7 +234,8 @@ void KateCommands::SedReplace::InteractiveSedReplacer::replaceCurrentMatch()
 
         m_currentSearchPos = KTextEditor::Cursor(currentMatch.start().line(), col);
     } else {
-        m_currentSearchPos = KTextEditor::Cursor(currentMatch.start().line() + replacementText.count(QLatin1Char('\n')), replacementText.length() - replacementText.lastIndexOf(QLatin1Char('\n')) - 1);
+        m_currentSearchPos = KTextEditor::Cursor(currentMatch.start().line() + replacementText.count(QLatin1Char('\n')),
+                                                 replacementText.length() - replacementText.lastIndexOf(QLatin1Char('\n')) - 1);
     }
     if (m_onlyOnePerLine) {
         // Drop down to next line.
@@ -257,7 +270,11 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::currentMatchReplacemen
 
 QString KateCommands::SedReplace::InteractiveSedReplacer::finalStatusReportMessage()
 {
-    return i18ncp("%2 is the translation of the next message", "1 replacement done on %2", "%1 replacements done on %2", m_numReplacementsDone, i18ncp("substituted into the previous message", "1 line", "%1 lines", m_numLinesTouched));
+    return i18ncp("%2 is the translation of the next message",
+                  "1 replacement done on %2",
+                  "%1 replacements done on %2",
+                  m_numReplacementsDone,
+                  i18ncp("substituted into the previous message", "1 line", "%1 lines", m_numLinesTouched));
 }
 
 const QVector<KTextEditor::Range> KateCommands::SedReplace::InteractiveSedReplacer::fullCurrentMatch()

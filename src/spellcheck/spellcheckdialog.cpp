@@ -121,7 +121,8 @@ void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTe
     m_previousGivenSpellCheckLanguage.clear();
     delete m_globalSpellCheckRange;
     // we expand to handle the situation when the last word in the range is replace by a new one
-    m_globalSpellCheckRange = m_view->doc()->newMovingRange(KTextEditor::Range(start, end), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+    m_globalSpellCheckRange =
+        m_view->doc()->newMovingRange(KTextEditor::Range(start, end), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
     m_spellCheckCancelledByUser = false;
     performSpellCheck(*m_globalSpellCheckRange);
 }
@@ -211,7 +212,8 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
     while (m_currentLanguageRangeIterator != m_languagesInSpellCheckRange.end()) {
         const KTextEditor::Range &currentLanguageRange = (*m_currentLanguageRangeIterator).first;
         const QString &dictionary = (*m_currentLanguageRangeIterator).second;
-        KTextEditor::Range languageSubRange = (nextRangeBegin.isValid() ? KTextEditor::Range(nextRangeBegin, currentLanguageRange.end()) : currentLanguageRange);
+        KTextEditor::Range languageSubRange =
+            (nextRangeBegin.isValid() ? KTextEditor::Range(nextRangeBegin, currentLanguageRange.end()) : currentLanguageRange);
         rangeDictionaryPairList = spellCheckManager->spellCheckWrtHighlightingRanges(m_view->doc(), languageSubRange, dictionary, false, true);
         Q_ASSERT(rangeDictionaryPairList.size() <= 1);
         if (rangeDictionaryPairList.size() == 0) {

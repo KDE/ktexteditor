@@ -85,7 +85,11 @@ public:
         m_menu->setEnabled(enabled);
     }
 
-    void addEntry(const QString &before, const QString &after, const QString &description, const QString &realBefore = QString(), const QString &realAfter = QString())
+    void addEntry(const QString &before,
+                  const QString &after,
+                  const QString &description,
+                  const QString &realBefore = QString(),
+                  const QString &realAfter = QString())
     {
         if (m_menu == nullptr) {
             return;
@@ -175,7 +179,9 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     m_powerHighlightAll = (searchFlags & KateViewConfig::PowerHighlightAll) != 0;
     m_powerMode = ((searchFlags & KateViewConfig::PowerModeRegularExpression) != 0)
         ? MODE_REGEX
-        : (((searchFlags & KateViewConfig::PowerModeEscapeSequences) != 0) ? MODE_ESCAPE_SEQUENCES : (((searchFlags & KateViewConfig::PowerModeWholeWords) != 0) ? MODE_WHOLE_WORDS : MODE_PLAIN_TEXT));
+        : (((searchFlags & KateViewConfig::PowerModeEscapeSequences) != 0)
+               ? MODE_ESCAPE_SEQUENCES
+               : (((searchFlags & KateViewConfig::PowerModeWholeWords) != 0) ? MODE_WHOLE_WORDS : MODE_PLAIN_TEXT));
 
     // Load one of either dialogs
     if (initAsPower) {
@@ -286,7 +292,8 @@ void KateSearchBar::showResultMessage()
 void KateSearchBar::showSearchWrappedHint(SearchDirection searchDirection)
 {
     // show message widget when wrapping
-    const QIcon icon = (searchDirection == SearchForward) ? QIcon::fromTheme(QStringLiteral("go-down-search")) : QIcon::fromTheme(QStringLiteral("go-up-search"));
+    const QIcon icon =
+        (searchDirection == SearchForward) ? QIcon::fromTheme(QStringLiteral("go-down-search")) : QIcon::fromTheme(QStringLiteral("go-up-search"));
 
     if (!m_wrappedMessage || m_lastSearchDirection != searchDirection) {
         m_lastSearchDirection = searchDirection;
@@ -533,7 +540,8 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
             // Same match again
             if (replacement != nullptr) {
                 // Selection is match -> replace
-                KTextEditor::MovingRange *smartInputRange = m_view->doc()->newMovingRange(inputRange, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+                KTextEditor::MovingRange *smartInputRange =
+                    m_view->doc()->newMovingRange(inputRange, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
                 afterReplace = match.replace(*replacement, m_view->blockSelection());
                 inputRange = *smartInputRange;
                 delete smartInputRange;
@@ -578,8 +586,15 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     }
 
     if (askWrap) {
-        QString question = searchDirection == SearchForward ? i18n("Bottom of file reached. Continue from top?") : i18n("Top of file reached. Continue from bottom?");
-        wrap = (KMessageBox::questionYesNo(nullptr, question, i18n("Continue search?"), KStandardGuiItem::yes(), KStandardGuiItem::no(), QStringLiteral("DoNotShowAgainContinueSearchDialog")) == KMessageBox::Yes);
+        QString question =
+            searchDirection == SearchForward ? i18n("Bottom of file reached. Continue from top?") : i18n("Top of file reached. Continue from bottom?");
+        wrap = (KMessageBox::questionYesNo(nullptr,
+                                           question,
+                                           i18n("Continue search?"),
+                                           KStandardGuiItem::yes(),
+                                           KStandardGuiItem::no(),
+                                           QStringLiteral("DoNotShowAgainContinueSearchDialog"))
+                == KMessageBox::Yes);
     }
     if (wrap) {
         showSearchWrappedHint(searchDirection);
@@ -591,7 +606,10 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         selectRange2(match.range());
     }
 
-    const MatchResult matchResult = !match.isValid() ? MatchMismatch : !wrap ? MatchFound : searchDirection == SearchForward ? MatchWrappedForward : MatchWrappedBackward;
+    const MatchResult matchResult = !match.isValid() ? MatchMismatch
+        : !wrap                                      ? MatchFound
+        : searchDirection == SearchForward           ? MatchWrappedForward
+                                                     : MatchWrappedBackward;
     indicateMatch(matchResult);
 
     // highlight replacements if applicable
@@ -627,7 +645,9 @@ bool KateSearchBar::isPatternValid() const
         return false;
     }
 
-    return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern() : searchOptions().testFlag(Regex) ? QRegularExpression(searchPattern()).isValid() : true;
+    return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern()
+        : searchOptions().testFlag(Regex)       ? QRegularExpression(searchPattern()).isValid()
+                                                : true;
 }
 
 void KateSearchBar::givePatternFeedback()
@@ -679,21 +699,25 @@ void KateSearchBar::sendConfig()
         // Update power search flags only
         const auto incFlagsOnly = pastFlags & (KateViewConfig::IncHighlightAll | KateViewConfig::IncFromCursor | KateViewConfig::IncMatchCase);
 
-        futureFlags = incFlagsOnly | (m_powerMatchCase ? KateViewConfig::PowerMatchCase : 0) | (m_powerFromCursor ? KateViewConfig::PowerFromCursor : 0) | (m_powerHighlightAll ? KateViewConfig::PowerHighlightAll : 0) |
-            ((m_powerMode == MODE_REGEX)
-                 ? KateViewConfig::PowerModeRegularExpression
-                 : ((m_powerMode == MODE_ESCAPE_SEQUENCES) ? KateViewConfig::PowerModeEscapeSequences : ((m_powerMode == MODE_WHOLE_WORDS) ? KateViewConfig::PowerModeWholeWords : KateViewConfig::PowerModePlainText)));
+        futureFlags = incFlagsOnly | (m_powerMatchCase ? KateViewConfig::PowerMatchCase : 0) | (m_powerFromCursor ? KateViewConfig::PowerFromCursor : 0)
+            | (m_powerHighlightAll ? KateViewConfig::PowerHighlightAll : 0)
+            | ((m_powerMode == MODE_REGEX)
+                   ? KateViewConfig::PowerModeRegularExpression
+                   : ((m_powerMode == MODE_ESCAPE_SEQUENCES)
+                          ? KateViewConfig::PowerModeEscapeSequences
+                          : ((m_powerMode == MODE_WHOLE_WORDS) ? KateViewConfig::PowerModeWholeWords : KateViewConfig::PowerModePlainText)));
 
     } else if (m_incUi != nullptr) {
         const bool OF_INCREMENTAL = false;
         backupConfig(OF_INCREMENTAL);
 
         // Update incremental search flags only
-        const auto powerFlagsOnly = pastFlags &
-            (KateViewConfig::PowerMatchCase | KateViewConfig::PowerFromCursor | KateViewConfig::PowerHighlightAll | KateViewConfig::PowerModeRegularExpression | KateViewConfig::PowerModeEscapeSequences |
-             KateViewConfig::PowerModeWholeWords | KateViewConfig::PowerModePlainText);
+        const auto powerFlagsOnly = pastFlags
+            & (KateViewConfig::PowerMatchCase | KateViewConfig::PowerFromCursor | KateViewConfig::PowerHighlightAll | KateViewConfig::PowerModeRegularExpression
+               | KateViewConfig::PowerModeEscapeSequences | KateViewConfig::PowerModeWholeWords | KateViewConfig::PowerModePlainText);
 
-        futureFlags = powerFlagsOnly | (m_incHighlightAll ? KateViewConfig::IncHighlightAll : 0) | (m_incFromCursor ? KateViewConfig::IncFromCursor : 0) | (m_incMatchCase ? KateViewConfig::IncMatchCase : 0);
+        futureFlags = powerFlagsOnly | (m_incHighlightAll ? KateViewConfig::IncHighlightAll : 0) | (m_incFromCursor ? KateViewConfig::IncFromCursor : 0)
+            | (m_incMatchCase ? KateViewConfig::IncMatchCase : 0);
     }
 
     // Adjust global config
@@ -1096,7 +1120,8 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
                 addMenuManager.addEntry(QStringLiteral("+"), QString(), i18n("One or more occurrences"));
                 addMenuManager.addEntry(QStringLiteral("*"), QString(), i18n("Zero or more occurrences"));
                 addMenuManager.addEntry(QStringLiteral("?"), QString(), i18n("Zero or one occurrences"));
-                addMenuManager.addEntry(QStringLiteral("{a"), QStringLiteral(",b}"), i18n("<a> through <b> occurrences"), QStringLiteral("{"), QStringLiteral(",}"));
+                addMenuManager.addEntry(
+                    QStringLiteral("{a"), QStringLiteral(",b}"), i18n("<a> through <b> occurrences"), QStringLiteral("{"), QStringLiteral(",}"));
 
                 addMenuManager.addSeparator();
                 addMenuManager.addSeparator();
@@ -1116,7 +1141,8 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
                 const int captureCount = capturePatterns.count();
                 for (int i = 1; i <= 9; i++) {
                     const QString number = QString::number(i);
-                    const QString &captureDetails = (i <= captureCount) ? QLatin1String(" = (") + capturePatterns[i - 1].leftRef(30) + QLatin1Char(')') : QString();
+                    const QString &captureDetails =
+                        (i <= captureCount) ? QLatin1String(" = (") + capturePatterns[i - 1].leftRef(30) + QLatin1Char(')') : QString();
                     addMenuManager.addEntry(QLatin1String("\\") + number, QString(), i18n("Reference") + QLatin1Char(' ') + number + captureDetails);
                 }
 

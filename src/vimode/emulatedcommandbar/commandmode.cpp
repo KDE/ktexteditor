@@ -209,7 +209,8 @@ QString CommandMode::executeCommand(const QString &commandToExecute)
     }
 
     // the following commands change the focus themselves
-    static const QRegularExpression reCmds(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew)$"));
+    static const QRegularExpression reCmds(QStringLiteral(
+        "^(buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew)$"));
     if (!reCmds.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
         view()->setFocus();
     }
@@ -235,8 +236,12 @@ CommandMode::ParsedSedExpression CommandMode::parseAsSedExpression()
     const QString commandWithoutRangeExpression = withoutRangeExpression();
     ParsedSedExpression parsedSedExpression;
     QString delimiter;
-    parsedSedExpression.parsedSuccessfully =
-        SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
+    parsedSedExpression.parsedSuccessfully = SedReplace::parse(commandWithoutRangeExpression,
+                                                               delimiter,
+                                                               parsedSedExpression.findBeginPos,
+                                                               parsedSedExpression.findEndPos,
+                                                               parsedSedExpression.replaceBeginPos,
+                                                               parsedSedExpression.replaceEndPos);
     if (parsedSedExpression.parsedSuccessfully) {
         parsedSedExpression.delimiter = delimiter.at(0);
         if (parsedSedExpression.replaceBeginPos == -1) {
@@ -305,13 +310,15 @@ QString CommandMode::withSedDelimiterEscaped(const QString &text)
 bool CommandMode::isCursorInFindTermOfSed()
 {
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return parsedSedExpression.parsedSuccessfully && (m_edit->cursorPosition() >= parsedSedExpression.findBeginPos && m_edit->cursorPosition() <= parsedSedExpression.findEndPos + 1);
+    return parsedSedExpression.parsedSuccessfully
+        && (m_edit->cursorPosition() >= parsedSedExpression.findBeginPos && m_edit->cursorPosition() <= parsedSedExpression.findEndPos + 1);
 }
 
 bool CommandMode::isCursorInReplaceTermOfSed()
 {
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return parsedSedExpression.parsedSuccessfully && m_edit->cursorPosition() >= parsedSedExpression.replaceBeginPos && m_edit->cursorPosition() <= parsedSedExpression.replaceEndPos + 1;
+    return parsedSedExpression.parsedSuccessfully && m_edit->cursorPosition() >= parsedSedExpression.replaceBeginPos
+        && m_edit->cursorPosition() <= parsedSedExpression.replaceEndPos + 1;
 }
 
 int CommandMode::commandBeforeCursorBegin()
@@ -319,8 +326,10 @@ int CommandMode::commandBeforeCursorBegin()
     const QString textWithoutRangeExpression = withoutRangeExpression();
     const int cursorPositionWithoutRangeExpression = m_edit->cursorPosition() - rangeExpression().length();
     int commandBeforeCursorBegin = cursorPositionWithoutRangeExpression - 1;
-    while (commandBeforeCursorBegin >= 0 &&
-           (textWithoutRangeExpression[commandBeforeCursorBegin].isLetterOrNumber() || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('_') || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('-'))) {
+    while (commandBeforeCursorBegin >= 0
+           && (textWithoutRangeExpression[commandBeforeCursorBegin].isLetterOrNumber()
+               || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('_')
+               || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('-'))) {
         commandBeforeCursorBegin--;
     }
     commandBeforeCursorBegin++;
@@ -344,9 +353,11 @@ CompletionStartParams CommandMode::activateSedFindHistoryCompletion()
         return CompletionStartParams::invalid();
     }
     CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()), parsedSedExpression.findBeginPos, [this](const QString &completion) -> QString {
-        return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion));
-    });
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()),
+                                                     parsedSedExpression.findBeginPos,
+                                                     [this](const QString &completion) -> QString {
+                                                         return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion));
+                                                     });
 }
 
 CompletionStartParams CommandMode::activateSedReplaceHistoryCompletion()
@@ -355,9 +366,11 @@ CompletionStartParams CommandMode::activateSedReplaceHistoryCompletion()
         return CompletionStartParams::invalid();
     }
     CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->replaceHistory()->items()), parsedSedExpression.replaceBeginPos, [this](const QString &completion) -> QString {
-        return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion));
-    });
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->replaceHistory()->items()),
+                                                     parsedSedExpression.replaceBeginPos,
+                                                     [this](const QString &completion) -> QString {
+                                                         return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion));
+                                                     });
 }
 
 KTextEditor::Command *CommandMode::queryCommand(const QString &cmd) const

@@ -391,7 +391,11 @@ void TextHistory::transformCursor(int &line, int &column, KTextEditor::MovingCur
     }
 }
 
-void TextHistory::transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision)
+void TextHistory::transformRange(KTextEditor::Range &range,
+                                 KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
+                                 KTextEditor::MovingRange::EmptyBehavior emptyBehavior,
+                                 qint64 fromRevision,
+                                 qint64 toRevision)
 {
     // invalidate on empty?
     bool invalidateIfEmpty = emptyBehavior == KTextEditor::MovingRange::InvalidateIfEmpty;

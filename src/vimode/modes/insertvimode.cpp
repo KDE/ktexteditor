@@ -344,7 +344,8 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                 return true;
             case Qt::Key_Enter:
             case Qt::Key_Return:
-                if (m_view->completionWidget()->isCompletionActive() && !m_viInputModeManager->macroRecorder()->isReplaying() && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
+                if (m_view->completionWidget()->isCompletionActive() && !m_viInputModeManager->macroRecorder()->isReplaying()
+                    && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
                     // Filter out Enter/ Return's that trigger a completion when recording macros/ last change stuff; they
                     // will be replaced with the special code "ctrl-space".
                     // (This is why there is a "!m_viInputModeManager->isReplayingMacro()" above.)
@@ -450,8 +451,8 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
 
         // is it register ?
         // TODO: add registers such as '/'. See :h <c-r>
-        if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) || key == QLatin1Char('_') || key == QLatin1Char('-') || key == QLatin1Char('+') || key == QLatin1Char('*') ||
-            key == QLatin1Char('"')) {
+        if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) || key == QLatin1Char('_')
+            || key == QLatin1Char('-') || key == QLatin1Char('+') || key == QLatin1Char('*') || key == QLatin1Char('"')) {
             m_register = key;
         } else {
             return false;
@@ -563,7 +564,8 @@ void InsertViMode::completionFinished()
     } else if (m_textInsertedByCompletion.endsWith(QLatin1String("()")) || m_textInsertedByCompletion.endsWith(QLatin1String("();"))) {
         completionType = Completion::FunctionWithoutArgs;
     }
-    m_viInputModeManager->completionRecorder()->logCompletionEvent(Completion(m_textInsertedByCompletion, KateViewConfig::global()->wordCompletionRemoveTail(), completionType));
+    m_viInputModeManager->completionRecorder()->logCompletionEvent(
+        Completion(m_textInsertedByCompletion, KateViewConfig::global()->wordCompletionRemoveTail(), completionType));
 }
 
 void InsertViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)

@@ -86,8 +86,10 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
         m_output << "<i>";
     }
 
-    bool writeForeground = attrib->hasProperty(QTextCharFormat::ForegroundBrush) && (!m_defaultAttribute || attrib->foreground().color() != m_defaultAttribute->foreground().color());
-    bool writeBackground = attrib->hasProperty(QTextCharFormat::BackgroundBrush) && (!m_defaultAttribute || attrib->background().color() != m_defaultAttribute->background().color());
+    bool writeForeground = attrib->hasProperty(QTextCharFormat::ForegroundBrush)
+        && (!m_defaultAttribute || attrib->foreground().color() != m_defaultAttribute->foreground().color());
+    bool writeBackground = attrib->hasProperty(QTextCharFormat::BackgroundBrush)
+        && (!m_defaultAttribute || attrib->background().color() != m_defaultAttribute->background().color());
 
     if (writeForeground || writeBackground) {
         m_output << QStringLiteral("<span style='%1%2'>")

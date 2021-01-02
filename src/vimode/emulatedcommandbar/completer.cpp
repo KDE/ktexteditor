@@ -179,7 +179,8 @@ void Completer::currentCompletionChanged()
 
 void Completer::updateCompletionPrefix()
 {
-    const QString completionPrefix = m_edit->text().mid(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
+    const QString completionPrefix =
+        m_edit->text().mid(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
     m_completer->setCompletionPrefix(completionPrefix);
     // Seem to need a call to complete() else the size of the popup box is not altered appropriately.
     m_completer->complete();
@@ -221,7 +222,8 @@ QString Completer::wordBeforeCursor()
 int Completer::wordBeforeCursorBegin()
 {
     int wordBeforeCursorBegin = m_edit->cursorPosition() - 1;
-    while (wordBeforeCursorBegin >= 0 && (m_edit->text()[wordBeforeCursorBegin].isLetterOrNumber() || m_edit->text()[wordBeforeCursorBegin] == QLatin1Char('_'))) {
+    while (wordBeforeCursorBegin >= 0
+           && (m_edit->text()[wordBeforeCursorBegin].isLetterOrNumber() || m_edit->text()[wordBeforeCursorBegin] == QLatin1Char('_'))) {
         wordBeforeCursorBegin--;
     }
     wordBeforeCursorBegin++;

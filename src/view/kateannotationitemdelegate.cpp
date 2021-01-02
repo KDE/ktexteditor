@@ -26,7 +26,10 @@ KateAnnotationItemDelegate::KateAnnotationItemDelegate(KateViewInternal *interna
 
 KateAnnotationItemDelegate::~KateAnnotationItemDelegate() = default;
 
-void KateAnnotationItemDelegate::paint(QPainter *painter, const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) const
+void KateAnnotationItemDelegate::paint(QPainter *painter,
+                                       const KTextEditor::StyleOptionAnnotationItem &option,
+                                       KTextEditor::AnnotationModel *model,
+                                       int line) const
 {
     Q_ASSERT(painter);
     Q_ASSERT(model);
@@ -65,7 +68,8 @@ void KateAnnotationItemDelegate::paint(QPainter *painter, const KTextEditor::Sty
             painter->drawLine(rect.topLeft(), rect.topRight());
         }
 
-        if ((option.annotationItemGroupingPosition & KTextEditor::StyleOptionAnnotationItem::GroupEnd) && (option.wrappedLine == (option.wrappedLineCount - 1))) {
+        if ((option.annotationItemGroupingPosition & KTextEditor::StyleOptionAnnotationItem::GroupEnd)
+            && (option.wrappedLine == (option.wrappedLineCount - 1))) {
             painter->drawLine(rect.bottomLeft(), rect.bottomRight());
         }
     }
@@ -79,13 +83,22 @@ void KateAnnotationItemDelegate::paint(QPainter *painter, const KTextEditor::Sty
     // Now draw the normal text
     const QVariant text = model->data(line, Qt::DisplayRole);
     if ((option.wrappedLine == 0) && text.isValid() && text.canConvert<QString>()) {
-        painter->drawText(option.rect.x() + margin, option.rect.y(), option.rect.width() - 2 * margin, option.rect.height(), Qt::AlignLeft | Qt::AlignVCenter, text.toString());
+        painter->drawText(option.rect.x() + margin,
+                          option.rect.y(),
+                          option.rect.width() - 2 * margin,
+                          option.rect.height(),
+                          Qt::AlignLeft | Qt::AlignVCenter,
+                          text.toString());
     }
 
     painter->restore();
 }
 
-bool KateAnnotationItemDelegate::helpEvent(QHelpEvent *event, KTextEditor::View *view, const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line)
+bool KateAnnotationItemDelegate::helpEvent(QHelpEvent *event,
+                                           KTextEditor::View *view,
+                                           const KTextEditor::StyleOptionAnnotationItem &option,
+                                           KTextEditor::AnnotationModel *model,
+                                           int line)
 {
     Q_UNUSED(option);
 

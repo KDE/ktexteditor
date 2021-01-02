@@ -216,7 +216,8 @@ bool TextFolding::isLineVisible(int line, qint64 *foldedRangeId) const
     }
 
     // search upper bound, index to item with start line higher than our one
-    FoldingRange::Vector::const_iterator upperBound = std::upper_bound(m_foldedFoldingRanges.begin(), m_foldedFoldingRanges.end(), line, compareRangeByStartWithLine);
+    FoldingRange::Vector::const_iterator upperBound =
+        std::upper_bound(m_foldedFoldingRanges.begin(), m_foldedFoldingRanges.end(), line, compareRangeByStartWithLine);
     if (upperBound != m_foldedFoldingRanges.begin()) {
         --upperBound;
     }
@@ -367,7 +368,9 @@ QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRange
     return results;
 }
 
-void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const
+void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags>> &results,
+                                              const TextFolding::FoldingRange::Vector &ranges,
+                                              int line) const
 {
     // early out for no folds
     if (ranges.isEmpty()) {
@@ -477,7 +480,8 @@ bool TextFolding::insertNewFoldingRange(FoldingRange *parent, FoldingRange::Vect
     if (lowerBound == upperBound) {
         // nothing we overlap with?
         // then just insert and be done!
-        if ((lowerBound == existingRanges.end()) || (newRange->start->toCursor() >= (*lowerBound)->end->toCursor()) || (newRange->end->toCursor() <= (*lowerBound)->start->toCursor())) {
+        if ((lowerBound == existingRanges.end()) || (newRange->start->toCursor() >= (*lowerBound)->end->toCursor())
+            || (newRange->end->toCursor() <= (*lowerBound)->start->toCursor())) {
             // insert + fix parent
             existingRanges.insert(lowerBound, newRange);
             newRange->parent = parent;
@@ -724,9 +728,10 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
         const KTextEditor::Cursor end(rangeMap[QStringLiteral("endLine")].toInt(), rangeMap[QStringLiteral("endColumn")].toInt());
 
         // check validity (required when loading a possibly broken folding state from disk)
-        if (start >= end ||
-            (m_buffer.document() && // <-- unit test katetextbuffertest does not have a KTE::Document assigned
-             (!KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition() || !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition()))) {
+        if (start >= end
+            || (m_buffer.document() && // <-- unit test katetextbuffertest does not have a KTE::Document assigned
+                (!KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition()
+                 || !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition()))) {
             continue;
         }
 

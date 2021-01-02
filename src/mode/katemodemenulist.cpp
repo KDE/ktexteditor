@@ -131,7 +131,8 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
      * Search bar widget.
      */
     m_searchBar->setPlaceholderText(i18nc("Placeholder in search bar", "Search..."));
-    m_searchBar->setToolTip(i18nc("ToolTip of the search bar of modes of syntax highlighting", "Search for syntax highlighting modes by language name or file extension (for example, C++ or .cpp)"));
+    m_searchBar->setToolTip(i18nc("ToolTip of the search bar of modes of syntax highlighting",
+                                  "Search for syntax highlighting modes by language name or file extension (for example, C++ or .cpp)"));
     m_searchBar->setMaxLength(200);
 
     m_list->setFocusProxy(m_searchBar);
@@ -559,8 +560,9 @@ void KateModeMenuList::loadEmptyMsg()
     const int fontSize = font().pointSize() > 10 ? font().pointSize() + 4 : 14;
 
     QColor color = m_emptyListMsg->palette().color(QPalette::Text);
-    m_emptyListMsg->setStyleSheet(QLatin1String("font-size: ") + QString::number(fontSize) + QLatin1String("pt; color: rgba(") + QString::number(color.red()) + QLatin1Char(',') + QString::number(color.green()) + QLatin1Char(',') +
-                                  QString::number(color.blue()) + QLatin1String(", 0.3);"));
+    m_emptyListMsg->setStyleSheet(QLatin1String("font-size: ") + QString::number(fontSize) + QLatin1String("pt; color: rgba(") + QString::number(color.red())
+                                  + QLatin1Char(',') + QString::number(color.green()) + QLatin1Char(',') + QString::number(color.blue())
+                                  + QLatin1String(", 0.3);"));
 
     m_emptyListMsg->setAlignment(Qt::AlignCenter);
     m_layoutList->addWidget(m_emptyListMsg, 0, 0, Qt::AlignCenter);
@@ -588,14 +590,16 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
                 newText += tmpLineText + QLatin1Char('\n');
                 tmpLineText.clear();
             }
-            newText += fontMetrics.elidedText(words[i], m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth) + QLatin1Char('\n');
+            newText +=
+                fontMetrics.elidedText(words[i], m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth) + QLatin1Char('\n');
             continue;
         } else {
             tmpLineText += words[i];
         }
 
         // This prevents the last line of text from having only one word with 1 or 2 chars
-        if (i == words.count() - 3 && words[i + 2].length() <= 2 && fontMetrics.horizontalAdvance(tmpLineText + QLatin1Char(' ') + words[i + 1] + QLatin1Char(' ') + words[i + 2]) > maxWidth) {
+        if (i == words.count() - 3 && words[i + 2].length() <= 2
+            && fontMetrics.horizontalAdvance(tmpLineText + QLatin1Char(' ') + words[i + 1] + QLatin1Char(' ') + words[i + 2]) > maxWidth) {
             newText += tmpLineText + QLatin1Char('\n');
             tmpLineText.clear();
         }
@@ -617,7 +621,9 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
             if (isDelimiter(words[lastw][c].unicode()) && fontMetrics.horizontalAdvance(words[lastw].mid(0, c + 1)) <= maxWidth) {
                 bElidedLastWord = false;
                 if (fontMetrics.horizontalAdvance(words[lastw].mid(c + 1)) > maxWidth) {
-                    words[lastw] = words[lastw].mid(0, c + 1) + QLatin1Char('\n') + fontMetrics.elidedText(words[lastw].mid(c + 1), m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth);
+                    words[lastw] = words[lastw].mid(0, c + 1) + QLatin1Char('\n')
+                        + fontMetrics.elidedText(
+                            words[lastw].mid(c + 1), m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth);
                 } else {
                     words[lastw].insert(c + 1, QLatin1Char('\n'));
                 }
@@ -734,8 +740,9 @@ bool KateModeMenuListData::ListItem::matchExtension(const QString &text) const
 void KateModeMenuListData::ListView::keyPressEvent(QKeyEvent *event)
 {
     // Ctrl/Alt/Shift/Meta + Return/Enter selects an item, but without hiding the menu
-    if ((event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) &&
-        (event->modifiers().testFlag(Qt::ControlModifier) || event->modifiers().testFlag(Qt::AltModifier) || event->modifiers().testFlag(Qt::ShiftModifier) || event->modifiers().testFlag(Qt::MetaModifier))) {
+    if ((event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return)
+        && (event->modifiers().testFlag(Qt::ControlModifier) || event->modifiers().testFlag(Qt::AltModifier) || event->modifiers().testFlag(Qt::ShiftModifier)
+            || event->modifiers().testFlag(Qt::MetaModifier))) {
         m_parentMenu->selectHighlightingSetVisibility(m_parentMenu->m_list->currentItem(), false);
     }
     // Return/Enter selects an item and hide the menu
@@ -748,10 +755,11 @@ void KateModeMenuListData::ListView::keyPressEvent(QKeyEvent *event)
 
 void KateModeMenuListData::SearchLine::keyPressEvent(QKeyEvent *event)
 {
-    if (m_parentMenu->m_list &&
-        (event->matches(QKeySequence::MoveToNextLine) || event->matches(QKeySequence::SelectNextLine) || event->matches(QKeySequence::MoveToPreviousLine) || event->matches(QKeySequence::SelectPreviousLine) ||
-         event->matches(QKeySequence::MoveToNextPage) || event->matches(QKeySequence::SelectNextPage) || event->matches(QKeySequence::MoveToPreviousPage) || event->matches(QKeySequence::SelectPreviousPage) ||
-         event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter)) {
+    if (m_parentMenu->m_list
+        && (event->matches(QKeySequence::MoveToNextLine) || event->matches(QKeySequence::SelectNextLine) || event->matches(QKeySequence::MoveToPreviousLine)
+            || event->matches(QKeySequence::SelectPreviousLine) || event->matches(QKeySequence::MoveToNextPage) || event->matches(QKeySequence::SelectNextPage)
+            || event->matches(QKeySequence::MoveToPreviousPage) || event->matches(QKeySequence::SelectPreviousPage) || event->key() == Qt::Key_Return
+            || event->key() == Qt::Key_Enter)) {
         QApplication::sendEvent(m_parentMenu->m_list, event);
     } else {
         QLineEdit::keyPressEvent(event);
@@ -973,7 +981,9 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
          * However, if the "exact match" is already the first search result, that section will not
          * be displayed, as it isn't necessary.
          */
-        if (!bNotShowBestResults && (item->getSearchName().compare(&searchText, m_caseSensitivity) == 0 || (bExactMatch && item->getMode()->nameTranslated().compare(&searchText, m_caseSensitivity) == 0))) {
+        if (!bNotShowBestResults
+            && (item->getSearchName().compare(&searchText, m_caseSensitivity) == 0
+                || (bExactMatch && item->getMode()->nameTranslated().compare(&searchText, m_caseSensitivity) == 0))) {
             if (lastItem == -1) {
                 bNotShowBestResults = true;
             } else {
@@ -992,7 +1002,8 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
                  */
                 bool bMatchCharDel = true;
                 if (item->getMode()->name.startsWith(searchText + QLatin1Char(' '), m_caseSensitivity)) {
-                    if (QString(QLatin1Char(' ') + item->getSearchName() + QLatin1Char(' ')).contains(QLatin1Char(' ') + searchText + QLatin1Char(' '), m_caseSensitivity)) {
+                    if (QString(QLatin1Char(' ') + item->getSearchName() + QLatin1Char(' '))
+                            .contains(QLatin1Char(' ') + searchText + QLatin1Char(' '), m_caseSensitivity)) {
                         m_bestResults.append(qMakePair(item, i));
                         continue;
                     } else {
@@ -1008,7 +1019,9 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
 
                 // CASE 2: Matches considering delimiters. For example, when writing "c",
                 //         "Objective-C" will be displayed in the results, but not "Yacc/Bison".
-                if (bMatchCharDel && QString(QLatin1Char(' ') + item->getSearchName() + QLatin1Char(' ')).contains(QLatin1Char(' ') + searchText + QLatin1Char(' '), m_caseSensitivity)) {
+                if (bMatchCharDel
+                    && QString(QLatin1Char(' ') + item->getSearchName() + QLatin1Char(' '))
+                           .contains(QLatin1Char(' ') + searchText + QLatin1Char(' '), m_caseSensitivity)) {
                     setSearchResult(i, bEmptySection, lastSection, firstSection, lastItem);
                     continue;
                 }
@@ -1064,10 +1077,14 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
         QLabel *labelSection = static_cast<QLabel *>(listView->indexWidget(listModel->index(0, 0)));
         if (m_bestResults.size() == 1) {
             labelSection->setText(
-                i18nc("Title (in singular) of the best result in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Match"));
+                i18nc("Title (in singular) of the best result in an item search. Please, that the translation doesn't have more than 34 characters, since the "
+                      "menu where it's displayed is small and fixed.",
+                      "Best Search Match"));
         } else {
             labelSection->setText(
-                i18nc("Title (in plural) of the best results in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Matches"));
+                i18nc("Title (in plural) of the best results in an item search. Please, that the translation doesn't have more than 34 characters, since the "
+                      "menu where it's displayed is small and fixed.",
+                      "Best Search Matches"));
         }
 
         int heightSectionMargin = m_parentMenu->m_defaultHeightItemSection - labelSection->sizeHint().height();
@@ -1115,7 +1132,9 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
 
         // Add word wrap in long section titles.
         if (bSectionMultiline) {
-            if (listView->visualRect(listModel->index(lastItem, 0)).bottom() + labelSection->sizeHint().height() + heightSectionMargin > listView->geometry().height() || labelSection->sizeHint().width() > listView->getWidth() - 1) {
+            if (listView->visualRect(listModel->index(lastItem, 0)).bottom() + labelSection->sizeHint().height() + heightSectionMargin
+                    > listView->geometry().height()
+                || labelSection->sizeHint().width() > listView->getWidth() - 1) {
                 labelSection->setText(m_parentMenu->setWordWrap(labelSection->text(), maxWidthText, labelSection->fontMetrics()));
             }
             listModel->item(0, 0)->setSizeHint(QSize(listModel->item(0, 0)->sizeHint().width(), labelSection->sizeHint().height() + heightSectionMargin));

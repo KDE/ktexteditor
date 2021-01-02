@@ -40,14 +40,14 @@ const bool hideAutomaticCompletionOnExactMatch = true;
 // If this is true, the completion-list is navigated up/down when 'tab' is pressed, instead of doing partial completion
 const bool shellLikeTabCompletion = false;
 
-#define CALLCI(WHAT, WHATELSE, WHAT2, model, FUNC)                                                                                                                                                                                             \
-    {                                                                                                                                                                                                                                          \
-        static KTextEditor::CodeCompletionModelControllerInterface defaultIf;                                                                                                                                                                  \
-        KTextEditor::CodeCompletionModelControllerInterface *ret = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);                                                                                                 \
-        if (!ret) {                                                                                                                                                                                                                            \
-            WHAT2 defaultIf.FUNC;                                                                                                                                                                                                              \
-        } else                                                                                                                                                                                                                                 \
-            WHAT2 ret->FUNC;                                                                                                                                                                                                                   \
+#define CALLCI(WHAT, WHATELSE, WHAT2, model, FUNC)                                                                                                             \
+    {                                                                                                                                                          \
+        static KTextEditor::CodeCompletionModelControllerInterface defaultIf;                                                                                  \
+        KTextEditor::CodeCompletionModelControllerInterface *ret = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);                 \
+        if (!ret) {                                                                                                                                            \
+            WHAT2 defaultIf.FUNC;                                                                                                                              \
+        } else                                                                                                                                                 \
+            WHAT2 ret->FUNC;                                                                                                                                   \
     }
 
 static KTextEditor::Range _completionRange(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Cursor &cursor)
@@ -60,12 +60,14 @@ static KTextEditor::Range _updateRange(KTextEditor::CodeCompletionModel *model, 
     CALLCI(, return range, return, model, updateCompletionRange(view, range));
 }
 
-static QString _filterString(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const KTextEditor::Cursor &cursor)
+static QString
+_filterString(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const KTextEditor::Cursor &cursor)
 {
     CALLCI(return, , return, model, filterString(view, range, cursor));
 }
 
-static bool _shouldAbortCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion)
+static bool
+_shouldAbortCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion)
 {
     CALLCI(return, , return, model, shouldAbortCompletion(view, range, currentCompletion));
 }
@@ -75,7 +77,11 @@ static void _aborted(KTextEditor::CodeCompletionModel *model, KTextEditor::View 
     CALLCI(return, , return, model, aborted(view));
 }
 
-static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const QString &automaticInvocationLine, bool m_lastInsertionByUser, const KTextEditor::Cursor &cursor)
+static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model,
+                                   KTextEditor::View *view,
+                                   const QString &automaticInvocationLine,
+                                   bool m_lastInsertionByUser,
+                                   const KTextEditor::Cursor &cursor)
 {
     CALLCI(return, , return, model, shouldStartCompletion(view, automaticInvocationLine, m_lastInsertionByUser, cursor));
 }
@@ -230,7 +236,8 @@ void KateCompletionWidget::modelContentChanged()
         m_argumentHintTree->show();
     }
 
-    if (!m_noAutoHide && hideAutomaticCompletionOnExactMatch && !isHidden() && m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation && m_presentationModel->shouldMatchHideCompletionList()) {
+    if (!m_noAutoHide && hideAutomaticCompletionOnExactMatch && !isHidden() && m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation
+        && m_presentationModel->shouldMatchHideCompletionList()) {
         hide();
     } else if (isHidden() && !m_presentationModel->shouldMatchHideCompletionList() && m_presentationModel->rowCount(QModelIndex())) {
         show();
@@ -286,7 +293,8 @@ void KateCompletionWidget::argumentHintsChanged(bool hasContent)
     }
 }
 
-void KateCompletionWidget::startCompletion(KTextEditor::CodeCompletionModel::InvocationType invocationType, const QList<KTextEditor::CodeCompletionModel *> &models)
+void KateCompletionWidget::startCompletion(KTextEditor::CodeCompletionModel::InvocationType invocationType,
+                                           const QList<KTextEditor::CodeCompletionModel *> &models)
 {
     if (invocationType == KTextEditor::CodeCompletionModel::UserInvocation) {
         abortCompletion();
@@ -302,7 +310,9 @@ void KateCompletionWidget::deleteCompletionRanges()
     m_completionRanges.clear();
 }
 
-void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model, KTextEditor::CodeCompletionModel::InvocationType invocationType)
+void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
+                                           KTextEditor::CodeCompletionModel *model,
+                                           KTextEditor::CodeCompletionModel::InvocationType invocationType)
 {
     QList<KTextEditor::CodeCompletionModel *> models;
     if (model) {
@@ -313,7 +323,9 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, KText
     startCompletion(word, models, invocationType);
 }
 
-void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const QList<KTextEditor::CodeCompletionModel *> &modelsToStart, KTextEditor::CodeCompletionModel::InvocationType invocationType)
+void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
+                                           const QList<KTextEditor::CodeCompletionModel *> &modelsToStart,
+                                           KTextEditor::CodeCompletionModel::InvocationType invocationType)
 {
     ////qCDebug(LOG_KTE)<<"============";
 
@@ -395,7 +407,8 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
 
         disconnect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
 
-        m_completionRanges[model] = CompletionRange(view()->doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandRight | KTextEditor::MovingRange::ExpandLeft));
+        m_completionRanges[model] =
+            CompletionRange(view()->doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandRight | KTextEditor::MovingRange::ExpandLeft));
 
         // In automatic invocation mode, hide the completion widget as soon as the position where the completion was started is passed to the left
         m_completionRanges[model].leftBoundary = view()->cursorPosition();
@@ -472,7 +485,9 @@ void KateCompletionWidget::updateAndShow()
         m_argumentHintTree->hide();
     }
 
-    if (m_presentationModel->rowCount() && (!m_presentationModel->shouldMatchHideCompletionList() || !hideAutomaticCompletionOnExactMatch || m_lastInvocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation)) {
+    if (m_presentationModel->rowCount()
+        && (!m_presentationModel->shouldMatchHideCompletionList() || !hideAutomaticCompletionOnExactMatch
+            || m_lastInvocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation)) {
         show();
     } else {
         hide();
@@ -501,7 +516,8 @@ bool KateCompletionWidget::updatePosition(bool force)
     }
 
     QPoint p = view()->mapToGlobal(cursorPosition);
-    int x = p.x() - m_entryList->columnTextViewportPosition(m_presentationModel->translateColumn(KTextEditor::CodeCompletionModel::Name)) - 7 - (m_entryList->viewport()->pos().x());
+    int x = p.x() - m_entryList->columnTextViewportPosition(m_presentationModel->translateColumn(KTextEditor::CodeCompletionModel::Name)) - 7
+        - (m_entryList->viewport()->pos().x());
     int y = p.y();
 
     y += view()->renderer()->currentFontMetrics().height() + 2;
@@ -719,7 +735,8 @@ void KateCompletionWidget::cursorPositionChanged()
 
         // qCDebug(LOG_KTE)<<"after _shouldAbortCompletion:abort="<<abort;
         if (view()->cursorPosition() < m_completionRanges[model].leftBoundary) {
-            // qCDebug(LOG_KTE) << "aborting because of boundary: cursor:"<<view()->cursorPosition()<<"completion_Range_left_boundary:"<<m_completionRanges[*it].leftBoundary;
+            // qCDebug(LOG_KTE) << "aborting because of boundary:
+            // cursor:"<<view()->cursorPosition()<<"completion_Range_left_boundary:"<<m_completionRanges[*it].leftBoundary;
             abort = true;
         }
 

@@ -60,7 +60,9 @@ void KateConfig::finalizeConfigEntries()
     // we skip entries without a command name, these config entries are not exposed ATM
     for (const auto &entry : m_configEntries) {
         if (!entry.second.commandName.isEmpty()) {
-            Q_ASSERT_X(!m_configKeys->contains(entry.second.commandName), "finalizeConfigEntries", (QLatin1String("KEY NOT UNIQUE: ") + entry.second.commandName).toLocal8Bit().constData());
+            Q_ASSERT_X(!m_configKeys->contains(entry.second.commandName),
+                       "finalizeConfigEntries",
+                       (QLatin1String("KEY NOT UNIQUE: ") + entry.second.commandName).toLocal8Bit().constData());
             m_configKeys->append(entry.second.commandName);
             m_configKeyToEntry->insert(entry.second.commandName, &entry.second);
         }
@@ -467,9 +469,10 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
     addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QString()));
-    addConfigEntry(ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) {
-        return isPositive(value);
-    }));
+    addConfigEntry(ConfigEntry(
+        DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) {
+            return isPositive(value);
+        }));
     addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) {
         return inBounds(1, value, 100);
     }));

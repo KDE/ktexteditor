@@ -175,7 +175,8 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     // load the mode menu, which contains a scrollable list + search bar.
     // This is an alternative menu to the mode action menu of the view.
     m_modeMenuList = new KateModeMenuList(i18n("Mode"), this);
-    m_modeMenuList->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
+    m_modeMenuList->setWhatsThis(i18n(
+        "Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
     m_modeMenuList->updateMenu(m_view->doc());
     // add mode button which allows user to switch mode of document
     m_mode = new StatusBarButton(this);
@@ -283,7 +284,10 @@ void KateStatusBar::cursorPositionChanged()
     // Update line/column label
     QString text;
     if (KateViewConfig::global()->showLineCount()) {
-        text = i18n("Line %1 of %2, Column %3", QLocale().toString(position.line() + 1), QLocale().toString(m_view->doc()->lines()), QLocale().toString(position.column() + 1));
+        text = i18n("Line %1 of %2, Column %3",
+                    QLocale().toString(position.line() + 1),
+                    QLocale().toString(m_view->doc()->lines()),
+                    QLocale().toString(position.column() + 1));
     } else {
         text = i18n("Line %1, Column %2", QLocale().toString(position.line() + 1), QLocale().toString(position.column() + 1));
     }
@@ -372,7 +376,8 @@ void KateStatusBar::modifiedChanged()
 
     case 0x3:
     case 0x7:
-        m_modified->setIcon(QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")), QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
+        m_modified->setIcon(
+            QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")), QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
         m_modified->setWhatsThis(QString());
         break;
 
@@ -484,7 +489,8 @@ void KateStatusBar::slotIndentGroup(QAction *a)
     bool ok;
     KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
     if (val == -1) {
-        val = QInputDialog::getInt(this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
+        val = QInputDialog::getInt(
+            this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
         if (!ok)
             val = config->indentationWidth();
     }
@@ -537,7 +543,12 @@ void KateStatusBar::toggleWordCount(bool on)
 void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, int charsInDocument, int charsInSelection)
 {
     if (m_wordCounter) {
-        m_wordCount = i18nc("%1 and %3 are the selected words/chars count, %2 and %4 are the total words/chars count.", "Words %1/%2, Chars %3/%4", wordsInSelection, wordsInDocument, charsInSelection, charsInDocument);
+        m_wordCount = i18nc("%1 and %3 are the selected words/chars count, %2 and %4 are the total words/chars count.",
+                            "Words %1/%2, Chars %3/%4",
+                            wordsInSelection,
+                            wordsInDocument,
+                            charsInSelection,
+                            charsInDocument);
     } else {
         m_wordCount.clear();
     }

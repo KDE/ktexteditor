@@ -169,7 +169,9 @@ QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighl
     ci.role = KSyntaxHighlighting::Theme::TextSelection;
     ci.name = i18n("Selected Text");
     ci.key = QStringLiteral("Color Selection");
-    ci.whatsThis = i18n("<p>Sets the background color of the selection.</p><p>To set the text color for selected text, use the &quot;<b>Configure Highlighting</b>&quot; dialog.</p>");
+    ci.whatsThis = i18n(
+        "<p>Sets the background color of the selection.</p><p>To set the text color for selected text, use the &quot;<b>Configure Highlighting</b>&quot; "
+        "dialog.</p>");
     ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
@@ -231,7 +233,8 @@ QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighl
     ci.name = i18n("Word Wrap Marker");
     ci.key = QStringLiteral("Color Word Wrap Marker");
     ci.whatsThis = i18n(
-        "<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
+        "<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be "
+        "wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
         "visually-wrapped lines</dd></dl>");
     ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
@@ -286,7 +289,9 @@ QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighl
     ci.role = KSyntaxHighlighting::Theme::BracketMatching;
     ci.name = i18n("Bracket Highlight");
     ci.key = QStringLiteral("Color Highlighted Bracket");
-    ci.whatsThis = i18n("<p>Sets the bracket matching color. This means, if you place the cursor e.g. at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>");
+    ci.whatsThis = i18n(
+        "<p>Sets the bracket matching color. This means, if you place the cursor e.g. at a <b>(</b>, the matching <b>)</b> will be highlighted with this "
+        "color.</p>");
     ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
@@ -295,8 +300,13 @@ QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighl
     //
     ci.category = i18n("Marker Colors");
 
-    const QString markerNames[KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark + 1] = {
-        i18n("Bookmark"), i18n("Active Breakpoint"), i18n("Reached Breakpoint"), i18n("Disabled Breakpoint"), i18n("Execution"), i18n("Warning"), i18n("Error")};
+    const QString markerNames[KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark + 1] = {i18n("Bookmark"),
+                                                                                                                       i18n("Active Breakpoint"),
+                                                                                                                       i18n("Reached Breakpoint"),
+                                                                                                                       i18n("Disabled Breakpoint"),
+                                                                                                                       i18n("Execution"),
+                                                                                                                       i18n("Warning"),
+                                                                                                                       i18n("Error")};
 
     ci.whatsThis = i18n("<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker color is displayed lightly because of transparency.</p>");
     for (int i = 0; i <= KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark; ++i) {
@@ -694,7 +704,8 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
 
     // get current highlighting from the host application
     int hl = 0;
-    KTextEditor::ViewPrivate *kv = qobject_cast<KTextEditor::ViewPrivate *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
+    KTextEditor::ViewPrivate *kv =
+        qobject_cast<KTextEditor::ViewPrivate *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
     if (kv) {
         const QString hlName = kv->doc()->highlight()->name();
         hl = KateHlManager::self()->nameFind(hlName);
@@ -1046,7 +1057,10 @@ void KateThemeConfigPage::exportFullSchema()
 {
     // get save destination
     const QString currentSchemaName = m_currentSchema;
-    const QString destName = QFileDialog::getSaveFileName(this, i18n("Exporting color theme: %1", currentSchemaName), currentSchemaName + QLatin1String(".theme"), QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
+    const QString destName = QFileDialog::getSaveFileName(this,
+                                                          i18n("Exporting color theme: %1", currentSchemaName),
+                                                          currentSchemaName + QLatin1String(".theme"),
+                                                          QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
     if (destName.isEmpty()) {
         return;
     }
@@ -1066,7 +1080,8 @@ void KateThemeConfigPage::exportFullSchema()
 
 void KateThemeConfigPage::importFullSchema()
 {
-    const QString srcName = QFileDialog::getOpenFileName(this, i18n("Importing Color Theme"), QString(), QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
+    const QString srcName =
+        QFileDialog::getOpenFileName(this, i18n("Importing Color Theme"), QString(), QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
     if (srcName.isEmpty()) {
         return;
     }
@@ -1079,9 +1094,12 @@ void KateThemeConfigPage::importFullSchema()
 
     // if something might be overwritten, as the user
     if (QFile::exists(themesFullFileName)) {
-        if (KMessageBox::warningContinueCancel(
-                this, i18n("Importing will overwrite the existing theme file \"%1\". This can not be undone.").arg(themesFullFileName), i18n("Possible Data Loss"), KGuiItem(i18n("Import Nevertheless")), KStandardGuiItem::cancel()) !=
-            KMessageBox::Continue) {
+        if (KMessageBox::warningContinueCancel(this,
+                                               i18n("Importing will overwrite the existing theme file \"%1\". This can not be undone.").arg(themesFullFileName),
+                                               i18n("Possible Data Loss"),
+                                               KGuiItem(i18n("Import Nevertheless")),
+                                               KStandardGuiItem::cancel())
+            != KMessageBox::Continue) {
             return;
         }
     }
@@ -1171,7 +1189,8 @@ void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString 
     // set the correct indexes again, fallback to always existing default theme
     int schemaIndex = schemaCombo->findData(schemaName);
     if (schemaIndex == -1) {
-        schemaIndex = schemaCombo->findData(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name());
+        schemaIndex = schemaCombo->findData(
+            KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name());
     }
 
     // set the correct indexes again, fallback to auto-selection
@@ -1222,9 +1241,12 @@ void KateThemeConfigPage::deleteSchema()
     }
 
     // ask the user again, this can't be undone
-    if (KMessageBox::warningContinueCancel(
-            this, i18n("Do you really want to delete the theme \"%1\"? This can not be undone.").arg(schemaNameToDelete), i18n("Possible Data Loss"), KGuiItem(i18n("Delete Nevertheless")), KStandardGuiItem::cancel()) !=
-        KMessageBox::Continue) {
+    if (KMessageBox::warningContinueCancel(this,
+                                           i18n("Do you really want to delete the theme \"%1\"? This can not be undone.").arg(schemaNameToDelete),
+                                           i18n("Possible Data Loss"),
+                                           KGuiItem(i18n("Delete Nevertheless")),
+                                           KStandardGuiItem::cancel())
+        != KMessageBox::Continue) {
         return;
     }
 
@@ -1235,7 +1257,8 @@ void KateThemeConfigPage::deleteSchema()
     KateHlManager::self()->reload();
 
     // fallback to Default schema + auto
-    schemaCombo->setCurrentIndex(schemaCombo->findData(QVariant(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name())));
+    schemaCombo->setCurrentIndex(schemaCombo->findData(
+        QVariant(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name())));
     if (defaultSchemaCombo->currentIndex() == defaultSchemaCombo->findData(schemaNameToDelete)) {
         defaultSchemaCombo->setCurrentIndex(0);
     }
@@ -1274,7 +1297,8 @@ bool KateThemeConfigPage::copyTheme()
         // we try for duplicated file names, too
         themeFileName = themesPath + QStringLiteral("/") + schemaName + QStringLiteral(".theme");
         if (KateHlManager::self()->repository().theme(schemaName).isValid() || QFile::exists(themeFileName)) {
-            KMessageBox::information(this, i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName), i18n("Copy Theme"));
+            KMessageBox::information(
+                this, i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName), i18n("Copy Theme"));
             schemaName.clear();
         }
     }

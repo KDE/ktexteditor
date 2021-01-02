@@ -86,7 +86,8 @@ public:
      * @param range range to execute command on
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool
+    exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     bool supportsRange(const QString &range) override;
 
@@ -135,7 +136,8 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool
+    exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &) override;
@@ -174,7 +176,8 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool
+    exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &) override;

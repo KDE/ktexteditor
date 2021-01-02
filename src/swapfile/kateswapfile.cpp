@@ -422,7 +422,8 @@ void SwapFile::startEditing()
     // in case you recover and start editing again
     if (!m_swapfile.exists()) {
         // create path if not there
-        if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory && !QDir(KateDocumentConfig::global()->swapDirectory()).exists()) {
+        if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory
+            && !QDir(KateDocumentConfig::global()->swapDirectory()).exists()) {
             QDir().mkpath(KateDocumentConfig::global()->swapDirectory());
         }
 

@@ -66,12 +66,14 @@ bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, Q
     } else if (realcmd == QLatin1String("comment")) {
         msg = i18n(
             "<p>comment</p>"
-            "<p>Inserts comment markers to make the selection or selected lines or current line a comment according to the text format as defined by the syntax highlight definition for the document.</p>");
+            "<p>Inserts comment markers to make the selection or selected lines or current line a comment according to the text format as defined by the "
+            "syntax highlight definition for the document.</p>");
         return true;
     } else if (realcmd == QLatin1String("uncomment")) {
         msg = i18n(
             "<p>uncomment</p>"
-            "<p>Removes comment markers from the selection or selected lines or current line according to the text format as defined by the syntax highlight definition for the document.</p>");
+            "<p>Removes comment markers from the selection or selected lines or current line according to the text format as defined by the syntax highlight "
+            "definition for the document.</p>");
         return true;
     } else if (realcmd == QLatin1String("goto")) {
         msg = i18n(
@@ -178,7 +180,8 @@ bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, Q
     } else if (realcmd == QLatin1String("set-highlight")) {
         msg = i18n(
             "<p>set-highlight <b>highlight</b></p>"
-            "<p>Sets the syntax highlighting system for the document. The argument must be a valid highlight name, as seen in the Tools → Highlighting menu. This command provides an autocompletion list for its argument.</p>");
+            "<p>Sets the syntax highlighting system for the document. The argument must be a valid highlight name, as seen in the Tools → Highlighting menu. "
+            "This command provides an autocompletion list for its argument.</p>");
         return true;
     } else if (realcmd == QLatin1String("set-mode")) {
         msg = i18n(
@@ -202,10 +205,10 @@ bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, Q
 
 bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_cmd, QString &errorMsg, const KTextEditor::Range &range)
 {
-#define KCC_ERR(s)                                                                                                                                                                                                                             \
-    {                                                                                                                                                                                                                                          \
-        errorMsg = s;                                                                                                                                                                                                                          \
-        return false;                                                                                                                                                                                                                          \
+#define KCC_ERR(s)                                                                                                                                             \
+    {                                                                                                                                                          \
+        errorMsg = s;                                                                                                                                          \
+        return false;                                                                                                                                          \
     }
     // cast it hardcore, we know that it is really a kateview :)
     KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
@@ -257,7 +260,8 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_c
         }
         return true;
     } else if (cmd == QLatin1String("fold")) {
-        return (v->textFolding().newFoldingRange(range.isValid() ? range : v->selectionRange(), Kate::TextFolding::Persistent | Kate::TextFolding::Folded) != -1);
+        return (v->textFolding().newFoldingRange(range.isValid() ? range : v->selectionRange(), Kate::TextFolding::Persistent | Kate::TextFolding::Folded)
+                != -1);
     } else if (cmd == QLatin1String("tfold")) {
         return (v->textFolding().newFoldingRange(range.isValid() ? range : v->selectionRange(), Kate::TextFolding::Folded) != -1);
     } else if (cmd == QLatin1String("unfold")) {
@@ -334,7 +338,8 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_c
         }
     }
     // ALL commands that takes exactly one integer argument.
-    else if (cmd == QLatin1String("set-tab-width") || cmd == QLatin1String("set-indent-width") || cmd == QLatin1String("set-word-wrap-column") || cmd == QLatin1String("goto")) {
+    else if (cmd == QLatin1String("set-tab-width") || cmd == QLatin1String("set-indent-width") || cmd == QLatin1String("set-word-wrap-column")
+             || cmd == QLatin1String("goto")) {
         // find a integer value > 0
         if (args.isEmpty()) {
             KCC_ERR(i18n("Missing argument. Usage: %1 <value>", cmd));
@@ -381,8 +386,10 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_c
     }
 
     // ALL commands that takes 1 boolean argument.
-    else if (cmd == QLatin1String("set-icon-border") || cmd == QLatin1String("set-folding-markers") || cmd == QLatin1String("set-indent-pasted-text") || cmd == QLatin1String("set-line-numbers") || cmd == QLatin1String("set-replace-tabs") ||
-             cmd == QLatin1String("set-show-tabs") || cmd == QLatin1String("set-word-wrap") || cmd == QLatin1String("set-wrap-cursor") || cmd == QLatin1String("set-replace-tabs-save") || cmd == QLatin1String("set-show-indent")) {
+    else if (cmd == QLatin1String("set-icon-border") || cmd == QLatin1String("set-folding-markers") || cmd == QLatin1String("set-indent-pasted-text")
+             || cmd == QLatin1String("set-line-numbers") || cmd == QLatin1String("set-replace-tabs") || cmd == QLatin1String("set-show-tabs")
+             || cmd == QLatin1String("set-word-wrap") || cmd == QLatin1String("set-wrap-cursor") || cmd == QLatin1String("set-replace-tabs-save")
+             || cmd == QLatin1String("set-show-indent")) {
         if (args.isEmpty()) {
             KCC_ERR(i18n("Usage: %1 on|off|1|0|true|false", cmd));
         }
@@ -437,8 +444,8 @@ bool KateCommands::CoreCommands::supportsRange(const QString &range)
     static QStringList l;
 
     if (l.isEmpty())
-        l << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent") << QStringLiteral("comment") << QStringLiteral("uncomment") << QStringLiteral("kill-line") << QStringLiteral("fold")
-          << QStringLiteral("tfold");
+        l << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent") << QStringLiteral("comment") << QStringLiteral("uncomment")
+          << QStringLiteral("kill-line") << QStringLiteral("fold") << QStringLiteral("tfold");
 
     return l.contains(range);
 }

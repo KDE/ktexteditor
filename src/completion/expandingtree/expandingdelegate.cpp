@@ -83,8 +83,8 @@ void ExpandingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     option.decorationAlignment = m_cachedAlignment;
     option.displayAlignment = m_cachedAlignment;
 
-    // qCDebug(LOG_KTE) << "Painting row " << index.row() << ", column " << index.column() << ", internal " << index.internalPointer() << ", drawselected " << option.showDecorationSelected << ", selected " << (option.state &
-    // QStyle::State_Selected);
+    // qCDebug(LOG_KTE) << "Painting row " << index.row() << ", column " << index.column() << ", internal " << index.internalPointer() << ", drawselected " <<
+    // option.showDecorationSelected << ", selected " << (option.state & QStyle::State_Selected);
 
     m_cachedHighlights.clear();
     m_backgroundColor = getUsedBackgroundColor(option, index);
@@ -126,7 +126,8 @@ QSize ExpandingDelegate::sizeHint(const QStyleOptionViewItem &option, const QMod
         QWidget *widget = model()->expandingWidget(index);
         QSize widgetSize = widget->size();
 
-        s.setHeight(widgetSize.height() + s.height() + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidgets
+        s.setHeight(widgetSize.height() + s.height()
+                    + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidgets
     } else if (model()->isPartiallyExpanded(index)) {
         s.setHeight(s.height() + 30 + 10);
     }
@@ -315,7 +316,8 @@ QVector<QTextLayout::FormatRange> ExpandingDelegate::highlightingFromVariantList
     QVector<QTextLayout::FormatRange> ret;
 
     for (int i = 0; i + 2 < customHighlights.count(); i += 3) {
-        if (!customHighlights[i].canConvert(QVariant::Int) || !customHighlights[i + 1].canConvert(QVariant::Int) || !customHighlights[i + 2].canConvert<QTextFormat>()) {
+        if (!customHighlights[i].canConvert(QVariant::Int) || !customHighlights[i + 1].canConvert(QVariant::Int)
+            || !customHighlights[i + 2].canConvert<QTextFormat>()) {
             qCWarning(LOG_KTE) << "Unable to convert triple to custom formatting.";
             continue;
         }

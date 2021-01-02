@@ -193,7 +193,12 @@ private:
 
     int minimapYToStdY(int y);
 
-    const QColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex, const QVector<QTextLayout::FormatRange> &decorations, const QColor &defaultColor, int x, QChar ch);
+    const QColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
+                           int &attributeIndex,
+                           const QVector<QTextLayout::FormatRange> &decorations,
+                           const QColor &defaultColor,
+                           int x,
+                           QChar ch);
 
     bool m_middleMouseDown;
     bool m_leftMouseDown;
@@ -330,7 +335,11 @@ private:
     void calcAnnotationBorderWidth();
 
     void initStyleOption(KTextEditor::StyleOptionAnnotationItem *styleOption) const;
-    void setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem *styleOption, int y, int realLine, const KTextEditor::AnnotationModel *model, const QString &annotationGroupIdentifier) const;
+    void setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem *styleOption,
+                                int y,
+                                int realLine,
+                                const KTextEditor::AnnotationModel *model,
+                                const QString &annotationGroupIdentifier) const;
     QRect annotationLineRectInView(int line) const;
 
 private:

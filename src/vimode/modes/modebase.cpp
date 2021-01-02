@@ -46,7 +46,8 @@ void ModeBase::yankToClipBoard(QChar chosen_register, const QString &text)
 {
     // only yank to the clipboard if no register was specified,
     // textlength > 1 and there is something else then whitespace
-    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-') || chosen_register == PrependNumberedRegister) && text.length() > 1 && !text.trimmed().isEmpty()) {
+    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-') || chosen_register == PrependNumberedRegister) && text.length() > 1
+        && !text.trimmed().isEmpty()) {
         KTextEditor::EditorPrivate::self()->copyToClipboard(text);
     }
 }
@@ -575,7 +576,8 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
         int attribute = m_view->doc()->kateTextLine(cursor.line())->attribute(cursor.column());
 
         //  If at the beginning of the line - then we might search the end.
-        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) == attribute && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) != attribute) {
+        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) == attribute
+            && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) != attribute) {
             r.startColumn = cursor.column();
             r.endColumn = line.indexOf(c, cursor.column() + 1);
 
@@ -583,7 +585,8 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
         }
 
         //  If at the end of the line - then we might search the beginning.
-        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) != attribute && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) == attribute) {
+        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) != attribute
+            && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) == attribute) {
             r.startColumn = line.lastIndexOf(c, cursor.column() - 1);
             r.endColumn = cursor.column();
 
@@ -944,7 +947,8 @@ Range ModeBase::goVisualLineUpDown(int lines)
         // Adjust for the fact that if the portion of the line before wrapping is indented,
         // the continuations are also "invisibly" (i.e. without any spaces in the text itself) indented.
         const bool isWrappedContinuation = (cache->textLayout(startRealLine, startVisualLine).lineLayout().lineNumber() != 0);
-        const int numInvisibleIndentChars = isWrappedContinuation ? startLine->toVirtualColumn(cache->line(startRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
+        const int numInvisibleIndentChars =
+            isWrappedContinuation ? startLine->toVirtualColumn(cache->line(startRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
 
         const int realLineStartColumn = cache->textLayout(startRealLine, startVisualLine).startCol();
         const int lineStartVirtualColumn = startLine->toVirtualColumn(realLineStartColumn, tabstop);
@@ -960,7 +964,8 @@ Range ModeBase::goVisualLineUpDown(int lines)
     // Adjust for the fact that if the portion of the line before wrapping is indented,
     // the continuations are also "invisibly" (i.e. without any spaces in the text itself) indented.
     const bool isWrappedContinuation = (cache->textLayout(finishRealLine, finishVisualLine).lineLayout().lineNumber() != 0);
-    const int numInvisibleIndentChars = isWrappedContinuation ? endLine->toVirtualColumn(cache->line(finishRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
+    const int numInvisibleIndentChars =
+        isWrappedContinuation ? endLine->toVirtualColumn(cache->line(finishRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
     if (m_stickyColumn == (unsigned int)KateVi::EOL) {
         const int visualEndColumn = cache->textLayout(finishRealLine, finishVisualLine).lineLayout().textLength() - 1;
         r.endColumn = endLine->fromVirtualColumn(visualEndColumn + realLineStartColumn - numInvisibleIndentChars, tabstop);
@@ -970,7 +975,8 @@ Range ModeBase::goVisualLineUpDown(int lines)
         int realOffsetToVisualStickyColumn = 0;
         const int lineStartVirtualColumn = endLine->toVirtualColumn(realLineStartColumn, tabstop);
         while (true) {
-            const int visualColumn = endLine->toVirtualColumn(realLineStartColumn + realOffsetToVisualStickyColumn, tabstop) - lineStartVirtualColumn + numInvisibleIndentChars;
+            const int visualColumn =
+                endLine->toVirtualColumn(realLineStartColumn + realOffsetToVisualStickyColumn, tabstop) - lineStartVirtualColumn + numInvisibleIndentChars;
             if (visualColumn >= m_stickyColumn) {
                 break;
             }
@@ -1195,7 +1201,8 @@ void ModeBase::addToNumberUnderCursor(int count)
 
     // Create the new text string to be inserted. Prepend with “0x” if in base 16, and "0" if base 8.
     // For non-decimal numbers, try to keep the length of the number the same (including leading 0's).
-    const QString newNumberPadded = (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
+    const QString newNumberPadded =
+        (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
     const QString newNumberText = basePrefix + newNumberPadded;
 
     // Replace the old number string with the new.
@@ -1251,28 +1258,32 @@ void ModeBase::switchView(Direction direction)
 
             switch (direction) {
             case Left:
-                if (view != m_view && x2 <= curr_x1 && (x2 > best_x2 || (x2 == best_x2 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
+                if (view != m_view && x2 <= curr_x1
+                    && (x2 > best_x2 || (x2 == best_x2 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
                     bestview = view;
                     best_x2 = x2;
                     best_center_y = center_y;
                 }
                 break;
             case Right:
-                if (view != m_view && x1 >= curr_x2 && (x1 < best_x1 || (x1 == best_x1 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
+                if (view != m_view && x1 >= curr_x2
+                    && (x1 < best_x1 || (x1 == best_x1 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
                     bestview = view;
                     best_x1 = x1;
                     best_center_y = center_y;
                 }
                 break;
             case Down:
-                if (view != m_view && y1 >= curr_y2 && (y1 < best_y1 || (y1 == best_y1 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
+                if (view != m_view && y1 >= curr_y2
+                    && (y1 < best_y1 || (y1 == best_y1 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
                     bestview = view;
                     best_y1 = y1;
                     best_center_x = center_x;
                 }
                 break;
             case Up:
-                if (view != m_view && y2 <= curr_y1 && (y2 > best_y2 || (y2 == best_y2 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
+                if (view != m_view && y2 <= curr_y1
+                    && (y2 > best_y2 || (y2 == best_y2 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
                     bestview = view;
                     best_y2 = y2;
                     best_center_x = center_x;

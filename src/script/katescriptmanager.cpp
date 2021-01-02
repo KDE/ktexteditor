@@ -56,7 +56,8 @@ KateIndentScript *KateScriptManager::indenter(const QString &language)
         // don't overwrite if there is already a result with a higher priority
         if (highestPriorityIndenter && indenter->indentHeader().priority() < highestPriorityIndenter->indentHeader().priority()) {
 #ifdef DEBUG_SCRIPTMANAGER
-            qCDebug(LOG_KTE) << "Not overwriting indenter for" << language << "as the priority isn't big enough (" << indenter->indentHeader().priority() << '<' << highestPriorityIndenter->indentHeader().priority() << ')';
+            qCDebug(LOG_KTE) << "Not overwriting indenter for" << language << "as the priority isn't big enough (" << indenter->indentHeader().priority() << '<'
+                             << highestPriorityIndenter->indentHeader().priority() << ')';
 #endif
         } else {
             highestPriorityIndenter = indenter;
@@ -172,7 +173,8 @@ void KateScriptManager::collect()
             QJsonParseError error;
             const QJsonDocument metaInfo(QJsonDocument::fromJson(fileContent.mid(startOfJson, endOfJson - startOfJson), &error));
             if (error.error || !metaInfo.isObject()) {
-                qCDebug(LOG_KTE) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << error.errorString() << endOfJson << fileContent.mid(endOfJson - 25, 25).replace('\n', ' ');
+                qCDebug(LOG_KTE) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << error.errorString() << endOfJson
+                                 << fileContent.mid(endOfJson - 25, 25).replace('\n', ' ');
                 continue;
             }
 
@@ -200,7 +202,8 @@ void KateScriptManager::collect()
                 indentHeader.setName(metaInfoObject.value(QStringLiteral("name")).toString());
                 indentHeader.setBaseName(baseName);
                 if (indentHeader.name().isNull()) {
-                    qCDebug(LOG_KTE) << "Script value error: No name specified in script meta data: " << qPrintable(fileName) << '\n' << "-> skipping indenter" << '\n';
+                    qCDebug(LOG_KTE) << "Script value error: No name specified in script meta data: " << qPrintable(fileName) << '\n'
+                                     << "-> skipping indenter" << '\n';
                     continue;
                 }
 
@@ -236,7 +239,8 @@ void KateScriptManager::collect()
                 commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QStringLiteral("functions"))));
                 commandHeader.setActions(metaInfoObject.value(QStringLiteral("actions")).toArray());
                 if (commandHeader.functions().isEmpty()) {
-                    qCDebug(LOG_KTE) << "Script value error: No functions specified in script meta data: " << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';
+                    qCDebug(LOG_KTE) << "Script value error: No functions specified in script meta data: " << qPrintable(fileName) << '\n'
+                                     << "-> skipping script" << '\n';
                     continue;
                 }
                 KateCommandLineScript *script = new KateCommandLineScript(fileName, commandHeader);

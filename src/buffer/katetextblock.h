@@ -7,14 +7,21 @@
 #ifndef KATE_TEXTBLOCK_H
 #define KATE_TEXTBLOCK_H
 
+#include <unordered_map>
 #include <unordered_set>
 
 #include <QSet>
+#include <QVarLengthArray>
 #include <QVector>
 
 #include "katetextline.h"
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
+
+namespace KTextEditor
+{
+class View;
+}
 
 namespace Kate
 {
@@ -155,13 +162,12 @@ public:
 
     /**
      * Return all ranges in this block which might intersect the given line.
-     * @param line line to check intersection
-     * @return list of sets of possible candidate ranges
+     * @param line                          line to check intersection
+     * @param view                          only return ranges associated with given view
+     * @param rangesWithAttributeOnly       ranges with attributes only?
+     * @return list of possible candidate ranges
      */
-    QList<QSet<TextRange *>> rangesForLine(int line) const
-    {
-        return QList<QSet<TextRange *>>() << m_uncachedRanges << cachedRangesForLine(line);
-    }
+    QVector<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
 
     /**
      * Is the given range contained in this block?
@@ -170,7 +176,7 @@ public:
      */
     bool containsRange(TextRange *range) const
     {
-        return m_cachedLineForRanges.contains(range) || m_uncachedRanges.contains(range);
+        return m_cachedLineForRanges.find(range) != m_cachedLineForRanges.end() || m_uncachedRanges.contains(range);
     }
 
     /**
@@ -257,12 +263,12 @@ private:
     /**
      * Maps for each cached range the line into which the range was cached.
      */
-    QHash<TextRange *, int> m_cachedLineForRanges;
+    std::unordered_map<TextRange *, int> m_cachedLineForRanges;
 
     /**
      * This contains all the ranges that are not cached.
      */
-    QSet<TextRange *> m_uncachedRanges;
+    QVarLengthArray<TextRange *, 1> m_uncachedRanges;
 };
 
 }

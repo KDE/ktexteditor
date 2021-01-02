@@ -38,7 +38,7 @@ private:
     void clearReplaceHistory();
     QStringList replaceHistory();
 
-    QList<Kate::TextRange *> rangesOnFirstLine();
+    QVector<Kate::TextRange *> rangesOnFirstLine();
     void verifyTextEditBackgroundColour(const QColor &expectedBackgroundColour);
     QLabel *commandResponseMessageDisplay();
     void waitForEmulatedCommandBarToHide(long int timeout);

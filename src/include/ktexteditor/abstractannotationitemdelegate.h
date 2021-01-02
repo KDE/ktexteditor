@@ -169,7 +169,11 @@ public:
      *
      * Reimplement this in line with hideTooltip().
      */
-    virtual bool helpEvent(QHelpEvent *event, KTextEditor::View *view, const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) = 0;
+    virtual bool helpEvent(QHelpEvent *event,
+                           KTextEditor::View *view,
+                           const KTextEditor::StyleOptionAnnotationItem &option,
+                           KTextEditor::AnnotationModel *model,
+                           int line) = 0;
     /**
      * This pure abstract function must be reimplemented to provide custom tooltips.
      * It is called whenever a possible still shown tooltip no longer is valid,

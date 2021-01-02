@@ -105,7 +105,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     clearYankHighlight();
 
-    if (keyCode == Qt::Key_Escape || (keyCode == Qt::Key_C && e->modifiers() == Qt::ControlModifier) || (keyCode == Qt::Key_BracketLeft && e->modifiers() == Qt::ControlModifier)) {
+    if (keyCode == Qt::Key_Escape || (keyCode == Qt::Key_C && e->modifiers() == Qt::ControlModifier)
+        || (keyCode == Qt::Key_BracketLeft && e->modifiers() == Qt::ControlModifier)) {
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
         m_pendingResetIsDueToExit = true;
         // Vim in weird as if we e.g. i<ctrl-o><ctrl-c> it claims (in the status bar) to still be in insert mode,
@@ -177,7 +178,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         // If the cursor is at the end of the current word rewrite to "cl"
         const bool isWORD = (m_keys.at(1) == QLatin1Char('W'));
         const KTextEditor::Cursor currentPosition(m_view->cursorPosition());
-        const KTextEditor::Cursor endOfWordOrWORD = (isWORD ? findWORDEnd(currentPosition.line(), currentPosition.column() - 1, true) : findWordEnd(currentPosition.line(), currentPosition.column() - 1, true));
+        const KTextEditor::Cursor endOfWordOrWORD = (isWORD ? findWORDEnd(currentPosition.line(), currentPosition.column() - 1, true)
+                                                            : findWordEnd(currentPosition.line(), currentPosition.column() - 1, true));
 
         if (currentPosition == endOfWordOrWORD) {
             m_keys = QStringLiteral("cl");
@@ -196,8 +198,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         } else {
             QChar r = m_keys[1].toLower();
 
-            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*') ||
-                r == QLatin1Char('#') || r == QLatin1Char('^')) {
+            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_')
+                || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') || r == QLatin1Char('^')) {
                 m_register = m_keys[1];
                 m_keys.clear();
                 return true;
@@ -260,12 +262,13 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     bool motionExecuted = false;
     if (checkFrom < m_keys.size()) {
         for (int i = 0; i < m_motions.size(); i++) {
-            if (m_motions.at(i)->matches(m_keys.mid(checkFrom))) {
+            const QString motion = m_keys.mid(checkFrom);
+            if (m_motions.at(i)->matches(motion)) {
                 m_lastMotionWasLinewiseInnerBlock = false;
                 m_matchingMotions.push_back(i);
 
                 // if it matches exact, we have found the motion command to execute
-                if (m_motions.at(i)->matchesExact(m_keys.mid(checkFrom))) {
+                if (m_motions.at(i)->matchesExact(motion)) {
                     m_currentMotionWasVisualLineUpOrDown = false;
                     motionExecuted = true;
                     if (checkFrom == 0) {
@@ -274,11 +277,15 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         Range r = m_motions.at(i)->execute();
                         m_motionCanChangeWholeVisualModeSelection = m_motions.at(i)->canChangeWholeVisualModeSelection();
 
-                        // jump over folding regions since we are just moving the cursor
-                        int currLine = m_view->cursorPosition().line();
-                        int delta = r.endLine - currLine;
-                        int vline = m_view->textFolding().lineToVisibleLine(currLine);
-                        r.endLine = m_view->textFolding().visibleLineToLine(qMax(vline + delta, 0) /* ensure we have a valid line */);
+                        if (motion != QLatin1String("n") && motion != QLatin1String("N")) {
+                            // jump over folding regions since we are just moving the cursor
+                            // except when jumping to search matches since they can be inside folds
+                            int currLine = m_view->cursorPosition().line();
+                            int delta = r.endLine - currLine;
+                            int vline = m_view->textFolding().lineToVisibleLine(currLine);
+                            r.endLine = m_view->textFolding().visibleLineToLine(qMax(vline + delta, 0) /* ensure we have a valid line */);
+                        }
+
                         if (r.endLine >= doc()->lines()) {
                             r.endLine = doc()->lines() - 1;
                         }
@@ -2952,7 +2959,11 @@ Range NormalViMode::motionToAfterParagraph()
 
 Range NormalViMode::motionToIncrementalSearchMatch()
 {
-    return Range(m_positionWhenIncrementalSearchBegan.line(), m_positionWhenIncrementalSearchBegan.column(), m_view->cursorPosition().line(), m_view->cursorPosition().column(), ExclusiveMotion);
+    return Range(m_positionWhenIncrementalSearchBegan.line(),
+                 m_positionWhenIncrementalSearchBegan.column(),
+                 m_view->cursorPosition().line(),
+                 m_view->cursorPosition().column(),
+                 ExclusiveMotion);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2997,7 +3008,8 @@ Range NormalViMode::textObjectAWord()
         c2 = KTextEditor::Cursor(c2.line() + 1, 0);
         swallowCarriageReturnAtEndOfLine = true;
     }
-    const bool swallowPrecedingSpaces = (c2.column() == doc()->lineLength(c2.line()) - 1 && !doc()->characterAt(c2).isSpace()) || startedOnSpace || swallowCarriageReturnAtEndOfLine;
+    const bool swallowPrecedingSpaces =
+        (c2.column() == doc()->lineLength(c2.line()) - 1 && !doc()->characterAt(c2).isSpace()) || startedOnSpace || swallowCarriageReturnAtEndOfLine;
     if (swallowPrecedingSpaces) {
         if (c1.column() != 0) {
             const KTextEditor::Cursor previousNonSpace = findPrevWordEnd(c.line(), c.column());
@@ -3076,7 +3088,8 @@ Range NormalViMode::textObjectAWORD()
         c2 = KTextEditor::Cursor(c2.line() + 1, 0);
         swallowCarriageReturnAtEndOfLine = true;
     }
-    const bool swallowPrecedingSpaces = (c2.column() == doc()->lineLength(c2.line()) - 1 && !doc()->characterAt(c2).isSpace()) || startedOnSpace || swallowCarriageReturnAtEndOfLine;
+    const bool swallowPrecedingSpaces =
+        (c2.column() == doc()->lineLength(c2.line()) - 1 && !doc()->characterAt(c2).isSpace()) || startedOnSpace || swallowCarriageReturnAtEndOfLine;
     if (swallowPrecedingSpaces) {
         if (c1.column() != 0) {
             const KTextEditor::Cursor previousNonSpace = findPrevWORDEnd(c.line(), c.column());
@@ -3697,7 +3710,8 @@ OperationMode NormalViMode::getOperationMode() const
 
     if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
         m = Block;
-    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode || (m_commandRange.startLine != m_commandRange.endLine && m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode)) {
+    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode
+               || (m_commandRange.startLine != m_commandRange.endLine && m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode)) {
         m = LineWise;
     }
 
@@ -3739,7 +3753,8 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
         if (isIndentedPaste) {
             // Note that this does indeed work if there is no non-whitespace on the current line or if
             // the line is empty!
-            const QString leadingWhiteSpaceOnCurrentLine = doc()->line(pasteAt.line()).mid(0, doc()->line(pasteAt.line()).indexOf(QRegExp(QLatin1String("[^\\s]"))));
+            const QString leadingWhiteSpaceOnCurrentLine =
+                doc()->line(pasteAt.line()).mid(0, doc()->line(pasteAt.line()).indexOf(QRegExp(QLatin1String("[^\\s]"))));
             const QString leadingWhiteSpaceOnFirstPastedLine = textToInsert.mid(0, textToInsert.indexOf(QRegExp(QLatin1String("[^\\s]"))));
             // QString has no "left trim" method, bizarrely.
             while (textToInsert[0].isSpace()) {
@@ -3992,13 +4007,16 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
         QChar cPrefix = m_keys[0];
         if (keysSize == 2) {
             // delete/replace/yank/indent operator?
-            if (cPrefix != QLatin1Char('c') && cPrefix != QLatin1Char('d') && cPrefix != QLatin1Char('y') && cPrefix != QLatin1Char('=') && cPrefix != QLatin1Char('>') && cPrefix != QLatin1Char('<')) {
+            if (cPrefix != QLatin1Char('c') && cPrefix != QLatin1Char('d') && cPrefix != QLatin1Char('y') && cPrefix != QLatin1Char('=')
+                && cPrefix != QLatin1Char('>') && cPrefix != QLatin1Char('<')) {
                 return false;
             }
         } else if (keysSize == 3) {
             // We need to look deeper. Is it a g motion?
             QChar cNextfix = m_keys[1];
-            if (cPrefix != QLatin1Char('g') || (cNextfix != QLatin1Char('U') && cNextfix != QLatin1Char('u') && cNextfix != QLatin1Char('~') && cNextfix != QLatin1Char('q') && cNextfix != QLatin1Char('w') && cNextfix != QLatin1Char('@'))) {
+            if (cPrefix != QLatin1Char('g')
+                || (cNextfix != QLatin1Char('U') && cNextfix != QLatin1Char('u') && cNextfix != QLatin1Char('~') && cNextfix != QLatin1Char('q')
+                    && cNextfix != QLatin1Char('w') && cNextfix != QLatin1Char('@'))) {
                 return false;
             }
         } else {
@@ -4007,8 +4025,8 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
     }
 
     QChar ch = m_keys[keysSize - 1];
-    return (ch == QLatin1Char('f') || ch == QLatin1Char('t') || ch == QLatin1Char('F') ||
-            ch == QLatin1Char('T')
+    return (ch == QLatin1Char('f') || ch == QLatin1Char('t') || ch == QLatin1Char('F')
+            || ch == QLatin1Char('T')
             // c/d prefix unapplicable for the following cases.
             || (keysSize == 1 && (ch == QLatin1Char('r') || ch == QLatin1Char('q') || ch == QLatin1Char('@'))));
 }
@@ -4016,7 +4034,8 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
 void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
-    const bool isInsertReplaceMode = (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
+    const bool isInsertReplaceMode =
+        (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
     const bool continuesInsertion = range.start().line() == m_currentChangeEndMarker.line() && range.start().column() == m_currentChangeEndMarker.column();
     const bool beginsWithNewline = doc()->text(range).at(0) == QLatin1Char('\n');
     if (!continuesInsertion) {
@@ -4050,7 +4069,8 @@ void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Ra
 void NormalViMode::textRemoved(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
-    const bool isInsertReplaceMode = (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
+    const bool isInsertReplaceMode =
+        (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
     m_viInputModeManager->marks()->setLastChange(range.start());
     if (!isInsertReplaceMode) {
         // Don't go resetting [ just because we did a Ctrl-h!
@@ -4065,8 +4085,10 @@ void NormalViMode::textRemoved(KTextEditor::Document *document, KTextEditor::Ran
         // be at the beginning of the line after the last line removed, else they should at the beginning
         // of the line above that.
         const int markerLineAdjustment = (range.start().line() != range.end().line()) ? 1 : 0;
-        m_viInputModeManager->marks()->setStartEditYanked(KTextEditor::Cursor(m_viInputModeManager->marks()->getStartEditYanked().line() + markerLineAdjustment, 0));
-        m_viInputModeManager->marks()->setFinishEditYanked(KTextEditor::Cursor(m_viInputModeManager->marks()->getFinishEditYanked().line() + markerLineAdjustment, 0));
+        m_viInputModeManager->marks()->setStartEditYanked(
+            KTextEditor::Cursor(m_viInputModeManager->marks()->getStartEditYanked().line() + markerLineAdjustment, 0));
+        m_viInputModeManager->marks()->setFinishEditYanked(
+            KTextEditor::Cursor(m_viInputModeManager->marks()->getFinishEditYanked().line() + markerLineAdjustment, 0));
         m_viInputModeManager->marks()->setLastChange(KTextEditor::Cursor(m_viInputModeManager->marks()->getLastChange().line() + markerLineAdjustment, 0));
     }
 }

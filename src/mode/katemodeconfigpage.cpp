@@ -142,7 +142,8 @@ void ModeConfigPage::update()
 
     // get current filetype from active view via the host application
     int currentIndex = 0;
-    KTextEditor::ViewPrivate *kv = qobject_cast<KTextEditor::ViewPrivate *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
+    KTextEditor::ViewPrivate *kv =
+        qobject_cast<KTextEditor::ViewPrivate *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
     if (kv) {
         const QString filetypeName = kv->doc()->fileType();
         for (int i = 0; i < m_types.size(); ++i) {
@@ -283,7 +284,8 @@ void ModeConfigPage::typeChanged(int type)
 
 void ModeConfigPage::showMTDlg()
 {
-    QString text = i18n("Select the MimeTypes you want for this file type.\nPlease note that this will automatically edit the associated file extensions as well.");
+    QString text =
+        i18n("Select the MimeTypes you want for this file type.\nPlease note that this will automatically edit the associated file extensions as well.");
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     QStringList list = ui->edtMimeTypes->text().split(QRegularExpression(QStringLiteral("\\s*;\\s*")), QString::SkipEmptyParts);
 #else

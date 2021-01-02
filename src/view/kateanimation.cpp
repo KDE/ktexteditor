@@ -67,7 +67,8 @@ void KateAnimation::hide()
     Q_ASSERT(m_widget != nullptr);
 
     // hide according to effects config
-    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget) || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
+    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget)
+        || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
     ) {
         // hide depending on effect
         if (m_fadeEffect) {

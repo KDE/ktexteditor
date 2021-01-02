@@ -170,7 +170,8 @@ struct IndexPair {
     int closeIndex;
 };
 
-QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards, QRegularExpression::PatternOptions options)
+QVector<KTextEditor::Range>
+KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards, QRegularExpression::PatternOptions options)
 {
     // Returned if no matches are found
     QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
@@ -680,7 +681,8 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
                             const ushort text_4 = text[input + 4].unicode();
                             if (((text_4 >= L'0') && (text_4 <= L'9')) || ((text_4 >= L'a') && (text_4 <= L'f')) || ((text_4 >= L'A') && (text_4 <= L'F'))) {
                                 const ushort text_5 = text[input + 5].unicode();
-                                if (((text_5 >= L'0') && (text_5 <= L'9')) || ((text_5 >= L'a') && (text_5 <= L'f')) || ((text_5 >= L'A') && (text_5 <= L'F'))) {
+                                if (((text_5 >= L'0') && (text_5 <= L'9')) || ((text_5 >= L'a') && (text_5 <= L'f'))
+                                    || ((text_5 >= L'A') && (text_5 <= L'F'))) {
                                     int digits[4];
                                     for (int i = 0; i < 4; i++) {
                                         const ushort cur = text[input + 2 + i].unicode();

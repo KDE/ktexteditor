@@ -60,7 +60,11 @@ public:
      * NOTE: The handler deletes itself when required, you do not need to
      *       keep track of it.
      */
-    KateTemplateHandler(KTextEditor::ViewPrivate *view, KTextEditor::Cursor position, const QString &templateString, const QString &script, KateUndoManager *undoManager);
+    KateTemplateHandler(KTextEditor::ViewPrivate *view,
+                        KTextEditor::Cursor position,
+                        const QString &templateString,
+                        const QString &script,
+                        KateUndoManager *undoManager);
 
     ~KateTemplateHandler() override;
 

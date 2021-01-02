@@ -267,7 +267,8 @@ void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
     if (spellCheckInProgress) {
         KTextEditor::MovingRange *spellCheckRange = m_currentlyCheckedItem.first;
         ON_THE_FLY_DEBUG << *spellCheckRange;
-        if (m_document->documentRange().contains(*spellCheckRange) && (rangesAdjacent(*spellCheckRange, range) || spellCheckRange->contains(range)) && !spellCheckRange->isEmpty()) {
+        if (m_document->documentRange().contains(*spellCheckRange) && (rangesAdjacent(*spellCheckRange, range) || spellCheckRange->contains(range))
+            && !spellCheckRange->isEmpty()) {
             rangesToReCheck.push_back(*spellCheckRange);
             ON_THE_FLY_DEBUG << "added the range " << *spellCheckRange;
             stopCurrentSpellCheck();
@@ -524,7 +525,8 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     // FIXME: QTextBoundaryFinder should be ideally used for this, but it is currently
     //        still broken in Qt
     const QRegularExpression boundaryRegExp(QLatin1String("\\b"));
-    const QRegularExpression boundaryQuoteRegExp(QLatin1String("\\b\\w+'\\w*$")); // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
+    const QRegularExpression boundaryQuoteRegExp(
+        QLatin1String("\\b\\w+'\\w*$")); // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
     const QRegularExpression extendedBoundaryRegExp(QLatin1String("(\\W|$)"));
     const QRegularExpression extendedBoundaryQuoteRegExp(QLatin1String("^\\w*'\\w+\\b")); // see above
     KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList, encToDecOffsetList;
@@ -583,7 +585,8 @@ void KateOnTheFlyChecker::misspelling(const QString &word, int start)
     int rangeStart = spellCheckRange->start().column();
     int translatedEnd = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList, start + word.length());
 
-    KTextEditor::MovingRange *movingRange = m_document->newMovingRange(KTextEditor::Range(line, rangeStart + translatedStart, line, rangeStart + translatedEnd));
+    KTextEditor::MovingRange *movingRange =
+        m_document->newMovingRange(KTextEditor::Range(line, rangeStart + translatedStart, line, rangeStart + translatedEnd));
     movingRange->setFeedback(this);
     KTextEditor::Attribute *attribute = new KTextEditor::Attribute();
     attribute->setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
@@ -743,7 +746,8 @@ void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *
     const MovingRangeList highlightsList = installedMovingRanges(intersection);
     deleteMovingRanges(highlightsList);
 
-    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(m_document, intersection, true);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges =
+        KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(m_document, intersection, true);
     // we queue them up in reverse
     QListIterator<QPair<KTextEditor::Range, QString>> i(spellCheckRanges);
     i.toBack();
@@ -762,7 +766,8 @@ void KateOnTheFlyChecker::queueLineSpellCheck(KTextEditor::DocumentPrivate *kate
     const MovingRangeList highlightsList = installedMovingRanges(range);
     deleteMovingRanges(highlightsList);
 
-    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(kateDocument, range, true);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges =
+        KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(kateDocument, range, true);
     // we queue them up in reverse
     QListIterator<QPair<KTextEditor::Range, QString>> i(spellCheckRanges);
     i.toBack();

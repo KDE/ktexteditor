@@ -280,7 +280,8 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         m_lines.at(line - 1)->textReadWrite().append(m_lines.at(line)->text());
     }
 
-    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1)->markedAsModified()) || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line)->markedAsModified()));
+    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1)->markedAsModified())
+        || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line)->markedAsModified()));
     m_lines.at(line - 1)->markAsModified(lineChanged);
     if (oldSizeOfPreviousLine == 0 && m_lines.at(line)->markedAsSavedOnDisk()) {
         m_lines.at(line - 1)->markAsSavedOnDisk(true);
@@ -513,8 +514,14 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     }
 
     // fix ALL ranges!
-    const QList<TextRange *> allRanges = m_uncachedRanges.values() + m_cachedLineForRanges.keys();
-    for (TextRange *range : qAsConst(allRanges)) {
+    // copy is necessary as update range may modify the uncached ranges
+    std::vector<TextRange *> allRanges;
+    allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
+    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange *, int> &pair) {
+        allRanges.push_back(pair.first);
+    });
+    allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
+    for (TextRange *range : allRanges) {
         // update both blocks
         updateRange(range);
         newBlock->updateRange(range);
@@ -542,8 +549,14 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     m_lines.clear();
 
     // fix ALL ranges!
-    const QList<TextRange *> allRanges = m_uncachedRanges.values() + m_cachedLineForRanges.keys();
-    for (TextRange *range : qAsConst(allRanges)) {
+    // copy is necessary as update range may modify the uncached ranges
+    std::vector<TextRange *> allRanges;
+    allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
+    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange *, int> &pair) {
+        allRanges.push_back(pair.first);
+    });
+    allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
+    for (TextRange *range : allRanges) {
         // update both blocks
         updateRange(range);
         targetBlock->updateRange(range);
@@ -598,6 +611,39 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
     m_lines.clear();
 }
 
+QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
+{
+    const auto cachedRanges = cachedRangesForLine(line);
+    QVector<TextRange *> ranges;
+    ranges.reserve(m_uncachedRanges.size() + cachedRanges.size());
+
+    auto predicate = [line, view, rangesWithAttributeOnly](TextRange *range) {
+        if (rangesWithAttributeOnly && !range->hasAttribute()) {
+            return false;
+        }
+
+        // we want ranges for no view, but this one's attribute is only valid for views
+        if (!view && range->attributeOnlyForViews()) {
+            return false;
+        }
+
+        // the range's attribute is not valid for this view
+        if (range->view() && range->view() != view) {
+            return false;
+        }
+
+        // if line is in the range, ok
+        if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
+            return true;
+        }
+        return false;
+    };
+
+    std::copy_if(cachedRanges.begin(), cachedRanges.end(), std::back_inserter(ranges), predicate);
+    std::copy_if(m_uncachedRanges.begin(), m_uncachedRanges.end(), std::back_inserter(ranges), predicate);
+    return ranges;
+}
+
 void TextBlock::markModifiedLinesAsSaved()
 {
     // mark all modified lines as saved
@@ -622,8 +668,11 @@ void TextBlock::updateRange(TextRange *range)
     }
 
     // The range is still a single-line range, and is still cached to the correct line.
-    if (isSingleLine && m_cachedLineForRanges.contains(range) && (m_cachedLineForRanges.value(range) == startLine - m_startLine)) {
-        return;
+    if (isSingleLine) {
+        auto it = m_cachedLineForRanges.find(range);
+        if (it != m_cachedLineForRanges.end() && it->second == startLine - m_startLine) {
+            return;
+        }
     }
 
     // The range is still a multi-line range, and is already in the correct set.
@@ -637,7 +686,7 @@ void TextBlock::updateRange(TextRange *range)
     // simple case: multi-line range
     if (!isSingleLine) {
         // The range cannot be cached per line, as it spans multiple lines
-        m_uncachedRanges.insert(range);
+        m_uncachedRanges.append(range);
         return;
     }
 
@@ -657,23 +706,27 @@ void TextBlock::updateRange(TextRange *range)
 void TextBlock::removeRange(TextRange *range)
 {
     // uncached range? remove it and be done
-    if (m_uncachedRanges.remove(range)) {
+    int pos = m_uncachedRanges.indexOf(range);
+    if (pos != -1) {
+        m_uncachedRanges.remove(pos);
         // must be only uncached!
-        Q_ASSERT(!m_cachedLineForRanges.contains(range));
+        Q_ASSERT(m_cachedLineForRanges.find(range) == m_cachedLineForRanges.end());
         return;
     }
 
     // cached range?
-    QHash<TextRange *, int>::iterator it = m_cachedLineForRanges.find(range);
+    auto it = m_cachedLineForRanges.find(range);
     if (it != m_cachedLineForRanges.end()) {
         // must be only cached!
         Q_ASSERT(!m_uncachedRanges.contains(range));
 
+        int line = it->second;
+
         // query the range from cache, must be there
-        Q_ASSERT(m_cachedRangesForLine.at(*it).contains(range));
+        Q_ASSERT(m_cachedRangesForLine.at(line).contains(range));
 
         // remove it and be done
-        m_cachedRangesForLine[*it].remove(range);
+        m_cachedRangesForLine[line].remove(range);
         m_cachedLineForRanges.erase(it);
         return;
     }
