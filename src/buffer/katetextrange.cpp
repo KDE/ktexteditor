@@ -205,11 +205,11 @@ void TextRange::fixLookup(int oldStartLine, int oldEndLine, int startLine, int e
     Q_ASSERT(blockIndex >= 0);
 
     // remove this range from m_ranges
-    for (; blockIndex < m_buffer.m_blocks.size(); ++blockIndex) {
-        // get block
-        TextBlock *block = m_buffer.m_blocks.at(blockIndex);
-
+    auto it = m_buffer.m_blocks.cbegin() + blockIndex;
+    auto end = m_buffer.m_blocks.cend();
+    for (; it != end; ++it) {
         // either insert or remove range
+        TextBlock* block = *it;
         if ((endLine < block->startLine()) || (startLine >= (block->startLine() + block->lines()))) {
             block->removeRange(this);
         } else {

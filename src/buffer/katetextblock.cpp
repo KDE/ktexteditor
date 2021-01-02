@@ -513,9 +513,14 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     }
 
     // fix ALL ranges!
-    const QList<TextRange *> allRanges = m_uncachedRanges.values() + m_cachedLineForRanges.keys();
-    for (TextRange *range : qAsConst(allRanges)) {
+    const QList<TextRange *> cachedRanges =  m_cachedLineForRanges.keys();
+    for (TextRange *range : qAsConst(cachedRanges)) {
         // update both blocks
+        updateRange(range);
+        newBlock->updateRange(range);
+    }
+
+    for (TextRange* range : qAsConst(m_uncachedRanges)) {
         updateRange(range);
         newBlock->updateRange(range);
     }
@@ -542,8 +547,13 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     m_lines.clear();
 
     // fix ALL ranges!
-    const QList<TextRange *> allRanges = m_uncachedRanges.values() + m_cachedLineForRanges.keys();
-    for (TextRange *range : qAsConst(allRanges)) {
+    const QList<TextRange *> cachedRanges = m_cachedLineForRanges.keys();
+    for (TextRange *range : qAsConst(cachedRanges)) {
+        // update both blocks
+        updateRange(range);
+        targetBlock->updateRange(range);
+    }
+    for (TextRange *range : qAsConst(m_uncachedRanges)) {
         // update both blocks
         updateRange(range);
         targetBlock->updateRange(range);
@@ -615,6 +625,11 @@ void TextBlock::updateRange(TextRange *range)
     const int endLine = range->endInternal().lineInternal();
     const bool isSingleLine = startLine == endLine;
 
+    // The range is still a multi-line range, and is already in the correct set.
+    if (!isSingleLine && m_uncachedRanges.contains(range)) {
+        return;
+    }
+
     // perhaps remove range and be done
     if ((endLine < m_startLine) || (startLine >= (m_startLine + lines()))) {
         removeRange(range);
@@ -626,18 +641,13 @@ void TextBlock::updateRange(TextRange *range)
         return;
     }
 
-    // The range is still a multi-line range, and is already in the correct set.
-    if (!isSingleLine && m_uncachedRanges.contains(range)) {
-        return;
-    }
-
     // remove, if already there!
     removeRange(range);
 
     // simple case: multi-line range
     if (!isSingleLine) {
         // The range cannot be cached per line, as it spans multiple lines
-        m_uncachedRanges.insert(range);
+        m_uncachedRanges.append(range);
         return;
     }
 
@@ -657,7 +667,9 @@ void TextBlock::updateRange(TextRange *range)
 void TextBlock::removeRange(TextRange *range)
 {
     // uncached range? remove it and be done
-    if (m_uncachedRanges.remove(range)) {
+    int pos = m_uncachedRanges.indexOf(range);
+    if (pos != -1) {
+        m_uncachedRanges.remove(pos);
         // must be only uncached!
         Q_ASSERT(!m_cachedLineForRanges.contains(range));
         return;

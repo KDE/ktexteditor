@@ -10,6 +10,7 @@
 #include <unordered_set>
 
 #include <QSet>
+#include <QVarLengthArray>
 #include <QVector>
 
 #include "katetextline.h"
@@ -160,7 +161,7 @@ public:
      */
     QList<QSet<TextRange *>> rangesForLine(int line) const
     {
-        return QList<QSet<TextRange *>>() << m_uncachedRanges << cachedRangesForLine(line);
+        return QList<QSet<TextRange *>>() << QSet<TextRange*>(m_uncachedRanges.cbegin(), m_uncachedRanges.cend()) << cachedRangesForLine(line);
     }
 
     /**
@@ -262,7 +263,7 @@ private:
     /**
      * This contains all the ranges that are not cached.
      */
-    QSet<TextRange *> m_uncachedRanges;
+    QVarLengthArray<TextRange*, 1> m_uncachedRanges;
 };
 
 }
