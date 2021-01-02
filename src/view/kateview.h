@@ -905,11 +905,10 @@ private:
 public:
     /**
      * Attribute of a range changed or range with attribute changed in given line range.
-     * @param startLine start line of change
-     * @param endLine end line of change
+     * @param lineRange line range that the change spans
      * @param rangeWithAttribute attribute changed or is active, this will perhaps lead to repaints
      */
-    void notifyAboutRangeChange(int startLine, int endLine, bool rangeWithAttribute);
+    void notifyAboutRangeChange(const KTextEditor::LineRange lineRange, bool rangeWithAttribute);
 
 private Q_SLOTS:
     /**

@@ -453,7 +453,7 @@ private:
      * @param endLine end line of change
      * @param rangeWithAttribute attribute changed or is active, this will perhaps lead to repaints
      */
-    void notifyAboutRangeChange(KTextEditor::View *view, int startLine, int endLine, bool rangeWithAttribute);
+    void notifyAboutRangeChange(KTextEditor::View *view, const KTextEditor::LineRange lineRange, bool rangeWithAttribute);
 
     /**
      * Mark all modified lines as lines saved on disk (modified line system).

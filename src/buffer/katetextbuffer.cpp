@@ -922,7 +922,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     return true;
 }
 
-void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, int startLine, int endLine, bool rangeWithAttribute)
+void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, const KTextEditor::LineRange lineRange, bool rangeWithAttribute)
 {
     // ignore calls if no document is around
     if (!m_document) {
@@ -939,7 +939,7 @@ void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, int startLine, 
         }
 
         // notify view, it is really a kate view
-        static_cast<KTextEditor::ViewPrivate *>(curView)->notifyAboutRangeChange(startLine, endLine, rangeWithAttribute);
+        static_cast<KTextEditor::ViewPrivate *>(curView)->notifyAboutRangeChange(lineRange, rangeWithAttribute);
     }
 }
 

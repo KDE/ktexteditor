@@ -3532,11 +3532,11 @@ KateSpellingMenu *KTextEditor::ViewPrivate::spellingMenu()
     return m_spellingMenu;
 }
 
-void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine, bool rangeWithAttribute)
+void KTextEditor::ViewPrivate::notifyAboutRangeChange(const KTextEditor::LineRange lineRange, bool rangeWithAttribute)
 {
 #ifdef VIEW_RANGE_DEBUG
     // output args
-    qCDebug(LOG_KTE) << "trigger attribute changed from" << startLine << "to" << endLine << "rangeWithAttribute" << rangeWithAttribute;
+    qCDebug(LOG_KTE) << "trigger attribute changed in line range " << lineRange << "rangeWithAttribute" << rangeWithAttribute;
 #endif
 
     // first call:
@@ -3546,7 +3546,7 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine
 
         // only set initial line range, if range with attribute!
         if (rangeWithAttribute) {
-            m_lineToUpdateRange.setRange(startLine, endLine);
+            m_lineToUpdateRange.setRange(lineRange);
         }
 
         // emit queued signal and be done
@@ -3560,12 +3560,12 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine
     }
 
     // update line range
-    if (startLine != -1 && (m_lineToUpdateRange.start() == -1 || startLine < m_lineToUpdateRange.start())) {
-        m_lineToUpdateRange.setStart(startLine);
+    if (lineRange.start() != -1 && (m_lineToUpdateRange.start() == -1 || lineRange.start() < m_lineToUpdateRange.start())) {
+        m_lineToUpdateRange.setStart(lineRange.start());
     }
 
-    if (endLine != -1 && endLine > m_lineToUpdateRange.end()) {
-        m_lineToUpdateRange.setEnd(endLine);
+    if (lineRange.end() != -1 && lineRange.end() > m_lineToUpdateRange.end()) {
+        m_lineToUpdateRange.setEnd(lineRange.end());
     }
 }
 
@@ -3650,7 +3650,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
             newRangesIn.insert(range);
 
             if (range->attribute() && range->attribute()->dynamicAttribute(activationType)) {
-                notifyAboutRangeChange(range->start().line(), range->end().line(), true);
+                notifyAboutRangeChange(range->toLineRange(), true);
             }
 
             // feedback
@@ -3674,7 +3674,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     for (Kate::TextRange *range : qAsConst(validRanges)) {
         // range valid + right dynamic attribute, trigger update
         if (range->toRange().isValid() && range->attribute() && range->attribute()->dynamicAttribute(activationType)) {
-            notifyAboutRangeChange(range->start().line(), range->end().line(), true);
+            notifyAboutRangeChange(range->toLineRange(), true);
         }
 
         // feedback

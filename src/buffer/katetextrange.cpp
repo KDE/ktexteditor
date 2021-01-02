@@ -44,7 +44,7 @@ TextRange::~TextRange()
     // notify right view
     // here we can ignore feedback, even with feedback, we want none if the range is deleted!
     if (m_attribute) {
-        m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), true /* we have a attribute */);
+        m_buffer.notifyAboutRangeChange(m_view, toLineRange(), true /* we have a attribute */);
     }
 }
 
@@ -61,7 +61,7 @@ void TextRange::setInsertBehaviors(InsertBehaviors _insertBehaviors)
 
     // notify world
     if (m_attribute || m_feedback) {
-        m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), true /* we have a attribute */);
+        m_buffer.notifyAboutRangeChange(m_view, toLineRange(), true /* we have a attribute */);
     }
 }
 
@@ -132,7 +132,7 @@ void TextRange::setRange(const KTextEditor::Range &range)
 
     // notify buffer about attribute change, it will propagate the changes
     // notify right view
-    m_buffer.notifyAboutRangeChange(m_view, startLineMin, endLineMax, m_attribute);
+    m_buffer.notifyAboutRangeChange(m_view, {startLineMin, endLineMax}, m_attribute);
 
     // perhaps need to notify stuff!
     if (m_feedback) {
@@ -166,7 +166,7 @@ void TextRange::checkValidity(const KTextEditor::LineRange oldLineRange, bool no
 
     // perhaps need to notify stuff!
     if (notifyAboutChange && m_feedback) {
-        m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), false /* attribute not interesting here */);
+        m_buffer.notifyAboutRangeChange(m_view, toLineRange(), false /* attribute not interesting here */);
 
         // do this last: may delete this range
         if (!toRange().isValid()) {
@@ -238,7 +238,7 @@ void TextRange::setView(KTextEditor::View *view)
     // notify buffer about attribute change, it will propagate the changes
     // notify all views (can be optimized later)
     if (m_attribute || m_feedback) {
-        m_buffer.notifyAboutRangeChange(nullptr, m_start.line(), m_end.line(), m_attribute);
+        m_buffer.notifyAboutRangeChange(nullptr, toLineRange(), m_attribute);
     }
 }
 
@@ -249,7 +249,7 @@ void TextRange::setAttribute(KTextEditor::Attribute::Ptr attribute)
 
     // notify buffer about attribute change, it will propagate the changes
     // notify right view
-    m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), m_attribute);
+    m_buffer.notifyAboutRangeChange(m_view, toLineRange(), m_attribute);
 }
 
 void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
@@ -264,7 +264,7 @@ void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
 
     // notify buffer about feedback change, it will propagate the changes
     // notify right view
-    m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), m_attribute);
+    m_buffer.notifyAboutRangeChange(m_view, toLineRange(), m_attribute);
 }
 
 void TextRange::setAttributeOnlyForViews(bool onlyForViews)
@@ -285,7 +285,7 @@ void TextRange::setZDepth(qreal zDepth)
 
     // notify buffer about attribute change, it will propagate the changes
     if (m_attribute) {
-        m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), m_attribute);
+        m_buffer.notifyAboutRangeChange(m_view, toLineRange(), m_attribute);
     }
 }
 
