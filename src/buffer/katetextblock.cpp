@@ -520,7 +520,9 @@ TextBlock *TextBlock::splitBlock(int fromLine)
         newBlock->updateRange(range);
     }
 
-    for (TextRange* range : qAsConst(m_uncachedRanges)) {
+    // copy is necessary as update range may modify the uncached ranges
+    const auto uncachedRanges = m_uncachedRanges;
+    for (TextRange* range : uncachedRanges) {
         updateRange(range);
         newBlock->updateRange(range);
     }
@@ -553,7 +555,9 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
         updateRange(range);
         targetBlock->updateRange(range);
     }
-    for (TextRange *range : qAsConst(m_uncachedRanges)) {
+    // copy is necessary as update range may modify the uncached ranges
+    const auto uncachedRanges = m_uncachedRanges;
+    for (TextRange *range : uncachedRanges) {
         // update both blocks
         updateRange(range);
         targetBlock->updateRange(range);
