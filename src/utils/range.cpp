@@ -133,7 +133,7 @@ template<> char *toString(const KTextEditor::Range &range)
 template<> char *toString(const KTextEditor::LineRange &range)
 {
     QByteArray ba = "LineRange[";
-    ba += QByteArray::number(range.start()) + " - " + QByteArray::number(range.end());
+    ba += QByteArray::number(range.start()) + ", " + QByteArray::number(range.end());
     ba += ']';
     return qstrdup(ba.data());
 }
