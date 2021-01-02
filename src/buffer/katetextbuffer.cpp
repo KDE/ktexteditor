@@ -469,7 +469,7 @@ void TextBuffer::fixStartLines(int startBlock)
     int newStartLine = block->startLine() + block->lines();
 
     // fixup block
-    for (std::vector<TextBlock*>::size_type index = startBlock + 1; index < m_blocks.size(); ++index) {
+    for (size_t index = startBlock + 1; index < m_blocks.size(); ++index) {
         // set new start line
         block = m_blocks.at(index);
         block->setStartLine(newStartLine);
@@ -528,7 +528,7 @@ void TextBuffer::debugPrint(const QString &title) const
     printf("%s (lines: %d bs: %d)\n", qPrintable(title), m_lines, m_blockSize);
 
     // print all blocks
-    for (std::vector<TextBlock*>::size_type i = 0; i < m_blocks.size(); ++i) {
+    for (size_t i = 0; i < m_blocks.size(); ++i) {
         m_blocks.at(i)->debugPrint(i);
     }
 }
@@ -554,7 +554,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     // 3) use again given encoding, be done in any case
     for (int i = 0; i < (enforceTextCodec ? 1 : 4); ++i) {
         // kill all blocks beside first one
-        for (std::vector<TextBlock*>::size_type b = 1; b < m_blocks.size(); ++b) {
+        for (size_t b = 1; b < m_blocks.size(); ++b) {
             TextBlock *block = m_blocks.at(b);
             block->clearLines();
             delete block;
