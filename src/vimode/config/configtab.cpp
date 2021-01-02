@@ -208,7 +208,9 @@ void ConfigTab::importNormalMappingRow()
         QStringList line = stream.readLine().split(QLatin1Char(' '));
 
         // TODO - allow recursive mappings to be read.
-        if (line.size() > 2 && (line[0] == QLatin1String("noremap") || line[0] == QLatin1String("no") || line[0] == QLatin1String("nnoremap") || line[0] == QLatin1String("nn"))) {
+        if (line.size() > 2
+            && (line[0] == QLatin1String("noremap") || line[0] == QLatin1String("no") || line[0] == QLatin1String("nnoremap")
+                || line[0] == QLatin1String("nn"))) {
             int rows = ui->tblNormalModeMappings->rowCount();
             ui->tblNormalModeMappings->insertRow(rows);
             ui->tblNormalModeMappings->setItem(rows, 0, new QTableWidgetItem(line[1]));

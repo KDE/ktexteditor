@@ -52,8 +52,11 @@ Q_SIGNALS:
 public:
     QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range);
 
-    QList<QPair<KTextEditor::Range, QString>>
-    spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, const QString &dictionary = QString(), bool singleLine = false, bool returnSingleRange = false);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc,
+                                                                              const KTextEditor::Range &range,
+                                                                              const QString &dictionary = QString(),
+                                                                              bool singleLine = false,
+                                                                              bool returnSingleRange = false);
     QList<QPair<KTextEditor::Range, QString>> spellCheckRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, bool singleLine = false);
 
     void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &replacementRange);

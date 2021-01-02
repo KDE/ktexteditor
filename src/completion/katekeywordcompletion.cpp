@@ -21,7 +21,9 @@ KateKeywordCompletionModel::KateKeywordCompletionModel(QObject *parent)
     setHasGroups(false);
 }
 
-void KateKeywordCompletionModel::completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, KTextEditor::CodeCompletionModel::InvocationType /*invocationType*/)
+void KateKeywordCompletionModel::completionInvoked(KTextEditor::View *view,
+                                                   const KTextEditor::Range &range,
+                                                   KTextEditor::CodeCompletionModel::InvocationType /*invocationType*/)
 {
     KTextEditor::DocumentPrivate *doc = static_cast<KTextEditor::DocumentPrivate *>(view->document());
     if (!doc->highlight() || doc->highlight()->noHighlighting()) {
@@ -105,7 +107,10 @@ bool KateKeywordCompletionModel::shouldAbortCompletion(KTextEditor::View *view, 
     return false;
 }
 
-bool KateKeywordCompletionModel::shouldStartCompletion(KTextEditor::View * /*view*/, const QString &insertedText, bool userInsertion, const KTextEditor::Cursor & /*position*/)
+bool KateKeywordCompletionModel::shouldStartCompletion(KTextEditor::View * /*view*/,
+                                                       const QString &insertedText,
+                                                       bool userInsertion,
+                                                       const KTextEditor::Cursor & /*position*/)
 {
     if (userInsertion && insertedText.size() > 3 && !insertedText.contains(QLatin1Char(' ')) && insertedText.at(insertedText.size() - 1).isLetter()) {
         return true;

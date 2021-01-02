@@ -165,7 +165,10 @@ public:
      *
      * @see AlignmentHButton, AlignmentVButton, AutoUpdateTextButton
      */
-    void setButton(QPushButton *button, AlignmentHButton positionX = AlignHDefault, AlignmentVButton positionY = AlignTop, AutoUpdateTextButton autoUpdateTextButton = AutoUpdateTextButton(false));
+    void setButton(QPushButton *button,
+                   AlignmentHButton positionX = AlignHDefault,
+                   AlignmentVButton positionY = AlignTop,
+                   AutoUpdateTextButton autoUpdateTextButton = AutoUpdateTextButton(false));
 
     /**
      * Define the scroll when cleaning the search or changing the view.

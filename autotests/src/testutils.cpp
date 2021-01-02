@@ -106,12 +106,12 @@ KateViewObject::~KateViewObject()
 
 // Implements a function that calls an edit function repeatedly as specified by
 // its first parameter (once if not specified).
-#define REP_CALL(func)                                                                                                                                                                                                                         \
-    void KateViewObject::func(int cnt)                                                                                                                                                                                                         \
-    {                                                                                                                                                                                                                                          \
-        while (cnt--) {                                                                                                                                                                                                                        \
-            view()->func();                                                                                                                                                                                                                    \
-        }                                                                                                                                                                                                                                      \
+#define REP_CALL(func)                                                                                                                                         \
+    void KateViewObject::func(int cnt)                                                                                                                         \
+    {                                                                                                                                                          \
+        while (cnt--) {                                                                                                                                        \
+            view()->func();                                                                                                                                    \
+        }                                                                                                                                                      \
     }
 REP_CALL(keyReturn)
 REP_CALL(backspace)
@@ -163,10 +163,10 @@ void KateViewObject::setAutoBrackets(bool enable)
     view()->config()->setValue(KateViewConfig::AutoBrackets, enable);
 }
 
-#define ALIAS(alias, func)                                                                                                                                                                                                                     \
-    void KateViewObject::alias(int cnt)                                                                                                                                                                                                        \
-    {                                                                                                                                                                                                                                          \
-        func(cnt);                                                                                                                                                                                                                             \
+#define ALIAS(alias, func)                                                                                                                                     \
+    void KateViewObject::alias(int cnt)                                                                                                                        \
+    {                                                                                                                                                          \
+        func(cnt);                                                                                                                                             \
     }
 ALIAS(enter, keyReturn)
 ALIAS(cursorPrev, cursorLeft)

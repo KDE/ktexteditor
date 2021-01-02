@@ -127,7 +127,10 @@ int KateWordCompletionModel::rowCount(const QModelIndex &parent) const
     }
 }
 
-bool KateWordCompletionModel::shouldStartCompletion(KTextEditor::View *view, const QString &insertedText, bool userInsertion, const KTextEditor::Cursor &position)
+bool KateWordCompletionModel::shouldStartCompletion(KTextEditor::View *view,
+                                                    const QString &insertedText,
+                                                    bool userInsertion,
+                                                    const KTextEditor::Cursor &position)
 {
     if (!userInsertion) {
         return false;
@@ -303,7 +306,8 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     d->isCompleting = false;
     d->dcRange = KTextEditor::Range::invalid();
 
-    d->liRange = static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
+    d->liRange =
+        static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
 
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
     a->setBackground(static_cast<KTextEditor::ViewPrivate *>(view)->renderer()->config()->selectionColor());

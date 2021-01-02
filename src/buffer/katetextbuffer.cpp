@@ -33,8 +33,8 @@
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
 #else
-#define BUFFER_DEBUG                                                                                                                                                                                                                           \
-    if (0)                                                                                                                                                                                                                                     \
+#define BUFFER_DEBUG                                                                                                                                           \
+    if (0)                                                                                                                                                     \
     qCDebug(LOG_KTE)
 #endif
 
@@ -610,7 +610,8 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 if ((m_lineLengthLimit > 0) && (lineLength > m_lineLengthLimit)) {
                     // search for place to wrap
                     int spacePosition = m_lineLengthLimit - 1;
-                    for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10))); --testPosition) {
+                    for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10)));
+                         --testPosition) {
                         // wrap place found?
                         if (unicodeData[testPosition].isSpace() || unicodeData[testPosition].isPunct()) {
                             spacePosition = testPosition;

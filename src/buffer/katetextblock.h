@@ -7,8 +7,8 @@
 #ifndef KATE_TEXTBLOCK_H
 #define KATE_TEXTBLOCK_H
 
-#include <unordered_set>
 #include <unordered_map>
+#include <unordered_set>
 
 #include <QSet>
 #include <QVarLengthArray>
@@ -18,7 +18,8 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 class View;
 }
 
@@ -166,7 +167,7 @@ public:
      * @param rangesWithAttributeOnly       ranges with attributes only?
      * @return list of possible candidate ranges
      */
-    QVector<TextRange*> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
+    QVector<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
 
     /**
      * Is the given range contained in this block?
@@ -262,12 +263,12 @@ private:
     /**
      * Maps for each cached range the line into which the range was cached.
      */
-    std::unordered_map<TextRange*, int> m_cachedLineForRanges;
+    std::unordered_map<TextRange *, int> m_cachedLineForRanges;
 
     /**
      * This contains all the ranges that are not cached.
      */
-    QVarLengthArray<TextRange*, 1> m_uncachedRanges;
+    QVarLengthArray<TextRange *, 1> m_uncachedRanges;
 };
 
 }

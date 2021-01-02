@@ -25,15 +25,22 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
     setRowCount(3);
     cc()->setAutomaticInvocationEnabled(false);
     cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
-    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textInserted, this, &FakeCodeCompletionTestModel::textInserted);
-    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textRemoved, this, &FakeCodeCompletionTestModel::textRemoved);
+    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()),
+            &KTextEditor::DocumentPrivate::textInserted,
+            this,
+            &FakeCodeCompletionTestModel::textInserted);
+    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()),
+            &KTextEditor::DocumentPrivate::textRemoved,
+            this,
+            &FakeCodeCompletionTestModel::textRemoved);
 }
 
 void FakeCodeCompletionTestModel::setCompletions(const QStringList &completions)
 {
     QStringList sortedCompletions = completions;
     std::sort(sortedCompletions.begin(), sortedCompletions.end());
-    Q_ASSERT(completions == sortedCompletions && "QCompleter seems to sort the items, so it's best to provide them pre-sorted so it's easier to predict the order");
+    Q_ASSERT(completions == sortedCompletions
+             && "QCompleter seems to sort the items, so it's best to provide them pre-sorted so it's easier to predict the order");
     setRowCount(sortedCompletions.length());
     m_completions = completions;
 }

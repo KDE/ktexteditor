@@ -23,7 +23,6 @@ private Q_SLOTS:
     void testInsertRemoveText();
     void testSplitMergeBlocks();
     void testTextRanges();
-
 };
 
 #endif // KATETEXTBLOCKTEST_H

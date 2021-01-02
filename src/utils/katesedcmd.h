@@ -90,12 +90,19 @@ public:
      * begin and end of the "find" term; and @c destReplaceBeginPos and @c destReplaceEndPos to the begin
      * and end positions of the "replace" term.
      */
-    static bool parse(const QString &sedReplaceString, QString &destDelim, int &destFindBeginPos, int &destFindEndPos, int &destReplaceBeginPos, int &destReplaceEndPos);
+    static bool
+    parse(const QString &sedReplaceString, QString &destDelim, int &destFindBeginPos, int &destFindEndPos, int &destReplaceBeginPos, int &destReplaceEndPos);
 
     class InteractiveSedReplacer
     {
     public:
-        InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine);
+        InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc,
+                               const QString &findPattern,
+                               const QString &replacePattern,
+                               bool caseSensitive,
+                               bool onlyOnePerLine,
+                               int startLine,
+                               int endLine);
         /**
          * Will return invalid Range if there are no further matches.
          */

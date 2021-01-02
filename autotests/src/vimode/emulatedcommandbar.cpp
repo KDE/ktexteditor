@@ -1337,12 +1337,15 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest("a b c d e f g h i j k l m n o p q r s t u v w x y z");
     TestPressKey("/\\ctrl- ");
     const int lastItemRow = 25;
-    const QRect initialLastCompletionItemRect = emulatedCommandBarCompleter()->popup()->visualRect(emulatedCommandBarCompleter()->popup()->model()->index(lastItemRow, 0));
-    QVERIFY(
-        !emulatedCommandBarCompleter()->popup()->rect().contains(initialLastCompletionItemRect)); // If this fails, then we have an error in the test setup: initially, the last item in the list should be outside of the bounds of the popup.
+    const QRect initialLastCompletionItemRect =
+        emulatedCommandBarCompleter()->popup()->visualRect(emulatedCommandBarCompleter()->popup()->model()->index(lastItemRow, 0));
+    QVERIFY(!emulatedCommandBarCompleter()->popup()->rect().contains(
+        initialLastCompletionItemRect)); // If this fails, then we have an error in the test setup: initially, the last item in the list should be outside of
+                                         // the bounds of the popup.
     TestPressKey("\\ctrl-n");
     QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("z"));
-    const QRect lastCompletionItemRect = emulatedCommandBarCompleter()->popup()->visualRect(emulatedCommandBarCompleter()->popup()->model()->index(lastItemRow, 0));
+    const QRect lastCompletionItemRect =
+        emulatedCommandBarCompleter()->popup()->visualRect(emulatedCommandBarCompleter()->popup()->model()->index(lastItemRow, 0));
     QVERIFY(emulatedCommandBarCompleter()->popup()->rect().contains(lastCompletionItemRect));
     TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
     FinishTest("a b c d e f g h i j k l m n o p q r s t u v w x y z");
@@ -1523,7 +1526,8 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         // Be a bit vague about the exact message, due to i18n, etc.
         QVERIFY(commandResponseMessageDisplay()->text().contains("commandthatdoesnotexist"));
         waitForEmulatedCommandBarToHide(4 * commandResponseMessageTimeOutMS);
-        QVERIFY(timeJustBeforeCommandExecuted.msecsTo(QDateTime::currentDateTime()) >= commandResponseMessageTimeOutMS - 500); // "- 500" because coarse timers can fire up to 500ms *prematurely*.
+        QVERIFY(timeJustBeforeCommandExecuted.msecsTo(QDateTime::currentDateTime())
+                >= commandResponseMessageTimeOutMS - 500); // "- 500" because coarse timers can fire up to 500ms *prematurely*.
         QVERIFY(!emulatedCommandBar->isVisible());
         // Piggy-back on this test, as the bug we're about to test for would actually make setting
         // up the conditions again in a separate test impossible ;)
@@ -2197,8 +2201,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("foo", "\\:s/foo/replaceline1\\\\nreplaceline2/g\\", "replaceline1\nreplaceline2");
     DoTest("foofoo", "\\:s/foo/replaceline1\\\\nreplaceline2/g\\", "replaceline1\nreplaceline2replaceline1\nreplaceline2");
     DoTest("foofoo\nfoo", "\\:s/foo/replaceline1\\\\nreplaceline2/g\\", "replaceline1\nreplaceline2replaceline1\nreplaceline2\nfoo");
-    DoTest("fooafoob\nfooc\nfood", "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/g\\", "replaceline1\nreplaceline2areplaceline1\nreplaceline2b\nreplaceline1\nreplaceline2c\nfood");
-    DoTest("fooafoob\nfooc\nfood", "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/\\", "replaceline1\nreplaceline2afoob\nreplaceline1\nreplaceline2c\nfood");
+    DoTest("fooafoob\nfooc\nfood",
+           "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/g\\",
+           "replaceline1\nreplaceline2areplaceline1\nreplaceline2b\nreplaceline1\nreplaceline2c\nfood");
+    DoTest(
+        "fooafoob\nfooc\nfood", "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/\\", "replaceline1\nreplaceline2afoob\nreplaceline1\nreplaceline2c\nfood");
     DoTest("fooafoob\nfooc\nfood",
            "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2\\\\nreplaceline3/g\\",
            "replaceline1\nreplaceline2\nreplaceline3areplaceline1\nreplaceline2\nreplaceline3b\nreplaceline1\nreplaceline2\nreplaceline3c\nfood");
@@ -3245,7 +3252,8 @@ void EmulatedCommandBarTest::verifyCommandBarCompletionVisible()
             }
         }
         if (candidateCompletionFound) {
-            qDebug() << " The current completion prefix is a prefix of one of the available completions, so either complete() was not called, or the popup was manually hidden since then";
+            qDebug() << " The current completion prefix is a prefix of one of the available completions, so either complete() was not called, or the popup was "
+                        "manually hidden since then";
         } else {
             qDebug() << " The current completion prefix is not a prefix of one of the available completions; this may or may not be why it is not visible";
         }

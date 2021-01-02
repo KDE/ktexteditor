@@ -27,7 +27,11 @@ using namespace KTextEditor;
 
 #define ifDebug(x)
 
-KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view, Cursor position, const QString &templateString, const QString &script, KateUndoManager *undoManager)
+KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
+                                         Cursor position,
+                                         const QString &templateString,
+                                         const QString &script,
+                                         KateUndoManager *undoManager)
     : QObject(view)
     , m_view(view)
     , m_undoManager(undoManager)

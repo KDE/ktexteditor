@@ -206,7 +206,10 @@ public:
             const QPixmap p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(16, 16, enabled ? QIcon::Normal : QIcon::Disabled);
 
             // compute rect with scaled sizes
-            const QRect rect(option.rect.left() + 10, option.rect.top() + (option.rect.height() - p.height() / p.devicePixelRatio() + 1) / 2, p.width() / p.devicePixelRatio(), p.height() / p.devicePixelRatio());
+            const QRect rect(option.rect.left() + 10,
+                             option.rect.top() + (option.rect.height() - p.height() / p.devicePixelRatio() + 1) / 2,
+                             p.width() / p.devicePixelRatio(),
+                             p.height() / p.devicePixelRatio());
             painter->drawPixmap(rect, p);
         }
         // END: draw reset icon

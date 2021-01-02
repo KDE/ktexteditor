@@ -280,7 +280,8 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         m_lines.at(line - 1)->textReadWrite().append(m_lines.at(line)->text());
     }
 
-    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1)->markedAsModified()) || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line)->markedAsModified()));
+    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1)->markedAsModified())
+        || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line)->markedAsModified()));
     m_lines.at(line - 1)->markAsModified(lineChanged);
     if (oldSizeOfPreviousLine == 0 && m_lines.at(line)->markedAsSavedOnDisk()) {
         m_lines.at(line - 1)->markAsSavedOnDisk(true);
@@ -514,11 +515,13 @@ TextBlock *TextBlock::splitBlock(int fromLine)
 
     // fix ALL ranges!
     // copy is necessary as update range may modify the uncached ranges
-    std::vector<TextRange*> allRanges;
+    std::vector<TextRange *> allRanges;
     allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange*, int>& pair) { allRanges.push_back(pair.first); });
+    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange *, int> &pair) {
+        allRanges.push_back(pair.first);
+    });
     allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
-    for (TextRange* range : allRanges) {
+    for (TextRange *range : allRanges) {
         // update both blocks
         updateRange(range);
         newBlock->updateRange(range);
@@ -547,9 +550,9 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
 
     // fix ALL ranges!
     // copy is necessary as update range may modify the uncached ranges
-    std::vector<TextRange*> allRanges;
+    std::vector<TextRange *> allRanges;
     allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange*, int>& pair){
+    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange *, int> &pair) {
         allRanges.push_back(pair.first);
     });
     allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
@@ -611,10 +614,10 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
 QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
 {
     const auto cachedRanges = cachedRangesForLine(line);
-    QVector<TextRange*> ranges;
+    QVector<TextRange *> ranges;
     ranges.reserve(m_uncachedRanges.size() + cachedRanges.size());
 
-    auto predicate = [line, view, rangesWithAttributeOnly](TextRange* range) {
+    auto predicate = [line, view, rangesWithAttributeOnly](TextRange *range) {
         if (rangesWithAttributeOnly && !range->hasAttribute()) {
             return false;
         }

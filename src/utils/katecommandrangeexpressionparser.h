@@ -33,10 +33,12 @@ public:
      *
      * An invalid Range is returned if no leading range expression could be found.
      */
-    static KTextEditor::Range parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand);
+    static KTextEditor::Range
+    parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand);
 
 private:
-    KTextEditor::Range parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view);
+    KTextEditor::Range
+    parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view);
     int calculatePosition(const QString &string, KTextEditor::ViewPrivate *view);
     QRegExp m_line;
     QRegExp m_lastLine;

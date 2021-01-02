@@ -264,7 +264,13 @@ InlineNoteProvider::~InlineNoteProvider()
 {
 }
 
-KateInlineNoteData::KateInlineNoteData(KTextEditor::InlineNoteProvider *provider, const KTextEditor::View *view, const KTextEditor::Cursor &position, int index, bool underMouse, const QFont &font, int lineHeight)
+KateInlineNoteData::KateInlineNoteData(KTextEditor::InlineNoteProvider *provider,
+                                       const KTextEditor::View *view,
+                                       const KTextEditor::Cursor &position,
+                                       int index,
+                                       bool underMouse,
+                                       const QFont &font,
+                                       int lineHeight)
     : m_provider(provider)
     , m_view(view)
     , m_position(position)

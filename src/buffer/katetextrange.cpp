@@ -207,9 +207,9 @@ void TextRange::fixLookup(int oldStartLine, int oldEndLine, int startLine, int e
     size_t blockIndex = blockIdx;
 
     // remove this range from m_ranges
-    for (; blockIndex <  m_buffer.m_blocks.size(); ++blockIndex) {
+    for (; blockIndex < m_buffer.m_blocks.size(); ++blockIndex) {
         // either insert or remove range
-        TextBlock* block = m_buffer.m_blocks[blockIndex];
+        TextBlock *block = m_buffer.m_blocks[blockIndex];
         if ((endLine < block->startLine()) || (startLine >= (block->startLine() + block->lines()))) {
             block->removeRange(this);
         } else {

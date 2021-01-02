@@ -813,8 +813,8 @@ void KateScriptDocument::setVariable(const QString &s, const QString &v)
 
 bool KateScriptDocument::_isCode(int defaultStyle)
 {
-    return (defaultStyle != KTextEditor::dsComment && defaultStyle != KTextEditor::dsAlert && defaultStyle != KTextEditor::dsString && defaultStyle != KTextEditor::dsRegionMarker && defaultStyle != KTextEditor::dsChar &&
-            defaultStyle != KTextEditor::dsOthers);
+    return (defaultStyle != KTextEditor::dsComment && defaultStyle != KTextEditor::dsAlert && defaultStyle != KTextEditor::dsString
+            && defaultStyle != KTextEditor::dsRegionMarker && defaultStyle != KTextEditor::dsChar && defaultStyle != KTextEditor::dsOthers);
 }
 
 void KateScriptDocument::indent(const QJSValue &jsrange, int change)

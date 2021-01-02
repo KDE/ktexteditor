@@ -47,7 +47,8 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     ui->filteringContextMatchOnly->setChecked(m_model->filterContextMatchesOnly());
     ui->filteringHideAttributes->setChecked(m_model->filterByAttribute());
 
-    for (CodeCompletionModel::CompletionProperty i = CodeCompletionModel::FirstProperty; i <= CodeCompletionModel::LastProperty; i = static_cast<CodeCompletionModel::CompletionProperty>(i << 1)) {
+    for (CodeCompletionModel::CompletionProperty i = CodeCompletionModel::FirstProperty; i <= CodeCompletionModel::LastProperty;
+         i = static_cast<CodeCompletionModel::CompletionProperty>(i << 1)) {
         QListWidgetItem *item = new QListWidgetItem(m_model->propertyName(i), ui->filteringAttributesList, i);
         item->setCheckState((m_model->filterAttributes() & i) ? Qt::Checked : Qt::Unchecked);
     }
@@ -206,7 +207,11 @@ void KateCompletionConfig::readConfig(const KConfigGroup &config)
     for (int i = 0; i < ui->columnMergeTree->topLevelItemCount(); ++i) {
         QTreeWidgetItem *item = ui->columnMergeTree->topLevelItem(i);
         /// Initialize a standard column-merging: Merge Scope, Name, Arguments and Postfix
-        item->setCheckState(1, config.readEntry(QStringLiteral("Column %1 Merge").arg(i), (i == CodeCompletionModel::Scope || i == CodeCompletionModel::Name || i == CodeCompletionModel::Arguments)) ? Qt::Checked : Qt::Unchecked);
+        item->setCheckState(1,
+                            config.readEntry(QStringLiteral("Column %1 Merge").arg(i),
+                                             (i == CodeCompletionModel::Scope || i == CodeCompletionModel::Name || i == CodeCompletionModel::Arguments))
+                                ? Qt::Checked
+                                : Qt::Unchecked);
         item->setCheckState(2, config.readEntry(QStringLiteral("Column %1 Show").arg(i), true) ? Qt::Checked : Qt::Unchecked);
     }
 

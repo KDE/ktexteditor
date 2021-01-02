@@ -643,7 +643,8 @@ public:
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    KTextEditor::MovingCursor *newMovingCursor(const KTextEditor::Cursor &position, KTextEditor::MovingCursor::InsertBehavior insertBehavior = KTextEditor::MovingCursor::MoveOnInsert) override;
+    KTextEditor::MovingCursor *newMovingCursor(const KTextEditor::Cursor &position,
+                                               KTextEditor::MovingCursor::InsertBehavior insertBehavior = KTextEditor::MovingCursor::MoveOnInsert) override;
 
     /**
      * Create a new moving range for this document.
@@ -688,7 +689,10 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformCursor(KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
+    void transformCursor(KTextEditor::Cursor &cursor,
+                         KTextEditor::MovingCursor::InsertBehavior insertBehavior,
+                         qint64 fromRevision,
+                         qint64 toRevision = -1) override;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -698,7 +702,8 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
+    void
+    transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
 
     /**
      * Transform a range from one revision to an other.
@@ -708,7 +713,11 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
+    void transformRange(KTextEditor::Range &range,
+                        KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
+                        KTextEditor::MovingRange::EmptyBehavior emptyBehavior,
+                        qint64 fromRevision,
+                        qint64 toRevision = -1) override;
 
     //
     // MovingInterface Signals
@@ -721,8 +730,8 @@ Q_SIGNALS:
     void aboutToDeleteMovingInterfaceContent(KTextEditor::Document *document);
 
     /**
-     * This signal is emitted before the ranges of a document are invalidated and the revisions are deleted as the document is cleared (for example on load/reload).
-     * While this signal is emitted, still the old document content is around before the clear.
+     * This signal is emitted before the ranges of a document are invalidated and the revisions are deleted as the document is cleared (for example on
+     * load/reload). While this signal is emitted, still the old document content is around before the clear.
      * @param document the document which the interface belongs too which will invalidate its data
      */
     void aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *document);
@@ -1276,7 +1285,9 @@ public:
      * The first OffsetList is from decoded to encoded, and the second OffsetList from
      * encoded to decoded.
      **/
-    QString decodeCharacters(const KTextEditor::Range &range, KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList, KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
+    QString decodeCharacters(const KTextEditor::Range &range,
+                             KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
+                             KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
     void replaceCharactersByEncoding(const KTextEditor::Range &range);
 
 protected:

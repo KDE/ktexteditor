@@ -27,7 +27,9 @@ class ActiveMode;
 class EmulatedCommandBar;
 
 struct CompletionStartParams {
-    static CompletionStartParams createModeSpecific(const QStringList &completions, int wordStartPos, std::function<QString(const QString &)> completionTransform = std::function<QString(const QString &)>())
+    static CompletionStartParams createModeSpecific(const QStringList &completions,
+                                                    int wordStartPos,
+                                                    std::function<QString(const QString &)> completionTransform = std::function<QString(const QString &)>())
     {
         CompletionStartParams completionStartParams;
         completionStartParams.completionType = ModeSpecific;

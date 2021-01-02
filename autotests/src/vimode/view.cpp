@@ -180,7 +180,9 @@ void ViewTest::visualLineUpDownTests()
         const int numLinesToGoBackUp = 7;
         expectedText = startText;
         expectedText[((startVisualLine - 1) + numberLinesToGoDownInOneGo - numLinesToGoBackUp) * fillsLineAndEndsOnSpace.length()] = '.';
-        DoTest(startText, QString("gj").repeated(startVisualLine - 1) + QString::number(numberLinesToGoDownInOneGo) + "gj" + QString::number(numLinesToGoBackUp) + "gkr.", expectedText);
+        DoTest(startText,
+               QString("gj").repeated(startVisualLine - 1) + QString::number(numberLinesToGoDownInOneGo) + "gj" + QString::number(numLinesToGoBackUp) + "gkr.",
+               expectedText);
     }
 
     {
@@ -202,26 +204,36 @@ void ViewTest::visualLineUpDownTests()
         const QString unindentedFirstLine = "stickyhelper\n";
         const int numIndentationSpaces = 5;
         Q_ASSERT(textWrappingLength > numIndentationSpaces * 2 /* keep some wriggle room */);
-        const QString indentedFillsLineEndsOnSpace = QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
-        DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3", QString("l").repeated(numIndentationSpaces) + "jgjr.", unindentedFirstLine + indentedFillsLineEndsOnSpace + ".INE3");
+        const QString indentedFillsLineEndsOnSpace =
+            QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
+        DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3",
+               QString("l").repeated(numIndentationSpaces) + "jgjr.",
+               unindentedFirstLine + indentedFillsLineEndsOnSpace + ".INE3");
 
         // The first, non-wrapped portion of the line is not invisibly indented, though, so ensure we don't mess that up.
         QString expectedSecondLine = indentedFillsLineEndsOnSpace;
         expectedSecondLine[numIndentationSpaces] = '.';
-        DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3", QString("l").repeated(numIndentationSpaces) + "jgjgkr.", unindentedFirstLine + expectedSecondLine + "LINE3");
+        DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3",
+               QString("l").repeated(numIndentationSpaces) + "jgjgkr.",
+               unindentedFirstLine + expectedSecondLine + "LINE3");
     }
 
     {
         // Take into account any invisible indentation when setting the sticky column.
         const int numIndentationSpaces = 5;
         Q_ASSERT(textWrappingLength > numIndentationSpaces * 2 /* keep some wriggle room */);
-        const QString indentedFillsLineEndsOnSpace = QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
+        const QString indentedFillsLineEndsOnSpace =
+            QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
         const int posInSecondWrappedLineToChange = 3;
         QString expectedText = indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace;
         expectedText[textWrappingLength + posInSecondWrappedLineToChange] = '.';
-        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace, QString::number(textWrappingLength + posInSecondWrappedLineToChange) + "lgkgjr.", expectedText);
+        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
+               QString::number(textWrappingLength + posInSecondWrappedLineToChange) + "lgkgjr.",
+               expectedText);
         // Make sure we can do this more than once (i.e. clear any flags that need clearing).
-        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace, QString::number(textWrappingLength + posInSecondWrappedLineToChange) + "lgkgjr.", expectedText);
+        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
+               QString::number(textWrappingLength + posInSecondWrappedLineToChange) + "lgkgjr.",
+               expectedText);
     }
 
     {
@@ -230,7 +242,9 @@ void ViewTest::visualLineUpDownTests()
         const int posInSecondWrappedLineToChange = 3;
         QString expectedText = indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace;
         expectedText[textWrappingLength - tabWidth + posInSecondWrappedLineToChange] = '.';
-        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace, QString("fXf ") + QString::number(posInSecondWrappedLineToChange) + "lgkgjr.", expectedText);
+        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
+               QString("fXf ") + QString::number(posInSecondWrappedLineToChange) + "lgkgjr.",
+               expectedText);
     }
 
     {
@@ -281,7 +295,9 @@ void ViewTest::visualLineUpDownTests()
         const int posOnSecondLineToChange = 2;
         QString expectedSecondLine = beginsWithTabFillsLineEndsOnSpace;
         expectedSecondLine[posOnSecondLineToChange + 1 /* "+1" as we're not counting the leading tab as a pos */] = '.';
-        DoTest(unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace, QString("l").repeated(tabWidth + posOnSecondLineToChange) + "gjgjgkr.", unindentedFirstLine + expectedSecondLine + fillsLineAndEndsOnSpace);
+        DoTest(unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
+               QString("l").repeated(tabWidth + posOnSecondLineToChange) + "gjgjgkr.",
+               unindentedFirstLine + expectedSecondLine + fillsLineAndEndsOnSpace);
     }
 
     // Restore back to how we were before.

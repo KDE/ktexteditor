@@ -14,7 +14,8 @@ QTEST_MAIN(KateTextBlockTest)
 
 using namespace Kate;
 
-KateTextBlockTest::KateTextBlockTest(QObject *parent) : QObject(parent)
+KateTextBlockTest::KateTextBlockTest(QObject *parent)
+    : QObject(parent)
 {
 }
 

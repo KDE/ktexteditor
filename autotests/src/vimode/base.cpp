@@ -223,7 +223,13 @@ void BaseTest::FinishTest_(int line, const char *file, const QString &expected, 
     Q_ASSERT(!emulatedCommandBarTextEdit()->isVisible() && "Make sure you close the command bar before the end of a test!");
 }
 
-void BaseTest::DoTest_(int line, const char *file, const QString &original, const QString &command, const QString &expected, Expectation expectation, const QString &failureReason)
+void BaseTest::DoTest_(int line,
+                       const char *file,
+                       const QString &original,
+                       const QString &command,
+                       const QString &expected,
+                       Expectation expectation,
+                       const QString &failureReason)
 {
     BeginTest(original);
     TestPressKey(command);

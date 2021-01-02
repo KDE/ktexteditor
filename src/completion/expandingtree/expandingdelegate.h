@@ -48,7 +48,8 @@ protected:
     void adjustRect(QRect &rect) const;
 
     /**
-     * Creates a list of FormatRanges as should be returned by createHighlighting from a list of QVariants as described in the kde header ktexteditor/codecompletionmodel.h
+     * Creates a list of FormatRanges as should be returned by createHighlighting from a list of QVariants as described in the kde header
+     * ktexteditor/codecompletionmodel.h
      * */
     QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList<QVariant> &customHighlights) const;
 
@@ -58,7 +59,8 @@ protected:
     // Initializes the style options from the index
     void initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const;
 
-    mutable int m_currentColumnStart; // Text-offset for custom highlighting, will be applied to m_cachedHighlights(Only highlights starting after this will be used). Should be zero of the highlighting is not taken from kate.
+    mutable int m_currentColumnStart; // Text-offset for custom highlighting, will be applied to m_cachedHighlights(Only highlights starting after this will be
+                                      // used). Should be zero of the highlighting is not taken from kate.
     mutable QList<int> m_currentColumnStarts;
     mutable QVector<QTextLayout::FormatRange> m_cachedHighlights;
 

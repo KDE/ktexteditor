@@ -212,7 +212,8 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         }
 
         if (role == CodeCompletionModel::HighlightingMethod) {
-            // Return that we are doing custom-highlighting of one of the sub-strings does it. Unfortunately internal highlighting does not work for the other substrings.
+            // Return that we are doing custom-highlighting of one of the sub-strings does it. Unfortunately internal highlighting does not work for the other
+            // substrings.
             for (int column : m_columnMerges[index.column()]) {
                 QModelIndex sourceIndex = mapToSource(createIndex(index.row(), column, index.internalPointer()));
                 QVariant method = sourceIndex.data(CodeCompletionModel::HighlightingMethod);
@@ -634,7 +635,8 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
     int completionFlags = handler.getData(CodeCompletionModel::CompletionRole, sourceIndex).toInt();
 
     // Scope is expensive, should not be used with big models
-    QString scopeIfNeeded = (groupingMethod() & Scope) ? sourceIndex.sibling(sourceIndex.row(), CodeCompletionModel::Scope).data(Qt::DisplayRole).toString() : QString();
+    QString scopeIfNeeded =
+        (groupingMethod() & Scope) ? sourceIndex.sibling(sourceIndex.row(), CodeCompletionModel::Scope).data(Qt::DisplayRole).toString() : QString();
 
     int argumentHintDepth = handler.getData(CodeCompletionModel::ArgumentHintDepth, sourceIndex).toInt();
 
@@ -717,7 +719,9 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
     if (m_groupHash.contains(groupingAttribute)) {
         if (groupingMethod() & Scope) {
-            for (QHash<int, Group *>::ConstIterator it = m_groupHash.constFind(groupingAttribute); it != m_groupHash.constEnd() && it.key() == groupingAttribute; ++it)
+            for (QHash<int, Group *>::ConstIterator it = m_groupHash.constFind(groupingAttribute);
+                 it != m_groupHash.constEnd() && it.key() == groupingAttribute;
+                 ++it)
                 if (it.value()->scope == scope) {
                     return it.value();
                 }
@@ -1850,12 +1854,14 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     for (Group *group : qAsConst(m_rowTable)) {
         for (const Item &item : qAsConst(group->filtered)) {
             if (item.haveExactMatch()) {
-                KTextEditor::CodeCompletionModelControllerInterface *iface3 = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
+                KTextEditor::CodeCompletionModelControllerInterface *iface3 =
+                    dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
                 bool hide = false;
                 if (!iface3) {
                     hide = true;
                 }
-                if (iface3 && iface3->matchingItem(item.sourceRow().second) == KTextEditor::CodeCompletionModelControllerInterface::HideListIfAutomaticInvocation) {
+                if (iface3
+                    && iface3->matchingItem(item.sourceRow().second) == KTextEditor::CodeCompletionModelControllerInterface::HideListIfAutomaticInvocation) {
                     hide = true;
                 }
                 if (hide) {
@@ -1885,7 +1891,13 @@ static inline QChar toLowerIfInsensitive(QChar c, Qt::CaseSensitivity caseSensit
     return (caseSensitive == Qt::CaseInsensitive) ? c.toLower() : c;
 }
 
-static inline bool matchesAbbreviationHelper(const QString &word, const QString &typed, const QVarLengthArray<int, 32> &offsets, Qt::CaseSensitivity caseSensitive, int &depth, int atWord = -1, int i = 0)
+static inline bool matchesAbbreviationHelper(const QString &word,
+                                             const QString &typed,
+                                             const QVarLengthArray<int, 32> &offsets,
+                                             Qt::CaseSensitivity caseSensitive,
+                                             int &depth,
+                                             int atWord = -1,
+                                             int i = 0)
 {
     int atLetter = 1;
     for (; i < typed.size(); i++) {
@@ -2018,7 +2030,8 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
     }
 
     if (matchCompletion && match.length() == m_nameColumn.length()) {
-        if (model->matchCaseSensitivity() == Qt::CaseInsensitive && model->exactMatchCaseSensitivity() == Qt::CaseSensitive && !m_nameColumn.startsWith(match, Qt::CaseSensitive)) {
+        if (model->matchCaseSensitivity() == Qt::CaseInsensitive && model->exactMatchCaseSensitivity() == Qt::CaseSensitive
+            && !m_nameColumn.startsWith(match, Qt::CaseSensitive)) {
             return matchCompletion;
         }
         matchCompletion = PerfectMatch;
@@ -2278,7 +2291,8 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 // Updates the best-matches group
 void KateCompletionModel::updateBestMatches()
 {
-    int maxMatches = 300; // We cannot do too many operations here, because they are all executed whenever a character is added. Would be nice if we could split the operations up somewhat using a timer.
+    int maxMatches = 300; // We cannot do too many operations here, because they are all executed whenever a character is added. Would be nice if we could split
+                          // the operations up somewhat using a timer.
 
     m_updateBestMatchesTimer->stop();
     // Maps match-qualities to ModelRows paired together with the BestMatchesCount returned by the items.

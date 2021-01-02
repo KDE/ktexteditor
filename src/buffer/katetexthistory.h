@@ -73,7 +73,11 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1);
+    void transformRange(KTextEditor::Range &range,
+                        KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
+                        KTextEditor::MovingRange::EmptyBehavior emptyBehavior,
+                        qint64 fromRevision,
+                        qint64 toRevision = -1);
 
 private:
     /**

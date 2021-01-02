@@ -36,7 +36,11 @@ ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
     return ActionReply::HelperErrorReply();
 }
 
-bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString &targetFile, const QByteArray &checksum, const uint ownerId, const uint groupId)
+bool SecureTextBuffer::saveFileInternal(const QString &sourceFile,
+                                        const QString &targetFile,
+                                        const QByteArray &checksum,
+                                        const uint ownerId,
+                                        const uint groupId)
 {
     // open source file for reading
     // if not possible, signal error

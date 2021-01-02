@@ -135,7 +135,8 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, SIGNAL(delayedUpdateOfView()), this, SLOT(slotDelayedUpdateOfView()), Qt::QueuedConnection);
 
-    KXMLGUIClient::setComponentName(KTextEditor::EditorPrivate::self()->aboutData().componentName(), KTextEditor::EditorPrivate::self()->aboutData().displayName());
+    KXMLGUIClient::setComponentName(KTextEditor::EditorPrivate::self()->aboutData().componentName(),
+                                    KTextEditor::EditorPrivate::self()->aboutData().displayName());
 
     // selection if for this view only and will invalidate if becoming empty
     m_selection.setView(this);
@@ -419,7 +420,10 @@ void KTextEditor::ViewPrivate::setupConnections()
     connect(m_doc, SIGNAL(canceled(QString)), this, SLOT(slotSaveCanceled(QString)));
     connect(m_viewInternal, SIGNAL(dropEventPass(QDropEvent *)), this, SIGNAL(dropEventPass(QDropEvent *)));
 
-    connect(m_doc, SIGNAL(annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *)), m_viewInternal->m_leftBorder, SLOT(annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *)));
+    connect(m_doc,
+            SIGNAL(annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *)),
+            m_viewInternal->m_leftBorder,
+            SLOT(annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *)));
 }
 
 void KTextEditor::ViewPrivate::goToPreviousEditingPosition()
@@ -635,7 +639,8 @@ void KTextEditor::ViewPrivate::setupActions()
 
     m_modeAction = new KateModeMenu(i18n("&Mode"), this);
     ac->addAction(QStringLiteral("tools_mode"), m_modeAction);
-    m_modeAction->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
+    m_modeAction->setWhatsThis(i18n(
+        "Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
     m_modeAction->updateMenu(m_doc);
 
     KateHighlightingMenu *menu = new KateHighlightingMenu(i18n("&Highlighting"), this);
@@ -762,9 +767,9 @@ void KTextEditor::ViewPrivate::setupActions()
 
     //   a = m_toggleScrollBarMiniMapAll = toggleAction = new KToggleAction(i18n("Show the whole document in the Mini-Map"), this);
     //   ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
-    //   a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the mini-map."));
-    //   connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll()));
-    //   connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)), m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
+    //   a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
+    //   mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
+    //   m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
 
     a = m_toggleNPSpaces = new KToggleAction(i18n("Show Non-Printable Spaces"), this);
     ac->addAction(QStringLiteral("view_non_printable_spaces"), a);
@@ -798,7 +803,8 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
     ac->addAction(QStringLiteral("set_eol"), a);
     a->setWhatsThis(i18n("Choose which line endings should be used, when you save the document"));
-    const QStringList list{i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
+    const QStringList list{
+        i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
     m_setEndOfLine->setItems(list);
     m_setEndOfLine->setCurrentItem(doc()->config()->eol());
     connect(m_setEndOfLine, &KSelectAction::indexTriggered, this, &ViewPrivate::setEol);
@@ -1402,7 +1408,8 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
     m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode];
     m_viewInternal->m_currentInputMode->activate();
 
-    config()->setValue(KateViewConfig::InputMode, mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
+    config()->setValue(KateViewConfig::InputMode,
+                       mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
 
     /* small duplication, but need to do this if not toggled by action */
     const auto inputModeActions = m_inputModeActions->actions();
@@ -1585,7 +1592,8 @@ bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Curs
             x += position.column() - z;
         }
 
-    m_viewInternal->updateCursor(KTextEditor::Cursor(position.line(), x), false, calledExternally /* force center for external calls, see bug 408418 */, calledExternally);
+    m_viewInternal->updateCursor(
+        KTextEditor::Cursor(position.line(), x), false, calledExternally /* force center for external calls, see bug 408418 */, calledExternally);
 
     return true;
 }
@@ -2317,7 +2325,8 @@ bool KTextEditor::ViewPrivate::cursorSelected(const KTextEditor::Cursor &cursor)
     }
 
     if (blockSelect)
-        return cursor.line() >= m_selection.start().line() && ret.line() <= m_selection.end().line() && ret.column() >= m_selection.start().column() && ret.column() <= m_selection.end().column();
+        return cursor.line() >= m_selection.start().line() && ret.line() <= m_selection.end().line() && ret.column() >= m_selection.start().column()
+            && ret.column() <= m_selection.end().column();
     else {
         return m_selection.toRange().contains(cursor) || m_selection.end() == cursor;
     }
@@ -2330,8 +2339,11 @@ bool KTextEditor::ViewPrivate::lineSelected(int line)
 
 bool KTextEditor::ViewPrivate::lineEndSelected(const KTextEditor::Cursor &lineEndPos)
 {
-    return (!blockSelect) && (lineEndPos.line() > m_selection.start().line() || (lineEndPos.line() == m_selection.start().line() && (m_selection.start().column() < lineEndPos.column() || lineEndPos.column() == -1))) &&
-        (lineEndPos.line() < m_selection.end().line() || (lineEndPos.line() == m_selection.end().line() && (lineEndPos.column() <= m_selection.end().column() && lineEndPos.column() != -1)));
+    return (!blockSelect)
+        && (lineEndPos.line() > m_selection.start().line()
+            || (lineEndPos.line() == m_selection.start().line() && (m_selection.start().column() < lineEndPos.column() || lineEndPos.column() == -1)))
+        && (lineEndPos.line() < m_selection.end().line()
+            || (lineEndPos.line() == m_selection.end().line() && (lineEndPos.column() <= m_selection.end().column() && lineEndPos.column() != -1)));
 }
 
 bool KTextEditor::ViewPrivate::lineHasSelected(int line)
@@ -2353,7 +2365,8 @@ void KTextEditor::ViewPrivate::tagSelection(const KTextEditor::Range &oldSelecti
             //  a) it's new; or
             tagLines(m_selection, true);
 
-        } else if (blockSelection() && (oldSelection.start().column() != m_selection.start().column() || oldSelection.end().column() != m_selection.end().column())) {
+        } else if (blockSelection()
+                   && (oldSelection.start().column() != m_selection.start().column() || oldSelection.end().column() != m_selection.end().column())) {
             //  b) we're in block selection mode and the columns have changed
             tagLines(m_selection, true);
             tagLines(oldSelection, true);
@@ -2590,7 +2603,9 @@ void KTextEditor::ViewPrivate::startCompletion(const KTextEditor::Range &word, K
     completionWidget()->startCompletion(word, model);
 }
 
-void KTextEditor::ViewPrivate::startCompletion(const Range &word, const QList<KTextEditor::CodeCompletionModel *> &models, KTextEditor::CodeCompletionModel::InvocationType invocationType)
+void KTextEditor::ViewPrivate::startCompletion(const Range &word,
+                                               const QList<KTextEditor::CodeCompletionModel *> &models,
+                                               KTextEditor::CodeCompletionModel::InvocationType invocationType)
 {
     completionWidget()->startCompletion(word, models, invocationType);
 }
@@ -3490,7 +3505,8 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
         // clear mouseOver and focus state
         // update from relevant widgets
         opt.state &= ~(QStyle::State_HasFocus | QStyle::State_MouseOver);
-        const QList<QWidget *> widgets = QList<QWidget *>() << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
+        const QList<QWidget *> widgets = QList<QWidget *>()
+            << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
         for (const QWidget *w : widgets) {
             if (w->hasFocus())
                 opt.state |= QStyle::State_HasFocus;
@@ -3600,7 +3616,8 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     QSet<Kate::TextRange *> &oldSet = (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_rangesMouseIn : m_rangesCaretIn;
 
     // which cursor position to honor?
-    KTextEditor::Cursor currentCursor = (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_viewInternal->mousePosition() : m_viewInternal->cursorPosition();
+    KTextEditor::Cursor currentCursor =
+        (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_viewInternal->mousePosition() : m_viewInternal->cursorPosition();
 
     // first: validate the remembered ranges
     QSet<Kate::TextRange *> validRanges;
@@ -3623,11 +3640,13 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
             }
 
             // range doesn't contain cursor, not interesting
-            if ((range->start().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (currentCursor < range->start().toCursor()) : (currentCursor <= range->start().toCursor())) {
+            if ((range->start().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (currentCursor < range->start().toCursor())
+                                                                                             : (currentCursor <= range->start().toCursor())) {
                 continue;
             }
 
-            if ((range->end().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (range->end().toCursor() <= currentCursor) : (range->end().toCursor() < currentCursor)) {
+            if ((range->end().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (range->end().toCursor() <= currentCursor)
+                                                                                           : (range->end().toCursor() < currentCursor)) {
                 continue;
             }
 
@@ -3877,7 +3896,8 @@ QVarLengthArray<KateInlineNoteData, 8> KTextEditor::ViewPrivate::inlineNotes(int
         int index = 0;
         for (auto column : provider->inlineNotes(line)) {
             const bool underMouse = Cursor(line, column) == m_viewInternal->m_activeInlineNote.m_position;
-            KateInlineNoteData note = {provider, this, {line, column}, index, underMouse, m_viewInternal->renderer()->currentFont(), m_viewInternal->renderer()->lineHeight()};
+            KateInlineNoteData note = {
+                provider, this, {line, column}, index, underMouse, m_viewInternal->renderer()->currentFont(), m_viewInternal->renderer()->lineHeight()};
             allInlineNotes.append(note);
             index++;
         }

@@ -28,8 +28,9 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
     m_forwardSearch2.setPattern(QStringLiteral("/[^/]*/?")); // no group
     m_backwardSearch.setPattern(QStringLiteral("\\?([^?]*)\\??"));
     m_backwardSearch2.setPattern(QStringLiteral("\\?[^?]*\\??")); // no group
-    m_base.setPattern(QLatin1String("(?:") + m_mark.pattern() + QLatin1String(")|(?:") + m_line.pattern() + QLatin1String(")|(?:") + m_thisLine.pattern() + QLatin1String(")|(?:") + m_lastLine.pattern() + QLatin1String(")|(?:") +
-                      m_forwardSearch2.pattern() + QLatin1String(")|(?:") + m_backwardSearch2.pattern() + QLatin1Char(')'));
+    m_base.setPattern(QLatin1String("(?:") + m_mark.pattern() + QLatin1String(")|(?:") + m_line.pattern() + QLatin1String(")|(?:") + m_thisLine.pattern()
+                      + QLatin1String(")|(?:") + m_lastLine.pattern() + QLatin1String(")|(?:") + m_forwardSearch2.pattern() + QLatin1String(")|(?:")
+                      + m_backwardSearch2.pattern() + QLatin1Char(')'));
     m_offset.setPattern(QLatin1String("[+-](?:") + m_base.pattern() + QLatin1String(")?"));
 
     // The position regexp contains two groups: the base and the offset.
@@ -45,13 +46,19 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
     m_cmdRange.setPattern(QLatin1String("^(") + m_position.pattern() + QLatin1String(")((?:,(") + m_position.pattern() + QLatin1String("))?)"));
 }
 
-Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand)
+Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
+                                                         KTextEditor::ViewPrivate *view,
+                                                         QString &destRangeExpression,
+                                                         QString &destTransformedCommand)
 {
     CommandRangeExpressionParser rangeExpressionParser;
     return rangeExpressionParser.parseRangeExpression(command, destRangeExpression, destTransformedCommand, view);
 }
 
-Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view)
+Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
+                                                         QString &destRangeExpression,
+                                                         QString &destTransformedCommand,
+                                                         KTextEditor::ViewPrivate *view)
 {
     Range parsedRange(0, -1, 0, -1);
     if (command.isEmpty()) {

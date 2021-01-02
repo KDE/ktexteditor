@@ -292,7 +292,11 @@ public:
      *
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QVector<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, bool completionHighlight = false, bool completionSelected = false) const;
+    QVector<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine,
+                                                         int line,
+                                                         bool selectionsOnly = false,
+                                                         bool completionHighlight = false,
+                                                         bool completionSelected = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
@@ -352,7 +356,12 @@ public:
      * @param cursor          position of the caret, if placed on the current line.
      * @param flags           flags for customizing the drawing of the line
      */
-    void paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor = nullptr, PaintTextLineFlags flags = PaintTextLineFlags());
+    void paintTextLine(QPainter &paint,
+                       KateLineLayoutPtr range,
+                       int xStart,
+                       int xEnd,
+                       const KTextEditor::Cursor *cursor = nullptr,
+                       PaintTextLineFlags flags = PaintTextLineFlags());
 
     /**
      * Paint the background of a line

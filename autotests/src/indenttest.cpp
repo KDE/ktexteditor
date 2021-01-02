@@ -35,15 +35,18 @@ void IndentTest::testCstyle_data()
 
 void IndentTest::testCstyle()
 {
-    runTest(ExpectedFailures() << FAILURE("using1", "this is insane, those who write such code can cope with it :P") << FAILURE("using2", "this is insane, those who write such code can cope with it :P")
-                               << FAILURE("plist14",
-                                          "in function signatures it might be wanted to use the indentation of the\n"
-                                          "opening paren instead of just increasing the indentation level like in function calls")
-                               << FAILURE("switch10", "test for case where cfgSwitchIndent = false; needs proper config-interface") << FAILURE("switch11", "test for case where cfgSwitchIndent = false; needs proper config-interface")
-                               << FAILURE("visib2", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
-                               << FAILURE("visib3", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
-                               << FAILURE("plist10", "low low prio, maybe wontfix: if the user wants to add a arg, he should do so and press enter afterwards")
-                               << FAILURE("switch13", "pure insanity, whoever wrote this test and expects that to be indented properly should stop writing code"));
+    runTest(
+        ExpectedFailures() << FAILURE("using1", "this is insane, those who write such code can cope with it :P")
+                           << FAILURE("using2", "this is insane, those who write such code can cope with it :P")
+                           << FAILURE("plist14",
+                                      "in function signatures it might be wanted to use the indentation of the\n"
+                                      "opening paren instead of just increasing the indentation level like in function calls")
+                           << FAILURE("switch10", "test for case where cfgSwitchIndent = false; needs proper config-interface")
+                           << FAILURE("switch11", "test for case where cfgSwitchIndent = false; needs proper config-interface")
+                           << FAILURE("visib2", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
+                           << FAILURE("visib3", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
+                           << FAILURE("plist10", "low low prio, maybe wontfix: if the user wants to add a arg, he should do so and press enter afterwards")
+                           << FAILURE("switch13", "pure insanity, whoever wrote this test and expects that to be indented properly should stop writing code"));
 }
 
 void IndentTest::testCppstyle_data()
@@ -137,10 +140,13 @@ void IndentTest::testRuby()
 #if QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
     QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
 #endif
-    runTest(ExpectedFailures() << FAILURE("block01", "Multiline blocks using {} is not supported") << FAILURE("block02", "Multiline blocks using {} is not supported") << FAILURE("singleline01", "Single line defs are not supported")
-                               << FAILURE("singleline02", "Single line defs are not supported") << FAILURE("wordlist01", "multiline word list is not supported") << FAILURE("wordlist02", "multiline word list is not supported")
-                               << FAILURE("wordlist11", "multiline word list is not supported") << FAILURE("wordlist12", "multiline word list is not supported") << FAILURE("wordlist21", "multiline word list is not supported")
-                               << FAILURE("wordlist22", "multiline word list is not supported") << FAILURE("if20", "multi line if assignment is not supported") << FAILURE("if21", "multi line if assignment is not supported")
+    runTest(ExpectedFailures() << FAILURE("block01", "Multiline blocks using {} is not supported")
+                               << FAILURE("block02", "Multiline blocks using {} is not supported")
+                               << FAILURE("singleline01", "Single line defs are not supported") << FAILURE("singleline02", "Single line defs are not supported")
+                               << FAILURE("wordlist01", "multiline word list is not supported") << FAILURE("wordlist02", "multiline word list is not supported")
+                               << FAILURE("wordlist11", "multiline word list is not supported") << FAILURE("wordlist12", "multiline word list is not supported")
+                               << FAILURE("wordlist21", "multiline word list is not supported") << FAILURE("wordlist22", "multiline word list is not supported")
+                               << FAILURE("if20", "multi line if assignment is not supported") << FAILURE("if21", "multi line if assignment is not supported")
                                << FAILURE("if30", "single line if is not supported") << FAILURE("if31", "single line if is not supported")
                                << FAILURE("regexp1", "regression, inside already in commit afc551d14225023ce38900ddc49b43ba2a0762a8"));
 }

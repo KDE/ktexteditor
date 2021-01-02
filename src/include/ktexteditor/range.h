@@ -69,7 +69,8 @@ public:
      * \param start start position
      * \param width width of this range in columns along the same line
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, int width) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(start.line(), start.column() + width))), m_end(qMax(start, Cursor(start.line(), start.column() + width)))
+    Q_DECL_CONSTEXPR Range(const Cursor &start, int width) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(start.line(), start.column() + width))),
+                                                                             m_end(qMax(start, Cursor(start.line(), start.column() + width)))
     {
     }
 
@@ -80,7 +81,8 @@ public:
      * \param endLine end line
      * \param endColumn end column
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(endLine, endColumn))), m_end(qMax(start, Cursor(endLine, endColumn)))
+    Q_DECL_CONSTEXPR Range(const Cursor &start, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(endLine, endColumn))),
+                                                                                              m_end(qMax(start, Cursor(endLine, endColumn)))
     {
     }
 
@@ -92,8 +94,9 @@ public:
      * \param endLine end line
      * \param endColumn end column
      */
-    Q_DECL_CONSTEXPR Range(int startLine, int startColumn, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(Cursor(startLine, startColumn), Cursor(endLine, endColumn))),
-                                                                                                         m_end(qMax(Cursor(startLine, startColumn), Cursor(endLine, endColumn)))
+    Q_DECL_CONSTEXPR Range(int startLine, int startColumn, int endLine, int endColumn) Q_DECL_NOEXCEPT
+        : m_start(qMin(Cursor(startLine, startColumn), Cursor(endLine, endColumn))),
+          m_end(qMax(Cursor(startLine, startColumn), Cursor(endLine, endColumn)))
     {
     }
 
@@ -433,7 +436,9 @@ public:
      */
     Q_DECL_CONSTEXPR inline Range encompass(const Range &range) const Q_DECL_NOEXCEPT
     {
-        return (!isValid()) ? (range.isValid() ? range : invalid()) : (!range.isValid()) ? (*this) : Range(qMin(start(), range.start()), qMax(end(), range.end()));
+        return (!isValid())      ? (range.isValid() ? range : invalid())
+            : (!range.isValid()) ? (*this)
+                                 : Range(qMin(start(), range.start()), qMax(end(), range.end()));
     }
 
     /**

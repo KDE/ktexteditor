@@ -128,13 +128,18 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
     KTextEditor::Range finalMatch;
     for (int i = 0; i < count; i++) {
         if (!searchParams.isBackwards) {
-            const KTextEditor::Range matchRange = m_view->doc()->searchText(KTextEditor::Range(KTextEditor::Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()), pattern, flags).first();
+            const KTextEditor::Range matchRange =
+                m_view->doc()
+                    ->searchText(
+                        KTextEditor::Range(KTextEditor::Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()), pattern, flags)
+                    .first();
 
             if (matchRange.isValid()) {
                 finalMatch = matchRange;
             } else {
                 // Wrap around.
-                const KTextEditor::Range wrappedMatchRange = m_view->doc()->searchText(KTextEditor::Range(m_view->doc()->documentRange().start(), m_view->doc()->documentEnd()), pattern, flags).first();
+                const KTextEditor::Range wrappedMatchRange =
+                    m_view->doc()->searchText(KTextEditor::Range(m_view->doc()->documentRange().start(), m_view->doc()->documentEnd()), pattern, flags).first();
                 if (wrappedMatchRange.isValid()) {
                     finalMatch = wrappedMatchRange;
                 } else {
@@ -153,7 +158,8 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
             KTextEditor::Cursor newSearchBegin = KTextEditor::Cursor(searchBegin.line(), m_view->doc()->lineLength(searchBegin.line()));
             KTextEditor::Range bestMatch = KTextEditor::Range::invalid();
             while (true) {
-                QVector<KTextEditor::Range> matchesUnfiltered = m_view->doc()->searchText(KTextEditor::Range(newSearchBegin, m_view->doc()->documentRange().start()), pattern, flags);
+                QVector<KTextEditor::Range> matchesUnfiltered =
+                    m_view->doc()->searchText(KTextEditor::Range(newSearchBegin, m_view->doc()->documentRange().start()), pattern, flags);
 
                 if (matchesUnfiltered.size() == 1 && !matchesUnfiltered.first().isValid()) {
                     break;
@@ -186,7 +192,8 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
             if (matchRange.isValid()) {
                 finalMatch = matchRange;
             } else {
-                const KTextEditor::Range wrappedMatchRange = m_view->doc()->searchText(KTextEditor::Range(m_view->doc()->documentEnd(), m_view->doc()->documentRange().start()), pattern, flags).first();
+                const KTextEditor::Range wrappedMatchRange =
+                    m_view->doc()->searchText(KTextEditor::Range(m_view->doc()->documentEnd(), m_view->doc()->documentRange().start()), pattern, flags).first();
 
                 if (wrappedMatchRange.isValid()) {
                     finalMatch = wrappedMatchRange;

@@ -57,7 +57,8 @@ KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
 {
     // dispatch to parent
     KTextEditor::View *view = nullptr;
-    QMetaObject::invokeMethod(parent(), "activateView", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::View *, view), Q_ARG(KTextEditor::Document *, document));
+    QMetaObject::invokeMethod(
+        parent(), "activateView", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::View *, view), Q_ARG(KTextEditor::Document *, document));
     return view;
 }
 
@@ -95,7 +96,12 @@ bool MainWindow::viewsInSameSplitView(KTextEditor::View *view1, KTextEditor::Vie
 {
     // dispatch to parent
     bool success = false;
-    QMetaObject::invokeMethod(parent(), "viewsInSameSplitView", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(KTextEditor::View *, view1), Q_ARG(KTextEditor::View *, view2));
+    QMetaObject::invokeMethod(parent(),
+                              "viewsInSameSplitView",
+                              Qt::DirectConnection,
+                              Q_RETURN_ARG(bool, success),
+                              Q_ARG(KTextEditor::View *, view1),
+                              Q_ARG(KTextEditor::View *, view2));
     return success;
 }
 
@@ -131,7 +137,11 @@ void MainWindow::hideViewBar(KTextEditor::View *view)
     QMetaObject::invokeMethod(parent(), "hideViewBar", Qt::DirectConnection, Q_ARG(KTextEditor::View *, view));
 }
 
-QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text)
+QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin,
+                                    const QString &identifier,
+                                    KTextEditor::MainWindow::ToolViewPosition pos,
+                                    const QIcon &icon,
+                                    const QString &text)
 {
     // dispatch to parent
     QWidget *toolView = nullptr;
@@ -151,7 +161,12 @@ bool MainWindow::moveToolView(QWidget *widget, KTextEditor::MainWindow::ToolView
 {
     // dispatch to parent
     bool success = false;
-    QMetaObject::invokeMethod(parent(), "moveToolView", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(QWidget *, widget), Q_ARG(KTextEditor::MainWindow::ToolViewPosition, pos));
+    QMetaObject::invokeMethod(parent(),
+                              "moveToolView",
+                              Qt::DirectConnection,
+                              Q_RETURN_ARG(bool, success),
+                              Q_ARG(QWidget *, widget),
+                              Q_ARG(KTextEditor::MainWindow::ToolViewPosition, pos));
     return success;
 }
 
@@ -175,7 +190,8 @@ bool MainWindow::showPluginConfigPage(KTextEditor::Plugin *plugin, int page)
 {
     // dispatch to parent
     bool success = false;
-    QMetaObject::invokeMethod(parent(), "showPluginConfigPage", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(KTextEditor::Plugin *, plugin), Q_ARG(int, page));
+    QMetaObject::invokeMethod(
+        parent(), "showPluginConfigPage", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(KTextEditor::Plugin *, plugin), Q_ARG(int, page));
     return success;
 }
 

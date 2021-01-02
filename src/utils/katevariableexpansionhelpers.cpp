@@ -243,22 +243,24 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     vbox->addWidget(lblCurrentValue);
 
     // react to selection changes
-    connect(m_listView->selectionModel(), &QItemSelectionModel::currentRowChanged, [this, lblDescription, lblCurrentValue](const QModelIndex &current, const QModelIndex &) {
-        if (current.isValid()) {
-            const auto &var = m_variables[m_filterModel->mapToSource(current).row()];
-            lblDescription->setText(var.description());
-            if (var.isPrefixMatch()) {
-                lblCurrentValue->setText(i18n("Current value: %1<value>", var.name()));
-            } else {
-                auto activeView = KTextEditor::Editor::instance()->application()->activeMainWindow()->activeView();
-                const auto value = var.evaluate(var.name(), activeView);
-                lblCurrentValue->setText(i18n("Current value: %1", value));
-            }
-        } else {
-            lblDescription->setText(i18n("Please select a variable."));
-            lblCurrentValue->clear();
-        }
-    });
+    connect(m_listView->selectionModel(),
+            &QItemSelectionModel::currentRowChanged,
+            [this, lblDescription, lblCurrentValue](const QModelIndex &current, const QModelIndex &) {
+                if (current.isValid()) {
+                    const auto &var = m_variables[m_filterModel->mapToSource(current).row()];
+                    lblDescription->setText(var.description());
+                    if (var.isPrefixMatch()) {
+                        lblCurrentValue->setText(i18n("Current value: %1<value>", var.name()));
+                    } else {
+                        auto activeView = KTextEditor::Editor::instance()->application()->activeMainWindow()->activeView();
+                        const auto value = var.evaluate(var.name(), activeView);
+                        lblCurrentValue->setText(i18n("Current value: %1", value));
+                    }
+                } else {
+                    lblDescription->setText(i18n("Please select a variable."));
+                    lblCurrentValue->clear();
+                }
+            });
 
     // insert text on activation
     connect(m_listView, &QAbstractItemView::activated, [this](const QModelIndex &index) {
@@ -333,8 +335,8 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
     if (watched == m_filterEdit) {
         if (event->type() == QEvent::KeyPress) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-            const bool forward2list = (keyEvent->key() == Qt::Key_Up) || (keyEvent->key() == Qt::Key_Down) || (keyEvent->key() == Qt::Key_PageUp) || (keyEvent->key() == Qt::Key_PageDown) || (keyEvent->key() == Qt::Key_Enter) ||
-                (keyEvent->key() == Qt::Key_Return);
+            const bool forward2list = (keyEvent->key() == Qt::Key_Up) || (keyEvent->key() == Qt::Key_Down) || (keyEvent->key() == Qt::Key_PageUp)
+                || (keyEvent->key() == Qt::Key_PageDown) || (keyEvent->key() == Qt::Key_Enter) || (keyEvent->key() == Qt::Key_Return);
             if (forward2list) {
                 QCoreApplication::sendEvent(m_listView, event);
                 return true;

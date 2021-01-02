@@ -156,7 +156,11 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
 
         // Adding action for this bookmark in menu
         if (before) {
-            QAction *a = new QAction(QStringLiteral("%1  %3  - \"%2\"").arg(bookmarkLineArray.at(i) + 1).arg(bText).arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))), &menu);
+            QAction *a = new QAction(QStringLiteral("%1  %3  - \"%2\"")
+                                         .arg(bookmarkLineArray.at(i) + 1)
+                                         .arg(bText)
+                                         .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))),
+                                     &menu);
             menu.insertAction(before, a);
             connect(a, SIGNAL(activated()), this, SLOT(gotoLine()));
             a->setData(bookmarkLineArray.at(i));
@@ -165,7 +169,12 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
             }
 
         } else {
-            QAction *a = menu.addAction(QStringLiteral("%1  %3  - \"%2\"").arg(bookmarkLineArray.at(i) + 1).arg(bText).arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))), this, SLOT(gotoLine()));
+            QAction *a = menu.addAction(QStringLiteral("%1  %3  - \"%2\"")
+                                            .arg(bookmarkLineArray.at(i) + 1)
+                                            .arg(bText)
+                                            .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))),
+                                        this,
+                                        SLOT(gotoLine()));
             a->setData(bookmarkLineArray.at(i));
         }
 

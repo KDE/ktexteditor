@@ -308,7 +308,8 @@ public:
         AccessibilityPrevious,
         /**
          * AccessibilityAccept will be requested on an item if it is expanded, contains an expanding-widget, and the user triggers a special
-         * shortcut to trigger the action associated with the position within the expanding-widget the user has navigated to using AccessibilityNext and AccessibilityPrevious.
+         * shortcut to trigger the action associated with the position within the expanding-widget the user has navigated to using AccessibilityNext and
+         * AccessibilityPrevious.
          *
          * This should return QVariant(true) if an action was triggered, else QVariant(false) or QVariant().
          * */

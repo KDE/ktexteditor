@@ -125,8 +125,10 @@ void KateDocumentTest::testWrapParagraph()
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setWordWrapAt(30); // Keep needed test data small
 
-    const QString before = QLatin1String("aaaaa a aaaa\naaaaa aaa aa aaaa aaaa \naaaa a aaa aaaaaaa a aaaa\n\nxxxxx x\nxxxx xxxxx\nxxx xx xxxx \nxxxx xxxx x xxx xxxxxxx x xxxx");
-    const QString after = QLatin1String("aaaaa a aaaa aaaaa aaa aa aaaa \naaaa aaaa a aaa aaaaaaa a aaaa\n\nxxxxx x xxxx xxxxx xxx xx xxxx \nxxxx xxxx x xxx xxxxxxx x xxxx");
+    const QString before =
+        QLatin1String("aaaaa a aaaa\naaaaa aaa aa aaaa aaaa \naaaa a aaa aaaaaaa a aaaa\n\nxxxxx x\nxxxx xxxxx\nxxx xx xxxx \nxxxx xxxx x xxx xxxxxxx x xxxx");
+    const QString after =
+        QLatin1String("aaaaa a aaaa aaaaa aaa aa aaaa \naaaa aaaa a aaa aaaaaaa a aaaa\n\nxxxxx x xxxx xxxxx xxx xx xxxx \nxxxx xxxx x xxx xxxxxxx x xxxx");
 
     doc.setWordWrap(false); // First we try with disabled hard wrap
     doc.setText(before);
@@ -485,7 +487,10 @@ void KateDocumentTest::testInsertNewline()
         "this is line2\n");
 
     SignalHandler handler;
-    connect(&doc, SIGNAL(textInserted(KTextEditor::Document *, KTextEditor::Range)), &handler, SLOT(slotNewlineInserted(KTextEditor::Document *, KTextEditor::Range)));
+    connect(&doc,
+            SIGNAL(textInserted(KTextEditor::Document *, KTextEditor::Range)),
+            &handler,
+            SLOT(slotNewlineInserted(KTextEditor::Document *, KTextEditor::Range)));
     doc.editWrapLine(1, 4);
 }
 

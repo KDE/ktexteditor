@@ -165,7 +165,7 @@ static void registerVariables(KateVariableExpansionManager &mng)
         QStringLiteral("Document:Variable:"),
         i18n("Read a document variable."),
         [](const QStringView &str, KTextEditor::View *view) {
-            return view ? qobject_cast<KTextEditor::DocumentPrivate*>(view->document())->variable(str.mid(18).toString()) : QString();
+            return view ? qobject_cast<KTextEditor::DocumentPrivate *>(view->document())->variable(str.mid(18).toString()) : QString();
         },
         true));
 
@@ -310,7 +310,7 @@ bool KateVariableExpansionManager::expandVariable(const QString &name, KTextEdit
     auto var = variable(name);
     if (!var.isValid()) {
         // try prefix matching
-        for (auto & v : m_variables) {
+        for (auto &v : m_variables) {
             if (v.isPrefixMatch() && name.startsWith(v.name())) {
                 var = v;
                 break;

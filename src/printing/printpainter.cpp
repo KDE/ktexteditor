@@ -508,7 +508,8 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     _titleFont.setBold(true);
     painter.setFont(_titleFont);
     QRect _r;
-    painter.drawText(QRect(_marg, y, pl.pageWidth - (2 * _marg), pl.maxHeight - y), Qt::AlignTop | Qt::AlignHCenter, i18n("Typographical Conventions for %1", _hlName), &_r);
+    painter.drawText(
+        QRect(_marg, y, pl.pageWidth - (2 * _marg), pl.maxHeight - y), Qt::AlignTop | Qt::AlignHCenter, i18n("Typographical Conventions for %1", _hlName), &_r);
     const int _w = pl.pageWidth - (_marg * 2) - (pl.innerMargin * 2);
     const int _x = _marg + pl.innerMargin;
     y += _r.height() + pl.innerMargin;
@@ -661,7 +662,8 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
         proceedLines = qMin((pl.maxHeight - y) / m_fontHeight, remainder);
 
         painter.translate(0, -(_lines - int(remainder)) * m_fontHeight + 1);
-        painter.setClipRect(0, (_lines - int(remainder)) * m_fontHeight + 1, pl.maxWidth, proceedLines * m_fontHeight); //### drop the crosspatch in printerfriendly mode???
+        painter.setClipRect(
+            0, (_lines - int(remainder)) * m_fontHeight + 1, pl.maxWidth, proceedLines * m_fontHeight); //### drop the crosspatch in printerfriendly mode???
         remainder -= proceedLines;
     } else if (y + m_fontHeight * _lines > pl.maxHeight) {
         remainder = _lines - ((pl.maxHeight - y) / m_fontHeight);

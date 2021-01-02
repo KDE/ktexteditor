@@ -77,7 +77,8 @@ EmulatedCommandBar::EmulatedCommandBar(KateViInputMode *viInputMode, InputModeMa
     m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view));
     layout->addWidget(m_interactiveSedReplaceMode->label());
     m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit));
-    m_commandMode.reset(new CommandMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
+    m_commandMode.reset(
+        new CommandMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
 
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
@@ -306,7 +307,9 @@ bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
 
 void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
-    Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
+    Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(),
+               "startInteractiveSearchAndReplace",
+               "KateCommands shouldn't initiate an interactive sed replace with no initial match");
     switchToMode(m_interactiveSedReplaceMode.data());
     m_interactiveSedReplaceMode->activate(interactiveSedReplace);
 }

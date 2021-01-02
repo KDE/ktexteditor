@@ -58,7 +58,8 @@ void CompletionReplayer::replay()
     // Find end of current word.
     cursorPos = m_view->cursorPosition();
     KTextEditor::Cursor wordEnd = KTextEditor::Cursor(cursorPos.line(), cursorPos.column() - 1);
-    while (cursorPos.column() < doc->lineLength(cursorPos.line()) && (doc->characterAt(cursorPos).isLetterOrNumber() || doc->characterAt(cursorPos) == QLatin1Char('_'))) {
+    while (cursorPos.column() < doc->lineLength(cursorPos.line())
+           && (doc->characterAt(cursorPos).isLetterOrNumber() || doc->characterAt(cursorPos) == QLatin1Char('_'))) {
         wordEnd = cursorPos;
         cursorPos.setColumn(cursorPos.column() + 1);
     }
@@ -89,7 +90,8 @@ void CompletionReplayer::replay()
             offsetFinalCursorPosBy = completionText.endsWith(QLatin1Char(';')) ? -2 : -1;
         }
     }
-    KTextEditor::Cursor deleteEnd = completion.removeTail() ? currentWord.end() : KTextEditor::Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + 0);
+    KTextEditor::Cursor deleteEnd =
+        completion.removeTail() ? currentWord.end() : KTextEditor::Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + 0);
 
     if (currentWord.isValid()) {
         doc->removeText(KTextEditor::Range(currentWord.start(), deleteEnd));

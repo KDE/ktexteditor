@@ -226,7 +226,11 @@ public:
      * \param text translated text (i18n()) to use in addition to icon
      * \return created toolview on success, otherwise NULL
      */
-    QWidget *createToolView(KTextEditor::Plugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text);
+    QWidget *createToolView(KTextEditor::Plugin *plugin,
+                            const QString &identifier,
+                            KTextEditor::MainWindow::ToolViewPosition pos,
+                            const QIcon &icon,
+                            const QString &text);
 
     /**
      * Move the toolview \p widget to position \p pos.
