@@ -8,6 +8,7 @@
 #define KATE_TEXTBLOCK_H
 
 #include <unordered_set>
+#include <unordered_map>
 
 #include <QSet>
 #include <QVarLengthArray>
@@ -174,7 +175,7 @@ public:
      */
     bool containsRange(TextRange *range) const
     {
-        return m_cachedLineForRanges.contains(range) || m_uncachedRanges.contains(range);
+        return m_cachedLineForRanges.find(range) != m_cachedLineForRanges.end() || m_uncachedRanges.contains(range);
     }
 
     /**
@@ -261,7 +262,7 @@ private:
     /**
      * Maps for each cached range the line into which the range was cached.
      */
-    QHash<TextRange *, int> m_cachedLineForRanges;
+    std::unordered_map<TextRange*, int> m_cachedLineForRanges;
 
     /**
      * This contains all the ranges that are not cached.

@@ -516,7 +516,7 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     // copy is necessary as update range may modify the uncached ranges
     std::vector<TextRange*> allRanges;
     allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    allRanges.insert(allRanges.end(), m_cachedLineForRanges.begin(), m_cachedLineForRanges.end());
+    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange*, int>& pair) { allRanges.push_back(pair.first); });
     allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
     for (TextRange* range : allRanges) {
         // update both blocks
@@ -549,7 +549,9 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     // copy is necessary as update range may modify the uncached ranges
     std::vector<TextRange*> allRanges;
     allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    allRanges.insert(allRanges.end(), m_cachedLineForRanges.begin(), m_cachedLineForRanges.end());
+    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange*, int>& pair){
+        allRanges.push_back(pair.first);
+    });
     allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
     for (TextRange *range : allRanges) {
         // update both blocks
@@ -663,7 +665,10 @@ void TextBlock::updateRange(TextRange *range)
     }
 
     // The range is still a single-line range, and is still cached to the correct line.
-    if (isSingleLine && m_cachedLineForRanges.contains(range) && (m_cachedLineForRanges.value(range) == startLine - m_startLine)) {
+    if (isSingleLine) {
+        auto it = m_cachedLineForRanges.find(range);
+        if (it != m_cachedLineForRanges.end() && it->second == startLine - m_startLine) {
+        }
         return;
     }
 
@@ -702,21 +707,23 @@ void TextBlock::removeRange(TextRange *range)
     if (pos != -1) {
         m_uncachedRanges.remove(pos);
         // must be only uncached!
-        Q_ASSERT(!m_cachedLineForRanges.contains(range));
+        Q_ASSERT(m_cachedLineForRanges.find(range) != m_cachedLineForRanges.end());
         return;
     }
 
     // cached range?
-    QHash<TextRange *, int>::iterator it = m_cachedLineForRanges.find(range);
+    auto it = m_cachedLineForRanges.find(range);
     if (it != m_cachedLineForRanges.end()) {
         // must be only cached!
         Q_ASSERT(!m_uncachedRanges.contains(range));
 
+        int line = it->second;
+
         // query the range from cache, must be there
-        Q_ASSERT(m_cachedRangesForLine.at(*it).contains(range));
+        Q_ASSERT(m_cachedRangesForLine.at(line).contains(range));
 
         // remove it and be done
-        m_cachedRangesForLine[*it].remove(range);
+        m_cachedRangesForLine[line].remove(range);
         m_cachedLineForRanges.erase(it);
         return;
     }
