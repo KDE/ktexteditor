@@ -559,7 +559,7 @@ private:
     /**
      * List of blocks which contain the lines of this buffer
      */
-    QVector<TextBlock *> m_blocks;
+    std::vector<TextBlock *> m_blocks;
 
     /**
      * Number of lines in buffer

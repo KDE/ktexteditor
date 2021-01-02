@@ -128,7 +128,7 @@ void TextBuffer::clear()
     m_blocks.clear();
 
     // insert one block with one empty line
-    m_blocks.append(newBlock);
+    m_blocks.push_back(newBlock);
 
     // reset lines and last used block
     m_lines = 1;
@@ -408,11 +408,11 @@ int TextBuffer::blockForLine(int line) const
     }
 
     // we need blocks and last used block should not be negative
-    Q_ASSERT(!m_blocks.isEmpty());
+    Q_ASSERT(!m_blocks.empty());
     Q_ASSERT(m_lastUsedBlock >= 0);
 
     // shortcut: try last block first
-    if (m_lastUsedBlock < m_blocks.size()) {
+    if (m_lastUsedBlock < (int)m_blocks.size()) {
         // check if block matches
         // if yes, just return again this block
         TextBlock *block = m_blocks[m_lastUsedBlock];
@@ -432,7 +432,7 @@ int TextBuffer::blockForLine(int line) const
         // get middle and ensure it is OK
         int middle = blockStart + ((blockEnd - blockStart) / 2);
         Q_ASSERT(middle >= 0);
-        Q_ASSERT(middle < m_blocks.size());
+        Q_ASSERT(middle < (int)m_blocks.size());
 
         // facts bout this block
         TextBlock *block = m_blocks[middle];
@@ -462,14 +462,14 @@ void TextBuffer::fixStartLines(int startBlock)
 {
     // only allow valid start block
     Q_ASSERT(startBlock >= 0);
-    Q_ASSERT(startBlock < m_blocks.size());
+    Q_ASSERT(startBlock < (int)m_blocks.size());
 
     // new start line for next block
     TextBlock *block = m_blocks.at(startBlock);
     int newStartLine = block->startLine() + block->lines();
 
     // fixup block
-    for (int index = startBlock + 1; index < m_blocks.size(); ++index) {
+    for (std::vector<TextBlock*>::size_type index = startBlock + 1; index < m_blocks.size(); ++index) {
         // set new start line
         block = m_blocks.at(index);
         block->setStartLine(newStartLine);
@@ -528,7 +528,7 @@ void TextBuffer::debugPrint(const QString &title) const
     printf("%s (lines: %d bs: %d)\n", qPrintable(title), m_lines, m_blockSize);
 
     // print all blocks
-    for (int i = 0; i < m_blocks.size(); ++i) {
+    for (std::vector<TextBlock*>::size_type i = 0; i < m_blocks.size(); ++i) {
         m_blocks.at(i)->debugPrint(i);
     }
 }
@@ -554,7 +554,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     // 3) use again given encoding, be done in any case
     for (int i = 0; i < (enforceTextCodec ? 1 : 4); ++i) {
         // kill all blocks beside first one
-        for (int b = 1; b < m_blocks.size(); ++b) {
+        for (std::vector<TextBlock*>::size_type b = 1; b < m_blocks.size(); ++b) {
             TextBlock *block = m_blocks.at(b);
             block->clearLines();
             delete block;
@@ -562,7 +562,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         m_blocks.resize(1);
 
         // remove lines in first block
-        m_blocks.last()->clearLines();
+        m_blocks.back()->clearLines();
         m_lines = 0;
 
         // try to open file, with given encoding
@@ -578,7 +578,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
 
         if (!file.open(codec)) {
             // create one dummy textline, in any case
-            m_blocks.last()->appendLine(QString());
+            m_blocks.back()->appendLine(QString());
             m_lines++;
             return false;
         }
@@ -633,12 +633,12 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 unicodeData += lineLength;
 
                 // ensure blocks aren't too large
-                if (m_blocks.last()->lines() >= m_blockSize) {
-                    m_blocks.append(new TextBlock(this, m_blocks.last()->startLine() + m_blocks.last()->lines()));
+                if (m_blocks.back()->lines() >= m_blockSize) {
+                    m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
                 }
 
                 // append line to last block
-                m_blocks.last()->appendLine(textLine);
+                m_blocks.back()->appendLine(textLine);
                 ++m_lines;
             } while (length > 0);
         }
