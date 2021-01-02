@@ -88,18 +88,7 @@ public:
      * In case the string cannot be parsed, an LineRange::invalid() is returned.
      * @see toString()
      */
-    static LineRange fromString(const QString &str) Q_DECL_NOEXCEPT
-    {
-        return fromString(QStringView(str));
-    }
-
-    /**
-     * Returns a LineRange created from the string \p str containing the format
-     * "[start line, end line]".
-     * In case the string cannot be parsed, an LineRange::invalid() is returned.
-     * @see toString()
-     */
-    static LineRange fromString(const QStringView &str) Q_DECL_NOEXCEPT;
+    static LineRange fromString(const QStringView str) Q_DECL_NOEXCEPT;
 
     /**
      * @name Position
