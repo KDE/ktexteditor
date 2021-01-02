@@ -13,6 +13,7 @@
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/range.h>
+#include <ktexteditor/linerange.h>
 #include <ktexteditor_export.h>
 
 #include <QDebug>
@@ -365,6 +366,15 @@ public:
     operator Range() const
     {
         return Range(start().toCursor(), end().toCursor());
+    }
+
+    /**
+     * Convert this MovingRange to a simple LineRange.
+     * @return LineRange from the start line to the end line of this range.
+     */
+    LineRange toLineRange() Q_DECL_NOEXCEPT
+    {
+        return {start().line(), end().line()};
     }
 
     /**

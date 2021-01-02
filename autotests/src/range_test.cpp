@@ -225,3 +225,86 @@ void RangeTest::testRangeStringConversion()
     r = Range::fromString(QStringLiteral("[0,1]"));
     QCOMPARE(r.toString(), QStringLiteral("[(-1, -1), (-1, -1)]"));
 }
+
+void RangeTest::testLineRangeStringConversion()
+{
+    using KTextEditor::LineRange;
+
+    LineRange r;
+    QCOMPARE(r.start(), 0);
+    QCOMPARE(r.end(), 0);
+    QCOMPARE(r.toString(), QStringLiteral("[0, 0]"));
+
+    r = LineRange::fromString(QStringLiteral("[0, 0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[0, 0]"));
+    r = LineRange::fromString(QStringLiteral("[0,0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[0, 0]"));
+    r = LineRange::fromString(QStringLiteral("[-1, -1]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-1, -1]"));
+    r = LineRange::fromString(QStringLiteral("[-1, 0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-1, 0]"));
+    r = LineRange::fromString(QStringLiteral("[0, -1]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-1, 0]")); // start > end -> swap
+
+    r = LineRange::fromString(QStringLiteral("[12, 42]"));
+    QCOMPARE(r.toString(), QStringLiteral("[12, 42]"));
+    r = LineRange::fromString(QStringLiteral("[12, 0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[0, 12]")); // start > end -> swap
+    r = LineRange::fromString(QStringLiteral("[12, 0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[0, 12]")); // start > end -> swap
+    r = LineRange::fromString(QStringLiteral("[-12, 0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-12, 0]"));
+    r = LineRange::fromString(QStringLiteral("[0, -12]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-12, 0]")); // start > end -> swap
+
+    // invalid input
+    r = LineRange::fromString(QStringLiteral("[0:0]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-1, -1]"));
+    r = LineRange::fromString(QStringLiteral("[0-1]"));
+    QCOMPARE(r.toString(), QStringLiteral("[-1, -1]"));
+}
+
+void RangeTest::lineRangeCheck(KTextEditor::LineRange &range)
+{
+    QVERIFY(range.isValid());
+    QVERIFY(range.start() <= range.end());
+    QCOMPARE(range.numberOfLines(), range.end() - range.start());
+}
+
+void RangeTest::testLineRange()
+{
+    KTextEditor::LineRange range;
+    QCOMPARE(range.start(), 0);
+    QCOMPARE(range.end(), 0);
+    lineRangeCheck(range);
+
+    range.setRange(3, 5);
+    QCOMPARE(range.start(), 3);
+    QCOMPARE(range.end(), 5);
+    lineRangeCheck(range);
+
+    range.setRange(5, 3);
+    QCOMPARE(range.start(), 3);
+    QCOMPARE(range.end(), 5);
+    lineRangeCheck(range);
+
+    range.setStart(2);
+    QCOMPARE(range.start(), 2);
+    QCOMPARE(range.end(), 5);
+    lineRangeCheck(range);
+
+    range.setStart(6);
+    QCOMPARE(range.start(), 6);
+    QCOMPARE(range.end(), 6);
+    lineRangeCheck(range);
+
+    range.setEnd(8);
+    QCOMPARE(range.start(), 6);
+    QCOMPARE(range.end(), 8);
+    lineRangeCheck(range);
+
+    range.setEnd(4);
+    QCOMPARE(range.start(), 4);
+    QCOMPARE(range.end(), 4);
+    lineRangeCheck(range);
+}

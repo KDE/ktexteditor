@@ -1,7 +1,7 @@
 # KTextEditor interface headers
 ecm_generate_headers(KTextEditor_CamelCase_HEADERS
   HEADER_NAMES
-  AnnotationInterface CodeCompletionModelControllerInterface MovingCursor Range TextHintInterface
+  AnnotationInterface CodeCompletionModelControllerInterface MovingCursor Range LineRange TextHintInterface
   Cursor MarkInterface MovingInterface InlineNote InlineNoteProvider InlineNoteInterface
   AbstractAnnotationItemDelegate
   Document  MovingRange View

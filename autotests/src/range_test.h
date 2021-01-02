@@ -28,9 +28,13 @@ private Q_SLOTS:
     void testCornerCaseInsertion();
     void testCursorStringConversion();
     void testRangeStringConversion();
+    void testLineRangeStringConversion();
+    void testLineRange();
 
 private:
     void rangeCheck(KTextEditor::Range &valid);
+    void lineRangeCheck(KTextEditor::LineRange &range);
+
 };
 
 #endif

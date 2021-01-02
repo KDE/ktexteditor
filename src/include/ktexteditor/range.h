@@ -12,6 +12,7 @@
 #define KTEXTEDITOR_RANGE_H
 
 #include <ktexteditor/cursor.h>
+#include <ktexteditor/linerange.h>
 #include <ktexteditor_export.h>
 
 #include <QDebug>
@@ -167,6 +168,16 @@ public:
     Q_DECL_CONSTEXPR inline Cursor end() const Q_DECL_NOEXCEPT
     {
         return m_end;
+    }
+
+    /**
+     * Convert this Range to a LineRange
+     *
+     * @return LineRange from the start line to the end line of this range.
+     */
+    LineRange toLineRange() Q_DECL_NOEXCEPT
+    {
+        return {start().line(), end().line()};
     }
 
     /**

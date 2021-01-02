@@ -86,6 +86,30 @@ void KTextEditor::Range::setBothColumns(int column) Q_DECL_NOEXCEPT
     setRange(Range(start().line(), column, end().line(), column));
 }
 
+LineRange LineRange::fromString(const QStringView &str) Q_DECL_NOEXCEPT
+{
+    // parse format "[start, end]"
+    const int startIndex = str.indexOf(QLatin1Char('['));
+    const int endIndex = str.indexOf(QLatin1Char(']'));
+    const int commaIndex = str.indexOf(QLatin1Char(','));
+
+    if (startIndex < 0 || endIndex < 0 || commaIndex < 0 || commaIndex < startIndex || endIndex < commaIndex || endIndex < startIndex) {
+        return invalid();
+    }
+
+    bool ok1 = false;
+    bool ok2 = false;
+
+    const int start = str.mid(startIndex + 1, commaIndex - startIndex - 1).toInt(&ok1);
+    const int end = str.mid(commaIndex + 1, endIndex - commaIndex - 1).toInt(&ok2);
+
+    if (!ok1 || !ok2) {
+        return invalid();
+    }
+
+    return {start, end};
+}
+
 namespace QTest
 {
 // Cursor: template specialization for QTest::toString()
@@ -101,6 +125,15 @@ template<> char *toString(const KTextEditor::Range &range)
     QByteArray ba = "Range[";
     ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + " - ";
     ba += QByteArray::number(range.end().line()) + ", " + QByteArray::number(range.end().column());
+    ba += ']';
+    return qstrdup(ba.data());
+}
+
+// LineRange: template specialization for QTest::toString()
+template<> char *toString(const KTextEditor::LineRange &range)
+{
+    QByteArray ba = "LineRange[";
+    ba += QByteArray::number(range.start()) + " - " + QByteArray::number(range.end());
     ba += ']';
     return qstrdup(ba.data());
 }
