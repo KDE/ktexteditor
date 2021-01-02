@@ -3613,7 +3613,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     // cursor valid? else no new ranges can be found
     if (currentCursor.isValid() && currentCursor.line() < doc()->buffer().lines()) {
         // now: get current ranges for the line of cursor with an attribute
-        const QList<Kate::TextRange *> rangesForCurrentCursor = doc()->buffer().rangesForLine(currentCursor.line(), this, false);
+        const QVector<Kate::TextRange *> rangesForCurrentCursor = doc()->buffer().rangesForLine(currentCursor.line(), this, false);
 
         // match which ranges really fit the given cursor
         for (Kate::TextRange *range : rangesForCurrentCursor) {

@@ -503,7 +503,12 @@ public:
      * @param rangesWithAttributeOnly only return ranges which have a attribute set
      * @return list of ranges affecting this line
      */
-    QList<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
+    QVector<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
+    {
+        // get block, this will assert on invalid line
+        const int blockIndex = blockForLine(line);
+        return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly);
+    }
 
     /**
      * Check if the given range pointer is still valid.

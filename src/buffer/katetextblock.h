@@ -17,6 +17,10 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
 
+namespace KTextEditor {
+class View;
+}
+
 namespace Kate
 {
 class TextBuffer;
@@ -156,13 +160,12 @@ public:
 
     /**
      * Return all ranges in this block which might intersect the given line.
-     * @param line line to check intersection
-     * @return list of sets of possible candidate ranges
+     * @param line                          line to check intersection
+     * @param view                          only return ranges associated with given view
+     * @param rangesWithAttributeOnly       ranges with attributes only?
+     * @return list of possible candidate ranges
      */
-    QList<QSet<TextRange *>> rangesForLine(int line) const
-    {
-        return QList<QSet<TextRange *>>() << QSet<TextRange*>(m_uncachedRanges.cbegin(), m_uncachedRanges.cend()) << cachedRangesForLine(line);
-    }
+    QVector<TextRange*> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
 
     /**
      * Is the given range contained in this block?

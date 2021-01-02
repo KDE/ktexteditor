@@ -949,40 +949,4 @@ void TextBuffer::markModifiedLinesAsSaved()
     }
 }
 
-QList<TextRange *> TextBuffer::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
-{
-    // get block, this will assert on invalid line
-    const int blockIndex = blockForLine(line);
-
-    // get the ranges of the right block
-    QList<TextRange *> rightRanges;
-    const auto blockRanges = m_blocks.at(blockIndex)->rangesForLine(line);
-    for (const QSet<TextRange *> &ranges : blockRanges) {
-        for (TextRange *const range : ranges) {
-            // we want only ranges with attributes, but this one has none
-            if (rangesWithAttributeOnly && !range->hasAttribute()) {
-                continue;
-            }
-
-            // we want ranges for no view, but this one's attribute is only valid for views
-            if (!view && range->attributeOnlyForViews()) {
-                continue;
-            }
-
-            // the range's attribute is not valid for this view
-            if (range->view() && range->view() != view) {
-                continue;
-            }
-
-            // if line is in the range, ok
-            if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
-                rightRanges.append(range);
-            }
-        }
-    }
-
-    // return right ranges
-    return rightRanges;
-}
-
 }
