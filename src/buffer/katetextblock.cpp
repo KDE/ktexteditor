@@ -668,8 +668,8 @@ void TextBlock::updateRange(TextRange *range)
     if (isSingleLine) {
         auto it = m_cachedLineForRanges.find(range);
         if (it != m_cachedLineForRanges.end() && it->second == startLine - m_startLine) {
+            return;
         }
-        return;
     }
 
     // The range is still a multi-line range, and is already in the correct set.
@@ -707,7 +707,7 @@ void TextBlock::removeRange(TextRange *range)
     if (pos != -1) {
         m_uncachedRanges.remove(pos);
         // must be only uncached!
-        Q_ASSERT(m_cachedLineForRanges.find(range) != m_cachedLineForRanges.end());
+        Q_ASSERT(m_cachedLineForRanges.find(range) == m_cachedLineForRanges.end());
         return;
     }
 
