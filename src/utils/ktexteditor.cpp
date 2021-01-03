@@ -41,29 +41,10 @@ using namespace KTextEditor;
 
 Cursor Cursor::fromString(const QStringRef &str) Q_DECL_NOEXCEPT
 {
-    // parse format "(line, column)"
-    const int startIndex = str.indexOf(QLatin1Char('('));
-    const int endIndex = str.indexOf(QLatin1Char(')'));
-    const int commaIndex = str.indexOf(QLatin1Char(','));
-
-    if (startIndex < 0 || endIndex < 0 || commaIndex < 0 || commaIndex < startIndex || endIndex < commaIndex || endIndex < startIndex) {
-        return invalid();
-    }
-
-    bool ok1 = false;
-    bool ok2 = false;
-
-    const int line = str.mid(startIndex + 1, commaIndex - startIndex - 1).toInt(&ok1);
-    const int column = str.mid(commaIndex + 1, endIndex - commaIndex - 1).toInt(&ok2);
-
-    if (!ok1 || !ok2) {
-        return invalid();
-    }
-
-    return {line, column};
+    return fromString(QStringView(str));
 }
 
-Cursor Cursor::fromString(const QStringView str) Q_DECL_NOEXCEPT
+Cursor Cursor::fromString(QStringView str) Q_DECL_NOEXCEPT
 {
     // parse format "(line, column)"
     const int startIndex = str.indexOf(QLatin1Char('('));

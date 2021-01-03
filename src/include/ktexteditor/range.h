@@ -153,7 +153,7 @@ public:
      * In case the string cannot be parsed, an Range::invalid() is returned.
      * \see toString()
      */
-    static Range fromString(const QStringView str) Q_DECL_NOEXCEPT;
+    static Range fromString(QStringView str) Q_DECL_NOEXCEPT;
 
     /**
      * \name Position

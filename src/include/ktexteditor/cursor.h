@@ -155,7 +155,7 @@ public:
      * is returned.
      * \see toString()
      */
-    static Cursor fromString(const QStringView str) Q_DECL_NOEXCEPT;
+    static Cursor fromString(QStringView str) Q_DECL_NOEXCEPT;
 
     /**
      * \name Position
