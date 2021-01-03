@@ -372,7 +372,7 @@ public:
      * Convert this MovingRange to a simple LineRange.
      * @return LineRange from the start line to the end line of this range.
      */
-    LineRange toLineRange() Q_DECL_NOEXCEPT
+    inline LineRange toLineRange() const Q_DECL_NOEXCEPT
     {
         return {start().line(), end().line()};
     }

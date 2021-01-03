@@ -178,7 +178,7 @@ public:
      *
      * @return LineRange from the start line to the end line of this range.
      */
-    LineRange toLineRange() Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline LineRange toLineRange() const Q_DECL_NOEXCEPT
     {
         return {start().line(), end().line()};
     }
