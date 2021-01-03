@@ -205,8 +205,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     // no plugins from kparts here
     setPluginLoadingMode(DoNotLoadPlugins);
 
-    // pass on our component data, do this after plugin loading is off
-    setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
+    // setup component name
+    const auto &aboutData = EditorPrivate::self()->aboutData();
+    setComponentName(aboutData.componentName(), aboutData.displayName());
 
     // avoid spamming plasma and other window managers with progress dialogs
     // we show such stuff inline in the views!
