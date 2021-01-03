@@ -474,7 +474,7 @@ KateViewConfig::KateViewConfig()
             return isPositive(value);
         }));
     addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) {
-        return inBounds(1, value, 100);
+        return inBounds(0, value, 100);
     }));
     addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) {
         return inBounds(1, value, 3);

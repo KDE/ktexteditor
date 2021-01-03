@@ -16,6 +16,11 @@ using namespace KTextEditor;
 
 Range Range::fromString(const QStringRef &str) Q_DECL_NOEXCEPT
 {
+    return fromString(QStringView(str));
+}
+
+Range Range::fromString(QStringView str) Q_DECL_NOEXCEPT
+{
     const int startIndex = str.indexOf(QLatin1Char('['));
     const int endIndex = str.indexOf(QLatin1Char(']'));
     const int closeIndex = str.indexOf(QLatin1Char(')')); // end of first cursor
