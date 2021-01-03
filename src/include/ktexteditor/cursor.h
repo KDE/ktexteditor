@@ -132,11 +132,9 @@ public:
      * Returns a Cursor created from the string \p str containing the format
      * "(line, column)". In case the string cannot be parsed, Cursor::invalid()
      * is returned.
-     *
-     * TODO KF6: Remove this overload in favor of fromString(QStringView).
-     *
      * \see toString()
      */
+    // TODO KF6: Remove this overload in favor of fromString(QStringView).
     static Cursor fromString(const QString &str) Q_DECL_NOEXCEPT
     {
         return fromString(str.leftRef(-1));
@@ -146,11 +144,9 @@ public:
      * Returns a Cursor created from the string \p str containing the format
      * "(line, column)". In case the string cannot be parsed, Cursor::invalid()
      * is returned.
-     *
-     * TODO KF6: Remove this overload in favor of fromString(QStringView).
-     *
      * \see toString()
      */
+    // TODO KF6: Remove this overload in favor of fromString(QStringView).
     static Cursor fromString(const QStringRef &str) Q_DECL_NOEXCEPT;
 
     /**

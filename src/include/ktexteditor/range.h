@@ -130,11 +130,9 @@ public:
      * Returns a Range created from the string \p str containing the format
      * "[(start-line, start-column), (endl-line:end-column)]".
      * In case the string cannot be parsed, an Range::invalid() is returned.
-     *
-     * TODO KF6: Remove this overload in favor of fromString(QStringView).
-     *
      * \see toString()
      */
+    // TODO KF6: Remove this overload in favor of fromString(QStringView).
     static Range fromString(const QString &str) Q_DECL_NOEXCEPT
     {
         return fromString(str.leftRef(-1));
@@ -144,11 +142,9 @@ public:
      * Returns a Range created from the string \p str containing the format
      * "[(start-line, start-column), (endl-line:end-column)]".
      * In case the string cannot be parsed, an Range::invalid() is returned.
-     *
-     * TODO KF6: Remove this overload in favor of fromString(QStringView).
-     *
      * \see toString()
      */
+    // TODO KF6: Remove this overload in favor of fromString(QStringView).
     static Range fromString(const QStringRef &str) Q_DECL_NOEXCEPT;
 
     /**
