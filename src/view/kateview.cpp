@@ -2135,7 +2135,7 @@ bool KTextEditor::ViewPrivate::tagRange(const KTextEditor::Range &range, bool re
     return m_viewInternal->tagRange(range, realLines);
 }
 
-bool KTextEditor::ViewPrivate::tagLines(const KTextEditor::LineRange &lineRange, bool realLines)
+bool KTextEditor::ViewPrivate::tagLines(KTextEditor::LineRange lineRange, bool realLines)
 {
     return m_viewInternal->tagLines(lineRange.start(), lineRange.end(), realLines);
 }
@@ -3532,7 +3532,7 @@ KateSpellingMenu *KTextEditor::ViewPrivate::spellingMenu()
     return m_spellingMenu;
 }
 
-void KTextEditor::ViewPrivate::notifyAboutRangeChange(const KTextEditor::LineRange lineRange, bool rangeWithAttribute)
+void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool rangeWithAttribute)
 {
 #ifdef VIEW_RANGE_DEBUG
     // output args

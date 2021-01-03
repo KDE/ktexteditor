@@ -922,7 +922,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     return true;
 }
 
-void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, const KTextEditor::LineRange lineRange, bool rangeWithAttribute)
+void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool rangeWithAttribute)
 {
     // ignore calls if no document is around
     if (!m_document) {

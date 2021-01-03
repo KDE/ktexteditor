@@ -145,7 +145,7 @@ void TextRange::setRange(const KTextEditor::Range &range)
     }
 }
 
-void TextRange::checkValidity(const KTextEditor::LineRange oldLineRange, bool notifyAboutChange)
+void TextRange::checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAboutChange)
 {
     // in any case: reset the flag, to avoid multiple runs
     m_isCheckValidityRequired = false;
@@ -177,7 +177,7 @@ void TextRange::checkValidity(const KTextEditor::LineRange oldLineRange, bool no
     }
 }
 
-void TextRange::fixLookup(const KTextEditor::LineRange oldLineRange, const KTextEditor::LineRange lineRange)
+void TextRange::fixLookup(KTextEditor::LineRange oldLineRange, KTextEditor::LineRange lineRange)
 {
     // nothing changed?
     if (oldLineRange == lineRange) {

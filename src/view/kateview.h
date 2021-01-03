@@ -372,7 +372,7 @@ public:
     bool tagLine(const KTextEditor::Cursor &virtualCursor);
 
     bool tagRange(const KTextEditor::Range &range, bool realLines = false);
-    bool tagLines(const KTextEditor::LineRange &lineRange, bool realLines = false);
+    bool tagLines(KTextEditor::LineRange lineRange, bool realLines = false);
     bool tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors = false);
     bool tagLines(KTextEditor::Range range, bool realRange = false);
 
@@ -908,7 +908,7 @@ public:
      * @param lineRange line range that the change spans
      * @param rangeWithAttribute attribute changed or is active, this will perhaps lead to repaints
      */
-    void notifyAboutRangeChange(const KTextEditor::LineRange lineRange, bool rangeWithAttribute);
+    void notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool rangeWithAttribute);
 
 private Q_SLOTS:
     /**

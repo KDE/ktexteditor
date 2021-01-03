@@ -4089,7 +4089,7 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
     editEnd();
 }
 
-void KTextEditor::DocumentPrivate::tagLines(const KTextEditor::LineRange lineRange)
+void KTextEditor::DocumentPrivate::tagLines(KTextEditor::LineRange lineRange)
 {
     for (auto view : qAsConst(m_views)) {
         view->tagLines(lineRange, true);

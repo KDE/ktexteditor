@@ -286,14 +286,14 @@ private:
      * @param oldLineRange lien range of this range before changing of cursors, needed to add/remove range from m_ranges in blocks
      * @param notifyAboutChange should feedback be emitted or not?
      */
-    void checkValidity(const KTextEditor::LineRange oldLineRange = KTextEditor::LineRange::invalid(), bool notifyAboutChange = true);
+    void checkValidity(KTextEditor::LineRange oldLineRange = KTextEditor::LineRange::invalid(), bool notifyAboutChange = true);
 
     /**
      * Add/Remove range from the lookup m_ranges hash of each block
      * @param oldLineRange old line range before changing of cursors, needed to add/remove range from m_ranges in blocks
      * @param lineRange line range to start looking for the range to remove
      */
-    void fixLookup(const KTextEditor::LineRange oldLineRange, const KTextEditor::LineRange lineRange);
+    void fixLookup(KTextEditor::LineRange oldLineRange, KTextEditor::LineRange lineRange);
 
     /**
      * Mark this range for later validity checking.
