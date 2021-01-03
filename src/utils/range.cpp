@@ -105,8 +105,8 @@ LineRange LineRange::fromString(QStringView str) Q_DECL_NOEXCEPT
     bool ok1 = false;
     bool ok2 = false;
 
-    const int start = str.mid(startIndex + 1, commaIndex - startIndex - 1).toInt(&ok1);
-    const int end = str.mid(commaIndex + 1, endIndex - commaIndex - 1).toInt(&ok2);
+    const int start = str.mid(startIndex + 1, commaIndex - startIndex - 1).toString().toInt(&ok1); // FIXME KF6: Qt 5.15.2 and higher: remove .toString()
+    const int end = str.mid(commaIndex + 1, endIndex - commaIndex - 1).toString().toInt(&ok2); // FIXME KF6: Qt 5.15.2 and higher: remove .toString()
 
     if (!ok1 || !ok2) {
         return invalid();
