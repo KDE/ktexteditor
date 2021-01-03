@@ -88,7 +88,7 @@ public:
      * In case the string cannot be parsed, an LineRange::invalid() is returned.
      * @see toString()
      */
-    static LineRange fromString(const QStringView str) Q_DECL_NOEXCEPT;
+    static LineRange fromString(QStringView str) Q_DECL_NOEXCEPT;
 
     /**
      * @name Position

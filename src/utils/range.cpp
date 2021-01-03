@@ -86,7 +86,7 @@ void KTextEditor::Range::setBothColumns(int column) Q_DECL_NOEXCEPT
     setRange(Range(start().line(), column, end().line(), column));
 }
 
-LineRange LineRange::fromString(const QStringView str) Q_DECL_NOEXCEPT
+LineRange LineRange::fromString(QStringView str) Q_DECL_NOEXCEPT
 {
     // parse format "[start, end]"
     const int startIndex = str.indexOf(QLatin1Char('['));
