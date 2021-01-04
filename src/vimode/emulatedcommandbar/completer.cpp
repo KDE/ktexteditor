@@ -188,7 +188,7 @@ void Completer::updateCompletionPrefix()
 
 CompletionStartParams Completer::activateWordFromDocumentCompletion()
 {
-    static const QRegularExpression wordRegEx(QStringLiteral("\\w{1,}"));
+    static const QRegularExpression wordRegEx(QStringLiteral("\\w+"));
     QRegularExpressionMatch match;
 
     QStringList foundWords;

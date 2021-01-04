@@ -524,11 +524,11 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
 {
     // FIXME: QTextBoundaryFinder should be ideally used for this, but it is currently
     //        still broken in Qt
-    const QRegularExpression boundaryRegExp(QLatin1String("\\b"));
-    const QRegularExpression boundaryQuoteRegExp(
-        QLatin1String("\\b\\w+'\\w*$")); // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
-    const QRegularExpression extendedBoundaryRegExp(QLatin1String("(\\W|$)"));
-    const QRegularExpression extendedBoundaryQuoteRegExp(QLatin1String("^\\w*'\\w+\\b")); // see above
+    static const QRegularExpression boundaryRegExp(QStringLiteral("\\b"));
+    // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
+    static const QRegularExpression boundaryQuoteRegExp(QStringLiteral("\\b\\w+'\\w*$"));
+    static const QRegularExpression extendedBoundaryRegExp(QStringLiteral("\\W|$"));
+    static const QRegularExpression extendedBoundaryQuoteRegExp(QStringLiteral("^\\w*'\\w+\\b")); // see above
     KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList, encToDecOffsetList;
     const int startLine = begin.line();
     const int startColumn = begin.column();

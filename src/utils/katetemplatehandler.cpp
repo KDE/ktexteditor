@@ -259,9 +259,9 @@ void KateTemplateHandler::parseFields(const QString &templateText)
 {
     // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
     // this also captures escaped fields, i.e. \\${foo} etc.
-    QRegularExpression field(QStringLiteral("\\\\?\\${([^}]+)}"));
+    static const QRegularExpression field(QStringLiteral("\\\\?\\${([^}]+)}"));
     // matches the "foo=expr" form within a match of the above expression
-    QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"));
+    static const QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"));
 
     // compute start cursor of a match
     auto startOfMatch = [this, &templateText](const QRegularExpressionMatch &match) {
@@ -283,7 +283,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     QVector<KTextEditor::Cursor> stripBackslashes;
     auto fieldMatch = field.globalMatch(templateText);
     while (fieldMatch.hasNext()) {
-        auto match = fieldMatch.next();
+        const auto match = fieldMatch.next();
         if (match.captured(0).startsWith(QLatin1Char('\\'))) {
             // $ is escaped, not a field; mark the backslash for removal
             // prepend it to the list so the characters are removed starting from the

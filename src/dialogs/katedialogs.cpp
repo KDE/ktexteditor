@@ -1184,8 +1184,8 @@ bool KateGotoBar::eventFilter(QObject *object, QEvent *event)
 
 void KateGotoBar::gotoClipboard()
 {
-    QRegularExpression rx(QStringLiteral("-?\\d+"));
-    int lineNo = rx.match(QApplication::clipboard()->text(QClipboard::Selection)).captured().toInt();
+    static const QRegularExpression rx(QStringLiteral("-?\\d+"));
+    const int lineNo = rx.match(QApplication::clipboard()->text(QClipboard::Selection)).captured().toInt();
     if (lineNo >= m_gotoRange->minimum() && lineNo <= m_gotoRange->maximum()) {
         m_gotoRange->setValue(lineNo);
         gotoLine();

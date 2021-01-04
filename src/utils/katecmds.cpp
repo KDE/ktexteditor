@@ -508,8 +508,8 @@ bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd,
     QString cmd = _cmd;
 
     // hex, octal, base 9+1
-    QRegularExpression num(QStringLiteral("^char *(0?x[0-9A-Fa-f]{1,4}|0[0-7]{1,6}|[0-9]{1,5})$"));
-    QRegularExpressionMatch match = num.match(cmd);
+    static const QRegularExpression num(QStringLiteral("^char *(0?x[0-9A-Fa-f]{1,4}|0[0-7]{1,6}|[0-9]{1,5})$"));
+    const QRegularExpressionMatch match = num.match(cmd);
     if (!match.hasMatch()) {
         return false;
     }

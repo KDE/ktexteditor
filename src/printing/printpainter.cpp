@@ -262,7 +262,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
             tags[QStringLiteral("U")].prepend(s);
         }
 
-        QRegularExpression reTags(QStringLiteral("%([dDfUhuyY])")); // TODO check for "%%<TAG>"
+        static const QRegularExpression reTags(QStringLiteral("%([dDfUhuyY])")); // TODO check for "%%<TAG>"
 
         if (m_useHeader) {
             pl.headerHeight = QFontMetrics(m_fhFont).height();

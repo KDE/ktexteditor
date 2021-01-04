@@ -3158,14 +3158,16 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     if (!skipAutobrace && (closingBracket == QLatin1Char('\''))) {
         // skip auto quotes when these looks already balanced, bug 405089
         Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
-        // RegEx match quote, but not excaped quote, thanks to https://stackoverflow.com/a/11819111
-        const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'")));
+        // RegEx match quote, but not escaped quote, thanks to https://stackoverflow.com/a/11819111
+        static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'"));
+        const int count = textLine->text().left(cursorPos.column()).count(re);
         skipAutobrace = (count % 2 == 0) ? true : false;
     }
     if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
         // ...same trick for double quotes
         Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
-        const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\"")));
+        static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\""));
+        const int count = textLine->text().left(cursorPos.column()).count(re);
         skipAutobrace = (count % 2 == 0) ? true : false;
     }
 
@@ -3398,7 +3400,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     // normalize line endings, to e.g. catch issues with \r\n in paste buffer
     // see bug 410951
     QString s = text;
-    s.replace(QRegularExpression(QStringLiteral("(\r\n|\r|\n)")), QStringLiteral("\n"));
+    s.replace(QRegularExpression(QStringLiteral("\r\n?")), QStringLiteral("\n"));
 
     int lines = s.count(QLatin1Char('\n'));
 

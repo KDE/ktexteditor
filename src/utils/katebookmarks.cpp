@@ -114,7 +114,7 @@ void KateBookmarks::clearBookmarks()
 void KateBookmarks::insertBookmarks(QMenu &menu)
 {
     const int line = m_view->cursorPosition().line();
-    const QRegularExpression re(QStringLiteral("&(?!&)"));
+    static const QRegularExpression re(QStringLiteral("&(?!&)"));
     int next = -1; // -1 means next bookmark doesn't exist
     int prev = -1; // -1 means previous bookmark doesn't exist
 

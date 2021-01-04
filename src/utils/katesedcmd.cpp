@@ -143,7 +143,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString,
                                      int &destReplaceEndPos)
 {
     // valid delimiters are all non-word, non-space characters plus '_'
-    QRegularExpression delim(QStringLiteral("^s\\s*([^\\w\\s]|_)"));
+    static const QRegularExpression delim(QStringLiteral("^s\\s*([^\\w\\s]|_)"));
     auto match = delim.match(sedReplaceString);
     if (!match.hasMatch()) {
         return false;

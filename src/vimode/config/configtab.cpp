@@ -203,7 +203,7 @@ void ConfigTab::importNormalMappingRow()
     }
 
     QTextStream stream(&configFile);
-    const QRegularExpression mapleader(QStringLiteral("(\\w:)?mapleader"));
+    const QRegularExpression mapleader(QStringLiteral("(?:\\w:)?mapleader"));
     while (!stream.atEnd()) {
         QStringList line = stream.readLine().split(QLatin1Char(' '));
 

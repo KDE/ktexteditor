@@ -45,7 +45,7 @@ public:
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
-        static const QRegularExpression allowedText("^\\$?(\\w*)$");
+        static const QRegularExpression allowedText("^\\$?(?:\\w*)$");
         return !allowedText.match(currentCompletion).hasMatch();
     }
 };
@@ -64,7 +64,7 @@ public:
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
-        static const QRegularExpression allowedText("^([\\w-]*)");
+        static const QRegularExpression allowedText("^(?:[\\w-]*)");
         return !allowedText.match(currentCompletion).hasMatch();
     }
 };

@@ -1172,7 +1172,8 @@ bool KateCmdLineEdit::event(QEvent *e)
 
 void KateCmdLineEdit::slotReturnPressed(const QString &text)
 {
-    static const QRegularExpression focusChangingCommands(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$"));
+    static const QRegularExpression focusChangingCommands(
+        QStringLiteral("^(?:buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$"));
 
     if (text.isEmpty()) {
         return;
