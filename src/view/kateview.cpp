@@ -3352,10 +3352,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     }
 
     // No success? Go the old way
-    if (value.canConvert(QVariant::String)) {
-        if (key == QLatin1String("theme")) {
+    if (key == QLatin1String("theme") && value.type() == QVariant::String) {
             renderer()->config()->setSchema(value.value<QString>());
-        }
     } else if (value.canConvert(QVariant::Color)) {
         if (key == QLatin1String("background-color")) {
             renderer()->config()->setBackgroundColor(value.value<QColor>());
