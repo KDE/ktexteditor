@@ -804,7 +804,7 @@ Q_SIGNALS:
      *
      * \param view the view which's config has changed
      *
-     * \since 5.78
+     * \since 5.79
      */
     void configChanged(KTextEditor::View *view);
 
