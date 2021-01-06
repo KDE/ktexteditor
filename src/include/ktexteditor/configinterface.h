@@ -78,6 +78,7 @@ namespace KTextEditor
  *  - scrollbar-minimap [bool] enable/disable scrollbar minimap
  *  - scrollbar-preview [bool] enable/disable scrollbar text preview on hover
  *  - font [QFont] change the font
+ *  - theme [QString] change the theme
  *
  * KTextEditor::Document has support for the following:
  *  - backup-on-save-local [bool], enable/disable backup when saving local files
@@ -90,8 +91,7 @@ namespace KTextEditor
  *  - indent-width [int], read/set the indentation width
  *  - on-the-fly-spellcheck [bool], enable/disable on the fly spellcheck
  *
- * Either interface should emit the \p configChanged signal when appropriate.
- * TODO: Add to interface in KDE 5.
+ * The KTextEditor::Document or KTextEditor::View objects will emit the \p configChanged signal when appropriate.
  *
  * For instance, if you want to enable dynamic word wrap of a KTextEditor::View
  * simply call

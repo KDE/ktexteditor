@@ -798,6 +798,14 @@ public:
      */
     virtual QList<KTextEditor::AttributeBlock> lineAttributes(int line) = 0;
 
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the current view configuration is changed.
+     *
+     * \since 5.78
+     */
+    void configChanged();
+
 private:
     /**
      * private d-pointer, pointing to the internal implementation

@@ -1158,6 +1158,14 @@ public:
 
     //!\}
 
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the current document configuration is changed.
+     *
+     * \since 5.78
+     */
+    void configChanged();
+
 private:
     /**
      * private d-pointer, pointing to the internal implementation

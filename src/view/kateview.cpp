@@ -3282,7 +3282,8 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
                                      QStringLiteral("line-count"),
                                      QStringLiteral("scrollbar-minimap"),
                                      QStringLiteral("scrollbar-preview"),
-                                     QStringLiteral("font")};
+                                     QStringLiteral("font"),
+                                     QStringLiteral("theme")};
     return keys;
 }
 
@@ -3332,6 +3333,8 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->scrollBarPreview();
     } else if (key == QLatin1String("font")) {
         return renderer()->config()->baseFont();
+    } else if (key == QLatin1String("theme")) {
+        return renderer()->config()->schema();
     }
 
     // return invalid variant
@@ -3349,7 +3352,11 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     }
 
     // No success? Go the old way
-    if (value.canConvert(QVariant::Color)) {
+    if (value.canConvert(QVariant::String)) {
+        if (key == QLatin1String("theme")) {
+            renderer()->config()->setSchema(value.value<QString>());
+        }
+    } else if (value.canConvert(QVariant::Color)) {
         if (key == QLatin1String("background-color")) {
             renderer()->config()->setBackgroundColor(value.value<QColor>());
         } else if (key == QLatin1String("selection-color")) {

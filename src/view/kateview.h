@@ -201,9 +201,6 @@ public:
     QVariant configValue(const QString &key) override;
     void setConfigValue(const QString &key, const QVariant &value) override;
 
-Q_SIGNALS:
-    void configChanged();
-
 public:
     /**
      * Try to fold an unfolded range starting at @p line

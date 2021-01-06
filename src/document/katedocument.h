@@ -520,9 +520,6 @@ public:
      */
     void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) override;
 
-Q_SIGNALS:
-    void configChanged();
-
     //
     // KTextEditor::MarkInterface
     //
