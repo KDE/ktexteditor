@@ -1162,9 +1162,11 @@ Q_SIGNALS:
     /**
      * This signal is emitted whenever the current document configuration is changed.
      *
+     * \param document the document which's config has changed
+     *
      * \since 5.78
      */
-    void configChanged();
+    void configChanged(KTextEditor::Document *document);
 
 private:
     /**

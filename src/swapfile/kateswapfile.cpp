@@ -58,7 +58,7 @@ SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
     // connecting the signals
     connect(&m_document->buffer(), SIGNAL(saved(QString)), this, SLOT(fileSaved(QString)));
     connect(&m_document->buffer(), SIGNAL(loaded(QString, bool)), this, SLOT(fileLoaded(QString)));
-    connect(m_document, SIGNAL(configChanged()), this, SLOT(configChanged()));
+    connect(m_document, &KTextEditor::Document::configChanged, this, &SwapFile::configChanged);
 
     // tracking on!
     setTrackingEnabled(true);

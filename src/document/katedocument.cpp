@@ -4569,7 +4569,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
         m_onTheFlyChecker->updateConfig();
     }
 
-    emit configChanged();
+    emit configChanged(this);
 }
 
 // BEGIN Variable reader

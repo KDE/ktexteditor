@@ -192,9 +192,9 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view->document(), &KTextEditor::DocumentPrivate::modifiedChanged, this, &KateStatusBar::modifiedChanged);
     connect(m_view->doc(), &KTextEditor::DocumentPrivate::modifiedOnDisk, this, &KateStatusBar::modifiedChanged);
     connect(m_view->doc(), &KTextEditor::DocumentPrivate::readWriteChanged, this, &KateStatusBar::modifiedChanged);
-    connect(m_view->doc(), &KTextEditor::DocumentPrivate::configChanged, this, &KateStatusBar::documentConfigChanged);
+    connect(m_view->doc(), &KTextEditor::Document::configChanged, this, &KateStatusBar::documentConfigChanged);
     connect(m_view->document(), &KTextEditor::DocumentPrivate::modeChanged, this, &KateStatusBar::modeChanged);
-    connect(m_view, &KTextEditor::ViewPrivate::configChanged, this, &KateStatusBar::configChanged);
+    connect(m_view, &KTextEditor::View::configChanged, this, &KateStatusBar::configChanged);
     connect(m_view->doc(), &KTextEditor::DocumentPrivate::defaultDictionaryChanged, this, &KateStatusBar::updateDictionary);
     connect(m_view->doc(), &KTextEditor::DocumentPrivate::dictionaryRangesPresent, this, &KateStatusBar::updateDictionary);
     connect(m_view, &KTextEditor::ViewPrivate::caretChangedRange, this, &KateStatusBar::updateDictionary);

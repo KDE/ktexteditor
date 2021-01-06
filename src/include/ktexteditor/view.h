@@ -802,9 +802,11 @@ Q_SIGNALS:
     /**
      * This signal is emitted whenever the current view configuration is changed.
      *
+     * \param view the view which's config has changed
+     *
      * \since 5.78
      */
-    void configChanged();
+    void configChanged(KTextEditor::View *view);
 
 private:
     /**

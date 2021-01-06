@@ -2000,7 +2000,7 @@ void KTextEditor::ViewPrivate::updateConfig()
     tagAll();
     updateView(true);
 
-    emit configChanged();
+    emit configChanged(this);
 }
 
 void KTextEditor::ViewPrivate::updateDocumentConfig()
@@ -2056,7 +2056,7 @@ void KTextEditor::ViewPrivate::updateRendererConfig()
 
     // @@ showIndentLines is not cached anymore.
     //  m_renderer->setShowIndentLines (m_renderer->config()->showIndentationLines());
-    emit configChanged();
+    emit configChanged(this);
 }
 
 void KTextEditor::ViewPrivate::updateFoldingConfig()

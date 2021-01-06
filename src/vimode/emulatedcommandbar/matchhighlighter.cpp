@@ -22,7 +22,7 @@ MatchHighlighter::MatchHighlighter(KTextEditor::ViewPrivate *view)
     // Use z depth defined in moving ranges interface.
     m_highlightedMatch->setZDepth(-10000.0);
     m_highlightedMatch->setAttribute(m_highlightMatchAttribute);
-    connect(m_view, SIGNAL(configChanged()), this, SLOT(updateMatchHighlightAttrib()));
+    connect(m_view, &KTextEditor::View::configChanged, this, &MatchHighlighter::updateMatchHighlightAttrib);
 }
 
 MatchHighlighter::~MatchHighlighter()
