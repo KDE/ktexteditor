@@ -14,7 +14,7 @@
 #include <vimode/range.h>
 
 #include <QHash>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QStack>
 #include <QVector>
 
@@ -288,7 +288,7 @@ public:
 protected:
     void resetParser();
     void initializeCommands();
-    QRegExp generateMatchingItemRegex() const;
+    QRegularExpression generateMatchingItemRegex() const;
     void executeCommand(const Command *cmd);
     OperationMode getOperationMode() const;
 
@@ -357,7 +357,7 @@ protected:
 
     // item matching ('%' motion)
     QHash<QString, QString> m_matchingItems;
-    QRegExp m_matchItemRegex;
+    QRegularExpression m_matchItemRegex;
 
     KeyParser *m_keyParser;
 

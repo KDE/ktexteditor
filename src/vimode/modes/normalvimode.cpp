@@ -1379,7 +1379,8 @@ bool NormalViMode::commandReplaceCharacter()
             text.chop(1); // don't need '\n' at the end;
         }
 
-        text.replace(QRegExp(QLatin1String("[^\n]")), key);
+        static const QRegularExpression nonNewlineRegex(QStringLiteral("[^\n]"));
+        text.replace(nonNewlineRegex, key);
 
         m_commandRange.normalize();
         KTextEditor::Cursor start(m_commandRange.startLine, m_commandRange.startColumn);
@@ -2571,10 +2572,14 @@ Range NormalViMode::motionToMatchingItem()
         return Range::invalid();
     }
 
-    QRegExp brackets(QLatin1String("[(){}\\[\\]]"));
-
+    const auto bracketChar = l.at(n1);
     // use Kate's built-in matching bracket finder for brackets
-    if (brackets.indexIn(l, n1) == n1) {
+    if (bracketChar == QLatin1Char('(')
+        || bracketChar == QLatin1Char(')')
+        || bracketChar == QLatin1Char('{')
+        || bracketChar == QLatin1Char('}')
+        || bracketChar == QLatin1Char('[')
+        || bracketChar == QLatin1Char(']')) {
         // findMatchingBracket requires us to move the cursor to the
         // first bracket, but we don't want the cursor to really move
         // in case this is e.g. a yank, so restore it to its original
@@ -2591,7 +2596,8 @@ Range NormalViMode::motionToMatchingItem()
         m_view->setCursorPosition(oldCursorPos);
     } else {
         // text item we want to find a matching item for
-        int n2 = l.indexOf(QRegExp(QLatin1String("\\b|\\s|$")), n1);
+        static const QRegularExpression boundaryRegex(QStringLiteral("\\b|\\s|$"));
+        const int n2 = l.indexOf(boundaryRegex, n1);
         QString item = l.mid(n1, n2 - n1);
         QString matchingItem = m_matchingItems[item];
 
@@ -3672,22 +3678,24 @@ void NormalViMode::initializeCommands()
     ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE);
 }
 
-QRegExp NormalViMode::generateMatchingItemRegex() const
+QRegularExpression NormalViMode::generateMatchingItemRegex() const
 {
     QString pattern(QStringLiteral("\\[|\\]|\\{|\\}|\\(|\\)|"));
     QList<QString> keys = m_matchingItems.keys();
 
     for (int i = 0; i < keys.size(); i++) {
         QString s = m_matchingItems[keys[i]];
-        s.replace(QRegExp(QLatin1String("^-")), QChar());
-        s.replace(QRegExp(QLatin1String("\\*")), QStringLiteral("\\*"));
-        s.replace(QRegExp(QLatin1String("\\+")), QStringLiteral("\\+"));
-        s.replace(QRegExp(QLatin1String("\\[")), QStringLiteral("\\["));
-        s.replace(QRegExp(QLatin1String("\\]")), QStringLiteral("\\]"));
-        s.replace(QRegExp(QLatin1String("\\(")), QStringLiteral("\\("));
-        s.replace(QRegExp(QLatin1String("\\)")), QStringLiteral("\\)"));
-        s.replace(QRegExp(QLatin1String("\\{")), QStringLiteral("\\{"));
-        s.replace(QRegExp(QLatin1String("\\}")), QStringLiteral("\\}"));
+        if (s.startsWith(QLatin1Char('-'))) {
+            s.remove(0, 1);
+        }
+        s.replace(QLatin1Char('*'), QStringLiteral("\\*"));
+        s.replace(QLatin1Char('+'), QStringLiteral("\\+"));
+        s.replace(QLatin1Char('['), QStringLiteral("\\["));
+        s.replace(QLatin1Char(']'), QStringLiteral("\\]"));
+        s.replace(QLatin1Char('('), QStringLiteral("\\("));
+        s.replace(QLatin1Char(')'), QStringLiteral("\\)"));
+        s.replace(QLatin1Char('{'), QStringLiteral("\\{"));
+        s.replace(QLatin1Char('}'), QStringLiteral("\\}"));
 
         pattern.append(s);
 
@@ -3696,7 +3704,7 @@ QRegExp NormalViMode::generateMatchingItemRegex() const
         }
     }
 
-    return QRegExp(pattern);
+    return QRegularExpression(pattern);
 }
 
 // returns the operation mode that should be used. this is decided by using the following heuristic:
@@ -3753,9 +3761,11 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
         if (isIndentedPaste) {
             // Note that this does indeed work if there is no non-whitespace on the current line or if
             // the line is empty!
+            static const QRegularExpression nonWhitespaceRegex(QStringLiteral("[^\\s]"));
+            const QString pasteLineString = doc()->line(pasteAt.line());
             const QString leadingWhiteSpaceOnCurrentLine =
-                doc()->line(pasteAt.line()).mid(0, doc()->line(pasteAt.line()).indexOf(QRegExp(QLatin1String("[^\\s]"))));
-            const QString leadingWhiteSpaceOnFirstPastedLine = textToInsert.mid(0, textToInsert.indexOf(QRegExp(QLatin1String("[^\\s]"))));
+                pasteLineString.mid(0, pasteLineString.indexOf(nonWhitespaceRegex));
+            const QString leadingWhiteSpaceOnFirstPastedLine = textToInsert.mid(0, textToInsert.indexOf(nonWhitespaceRegex));
             // QString has no "left trim" method, bizarrely.
             while (textToInsert[0].isSpace()) {
                 textToInsert = textToInsert.mid(1);
