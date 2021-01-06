@@ -3352,9 +3352,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     }
 
     // No success? Go the old way
-    if (key == QLatin1String("theme") && value.type() == QVariant::String) {
-            renderer()->config()->setSchema(value.value<QString>());
-    } else if (value.canConvert(QVariant::Color)) {
+    if (value.canConvert(QVariant::Color)) {
         if (key == QLatin1String("background-color")) {
             renderer()->config()->setBackgroundColor(value.value<QColor>());
         } else if (key == QLatin1String("selection-color")) {
@@ -3372,7 +3370,6 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
         } else if (key == QLatin1String("current-line-number-color")) {
             renderer()->config()->setCurrentLineNumberColor(value.value<QColor>());
         }
-
     } else if (value.type() == QVariant::Bool) {
         // Note explicit type check above. If we used canConvert, then
         // values of type UInt will be trapped here.
@@ -3383,11 +3380,10 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
         } else if (key == QLatin1String("line-count")) {
             config()->setShowLineCount(value.toBool());
         }
-
-    } else if (value.canConvert(QVariant::Font)) {
-        if (key == QLatin1String("font")) {
-            renderer()->config()->setFont(value.value<QFont>());
-        }
+    } else if (key == QLatin1String("font") && value.canConvert(QVariant::Font)) {
+        renderer()->config()->setFont(value.value<QFont>());
+    } else if (key == QLatin1String("theme") && value.type() == QVariant::String) {
+        renderer()->config()->setSchema(value.value<QString>());
     }
 }
 
