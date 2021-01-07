@@ -3681,10 +3681,8 @@ void NormalViMode::initializeCommands()
 QRegularExpression NormalViMode::generateMatchingItemRegex() const
 {
     QString pattern(QStringLiteral("\\[|\\]|\\{|\\}|\\(|\\)|"));
-    QList<QString> keys = m_matchingItems.keys();
 
-    for (int i = 0; i < keys.size(); i++) {
-        QString s = m_matchingItems[keys[i]];
+    for (QString s : qAsConst(m_matchingItems)) {
         if (s.startsWith(QLatin1Char('-'))) {
             s.remove(0, 1);
         }
@@ -3697,12 +3695,11 @@ QRegularExpression NormalViMode::generateMatchingItemRegex() const
         s.replace(QLatin1Char('{'), QStringLiteral("\\{"));
         s.replace(QLatin1Char('}'), QStringLiteral("\\}"));
 
+        s.append(QLatin1Char('|'));
         pattern.append(s);
-
-        if (i != keys.size() - 1) {
-            pattern.append(QLatin1Char('|'));
-        }
     }
+    // remove extra "|" at the end
+    pattern.chop(1);
 
     return QRegularExpression(pattern);
 }
