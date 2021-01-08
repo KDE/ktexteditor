@@ -277,9 +277,9 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         Range r = m_motions.at(i)->execute();
                         m_motionCanChangeWholeVisualModeSelection = m_motions.at(i)->canChangeWholeVisualModeSelection();
 
-                        if (motion != QLatin1String("n") && motion != QLatin1String("N")) {
+                        if (!m_motions.at(i)->canLandInsideFoldingRange()) {
                             // jump over folding regions since we are just moving the cursor
-                            // except when jumping to search matches since they can be inside folds
+                            // except for motions that can end up inside ranges (e.g. n/N, f/F, %, #)
                             int currLine = m_view->cursorPosition().line();
                             int delta = r.endLine - currLine;
                             int vline = m_view->textFolding().lineToVisibleLine(currLine);
@@ -3544,8 +3544,8 @@ void NormalViMode::initializeCommands()
     ADDCMD("g~~", commandChangeCaseLine, IS_CHANGE);
     ADDCMD("<c-a>", commandAddToNumber, IS_CHANGE);
     ADDCMD("<c-x>", commandSubtractFromNumber, IS_CHANGE);
-    ADDCMD("<c-o>", commandGoToPrevJump, 0);
-    ADDCMD("<c-i>", commandGoToNextJump, 0);
+    ADDCMD("<c-o>", commandGoToPrevJump, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDCMD("<c-i>", commandGoToNextJump, CAN_LAND_INSIDE_FOLDING_RANGE);
 
     ADDCMD("<c-w>h", commandSwitchToLeftView, 0);
     ADDCMD("<c-w><c-h>", commandSwitchToLeftView, 0);
@@ -3606,36 +3606,36 @@ void NormalViMode::initializeCommands()
     ADDMOTION("0", motionToColumn0, 0);
     ADDMOTION("<home>", motionToColumn0, 0);
     ADDMOTION("^", motionToFirstCharacterOfLine, 0);
-    ADDMOTION("f.", motionFindChar, REGEX_PATTERN);
-    ADDMOTION("F.", motionFindCharBackward, REGEX_PATTERN);
-    ADDMOTION("t.", motionToChar, REGEX_PATTERN);
-    ADDMOTION("T.", motionToCharBackward, REGEX_PATTERN);
-    ADDMOTION(";", motionRepeatlastTF, 0);
-    ADDMOTION(",", motionRepeatlastTFBackward, 0);
-    ADDMOTION("n", motionFindNext, 0);
-    ADDMOTION("N", motionFindPrev, 0);
+    ADDMOTION("f.", motionFindChar, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("F.", motionFindCharBackward, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("t.", motionToChar, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("T.", motionToCharBackward, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION(";", motionRepeatlastTF, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION(",", motionRepeatlastTFBackward, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("n", motionFindNext, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("N", motionFindPrev, CAN_LAND_INSIDE_FOLDING_RANGE);
     ADDMOTION("gg", motionToLineFirst, 0);
     ADDMOTION("G", motionToLineLast, 0);
-    ADDMOTION("w", motionWordForward, IS_NOT_LINEWISE);
-    ADDMOTION("W", motionWORDForward, IS_NOT_LINEWISE);
-    ADDMOTION("<c-right>", motionWordForward, IS_NOT_LINEWISE);
-    ADDMOTION("<c-left>", motionWordBackward, IS_NOT_LINEWISE);
-    ADDMOTION("b", motionWordBackward, 0);
-    ADDMOTION("B", motionWORDBackward, 0);
-    ADDMOTION("e", motionToEndOfWord, 0);
-    ADDMOTION("E", motionToEndOfWORD, 0);
-    ADDMOTION("ge", motionToEndOfPrevWord, 0);
-    ADDMOTION("gE", motionToEndOfPrevWORD, 0);
+    ADDMOTION("w", motionWordForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("W", motionWORDForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("<c-right>", motionWordForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("<c-left>", motionWordBackward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("b", motionWordBackward, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("B", motionWORDBackward, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("e", motionToEndOfWord, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("E", motionToEndOfWORD, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("ge", motionToEndOfPrevWord, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("gE", motionToEndOfPrevWORD, CAN_LAND_INSIDE_FOLDING_RANGE);
     ADDMOTION("|", motionToScreenColumn, 0);
-    ADDMOTION("%", motionToMatchingItem, IS_NOT_LINEWISE);
-    ADDMOTION("`[a-zA-Z^><\\.\\[\\]]", motionToMark, REGEX_PATTERN);
-    ADDMOTION("'[a-zA-Z^><]", motionToMarkLine, REGEX_PATTERN);
-    ADDMOTION("[[", motionToPreviousBraceBlockStart, IS_NOT_LINEWISE);
-    ADDMOTION("]]", motionToNextBraceBlockStart, IS_NOT_LINEWISE);
-    ADDMOTION("[]", motionToPreviousBraceBlockEnd, IS_NOT_LINEWISE);
-    ADDMOTION("][", motionToNextBraceBlockEnd, IS_NOT_LINEWISE);
-    ADDMOTION("*", motionToNextOccurrence, 0);
-    ADDMOTION("#", motionToPrevOccurrence, 0);
+    ADDMOTION("%", motionToMatchingItem, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("`[a-zA-Z^><\\.\\[\\]]", motionToMark, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("'[a-zA-Z^><]", motionToMarkLine, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("[[", motionToPreviousBraceBlockStart, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("]]", motionToNextBraceBlockStart, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("[]", motionToPreviousBraceBlockEnd, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("][", motionToNextBraceBlockEnd, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("*", motionToNextOccurrence, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("#", motionToPrevOccurrence, CAN_LAND_INSIDE_FOLDING_RANGE);
     ADDMOTION("H", motionToFirstLineOfWindow, 0);
     ADDMOTION("M", motionToMiddleLineOfWindow, 0);
     ADDMOTION("L", motionToLastLineOfWindow, 0);
@@ -3643,39 +3643,39 @@ void NormalViMode::initializeCommands()
     ADDMOTION("g<down>", motionToNextVisualLine, 0);
     ADDMOTION("gk", motionToPrevVisualLine, 0);
     ADDMOTION("g<up>", motionToPrevVisualLine, 0);
-    ADDMOTION("(", motionToPreviousSentence, 0);
-    ADDMOTION(")", motionToNextSentence, 0);
-    ADDMOTION("{", motionToBeforeParagraph, 0);
-    ADDMOTION("}", motionToAfterParagraph, 0);
+    ADDMOTION("(", motionToPreviousSentence, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION(")", motionToNextSentence, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("{", motionToBeforeParagraph, CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("}", motionToAfterParagraph, CAN_LAND_INSIDE_FOLDING_RANGE);
 
     // text objects
     ADDMOTION("iw", textObjectInnerWord, 0);
     ADDMOTION("aw", textObjectAWord, IS_NOT_LINEWISE);
     ADDMOTION("iW", textObjectInnerWORD, 0);
     ADDMOTION("aW", textObjectAWORD, IS_NOT_LINEWISE);
-    ADDMOTION("is", textObjectInnerSentence, IS_NOT_LINEWISE);
-    ADDMOTION("as", textObjectASentence, IS_NOT_LINEWISE);
-    ADDMOTION("ip", textObjectInnerParagraph, IS_NOT_LINEWISE);
-    ADDMOTION("ap", textObjectAParagraph, IS_NOT_LINEWISE);
-    ADDMOTION("i\"", textObjectInnerQuoteDouble, IS_NOT_LINEWISE);
-    ADDMOTION("a\"", textObjectAQuoteDouble, IS_NOT_LINEWISE);
-    ADDMOTION("i'", textObjectInnerQuoteSingle, IS_NOT_LINEWISE);
-    ADDMOTION("a'", textObjectAQuoteSingle, IS_NOT_LINEWISE);
-    ADDMOTION("i`", textObjectInnerBackQuote, IS_NOT_LINEWISE);
-    ADDMOTION("a`", textObjectABackQuote, IS_NOT_LINEWISE);
-    ADDMOTION("i[()b]", textObjectInnerParen, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("a[()b]", textObjectAParen, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("i[{}B]", textObjectInnerCurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("a[{}B]", textObjectACurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("i[><]", textObjectInnerInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("a[><]", textObjectAInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("i[\\[\\]]", textObjectInnerBracket, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("a[\\[\\]]", textObjectABracket, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("i,", textObjectInnerComma, IS_NOT_LINEWISE);
-    ADDMOTION("a,", textObjectAComma, IS_NOT_LINEWISE);
+    ADDMOTION("is", textObjectInnerSentence, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("as", textObjectASentence, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("ip", textObjectInnerParagraph, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("ap", textObjectAParagraph, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i\"", textObjectInnerQuoteDouble, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a\"", textObjectAQuoteDouble, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i'", textObjectInnerQuoteSingle, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a'", textObjectAQuoteSingle, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i`", textObjectInnerBackQuote, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a`", textObjectABackQuote, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i[()b]", textObjectInnerParen, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a[()b]", textObjectAParen, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i[{}B]", textObjectInnerCurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a[{}B]", textObjectACurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i[><]", textObjectInnerInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a[><]", textObjectAInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i[\\[\\]]", textObjectInnerBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a[\\[\\]]", textObjectABracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("i,", textObjectInnerComma, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("a,", textObjectAComma, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
 
-    ADDMOTION("/<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE);
-    ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE);
+    ADDMOTION("/<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+    ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
 }
 
 QRegularExpression NormalViMode::generateMatchingItemRegex() const
