@@ -212,6 +212,16 @@ public:
      */
     virtual ConfigPage *configPage(int number, QWidget *parent) = 0;
 
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the editor configuration is changed.
+     *
+     * \param editor the editor which's config has changed
+     *
+     * \since 5.79
+     */
+    void configChanged(KTextEditor::Editor *editor);
+
 public:
     /**
      * Query for the command \p cmd.

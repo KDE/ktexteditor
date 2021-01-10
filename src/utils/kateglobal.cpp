@@ -42,6 +42,7 @@
 #include <QClipboard>
 #include <QPushButton>
 #include <QStringListModel>
+#include <QTimer>
 
 #if LIBGIT2_FOUND
 #include <git2.h>
@@ -509,4 +510,20 @@ KSharedConfigPtr KTextEditor::EditorPrivate::config()
         }
     }
     return applicationConfig;
+}
+
+void KTextEditor::EditorPrivate::triggerConfigChanged()
+{
+    // trigger delayed emission, will collapse multiple events to one signal emission
+    m_configWasChanged = true;
+    QTimer::singleShot(0, this, &KTextEditor::EditorPrivate::emitConfigChanged);
+}
+
+void KTextEditor::EditorPrivate::emitConfigChanged()
+{
+    // emit only once, if still needed
+    if (m_configWasChanged) {
+        m_configWasChanged = false;
+        emit configChanged(this);
+    }
 }

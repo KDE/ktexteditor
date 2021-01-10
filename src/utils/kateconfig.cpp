@@ -281,6 +281,9 @@ void KateGlobalConfig::updateConfig()
     KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
     writeConfig(cg);
     KTextEditor::EditorPrivate::config()->sync();
+
+    // trigger emission of KTextEditor::Editor::configChanged
+    KTextEditor::EditorPrivate::self()->triggerConfigChanged();
 }
 
 QTextCodec *KateGlobalConfig::fallbackCodec() const
@@ -424,6 +427,9 @@ void KateDocumentConfig::updateConfig()
         KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
+
+        // trigger emission of KTextEditor::Editor::configChanged
+        KTextEditor::EditorPrivate::self()->triggerConfigChanged();
     }
 }
 
@@ -574,6 +580,9 @@ void KateViewConfig::updateConfig()
         KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor View");
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
+
+        // trigger emission of KTextEditor::Editor::configChanged
+        KTextEditor::EditorPrivate::self()->triggerConfigChanged();
     }
 }
 // END
@@ -728,6 +737,9 @@ void KateRendererConfig::updateConfig()
         KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
+
+        // trigger emission of KTextEditor::Editor::configChanged
+        KTextEditor::EditorPrivate::self()->triggerConfigChanged();
     }
 }
 

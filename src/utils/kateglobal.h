@@ -400,6 +400,18 @@ public:
      */
     KateVariableExpansionManager *variableExpansionManager();
 
+    /**
+     * Trigger delayed emission of config changed.
+     */
+    void triggerConfigChanged();
+
+private Q_SLOTS:
+    /**
+     * Emit configChanged if needed.
+     * Used to bundle emissions.
+     */
+    void emitConfigChanged();
+
 Q_SIGNALS:
     /**
      * Emitted if the history of clipboard changes via copyToClipboard
@@ -528,6 +540,14 @@ private:
      */
     QStringListModel *m_searchHistoryModel;
     QStringListModel *m_replaceHistoryModel;
+
+    /**
+     * We collapse configChanged signals to avoid that e.g.
+     * Document/View/Renderer/... updates cause X emitted signals in a row.
+     * This bool tells if we still shall emit a signal in the delayed connected
+     * slot.
+     */
+    bool m_configWasChanged = false;
 };
 
 }
