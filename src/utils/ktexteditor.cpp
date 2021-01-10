@@ -36,6 +36,7 @@
 #include "katecmd.h"
 #include "kateconfig.h"
 #include "kateglobal.h"
+#include "katesyntaxmanager.h"
 
 using namespace KTextEditor;
 
@@ -127,6 +128,11 @@ void Editor::addVariableExpansion(const QVector<QWidget *> &widgets, const QStri
     d->variableExpansionManager()->showDialog(widgets, variables);
 }
 
+KSyntaxHighlighting::Theme Editor::theme() const
+{
+    return KateHlManager::self()->repository().theme(d->rendererConfig()->schema());
+}
+
 bool View::insertText(const QString &text)
 {
     KTextEditor::Document *doc = document();
@@ -160,6 +166,11 @@ bool View::insertTemplate(const KTextEditor::Cursor &insertPosition, const QStri
 void View::setViewInputMode(InputMode inputMode)
 {
     d->setInputMode(inputMode);
+}
+
+KSyntaxHighlighting::Theme View::theme() const
+{
+    return KateHlManager::self()->repository().theme(d->renderer()->config()->schema());
 }
 
 ConfigPage::ConfigPage(QWidget *parent)

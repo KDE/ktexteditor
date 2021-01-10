@@ -18,6 +18,9 @@
 // gui merging
 #include <KXMLGUIClient>
 
+// theme support
+#include <KSyntaxHighlighting/Theme>
+
 // widget
 #include <QWidget>
 
@@ -807,6 +810,17 @@ Q_SIGNALS:
      * \since 5.79
      */
     void configChanged(KTextEditor::View *view);
+
+public:
+    /**
+     * Get the current active theme of this view.
+     * Might change during runtime, configChanged() will be emitted in that cases.
+     *
+     * \return current active theme
+     *
+     * \since 5.79
+     */
+    KSyntaxHighlighting::Theme theme() const;
 
 private:
     /**

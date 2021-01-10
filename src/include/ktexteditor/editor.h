@@ -13,6 +13,9 @@
 #include <QObject>
 #include <QVector>
 
+// theme support
+#include <KSyntaxHighlighting/Theme>
+
 class KAboutData;
 class KConfig;
 
@@ -221,6 +224,18 @@ Q_SIGNALS:
      * \since 5.79
      */
     void configChanged(KTextEditor::Editor *editor);
+
+public:
+    /**
+     * Get the current global theme.
+     * Might change during runtime, configChanged() will be emitted in that cases.
+     * Individual views might have set different themes, \see KTextEditor::View::theme().
+     *
+     * \return current global theme for all views
+     *
+     * \since 5.79
+     */
+    KSyntaxHighlighting::Theme theme() const;
 
 public:
     /**

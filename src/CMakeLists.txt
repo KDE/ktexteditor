@@ -305,10 +305,11 @@ add_library(KF5::TextEditor ALIAS KF5TextEditor)
 
 target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor>")
 
-# API is more or less KParts++, other stuff is used only internally
+# API is more or less KParts & KSyntaxHighlighting, other stuff is used only internally
 target_link_libraries(KF5TextEditor
 PUBLIC
   KF5::Parts
+  KF5::SyntaxHighlighting
 PRIVATE
   Qt5::Qml
   Qt5::PrintSupport
@@ -317,7 +318,6 @@ PRIVATE
   KF5::GuiAddons
   KF5::ItemViews
   KF5::SonnetCore
-  KF5::SyntaxHighlighting
   KF5::AuthCore
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
