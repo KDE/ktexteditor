@@ -1142,29 +1142,32 @@ void ModeBase::addToNumberUnderCursor(int count)
         return;
     }
 
-    int numberStartPos = -1;
-    QString numberAsString;
-    QRegExp numberRegex(QLatin1String("(0x)([0-9a-fA-F]+)|\\-?\\d+"));
     const int cursorColumn = c.column();
-    const int currentLineLength = doc()->lineLength(c.line());
-    const KTextEditor::Cursor prevWordStart = findPrevWordStart(c.line(), cursorColumn);
+    const int cursorLine = c.line();
+    const KTextEditor::Cursor prevWordStart = findPrevWordStart(cursorLine, cursorColumn);
     int wordStartPos = prevWordStart.column();
-    if (prevWordStart.line() < c.line()) {
+    if (prevWordStart.line() < cursorLine) {
         // The previous word starts on the previous line: ignore.
         wordStartPos = 0;
     }
     if (wordStartPos > 0 && line.at(wordStartPos - 1) == QLatin1Char('-')) {
         wordStartPos--;
     }
-    for (int searchFromColumn = wordStartPos; searchFromColumn < currentLineLength; searchFromColumn++) {
-        numberStartPos = numberRegex.indexIn(line, searchFromColumn);
 
-        numberAsString = numberRegex.cap();
-
-        const bool numberEndedBeforeCursor = (numberStartPos + numberAsString.length() <= c.column());
-        if (!numberEndedBeforeCursor) {
-            // This is the first number-like string under or after the cursor - this'll do!
-            break;
+    int numberStartPos = -1;
+    QString numberAsString;
+    static const QRegularExpression numberRegex(QStringLiteral("0x[0-9a-fA-F]+|\\-?\\d+"));
+    auto numberMatchIter = numberRegex.globalMatch(line, wordStartPos);
+    while (numberMatchIter.hasNext()) {
+        const auto numberMatch = numberMatchIter.next();
+        if (numberMatch.hasMatch()) {
+            const bool numberEndedBeforeCursor = (numberMatch.capturedStart() + numberMatch.capturedLength() <= cursorColumn);
+            if (!numberEndedBeforeCursor) {
+                // This is the first number-like string under or after the cursor - this'll do!
+                numberStartPos = numberMatch.capturedStart();
+                numberAsString = numberMatch.captured();
+                break;
+            }
         }
     }
 
@@ -1174,7 +1177,7 @@ void ModeBase::addToNumberUnderCursor(int count)
     }
 
     bool parsedNumberSuccessfully = false;
-    int base = numberRegex.cap(1).isEmpty() ? 10 : 16;
+    int base = numberAsString.startsWith(QLatin1String("0x")) ? 16 : 10;
     if (base != 16 && numberAsString.startsWith(QLatin1Char('0')) && numberAsString.length() > 1) {
         // If a non-hex number with a leading 0 can be parsed as octal, then assume
         // it is octal.
@@ -1208,8 +1211,8 @@ void ModeBase::addToNumberUnderCursor(int count)
 
     // Replace the old number string with the new.
     doc()->editStart();
-    doc()->removeText(KTextEditor::Range(c.line(), numberStartPos, c.line(), numberStartPos + numberAsString.length()));
-    doc()->insertText(KTextEditor::Cursor(c.line(), numberStartPos), newNumberText);
+    doc()->removeText(KTextEditor::Range(cursorLine, numberStartPos, cursorLine, numberStartPos + numberAsString.length()));
+    doc()->insertText(KTextEditor::Cursor(cursorLine, numberStartPos), newNumberText);
     doc()->editEnd();
     updateCursor(KTextEditor::Cursor(m_view->cursorPosition().line(), numberStartPos + newNumberText.length() - 1));
 }
