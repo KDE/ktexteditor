@@ -7,7 +7,7 @@
 #include <vimode/command.h>
 #include <vimode/keyparser.h>
 
-#include <QRegExp>
+#include <QRegularExpression>
 
 using namespace KateVi;
 
@@ -33,9 +33,10 @@ bool Command::matches(const QString &pattern) const
     if (!(m_flags & REGEX_PATTERN)) {
         return m_pattern.startsWith(pattern);
     } else {
-        QRegExp re(m_pattern);
-        re.exactMatch(pattern);
-        return (re.matchedLength() == pattern.length());
+        const QRegularExpression re(m_pattern);
+        const auto match = re.match(pattern, 0, QRegularExpression::PartialPreferFirstMatch);
+        // Partial matching could lead to a complete match, in that case hasPartialMatch() will return false, and hasMatch() will return true
+        return match.hasPartialMatch() || match.hasMatch();
     }
 }
 
@@ -44,7 +45,7 @@ bool Command::matchesExact(const QString &pattern) const
     if (!(m_flags & REGEX_PATTERN)) {
         return (m_pattern == pattern);
     } else {
-        QRegExp re(m_pattern);
-        return re.exactMatch(pattern);
+        const QRegularExpression re(QRegularExpression::anchoredPattern(m_pattern));
+        return re.match(pattern).hasMatch();
     }
 }
