@@ -27,7 +27,6 @@
 #include <vimode/searcher.h>
 
 #include <KLocalizedString>
-#include <QRegExp>
 #include <QRegularExpression>
 #include <QString>
 
@@ -283,13 +282,13 @@ KTextEditor::Cursor ModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool
 {
     QString line = getLine(fromLine);
 
-    QString endOfWordPattern = QStringLiteral("\\S\\s|\\S$|\\w\\W|\\S\\b|^$");
+    QString endOfWordPattern = QStringLiteral("\\S\\s|\\S$|\\S\\b|\\w\\W|^$");
 
     if (m_extraWordCharacters.length() > 0) {
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
     }
 
-    const QRegExp endOfWord(endOfWordPattern);
+    const QRegularExpression endOfWord(endOfWordPattern);
 
     int l = fromLine;
     int c = fromColumn;
@@ -297,7 +296,7 @@ KTextEditor::Cursor ModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool
     bool found = false;
 
     while (!found) {
-        int c1 = endOfWord.lastIndexIn(line, c - 1);
+        int c1 = line.lastIndexOf(endOfWord, c - 1);
 
         if (c1 != -1 && c - 1 != -1) {
             found = true;
@@ -715,7 +714,7 @@ Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool i
     return innerRange(r, inner);
 }
 
-Range ModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner) const
+Range ModeBase::findSurrounding(const QRegularExpression &c1, const QRegularExpression &c2, bool inner) const
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
@@ -1160,14 +1159,12 @@ void ModeBase::addToNumberUnderCursor(int count)
     auto numberMatchIter = numberRegex.globalMatch(line, wordStartPos);
     while (numberMatchIter.hasNext()) {
         const auto numberMatch = numberMatchIter.next();
-        if (numberMatch.hasMatch()) {
-            const bool numberEndedBeforeCursor = (numberMatch.capturedStart() + numberMatch.capturedLength() <= cursorColumn);
-            if (!numberEndedBeforeCursor) {
-                // This is the first number-like string under or after the cursor - this'll do!
-                numberStartPos = numberMatch.capturedStart();
-                numberAsString = numberMatch.captured();
-                break;
-            }
+        const bool numberEndedBeforeCursor = (numberMatch.capturedStart() + numberMatch.capturedLength() <= cursorColumn);
+        if (!numberEndedBeforeCursor) {
+            // This is the first number-like string under or after the cursor - this'll do!
+            numberStartPos = numberMatch.capturedStart();
+            numberAsString = numberMatch.captured();
+            break;
         }
     }
 

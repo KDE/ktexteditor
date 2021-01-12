@@ -19,7 +19,7 @@
 
 class QKeyEvent;
 class QString;
-class QRegExp;
+class QRegularExpression;
 namespace KTextEditor
 {
 class DocumentPrivate;
@@ -88,7 +88,7 @@ protected:
 
     Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner, const QChar &nested1, const QChar &nested2) const;
 
-    Range findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
+    Range findSurrounding(const QRegularExpression &c1, const QRegularExpression &c2, bool inner = false) const;
     Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
     int findLineStartingWitchChar(const QChar &c, int count, bool forward = true) const;
