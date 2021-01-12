@@ -289,7 +289,7 @@ KTextEditor::Cursor ModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
     }
 
-    QRegExp endOfWord(endOfWordPattern);
+    const QRegExp endOfWord(endOfWordPattern);
 
     int l = fromLine;
     int c = fromColumn;
@@ -323,7 +323,7 @@ KTextEditor::Cursor ModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool
 {
     QString line = getLine(fromLine);
 
-    const QRegExp endOfWORDPattern(QLatin1String("\\S\\s|\\S$|^$"));
+    static const QRegularExpression endOfWORDPattern(QStringLiteral("\\S\\s|\\S$|^$"));
 
     int l = fromLine;
     int c = fromColumn;
@@ -331,7 +331,7 @@ KTextEditor::Cursor ModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool
     bool found = false;
 
     while (!found) {
-        int c1 = endOfWORDPattern.lastIndexIn(line, c - 1);
+        int c1 = line.lastIndexOf(endOfWORDPattern, c - 1);
 
         if (c1 != -1 && c - 1 != -1) {
             found = true;
@@ -365,10 +365,10 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    QRegExp startOfWord(startOfWordPattern); // start of a word
-    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S")); // non-space right after space
-    QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
-    QRegExp startOfLine(QLatin1String("^\\S")); // non-space at start of line
+    const QRegularExpression startOfWord(startOfWordPattern); // start of a word
+    static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S")); // non-space right after space
+    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
+    static const QRegularExpression startOfLine(QStringLiteral("^\\S")); // non-space at start of line
 
     int l = fromLine;
     int c = fromColumn;
@@ -376,10 +376,10 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     bool found = false;
 
     while (!found) {
-        int c1 = startOfWord.lastIndexIn(line, -line.length() + c - 1);
-        int c2 = nonSpaceAfterSpace.lastIndexIn(line, -line.length() + c - 2);
-        int c3 = nonWordAfterWord.lastIndexIn(line, -line.length() + c - 1);
-        int c4 = startOfLine.lastIndexIn(line, -line.length() + c - 1);
+        int c1 = line.lastIndexOf(startOfWord, -line.length() + c - 1);
+        int c2 = line.lastIndexOf(nonSpaceAfterSpace, -line.length() + c - 2);
+        int c3 = line.lastIndexOf(nonWordAfterWord, -line.length() + c - 1);
+        int c4 = line.lastIndexOf(startOfLine, -line.length() + c - 1);
 
         if (c1 == -1 && c2 == -1 && c3 == -1 && c4 == -1) {
             if (onlyCurrentLine) {
@@ -426,8 +426,8 @@ KTextEditor::Cursor ModeBase::findPrevWORDStart(int fromLine, int fromColumn, bo
 {
     QString line = getLine(fromLine);
 
-    QRegExp startOfWORD(QLatin1String("\\s\\S"));
-    QRegExp startOfLineWORD(QLatin1String("^\\S"));
+    static const QRegularExpression startOfWORD(QStringLiteral("\\s\\S"));
+    static const QRegularExpression startOfLineWORD(QStringLiteral("^\\S"));
 
     int l = fromLine;
     int c = fromColumn;
@@ -435,8 +435,8 @@ KTextEditor::Cursor ModeBase::findPrevWORDStart(int fromLine, int fromColumn, bo
     bool found = false;
 
     while (!found) {
-        int c1 = startOfWORD.lastIndexIn(line, -line.length() + c - 2);
-        int c2 = startOfLineWORD.lastIndexIn(line, -line.length() + c - 1);
+        int c1 = line.lastIndexOf(startOfWORD, -line.length() + c - 2);
+        int c2 = line.lastIndexOf(startOfLineWORD, -line.length() + c - 1);
 
         if (c1 == -1 && c2 == -1) {
             if (onlyCurrentLine) {
