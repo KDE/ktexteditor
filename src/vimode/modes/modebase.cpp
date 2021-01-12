@@ -28,6 +28,7 @@
 
 #include <KLocalizedString>
 #include <QRegExp>
+#include <QRegularExpression>
 #include <QString>
 
 using namespace KateVi;
@@ -184,9 +185,9 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    QRegExp startOfWord(startOfWordPattern); // start of a word
-    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S")); // non-space right after space
-    QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
+    const QRegularExpression startOfWord(startOfWordPattern); // start of a word
+    static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S")); // non-space right after space
+    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
 
     int l = fromLine;
     int c = fromColumn;
@@ -194,9 +195,9 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
     bool found = false;
 
     while (!found) {
-        int c1 = startOfWord.indexIn(line, c + 1);
-        int c2 = nonSpaceAfterSpace.indexIn(line, c);
-        int c3 = nonWordAfterWord.indexIn(line, c + 1);
+        int c1 = line.indexOf(startOfWord, c + 1);
+        int c2 = line.indexOf(nonSpaceAfterSpace, c);
+        int c3 = line.indexOf(nonWordAfterWord, c + 1);
 
         if (c1 == -1 && c2 == -1 && c3 == -1) {
             if (onlyCurrentLine) {
@@ -246,10 +247,10 @@ KTextEditor::Cursor ModeBase::findNextWORDStart(int fromLine, int fromColumn, bo
     int c = fromColumn;
 
     bool found = false;
-    QRegExp startOfWORD(QLatin1String("\\s\\S"));
+    static const QRegularExpression startOfWORD(QStringLiteral("\\s\\S"));
 
     while (!found) {
-        c = startOfWORD.indexIn(line, c);
+        c = line.indexOf(startOfWORD, c);
 
         if (c == -1) {
             if (onlyCurrentLine) {
@@ -479,7 +480,7 @@ KTextEditor::Cursor ModeBase::findWordEnd(int fromLine, int fromColumn, bool onl
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
     }
 
-    QRegExp endOfWORD(endOfWordPattern);
+    const QRegularExpression endOfWORD(endOfWordPattern);
 
     int l = fromLine;
     int c = fromColumn;
@@ -487,7 +488,7 @@ KTextEditor::Cursor ModeBase::findWordEnd(int fromLine, int fromColumn, bool onl
     bool found = false;
 
     while (!found) {
-        int c1 = endOfWORD.indexIn(line, c + 1);
+        int c1 = line.indexOf(endOfWORD, c + 1);
 
         if (c1 != -1) {
             found = true;
@@ -514,7 +515,7 @@ KTextEditor::Cursor ModeBase::findWORDEnd(int fromLine, int fromColumn, bool onl
 {
     QString line = getLine(fromLine);
 
-    QRegExp endOfWORD(QLatin1String("\\S\\s|\\S$"));
+    static const QRegularExpression endOfWORD(QStringLiteral("\\S\\s|\\S$"));
 
     int l = fromLine;
     int c = fromColumn;
@@ -522,7 +523,7 @@ KTextEditor::Cursor ModeBase::findWORDEnd(int fromLine, int fromColumn, bool onl
     bool found = false;
 
     while (!found) {
-        int c1 = endOfWORD.indexIn(line, c + 1);
+        int c1 = line.indexOf(endOfWORD, c + 1);
 
         if (c1 != -1) {
             found = true;
