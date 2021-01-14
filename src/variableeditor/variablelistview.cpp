@@ -32,19 +32,11 @@ void VariableListView::parseVariables(const QString &line)
         tmp.remove(0, 5);
     }
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-    QStringList variables = tmp.split(QLatin1Char(';'), QString::SkipEmptyParts);
-#else
     QStringList variables = tmp.split(QLatin1Char(';'), Qt::SkipEmptyParts);
-#endif
 
     const QRegularExpression sep(QStringLiteral("\\s+"));
     for (int i = 0; i < variables.size(); ++i) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-        QStringList pair = variables[i].split(sep, QString::SkipEmptyParts);
-#else
         QStringList pair = variables[i].split(sep, Qt::SkipEmptyParts);
-#endif
         if (pair.size() < 2) {
             continue;
         }

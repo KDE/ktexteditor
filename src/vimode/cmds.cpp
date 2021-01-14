@@ -43,11 +43,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
     }
 
     // create a list of args
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-    QStringList args(_cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts));
-#else
     QStringList args(_cmd.split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts));
-#endif
     QString cmd(args.takeFirst());
 
     // ALL commands that takes no arguments.
