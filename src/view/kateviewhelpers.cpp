@@ -2129,8 +2129,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         // we do this AFTER all other painting to ensure this leaves no artifacts
         // we kill 2 separator widths as we will below paint a line over this
         // otherwise this has some minimal overlap and looks ugly e.g. for scaled rendering
-        const int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
-        if (distanceToCurrent == 0) {
+        if (realLine == static_cast<int>(currentLine)) {
             p.fillRect(w - 2 * m_separatorWidth, y, w, h, currentLineHighlight);
         } else {
             p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
