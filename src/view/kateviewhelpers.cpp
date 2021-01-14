@@ -1948,6 +1948,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
     const QColor iconBarColor = m_view->renderer()->config()->iconBarColor(); // Effective our background
     const QColor lineNumberColor = m_view->renderer()->config()->lineNumberColor();
     const QColor backgroundColor = m_view->renderer()->config()->backgroundColor(); // Of the edit area
+    const QColor currentLineHighlight = m_view->renderer()->config()->highlightedLineColor(); // Of the edit area
 
     // Paint the border in chunks line by line
     for (uint z = startz; z < endz; z++) {
@@ -2128,7 +2129,12 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         // we do this AFTER all other painting to ensure this leaves no artifacts
         // we kill 2 separator widths as we will below paint a line over this
         // otherwise this has some minimal overlap and looks ugly e.g. for scaled rendering
-        p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
+        const int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
+        if (distanceToCurrent == 0) {
+            p.fillRect(w - 2 * m_separatorWidth, y, w, h, currentLineHighlight);
+        } else {
+            p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
+        }
 
         // add separator line if needed
         // we do this AFTER all other painting to ensure this leaves no artifacts
