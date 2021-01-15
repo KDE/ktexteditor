@@ -37,6 +37,21 @@ KTextEditor::ViewPrivate *KateScriptView::view()
     return m_view;
 }
 
+void KateScriptView::copy()
+{
+    m_view->copy();
+}
+
+void KateScriptView::cut()
+{
+    m_view->cut();
+}
+
+void KateScriptView::paste()
+{
+    m_view->paste();
+}
+
 QJSValue KateScriptView::cursorPosition()
 {
     return cursorToScriptValue(m_engine, m_view->cursorPosition());

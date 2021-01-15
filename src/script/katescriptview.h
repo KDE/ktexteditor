@@ -38,6 +38,10 @@ public:
     void setView(KTextEditor::ViewPrivate *view);
     KTextEditor::ViewPrivate *view();
 
+    Q_INVOKABLE void copy();
+    Q_INVOKABLE void cut();
+    Q_INVOKABLE void paste();
+
     Q_INVOKABLE QJSValue cursorPosition();
     /**
      * Set the cursor position in the view.
