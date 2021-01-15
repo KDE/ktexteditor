@@ -3917,7 +3917,6 @@ void KateViewInternal::showBracketMatchPreview()
     const KTextEditor::Cursor openBracketCursor = m_bmStart->start();
     // make sure that the matching bracket is an opening bracket that is not visible on the current view, and that the preview won't be blocking the cursor
     if (m_cursor == openBracketCursor || toVirtualCursor(openBracketCursor).line() >= startLine() || m_cursor.line() - startLine() < 2) {
-
         hideBracketMatchPreview();
         return;
     }
@@ -3940,9 +3939,9 @@ void KateViewInternal::showBracketMatchPreview()
     }
 
     renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
-    const int lineWidth = qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth()*2), m_view->width());
+    const int lineWidth = qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth()*2), m_view->width() - m_leftBorder->width() - m_lineScroll->width());
     m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 2);
-    QPoint topLeft = mapToGlobal(QPoint(0, 0));
+    const QPoint topLeft = mapToGlobal(QPoint(0, 0));
     m_bmPreview->move(topLeft.x(), topLeft.y());
     m_bmPreview->setLine(lineLayout->virtualLine());
     m_bmPreview->setCenterView(false);
