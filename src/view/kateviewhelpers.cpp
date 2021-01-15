@@ -2088,8 +2088,6 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                     p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->modifiedLineColor());
                 } else if (tl->markedAsSavedOnDisk()) {
                     p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->savedLineColor());
-                } else {
-                    p.fillRect(lnX, y, m_modAreaWidth, h, iconBarColor);
                 }
 
                 lnX += m_modAreaWidth; // No m_separatorWidth
