@@ -809,70 +809,70 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
 
     const auto theme = KateHlManager::self()->repository().theme(m_schema);
 
-    m_backgroundColor = theme.editorColor(KSyntaxHighlighting::Theme::BackgroundColor);
+    m_backgroundColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::BackgroundColor));
     m_backgroundColorSet = true;
 
-    m_selectionColor = theme.editorColor(KSyntaxHighlighting::Theme::TextSelection);
+    m_selectionColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::TextSelection));
     m_selectionColorSet = true;
 
-    m_highlightedLineColor = theme.editorColor(KSyntaxHighlighting::Theme::CurrentLine);
+    m_highlightedLineColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::CurrentLine));
     m_highlightedLineColorSet = true;
 
-    m_highlightedBracketColor = theme.editorColor(KSyntaxHighlighting::Theme::BracketMatching);
+    m_highlightedBracketColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::BracketMatching));
     m_highlightedBracketColorSet = true;
 
-    m_wordWrapMarkerColor = theme.editorColor(KSyntaxHighlighting::Theme::WordWrapMarker);
+    m_wordWrapMarkerColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::WordWrapMarker));
     m_wordWrapMarkerColorSet = true;
 
-    m_tabMarkerColor = theme.editorColor(KSyntaxHighlighting::Theme::TabMarker);
+    m_tabMarkerColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::TabMarker));
     m_tabMarkerColorSet = true;
 
-    m_indentationLineColor = theme.editorColor(KSyntaxHighlighting::Theme::IndentationLine);
+    m_indentationLineColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::IndentationLine));
     m_indentationLineColorSet = true;
 
-    m_iconBarColor = theme.editorColor(KSyntaxHighlighting::Theme::IconBorder);
+    m_iconBarColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::IconBorder));
     m_iconBarColorSet = true;
 
-    m_foldingColor = theme.editorColor(KSyntaxHighlighting::Theme::CodeFolding);
+    m_foldingColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::CodeFolding));
     m_foldingColorSet = true;
 
-    m_lineNumberColor = theme.editorColor(KSyntaxHighlighting::Theme::LineNumbers);
+    m_lineNumberColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::LineNumbers));
     m_lineNumberColorSet = true;
 
-    m_currentLineNumberColor = theme.editorColor(KSyntaxHighlighting::Theme::CurrentLineNumber);
+    m_currentLineNumberColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::CurrentLineNumber));
     m_currentLineNumberColorSet = true;
 
-    m_separatorColor = theme.editorColor(KSyntaxHighlighting::Theme::Separator);
+    m_separatorColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::Separator));
     m_separatorColorSet = true;
 
-    m_spellingMistakeLineColor = theme.editorColor(KSyntaxHighlighting::Theme::SpellChecking);
+    m_spellingMistakeLineColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::SpellChecking));
     m_spellingMistakeLineColorSet = true;
 
-    m_modifiedLineColor = theme.editorColor(KSyntaxHighlighting::Theme::ModifiedLines);
+    m_modifiedLineColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::ModifiedLines));
     m_modifiedLineColorSet = true;
 
-    m_savedLineColor = theme.editorColor(KSyntaxHighlighting::Theme::SavedLines);
+    m_savedLineColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::SavedLines));
     m_savedLineColorSet = true;
 
-    m_searchHighlightColor = theme.editorColor(KSyntaxHighlighting::Theme::SearchHighlight);
+    m_searchHighlightColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::SearchHighlight));
     m_searchHighlightColorSet = true;
 
-    m_replaceHighlightColor = theme.editorColor(KSyntaxHighlighting::Theme::ReplaceHighlight);
+    m_replaceHighlightColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::ReplaceHighlight));
     m_replaceHighlightColorSet = true;
 
     for (int i = 0; i <= KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark; i++) {
-        QColor col = theme.editorColor(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark));
+        QColor col = QColor::fromRgba(theme.editorColor(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark)));
         m_lineMarkerColorSet[i] = true;
         m_lineMarkerColor[i] = col;
     }
 
-    m_templateBackgroundColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplateBackground);
+    m_templateBackgroundColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::TemplateBackground));
 
-    m_templateFocusedEditablePlaceholderColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder);
+    m_templateFocusedEditablePlaceholderColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder));
 
-    m_templateEditablePlaceholderColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplatePlaceholder);
+    m_templateEditablePlaceholderColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::TemplatePlaceholder));
 
-    m_templateNotEditablePlaceholderColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder);
+    m_templateNotEditablePlaceholderColor = QColor::fromRgba(theme.editorColor(KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder));
 
     m_templateColorsSet = true;
 }
