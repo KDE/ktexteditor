@@ -3913,8 +3913,9 @@ void KateViewInternal::showBracketMatchPreview()
     }
 
     const KTextEditor::Cursor openBracketCursor = m_bmStart->start();
-    // only show when the matching bracket is an opening bracket that is not visible on the current view
-    if (m_cursor == openBracketCursor || cursorToCoordinate(openBracketCursor, true, false).y() != -1) {
+    // make sure that the matching bracket is an opening bracket that is not visible on the current view, and that the preview won't be blocking the cursor
+    if (m_cursor == openBracketCursor || toVirtualCursor(openBracketCursor).line() >= startLine() || m_cursor.line() - startLine() < 3) {
+
         hideBracketMatchPreview();
         return;
     }
@@ -3925,15 +3926,15 @@ void KateViewInternal::showBracketMatchPreview()
         m_bmPreview->setFrameStyle(QFrame::Box);
     }
 
-    int startLine = openBracketCursor.line();
+    const int previewLine = openBracketCursor.line();
     KateRenderer *const renderer_ = renderer();
     KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer_));
-    lineLayout->setLine(startLine, -1);
+    lineLayout->setLine(previewLine, -1);
 
     // If the opening bracket is on its own line, start preview at the line above it instead (where the context is likely to be)
     const int col = lineLayout->textLine()->firstChar();
-    if (startLine > 0 && (col == -1 || col == openBracketCursor.column())) {
-        lineLayout->setLine(startLine - 1, lineLayout->virtualLine() - 1);
+    if (previewLine > 0 && (col == -1 || col == openBracketCursor.column())) {
+        lineLayout->setLine(previewLine - 1, lineLayout->virtualLine() - 1);
     }
 
     renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
