@@ -3242,6 +3242,8 @@ void KateViewInternal::focusOutEvent(QFocusEvent *)
     m_textHintTimer.stop();
 
     view()->slotLostFocus();
+
+    hideBracketMatchPreview();
 }
 
 void KateViewInternal::doDrag()
