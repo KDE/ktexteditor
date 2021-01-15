@@ -3474,6 +3474,9 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
             e->accept();
         }
     }
+
+    // hide bracket match preview so that it won't linger while scrolling'
+    hideBracketMatchPreview();
 }
 
 void KateViewInternal::startDragScroll()
