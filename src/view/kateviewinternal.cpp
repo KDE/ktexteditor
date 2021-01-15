@@ -3925,16 +3925,23 @@ void KateViewInternal::showBracketMatchPreview()
         m_bmPreview->setFrameStyle(QFrame::Box);
     }
 
+    int startLine = openBracketCursor.line();
     KateRenderer *const renderer_ = renderer();
     KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer_));
-    lineLayout->setLine(openBracketCursor.line(), -1);
-    renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+    lineLayout->setLine(startLine, -1);
 
-    int lineWidth = qMax(m_view->width() / 5, qMin(int(lineLayout->width() + renderer_->spaceWidth()), m_view->width()));
+    // If the opening bracket is on its own line, start preview at the line above it instead (where the context is likely to be)
+    const int col = lineLayout->textLine()->firstChar();
+    if (startLine > 0 && (col == -1 || col == openBracketCursor.column())) {
+        lineLayout->setLine(startLine - 1, lineLayout->virtualLine() - 1);
+    }
+
+    renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+    const int lineWidth = qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth()), m_view->width());
     m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 3);
     QPoint topLeft = mapToGlobal(QPoint(0, 0));
     m_bmPreview->move(topLeft.x(), topLeft.y());
-    m_bmPreview->setLine(toVirtualCursor(openBracketCursor).line() + 1);
+    m_bmPreview->setLine(lineLayout->virtualLine() + 1);
     m_bmPreview->setCenterView(true);
     m_bmPreview->raise();
     m_bmPreview->show();
