@@ -1958,12 +1958,20 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         // Paint the border in chunks left->right, remember used width
         uint lnX = 0;
 
-        // Paint background over full width...
-        p.fillRect(lnX, y, w, h, iconBarColor);
-
         // get line for this coordinates if possible
         const KateTextLayout lineLayout = m_viewInternal->cache()->viewLine(z);
         const int realLine = lineLayout.line();
+
+        // Paint background over full width
+        p.fillRect(lnX, y, w, h, iconBarColor);
+
+        // overpaint with current line highlighting over full width
+        const bool isCurrentLine = (realLine == static_cast<int>(currentLine)) && lineLayout.includesCursor(m_view->cursorPosition());
+        if (isCurrentLine) {
+            p.fillRect(lnX, y, w, h, currentLineHighlight);
+        }
+
+        // for real lines we need to do more stuff ;=)
         if (realLine >= 0) {
             // icon pane
             if (m_iconBorderOn) {
@@ -2129,10 +2137,11 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         // we do this AFTER all other painting to ensure this leaves no artifacts
         // we kill 2 separator widths as we will below paint a line over this
         // otherwise this has some minimal overlap and looks ugly e.g. for scaled rendering
-        if (realLine == static_cast<int>(currentLine) && lineLayout.includesCursor(m_view->cursorPosition())) {
+        p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
+
+        // overpaint again with current line highlighting if necessary
+        if (isCurrentLine) {
             p.fillRect(w - 2 * m_separatorWidth, y, w, h, currentLineHighlight);
-        } else {
-            p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
         }
 
         // add separator line if needed
