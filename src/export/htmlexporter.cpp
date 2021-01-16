@@ -14,6 +14,11 @@
 
 #include <QTextDocument>
 
+static QString hexName(const QColor& c)
+{
+    return c.alpha() == 0xFF ? c.name() : c.name(QColor::HexArgb);
+}
+
 HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const bool encapsulate)
     : AbstractExporter(view, output, encapsulate)
 {
@@ -41,8 +46,8 @@ HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const b
         m_output << QStringLiteral("<pre style='%1%2%3%4'>")
                         .arg(m_defaultAttribute->fontBold() ? QStringLiteral("font-weight:bold;") : QString())
                         .arg(m_defaultAttribute->fontItalic() ? QStringLiteral("font-style:italic;") : QString())
-                        .arg(QLatin1String("color:") + m_defaultAttribute->foreground().color().name() + QLatin1Char(';'))
-                        .arg(QLatin1String("background-color:") + m_defaultAttribute->background().color().name() + QLatin1Char(';'))
+                        .arg(QLatin1String("color:") + hexName(m_defaultAttribute->foreground().color()) + QLatin1Char(';'))
+                        .arg(QLatin1String("background-color:") + hexName(m_defaultAttribute->background().color()) + QLatin1Char(';'))
                  << '\n';
     }
     m_output.flush();
@@ -93,8 +98,8 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
 
     if (writeForeground || writeBackground) {
         m_output << QStringLiteral("<span style='%1%2'>")
-                        .arg(writeForeground ? QString(QLatin1String("color:") + attrib->foreground().color().name() + QLatin1Char(';')) : QString())
-                        .arg(writeBackground ? QString(QLatin1String("background:") + attrib->background().color().name() + QLatin1Char(';')) : QString());
+                        .arg(writeForeground ? QString(QLatin1String("color:") + hexName(attrib->foreground().color()) + QLatin1Char(';')) : QString())
+                        .arg(writeBackground ? QString(QLatin1String("background:") + hexName(attrib->background().color()) + QLatin1Char(';')) : QString());
     }
 
     m_output << text.toHtmlEscaped();
