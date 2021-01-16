@@ -10,7 +10,7 @@
 #define KATETEXTBUFFERTEST_H
 
 #include <QObject>
-#include <QtTest>
+#include <QTest>
 
 class KateTextBufferTest : public QObject
 {
