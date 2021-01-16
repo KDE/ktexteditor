@@ -396,6 +396,15 @@ void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
     blockSignals(blocked);
 }
 
+/**
+ * @brief Converts @p c to its hex value, if @p c has alpha then the returned string
+ * will be of the format #AARRGGBB other wise #RRGGBB
+ */
+static QString hexName(const QColor& c)
+{
+    return c.alpha() == 0xFF ? c.name() : c.name(QColor::HexArgb);
+}
+
 void KateThemeConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
@@ -420,7 +429,7 @@ void KateThemeConfigColorTab::apply()
         QJsonObject colors;
         for (const KateColorItem &item : it.value()) {
             QColor c = item.useDefault ? item.defaultColor : item.color;
-            colors[QLatin1String(metaEnum.key(item.role))] = c.alpha() == 0xFF ? c.name() : c.name(QColor::HexArgb);
+            colors[QLatin1String(metaEnum.key(item.role))] = hexName(c);
         }
         newThemeObject[QLatin1String("editor-colors")] = colors;
 
@@ -618,16 +627,16 @@ void KateThemeConfigDefaultStylesTab::apply()
             QJsonObject style;
             KTextEditor::Attribute::Ptr p = it.value()->at(z);
             if (p->hasProperty(QTextFormat::ForegroundBrush)) {
-                style[QLatin1String("text-color")] = p->foreground().color().alpha() == 0xFF ? p->foreground().color().name() : p->foreground().color().name(QColor::HexArgb);
+                style[QLatin1String("text-color")] = hexName(p->foreground().color());
             }
             if (p->hasProperty(QTextFormat::BackgroundBrush)) {
-                style[QLatin1String("background-color")] = p->background().color().alpha() == 0xFF ?  p->background().color().name() : p->background().color().name(QColor::HexArgb);
+                style[QLatin1String("background-color")] = hexName(p->background().color());
             }
             if (p->hasProperty(SelectedForeground)) {
-                style[QLatin1String("selected-text-color")] = p->selectedForeground().color().alpha() == 0xFF ? p->selectedForeground().color().name() : p->selectedForeground().color().name(QColor::HexArgb);
+                style[QLatin1String("selected-text-color")] = hexName(p->selectedForeground().color());
             }
             if (p->hasProperty(SelectedBackground)) {
-                style[QLatin1String("selected-background-color")] =  p->selectedBackground().color().alpha() == 0XFF ? p->selectedBackground().color().name() : p->selectedBackground().color().name(QColor::HexArgb);
+                style[QLatin1String("selected-background-color")] =  hexName(p->selectedBackground().color());
             }
             if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold()) {
                 style[QLatin1String("bold")] = true;
@@ -910,16 +919,16 @@ void KateThemeConfigHighlightTab::apply()
                 KTextEditor::Attribute::Ptr p = attributeIt.second.first;
                 KTextEditor::Attribute::Ptr pDefault = attributeIt.second.second;
                 if (p->hasProperty(QTextFormat::ForegroundBrush) && p->foreground().color() != pDefault->foreground().color()) {
-                    style[QLatin1String("text-color")] = p->foreground().color().alpha() == 0xFF ? p->foreground().color().name() : p->foreground().color().name(QColor::HexArgb);
+                    style[QLatin1String("text-color")] = hexName(p->foreground().color());
                 }
                 if (p->hasProperty(QTextFormat::BackgroundBrush) && p->background().color() != pDefault->background().color()) {
-                    style[QLatin1String("background-color")] = p->background().color().alpha() == 0xFF ? p->background().color().name() : p->background().color().name(QColor::HexArgb);
+                    style[QLatin1String("background-color")] = hexName(p->background().color());
                 }
                 if (p->hasProperty(SelectedForeground) && p->selectedForeground().color() != pDefault->selectedForeground().color()) {
-                    style[QLatin1String("selected-text-color")] = p->selectedForeground().color().alpha() == 0XFF ? p->selectedForeground().color().name() : p->selectedForeground().color().name(QColor::HexArgb);
+                    style[QLatin1String("selected-text-color")] = hexName(p->selectedForeground().color());
                 }
                 if (p->hasProperty(SelectedBackground) && p->selectedBackground().color() != pDefault->selectedBackground().color()) {
-                    style[QLatin1String("selected-background-color")] = p->selectedBackground().color().alpha() == 0xFF ? p->selectedBackground().color().name() : p->selectedBackground().color().name(QColor::HexArgb);
+                    style[QLatin1String("selected-background-color")] = hexName(p->selectedBackground().color());
                 }
                 if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold() != pDefault->fontBold()) {
                     style[QLatin1String("bold")] = p->fontBold();
