@@ -264,7 +264,7 @@ bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
         const QColor color = item->useDefaultColor() ? item->defaultColor() : item->color();
 
         if (index.column() == 1) {
-            const QColor selectedColor = QColorDialog::getColor(color, this);
+            const QColor selectedColor = QColorDialog::getColor(color, this, QString(), QColorDialog::ShowAlphaChannel);
 
             if (selectedColor.isValid()) {
                 item->setUseDefaultColor(false);
