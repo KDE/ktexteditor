@@ -499,8 +499,9 @@ KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool 
             fr.length = nextPosition.column() - currentPosition.column();
 
         } else {
-            // +1 to force background drawing at the end of the line when it's warranted
-            fr.length = textLine->length() - currentPosition.column() + 1;
+            // before we did here +1 to force background drawing at the end of the line when it's warranted
+            // we now skip this, we don't draw e.g. full line backgrounds
+            fr.length = textLine->length() - currentPosition.column();
         }
 
         KTextEditor::Attribute::Ptr a = renderRanges.generateAttribute();
@@ -599,171 +600,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
         }
 
-        QBrush backgroundBrush;
-        bool backgroundBrushSet = false;
-
-        // Loop each individual line for additional text decoration etc.
-        QVectorIterator<QTextLayout::FormatRange> it = range->layout()->formats();
-        QVectorIterator<QTextLayout::FormatRange> it2 = additionalFormats;
-        for (int i = 0; i < range->viewLineCount(); ++i) {
-            KateTextLayout line = range->viewLine(i);
-
-            bool haveBackground = false;
-            // Determine the background to use, if any, for the end of this view line
-            backgroundBrushSet = false;
-            while (it2.hasNext()) {
-                const QTextLayout::FormatRange &fr = it2.peekNext();
-                if (fr.start > line.endCol()) {
-                    break;
-                }
-
-                if (fr.start + fr.length > line.endCol()) {
-                    if (fr.format.hasProperty(QTextFormat::BackgroundBrush)) {
-                        backgroundBrushSet = true;
-                        backgroundBrush = fr.format.background();
-                    }
-
-                    haveBackground = true;
-                    break;
-                }
-
-                it2.next();
-            }
-
-            while (!haveBackground && it.hasNext()) {
-                const QTextLayout::FormatRange &fr = it.peekNext();
-                if (fr.start > line.endCol()) {
-                    break;
-                }
-
-                if (fr.start + fr.length > line.endCol()) {
-                    if (fr.format.hasProperty(QTextFormat::BackgroundBrush)) {
-                        backgroundBrushSet = true;
-                        backgroundBrush = fr.format.background();
-                    }
-
-                    break;
-                }
-
-                it.next();
-            }
-
-            // Draw selection or background color outside of areas where text is rendered
-            if (!m_printerFriendly) {
-                bool draw = false;
-                QBrush drawBrush;
-                if (m_view && m_view->selection() && !m_view->blockSelection() && m_view->lineEndSelected(line.end(true))) {
-                    draw = true;
-                    drawBrush = config()->selectionColor();
-                } else if (backgroundBrushSet && m_view && !m_view->blockSelection()) {
-                    draw = true;
-                    drawBrush = backgroundBrush;
-                }
-
-                if (draw) {
-                    int fillStartX = line.endX() - line.startX() + line.xOffset() - xStart;
-                    int fillStartY = lineHeight() * i;
-                    int width = xEnd - xStart - fillStartX;
-                    int height = lineHeight();
-
-                    // reverse X for right-aligned lines
-                    if (range->layout()->textOption().alignment() == Qt::AlignRight) {
-                        fillStartX = 0;
-                    }
-
-                    if (width > 0) {
-                        QRect area(fillStartX, fillStartY, width, height);
-                        paint.fillRect(area, drawBrush);
-                    }
-                }
-
-                // Draw indent lines
-                if (showIndentLines() && i == 0) {
-                    const qreal w = spaceWidth();
-                    const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
-
-                    for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
-                        paintIndentMarker(paint, x * w + 1 - xStart, range->line());
-                    }
-                }
-            }
-
-            // draw an open box to mark non-breaking spaces
-            const QString &text = range->textLine()->string();
-            int y = lineHeight() * i + fm.ascent() - fm.strikeOutPos();
-            int nbSpaceIndex = text.indexOf(nbSpaceChar, line.lineLayout().xToCursor(xStart));
-
-            while (nbSpaceIndex != -1 && nbSpaceIndex < line.endCol()) {
-                int x = line.lineLayout().cursorToX(nbSpaceIndex);
-                if (x > xEnd) {
-                    break;
-                }
-                paintNonBreakSpace(paint, x - xStart, y);
-                nbSpaceIndex = text.indexOf(nbSpaceChar, nbSpaceIndex + 1);
-            }
-
-            // draw tab stop indicators
-            if (showTabs()) {
-                int tabIndex = text.indexOf(tabChar, line.lineLayout().xToCursor(xStart));
-                while (tabIndex != -1 && tabIndex < line.endCol()) {
-                    int x = line.lineLayout().cursorToX(tabIndex);
-                    if (x > xEnd) {
-                        break;
-                    }
-                    paintTabstop(paint, x - xStart + spaceWidth() / 2.0, y);
-                    tabIndex = text.indexOf(tabChar, tabIndex + 1);
-                }
-            }
-
-            // draw trailing spaces
-            if (showSpaces() != KateDocumentConfig::None) {
-                int spaceIndex = line.endCol() - 1;
-                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine()->lastChar(), 0);
-
-                if (spaceIndex >= trailingPos) {
-                    for (; spaceIndex >= line.startCol(); --spaceIndex) {
-                        if (!text.at(spaceIndex).isSpace()) {
-                            if (showSpaces() == KateDocumentConfig::Trailing)
-                                break;
-                            else
-                                continue;
-                        }
-
-                        if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
-                            if (range->layout()->textOption().alignment() == Qt::AlignRight) { // Draw on left for RTL lines
-                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart - spaceWidth() / 2.0, y);
-                            } else {
-                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (showNonPrintableSpaces()) {
-                const int y = lineHeight() * i + fm.ascent();
-
-                static const QRegularExpression nonPrintableSpacesRegExp(
-                    QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
-                QRegularExpressionMatchIterator i = nonPrintableSpacesRegExp.globalMatch(text, line.lineLayout().xToCursor(xStart));
-
-                while (i.hasNext()) {
-                    const int charIndex = i.next().capturedStart();
-
-                    const int x = line.lineLayout().cursorToX(charIndex);
-                    if (x > xEnd) {
-                        break;
-                    }
-
-                    paintNonPrintableSpaces(paint, x - xStart, y, text[charIndex]);
-                }
-            }
-        }
-
         // draw word-wrap-honor-indent filling
         if ((range->viewLineCount() > 1) && range->shiftX() && (range->shiftX() > xStart)) {
-            if (backgroundBrushSet)
-                paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1), backgroundBrush);
             paint.fillRect(0,
                            lineHeight(),
                            range->shiftX() - xStart,
