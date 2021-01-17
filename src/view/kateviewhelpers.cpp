@@ -2137,8 +2137,12 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         // otherwise this has some minimal overlap and looks ugly e.g. for scaled rendering
         p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
 
-        // overpaint again with current line highlighting if necessary
-        if (isCurrentLine) {
+        // overpaint again with selection or current line highlighting if necessary
+        if (realLine >= 0 && m_view->selection() && !m_view->blockSelection() && m_view->selectionRange().start() < lineLayout.start() && m_view->selectionRange().end() >= lineLayout.start()) {
+            // selection overpaint to signal the end of the previous line is included in the selection
+            p.fillRect(w - 2 * m_separatorWidth, y, w, h, m_view->renderer()->config()->selectionColor());
+        } else if (isCurrentLine) {
+            // normal current line overpaint
             p.fillRect(w - 2 * m_separatorWidth, y, w, h, currentLineHighlight);
         }
 
