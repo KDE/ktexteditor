@@ -665,7 +665,7 @@ function tryMatchedAnchor(line, alignOnly)
         var actualIndentation = document.firstVirtualColumn(line - 1);
         var indentation = -1;
         if ( expectedIndentation <= actualIndentation ) {
-            if ( lastChar == ',' ) {
+            if ( lastChar == ',' && char != ')' ) {
                 // use indentation of last line instead and place closing anchor
                 // in same column of the openeing anchor
                 document.insertText(line, document.firstColumn(line), "\n");
@@ -683,12 +683,16 @@ function tryMatchedAnchor(line, alignOnly)
                 indentation = document.firstVirtualColumn(closingAnchor.line);
             } else {
                 // otherwise don't add a new line, just align on closing anchor
-                indentation = document.toVirtualColumn(closingAnchor);
+                indentation = document.toVirtualColumn(closingAnchor) + 1;
             }
             dbg("tryMatchedAnchor: success in line " + closingAnchor.line);
             return indentation;
+        } else if ( lastChar == ',') {
+            dbg("tryMatchedAnchor: success in line " + closingAnchor.line);
+            return document.toVirtualColumn(closingAnchor) + 1;
         }
     }
+
     // otherwise we i.e. pressed enter between (), [] or when we enter before curly brace
     // increase indentation and place closing anchor on the next line
     indentation = document.firstVirtualColumn(closingAnchor.line);
