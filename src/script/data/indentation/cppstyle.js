@@ -1606,8 +1606,8 @@ function tryOperator(cursor, ch)
             // Remove just entered (redundant) one
             document.removeText(line, column - 1, line, column);
         }
-        // Append one more if only two here and we are in 'Normal Mode'
-        else if (prev[1] == '.' && prev[2] == '.' && document.defStyleNum(line, column) == 0)
+        // Append one more if only two here and we are in 'dsNormal or dsOperator' mode, see https://invent.kde.org/frameworks/syntax-highlighting/-/merge_requests/150
+        else if (prev[1] == '.' && prev[2] == '.' && (document.defStyleNum(line, column) == 0 || document.defStyleNum(line, column) == 5))
         {
             addCharOrJumpOverIt(line, column, '.');
         }                                                   // Otherwise, do nothing...
