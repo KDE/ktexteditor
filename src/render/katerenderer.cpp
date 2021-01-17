@@ -604,16 +604,12 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         for (int i = 0; i < range->viewLineCount(); ++i) {
             KateTextLayout line = range->viewLine(i);
 
-            // Draw selection or background color outside of areas where text is rendered
-            if (!m_printerFriendly) {
-                // Draw indent lines
-                if (showIndentLines() && i == 0) {
-                    const qreal w = spaceWidth();
-                    const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
-
-                    for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
-                        paintIndentMarker(paint, x * w + 1 - xStart, range->line());
-                    }
+            // Draw indent lines
+            if (!m_printerFriendly && (showIndentLines() && i == 0)) {
+                const qreal w = spaceWidth();
+                const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
+                for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
+                    paintIndentMarker(paint, x * w + 1 - xStart, range->line());
                 }
             }
 
