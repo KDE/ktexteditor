@@ -24,3 +24,5 @@ CMakeLists.txt.user*
 .cmake/
 /compile_commands.json
 /.cache
+cmake-build-debug*
+.idea
