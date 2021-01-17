@@ -475,10 +475,13 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
     addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QString()));
-    addConfigEntry(ConfigEntry(
-        DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) {
-            return isPositive(value);
-        }));
+    addConfigEntry(ConfigEntry(DefaultMarkType,
+                               "Default Mark Type",
+                               QStringLiteral("default-mark-type"),
+                               KTextEditor::MarkInterface::markType01,
+                               [](const QVariant &value) {
+                                   return isPositive(value);
+                               }));
     addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) {
         return inBounds(0, value, 100);
     }));
@@ -861,7 +864,8 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_replaceHighlightColorSet = true;
 
     for (int i = 0; i <= KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark; i++) {
-        QColor col = QColor::fromRgba(theme.editorColor(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark)));
+        QColor col =
+            QColor::fromRgba(theme.editorColor(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark)));
         m_lineMarkerColorSet[i] = true;
         m_lineMarkerColor[i] = col;
     }

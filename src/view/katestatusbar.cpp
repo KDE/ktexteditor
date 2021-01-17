@@ -489,8 +489,14 @@ void KateStatusBar::slotIndentGroup(QAction *a)
     bool ok;
     KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
     if (val == -1) {
-        val = QInputDialog::getInt(
-            this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
+        val = QInputDialog::getInt(this,
+                                   i18n("Indentation Width"),
+                                   i18n("Please specify the wanted indentation width:"),
+                                   config->indentationWidth(),
+                                   1,
+                                   16,
+                                   1,
+                                   &ok);
         if (!ok)
             val = config->indentationWidth();
     }

@@ -34,7 +34,6 @@ private Q_SLOTS:
 private:
     void rangeCheck(KTextEditor::Range &valid);
     void lineRangeCheck(KTextEditor::LineRange &range);
-
 };
 
 #endif

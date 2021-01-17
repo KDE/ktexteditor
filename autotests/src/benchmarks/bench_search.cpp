@@ -17,8 +17,10 @@ int main(int argc, char *argv[])
     p.setApplicationDescription(QStringLiteral("Performance benchmark for search"));
     p.addHelpOption();
     // number of iterations
-    QCommandLineOption iterOpt(
-        QStringLiteral("i"), QStringLiteral("Number of lines of text in which search will happen"), QStringLiteral("iters"), QStringLiteral("0"));
+    QCommandLineOption iterOpt(QStringLiteral("i"),
+                               QStringLiteral("Number of lines of text in which search will happen"),
+                               QStringLiteral("iters"),
+                               QStringLiteral("0"));
     p.addOption(iterOpt);
 
     p.process(app);

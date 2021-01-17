@@ -622,8 +622,9 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
                 bElidedLastWord = false;
                 if (fontMetrics.horizontalAdvance(words[lastw].mid(c + 1)) > maxWidth) {
                     words[lastw] = words[lastw].mid(0, c + 1) + QLatin1Char('\n')
-                        + fontMetrics.elidedText(
-                            words[lastw].mid(c + 1), m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth);
+                        + fontMetrics.elidedText(words[lastw].mid(c + 1),
+                                                 m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight,
+                                                 maxWidth);
                 } else {
                     words[lastw].insert(c + 1, QLatin1Char('\n'));
                 }

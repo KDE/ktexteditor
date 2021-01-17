@@ -195,7 +195,7 @@ void TextRange::fixLookup(KTextEditor::LineRange oldLineRange, KTextEditor::Line
     }
 
     int endLineMax = oldLineRange.end();
-    if (oldLineRange.end() == -1 || lineRange.end()> oldLineRange.end()) {
+    if (oldLineRange.end() == -1 || lineRange.end() > oldLineRange.end()) {
         endLineMax = lineRange.end();
     }
 

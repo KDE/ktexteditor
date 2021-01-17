@@ -288,8 +288,10 @@ void SearchMode::editTextChanged(const QString &newText)
     // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
     // the right one to handle the counted search.
     int c = viInputModeManager()->getCurrentViModeHandler()->getCount();
-    KTextEditor::Range match = viInputModeManager()->searcher()->findPattern(
-        m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
+    KTextEditor::Range match = viInputModeManager()->searcher()->findPattern(m_currentSearchParams,
+                                                                             m_startingCursorPos,
+                                                                             c,
+                                                                             false /* Don't add incremental searches to search history */);
 
     if (match.isValid()) {
         // The returned range ends one past the last character of the match, so adjust.

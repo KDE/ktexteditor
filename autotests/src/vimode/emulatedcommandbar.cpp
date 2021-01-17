@@ -2204,8 +2204,9 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("fooafoob\nfooc\nfood",
            "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/g\\",
            "replaceline1\nreplaceline2areplaceline1\nreplaceline2b\nreplaceline1\nreplaceline2c\nfood");
-    DoTest(
-        "fooafoob\nfooc\nfood", "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/\\", "replaceline1\nreplaceline2afoob\nreplaceline1\nreplaceline2c\nfood");
+    DoTest("fooafoob\nfooc\nfood",
+           "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2/\\",
+           "replaceline1\nreplaceline2afoob\nreplaceline1\nreplaceline2c\nfood");
     DoTest("fooafoob\nfooc\nfood",
            "Vj\\esc\\:'<,'>s/foo/replaceline1\\\\nreplaceline2\\\\nreplaceline3/g\\",
            "replaceline1\nreplaceline2\nreplaceline3areplaceline1\nreplaceline2\nreplaceline3b\nreplaceline1\nreplaceline2\nreplaceline3c\nfood");

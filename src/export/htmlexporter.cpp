@@ -14,7 +14,7 @@
 
 #include <QTextDocument>
 
-static QString toHtmlRgbaString(const QColor& color)
+static QString toHtmlRgbaString(const QColor &color)
 {
     if (color.alpha() == 0xFF)
         return color.name();
@@ -31,7 +31,6 @@ static QString toHtmlRgbaString(const QColor& color)
     rgba.append(QLatin1Char(')'));
     return rgba;
 }
-
 
 HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const bool encapsulate)
     : AbstractExporter(view, output, encapsulate)
@@ -113,7 +112,8 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
     if (writeForeground || writeBackground) {
         m_output << QStringLiteral("<span style='%1%2'>")
                         .arg(writeForeground ? QString(QLatin1String("color:") + toHtmlRgbaString(attrib->foreground().color()) + QLatin1Char(';')) : QString())
-                        .arg(writeBackground ? QString(QLatin1String("background:") + toHtmlRgbaString(attrib->background().color()) + QLatin1Char(';')) : QString());
+                        .arg(writeBackground ? QString(QLatin1String("background:") + toHtmlRgbaString(attrib->background().color()) + QLatin1Char(';'))
+                                             : QString());
     }
 
     m_output << text.toHtmlEscaped();

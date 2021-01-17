@@ -57,8 +57,11 @@ KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
 {
     // dispatch to parent
     KTextEditor::View *view = nullptr;
-    QMetaObject::invokeMethod(
-        parent(), "activateView", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::View *, view), Q_ARG(KTextEditor::Document *, document));
+    QMetaObject::invokeMethod(parent(),
+                              "activateView",
+                              Qt::DirectConnection,
+                              Q_RETURN_ARG(KTextEditor::View *, view),
+                              Q_ARG(KTextEditor::Document *, document));
     return view;
 }
 
@@ -190,8 +193,12 @@ bool MainWindow::showPluginConfigPage(KTextEditor::Plugin *plugin, int page)
 {
     // dispatch to parent
     bool success = false;
-    QMetaObject::invokeMethod(
-        parent(), "showPluginConfigPage", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(KTextEditor::Plugin *, plugin), Q_ARG(int, page));
+    QMetaObject::invokeMethod(parent(),
+                              "showPluginConfigPage",
+                              Qt::DirectConnection,
+                              Q_RETURN_ARG(bool, success),
+                              Q_ARG(KTextEditor::Plugin *, plugin),
+                              Q_ARG(int, page));
     return success;
 }
 

@@ -2258,8 +2258,9 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
              this->url().toDisplayString(QUrl::PreferLocalFile)),
         KTextEditor::Message::Error);
     message->setWordWrap(true);
-    QAction *tryAgainAction = new QAction(
-        QIcon::fromTheme(QStringLiteral("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), nullptr);
+    QAction *tryAgainAction = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
+                                          i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"),
+                                          nullptr);
     connect(tryAgainAction, SIGNAL(triggered()), SLOT(documentReload()), Qt::QueuedConnection);
 
     QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), nullptr);

@@ -802,8 +802,9 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
     ac->addAction(QStringLiteral("set_eol"), a);
     a->setWhatsThis(i18n("Choose which line endings should be used, when you save the document"));
-    const QStringList list{
-        i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
+    const QStringList list{i18nc("@item:inmenu End of Line", "&UNIX"),
+                           i18nc("@item:inmenu End of Line", "&Windows/DOS"),
+                           i18nc("@item:inmenu End of Line", "&Macintosh")};
     m_setEndOfLine->setItems(list);
     m_setEndOfLine->setCurrentItem(doc()->config()->eol());
     connect(m_setEndOfLine, &KSelectAction::indexTriggered, this, &ViewPrivate::setEol);
@@ -1591,8 +1592,10 @@ bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Curs
             x += position.column() - z;
         }
 
-    m_viewInternal->updateCursor(
-        KTextEditor::Cursor(position.line(), x), false, calledExternally /* force center for external calls, see bug 408418 */, calledExternally);
+    m_viewInternal->updateCursor(KTextEditor::Cursor(position.line(), x),
+                                 false,
+                                 calledExternally /* force center for external calls, see bug 408418 */,
+                                 calledExternally);
 
     return true;
 }
@@ -3885,8 +3888,8 @@ QVarLengthArray<KateInlineNoteData, 8> KTextEditor::ViewPrivate::inlineNotes(int
         int index = 0;
         for (auto column : provider->inlineNotes(line)) {
             const bool underMouse = Cursor(line, column) == m_viewInternal->m_activeInlineNote.m_position;
-            KateInlineNoteData note = {
-                provider, this, {line, column}, index, underMouse, m_viewInternal->renderer()->currentFont(), m_viewInternal->renderer()->lineHeight()};
+            KateInlineNoteData note =
+                {provider, this, {line, column}, index, underMouse, m_viewInternal->renderer()->currentFont(), m_viewInternal->renderer()->lineHeight()};
             allInlineNotes.append(note);
             index++;
         }

@@ -326,7 +326,8 @@ public:
      */
     Q_DECL_CONSTEXPR inline LineRange intersect(const LineRange &range) const Q_DECL_NOEXCEPT
     {
-        return ((!isValid() || !range.isValid() || *this > range || *this < range)) ? invalid() : LineRange(qMax(start(), range.start()), qMin(end(), range.end()));
+        return ((!isValid() || !range.isValid() || *this > range || *this < range)) ? invalid()
+                                                                                    : LineRange(qMax(start(), range.start()), qMin(end(), range.end()));
     }
 
     /**
@@ -339,7 +340,9 @@ public:
      */
     Q_DECL_CONSTEXPR inline LineRange encompass(const LineRange &range) const Q_DECL_NOEXCEPT
     {
-        return (!isValid()) ? (range.isValid() ? range : invalid()) : (!range.isValid()) ? (*this) : LineRange(qMin(start(), range.start()), qMax(end(), range.end()));
+        return (!isValid())      ? (range.isValid() ? range : invalid())
+            : (!range.isValid()) ? (*this)
+                                 : LineRange(qMin(start(), range.start()), qMax(end(), range.end()));
     }
 
     /**

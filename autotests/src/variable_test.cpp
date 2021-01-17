@@ -14,8 +14,8 @@
 #include <ktexteditor/editor.h>
 #include <ktexteditor/view.h>
 
-#include <QUuid>
 #include <QTest>
+#include <QUuid>
 
 using namespace KTextEditor;
 

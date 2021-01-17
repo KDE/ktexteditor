@@ -2574,12 +2574,8 @@ Range NormalViMode::motionToMatchingItem()
 
     const auto bracketChar = l.at(n1);
     // use Kate's built-in matching bracket finder for brackets
-    if (bracketChar == QLatin1Char('(')
-        || bracketChar == QLatin1Char(')')
-        || bracketChar == QLatin1Char('{')
-        || bracketChar == QLatin1Char('}')
-        || bracketChar == QLatin1Char('[')
-        || bracketChar == QLatin1Char(']')) {
+    if (bracketChar == QLatin1Char('(') || bracketChar == QLatin1Char(')') || bracketChar == QLatin1Char('{') || bracketChar == QLatin1Char('}')
+        || bracketChar == QLatin1Char('[') || bracketChar == QLatin1Char(']')) {
         // findMatchingBracket requires us to move the cursor to the
         // first bracket, but we don't want the cursor to really move
         // in case this is e.g. a yank, so restore it to its original
@@ -3760,8 +3756,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
             // the line is empty!
             static const QRegularExpression nonWhitespaceRegex(QStringLiteral("[^\\s]"));
             const QString pasteLineString = doc()->line(pasteAt.line());
-            const QString leadingWhiteSpaceOnCurrentLine =
-                pasteLineString.mid(0, pasteLineString.indexOf(nonWhitespaceRegex));
+            const QString leadingWhiteSpaceOnCurrentLine = pasteLineString.mid(0, pasteLineString.indexOf(nonWhitespaceRegex));
             const QString leadingWhiteSpaceOnFirstPastedLine = textToInsert.mid(0, textToInsert.indexOf(nonWhitespaceRegex));
             // QString has no "left trim" method, bizarrely.
             while (textToInsert[0].isSpace()) {

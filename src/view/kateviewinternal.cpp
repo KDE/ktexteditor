@@ -3974,8 +3974,9 @@ void KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/,
 {
 #ifndef QT_NO_ACCESSIBILITY
     if (QAccessible::isActive()) {
-        QAccessibleTextRemoveEvent ev(
-            this, static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, range.start()), oldText);
+        QAccessibleTextRemoveEvent ev(this,
+                                      static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, range.start()),
+                                      oldText);
         QAccessible::updateAccessibility(&ev);
     }
 #endif

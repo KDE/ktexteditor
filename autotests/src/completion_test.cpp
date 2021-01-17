@@ -421,8 +421,9 @@ void CompletionTest::benchAbbreviationEngineWorstCase()
         for (int i = 0; i < 10000; i++) {
             // This case is quite horrible, because it requires a branch at every letter.
             // The current code will at some point drop out and just return false.
-            KateCompletionModel::matchesAbbreviation(
-                QStringLiteral("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox"), QStringLiteral("XbbbbbbbbbbbbbbbbbbbbFx"), Qt::CaseInsensitive);
+            KateCompletionModel::matchesAbbreviation(QStringLiteral("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox"),
+                                                     QStringLiteral("XbbbbbbbbbbbbbbbbbbbbFx"),
+                                                     Qt::CaseInsensitive);
         }
     }
 }

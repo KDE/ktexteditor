@@ -14,11 +14,11 @@
 #include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/configinterface.h>
 #include <ktexteditor/inlinenoteinterface.h>
+#include <ktexteditor/linerange.h>
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/texthintinterface.h>
 #include <ktexteditor/view.h>
-#include <ktexteditor/linerange.h>
 
 #include <QMenu>
 #include <QModelIndex>

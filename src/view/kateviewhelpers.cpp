@@ -1172,8 +1172,7 @@ bool KateCmdLineEdit::event(QEvent *e)
 
 void KateCmdLineEdit::slotReturnPressed(const QString &text)
 {
-    static const QRegularExpression focusChangingCommands(
-        QStringLiteral("^(?:buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$"));
+    static const QRegularExpression focusChangingCommands(QStringLiteral("^(?:buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$"));
 
     if (text.isEmpty()) {
         return;
@@ -2138,7 +2137,8 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
 
         // overpaint again with selection or current line highlighting if necessary
-        if (realLine >= 0 && m_view->selection() && !m_view->blockSelection() && m_view->selectionRange().start() < lineLayout.start() && m_view->selectionRange().end() >= lineLayout.start()) {
+        if (realLine >= 0 && m_view->selection() && !m_view->blockSelection() && m_view->selectionRange().start() < lineLayout.start()
+            && m_view->selectionRange().end() >= lineLayout.start()) {
             // selection overpaint to signal the end of the previous line is included in the selection
             p.fillRect(w - 2 * m_separatorWidth, y, w, h, m_view->renderer()->config()->selectionColor());
         } else if (isCurrentLine) {

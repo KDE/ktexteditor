@@ -400,7 +400,7 @@ void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
  * @brief Converts @p c to its hex value, if @p c has alpha then the returned string
  * will be of the format #AARRGGBB other wise #RRGGBB
  */
-static QString hexName(const QColor& c)
+static QString hexName(const QColor &c)
 {
     return c.alpha() == 0xFF ? c.name() : c.name(QColor::HexArgb);
 }
@@ -636,7 +636,7 @@ void KateThemeConfigDefaultStylesTab::apply()
                 style[QLatin1String("selected-text-color")] = hexName(p->selectedForeground().color());
             }
             if (p->hasProperty(SelectedBackground)) {
-                style[QLatin1String("selected-background-color")] =  hexName(p->selectedBackground().color());
+                style[QLatin1String("selected-background-color")] = hexName(p->selectedBackground().color());
             }
             if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold()) {
                 style[QLatin1String("bold")] = true;
@@ -1306,8 +1306,9 @@ bool KateThemeConfigPage::copyTheme()
         // we try for duplicated file names, too
         themeFileName = themesPath + QStringLiteral("/") + schemaName + QStringLiteral(".theme");
         if (KateHlManager::self()->repository().theme(schemaName).isValid() || QFile::exists(themeFileName)) {
-            KMessageBox::information(
-                this, i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName), i18n("Copy Theme"));
+            KMessageBox::information(this,
+                                     i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName),
+                                     i18n("Copy Theme"));
             schemaName.clear();
         }
     }

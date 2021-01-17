@@ -23,7 +23,7 @@ enum CommandFlags {
     IS_CHANGE = 0x8, // the command changes the buffer
     IS_NOT_LINEWISE = 0x10, // the motion is not line wise
     CAN_CHANGE_WHOLE_VISUAL_MODE_SELECTION = 0x20, // the motion is a text object that can set the
-                                                  // whole Visual Mode selection to the text object
+                                                   // whole Visual Mode selection to the text object
     CAN_LAND_INSIDE_FOLDING_RANGE = 0x40 // the motion can end up inside a folding range
 };
 

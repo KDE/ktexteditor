@@ -130,8 +130,9 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
         if (!searchParams.isBackwards) {
             const KTextEditor::Range matchRange =
                 m_view->doc()
-                    ->searchText(
-                        KTextEditor::Range(KTextEditor::Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()), pattern, flags)
+                    ->searchText(KTextEditor::Range(KTextEditor::Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()),
+                                 pattern,
+                                 flags)
                     .first();
 
             if (matchRange.isValid()) {

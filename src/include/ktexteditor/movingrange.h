@@ -11,9 +11,9 @@
 #define KTEXTEDITOR_MOVINGRANGE_H
 
 #include <ktexteditor/attribute.h>
+#include <ktexteditor/linerange.h>
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/range.h>
-#include <ktexteditor/linerange.h>
 #include <ktexteditor_export.h>
 
 #include <QDebug>
