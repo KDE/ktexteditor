@@ -683,15 +683,18 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                     paintNonPrintableSpaces(paint, x - xStart, y, text[charIndex]);
                 }
             }
-        }
 
-        // draw word-wrap-honor-indent filling
-        if ((range->viewLineCount() > 1) && range->shiftX() && (range->shiftX() > xStart)) {
-            paint.fillRect(0,
-                           lineHeight(),
-                           range->shiftX() - xStart,
-                           lineHeight() * (range->viewLineCount() - 1),
-                           QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
+            // draw word-wrap-honor-indent filling
+            if ((i > 0) && range->shiftX() && (range->shiftX() > xStart)) {
+                // fill background first with selection if we had selection from the previous line
+                if (drawSelection && !m_view->blockSelection() && m_view->selectionRange().start() < line.start()
+                    && m_view->selectionRange().end() >= line.start()) {
+                    paint.fillRect(0, lineHeight() * i, range->shiftX() - xStart, lineHeight(), QBrush(config()->selectionColor()));
+                }
+
+                // paint the normal filling for the word wrap markers
+                paint.fillRect(0, lineHeight() * i, range->shiftX() - xStart, lineHeight(), QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
+            }
         }
 
         // Draw caret
