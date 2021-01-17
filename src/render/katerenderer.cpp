@@ -600,6 +600,95 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
         }
 
+        // Loop each individual line for additional text decoration etc.
+        for (int i = 0; i < range->viewLineCount(); ++i) {
+            KateTextLayout line = range->viewLine(i);
+
+            // Draw selection or background color outside of areas where text is rendered
+            if (!m_printerFriendly) {
+                // Draw indent lines
+                if (showIndentLines() && i == 0) {
+                    const qreal w = spaceWidth();
+                    const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
+
+                    for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
+                        paintIndentMarker(paint, x * w + 1 - xStart, range->line());
+                    }
+                }
+            }
+
+            // draw an open box to mark non-breaking spaces
+            const QString &text = range->textLine()->string();
+            int y = lineHeight() * i + fm.ascent() - fm.strikeOutPos();
+            int nbSpaceIndex = text.indexOf(nbSpaceChar, line.lineLayout().xToCursor(xStart));
+
+            while (nbSpaceIndex != -1 && nbSpaceIndex < line.endCol()) {
+                int x = line.lineLayout().cursorToX(nbSpaceIndex);
+                if (x > xEnd) {
+                    break;
+                }
+                paintNonBreakSpace(paint, x - xStart, y);
+                nbSpaceIndex = text.indexOf(nbSpaceChar, nbSpaceIndex + 1);
+            }
+
+            // draw tab stop indicators
+            if (showTabs()) {
+                int tabIndex = text.indexOf(tabChar, line.lineLayout().xToCursor(xStart));
+                while (tabIndex != -1 && tabIndex < line.endCol()) {
+                    int x = line.lineLayout().cursorToX(tabIndex);
+                    if (x > xEnd) {
+                        break;
+                    }
+                    paintTabstop(paint, x - xStart + spaceWidth() / 2.0, y);
+                    tabIndex = text.indexOf(tabChar, tabIndex + 1);
+                }
+            }
+
+            // draw trailing spaces
+            if (showSpaces() != KateDocumentConfig::None) {
+                int spaceIndex = line.endCol() - 1;
+                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine()->lastChar(), 0);
+
+                if (spaceIndex >= trailingPos) {
+                    for (; spaceIndex >= line.startCol(); --spaceIndex) {
+                        if (!text.at(spaceIndex).isSpace()) {
+                            if (showSpaces() == KateDocumentConfig::Trailing)
+                                break;
+                            else
+                                continue;
+                        }
+
+                        if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
+                            if (range->layout()->textOption().alignment() == Qt::AlignRight) { // Draw on left for RTL lines
+                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart - spaceWidth() / 2.0, y);
+                            } else {
+                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (showNonPrintableSpaces()) {
+                const int y = lineHeight() * i + fm.ascent();
+
+                static const QRegularExpression nonPrintableSpacesRegExp(
+                    QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
+                QRegularExpressionMatchIterator i = nonPrintableSpacesRegExp.globalMatch(text, line.lineLayout().xToCursor(xStart));
+
+                while (i.hasNext()) {
+                    const int charIndex = i.next().capturedStart();
+
+                    const int x = line.lineLayout().cursorToX(charIndex);
+                    if (x > xEnd) {
+                        break;
+                    }
+
+                    paintNonPrintableSpaces(paint, x - xStart, y, text[charIndex]);
+                }
+            }
+        }
+
         // draw word-wrap-honor-indent filling
         if ((range->viewLineCount() > 1) && range->shiftX() && (range->shiftX() > xStart)) {
             paint.fillRect(0,
