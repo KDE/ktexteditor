@@ -1,0 +1,5 @@
+if(rand() % 2)
+  if_odd_do_this();
+else
+  else_even_do_that();
+in_any_case_do_this();

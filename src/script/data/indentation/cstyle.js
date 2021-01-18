@@ -421,7 +421,7 @@ function tryCKeywords(line, isBrace)
 
     // found non-empty line
     var currentString = document.line(currentLine);
-    if (currentString.search(/^\s*(if\b|for|do\b|while|switch|[}]?\s*else|((private|public|protected|case|default|signals|Q_SIGNALS).*:))/) == -1)
+    if (currentString.search(/^\s*(if\b|for(each)?|do\b|while|switch|[}]?\s*else(if)?|((private|public|protected|case|default|signals|Q_SIGNALS).*:))/) == -1)
         return -1;
     dbg("Found first word: " + RegExp.$1);
     lastPos = document.lastColumn(currentLine);
@@ -449,23 +449,6 @@ function tryCKeywords(line, isBrace)
         cursor = document.anchor(currentLine, lastPos, '(');
         if (cursor.isValid()) {
             indentation = document.toVirtualColumn(cursor.line, cursor.column + 1);
-        } else {
-            // If we cannot find a '(' in the currentLine this means we are
-            // dealing with single statement keyword-block, like:
-            // if (cond)
-            //     statement;
-            // So, we get the above currentLine, which should be the line
-            // corresponding to the keyword, and we return its indentation
-            // level.
-            var keywordLine = currentLine - 1;
-            var keywordString = document.line(keywordLine);
-
-            // Check that keywordLine contains a keyword.
-            // Line with if, for or while must end with a ")" while this is not
-            // the case of else and do.
-            // NOTE "else if" is matched as "if".
-            if (/((if|for|while).*\))|(else|do)$/.test(keywordString))
-                indentation = document.firstVirtualColumn(currentLine - 1);
         }
     }
 
@@ -491,7 +474,7 @@ function tryCondition(line)
     var indentation = -1;
 
     if (lastChar == ';'
-        && currentString.search(/^\s*(if\b|[}]?\s*else|do\b|while\b|for)/) == -1)
+        && currentString.search(/^\s*(if\b|[}]?\s*else(if)?\b|do\b|while\b|for(each)?\b)/) == -1)
     {
         // idea: we had something like:
         //   if/while/for (expression)
@@ -512,7 +495,7 @@ function tryCondition(line)
 
             if (firstPosVirtual < currentIndentation) {
                 currentString = document.line(currentLine);
-                if (currentString.search(/^\s*(if\b|[}]?\s*else|do\b|while\b|for)[^{]*$/) != -1)
+                if (currentString.search(/^\s*(if\b|[}]?\s*else(if)?|do\b|while\b|for(each)?)[^{]*$/) != -1)
                     indentation = firstPosVirtual;
                 break;
             } else if (currentLine == 0 || lineDelimiter == 0) {
