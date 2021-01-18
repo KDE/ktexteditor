@@ -1995,11 +1995,11 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
 
     updateBracketMarks();
 
-    // It's efficient enough to just tag them both without checking to see if they're on the same view line
-    /*  kdDebug()<<"oldDisplayCursor:"<<oldDisplayCursor<<endl;
-      kdDebug()<<"m_displayCursor:"<<m_displayCursor<<endl;*/
+    // avoid double work, tagLine => tagLines => not that cheap, much more costly than to compare 2 ints
     tagLine(oldDisplayCursor);
-    tagLine(m_displayCursor);
+    if (oldDisplayCursor != m_displayCursor) {
+        tagLine(m_displayCursor);
+    }
 
     updateMicroFocus();
 
@@ -2106,19 +2106,8 @@ void KateViewInternal::updateBracketMarks()
 
 bool KateViewInternal::tagLine(const KTextEditor::Cursor &virtualCursor)
 {
-    // FIXME may be a more efficient way for this
-    if ((int)view()->textFolding().visibleLineToLine(virtualCursor.line()) > doc()->lastLine()) {
-        return false;
-    }
-    // End FIXME
-
-    int viewLine = cache()->displayViewLine(virtualCursor, true);
-    if (viewLine >= 0 && viewLine < cache()->viewCacheLineCount()) {
-        cache()->viewLine(viewLine).setDirty();
-        m_leftBorder->update(0, lineToY(viewLine), m_leftBorder->width(), renderer()->lineHeight());
-        return true;
-    }
-    return false;
+    // we had here some special case handling for one line, it was just randomly wrong for dyn. word wrapped stuff => use the generic function
+    return tagLines(virtualCursor, virtualCursor, false);
 }
 
 bool KateViewInternal::tagLines(int start, int end, bool realLines)
