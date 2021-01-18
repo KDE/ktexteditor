@@ -2115,12 +2115,6 @@ bool KateViewInternal::tagLine(const KTextEditor::Cursor &virtualCursor)
     int viewLine = cache()->displayViewLine(virtualCursor, true);
     if (viewLine >= 0 && viewLine < cache()->viewCacheLineCount()) {
         cache()->viewLine(viewLine).setDirty();
-
-        // tag one line more because of overlapping things like _, bug 335079
-        if (viewLine + 1 < cache()->viewCacheLineCount()) {
-            cache()->viewLine(viewLine + 1).setDirty();
-        }
-
         m_leftBorder->update(0, lineToY(viewLine), m_leftBorder->width(), renderer()->lineHeight());
         return true;
     }
@@ -3082,6 +3076,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 paint.translate(QPoint(0, h * -thisLine.viewLine()));
 
                 // compute rect for line, fill the stuff
+                // important: as we allow some ARGB colors for other stuff, it is REALLY important to fill the full range once!
                 const QRectF lineRect(0, 0, unionRect.width(), h * thisLine.kateLineLayout()->viewLineCount());
                 paint.fillRect(lineRect, renderer()->config()->backgroundColor());
 
