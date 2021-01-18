@@ -1997,7 +1997,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
 
     // avoid double work, tagLine => tagLines => not that cheap, much more costly than to compare 2 ints
     tagLine(oldDisplayCursor);
-    if (oldDisplayCursor != m_displayCursor) {
+    if (oldDisplayCursor.line() != m_displayCursor.line()) {
         tagLine(m_displayCursor);
     }
 
