@@ -58,7 +58,7 @@ void KateAnimation::show()
         }
     } else {
         m_widget->show();
-        emit widgetShown();
+        Q_EMIT widgetShown();
     }
 }
 
@@ -78,6 +78,6 @@ void KateAnimation::hide()
         }
     } else {
         m_widget->hide();
-        emit widgetHidden();
+        Q_EMIT widgetHidden();
     }
 }

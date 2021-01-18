@@ -101,6 +101,6 @@ void CodeCompletionModel::setHasGroups(bool hasGroups)
 {
     if (d->hasGroups != hasGroups) {
         d->hasGroups = hasGroups;
-        emit hasGroupsChanged(this, hasGroups);
+        Q_EMIT hasGroupsChanged(this, hasGroups);
     }
 }

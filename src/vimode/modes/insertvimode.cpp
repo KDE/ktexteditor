@@ -289,7 +289,7 @@ bool InsertViMode::commandSwitchToNormalModeForJustOneCommand()
         m_view->setCursorPosition(KTextEditor::Cursor(cursorPos.line(), cursorPos.column() - 1));
     }
     m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
     m_viewInternal->repaint();
     return true;
 }

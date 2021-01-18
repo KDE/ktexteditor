@@ -33,7 +33,7 @@ Message::Message(const QString &richtext, MessageType type)
 
 Message::~Message()
 {
-    emit closed(this);
+    Q_EMIT closed(this);
 
     delete d;
 }
@@ -47,14 +47,14 @@ void Message::setText(const QString &text)
 {
     if (d->text != text) {
         d->text = text;
-        emit textChanged(text);
+        Q_EMIT textChanged(text);
     }
 }
 
 void Message::setIcon(const QIcon &newIcon)
 {
     d->icon = newIcon;
-    emit iconChanged(d->icon);
+    Q_EMIT iconChanged(d->icon);
 }
 
 QIcon Message::icon() const

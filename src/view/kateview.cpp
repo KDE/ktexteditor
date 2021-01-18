@@ -269,14 +269,14 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
         bottomViewBar()->removePermanentBarWidget(m_statusBar);
         delete m_statusBar;
         m_statusBar = nullptr;
-        emit statusBarEnabledChanged(this, false);
+        Q_EMIT statusBarEnabledChanged(this, false);
         return;
     }
 
     // else: create it
     m_statusBar = new KateStatusBar(this);
     bottomViewBar()->addPermanentBarWidget(m_statusBar);
-    emit statusBarEnabledChanged(this, true);
+    Q_EMIT statusBarEnabledChanged(this, true);
 }
 
 void KTextEditor::ViewPrivate::setupLayout()
@@ -1421,8 +1421,8 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
     }
 
     /* inform the rest of the system about the change */
-    emit viewInputModeChanged(this, mode);
-    emit viewModeChanged(this, viewMode());
+    Q_EMIT viewInputModeChanged(this, mode);
+    Q_EMIT viewModeChanged(this, viewMode());
 }
 
 void KTextEditor::ViewPrivate::slotDocumentAboutToReload()
@@ -1466,7 +1466,7 @@ void KTextEditor::ViewPrivate::slotGotFocus()
         m_viewInternal->m_columnScroll->update();
     }
 
-    emit focusIn(this);
+    Q_EMIT focusIn(this);
 }
 
 void KTextEditor::ViewPrivate::slotLostFocus()
@@ -1486,7 +1486,7 @@ void KTextEditor::ViewPrivate::slotLostFocus()
         m_viewInternal->m_columnScroll->update();
     }
 
-    emit focusOut(this);
+    Q_EMIT focusOut(this);
 }
 
 void KTextEditor::ViewPrivate::setDynWrapIndicators(int mode)
@@ -1548,8 +1548,8 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     currentInputMode()->readWriteChanged(doc()->isReadWrite());
 
     // => view mode changed
-    emit viewModeChanged(this, viewMode());
-    emit viewInputModeChanged(this, viewInputMode());
+    Q_EMIT viewModeChanged(this, viewMode());
+    Q_EMIT viewInputModeChanged(this, viewInputMode());
 }
 
 void KTextEditor::ViewPrivate::slotClipboardHistoryChanged()
@@ -1605,8 +1605,8 @@ void KTextEditor::ViewPrivate::toggleInsert()
     doc()->config()->setOvr(!doc()->config()->ovr());
     m_toggleInsert->setChecked(isOverwriteMode());
 
-    emit viewModeChanged(this, viewMode());
-    emit viewInputModeChanged(this, viewInputMode());
+    Q_EMIT viewModeChanged(this, viewMode());
+    Q_EMIT viewInputModeChanged(this, viewInputMode());
 }
 
 void KTextEditor::ViewPrivate::slotSaveCanceled(const QString &error)
@@ -2003,7 +2003,7 @@ void KTextEditor::ViewPrivate::updateConfig()
     tagAll();
     updateView(true);
 
-    emit configChanged(this);
+    Q_EMIT configChanged(this);
 }
 
 void KTextEditor::ViewPrivate::updateDocumentConfig()
@@ -2059,7 +2059,7 @@ void KTextEditor::ViewPrivate::updateRendererConfig()
 
     // @@ showIndentLines is not cached anymore.
     //  m_renderer->setShowIndentLines (m_renderer->config()->showIndentationLines());
-    emit configChanged(this);
+    Q_EMIT configChanged(this);
 }
 
 void KTextEditor::ViewPrivate::updateFoldingConfig()
@@ -2205,7 +2205,7 @@ int KTextEditor::ViewPrivate::virtualCursorColumn() const
 
 void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cursor &newPosition)
 {
-    emit mousePositionChanged(this, newPosition);
+    Q_EMIT mousePositionChanged(this, newPosition);
 }
 
 // BEGIN KTextEditor::SelectionInterface stuff
@@ -2228,7 +2228,7 @@ bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
     repaintText(true);
 
     // emit holy signal
-    emit selectionChanged(this);
+    Q_EMIT selectionChanged(this);
 
     // be done
     return true;
@@ -2260,7 +2260,7 @@ bool KTextEditor::ViewPrivate::clearSelection(bool redraw, bool finishedChanging
 
     // emit holy signal
     if (finishedChangingSelection) {
-        emit selectionChanged(this);
+        Q_EMIT selectionChanged(this);
     }
 
     // be done
@@ -2503,7 +2503,7 @@ bool KTextEditor::ViewPrivate::setBlockSelection(bool on)
             // documentation also if there is no selection around. This is needed,
             // as e.g. the Kate App status bar uses this signal to update the state
             // of the selection mode (block selection, line based selection)
-            emit selectionChanged(this);
+            Q_EMIT selectionChanged(this);
         }
     }
 
@@ -2525,7 +2525,7 @@ bool KTextEditor::ViewPrivate::wrapCursor() const
 
 void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text)
 {
-    emit textInserted(view, position, text);
+    Q_EMIT textInserted(view, position, text);
 }
 
 bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor &c, const QString &templateString, const QString &script)
@@ -2646,12 +2646,12 @@ void KTextEditor::ViewPrivate::setAutomaticInvocationEnabled(bool enabled)
 
 void KTextEditor::ViewPrivate::sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index)
 {
-    emit completionExecuted(this, position, model, index);
+    Q_EMIT completionExecuted(this, position, model, index);
 }
 
 void KTextEditor::ViewPrivate::sendCompletionAborted()
 {
-    emit completionAborted(this);
+    Q_EMIT completionAborted(this);
 }
 
 void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
@@ -3252,7 +3252,7 @@ void KTextEditor::ViewPrivate::aboutToShowContextMenu()
     QMenu *menu = qobject_cast<QMenu *>(sender());
 
     if (menu) {
-        emit contextMenuAboutToShow(this, menu);
+        Q_EMIT contextMenuAboutToShow(this, menu);
     }
 }
 
@@ -3554,7 +3554,7 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lin
         }
 
         // emit queued signal and be done
-        emit delayedUpdateOfView();
+        Q_EMIT delayedUpdateOfView();
         return;
     }
 
@@ -3663,7 +3663,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
                     range->feedback()->mouseEnteredRange(range, this);
                 } else {
                     range->feedback()->caretEnteredRange(range, this);
-                    emit caretChangedRange(this);
+                    Q_EMIT caretChangedRange(this);
                 }
             }
 
@@ -3687,7 +3687,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
                 range->feedback()->mouseExitedRange(range, this);
             } else {
                 range->feedback()->caretExitedRange(range, this);
-                emit caretChangedRange(this);
+                Q_EMIT caretChangedRange(this);
             }
         }
     }

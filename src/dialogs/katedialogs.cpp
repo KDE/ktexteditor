@@ -1237,7 +1237,7 @@ void KateGotoBar::gotoLine()
 
     m_view->setCursorPosition(KTextEditor::Cursor(gotoValue, 0));
     m_view->setFocus();
-    emit hideMe();
+    Q_EMIT hideMe();
 }
 // END KateGotoBar
 

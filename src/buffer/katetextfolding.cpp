@@ -66,7 +66,7 @@ void TextFolding::clear()
     m_foldingRanges.clear();
 
     // folding changed!
-    emit foldingRangesChanged();
+    Q_EMIT foldingRangesChanged();
 }
 
 qint64 TextFolding::newFoldingRange(const KTextEditor::Range &range, FoldingRangeFlags flags)
@@ -105,7 +105,7 @@ qint64 TextFolding::newFoldingRange(const KTextEditor::Range &range, FoldingRang
     // emit that something may have changed
     // do that only, if updateFoldedRangesForNewRange did not already do the job!
     if (!updated) {
-        emit foldingRangesChanged();
+        Q_EMIT foldingRangesChanged();
     }
 
     // all went fine, newRange is now registered internally!
@@ -194,7 +194,7 @@ bool TextFolding::unfoldRange(qint64 id, bool remove)
     // emit that something may have changed
     // do that only, if updateFoldedRangesForRemoveRange did not already do the job!
     if (!updated) {
-        emit foldingRangesChanged();
+        Q_EMIT foldingRangesChanged();
     }
 
     // really delete the range, if needed!
@@ -619,7 +619,7 @@ bool TextFolding::updateFoldedRangesForNewRange(TextFolding::FoldingRange *newRa
     m_foldedFoldingRanges = newFoldedFoldingRanges;
 
     // folding changed!
-    emit foldingRangesChanged();
+    Q_EMIT foldingRangesChanged();
 
     // all fine, stuff done, signal emitted
     return true;
@@ -663,7 +663,7 @@ bool TextFolding::updateFoldedRangesForRemovedRange(TextFolding::FoldingRange *o
     m_foldedFoldingRanges = newFoldedFoldingRanges;
 
     // folding changed!
-    emit foldingRangesChanged();
+    Q_EMIT foldingRangesChanged();
 
     // all fine, stuff done, signal emitted
     return true;

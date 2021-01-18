@@ -144,8 +144,8 @@ void SpellCheckBar::closed()
     d->deleteProgressDialog(false); // this method can be called in response to
     d->replaceAllMap.clear();
     // pressing 'Cancel' on the dialog
-    emit cancel();
-    emit spellCheckStatus(i18n("Spell check canceled."));
+    Q_EMIT cancel();
+    Q_EMIT spellCheckStatus(i18n("Spell check canceled."));
 }
 
 void SpellCheckBar::initConnections()
@@ -224,7 +224,7 @@ void SpellCheckBar::slotAutocorrect()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    emit autoCorrect(d->currentWord.word, d->ui.cmbReplacement->lineEdit()->text());
+    Q_EMIT autoCorrect(d->currentWord.word, d->ui.cmbReplacement->lineEdit()->text());
     slotReplaceWord();
 }
 
@@ -336,7 +336,7 @@ void SpellCheckBar::slotReplaceWord()
     setGuiEnabled(false);
     setProgressDialogVisible(true);
     const QString replacementText = d->ui.cmbReplacement->lineEdit()->text();
-    emit replace(d->currentWord.word, d->currentWord.start, replacementText);
+    Q_EMIT replace(d->currentWord.word, d->currentWord.start, replacementText);
 
     if (d->spellCheckContinuedAfterReplacement) {
         d->checker->replace(d->currentWord.start, d->currentWord.word, replacementText);
@@ -386,7 +386,7 @@ void SpellCheckBar::slotChangeLanguage(const QString &lang)
     if (!languageCode.isEmpty()) {
         d->checker->changeLanguage(languageCode);
         slotSuggest();
-        emit languageChanged(languageCode);
+        Q_EMIT languageChanged(languageCode);
     }
 }
 
@@ -402,7 +402,7 @@ void SpellCheckBar::slotMisspelling(const QString &word, int start)
 {
     setGuiEnabled(true);
     setProgressDialogVisible(false);
-    emit misspelling(word, start);
+    Q_EMIT misspelling(word, start);
     // NOTE this is HACK I had to introduce because BackgroundChecker lacks 'virtual' marks on methods
     // this dramatically reduces spellchecking time in Lokalize
     // as this doesn't fetch suggestions for words that are present in msgid
@@ -422,14 +422,14 @@ void SpellCheckBar::slotMisspelling(const QString &word, int start)
 void SpellCheckBar::slotDone()
 {
     d->restart = false;
-    emit done(d->checker->text());
+    Q_EMIT done(d->checker->text());
     if (d->restart) {
         updateDictionaryComboBox();
         d->checker->setText(d->originalBuffer);
         d->restart = false;
     } else {
         setProgressDialogVisible(false);
-        emit spellCheckStatus(i18n("Spell check complete."));
+        Q_EMIT spellCheckStatus(i18n("Spell check complete."));
         hideMe();
         if (!d->canceled && d->showCompletionMessageBox) {
             QMessageBox::information(this, i18n("Spell check complete."), i18nc("@title:window", "Check Spelling"));

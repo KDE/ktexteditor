@@ -125,7 +125,7 @@ void ExpandingWidgetModel::clearExpanding()
 
     for (auto it = oldExpandState.constBegin(); it != oldExpandState.constEnd(); ++it) {
         if (it.value() == Expanded) {
-            emit dataChanged(it.key(), it.key());
+            Q_EMIT dataChanged(it.key(), it.key());
         }
     }
 }
@@ -168,7 +168,7 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
         if (!idx.isValid()) {
             // All items have been unselected
             if (oldIndex.isValid()) {
-                emit dataChanged(oldIndex, oldIndex);
+                Q_EMIT dataChanged(oldIndex, oldIndex);
             }
         } else {
             QVariant variant = data(idx, CodeCompletionModel::ItemSelected);
@@ -185,7 +185,7 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
                 // Say that one row above until one row below has changed, so no items will need to be moved(the space that is taken from one item is given to
                 // the other)
                 if (oldIndex.isValid() && oldIndex < idx) {
-                    emit dataChanged(oldIndex, idx);
+                    Q_EMIT dataChanged(oldIndex, idx);
 
                     if (treeView()->verticalScrollMode() == QAbstractItemView::ScrollPerItem) {
                         // Qt fails to correctly scroll in ScrollPerItem mode, so the selected index is completely visible,
@@ -219,7 +219,7 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
                     // Since this also doesn't work smoothly, leave it for now
                     // treeView()->scrollTo( nextLine, QAbstractItemView::EnsureVisible );
                 } else if (oldIndex.isValid() && idx < oldIndex) {
-                    emit dataChanged(idx, oldIndex);
+                    Q_EMIT dataChanged(idx, oldIndex);
 
                     // For consistency with the down-scrolling, we keep one additional line visible above the current visible.
 
@@ -228,12 +228,12 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
                                 if( prevLine.isValid() )
                                     treeView()->scrollTo( prevLine );*/
                 } else {
-                    emit dataChanged(idx, idx);
+                    Q_EMIT dataChanged(idx, idx);
                 }
             } else if (oldIndex.isValid()) {
                 // We are not partially expanding a new row, but we previously had a partially expanded row. So signalize that it has been unexpanded.
 
-                emit dataChanged(oldIndex, oldIndex);
+                Q_EMIT dataChanged(oldIndex, oldIndex);
             }
         }
     } else {
@@ -355,7 +355,7 @@ void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
             rowSelected(idx); // Partially expand the row.
         }
 
-        emit dataChanged(idx, idx);
+        Q_EMIT dataChanged(idx, idx);
 
         if (treeView()) {
             treeView()->scrollTo(idx);

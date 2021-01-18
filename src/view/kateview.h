@@ -417,27 +417,27 @@ private:
 public:
     void emitNavigateLeft()
     {
-        emit navigateLeft();
+        Q_EMIT navigateLeft();
     }
     void emitNavigateRight()
     {
-        emit navigateRight();
+        Q_EMIT navigateRight();
     }
     void emitNavigateUp()
     {
-        emit navigateUp();
+        Q_EMIT navigateUp();
     }
     void emitNavigateDown()
     {
-        emit navigateDown();
+        Q_EMIT navigateDown();
     }
     void emitNavigateAccept()
     {
-        emit navigateAccept();
+        Q_EMIT navigateAccept();
     }
     void emitNavigateBack()
     {
-        emit navigateBack();
+        Q_EMIT navigateBack();
     }
     /**
      Return values for "save" related commands.

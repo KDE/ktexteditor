@@ -40,7 +40,7 @@ void KateFadeEffect::fadeIn()
         m_timeLine->stop();
         if (direction == QTimeLine::Backward) {
             // fadeOut animation interrupted
-            emit hideAnimationFinished();
+            Q_EMIT hideAnimationFinished();
         }
     }
 
@@ -63,7 +63,7 @@ void KateFadeEffect::fadeOut()
         m_timeLine->stop();
         if (direction == QTimeLine::Forward) {
             // fadeIn animation interrupted
-            emit showAnimationFinished();
+            Q_EMIT showAnimationFinished();
         }
     }
 
@@ -91,8 +91,8 @@ void KateFadeEffect::animationFinished()
 
     if (m_timeLine->direction() == QTimeLine::Backward) {
         m_widget->hide();
-        emit hideAnimationFinished();
+        Q_EMIT hideAnimationFinished();
     } else {
-        emit showAnimationFinished();
+        Q_EMIT showAnimationFinished();
     }
 }

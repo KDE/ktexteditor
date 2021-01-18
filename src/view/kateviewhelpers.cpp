@@ -999,7 +999,7 @@ void KateScrollBar::sliderMaybeMoved(int value)
         // movements the signal sliderMoved() is already emitted.
         // Thus, set m_middleMouseDown to false right away.
         m_middleMouseDown = false;
-        emit sliderMMBMoved(value);
+        Q_EMIT sliderMMBMoved(value);
     }
 }
 // END
@@ -1212,7 +1212,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
 
         // if the command changes the focus itself, the bar should be hidden before execution.
         if (focusChangingCommands.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
-            emit hideRequested();
+            Q_EMIT hideRequested();
         }
 
         if (!p) {
@@ -1232,7 +1232,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
                     setText(i18n("Success: ") + msg);
                 } else if (isVisible()) {
                     // always hide on success without message
-                    emit hideRequested();
+                    Q_EMIT hideRequested();
                 }
             } else {
                 if (msg.length() > 0) {
@@ -1270,7 +1270,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
 void KateCmdLineEdit::hideLineEdit() // unless i have focus ;)
 {
     if (!hasFocus()) {
-        emit hideRequested();
+        Q_EMIT hideRequested();
     }
 }
 
@@ -1483,7 +1483,7 @@ void KateIconBorder::setAnnotationBorderOn(bool enable)
         hideAnnotationTooltip();
     }
 
-    emit m_view->annotationBorderVisibilityChanged(m_view, enable);
+    Q_EMIT m_view->annotationBorderVisibilityChanged(m_view, enable);
 
     m_updatePositionToArea = true;
 
@@ -2406,7 +2406,7 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
         if (area == AnnotationBorder) {
             const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
             if (e->button() == Qt::LeftButton && singleClick) {
-                emit m_view->annotationActivated(m_view, cursorOnLine);
+                Q_EMIT m_view->annotationActivated(m_view, cursorOnLine);
             } else if (e->button() == Qt::RightButton) {
                 showAnnotationMenu(cursorOnLine, e->globalPos());
             }
@@ -2425,7 +2425,7 @@ void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
         const BorderArea area = positionToArea(e->pos());
         const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
         if (area == AnnotationBorder && !singleClick) {
-            emit m_view->annotationActivated(m_view, cursorOnLine);
+            Q_EMIT m_view->annotationActivated(m_view, cursorOnLine);
         }
     }
     QMouseEvent forward(QEvent::MouseButtonDblClick, QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
@@ -2628,7 +2628,7 @@ void KateIconBorder::showAnnotationMenu(int line, const QPoint &pos)
     QAction a(i18n("Disable Annotation Bar"), &menu);
     a.setIcon(QIcon::fromTheme(QStringLiteral("dialog-close")));
     menu.addAction(&a);
-    emit m_view->annotationContextMenuAboutToShow(m_view, &menu, line);
+    Q_EMIT m_view->annotationContextMenuAboutToShow(m_view, &menu, line);
     if (menu.exec(pos) == &a) {
         m_view->setAnnotationBorderVisible(false);
     }
@@ -2739,12 +2739,12 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
         QT_WARNING_PUSH
         QT_WARNING_DISABLE_CLANG("-Wdeprecated-declarations")
         QT_WARNING_DISABLE_GCC("-Wdeprecated-declarations")
-        emit q->KSelectAction::triggered(action->text());
+        Q_EMIT q->KSelectAction::triggered(action->text());
         QT_WARNING_POP
 #else
-        emit q->textTriggered(action->text());
+        Q_EMIT q->textTriggered(action->text());
 #endif
-        emit q->triggered(q->codecForMib(mib));
+        Q_EMIT q->triggered(q->codecForMib(mib));
     }
 }
 

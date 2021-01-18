@@ -276,7 +276,7 @@ bool KateViInputMode::keyPress(QKeyEvent *e)
     }
 
     if (m_viModeManager->handleKeypress(e)) {
-        emit view()->viewModeChanged(view(), viewMode());
+        Q_EMIT view()->viewModeChanged(view(), viewMode());
         return true;
     }
 

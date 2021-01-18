@@ -341,7 +341,7 @@ void CompletionTest::testAbortImmideatelyAfterStart()
     new ImmideatelyAbortCompletionModel(m_view);
     m_view->setCursorPosition(Cursor(0, 3));
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
-    emit m_view->userInvokedCompletion();
+    Q_EMIT m_view->userInvokedCompletion();
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
 }
 

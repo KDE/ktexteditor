@@ -322,7 +322,7 @@ void KateStyleTreeWidget::updateGroupHeadings()
 void KateStyleTreeWidget::emitChanged()
 {
     updateGroupHeadings();
-    emit changed();
+    Q_EMIT changed();
 }
 
 void KateStyleTreeWidget::addItem(const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data)

@@ -1017,7 +1017,7 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
 
     clearExpanding(); // We need to do this, or be aware of expanding-widgets while filtering.
 
-    emit layoutChanged();
+    Q_EMIT layoutChanged();
 }
 
 QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) const
@@ -1158,7 +1158,7 @@ bool KateCompletionModel::Group::orderBefore(Group *other) const
 void KateCompletionModel::hideOrShowGroup(Group *g, bool notifyModel)
 {
     if (g == m_argumentHints) {
-        emit argumentHintsChanged();
+        Q_EMIT argumentHintsChanged();
         m_updateBestMatchesTimer->start(200); // We have new argument-hints, so we have new best matches
         return; // Never show argument-hints in the normal completion-list
     }

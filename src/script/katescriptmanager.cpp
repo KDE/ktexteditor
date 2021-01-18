@@ -275,7 +275,7 @@ void KateScriptManager::collect()
 void KateScriptManager::reload()
 {
     collect();
-    emit reloaded();
+    Q_EMIT reloaded();
 }
 
 /// Kate::Command stuff

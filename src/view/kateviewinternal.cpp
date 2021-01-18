@@ -539,8 +539,8 @@ void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool called
             m_leftBorder->scroll(0, scrollHeight);
 
             if (emitSignals) {
-                emit view()->verticalScrollPositionChanged(m_view, c);
-                emit view()->displayRangeChanged(m_view);
+                Q_EMIT view()->verticalScrollPositionChanged(m_view, c);
+                Q_EMIT view()->displayRangeChanged(m_view);
             }
             return;
         }
@@ -550,8 +550,8 @@ void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool called
     update();
     m_leftBorder->update();
     if (emitSignals) {
-        emit view()->verticalScrollPositionChanged(m_view, c);
-        emit view()->displayRangeChanged(m_view);
+        Q_EMIT view()->verticalScrollPositionChanged(m_view, c);
+        Q_EMIT view()->displayRangeChanged(m_view);
     }
 }
 
@@ -579,8 +579,8 @@ void KateViewInternal::scrollColumns(int x)
         update();
     }
 
-    emit view()->horizontalScrollPositionChanged(m_view);
-    emit view()->displayRangeChanged(m_view);
+    Q_EMIT view()->horizontalScrollPositionChanged(m_view);
+    Q_EMIT view()->displayRangeChanged(m_view);
 
     bool blocked = m_columnScroll->blockSignals(true);
     m_columnScroll->setValue(startX());
@@ -771,8 +771,8 @@ void KateViewInternal::slotRegionVisibilityChanged()
     m_leftBorder->update();
 
     // emit signals here, scrollPos has this disabled, to ensure we do this after all stuff is updated!
-    emit view()->verticalScrollPositionChanged(m_view, max);
-    emit view()->displayRangeChanged(m_view);
+    Q_EMIT view()->verticalScrollPositionChanged(m_view, max);
+    Q_EMIT view()->displayRangeChanged(m_view);
 }
 
 void KateViewInternal::slotRegionBeginEndAddedRemoved(unsigned int)
@@ -2025,7 +2025,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
 
     updateDirty(); // paintText(0, 0, width(), height(), true);
 
-    emit view()->cursorPositionChanged(m_view, m_cursor);
+    Q_EMIT view()->cursorPositionChanged(m_view, m_cursor);
 }
 
 void KateViewInternal::updateBracketMarkAttributes()
@@ -3174,7 +3174,7 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
             return; // already fired displayRangeChanged
         }
     }
-    emit view()->displayRangeChanged(m_view);
+    Q_EMIT view()->displayRangeChanged(m_view);
 }
 
 void KateViewInternal::moveEvent(QMoveEvent *e)
@@ -3360,7 +3360,7 @@ void KateViewInternal::dropEvent(QDropEvent *event)
 {
     // if we have urls, pass this event off to the hosting application
     if (event->mimeData()->hasUrls()) {
-        emit dropEventPass(event);
+        Q_EMIT dropEventPass(event);
         return;
     }
 
@@ -3644,7 +3644,7 @@ void KateViewInternal::editEnd(int editTagLineStart, int editTagLineEnd, bool ta
     if (editOldSelection != view()->selectionRange()
         || (editOldSelection.isValid() && !editOldSelection.isEmpty()
             && !(editTagLineStart > editOldSelection.end().line() && editTagLineEnd < editOldSelection.start().line()))) {
-        emit view()->selectionChanged(m_view);
+        Q_EMIT view()->selectionChanged(m_view);
     }
 
     editIsRunning = false;

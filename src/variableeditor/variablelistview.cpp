@@ -94,7 +94,7 @@ void VariableListView::resizeEvent(QResizeEvent *event)
 void VariableListView::hideEvent(QHideEvent *event)
 {
     if (!event->spontaneous()) {
-        emit aboutToHide();
+        Q_EMIT aboutToHide();
     }
     QScrollArea::hideEvent(event);
 }

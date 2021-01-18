@@ -91,7 +91,7 @@ void KateUndoManager::editEnd()
     m_editCurrentUndo = nullptr;
 
     if (changedUndo) {
-        emit undoChanged();
+        Q_EMIT undoChanged();
     }
 
     Q_ASSERT(m_editCurrentUndo == nullptr); // must be 0 after calling this method
@@ -214,7 +214,7 @@ void KateUndoManager::setActive(bool enabled)
 
     m_isActive = enabled;
 
-    emit isActiveChanged(enabled);
+    Q_EMIT isActiveChanged(enabled);
 }
 
 uint KateUndoManager::undoCount() const
@@ -232,14 +232,14 @@ void KateUndoManager::undo()
     Q_ASSERT(m_editCurrentUndo == nullptr); // undo is not supported while we care about notifications (call editEnd() first)
 
     if (!undoItems.isEmpty()) {
-        emit undoStart(document());
+        Q_EMIT undoStart(document());
 
         undoItems.last()->undo(activeView());
         redoItems.append(undoItems.last());
         undoItems.removeLast();
         updateModified();
 
-        emit undoEnd(document());
+        Q_EMIT undoEnd(document());
     }
 }
 
@@ -248,14 +248,14 @@ void KateUndoManager::redo()
     Q_ASSERT(m_editCurrentUndo == nullptr); // redo is not supported while we care about notifications (call editEnd() first)
 
     if (!redoItems.isEmpty()) {
-        emit redoStart(document());
+        Q_EMIT redoStart(document());
 
         redoItems.last()->redo(activeView());
         undoItems.append(redoItems.last());
         redoItems.removeLast();
         updateModified();
 
-        emit redoEnd(document());
+        Q_EMIT redoEnd(document());
     }
 }
 
@@ -346,7 +346,7 @@ void KateUndoManager::clearUndo()
     lastUndoGroupWhenSaved = nullptr;
     docWasSavedWhenUndoWasEmpty = false;
 
-    emit undoChanged();
+    Q_EMIT undoChanged();
 }
 
 void KateUndoManager::clearRedo()
@@ -357,7 +357,7 @@ void KateUndoManager::clearRedo()
     lastRedoGroupWhenSaved = nullptr;
     docWasSavedWhenRedoWasEmpty = false;
 
-    emit undoChanged();
+    Q_EMIT undoChanged();
 }
 
 void KateUndoManager::setModified(bool modified)
@@ -421,7 +421,7 @@ KTextEditor::Cursor KateUndoManager::lastRedoCursor() const
 
 void KateUndoManager::updateConfig()
 {
-    emit undoChanged();
+    Q_EMIT undoChanged();
 }
 
 void KateUndoManager::setAllowComplexMerge(bool allow)

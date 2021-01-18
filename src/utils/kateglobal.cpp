@@ -265,7 +265,7 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
 {
     KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(false, false, nullptr, parent);
 
-    emit documentCreated(this, doc);
+    Q_EMIT documentCreated(this, doc);
 
     return doc;
 }
@@ -451,7 +451,7 @@ void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
     }
 
     // notify about change
-    emit clipboardHistoryChanged();
+    Q_EMIT clipboardHistoryChanged();
 }
 
 bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
@@ -532,6 +532,6 @@ void KTextEditor::EditorPrivate::emitConfigChanged()
     // emit only once, if still needed
     if (m_configWasChanged) {
         m_configWasChanged = false;
-        emit configChanged(this);
+        Q_EMIT configChanged(this);
     }
 }

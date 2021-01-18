@@ -66,7 +66,7 @@ void WordCounter::textRemoved(KTextEditor::Document *, const KTextEditor::Range 
         m_countByLine[startLine] = -1;
         m_timer.start();
     } else {
-        emit changed(0, 0, 0, 0);
+        Q_EMIT changed(0, 0, 0, 0);
     }
 }
 
@@ -80,7 +80,7 @@ void WordCounter::selectionChanged(KTextEditor::View *view)
 {
     if (view->selectionRange().isEmpty()) {
         m_wordsInSelection = m_charsInSelection = 0;
-        emit changed(m_wordsInDocument, 0, m_charsInDocument, 0);
+        Q_EMIT changed(m_wordsInDocument, 0, m_charsInDocument, 0);
         return;
     }
 
@@ -111,7 +111,7 @@ void WordCounter::selectionChanged(KTextEditor::View *view)
         m_charsInSelection += lastLineText.size();
     }
 
-    emit changed(m_wordsInDocument, m_wordsInSelection, m_charsInDocument, m_charsInSelection);
+    Q_EMIT changed(m_wordsInDocument, m_wordsInSelection, m_charsInDocument, m_charsInSelection);
 }
 
 void WordCounter::recalculateLines()
@@ -149,7 +149,7 @@ void WordCounter::recalculateLines()
 
     m_wordsInDocument = wordsCount;
     m_charsInDocument = charsCount;
-    emit changed(m_wordsInDocument, m_wordsInSelection, m_charsInDocument, m_charsInSelection);
+    Q_EMIT changed(m_wordsInDocument, m_wordsInSelection, m_charsInDocument, m_charsInSelection);
 }
 
 int WordCounter::countWords(const QString &text) const

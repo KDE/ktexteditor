@@ -485,7 +485,7 @@ void KateSearchBar::onReturnPressed()
     }
 
     if (controlDown) {
-        emit hideMe();
+        Q_EMIT hideMe();
     }
 }
 
@@ -851,7 +851,7 @@ void KateSearchBar::findOrReplaceAll()
     } while (!m_cancelFindOrReplace && !timeOut && block && ++line <= m_inputRange.end().line());
 
     if (done || m_cancelFindOrReplace) {
-        emit findOrReplaceAllFinished();
+        Q_EMIT findOrReplaceAllFinished();
     } else if (timeOut) {
         QTimer::singleShot(0, this, &KateSearchBar::findOrReplaceAll);
     }

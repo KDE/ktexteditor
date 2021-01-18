@@ -73,7 +73,7 @@ void KateConfigPage::observeChanges(KFontChooser *chooser)
 
 void KateConfigPage::slotChanged()
 {
-    emit changed();
+    Q_EMIT changed();
 }
 
 void KateConfigPage::somethingHasChanged()

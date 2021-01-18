@@ -296,7 +296,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     delete m_modOnHdHandler;
 
     // we are about to delete cursors/ranges/...
-    emit aboutToDeleteMovingInterfaceContent(this);
+    Q_EMIT aboutToDeleteMovingInterfaceContent(this);
 
     // kill it early, it has ranges!
     delete m_onTheFlyChecker;
@@ -307,7 +307,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     // Tell the world that we're about to close (== destruct)
     // Apps must receive this in a direct signal-slot connection, and prevent
     // any further use of interfaces once they return.
-    emit aboutToClose(this);
+    Q_EMIT aboutToClose(this);
 
     // remove file from dirwatch
     deactivateDirWatch();
@@ -427,7 +427,7 @@ KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTe
         connect(newView, SIGNAL(focusIn(KTextEditor::View *)), this, SLOT(slotModifiedOnDisk()));
     }
 
-    emit viewCreated(this, newView);
+    Q_EMIT viewCreated(this, newView);
 
     // post existing messages to the new view, if no specific view is given
     const auto keys = m_messageHash.keys();
@@ -702,10 +702,10 @@ bool KTextEditor::DocumentPrivate::clear()
 
     clearMarks();
 
-    emit aboutToInvalidateMovingInterfaceContent(this);
+    Q_EMIT aboutToInvalidateMovingInterfaceContent(this);
     m_buffer->invalidateRanges();
 
-    emit aboutToRemoveText(documentRange());
+    Q_EMIT aboutToRemoveText(documentRange());
 
     return editRemoveLines(0, lastLine());
 }
@@ -812,7 +812,7 @@ bool KTextEditor::DocumentPrivate::removeText(const KTextEditor::Range &_range, 
     }
 
     if (!block) {
-        emit aboutToRemoveText(range);
+        Q_EMIT aboutToRemoveText(range);
     }
 
     editStart();
@@ -1041,7 +1041,7 @@ bool KTextEditor::DocumentPrivate::editEnd()
 
     if (m_buffer->editChanged()) {
         setModified(true);
-        emit textChanged(this);
+        Q_EMIT textChanged(this);
     }
 
     // remember last change position in the stack, if any
@@ -1307,7 +1307,7 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
     // insert text into line
     m_buffer->insertText(m_editLastChangeStartCursor, s2);
 
-    emit textInserted(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
+    Q_EMIT textInserted(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
 
     editEnd();
 
@@ -1358,7 +1358,7 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
     // remove text from line
     m_buffer->removeText(KTextEditor::Range(m_editLastChangeStartCursor, KTextEditor::Cursor(line, col + len)));
 
-    emit textRemoved(this, KTextEditor::Range(line, col, line, col + len), oldText);
+    Q_EMIT textRemoved(this, KTextEditor::Range(line, col, line, col + len), oldText);
 
     editEnd();
 
@@ -1443,7 +1443,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         }
 
         if (!list.isEmpty()) {
-            emit marksChanged(this);
+            Q_EMIT marksChanged(this);
         }
 
         // yes, we added a new line !
@@ -1463,7 +1463,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
     // remember last change cursor
     m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
 
-    emit textInserted(this, KTextEditor::Range(line, col, line + 1, 0));
+    Q_EMIT textInserted(this, KTextEditor::Range(line, col, line + 1, 0));
 
     editEnd();
 
@@ -1528,13 +1528,13 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
     }
 
     if (!list.isEmpty()) {
-        emit marksChanged(this);
+        Q_EMIT marksChanged(this);
     }
 
     // remember last change cursor
     m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
 
-    emit textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QStringLiteral("\n"));
+    Q_EMIT textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QStringLiteral("\n"));
 
     editEnd();
 
@@ -1592,7 +1592,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     }
 
     if (!list.isEmpty()) {
-        emit marksChanged(this);
+        Q_EMIT marksChanged(this);
     }
 
     KTextEditor::Range rangeInserted(line, 0, line, tl->length());
@@ -1607,7 +1607,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     // remember last change cursor
     m_editLastChangeStartCursor = rangeInserted.start();
 
-    emit textInserted(this, rangeInserted);
+    Q_EMIT textInserted(this, rangeInserted);
 
     editEnd();
 
@@ -1681,7 +1681,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     }
 
     if (!list.isEmpty()) {
-        emit marksChanged(this);
+        Q_EMIT marksChanged(this);
     }
 
     KTextEditor::Range rangeRemoved(from, 0, to + 1, 0);
@@ -1697,7 +1697,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     // remember last change cursor
     m_editLastChangeStartCursor = rangeRemoved.start();
 
-    emit textRemoved(this, rangeRemoved, oldText.join(QLatin1Char('\n')) + QLatin1Char('\n'));
+    Q_EMIT textRemoved(this, rangeRemoved, oldText.join(QLatin1Char('\n')) + QLatin1Char('\n'));
 
     editEnd();
 
@@ -1866,7 +1866,7 @@ void KTextEditor::DocumentPrivate::bufferHlChanged()
     // deactivate indenter if necessary
     m_indenter->checkRequiredStyle();
 
-    emit highlightingModeChanged(this);
+    Q_EMIT highlightingModeChanged(this);
 }
 
 void KTextEditor::DocumentPrivate::setDontChangeHlOnSave()
@@ -2014,8 +2014,8 @@ void KTextEditor::DocumentPrivate::clearMark(int line)
     }
 
     KTextEditor::Mark *mark = m_marks.take(line);
-    emit markChanged(this, *mark, MarkRemoved);
-    emit marksChanged(this);
+    Q_EMIT markChanged(this, *mark, MarkRemoved);
+    Q_EMIT marksChanged(this);
     delete mark;
     tagLine(line);
     repaintViews(true);
@@ -2054,9 +2054,9 @@ void KTextEditor::DocumentPrivate::addMark(int line, uint markType)
     KTextEditor::Mark temp;
     temp.line = line;
     temp.type = markType;
-    emit markChanged(this, temp, MarkAdded);
+    Q_EMIT markChanged(this, temp, MarkAdded);
 
-    emit marksChanged(this);
+    Q_EMIT marksChanged(this);
     tagLine(line);
     repaintViews(true);
 }
@@ -2087,14 +2087,14 @@ void KTextEditor::DocumentPrivate::removeMark(int line, uint markType)
     KTextEditor::Mark temp;
     temp.line = line;
     temp.type = markType;
-    emit markChanged(this, temp, MarkRemoved);
+    Q_EMIT markChanged(this, temp, MarkRemoved);
 
     if (mark->type == 0) {
         m_marks.remove(line);
         delete mark;
     }
 
-    emit marksChanged(this);
+    Q_EMIT marksChanged(this);
     tagLine(line);
     repaintViews(true);
 }
@@ -2112,7 +2112,7 @@ void KTextEditor::DocumentPrivate::requestMarkTooltip(int line, QPoint position)
     }
 
     bool handled = false;
-    emit markToolTipRequested(this, *mark, position, handled);
+    Q_EMIT markToolTipRequested(this, *mark, position, handled);
 }
 
 bool KTextEditor::DocumentPrivate::handleMarkClick(int line)
@@ -2120,9 +2120,9 @@ bool KTextEditor::DocumentPrivate::handleMarkClick(int line)
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        emit markClicked(this, KTextEditor::Mark{line, 0}, handled);
+        Q_EMIT markClicked(this, KTextEditor::Mark{line, 0}, handled);
     } else {
-        emit markClicked(this, *mark, handled);
+        Q_EMIT markClicked(this, *mark, handled);
     }
 
     return handled;
@@ -2133,9 +2133,9 @@ bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint positi
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        emit markContextMenuRequested(this, KTextEditor::Mark{line, 0}, position, handled);
+        Q_EMIT markContextMenuRequested(this, KTextEditor::Mark{line, 0}, position, handled);
     } else {
-        emit markContextMenuRequested(this, *mark, position, handled);
+        Q_EMIT markContextMenuRequested(this, *mark, position, handled);
     }
 
     return handled;
@@ -2149,13 +2149,13 @@ void KTextEditor::DocumentPrivate::clearMarks()
         delete it.value();
         m_marks.erase(it);
 
-        emit markChanged(this, mark, MarkRemoved);
+        Q_EMIT markChanged(this, mark, MarkRemoved);
         tagLine(mark.line);
     }
 
     m_marks.clear();
 
-    emit marksChanged(this);
+    Q_EMIT marksChanged(this);
     repaintViews(true);
 }
 
@@ -2310,7 +2310,7 @@ int KTextEditor::DocumentPrivate::lineLengthLimit() const
 bool KTextEditor::DocumentPrivate::openFile()
 {
     // we are about to invalidate all cursors/ranges/.. => m_buffer->openFile will do so
-    emit aboutToInvalidateMovingInterfaceContent(this);
+    Q_EMIT aboutToInvalidateMovingInterfaceContent(this);
 
     // no open errors until now...
     m_openingError = false;
@@ -2363,8 +2363,8 @@ bool KTextEditor::DocumentPrivate::openFile()
     }
 
     // Inform that the text has changed (required as we're not inside the usual editStart/End stuff)
-    emit textChanged(this);
-    emit loaded(this);
+    Q_EMIT textChanged(this);
+    Q_EMIT loaded(this);
 
     //
     // to houston, we are not modified
@@ -2373,7 +2373,7 @@ bool KTextEditor::DocumentPrivate::openFile()
         m_modOnHd = false;
         m_modOnHdReason = OnDiskUnmodified;
         m_prevModOnHdReason = OnDiskUnmodified;
-        emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
+        Q_EMIT modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
     //
@@ -2548,7 +2548,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
         m_modOnHd = false;
         m_modOnHdReason = OnDiskUnmodified;
         m_prevModOnHdReason = OnDiskUnmodified;
-        emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
+        Q_EMIT modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
     // (dominik) mark last undo group as not mergeable, otherwise the next
@@ -2796,7 +2796,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
 
     // Tell the world that we're about to go ahead with the close
     if (!m_reloading) {
-        emit aboutToClose(this);
+        Q_EMIT aboutToClose(this);
     }
 
     // delete all KTE::Messages
@@ -2808,7 +2808,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     }
 
     // we are about to invalidate all cursors/ranges/.. => m_buffer->clear will do so
-    emit aboutToInvalidateMovingInterfaceContent(this);
+    Q_EMIT aboutToInvalidateMovingInterfaceContent(this);
 
     // remove file from dirwatch
     deactivateDirWatch();
@@ -2824,7 +2824,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
         m_modOnHd = false;
         m_modOnHdReason = OnDiskUnmodified;
         m_prevModOnHdReason = OnDiskUnmodified;
-        emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
+        Q_EMIT modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
     // remove all marks
@@ -2890,7 +2890,7 @@ void KTextEditor::DocumentPrivate::setReadWrite(bool rw)
         view->slotReadWriteChanged();
     }
 
-    emit readWriteChanged(this);
+    Q_EMIT readWriteChanged(this);
 }
 
 void KTextEditor::DocumentPrivate::setModified(bool m)
@@ -2902,7 +2902,7 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
             view->slotUpdateUndo();
         }
 
-        emit modifiedChanged(this);
+        Q_EMIT modifiedChanged(this);
     }
 
     m_undoManager->setModified(m);
@@ -3457,7 +3457,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     }
 
     if (!view->blockSelection()) {
-        emit charactersSemiInteractivelyInserted(pos, s);
+        Q_EMIT charactersSemiInteractivelyInserted(pos, s);
     }
     m_undoManager->undoSafePoint();
 }
@@ -4234,7 +4234,7 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
     // avoid to emit this, if name doesn't change!
     if (oldName != m_docName) {
-        emit documentNameChanged(this);
+        Q_EMIT documentNameChanged(this);
     }
 }
 
@@ -4279,7 +4279,7 @@ void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
         } else {
             delete m_modOnHdHandler;
             m_prevModOnHdReason = OnDiskUnmodified;
-            emit modifiedOnDisk(this, false, OnDiskUnmodified);
+            Q_EMIT modifiedOnDisk(this, false, OnDiskUnmodified);
         }
     } else { // the save as dialog was canceled, we are still modified on disk
         m_modOnHd = true;
@@ -4302,7 +4302,7 @@ void KTextEditor::DocumentPrivate::onModOnHdReload()
 {
     m_modOnHd = false;
     m_prevModOnHdReason = OnDiskUnmodified;
-    emit modifiedOnDisk(this, false, OnDiskUnmodified);
+    Q_EMIT modifiedOnDisk(this, false, OnDiskUnmodified);
     documentReload();
     delete m_modOnHdHandler;
 }
@@ -4343,7 +4343,7 @@ void KTextEditor::DocumentPrivate::onModOnHdAutoReload()
     if (m_modOnHd && !m_reloading && !m_autoReloadThrottle.isActive()) {
         m_modOnHd = false;
         m_prevModOnHdReason = OnDiskUnmodified;
-        emit modifiedOnDisk(this, false, OnDiskUnmodified);
+        Q_EMIT modifiedOnDisk(this, false, OnDiskUnmodified);
         documentReload();
         m_autoReloadThrottle.start();
     }
@@ -4359,7 +4359,7 @@ void KTextEditor::DocumentPrivate::setModifiedOnDisk(ModifiedOnDiskReason reason
 {
     m_modOnHdReason = reason;
     m_modOnHd = (reason != OnDiskUnmodified);
-    emit modifiedOnDisk(this, (reason != OnDiskUnmodified), reason);
+    Q_EMIT modifiedOnDisk(this, (reason != OnDiskUnmodified), reason);
 }
 
 class KateDocumentTmpMark
@@ -4384,7 +4384,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     // does not make sense showing an additional dialog, just hide the message.
     delete m_modOnHdHandler;
 
-    emit aboutToReload(this);
+    Q_EMIT aboutToReload(this);
 
     QList<KateDocumentTmpMark> tmp;
 
@@ -4439,7 +4439,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     }
     setHighlightingMode(hl_mode);
 
-    emit reloaded(this);
+    Q_EMIT reloaded(this);
 
     return true;
 }
@@ -4570,7 +4570,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
         m_onTheFlyChecker->updateConfig();
     }
 
-    emit configChanged(this);
+    Q_EMIT configChanged(this);
 }
 
 // BEGIN Variable reader
@@ -4998,7 +4998,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
     }
 
     // emit our signal to the outside!
-    emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
+    Q_EMIT modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
 }
 
 QByteArray KTextEditor::DocumentPrivate::checksum() const
@@ -5150,7 +5150,7 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
     }
 
     // fixme, make this better...
-    emit modeChanged(this);
+    Q_EMIT modeChanged(this);
     return true;
 }
 
@@ -5314,7 +5314,7 @@ void KTextEditor::DocumentPrivate::setAnnotationModel(KTextEditor::AnnotationMod
 {
     KTextEditor::AnnotationModel *oldmodel = m_annotationModel;
     m_annotationModel = model;
-    emit annotationModelChanged(oldmodel, m_annotationModel);
+    Q_EMIT annotationModelChanged(oldmodel, m_annotationModel);
 }
 
 KTextEditor::AnnotationModel *KTextEditor::DocumentPrivate::annotationModel() const
@@ -5408,7 +5408,7 @@ void KTextEditor::DocumentPrivate::slotCompleted()
 
     // Emit signal that we saved  the document, if needed
     if (m_documentState == DocumentSaving || m_documentState == DocumentSavingAs) {
-        emit documentSavedOrUploaded(this, m_documentState == DocumentSavingAs);
+        Q_EMIT documentSavedOrUploaded(this, m_documentState == DocumentSavingAs);
     }
 
     // back to idle mode
@@ -5482,7 +5482,7 @@ void KTextEditor::DocumentPrivate::slotUrlChanged(const QUrl &url)
 
     Q_UNUSED(url);
     updateDocName();
-    emit documentUrlChanged(this);
+    Q_EMIT documentUrlChanged(this);
 }
 
 bool KTextEditor::DocumentPrivate::save()
@@ -5545,7 +5545,7 @@ void KTextEditor::DocumentPrivate::clearDictionaryRanges()
     if (m_onTheFlyChecker) {
         m_onTheFlyChecker->refreshSpellCheck();
     }
-    emit dictionaryRangesPresent(false);
+    Q_EMIT dictionaryRangesPresent(false);
 }
 
 void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, const KTextEditor::Range &range, bool blockmode)
@@ -5558,7 +5558,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
         setDictionary(newDictionary, range);
     }
 
-    emit dictionaryRangesPresent(!m_dictionaryRanges.isEmpty());
+    Q_EMIT dictionaryRangesPresent(!m_dictionaryRanges.isEmpty());
 }
 
 void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, const KTextEditor::Range &range)
@@ -5636,7 +5636,7 @@ void KTextEditor::DocumentPrivate::setDefaultDictionary(const QString &dict)
         m_onTheFlyChecker->updateConfig();
         refreshOnTheFlyCheck();
     }
-    emit defaultDictionaryChanged(this);
+    Q_EMIT defaultDictionaryChanged(this);
 }
 
 void KTextEditor::DocumentPrivate::onTheFlySpellCheckingEnabled(bool enable)

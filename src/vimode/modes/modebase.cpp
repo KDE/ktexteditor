@@ -1002,7 +1002,7 @@ bool ModeBase::startNormalMode()
 
     m_viInputModeManager->viEnterNormalMode();
     m_view->doc()->setUndoMergeAllEdits(false);
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1011,7 +1011,7 @@ bool ModeBase::startInsertMode()
 {
     m_viInputModeManager->viEnterInsertMode();
     m_view->doc()->setUndoMergeAllEdits(true);
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1020,7 +1020,7 @@ bool ModeBase::startReplaceMode()
 {
     m_view->doc()->setUndoMergeAllEdits(true);
     m_viInputModeManager->viEnterReplaceMode();
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1037,7 +1037,7 @@ bool ModeBase::startVisualMode()
         m_viInputModeManager->viEnterVisualMode();
     }
 
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1051,7 +1051,7 @@ bool ModeBase::startVisualBlockMode()
         m_viInputModeManager->viEnterVisualMode(ViMode::VisualBlockMode);
     }
 
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1065,7 +1065,7 @@ bool ModeBase::startVisualLineMode()
         m_viInputModeManager->viEnterVisualMode(ViMode::VisualLineMode);
     }
 
-    emit m_view->viewModeChanged(m_view, m_view->viewMode());
+    Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }

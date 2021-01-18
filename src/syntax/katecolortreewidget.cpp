@@ -270,12 +270,12 @@ bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
                 item->setUseDefaultColor(false);
                 item->setColor(selectedColor);
                 viewport()->update();
-                emit changed();
+                Q_EMIT changed();
             }
         } else if (index.column() == 2 && !item->useDefaultColor()) {
             item->setUseDefaultColor(true);
             viewport()->update();
-            emit changed();
+            Q_EMIT changed();
         }
 
         return false;
@@ -309,7 +309,7 @@ void KateColorTreeWidget::selectDefaults()
 
     if (somethingChanged) {
         viewport()->update();
-        emit changed();
+        Q_EMIT changed();
     }
 }
 

@@ -147,7 +147,7 @@ void TextBuffer::clear()
     m_history.clear();
 
     // we got cleared
-    emit cleared();
+    Q_EMIT cleared();
 }
 
 TextLine TextBuffer::line(int line) const
@@ -189,9 +189,9 @@ bool TextBuffer::startEditing()
     m_editingMaximalLineChanged = -1;
 
     // transaction has started
-    emit editingStarted();
+    Q_EMIT editingStarted();
     if (m_document)
-        emit m_document->KTextEditor::Document::editingStarted(m_document);
+        Q_EMIT m_document->KTextEditor::Document::editingStarted(m_document);
 
     // first transaction started
     return true;
@@ -217,9 +217,9 @@ bool TextBuffer::finishEditing()
     Q_ASSERT(!editingChangedBuffer() || (m_editingMaximalLineChanged >= 0 && m_editingMaximalLineChanged < m_lines));
 
     // transaction has finished
-    emit editingFinished();
+    Q_EMIT editingFinished();
     if (m_document)
-        emit m_document->KTextEditor::Document::editingFinished(m_document);
+        Q_EMIT m_document->KTextEditor::Document::editingFinished(m_document);
 
     // last transaction finished
     return true;
@@ -261,9 +261,9 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor &position)
     balanceBlock(blockIndex);
 
     // emit signal about done change
-    emit lineWrapped(position);
+    Q_EMIT lineWrapped(position);
     if (m_document)
-        emit m_document->KTextEditor::Document::lineWrapped(m_document, position);
+        Q_EMIT m_document->KTextEditor::Document::lineWrapped(m_document, position);
 }
 
 void TextBuffer::unwrapLine(int line)
@@ -313,9 +313,9 @@ void TextBuffer::unwrapLine(int line)
     balanceBlock(blockIndex);
 
     // emit signal about done change
-    emit lineUnwrapped(line);
+    Q_EMIT lineUnwrapped(line);
     if (m_document)
-        emit m_document->KTextEditor::Document::lineUnwrapped(m_document, line);
+        Q_EMIT m_document->KTextEditor::Document::lineUnwrapped(m_document, line);
 }
 
 void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &text)
@@ -350,9 +350,9 @@ void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &
     }
 
     // emit signal about done change
-    emit textInserted(position, text);
+    Q_EMIT textInserted(position, text);
     if (m_document)
-        emit m_document->KTextEditor::Document::textInserted(m_document, position, text);
+        Q_EMIT m_document->KTextEditor::Document::textInserted(m_document, position, text);
 }
 
 void TextBuffer::removeText(const KTextEditor::Range &range)
@@ -395,9 +395,9 @@ void TextBuffer::removeText(const KTextEditor::Range &range)
     }
 
     // emit signal about done change
-    emit textRemoved(range, text);
+    Q_EMIT textRemoved(range, text);
     if (m_document)
-        emit m_document->KTextEditor::Document::textRemoved(m_document, range, text);
+        Q_EMIT m_document->KTextEditor::Document::textRemoved(m_document, range, text);
 }
 
 int TextBuffer::blockForLine(int line) const
@@ -681,7 +681,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     BUFFER_DEBUG << "used filter device for mime-type" << m_mimeTypeForFilterDev;
 
     // emit success
-    emit loaded(filename, encodingErrors);
+    Q_EMIT loaded(filename, encodingErrors);
 
     // file loading worked, modulo encoding problems
     return true;
@@ -735,7 +735,7 @@ bool TextBuffer::save(const QString &filename)
     markModifiedLinesAsSaved();
 
     // emit that file was saved and be done
-    emit saved(filename);
+    Q_EMIT saved(filename);
     return true;
 }
 

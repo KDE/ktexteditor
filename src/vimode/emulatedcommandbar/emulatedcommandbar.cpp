@@ -155,7 +155,7 @@ bool EmulatedCommandBar::barHandledKeypress(const QKeyEvent *keyEvent)
 {
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_H) || keyEvent->key() == Qt::Key_Backspace) {
         if (m_edit->text().isEmpty()) {
-            emit hideMe();
+            Q_EMIT hideMe();
         }
         m_edit->backspace();
         return true;
@@ -268,7 +268,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         return true;
 
     if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
-        emit hideMe();
+        Q_EMIT hideMe();
         return true;
     }
 

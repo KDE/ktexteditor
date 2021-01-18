@@ -77,7 +77,7 @@ void KateArgumentHintModel::buildRows()
 
     endResetModel();
 
-    emit contentStateChanged(!m_rows.isEmpty());
+    Q_EMIT contentStateChanged(!m_rows.isEmpty());
 }
 
 KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent)
@@ -265,7 +265,7 @@ QTreeView *KateArgumentHintModel::treeView() const
 
 void KateArgumentHintModel::emitDataChanged(const QModelIndex &start, const QModelIndex &end)
 {
-    emit dataChanged(start, end);
+    Q_EMIT dataChanged(start, end);
 }
 
 bool KateArgumentHintModel::indexIsItem(const QModelIndex &index) const
