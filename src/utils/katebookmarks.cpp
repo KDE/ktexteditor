@@ -36,7 +36,7 @@ KateBookmarks::KateBookmarks(KTextEditor::ViewPrivate *view, Sorting sort)
     , m_sorting(sort)
 {
     setObjectName(QStringLiteral("kate bookmarks"));
-    connect(view->doc(), SIGNAL(marksChanged(KTextEditor::Document *)), this, SLOT(marksChanged()));
+    connect(view->doc(), &KTextEditor::DocumentPrivate::marksChanged, this, &KateBookmarks::marksChanged);
     _tries = 0;
     m_bookmarksMenu = nullptr;
 }
@@ -52,34 +52,34 @@ void KateBookmarks::createActions(KActionCollection *ac)
     m_bookmarkToggle->setIcon(QIcon::fromTheme(QStringLiteral("bookmark-new")));
     ac->setDefaultShortcut(m_bookmarkToggle, Qt::CTRL + Qt::Key_B);
     m_bookmarkToggle->setWhatsThis(i18n("If a line has no bookmark then add one, otherwise remove it."));
-    connect(m_bookmarkToggle, SIGNAL(triggered()), this, SLOT(toggleBookmark()));
+    connect(m_bookmarkToggle, &QAction::triggered, this, &KateBookmarks::toggleBookmark);
 
     m_bookmarkClear = new QAction(i18n("Clear &All Bookmarks"), this);
     ac->addAction(QStringLiteral("bookmarks_clear"), m_bookmarkClear);
     m_bookmarkClear->setIcon(QIcon::fromTheme(QStringLiteral("bookmark-remove")));
     m_bookmarkClear->setWhatsThis(i18n("Remove all bookmarks of the current document."));
-    connect(m_bookmarkClear, SIGNAL(triggered()), this, SLOT(clearBookmarks()));
+    connect(m_bookmarkClear, &QAction::triggered, this, &KateBookmarks::clearBookmarks);
 
     m_goNext = new QAction(i18n("Next Bookmark"), this);
     ac->addAction(QStringLiteral("bookmarks_next"), m_goNext);
     m_goNext->setIcon(QIcon::fromTheme(QStringLiteral("go-down-search")));
     ac->setDefaultShortcut(m_goNext, Qt::ALT + Qt::Key_PageDown);
     m_goNext->setWhatsThis(i18n("Go to the next bookmark."));
-    connect(m_goNext, SIGNAL(triggered()), this, SLOT(goNext()));
+    connect(m_goNext, &QAction::triggered, this, &KateBookmarks::goNext);
 
     m_goPrevious = new QAction(i18n("Previous Bookmark"), this);
     ac->addAction(QStringLiteral("bookmarks_previous"), m_goPrevious);
     m_goPrevious->setIcon(QIcon::fromTheme(QStringLiteral("go-up-search")));
     ac->setDefaultShortcut(m_goPrevious, Qt::ALT + Qt::Key_PageUp);
     m_goPrevious->setWhatsThis(i18n("Go to the previous bookmark."));
-    connect(m_goPrevious, SIGNAL(triggered()), this, SLOT(goPrevious()));
+    connect(m_goPrevious, &QAction::triggered, this, &KateBookmarks::goPrevious);
 
     KActionMenu *actionMenu = new KActionMenu(i18n("&Bookmarks"), this);
     actionMenu->setPopupMode(QToolButton::InstantPopup);
     ac->addAction(QStringLiteral("bookmarks"), actionMenu);
     m_bookmarksMenu = actionMenu->menu();
 
-    connect(m_bookmarksMenu, SIGNAL(aboutToShow()), this, SLOT(bookmarkMenuAboutToShow()));
+    connect(m_bookmarksMenu, &QMenu::aboutToShow, this, &KateBookmarks::bookmarkMenuAboutToShow);
 
     marksChanged();
 
@@ -93,22 +93,19 @@ void KateBookmarks::createActions(KActionCollection *ac)
 void KateBookmarks::toggleBookmark()
 {
     uint mark = m_view->doc()->mark(m_view->cursorPosition().line());
-    if (mark & KTextEditor::MarkInterface::markType01)
+    if (mark & KTextEditor::MarkInterface::markType01) {
         m_view->doc()->removeMark(m_view->cursorPosition().line(), KTextEditor::MarkInterface::markType01);
-    else
+    } else {
         m_view->doc()->addMark(m_view->cursorPosition().line(), KTextEditor::MarkInterface::markType01);
+    }
 }
 
 void KateBookmarks::clearBookmarks()
 {
-    QHash<int, KTextEditor::Mark *> m = m_view->doc()->marks();
-    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m.constBegin(); i != m.constEnd(); ++i) {
-        m_view->doc()->removeMark(i.value()->line, KTextEditor::MarkInterface::markType01);
+    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
+    for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
+        m_view->doc()->removeMark(it.value()->line, KTextEditor::MarkInterface::markType01);
     }
-
-    // just to be sure ;)
-    // dominik: the following line can be deleted afaics, as Document::removeMark emits this signal.
-    marksChanged();
 }
 
 void KateBookmarks::insertBookmarks(QMenu &menu)
@@ -118,15 +115,16 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
     int next = -1; // -1 means next bookmark doesn't exist
     int prev = -1; // -1 means previous bookmark doesn't exist
 
-    const QHash<int, KTextEditor::Mark *> &m = m_view->doc()->marks();
-    QVector<int> bookmarkLineArray; // Array of line numbers which have bookmarks
+    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
 
-    if (m.isEmpty()) {
+    if (hash.isEmpty()) {
         return;
     }
 
+    QVector<int> bookmarkLineArray; // Array of line numbers which have bookmarks
+
     // Find line numbers where bookmarks are set & store those line numbers in bookmarkLineArray
-    for (QHash<int, KTextEditor::Mark *>::const_iterator it = m.constBegin(); it != m.constEnd(); ++it) {
+    for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
         if (it.value()->type & KTextEditor::MarkInterface::markType01) {
             bookmarkLineArray.append(it.value()->line);
         }
@@ -139,8 +137,10 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
     QAction *firstNewAction = menu.addSeparator();
     // Consider each line with a bookmark one at a time
     for (int i = 0; i < bookmarkLineArray.size(); ++i) {
+        const int lineNo = bookmarkLineArray.at(i);
         // Get text in this particular line in a QString
-        QString bText = menu.fontMetrics().elidedText(m_view->doc()->line(bookmarkLineArray.at(i)), Qt::ElideRight, menu.fontMetrics().maxWidth() * 32);
+        QFontMetrics fontMetrics(menu.fontMetrics());
+        QString bText = fontMetrics.elidedText(m_view->doc()->line(lineNo), Qt::ElideRight, fontMetrics.maxWidth() * 32);
         bText.replace(re, QStringLiteral("&&")); // kill undesired accellerators!
         bText.replace(QLatin1Char('\t'), QLatin1Char(' ')); // kill tabs, as they are interpreted as shortcuts
 
@@ -154,38 +154,32 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
             }
         }
 
+        const QString actionText(QStringLiteral("%1  %2  - \"%3\"").arg(QString::number(lineNo + 1), m_view->currentInputMode()->bookmarkLabel(lineNo), bText));
         // Adding action for this bookmark in menu
         if (before) {
-            QAction *a = new QAction(QStringLiteral("%1  %3  - \"%2\"")
-                                         .arg(bookmarkLineArray.at(i) + 1)
-                                         .arg(bText)
-                                         .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))),
-                                     &menu);
+            QAction *a = new QAction(actionText, &menu);
             menu.insertAction(before, a);
-            connect(a, SIGNAL(activated()), this, SLOT(gotoLine()));
-            a->setData(bookmarkLineArray.at(i));
+            connect(a, &QAction::triggered, this, [this, lineNo]() {
+                gotoLine(lineNo);
+            });
+
             if (!firstNewAction) {
                 firstNewAction = a;
             }
-
         } else {
-            QAction *a = menu.addAction(QStringLiteral("%1  %3  - \"%2\"")
-                                            .arg(bookmarkLineArray.at(i) + 1)
-                                            .arg(bText)
-                                            .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))),
-                                        this,
-                                        SLOT(gotoLine()));
-            a->setData(bookmarkLineArray.at(i));
+            menu.addAction(actionText, this, [this, lineNo]() {
+                gotoLine(lineNo);
+            });
         }
 
         // Find the line number of previous & next bookmark (if present) in relation to the cursor
-        if (bookmarkLineArray.at(i) < line) {
-            if ((prev == -1) || prev < (bookmarkLineArray.at(i))) {
-                prev = bookmarkLineArray.at(i);
+        if (lineNo < line) {
+            if (prev == -1 || prev < lineNo) {
+                prev = lineNo;
             }
-        } else if (bookmarkLineArray.at(i) > line) {
-            if ((next == -1) || next > (bookmarkLineArray.at(i))) {
-                next = bookmarkLineArray.at(i);
+        } else if (lineNo > line) {
+            if (next == -1 || next > lineNo) {
+                next = lineNo;
             }
         }
     }
@@ -208,14 +202,6 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
     }
 }
 
-void KateBookmarks::gotoLine()
-{
-    if (!sender()) {
-        return;
-    }
-    gotoLine(((QAction *)(sender()))->data().toInt());
-}
-
 void KateBookmarks::gotoLine(int line)
 {
     m_view->setCursorPosition(KTextEditor::Cursor(line, 0));
@@ -236,17 +222,18 @@ void KateBookmarks::bookmarkMenuAboutToShow()
 
 void KateBookmarks::goNext()
 {
-    const QHash<int, KTextEditor::Mark *> &m = m_view->doc()->marks();
-    if (m.isEmpty()) {
+    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
+    if (hash.isEmpty()) {
         return;
     }
 
     int line = m_view->cursorPosition().line();
     int found = -1;
 
-    for (QHash<int, KTextEditor::Mark *>::const_iterator it = m.constBegin(); it != m.constEnd(); ++it) {
-        if ((it.value()->line > line) && ((found == -1) || (found > it.value()->line))) {
-            found = it.value()->line;
+    for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
+        const int markLine = it.value()->line;
+        if (markLine > line && (found == -1 || found > markLine)) {
+            found = markLine;
         }
     }
 
@@ -257,17 +244,18 @@ void KateBookmarks::goNext()
 
 void KateBookmarks::goPrevious()
 {
-    const QHash<int, KTextEditor::Mark *> &m = m_view->doc()->marks();
-    if (m.isEmpty()) {
+    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
+    if (hash.isEmpty()) {
         return;
     }
 
     int line = m_view->cursorPosition().line();
     int found = -1;
 
-    for (QHash<int, KTextEditor::Mark *>::const_iterator it = m.constBegin(); it != m.constEnd(); ++it) {
-        if ((it.value()->line < line) && ((found == -1) || (found < it.value()->line))) {
-            found = it.value()->line;
+    for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
+        const int markLine = it.value()->line;
+        if (markLine < line && (found == -1 || found < markLine)) {
+            found = markLine;
         }
     }
 

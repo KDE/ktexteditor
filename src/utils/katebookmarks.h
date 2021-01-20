@@ -47,7 +47,6 @@ private Q_SLOTS:
     void toggleBookmark();
     void clearBookmarks();
 
-    void gotoLine();
     void gotoLine(int line);
 
     void bookmarkMenuAboutToShow();
