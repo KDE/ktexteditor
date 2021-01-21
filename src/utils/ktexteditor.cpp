@@ -133,6 +133,11 @@ KSyntaxHighlighting::Theme Editor::theme() const
     return KateHlManager::self()->repository().theme(d->rendererConfig()->schema());
 }
 
+const KSyntaxHighlighting::Repository &Editor::repository() const
+{
+    return KateHlManager::self()->repository();
+}
+
 bool View::insertText(const QString &text)
 {
     KTextEditor::Document *doc = document();

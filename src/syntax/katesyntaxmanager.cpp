@@ -83,4 +83,7 @@ void KateHlManager::reload()
         }
         doc->setHighlightingMode(hlMode);
     }
+
+    // emit reloaded signal for our editor instance
+    Q_EMIT KTextEditor::EditorPrivate::self()->repositoryReloaded(KTextEditor::EditorPrivate::self());
 }

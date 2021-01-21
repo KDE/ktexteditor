@@ -19,6 +19,11 @@
 class KAboutData;
 class KConfig;
 
+namespace KSyntaxHighlighting
+{
+class Repository;
+}
+
 /**
  * The KTextEditor namespace contains all the public API that is required
  * to use the KTextEditor component. Using the KTextEditor interfaces is
@@ -236,6 +241,29 @@ public:
      * \since 5.79
      */
     KSyntaxHighlighting::Theme theme() const;
+
+public:
+    /**
+     * Get read-only access to the syntax highlighting repository the editor uses.
+     * Might be reloaded during runtime, repositoryReloaded() will be emitted in that cases.
+     *
+     * \return syntax repository used by the editor
+     *
+     * \since 5.79
+     */
+    const KSyntaxHighlighting::Repository &repository() const;
+
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the editor syntax repository is reloaded.
+     * Can be used to e.g. re-instantiate syntax definitions that got invalidated by
+     * the repository reload.
+     *
+     * \param editor the editor which's repository was reloaded
+     *
+     * \since 5.79
+     */
+    void repositoryReloaded(KTextEditor::Editor *editor);
 
 public:
     /**
