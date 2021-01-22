@@ -12,7 +12,7 @@
 
 #include <ktexteditor/range.h>
 
-#include <QRegExp>
+#include <QRegularExpression>
 
 namespace KTextEditor
 {
@@ -40,18 +40,18 @@ private:
     KTextEditor::Range
     parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view);
     int calculatePosition(const QString &string, KTextEditor::ViewPrivate *view);
-    QRegExp m_line;
-    QRegExp m_lastLine;
-    QRegExp m_thisLine;
-    QRegExp m_mark;
-    QRegExp m_forwardSearch;
-    QRegExp m_forwardSearch2;
-    QRegExp m_backwardSearch;
-    QRegExp m_backwardSearch2;
-    QRegExp m_base;
-    QRegExp m_offset;
-    QRegExp m_position;
-    QRegExp m_cmdRange;
+    QString m_line;
+    QString m_lastLine;
+    QString m_thisLine;
+    QString m_mark;
+    QString m_forwardSearch;
+    QString m_forwardSearch2;
+    QString m_backwardSearch;
+    QString m_backwardSearch2;
+    QString m_base;
+    QString m_offset;
+    QString m_position;
+    QRegularExpression m_cmdRangeRegex;
 };
 
 #endif

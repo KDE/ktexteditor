@@ -12,7 +12,6 @@
 #include "katedocument.h"
 #include "kateview.h"
 
-#include <QRegularExpression>
 #include <QStringList>
 
 using KTextEditor::Cursor;
@@ -20,22 +19,21 @@ using KTextEditor::Range;
 
 CommandRangeExpressionParser::CommandRangeExpressionParser()
 {
-    m_line.setPattern(QStringLiteral("\\d+"));
-    m_lastLine.setPattern(QStringLiteral("\\$"));
-    m_thisLine.setPattern(QStringLiteral("\\."));
+    m_line = QStringLiteral("\\d+");
+    m_lastLine = QStringLiteral("\\$");
+    m_thisLine = QStringLiteral("\\.");
 
-    m_forwardSearch.setPattern(QStringLiteral("/([^/]*)/?"));
-    m_forwardSearch2.setPattern(QStringLiteral("/[^/]*/?")); // no group
-    m_backwardSearch.setPattern(QStringLiteral("\\?([^?]*)\\??"));
-    m_backwardSearch2.setPattern(QStringLiteral("\\?[^?]*\\??")); // no group
-    m_base.setPattern(QLatin1String("(?:") + m_mark.pattern() + QLatin1String(")|(?:") + m_line.pattern() + QLatin1String(")|(?:") + m_thisLine.pattern()
-                      + QLatin1String(")|(?:") + m_lastLine.pattern() + QLatin1String(")|(?:") + m_forwardSearch2.pattern() + QLatin1String(")|(?:")
-                      + m_backwardSearch2.pattern() + QLatin1Char(')'));
-    m_offset.setPattern(QLatin1String("[+-](?:") + m_base.pattern() + QLatin1String(")?"));
+    m_forwardSearch = QStringLiteral("/([^/]*)/?");
+    m_forwardSearch2 = QStringLiteral("/[^/]*/?"); // no group
+    m_backwardSearch = QStringLiteral("\\?([^?]*)\\??");
+    m_backwardSearch2 = QStringLiteral("\\?[^?]*\\??"); // no group
+    m_base = QLatin1String("(?:%1)").arg(m_mark) + QLatin1String("|(?:%1)").arg(m_line) + QLatin1String("|(?:%1)").arg(m_thisLine)
+        + QLatin1String("|(?:%1)").arg(m_lastLine) + QLatin1String("|(?:%1)").arg(m_forwardSearch2) + QLatin1String("|(?:%1)").arg(m_backwardSearch2);
+    m_offset = QLatin1String("[+-](?:%1)?").arg(m_base);
 
     // The position regexp contains two groups: the base and the offset.
     // The offset may be empty.
-    m_position.setPattern(QLatin1Char('(') + m_base.pattern() + QLatin1String(")((?:") + m_offset.pattern() + QLatin1String(")*)"));
+    m_position = QStringLiteral("(%1)((?:%2)*)").arg(m_base, m_offset);
 
     // The range regexp contains seven groups: the first is the start position, the second is
     // the base of the start position, the third is the offset of the start position, the
@@ -43,7 +41,7 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
     // without the comma, the sixth is the base of the end position, and the seventh is the
     // offset of the end position. The third and fourth groups may be empty, and the
     // fifth, sixth and seventh groups are contingent on the fourth group.
-    m_cmdRange.setPattern(QLatin1String("^(") + m_position.pattern() + QLatin1String(")((?:,(") + m_position.pattern() + QLatin1String("))?)"));
+    m_cmdRangeRegex.setPattern(QStringLiteral("^(%1)((?:,(%1))?)").arg(m_position));
 }
 
 Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
@@ -71,17 +69,19 @@ Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
         commandTmp.replace(0, 1, QStringLiteral("1,$"));
         leadingRangeWasPercent = true;
     }
-    if (m_cmdRange.indexIn(commandTmp) != -1 && m_cmdRange.matchedLength() > 0) {
-        commandTmp.remove(m_cmdRange);
 
-        QString position_string1 = m_cmdRange.capturedTexts().at(1);
-        QString position_string2 = m_cmdRange.capturedTexts().at(4);
+    const auto match = m_cmdRangeRegex.match(commandTmp);
+    if (match.hasMatch() && match.capturedLength(0) > 0) {
+        commandTmp.remove(m_cmdRangeRegex);
+
+        const QString position_string1 = match.captured(1);
+        QString position_string2 = match.captured(4);
         int position1 = calculatePosition(position_string1, view);
 
         int position2;
         if (!position_string2.isEmpty()) {
             // remove the comma
-            position_string2 = m_cmdRange.capturedTexts().at(5);
+            position_string2 = match.captured(5);
             position2 = calculatePosition(position_string2, view);
         } else {
             position2 = position1;
@@ -94,7 +94,7 @@ Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
             parsedRange.setRange(KTextEditor::Range(position1 - 1, 0, position2 - 1, 0));
         }
 
-        destRangeExpression = (leadingRangeWasPercent ? QStringLiteral("%") : m_cmdRange.cap(0));
+        destRangeExpression = leadingRangeWasPercent ? QStringLiteral("%") : match.captured(0);
         destTransformedCommand = commandTmp;
     }
 
@@ -123,22 +123,28 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string, KText
 
         ++pos;
 
-        if (m_line.exactMatch(line)) {
+        static const auto lineRe = QRegularExpression(QRegularExpression::anchoredPattern(m_line));
+        static const auto lastLineRe = QRegularExpression(QRegularExpression::anchoredPattern(m_lastLine));
+        static const auto thisLineRe = QRegularExpression(QRegularExpression::anchoredPattern(m_thisLine));
+        static const auto forwardSearchRe = QRegularExpression(QRegularExpression::anchoredPattern(m_forwardSearch));
+        static const auto backwardSearchRe = QRegularExpression(QRegularExpression::anchoredPattern(m_backwardSearch));
+
+        QRegularExpressionMatch rmatch;
+        if (lineRe.match(line).hasMatch()) {
             values.push_back(line.toInt());
-        } else if (m_lastLine.exactMatch(line)) {
+        } else if (lastLineRe.match(line).hasMatch()) {
             values.push_back(view->doc()->lines());
-        } else if (m_thisLine.exactMatch(line)) {
+        } else if (thisLineRe.match(line).hasMatch()) {
             values.push_back(view->cursorPosition().line() + 1);
-        } else if (m_forwardSearch.exactMatch(line)) {
-            m_forwardSearch.indexIn(line);
-            QString pattern = m_forwardSearch.capturedTexts().at(1);
-            int match = view->doc()->searchText(Range(view->cursorPosition(), view->doc()->documentEnd()), pattern, KTextEditor::Regex).first().start().line();
-            values.push_back((match < 0) ? -1 : match + 1);
-        } else if (m_backwardSearch.exactMatch(line)) {
-            m_backwardSearch.indexIn(line);
-            QString pattern = m_backwardSearch.capturedTexts().at(1);
-            int match = view->doc()->searchText(Range(Cursor(0, 0), view->cursorPosition()), pattern, KTextEditor::Regex).first().start().line();
-            values.push_back((match < 0) ? -1 : match + 1);
+        } else if (line.contains(forwardSearchRe, &rmatch)) {
+            const QString pattern = rmatch.captured(1);
+            const int matchLine =
+                view->doc()->searchText(Range(view->cursorPosition(), view->doc()->documentEnd()), pattern, KTextEditor::Regex).first().start().line();
+            values.push_back((matchLine < 0) ? -1 : matchLine + 1);
+        } else if (line.contains(backwardSearchRe, &rmatch)) {
+            const QString pattern = rmatch.captured(1);
+            const int matchLine = view->doc()->searchText(Range(Cursor(0, 0), view->cursorPosition()), pattern, KTextEditor::Regex).first().start().line();
+            values.push_back((matchLine < 0) ? -1 : matchLine + 1);
         }
     }
 
