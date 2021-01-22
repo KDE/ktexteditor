@@ -3783,6 +3783,10 @@ void KTextEditor::ViewPrivate::createHighlights()
         return;
     }
 
+    // clear existing highlighting ranges, otherwise we stack over and over the same ones eventually
+    qDeleteAll(m_rangesForHighlights);
+    m_rangesForHighlights.clear();
+
     KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
     attr->setBackground(Qt::yellow);
 
