@@ -143,7 +143,7 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
 
     m_updateBestMatchesTimer = new QTimer(this);
     m_updateBestMatchesTimer->setSingleShot(true);
-    connect(m_updateBestMatchesTimer, SIGNAL(timeout()), this, SLOT(updateBestMatches()));
+    connect(m_updateBestMatchesTimer, &QTimer::timeout, this, &KateCompletionModel::updateBestMatches);
 
     m_groupHash.insert(0, m_ungrouped);
     m_groupHash.insert(-1, m_argumentHints);
@@ -2158,9 +2158,9 @@ void KateCompletionModel::addCompletionModel(KTextEditor::CodeCompletionModel *m
 
     m_completionModels.append(model);
 
-    connect(model, SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(slotRowsInserted(QModelIndex, int, int)));
-    connect(model, SIGNAL(rowsRemoved(QModelIndex, int, int)), SLOT(slotRowsRemoved(QModelIndex, int, int)));
-    connect(model, SIGNAL(modelReset()), SLOT(slotModelReset()));
+    connect(model, &KTextEditor::CodeCompletionModel::rowsInserted, this, &KateCompletionModel::slotRowsInserted);
+    connect(model, &KTextEditor::CodeCompletionModel::rowsRemoved, this, &KateCompletionModel::slotRowsRemoved);
+    connect(model, &KTextEditor::CodeCompletionModel::modelReset, this, &KateCompletionModel::slotModelReset);
 
     // This performs the reset
     createGroups();
@@ -2182,9 +2182,9 @@ void KateCompletionModel::setCompletionModels(const QList<KTextEditor::CodeCompl
     m_completionModels = models;
 
     for (KTextEditor::CodeCompletionModel *model : models) {
-        connect(model, SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(slotRowsInserted(QModelIndex, int, int)));
-        connect(model, SIGNAL(rowsRemoved(QModelIndex, int, int)), SLOT(slotRowsRemoved(QModelIndex, int, int)));
-        connect(model, SIGNAL(modelReset()), SLOT(slotModelReset()));
+        connect(model, &KTextEditor::CodeCompletionModel::rowsInserted, this, &KateCompletionModel::slotRowsInserted);
+        connect(model, &KTextEditor::CodeCompletionModel::rowsRemoved, this, &KateCompletionModel::slotRowsRemoved);
+        connect(model, &KTextEditor::CodeCompletionModel::modelReset, this, &KateCompletionModel::slotModelReset);
     }
 
     // This performs the reset

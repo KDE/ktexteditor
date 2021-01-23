@@ -18,7 +18,7 @@ KateHelpButton::KateHelpButton(QWidget *parent)
     setIconState(IconColored);
     setToolTip(i18n("Kate Handbook."));
 
-    connect(this, SIGNAL(clicked()), SLOT(invokeHelp()));
+    connect(this, &KateHelpButton::clicked, this, &KateHelpButton::invokeHelp);
 }
 
 KateHelpButton::~KateHelpButton()

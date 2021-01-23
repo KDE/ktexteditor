@@ -130,10 +130,10 @@ KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
     Q_ASSERT(m_renderer);
 
     // connect to all possible editing primitives
-    connect(&m_renderer->doc()->buffer(), SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
-    connect(&m_renderer->doc()->buffer(), SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-    connect(&m_renderer->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
-    connect(&m_renderer->doc()->buffer(), SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
+    connect(&m_renderer->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateLayoutCache::wrapLine);
+    connect(&m_renderer->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateLayoutCache::unwrapLine);
+    connect(&m_renderer->doc()->buffer(), &KateBuffer::textInserted, this, &KateLayoutCache::insertText);
+    connect(&m_renderer->doc()->buffer(), &KateBuffer::textRemoved, this, &KateLayoutCache::removeText);
 }
 
 void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int newViewLineCount, int viewLinesScrolled)

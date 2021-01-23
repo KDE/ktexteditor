@@ -42,15 +42,15 @@ ConfigTab::ConfigTab(QWidget *parent, Mappings *mappings)
     //
     // after initial reload, connect the stuff for the changed() signal
     //
-    connect(ui->chkViCommandsOverride, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkViRelLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->tblNormalModeMappings, SIGNAL(cellChanged(int, int)), this, SLOT(slotChanged()));
-    connect(ui->btnAddNewRow, SIGNAL(clicked()), this, SLOT(addMappingRow()));
-    connect(ui->btnAddNewRow, SIGNAL(clicked()), this, SLOT(slotChanged()));
-    connect(ui->btnRemoveSelectedRows, SIGNAL(clicked()), this, SLOT(removeSelectedMappingRows()));
-    connect(ui->btnRemoveSelectedRows, SIGNAL(clicked()), this, SLOT(slotChanged()));
-    connect(ui->btnImportNormal, SIGNAL(clicked()), this, SLOT(importNormalMappingRow()));
-    connect(ui->btnImportNormal, SIGNAL(clicked()), this, SLOT(slotChanged()));
+    connect(ui->chkViCommandsOverride, &QCheckBox::toggled, this, &ConfigTab::slotChanged);
+    connect(ui->chkViRelLineNumbers, &QCheckBox::toggled, this, &ConfigTab::slotChanged);
+    connect(ui->tblNormalModeMappings, &QTableWidget::cellChanged, this, &ConfigTab::slotChanged);
+    connect(ui->btnAddNewRow, &QPushButton::clicked, this, &ConfigTab::addMappingRow);
+    connect(ui->btnAddNewRow, &QPushButton::clicked, this, &ConfigTab::slotChanged);
+    connect(ui->btnRemoveSelectedRows, &QPushButton::clicked, this, &ConfigTab::removeSelectedMappingRows);
+    connect(ui->btnRemoveSelectedRows, &QPushButton::clicked, this, &ConfigTab::slotChanged);
+    connect(ui->btnImportNormal, &QPushButton::clicked, this, &ConfigTab::importNormalMappingRow);
+    connect(ui->btnImportNormal, &QPushButton::clicked, this, &ConfigTab::slotChanged);
 
     layout->addWidget(newWidget);
 }

@@ -25,11 +25,11 @@ KateAnimation::KateAnimation(KMessageWidget *widget, EffectType effect)
     if (effect == FadeEffect) {
         m_fadeEffect = new KateFadeEffect(widget);
 
-        connect(m_fadeEffect, SIGNAL(hideAnimationFinished()), this, SIGNAL(widgetHidden()));
-        connect(m_fadeEffect, SIGNAL(showAnimationFinished()), this, SIGNAL(widgetShown()));
+        connect(m_fadeEffect, &KateFadeEffect::hideAnimationFinished, this, &KateAnimation::widgetHidden);
+        connect(m_fadeEffect, &KateFadeEffect::showAnimationFinished, this, &KateAnimation::widgetShown);
     } else {
-        connect(m_widget, SIGNAL(hideAnimationFinished()), this, SIGNAL(widgetHidden()));
-        connect(m_widget, SIGNAL(showAnimationFinished()), this, SIGNAL(widgetShown()));
+        connect(m_widget.data(), &KMessageWidget::hideAnimationFinished, this, &KateAnimation::widgetHidden);
+        connect(m_widget.data(), &KMessageWidget::showAnimationFinished, this, &KateAnimation::widgetShown);
     }
 }
 

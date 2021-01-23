@@ -25,7 +25,8 @@ KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setLineWidth(1);
 
-    connect(parent, SIGNAL(destroyed(QObject *)), this, SLOT(deleteLater()));
+    connect(parent, &QObject::destroyed, this, &QObject::deleteLater);
+
     setFrameStyle(QFrame::NoFrame);
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setFocusPolicy(Qt::NoFocus);

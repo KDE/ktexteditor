@@ -82,13 +82,13 @@ void KateSpellingMenu::createActions(KActionCollection *ac)
     m_spellingMenuAction = new KActionMenu(i18n("Spelling"), this);
     ac->addAction(QStringLiteral("spelling_suggestions"), m_spellingMenuAction);
     m_spellingMenu = m_spellingMenuAction->menu();
-    connect(m_spellingMenu, SIGNAL(aboutToShow()), this, SLOT(populateSuggestionsMenu()));
+    connect(m_spellingMenu, &QMenu::aboutToShow, this, &KateSpellingMenu::populateSuggestionsMenu);
 
     m_ignoreWordAction = new QAction(i18n("Ignore Word"), this);
-    connect(m_ignoreWordAction, SIGNAL(triggered()), this, SLOT(ignoreCurrentWord()));
+    connect(m_ignoreWordAction, &QAction::triggered, this, &KateSpellingMenu::ignoreCurrentWord);
 
     m_addToDictionaryAction = new QAction(i18n("Add to Dictionary"), this);
-    connect(m_addToDictionaryAction, SIGNAL(triggered()), this, SLOT(addCurrentWordToDictionary()));
+    connect(m_addToDictionaryAction, &QAction::triggered, this, &KateSpellingMenu::addCurrentWordToDictionary);
 
     setEnabled(false);
     setVisible(false);

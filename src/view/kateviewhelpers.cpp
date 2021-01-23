@@ -182,8 +182,8 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     , m_grooveHeight(height())
     , m_linesModified(0)
 {
-    connect(this, SIGNAL(valueChanged(int)), this, SLOT(sliderMaybeMoved(int)));
-    connect(m_doc, SIGNAL(marksChanged(KTextEditor::Document *)), this, SLOT(marksChanged()));
+    connect(this, &KateScrollBar::valueChanged, this, &KateScrollBar::sliderMaybeMoved);
+    connect(m_doc, &KTextEditor::DocumentPrivate::marksChanged, this, &KateScrollBar::marksChanged);
 
     m_updateTimer.setInterval(300);
     m_updateTimer.setSingleShot(true);
@@ -195,7 +195,7 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     // setup text preview timer
     m_delayTextPreviewTimer.setSingleShot(true);
     m_delayTextPreviewTimer.setInterval(250);
-    connect(&m_delayTextPreviewTimer, SIGNAL(timeout()), this, SLOT(showTextPreview()));
+    connect(&m_delayTextPreviewTimer, &QTimer::timeout, this, &KateScrollBar::showTextPreview);
 }
 
 void KateScrollBar::showEvent(QShowEvent *event)
@@ -216,11 +216,12 @@ KateScrollBar::~KateScrollBar()
 void KateScrollBar::setShowMiniMap(bool b)
 {
     if (b && !m_showMiniMap) {
-        connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
-        connect(m_doc, SIGNAL(textChanged(KTextEditor::Document *)), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
-        connect(m_view, SIGNAL(delayedUpdateOfView()), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
-        connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updatePixmap()), Qt::UniqueConnection);
-        connect(&(m_view->textFolding()), SIGNAL(foldingRangesChanged()), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
+        auto timerSlot = QOverload<>::of(&QTimer::start);
+        connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, &m_updateTimer, timerSlot, Qt::UniqueConnection);
+        connect(m_doc, &KTextEditor::DocumentPrivate::textChanged, &m_updateTimer, timerSlot, Qt::UniqueConnection);
+        connect(m_view, &KTextEditor::ViewPrivate::delayedUpdateOfView, &m_updateTimer, timerSlot, Qt::UniqueConnection);
+        connect(&m_updateTimer, &QTimer::timeout, this, &KateScrollBar::updatePixmap, Qt::UniqueConnection);
+        connect(&(m_view->textFolding()), &Kate::TextFolding::foldingRangesChanged, &m_updateTimer, timerSlot, Qt::UniqueConnection);
     } else if (!b) {
         disconnect(&m_updateTimer);
     }
@@ -1031,14 +1032,14 @@ KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
     m_lineEdit = new KateCmdLineEdit(this, view);
-    connect(m_lineEdit, SIGNAL(hideRequested()), SIGNAL(hideMe()));
+    connect(m_lineEdit, &KateCmdLineEdit::hideRequested, this, &KateCommandLineBar::hideMe);
     topLayout->addWidget(m_lineEdit);
 
     QToolButton *helpButton = new QToolButton(this);
     helpButton->setAutoRaise(true);
     helpButton->setIcon(QIcon::fromTheme(QStringLiteral("help-contextual")));
     topLayout->addWidget(helpButton);
-    connect(helpButton, SIGNAL(clicked()), this, SLOT(showHelpPage()));
+    connect(helpButton, &QToolButton::clicked, this, &KateCommandLineBar::showHelpPage);
 
     setFocusProxy(m_lineEdit);
 }
@@ -1076,20 +1077,20 @@ KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPriva
     , m_cmdend(0)
     , m_command(nullptr)
 {
-    connect(this, SIGNAL(returnPressed(QString)), this, SLOT(slotReturnPressed(QString)));
+    connect(this, &KateCmdLineEdit::returnPressed, this, &KateCmdLineEdit::slotReturnPressed);
 
     setCompletionObject(KateCmd::self()->commandCompletionObject());
     setAutoDeleteCompletionObject(false);
 
     m_hideTimer = new QTimer(this);
     m_hideTimer->setSingleShot(true);
-    connect(m_hideTimer, SIGNAL(timeout()), this, SLOT(hideLineEdit()));
+    connect(m_hideTimer, &QTimer::timeout, this, &KateCmdLineEdit::hideLineEdit);
 
     // make sure the timer is stopped when the user switches views. if not, focus will be given to the
     // wrong view when KateViewBar::hideCurrentBarWidget() is called after 4 seconds. (the timer is
     // used for showing things like "Success" for four seconds after the user has used the kate
     // command line)
-    connect(m_view, SIGNAL(focusOut(KTextEditor::View *)), m_hideTimer, SLOT(stop()));
+    connect(m_view, &KTextEditor::ViewPrivate::focusOut, m_hideTimer, &QTimer::stop);
 }
 
 void KateCmdLineEdit::hideEvent(QHideEvent *e)
@@ -1447,7 +1448,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     connect(&m_antiFlickerTimer, &QTimer::timeout, this, &KateIconBorder::highlightFolding);
 
     // user interaction (scrolling) hides e.g. preview
-    connect(m_view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), this, SLOT(displayRangeChanged()));
+    connect(m_view, &KTextEditor::ViewPrivate::displayRangeChanged, this, &KateIconBorder::displayRangeChanged);
 }
 
 KateIconBorder::~KateIconBorder()
@@ -2677,8 +2678,8 @@ void KateIconBorder::annotationModelChanged(KTextEditor::AnnotationModel *oldmod
         oldmodel->disconnect(this);
     }
     if (newmodel) {
-        connect(newmodel, SIGNAL(reset()), this, SLOT(updateAnnotationBorderWidth()));
-        connect(newmodel, SIGNAL(lineChanged(int)), this, SLOT(updateAnnotationLine(int)));
+        connect(newmodel, &KTextEditor::AnnotationModel::reset, this, &KateIconBorder::updateAnnotationBorderWidth);
+        connect(newmodel, &KTextEditor::AnnotationModel::lineChanged, this, &KateIconBorder::updateAnnotationLine);
     }
     updateAnnotationBorderWidth();
 }
@@ -2716,7 +2717,9 @@ void KateViewEncodingAction::Private::init()
         for (i = 1; i < encodingsForScript.size(); ++i) {
             tmp->addAction(encodingsForScript.at(i));
         }
-        q->connect(tmp, SIGNAL(triggered(QAction *)), q, SLOT(_k_subActionTriggered(QAction *)));
+        q->connect(tmp, QOverload<QAction *>::of(&KSelectAction::triggered), q, [this](QAction *action) {
+            _k_subActionTriggered(action);
+        });
         // tmp->setCheckable(true);
         actions << tmp;
     }
@@ -2761,7 +2764,7 @@ KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_do
 {
     d->init();
 
-    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+    connect(menu(), &QMenu::aboutToShow, this, &KateViewEncodingAction::slotAboutToShow);
     connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
 }
 
@@ -2900,7 +2903,7 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
         QToolButton *hideButton = new QToolButton(this);
         hideButton->setAutoRaise(true);
         hideButton->setIcon(QIcon::fromTheme(QStringLiteral("dialog-close")));
-        connect(hideButton, SIGNAL(clicked()), SIGNAL(hideMe()));
+        connect(hideButton, &QToolButton::clicked, this, &KateViewBarWidget::hideMe);
         layout->addWidget(hideButton);
         layout->setAlignment(hideButton, Qt::AlignLeft | Qt::AlignTop);
     }
@@ -2939,7 +2942,7 @@ void KateViewBar::addBarWidget(KateViewBarWidget *newBarWidget)
     newBarWidget->hide();
     m_stack->addWidget(newBarWidget);
     newBarWidget->setAssociatedViewBar(this);
-    connect(newBarWidget, SIGNAL(hideMe()), SLOT(hideCurrentBarWidget()));
+    connect(newBarWidget, &KateViewBarWidget::hideMe, this, &KateViewBar::hideCurrentBarWidget);
 }
 
 void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
@@ -3075,7 +3078,7 @@ KatePasteMenu::KatePasteMenu(const QString &text, KTextEditor::ViewPrivate *view
     : KActionMenu(text, view)
     , m_view(view)
 {
-    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+    connect(menu(), &QMenu::aboutToShow, this, &KatePasteMenu::slotAboutToShow);
 }
 
 void KatePasteMenu::slotAboutToShow()
@@ -3120,7 +3123,7 @@ void KateViewSchemaAction::init()
     m_view = nullptr;
     last = 0;
 
-    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+    connect(menu(), &QMenu::aboutToShow, this, &KateViewSchemaAction::slotAboutToShow);
 }
 
 void KateViewSchemaAction::updateMenu(KTextEditor::ViewPrivate *view)

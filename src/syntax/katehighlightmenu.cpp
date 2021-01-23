@@ -25,7 +25,7 @@ void KateHighlightingMenu::init()
 {
     m_doc = nullptr;
 
-    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+    connect(menu(), &QMenu::aboutToShow, this, &KateHighlightingMenu::slotAboutToShow);
     m_actionGroup = new QActionGroup(menu());
 }
 

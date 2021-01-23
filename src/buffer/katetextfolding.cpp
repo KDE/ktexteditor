@@ -37,7 +37,7 @@ TextFolding::TextFolding(TextBuffer &buffer)
     , m_idCounter(-1)
 {
     // connect needed signals from buffer
-    connect(&m_buffer, SIGNAL(cleared()), SLOT(clear()));
+    connect(&m_buffer, &TextBuffer::cleared, this, &TextFolding::clear);
 }
 
 TextFolding::~TextFolding()

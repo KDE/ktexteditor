@@ -18,8 +18,8 @@ KateFadeEffect::KateFadeEffect(QWidget *widget)
     m_timeLine = new QTimeLine(500, this);
     m_timeLine->setUpdateInterval(40);
 
-    connect(m_timeLine, SIGNAL(valueChanged(qreal)), this, SLOT(opacityChanged(qreal)));
-    connect(m_timeLine, SIGNAL(finished()), this, SLOT(animationFinished()));
+    connect(m_timeLine, &QTimeLine::valueChanged, this, &KateFadeEffect::opacityChanged);
+    connect(m_timeLine, &QTimeLine::finished, this, &KateFadeEffect::animationFinished);
 }
 
 bool KateFadeEffect::isHideAnimationRunning() const

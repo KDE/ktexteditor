@@ -150,22 +150,22 @@ void SpellCheckBar::closed()
 
 void SpellCheckBar::initConnections()
 {
-    connect(d->ui.m_addBtn, SIGNAL(clicked()), SLOT(slotAddWord()));
-    connect(d->ui.m_replaceBtn, SIGNAL(clicked()), SLOT(slotReplaceWord()));
-    connect(d->ui.m_replaceAllBtn, SIGNAL(clicked()), SLOT(slotReplaceAll()));
-    connect(d->ui.m_skipBtn, SIGNAL(clicked()), SLOT(slotSkip()));
-    connect(d->ui.m_skipAllBtn, SIGNAL(clicked()), SLOT(slotSkipAll()));
-    connect(d->ui.m_suggestBtn, SIGNAL(clicked()), SLOT(slotSuggest()));
-    connect(d->ui.m_language, SIGNAL(activated(QString)), SLOT(slotChangeLanguage(QString)));
-    connect(d->checker, SIGNAL(misspelling(QString, int)), SLOT(slotMisspelling(QString, int)));
-    connect(d->checker, SIGNAL(done()), SLOT(slotDone()));
+    connect(d->ui.m_addBtn, &QPushButton::clicked, this, &SpellCheckBar::slotAddWord);
+    connect(d->ui.m_replaceBtn, &QPushButton::clicked, this, &SpellCheckBar::slotReplaceWord);
+    connect(d->ui.m_replaceAllBtn, &QPushButton::clicked, this, &SpellCheckBar::slotReplaceAll);
+    connect(d->ui.m_skipBtn, &QPushButton::clicked, this, &SpellCheckBar::slotSkip);
+    connect(d->ui.m_skipAllBtn, &QPushButton::clicked, this, &SpellCheckBar::slotSkipAll);
+    connect(d->ui.m_suggestBtn, &QPushButton::clicked, this, &SpellCheckBar::slotSuggest);
+    connect(d->ui.m_language, &Sonnet::DictionaryComboBox::textActivated, this, &SpellCheckBar::slotChangeLanguage);
+    connect(d->checker, &Sonnet::BackgroundChecker::misspelling, this, &SpellCheckBar::slotMisspelling);
+    connect(d->checker, &Sonnet::BackgroundChecker::done, this, &SpellCheckBar::slotDone);
     /*
     connect(d->ui.m_suggestions, SIGNAL(doubleClicked(QModelIndex)),
             SLOT(slotReplaceWord()));
             */
 
-    connect(d->ui.cmbReplacement, SIGNAL(returnPressed()), this, SLOT(slotReplaceWord()));
-    connect(d->ui.m_autoCorrect, SIGNAL(clicked()), SLOT(slotAutocorrect()));
+    connect(d->ui.cmbReplacement, QOverload<>::of(&KComboBox::returnPressed), this, &SpellCheckBar::slotReplaceWord);
+    connect(d->ui.m_autoCorrect, &QPushButton::clicked, this, &SpellCheckBar::slotAutocorrect);
     // button use by kword/kpresenter
     // hide by default
     d->ui.m_autoCorrect->hide();
@@ -252,7 +252,7 @@ void SpellCheckBar::setProgressDialogVisible(bool b)
         d->progressDialog->reset();
         d->progressDialog->setRange(0, 0);
         d->progressDialog->setValue(0);
-        connect(d->progressDialog, SIGNAL(canceled()), this, SLOT(slotCancel()));
+        connect(d->progressDialog, &QProgressDialog::canceled, this, &SpellCheckBar::slotCancel);
         d->progressDialog->setMinimumDuration(d->progressDialogTimeout);
     }
 }

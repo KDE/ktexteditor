@@ -55,10 +55,10 @@ VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)
     l->setColumnStretch(2, 1);
     l->setColumnStretch(3, 0);
 
-    connect(m_checkBox, SIGNAL(toggled(bool)), this, SLOT(itemEnabled(bool)));
+    connect(m_checkBox, &QCheckBox::toggled, this, &VariableEditor::itemEnabled);
     m_checkBox->setChecked(item->isActive());
 
-    connect(m_checkBox, SIGNAL(toggled(bool)), this, SIGNAL(valueChanged()));
+    connect(m_checkBox, &QCheckBox::toggled, this, &VariableEditor::valueChanged);
     setMouseTracking(true);
 }
 
@@ -151,9 +151,9 @@ VariableIntEditor::VariableIntEditor(VariableIntItem *item, QWidget *parent)
 
     l->addWidget(m_spinBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_spinBox, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged()));
-    connect(m_spinBox, SIGNAL(valueChanged(int)), this, SLOT(activateItem()));
-    connect(m_spinBox, SIGNAL(valueChanged(int)), this, SLOT(setItemValue(int)));
+    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &VariableIntEditor::valueChanged);
+    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &VariableIntEditor::activateItem);
+    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &VariableIntEditor::setItemValue);
 }
 
 void VariableIntEditor::setItemValue(int newValue)
@@ -174,9 +174,9 @@ VariableBoolEditor::VariableBoolEditor(VariableBoolItem *item, QWidget *parent)
     m_comboBox->setCurrentIndex(item->value() ? 0 : 1);
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SIGNAL(valueChanged()));
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(activateItem()));
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setItemValue(int)));
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::valueChanged);
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::activateItem);
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::setItemValue);
 }
 
 void VariableBoolEditor::setItemValue(int enabled)
@@ -203,9 +203,9 @@ VariableStringListEditor::VariableStringListEditor(VariableStringListItem *item,
     m_comboBox->setCurrentIndex(index);
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SIGNAL(valueChanged()));
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(activateItem()));
-    connect(m_comboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(setItemValue(QString)));
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::valueChanged);
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::activateItem);
+    connect(m_comboBox, QOverload<const QString &>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::setItemValue);
 }
 
 void VariableStringListEditor::setItemValue(const QString &newValue)
@@ -224,9 +224,9 @@ VariableColorEditor::VariableColorEditor(VariableColorItem *item, QWidget *paren
     m_comboBox->setColor(item->value());
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, SIGNAL(activated(QColor)), this, SIGNAL(valueChanged()));
-    connect(m_comboBox, SIGNAL(activated(QColor)), this, SLOT(activateItem()));
-    connect(m_comboBox, SIGNAL(activated(QColor)), this, SLOT(setItemValue(QColor)));
+    connect(m_comboBox, &KColorCombo::activated, this, &VariableColorEditor::valueChanged);
+    connect(m_comboBox, &KColorCombo::activated, this, &VariableColorEditor::activateItem);
+    connect(m_comboBox, &KColorCombo::activated, this, &VariableColorEditor::setItemValue);
 }
 
 void VariableColorEditor::setItemValue(const QColor &newValue)
@@ -245,9 +245,9 @@ VariableFontEditor::VariableFontEditor(VariableFontItem *item, QWidget *parent)
     m_comboBox->setCurrentFont(item->value());
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, SIGNAL(currentFontChanged(QFont)), this, SIGNAL(valueChanged()));
-    connect(m_comboBox, SIGNAL(currentFontChanged(QFont)), this, SLOT(activateItem()));
-    connect(m_comboBox, SIGNAL(currentFontChanged(QFont)), this, SLOT(setItemValue(QFont)));
+    connect(m_comboBox, &QFontComboBox::currentFontChanged, this, &VariableFontEditor::valueChanged);
+    connect(m_comboBox, &QFontComboBox::currentFontChanged, this, &VariableFontEditor::activateItem);
+    connect(m_comboBox, &QFontComboBox::currentFontChanged, this, &VariableFontEditor::setItemValue);
 }
 
 void VariableFontEditor::setItemValue(const QFont &newValue)
@@ -266,9 +266,9 @@ VariableStringEditor::VariableStringEditor(VariableStringItem *item, QWidget *pa
     m_lineEdit->setText(item->value());
     l->addWidget(m_lineEdit, 0, 2, Qt::AlignLeft);
 
-    connect(m_lineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(valueChanged()));
-    connect(m_lineEdit, SIGNAL(textChanged(QString)), this, SLOT(activateItem()));
-    connect(m_lineEdit, SIGNAL(textChanged(QString)), this, SLOT(setItemValue(QString)));
+    connect(m_lineEdit, &QLineEdit::textChanged, this, &VariableStringEditor::valueChanged);
+    connect(m_lineEdit, &QLineEdit::textChanged, this, &VariableStringEditor::activateItem);
+    connect(m_lineEdit, &QLineEdit::textChanged, this, &VariableStringEditor::setItemValue);
 }
 
 void VariableStringEditor::setItemValue(const QString &newValue)
@@ -287,9 +287,9 @@ VariableSpellCheckEditor::VariableSpellCheckEditor(VariableSpellCheckItem *item,
     m_dictionaryCombo->setCurrentByDictionary(item->value());
     l->addWidget(m_dictionaryCombo, 0, 2, Qt::AlignLeft);
 
-    connect(m_dictionaryCombo, SIGNAL(dictionaryNameChanged(QString)), this, SIGNAL(valueChanged()));
-    connect(m_dictionaryCombo, SIGNAL(dictionaryNameChanged(QString)), this, SLOT(activateItem()));
-    connect(m_dictionaryCombo, SIGNAL(dictionaryChanged(QString)), this, SLOT(setItemValue(QString)));
+    connect(m_dictionaryCombo, &Sonnet::DictionaryComboBox::dictionaryNameChanged, this, &VariableSpellCheckEditor::valueChanged);
+    connect(m_dictionaryCombo, &Sonnet::DictionaryComboBox::dictionaryNameChanged, this, &VariableSpellCheckEditor::activateItem);
+    connect(m_dictionaryCombo, &Sonnet::DictionaryComboBox::dictionaryChanged, this, &VariableSpellCheckEditor::setItemValue);
 }
 
 void VariableSpellCheckEditor::setItemValue(const QString &newValue)
@@ -312,9 +312,9 @@ VariableRemoveSpacesEditor::VariableRemoveSpacesEditor(VariableRemoveSpacesItem 
     m_comboBox->setCurrentIndex(item->value());
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SIGNAL(valueChanged()));
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(activateItem()));
-    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setItemValue(int)));
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::valueChanged);
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::activateItem);
+    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::setItemValue);
 }
 
 void VariableRemoveSpacesEditor::setItemValue(int enabled)

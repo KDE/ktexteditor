@@ -269,7 +269,6 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
 
             // not auto, don't fall for string builder, see bug 413474
             const QString name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
-
             if (parentWidget() && parentWidget()->window()) {
                 auto currentWidget = parentWidget()->window()->focusWidget();
                 if (auto lineEdit = qobject_cast<QLineEdit *>(currentWidget)) {

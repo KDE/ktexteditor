@@ -42,13 +42,13 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
 
     m_viewRefreshTimer = new QTimer(this);
     m_viewRefreshTimer->setSingleShot(true);
-    connect(m_viewRefreshTimer, SIGNAL(timeout()), this, SLOT(viewRefreshTimeout()));
+    connect(m_viewRefreshTimer, &QTimer::timeout, this, &KateOnTheFlyChecker::viewRefreshTimeout);
 
     connect(document, &KTextEditor::DocumentPrivate::textInserted, this, &KateOnTheFlyChecker::textInserted);
     connect(document, &KTextEditor::DocumentPrivate::textRemoved, this, &KateOnTheFlyChecker::textRemoved);
-    connect(document, SIGNAL(viewCreated(KTextEditor::Document *, KTextEditor::View *)), this, SLOT(addView(KTextEditor::Document *, KTextEditor::View *)));
-    connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document *)), this, SLOT(updateConfig()));
-    connect(&document->buffer(), SIGNAL(respellCheckBlock(int, int)), this, SLOT(handleRespellCheckBlock(int, int)));
+    connect(document, &KTextEditor::DocumentPrivate::viewCreated, this, &KateOnTheFlyChecker::addView);
+    connect(document, &KTextEditor::DocumentPrivate::highlightingModeChanged, this, &KateOnTheFlyChecker::updateConfig);
+    connect(&document->buffer(), &KateBuffer::respellCheckBlock, this, &KateOnTheFlyChecker::handleRespellCheckBlock);
 
     connect(document, &KTextEditor::Document::reloaded, this, [this](KTextEditor::Document *) {
         refreshSpellCheck();
@@ -373,8 +373,8 @@ void KateOnTheFlyChecker::performSpellCheck()
     }
     if (!m_backgroundChecker) {
         m_backgroundChecker = new Sonnet::BackgroundChecker(m_speller, this);
-        connect(m_backgroundChecker, SIGNAL(misspelling(QString, int)), this, SLOT(misspelling(QString, int)));
-        connect(m_backgroundChecker, SIGNAL(done()), this, SLOT(spellCheckDone()));
+        connect(m_backgroundChecker, &Sonnet::BackgroundChecker::misspelling, this, &KateOnTheFlyChecker::misspelling);
+        connect(m_backgroundChecker, &Sonnet::BackgroundChecker::done, this, &KateOnTheFlyChecker::spellCheckDone);
 
         KateSpellCheckManager *m_spellCheckManager = KTextEditor::EditorPrivate::self()->spellCheckManager();
         connect(m_spellCheckManager, &KateSpellCheckManager::wordAddedToDictionary, this, &KateOnTheFlyChecker::addToDictionary);
@@ -653,8 +653,9 @@ void KateOnTheFlyChecker::addView(KTextEditor::Document *document, KTextEditor::
     Q_ASSERT(document == m_document);
     Q_UNUSED(document);
     ON_THE_FLY_DEBUG;
-    connect(view, SIGNAL(destroyed(QObject *)), this, SLOT(viewDestroyed(QObject *)));
-    connect(view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), this, SLOT(restartViewRefreshTimer(KTextEditor::ViewPrivate *)));
+    auto *viewPrivate = static_cast<KTextEditor::ViewPrivate *>(view);
+    connect(viewPrivate, &KTextEditor::ViewPrivate::destroyed, this, &KateOnTheFlyChecker::viewDestroyed);
+    connect(viewPrivate, &KTextEditor::ViewPrivate::displayRangeChanged, this, &KateOnTheFlyChecker::restartViewRefreshTimer);
     updateInstalledMovingRanges(static_cast<KTextEditor::ViewPrivate *>(view));
 }
 

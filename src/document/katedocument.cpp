@@ -226,19 +226,19 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     connect(m_buffer, &KateBuffer::tagLines, this, &KTextEditor::DocumentPrivate::tagLines);
 
     // if the user changes the highlight with the dialog, notify the doc
-    connect(KateHlManager::self(), SIGNAL(changed()), SLOT(internalHlChanged()));
+    connect(KateHlManager::self(), &KateHlManager::changed, this, &KTextEditor::DocumentPrivate::internalHlChanged);
 
     // signals for mod on hd
-    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(dirty(QString)), this, SLOT(slotModOnHdDirty(QString)));
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), &KDirWatch::dirty, this, &KTextEditor::DocumentPrivate::slotModOnHdDirty);
 
-    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(created(QString)), this, SLOT(slotModOnHdCreated(QString)));
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), &KDirWatch::created, this, &KTextEditor::DocumentPrivate::slotModOnHdCreated);
 
-    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)), this, SLOT(slotModOnHdDeleted(QString)));
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), &KDirWatch::deleted, this, &KTextEditor::DocumentPrivate::slotModOnHdDeleted);
 
     // singleshot timer to handle updates of mod on hd state delayed
     m_modOnHdTimer.setSingleShot(true);
     m_modOnHdTimer.setInterval(200);
-    connect(&m_modOnHdTimer, SIGNAL(timeout()), this, SLOT(slotDelayedHandleModOnHd()));
+    connect(&m_modOnHdTimer, &QTimer::timeout, this, &KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd);
 
     // Setup auto reload stuff
     m_autoReloadMode = new KToggleAction(i18n("Auto Reload Document"), this);
@@ -251,11 +251,11 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     connect(&m_autoReloadThrottle, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
 
     // load handling
-    // this is needed to ensure we signal the user if a file ist still loading
+    // this is needed to ensure we signal the user if a file is still loading
     // and to disallow him to edit in that time
-    connect(this, SIGNAL(started(KIO::Job *)), this, SLOT(slotStarted(KIO::Job *)));
-    connect(this, SIGNAL(completed()), this, SLOT(slotCompleted()));
-    connect(this, SIGNAL(canceled(QString)), this, SLOT(slotCanceled()));
+    connect(this, &KTextEditor::DocumentPrivate::started, this, &KTextEditor::DocumentPrivate::slotStarted);
+    connect(this, QOverload<>::of(&KTextEditor::DocumentPrivate::completed), this, &KTextEditor::DocumentPrivate::slotCompleted);
+    connect(this, &KTextEditor::DocumentPrivate::canceled, this, &KTextEditor::DocumentPrivate::slotCanceled);
 
     connect(this, SIGNAL(urlChanged(QUrl)), this, SLOT(slotUrlChanged(QUrl)));
 
@@ -272,15 +272,15 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
         setWidget(view);
     }
 
-    connect(m_undoManager, SIGNAL(undoChanged()), this, SIGNAL(undoChanged()));
-    connect(m_undoManager, SIGNAL(undoStart(KTextEditor::Document *)), this, SIGNAL(editingStarted(KTextEditor::Document *)));
-    connect(m_undoManager, SIGNAL(undoEnd(KTextEditor::Document *)), this, SIGNAL(editingFinished(KTextEditor::Document *)));
-    connect(m_undoManager, SIGNAL(redoStart(KTextEditor::Document *)), this, SIGNAL(editingStarted(KTextEditor::Document *)));
-    connect(m_undoManager, SIGNAL(redoEnd(KTextEditor::Document *)), this, SIGNAL(editingFinished(KTextEditor::Document *)));
+    connect(m_undoManager, &KateUndoManager::undoChanged, this, &KTextEditor::DocumentPrivate::undoChanged);
+    connect(m_undoManager, &KateUndoManager::undoStart, this, &KTextEditor::DocumentPrivate::editingStarted);
+    connect(m_undoManager, &KateUndoManager::undoEnd, this, &KTextEditor::DocumentPrivate::editingFinished);
+    connect(m_undoManager, &KateUndoManager::redoStart, this, &KTextEditor::DocumentPrivate::editingStarted);
+    connect(m_undoManager, &KateUndoManager::redoEnd, this, &KTextEditor::DocumentPrivate::editingFinished);
 
-    connect(this, SIGNAL(sigQueryClose(bool *, bool *)), this, SLOT(slotQueryClose_save(bool *, bool *)));
+    connect(this, &KTextEditor::DocumentPrivate::sigQueryClose, this, &KTextEditor::DocumentPrivate::slotQueryClose_save);
 
-    connect(this, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)), this, SLOT(clearEditingPosStack()));
+    connect(this, &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent, this, &KTextEditor::DocumentPrivate::clearEditingPosStack);
     onTheFlySpellCheckingEnabled(config()->onTheFlySpellCheck());
 
     // make sure correct defaults are set (indenter, ...)
@@ -424,7 +424,7 @@ KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTe
     KTextEditor::ViewPrivate *newView = new KTextEditor::ViewPrivate(this, parent, mainWindow);
 
     if (m_fileChangedDialogsActivated) {
-        connect(newView, SIGNAL(focusIn(KTextEditor::View *)), this, SLOT(slotModifiedOnDisk()));
+        connect(newView, &KTextEditor::ViewPrivate::focusIn, this, &KTextEditor::DocumentPrivate::slotModifiedOnDisk);
     }
 
     Q_EMIT viewCreated(this, newView);
@@ -2261,7 +2261,7 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
     QAction *tryAgainAction = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
                                           i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"),
                                           nullptr);
-    connect(tryAgainAction, SIGNAL(triggered()), SLOT(documentReload()), Qt::QueuedConnection);
+    connect(tryAgainAction, &QAction::triggered, this, &KTextEditor::DocumentPrivate::documentReload, Qt::QueuedConnection);
 
     QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), nullptr);
     closeAction->setToolTip(i18n("Close message"));
@@ -2422,7 +2422,7 @@ bool KTextEditor::DocumentPrivate::openFile()
                                           m_buffer->longestLineLoaded()),
                                      KTextEditor::Message::Warning);
         QAction *increaseAndReload = new QAction(i18n("Temporarily raise limit and reload file"), message);
-        connect(increaseAndReload, SIGNAL(triggered()), this, SLOT(openWithLineLengthLimitOverride()));
+        connect(increaseAndReload, &QAction::triggered, this, &KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride);
         message->addAction(increaseAndReload, true);
         message->addAction(new QAction(i18n("Close"), message), true);
         message->setWordWrap(true);
@@ -5451,7 +5451,7 @@ void KTextEditor::DocumentPrivate::slotTriggerLoadingMessage()
     // if around job: add cancel action
     if (m_loadingJob) {
         QAction *cancel = new QAction(i18n("&Abort Loading"), nullptr);
-        connect(cancel, SIGNAL(triggered()), this, SLOT(slotAbortLoading()));
+        connect(cancel, &QAction::triggered, this, &KTextEditor::DocumentPrivate::slotAbortLoading);
         m_loadingMessage->addAction(cancel);
     }
 

@@ -179,10 +179,12 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     m_lineScroll->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 
     // Hijack the line scroller's controls, so we can scroll nicely for word-wrap
-    connect(m_lineScroll, SIGNAL(actionTriggered(int)), SLOT(scrollAction(int)));
-    connect(m_lineScroll, SIGNAL(sliderMoved(int)), SLOT(scrollLines(int)));
-    connect(m_lineScroll, SIGNAL(sliderMMBMoved(int)), SLOT(scrollLines(int)));
-    connect(m_lineScroll, SIGNAL(valueChanged(int)), SLOT(scrollLines(int)));
+    connect(m_lineScroll, &KateScrollBar::actionTriggered, this, &KateViewInternal::scrollAction);
+
+    auto viewScrollLinesSlot = QOverload<int>::of(&KateViewInternal::scrollLines);
+    connect(m_lineScroll, &KateScrollBar::sliderMoved, this, viewScrollLinesSlot);
+    connect(m_lineScroll, &KateScrollBar::sliderMMBMoved, this, viewScrollLinesSlot);
+    connect(m_lineScroll, &KateScrollBar::valueChanged, this, viewScrollLinesSlot);
 
     //
     // scrollbar for columns
@@ -198,7 +200,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     m_columnScroll->setTracking(true);
     m_startX = 0;
 
-    connect(m_columnScroll, SIGNAL(valueChanged(int)), SLOT(scrollColumns(int)));
+    connect(m_columnScroll, &QScrollBar::valueChanged, this, &KateViewInternal::scrollColumns);
 
     // bottom corner box
     m_dummy = new QWidget(m_view);
@@ -220,7 +222,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     m_leftBorder->show();
 
     // update view if folding ranges change
-    connect(&m_view->textFolding(), SIGNAL(foldingRangesChanged()), SLOT(slotRegionVisibilityChanged()));
+    connect(&m_view->textFolding(), &Kate::TextFolding::foldingRangesChanged, this, &KateViewInternal::slotRegionVisibilityChanged);
 
     m_displayCursor.setPosition(0, 0);
 
@@ -240,16 +242,16 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     m_dragInfo.state = diNone;
 
     // timers
-    connect(&m_dragScrollTimer, SIGNAL(timeout()), this, SLOT(doDragScroll()));
+    connect(&m_dragScrollTimer, &QTimer::timeout, this, &KateViewInternal::doDragScroll);
 
-    connect(&m_scrollTimer, SIGNAL(timeout()), this, SLOT(scrollTimeout()));
+    connect(&m_scrollTimer, &QTimer::timeout, this, &KateViewInternal::scrollTimeout);
 
-    connect(&m_cursorTimer, SIGNAL(timeout()), this, SLOT(cursorTimeout()));
+    connect(&m_cursorTimer, &QTimer::timeout, this, &KateViewInternal::cursorTimeout);
 
-    connect(&m_textHintTimer, SIGNAL(timeout()), this, SLOT(textHintTimeout()));
+    connect(&m_textHintTimer, &QTimer::timeout, this, &KateViewInternal::textHintTimeout);
 
     // selection changed to set anchor
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), this, SLOT(viewSelectionChanged()));
+    connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &KateViewInternal::viewSelectionChanged);
 
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::installFactory(accessibleInterfaceFactory);
@@ -1940,9 +1942,9 @@ void KateViewInternal::updateSelection(const KTextEditor::Cursor &_newCursor, bo
 
 void KateViewInternal::setSelection(const KTextEditor::Range &range)
 {
-    disconnect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), this, SLOT(viewSelectionChanged()));
+    disconnect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &KateViewInternal::viewSelectionChanged);
     view()->setSelection(range);
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), this, SLOT(viewSelectionChanged()));
+    connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &KateViewInternal::viewSelectionChanged);
 }
 
 void KateViewInternal::moveCursorToSelectionEdge()

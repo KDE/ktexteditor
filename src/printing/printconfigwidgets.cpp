@@ -124,7 +124,7 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     lo2->setStretchFactor(lFontPreview, 1);
     QPushButton *btnChooseFont = new QPushButton(i18n("Choo&se Font..."), this);
     lo2->addWidget(btnChooseFont);
-    connect(btnChooseFont, SIGNAL(clicked()), this, SLOT(setHFFont()));
+    connect(btnChooseFont, &QPushButton::clicked, this, &KatePrintHeaderFooter::setHFFont);
 
     // header
     gbHeader = new QGroupBox(this);
@@ -150,9 +150,9 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     leHeaderLeft->setContextMenuPolicy(Qt::CustomContextMenu);
     leHeaderCenter->setContextMenuPolicy(Qt::CustomContextMenu);
     leHeaderRight->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(leHeaderLeft, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
-    connect(leHeaderCenter, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
-    connect(leHeaderRight, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
+    connect(leHeaderLeft, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leHeaderCenter, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leHeaderRight, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
 
     grid->addWidget(new QLabel(i18n("Colors:"), gbHeader), 1, 0);
 
@@ -196,9 +196,9 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     leFooterLeft->setContextMenuPolicy(Qt::CustomContextMenu);
     leFooterCenter->setContextMenuPolicy(Qt::CustomContextMenu);
     leFooterRight->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(leFooterLeft, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
-    connect(leFooterCenter, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
-    connect(leFooterRight, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
+    connect(leFooterLeft, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leFooterCenter, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leFooterRight, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
 
     grid->addWidget(new QLabel(i18n("Colors:"), gbFooter), 1, 0);
 
@@ -220,10 +220,10 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     lo->addStretch(1);
 
     // user friendly
-    connect(cbEnableHeader, SIGNAL(toggled(bool)), gbHeader, SLOT(setEnabled(bool)));
-    connect(cbEnableFooter, SIGNAL(toggled(bool)), gbFooter, SLOT(setEnabled(bool)));
-    connect(cbHeaderEnableBgColor, SIGNAL(toggled(bool)), kcbtnHeaderBg, SLOT(setEnabled(bool)));
-    connect(cbFooterEnableBgColor, SIGNAL(toggled(bool)), kcbtnFooterBg, SLOT(setEnabled(bool)));
+    connect(cbEnableHeader, &QCheckBox::toggled, gbHeader, &QGroupBox::setEnabled);
+    connect(cbEnableFooter, &QCheckBox::toggled, gbFooter, &QGroupBox::setEnabled);
+    connect(cbHeaderEnableBgColor, &QCheckBox::toggled, kcbtnHeaderBg, &KColorButton::setEnabled);
+    connect(cbFooterEnableBgColor, &QCheckBox::toggled, kcbtnFooterBg, &KColorButton::setEnabled);
 
     // set defaults
     cbEnableHeader->setChecked(true);
@@ -528,7 +528,7 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     grid->addWidget(kcbtnBoxColor, 2, 1);
     lBoxColor->setBuddy(kcbtnBoxColor);
 
-    connect(cbEnableBox, SIGNAL(toggled(bool)), gbBoxProps, SLOT(setEnabled(bool)));
+    connect(cbEnableBox, &QCheckBox::toggled, gbBoxProps, &QGroupBox::setEnabled);
 
     lo->addStretch(1);
     // set defaults:

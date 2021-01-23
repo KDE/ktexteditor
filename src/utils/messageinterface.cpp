@@ -75,7 +75,7 @@ void Message::addAction(QAction *action, bool closeOnTrigger)
 
     // call close if wanted
     if (closeOnTrigger) {
-        connect(action, SIGNAL(triggered()), SLOT(deleteLater()));
+        connect(action, &QAction::triggered, this, &QObject::deleteLater);
     }
 }
 

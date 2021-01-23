@@ -18,10 +18,10 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
     : QObject(doc)
     , m_document(doc)
 {
-    connect(this, SIGNAL(undoEnd(KTextEditor::Document *)), this, SIGNAL(undoChanged()));
-    connect(this, SIGNAL(redoEnd(KTextEditor::Document *)), this, SIGNAL(undoChanged()));
+    connect(this, &KateUndoManager::undoEnd, this, &KateUndoManager::undoChanged);
+    connect(this, &KateUndoManager::redoEnd, this, &KateUndoManager::undoChanged);
 
-    connect(doc, SIGNAL(viewCreated(KTextEditor::Document *, KTextEditor::View *)), SLOT(viewCreated(KTextEditor::Document *, KTextEditor::View *)));
+    connect(doc, &KTextEditor::DocumentPrivate::viewCreated, this, &KateUndoManager::viewCreated);
 }
 
 KateUndoManager::~KateUndoManager()
@@ -42,7 +42,7 @@ KTextEditor::Document *KateUndoManager::document()
 
 void KateUndoManager::viewCreated(KTextEditor::Document *, KTextEditor::View *newView)
 {
-    connect(newView, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), SLOT(undoCancel()));
+    connect(newView, &KTextEditor::View::cursorPositionChanged, this, &KateUndoManager::undoCancel);
 }
 
 void KateUndoManager::editStart()

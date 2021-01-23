@@ -29,7 +29,7 @@ KeyMapper::KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::Docu
     m_doNotMapNextKeypress = false;
     m_numMappingsBeingExecuted = 0;
     m_isPlayingBackRejectedKeys = false;
-    connect(m_mappingTimer, SIGNAL(timeout()), this, SLOT(mappingTimerTimeOut()));
+    connect(m_mappingTimer, &QTimer::timeout, this, &KeyMapper::mappingTimerTimeOut);
 }
 
 void KeyMapper::executeMapping()

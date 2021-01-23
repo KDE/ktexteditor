@@ -39,7 +39,7 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     m_resizeTimer = new QTimer(this);
     m_resizeTimer->setSingleShot(true);
 
-    connect(m_resizeTimer, SIGNAL(timeout()), this, SLOT(resizeColumnsSlot()));
+    connect(m_resizeTimer, &QTimer::timeout, this, &KateCompletionTree::resizeColumnsSlot);
 
     // Provide custom highlighting to completion entries
     setItemDelegate(new KateCompletionDelegate(widget()->model(), widget()));

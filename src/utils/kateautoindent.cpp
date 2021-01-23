@@ -122,7 +122,7 @@ KateAutoIndent::KateAutoIndent(KTextEditor::DocumentPrivate *_doc)
     // don't call updateConfig() here, document might is not ready for that....
 
     // on script reload, the script pointer is invalid -> force reload
-    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()), this, SLOT(reloadScript()));
+    connect(KTextEditor::EditorPrivate::self()->scriptManager(), &KateScriptManager::reloaded, this, &KateAutoIndent::reloadScript);
 }
 
 KateAutoIndent::~KateAutoIndent()
@@ -446,7 +446,7 @@ KateViewIndentationAction::KateViewIndentationAction(KTextEditor::DocumentPrivat
     , doc(_doc)
 {
     setPopupMode(QToolButton::InstantPopup);
-    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+    connect(menu(), &QMenu::aboutToShow, this, &KateViewIndentationAction::slotAboutToShow);
     actionGroup = new QActionGroup(menu());
 }
 
@@ -473,8 +473,8 @@ void KateViewIndentationAction::slotAboutToShow()
         }
     }
 
-    disconnect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setMode(QAction *)));
-    connect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setMode(QAction *)));
+    disconnect(menu(), &QMenu::triggered, this, &KateViewIndentationAction::setMode);
+    connect(menu(), &QMenu::triggered, this, &KateViewIndentationAction::setMode);
 }
 
 void KateViewIndentationAction::setMode(QAction *action)

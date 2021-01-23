@@ -82,8 +82,8 @@ void SwapDiffCreator::viewDiff()
     // create a process for diff
     m_proc.setProcessChannelMode(QProcess::MergedChannels);
 
-    connect(&m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()), Qt::UniqueConnection);
-    connect(&m_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(slotDiffFinished()), Qt::UniqueConnection);
+    connect(&m_proc, &QProcess::readyRead, this, &SwapDiffCreator::slotDataAvailable, Qt::UniqueConnection);
+    connect(&m_proc, &QProcess::finished, this, &SwapDiffCreator::slotDiffFinished, Qt::UniqueConnection);
 
     // try to start diff process, if we can't be started be done with error
     m_proc.start(QStringLiteral("diff"), QStringList() << QStringLiteral("-u") << m_originalFile.fileName() << m_recoveredFile.fileName());

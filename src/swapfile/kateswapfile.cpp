@@ -53,11 +53,11 @@ SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
     m_stream.setVersion(QDataStream::Qt_4_6);
 
     // connect the timer
-    connect(syncTimer(), SIGNAL(timeout()), this, SLOT(writeFileToDisk()), Qt::DirectConnection);
+    connect(syncTimer(), &QTimer::timeout, this, &Kate::SwapFile::writeFileToDisk, Qt::DirectConnection);
 
     // connecting the signals
-    connect(&m_document->buffer(), SIGNAL(saved(QString)), this, SLOT(fileSaved(QString)));
-    connect(&m_document->buffer(), SIGNAL(loaded(QString, bool)), this, SLOT(fileLoaded(QString)));
+    connect(&m_document->buffer(), &KateBuffer::saved, this, &Kate::SwapFile::fileSaved);
+    connect(&m_document->buffer(), &KateBuffer::loaded, this, &Kate::SwapFile::fileLoaded);
     connect(m_document, &KTextEditor::Document::configChanged, this, &SwapFile::configChanged);
 
     // tracking on!
@@ -87,23 +87,23 @@ void SwapFile::setTrackingEnabled(bool enable)
     TextBuffer &buffer = m_document->buffer();
 
     if (m_trackingEnabled) {
-        connect(&buffer, SIGNAL(editingStarted()), this, SLOT(startEditing()));
-        connect(&buffer, SIGNAL(editingFinished()), this, SLOT(finishEditing()));
-        connect(m_document, SIGNAL(modifiedChanged(KTextEditor::Document *)), this, SLOT(modifiedChanged()));
+        connect(&buffer, &Kate::TextBuffer::editingStarted, this, &Kate::SwapFile::startEditing);
+        connect(&buffer, &Kate::TextBuffer::editingFinished, this, &Kate::SwapFile::finishEditing);
+        connect(m_document, &KTextEditor::DocumentPrivate::modifiedChanged, this, &SwapFile::modifiedChanged);
 
-        connect(&buffer, SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
-        connect(&buffer, SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-        connect(&buffer, SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
-        connect(&buffer, SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
+        connect(&buffer, &Kate::TextBuffer::lineWrapped, this, &Kate::SwapFile::wrapLine);
+        connect(&buffer, &Kate::TextBuffer::lineUnwrapped, this, &Kate::SwapFile::unwrapLine);
+        connect(&buffer, &Kate::TextBuffer::textInserted, this, &Kate::SwapFile::insertText);
+        connect(&buffer, &Kate::TextBuffer::textRemoved, this, &Kate::SwapFile::removeText);
     } else {
-        disconnect(&buffer, SIGNAL(editingStarted()), this, SLOT(startEditing()));
-        disconnect(&buffer, SIGNAL(editingFinished()), this, SLOT(finishEditing()));
-        disconnect(m_document, SIGNAL(modifiedChanged(KTextEditor::Document *)), this, SLOT(modifiedChanged()));
+        disconnect(&buffer, &Kate::TextBuffer::editingStarted, this, &Kate::SwapFile::startEditing);
+        disconnect(&buffer, &Kate::TextBuffer::editingFinished, this, &Kate::SwapFile::finishEditing);
+        disconnect(m_document, &KTextEditor::DocumentPrivate::modifiedChanged, this, &SwapFile::modifiedChanged);
 
-        disconnect(&buffer, SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
-        disconnect(&buffer, SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-        disconnect(&buffer, SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
-        disconnect(&buffer, SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
+        disconnect(&buffer, &Kate::TextBuffer::lineWrapped, this, &Kate::SwapFile::wrapLine);
+        disconnect(&buffer, &Kate::TextBuffer::lineUnwrapped, this, &Kate::SwapFile::unwrapLine);
+        disconnect(&buffer, &Kate::TextBuffer::textInserted, this, &Kate::SwapFile::insertText);
+        disconnect(&buffer, &Kate::TextBuffer::textRemoved, this, &Kate::SwapFile::removeText);
     }
 }
 
@@ -632,9 +632,9 @@ void SwapFile::showSwapFileMessage()
     m_swapMessage->addAction(recoverAction);
     m_swapMessage->addAction(discardAction);
 
-    connect(diffAction, SIGNAL(triggered()), SLOT(showDiff()));
-    connect(recoverAction, SIGNAL(triggered()), SLOT(recover()), Qt::QueuedConnection);
-    connect(discardAction, SIGNAL(triggered()), SLOT(discard()), Qt::QueuedConnection);
+    connect(diffAction, &QAction::triggered, this, &SwapFile::showDiff);
+    connect(recoverAction, &QAction::triggered, this, QOverload<>::of(&Kate::SwapFile::recover), Qt::QueuedConnection);
+    connect(discardAction, &QAction::triggered, this, &SwapFile::discard, Qt::QueuedConnection);
 
     m_document->postMessage(m_swapMessage);
 }

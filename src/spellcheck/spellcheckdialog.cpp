@@ -52,7 +52,7 @@ void KateSpellCheckDialog::createActions(KActionCollection *ac)
     ac->addAction(QStringLiteral("tools_spelling_from_cursor"), a);
     a->setIcon(QIcon::fromTheme(QStringLiteral("tools-check-spelling")));
     a->setWhatsThis(i18n("Check the document's spelling from the cursor and forward"));
-    connect(a, SIGNAL(triggered()), this, SLOT(spellcheckFromCursor()));
+    connect(a, &QAction::triggered, this, &KateSpellCheckDialog::spellcheckFromCursor);
 }
 
 void KateSpellCheckDialog::spellcheckFromCursor()
@@ -102,17 +102,17 @@ void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTe
         m_sonnetDialog->showSpellCheckCompletionMessage();
         m_sonnetDialog->setSpellCheckContinuedAfterReplacement(false);
 
-        connect(m_sonnetDialog, SIGNAL(done(QString)), this, SLOT(installNextSpellCheckRange()));
+        connect(m_sonnetDialog, &SpellCheckBar::done, this, &KateSpellCheckDialog::installNextSpellCheckRange);
 
-        connect(m_sonnetDialog, SIGNAL(replace(QString, int, QString)), this, SLOT(corrected(QString, int, QString)));
+        connect(m_sonnetDialog, &SpellCheckBar::replace, this, &KateSpellCheckDialog::corrected);
 
-        connect(m_sonnetDialog, SIGNAL(misspelling(QString, int)), this, SLOT(misspelling(QString, int)));
+        connect(m_sonnetDialog, &SpellCheckBar::misspelling, this, &KateSpellCheckDialog::misspelling);
 
-        connect(m_sonnetDialog, SIGNAL(cancel()), this, SLOT(cancelClicked()));
+        connect(m_sonnetDialog, &SpellCheckBar::cancel, this, &KateSpellCheckDialog::cancelClicked);
 
-        connect(m_sonnetDialog, SIGNAL(destroyed(QObject *)), this, SLOT(objectDestroyed(QObject *)));
+        connect(m_sonnetDialog, &SpellCheckBar::destroyed, this, &KateSpellCheckDialog::objectDestroyed);
 
-        connect(m_sonnetDialog, SIGNAL(languageChanged(QString)), this, SLOT(languageChanged(QString)));
+        connect(m_sonnetDialog, &SpellCheckBar::languageChanged, this, &KateSpellCheckDialog::languageChanged);
     }
 
     m_view->bottomViewBar()->addBarWidget(m_sonnetDialog);

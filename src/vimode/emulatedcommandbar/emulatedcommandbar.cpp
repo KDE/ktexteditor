@@ -81,7 +81,7 @@ EmulatedCommandBar::EmulatedCommandBar(KateViInputMode *viInputMode, InputModeMa
         new CommandMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
 
     m_edit->installEventFilter(this);
-    connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
+    connect(m_edit, &QLineEdit::textChanged, this, &EmulatedCommandBar::editTextChanged);
 }
 
 EmulatedCommandBar::~EmulatedCommandBar()
@@ -408,13 +408,13 @@ void EmulatedCommandBar::createAndInitExitStatusMessageDisplayTimer()
 {
     m_exitStatusMessageDisplayHideTimer = new QTimer(this);
     m_exitStatusMessageDisplayHideTimer->setSingleShot(true);
-    connect(m_exitStatusMessageDisplayHideTimer, SIGNAL(timeout()), this, SIGNAL(hideMe()));
+    connect(m_exitStatusMessageDisplayHideTimer, &QTimer::timeout, this, &EmulatedCommandBar::hideMe);
     // Make sure the timer is stopped when the user switches views. If not, focus will be given to the
     // wrong view when KateViewBar::hideCurrentBarWidget() is called as a result of m_commandResponseMessageDisplayHide
     // timing out.
-    connect(m_view, SIGNAL(focusOut(KTextEditor::View *)), m_exitStatusMessageDisplayHideTimer, SLOT(stop()));
+    connect(m_view, &KTextEditor::ViewPrivate::focusOut, m_exitStatusMessageDisplayHideTimer, &QTimer::stop);
     // We can restart the timer once the view has focus again, though.
-    connect(m_view, SIGNAL(focusIn(KTextEditor::View *)), this, SLOT(startHideExitStatusMessageTimer()));
+    connect(m_view, &KTextEditor::ViewPrivate::focusIn, this, &EmulatedCommandBar::startHideExitStatusMessageTimer);
 }
 
 void EmulatedCommandBar::createAndAddWaitingForRegisterIndicator(QLayout *layout)

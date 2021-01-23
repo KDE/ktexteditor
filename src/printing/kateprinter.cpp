@@ -191,7 +191,7 @@ bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
     KatePrinterPrivate p(view->doc(), view);
     p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer);
-    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter *)), &p, SLOT(paint(QPrinter *)));
+    QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
     return preview.exec();
 }
 
@@ -208,7 +208,7 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
     KatePrinterPrivate p(doc);
     p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer);
-    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter *)), &p, SLOT(paint(QPrinter *)));
+    QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
     return preview.exec();
 }
 

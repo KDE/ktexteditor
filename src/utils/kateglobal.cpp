@@ -293,7 +293,7 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
         QVBoxLayout *topLayout = new QVBoxLayout(page);
         topLayout->setContentsMargins(0, 0, 0, 0);
 
-        connect(kd->button(QDialogButtonBox::Apply), SIGNAL(clicked()), cp, SLOT(apply()));
+        connect(kd->button(QDialogButtonBox::Apply), &QPushButton::clicked, cp, &KTextEditor::ConfigPage::apply);
         topLayout->addWidget(cp);
         editorPages.append(cp);
     }

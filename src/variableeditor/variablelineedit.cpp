@@ -53,10 +53,10 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
     l->setContentsMargins(0, 0, 0, 0);
 
     // forward text changed signal
-    connect(m_lineedit, SIGNAL(textChanged(QString)), this, SIGNAL(textChanged(QString)));
+    connect(m_lineedit, &QLineEdit::textChanged, this, &VariableLineEdit::textChanged);
 
     // open popup on button click
-    connect(m_button, SIGNAL(clicked()), this, SLOT(editVariables()));
+    connect(m_button, &QToolButton::clicked, this, &VariableLineEdit::editVariables);
 }
 
 VariableLineEdit::~VariableLineEdit()
@@ -67,7 +67,7 @@ void VariableLineEdit::editVariables()
 {
     m_listview = new VariableListView(m_lineedit->text(), m_popup);
     addKateItems(m_listview);
-    connect(m_listview, SIGNAL(aboutToHide()), this, SLOT(updateVariableLine()));
+    connect(m_listview, &VariableListView::aboutToHide, this, &VariableLineEdit::updateVariableLine);
 
     m_popup->layout()->addWidget(m_listview);
 

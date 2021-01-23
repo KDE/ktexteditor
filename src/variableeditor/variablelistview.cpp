@@ -66,7 +66,7 @@ void VariableListView::addItem(VariableItem *item)
     m_editors << editor;
     m_items << item;
 
-    connect(editor, SIGNAL(valueChanged()), this, SIGNAL(changed()));
+    connect(editor, &VariableEditor::valueChanged, this, &VariableListView::changed);
 }
 
 void VariableListView::resizeEvent(QResizeEvent *event)

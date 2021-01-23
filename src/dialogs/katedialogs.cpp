@@ -1252,8 +1252,8 @@ KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *pa
     topLayout->setContentsMargins(0, 0, 0, 0);
     // topLayout->setSpacing(spacingHint());
     m_dictionaryComboBox = new Sonnet::DictionaryComboBox(centralWidget());
-    connect(m_dictionaryComboBox, SIGNAL(dictionaryChanged(QString)), this, SLOT(dictionaryChanged(QString)));
-    connect(view->doc(), SIGNAL(defaultDictionaryChanged(KTextEditor::DocumentPrivate *)), this, SLOT(updateData()));
+    connect(m_dictionaryComboBox, &Sonnet::DictionaryComboBox::dictionaryChanged, this, &KateDictionaryBar::dictionaryChanged);
+    connect(view->doc(), &KTextEditor::DocumentPrivate::defaultDictionaryChanged, this, &KateDictionaryBar::updateData);
     QLabel *label = new QLabel(i18n("Dictionary:"), centralWidget());
     label->setBuddy(m_dictionaryComboBox);
 
@@ -1317,14 +1317,14 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
             m_diffAction->setIcon(QIcon::fromTheme(QStringLiteral("document-multiple")));
             m_diffAction->setToolTip(i18n("Shows a diff of the changes"));
             m_message->addAction(m_diffAction, false);
-            connect(m_diffAction, SIGNAL(triggered()), this, SLOT(slotDiff()));
+            connect(m_diffAction, &QAction::triggered, this, &KateModOnHdPrompt::slotDiff);
         }
 
         QAction *aReload = new QAction(i18n("&Reload"), this);
         aReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
         aReload->setToolTip(i18n("Reload the file from disk. Unsaved changes will be lost."));
         m_message->addAction(aReload);
-        connect(aReload, SIGNAL(triggered()), this, SIGNAL(reloadTriggered()));
+        connect(aReload, &QAction::triggered, this, &KateModOnHdPrompt::reloadTriggered);
     } else {
         QAction *closeFile = new QAction(i18nc("@action:button closes the opened file", "&Close File"), this);
         closeFile->setIcon(QIcon::fromTheme(QStringLiteral("document-close")));
@@ -1336,14 +1336,14 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
         aSaveAs->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
         aSaveAs->setToolTip(i18n("Lets you select a location and save the file again."));
         m_message->addAction(aSaveAs, false);
-        connect(aSaveAs, SIGNAL(triggered()), this, SIGNAL(saveAsTriggered()));
+        connect(aSaveAs, &QAction::triggered, this, &KateModOnHdPrompt::saveAsTriggered);
     }
 
     QAction *aIgnore = new QAction(i18n("&Ignore"), this);
     aIgnore->setToolTip(i18n("Ignores the changes on disk without any action."));
     aIgnore->setIcon(QIcon::fromTheme(QStringLiteral("dialog-cancel")));
     m_message->addAction(aIgnore);
-    connect(aIgnore, SIGNAL(triggered()), this, SIGNAL(ignoreTriggered()));
+    connect(aIgnore, &QAction::triggered, this, &KateModOnHdPrompt::ignoreTriggered);
 
     m_doc->postMessage(m_message);
 }
@@ -1373,8 +1373,8 @@ void KateModOnHdPrompt::slotDiff()
     m_proc = new KProcess(this);
     m_proc->setOutputChannelMode(KProcess::MergedChannels);
     *m_proc << QStringLiteral("diff") << QStringLiteral("-u") << QStringLiteral("-") << m_doc->url().toLocalFile();
-    connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
-    connect(m_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(slotPDone()));
+    connect(m_proc, &KProcess::readyRead, this, &KateModOnHdPrompt::slotDataAvailable);
+    connect(m_proc, &KProcess::finished, this, &KateModOnHdPrompt::slotPDone);
 
     // disable the diff button, to hinder the user to run it twice.
     m_diffAction->setEnabled(false);

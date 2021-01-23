@@ -28,8 +28,8 @@ KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEdito
 {
     m_text = view->view()->doc()->text(range);
 
-    connect(m_timeLine, SIGNAL(valueChanged(qreal)), this, SLOT(nextFrame(qreal)));
-    connect(m_timeLine, SIGNAL(finished()), this, SLOT(deleteLater()));
+    connect(m_timeLine, &QTimeLine::valueChanged, this, &KateTextAnimation::nextFrame);
+    connect(m_timeLine, &QTimeLine::finished, this, &KateTextAnimation::deleteLater);
 
     m_timeLine->setEasingCurve(QEasingCurve::SineCurve);
     m_timeLine->start();

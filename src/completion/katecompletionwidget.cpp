@@ -106,12 +106,12 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_expandedAddedHeightBase(0)
     , m_lastInvocationType(KTextEditor::CodeCompletionModel::AutomaticInvocation)
 {
-    connect(parent, SIGNAL(navigateAccept()), SLOT(navigateAccept()));
-    connect(parent, SIGNAL(navigateBack()), SLOT(navigateBack()));
-    connect(parent, SIGNAL(navigateDown()), SLOT(navigateDown()));
-    connect(parent, SIGNAL(navigateLeft()), SLOT(navigateLeft()));
-    connect(parent, SIGNAL(navigateRight()), SLOT(navigateRight()));
-    connect(parent, SIGNAL(navigateUp()), SLOT(navigateUp()));
+    connect(parent, &KTextEditor::ViewPrivate::navigateAccept, this, &KateCompletionWidget::navigateAccept);
+    connect(parent, &KTextEditor::ViewPrivate::navigateBack, this, &KateCompletionWidget::navigateBack);
+    connect(parent, &KTextEditor::ViewPrivate::navigateDown, this, &KateCompletionWidget::navigateDown);
+    connect(parent, &KTextEditor::ViewPrivate::navigateLeft, this, &KateCompletionWidget::navigateLeft);
+    connect(parent, &KTextEditor::ViewPrivate::navigateRight, this, &KateCompletionWidget::navigateRight);
+    connect(parent, &KTextEditor::ViewPrivate::navigateUp, this, &KateCompletionWidget::navigateUp);
 
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setLineWidth(1);
@@ -128,30 +128,30 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     m_argumentHintTree->setModel(m_argumentHintModel);
 
     // trigger completion on double click on completion list
-    connect(m_entryList, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(execute()));
+    connect(m_entryList, &KateCompletionTree::doubleClicked, this, &KateCompletionWidget::execute);
 
-    connect(m_entryList->verticalScrollBar(), SIGNAL(valueChanged(int)), m_presentationModel, SLOT(placeExpandingWidgets()));
-    connect(m_argumentHintTree->verticalScrollBar(), SIGNAL(valueChanged(int)), m_argumentHintModel, SLOT(placeExpandingWidgets()));
-    connect(view(), SIGNAL(focusOut(KTextEditor::View *)), this, SLOT(viewFocusOut()));
+    connect(m_entryList->verticalScrollBar(), &QScrollBar::valueChanged, m_presentationModel, &KateCompletionModel::placeExpandingWidgets);
+    connect(m_argumentHintTree->verticalScrollBar(), &QScrollBar::valueChanged, m_argumentHintModel, &KateArgumentHintModel::placeExpandingWidgets);
+    connect(view(), &KTextEditor::ViewPrivate::focusOut, this, &KateCompletionWidget::viewFocusOut);
 
     m_automaticInvocationTimer = new QTimer(this);
     m_automaticInvocationTimer->setSingleShot(true);
-    connect(m_automaticInvocationTimer, SIGNAL(timeout()), this, SLOT(automaticInvocation()));
+    connect(m_automaticInvocationTimer, &QTimer::timeout, this, &KateCompletionWidget::automaticInvocation);
 
     // Keep branches expanded
-    connect(m_presentationModel, SIGNAL(modelReset()), this, SLOT(modelReset()));
-    connect(m_presentationModel, SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(rowsInserted(QModelIndex, int, int)));
-    connect(m_argumentHintModel, SIGNAL(contentStateChanged(bool)), this, SLOT(argumentHintsChanged(bool)));
+    connect(m_presentationModel, &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelReset);
+    connect(m_presentationModel, &KateCompletionModel::rowsInserted, this, &KateCompletionWidget::rowsInserted);
+    connect(m_argumentHintModel, &KateArgumentHintModel::contentStateChanged, this, &KateCompletionWidget::argumentHintsChanged);
 
     // No smart lock, no queued connects
-    connect(view(), SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
-    connect(view(), SIGNAL(verticalScrollPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(updatePositionSlot()));
+    connect(view(), &KTextEditor::ViewPrivate::cursorPositionChanged, this, &KateCompletionWidget::cursorPositionChanged);
+    connect(view(), &KTextEditor::ViewPrivate::verticalScrollPositionChanged, this, &KateCompletionWidget::updatePositionSlot);
 
     // connect to all possible editing primitives
-    connect(&view()->doc()->buffer(), SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
-    connect(&view()->doc()->buffer(), SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-    connect(&view()->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
-    connect(&view()->doc()->buffer(), SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
+    connect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
+    connect(&view()->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
+    connect(&view()->doc()->buffer(), &KateBuffer::textInserted, this, &KateCompletionWidget::insertText);
+    connect(&view()->doc()->buffer(), &KateBuffer::textRemoved, this, &KateCompletionWidget::removeText);
 
     // This is a non-focus widget, it is passed keyboard input from the view
 
@@ -339,8 +339,8 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
 
     m_lastInvocationType = invocationType;
 
-    disconnect(this->model(), SIGNAL(layoutChanged()), this, SLOT(modelContentChanged()));
-    disconnect(this->model(), SIGNAL(modelReset()), this, SLOT(modelContentChanged()));
+    disconnect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
+    disconnect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
 
     m_dontShowArgumentHints = true;
 
@@ -400,12 +400,12 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
             }
         }
 
-        connect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
+        connect(model, &KTextEditor::CodeCompletionModel::waitForReset, this, &KateCompletionWidget::waitForModelReset);
 
         // qCDebug(LOG_KTE)<<"Before completion invoke: range:"<<range;
         model->completionInvoked(view(), range, invocationType);
 
-        disconnect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
+        disconnect(model, &KTextEditor::CodeCompletionModel::waitForReset, this, &KateCompletionWidget::waitForModelReset);
 
         m_completionRanges[model] =
             CompletionRange(view()->doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandRight | KTextEditor::MovingRange::ExpandLeft));
@@ -431,8 +431,8 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
     cursorPositionChanged();
 
     if (!m_completionRanges.isEmpty()) {
-        connect(this->model(), SIGNAL(layoutChanged()), this, SLOT(modelContentChanged()));
-        connect(this->model(), SIGNAL(modelReset()), this, SLOT(modelContentChanged()));
+        connect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
+        connect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
         // Now that all models have been notified, check whether the widget should be displayed instantly
         modelContentChanged();
     } else {
@@ -1321,9 +1321,9 @@ void KateCompletionWidget::registerCompletionModel(KTextEditor::CodeCompletionMo
         return;
     }
 
-    connect(model, SIGNAL(destroyed(QObject *)), SLOT(modelDestroyed(QObject *)));
+    connect(model, &KTextEditor::CodeCompletionModel::destroyed, this, &KateCompletionWidget::modelDestroyed);
     // This connection must not be queued
-    connect(model, SIGNAL(modelReset()), SLOT(completionModelReset()));
+    connect(model, &KTextEditor::CodeCompletionModel::modelReset, this, &KateCompletionWidget::completionModelReset);
 
     m_sourceModels.append(model);
 
@@ -1334,8 +1334,8 @@ void KateCompletionWidget::registerCompletionModel(KTextEditor::CodeCompletionMo
 
 void KateCompletionWidget::unregisterCompletionModel(KTextEditor::CodeCompletionModel *model)
 {
-    disconnect(model, SIGNAL(destroyed(QObject *)), this, SLOT(modelDestroyed(QObject *)));
-    disconnect(model, SIGNAL(modelReset()), this, SLOT(completionModelReset()));
+    disconnect(model, &KTextEditor::CodeCompletionModel::destroyed, this, &KateCompletionWidget::modelDestroyed);
+    disconnect(model, &KTextEditor::CodeCompletionModel::modelReset, this, &KateCompletionWidget::completionModelReset);
 
     m_sourceModels.removeAll(model);
     abortCompletion();

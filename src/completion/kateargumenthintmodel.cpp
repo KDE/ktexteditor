@@ -84,8 +84,8 @@ KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent)
     : ExpandingWidgetModel(parent)
     , m_parent(parent)
 {
-    connect(parent->model(), SIGNAL(modelReset()), this, SLOT(parentModelReset()));
-    connect(parent->model(), SIGNAL(argumentHintsChanged()), this, SLOT(parentModelReset()));
+    connect(parent->model(), &KateCompletionModel::modelReset, this, &KateArgumentHintModel::parentModelReset);
+    connect(parent->model(), &KateCompletionModel::argumentHintsChanged, this, &KateArgumentHintModel::parentModelReset);
 }
 
 QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const

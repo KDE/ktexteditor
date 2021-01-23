@@ -32,7 +32,7 @@ KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action
         setIcon(QIcon::fromTheme(icon));
     }
 
-    connect(this, SIGNAL(triggered(bool)), this, SLOT(exec()));
+    connect(this, &KateScriptAction::triggered, this, &KateScriptAction::exec);
 }
 
 KateScriptAction::~KateScriptAction()
@@ -62,7 +62,7 @@ KateScriptActionMenu::KateScriptActionMenu(KTextEditor::ViewPrivate *view, const
     setPopupMode(QToolButton::InstantPopup);
 
     // on script-reload signal, repopulate script menu
-    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()), this, SLOT(repopulate()));
+    connect(KTextEditor::EditorPrivate::self()->scriptManager(), &KateScriptManager::reloaded, this, &KateScriptActionMenu::repopulate);
 }
 
 KateScriptActionMenu::~KateScriptActionMenu()

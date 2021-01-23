@@ -39,8 +39,8 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     ui->sortingCaseSensitive->setChecked(m_model->sortingCaseSensitivity() == Qt::CaseSensitive);
     ui->groupingOrderUp->setIcon(QIcon::fromTheme(QStringLiteral("go-up")));
     ui->groupingOrderDown->setIcon(QIcon::fromTheme(QStringLiteral("go-down")));
-    connect(ui->groupingOrderUp, SIGNAL(pressed()), SLOT(moveGroupingOrderUp()));
-    connect(ui->groupingOrderDown, SIGNAL(pressed()), SLOT(moveGroupingOrderDown()));
+    connect(ui->groupingOrderUp, &QToolButton::pressed, this, &KateCompletionConfig::moveGroupingOrderUp);
+    connect(ui->groupingOrderDown, &QToolButton::pressed, this, &KateCompletionConfig::moveGroupingOrderDown);
 
     // Filtering
     ui->filtering->setChecked(m_model->isFilteringEnabled());
@@ -79,15 +79,15 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     for (int i = 0; i < 4; ++i) {
         ui->groupingMethods->topLevelItem(i)->setCheckState(0, Qt::Unchecked);
     }
-    connect(ui->groupingUp, SIGNAL(pressed()), SLOT(moveGroupingUp()));
-    connect(ui->groupingDown, SIGNAL(pressed()), SLOT(moveGroupingDown()));
+    connect(ui->groupingUp, &QToolButton::pressed, this, &KateCompletionConfig::moveGroupingUp);
+    connect(ui->groupingDown, &QToolButton::pressed, this, &KateCompletionConfig::moveGroupingDown);
 
     // Column merging
     ui->columnMerging->setChecked(m_model->isColumnMergingEnabled());
     ui->columnUp->setIcon(QIcon::fromTheme(QStringLiteral("go-up")));
     ui->columnDown->setIcon(QIcon::fromTheme(QStringLiteral("go-down")));
-    connect(ui->columnUp, SIGNAL(pressed()), SLOT(moveColumnUp()));
-    connect(ui->columnDown, SIGNAL(pressed()), SLOT(moveColumnDown()));
+    connect(ui->columnUp, &QToolButton::pressed, this, &KateCompletionConfig::moveColumnUp);
+    connect(ui->columnDown, &QToolButton::pressed, this, &KateCompletionConfig::moveColumnDown);
 
     QList<int> mergedColumns;
     if (!m_model->columnMerges().isEmpty()) {
@@ -147,12 +147,12 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     okButton->setDefault(true);
     KGuiItem::assign(okButton, KStandardGuiItem::ok());
     buttons->addButton(okButton, QDialogButtonBox::AcceptRole);
-    connect(okButton, SIGNAL(clicked()), this, SLOT(apply()));
+    connect(okButton, &QPushButton::clicked, this, &KateCompletionConfig::apply);
 
     QPushButton *cancelButton = new QPushButton(this);
     KGuiItem::assign(cancelButton, KStandardGuiItem::cancel());
     buttons->addButton(okButton, QDialogButtonBox::RejectRole);
-    connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(cancelButton, &QPushButton::clicked, this, &KateCompletionConfig::reject);
 }
 
 KateCompletionConfig::~KateCompletionConfig()

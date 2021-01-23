@@ -7,6 +7,8 @@
 #ifndef KATE_MESSAGE_WIDGET_H
 #define KATE_MESSAGE_WIDGET_H
 
+#include "kateview.h"
+
 #include <QHash>
 #include <QPointer>
 #include <QWidget>
@@ -58,6 +60,9 @@ protected Q_SLOTS:
      * catch when a message is deleted, then show next one, if applicable.
      */
     void messageDestroyed(KTextEditor::Message *message);
+
+    // ViewPrivate calls startAutoHideTimer()
+    friend class KTextEditor::ViewPrivate;
     /**
      * Start autoHide timer if requested
      */

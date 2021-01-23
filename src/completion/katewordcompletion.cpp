@@ -318,18 +318,18 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     if (qobject_cast<KTextEditor::CodeCompletionInterface *>(view)) {
         action = new QAction(i18n("Shell Completion"), this);
         ac->addAction(QStringLiteral("doccomplete_sh"), action);
-        connect(action, SIGNAL(triggered()), this, SLOT(shellComplete()));
+        connect(action, &QAction::triggered, this, &KateWordCompletionView::shellComplete);
     }
 
     action = new QAction(i18n("Reuse Word Above"), this);
     ac->addAction(QStringLiteral("doccomplete_bw"), action);
     ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_8);
-    connect(action, SIGNAL(triggered()), this, SLOT(completeBackwards()));
+    connect(action, &QAction::triggered, this, &KateWordCompletionView::completeBackwards);
 
     action = new QAction(i18n("Reuse Word Below"), this);
     ac->addAction(QStringLiteral("doccomplete_fw"), action);
     ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_9);
-    connect(action, SIGNAL(triggered()), this, SLOT(completeForwards()));
+    connect(action, &QAction::triggered, this, &KateWordCompletionView::completeForwards);
 }
 
 KateWordCompletionView::~KateWordCompletionView()
@@ -390,7 +390,7 @@ void KateWordCompletionView::shellComplete()
         m_view->document()->insertText(r.end(), partial.mid(r.columnWidth()));
         d->liRange->setView(m_view);
         d->liRange->setRange(KTextEditor::Range(r.end(), partial.length() - r.columnWidth()));
-        connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
+        connect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateWordCompletionView::slotCursorMoved);
     }
 }
 
@@ -436,7 +436,7 @@ void KateWordCompletionView::complete(bool fw)
 
         d->liRange->setView(m_view);
 
-        connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
+        connect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateWordCompletionView::slotCursorMoved);
     }
 
     d->wordRegEx.setPattern(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"));
@@ -515,7 +515,7 @@ void KateWordCompletionView::slotCursorMoved()
 
     d->dcRange = KTextEditor::Range::invalid();
 
-    disconnect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
+    disconnect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateWordCompletionView::slotCursorMoved);
 
     d->liRange->setView(nullptr);
     d->liRange->setRange(KTextEditor::Range::invalid());

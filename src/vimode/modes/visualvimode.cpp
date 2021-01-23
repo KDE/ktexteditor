@@ -28,7 +28,7 @@ VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     m_mode = ViMode::VisualMode;
     initializeCommands();
 
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), this, SLOT(updateSelection()));
+    connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &VisualViMode::updateSelection);
 }
 
 VisualViMode::~VisualViMode()

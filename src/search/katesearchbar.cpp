@@ -1383,26 +1383,33 @@ void KateSearchBar::enterPowerMode()
 
     if (create) {
         // Slots
-        connect(m_powerUi->mutate, SIGNAL(clicked()), this, SLOT(enterIncrementalMode()));
-        connect(patternLineEdit, SIGNAL(textChanged(QString)), this, SLOT(onPowerPatternChanged(QString)));
-        connect(m_powerUi->findNext, SIGNAL(clicked()), this, SLOT(findNext()));
-        connect(m_powerUi->findPrev, SIGNAL(clicked()), this, SLOT(findPrevious()));
+        connect(m_powerUi->mutate, &QToolButton::clicked, this, &KateSearchBar::enterIncrementalMode);
+        connect(patternLineEdit, &QLineEdit::textChanged, this, &KateSearchBar::onPowerPatternChanged);
+        connect(m_powerUi->findNext, &QToolButton::clicked, this, &KateSearchBar::findNext);
+        connect(m_powerUi->findPrev, &QToolButton::clicked, this, &KateSearchBar::findPrevious);
         connect(m_powerUi->replaceNext, SIGNAL(clicked()), this, SLOT(replaceNext()));
-        connect(m_powerUi->replaceAll, SIGNAL(clicked()), this, SLOT(replaceAll()));
-        connect(m_powerUi->searchMode, SIGNAL(currentIndexChanged(int)), this, SLOT(onPowerModeChanged(int)));
-        connect(m_powerUi->matchCase, SIGNAL(toggled(bool)), this, SLOT(onMatchCaseToggled(bool)));
-        connect(m_powerUi->findAll, SIGNAL(clicked()), this, SLOT(findAll()));
+        connect(m_powerUi->replaceAll, &QPushButton::clicked, this, &KateSearchBar::replaceAll);
+        connect(m_powerUi->searchMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateSearchBar::onPowerModeChanged);
+        connect(m_powerUi->matchCase, &QToolButton::toggled, this, &KateSearchBar::onMatchCaseToggled);
+        connect(m_powerUi->findAll, &QPushButton::clicked, this, &KateSearchBar::findAll);
         connect(m_powerUi->cancel, &QPushButton::clicked, this, &KateSearchBar::onPowerCancelFindOrReplace);
 
         // Make [return] in pattern line edit trigger <find next> action
-        connect(patternLineEdit, SIGNAL(returnPressed()), this, SLOT(onReturnPressed()));
-        connect(replacementLineEdit, SIGNAL(returnPressed()), this, SLOT(replaceNext()));
+        connect(patternLineEdit, &QLineEdit::returnPressed, this, &KateSearchBar::onReturnPressed);
+        connect(replacementLineEdit, &QLineEdit::returnPressed, this, &KateSearchBar::replaceNext);
 
         // Hook into line edit context menus
         m_powerUi->pattern->setContextMenuPolicy(Qt::CustomContextMenu);
-        connect(m_powerUi->pattern, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onPowerPatternContextMenuRequest(QPoint)));
+
+        connect(m_powerUi->pattern,
+                &QComboBox::customContextMenuRequested,
+                this,
+                QOverload<const QPoint &>::of(&KateSearchBar::onPowerPatternContextMenuRequest));
         m_powerUi->replacement->setContextMenuPolicy(Qt::CustomContextMenu);
-        connect(m_powerUi->replacement, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onPowerReplacmentContextMenuRequest(QPoint)));
+        connect(m_powerUi->replacement,
+                &QComboBox::customContextMenuRequested,
+                this,
+                QOverload<const QPoint &>::of(&KateSearchBar::onPowerReplacmentContextMenuRequest));
     }
 
     // Focus
@@ -1510,10 +1517,10 @@ void KateSearchBar::enterIncrementalMode()
 
     // Set initial search pattern
     if (!create) {
-        disconnect(m_incUi->pattern, SIGNAL(editTextChanged(QString)), this, SLOT(onIncPatternChanged(QString)));
+        disconnect(m_incUi->pattern, &QComboBox::editTextChanged, this, &KateSearchBar::onIncPatternChanged);
     }
     m_incUi->pattern->setEditText(initialPattern);
-    connect(m_incUi->pattern, SIGNAL(editTextChanged(QString)), this, SLOT(onIncPatternChanged(QString)));
+    connect(m_incUi->pattern, &QComboBox::editTextChanged, this, &KateSearchBar::onIncPatternChanged);
     m_incUi->pattern->lineEdit()->selectAll();
 
     // Propagate settings (slots are still inactive on purpose)
@@ -1528,11 +1535,11 @@ void KateSearchBar::enterIncrementalMode()
 
     if (create) {
         // Slots
-        connect(m_incUi->mutate, SIGNAL(clicked()), this, SLOT(enterPowerMode()));
+        connect(m_incUi->mutate, &QToolButton::clicked, this, &KateSearchBar::enterPowerMode);
         connect(m_incUi->pattern->lineEdit(), SIGNAL(returnPressed()), this, SLOT(onReturnPressed()));
-        connect(m_incUi->next, SIGNAL(clicked()), this, SLOT(findNext()));
-        connect(m_incUi->prev, SIGNAL(clicked()), this, SLOT(findPrevious()));
-        connect(m_incUi->matchCase, SIGNAL(toggled(bool)), this, SLOT(onMatchCaseToggled(bool)));
+        connect(m_incUi->next, &QToolButton::clicked, this, &KateSearchBar::findNext);
+        connect(m_incUi->prev, &QToolButton::clicked, this, &KateSearchBar::findPrevious);
+        connect(m_incUi->matchCase, &QToolButton::toggled, this, &KateSearchBar::onMatchCaseToggled);
     }
 
     // Focus

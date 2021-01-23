@@ -74,13 +74,13 @@ NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     resetParser(); // initialise with start configuration
 
     m_isUndo = false;
-    connect(doc()->undoManager(), SIGNAL(undoStart(KTextEditor::Document *)), this, SLOT(undoBeginning()));
-    connect(doc()->undoManager(), SIGNAL(undoEnd(KTextEditor::Document *)), this, SLOT(undoEnded()));
+    connect(doc()->undoManager(), &KateUndoManager::undoStart, this, &NormalViMode::undoBeginning);
+    connect(doc()->undoManager(), &KateUndoManager::undoEnd, this, &NormalViMode::undoEnded);
 
     updateYankHighlightAttrib();
     connect(view, &KTextEditor::View::configChanged, this, &NormalViMode::updateYankHighlightAttrib);
-    connect(doc(), SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)), this, SLOT(clearYankHighlight()));
-    connect(doc(), SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document *)), this, SLOT(aboutToDeleteMovingInterfaceContent()));
+    connect(doc(), &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent, this, &NormalViMode::clearYankHighlight);
+    connect(doc(), &KTextEditor::DocumentPrivate::aboutToDeleteMovingInterfaceContent, this, &NormalViMode::aboutToDeleteMovingInterfaceContent);
 }
 
 NormalViMode::~NormalViMode()

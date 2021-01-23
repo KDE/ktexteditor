@@ -146,8 +146,8 @@ KateThemeConfigColorTab::KateThemeConfigColorTab()
     l->setColumnStretch(0, 1);
     l->setColumnStretch(1, 0);
 
-    connect(btnUseColorScheme, SIGNAL(clicked()), ui, SLOT(selectDefaults()));
-    connect(ui, SIGNAL(changed()), SIGNAL(changed()));
+    connect(btnUseColorScheme, &QPushButton::clicked, ui, &KateColorTreeWidget::selectDefaults);
+    connect(ui, &KateColorTreeWidget::changed, this, &KateThemeConfigColorTab::changed);
 }
 
 QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighlighting::Theme &theme) const
@@ -472,7 +472,7 @@ KateThemeConfigDefaultStylesTab::KateThemeConfigDefaultStylesTab(KateThemeConfig
     QGridLayout *grid = new QGridLayout(this);
 
     m_defaultStyles = new KateStyleTreeWidget(this);
-    connect(m_defaultStyles, SIGNAL(changed()), this, SIGNAL(changed()));
+    connect(m_defaultStyles, &KateStyleTreeWidget::changed, this, &KateThemeConfigDefaultStylesTab::changed);
     grid->addWidget(m_defaultStyles, 0, 0);
 
     m_defaultStyles->setWhatsThis(
@@ -692,7 +692,7 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
     headerLayout->addWidget(hlCombo);
 
     lHl->setBuddy(hlCombo);
-    connect(hlCombo, SIGNAL(activated(int)), this, SLOT(hlChanged(int)));
+    connect(hlCombo, QOverload<int>::of(&QComboBox::activated), this, &KateThemeConfigHighlightTab::hlChanged);
 
     headerLayout->addStretch();
 
@@ -708,7 +708,7 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
 
     // styles listview
     m_styles = new KateStyleTreeWidget(this, true);
-    connect(m_styles, SIGNAL(changed()), this, SIGNAL(changed()));
+    connect(m_styles, &KateStyleTreeWidget::changed, this, &KateThemeConfigHighlightTab::changed);
     layout->addWidget(m_styles, 999);
 
     // get current highlighting from the host application
@@ -1003,23 +1003,23 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     schemaCombo->setEditable(false);
     lHl->setBuddy(schemaCombo);
     headerLayout->addWidget(schemaCombo);
-    connect(schemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(comboBoxIndexChanged(int)));
+    connect(schemaCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::comboBoxIndexChanged);
 
     QPushButton *copyButton = new QPushButton(i18n("&Copy..."), this);
     headerLayout->addWidget(copyButton);
-    connect(copyButton, SIGNAL(clicked()), this, SLOT(copyTheme()));
+    connect(copyButton, &QPushButton::clicked, this, &KateThemeConfigPage::copyTheme);
 
     btndel = new QPushButton(i18n("&Delete"), this);
     headerLayout->addWidget(btndel);
-    connect(btndel, SIGNAL(clicked()), this, SLOT(deleteSchema()));
+    connect(btndel, &QPushButton::clicked, this, &KateThemeConfigPage::deleteSchema);
 
     QPushButton *btnexport = new QPushButton(i18n("Export..."), this);
     headerLayout->addWidget(btnexport);
-    connect(btnexport, SIGNAL(clicked()), this, SLOT(exportFullSchema()));
+    connect(btnexport, &QPushButton::clicked, this, &KateThemeConfigPage::exportFullSchema);
 
     QPushButton *btnimport = new QPushButton(i18n("Import..."), this);
     headerLayout->addWidget(btnimport);
-    connect(btnimport, SIGNAL(clicked()), this, SLOT(importFullSchema()));
+    connect(btnimport, &QPushButton::clicked, this, &KateThemeConfigPage::importFullSchema);
 
     headerLayout->addStretch();
 
@@ -1036,15 +1036,15 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
 
     m_colorTab = new KateThemeConfigColorTab();
     tabWidget->addTab(m_colorTab, i18n("Colors"));
-    connect(m_colorTab, SIGNAL(changed()), SLOT(slotChanged()));
+    connect(m_colorTab, &KateThemeConfigColorTab::changed, this, &KateThemeConfigPage::slotChanged);
 
     m_defaultStylesTab = new KateThemeConfigDefaultStylesTab(m_colorTab);
     tabWidget->addTab(m_defaultStylesTab, i18n("Default Text Styles"));
-    connect(m_defaultStylesTab, SIGNAL(changed()), SLOT(slotChanged()));
+    connect(m_defaultStylesTab, &KateThemeConfigDefaultStylesTab::changed, this, &KateThemeConfigPage::slotChanged);
 
     m_highlightTab = new KateThemeConfigHighlightTab(m_defaultStylesTab, m_colorTab);
     tabWidget->addTab(m_highlightTab, i18n("Highlighting Text Styles"));
-    connect(m_highlightTab, SIGNAL(changed()), SLOT(slotChanged()));
+    connect(m_highlightTab, &KateThemeConfigHighlightTab::changed, this, &KateThemeConfigPage::slotChanged);
 
     QHBoxLayout *footLayout = new QHBoxLayout;
     layout->addLayout(footLayout);
@@ -1059,7 +1059,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
 
     reload();
 
-    connect(defaultSchemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
+    connect(defaultSchemaCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::slotChanged);
 }
 
 void KateThemeConfigPage::exportFullSchema()
