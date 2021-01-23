@@ -257,9 +257,8 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     connect(this, QOverload<>::of(&KTextEditor::DocumentPrivate::completed), this, &KTextEditor::DocumentPrivate::slotCompleted);
     connect(this, &KTextEditor::DocumentPrivate::canceled, this, &KTextEditor::DocumentPrivate::slotCanceled);
 
-    connect(this, SIGNAL(urlChanged(QUrl)), this, SLOT(slotUrlChanged(QUrl)));
-
-    // update doc name
+    // handle doc name updates
+    connect(this, &KParts::ReadOnlyPart::urlChanged, this, &KTextEditor::DocumentPrivate::slotUrlChanged);
     updateDocName();
 
     // if single view mode, like in the konqui embedding, create a default view ;)
@@ -292,6 +291,10 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
 //
 KTextEditor::DocumentPrivate::~DocumentPrivate()
 {
+    // we need to disconnect this as it triggers in destructor of KParts::ReadOnlyPart but we have already deleted
+    // important stuff then
+    disconnect(this, &KParts::ReadOnlyPart::urlChanged, this, &KTextEditor::DocumentPrivate::slotUrlChanged);
+
     // delete pending mod-on-hd message, if applicable
     delete m_modOnHdHandler;
 
