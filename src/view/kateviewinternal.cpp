@@ -3941,7 +3941,8 @@ void KateViewInternal::showBracketMatchPreview()
     }
 
     renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
-    const int lineWidth = qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth()*2), m_view->width() - m_leftBorder->width() - m_lineScroll->width());
+    const int lineWidth =
+        qBound(m_view->width() / 5, int(lineLayout->width() + renderer_->spaceWidth() * 2), m_view->width() - m_leftBorder->width() - m_lineScroll->width());
     m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 2);
     const QPoint topLeft = mapToGlobal(QPoint(0, 0));
     m_bmPreview->move(topLeft.x(), topLeft.y());

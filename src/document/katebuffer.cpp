@@ -401,7 +401,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
 
         if (start_spellchecking >= 0 && lines() > 0) {
             Q_EMIT respellCheckBlock(start_spellchecking,
-                                   qMin(lines() - 1, (last_line_spellchecking == -1) ? qMax(current_line, oldHighlighted) : last_line_spellchecking));
+                                     qMin(lines() - 1, (last_line_spellchecking == -1) ? qMax(current_line, oldHighlighted) : last_line_spellchecking));
         }
     }
 
