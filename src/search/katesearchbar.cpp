@@ -1391,7 +1391,7 @@ void KateSearchBar::enterPowerMode()
         connect(patternLineEdit, &QLineEdit::textChanged, this, &KateSearchBar::onPowerPatternChanged);
         connect(m_powerUi->findNext, &QToolButton::clicked, this, &KateSearchBar::findNext);
         connect(m_powerUi->findPrev, &QToolButton::clicked, this, &KateSearchBar::findPrevious);
-        connect(m_powerUi->replaceNext, SIGNAL(clicked()), this, SLOT(replaceNext()));
+        connect(m_powerUi->replaceNext, &QPushButton::clicked, this, &KateSearchBar::replaceNext);
         connect(m_powerUi->replaceAll, &QPushButton::clicked, this, &KateSearchBar::replaceAll);
         connect(m_powerUi->searchMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateSearchBar::onPowerModeChanged);
         connect(m_powerUi->matchCase, &QToolButton::toggled, this, &KateSearchBar::onMatchCaseToggled);
@@ -1542,7 +1542,7 @@ void KateSearchBar::enterIncrementalMode()
     if (create) {
         // Slots
         connect(m_incUi->mutate, &QToolButton::clicked, this, &KateSearchBar::enterPowerMode);
-        connect(m_incUi->pattern->lineEdit(), SIGNAL(returnPressed()), this, SLOT(onReturnPressed()));
+        connect(m_incUi->pattern->lineEdit(), &QLineEdit::returnPressed, this, &KateSearchBar::onReturnPressed);
         connect(m_incUi->next, &QToolButton::clicked, this, &KateSearchBar::findNext);
         connect(m_incUi->prev, &QToolButton::clicked, this, &KateSearchBar::findPrevious);
         connect(m_incUi->matchCase, &QToolButton::toggled, this, &KateSearchBar::onMatchCaseToggled);

@@ -3169,7 +3169,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         FailsIfSlotCalled failsIfActionTriggered("The kate_view shortcut should not be triggered by typing it in emulated  command bar!");
         // Don't invoke Print on failure, as this hangs instead of failing.
         // disconnect(printAction, SIGNAL(triggered(bool)), kate_document, SLOT(print()));
-        connect(printAction, SIGNAL(triggered(bool)), &failsIfActionTriggered, SLOT(slot()));
+        connect(printAction, &QAction::triggered, &failsIfActionTriggered, &FailsIfSlotCalled::slot);
         DoTest("foo bar foo bar", "/bar\\enterggd/\\ctrl-p\\enter.", "bar");
         // Processing shortcuts seems to require events to be processed.
         QApplication::processEvents();

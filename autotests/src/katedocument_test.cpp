@@ -161,8 +161,8 @@ void KateDocumentTest::testReplaceQStringList()
 void KateDocumentTest::testMovingInterfaceSignals()
 {
     KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate;
-    QSignalSpy aboutToDeleteSpy(doc, SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document *)));
-    QSignalSpy aboutToInvalidateSpy(doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)));
+    QSignalSpy aboutToDeleteSpy(doc, &KTextEditor::DocumentPrivate::aboutToDeleteMovingInterfaceContent);
+    QSignalSpy aboutToInvalidateSpy(doc, &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent);
 
     QCOMPARE(doc->revision(), qint64(0));
 
@@ -199,7 +199,10 @@ void KateDocumentTest::testSetTextPerformance()
 
     KTextEditor::DocumentPrivate doc;
     MovingRangeInvalidator invalidator;
-    connect(&doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)), &invalidator, SLOT(aboutToInvalidateMovingInterfaceContent()));
+    connect(&doc,
+            &KTextEditor::DocumentPrivate::aboutToInvalidateMovingInterfaceContent,
+            &invalidator,
+            &MovingRangeInvalidator::aboutToInvalidateMovingInterfaceContent);
 
     QString text;
     QVector<Range> ranges;
@@ -487,10 +490,7 @@ void KateDocumentTest::testInsertNewline()
         "this is line2\n");
 
     SignalHandler handler;
-    connect(&doc,
-            SIGNAL(textInserted(KTextEditor::Document *, KTextEditor::Range)),
-            &handler,
-            SLOT(slotNewlineInserted(KTextEditor::Document *, KTextEditor::Range)));
+    connect(&doc, &KTextEditor::DocumentPrivate::textInserted, &handler, &SignalHandler::slotNewlineInserted);
     doc.editWrapLine(1, 4);
 }
 
