@@ -328,21 +328,21 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
         if (const auto color = format.textColor(currentTheme).rgba()) {
-            newAttribute->setForeground(QColor(color));
+            newAttribute->setForeground(QColor::fromRgba(color));
         }
 
         if (const auto color = format.selectedTextColor(currentTheme).rgba()) {
-            newAttribute->setSelectedForeground(QColor(color));
+            newAttribute->setSelectedForeground(QColor::fromRgba(color));
         }
 
         if (const auto color = format.backgroundColor(currentTheme).rgba()) {
-            newAttribute->setBackground(QColor(color));
+            newAttribute->setBackground(QColor::fromRgba(color));
         } else {
             newAttribute->clearBackground();
         }
 
         if (const auto color = format.selectedBackgroundColor(currentTheme).rgba()) {
-            newAttribute->setSelectedBackground(QColor(color));
+            newAttribute->setSelectedBackground(QColor::fromRgba(color));
         } else {
             newAttribute->clearProperty(SelectedBackground);
         }
