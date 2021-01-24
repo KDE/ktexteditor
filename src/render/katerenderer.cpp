@@ -214,7 +214,8 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
         markBlue /= markCount;
         backgroundColor.setRgb(int((backgroundColor.red() * 0.9) + (markRed * 0.1)),
                                int((backgroundColor.green() * 0.9) + (markGreen * 0.1)),
-                               int((backgroundColor.blue() * 0.9) + (markBlue * 0.1)));
+                               int((backgroundColor.blue() * 0.9) + (markBlue * 0.1)),
+                               backgroundColor.alpha());
     }
 
     // Draw line background
@@ -229,7 +230,8 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
             markBlue /= markCount;
             currentLineColor.setRgb(int((currentLineColor.red() * 0.9) + (markRed * 0.1)),
                                     int((currentLineColor.green() * 0.9) + (markGreen * 0.1)),
-                                    int((currentLineColor.blue() * 0.9) + (markBlue * 0.1)));
+                                    int((currentLineColor.blue() * 0.9) + (markBlue * 0.1)),
+                                    currentLineColor.alpha());
         }
 
         paint.fillRect(0, lineHeight() * currentViewLine, xEnd - xStart, lineHeight(), currentLineColor);
