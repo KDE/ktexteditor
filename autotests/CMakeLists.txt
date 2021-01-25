@@ -148,6 +148,7 @@ ecm_add_tests(
   src/bug286887.cpp
   src/katewildcardmatcher_test.cpp
   src/katetextblocktest.cpp
+  src/camelcursortest.cpp
   LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test
 )
 

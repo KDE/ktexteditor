@@ -1177,6 +1177,139 @@ public:
     }
 };
 
+class CamelCursor : public CalculatingCursor
+{
+public:
+    CamelCursor(KateViewInternal *vi)
+        : CalculatingCursor(vi)
+    {
+    }
+    CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor &c)
+        : CalculatingCursor(vi, c)
+    {
+    }
+    CamelCursor(KateViewInternal *vi, int line, int col)
+        : CalculatingCursor(vi, line, col)
+    {
+    }
+
+    CalculatingCursor &operator+=(int n) override
+    {
+        KateLineLayoutPtr thisLine = m_vi->cache()->line(line());
+        if (!thisLine->isValid()) {
+            qCWarning(LOG_KTE) << "Did not retrieve valid layout for line " << line();
+            return *this;
+        }
+
+        auto skipCaps = [](QStringView text, int &col) {
+            int count = 0;
+            while (text.at(col).isUpper() && col < text.size()) {
+                ++count;
+                ++col;
+            }
+            // if this is a letter, then it means we are in the
+            // middle of a word, step back one position so that
+            // we are at the last Cap letter
+            // Otherwise, it's an all cap word
+            if (count > 1 && text.at(col).isLetterOrNumber()) {
+                --col;
+            }
+        };
+
+        if (n >= 0) {
+            int jump = -1;
+            for (int i = 0; i < n; ++i) {
+                int col = column();
+                const auto &text = thisLine->textLine()->text();
+
+                if (text.at(col).isUpper()) {
+                    skipCaps(text, col);
+                }
+
+                for (int i = col; i < thisLine->length(); ++i) {
+                    if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
+                        break;
+                    ++col;
+                }
+                // eat any '_' that are after the word BEFORE any space happens
+                if (text.at(col) == QLatin1Char('_')) {
+                    while (text.at(col) == QLatin1Char('_')) {
+                        ++col;
+                    }
+                }
+                // Underscores eaten, so now eat any spaces till next word
+                if (text.at(col).isSpace()) {
+                    while (text.at(col).isSpace()) {
+                        ++col;
+                    }
+                }
+                jump = col;
+            }
+            m_cursor.setColumn(jump);
+        } else {
+            int jump = -1;
+            int col = column();
+
+            auto skipCapsRev = [](QStringView text, int &col) {
+                int count = 0;
+                while (text.at(col).isUpper() && col > 0) {
+                    ++count;
+                    --col;
+                }
+
+                // if more than one cap found, and current
+                // column is not upper, we want to move ahead
+                // to the upper
+                if (count >= 1 && !text.at(col).isUpper()) {
+                    ++col;
+                }
+            };
+
+            for (int i = 0; i > n; --i) {
+                const auto &text = thisLine->textLine()->text();
+                col = col - 1;
+
+                // skip any spaces
+                if (text.at(col).isSpace()) {
+                    while (text.at(col).isSpace()) {
+                        --col;
+                    }
+                }
+
+                // Skip Underscores
+                if (text.at(col) == QLatin1Char('_')) {
+                    while (text.at(col) == QLatin1Char('_')) {
+                        --col;
+                    }
+                }
+
+                if (text.at(col).isUpper()) {
+                    skipCapsRev(text, col);
+                }
+                for (int i = col; i > 0; --i) {
+                    if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
+                        break;
+                    --col;
+                }
+
+                if (!text.at(col).isLetterOrNumber()) {
+                    ++col;
+                }
+            }
+            jump = col;
+            m_cursor.setColumn(jump);
+        }
+
+        Q_ASSERT(valid());
+        return *this;
+    }
+
+    CalculatingCursor &operator-=(int n) override
+    {
+        return operator+=(-n);
+    }
+};
+
 void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
 {
     KTextEditor::Cursor c;
@@ -1207,7 +1340,6 @@ void KateViewInternal::cursorNextChar(bool sel)
 void KateViewInternal::wordPrev(bool sel)
 {
     WrappingCursor c(this, m_cursor);
-
     // First we skip backwards all space.
     // Then we look up into which category the current position falls:
     // 1. a "word" character
@@ -1225,9 +1357,11 @@ void KateViewInternal::wordPrev(bool sel)
     if (c.atEdge(left)) {
         --c;
     } else if (h->isInWord(doc()->line(c.line())[c.column() - 1])) {
-        while (!c.atEdge(left) && h->isInWord(doc()->line(c.line())[c.column() - 1])) {
-            --c;
-        }
+        CamelCursor cc(this, m_cursor);
+        --cc;
+        updateSelection(cc, sel);
+        updateCursor(cc);
+        return;
     } else {
         while (!c.atEdge(left)
                && !h->isInWord(doc()->line(c.line())[c.column() - 1])
@@ -1258,9 +1392,11 @@ void KateViewInternal::wordNext(bool sel)
     if (c.atEdge(right)) {
         ++c;
     } else if (h->isInWord(doc()->line(c.line())[c.column()])) {
-        while (!c.atEdge(right) && h->isInWord(doc()->line(c.line())[c.column()])) {
-            ++c;
-        }
+        CamelCursor cc(this, m_cursor);
+        ++cc;
+        updateSelection(cc, sel);
+        updateCursor(cc);
+        return;
     } else {
         while (!c.atEdge(right)
                && !h->isInWord(doc()->line(c.line())[c.column()])
@@ -1274,7 +1410,6 @@ void KateViewInternal::wordNext(bool sel)
     while (!c.atEdge(right) && doc()->line(c.line())[c.column()].isSpace()) {
         ++c;
     }
-
     updateSelection(c, sel);
     updateCursor(c);
 }
