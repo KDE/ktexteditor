@@ -217,6 +217,7 @@ void KateSearchBar::closed()
     }
 
     clearHighlights();
+    m_replacement.clear();
 }
 
 void KateSearchBar::setReplacementPattern(const QString &replacementPattern)
@@ -1299,6 +1300,9 @@ void KateSearchBar::enterPowerMode()
         const bool fromIncremental = (m_incUi != nullptr) && (m_widget->isVisible());
         if (fromIncremental) {
             initialPattern = m_incUi->pattern->currentText();
+        } else {
+            // Search bar probably newly opened. Reset initial replacement text to empty
+            m_replacement.clear();
         }
     }
 
@@ -1375,7 +1379,7 @@ void KateSearchBar::enterPowerMode()
     // Set initial replacement text
     QLineEdit *const replacementLineEdit = m_powerUi->replacement->lineEdit();
     Q_ASSERT(replacementLineEdit != nullptr);
-    replacementLineEdit->setText(QString());
+    replacementLineEdit->setText(m_replacement);
 
     // Propagate settings (slots are still inactive on purpose)
     onPowerPatternChanged(initialPattern);
@@ -1446,6 +1450,8 @@ void KateSearchBar::enterIncrementalMode()
         const bool fromReplace = (m_powerUi != nullptr) && (m_widget->isVisible());
         if (fromReplace) {
             initialPattern = m_powerUi->pattern->currentText();
+            // current text will be used as initial replacement text later
+            m_replacement = m_powerUi->replacement->currentText();
         }
     }
 
