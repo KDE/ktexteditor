@@ -154,6 +154,8 @@ void ModesTest::NormalMotionsTests()
     DoTest("a()", "y%x", "()");
     // Regression test for the bug I added fixing the bug above ;)
     DoTest("foo(bar)", "y%P", "foo(bar)foo(bar)");
+    // Regression test for adjacent brackets
+    DoTest("foo((bar)baz)", "y%P", "foo((bar)baz)foo((bar)baz)");
 
     // Testing percentage "<N>%"
     DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%", "20%dd", "10%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%");

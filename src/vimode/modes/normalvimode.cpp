@@ -2580,7 +2580,7 @@ Range NormalViMode::motionToMatchingItem()
         // first bracket, but we don't want the cursor to really move
         // in case this is e.g. a yank, so restore it to its original
         // position afterwards.
-        c.setColumn(n1 + 1);
+        c.setColumn(n1);
         const KTextEditor::Cursor oldCursorPos = m_view->cursorPosition();
         updateCursor(c);
 
