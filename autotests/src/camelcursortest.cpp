@@ -84,7 +84,7 @@ void CamelCursorTest::testWordMovementSingleRow()
         QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, colPos.at(i)));
     }
 
-    QVERIFY(view->cursorPosition() == KTextEditor::Cursor(0, 0));
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 0));
 }
 
 void CamelCursorTest::testRtlWordMovement()
