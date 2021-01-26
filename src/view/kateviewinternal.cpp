@@ -1266,50 +1266,48 @@ public:
             return *this;
         }
 
-        auto skipCaps = [](QStringView text, int &col) {
-            int count = 0;
-            while (text.at(col).isUpper() && col < text.size()) {
-                ++count;
-                ++col;
-            }
-            // if this is a letter, then it means we are in the
-            // middle of a word, step back one position so that
-            // we are at the last Cap letter
-            // Otherwise, it's an all cap word
-            if (count > 1 && text.at(col).isLetterOrNumber()) {
-                --col;
-            }
-        };
-
         if (n >= 0) {
-            int jump = -1;
-            for (int i = 0; i < n; ++i) {
-                int col = column();
-                const auto &text = thisLine->textLine()->text();
-
-                if (text.at(col).isUpper()) {
-                    skipCaps(text, col);
-                }
-
-                for (int i = col; i < thisLine->length(); ++i) {
-                    if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
-                        break;
+            auto skipCaps = [](QStringView text, int &col) {
+                int count = 0;
+                while (text.at(col).isUpper() && col < text.size()) {
+                    ++count;
                     ++col;
                 }
-                // eat any '_' that are after the word BEFORE any space happens
-                if (text.at(col) == QLatin1Char('_')) {
-                    while (text.at(col) == QLatin1Char('_')) {
-                        ++col;
-                    }
+                // if this is a letter, then it means we are in the
+                // middle of a word, step back one position so that
+                // we are at the last Cap letter
+                // Otherwise, it's an all cap word
+                if (count > 1 && text.at(col).isLetterOrNumber()) {
+                    --col;
                 }
-                // Underscores eaten, so now eat any spaces till next word
-                if (text.at(col).isSpace()) {
-                    while (text.at(col).isSpace()) {
-                        ++col;
-                    }
-                }
-                jump = col;
+            };
+
+            int jump = -1;
+            int col = column();
+            const auto &text = thisLine->textLine()->text();
+
+            if (text.at(col).isUpper()) {
+                skipCaps(text, col);
             }
+
+            for (int i = col; i < thisLine->length(); ++i) {
+                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
+                    break;
+                ++col;
+            }
+            // eat any '_' that are after the word BEFORE any space happens
+            if (text.at(col) == QLatin1Char('_')) {
+                while (text.at(col) == QLatin1Char('_')) {
+                    ++col;
+                }
+            }
+            // Underscores eaten, so now eat any spaces till next word
+            if (text.at(col).isSpace()) {
+                while (text.at(col).isSpace()) {
+                    ++col;
+                }
+            }
+            jump = col;
             m_cursor.setColumn(jump);
         } else {
             int jump = -1;
@@ -1330,36 +1328,34 @@ public:
                 }
             };
 
-            for (int i = 0; i > n; --i) {
-                const auto &text = thisLine->textLine()->text();
-                col = col - 1;
+            const auto &text = thisLine->textLine()->text();
+            col = col - 1;
 
-                // skip any spaces
-                if (text.at(col).isSpace()) {
-                    while (text.at(col).isSpace()) {
-                        --col;
-                    }
-                }
-
-                // Skip Underscores
-                if (text.at(col) == QLatin1Char('_')) {
-                    while (text.at(col) == QLatin1Char('_')) {
-                        --col;
-                    }
-                }
-
-                if (text.at(col).isUpper()) {
-                    skipCapsRev(text, col);
-                }
-                for (int i = col; i > 0; --i) {
-                    if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
-                        break;
+            // skip any spaces
+            if (text.at(col).isSpace()) {
+                while (text.at(col).isSpace()) {
                     --col;
                 }
+            }
 
-                if (!text.at(col).isLetterOrNumber()) {
-                    ++col;
+            // Skip Underscores
+            if (text.at(col) == QLatin1Char('_')) {
+                while (text.at(col) == QLatin1Char('_')) {
+                    --col;
                 }
+            }
+
+            if (text.at(col).isUpper()) {
+                skipCapsRev(text, col);
+            }
+            for (int i = col; i > 0; --i) {
+                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
+                    break;
+                --col;
+            }
+
+            if (!text.at(col).isLetterOrNumber()) {
+                ++col;
             }
             jump = col;
             m_cursor.setColumn(jump);
