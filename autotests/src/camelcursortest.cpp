@@ -27,8 +27,19 @@ CamelCursorTest::~CamelCursorTest()
 
 void CamelCursorTest::testWordMovementSingleRow_data()
 {
+    /**
+     * NOTE: If you are here to fix a bug, try not to add a new function please.
+     * Instead consider adding a row here with the label as your bug-number.
+     *
+     * The other test cases are small because if this works, they will work automaitcally
+     * since the core functionality is correct.
+     */
+
+    // The text for document
     QTest::addColumn<QString>("text");
+    // The number of Ctrl + Right/Left movements
     QTest::addColumn<int>("movements");
+    // The expected positions where your cursor is supposed to land
     QTest::addColumn<QVector<int>>("colPos");
 
     // clang-format off
@@ -62,6 +73,9 @@ void CamelCursorTest::testWordMovementSingleRow()
         QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, colPos.at(i)));
     }
 
+    // reverse jumping. Reverse everything but last
+    // element. Last element will be set to 0 as that
+    // is our start pos
     std::reverse(colPos.begin(), colPos.end() - 1);
     colPos.back() = 0;
 

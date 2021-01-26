@@ -1177,6 +1177,79 @@ public:
     }
 };
 
+/**
+ * @brief The CamelCursor class
+ *
+ * This class allows for "camel humps" when moving the cursor
+ * using Ctrl + Left / Right. Similarly, this will also get triggered
+ * when you press Ctrl+Shift+Left/Right for selection and Ctrl+Del
+ * Ctrl + backspace for deletion.
+ *
+ * It is absoloutely essential that if you move through a word in 'n'
+ * jumps, you should be able to move back with exactly same 'n' movements
+ * which you made when moving forward. Example:
+ *
+ * Word: KateViewInternal
+ *
+ * Moving cursor towards right while holding control will result in cursor
+ * landing in the following places (assuming you start from column 0)
+ *
+ *     |   |       |
+ * KateViewInternal
+ *
+ * Moving the cursor back to get to the starting position should also
+ * take exactly 3 movements:
+ *
+ * |   |   |
+ * KateViewInternal
+ *
+ * In addition to simple camel case, this class also handles snake_case
+ * capitalized snake, and mixtures of Camel + snake/underscore, for example
+ * m_someMember. If a word has underscores in it, for example:
+ *
+ * snake_case_word
+ *
+ * the leading underscore is considered part of the word and thus a cursor
+ * movement will land right after the underscore. Moving the cursor to end
+ * for the above word should be like this:
+ *
+ * startpos: 0
+ *       |    |   |
+ * snake_case_word
+ *
+ * When jumping back to startpos, exact same "spots" need to be hit on your way
+ * back.
+ *
+ * If a word has multiple leading underscores: snake___case, the underscores will
+ * be considered part of the word and thus a jump wil land us "after" the last underscore.
+ *
+ * There are some other variations in this, for example Capitalized words, or identifiers
+ * with numbers in betweens. For such cases, All capitalized words are skipped in one go
+ * till we are on some "non-capitalized" word. In this context, a number is a non-capitalized
+ * word so will break the jump. Examples:
+ *
+ *   | |
+ * W1RD
+ *
+ * but for WORD_CAPITAL, following will happen:
+ *
+ *      |      |
+ * WORD_CAPITAL
+ *
+ * The first case here is tricky to handle for reverse movement. I haven't noticed any
+ * cases which the current implementation is unable to handle but there might be some.
+ *
+ * Please see the test cases testWordMovementSingleRow() for more examples/data.
+ *
+ * It is absoloutely essential to know that this class *only* gets triggered for
+ * cursor movement if we are in a word.
+ *
+ * Note to bugfixer: If some bug occurs, before changing anything please add a test
+ * case for the bug and make sure everything passes before and after. The test case
+ * for this can be found autotests/src/camelcursortest.cpp.
+ *
+ * @author Waqar Ahmed <waqar.17a@gmail.com>
+ */
 class CamelCursor : public CalculatingCursor
 {
 public:
