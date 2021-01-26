@@ -2,8 +2,25 @@
 <ui version="4.0">
  <class>NavigationConfigWidget</class>
  <widget class="QWidget" name="NavigationConfigWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>399</width>
+    <height>280</height>
+   </rect>
+  </property>
   <layout class="QVBoxLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -33,8 +50,27 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="chkCamelCursor">
+        <property name="whatsThis">
+         <string>Selects whether cursor jumps full words or breaks at camel case humps.</string>
+        </property>
+        <property name="text">
+         <string>Enable camel case cursor movement</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <layout class="QHBoxLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>

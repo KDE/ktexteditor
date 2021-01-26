@@ -526,7 +526,12 @@ public:
         /**
          * Line length limit
          */
-        LineLengthLimit
+        LineLengthLimit,
+
+        /**
+         * Camel Cursor Movement?
+         */
+        CamelCursor
     };
 
 public:
@@ -894,6 +899,16 @@ public:
     void setLineLengthLimit(int limit)
     {
         setValue(LineLengthLimit, limit);
+    }
+
+    void setCamelCursor(bool on)
+    {
+        setValue(CamelCursor, on);
+    }
+
+    bool camelCursor() const
+    {
+        return value(CamelCursor).toBool();
     }
 
 private:

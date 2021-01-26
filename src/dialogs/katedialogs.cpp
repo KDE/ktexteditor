@@ -370,6 +370,7 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     observeChanges(ui->chkScrollPastEnd);
     observeChanges(ui->chkSmartHome);
     observeChanges(ui->sbAutoCenterCursor);
+    observeChanges(ui->chkCamelCursor);
 
     layout->addWidget(newWidget);
 }
@@ -392,6 +393,7 @@ void KateNavigationConfigTab::apply()
 
     KateDocumentConfig::global()->setPageUpDownMovesCursor(ui->chkPagingMovesCursor->isChecked());
     KateDocumentConfig::global()->setSmartHome(ui->chkSmartHome->isChecked());
+    KateDocumentConfig::global()->setCamelCursor(ui->chkCamelCursor->isChecked());
 
     KateViewConfig::global()->setValue(KateViewConfig::AutoCenterLines, ui->sbAutoCenterCursor->value());
     KateViewConfig::global()->setValue(KateViewConfig::BackspaceRemoveComposedCharacters, ui->chkBackspaceRemoveComposed->isChecked());
@@ -410,6 +412,7 @@ void KateNavigationConfigTab::reload()
     ui->chkPagingMovesCursor->setChecked(KateDocumentConfig::global()->pageUpDownMovesCursor());
     ui->chkScrollPastEnd->setChecked(KateViewConfig::global()->scrollPastEnd());
     ui->chkSmartHome->setChecked(KateDocumentConfig::global()->smartHome());
+    ui->chkCamelCursor->setChecked(KateDocumentConfig::global()->camelCursor());
 
     ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
 }

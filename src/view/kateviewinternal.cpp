@@ -1291,7 +1291,7 @@ public:
             }
 
             for (int i = col; i < thisLine->length(); ++i) {
-                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()){
+                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()) {
                     break;
                 }
                 ++col;
@@ -1352,7 +1352,7 @@ public:
                 skipCapsRev(text, col);
             }
             for (int i = col; i > 0; --i) {
-                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()){
+                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()) {
                     break;
                 }
                 --col;
@@ -1422,11 +1422,17 @@ void KateViewInternal::wordPrev(bool sel)
     if (c.atEdge(left)) {
         --c;
     } else if (h->isInWord(doc()->line(c.line())[c.column() - 1])) {
-        CamelCursor cc(this, m_cursor);
-        --cc;
-        updateSelection(cc, sel);
-        updateCursor(cc);
-        return;
+        if (doc()->config()->camelCursor()) {
+            CamelCursor cc(this, m_cursor);
+            --cc;
+            updateSelection(cc, sel);
+            updateCursor(cc);
+            return;
+        } else {
+            while (!c.atEdge(left) && h->isInWord(doc()->line(c.line())[c.column() - 1])) {
+                --c;
+            }
+        }
     } else {
         while (!c.atEdge(left)
                && !h->isInWord(doc()->line(c.line())[c.column() - 1])
@@ -1457,11 +1463,17 @@ void KateViewInternal::wordNext(bool sel)
     if (c.atEdge(right)) {
         ++c;
     } else if (h->isInWord(doc()->line(c.line())[c.column()])) {
-        CamelCursor cc(this, m_cursor);
-        ++cc;
-        updateSelection(cc, sel);
-        updateCursor(cc);
-        return;
+        if (doc()->config()->camelCursor()) {
+            CamelCursor cc(this, m_cursor);
+            ++cc;
+            updateSelection(cc, sel);
+            updateCursor(cc);
+            return;
+        } else {
+            while (!c.atEdge(right) && h->isInWord(doc()->line(c.line())[c.column()])) {
+                ++c;
+            }
+        }
     } else {
         while (!c.atEdge(right)
                && !h->isInWord(doc()->line(c.line())[c.column()])
