@@ -170,6 +170,8 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
 KateCompletionWidget::~KateCompletionWidget()
 {
+    // ensure no slot triggered during destruction => else we access already invalidated stuff
+    m_presentationModel->disconnect(this);
 }
 
 void KateCompletionWidget::viewFocusOut()
