@@ -1253,16 +1253,8 @@ public:
 class CamelCursor : public CalculatingCursor
 {
 public:
-    CamelCursor(KateViewInternal *vi)
-        : CalculatingCursor(vi)
-    {
-    }
     CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor &c)
         : CalculatingCursor(vi, c)
-    {
-    }
-    CamelCursor(KateViewInternal *vi, int line, int col)
-        : CalculatingCursor(vi, line, col)
     {
     }
 
