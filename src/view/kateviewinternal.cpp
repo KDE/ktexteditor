@@ -1284,7 +1284,7 @@ public:
 
             int jump = -1;
             int col = column();
-            const auto &text = thisLine->textLine()->text();
+            const QString &text = thisLine->textLine()->text();
 
             if (col < text.size() && text.at(col).isUpper()) {
                 skipCaps(text, col);
@@ -1330,7 +1330,7 @@ public:
                 }
             };
 
-            const auto &text = thisLine->textLine()->text();
+            const QString &text = thisLine->textLine()->text();
             col = col - 1;
 
             // skip any spaces

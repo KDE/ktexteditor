@@ -150,7 +150,7 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QStringLiteral("Word"));
     view->deleteWordRight();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 
     doc->setText("Some Word");
     view->setCursorPosition({0, 0});
@@ -158,7 +158,7 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QStringLiteral("Word"));
     view->deleteWordRight();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 
     doc->setText("Some_WORD");
     view->setCursorPosition({0, 0});
@@ -166,7 +166,7 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QStringLiteral("WORD"));
     view->deleteWordRight();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 
     doc->setText("Some      WORD");
     view->setCursorPosition({0, 0});
@@ -174,42 +174,38 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QStringLiteral("WORD"));
     view->deleteWordRight();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 }
 
 void CamelCursorTest::testDeletionLeft()
 {
     doc->setText("SomeWord");
     view->setCursorPosition({0, 8});
-
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some"));
     view->deleteWordLeft();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 
     doc->setText("Some Word");
     view->setCursorPosition({0, 9});
-
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some "));
     view->deleteWordLeft();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 
     doc->setText("Some_WORD");
     view->setCursorPosition({0, 9});
-
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some_"));
     view->deleteWordLeft();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some      WORD");
-    view->setCursorPosition({0, 14});
-
+    doc->setText("Some   WORD");
+    view->setCursorPosition({0, 11});
     view->deleteWordLeft();
-    QCOMPARE(doc->text(), QStringLiteral("Some      "));
+    QCOMPARE(doc->text(), QStringLiteral("Some   "));
     view->deleteWordLeft();
-    QCOMPARE(doc->text(), QStringLiteral(""));
+    QCOMPARE(doc->text(), QString());
 }
 
 void CamelCursorTest::testSelectionRight()
