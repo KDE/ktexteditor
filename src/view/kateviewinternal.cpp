@@ -1291,8 +1291,9 @@ public:
             }
 
             for (int i = col; i < thisLine->length(); ++i) {
-                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
+                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()){
                     break;
+                }
                 ++col;
             }
 
@@ -1351,8 +1352,9 @@ public:
                 skipCapsRev(text, col);
             }
             for (int i = col; i > 0; --i) {
-                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber())
+                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()){
                     break;
+                }
                 --col;
             }
 
