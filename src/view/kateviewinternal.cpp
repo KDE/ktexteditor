@@ -1269,7 +1269,7 @@ public:
         if (n >= 0) {
             auto skipCaps = [](QStringView text, int &col) {
                 int count = 0;
-                while (text.at(col).isUpper() && col < text.size()) {
+                while (col < text.size() && text.at(col).isUpper()) {
                     ++count;
                     ++col;
                 }
@@ -1277,7 +1277,7 @@ public:
                 // middle of a word, step back one position so that
                 // we are at the last Cap letter
                 // Otherwise, it's an all cap word
-                if (count > 1 && text.at(col).isLetterOrNumber()) {
+                if (count > 1 && col < text.size() && text.at(col).isLetterOrNumber()) {
                     --col;
                 }
             };
@@ -1286,7 +1286,7 @@ public:
             int col = column();
             const auto &text = thisLine->textLine()->text();
 
-            if (text.at(col).isUpper()) {
+            if (col < text.size() && text.at(col).isUpper()) {
                 skipCaps(text, col);
             }
 
@@ -1295,15 +1295,17 @@ public:
                     break;
                 ++col;
             }
+
             // eat any '_' that are after the word BEFORE any space happens
-            if (text.at(col) == QLatin1Char('_')) {
-                while (text.at(col) == QLatin1Char('_')) {
+            if (col < text.size() && text.at(col) == QLatin1Char('_')) {
+                while (col < text.size() && text.at(col) == QLatin1Char('_')) {
                     ++col;
                 }
             }
+
             // Underscores eaten, so now eat any spaces till next word
-            if (text.at(col).isSpace()) {
-                while (text.at(col).isSpace()) {
+            if (col < text.size() && text.at(col).isSpace()) {
+                while (col < text.size() && text.at(col).isSpace()) {
                     ++col;
                 }
             }
@@ -1315,7 +1317,7 @@ public:
 
             auto skipCapsRev = [](QStringView text, int &col) {
                 int count = 0;
-                while (text.at(col).isUpper() && col > 0) {
+                while (col > 0 && text.at(col).isUpper()) {
                     ++count;
                     --col;
                 }
@@ -1323,7 +1325,7 @@ public:
                 // if more than one cap found, and current
                 // column is not upper, we want to move ahead
                 // to the upper
-                if (count >= 1 && !text.at(col).isUpper()) {
+                if (count >= 1 && col > 0 && !text.at(col).isUpper()) {
                     ++col;
                 }
             };
@@ -1332,20 +1334,20 @@ public:
             col = col - 1;
 
             // skip any spaces
-            if (text.at(col).isSpace()) {
-                while (text.at(col).isSpace()) {
+            if (col > 0 && text.at(col).isSpace()) {
+                while (text.at(col).isSpace() && col > 0) {
                     --col;
                 }
             }
 
             // Skip Underscores
-            if (text.at(col) == QLatin1Char('_')) {
-                while (text.at(col) == QLatin1Char('_')) {
+            if (col > 0 && text.at(col) == QLatin1Char('_')) {
+                while (col > 0 && text.at(col) == QLatin1Char('_')) {
                     --col;
                 }
             }
 
-            if (text.at(col).isUpper()) {
+            if (col > 0 && text.at(col).isUpper()) {
                 skipCapsRev(text, col);
             }
             for (int i = col; i > 0; --i) {
@@ -1354,7 +1356,7 @@ public:
                 --col;
             }
 
-            if (!text.at(col).isLetterOrNumber()) {
+            if (col > 0 && !text.at(col).isLetterOrNumber()) {
                 ++col;
             }
             jump = col;
