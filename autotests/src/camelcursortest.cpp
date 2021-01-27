@@ -56,6 +56,15 @@ void CamelCursorTest::testWordMovementSingleRow_data()
     QTest::addRow("SE_CHECKBOXINDICATOR") << QStringLiteral("QStyle::SE_CHECKBOXINDICATOR") << 5 << QVector<int>{1, 6, 8, 11, 28};
     QTest::addRow("abc0_asd")             << QStringLiteral("int abc0_asd")                 << 3 << QVector<int>{4, 9, 12};
     QTest::addRow("abc120_aSD")           << QStringLiteral("int abc120_aSD")               << 4 << QVector<int>{4, 11, 12, 14};
+
+    // PHP stuff that starts with $
+    QTest::addRow("$phpVar")              << QStringLiteral("$phpVar = 0;")                 << 6 << QVector<int>{1, 4, 8, 10, 11, 12};
+    QTest::addRow("$php_Var")             << QStringLiteral("$php_Var = 0;")                << 6 << QVector<int>{1, 5, 9, 11, 12, 13};
+    QTest::addRow("$_SESSION")            << QStringLiteral("$_SESSION[\"some\"]")          << 6 << QVector<int>{1, 2, 9, 11, 15, 17};
+
+    // CSS Color
+    QTest::addRow("#ff00ff")              << QStringLiteral("#ff00ff")                      << 2 << QVector<int>{1, 7};
+    QTest::addRow("#00FF00")              << QStringLiteral("#00FF00")                      << 4 << QVector<int>{1, 3, 4, 7};
     // clang-format on
 }
 
