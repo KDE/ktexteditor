@@ -41,30 +41,33 @@ void CamelCursorTest::testWordMovementSingleRow_data()
     QTest::addColumn<int>("movements");
     // The expected positions where your cursor is supposed to land
     QTest::addColumn<QVector<int>>("colPos");
+    // Highlighting mode
+    QTest::addColumn<QString>("HlMode");
 
     // clang-format off
     // row name                                         text                                no of mov       expected positions
-    QTest::addRow("KateView")             << QStringLiteral("KateView")                     << 2 << QVector<int>{4, 8};
-    QTest::addRow("Q_LOGGING_CATEGORY")   << QStringLiteral("Q_LOGGING_CATEGORY();")        << 4 << QVector<int>{2, 10, 18, 21};
-    QTest::addRow("Q_L11GING_CATEG0RY")   << QStringLiteral("Q_L11GING_CATEG0RY();")        << 7 << QVector<int>{2, 5, 10, 14, 16, 18, 21};
-    QTest::addRow("snake_case_name")      << QStringLiteral("int snake_case_name = 123;")   << 7 << QVector<int>{4, 10, 15, 20, 22, 25, 26};
-    QTest::addRow("bad___SNAKE_case__")   << QStringLiteral("int bad___SNAKE_case__ = 11;") << 7 << QVector<int>{4, 10, 16, 23, 25, 27, 28};
-    QTest::addRow("QApplication")         << QStringLiteral("QApplication app;")            << 4 << QVector<int>{1, 13, 16, 17};
-    QTest::addRow("ABCDead")              << QStringLiteral("ABCDead")                      << 2 << QVector<int>{3, 7};
-    QTest::addRow("SE_CheckBoxIndicator") << QStringLiteral("QStyle::SE_CheckBoxIndicator") << 7 << QVector<int>{1, 6, 8, 11, 16, 19, 28};
-    QTest::addRow("SE_CHECKBoxIndicator") << QStringLiteral("QStyle::SE_CHECKBoxIndicator") << 7 << QVector<int>{1, 6, 8, 11, 16, 19, 28};
-    QTest::addRow("SE_CHECKBOXINDICATOR") << QStringLiteral("QStyle::SE_CHECKBOXINDICATOR") << 5 << QVector<int>{1, 6, 8, 11, 28};
-    QTest::addRow("abc0_asd")             << QStringLiteral("int abc0_asd")                 << 3 << QVector<int>{4, 9, 12};
-    QTest::addRow("abc120_aSD")           << QStringLiteral("int abc120_aSD")               << 4 << QVector<int>{4, 11, 12, 14};
+    QTest::addRow("KateView")             << QStringLiteral("KateView")                     << 2 << QVector<int>{4, 8} << QStringLiteral("C++");
+    QTest::addRow("Q_LOGGING_CATEGORY")   << QStringLiteral("Q_LOGGING_CATEGORY();")        << 4 << QVector<int>{2, 10, 18, 21} << QStringLiteral("C");
+    QTest::addRow("Q_L11GING_CATEG0RY")   << QStringLiteral("Q_L11GING_CATEG0RY();")        << 7 << QVector<int>{2, 5, 10, 14, 16, 18, 21} << QString();
+    QTest::addRow("snake_case_name")      << QStringLiteral("int snake_case_name = 123;")   << 7 << QVector<int>{4, 10, 15, 20, 22, 25, 26} << QString();
+    QTest::addRow("bad___SNAKE_case__")   << QStringLiteral("int bad___SNAKE_case__ = 11;") << 7 << QVector<int>{4, 10, 16, 23, 25, 27, 28} << QString();
+    QTest::addRow("QApplication")         << QStringLiteral("QApplication app;")            << 4 << QVector<int>{1, 13, 16, 17} << QString();
+    QTest::addRow("ABCDead")              << QStringLiteral("ABCDead")                      << 2 << QVector<int>{3, 7} << QString();
+    QTest::addRow("SE_CheckBoxIndicator") << QStringLiteral("QStyle::SE_CheckBoxIndicator") << 7 << QVector<int>{1, 6, 8, 11, 16, 19, 28} << QStringLiteral("C++");
+    QTest::addRow("SE_CHECKBoxIndicator") << QStringLiteral("QStyle::SE_CHECKBoxIndicator") << 7 << QVector<int>{1, 6, 8, 11, 16, 19, 28} << QString();
+    QTest::addRow("SE_CHECKBOXINDICATOR") << QStringLiteral("QStyle::SE_CHECKBOXINDICATOR") << 5 << QVector<int>{1, 6, 8, 11, 28} << QString();
+    QTest::addRow("abc0_asd")             << QStringLiteral("int abc0_asd")                 << 3 << QVector<int>{4, 9, 12} << QString();
+    QTest::addRow("abc120_aSD")           << QStringLiteral("int abc120_aSD")               << 4 << QVector<int>{4, 11, 12, 14} << QString();
 
     // PHP stuff that starts with $
-    QTest::addRow("$phpVar")              << QStringLiteral("$phpVar = 0;")                 << 6 << QVector<int>{1, 4, 8, 10, 11, 12};
-    QTest::addRow("$php_Var")             << QStringLiteral("$php_Var = 0;")                << 6 << QVector<int>{1, 5, 9, 11, 12, 13};
-    QTest::addRow("$_SESSION")            << QStringLiteral("$_SESSION[\"some\"]")          << 6 << QVector<int>{1, 2, 9, 11, 15, 17};
+    doc->setHighlightingMode("PHP/PHP");
+    QTest::addRow("$phpVar")              << QStringLiteral("$phpVar = 0;")                 << 6 << QVector<int>{1, 4, 8, 10, 11, 12} << QStringLiteral("PHP/PHP");
+    QTest::addRow("$php_Var")             << QStringLiteral("$php_Var = 0;")                << 6 << QVector<int>{1, 5, 9, 11, 12, 13} << QStringLiteral("PHP/PHP");
+    QTest::addRow("$_SESSION")            << QStringLiteral("$_SESSION[\"some\"]")          << 6 << QVector<int>{1, 2, 9, 11, 15, 17} << QStringLiteral("PHP/PHP");
 
     // CSS Color
-    QTest::addRow("#ff00ff")              << QStringLiteral("#ff00ff")                      << 2 << QVector<int>{1, 7};
-    QTest::addRow("#00FF00")              << QStringLiteral("#00FF00")                      << 4 << QVector<int>{1, 3, 4, 7};
+    QTest::addRow("#ff00ff")              << QStringLiteral("#ff00ff")                      << 2 << QVector<int>{1, 7} << QStringLiteral("CSS");
+    QTest::addRow("#00FF00")              << QStringLiteral("#00FF00")                      << 4 << QVector<int>{1, 3, 4, 7} << QStringLiteral("HTML");
     // clang-format on
 }
 
@@ -73,6 +76,9 @@ void CamelCursorTest::testWordMovementSingleRow()
     QFETCH(QString, text);
     QFETCH(int, movements);
     QFETCH(QVector<int>, colPos);
+    QFETCH(QString, HlMode);
+
+    doc->setHighlightingMode(HlMode);
 
     doc->setText(text);
     view->setCursorPosition({0, 0});
@@ -94,6 +100,7 @@ void CamelCursorTest::testWordMovementSingleRow()
     }
 
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 0));
+    doc->setHighlightingMode(QString());
 }
 
 void CamelCursorTest::testRtlWordMovement()
