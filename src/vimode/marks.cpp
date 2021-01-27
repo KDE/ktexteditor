@@ -156,7 +156,8 @@ void Marks::markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTex
             }
         }
 
-        if (!freeMarkerCharFound) {
+        // only show error when we are in Vi input mode
+        if (!freeMarkerCharFound && m_inputModeManager->view()->viewInputMode() == KTextEditor::View::ViInputMode) {
             m_inputModeManager->getViNormalMode()->error(i18n("There are no more chars for the next bookmark."));
         }
     }
