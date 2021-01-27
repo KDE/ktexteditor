@@ -1239,6 +1239,16 @@ public:
  * The first case here is tricky to handle for reverse movement. I haven't noticed any
  * cases which the current implementation is unable to handle but there might be some.
  *
+ * With languages like PHP where you have $ as part of the identifier, the cursor jump
+ * will break "after" dollar. Consider: $phpVar, Following will happen:
+ *
+ *  |  |  |
+ * $phpVar
+ *
+ * And of course, the reverse will be exact opposite.
+ *
+ * Similar to PHP, with CSS Colors, jump will break on '#' charachter
+ *
  * Please see the test cases testWordMovementSingleRow() for more examples/data.
  *
  * It is absoloutely essential to know that this class *only* gets triggered for
@@ -1310,7 +1320,8 @@ public:
                     ++col;
                 }
             }
-            jump = col;
+
+            jump = col < 0 || (column() == col) ? (column() + 1) : col;
             m_cursor.setColumn(jump);
         } else {
             int jump = -1;
@@ -1351,6 +1362,7 @@ public:
             if (col > 0 && text.at(col).isUpper()) {
                 skipCapsRev(text, col);
             }
+
             for (int i = col; i > 0; --i) {
                 if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()) {
                     break;
@@ -1358,10 +1370,18 @@ public:
                 --col;
             }
 
-            if (col > 0 && !text.at(col).isLetterOrNumber()) {
+            if (col >= 0 && !text.at(col).isLetterOrNumber()) {
                 ++col;
             }
-            jump = col;
+
+            if (col < 0) {
+                jump = 0;
+            } else if (col == column() && column() > 0) {
+                jump = column() - 1;
+            } else {
+                jump = col;
+            }
+
             m_cursor.setColumn(jump);
         }
 
