@@ -8,6 +8,7 @@
 #include "movingrange_test.h"
 #include "moc_movingrange_test.cpp"
 
+#include <katebuffer.h>
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
@@ -427,4 +428,34 @@ void MovingRangeTest::testFeedbackMouse()
     QTest::qWait(200); // process mouse events. do not move mouse manually
     QVERIFY(!rf.mouseEnteredRangeCalled());
     QVERIFY(rf.mouseExitedRangeCalled());
+}
+
+void MovingRangeTest::testLineRemoved()
+{
+    KTextEditor::DocumentPrivate doc;
+    // the range created below will span the 'x' characters
+    QString text(
+        "abcd\n"
+        "efgh\n"
+        "\n"
+        "hijk");
+    doc.setText(text);
+
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    view->setCursorPosition(Cursor(1, 3));
+    view->show();
+    view->resize(200, 100);
+    constexpr auto expand = KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight;
+    MovingRange *range = doc.newMovingRange({1, 1, 1, 2}, expand, KTextEditor::MovingRange::InvalidateIfEmpty);
+    MovingRange *range2 = doc.newMovingRange({1, 3, 1, 4}, expand, KTextEditor::MovingRange::InvalidateIfEmpty);
+    KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute);
+    attr->setForeground(Qt::red);
+    range->setAttribute(attr);
+    doc.removeLine(1);
+    delete range;
+    delete range2;
+
+    // shouldn't crash
+    auto r = doc.buffer().rangesForLine(1, view, true);
+    QVERIFY(r.isEmpty());
 }

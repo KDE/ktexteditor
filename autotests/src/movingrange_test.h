@@ -23,6 +23,7 @@ private Q_SLOTS:
     void testFeedbackInvalidRange();
     void testFeedbackCaret();
     void testFeedbackMouse();
+    void testLineRemoved();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H
