@@ -283,10 +283,10 @@ private:
      *
      * IMPORTANT: Notifications might need to deletion of this range!
      *
-     * @param oldLineRange lien range of this range before changing of cursors, needed to add/remove range from m_ranges in blocks
+     * @param oldLineRange line range of this range before changing of cursors, needed to add/remove range from m_ranges in blocks, required!
      * @param notifyAboutChange should feedback be emitted or not?
      */
-    void checkValidity(KTextEditor::LineRange oldLineRange = KTextEditor::LineRange::invalid(), bool notifyAboutChange = true);
+    void checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAboutChange = true);
 
     /**
      * Add/Remove range from the lookup m_ranges hash of each block

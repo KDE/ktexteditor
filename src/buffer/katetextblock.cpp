@@ -167,7 +167,7 @@ void TextBlock::wrapLine(const KTextEditor::Cursor &position, int fixStartLinesS
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : qAsConst(changedRanges)) {
-        range->checkValidity();
+        range->checkValidity(range->toLineRange());
     }
 }
 
@@ -266,7 +266,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
             previousBlock->updateRange(range);
 
             // afterwards check validity, might delete this range!
-            range->checkValidity();
+            range->checkValidity(range->toLineRange());
         }
 
         // be done
@@ -333,7 +333,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : qAsConst(changedRanges)) {
-        range->checkValidity();
+        range->checkValidity(range->toLineRange());
     }
 }
 
@@ -402,7 +402,7 @@ void TextBlock::insertText(const KTextEditor::Cursor &position, const QString &t
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : qAsConst(changedRanges)) {
-        range->checkValidity();
+        range->checkValidity(range->toLineRange());
     }
 }
 
@@ -471,7 +471,7 @@ void TextBlock::removeText(const KTextEditor::Range &range, QString &removedText
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : qAsConst(changedRanges)) {
-        range->checkValidity();
+        range->checkValidity(range->toLineRange());
     }
 }
 

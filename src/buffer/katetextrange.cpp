@@ -26,7 +26,8 @@ TextRange::TextRange(TextBuffer &buffer, const KTextEditor::Range &range, Insert
     m_buffer.m_ranges.insert(this);
 
     // check if range now invalid, there can happen no feedback, as m_feedback == 0
-    checkValidity();
+    // only place where KTextEditor::LineRange::invalid() for old range makes sense, as we were yet not registered!
+    checkValidity(KTextEditor::LineRange::invalid());
 }
 
 TextRange::~TextRange()
