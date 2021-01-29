@@ -109,6 +109,7 @@ public Q_SLOTS:
 protected:
     // Overridden
     void showEvent(QShowEvent *event) override;
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
 private Q_SLOTS:
     void onIncPatternChanged(const QString &pattern);
@@ -195,6 +196,7 @@ private:
     // Shared by both dialogs
     QVBoxLayout *const m_layout;
     QWidget *m_widget;
+    QString m_unfinishedSearchText;
 
     // Incremental search related
     Ui::IncrementalSearchBar *m_incUi;

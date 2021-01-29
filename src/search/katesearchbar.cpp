@@ -218,6 +218,7 @@ void KateSearchBar::closed()
 
     clearHighlights();
     m_replacement.clear();
+    m_unfinishedSearchText.clear();
 }
 
 void KateSearchBar::setReplacementPattern(const QString &replacementPattern)
@@ -1342,6 +1343,10 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->replacement->lineEdit()->setClearButtonEnabled(true);
         m_powerUi->replacement->setCompleter(nullptr);
 
+        // Filter Up/Down arrow key inputs to save unfinished search/replace text
+        m_powerUi->pattern->installEventFilter(this);
+        m_powerUi->replacement->installEventFilter(this);
+
         // Icons
         // Gnome does not seem to have all icons we want, so we use fall-back icons for those that are missing.
         QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("games-config-options"), QIcon::fromTheme(QStringLiteral("preferences-system")));
@@ -1483,6 +1488,9 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->setupUi(m_widget);
         m_layout->addWidget(m_widget);
 
+        // Filter Up/Down arrow key inputs to save unfinished search text
+        m_incUi->pattern->installEventFilter(this);
+
         //         new QShortcut(KStandardShortcut::paste().primary(), m_incUi->pattern, SLOT(paste()), 0, Qt::WidgetWithChildrenShortcut);
         //         if (!KStandardShortcut::paste().alternate().isEmpty())
         //             new QShortcut(KStandardShortcut::paste().alternate(), m_incUi->pattern, SLOT(paste()), 0, Qt::WidgetWithChildrenShortcut);
@@ -1609,6 +1617,30 @@ void KateSearchBar::showEvent(QShowEvent *event)
 
     updateSelectionOnly();
     KateViewBarWidget::showEvent(event);
+}
+
+bool KateSearchBar::eventFilter(QObject *obj, QEvent *event)
+{
+    QComboBox *combo = qobject_cast<QComboBox *>(obj);
+    if (combo && event->type() == QEvent::KeyPress) {
+        const int key = static_cast<QKeyEvent *>(event)->key();
+        const int currentIndex = combo->currentIndex();
+        const QString currentText = combo->currentText();
+        QString &unfinishedText = (m_powerUi && combo == m_powerUi->replacement) ? m_replacement : m_unfinishedSearchText;
+        if (key == Qt::Key_Up && currentIndex <= 0 && unfinishedText != currentText) {
+            // Only restore unfinished text if we are already in the latest entry
+            combo->setCurrentIndex(-1);
+            combo->setCurrentText(unfinishedText);
+        } else if (key == Qt::Key_Down || key == Qt::Key_Up) {
+            // Only save unfinished text if it is not empty and it is modified
+            const bool isUnfinishedSearch = (!currentText.trimmed().isEmpty() && (currentIndex == -1 || combo->itemText(currentIndex) != currentText));
+            if (isUnfinishedSearch && unfinishedText != currentText) {
+                unfinishedText = currentText;
+            }
+        }
+    }
+
+    return QWidget::eventFilter(obj, event);
 }
 
 void KateSearchBar::updateSelectionOnly()
