@@ -341,7 +341,7 @@ if(BUILD_QCH)
         KF5TextEditor_QCH
         NAME KTextEditor
         BASE_NAME KF5TextEditor
-        VERSION ${KF5_VERSION}
+        VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
             ${KTEXTEDITOR_PUBLIC_HEADERS}

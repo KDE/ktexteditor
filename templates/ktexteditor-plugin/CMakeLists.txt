@@ -11,8 +11,8 @@ include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 
-set(REQUIRED_KF5_VERSION "5.23.0")
-find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS
+set(REQUIRED_KF_VERSION "5.23.0")
+find_package(KF5 ${REQUIRED_KF_VERSION} REQUIRED COMPONENTS
     I18n
     TextEditor
 )

@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(KF5_VERSION "5.79.0") # handled by release scripts
-set(KF5_DEP_VERSION "5.79.0") # handled by release scripts
-project(KTextEditor VERSION ${KF5_VERSION})
+set(KF_VERSION "5.79.0") # handled by release scripts
+set(KF_DEP_VERSION "5.79.0") # handled by release scripts
+project(KTextEditor VERSION ${KF_VERSION})
 
 # ECM setup
 include(FeatureSummary)
@@ -47,15 +47,15 @@ set(REQUIRED_QT_VERSION 5.14.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
   PrintSupport Xml)
 
-find_package(KF5Archive ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5GuiAddons ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5I18n ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5KIO ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5SyntaxHighlighting ${KF5_DEP_VERSION} REQUIRED)
-find_package(KF5Auth ${KF5_DEP_VERSION} REQUIRED)
+find_package(KF5Archive ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5Config ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5GuiAddons ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5I18n ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5KIO ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5Parts ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
 
 # libgit2 integration, at least 0.22 with proper git_libgit2_init()
 find_package(LibGit2 "0.22.0")
