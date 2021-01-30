@@ -858,7 +858,6 @@ bool NormalViMode::commandMakeUppercaseLine()
 
 bool NormalViMode::commandChangeCase()
 {
-    switchView();
     QString text;
     KTextEditor::Range range;
     KTextEditor::Cursor c(m_view->cursorPosition());
