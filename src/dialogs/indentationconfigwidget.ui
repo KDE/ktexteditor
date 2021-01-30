@@ -112,7 +112,7 @@
          <number>1</number>
         </property>
         <property name="maximum">
-         <number>16</number>
+         <number>200</number>
         </property>
         <property name="value">
          <number>8</number>
@@ -128,7 +128,7 @@
          <number>1</number>
         </property>
         <property name="maximum">
-         <number>16</number>
+         <number>200</number>
         </property>
         <property name="value">
          <number>4</number>

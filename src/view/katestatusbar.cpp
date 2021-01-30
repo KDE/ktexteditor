@@ -476,7 +476,7 @@ void KateStatusBar::slotTabGroup(QAction *a)
     bool ok;
     KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
     if (val == -1) {
-        val = QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 16, 1, &ok);
+        val = QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 200, 1, &ok);
         if (!ok)
             val = config->tabWidth();
     }
@@ -494,7 +494,7 @@ void KateStatusBar::slotIndentGroup(QAction *a)
                                    i18n("Please specify the wanted indentation width:"),
                                    config->indentationWidth(),
                                    1,
-                                   16,
+                                   200,
                                    1,
                                    &ok);
         if (!ok)
