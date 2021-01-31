@@ -1002,7 +1002,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     bool needShiftX = (maxwidth != -1) && m_view && (m_view->config()->dynWordWrapAlignIndent() > 0);
 
-    forever {
+    while (true) {
         QTextLine line = l->createLine();
         if (!line.isValid()) {
             break;
