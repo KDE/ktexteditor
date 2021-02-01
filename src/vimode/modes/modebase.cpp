@@ -1303,12 +1303,24 @@ void ModeBase::switchView(Direction direction)
 
 Range ModeBase::motionFindPrev()
 {
-    return m_viInputModeManager->searcher()->motionFindPrev(getCount());
+    Searcher *searcher = m_viInputModeManager->searcher();
+    Range match = searcher->motionFindPrev(getCount());
+    if (searcher->lastSearchWrapped()) {
+        message(i18n("Search wrapped to BOTTOM"));
+    }
+
+    return match;
 }
 
 Range ModeBase::motionFindNext()
 {
-    return m_viInputModeManager->searcher()->motionFindNext(getCount());
+    Searcher *searcher = m_viInputModeManager->searcher();
+    Range match = searcher->motionFindNext(getCount());
+    if (searcher->lastSearchWrapped()) {
+        message(i18n("Search wrapped to TOP"));
+    }
+
+    return match;
 }
 
 void ModeBase::goToPos(const Range &r)

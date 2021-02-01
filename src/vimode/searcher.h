@@ -47,6 +47,7 @@ public:
     KTextEditor::Range findPattern(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory = true);
 
     const QString getLastSearchPattern() const;
+    bool lastSearchWrapped() const;
     void setLastSearchParams(const SearchParams &searchParams);
 
 private:
@@ -58,6 +59,7 @@ private:
     KTextEditor::ViewPrivate *m_view;
 
     SearchParams m_lastSearchConfig;
+    mutable bool m_lastSearchWrapped;
 };
 }
 
