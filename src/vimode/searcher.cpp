@@ -13,6 +13,8 @@
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/modebase.h>
 
+#include <KLocalizedString>
+
 using namespace KateVi;
 
 Searcher::Searcher(InputModeManager *manager)
@@ -33,11 +35,6 @@ const QString Searcher::getLastSearchPattern() const
 void Searcher::setLastSearchParams(const SearchParams &searchParams)
 {
     m_lastSearchConfig = searchParams;
-}
-
-bool Searcher::lastSearchWrapped() const
-{
-    return m_lastSearchWrapped;
 }
 
 void Searcher::findNext()
@@ -121,7 +118,6 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
 {
     KTextEditor::Cursor searchBegin = startFrom;
     KTextEditor::SearchOptions flags = KTextEditor::Regex;
-    m_lastSearchWrapped = false;
 
     const QString &pattern = searchParams.pattern;
 
@@ -132,6 +128,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
         flags |= KTextEditor::CaseInsensitive;
     }
     KTextEditor::Range finalMatch;
+    bool searchWrapped = false;
     for (int i = 0; i < count; i++) {
         if (!searchParams.isBackwards) {
             const KTextEditor::Range matchRange =
@@ -149,7 +146,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
                     m_view->doc()->searchText(KTextEditor::Range(m_view->doc()->documentRange().start(), m_view->doc()->documentEnd()), pattern, flags).first();
                 if (wrappedMatchRange.isValid()) {
                     finalMatch = wrappedMatchRange;
-                    m_lastSearchWrapped = true;
+                    searchWrapped = true;
                 } else {
                     return KTextEditor::Range::invalid();
                 }
@@ -205,7 +202,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
 
                 if (wrappedMatchRange.isValid()) {
                     finalMatch = wrappedMatchRange;
-                    m_lastSearchWrapped = true;
+                    searchWrapped = true;
                 } else {
                     return KTextEditor::Range::invalid();
                 }
@@ -213,5 +210,10 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
         }
         searchBegin = finalMatch.start();
     }
+
+    if (searchWrapped) {
+        m_viInputModeManager->getCurrentViModeHandler()->message(i18n("Search wrapped"));
+    }
+
     return finalMatch;
 }
