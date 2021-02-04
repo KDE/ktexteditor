@@ -522,7 +522,7 @@ KateViewConfig::KateViewConfig()
     }));
     addConfigEntry(ConfigEntry(ShowWordCount, "Show Word Count", QString(), false));
     addConfigEntry(ConfigEntry(TextDragAndDrop, "Text Drag And Drop", QString(), true));
-    addConfigEntry(ConfigEntry(SmartCopyCut, "Smart Copy Cut", QString(), false));
+    addConfigEntry(ConfigEntry(SmartCopyCut, "Smart Copy Cut", QString(), true));
     addConfigEntry(ConfigEntry(UserSetsOfCharsToEncloseSelection, "User Sets Of Chars To Enclose Selection", QString(), QStringList()));
     addConfigEntry(ConfigEntry(ViInputModeStealKeys, "Vi Input Mode Steal Keys", QString(), false));
     addConfigEntry(ConfigEntry(ViRelativeLineNumbers, "Vi Relative Line Numbers", QString(), false));
