@@ -1325,7 +1325,6 @@ public:
             m_cursor.setColumn(jump);
         } else {
             int jump = -1;
-            int col = column();
 
             auto skipCapsRev = [](QStringView text, int &col) {
                 int count = 0;
@@ -1343,6 +1342,7 @@ public:
             };
 
             const QString &text = thisLine->textLine()->text();
+            int col = std::min(column(), text.size() - 1);
             col = col - 1;
 
             // skip any spaces
