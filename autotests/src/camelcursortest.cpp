@@ -58,6 +58,8 @@ void CamelCursorTest::testWordMovementSingleRow_data()
     QTest::addRow("SE_CHECKBOXINDICATOR") << QStringLiteral("QStyle::SE_CHECKBOXINDICATOR") << 5 << QVector<int>{1, 6, 8, 11, 28} << QString();
     QTest::addRow("abc0_asd")             << QStringLiteral("int abc0_asd")                 << 3 << QVector<int>{4, 9, 12} << QString();
     QTest::addRow("abc120_aSD")           << QStringLiteral("int abc120_aSD")               << 4 << QVector<int>{4, 11, 12, 14} << QString();
+    QTest::addRow("aQQ_OPEN")             << QStringLiteral("aQQ_OPEN")                     << 3 << QVector<int>{1, 4, 8} << QString();
+    QTest::addRow("aQQ_OPEN")             << QStringLiteral("    aQQ_OPEN")                 << 4 << QVector<int>{4, 5, 8, 12} << QString();
 
     // PHP stuff that starts with $
     doc->setHighlightingMode("PHP/PHP");

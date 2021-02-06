@@ -1336,7 +1336,7 @@ public:
                 // if more than one cap found, and current
                 // column is not upper, we want to move ahead
                 // to the upper
-                if (count >= 1 && col > 0 && !text.at(col).isUpper()) {
+                if (count >= 1 && col >= 0 && !text.at(col).isUpper()) {
                     ++col;
                 }
             };
