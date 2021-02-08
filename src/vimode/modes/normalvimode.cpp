@@ -3843,8 +3843,30 @@ void NormalViMode::joinLines(unsigned int from, unsigned int to) const
 
 void NormalViMode::reformatLines(unsigned int from, unsigned int to) const
 {
+    // BUG #340550: Do not remove empty lines when reformatting
+    KTextEditor::DocumentPrivate *document = doc();
+    auto isNonEmptyLine = [this](QStringView text) {
+        for (int i = 0; i < text.length(); ++i) {
+            if (!text.at(i).isSpace()) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+    for (; from < to; ++from) {
+        if (isNonEmptyLine(document->line(from))) {
+            break;
+        }
+    }
+    for (; to > from; --to) {
+        if (isNonEmptyLine(document->line(to))) {
+            break;
+        }
+    }
+
     joinLines(from, to);
-    doc()->wrapText(from, to);
+    document->wrapText(from, to);
 }
 
 int NormalViMode::getFirstNonBlank(int line) const

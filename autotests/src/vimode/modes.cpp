@@ -835,6 +835,7 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo\nbar", "gqq", "foo\nbar");
     DoTest("foo\nbar", "2gqq", "foo bar");
     DoTest("foo\nbar\nbaz", "jgqj", "foo\nbar baz");
+    DoTest("foo\nbar\n\n\n", "gqap", "foo bar\n\n\n");
 
     // when setting the text to wrap at column 10, this should be re-formatted to
     // span several lines ...
