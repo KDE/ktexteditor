@@ -3865,8 +3865,10 @@ void NormalViMode::reformatLines(unsigned int from, unsigned int to) const
         }
     }
 
+    document->editStart();
     joinLines(from, to);
     document->wrapText(from, to);
+    document->editEnd();
 }
 
 int NormalViMode::getFirstNonBlank(int line) const
