@@ -21,6 +21,7 @@ include(KDEGitCommitHooks)
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMGenerateExportHeader)
 include(CMakePackageConfigHelpers)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
@@ -65,6 +66,7 @@ find_package(EditorConfig)
 
 # vi mode on per default
 option (BUILD_VIMODE "Build vimode in" ON)
+set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
 # forbid some old things
 add_definitions(-DQT_NO_FOREACH)
