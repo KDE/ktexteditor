@@ -1104,7 +1104,7 @@ void KateThemeConfigPage::importFullSchema()
     // if something might be overwritten, as the user
     if (QFile::exists(themesFullFileName)) {
         if (KMessageBox::warningContinueCancel(this,
-                                               i18n("Importing will overwrite the existing theme file \"%1\". This can not be undone.").arg(themesFullFileName),
+                                               i18n("Importing will overwrite the existing theme file \"%1\". This can not be undone.", themesFullFileName),
                                                i18n("Possible Data Loss"),
                                                KGuiItem(i18n("Import Nevertheless")),
                                                KStandardGuiItem::cancel())
@@ -1251,7 +1251,7 @@ void KateThemeConfigPage::deleteSchema()
 
     // ask the user again, this can't be undone
     if (KMessageBox::warningContinueCancel(this,
-                                           i18n("Do you really want to delete the theme \"%1\"? This can not be undone.").arg(schemaNameToDelete),
+                                           i18n("Do you really want to delete the theme \"%1\"? This can not be undone.", schemaNameToDelete),
                                            i18n("Possible Data Loss"),
                                            KGuiItem(i18n("Delete Nevertheless")),
                                            KStandardGuiItem::cancel())
