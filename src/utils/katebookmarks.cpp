@@ -102,7 +102,8 @@ void KateBookmarks::toggleBookmark()
 
 void KateBookmarks::clearBookmarks()
 {
-    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
+    // work on a COPY of the hash, the removing will modify it otherwise!
+    const auto hash = m_view->doc()->marks();
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
         m_view->doc()->removeMark(it.value()->line, KTextEditor::MarkInterface::markType01);
     }
@@ -115,8 +116,8 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
     int next = -1; // -1 means next bookmark doesn't exist
     int prev = -1; // -1 means previous bookmark doesn't exist
 
-    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
-
+    // reference ok, not modified
+    const auto &hash = m_view->doc()->marks();
     if (hash.isEmpty()) {
         return;
     }
@@ -222,7 +223,8 @@ void KateBookmarks::bookmarkMenuAboutToShow()
 
 void KateBookmarks::goNext()
 {
-    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
+    // reference ok, not modified
+    const auto &hash = m_view->doc()->marks();
     if (hash.isEmpty()) {
         return;
     }
@@ -244,7 +246,8 @@ void KateBookmarks::goNext()
 
 void KateBookmarks::goPrevious()
 {
-    const QHash<int, KTextEditor::Mark *> &hash = m_view->doc()->marks();
+    // reference ok, not modified
+    const auto &hash = m_view->doc()->marks();
     if (hash.isEmpty()) {
         return;
     }
