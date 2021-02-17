@@ -459,3 +459,36 @@ void MovingRangeTest::testLineRemoved()
     auto r = doc.buffer().rangesForLine(1, view, true);
     QVERIFY(r.isEmpty());
 }
+
+void MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(
+        QStringLiteral("abcd\n"
+                       "efgh\n"
+                       "hijk\n"));
+
+    // add range to line 2, it shall be in rangeForLine for the right lines after each update!
+    // must be single line range to be in the cache!
+    auto range = static_cast<Kate::TextRange *>(doc.newMovingRange({2, 1, 2, 3},
+                                                                   KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                                   KTextEditor::MovingRange::InvalidateIfEmpty));
+
+    // range shall be in the lookup cache for line 2
+    QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
+
+    // wrap line 1 => range should move to line 3
+    doc.editWrapLine(1, 1);
+    QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(3, nullptr, false).contains(range));
+
+    // unwrap line 1 => range should back move to line 2
+    doc.editUnWrapLine(1);
+    QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
+}

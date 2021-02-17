@@ -167,6 +167,11 @@ void TextBlock::wrapLine(const KTextEditor::Cursor &position, int fixStartLinesS
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : qAsConst(changedRanges)) {
+        // we need to do updateRange to ALWAYS ensure the line => range and back cache is updated
+        // see MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache
+        updateRange(range);
+
+        // in addition: ensure that we really invalidate bad ranges!
         range->checkValidity(range->toLineRange());
     }
 }
@@ -333,6 +338,11 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
     for (TextRange *range : qAsConst(changedRanges)) {
+        // we need to do updateRange to ALWAYS ensure the line => range and back cache is updated
+        // see MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache
+        updateRange(range);
+
+        // in addition: ensure that we really invalidate bad ranges!
         range->checkValidity(range->toLineRange());
     }
 }

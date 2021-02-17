@@ -24,6 +24,7 @@ private Q_SLOTS:
     void testFeedbackCaret();
     void testFeedbackMouse();
     void testLineRemoved();
+    void testLineWrapOrUnwrapUpdateRangeForLineCache();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H
