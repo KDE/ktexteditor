@@ -156,6 +156,8 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo(bar)", "y%P", "foo(bar)foo(bar)");
     // Regression test for adjacent brackets
     DoTest("foo((bar)baz)", "y%P", "foo((bar)baz)foo((bar)baz)");
+    // Regression test for "empty" bracket ranges
+    DoTest("()123", "%%llx", "()23");
 
     // Testing percentage "<N>%"
     DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%", "20%dd", "10%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%");

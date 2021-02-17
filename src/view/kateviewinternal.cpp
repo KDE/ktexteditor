@@ -871,14 +871,16 @@ KTextEditor::Cursor KateViewInternal::findMatchingBracket()
     Q_ASSERT(m_bmEnd->toRange().isValid());
     Q_ASSERT(m_bmStart->toRange().isValid());
 
-    if (m_bmStart->toRange().contains(m_cursor) || m_bmStart->end() == m_cursor.toCursor()) {
+    // For e.g. the text "{|}" (where | is the cursor), m_bmStart is equal to [ (0, 0)  ->  (0, 1) ]
+    // and the closing bracket is in (0, 1). Thus, we check m_bmEnd first.
+    if (m_bmEnd->toRange().contains(m_cursor) || m_bmEnd->end() == m_cursor.toCursor()) {
+        c = m_bmStart->start();
+    } else if (m_bmStart->toRange().contains(m_cursor) || m_bmStart->end() == m_cursor.toCursor()) {
         c = m_bmEnd->end();
         // We need to adjust the cursor position in case of override mode, BUG-402594
         if (doc()->config()->ovr()) {
             c.setColumn(c.column() - 1);
         }
-    } else if (m_bmEnd->toRange().contains(m_cursor) || m_bmEnd->end() == m_cursor.toCursor()) {
-        c = m_bmStart->start();
     } else {
         // should never happen: a range exists, but the cursor position is
         // neither at the start nor at the end...
