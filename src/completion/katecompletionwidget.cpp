@@ -1464,6 +1464,12 @@ void KateCompletionWidget::userInvokedCompletion()
 void KateCompletionWidget::tab(bool shift)
 {
     m_noAutoHide = true;
+    if (!m_entryList->currentIndex().isValid()) {
+        // No current selection. To not make the tab key a noop, select the first entry
+        cursorDown();
+        return;
+    }
+
     if (!shift) {
         QString prefix = m_presentationModel->commonPrefix((m_inCompletionList && !shellLikeTabCompletion) ? m_entryList->currentIndex() : QModelIndex());
         if (!prefix.isEmpty()) {
