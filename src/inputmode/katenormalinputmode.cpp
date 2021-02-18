@@ -208,9 +208,10 @@ bool KateNormalInputMode::keyPress(QKeyEvent *e)
 
     if (view()->isCompletionActive()) {
         if (key == Qt::Key_Enter || key == Qt::Key_Return) {
-            view()->completionWidget()->execute();
-            e->accept();
-            return true;
+            if (view()->completionWidget()->execute()) {
+                e->accept();
+                return true;
+            }
         }
     }
 

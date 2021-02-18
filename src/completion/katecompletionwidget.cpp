@@ -844,18 +844,19 @@ bool KateCompletionWidget::navigateAccept()
     return false;
 }
 
-void KateCompletionWidget::execute()
+bool KateCompletionWidget::execute()
 {
     // qCDebug(LOG_KTE) ;
 
     if (!isCompletionActive()) {
-        return;
+        return false;
     }
 
     QModelIndex index = selectedIndex();
 
     if (!index.isValid()) {
-        return abortCompletion();
+        abortCompletion();
+        return false;
     }
 
     QModelIndex toExecute;
@@ -868,7 +869,8 @@ void KateCompletionWidget::execute()
 
     if (!toExecute.isValid()) {
         qCWarning(LOG_KTE) << "Could not map index" << m_entryList->selectionModel()->currentIndex() << "to source index.";
-        return abortCompletion();
+        abortCompletion();
+        return false;
     }
 
     // encapsulate all editing as being from the code completion, and undo-able in one step.
@@ -902,6 +904,8 @@ void KateCompletionWidget::execute()
         m_lastInsertionByUser = false;
         m_automaticInvocationTimer->start();
     }
+
+    return true;
 }
 
 void KateCompletionWidget::resizeEvent(QResizeEvent *event)

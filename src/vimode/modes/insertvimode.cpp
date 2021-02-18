@@ -346,17 +346,18 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
             case Qt::Key_Return:
                 if (m_view->completionWidget()->isCompletionActive() && !m_viInputModeManager->macroRecorder()->isReplaying()
                     && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
-                    // Filter out Enter/ Return's that trigger a completion when recording macros/ last change stuff; they
-                    // will be replaced with the special code "ctrl-space".
-                    // (This is why there is a "!m_viInputModeManager->isReplayingMacro()" above.)
-                    m_viInputModeManager->doNotLogCurrentKeypress();
-
                     m_isExecutingCompletion = true;
                     m_textInsertedByCompletion.clear();
-                    m_view->completionWidget()->execute();
-                    completionFinished();
+                    const bool success = m_view->completionWidget()->execute();
                     m_isExecutingCompletion = false;
-                    return true;
+                    if (success) {
+                        // Filter out Enter/ Return's that trigger a completion when recording macros/ last change stuff; they
+                        // will be replaced with the special code "ctrl-space".
+                        // (This is why there is a "!m_viInputModeManager->isReplayingMacro()" above.)
+                        m_viInputModeManager->doNotLogCurrentKeypress();
+                        completionFinished();
+                        return true;
+                    }
                 }
                 Q_FALLTHROUGH();
             default:

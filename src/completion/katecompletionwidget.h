@@ -61,7 +61,7 @@ public:
 
 public Q_SLOTS:
     // Executed when return is pressed while completion is active.
-    void execute();
+    bool execute();
     void cursorDown();
     void cursorUp();
 
