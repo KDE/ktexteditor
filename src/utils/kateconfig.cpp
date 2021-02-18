@@ -473,6 +473,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(AutoBrackets, "Auto Brackets", QStringLiteral("auto-brackets"), false));
     addConfigEntry(ConfigEntry(AutoCenterLines, "Auto Center Lines", QStringLiteral("auto-center-lines"), 0));
     addConfigEntry(ConfigEntry(AutomaticCompletionInvocation, "Auto Completion", QString(), true));
+    addConfigEntry(ConfigEntry(AutomaticCompletionPreselectFirst, "Auto Completion Preselect First Entry", QString(), true));
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
     addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QString()));

@@ -951,6 +951,7 @@ public:
         AutoBrackets,
         AutoCenterLines,
         AutomaticCompletionInvocation,
+        AutomaticCompletionPreselectFirst,
         BackspaceRemoveComposedCharacters,
         BookmarkSorting,
         CharsToEncloseSelection,
@@ -1168,6 +1169,11 @@ public:
     bool automaticCompletionInvocation() const
     {
         return value(AutomaticCompletionInvocation).toBool();
+    }
+
+    bool automaticCompletionPreselectFirst() const
+    {
+        return value(AutomaticCompletionPreselectFirst).toBool();
     }
 
     bool wordCompletion() const

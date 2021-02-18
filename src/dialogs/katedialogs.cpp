@@ -226,6 +226,7 @@ KateCompletionConfigTab::KateCompletionConfigTab(QWidget *parent)
     reload();
 
     observeChanges(ui->chkAutoCompletionEnabled);
+    observeChanges(ui->chkAutoSelectFirstEntry);
     observeChanges(ui->gbKeywordCompletion);
     observeChanges(ui->gbWordCompletion);
     observeChanges(ui->minimalWordLength);
@@ -255,6 +256,7 @@ void KateCompletionConfigTab::apply()
     KateViewConfig::global()->configStart();
 
     KateViewConfig::global()->setValue(KateViewConfig::AutomaticCompletionInvocation, ui->chkAutoCompletionEnabled->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, ui->chkAutoSelectFirstEntry->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::KeywordCompletion, ui->gbKeywordCompletion->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletion, ui->gbWordCompletion->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionMinimalWordLength, ui->minimalWordLength->value());
@@ -266,6 +268,7 @@ void KateCompletionConfigTab::apply()
 void KateCompletionConfigTab::reload()
 {
     ui->chkAutoCompletionEnabled->setChecked(KateViewConfig::global()->automaticCompletionInvocation());
+    ui->chkAutoSelectFirstEntry->setChecked(KateViewConfig::global()->automaticCompletionPreselectFirst());
 
     ui->gbKeywordCompletion->setChecked(KateViewConfig::global()->keywordCompletion());
     ui->gbWordCompletion->setChecked(KateViewConfig::global()->wordCompletion());

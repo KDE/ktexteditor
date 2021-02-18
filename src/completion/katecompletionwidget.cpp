@@ -223,8 +223,11 @@ void KateCompletionWidget::modelContentChanged()
         hide();
     }
 
+    // For automatic invocations, only autoselect first completion entry when enabled in the config
+    if (m_lastInvocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation || view()->config()->automaticCompletionPreselectFirst()) {
+        m_entryList->setCurrentIndex(model()->index(0, 0));
+    }
     // With each filtering items can be added or removed, so we have to reset the current index here so we always have a selected item
-    m_entryList->setCurrentIndex(model()->index(0, 0));
     if (!model()->indexIsItem(m_entryList->currentIndex())) {
         QModelIndex firstIndex = model()->index(0, 0, m_entryList->currentIndex());
         m_entryList->setCurrentIndex(firstIndex);

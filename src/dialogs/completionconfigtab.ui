@@ -27,6 +27,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="chkAutoSelectFirstEntry">
+        <property name="text">
+         <string>Auto select &amp;first completion entry</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
