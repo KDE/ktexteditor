@@ -51,6 +51,7 @@ private Q_SLOTS:
     void testJumpToListBottomAfterCursorUpWhileAtTop();
     void testAbbrevAndContainsMatching();
     void testAbbreviationEngine();
+    void testAutoCompletionPreselectFirst();
     void benchAbbreviationEngineNormalCase();
     void benchAbbreviationEngineWorstCase();
     void benchAbbreviationEngineGoodCase();

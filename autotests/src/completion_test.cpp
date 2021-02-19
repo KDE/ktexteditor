@@ -22,6 +22,7 @@
 #include <katerenderer.h>
 #include <kateview.h>
 
+#include <QKeyEvent>
 #include <QtTestWidgets>
 
 QTEST_MAIN(CompletionTest)
@@ -395,6 +396,44 @@ void CompletionTest::testAbbreviationEngine()
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("FB"), Qt::CaseSensitive));
     QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcmodel"), Qt::CaseSensitive));
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("KCModel"), Qt::CaseSensitive));
+}
+
+void CompletionTest::testAutoCompletionPreselectFirst()
+{
+    new CodeCompletionTestModel(m_view, QStringLiteral("a"));
+
+    m_view->config()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, false);
+    // When AutomaticCompletionPreselectFirst is disabled, immediately pressing enter
+    // should result into a newline instead of completion
+    m_doc->setText("a");
+    m_view->setCursorPosition(Cursor(0, 1));
+    m_view->completionWidget()->automaticInvocation();
+    verifyCompletionStarted(m_view);
+    auto enterKeyEvent = QKeyEvent(QEvent::KeyPress, Qt::Key_Enter, Qt::NoModifier);
+    QApplication::sendEvent(m_view->focusProxy(), &enterKeyEvent);
+
+    verifyCompletionAborted(m_view);
+    QCOMPARE(m_doc->text(), "a\n");
+
+    // When no completion entry is selected, tab key should select the first entry
+    m_doc->setText("a");
+    m_view->completionWidget()->automaticInvocation();
+    m_view->completionWidget()->tab(false);
+    m_view->completionWidget()->execute();
+
+    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    QCOMPARE(m_doc->text(), "aaa0");
+
+    // Ensure that auto completion still works when AutomaticCompletionPreselectFirst is enabled (default)
+    m_view->config()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, true);
+    m_doc->setText("a");
+    m_view->completionWidget()->automaticInvocation();
+
+    m_view->completionWidget()->tab(false); // tab should "auto-fill" completion
+    QCOMPARE(m_doc->text(), "aa");
+    m_view->completionWidget()->execute();
+    QCOMPARE(m_doc->text(), "aaa0");
+    QVERIFY(!m_view->completionWidget()->isCompletionActive());
 }
 
 void CompletionTest::benchAbbreviationEngineGoodCase()
