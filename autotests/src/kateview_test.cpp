@@ -456,13 +456,14 @@ void KateViewTest::testDragAndDrop()
 void KateViewTest::testGotoMatchingBracket()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setText("foo(bar)baz");
+    doc.setText("foo(bar)baz[]");
     //           0123456789
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     const KTextEditor::Cursor cursor1(0, 3); // Starting point on open (
     const KTextEditor::Cursor cursor2(0, 8); // Insert Mode differ slightly from...
     const KTextEditor::Cursor cursor3(0, 7); // Overwrite Mode
+    const KTextEditor::Cursor cursor4(0, 11); // Test adjacents brackets (start at [)
 
     doc.config()->setOvr(false); // Insert Mode
 
@@ -479,6 +480,14 @@ void KateViewTest::testGotoMatchingBracket()
     view->setCursorPosition(cursor2 + KTextEditor::Cursor(0, -1));
     view->toMatchingBracket();
     QCOMPARE(view->cursorPosition(), cursor1);
+
+    view->setCursorPosition(cursor4 + KTextEditor::Cursor(0, 1));
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor4);
+    view->toMatchingBracket();
+    view->setCursorPosition(view->cursorPosition() + KTextEditor::Cursor(0, 1));
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor4);
 
     doc.config()->setOvr(true); // Overwrite Mode
 
