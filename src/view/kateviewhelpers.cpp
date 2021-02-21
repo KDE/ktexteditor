@@ -1583,12 +1583,11 @@ QSize KateIconBorder::sizeHint() const
 // for graceful handling of variable-width fonts as the linenumber font.
 void KateIconBorder::updateFont()
 {
+    // Loop to determine the widest numeric character in the current font.
     const QFontMetricsF &fm = m_view->renderer()->currentFontMetrics();
     m_maxCharWidth = 0.0;
-    // Loop to determine the widest numeric character in the current font.
-    // 48 is ascii '0'
-    for (int i = 48; i < 58; i++) {
-        const qreal charWidth = ceil(fm.boundingRect(QChar(i)).width());
+    for (char c = '0'; c <= '9'; ++c) {
+        const qreal charWidth = ceil(fm.horizontalAdvance(QLatin1Char(c)));
         m_maxCharWidth = qMax(m_maxCharWidth, charWidth);
     }
 

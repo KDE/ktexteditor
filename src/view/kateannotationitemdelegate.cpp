@@ -136,11 +136,11 @@ QSize KateAnnotationItemDelegate::sizeHint(const KTextEditor::StyleOptionAnnotat
 
     // recalculate m_maxCharWidth if needed
     if (m_maxCharWidth == 0.0 || (option.contentFontMetrics != m_cachedDataContentFontMetrics)) {
-        m_maxCharWidth = 0.0;
         // based on old code written when just a hash was shown, could see an update
         // Loop to determine the widest numeric character in the current font.
+        m_maxCharWidth = 0.0;
         for (char c = '0'; c <= '9'; ++c) {
-            const qreal charWidth = ceil(option.contentFontMetrics.boundingRect(QLatin1Char(c)).width());
+            const qreal charWidth = ceil(option.contentFontMetrics.horizontalAdvance(QLatin1Char(c)));
             m_maxCharWidth = qMax(m_maxCharWidth, charWidth);
         }
 
