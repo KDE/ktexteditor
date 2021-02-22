@@ -1152,6 +1152,8 @@ void ModesTest::VisualMotionsTests()
     DoTest("Three. Different. Sentences.", "vapcX", "X");
     DoTest("Three. Different. Sentences.", "vipcX", "X");
     DoTest("Hello.\n", "vap\\esciX", "Hello.\nX");
+    // Make sure cursor is properly moved to the start of paragraph text objects
+    DoTest("Hello.\nWorld.", "jvapX", "");
 
     // With count.
     DoTest("12345678", "lv3lyx", "1345678");
