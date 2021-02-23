@@ -1306,7 +1306,7 @@ Range ModeBase::motionFindPrev()
     Searcher *searcher = m_viInputModeManager->searcher();
     Range match = searcher->motionFindPrev(getCount());
     if (searcher->lastSearchWrapped()) {
-        message(i18n("Search wrapped"));
+        m_view->showSearchWrappedHint(/*isReverseSearch*/ true);
     }
 
     return match;
@@ -1317,7 +1317,7 @@ Range ModeBase::motionFindNext()
     Searcher *searcher = m_viInputModeManager->searcher();
     Range match = searcher->motionFindNext(getCount());
     if (searcher->lastSearchWrapped()) {
-        message(i18n("Search wrapped"));
+        m_view->showSearchWrappedHint(/*isReverseSearch*/ false);
     }
 
     return match;
