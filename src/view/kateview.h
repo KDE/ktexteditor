@@ -625,6 +625,7 @@ public Q_SLOTS:
     void replace();
     void findNext();
     void findPrevious();
+    void showSearchWrappedHint(bool isReverseSearch);
 
     void setFoldingMarkersOn(bool enable); // Not in KTextEditor::View, but should be
     void setIconBorder(bool enable);

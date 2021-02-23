@@ -1887,6 +1887,23 @@ void KTextEditor::ViewPrivate::findPrevious()
     currentInputMode()->findPrevious();
 }
 
+void KTextEditor::ViewPrivate::showSearchWrappedHint(bool isReverseSearch)
+{
+    // show message widget when wrapping
+    const QIcon icon = isReverseSearch ? QIcon::fromTheme(QStringLiteral("go-up-search")) : QIcon::fromTheme(QStringLiteral("go-down-search"));
+
+    if (!m_wrappedMessage || m_isLastSearchReversed != isReverseSearch) {
+        m_isLastSearchReversed = isReverseSearch;
+        m_wrappedMessage = new KTextEditor::Message(i18n("Search wrapped"), KTextEditor::Message::Information);
+        m_wrappedMessage->setIcon(icon);
+        m_wrappedMessage->setPosition(KTextEditor::Message::BottomInView);
+        m_wrappedMessage->setAutoHide(2000);
+        m_wrappedMessage->setAutoHideMode(KTextEditor::Message::Immediate);
+        m_wrappedMessage->setView(this);
+        this->doc()->postMessage(m_wrappedMessage);
+    }
+}
+
 void KTextEditor::ViewPrivate::slotSelectionChanged()
 {
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
