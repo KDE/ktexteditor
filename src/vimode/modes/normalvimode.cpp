@@ -2774,14 +2774,24 @@ Range NormalViMode::motionToPreviousBraceBlockEnd()
 Range NormalViMode::motionToNextOccurrence()
 {
     const QString word = getWordUnderCursor();
-    const Range match = m_viInputModeManager->searcher()->findWordForMotion(word, false, getWordRangeUnderCursor().start(), getCount());
+    Searcher *searcher = m_viInputModeManager->searcher();
+    const Range match = searcher->findWordForMotion(word, false, getWordRangeUnderCursor().start(), getCount());
+    if (searcher->lastSearchWrapped()) {
+        m_view->showSearchWrappedHint(/*isReverseSearch*/ false);
+    }
+
     return Range(match.startLine, match.startColumn, ExclusiveMotion);
 }
 
 Range NormalViMode::motionToPrevOccurrence()
 {
     const QString word = getWordUnderCursor();
-    const Range match = m_viInputModeManager->searcher()->findWordForMotion(word, true, getWordRangeUnderCursor().start(), getCount());
+    Searcher *searcher = m_viInputModeManager->searcher();
+    const Range match = searcher->findWordForMotion(word, true, getWordRangeUnderCursor().start(), getCount());
+    if (searcher->lastSearchWrapped()) {
+        m_view->showSearchWrappedHint(/*isReverseSearch*/ true);
+    }
+
     return Range(match.startLine, match.startColumn, ExclusiveMotion);
 }
 
