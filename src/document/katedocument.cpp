@@ -90,13 +90,15 @@
     qCDebug(LOG_KTE)
 #endif
 
-template<class C, class E> static int indexOf(const std::initializer_list<C> &list, const E &entry)
+template<class C, class E>
+static int indexOf(const std::initializer_list<C> &list, const E &entry)
 {
     auto it = std::find(list.begin(), list.end(), entry);
     return it == list.end() ? -1 : std::distance(list.begin(), it);
 }
 
-template<class C, class E> static bool contains(const std::initializer_list<C> &list, const E &entry)
+template<class C, class E>
+static bool contains(const std::initializer_list<C> &list, const E &entry)
 {
     return indexOf(list, entry) >= 0;
 }

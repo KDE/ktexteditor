@@ -340,9 +340,8 @@ public:
      */
     Q_DECL_CONSTEXPR inline LineRange encompass(const LineRange &range) const Q_DECL_NOEXCEPT
     {
-        return (!isValid())      ? (range.isValid() ? range : invalid())
-            : (!range.isValid()) ? (*this)
-                                 : LineRange(qMin(start(), range.start()), qMax(end(), range.end()));
+        return (!isValid()) ? (range.isValid() ? range : invalid())
+                            : (!range.isValid()) ? (*this) : LineRange(qMin(start(), range.start()), qMax(end(), range.end()));
     }
 
     /**
@@ -523,12 +522,14 @@ inline uint qHash(const KTextEditor::LineRange &range, uint seed = 0) Q_DECL_NOT
 namespace QTest
 {
 // forward declaration of template in qtestcase.h
-template<typename T> char *toString(const T &);
+template<typename T>
+char *toString(const T &);
 
 /**
  * QTestLib integration to have nice output in e.g. QCOMPARE failures.
  */
-template<> KTEXTEDITOR_EXPORT char *toString(const KTextEditor::LineRange &range);
+template<>
+KTEXTEDITOR_EXPORT char *toString(const KTextEditor::LineRange &range);
 }
 
 #endif

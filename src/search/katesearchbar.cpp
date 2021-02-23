@@ -608,10 +608,8 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         selectRange2(match.range());
     }
 
-    const MatchResult matchResult = !match.isValid() ? MatchMismatch
-        : !wrap                                      ? MatchFound
-        : searchDirection == SearchForward           ? MatchWrappedForward
-                                                     : MatchWrappedBackward;
+    const MatchResult matchResult =
+        !match.isValid() ? MatchMismatch : !wrap ? MatchFound : searchDirection == SearchForward ? MatchWrappedForward : MatchWrappedBackward;
     indicateMatch(matchResult);
 
     // highlight replacements if applicable
@@ -648,8 +646,7 @@ bool KateSearchBar::isPatternValid() const
     }
 
     return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern()
-        : searchOptions().testFlag(Regex)       ? QRegularExpression(searchPattern()).isValid()
-                                                : true;
+                                                : searchOptions().testFlag(Regex) ? QRegularExpression(searchPattern()).isValid() : true;
 }
 
 void KateSearchBar::givePatternFeedback()

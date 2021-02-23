@@ -118,14 +118,16 @@ LineRange LineRange::fromString(QStringView str) Q_DECL_NOEXCEPT
 namespace QTest
 {
 // Cursor: template specialization for QTest::toString()
-template<> char *toString(const KTextEditor::Cursor &cursor)
+template<>
+char *toString(const KTextEditor::Cursor &cursor)
 {
     QByteArray ba = "Cursor[" + QByteArray::number(cursor.line()) + ", " + QByteArray::number(cursor.column()) + ']';
     return qstrdup(ba.data());
 }
 
 // Range: template specialization for QTest::toString()
-template<> char *toString(const KTextEditor::Range &range)
+template<>
+char *toString(const KTextEditor::Range &range)
 {
     QByteArray ba = "Range[";
     ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + " - ";
@@ -135,7 +137,8 @@ template<> char *toString(const KTextEditor::Range &range)
 }
 
 // LineRange: template specialization for QTest::toString()
-template<> char *toString(const KTextEditor::LineRange &range)
+template<>
+char *toString(const KTextEditor::LineRange &range)
 {
     QByteArray ba = "LineRange[";
     ba += QByteArray::number(range.start()) + ", " + QByteArray::number(range.end());
