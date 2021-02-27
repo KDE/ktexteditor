@@ -232,6 +232,17 @@ Q_SIGNALS:
 
 public:
     /**
+     * Get the current global editor font.
+     * Might change during runtime, configChanged() will be emitted in that cases.
+     * Individual views might have set different fonts, can be queried with the "font" key via \see KTextEditor::ConfigInterface::configValue().
+     *
+     * \return current global font for all views
+     *
+     * \since 5.80
+     */
+    QFont font() const;
+
+    /**
      * Get the current global theme.
      * Might change during runtime, configChanged() will be emitted in that cases.
      * Individual views might have set different themes, \see KTextEditor::View::theme().

@@ -128,6 +128,11 @@ void Editor::addVariableExpansion(const QVector<QWidget *> &widgets, const QStri
     d->variableExpansionManager()->showDialog(widgets, variables);
 }
 
+QFont Editor::font() const
+{
+    return d->rendererConfig()->baseFont();
+}
+
 KSyntaxHighlighting::Theme Editor::theme() const
 {
     return KateHlManager::self()->repository().theme(d->rendererConfig()->schema());
