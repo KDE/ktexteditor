@@ -334,7 +334,7 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(BackspaceIndents, "Indent On Backspace", QString(), true));
     addConfigEntry(ConfigEntry(ShowSpacesMode, "Show Spaces", QString(), KateDocumentConfig::None));
     addConfigEntry(ConfigEntry(TrailingMarkerSize, "Trailing Marker Size", QString(), 1));
-    addConfigEntry(ConfigEntry(RemoveSpacesMode, "Remove Spaces", QString(), 0));
+    addConfigEntry(ConfigEntry(RemoveSpacesMode, "Remove Spaces", QString(), 1 /* on modified lines per default */));
     addConfigEntry(ConfigEntry(NewlineAtEOF, "Newline at End of File", QString(), true));
     addConfigEntry(ConfigEntry(OverwriteMode, "Overwrite Mode", QString(), false));
     addConfigEntry(ConfigEntry(Encoding, "Encoding", QString(), QStringLiteral("UTF-8"), [](const QVariant &value) {
