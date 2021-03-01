@@ -751,7 +751,6 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = toggleAction = m_toggleLineNumbers = new KToggleAction(i18n("Show &Line Numbers"), this);
     ac->addAction(QStringLiteral("view_line_numbers"), a);
-    ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F11));
     a->setWhatsThis(i18n("Show/hide the line numbers on the left hand side of the view."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleLineNumbersOn);
 
