@@ -759,13 +759,14 @@ public:
 
     /**
      * Remove trailing spaces on save.
-     * triState = 0: never remove trailing spaces
-     * triState = 1: remove trailing spaces of modified lines (line modification system)
-     * triState = 2: remove trailing spaces in entire document
+     * removeMode = 0: never remove trailing spaces
+     * removeMode = 1: remove trailing spaces of modified lines (line modification system)
+     * removeMode = 2: remove trailing spaces in entire document
+     * removeMode = 3: remove trailing spaces except those to the left of cursor
      */
-    void setRemoveSpaces(int triState)
+    void setRemoveSpaces(int removeMode)
     {
-        setValue(RemoveSpacesMode, triState);
+        setValue(RemoveSpacesMode, removeMode);
     }
 
     int removeSpaces() const

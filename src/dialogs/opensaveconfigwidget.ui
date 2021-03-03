@@ -186,6 +186,11 @@
             <string>In Entire Document</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>Except To The Left of Cursor Position</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
