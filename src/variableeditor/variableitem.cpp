@@ -324,6 +324,8 @@ QString VariableRemoveSpacesItem::valueAsString() const
         return QStringLiteral("all");
     } else if (m_value == 1) {
         return QStringLiteral("modified");
+    } else if (m_value == 3) {
+        return QStringLiteral("cursor");
     } else {
         return QStringLiteral("none");
     }
@@ -337,6 +339,8 @@ void VariableRemoveSpacesItem::setValueByString(const QString &value)
         m_value = 1;
     } else if (tmp == QLatin1String("2") || tmp == QLatin1String("all") || tmp == QLatin1String("*")) {
         m_value = 2;
+    } else if (tmp == QLatin1String("3") || tmp == QLatin1String("cursor") || tmp == QLatin1String("cur")) {
+        m_value = 3;
     } else {
         m_value = 0;
     }
