@@ -124,7 +124,6 @@ protected:
 
     void switchView(Direction direction = Next);
 
-    void addJump(KTextEditor::Cursor cursor);
     KTextEditor::Cursor getNextJump(KTextEditor::Cursor) const;
     KTextEditor::Cursor getPrevJump(KTextEditor::Cursor) const;
 
