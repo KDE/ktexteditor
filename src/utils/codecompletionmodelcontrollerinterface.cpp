@@ -44,8 +44,8 @@ Range CodeCompletionModelControllerInterface::completionRange(View *view, const 
 
     QString text = view->document()->line(end.line());
 
-    static const QRegularExpression findWordStart(QStringLiteral("\\b[_\\w]+$"));
-    static const QRegularExpression findWordEnd(QStringLiteral("^[_\\w]*\\b"));
+    static const QRegularExpression findWordStart(QStringLiteral("\\b[_\\w]+$"), QRegularExpression::UseUnicodePropertiesOption);
+    static const QRegularExpression findWordEnd(QStringLiteral("^[_\\w]*\\b"), QRegularExpression::UseUnicodePropertiesOption);
 
     Cursor start = end;
 
@@ -87,7 +87,7 @@ bool CodeCompletionModelControllerInterface::shouldAbortCompletion(View *view, c
     }
     // Do not abort completions when the text has been empty already before and a newline has been entered
 
-    static const QRegularExpression allowedText(QStringLiteral("^\\w*$"));
+    static const QRegularExpression allowedText(QStringLiteral("^\\w*$"), QRegularExpression::UseUnicodePropertiesOption);
     return !allowedText.match(currentCompletion).hasMatch();
 }
 

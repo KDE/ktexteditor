@@ -440,6 +440,7 @@ void KateWordCompletionView::complete(bool fw)
     }
 
     d->wordRegEx.setPattern(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"));
+    d->wordRegEx.setPatternOptions(QRegularExpression::UseUnicodePropertiesOption);
     int pos(0);
     QString ln = doc->line(d->dcCursor.line());
 
