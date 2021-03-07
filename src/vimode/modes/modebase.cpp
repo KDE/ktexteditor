@@ -184,9 +184,9 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    const QRegularExpression startOfWord(startOfWordPattern); // start of a word
-    static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S")); // non-space right after space
-    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
+    const QRegularExpression startOfWord(startOfWordPattern, QRegularExpression::UseUnicodePropertiesOption); // start of a word
+    static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space right after space
+    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W"), QRegularExpression::UseUnicodePropertiesOption); // word-boundary followed by a non-word which is not a space
 
     int l = fromLine;
     int c = fromColumn;
@@ -246,7 +246,7 @@ KTextEditor::Cursor ModeBase::findNextWORDStart(int fromLine, int fromColumn, bo
     int c = fromColumn;
 
     bool found = false;
-    static const QRegularExpression startOfWORD(QStringLiteral("\\s\\S"));
+    static const QRegularExpression startOfWORD(QStringLiteral("\\s\\S"), QRegularExpression::UseUnicodePropertiesOption);
 
     while (!found) {
         c = line.indexOf(startOfWORD, c);
@@ -322,7 +322,7 @@ KTextEditor::Cursor ModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool
 {
     QString line = getLine(fromLine);
 
-    static const QRegularExpression endOfWORDPattern(QStringLiteral("\\S\\s|\\S$|^$"));
+    static const QRegularExpression endOfWORDPattern(QStringLiteral("\\S\\s|\\S$|^$"), QRegularExpression::UseUnicodePropertiesOption);
 
     int l = fromLine;
     int c = fromColumn;
@@ -364,10 +364,10 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    const QRegularExpression startOfWord(startOfWordPattern); // start of a word
-    static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S")); // non-space right after space
-    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
-    static const QRegularExpression startOfLine(QStringLiteral("^\\S")); // non-space at start of line
+    const QRegularExpression startOfWord(startOfWordPattern, QRegularExpression::UseUnicodePropertiesOption); // start of a word
+    static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space right after space
+    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W"), QRegularExpression::UseUnicodePropertiesOption); // word-boundary followed by a non-word which is not a space
+    static const QRegularExpression startOfLine(QStringLiteral("^\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space at start of line
 
     int l = fromLine;
     int c = fromColumn;
@@ -425,8 +425,8 @@ KTextEditor::Cursor ModeBase::findPrevWORDStart(int fromLine, int fromColumn, bo
 {
     QString line = getLine(fromLine);
 
-    static const QRegularExpression startOfWORD(QStringLiteral("\\s\\S"));
-    static const QRegularExpression startOfLineWORD(QStringLiteral("^\\S"));
+    static const QRegularExpression startOfWORD(QStringLiteral("\\s\\S"), QRegularExpression::UseUnicodePropertiesOption);
+    static const QRegularExpression startOfLineWORD(QStringLiteral("^\\S"), QRegularExpression::UseUnicodePropertiesOption);
 
     int l = fromLine;
     int c = fromColumn;
@@ -514,7 +514,7 @@ KTextEditor::Cursor ModeBase::findWORDEnd(int fromLine, int fromColumn, bool onl
 {
     QString line = getLine(fromLine);
 
-    static const QRegularExpression endOfWORD(QStringLiteral("\\S\\s|\\S$"));
+    static const QRegularExpression endOfWORD(QStringLiteral("\\S\\s|\\S$"), QRegularExpression::UseUnicodePropertiesOption);
 
     int l = fromLine;
     int c = fromColumn;

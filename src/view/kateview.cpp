@@ -3805,11 +3805,11 @@ void KTextEditor::ViewPrivate::createHighlights()
     // only add word boundary if we can find the text then
     // fixes $lala hl
     QString pattern = QRegularExpression::escape(m_currentTextForHighlights);
-    if (m_currentTextForHighlights.contains(QRegularExpression(QLatin1String("\\b") + pattern))) {
+    if (m_currentTextForHighlights.contains(QRegularExpression(QLatin1String("\\b") + pattern, QRegularExpression::UseUnicodePropertiesOption))) {
         pattern.prepend(QLatin1String("\\b"));
     }
 
-    if (m_currentTextForHighlights.contains(QRegularExpression(pattern + QLatin1String("\\b")))) {
+    if (m_currentTextForHighlights.contains(QRegularExpression(pattern + QLatin1String("\\b"), QRegularExpression::UseUnicodePropertiesOption))) {
         pattern += QLatin1String("\\b");
     }
 

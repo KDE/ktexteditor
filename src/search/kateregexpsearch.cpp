@@ -181,7 +181,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
     // Also if repairPattern() is called on an invalid regex pattern it may cause asserts
     // in QString (e.g. if the pattern is just '\\', pattern.size() is 1, and repaierPattern
     // expects at least one character after a \)
-    if (pattern.isEmpty() || !QRegularExpression(pattern).isValid() || !inputRange.isValid() || inputRange.isEmpty()) {
+    if (pattern.isEmpty() || !QRegularExpression(pattern, QRegularExpression::UseUnicodePropertiesOption).isValid() || !inputRange.isValid() || inputRange.isEmpty()) {
         return noResult;
     }
 
@@ -204,7 +204,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
     }
 
     regexp.setPattern(repairedPattern);
-    regexp.setPatternOptions(options);
+    regexp.setPatternOptions(options | QRegularExpression::UseUnicodePropertiesOption); // ensure we do unicode aware search!
     if (!regexp.isValid()) {
         return noResult;
     }

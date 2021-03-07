@@ -125,7 +125,7 @@ bool InsertViMode::commandDeleteLine()
          * Remove backwards until the first non-space character. If no
          * non-space was found, remove backwards to the first column.
          */
-        static const QRegularExpression nonSpace(QStringLiteral("\\S"));
+        static const QRegularExpression nonSpace(QStringLiteral("\\S"), QRegularExpression::UseUnicodePropertiesOption);
         r.startColumn = getLine().indexOf(nonSpace);
         if (r.startColumn == -1 || r.startColumn >= c.column()) {
             r.startColumn = 0;

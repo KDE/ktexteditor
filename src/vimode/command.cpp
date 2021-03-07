@@ -33,7 +33,7 @@ bool Command::matches(const QString &pattern) const
     if (!(m_flags & REGEX_PATTERN)) {
         return m_pattern.startsWith(pattern);
     } else {
-        const QRegularExpression re(m_pattern);
+        const QRegularExpression re(m_pattern, QRegularExpression::UseUnicodePropertiesOption);
         const auto match = re.match(pattern, 0, QRegularExpression::PartialPreferFirstMatch);
         // Partial matching could lead to a complete match, in that case hasPartialMatch() will return false, and hasMatch() will return true
         return match.hasPartialMatch() || match.hasMatch();
@@ -45,7 +45,7 @@ bool Command::matchesExact(const QString &pattern) const
     if (!(m_flags & REGEX_PATTERN)) {
         return (m_pattern == pattern);
     } else {
-        const QRegularExpression re(QRegularExpression::anchoredPattern(m_pattern));
+        const QRegularExpression re(QRegularExpression::anchoredPattern(m_pattern), QRegularExpression::UseUnicodePropertiesOption);
         return re.match(pattern).hasMatch();
     }
 }

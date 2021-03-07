@@ -1398,7 +1398,7 @@ void KateCmdLineEdit::fromHistory(bool up)
     if (!s.isEmpty()) {
         // Select the argument part of the command, so that it is easy to overwrite
         setText(s);
-        static const QRegularExpression reCmd(QStringLiteral("^[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"));
+        static const QRegularExpression reCmd(QStringLiteral("^[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"), QRegularExpression::UseUnicodePropertiesOption);
         const auto match = reCmd.match(text());
         if (match.hasMatch()) {
             setSelection(text().length() - match.capturedLength(1), match.capturedLength(1));

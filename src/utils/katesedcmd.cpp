@@ -143,7 +143,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString,
                                      int &destReplaceEndPos)
 {
     // valid delimiters are all non-word, non-space characters plus '_'
-    static const QRegularExpression delim(QStringLiteral("^s\\s*([^\\w\\s]|_)"));
+    static const QRegularExpression delim(QStringLiteral("^s\\s*([^\\w\\s]|_)"), QRegularExpression::UseUnicodePropertiesOption);
     auto match = delim.match(sedReplaceString);
     if (!match.hasMatch()) {
         return false;
@@ -153,7 +153,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString,
     qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
     QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\") + d
-                                + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
+                                + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"), QRegularExpression::UseUnicodePropertiesOption);
     match = splitter.match(sedReplaceString);
     if (!match.hasMatch()) {
         return false;

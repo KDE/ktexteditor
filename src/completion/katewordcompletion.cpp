@@ -292,7 +292,6 @@ struct KateWordCompletionViewPrivate {
     KTextEditor::MovingRange *liRange; // range containing last inserted text
     KTextEditor::Range dcRange; // current range to be completed by directional completion
     KTextEditor::Cursor dcCursor; // directional completion search cursor
-    QRegularExpression wordRegEx;
     int directionalPos; // be able to insert "" at the correct time
     bool isCompleting; // true when the directional completion is doing a completion
 };
@@ -439,15 +438,14 @@ void KateWordCompletionView::complete(bool fw)
         connect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateWordCompletionView::slotCursorMoved);
     }
 
-    d->wordRegEx.setPattern(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"));
-    d->wordRegEx.setPatternOptions(QRegularExpression::UseUnicodePropertiesOption);
+    const QRegularExpression wordRegEx(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"), QRegularExpression::UseUnicodePropertiesOption);
     int pos(0);
     QString ln = doc->line(d->dcCursor.line());
 
     while (true) {
-        // qCDebug(LOG_KTE)<<"SEARCHING FOR "<<d->wordRegEx.pattern()<<" "<<ln<<" at "<<d->dcCursor;
+        // qCDebug(LOG_KTE)<<"SEARCHING FOR "<<wordRegEx.pattern()<<" "<<ln<<" at "<<d->dcCursor;
         QRegularExpressionMatch match;
-        pos = fw ? ln.indexOf(d->wordRegEx, d->dcCursor.column(), &match) : ln.lastIndexOf(d->wordRegEx, d->dcCursor.column(), &match);
+        pos = fw ? ln.indexOf(wordRegEx, d->dcCursor.column(), &match) : ln.lastIndexOf(wordRegEx, d->dcCursor.column(), &match);
 
         if (match.hasMatch()) { // we matched a word
             // qCDebug(LOG_KTE)<<"USABLE MATCH";

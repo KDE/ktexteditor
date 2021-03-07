@@ -691,7 +691,7 @@ void KateDocumentTest::testSearch()
     KTextEditor::DocumentPrivate doc;
     doc.setText("foo\nbar\nzonk");
 
-    const QRegularExpression pattern(QStringLiteral("ar\nzonk$"), QRegularExpression::MultilineOption);
+    const QRegularExpression pattern(QStringLiteral("ar\nzonk$"), QRegularExpression::MultilineOption | QRegularExpression::UseUnicodePropertiesOption);
     int startLine = 0;
     int endLine = 2;
     QString textToMatch;

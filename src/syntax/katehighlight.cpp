@@ -87,7 +87,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         properties.definition = includedDefinition;
         properties.emptyLines.reserve(includedDefinition.foldingIgnoreList().size());
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
-            properties.emptyLines.push_back(QRegularExpression(emptyLine));
+            properties.emptyLines.push_back(QRegularExpression(emptyLine, QRegularExpression::UseUnicodePropertiesOption));
         properties.singleLineCommentMarker = includedDefinition.singleLineCommentMarker();
         properties.singleLineCommentPosition = includedDefinition.singleLineCommentPosition();
         const auto multiLineComment = includedDefinition.multiLineCommentMarker();

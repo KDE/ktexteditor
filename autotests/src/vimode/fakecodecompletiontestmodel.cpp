@@ -110,7 +110,7 @@ void FakeCodeCompletionTestModel::executeCompletionItem(KTextEditor::View *view,
         // The code for a function call to a function taking no arguments.
         const QString justFunctionName = textToInsert.left(textToInsert.indexOf("("));
 
-        static const QRegularExpression whitespaceThenOpeningBracket("^\\s*(\\()");
+        static const QRegularExpression whitespaceThenOpeningBracket("^\\s*(\\()", QRegularExpression::UseUnicodePropertiesOption);
         const QRegularExpressionMatch match = whitespaceThenOpeningBracket.match(textAfterCursor);
         int openingBracketPos = -1;
         if (match.hasMatch()) {

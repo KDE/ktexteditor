@@ -46,7 +46,7 @@ public:
      * \param pattern text to search for
      * \param inputRange Range to search in
      * \param backwards if \e true, the search will be backwards
-     * \param options QRegularExpression pattern options
+     * \param options QRegularExpression pattern options, we will internally add QRegularExpression::UseUnicodePropertiesOption
      * \return Vector of ranges, one for each capture group. The first range (index
      *         zero) spans the whole match. If no matches are found, the vector will
      *         contain one element, an invalid range (see Range::isValid()).
