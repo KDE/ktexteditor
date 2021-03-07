@@ -144,12 +144,12 @@ void SearchBarTest::testFindNextZeroLengthMatch()
     QCOMPARE(doc.text(Range(0, 3, 0, 4)), QStringLiteral("ö"));
 
     bar.findNext();
-    QCOMPARE(view.cursorPosition(), Cursor(0, 4));
-    QCOMPARE(doc.text(Range(0, 4, 0, 5)), QStringLiteral("z"));
+    QCOMPARE(view.cursorPosition(), Cursor(0, 5));
+    QCOMPARE(doc.text(Range(0, 5, 0, 6)), QStringLiteral("z"));
 
     bar.findNext();
-    QCOMPARE(view.cursorPosition(), Cursor(0, 5));
-    QCOMPARE(doc.text(Range(0, 4, 0, 5)), QStringLiteral("z"));
+    QCOMPARE(view.cursorPosition(), Cursor(0, 6));
+    QCOMPARE(doc.text(Range(0, 5, 0, 6)), QStringLiteral("z"));
 
     bar.findNext();
     // Search wraps, back to before first char
