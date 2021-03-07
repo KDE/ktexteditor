@@ -39,6 +39,7 @@ private Q_SLOTS:
     void testSearchBackwardInSelection();
 
     void test();
+    void testUnicode();
 };
 
 #endif

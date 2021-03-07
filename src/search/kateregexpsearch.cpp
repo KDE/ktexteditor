@@ -177,15 +177,22 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
     QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
 
     // Note that some methods in vimode (e.g. Searcher::findPatternWorker) rely on the
-    // this method returning here when pattern.isEmpty()
-    // Also if repairPattern() is called on an invalid regex pattern it may cause asserts
-    // in QString (e.g. if the pattern is just '\\', pattern.size() is 1, and repaierPattern
-    // expects at least one character after a \)
-    if (pattern.isEmpty() || !QRegularExpression(pattern, QRegularExpression::UseUnicodePropertiesOption).isValid() || !inputRange.isValid() || inputRange.isEmpty()) {
+    // this method returning here if 'pattern' is empty.
+    if (pattern.isEmpty() || inputRange.isEmpty() || !inputRange.isValid()) {
         return noResult;
     }
 
-    QRegularExpression regexp;
+    // Always enable Unicode support
+    options |= QRegularExpression::UseUnicodePropertiesOption;
+
+    QRegularExpression regexp(pattern, options);
+
+    // If repairPattern() is called on an invalid regex pattern it may cause asserts
+    // in QString (e.g. if the pattern is just '\\', pattern.size() is 1, and repaierPattern
+    // expects at least one character after a '\')
+    if (!regexp.isValid()) {
+        return noResult;
+    }
 
     // detect pattern type (single- or mutli-line)
     bool stillMultiLine;

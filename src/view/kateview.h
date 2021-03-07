@@ -625,6 +625,7 @@ public Q_SLOTS:
     void replace();
     void findNext();
     void findPrevious();
+    void showSearchWrappedHint(bool isReverseSearch);
 
     void setFoldingMarkersOn(bool enable); // Not in KTextEditor::View, but should be
     void setIconBorder(bool enable);
@@ -1101,6 +1102,10 @@ private:
      * manage sub objects on its own that have this view as parent
      */
     QScopedPointer<KateScriptActionMenu> m_scriptActionMenu;
+
+    // for showSearchWrappedHint()
+    QPointer<KTextEditor::Message> m_wrappedMessage;
+    bool m_isLastSearchReversed = false;
 };
 
 }

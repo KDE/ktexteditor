@@ -47,17 +47,19 @@ public:
     KTextEditor::Range findPattern(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory = true);
 
     const QString getLastSearchPattern() const;
+    bool lastSearchWrapped() const;
     void setLastSearchParams(const SearchParams &searchParams);
 
 private:
-    Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count = 1) const;
-    KTextEditor::Range findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count) const;
+    Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count = 1);
+    KTextEditor::Range findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count);
 
 private:
     InputModeManager *m_viInputModeManager;
     KTextEditor::ViewPrivate *m_view;
 
     SearchParams m_lastSearchConfig;
+    bool m_lastSearchWrapped;
 };
 }
 

@@ -137,12 +137,26 @@ void RegExpSearchTest::testReplacementCaseConversion_data()
     testNewRow() << "a\\UaA"
                  << "aAA";
 
+    testNewRow() << "a\\Uáa"
+                 << "aÁA";
+    testNewRow() << "a\\UAá"
+                 << "aAÁ";
+    testNewRow() << "a\\UaÁ"
+                 << "aAÁ";
+
     testNewRow() << "a\\uaa"
                  << "aAa";
     testNewRow() << "a\\uAa"
                  << "aAa";
     testNewRow() << "a\\uaA"
                  << "aAA";
+
+    testNewRow() << "a\\uáa"
+                 << "aÁa";
+    testNewRow() << "a\\uÁa"
+                 << "aÁa";
+    testNewRow() << "a\\uáA"
+                 << "aÁA";
 
     testNewRow() << "A\\LAA"
                  << "Aaa";
@@ -151,6 +165,13 @@ void RegExpSearchTest::testReplacementCaseConversion_data()
     testNewRow() << "A\\LAa"
                  << "Aaa";
 
+    testNewRow() << "A\\LÁA"
+                 << "Aáa";
+    testNewRow() << "A\\LaÁ"
+                 << "Aaá";
+    testNewRow() << "A\\LÁa"
+                 << "Aáa";
+
     testNewRow() << "A\\lAA"
                  << "AaA";
     testNewRow() << "A\\lAa"
@@ -158,10 +179,22 @@ void RegExpSearchTest::testReplacementCaseConversion_data()
     testNewRow() << "A\\laA"
                  << "AaA";
 
-    testNewRow() << "a\\EaA"
-                 << "aaA";
-    testNewRow() << "A\\EAa"
-                 << "AAa";
+    testNewRow() << "A\\lÁA"
+                 << "AáA";
+    testNewRow() << "A\\lÁa"
+                 << "Aáa";
+    testNewRow() << "A\\láA"
+                 << "AáA";
+
+    testNewRow() << "a\\Ubb\\EaA"
+                 << "aBBaA";
+    testNewRow() << "A\\LBB\\EAa"
+                 << "AbbAa";
+
+    testNewRow() << "a\\Ubb\\EáA"
+                 << "aBBáA";
+    testNewRow() << "A\\LBB\\EÁa"
+                 << "AbbÁa";
 }
 
 void RegExpSearchTest::testReplacementCaseConversion()
@@ -287,9 +320,17 @@ void RegExpSearchTest::testSearchForward()
     doc.setText("  \\piinfercong");
 
     KateRegExpSearch searcher(&doc);
-    const Range result = searcher.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15), false)[0];
+    QVector<KTextEditor::Range> result = searcher.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15), false);
 
-    QCOMPARE(result, Range(0, 2, 0, 11));
+    QCOMPARE(result.at(0), Range(0, 2, 0, 11));
+    QCOMPARE(doc.text(result.at(1)), QLatin1Char('c'));
+
+    // Test Unicode
+    doc.setText("  \\piinferćong");
+    result = searcher.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15), false);
+
+    QCOMPARE(result.at(0), Range(0, 2, 0, 11));
+    QCOMPARE(doc.text(result.at(1)), QStringLiteral("ć"));
 }
 
 void RegExpSearchTest::testSearchBackwardInSelection()
@@ -316,4 +357,21 @@ void RegExpSearchTest::test()
     QCOMPARE(result[1], Range(0, 24, 0, 25));
     QCOMPARE(doc.text(result[0]), QString("\\piReductionO"));
     QCOMPARE(doc.text(result[1]), QString("O"));
+}
+
+void RegExpSearchTest::testUnicode()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText("\\newcommand{\\piReductionOÓut}");
+
+    KateRegExpSearch searcher(&doc);
+    const QVector<Range> result = searcher.search("\\\\piReduction(\\w)(\\w)", Range(0, 10, 0, 28), true);
+
+    QCOMPARE(result.size(), 3);
+    QCOMPARE(result.at(0), Range(0, 12, 0, 26));
+    QCOMPARE(result.at(1), Range(0, 24, 0, 25));
+    QCOMPARE(result.at(2), Range(0, 25, 0, 26));
+    QCOMPARE(doc.text(result.at(0)), QStringLiteral("\\piReductionOÓ"));
+    QCOMPARE(doc.text(result.at(1)), QStringLiteral("O"));
+    QCOMPARE(doc.text(result.at(2)), QStringLiteral("Ó"));
 }
