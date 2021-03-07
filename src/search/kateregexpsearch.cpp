@@ -211,7 +211,6 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
     }
 
     regexp.setPattern(repairedPattern);
-    regexp.setPatternOptions(options | QRegularExpression::UseUnicodePropertiesOption); // ensure we do unicode aware search!
     if (!regexp.isValid()) {
         return noResult;
     }
