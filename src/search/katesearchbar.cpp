@@ -628,7 +628,8 @@ bool KateSearchBar::isPatternValid() const
     }
 
     return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern()
-                                                : searchOptions().testFlag(Regex) ? QRegularExpression(searchPattern()).isValid() : true;
+                                                : searchOptions().testFlag(Regex)
+                                                ? QRegularExpression(searchPattern(), QRegularExpression::UseUnicodePropertiesOption).isValid() : true;
 }
 
 void KateSearchBar::givePatternFeedback()

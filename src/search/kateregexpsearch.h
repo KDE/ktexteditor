@@ -43,6 +43,9 @@ public:
      * sensitivity and if the dot "." metacharacter matches any character
      * including a newline.
      *
+     * Note: Unicode support is always enabled (QRegularExpression::UseUnicodePropertiesOption).
+     * If the pattern is multi-line the QRegularExpression::MultilineOption is enabled.
+     *
      * \param pattern text to search for
      * \param inputRange Range to search in
      * \param backwards if \e true, the search will be backwards
