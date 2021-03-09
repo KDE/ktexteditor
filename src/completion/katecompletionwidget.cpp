@@ -122,6 +122,11 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     m_entryList->setColumnWidth(1, 0);
     m_entryList->setColumnWidth(2, 0);
 
+    QVBoxLayout *layout = new QVBoxLayout;
+    setLayout(layout);
+    layout->addWidget(m_entryList);
+    layout->setContentsMargins(0, 0, 0, 0);
+
     m_entryList->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
 
     m_argumentHintTree->setParent(nullptr, Qt::ToolTip);
@@ -163,9 +168,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     for (QWidget *childWidget : children) {
         childWidget->setFocusPolicy(Qt::NoFocus);
     }
-
-    // Position the entry-list so a frame can be drawn around it
-    m_entryList->move(frameWidth(), frameWidth());
 }
 
 KateCompletionWidget::~KateCompletionWidget()
@@ -471,17 +473,12 @@ void KateCompletionWidget::updateAndShow()
     if (m_argumentHintModel->rowCount(QModelIndex()) != 0) {
         argumentHintsChanged(true);
     }
-    //   }
-
-    // We do both actions twice here so they are stable, because they influence each other:
-    // updatePosition updates the height, resizeColumns needs the correct height to decide over
-    // how many rows it computes the column-width
-    updatePosition(true);
-    m_entryList->resizeColumns(true, true);
-    updatePosition(true);
-    m_entryList->resizeColumns(true, true);
 
     setUpdatesEnabled(true);
+
+    // Fixed Size - half of view width
+    setFixedWidth(view()->width() / 2);
+    m_entryList->setFixedWidth(width() - (2 * frameWidth()));
 
     if (m_argumentHintModel->rowCount(QModelIndex())) {
         updateArgumentHintGeometry();
