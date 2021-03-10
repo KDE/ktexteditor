@@ -513,8 +513,8 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowFoldingPreview, "Folding Preview", QStringLiteral("folding-preview"), true));
     addConfigEntry(ConfigEntry(ShowIconBar, "Icon Bar", QStringLiteral("icon-bar"), false));
     addConfigEntry(ConfigEntry(ShowLineCount, "Show Line Count", QString(), false));
-    addConfigEntry(ConfigEntry(ShowLineModification, "Line Modification", QStringLiteral("modification-markers"), false));
-    addConfigEntry(ConfigEntry(ShowLineNumbers, "Line Numbers", QStringLiteral("line-numbers"), false));
+    addConfigEntry(ConfigEntry(ShowLineModification, "Line Modification", QStringLiteral("modification-markers"), true));
+    addConfigEntry(ConfigEntry(ShowLineNumbers, "Line Numbers", QStringLiteral("line-numbers"), true));
     addConfigEntry(ConfigEntry(ShowScrollBarMarks, "Scroll Bar Marks", QString(), false));
     addConfigEntry(ConfigEntry(ShowScrollBarMiniMap, "Scroll Bar MiniMap", QStringLiteral("scrollbar-minimap"), true));
     addConfigEntry(ConfigEntry(ShowScrollBarMiniMapAll, "Scroll Bar Mini Map All", QString(), true));
