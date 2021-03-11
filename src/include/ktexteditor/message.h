@@ -30,7 +30,7 @@ class Document;
  * in the editor. Use the Document::postMessage() to post a message as follows:
  *
  * @code
- * // always use a QPointer go guard your Message, if you keep a pointer
+ * // always use a QPointer to guard your Message, if you keep a pointer
  * // after calling postMessage()
  * QPointer<KTextEditor::Message> message =
  *     new KTextEditor::Message("text", KTextEditor::Message::Information);
