@@ -234,7 +234,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // Add 'indent-width' to list
     item = new VariableIntItem(QStringLiteral("indent-width"), docConfig->indentationWidth());
-    static_cast<VariableIntItem *>(item)->setRange(1, 16);
+    static_cast<VariableIntItem *>(item)->setRange(1, 200);
     item->setHelpText(i18nc("short translation please", "Set the indentation depth for each indent level."));
     listview->addItem(item);
 
@@ -321,7 +321,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // Add 'tab-width' to list
     item = new VariableIntItem(QStringLiteral("tab-width"), docConfig->tabWidth());
-    static_cast<VariableIntItem *>(item)->setRange(1, 16);
+    static_cast<VariableIntItem *>(item)->setRange(1, 200);
     item->setHelpText(i18nc("short translation please", "Set the tab display width."));
     listview->addItem(item);
 
