@@ -1077,7 +1077,7 @@ KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPriva
     , m_cmdend(0)
     , m_command(nullptr)
 {
-    connect(this, &KateCmdLineEdit::returnPressed, this, &KateCmdLineEdit::slotReturnPressed);
+    connect(this, &KateCmdLineEdit::returnKeyPressed, this, &KateCmdLineEdit::slotReturnPressed);
 
     setCompletionObject(KateCmd::self()->commandCompletionObject());
     setAutoDeleteCompletionObject(false);

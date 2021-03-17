@@ -164,7 +164,8 @@ void SpellCheckBar::initConnections()
             SLOT(slotReplaceWord()));
             */
 
-    connect(d->ui.cmbReplacement, QOverload<>::of(&KComboBox::returnPressed), this, &SpellCheckBar::slotReplaceWord);
+    // TODO KF6 remove QOverload usage here, only KComboBox::returnPressed(const QString &) will remain
+    connect(d->ui.cmbReplacement, QOverload<const QString &>::of(&KComboBox::returnPressed), this, &SpellCheckBar::slotReplaceWord);
     connect(d->ui.m_autoCorrect, &QPushButton::clicked, this, &SpellCheckBar::slotAutocorrect);
     // button use by kword/kpresenter
     // hide by default
