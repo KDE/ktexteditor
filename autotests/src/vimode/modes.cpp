@@ -438,6 +438,7 @@ void ModesTest::NormalMotionsTests()
     DoTest("hello. by.. another.\n", "GcisX", "hello. by.. another.\nX");
     DoTest("hello. yay\nis this a string?!?.. another.\n", "fycisX", "hello. X another.\n");
     DoTest("hello. yay\nis this a string?!?.. another.\n", "jcisX", "hello. X another.\n");
+    DoTest("This is a sentence.\nThis is another sentence.", "jdis", "This is a sentence.\n");
 
     // Around / Sentence text object ("as")
     DoTest("", "cas", "");
@@ -1152,8 +1153,9 @@ void ModesTest::VisualMotionsTests()
     DoTest("Three. Different. Sentences.", "vapcX", "X");
     DoTest("Three. Different. Sentences.", "vipcX", "X");
     DoTest("Hello.\n", "vap\\esciX", "Hello.\nX");
-    // Make sure cursor is properly moved to the start of paragraph text objects
+    // Make sure cursor is properly moved to the start of paragraph and sentence text objects
     DoTest("Hello.\nWorld.", "jvapX", "");
+    DoTest("Hello.\nWorld.", "jvasX", "Hello.\n");
 
     // With count.
     DoTest("12345678", "lv3lyx", "1345678");

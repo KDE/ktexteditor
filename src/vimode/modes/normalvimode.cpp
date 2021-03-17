@@ -3148,8 +3148,9 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
 
     for (int i = linenum; i >= 0; i--) {
         const QString &line = doc()->line(i);
+        const int lineLength = line.size();
         if (i != linenum) {
-            column = line.size() - 1;
+            column = lineLength;
         }
 
         // An empty line is the end of a paragraph.
@@ -3159,12 +3160,17 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
 
         prev = column;
         for (int j = column; j >= 0; j--) {
-            if (line.at(j).isSpace()) {
+            if (j == lineLength || line.at(j).isSpace()) {
                 int lastSpace = j--;
                 for (; j >= 0 && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j--)
                     ;
 
                 if (j >= 0 && QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
+                    if (lastSpace == lineLength) {
+                        // If the line ends with one of .!?, then the sentence starts from the next line.
+                        return KTextEditor::Cursor(i + 1, 0);
+                    }
+
                     return KTextEditor::Cursor(i, prev);
                 }
                 j = lastSpace;
