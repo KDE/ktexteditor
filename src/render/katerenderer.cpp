@@ -1119,6 +1119,10 @@ KTextEditor::Cursor KateRenderer::xToCursor(const KateTextLayout &range, int x, 
     Q_ASSERT(range.isValid());
     KTextEditor::Cursor ret(range.line(), range.lineLayout().xToCursor(x));
 
+    // Do not wrap to the next line. (bug #423253)
+    if (range.wrap() && ret.column() >= range.endCol() && range.length() > 0) {
+        ret.setColumn(range.endCol() - 1);
+    }
     // TODO wrong for RTL lines?
     if (returnPastLine && range.endCol(true) == -1 && x > range.width() + range.xOffset()) {
         ret.setColumn(ret.column() + ((x - (range.width() + range.xOffset())) / spaceWidth()));
