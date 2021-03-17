@@ -186,14 +186,14 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         columnSize[i] = 5;
     }
     QModelIndex current = indexAt(QPoint(1, 1));
-    const bool changed = current.isValid();
+    //    const bool changed = current.isValid();
     int currentYPos = 0;
     measureColumnSizes(this, current, columnSize, currentYPos, height());
 
     auto totalColumnsWidth = 0;
     auto originalViewportWidth = viewport()->width();
 
-    int maxWidth = (QApplication::desktop()->screenGeometry(widget()->view()).width() * 3) / 4;
+    int maxWidth = (QApplication::desktop()->screenGeometry(widget()->view()).width()) / 2;
 
     /// Step 2: Update column-sizes
     // This contains several hacks to reduce the amount of resizing that happens. Generally,
@@ -202,59 +202,57 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     int minimumResize = 0;
     int maximumResize = 0;
 
-    if (changed) {
-        for (int n = 0; n < numColumns; n++) {
-            totalColumnsWidth += columnSize[n];
+    for (int n = 0; n < numColumns; n++) {
+        totalColumnsWidth += columnSize[n];
 
-            int diff = columnSize[n] - columnWidth(n);
-            if (diff < minimumResize) {
-                minimumResize = diff;
-            }
-            if (diff > maximumResize) {
-                maximumResize = diff;
-            }
+        int diff = columnSize[n] - columnWidth(n);
+        if (diff < minimumResize) {
+            minimumResize = diff;
         }
+        if (diff > maximumResize) {
+            maximumResize = diff;
+        }
+    }
 
-        int noReduceTotalWidth = 0; // The total width of the widget of no columns are reduced
+    int noReduceTotalWidth = 0; // The total width of the widget of no columns are reduced
+    for (int n = 0; n < numColumns; n++) {
+        if (columnSize[n] < columnWidth(n)) {
+            noReduceTotalWidth += columnWidth(n);
+        } else {
+            noReduceTotalWidth += columnSize[n];
+        }
+    }
+
+    // Check whether we can afford to reduce none of the columns
+    // Only reduce size if we widget would else be too wide.
+    bool noReduce = noReduceTotalWidth < maxWidth && !forceResize;
+
+    if (noReduce) {
+        totalColumnsWidth = 0;
         for (int n = 0; n < numColumns; n++) {
             if (columnSize[n] < columnWidth(n)) {
-                noReduceTotalWidth += columnWidth(n);
-            } else {
-                noReduceTotalWidth += columnSize[n];
-            }
-        }
-
-        // Check whether we can afford to reduce none of the columns
-        // Only reduce size if we widget would else be too wide.
-        bool noReduce = noReduceTotalWidth < maxWidth && !forceResize;
-
-        if (noReduce) {
-            totalColumnsWidth = 0;
-            for (int n = 0; n < numColumns; n++) {
-                if (columnSize[n] < columnWidth(n)) {
-                    columnSize[n] = columnWidth(n);
-                }
-
-                totalColumnsWidth += columnSize[n];
-            }
-        }
-
-        if (minimumResize > -40 && maximumResize == 0 && !forceResize) {
-            // No column needs to be exanded, and no column needs to be reduced by more than 40 pixels.
-            // To prevent flashing, do not resize at all.
-            totalColumnsWidth = 0;
-            for (int n = 0; n < numColumns; n++) {
                 columnSize[n] = columnWidth(n);
-                totalColumnsWidth += columnSize[n];
             }
-        } else {
-            //       viewport()->resize( 5000, viewport()->height() );
-            for (int n = 0; n < numColumns; n++) {
-                setColumnWidth(n, columnSize[n]);
-            }
-            //       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
-            viewport()->resize(totalColumnsWidth, viewport()->height());
+
+            totalColumnsWidth += columnSize[n];
         }
+    }
+
+    if (minimumResize > -40 && maximumResize == 0 && !forceResize) {
+        // No column needs to be exanded, and no column needs to be reduced by more than 40 pixels.
+        // To prevent flashing, do not resize at all.
+        totalColumnsWidth = 0;
+        for (int n = 0; n < numColumns; n++) {
+            columnSize[n] = columnWidth(n);
+            totalColumnsWidth += columnSize[n];
+        }
+    } else {
+        //       viewport()->resize( 5000, viewport()->height() );
+        for (int n = 0; n < numColumns; n++) {
+            setColumnWidth(n, columnSize[n]);
+        }
+        //       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
+        viewport()->resize(totalColumnsWidth, viewport()->height());
     }
 
     /// Step 3: Update widget-size and -position
