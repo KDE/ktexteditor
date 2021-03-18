@@ -50,6 +50,7 @@ class KateAbstractInputMode;
 class ZoomEventFilter;
 
 class QScrollBar;
+class QScroller;
 
 class KateViewInternal : public QWidget
 {
@@ -233,6 +234,8 @@ protected:
     void dropEvent(QDropEvent *) override;
     void showEvent(QShowEvent *) override;
     void wheelEvent(QWheelEvent *e) override;
+    void scrollPrepareEvent(QScrollPrepareEvent *);
+    void scrollEvent(QScrollEvent *);
     void focusInEvent(QFocusEvent *) override;
     void focusOutEvent(QFocusEvent *) override;
     void inputMethodEvent(QInputMethodEvent *e) override;
@@ -342,6 +345,7 @@ private:
     // column scrollbar + x position
     //
     QScrollBar *m_columnScroll;
+    QScroller *m_scroller;
     int m_startX;
 
     // has selection changed while your mouse or shift key is pressed

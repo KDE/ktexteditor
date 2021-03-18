@@ -47,6 +47,7 @@
 #include <QMimeData>
 #include <QPainter>
 #include <QPixmap>
+#include <QScroller>
 #include <QStyle>
 #include <QToolTip>
 
@@ -190,6 +191,8 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     // scrollbar for columns
     //
     m_columnScroll = new QScrollBar(Qt::Horizontal, m_view);
+    m_scroller = QScroller::scroller(this);
+    m_scroller->grabGesture(this);
 
     if (m_view->dynWordWrap()) {
         m_columnScroll->hide();
@@ -2576,6 +2579,17 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
 
     case QEvent::WindowDeactivate:
         hideBracketMatchPreview();
+        break;
+
+    case QEvent::ScrollPrepare: {
+        QScrollPrepareEvent *s = static_cast<QScrollPrepareEvent *>(e);
+        scrollPrepareEvent(s);
+    } return true;
+
+    case QEvent::Scroll: {
+        QScrollEvent *s = static_cast<QScrollEvent *>(e);
+        scrollEvent(s);
+    } return true;
 
     default:
         break;
@@ -3086,6 +3100,10 @@ KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, 
 
 void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
 {
+    if (m_scroller->state() != QScroller::Inactive) {
+        // Touchscreen is handled by scrollEvent()
+        return;
+    }
     KTextEditor::Cursor newPosition = coordinatesToCursor(e->pos(), false);
     if (newPosition != m_mouse) {
         m_mouse = newPosition;
@@ -3715,6 +3733,23 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
 
     // hide bracket match preview so that it won't linger while scrolling'
     hideBracketMatchPreview();
+}
+
+void KateViewInternal::scrollPrepareEvent(QScrollPrepareEvent *event)
+{
+    int lineHeight = renderer()->lineHeight();
+    event->setViewportSize(QSizeF(0.0, 0.0));
+    event->setContentPosRange(QRectF(0.0, 0.0, 0.0, m_lineScroll->maximum() * lineHeight));
+    event->setContentPos(QPointF(0.0, m_lineScroll->value() * lineHeight));
+    event->accept();
+}
+
+void KateViewInternal::scrollEvent(QScrollEvent *event)
+{
+    // FIXME Add horizontal scrolling, overscroll, scroll between lines, and word wrap awareness
+    KTextEditor::Cursor newPos((int) event->contentPos().y() / renderer()->lineHeight(), 0);
+    scrollPos(newPos);
+    event->accept();
 }
 
 void KateViewInternal::startDragScroll()
