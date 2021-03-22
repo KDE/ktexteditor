@@ -12,6 +12,11 @@
 
 #include <ktexteditor/codecompletionmodel.h>
 
+namespace KTextEditor
+{
+class CodeCompletionInterface;
+}
+
 /**
  * Helper class that mimics some of the behaviour of KDevelop's code completion, in particular
  * whether it performs "bracket merging" on completed function calls e.g. if we complete a call

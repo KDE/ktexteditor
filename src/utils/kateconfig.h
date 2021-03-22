@@ -9,9 +9,10 @@
 
 #include <ktexteditor_export.h>
 
-#include "ktexteditor/view.h"
-#include <KEncodingProber>
 #include <ktexteditor/markinterface.h>
+#include <ktexteditor/view.h>
+
+#include <KEncodingProber>
 
 #include <functional>
 #include <map>

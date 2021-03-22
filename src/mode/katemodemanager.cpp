@@ -6,6 +6,7 @@
 
 // BEGIN Includes
 #include "katemodemanager.h"
+#include "katemodemenulist.h"
 #include "katestatusbar.h"
 #include "katewildcardmatcher.h"
 

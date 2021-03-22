@@ -7,7 +7,9 @@
 #include "katenormalinputmode.h"
 #include "katecompletionwidget.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "katesearchbar.h"
+#include "kateview.h"
 #include "kateviewinternal.h"
 
 #include <KLocalizedString>

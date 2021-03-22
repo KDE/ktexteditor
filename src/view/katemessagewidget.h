@@ -7,8 +7,6 @@
 #ifndef KATE_MESSAGE_WIDGET_H
 #define KATE_MESSAGE_WIDGET_H
 
-#include "kateview.h"
-
 #include <QHash>
 #include <QPointer>
 #include <QWidget>
@@ -18,6 +16,7 @@
 namespace KTextEditor
 {
 class Message;
+class ViewPrivate;
 }
 
 class KMessageWidget;

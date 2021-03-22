@@ -6,6 +6,9 @@
 
 #include "katetextblock.h"
 #include "katetextbuffer.h"
+#include "katetextcursor.h"
+#include "katetextline.h"
+#include "katetextrange.h"
 
 #include <QVarLengthArray>
 

@@ -11,6 +11,11 @@
 #include "base.h"
 #include "fakecodecompletiontestmodel.h"
 
+namespace KTextEditor
+{
+class CodeCompletionInterface;
+}
+
 /**
  * This class handles implements a completion model for the completion
  * tests defined in the CompletionTest class.

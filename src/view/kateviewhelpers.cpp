@@ -32,6 +32,7 @@
 #include <katebuffer.h>
 #include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/attribute.h>
+#include <ktexteditor/command.h>
 #include <ktexteditor/movingrange.h>
 
 #include <KCharsets>

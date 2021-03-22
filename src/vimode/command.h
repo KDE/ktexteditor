@@ -10,11 +10,10 @@
 
 #include <QString>
 
-#include <vimode/modes/normalvimode.h>
-
 namespace KateVi
 {
 class KeyParser;
+class NormalViMode;
 
 enum CommandFlags {
     REGEX_PATTERN = 0x1, // the pattern is a regex

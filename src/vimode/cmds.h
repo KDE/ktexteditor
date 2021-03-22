@@ -9,7 +9,6 @@
 #ifndef KATEVI_CMDS_H
 #define KATEVI_CMDS_H
 
-#include "kateregexpsearch.h"
 #include "mappings.h"
 #include <KTextEditor/Command>
 #include <katesedcmd.h>

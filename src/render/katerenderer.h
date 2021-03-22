@@ -13,8 +13,6 @@
 #define KATE_RENDERER_H
 
 #include "kateconfig.h"
-#include "katelinelayout.h"
-#include "katetextline.h"
 #include <ktexteditor/attribute.h>
 
 #include <QFlags>
@@ -31,11 +29,16 @@ namespace KTextEditor
 class ViewPrivate;
 }
 class KateRendererConfig;
-class KateRenderRange;
 namespace Kate
 {
 class TextFolding;
+class TextLineData;
+typedef QSharedPointer<TextLineData> TextLine;
 }
+
+class KateTextLayout;
+class KateLineLayout;
+typedef QExplicitlySharedDataPointer<KateLineLayout> KateLineLayoutPtr;
 
 /**
  * Handles all of the work of rendering the text

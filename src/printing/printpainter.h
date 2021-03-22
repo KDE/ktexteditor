@@ -14,9 +14,6 @@
 #include <QFont>
 #include <QString>
 
-#include "kateconfig.h"
-#include "katerenderer.h"
-
 namespace KTextEditor
 {
 class DocumentPrivate;
@@ -25,6 +22,8 @@ class ViewPrivate;
 
 class QPrinter;
 class QPainter;
+
+class KateRenderer;
 
 namespace Kate
 {

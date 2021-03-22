@@ -3,7 +3,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-
 #include "kateswapdiffcreator.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
@@ -15,6 +14,7 @@
 #include <KMessageBox>
 
 #include <QDir>
+#include <QTextCodec>
 
 // BEGIN SwapDiffCreator
 SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)

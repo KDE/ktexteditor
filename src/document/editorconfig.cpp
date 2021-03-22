@@ -5,6 +5,9 @@
 */
 
 #include "editorconfig.h"
+#include "kateconfig.h"
+#include "katedocument.h"
+#include "katepartdebug.h"
 
 /**
  * @return whether a string value could be converted to a bool value as

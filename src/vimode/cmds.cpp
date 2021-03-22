@@ -10,9 +10,6 @@
 
 #include "globalstate.h"
 #include "katecmd.h"
-#include "katedocument.h"
-#include "kateglobal.h"
-#include "katepartdebug.h"
 #include "kateview.h"
 #include "kateviinputmode.h"
 #include "marks.h"
@@ -22,9 +19,7 @@
 
 #include <KLocalizedString>
 
-#include <QDir>
 #include <QRegularExpression>
-#include <QUrl>
 
 using namespace KateVi;
 

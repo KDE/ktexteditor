@@ -6,6 +6,7 @@
 
 #include "kateviinputmode.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "kateviewinternal.h"
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/inputmodemanager.h>

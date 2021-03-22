@@ -23,6 +23,7 @@
 #include "inlinenotedata.h"
 #include "inlinenoteinterface.h"
 #include "inlinenoteprovider.h"
+#include "katerenderer.h"
 #include "katevariableexpansionmanager.h"
 #include "markinterface.h"
 #include "modificationinterface.h"

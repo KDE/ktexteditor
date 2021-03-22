@@ -29,7 +29,9 @@
 #include <KLocalizedString>
 
 #include "katecmd.h"
+#include "katecommandlinescript.h"
 #include "kateglobal.h"
+#include "kateindentscript.h"
 #include "katepartdebug.h"
 
 KateScriptManager *KateScriptManager::m_instance = nullptr;

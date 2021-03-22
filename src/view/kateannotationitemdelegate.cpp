@@ -8,9 +8,9 @@
 
 #include "kateviewinternal.h"
 
-#include <KLocalizedString>
+#include <ktexteditor/annotationinterface.h>
 
-#include <QFontMetricsF>
+#include <QHelpEvent>
 #include <QPainter>
 #include <QToolTip>
 

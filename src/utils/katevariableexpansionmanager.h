@@ -9,6 +9,7 @@
 
 #include <QString>
 #include <QVector>
+#include <QWidget>
 
 #include "variable.h"
 

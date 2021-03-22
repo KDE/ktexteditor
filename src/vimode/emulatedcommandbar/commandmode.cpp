@@ -18,7 +18,9 @@
 #include <vimode/inputmodemanager.h>
 
 #include "katecmds.h"
+#include "katecommandlinescript.h"
 #include "katescriptmanager.h"
+#include "kateview.h"
 
 #include <KLocalizedString>
 

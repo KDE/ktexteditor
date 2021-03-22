@@ -11,9 +11,11 @@
 #include "vimode/mappings.h"
 #include <inputmode/kateviinputmode.h>
 #include <kateconfig.h>
-#include <kateglobal.h>
 #include <kateundomanager.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+
+#include <katedocument.h>
+#include <kateview.h>
 
 using namespace KateVi;
 using namespace KTextEditor;

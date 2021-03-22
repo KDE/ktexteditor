@@ -9,7 +9,13 @@
 #define KATE_INDENT_SCRIPT_H
 
 #include "katescript.h"
-#include "kateview.h"
+
+#include <KTextEditor/Cursor>
+
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class KateIndentScriptHeader
 {

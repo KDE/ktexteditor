@@ -9,12 +9,15 @@
 
 #include <ktexteditor_export.h>
 
-#include <KTextEditor/Command>
-
 #include <KCompletion>
 
 #include <QHash>
 #include <QStringList>
+
+namespace KTextEditor
+{
+class Command;
+}
 
 class KTEXTEDITOR_EXPORT KateCmd
 {

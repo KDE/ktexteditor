@@ -11,6 +11,8 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katemodemanager.h"
+#include "katemodemenulist.h"
+#include "kateview.h"
 #include "wordcounter.h"
 
 #include <KAcceleratorManager>

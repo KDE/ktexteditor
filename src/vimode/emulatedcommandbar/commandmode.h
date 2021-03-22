@@ -9,13 +9,14 @@
 
 #include "activemode.h"
 
-#include <KTextEditor/Command>
-
 #include <QHash>
+
+#include <KCompletion>
 
 namespace KTextEditor
 {
 class ViewPrivate;
+class Command;
 }
 
 namespace KateVi

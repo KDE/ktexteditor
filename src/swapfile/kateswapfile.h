@@ -11,18 +11,18 @@
 #include <QDataStream>
 #include <QFile>
 #include <QObject>
-#include <QTimer>
+#include <QPointer>
 
-#include "katebuffer.h"
-#include "katedocument.h"
-#include "katetextbuffer.h"
 #include <ktexteditor_export.h>
 
-#include <KTextEditor/Message>
-
+class QTimer;
 namespace KTextEditor
 {
 class ViewPrivate;
+class DocumentPrivate;
+class Message;
+class Range;
+class Cursor;
 }
 
 namespace Kate

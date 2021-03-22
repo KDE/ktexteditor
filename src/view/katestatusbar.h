@@ -7,18 +7,24 @@
 #ifndef KATE_STATUS_BAR_H
 #define KATE_STATUS_BAR_H
 
-#include "katemodemenulist.h"
-#include "kateview.h"
 #include "kateviewhelpers.h"
 
 #include <KLocalizedString>
 #include <KSqueezedTextLabel>
 
 #include <QLabel>
+#include <QMenu>
 #include <QPushButton>
 #include <QToolButton>
 
+namespace KTextEditor
+{
+class ViewPrivate;
+}
+
 class WordCounter;
+class KateStatusBar;
+class KateModeMenuList;
 
 class KateStatusBarOpenUpMenu : public QMenu
 {

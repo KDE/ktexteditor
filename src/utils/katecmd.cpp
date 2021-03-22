@@ -10,6 +10,8 @@
 #include "katepartdebug.h"
 #include <KCompletionMatches>
 
+#include <ktexteditor/command.h>
+
 // BEGIN KateCmd
 #define CMD_HIST_LENGTH 256
 

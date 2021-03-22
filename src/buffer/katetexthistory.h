@@ -9,9 +9,10 @@
 
 #include <vector>
 
+#include <ktexteditor/movingcursor.h>
+#include <ktexteditor/movingrange.h>
 #include <ktexteditor/range.h>
 
-#include "katetextrange.h"
 #include <ktexteditor_export.h>
 
 namespace Kate

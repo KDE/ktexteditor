@@ -9,6 +9,7 @@
 #include <katetextblock.h>
 #include <katetextbuffer.h>
 #include <katetextline.h>
+#include <katetextrange.h>
 
 QTEST_MAIN(KateTextBlockTest)
 

@@ -13,6 +13,8 @@
 #include <KLocalizedString>
 #include <inputmode/kateviinputmode.h>
 #include <kateconfig.h>
+#include <katedocument.h>
+#include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>

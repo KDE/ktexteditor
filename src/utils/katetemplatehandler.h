@@ -16,6 +16,7 @@
 #include <QVector>
 
 #include <katescript.h>
+#include <ktexteditor/cursor.h>
 
 class KateUndoManager;
 
@@ -25,6 +26,7 @@ class DocumentPrivate;
 class ViewPrivate;
 class MovingCursor;
 class MovingRange;
+class View;
 }
 
 /**

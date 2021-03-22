@@ -7,10 +7,13 @@
 
 #include "config.h"
 
+#include "katebuffer.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "katepartdebug.h"
 #include "kateswapdiffcreator.h"
 #include "kateswapfile.h"
+#include "katetextbuffer.h"
 #include "kateundomanager.h"
 
 #include <ktexteditor/view.h>

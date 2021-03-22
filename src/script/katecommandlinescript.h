@@ -8,11 +8,15 @@
 #define KATE_COMMANDLINE_SCRIPT_H
 
 #include "katescript.h"
-#include "kateview.h"
 
 #include <KTextEditor/Command>
 
 #include <QJsonArray>
+
+namespace KTextEditor
+{
+class View;
+}
 
 class KateCommandLineScriptHeader
 {

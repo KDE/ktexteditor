@@ -8,7 +8,9 @@
 #include "fakecodecompletiontestmodel.h"
 #include <QRegularExpression>
 #include <katecompletionwidget.h>
+#include <katedocument.h>
 #include <kateglobal.h>
+#include <kateview.h>
 #include <katewordcompletion.h>
 
 using namespace KTextEditor;

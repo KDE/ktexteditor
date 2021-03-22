@@ -11,11 +11,15 @@
 #define KATE_TEXTRANGE_H
 
 #include <ktexteditor/movingrange.h>
-#include <ktexteditor/movingrangefeedback.h>
-#include <ktexteditor/view.h>
 
 #include "katetextcursor.h"
 #include <ktexteditor_export.h>
+
+namespace KTextEditor
+{
+class MovingRangeFeedback;
+class View;
+}
 
 namespace Kate
 {

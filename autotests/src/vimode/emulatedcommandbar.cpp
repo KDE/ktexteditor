@@ -15,6 +15,8 @@
 #include <inputmode/kateviinputmode.h>
 #include <katebuffer.h>
 #include <kateconfig.h>
+#include <katedocument.h>
+#include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/history.h>
 

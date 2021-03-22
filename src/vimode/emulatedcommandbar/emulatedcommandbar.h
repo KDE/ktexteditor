@@ -10,11 +10,6 @@
 #include "kateviewhelpers.h"
 #include <vimode/cmds.h>
 
-#include "../searcher.h"
-#include "activemode.h"
-#include <ktexteditor/movingrange.h>
-#include <ktexteditor/range.h>
-
 namespace KTextEditor
 {
 class ViewPrivate;
@@ -30,6 +25,8 @@ class MatchHighlighter;
 class InteractiveSedReplaceMode;
 class SearchMode;
 class CommandMode;
+class ActiveMode;
+class Completer;
 
 /**
  * A KateViewBarWidget that attempts to emulate some of the features of Vim's own command bar,

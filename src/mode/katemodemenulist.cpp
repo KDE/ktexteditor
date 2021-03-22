@@ -3,13 +3,12 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-
-// BEGIN Includes
 #include "katemodemenulist.h"
 
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
+#include "katemodemanager.h"
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"
@@ -20,7 +19,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QWidgetAction>
-// END Includes
+
+#include <KLocalizedString>
 
 namespace
 {

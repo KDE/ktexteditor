@@ -11,7 +11,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-only
 */
-
 // BEGIN includes
 #include "katedocument.h"
 #include "config.h"

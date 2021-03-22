@@ -16,19 +16,19 @@
 #include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/linerange.h>
 #include <ktexteditor/mainwindow.h>
-#include <ktexteditor/markinterface.h>
 #include <ktexteditor/texthintinterface.h>
 #include <ktexteditor/view.h>
 
+#include <QJsonDocument>
 #include <QMenu>
 #include <QModelIndex>
 #include <QPointer>
 #include <QScopedPointer>
 #include <QSpacerItem>
+#include <QTextLayout>
 
 #include <array>
 
-#include "katerenderer.h"
 #include "katetextfolding.h"
 #include "katetextrange.h"
 

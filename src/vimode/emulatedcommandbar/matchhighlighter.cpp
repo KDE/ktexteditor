@@ -8,6 +8,7 @@
 
 #include "kateconfig.h"
 #include "katedocument.h"
+#include "katerenderer.h"
 #include "kateview.h"
 
 using namespace KateVi;

@@ -18,11 +18,11 @@
 #include <QObject>
 
 #include <KActionMenu>
-#include <ktexteditor/cursor.h>
 
 namespace KTextEditor
 {
 class DocumentPrivate;
+class Cursor;
 }
 class KateIndentScript;
 class KateHighlighting;

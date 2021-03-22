@@ -12,8 +12,13 @@
 #include <QVBoxLayout>
 #include <QtTestWidgets>
 #include <inputmodemanager.h>
-#include <katedocument.h>
-#include <kateview.h>
+
+namespace KTextEditor
+{
+class ViewPrivate;
+class Document;
+class DocumentPrivate;
+}
 
 class QLineEdit;
 namespace KateVi

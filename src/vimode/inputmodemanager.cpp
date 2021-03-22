@@ -21,6 +21,7 @@
 #include "globalstate.h"
 #include "jumps.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "kateglobal.h"
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"

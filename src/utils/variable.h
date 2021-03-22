@@ -8,7 +8,6 @@
 #define KTEXTEDITOR_VARIABLE_H
 
 #include <QStringList>
-#include <QVariant>
 #include <functional>
 
 namespace KTextEditor

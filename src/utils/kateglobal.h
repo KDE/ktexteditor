@@ -19,7 +19,6 @@
 #include <KSharedConfig>
 
 #include <KTextEditor/Application>
-#include <KTextEditor/Command>
 #include <KTextEditor/MainWindow>
 
 #include <QList>
@@ -42,6 +41,7 @@ class DocumentPrivate;
 namespace KTextEditor
 {
 class ViewPrivate;
+class Command;
 }
 class KateScriptManager;
 class KDirWatch;

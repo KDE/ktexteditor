@@ -14,11 +14,9 @@
 
 #include <QVector>
 
-#include "katecommandlinescript.h"
-#include "kateindentscript.h"
-#include "katescript.h"
-
 class QString;
+class KateIndentScript;
+class KateCommandLineScript;
 
 /**
  * Manage the scripts on disks -- find them and query them.

@@ -10,18 +10,14 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-
 #ifndef _KATE_VIEW_INTERNAL_
 #define _KATE_VIEW_INTERNAL_
 
 #include <ktexteditor/attribute.h>
+#include <ktexteditor/view.h>
 
 #include "inlinenotedata.h"
-#include "katedocument.h"
-#include "katerenderer.h"
 #include "katetextcursor.h"
-#include "katetextline.h"
-#include "kateview.h"
 
 #include <QDrag>
 #include <QElapsedTimer>
@@ -38,6 +34,8 @@ namespace KTextEditor
 {
 class MovingRange;
 class TextHintProvider;
+class DocumentPrivate;
+class ViewPrivate;
 }
 
 class KateIconBorder;
@@ -48,6 +46,8 @@ class KateTextLayout;
 class KateTextAnimation;
 class KateAbstractInputMode;
 class ZoomEventFilter;
+class KateRenderer;
+class KateTextPreview;
 
 class QScrollBar;
 class QScroller;
@@ -459,14 +459,8 @@ private:
     void cursorMoved();
 
 private:
-    inline KTextEditor::DocumentPrivate *doc()
-    {
-        return m_view->doc();
-    }
-    inline KTextEditor::DocumentPrivate *doc() const
-    {
-        return m_view->doc();
-    }
+    KTextEditor::DocumentPrivate *doc();
+    KTextEditor::DocumentPrivate *doc() const;
 
     // input modes
 private:

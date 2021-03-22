@@ -12,11 +12,6 @@
 #include <editorconfig/editorconfig.h>
 #include <editorconfig/editorconfig_handle.h>
 
-#include "kateconfig.h"
-#include "katedocument.h"
-#include "kateglobal.h"
-#include "katepartdebug.h"
-
 class KateDocumentConfig;
 
 namespace KTextEditor

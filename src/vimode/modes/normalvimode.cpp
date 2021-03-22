@@ -12,6 +12,7 @@
 #include "katecmd.h"
 #include "katecompletionwidget.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "kateundomanager.h"

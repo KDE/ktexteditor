@@ -6,6 +6,7 @@
 
 #include "katetextfolding.h"
 #include "documentcursor.h"
+#include "katedocument.h"
 #include "katetextbuffer.h"
 #include "katetextrange.h"
 

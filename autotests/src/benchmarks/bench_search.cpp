@@ -3,6 +3,7 @@
 #include <QCommandLineParser>
 
 #include <KMainWindow>
+#include <kateconfig.h>
 #include <katedocument.h>
 #include <katesearchbar.h>
 #include <kateview.h>

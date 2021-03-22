@@ -14,7 +14,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-only
 */
-
 #include "kateviewinternal.h"
 
 #include "kateabstractinputmode.h"
@@ -29,6 +28,7 @@
 #include "katepartdebug.h"
 #include "katetextanimation.h"
 #include "katetextpreview.h"
+#include "kateview.h"
 #include "kateviewaccessible.h"
 #include "kateviewhelpers.h"
 #include "spellcheck/spellingmenu.h"
@@ -3983,6 +3983,16 @@ void KateViewInternal::cursorMoved()
         QAccessible::updateAccessibility(&ev);
     }
 #endif
+}
+
+KTextEditor::DocumentPrivate *KateViewInternal::doc()
+{
+    return m_view->doc();
+}
+
+KTextEditor::DocumentPrivate *KateViewInternal::doc() const
+{
+    return m_view->doc();
 }
 
 bool KateViewInternal::rangeAffectsView(const KTextEditor::Range &range, bool realCursors) const

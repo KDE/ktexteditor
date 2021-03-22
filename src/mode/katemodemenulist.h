@@ -24,16 +24,16 @@
 #include <QLineEdit>
 #include <QListView>
 #include <QMenu>
+#include <QPointer>
 #include <QPushButton>
 #include <QScrollBar>
 #include <QStandardItemModel>
 #include <QString>
 
-#include "katemodemanager.h"
-
 namespace KTextEditor
 {
 class DocumentPrivate;
+class Document;
 }
 
 namespace KateModeMenuListData
@@ -44,6 +44,7 @@ class SearchLine;
 class Factory;
 }
 
+class KateFileType;
 /**
  * Class of menu to select the
  * syntax highlighting language (mode menu).

@@ -9,6 +9,7 @@
 
 using namespace KateVi;
 
+#include "activemode.h"
 #include "kateview.h"
 
 #include <QAbstractItemView>

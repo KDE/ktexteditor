@@ -3,7 +3,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-
 #ifndef KATE_TEXTBUFFER_H
 #define KATE_TEXTBUFFER_H
 
@@ -13,22 +12,27 @@
 #include <QTextCodec>
 #include <QVector>
 
-#include <ktexteditor/document.h>
-
-#include "katedocument.h"
 #include "katetextblock.h"
-#include "katetextcursor.h"
 #include "katetexthistory.h"
-#include "katetextrange.h"
 #include <ktexteditor_export.h>
 
 // encoding prober
 #include <KEncodingProber>
 
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
+
 class KCompressionDevice;
 
 namespace Kate
 {
+class TextRange;
+class TextCursor;
+class TextBlock;
+class TextLineData;
+typedef QSharedPointer<TextLineData> TextLine;
 /**
  * Class representing a text buffer.
  * The interface is line based, internally the text will be stored in blocks of text lines.

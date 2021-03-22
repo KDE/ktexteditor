@@ -13,8 +13,6 @@
 
 #include <KLocalizedString>
 
-#include "katedialogs.h"
-
 namespace KTextEditor
 {
 class DocumentPrivate;

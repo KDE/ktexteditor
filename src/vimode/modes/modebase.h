@@ -20,9 +20,12 @@
 class QKeyEvent;
 class QString;
 class QRegularExpression;
+class KateViewInternal;
 namespace KTextEditor
 {
 class DocumentPrivate;
+class ViewPrivate;
+class Message;
 }
 
 namespace KateVi

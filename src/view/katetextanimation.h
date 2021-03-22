@@ -12,7 +12,6 @@
 #include <QString>
 
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
 namespace KTextEditor

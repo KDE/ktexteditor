@@ -10,6 +10,11 @@
 
 #include "base.h"
 
+namespace Kate
+{
+class TextRange;
+}
+
 class ViewTest : public BaseTest
 {
     Q_OBJECT

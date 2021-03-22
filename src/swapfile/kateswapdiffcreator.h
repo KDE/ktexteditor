@@ -3,12 +3,9 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-
 #ifndef KATE_SWAP_DIFF_CREATOR_H
 #define KATE_SWAP_DIFF_CREATOR_H
 
-#include <QAction>
-#include <QByteArray>
 #include <QProcess>
 #include <QTemporaryFile>
 

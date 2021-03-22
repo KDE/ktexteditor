@@ -8,6 +8,7 @@
 */
 
 #include "katetextrange.h"
+#include "katedocument.h"
 #include "katetextbuffer.h"
 
 namespace Kate

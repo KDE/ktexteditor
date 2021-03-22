@@ -3,13 +3,14 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-
 #include "config.h"
 #include "kateglobal.h"
 
 #include "katesecuretextbuffer_p.h"
 #include "katetextbuffer.h"
 #include "katetextloader.h"
+
+#include "katedocument.h"
 
 // this is unfortunate, but needed for performance
 #include "katepartdebug.h"

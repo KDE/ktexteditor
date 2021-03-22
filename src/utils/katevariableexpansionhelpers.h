@@ -8,11 +8,10 @@
 #define KTEXTEDITOR_VARIABLE_EXPANSION_HELPERS_H
 
 #include <QDialog>
+#include <QHash>
 #include <QPointer>
 #include <QString>
 #include <QVector>
-
-#include "variable.h"
 
 class QListView;
 class QLineEdit;

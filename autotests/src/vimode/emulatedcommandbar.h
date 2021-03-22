@@ -15,6 +15,11 @@ class QCompleter;
 class QLabel;
 class QColor;
 
+namespace Kate
+{
+class TextRange;
+}
+
 class EmulatedCommandBarTest : public BaseTest
 {
     Q_OBJECT

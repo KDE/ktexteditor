@@ -14,7 +14,6 @@
 #include <QVarLengthArray>
 #include <QVector>
 
-#include "katetextline.h"
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
 
@@ -28,6 +27,8 @@ namespace Kate
 class TextBuffer;
 class TextCursor;
 class TextRange;
+class TextLineData;
+typedef QSharedPointer<TextLineData> TextLine;
 
 /**
  * Class representing a text block.
