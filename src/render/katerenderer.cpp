@@ -325,19 +325,12 @@ void KateRenderer::paintIndentMarker(QPainter &paint, uint x, uint y /*row*/)
     QPen myPen(config()->indentationLineColor());
     static const QVector<qreal> dashPattern = QVector<qreal>() << 1 << 1;
     myPen.setDashPattern(dashPattern);
-    if (y % 2) {
-        myPen.setDashOffset(1);
-    }
     paint.setPen(myPen);
-
-    const int height = fontHeight();
-    const int top = 0;
-    const int bottom = height - 1;
 
     QPainter::RenderHints renderHints = paint.renderHints();
     paint.setRenderHints(renderHints, false);
 
-    paint.drawLine(x + 2, top, x + 2, bottom);
+    paint.drawLine(x + 2, 0, x + 2, lineHeight());
 
     paint.setRenderHints(renderHints, true);
 
