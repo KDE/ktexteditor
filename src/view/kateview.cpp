@@ -708,7 +708,6 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_toggleDynWrap = toggleAction = new KToggleAction(i18n("&Dynamic Word Wrap"), this);
     a->setIcon(QIcon::fromTheme(QStringLiteral("text-wrap")));
     ac->addAction(QStringLiteral("view_dynamic_word_wrap"), a);
-    ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F10));
     a->setWhatsThis(
         i18n("If this option is checked, the text lines will be wrapped at the view border on the screen.<br /><br />"
              "This is only a view option, meaning the document will not changed."));
@@ -740,7 +739,6 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = toggleAction = m_toggleFoldingMarkers = new KToggleAction(i18n("Show Folding &Markers"), this);
     ac->addAction(QStringLiteral("view_folding_markers"), a);
-    ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F9));
     a->setWhatsThis(i18n("You can choose if the codefolding marks should be shown, if codefolding is possible."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleFoldingMarkers);
 
