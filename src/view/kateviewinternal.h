@@ -51,6 +51,8 @@ class KateTextPreview;
 
 class QScrollBar;
 class QScroller;
+class QScrollEvent;
+class QScrollPrepareEvent;
 
 class KateViewInternal : public QWidget
 {
