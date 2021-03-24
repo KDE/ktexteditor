@@ -61,7 +61,6 @@ class KateViewInternal : public QWidget
     friend class KTextEditor::ViewPrivate;
     friend class KateIconBorder;
     friend class KateScrollBar;
-    friend class KateAnnotationItemDelegate;
     friend class KateAnnotationGroupPositionState;
     friend class CalculatingCursor;
     friend class BoundedCursor;

@@ -20,7 +20,7 @@ class KateAnnotationItemDelegate : public KTextEditor::AbstractAnnotationItemDel
     Q_OBJECT
 
 public:
-    explicit KateAnnotationItemDelegate(KateViewInternal *internalView, QObject *parent);
+    explicit KateAnnotationItemDelegate(QObject *parent);
     ~KateAnnotationItemDelegate() override;
 
 public:
@@ -34,8 +34,6 @@ public:
     QSize sizeHint(const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) const override;
 
 private:
-    KateViewInternal *m_internalView;
-    KTextEditor::ViewPrivate *m_view;
 
     mutable qreal m_maxCharWidth = 0.0;
     mutable QFontMetricsF m_cachedDataContentFontMetrics;

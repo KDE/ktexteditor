@@ -6,9 +6,8 @@
 
 #include "kateannotationitemdelegate.h"
 
-#include "kateviewinternal.h"
-
 #include <ktexteditor/annotationinterface.h>
+#include <ktexteditor/view.h>
 
 #include <QHelpEvent>
 #include <QPainter>
@@ -16,10 +15,8 @@
 
 #include <math.h>
 
-KateAnnotationItemDelegate::KateAnnotationItemDelegate(KateViewInternal *internalView, QObject *parent)
+KateAnnotationItemDelegate::KateAnnotationItemDelegate(QObject *parent)
     : KTextEditor::AbstractAnnotationItemDelegate(parent)
-    , m_internalView(internalView)
-    , m_view(internalView->m_view)
     , m_cachedDataContentFontMetrics(QFont())
 {
 }

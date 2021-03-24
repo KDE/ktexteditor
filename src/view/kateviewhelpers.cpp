@@ -1424,7 +1424,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_dynWrapIndicatorsOn(false)
     , m_annotationBorderOn(false)
     , m_updatePositionToArea(true)
-    , m_annotationItemDelegate(new KateAnnotationItemDelegate(m_viewInternal, this))
+    , m_annotationItemDelegate(new KateAnnotationItemDelegate(this))
 {
     setAcceptDrops(true);
     setAttribute(Qt::WA_StaticContents);
@@ -2542,7 +2542,7 @@ void KateIconBorder::setAnnotationItemDelegate(KTextEditor::AbstractAnnotationIt
 
     if (!delegate) {
         // reset to a default delegate
-        m_annotationItemDelegate = new KateAnnotationItemDelegate(m_viewInternal, this);
+        m_annotationItemDelegate = new KateAnnotationItemDelegate(this);
         m_isDefaultAnnotationItemDelegate = true;
     } else {
         // drop any default delegate
