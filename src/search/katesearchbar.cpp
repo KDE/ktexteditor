@@ -493,8 +493,21 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     const Range selection = m_view->selection() ? m_view->selectionRange() : Range::invalid();
     if (selection.isValid()) {
         if (selectionOnly()) {
-            // First match in selection
-            inputRange = selection;
+            if (!m_inputRange.isValid()) {
+                // First match in selection
+                inputRange = selection;
+                // Remember selection for succeeding selection-only searches
+                // Make sure m_inputRange is set to invalid when selection/search range changes
+                m_inputRange.setRange(selection);
+            } else {
+                // The selection wasn't changed/updated by user, so we use the previous selection
+                // We use the selection's start/end so that the search can move forward/backward
+                if (searchDirection == SearchBackward) {
+                    inputRange.setRange(m_inputRange.start(), selection.end());
+                } else {
+                    inputRange.setRange(selection.start(), m_inputRange.end());
+                }
+            }
         } else {
             // Next match after/before selection if a match was selected before
             if (searchDirection == SearchForward) {
@@ -502,6 +515,8 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
             } else {
                 inputRange.setRange(Cursor(0, 0), selection.end());
             }
+
+            m_inputRange = KTextEditor::Range::invalid();
         }
     } else {
         // No selection
@@ -531,15 +546,13 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
                 delete smartInputRange;
             }
 
-            if (!selectionOnly()) {
-                // Find, second try after old selection
-                if (searchDirection == SearchForward) {
-                    const Cursor start = (replacement != nullptr) ? afterReplace.end() : selection.end();
-                    inputRange.setRange(start, inputRange.end());
-                } else {
-                    const Cursor end = (replacement != nullptr) ? afterReplace.start() : selection.start();
-                    inputRange.setRange(inputRange.start(), end);
-                }
+            // Find, second try after old selection
+            if (searchDirection == SearchForward) {
+                const Cursor start = (replacement != nullptr) ? afterReplace.end() : selection.end();
+                inputRange.setRange(start, inputRange.end());
+            } else {
+                const Cursor end = (replacement != nullptr) ? afterReplace.start() : selection.start();
+                inputRange.setRange(inputRange.start(), end);
             }
 
             match.searchText(inputRange, searchPattern());
@@ -561,9 +574,8 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         }
     }
 
-    bool askWrap = !match.isValid() && (!selection.isValid() || !selectionOnly());
+    bool askWrap = !match.isValid() && (!afterReplace.isValid() || !selectionOnly());
     bool wrap = false;
-
     if (askWrap) {
         askWrap = false;
         wrap = true;
@@ -582,7 +594,7 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     }
     if (wrap) {
         m_view->showSearchWrappedHint(searchDirection == SearchBackward);
-        inputRange = m_view->document()->documentRange();
+        inputRange = !selectionOnly() ? m_view->document()->documentRange() : m_inputRange;
         match.searchText(inputRange, searchPattern());
     }
 
@@ -901,6 +913,7 @@ void KateSearchBar::endFindOrReplaceAll()
     }
 
     m_cancelFindOrReplace = true; // Indicate we are not running
+    m_inputRange = KTextEditor::Range::invalid(); // m_inputRange is also used elsewhere so we set it to invalid
 }
 
 void KateSearchBar::replaceAll()
@@ -1625,6 +1638,9 @@ bool KateSearchBar::eventFilter(QObject *obj, QEvent *event)
 
 void KateSearchBar::updateSelectionOnly()
 {
+    // Make sure the previous selection-only search range is not used anymore
+    m_inputRange = KTextEditor::Range::invalid();
+
     if (m_powerUi == nullptr) {
         return;
     }

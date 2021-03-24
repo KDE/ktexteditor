@@ -262,7 +262,7 @@ void SearchBarTest::testSetSelectionOnlyPower()
     KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
-    doc.setText("a a a");
+    doc.setText("a a a a");
     KateSearchBar bar(true, &view, &config);
 
     bar.setSearchPattern("a");
@@ -286,10 +286,26 @@ void SearchBarTest::testSetSelectionOnlyPower()
     QCOMPARE(view.selectionRange(), Range(0, 2, 0, 3));
     QVERIFY(bar.selectionOnly());
 
-    bar.setSelectionOnly(false);
     bar.findNext();
 
     QCOMPARE(view.selectionRange(), Range(0, 4, 0, 5));
+    QVERIFY(bar.selectionOnly());
+
+    // Test Search wrap for selection only
+    bar.findNext();
+
+    QCOMPARE(view.selectionRange(), Range(0, 2, 0, 3));
+    QVERIFY(bar.selectionOnly());
+
+    bar.findPrevious();
+
+    QCOMPARE(view.selectionRange(), Range(0, 4, 0, 5));
+    QVERIFY(bar.selectionOnly());
+
+    bar.setSelectionOnly(false);
+    bar.findNext();
+
+    QCOMPARE(view.selectionRange(), Range(0, 6, 0, 7));
     QVERIFY(!bar.selectionOnly());
 }
 
