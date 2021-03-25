@@ -5349,7 +5349,10 @@ KTextEditor::AnnotationModel *KTextEditor::DocumentPrivate::annotationModel() co
 // TAKEN FROM kparts.h
 bool KTextEditor::DocumentPrivate::queryClose()
 {
-    if (!isReadWrite() || !isModified()) {
+    if (!isReadWrite() // Can't be modified
+        || !isModified() // Nothing was modified
+        || (url() == QUrl() && lines() == 1 && text() == QString()) // Unsaved and blank
+    ) {
         return true;
     }
 
