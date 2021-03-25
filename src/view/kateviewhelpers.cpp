@@ -750,7 +750,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     // calculate colors
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
     const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
-    const QColor highlightColor = palette().link().color();
+    const QColor highlightColor = palette().highlight().color();
 
     const int backgroundLightness = backgroundColor.lightness();
     const int foregroundLightness = foregroundColor.lightness();
