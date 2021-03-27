@@ -417,6 +417,63 @@ void SearchBarTest::testFindAll()
     QCOMPARE(bar.m_hlRanges.size(), 0);
 }
 
+void SearchBarTest::testReplaceInSelectionOnly()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    KateViewConfig config(&view);
+
+    doc.setText("a\na\na\na\na");
+    KateSearchBar bar(true, &view, &config);
+
+    bar.setSearchPattern("a\n");
+
+    view.setSelection(Range(1, 0, 4, 0));
+    bar.setSelectionOnly(true);
+
+    QVERIFY(bar.selectionOnly());
+
+    bar.replaceNext();
+
+    QCOMPARE(view.selectionRange(), Range(1, 0, 2, 0));
+    QVERIFY(bar.selectionOnly());
+
+    bar.replaceNext();
+
+    QCOMPARE(view.selectionRange(), Range(1, 0, 2, 0));
+    QVERIFY(bar.selectionOnly());
+
+    bar.replaceNext();
+
+    QCOMPARE(view.selectionRange(), Range(1, 0, 2, 0));
+    QVERIFY(bar.selectionOnly());
+
+    bar.replaceNext();
+
+    QCOMPARE(view.selectionRange(), Range(1, 0, 1, 0));
+    QCOMPARE(doc.text(), "a\na");
+    QVERIFY(bar.selectionOnly());
+
+    // Test undo (search selection range should still be preserved)
+    doc.undo();
+    doc.undo();
+    doc.undo();
+
+    QCOMPARE(view.selectionRange(), Range(1, 0, 2, 0));
+    QVERIFY(bar.selectionOnly());
+
+    bar.findPrevious();
+
+    QCOMPARE(view.selectionRange(), Range(3, 0, 4, 0));
+    QVERIFY(bar.selectionOnly());
+
+    // TODO: Make sure deleted parts of the selection range are added back on undo (currently, the MovingRange just moves forward and does not add back the deleted range)
+    // bar.findNext();
+    //
+    // QCOMPARE(view.selectionRange(), Range(1, 0, 2, 0));
+    // QVERIFY(bar.selectionOnly());
+}
+
 void SearchBarTest::testReplaceAll()
 {
     KTextEditor::DocumentPrivate doc;

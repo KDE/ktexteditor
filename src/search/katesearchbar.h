@@ -207,6 +207,7 @@ private:
     uint m_matchCounter = 0;
     bool m_replaceMode = false;
     bool m_cancelFindOrReplace = true;
+    bool m_selectionChangedByUndoRedo = false;
     std::vector<KTextEditor::Range> m_highlightRanges;
 
     // attribute to highlight matches with

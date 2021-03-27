@@ -43,6 +43,7 @@ private Q_SLOTS:
     void testFindAll_data();
     void testFindAll();
 
+    void testReplaceInSelectionOnly();
     void testReplaceAll();
 
     void testFindSelectionForward_data();

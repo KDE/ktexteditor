@@ -150,6 +150,18 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     connect(view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
     connect(this, &KateSearchBar::findOrReplaceAllFinished, this, &KateSearchBar::endFindOrReplaceAll);
 
+    auto setSelectionChangedByUndoRedo = [this]() {
+        m_selectionChangedByUndoRedo = true;
+    };
+    auto unsetSelectionChangedByUndoRedo = [this]() {
+        m_selectionChangedByUndoRedo = false;
+    };
+    KateUndoManager *docUndoManager = view->doc()->undoManager();
+    connect(docUndoManager, &KateUndoManager::undoStart, this, setSelectionChangedByUndoRedo);
+    connect(docUndoManager, &KateUndoManager::undoEnd, this, unsetSelectionChangedByUndoRedo);
+    connect(docUndoManager, &KateUndoManager::redoStart, this, setSelectionChangedByUndoRedo);
+    connect(docUndoManager, &KateUndoManager::redoEnd, this, unsetSelectionChangedByUndoRedo);
+
     // init match attribute
     Attribute::Ptr mouseInAttribute(new Attribute());
     mouseInAttribute->setFontBold(true);
@@ -206,6 +218,9 @@ KateSearchBar::~KateSearchBar()
 
     delete m_incUi;
     delete m_powerUi;
+    if (m_workingRange) {
+        delete m_workingRange;
+    }
 }
 
 void KateSearchBar::closed()
@@ -493,19 +508,23 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     const Range selection = m_view->selection() ? m_view->selectionRange() : Range::invalid();
     if (selection.isValid()) {
         if (selectionOnly()) {
-            if (!m_inputRange.isValid()) {
+            if (m_workingRange == nullptr) {
+                m_workingRange =
+                    m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+            }
+            if (!m_workingRange->toRange().isValid()) {
                 // First match in selection
                 inputRange = selection;
                 // Remember selection for succeeding selection-only searches
-                // Make sure m_inputRange is set to invalid when selection/search range changes
-                m_inputRange.setRange(selection);
+                // Elsewhere, make sure m_workingRange is invalidated when selection/search range changes
+                m_workingRange->setRange(selection);
             } else {
                 // The selection wasn't changed/updated by user, so we use the previous selection
                 // We use the selection's start/end so that the search can move forward/backward
                 if (searchDirection == SearchBackward) {
-                    inputRange.setRange(m_inputRange.start(), selection.end());
+                    inputRange.setRange(m_workingRange->start(), selection.end());
                 } else {
-                    inputRange.setRange(selection.start(), m_inputRange.end());
+                    inputRange.setRange(selection.start(), m_workingRange->end());
                 }
             }
         } else {
@@ -516,7 +535,11 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
                 inputRange.setRange(Cursor(0, 0), selection.end());
             }
 
-            m_inputRange = KTextEditor::Range::invalid();
+            // Discard selection/search range previously remembered
+            if (m_workingRange) {
+                delete m_workingRange;
+                m_workingRange = nullptr;
+            }
         }
     } else {
         // No selection
@@ -594,7 +617,11 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     }
     if (wrap) {
         m_view->showSearchWrappedHint(searchDirection == SearchBackward);
-        inputRange = !selectionOnly() ? m_view->document()->documentRange() : m_inputRange;
+        if (selectionOnly() && m_workingRange != nullptr && m_workingRange->toRange().isValid()) {
+            inputRange = m_workingRange->toRange();
+        } else {
+            inputRange = m_view->document()->documentRange();
+        }
         match.searchText(inputRange, searchPattern());
     }
 
@@ -894,6 +921,7 @@ void KateSearchBar::endFindOrReplaceAll()
 
     // Clean-Up the still hold MovingRange
     delete m_workingRange;
+    m_workingRange = nullptr; // m_workingRange is also used elsewhere so we signify that it is now "unused"
 
     // restore connection
     connect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
@@ -913,7 +941,6 @@ void KateSearchBar::endFindOrReplaceAll()
     }
 
     m_cancelFindOrReplace = true; // Indicate we are not running
-    m_inputRange = KTextEditor::Range::invalid(); // m_inputRange is also used elsewhere so we set it to invalid
 }
 
 void KateSearchBar::replaceAll()
@@ -1639,7 +1666,10 @@ bool KateSearchBar::eventFilter(QObject *obj, QEvent *event)
 void KateSearchBar::updateSelectionOnly()
 {
     // Make sure the previous selection-only search range is not used anymore
-    m_inputRange = KTextEditor::Range::invalid();
+    if (m_workingRange && !m_selectionChangedByUndoRedo) {
+        delete m_workingRange;
+        m_workingRange = nullptr;
+    }
 
     if (m_powerUi == nullptr) {
         return;
