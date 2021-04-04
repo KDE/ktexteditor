@@ -319,7 +319,7 @@ void KateRenderer::paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, co
     paint.restore();
 }
 
-void KateRenderer::paintIndentMarker(QPainter &paint, uint x, uint y /*row*/)
+void KateRenderer::paintIndentMarker(QPainter &paint, uint x)
 {
     QPen penBackup(paint.pen());
     QPen myPen(config()->indentationLineColor());
@@ -604,7 +604,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 const qreal w = spaceWidth();
                 const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
                 for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
-                    paintIndentMarker(paint, x * w + 1 - xStart, range->line());
+                    paintIndentMarker(paint, x * w + 1 - xStart);
                 }
             }
 

@@ -428,7 +428,7 @@ private:
     void paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, const QChar &chr);
 
     /** Paint a SciTE-like indent marker. */
-    void paintIndentMarker(QPainter &paint, uint x, uint y);
+    void paintIndentMarker(QPainter &paint, uint x);
 
     void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute) const;
 
