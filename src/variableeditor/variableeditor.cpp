@@ -205,7 +205,7 @@ VariableStringListEditor::VariableStringListEditor(VariableStringListItem *item,
 
     connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::valueChanged);
     connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::activateItem);
-    connect(m_comboBox, QOverload<const QString &>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::setItemValue);
+    connect(m_comboBox, &QComboBox::currentTextChanged, this, &VariableStringListEditor::setItemValue);
 }
 
 void VariableStringListEditor::setItemValue(const QString &newValue)
