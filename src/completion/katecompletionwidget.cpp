@@ -113,7 +113,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     connect(parent, &KTextEditor::ViewPrivate::navigateRight, this, &KateCompletionWidget::navigateRight);
     connect(parent, &KTextEditor::ViewPrivate::navigateUp, this, &KateCompletionWidget::navigateUp);
 
-    setFrameStyle(QFrame::Box | QFrame::Plain);
+    setFrameStyle(QFrame::Box | QFrame::Raised);
     setLineWidth(1);
     // setWindowOpacity(0.8);
 
