@@ -1443,12 +1443,6 @@ public:
 Q_SIGNALS:
     void loaded(KTextEditor::DocumentPrivate *document);
 
-private Q_SLOTS:
-    /**
-     * trigger a close of this document in the application
-     */
-    void closeDocumentInApplication();
-
 private:
     // To calculate a QHash.keys() is quite expensive,
     // better keep a copy of that list updated when a view is added or removed.

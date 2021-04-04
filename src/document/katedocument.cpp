@@ -4298,8 +4298,12 @@ void KTextEditor::DocumentPrivate::onModOnHdClose()
     // close the file without prompt confirmation
     closeUrl();
 
-    // Useful for kate only
-    closeDocumentInApplication();
+    // Useful for applications that provide the necessary interface
+    // delay this, otherwise we delete ourself during e.g. event handling + deleting this is undefined!
+    // see e.g. bug 433180
+    QTimer::singleShot(0, this, [this]() {
+        KTextEditor::EditorPrivate::self()->application()->closeDocument(this);
+    });
 }
 
 void KTextEditor::DocumentPrivate::onModOnHdReload()
@@ -6002,8 +6006,3 @@ void KTextEditor::DocumentPrivate::messageDestroyed(KTextEditor::Message *messag
     m_messageHash.remove(message);
 }
 // END KTextEditor::MessageInterface
-
-void KTextEditor::DocumentPrivate::closeDocumentInApplication()
-{
-    KTextEditor::EditorPrivate::self()->application()->closeDocument(this);
-}

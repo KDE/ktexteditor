@@ -72,7 +72,7 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
     }
     // Other buffer commands are implemented by the KateFileTree plugin
     else if ((match = re_close.match(command)).hasMatch()) {
-        QTimer::singleShot(0, [app, view]() {
+        QTimer::singleShot(0, view, [app, view]() {
             app->closeDocument(view->document());
         });
     } else if ((match = re_quit.match(command)).hasMatch()) {
@@ -300,7 +300,7 @@ void AppCommands::closeCurrentDocument()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::Document *doc = app->activeMainWindow()->activeView()->document();
-    QTimer::singleShot(0, [app, doc]() {
+    QTimer::singleShot(0, doc, [app, doc]() {
         app->closeDocument(doc);
     });
 }
