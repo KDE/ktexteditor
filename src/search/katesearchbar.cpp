@@ -162,6 +162,11 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     connect(docUndoManager, &KateUndoManager::redoStart, this, setSelectionChangedByUndoRedo);
     connect(docUndoManager, &KateUndoManager::redoEnd, this, unsetSelectionChangedByUndoRedo);
 
+    // When document is reloaded, disable selection-only search so that the search won't be stuck after the first search
+    connect(view->doc(), &KTextEditor::Document::reloaded, this, [this]() {
+        setSelectionOnly(false);
+    });
+
     // init match attribute
     Attribute::Ptr mouseInAttribute(new Attribute());
     mouseInAttribute->setFontBold(true);
@@ -543,6 +548,7 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         }
     } else {
         // No selection
+        setSelectionOnly(false);
         const Cursor cursorPos = m_view->cursorPosition();
         if (searchDirection == SearchForward) {
             inputRange.setRange(cursorPos, m_view->document()->documentEnd());
