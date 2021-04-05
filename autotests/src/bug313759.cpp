@@ -41,6 +41,10 @@ void BugTest::cleanupTestCase()
 
 void BugTest::tryCrash()
 {
+#if QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
+
     // set up document and view
     KMainWindow *toplevel = new KMainWindow();
     KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(true, false, toplevel);

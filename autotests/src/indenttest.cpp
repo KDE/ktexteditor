@@ -56,6 +56,9 @@ void IndentTest::testCppstyle_data()
 
 void IndentTest::testCppstyle()
 {
+#if QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
     runTest(ExpectedFailures()
             /// \todo Fix (smth) to make failed test cases really work!
             << FAILURE("parens1", "dunno why it failed in test! in manual mode everything works fine..."));
@@ -108,6 +111,9 @@ void IndentTest::testPascal_data()
 
 void IndentTest::testPascal()
 {
+#if QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
     runTest(ExpectedFailures());
 }
 
@@ -118,6 +124,9 @@ void IndentTest::testAda_data()
 
 void IndentTest::testAda()
 {
+#if QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
     runTest(ExpectedFailures());
 }
 
@@ -128,6 +137,9 @@ void IndentTest::testRuby_data()
 
 void IndentTest::testRuby()
 {
+#if QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
     runTest(ExpectedFailures() << FAILURE("block01", "Multiline blocks using {} is not supported")
                                << FAILURE("block02", "Multiline blocks using {} is not supported")
                                << FAILURE("singleline01", "Single line defs are not supported") << FAILURE("singleline02", "Single line defs are not supported")
