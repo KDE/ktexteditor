@@ -250,11 +250,12 @@ search/searchbarpower.ui
 spellcheck/spellcheckbar.ui
 dialogs/spellcheckconfigwidget.ui)
 
-qt5_add_resources( ktexteditor_LIB_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
+qt5_add_resources( ktexteditor_qrc_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
+set_source_files_properties(${ktexteditor_qrc_SRCS} PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
 if (BUILD_VIMODE)
   ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
-  set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS}
+  set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} ${ktexteditor_qrc_SRCS}
     inputmode/kateviinputmode.cpp
     inputmode/kateviinputmodefactory.cpp
 
