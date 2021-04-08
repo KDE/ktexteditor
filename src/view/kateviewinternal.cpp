@@ -3512,11 +3512,15 @@ void KateViewInternal::doDrag()
 {
     m_dragInfo.state = diDragging;
     m_dragInfo.dragObject = new QDrag(this);
-    QMimeData *mimeData = new QMimeData();
+    std::unique_ptr<QMimeData> mimeData(new QMimeData());
     mimeData->setText(view()->selectionText());
 
     const auto startCur = view()->selectionRange().start();
     const auto endCur = view()->selectionRange().end();
+    if (!startCur.isValid() || !endCur.isValid()) {
+        return;
+    }
+
     int startLine = startCur.line();
     int endLine = endCur.line();
 
@@ -3542,28 +3546,34 @@ void KateViewInternal::doDrag()
     }
     qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
 
+    // Calculate start pos on start line
     int sX = 0;
     if (startLine == startCur.line()) {
         auto rc = toRealCursor(startCur);
         sX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
     }
+
+    // Calculate end pos on end line
     int eX = 0;
     if (endLine == endCur.line()) {
         auto rc = toRealCursor(endCur);
         eX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
     }
 
+    // Create a pixmap this selection
     QPixmap pixmap(w, h);
     pixmap.fill(Qt::transparent);
     renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
 
+    // Calculate position where pixmap will appear when user
+    // starts dragging
     int ax = 0;
     int ay = lineToY(startLine);
     QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(ax, ay);
 
     m_dragInfo.dragObject->setPixmap(pixmap);
     m_dragInfo.dragObject->setHotSpot(pos);
-    m_dragInfo.dragObject->setMimeData(mimeData);
+    m_dragInfo.dragObject->setMimeData(mimeData.release());
     m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }
 

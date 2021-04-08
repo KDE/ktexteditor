@@ -366,11 +366,12 @@ int KateLayoutCache::viewWidth() const
  */
 int KateLayoutCache::viewLine(const KTextEditor::Cursor &realCursor)
 {
-    if (realCursor.column() <= 0 || realCursor.line() < 0) {
+    /**
+     * Make sure cursor column and line is valid
+     */
+    if (realCursor.column() <= 0 || realCursor.line() < 0 || realCursor.line() > m_renderer->doc()->lines()) {
         return 0;
     }
-
-    Q_ASSERT(realCursor.line() < m_renderer->doc()->lines());
 
     KateLineLayoutPtr thisLine = line(realCursor.line());
 
