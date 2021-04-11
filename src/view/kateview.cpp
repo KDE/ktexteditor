@@ -3241,8 +3241,13 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
         menu = new QMenu(const_cast<KTextEditor::ViewPrivate *>(this));
     }
 
-    menu->addAction(m_editUndo);
-    menu->addAction(m_editRedo);
+    if (m_editUndo) {
+        menu->addAction(m_editUndo);
+    }
+    if (m_editRedo) {
+        menu->addAction(m_editRedo);
+    }
+
     menu->addSeparator();
     menu->addAction(m_cut);
     menu->addAction(m_copy);
