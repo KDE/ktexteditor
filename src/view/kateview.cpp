@@ -580,13 +580,14 @@ void KTextEditor::ViewPrivate::setupActions()
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Space));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::userInvokedCompletion);
     } else {
-        m_cut->setEnabled(false);
-        m_paste->setEnabled(false);
-        m_pasteMenu->setEnabled(false);
+        for (auto *action : {m_cut, m_paste, m_pasteMenu, m_swapWithClipboard}) {
+            action->setEnabled(false);
+        }
+
         if (m_pasteSelection) {
             m_pasteSelection->setEnabled(false);
         }
-        m_swapWithClipboard->setEnabled(false);
+
         m_editUndo = nullptr;
         m_editRedo = nullptr;
     }
