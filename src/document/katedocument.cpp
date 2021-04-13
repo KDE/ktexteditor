@@ -1307,7 +1307,7 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
     // insert text into line
     m_buffer->insertText(m_editLastChangeStartCursor, s2);
 
-    Q_EMIT textInserted(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
+    Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
 
     editEnd();
 
@@ -1460,7 +1460,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
     // remember last change cursor
     m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
 
-    Q_EMIT textInserted(this, KTextEditor::Range(line, col, line + 1, 0));
+    Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col, line + 1, 0));
 
     editEnd();
 
@@ -1598,7 +1598,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     // remember last change cursor
     m_editLastChangeStartCursor = rangeInserted.start();
 
-    Q_EMIT textInserted(this, rangeInserted);
+    Q_EMIT textInsertedRange(this, rangeInserted);
 
     editEnd();
 

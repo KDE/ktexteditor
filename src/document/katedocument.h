@@ -199,7 +199,7 @@ Q_SIGNALS:
      * \param range range that the newly inserted text occupies
      * \see insertText(), insertLine()
      */
-    void textInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
+    void textInsertedRange(KTextEditor::Document *document, const KTextEditor::Range &range);
 
     /**
      * The \p document emits this signal whenever \p range was removed, i.e.

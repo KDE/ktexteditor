@@ -490,7 +490,7 @@ void KateDocumentTest::testInsertNewline()
         "this is line2\n");
 
     SignalHandler handler;
-    connect(&doc, &KTextEditor::DocumentPrivate::textInserted, &handler, &SignalHandler::slotNewlineInserted);
+    connect(&doc, &KTextEditor::DocumentPrivate::textInsertedRange, &handler, &SignalHandler::slotNewlineInserted);
     doc.editWrapLine(1, 4);
 }
 

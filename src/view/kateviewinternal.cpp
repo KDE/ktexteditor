@@ -268,7 +268,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::installFactory(accessibleInterfaceFactory);
 #endif
-    connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &KateViewInternal::documentTextInserted);
+    connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &KateViewInternal::documentTextInserted);
     connect(doc(), &KTextEditor::DocumentPrivate::textRemoved, this, &KateViewInternal::documentTextRemoved);
 
     // update is called in KTextEditor::ViewPrivate, after construction and layout is over

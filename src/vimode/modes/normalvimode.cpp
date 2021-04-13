@@ -452,7 +452,7 @@ void NormalViMode::reset()
 
 void NormalViMode::beginMonitoringDocumentChanges()
 {
-    connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &NormalViMode::textInserted);
+    connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &NormalViMode::textInserted);
     connect(doc(), &KTextEditor::DocumentPrivate::textRemoved, this, &NormalViMode::textRemoved);
 }
 

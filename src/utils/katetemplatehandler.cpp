@@ -49,7 +49,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     m_undoManager->setAllowComplexMerge(true);
 
     {
-        connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &KateTemplateHandler::slotTemplateInserted);
+        connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &KateTemplateHandler::slotTemplateInserted);
         KTextEditor::Document::EditingTransaction t(doc());
         // insert the raw template string
         if (!doc()->insertText(position, templateString)) {
@@ -81,7 +81,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         jump(1, true);
 
         connect(doc(), &KTextEditor::Document::viewCreated, this, &KateTemplateHandler::slotViewCreated);
-        connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &KateTemplateHandler::updateDependentFields);
+        connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &KateTemplateHandler::updateDependentFields);
         connect(doc(), &KTextEditor::DocumentPrivate::textRemoved, this, &KateTemplateHandler::updateDependentFields);
         connect(doc(), &KTextEditor::Document::aboutToReload, this, &KateTemplateHandler::deleteLater);
 
@@ -183,7 +183,7 @@ void KateTemplateHandler::slotTemplateInserted(Document * /*document*/, const Ra
 {
     m_wholeTemplateRange.reset(doc()->newMovingRange(range, MovingRange::ExpandLeft | MovingRange::ExpandRight));
 
-    disconnect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &KateTemplateHandler::slotTemplateInserted);
+    disconnect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &KateTemplateHandler::slotTemplateInserted);
 }
 
 KTextEditor::DocumentPrivate *KateTemplateHandler::doc() const

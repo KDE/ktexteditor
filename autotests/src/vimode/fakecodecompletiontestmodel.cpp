@@ -28,7 +28,7 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
     cc()->setAutomaticInvocationEnabled(false);
     cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
     connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()),
-            &KTextEditor::DocumentPrivate::textInserted,
+            &KTextEditor::DocumentPrivate::textInsertedRange,
             this,
             &FakeCodeCompletionTestModel::textInserted);
     connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()),

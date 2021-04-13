@@ -96,7 +96,7 @@ void BaseTest::init()
     kate_view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, false);
     kate_view->config()->setValue(KateViewConfig::ShowScrollBarPreview, false);
 
-    connect(kate_document, &KTextEditor::DocumentPrivate::textInserted, this, &BaseTest::textInserted);
+    connect(kate_document, &KTextEditor::DocumentPrivate::textInsertedRange, this, &BaseTest::textInserted);
     connect(kate_document, &KTextEditor::DocumentPrivate::textRemoved, this, &BaseTest::textRemoved);
 }
 

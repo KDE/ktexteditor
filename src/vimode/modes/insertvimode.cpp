@@ -43,7 +43,7 @@ InsertViMode::InsertViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
 
     m_isExecutingCompletion = false;
 
-    connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &InsertViMode::textInserted);
+    connect(doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &InsertViMode::textInserted);
 }
 
 InsertViMode::~InsertViMode() = default;

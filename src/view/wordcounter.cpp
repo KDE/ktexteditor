@@ -17,7 +17,7 @@ WordCounter::WordCounter(KTextEditor::ViewPrivate *view)
     , m_startRecalculationFrom(0)
     , m_document(view->document())
 {
-    connect(view->doc(), &KTextEditor::DocumentPrivate::textInserted, this, &WordCounter::textInserted);
+    connect(view->doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, &WordCounter::textInserted);
     connect(view->doc(), &KTextEditor::DocumentPrivate::textRemoved, this, &WordCounter::textRemoved);
     connect(view->doc(), &KTextEditor::DocumentPrivate::loaded, this, &WordCounter::recalculate);
     connect(view, &KTextEditor::View::selectionChanged, this, &WordCounter::selectionChanged);

@@ -43,7 +43,7 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     m_viewRefreshTimer->setSingleShot(true);
     connect(m_viewRefreshTimer, &QTimer::timeout, this, &KateOnTheFlyChecker::viewRefreshTimeout);
 
-    connect(document, &KTextEditor::DocumentPrivate::textInserted, this, &KateOnTheFlyChecker::textInserted);
+    connect(document, &KTextEditor::DocumentPrivate::textInsertedRange, this, &KateOnTheFlyChecker::textInserted);
     connect(document, &KTextEditor::DocumentPrivate::textRemoved, this, &KateOnTheFlyChecker::textRemoved);
     connect(document, &KTextEditor::DocumentPrivate::viewCreated, this, &KateOnTheFlyChecker::addView);
     connect(document, &KTextEditor::DocumentPrivate::highlightingModeChanged, this, &KateOnTheFlyChecker::updateConfig);
