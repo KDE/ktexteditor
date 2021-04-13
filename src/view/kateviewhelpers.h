@@ -415,7 +415,7 @@ Q_SIGNALS:
     /**
      * Specific (proper) codec was selected
      */
-    void triggered(QTextCodec *codec);
+    void codecSelected(QTextCodec *codec);
 
 private:
     KTextEditor::DocumentPrivate *doc;

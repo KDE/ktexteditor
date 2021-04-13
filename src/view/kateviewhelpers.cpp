@@ -2737,7 +2737,7 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
     int mib = q->mibForName(action->text(), &ok);
     if (ok) {
         Q_EMIT q->textTriggered(action->text());
-        Q_EMIT q->triggered(q->codecForMib(mib));
+        Q_EMIT q->codecSelected(q->codecForMib(mib));
     }
 }
 
