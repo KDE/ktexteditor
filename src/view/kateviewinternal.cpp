@@ -3524,14 +3524,22 @@ void KateViewInternal::doDrag()
     int startLine = startCur.line();
     int endLine = endCur.line();
 
+    /**
+     * Get real first and last visible line nos.
+     * This is important as startLine() / endLine() are virtual and we can't use
+     * them here
+     */
+    const int firstVisibleLine = view()->firstDisplayedLineInternal(KTextEditor::View::RealLine);
+    const int lastVisibleLine = view()->lastDisplayedLineInternal(KTextEditor::View::RealLine);
+
     // get visible selected lines
     for (int l = startLine; l <= endLine; ++l) {
-        if (l >= this->startLine())
+        if (l >= firstVisibleLine)
             break;
         ++startLine;
     }
     for (int l = endLine; l >= startLine; --l) {
-        if (l <= this->endLine())
+        if (l <= lastVisibleLine)
             break;
         --endLine;
     }
@@ -3546,30 +3554,36 @@ void KateViewInternal::doDrag()
     }
     qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
 
-    // Calculate start pos on start line
+    // Calculate start x pos on start line
     int sX = 0;
     if (startLine == startCur.line()) {
-        auto rc = toRealCursor(startCur);
-        sX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+        sX = renderer()->cursorToX(cache()->textLayout(startCur), startCur, !view()->wrapCursor());
     }
 
-    // Calculate end pos on end line
+    // Calculate end x pos on end line
     int eX = 0;
     if (endLine == endCur.line()) {
-        auto rc = toRealCursor(endCur);
-        eX = renderer()->cursorToX(cache()->textLayout(rc), rc, !view()->wrapCursor());
+        eX = renderer()->cursorToX(cache()->textLayout(endCur), endCur, !view()->wrapCursor());
     }
 
     // Create a pixmap this selection
     QPixmap pixmap(w, h);
-    pixmap.fill(Qt::transparent);
-    renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
+    if (!pixmap.isNull()) {
+        pixmap.fill(Qt::transparent);
+        renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
+    }
 
     // Calculate position where pixmap will appear when user
     // starts dragging
-    int ax = 0;
-    int ay = lineToY(startLine);
-    QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(ax, ay);
+    const int x = 0;
+    /**
+     * lineToVisibleLine() = real line => virtual line
+     * This is necessary here because if there is a folding in the current
+     * view lines, the y pos can be incorrect. So, we make sure to convert
+     * it to virtual line before calculating y
+     */
+    const int y = lineToY(view()->m_textFolding.lineToVisibleLine(startLine));
+    const QPoint pos = mapFromGlobal(QCursor::pos()) - QPoint(x, y);
 
     m_dragInfo.dragObject->setPixmap(pixmap);
     m_dragInfo.dragObject->setHotSpot(pos);
