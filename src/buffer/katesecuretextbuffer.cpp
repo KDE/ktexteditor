@@ -9,7 +9,7 @@
 #include "config.h"
 
 #ifndef Q_OS_WIN
-#include <errno.h>
+#include <cerrno>
 #include <unistd.h>
 #endif
 

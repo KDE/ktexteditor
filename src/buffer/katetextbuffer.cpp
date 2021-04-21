@@ -17,7 +17,7 @@
 #include "kateview.h"
 
 #ifndef Q_OS_WIN
-#include <errno.h>
+#include <cerrno>
 #include <unistd.h>
 // sadly there seems to be no possibility in Qt to determine detailed error
 // codes about e.g. file open errors, so we need to resort to evaluating
