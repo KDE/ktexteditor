@@ -50,7 +50,6 @@
 #include <KCharsets>
 #include <KColorCombo>
 #include <KFontChooser>
-#include <KLineEdit>
 #include <KMessageBox>
 #include <KProcess>
 #include <KSeparator>

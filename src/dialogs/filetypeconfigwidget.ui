@@ -77,7 +77,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="KLineEdit" name="edtName">
+       <widget class="QLineEdit" name="edtName">
         <property name="whatsThis">
          <string>The name of the filetype will be the text of the corresponding menu item.</string>
         </property>
@@ -94,7 +94,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="KLineEdit" name="edtSection">
+       <widget class="QLineEdit" name="edtSection">
         <property name="whatsThis">
          <string>The section name is used to organize the file types in menus.</string>
         </property>
@@ -154,7 +154,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="KLineEdit" name="edtFileExtensions">
+       <widget class="QLineEdit" name="edtFileExtensions">
         <property name="whatsThis">
          <string>The wildcards mask allows to select files by filename. A typical mask uses an asterisk and the file extension, for example &lt;code&gt;*.txt; *.text&lt;/code&gt;. The string is a semicolon-separated list of masks.</string>
         </property>
@@ -176,7 +176,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="KLineEdit" name="edtMimeTypes">
+         <widget class="QLineEdit" name="edtMimeTypes">
           <property name="whatsThis">
            <string>The mime type mask allows to select files by mimetype. The string is a semicolon-separated list of mimetypes, for example &lt;code&gt;text/plain; text/english&lt;/code&gt;.</string>
           </property>
@@ -230,11 +230,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
   <customwidget>
    <class>VariableLineEdit</class>
    <extends></extends>

@@ -12,10 +12,11 @@
 
 #include <QWidget>
 
+class KColorButton;
+
 class QCheckBox;
 class QLabel;
-class KLineEdit;
-class KColorButton;
+class QLineEdit;
 class QComboBox;
 class QSpinBox;
 class QGroupBox;
@@ -88,10 +89,10 @@ private:
     QCheckBox *cbEnableHeader, *cbEnableFooter;
     QLabel *lFontPreview;
     QGroupBox *gbHeader, *gbFooter;
-    KLineEdit *leHeaderLeft, *leHeaderCenter, *leHeaderRight;
+    QLineEdit *leHeaderLeft, *leHeaderCenter, *leHeaderRight;
     KColorButton *kcbtnHeaderFg, *kcbtnHeaderBg;
     QCheckBox *cbHeaderEnableBgColor;
-    KLineEdit *leFooterLeft, *leFooterCenter, *leFooterRight;
+    QLineEdit *leFooterLeft, *leFooterCenter, *leFooterRight;
     KColorButton *kcbtnFooterFg, *kcbtnFooterBg;
     QCheckBox *cbFooterEnableBgColor;
 };

@@ -67,11 +67,11 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
 
     reload();
 
-    connect(ui->edtName, &KLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
-    connect(ui->edtSection, &KLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
+    connect(ui->edtName, &QLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
+    connect(ui->edtSection, &QLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
     connect(ui->edtVariables, &VariableLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
-    connect(ui->edtFileExtensions, &KLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
-    connect(ui->edtMimeTypes, &KLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
+    connect(ui->edtFileExtensions, &QLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
+    connect(ui->edtMimeTypes, &QLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
     connect(ui->sbPriority, QOverload<int>::of(&QSpinBox::valueChanged), this, &ModeConfigPage::slotChanged);
     connect(ui->cmbHl, QOverload<int>::of(&QComboBox::activated), this, &ModeConfigPage::slotChanged);
     connect(ui->cmbIndenter, QOverload<int>::of(&QComboBox::activated), this, &ModeConfigPage::slotChanged);

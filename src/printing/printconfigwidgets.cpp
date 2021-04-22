@@ -14,7 +14,6 @@
 
 #include <KColorButton>
 #include <KConfigGroup>
-#include <KLineEdit>
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <QComboBox>
@@ -24,6 +23,7 @@
 #include <QFontDialog>
 #include <QGroupBox>
 #include <QLabel>
+#include <QLineEdit>
 #include <QMenu>
 #include <QSpinBox>
 
@@ -139,20 +139,20 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     QHBoxLayout *layoutFormat = new QHBoxLayout(hbHeaderFormat);
     grid->addWidget(hbHeaderFormat, 0, 1);
 
-    leHeaderLeft = new KLineEdit(hbHeaderFormat);
+    leHeaderLeft = new QLineEdit(hbHeaderFormat);
     layoutFormat->addWidget(leHeaderLeft);
-    leHeaderCenter = new KLineEdit(hbHeaderFormat);
+    leHeaderCenter = new QLineEdit(hbHeaderFormat);
     layoutFormat->addWidget(leHeaderCenter);
-    leHeaderRight = new KLineEdit(hbHeaderFormat);
+    leHeaderRight = new QLineEdit(hbHeaderFormat);
     lHeaderFormat->setBuddy(leHeaderLeft);
     layoutFormat->addWidget(leHeaderRight);
 
     leHeaderLeft->setContextMenuPolicy(Qt::CustomContextMenu);
     leHeaderCenter->setContextMenuPolicy(Qt::CustomContextMenu);
     leHeaderRight->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(leHeaderLeft, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
-    connect(leHeaderCenter, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
-    connect(leHeaderRight, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leHeaderLeft, &QLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leHeaderCenter, &QLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leHeaderRight, &QLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
 
     grid->addWidget(new QLabel(i18n("Colors:"), gbHeader), 1, 0);
 
@@ -185,20 +185,20 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     layoutFormat->setSpacing(-1);
     grid->addWidget(hbFooterFormat, 0, 1);
 
-    leFooterLeft = new KLineEdit(hbFooterFormat);
+    leFooterLeft = new QLineEdit(hbFooterFormat);
     layoutFormat->addWidget(leFooterLeft);
-    leFooterCenter = new KLineEdit(hbFooterFormat);
+    leFooterCenter = new QLineEdit(hbFooterFormat);
     layoutFormat->addWidget(leFooterCenter);
-    leFooterRight = new KLineEdit(hbFooterFormat);
+    leFooterRight = new QLineEdit(hbFooterFormat);
     layoutFormat->addWidget(leFooterRight);
     lFooterFormat->setBuddy(leFooterLeft);
 
     leFooterLeft->setContextMenuPolicy(Qt::CustomContextMenu);
     leFooterCenter->setContextMenuPolicy(Qt::CustomContextMenu);
     leFooterRight->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(leFooterLeft, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
-    connect(leFooterCenter, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
-    connect(leFooterRight, &KLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leFooterLeft, &QLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leFooterCenter, &QLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
+    connect(leFooterRight, &QLineEdit::customContextMenuRequested, this, &KatePrintHeaderFooter::showContextMenu);
 
     grid->addWidget(new QLabel(i18n("Colors:"), gbFooter), 1, 0);
 
