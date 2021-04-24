@@ -198,12 +198,6 @@ private:
     KateArgumentHintTree *m_argumentHintTree;
 
     QTimer *m_automaticInvocationTimer;
-    // QTimer* m_updateFocusTimer;
-    QWidget *m_statusBar;
-    QToolButton *m_sortButton;
-    QLabel *m_sortText;
-    QToolButton *m_filterButton;
-    QLabel *m_filterText;
 
     KTextEditor::Cursor m_automaticInvocationAt;
     QString m_automaticInvocationLine;
