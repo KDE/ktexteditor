@@ -235,8 +235,6 @@ ecm_qt_declare_logging_category(ktexteditor_LIB_SRCS
 ki18n_wrap_ui(ktexteditor_LIB_SRCS
 dialogs/textareaappearanceconfigwidget.ui
 dialogs/bordersappearanceconfigwidget.ui
-dialogs/commandmenuconfigwidget.ui
-dialogs/commandmenueditwidget.ui
 dialogs/completionconfigtab.ui
 dialogs/navigationconfigwidget.ui
 dialogs/editconfigwidget.ui
