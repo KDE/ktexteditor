@@ -62,7 +62,6 @@ buffer/katetextfolding.cpp
 completion/katecompletionwidget.cpp
 completion/katecompletionmodel.cpp
 completion/katecompletiontree.cpp
-completion/katecompletionconfig.cpp
 completion/kateargumenthinttree.cpp
 completion/kateargumenthintmodel.cpp
 completion/katecompletiondelegate.cpp
@@ -242,7 +241,6 @@ dialogs/filetypeconfigwidget.ui
 dialogs/indentationconfigwidget.ui
 dialogs/opensaveconfigwidget.ui
 dialogs/opensaveconfigadvwidget.ui
-dialogs/completionconfigwidget.ui
 search/searchbarincremental.ui
 search/searchbarpower.ui
 spellcheck/spellcheckbar.ui

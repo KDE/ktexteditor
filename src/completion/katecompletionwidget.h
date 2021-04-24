@@ -135,7 +135,6 @@ public Q_SLOTS:
     void waitForModelReset();
 
     void abortCompletion();
-    void showConfig();
     /*    void viewFocusIn();
         void viewFocusOut();*/
     void updatePositionSlot();
@@ -205,14 +204,12 @@ private:
     QLabel *m_sortText;
     QToolButton *m_filterButton;
     QLabel *m_filterText;
-    QPushButton *m_configButton;
 
     KTextEditor::Cursor m_automaticInvocationAt;
     QString m_automaticInvocationLine;
     int m_automaticInvocationDelay;
     bool m_filterInstalled;
 
-    class KateCompletionConfig *m_configWidget;
     bool m_lastInsertionByUser;
     bool m_inCompletionList; // Are we in the completion-list? If not, we're in the argument-hint list
     bool m_isSuspended;

@@ -17,7 +17,6 @@
 
 #include "kateargumenthintmodel.h"
 #include "kateargumenthinttree.h"
-#include "katecompletionconfig.h"
 #include "katecompletionmodel.h"
 #include "katecompletiontree.h"
 #include "katepartdebug.h"
@@ -94,7 +93,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_argumentHintTree(new KateArgumentHintTree(this))
     , m_automaticInvocationDelay(100)
     , m_filterInstalled(false)
-    , m_configWidget(new KateCompletionConfig(m_presentationModel, view()))
     , m_lastInsertionByUser(false)
     , m_inCompletionList(false)
     , m_isSuspended(false)
@@ -106,6 +104,40 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_expandedAddedHeightBase(0)
     , m_lastInvocationType(KTextEditor::CodeCompletionModel::AutomaticInvocation)
 {
+    // setup initial config for presentation model
+    // FIXME: this was imported from the config dialog deactivated years ago
+    // without this setup either nothing shows or it segfaults
+
+    // Sorting
+    m_presentationModel->setSortingEnabled(true);
+    m_presentationModel->setSortingAlphabetical(true);
+    m_presentationModel->setSortingCaseSensitivity(Qt::CaseInsensitive);
+    m_presentationModel->setSortingByInheritanceDepth(true);
+
+    // Filtering
+    m_presentationModel->setFilteringEnabled(false);
+    m_presentationModel->setFilterContextMatchesOnly(false);
+    m_presentationModel->setFilterByAttribute(false);
+    m_presentationModel->setMaximumInheritanceDepth(0);
+
+    // Grouping
+    m_presentationModel->setGroupingEnabled(true);
+
+    m_presentationModel->setGroupingMethod(KateCompletionModel::ScopeType | KateCompletionModel::AccessType);
+
+    m_presentationModel->setAccessIncludeConst(false);
+    m_presentationModel->setAccessIncludeStatic(false);
+    m_presentationModel->setAccessIncludeSignalSlot(false);
+
+    // Column merging
+    m_presentationModel->setColumnMergingEnabled(true);
+
+    QList<QList<int>> mergedColumns;
+    mergedColumns << (QList<int>() << 0);
+    mergedColumns << (QList<int>() << 1 << 2 << 3 << 4);
+    mergedColumns << (QList<int>() << 5);
+    m_presentationModel->setColumnMerges(mergedColumns);
+
     connect(parent, &KTextEditor::ViewPrivate::navigateAccept, this, &KateCompletionWidget::navigateAccept);
     connect(parent, &KTextEditor::ViewPrivate::navigateBack, this, &KateCompletionWidget::navigateBack);
     connect(parent, &KTextEditor::ViewPrivate::navigateDown, this, &KateCompletionWidget::navigateDown);
@@ -1285,13 +1317,6 @@ void KateCompletionWidget::switchList()
             m_inCompletionList = true;
         }
     }
-}
-
-void KateCompletionWidget::showConfig()
-{
-    abortCompletion();
-
-    m_configWidget->exec();
 }
 
 void KateCompletionWidget::completionModelReset()
