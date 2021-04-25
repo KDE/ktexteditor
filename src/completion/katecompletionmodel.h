@@ -105,22 +105,6 @@ public:
     Qt::CaseSensitivity sortingCaseSensitivity() const;
     void setSortingCaseSensitivity(Qt::CaseSensitivity cs);
 
-    // Filtering
-    bool isFilteringEnabled() const;
-
-    bool filterContextMatchesOnly() const;
-    void setFilterContextMatchesOnly(bool filter);
-
-    bool filterByAttribute() const;
-    void setFilterByAttribute(bool filter);
-
-    KTextEditor::CodeCompletionModel::CompletionProperties filterAttributes() const;
-    void setFilterAttributes(KTextEditor::CodeCompletionModel::CompletionProperties attributes);
-
-    // A maximum depth of <= 0 equals don't filter by inheritance depth (i.e. infinity) and is default
-    int maximumInheritanceDepth() const;
-    void setMaximumInheritanceDepth(int maxDepth);
-
     // Grouping
     bool isGroupingEnabled() const;
 
@@ -169,7 +153,6 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void setSortingEnabled(bool enable);
-    void setFilteringEnabled(bool enable);
     void setGroupingEnabled(bool enable);
     void setColumnMergingEnabled(bool enable);
 
@@ -207,8 +190,6 @@ private:
         // Returns whether the item matches the current completion string
         bool isMatching() const;
 
-        bool filter();
-
         enum MatchType { NoMatch = 0, PerfectMatch, StartsWithMatch, AbbreviationMatch, ContainsMatch };
         MatchType match();
 
@@ -242,8 +223,6 @@ private:
 
         // True when currently matching completion string
         MatchType matchCompletion;
-        // True when passes all active filters
-        bool matchFilters;
         bool m_haveExactMatch;
         bool m_unimportant;
     };
@@ -259,7 +238,6 @@ public:
         /// Removes the item specified by \a row.  Returns true if a change was made to rows.
         bool removeItem(const ModelRow &row);
         void resort();
-        void refilter();
         void clear();
         // Returns whether this group should be ordered before other
         bool orderBefore(Group *other) const;
@@ -327,7 +305,6 @@ private:
     int countBits(int value) const;
 
     void resort();
-    void refilter();
 
     static bool matchesAbbreviation(const QString &word, const QString &typed, Qt::CaseSensitivity caseSensitive);
 
@@ -366,13 +343,6 @@ private:
     bool m_isSortingByInheritance = false;
     Qt::CaseSensitivity m_sortingCaseSensitivity = Qt::CaseInsensitive;
     QHash<int, QList<int>> m_sortingGroupingOrder;
-
-    // Filtering
-    bool m_filteringEnabled = false;
-    bool m_filterContextMatchesOnly = false;
-    bool m_filterByAttribute = false;
-    KTextEditor::CodeCompletionModel::CompletionProperties m_filterAttributes;
-    int m_maximumInheritanceDepth = 0;
 
     // Grouping
     bool m_groupingEnabled = false;

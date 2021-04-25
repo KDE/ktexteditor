@@ -114,12 +114,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     m_presentationModel->setSortingCaseSensitivity(Qt::CaseInsensitive);
     m_presentationModel->setSortingByInheritanceDepth(true);
 
-    // Filtering
-    m_presentationModel->setFilteringEnabled(false);
-    m_presentationModel->setFilterContextMatchesOnly(false);
-    m_presentationModel->setFilterByAttribute(false);
-    m_presentationModel->setMaximumInheritanceDepth(0);
-
     // Grouping
     m_presentationModel->setGroupingEnabled(true);
 

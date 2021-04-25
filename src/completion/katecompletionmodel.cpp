@@ -134,8 +134,6 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     , m_ungrouped(new Group({}, 0, this))
     , m_argumentHints(new Group(i18n("Argument-hints"), -1, this))
     , m_bestMatches(new Group(i18n("Best matches"), BestMatchesProperty, this))
-    , m_filterAttributes(KTextEditor::CodeCompletionModel::NoProperty)
-
 {
     m_emptyGroups.append(m_ungrouped);
     m_emptyGroups.append(m_argumentHints);
@@ -1249,13 +1247,6 @@ bool KateCompletionModel::hasCompletionModel() const
     return !m_completionModels.isEmpty();
 }
 
-void KateCompletionModel::setFilteringEnabled(bool enable)
-{
-    if (m_filteringEnabled != enable) {
-        m_filteringEnabled = enable;
-    }
-}
-
 void KateCompletionModel::setSortingEnabled(bool enable)
 {
     if (m_sortingEnabled != enable) {
@@ -1288,11 +1279,6 @@ bool KateCompletionModel::isColumnMergingEnabled() const
 bool KateCompletionModel::isGroupingEnabled() const
 {
     return m_groupingEnabled;
-}
-
-bool KateCompletionModel::isFilteringEnabled() const
-{
-    return m_filteringEnabled;
 }
 
 bool KateCompletionModel::isSortingEnabled() const
@@ -1526,7 +1512,6 @@ KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, con
     : model(m)
     , m_sourceRow(sr)
     , matchCompletion(StartsWithMatch)
-    , matchFilters(true)
     , m_haveExactMatch(false)
 {
     inheritanceDepth = handler.getData(CodeCompletionModel::InheritanceDepth, m_sourceRow.second).toInt();
@@ -1536,7 +1521,6 @@ KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, con
     m_nameColumn = nameSibling.data(Qt::DisplayRole).toString();
 
     if (doInitialMatch) {
-        filter();
         match();
     }
 }
@@ -1714,124 +1698,6 @@ void KateCompletionModel::Group::clear()
     prefilter.clear();
     filtered.clear();
     isEmpty = true;
-}
-
-bool KateCompletionModel::filterContextMatchesOnly() const
-{
-    return m_filterContextMatchesOnly;
-}
-
-void KateCompletionModel::setFilterContextMatchesOnly(bool filter)
-{
-    if (m_filterContextMatchesOnly != filter) {
-        m_filterContextMatchesOnly = filter;
-        refilter();
-    }
-}
-
-bool KateCompletionModel::filterByAttribute() const
-{
-    return m_filterByAttribute;
-}
-
-void KateCompletionModel::setFilterByAttribute(bool filter)
-{
-    if (m_filterByAttribute == filter) {
-        m_filterByAttribute = filter;
-        refilter();
-    }
-}
-
-KTextEditor::CodeCompletionModel::CompletionProperties KateCompletionModel::filterAttributes() const
-{
-    return m_filterAttributes;
-}
-
-void KateCompletionModel::setFilterAttributes(KTextEditor::CodeCompletionModel::CompletionProperties attributes)
-{
-    if (m_filterAttributes == attributes) {
-        m_filterAttributes = attributes;
-        refilter();
-    }
-}
-
-int KateCompletionModel::maximumInheritanceDepth() const
-{
-    return m_maximumInheritanceDepth;
-}
-
-void KateCompletionModel::setMaximumInheritanceDepth(int maxDepth)
-{
-    if (m_maximumInheritanceDepth != maxDepth) {
-        m_maximumInheritanceDepth = maxDepth;
-        refilter();
-    }
-}
-
-void KateCompletionModel::refilter()
-{
-    beginResetModel();
-    m_ungrouped->refilter();
-
-    for (Group *g : qAsConst(m_rowTable)) {
-        if (g != m_argumentHints) {
-            g->refilter();
-        }
-    }
-
-    for (Group *g : qAsConst(m_emptyGroups)) {
-        if (g != m_argumentHints) {
-            g->refilter();
-        }
-    }
-
-    updateBestMatches();
-
-    clearExpanding(); // We need to do this, or be aware of expanding-widgets while filtering.
-    endResetModel();
-}
-
-void KateCompletionModel::Group::refilter()
-{
-    filtered.clear();
-    for (const Item &i : qAsConst(prefilter)) {
-        if (!i.isFiltered()) {
-            filtered.append(i);
-        }
-    }
-}
-
-bool KateCompletionModel::Item::filter()
-{
-    matchFilters = false;
-
-    if (model->isFilteringEnabled()) {
-        QModelIndex sourceIndex = m_sourceRow.second.sibling(m_sourceRow.second.row(), CodeCompletionModel::Name);
-
-        if (model->filterContextMatchesOnly()) {
-            QVariant contextMatch = sourceIndex.data(CodeCompletionModel::MatchQuality);
-            if (contextMatch.canConvert(QVariant::Int) && !contextMatch.toInt()) {
-                return false;
-            }
-        }
-
-        if (model->filterByAttribute()) {
-            int completionFlags = sourceIndex.data(CodeCompletionModel::CompletionRole).toInt();
-            if (model->filterAttributes() & completionFlags) {
-                return false;
-            }
-        }
-
-        if (model->maximumInheritanceDepth() > 0) {
-            int inheritanceDepth = sourceIndex.data(CodeCompletionModel::InheritanceDepth).toInt();
-            if (inheritanceDepth > model->maximumInheritanceDepth()) {
-                return false;
-            }
-        }
-    }
-
-    matchFilters = true;
-    return matchFilters;
 }
 
 uint KateCompletionModel::filteredItemCount() const
@@ -2117,17 +1983,7 @@ QString KateCompletionModel::propertyName(KTextEditor::CodeCompletionModel::Comp
 
 bool KateCompletionModel::Item::isVisible() const
 {
-    return matchCompletion && matchFilters;
-}
-
-bool KateCompletionModel::Item::isFiltered() const
-{
-    return !matchFilters;
-}
-
-bool KateCompletionModel::Item::isMatching() const
-{
-    return matchFilters;
+    return matchCompletion;
 }
 
 const KateCompletionModel::ModelRow &KateCompletionModel::Item::sourceRow() const
