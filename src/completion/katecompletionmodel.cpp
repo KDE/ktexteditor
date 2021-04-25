@@ -1247,16 +1247,6 @@ bool KateCompletionModel::hasCompletionModel() const
     return !m_completionModels.isEmpty();
 }
 
-void KateCompletionModel::setSortingEnabled(bool enable)
-{
-    if (m_sortingEnabled != enable) {
-        m_sortingEnabled = enable;
-        beginResetModel();
-        resort();
-        endResetModel();
-    }
-}
-
 void KateCompletionModel::setGroupingEnabled(bool enable)
 {
     if (m_groupingEnabled != enable) {
@@ -1279,11 +1269,6 @@ bool KateCompletionModel::isColumnMergingEnabled() const
 bool KateCompletionModel::isGroupingEnabled() const
 {
     return m_groupingEnabled;
-}
-
-bool KateCompletionModel::isSortingEnabled() const
-{
-    return m_sortingEnabled;
 }
 
 QString KateCompletionModel::columnName(int column)
@@ -1489,25 +1474,6 @@ KateCompletionModel::GroupingMethods KateCompletionModel::groupingMethod() const
     return m_groupingMethod;
 }
 
-bool KateCompletionModel::isSortingByInheritanceDepth() const
-{
-    return m_isSortingByInheritance;
-}
-void KateCompletionModel::setSortingByInheritanceDepth(bool byInheritance)
-{
-    m_isSortingByInheritance = byInheritance;
-}
-
-bool KateCompletionModel::isSortingAlphabetical() const
-{
-    return m_sortingAlphabetical;
-}
-
-Qt::CaseSensitivity KateCompletionModel::sortingCaseSensitivity() const
-{
-    return m_sortingCaseSensitivity;
-}
-
 KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, const HierarchicalModelHandler &handler, ModelRow sr)
     : model(m)
     , m_sourceRow(sr)
@@ -1560,13 +1526,11 @@ bool KateCompletionModel::Item::operator<(const Item &rhs) const
         }
     }
 
-    if (model->isSortingByInheritanceDepth()) {
-        ret = inheritanceDepth - rhs.inheritanceDepth;
-    }
+    ret = inheritanceDepth - rhs.inheritanceDepth;
 
-    if (ret == 0 && model->isSortingAlphabetical()) {
+    if (ret == 0) {
         // Do not use localeAwareCompare, because it is simply too slow for a list of about 1000 items
-        ret = QString::compare(m_nameColumn, rhs.m_nameColumn, model->sortingCaseSensitivity());
+        ret = QString::compare(m_nameColumn, rhs.m_nameColumn, Qt::CaseInsensitive);
     }
 
     if (ret == 0) {
@@ -1588,25 +1552,16 @@ void KateCompletionModel::Group::addItem(const Item &i, bool notifyModel)
         groupIndex = model->indexForGroup(this);
     }
 
-    if (model->isSortingEnabled()) {
-        prefilter.insert(std::upper_bound(prefilter.begin(), prefilter.end(), i), i);
-        if (i.isVisible()) {
-            QList<Item>::iterator it = std::upper_bound(filtered.begin(), filtered.end(), i);
-            uint rowNumber = it - filtered.begin();
+    prefilter.insert(std::upper_bound(prefilter.begin(), prefilter.end(), i), i);
+    if (i.isVisible()) {
+        QList<Item>::iterator it = std::upper_bound(filtered.begin(), filtered.end(), i);
+        uint rowNumber = it - filtered.begin();
 
-            if (notifyModel) {
-                model->beginInsertRows(groupIndex, rowNumber, rowNumber);
-            }
-
-            filtered.insert(it, i);
-        }
-    } else {
         if (notifyModel) {
-            model->beginInsertRows(groupIndex, prefilter.size(), prefilter.size());
+            model->beginInsertRows(groupIndex, rowNumber, rowNumber);
         }
-        if (i.isVisible()) {
-            prefilter.append(i);
-        }
+
+        filtered.insert(it, i);
     }
 
     if (notifyModel) {
@@ -1648,30 +1603,10 @@ KateCompletionModel::Group::Group(const QString &title, int attribute, KateCompl
     Q_ASSERT(model);
 }
 
-void KateCompletionModel::setSortingAlphabetical(bool alphabetical)
-{
-    if (m_sortingAlphabetical != alphabetical) {
-        m_sortingAlphabetical = alphabetical;
-        beginResetModel();
-        resort();
-        endResetModel();
-    }
-}
-
 void KateCompletionModel::Group::resort()
 {
     std::stable_sort(filtered.begin(), filtered.end());
     model->hideOrShowGroup(this);
-}
-
-void KateCompletionModel::setSortingCaseSensitivity(Qt::CaseSensitivity cs)
-{
-    if (m_sortingCaseSensitivity != cs) {
-        m_sortingCaseSensitivity = cs;
-        beginResetModel();
-        resort();
-        endResetModel();
-    }
 }
 
 void KateCompletionModel::resort()

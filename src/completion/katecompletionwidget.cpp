@@ -108,12 +108,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     // FIXME: this was imported from the config dialog deactivated years ago
     // without this setup either nothing shows or it segfaults
 
-    // Sorting
-    m_presentationModel->setSortingEnabled(true);
-    m_presentationModel->setSortingAlphabetical(true);
-    m_presentationModel->setSortingCaseSensitivity(Qt::CaseInsensitive);
-    m_presentationModel->setSortingByInheritanceDepth(true);
-
     // Grouping
     m_presentationModel->setGroupingEnabled(true);
 

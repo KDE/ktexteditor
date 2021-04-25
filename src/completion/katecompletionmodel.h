@@ -95,16 +95,6 @@ public:
     /// Maps from an index in a source-model to the index of the item in this display-model
     virtual QModelIndex mapFromSource(const QModelIndex &sourceIndex) const;
 
-    // Sorting
-    bool isSortingEnabled() const;
-    bool isSortingAlphabetical() const;
-    bool isSortingByInheritanceDepth() const;
-    void setSortingByInheritanceDepth(bool byIneritance);
-    void setSortingAlphabetical(bool alphabetical);
-
-    Qt::CaseSensitivity sortingCaseSensitivity() const;
-    void setSortingCaseSensitivity(Qt::CaseSensitivity cs);
-
     // Grouping
     bool isGroupingEnabled() const;
 
@@ -152,7 +142,6 @@ Q_SIGNALS:
     void argumentHintsChanged();
 
 public Q_SLOTS:
-    void setSortingEnabled(bool enable);
     void setGroupingEnabled(bool enable);
     void setColumnMergingEnabled(bool enable);
 
@@ -336,13 +325,6 @@ private:
     // Matching
     Qt::CaseSensitivity m_matchCaseSensitivity = Qt::CaseInsensitive;
     Qt::CaseSensitivity m_exactMatchCaseSensitivity = Qt::CaseInsensitive; // Must be equal to or stricter than m_matchCaseSensitivity.
-
-    // Sorting
-    bool m_sortingEnabled = false;
-    bool m_sortingAlphabetical = false;
-    bool m_isSortingByInheritance = false;
-    Qt::CaseSensitivity m_sortingCaseSensitivity = Qt::CaseInsensitive;
-    QHash<int, QList<int>> m_sortingGroupingOrder;
 
     // Grouping
     bool m_groupingEnabled = false;
