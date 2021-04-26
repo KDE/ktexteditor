@@ -339,7 +339,8 @@ void KateStyleTreeWidget::addItem(QTreeWidgetItem *parent, const QString &styleN
 
 // BEGIN KateStyleTreeWidgetItem
 KateStyleTreeDelegate::KateStyleTreeDelegate(KateStyleTreeWidget *widget)
-    : m_widget(widget)
+    : QStyledItemDelegate(widget)
+    , m_widget(widget)
 {
 }
 
