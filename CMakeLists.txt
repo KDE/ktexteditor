@@ -56,6 +56,7 @@ find_package(KF5Parts ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
+find_package(KF5TextWidgets ${KF_DEP_VERSION} REQUIRED)
 
 # libgit2 integration, at least 0.22 with proper git_libgit2_init()
 find_package(LibGit2 "0.22.0")
