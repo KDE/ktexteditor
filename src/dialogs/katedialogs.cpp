@@ -915,6 +915,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
 
 KateSaveConfigTab::~KateSaveConfigTab()
 {
+    delete uiadv;
     delete ui;
 }
 
