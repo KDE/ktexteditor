@@ -1173,7 +1173,7 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
                 for (int i = 1; i <= 9; i++) {
                     const QString number = QString::number(i);
                     const QString &captureDetails =
-                        (i <= captureCount) ? QLatin1String(" = (") + capturePatterns[i - 1].leftRef(30) + QLatin1Char(')') : QString();
+                        (i <= captureCount) ? QLatin1String(" = (") + QStringView(capturePatterns[i - 1]).left(30) + QLatin1Char(')') : QString();
                     addMenuManager.addEntry(QLatin1String("\\") + number, QString(), i18n("Reference") + QLatin1Char(' ') + number + captureDetails);
                 }
 

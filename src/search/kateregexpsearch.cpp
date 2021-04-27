@@ -87,7 +87,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
     case upperCaseFirst:
         if (str.length() > 0) {
             m_str.append(str.at(0).toUpper());
-            m_str.append(str.midRef(1));
+            m_str.append(QStringView(str).mid(1));
             m_caseConversion = keepCase;
         }
         break;
@@ -100,7 +100,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
     case lowerCaseFirst:
         if (str.length() > 0) {
             m_str.append(str.at(0).toLower());
-            m_str.append(str.midRef(1));
+            m_str.append(QStringView(str).mid(1));
             m_caseConversion = keepCase;
         }
         break;
@@ -749,6 +749,7 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
     // not as critical
 
     const int inputLen = pattern.length();
+    const QStringView patternView{pattern};
 
     // prepare output
     QString output;
@@ -768,11 +769,11 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
                 case L'x':
                     if (input + 5 < inputLen) {
                         // copy "\x????" unmodified
-                        output.append(pattern.midRef(input, 6));
+                        output.append(patternView.mid(input, 6));
                         input += 6;
                     } else {
                         // copy "\x" unmodified
-                        output.append(pattern.midRef(input, 2));
+                        output.append(patternView.mid(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -781,11 +782,11 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
                 case L'0':
                     if (input + 4 < inputLen) {
                         // copy "\0???" unmodified
-                        output.append(pattern.midRef(input, 5));
+                        output.append(patternView.mid(input, 5));
                         input += 5;
                     } else {
                         // copy "\0" unmodified
-                        output.append(pattern.midRef(input, 2));
+                        output.append(patternView.mid(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -804,7 +805,7 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
 
                 default:
                     // copy "\?" unmodified
-                    output.append(pattern.midRef(input, 2));
+                    output.append(patternView.mid(input, 2));
                     input += 2;
                 }
                 break;
@@ -828,11 +829,11 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
                 case L'x':
                     if (input + 5 < inputLen) {
                         // copy "\x????" unmodified
-                        output.append(pattern.midRef(input, 6));
+                        output.append(patternView.mid(input, 6));
                         input += 6;
                     } else {
                         // copy "\x" unmodified
-                        output.append(pattern.midRef(input, 2));
+                        output.append(patternView.mid(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -841,11 +842,11 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
                 case L'0':
                     if (input + 4 < inputLen) {
                         // copy "\0???" unmodified
-                        output.append(pattern.midRef(input, 5));
+                        output.append(patternView.mid(input, 5));
                         input += 5;
                     } else {
                         // copy "\0" unmodified
-                        output.append(pattern.midRef(input, 2));
+                        output.append(patternView.mid(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -863,7 +864,7 @@ QString KateRegExpSearch::repairPattern(const QString &pattern, bool &stillMulti
                     Q_FALLTHROUGH();
                 default:
                     // copy "\?" unmodified
-                    output.append(pattern.midRef(input, 2));
+                    output.append(patternView.mid(input, 2));
                     input += 2;
                 }
                 break;

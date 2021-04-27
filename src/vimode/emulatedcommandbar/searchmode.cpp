@@ -76,7 +76,7 @@ bool isRepeatLastSearch(const QString &searchText, const bool isSearchBackwards)
 {
     const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(searchText, isSearchBackwards);
     if (posOfSearchConfigMarker != -1) {
-        if (searchText.leftRef(posOfSearchConfigMarker).isEmpty()) {
+        if (QStringView(searchText).left(posOfSearchConfigMarker).isEmpty()) {
             return true;
         }
     }

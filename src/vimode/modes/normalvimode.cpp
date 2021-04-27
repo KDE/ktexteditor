@@ -2299,7 +2299,7 @@ Range NormalViMode::motionFindChar()
     int matchColumn = cursor.column();
 
     for (int i = 0; i < getCount(); i++) {
-        matchColumn = line.indexOf(m_keys.rightRef(1), matchColumn + 1);
+        matchColumn = line.indexOf(QStringView(m_keys).right(1), matchColumn + 1);
         if (matchColumn == -1) {
             break;
         }

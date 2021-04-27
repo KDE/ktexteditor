@@ -1990,7 +1990,7 @@ static inline bool containsAtWordBeginning(const QString &word, const QString &t
         if (!(prev == QLatin1Char('_') || (c.isUpper() && !prev.isUpper()))) {
             continue;
         }
-        if (word.midRef(i).startsWith(typed, caseSensitive)) {
+        if (QStringView(word).mid(i).startsWith(typed, caseSensitive)) {
             return true;
         }
     }
