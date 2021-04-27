@@ -410,7 +410,7 @@ void KateWordCompletionView::complete(bool fw)
 
         if (match.hasMatch()) { // we matched a word
             // qCDebug(LOG_KTE)<<"USABLE MATCH";
-            const QStringRef m = match.capturedRef(1);
+            const QStringView m = match.capturedView(1);
             if (m != doc->text(*d->liRange) && (d->dcCursor.line() != d->dcRange.start().line() || pos != d->dcRange.start().column())) {
                 // we got good a match! replace text and return.
                 d->isCompleting = true;

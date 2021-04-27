@@ -1196,14 +1196,15 @@ void ModeBase::addToNumberUnderCursor(int count)
     } else if (base == 8) {
         basePrefix = QStringLiteral("0");
     }
-    const QStringRef withoutBase = numberAsString.midRef(basePrefix.length());
+
+    const int withoutBaseLength = numberAsString.length() - basePrefix.length();
 
     const int newNumber = originalNumber + count;
 
     // Create the new text string to be inserted. Prepend with “0x” if in base 16, and "0" if base 8.
     // For non-decimal numbers, try to keep the length of the number the same (including leading 0's).
     const QString newNumberPadded =
-        (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
+        (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBaseLength, base, QLatin1Char('0'));
     const QString newNumberText = basePrefix + newNumberPadded;
 
     // Replace the old number string with the new.

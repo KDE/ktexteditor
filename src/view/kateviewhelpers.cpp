@@ -1246,7 +1246,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         m_msgMode = true;
 
         // if the command changes the focus itself, the bar should be hidden before execution.
-        if (focusChangingCommands.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
+        if (focusChangingCommands.match(QStringView(cmd).left(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
             Q_EMIT hideRequested();
         }
 
@@ -1293,7 +1293,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     m_command = nullptr;
     m_cmdend = 0;
 
-    if (!focusChangingCommands.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
+    if (!focusChangingCommands.match(QStringView(cmd).left(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
         m_view->setFocus();
     }
 

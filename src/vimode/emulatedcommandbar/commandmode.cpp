@@ -215,7 +215,7 @@ QString CommandMode::executeCommand(const QString &commandToExecute)
     static const QRegularExpression reCmds(
         QStringLiteral("^(?:buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst"
                        "|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew)$"));
-    if (!reCmds.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
+    if (!reCmds.match(QStringView(cmd).left(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
         view()->setFocus();
     }
 
@@ -301,7 +301,8 @@ QString CommandMode::withSedFindTermReplacedWith(const QString &newFindTerm)
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     Q_ASSERT(parsedSedExpression.parsedSuccessfully);
-    return command.midRef(0, parsedSedExpression.findBeginPos) + newFindTerm + command.midRef(parsedSedExpression.findEndPos + 1);
+    const QStringView strView(command);
+    return strView.mid(0, parsedSedExpression.findBeginPos) + newFindTerm + strView.mid(parsedSedExpression.findEndPos + 1);
 }
 
 QString CommandMode::withSedDelimiterEscaped(const QString &text)

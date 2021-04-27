@@ -205,7 +205,7 @@ void ConfigTab::importNormalMappingRow()
     QTextStream stream(&configFile);
     const QRegularExpression mapleader(QStringLiteral("(?:\\w:)?mapleader"));
     while (!stream.atEnd()) {
-        QStringList line = stream.readLine().split(QLatin1Char(' '));
+        const QStringList line = stream.readLine().split(QLatin1Char(' '));
 
         // TODO - allow recursive mappings to be read.
         if (line.size() > 2
@@ -220,7 +220,7 @@ void ConfigTab::importNormalMappingRow()
             recursive->setCheckState(Qt::Unchecked);
             ui->tblNormalModeMappings->setItem(rows, 2, recursive);
         } else if (line.size() == 4 && line[0] == QLatin1String("let") && line[2] == QLatin1String("=") && mapleader.match(line[1]).hasMatch()) {
-            const QStringRef leader = line[3].midRef(1, line[3].length() - 2);
+            const QStringView leader = QStringView(line[3]).mid(1, line[3].length() - 2);
             if (!leader.isEmpty()) {
                 m_mappings->setLeader(leader[0]);
             }

@@ -266,7 +266,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     // compute start cursor of a match
     auto startOfMatch = [this, &templateText](const QRegularExpressionMatch &match) {
         const auto offset = match.capturedStart(0);
-        const auto left = templateText.leftRef(offset);
+        const auto left = QStringView(templateText).left(offset);
         const auto nl = QLatin1Char('\n');
         const auto rel_lineno = left.count(nl);
         const auto start = m_wholeTemplateRange->start().toCursor();
@@ -293,7 +293,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         }
         // a template field was found, instantiate a field object and populate it
         auto defaultMatch = defaultField.match(match.captured(0));
-        auto contents = match.captured(1);
+        const QString contents = match.captured(1);
         TemplateField f;
         f.range.reset(createMovingRangeForMatch(match));
         f.identifier = contents;
@@ -301,7 +301,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
         if (defaultMatch.hasMatch()) {
             // the field has a default value, i.e. ${foo=3}
             f.defaultValue = defaultMatch.captured(1);
-            f.identifier = contents.leftRef(contents.indexOf(QLatin1Char('='))).trimmed().toString();
+            f.identifier = QStringView(contents).left(contents.indexOf(QLatin1Char('='))).trimmed().toString();
         } else if (f.identifier.contains(QLatin1Char('('))) {
             // field is a function call when it contains an opening parenthesis
             f.kind = TemplateField::FunctionCall;

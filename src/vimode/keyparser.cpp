@@ -502,6 +502,7 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
     QString encodedSequence;
     unsigned int keyCodeTemp = 0;
 
+    const QStringView keysView(keys);
     bool insideTag = false;
     QChar c;
     for (int i = 0; i < keys.length(); i++) {
@@ -515,12 +516,12 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                 continue;
             } else {
                 // contains modifiers
-                if (keys.midRef(i).indexOf(QLatin1Char('-')) != -1 && keys.midRef(i).indexOf(QLatin1Char('-')) < keys.midRef(i).indexOf(QLatin1Char('>'))) {
+                if (keysView.mid(i).indexOf(QLatin1Char('-')) != -1 && keysView.mid(i).indexOf(QLatin1Char('-')) < keysView.mid(i).indexOf(QLatin1Char('>'))) {
                     // Perform something similar to a split on '-', except that we want to keep the occurrences of '-'
                     // e.g. <c-s-a> will equate to the list of tokens "c-", "s-", "a".
                     // A straight split on '-' would give us "c", "s", "a", in which case we lose the piece of information that
                     // 'a' is just the 'a' key, not the 'alt' modifier.
-                    const QString untilClosing = keys.mid(i, keys.midRef(i).indexOf(QLatin1Char('>'))).toLower();
+                    const QString untilClosing = keys.mid(i, keysView.mid(i).indexOf(QLatin1Char('>'))).toLower();
                     QStringList tokens;
                     int currentPos = 0;
                     int nextHypen = -1;
@@ -574,13 +575,13 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                         keyCodeTemp = m_nameToKeyCode.value(QStringLiteral("invalid")) * 0x10;
                     }
                 }
-                i += keys.midRef(i, keys.midRef(i).indexOf(QLatin1Char('>'))).length() - 1;
+                i += keysView.mid(i, keysView.mid(i).indexOf(QLatin1Char('>'))).length() - 1;
             }
         } else {
             if (c == QLatin1Char('<')) {
                 // If there's no closing '>', or if there is an opening '<' before the next '>', interpret as a literal '<'
                 // If we are <space>, encode as a literal " ".
-                const QStringRef rest = keys.midRef(i);
+                const QStringView rest = keysView.mid(i);
                 if (rest.indexOf(QLatin1Char('>'), 1) != -1 && rest.mid(1, rest.indexOf(QLatin1Char('>'), 1) - 1) == QLatin1String("space")) {
                     encodedSequence.append(QLatin1Char(' '));
                     i += rest.indexOf(QLatin1Char('>'), 1);
