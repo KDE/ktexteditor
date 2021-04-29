@@ -369,7 +369,7 @@ int KateLayoutCache::viewLine(const KTextEditor::Cursor &realCursor)
     /**
      * Make sure cursor column and line is valid
      */
-    if (realCursor.column() <= 0 || realCursor.line() < 0 || realCursor.line() > m_renderer->doc()->lines()) {
+    if (realCursor.column() < 0 || realCursor.line() < 0 || realCursor.line() > m_renderer->doc()->lines()) {
         return 0;
     }
 
