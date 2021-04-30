@@ -195,7 +195,7 @@ private:
 
     KateCompletionTree *m_entryList;
     KateArgumentHintModel *m_argumentHintModel;
-    KateArgumentHintTree *m_argumentHintTree;
+    std::unique_ptr<KateArgumentHintTree> m_argumentHintTree;
 
     QTimer *m_automaticInvocationTimer;
 
