@@ -11,10 +11,11 @@
 
 #include "kateabstractinputmode.h"
 
+#include <vimode/inputmodemanager.h>
+
 namespace KateVi
 {
 class GlobalState;
-class InputModeManager;
 class EmulatedCommandBar;
 }
 class KateViInputModeFactory;

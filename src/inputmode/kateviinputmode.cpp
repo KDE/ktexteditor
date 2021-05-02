@@ -9,7 +9,6 @@
 #include "katedocument.h"
 #include "kateviewinternal.h"
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
-#include <vimode/inputmodemanager.h>
 #include <vimode/macrorecorder.h>
 #include <vimode/marks.h>
 #include <vimode/modes/replacevimode.h>
