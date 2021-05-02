@@ -176,6 +176,8 @@ public:
      * Get a hash holding all marks in the document.
      * The hash key for a mark is its line.
      * \return a hash holding all marks in the document
+     *
+     * KF6 TODO: Change Mark* to Mark. No need for pointer here.
      */
     virtual const QHash<int, KTextEditor::Mark *> &marks() = 0;
 
