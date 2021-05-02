@@ -159,9 +159,7 @@ ktexteditor_unit_test(bug313759 src/testutils.cpp)
 ktexteditor_unit_test(bug317111 src/testutils.cpp)
 ktexteditor_unit_test(bug205447 src/testutils.cpp)
 
-if (BUILD_VIMODE)
-  add_subdirectory(src/vimode)
-endif()
+add_subdirectory(src/vimode)
 
 # benchmarking tests
 add_executable(bench_search src/benchmarks/bench_search.cpp)

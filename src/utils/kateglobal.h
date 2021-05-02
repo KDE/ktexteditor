@@ -26,6 +26,9 @@
 #include <QPointer>
 #include <QScopedPointer>
 
+#include <array>
+#include <memory>
+
 class QStringListModel;
 
 class KateCmd;
@@ -378,7 +381,10 @@ public:
     /**
      * @return list of available input mode factories
      */
-    QList<KateAbstractInputModeFactory *> inputModeFactories();
+    const std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::ViInputMode + 1> &inputModeFactories()
+    {
+        return m_inputModeFactories;
+    }
 
     /**
      * Search pattern history shared among simple/power search instances.
@@ -531,9 +537,10 @@ private:
     KTextEditor::MainWindow m_dummyMainWindow;
 
     /**
-     * input modes map
+     * input modes factories
+     * for all input modes in the KTextEditor::View::InputMode we have here an entry
      */
-    QMap<KTextEditor::View::InputMode, KateAbstractInputModeFactory *> m_inputModeFactories;
+    std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::ViInputMode + 1> m_inputModeFactories;
 
     /**
      * Shared history models for search & replace.

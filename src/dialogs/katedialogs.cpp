@@ -435,8 +435,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     ui = new Ui::EditConfigWidget();
     ui->setupUi(newWidget);
 
-    const QList<KateAbstractInputModeFactory *> inputModes = KTextEditor::EditorPrivate::self()->inputModeFactories();
-    for (KateAbstractInputModeFactory *fact : inputModes) {
+    for (const auto &fact : KTextEditor::EditorPrivate::self()->inputModeFactories()) {
         ui->cmbInputMode->addItem(fact->name(), static_cast<int>(fact->inputMode()));
     }
 
@@ -576,8 +575,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     observeChanges(spellCheckConfigTab);
 
     int i = tabWidget->count();
-    const auto inputModeFactories = KTextEditor::EditorPrivate::self()->inputModeFactories();
-    for (KateAbstractInputModeFactory *factory : inputModeFactories) {
+    for (const auto &factory : KTextEditor::EditorPrivate::self()->inputModeFactories()) {
         KateConfigPage *tab = factory->createConfigPage(this);
         if (tab) {
             m_inputModeConfigTabs << tab;

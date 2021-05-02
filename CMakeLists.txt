@@ -64,11 +64,8 @@ find_package(LibGit2 "0.22.0")
 # EditorConfig integration
 find_package(EditorConfig)
 
-# vi mode on per default
-option (BUILD_VIMODE "Build vimode in" ON)
-set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
-
 # forbid some old things
+set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 add_definitions(-DQT_NO_FOREACH)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055100)

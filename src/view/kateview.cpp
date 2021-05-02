@@ -790,10 +790,10 @@ void KTextEditor::ViewPrivate::setupActions()
     am->addAction(switchInputModeAction);
     am->addSeparator();
     for (const auto &mode : m_viewInternal->m_inputModes) {
-        a = new QAction(mode.second->viewInputModeHuman(), m_inputModeActions);
+        a = new QAction(mode->viewInputModeHuman(), m_inputModeActions);
         am->addAction(a);
-        a->setWhatsThis(i18n("Activate/deactivate %1", mode.second->viewInputModeHuman()));
-        const InputMode im = mode.second->viewInputMode();
+        a->setWhatsThis(i18n("Activate/deactivate %1", mode->viewInputModeHuman()));
+        const InputMode im = mode->viewInputMode();
         a->setData(static_cast<int>(im));
         a->setCheckable(true);
         if (im == m_config->inputMode())
@@ -1402,13 +1402,8 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
         return;
     }
 
-    const auto it = m_viewInternal->m_inputModes.find(mode);
-    if (it == m_viewInternal->m_inputModes.end()) {
-        return;
-    }
-
     m_viewInternal->m_currentInputMode->deactivate();
-    m_viewInternal->m_currentInputMode = it->second.get();
+    m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode].get();
     m_viewInternal->m_currentInputMode->activate();
 
     config()->setValue(KateViewConfig::InputMode,
@@ -1657,7 +1652,7 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     applyFoldingState();
 
     for (const auto &mode : m_viewInternal->m_inputModes) {
-        mode.second->readSessionConfig(config);
+        mode->readSessionConfig(config);
     }
 }
 
@@ -1677,7 +1672,7 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     m_savedFoldingState = QJsonDocument();
 
     for (const auto &mode : m_viewInternal->m_inputModes) {
-        mode.second->writeSessionConfig(config);
+        mode->writeSessionConfig(config);
     }
 }
 
@@ -1986,7 +1981,7 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_viewInternal->setAutoCenterLines(config()->autoCenterLines());
 
     for (const auto &input : m_viewInternal->m_inputModes) {
-        input.second->updateConfig();
+        input->updateConfig();
     }
 
     setInputMode(config()->inputMode());

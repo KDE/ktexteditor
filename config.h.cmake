@@ -7,6 +7,5 @@
 #cmakedefine01 LIBGIT2_FOUND
 
 #cmakedefine01 HAVE_FDATASYNC
-#cmakedefine01 BUILD_VIMODE
 
 #endif

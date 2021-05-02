@@ -142,10 +142,11 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_imPreeditRange(nullptr)
 {
     // setup input modes
-    for (auto factory : KTextEditor::EditorPrivate::self()->inputModeFactories()) {
-        KateAbstractInputMode *m = factory->createInputMode(this);
-        m_inputModes.emplace(m->viewInputMode(), m);
-    }
+    Q_ASSERT(m_inputModes.size() == KTextEditor::EditorPrivate::self()->inputModeFactories().size());
+    m_inputModes[KTextEditor::View::NormalInputMode].reset(
+        KTextEditor::EditorPrivate::self()->inputModeFactories()[KTextEditor::View::NormalInputMode]->createInputMode(this));
+    m_inputModes[KTextEditor::View::ViInputMode].reset(
+        KTextEditor::EditorPrivate::self()->inputModeFactories()[KTextEditor::View::ViInputMode]->createInputMode(this));
     m_currentInputMode = m_inputModes[KTextEditor::View::NormalInputMode].get();
 
     setMinimumSize(0, 0);

@@ -183,14 +183,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // input mode factories
     //
-    KateAbstractInputModeFactory *fact;
-    fact = new KateNormalInputModeFactory();
-    m_inputModeFactories.insert(KTextEditor::View::NormalInputMode, fact);
-
-#if BUILD_VIMODE
-    fact = new KateViInputModeFactory();
-    m_inputModeFactories.insert(KTextEditor::View::ViInputMode, fact);
-#endif
+    Q_ASSERT(m_inputModeFactories.size() == KTextEditor::View::ViInputMode + 1);
+    m_inputModeFactories[KTextEditor::View::NormalInputMode].reset(new KateNormalInputModeFactory());
+    m_inputModeFactories[KTextEditor::View::ViInputMode].reset(new KateViInputModeFactory());
 
     //
     // spell check manager
@@ -252,8 +247,6 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     // delete the commands before we delete the cmd manager
     qDeleteAll(m_cmds);
     delete m_cmdManager;
-
-    qDeleteAll(m_inputModeFactories);
 
     // shutdown libgit2, we require at least 0.22 which has this function!
 #if LIBGIT2_FOUND
@@ -462,11 +455,6 @@ bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
     }
 
     return false; // always continue processing
-}
-
-QList<KateAbstractInputModeFactory *> KTextEditor::EditorPrivate::inputModeFactories()
-{
-    return m_inputModeFactories.values();
 }
 
 QStringListModel *KTextEditor::EditorPrivate::searchHistoryModel()

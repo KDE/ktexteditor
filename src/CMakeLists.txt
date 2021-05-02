@@ -249,52 +249,51 @@ dialogs/spellcheckconfigwidget.ui)
 qt5_add_resources( ktexteditor_qrc_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
 set_source_files_properties(${ktexteditor_qrc_SRCS} PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
-if (BUILD_VIMODE)
-  ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
-  set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} ${ktexteditor_qrc_SRCS}
-    inputmode/kateviinputmode.cpp
-    inputmode/kateviinputmodefactory.cpp
+# vi mode
+ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
+set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} ${ktexteditor_qrc_SRCS}
+inputmode/kateviinputmode.cpp
+inputmode/kateviinputmodefactory.cpp
 
-    # vi input mode
-    vimode/config/configtab.cpp
+# vi input mode
+vimode/config/configtab.cpp
 
-    vimode/modes/insertvimode.cpp
-    vimode/modes/modebase.cpp
-    vimode/modes/normalvimode.cpp
-    vimode/modes/replacevimode.cpp
-    vimode/modes/visualvimode.cpp
+vimode/modes/insertvimode.cpp
+vimode/modes/modebase.cpp
+vimode/modes/normalvimode.cpp
+vimode/modes/replacevimode.cpp
+vimode/modes/visualvimode.cpp
 
-    vimode/appcommands.cpp
-    vimode/cmds.cpp
-    vimode/inputmodemanager.cpp
-    vimode/command.cpp
-    vimode/motion.cpp
-    vimode/range.cpp
-    vimode/keyparser.cpp
-    vimode/globalstate.cpp
-    vimode/emulatedcommandbar/emulatedcommandbar.cpp
-    vimode/emulatedcommandbar/matchhighlighter.cpp
-    vimode/emulatedcommandbar/completer.cpp
-    vimode/emulatedcommandbar/activemode.cpp
-    vimode/emulatedcommandbar/interactivesedreplacemode.cpp
-    vimode/emulatedcommandbar/searchmode.cpp
-    vimode/emulatedcommandbar/commandmode.cpp
-    vimode/commandrangeexpressionparser.cpp
-    vimode/keymapper.cpp
-    vimode/marks.cpp
-    vimode/jumps.cpp
-    vimode/history.cpp
-    vimode/macros.cpp
-    vimode/mappings.cpp
-    vimode/registers.cpp
-    vimode/searcher.cpp
-    vimode/completion.cpp
-    vimode/completionrecorder.cpp
-    vimode/completionreplayer.cpp
-    vimode/macrorecorder.cpp
-    vimode/lastchangerecorder.cpp
-  )
-endif()
+vimode/appcommands.cpp
+vimode/cmds.cpp
+vimode/inputmodemanager.cpp
+vimode/command.cpp
+vimode/motion.cpp
+vimode/range.cpp
+vimode/keyparser.cpp
+vimode/globalstate.cpp
+vimode/emulatedcommandbar/emulatedcommandbar.cpp
+vimode/emulatedcommandbar/matchhighlighter.cpp
+vimode/emulatedcommandbar/completer.cpp
+vimode/emulatedcommandbar/activemode.cpp
+vimode/emulatedcommandbar/interactivesedreplacemode.cpp
+vimode/emulatedcommandbar/searchmode.cpp
+vimode/emulatedcommandbar/commandmode.cpp
+vimode/commandrangeexpressionparser.cpp
+vimode/keymapper.cpp
+vimode/marks.cpp
+vimode/jumps.cpp
+vimode/history.cpp
+vimode/macros.cpp
+vimode/mappings.cpp
+vimode/registers.cpp
+vimode/searcher.cpp
+vimode/completion.cpp
+vimode/completionrecorder.cpp
+vimode/completionreplayer.cpp
+vimode/macrorecorder.cpp
+vimode/lastchangerecorder.cpp
+)
 
 add_library(KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
 ecm_generate_export_header(KF5TextEditor
