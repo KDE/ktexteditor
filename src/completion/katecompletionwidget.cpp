@@ -271,7 +271,7 @@ void KateCompletionWidget::modelContentChanged()
 
 KateArgumentHintTree *KateCompletionWidget::argumentHintTree() const
 {
-    return m_argumentHintTree.get();
+    return m_argumentHintTree;
 }
 
 KateArgumentHintModel *KateCompletionWidget::argumentHintModel() const
