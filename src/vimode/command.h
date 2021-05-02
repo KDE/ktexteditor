@@ -73,7 +73,6 @@ protected:
     QString m_pattern;
     unsigned int m_flags;
     bool (NormalViMode::*m_ptr2commandMethod)();
-    KeyParser *m_keyParser;
 };
 
 }

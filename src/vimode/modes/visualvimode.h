@@ -23,7 +23,6 @@ class VisualViMode : public NormalViMode
 
 public:
     explicit VisualViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
-    ~VisualViMode() override;
 
     void init();
 

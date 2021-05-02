@@ -17,9 +17,9 @@
 
 using namespace KateVi;
 
-#define ADDCMD(STR, FUNC, FLGS) m_commands.push_back(new Command(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
+#define ADDCMD(STR, FUNC, FLGS) m_commands.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back(new Motion(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
 VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : NormalViMode(viInputModeManager, view, viewInternal)
@@ -29,10 +29,6 @@ VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     initializeCommands();
 
     connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &VisualViMode::updateSelection);
-}
-
-VisualViMode::~VisualViMode()
-{
 }
 
 void VisualViMode::selectInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2)
@@ -243,12 +239,8 @@ void VisualViMode::updateSelection()
 
 void VisualViMode::initializeCommands()
 {
-    // Remove the commands put in here by NormalMode
-    qDeleteAll(m_commands);
+    // Remove the commands & motions put in here by NormalMode
     m_commands.clear();
-
-    // Remove the motions put in here by NormalMode
-    qDeleteAll(m_motions);
     m_motions.clear();
 
     ADDCMD("J", commandJoinLines, IS_CHANGE);

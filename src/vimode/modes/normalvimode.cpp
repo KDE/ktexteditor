@@ -44,9 +44,9 @@
 
 using namespace KateVi;
 
-#define ADDCMD(STR, FUNC, FLGS) m_commands.push_back(new Command(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
+#define ADDCMD(STR, FUNC, FLGS) m_commands.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back(new Motion(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
 NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : ModeBase()
@@ -86,8 +86,6 @@ NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
 
 NormalViMode::~NormalViMode()
 {
-    qDeleteAll(m_commands);
-    qDeleteAll(m_motions);
     qDeleteAll(m_highlightedYanks);
 }
 
@@ -217,8 +215,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
         // remove commands not matching anymore
         for (int i = n; i >= 0; i--) {
-            if (!m_commands.at(m_matchingCommands.at(i))->matches(m_keys)) {
-                if (m_commands.at(m_matchingCommands.at(i))->needsMotion()) {
+            if (!m_commands.at(m_matchingCommands.at(i)).matches(m_keys)) {
+                if (m_commands.at(m_matchingCommands.at(i)).needsMotion()) {
                     // "cache" command needing a motion for later
                     m_motionOperatorIndex = m_matchingCommands.at(i);
                 }
@@ -230,17 +228,17 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         // push the current command length to m_awaitingMotionOrTextObject so one
         // knows where to split the command between the operator and the motion
         for (int i = 0; i < m_matchingCommands.size(); i++) {
-            if (m_commands.at(m_matchingCommands.at(i))->needsMotion()) {
+            if (m_commands.at(m_matchingCommands.at(i)).needsMotion()) {
                 m_awaitingMotionOrTextObject.push(m_keys.size());
                 break;
             }
         }
     } else {
         // go through all registered commands and put possible matches in m_matchingCommands
-        for (int i = 0; i < m_commands.size(); i++) {
-            if (m_commands.at(i)->matches(m_keys)) {
+        for (size_t i = 0; i < m_commands.size(); i++) {
+            if (m_commands.at(i).matches(m_keys)) {
                 m_matchingCommands.push_back(i);
-                if (m_commands.at(i)->needsMotion() && m_commands.at(i)->pattern().length() == m_keys.size()) {
+                if (m_commands.at(i).needsMotion() && m_commands.at(i).pattern().length() == m_keys.size()) {
                     m_awaitingMotionOrTextObject.push(m_keys.size());
                 }
             }
@@ -262,23 +260,23 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     // m_matchingMotions should be checked
     bool motionExecuted = false;
     if (checkFrom < m_keys.size()) {
-        for (int i = 0; i < m_motions.size(); i++) {
+        for (size_t i = 0; i < m_motions.size(); i++) {
             const QString motion = m_keys.mid(checkFrom);
-            if (m_motions.at(i)->matches(motion)) {
+            if (m_motions.at(i).matches(motion)) {
                 m_lastMotionWasLinewiseInnerBlock = false;
                 m_matchingMotions.push_back(i);
 
                 // if it matches exact, we have found the motion command to execute
-                if (m_motions.at(i)->matchesExact(motion)) {
+                if (m_motions.at(i).matchesExact(motion)) {
                     m_currentMotionWasVisualLineUpOrDown = false;
                     motionExecuted = true;
                     if (checkFrom == 0) {
                         // no command given before motion, just move the cursor to wherever
                         // the motion says it should go to
-                        Range r = m_motions.at(i)->execute();
-                        m_motionCanChangeWholeVisualModeSelection = m_motions.at(i)->canChangeWholeVisualModeSelection();
+                        Range r = m_motions.at(i).execute();
+                        m_motionCanChangeWholeVisualModeSelection = m_motions.at(i).canChangeWholeVisualModeSelection();
 
-                        if (!m_motions.at(i)->canLandInsideFoldingRange()) {
+                        if (!m_motions.at(i).canLandInsideFoldingRange()) {
                             // jump over folding regions since we are just moving the cursor
                             // except for motions that can end up inside ranges (e.g. n/N, f/F, %, #)
                             int currLine = m_view->cursorPosition().line();
@@ -324,8 +322,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         // execute the specified command and supply the position returned from
                         // the motion
 
-                        m_commandRange = m_motions.at(i)->execute();
-                        m_linewiseCommand = m_motions.at(i)->isLineWise();
+                        m_commandRange = m_motions.at(i).execute();
+                        m_linewiseCommand = m_motions.at(i).isLineWise();
 
                         // if we didn't get an explicit start position, use the current cursor position
                         if (m_commandRange.startLine == -1) {
@@ -337,7 +335,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         // special case: When using the "w" motion in combination with an operator and
                         // the last word moved over is at the end of a line, the end of that word
                         // becomes the end of the operated text, not the first word in the next line.
-                        if (m_motions.at(i)->pattern() == QLatin1String("w") || m_motions.at(i)->pattern() == QLatin1String("W")) {
+                        if (m_motions.at(i).pattern() == QLatin1String("w") || m_motions.at(i).pattern() == QLatin1String("W")) {
                             if (m_commandRange.endLine != m_commandRange.startLine && m_commandRange.endColumn == getFirstNonBlank(m_commandRange.endLine)) {
                                 m_commandRange.endLine--;
                                 m_commandRange.endColumn = doc()->lineLength(m_commandRange.endLine);
@@ -347,7 +345,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         m_commandWithMotion = true;
 
                         if (m_commandRange.valid) {
-                            executeCommand(m_commands.at(m_motionOperatorIndex));
+                            executeCommand(&m_commands.at(m_motionOperatorIndex));
                         } else {
                             qCDebug(LOG_KTE) << "Invalid range: "
                                              << "from (" << m_commandRange.startLine << "," << m_commandRange.startColumn << ")"
@@ -381,16 +379,16 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     // if we have only one match, check if it is a perfect match and if so, execute it
     // if it's not waiting for a motion or a text object
     if (m_matchingCommands.size() == 1) {
-        if (m_commands.at(m_matchingCommands.at(0))->matchesExact(m_keys) && !m_commands.at(m_matchingCommands.at(0))->needsMotion()) {
+        if (m_commands.at(m_matchingCommands.at(0)).matchesExact(m_keys) && !m_commands.at(m_matchingCommands.at(0)).needsMotion()) {
             if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
                 m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
             }
 
-            Command *cmd = m_commands.at(m_matchingCommands.at(0));
-            executeCommand(cmd);
+            Command &cmd = m_commands.at(m_matchingCommands.at(0));
+            executeCommand(&cmd);
 
             // check if reset() should be called. some commands in visual mode should not end visual mode
-            if (cmd->shouldReset()) {
+            if (cmd.shouldReset()) {
                 reset();
                 m_view->setBlockSelection(false);
             }

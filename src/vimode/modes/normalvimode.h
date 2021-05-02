@@ -10,13 +10,17 @@
 #ifndef KATEVI_NORMAL_VI_MODE_H
 #define KATEVI_NORMAL_VI_MODE_H
 
+#include <vimode/command.h>
 #include <vimode/modes/modebase.h>
+#include <vimode/motion.h>
 #include <vimode/range.h>
 
 #include <QHash>
 #include <QRegularExpression>
 #include <QStack>
 #include <QVector>
+
+#include <vector>
 
 #include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
@@ -26,8 +30,6 @@ class KateViInputMode;
 
 namespace KateVi
 {
-class Command;
-class Motion;
 class KeyParser;
 class InputModeManager;
 
@@ -336,8 +338,8 @@ protected:
     int m_motionOperatorIndex;
     int m_scroll_count_limit;
 
-    QVector<Command *> m_commands;
-    QVector<Motion *> m_motions;
+    std::vector<Command> m_commands;
+    std::vector<Motion> m_motions;
     QVector<int> m_matchingCommands;
     QVector<int> m_matchingMotions;
     QStack<int> m_awaitingMotionOrTextObject;

@@ -22,11 +22,6 @@ ReplaceViMode::ReplaceViMode(InputModeManager *viInputModeManager, KTextEditor::
     m_count = 1;
 }
 
-ReplaceViMode::~ReplaceViMode()
-{
-    /* There's nothing to do here. */
-}
-
 bool ReplaceViMode::commandInsertFromLine(int offset)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());

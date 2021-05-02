@@ -39,13 +39,8 @@ class KTEXTEDITOR_EXPORT ModeBase : public QObject
     Q_OBJECT
 
 public:
-    ModeBase()
-        : QObject()
-    {
-    }
-    virtual ~ModeBase()
-    {
-    }
+    ModeBase() = default;
+    virtual ~ModeBase() = default;
 
     /**
      * @return normal mode command accumulated so far
