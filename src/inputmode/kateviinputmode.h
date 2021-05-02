@@ -7,6 +7,8 @@
 #ifndef KATE_VI_INPUT_MODE_H
 #define KATE_VI_INPUT_MODE_H
 
+#include <memory>
+
 #include "kateabstractinputmode.h"
 
 namespace KateVi
@@ -23,8 +25,6 @@ class KTEXTEDITOR_EXPORT KateViInputMode : public KateAbstractInputMode
     friend KateViInputModeFactory;
 
 public:
-    ~KateViInputMode() override;
-
     KTextEditor::View::ViewMode viewMode() const override;
     QString viewModeHuman() const override;
     KTextEditor::View::InputMode viewInputMode() const override;
@@ -76,7 +76,7 @@ public:
     }
     inline KateVi::InputModeManager *viInputModeManager() const
     {
-        return m_viModeManager;
+        return m_viModeManager.get();
     }
     inline bool isActive() const
     {
@@ -85,7 +85,6 @@ public:
     void setCaretStyle(const KateRenderer::caretStyles caret);
 
 private:
-    KateVi::InputModeManager *m_viModeManager;
     KateVi::EmulatedCommandBar *m_viModeEmulatedCommandBar;
     KateVi::GlobalState *m_viGlobal;
     KateRenderer::caretStyles m_caret;
@@ -95,6 +94,8 @@ private:
     // configs
     bool m_relLineNumbers;
     bool m_activated;
+
+    std::unique_ptr<KateVi::InputModeManager> m_viModeManager;
 };
 
 #endif

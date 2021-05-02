@@ -30,7 +30,7 @@ protected:
     KateAbstractInputMode(KateViewInternal *);
 
 public:
-    virtual ~KateAbstractInputMode();
+    virtual ~KateAbstractInputMode() = default;
 
     virtual KTextEditor::View::ViewMode viewMode() const = 0;
     virtual QString viewModeHuman() const = 0;

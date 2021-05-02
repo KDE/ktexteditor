@@ -7,10 +7,6 @@
 #include "kateabstractinputmode.h"
 #include "kateviewinternal.h"
 
-KateAbstractInputMode::~KateAbstractInputMode()
-{
-}
-
 KateAbstractInputMode::KateAbstractInputMode(KateViewInternal *viewInternal)
     : m_viewInternal(viewInternal)
     , m_view(viewInternal->view())

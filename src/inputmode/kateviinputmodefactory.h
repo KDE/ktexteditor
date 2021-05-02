@@ -7,6 +7,8 @@
 #ifndef KATE_VI_INPUT_MODE_FACTORY_H
 #define KATE_VI_INPUT_MODE_FACTORY_H
 
+#include <memory>
+
 #include "kateabstractinputmodefactory.h"
 
 namespace KateVi
@@ -22,7 +24,6 @@ class KateViInputModeFactory : public KateAbstractInputModeFactory
 public:
     KateViInputModeFactory();
 
-    ~KateViInputModeFactory() override;
     KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal) override;
 
     QString name() override;
@@ -31,7 +32,7 @@ public:
     KateConfigPage *createConfigPage(QWidget *) override;
 
 private:
-    KateVi::GlobalState *m_viGlobal;
+    std::unique_ptr<KateVi::GlobalState> m_viGlobal;
 };
 
 #endif

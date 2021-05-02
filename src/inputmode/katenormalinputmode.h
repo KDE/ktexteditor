@@ -7,6 +7,8 @@
 #ifndef KATE_NORMAL_INPUT_MODE_H
 #define KATE_NORMAL_INPUT_MODE_H
 
+#include <memory>
+
 #include "kateabstractinputmode.h"
 
 class KateNormalInputModeFactory;
@@ -19,8 +21,6 @@ class KateNormalInputMode : public KateAbstractInputMode
     friend KateNormalInputModeFactory;
 
 public:
-    ~KateNormalInputMode() override;
-
     KTextEditor::View::ViewMode viewMode() const override;
     QString viewModeHuman() const override;
     KTextEditor::View::InputMode viewInputMode() const override;
@@ -85,7 +85,7 @@ private:
      */
     bool hasSearchBar() const
     {
-        return m_searchBar;
+        return m_searchBar.get();
     }
 
     /**
@@ -95,8 +95,8 @@ private:
     KateCommandLineBar *cmdLineBar();
 
 private:
-    KateSearchBar *m_searchBar;
-    KateCommandLineBar *m_cmdLine;
+    std::unique_ptr<KateSearchBar> m_searchBar;
+    std::unique_ptr<KateCommandLineBar> m_cmdLine;
 };
 
 #endif

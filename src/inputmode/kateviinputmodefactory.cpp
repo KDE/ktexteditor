@@ -18,14 +18,9 @@ KateViInputModeFactory::KateViInputModeFactory()
 {
 }
 
-KateViInputModeFactory::~KateViInputModeFactory()
-{
-    delete m_viGlobal;
-}
-
 KateAbstractInputMode *KateViInputModeFactory::createInputMode(KateViewInternal *viewInternal)
 {
-    return new KateViInputMode(viewInternal, m_viGlobal);
+    return new KateViInputMode(viewInternal, m_viGlobal.get());
 }
 
 KateConfigPage *KateViInputModeFactory::createConfigPage(QWidget *parent)

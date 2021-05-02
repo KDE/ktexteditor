@@ -56,15 +56,10 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalS
     , m_viGlobal(global)
     , m_caret(KateRenderer::Block)
     , m_nextKeypressIsOverriddenShortCut(false)
+    , m_relLineNumbers(KateViewConfig::global()->viRelativeLineNumbers())
     , m_activated(false)
+    , m_viModeManager(new KateVi::InputModeManager(this, view(), viewInternal))
 {
-    m_relLineNumbers = KateViewConfig::global()->viRelativeLineNumbers();
-    m_viModeManager = new KateVi::InputModeManager(this, view(), viewInternal);
-}
-
-KateViInputMode::~KateViInputMode()
-{
-    delete m_viModeManager;
 }
 
 void KateViInputMode::activate()
@@ -99,11 +94,12 @@ void KateViInputMode::reset()
         m_viModeEmulatedCommandBar->hideMe();
     }
 
-    delete m_viModeManager;
-    m_viModeManager = new KateVi::InputModeManager(this, view(), viewInternal());
+    // ensure first the old stuff is deleted and then the new manager is constructed
+    m_viModeManager.reset();
+    m_viModeManager.reset(new KateVi::InputModeManager(this, view(), viewInternal()));
 
     if (m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar->setViInputModeManager(m_viModeManager);
+        m_viModeEmulatedCommandBar->setViInputModeManager(m_viModeManager.get());
     }
 }
 
@@ -255,7 +251,7 @@ void KateViInputMode::showViModeEmulatedCommandBar()
 KateVi::EmulatedCommandBar *KateViInputMode::viModeEmulatedCommandBar()
 {
     if (!m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar = new KateVi::EmulatedCommandBar(this, m_viModeManager, view());
+        m_viModeEmulatedCommandBar = new KateVi::EmulatedCommandBar(this, m_viModeManager.get(), view());
         m_viModeEmulatedCommandBar->hide();
     }
 

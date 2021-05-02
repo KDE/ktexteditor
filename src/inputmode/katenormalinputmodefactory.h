@@ -12,9 +12,7 @@
 class KateNormalInputModeFactory : public KateAbstractInputModeFactory
 {
 public:
-    KateNormalInputModeFactory();
-
-    ~KateNormalInputModeFactory() override;
+    KateNormalInputModeFactory() = default;
     KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal) override;
 
     QString name() override;

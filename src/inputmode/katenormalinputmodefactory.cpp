@@ -9,15 +9,6 @@
 
 #include <KLocalizedString>
 
-KateNormalInputModeFactory::KateNormalInputModeFactory()
-    : KateAbstractInputModeFactory()
-{
-}
-
-KateNormalInputModeFactory::~KateNormalInputModeFactory()
-{
-}
-
 KateAbstractInputMode *KateNormalInputModeFactory::createInputMode(KateViewInternal *viewInternal)
 {
     return new KateNormalInputMode(viewInternal);

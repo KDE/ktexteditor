@@ -16,15 +16,7 @@
 
 KateNormalInputMode::KateNormalInputMode(KateViewInternal *viewInternal)
     : KateAbstractInputMode(viewInternal)
-    , m_searchBar(nullptr)
-    , m_cmdLine(nullptr)
 {
-}
-
-KateNormalInputMode::~KateNormalInputMode()
-{
-    delete m_cmdLine;
-    delete m_searchBar;
 }
 
 void KateNormalInputMode::activate()
@@ -171,7 +163,7 @@ KateSearchBar *KateNormalInputMode::searchBar(const SearchBarMode mode)
 
     // create search bar is not there? use right mode
     if (!m_searchBar) {
-        m_searchBar = new KateSearchBar(wantPowerMode, view(), KateViewConfig::global());
+        m_searchBar.reset(new KateSearchBar(wantPowerMode, view(), KateViewConfig::global()));
     }
 
     // else: switch mode if needed!
@@ -183,17 +175,17 @@ KateSearchBar *KateNormalInputMode::searchBar(const SearchBarMode mode)
         }
     }
 
-    return m_searchBar;
+    return m_searchBar.get();
 }
 
 KateCommandLineBar *KateNormalInputMode::cmdLineBar()
 {
     if (!m_cmdLine) {
-        m_cmdLine = new KateCommandLineBar(view(), view()->bottomViewBar());
-        view()->bottomViewBar()->addBarWidget(m_cmdLine);
+        m_cmdLine.reset(new KateCommandLineBar(view(), view()->bottomViewBar()));
+        view()->bottomViewBar()->addBarWidget(m_cmdLine.get());
     }
 
-    return m_cmdLine;
+    return m_cmdLine.get();
 }
 
 void KateNormalInputMode::updateRendererConfig()
