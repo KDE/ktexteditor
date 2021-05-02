@@ -789,11 +789,11 @@ void KTextEditor::ViewPrivate::setupActions()
     auto switchInputModeAction = ac->action(QStringLiteral("switch_next_input_mode"));
     am->addAction(switchInputModeAction);
     am->addSeparator();
-    for (KateAbstractInputMode *mode : qAsConst(m_viewInternal->m_inputModes)) {
-        a = new QAction(mode->viewInputModeHuman(), m_inputModeActions);
+    for (const auto &mode : m_viewInternal->m_inputModes) {
+        a = new QAction(mode.second->viewInputModeHuman(), m_inputModeActions);
         am->addAction(a);
-        a->setWhatsThis(i18n("Activate/deactivate %1", mode->viewInputModeHuman()));
-        const InputMode im = mode->viewInputMode();
+        a->setWhatsThis(i18n("Activate/deactivate %1", mode.second->viewInputModeHuman()));
+        const InputMode im = mode.second->viewInputMode();
         a->setData(static_cast<int>(im));
         a->setCheckable(true);
         if (im == m_config->inputMode())
@@ -1402,12 +1402,13 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
         return;
     }
 
-    if (!m_viewInternal->m_inputModes.contains(mode)) {
+    const auto it = m_viewInternal->m_inputModes.find(mode);
+    if (it == m_viewInternal->m_inputModes.end()) {
         return;
     }
 
     m_viewInternal->m_currentInputMode->deactivate();
-    m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode];
+    m_viewInternal->m_currentInputMode = it->second.get();
     m_viewInternal->m_currentInputMode->activate();
 
     config()->setValue(KateViewConfig::InputMode,
@@ -1655,8 +1656,8 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     m_savedFoldingState = QJsonDocument::fromJson(config.readEntry("TextFolding", QByteArray()));
     applyFoldingState();
 
-    for (KateAbstractInputMode *mode : qAsConst(m_viewInternal->m_inputModes)) {
-        mode->readSessionConfig(config);
+    for (const auto &mode : m_viewInternal->m_inputModes) {
+        mode.second->readSessionConfig(config);
     }
 }
 
@@ -1675,8 +1676,8 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     config.writeEntry("TextFolding", m_savedFoldingState.toJson(QJsonDocument::Compact));
     m_savedFoldingState = QJsonDocument();
 
-    for (KateAbstractInputMode *mode : qAsConst(m_viewInternal->m_inputModes)) {
-        mode->writeSessionConfig(config);
+    for (const auto &mode : m_viewInternal->m_inputModes) {
+        mode.second->writeSessionConfig(config);
     }
 }
 
@@ -1984,8 +1985,8 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     m_viewInternal->setAutoCenterLines(config()->autoCenterLines());
 
-    for (KateAbstractInputMode *input : qAsConst(m_viewInternal->m_inputModes)) {
-        input->updateConfig();
+    for (const auto &input : m_viewInternal->m_inputModes) {
+        input.second->updateConfig();
     }
 
     setInputMode(config()->inputMode());

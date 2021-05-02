@@ -141,12 +141,12 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(nullptr)
 {
-    const QList<KateAbstractInputModeFactory *> factories = KTextEditor::EditorPrivate::self()->inputModeFactories();
-    for (KateAbstractInputModeFactory *factory : factories) {
+    // setup input modes
+    for (auto factory : KTextEditor::EditorPrivate::self()->inputModeFactories()) {
         KateAbstractInputMode *m = factory->createInputMode(this);
-        m_inputModes.insert(m->viewInputMode(), m);
+        m_inputModes.emplace(m->viewInputMode(), m);
     }
-    m_currentInputMode = m_inputModes[KTextEditor::View::NormalInputMode]; // TODO: twisted, but needed
+    m_currentInputMode = m_inputModes[KTextEditor::View::NormalInputMode].get();
 
     setMinimumSize(0, 0);
     setAttribute(Qt::WA_OpaquePaintEvent);
@@ -286,8 +286,6 @@ KateViewInternal::~KateViewInternal()
     // kill preedit ranges
     delete m_imPreeditRange;
     qDeleteAll(m_imPreeditRangeChildren);
-
-    qDeleteAll(m_inputModes);
 
     // delete bracket markers
     delete m_bm;

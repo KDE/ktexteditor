@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QWidget>
 
+#include <map>
 #include <memory>
 
 namespace KTextEditor
@@ -465,7 +466,7 @@ private:
 
     // input modes
 private:
-    QMap<KTextEditor::View::InputMode, KateAbstractInputMode *> m_inputModes;
+    std::map<KTextEditor::View::InputMode, std::unique_ptr<KateAbstractInputMode>> m_inputModes;
     KateAbstractInputMode *m_currentInputMode;
 
     KateInlineNoteData m_activeInlineNote;
