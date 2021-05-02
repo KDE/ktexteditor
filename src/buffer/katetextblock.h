@@ -89,7 +89,7 @@ public:
      */
     int lines() const
     {
-        return m_lines.size();
+        return static_cast<int>(m_lines.size());
     }
 
     /**
