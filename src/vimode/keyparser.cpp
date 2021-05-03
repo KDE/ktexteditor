@@ -508,8 +508,6 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
         c = keys.at(i);
         if (insideTag) {
             if (c == QLatin1Char('>')) {
-                QString temp;
-                temp.setNum(0xE000 + keyCodeTemp, 16);
                 QChar code(0xE000 + keyCodeTemp);
                 encodedSequence.append(code);
                 keyCodeTemp = 0;
