@@ -20,7 +20,7 @@ class VariableLineEdit : public QWidget
 
 public:
     explicit VariableLineEdit(QWidget *parent = nullptr);
-    virtual ~VariableLineEdit();
+    ~VariableLineEdit() override = default;
 
     void addKateItems(VariableListView *listview);
     QString text();
@@ -35,10 +35,10 @@ Q_SIGNALS:
     void textChanged(const QString &);
 
 private:
-    QFrame *m_popup;
-    QLineEdit *m_lineedit;
-    QToolButton *m_button;
-    VariableListView *m_listview;
+    std::unique_ptr<QFrame> m_popup;
+    QLineEdit *m_lineedit = nullptr;
+    QToolButton *m_button = nullptr;
+    VariableListView *m_listview = nullptr;
 };
 
 #endif

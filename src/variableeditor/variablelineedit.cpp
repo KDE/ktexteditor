@@ -33,8 +33,6 @@
 VariableLineEdit::VariableLineEdit(QWidget *parent)
     : QWidget(parent)
 {
-    m_listview = nullptr;
-
     QHBoxLayout *hl = new QHBoxLayout(this);
     hl->setContentsMargins(0, 0, 0, 0);
 
@@ -46,9 +44,9 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
     hl->addWidget(m_lineedit);
     hl->addWidget(m_button);
 
-    m_popup = new QFrame(nullptr, Qt::Popup);
+    m_popup.reset(new QFrame(nullptr, Qt::Popup));
     m_popup->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
-    QVBoxLayout *l = new QVBoxLayout(m_popup);
+    QVBoxLayout *l = new QVBoxLayout(m_popup.get());
     l->setSpacing(0);
     l->setContentsMargins(0, 0, 0, 0);
 
@@ -59,13 +57,9 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
     connect(m_button, &QToolButton::clicked, this, &VariableLineEdit::editVariables);
 }
 
-VariableLineEdit::~VariableLineEdit()
-{
-}
-
 void VariableLineEdit::editVariables()
 {
-    m_listview = new VariableListView(m_lineedit->text(), m_popup);
+    m_listview = new VariableListView(m_lineedit->text(), m_popup.get());
     addKateItems(m_listview);
     connect(m_listview, &VariableListView::aboutToHide, this, &VariableLineEdit::updateVariableLine);
 
@@ -87,6 +81,8 @@ void VariableLineEdit::editVariables()
 
 void VariableLineEdit::updateVariableLine()
 {
+    Q_ASSERT(m_listview);
+
     QString variables = m_listview->variableLine();
     m_lineedit->setText(variables);
 
