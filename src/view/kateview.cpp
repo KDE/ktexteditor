@@ -1114,6 +1114,11 @@ void KTextEditor::ViewPrivate::setupEditActions()
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::transpose);
         m_editActions.push_back(a);
 
+        a = ac->addAction(QStringLiteral("transpose_word"));
+        a->setText(i18n("Transpose Words"));
+        connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::transposeWord);
+        m_editActions.push_back(a);
+
         a = ac->addAction(QStringLiteral("delete_line"));
         a->setText(i18n("Delete Line"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_K));
@@ -2935,6 +2940,56 @@ void KTextEditor::ViewPrivate::deleteWordRight()
 void KTextEditor::ViewPrivate::transpose()
 {
     doc()->transpose(cursorPosition());
+}
+
+void KTextEditor::ViewPrivate::transposeWord()
+{
+    const KTextEditor::Cursor originalCurPos = cursorPosition();
+    const KTextEditor::Range firstWord = doc()->wordRangeAt(originalCurPos);
+    if (!firstWord.isValid()) {
+        return;
+    }
+
+    auto wordIsInvalid = [](QStringView word) {
+        for (const QChar &character : word) {
+            if (character.isLetterOrNumber()) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    if (wordIsInvalid(doc()->text(firstWord))) {
+        return;
+    }
+
+    setCursorPosition(firstWord.end());
+    wordRight();
+    KTextEditor::Cursor curPos = cursorPosition();
+    // swap with the word to the right if it exists, otherwise try to swap with word to the left
+    if (curPos.line() != firstWord.end().line() || curPos.column() == firstWord.end().column()) {
+        setCursorPosition(firstWord.start());
+        wordLeft();
+        curPos = cursorPosition();
+        // if there is still no next word in this line, no swapping will be done
+        if (curPos.line() != firstWord.start().line() || curPos.column() == firstWord.start().column() || wordIsInvalid(doc()->wordAt(curPos))) {
+            setCursorPosition(originalCurPos);
+            return;
+        }
+    }
+
+    if (wordIsInvalid(doc()->wordAt(curPos))) {
+        setCursorPosition(originalCurPos);
+        return;
+    }
+
+    const KTextEditor::Range secondWord = doc()->wordRangeAt(curPos);
+    doc()->swapTextRanges(firstWord, secondWord);
+
+    // return cursor to its original position inside the word before swap
+    // after the swap, the cursor will be at the end of the word, so we compute the position relative to the end of the word
+    const int offsetFromWordEnd = firstWord.end().column() - originalCurPos.column();
+    setCursorPosition(cursorPosition() - KTextEditor::Cursor(0, offsetFromWordEnd));
 }
 
 void KTextEditor::ViewPrivate::cursorLeft()

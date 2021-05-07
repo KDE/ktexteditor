@@ -548,6 +548,14 @@ public Q_SLOTS:
      * @see KTextEditor::DocumentPrivate::transpose
      */
     void transpose();
+
+    /**
+     * Transpose the word at the current cursor position with the word to the right (or to the left for RTL layouts).
+     * If the word is the last in the line, try swapping with the previous word instead.
+     * If the word is the only one in the line, no swapping is done.
+     * @see KTextEditor::DocumentPrivate::swapTextRanges
+     */
+    void transposeWord();
     void cursorLeft();
     void shiftCursorLeft();
     void cursorRight();

@@ -844,6 +844,7 @@ public:
     void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void transpose(const KTextEditor::Cursor &);
+    void swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord);
     void paste(KTextEditor::ViewPrivate *view, const QString &text);
 
 public:

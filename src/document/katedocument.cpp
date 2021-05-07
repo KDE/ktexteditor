@@ -3286,6 +3286,25 @@ void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor &cursor)
     editEnd();
 }
 
+void KTextEditor::DocumentPrivate::swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord)
+{
+    Q_ASSERT(firstWord.isValid() && secondWord.isValid());
+    Q_ASSERT(!firstWord.overlaps(secondWord));
+    // ensure that secondWord comes AFTER firstWord
+    if (firstWord.start().column() > secondWord.start().column() || firstWord.start().line() > secondWord.start().line()) {
+        const KTextEditor::Range tempRange = firstWord;
+        firstWord.setRange(secondWord);
+        secondWord.setRange(tempRange);
+    }
+
+    const QString tempString = text(secondWord);
+    editStart();
+    // edit secondWord first as the range might be invalidated after editing firstWord
+    replaceText(secondWord, text(firstWord));
+    replaceText(firstWord, tempString);
+    editEnd();
+}
+
 void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
