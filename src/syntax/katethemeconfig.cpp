@@ -1189,6 +1189,7 @@ void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString 
     schemaCombo->clear();
     defaultSchemaCombo->clear();
     defaultSchemaCombo->addItem(i18n("Automatic Selection"), QString());
+    defaultSchemaCombo->insertSeparator(1);
     const auto themes = KateHlManager::self()->sortedThemes();
     for (const auto &theme : themes) {
         schemaCombo->addItem(theme.translatedName(), theme.name());
