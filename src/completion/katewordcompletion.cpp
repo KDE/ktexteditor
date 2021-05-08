@@ -226,33 +226,7 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
 
 void KateWordCompletionModel::executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
 {
-    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *>(view);
-    if (v->config()->wordCompletionRemoveTail()) {
-        int tailStart = word.end().column();
-        const QString &line = view->document()->line(word.end().line());
-        int tailEnd = line.length();
-        for (int i = word.end().column(); i < tailEnd; ++i) {
-            // Letters, numbers and underscore are part of a word!
-            /// \todo Introduce configurable \e word-separators??
-            if (!line[i].isLetterOrNumber() && line[i] != QLatin1Char('_')) {
-                tailEnd = i;
-            }
-        }
-
-        int sizeDiff = m_matches.at(index.row()).size() - (word.end().column() - word.start().column());
-
-        tailStart += sizeDiff;
-        tailEnd += sizeDiff;
-
-        KTextEditor::Range tail(KTextEditor::Cursor(word.start().line(), tailStart), KTextEditor::Cursor(word.end().line(), tailEnd));
-
-        view->document()->replaceText(word, m_matches.at(index.row()));
-        v->doc()->editEnd();
-        v->doc()->editStart();
-        view->document()->replaceText(tail, QString());
-    } else {
-        view->document()->replaceText(word, m_matches.at(index.row()));
-    }
+    view->document()->replaceText(word, m_matches.at(index.row()));
 }
 
 KTextEditor::CodeCompletionModelControllerInterface::MatchReaction KateWordCompletionModel::matchingItem(const QModelIndex & /*matched*/)
@@ -267,25 +241,6 @@ bool KateWordCompletionModel::shouldHideItemsWithEqualNames() const
     return true;
 }
 
-// Return the range containing the word left of the cursor
-KTextEditor::Range KateWordCompletionModel::completionRange(KTextEditor::View *view, const KTextEditor::Cursor &position)
-{
-    int line = position.line();
-    int col = position.column();
-
-    KTextEditor::Document *doc = view->document();
-    while (col > 0) {
-        const QChar c = (doc->characterAt(KTextEditor::Cursor(line, col - 1)));
-        if (c.isLetterOrNumber() || c.isMark() || c == QLatin1Char('_')) {
-            col--;
-            continue;
-        }
-
-        break;
-    }
-
-    return KTextEditor::Range(KTextEditor::Cursor(line, col), position);
-}
 // END KateWordCompletionModel
 
 // BEGIN KateWordCompletionView

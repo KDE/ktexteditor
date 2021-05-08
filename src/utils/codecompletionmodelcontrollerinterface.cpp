@@ -9,6 +9,7 @@
 #include <QModelIndex>
 #include <QRegularExpression>
 
+#include <kateconfig.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
@@ -39,11 +40,14 @@ bool CodeCompletionModelControllerInterface::shouldStartCompletion(View *view, c
 Range CodeCompletionModelControllerInterface::completionRange(View *view, const Cursor &position)
 {
     Cursor end = position;
+    const int line = end.line();
 
-    QString text = view->document()->line(end.line());
+    // TODO KF6 make this a QStringView
+    const QString text = view->document()->line(line);
 
-    static const QRegularExpression findWordStart(QStringLiteral("\\b[_\\w]+$"), QRegularExpression::UseUnicodePropertiesOption);
-    static const QRegularExpression findWordEnd(QStringLiteral("^[_\\w]*\\b"), QRegularExpression::UseUnicodePropertiesOption);
+    static constexpr auto options = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::DontCaptureOption;
+    static const QRegularExpression findWordStart(QStringLiteral("\\b[_\\w]+$"), options);
+    static const QRegularExpression findWordEnd(QStringLiteral("^[_\\w]*\\b"), options);
 
     Cursor start = end;
 
@@ -52,13 +56,19 @@ Range CodeCompletionModelControllerInterface::completionRange(View *view, const 
         start.setColumn(pos);
     }
 
-    QRegularExpressionMatch match;
-    pos = text.mid(end.column()).indexOf(findWordEnd, 0, &match);
-    if (pos >= 0) {
-        end.setColumn(end.column() + match.capturedLength());
-    }
+    if (!KateViewConfig::global()->wordCompletionRemoveTail()) {
+        // We are not removing tail, range only contains the word left of the cursor
+        return Range(start, position);
+    } else {
+        // Removing tail, find the word end
+        QRegularExpressionMatch match;
+        pos = text.mid(end.column()).indexOf(findWordEnd, 0, &match);
+        if (pos >= 0) {
+            end.setColumn(end.column() + match.capturedLength());
+        }
 
-    return Range(start, end);
+        return Range(start, end);
+    }
 }
 
 Range CodeCompletionModelControllerInterface::updateCompletionRange(View *view, const Range &range)

@@ -87,7 +87,11 @@ public:
      * replaced when executing the completion
      *
      * The default implementation will work for most languages that don't have
-     * special chars in identifiers.
+     * special chars in identifiers. Since 5.83 the default implementation takes
+     * into account the wordCompletionRemoveTail configuration option, if that
+     * option is enabled the whole word the cursor is inside is replaced with the
+     * completion, however if it's disabled only the text on the left of the cursor
+     * will be replaced with the completion.
      *
      * \param view The view to generate completions for
      * \param position Current cursor position

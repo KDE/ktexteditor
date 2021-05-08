@@ -52,8 +52,6 @@ public:
     QModelIndex parent(const QModelIndex &index) const override;
     MatchReaction matchingItem(const QModelIndex &matched) override;
 
-    KTextEditor::Range completionRange(KTextEditor::View *view, const KTextEditor::Cursor &position) override;
-
     bool shouldHideItemsWithEqualNames() const override;
 
     QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const;
