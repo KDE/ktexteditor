@@ -442,7 +442,7 @@ public:
     bool textHintsEnabled(); // not part of the interface
 
 private:
-    QVector<KTextEditor::TextHintProvider *> m_textHintProviders;
+    std::vector<KTextEditor::TextHintProvider *> m_textHintProviders;
     int m_textHintDelay;
     QPoint m_textHintPos;
 
@@ -454,7 +454,7 @@ public:
 
 private:
     KTextEditor::MovingRange *m_imPreeditRange;
-    QList<KTextEditor::MovingRange *> m_imPreeditRangeChildren;
+    std::vector<KTextEditor::MovingRange *> m_imPreeditRangeChildren;
 
 private:
     void mouseMoved();

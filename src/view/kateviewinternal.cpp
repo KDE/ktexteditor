@@ -3459,7 +3459,11 @@ void KateViewInternal::textHintTimeout()
     }
 
     QStringList textHints;
-    for (KTextEditor::TextHintProvider *const p : qAsConst(m_textHintProviders)) {
+    for (KTextEditor::TextHintProvider *const p : m_textHintProviders) {
+        if (!p) {
+            continue;
+        }
+
         const QString hint = p->textHint(m_view, c);
         if (!hint.isEmpty()) {
             textHints.append(hint);
@@ -3830,8 +3834,8 @@ void KateViewInternal::doDragScroll()
 
 void KateViewInternal::registerTextHintProvider(KTextEditor::TextHintProvider *provider)
 {
-    if (!m_textHintProviders.contains(provider)) {
-        m_textHintProviders.append(provider);
+    if (std::find(m_textHintProviders.cbegin(), m_textHintProviders.cend(), provider) != m_textHintProviders.cend()) {
+        m_textHintProviders.push_back(provider);
     }
 
     // we have a client, so start timeout
@@ -3840,12 +3844,12 @@ void KateViewInternal::registerTextHintProvider(KTextEditor::TextHintProvider *p
 
 void KateViewInternal::unregisterTextHintProvider(KTextEditor::TextHintProvider *provider)
 {
-    const int index = m_textHintProviders.indexOf(provider);
-    if (index >= 0) {
-        m_textHintProviders.removeAt(index);
+    const auto it = std::find(m_textHintProviders.cbegin(), m_textHintProviders.cend(), provider);
+    if (it != m_textHintProviders.cend()) {
+        m_textHintProviders.erase(it);
     }
 
-    if (m_textHintProviders.isEmpty()) {
+    if (m_textHintProviders.empty()) {
         m_textHintTimer.stop();
     }
 }
@@ -3866,7 +3870,7 @@ int KateViewInternal::textHintDelay() const
 
 bool KateViewInternal::textHintsEnabled()
 {
-    return !m_textHintProviders.isEmpty();
+    return !m_textHintProviders.empty();
 }
 
 // BEGIN EDIT STUFF
