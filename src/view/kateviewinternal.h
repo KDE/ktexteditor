@@ -291,7 +291,7 @@ private:
     int m_scrollX;
     int m_scrollY;
 
-    ZoomEventFilter *m_zoomEventFilter;
+    std::unique_ptr<ZoomEventFilter> m_zoomEventFilter;
 
     Qt::CursorShape m_mouseCursor;
 
@@ -306,8 +306,8 @@ private:
     QElapsedTimer m_altDownTime;
 
     // Bracket mark and corresponding decorative ranges
-    KTextEditor::MovingRange *m_bm, *m_bmStart, *m_bmEnd;
-    KTextEditor::MovingCursor *m_bmLastFlashPos;
+    std::unique_ptr<KTextEditor::MovingRange> m_bm, m_bmStart, m_bmEnd;
+    std::unique_ptr<KTextEditor::MovingCursor> m_bmLastFlashPos;
     std::unique_ptr<KateTextPreview> m_bmPreview;
     void updateBracketMarkAttributes();
 
@@ -453,8 +453,8 @@ public:
     QVariant inputMethodQuery(Qt::InputMethodQuery query) const override;
 
 private:
-    KTextEditor::MovingRange *m_imPreeditRange;
-    std::vector<KTextEditor::MovingRange *> m_imPreeditRangeChildren;
+    std::unique_ptr<KTextEditor::MovingRange> m_imPreeditRange;
+    std::vector<std::unique_ptr<KTextEditor::MovingRange>> m_imPreeditRangeChildren;
 
 private:
     void mouseMoved();

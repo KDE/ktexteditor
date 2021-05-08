@@ -240,7 +240,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 
     setAcceptDrops(true);
 
-    m_zoomEventFilter = new ZoomEventFilter();
+    m_zoomEventFilter.reset(new ZoomEventFilter());
     // event filter
     installEventFilter(this);
 
@@ -283,17 +283,6 @@ KateViewInternal::~KateViewInternal()
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::removeFactory(accessibleInterfaceFactory);
 #endif
-
-    // kill preedit ranges
-    delete m_imPreeditRange;
-    qDeleteAll(m_imPreeditRangeChildren);
-
-    // delete bracket markers
-    delete m_bm;
-    delete m_bmStart;
-    delete m_bmEnd;
-
-    delete m_zoomEventFilter;
 }
 
 void KateViewInternal::prepareForDynWrapChange()
@@ -4100,8 +4089,8 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
     // e->replacementStart() << "length" << e->replacementLength();
 
     if (!m_imPreeditRange) {
-        m_imPreeditRange =
-            doc()->newMovingRange(KTextEditor::Range(m_cursor, m_cursor), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+        m_imPreeditRange.reset(
+            doc()->newMovingRange(KTextEditor::Range(m_cursor, m_cursor), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight));
     }
 
     if (!m_imPreeditRange->toRange().isEmpty()) {
@@ -4143,9 +4132,7 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
     // Finished this input method context?
     if (m_imPreeditRange && e->preeditString().isEmpty()) {
         // delete the range and reset the pointer
-        delete m_imPreeditRange;
-        m_imPreeditRange = nullptr;
-        qDeleteAll(m_imPreeditRangeChildren);
+        m_imPreeditRange.reset();
         m_imPreeditRangeChildren.clear();
 
         if (QApplication::cursorFlashTime() > 0) {
@@ -4162,7 +4149,6 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
     QColor caretColor;
 
     if (m_imPreeditRange) {
-        qDeleteAll(m_imPreeditRangeChildren);
         m_imPreeditRangeChildren.clear();
 
         int decorationColumn = 0;
@@ -4178,17 +4164,18 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
 
             } else if (a.type == QInputMethodEvent::TextFormat) {
                 QTextCharFormat f = qvariant_cast<QTextFormat>(a.value).toCharFormat();
+
                 if (f.isValid() && decorationColumn <= a.start) {
-                    KTextEditor::Range fr(m_imPreeditRange->start().line(),
-                                          m_imPreeditRange->start().column() + a.start,
-                                          m_imPreeditRange->start().line(),
-                                          m_imPreeditRange->start().column() + a.start + a.length);
-                    KTextEditor::MovingRange *formatRange = doc()->newMovingRange(fr);
+                    const KTextEditor::MovingCursor &preEditRangeStart = m_imPreeditRange->start();
+                    const int startLine = preEditRangeStart.line();
+                    const int startCol = preEditRangeStart.column();
+                    KTextEditor::Range fr(startLine, startCol + a.start, startLine, startCol + a.start + a.length);
+                    std::unique_ptr<KTextEditor::MovingRange> formatRange(doc()->newMovingRange(fr));
                     KTextEditor::Attribute::Ptr attribute(new KTextEditor::Attribute());
                     attribute->merge(f);
                     formatRange->setAttribute(attribute);
                     decorationColumn = a.start + a.length;
-                    m_imPreeditRangeChildren.push_back(formatRange);
+                    m_imPreeditRangeChildren.push_back(std::move(formatRange));
                 }
             }
         }
