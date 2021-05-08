@@ -10,12 +10,11 @@
 #include <QObject>
 #include <QString>
 #include <QTimer>
-#include <QVector>
+#include <vector>
 
 namespace KTextEditor
 {
 class Document;
-class DocumentPrivate;
 class View;
 class ViewPrivate;
 class Range;
@@ -39,10 +38,7 @@ private Q_SLOTS:
     void recalculateLines();
 
 private:
-    int countWords(const QString &text) const;
-
-private:
-    QVector<int> m_countByLine;
+    std::vector<int> m_countByLine;
     int m_wordsInDocument, m_wordsInSelection;
     int m_charsInDocument, m_charsInSelection;
     QTimer m_timer;

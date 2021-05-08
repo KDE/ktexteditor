@@ -8,11 +8,6 @@
 #include "katedocument.h"
 #include "kateview.h"
 
-namespace
-{
-const int MaximumLinesToRecalculate = 100;
-}
-
 WordCounter::WordCounter(KTextEditor::ViewPrivate *view)
     : QObject(view)
     , m_wordsInDocument(0)
@@ -36,11 +31,11 @@ WordCounter::WordCounter(KTextEditor::ViewPrivate *view)
 
 void WordCounter::textInserted(KTextEditor::Document *, const KTextEditor::Range &range)
 {
-    const int startLine = range.start().line();
-    const int endLine = range.end().line();
-    int newLines = endLine - startLine;
+    auto startLine = m_countByLine.begin() + range.start().line();
+    auto endLine = m_countByLine.begin() + range.end().line();
+    size_t newLines = std::distance(startLine, endLine);
 
-    if (m_countByLine.count() == 0) { // was empty document before insert
+    if (m_countByLine.empty()) { // was empty document before insert
         newLines++;
     }
 
@@ -48,22 +43,22 @@ void WordCounter::textInserted(KTextEditor::Document *, const KTextEditor::Range
         m_countByLine.insert(startLine, newLines, -1);
     }
 
-    m_countByLine[endLine] = -1;
+    m_countByLine[range.end().line()] = -1;
     m_timer.start();
 }
 
 void WordCounter::textRemoved(KTextEditor::Document *, const KTextEditor::Range &range, const QString &)
 {
-    const int startLine = range.start().line();
-    const int endLine = range.end().line();
+    const auto startLine = m_countByLine.begin() + range.start().line();
+    const auto endLine = m_countByLine.begin() + range.end().line();
     const int removedLines = endLine - startLine;
 
     if (removedLines > 0) {
-        m_countByLine.remove(startLine, removedLines);
+        m_countByLine.erase(startLine, endLine);
     }
 
-    if (!m_countByLine.isEmpty()) {
-        m_countByLine[startLine] = -1;
+    if (!m_countByLine.empty()) {
+        m_countByLine[range.start().line()] = -1;
         m_timer.start();
     } else {
         Q_EMIT changed(0, 0, 0, 0);
@@ -72,8 +67,29 @@ void WordCounter::textRemoved(KTextEditor::Document *, const KTextEditor::Range 
 
 void WordCounter::recalculate(KTextEditor::Document *)
 {
-    m_countByLine = QVector<int>(m_document->lines(), -1);
+    m_countByLine = std::vector<int>(m_document->lines(), -1);
     m_timer.start();
+}
+
+static int countWords(const QString &text)
+{
+    int count = 0;
+    bool inWord = false;
+
+    for (const QChar c : text) {
+        if (c.isLetterOrNumber()) {
+            if (!inWord) {
+                inWord = true;
+            }
+        } else {
+            if (inWord) {
+                inWord = false;
+                count++;
+            }
+        }
+    }
+
+    return inWord ? count + 1 : count;
 }
 
 void WordCounter::selectionChanged(KTextEditor::View *view)
@@ -116,13 +132,14 @@ void WordCounter::selectionChanged(KTextEditor::View *view)
 
 void WordCounter::recalculateLines()
 {
-    if (m_startRecalculationFrom >= m_countByLine.size()) {
+    if ((size_t)m_startRecalculationFrom >= m_countByLine.size()) {
         m_startRecalculationFrom = 0;
     }
 
     int wordsCount = 0, charsCount = 0;
     int calculated = 0;
-    int i = m_startRecalculationFrom;
+    size_t i = m_startRecalculationFrom;
+    constexpr int MaximumLinesToRecalculate = 100;
 
     // stay in bounds, vector might be empty, even 0 is too large then
     while (i < m_countByLine.size()) {
@@ -142,7 +159,7 @@ void WordCounter::recalculateLines()
             i = 0;
         }
 
-        if (i == m_startRecalculationFrom) {
+        if (i == (size_t)m_startRecalculationFrom) {
             break;
         }
     }
@@ -150,25 +167,4 @@ void WordCounter::recalculateLines()
     m_wordsInDocument = wordsCount;
     m_charsInDocument = charsCount;
     Q_EMIT changed(m_wordsInDocument, m_wordsInSelection, m_charsInDocument, m_charsInSelection);
-}
-
-int WordCounter::countWords(const QString &text) const
-{
-    int count = 0;
-    bool inWord = false;
-
-    for (const QChar &c : text) {
-        if (c.isLetterOrNumber()) {
-            if (!inWord) {
-                inWord = true;
-            }
-        } else {
-            if (inWord) {
-                inWord = false;
-                count++;
-            }
-        }
-    }
-
-    return (inWord) ? count + 1 : count;
 }
