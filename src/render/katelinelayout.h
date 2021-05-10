@@ -27,7 +27,6 @@ class KateLineLayout : public QSharedData
 {
 public:
     explicit KateLineLayout(KateRenderer &renderer);
-    ~KateLineLayout();
 
     KTextEditor::DocumentPrivate *doc() const;
     void debugOutput() const;
@@ -100,7 +99,7 @@ private:
     int m_virtualLine;
     int m_shiftX;
 
-    QTextLayout *m_layout;
+    std::unique_ptr<QTextLayout> m_layout;
     QList<bool> m_dirtyList;
 
     bool m_layoutDirty;

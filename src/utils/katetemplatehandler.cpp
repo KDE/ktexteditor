@@ -434,7 +434,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
     // turn off expanding left/right for all ranges except @p current;
     // this prevents ranges from overlapping each other when they are adjacent
     auto dontExpandOthers = [this](const TemplateField &current) {
-        for (int i = 0; i < m_fields.size(); i++) {
+        for (size_t i = 0; i < m_fields.size(); i++) {
             if (current.range != m_fields.at(i).range) {
                 m_fields.at(i).range->setInsertBehaviors(MovingRange::DoNotExpand);
             } else {

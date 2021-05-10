@@ -28,11 +28,6 @@ KateLineLayout::KateLineLayout(KateRenderer &renderer)
 {
 }
 
-KateLineLayout::~KateLineLayout()
-{
-    delete m_layout;
-}
-
 void KateLineLayout::clear()
 {
     m_textLine = Kate::TextLine();
@@ -40,8 +35,7 @@ void KateLineLayout::clear()
     m_virtualLine = -1;
     m_shiftX = 0;
     // not touching dirty
-    delete m_layout;
-    m_layout = nullptr;
+    m_layout.reset();
     // not touching layout dirty
 }
 
@@ -114,14 +108,13 @@ bool KateLineLayout::isValid() const
 
 QTextLayout *KateLineLayout::layout() const
 {
-    return m_layout;
+    return m_layout.get();
 }
 
 void KateLineLayout::setLayout(QTextLayout *layout)
 {
-    if (m_layout != layout) {
-        delete m_layout;
-        m_layout = layout;
+    if (m_layout.get() != layout) {
+        m_layout.reset(layout);
     }
 
     m_layoutDirty = !m_layout;

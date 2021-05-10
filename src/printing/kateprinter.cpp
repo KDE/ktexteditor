@@ -35,7 +35,6 @@ class KatePrinterPrivate : public QObject
     Q_OBJECT
 public:
     KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = nullptr);
-    ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);
     void setColorScheme(const QString &scheme);
@@ -46,7 +45,7 @@ public Q_SLOTS:
 private:
     KTextEditor::ViewPrivate *m_view;
     KTextEditor::DocumentPrivate *m_doc;
-    PrintPainter *m_painter;
+    PrintPainter m_painter;
     static void readSettings(QPrinter *printer);
     static void writeSettings(QPrinter *printer);
 };
@@ -55,13 +54,8 @@ KatePrinterPrivate::KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextE
     : QObject()
     , m_view(view)
     , m_doc(doc)
-    , m_painter(new PrintPainter(m_doc, m_view))
+    , m_painter(m_doc, m_view)
 {
-}
-
-KatePrinterPrivate::~KatePrinterPrivate()
-{
-    delete m_painter;
 }
 
 bool KatePrinterPrivate::print(QPrinter *printer)
@@ -105,45 +99,44 @@ bool KatePrinterPrivate::print(QPrinter *printer)
     writeSettings(printer);
 
     // configure the painter
-    m_painter->setPrintGuide(kpts->printGuide());
-    m_painter->setPrintLineNumbers(kpts->printLineNumbers());
+    m_painter.setPrintGuide(kpts->printGuide());
+    m_painter.setPrintLineNumbers(kpts->printLineNumbers());
 
-    m_painter->setColorScheme(kpl->colorScheme());
-    m_painter->setUseBackground(kpl->useBackground());
-    m_painter->setUseBox(kpl->useBox());
-    m_painter->setBoxMargin(kpl->boxMargin());
-    m_painter->setBoxWidth(kpl->boxWidth());
-    m_painter->setBoxColor(kpl->boxColor());
+    m_painter.setColorScheme(kpl->colorScheme());
+    m_painter.setUseBackground(kpl->useBackground());
+    m_painter.setUseBox(kpl->useBox());
+    m_painter.setBoxMargin(kpl->boxMargin());
+    m_painter.setBoxWidth(kpl->boxWidth());
+    m_painter.setBoxColor(kpl->boxColor());
 
-    m_painter->setHeadersFont(kphf->font());
+    m_painter.setHeadersFont(kphf->font());
 
-    m_painter->setUseHeader(kphf->useHeader());
-    m_painter->setHeaderBackground(kphf->headerBackground());
-    m_painter->setHeaderForeground(kphf->headerForeground());
-    m_painter->setUseHeaderBackground(kphf->useHeaderBackground());
-    m_painter->setHeaderFormat(kphf->headerFormat());
+    m_painter.setUseHeader(kphf->useHeader());
+    m_painter.setHeaderBackground(kphf->headerBackground());
+    m_painter.setHeaderForeground(kphf->headerForeground());
+    m_painter.setUseHeaderBackground(kphf->useHeaderBackground());
+    m_painter.setHeaderFormat(kphf->headerFormat());
 
-    m_painter->setUseFooter(kphf->useFooter());
-    m_painter->setFooterBackground(kphf->footerBackground());
-    m_painter->setFooterForeground(kphf->footerForeground());
-    m_painter->setUseFooterBackground(kphf->useFooterBackground());
-    m_painter->setFooterFormat(kphf->footerFormat());
-
-    m_painter->paint(printer);
+    m_painter.setUseFooter(kphf->useFooter());
+    m_painter.setFooterBackground(kphf->footerBackground());
+    m_painter.setFooterForeground(kphf->footerForeground());
+    m_painter.setUseFooterBackground(kphf->useFooterBackground());
+    m_painter.setFooterFormat(kphf->footerFormat());
 
     delete printDialog;
+    m_painter.paint(printer);
 
     return true;
 }
 
 void KatePrinterPrivate::paint(QPrinter *printer)
 {
-    m_painter->paint(printer);
+    m_painter.paint(printer);
 }
 
 void KatePrinterPrivate::setColorScheme(const QString &scheme)
 {
-    m_painter->setColorScheme(scheme);
+    m_painter.setColorScheme(scheme);
 }
 
 void KatePrinterPrivate::writeSettings(QPrinter *printer)
@@ -165,7 +158,7 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
     KConfigGroup group(config, QStringLiteral("Kate Print Settings"));
     KConfigGroup margins(&group, QStringLiteral("Margins"));
 
-    qreal left, right, top, bottom;
+    qreal left{}, right{}, top{}, bottom{};
     left = margins.readEntry("left", left);
     top = margins.readEntry("top", top);
     right = margins.readEntry("right", right);

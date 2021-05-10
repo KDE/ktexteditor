@@ -7,8 +7,8 @@
 #ifndef VARIABLE_LIST_VIEW_H
 #define VARIABLE_LIST_VIEW_H
 
-#include <QMap>
 #include <QScrollArea>
+#include <map>
 
 class VariableItem;
 class VariableEditor;
@@ -35,10 +35,9 @@ protected:
 
     void parseVariables(const QString &line);
 
-    QVector<VariableItem *> m_items;
-    QVector<VariableEditor *> m_editors;
-
-    QMap<QString, QString> m_variables;
+    std::vector<VariableItem *> m_items;
+    std::vector<VariableEditor *> m_editors;
+    std::map<QString, QString> m_variables;
 };
 
 #endif

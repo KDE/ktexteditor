@@ -2168,10 +2168,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 KateIconBorder::BorderArea KateIconBorder::positionToArea(const QPoint &p) const
 {
     auto it = std::find_if(m_positionToArea.cbegin(), m_positionToArea.cend(), [p](const AreaPosition &ap) {
-        if (p.x() <= ap.first) {
-            return true;
-        }
-        return false;
+        return p.x() <= ap.first;
     });
     if (it != m_positionToArea.cend()) {
         return it->second;
@@ -2453,7 +2450,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     QMenu selectDefaultMark;
     auto selectDefaultMarkActionGroup = new QActionGroup(&selectDefaultMark);
 
-    QVector<int> vec(33);
+    std::vector<int> vec(33);
     int i = 1;
 
     for (uint bit = 0; bit < 32; bit++) {

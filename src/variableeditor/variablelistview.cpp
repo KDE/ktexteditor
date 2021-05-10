@@ -51,16 +51,17 @@ void VariableListView::parseVariables(const QString &line)
 void VariableListView::addItem(VariableItem *item)
 {
     // overwrite default value when variable exists in modeline
-    if (m_variables.contains(item->variable())) {
-        item->setValueByString(m_variables[item->variable()]);
+    auto it = m_variables.find(item->variable());
+    if (it != m_variables.end()) {
+        item->setValueByString(it->second);
         item->setActive(true);
     }
 
     VariableEditor *editor = item->createEditor(widget());
     editor->setBackgroundRole((m_editors.size() % 2) ? QPalette::AlternateBase : QPalette::Base);
 
-    m_editors << editor;
-    m_items << item;
+    m_editors.push_back(editor);
+    m_items.push_back(item);
 
     connect(editor, &VariableEditor::valueChanged, this, &VariableListView::changed);
 }
@@ -97,27 +98,23 @@ void VariableListView::hideEvent(QHideEvent *event)
 
 QString VariableListView::variableLine()
 {
-    for (int i = 0; i < m_items.size(); ++i) {
+    for (size_t i = 0; i < m_items.size(); ++i) {
         VariableItem *item = m_items[i];
 
         if (item->isActive()) {
             m_variables[item->variable()] = item->valueAsString();
-        } else if (m_variables.contains(item->variable())) {
-            m_variables.remove(item->variable());
+        } else {
+            m_variables.erase(item->variable());
         }
     }
 
     QString line;
-    QMap<QString, QString>::const_iterator it = m_variables.constBegin();
-    while (it != m_variables.constEnd()) {
+    for (const auto &var : m_variables) {
         if (!line.isEmpty()) {
             line += QLatin1Char(' ');
         }
-        line += it.key() + QLatin1Char(' ') + it.value() + QLatin1Char(';');
-
-        ++it;
+        line += var.first + QLatin1Char(' ') + var.second + QLatin1Char(';');
     }
-
     line.prepend(QLatin1String("kate: "));
 
     return line;

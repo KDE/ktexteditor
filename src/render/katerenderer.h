@@ -74,11 +74,6 @@ public:
      */
     explicit KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view = nullptr);
 
-    /**
-     * Destructor
-     */
-    ~KateRenderer();
-
     KateRenderer(const KateRenderer &) = delete;
     KateRenderer &operator=(const KateRenderer &) = delete;
 
@@ -464,13 +459,13 @@ private:
 public:
     inline KateRendererConfig *config() const
     {
-        return m_config;
+        return m_config.get();
     }
 
     void updateConfig();
 
 private:
-    KateRendererConfig *const m_config;
+    std::unique_ptr<KateRendererConfig> const m_config;
 
     /**
      * cached font, was perhaps adjusted for current DPIs

@@ -61,11 +61,6 @@ KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding 
     updateMarkerSize();
 }
 
-KateRenderer::~KateRenderer()
-{
-    delete m_config;
-}
-
 void KateRenderer::updateAttributes()
 {
     m_attributes = m_doc->highlight()->attributes(config()->schema());

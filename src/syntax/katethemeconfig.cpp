@@ -842,7 +842,7 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
     m_styles->setDisabled(m_hl == 0);
 
     QHash<QString, QTreeWidgetItem *> prefixes;
-    QVector<KTextEditor::Attribute::Ptr>::ConstIterator it = m_hlDict[m_schema][m_hl].constBegin();
+    auto it = m_hlDict[m_schema][m_hl].constBegin();
     int i = 0;
     while (it != m_hlDict[m_schema][m_hl].constEnd()) {
         const KTextEditor::Attribute::Ptr itemData = *it;
