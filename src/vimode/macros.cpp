@@ -11,13 +11,9 @@
 
 using namespace KateVi;
 
-Macros::Macros()
-{
-}
+Macros::Macros() = default;
 
-Macros::~Macros()
-{
-}
+Macros::~Macros() = default;
 
 void Macros::writeConfig(KConfigGroup &config) const
 {

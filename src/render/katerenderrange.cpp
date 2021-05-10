@@ -62,10 +62,6 @@ void mergeAttributes(KTextEditor::Attribute::Ptr base, KTextEditor::Attribute::P
     }
 }
 
-NormalRenderRange::NormalRenderRange()
-{
-}
-
 void NormalRenderRange::addRange(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute)
 {
     m_ranges.emplace_back(range, std::move(attribute));

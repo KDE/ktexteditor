@@ -11,13 +11,9 @@
 
 using namespace KTextEditor;
 
-MovingRange::MovingRange()
-{
-}
+MovingRange::MovingRange() = default;
 
-MovingRange::~MovingRange()
-{
-}
+MovingRange::~MovingRange() = default;
 
 void MovingRange::setRange(const Cursor &start, const Cursor &end)
 {

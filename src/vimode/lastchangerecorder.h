@@ -28,7 +28,6 @@ class LastChangeRecorder
 {
 public:
     explicit LastChangeRecorder(InputModeManager *viInputModeManager);
-    ~LastChangeRecorder();
 
     void record(const QKeyEvent &event);
     void dropLast();

@@ -21,10 +21,6 @@ KateUndo::KateUndo(KTextEditor::DocumentPrivate *document)
 {
 }
 
-KateUndo::~KateUndo()
-{
-}
-
 KateEditInsertTextUndo::KateEditInsertTextUndo(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text)
     : KateUndo(document)
     , m_line(line)

@@ -18,9 +18,7 @@ TextHistory::TextHistory(TextBuffer &buffer)
     clear();
 }
 
-TextHistory::~TextHistory()
-{
-}
+TextHistory::~TextHistory() = default;
 
 qint64 TextHistory::revision() const
 {

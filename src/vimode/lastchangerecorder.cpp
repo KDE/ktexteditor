@@ -29,10 +29,6 @@ LastChangeRecorder::LastChangeRecorder(InputModeManager *viInputModeManager)
 {
 }
 
-LastChangeRecorder::~LastChangeRecorder()
-{
-}
-
 void LastChangeRecorder::record(const QKeyEvent &e)
 {
     if (isRepeatOfLastShortcutOverrideAsKeyPress(e, m_changeLog))

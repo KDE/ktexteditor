@@ -62,10 +62,6 @@ VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)
     setMouseTracking(true);
 }
 
-VariableEditor::~VariableEditor()
-{
-}
-
 void VariableEditor::enterEvent(QEvent *event)
 {
     QWidget::enterEvent(event);

@@ -18,9 +18,7 @@ TextLineData::TextLineData(const QString &text)
 {
 }
 
-TextLineData::~TextLineData()
-{
-}
+TextLineData::~TextLineData() = default;
 
 int TextLineData::firstChar() const
 {

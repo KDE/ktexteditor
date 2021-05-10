@@ -19,9 +19,7 @@ Command::Command(NormalViMode *parent, const QString &pattern, bool (NormalViMod
     m_ptr2commandMethod = commandMethod;
 }
 
-Command::~Command()
-{
-}
+Command::~Command() = default;
 
 bool Command::execute() const
 {

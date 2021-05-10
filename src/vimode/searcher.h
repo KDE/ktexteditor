@@ -26,7 +26,6 @@ class Searcher
 {
 public:
     explicit Searcher(InputModeManager *viInputModeManager);
-    ~Searcher();
 
     /** Command part **/
     void findNext();

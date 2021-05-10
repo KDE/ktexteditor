@@ -20,7 +20,6 @@ public:
 
 public:
     explicit KateHelpButton(QWidget *parent = nullptr);
-    virtual ~KateHelpButton();
 
 public Q_SLOTS:
     void setIconState(IconState state);

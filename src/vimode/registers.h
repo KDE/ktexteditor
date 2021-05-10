@@ -32,9 +32,6 @@ const QChar InsertStoppedRegister = QLatin1Char('^');
 class Registers
 {
 public:
-    explicit Registers();
-    ~Registers();
-
     void writeConfig(KConfigGroup &config) const;
     void readConfig(const KConfigGroup &config);
 

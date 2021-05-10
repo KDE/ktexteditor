@@ -15,9 +15,7 @@ Document::Document(DocumentPrivate *impl, QObject *parent)
 {
 }
 
-Document::~Document()
-{
-}
+Document::~Document() = default;
 
 namespace KTextEditor
 {

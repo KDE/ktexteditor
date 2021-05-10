@@ -125,9 +125,7 @@ KateAutoIndent::KateAutoIndent(KTextEditor::DocumentPrivate *_doc)
     connect(KTextEditor::EditorPrivate::self()->scriptManager(), &KateScriptManager::reloaded, this, &KateAutoIndent::reloadScript);
 }
 
-KateAutoIndent::~KateAutoIndent()
-{
-}
+KateAutoIndent::~KateAutoIndent() = default;
 
 QString KateAutoIndent::tabString(int length, int align) const
 {

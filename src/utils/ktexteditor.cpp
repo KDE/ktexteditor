@@ -76,9 +76,7 @@ Editor::Editor(EditorPrivate *impl)
 {
 }
 
-Editor::~Editor()
-{
-}
+Editor::~Editor() = default;
 
 Editor *KTextEditor::Editor::instance()
 {
@@ -190,9 +188,7 @@ ConfigPage::ConfigPage(QWidget *parent)
 {
 }
 
-ConfigPage::~ConfigPage()
-{
-}
+ConfigPage::~ConfigPage() = default;
 
 QString ConfigPage::fullName() const
 {
@@ -211,9 +207,7 @@ View::View(ViewPrivate *impl, QWidget *parent)
 {
 }
 
-View::~View()
-{
-}
+View::~View() = default;
 
 Plugin::Plugin(QObject *parent)
     : QObject(parent)
@@ -221,9 +215,7 @@ Plugin::Plugin(QObject *parent)
 {
 }
 
-Plugin::~Plugin()
-{
-}
+Plugin::~Plugin() = default;
 
 int Plugin::configPages() const
 {
@@ -235,61 +227,33 @@ ConfigPage *Plugin::configPage(int, QWidget *)
     return nullptr;
 }
 
-MarkInterface::MarkInterface()
-{
-}
+MarkInterface::MarkInterface() = default;
 
-MarkInterface::~MarkInterface()
-{
-}
+MarkInterface::~MarkInterface() = default;
 
-ModificationInterface::ModificationInterface()
-{
-}
+ModificationInterface::ModificationInterface() = default;
 
-ModificationInterface::~ModificationInterface()
-{
-}
+ModificationInterface::~ModificationInterface() = default;
 
-SessionConfigInterface::SessionConfigInterface()
-{
-}
+SessionConfigInterface::SessionConfigInterface() = default;
 
-SessionConfigInterface::~SessionConfigInterface()
-{
-}
+SessionConfigInterface::~SessionConfigInterface() = default;
 
-TextHintInterface::TextHintInterface()
-{
-}
+TextHintInterface::TextHintInterface() = default;
 
-TextHintInterface::~TextHintInterface()
-{
-}
+TextHintInterface::~TextHintInterface() = default;
 
-TextHintProvider::TextHintProvider()
-{
-}
+TextHintProvider::TextHintProvider() = default;
 
-TextHintProvider::~TextHintProvider()
-{
-}
+TextHintProvider::~TextHintProvider() = default;
 
-InlineNoteInterface::InlineNoteInterface()
-{
-}
+InlineNoteInterface::InlineNoteInterface() = default;
 
-InlineNoteInterface::~InlineNoteInterface()
-{
-}
+InlineNoteInterface::~InlineNoteInterface() = default;
 
-InlineNoteProvider::InlineNoteProvider()
-{
-}
+InlineNoteProvider::InlineNoteProvider() = default;
 
-InlineNoteProvider::~InlineNoteProvider()
-{
-}
+InlineNoteProvider::~InlineNoteProvider() = default;
 
 KateInlineNoteData::KateInlineNoteData(KTextEditor::InlineNoteProvider *provider,
                                        const KTextEditor::View *view,

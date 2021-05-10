@@ -19,9 +19,7 @@ CompletionRecorder::CompletionRecorder(InputModeManager *viInputModeManager)
 {
 }
 
-CompletionRecorder::~CompletionRecorder()
-{
-}
+CompletionRecorder::~CompletionRecorder() = default;
 
 void CompletionRecorder::logCompletionEvent(const Completion &completion)
 {

@@ -24,10 +24,6 @@ KateCommandLineScript::KateCommandLineScript(const QString &url, const KateComma
 {
 }
 
-KateCommandLineScript::~KateCommandLineScript()
-{
-}
-
 const KateCommandLineScriptHeader &KateCommandLineScript::commandHeader()
 {
     return m_commandHeader;

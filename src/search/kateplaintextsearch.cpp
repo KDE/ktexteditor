@@ -31,9 +31,7 @@ KatePlainTextSearch::KatePlainTextSearch(const KTextEditor::Document *document, 
 //
 // KateSearch Destructor
 //
-KatePlainTextSearch::~KatePlainTextSearch()
-{
-}
+KatePlainTextSearch::~KatePlainTextSearch() = default;
 // END
 
 KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextEditor::Range &inputRange, bool backwards)

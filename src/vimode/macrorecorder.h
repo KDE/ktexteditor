@@ -19,7 +19,6 @@ class MacroRecorder
 {
 public:
     explicit MacroRecorder(InputModeManager *viInputModeManager);
-    ~MacroRecorder();
 
     void start(const QChar &macroRegister);
     void stop();

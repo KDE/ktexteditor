@@ -40,7 +40,6 @@ class VariableEditor : public QWidget
 
 public:
     explicit VariableEditor(VariableItem *item, QWidget *parent = nullptr);
-    ~VariableEditor() override;
 
     VariableItem *item() const;
 

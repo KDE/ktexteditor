@@ -14,14 +14,6 @@
 
 using namespace KateVi;
 
-Registers::Registers()
-{
-}
-
-Registers::~Registers()
-{
-}
-
 void Registers::readConfig(const KConfigGroup &config)
 {
     const QStringList names = config.readEntry("ViRegisterNames", QStringList());

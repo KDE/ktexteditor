@@ -29,10 +29,6 @@ MacroRecorder::MacroRecorder(InputModeManager *viInputModeManager)
 {
 }
 
-MacroRecorder::~MacroRecorder()
-{
-}
-
 void MacroRecorder::start(const QChar &macroRegister)
 {
     Q_ASSERT(!m_isRecording);

@@ -19,7 +19,6 @@ class VariableListView : public QScrollArea
 
 public:
     explicit VariableListView(const QString &variableLine, QWidget *parent = nullptr);
-    ~VariableListView() override;
 
     void addItem(VariableItem *item);
 

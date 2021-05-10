@@ -46,9 +46,7 @@ InsertViMode::InsertViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &InsertViMode::textInserted);
 }
 
-InsertViMode::~InsertViMode()
-{
-}
+InsertViMode::~InsertViMode() = default;
 
 bool InsertViMode::commandInsertFromAbove()
 {

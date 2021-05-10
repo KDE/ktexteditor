@@ -29,13 +29,6 @@ class SecureTextBuffer : public QObject
     Q_OBJECT
 
 public:
-    SecureTextBuffer()
-    {
-    }
-
-    ~SecureTextBuffer()
-    {
-    }
 
     /**
      * Common helper method

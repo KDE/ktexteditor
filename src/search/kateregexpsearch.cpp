@@ -154,9 +154,7 @@ KateRegExpSearch::KateRegExpSearch(const KTextEditor::Document *document)
 //
 // KateSearch Destructor
 //
-KateRegExpSearch::~KateRegExpSearch()
-{
-}
+KateRegExpSearch::~KateRegExpSearch() = default;
 
 // helper structs for captures re-construction
 struct TwoViewCursor {

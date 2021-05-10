@@ -734,10 +734,6 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
              "Background colors from the context menu when appropriate.</p>"));
 }
 
-KateThemeConfigHighlightTab::~KateThemeConfigHighlightTab()
-{
-}
-
 void KateThemeConfigHighlightTab::hlChanged(int z)
 {
     m_hl = z;

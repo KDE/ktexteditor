@@ -28,9 +28,6 @@ KateStatusBarOpenUpMenu::KateStatusBarOpenUpMenu(QWidget *parent)
     : QMenu(parent)
 {
 }
-KateStatusBarOpenUpMenu::~KateStatusBarOpenUpMenu()
-{
-}
 
 void KateStatusBarOpenUpMenu::setVisible(bool visibility)
 {
@@ -56,9 +53,6 @@ StatusBarButton::StatusBarButton(KateStatusBar *parent, const QString &text /*= 
     setMinimumSize(QSize(1, minimumSizeHint().height()));
 }
 
-StatusBarButton::~StatusBarButton()
-{
-}
 // END StatusBarButton
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)

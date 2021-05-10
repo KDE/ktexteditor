@@ -23,9 +23,7 @@ CompletionReplayer::CompletionReplayer(InputModeManager *viInputModeManager)
 {
 }
 
-CompletionReplayer::~CompletionReplayer()
-{
-}
+CompletionReplayer::~CompletionReplayer() = default;
 
 void CompletionReplayer::start(const CompletionList &completions)
 {

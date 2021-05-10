@@ -33,9 +33,7 @@ KateConfig::KateConfig(const KateConfig *parent)
 {
 }
 
-KateConfig::~KateConfig()
-{
-}
+KateConfig::~KateConfig() = default;
 
 void KateConfig::addConfigEntry(ConfigEntry &&entry)
 {
@@ -548,9 +546,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
 {
 }
 
-KateViewConfig::~KateViewConfig()
-{
-}
+KateViewConfig::~KateViewConfig() = default;
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
 {
@@ -670,9 +666,7 @@ KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
     m_lineMarkerColorSet.fill(false);
 }
 
-KateRendererConfig::~KateRendererConfig()
-{
-}
+KateRendererConfig::~KateRendererConfig() = default;
 
 namespace
 {

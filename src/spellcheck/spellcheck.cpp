@@ -21,9 +21,7 @@ KateSpellCheckManager::KateSpellCheckManager(QObject *parent)
 {
 }
 
-KateSpellCheckManager::~KateSpellCheckManager()
-{
-}
+KateSpellCheckManager::~KateSpellCheckManager() = default;
 
 QStringList KateSpellCheckManager::suggestions(const QString &word, const QString &dictionary)
 {

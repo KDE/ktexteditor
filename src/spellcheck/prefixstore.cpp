@@ -8,14 +8,6 @@
 
 #include "katepartdebug.h"
 
-KatePrefixStore::KatePrefixStore()
-{
-}
-
-KatePrefixStore::~KatePrefixStore()
-{
-}
-
 void KatePrefixStore::addPrefix(const QString &prefix)
 {
     if (prefix.isEmpty()) {

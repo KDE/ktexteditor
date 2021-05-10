@@ -8,10 +8,6 @@
 
 using namespace KTextEditor;
 
-CodeCompletionInterface::~CodeCompletionInterface()
-{
-}
+CodeCompletionInterface::~CodeCompletionInterface() = default;
 
-CodeCompletionInterfaceV2::~CodeCompletionInterfaceV2()
-{
-}
+CodeCompletionInterfaceV2::~CodeCompletionInterfaceV2() = default;

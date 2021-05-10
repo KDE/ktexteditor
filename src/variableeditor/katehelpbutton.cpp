@@ -21,10 +21,6 @@ KateHelpButton::KateHelpButton(QWidget *parent)
     connect(this, &KateHelpButton::clicked, this, &KateHelpButton::invokeHelp);
 }
 
-KateHelpButton::~KateHelpButton()
-{
-}
-
 void KateHelpButton::setIconState(IconState state)
 {
     if (state == IconHidden) {

@@ -11,13 +11,9 @@
 
 using namespace KTextEditor;
 
-MovingRangeFeedback::MovingRangeFeedback()
-{
-}
+MovingRangeFeedback::MovingRangeFeedback() = default;
 
-MovingRangeFeedback::~MovingRangeFeedback()
-{
-}
+MovingRangeFeedback::~MovingRangeFeedback() = default;
 
 void MovingRangeFeedback::rangeEmpty(MovingRange *)
 {

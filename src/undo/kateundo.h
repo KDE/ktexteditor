@@ -42,7 +42,7 @@ public:
     /**
      * Destructor
      */
-    virtual ~KateUndo();
+    virtual ~KateUndo() = default;
 
 public:
     /**

@@ -29,8 +29,7 @@ class KatePrefixStore
 public:
     typedef QPair<bool, bool> BooleanPair;
 
-    KatePrefixStore();
-    virtual ~KatePrefixStore();
+    virtual ~KatePrefixStore() = default;
 
     void addPrefix(const QString &prefix);
     void removePrefix(const QString &prefix);

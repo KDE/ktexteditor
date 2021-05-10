@@ -35,10 +35,6 @@ KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action
     connect(this, &KateScriptAction::triggered, this, &KateScriptAction::exec);
 }
 
-KateScriptAction::~KateScriptAction()
-{
-}
-
 void KateScriptAction::exec()
 {
     if (m_interactive) {

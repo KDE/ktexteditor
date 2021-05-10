@@ -20,9 +20,7 @@ KateCmd::KateCmd()
     m_cmdCompletion.addItem(QStringLiteral("help"));
 }
 
-KateCmd::~KateCmd()
-{
-}
+KateCmd::~KateCmd() = default;
 
 bool KateCmd::registerCommand(KTextEditor::Command *cmd)
 {

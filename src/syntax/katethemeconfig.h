@@ -88,7 +88,6 @@ class KateThemeConfigHighlightTab : public QWidget
 
 public:
     explicit KateThemeConfigHighlightTab(KateThemeConfigDefaultStylesTab *page, KateThemeConfigColorTab *colorTab);
-    ~KateThemeConfigHighlightTab() override;
 
     void schemaChanged(const QString &schema);
     void reload();

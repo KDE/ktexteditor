@@ -31,7 +31,6 @@ class KateStatusBarOpenUpMenu : public QMenu
     Q_OBJECT
 public:
     explicit KateStatusBarOpenUpMenu(QWidget *parent);
-    ~KateStatusBarOpenUpMenu() override;
     void setVisible(bool) override;
 };
 
@@ -45,7 +44,6 @@ class StatusBarButton : public QPushButton
     Q_OBJECT
 public:
     explicit StatusBarButton(KateStatusBar *parent, const QString &text = QString());
-    ~StatusBarButton() override;
 };
 
 class KateStatusBar : public KateViewBarWidget

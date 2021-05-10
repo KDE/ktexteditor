@@ -21,10 +21,6 @@ VariableListView::VariableListView(const QString &variableLine, QWidget *parent)
     parseVariables(variableLine);
 }
 
-VariableListView::~VariableListView()
-{
-}
-
 void VariableListView::parseVariables(const QString &line)
 {
     QString tmp = line.trimmed();

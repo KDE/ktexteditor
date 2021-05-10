@@ -399,8 +399,6 @@ class KateViewEncodingAction : public KSelectAction
 public:
     KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
-    ~KateViewEncodingAction();
-
     int mibForName(const QString &codecName, bool *ok = nullptr) const;
     QTextCodec *codecForMib(int mib) const;
 
@@ -440,7 +438,7 @@ private:
         QAction *currentSubAction;
     };
 
-    Private *const d;
+    std::unique_ptr<Private> const d;
     Q_PRIVATE_SLOT(d, void _k_subActionTriggered(QAction *))
 
     const bool m_saveAsMode;

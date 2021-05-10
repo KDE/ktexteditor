@@ -18,9 +18,7 @@ CodeCompletionModelControllerInterface::CodeCompletionModelControllerInterface()
 {
 }
 
-CodeCompletionModelControllerInterface::~CodeCompletionModelControllerInterface()
-{
-}
+CodeCompletionModelControllerInterface::~CodeCompletionModelControllerInterface() = default;
 
 bool CodeCompletionModelControllerInterface::shouldStartCompletion(View *view, const QString &insertedText, bool userInsertion, const Cursor &position)
 {

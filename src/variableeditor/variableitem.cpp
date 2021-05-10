@@ -14,10 +14,6 @@ VariableItem::VariableItem(const QString &variable)
 {
 }
 
-VariableItem::~VariableItem()
-{
-}
-
 QString VariableItem::variable() const
 {
     return m_variable;

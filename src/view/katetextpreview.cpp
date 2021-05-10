@@ -27,10 +27,6 @@ KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view, QWidget *parent
 {
 }
 
-KateTextPreview::~KateTextPreview()
-{
-}
-
 KTextEditor::ViewPrivate *KateTextPreview::view() const
 {
     return m_view;

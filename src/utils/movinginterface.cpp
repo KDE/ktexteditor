@@ -11,10 +11,6 @@
 
 using namespace KTextEditor;
 
-MovingInterface::MovingInterface()
-{
-}
+MovingInterface::MovingInterface() = default;
 
-MovingInterface::~MovingInterface()
-{
-}
+MovingInterface::~MovingInterface() = default;

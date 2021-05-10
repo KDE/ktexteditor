@@ -1050,9 +1050,7 @@ void KateCommandLineBar::showHelpPage()
     KHelpClient::invokeHelp(QStringLiteral("advanced-editing-tools-commandline"), QStringLiteral("kate"));
 }
 
-KateCommandLineBar::~KateCommandLineBar()
-{
-}
+KateCommandLineBar::~KateCommandLineBar() = default;
 
 // inserts the given string in the command line edit and (if selected = true) selects it so the user
 // can type over it if they want to
@@ -2758,11 +2756,6 @@ KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_do
 
     connect(menu(), &QMenu::aboutToShow, this, &KateViewEncodingAction::slotAboutToShow);
     connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
-}
-
-KateViewEncodingAction::~KateViewEncodingAction()
-{
-    delete d;
 }
 
 void KateViewEncodingAction::slotAboutToShow()

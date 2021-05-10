@@ -18,9 +18,7 @@ Application::Application(QObject *parent)
 {
 }
 
-Application::~Application()
-{
-}
+Application::~Application() = default;
 
 bool Application::quit()
 {

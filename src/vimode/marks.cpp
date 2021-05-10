@@ -40,10 +40,6 @@ Marks::Marks(InputModeManager *imm)
     connect(m_doc, &KTextEditor::DocumentPrivate::markChanged, this, &Marks::markChanged);
 }
 
-Marks::~Marks()
-{
-}
-
 void Marks::readSessionConfig(const KConfigGroup &config)
 {
     QStringList marks = config.readEntry("ViMarks", QStringList());

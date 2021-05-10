@@ -26,9 +26,7 @@ void ActiveMode::setViInputModeManager(InputModeManager *viInputModeManager)
     m_viInputModeManager = viInputModeManager;
 }
 
-ActiveMode::~ActiveMode()
-{
-}
+ActiveMode::~ActiveMode() = default;
 
 void ActiveMode::hideAllWidgetsExcept(QWidget *widgetToKeepVisible)
 {

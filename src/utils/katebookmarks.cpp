@@ -41,9 +41,7 @@ KateBookmarks::KateBookmarks(KTextEditor::ViewPrivate *view, Sorting sort)
     m_bookmarksMenu = nullptr;
 }
 
-KateBookmarks::~KateBookmarks()
-{
-}
+KateBookmarks::~KateBookmarks() = default;
 
 void KateBookmarks::createActions(KActionCollection *ac)
 {

@@ -84,9 +84,7 @@ EmulatedCommandBar::EmulatedCommandBar(KateViInputMode *viInputMode, InputModeMa
     connect(m_edit, &QLineEdit::textChanged, this, &EmulatedCommandBar::editTextChanged);
 }
 
-EmulatedCommandBar::~EmulatedCommandBar()
-{
-}
+EmulatedCommandBar::~EmulatedCommandBar() = default;
 
 void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &initialText)
 {

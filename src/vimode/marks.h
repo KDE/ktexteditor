@@ -30,7 +30,6 @@ class Marks : public QObject
 
 public:
     explicit Marks(InputModeManager *imm);
-    ~Marks();
 
     /** JBOS == Just a Bunch Of Shortcuts **/
     void setStartEditYanked(const KTextEditor::Cursor &pos);

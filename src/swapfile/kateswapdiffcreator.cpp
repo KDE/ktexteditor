@@ -23,10 +23,6 @@ SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)
 {
 }
 
-SwapDiffCreator::~SwapDiffCreator()
-{
-}
-
 void SwapDiffCreator::viewDiff()
 {
     QString path = m_swapFile->fileName();

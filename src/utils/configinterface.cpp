@@ -8,10 +8,6 @@
 
 using namespace KTextEditor;
 
-ConfigInterface::ConfigInterface()
-{
-}
+ConfigInterface::ConfigInterface() = default;
 
-ConfigInterface::~ConfigInterface()
-{
-}
+ConfigInterface::~ConfigInterface() = default;

@@ -19,7 +19,7 @@ class VariableItem
 {
 public:
     explicit VariableItem(const QString &variable);
-    virtual ~VariableItem();
+    virtual ~VariableItem() = default;
 
     QString variable() const;
     QString helpText() const;

@@ -49,9 +49,7 @@ KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
 /**
  * Cleanup on destruction
  */
-KateBuffer::~KateBuffer()
-{
-}
+KateBuffer::~KateBuffer() = default;
 
 void KateBuffer::editStart()
 {

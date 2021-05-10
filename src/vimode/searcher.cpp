@@ -21,10 +21,6 @@ Searcher::Searcher(InputModeManager *manager)
 {
 }
 
-Searcher::~Searcher()
-{
-}
-
 const QString Searcher::getLastSearchPattern() const
 {
     return m_lastSearchConfig.pattern;
