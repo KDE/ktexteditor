@@ -287,7 +287,7 @@ public:
     QVarLengthArray<KateInlineNoteData, 8> inlineNotes(int line) const;
 
 private:
-    QVector<KTextEditor::InlineNoteProvider *> m_inlineNoteProviders;
+    std::vector<KTextEditor::InlineNoteProvider *> m_inlineNoteProviders;
 
 private Q_SLOTS:
     void inlineNotesReset();
@@ -733,7 +733,7 @@ private:
     void setupEditActions();
     void setupCodeFolding();
 
-    QList<QAction *> m_editActions;
+    std::vector<QAction *> m_editActions;
     QAction *m_editUndo;
     QAction *m_editRedo;
     QAction *m_pasteMenu;
@@ -898,7 +898,7 @@ private:
 
     QString m_currentTextForHighlights;
 
-    QList<KTextEditor::MovingRange *> m_rangesForHighlights;
+    std::vector<std::unique_ptr<KTextEditor::MovingRange>> m_rangesForHighlights;
 
 public:
     /**

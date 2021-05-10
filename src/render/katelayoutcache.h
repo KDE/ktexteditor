@@ -19,9 +19,6 @@ class KateRenderer;
 class KateLineLayoutMap
 {
 public:
-    KateLineLayoutMap();
-    ~KateLineLayoutMap();
-
     inline void clear();
 
     inline bool contains(int i) const;
@@ -40,7 +37,7 @@ public:
     typedef QPair<int, KateLineLayoutPtr> LineLayoutPair;
 
 private:
-    typedef QVector<LineLayoutPair> LineLayoutMap;
+    typedef std::vector<LineLayoutPair> LineLayoutMap;
     LineLayoutMap m_lineLayouts;
 };
 
@@ -145,7 +142,8 @@ private:
 
     // Convenience vector for quick direct access to the specific text layout
     KTextEditor::Cursor m_startPos;
-    mutable QVector<KateTextLayout> m_textLayouts;
+
+    mutable std::vector<KateTextLayout> m_textLayouts;
 
     int m_viewWidth;
     bool m_wrap;

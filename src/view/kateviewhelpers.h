@@ -357,7 +357,7 @@ private:
     bool m_updatePositionToArea : 1;
 
     typedef QPair<int, KateIconBorder::BorderArea> AreaPosition;
-    QVector<AreaPosition> m_positionToArea;
+    std::vector<AreaPosition> m_positionToArea;
 
     const int m_separatorWidth = 2;
     const int m_modAreaWidth = 3;

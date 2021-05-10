@@ -918,181 +918,181 @@ void KTextEditor::ViewPrivate::setupEditActions()
     a->setText(i18n("Move Word Left"));
     ac->setDefaultShortcuts(a, KStandardShortcut::backwardWord());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::wordLeft);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_char_left"));
     a->setText(i18n("Select Character Left"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Left));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftCursorLeft);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_word_left"));
     a->setText(i18n("Select Word Left"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_Left));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftWordLeft);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("word_right"));
     a->setText(i18n("Move Word Right"));
     ac->setDefaultShortcuts(a, KStandardShortcut::forwardWord());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::wordRight);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_char_right"));
     a->setText(i18n("Select Character Right"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Right));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftCursorRight);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_word_right"));
     a->setText(i18n("Select Word Right"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_Right));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftWordRight);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("beginning_of_line"));
     a->setText(i18n("Move to Beginning of Line"));
     ac->setDefaultShortcuts(a, KStandardShortcut::beginningOfLine());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::home);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("beginning_of_document"));
     a->setText(i18n("Move to Beginning of Document"));
     ac->setDefaultShortcuts(a, KStandardShortcut::begin());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::top);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_beginning_of_line"));
     a->setText(i18n("Select to Beginning of Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Home));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftHome);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_beginning_of_document"));
     a->setText(i18n("Select to Beginning of Document"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_Home));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftTop);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("end_of_line"));
     a->setText(i18n("Move to End of Line"));
     ac->setDefaultShortcuts(a, KStandardShortcut::endOfLine());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::end);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("end_of_document"));
     a->setText(i18n("Move to End of Document"));
     ac->setDefaultShortcuts(a, KStandardShortcut::end());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::bottom);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_end_of_line"));
     a->setText(i18n("Select to End of Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_End));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftEnd);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_end_of_document"));
     a->setText(i18n("Select to End of Document"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_End));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftBottom);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_line_up"));
     a->setText(i18n("Select to Previous Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Up));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftUp);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("scroll_line_up"));
     a->setText(i18n("Scroll Line Up"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Up));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::scrollUp);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("move_line_down"));
     a->setText(i18n("Move to Next Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Down));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::down);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("move_line_up"));
     a->setText(i18n("Move to Previous Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Up));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::up);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("move_cursor_right"));
     a->setText(i18n("Move Cursor Right"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Right));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::cursorRight);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("move_cursor_left"));
     a->setText(i18n("Move Cursor Left"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Left));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::cursorLeft);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_line_down"));
     a->setText(i18n("Select to Next Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Down));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftDown);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("scroll_line_down"));
     a->setText(i18n("Scroll Line Down"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Down));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::scrollDown);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("scroll_page_up"));
     a->setText(i18n("Scroll Page Up"));
     ac->setDefaultShortcuts(a, KStandardShortcut::prior());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::pageUp);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_page_up"));
     a->setText(i18n("Select Page Up"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_PageUp));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftPageUp);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("move_top_of_view"));
     a->setText(i18n("Move to Top of View"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_Home));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::topOfView);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_top_of_view"));
     a->setText(i18n("Select to Top of View"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_Home));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftTopOfView);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("scroll_page_down"));
     a->setText(i18n("Scroll Page Down"));
     ac->setDefaultShortcuts(a, KStandardShortcut::next());
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::pageDown);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_page_down"));
     a->setText(i18n("Select Page Down"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_PageDown));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftPageDown);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("move_bottom_of_view"));
     a->setText(i18n("Move to Bottom of View"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_End));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::bottomOfView);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("select_bottom_of_view"));
     a->setText(i18n("Select to Bottom of View"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_End));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftBottomOfView);
-    m_editActions << a;
+    m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("to_matching_bracket"));
     a->setText(i18n("Move to Matching Bracket"));
@@ -1112,31 +1112,31 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setText(i18n("Transpose Characters"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_T));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::transpose);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("delete_line"));
         a->setText(i18n("Delete Line"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_K));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::killLine);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("delete_word_left"));
         a->setText(i18n("Delete Word Left"));
         ac->setDefaultShortcuts(a, KStandardShortcut::deleteWordBack());
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::deleteWordLeft);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("delete_word_right"));
         a->setText(i18n("Delete Word Right"));
         ac->setDefaultShortcuts(a, KStandardShortcut::deleteWordForward());
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::deleteWordRight);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("delete_next_character"));
         a->setText(i18n("Delete Next Character"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Delete));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::keyDelete);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("backspace"));
         a->setText(i18n("Backspace"));
@@ -1144,12 +1144,12 @@ void KTextEditor::ViewPrivate::setupEditActions()
         scuts << QKeySequence(Qt::Key_Backspace) << QKeySequence(Qt::SHIFT + Qt::Key_Backspace);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::backspace);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("insert_tabulator"));
         a->setText(i18n("Insert Tab"));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::insertTab);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("smart_newline"));
         a->setText(i18n("Insert Smart Newline"));
@@ -1158,7 +1158,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         scuts << QKeySequence(Qt::SHIFT + Qt::Key_Return) << QKeySequence(Qt::SHIFT + Qt::Key_Enter);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::smartNewline);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("no_indent_newline"));
         a->setText(i18n("Insert a non-indented Newline"));
@@ -1167,7 +1167,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         scuts << QKeySequence(Qt::CTRL + Qt::Key_Return) << QKeySequence(Qt::CTRL + Qt::Key_Enter);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::noIndentNewline);
-        m_editActions << a;
+        m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("tools_indent"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-indent-more")));
@@ -3767,7 +3767,6 @@ void KTextEditor::ViewPrivate::exportHtmlToFile()
 
 void KTextEditor::ViewPrivate::clearHighlights()
 {
-    qDeleteAll(m_rangesForHighlights);
     m_rangesForHighlights.clear();
     m_currentTextForHighlights.clear();
 }
@@ -3784,7 +3783,6 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
 
     // text changed: remove all highlights + create new ones
     // (do not call clearHighlights(), since this also resets the m_currentTextForHighlights
-    qDeleteAll(m_rangesForHighlights);
     m_rangesForHighlights.clear();
 
     // do not highlight strings with leading and trailing spaces
@@ -3804,7 +3802,6 @@ void KTextEditor::ViewPrivate::createHighlights()
     }
 
     // clear existing highlighting ranges, otherwise we stack over and over the same ones eventually
-    qDeleteAll(m_rangesForHighlights);
     m_rangesForHighlights.clear();
 
     KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
@@ -3837,12 +3834,12 @@ void KTextEditor::ViewPrivate::createHighlights()
         matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
 
         if (matches.first().isValid()) {
-            KTextEditor::MovingRange *mr = doc()->newMovingRange(matches.first());
+            std::unique_ptr<KTextEditor::MovingRange> mr(doc()->newMovingRange(matches.first()));
             mr->setAttribute(attr);
             mr->setView(this);
             mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
             mr->setAttributeOnlyForViews(true);
-            m_rangesForHighlights.append(mr);
+            m_rangesForHighlights.push_back(std::move(mr));
             start = matches.first().end();
         }
     } while (matches.first().isValid());
@@ -3883,8 +3880,8 @@ void KTextEditor::ViewPrivate::printPreview()
 // BEGIN KTextEditor::InlineNoteInterface
 void KTextEditor::ViewPrivate::registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider)
 {
-    if (!m_inlineNoteProviders.contains(provider)) {
-        m_inlineNoteProviders.append(provider);
+    if (std::find(m_inlineNoteProviders.cbegin(), m_inlineNoteProviders.cend(), provider) == m_inlineNoteProviders.cend()) {
+        m_inlineNoteProviders.push_back(provider);
 
         connect(provider, &KTextEditor::InlineNoteProvider::inlineNotesReset, this, &KTextEditor::ViewPrivate::inlineNotesReset);
         connect(provider, &KTextEditor::InlineNoteProvider::inlineNotesChanged, this, &KTextEditor::ViewPrivate::inlineNotesLineChanged);
@@ -3895,10 +3892,9 @@ void KTextEditor::ViewPrivate::registerInlineNoteProvider(KTextEditor::InlineNot
 
 void KTextEditor::ViewPrivate::unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider)
 {
-    const int index = m_inlineNoteProviders.indexOf(provider);
-    if (index >= 0) {
-        m_inlineNoteProviders.removeAt(index);
-
+    auto it = std::find(m_inlineNoteProviders.cbegin(), m_inlineNoteProviders.cend(), provider);
+    if (it != m_inlineNoteProviders.cend()) {
+        m_inlineNoteProviders.erase(it);
         provider->disconnect(this);
 
         inlineNotesReset();

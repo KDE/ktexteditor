@@ -225,7 +225,7 @@ public:
     QSet<TextRange *> cachedRangesForLine(int line) const
     {
         line -= m_startLine;
-        if (line >= 0 && line < m_cachedRangesForLine.size()) {
+        if (line >= 0 && (size_t)line < m_cachedRangesForLine.size()) {
             return m_cachedRangesForLine[line];
         } else {
             return QSet<TextRange *>();
@@ -259,7 +259,7 @@ private:
      * Contains for each line-offset the ranges that were cached into it.
      * These ranges are fully contained by the line.
      */
-    QVector<QSet<TextRange *>> m_cachedRangesForLine;
+    std::vector<QSet<TextRange *>> m_cachedRangesForLine;
 
     /**
      * Maps for each cached range the line into which the range was cached.

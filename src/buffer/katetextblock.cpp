@@ -707,7 +707,7 @@ void TextBlock::updateRange(TextRange *range)
     const int lineOffset = startLine - m_startLine;
 
     // enlarge cache if needed
-    if (m_cachedRangesForLine.size() <= lineOffset) {
+    if (m_cachedRangesForLine.size() <= (size_t)lineOffset) {
         m_cachedRangesForLine.resize(lineOffset + 1);
     }
 

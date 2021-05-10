@@ -1995,7 +1995,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
                 lnX += m_iconAreaWidth;
                 if (m_updatePositionToArea) {
-                    m_positionToArea.append(AreaPosition(lnX, IconBorder));
+                    m_positionToArea.push_back(AreaPosition(lnX, IconBorder));
                 }
             }
 
@@ -2019,7 +2019,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
                 lnX += m_annotationAreaWidth + m_separatorWidth;
                 if (m_updatePositionToArea) {
-                    m_positionToArea.append(AreaPosition(lnX, AnnotationBorder));
+                    m_positionToArea.push_back(AreaPosition(lnX, AnnotationBorder));
                 }
             }
 
@@ -2075,7 +2075,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
                 lnX += m_lineNumberAreaWidth + m_separatorWidth;
                 if (m_updatePositionToArea) {
-                    m_positionToArea.append(AreaPosition(lnX, LineNumbers));
+                    m_positionToArea.push_back(AreaPosition(lnX, LineNumbers));
                 }
             }
 
@@ -2090,7 +2090,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
                 lnX += m_modAreaWidth; // No m_separatorWidth
                 if (m_updatePositionToArea) {
-                    m_positionToArea.append(AreaPosition(lnX, None));
+                    m_positionToArea.push_back(AreaPosition(lnX, None));
                 }
             }
 
@@ -2123,7 +2123,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
                 lnX += m_foldingAreaWidth;
                 if (m_updatePositionToArea) {
-                    m_positionToArea.append(AreaPosition(lnX, FoldingMarkers));
+                    m_positionToArea.push_back(AreaPosition(lnX, FoldingMarkers));
                 }
             }
         }
@@ -2156,7 +2156,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             m_updatePositionToArea = false;
             // Don't forget our "text-stuck-to-border" protector + border line
             lnX += 2 * m_separatorWidth;
-            m_positionToArea.append(AreaPosition(lnX, None));
+            m_positionToArea.push_back(AreaPosition(lnX, None));
             // Now that we know our needed space, ensure we are painted properly
             updateGeometry();
             update();
@@ -2167,12 +2167,15 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
 KateIconBorder::BorderArea KateIconBorder::positionToArea(const QPoint &p) const
 {
-    for (int i = 0; i < m_positionToArea.size(); ++i) {
-        if (p.x() <= m_positionToArea.at(i).first) {
-            return m_positionToArea.at(i).second;
+    auto it = std::find_if(m_positionToArea.cbegin(), m_positionToArea.cend(), [p](const AreaPosition &ap) {
+        if (p.x() <= ap.first) {
+            return true;
         }
+        return false;
+    });
+    if (it != m_positionToArea.cend()) {
+        return it->second;
     }
-
     return None;
 }
 

@@ -21,8 +21,6 @@ class KateTextLayout
 {
     friend class KateLineLayout;
     friend class KateLayoutCache;
-    template<class T>
-    friend class QVector;
 
 public:
     bool isValid() const;
@@ -81,9 +79,9 @@ public:
 
     void debugOutput() const;
 
-private:
     explicit KateTextLayout(KateLineLayoutPtr line = KateLineLayoutPtr(), int viewLine = 0);
 
+private:
     KateLineLayoutPtr m_lineLayout;
     QTextLine m_textLayout;
 
