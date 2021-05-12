@@ -3823,7 +3823,7 @@ void KateViewInternal::doDragScroll()
 
 void KateViewInternal::registerTextHintProvider(KTextEditor::TextHintProvider *provider)
 {
-    if (std::find(m_textHintProviders.cbegin(), m_textHintProviders.cend(), provider) != m_textHintProviders.cend()) {
+    if (std::find(m_textHintProviders.cbegin(), m_textHintProviders.cend(), provider) == m_textHintProviders.cend()) {
         m_textHintProviders.push_back(provider);
     }
 
