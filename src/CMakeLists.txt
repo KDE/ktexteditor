@@ -246,7 +246,7 @@ search/searchbarpower.ui
 spellcheck/spellcheckbar.ui
 dialogs/spellcheckconfigwidget.ui)
 
-qt5_add_resources( ktexteditor_qrc_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
+qt_add_resources( ktexteditor_qrc_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
 set_source_files_properties(${ktexteditor_qrc_SRCS} PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
 # vi mode
