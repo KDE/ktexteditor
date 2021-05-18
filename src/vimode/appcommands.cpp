@@ -158,18 +158,11 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
                 url = QUrl(QUrl::fromLocalFile(QDir::currentPath() + QLatin1Char('/'))
                                .resolved(arg2path)); // + "/" is needed because of https://lists.qt-project.org/pipermail/qt-interest-old/2011-May/033913.html
             }
-            QFileInfo file(url.toLocalFile());
 
+            // either find existing document or just open it, openUrl will take care of non-existing files, too
             KTextEditor::Document *doc = app->findUrl(url);
-
             if (!doc) {
-                if (file.exists()) {
-                    doc = app->openUrl(url);
-                } else {
-                    if ((doc = app->openUrl(QUrl()))) {
-                        doc->saveAs(url);
-                    }
-                }
+                doc = app->openUrl(url);
             }
             if (doc) {
                 QTimer::singleShot(0, [mainWin, doc]() {
