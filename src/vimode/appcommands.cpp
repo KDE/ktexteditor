@@ -155,7 +155,7 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
                 url =
                     QUrl(base.resolved(arg2path)); // resolved handles the case where the args is a relative path, and is the same as using QUrl(args) elsewise
             } else { // else use the cwd
-                url = QUrl(QUrl(QDir::currentPath() + QLatin1Char('/'))
+                url = QUrl(QUrl::fromLocalFile(QDir::currentPath() + QLatin1Char('/'))
                                .resolved(arg2path)); // + "/" is needed because of https://lists.qt-project.org/pipermail/qt-interest-old/2011-May/033913.html
             }
             QFileInfo file(url.toLocalFile());
