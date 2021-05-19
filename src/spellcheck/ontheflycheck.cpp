@@ -538,7 +538,7 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     int translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList, startColumn);
     QString text = decodedLineText.mid(0, translatedColumn);
     boundaryStart.setLine(startLine);
-    int match = text.lastIndexOf(boundaryQuoteRegExp, -2);
+    int match = text.lastIndexOf(boundaryQuoteRegExp);
     if (match < 0) {
         match = text.lastIndexOf(boundaryRegExp, -2);
     }
