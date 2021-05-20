@@ -541,4 +541,64 @@ void KateViewTest::testFindSelected()
     QCOMPARE(view->cursorPosition(), cursor3);
 }
 
+void KateViewTest::testTransposeWord()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText(
+        "swaps forward\n"
+        "wordAbove\n"
+        "wordLeft (_skips]Spaces.__And___}Sym_bols))))    wordRight)\n"
+        "wordBelow anotherWord yetAnotherWord\n");
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    const KTextEditor::Cursor swaps(0, 2); // swa|ps
+    const KTextEditor::Cursor wordAbove(1, 4); // wordA|bove
+    const KTextEditor::Cursor wordLeft(2, 1); // wo|rdLeft
+    const KTextEditor::Cursor skips(2, 10); // |_skips
+    const KTextEditor::Cursor And(2, 27); // __A|nd___
+    const KTextEditor::Cursor wordBelow(3, 0); // w|ordBelow
+
+    view->setCursorPosition(swaps);
+    QCOMPARE(view->cursorPosition(), swaps);
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "a");
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), swaps + KTextEditor::Cursor(0, 8)); // " forward" has 8 characters
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "a"); // retain relative position inside the word
+
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), swaps); // when the word is already last in line, swap backwards instead
+
+    view->setCursorPosition(wordAbove);
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), wordAbove); // when there is no other word in the line, do nothing
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "A");
+
+    view->setCursorPosition(wordLeft);
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), wordLeft); // when next word is invalid (made up of only symbols, in this case "(") do nothing
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "o");
+
+    view->setCursorPosition(skips);
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), skips + KTextEditor::Cursor(0, 7)); // transpose word beginning with a symbol
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "_");
+
+    view->setCursorPosition(And);
+    view->transposeWord();
+    // skip multiple symbols if there is no space between current word and the symbols (in contrast to the case of wordLeft).
+    // Can be useful for e.g. transposing function arguments
+    QCOMPARE(view->cursorPosition(), And + KTextEditor::Cursor(0, 9));
+
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), And + KTextEditor::Cursor(0, 9 + 17)); // next "word" is invalid as it is only a single "(", so do nothing
+
+    view->setCursorPosition(wordBelow);
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), wordBelow + KTextEditor::Cursor(0, 12));
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), wordBelow + KTextEditor::Cursor(0, 12 + 15));
+    view->transposeWord();
+    QCOMPARE(view->cursorPosition(), wordBelow + KTextEditor::Cursor(0, 12)); // end of line, transpose backwards instead
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
