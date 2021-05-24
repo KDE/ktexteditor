@@ -4811,8 +4811,6 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
                     m_config->setRemoveSpaces(1);
                 } else if (val == QLatin1String("2") || val == QLatin1String("all") || val == QLatin1String("*")) {
                     m_config->setRemoveSpaces(2);
-                } else if (val == QLatin1String("3") || val == QLatin1String("cursor") || val == QLatin1String("cur")) {
-                    m_config->setRemoveSpaces(3);
                 } else {
                     m_config->setRemoveSpaces(0);
                 }

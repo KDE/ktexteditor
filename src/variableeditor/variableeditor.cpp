@@ -305,7 +305,6 @@ VariableRemoveSpacesEditor::VariableRemoveSpacesEditor(VariableRemoveSpacesItem 
     m_comboBox->addItem(i18nc("value for variable remove-trailing-spaces", "none"));
     m_comboBox->addItem(i18nc("value for variable remove-trailing-spaces", "modified"));
     m_comboBox->addItem(i18nc("value for variable remove-trailing-spaces", "all"));
-    m_comboBox->addItem(i18nc("value for variable remove-trailing-spaces", "cursor"));
     m_comboBox->setCurrentIndex(item->value());
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
@@ -314,8 +313,8 @@ VariableRemoveSpacesEditor::VariableRemoveSpacesEditor(VariableRemoveSpacesItem 
     connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::setItemValue);
 }
 
-void VariableRemoveSpacesEditor::setItemValue(int removeMode)
+void VariableRemoveSpacesEditor::setItemValue(int enabled)
 {
-    static_cast<VariableRemoveSpacesItem *>(item())->setValue(removeMode);
+    static_cast<VariableRemoveSpacesItem *>(item())->setValue(enabled == 0);
 }
 // END VariableRemoveSpacesEditor
