@@ -5097,9 +5097,10 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
 
     editStart();
 
-    auto curPos = KTextEditor::Cursor::invalid();
+    int curLine = -1, curCol = -1;
     if (m_activeView) {
-        curPos = m_activeView->cursorPosition();
+        curLine = m_activeView->cursorPosition().line();
+        curCol = m_activeView->cursorPosition().column();
     }
 
     for (int line = 0; line < lines(); ++line) {
@@ -5107,9 +5108,9 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
         int p = -1;
         if (remove == 3) {
             const int lastChar = textline->lastChar();
-            if (line == curPos.line() && curPos.column() > lastChar) {
+            if (line == curLine && curCol > lastChar) {
                 // remove trailing spaces except those to the left of current cursor postion, remove = 3
-                p = curPos.column() + 1;
+                p = curCol + 1;
             } else {
                 // remove all other tailing spaces from other lines
                 p = lastChar + 1;
