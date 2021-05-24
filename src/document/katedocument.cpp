@@ -5095,33 +5095,14 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
 
     editStart();
 
-    int curLine = -1, curCol = -1;
-    if (m_activeView) {
-        curLine = m_activeView->cursorPosition().line();
-        curCol = m_activeView->cursorPosition().column();
-    }
-
     for (int line = 0; line < lines(); ++line) {
         Kate::TextLine textline = plainKateTextLine(line);
-        int p = -1;
 
-        const int lastChar = textline->lastChar();
-        if (remove == 3) {
-            if (line == curLine && curCol > lastChar) {
-                // remove trailing spaces except those to the left of current cursor postion, remove = 3
-                p = curCol + 1;
-            } else {
-                // remove all other tailing spaces from other lines
-                p = lastChar + 1;
-            }
-        } else if (remove == 2 || textline->markedAsModified() || textline->markedAsSavedOnDisk()) {
-            // remove trailing spaces in entire document, remove = 2
-            // remove trailing spaces of touched lines, remove = 1
-            // remove trailing spaces of lines saved on disk, remove = 1
-            p = lastChar + 1;
-        }
-
-        if (p != -1) {
+        // remove trailing spaces in entire document, remove = 2
+        // remove trailing spaces of touched lines, remove = 1
+        // remove trailing spaces of lines saved on disk, remove = 1
+        if (remove == 2 || textline->markedAsModified() || textline->markedAsSavedOnDisk()) {
+            const int p = textline->lastChar() + 1;
             const int l = textline->length() - p;
             if (l > 0) {
                 editRemoveText(line, p, l);
