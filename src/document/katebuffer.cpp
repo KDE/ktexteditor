@@ -143,7 +143,9 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     // will allow to do "kate newfile.txt" without error messages but still fail if e.g. you mistype a url
     // and it can't be fetched via fish:// or other strange things in kio happen...
     // just clear() + exit with success!
-    if (m_doc->url().isLocalFile() && !QFile::exists(m_file)) {
+
+    QFileInfo fileInfo(m_file);
+    if (m_doc->url().isLocalFile() && !fileInfo.exists()) {
         clear();
         KTextEditor::Message *message = new KTextEditor::Message(i18nc("short translation, user created new file", "New file"), KTextEditor::Message::Warning);
         message->setPosition(KTextEditor::Message::TopInView);
@@ -158,7 +160,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
 
     // check if this is a normal file or not, avoids to open char devices or directories!
     // else clear buffer and break out with error
-    if (!QFileInfo(m_file).isFile()) {
+    if (!fileInfo.isFile()) {
         clear();
         return false;
     }

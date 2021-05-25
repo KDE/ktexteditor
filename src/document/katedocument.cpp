@@ -46,6 +46,7 @@
 #include <KTextEditor/DocumentCursor>
 
 #include <KConfigGroup>
+#include <KCoreAddons/KNetworkMounts>
 #include <KDirWatch>
 #include <KFileItem>
 #include <KIO/Job>
@@ -164,9 +165,11 @@ static inline bool isBracket(const QChar c)
 static QUrl normalizeUrl(const QUrl &url)
 {
     // only normalize local urls
-    if (url.isEmpty() || !url.isLocalFile())
-        return url;
 
+    if (url.isEmpty() || !url.isLocalFile()
+        || KNetworkMounts::self()->isOptionEnabledForPath(url.toLocalFile(), KNetworkMounts::StrongSideEffectsOptimizations)) {
+        return url;
+    }
     // don't normalize if not existing!
     // canonicalFilePath won't work!
     const QString normalizedUrl(QFileInfo(url.toLocalFile()).canonicalFilePath());
@@ -2668,7 +2671,7 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
 
 void KTextEditor::DocumentPrivate::readDirConfig()
 {
-    if (!url().isLocalFile()) {
+    if (!url().isLocalFile() || KNetworkMounts::self()->isOptionEnabledForPath(url().toLocalFile(), KNetworkMounts::MediumSideEffectsOptimizations)) {
         return;
     }
 
@@ -2718,6 +2721,10 @@ void KTextEditor::DocumentPrivate::activateDirWatch(const QString &useFileName)
     QString fileToUse = useFileName;
     if (fileToUse.isEmpty()) {
         fileToUse = localFilePath();
+    }
+
+    if (KNetworkMounts::self()->isOptionEnabledForPath(fileToUse, KNetworkMounts::KDirWatchDontAddWatches)) {
+        return;
     }
 
     QFileInfo fileInfo = QFileInfo(fileToUse);
