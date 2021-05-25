@@ -318,17 +318,20 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     if (qobject_cast<KTextEditor::CodeCompletionInterface *>(view)) {
         action = new QAction(i18n("Shell Completion"), this);
         ac->addAction(QStringLiteral("doccomplete_sh"), action);
+        action->setShortcutContext(Qt::WidgetWithChildrenShortcut);
         connect(action, &QAction::triggered, this, &KateWordCompletionView::shellComplete);
     }
 
     action = new QAction(i18n("Reuse Word Above"), this);
     ac->addAction(QStringLiteral("doccomplete_bw"), action);
     ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_8);
+    action->setShortcutContext(Qt::WidgetWithChildrenShortcut);
     connect(action, &QAction::triggered, this, &KateWordCompletionView::completeBackwards);
 
     action = new QAction(i18n("Reuse Word Below"), this);
     ac->addAction(QStringLiteral("doccomplete_fw"), action);
     ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_9);
+    action->setShortcutContext(Qt::WidgetWithChildrenShortcut);
     connect(action, &QAction::triggered, this, &KateWordCompletionView::completeForwards);
 }
 
