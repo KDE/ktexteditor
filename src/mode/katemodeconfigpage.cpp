@@ -191,6 +191,9 @@ void ModeConfigPage::newType()
     m_types.prepend(newT);
 
     update();
+    // show new filetype so that it is immediately available for editing
+    ui->cmbFiletypes->setCurrentIndex(0);
+    typeChanged(0);
 }
 
 void ModeConfigPage::save()
