@@ -6,21 +6,17 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#pragma once
+#ifndef KATE_SYNTAX_MANAGER_H
+#define KATE_SYNTAX_MANAGER_H
 
-#include "kateextendedattribute.h"
-#include "katetextline.h"
-
-#include <KActionMenu>
-#include <KConfig>
 #include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/Repository>
 #include <KSyntaxHighlighting/Theme>
 
-#include <QHash>
 #include <QObject>
 
 #include <memory>
+#include <unordered_map>
 
 class KateHighlighting;
 
@@ -87,5 +83,6 @@ private:
     /**
      * All loaded highlightings.
      */
-    QHash<QString, std::shared_ptr<KateHighlighting>> m_hlDict;
+    std::unordered_map<QString, std::unique_ptr<KateHighlighting>> m_hlDict;
 };
+#endif

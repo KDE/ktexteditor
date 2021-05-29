@@ -13,6 +13,7 @@
 #include "kateglobal.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
+#include "katesyntaxmanager.h"
 
 #include <KCharsets>
 #include <KFilterDev>

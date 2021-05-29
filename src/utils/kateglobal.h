@@ -8,12 +8,10 @@
 #ifndef KATE_GLOBAL_H
 #define KATE_GLOBAL_H
 
-#include "katescript.h"
-#include "variable.h"
 #include <ktexteditor_export.h>
 
-#include "ktexteditor/view.h"
 #include <ktexteditor/editor.h>
+#include <ktexteditor/view.h>
 
 #include <KAboutData>
 #include <KSharedConfig>
@@ -22,9 +20,7 @@
 #include <KTextEditor/MainWindow>
 
 #include <QList>
-#include <QMap>
 #include <QPointer>
-#include <QScopedPointer>
 
 #include <array>
 #include <memory>

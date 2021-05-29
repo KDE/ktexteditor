@@ -28,6 +28,7 @@
 #include "katerenderer.h"
 #include "katescriptmanager.h"
 #include "kateswapfile.h"
+#include "katesyntaxmanager.h"
 #include "katetemplatehandler.h"
 #include "kateundomanager.h"
 #include "katevariableexpansionmanager.h"

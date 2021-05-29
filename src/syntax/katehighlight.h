@@ -16,29 +16,24 @@
 #include <KSyntaxHighlighting/Theme>
 
 #include "kateextendedattribute.h"
-#include "katesyntaxmanager.h"
-#include "katetextline.h"
 #include "range.h"
 #include "spellcheck/prefixstore.h"
 
 #include <QHash>
-#include <QList>
-#include <QMap>
 #include <QVector>
 
-#include <QDate>
-#include <QObject>
-#include <QPointer>
 #include <QRegularExpression>
 #include <QStringList>
 
 #include <unordered_map>
 
-class KConfig;
-
 namespace KTextEditor
 {
 class DocumentPrivate;
+}
+namespace Kate
+{
+class TextLineData;
 }
 
 /**

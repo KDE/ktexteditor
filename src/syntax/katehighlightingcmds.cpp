@@ -6,11 +6,13 @@
 
 #include "katehighlightingcmds.h"
 
+#include <ktexteditor/application.h>
+#include <ktexteditor/editor.h>
+#include <ktexteditor/view.h>
+
 #include "katedocument.h"
-#include "kateglobal.h"
 #include "katehighlight.h"
 #include "katesyntaxmanager.h"
-#include "kateview.h"
 
 #include <QUrl>
 
@@ -19,9 +21,7 @@ KateCommands::Highlighting *KateCommands::Highlighting::m_instance = nullptr;
 bool KateCommands::Highlighting::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     if (cmd.startsWith(QLatin1String("reload-highlighting"))) {
-        KateHlManager *manager = KTextEditor::EditorPrivate::self()->hlManager();
-        manager->reload();
-
+        KateHlManager::self()->reload();
         return true;
     } else if (cmd.startsWith(QLatin1String("edit-highlighting"))) {
         KTextEditor::DocumentPrivate *document = static_cast<KTextEditor::DocumentPrivate *>(view->document());

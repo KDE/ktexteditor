@@ -7,11 +7,12 @@
 #ifndef KATE_HIGHLIGHTMENU_H
 #define KATE_HIGHLIGHTMENU_H
 
-#include <QHash>
 #include <QPointer>
-#include <QStringList>
 
 #include <KActionMenu>
+
+#include <memory>
+#include <vector>
 
 namespace KTextEditor
 {
@@ -30,18 +31,16 @@ public:
         setPopupMode(QToolButton::InstantPopup);
     }
 
-    ~KateHighlightingMenu();
-
     void updateMenu(KTextEditor::DocumentPrivate *doc);
 
 private:
     void init();
 
     QPointer<KTextEditor::DocumentPrivate> m_doc;
-    QStringList subMenusName;
-    QStringList names;
-    QList<QMenu *> subMenus;
-    QList<QAction *> subActions;
+    std::vector<QString> subMenusName;
+    std::vector<QString> names;
+    std::vector<std::unique_ptr<QMenu>> subMenus;
+    std::vector<QAction *> subActions;
     QActionGroup *m_actionGroup;
 
 public Q_SLOTS:

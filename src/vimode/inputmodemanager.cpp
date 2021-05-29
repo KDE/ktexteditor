@@ -31,6 +31,7 @@
 #include "marks.h"
 #include "registers.h"
 #include "searcher.h"
+#include "variable.h"
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>

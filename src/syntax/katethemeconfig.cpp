@@ -10,23 +10,24 @@
 // BEGIN Includes
 #include "katethemeconfig.h"
 
+#include "katecolortreewidget.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
-#include "katepartdebug.h"
-#include "katerenderer.h"
 #include "katestyletreewidget.h"
+#include "katesyntaxmanager.h"
 #include "kateview.h"
 
-#include <KConfigGroup>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KMessageWidget>
 
 #include <QComboBox>
 #include <QFileDialog>
+#include <QGridLayout>
 #include <QInputDialog>
+#include <QJsonObject>
 #include <QLabel>
 #include <QMetaEnum>
 #include <QPushButton>
@@ -150,7 +151,7 @@ KateThemeConfigColorTab::KateThemeConfigColorTab()
     connect(ui, &KateColorTreeWidget::changed, this, &KateThemeConfigColorTab::changed);
 }
 
-QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighlighting::Theme &theme) const
+static QVector<KateColorItem> colorItemList(const KSyntaxHighlighting::Theme &theme)
 {
     QVector<KateColorItem> items;
 
@@ -362,8 +363,9 @@ void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
 
     // save current schema
     if (!m_currentSchema.isEmpty()) {
-        if (m_schemas.contains(m_currentSchema)) {
-            m_schemas.remove(m_currentSchema); // clear this color schema
+        auto it = m_schemas.find(m_currentSchema);
+        if (it != m_schemas.end()) {
+            m_schemas.erase(m_currentSchema); // clear this color schema
         }
 
         // now add it again
@@ -378,13 +380,12 @@ void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
     m_currentSchema = newSchema;
 
     // If we havent this schema, read in from config file
-    if (!m_schemas.contains(newSchema)) {
+    if (m_schemas.find(newSchema) == m_schemas.end()) {
         QVector<KateColorItem> items = colorItemList(theme);
-        for (int i = 0; i < items.count(); ++i) {
-            KateColorItem &item(items[i]);
+        for (auto &item : items) {
             item.color = QColor::fromRgba(theme.editorColor(item.role));
         }
-        m_schemas[newSchema] = items;
+        m_schemas[newSchema] = std::move(items);
     }
 
     // first block signals otherwise setColor emits changed
@@ -415,9 +416,9 @@ void KateThemeConfigColorTab::apply()
     const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
 
     // export all themes we cached data for
-    for (auto it = m_schemas.constBegin(); it != m_schemas.constEnd(); ++it) {
+    for (auto it = m_schemas.cbegin(); it != m_schemas.cend(); ++it) {
         // get theme for key, skip invalid or read-only themes for writing
-        const auto theme = KateHlManager::self()->repository().theme(it.key());
+        const auto theme = KateHlManager::self()->repository().theme(it->first);
         if (!theme.isValid() || theme.isReadOnly()) {
             continue;
         }
@@ -427,7 +428,8 @@ void KateThemeConfigColorTab::apply()
 
         // patch the editor-colors part
         QJsonObject colors;
-        for (const KateColorItem &item : it.value()) {
+        const auto &colorItems = it->second;
+        for (const KateColorItem &item : colorItems) {
             QColor c = item.useDefault ? item.defaultColor : item.color;
             colors[QLatin1String(metaEnum.key(item.role))] = hexName(c);
         }
@@ -484,16 +486,13 @@ KateThemeConfigDefaultStylesTab::KateThemeConfigDefaultStylesTab(KateThemeConfig
              "Background colors from the popup menu when appropriate.</p>"));
 }
 
-KateThemeConfigDefaultStylesTab::~KateThemeConfigDefaultStylesTab()
-{
-    qDeleteAll(m_defaultStyleLists);
-}
-
 KateAttributeList *KateThemeConfigDefaultStylesTab::attributeList(const QString &schema)
 {
-    if (!m_defaultStyleLists.contains(schema)) {
+    auto it = m_defaultStyleLists.find(schema);
+    if (it == m_defaultStyleLists.end()) {
         // get list of all default styles
-        KateAttributeList *list = new KateAttributeList();
+        KateAttributeList list;
+        list.reserve(defaultStyleCount());
         const KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(schema);
         for (int z = 0; z < defaultStyleCount(); z++) {
             KTextEditor::Attribute::Ptr i(new KTextEditor::Attribute());
@@ -523,12 +522,12 @@ KateAttributeList *KateThemeConfigDefaultStylesTab::attributeList(const QString 
             i->setFontItalic(currentTheme.isItalic(style));
             i->setFontUnderline(currentTheme.isUnderline(style));
             i->setFontStrikeOut(currentTheme.isStrikeThrough(style));
-            list->append(i);
+            list.append(i);
         }
-        m_defaultStyleLists.insert(schema, list);
+        it = m_defaultStyleLists.emplace(schema, list).first;
     }
 
-    return m_defaultStyleLists[schema];
+    return &(it->second);
 }
 
 void KateThemeConfigDefaultStylesTab::schemaChanged(const QString &schema)
@@ -594,7 +593,6 @@ void KateThemeConfigDefaultStylesTab::updateColorPalette(const QColor &textColor
 void KateThemeConfigDefaultStylesTab::reload()
 {
     m_defaultStyles->clear();
-    qDeleteAll(m_defaultStyleLists);
     m_defaultStyleLists.clear();
 
     schemaChanged(m_currentSchema);
@@ -608,12 +606,9 @@ void KateThemeConfigDefaultStylesTab::apply()
     const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
 
     // export all configured styles of the cached themes
-    QHashIterator<QString, KateAttributeList *> it(m_defaultStyleLists);
-    while (it.hasNext()) {
-        it.next();
-
+    for (const auto &kv : m_defaultStyleLists) {
         // get theme for key, skip invalid or read-only themes for writing
-        const auto theme = KateHlManager::self()->repository().theme(it.key());
+        const auto theme = KateHlManager::self()->repository().theme(kv.first);
         if (!theme.isValid() || theme.isReadOnly()) {
             continue;
         }
@@ -625,7 +620,7 @@ void KateThemeConfigDefaultStylesTab::apply()
         QJsonObject styles;
         for (int z = 0; z < defaultStyleCount(); z++) {
             QJsonObject style;
-            KTextEditor::Attribute::Ptr p = it.value()->at(z);
+            KTextEditor::Attribute::Ptr p = kv.second.at(z);
             if (p->hasProperty(QTextFormat::ForegroundBrush)) {
                 style[QLatin1String("text-color")] = hexName(p->foreground().color());
             }
@@ -797,8 +792,9 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
 
     m_styles->clear();
 
-    if (!m_hlDict.contains(m_schema)) {
-        m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr>>());
+    auto it = m_hlDict.find(m_schema);
+    if (it == m_hlDict.end()) {
+        it = m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr>>());
     }
 
     // Set listview colors
@@ -833,8 +829,10 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
             uniqueAttributeDefault = defaults[i];
     }
 
-    if (!m_hlDict[m_schema].contains(m_hl)) {
-        m_hlDict[m_schema].insert(m_hl, attributes);
+    auto &subMap = it.value();
+    auto it1 = subMap.find(m_hl);
+    if (it1 == subMap.end()) {
+        it1 = subMap.insert(m_hl, attributes);
     }
 
     // None can't be changed with the current way
@@ -842,10 +840,11 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
     m_styles->setDisabled(m_hl == 0);
 
     QHash<QString, QTreeWidgetItem *> prefixes;
-    auto it = m_hlDict[m_schema][m_hl].constBegin();
+    const auto &attribs = it1.value();
+    auto vec_it = attribs.cbegin();
     int i = 0;
-    while (it != m_hlDict[m_schema][m_hl].constEnd()) {
-        const KTextEditor::Attribute::Ptr itemData = *it;
+    while (vec_it != attribs.end()) {
+        const KTextEditor::Attribute::Ptr itemData = *vec_it;
         Q_ASSERT(itemData);
 
         // All stylenames have their language mode prefixed, e.g. HTML:Comment
@@ -865,7 +864,7 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
         } else {
             m_styles->addItem(itemData->name(), defaults.at(i), itemData);
         }
-        ++it;
+        ++vec_it;
         ++i;
     }
 
@@ -965,7 +964,11 @@ void KateThemeConfigHighlightTab::apply()
 
 QList<int> KateThemeConfigHighlightTab::hlsForSchema(const QString &schema)
 {
-    return m_hlDict[schema].keys();
+    auto it = m_hlDict.find(schema);
+    if (it != m_hlDict.end()) {
+        return it.value().keys();
+    }
+    return {};
 }
 
 void KateThemeConfigHighlightTab::showEvent(QShowEvent *event)

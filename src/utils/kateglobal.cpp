@@ -14,14 +14,14 @@
 #include "katecmd.h"
 #include "katecmds.h"
 #include "kateconfig.h"
+#include "katedialogs.h"
 #include "katedocument.h"
 #include "katehighlightingcmds.h"
 #include "katekeywordcompletion.h"
 #include "katemodemanager.h"
-#include "katepartdebug.h"
-#include "katerenderer.h"
 #include "katescriptmanager.h"
 #include "katesedcmd.h"
+#include "katesyntaxmanager.h"
 #include "katethemeconfig.h"
 #include "katevariableexpansionmanager.h"
 #include "kateview.h"
@@ -35,11 +35,11 @@
 #include <KDirWatch>
 #include <KLocalizedString>
 #include <KPageDialog>
-#include <KPageWidgetModel>
 
 #include <QApplication>
 #include <QBoxLayout>
 #include <QClipboard>
+#include <QFrame>
 #include <QPushButton>
 #include <QStringListModel>
 #include <QTimer>

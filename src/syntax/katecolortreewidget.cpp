@@ -8,13 +8,9 @@
 
 #include "katecategorydrawer.h"
 
-#include <QHeaderView>
 #include <QPainter>
 #include <QStyledItemDelegate>
 
-#include "katepartdebug.h"
-#include <KColorUtils>
-#include <KConfigGroup>
 #include <KLocalizedString>
 
 #include <QColorDialog>

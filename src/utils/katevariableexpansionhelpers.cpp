@@ -6,7 +6,8 @@
 
 #include "katevariableexpansionhelpers.h"
 
-#include "kateglobal.h"
+#include "variable.h"
+
 #include <KLocalizedString>
 #include <KTextEditor/Application>
 #include <KTextEditor/Editor>

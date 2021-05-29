@@ -13,21 +13,8 @@
 // BEGIN INCLUDES
 #include "katehighlight.h"
 
-#include "kateconfig.h"
 #include "katedocument.h"
-#include "kateglobal.h"
-#include "katepartdebug.h"
-#include "katerenderer.h"
-
-#include <KConfig>
-#include <KConfigGroup>
-#include <KMessageBox>
-
-#include <QAction>
-#include <QApplication>
-#include <QSet>
-#include <QTextStream>
-#include <QVarLengthArray>
+#include "katesyntaxmanager.h"
 // END
 
 // BEGIN KateHighlighting

@@ -9,18 +9,16 @@
 #ifndef KATE_SCHEMA_CONFIG_H
 #define KATE_SCHEMA_CONFIG_H
 
-#include "katecolortreewidget.h"
-#include "katedialogs.h"
+#include "kateconfigpage.h"
 #include "kateextendedattribute.h"
 
-#include <QFont>
-#include <QJsonObject>
-#include <QMap>
-
 #include <map>
+#include <unordered_map>
 
 class KateStyleTreeWidget;
+class KateColorTreeWidget;
 class KMessageWidget;
+class KateColorItem;
 
 class QComboBox;
 
@@ -43,13 +41,9 @@ Q_SIGNALS:
     void changed();
 
 private:
-    QVector<KateColorItem> colorItemList(const KSyntaxHighlighting::Theme &theme) const;
-
-private:
     // multiple shemas may be edited. Hence, we need one ColorList for each schema
-    QMap<QString, QVector<KateColorItem>> m_schemas;
+    std::map<QString, QVector<KateColorItem>> m_schemas;
     QString m_currentSchema;
-
     KateColorTreeWidget *ui;
 };
 
@@ -59,7 +53,6 @@ class KateThemeConfigDefaultStylesTab : public QWidget
 
 public:
     explicit KateThemeConfigDefaultStylesTab(KateThemeConfigColorTab *colorTab);
-    ~KateThemeConfigDefaultStylesTab() override;
 
 Q_SIGNALS:
     void changed();
@@ -77,7 +70,7 @@ protected:
 
 private:
     KateStyleTreeWidget *m_defaultStyles;
-    QHash<QString, KateAttributeList *> m_defaultStyleLists;
+    std::unordered_map<QString, KateAttributeList> m_defaultStyleLists;
     KateThemeConfigColorTab *m_colorTab;
     QString m_currentSchema;
 };

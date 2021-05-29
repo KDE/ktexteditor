@@ -9,7 +9,6 @@
 
 #include "katestyletreewidget.h"
 #include "kateconfig.h"
-#include "kateglobal.h"
 
 #include <KLocalizedString>
 #include <KMessageBox>

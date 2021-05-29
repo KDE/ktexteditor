@@ -11,14 +11,9 @@
 
 #include "katesyntaxmanager.h"
 
-#include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
-#include "katepartdebug.h"
-#include "katerenderer.h"
-
-#include <algorithm>
 
 KateHlManager *KateHlManager::self()
 {
@@ -40,24 +35,32 @@ QVector<KSyntaxHighlighting::Theme> KateHlManager::sortedThemes() const
 KateHighlighting *KateHlManager::getHl(int n)
 {
     // default to "None", must exist
-    if (n < 0 || n >= modeList().count()) {
+    const auto modeList = this->modeList();
+
+    if (n < 0 || n >= modeList.count()) {
         n = nameFind(QStringLiteral("None"));
         Q_ASSERT(n >= 0);
     }
 
-    // construct it on demand
-    if (!m_hlDict.contains(modeList().at(n).name())) {
-        m_hlDict[modeList().at(n).name()] = std::make_shared<KateHighlighting>(modeList().at(n));
+    const auto &mode = modeList.at(n);
+
+    auto it = m_hlDict.find(mode.name());
+    if (it == m_hlDict.end()) {
+        std::unique_ptr<KateHighlighting> hl(new KateHighlighting(mode));
+        it = m_hlDict.emplace(mode.name(), std::move(hl)).first;
     }
-    return m_hlDict[modeList().at(n).name()].get();
+    return it->second.get();
 }
 
 int KateHlManager::nameFind(const QString &name)
 {
-    for (int i = 0; i < modeList().count(); ++i) {
-        if (modeList().at(i).name().compare(name, Qt::CaseInsensitive) == 0) {
-            return i;
+    const auto modeList = this->modeList();
+    int idx = 0;
+    for (const auto &mode : modeList) {
+        if (mode.name().compare(name, Qt::CaseInsensitive) == 0) {
+            return idx;
         }
+        idx++;
     }
 
     return -1;
@@ -65,8 +68,6 @@ int KateHlManager::nameFind(const QString &name)
 
 void KateHlManager::reload()
 {
-    // copy current loaded hls from hash to trigger recreation
-    auto oldHls = m_hlDict;
     m_hlDict.clear();
 
     // recreate repository

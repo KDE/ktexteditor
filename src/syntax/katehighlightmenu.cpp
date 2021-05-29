@@ -7,19 +7,13 @@
 // BEGIN Includes
 #include "katehighlightmenu.h"
 
-#include "kateconfig.h"
 #include "katedocument.h"
-#include "kateglobal.h"
-#include "katepartdebug.h"
 #include "katesyntaxmanager.h"
-#include "kateview.h"
-#include <KLocalizedString>
-// END Includes
 
-KateHighlightingMenu::~KateHighlightingMenu()
-{
-    qDeleteAll(subMenus);
-}
+#include <KLocalizedString>
+
+#include <QMenu>
+// END Includes
 
 void KateHighlightingMenu::init()
 {
@@ -36,35 +30,42 @@ void KateHighlightingMenu::updateMenu(KTextEditor::DocumentPrivate *doc)
 
 void KateHighlightingMenu::slotAboutToShow()
 {
-    for (const auto &hl : KateHlManager::self()->modeList()) {
+    const auto modeList = KateHlManager::self()->modeList();
+    for (const auto &hl : modeList) {
         QString hlName = hl.translatedName();
         QString hlSection = hl.translatedSection();
         if (hlName == QLatin1String("None"))
             hlName = i18n("None");
 
         if (!hl.isHidden() && !hlName.isEmpty()) {
-            if (!hlSection.isEmpty() && !names.contains(hlName)) {
-                if (!subMenusName.contains(hlSection)) {
-                    subMenusName << hlSection;
-                    QMenu *qmenu = new QMenu(QLatin1Char('&') + hlSection);
-                    subMenus.append(qmenu);
-                    menu()->addMenu(qmenu);
+            const bool namesHaveHlName = std::find(names.begin(), names.end(), hlName) != names.end();
+
+            if (!hlSection.isEmpty() && !namesHaveHlName) {
+                auto it = std::find(subMenusName.begin(), subMenusName.end(), hlSection);
+                if (it == subMenusName.end()) {
+                    subMenusName.push_back(hlSection);
+                    std::unique_ptr<QMenu> qmenu(new QMenu(QLatin1Char('&') + hlSection));
+                    subMenus.push_back(std::move(qmenu));
+                    menu()->addMenu(qmenu.get());
+
+                    // last element is the one we just inserted
+                    it = --subMenusName.end();
                 }
 
-                int m = subMenusName.indexOf(hlSection);
-                names << hlName;
+                const auto m = std::distance(subMenusName.begin(), it);
+                names.push_back(hlName);
                 QAction *a = subMenus.at(m)->addAction(QLatin1Char('&') + hlName, this, SLOT(setHl()));
                 m_actionGroup->addAction(a);
                 a->setData(hl.name());
                 a->setCheckable(true);
-                subActions.append(a);
-            } else if (!names.contains(hlName)) {
-                names << hlName;
+                subActions.push_back(a);
+            } else if (!namesHaveHlName) {
+                names.push_back(hlName);
                 QAction *a = menu()->addAction(QLatin1Char('&') + hlName, this, SLOT(setHl()));
                 m_actionGroup->addAction(a);
                 a->setData(hl.name());
                 a->setCheckable(true);
-                subActions.append(a);
+                subActions.push_back(a);
             }
         }
     }
@@ -72,9 +73,9 @@ void KateHighlightingMenu::slotAboutToShow()
     if (!m_doc) {
         return;
     }
-    QString mode = m_doc->highlightingMode();
-    for (int i = 0; i < subActions.count(); i++) {
-        subActions[i]->setChecked(subActions[i]->data().toString() == mode);
+    const QString mode = m_doc->highlightingMode();
+    for (auto subAction : subActions) {
+        subAction->setChecked(subAction->data().toString() == mode);
     }
 }
 
