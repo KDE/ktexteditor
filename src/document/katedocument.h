@@ -628,7 +628,7 @@ public:
     virtual void setVariable(const QString &name, const QString &value);
 
 private:
-    QMap<QString, QString> m_storedVariables;
+    std::map<QString, QString> m_storedVariables;
 
     //
     // MovingInterface API
@@ -1158,11 +1158,11 @@ public:
 public:
     KateDocumentConfig *config()
     {
-        return m_config;
+        return m_config.get();
     }
     KateDocumentConfig *config() const
     {
-        return m_config;
+        return m_config.get();
     }
 
     void updateConfig();
@@ -1170,7 +1170,7 @@ public:
 private:
     void makeAttribs(bool needInvalidate = true);
 
-    KateDocumentConfig *const m_config;
+    std::unique_ptr<KateDocumentConfig> const m_config;
 
     /**
      * Variable Reader
@@ -1429,7 +1429,7 @@ private:
     /**
      * current autobrace range
      */
-    QSharedPointer<KTextEditor::MovingRange> m_currentAutobraceRange;
+    std::unique_ptr<KTextEditor::MovingRange> m_currentAutobraceRange;
     /**
      * current autobrace closing character (e.g. ']')
      */

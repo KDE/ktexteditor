@@ -45,7 +45,6 @@
 #include <KTextEditor/Attribute>
 #include <KTextEditor/DocumentCursor>
 
-#include <KCodecs>
 #include <KConfigGroup>
 #include <KDirWatch>
 #include <KFileItem>
@@ -325,9 +324,9 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     qDeleteAll(m_views.keys());
     m_views.clear();
 
-    // cu marks
-    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
-        delete i.value();
+    // clean up marks
+    for (auto &mark : qAsConst(m_marks)) {
+        delete mark;
     }
     m_marks.clear();
 
@@ -336,8 +335,6 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     // see e.g. bug 422546 for similar issues with view
     // this is still early enough, as as long as m_config is valid, this document is still "OK"
     KTextEditor::EditorPrivate::self()->deregisterDocument(this);
-
-    delete m_config;
 }
 // END
 
@@ -639,12 +636,11 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
         return false;
     }
 
-    QList<KTextEditor::Mark> msave;
-
+    std::vector<KTextEditor::Mark> msave;
     msave.reserve(m_marks.size());
-    for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
-        msave.append(*mark);
-    }
+    std::transform(m_marks.cbegin(), m_marks.cend(), std::back_inserter(msave), [](KTextEditor::Mark *mark) {
+        return *mark;
+    });
 
     editStart();
 
@@ -656,7 +652,7 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
 
     editEnd();
 
-    for (KTextEditor::Mark mark : qAsConst(msave)) {
+    for (KTextEditor::Mark mark : msave) {
         setMark(mark.line, mark.type);
     }
 
@@ -669,12 +665,11 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
         return false;
     }
 
-    QList<KTextEditor::Mark> msave;
-
+    std::vector<KTextEditor::Mark> msave;
     msave.reserve(m_marks.size());
-    for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
-        msave.append(*mark);
-    }
+    std::transform(m_marks.cbegin(), m_marks.cend(), std::back_inserter(msave), [](KTextEditor::Mark *mark) {
+        return *mark;
+    });
 
     editStart();
 
@@ -686,7 +681,7 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
 
     editEnd();
 
-    for (KTextEditor::Mark mark : qAsConst(msave)) {
+    for (KTextEditor::Mark mark : msave) {
         setMark(mark.line, mark.type);
     }
 
@@ -1429,25 +1424,25 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
     if (!nextLine || newLine) {
         m_buffer->wrapLine(KTextEditor::Cursor(line, col));
 
-        QList<KTextEditor::Mark *> list;
-        for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
-            if (i.value()->line >= line) {
-                if ((col == 0) || (i.value()->line > line)) {
-                    list.append(i.value());
+        QVarLengthArray<KTextEditor::Mark *, 8> list;
+        for (const auto &mark : qAsConst(m_marks)) {
+            if (mark->line >= line) {
+                if ((col == 0) || (mark->line > line)) {
+                    list.push_back(mark);
                 }
             }
         }
 
-        for (int i = 0; i < list.size(); ++i) {
-            m_marks.take(list.at(i)->line);
+        for (const auto &mark : list) {
+            m_marks.take(mark->line);
         }
 
-        for (int i = 0; i < list.size(); ++i) {
-            list.at(i)->line++;
-            m_marks.insert(list.at(i)->line, list.at(i));
+        for (const auto &mark : list) {
+            mark->line++;
+            m_marks.insert(mark->line, mark);
         }
 
-        if (!list.isEmpty()) {
+        if (!list.empty()) {
             Q_EMIT marksChanged(this);
         }
 
@@ -1508,28 +1503,27 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         m_buffer->unwrapLine(line + 1);
     }
 
-    QList<KTextEditor::Mark *> list;
-    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
-        if (i.value()->line >= line + 1) {
-            list.append(i.value());
+    QVarLengthArray<KTextEditor::Mark *, 8> list;
+    for (const auto &mark : qAsConst(m_marks)) {
+        if (mark->line >= line + 1) {
+            list.push_back(mark);
         }
 
-        if (i.value()->line == line + 1) {
-            KTextEditor::Mark *mark = m_marks.take(line);
-
-            if (mark) {
-                i.value()->type |= mark->type;
+        if (mark->line == line + 1) {
+            auto m = m_marks.take(line);
+            if (m) {
+                mark->type |= m->type;
             }
         }
     }
 
-    for (int i = 0; i < list.size(); ++i) {
-        m_marks.take(list.at(i)->line);
+    for (const auto &mark : list) {
+        m_marks.take(mark->line);
     }
 
-    for (int i = 0; i < list.size(); ++i) {
-        list.at(i)->line--;
-        m_marks.insert(list.at(i)->line, list.at(i));
+    for (const auto &mark : list) {
+        mark->line--;
+        m_marks.insert(mark->line, mark);
     }
 
     if (!list.isEmpty()) {
@@ -1580,20 +1574,19 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
 
     Kate::TextLine tl = m_buffer->line(line);
 
-    QList<KTextEditor::Mark *> list;
-    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
-        if (i.value()->line >= line) {
-            list.append(i.value());
+    QVarLengthArray<KTextEditor::Mark *, 8> list;
+    for (const auto &mark : qAsConst(m_marks)) {
+        if (mark->line >= line) {
+            list.push_back(mark);
         }
     }
 
-    for (int i = 0; i < list.size(); ++i) {
-        m_marks.take(list.at(i)->line);
+    for (const auto &mark : list) {
+        m_marks.take(mark->line);
     }
-
-    for (int i = 0; i < list.size(); ++i) {
-        list.at(i)->line++;
-        m_marks.insert(list.at(i)->line, list.at(i));
+    for (const auto &mark : list) {
+        mark->line++;
+        m_marks.insert(mark->line, mark);
     }
 
     if (!list.isEmpty()) {
@@ -1663,8 +1656,8 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         }
     }
 
-    QList<int> rmark;
-    QList<int> list;
+    QVarLengthArray<int, 8> rmark;
+    QVarLengthArray<int, 8> list;
 
     for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
         int line = mark->line;
@@ -1675,11 +1668,11 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         }
     }
 
-    for (int line : qAsConst(rmark)) {
+    for (int line : rmark) {
         delete m_marks.take(line);
     }
 
-    for (int line : qAsConst(list)) {
+    for (int line : list) {
         KTextEditor::Mark *mark = m_marks.take(line);
         mark->line -= to - from + 1;
         m_marks.insert(mark->line, mark);
@@ -1982,10 +1975,11 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
 
     // Save Bookmarks
     QList<int> marks;
-    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i)
-        if (i.value()->type & KTextEditor::MarkInterface::markType01) {
-            marks << i.value()->line;
+    for (const auto &mark : qAsConst(m_marks)) {
+        if (mark->type & KTextEditor::MarkInterface::markType01) {
+            marks.push_back(mark->line);
         }
+    }
 
     kconfig.writeEntry("Bookmarks", marks);
 }
@@ -2014,16 +2008,13 @@ void KTextEditor::DocumentPrivate::clearMark(int line)
         return;
     }
 
-    if (!m_marks.value(line)) {
-        return;
+    if (auto mark = m_marks.take(line)) {
+        Q_EMIT markChanged(this, *mark, MarkRemoved);
+        Q_EMIT marksChanged(this);
+        delete mark;
+        tagLine(line);
+        repaintViews(true);
     }
-
-    KTextEditor::Mark *mark = m_marks.take(line);
-    Q_EMIT markChanged(this, *mark, MarkRemoved);
-    Q_EMIT marksChanged(this);
-    delete mark;
-    tagLine(line);
-    repaintViews(true);
 }
 
 void KTextEditor::DocumentPrivate::addMark(int line, uint markType)
@@ -2072,11 +2063,11 @@ void KTextEditor::DocumentPrivate::removeMark(int line, uint markType)
         return;
     }
 
-    KTextEditor::Mark *mark = m_marks.value(line);
-
-    if (!mark) {
+    auto it = m_marks.find(line);
+    if (it == m_marks.end()) {
         return;
     }
+    KTextEditor::Mark *mark = it.value();
 
     // Remove bits not set
     markType &= mark->type;
@@ -2095,7 +2086,7 @@ void KTextEditor::DocumentPrivate::removeMark(int line, uint markType)
     Q_EMIT markChanged(this, temp, MarkRemoved);
 
     if (mark->type == 0) {
-        m_marks.remove(line);
+        m_marks.erase(it);
         delete mark;
     }
 
@@ -2148,16 +2139,12 @@ bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint positi
 
 void KTextEditor::DocumentPrivate::clearMarks()
 {
-    while (!m_marks.isEmpty()) {
-        QHash<int, KTextEditor::Mark *>::iterator it = m_marks.begin();
-        KTextEditor::Mark mark = *it.value();
-        delete it.value();
-        m_marks.erase(it);
-
+    for (const auto &m : qAsConst(m_marks)) {
+        auto mark = *m;
+        delete m;
         Q_EMIT markChanged(this, mark, MarkRemoved);
         tagLine(mark.line);
     }
-
     m_marks.clear();
 
     Q_EMIT marksChanged(this);
@@ -3207,7 +3194,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
 void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View *, const KTextEditor::Cursor &newPos)
 {
     if (m_currentAutobraceRange && !m_currentAutobraceRange->toRange().contains(newPos)) {
-        m_currentAutobraceRange.clear();
+        m_currentAutobraceRange.reset();
     }
 }
 
@@ -3387,7 +3374,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
         if (r.columnWidth() == 1 && view->cursorPosition() == r.start()) {
             // start parenthesis removed and range length is 1, remove end as well
             del(view, view->cursorPosition());
-            m_currentAutobraceRange.clear();
+            m_currentAutobraceRange.reset();
         }
     }
 }
@@ -4414,16 +4401,11 @@ bool KTextEditor::DocumentPrivate::documentReload()
 
     Q_EMIT aboutToReload(this);
 
-    QList<KateDocumentTmpMark> tmp;
-
-    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
-        KateDocumentTmpMark m;
-
-        m.line = line(i.value()->line);
-        m.mark = *i.value();
-
-        tmp.append(m);
-    }
+    QVarLengthArray<KateDocumentTmpMark> tmp;
+    tmp.reserve(m_marks.size());
+    std::transform(m_marks.cbegin(), m_marks.cend(), std::back_inserter(tmp), [this](KTextEditor::Mark *mark) {
+        return KateDocumentTmpMark{line(mark->line), *mark};
+    });
 
     const QString oldMode = mode();
     const bool byUser = m_fileTypeSetByUser;
@@ -4432,11 +4414,10 @@ bool KTextEditor::DocumentPrivate::documentReload()
     m_storedVariables.clear();
 
     // save cursor positions for all views
-    QHash<KTextEditor::ViewPrivate *, KTextEditor::Cursor> cursorPositions;
-    for (auto it = m_views.constBegin(); it != m_views.constEnd(); ++it) {
-        auto v = it.value();
-        cursorPositions.insert(v, v->cursorPosition());
-    }
+    QVarLengthArray<std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>, 4> cursorPositions;
+    std::transform(m_views.cbegin(), m_views.cend(), std::back_inserter(cursorPositions), [](KTextEditor::ViewPrivate *v) {
+        return std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>(v, v->cursorPosition());
+    });
 
     m_reloading = true;
     KTextEditor::DocumentPrivate::openUrl(url());
@@ -4445,21 +4426,26 @@ bool KTextEditor::DocumentPrivate::documentReload()
     m_userSetEncodingForNextReload = false;
 
     // restore cursor positions for all views
-    for (auto it = m_views.constBegin(); it != m_views.constEnd(); ++it) {
-        auto v = it.value();
+    for (auto v : m_views) {
         setActiveView(v);
-        v->setCursorPosition(cursorPositions.value(v));
+        auto it = std::find_if(cursorPositions.cbegin(), cursorPositions.cend(), [v](const std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor> &p) {
+            return p.first == v;
+        });
+        v->setCursorPosition(it->second);
         if (v->isVisible()) {
             v->repaintText(false);
         }
     }
 
-    for (int z = 0; z < tmp.size(); z++) {
-        if (z < lines()) {
-            if (line(tmp.at(z).mark.line) == tmp.at(z).line) {
-                setMark(tmp.at(z).mark.line, tmp.at(z).mark.type);
+    int z = 0;
+    const int lines = this->lines();
+    for (const auto &tmpMark : tmp) {
+        if (z < lines) {
+            if (tmpMark.line == line(tmpMark.mark.line)) {
+                setMark(tmpMark.mark.line, tmpMark.mark.type);
             }
         }
+        ++z;
     }
 
     if (byUser) {
@@ -4831,7 +4817,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
             else if (contains(vvl, var)) {
                 setViewVariable(var, val);
             } else {
-                m_storedVariables.insert(var, val);
+                m_storedVariables.insert(std::pair<QString, QString>(var, val));
             }
         }
     }
@@ -4932,7 +4918,11 @@ bool KTextEditor::DocumentPrivate::checkColorValue(const QString &val, QColor &c
 // KTextEditor::variable
 QString KTextEditor::DocumentPrivate::variable(const QString &name) const
 {
-    return m_storedVariables.value(name, QString());
+    auto it = m_storedVariables.find(name);
+    if (it == m_storedVariables.end()) {
+        return QString();
+    }
+    return it->second;
 }
 
 void KTextEditor::DocumentPrivate::setVariable(const QString &name, const QString &value)
@@ -5096,7 +5086,8 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
 
     editStart();
 
-    for (int line = 0; line < lines(); ++line) {
+    const int lines = this->lines();
+    for (int line = 0; line < lines; ++line) {
         Kate::TextLine textline = plainKateTextLine(line);
 
         // remove trailing spaces in entire document, remove = 2
@@ -5322,8 +5313,7 @@ void KTextEditor::DocumentPrivate::transformCursor(KTextEditor::Cursor &cursor,
 {
     int line = cursor.line(), column = cursor.column();
     m_buffer->history().transformCursor(line, column, insertBehavior, fromRevision, toRevision);
-    cursor.setLine(line);
-    cursor.setColumn(column);
+    cursor.setPosition(line, column);
 }
 
 void KTextEditor::DocumentPrivate::transformRange(KTextEditor::Range &range,
@@ -5600,7 +5590,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
     }
     QList<QPair<KTextEditor::MovingRange *, QString>> newRanges;
     // all ranges is 'm_dictionaryRanges' are assumed to be mutually disjoint
-    for (QList<QPair<KTextEditor::MovingRange *, QString>>::iterator i = m_dictionaryRanges.begin(); i != m_dictionaryRanges.end();) {
+    for (auto i = m_dictionaryRanges.begin(); i != m_dictionaryRanges.end();) {
         qCDebug(LOG_KTE) << "new iteration" << newDictionaryRange;
         if (newDictionaryRange.isEmpty()) {
             break;
@@ -5632,10 +5622,10 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
                 continue;
             }
             QList<KTextEditor::Range> remainingRanges = KateSpellCheckManager::rangeDifference(*dictionaryRange, intersection);
-            for (QList<KTextEditor::Range>::iterator j = remainingRanges.begin(); j != remainingRanges.end(); ++j) {
+            for (auto j = remainingRanges.begin(); j != remainingRanges.end(); ++j) {
                 KTextEditor::MovingRange *remainingRange = newMovingRange(*j, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
                 remainingRange->setFeedback(this);
-                newRanges.push_back(QPair<KTextEditor::MovingRange *, QString>(remainingRange, dictionarySet));
+                newRanges.push_back({remainingRange, dictionarySet});
             }
             i = m_dictionaryRanges.erase(i);
             delete dictionaryRange;
@@ -5648,7 +5638,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
         KTextEditor::MovingRange *newDictionaryMovingRange =
             newMovingRange(newDictionaryRange, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
         newDictionaryMovingRange->setFeedback(this);
-        m_dictionaryRanges.push_back(QPair<KTextEditor::MovingRange *, QString>(newDictionaryMovingRange, newDictionary));
+        m_dictionaryRanges.push_back({newDictionaryMovingRange, newDictionary});
     }
     if (m_onTheFlyChecker && !newDictionaryRange.isEmpty()) {
         m_onTheFlyChecker->refreshSpellCheck(newDictionaryRange);
@@ -5748,7 +5738,6 @@ void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRang
 bool KTextEditor::DocumentPrivate::containsCharacterEncoding(const KTextEditor::Range &range)
 {
     KateHighlighting *highlighting = highlight();
-    Kate::TextLine textLine;
 
     const int rangeStartLine = range.start().line();
     const int rangeStartColumn = range.start().column();
@@ -5756,9 +5745,9 @@ bool KTextEditor::DocumentPrivate::containsCharacterEncoding(const KTextEditor::
     const int rangeEndColumn = range.end().column();
 
     for (int line = range.start().line(); line <= rangeEndLine; ++line) {
-        textLine = kateTextLine(line);
-        int startColumn = (line == rangeStartLine) ? rangeStartColumn : 0;
-        int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine->length();
+        const Kate::TextLine textLine = kateTextLine(line);
+        const int startColumn = (line == rangeStartLine) ? rangeStartColumn : 0;
+        const int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine->length();
         for (int col = startColumn; col < endColumn; ++col) {
             int attr = textLine->attribute(col);
             const KatePrefixStore &prefixStore = highlighting->getCharacterEncodingsPrefixStore(attr);
@@ -5774,11 +5763,11 @@ bool KTextEditor::DocumentPrivate::containsCharacterEncoding(const KTextEditor::
 int KTextEditor::DocumentPrivate::computePositionWrtOffsets(const OffsetList &offsetList, int pos)
 {
     int previousOffset = 0;
-    for (OffsetList::const_iterator i = offsetList.begin(); i != offsetList.end(); ++i) {
-        if ((*i).first > pos) {
+    for (auto i = offsetList.cbegin(); i != offsetList.cend(); ++i) {
+        if (i->first > pos) {
             break;
         }
-        previousOffset = (*i).second;
+        previousOffset = i->second;
     }
     return pos + previousOffset;
 }
@@ -5857,7 +5846,7 @@ void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(const KTextEditor
         for (int col = startColumn; col < endColumn;) {
             int attr = textLine->attribute(col);
             const QHash<QChar, QString> &reverseCharacterEncodingsHash = highlighting->getReverseCharacterEncodings(attr);
-            QHash<QChar, QString>::const_iterator it = reverseCharacterEncodingsHash.find(textLine->at(col));
+            auto it = reverseCharacterEncodingsHash.find(textLine->at(col));
             if (it != reverseCharacterEncodingsHash.end()) {
                 replaceText(KTextEditor::Range(line, col, line, col + 1), *it);
                 col += (*it).length();
