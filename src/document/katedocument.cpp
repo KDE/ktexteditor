@@ -1513,6 +1513,7 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
             auto m = m_marks.take(line);
             if (m) {
                 mark->type |= m->type;
+                delete m;
             }
         }
     }
