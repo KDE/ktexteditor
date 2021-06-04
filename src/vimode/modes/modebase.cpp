@@ -370,15 +370,15 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     static const QRegularExpression startOfLine(QStringLiteral("^\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space at start of line
 
     int l = fromLine;
-    int c = (fromColumn > 0) ? (fromColumn - 1) : fromColumn;
+    int c = fromColumn;
 
     bool found = false;
 
     while (!found) {
-        int c1 = line.lastIndexOf(startOfWord, -line.length() + c - 1);
-        int c2 = line.lastIndexOf(nonSpaceAfterSpace, -line.length() + c - 2);
-        int c3 = line.lastIndexOf(nonWordAfterWord, -line.length() + c - 1);
-        int c4 = line.lastIndexOf(startOfLine, -line.length() + c - 1);
+        int c1 = (c > 0) ? line.lastIndexOf(startOfWord, c - 1) : -1;
+        int c2 = (c > 1) ? line.lastIndexOf(nonSpaceAfterSpace, c - 2) : -1;
+        int c3 = (c > 0) ? line.lastIndexOf(nonWordAfterWord, c - 1) : -1;
+        int c4 = (c > 0) ? line.lastIndexOf(startOfLine, c - 1) : -1;
 
         if (c1 == -1 && c2 == -1 && c3 == -1 && c4 == -1) {
             if (onlyCurrentLine) {
@@ -434,8 +434,8 @@ KTextEditor::Cursor ModeBase::findPrevWORDStart(int fromLine, int fromColumn, bo
     bool found = false;
 
     while (!found) {
-        int c1 = line.lastIndexOf(startOfWORD, -line.length() + c - 2);
-        int c2 = line.lastIndexOf(startOfLineWORD, -line.length() + c - 1);
+        int c1 = (c > 1) ? line.lastIndexOf(startOfWORD, c - 2) : -1;
+        int c2 = (c > 0) ? line.lastIndexOf(startOfLineWORD, c - 1) : -1;
 
         if (c1 == -1 && c2 == -1) {
             if (onlyCurrentLine) {
