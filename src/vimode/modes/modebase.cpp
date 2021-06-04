@@ -370,7 +370,7 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     static const QRegularExpression startOfLine(QStringLiteral("^\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space at start of line
 
     int l = fromLine;
-    int c = fromColumn;
+    int c = (fromColumn > 0) ? (fromColumn - 1) : fromColumn;
 
     bool found = false;
 
