@@ -1435,9 +1435,6 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
 
         for (const auto &mark : list) {
             m_marks.take(mark->line);
-        }
-
-        for (const auto &mark : list) {
             mark->line++;
             m_marks.insert(mark->line, mark);
         }
@@ -1520,9 +1517,6 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
 
     for (const auto &mark : list) {
         m_marks.take(mark->line);
-    }
-
-    for (const auto &mark : list) {
         mark->line--;
         m_marks.insert(mark->line, mark);
     }
@@ -1584,8 +1578,6 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
 
     for (const auto &mark : list) {
         m_marks.take(mark->line);
-    }
-    for (const auto &mark : list) {
         mark->line++;
         m_marks.insert(mark->line, mark);
     }
