@@ -4815,7 +4815,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
             else if (contains(vvl, var)) {
                 setViewVariable(var, val);
             } else {
-                m_storedVariables.insert(std::pair<QString, QString>(var, val));
+                m_storedVariables[var] = val;
             }
         }
     }
