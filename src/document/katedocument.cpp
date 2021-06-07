@@ -2132,13 +2132,18 @@ bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint positi
 
 void KTextEditor::DocumentPrivate::clearMarks()
 {
-    for (const auto &m : qAsConst(m_marks)) {
-        auto mark = *m;
-        delete m;
-        Q_EMIT markChanged(this, mark, MarkRemoved);
-        tagLine(mark.line);
-    }
+    /**
+     * work on a copy as deletions below might trigger the use
+     * of m_marks
+     */
+    const QHash<int, KTextEditor::Mark *> marksCopy = m_marks;
     m_marks.clear();
+
+    for (const auto &m : marksCopy) {
+        Q_EMIT markChanged(this, *m, MarkRemoved);
+        tagLine(m->line);
+        delete m;
+    }
 
     Q_EMIT marksChanged(this);
     repaintViews(true);
@@ -4419,7 +4424,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     m_userSetEncodingForNextReload = false;
 
     // restore cursor positions for all views
-    for (auto v : m_views) {
+    for (auto v : qAsConst(m_views)) {
         setActiveView(v);
         auto it = std::find_if(cursorPositions.cbegin(), cursorPositions.cend(), [v](const std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor> &p) {
             return p.first == v;
