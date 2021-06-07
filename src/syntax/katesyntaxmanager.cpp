@@ -68,7 +68,9 @@ int KateHlManager::nameFind(const QString &name)
 
 void KateHlManager::reload()
 {
-    m_hlDict.clear();
+    // we need to ensure the KateHighlight objects survive until the end of this function
+    std::unordered_map<QString, std::unique_ptr<KateHighlighting>> keepHighlighingsAlive;
+    keepHighlighingsAlive.swap(m_hlDict);
 
     // recreate repository
     // this might even remove highlighting modes known before
