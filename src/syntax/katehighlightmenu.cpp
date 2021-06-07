@@ -44,9 +44,8 @@ void KateHighlightingMenu::slotAboutToShow()
                 auto it = std::find(subMenusName.begin(), subMenusName.end(), hlSection);
                 if (it == subMenusName.end()) {
                     subMenusName.push_back(hlSection);
-                    std::unique_ptr<QMenu> qmenu(new QMenu(QLatin1Char('&') + hlSection));
-                    subMenus.push_back(std::move(qmenu));
-                    menu()->addMenu(qmenu.get());
+                    subMenus.emplace_back(new QMenu(QLatin1Char('&') + hlSection));
+                    menu()->addMenu(subMenus.back().get());
 
                     // last element is the one we just inserted
                     it = --subMenusName.end();
