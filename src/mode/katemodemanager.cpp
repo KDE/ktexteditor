@@ -62,27 +62,8 @@ void KateModeManager::update()
     qDeleteAll(m_types);
     m_types.clear();
     m_name2Type.clear();
-
-    auto modes = KateHlManager::self()->modeList();
-    // sort the the modes by highlighting name so that we can use binary search
-    std::sort(modes.begin(), modes.end(), [](const KSyntaxHighlighting::Definition &mode1, const KSyntaxHighlighting::Definition &mode2) {
-        return mode1.name() < mode2.name();
-    });
-    auto compareHl = [](const KSyntaxHighlighting::Definition &mode, QStringView highlighting) {
-        return mode.name() < highlighting;
-    };
     for (int z = 0; z < g.count(); z++) {
         KConfigGroup cg(&config, g[z]);
-
-        // NOTE: "katemoderc" could have modes that do not exist or are invalid (for example, custom
-        // XML files that were deleted or renamed), and such modes should not be added to m_types
-        const QString highlighting = cg.readEntry(QStringLiteral("Highlighting"));
-        if (!highlighting.isEmpty()) {
-            const auto mode_iter = std::lower_bound(modes.cbegin(), modes.cend(), highlighting, compareHl);
-            if (mode_iter == modes.cend() || (*mode_iter).name() != highlighting) {
-                continue;
-            }
-        }
 
         KateFileType *type = new KateFileType();
         type->number = z;
@@ -93,7 +74,7 @@ void KateModeManager::update()
         type->varLine = cg.readEntry(QStringLiteral("Variables"));
         type->indenter = cg.readEntry(QStringLiteral("Indenter"));
 
-        type->hl = highlighting;
+        type->hl = cg.readEntry(QStringLiteral("Highlighting"));
 
         // only for generated types...
         type->hlGenerated = cg.readEntry(QStringLiteral("Highlighting Generated"), false);
@@ -106,14 +87,16 @@ void KateModeManager::update()
         } else {
             type->section = cg.readEntry(QStringLiteral("Section"));
             type->version = cg.readEntry(QStringLiteral("Highlighting Version"));
-            m_types.append(type);
         }
 
         // insert into the hash...
+        // NOTE: "katemoderc" could have modes that do not exist or are invalid (for example, custom
+        // XML files that were deleted or renamed), so they will be added to the list "m_types" later
         m_name2Type.insert(type->name, type);
     }
 
     // try if the hl stuff is up to date...
+    const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
         // filter out hidden languages; and
         // filter out "None" hl, we add that later as "Normal" mode.
@@ -133,9 +116,10 @@ void KateModeManager::update()
             type = new KateFileType();
             type->name = modes[i].name();
             type->priority = 0;
-            m_types.append(type);
             m_name2Type.insert(type->name, type);
         }
+        // only the types that exist or are valid are added
+        m_types.append(type);
 
         if (newType || type->version != QString::number(modes[i].version())) {
             type->name = modes[i].name();
