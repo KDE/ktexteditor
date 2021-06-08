@@ -66,7 +66,6 @@ void KateModeManager::update()
         KConfigGroup cg(&config, g[z]);
 
         KateFileType *type = new KateFileType();
-        type->number = z;
         type->name = g[z];
         type->wildcards = cg.readXdgListEntry(QStringLiteral("Wildcards"));
         type->mimetypes = cg.readXdgListEntry(QStringLiteral("Mimetypes"));
@@ -87,6 +86,11 @@ void KateModeManager::update()
         } else {
             type->section = cg.readEntry(QStringLiteral("Section"));
             type->version = cg.readEntry(QStringLiteral("Highlighting Version"));
+
+            // already add all non-highlighting generated user types
+            if (!type->hlGenerated) {
+                m_types.append(type);
+            }
         }
 
         // insert into the hash...
@@ -111,15 +115,20 @@ void KateModeManager::update()
         bool newType = false;
         if (m_name2Type.contains(modes[i].name())) {
             type = m_name2Type[modes[i].name()];
+
+            // add if hl generated, we skipped that stuff above
+            if (type->hlGenerated) {
+                m_types.append(type);
+            }
         } else {
             newType = true;
             type = new KateFileType();
             type->name = modes[i].name();
             type->priority = 0;
+            type->hlGenerated = true;
+            m_types.append(type);
             m_name2Type.insert(type->name, type);
         }
-        // only the types that exist or are valid are added
-        m_types.append(type);
 
         if (newType || type->version != QString::number(modes[i].version())) {
             type->name = modes[i].name();
@@ -130,7 +139,6 @@ void KateModeManager::update()
             type->version = QString::number(modes[i].version());
             type->indenter = modes[i].indenter();
             type->hl = modes[i].name();
-            type->hlGenerated = true;
         }
 
         type->translatedName = modes[i].translatedName();

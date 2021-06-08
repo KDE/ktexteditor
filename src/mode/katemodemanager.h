@@ -21,7 +21,6 @@ class DocumentPrivate;
 class KateFileType
 {
 public:
-    int number = -1;
     QString name;
     QString section;
     QStringList wildcards;
