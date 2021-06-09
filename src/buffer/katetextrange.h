@@ -146,12 +146,22 @@ public:
     }
 
     /**
+     * Hides parent's impl of toLineRange() and uses non-virtual functions internally.
+     */
+    KTextEditor::LineRange toLineRange() const
+    {
+        return {startInternal().lineInternal(), endInternal().lineInternal()};
+    }
+
+    /**
      * Convert this clever range into a dumb one.
      * @return normal range
      */
     const KTextEditor::Range toRange() const
     {
-        return KTextEditor::Range(start().toCursor(), end().toCursor());
+        auto startCursor = KTextEditor::Cursor(startInternal().lineInternal(), startInternal().columnInternal());
+        auto endCursor = KTextEditor::Cursor(endInternal().lineInternal(), endInternal().columnInternal());
+        return KTextEditor::Range(startCursor, endCursor);
     }
 
     /**
@@ -160,7 +170,7 @@ public:
      */
     operator KTextEditor::Range() const
     {
-        return KTextEditor::Range(start().toCursor(), end().toCursor());
+        return toRange();
     }
 
     /**

@@ -3702,33 +3702,35 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
         // match which ranges really fit the given cursor
         for (Kate::TextRange *range : rangesForCurrentCursor) {
             // range has no dynamic attribute of right type and no feedback object
-            if ((!range->attribute() || !range->attribute()->dynamicAttribute(activationType)) && !range->feedback()) {
+            auto attribute = range->attribute();
+            if ((!attribute || !attribute->dynamicAttribute(activationType)) && !range->feedback()) {
                 continue;
             }
 
             // range doesn't contain cursor, not interesting
-            if ((range->start().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (currentCursor < range->start().toCursor())
-                                                                                             : (currentCursor <= range->start().toCursor())) {
+            if ((range->startInternal().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (currentCursor < range->toRange().start())
+                                                                                                     : (currentCursor <= range->toRange().start())) {
                 continue;
             }
 
-            if ((range->end().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (range->end().toCursor() <= currentCursor)
-                                                                                           : (range->end().toCursor() < currentCursor)) {
+            if ((range->endInternal().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (range->toRange().end() <= currentCursor)
+                                                                                                   : (range->toRange().end() < currentCursor)) {
                 continue;
             }
 
             // range contains cursor, was it already in old set?
-            if (validRanges.contains(range)) {
+            auto it = validRanges.find(range);
+            if (it != validRanges.end()) {
                 // insert in new, remove from old, be done with it
                 newRangesIn.insert(range);
-                validRanges.remove(range);
+                validRanges.erase(it);
                 continue;
             }
 
             // oh, new range, trigger update and insert into new set
             newRangesIn.insert(range);
 
-            if (range->attribute() && range->attribute()->dynamicAttribute(activationType)) {
+            if (attribute && attribute->dynamicAttribute(activationType)) {
                 notifyAboutRangeChange(range->toLineRange(), true);
             }
 

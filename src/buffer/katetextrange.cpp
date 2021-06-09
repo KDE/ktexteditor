@@ -93,7 +93,7 @@ void TextRange::setEmptyBehavior(EmptyBehavior emptyBehavior)
     m_invalidateIfEmpty = (emptyBehavior == InvalidateIfEmpty);
 
     // invalidate range?
-    if (end() <= start()) {
+    if (endInternal() <= startInternal()) {
         setRange(KTextEditor::Range::invalid());
     }
 }
@@ -123,13 +123,13 @@ void TextRange::setRange(const KTextEditor::Range &range)
 
     // get full range
     int startLineMin = oldLineRange.start();
-    if (oldLineRange.start() == -1 || (m_start.line() != -1 && m_start.line() < oldLineRange.start())) {
+    if (oldLineRange.start() == -1 || (m_start.lineInternal() != -1 && m_start.lineInternal() < oldLineRange.start())) {
         startLineMin = m_start.line();
     }
 
     int endLineMax = oldLineRange.end();
-    if (oldLineRange.end() == -1 || m_end.line() > oldLineRange.end()) {
-        endLineMax = m_end.line();
+    if (oldLineRange.end() == -1 || m_end.lineInternal() > oldLineRange.end()) {
+        endLineMax = m_end.lineInternal();
     }
 
     // notify buffer about attribute change, it will propagate the changes
