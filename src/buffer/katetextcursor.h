@@ -26,7 +26,7 @@ class TextRange;
  * It will automagically move if the text inside the buffer it belongs to is modified.
  * By intention no subclass of KTextEditor::Cursor, must be converted manually.
  */
-class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor
+class KTEXTEDITOR_EXPORT TextCursor final : public KTextEditor::MovingCursor
 {
     // range wants direct access to some internals
     friend class TextRange;

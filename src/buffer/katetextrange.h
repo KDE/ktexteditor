@@ -33,7 +33,7 @@ class TextBuffer;
  * a TextRange will become automatically invalid as soon as start() == end()
  * position holds.
  */
-class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange
+class KTEXTEDITOR_EXPORT TextRange final : public KTextEditor::MovingRange
 {
     // this is a friend, block changes might invalidate ranges...
     friend class TextBlock;
