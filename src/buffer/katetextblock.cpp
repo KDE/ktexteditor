@@ -10,7 +10,6 @@
 #include "katetextline.h"
 #include "katetextrange.h"
 
-#include <QVarLengthArray>
 
 namespace Kate
 {

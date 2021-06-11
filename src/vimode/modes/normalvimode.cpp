@@ -20,7 +20,6 @@
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"
 #include <ktexteditor/attribute.h>
-#include <vimode/command.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/globalstate.h>
 #include <vimode/history.h>
@@ -34,7 +33,6 @@
 #include <vimode/modes/normalvimode.h>
 #include <vimode/modes/replacevimode.h>
 #include <vimode/modes/visualvimode.h>
-#include <vimode/motion.h>
 #include <vimode/registers.h>
 #include <vimode/searcher.h>
 
