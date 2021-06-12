@@ -912,9 +912,9 @@ public:
     /**
      * Attribute of a range changed or range with attribute changed in given line range.
      * @param lineRange line range that the change spans
-     * @param rangeWithAttribute attribute changed or is active, this will perhaps lead to repaints
+     * @param needsRepaint do we need to trigger repaints? e.g. if ranges with attributes change
      */
-    void notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool rangeWithAttribute);
+    void notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool needsRepaint);
 
 private Q_SLOTS:
     /**

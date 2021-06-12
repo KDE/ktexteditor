@@ -3611,40 +3611,26 @@ KateSpellingMenu *KTextEditor::ViewPrivate::spellingMenu()
     return m_spellingMenu;
 }
 
-void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool rangeWithAttribute)
+void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lineRange, bool needsRepaint)
 {
 #ifdef VIEW_RANGE_DEBUG
     // output args
-    qCDebug(LOG_KTE) << "trigger attribute changed in line range " << lineRange << "rangeWithAttribute" << rangeWithAttribute;
+    qCDebug(LOG_KTE) << "trigger attribute changed in line range " << lineRange << "needsRepaint" << needsRepaint;
 #endif
 
-    // first call:
+    // if we need repaint, we will need to collect the line ranges we will update
+    if (needsRepaint && lineRange.isValid()) {
+        if (m_lineToUpdateRange.isValid()) {
+            m_lineToUpdateRange.expandToRange(lineRange);
+        } else {
+            m_lineToUpdateRange = lineRange;
+        }
+    }
+
+    // first call => trigger later update of view via delayed signal to group updates
     if (!m_delayedUpdateTriggered) {
         m_delayedUpdateTriggered = true;
-        m_lineToUpdateRange = KTextEditor::LineRange::invalid();
-
-        // only set initial line range, if range with attribute!
-        if (rangeWithAttribute) {
-            m_lineToUpdateRange.setRange(lineRange);
-        }
-
-        // emit queued signal and be done
         Q_EMIT delayedUpdateOfView();
-        return;
-    }
-
-    // ignore lines if no attribute
-    if (!rangeWithAttribute) {
-        return;
-    }
-
-    // update line range
-    if (lineRange.start() != -1 && (m_lineToUpdateRange.start() == -1 || lineRange.start() < m_lineToUpdateRange.start())) {
-        m_lineToUpdateRange.setStart(lineRange.start());
-    }
-
-    if (lineRange.end() != -1 && lineRange.end() > m_lineToUpdateRange.end()) {
-        m_lineToUpdateRange.setEnd(lineRange.end());
     }
 }
 

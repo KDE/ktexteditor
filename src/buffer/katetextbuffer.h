@@ -452,12 +452,11 @@ private:
 
     /**
      * A range changed, notify the views, in case of attributes or feedback.
-     * @param view which view is affected? 0 for all views
-     * @param startLine start line of change
-     * @param endLine end line of change
-     * @param rangeWithAttribute attribute changed or is active, this will perhaps lead to repaints
+     * @param view which view is affected? nullptr for all views
+     * @param lineRange line range that the change spans
+     * @param needsRepaint do we need to trigger repaints? e.g. if ranges with attributes change
      */
-    void notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool rangeWithAttribute);
+    void notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint);
 
     /**
      * Mark all modified lines as lines saved on disk (modified line system).

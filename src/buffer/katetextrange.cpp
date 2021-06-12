@@ -246,12 +246,17 @@ void TextRange::setView(KTextEditor::View *view)
 
 void TextRange::setAttribute(KTextEditor::Attribute::Ptr attribute)
 {
+    // nothing changes, nop, only pointer compare
+    if (attribute == m_attribute) {
+        return;
+    }
+
     // remember the new attribute
     m_attribute = attribute;
 
     // notify buffer about attribute change, it will propagate the changes
     // notify right view
-    m_buffer.notifyAboutRangeChange(m_view, toLineRange(), m_attribute);
+    m_buffer.notifyAboutRangeChange(m_view, toLineRange(), true /* even for nullptr attribute, we had before one => repaint */);
 }
 
 void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
