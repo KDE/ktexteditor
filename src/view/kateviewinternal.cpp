@@ -3559,8 +3559,10 @@ void KateViewInternal::doDrag()
     }
 
     // Create a pixmap this selection
-    QPixmap pixmap(w, h);
+    const qreal dpr = devicePixelRatioF();
+    QPixmap pixmap(w * dpr, h * dpr);
     if (!pixmap.isNull()) {
+        pixmap.setDevicePixelRatio(dpr);
         pixmap.fill(Qt::transparent);
         renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
     }
