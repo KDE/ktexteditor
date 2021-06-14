@@ -193,10 +193,10 @@ private:
 
     int minimapYToStdY(int y);
 
-    const QColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
+    const QBrush charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
                            int &attributeIndex,
                            const QVector<QTextLayout::FormatRange> &decorations,
-                           const QColor &defaultColor,
+                           const QBrush &defaultColor,
                            int x,
                            QChar ch);
 

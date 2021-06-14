@@ -188,7 +188,6 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
 
     m_updateTimer.setInterval(300);
     m_updateTimer.setSingleShot(true);
-    QTimer::singleShot(10, this, SLOT(updatePixmap()));
 
     // track mouse for text preview widget
     setMouseTracking(orientation == Qt::Vertical);
@@ -466,15 +465,14 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
+const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
                                       int &attributeIndex,
                                       const QVector<QTextLayout::FormatRange> &decorations,
-                                      const QColor &defaultColor,
+                                      const QBrush &defaultColor,
                                       int x,
                                       QChar ch)
 {
-    QColor color = defaultColor;
-
+    QBrush ret = defaultColor;
     bool styleFound = false;
 
     // Query the decorations, that is, things like search highlighting, or the
@@ -484,9 +482,9 @@ const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
             // If there's a different background color set (search markers, ...)
             // use that, otherwise use the foreground color.
             if (range.format.hasProperty(QTextFormat::BackgroundBrush)) {
-                color = range.format.background().color();
+                ret = range.format.background();
             } else {
-                color = range.format.foreground().color();
+                ret = range.format.foreground();
             }
             styleFound = true;
             break;
@@ -501,7 +499,7 @@ const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
             ++attributeIndex;
         }
         if ((attributeIndex < attributes.size()) && (x < attributes[attributeIndex].offset + attributes[attributeIndex].length)) {
-            color = m_view->renderer()->attribute(attributes[attributeIndex].attributeValue)->foreground().color();
+            ret = m_view->renderer()->attribute(attributes[attributeIndex].attributeValue)->foreground();
         }
     }
 
@@ -510,9 +508,11 @@ const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
     // than an A or similar.
     // This gives the pixels created a bit of structure, which makes it look more
     // like real text.
-    color.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
+    auto c = ret.color();
+    c.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
+    ret.setColor(c);
 
-    return color;
+    return ret;
 }
 
 void KateScrollBar::updatePixmap()
@@ -560,14 +560,18 @@ void KateScrollBar::updatePixmap()
     // qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d";
     // qCDebug(LOG_KTE) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
 
-    const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
-    const QColor defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
-    const QColor selectionBgColor = m_view->renderer()->config()->selectionColor();
+    const QBrush backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background();
+    const QBrush defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground();
+    const QBrush selectionBgColor = m_view->renderer()->config()->selectionColor();
+
     QColor modifiedLineColor = m_view->renderer()->config()->modifiedLineColor();
     QColor savedLineColor = m_view->renderer()->config()->savedLineColor();
     // move the modified line color away from the background color
-    modifiedLineColor.setHsv(modifiedLineColor.hue(), 255, 255 - backgroundColor.value() / 3);
-    savedLineColor.setHsv(savedLineColor.hue(), 100, 255 - backgroundColor.value() / 3);
+    modifiedLineColor.setHsv(modifiedLineColor.hue(), 255, 255 - backgroundColor.color().value() / 3);
+    savedLineColor.setHsv(savedLineColor.hue(), 100, 255 - backgroundColor.color().value() / 3);
+
+    QBrush modifiedLineBrush = modifiedLineColor;
+    QBrush savedLineBrush = savedLineColor;
 
     // increase dimensions by ratio
     m_pixmap = QPixmap(pixmapLineWidth * m_view->devicePixelRatioF(), pixmapLineCount * m_view->devicePixelRatioF());
@@ -579,7 +583,7 @@ void KateScrollBar::updatePixmap()
     QPainter painter;
     if (painter.begin(&m_pixmap)) {
         // init pen once, afterwards, only change it if color changes to avoid a lot of allocation for setPen
-        painter.setPen(selectionBgColor);
+        painter.setPen(QPen(selectionBgColor, 1));
 
         // Do not force updates of the highlighting if the document is very large
         bool simpleMode = m_doc->lines() > 7500;
@@ -598,13 +602,13 @@ void KateScrollBar::updatePixmap()
             const Kate::TextLine &kateline = m_doc->plainKateTextLine(realLineNumber);
 
             const QVector<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
-            QVector<QTextLayout::FormatRange> decorations = m_view->renderer()->decorationsForLine(kateline, realLineNumber);
+            const QVector<QTextLayout::FormatRange> decorations = m_view->renderer()->decorationsForLine(kateline, realLineNumber);
             int attributeIndex = 0;
 
             // Draw selection if it is on an empty line
             if (selection.contains(KTextEditor::Cursor(realLineNumber, 0)) && lineText.size() == 0) {
-                if (selectionBgColor != painter.pen().color()) {
-                    painter.setPen(selectionBgColor);
+                if (selectionBgColor != painter.pen().brush()) {
+                    painter.setPen(QPen(selectionBgColor, 1));
                 }
                 painter.drawLine(s_pixelMargin, pixelY, s_pixelMargin + s_lineWidth - 1, pixelY);
             }
@@ -636,7 +640,7 @@ void KateScrollBar::updatePixmap()
 
             if (selStartX != -1) {
                 if (selectionBgColor != painter.pen().color()) {
-                    painter.setPen(selectionBgColor);
+                    painter.setPen(QPen(selectionBgColor, 1));
                 }
                 painter.drawLine(selStartX, pixelY, selEndX, pixelY);
             }
@@ -654,9 +658,9 @@ void KateScrollBar::updatePixmap()
                 } else if (lineText[x] == QLatin1Char('\t')) {
                     pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
                 } else {
-                    const QColor newPenColor(charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]));
-                    if (newPenColor != painter.pen().color()) {
-                        painter.setPen(newPenColor);
+                    const QBrush newPen(charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]));
+                    if (newPen != painter.pen().brush()) {
+                        painter.setPen(QPen(newPen, 1));
                     }
 
                     // Actually draw the pixel with the color queried from the renderer.
@@ -678,7 +682,7 @@ void KateScrollBar::updatePixmap()
             for (int lineno = 0; lineno < docLineCount; lineno++) {
                 int realLineNo = m_view->textFolding().visibleLineToLine(lineno);
                 const Kate::TextLine &line = m_doc->plainKateTextLine(realLineNo);
-                const QColor &col = line->markedAsModified() ? modifiedLineColor : savedLineColor;
+                const QBrush &col = line->markedAsModified() ? modifiedLineBrush : savedLineBrush;
                 if (line->markedAsModified() || line->markedAsSavedOnDisk()) {
                     int pos = (lineno * pixmapLineCount) / pixmapLinesUnscaled;
                     painter.fillRect(2, pos, 3, 1, col);
