@@ -42,6 +42,10 @@ public:
     {
         return m_ranges.empty();
     }
+    void reserve(size_t size)
+    {
+        m_ranges.reserve(size);
+    }
 
 private:
     std::vector<NormalRenderRange> m_ranges;

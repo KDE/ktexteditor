@@ -392,6 +392,7 @@ KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool 
         // rangs behavior ;)
         std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
 
+        renderRanges.reserve(rangesWithAttributes.size());
         // loop over all ranges
         for (int i = 0; i < rangesWithAttributes.size(); ++i) {
             // real range
@@ -416,7 +417,7 @@ KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool 
             }
 
             // span range
-            renderRanges.pushNewRange().addRange(*kateRange, attribute);
+            renderRanges.pushNewRange().addRange(*kateRange, std::move(attribute));
         }
     }
 

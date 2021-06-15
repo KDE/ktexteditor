@@ -472,7 +472,7 @@ const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
                                       int x,
                                       QChar ch)
 {
-    QBrush ret = defaultColor;
+    QBrush color = defaultColor;
     bool styleFound = false;
 
     // Query the decorations, that is, things like search highlighting, or the
@@ -482,9 +482,9 @@ const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
             // If there's a different background color set (search markers, ...)
             // use that, otherwise use the foreground color.
             if (range.format.hasProperty(QTextFormat::BackgroundBrush)) {
-                ret = range.format.background();
+                color = range.format.background();
             } else {
-                ret = range.format.foreground();
+                color = range.format.foreground();
             }
             styleFound = true;
             break;
@@ -499,7 +499,7 @@ const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
             ++attributeIndex;
         }
         if ((attributeIndex < attributes.size()) && (x < attributes[attributeIndex].offset + attributes[attributeIndex].length)) {
-            ret = m_view->renderer()->attribute(attributes[attributeIndex].attributeValue)->foreground();
+            color = m_view->renderer()->attribute(attributes[attributeIndex].attributeValue)->foreground();
         }
     }
 
@@ -508,11 +508,11 @@ const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
     // than an A or similar.
     // This gives the pixels created a bit of structure, which makes it look more
     // like real text.
-    auto c = ret.color();
+    auto c = color.color();
     c.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
-    ret.setColor(c);
+    color.setColor(c);
 
-    return ret;
+    return color;
 }
 
 void KateScrollBar::updatePixmap()
