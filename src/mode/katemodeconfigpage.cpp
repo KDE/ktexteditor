@@ -95,6 +95,9 @@ void ModeConfigPage::apply()
     }
 
     save();
+    if (m_lastType != -1) {
+        ui->gbProperties->setTitle(i18n("Properties of %1", ui->cmbFiletypes->itemText(m_lastType)));
+    }
 
     KTextEditor::EditorPrivate::self()->modeManager()->save(m_types);
 }
@@ -202,6 +205,12 @@ void ModeConfigPage::save()
         if (!m_types[m_lastType]->hlGenerated) {
             m_types[m_lastType]->name = ui->edtName->text();
             m_types[m_lastType]->section = ui->edtSection->text();
+
+            if (!m_types[m_lastType]->sectionTranslated().isEmpty()) {
+                ui->cmbFiletypes->setItemText(m_lastType, m_types[m_lastType]->sectionTranslated() + QLatin1Char('/') + m_types[m_lastType]->nameTranslated());
+            } else {
+                ui->cmbFiletypes->setItemText(m_lastType, m_types[m_lastType]->nameTranslated());
+            }
         }
         m_types[m_lastType]->varLine = ui->edtVariables->text();
         m_types[m_lastType]->wildcards = ui->edtFileExtensions->text().split(QLatin1Char(';'), Qt::SkipEmptyParts);
@@ -229,7 +238,7 @@ void ModeConfigPage::typeChanged(int type)
     if (type > -1 && type < m_types.count()) {
         KateFileType *t = m_types.at(type);
 
-        ui->gbProperties->setTitle(i18n("Properties of %1", ui->cmbFiletypes->currentText()));
+        ui->gbProperties->setTitle(i18n("Properties of %1", ui->cmbFiletypes->itemText(type)));
 
         ui->gbProperties->setEnabled(true);
         ui->btnDelete->setEnabled(true);
