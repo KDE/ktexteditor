@@ -124,7 +124,6 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_dictionaryBar(nullptr)
     , m_spellingMenu(new KateSpellingMenu(this))
     , m_userContextMenuSet(false)
-    , m_delayedUpdateTriggered(false)
     , m_lineToUpdateRange(KTextEditor::LineRange::invalid())
     , m_mainWindow(mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow()) // use dummy window if no window there!
     , m_statusBar(nullptr)
@@ -133,6 +132,10 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 {
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, &KTextEditor::ViewPrivate::delayedUpdateOfView, this, &KTextEditor::ViewPrivate::slotDelayedUpdateOfView, Qt::QueuedConnection);
+
+    m_delayedUpdateTimer.setSingleShot(true);
+    m_delayedUpdateTimer.setInterval(0);
+    connect(&m_delayedUpdateTimer, &QTimer::timeout, this, &KTextEditor::ViewPrivate::delayedUpdateOfView);
 
     KXMLGUIClient::setComponentName(KTextEditor::EditorPrivate::self()->aboutData().componentName(),
                                     KTextEditor::EditorPrivate::self()->aboutData().displayName());
@@ -234,9 +237,6 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 
 KTextEditor::ViewPrivate::~ViewPrivate()
 {
-    // invalidate update signal
-    m_delayedUpdateTriggered = false;
-
     // de-register views early from global collections
     // otherwise we might "use" them again during destruction in a half-valid state
     // see e.g. bug 422546
@@ -3628,23 +3628,17 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(KTextEditor::LineRange lin
     }
 
     // first call => trigger later update of view via delayed signal to group updates
-    if (!m_delayedUpdateTriggered) {
-        m_delayedUpdateTriggered = true;
-        Q_EMIT delayedUpdateOfView();
+    if (!m_delayedUpdateTimer.isActive()) {
+        m_delayedUpdateTimer.start();
     }
 }
 
 void KTextEditor::ViewPrivate::slotDelayedUpdateOfView()
 {
-    if (!m_delayedUpdateTriggered) {
-        return;
-    }
-
 #ifdef VIEW_RANGE_DEBUG
     // output args
     qCDebug(LOG_KTE) << "delayed attribute changed in line range" << m_lineToUpdateRange;
 #endif
-
     // update ranges in
     updateRangesIn(KTextEditor::Attribute::ActivateMouseIn);
     updateRangesIn(KTextEditor::Attribute::ActivateCaretIn);
@@ -3656,7 +3650,6 @@ void KTextEditor::ViewPrivate::slotDelayedUpdateOfView()
     }
 
     // reset flags
-    m_delayedUpdateTriggered = false;
     m_lineToUpdateRange = KTextEditor::LineRange::invalid();
 }
 

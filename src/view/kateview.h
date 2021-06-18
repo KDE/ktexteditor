@@ -26,6 +26,7 @@
 #include <QScopedPointer>
 #include <QSpacerItem>
 #include <QTextLayout>
+#include <QTimer>
 
 #include <array>
 
@@ -964,9 +965,9 @@ public:
     //
 private:
     /**
-     * update already inited?
+     * delayed update timer
      */
-    bool m_delayedUpdateTriggered;
+    QTimer m_delayedUpdateTimer;
 
     /**
      * line range to update
