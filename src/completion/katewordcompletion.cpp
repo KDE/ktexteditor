@@ -196,20 +196,22 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
 {
     QSet<QString> result;
     const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
+    const auto cursorPosition = view->cursorPosition();
     const int lines = view->document()->lines();
+    const auto document = view->document();
     for (int line = 0; line < lines; line++) {
-        const QString &text = view->document()->line(line);
+        const QString &text = document->line(line);
         int wordBegin = 0;
         int offset = 0;
         const int end = text.size();
-        const bool cursorLine = view->cursorPosition().line() == line;
+        const bool cursorLine = cursorPosition.line() == line;
         while (offset < end) {
             const QChar c = text.at(offset);
             // increment offset when at line end, so we take the last character too
             if ((!c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
                 if (offset - wordBegin > minWordSize && (line != range.end().line() || offset != range.end().column())) {
                     // don't add the word we are inside with cursor!
-                    if (!cursorLine || (view->cursorPosition().column() < wordBegin || view->cursorPosition().column() > offset)) {
+                    if (!cursorLine || (cursorPosition.column() < wordBegin || cursorPosition.column() > offset)) {
                         result.insert(text.mid(wordBegin, offset - wordBegin));
                     }
                 }

@@ -31,7 +31,7 @@ QModelIndex KateArgumentHintModel::mapToSource(const QModelIndex &index) const
         return QModelIndex();
     }
 
-    if (m_rows[index.row()] < 0 || m_rows[index.row()] >= group()->filtered.count()) {
+    if (m_rows[index.row()] < 0 || m_rows[index.row()] >= (int)group()->filtered.size()) {
         return QModelIndex();
     }
 
@@ -58,7 +58,7 @@ void KateArgumentHintModel::buildRows()
 
     m_rows.clear();
     QMap<int, QList<int>> m_depths; // Map each hint-depth to a list of functions of that depth
-    for (int a = 0; a < group()->filtered.count(); a++) {
+    for (int a = 0; a < (int)group()->filtered.size(); a++) {
         KateCompletionModel::ModelRow source = group()->filtered[a].sourceRow();
         QModelIndex sourceIndex = source.second.sibling(source.second.row(), 0);
         QVariant v = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth);
@@ -108,8 +108,8 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
         }
     }
 
-    if (m_rows[index.row()] < 0 || m_rows[index.row()] >= group()->filtered.count()) {
-        qCDebug(LOG_KTE) << "KateArgumentHintModel::data: index out of bound: " << m_rows[index.row()] << " total filtered: " << group()->filtered.count();
+    if (m_rows[index.row()] < 0 || m_rows[index.row()] >= (int)group()->filtered.size()) {
+        qCDebug(LOG_KTE) << "KateArgumentHintModel::data: index out of bound: " << m_rows[index.row()] << " total filtered: " << (int)group()->filtered.size();
         return QVariant();
     }
 
@@ -280,7 +280,7 @@ int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
         return -1;
     }
 
-    if (m_rows[row] < 0 || m_rows[row] >= group()->filtered.count()) {
+    if (m_rows[row] < 0 || m_rows[row] >= (int)group()->filtered.size()) {
         return -1; // Probably a label
     }
 

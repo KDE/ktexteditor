@@ -57,13 +57,8 @@ public:
 
     Qt::CaseSensitivity matchCaseSensitivity() const;
     Qt::CaseSensitivity exactMatchCaseSensitivity() const;
-    void setMatchCaseSensitivity(Qt::CaseSensitivity match_cs);
-    void setMatchCaseSensitivity(Qt::CaseSensitivity match_cs, Qt::CaseSensitivity exact_match_cs);
 
-    static QString columnName(int column);
     int translateColumn(int sourceColumn) const;
-
-    static QString propertyName(KTextEditor::CodeCompletionModel::CompletionProperty property);
 
     /// Returns a common prefix for all current visible completion entries
     /// If there is no common prefix, extracts the next useful prefix for the selected index
@@ -236,20 +231,21 @@ public:
         /// Returns the row in the this group's filtered list of the given model-row in a source-model
         ///-1 if the item is not in the filtered list
         ///@todo Implement an efficient way of doing this map, that does _not_ iterate over all items!
-        int rowOf(ModelRow item)
+        int rowOf(const ModelRow &item)
         {
-            for (int a = 0; a < filtered.size(); ++a)
+            for (int a = 0; a < (int)filtered.size(); ++a) {
                 if (filtered[a].sourceRow() == item) {
                     return a;
                 }
+            }
             return -1;
         }
 
         KateCompletionModel *model;
         int attribute;
         QString title, scope;
-        QList<Item> filtered;
-        QList<Item> prefilter;
+        std::vector<Item> filtered;
+        std::vector<Item> prefilter;
         bool isEmpty;
         //-1 if none was set
         int customSortingKey;
