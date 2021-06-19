@@ -192,13 +192,14 @@ private:
 
     int minimapYToStdY(int y);
 
-    using ColumnRangeWithColor = std::pair<QBrush, std::pair<int, int>>;
+    using ColumnRangeWithColor = std::pair<QPen, std::pair<int, int>>;
     ColumnRangeWithColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
                                    int &attributeIndex,
                                    const QVector<Kate::TextRange *> &decorations,
                                    const QBrush &defaultColor,
                                    int x,
-                                   QChar ch);
+                                   QChar ch,
+                                   QHash<QRgb, QPen> &penCache);
 
     bool m_middleMouseDown;
     bool m_leftMouseDown;

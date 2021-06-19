@@ -470,7 +470,8 @@ KateScrollBar::ColumnRangeWithColor KateScrollBar::charColor(const QVector<Kate:
                                                              const QVector<Kate::TextRange *> &decorations,
                                                              const QBrush &defaultColor,
                                                              int x,
-                                                             QChar ch)
+                                                             QChar ch,
+                                                             QHash<QRgb, QPen> &penCache)
 {
     QBrush color = defaultColor;
     bool styleFound = false;
@@ -502,16 +503,25 @@ KateScrollBar::ColumnRangeWithColor KateScrollBar::charColor(const QVector<Kate:
         }
     }
 
+    // query cache first
+    auto it = penCache.find(color.color().rgb());
+    if (it != penCache.end()) {
+        return ColumnRangeWithColor{it.value(), columnRange};
+    }
+
+    auto &pen = penCache[color.color().rgb()];
     // Query how much "blackness" the character has.
     // This causes for example a dot or a dash to appear less intense
     // than an A or similar.
     // This gives the pixels created a bit of structure, which makes it look more
     // like real text.
-    auto c = color.color();
+    QColor c = color.color();
     c.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
     color.setColor(c);
 
-    return ColumnRangeWithColor{color, columnRange};
+    pen = QPen(color, 1);
+
+    return ColumnRangeWithColor{pen, columnRange};
 }
 
 void KateScrollBar::updatePixmap()
@@ -577,7 +587,8 @@ void KateScrollBar::updatePixmap()
     m_pixmap.fill(QColor("transparent"));
 
     // The text currently selected in the document, to be drawn later.
-    const KTextEditor::Range &selection = m_view->selectionRange();
+    const KTextEditor::Range selection = m_view->selectionRange();
+    const bool hasSelection = !selection.isEmpty();
 
     QPainter painter;
     if (painter.begin(&m_pixmap)) {
@@ -590,15 +601,21 @@ void KateScrollBar::updatePixmap()
         int pixelY = 0;
         int drawnLines = 0;
 
+        // pen cache to avoid a lot of allocations from pen creation
+        QHash<QRgb, QPen> penCache;
+
         // Iterate over all visible lines, drawing them.
         for (int virtualLine = 0; virtualLine < docLineCount; virtualLine += lineIncrement) {
             int realLineNumber = m_view->textFolding().visibleLineToLine(virtualLine);
-            const QString lineText = m_doc->line(realLineNumber);
+            const Kate::TextLine kateline = m_doc->plainKateTextLine(realLineNumber);
+            if (!kateline) {
+                continue;
+            }
+            const QString lineText = kateline->text();
 
             if (!simpleMode) {
                 m_doc->buffer().ensureHighlighted(realLineNumber);
             }
-            const Kate::TextLine &kateline = m_doc->plainKateTextLine(realLineNumber);
 
             // get normal highlighting stuff
             const QVector<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
@@ -608,43 +625,46 @@ void KateScrollBar::updatePixmap()
             int attributeIndex = 0;
 
             // Draw selection if it is on an empty line
-            if (selection.contains(KTextEditor::Cursor(realLineNumber, 0)) && lineText.size() == 0) {
-                if (selectionBgColor != painter.pen().brush()) {
-                    painter.setPen(QPen(selectionBgColor, 1));
-                }
-                painter.drawLine(s_pixelMargin, pixelY, s_pixelMargin + s_lineWidth - 1, pixelY);
-            }
 
-            // Iterate over the line to draw the background
-            int selStartX = -1;
-            int selEndX = -1;
             int pixelX = s_pixelMargin; // use this to control the offset of the text from the left
-            for (int x = 0; (x < lineText.size() && x < s_lineWidth); x += charIncrement) {
-                if (pixelX >= s_lineWidth + s_pixelMargin) {
-                    break;
+
+            if (hasSelection) {
+                if (selection.contains(KTextEditor::Cursor(realLineNumber, 0)) && lineText.size() == 0) {
+                    if (selectionBgColor != painter.pen().brush()) {
+                        painter.setPen(QPen(selectionBgColor, 1));
+                    }
+                    painter.drawLine(s_pixelMargin, pixelY, s_pixelMargin + s_lineWidth - 1, pixelY);
                 }
-                // Query the selection and draw it behind the character
-                if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
-                    if (selStartX == -1)
-                        selStartX = pixelX;
-                    selEndX = pixelX;
-                    if (lineText.size() - 1 == x) {
-                        selEndX = s_lineWidth + s_pixelMargin - 1;
+                // Iterate over the line to draw the background
+                int selStartX = -1;
+                int selEndX = -1;
+                for (int x = 0; (x < lineText.size() && x < s_lineWidth); x += charIncrement) {
+                    if (pixelX >= s_lineWidth + s_pixelMargin) {
+                        break;
+                    }
+                    // Query the selection and draw it behind the character
+                    if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
+                        if (selStartX == -1)
+                            selStartX = pixelX;
+                        selEndX = pixelX;
+                        if (lineText.size() - 1 == x) {
+                            selEndX = s_lineWidth + s_pixelMargin - 1;
+                        }
+                    }
+
+                    if (lineText[x] == QLatin1Char('\t')) {
+                        pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
+                    } else {
+                        pixelX++;
                     }
                 }
 
-                if (lineText[x] == QLatin1Char('\t')) {
-                    pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
-                } else {
-                    pixelX++;
+                if (selStartX != -1) {
+                    if (selectionBgColor != painter.pen().brush()) {
+                        painter.setPen(QPen(selectionBgColor, 1));
+                    }
+                    painter.drawLine(selStartX, pixelY, selEndX, pixelY);
                 }
-            }
-
-            if (selStartX != -1) {
-                if (selectionBgColor != painter.pen().brush()) {
-                    painter.setPen(QPen(selectionBgColor, 1));
-                }
-                painter.drawLine(selStartX, pixelY, selEndX, pixelY);
             }
 
             // Iterate over all the characters in the current line
@@ -661,12 +681,9 @@ void KateScrollBar::updatePixmap()
                     pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
                 } else {
                     // get the column range and color in which this 'x' lies
-                    const auto colRangeWithColor = charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]);
-                    const auto &newPen = colRangeWithColor.first;
-
-                    if (newPen != painter.pen().brush()) {
-                        painter.setPen(QPen(newPen, 1));
-                    }
+                    const auto colRangeWithColor = charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x], penCache);
+                    const QPen &newPen = colRangeWithColor.first;
+                    painter.setPen(newPen);
 
                     const int rangeEnd = colRangeWithColor.second.second;
                     // Actually draw the pixels with the color queried from the renderer.
