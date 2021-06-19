@@ -465,28 +465,25 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
-                                      int &attributeIndex,
-                                      const QVector<QTextLayout::FormatRange> &decorations,
-                                      const QBrush &defaultColor,
-                                      int x,
-                                      QChar ch)
+KateScrollBar::ColumnRangeWithColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
+                                                             int &attributeIndex,
+                                                             const QVector<Kate::TextRange *> &decorations,
+                                                             const QBrush &defaultColor,
+                                                             int x,
+                                                             QChar ch)
 {
     QBrush color = defaultColor;
     bool styleFound = false;
+    std::pair<int, int> columnRange = {x, x + 1};
 
     // Query the decorations, that is, things like search highlighting, or the
     // KDevelop DUChain highlighting, for a color to use
-    for (auto &range : decorations) {
-        if (range.start <= x && range.start + range.length > x) {
-            // If there's a different background color set (search markers, ...)
-            // use that, otherwise use the foreground color.
-            if (range.format.hasProperty(QTextFormat::BackgroundBrush)) {
-                color = range.format.background();
-            } else {
-                color = range.format.foreground();
-            }
+    for (auto range : decorations) {
+        if (range->containsColumn(x)) {
+            color = range->attribute()->foreground();
             styleFound = true;
+            columnRange.first = range->start().column();
+            columnRange.second = range->end().column();
             break;
         }
     }
@@ -500,6 +497,8 @@ const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
         }
         if ((attributeIndex < attributes.size()) && (x < attributes[attributeIndex].offset + attributes[attributeIndex].length)) {
             color = m_view->renderer()->attribute(attributes[attributeIndex].attributeValue)->foreground();
+            columnRange.first = attributes[attributeIndex].offset;
+            columnRange.second = attributes[attributeIndex].offset + attributes[attributeIndex].length;
         }
     }
 
@@ -512,7 +511,7 @@ const QBrush KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
     c.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
     color.setColor(c);
 
-    return color;
+    return ColumnRangeWithColor{color, columnRange};
 }
 
 void KateScrollBar::updatePixmap()
@@ -594,15 +593,18 @@ void KateScrollBar::updatePixmap()
         // Iterate over all visible lines, drawing them.
         for (int virtualLine = 0; virtualLine < docLineCount; virtualLine += lineIncrement) {
             int realLineNumber = m_view->textFolding().visibleLineToLine(virtualLine);
-            QString lineText = m_doc->line(realLineNumber);
+            const QString lineText = m_doc->line(realLineNumber);
 
             if (!simpleMode) {
                 m_doc->buffer().ensureHighlighted(realLineNumber);
             }
             const Kate::TextLine &kateline = m_doc->plainKateTextLine(realLineNumber);
 
+            // get normal highlighting stuff
             const QVector<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
-            const QVector<QTextLayout::FormatRange> decorations = m_view->renderer()->decorationsForLine(kateline, realLineNumber);
+            // get moving ranges with attribs (semantic highlighting and co.)
+            const QVector<Kate::TextRange *> decorations = m_view->doc()->buffer().rangesForLine(realLineNumber, m_view, true);
+
             int attributeIndex = 0;
 
             // Draw selection if it is on an empty line
@@ -639,7 +641,7 @@ void KateScrollBar::updatePixmap()
             }
 
             if (selStartX != -1) {
-                if (selectionBgColor != painter.pen().color()) {
+                if (selectionBgColor != painter.pen().brush()) {
                     painter.setPen(QPen(selectionBgColor, 1));
                 }
                 painter.drawLine(selStartX, pixelY, selEndX, pixelY);
@@ -658,15 +660,23 @@ void KateScrollBar::updatePixmap()
                 } else if (lineText[x] == QLatin1Char('\t')) {
                     pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
                 } else {
-                    const QBrush newPen(charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]));
+                    // get the column range and color in which this 'x' lies
+                    const auto colRangeWithColor = charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]);
+                    const auto &newPen = colRangeWithColor.first;
+
                     if (newPen != painter.pen().brush()) {
                         painter.setPen(QPen(newPen, 1));
                     }
 
-                    // Actually draw the pixel with the color queried from the renderer.
-                    painter.drawPoint(pixelX, pixelY);
-
-                    pixelX++;
+                    const int rangeEnd = colRangeWithColor.second.second;
+                    // Actually draw the pixels with the color queried from the renderer.
+                    for (; x < rangeEnd; x += charIncrement) {
+                        if (pixelX >= s_lineWidth + s_pixelMargin) {
+                            break;
+                        }
+                        painter.drawPoint(pixelX, pixelY);
+                        pixelX++;
+                    }
                 }
             }
             drawnLines++;

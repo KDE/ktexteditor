@@ -33,12 +33,15 @@
 
 namespace KTextEditor
 {
-class DocumentPrivate;
-}
-namespace KTextEditor
-{
 class ViewPrivate;
+class DocumentPrivate;
+class Command;
+class AnnotationModel;
+class MovingRange;
+class AbstractAnnotationItemDelegate;
+class StyleOptionAnnotationItem;
 }
+
 class KateViewInternal;
 class KateTextLayout;
 
@@ -47,13 +50,9 @@ class KateTextLayout;
 class KateLineInfo;
 class KateTextPreview;
 
-namespace KTextEditor
+namespace Kate
 {
-class Command;
-class AnnotationModel;
-class MovingRange;
-class AbstractAnnotationItemDelegate;
-class StyleOptionAnnotationItem;
+class TextRange;
 }
 
 class QTimer;
@@ -193,12 +192,13 @@ private:
 
     int minimapYToStdY(int y);
 
-    const QBrush charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
-                           int &attributeIndex,
-                           const QVector<QTextLayout::FormatRange> &decorations,
-                           const QBrush &defaultColor,
-                           int x,
-                           QChar ch);
+    using ColumnRangeWithColor = std::pair<QBrush, std::pair<int, int>>;
+    ColumnRangeWithColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
+                                   int &attributeIndex,
+                                   const QVector<Kate::TextRange *> &decorations,
+                                   const QBrush &defaultColor,
+                                   int x,
+                                   QChar ch);
 
     bool m_middleMouseDown;
     bool m_leftMouseDown;
