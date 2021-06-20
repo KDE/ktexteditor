@@ -251,6 +251,9 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         for (int n = 0; n < numColumns; n++) {
             setColumnWidth(n, columnSize[n]);
         }
+        // For the first column (which is arrow-down / arrow-right) we keep its width to 20
+        // to prevent glitches and weird resizes when we have no expanding items in the view
+        setColumnWidth(0, 20);
         //       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
         viewport()->resize(totalColumnsWidth, viewport()->height());
     }
