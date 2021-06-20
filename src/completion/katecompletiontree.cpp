@@ -287,7 +287,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
             qCDebug(LOG_KTE) << "column" << a << columnWidth(a) << "target:" << columnSize[a];*/
 
         if (oldIndentWidth != newIndentWidth)
-            if (widget()->updatePosition() && !forceResize) {
+            if (!forceResize) {
                 preventRecursion = false;
                 resizeColumns(true, true);
             }

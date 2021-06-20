@@ -487,15 +487,13 @@ void KateCompletionWidget::updateAndShow()
     if (m_argumentHintModel->rowCount(QModelIndex()) != 0) {
         argumentHintsChanged(true);
     }
-    //   }
 
-    // We do both actions twice here so they are stable, because they influence each other:
-    // updatePosition updates the height, resizeColumns needs the correct height to decide over
-    // how many rows it computes the column-width
-    updatePosition(true);
+    // update height first
+    updateHeight();
+    // then resize columns afterwards because we need height information
     m_entryList->resizeColumns(true, true);
+    // lastly update position as now we have height and width
     updatePosition(true);
-    m_entryList->resizeColumns(true, true);
 
     setUpdatesEnabled(true);
 
@@ -537,8 +535,7 @@ bool KateCompletionWidget::updatePosition(bool force)
     }
 
     QPoint p = view()->mapToGlobal(cursorPosition);
-    int x = p.x() - m_entryList->columnTextViewportPosition(m_presentationModel->translateColumn(KTextEditor::CodeCompletionModel::Name)) - 7
-        - (m_entryList->viewport()->pos().x());
+    int x = p.x();
     int y = p.y();
 
     y += view()->renderer()->currentFontMetrics().height() + 2;
@@ -556,8 +553,6 @@ bool KateCompletionWidget::updatePosition(bool force)
     }
 
     move(QPoint(x, y));
-
-    updateHeight();
 
     //   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry() << borderHit;
 
