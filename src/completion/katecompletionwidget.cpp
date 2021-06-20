@@ -240,6 +240,7 @@ void KateCompletionWidget::modelContentChanged()
     }
 
     if (m_presentationModel->rowCount(QModelIndex()) == 0) {
+        m_lastWidgetWidth = 0;
         hide();
     }
 
@@ -263,6 +264,7 @@ void KateCompletionWidget::modelContentChanged()
 
     if (!m_noAutoHide && hideAutomaticCompletionOnExactMatch && !isHidden() && m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation
         && m_presentationModel->shouldMatchHideCompletionList()) {
+        m_lastWidgetWidth = 0;
         hide();
     } else if (isHidden() && !m_presentationModel->shouldMatchHideCompletionList() && m_presentationModel->rowCount(QModelIndex())) {
         show();

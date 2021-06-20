@@ -131,6 +131,11 @@ public:
 
     void updateHeight();
 
+    int &lastWidth()
+    {
+        return m_lastWidgetWidth;
+    }
+
 public Q_SLOTS:
     void waitForModelReset();
 
@@ -222,6 +227,12 @@ private:
     bool m_completionEditRunning;
 
     int m_expandedAddedHeightBase;
+
+    /**
+     * Last width, this gets cleared on hiding
+     */
+    int m_lastWidgetWidth = 0;
+
     KTextEditor::CodeCompletionModel::InvocationType m_lastInvocationType;
 };
 

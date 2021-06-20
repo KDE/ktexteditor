@@ -273,8 +273,13 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         //   qCDebug(LOG_KTE) << geometry() << "newWidth" << newWidth << "current width" << width() << "target width" << newWidth + scrollBarWidth;
 
         if ((newWidth + scrollBarWidth) != width() && originalViewportWidth != totalColumnsWidth) {
-            widget()->resize(newWidth + scrollBarWidth + 2, widget()->height());
-            resize(newWidth + scrollBarWidth, widget()->height() - (2 * widget()->frameWidth()));
+            auto width = newWidth + scrollBarWidth + 2;
+            // No resizing if our new width is less than previous, we only increase
+            if (widget()->lastWidth() < width) {
+                widget()->lastWidth() = width;
+                widget()->resize(width, widget()->height());
+                resize(width, widget()->height() - (2 * widget()->frameWidth()));
+            }
         }
 
         //   qCDebug(LOG_KTE) << "created geometry:" << widget()->geometry() << geometry() << "newWidth" << newWidth << "viewport" << viewport()->width();
