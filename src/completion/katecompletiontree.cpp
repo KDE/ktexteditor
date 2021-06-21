@@ -279,7 +279,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
             auto width = newWidth + scrollBarWidth + 2;
             // No resizing if our new width is less than previous, we only increase
             if (widget()->lastWidth() < width) {
-                widget()->lastWidth() = width;
+                widget()->setLastWidth(width);
                 widget()->resize(width, widget()->height());
                 resize(width, widget()->height() - (2 * widget()->frameWidth()));
             }

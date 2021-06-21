@@ -131,9 +131,15 @@ public:
 
     void updateHeight();
 
-    int &lastWidth()
+    // The following two get/set methods are used by the tree to ensure we always increase in width
+    int lastWidth()
     {
         return m_lastWidgetWidth;
+    }
+
+    void setLastWidth(int width)
+    {
+        m_lastWidgetWidth = width;
     }
 
 public Q_SLOTS:
