@@ -1659,12 +1659,12 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     }
 
     QVarLengthArray<int, 8> rmark;
-    QVarLengthArray<int, 8> list;
+    QVarLengthArray<KTextEditor::Mark *, 8> list;
 
     for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
         int line = mark->line;
         if (line > to) {
-            list << line;
+            list << mark;
         } else if (line >= from) {
             rmark << line;
         }
@@ -1674,8 +1674,11 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         delete m_marks.take(line);
     }
 
-    for (int line : list) {
-        KTextEditor::Mark *mark = m_marks.take(line);
+    for (auto mark : list) {
+        m_marks.take(mark->line);
+    }
+
+    for (auto mark : list) {
         mark->line -= to - from + 1;
         m_marks.insert(mark->line, mark);
     }
