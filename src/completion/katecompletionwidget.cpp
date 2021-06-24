@@ -1422,6 +1422,12 @@ void KateCompletionWidget::insertText(const KTextEditor::Cursor &position, const
         return;
     }
 
+    // We are triggering automaticInvocation()
+    // insertText tiggeres cursorPositionChanged()
+    // which will trigger modelContentChanged() indirectly. So we disconnect here
+    disconnect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
+    disconnect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
+
     m_automaticInvocationTimer->start(m_automaticInvocationDelay);
 }
 
