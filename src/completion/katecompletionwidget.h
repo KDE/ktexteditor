@@ -131,17 +131,6 @@ public:
 
     void updateHeight();
 
-    // The following two get/set methods are used by the tree to ensure we always increase in width
-    int lastWidth()
-    {
-        return m_lastWidgetWidth;
-    }
-
-    void setLastWidth(int width)
-    {
-        m_lastWidgetWidth = width;
-    }
-
 public Q_SLOTS:
     void waitForModelReset();
 
@@ -233,11 +222,6 @@ private:
     bool m_completionEditRunning;
 
     int m_expandedAddedHeightBase;
-
-    /**
-     * Last width, this gets cleared on hiding
-     */
-    int m_lastWidgetWidth = 0;
 
     KTextEditor::CodeCompletionModel::InvocationType m_lastInvocationType;
 };

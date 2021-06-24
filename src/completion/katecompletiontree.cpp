@@ -253,7 +253,6 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         }
         // For the first column (which is arrow-down / arrow-right) we keep its width to 20
         // to prevent glitches and weird resizes when we have no expanding items in the view
-        setColumnWidth(0, 20);
         //       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
         viewport()->resize(totalColumnsWidth, viewport()->height());
     }
@@ -277,12 +276,8 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 
         if ((newWidth + scrollBarWidth) != width() && originalViewportWidth != totalColumnsWidth) {
             auto width = newWidth + scrollBarWidth + 2;
-            // No resizing if our new width is less than previous, we only increase
-            if (widget()->lastWidth() < width) {
-                widget()->setLastWidth(width);
-                widget()->resize(width, widget()->height());
-                resize(width, widget()->height() - (2 * widget()->frameWidth()));
-            }
+            widget()->resize(width, widget()->height());
+            resize(width, widget()->height() - (2 * widget()->frameWidth()));
         }
 
         //   qCDebug(LOG_KTE) << "created geometry:" << widget()->geometry() << geometry() << "newWidth" << newWidth << "viewport" << viewport()->width();

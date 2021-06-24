@@ -240,7 +240,6 @@ void KateCompletionWidget::modelContentChanged()
     }
 
     if (m_presentationModel->rowCount(QModelIndex()) == 0) {
-        m_lastWidgetWidth = 0;
         hide();
     }
 
@@ -264,7 +263,6 @@ void KateCompletionWidget::modelContentChanged()
 
     if (!m_noAutoHide && hideAutomaticCompletionOnExactMatch && !isHidden() && m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation
         && m_presentationModel->shouldMatchHideCompletionList()) {
-        m_lastWidgetWidth = 0;
         hide();
     } else if (isHidden() && !m_presentationModel->shouldMatchHideCompletionList() && m_presentationModel->rowCount(QModelIndex())) {
         show();
@@ -723,6 +721,11 @@ void KateCompletionWidget::cursorPositionChanged()
     const QList<KTextEditor::CodeCompletionModel *> checkCompletionRanges = m_completionRanges.keys();
     for (QList<KTextEditor::CodeCompletionModel *>::const_iterator it = checkCompletionRanges.begin(); it != checkCompletionRanges.end(); ++it) {
         KTextEditor::CodeCompletionModel *model = *it;
+
+        if (model->rowCount() == 0) {
+            continue;
+        }
+
         if (!m_completionRanges.contains(model)) {
             continue;
         }

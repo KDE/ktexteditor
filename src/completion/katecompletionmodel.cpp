@@ -2011,8 +2011,10 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 // Updates the best-matches group
 void KateCompletionModel::updateBestMatches()
 {
-    int maxMatches = 300; // We cannot do too many operations here, because they are all executed whenever a character is added. Would be nice if we could split
-                          // the operations up somewhat using a timer.
+    // We cannot do too many operations here, because they are all executed
+    // whenever a character is added. Would be nice if we could split the
+    // operations up somewhat using a timer.
+    int maxMatches = 300;
 
     m_updateBestMatchesTimer->stop();
     // Maps match-qualities to ModelRows paired together with the BestMatchesCount returned by the items.
@@ -2024,7 +2026,7 @@ void KateCompletionModel::updateBestMatches()
         QMultiMap<int, int> rowsForQuality;
 
         int row = 0;
-        for (const Item &item : qAsConst(m_ungrouped->filtered)) {
+        for (const Item &item : m_ungrouped->filtered) {
             ModelRow source = item.sourceRow();
 
             QVariant v = source.second.data(CodeCompletionModel::BestMatchesCount);
