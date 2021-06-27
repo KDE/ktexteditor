@@ -415,10 +415,14 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
             continue;
         }
         if (m_completionRanges.contains(model)) {
-            KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
-            // qCDebug(LOG_KTE)<<"removing completion range 2";
-            m_completionRanges.remove(model);
-            delete oldRange;
+            if (*m_completionRanges[model].range == range) {
+                continue; // Leave it running as it is
+            } else { // delete the range that was used previously
+                KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
+                // qCDebug(LOG_KTE)<<"removing completion range 2";
+                m_completionRanges.remove(model);
+                delete oldRange;
+            }
         }
 
         connect(model, &KTextEditor::CodeCompletionModel::waitForReset, this, &KateCompletionWidget::waitForModelReset);
@@ -1453,6 +1457,11 @@ void KateCompletionWidget::automaticInvocation()
 
     // qCDebug(LOG_KTE)<<"checking models";
     for (KTextEditor::CodeCompletionModel *model : qAsConst(m_sourceModels)) {
+        // qCDebug(LOG_KTE)<<"m_completionRanges contains model?:"<<m_completionRanges.contains(model);
+        if (m_completionRanges.contains(model)) {
+            continue;
+        }
+
         start = _shouldStartCompletion(model, view(), m_automaticInvocationLine, m_lastInsertionByUser, view()->cursorPosition());
         // qCDebug(LOG_KTE)<<"start="<<start;
         if (start) {
