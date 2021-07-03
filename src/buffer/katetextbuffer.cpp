@@ -815,7 +815,7 @@ TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filenam
 
     // construct correct filter device
     // we try to use the same compression as for opening
-    const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
+    const KCompressionDevice::CompressionType type = KCompressionDevice::compressionTypeForMimeType(m_mimeTypeForFilterDev);
     QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
 
     if (!saveFile->open(QIODevice::WriteOnly)) {
@@ -838,7 +838,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 {
     // construct correct filter device
     // we try to use the same compression as for opening
-    const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
+    const KCompressionDevice::CompressionType type = KCompressionDevice::compressionTypeForMimeType(m_mimeTypeForFilterDev);
     QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
     uint ownerId = -2;
     uint groupId = -2;

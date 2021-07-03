@@ -13,7 +13,7 @@
 #include <QString>
 
 // on the fly compression
-#include <KFilterDev>
+#include <KCompressionDevice>
 
 namespace Kate
 {
@@ -57,7 +57,7 @@ public:
         m_fileSize = testMime.size();
 
         // construct filter device
-        KCompressionDevice::CompressionType compressionType = KFilterDev::compressionTypeForMimeType(m_mimeType);
+        KCompressionDevice::CompressionType compressionType = KCompressionDevice::compressionTypeForMimeType(m_mimeType);
         m_file = new KCompressionDevice(filename, compressionType);
     }
 
