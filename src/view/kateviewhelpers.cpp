@@ -2914,6 +2914,11 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     // NOTE: Here be cosmetics.
     layout->setContentsMargins(0, 0, 0, 0);
 
+    // widget to be used as parent for the real content
+    m_centralWidget = new QWidget(this);
+    layout->addWidget(m_centralWidget);
+    setFocusProxy(m_centralWidget);
+
     // hide button
     if (addCloseButton) {
         QToolButton *hideButton = new QToolButton(this);
@@ -2921,14 +2926,8 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
         hideButton->setIcon(QIcon::fromTheme(QStringLiteral("dialog-close")));
         connect(hideButton, &QToolButton::clicked, this, &KateViewBarWidget::hideMe);
         layout->addWidget(hideButton);
-        layout->setAlignment(hideButton, Qt::AlignLeft | Qt::AlignTop);
+        layout->setAlignment(hideButton, Qt::AlignLeft | Qt::AlignVCenter);
     }
-
-    // widget to be used as parent for the real content
-    m_centralWidget = new QWidget(this);
-    layout->addWidget(m_centralWidget);
-
-    setFocusProxy(m_centralWidget);
 }
 
 KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivate *view)
