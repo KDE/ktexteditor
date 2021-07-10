@@ -478,6 +478,14 @@ protected:
         return m_centralWidget;
     }
 
+    /**
+     * @return close button, if there
+     */
+    QToolButton *closeButton()
+    {
+        return m_closeButton;
+    }
+
 Q_SIGNALS:
     void hideMe();
 
@@ -489,8 +497,9 @@ private:
     }
 
 private:
-    QWidget *m_centralWidget;
-    KateViewBar *m_viewBar; // 0-pointer, if not added to a view bar
+    QWidget *m_centralWidget = nullptr;
+    KateViewBar *m_viewBar = nullptr; // 0-pointer, if not added to a view bar
+    QToolButton *m_closeButton = nullptr;
 };
 
 class KateViewBar : public QWidget

@@ -1451,6 +1451,9 @@ void KateSearchBar::enterPowerMode()
     if (m_widget->isVisible()) {
         m_powerUi->pattern->setFocus(Qt::MouseFocusReason);
     }
+
+    // move close button to right layout
+    m_powerUi->gridLayout->addWidget(closeButton(), 0, 2, 1, 1);
 }
 
 void KateSearchBar::enterIncrementalMode()
@@ -1586,6 +1589,9 @@ void KateSearchBar::enterIncrementalMode()
     if (m_widget->isVisible()) {
         m_incUi->pattern->setFocus(Qt::MouseFocusReason);
     }
+
+    // move close button to right layout
+    m_incUi->hboxLayout->addWidget(closeButton());
 }
 
 bool KateSearchBar::clearHighlights()

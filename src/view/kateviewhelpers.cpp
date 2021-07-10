@@ -2926,7 +2926,7 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
         hideButton->setIcon(QIcon::fromTheme(QStringLiteral("dialog-close")));
         connect(hideButton, &QToolButton::clicked, this, &KateViewBarWidget::hideMe);
         layout->addWidget(hideButton);
-        layout->setAlignment(hideButton, Qt::AlignLeft | Qt::AlignVCenter);
+        layout->setAlignment(hideButton, Qt::AlignCenter | Qt::AlignVCenter);
     }
 }
 
