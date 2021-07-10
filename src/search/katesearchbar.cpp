@@ -1452,7 +1452,7 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->pattern->setFocus(Qt::MouseFocusReason);
     }
 
-    // move close button to right layout
+    // move close button to right layout, ensures properly at top for both incremental + advanced mode
     m_powerUi->gridLayout->addWidget(closeButton(), 0, 2, 1, 1);
 }
 
@@ -1590,7 +1590,7 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->pattern->setFocus(Qt::MouseFocusReason);
     }
 
-    // move close button to right layout
+    // move close button to right layout, ensures properly at top for both incremental + advanced mode
     m_incUi->hboxLayout->addWidget(closeButton());
 }
 
