@@ -25,7 +25,7 @@ namespace KTextEditor
 class Document;
 
 /**
- * \class Message message.h <KTextEditor/Message>
+ * \class Mark markinterface.h <KTextEditor/MarkInterface>
  *
  * \brief Mark class containing line and mark types.
  *
