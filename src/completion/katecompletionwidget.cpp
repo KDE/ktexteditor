@@ -35,6 +35,7 @@
 #include <QToolButton>
 
 const bool hideAutomaticCompletionOnExactMatch = true;
+const bool invokeCompletionAlways = true;
 
 // If this is true, the completion-list is navigated up/down when 'tab' is pressed, instead of doing partial completion
 const bool shellLikeTabCompletion = false;
@@ -417,7 +418,9 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
         }
         if (m_completionRanges.contains(model)) {
             if (*m_completionRanges[model].range == range) {
-                continue; // Leave it running as it is
+                if (!invokeCompletionAlways) {
+                    continue; // Leave it running as it is
+                }
             } else { // delete the range that was used previously
                 KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
                 // qCDebug(LOG_KTE)<<"removing completion range 2";
