@@ -103,8 +103,20 @@ public:
     /// Returns the layout of the corresponding line in the view
     KateTextLayout &viewLine(int viewLine);
 
-    // find the view line of the cursor, relative to the display (0 = top line of view, 1 = second line, etc.)
-    // if limitToVisible is true, only lines which are currently visible will be searched for, and -1 returned if the line is not visible.
+    /**
+     * Find the view line of the cursor, relative to the display (0 = top line of view, 1 = second line, etc.)
+     *
+     * If @p limitToVisible is true, the function can return -2 for lines below the view. The idea is to get extra
+     * information about where the line lies when its out of the view so the clients doesn't have to make second
+     * call of this function with limitToVisible = false and potentionaly rerendering the whole document.
+     *
+     * \param virtualCursor cursor position
+     * \param limitToVisible if true, limit the search to only visible lines
+     *
+     * @return line number relative to the display. If @p limitToVisible is true,
+     * then valid values are only positive, negative values are invalid cursors for -1 and -2 for cursor is
+     * below the view.
+     */
     int displayViewLine(const KTextEditor::Cursor &virtualCursor, bool limitToVisible = false);
 
     int viewCacheLineCount() const;

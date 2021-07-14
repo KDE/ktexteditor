@@ -691,7 +691,8 @@ void KateViewInternal::makeVisible(const KTextEditor::Cursor &c, int endCol, boo
     //  qCDebug(LOG_KTE)<<"line ("<<c.line<<") should be visible";
 
     const int lnDisp = linesDisplayed();
-    const bool curBelowScreen = (cache()->displayViewLine(c, true) < 0 && cache()->displayViewLine(c, false) > 0);
+    const int viewLine = cache()->displayViewLine(c, true);
+    const bool curBelowScreen = (viewLine == -2);
 
     if (force) {
         KTextEditor::Cursor scroll = c;
@@ -699,7 +700,7 @@ void KateViewInternal::makeVisible(const KTextEditor::Cursor &c, int endCol, boo
     } else if (center && (c < startPos() || c > endPos())) {
         KTextEditor::Cursor scroll = viewLineOffset(c, -int(lnDisp) / 2);
         scrollPos(scroll, false, calledExternally);
-    } else if ((cache()->displayViewLine(c, true) >= (lnDisp - m_minLinesVisible)) || (curBelowScreen)) {
+    } else if ((viewLine >= (lnDisp - m_minLinesVisible)) || (curBelowScreen)) {
         KTextEditor::Cursor scroll = viewLineOffset(c, -(lnDisp - m_minLinesVisible - 1));
         scrollPos(scroll, false, calledExternally);
     } else if (c < viewLineOffset(startPos(), m_minLinesVisible)) {

@@ -400,8 +400,10 @@ int KateLayoutCache::displayViewLine(const KTextEditor::Cursor &virtualCursor, b
     // Efficient non-word-wrapped path
     if (!m_renderer->view()->dynWordWrap()) {
         int ret = virtualCursor.line() - work.line();
-        if (limitToVisible && (ret < 0 || ret > limit)) {
+        if (limitToVisible && (ret < 0)) {
             return -1;
+        } else if (limitToVisible && (ret > limit)) {
+            return -2;
         } else {
             return ret;
         }
@@ -420,7 +422,7 @@ int KateLayoutCache::displayViewLine(const KTextEditor::Cursor &virtualCursor, b
             ret += viewLineCount(m_renderer->folding().visibleLineToLine(work.line()));
             work.setLine(work.line() + 1);
             if (limitToVisible && ret > limit) {
-                return -1;
+                return -2;
             }
         }
     } else {
