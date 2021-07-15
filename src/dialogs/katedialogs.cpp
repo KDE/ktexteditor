@@ -53,7 +53,6 @@
 #include <KMessageBox>
 #include <KProcess>
 #include <KSeparator>
-#include <KShortcutsDialog>
 
 #include <QCheckBox>
 #include <QClipboard>
