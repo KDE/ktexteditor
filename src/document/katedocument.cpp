@@ -46,7 +46,6 @@
 #include <KTextEditor/DocumentCursor>
 
 #include <KConfigGroup>
-#include <KCoreAddons/KNetworkMounts>
 #include <KDirWatch>
 #include <KFileItem>
 #include <KIO/Job>
@@ -54,6 +53,7 @@
 #include <KJobWidgets>
 #include <KMessageBox>
 #include <KMountPoint>
+#include <KNetworkMounts>
 #include <KParts/OpenUrlArguments>
 #include <KStandardAction>
 #include <KStringHandler>
