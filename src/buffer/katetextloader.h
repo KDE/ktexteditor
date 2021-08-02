@@ -179,6 +179,11 @@ public:
          * bug 272579
          */
         bool failedToConvertOnce = false;
+        /**
+         * keep track if we have found BOM so that failedToConvertOnce is not erroneously set to true
+         * BUG: 440359
+         */
+        bool bomPreviouslyFound = m_bomFound;
 
         /**
          * reading loop
@@ -297,7 +302,12 @@ public:
 
                 // empty? try again
                 if (m_position == m_text.length()) {
-                    failedToConvertOnce = true;
+                    if (!bomPreviouslyFound && m_bomFound) {
+                        // BOM was processed above, so we didn't fail to convert
+                        bomPreviouslyFound = true;
+                    } else {
+                        failedToConvertOnce = true;
+                    }
                     continue;
                 }
             }
