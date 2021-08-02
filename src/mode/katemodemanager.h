@@ -7,6 +7,8 @@
 #ifndef KATE_MODEMANAGER_H
 #define KATE_MODEMANAGER_H
 
+#include "ktexteditor_export.h"
+
 #include <QHash>
 #include <QPointer>
 #include <QStringList>
@@ -87,9 +89,11 @@ public:
     }
 
 private:
-    QString wildcardsFind(const QString &fileName);
+    friend class KateModeManagerTest;
+    friend class KateModeManagerBenchmark;
 
-private:
+    KTEXTEDITOR_EXPORT QString wildcardsFind(const QString &fileName) const; // exported for testing
+
     QList<KateFileType *> m_types;
     QHash<QString, KateFileType *> m_name2Type;
 };

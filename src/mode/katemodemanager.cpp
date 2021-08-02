@@ -294,7 +294,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
     return QString();
 }
 
-QString KateModeManager::wildcardsFind(const QString &fileName)
+QString KateModeManager::wildcardsFind(const QString &fileName) const
 {
     KateFileType *match = nullptr;
     int minPrio = -1;

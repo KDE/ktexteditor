@@ -162,12 +162,21 @@ ecm_add_tests(
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
 ktexteditor_unit_test(commands_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(scripting_test src/script_test_base.cpp src/testutils.cpp)
+ktexteditor_unit_test(katemodemanager_test src/katemodemanager_test_base.cpp)
 ktexteditor_unit_test(bug313759 src/testutils.cpp)
 ktexteditor_unit_test(bug317111 src/testutils.cpp)
 ktexteditor_unit_test(bug205447 src/testutils.cpp)
 
 add_subdirectory(src/vimode)
 
-# benchmarking tests
+#
+# benchmarks, don't execute during normal testing
+# they don't test additional stuff but only hang the CI
+#
+add_executable(katemodemanager_benchmark src/katemodemanager_test_base.cpp src/katemodemanager_benchmark.cpp)
+ecm_mark_nongui_executable(katemodemanager_benchmark)
+add_test(NAME katemodemanager_benchmark COMMAND katemodemanager_benchmark CONFIGURATIONS BENCHMARK)
+target_link_libraries(katemodemanager_benchmark ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test)
+
 add_executable(bench_search src/benchmarks/bench_search.cpp)
 target_link_libraries(bench_search PRIVATE ${KTEXTEDITOR_TEST_LINK_LIBS})
