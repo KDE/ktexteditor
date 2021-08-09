@@ -210,19 +210,20 @@ public:
                             QByteArray bom(m_buffer.data(), qMin(16, c));
                             QTextCodec *codecForByteOrderMark = QTextCodec::codecForUtfText(bom, nullptr);
 
-                            // if codec != null, we found a BOM!
-                            if (codecForByteOrderMark) {
+                            // if codecForByteOrderMark != null, we found a BOM!
+                            // BUT we only capture BOM if no codec was set, or the BOM encodes the same codec as m_codec.
+                            // These additional checks are necessary so that the (coincidentally matching) BOM characters won't be eaten for non-UTF encodings
+                            // TODO: support BOMs for other encodings? (see e.g. https://en.wikipedia.org/wiki/Byte_order_mark#Byte_order_marks_by_encoding)
+                            if (codecForByteOrderMark && (!m_codec || codecForByteOrderMark->mibEnum() == m_codec->mibEnum())) {
                                 m_bomFound = true;
 
                                 // eat away the different boms!
-                                int mib = codecForByteOrderMark->mibEnum();
+                                const int mib = codecForByteOrderMark->mibEnum();
                                 if (mib == 106) { // utf8
                                     bomBytes = 3;
-                                }
-                                if (mib == 1013 || mib == 1014 || mib == 1015) { // utf16
+                                } else if (mib == 1013 || mib == 1014 || mib == 1015) { // utf16
                                     bomBytes = 2;
-                                }
-                                if (mib == 1017 || mib == 1018 || mib == 1019) { // utf32
+                                } else if (mib == 1017 || mib == 1018 || mib == 1019) { // utf32
                                     bomBytes = 4;
                                 }
                             }
