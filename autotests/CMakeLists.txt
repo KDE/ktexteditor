@@ -86,6 +86,12 @@ KTEXTEDITOR_ENCODING_TEST ("utf-8" "koi8-r.txt")
 # one character latin-15 test, segfaulted
 KTEXTEDITOR_ENCODING_TEST ("utf-8" "one-char-latin-15.txt")
 
+# utf8 bom only, shouldn't produce error
+#KTEXTEDITOR_ENCODING_TEST ("utf-8" "utf8-bom-only.txt") // TODO: make Kate::TextBuffer::saveBuffer save the BOM for empty files
+
+# latin15, but coincidentally contains utf8 bom. The "bom" should be treated as normal text
+KTEXTEDITOR_ENCODING_TEST ("ISO 8859-15" "latin15-with-utf8-bom.txt")
+
 # test executable for indentation
 add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/testutils.cpp)
 target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
@@ -149,6 +155,7 @@ ecm_add_tests(
   src/katewildcardmatcher_test.cpp
   src/katetextblocktest.cpp
   src/camelcursortest.cpp
+  src/encodingtest.cpp
   LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test
 )
 

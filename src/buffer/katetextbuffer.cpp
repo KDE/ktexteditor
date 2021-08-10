@@ -787,6 +787,8 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
     }
 
     // flush stream
+    // TODO: QTextStream::flush only writes bytes when it contains text. This is a fine optimization for most cases, but this makes saving
+    // an empty file with the BOM set impossible (results to an empty file with 0 bytes, no BOM)
     stream.flush();
 
     // only finalize if stream status == OK
