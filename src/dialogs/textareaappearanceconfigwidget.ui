@@ -287,19 +287,6 @@ beginning of a file.</string>
        </property>
       </spacer>
      </item>
-     <item row="19" column="1">
-      <spacer name="verticalSpacer_6">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
      <item row="20" column="1">
       <widget class="QCheckBox" name="chkDynWrapAtStaticMarker">
        <property name="text">
