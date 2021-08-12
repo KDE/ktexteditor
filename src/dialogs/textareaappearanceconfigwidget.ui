@@ -7,12 +7,12 @@
     <x>0</x>
     <y>0</y>
     <width>810</width>
-    <height>688</height>
+    <height>831</height>
    </rect>
   </property>
   <layout class="QVBoxLayout">
    <item>
-    <layout class="QFormLayout" name="formLayout_2">
+    <layout class="QFormLayout" name="formLayout_4">
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::FieldsStayAtSizeHint</enum>
      </property>
@@ -20,7 +20,7 @@
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
      <property name="topMargin">
-      <number>0</number>
+      <number>10</number>
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="label_3">
@@ -41,6 +41,277 @@
         <string/>
        </property>
       </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Whitespace</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Show whitespace indicators:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="spacesComboBox">
+       <item>
+        <property name="text">
+         <string>Never</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>At the end of a line</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Always</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="lbMarkerDescription">
+       <property name="text">
+        <string>Whitespace indicator size:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QSlider" name="sliSetMarkerSize">
+       <property name="whatsThis">
+        <string>Size of the visible highlight marker.</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>5</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBothSides</enum>
+       </property>
+       <property name="tickInterval">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Show tab indicators:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QCheckBox" name="chkShowTabs">
+       <property name="whatsThis">
+        <string>The editor will display a symbol to indicate the presence of a tab in the text.</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Bracket Matching</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QCheckBox" name="chkShowWholeBracketExpression">
+       <property name="whatsThis">
+        <string>If this is enabled, the range between the selected matching brackets will be highlighted.</string>
+       </property>
+       <property name="text">
+        <string>Highlight range between selected brackets</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QCheckBox" name="chkShowBracketMatchPreview">
+       <property name="toolTip">
+        <string>Show the matching open bracket and lines adjacent to it for context</string>
+       </property>
+       <property name="whatsThis">
+        <string>If this is enabled, a preview of the lines near a matching open bracket is shown. This can help in quickly determining the context of a closing bracket, especially in long function/class declarations and deeply nested if blocks</string>
+       </property>
+       <property name="text">
+        <string>Show preview of matching open bracket</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <widget class="QCheckBox" name="chkAnimateBracketMatching">
+       <property name="toolTip">
+        <string>Flash matching brackets</string>
+       </property>
+       <property name="whatsThis">
+        <string>If this is enabled, matching brackets are animated for better visibility.</string>
+       </property>
+       <property name="text">
+        <string>Flash matching bracket when cursor moves to other bracket in pair</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <widget class="QCheckBox" name="chkShowIndentationLines">
+       <property name="whatsThis">
+        <string>If this is enabled, the editor will display vertical lines to help identify indent lines.</string>
+       </property>
+       <property name="text">
+        <string>Show i&amp;ndentation lines</string>
+       </property>
+      </widget>
+     </item>
+     <item row="19" column="1">
+      <widget class="QCheckBox" name="chkShowWordCount">
+       <property name="toolTip">
+        <string>Show/hide word count in status bar</string>
+       </property>
+       <property name="text">
+        <string>Show word count</string>
+       </property>
+      </widget>
+     </item>
+     <item row="21" column="1">
+      <widget class="QCheckBox" name="chkFoldFirstLine">
+       <property name="toolTip">
+        <string>When this setting is enabled, the editor view automatically folds
+comment blocks that start on the first line of the document. This is
+helpful to hide license headers which are commonly placed at the
+beginning of a file.</string>
+       </property>
+       <property name="text">
+        <string>Fold first line</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <spacer name="verticalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="11" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="0">
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="0">
+      <spacer name="verticalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="17" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Counts</string>
+       </property>
+      </widget>
+     </item>
+     <item row="20" column="1">
+      <widget class="QCheckBox" name="chkShowLineCount">
+       <property name="toolTip">
+        <string>Show/hide line count in status bar</string>
+       </property>
+       <property name="text">
+        <string>Show line count</string>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="0">
+      <spacer name="verticalSpacer_7">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>30</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="16" column="0">
+      <spacer name="verticalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
@@ -133,190 +404,14 @@
     </widget>
    </item>
    <item>
-    <layout class="QFormLayout" name="formLayout_4">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::FieldsStayAtSizeHint</enum>
-     </property>
-     <property name="formAlignment">
-      <set>Qt::AlignHCenter|Qt::AlignTop</set>
-     </property>
-     <property name="topMargin">
-      <number>10</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Show whitespace indicators:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="spacesComboBox">
-       <item>
-        <property name="text">
-         <string>Never</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>At the end of a line</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Always</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="lbMarkerDescription">
-       <property name="text">
-        <string>Whitespace indicator size:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QSlider" name="sliSetMarkerSize">
-       <property name="whatsThis">
-        <string>Size of the visible highlight marker.</string>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>5</number>
-       </property>
-       <property name="singleStep">
-        <number>1</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="tickPosition">
-        <enum>QSlider::TicksBothSides</enum>
-       </property>
-       <property name="tickInterval">
-        <number>1</number>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Show tab indicators:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QCheckBox" name="chkShowTabs">
-       <property name="whatsThis">
-        <string>The editor will display a symbol to indicate the presence of a tab in the text.</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Advanced</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QCheckBox" name="chkShowIndentationLines">
-        <property name="whatsThis">
-         <string>If this is enabled, the editor will display vertical lines to help identify indent lines.</string>
-        </property>
-        <property name="text">
-         <string>Show i&amp;ndentation lines</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="chkShowWholeBracketExpression">
-        <property name="whatsThis">
-         <string>If this is enabled, the range between the selected matching brackets will be highlighted.</string>
-        </property>
-        <property name="text">
-         <string>Highlight range between selected brackets</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="chkShowBracketMatchPreview">
-        <property name="toolTip">
-         <string>Show the matching open bracket and lines adjacent to it for context</string>
-        </property>
-        <property name="whatsThis">
-         <string>If this is enabled, a preview of the lines near a matching open bracket is shown. This can help in quickly determining the context of a closing bracket, especially in long function/class declarations and deeply nested if blocks</string>
-        </property>
-        <property name="text">
-         <string>Show preview of matching open bracket</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="chkAnimateBracketMatching">
-        <property name="toolTip">
-         <string>Flash matching brackets</string>
-        </property>
-        <property name="whatsThis">
-         <string>If this is enabled, matching brackets are animated for better visibility.</string>
-        </property>
-        <property name="text">
-         <string>Animate bracket matching</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="chkFoldFirstLine">
-        <property name="toolTip">
-         <string>When this setting is enabled, the editor view automatically folds
-comment blocks that start on the first line of the document. This is
-helpful to hide license headers which are commonly placed at the
-beginning of a file.</string>
-        </property>
-        <property name="text">
-         <string>Fold first line</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="chkShowWordCount">
-        <property name="toolTip">
-         <string>Show/hide word count in status bar</string>
-        </property>
-        <property name="text">
-         <string>Show word count</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="chkShowLineCount">
-        <property name="toolTip">
-         <string>Show/hide line count in status bar</string>
-        </property>
-        <property name="text">
-         <string>Show line count</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
+    <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>0</width>
-       <height>1</height>
+       <width>20</width>
+       <height>40</height>
       </size>
      </property>
     </spacer>
@@ -331,17 +426,10 @@ beginning of a file.</string>
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>gbWordWrap</tabstop>
   <tabstop>cmbDynamicWordWrapIndicator</tabstop>
   <tabstop>sbDynamicWordWrapDepth</tabstop>
   <tabstop>spacesComboBox</tabstop>
   <tabstop>chkShowTabs</tabstop>
-  <tabstop>chkShowIndentationLines</tabstop>
-  <tabstop>chkShowWholeBracketExpression</tabstop>
-  <tabstop>chkAnimateBracketMatching</tabstop>
-  <tabstop>chkFoldFirstLine</tabstop>
-  <tabstop>chkShowWordCount</tabstop>
-  <tabstop>chkShowLineCount</tabstop>
  </tabstops>
  <resources/>
  <connections>
