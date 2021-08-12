@@ -49,7 +49,7 @@
 #include <KActionCollection>
 #include <KCharsets>
 #include <KColorCombo>
-#include <KFontChooser>
+#include <KFontRequester>
 #include <KMessageBox>
 #include <KProcess>
 #include <KSeparator>
@@ -669,12 +669,6 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     layout->addWidget(tabWidget);
     layout->setContentsMargins(0, 0, 0, 0);
 
-    QWidget *fontTab = new QWidget(tabWidget);
-    QGridLayout *grid = new QGridLayout(fontTab);
-    m_fontchooser = new KFontChooser(fontTab, KFontChooser::NoDisplayFlags);
-    grid->addWidget(m_fontchooser, 0, 0);
-    tabWidget->addTab(fontTab, i18n("Font"));
-
     QWidget *textareaTab = new QWidget(tabWidget);
     textareaUi->setupUi(textareaTab);
     tabWidget->addTab(textareaTab, i18n("General"));
@@ -691,7 +685,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
 
     reload();
 
-    observeChanges(m_fontchooser);
+    observeChanges(textareaUi->kfontrequester);
 
     observeChanges(textareaUi->chkAnimateBracketMatching);
     observeChanges(textareaUi->chkDynWrapAnywhere);
@@ -704,7 +698,15 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(textareaUi->chkShowWholeBracketExpression);
     observeChanges(textareaUi->chkShowWordCount);
     observeChanges(textareaUi->cmbDynamicWordWrapIndicator);
-    observeChanges(textareaUi->gbWordWrap);
+    observeChanges(textareaUi->cbxWordWrap);
+    auto a = [ui = textareaUi, cbx = textareaUi->cbxWordWrap]() {
+        ui->chkDynWrapAtStaticMarker->setEnabled(cbx->isChecked());
+        ui->chkDynWrapAnywhere->setEnabled(cbx->isChecked());
+        ui->cmbDynamicWordWrapIndicator->setEnabled(cbx->isChecked());
+        ui->sbDynamicWordWrapDepth->setEnabled(cbx->isChecked());
+    };
+    connect(textareaUi->cbxWordWrap, &QCheckBox::stateChanged, this, a);
+    a();
     observeChanges(textareaUi->sbDynamicWordWrapDepth);
     observeChanges(textareaUi->sliSetMarkerSize);
     observeChanges(textareaUi->spacesComboBox);
@@ -746,12 +748,12 @@ void KateViewDefaultsConfig::apply()
     KateDocumentConfig::global()->setShowSpaces(KateDocumentConfig::WhitespaceRendering(textareaUi->spacesComboBox->currentIndex()));
     KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
 
-    KateRendererConfig::global()->setFont(m_fontchooser->font());
+    KateRendererConfig::global()->setFont(textareaUi->kfontrequester->font());
     KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
     KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
     KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
 
-    KateViewConfig::global()->setDynWordWrap(textareaUi->gbWordWrap->isChecked());
+    KateViewConfig::global()->setDynWordWrap(textareaUi->cbxWordWrap->isChecked());
     KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::BookmarkSorting, bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
     KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
@@ -793,7 +795,7 @@ void KateViewDefaultsConfig::reload()
     bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
 
-    m_fontchooser->setFont(KateRendererConfig::global()->baseFont());
+    textareaUi->kfontrequester->setFont(KateRendererConfig::global()->baseFont());
 
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());
     textareaUi->chkDynWrapAnywhere->setChecked(KateViewConfig::global()->dynWrapAnywhere());
@@ -806,7 +808,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->chkShowWholeBracketExpression->setChecked(KateRendererConfig::global()->showWholeBracketExpression());
     textareaUi->chkShowWordCount->setChecked(KateViewConfig::global()->showWordCount());
     textareaUi->cmbDynamicWordWrapIndicator->setCurrentIndex(KateViewConfig::global()->dynWordWrapIndicators());
-    textareaUi->gbWordWrap->setChecked(KateViewConfig::global()->dynWordWrap());
+    textareaUi->cbxWordWrap->setChecked(KateViewConfig::global()->dynWordWrap());
     textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
     textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
     textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());

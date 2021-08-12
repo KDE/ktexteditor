@@ -6,7 +6,7 @@
 
 #include "kateconfigpage.h"
 
-#include <KFontChooser>
+#include <KFontRequester>
 #include <KUrlRequester>
 
 #include <QAbstractButton>
@@ -66,9 +66,9 @@ void KateConfigPage::observeChanges(QLineEdit *lineEdit)
     connect(lineEdit, &QLineEdit::textChanged, this, &KateConfigPage::slotChanged);
 }
 
-void KateConfigPage::observeChanges(KFontChooser *chooser)
+void KateConfigPage::observeChanges(KFontRequester *chooser)
 {
-    connect(chooser, &KFontChooser::fontSelected, this, &KateConfigPage::slotChanged);
+    connect(chooser, &KFontRequester::fontSelected, this, &KateConfigPage::slotChanged);
 }
 
 void KateConfigPage::slotChanged()

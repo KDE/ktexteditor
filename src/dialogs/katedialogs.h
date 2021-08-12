@@ -301,7 +301,6 @@ public Q_SLOTS:
 private:
     Ui::TextareaAppearanceConfigWidget *const textareaUi;
     Ui::BordersAppearanceConfigWidget *const bordersUi;
-    class KFontChooser *m_fontchooser;
 };
 
 class KateSaveConfigTab : public KateConfigPage

@@ -42,21 +42,30 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Whitespace</string>
+     <item row="1" column="0">
+      <spacer name="verticalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
-      </widget>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
      </item>
-     <item row="4" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Show whitespace indicators:</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="2" column="1">
       <widget class="QComboBox" name="spacesComboBox">
        <item>
         <property name="text">
@@ -75,14 +84,14 @@
        </item>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="lbMarkerDescription">
        <property name="text">
         <string>Whitespace indicator size:</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="3" column="1">
       <widget class="QSlider" name="sliSetMarkerSize">
        <property name="whatsThis">
         <string>Size of the visible highlight marker.</string>
@@ -107,14 +116,14 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Show tab indicators:</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
+     <item row="5" column="1">
       <widget class="QCheckBox" name="chkShowTabs">
        <property name="whatsThis">
         <string>The editor will display a symbol to indicate the presence of a tab in the text.</string>
@@ -124,99 +133,7 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Bracket Matching</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="1">
-      <widget class="QCheckBox" name="chkShowWholeBracketExpression">
-       <property name="whatsThis">
-        <string>If this is enabled, the range between the selected matching brackets will be highlighted.</string>
-       </property>
-       <property name="text">
-        <string>Highlight range between selected brackets</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="1">
-      <widget class="QCheckBox" name="chkShowBracketMatchPreview">
-       <property name="toolTip">
-        <string>Show the matching open bracket and lines adjacent to it for context</string>
-       </property>
-       <property name="whatsThis">
-        <string>If this is enabled, a preview of the lines near a matching open bracket is shown. This can help in quickly determining the context of a closing bracket, especially in long function/class declarations and deeply nested if blocks</string>
-       </property>
-       <property name="text">
-        <string>Show preview of matching open bracket</string>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="1">
-      <widget class="QCheckBox" name="chkAnimateBracketMatching">
-       <property name="toolTip">
-        <string>Flash matching brackets</string>
-       </property>
-       <property name="whatsThis">
-        <string>If this is enabled, matching brackets are animated for better visibility.</string>
-       </property>
-       <property name="text">
-        <string>Flash matching bracket when cursor moves to other bracket in pair</string>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="1">
-      <widget class="QCheckBox" name="chkShowIndentationLines">
-       <property name="whatsThis">
-        <string>If this is enabled, the editor will display vertical lines to help identify indent lines.</string>
-       </property>
-       <property name="text">
-        <string>Show i&amp;ndentation lines</string>
-       </property>
-      </widget>
-     </item>
-     <item row="19" column="1">
-      <widget class="QCheckBox" name="chkShowWordCount">
-       <property name="toolTip">
-        <string>Show/hide word count in status bar</string>
-       </property>
-       <property name="text">
-        <string>Show word count</string>
-       </property>
-      </widget>
-     </item>
-     <item row="21" column="1">
-      <widget class="QCheckBox" name="chkFoldFirstLine">
-       <property name="toolTip">
-        <string>When this setting is enabled, the editor view automatically folds
-comment blocks that start on the first line of the document. This is
-helpful to hide license headers which are commonly placed at the
-beginning of a file.</string>
-       </property>
-       <property name="text">
-        <string>Fold first line</string>
-       </property>
-      </widget>
-     </item>
      <item row="8" column="0">
-      <spacer name="verticalSpacer_4">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>10</width>
-         <height>10</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="11" column="0">
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -232,7 +149,116 @@ beginning of a file.</string>
        </property>
       </spacer>
      </item>
-     <item row="3" column="0">
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Bracket matching:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QCheckBox" name="chkShowWholeBracketExpression">
+       <property name="whatsThis">
+        <string>If this is enabled, the range between the selected matching brackets will be highlighted.</string>
+       </property>
+       <property name="text">
+        <string>Highlight range between selected brackets</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QCheckBox" name="chkShowBracketMatchPreview">
+       <property name="toolTip">
+        <string>Show the matching open bracket and lines adjacent to it for context</string>
+       </property>
+       <property name="whatsThis">
+        <string>If this is enabled, a preview of the lines near a matching open bracket is shown. This can help in quickly determining the context of a closing bracket, especially in long function/class declarations and deeply nested if blocks</string>
+       </property>
+       <property name="text">
+        <string>Show preview of matching open bracket</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QCheckBox" name="chkAnimateBracketMatching">
+       <property name="toolTip">
+        <string>Flash matching brackets</string>
+       </property>
+       <property name="whatsThis">
+        <string>If this is enabled, matching brackets are animated for better visibility.</string>
+       </property>
+       <property name="text">
+        <string>Flash matching bracket when cursor moves to other bracket in pair</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QCheckBox" name="chkShowIndentationLines">
+       <property name="whatsThis">
+        <string>If this is enabled, the editor will display vertical lines to help identify indent lines.</string>
+       </property>
+       <property name="text">
+        <string>Show i&amp;ndentation lines</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="0">
+      <spacer name="verticalSpacer_7">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="15" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Counts:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <widget class="QCheckBox" name="chkShowWordCount">
+       <property name="toolTip">
+        <string>Show/hide word count in status bar</string>
+       </property>
+       <property name="text">
+        <string>Show word count</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <widget class="QCheckBox" name="chkShowLineCount">
+       <property name="toolTip">
+        <string>Show/hide line count in status bar</string>
+       </property>
+       <property name="text">
+        <string>Show line count</string>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="1">
+      <widget class="QCheckBox" name="chkFoldFirstLine">
+       <property name="toolTip">
+        <string>When this setting is enabled, the editor view automatically folds
+comment blocks that start on the first line of the document. This is
+helpful to hide license headers which are commonly placed at the
+beginning of a file.</string>
+       </property>
+       <property name="text">
+        <string>Fold first line</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="0">
       <spacer name="verticalSpacer_3">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -248,13 +274,10 @@ beginning of a file.</string>
        </property>
       </spacer>
      </item>
-     <item row="1" column="0">
-      <spacer name="verticalSpacer_5">
+     <item row="19" column="0">
+      <spacer name="verticalSpacer_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -264,144 +287,93 @@ beginning of a file.</string>
        </property>
       </spacer>
      </item>
-     <item row="17" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Counts</string>
-       </property>
-      </widget>
-     </item>
-     <item row="20" column="1">
-      <widget class="QCheckBox" name="chkShowLineCount">
-       <property name="toolTip">
-        <string>Show/hide line count in status bar</string>
-       </property>
-       <property name="text">
-        <string>Show line count</string>
-       </property>
-      </widget>
-     </item>
-     <item row="18" column="0">
-      <spacer name="verticalSpacer_7">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>10</width>
-         <height>30</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="16" column="0">
+     <item row="19" column="1">
       <spacer name="verticalSpacer_6">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>10</width>
-         <height>10</height>
+         <width>20</width>
+         <height>40</height>
         </size>
        </property>
       </spacer>
      </item>
+     <item row="20" column="1">
+      <widget class="QCheckBox" name="chkDynWrapAtStaticMarker">
+       <property name="text">
+        <string>Wrap dynamically at static word wrap marker</string>
+       </property>
+      </widget>
+     </item>
+     <item row="20" column="0">
+      <widget class="QCheckBox" name="cbxWordWrap">
+       <property name="text">
+        <string>Dynamic Word Wrap:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="21" column="1">
+      <widget class="QCheckBox" name="chkDynWrapAnywhere">
+       <property name="text">
+        <string>Disregard word boundaries for dynamic wrapping</string>
+       </property>
+      </widget>
+     </item>
+     <item row="22" column="1">
+      <widget class="QComboBox" name="cmbDynamicWordWrapIndicator">
+       <property name="whatsThis">
+        <string>Choose when the Dynamic Word Wrap Indicators should be displayed.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="22" column="0">
+      <widget class="QLabel" name="lblDynamicWordWrapIndicators">
+       <property name="text">
+        <string>D&amp;ynamic word wrap indicators:</string>
+       </property>
+       <property name="buddy">
+        <cstring>cmbDynamicWordWrapIndicator</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="1">
+      <widget class="QSpinBox" name="sbDynamicWordWrapDepth">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;p&gt;Enables the start of dynamically wrapped lines to be aligned vertically to the indentation level of the first line. This can help to make code and markup more readable.&lt;/p&gt;&lt;p&gt;Additionally, this allows you to set a maximum width of the screen, as a percentage, after which dynamically wrapped lines will no longer be vertically aligned. For example, at 50%, lines whose indentation levels are deeper than 50% of the width of the screen will not have vertical alignment applied to subsequent wrapped lines.&lt;/p&gt;</string>
+       </property>
+       <property name="specialValueText">
+        <string>Disabled</string>
+       </property>
+       <property name="suffix">
+        <string>% of View Width</string>
+       </property>
+       <property name="maximum">
+        <number>80</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="0">
+      <widget class="QLabel" name="lblDynamicWordWrapIndicators_2">
+       <property name="text">
+        <string>&amp;Align dynamically wrapped lines to indentation depth:</string>
+       </property>
+       <property name="buddy">
+        <cstring>sbDynamicWordWrapDepth</cstring>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="gbWordWrap">
-     <property name="whatsThis">
-      <string>If this option is checked, the text lines will be wrapped at the view border on the screen.</string>
-     </property>
-     <property name="title">
-      <string>&amp;Dynamic Word Wrap</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <layout class="QFormLayout" name="formLayout_3">
-        <property name="formAlignment">
-         <set>Qt::AlignHCenter|Qt::AlignTop</set>
-        </property>
-        <item row="0" column="1">
-         <widget class="QCheckBox" name="chkDynWrapAtStaticMarker">
-          <property name="text">
-           <string>Wrap dynamically at static word wrap marker</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QCheckBox" name="chkDynWrapAnywhere">
-          <property name="text">
-           <string>Disregard word boundaries for dynamic wrapping</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="lblDynamicWordWrapIndicators">
-          <property name="text">
-           <string>D&amp;ynamic word wrap indicators:</string>
-          </property>
-          <property name="buddy">
-           <cstring>cmbDynamicWordWrapIndicator</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QComboBox" name="cmbDynamicWordWrapIndicator">
-          <property name="whatsThis">
-           <string>Choose when the Dynamic Word Wrap Indicators should be displayed.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="lblDynamicWordWrapIndicators_2">
-          <property name="text">
-           <string>&amp;Align dynamically wrapped lines to indentation depth:</string>
-          </property>
-          <property name="buddy">
-           <cstring>sbDynamicWordWrapDepth</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QSpinBox" name="sbDynamicWordWrapDepth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="whatsThis">
-           <string>&lt;p&gt;Enables the start of dynamically wrapped lines to be aligned vertically to the indentation level of the first line. This can help to make code and markup more readable.&lt;/p&gt;&lt;p&gt;Additionally, this allows you to set a maximum width of the screen, as a percentage, after which dynamically wrapped lines will no longer be vertically aligned. For example, at 50%, lines whose indentation levels are deeper than 50% of the width of the screen will not have vertical alignment applied to subsequent wrapped lines.&lt;/p&gt;</string>
-          </property>
-          <property name="specialValueText">
-           <string>Disabled</string>
-          </property>
-          <property name="suffix">
-           <string>% of View Width</string>
-          </property>
-          <property name="maximum">
-           <number>80</number>
-          </property>
-          <property name="singleStep">
-           <number>10</number>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer_2">
@@ -426,44 +398,9 @@ beginning of a file.</string>
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>cmbDynamicWordWrapIndicator</tabstop>
-  <tabstop>sbDynamicWordWrapDepth</tabstop>
   <tabstop>spacesComboBox</tabstop>
   <tabstop>chkShowTabs</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>gbWordWrap</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>cmbDynamicWordWrapIndicator</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>115</x>
-     <y>7</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>559</x>
-     <y>117</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>gbWordWrap</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>sbDynamicWordWrapDepth</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>59</x>
-     <y>6</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>559</x>
-     <y>162</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
