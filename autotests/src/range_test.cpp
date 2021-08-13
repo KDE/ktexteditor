@@ -37,7 +37,10 @@ void RangeTest::rangeCheck(KTextEditor::Range &valid)
 {
     QVERIFY(valid.isValid() && valid.start() <= valid.end());
 
-    KTextEditor::Cursor before(0, 1), start(0, 2), end(1, 4), after(1, 10);
+    KTextEditor::Cursor before(0, 1);
+    KTextEditor::Cursor start(0, 2);
+    KTextEditor::Cursor end(1, 4);
+    KTextEditor::Cursor after(1, 10);
 
     KTextEditor::Range result(start, end);
     QVERIFY(valid.isValid() && valid.start() <= valid.end());

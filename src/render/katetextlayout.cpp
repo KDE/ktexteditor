@@ -139,10 +139,11 @@ int KateTextLayout::endCol(bool indicateEOL) const
         return 0;
     }
 
-    if (indicateEOL)
+    if (indicateEOL) {
         if (viewLine() == kateLineLayout()->viewLineCount() - 1) {
             return -1;
         }
+    }
 
     return startCol() + m_textLayout.textLength();
 }
@@ -185,11 +186,12 @@ int KateTextLayout::startX() const
         return 0;
     }
 
-    if (m_startX == -1)
+    if (m_startX == -1) {
         // viewLine is already > 0, from the constructor
         for (int i = 0; i < viewLine(); ++i) {
             m_startX += (int)m_lineLayout->layout()->lineAt(i).naturalTextWidth();
         }
+    }
 
     return m_startX;
 }

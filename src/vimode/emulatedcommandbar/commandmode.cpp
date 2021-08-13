@@ -87,8 +87,9 @@ bool CommandMode::handleKeyPress(const QKeyEvent *keyEvent)
 void CommandMode::editTextChanged(const QString &newText)
 {
     Q_UNUSED(newText); // We read the current text from m_edit.
-    if (m_completer->isCompletionActive())
+    if (m_completer->isCompletionActive()) {
         return;
+    }
     // Command completion doesn't need to be manually invoked.
     if (!withoutRangeExpression().isEmpty() && !m_completer->isNextTextChangeDueToCompletionChange()) {
         // ... However, command completion mode should not be automatically invoked if this is not the current leading

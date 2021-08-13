@@ -141,7 +141,8 @@ void KateMessageWidget::setWordWrap(KTextEditor::Message *message)
     int margin = 0;
     if (parentWidget()->layout()) {
         // get left/right margin of the layout, since we need to subtract these
-        int leftMargin = 0, rightMargin = 0;
+        int leftMargin = 0;
+        int rightMargin = 0;
         parentWidget()->layout()->getContentsMargins(&leftMargin, nullptr, &rightMargin, nullptr);
         margin = leftMargin + rightMargin;
     }

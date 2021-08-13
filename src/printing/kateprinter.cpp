@@ -158,7 +158,10 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
     KConfigGroup group(config, QStringLiteral("Kate Print Settings"));
     KConfigGroup margins(&group, QStringLiteral("Margins"));
 
-    qreal left{}, right{}, top{}, bottom{};
+    qreal left{};
+    qreal right{};
+    qreal top{};
+    qreal bottom{};
     left = margins.readEntry("left", left);
     top = margins.readEntry("top", top);
     right = margins.readEntry("right", right);

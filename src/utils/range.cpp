@@ -49,13 +49,13 @@ void Range::setRange(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT
 
 bool Range::confineToRange(const Range &range) Q_DECL_NOEXCEPT
 {
-    if (start() < range.start())
+    if (start() < range.start()) {
         if (end() > range.end()) {
             setRange(range);
         } else {
             setStart(range.start());
         }
-    else if (end() > range.end()) {
+    } else if (end() > range.end()) {
         setEnd(range.end());
     } else {
         return false;
@@ -66,13 +66,13 @@ bool Range::confineToRange(const Range &range) Q_DECL_NOEXCEPT
 
 bool Range::expandToRange(const Range &range) Q_DECL_NOEXCEPT
 {
-    if (start() > range.start())
+    if (start() > range.start()) {
         if (end() < range.end()) {
             setRange(range);
         } else {
             setStart(range.start());
         }
-    else if (end() < range.end()) {
+    } else if (end() < range.end()) {
         setEnd(range.end());
     } else {
         return false;

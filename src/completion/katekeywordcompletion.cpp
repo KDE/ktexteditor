@@ -35,19 +35,21 @@ void KateKeywordCompletionModel::completionInvoked(KTextEditor::View *view,
 
 QModelIndex KateKeywordCompletionModel::parent(const QModelIndex &index) const
 {
-    if (index.internalId())
+    if (index.internalId()) {
         return createIndex(0, 0);
-    else
+    } else {
         return QModelIndex();
+    }
 }
 
 QModelIndex KateKeywordCompletionModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        if (row == 0)
+        if (row == 0) {
             return createIndex(row, column);
-        else
+        } else {
             return QModelIndex();
+        }
     } else if (parent.parent().isValid()) {
         return QModelIndex();
     }
@@ -61,12 +63,13 @@ QModelIndex KateKeywordCompletionModel::index(int row, int column, const QModelI
 
 int KateKeywordCompletionModel::rowCount(const QModelIndex &parent) const
 {
-    if (!parent.isValid() && !m_items.isEmpty())
+    if (!parent.isValid() && !m_items.isEmpty()) {
         return 1; // One root node to define the custom group
-    else if (parent.parent().isValid())
+    } else if (parent.parent().isValid()) {
         return 0; // Completion-items have no children
-    else
+    } else {
         return m_items.count();
+    }
 }
 
 static bool isInWord(const KTextEditor::View *view, const KTextEditor::Cursor &position, QChar c)
@@ -95,8 +98,9 @@ KTextEditor::Range KateKeywordCompletionModel::completionRange(KTextEditor::View
 
 bool KateKeywordCompletionModel::shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion)
 {
-    if (view->cursorPosition() < range.start() || view->cursorPosition() > range.end())
+    if (view->cursorPosition() < range.start() || view->cursorPosition() > range.end()) {
         return true; // Always abort when the completion-range has been left
+    }
     // Do not abort completions when the text has been empty already before and a newline has been entered
 
     for (QChar c : currentCompletion) {
@@ -125,10 +129,12 @@ bool KateKeywordCompletionModel::shouldHideItemsWithEqualNames() const
 
 QVariant KateKeywordCompletionModel::data(const QModelIndex &index, int role) const
 {
-    if (role == UnimportantItemRole)
+    if (role == UnimportantItemRole) {
         return QVariant(true);
-    if (role == InheritanceDepth)
+    }
+    if (role == InheritanceDepth) {
         return 9000;
+    }
 
     if (!index.parent().isValid()) {
         // group header
@@ -140,8 +146,9 @@ QVariant KateKeywordCompletionModel::data(const QModelIndex &index, int role) co
         }
     }
 
-    if (index.column() == KTextEditor::CodeCompletionModel::Name && role == Qt::DisplayRole)
+    if (index.column() == KTextEditor::CodeCompletionModel::Name && role == Qt::DisplayRole) {
         return m_items.at(index.row());
+    }
 
     if (index.column() == KTextEditor::CodeCompletionModel::Icon && role == Qt::DecorationRole) {
         static const QIcon icon(QIcon::fromTheme(QStringLiteral("code-variable")).pixmap(QSize(16, 16)));

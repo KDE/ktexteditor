@@ -317,10 +317,11 @@ QString KateModeManager::wildcardsFind(const QString &fileName)
 
 const KateFileType &KateModeManager::fileType(const QString &name) const
 {
-    for (int i = 0; i < m_types.size(); ++i)
+    for (int i = 0; i < m_types.size(); ++i) {
         if (m_types[i]->name == name) {
             return *m_types[i];
         }
+    }
 
     static KateFileType notype;
     return notype;

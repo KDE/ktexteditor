@@ -289,11 +289,12 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         /*  for(int a = 0; a < numColumns; ++a)
             qCDebug(LOG_KTE) << "column" << a << columnWidth(a) << "target:" << columnSize[a];*/
 
-        if (oldIndentWidth != newIndentWidth)
+        if (oldIndentWidth != newIndentWidth) {
             if (!forceResize) {
                 preventRecursion = false;
                 resizeColumns(true, true);
             }
+        }
     }
 
     widget()->setUpdatesEnabled(true);
@@ -370,10 +371,11 @@ bool KateCompletionTree::pageDown()
 
     if (current.isValid()) {
         setCurrentIndex(current);
-        if (!kateModel()->indexIsItem(current))
+        if (!kateModel()->indexIsItem(current)) {
             if (!nextCompletion()) {
                 previousCompletion();
             }
+        }
     }
 
     return current != old;
@@ -386,10 +388,11 @@ bool KateCompletionTree::pageUp()
 
     if (current.isValid()) {
         setCurrentIndex(current);
-        if (!kateModel()->indexIsItem(current))
+        if (!kateModel()->indexIsItem(current)) {
             if (!previousCompletion()) {
                 nextCompletion();
             }
+        }
     }
     return current != old;
 }

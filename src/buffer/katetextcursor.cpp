@@ -71,8 +71,9 @@ void TextCursor::setPosition(const KTextEditor::Cursor &position, bool init)
     // any change or init? else do nothing
     if (!init && position.line() == line()) {
         // simple case: 1:1 equal
-        if (position.column() == m_column)
+        if (position.column() == m_column) {
             return;
+        }
 
         // ok, too: both old and new column are valid, we can just adjust the column and be done
         if (position.column() >= 0 && m_column >= 0) {

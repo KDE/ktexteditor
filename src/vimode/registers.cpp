@@ -37,7 +37,8 @@ void Registers::writeConfig(KConfigGroup &config) const
         return;
     }
 
-    QStringList names, contents;
+    QStringList names;
+    QStringList contents;
     QList<int> flags;
     QMap<QChar, Register>::const_iterator i;
     for (i = m_registers.constBegin(); i != m_registers.constEnd(); ++i) {

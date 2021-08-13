@@ -163,9 +163,10 @@ bool Commands::supportsRange(const QString &range)
 {
     static QStringList l;
 
-    if (l.isEmpty())
+    if (l.isEmpty()) {
         l << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<")
           << QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank") << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k");
+    }
 
     return l.contains(range.split(QLatin1Char(' ')).at(0));
 }

@@ -203,8 +203,9 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
             text = decoded.at(0);
         }
 
-        if (key == -1)
+        if (key == -1) {
             continue;
+        }
 
         // We have to be clever about which widget we dispatch to, as we can trigger
         // shortcuts if we're not careful (even if Vim mode is configured to steal shortcuts).

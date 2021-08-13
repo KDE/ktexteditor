@@ -196,8 +196,9 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     }
 
     QJSValue result = programFunction.call(args);
-    if (result.isError())
+    if (result.isError()) {
         qCWarning(LOG_KTE) << "Error evaluating script: " << result.toString();
+    }
 
     return result;
 }

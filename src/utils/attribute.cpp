@@ -50,7 +50,7 @@ Attribute &Attribute::operator+=(const Attribute &a)
 {
     merge(a);
 
-    for (int i = 0; i < a.d->dynamicAttributes.count(); ++i)
+    for (int i = 0; i < a.d->dynamicAttributes.count(); ++i) {
         if (i < d->dynamicAttributes.count()) {
             if (a.d->dynamicAttributes[i]) {
                 d->dynamicAttributes[i] = a.d->dynamicAttributes[i];
@@ -58,6 +58,7 @@ Attribute &Attribute::operator+=(const Attribute &a)
         } else {
             d->dynamicAttributes.append(a.d->dynamicAttributes[i]);
         }
+    }
 
     return *this;
 }

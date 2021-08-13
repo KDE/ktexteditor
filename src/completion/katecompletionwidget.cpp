@@ -296,10 +296,11 @@ void KateCompletionWidget::rowsInserted(const QModelIndex &parent, int rowFrom, 
         return;
     }
 
-    if (!parent.isValid())
+    if (!parent.isValid()) {
         for (int i = rowFrom; i <= rowEnd; ++i) {
             m_entryList->expand(m_presentationModel->index(i, 0, parent));
         }
+    }
 }
 
 KTextEditor::ViewPrivate *KateCompletionWidget::view() const
@@ -439,10 +440,11 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
         m_completionRanges[model].leftBoundary = view()->cursorPosition();
 
         // In manual invocation mode, bound the activity either the point from where completion was invoked, or to the start of the range
-        if (invocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation)
+        if (invocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation) {
             if (range.start() < m_completionRanges[model].leftBoundary) {
                 m_completionRanges[model].leftBoundary = range.start();
             }
+        }
 
         if (!m_completionRanges[model].range->toRange().isValid()) {
             qCWarning(LOG_KTE) << "Could not construct valid smart-range from" << range << "instead got" << *m_completionRanges[model].range;
@@ -1148,10 +1150,11 @@ bool KateCompletionWidget::eventFilter(QObject *watched, QEvent *event)
 {
     bool ret = QFrame::eventFilter(watched, event);
 
-    if (watched != this)
+    if (watched != this) {
         if (event->type() == QEvent::Move) {
             updatePosition();
         }
+    }
 
     return ret;
 }

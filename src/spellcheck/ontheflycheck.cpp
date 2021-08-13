@@ -528,10 +528,12 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     static const QRegularExpression boundaryQuoteRegExp(QStringLiteral("\\b\\w+'\\w*$"), QRegularExpression::UseUnicodePropertiesOption);
     static const QRegularExpression extendedBoundaryRegExp(QStringLiteral("\\W|$"), QRegularExpression::UseUnicodePropertiesOption);
     static const QRegularExpression extendedBoundaryQuoteRegExp(QStringLiteral("^\\w*'\\w+\\b"), QRegularExpression::UseUnicodePropertiesOption); // see above
-    KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList, encToDecOffsetList;
+    KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList;
+    KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
     const int startLine = begin.line();
     const int startColumn = begin.column();
-    KTextEditor::Cursor boundaryStart, boundaryEnd;
+    KTextEditor::Cursor boundaryStart;
+    KTextEditor::Cursor boundaryEnd;
     // first we take care of the start position
     const KTextEditor::Range startLineRange(startLine, 0, startLine, m_document->lineLength(startLine));
     QString decodedLineText = m_document->decodeCharacters(startLineRange, decToEncOffsetList, encToDecOffsetList);

@@ -434,7 +434,8 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     Kate::TextBuffer buffer(nullptr, 1);
     buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
     buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
-    bool a, b;
+    bool a;
+    bool b;
     int c;
     buffer.load(file_path, a, b, c, true);
     buffer.clear();
@@ -469,7 +470,8 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     Kate::TextBuffer buffer(nullptr, 1, true);
     buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
     buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
-    bool a, b;
+    bool a;
+    bool b;
     int c;
     buffer.load(file_path, a, b, c, true);
     buffer.clear();

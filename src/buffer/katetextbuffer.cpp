@@ -191,8 +191,9 @@ bool TextBuffer::startEditing()
 
     // transaction has started
     Q_EMIT editingStarted();
-    if (m_document)
+    if (m_document) {
         Q_EMIT m_document->KTextEditor::Document::editingStarted(m_document);
+    }
 
     // first transaction started
     return true;
@@ -219,8 +220,9 @@ bool TextBuffer::finishEditing()
 
     // transaction has finished
     Q_EMIT editingFinished();
-    if (m_document)
+    if (m_document) {
         Q_EMIT m_document->KTextEditor::Document::editingFinished(m_document);
+    }
 
     // last transaction finished
     return true;
@@ -263,8 +265,9 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor &position)
 
     // emit signal about done change
     Q_EMIT lineWrapped(position);
-    if (m_document)
+    if (m_document) {
         Q_EMIT m_document->KTextEditor::Document::lineWrapped(m_document, position);
+    }
 }
 
 void TextBuffer::unwrapLine(int line)
@@ -315,8 +318,9 @@ void TextBuffer::unwrapLine(int line)
 
     // emit signal about done change
     Q_EMIT lineUnwrapped(line);
-    if (m_document)
+    if (m_document) {
         Q_EMIT m_document->KTextEditor::Document::lineUnwrapped(m_document, line);
+    }
 }
 
 void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &text)
@@ -352,8 +356,9 @@ void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &
 
     // emit signal about done change
     Q_EMIT textInserted(position, text);
-    if (m_document)
+    if (m_document) {
         Q_EMIT m_document->KTextEditor::Document::textInserted(m_document, position, text);
+    }
 }
 
 void TextBuffer::removeText(const KTextEditor::Range &range)
@@ -397,8 +402,9 @@ void TextBuffer::removeText(const KTextEditor::Range &range)
 
     // emit signal about done change
     Q_EMIT textRemoved(range, text);
-    if (m_document)
+    if (m_document) {
         Q_EMIT m_document->KTextEditor::Document::textRemoved(m_document, range, text);
+    }
 }
 
 int TextBuffer::blockForLine(int line) const
@@ -588,7 +594,8 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         encodingErrors = false;
         while (!file.eof()) {
             // read line
-            int offset = 0, length = 0;
+            int offset = 0;
+            int length = 0;
             bool currentError = !file.readLine(offset, length);
             encodingErrors = encodingErrors || currentError;
 
@@ -601,8 +608,9 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
             // get Unicode data for this line
             const QChar *unicodeData = file.unicode() + offset;
 
-            if (longestLineLoaded < length)
+            if (longestLineLoaded < length) {
                 longestLineLoaded = length;
+            }
 
             // split lines, if too large
             do {

@@ -257,8 +257,9 @@ KateVariableExpansionManager::KateVariableExpansionManager(QObject *parent)
 
 bool KateVariableExpansionManager::addVariable(const KTextEditor::Variable &var)
 {
-    if (!var.isValid())
+    if (!var.isValid()) {
         return false;
+    }
 
     // reject duplicates
     const auto alreadyExists = std::any_of(m_variables.begin(), m_variables.end(), [&var](const KTextEditor::Variable &v) {
@@ -269,8 +270,9 @@ bool KateVariableExpansionManager::addVariable(const KTextEditor::Variable &var)
     }
 
     // require a ':' in prefix matches (aka %{JS:1+1})
-    if (var.isPrefixMatch() && !var.name().contains(QLatin1Char(':')))
+    if (var.isPrefixMatch() && !var.name().contains(QLatin1Char(':'))) {
         return false;
+    }
 
     m_variables.push_back(var);
     return true;

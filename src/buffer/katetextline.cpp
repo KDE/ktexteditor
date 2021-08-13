@@ -34,10 +34,11 @@ int TextLineData::nextNonSpaceChar(int pos) const
 {
     Q_ASSERT(pos >= 0);
 
-    for (int i = pos; i < m_text.length(); i++)
+    for (int i = pos; i < m_text.length(); i++) {
         if (!m_text[i].isSpace()) {
             return i;
         }
+    }
 
     return -1;
 }
@@ -48,10 +49,11 @@ int TextLineData::previousNonSpaceChar(int pos) const
         pos = m_text.length() - 1;
     }
 
-    for (int i = pos; i >= 0; i--)
+    for (int i = pos; i >= 0; i--) {
         if (!m_text[i].isSpace()) {
             return i;
         }
+    }
 
     return -1;
 }
@@ -102,10 +104,11 @@ bool TextLineData::matchesAt(int column, const QString &match) const
     const QChar *unicode = m_text.unicode();
     const QChar *matchUnicode = match.unicode();
 
-    for (int i = 0; i < matchlen; ++i)
+    for (int i = 0; i < matchlen; ++i) {
         if (unicode[i + column] != matchUnicode[i]) {
             return false;
         }
+    }
 
     return true;
 }

@@ -269,8 +269,9 @@ KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QCh
 
     // cache line
     Kate::TextLine currentLine = document()->plainKateTextLine(line);
-    if (!currentLine)
+    if (!currentLine) {
         return KTextEditor::Cursor::invalid();
+    }
 
     // Move backwards char by char and find the opening character
     int count = 1;
@@ -280,8 +281,9 @@ KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QCh
         if (line != cursor.line()) {
             line = cursor.line();
             currentLine = document()->plainKateTextLine(line);
-            if (!currentLine)
+            if (!currentLine) {
                 return KTextEditor::Cursor::invalid();
+            }
         }
 
         // get current char

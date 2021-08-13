@@ -2082,10 +2082,11 @@ void KateViewInternal::updateSelection(const KTextEditor::Cursor &_newCursor, bo
 
                     c = newCursor.column();
                     if (c > 0 && doc()->highlight()->isInWord(l->at(c - 1))) {
-                        for (; c < l->length(); c++)
+                        for (; c < l->length(); c++) {
                             if (!doc()->highlight()->isInWord(l->at(c))) {
                                 break;
                             }
+                        }
                     }
 
                     newCursor.setColumn(c);
@@ -2097,10 +2098,11 @@ void KateViewInternal::updateSelection(const KTextEditor::Cursor &_newCursor, bo
                     c = newCursor.column();
                     if (c > 0 && c < doc()->lineLength(newCursor.line()) && doc()->highlight()->isInWord(l->at(c))
                         && doc()->highlight()->isInWord(l->at(c - 1))) {
-                        for (c -= 2; c >= 0; c--)
+                        for (c -= 2; c >= 0; c--) {
                             if (!doc()->highlight()->isInWord(l->at(c))) {
                                 break;
                             }
+                        }
                         newCursor.setColumn(c + 1);
                     }
                 } else {
@@ -2929,23 +2931,26 @@ void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
 
         if (e->modifiers() & Qt::ShiftModifier) {
             // Now select the word under the select anchor
-            int cs, ce;
+            int cs;
+            int ce;
             Kate::TextLine l = doc()->kateTextLine(m_selectAnchor.line());
 
             ce = m_selectAnchor.column();
             if (ce > 0 && doc()->highlight()->isInWord(l->at(ce))) {
-                for (; ce < l->length(); ce++)
+                for (; ce < l->length(); ce++) {
                     if (!doc()->highlight()->isInWord(l->at(ce))) {
                         break;
                     }
+                }
             }
 
             cs = m_selectAnchor.column() - 1;
             if (cs < doc()->lineLength(m_selectAnchor.line()) && doc()->highlight()->isInWord(l->at(cs))) {
-                for (cs--; cs >= 0; cs--)
+                for (cs--; cs >= 0; cs--) {
                     if (!doc()->highlight()->isInWord(l->at(cs))) {
                         break;
                     }
+                }
             }
 
             // ...and keep it selected
@@ -3527,13 +3532,15 @@ void KateViewInternal::doDrag()
 
     // get visible selected lines
     for (int l = startLine; l <= endLine; ++l) {
-        if (l >= firstVisibleLine)
+        if (l >= firstVisibleLine) {
             break;
+        }
         ++startLine;
     }
     for (int l = endLine; l >= startLine; --l) {
-        if (l <= lastVisibleLine)
+        if (l <= lastVisibleLine) {
             break;
+        }
         --endLine;
     }
 
@@ -3796,7 +3803,8 @@ void KateViewInternal::doDragScroll()
 {
     QPoint p = this->mapFromGlobal(QCursor::pos());
 
-    int dx = 0, dy = 0;
+    int dx = 0;
+    int dy = 0;
     if (p.y() < s_scrollMargin) {
         dy = p.y() - s_scrollMargin;
     } else if (p.y() > height() - s_scrollMargin) {

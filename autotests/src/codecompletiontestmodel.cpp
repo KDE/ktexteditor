@@ -32,7 +32,7 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
     case Qt::DisplayRole:
-        if (index.row() < rowCount() / 2)
+        if (index.row() < rowCount() / 2) {
             switch (index.column()) {
             case Prefix:
                 switch (index.row() % 3) {
@@ -84,7 +84,7 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
                     return "";
                 }
             }
-        else
+        } else {
             switch (index.column()) {
             case Prefix:
                 switch (index.row() % 3) {
@@ -114,6 +114,7 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
             default:
                 return "";
             }
+        }
         break;
 
     case Qt::DecorationRole:

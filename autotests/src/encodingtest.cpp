@@ -14,7 +14,9 @@ void KateEncodingTest::utfBomTest()
     // setup stuff
     Kate::TextBuffer buffer(nullptr);
     buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
-    bool encodingErrors, tooLongLinesWrapped, success;
+    bool encodingErrors;
+    bool tooLongLinesWrapped;
+    bool success;
     int longestLineLoaded;
     QString prefixText;
 
@@ -86,7 +88,9 @@ void KateEncodingTest::nonUtfNoBomTest()
     // setup stuff
     Kate::TextBuffer buffer(nullptr);
     buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
-    bool encodingErrors, tooLongLinesWrapped, success;
+    bool encodingErrors;
+    bool tooLongLinesWrapped;
+    bool success;
     int longestLineLoaded;
     QString prefixText;
 

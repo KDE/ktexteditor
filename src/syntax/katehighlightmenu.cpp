@@ -34,8 +34,9 @@ void KateHighlightingMenu::slotAboutToShow()
     for (const auto &hl : modeList) {
         QString hlName = hl.translatedName();
         QString hlSection = hl.translatedSection();
-        if (hlName == QLatin1String("None"))
+        if (hlName == QLatin1String("None")) {
             hlName = i18n("None");
+        }
 
         if (!hl.isHidden() && !hlName.isEmpty()) {
             const bool namesHaveHlName = std::find(names.begin(), names.end(), hlName) != names.end();

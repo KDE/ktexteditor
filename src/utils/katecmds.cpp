@@ -439,9 +439,10 @@ bool KateCommands::CoreCommands::supportsRange(const QString &range)
 {
     static QStringList l;
 
-    if (l.isEmpty())
+    if (l.isEmpty()) {
         l << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent") << QStringLiteral("comment") << QStringLiteral("uncomment")
           << QStringLiteral("kill-line") << QStringLiteral("fold") << QStringLiteral("tfold");
+    }
 
     return l.contains(range);
 }

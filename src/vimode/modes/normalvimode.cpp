@@ -1444,11 +1444,13 @@ bool NormalViMode::commandUndo()
     if (doc()->undoCount() > 0) {
         const bool mapped = m_viInputModeManager->keyMapper()->isExecutingMapping();
 
-        if (mapped)
+        if (mapped) {
             doc()->editEnd();
+        }
         doc()->undo();
-        if (mapped)
+        if (mapped) {
             doc()->editBegin();
+        }
         if (m_viInputModeManager->isAnyVisualMode()) {
             m_viInputModeManager->getViVisualMode()->setStart(KTextEditor::Cursor(-1, -1));
             m_view->clearSelection();
@@ -1464,11 +1466,13 @@ bool NormalViMode::commandRedo()
     if (doc()->redoCount() > 0) {
         const bool mapped = m_viInputModeManager->keyMapper()->isExecutingMapping();
 
-        if (mapped)
+        if (mapped) {
             doc()->editEnd();
+        }
         doc()->redo();
-        if (mapped)
+        if (mapped) {
             doc()->editBegin();
+        }
         if (m_viInputModeManager->isAnyVisualMode()) {
             m_viInputModeManager->getViVisualMode()->setStart(KTextEditor::Cursor(-1, -1));
             m_view->clearSelection();
@@ -2886,7 +2890,8 @@ Range NormalViMode::motionToPreviousSentence()
 Range NormalViMode::motionToNextSentence()
 {
     KTextEditor::Cursor c = findSentenceEnd();
-    int linenum = c.line(), column = c.column() + 1;
+    int linenum = c.line();
+    int column = c.column() + 1;
     const bool skipSpaces = doc()->line(linenum).isEmpty();
 
     for (int i = linenum; i < doc()->lines(); i++) {
@@ -3140,7 +3145,8 @@ Range NormalViMode::textObjectInnerWORD()
 KTextEditor::Cursor NormalViMode::findSentenceStart()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
-    int linenum = c.line(), column = c.column();
+    int linenum = c.line();
+    int column = c.column();
     int prev = column;
 
     for (int i = linenum; i >= 0; i--) {
@@ -3159,8 +3165,9 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
         for (int j = column; j >= 0; j--) {
             if (j == lineLength || line.at(j).isSpace()) {
                 int lastSpace = j--;
-                for (; j >= 0 && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j--)
+                for (; j >= 0 && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j--) {
                     ;
+                }
 
                 if (j >= 0 && QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                     if (lastSpace == lineLength) {
@@ -3171,8 +3178,9 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
                     return KTextEditor::Cursor(i, prev);
                 }
                 j = lastSpace;
-            } else
+            } else {
                 prev = j;
+            }
         }
     }
 
@@ -3182,8 +3190,10 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
 KTextEditor::Cursor NormalViMode::findSentenceEnd()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
-    int linenum = c.line(), column = c.column();
-    int j = 0, prev = 0;
+    int linenum = c.line();
+    int column = c.column();
+    int j = 0;
+    int prev = 0;
 
     for (int i = linenum; i < doc()->lines(); i++) {
         const QString &line = doc()->line(i);
@@ -3198,8 +3208,9 @@ KTextEditor::Cursor NormalViMode::findSentenceEnd()
             if (QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                 prev = j++;
                 // Skip possible closing characters.
-                for (; j < line.size() && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j++)
+                for (; j < line.size() && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j++) {
                     ;
+                }
 
                 if (j >= line.size()) {
                     return KTextEditor::Cursor(i, j - 1);
@@ -3235,8 +3246,9 @@ KTextEditor::Cursor NormalViMode::findParagraphStart()
             /* Skip consecutive empty lines. */
             if (firstBlank) {
                 i--;
-                for (; i >= 0 && doc()->line(i).isEmpty(); i--, prev--)
+                for (; i >= 0 && doc()->line(i).isEmpty(); i--, prev--) {
                     ;
+                }
             }
             return KTextEditor::Cursor(prev, 0);
         }
@@ -3247,7 +3259,8 @@ KTextEditor::Cursor NormalViMode::findParagraphStart()
 KTextEditor::Cursor NormalViMode::findParagraphEnd()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
-    int prev = c.line(), lines = doc()->lines();
+    int prev = c.line();
+    int lines = doc()->lines();
     const bool firstBlank = doc()->line(prev).isEmpty();
 
     for (int i = prev; i < lines; i++) {
@@ -3259,8 +3272,9 @@ KTextEditor::Cursor NormalViMode::findParagraphEnd()
             /* Skip consecutive empty lines. */
             if (firstBlank) {
                 i++;
-                for (; i < lines && doc()->line(i).isEmpty(); i++, prev++)
+                for (; i < lines && doc()->line(i).isEmpty(); i++, prev++) {
                     ;
+                }
             }
             int length = doc()->lineLength(prev);
             return KTextEditor::Cursor(prev, (length <= 0) ? 0 : length - 1);

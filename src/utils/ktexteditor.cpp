@@ -160,8 +160,9 @@ bool View::isStatusBarEnabled() const
 void View::setStatusBarEnabled(bool enable)
 {
     // no state change, do nothing
-    if (enable == !!d->statusBar())
+    if (enable == !!d->statusBar()) {
         return;
+    }
 
     // else toggle it
     d->toggleStatusBar();
@@ -353,8 +354,9 @@ Command::Command(const QStringList &cmds, QObject *parent)
 Command::~Command()
 {
     // unregister this command, if instance is still there!
-    if (KTextEditor::Editor::instance())
+    if (KTextEditor::Editor::instance()) {
         static_cast<KTextEditor::EditorPrivate *>(KTextEditor::Editor::instance())->cmdManager()->unregisterCommand(this);
+    }
 }
 
 bool Command::supportsRange(const QString &)

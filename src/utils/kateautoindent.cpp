@@ -106,10 +106,11 @@ QString KateAutoIndent::modeRequiredStyle(int mode)
 
 uint KateAutoIndent::modeNumber(const QString &name)
 {
-    for (int i = 0; i < modeCount(); ++i)
+    for (int i = 0; i < modeCount(); ++i) {
         if (modeName(i) == name) {
             return i;
         }
+    }
 
     return 0;
 }

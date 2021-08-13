@@ -72,8 +72,9 @@ KateMessageLayout::KateMessageLayout(QWidget *parent)
 
 KateMessageLayout::~KateMessageLayout()
 {
-    while (QLayoutItem *item = takeAt(0))
+    while (QLayoutItem *item = takeAt(0)) {
         delete item;
+    }
 }
 
 void KateMessageLayout::addItem(QLayoutItem *item)
@@ -644,8 +645,9 @@ void KateScrollBar::updatePixmap()
                     }
                     // Query the selection and draw it behind the character
                     if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
-                        if (selStartX == -1)
+                        if (selStartX == -1) {
                             selStartX = pixelX;
+                        }
                         selEndX = pixelX;
                         if (lineText.size() - 1 == x) {
                             selEndX = s_lineWidth + s_pixelMargin - 1;
@@ -789,7 +791,9 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
 
     // get a color suited for the color theme
     QColor darkShieldColor = palette().color(QPalette::Mid);
-    int hue, sat, light;
+    int hue;
+    int sat;
+    int light;
     darkShieldColor.getHsl(&hue, &sat, &light);
     // apply suitable lightness
     darkShieldColor.setHsl(hue, sat, backgroundLightness + lighnessDiff * 0.35);
@@ -2857,7 +2861,8 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
 {
     disconnect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
 
-    int i, j;
+    int i;
+    int j;
     for (i = 0; i < actions().size(); ++i) {
         if (actions().at(i)->menu()) {
             for (j = 0; j < actions().at(i)->menu()->actions().size(); ++j) {

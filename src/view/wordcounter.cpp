@@ -136,7 +136,8 @@ void WordCounter::recalculateLines()
         m_startRecalculationFrom = 0;
     }
 
-    int wordsCount = 0, charsCount = 0;
+    int wordsCount = 0;
+    int charsCount = 0;
     int calculated = 0;
     size_t i = m_startRecalculationFrom;
     constexpr int MaximumLinesToRecalculate = 100;

@@ -253,10 +253,11 @@ bool KateArgumentHintTree::pageDown()
 
     if (current.isValid()) {
         setCurrentIndex(current);
-        if (!model()->indexIsItem(current))
+        if (!model()->indexIsItem(current)) {
             if (!nextCompletion()) {
                 previousCompletion();
             }
+        }
     }
 
     return current != old;
@@ -269,10 +270,11 @@ bool KateArgumentHintTree::pageUp()
 
     if (current.isValid()) {
         setCurrentIndex(current);
-        if (!model()->indexIsItem(current))
+        if (!model()->indexIsItem(current)) {
             if (!previousCompletion()) {
                 nextCompletion();
             }
+        }
     }
     return current != old;
 }

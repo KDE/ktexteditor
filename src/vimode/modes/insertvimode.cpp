@@ -474,7 +474,8 @@ void InsertViMode::leaveInsertMode(bool force)
 
             // make sure cursor haven't been moved
             if (m_blockRange.startLine == m_view->cursorPosition().line()) {
-                int start, len;
+                int start;
+                int len;
                 QString added;
                 KTextEditor::Cursor c;
 

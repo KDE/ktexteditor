@@ -3268,8 +3268,9 @@ void EmulatedCommandBarTest::verifyCommandBarCompletionsMatches(const QStringLis
 {
     verifyCommandBarCompletionVisible();
     QStringList actualCompletionList;
-    for (int i = 0; emulatedCommandBarCompleter()->setCurrentRow(i); i++)
+    for (int i = 0; emulatedCommandBarCompleter()->setCurrentRow(i); i++) {
         actualCompletionList << emulatedCommandBarCompleter()->currentCompletion();
+    }
     if (expectedCompletionList != actualCompletionList) {
         qDebug() << "Actual completions:\n " << actualCompletionList << "\n\ndo not match expected:\n" << expectedCompletionList;
     }

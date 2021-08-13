@@ -292,7 +292,8 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
                 break;
             }
 
-            int line = 0, column = 0;
+            int line = 0;
+            int column = 0;
             stream >> line >> column;
 
             // emulate buffer unwrapLine with document
@@ -339,7 +340,8 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
                 break;
             }
 
-            int line, column;
+            int line;
+            int column;
             QByteArray text;
             stream >> line >> column >> text;
             m_document->insertText(KTextEditor::Cursor(line, column), QString::fromUtf8(text.data(), text.size()));
@@ -359,7 +361,9 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
                 break;
             }
 
-            int line, startColumn, endColumn;
+            int line;
+            int startColumn;
+            int endColumn;
             stream >> line >> startColumn >> endColumn;
             m_document->removeText(KTextEditor::Range(KTextEditor::Cursor(line, startColumn), KTextEditor::Cursor(line, endColumn)));
 

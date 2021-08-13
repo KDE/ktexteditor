@@ -1235,7 +1235,12 @@ void ModeBase::switchView(Direction direction)
     int curr_cursor_x = globalPos.x();
 
     KTextEditor::ViewPrivate *bestview = nullptr;
-    int best_x1 = -1, best_x2 = -1, best_y1 = -1, best_y2 = -1, best_center_y = -1, best_center_x = -1;
+    int best_x1 = -1;
+    int best_x2 = -1;
+    int best_y1 = -1;
+    int best_y2 = -1;
+    int best_center_y = -1;
+    int best_center_x = -1;
 
     if (direction == Next && visible_views.count() != 1) {
         for (int i = 0; i < visible_views.count(); i++) {

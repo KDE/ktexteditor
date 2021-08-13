@@ -173,8 +173,9 @@ static QUrl normalizeUrl(const QUrl &url)
     // don't normalize if not existing!
     // canonicalFilePath won't work!
     const QString normalizedUrl(QFileInfo(url.toLocalFile()).canonicalFilePath());
-    if (normalizedUrl.isEmpty())
+    if (normalizedUrl.isEmpty()) {
         return url;
+    }
 
     // else: use canonicalFilePath to normalize
     return QUrl::fromLocalFile(normalizedUrl);
@@ -1020,10 +1021,11 @@ bool KTextEditor::DocumentPrivate::editEnd()
     }
 
     // wrap the new/changed text, if something really changed!
-    if (m_buffer->editChanged() && (editSessionNumber == 1))
+    if (m_buffer->editChanged() && (editSessionNumber == 1)) {
         if (m_undoManager->isActive() && config()->wordWrap()) {
             wrapText(m_buffer->editTagStart(), m_buffer->editTagEnd());
         }
+    }
 
     editSessionNumber--;
 
@@ -1050,8 +1052,9 @@ bool KTextEditor::DocumentPrivate::editEnd()
     // remember last change position in the stack, if any
     // this avoid costly updates for longer editing transactions
     // before we did that on textInsert/Removed
-    if (m_editLastChangeStartCursor.isValid())
+    if (m_editLastChangeStartCursor.isValid()) {
         saveEditingPositions(m_editLastChangeStartCursor);
+    }
 
     editIsRunning = false;
     return true;
@@ -2499,8 +2502,9 @@ bool KTextEditor::DocumentPrivate::saveFile()
 
     // create a backup file or abort if that fails!
     // if no backup file wanted, this routine will just return true
-    if (!createBackupFile())
+    if (!createBackupFile()) {
         return false;
+    }
 
     // update file type, pass no file path, read file type content from this document
     QString oldPath = m_dirWatchFile;
@@ -4240,10 +4244,11 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
     const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
     for (KTextEditor::DocumentPrivate *doc : docs) {
-        if ((doc != this) && (doc->url().fileName() == url().fileName()))
+        if ((doc != this) && (doc->url().fileName() == url().fileName())) {
             if (doc->m_docNameNumber > count) {
                 count = doc->m_docNameNumber;
             }
+        }
     }
 
     m_docNameNumber = count + 1;
@@ -4727,7 +4732,8 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
     bool replaceTabsSet = false;
     int startPos(0);
 
-    QString var, val;
+    QString var;
+    QString val;
     while ((match = kvVar.match(s, startPos)).hasMatch()) {
         startPos = match.capturedEnd(0);
         var = match.captured(1);
@@ -5328,7 +5334,8 @@ void KTextEditor::DocumentPrivate::transformCursor(KTextEditor::Cursor &cursor,
                                                    qint64 fromRevision,
                                                    qint64 toRevision)
 {
-    int line = cursor.line(), column = cursor.column();
+    int line = cursor.line();
+    int column = cursor.column();
     m_buffer->history().transformCursor(line, column, insertBehavior, fromRevision, toRevision);
     cursor.setPosition(line, column);
 }
@@ -5795,7 +5802,8 @@ QString KTextEditor::DocumentPrivate::decodeCharacters(const KTextEditor::Range 
 {
     QString toReturn;
     KTextEditor::Cursor previous = range.start();
-    int decToEncCurrentOffset = 0, encToDecCurrentOffset = 0;
+    int decToEncCurrentOffset = 0;
+    int encToDecCurrentOffset = 0;
     int i = 0;
     int newI = 0;
 

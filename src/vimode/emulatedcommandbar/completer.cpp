@@ -71,8 +71,9 @@ bool Completer::isNextTextChangeDueToCompletionChange() const
 
 bool Completer::completerHandledKeypress(const QKeyEvent *keyEvent)
 {
-    if (!m_edit->isVisible())
+    if (!m_edit->isVisible()) {
         return false;
+    }
 
     if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
         if (m_currentCompletionType != CompletionStartParams::None && m_completer->popup()->isVisible()) {

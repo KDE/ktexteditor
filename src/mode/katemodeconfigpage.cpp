@@ -47,9 +47,9 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     const auto modeList = KateHlManager::self()->modeList();
     for (const auto &hl : modeList) {
         const auto section = hl.translatedSection();
-        if (!section.isEmpty())
+        if (!section.isEmpty()) {
             ui->cmbHl->addItem(section + QLatin1Char('/') + hl.translatedName(), QVariant(hl.name()));
-        else {
+        } else {
             ui->cmbHl->addItem(hl.translatedName(), QVariant(hl.name()));
         }
     }
@@ -256,10 +256,11 @@ void ModeConfigPage::typeChanged(int type)
         ui->edtSection->setEnabled(!t->hlGenerated);
 
         // activate current hl...
-        for (int i = 0; i < ui->cmbHl->count(); ++i)
+        for (int i = 0; i < ui->cmbHl->count(); ++i) {
             if (ui->cmbHl->itemData(i).toString() == t->hl) {
                 ui->cmbHl->setCurrentIndex(i);
             }
+        }
 
         // activate the right indenter
         int indenterIndex = 0;

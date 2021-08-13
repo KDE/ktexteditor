@@ -54,8 +54,9 @@ bool MacroRecorder::isRecording() const
 
 void MacroRecorder::record(const QKeyEvent &event)
 {
-    if (isRepeatOfLastShortcutOverrideAsKeyPress(event, m_eventsLog))
+    if (isRepeatOfLastShortcutOverrideAsKeyPress(event, m_eventsLog)) {
         return;
+    }
     m_eventsLog.append(event);
 }
 

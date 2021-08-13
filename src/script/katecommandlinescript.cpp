@@ -57,8 +57,9 @@ bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList &
 
 bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range)
 {
-    if (range.isValid())
+    if (range.isValid()) {
         view->setSelection(range);
+    }
 
     KShell::Errors errorCode;
     QStringList args(KShell::splitArgs(cmd, KShell::NoOptions, &errorCode));

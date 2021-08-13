@@ -183,7 +183,10 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
     QColor currentLineColor = config()->highlightedLineColor();
 
     // Check for mark background
-    int markRed = 0, markGreen = 0, markBlue = 0, markCount = 0;
+    int markRed = 0;
+    int markGreen = 0;
+    int markBlue = 0;
+    int markCount = 0;
 
     // Retrieve marks for this line
     uint mrk = m_doc->mark(layout->line());
@@ -451,7 +454,8 @@ KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool 
     }
 
     // Calculate the range which we need to iterate in order to get the highlighting for just this line
-    KTextEditor::Cursor currentPosition, endPosition;
+    KTextEditor::Cursor currentPosition;
+    KTextEditor::Cursor endPosition;
     if (m_view && selectionsOnly) {
         if (m_view->blockSelection()) {
             KTextEditor::Range subRange = m_doc->rangeOnLine(m_view->selectionRange(), line);
@@ -639,10 +643,11 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 if (spaceIndex >= trailingPos) {
                     for (; spaceIndex >= line.startCol(); --spaceIndex) {
                         if (!text.at(spaceIndex).isSpace()) {
-                            if (showSpaces() == KateDocumentConfig::Trailing)
+                            if (showSpaces() == KateDocumentConfig::Trailing) {
                                 break;
-                            else
+                            } else {
                                 continue;
+                            }
                         }
 
                         if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
@@ -690,7 +695,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
         // Draw caret
         if (drawCaret() && cursor && range->includesCursor(*cursor)) {
-            int caretWidth, lineWidth = 2;
+            int caretWidth;
+            int lineWidth = 2;
             QColor color;
             QTextLine line = range->layout()->lineForTextPosition(qMin(cursor->column(), range->length()));
 

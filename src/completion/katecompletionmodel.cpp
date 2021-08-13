@@ -716,16 +716,19 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
         if (groupingMethod() & Scope) {
             for (QHash<int, Group *>::ConstIterator it = m_groupHash.constFind(groupingAttribute);
                  it != m_groupHash.constEnd() && it.key() == groupingAttribute;
-                 ++it)
+                 ++it) {
                 if (it.value()->scope == scope) {
                     return it.value();
                 }
+            }
         } else {
             return m_groupHash.value(groupingAttribute);
         }
     }
 
-    QString st, at, it;
+    QString st;
+    QString at;
+    QString it;
     QString title;
 
     if (groupingMethod() & ScopeType) {
@@ -1440,10 +1443,11 @@ void KateCompletionModel::setAccessIncludeSignalSlot(bool include)
 int KateCompletionModel::countBits(int value) const
 {
     int count = 0;
-    for (int i = 1; i; i <<= 1)
+    for (int i = 1; i; i <<= 1) {
         if (i & value) {
             count++;
         }
+    }
 
     return count;
 }

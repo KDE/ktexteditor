@@ -54,8 +54,9 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 
     embeddedHighlightingModes.reserve(definitions.size());
     // first: handle only really included definitions
-    for (const auto &includedDefinition : qAsConst(definitions))
+    for (const auto &includedDefinition : qAsConst(definitions)) {
         embeddedHighlightingModes.push_back(includedDefinition.name());
+    }
 
     // now: handle all, including this definition itself
     // create the format => attributes mapping
@@ -73,8 +74,9 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         auto &properties = m_properties[propertiesIndex];
         properties.definition = includedDefinition;
         properties.emptyLines.reserve(includedDefinition.foldingIgnoreList().size());
-        for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
+        for (const auto &emptyLine : includedDefinition.foldingIgnoreList()) {
             properties.emptyLines.push_back(QRegularExpression(emptyLine, QRegularExpression::UseUnicodePropertiesOption));
+        }
         properties.singleLineCommentMarker = includedDefinition.singleLineCommentMarker();
         properties.singleLineCommentPosition = includedDefinition.singleLineCommentPosition();
         const auto multiLineComment = includedDefinition.multiLineCommentMarker();

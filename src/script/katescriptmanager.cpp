@@ -140,8 +140,9 @@ void KateScriptManager::collect()
             const QString baseName = QFileInfo(fileName).baseName();
 
             // only load scripts once, even if multiple installed variants found!
-            if (unique.contains(baseName))
+            if (unique.contains(baseName)) {
                 continue;
+            }
 
             // remember the script
             unique.insert(baseName);

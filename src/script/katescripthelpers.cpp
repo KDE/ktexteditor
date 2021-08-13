@@ -59,8 +59,9 @@ QString ScriptHelper::read(const QString &name)
     if (fullName.isEmpty()) {
         // retry with resource
         fullName = QLatin1String(":/ktexteditor/script/files/") + name;
-        if (!QFile::exists(fullName))
+        if (!QFile::exists(fullName)) {
             return content;
+        }
     }
 
     // try to read complete file
@@ -77,8 +78,9 @@ void ScriptHelper::require(const QString &name)
     if (fullName.isEmpty()) {
         // retry with resource
         fullName = QLatin1String(":/ktexteditor/script/libraries/") + name;
-        if (!QFile::exists(fullName))
+        if (!QFile::exists(fullName)) {
             return;
+        }
     }
 
     // check include guard

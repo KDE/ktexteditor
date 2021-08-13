@@ -30,7 +30,8 @@ void mergeAttributes(KTextEditor::Attribute::Ptr base, KTextEditor::Attribute::P
 
     // We eventually have to blend
 
-    QBrush baseBgBrush, baseFgBrush;
+    QBrush baseBgBrush;
+    QBrush baseFgBrush;
 
     if (hadBg) {
         baseBgBrush = base->background();

@@ -43,7 +43,10 @@ Range::Range(const KTextEditor::Cursor &c1, const KTextEditor::Cursor c2, Motion
 
 void Range::normalize()
 {
-    int sl = startLine, el = endLine, sc = startColumn, ec = endColumn;
+    int sl = startLine;
+    int el = endLine;
+    int sc = startColumn;
+    int ec = endColumn;
 
     if (sl < el) {
         startLine = sl;

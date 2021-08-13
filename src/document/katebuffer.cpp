@@ -97,8 +97,9 @@ void KateBuffer::updateHighlighting()
     // one line up, to e.g. get notified about new folding starts
     // see bug 351496
     int editTagLineStart = editingMinimalLineChanged();
-    if ((editTagLineStart > 0) && m_highlight->foldingIndentationSensitive())
+    if ((editTagLineStart > 0) && m_highlight->foldingIndentationSensitive()) {
         --editTagLineStart;
+    }
 
     // really update highlighting
     doHighlight(editTagLineStart, editTagLineEnd, true);

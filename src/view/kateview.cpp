@@ -796,8 +796,9 @@ void KTextEditor::ViewPrivate::setupActions()
         const InputMode im = mode->viewInputMode();
         a->setData(static_cast<int>(im));
         a->setCheckable(true);
-        if (im == m_config->inputMode())
+        if (im == m_config->inputMode()) {
             a->setChecked(true);
+        }
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleInputMode);
     }
 
@@ -1590,10 +1591,11 @@ bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Curs
         }
     }
 
-    if (blockSelection())
+    if (blockSelection()) {
         if (z < position.column()) {
             x += position.column() - z;
         }
+    }
 
     m_viewInternal->updateCursor(KTextEditor::Cursor(position.line(), x),
                                  false,
@@ -1996,18 +1998,20 @@ void KTextEditor::ViewPrivate::updateConfig()
     // register/unregister word completion...
     bool wc = config()->wordCompletion();
     if (wc != isCompletionModelRegistered(KTextEditor::EditorPrivate::self()->wordCompletionModel())) {
-        if (wc)
+        if (wc) {
             registerCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
-        else
+        } else {
             unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
+        }
     }
 
     bool kc = config()->keywordCompletion();
     if (kc != isCompletionModelRegistered(KTextEditor::EditorPrivate::self()->keywordCompletionModel())) {
-        if (kc)
+        if (kc) {
             registerCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
-        else
+        } else {
             unregisterCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
+        }
     }
 
     m_cut->setEnabled(doc()->isReadWrite() && (selection() || m_config->smartCopyCut()));
@@ -2346,10 +2350,10 @@ bool KTextEditor::ViewPrivate::cursorSelected(const KTextEditor::Cursor &cursor)
         ret.setColumn(0);
     }
 
-    if (blockSelect)
+    if (blockSelect) {
         return cursor.line() >= m_selection.start().line() && ret.line() <= m_selection.end().line() && ret.column() >= m_selection.start().column()
             && ret.column() <= m_selection.end().column();
-    else {
+    } else {
         return m_selection.toRange().contains(cursor) || m_selection.end() == cursor;
     }
 }
@@ -3578,10 +3582,12 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
         const QList<QWidget *> widgets = QList<QWidget *>()
             << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
         for (const QWidget *w : widgets) {
-            if (w->hasFocus())
+            if (w->hasFocus()) {
                 opt.state |= QStyle::State_HasFocus;
-            if (w->underMouse())
+            }
+            if (w->underMouse()) {
                 opt.state |= QStyle::State_MouseOver;
+            }
         }
 
         // update rect
@@ -3813,8 +3819,9 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     // if text of selection is still the same, abort
     if (selection() && selectionRange().onSingleLine()) {
         text = selectionText();
-        if (text == m_currentTextForHighlights)
+        if (text == m_currentTextForHighlights) {
             return;
+        }
     }
 
     // text changed: remove all highlights + create new ones
@@ -3822,8 +3829,9 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     m_rangesForHighlights.clear();
 
     // do not highlight strings with leading and trailing spaces
-    if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length() - 1).isSpace()))
+    if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length() - 1).isSpace())) {
         return;
+    }
 
     // trigger creation of ranges for current view range
     m_currentTextForHighlights = text;
@@ -3991,8 +3999,9 @@ QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int 
 {
     QList<KTextEditor::AttributeBlock> attribs;
 
-    if (line < 0 || line >= doc()->lines())
+    if (line < 0 || line >= doc()->lines()) {
         return attribs;
+    }
 
     Kate::TextLine kateLine = doc()->kateTextLine(line);
     if (!kateLine) {

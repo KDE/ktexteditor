@@ -158,8 +158,9 @@ bool EmulatedCommandBar::barHandledKeypress(const QKeyEvent *keyEvent)
         m_edit->backspace();
         return true;
     }
-    if (keyEvent->modifiers() != Qt::ControlModifier)
+    if (keyEvent->modifiers() != Qt::ControlModifier) {
         return false;
+    }
     if (keyEvent->key() == Qt::Key_B) {
         m_edit->setCursorPosition(0);
         return true;
@@ -262,8 +263,9 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         return true;
     }
     const bool completerHandled = m_completer->completerHandledKeypress(keyEvent);
-    if (completerHandled)
+    if (completerHandled) {
         return true;
+    }
 
     if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
         Q_EMIT hideMe();
@@ -272,13 +274,15 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
 
     // Is this a built-in Emulated Command Bar keypress e.g. insert from register, ctrl-h, etc?
     const bool barHandled = barHandledKeypress(keyEvent);
-    if (barHandled)
+    if (barHandled) {
         return true;
+    }
 
     // Can the current mode handle it?
     const bool currentModeHandled = m_currentMode->handleKeyPress(keyEvent);
-    if (currentModeHandled)
+    if (currentModeHandled) {
         return true;
+    }
 
     // Couldn't handle this key event.
     // Send the keypress back to the QLineEdit.  Ideally, instead of doing this, we would simply return "false"
@@ -288,8 +292,9 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
     // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
     if (m_edit->isVisible()) {
-        if (m_suspendEditEventFiltering)
+        if (m_suspendEditEventFiltering) {
             return false;
+        }
         m_suspendEditEventFiltering = true;
         QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
         qApp->notify(m_edit, &keyEventCopy);
@@ -375,8 +380,9 @@ void EmulatedCommandBar::hideAllWidgetsExcept(QWidget *widgetToKeepVisible)
 {
     const QList<QWidget *> widgets = centralWidget()->findChildren<QWidget *>();
     for (QWidget *widget : widgets) {
-        if (widget != widgetToKeepVisible)
+        if (widget != widgetToKeepVisible) {
             widget->hide();
+        }
     }
 }
 

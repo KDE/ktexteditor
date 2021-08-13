@@ -26,11 +26,12 @@ bool KateCmd::registerCommand(KTextEditor::Command *cmd)
 {
     const QStringList &l = cmd->cmds();
 
-    for (int z = 0; z < l.count(); z++)
+    for (int z = 0; z < l.count(); z++) {
         if (m_dict.contains(l[z])) {
             qCDebug(LOG_KTE) << "Command already registered: " << l[z] << ". Aborting.";
             return false;
         }
+    }
 
     for (int z = 0; z < l.count(); z++) {
         m_dict.insert(l[z], cmd);
@@ -106,10 +107,11 @@ KateCmd *KateCmd::self()
 
 void KateCmd::appendHistory(const QString &cmd)
 {
-    if (!m_history.isEmpty()) // this line should be backported to 3.x
+    if (!m_history.isEmpty()) { // this line should be backported to 3.x
         if (m_history.last() == cmd) {
             return;
         }
+    }
 
     if (m_history.count() == CMD_HIST_LENGTH) {
         m_history.removeFirst();
@@ -170,18 +172,20 @@ void KateCmdShellCompletion::postProcessMatch(QString *match) const
 
 void KateCmdShellCompletion::postProcessMatches(QStringList *matches) const
 {
-    for (QStringList::Iterator it = matches->begin(); it != matches->end(); it++)
+    for (QStringList::Iterator it = matches->begin(); it != matches->end(); it++) {
         if (!(*it).isNull()) {
             (*it).prepend(m_text_start);
         }
+    }
 }
 
 void KateCmdShellCompletion::postProcessMatches(KCompletionMatches *matches) const
 {
-    for (KCompletionMatches::Iterator it = matches->begin(); it != matches->end(); it++)
+    for (KCompletionMatches::Iterator it = matches->begin(); it != matches->end(); it++) {
         if (!(*it).value().isNull()) {
             (*it).value().prepend(m_text_start);
         }
+    }
 }
 
 void KateCmdShellCompletion::splitText(const QString &text, QString &text_start, QString &text_compl) const

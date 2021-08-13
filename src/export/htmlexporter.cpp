@@ -16,8 +16,9 @@
 
 static QString toHtmlRgbaString(const QColor &color)
 {
-    if (color.alpha() == 0xFF)
+    if (color.alpha() == 0xFF) {
         return color.name();
+    }
 
     QString rgba = QStringLiteral("rgba(");
     rgba.append(QString::number(color.red()));

@@ -607,7 +607,8 @@ void PrintPainter::paintBackground(QPainter &painter, const uint y, const PageLa
 {
     // If we have a box, or the header/footer has backgrounds, we want to paint
     // to the border of those. Otherwise just the contents area.
-    int _y = y, _h = pl.maxHeight - y;
+    int _y = y;
+    int _h = pl.maxHeight - y;
     if (m_useBox) {
         _y -= pl.innerMargin;
         _h += 2 * pl.innerMargin;

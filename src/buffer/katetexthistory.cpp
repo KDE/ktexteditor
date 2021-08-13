@@ -209,10 +209,11 @@ void TextHistory::Entry::transformCursor(int &cursorLine, int &cursorColumn, boo
         }
 
         // skip cursors with too small column
-        if (cursorColumn <= column)
+        if (cursorColumn <= column) {
             if (cursorColumn < column || !moveOnInsert) {
                 return;
             }
+        }
 
         // patch column of cursor
         if (cursorColumn <= oldLineLength) {
@@ -326,10 +327,11 @@ void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColu
         }
 
         // skip cursors with too small column
-        if (cursorColumn <= column)
+        if (cursorColumn <= column) {
             if (cursorColumn < column || !moveOnInsert) {
                 return;
             }
+        }
 
         // patch column of cursor
         if (cursorColumn <= oldLineLength) {
@@ -427,7 +429,10 @@ void TextHistory::transformRange(KTextEditor::Range &range,
     // transform cursors
 
     // first: copy cursors, without range association
-    int startLine = range.start().line(), startColumn = range.start().column(), endLine = range.end().line(), endColumn = range.end().column();
+    int startLine = range.start().line();
+    int startColumn = range.start().column();
+    int endLine = range.end().line();
+    int endColumn = range.end().column();
 
     bool moveOnInsertStart = !(insertBehaviors & KTextEditor::MovingRange::ExpandLeft);
     bool moveOnInsertEnd = (insertBehaviors & KTextEditor::MovingRange::ExpandRight);

@@ -170,7 +170,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
             continue;
         }
 
-        if (additionalFormats.isEmpty())
+        if (additionalFormats.isEmpty()) {
             if (i != 0 && m_cachedHighlights[i - 1].start + m_cachedHighlights[i - 1].length > m_currentColumnStart) {
                 QTextLayout::FormatRange before;
                 before.start = 0;
@@ -178,6 +178,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
                 before.format = m_cachedHighlights[i - 1].format;
                 additionalFormats.append(before);
             }
+        }
 
         QTextLayout::FormatRange format;
         format.start = m_cachedHighlights[i].start - m_currentColumnStart;

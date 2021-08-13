@@ -35,8 +35,9 @@ void KateStatusBarOpenUpMenu::setVisible(bool visibility)
         QRect geo = geometry();
         QPoint pos = parentWidget()->mapToGlobal(QPoint(0, 0));
         geo.moveTopLeft(QPoint(pos.x(), pos.y() - geo.height()));
-        if (geo.top() < 0)
+        if (geo.top() < 0) {
             geo.moveTop(0);
+        }
         setGeometry(geo);
     }
 
@@ -267,8 +268,9 @@ void KateStatusBar::viewModeChanged()
 {
     // prepend BLOCK for block selection mode
     QString text = m_view->viewModeHuman();
-    if (m_view->blockSelection())
+    if (m_view->blockSelection()) {
         text = i18n("[BLOCK] %1", text);
+    }
 
     m_inputMode->setText(text);
 }
@@ -348,8 +350,9 @@ void KateStatusBar::modifiedChanged()
 
     // combine to modified status, update only if changed
     unsigned int newStatus = (unsigned int)mod | ((unsigned int)modOnHD << 1) | ((unsigned int)readOnly << 2);
-    if (m_modifiedStatus == newStatus)
+    if (m_modifiedStatus == newStatus) {
         return;
+    }
 
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
@@ -448,8 +451,9 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w)
     // linear search should be fast enough here, no additional hash
     for (QAction *action : group->actions()) {
         int val = action->data().toInt();
-        if (val == -1)
+        if (val == -1) {
             m1 = action;
+        }
         if (val == w) {
             found = true;
             action->setChecked(true);
@@ -473,8 +477,9 @@ void KateStatusBar::slotTabGroup(QAction *a)
     KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
     if (val == -1) {
         val = QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 200, 1, &ok);
-        if (!ok)
+        if (!ok) {
             val = config->tabWidth();
+        }
     }
     config->setTabWidth(val);
 }
@@ -493,13 +498,15 @@ void KateStatusBar::slotIndentGroup(QAction *a)
                                    200,
                                    1,
                                    &ok);
-        if (!ok)
+        if (!ok) {
             val = config->indentationWidth();
+        }
     }
     config->configStart();
     config->setIndentationWidth(val);
-    if (m_hardAction->isChecked())
+    if (m_hardAction->isChecked()) {
         config->setTabWidth(val);
+    }
     config->configEnd();
 }
 
@@ -509,8 +516,9 @@ void KateStatusBar::slotIndentTabMode(QAction *a)
     if (a == m_softAction) {
         config->setReplaceTabsDyn(true);
     } else if (a == m_mixedAction) {
-        if (config->replaceTabsDyn())
+        if (config->replaceTabsDyn()) {
             config->setReplaceTabsDyn(false);
+        }
         m_tabGroup->setEnabled(true);
     } else if (a == m_hardAction) {
         if (config->replaceTabsDyn()) {

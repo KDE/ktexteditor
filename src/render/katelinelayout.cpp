@@ -119,10 +119,11 @@ void KateLineLayout::setLayout(QTextLayout *layout)
 
     m_layoutDirty = !m_layout;
     m_dirtyList.clear();
-    if (m_layout)
+    if (m_layout) {
         for (int i = 0; i < qMax(1, m_layout->lineCount()); ++i) {
             m_dirtyList.append(true);
         }
+    }
 }
 
 void KateLineLayout::invalidateLayout()

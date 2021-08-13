@@ -810,23 +810,26 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
         // All stylenames have their language mode prefixed, e.g. HTML:Comment
         // split them and put them into nice substructures.
         int c = attributes[i]->name().indexOf(QLatin1Char(':'));
-        if (c <= 0)
+        if (c <= 0) {
             continue;
+        }
 
         QString highlighting = attributes[i]->name().left(c);
         QString name = attributes[i]->name().mid(c + 1);
         auto &uniqueAttribute = m_uniqueAttributes[m_schema][highlighting][name].first;
         auto &uniqueAttributeDefault = m_uniqueAttributes[m_schema][highlighting][name].second;
 
-        if (uniqueAttribute.data())
+        if (uniqueAttribute.data()) {
             attributes[i] = uniqueAttribute;
-        else
+        } else {
             uniqueAttribute = attributes[i];
+        }
 
-        if (uniqueAttributeDefault.data())
+        if (uniqueAttributeDefault.data()) {
             defaults[i] = uniqueAttributeDefault;
-        else
+        } else {
             uniqueAttributeDefault = defaults[i];
+        }
     }
 
     auto &subMap = it.value();
