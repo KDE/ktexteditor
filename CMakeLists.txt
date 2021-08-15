@@ -41,7 +41,7 @@ ecm_setup_version(
 )
 
 # Dependencies
-set(REQUIRED_QT_VERSION 5.15.0)
+set(REQUIRED_QT_VERSION 5.15.2)
 
 # Required Qt5 components to build this framework
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
@@ -66,7 +66,7 @@ find_package(EditorConfig)
 
 # forbid some old things
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055100)
 add_definitions(-DKWIDGETSADDONS_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054D00) # We need KSelectAction::triggered(QString)
 
