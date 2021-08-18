@@ -707,6 +707,12 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     };
     connect(textareaUi->cbxWordWrap, &QCheckBox::stateChanged, this, a);
     a();
+    auto b = [cbx = textareaUi->cbxIndentWrappedLines, sb = textareaUi->sbDynamicWordWrapDepth]() {
+        sb->setEnabled(cbx->isChecked());
+    };
+    b();
+    connect(textareaUi->cbxIndentWrappedLines, &QCheckBox::stateChanged, this, b);
+    observeChanges(textareaUi->cbxIndentWrappedLines);
     observeChanges(textareaUi->sbDynamicWordWrapDepth);
     observeChanges(textareaUi->sliSetMarkerSize);
     observeChanges(textareaUi->spacesComboBox);
@@ -756,7 +762,11 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setDynWordWrap(textareaUi->cbxWordWrap->isChecked());
     KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::BookmarkSorting, bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
-    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
+    if (!textareaUi->cbxIndentWrappedLines->isChecked()) {
+        KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, 0);
+    } else {
+        KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
+    }
     KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapIndicators, textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
     KateViewConfig::global()->setValue(KateViewConfig::DynWrapAnywhere, textareaUi->chkDynWrapAnywhere->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::DynWrapAtStaticMarker, textareaUi->chkDynWrapAtStaticMarker->isChecked());
@@ -809,6 +819,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->chkShowWordCount->setChecked(KateViewConfig::global()->showWordCount());
     textareaUi->cmbDynamicWordWrapIndicator->setCurrentIndex(KateViewConfig::global()->dynWordWrapIndicators());
     textareaUi->cbxWordWrap->setChecked(KateViewConfig::global()->dynWordWrap());
+    textareaUi->cbxIndentWrappedLines->setChecked(KateViewConfig::global()->dynWordWrapAlignIndent() != 0);
     textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
     textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
     textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());

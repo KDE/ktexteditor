@@ -331,7 +331,7 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="23" column="1">
+     <item row="25" column="1">
       <widget class="QSpinBox" name="sbDynamicWordWrapDepth">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -342,11 +342,11 @@ beginning of a file.</string>
        <property name="whatsThis">
         <string>&lt;p&gt;Enables the start of dynamically wrapped lines to be aligned vertically to the indentation level of the first line. This can help to make code and markup more readable.&lt;/p&gt;&lt;p&gt;Additionally, this allows you to set a maximum width of the screen, as a percentage, after which dynamically wrapped lines will no longer be vertically aligned. For example, at 50%, lines whose indentation levels are deeper than 50% of the width of the screen will not have vertical alignment applied to subsequent wrapped lines.&lt;/p&gt;</string>
        </property>
-       <property name="specialValueText">
-        <string>Disabled</string>
-       </property>
        <property name="suffix">
         <string>% of View Width</string>
+       </property>
+       <property name="minimum">
+        <number>10</number>
        </property>
        <property name="maximum">
         <number>80</number>
@@ -356,15 +356,45 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="23" column="0">
+     <item row="25" column="0">
       <widget class="QLabel" name="lblDynamicWordWrapIndicators_2">
        <property name="text">
-        <string>&amp;Align dynamically wrapped lines to indentation depth:</string>
+        <string>Don't indent lines wider than:</string>
        </property>
        <property name="buddy">
         <cstring>sbDynamicWordWrapDepth</cstring>
        </property>
       </widget>
+     </item>
+     <item row="24" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Indent wrapped lines:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="24" column="1">
+      <widget class="QCheckBox" name="cbxIndentWrappedLines">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="1">
+      <spacer name="verticalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
