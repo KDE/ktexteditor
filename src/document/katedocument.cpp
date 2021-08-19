@@ -3436,12 +3436,21 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     s.replace(QRegularExpression(QStringLiteral("\r\n?")), QStringLiteral("\n"));
 
     int lines = s.count(QLatin1Char('\n'));
+    const bool isSingleLine = lines == 0;
 
     m_undoManager->undoSafePoint();
 
     editStart();
 
     KTextEditor::Cursor pos = view->cursorPosition();
+
+    bool skipIndentOnPaste = false;
+    if (isSingleLine) {
+        auto l = plainKateTextLine(pos.line());
+        // if its a single line and the line already contains some text, skip indenting
+        skipIndentOnPaste = l && !l->text().isEmpty();
+    }
+
     if (!view->config()->persistentSelection() && view->selection()) {
         pos = view->selectionRange().start();
         if (view->blockSelection()) {
@@ -3484,8 +3493,9 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
 
     if (config()->indentPastedText()) {
         KTextEditor::Range range = KTextEditor::Range(KTextEditor::Cursor(pos.line(), 0), KTextEditor::Cursor(pos.line() + lines, 0));
-
-        m_indenter->indent(view, range);
+        if (!skipIndentOnPaste) {
+            m_indenter->indent(view, range);
+        }
     }
 
     if (!view->blockSelection()) {
