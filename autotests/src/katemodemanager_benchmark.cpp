@@ -29,4 +29,22 @@ void KateModeManagerBenchmark::benchmarkWildcardsFind()
     }
 }
 
+void KateModeManagerBenchmark::benchmarkMimeTypesFind_data()
+{
+    mimeTypesFindTestData();
+}
+
+void KateModeManagerBenchmark::benchmarkMimeTypesFind()
+{
+    QFETCH(QString, mimeTypeName);
+    QFETCH(QString, fileTypeName);
+
+    // Warm up and check correctness.
+    QCOMPARE(m_modeManager->mimeTypesFind(mimeTypeName), fileTypeName);
+
+    QBENCHMARK {
+        m_modeManager->mimeTypesFind(mimeTypeName);
+    }
+}
+
 QTEST_MAIN(KateModeManagerBenchmark)

@@ -15,6 +15,8 @@ class KateModeManagerTest : public KateModeManagerTestBase
 private Q_SLOTS:
     void testWildcardsFind_data();
     void testWildcardsFind();
+    void testMimeTypesFind_data();
+    void testMimeTypesFind();
 };
 
 #endif // KTEXTEDITOR_KATEMODEMANAGER_TEST_H

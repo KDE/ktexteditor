@@ -93,6 +93,7 @@ private:
     friend class KateModeManagerBenchmark;
 
     KTEXTEDITOR_EXPORT QString wildcardsFind(const QString &fileName) const; // exported for testing
+    KTEXTEDITOR_EXPORT QString mimeTypesFind(const QString &mimeTypeName) const; // exported for testing
 
     QList<KateFileType *> m_types;
     QHash<QString, KateFileType *> m_name2Type;

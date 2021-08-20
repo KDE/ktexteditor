@@ -15,6 +15,8 @@ class KateModeManagerBenchmark : public KateModeManagerTestBase
 private Q_SLOTS:
     void benchmarkWildcardsFind_data();
     void benchmarkWildcardsFind();
+    void benchmarkMimeTypesFind_data();
+    void benchmarkMimeTypesFind();
 };
 
 #endif // KTEXTEDITOR_KATEMODEMANAGER_BENCHMARK_H

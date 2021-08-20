@@ -272,10 +272,14 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
     } else {
         mtName = doc->mimeType();
     }
+    return mimeTypesFind(mtName);
+}
 
+QString KateModeManager::mimeTypesFind(const QString &mimeTypeName) const
+{
     QList<KateFileType *> types;
     for (KateFileType *type : qAsConst(m_types)) {
-        if (type->mimetypes.indexOf(mtName) > -1) {
+        if (type->mimetypes.indexOf(mimeTypeName) > -1) {
             types.append(type);
         }
     }

@@ -18,6 +18,7 @@ protected:
     KateModeManagerTestBase();
 
     void wildcardsFindTestData();
+    void mimeTypesFindTestData();
 
     const KateModeManager *const m_modeManager;
 };

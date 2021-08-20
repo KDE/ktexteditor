@@ -15,16 +15,27 @@ namespace
 {
 struct FileTypeDataRow {
     const char *dataTag;
-    const char *fileName;
-    const char *fileTypeName;
+    const char *m_inputString;
+    const char *m_fileTypeName;
+
+    QString inputString() const
+    {
+        return QString::fromUtf8(m_inputString);
+    }
+    QString fileTypeName() const
+    {
+        return QString::fromUtf8(m_fileTypeName);
+    }
 };
-// This table has been copied from syntax-highlighting:autotests/repository_test_base.cpp and adjusted:
-//  1) removed all except first definition/fileType names because only the first name is used in KTextEditor;
-//  2) used the second, not first, definition/fileType name in the QRPG.ninja row because
+// The two tables below have been copied from syntax-highlighting:autotests/repository_test_base.cpp and adjusted:
+// removed all except first definition/fileType names because only the first name is used in KTextEditor.
+// The two versions of the tables should be kept in sync.
+
+// Additional adjustments to the syntax-highlighting version of fileTypesForFileNames table:
+//  1) used the second, not first, definition/fileType name in the QRPG.ninja row because
 //     "ILERPG" < "Ninja" in KSyntaxHighlighting but "Sources/ILERPG" > "Other/Ninja" in KTextEditor.
-//  3) used the second, not first, definition/fileType name in the qrpg*.tt row because
+//  2) used the second, not first, definition/fileType name in the qrpg*.tt row because
 //     "ILERPG" < "TT2" in KSyntaxHighlighting but "Sources/ILERPG" > "Markup/TT2" in KTextEditor.
-// The two versions of the table should be kept in sync.
 constexpr FileTypeDataRow fileTypesForFileNames[] = {
     {"empty", "", ""},
 
@@ -79,6 +90,26 @@ constexpr FileTypeDataRow fileTypesForFileNames[] = {
     {"qrpg*.cl", "qrpg$heterogenous~pattern&match.cl", "OpenCL"},
     {".gitignore*.tt*.textile", ".gitignoreHeterogenous3.tt.textile", "Textile"},
 };
+
+constexpr FileTypeDataRow fileTypesForMimeTypeNames[] = {
+    {"empty", "", ""},
+
+    {"Nonexistent MIME type", "text/nonexistent-mt", ""},
+    {"No match", "application/x-bzip-compressed-tar", ""},
+
+    {"High priority", "text/rust", "Rust"},
+    {"Negative priority", "text/octave", "Octave"},
+
+    {"Multiple types match", "text/x-chdr", "C++"},
+};
+
+template<std::size_t size>
+void addFileTypeDataRows(const FileTypeDataRow (&array)[size])
+{
+    for (const auto &row : array) {
+        QTest::newRow(row.dataTag) << row.inputString() << row.fileTypeName();
+    }
+}
 } // unnamed namespace
 
 KateModeManagerTestBase::KateModeManagerTestBase()
@@ -90,8 +121,12 @@ void KateModeManagerTestBase::wildcardsFindTestData()
 {
     QTest::addColumn<QString>("fileName");
     QTest::addColumn<QString>("fileTypeName");
+    addFileTypeDataRows(fileTypesForFileNames);
+}
 
-    for (const auto &row : fileTypesForFileNames) {
-        QTest::newRow(row.dataTag) << QString::fromUtf8(row.fileName) << QString::fromUtf8(row.fileTypeName);
-    }
+void KateModeManagerTestBase::mimeTypesFindTestData()
+{
+    QTest::addColumn<QString>("mimeTypeName");
+    QTest::addColumn<QString>("fileTypeName");
+    addFileTypeDataRows(fileTypesForMimeTypeNames);
 }

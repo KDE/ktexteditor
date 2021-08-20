@@ -24,4 +24,17 @@ void KateModeManagerTest::testWildcardsFind()
     QCOMPARE(m_modeManager->wildcardsFind(fileName), fileTypeName);
 }
 
+void KateModeManagerTest::testMimeTypesFind_data()
+{
+    mimeTypesFindTestData();
+}
+
+void KateModeManagerTest::testMimeTypesFind()
+{
+    QFETCH(QString, mimeTypeName);
+    QFETCH(QString, fileTypeName);
+
+    QCOMPARE(m_modeManager->mimeTypesFind(mimeTypeName), fileTypeName);
+}
+
 QTEST_MAIN(KateModeManagerTest)
