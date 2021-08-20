@@ -54,7 +54,7 @@ bool exactMatch(const QString &candidate, const QString &wildcard, int candidate
             }
         }
     }
-    return true;
+    return candidatePosFromRight == -1;
 }
 
 bool exactMatch(const QString &candidate, const QString &wildcard, bool caseSensitive)

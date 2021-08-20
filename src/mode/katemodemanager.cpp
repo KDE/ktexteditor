@@ -19,6 +19,7 @@
 
 #include <KConfigGroup>
 
+#include <QFileInfo>
 #include <QMimeDatabase>
 // END Includes
 
@@ -296,6 +297,8 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
 
 QString KateModeManager::wildcardsFind(const QString &fileName) const
 {
+    const auto fileNameNoPath = QFileInfo{fileName}.fileName();
+
     KateFileType *match = nullptr;
     int minPrio = -1;
     for (KateFileType *type : qAsConst(m_types)) {
@@ -304,7 +307,7 @@ QString KateModeManager::wildcardsFind(const QString &fileName) const
         }
 
         for (const QString &wildcard : qAsConst(type->wildcards)) {
-            if (KateWildcardMatcher::exactMatch(fileName, wildcard)) {
+            if (KateWildcardMatcher::exactMatch(fileNameNoPath, wildcard)) {
                 match = type;
                 minPrio = type->priority;
                 break;
