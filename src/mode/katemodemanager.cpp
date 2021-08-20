@@ -21,6 +21,8 @@
 
 #include <QFileInfo>
 #include <QMimeDatabase>
+
+#include <limits>
 // END Includes
 
 static QStringList vectorToList(const QVector<QString> &v)
@@ -300,7 +302,7 @@ QString KateModeManager::wildcardsFind(const QString &fileName) const
     const auto fileNameNoPath = QFileInfo{fileName}.fileName();
 
     KateFileType *match = nullptr;
-    int minPrio = -1;
+    auto minPrio = std::numeric_limits<int>::lowest();
     for (KateFileType *type : qAsConst(m_types)) {
         if (type->priority <= minPrio) {
             continue;
