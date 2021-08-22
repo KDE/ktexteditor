@@ -152,7 +152,6 @@ ecm_add_tests(
   src/templatehandler_test.cpp
   src/katefoldingtest.cpp
   src/bug286887.cpp
-  src/katewildcardmatcher_test.cpp
   src/katetextblocktest.cpp
   src/camelcursortest.cpp
   src/encodingtest.cpp

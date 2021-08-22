@@ -106,7 +106,6 @@ script/katescripthelpers.cpp
 mode/katemodemanager.cpp
 mode/katemodeconfigpage.cpp
 mode/katemodemenu.cpp
-mode/katewildcardmatcher.cpp
 mode/katemodemenulist.cpp
 
 # modeline variable editor

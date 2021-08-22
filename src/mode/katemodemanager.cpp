@@ -8,7 +8,6 @@
 #include "katemodemanager.h"
 #include "katemodemenulist.h"
 #include "katestatusbar.h"
-#include "katewildcardmatcher.h"
 
 #include "kateconfig.h"
 #include "katedocument.h"
@@ -18,6 +17,7 @@
 #include "kateview.h"
 
 #include <KConfigGroup>
+#include <KSyntaxHighlighting/WildcardMatcher>
 
 #include <QFileInfo>
 #include <QMimeDatabase>
@@ -309,7 +309,7 @@ QString KateModeManager::wildcardsFind(const QString &fileName) const
         }
 
         for (const QString &wildcard : qAsConst(type->wildcards)) {
-            if (KateWildcardMatcher::exactMatch(fileNameNoPath, wildcard)) {
+            if (KSyntaxHighlighting::WildcardMatcher::exactMatch(fileNameNoPath, wildcard)) {
                 match = type;
                 minPrio = type->priority;
                 break;
