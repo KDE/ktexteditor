@@ -285,7 +285,7 @@ QString KateModeManager::mimeTypesFind(const QString &mimeTypeName) const
     }
 
     if (!types.isEmpty()) {
-        int pri = -1;
+        int pri = std::numeric_limits<int>::lowest();
         QString name;
 
         for (KateFileType *type : qAsConst(types)) {
