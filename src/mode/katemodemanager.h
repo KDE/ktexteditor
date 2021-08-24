@@ -70,8 +70,7 @@ public:
     void save(const QList<KateFileType *> &v);
 
     /**
-     * get the right fileType for the given document
-     * -1 if none found !
+     * @return the right KateFileType name for the given document or an empty string if none found
      */
     QString fileType(KTextEditor::DocumentPrivate *doc, const QString &fileToReadFrom);
 
