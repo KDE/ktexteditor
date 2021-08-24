@@ -22,6 +22,7 @@
 #include <QFileInfo>
 #include <QMimeDatabase>
 
+#include <algorithm>
 #include <limits>
 // END Includes
 
@@ -275,53 +276,33 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
     return mimeTypesFind(mtName);
 }
 
-QString KateModeManager::mimeTypesFind(const QString &mimeTypeName) const
+template<typename UnaryStringPredicate>
+static QString findHighestPriorityTypeNameIf(const QList<KateFileType *> &types, QStringList KateFileType::*list, UnaryStringPredicate anyOfCondition)
 {
-    QList<KateFileType *> types;
-    for (KateFileType *type : qAsConst(m_types)) {
-        if (type->mimetypes.indexOf(mimeTypeName) > -1) {
-            types.append(type);
+    const KateFileType *match = nullptr;
+    auto matchPriority = std::numeric_limits<int>::lowest();
+    for (const KateFileType *type : types) {
+        if (type->priority > matchPriority && std::any_of((type->*list).cbegin(), (type->*list).cend(), anyOfCondition)) {
+            match = type;
+            matchPriority = type->priority;
         }
     }
-
-    if (!types.isEmpty()) {
-        int pri = std::numeric_limits<int>::lowest();
-        QString name;
-
-        for (KateFileType *type : qAsConst(types)) {
-            if (type->priority > pri) {
-                pri = type->priority;
-                name = type->name;
-            }
-        }
-
-        return name;
-    }
-
-    return QString();
+    return match == nullptr ? QString() : match->name;
 }
 
 QString KateModeManager::wildcardsFind(const QString &fileName) const
 {
     const auto fileNameNoPath = QFileInfo{fileName}.fileName();
+    return findHighestPriorityTypeNameIf(m_types, &KateFileType::wildcards, [&fileNameNoPath](const QString &wildcard) {
+        return KSyntaxHighlighting::WildcardMatcher::exactMatch(fileNameNoPath, wildcard);
+    });
+}
 
-    KateFileType *match = nullptr;
-    auto minPrio = std::numeric_limits<int>::lowest();
-    for (KateFileType *type : qAsConst(m_types)) {
-        if (type->priority <= minPrio) {
-            continue;
-        }
-
-        for (const QString &wildcard : qAsConst(type->wildcards)) {
-            if (KSyntaxHighlighting::WildcardMatcher::exactMatch(fileNameNoPath, wildcard)) {
-                match = type;
-                minPrio = type->priority;
-                break;
-            }
-        }
-    }
-
-    return (match == nullptr) ? QString() : match->name;
+QString KateModeManager::mimeTypesFind(const QString &mimeTypeName) const
+{
+    return findHighestPriorityTypeNameIf(m_types, &KateFileType::mimetypes, [&mimeTypeName](const QString &name) {
+        return mimeTypeName == name;
+    });
 }
 
 const KateFileType &KateModeManager::fileType(const QString &name) const
