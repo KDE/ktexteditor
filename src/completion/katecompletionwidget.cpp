@@ -331,7 +331,7 @@ void KateCompletionWidget::startCompletion(KTextEditor::CodeCompletionModel::Inv
 
 void KateCompletionWidget::deleteCompletionRanges()
 {
-    for (const CompletionRange &r : qAsConst(m_completionRanges)) {
+    for (const CompletionRange &r : std::as_const(m_completionRanges)) {
         delete r.range;
     }
     m_completionRanges.clear();
@@ -396,7 +396,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
         deleteCompletionRanges();
     }
 
-    for (KTextEditor::CodeCompletionModel *model : qAsConst(models)) {
+    for (KTextEditor::CodeCompletionModel *model : std::as_const(models)) {
         KTextEditor::Range range;
         if (word.isValid()) {
             range = word;
@@ -1465,7 +1465,7 @@ void KateCompletionWidget::automaticInvocation()
     QList<KTextEditor::CodeCompletionModel *> models;
 
     // qCDebug(LOG_KTE)<<"checking models";
-    for (KTextEditor::CodeCompletionModel *model : qAsConst(m_sourceModels)) {
+    for (KTextEditor::CodeCompletionModel *model : std::as_const(m_sourceModels)) {
         // qCDebug(LOG_KTE)<<"m_completionRanges contains model?:"<<m_completionRanges.contains(model);
         if (m_completionRanges.contains(model)) {
             continue;

@@ -182,7 +182,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         if (role == Qt::TextAlignmentRole) {
             if (isColumnMergingEnabled() && !m_columnMerges.isEmpty()) {
                 int c = 0;
-                for (const QList<int> &list : qAsConst(m_columnMerges)) {
+                for (const QList<int> &list : std::as_const(m_columnMerges)) {
                     if (index.column() < c + list.size()) {
                         c += list.size();
                         continue;
@@ -299,7 +299,7 @@ int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
 
     int bestMatch = -1;
     // Iterate through all argument-hints and find the best match-quality
-    for (const Item &item : qAsConst(m_argumentHints->filtered)) {
+    for (const Item &item : std::as_const(m_argumentHints->filtered)) {
         const ModelRow &row(item.sourceRow());
         if (realIndex.model() != row.first) {
             continue; // We can only match within the same source-model
@@ -591,7 +591,7 @@ void KateCompletionModel::createGroups()
     QSet<Group *> groups;
 
     bool has_groups = false;
-    for (CodeCompletionModel *sourceModel : qAsConst(m_completionModels)) {
+    for (CodeCompletionModel *sourceModel : std::as_const(m_completionModels)) {
         has_groups |= sourceModel->hasGroups();
         for (int i = 0; i < sourceModel->rowCount(); ++i) {
             groups += createItems(HierarchicalModelHandler(sourceModel), sourceModel->index(i, 0));
@@ -609,11 +609,11 @@ void KateCompletionModel::createGroups()
 
     // debugStats();
 
-    for (Group *g : qAsConst(m_rowTable)) {
+    for (Group *g : std::as_const(m_rowTable)) {
         hideOrShowGroup(g);
     }
 
-    for (Group *g : qAsConst(m_emptyGroups)) {
+    for (Group *g : std::as_const(m_emptyGroups)) {
         hideOrShowGroup(g);
     }
 
@@ -678,7 +678,7 @@ void KateCompletionModel::slotRowsInserted(const QModelIndex &parent, int start,
         affectedGroups += createItems(handler, handler.model()->index(i, 0, parent), /* notifyModel= */ true);
     }
 
-    for (Group *g : qAsConst(affectedGroups)) {
+    for (Group *g : std::as_const(affectedGroups)) {
         hideOrShowGroup(g, true);
     }
 }
@@ -695,7 +695,7 @@ void KateCompletionModel::slotRowsRemoved(const QModelIndex &parent, int start, 
         affectedGroups += deleteItems(index);
     }
 
-    for (Group *g : qAsConst(affectedGroups)) {
+    for (Group *g : std::as_const(affectedGroups)) {
         hideOrShowGroup(g, true);
     }
 }
@@ -942,7 +942,7 @@ QModelIndex KateCompletionModel::mapFromSource(const QModelIndex &sourceIndex) c
         return index(m_ungrouped->rowOf(modelRowPair(sourceIndex)), sourceIndex.column(), QModelIndex());
     }
 
-    for (Group *g : qAsConst(m_rowTable)) {
+    for (Group *g : std::as_const(m_rowTable)) {
         int row = g->rowOf(modelRowPair(sourceIndex));
         if (row != -1) {
             return index(row, sourceIndex.column(), indexForGroup(g));
@@ -950,7 +950,7 @@ QModelIndex KateCompletionModel::mapFromSource(const QModelIndex &sourceIndex) c
     }
 
     // Copied from above
-    for (Group *g : qAsConst(m_emptyGroups)) {
+    for (Group *g : std::as_const(m_emptyGroups)) {
         int row = g->rowOf(modelRowPair(sourceIndex));
         if (row != -1) {
             return index(row, sourceIndex.column(), indexForGroup(g));
@@ -995,12 +995,12 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
     if (!hasGroups()) {
         changeCompletions(m_ungrouped, changeType, !resetModel);
     } else {
-        for (Group *g : qAsConst(m_rowTable)) {
+        for (Group *g : std::as_const(m_rowTable)) {
             if (g != m_argumentHints) {
                 changeCompletions(g, changeType, !resetModel);
             }
         }
-        for (Group *g : qAsConst(m_emptyGroups)) {
+        for (Group *g : std::as_const(m_emptyGroups)) {
             if (g != m_argumentHints) {
                 changeCompletions(g, changeType, !resetModel);
             }
@@ -1026,8 +1026,8 @@ QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) co
     QList<Group *> groups = m_rowTable;
     groups += m_ungrouped;
 
-    for (Group *g : qAsConst(groups)) {
-        for (const Item &item : qAsConst(g->filtered)) {
+    for (Group *g : std::as_const(groups)) {
+        for (const Item &item : std::as_const(g->filtered)) {
             uint startPos = m_currentMatch[item.sourceRow().first].length();
             const QString candidate = item.name().mid(startPos);
 
@@ -1240,7 +1240,7 @@ void KateCompletionModel::debugStats()
         qCDebug(LOG_KTE) << "Model groupless, " << m_ungrouped->filtered.size() << " items.";
     } else {
         qCDebug(LOG_KTE) << "Model grouped (" << m_rowTable.count() << " groups):";
-        for (Group *g : qAsConst(m_rowTable)) {
+        for (Group *g : std::as_const(m_rowTable)) {
             qCDebug(LOG_KTE) << "Group" << g << "count" << g->filtered.size();
         }
     }
@@ -1604,11 +1604,11 @@ void KateCompletionModel::Group::resort()
 
 void KateCompletionModel::resort()
 {
-    for (Group *g : qAsConst(m_rowTable)) {
+    for (Group *g : std::as_const(m_rowTable)) {
         g->resort();
     }
 
-    for (Group *g : qAsConst(m_emptyGroups)) {
+    for (Group *g : std::as_const(m_emptyGroups)) {
         g->resort();
     }
 
@@ -1645,8 +1645,8 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     bool doHide = false;
     CodeCompletionModel *hideModel = nullptr;
 
-    for (Group *group : qAsConst(m_rowTable)) {
-        for (const Item &item : qAsConst(group->filtered)) {
+    for (Group *group : std::as_const(m_rowTable)) {
+        for (const Item &item : std::as_const(group->filtered)) {
             if (item.haveExactMatch()) {
                 KTextEditor::CodeCompletionModelControllerInterface *iface3 =
                     dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
@@ -1668,8 +1668,8 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
 
     if (doHide) {
         // Check if all other visible items are from the same model
-        for (Group *group : qAsConst(m_rowTable)) {
-            for (const Item &item : qAsConst(group->filtered)) {
+        for (Group *group : std::as_const(m_rowTable)) {
+            for (const Item &item : std::as_const(group->filtered)) {
                 if (item.sourceRow().first != hideModel) {
                     return false;
                 }
@@ -1992,7 +1992,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
     };
 
     QVector<KTextEditor::CodeCompletionModel *> needShadowing;
-    for (KTextEditor::CodeCompletionModel *model : qAsConst(m_completionModels)) {
+    for (KTextEditor::CodeCompletionModel *model : std::as_const(m_completionModels)) {
         KTextEditor::CodeCompletionModelControllerInterface *v4 = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);
         if (v4 && v4->shouldHideItemsWithEqualNames()) {
             needShadowing.push_back(model);
@@ -2007,7 +2007,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 
     filter.filter(m_ungrouped, onlyFiltered);
 
-    for (Group *group : qAsConst(m_rowTable)) {
+    for (Group *group : std::as_const(m_rowTable)) {
         filter.filter(group, onlyFiltered);
     }
 }
@@ -2073,7 +2073,7 @@ void KateCompletionModel::updateBestMatches()
     }
 
     ///@todo Cache the CodeCompletionModel::BestMatchesCount
-    for (Group *g : qAsConst(m_rowTable)) {
+    for (Group *g : std::as_const(m_rowTable)) {
         if (g == m_bestMatches) {
             continue;
         }
@@ -2152,7 +2152,7 @@ void KateCompletionModel::clearCompletionModels()
     }
 
     beginResetModel();
-    for (CodeCompletionModel *model : qAsConst(m_completionModels)) {
+    for (CodeCompletionModel *model : std::as_const(m_completionModels)) {
         model->disconnect(this);
     }
 

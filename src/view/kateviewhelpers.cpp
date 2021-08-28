@@ -104,7 +104,7 @@ void KateMessageLayout::setGeometry(const QRect &rect)
     const int s = spacing();
     const QRect adjustedRect = rect.adjusted(s, s, -s, -s);
 
-    for (const auto &wrapper : qAsConst(m_items)) {
+    for (const auto &wrapper : std::as_const(m_items)) {
         QLayoutItem *item = wrapper.item;
         auto position = wrapper.position;
 
@@ -2757,7 +2757,7 @@ void KateViewEncodingAction::Private::init()
         actions << tmp;
     }
     std::sort(actions.begin(), actions.end(), lessThanAction);
-    for (KSelectAction *action : qAsConst(actions)) {
+    for (KSelectAction *action : std::as_const(actions)) {
         q->addAction(action);
     }
 }

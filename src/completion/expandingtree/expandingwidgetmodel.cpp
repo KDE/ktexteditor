@@ -114,7 +114,7 @@ void ExpandingWidgetModel::clearExpanding()
 {
     clearMatchQualities();
     QMap<QModelIndex, ExpandingWidgetModel::ExpandingType> oldExpandState = m_expandState;
-    for (auto &widget : qAsConst(m_expandingWidgets)) {
+    for (auto &widget : std::as_const(m_expandingWidgets)) {
         if (widget) {
             widget->deleteLater(); // By using deleteLater, we prevent crashes when an action within a widget makes the completion cancel
         }

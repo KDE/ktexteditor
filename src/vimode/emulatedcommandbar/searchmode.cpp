@@ -137,7 +137,7 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
             int previousNonMatchingClosedCurlyPos = 0; // i.e. the position of the last character which is either
             // not a curly closing bracket, or is a curly closing bracket
             // that is not matched.
-            for (int matchingClosedCurlyPos : qAsConst(matchingClosedCurlyBracketPositions)) {
+            for (int matchingClosedCurlyPos : std::as_const(matchingClosedCurlyBracketPositions)) {
                 QString chunkExcludingMatchingCurlyClosed =
                     qtRegexPattern.mid(previousNonMatchingClosedCurlyPos, matchingClosedCurlyPos - previousNonMatchingClosedCurlyPos);
                 chunkExcludingMatchingCurlyClosed = toggledEscaped(chunkExcludingMatchingCurlyClosed, QLatin1Char('{'));
@@ -182,7 +182,7 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
         int previousNonMatchingSquareBracketPos = 0; // i.e. the position of the last character which is
         // either not a square bracket, or is a square bracket but
         // which is not matched.
-        for (int matchingSquareBracketPos : qAsConst(matchingSquareBracketPositions)) {
+        for (int matchingSquareBracketPos : std::as_const(matchingSquareBracketPositions)) {
             QString chunkExcludingMatchingSquareBrackets =
                 qtRegexPattern.mid(previousNonMatchingSquareBracketPos, matchingSquareBracketPos - previousNonMatchingSquareBracketPos);
             chunkExcludingMatchingSquareBrackets = ensuredCharEscaped(chunkExcludingMatchingSquareBrackets, QLatin1Char('['));

@@ -912,14 +912,14 @@ void KateSearchBar::endFindOrReplaceAll()
 
     // Add highlights
     if (m_replaceMode) {
-        for (const Range &r : qAsConst(m_highlightRanges)) {
+        for (const Range &r : std::as_const(m_highlightRanges)) {
             highlightReplacement(r);
         }
         // Never merge replace actions with other replace actions/user actions
         m_view->doc()->undoManager()->undoSafePoint();
 
     } else {
-        for (const Range &r : qAsConst(m_highlightRanges)) {
+        for (const Range &r : std::as_const(m_highlightRanges)) {
             highlightMatch(r);
         }
         //         indicateMatch(m_matchCounter > 0 ? MatchFound : MatchMismatch); TODO

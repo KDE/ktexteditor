@@ -469,7 +469,7 @@ int KateLayoutCache::viewLineCount(int realLine)
 void KateLayoutCache::viewCacheDebugOutput() const
 {
     qCDebug(LOG_KTE) << "Printing values for " << m_textLayouts.size() << " lines:";
-    for (const KateTextLayout &t : qAsConst(m_textLayouts)) {
+    for (const KateTextLayout &t : std::as_const(m_textLayouts)) {
         if (t.isValid()) {
             t.debugOutput();
         } else {

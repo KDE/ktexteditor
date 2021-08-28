@@ -72,7 +72,7 @@ void VariableListView::resizeEvent(QResizeEvent *event)
 
     // calculate sum of all editor heights
     int listHeight = 0;
-    for (QWidget *w : qAsConst(m_editors)) {
+    for (QWidget *w : std::as_const(m_editors)) {
         listHeight += w->sizeHint().height();
     }
 
@@ -82,7 +82,7 @@ void VariableListView::resizeEvent(QResizeEvent *event)
 
     // set client geometries correctly
     int h = 0;
-    for (QWidget *w : qAsConst(m_editors)) {
+    for (QWidget *w : std::as_const(m_editors)) {
         w->setGeometry(0, h, top->width(), w->sizeHint().height());
         h += w->sizeHint().height();
     }

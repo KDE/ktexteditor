@@ -173,7 +173,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
                 std::sort(matchesUnfiltered.begin(), matchesUnfiltered.end());
 
                 QVector<KTextEditor::Range> filteredMatches;
-                for (KTextEditor::Range unfilteredMatch : qAsConst(matchesUnfiltered)) {
+                for (KTextEditor::Range unfilteredMatch : std::as_const(matchesUnfiltered)) {
                     if (unfilteredMatch.start() < searchBegin) {
                         filteredMatches.append(unfilteredMatch);
                     }

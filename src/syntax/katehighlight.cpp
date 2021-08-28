@@ -54,7 +54,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 
     embeddedHighlightingModes.reserve(definitions.size());
     // first: handle only really included definitions
-    for (const auto &includedDefinition : qAsConst(definitions)) {
+    for (const auto &includedDefinition : std::as_const(definitions)) {
         embeddedHighlightingModes.push_back(includedDefinition.name());
     }
 
@@ -70,7 +70,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     definitions.push_front(definition());
     m_properties.resize(definitions.size());
     size_t propertiesIndex = 0;
-    for (const auto &includedDefinition : qAsConst(definitions)) {
+    for (const auto &includedDefinition : std::as_const(definitions)) {
         auto &properties = m_properties[propertiesIndex];
         properties.definition = includedDefinition;
         properties.emptyLines.reserve(includedDefinition.foldingIgnoreList().size());

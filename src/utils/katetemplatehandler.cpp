@@ -170,7 +170,7 @@ void KateTemplateHandler::jump(int by, bool initial)
 
 void KateTemplateHandler::jumpToFinalCursorPosition()
 {
-    for (const auto &field : qAsConst(m_fields)) {
+    for (const auto &field : std::as_const(m_fields)) {
         if (field.kind == TemplateField::FinalCursorPosition) {
             view()->setCursorPosition(field.range->toRange().start());
             return;
@@ -309,7 +309,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
             // field marks the final cursor position
             f.kind = TemplateField::FinalCursorPosition;
         }
-        for (const auto &other : qAsConst(m_fields)) {
+        for (const auto &other : std::as_const(m_fields)) {
             if (other.kind == TemplateField::Editable && !(f == other) && other.identifier == f.identifier) {
                 // field is a mirror field
                 f.kind = TemplateField::Mirror;
@@ -336,14 +336,14 @@ void KateTemplateHandler::setupFieldRanges()
     m_wholeTemplateRange->setAttribute(getAttribute(config->templateBackgroundColor(), 200));
 
     // color all the template fields
-    for (const auto &field : qAsConst(m_fields)) {
+    for (const auto &field : std::as_const(m_fields)) {
         field.range->setAttribute(field.kind == TemplateField::Editable ? editableAttribute : notEditableAttribute);
     }
 }
 
 void KateTemplateHandler::setupDefaultValues()
 {
-    for (const auto &field : qAsConst(m_fields)) {
+    for (const auto &field : std::as_const(m_fields)) {
         if (field.kind != TemplateField::Editable) {
             continue;
         }

@@ -135,7 +135,7 @@ void ModeConfigPage::update()
 
     ui->cmbFiletypes->clear();
 
-    for (KateFileType *type : qAsConst(m_types)) {
+    for (KateFileType *type : std::as_const(m_types)) {
         if (!type->sectionTranslated().isEmpty()) {
             ui->cmbFiletypes->addItem(type->sectionTranslated() + QLatin1Char('/') + type->nameTranslated());
         } else {

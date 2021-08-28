@@ -1254,7 +1254,7 @@ void ModeBase::switchView(Direction direction)
             }
         }
     } else {
-        for (KTextEditor::ViewPrivate *view : qAsConst(visible_views)) {
+        for (KTextEditor::ViewPrivate *view : std::as_const(visible_views)) {
             QPoint point = view->mapToGlobal(view->pos());
             int x1 = point.x();
             int x2 = point.x() + view->width();

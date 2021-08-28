@@ -2578,14 +2578,14 @@ bool KTextEditor::ViewPrivate::tagLines(KTextEditor::Range range, bool realRange
 
 void KTextEditor::ViewPrivate::deactivateEditActions()
 {
-    for (QAction *action : qAsConst(m_editActions)) {
+    for (QAction *action : std::as_const(m_editActions)) {
         action->setEnabled(false);
     }
 }
 
 void KTextEditor::ViewPrivate::activateEditActions()
 {
-    for (QAction *action : qAsConst(m_editActions)) {
+    for (QAction *action : std::as_const(m_editActions)) {
         action->setEnabled(true);
     }
 }
@@ -3673,7 +3673,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
 
     // first: validate the remembered ranges
     QSet<Kate::TextRange *> validRanges;
-    for (Kate::TextRange *range : qAsConst(oldSet)) {
+    for (Kate::TextRange *range : std::as_const(oldSet)) {
         if (doc()->buffer().rangePointerValid(range)) {
             validRanges.insert(range);
         }
@@ -3737,7 +3737,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     }
 
     // now: notify for left ranges!
-    for (Kate::TextRange *range : qAsConst(validRanges)) {
+    for (Kate::TextRange *range : std::as_const(validRanges)) {
         // range valid + right dynamic attribute, trigger update
         if (range->toRange().isValid() && range->attribute() && range->attribute()->dynamicAttribute(activationType)) {
             notifyAboutRangeChange(range->toLineRange(), true);

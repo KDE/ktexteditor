@@ -84,7 +84,7 @@ TextBuffer::~TextBuffer()
     Q_ASSERT(m_ranges.empty());
 
     // clean out all cursors and lines, only cursors belonging to range will survive
-    for (TextBlock *block : qAsConst(m_blocks)) {
+    for (TextBlock *block : std::as_const(m_blocks)) {
         block->deleteBlockContent();
     }
 
@@ -120,7 +120,7 @@ void TextBuffer::clear()
     newBlock->appendLine(QString());
 
     // clean out all cursors and lines, either move them to newBlock or invalidate them, if belonging to a range
-    for (TextBlock *block : qAsConst(m_blocks)) {
+    for (TextBlock *block : std::as_const(m_blocks)) {
         block->clearBlockContent(newBlock);
     }
 
@@ -165,7 +165,7 @@ QString TextBuffer::text() const
     QString text;
 
     // combine all blocks
-    for (TextBlock *block : qAsConst(m_blocks)) {
+    for (TextBlock *block : std::as_const(m_blocks)) {
         block->text(text);
     }
 
@@ -956,7 +956,7 @@ void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::Li
 
 void TextBuffer::markModifiedLinesAsSaved()
 {
-    for (TextBlock *block : qAsConst(m_blocks)) {
+    for (TextBlock *block : std::as_const(m_blocks)) {
         block->markModifiedLinesAsSaved();
     }
 }

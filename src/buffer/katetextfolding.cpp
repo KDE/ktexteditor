@@ -168,10 +168,10 @@ bool TextFolding::unfoldRange(qint64 id, bool remove)
         // FIXME: OPTIMIZE
         FoldingRange::Vector &parentVector = range->parent ? range->parent->nestedRanges : m_foldingRanges;
         FoldingRange::Vector newParentVector;
-        for (FoldingRange *curRange : qAsConst(parentVector)) {
+        for (FoldingRange *curRange : std::as_const(parentVector)) {
             // insert our nested ranges and reparent them
             if (curRange == range) {
-                for (FoldingRange *newRange : qAsConst(range->nestedRanges)) {
+                for (FoldingRange *newRange : std::as_const(range->nestedRanges)) {
                     newRange->parent = range->parent;
                     newParentVector.push_back(newRange);
                 }
@@ -543,7 +543,7 @@ bool TextFolding::insertNewFoldingRange(FoldingRange *parent, FoldingRange::Vect
 
     // correct parent mapping!
     newRange->parent = parent;
-    for (FoldingRange *range : qAsConst(newRange->nestedRanges)) {
+    for (FoldingRange *range : std::as_const(newRange->nestedRanges)) {
         range->parent = newRange;
     }
 
@@ -595,7 +595,7 @@ bool TextFolding::updateFoldedRangesForNewRange(TextFolding::FoldingRange *newRa
     // TODO: OPTIMIZE
     FoldingRange::Vector newFoldedFoldingRanges;
     bool newRangeInserted = false;
-    for (FoldingRange *range : qAsConst(m_foldedFoldingRanges)) {
+    for (FoldingRange *range : std::as_const(m_foldedFoldingRanges)) {
         // contained? kill
         if ((newRange->start->toCursor() <= range->start->toCursor()) && (newRange->end->toCursor() >= range->end->toCursor())) {
             continue;
@@ -650,7 +650,7 @@ bool TextFolding::updateFoldedRangesForRemovedRange(TextFolding::FoldingRange *o
     // we now want to remove this range from the m_foldedFoldingRanges vector and include our nested folded ranges!
     // TODO: OPTIMIZE
     FoldingRange::Vector newFoldedFoldingRanges;
-    for (FoldingRange *range : qAsConst(m_foldedFoldingRanges)) {
+    for (FoldingRange *range : std::as_const(m_foldedFoldingRanges)) {
         // right range? insert folded nested ranges
         if (range == oldRange) {
             appendFoldedRanges(newFoldedFoldingRanges, oldRange->nestedRanges);
@@ -715,7 +715,7 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
 
 void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
-    for (FoldingRange *range : qAsConst(m_foldingRanges)) {
+    for (FoldingRange *range : std::as_const(m_foldingRanges)) {
         unfoldRange(range->id);
     }
 

@@ -168,7 +168,7 @@ void TextBlock::wrapLine(const KTextEditor::Cursor &position, int fixStartLinesS
 
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
-    for (TextRange *range : qAsConst(changedRanges)) {
+    for (TextRange *range : std::as_const(changedRanges)) {
         // we need to do updateRange to ALWAYS ensure the line => range and back cache is updated
         // see MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache
         updateRange(range);
@@ -267,7 +267,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         // fixup the ranges that might be effected, because they moved from last line to this block
         // we might need to invalidate ranges or notify about their changes
         // checkValidity might trigger delete of the range!
-        for (TextRange *range : qAsConst(changedRanges)) {
+        for (TextRange *range : std::as_const(changedRanges)) {
             // update both blocks
             updateRange(range);
             previousBlock->updateRange(range);
@@ -339,7 +339,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
-    for (TextRange *range : qAsConst(changedRanges)) {
+    for (TextRange *range : std::as_const(changedRanges)) {
         // we need to do updateRange to ALWAYS ensure the line => range and back cache is updated
         // see MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache
         updateRange(range);
@@ -413,7 +413,7 @@ void TextBlock::insertText(const KTextEditor::Cursor &position, const QString &t
 
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
-    for (TextRange *range : qAsConst(changedRanges)) {
+    for (TextRange *range : std::as_const(changedRanges)) {
         range->checkValidity(range->toLineRange());
     }
 }
@@ -482,7 +482,7 @@ void TextBlock::removeText(const KTextEditor::Range &range, QString &removedText
 
     // we might need to invalidate ranges or notify about their changes
     // checkValidity might trigger delete of the range!
-    for (TextRange *range : qAsConst(changedRanges)) {
+    for (TextRange *range : std::as_const(changedRanges)) {
         range->checkValidity(range->toLineRange());
     }
 }

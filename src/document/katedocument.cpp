@@ -329,7 +329,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     m_views.clear();
 
     // clean up marks
-    for (auto &mark : qAsConst(m_marks)) {
+    for (auto &mark : std::as_const(m_marks)) {
         delete mark;
     }
     m_marks.clear();
@@ -698,7 +698,7 @@ bool KTextEditor::DocumentPrivate::clear()
         return false;
     }
 
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->clear();
         view->tagAll();
         view->update();
@@ -1002,7 +1002,7 @@ bool KTextEditor::DocumentPrivate::editStart()
 
     m_undoManager->editStart();
 
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->editStart();
     }
 
@@ -1040,7 +1040,7 @@ bool KTextEditor::DocumentPrivate::editEnd()
     m_undoManager->editEnd();
 
     // edit end for all views !!!!!!!!!
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->editEnd(m_buffer->editTagStart(), m_buffer->editTagEnd(), m_buffer->editTagFrom());
     }
 
@@ -1431,7 +1431,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         m_buffer->wrapLine(KTextEditor::Cursor(line, col));
 
         QVarLengthArray<KTextEditor::Mark *, 8> list;
-        for (const auto &mark : qAsConst(m_marks)) {
+        for (const auto &mark : std::as_const(m_marks)) {
             if (mark->line >= line) {
                 if ((col == 0) || (mark->line > line)) {
                     list.push_back(mark);
@@ -1510,7 +1510,7 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
     }
 
     QVarLengthArray<KTextEditor::Mark *, 8> list;
-    for (const auto &mark : qAsConst(m_marks)) {
+    for (const auto &mark : std::as_const(m_marks)) {
         if (mark->line >= line + 1) {
             list.push_back(mark);
         }
@@ -1582,7 +1582,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     Kate::TextLine tl = m_buffer->line(line);
 
     QVarLengthArray<KTextEditor::Mark *, 8> list;
-    for (const auto &mark : qAsConst(m_marks)) {
+    for (const auto &mark : std::as_const(m_marks)) {
         if (mark->line >= line) {
             list.push_back(mark);
         }
@@ -1667,7 +1667,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     QVarLengthArray<int, 8> rmark;
     QVarLengthArray<KTextEditor::Mark *, 8> list;
 
-    for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
+    for (KTextEditor::Mark *mark : std::as_const(m_marks)) {
         int line = mark->line;
         if (line > to) {
             list << mark;
@@ -1986,7 +1986,7 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
 
     // Save Bookmarks
     QList<int> marks;
-    for (const auto &mark : qAsConst(m_marks)) {
+    for (const auto &mark : std::as_const(m_marks)) {
         if (mark->type & KTextEditor::MarkInterface::markType01) {
             marks.push_back(mark->line);
         }
@@ -2364,7 +2364,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     //
     // update views
     //
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         // This is needed here because inserting the text moves the view's start position (it is a MovingCursor)
         view->setCursorPosition(KTextEditor::Cursor());
         view->updateView(true);
@@ -2857,7 +2857,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     m_buffer->setHighlight(0);
 
     // update all our views
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->clearSelection(); // fix bug #118588
         view->clear();
     }
@@ -2898,7 +2898,7 @@ void KTextEditor::DocumentPrivate::setReadWrite(bool rw)
 
     KParts::ReadWritePart::setReadWrite(rw);
 
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->slotUpdateUndo();
         view->slotReadWriteChanged();
     }
@@ -2911,7 +2911,7 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
     if (isModified() != m) {
         KParts::ReadWritePart::setModified(m);
 
-        for (auto view : qAsConst(m_views)) {
+        for (auto view : std::as_const(m_views)) {
             view->slotUpdateUndo();
         }
 
@@ -2926,7 +2926,7 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
 
 void KTextEditor::DocumentPrivate::makeAttribs(bool needInvalidate)
 {
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->renderer()->updateAttributes();
     }
 
@@ -2934,7 +2934,7 @@ void KTextEditor::DocumentPrivate::makeAttribs(bool needInvalidate)
         m_buffer->invalidateHighlighting();
     }
 
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->tagAll();
         view->updateView(true);
     }
@@ -4127,7 +4127,7 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
 
 void KTextEditor::DocumentPrivate::tagLines(KTextEditor::LineRange lineRange)
 {
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->tagLines(lineRange, true);
     }
 }
@@ -4139,7 +4139,7 @@ void KTextEditor::DocumentPrivate::tagLine(int line)
 
 void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
 {
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->repaintText(paintOnlyDirty);
     }
 }
@@ -4448,7 +4448,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     m_userSetEncodingForNextReload = false;
 
     // restore cursor positions for all views
-    for (auto v : qAsConst(m_views)) {
+    for (auto v : std::as_const(m_views)) {
         setActiveView(v);
         auto it = std::find_if(cursorPositions.cbegin(), cursorPositions.cend(), [v](const std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor> &p) {
             return p.first == v;
@@ -4597,7 +4597,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
     m_buffer->setTabWidth(config()->tabWidth());
 
     // update all views, does tagAll and updateView...
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->updateDocumentConfig();
     }
 
@@ -4623,7 +4623,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
     }
 
     // views!
-    for (auto v : qAsConst(m_views)) {
+    for (auto v : std::as_const(m_views)) {
         v->config()->configStart();
         v->renderer()->config()->configStart();
     }
@@ -4641,7 +4641,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
         m_config->configEnd();
     }
 
-    for (auto v : qAsConst(m_views)) {
+    for (auto v : std::as_const(m_views)) {
         v->config()->configEnd();
         v->renderer()->config()->configEnd();
     }
@@ -4862,7 +4862,7 @@ void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QSt
     bool state;
     int n;
     QColor c;
-    for (auto v : qAsConst(m_views)) {
+    for (auto v : std::as_const(m_views)) {
         // First, try the new config interface
         QVariant help(val); // Special treatment to catch "on"/"off"
         if (checkBoolValue(val, &state)) {
@@ -5171,7 +5171,7 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
         }
 
         // views!
-        for (auto v : qAsConst(m_views)) {
+        for (auto v : std::as_const(m_views)) {
             v->config()->configStart();
             v->renderer()->config()->configStart();
         }
@@ -5185,7 +5185,7 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
             m_config->setBom(bom_settings);
         }
         m_config->configEnd();
-        for (auto v : qAsConst(m_views)) {
+        for (auto v : std::as_const(m_views)) {
             v->config()->configEnd();
             v->renderer()->config()->configEnd();
         }
@@ -5698,7 +5698,7 @@ void KTextEditor::DocumentPrivate::onTheFlySpellCheckingEnabled(bool enable)
         m_onTheFlyChecker = nullptr;
     }
 
-    for (auto view : qAsConst(m_views)) {
+    for (auto view : std::as_const(m_views)) {
         view->reflectOnTheFlySpellCheckStatus(enable);
     }
 }
@@ -6003,7 +6003,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     if (KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(message->view())) {
         view->postMessage(message, managedMessageActions);
     } else {
-        for (auto view : qAsConst(m_views)) {
+        for (auto view : std::as_const(m_views)) {
             view->postMessage(message, managedMessageActions);
         }
     }

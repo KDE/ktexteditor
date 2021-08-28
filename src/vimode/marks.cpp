@@ -170,7 +170,7 @@ void Marks::syncViMarksAndBookmarks()
         }
 
         bool thereIsViMarkForThisLine = false;
-        for (auto cursor : qAsConst(m_marks)) {
+        for (auto cursor : std::as_const(m_marks)) {
             if (cursor->line() == mark->line) {
                 thereIsViMarkForThisLine = true;
                 break;

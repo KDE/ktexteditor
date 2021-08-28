@@ -379,11 +379,11 @@ void KateUndoManager::setModified(bool modified)
 void KateUndoManager::updateLineModifications()
 {
     // change LineSaved flag of all undo & redo items to LineModified
-    for (KateUndoGroup *undoGroup : qAsConst(undoItems)) {
+    for (KateUndoGroup *undoGroup : std::as_const(undoItems)) {
         undoGroup->flagSavedAsModified();
     }
 
-    for (KateUndoGroup *undoGroup : qAsConst(redoItems)) {
+    for (KateUndoGroup *undoGroup : std::as_const(redoItems)) {
         undoGroup->flagSavedAsModified();
     }
 

@@ -3468,7 +3468,7 @@ void KateViewInternal::textHintTimeout()
     if (!textHints.isEmpty()) {
         qCDebug(LOG_KTE) << "Hint text: " << textHints;
         QString hint;
-        for (const QString &str : qAsConst(textHints)) {
+        for (const QString &str : std::as_const(textHints)) {
             hint += QStringLiteral("<p>%1</p>").arg(str);
         }
         QPoint pos(startX() + m_textHintPos.x(), m_textHintPos.y());

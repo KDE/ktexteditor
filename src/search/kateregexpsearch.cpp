@@ -330,7 +330,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
         int curRelCol = 0;
         int curRelIndex = 0;
 
-        for (TwoViewCursor *twoViewCursor : qAsConst(indicesToCursors)) {
+        for (TwoViewCursor *twoViewCursor : std::as_const(indicesToCursors)) {
             // forward to index, save line/col
             const int index = twoViewCursor->index;
             FAST_DEBUG("resolving position" << index);

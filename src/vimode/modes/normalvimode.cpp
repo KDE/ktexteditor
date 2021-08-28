@@ -3704,7 +3704,7 @@ QRegularExpression NormalViMode::generateMatchingItemRegex() const
 {
     QString pattern(QStringLiteral("\\[|\\]|\\{|\\}|\\(|\\)|"));
 
-    for (QString s : qAsConst(m_matchingItems)) {
+    for (QString s : std::as_const(m_matchingItems)) {
         if (s.startsWith(QLatin1Char('-'))) {
             s.remove(0, 1);
         }

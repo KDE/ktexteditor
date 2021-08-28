@@ -340,7 +340,7 @@ void KateUndoGroup::safePoint(bool safePoint)
 
 void KateUndoGroup::flagSavedAsModified()
 {
-    for (KateUndo *item : qAsConst(m_items)) {
+    for (KateUndo *item : std::as_const(m_items)) {
         if (item->isFlagSet(KateUndo::UndoLine1Saved)) {
             item->unsetFlag(KateUndo::UndoLine1Saved);
             item->setFlag(KateUndo::UndoLine1Modified);

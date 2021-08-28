@@ -126,16 +126,16 @@ void KateScriptManager::collect()
         }
 
         QStringList list;
-        for (const QString &dir : qAsConst(dirs)) {
+        for (const QString &dir : std::as_const(dirs)) {
             const QStringList fileNames = QDir(dir).entryList({QStringLiteral("*.js")});
-            for (const QString &file : qAsConst(fileNames)) {
+            for (const QString &file : std::as_const(fileNames)) {
                 list.append(dir + QLatin1Char('/') + file);
             }
         }
 
         // iterate through the files and read info out of cache or file, no double loading of same scripts
         QSet<QString> unique;
-        for (const QString &fileName : qAsConst(list)) {
+        for (const QString &fileName : std::as_const(list)) {
             // get file basename
             const QString baseName = QFileInfo(fileName).baseName();
 

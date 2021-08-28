@@ -53,7 +53,7 @@ CommandMode::CommandMode(EmulatedCommandBar *emulatedCommandBar,
         cmds.push_back(cmd);
     }
 
-    for (KTextEditor::Command *cmd : qAsConst(cmds)) {
+    for (KTextEditor::Command *cmd : std::as_const(cmds)) {
         QStringList l = cmd->cmds();
 
         for (int z = 0; z < l.count(); z++) {
