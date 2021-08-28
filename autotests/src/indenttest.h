@@ -18,6 +18,9 @@ private Q_SLOTS:
     void testPython_data();
     void testPython();
 
+    void testJulia_data();
+    void testJulia();
+
     void testCstyle_data();
     void testCstyle();
 

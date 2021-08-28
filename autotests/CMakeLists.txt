@@ -105,6 +105,7 @@ ENDMACRO(KTEXTEDITOR_INDENT_TEST)
 
 # test different indenters sepearately to have smaller test chunks, that takes LONG
 KTEXTEDITOR_INDENT_TEST ("testPython")
+KTEXTEDITOR_INDENT_TEST ("testJulia")
 KTEXTEDITOR_INDENT_TEST ("testCstyle")
 
 # guard against execution with qt that has broken QJSEngine regex, see: https://bugreports.qt.io/browse/QTBUG-72879

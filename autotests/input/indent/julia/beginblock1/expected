@@ -1,0 +1,4 @@
+z = begin # testcomment abcde
+    x = 1
+    y = 2
+end

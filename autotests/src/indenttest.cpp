@@ -81,6 +81,16 @@ void IndentTest::testPython()
     runTest(ExpectedFailures());
 }
 
+void IndentTest::testJulia_data()
+{
+    getTestData("julia");
+}
+
+void IndentTest::testJulia()
+{
+    runTest(ExpectedFailures());
+}
+
 void IndentTest::testHaskell_data()
 {
     getTestData("haskell");
