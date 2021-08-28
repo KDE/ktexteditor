@@ -2,8 +2,9 @@ var katescript = {
     "name": "Python",
     "author": "Paul Giannaros <paul@giannaros.org>, Gerald Senarclens de Grancy <oss@senarclens.eu>",
     "license": "LGPL",
-    "revision": 3,
-    "kate-version": "5.1"
+    "revision": 4,
+    "kate-version": "5.1",
+    "indent-languages": ["Python"]
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
@@ -13,7 +14,9 @@ require ("string.js");
 openings = ['(', '[', '{'];
 closings = [')', ']', '}'];  // requires same order as in openings
 unindenters = /\b(continue|pass|raise|return|break)\b/;
+immediate_unindenters = new Set(["else", "elif", "finally", "except"])
 
+triggerCharacters = ": ";
 
 // Return the given line without comments and leading or trailing whitespace.
 // Eg.
@@ -23,12 +26,15 @@ unindenters = /\b(continue|pass|raise|return|break)\b/;
 //     if document.line(x) == "for i in range(3):  "
 // getCode(x) -> "for i in range(3):"
 //     if document.line(x) == "for i in range(3):  # grand"
-function getCode(lineNr) {
+function getCode(lineNr, virtcol=-1) {
     var line = document.line(lineNr);
     var code = '';
-    for (var position = 0; position < line.length; position++) {
-        if (document.isCode(lineNr, position)) {
-            code += line[position];
+    virtcol = virtcol >= 0 ? virtcol : document.firstVirtualColumn(lineNr);
+    if (virtcol < 0)
+        return code;
+    for (; virtcol < line.length; ++virtcol) {
+        if (document.isCode(lineNr, virtcol)) {
+            code += line[virtcol];
         }
     }
     return code.trim();
@@ -124,6 +130,11 @@ function shouldUnindent(LineNr) {
     return 0;
 }
 
+function findLastIndent(lineNr) {
+    for (; getCode(lineNr).length == 0; --lineNr);
+    return document.firstVirtualColumn(lineNr);
+}
+
 
 // Return the amount of characters (in spaces) to be indented.
 // Special indent() return values:
@@ -136,23 +147,36 @@ function indent(line, indentWidth, character) {
         return -2;
     if (!document.line(line - 1).length)  // empty line
         return -2;
-    var lastLine = getCode(line - 1);
+
+    if (triggerCharacters.indexOf(character) > -1) {
+        var virtcol = document.firstVirtualColumn(line);
+        var lline = getCode(line, virtcol);
+        if (character != " ")
+            lline = lline.substring(0, lline.length - 1);
+        if (immediate_unindenters.has(lline) && virtcol == findLastIndent(line - 1) && lline.length == document.line(line).length - virtcol - 1)
+            return Math.max(0, virtcol - indentWidth);
+        else
+            return -2
+    }
+
+    var virtcol = document.firstVirtualColumn(line - 1);
+    var lastLine = getCode(line - 1, virtcol);
     var lastChar = lastLine.substr(-1);
 
     // indent when opening bracket or backslash is at the end the previous line
     if (openings.indexOf(lastChar) >= 0 || lastChar == "\\") {
-        return document.firstVirtualColumn(line - 1) + indentWidth;
+        return virtcol + indentWidth;
     }
     var indent = calcBracketIndent(line, indentWidth);
     if (lastLine.endsWith(':')) {
         if (indent > -1)
             indent += indentWidth;
         else
-            indent = document.firstVirtualColumn(line - 1) + indentWidth;
+            indent = virtcol + indentWidth;
     }
     // continue, pass, raise, return etc. should unindent
     if (shouldUnindent(line) && (indent == -1)) {
-        indent = Math.max(0, document.firstVirtualColumn(line - 1) - indentWidth);
+        indent = Math.max(0, virtcol - indentWidth);
     }
     return indent;
 }
