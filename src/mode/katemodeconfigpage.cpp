@@ -59,7 +59,7 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     indentationModes << KateAutoIndent::listModes();
     ui->cmbIndenter->addItems(indentationModes);
 
-    connect(ui->cmbFiletypes, QOverload<int>::of(&QComboBox::activated), this, &ModeConfigPage::typeChanged);
+    connect(ui->cmbFiletypes, qOverload<int>(&QComboBox::activated), this, &ModeConfigPage::typeChanged);
     connect(ui->btnNew, &QPushButton::clicked, this, &ModeConfigPage::newType);
     connect(ui->btnDelete, &QPushButton::clicked, this, &ModeConfigPage::deleteType);
     ui->btnMimeTypes->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
@@ -72,9 +72,9 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     connect(ui->edtVariables, &VariableLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
     connect(ui->edtFileExtensions, &QLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
     connect(ui->edtMimeTypes, &QLineEdit::textChanged, this, &ModeConfigPage::slotChanged);
-    connect(ui->sbPriority, QOverload<int>::of(&QSpinBox::valueChanged), this, &ModeConfigPage::slotChanged);
-    connect(ui->cmbHl, QOverload<int>::of(&QComboBox::activated), this, &ModeConfigPage::slotChanged);
-    connect(ui->cmbIndenter, QOverload<int>::of(&QComboBox::activated), this, &ModeConfigPage::slotChanged);
+    connect(ui->sbPriority, qOverload<int>(&QSpinBox::valueChanged), this, &ModeConfigPage::slotChanged);
+    connect(ui->cmbHl, qOverload<int>(&QComboBox::activated), this, &ModeConfigPage::slotChanged);
+    connect(ui->cmbIndenter, qOverload<int>(&QComboBox::activated), this, &ModeConfigPage::slotChanged);
 
     // make the context help a bit easier to access
     ui->sbPriority->setToolTip(ui->sbPriority->whatsThis());

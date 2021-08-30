@@ -147,9 +147,9 @@ VariableIntEditor::VariableIntEditor(VariableIntItem *item, QWidget *parent)
 
     l->addWidget(m_spinBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &VariableIntEditor::valueChanged);
-    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &VariableIntEditor::activateItem);
-    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &VariableIntEditor::setItemValue);
+    connect(m_spinBox, qOverload<int>(&QSpinBox::valueChanged), this, &VariableIntEditor::valueChanged);
+    connect(m_spinBox, qOverload<int>(&QSpinBox::valueChanged), this, &VariableIntEditor::activateItem);
+    connect(m_spinBox, qOverload<int>(&QSpinBox::valueChanged), this, &VariableIntEditor::setItemValue);
 }
 
 void VariableIntEditor::setItemValue(int newValue)
@@ -170,9 +170,9 @@ VariableBoolEditor::VariableBoolEditor(VariableBoolItem *item, QWidget *parent)
     m_comboBox->setCurrentIndex(item->value() ? 0 : 1);
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::valueChanged);
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::activateItem);
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::setItemValue);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::valueChanged);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::activateItem);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableBoolEditor::setItemValue);
 }
 
 void VariableBoolEditor::setItemValue(int enabled)
@@ -199,8 +199,8 @@ VariableStringListEditor::VariableStringListEditor(VariableStringListItem *item,
     m_comboBox->setCurrentIndex(index);
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::valueChanged);
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::activateItem);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::valueChanged);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableStringListEditor::activateItem);
     connect(m_comboBox, &QComboBox::currentTextChanged, this, &VariableStringListEditor::setItemValue);
 }
 
@@ -308,9 +308,9 @@ VariableRemoveSpacesEditor::VariableRemoveSpacesEditor(VariableRemoveSpacesItem 
     m_comboBox->setCurrentIndex(item->value());
     l->addWidget(m_comboBox, 0, 2, Qt::AlignLeft);
 
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::valueChanged);
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::activateItem);
-    connect(m_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::setItemValue);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::valueChanged);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::activateItem);
+    connect(m_comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &VariableRemoveSpacesEditor::setItemValue);
 }
 
 void VariableRemoveSpacesEditor::setItemValue(int enabled)

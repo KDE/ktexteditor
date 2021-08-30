@@ -640,7 +640,7 @@ void SwapFile::showSwapFileMessage()
     m_swapMessage->addAction(discardAction);
 
     connect(diffAction, &QAction::triggered, this, &SwapFile::showDiff);
-    connect(recoverAction, &QAction::triggered, this, QOverload<>::of(&Kate::SwapFile::recover), Qt::QueuedConnection);
+    connect(recoverAction, &QAction::triggered, this, qOverload<>(&Kate::SwapFile::recover), Qt::QueuedConnection);
     connect(discardAction, &QAction::triggered, this, &SwapFile::discard, Qt::QueuedConnection);
 
     m_document->postMessage(m_swapMessage);

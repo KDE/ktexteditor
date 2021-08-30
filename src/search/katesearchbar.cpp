@@ -1424,7 +1424,7 @@ void KateSearchBar::enterPowerMode()
         connect(m_powerUi->findPrev, &QToolButton::clicked, this, &KateSearchBar::findPrevious);
         connect(m_powerUi->replaceNext, &QPushButton::clicked, this, &KateSearchBar::replaceNext);
         connect(m_powerUi->replaceAll, &QPushButton::clicked, this, &KateSearchBar::replaceAll);
-        connect(m_powerUi->searchMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateSearchBar::onPowerModeChanged);
+        connect(m_powerUi->searchMode, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateSearchBar::onPowerModeChanged);
         connect(m_powerUi->matchCase, &QToolButton::toggled, this, &KateSearchBar::onMatchCaseToggled);
         connect(m_powerUi->findAll, &QPushButton::clicked, this, &KateSearchBar::findAll);
         connect(m_powerUi->cancel, &QPushButton::clicked, this, &KateSearchBar::onPowerCancelFindOrReplace);
@@ -1436,15 +1436,12 @@ void KateSearchBar::enterPowerMode()
         // Hook into line edit context menus
         m_powerUi->pattern->setContextMenuPolicy(Qt::CustomContextMenu);
 
-        connect(m_powerUi->pattern,
-                &QComboBox::customContextMenuRequested,
-                this,
-                QOverload<const QPoint &>::of(&KateSearchBar::onPowerPatternContextMenuRequest));
+        connect(m_powerUi->pattern, &QComboBox::customContextMenuRequested, this, qOverload<const QPoint &>(&KateSearchBar::onPowerPatternContextMenuRequest));
         m_powerUi->replacement->setContextMenuPolicy(Qt::CustomContextMenu);
         connect(m_powerUi->replacement,
                 &QComboBox::customContextMenuRequested,
                 this,
-                QOverload<const QPoint &>::of(&KateSearchBar::onPowerReplacmentContextMenuRequest));
+                qOverload<const QPoint &>(&KateSearchBar::onPowerReplacmentContextMenuRequest));
     }
 
     // Focus

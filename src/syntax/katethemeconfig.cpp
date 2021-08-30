@@ -687,7 +687,7 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
     headerLayout->addWidget(hlCombo);
 
     lHl->setBuddy(hlCombo);
-    connect(hlCombo, QOverload<int>::of(&QComboBox::activated), this, &KateThemeConfigHighlightTab::hlChanged);
+    connect(hlCombo, qOverload<int>(&QComboBox::activated), this, &KateThemeConfigHighlightTab::hlChanged);
 
     headerLayout->addStretch();
 
@@ -1005,7 +1005,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     schemaCombo->setEditable(false);
     lHl->setBuddy(schemaCombo);
     headerLayout->addWidget(schemaCombo);
-    connect(schemaCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::comboBoxIndexChanged);
+    connect(schemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::comboBoxIndexChanged);
 
     QPushButton *copyButton = new QPushButton(i18n("&Copy..."), this);
     headerLayout->addWidget(copyButton);
@@ -1061,7 +1061,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
 
     reload();
 
-    connect(defaultSchemaCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::slotChanged);
+    connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::slotChanged);
 }
 
 void KateThemeConfigPage::exportFullSchema()

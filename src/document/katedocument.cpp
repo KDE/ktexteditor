@@ -259,7 +259,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     // this is needed to ensure we signal the user if a file is still loading
     // and to disallow him to edit in that time
     connect(this, &KTextEditor::DocumentPrivate::started, this, &KTextEditor::DocumentPrivate::slotStarted);
-    connect(this, QOverload<>::of(&KTextEditor::DocumentPrivate::completed), this, &KTextEditor::DocumentPrivate::slotCompleted);
+    connect(this, qOverload<>(&KTextEditor::DocumentPrivate::completed), this, &KTextEditor::DocumentPrivate::slotCompleted);
     connect(this, &KTextEditor::DocumentPrivate::canceled, this, &KTextEditor::DocumentPrivate::slotCanceled);
 
     // handle doc name updates

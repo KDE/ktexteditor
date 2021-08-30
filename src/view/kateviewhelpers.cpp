@@ -217,7 +217,7 @@ KateScrollBar::~KateScrollBar()
 void KateScrollBar::setShowMiniMap(bool b)
 {
     if (b && !m_showMiniMap) {
-        auto timerSlot = QOverload<>::of(&QTimer::start);
+        auto timerSlot = qOverload<>(&QTimer::start);
         connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, &m_updateTimer, timerSlot, Qt::UniqueConnection);
         connect(m_doc, &KTextEditor::DocumentPrivate::textChanged, &m_updateTimer, timerSlot, Qt::UniqueConnection);
         connect(m_view, &KTextEditor::ViewPrivate::delayedUpdateOfView, &m_updateTimer, timerSlot, Qt::UniqueConnection);
@@ -2750,7 +2750,7 @@ void KateViewEncodingAction::Private::init()
         for (i = 1; i < encodingsForScript.size(); ++i) {
             tmp->addAction(encodingsForScript.at(i));
         }
-        q->connect(tmp, QOverload<QAction *>::of(&KSelectAction::triggered), q, [this](QAction *action) {
+        q->connect(tmp, qOverload<QAction *>(&KSelectAction::triggered), q, [this](QAction *action) {
             _k_subActionTriggered(action);
         });
         // tmp->setCheckable(true);

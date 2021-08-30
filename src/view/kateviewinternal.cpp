@@ -183,7 +183,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     // Hijack the line scroller's controls, so we can scroll nicely for word-wrap
     connect(m_lineScroll, &KateScrollBar::actionTriggered, this, &KateViewInternal::scrollAction);
 
-    auto viewScrollLinesSlot = QOverload<int>::of(&KateViewInternal::scrollLines);
+    auto viewScrollLinesSlot = qOverload<int>(&KateViewInternal::scrollLines);
     connect(m_lineScroll, &KateScrollBar::sliderMoved, this, viewScrollLinesSlot);
     connect(m_lineScroll, &KateScrollBar::sliderMMBMoved, this, viewScrollLinesSlot);
     connect(m_lineScroll, &KateScrollBar::valueChanged, this, viewScrollLinesSlot);
