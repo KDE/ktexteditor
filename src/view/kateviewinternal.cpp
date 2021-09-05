@@ -2778,7 +2778,7 @@ bool KateViewInternal::isAcceptableInput(const QKeyEvent *e) const
 
 void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
 {
-    // try to show popup menu
+    // calculate where to show the context menu
 
     QPoint p = e->pos();
 
@@ -2790,7 +2790,7 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
         placeCursor(e->pos());
     }
 
-    // popup is a qguardedptr now
+    // show it
     if (view()->contextMenu()) {
         view()->spellingMenu()->setUseMouseForMisspelledRange((e->reason() == QContextMenuEvent::Mouse));
         view()->contextMenu()->popup(mapToGlobal(p));
