@@ -3968,6 +3968,11 @@ void KateViewInternal::viewSelectionChanged()
     m_selectionCached.setStart(KTextEditor::Cursor::invalid());
 }
 
+bool KateViewInternal::isUserSelecting() const
+{
+    return m_selChangedByUser;
+}
+
 KateLayoutCache *KateViewInternal::cache() const
 {
     return m_layoutCache;
