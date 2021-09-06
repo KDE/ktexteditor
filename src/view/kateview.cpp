@@ -3057,9 +3057,9 @@ void KTextEditor::ViewPrivate::shiftCursorRight()
 void KTextEditor::ViewPrivate::wordLeft()
 {
     if (currentTextLine().isRightToLeft()) {
-        m_viewInternal->wordNext();
+        m_viewInternal->wordNext(m_viewInternal->isUserSelecting());
     } else {
-        m_viewInternal->wordPrev();
+        m_viewInternal->wordPrev(m_viewInternal->isUserSelecting());
     }
 }
 
@@ -3075,9 +3075,9 @@ void KTextEditor::ViewPrivate::shiftWordLeft()
 void KTextEditor::ViewPrivate::wordRight()
 {
     if (currentTextLine().isRightToLeft()) {
-        m_viewInternal->wordPrev();
+        m_viewInternal->wordPrev(m_viewInternal->isUserSelecting());
     } else {
-        m_viewInternal->wordNext();
+        m_viewInternal->wordNext(m_viewInternal->isUserSelecting());
     }
 }
 
@@ -3092,7 +3092,7 @@ void KTextEditor::ViewPrivate::shiftWordRight()
 
 void KTextEditor::ViewPrivate::home()
 {
-    m_viewInternal->home();
+    m_viewInternal->home(m_viewInternal->isUserSelecting());
 }
 
 void KTextEditor::ViewPrivate::shiftHome()
@@ -3102,7 +3102,7 @@ void KTextEditor::ViewPrivate::shiftHome()
 
 void KTextEditor::ViewPrivate::end()
 {
-    m_viewInternal->end();
+    m_viewInternal->end(m_viewInternal->isUserSelecting());
 }
 
 void KTextEditor::ViewPrivate::shiftEnd()
@@ -3112,7 +3112,7 @@ void KTextEditor::ViewPrivate::shiftEnd()
 
 void KTextEditor::ViewPrivate::up()
 {
-    m_viewInternal->cursorUp();
+    m_viewInternal->cursorUp(m_viewInternal->isUserSelecting());
 }
 
 void KTextEditor::ViewPrivate::shiftUp()
@@ -3122,7 +3122,7 @@ void KTextEditor::ViewPrivate::shiftUp()
 
 void KTextEditor::ViewPrivate::down()
 {
-    m_viewInternal->cursorDown();
+    m_viewInternal->cursorDown(m_viewInternal->isUserSelecting());
 }
 
 void KTextEditor::ViewPrivate::shiftDown()
@@ -3162,7 +3162,7 @@ void KTextEditor::ViewPrivate::shiftBottomOfView()
 
 void KTextEditor::ViewPrivate::pageUp()
 {
-    m_viewInternal->pageUp();
+    m_viewInternal->pageUp(m_viewInternal->isUserSelecting());
 }
 
 void KTextEditor::ViewPrivate::shiftPageUp()
@@ -3172,7 +3172,7 @@ void KTextEditor::ViewPrivate::shiftPageUp()
 
 void KTextEditor::ViewPrivate::pageDown()
 {
-    m_viewInternal->pageDown();
+    m_viewInternal->pageDown(m_viewInternal->isUserSelecting());
 }
 
 void KTextEditor::ViewPrivate::shiftPageDown()
