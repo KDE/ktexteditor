@@ -222,10 +222,10 @@ void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
         }
     }
 
-    QAction *showLines = menu.addAction(QStringLiteral("Show line count"), this, &KateStatusBar::toggleShowLines);
+    QAction *showLines = menu.addAction(i18n("Show line count"), this, &KateStatusBar::toggleShowLines);
     showLines->setCheckable(true);
     showLines->setChecked(KateViewConfig::global()->showLineCount());
-    QAction *showWords = menu.addAction(QStringLiteral("Show word count"), this, &KateStatusBar::toggleShowWords);
+    QAction *showWords = menu.addAction(i18n("Show word count"), this, &KateStatusBar::toggleShowWords);
     showWords->setCheckable(true);
     showWords->setChecked(KateViewConfig::global()->showWordCount());
     menu.exec(event->globalPos());
