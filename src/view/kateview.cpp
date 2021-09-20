@@ -2287,6 +2287,7 @@ bool KTextEditor::ViewPrivate::clearSelection(bool redraw, bool finishedChanging
         Q_EMIT selectionChanged(this);
     }
 
+    m_viewInternal->m_selChangedByUser = false;
     // be done
     return true;
 }
