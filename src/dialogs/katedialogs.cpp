@@ -449,6 +449,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     observeChanges(ui->chkSmartCopyCut);
     observeChanges(ui->chkStaticWordWrap);
     observeChanges(ui->cmbEncloseSelection);
+    ui->lblBracketHelp->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
     connect(ui->cmbEncloseSelection->lineEdit(), &QLineEdit::editingFinished, [=] {
         const int index = ui->cmbEncloseSelection->currentIndex();
         const QString text = ui->cmbEncloseSelection->currentText();
