@@ -527,7 +527,7 @@ void KateEditGeneralConfigTab::reload()
     ui->cmbEncloseSelection->setItemData(0, i18n("Disable Feature"), Qt::ToolTipRole);
     ui->cmbEncloseSelection->addItem(QStringLiteral("`*_~"), MarkDown);
     ui->cmbEncloseSelection->setItemData(1, i18n("May be handy with Markdown"), Qt::ToolTipRole);
-    ui->cmbEncloseSelection->addItem(QStringLiteral("<>(){}[]"), MirrorChar);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("<>(){}[]'\""), MirrorChar);
     ui->cmbEncloseSelection->setItemData(2, i18n("Mirror characters, similar but not exactly like auto brackets"), Qt::ToolTipRole);
     ui->cmbEncloseSelection->addItem(QStringLiteral("´`_.:|#@~*!?$%/=,;-+^°§&"), NonLetters);
     ui->cmbEncloseSelection->setItemData(3, i18n("Non letter character"), Qt::ToolTipRole);

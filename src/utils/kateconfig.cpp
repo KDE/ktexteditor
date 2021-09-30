@@ -476,7 +476,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(AutomaticCompletionPreselectFirst, "Auto Completion Preselect First Entry", QString(), true));
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
-    addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QString()));
+    addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QStringLiteral("<>(){}[]'\"")));
     addConfigEntry(ConfigEntry(DefaultMarkType,
                                "Default Mark Type",
                                QStringLiteral("default-mark-type"),
