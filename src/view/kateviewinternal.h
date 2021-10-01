@@ -212,8 +212,6 @@ public:
         return m_leftBorder;
     }
 
-    bool isUserSelecting() const;
-
     // EVENT HANDLING STUFF - IMPORTANT
 private:
     void fixDropEvent(QDropEvent *event);
