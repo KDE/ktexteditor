@@ -325,6 +325,7 @@ private:
     void mouseMoveEvent(QMouseEvent *) override;
     void mouseReleaseEvent(QMouseEvent *) override;
     void mouseDoubleClickEvent(QMouseEvent *) override;
+    void contextMenuEvent(QContextMenuEvent *e) override;
     void leaveEvent(QEvent *event) override;
     void wheelEvent(QWheelEvent *e) override;
 
