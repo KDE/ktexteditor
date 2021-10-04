@@ -2442,8 +2442,6 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
             const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
             if (e->button() == Qt::LeftButton && singleClick) {
                 Q_EMIT m_view->annotationActivated(m_view, cursorOnLine);
-            } else if (e->button() == Qt::RightButton) {
-                showAnnotationMenu(cursorOnLine, e->globalPos());
             }
         }
     }
@@ -2469,6 +2467,14 @@ void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
 
 void KateIconBorder::contextMenuEvent(QContextMenuEvent *e)
 {
+    const BorderArea area = positionToArea(e->pos());
+    const int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
+
+    if (area == AnnotationBorder) {
+        showAnnotationMenu(cursorOnLine, e->globalPos());
+        return;
+    }
+
     QMenu menu(this);
 
     KActionCollection *ac = m_view->actionCollection();
