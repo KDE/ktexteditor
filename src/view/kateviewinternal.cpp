@@ -2599,6 +2599,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
 
 void KateViewInternal::keyPressEvent(QKeyEvent *e)
 {
+    m_shiftKeyPressed = e->modifiers() & Qt::ShiftModifier;
     if (e->key() == Qt::Key_Left && e->modifiers() == Qt::AltModifier) {
         view()->emitNavigateLeft();
         e->setAccepted(true);
@@ -2728,19 +2729,15 @@ void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
         view()->completionWidget()->toggleExpanded(false, true);
     }
 
-    if ((e->modifiers() & Qt::SHIFT) == Qt::SHIFT) {
-        m_shiftKeyPressed = true;
-    } else {
-        if (m_shiftKeyPressed) {
-            m_shiftKeyPressed = false;
+    if (m_shiftKeyPressed && (e->modifiers() & Qt::ShiftModifier) == 0) {
+        m_shiftKeyPressed = false;
 
-            if (m_selChangedByUser) {
-                if (view()->selection()) {
-                    QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
-                }
-
-                m_selChangedByUser = false;
+        if (m_selChangedByUser) {
+            if (view()->selection()) {
+                QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
             }
+
+            m_selChangedByUser = false;
         }
     }
 
