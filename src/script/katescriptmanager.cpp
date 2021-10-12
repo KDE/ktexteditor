@@ -288,8 +288,16 @@ bool KateScriptManager::exec(KTextEditor::View *view, const QString &_cmd, QStri
     Q_UNUSED(view)
     Q_UNUSED(errorMsg)
 
-    QVector<QStringRef> args = _cmd.splitRef(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
-    const QStringRef cmd = args.first();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    const QVector args = QStringView(_cmd).split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
+#else
+    const QVector args = _cmd.splitRef(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
+#endif
+    if (args.isEmpty()) {
+        return false;
+    }
+
+    const auto cmd = args.first();
 
     if (cmd == QLatin1String("reload-scripts")) {
         reload();

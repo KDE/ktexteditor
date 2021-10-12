@@ -52,7 +52,11 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
     }
 
     // split multi-line needle into single lines
-    const auto needleLines = text.splitRef(QLatin1Char('\n'));
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    const QVector needleLines = QStringView(text).split(QLatin1Char('\n'));
+#else
+    const QVector needleLines = text.splitRef(QLatin1Char('\n'));
+#endif
 
     if (needleLines.count() > 1) {
         // multi-line plaintext search (both forwards or backwards)
@@ -66,7 +70,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
             const int startCol = m_document->lineLength(j) - needleLines[0].length();
             for (int k = 0; k < needleLines.count(); k++) {
                 // which lines to compare
-                const QStringRef &needleLine = needleLines[k];
+                const auto &needleLine = needleLines[k];
                 const QString &hayLine = m_document->line(j + k);
 
                 // position specific comparison (first, middle, last)
