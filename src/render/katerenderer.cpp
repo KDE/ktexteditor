@@ -939,7 +939,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     QTextOption opt;
     opt.setFlags(QTextOption::IncludeTrailingSpaces);
     opt.setTabStopDistance(m_tabWidth * m_fontMetrics.horizontalAdvance(spaceChar));
-    if (m_view->config()->dynWrapAnywhere()) {
+    if (m_view && m_view->config()->dynWrapAnywhere()) {
         opt.setWrapMode(QTextOption::WrapAnywhere);
     } else {
         opt.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
@@ -967,7 +967,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     int firstLineOffset = 0;
 
-    if (!isPrinterFriendly()) {
+    if (!isPrinterFriendly() && m_view) {
         const auto inlineNotes = m_view->inlineNotes(lineLayout->line());
         for (const KTextEditor::InlineNote &inlineNote : inlineNotes) {
             const int column = inlineNote.position().column();
@@ -1024,7 +1024,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
             }
 
             // check for too deep shift value and limit if necessary
-            if (shiftX > ((double)maxwidth / 100 * m_view->config()->dynWordWrapAlignIndent())) {
+            if (m_view && shiftX > ((double)maxwidth / 100 * m_view->config()->dynWordWrapAlignIndent())) {
                 shiftX = 0;
             }
 
