@@ -171,6 +171,10 @@ struct IndexPair {
 QVector<KTextEditor::Range>
 KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards, QRegularExpression::PatternOptions options)
 {
+    // Save regexes to avoid reconstructing regexes all the time
+    static QRegularExpression preRegex;
+    static QRegularExpression repairedRegex;
+
     // Returned if no matches are found
     QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
 
@@ -183,12 +187,14 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
     // Always enable Unicode support
     options |= QRegularExpression::UseUnicodePropertiesOption;
 
-    QRegularExpression regexp(pattern, options);
+    if (preRegex.pattern() != pattern || preRegex.patternOptions() != options) {
+        preRegex = QRegularExpression(pattern, options);
+    }
 
     // If repairPattern() is called on an invalid regex pattern it may cause asserts
     // in QString (e.g. if the pattern is just '\\', pattern.size() is 1, and repaierPattern
     // expects at least one character after a '\')
-    if (!regexp.isValid()) {
+    if (!preRegex.isValid()) {
         return noResult;
     }
 
@@ -208,8 +214,12 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
         options |= QRegularExpression::MultilineOption;
     }
 
-    regexp.setPattern(repairedPattern);
-    if (!regexp.isValid()) {
+    // check if anything changed at all
+    if (repairedRegex.pattern() != repairedPattern || repairedRegex.patternOptions() != options) {
+        repairedRegex.setPattern(repairedPattern);
+        repairedRegex.setPatternOptions(options);
+    }
+    if (!repairedRegex.isValid()) {
         return noResult;
     }
 
@@ -263,7 +273,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
 
         QRegularExpressionMatch match;
         bool found = false;
-        QRegularExpressionMatchIterator iter = regexp.globalMatch(wholeRange, rangeStartCol);
+        QRegularExpressionMatchIterator iter = repairedRegex.globalMatch(wholeRange, rangeStartCol);
 
         if (backwards) {
             while (iter.hasNext()) {
@@ -293,7 +303,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
         // Capture groups: save opening and closing indices and build a map,
         // the correct values will be written into it later
         QMap<int, TwoViewCursor *> indicesToCursors;
-        const int numCaptures = regexp.captureCount();
+        const int numCaptures = repairedRegex.captureCount();
         QVector<IndexPair> indexPairs(numCaptures + 1);
         for (int c = 0; c <= numCaptures; ++c) {
             const int openIndex = match.capturedStart(c);
@@ -431,7 +441,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
             QRegularExpressionMatch match;
 
             if (backwards) {
-                QRegularExpressionMatchIterator iter = regexp.globalMatch(textLine, offset);
+                QRegularExpressionMatchIterator iter = repairedRegex.globalMatch(textLine, offset);
                 while (iter.hasNext()) {
                     QRegularExpressionMatch curMatch = iter.next();
                     if (curMatch.capturedEnd() <= endLineMaxOffset) {
@@ -440,7 +450,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
                     }
                 }
             } else {
-                match = regexp.match(textLine, offset);
+                match = repairedRegex.match(textLine, offset);
                 if (match.hasMatch() && match.capturedEnd() <= endLineMaxOffset) {
                     found = true;
                 }
@@ -450,7 +460,7 @@ KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &input
                 FAST_DEBUG("line " << j << ": yes");
 
                 // build result array
-                const int numCaptures = regexp.captureCount();
+                const int numCaptures = repairedRegex.captureCount();
                 QVector<KTextEditor::Range> result(numCaptures + 1);
                 result[0] = KTextEditor::Range(j, match.capturedStart(), j, match.capturedEnd());
 
