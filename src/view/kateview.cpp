@@ -3316,6 +3316,10 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
     menu->addSeparator();
     menu->addAction(m_selectAll);
     menu->addAction(m_deSelect);
+    QAction *editing = actionCollection()->action(QStringLiteral("tools_scripts_Editing"));
+    if (editing) {
+        menu->addAction(editing);
+    }
     if (QAction *spellingSuggestions = actionCollection()->action(QStringLiteral("spelling_suggestions"))) {
         menu->addSeparator();
         menu->addAction(spellingSuggestions);
@@ -3324,6 +3328,7 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
         menu->addSeparator();
         menu->addAction(bookmark);
     }
+
     return menu;
 }
 

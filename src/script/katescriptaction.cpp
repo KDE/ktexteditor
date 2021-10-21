@@ -105,12 +105,12 @@ void KateScriptActionMenu::repopulate()
             QMenu *m = menu();
             QString category = action.value(QStringLiteral("category")).toString();
             if (!category.isEmpty()) {
-                category = i18nc("Script command category", category.toUtf8().data());
                 m = menus[category];
                 if (!m) {
-                    m = menu()->addMenu(category);
+                    m = menu()->addMenu(i18nc("Script command category", category.toUtf8().data()));
                     menus.insert(category, m);
                     m_menus.append(m);
+                    m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + category, m->menuAction());
                 }
             }
 

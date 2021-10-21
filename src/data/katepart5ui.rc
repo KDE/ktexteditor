@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="91" translationDomain="ktexteditor5">
+<gui name="KatePartView" version="92" translationDomain="ktexteditor5">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -154,6 +154,7 @@
   <Separator group="popup_operations" />
   <Action name="edit_select_all" group="popup_operations" />
   <Action name="edit_deselect" group="popup_operations" />
+  <Action name="tools_scripts_Editing" group="popup_operations" />
   <Separator group="popup_operations" />
   <Action name="spelling_suggestions" group="popup_operations" />
   <Separator group="popup_operations" />
