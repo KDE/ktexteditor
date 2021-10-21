@@ -27,6 +27,7 @@
 #include "katemessagewidget.h"
 #include "katepartdebug.h"
 #include "katetextanimation.h"
+#include "katetextline.h"
 #include "katetextpreview.h"
 #include "kateview.h"
 #include "kateviewaccessible.h"
@@ -116,6 +117,11 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_bmStart(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmEnd(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmLastFlashPos(doc()->newMovingCursor(KTextEditor::Cursor::invalid()))
+
+    // folding marker
+    , m_fmStart(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
+    , m_fmEnd(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
+
     , m_dummy(nullptr)
 
     // stay on cursor will avoid that the view scroll around on press return at beginning
@@ -2201,6 +2207,101 @@ void KateViewInternal::moveCursorToSelectionEdge()
     m_minLinesVisible = tmp;
 }
 
+KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor::Cursor &currentCursorPos, const int value, const int maxLines)
+{
+    const int direction = !(value < 0) ? 1 : -1;
+    int foldCounter = 0;
+    int lineCounter = 0;
+    auto &foldMarkers = m_view->doc()->buffer().plainLine(currentCursorPos.line())->foldings();
+
+    // searching a end folding marker? go left to right
+    // otherwise, go right to left
+    long i = direction == 1 ? 0 : (long)foldMarkers.size() - 1;
+
+    // For the first line, we start considering the first folding after the cursor
+    for (; i >= 0 && i < (long)foldMarkers.size(); i += direction) {
+        if ((foldMarkers[i].offset - currentCursorPos.column()) * direction > 0) {
+            if (foldMarkers[i].foldingValue == value) {
+                foldCounter += 1;
+            } else if (foldMarkers[i].foldingValue == -value && foldCounter > 0) {
+                foldCounter -= 1;
+            } else if (foldMarkers[i].foldingValue == -value && foldCounter == 0) {
+                return KTextEditor::Range(currentCursorPos.line(),
+                                          getStartOffset(direction, foldMarkers[i].offset, foldMarkers[i].length),
+                                          currentCursorPos.line(),
+                                          getEndOffset(direction, foldMarkers[i].offset, foldMarkers[i].length));
+            }
+        }
+    }
+
+    // for the other lines
+    int currentLine = currentCursorPos.line() + direction;
+    for (; currentLine >= 0 && currentLine < m_view->doc()->lines() && lineCounter < maxLines; currentLine += direction) {
+        // update line attributes
+        auto &foldMarkers = m_view->doc()->buffer().plainLine(currentLine)->foldings();
+        i = direction == 1 ? 0 : (long)foldMarkers.size() - 1;
+
+        // iterate through the markers
+        for (; i >= 0 && i < (long)foldMarkers.size(); i += direction) {
+            if (foldMarkers[i].foldingValue == value) {
+                foldCounter += 1;
+            } else if (foldMarkers[i].foldingValue == -value && foldCounter != 0) {
+                foldCounter -= 1;
+            } else if (foldMarkers[i].foldingValue == -value && foldCounter == 0) {
+                return KTextEditor::Range(currentLine,
+                                          getStartOffset(direction, foldMarkers[i].offset, foldMarkers[i].length),
+                                          currentLine,
+                                          getEndOffset(direction, foldMarkers[i].offset, foldMarkers[i].length));
+            }
+        }
+        lineCounter += 1;
+    }
+
+    // got out of loop, no matching folding found
+    // returns a invalid folding range
+    return KTextEditor::Range::invalid();
+}
+
+void KateViewInternal::updateFoldingMarkersHighlighting()
+{
+    auto &foldings = m_view->doc()->buffer().plainLine(m_cursor.line())->foldings();
+
+    for (unsigned long i = 0; i < foldings.size(); i++) {
+        // 1 -> left to right, the current folding is start type
+        // -1 -> right to left, the current folding is end type
+        int direction = !(foldings[i].foldingValue < 0) ? 1 : -1;
+
+        int startOffset = getStartOffset(-direction, foldings[i].offset, foldings[i].length);
+        int endOffset = getEndOffset(-direction, foldings[i].offset, foldings[i].length);
+
+        if (m_cursor.column() >= startOffset && m_cursor.column() <= endOffset) {
+            const auto foldingMarkerMatch = findMatchingFoldingMarker(KTextEditor::Cursor(m_cursor.line(), m_cursor.column()), foldings[i].foldingValue, 2000);
+
+            if (!foldingMarkerMatch.isValid()) {
+                break;
+            }
+
+            // set fmStart to Opening Folding Marker and fmEnd to Ending Folding Marker
+            if (direction == 1) {
+                m_fmStart->setRange(KTextEditor::Range(m_cursor.line(), startOffset, m_cursor.line(), endOffset));
+                m_fmEnd->setRange(foldingMarkerMatch);
+            } else {
+                m_fmStart->setRange(foldingMarkerMatch);
+                m_fmEnd->setRange(KTextEditor::Range(m_cursor.line(), startOffset, m_cursor.line(), endOffset));
+            }
+
+            KTextEditor::Attribute::Ptr fill = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
+            fill->setBackground(view()->m_renderer->config()->highlightedBracketColor());
+
+            m_fmStart->setAttribute(fill);
+            m_fmEnd->setAttribute(fill);
+            return;
+        }
+    }
+    m_fmStart->setRange(KTextEditor::Range::invalid());
+    m_fmEnd->setRange(KTextEditor::Range::invalid());
+}
+
 void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool force, bool center, bool calledExternally)
 {
     if (!force && (m_cursor.toCursor() == newCursor)) {
@@ -2232,6 +2333,8 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
     }
 
     updateBracketMarks();
+
+    updateFoldingMarkersHighlighting();
 
     // avoid double work, tagLine => tagLines => not that cheap, much more costly than to compare 2 ints
     tagLine(oldDisplayCursor);

@@ -13,6 +13,7 @@
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
+#include <kateviewinternal.h>
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 
@@ -599,6 +600,91 @@ void KateViewTest::testTransposeWord()
     QCOMPARE(view->cursorPosition(), wordBelow + KTextEditor::Cursor(0, 12 + 15));
     view->transposeWord();
     QCOMPARE(view->cursorPosition(), wordBelow + KTextEditor::Cursor(0, 12)); // end of line, transpose backwards instead
+}
+
+#include <iostream>
+void KateViewTest::testFindMatchingFoldingMarker()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setMode(QString("Bash"));
+    doc.setHighlightingMode(QString("Bash"));
+
+    doc.setText(
+        "for i in 0 1 2; do\n"
+        "    if [[ i -lt 1 ]]; then echo $i; fi\n"
+        "    if [[ i -eq 2 ]]; then\n"
+        "        echo 'hello :)'\n"
+        "    fi\n"
+        "done\n");
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    KateViewInternal *viewInternal = view->getViewInternal();
+
+    const int ifvalue = doc.buffer().plainLine(1)->foldings()[0].foldingValue;
+    const int dovalue = doc.buffer().plainLine(0)->foldings()[0].foldingValue;
+
+    const KTextEditor::Range firstDo(0, 16, 0, 18);
+    const KTextEditor::Range firstDoMatching(5, 0, 5, 4);
+    const KTextEditor::Range firstIf(1, 4, 1, 6);
+    const KTextEditor::Range firstIfMatching(1, 36, 1, 38);
+
+    // first test the do folding marker with cursor above first position of the word.
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.start(), dovalue, 2000), firstDoMatching);
+    // with cursor above last position of the word
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.end(), dovalue, 2000), firstDoMatching);
+    // now to test the maxLines param.
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.start(), dovalue, 2), KTextEditor::Range::invalid());
+
+    // it must work from end folding to start folding too.
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), -dovalue, 2000), firstDo);
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), -dovalue, 2), KTextEditor::Range::invalid());
+
+    // folding in the same line
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIf.start(), ifvalue, 2000), firstIfMatching);
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIfMatching.start(), -ifvalue, 2000), firstIf);
+}
+
+void KateViewTest::testUpdateFoldingMarkersHighlighting()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setMode(QString("Bash"));
+    doc.setHighlightingMode(QString("Bash"));
+
+    doc.setText(
+        "for i in 0 1 2; do\n"
+        "    if [[ i -lt 1 ]]; then echo $i; fi\n"
+        "    if [[ i -eq 2 ]]; then\n"
+        "        echo 'hello :)'\n"
+        "    fi\n"
+        "done\n");
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    KateViewInternal *viewInternal = view->getViewInternal();
+
+    const KTextEditor::Cursor positionWithoutMarker(0, 4);
+    const KTextEditor::Range firstDo(0, 16, 0, 18);
+    const KTextEditor::Range firstDoMatching(5, 0, 5, 4);
+
+    KTextEditor::MovingRange *foldingMarkerStart = viewInternal->m_fmStart.get();
+    KTextEditor::MovingRange *foldingMarkerEnd = viewInternal->m_fmEnd.get();
+
+    // If the cursor is not above any folding marker, the highlighting range is invalid
+    view->editSetCursor(positionWithoutMarker);
+    viewInternal->updateFoldingMarkersHighlighting();
+    QCOMPARE(foldingMarkerStart->toRange(), KTextEditor::Range::invalid());
+    QCOMPARE(foldingMarkerEnd->toRange(), KTextEditor::Range::invalid());
+
+    // If the cursor is above a opening folding marker, the highlighting range is the range of both opening and end folding markers words
+    view->editSetCursor(firstDo.start());
+    viewInternal->updateFoldingMarkersHighlighting();
+    QCOMPARE(foldingMarkerStart->toRange(), firstDo);
+    QCOMPARE(foldingMarkerEnd->toRange(), firstDoMatching);
+
+    // If the cursor is above a ending folding marker, then same rule above
+    view->editSetCursor(firstDoMatching.start());
+    viewInternal->updateFoldingMarkersHighlighting();
+    QCOMPARE(foldingMarkerStart->toRange(), firstDo);
+    QCOMPARE(foldingMarkerEnd->toRange(), firstDoMatching);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

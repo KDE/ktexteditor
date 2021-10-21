@@ -18,6 +18,7 @@
 
 #include "inlinenotedata.h"
 #include "katetextcursor.h"
+#include "katetextline.h"
 
 #include <QDrag>
 #include <QElapsedTimer>
@@ -49,13 +50,14 @@ class KateAbstractInputMode;
 class ZoomEventFilter;
 class KateRenderer;
 class KateTextPreview;
+class KateViewTest;
 
 class QScrollBar;
 class QScroller;
 class QScrollEvent;
 class QScrollPrepareEvent;
 
-class KateViewInternal : public QWidget
+class KTEXTEDITOR_EXPORT KateViewInternal : public QWidget
 {
     Q_OBJECT
 
@@ -69,6 +71,7 @@ class KateViewInternal : public QWidget
     friend class CamelCursor;
     friend class KateAbstractInputMode;
     friend class ::KateTextPreview;
+    friend class KateViewTest;
 
 public:
     enum Bias { left = -1, none = 0, right = 1 };
@@ -207,6 +210,19 @@ public:
     QPoint cursorCoordinates(bool includeBorder = true) const;
     KTextEditor::Cursor findMatchingBracket();
 
+    KTextEditor::Range findMatchingFoldingMarker(const KTextEditor::Cursor &current_cursor_pos, const int value, const int maxLines);
+    void updateFoldingMarkersHighlighting();
+
+    inline int getStartOffset(int direction, int offset, int length) const
+    {
+        return direction == 1 ? offset - length : offset;
+    }
+
+    inline int getEndOffset(int direction, int offset, int length) const
+    {
+        return direction == 1 ? offset : offset + length;
+    }
+
     KateIconBorder *iconBorder() const
     {
         return m_leftBorder;
@@ -312,6 +328,9 @@ private:
     std::unique_ptr<KTextEditor::MovingCursor> m_bmLastFlashPos;
     std::unique_ptr<KateTextPreview> m_bmPreview;
     void updateBracketMarkAttributes();
+
+    // Folding mark
+    std::unique_ptr<KTextEditor::MovingRange> m_fmStart, m_fmEnd;
 
     enum DragState { diNone, diPending, diDragging };
 

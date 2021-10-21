@@ -74,10 +74,12 @@ public:
         /**
          * Construct folding.
          * @param _offset offset of the folding start
+         * @param _length length of the folding
          * @param _foldingValue positive ones start foldings, negative ones end them
          */
-        Folding(int _offset, int _foldingValue)
+        Folding(int _offset, int _length, int _foldingValue)
             : offset(_offset)
+            , length(_length)
             , foldingValue(_foldingValue)
         {
         }
@@ -86,6 +88,11 @@ public:
          * offset
          */
         int offset = 0;
+
+        /**
+         * length
+         */
+        int length = 0;
 
         /**
          * positive ones start foldings, negative ones end them
@@ -404,11 +411,12 @@ public:
     /**
      * Add new folding at end of foldings stored in this line
      * @param offset offset of folding start
+     * @param length length of the string that represents the folding
      * @param folding folding to add, positive to open, negative to close
      */
-    void addFolding(int offset, int folding)
+    void addFolding(int offset, int length, int folding)
     {
-        m_foldings.emplace_back(offset, folding);
+        m_foldings.emplace_back(offset, length, folding);
     }
 
     /**

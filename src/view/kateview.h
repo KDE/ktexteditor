@@ -118,6 +118,12 @@ public:
 
     void setInputMode(InputMode mode);
 
+public:
+    KateViewInternal *getViewInternal()
+    {
+        return m_viewInternal;
+    }
+
     //
     // KTextEditor::ClipboardInterface
     //
