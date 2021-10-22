@@ -39,15 +39,6 @@ DocumentCursor::DocumentCursor(const DocumentCursor &other)
 {
 }
 
-void DocumentCursor::setPosition(const KTextEditor::Cursor &position)
-{
-    if (position.isValid()) {
-        m_cursor = position;
-    } else {
-        m_cursor = KTextEditor::Cursor::invalid();
-    }
-}
-
 void DocumentCursor::makeValid()
 {
     const int line = m_cursor.line();

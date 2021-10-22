@@ -109,11 +109,14 @@ public:
     /**
      * Set the current cursor position to \e position.
      * If \e position is not valid, meaning that either its line < 0 or its
-     * column < 0, then the document cursor is set to invalid(-1, -1).
+     * column < 0, then the document cursor will also be invalid
      *
      * \param position new cursor position
      */
-    void setPosition(const KTextEditor::Cursor &position);
+    void setPosition(KTextEditor::Cursor position)
+    {
+        m_cursor = position;
+    }
 
     /**
      * Retrieve the line on which this cursor is situated.
