@@ -16,7 +16,7 @@ class SearchBarTest : public QObject
 
 public:
     SearchBarTest();
-    ~SearchBarTest();
+    ~SearchBarTest() override;
 
 public Q_SLOTS:
     void initTestCase();

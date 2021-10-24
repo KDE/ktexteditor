@@ -42,7 +42,7 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
 {
     Q_OBJECT
 public:
-    virtual ~AnnotationModel()
+    ~AnnotationModel() override
     {
     }
 
@@ -209,7 +209,7 @@ public:
 class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
 {
 public:
-    virtual ~AnnotationViewInterface()
+    ~AnnotationViewInterface() override
     {
     }
 
@@ -303,7 +303,7 @@ class KTEXTEDITOR_EXPORT AnnotationViewInterfaceV2 : public AnnotationViewInterf
 {
     // KF6: Merge KTextEditor::AnnotationViewInterfaceV2 into KTextEditor::AnnotationViewInterface (kossebau)
 public:
-    virtual ~AnnotationViewInterfaceV2()
+    ~AnnotationViewInterfaceV2() override
     {
     }
 

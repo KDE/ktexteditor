@@ -165,7 +165,7 @@ public:
     /**
      * Virtual destructor.
      */
-    virtual ~View();
+    ~View() override;
 
     /*
      * Accessor for the document

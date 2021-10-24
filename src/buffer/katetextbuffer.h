@@ -64,7 +64,7 @@ public:
      * Destruct the text buffer
      * Virtual, we allow inheritance
      */
-    virtual ~TextBuffer();
+    ~TextBuffer() override;
 
     /**
      * Clears the buffer, reverts to initial empty state.

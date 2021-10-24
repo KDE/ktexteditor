@@ -94,7 +94,7 @@ public:
     /**
      * Destructor
      */
-    ~EditorPrivate();
+    ~EditorPrivate() override;
 
     /**
      * Create a new document object

@@ -49,7 +49,7 @@ class KateScriptActionMenu : public KActionMenu
 
 public:
     KateScriptActionMenu(KTextEditor::ViewPrivate *view, const QString &text);
-    ~KateScriptActionMenu();
+    ~KateScriptActionMenu() override;
 
     void cleanup();
 

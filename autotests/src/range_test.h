@@ -19,7 +19,7 @@ class RangeTest : public QObject
 
 public:
     RangeTest();
-    ~RangeTest();
+    ~RangeTest() override;
 
 private Q_SLOTS:
     void testTextEditorRange();

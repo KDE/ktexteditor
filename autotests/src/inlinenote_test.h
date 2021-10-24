@@ -16,7 +16,7 @@ class InlineNoteTest : public QObject
 
 public:
     InlineNoteTest();
-    ~InlineNoteTest();
+    ~InlineNoteTest() override;
 
 private Q_SLOTS:
     void testInlineNote();

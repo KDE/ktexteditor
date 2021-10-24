@@ -46,7 +46,7 @@ public:
      */
     explicit KateUndoManager(KTextEditor::DocumentPrivate *doc);
 
-    ~KateUndoManager();
+    ~KateUndoManager() override;
 
     KTextEditor::Document *document();
 

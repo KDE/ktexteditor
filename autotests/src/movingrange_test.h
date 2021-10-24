@@ -16,7 +16,7 @@ class MovingRangeTest : public QObject
 
 public:
     MovingRangeTest();
-    ~MovingRangeTest();
+    ~MovingRangeTest() override;
 
 private Q_SLOTS:
     void testFeedbackEmptyRange();

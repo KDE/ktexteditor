@@ -27,7 +27,7 @@ class ScriptDocumentTest : public QObject
 
 public:
     ScriptDocumentTest();
-    virtual ~ScriptDocumentTest();
+    ~ScriptDocumentTest() override;
 
 private Q_SLOTS:
     void initTestCase();

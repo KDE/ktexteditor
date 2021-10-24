@@ -124,7 +124,7 @@ public:
     {
         init(Bottom);
     }
-    ~KateModeMenuList()
+    ~KateModeMenuList() override
     {
     }
 
@@ -318,7 +318,7 @@ private:
     }
 
 public:
-    ~ListView()
+    ~ListView() override
     {
     }
 
@@ -401,7 +401,7 @@ private:
     friend Factory;
 
 public:
-    ~ListItem()
+    ~ListItem() override
     {
     }
 
@@ -451,7 +451,7 @@ class SearchLine : public QLineEdit
     Q_OBJECT
 
 public:
-    ~SearchLine()
+    ~SearchLine() override
     {
         m_bestResults.clear();
     }

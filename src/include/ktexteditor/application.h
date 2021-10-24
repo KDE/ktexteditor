@@ -54,7 +54,7 @@ public:
     /**
      * Virtual Destructor
      */
-    virtual ~Application();
+    ~Application() override;
 
     /**
      * Ask app to quit. The app might interact with the user and decide that

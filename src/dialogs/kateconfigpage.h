@@ -24,7 +24,7 @@ class KateConfigPage : public KTextEditor::ConfigPage
 
 public:
     explicit KateConfigPage(QWidget *parent = nullptr, const char *name = nullptr);
-    virtual ~KateConfigPage();
+    ~KateConfigPage() override;
     virtual void reload() = 0;
 
 public:

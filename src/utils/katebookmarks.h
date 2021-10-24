@@ -27,7 +27,7 @@ class KateBookmarks : public QObject
 public:
     enum Sorting { Position, Creation };
     explicit KateBookmarks(KTextEditor::ViewPrivate *parent, Sorting sort = Position);
-    virtual ~KateBookmarks();
+    ~KateBookmarks() override;
 
     void createActions(KActionCollection *);
 

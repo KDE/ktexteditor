@@ -41,7 +41,7 @@ public:
     /**
      * Cleanup
      */
-    ~TextFolding();
+    ~TextFolding() override;
 
     /**
      * Folding state of a range

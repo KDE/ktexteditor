@@ -596,7 +596,7 @@ class KTEXTEDITOR_EXPORT KateCommandLineBar : public KateViewBarWidget
 
 public:
     explicit KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent = nullptr);
-    ~KateCommandLineBar();
+    ~KateCommandLineBar() override;
 
     void setText(const QString &text, bool selected = true);
     void execute(const QString &text);

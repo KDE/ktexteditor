@@ -22,7 +22,7 @@ class PlainTextSearchTest : public QObject
 
 public:
     PlainTextSearchTest();
-    virtual ~PlainTextSearchTest();
+    ~PlainTextSearchTest() override;
 
 private Q_SLOTS:
     void initTestCase();

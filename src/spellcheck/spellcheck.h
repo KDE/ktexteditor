@@ -29,7 +29,7 @@ class KateSpellCheckManager : public QObject
 
 public:
     explicit KateSpellCheckManager(QObject *parent = nullptr);
-    virtual ~KateSpellCheckManager();
+    ~KateSpellCheckManager() override;
 
     QStringList suggestions(const QString &word, const QString &dictionary);
 

@@ -19,7 +19,7 @@ class KateCategoryDrawer : public KCategoryDrawer
 public:
     KateCategoryDrawer();
 
-    virtual void drawCategory(const QModelIndex &index, int sortRole, const QStyleOption &option, QPainter *painter) const override;
+    void drawCategory(const QModelIndex &index, int sortRole, const QStyleOption &option, QPainter *painter) const override;
 
     int categoryHeight(const QModelIndex &index, const QStyleOption &option) const override;
 

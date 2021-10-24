@@ -105,7 +105,7 @@ protected:
     /**
      * Virtual destructor.
      */
-    virtual ~Editor();
+    ~Editor() override;
 
 public:
     /**

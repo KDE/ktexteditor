@@ -204,7 +204,7 @@ public:
     /**
      * Virtual destructor.
      */
-    virtual ~Document();
+    ~Document() override;
 
     /**
      * \name Manage View%s of this Document

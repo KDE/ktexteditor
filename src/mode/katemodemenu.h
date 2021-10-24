@@ -31,7 +31,7 @@ public:
         setPopupMode(QToolButton::InstantPopup);
     }
 
-    ~KateModeMenu();
+    ~KateModeMenu() override;
 
     void updateMenu(KTextEditor::Document *doc);
 

@@ -18,7 +18,7 @@ class KateTextBufferTest : public QObject
 
 public:
     KateTextBufferTest();
-    virtual ~KateTextBufferTest();
+    ~KateTextBufferTest() override;
 
 private Q_SLOTS:
     void basicBufferTest();

@@ -17,7 +17,7 @@ class CamelCursorTest : public QObject
     Q_OBJECT
 public:
     CamelCursorTest(QObject *parent = nullptr);
-    ~CamelCursorTest();
+    ~CamelCursorTest() override;
 
 private Q_SLOTS:
     void testWordMovementSingleRow_data();

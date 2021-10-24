@@ -16,7 +16,7 @@ class RegExpSearchTest : public QObject
 
 public:
     RegExpSearchTest();
-    virtual ~RegExpSearchTest();
+    ~RegExpSearchTest() override;
 
 private Q_SLOTS:
     void testReplaceEscapeSequences_data();

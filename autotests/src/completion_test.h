@@ -27,7 +27,7 @@ public:
     CompletionTest()
     {
     }
-    virtual ~CompletionTest()
+    ~CompletionTest() override
     {
     }
 

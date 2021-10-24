@@ -38,7 +38,7 @@ class KTEXTEDITOR_EXPORT SwapFile : public QObject
 
 public:
     explicit SwapFile(KTextEditor::DocumentPrivate *document);
-    ~SwapFile();
+    ~SwapFile() override;
     bool shouldRecover() const;
 
     void fileClosed();

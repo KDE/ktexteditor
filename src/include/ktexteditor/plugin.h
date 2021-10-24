@@ -91,7 +91,7 @@ public:
     /**
      * Virtual destructor.
      */
-    virtual ~Plugin();
+    ~Plugin() override;
 
     /**
      * Create a new View for this plugin for the given KTextEditor::MainWindow.

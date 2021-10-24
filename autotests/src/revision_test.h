@@ -16,7 +16,7 @@ class RevisionTest : public QObject
 
 public:
     RevisionTest();
-    ~RevisionTest();
+    ~RevisionTest() override;
 
 private Q_SLOTS:
     void testTransformCursor();

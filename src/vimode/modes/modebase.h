@@ -40,7 +40,7 @@ class KTEXTEDITOR_EXPORT ModeBase : public QObject
 
 public:
     ModeBase() = default;
-    virtual ~ModeBase() = default;
+    ~ModeBase() override = default;
 
     /**
      * @return normal mode command accumulated so far

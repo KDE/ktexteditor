@@ -33,7 +33,7 @@ class TestScriptEnv : public QObject
 {
 public:
     explicit TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag);
-    virtual ~TestScriptEnv();
+    ~TestScriptEnv() override;
 
     QJSEngine *engine() const
     {
@@ -63,7 +63,7 @@ class KateViewObject : public KateScriptView
 
 public:
     explicit KateViewObject(QJSEngine *engine, KTextEditor::ViewPrivate *view);
-    virtual ~KateViewObject();
+    ~KateViewObject() override;
 
     // Edit functions
     Q_INVOKABLE void keyReturn(int cnt = 1);
@@ -145,7 +145,7 @@ class KateDocumentObject : public KateScriptDocument
 
 public:
     explicit KateDocumentObject(QJSEngine *engine, KTextEditor::DocumentPrivate *doc);
-    virtual ~KateDocumentObject();
+    ~KateDocumentObject() override;
 
 private:
     Q_DISABLE_COPY(KateDocumentObject)
@@ -163,7 +163,7 @@ class OutputObject : public QObject
 
 public:
     OutputObject(KTextEditor::ViewPrivate *v, bool &cflag);
-    virtual ~OutputObject();
+    ~OutputObject() override;
 
     void output(bool cp, bool ln);
 

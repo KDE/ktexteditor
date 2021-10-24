@@ -44,7 +44,7 @@ class KateSpellCheckDialog : public QObject
 
 public:
     explicit KateSpellCheckDialog(KTextEditor::ViewPrivate *);
-    ~KateSpellCheckDialog();
+    ~KateSpellCheckDialog() override;
 
     void createActions(KActionCollection *);
 

@@ -108,7 +108,7 @@ class KateDictionaryBar : public KateViewBarWidget
 
 public:
     explicit KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent = nullptr);
-    virtual ~KateDictionaryBar();
+    ~KateDictionaryBar() override;
 
 public Q_SLOTS:
     void updateData();
@@ -353,7 +353,7 @@ public:
         Close
     };
     KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype, const QString &reason);
-    ~KateModOnHdPrompt();
+    ~KateModOnHdPrompt() override;
 
 Q_SIGNALS:
     void saveAsTriggered();

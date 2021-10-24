@@ -175,7 +175,7 @@ class KTEXTEDITOR_EXPORT CodeCompletionInterfaceV2 : public CodeCompletionInterf
 {
     // KF6: Merge KTextEditor::CodeCompletionInterfaceV2 into KTextEditor::CodeCompletionInterface
 public:
-    virtual ~CodeCompletionInterfaceV2();
+    ~CodeCompletionInterfaceV2() override;
     /**
      * Invoke code completion over a given range, with specific models and invocation type.
      * \param models list of models to start. If this is an empty list, all registered models are started.

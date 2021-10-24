@@ -46,7 +46,7 @@ class KateVariableExpansionDialog : public QDialog
 {
 public:
     KateVariableExpansionDialog(QWidget *parent);
-    ~KateVariableExpansionDialog();
+    ~KateVariableExpansionDialog() override;
 
     /**
      * Adds @p variable to the expansion list view.

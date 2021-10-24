@@ -56,7 +56,7 @@ public:
     /**
      * Virtual Destructor
      */
-    virtual ~MainWindow();
+    ~MainWindow() override;
 
     //
     // Accessors to some window properties and contents

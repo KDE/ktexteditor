@@ -148,7 +148,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~Message();
+    ~Message() override;
 
     /**
      * Returns the text set in the constructor.

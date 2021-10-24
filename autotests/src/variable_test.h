@@ -16,7 +16,7 @@ class VariableTest : public QObject
 
 public:
     VariableTest();
-    ~VariableTest();
+    ~VariableTest() override;
 
 private Q_SLOTS:
     void testReturnValues();

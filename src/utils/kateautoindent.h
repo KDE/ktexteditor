@@ -98,7 +98,7 @@ public:
     /**
      * Destructor
      */
-    ~KateAutoIndent();
+    ~KateAutoIndent() override;
 
     /*
      * Internal helper for the subclasses and itself

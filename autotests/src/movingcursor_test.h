@@ -16,7 +16,7 @@ class MovingCursorTest : public QObject
 
 public:
     MovingCursorTest();
-    ~MovingCursorTest();
+    ~MovingCursorTest() override;
 
 private Q_SLOTS:
     void testMovingCursor();

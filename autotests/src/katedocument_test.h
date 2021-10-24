@@ -16,7 +16,7 @@ class KateDocumentTest : public QObject
 
 public:
     KateDocumentTest();
-    ~KateDocumentTest();
+    ~KateDocumentTest() override;
 
 public Q_SLOTS:
     void initTestCase();

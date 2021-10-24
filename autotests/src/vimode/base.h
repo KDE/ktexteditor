@@ -71,7 +71,7 @@ class BaseTest : public QObject
 
 public:
     BaseTest();
-    ~BaseTest();
+    ~BaseTest() override;
 
     static void waitForCompletionWidgetToActivate(KTextEditor::ViewPrivate *kate_view);
 

@@ -20,7 +20,7 @@ class SwapDiffCreator : public QObject
 
 public:
     explicit SwapDiffCreator(Kate::SwapFile *swapFile);
-    ~SwapDiffCreator() = default;
+    ~SwapDiffCreator() override = default;
 
 public Q_SLOTS:
     void viewDiff();

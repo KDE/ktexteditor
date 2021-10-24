@@ -16,7 +16,7 @@ class BugTest : public QObject
 
 public:
     BugTest();
-    ~BugTest();
+    ~BugTest() override;
 
 private Q_SLOTS:
     void initTestCase();

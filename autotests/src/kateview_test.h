@@ -16,7 +16,7 @@ class KateViewTest : public QObject
 
 public:
     KateViewTest();
-    ~KateViewTest();
+    ~KateViewTest() override;
 
 private Q_SLOTS:
     void testReloadMultipleViews();

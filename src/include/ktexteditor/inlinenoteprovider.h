@@ -38,7 +38,7 @@ public:
     /**
      * Virtual destructor to allow inheritance.
      */
-    virtual ~InlineNoteProvider();
+    ~InlineNoteProvider() override;
 
     /**
      * Get list of inline notes for given line.

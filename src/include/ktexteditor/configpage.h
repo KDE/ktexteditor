@@ -55,7 +55,7 @@ public:
     /**
      * Virtual destructor.
      */
-    virtual ~ConfigPage();
+    ~ConfigPage() override;
 
     /**
      * Get a readable name for the config page. The name should be translated.

@@ -16,7 +16,7 @@ class KateConfigInterfaceTest : public QObject
 
 public:
     KateConfigInterfaceTest();
-    ~KateConfigInterfaceTest();
+    ~KateConfigInterfaceTest() override;
 
 private Q_SLOTS:
     void testDocument();

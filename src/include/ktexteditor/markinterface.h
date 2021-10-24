@@ -426,7 +426,7 @@ class KTEXTEDITOR_EXPORT MarkInterfaceV2 : public MarkInterface
 {
     // KF6: Merge KTextEditor::MarkInterfaceV2 into KTextEditor::MarkInterface, drop QPixmap API (kossebau)
 public:
-    virtual ~MarkInterfaceV2()
+    ~MarkInterfaceV2() override
     {
     }
 

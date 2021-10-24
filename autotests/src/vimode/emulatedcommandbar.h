@@ -55,7 +55,7 @@ class FailsIfSlotNotCalled : public QObject
     Q_OBJECT
 public:
     FailsIfSlotNotCalled();
-    ~FailsIfSlotNotCalled();
+    ~FailsIfSlotNotCalled() override;
 public Q_SLOTS:
     void slot();
 

@@ -29,7 +29,7 @@ class KateSpellingMenu : public QObject
 
 public:
     explicit KateSpellingMenu(KTextEditor::ViewPrivate *view);
-    virtual ~KateSpellingMenu();
+    ~KateSpellingMenu() override;
 
     bool isEnabled() const;
 

@@ -82,7 +82,7 @@ public:
      * Virtual destructor.
      * Will unregister this command at the global editor instance.
      */
-    virtual ~Command();
+    ~Command() override;
 
 public:
     /**

@@ -69,7 +69,7 @@ class KateWordCompletionView : public QObject
 
 public:
     KateWordCompletionView(KTextEditor::View *view, KActionCollection *ac);
-    ~KateWordCompletionView();
+    ~KateWordCompletionView() override;
 
 private Q_SLOTS:
     void completeBackwards();

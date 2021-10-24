@@ -16,7 +16,7 @@ class DocumentCursorTest : public QObject
 
 public:
     DocumentCursorTest();
-    ~DocumentCursorTest();
+    ~DocumentCursorTest() override;
 
 private Q_SLOTS:
     void initTestCase();

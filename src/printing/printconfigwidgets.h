@@ -34,7 +34,7 @@ class KatePrintTextSettings : public QWidget
     Q_OBJECT
 public:
     explicit KatePrintTextSettings(QWidget *parent = nullptr);
-    ~KatePrintTextSettings();
+    ~KatePrintTextSettings() override;
 
     bool printLineNumbers();
     bool printGuide();
@@ -62,7 +62,7 @@ class KatePrintHeaderFooter : public QWidget
     Q_OBJECT
 public:
     explicit KatePrintHeaderFooter(QWidget *parent = nullptr);
-    ~KatePrintHeaderFooter();
+    ~KatePrintHeaderFooter() override;
 
     QFont font();
 
@@ -114,7 +114,7 @@ class KatePrintLayout : public QWidget
     Q_OBJECT
 public:
     explicit KatePrintLayout(QWidget *parent = nullptr);
-    ~KatePrintLayout();
+    ~KatePrintLayout() override;
 
     QString colorScheme();
     bool useBackground();
