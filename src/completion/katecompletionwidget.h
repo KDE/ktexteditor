@@ -183,6 +183,8 @@ private:
     void switchList();
     void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
 
+    QString tailString() const;
+
     void deleteCompletionRanges();
 
     QList<KTextEditor::CodeCompletionModel *> m_sourceModels;

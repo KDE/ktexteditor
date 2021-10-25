@@ -470,6 +470,27 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
     }
 }
 
+QString KateCompletionWidget::tailString() const
+{
+    if (!KateViewConfig::global()->wordCompletionRemoveTail()) {
+        return QString();
+    }
+
+    const int line = view()->cursorPosition().line();
+    const int column = view()->cursorPosition().column();
+
+    const QString text = view()->document()->line(line);
+
+    static constexpr auto options = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::DontCaptureOption;
+    static const QRegularExpression findWordEnd(QStringLiteral("^[_\\w]*\\b"), options);
+
+    QRegularExpressionMatch match = findWordEnd.match(text.mid(column));
+    if (match.hasMatch()) {
+        return match.captured(0);
+    }
+    return QString();
+}
+
 void KateCompletionWidget::waitForModelReset()
 {
     KTextEditor::CodeCompletionModel *senderModel = qobject_cast<KTextEditor::CodeCompletionModel *>(sender());
@@ -913,8 +934,31 @@ bool KateCompletionWidget::execute()
 
     Q_ASSERT(m_completionRanges.contains(model));
     KTextEditor::Cursor start = m_completionRanges[model].range->start();
+    QString tailStr = tailString();
+
+    KTextEditor::MovingCursor *afterTailMCursor = view()->doc()->newMovingCursor(view()->cursorPosition());
+    afterTailMCursor->move(tailStr.size());
 
     model->executeCompletionItem(view(), *m_completionRanges[model].range, toExecute);
+    // NOTE the CompletionRange is now removed from m_completionRanges
+
+    // Now make the tail available with undo
+    if (!tailStr.isEmpty()) {
+        KTextEditor::Cursor currentPos = view()->cursorPosition();
+        KTextEditor::Cursor afterPos = afterTailMCursor->toCursor();
+        // Re add the tail for a possible undo to bring the tail back
+        view()->document()->insertText(afterPos, tailStr);
+        view()->setCursorPosition(currentPos);
+        view()->doc()->editEnd();
+
+        // Now remove the tail in a separate edit
+        KTextEditor::Cursor endPos = afterPos;
+        endPos.setColumn(afterPos.column() + tailStr.size());
+        view()->doc()->editStart();
+        view()->document()->removeText(KTextEditor::Range(afterPos, endPos));
+    }
+
+    delete afterTailMCursor;
 
     view()->doc()->editEnd();
     m_completionEditRunning = false;
