@@ -312,7 +312,7 @@ KateDocumentConfig::KateDocumentConfig()
         return value.toInt() >= 1;
     }));
     addConfigEntry(ConfigEntry(OnTheFlySpellCheck, "On-The-Fly Spellcheck", QStringLiteral("on-the-fly-spellcheck"), false));
-    addConfigEntry(ConfigEntry(IndentOnTextPaste, "Indent On Text Paste", QStringLiteral("indent-pasted-text"), false));
+    addConfigEntry(ConfigEntry(IndentOnTextPaste, "Indent On Text Paste", QStringLiteral("indent-pasted-text"), true));
     addConfigEntry(ConfigEntry(ReplaceTabsWithSpaces, "ReplaceTabsDyn", QStringLiteral("replace-tabs"), true));
     addConfigEntry(ConfigEntry(BackupOnSaveLocal, "Backup Local", QStringLiteral("backup-on-save-local"), false));
     addConfigEntry(ConfigEntry(BackupOnSaveRemote, "Backup Remote", QStringLiteral("backup-on-save-remote"), false));
