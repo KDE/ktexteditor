@@ -16,6 +16,8 @@
 
 #include <QtTestWidgets>
 
+#include <memory>
+
 using namespace KTextEditor;
 
 QTEST_MAIN(KateFoldingTest)
@@ -42,7 +44,7 @@ void KateFoldingTest::testCrash311866()
     doc.setHighlightingMode("C++");
     doc.buffer().ensureHighlighted(6);
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    const std::unique_ptr<ViewPrivate> view{static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr))};
     view->show();
     view->resize(400, 300);
     view->setCursorPosition(Cursor(3, 0));
@@ -76,7 +78,7 @@ void KateFoldingTest::testBug295632()
     doc.setText(text);
 
     // view must be visible...
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    const std::unique_ptr<ViewPrivate> view{static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr))};
     view->show();
     view->resize(400, 300);
 
@@ -92,7 +94,7 @@ void KateFoldingTest::testBug295632()
     view->setCursorPosition(Cursor(4, 6));
 
     QTest::qWait(100);
-    doc.typeChars(view, "x");
+    doc.typeChars(view.get(), "x");
     QTest::qWait(100);
 
     QString line = doc.line(0);
@@ -118,7 +120,7 @@ void KateFoldingTest::testCrash367466()
     doc.setText(text);
 
     // view must be visible...
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    const std::unique_ptr<ViewPrivate> view{static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr))};
     view->show();
     view->resize(400, 300);
     view->setCursorPosition(KTextEditor::Cursor(5, 2));
