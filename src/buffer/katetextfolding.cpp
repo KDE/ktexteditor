@@ -51,7 +51,11 @@ void TextFolding::clear()
 {
     // reset counter
     m_idCounter = -1;
+    clearFoldingRanges();
+}
 
+void TextFolding::clearFoldingRanges()
+{
     // no ranges, no work
     if (m_foldingRanges.isEmpty()) {
         // assert all stuff is consistent and return!
@@ -715,9 +719,7 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
 
 void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
-    for (FoldingRange *range : std::as_const(m_foldingRanges)) {
-        unfoldRange(range->id);
-    }
+    clearFoldingRanges();
 
     // try to create all folding ranges
     const auto jsonRanges = folds.array();

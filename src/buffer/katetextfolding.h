@@ -253,6 +253,11 @@ private:
     };
 
     /**
+     * Clear all folding range collections but leave global id counter intact.
+     */
+    void clearFoldingRanges();
+
+    /**
      * Fill known folding ranges in a QVariantList to store in configs.
      * @param ranges ranges vector to dump
      * @param folds current folds as variant list, will be filled

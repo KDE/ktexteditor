@@ -22,6 +22,7 @@ private Q_SLOTS:
     void testCrash311866();
     void testBug295632();
     void testCrash367466();
+    void testUnfoldingInImportFoldingRanges();
 };
 
 #endif // KATE_FOLDING_TEST_H

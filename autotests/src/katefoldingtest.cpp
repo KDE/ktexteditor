@@ -14,6 +14,7 @@
 #include <katetextfolding.h>
 #include <kateview.h>
 
+#include <QJsonDocument>
 #include <QtTestWidgets>
 
 #include <memory>
@@ -138,4 +139,42 @@ void KateFoldingTest::testCrash367466()
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(5, 2));
     view->up();
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(4, 2));
+}
+
+void KateFoldingTest::testUnfoldingInImportFoldingRanges()
+{
+    DocumentPrivate doc;
+    const auto text = QStringLiteral(
+        "int f(bool one) {\n"
+        "    if (one) {\n"
+        "        return 1;\n"
+        "    } else {\n"
+        "        return 0;\n"
+        "    }\n"
+        "}\n"
+        "\n"
+        "int g() {\n"
+        "    return 123;\n"
+        "}\n");
+    doc.setText(text);
+
+    // view must be visible...
+    const std::unique_ptr<ViewPrivate> view{static_cast<ViewPrivate *>(doc.createView(nullptr))};
+    view->show();
+    view->resize(400, 300);
+
+    auto &textFolding = view->textFolding();
+
+    const auto addFoldedRange = [&textFolding](Range range, Kate::TextFolding::FoldingRangeFlags extraFlags = {}) {
+        textFolding.newFoldingRange(range, Kate::TextFolding::Folded | extraFlags);
+    };
+    addFoldedRange(Range(0, 16, 6, 1)); // f()
+    addFoldedRange(Range(8, 8, 10, 1)); // g()
+    addFoldedRange(Range(1, 13, 3, 5), Kate::TextFolding::Persistent); // if
+    addFoldedRange(Range(3, 11, 5, 5)); // else
+
+    textFolding.importFoldingRanges(QJsonDocument{});
+    // TextFolding::importFoldingRanges() should remove all existing folding ranges
+    // - both top-level and nested -  before importing new ones.
+    QCOMPARE(textFolding.debugDump(), QLatin1String("tree  - folded "));
 }
