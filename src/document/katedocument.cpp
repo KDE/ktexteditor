@@ -453,6 +453,11 @@ KTextEditor::Range KTextEditor::DocumentPrivate::rangeOnLine(KTextEditor::Range 
     return KTextEditor::Range(line, fromVirtualColumn(line, col1), line, fromVirtualColumn(line, col2));
 }
 
+void KTextEditor::DocumentPrivate::setMetaData(const KPluginMetaData &metaData)
+{
+    KParts::Part::setMetaData(metaData);
+}
+
 // BEGIN KTextEditor::EditInterface stuff
 
 bool KTextEditor::DocumentPrivate::isEditingTransactionRunning() const

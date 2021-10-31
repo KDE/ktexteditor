@@ -99,6 +99,8 @@ public:
 
     KTextEditor::Range rangeOnLine(KTextEditor::Range range, int line) const;
 
+    void setMetaData(const KPluginMetaData &metaData);
+
 private:
     void showAndSetOpeningErrorAccess();
     /*
