@@ -933,16 +933,27 @@ bool KateCompletionWidget::execute()
     Q_ASSERT(model);
 
     Q_ASSERT(m_completionRanges.contains(model));
-    KTextEditor::Cursor start = m_completionRanges[model].range->start();
-    QString tailStr = tailString();
 
-    KTextEditor::MovingCursor *afterTailMCursor = view()->doc()->newMovingCursor(view()->cursorPosition());
+    KTextEditor::Cursor start = m_completionRanges[model].range->start();
+
+    // Save the "tail"
+    QString tailStr = tailString();
+    std::unique_ptr<KTextEditor::MovingCursor> afterTailMCursor(view()->doc()->newMovingCursor(view()->cursorPosition()));
     afterTailMCursor->move(tailStr.size());
 
     model->executeCompletionItem(view(), *m_completionRanges[model].range, toExecute);
     // NOTE the CompletionRange is now removed from m_completionRanges
 
-    // Now make the tail available with undo
+    // There are situations where keeping the tail is beneficial, but with the "Remove tail on complete" option is enabled,
+    // the tail is removed. For these situations we convert the completion into two edits:
+    // 1) Insert the completion
+    // 2) Remove the tail
+    //
+    // When we encounter one of these situations we can just do _one_ undo to have the tail back.
+    //
+    // Technically the tail is already removed by "executeCompletionItem()", so before this call we save the possible tail
+    // and re-add the tail before we end the first grouped "edit". Then immediately after that we add a second edit that
+    // removes the tail again.
     if (!tailStr.isEmpty()) {
         KTextEditor::Cursor currentPos = view()->cursorPosition();
         KTextEditor::Cursor afterPos = afterTailMCursor->toCursor();
@@ -957,8 +968,6 @@ bool KateCompletionWidget::execute()
         view()->doc()->editStart();
         view()->document()->removeText(KTextEditor::Range(afterPos, endPos));
     }
-
-    delete afterTailMCursor;
 
     view()->doc()->editEnd();
     m_completionEditRunning = false;
