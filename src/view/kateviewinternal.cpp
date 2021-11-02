@@ -27,7 +27,6 @@
 #include "katemessagewidget.h"
 #include "katepartdebug.h"
 #include "katetextanimation.h"
-#include "katetextline.h"
 #include "katetextpreview.h"
 #include "kateview.h"
 #include "kateviewaccessible.h"
