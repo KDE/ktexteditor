@@ -7,6 +7,8 @@
 #ifndef KATE_TEXTBLOCK_H
 #define KATE_TEXTBLOCK_H
 
+#include "katetextline.h"
+
 #include <unordered_map>
 #include <unordered_set>
 
@@ -71,6 +73,17 @@ public:
      * @return text line
      */
     TextLine line(int line) const;
+
+    /**
+     * Retrieve length for @p line.
+     * @param line wanted line number
+     * @return length of line
+     */
+    int lineLength(int line) const
+    {
+        Q_ASSERT(line >= startLine() && line < lines());
+        return m_lines[line - startLine()]->length();
+    }
 
     /**
      * Append a new line with given text.

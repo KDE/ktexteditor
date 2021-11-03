@@ -234,6 +234,20 @@ public:
     TextLine line(int line) const;
 
     /**
+     * Retrieve length for @p line
+     * @param line wanted line number
+     * @return length of the line
+     */
+    int lineLength(int line) const
+    {
+        // get block, this will assert on invalid line
+        int blockIndex = blockForLine(line);
+
+        // get line length
+        return m_blocks.at(blockIndex)->lineLength(line);
+    }
+
+    /**
      * Retrieve text of complete buffer.
      * @return text for this buffer, lines separated by '\n'
      */

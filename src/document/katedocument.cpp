@@ -938,17 +938,7 @@ int KTextEditor::DocumentPrivate::lines() const
 
 int KTextEditor::DocumentPrivate::lineLength(int line) const
 {
-    if (line < 0 || line > lastLine()) {
-        return -1;
-    }
-
-    Kate::TextLine l = m_buffer->plainLine(line);
-
-    if (!l) {
-        return -1;
-    }
-
-    return l->length();
+    return m_buffer->lineLength(line);
 }
 
 bool KTextEditor::DocumentPrivate::isLineModified(int line) const
