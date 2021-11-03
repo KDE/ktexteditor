@@ -4085,7 +4085,11 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
 
 void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
-    Q_UNUSED(document);
+    if (m_viInputModeManager->view()->viewInputMode() != KTextEditor::View::ViInputMode) {
+        return;
+    }
+
+    Q_UNUSED(document)
     const bool isInsertReplaceMode =
         (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
     const bool continuesInsertion = range.start().line() == m_currentChangeEndMarker.line() && range.start().column() == m_currentChangeEndMarker.column();
@@ -4120,6 +4124,10 @@ void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Ra
 
 void NormalViMode::textRemoved(KTextEditor::Document *document, KTextEditor::Range range)
 {
+    if (m_viInputModeManager->view()->viewInputMode() != KTextEditor::View::ViInputMode) {
+        return;
+    }
+
     Q_UNUSED(document);
     const bool isInsertReplaceMode =
         (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
