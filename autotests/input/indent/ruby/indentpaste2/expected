@@ -1,0 +1,6 @@
+def hello
+  puts "Hello!"
+  a = ["a",
+       "b",
+       "c"]
+end
