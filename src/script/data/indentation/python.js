@@ -148,7 +148,7 @@ function indent(line, indentWidth, character) {
     if (!document.line(line - 1).length)  // empty line
         return -2;
 
-    if (triggerCharacters.indexOf(character) > -1) {
+    if (triggerCharacters.indexOf(character) > -1 && character.length) {
         var virtcol = document.firstVirtualColumn(line);
         var lline = getCode(line, virtcol);
         if (character != " ")
