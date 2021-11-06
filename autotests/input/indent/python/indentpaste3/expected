@@ -1,0 +1,11 @@
+def function():
+    print("a")
+    if True:
+        print("def internal")
+        def internal():
+            a = '''multi
+line
+    string
+    '''
+            if True:
+                return True

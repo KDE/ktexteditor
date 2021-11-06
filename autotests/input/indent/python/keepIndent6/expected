@@ -1,0 +1,6 @@
+def some_function(param, param2):
+    '''
+    docstring
+    dedent
+'''
+    a = 5

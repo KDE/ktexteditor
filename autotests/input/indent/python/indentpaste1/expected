@@ -1,0 +1,4 @@
+def function():
+    print("a")
+    if True:
+        print('b')

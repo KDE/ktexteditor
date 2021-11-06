@@ -1,0 +1,13 @@
+def function():
+    print("a")
+    if True:
+        print("def internal")
+        def internal():
+            '''test
+            docstring
+            
+            example
+                foo
+        '''
+            if True:
+                return True

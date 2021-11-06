@@ -18,6 +18,14 @@ immediate_unindenters = new Set(["else", "elif", "finally", "except"])
 
 triggerCharacters = ": ";
 
+var debugMode = false;
+
+function dbg() {
+    if (debugMode) {
+        debug.apply(this, arguments);
+    }
+}
+
 // Return the given line without comments and leading or trailing whitespace.
 // Eg.
 // getCode(x) -> "for i in range(3):"
@@ -135,6 +143,80 @@ function findLastIndent(lineNr) {
     return document.firstVirtualColumn(lineNr);
 }
 
+function getDocStringStart(line) {
+    var currentLine = line;
+    var currentString;
+
+    if (!document.isComment(line, document.firstVirtualColumn(line)) || document.line(currentLine).charAt(document.firstVirtualColumn(line)) === '#') {
+        return -1;
+    }
+
+    while (currentLine >= 0) {
+        currentString = document.line(currentLine - 1);
+        if (currentString.charAt(document.firstVirtualColumn(currentLine - 1)) !== '#') {
+            if (currentString.includes("'''") || currentString.includes('"""')) {
+                break;
+            }
+        }
+        --currentLine;
+    }
+    return currentLine - 1;
+}
+
+function getPrevDocStringEnd(line) {
+    var currentLine = line;
+    var currentString;
+
+    while (currentLine >= 0) {
+        currentString = document.line(currentLine - 1);
+        if (currentString.includes("'''") || currentString.includes('"""')) {
+            break;
+        } else if (getCode(currentLine - 1, 0).length) {
+            return -1;
+        }
+        --currentLine;
+    }
+    return currentLine - 1;
+}
+
+function getMultiLineStringStart(line) {
+    var currentLine = line;
+    var currentString;
+
+    if (!document.isString(line, document.firstVirtualColumn(line))) {
+        return -1;
+    }
+
+    while (currentLine >= 0) {
+        currentString = document.line(currentLine - 1);
+        if (!document.isComment(currentLine - 1, document.firstVirtualColumn(currentLine - 1))) {
+            if (currentString.includes("'''") || currentString.includes('"""')) {
+                break;
+            }
+        }
+        --currentLine;
+    }
+    return currentLine - 1;
+}
+
+function getPrevMultiLineStringEnd(line) {
+    var currentLine = line;
+    var currentString;
+
+    while (currentLine >= 0) {
+        currentString = document.line(currentLine - 1);
+        currentCode = getCode(document.line(currentLine - 1), 0);
+        if (!document.isComment(currentLine - 1, document.firstVirtualColumn(currentLine - 1))) {
+            if (currentString.includes("'''") || currentString.includes('"""')) {
+                break;
+            } else if (getCode(currentLine - 1, 0).length) {
+                return -1;
+            }
+        }
+        --currentLine;
+    }
+    return currentLine - 1;
+}
 
 // Return the amount of characters (in spaces) to be indented.
 // Special indent() return values:
@@ -173,6 +255,37 @@ function indent(line, indentWidth, character) {
             indent += indentWidth;
         else
             indent = virtcol + indentWidth;
+    }
+    docStringStart = getDocStringStart(line);
+    if (docStringStart > -1) {
+        if (docStringStart === line) {
+            return -1;
+        }
+        dbg("line = {" + document.line(line) + "} docStringStart = {" + document.line(docStringStart) + "}" + " dsno = " + docStringStart);
+        return document.firstVirtualColumn(line) + document.firstVirtualColumn(docStringStart) - indentWidth;
+    }
+    multiLineStringStart = getMultiLineStringStart(line);
+    dbg("docStringStart = " + docStringStart);
+    dbg("multiLineStringStart = " + multiLineStringStart);
+    if (multiLineStringStart > -1) {
+        if (multiLineStringStart === line) {
+            return -1;
+        }
+        return -2;
+    }
+    if (indent === -1) {
+        prevMultiLineStringEnd = getPrevMultiLineStringEnd(line);
+        if (prevMultiLineStringEnd > -1) {
+            prevMultiLineStringStart = getMultiLineStringStart(prevMultiLineStringEnd);
+            return document.firstVirtualColumn(prevMultiLineStringStart);
+        }
+    }
+    if (indent === -1) {
+        prevDocStringEnd = getPrevDocStringEnd(line);
+        if (prevDocStringEnd > -1) {
+            prevDocStringStart = getDocStringStart(prevDocStringEnd);
+            return document.firstVirtualColumn(prevDocStringStart);
+        }
     }
     // continue, pass, raise, return etc. should unindent
     if (shouldUnindent(line) && (indent == -1)) {
