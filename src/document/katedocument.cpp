@@ -1280,9 +1280,9 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
         return false;
     }
 
-    Kate::TextLine l = kateTextLine(line);
+    int length = lineLength(line);
 
-    if (!l) {
+    if (length < 0) {
         return false;
     }
 
@@ -1295,9 +1295,9 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
 
     QString s2 = s;
     int col2 = col;
-    if (col2 > l->length()) {
-        s2 = QString(col2 - l->length(), QLatin1Char(' ')) + s;
-        col2 = l->length();
+    if (col2 > length) {
+        s2 = QString(col2 - length, QLatin1Char(' ')) + s;
+        col2 = length;
     }
 
     m_undoManager->slotTextInserted(line, col2, s2);
@@ -1328,7 +1328,7 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
         return false;
     }
 
-    Kate::TextLine l = kateTextLine(line);
+    Kate::TextLine l = plainKateTextLine(line);
 
     if (!l) {
         return false;
@@ -1409,20 +1409,19 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         return false;
     }
 
-    Kate::TextLine l = kateTextLine(line);
+    int length = lineLength(line);
 
-    if (!l) {
+    if (length < 0) {
         return false;
     }
 
     editStart();
 
-    Kate::TextLine nextLine = kateTextLine(line + 1);
+    const bool nextLineValid = lineLength(line + 1) >= 0;
 
-    const int length = l->length();
-    m_undoManager->slotLineWrapped(line, col, length - col, (!nextLine || newLine));
+    m_undoManager->slotLineWrapped(line, col, length - col, (!nextLineValid || newLine));
 
-    if (!nextLine || newLine) {
+    if (!nextLineValid || newLine) {
         m_buffer->wrapLine(KTextEditor::Cursor(line, col));
 
         QVarLengthArray<KTextEditor::Mark *, 8> list;
@@ -1484,16 +1483,15 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         return false;
     }
 
-    Kate::TextLine l = kateTextLine(line);
-    Kate::TextLine nextLine = kateTextLine(line + 1);
+    int col = lineLength(line);
+    bool lineValid = col >= 0;
+    bool nextLineValid = lineLength(line + 1) >= 0;
 
-    if (!l || !nextLine) {
+    if (!lineValid || !nextLineValid) {
         return false;
     }
 
     editStart();
-
-    int col = l->length();
 
     m_undoManager->slotLineUnWrapped(line, col, length, removeLine);
 
@@ -1599,8 +1597,8 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     KTextEditor::Range rangeInserted(line, 0, line, tl->length());
 
     if (line) {
-        Kate::TextLine prevLine = plainKateTextLine(line - 1);
-        rangeInserted.setStart(KTextEditor::Cursor(line - 1, prevLine->length()));
+        int prevLineLength = lineLength(line - 1);
+        rangeInserted.setStart(KTextEditor::Cursor(line - 1, prevLineLength));
     } else {
         rangeInserted.setEnd(KTextEditor::Cursor(line + 1, 0));
     }
@@ -1634,7 +1632,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     }
 
     if (lines() == 1) {
-        return editRemoveText(0, 0, kateTextLine(0)->length());
+        return editRemoveText(0, 0, lineLength(0));
     }
 
     editStart();
@@ -1693,8 +1691,8 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     if (to == lastLine() + to - from + 1) {
         rangeRemoved.setEnd(KTextEditor::Cursor(to, oldText.last().length()));
         if (from > 0) {
-            Kate::TextLine prevLine = plainKateTextLine(from - 1);
-            rangeRemoved.setStart(KTextEditor::Cursor(from - 1, prevLine->length()));
+            int prevLineLength = lineLength(from - 1);
+            rangeRemoved.setStart(KTextEditor::Cursor(from - 1, prevLineLength));
         }
     }
 
@@ -3236,10 +3234,10 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
 
     int ln = c.line();
 
-    Kate::TextLine textLine = plainKateTextLine(ln);
+    int len = lineLength(ln);
 
-    if (c.column() > textLine->length()) {
-        c.setColumn(textLine->length());
+    if (c.column() > len) {
+        c.setColumn(len);
     }
 
     // first: wrap line
@@ -3441,9 +3439,9 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
 
     bool skipIndentOnPaste = false;
     if (isSingleLine) {
-        auto l = plainKateTextLine(pos.line());
+        const int length = lineLength(pos.line());
         // if its a single line and the line already contains some text, skip indenting
-        skipIndentOnPaste = l && !l->text().isEmpty();
+        skipIndentOnPaste = length > 0;
     }
 
     if (!view->config()->persistentSelection() && view->selection()) {

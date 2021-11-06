@@ -1579,7 +1579,7 @@ bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Curs
         return false;
     }
 
-    QString line_str = doc()->line(position.line());
+    QString line_str = l->text();
 
     int x = 0;
     int z = 0;
@@ -2129,7 +2129,7 @@ void KTextEditor::ViewPrivate::ensureCursorColumnValid()
     // - in block selection mode or if wrap cursor is off, the column is arbitrary
     // - otherwise: it's bounded by the line length
     if (!blockSelection() && wrapCursor() && (!c.isValid() || c.column() > doc()->lineLength(c.line()))) {
-        c.setColumn(doc()->kateTextLine(cursorPosition().line())->length());
+        c.setColumn(doc()->lineLength(cursorPosition().line()));
         setCursorPosition(c);
     }
 }
