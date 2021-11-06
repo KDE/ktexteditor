@@ -33,7 +33,7 @@ var cfgAccessModifiers = 0;       // indent level of access modifiers, relative 
 // specifies the characters which should trigger indent, beside the default '\n'
 triggerCharacters = "{})/:;#";
 
-var debugMode = true;
+var debugMode = false;
 
 function dbg() {
     if (debugMode) {
