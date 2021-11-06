@@ -267,6 +267,7 @@ void KateAutoIndent::reloadScript()
 
 void KateAutoIndent::scriptIndent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedChar)
 {
+    qDebug() << m_mode;
     // start edit
     doc->pushEditState();
     doc->editStart();

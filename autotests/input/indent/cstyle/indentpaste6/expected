@@ -1,0 +1,14 @@
+int main(int argc, char const *argv[])
+{
+  const char * multilineindented = R"sometext(
+             Here's some multiline text
+      whose indentation
+             must be preserved perfectly
+        like this
+)sometext";
+  
+  if (true) {
+    puts();
+  }
+  return 0;
+}

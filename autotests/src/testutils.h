@@ -106,6 +106,7 @@ public:
     Q_INVOKABLE void shiftToMatchingBracket(int cnt = 1);
 
     Q_INVOKABLE void type(const QString &str);
+    Q_INVOKABLE void paste(const QString &str);
 
     /**
      * Toggle auto brackets. If you make use of it, make sure to

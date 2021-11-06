@@ -33,7 +33,7 @@ var cfgAccessModifiers = 0;       // indent level of access modifiers, relative 
 // specifies the characters which should trigger indent, beside the default '\n'
 triggerCharacters = "{})/:;#";
 
-var debugMode = false;
+var debugMode = true;
 
 function dbg() {
     if (debugMode) {
@@ -41,6 +41,7 @@ function dbg() {
     }
 }
 
+const multiLineStringLiteralStartRegex = /R"(.+)?\(/
 
 //BEGIN global variables and functions
 // maximum number of lines we look backwards/forward to find out the indentation
@@ -200,48 +201,46 @@ function lastNonSpace(text)
     return -1;
 }
 
-// /**
-//  * Check, whether the beginning of line is inside a "..." string context.
-//  * Note: the function does not check for comments
-//  * return: leading whitespaces as string, or null if not in a string
-//  */
-// function inString(line)
-// {
-//     var currentLine = line;
-//     var currentString;
-//
-//     // go line up as long as the previous line ends with an escape character '\'
-//     while (currentLine >= 0) {
-//         currentString = document.line(currentLine - 1);
-//         if (currentString.charAt(document.lastColumn(currentLine - 1)) != '\\')
-//             break;
-//         --currentLine;
-//     }
-//
-//     // iterate through all lines and toggle bool insideString for every quote
-//     var insideString = false;
-//     var indentation = null;
-//     while (currentLine < line) {
-//         currentString = document.line(currentLine);
-//         var char1;
-//         var i;
-//         var lineLength = document.lineLength(currentLine);
-//         for (i = 0; i < lineLength; ++i) {
-//             char1 = currentString.charAt(i);
-//             if (char1 == "\\") {
-//                 // skip escaped character
-//                 ++i;
-//             } else if (char1 == "\"") {
-//                 insideString = !insideString;
-//                 if (insideString)
-//                     indentation = currentString.substring(0, document.firstColumn(currentLine) + 1);
-//             }
-//         }
-//         ++currentLine;
-//     }
-//
-//     return insideString ? indentation : null;
-// }
+/**
+ * Don't indent when in a multiline string literal of form "something\
+nextline"
+ * Note: the function does not check for comments
+ */
+function tryString(line)
+{
+    var currentLine = line;
+    var currentString;
+
+    // go line up as long as the previous line ends with an escape character '\'
+    while (currentLine >= 0) {
+        currentString = document.line(currentLine - 1);
+        if (currentString.charAt(document.lastColumn(currentLine - 1)) != '\\')
+            break;
+        --currentLine;
+    }
+
+    // iterate through all lines and toggle bool insideString for every quote
+    var insideString = false;
+    var indentation = -1;
+    while (currentLine < line) {
+        currentString = document.line(currentLine);
+        var char1;
+        var i;
+        var lineLength = document.lineLength(currentLine);
+        for (i = 0; i < lineLength; ++i) {
+            char1 = currentString.charAt(i);
+            if (char1 == "\\") {
+                // skip escaped character
+                ++i;
+            } else if (char1 == "\"") {
+                insideString = !insideString;
+            }
+        }
+        ++currentLine;
+    }
+
+    return insideString ? 0 : -1;
+}
 
 /**
  * C comment checking. If the previous line begins with a "/*" or a "* ", then
@@ -748,6 +747,57 @@ function tryMatchedAnchor(line, alignOnly)
     return indentation + gIndentWidth;
 }
 
+function escapeForRegex(string) {
+    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
+/**
+ * Don't indent on multiline string literals of form R"[optional delimiter text]()[optional delimiter text]"
+ */
+function tryMultiLineStringLiteral(line) {
+    var currentLine = line;
+    var currentString;
+    var delim = "";
+    var found = false;
+
+    // go line up as long as the previous line ends with an escape character '\'
+    // go line up until we find something of form R"[delim](
+    while (currentLine >= 0) {
+        currentString = document.line(currentLine - 1);
+        var startMatch = currentString.match(multiLineStringLiteralStartRegex);
+        if (startMatch !== null) {
+            found = true;
+            delim = startMatch[1];
+            break;
+        }
+        --currentLine;
+    }
+
+    if (!found) {
+        return -1;
+    }
+
+    // iterate through all lines and toggle bool insideString for every quote
+    var insideString = true;
+    var endReached = false;
+    var indentation = null;
+    const multiLineStringLiteralEndRegex = new RegExp('\\)' + escapeForRegex(delim) + '"');
+    while (currentLine < line) {
+        currentString = document.line(currentLine);
+        dbg(currentString);
+        var endMatch = currentString.match(multiLineStringLiteralEndRegex);
+        if (endMatch !== null) {
+            dbg("End reached: " + currentString);
+            endReached = true;
+            break;
+        }
+        ++currentLine;
+    }
+    indentation = document.firstVirtualColumn(line);
+    dbg(endReached ? -1 : indentation);
+    return endReached ? -1 : indentation;
+}
+
 /**
  * Indent line.
  * Return filler or null.
@@ -765,6 +815,10 @@ function indentLine(line, alignOnly)
         filler = tryCComment(line);
     if (filler == -1 && !alignOnly)
         filler = tryCppComment(line);
+    if (filler == -1)
+        filler = tryMultiLineStringLiteral(line);
+    if (filler == -1)
+        filler = tryString(line);
     if (filler == -1)
         filler = trySwitchStatement(line);
     if (filler == -1)
