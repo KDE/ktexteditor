@@ -969,7 +969,8 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     if (!isPrinterFriendly() && m_view) {
         const auto inlineNotes = m_view->inlineNotes(lineLayout->line());
-        for (const KTextEditor::InlineNote &inlineNote : inlineNotes) {
+        for (const KateInlineNoteData &noteData : inlineNotes) {
+            const KTextEditor::InlineNote inlineNote(noteData);
             const int column = inlineNote.position().column();
             int width = inlineNote.width();
 
