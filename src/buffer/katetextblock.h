@@ -81,7 +81,7 @@ public:
      */
     int lineLength(int line) const
     {
-        Q_ASSERT(line >= startLine() && line < lines());
+        Q_ASSERT(line >= startLine() && (line - startLine()) < lines());
         return m_lines[line - startLine()]->length();
     }
 
