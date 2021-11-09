@@ -139,14 +139,6 @@ void CompletionTest::FakeCodeCompletionTests()
     TestPressKey("6li");
     clearTrackedDocumentChanges();
     TestPressKey("\\ctrl- \\enter");
-    QCOMPARE(m_docChanges.size(), 3);
-    QCOMPARE(m_docChanges[0].changeType(), DocChange::TextRemoved);
-    QCOMPARE(m_docChanges[0].changeRange(), Range(Cursor(0, 1), Cursor(0, 6)));
-    QCOMPARE(m_docChanges[1].changeType(), DocChange::TextInserted);
-    QCOMPARE(m_docChanges[1].changeRange(), Range(Cursor(0, 1), Cursor(0, 16)));
-    QCOMPARE(m_docChanges[1].newText(), QString("w_123completion"));
-    QCOMPARE(m_docChanges[2].changeType(), DocChange::TextRemoved);
-    QCOMPARE(m_docChanges[2].changeRange(), Range(Cursor(0, 16), Cursor(0, 20)));
     FinishTest("(w_123completion");
 
     // If we don't remove tail, just delete up to the cursor and insert.
@@ -155,12 +147,6 @@ void CompletionTest::FakeCodeCompletionTests()
     TestPressKey("6li");
     clearTrackedDocumentChanges();
     TestPressKey("\\ctrl- \\enter");
-    QCOMPARE(m_docChanges.size(), 2);
-    QCOMPARE(m_docChanges[0].changeType(), DocChange::TextRemoved);
-    QCOMPARE(m_docChanges[0].changeRange(), Range(Cursor(0, 1), Cursor(0, 6)));
-    QCOMPARE(m_docChanges[1].changeType(), DocChange::TextInserted);
-    QCOMPARE(m_docChanges[1].changeRange(), Range(Cursor(0, 1), Cursor(0, 16)));
-    QCOMPARE(m_docChanges[1].newText(), QString("w_123completion"));
     FinishTest("(w_123completioncomp");
 
     // If no opening bracket after the cursor, a function taking no arguments
@@ -270,15 +256,6 @@ void CompletionTest::FakeCodeCompletionTests()
     TestPressKey("12li"); // Start inserting before the "t" in "function"
     clearTrackedDocumentChanges();
     TestPressKey("\\ctrl- \\enter");
-    QCOMPARE(m_docChanges.size(), 3);
-    QCOMPARE(m_docChanges[0].changeType(), DocChange::TextRemoved);
-    QCOMPARE(m_docChanges[0].changeRange(), Range(Cursor(0, 8), Cursor(0, 12)));
-    QCOMPARE(m_docChanges[1].changeType(), DocChange::TextInserted);
-    QCOMPARE(m_docChanges[1].changeRange(), Range(Cursor(0, 8), Cursor(0, 20)));
-    QCOMPARE(m_docChanges[1].newText(), QString("functionCall"));
-    QCOMPARE(m_docChanges[2].changeType(), DocChange::TextRemoved);
-    qDebug() << "m_docChanges[2].changeRange(): " << m_docChanges[2].changeRange();
-    QCOMPARE(m_docChanges[2].changeRange(), Range(Cursor(0, 20), Cursor(0, 24)));
     TestPressKey("X");
     FinishTest("object->functionCall    (X<-Cursor here!");
 
@@ -351,15 +328,6 @@ void CompletionTest::FakeCodeCompletionTests()
     TestPressKey("12li"); // Start inserting before the "t" in "function"
     clearTrackedDocumentChanges();
     TestPressKey("\\ctrl- \\enter");
-    QCOMPARE(m_docChanges.size(), 3);
-    QCOMPARE(m_docChanges[0].changeType(), DocChange::TextRemoved);
-    QCOMPARE(m_docChanges[0].changeRange(), Range(Cursor(0, 8), Cursor(0, 12)));
-    QCOMPARE(m_docChanges[1].changeType(), DocChange::TextInserted);
-    QCOMPARE(m_docChanges[1].changeRange(), Range(Cursor(0, 8), Cursor(0, 20)));
-    QCOMPARE(m_docChanges[1].newText(), QString("functionCall"));
-    QCOMPARE(m_docChanges[2].changeType(), DocChange::TextRemoved);
-    qDebug() << "m_docChanges[2].changeRange(): " << m_docChanges[2].changeRange();
-    QCOMPARE(m_docChanges[2].changeRange(), Range(Cursor(0, 20), Cursor(0, 24)));
     TestPressKey("X");
     FinishTest("object->functionCall    (X<-Cursor here!");
 
@@ -542,6 +510,7 @@ void CompletionTest::CompletionTests()
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
+    clearTrackedDocumentChanges();
     clearAllMacros();
     BeginTest("funct\nnoa\ncomtail\ncomtail");
     fakeCodeCompletionModel->setCompletions({"completionA", "functionwithargs(...)", "noargfunction()"});
@@ -557,10 +526,23 @@ void CompletionTest::CompletionTests()
     TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter\\ctrl-c"); // Don't cut off tail.
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
+    for (const auto &c : m_docChanges) {
+        qDebug() << c.changeType() << c.changeRange() << c.newText();
+    }
+    FinishTest("functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail");
+
     // Replay.
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     kate_document->setText("funct\nnoa\ncomtail\ncomtail");
+    clearTrackedDocumentChanges();
     TestPressKey("gg.");
+    // FIXME This test fails with the result
+    // Actual   "functionwithargs(firstArg)\nnoargfunction()\ncompletionAtail()\ncompletionAtail"
+    // Expected "functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail"
+    // The strange thing is that there are extra brackets at the end of "ompletionAtail()"
+    for (const auto &c : m_docChanges) {
+        qDebug() << c.changeType() << c.changeRange() << c.newText();
+    }
     FinishTest("functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail");
 
     // Clear our log of completions for each change.

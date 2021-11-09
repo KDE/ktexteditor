@@ -955,11 +955,11 @@ bool KateCompletionWidget::execute()
     // and re-add the tail before we end the first grouped "edit". Then immediately after that we add a second edit that
     // removes the tail again.
     if (!tailStr.isEmpty()) {
-        KTextEditor::Cursor currentPos = view()->cursorPosition();
+        std::unique_ptr<KTextEditor::MovingCursor> cursorPos(view()->doc()->newMovingCursor(view()->cursorPosition()));
         KTextEditor::Cursor afterPos = afterTailMCursor->toCursor();
         // Re add the tail for a possible undo to bring the tail back
         view()->document()->insertText(afterPos, tailStr);
-        view()->setCursorPosition(currentPos);
+        view()->setCursorPosition(cursorPos->toCursor());
         view()->doc()->editEnd();
 
         // Now remove the tail in a separate edit
@@ -967,6 +967,7 @@ bool KateCompletionWidget::execute()
         endPos.setColumn(afterPos.column() + tailStr.size());
         view()->doc()->editStart();
         view()->document()->removeText(KTextEditor::Range(afterPos, endPos));
+        view()->setCursorPosition(cursorPos->toCursor());
     }
 
     view()->doc()->editEnd();
