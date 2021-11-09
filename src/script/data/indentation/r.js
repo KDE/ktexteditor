@@ -25,6 +25,14 @@ operators = ['+', '-', '*', '/', '^',
              '%>%', '%T>%', '%$%', '%<>%'];
 equalOperatorSigns = ['=', '>', '<', '!'];
 
+var debugMode = true;
+
+function dbg() {
+    if (debugMode) {
+        debug.apply(this, arguments);
+    }
+}
+
 // Extension of endswith for an array of tests
 function endsWithAny(suffixes, string) {
     return suffixes.some(function (suffix) {
@@ -93,7 +101,7 @@ function calcMismatchIndent(lineNr, add) {
     closings.forEach(function(elem) {
         countClosing[elem] = 0;
     });
-    if (closings.indexOf(add) > -1) {
+    if (closings.indexOf(add) > -1 && add.length) {
         countClosing[add]++;
     }
     var countComma = 0;
@@ -105,8 +113,7 @@ function calcMismatchIndent(lineNr, add) {
         for (var j = lineString.length; j >= 0; --j) {
             // Ignore comments and strings
             if (document.isComment(i, j) || document.isString(i, j))
-                continue; 
-            
+                continue;
             // Testing for brackets
             // If a closing bracket, add 1 to counter
             if (closings.indexOf(lineString[j]) > -1) {
@@ -133,6 +140,7 @@ function calcMismatchIndent(lineNr, add) {
                         allclosed = false;
                     }
                 }                // If they are all closed, return the indent of this line
+                dbg("allclosed: " + allclosed)
                 if (allclosed) {
                     // if we didn't move, return -1 (keep indent), else return the indent of line i
                     if (i == lineNr) {
@@ -141,16 +149,14 @@ function calcMismatchIndent(lineNr, add) {
                         return {indent : j, line : i, pos: lastOpen, type : "allclosed"};
                     }
                 }
-                    
             }
-            
             // Counting the commas if needed
             if (lineString[j] == ',') {
                 // If not between comma-inducing brackets
                 if (countClosing[')'] == 0 && countClosing[']'] == 0)
                     countComma++;
             }
-            
+
 //             // Handling equal signs
 //             if (lineString[j] == "=" && equalOperatorSigns.indexOf(lineString[j - 1]) == -1 && lineString[j + 1] != "=") {
 //                // If not between equal-inducing brackets
@@ -328,11 +334,15 @@ function indent(line, indentWidth, ch) {
         return -2;
     var lastLine = getCodeWithString(line - 1);
     var lastChar = lastLine.substr(-1);
-    var newChar  = getCodeWithString(line).substr(0, 1);
+    var newChar  = document.line(line).substr(document.firstVirtualColumn(line), 1);
+    dbg("newChar = '" + newChar + "'");
+    dbg("lastChar = '" + lastChar + "'");
+    dbg("ch = '" + ch + "'");
         
     // Align if a closing bracket was entered
     // (note that the code above might also be triggered if a bracket is closed right after an opened one)
-    if (closings.indexOf(ch) > -1) {
+    if (closings.indexOf(ch) > -1 && ch.length) {
+        dbg("closings");
         //if the entered bracket doesn't start the line, do nothing
         if (newChar != ch) {
             return document.firstVirtualColumn(line);
@@ -345,16 +355,9 @@ function indent(line, indentWidth, ch) {
             return document.firstVirtualColumn(mismatch.line);
         }
     }
-    
-    // if empty line, strictly keep indent 
-    // (-1 seems to be not strict and "restore" latest indent with text)
-    if (!lastLine.length) {
-//         debug("Empty line")
-        return countSpaces(line - 1, -1);
-    }
              
     // opening brackets and returns: indent (and unindent following bracket if needed)
-    if (openings.indexOf(lastChar) > -1) {
+    if (openings.indexOf(lastChar) > -1 && lastChar.length) {
         return alignBrackets(line, lastChar, newChar, indentWidth);
     }
        
@@ -362,10 +365,10 @@ function indent(line, indentWidth, ch) {
     var mismatch = calcMismatchIndent(line - 1, '');
     var indent = mismatch.indent;
     
-//     debug("mismatch.line = " + mismatch.line)
-//     debug("mismatch.pos = " + mismatch.pos)
-//     debug("mismatch.indent = " + mismatch.indent)
-//     debug("mismatch.type = " + mismatch.type)
+    dbg("mismatch.line = " + mismatch.line)
+    dbg("mismatch.pos = " + mismatch.pos)
+    dbg("mismatch.indent = " + mismatch.indent)
+    dbg("mismatch.type = " + mismatch.type)
       
     // if indent is based on non-opened brackets, try indent because of operators
     // Don't do it if the end is "<-" though (necessary because "-" is an operator...)
@@ -375,6 +378,7 @@ function indent(line, indentWidth, ch) {
     }
     
     if (mismatch.type == "unclosed" && endsWithAny(operators, lastLine)) {
+        dbg("unclosed");
         // look whether we should account for an align operator
         locAlign = findAlignOperator(mismatch.line, mismatch.pos);
         if (locAlign != -1) {
@@ -396,7 +400,8 @@ function indent(line, indentWidth, ch) {
     
     // If the next character is a closing bracket, 
     // let's see if we should indent back to the corresponding indent
-    if (closings.indexOf(newChar) > -1) {
+    if (closings.indexOf(newChar) > -1 && newChar.length) {
+        dbg("next char is closing bracket");
         mismatch = calcMismatchIndent(line - 1, newChar);
         // change indent only if the closing bracket matches a "final" one
         if (endsWithAny(openings, getCodeWithString(mismatch.line))) {
