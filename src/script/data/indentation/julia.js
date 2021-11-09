@@ -21,6 +21,14 @@ block_continue_lineend = ["else", "finally", "catch"];
 block_continue_linemid = ["elseif", "catch"];
 unindenter = "end";
 
+var debugMode = false;
+
+function dbg() {
+    if (debugMode) {
+        debug.apply(this, arguments);
+    }
+}
+
 triggerCharacters = "efhyd ";
 
 immediate_unindenters = new Set(block_continue.concat([unindenter]));
@@ -255,12 +263,11 @@ function indent(line, indentWidth, character) {
     if (line == 0)  // don't ever act on document's first line
         return -2;
 
-    if (triggerCharacters.includes(character)) {
-        var lline = getCode(line);
-        if (immediate_unindenters.has(lline))
-            return findMatchingBlock(lline == unindenter ? line : line - 1, lline);
-        else
-            return -2;
+    var lline = getCode(line);
+    dbg(lline);
+    if (immediate_unindenters.has(lline)) {
+        dbg("immediate unindent");
+        return findMatchingBlock(lline == unindenter ? line : line - 1, lline);
     }
 
     while (line > 0 && !document.line(line - 1).length) // ignore empty lines
@@ -329,8 +336,10 @@ function indent(line, indentWidth, character) {
         }
     }
     if (shouldUnindent(line, false) && (indent == -1)) {
+        dbg("shouldUnindent");
         indent = Math.max(0, virtcol - indentWidth);
     }
+    dbg(indent);
     return indent;
 }
 
