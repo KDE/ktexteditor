@@ -954,7 +954,9 @@ bool KateCompletionWidget::execute()
     // Technically the tail is already removed by "executeCompletionItem()", so before this call we save the possible tail
     // and re-add the tail before we end the first grouped "edit". Then immediately after that we add a second edit that
     // removes the tail again.
-    if (!tailStr.isEmpty()) {
+    // NOTE: The ViInputMode makes assumptions about the edit actions in a completion and breaks if we insert extra
+    // edits here, so we just disable this feature for ViInputMode
+    if (!tailStr.isEmpty() && view()->viewInputMode() != KTextEditor::View::ViInputMode) {
         std::unique_ptr<KTextEditor::MovingCursor> cursorPos(view()->doc()->newMovingCursor(view()->cursorPosition()));
         KTextEditor::Cursor afterPos = afterTailMCursor->toCursor();
         // Re add the tail for a possible undo to bring the tail back

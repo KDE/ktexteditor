@@ -526,9 +526,6 @@ void CompletionTest::CompletionTests()
     TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter\\ctrl-c"); // Don't cut off tail.
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-    for (const auto &c : m_docChanges) {
-        qDebug() << c.changeType() << c.changeRange() << c.newText();
-    }
     FinishTest("functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail");
 
     // Replay.
@@ -536,13 +533,6 @@ void CompletionTest::CompletionTests()
     kate_document->setText("funct\nnoa\ncomtail\ncomtail");
     clearTrackedDocumentChanges();
     TestPressKey("gg.");
-    // FIXME This test fails with the result
-    // Actual   "functionwithargs(firstArg)\nnoargfunction()\ncompletionAtail()\ncompletionAtail"
-    // Expected "functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail"
-    // The strange thing is that there are extra brackets at the end of "ompletionAtail()"
-    for (const auto &c : m_docChanges) {
-        qDebug() << c.changeType() << c.changeRange() << c.newText();
-    }
     FinishTest("functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail");
 
     // Clear our log of completions for each change.
