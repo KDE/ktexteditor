@@ -4214,9 +4214,11 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
         doc()->inputMethodEnd();
     }
 
-    if (!e->commitString().isEmpty() || e->replacementLength()) {
+    if (!e->commitString().isEmpty() || e->replacementLength() || !e->preeditString().isEmpty()) {
         view()->removeSelectedText();
+    }
 
+    if (!e->commitString().isEmpty() || e->replacementLength()) {
         KTextEditor::Range preeditRange = *m_imPreeditRange;
 
         KTextEditor::Cursor start(m_imPreeditRange->start().line(), m_imPreeditRange->start().column() + e->replacementStart());
