@@ -67,18 +67,13 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QMimeDatabase>
+#include <QProcess>
 #include <QRegularExpression>
 #include <QTemporaryFile>
 #include <QTextCodec>
 #include <QTextStream>
 
 #include <cmath>
-
-#if LIBGIT2_FOUND
-#include <git2.h>
-#include <git2/oid.h>
-#include <git2/repository.h>
-#endif
 
 // END  includes
 
@@ -5031,35 +5026,26 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
             m_prevModOnHdReason = OnDiskUnmodified;
         }
 
-#if LIBGIT2_FOUND
         // if still modified, try to take a look at git
         // skip that, if document is modified!
         // only do that, if the file is still there, else reload makes no sense!
         if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())) {
-            // try to discover the git repo of this file
-            // libgit2 docs state that UTF-8 is the right encoding, even on windows
-            // I hope that is correct!
-            git_repository *repository = nullptr;
-            const QByteArray utf8Path = url().toLocalFile().toUtf8();
-            if (git_repository_open_ext(&repository, utf8Path.constData(), 0, nullptr) == 0) {
-                // if we have repo, convert the git hash to an OID
-                git_oid oid;
-                if (git_oid_fromstr(&oid, oldDigest.toHex().data()) == 0) {
-                    // finally: is there a blob for this git hash?
-                    git_blob *blob = nullptr;
-                    if (git_blob_lookup(&blob, repository, &oid) == 0) {
+            QProcess git;
+            const QStringList args{QStringLiteral("cat-file"), QStringLiteral("-e"), QString::fromUtf8(oldDigest)};
+            git.start(QStringLiteral("git"), args);
+            if (git.waitForStarted()) {
+                git.closeWriteChannel();
+                if (git.waitForFinished()) {
+                    if (git.exitCode() == 0) {
                         // this hash exists still in git => just reload
                         m_modOnHd = false;
                         m_modOnHdReason = OnDiskUnmodified;
                         m_prevModOnHdReason = OnDiskUnmodified;
                         documentReload();
                     }
-                    git_blob_free(blob);
                 }
             }
-            git_repository_free(repository);
         }
-#endif
     }
 
     // emit our signal to the outside!

@@ -44,10 +44,6 @@
 #include <QStringListModel>
 #include <QTimer>
 
-#if LIBGIT2_FOUND
-#include <git2.h>
-#endif
-
 // BEGIN unit test mode
 static bool kateUnitTestMode = false;
 
@@ -80,11 +76,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 {
     // remember this
     staticInstance = this;
-
-    // init libgit2, we require at least 0.22 which has this function!
-#if LIBGIT2_FOUND
-    git_libgit2_init();
-#endif
 
     // register some datatypes
     qRegisterMetaType<KTextEditor::Cursor>("KTextEditor::Cursor");
@@ -247,11 +238,6 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     // delete the commands before we delete the cmd manager
     qDeleteAll(m_cmds);
     delete m_cmdManager;
-
-    // shutdown libgit2, we require at least 0.22 which has this function!
-#if LIBGIT2_FOUND
-    git_libgit2_shutdown();
-#endif
 }
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
