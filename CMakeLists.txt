@@ -32,6 +32,8 @@ include(ECMQtDeclareLoggingCategory)
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
+option(ENABLE_PCH "Enable Precompiled Headers support" OFF)
+
 ecm_setup_version(
   PROJECT
   VARIABLE_PREFIX KTEXTEDITOR

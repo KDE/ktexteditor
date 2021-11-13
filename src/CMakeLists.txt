@@ -327,6 +327,11 @@ set_target_properties(KF5TextEditor
    EXPORT_NAME "TextEditor"
 )
 
+# precompiled headers support
+if(ENABLE_PCH)
+    target_precompile_headers(KF5TextEditor PRIVATE pch.h)
+endif()
+
 install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
