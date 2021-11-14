@@ -423,7 +423,7 @@ private:
     void paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, const QChar &chr);
 
     /** Paint a SciTE-like indent marker. */
-    void paintIndentMarker(QPainter &paint, uint x);
+    void paintIndentMarker(QPainter &paint, uint x, int line);
 
     void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute) const;
 
@@ -439,6 +439,13 @@ private:
     int m_indentWidth;
     int m_fontHeight;
     float m_fontAscent;
+
+    // if we are at bracket, this will have the X for the opener
+    int m_currentOpenBracketX = -1;
+    // if we are at bracket, this will have the X for the closer
+    int m_currentCloseBracketX = -1;
+    // The bracket range, if we are at a bracket
+    KTextEditor::Range m_currentBracketRange = KTextEditor::Range::invalid();
 
     // some internal flags
     KateRenderer::caretStyles m_caretStyle;
