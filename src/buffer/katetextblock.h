@@ -116,7 +116,7 @@ public:
      * @param position line/column as cursor where to wrap
      * @param fixStartLinesStartIndex start index to fix start lines, normally this is this block
      */
-    void wrapLine(const KTextEditor::Cursor &position, int fixStartLinesStartIndex);
+    void wrapLine(const KTextEditor::Cursor position, int fixStartLinesStartIndex);
 
     /**
      * Unwrap given line.
@@ -131,7 +131,7 @@ public:
      * @param position position where to insert text
      * @param text text to insert
      */
-    void insertText(const KTextEditor::Cursor &position, const QString &text);
+    void insertText(const KTextEditor::Cursor position, const QString &text);
 
     /**
      * Remove text at given range.

@@ -438,7 +438,7 @@ KeyMapper *InputModeManager::keyMapper()
     return m_keyMapperStack.top().data();
 }
 
-void InputModeManager::updateCursor(const KTextEditor::Cursor &c)
+void InputModeManager::updateCursor(const KTextEditor::Cursor c)
 {
     m_inputAdapter->updateCursor(c);
 }

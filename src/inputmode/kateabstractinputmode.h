@@ -75,7 +75,7 @@ public:
 
     /* functions that are currently view private, but vi-mode needs to access them */
 public:
-    void updateCursor(const KTextEditor::Cursor &newCursor);
+    void updateCursor(const KTextEditor::Cursor newCursor);
     KateLayoutCache *layoutCache() const;
     int linesDisplayed() const;
     void scrollViewLines(int offset);

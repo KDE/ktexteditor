@@ -259,7 +259,7 @@ void KateBuffer::ensureHighlighted(int line, int lookAhead)
     doHighlight(m_lineHighlighted, end, false);
 }
 
-void KateBuffer::wrapLine(const KTextEditor::Cursor &position)
+void KateBuffer::wrapLine(const KTextEditor::Cursor position)
 {
     // call original
     Kate::TextBuffer::wrapLine(position);

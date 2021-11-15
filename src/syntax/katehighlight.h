@@ -208,7 +208,7 @@ public:
      * @param cursor cursor position in the given document
      * @return attribute valid at that location, default is 0
      */
-    int attributeForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
+    int attributeForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor cursor);
 
     /**
      * Get all keywords valid for the given cursor position.
@@ -216,7 +216,7 @@ public:
      * @param cursor cursor position in the given document
      * @return all keywords valid at that location
      */
-    QStringList keywordsForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
+    QStringList keywordsForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor cursor);
 
     /**
      * Is spellchecking required for the tiven cursor position?
@@ -224,7 +224,7 @@ public:
      * @param cursor cursor position in the given document
      * @return spell checking required?
      */
-    bool spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
+    bool spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor cursor);
 
     /**
      * Get highlighting mode for the given cursor position.
@@ -232,7 +232,7 @@ public:
      * @param cursor cursor position in the given document
      * @return mode valid at that location
      */
-    QString higlightingModeForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
+    QString higlightingModeForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor cursor);
 
     KTextEditor::DefaultStyle defaultStyleForAttribute(int attr) const;
 

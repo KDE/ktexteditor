@@ -54,7 +54,7 @@ void ActiveMode::startCompletion(const CompletionStartParams &completionStartPar
     m_emulatedCommandBar->m_completer->startCompletion(completionStartParams);
 }
 
-void ActiveMode::moveCursorTo(const KTextEditor::Cursor &cursorPos)
+void ActiveMode::moveCursorTo(const KTextEditor::Cursor cursorPos)
 {
     m_view->setCursorPosition(cursorPos);
     if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode || m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {

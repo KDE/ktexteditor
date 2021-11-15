@@ -12,7 +12,7 @@
 
 #include "ktexteditor/cursor.h"
 
-inline QJSValue cursorToScriptValue(QJSEngine *engine, const KTextEditor::Cursor &cursor)
+inline QJSValue cursorToScriptValue(QJSEngine *engine, const KTextEditor::Cursor cursor)
 {
     QString code = QStringLiteral("new Cursor(%1, %2);").arg(cursor.line()).arg(cursor.column());
     QJSValue result = engine->evaluate(code);

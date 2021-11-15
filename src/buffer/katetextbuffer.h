@@ -339,7 +339,7 @@ public:
      * @param position line/column as cursor where to wrap
      * Virtual, can be overwritten.
      */
-    virtual void wrapLine(const KTextEditor::Cursor &position);
+    virtual void wrapLine(const KTextEditor::Cursor position);
 
     /**
      * Unwrap given line.
@@ -354,7 +354,7 @@ public:
      * @param text text to insert
      * Virtual, can be overwritten.
      */
-    virtual void insertText(const KTextEditor::Cursor &position, const QString &text);
+    virtual void insertText(const KTextEditor::Cursor position, const QString &text);
 
     /**
      * Remove text at given range. Does nothing if range is empty, beside some consistency checks.
@@ -406,7 +406,7 @@ Q_SIGNALS:
      * A line got wrapped.
      * @param position position where the wrap occurred
      */
-    void lineWrapped(const KTextEditor::Cursor &position);
+    void lineWrapped(const KTextEditor::Cursor position);
 
     /**
      * A line got unwrapped.
@@ -419,7 +419,7 @@ Q_SIGNALS:
      * @param position position where the insertion occurred
      * @param text inserted text
      */
-    void textInserted(const KTextEditor::Cursor &position, const QString &text);
+    void textInserted(const KTextEditor::Cursor position, const QString &text);
 
     /**
      * Text got removed.

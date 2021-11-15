@@ -181,7 +181,7 @@ public:
 
     QPoint cursorPositionCoordinates() const override;
 
-    bool setCursorPositionVisual(const KTextEditor::Cursor &position);
+    bool setCursorPositionVisual(const KTextEditor::Cursor position);
 
     /**
      * Return the virtual cursor column, each tab is expanded into the
@@ -194,11 +194,11 @@ public:
     bool setMouseTrackingEnabled(bool enable) override;
 
 private:
-    void notifyMousePositionChanged(const KTextEditor::Cursor &newPosition);
+    void notifyMousePositionChanged(const KTextEditor::Cursor newPosition);
 
     // Internal
 public:
-    bool setCursorPositionInternal(const KTextEditor::Cursor &position, uint tabwidth = 1, bool calledExternally = false);
+    bool setCursorPositionInternal(const KTextEditor::Cursor position, uint tabwidth = 1, bool calledExternally = false);
 
     //
     // KTextEditor::ConfigInterface
@@ -265,7 +265,7 @@ public Q_SLOTS:
 public:
     KateCompletionWidget *completionWidget() const;
     mutable KateCompletionWidget *m_completionWidget;
-    void sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index);
+    void sendCompletionExecuted(const KTextEditor::Cursor position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index);
     void sendCompletionAborted();
 
     //
@@ -350,9 +350,9 @@ public:
     bool wrapCursor() const;
 
     // some internal functions to get selection state of a line/col
-    bool cursorSelected(const KTextEditor::Cursor &cursor);
+    bool cursorSelected(const KTextEditor::Cursor cursor);
     bool lineSelected(int line);
-    bool lineEndSelected(const KTextEditor::Cursor &lineEndPos);
+    bool lineEndSelected(const KTextEditor::Cursor lineEndPos);
     bool lineHasSelected(int line);
     bool lineIsSelection(int line);
 
@@ -360,20 +360,20 @@ public:
 
     void tagSelection(const KTextEditor::Range &oldSelection);
 
-    void selectWord(const KTextEditor::Cursor &cursor);
-    void selectLine(const KTextEditor::Cursor &cursor);
+    void selectWord(const KTextEditor::Cursor cursor);
+    void selectLine(const KTextEditor::Cursor cursor);
 
     // BEGIN EDIT STUFF
 public:
     void editStart();
     void editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom);
 
-    void editSetCursor(const KTextEditor::Cursor &cursor);
+    void editSetCursor(const KTextEditor::Cursor cursor);
     // END
 
     // BEGIN TAG & CLEAR
 public:
-    bool tagLine(const KTextEditor::Cursor &virtualCursor);
+    bool tagLine(const KTextEditor::Cursor virtualCursor);
 
     bool tagRange(const KTextEditor::Range &range, bool realLines = false);
     bool tagLines(KTextEditor::LineRange lineRange, bool realLines = false);
@@ -454,7 +454,7 @@ public:
     QString currentTextLine();
 
     QTextLayout *textLayout(int line) const;
-    QTextLayout *textLayout(const KTextEditor::Cursor &pos) const;
+    QTextLayout *textLayout(const KTextEditor::Cursor pos) const;
 
 public Q_SLOTS:
     void indent();
@@ -721,7 +721,7 @@ public:
     }
 
 public:
-    void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
+    void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor position, const QString &text);
 
     void exportHtmlToFile(const QString &file);
 
@@ -835,7 +835,7 @@ private:
 
     // templates
 public:
-    bool insertTemplateInternal(const KTextEditor::Cursor &insertPosition, const QString &templateString, const QString &script = QString());
+    bool insertTemplateInternal(const KTextEditor::Cursor insertPosition, const QString &templateString, const QString &script = QString());
 
     /**
      * Accessors to the bars...
@@ -1098,7 +1098,7 @@ private:
     bool m_autoFoldedFirstLine;
 
 public:
-    void setScrollPositionInternal(KTextEditor::Cursor &cursor);
+    void setScrollPositionInternal(KTextEditor::Cursor cursor);
 
     void setHorizontalScrollPositionInternal(int x);
 

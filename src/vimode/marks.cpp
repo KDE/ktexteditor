@@ -61,7 +61,7 @@ void Marks::writeSessionConfig(KConfigGroup &config) const
     config.writeEntry("ViMarks", l);
 }
 
-void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos)
+void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
 {
     // move on insert is type based, this allows to reuse cursors!
     // reuse is important for editing intensive things like replace-all
@@ -232,37 +232,37 @@ bool Marks::isShowable(const QChar &mark)
     return FirstUserMark <= mark && mark <= LastUserMark;
 }
 
-void Marks::setStartEditYanked(const KTextEditor::Cursor &pos)
+void Marks::setStartEditYanked(const KTextEditor::Cursor pos)
 {
     setMark(BeginEditYanked, pos);
 }
 
-void Marks::setFinishEditYanked(const KTextEditor::Cursor &pos)
+void Marks::setFinishEditYanked(const KTextEditor::Cursor pos)
 {
     setMark(EndEditYanked, pos);
 }
 
-void Marks::setLastChange(const KTextEditor::Cursor &pos)
+void Marks::setLastChange(const KTextEditor::Cursor pos)
 {
     setMark(LastChange, pos);
 }
 
-void Marks::setInsertStopped(const KTextEditor::Cursor &pos)
+void Marks::setInsertStopped(const KTextEditor::Cursor pos)
 {
     setMark(InsertStopped, pos);
 }
 
-void Marks::setSelectionStart(const KTextEditor::Cursor &pos)
+void Marks::setSelectionStart(const KTextEditor::Cursor pos)
 {
     setMark(SelectionBegin, pos);
 }
 
-void Marks::setSelectionFinish(const KTextEditor::Cursor &pos)
+void Marks::setSelectionFinish(const KTextEditor::Cursor pos)
 {
     setMark(SelectionEnd, pos);
 }
 
-void Marks::setUserMark(const QChar &mark, const KTextEditor::Cursor &pos)
+void Marks::setUserMark(const QChar &mark, const KTextEditor::Cursor pos)
 {
     Q_ASSERT(FirstUserMark <= mark && mark <= LastUserMark);
     setMark(mark, pos);

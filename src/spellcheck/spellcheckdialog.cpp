@@ -78,7 +78,7 @@ void KateSpellCheckDialog::spellcheck()
     }
 }
 
-void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to)
+void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor from, const KTextEditor::Cursor to)
 {
     KTextEditor::Cursor start = from;
     KTextEditor::Cursor end = to;

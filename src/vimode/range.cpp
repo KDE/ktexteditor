@@ -31,12 +31,12 @@ Range::Range(int elin, int ecol, MotionType inc)
 {
 }
 
-Range::Range(const KTextEditor::Cursor &c, MotionType mt)
+Range::Range(const KTextEditor::Cursor c, MotionType mt)
     : Range(-1, -1, c.line(), c.column(), mt)
 {
 }
 
-Range::Range(const KTextEditor::Cursor &c1, const KTextEditor::Cursor c2, MotionType mt)
+Range::Range(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2, MotionType mt)
     : Range(c1.line(), c1.column(), c2.line(), c2.column(), mt)
 {
 }

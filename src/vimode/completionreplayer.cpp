@@ -125,7 +125,7 @@ Completion CompletionReplayer::nextCompletion()
     return m_CompletionsToReplay.top()[m_nextCompletionIndex.top()++];
 }
 
-int CompletionReplayer::findNextMergeableBracketPos(const KTextEditor::Cursor &startPos) const
+int CompletionReplayer::findNextMergeableBracketPos(const KTextEditor::Cursor startPos) const
 {
     KTextEditor::DocumentPrivate *doc = m_viInputModeManager->view()->doc();
     const QString lineAfterCursor = doc->text(KTextEditor::Range(startPos, KTextEditor::Cursor(startPos.line(), doc->lineLength(startPos.line()))));

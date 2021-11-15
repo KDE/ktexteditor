@@ -224,7 +224,7 @@ public:
         return m_inputAdapter;
     }
 
-    void updateCursor(const KTextEditor::Cursor &c);
+    void updateCursor(const KTextEditor::Cursor c);
 
     void pushKeyMapper(QSharedPointer<KeyMapper> mapper);
     void popKeyMapper();

@@ -89,10 +89,10 @@ public:
      */
     KateLineLayoutPtr line(int realLine, int virtualLine = -1);
     /// \overload
-    KateLineLayoutPtr line(const KTextEditor::Cursor &realCursor);
+    KateLineLayoutPtr line(const KTextEditor::Cursor realCursor);
 
     /// Returns the layout describing the text line which is occupied by \p realCursor.
-    KateTextLayout textLayout(const KTextEditor::Cursor &realCursor);
+    KateTextLayout textLayout(const KTextEditor::Cursor realCursor);
 
     /// Returns the layout of the specified realLine + viewLine.
     /// if viewLine is -1, return the last.
@@ -117,28 +117,28 @@ public:
      * then valid values are only positive, negative values are invalid cursors for -1 and -2 for cursor is
      * below the view.
      */
-    int displayViewLine(const KTextEditor::Cursor &virtualCursor, bool limitToVisible = false);
+    int displayViewLine(const KTextEditor::Cursor virtualCursor, bool limitToVisible = false);
 
     int viewCacheLineCount() const;
     KTextEditor::Cursor viewCacheStart() const;
     KTextEditor::Cursor viewCacheEnd() const;
-    void updateViewCache(const KTextEditor::Cursor &startPos, int newViewLineCount = -1, int viewLinesScrolled = 0);
+    void updateViewCache(const KTextEditor::Cursor startPos, int newViewLineCount = -1, int viewLinesScrolled = 0);
 
     void relayoutLines(int startRealLine, int endRealLine);
 
     // find the index of the last view line for a specific line
     int lastViewLine(int realLine);
     // find the view line of cursor c (0 = same line, 1 = down one, etc.)
-    int viewLine(const KTextEditor::Cursor &realCursor);
+    int viewLine(const KTextEditor::Cursor realCursor);
     int viewLineCount(int realLine);
 
     void viewCacheDebugOutput() const;
     // END
 
 private Q_SLOTS:
-    void wrapLine(const KTextEditor::Cursor &position);
+    void wrapLine(const KTextEditor::Cursor position);
     void unwrapLine(int line);
-    void insertText(const KTextEditor::Cursor &position, const QString &text);
+    void insertText(const KTextEditor::Cursor position, const QString &text);
     void removeText(const KTextEditor::Range &range);
 
 private:

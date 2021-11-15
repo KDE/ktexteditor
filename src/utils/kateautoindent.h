@@ -143,7 +143,7 @@ private:
      * \param position current cursor position, after the inserted char...
      * \param typedChar the inserted char, indent will just give the script '\n'
      */
-    void scriptIndent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar);
+    void scriptIndent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedChar);
 
     /**
      * Return true if the required style for the script is provided by the highlighter.
@@ -208,7 +208,7 @@ public:
      * \param position current cursor position, after the inserted char...
      * \param typedChar the inserted char
      */
-    void userTypedChar(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar);
+    void userTypedChar(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedChar);
 
 public Q_SLOTS:
     void reloadScript();

@@ -63,7 +63,7 @@ private Q_SLOTS:
      * @param from Where to start the check
      * @param to Where to end. If this is (0,0), it will be set to the end of the document.
      */
-    void spellcheck(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to = KTextEditor::Cursor());
+    void spellcheck(const KTextEditor::Cursor from, const KTextEditor::Cursor to = KTextEditor::Cursor());
 
     void misspelling(const QString &, int);
     void corrected(const QString &, int, const QString &);

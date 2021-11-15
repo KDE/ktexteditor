@@ -90,7 +90,7 @@ protected:
     Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
     int findLineStartingWitchChar(const QChar &c, int count, bool forward = true) const;
-    void updateCursor(const KTextEditor::Cursor &c) const;
+    void updateCursor(const KTextEditor::Cursor c) const;
     const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht) const;
 
     void addToNumberUnderCursor(int count);

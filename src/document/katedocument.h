@@ -391,7 +391,7 @@ public Q_SLOTS:
      * If the consecutive editings happens in the same line, then remove
      * the previous and add the new one with updated column no.
      */
-    void saveEditingPositions(const KTextEditor::Cursor &cursor);
+    void saveEditingPositions(const KTextEditor::Cursor cursor);
 
 public:
     uint undoCount() const;
@@ -836,16 +836,16 @@ public:
     bool ownedView(KTextEditor::ViewPrivate *);
 
     int toVirtualColumn(int line, int column) const;
-    int toVirtualColumn(const KTextEditor::Cursor &) const;
+    int toVirtualColumn(const KTextEditor::Cursor) const;
     int fromVirtualColumn(int line, int column) const;
-    int fromVirtualColumn(const KTextEditor::Cursor &) const;
+    int fromVirtualColumn(const KTextEditor::Cursor) const;
 
     enum NewLineIndent { Indent, NoIndent };
 
     void newLine(KTextEditor::ViewPrivate *view, NewLineIndent indent = NewLineIndent::Indent); // Changes input
-    void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
-    void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
-    void transpose(const KTextEditor::Cursor &);
+    void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
+    void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
+    void transpose(const KTextEditor::Cursor);
     void swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord);
     void paste(KTextEditor::ViewPrivate *view, const QString &text);
 
@@ -853,7 +853,7 @@ public:
     void indent(KTextEditor::Range range, int change);
     void comment(KTextEditor::ViewPrivate *view, uint line, uint column, int change);
     void align(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
-    void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
+    void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
 
     enum TextTransform { Uppercase, Lowercase, Capitalize };
 
@@ -864,7 +864,7 @@ public:
       lowercase the character right of the cursor is transformed, for capitalize
       the word under the cursor is transformed.
     */
-    void transform(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &, TextTransform);
+    void transform(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor, TextTransform);
     /**
       Unwrap a range of lines.
     */
@@ -879,7 +879,7 @@ private:
       @param cursorPos The current cursor position for the inserted characters.
       @param str The typed characters to expand.
     */
-    QString eventuallyReplaceTabs(const KTextEditor::Cursor &cursorPos, const QString &str) const;
+    QString eventuallyReplaceTabs(const KTextEditor::Cursor cursorPos, const QString &str) const;
 
     /**
       Find the position (line and col) of the next char
@@ -923,7 +923,7 @@ private:
     /**
      *@see removeStartLineCommentFromSingleLine.
      */
-    bool removeStartStopCommentFromRegion(const KTextEditor::Cursor &start, const KTextEditor::Cursor &end, int attrib = 0);
+    bool removeStartStopCommentFromRegion(const KTextEditor::Cursor start, const KTextEditor::Cursor end, int attrib = 0);
 
     /**
      * Add a comment marker as defined by the language providing the attribute
@@ -948,7 +948,7 @@ private:
     bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
 
 public:
-    KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor &start, int maxLines);
+    KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor start, int maxLines);
 
 public:
     QString documentName() const override
@@ -1438,7 +1438,7 @@ private:
     QChar m_currentAutobraceClosingChar;
 
 private Q_SLOTS:
-    void checkCursorForAutobrace(KTextEditor::View *view, const KTextEditor::Cursor &newPos);
+    void checkCursorForAutobrace(KTextEditor::View *view, const KTextEditor::Cursor newPos);
 
 public:
     void setActiveTemplateHandler(KateTemplateHandler *handler);

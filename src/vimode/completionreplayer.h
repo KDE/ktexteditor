@@ -33,7 +33,7 @@ public:
 
 private:
     Completion nextCompletion();
-    int findNextMergeableBracketPos(const KTextEditor::Cursor &startPos) const;
+    int findNextMergeableBracketPos(const KTextEditor::Cursor startPos) const;
 
 private:
     InputModeManager *m_viInputModeManager;

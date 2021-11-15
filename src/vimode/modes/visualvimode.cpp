@@ -31,7 +31,7 @@ VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::Vi
     connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &VisualViMode::updateSelection);
 }
 
-void VisualViMode::selectInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2)
+void VisualViMode::selectInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2)
 {
     if (c1 >= c2) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
@@ -40,7 +40,7 @@ void VisualViMode::selectInclusive(const KTextEditor::Cursor &c1, const KTextEdi
     }
 }
 
-void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2)
+void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2)
 {
     m_view->setBlockSelection(true);
 
@@ -198,7 +198,7 @@ void VisualViMode::switchStartEnd()
     m_stickyColumn = -1;
 }
 
-void VisualViMode::goToPos(const KTextEditor::Cursor &c)
+void VisualViMode::goToPos(const KTextEditor::Cursor c)
 {
     Range r(c, InclusiveMotion);
     goToPos(r);

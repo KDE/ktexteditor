@@ -27,7 +27,7 @@ public:
     KateInlineNoteData() = default;
     KateInlineNoteData(KTextEditor::InlineNoteProvider *provider,
                        const KTextEditor::View *view,
-                       const KTextEditor::Cursor &position,
+                       const KTextEditor::Cursor position,
                        int index,
                        bool underMouse,
                        const QFont &font,

@@ -80,7 +80,7 @@ Range Searcher::motionFindPrev(int count)
     return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
 }
 
-Range Searcher::findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count)
+Range Searcher::findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count)
 {
     if (searchParams.pattern.isEmpty()) {
         return Range::invalid();
@@ -90,7 +90,7 @@ Range Searcher::findPatternForMotion(const SearchParams &searchParams, const KTe
     return Range(match.start(), match.end(), ExclusiveMotion);
 }
 
-Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTextEditor::Cursor &startFrom, int count)
+Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTextEditor::Cursor startFrom, int count)
 {
     m_lastSearchConfig.isBackwards = backwards;
     m_lastSearchConfig.isCaseSensitive = false;
@@ -103,7 +103,7 @@ Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTe
     return findPatternForMotion(m_lastSearchConfig, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPattern(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory)
+KTextEditor::Range Searcher::findPattern(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count, bool addToSearchHistory)
 {
     if (addToSearchHistory) {
         m_viInputModeManager->globalState()->searchHistory()->append(searchParams.pattern);
@@ -113,7 +113,7 @@ KTextEditor::Range Searcher::findPattern(const SearchParams &searchParams, const
     return findPatternWorker(searchParams, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count)
+KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count)
 {
     KTextEditor::Cursor searchBegin = startFrom;
     KTextEditor::SearchOptions flags = KTextEditor::Regex;

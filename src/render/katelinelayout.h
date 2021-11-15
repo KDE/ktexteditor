@@ -37,12 +37,12 @@ public:
 
     bool isRightToLeft() const;
 
-    bool includesCursor(const KTextEditor::Cursor &realCursor) const;
+    bool includesCursor(const KTextEditor::Cursor realCursor) const;
 
-    friend bool operator>(const KateLineLayout &r, const KTextEditor::Cursor &c);
-    friend bool operator>=(const KateLineLayout &r, const KTextEditor::Cursor &c);
-    friend bool operator<(const KateLineLayout &r, const KTextEditor::Cursor &c);
-    friend bool operator<=(const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator>(const KateLineLayout &r, const KTextEditor::Cursor c);
+    friend bool operator>=(const KateLineLayout &r, const KTextEditor::Cursor c);
+    friend bool operator<(const KateLineLayout &r, const KTextEditor::Cursor c);
+    friend bool operator<=(const KateLineLayout &r, const KTextEditor::Cursor c);
 
     const Kate::TextLine &textLine(bool forceReload = false) const;
     int length() const;

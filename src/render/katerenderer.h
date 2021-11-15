@@ -304,7 +304,7 @@ public:
      */
     int cursorToX(const KateTextLayout &range, int col, bool returnPastLine = false) const;
     /// \overload
-    int cursorToX(const KateTextLayout &range, const KTextEditor::Cursor &pos, bool returnPastLine = false) const;
+    int cursorToX(const KateTextLayout &range, const KTextEditor::Cursor pos, bool returnPastLine = false) const;
 
     /**
      * Returns the real cursor which is occupied by the specified x value, or that closest to it.

@@ -42,7 +42,7 @@ public:
     explicit KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document);
     ~KateOnTheFlyChecker() override;
 
-    QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor &cursor) const;
+    QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor cursor) const;
     QString dictionaryForMisspelledRange(const KTextEditor::Range &range) const;
 
     void clearMisspellingForWord(const QString &word);
@@ -95,7 +95,7 @@ protected:
     void caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
     void caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
 
-    KTextEditor::Range findWordBoundaries(const KTextEditor::Cursor &begin, const KTextEditor::Cursor &end);
+    KTextEditor::Range findWordBoundaries(const KTextEditor::Cursor begin, const KTextEditor::Cursor end);
 
     void deleteMovingRange(KTextEditor::MovingRange *range);
     void deleteMovingRanges(const QList<KTextEditor::MovingRange *> &list);

@@ -688,7 +688,7 @@ void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
  * this function ensures a certain location is visible on the screen.
  * if endCol is -1, ignore making the columns visible.
  */
-void KateViewInternal::makeVisible(const KTextEditor::Cursor &c, int endCol, bool force, bool center, bool calledExternally)
+void KateViewInternal::makeVisible(const KTextEditor::Cursor c, int endCol, bool force, bool center, bool calledExternally)
 {
     // qCDebug(LOG_KTE) << "MakeVisible start " << startPos() << " end " << endPos() << " -> request: " << c;// , new start [" << scroll.line << "," <<
     // scroll.col << "] lines " << (linesDisplayed() - 1) << " height " << height(); if the line is in a folded region, unfold all the way up if (
@@ -796,7 +796,7 @@ void KateViewInternal::showEvent(QShowEvent *e)
     QWidget::showEvent(e);
 }
 
-KTextEditor::Attribute::Ptr KateViewInternal::attributeAt(const KTextEditor::Cursor &position) const
+KTextEditor::Attribute::Ptr KateViewInternal::attributeAt(const KTextEditor::Cursor position) const
 {
     KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
 
@@ -822,7 +822,7 @@ int KateViewInternal::linesDisplayed() const
     return qMax(1, (h - (h % fh)) / fh);
 }
 
-QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor &cursor, bool realCursor, bool includeBorder) const
+QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor cursor, bool realCursor, bool includeBorder) const
 {
     if (cursor.line() >= doc()->lines()) {
         return QPoint(-1, -1);
@@ -907,7 +907,7 @@ public:
         makeValid();
     }
 
-    CalculatingCursor(KateViewInternal *vi, const KTextEditor::Cursor &c)
+    CalculatingCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : m_cursor(c)
         , m_vi(vi)
     {
@@ -1026,7 +1026,7 @@ public:
         : CalculatingCursor(vi)
     {
     }
-    BoundedCursor(KateViewInternal *vi, const KTextEditor::Cursor &c)
+    BoundedCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : CalculatingCursor(vi, c)
     {
     }
@@ -1099,7 +1099,7 @@ public:
         : CalculatingCursor(vi)
     {
     }
-    WrappingCursor(KateViewInternal *vi, const KTextEditor::Cursor &c)
+    WrappingCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : CalculatingCursor(vi, c)
     {
     }
@@ -1270,7 +1270,7 @@ public:
 class CamelCursor : public CalculatingCursor
 {
 public:
-    CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor &c)
+    CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor c)
         : CalculatingCursor(vi, c)
     {
     }
@@ -1634,7 +1634,7 @@ KateTextLayout KateViewInternal::nextLayout() const
  * The cursors involved are virtual cursors (ie. equivalent to m_displayCursor)
  */
 
-KTextEditor::Cursor KateViewInternal::viewLineOffset(const KTextEditor::Cursor &virtualCursor, int offset, bool keepX)
+KTextEditor::Cursor KateViewInternal::viewLineOffset(const KTextEditor::Cursor virtualCursor, int offset, bool keepX)
 {
     if (!view()->dynWordWrap()) {
         KTextEditor::Cursor ret(qMin((int)view()->textFolding().visibleLines() - 1, virtualCursor.line() + offset), 0);
@@ -2052,7 +2052,7 @@ void KateViewInternal::bottom_end(bool sel)
     updateCursor(c);
 }
 
-void KateViewInternal::updateSelection(const KTextEditor::Cursor &_newCursor, bool keepSel)
+void KateViewInternal::updateSelection(const KTextEditor::Cursor _newCursor, bool keepSel)
 {
     KTextEditor::Cursor newCursor = _newCursor;
     if (keepSel) {
@@ -2206,7 +2206,7 @@ void KateViewInternal::moveCursorToSelectionEdge()
     m_minLinesVisible = tmp;
 }
 
-KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor::Cursor &currentCursorPos, const int value, const int maxLines)
+KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor::Cursor currentCursorPos, const int value, const int maxLines)
 {
     const int direction = !(value < 0) ? 1 : -1;
     int foldCounter = 0;
@@ -2301,7 +2301,7 @@ void KateViewInternal::updateFoldingMarkersHighlighting()
     m_fmEnd->setRange(KTextEditor::Range::invalid());
 }
 
-void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool force, bool center, bool calledExternally)
+void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally)
 {
     if (!force && (m_cursor.toCursor() == newCursor)) {
         m_displayCursor = toVirtualCursor(newCursor);
@@ -2444,7 +2444,7 @@ void KateViewInternal::updateBracketMarks()
     hideBracketMatchPreview();
 }
 
-bool KateViewInternal::tagLine(const KTextEditor::Cursor &virtualCursor)
+bool KateViewInternal::tagLine(const KTextEditor::Cursor virtualCursor)
 {
     // we had here some special case handling for one line, it was just randomly wrong for dyn. word wrapped stuff => use the generic function
     return tagLines(virtualCursor, virtualCursor, false);
@@ -4044,7 +4044,7 @@ void KateViewInternal::editEnd(int editTagLineStart, int editTagLineEnd, bool ta
     editIsRunning = false;
 }
 
-void KateViewInternal::editSetCursor(const KTextEditor::Cursor &_cursor)
+void KateViewInternal::editSetCursor(const KTextEditor::Cursor _cursor)
 {
     if (m_cursor.toCursor() != _cursor) {
         m_cursor.setPosition(_cursor);
@@ -4077,12 +4077,12 @@ KateLayoutCache *KateViewInternal::cache() const
     return m_layoutCache;
 }
 
-KTextEditor::Cursor KateViewInternal::toRealCursor(const KTextEditor::Cursor &virtualCursor) const
+KTextEditor::Cursor KateViewInternal::toRealCursor(const KTextEditor::Cursor virtualCursor) const
 {
     return KTextEditor::Cursor(view()->textFolding().visibleLineToLine(virtualCursor.line()), virtualCursor.column());
 }
 
-KTextEditor::Cursor KateViewInternal::toVirtualCursor(const KTextEditor::Cursor &realCursor) const
+KTextEditor::Cursor KateViewInternal::toVirtualCursor(const KTextEditor::Cursor realCursor) const
 {
     // only convert valid lines, folding doesn't like invalid input!
     // don't validate whole cursor, column might be -1
@@ -4310,7 +4310,7 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
 
 // END IM INPUT STUFF
 
-void KateViewInternal::flashChar(const KTextEditor::Cursor &pos, KTextEditor::Attribute::Ptr attribute)
+void KateViewInternal::flashChar(const KTextEditor::Cursor pos, KTextEditor::Attribute::Ptr attribute)
 {
     Q_ASSERT(pos.isValid());
     Q_ASSERT(attribute.constData());

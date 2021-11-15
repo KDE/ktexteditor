@@ -8,7 +8,7 @@
 
 using namespace KateVi;
 
-void Jumps::add(const KTextEditor::Cursor &cursor)
+void Jumps::add(const KTextEditor::Cursor cursor)
 {
     for (auto iterator = m_jumps.begin(); iterator != m_jumps.end(); iterator++) {
         if ((*iterator).line() == cursor.line()) {
@@ -21,7 +21,7 @@ void Jumps::add(const KTextEditor::Cursor &cursor)
     m_current = m_jumps.end();
 }
 
-KTextEditor::Cursor Jumps::next(const KTextEditor::Cursor &cursor)
+KTextEditor::Cursor Jumps::next(const KTextEditor::Cursor cursor)
 {
     if (m_current == m_jumps.end()) {
         return cursor;
@@ -37,7 +37,7 @@ KTextEditor::Cursor Jumps::next(const KTextEditor::Cursor &cursor)
     return jump;
 }
 
-KTextEditor::Cursor Jumps::prev(const KTextEditor::Cursor &cursor)
+KTextEditor::Cursor Jumps::prev(const KTextEditor::Cursor cursor)
 {
     if (m_current == m_jumps.end()) {
         add(cursor);

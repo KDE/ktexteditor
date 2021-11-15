@@ -68,7 +68,7 @@ KateOnTheFlyChecker::~KateOnTheFlyChecker()
     freeDocument();
 }
 
-QPair<KTextEditor::Range, QString> KateOnTheFlyChecker::getMisspelledItem(const KTextEditor::Cursor &cursor) const
+QPair<KTextEditor::Range, QString> KateOnTheFlyChecker::getMisspelledItem(const KTextEditor::Cursor cursor) const
 {
     for (const MisspelledItem &item : m_misspelledList) {
         KTextEditor::MovingRange *movingRange = item.first;
@@ -519,7 +519,7 @@ void KateOnTheFlyChecker::deleteMovingRanges(const QList<KTextEditor::MovingRang
     }
 }
 
-KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cursor &begin, const KTextEditor::Cursor &end)
+KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cursor begin, const KTextEditor::Cursor end)
 {
     // FIXME: QTextBoundaryFinder should be ideally used for this, but it is currently
     //        still broken in Qt

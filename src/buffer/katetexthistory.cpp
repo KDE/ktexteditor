@@ -45,7 +45,7 @@ void TextHistory::setLastSavedRevision()
     m_lastSavedRevision = revision();
 }
 
-void TextHistory::wrapLine(const KTextEditor::Cursor &position)
+void TextHistory::wrapLine(const KTextEditor::Cursor position)
 {
     // create and add new entry
     Entry entry;
@@ -66,7 +66,7 @@ void TextHistory::unwrapLine(int line, int oldLineLength)
     addEntry(entry);
 }
 
-void TextHistory::insertText(const KTextEditor::Cursor &position, int length, int oldLineLength)
+void TextHistory::insertText(const KTextEditor::Cursor position, int length, int oldLineLength)
 {
     // create and add new entry
     Entry entry;

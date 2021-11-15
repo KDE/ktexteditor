@@ -129,7 +129,7 @@ KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
     connect(&m_renderer->doc()->buffer(), &KateBuffer::textRemoved, this, &KateLayoutCache::removeText);
 }
 
-void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int newViewLineCount, int viewLinesScrolled)
+void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int newViewLineCount, int viewLinesScrolled)
 {
     // qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
 
@@ -311,12 +311,12 @@ KateLineLayoutPtr KateLayoutCache::line(int realLine, int virtualLine)
     return l;
 }
 
-KateLineLayoutPtr KateLayoutCache::line(const KTextEditor::Cursor &realCursor)
+KateLineLayoutPtr KateLayoutCache::line(const KTextEditor::Cursor realCursor)
 {
     return line(realCursor.line());
 }
 
-KateTextLayout KateLayoutCache::textLayout(const KTextEditor::Cursor &realCursor)
+KateTextLayout KateLayoutCache::textLayout(const KTextEditor::Cursor realCursor)
 {
     return line(realCursor.line())->viewLine(viewLine(realCursor));
 }
@@ -357,7 +357,7 @@ int KateLayoutCache::viewWidth() const
  * The view line is the number of lines in the view from the first line
  * The supplied cursor should be in real lines.
  */
-int KateLayoutCache::viewLine(const KTextEditor::Cursor &realCursor)
+int KateLayoutCache::viewLine(const KTextEditor::Cursor realCursor)
 {
     /**
      * Make sure cursor column and line is valid
@@ -378,7 +378,7 @@ int KateLayoutCache::viewLine(const KTextEditor::Cursor &realCursor)
     return thisLine->viewLineCount() - 1;
 }
 
-int KateLayoutCache::displayViewLine(const KTextEditor::Cursor &virtualCursor, bool limitToVisible)
+int KateLayoutCache::displayViewLine(const KTextEditor::Cursor virtualCursor, bool limitToVisible)
 {
     if (!virtualCursor.isValid()) {
         return -1;
@@ -478,7 +478,7 @@ void KateLayoutCache::viewCacheDebugOutput() const
     }
 }
 
-void KateLayoutCache::wrapLine(const KTextEditor::Cursor &position)
+void KateLayoutCache::wrapLine(const KTextEditor::Cursor position)
 {
     m_lineLayouts.slotEditDone(position.line(), position.line() + 1, 1);
 }
@@ -488,7 +488,7 @@ void KateLayoutCache::unwrapLine(int line)
     m_lineLayouts.slotEditDone(line - 1, line, -1);
 }
 
-void KateLayoutCache::insertText(const KTextEditor::Cursor &position, const QString &)
+void KateLayoutCache::insertText(const KTextEditor::Cursor position, const QString &)
 {
     m_lineLayouts.slotEditDone(position.line(), position.line(), 0);
 }

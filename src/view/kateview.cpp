@@ -1571,7 +1571,7 @@ void KTextEditor::ViewPrivate::slotUpdateUndo()
     m_editRedo->setEnabled(doc()->isReadWrite() && doc()->redoCount() > 0);
 }
 
-bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Cursor &position, uint tabwidth, bool calledExternally)
+bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Cursor position, uint tabwidth, bool calledExternally)
 {
     Kate::TextLine l = doc()->kateTextLine(position.line());
 
@@ -2145,14 +2145,14 @@ void KTextEditor::ViewPrivate::editEnd(int editTagLineStart, int editTagLineEnd,
     m_viewInternal->editEnd(editTagLineStart, editTagLineEnd, tagFrom);
 }
 
-void KTextEditor::ViewPrivate::editSetCursor(const KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::editSetCursor(const KTextEditor::Cursor cursor)
 {
     m_viewInternal->editSetCursor(cursor);
 }
 // END
 
 // BEGIN TAG & CLEAR
-bool KTextEditor::ViewPrivate::tagLine(const KTextEditor::Cursor &virtualCursor)
+bool KTextEditor::ViewPrivate::tagLine(const KTextEditor::Cursor virtualCursor)
 {
     return m_viewInternal->tagLine(virtualCursor);
 }
@@ -2227,7 +2227,7 @@ int KTextEditor::ViewPrivate::virtualCursorColumn() const
     return doc()->toVirtualColumn(m_viewInternal->cursorPosition());
 }
 
-void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cursor &newPosition)
+void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cursor newPosition)
 {
     Q_EMIT mousePositionChanged(this, newPosition);
 }
@@ -2344,7 +2344,7 @@ bool KTextEditor::ViewPrivate::selectAll()
     return true;
 }
 
-bool KTextEditor::ViewPrivate::cursorSelected(const KTextEditor::Cursor &cursor)
+bool KTextEditor::ViewPrivate::cursorSelected(const KTextEditor::Cursor cursor)
 {
     KTextEditor::Cursor ret = cursor;
     if ((!blockSelect) && (ret.column() < 0)) {
@@ -2364,7 +2364,7 @@ bool KTextEditor::ViewPrivate::lineSelected(int line)
     return !blockSelect && m_selection.toRange().containsLine(line);
 }
 
-bool KTextEditor::ViewPrivate::lineEndSelected(const KTextEditor::Cursor &lineEndPos)
+bool KTextEditor::ViewPrivate::lineEndSelected(const KTextEditor::Cursor lineEndPos)
 {
     return (!blockSelect)
         && (lineEndPos.line() > m_selection.start().line()
@@ -2414,12 +2414,12 @@ void KTextEditor::ViewPrivate::tagSelection(const KTextEditor::Range &oldSelecti
     }
 }
 
-void KTextEditor::ViewPrivate::selectWord(const KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::selectWord(const KTextEditor::Cursor cursor)
 {
     setSelection(doc()->wordRangeAt(cursor));
 }
 
-void KTextEditor::ViewPrivate::selectLine(const KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::selectLine(const KTextEditor::Cursor cursor)
 {
     int line = cursor.line();
     if (line + 1 >= doc()->lines()) {
@@ -2548,12 +2548,12 @@ bool KTextEditor::ViewPrivate::wrapCursor() const
 
 // END
 
-void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text)
+void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor position, const QString &text)
 {
     Q_EMIT textInserted(view, position, text);
 }
 
-bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor &c, const QString &templateString, const QString &script)
+bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor c, const QString &templateString, const QString &script)
 {
     // no empty templates
     if (templateString.isEmpty()) {
@@ -2669,7 +2669,7 @@ void KTextEditor::ViewPrivate::setAutomaticInvocationEnabled(bool enabled)
     config()->setValue(KateViewConfig::AutomaticCompletionInvocation, enabled);
 }
 
-void KTextEditor::ViewPrivate::sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index)
+void KTextEditor::ViewPrivate::sendCompletionExecuted(const KTextEditor::Cursor position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index)
 {
     Q_EMIT completionExecuted(this, position, model, index);
 }
@@ -2721,7 +2721,7 @@ QPoint KTextEditor::ViewPrivate::cursorPositionCoordinates() const
     return pt == QPoint(-1, -1) ? pt : m_viewInternal->mapToParent(pt);
 }
 
-void KTextEditor::ViewPrivate::setScrollPositionInternal(KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::setScrollPositionInternal(KTextEditor::Cursor cursor)
 {
     m_viewInternal->scrollPos(cursor, false, true, false);
 }
@@ -2762,7 +2762,7 @@ QRect KTextEditor::ViewPrivate::textAreaRectInternal() const
     return {topLeft, bottomRight};
 }
 
-bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor &position)
+bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor position)
 {
     return setCursorPositionInternal(position, doc()->config()->tabWidth(), true);
 }
@@ -2779,7 +2779,7 @@ QTextLayout *KTextEditor::ViewPrivate::textLayout(int line) const
     return thisLine->isValid() ? thisLine->layout() : nullptr;
 }
 
-QTextLayout *KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor &pos) const
+QTextLayout *KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor pos) const
 {
     KateLineLayoutPtr thisLine = m_viewInternal->cache()->line(pos);
 

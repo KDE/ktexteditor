@@ -262,7 +262,7 @@ void KateAutoIndent::reloadScript()
     setMode(currentMode);
 }
 
-void KateAutoIndent::scriptIndent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar)
+void KateAutoIndent::scriptIndent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedChar)
 {
     // start edit
     doc->pushEditState();
@@ -410,7 +410,7 @@ void KateAutoIndent::indent(KTextEditor::ViewPrivate *view, const KTextEditor::R
     doc->setUndoMergeAllEdits(false);
 }
 
-void KateAutoIndent::userTypedChar(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar)
+void KateAutoIndent::userTypedChar(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedChar)
 {
     // normal mode
     if (m_mode == MODE_NORMAL()) {

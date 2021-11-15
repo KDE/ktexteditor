@@ -37,7 +37,7 @@ bool KateTextLayout::setDirty(bool dirty)
     return m_lineLayout->setDirty(viewLine(), dirty);
 }
 
-bool KateTextLayout::includesCursor(const KTextEditor::Cursor &realCursor) const
+bool KateTextLayout::includesCursor(const KTextEditor::Cursor realCursor) const
 {
     return realCursor.line() == line() && realCursor.column() >= startCol() && (!wrap() || realCursor.column() < endCol());
 }
@@ -57,22 +57,22 @@ void KateTextLayout::debugOutput() const
                      << startCol() << " -> " << endCol() << "] x [" << startX() << " -> " << endX() << " off " << m_lineLayout->shiftX() << "] wrap " << wrap();
 }
 
-bool operator>(const KateTextLayout &r, const KTextEditor::Cursor &c)
+bool operator>(const KateTextLayout &r, const KTextEditor::Cursor c)
 {
     return r.line() > c.line() || r.endCol() > c.column();
 }
 
-bool operator>=(const KateTextLayout &r, const KTextEditor::Cursor &c)
+bool operator>=(const KateTextLayout &r, const KTextEditor::Cursor c)
 {
     return r.line() > c.line() || r.endCol() >= c.column();
 }
 
-bool operator<(const KateTextLayout &r, const KTextEditor::Cursor &c)
+bool operator<(const KateTextLayout &r, const KTextEditor::Cursor c)
 {
     return r.line() < c.line() || r.startCol() < c.column();
 }
 
-bool operator<=(const KateTextLayout &r, const KTextEditor::Cursor &c)
+bool operator<=(const KateTextLayout &r, const KTextEditor::Cursor c)
 {
     return r.line() < c.line() || r.startCol() <= c.column();
 }

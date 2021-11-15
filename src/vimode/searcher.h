@@ -34,7 +34,7 @@ public:
     /** Simple searchers **/
     Range motionFindNext(int count = 1);
     Range motionFindPrev(int count = 1);
-    Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
+    Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor startFrom, int count);
 
     /** Extended searcher for Emulated Command Bar. **/
     struct SearchParams {
@@ -43,15 +43,15 @@ public:
         bool isCaseSensitive = false;
         bool shouldPlaceCursorAtEndOfMatch = false;
     };
-    KTextEditor::Range findPattern(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory = true);
+    KTextEditor::Range findPattern(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count, bool addToSearchHistory = true);
 
     const QString getLastSearchPattern() const;
     bool lastSearchWrapped() const;
     void setLastSearchParams(const SearchParams &searchParams);
 
 private:
-    Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count = 1);
-    KTextEditor::Range findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count);
+    Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count = 1);
+    KTextEditor::Range findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count);
 
 private:
     InputModeManager *m_viInputModeManager;

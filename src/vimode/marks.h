@@ -32,13 +32,13 @@ public:
     explicit Marks(InputModeManager *imm);
 
     /** JBOS == Just a Bunch Of Shortcuts **/
-    void setStartEditYanked(const KTextEditor::Cursor &pos);
-    void setFinishEditYanked(const KTextEditor::Cursor &pos);
-    void setLastChange(const KTextEditor::Cursor &pos);
-    void setInsertStopped(const KTextEditor::Cursor &pos);
-    void setSelectionStart(const KTextEditor::Cursor &pos);
-    void setSelectionFinish(const KTextEditor::Cursor &pos);
-    void setUserMark(const QChar &mark, const KTextEditor::Cursor &pos);
+    void setStartEditYanked(const KTextEditor::Cursor pos);
+    void setFinishEditYanked(const KTextEditor::Cursor pos);
+    void setLastChange(const KTextEditor::Cursor pos);
+    void setInsertStopped(const KTextEditor::Cursor pos);
+    void setSelectionStart(const KTextEditor::Cursor pos);
+    void setSelectionFinish(const KTextEditor::Cursor pos);
+    void setUserMark(const QChar &mark, const KTextEditor::Cursor pos);
 
     KTextEditor::Cursor getStartEditYanked() const;
     KTextEditor::Cursor getFinishEditYanked() const;
@@ -57,7 +57,7 @@ private:
     void syncViMarksAndBookmarks();
     bool isShowable(const QChar &mark);
 
-    void setMark(const QChar &mark, const KTextEditor::Cursor &pos);
+    void setMark(const QChar &mark, const KTextEditor::Cursor pos);
 
 private Q_SLOTS:
     void markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action);

@@ -1091,7 +1091,7 @@ int KateRenderer::cursorToX(const KateTextLayout &range, int col, bool returnPas
     return cursorToX(range, KTextEditor::Cursor(range.line(), col), returnPastLine);
 }
 
-int KateRenderer::cursorToX(const KateTextLayout &range, const KTextEditor::Cursor &pos, bool returnPastLine) const
+int KateRenderer::cursorToX(const KateTextLayout &range, const KTextEditor::Cursor pos, bool returnPastLine) const
 {
     Q_ASSERT(range.isValid());
 

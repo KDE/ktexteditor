@@ -33,8 +33,8 @@ public:
     explicit Range(int elin, int ecol, MotionType inc);
 
     explicit Range(int slin, int scol, int elin, int ecol, MotionType mt);
-    explicit Range(const KTextEditor::Cursor &c, MotionType mt);
-    explicit Range(const KTextEditor::Cursor &c1, const KTextEditor::Cursor c2, MotionType mt);
+    explicit Range(const KTextEditor::Cursor c, MotionType mt);
+    explicit Range(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2, MotionType mt);
 
     /**
      * Modifies this range so the start attributes are lesser than

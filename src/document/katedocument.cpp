@@ -342,7 +342,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
 }
 // END
 
-void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Cursor &cursor)
+void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Cursor cursor)
 {
     if (m_editingStackPosition != m_editingStack.size() - 1) {
         m_editingStack.resize(m_editingStackPosition);
@@ -2993,7 +2993,7 @@ int KTextEditor::DocumentPrivate::toVirtualColumn(int line, int column) const
     }
 }
 
-int KTextEditor::DocumentPrivate::toVirtualColumn(const KTextEditor::Cursor &cursor) const
+int KTextEditor::DocumentPrivate::toVirtualColumn(const KTextEditor::Cursor cursor) const
 {
     return toVirtualColumn(cursor.line(), cursor.column());
 }
@@ -3009,7 +3009,7 @@ int KTextEditor::DocumentPrivate::fromVirtualColumn(int line, int column) const
     }
 }
 
-int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor &cursor) const
+int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor cursor) const
 {
     return fromVirtualColumn(cursor.line(), cursor.column());
 }
@@ -3205,7 +3205,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     view->slotTextInserted(view, oldCur, chars);
 }
 
-void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View *, const KTextEditor::Cursor &newPos)
+void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View *, const KTextEditor::Cursor newPos)
 {
     if (m_currentAutobraceRange && !m_currentAutobraceRange->toRange().contains(newPos)) {
         m_currentAutobraceRange.reset();
@@ -3254,7 +3254,7 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
     editEnd();
 }
 
-void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor &cursor)
+void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor cursor)
 {
     Kate::TextLine textLine = m_buffer->plainLine(cursor.line());
 
@@ -3307,7 +3307,7 @@ void KTextEditor::DocumentPrivate::swapTextRanges(KTextEditor::Range firstWord, 
     editEnd();
 }
 
-void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
+void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
         KTextEditor::Range range = view->selectionRange();
@@ -3393,7 +3393,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     }
 }
 
-void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
+void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
         KTextEditor::Range range = view->selectionRange();
@@ -3513,7 +3513,7 @@ void KTextEditor::DocumentPrivate::align(KTextEditor::ViewPrivate *view, const K
     m_indenter->indent(view, range);
 }
 
-void KTextEditor::DocumentPrivate::insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &)
+void KTextEditor::DocumentPrivate::insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor)
 {
     if (!isReadWrite()) {
         return;
@@ -3594,7 +3594,7 @@ bool KTextEditor::DocumentPrivate::removeStringFromEnd(int line, const QString &
 /*
   Replace tabs by spaces in the given string, if enabled.
  */
-QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::Cursor &cursorPos, const QString &str) const
+QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::Cursor cursorPos, const QString &str) const
 {
     const bool replacetabs = config()->replaceTabsDyn();
     if (!replacetabs) {
@@ -3860,7 +3860,7 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEdit
     return remove;
 }
 
-bool KTextEditor::DocumentPrivate::removeStartStopCommentFromRegion(const KTextEditor::Cursor &start, const KTextEditor::Cursor &end, int attrib)
+bool KTextEditor::DocumentPrivate::removeStartStopCommentFromRegion(const KTextEditor::Cursor start, const KTextEditor::Cursor end, int attrib)
 {
     const QString startComment = highlight()->getCommentStart(attrib);
     const QString endComment = highlight()->getCommentEnd(attrib);
@@ -3988,7 +3988,7 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     }
 }
 
-void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor &c, KTextEditor::DocumentPrivate::TextTransform t)
+void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor c, KTextEditor::DocumentPrivate::TextTransform t)
 {
     if (v->selection()) {
         editStart();
@@ -4154,7 +4154,7 @@ void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
    match it. Otherwise if the character to the right of the cursor is a
    bracket, match it. Otherwise, don't match anything.
 */
-KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KTextEditor::Cursor &start, int maxLines)
+KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KTextEditor::Cursor start, int maxLines)
 {
     if (maxLines < 0) {
         return KTextEditor::Range::invalid();

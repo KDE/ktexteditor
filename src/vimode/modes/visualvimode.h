@@ -41,7 +41,7 @@ public:
     void setVisualModeType(const ViMode mode);
     void saveRangeMarks();
 
-    void setStart(const KTextEditor::Cursor &c)
+    void setStart(const KTextEditor::Cursor c)
     {
         m_start = c;
     }
@@ -51,14 +51,14 @@ public:
         return m_start;
     }
 
-    void goToPos(const KTextEditor::Cursor &c);
+    void goToPos(const KTextEditor::Cursor c);
 
     ViMode getLastVisualMode() const
     {
         return m_lastVisualMode;
     }
 
-    const KTextEditor::Cursor &getStart() const
+    const KTextEditor::Cursor getStart() const
     {
         return m_start;
     }
@@ -67,10 +67,10 @@ public:
     void selectLines(const KTextEditor::Range &range);
 
     // Selects range between c1 and c2, but includes the end cursor position.
-    void selectInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2);
+    void selectInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2);
 
     // Select block between c1 and c2.
-    void selectBlockInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2);
+    void selectBlockInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2);
 
 protected:
     /**

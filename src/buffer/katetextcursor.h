@@ -42,7 +42,7 @@ private:
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor &position, InsertBehavior insertBehavior);
+    TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
 public:
     /**
@@ -51,7 +51,7 @@ public:
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    TextCursor(TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior);
+    TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
     /**
      * Destruct the text cursor

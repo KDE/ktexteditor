@@ -200,7 +200,7 @@ public:
      * Wrap line at given cursor position.
      * @param position line/column as cursor where to wrap
      */
-    void wrapLine(const KTextEditor::Cursor &position) override;
+    void wrapLine(const KTextEditor::Cursor position) override;
 
 public:
     inline int tabWidth() const

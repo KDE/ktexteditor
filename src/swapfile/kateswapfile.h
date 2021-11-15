@@ -64,9 +64,9 @@ protected Q_SLOTS:
     void startEditing();
     void finishEditing();
 
-    void wrapLine(const KTextEditor::Cursor &position);
+    void wrapLine(const KTextEditor::Cursor position);
     void unwrapLine(int line);
-    void insertText(const KTextEditor::Cursor &position, const QString &text);
+    void insertText(const KTextEditor::Cursor position, const QString &text);
     void removeText(const KTextEditor::Range &range);
 
 public Q_SLOTS:

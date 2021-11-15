@@ -71,7 +71,7 @@ void TextBlock::text(QString &text) const
     }
 }
 
-void TextBlock::wrapLine(const KTextEditor::Cursor &position, int fixStartLinesStartIndex)
+void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesStartIndex)
 {
     // calc internal line
     int line = position.line() - startLine();
@@ -349,7 +349,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
     }
 }
 
-void TextBlock::insertText(const KTextEditor::Cursor &position, const QString &text)
+void TextBlock::insertText(const KTextEditor::Cursor position, const QString &text)
 {
     // calc internal line
     int line = position.line() - startLine();

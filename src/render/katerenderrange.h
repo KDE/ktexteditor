@@ -20,7 +20,7 @@ public:
     void addRange(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute);
 
     KTextEditor::Cursor nextBoundary() const;
-    bool advanceTo(const KTextEditor::Cursor &pos);
+    bool advanceTo(const KTextEditor::Cursor pos);
     KTextEditor::Attribute::Ptr currentAttribute() const;
 
 private:
@@ -34,7 +34,7 @@ class RenderRangeVector
 {
 public:
     KTextEditor::Cursor nextBoundary() const;
-    void advanceTo(const KTextEditor::Cursor &pos);
+    void advanceTo(const KTextEditor::Cursor pos);
     bool hasAttribute() const;
     KTextEditor::Attribute::Ptr generateAttribute() const;
     NormalRenderRange &pushNewRange();

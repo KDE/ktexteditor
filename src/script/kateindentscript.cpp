@@ -42,7 +42,7 @@ const QString &KateIndentScript::triggerCharacters()
     return m_triggerCharacters;
 }
 
-QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedCharacter, int indentWidth)
+QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor position, QChar typedCharacter, int indentWidth)
 {
     // if it hasn't loaded or we can't load, return
     if (!setView(view)) {

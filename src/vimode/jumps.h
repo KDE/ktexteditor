@@ -24,9 +24,9 @@ public:
     Jumps(const Jumps &) = delete;
     Jumps &operator=(const Jumps &) = delete;
 
-    void add(const KTextEditor::Cursor &cursor);
-    KTextEditor::Cursor next(const KTextEditor::Cursor &cursor);
-    KTextEditor::Cursor prev(const KTextEditor::Cursor &cursor);
+    void add(const KTextEditor::Cursor cursor);
+    KTextEditor::Cursor next(const KTextEditor::Cursor cursor);
+    KTextEditor::Cursor prev(const KTextEditor::Cursor cursor);
 
     void writeSessionConfig(KConfigGroup &config) const;
     void readSessionConfig(const KConfigGroup &config);

@@ -769,7 +769,7 @@ int ModeBase::findLineStartingWitchChar(const QChar &c, int count, bool forward)
     return -1;
 }
 
-void ModeBase::updateCursor(const KTextEditor::Cursor &c) const
+void ModeBase::updateCursor(const KTextEditor::Cursor c) const
 {
     m_viInputModeManager->updateCursor(c);
 }

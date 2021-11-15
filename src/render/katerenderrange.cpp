@@ -73,7 +73,7 @@ KTextEditor::Cursor NormalRenderRange::nextBoundary() const
     return m_nextBoundary;
 }
 
-bool NormalRenderRange::advanceTo(const KTextEditor::Cursor &pos)
+bool NormalRenderRange::advanceTo(const KTextEditor::Cursor pos)
 {
     size_t index = m_currentRange;
     while (index < m_ranges.size()) {
@@ -135,7 +135,7 @@ NormalRenderRange &RenderRangeVector::pushNewRange()
     return m_ranges.back();
 }
 
-void RenderRangeVector::advanceTo(const KTextEditor::Cursor &pos)
+void RenderRangeVector::advanceTo(const KTextEditor::Cursor pos)
 {
     for (auto &r : m_ranges) {
         r.advanceTo(pos);
