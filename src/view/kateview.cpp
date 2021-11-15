@@ -1579,7 +1579,7 @@ bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Curs
         return false;
     }
 
-    QString line_str = l->text();
+    const QString line_str = l->text();
 
     int x = 0;
     int z = 0;
