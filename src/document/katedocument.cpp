@@ -1911,9 +1911,18 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         // restore the filetype
         // NOTE: if the session config file contains an invalid Mode
         // (for example, one that was deleted or renamed), do not apply it
-        if (kconfig.hasKey("Mode") && updateFileType(kconfig.readEntry("Mode"))) {
+        if (kconfig.hasKey("Mode")) {
             // restore if set by user, too!
             m_fileTypeSetByUser = kconfig.readEntry("Mode Set By User", false);
+            if (m_fileTypeSetByUser) {
+                updateFileType(kconfig.readEntry("Mode"));
+            } else {
+                // Not set by user:
+                // - if it's not the default ("Normal") use the mode from the config file
+                // - if it's "Normal", use m_fileType which was detected by the code in openFile()
+                const QString modeFromCfg = kconfig.readEntry("Mode");
+                updateFileType(modeFromCfg != QLatin1String("Normal") ? modeFromCfg : m_fileType);
+            }
         }
     }
 
@@ -1922,10 +1931,19 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         if (kconfig.hasKey("Highlighting")) {
             const int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
             if (mode >= 0) {
-                m_buffer->setHighlight(mode);
-
                 // restore if set by user, too! see bug 332605, otherwise we loose the hl later again on save
                 m_hlSetByUser = kconfig.readEntry("Highlighting Set By User", false);
+
+                if (m_hlSetByUser) {
+                    m_buffer->setHighlight(mode);
+                } else {
+                    // Not set by user, only set highlighting if it's not 0, the default,
+                    // otherwise leave it the same as the highlighting set by updateFileType()
+                    // which has already been called by openFile()
+                    if (mode > 0) {
+                        m_buffer->setHighlight(mode);
+                    }
+                }
             }
         }
     }
