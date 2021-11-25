@@ -4451,8 +4451,9 @@ bool KTextEditor::DocumentPrivate::documentReload()
     });
 
     const QString oldMode = mode();
-    const bool byUser = m_fileTypeSetByUser;
-    const QString hl_mode = highlightingMode();
+    const bool modeByUser = m_fileTypeSetByUser;
+    const QString oldHlMode = highlightingMode();
+    const bool hlByUser = m_hlSetByUser;
 
     m_storedVariables.clear();
 
@@ -4491,10 +4492,12 @@ bool KTextEditor::DocumentPrivate::documentReload()
         ++z;
     }
 
-    if (byUser) {
+    if (modeByUser) {
         setMode(oldMode);
     }
-    setHighlightingMode(hl_mode);
+    if (hlByUser) {
+        setHighlightingMode(oldHlMode);
+    }
 
     Q_EMIT reloaded(this);
 
