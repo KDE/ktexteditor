@@ -78,7 +78,7 @@ void TextHistory::insertText(const KTextEditor::Cursor position, int length, int
     addEntry(entry);
 }
 
-void TextHistory::removeText(const KTextEditor::Range &range, int oldLineLength)
+void TextHistory::removeText(KTextEditor::Range range, int oldLineLength)
 {
     // create and add new entry
     Entry entry;

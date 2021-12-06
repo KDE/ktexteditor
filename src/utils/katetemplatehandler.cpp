@@ -179,7 +179,7 @@ void KateTemplateHandler::jumpToFinalCursorPosition()
     view()->setCursorPosition(m_wholeTemplateRange->end());
 }
 
-void KateTemplateHandler::slotTemplateInserted(Document * /*document*/, const Range &range)
+void KateTemplateHandler::slotTemplateInserted(Document * /*document*/, Range range)
 {
     m_wholeTemplateRange.reset(doc()->newMovingRange(range, MovingRange::ExpandLeft | MovingRange::ExpandRight));
 
@@ -375,7 +375,7 @@ void KateTemplateHandler::initializeTemplate()
     }
 }
 
-const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(const KTextEditor::Range &range) const
+const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(KTextEditor::Range range) const
 {
     for (const auto &field : m_fields) {
         if (field.range->contains(range.start()) || field.range->end() == range.start()) {
@@ -388,7 +388,7 @@ const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(cons
     return {};
 }
 
-void KateTemplateHandler::updateDependentFields(Document *document, const Range &range)
+void KateTemplateHandler::updateDependentFields(Document *document, Range range)
 {
     Q_ASSERT(document == doc());
     Q_UNUSED(document);

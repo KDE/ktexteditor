@@ -17,7 +17,7 @@
 class NormalRenderRange
 {
 public:
-    void addRange(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute);
+    void addRange(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute);
 
     KTextEditor::Cursor nextBoundary() const;
     bool advanceTo(const KTextEditor::Cursor pos);

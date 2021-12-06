@@ -418,7 +418,7 @@ void TextBlock::insertText(const KTextEditor::Cursor position, const QString &te
     }
 }
 
-void TextBlock::removeText(const KTextEditor::Range &range, QString &removedText)
+void TextBlock::removeText(KTextEditor::Range range, QString &removedText)
 {
     // calc internal line
     int line = range.start().line() - startLine();

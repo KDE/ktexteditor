@@ -361,7 +361,7 @@ public:
      * @param range range of text to remove, must be on one line only.
      * Virtual, can be overwritten.
      */
-    virtual void removeText(const KTextEditor::Range &range);
+    virtual void removeText(KTextEditor::Range range);
 
     /**
      * TextHistory of this buffer
@@ -426,7 +426,7 @@ Q_SIGNALS:
      * @param range range where the removal occurred
      * @param text removed text
      */
-    void textRemoved(const KTextEditor::Range &range, const QString &text);
+    void textRemoved(KTextEditor::Range range, const QString &text);
 
 private:
     /**

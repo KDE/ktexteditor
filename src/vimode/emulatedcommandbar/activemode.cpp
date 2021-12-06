@@ -33,7 +33,7 @@ void ActiveMode::hideAllWidgetsExcept(QWidget *widgetToKeepVisible)
     m_emulatedCommandBar->hideAllWidgetsExcept(widgetToKeepVisible);
 }
 
-void ActiveMode::updateMatchHighlight(const KTextEditor::Range &matchRange)
+void ActiveMode::updateMatchHighlight(KTextEditor::Range matchRange)
 {
     m_matchHighligher->updateMatchHighlight(matchRange);
 }

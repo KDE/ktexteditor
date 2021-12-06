@@ -51,10 +51,10 @@ public:
     bool isCompletionActive() const;
     void startCompletion(KTextEditor::CodeCompletionModel::InvocationType invocationType,
                          const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>());
-    void startCompletion(const KTextEditor::Range &word,
+    void startCompletion(KTextEditor::Range word,
                          KTextEditor::CodeCompletionModel *model,
                          KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
-    void startCompletion(const KTextEditor::Range &word,
+    void startCompletion(KTextEditor::Range word,
                          const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(),
                          KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
     void userInvokedCompletion();

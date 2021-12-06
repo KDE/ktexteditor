@@ -423,7 +423,7 @@ public:
      * Constructor
      * @param manager KateUndoManager this undo group will belong to
      */
-    explicit KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor cursorPosition, const KTextEditor::Range &selectionRange);
+    explicit KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor cursorPosition, KTextEditor::Range selectionRange);
 
     /**
      * Destructor
@@ -444,7 +444,7 @@ public:
      */
     void redo(KTextEditor::View *view);
 
-    void editEnd(const KTextEditor::Cursor cursorPosition, const KTextEditor::Range &selectionRange);
+    void editEnd(const KTextEditor::Cursor cursorPosition, KTextEditor::Range selectionRange);
 
     /**
      * merge this group with an other

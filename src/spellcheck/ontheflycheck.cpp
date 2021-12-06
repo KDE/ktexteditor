@@ -79,7 +79,7 @@ QPair<KTextEditor::Range, QString> KateOnTheFlyChecker::getMisspelledItem(const 
     return QPair<KTextEditor::Range, QString>(KTextEditor::Range::invalid(), QString());
 }
 
-QString KateOnTheFlyChecker::dictionaryForMisspelledRange(const KTextEditor::Range &range) const
+QString KateOnTheFlyChecker::dictionaryForMisspelledRange(KTextEditor::Range range) const
 {
     for (const MisspelledItem &item : m_misspelledList) {
         KTextEditor::MovingRange *movingRange = item.first;
@@ -116,7 +116,7 @@ void KateOnTheFlyChecker::handleRespellCheckBlock(int start, int end)
     }
 }
 
-void KateOnTheFlyChecker::textInserted(KTextEditor::Document *document, const KTextEditor::Range &range)
+void KateOnTheFlyChecker::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_ASSERT(document == m_document);
     Q_UNUSED(document);
@@ -150,7 +150,7 @@ void KateOnTheFlyChecker::textInserted(KTextEditor::Document *document, const KT
     }
 }
 
-void KateOnTheFlyChecker::handleInsertedText(const KTextEditor::Range &range)
+void KateOnTheFlyChecker::handleInsertedText(KTextEditor::Range range)
 {
     KTextEditor::Range consideredRange = range;
     ON_THE_FLY_DEBUG << m_document << range;
@@ -204,7 +204,7 @@ void KateOnTheFlyChecker::handleInsertedText(const KTextEditor::Range &range)
     }
 }
 
-void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range)
+void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_ASSERT(document == m_document);
     Q_UNUSED(document);
@@ -238,12 +238,12 @@ void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, const KTe
     }
 }
 
-inline bool rangesAdjacent(const KTextEditor::Range &r1, const KTextEditor::Range &r2)
+inline bool rangesAdjacent(KTextEditor::Range r1, KTextEditor::Range r2)
 {
     return (r1.end() == r2.start()) || (r2.end() == r1.start());
 }
 
-void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
+void KateOnTheFlyChecker::handleRemovedText(KTextEditor::Range range)
 {
     ON_THE_FLY_DEBUG << range;
 
@@ -619,7 +619,7 @@ void KateOnTheFlyChecker::spellCheckDone()
     }
 }
 
-QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(const KTextEditor::Range &range)
+QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(KTextEditor::Range range)
 {
     ON_THE_FLY_DEBUG << range;
     MovingRangeList toReturn;
@@ -639,7 +639,7 @@ void KateOnTheFlyChecker::updateConfig()
     // m_speller.restore();
 }
 
-void KateOnTheFlyChecker::refreshSpellCheck(const KTextEditor::Range &range)
+void KateOnTheFlyChecker::refreshSpellCheck(KTextEditor::Range range)
 {
     if (range.isValid()) {
         textInserted(m_document, range);
@@ -726,7 +726,7 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *
     }
 }
 
-void KateOnTheFlyChecker::queueSpellCheckVisibleRange(const KTextEditor::Range &range)
+void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::Range range)
 {
     const QList<KTextEditor::View *> &viewList = m_document->views();
     for (QList<KTextEditor::View *>::const_iterator i = viewList.begin(); i != viewList.end(); ++i) {
@@ -734,7 +734,7 @@ void KateOnTheFlyChecker::queueSpellCheckVisibleRange(const KTextEditor::Range &
     }
 }
 
-void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
+void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *view, KTextEditor::Range range)
 {
     Q_ASSERT(m_document == view->doc());
     KTextEditor::Range visibleRange = view->visibleRange();
@@ -779,7 +779,7 @@ void KateOnTheFlyChecker::queueLineSpellCheck(KTextEditor::DocumentPrivate *kate
     }
 }
 
-void KateOnTheFlyChecker::queueLineSpellCheck(const KTextEditor::Range &range, const QString &dictionary)
+void KateOnTheFlyChecker::queueLineSpellCheck(KTextEditor::Range range, const QString &dictionary)
 {
     ON_THE_FLY_DEBUG << m_document << range;
 
@@ -792,7 +792,7 @@ void KateOnTheFlyChecker::queueLineSpellCheck(const KTextEditor::Range &range, c
     addToSpellCheckQueue(range, dictionary);
 }
 
-void KateOnTheFlyChecker::addToSpellCheckQueue(const KTextEditor::Range &range, const QString &dictionary)
+void KateOnTheFlyChecker::addToSpellCheckQueue(KTextEditor::Range range, const QString &dictionary)
 {
     addToSpellCheckQueue(m_document->newMovingRange(range), dictionary);
 }

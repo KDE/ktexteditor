@@ -2181,7 +2181,7 @@ void KateViewInternal::updateSelection(const KTextEditor::Cursor _newCursor, boo
 #endif
 }
 
-void KateViewInternal::setSelection(const KTextEditor::Range &range)
+void KateViewInternal::setSelection(KTextEditor::Range range)
 {
     disconnect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &KateViewInternal::viewSelectionChanged);
     view()->setSelection(range);
@@ -2528,7 +2528,7 @@ bool KateViewInternal::tagLines(KTextEditor::Cursor start, KTextEditor::Cursor e
     return ret;
 }
 
-bool KateViewInternal::tagRange(const KTextEditor::Range &range, bool realCursors)
+bool KateViewInternal::tagRange(KTextEditor::Range range, bool realCursors)
 {
     return tagLines(range.start(), range.end(), realCursors);
 }
@@ -4126,7 +4126,7 @@ KTextEditor::DocumentPrivate *KateViewInternal::doc() const
     return m_view->doc();
 }
 
-bool KateViewInternal::rangeAffectsView(const KTextEditor::Range &range, bool realCursors) const
+bool KateViewInternal::rangeAffectsView(KTextEditor::Range range, bool realCursors) const
 {
     int startLine = KateViewInternal::startLine();
     int endLine = startLine + (int)m_visibleLineCount;
@@ -4375,7 +4375,7 @@ void KateViewInternal::hideBracketMatchPreview()
     m_bmPreview.reset();
 }
 
-void KateViewInternal::documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range)
+void KateViewInternal::documentTextInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
 #ifndef QT_NO_ACCESSIBILITY
     if (QAccessible::isActive()) {
@@ -4387,7 +4387,7 @@ void KateViewInternal::documentTextInserted(KTextEditor::Document *document, con
 #endif
 }
 
-void KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/, const KTextEditor::Range &range, const QString &oldText)
+void KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/, KTextEditor::Range range, const QString &oldText)
 {
 #ifndef QT_NO_ACCESSIBILITY
     if (QAccessible::isActive()) {

@@ -51,7 +51,7 @@ void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor c1, const KTex
     }
 }
 
-void VisualViMode::selectLines(const KTextEditor::Range &range)
+void VisualViMode::selectLines(KTextEditor::Range range)
 {
     int sline = qMin(range.start().line(), range.end().line());
     int eline = qMax(range.start().line(), range.end().line());

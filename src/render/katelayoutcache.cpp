@@ -493,7 +493,7 @@ void KateLayoutCache::insertText(const KTextEditor::Cursor position, const QStri
     m_lineLayouts.slotEditDone(position.line(), position.line(), 0);
 }
 
-void KateLayoutCache::removeText(const KTextEditor::Range &range)
+void KateLayoutCache::removeText(KTextEditor::Range range)
 {
     m_lineLayouts.slotEditDone(range.start().line(), range.start().line(), 0);
 }

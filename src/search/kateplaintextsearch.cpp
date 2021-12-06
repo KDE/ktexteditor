@@ -34,7 +34,7 @@ KatePlainTextSearch::KatePlainTextSearch(const KTextEditor::Document *document, 
 KatePlainTextSearch::~KatePlainTextSearch() = default;
 // END
 
-KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextEditor::Range &inputRange, bool backwards)
+KTextEditor::Range KatePlainTextSearch::search(const QString &text, KTextEditor::Range inputRange, bool backwards)
 {
     // abuse regex for whole word plaintext search
     if (m_wholeWords) {

@@ -26,7 +26,7 @@ class MatchHighlighter : public QObject
 public:
     explicit MatchHighlighter(KTextEditor::ViewPrivate *view);
     ~MatchHighlighter() override;
-    void updateMatchHighlight(const KTextEditor::Range &matchRange);
+    void updateMatchHighlight(KTextEditor::Range matchRange);
 private Q_SLOTS:
     void updateMatchHighlightAttrib();
 

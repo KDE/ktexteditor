@@ -169,7 +169,7 @@ struct IndexPair {
 };
 
 QVector<KTextEditor::Range>
-KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards, QRegularExpression::PatternOptions options)
+KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, bool backwards, QRegularExpression::PatternOptions options)
 {
     // Save regexes to avoid reconstructing regexes all the time
     static QRegularExpression preRegex;

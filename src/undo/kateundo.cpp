@@ -214,7 +214,7 @@ void KateEditMarkLineAutoWrappedUndo::redo()
     doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }
 
-KateUndoGroup::KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor cursorPosition, const KTextEditor::Range &selectionRange)
+KateUndoGroup::KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor cursorPosition, KTextEditor::Range selectionRange)
     : m_manager(manager)
     , m_undoSelection(selectionRange)
     , m_redoSelection(-1, -1, -1, -1)
@@ -282,7 +282,7 @@ void KateUndoGroup::redo(KTextEditor::View *view)
     m_manager->endUndo();
 }
 
-void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition, const KTextEditor::Range &selectionRange)
+void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition, KTextEditor::Range selectionRange)
 {
     m_redoCursor = cursorPosition;
     m_redoSelection = selectionRange;

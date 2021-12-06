@@ -193,7 +193,7 @@ private:
      * @param range range of text to remove, must be on one line only.
      * @param oldLineLength text length of the line before this remove
      */
-    void removeText(const KTextEditor::Range &range, int oldLineLength);
+    void removeText(KTextEditor::Range range, int oldLineLength);
 
     /**
      * Generic function to add a entry to the history. Is used by the above functions for the different editing primitives.

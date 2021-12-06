@@ -336,7 +336,7 @@ void KateCompletionWidget::deleteCompletionRanges()
     m_completionRanges.clear();
 }
 
-void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
+void KateCompletionWidget::startCompletion(KTextEditor::Range word,
                                            KTextEditor::CodeCompletionModel *model,
                                            KTextEditor::CodeCompletionModel::InvocationType invocationType)
 {
@@ -349,7 +349,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
     startCompletion(word, models, invocationType);
 }
 
-void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
+void KateCompletionWidget::startCompletion(KTextEditor::Range word,
                                            const QList<KTextEditor::CodeCompletionModel *> &modelsToStart,
                                            KTextEditor::CodeCompletionModel::InvocationType invocationType)
 {

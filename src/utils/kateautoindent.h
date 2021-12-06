@@ -189,7 +189,7 @@ public:
      * and removal of extra spaces, if option set
      * \return \e true on success, otherwise \e false
      */
-    bool changeIndent(const KTextEditor::Range &range, int change);
+    bool changeIndent(KTextEditor::Range range, int change);
 
     /**
      * The document requests the indenter to indent the given range of existing text.
@@ -199,7 +199,7 @@ public:
      * \param view the view the user work at
      * \param range the range of text to indent...
      */
-    void indent(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
+    void indent(KTextEditor::ViewPrivate *view, KTextEditor::Range range);
 
     /**
      * The user typed some char, the indenter can react on this

@@ -12,7 +12,7 @@
 
 #include "ktexteditor/range.h"
 
-inline QJSValue rangeToScriptValue(QJSEngine *engine, const KTextEditor::Range &range)
+inline QJSValue rangeToScriptValue(QJSEngine *engine, KTextEditor::Range range)
 {
     QString code =
         QStringLiteral("new Range(%1, %2, %3, %4);").arg(range.start().line()).arg(range.start().column()).arg(range.end().line()).arg(range.end().column());

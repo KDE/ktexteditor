@@ -46,7 +46,7 @@ void KateSpellCheckManager::addToDictionary(const QString &word, const QString &
     Q_EMIT wordAddedToDictionary(word);
 }
 
-QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(const KTextEditor::Range &r1, const KTextEditor::Range &r2)
+QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(KTextEditor::Range r1, KTextEditor::Range r2)
 {
     Q_ASSERT(r1.contains(r2));
     QList<KTextEditor::Range> toReturn;
@@ -69,7 +69,7 @@ bool lessThanRangeDictionaryPair(const QPair<KTextEditor::Range, QString> &s1, c
 }
 }
 
-QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range)
+QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range)
 {
     QString defaultDict = doc->defaultDictionary();
     QList<RangeDictionaryPair> toReturn;
@@ -105,7 +105,7 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLangu
 }
 
 QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *document,
-                                                                                                 const KTextEditor::Range &range,
+                                                                                                 KTextEditor::Range range,
                                                                                                  const QString &dictionary,
                                                                                                  bool singleLine,
                                                                                                  bool returnSingleRange)
@@ -197,8 +197,7 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHi
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString>>
-KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, bool singleLine)
+QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine)
 {
     QList<RangeDictionaryPair> toReturn;
     QList<RangeDictionaryPair> languageRangeList = spellCheckLanguageRanges(doc, range);
@@ -209,9 +208,7 @@ KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc, const
     return toReturn;
 }
 
-void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord,
-                                                                KTextEditor::DocumentPrivate *doc,
-                                                                const KTextEditor::Range &replacementRange)
+void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, KTextEditor::Range replacementRange)
 {
     const int attr = doc->kateTextLine(replacementRange.start().line())->attribute(replacementRange.start().column());
     if (!doc->highlight()->getCharacterEncodings(attr).isEmpty() && doc->containsCharacterEncoding(replacementRange)) {

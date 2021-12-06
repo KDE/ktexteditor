@@ -168,11 +168,11 @@ private:
 
     KTextEditor::SearchOptions searchOptions(SearchDirection searchDirection = SearchForward) const;
 
-    void highlightMatch(const KTextEditor::Range &range);
-    void highlightReplacement(const KTextEditor::Range &range);
+    void highlightMatch(KTextEditor::Range range);
+    void highlightReplacement(KTextEditor::Range range);
     void indicateMatch(MatchResult matchResult);
-    static void selectRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
-    void selectRange2(const KTextEditor::Range &range);
+    static void selectRange(KTextEditor::ViewPrivate *view, KTextEditor::Range range);
+    void selectRange2(KTextEditor::Range range);
 
     QVector<QString> getCapturePatterns(const QString &pattern) const;
     void showExtendedContextMenu(bool forPattern, const QPoint &pos);

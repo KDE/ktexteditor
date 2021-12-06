@@ -295,7 +295,7 @@ protected:
     OperationMode getOperationMode() const;
 
     void highlightYank(const Range &range, const OperationMode mode = CharWise);
-    void addHighlightYank(const KTextEditor::Range &range);
+    void addHighlightYank(KTextEditor::Range range);
 
     bool motionWillBeUsedWithCommand() const
     {

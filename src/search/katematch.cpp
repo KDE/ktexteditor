@@ -17,7 +17,7 @@ KateMatch::KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::Search
     m_resultRanges.append(KTextEditor::Range::invalid());
 }
 
-KTextEditor::Range KateMatch::searchText(const KTextEditor::Range &range, const QString &pattern)
+KTextEditor::Range KateMatch::searchText(KTextEditor::Range range, const QString &pattern)
 {
     m_resultRanges = m_document->searchText(range, pattern, m_options);
 
@@ -68,7 +68,7 @@ QString KateMatch::buildReplacement(const QString &replacement, bool blockMode, 
 {
     QStringList capturedTexts;
     capturedTexts.reserve(m_resultRanges.size());
-    for (const KTextEditor::Range &captureRange : std::as_const(m_resultRanges)) {
+    for (KTextEditor::Range captureRange : std::as_const(m_resultRanges)) {
         // Copy capture content
         capturedTexts << m_document->text(captureRange, blockMode);
     }

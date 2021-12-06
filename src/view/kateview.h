@@ -358,7 +358,7 @@ public:
 
     void ensureCursorColumnValid();
 
-    void tagSelection(const KTextEditor::Range &oldSelection);
+    void tagSelection(KTextEditor::Range oldSelection);
 
     void selectWord(const KTextEditor::Cursor cursor);
     void selectLine(const KTextEditor::Cursor cursor);
@@ -375,7 +375,7 @@ public:
 public:
     bool tagLine(const KTextEditor::Cursor virtualCursor);
 
-    bool tagRange(const KTextEditor::Range &range, bool realLines = false);
+    bool tagRange(KTextEditor::Range range, bool realLines = false);
     bool tagLines(KTextEditor::LineRange lineRange, bool realLines = false);
     bool tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors = false);
     bool tagLines(KTextEditor::Range range, bool realRange = false);

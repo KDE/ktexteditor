@@ -1347,7 +1347,7 @@ void ModesTest::VisualCommandsTests()
         KateBuffer &buffer = kate_document->buffer();
         QVector<Kate::TextRange *> ranges = buffer.rangesForLine(1, kate_view, true);
         QCOMPARE(ranges.size(), 1);
-        const KTextEditor::Range &range = ranges[0]->toRange();
+        KTextEditor::Range range = ranges[0]->toRange();
         QCOMPARE(range.start().column(), 1);
         QCOMPARE(range.end().column(), 3);
     }

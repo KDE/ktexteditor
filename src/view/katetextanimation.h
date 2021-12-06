@@ -31,7 +31,7 @@ class KateTextAnimation : public QObject
 {
     Q_OBJECT
 public:
-    KateTextAnimation(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view);
+    KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view);
     ~KateTextAnimation() override;
 
     // draw the text to highlight, given the current animation progress

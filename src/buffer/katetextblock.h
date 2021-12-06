@@ -138,7 +138,7 @@ public:
      * @param range range of text to remove, must be on one line only.
      * @param removedText will be filled with removed text
      */
-    void removeText(const KTextEditor::Range &range, QString &removedText);
+    void removeText(KTextEditor::Range range, QString &removedText);
 
     /**
      * Debug output, print whole block content with line numbers and line length

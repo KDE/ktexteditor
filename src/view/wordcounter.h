@@ -31,8 +31,8 @@ Q_SIGNALS:
     void changed(int wordsInDocument, int wordsInSelection, int charsInDocument, int charsInSelection);
 
 private Q_SLOTS:
-    void textInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
+    void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
+    void textRemoved(KTextEditor::Document *document, KTextEditor::Range range, const QString &oldText);
     void recalculate(KTextEditor::Document *document);
     void selectionChanged(KTextEditor::View *view);
     void recalculateLines();

@@ -29,7 +29,7 @@ WordCounter::WordCounter(KTextEditor::ViewPrivate *view)
     recalculate(m_document);
 }
 
-void WordCounter::textInserted(KTextEditor::Document *, const KTextEditor::Range &range)
+void WordCounter::textInserted(KTextEditor::Document *, KTextEditor::Range range)
 {
     auto startLine = m_countByLine.begin() + range.start().line();
     auto endLine = m_countByLine.begin() + range.end().line();
@@ -47,7 +47,7 @@ void WordCounter::textInserted(KTextEditor::Document *, const KTextEditor::Range
     m_timer.start();
 }
 
-void WordCounter::textRemoved(KTextEditor::Document *, const KTextEditor::Range &range, const QString &)
+void WordCounter::textRemoved(KTextEditor::Document *, KTextEditor::Range range, const QString &)
 {
     const auto startLine = m_countByLine.begin() + range.start().line();
     const auto endLine = m_countByLine.begin() + range.end().line();

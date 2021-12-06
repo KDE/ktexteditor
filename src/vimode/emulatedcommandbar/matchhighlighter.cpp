@@ -31,7 +31,7 @@ MatchHighlighter::~MatchHighlighter()
     delete m_highlightedMatch;
 }
 
-void MatchHighlighter::updateMatchHighlight(const KTextEditor::Range &matchRange)
+void MatchHighlighter::updateMatchHighlight(KTextEditor::Range matchRange)
 {
     // Note that if matchRange is invalid, the highlight will not be shown, so we
     // don't need to check for that explicitly.

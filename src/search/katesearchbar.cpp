@@ -311,7 +311,7 @@ void KateSearchBar::showResultMessage()
     }
 }
 
-void KateSearchBar::highlightMatch(const Range &range)
+void KateSearchBar::highlightMatch(Range range)
 {
     KTextEditor::MovingRange *const highlight = m_view->doc()->newMovingRange(range, Kate::TextRange::DoNotExpand);
     highlight->setView(m_view); // show only in this view
@@ -322,7 +322,7 @@ void KateSearchBar::highlightMatch(const Range &range)
     m_hlRanges.append(highlight);
 }
 
-void KateSearchBar::highlightReplacement(const Range &range)
+void KateSearchBar::highlightReplacement(Range range)
 {
     KTextEditor::MovingRange *const highlight = m_view->doc()->newMovingRange(range, Kate::TextRange::DoNotExpand);
     highlight->setView(m_view); // show only in this view
@@ -390,13 +390,13 @@ void KateSearchBar::indicateMatch(MatchResult matchResult)
     lineEdit->setPalette(background);
 }
 
-/*static*/ void KateSearchBar::selectRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
+/*static*/ void KateSearchBar::selectRange(KTextEditor::ViewPrivate *view, KTextEditor::Range range)
 {
     view->setCursorPositionInternal(range.end());
     view->setSelection(range);
 }
 
-void KateSearchBar::selectRange2(const KTextEditor::Range &range)
+void KateSearchBar::selectRange2(KTextEditor::Range range)
 {
     disconnect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
     selectRange(m_view, range);

@@ -39,7 +39,7 @@ public:
     /**
      * 'r2' is a subrange of 'r1', which is extracted from 'r1' and the remaining ranges are returned
      **/
-    static QList<KTextEditor::Range> rangeDifference(const KTextEditor::Range &r1, const KTextEditor::Range &r2);
+    static QList<KTextEditor::Range> rangeDifference(KTextEditor::Range r1, KTextEditor::Range r2);
 
 Q_SIGNALS:
     /**
@@ -50,16 +50,16 @@ Q_SIGNALS:
     void wordIgnored(const QString &word);
 
 public:
-    QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range);
 
     QList<QPair<KTextEditor::Range, QString>> spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc,
-                                                                              const KTextEditor::Range &range,
+                                                                              KTextEditor::Range range,
                                                                               const QString &dictionary = QString(),
                                                                               bool singleLine = false,
                                                                               bool returnSingleRange = false);
-    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, bool singleLine = false);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine = false);
 
-    void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &replacementRange);
+    void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, KTextEditor::Range replacementRange);
 
 private:
     void trimRange(KTextEditor::DocumentPrivate *doc, KTextEditor::Range &r);

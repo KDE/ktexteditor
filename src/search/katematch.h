@@ -22,7 +22,7 @@ class KateMatch
 {
 public:
     KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::SearchOptions options);
-    KTextEditor::Range searchText(const KTextEditor::Range &range, const QString &pattern);
+    KTextEditor::Range searchText(KTextEditor::Range range, const QString &pattern);
     KTextEditor::Range replace(const QString &replacement, bool blockMode, int replacementCounter = 1);
     bool isValid() const;
     bool isEmpty() const;

@@ -2157,7 +2157,7 @@ bool KTextEditor::ViewPrivate::tagLine(const KTextEditor::Cursor virtualCursor)
     return m_viewInternal->tagLine(virtualCursor);
 }
 
-bool KTextEditor::ViewPrivate::tagRange(const KTextEditor::Range &range, bool realLines)
+bool KTextEditor::ViewPrivate::tagRange(KTextEditor::Range range, bool realLines)
 {
     return m_viewInternal->tagRange(range, realLines);
 }
@@ -2383,7 +2383,7 @@ bool KTextEditor::ViewPrivate::lineIsSelection(int line)
     return (line == m_selection.start().line() && line == m_selection.end().line());
 }
 
-void KTextEditor::ViewPrivate::tagSelection(const KTextEditor::Range &oldSelection)
+void KTextEditor::ViewPrivate::tagSelection(KTextEditor::Range oldSelection)
 {
     if (selection()) {
         if (oldSelection.start().line() == -1) {

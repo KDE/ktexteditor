@@ -106,7 +106,7 @@ public:
     // cursors not const references as they are manipulated within
     bool tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors = false);
 
-    bool tagRange(const KTextEditor::Range &range, bool realCursors);
+    bool tagRange(KTextEditor::Range range, bool realCursors);
 
     void tagAll();
 
@@ -286,7 +286,7 @@ private:
     int lineToY(int viewLine) const;
 
     void updateSelection(const KTextEditor::Cursor, bool keepSel);
-    void setSelection(const KTextEditor::Range &);
+    void setSelection(KTextEditor::Range);
     void moveCursorToSelectionEdge();
     void updateCursor(const KTextEditor::Cursor newCursor, bool force = false, bool center = false, bool calledExternally = false);
     void updateBracketMarks();
@@ -295,7 +295,7 @@ private:
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);
     // Returns whether the given range affects the area currently visible in the view
-    bool rangeAffectsView(const KTextEditor::Range &range, bool realCursors) const;
+    bool rangeAffectsView(KTextEditor::Range range, bool realCursors) const;
 
     void doDrag();
 
@@ -449,8 +449,8 @@ private Q_SLOTS:
     void cursorTimeout();
     void textHintTimeout();
 
-    void documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
-    void documentTextRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
+    void documentTextInserted(KTextEditor::Document *document, KTextEditor::Range range);
+    void documentTextRemoved(KTextEditor::Document *document, KTextEditor::Range range, const QString &oldText);
 
     //
     // KTE::TextHintInterface

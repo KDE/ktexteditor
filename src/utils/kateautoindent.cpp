@@ -360,7 +360,7 @@ void KateAutoIndent::updateConfig()
     indentWidth = config->indentationWidth();
 }
 
-bool KateAutoIndent::changeIndent(const KTextEditor::Range &range, int change)
+bool KateAutoIndent::changeIndent(KTextEditor::Range range, int change)
 {
     std::vector<int> skippedLines;
 
@@ -390,7 +390,7 @@ bool KateAutoIndent::changeIndent(const KTextEditor::Range &range, int change)
     return true;
 }
 
-void KateAutoIndent::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
+void KateAutoIndent::indent(KTextEditor::ViewPrivate *view, KTextEditor::Range range)
 {
     // no script, do nothing...
     if (!m_script) {

@@ -177,7 +177,7 @@ void KateSpellCheckDialog::corrected(const QString &word, int pos, const QString
     performSpellCheck(KTextEditor::Range(replacementStartCursor, m_globalSpellCheckRange->end()));
 }
 
-void KateSpellCheckDialog::performSpellCheck(const KTextEditor::Range &range)
+void KateSpellCheckDialog::performSpellCheck(KTextEditor::Range range)
 {
     if (range.isEmpty()) {
         spellCheckDone();
@@ -210,7 +210,7 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
     m_currentDecToEncOffsetList.clear();
     QList<QPair<KTextEditor::Range, QString>> rangeDictionaryPairList;
     while (m_currentLanguageRangeIterator != m_languagesInSpellCheckRange.end()) {
-        const KTextEditor::Range &currentLanguageRange = (*m_currentLanguageRangeIterator).first;
+        KTextEditor::Range currentLanguageRange = (*m_currentLanguageRangeIterator).first;
         const QString &dictionary = (*m_currentLanguageRangeIterator).second;
         KTextEditor::Range languageSubRange =
             (nextRangeBegin.isValid() ? KTextEditor::Range(nextRangeBegin, currentLanguageRange.end()) : currentLanguageRange);

@@ -64,7 +64,7 @@ public:
     }
 
     // Selects all lines in range;
-    void selectLines(const KTextEditor::Range &range);
+    void selectLines(KTextEditor::Range range);
 
     // Selects range between c1 and c2, but includes the end cursor position.
     void selectInclusive(const KTextEditor::Cursor c1, const KTextEditor::Cursor c2);

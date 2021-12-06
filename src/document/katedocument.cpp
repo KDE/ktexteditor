@@ -1726,7 +1726,7 @@ void KTextEditor::DocumentPrivate::redo()
 
 // BEGIN KTextEditor::SearchInterface stuff
 QVector<KTextEditor::Range>
-KTextEditor::DocumentPrivate::searchText(const KTextEditor::Range &range, const QString &pattern, const KTextEditor::SearchOptions options) const
+KTextEditor::DocumentPrivate::searchText(KTextEditor::Range range, const QString &pattern, const KTextEditor::SearchOptions options) const
 {
     const bool escapeSequences = options.testFlag(KTextEditor::EscapeSequences);
     const bool regexMode = options.testFlag(KTextEditor::Regex);
@@ -3521,7 +3521,7 @@ void KTextEditor::DocumentPrivate::indent(KTextEditor::Range range, int change)
     editEnd();
 }
 
-void KTextEditor::DocumentPrivate::align(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
+void KTextEditor::DocumentPrivate::align(KTextEditor::ViewPrivate *view, KTextEditor::Range range)
 {
     m_indenter->indent(view, range);
 }
@@ -5603,7 +5603,7 @@ void KTextEditor::DocumentPrivate::clearDictionaryRanges()
     Q_EMIT dictionaryRangesPresent(false);
 }
 
-void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, const KTextEditor::Range &range, bool blockmode)
+void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, KTextEditor::Range range, bool blockmode)
 {
     if (blockmode) {
         for (int i = range.start().line(); i <= range.end().line(); ++i) {
@@ -5616,7 +5616,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
     Q_EMIT dictionaryRangesPresent(!m_dictionaryRanges.isEmpty());
 }
 
-void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, const KTextEditor::Range &range)
+void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, KTextEditor::Range range)
 {
     KTextEditor::Range newDictionaryRange = range;
     if (!newDictionaryRange.isValid() || newDictionaryRange.isEmpty()) {
@@ -5718,7 +5718,7 @@ bool KTextEditor::DocumentPrivate::isOnTheFlySpellCheckingEnabled() const
     return m_onTheFlyChecker != nullptr;
 }
 
-QString KTextEditor::DocumentPrivate::dictionaryForMisspelledRange(const KTextEditor::Range &range) const
+QString KTextEditor::DocumentPrivate::dictionaryForMisspelledRange(KTextEditor::Range range) const
 {
     if (!m_onTheFlyChecker) {
         return QString();
@@ -5734,7 +5734,7 @@ void KTextEditor::DocumentPrivate::clearMisspellingForWord(const QString &word)
     }
 }
 
-void KTextEditor::DocumentPrivate::refreshOnTheFlyCheck(const KTextEditor::Range &range)
+void KTextEditor::DocumentPrivate::refreshOnTheFlyCheck(KTextEditor::Range range)
 {
     if (m_onTheFlyChecker) {
         m_onTheFlyChecker->refreshSpellCheck(range);
@@ -5769,7 +5769,7 @@ void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRang
     Q_ASSERT(std::find_if(m_dictionaryRanges.begin(), m_dictionaryRanges.end(), finder) == m_dictionaryRanges.end());
 }
 
-bool KTextEditor::DocumentPrivate::containsCharacterEncoding(const KTextEditor::Range &range)
+bool KTextEditor::DocumentPrivate::containsCharacterEncoding(KTextEditor::Range range)
 {
     KateHighlighting *highlighting = highlight();
 
@@ -5806,7 +5806,7 @@ int KTextEditor::DocumentPrivate::computePositionWrtOffsets(const OffsetList &of
     return pos + previousOffset;
 }
 
-QString KTextEditor::DocumentPrivate::decodeCharacters(const KTextEditor::Range &range,
+QString KTextEditor::DocumentPrivate::decodeCharacters(KTextEditor::Range range,
                                                        KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
                                                        KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList)
 {
@@ -5864,7 +5864,7 @@ QString KTextEditor::DocumentPrivate::decodeCharacters(const KTextEditor::Range 
     return toReturn;
 }
 
-void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(const KTextEditor::Range &range)
+void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(KTextEditor::Range range)
 {
     KateHighlighting *highlighting = highlight();
     Kate::TextLine textLine;

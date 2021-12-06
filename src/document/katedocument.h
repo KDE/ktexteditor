@@ -409,7 +409,7 @@ Q_SIGNALS:
     void undoChanged();
 
 public:
-    QVector<KTextEditor::Range> searchText(const KTextEditor::Range &range, const QString &pattern, const KTextEditor::SearchOptions options) const;
+    QVector<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const KTextEditor::SearchOptions options) const;
 
 private:
     /**
@@ -852,7 +852,7 @@ public:
 public:
     void indent(KTextEditor::Range range, int change);
     void comment(KTextEditor::ViewPrivate *view, uint line, uint column, int change);
-    void align(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
+    void align(KTextEditor::ViewPrivate *view, KTextEditor::Range range);
     void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
 
     enum TextTransform { Uppercase, Lowercase, Capitalize };
@@ -1044,7 +1044,7 @@ public:
     Kate::TextLine plainKateTextLine(int i);
 
 Q_SIGNALS:
-    void aboutToRemoveText(const KTextEditor::Range &);
+    void aboutToRemoveText(KTextEditor::Range);
 
 private Q_SLOTS:
     void slotModOnHdDirty(const QString &path);
@@ -1260,23 +1260,23 @@ public:
     QList<QPair<KTextEditor::MovingRange *, QString>> dictionaryRanges() const;
     bool isOnTheFlySpellCheckingEnabled() const;
 
-    QString dictionaryForMisspelledRange(const KTextEditor::Range &range) const;
+    QString dictionaryForMisspelledRange(KTextEditor::Range range) const;
     void clearMisspellingForWord(const QString &word);
 
 public Q_SLOTS:
     void clearDictionaryRanges();
-    void setDictionary(const QString &dict, const KTextEditor::Range &range, bool blockmode);
-    void setDictionary(const QString &dict, const KTextEditor::Range &range);
+    void setDictionary(const QString &dict, KTextEditor::Range range, bool blockmode);
+    void setDictionary(const QString &dict, KTextEditor::Range range);
     void setDefaultDictionary(const QString &dict);
     void onTheFlySpellCheckingEnabled(bool enable);
-    void refreshOnTheFlyCheck(const KTextEditor::Range &range = KTextEditor::Range::invalid());
+    void refreshOnTheFlyCheck(KTextEditor::Range range = KTextEditor::Range::invalid());
 
 Q_SIGNALS:
     void dictionaryRangesPresent(bool yesNo);
     void defaultDictionaryChanged(KTextEditor::DocumentPrivate *document);
 
 public:
-    bool containsCharacterEncoding(const KTextEditor::Range &range);
+    bool containsCharacterEncoding(KTextEditor::Range range);
 
     typedef QList<QPair<int, int>> OffsetList;
 
@@ -1286,10 +1286,10 @@ public:
      * The first OffsetList is from decoded to encoded, and the second OffsetList from
      * encoded to decoded.
      **/
-    QString decodeCharacters(const KTextEditor::Range &range,
+    QString decodeCharacters(KTextEditor::Range range,
                              KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
                              KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
-    void replaceCharactersByEncoding(const KTextEditor::Range &range);
+    void replaceCharactersByEncoding(KTextEditor::Range range);
 
 protected:
     KateOnTheFlyChecker *m_onTheFlyChecker = nullptr;

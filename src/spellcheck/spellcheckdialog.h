@@ -68,7 +68,7 @@ private Q_SLOTS:
     void misspelling(const QString &, int);
     void corrected(const QString &, int, const QString &);
 
-    void performSpellCheck(const KTextEditor::Range &range);
+    void performSpellCheck(KTextEditor::Range range);
     void installNextSpellCheckRange();
 
     void cancelClicked();

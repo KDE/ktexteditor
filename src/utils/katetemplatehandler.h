@@ -172,7 +172,7 @@ private Q_SLOTS:
      * tabs could get expanded on insert. While we are at it, we can
      * use it to auto-indent the code after insert.
      */
-    void slotTemplateInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
+    void slotTemplateInserted(KTextEditor::Document *document, KTextEditor::Range range);
 
     /**
      * Install event filter on new views.
@@ -182,7 +182,7 @@ private Q_SLOTS:
     /**
      * Update content of all dependent fields, i.e. mirror or script fields.
      */
-    void updateDependentFields(KTextEditor::Document *document, const KTextEditor::Range &oldRange);
+    void updateDependentFields(KTextEditor::Document *document, KTextEditor::Range oldRange);
 
 public:
     KTextEditor::ViewPrivate *view() const;
@@ -221,7 +221,7 @@ private:
     QVector<TemplateField> m_fields;
 
     // Get the template field which contains @p range.
-    const TemplateField fieldForRange(const KTextEditor::Range &range) const;
+    const TemplateField fieldForRange(KTextEditor::Range range) const;
 
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;

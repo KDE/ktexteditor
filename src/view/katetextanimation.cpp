@@ -17,7 +17,7 @@
 #include <QSizeF>
 #include <QTimeLine>
 
-KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
+KateTextAnimation::KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
     : QObject(view)
     , m_range(range)
     , m_attribute(std::move(attribute))

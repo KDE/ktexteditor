@@ -139,7 +139,7 @@ private Q_SLOTS:
     void wrapLine(const KTextEditor::Cursor position);
     void unwrapLine(int line);
     void insertText(const KTextEditor::Cursor position, const QString &text);
-    void removeText(const KTextEditor::Range &range);
+    void removeText(KTextEditor::Range range);
 
 private:
     KateRenderer *m_renderer;

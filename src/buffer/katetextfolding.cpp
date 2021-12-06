@@ -14,7 +14,7 @@
 
 namespace Kate
 {
-TextFolding::FoldingRange::FoldingRange(TextBuffer &buffer, const KTextEditor::Range &range, FoldingRangeFlags _flags)
+TextFolding::FoldingRange::FoldingRange(TextBuffer &buffer, KTextEditor::Range range, FoldingRangeFlags _flags)
     : start(new TextCursor(buffer, range.start(), KTextEditor::MovingCursor::MoveOnInsert))
     , end(new TextCursor(buffer, range.end(), KTextEditor::MovingCursor::MoveOnInsert))
     , parent(nullptr)
@@ -74,7 +74,7 @@ void TextFolding::clearFoldingRanges()
     Q_EMIT foldingRangesChanged();
 }
 
-qint64 TextFolding::newFoldingRange(const KTextEditor::Range &range, FoldingRangeFlags flags)
+qint64 TextFolding::newFoldingRange(KTextEditor::Range range, FoldingRangeFlags flags)
 {
     // sort out invalid and empty ranges
     // that makes no sense, they will never grow again!

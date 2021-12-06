@@ -4011,7 +4011,7 @@ void NormalViMode::highlightYank(const Range &range, const OperationMode mode)
     }
 }
 
-void NormalViMode::addHighlightYank(const KTextEditor::Range &yankRange)
+void NormalViMode::addHighlightYank(KTextEditor::Range yankRange)
 {
     KTextEditor::MovingRange *highlightedYank = m_view->doc()->newMovingRange(yankRange, Kate::TextRange::DoNotExpand);
     highlightedYank->setView(m_view); // show only in this view

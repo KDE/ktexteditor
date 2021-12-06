@@ -56,7 +56,7 @@ public:
      * \see KTextEditor::Range, QRegularExpression
      */
     QVector<KTextEditor::Range> search(const QString &pattern,
-                                       const KTextEditor::Range &inputRange,
+                                       KTextEditor::Range inputRange,
                                        bool backwards = false,
                                        QRegularExpression::PatternOptions options = QRegularExpression::NoPatternOption);
 

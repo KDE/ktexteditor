@@ -361,7 +361,7 @@ void TextBuffer::insertText(const KTextEditor::Cursor position, const QString &t
     }
 }
 
-void TextBuffer::removeText(const KTextEditor::Range &range)
+void TextBuffer::removeText(KTextEditor::Range range)
 {
     // debug output for REAL low-level debugging
     BUFFER_DEBUG << "removeText" << range;

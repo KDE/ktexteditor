@@ -48,7 +48,7 @@ public:
      * @param insertBehavior Define whether the range should expand when text is inserted adjacent to the range.
      * @param emptyBehavior Define whether the range should invalidate itself on becoming empty.
      */
-    TextRange(TextBuffer &buffer, const KTextEditor::Range &range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
+    TextRange(TextBuffer &buffer, KTextEditor::Range range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
 
     /**
      * Destruct the text block

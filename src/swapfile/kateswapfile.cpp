@@ -511,7 +511,7 @@ void SwapFile::insertText(const KTextEditor::Cursor position, const QString &tex
     m_needSync = true;
 }
 
-void SwapFile::removeText(const KTextEditor::Range &range)
+void SwapFile::removeText(KTextEditor::Range range)
 {
     // skip if not open
     if (!m_swapfile.isOpen()) {
