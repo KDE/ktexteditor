@@ -3872,7 +3872,7 @@ void NormalViMode::reformatLines(unsigned int from, unsigned int to) const
 {
     // BUG #340550: Do not remove empty lines when reformatting
     KTextEditor::DocumentPrivate *document = doc();
-    auto isNonEmptyLine = [this](QStringView text) {
+    auto isNonEmptyLine = [](QStringView text) {
         for (int i = 0; i < text.length(); ++i) {
             if (!text.at(i).isSpace()) {
                 return true;
