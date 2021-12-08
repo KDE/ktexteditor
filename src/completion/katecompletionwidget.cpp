@@ -954,11 +954,11 @@ bool KateCompletionWidget::execute()
     // NOTE: The ViInputMode makes assumptions about the edit actions in a completion and breaks if we insert extra
     // edits here, so we just disable this feature for ViInputMode
     if (!tailStr.isEmpty() && view()->viewInputMode() != KTextEditor::View::ViInputMode) {
-        std::unique_ptr<KTextEditor::MovingCursor> cursorPos(view()->doc()->newMovingCursor(view()->cursorPosition()));
+        KTextEditor::Cursor currentPos = view()->cursorPosition();
         KTextEditor::Cursor afterPos = afterTailMCursor->toCursor();
         // Re add the tail for a possible undo to bring the tail back
         view()->document()->insertText(afterPos, tailStr);
-        view()->setCursorPosition(cursorPos->toCursor());
+        view()->setCursorPosition(currentPos);
         view()->doc()->editEnd();
 
         // Now remove the tail in a separate edit
@@ -966,7 +966,6 @@ bool KateCompletionWidget::execute()
         endPos.setColumn(afterPos.column() + tailStr.size());
         view()->doc()->editStart();
         view()->document()->removeText(KTextEditor::Range(afterPos, endPos));
-        view()->setCursorPosition(cursorPos->toCursor());
     }
 
     view()->doc()->editEnd();
