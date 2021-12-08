@@ -329,7 +329,29 @@ set_target_properties(KF5TextEditor
 
 # precompiled headers support
 if(ENABLE_PCH)
-    target_precompile_headers(KF5TextEditor PRIVATE pch.h)
+    target_precompile_headers(KF5TextEditor
+        PRIVATE
+            <QHash>
+            <QList>
+            <QMap>
+            <QPointer>
+            <QSharedData>
+            <QSharedPointer>
+            <QString>
+            <QStringList>
+            <QTextFormat>
+            <QTimer>
+            <QVariant>
+            <QVector>
+            <QWidget>
+            <algorithm>
+            <functional>
+            <memory>
+            <string>
+            <type_traits>
+            <utility>
+            <vector>
+    )
 endif()
 
 install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
