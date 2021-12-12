@@ -13,8 +13,6 @@
 #include <QObject>
 #include <QPointer>
 
-#include <ktexteditor_export.h>
-
 class QTimer;
 namespace KTextEditor
 {
@@ -32,7 +30,7 @@ namespace Kate
  * In case Kate crashes, this can be used to replay all edit actions to
  * recover the lost data.
  */
-class KTEXTEDITOR_EXPORT SwapFile : public QObject
+class SwapFile : public QObject
 {
     Q_OBJECT
 
