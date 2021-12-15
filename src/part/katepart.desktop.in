@@ -61,6 +61,7 @@ Name[zh_TW]=嵌入式進階文字編輯器
 Comment=Reusable text editor component
 Comment[az]=Təkrar istifadə olunabilən mətn redaktoru hissələri
 Comment[ca]=Component reutilitzable d'edició de text
+Comment[ca@valencia]=Component reutilitzable d'edició de text
 Comment[es]=Componente de edición de texto reutilizable
 Comment[fi]=Uudelleenkäytettävä tekstimuokkainosa
 Comment[fr]=Composant réutilisable pour éditeur de texte
