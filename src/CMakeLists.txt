@@ -308,8 +308,8 @@ PUBLIC
   KF5::Parts
   KF5::SyntaxHighlighting
 PRIVATE
-  Qt5::Qml
-  Qt5::PrintSupport
+  Qt${QT_MAJOR_VERSION}::Qml
+  Qt${QT_MAJOR_VERSION}::PrintSupport
   KF5::I18n
   KF5::Archive
   KF5::GuiAddons

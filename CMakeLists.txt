@@ -46,8 +46,11 @@ ecm_setup_version(
 set(REQUIRED_QT_VERSION 5.15.2)
 
 # Required Qt5 components to build this framework
-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
+find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
   PrintSupport Xml)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6Core5Compat)
+endif()
 
 find_package(KF5Archive ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Config ${KF_DEP_VERSION} REQUIRED)
@@ -114,7 +117,7 @@ install(EXPORT
 
 install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_version.h"
-  DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
+  DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF}"
   COMPONENT Devel
 )
 
