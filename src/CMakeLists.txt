@@ -7,6 +7,7 @@ add_subdirectory( script/data )
 if(EditorConfig_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES ${EditorConfig_LIBRARIES})
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} ${EditorConfig_LIBRARIES})
+    include_directories(${EditorConfig_INCLUDE_DIRS})
 endif()
 
 # handle include files, both normal ones and generated ones
