@@ -127,6 +127,7 @@ public:
         return QLatin1Char('[') + m_start.toString() + QLatin1String(", ") + m_end.toString() + QLatin1Char(']');
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     /**
      * Returns a Range created from the string \p str containing the format
      * "[(start-line, start-column), (endl-line:end-column)]".
@@ -147,6 +148,7 @@ public:
      */
     // TODO KF6: Remove this overload in favor of fromString(QStringView).
     static Range fromString(const QStringRef &str) Q_DECL_NOEXCEPT;
+#endif
 
     /**
      * Returns a Range created from the string \p str containing the format

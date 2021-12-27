@@ -128,6 +128,7 @@ public:
         return QLatin1Char('(') + QString::number(m_line) + QLatin1String(", ") + QString::number(m_column) + QLatin1Char(')');
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     /**
      * Returns a Cursor created from the string \p str containing the format
      * "(line, column)". In case the string cannot be parsed, Cursor::invalid()
@@ -148,6 +149,7 @@ public:
      */
     // TODO KF6: Remove this overload in favor of fromString(QStringView).
     static Cursor fromString(const QStringRef &str) Q_DECL_NOEXCEPT;
+#endif
 
     /**
      * Returns a Cursor created from the string \p str containing the format
