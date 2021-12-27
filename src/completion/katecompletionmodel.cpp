@@ -714,9 +714,7 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
     if (m_groupHash.contains(groupingAttribute)) {
         if (groupingMethod() & Scope) {
-            for (QHash<int, Group *>::ConstIterator it = m_groupHash.constFind(groupingAttribute);
-                 it != m_groupHash.constEnd() && it.key() == groupingAttribute;
-                 ++it) {
+            for (auto it = m_groupHash.constFind(groupingAttribute); it != m_groupHash.constEnd() && it.key() == groupingAttribute; ++it) {
                 if (it.value()->scope == scope) {
                     return it.value();
                 }
