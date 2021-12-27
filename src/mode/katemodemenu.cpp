@@ -13,6 +13,8 @@
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"
+
+#include <QActionGroup>
 // END Includes
 
 void KateModeMenu::init()

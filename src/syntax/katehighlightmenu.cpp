@@ -12,6 +12,7 @@
 
 #include <KLocalizedString>
 
+#include <QActionGroup>
 #include <QMenu>
 // END Includes
 

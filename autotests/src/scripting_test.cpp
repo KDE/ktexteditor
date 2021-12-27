@@ -27,7 +27,6 @@
 #include <QString>
 #include <QTextStream>
 #include <QTimer>
-#include <Q_PID>
 
 #include <QtTestWidgets>
 

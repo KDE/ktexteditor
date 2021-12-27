@@ -14,8 +14,8 @@
 #include <ktexteditor_export.h>
 
 #include <QObject>
+#include <QStringList>
 
-class QStringList;
 class KCompletion;
 
 namespace KTextEditor

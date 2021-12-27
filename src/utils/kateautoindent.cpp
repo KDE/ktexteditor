@@ -24,6 +24,8 @@
 
 #include <KLocalizedString>
 
+#include <QActionGroup>
+
 #include <cctype>
 
 namespace

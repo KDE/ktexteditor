@@ -20,6 +20,7 @@
 #include <KIconUtils>
 #include <Sonnet/Speller>
 
+#include <QActionGroup>
 #include <QHBoxLayout>
 #include <QInputDialog>
 

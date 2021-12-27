@@ -63,6 +63,7 @@
 #include <KToggleAction>
 #include <KXMLGUIFactory>
 
+#include <QActionGroup>
 #include <QApplication>
 #include <QClipboard>
 #include <QFileDialog>

@@ -55,6 +55,7 @@ namespace Kate
 class TextRange;
 }
 
+class QTextCodec;
 class QTimer;
 class QVBoxLayout;
 
