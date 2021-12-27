@@ -212,7 +212,7 @@ private:
         Kind kind = Invalid;
         // true if this field was edited by the user before
         bool touched = false;
-        bool operator==(const TemplateField &other)
+        bool operator==(const TemplateField &other) const
         {
             return range == other.range;
         }
