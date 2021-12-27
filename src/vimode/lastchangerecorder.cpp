@@ -68,7 +68,7 @@ QString LastChangeRecorder::encodedChanges() const
             key = text.at(0);
         }
 
-        if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || (mods != Qt::NoModifier && mods != Qt::ShiftModifier)) {
+        if (text.isEmpty() || (text.length() == 1 && text.at(0) < QChar(0x20)) || (mods != Qt::NoModifier && mods != Qt::ShiftModifier)) {
             QString keyPress;
 
             keyPress.append(QLatin1Char('<'));

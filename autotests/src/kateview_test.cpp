@@ -561,10 +561,10 @@ void KateViewTest::testTransposeWord()
 
     view->setCursorPosition(swaps);
     QCOMPARE(view->cursorPosition(), swaps);
-    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "a");
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), QLatin1Char('a'));
     view->transposeWord();
     QCOMPARE(view->cursorPosition(), swaps + KTextEditor::Cursor(0, 8)); // " forward" has 8 characters
-    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "a"); // retain relative position inside the word
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), QLatin1Char('a')); // retain relative position inside the word
 
     view->transposeWord();
     QCOMPARE(view->cursorPosition(), swaps); // when the word is already last in line, swap backwards instead
@@ -572,17 +572,17 @@ void KateViewTest::testTransposeWord()
     view->setCursorPosition(wordAbove);
     view->transposeWord();
     QCOMPARE(view->cursorPosition(), wordAbove); // when there is no other word in the line, do nothing
-    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "A");
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), QLatin1Char('A'));
 
     view->setCursorPosition(wordLeft);
     view->transposeWord();
     QCOMPARE(view->cursorPosition(), wordLeft); // when next word is invalid (made up of only symbols, in this case "(") do nothing
-    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "o");
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), QLatin1Char('o'));
 
     view->setCursorPosition(skips);
     view->transposeWord();
     QCOMPARE(view->cursorPosition(), skips + KTextEditor::Cursor(0, 7)); // transpose word beginning with a symbol
-    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), "_");
+    QCOMPARE(view->doc()->characterAt(view->cursorPosition()), QLatin1Char('_'));
 
     view->setCursorPosition(And);
     view->transposeWord();

@@ -189,7 +189,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         }
     }
 
-    if (m_keys[0] == Qt::Key_QuoteDbl) {
+    if (m_keys[0] == QChar(Qt::Key_QuoteDbl)) {
         if (m_keys.size() < 2) {
             return true; // waiting for a register
         } else {

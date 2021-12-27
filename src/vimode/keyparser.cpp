@@ -568,7 +568,7 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                                     endOfBlock = keys.length() - 1;
                                 }
                                 encodedSequence.clear();
-                                encodedSequence.append(m_nameToKeyCode.value(QStringLiteral("invalid")));
+                                encodedSequence.append(QChar(m_nameToKeyCode.value(QStringLiteral("invalid"))));
                                 break;
                             }
                         }
@@ -672,7 +672,7 @@ const QChar KeyParser::KeyEventToQChar(const QKeyEvent &keyEvent)
         return (!text.isEmpty()) ? text.at(0) : QChar();
     }
 
-    if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || keyCode == Qt::Key_Delete
+    if (text.isEmpty() || (text.length() == 1 && text.at(0) < QChar(0x20)) || keyCode == Qt::Key_Delete
         || (mods != Qt::NoModifier && mods != Qt::ShiftModifier && mods != Qt::KeypadModifier)) {
         QString keyPress;
         keyPress.reserve(11);
