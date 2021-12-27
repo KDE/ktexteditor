@@ -731,7 +731,7 @@ bool KateModeMenuListData::ListItem::matchExtension(const QString &text) const
         } else if (text.length() != ext.length() || ext.endsWith(QLatin1Char('*'))) {
             continue;
             // Full name
-        } else if (text.compare(&ext, Qt::CaseInsensitive) == 0) {
+        } else if (text.compare(ext, Qt::CaseInsensitive) == 0) {
             return true;
         }
     }
@@ -983,8 +983,8 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
          * be displayed, as it isn't necessary.
          */
         if (!bNotShowBestResults
-            && (item->getSearchName().compare(&searchText, m_caseSensitivity) == 0
-                || (bExactMatch && item->getMode()->nameTranslated().compare(&searchText, m_caseSensitivity) == 0))) {
+            && (item->getSearchName().compare(searchText, m_caseSensitivity) == 0
+                || (bExactMatch && item->getMode()->nameTranslated().compare(searchText, m_caseSensitivity) == 0))) {
             if (lastItem == -1) {
                 bNotShowBestResults = true;
             } else {
