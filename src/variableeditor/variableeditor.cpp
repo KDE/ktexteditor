@@ -62,7 +62,11 @@ VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)
     setMouseTracking(true);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void VariableEditor::enterEvent(QEvent *event)
+#else
+void VariableEditor::enterEvent(QEnterEvent *event)
+#endif
 {
     QWidget::enterEvent(event);
     m_btnHelp->setIconState(KateHelpButton::IconColored);
