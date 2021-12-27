@@ -165,7 +165,7 @@ QByteArray ScriptTestBase::digestForFile(const QString &file)
         // init the hash with the git header
         QCryptographicHash crypto(QCryptographicHash::Sha1);
         const QString header = QString(QLatin1String("blob %1")).arg(f.size());
-        crypto.addData(header.toLatin1() + '\0');
+        crypto.addData(QByteArray(header.toLatin1() + '\0'));
 
         while (!f.atEnd()) {
             crypto.addData(f.read(256 * 1024));

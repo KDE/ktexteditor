@@ -93,7 +93,7 @@ public:
         // init the hash with the git header
         const QString header = QStringLiteral("blob %1").arg(m_fileSize);
         m_digest.reset();
-        m_digest.addData(header.toLatin1() + '\0');
+        m_digest.addData(QByteArray(header.toLatin1() + '\0'));
 
         // if already opened, close the file...
         if (m_file->isOpen()) {
