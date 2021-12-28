@@ -407,7 +407,7 @@ void KateScrollBar::showTextPreview()
         grooveRect = m_mapGroveRect;
     } else {
         QStyleOptionSlider opt;
-        opt.init(this);
+        opt.initFrom(this);
         opt.subControls = QStyle::SC_None;
         opt.activeSubControls = QStyle::SC_None;
         opt.orientation = orientation();
@@ -739,7 +739,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     QPainter painter(this);
 
     QStyleOptionSlider opt;
-    opt.init(this);
+    opt.initFrom(this);
     opt.subControls = QStyle::SC_None;
     opt.activeSubControls = QStyle::SC_None;
     opt.orientation = orientation();
@@ -925,7 +925,7 @@ void KateScrollBar::normalPaintEvent(QPaintEvent *e)
     QPainter painter(this);
 
     QStyleOptionSlider opt;
-    opt.init(this);
+    opt.initFrom(this);
     opt.subControls = QStyle::SC_None;
     opt.activeSubControls = QStyle::SC_None;
     opt.orientation = orientation();
