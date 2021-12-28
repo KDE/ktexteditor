@@ -8,8 +8,8 @@
 #include "katecompletiontree.h"
 
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QHeaderView>
+#include <QScreen>
 #include <QScrollBar>
 #include <QTimer>
 #include <QVector>
@@ -193,7 +193,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     auto totalColumnsWidth = 0;
     auto originalViewportWidth = viewport()->width();
 
-    int maxWidth = (QApplication::desktop()->screenGeometry(widget()->view()).width()) / 2;
+    const int maxWidth = widget()->screen()->availableGeometry().width() / 2;
 
     /// Step 2: Update column-sizes
     // This contains several hacks to reduce the amount of resizing that happens. Generally,

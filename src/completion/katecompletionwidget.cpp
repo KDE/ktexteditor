@@ -24,11 +24,11 @@
 #include <QAbstractScrollArea>
 #include <QApplication>
 #include <QBoxLayout>
-#include <QDesktopWidget>
 #include <QHeaderView>
 #include <QLabel>
 #include <QPushButton>
 #include <QScopedPointer>
+#include <QScreen>
 #include <QScrollBar>
 #include <QSizeGrip>
 #include <QTimer>
@@ -569,13 +569,15 @@ bool KateCompletionWidget::updatePosition(bool force)
 
     bool borderHit = false;
 
-    if (x + width() > QApplication::desktop()->screenGeometry(view()).right()) {
-        x = QApplication::desktop()->screenGeometry(view()).right() - width();
+    const int rightPos = screen()->availableGeometry().right();
+    if (x + width() > rightPos) {
+        x = rightPos - width();
         borderHit = true;
     }
 
-    if (x < QApplication::desktop()->screenGeometry(view()).left()) {
-        x = QApplication::desktop()->screenGeometry(view()).left();
+    const int leftPos = screen()->availableGeometry().left();
+    if (x < leftPos) {
+        x = leftPos;
         borderHit = true;
     }
 
@@ -697,7 +699,7 @@ void KateCompletionWidget::updateHeight()
         baseHeight = m_expandedAddedHeightBase;
     }
 
-    int screenBottom = QApplication::desktop()->screenGeometry(view()).bottom();
+    const int screenBottom = view()->screen()->availableGeometry().bottom();
 
     // Limit the height to the bottom of the screen
     int bottomPosition = baseHeight + newExpandingAddedHeight + geometry().top();
