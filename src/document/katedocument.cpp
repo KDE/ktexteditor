@@ -3475,7 +3475,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     }
 
     if (config()->ovr()) {
-        const auto pasteLines = s.splitRef(QLatin1Char('\n'));
+        const auto pasteLines = QStringView(s).split(QLatin1Char('\n'));
 
         if (!view->blockSelection()) {
             int endColumn = (pasteLines.count() == 1 ? pos.column() : 0) + pasteLines.last().length();
