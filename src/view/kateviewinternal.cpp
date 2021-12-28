@@ -4272,7 +4272,8 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
         const auto &attributes = e->attributes();
         for (auto &a : attributes) {
             if (a.type == QInputMethodEvent::Cursor) {
-                newCursor = m_imPreeditRange->start() + KTextEditor::Cursor(0, a.start);
+                const int cursor = qMin(a.start, e->preeditString().length());
+                newCursor = m_imPreeditRange->start() + KTextEditor::Cursor(0, cursor);
                 hideCursor = !a.length;
                 QColor c = qvariant_cast<QColor>(a.value);
                 if (c.isValid()) {
@@ -4281,17 +4282,18 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
 
             } else if (a.type == QInputMethodEvent::TextFormat) {
                 QTextCharFormat f = qvariant_cast<QTextFormat>(a.value).toCharFormat();
-
-                if (f.isValid() && decorationColumn <= a.start) {
+                const int start = qMin(a.start, e->preeditString().length());
+                const int end = qMin(a.start + a.length, e->preeditString().length());
+                if (f.isValid() && decorationColumn <= start && start != end) {
                     const KTextEditor::MovingCursor &preEditRangeStart = m_imPreeditRange->start();
                     const int startLine = preEditRangeStart.line();
                     const int startCol = preEditRangeStart.column();
-                    KTextEditor::Range fr(startLine, startCol + a.start, startLine, startCol + a.start + a.length);
+                    KTextEditor::Range fr(startLine, startCol + start, startLine, startCol + end);
                     std::unique_ptr<KTextEditor::MovingRange> formatRange(doc()->newMovingRange(fr));
                     KTextEditor::Attribute::Ptr attribute(new KTextEditor::Attribute());
                     attribute->merge(f);
                     formatRange->setAttribute(attribute);
-                    decorationColumn = a.start + a.length;
+                    decorationColumn = end;
                     m_imPreeditRangeChildren.push_back(std::move(formatRange));
                 }
             }
