@@ -192,3 +192,33 @@ QVariant AbbreviationCodeCompletionTestModel::data(const QModelIndex &index, int
     }
     return QVariant();
 }
+
+AsyncCodeCompletionTestModel::AsyncCodeCompletionTestModel(KTextEditor::View *parent, const QString &startText)
+    : CodeCompletionTestModel(parent, startText)
+{
+    setRowCount(0);
+}
+
+QVariant AsyncCodeCompletionTestModel::data(const QModelIndex &index, int role) const
+{
+    if (index.column() == Name && role == Qt::DisplayRole) {
+        return m_items[index.row()];
+    }
+    return QVariant();
+}
+
+void AsyncCodeCompletionTestModel::setItems(const QStringList &items)
+{
+    beginResetModel();
+    m_items = items;
+    setRowCount(m_items.size());
+    endResetModel();
+}
+
+void AsyncCodeCompletionTestModel::completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType)
+{
+    Q_UNUSED(invocationType)
+
+    Q_EMIT waitForReset();
+    CodeCompletionTestModel::completionInvoked(view, range, invocationType);
+}

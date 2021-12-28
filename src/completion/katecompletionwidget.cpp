@@ -1067,6 +1067,8 @@ void KateCompletionWidget::modelReset()
             m_entryList->expand(index);
         }
     }
+    // invalidate the filtering for async models
+    cursorPositionChanged();
     setUpdatesEnabled(true);
 }
 

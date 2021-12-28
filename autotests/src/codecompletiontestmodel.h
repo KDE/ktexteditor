@@ -48,4 +48,19 @@ private:
     QStringList m_items;
 };
 
+class AsyncCodeCompletionTestModel : public CodeCompletionTestModel
+{
+    Q_OBJECT
+
+public:
+    explicit AsyncCodeCompletionTestModel(KTextEditor::View *parent = nullptr, const QString &startText = QString());
+
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType) override;
+    void setItems(const QStringList &items);
+
+private:
+    QStringList m_items;
+};
+
 #endif

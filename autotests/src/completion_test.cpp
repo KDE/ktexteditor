@@ -503,6 +503,20 @@ void CompletionTest::testAbbrevAndContainsMatching()
     QCOMPARE(model->filteredItemCount(), (uint)0);
 }
 
+void CompletionTest::testAsyncMatching()
+{
+    KateCompletionModel *model = m_view->completionWidget()->model();
+
+    auto asyncModel = new AsyncCodeCompletionTestModel(m_view, QString());
+
+    m_view->document()->setText(QStringLiteral("matched"));
+
+    m_view->userInvokedCompletion();
+    QApplication::processEvents();
+    asyncModel->setItems({QStringLiteral("this_should_be_matched"), QStringLiteral("do_not_find_this")});
+    QCOMPARE(model->filteredItemCount(), (uint)1);
+}
+
 void CompletionTest::benchCompletionModel()
 {
     const QString text("abcdefg abcdef");

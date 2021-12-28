@@ -50,6 +50,7 @@ private Q_SLOTS:
     void testAbortImmideatelyAfterStart();
     void testJumpToListBottomAfterCursorUpWhileAtTop();
     void testAbbrevAndContainsMatching();
+    void testAsyncMatching();
     void testAbbreviationEngine();
     void testAutoCompletionPreselectFirst();
     void benchAbbreviationEngineNormalCase();
