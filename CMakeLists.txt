@@ -45,7 +45,7 @@ ecm_setup_version(
 # Dependencies
 set(REQUIRED_QT_VERSION 5.15.2)
 
-# Required Qt5 components to build this framework
+# Required Qt components to build this framework
 find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
   PrintSupport Xml)
 if (QT_MAJOR_VERSION STREQUAL "6")
