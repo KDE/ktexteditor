@@ -60,6 +60,8 @@
 #include <KToggleAction>
 #include <KXMLGUIFactory>
 
+#include <kparts_version.h>
+
 #include <QApplication>
 #include <QClipboard>
 #include <QCryptographicHash>
@@ -203,7 +205,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
 
 {
     // no plugins from kparts here
+#if KPARTS_VERSION < QT_VERSION_CHECK(5, 90, 0)
     setPluginLoadingMode(DoNotLoadPlugins);
+#endif
 
     // setup component name
     const auto &aboutData = EditorPrivate::self()->aboutData();
