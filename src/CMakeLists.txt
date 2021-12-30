@@ -300,7 +300,7 @@ ecm_generate_export_header(KF5TextEditor
 )
 add_library(KF5::TextEditor ALIAS KF5TextEditor)
 
-target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor>")
+target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor>")
 
 # API is more or less KParts & KSyntaxHighlighting, other stuff is used only internally
 target_link_libraries(KF5TextEditor
@@ -359,7 +359,7 @@ install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${KF5_INSTALL_TARGETS_
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_export.h
-  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor
   COMPONENT Devel
 )
 
@@ -392,7 +392,7 @@ if(BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor)
+ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
 

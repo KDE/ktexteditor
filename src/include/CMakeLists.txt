@@ -15,7 +15,7 @@ ecm_generate_headers(KTextEditor_CamelCase_HEADERS
 set (KTEXTEDITOR_PUBLIC_HEADERS ${KTEXTEDITOR_PUBLIC_HEADERS} PARENT_SCOPE)
 
 # install the public header files
-install (FILES ${KTEXTEDITOR_PUBLIC_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor/ktexteditor COMPONENT Devel)
+install (FILES ${KTEXTEDITOR_PUBLIC_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor/ktexteditor COMPONENT Devel)
 
 # install CamelCase headers
-install(FILES ${KTextEditor_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor/KTextEditor COMPONENT Devel)
+install(FILES ${KTextEditor_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor/KTextEditor COMPONENT Devel)
