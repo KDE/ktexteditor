@@ -799,4 +799,21 @@ void KateDocumentTest::testIndentOnPaste()
     QCOMPARE(doc.text(), QStringLiteral("namespace ns\n{\n    class MyClass"));
 }
 
+void KateDocumentTest::testAboutToSave()
+{
+    KTextEditor::DocumentPrivate doc;
+    const QString thisFile = QString::fromUtf8(__FILE__);
+    bool opened = doc.openUrl(QUrl::fromLocalFile(thisFile));
+
+    QVERIFY(opened);
+
+    QSignalSpy spy(&doc, &KTextEditor::DocumentPrivate::aboutToSave);
+    QSignalSpy savedSpy(&doc, &KTextEditor::DocumentPrivate::documentSavedOrUploaded);
+
+    doc.documentSave();
+
+    QVERIFY(spy.count() == 1 || spy.wait());
+    QVERIFY(savedSpy.count() == 1 || savedSpy.wait());
+}
+
 #include "katedocument_test.moc"

@@ -44,6 +44,7 @@ private Q_SLOTS:
     void testMatchingBracket_data();
     void testMatchingBracket();
     void testIndentOnPaste();
+    void testAboutToSave();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

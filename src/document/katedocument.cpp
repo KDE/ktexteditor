@@ -5559,6 +5559,9 @@ bool KTextEditor::DocumentPrivate::save()
         m_documentState = DocumentSavingAs;
     }
 
+    // let anyone listening know that we are going to save
+    Q_EMIT aboutToSave(this);
+
     // call back implementation for real work
     return KTextEditor::Document::save();
 }

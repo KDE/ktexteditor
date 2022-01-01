@@ -435,6 +435,17 @@ Q_SIGNALS:
      */
     void reloaded(KTextEditor::Document *document);
 
+    /**
+     * Emitted just before the document will be saved
+     * Any modifications made to the document at this point
+     * will get stored on disk.
+     *
+     * \param document the document that was reloaded.
+     *
+     * @since 5.90
+     */
+    void aboutToSave(KTextEditor::Document *document);
+
     //!\}
 
     /**
