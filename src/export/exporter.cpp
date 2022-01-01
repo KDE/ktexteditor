@@ -61,7 +61,9 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
         return;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     output.setCodec(QTextCodec::codecForName("UTF-8"));
+#endif
 
     /// TODO: add more exporters
     QScopedPointer<AbstractExporter> exporter;

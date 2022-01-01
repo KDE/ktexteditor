@@ -41,7 +41,9 @@ bool readFile(const QString &sourceUrl, QString &sourceCode)
         return false;
     } else {
         QTextStream stream(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         stream.setCodec("UTF-8");
+#endif
         sourceCode = stream.readAll();
         file.close();
     }

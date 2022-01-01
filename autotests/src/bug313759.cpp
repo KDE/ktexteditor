@@ -72,7 +72,9 @@ void BugTest::tryCrash()
     QFile sourceFile(QLatin1String(TEST_DATA_DIR "bug313759.js"));
     QVERIFY(sourceFile.open(QFile::ReadOnly));
     QTextStream stream(&sourceFile);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     stream.setCodec("UTF8");
+#endif
     QString code = stream.readAll();
     sourceFile.close();
     // execute script
