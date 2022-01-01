@@ -1349,7 +1349,7 @@ public:
             };
 
             const QString &text = thisLine->textLine()->text();
-            int col = std::min(column(), text.size() - 1);
+            int col = std::min<int>(column(), text.size() - 1);
             col = col - 1;
 
             // skip any spaces
