@@ -989,7 +989,6 @@ void KateThemeConfigHighlightTab::showEvent(QShowEvent *event)
 // BEGIN KateThemeConfigPage -- Main dialog page
 KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     : KateConfigPage(parent)
-    , m_currentSchema(-1)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
