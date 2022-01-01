@@ -3857,9 +3857,7 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
             return;
         }
 
-        QWheelEvent copy = *e;
-        QApplication::sendEvent(m_columnScroll, &copy);
-        if (copy.isAccepted()) {
+        if (QApplication::sendEvent(m_columnScroll, e)) {
             e->accept();
         }
     }
