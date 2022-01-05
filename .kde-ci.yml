@@ -3,6 +3,7 @@ Dependencies:
   'require':
     'frameworks/extra-cmake-modules': '@same'
     'frameworks/karchive' : '@same'
+    'frameworks/kauth': '@same'
     'frameworks/kconfig' : '@same'
     'frameworks/kguiaddons' : '@same'
     'frameworks/ki18n' : '@same'
