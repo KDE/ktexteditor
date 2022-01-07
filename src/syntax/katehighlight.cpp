@@ -377,7 +377,15 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
     }
 
     for (const QRegularExpression &re : l) {
-        const QRegularExpressionMatch match = re.match(txt, 0, QRegularExpression::NormalMatch, QRegularExpression::AnchoredMatchOption);
+        const QRegularExpressionMatch match = re.match(txt,
+                                                       0,
+                                                       QRegularExpression::NormalMatch,
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+                                                       QRegularExpression::AnchoredMatchOption
+#else
+                                                       QRegularExpression::AnchorAtOffsetMatchOption
+#endif
+        );
         if (match.hasMatch() && match.capturedLength() == txt.length()) {
             return true;
         }
