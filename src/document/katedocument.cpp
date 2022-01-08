@@ -5093,13 +5093,13 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
 
     switch (m_modOnHdReason) {
     case OnDiskModified:
-        return i18n("The file '%1' was modified by another program.", str);
+        return i18n("The file '%1' was modified on disk.", str);
         break;
     case OnDiskCreated:
-        return i18n("The file '%1' was created by another program.", str);
+        return i18n("The file '%1' was created on disk.", str);
         break;
     case OnDiskDeleted:
-        return i18n("The file '%1' was deleted by another program.", str);
+        return i18n("The file '%1' was deleted on disk.", str);
         break;
     default:
         return QString();

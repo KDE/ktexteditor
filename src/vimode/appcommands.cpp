@@ -271,7 +271,7 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
             "<p><b>e[dit] &mdash; reload current document</b></p>"
             "<p>Usage: <tt><b>e[dit]</b></tt></p>"
             "<p>Starts <b>e</b>diting the current document again. This is useful to re-edit"
-            " the current file, when it has been changed by another program.</p>");
+            " the current file, when it was modified on disk.</p>");
         return true;
     }
 

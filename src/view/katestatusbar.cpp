@@ -371,7 +371,7 @@ void KateStatusBar::modifiedChanged()
     case 0x2:
     case 0x6:
         m_modified->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
+        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted on disk"));
         break;
 
     case 0x3:
