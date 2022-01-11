@@ -1656,7 +1656,12 @@ void KateSearchBar::showEvent(QShowEvent *event)
         m_incInitCursor = m_view->cursorPosition();
     }
 
-    updateSelectionOnly();
+    // We don't want to update if a "findOrReplaceAll" is running
+    // other we end up deleting our working range and crash
+    if (m_cancelFindOrReplace) {
+        updateSelectionOnly();
+    }
+
     KateViewBarWidget::showEvent(event);
 }
 
