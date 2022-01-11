@@ -843,6 +843,8 @@ void KateSearchBar::findOrReplaceAll()
 
                 // Replace
                 lastRange = match.replace(m_replacement, false, ++m_matchCounter);
+                // update working range as text must have changed now
+                workingRangeCopy = m_workingRange->toRange();
             } else {
                 lastRange = match.range();
                 ++m_matchCounter;
