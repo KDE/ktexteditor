@@ -2344,8 +2344,14 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
 bool KTextEditor::ViewPrivate::selectAll()
 {
     setBlockSelection(false);
-    top();
-    shiftBottom();
+    // We use setSelection here to ensure we don't scroll anywhere
+    // The cursor stays in place i.e., it doesn't move to end of selection
+    // that is okay and expected.
+    // The idea here is to maintain scroll position in case select all was
+    // mistakenly triggered, and also to if you just want to copy text,
+    // there is no need to scroll anywhere.
+    setSelection(doc()->documentRange());
+    m_viewInternal->m_selectAnchor = cursorPosition();
     return true;
 }
 
