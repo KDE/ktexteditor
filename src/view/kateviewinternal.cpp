@@ -3665,6 +3665,13 @@ void KateViewInternal::doDrag()
         eX = renderer()->cursorToX(cache()->textLayout(endCur), endCur, !view()->wrapCursor());
     }
 
+    // These are the occurunce highlights, the ones you get when you select a word
+    // We clear them here so that they don't come up in the dragged pixmap
+    // After we are done creating the pixmap, we restore them
+    if (view()->selection()) {
+        view()->clearHighlights();
+    }
+
     // Create a pixmap this selection
     const qreal dpr = devicePixelRatioF();
     QPixmap pixmap(w * dpr, h * dpr);
@@ -3672,6 +3679,11 @@ void KateViewInternal::doDrag()
         pixmap.setDevicePixelRatio(dpr);
         pixmap.fill(Qt::transparent);
         renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
+
+        if (view()->selection()) {
+            // Tell the view to restore the highlights
+            Q_EMIT view()->selectionChanged(view());
+        }
     }
 
     // Calculate position where pixmap will appear when user
