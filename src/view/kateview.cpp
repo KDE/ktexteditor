@@ -657,7 +657,11 @@ void KTextEditor::ViewPrivate::setupActions()
     KateViewIndentationAction *indentMenu = new KateViewIndentationAction(m_doc, i18n("&Indentation"), this);
     ac->addAction(QStringLiteral("tools_indentation"), indentMenu);
 
-    m_selectAll = a = ac->addAction(KStandardAction::SelectAll, this, SLOT(selectAll()));
+    m_selectAll = ac->addAction(KStandardAction::SelectAll);
+    connect(m_selectAll, &QAction::triggered, this, [this] {
+        selectAll();
+        qApp->clipboard()->setText(selectionText(), QClipboard::Selection);
+    });
     a->setWhatsThis(i18n("Select the entire text of the current document."));
 
     m_deSelect = a = ac->addAction(KStandardAction::Deselect, this, SLOT(clearSelection()));
