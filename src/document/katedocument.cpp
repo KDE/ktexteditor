@@ -21,6 +21,7 @@
 #include "katedialogs.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
+#include "kateindentdetecter.h"
 #include "katemodemanager.h"
 #include "katepartdebug.h"
 #include "kateplaintextsearch.h"
@@ -2387,6 +2388,14 @@ bool KTextEditor::DocumentPrivate::openFile()
         m_modOnHdReason = OnDiskUnmodified;
         m_prevModOnHdReason = OnDiskUnmodified;
         Q_EMIT modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
+    }
+
+    // Now that we have some text, try to auto detect indent if enabled
+    if (!isEmpty() && highlightingMode() != QStringLiteral("None") && config()->autoDetectIndent()) {
+        KateIndentDetecter detecter(this);
+        auto result = detecter.detect(config()->indentationWidth(), config()->replaceTabsDyn());
+        config()->setIndentationWidth(result.indentWidth);
+        config()->setReplaceTabsDyn(result.indentUsingSpaces);
     }
 
     //

@@ -102,6 +102,7 @@ KateIndentConfigTab::KateIndentConfigTab(QWidget *parent)
 
     reload();
 
+    observeChanges(ui->chkAutoDetectIndent);
     observeChanges(ui->chkBackspaceUnindents);
     observeChanges(ui->chkIndentPaste);
     observeChanges(ui->chkKeepExtraSpaces);
@@ -158,6 +159,7 @@ void KateIndentConfigTab::apply()
     KateDocumentConfig::global()->setKeepExtraSpaces(ui->chkKeepExtraSpaces->isChecked());
     KateDocumentConfig::global()->setReplaceTabsDyn(ui->rbIndentWithSpaces->isChecked());
     KateDocumentConfig::global()->setTabWidth(ui->sbTabWidth->value());
+    KateDocumentConfig::global()->setAutoDetectIndent(ui->chkAutoDetectIndent->isChecked());
 
     if (ui->rbTabAdvances->isChecked()) {
         KateDocumentConfig::global()->setTabHandling(KateDocumentConfig::tabInsertsTab);
@@ -176,6 +178,7 @@ void KateIndentConfigTab::reload()
     ui->chkIndentPaste->setChecked(KateDocumentConfig::global()->indentPastedText());
     ui->chkKeepExtraSpaces->setChecked(KateDocumentConfig::global()->keepExtraSpaces());
 
+    ui->chkAutoDetectIndent->setChecked(KateDocumentConfig::global()->autoDetectIndent());
     ui->sbIndentWidth->setSuffix(ki18np(" character", " characters"));
     ui->sbIndentWidth->setValue(KateDocumentConfig::global()->indentationWidth());
     ui->sbTabWidth->setSuffix(ki18np(" character", " characters"));

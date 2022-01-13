@@ -348,6 +348,7 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(SwapFileSyncInterval, "Swap Sync Interval", QString(), 15));
     addConfigEntry(ConfigEntry(LineLengthLimit, "Line Length Limit", QString(), 10000));
     addConfigEntry(ConfigEntry(CamelCursor, "Camel Cursor", QString(), true));
+    addConfigEntry(ConfigEntry(AutoDetectIndent, "Auto Detect Indent", QString(), true));
 
     // finalize the entries, e.g. hashs them
     finalizeConfigEntries();

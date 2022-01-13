@@ -169,6 +169,7 @@ utils/katecmds.cpp
 utils/kateconfig.cpp
 utils/katebookmarks.cpp
 utils/kateautoindent.cpp
+utils/kateindentdetecter.cpp
 utils/katetemplatehandler.cpp
 utils/kateglobal.cpp
 utils/katecmd.cpp

@@ -532,7 +532,12 @@ public:
         /**
          * Camel Cursor Movement?
          */
-        CamelCursor
+        CamelCursor,
+
+        /**
+         * Automatically detect file indentation
+         */
+        AutoDetectIndent,
     };
 
 public:
@@ -910,6 +915,16 @@ public:
     bool camelCursor() const
     {
         return value(CamelCursor).toBool();
+    }
+
+    void setAutoDetectIndent(bool on)
+    {
+        setValue(AutoDetectIndent, on);
+    }
+
+    bool autoDetectIndent() const
+    {
+        return value(AutoDetectIndent).toBool();
     }
 
 private:
