@@ -2391,7 +2391,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     }
 
     // Now that we have some text, try to auto detect indent if enabled
-    if (!isEmpty() && highlightingMode() != QStringLiteral("None") && config()->autoDetectIndent()) {
+    if (!isEmpty() && config()->autoDetectIndent()) {
         KateIndentDetecter detecter(this);
         auto result = detecter.detect(config()->indentationWidth(), config()->replaceTabsDyn());
         config()->setIndentationWidth(result.indentWidth);

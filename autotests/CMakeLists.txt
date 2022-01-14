@@ -151,6 +151,7 @@ ecm_add_tests(
   src/katetextblocktest.cpp
   src/camelcursortest.cpp
   src/encodingtest.cpp
+  src/indentdetect_test.cpp
   LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt${QT_MAJOR_VERSION}::Test
 )
 
