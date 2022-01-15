@@ -211,6 +211,11 @@ private:
     KateUndoGroup *lastRedoGroupWhenSaved = nullptr;
     bool docWasSavedWhenUndoWasEmpty = true;
     bool docWasSavedWhenRedoWasEmpty = true;
+
+    // saved undo items that are used to restore state on doc reload
+    QList<KateUndoGroup *> savedUndoItems;
+    QList<KateUndoGroup *> savedRedoItems;
+    QByteArray docChecksumBeforeReload;
 };
 
 #endif

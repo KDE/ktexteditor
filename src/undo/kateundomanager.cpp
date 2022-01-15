@@ -22,6 +22,28 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
     connect(this, &KateUndoManager::redoEnd, this, &KateUndoManager::undoChanged);
 
     connect(doc, &KTextEditor::DocumentPrivate::viewCreated, this, &KateUndoManager::viewCreated);
+
+    // Before reload save history
+    connect(doc, &KTextEditor::DocumentPrivate::aboutToReload, this, [this] {
+        savedUndoItems = undoItems;
+        savedRedoItems = redoItems;
+        undoItems.clear();
+        redoItems.clear();
+        docChecksumBeforeReload = m_document->checksum();
+    });
+
+    // After reload restore it only if checksum of the doc is same
+    connect(doc, &KTextEditor::DocumentPrivate::loaded, this, [this](KTextEditor::Document *doc) {
+        if (doc && doc->checksum() == docChecksumBeforeReload) {
+            if (!doc->checksum().isEmpty() && !docChecksumBeforeReload.isEmpty()) {
+                undoItems = savedUndoItems;
+                redoItems = savedRedoItems;
+                Q_EMIT undoChanged();
+            }
+        }
+        savedUndoItems.clear();
+        savedRedoItems.clear();
+    });
 }
 
 KateUndoManager::~KateUndoManager()
