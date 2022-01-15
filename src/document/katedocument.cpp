@@ -2391,7 +2391,9 @@ bool KTextEditor::DocumentPrivate::openFile()
     }
 
     // Now that we have some text, try to auto detect indent if enabled
-    if (!isEmpty() && config()->autoDetectIndent()) {
+    // skip this if for this document already settings were done, either by the user or .e.g. modelines/.kateconfig files.
+    if (!isEmpty() && config()->autoDetectIndent() && !config()->isSet(KateDocumentConfig::IndentationWidth)
+        && !config()->isSet(KateDocumentConfig::ReplaceTabsWithSpaces)) {
         KateIndentDetecter detecter(this);
         auto result = detecter.detect(config()->indentationWidth(), config()->replaceTabsDyn());
         config()->setIndentationWidth(result.indentWidth);

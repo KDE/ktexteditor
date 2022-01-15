@@ -83,6 +83,16 @@ public:
     }
 
     /**
+     * Is given key set in this config object?
+     * @param key config key, aka enum from KateConfig* classes
+     * @return is the wanted key set?
+     */
+    bool isSet(const int key) const
+    {
+        return m_configEntries.find(key) != m_configEntries.end();
+    }
+
+    /**
      * Get a config value.
      * @param key config key, aka enum from KateConfig* classes
      * @return value for the wanted key, will assert if key is not valid
