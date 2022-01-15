@@ -816,4 +816,39 @@ void KateDocumentTest::testAboutToSave()
     QVERIFY(savedSpy.count() == 1 || savedSpy.wait());
 }
 
+void KateDocumentTest::testKeepUndoOverReload()
+{
+    // create test document with some simple text
+    KTextEditor::DocumentPrivate doc;
+    const QString initialText = QStringLiteral("lala\ntest\nfoobar\n");
+    doc.setText(initialText);
+    QCOMPARE(doc.text(), initialText);
+
+    // now: do some editing
+    const QString insertedText = QStringLiteral("newfirstline\n");
+    doc.insertText(KTextEditor::Cursor(0, 0), insertedText);
+    QCOMPARE(doc.text(), insertedText + initialText);
+
+    // test undo/redo
+    doc.undo();
+    QCOMPARE(doc.text(), initialText);
+    doc.redo();
+    QCOMPARE(doc.text(), insertedText + initialText);
+
+    // save it to some local temporary file, for later reload
+    QTemporaryFile tmpFile;
+    tmpFile.open();
+    QVERIFY(doc.saveAs(QUrl::fromLocalFile(tmpFile.fileName())));
+
+    // first: try if normal reload works
+    QVERIFY(doc.documentReload());
+    QCOMPARE(doc.text(), insertedText + initialText);
+
+    // test undo/redo AFTER reload
+    doc.undo();
+    QCOMPARE(doc.text(), initialText);
+    doc.redo();
+    QCOMPARE(doc.text(), insertedText + initialText);
+}
+
 #include "katedocument_test.moc"
