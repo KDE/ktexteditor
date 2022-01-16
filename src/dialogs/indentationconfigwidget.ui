@@ -164,7 +164,7 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="chkAutoDetectIndent">
         <property name="text">
-         <string>Automatically detect file indentaion</string>
+         <string>Automatically detect file indentation</string>
         </property>
        </widget>
       </item>
