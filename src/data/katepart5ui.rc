@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="92" translationDomain="ktexteditor5">
+<gui name="KatePartView" version="93" translationDomain="ktexteditor5">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -23,9 +23,7 @@
     <Action name="edit_paste" group="edit_paste_merge" />
     <Action name="edit_paste_selection" group="edit_paste_merge" />
     <Action name="edit_swap_with_clipboard" group="edit_paste_merge" />
-    <Action name="edit_paste_menu" group="edit_paste_merge" />
-    <Separator group="edit_paste_merge" />
-    <Action name="edit_copy_html" group="edit_paste_merge" />
+    <Action name="edit_paste_menu" group="edit_paste_merge" />/>
     <Separator group="edit_paste_merge" />
     <Action name="edit_select_all" group="edit_select_merge" />
     <Action name="edit_deselect" group="edit_select_merge" />
@@ -33,6 +31,17 @@
     <Separator group="edit_select_merge" />
     <Action name="view_input_modes" group="edit_select_merge" />
     <Action name="set_insert" group="edit_select_merge" />
+    <Action name="tools_toggle_write_lock" group="edit_select_merge" />
+    <Action name="add_bom" group="edit_select_merge" />
+    <Menu name="edit_selection" group="edit_select_merge"><text>Selection</text>
+      <Action name="tools_uppercase" group="edit_selection" />
+      <Action name="tools_lowercase" group="edit_selection" />
+      <Action name="tools_capitalize" group="edit_selection" />
+      <Action name="edit_copy_html" group="edit_paste_merge" />
+    </Menu>
+    <Action name="tools_toggle_comment" group="edit_select_merge" />
+    <Action name="tools_join_lines" group="edit_select_merge" />
+    <Action name="tools_apply_wordwrap" group="edit_select_merge" />
     <Separator group="edit_select_merge" />
     <Action name="edit_find" group="edit_find_merge" />
     <Menu name="edit_find_menu" group="edit_find_merge"><text>Find Variants</text>
@@ -99,14 +108,11 @@
   <Action name="bookmarks" />
 
   <Menu name="tools" noMerge="1"><text>&amp;Tools</text>
-    <Action name="tools_toggle_write_lock" group="tools_operations" />
-    <Separator group="tools_operations" />
     <Action name="tools_mode" group="tools_operations" />
     <Action name="tools_highlighting" group="tools_operations" />
     <Action name="tools_indentation" group="tools_operations" />
     <Action name="set_encoding" group="tools_operations" />
     <Action name="set_eol" group="tools_operations" />
-    <Action name="add_bom" group="tools_operations" />
     <Separator group="tools_operations" />
     <Action name="tools_scripts" group="tools_operations" />
     <Separator group="tools_operations" />
@@ -128,15 +134,6 @@
     <Separator group="tools_operations" />
     <Action name="tools_cleanIndent" group="tools_operations" />
     <Action name="tools_align" group="tools_operations" />
-    <Separator group="tools_operations" />
-    <Action name="tools_toggle_comment" group="tools_operations" />
-    <Separator group="tools_operations" />
-    <Action name="tools_uppercase" group="tools_operations" />
-    <Action name="tools_lowercase" group="tools_operations" />
-    <Action name="tools_capitalize" group="tools_operations" />
-    <Separator group="tools_operations" />
-    <Action name="tools_join_lines" group="tools_operations" />
-    <Action name="tools_apply_wordwrap" group="tools_operations" />
   </Menu>
 
   <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
