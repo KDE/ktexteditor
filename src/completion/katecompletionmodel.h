@@ -55,9 +55,6 @@ public:
     QString currentCompletion(KTextEditor::CodeCompletionModel *model) const;
     void setCurrentCompletion(KTextEditor::CodeCompletionModel *model, const QString &completion);
 
-    Qt::CaseSensitivity matchCaseSensitivity() const;
-    Qt::CaseSensitivity exactMatchCaseSensitivity() const;
-
     int translateColumn(int sourceColumn) const;
 
     /// Returns a common prefix for all current visible completion entries
@@ -291,7 +288,7 @@ private:
 
     void resort();
 
-    static bool matchesAbbreviation(const QString &word, const QString &typed, Qt::CaseSensitivity caseSensitive);
+    static bool matchesAbbreviation(const QString &word, const QString &typed);
 
     bool m_hasGroups = false;
 

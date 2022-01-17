@@ -17,6 +17,7 @@
 #include "kateview.h"
 #include <ktexteditor/codecompletionmodelcontrollerinterface.h>
 
+#include <KFuzzyMatcher>
 #include <KLocalizedString>
 
 #include <QApplication>
@@ -1678,103 +1679,23 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     return doHide;
 }
 
-static inline QChar toLowerIfInsensitive(QChar c, Qt::CaseSensitivity caseSensitive)
+static inline QChar toLowerIfInsensitive(QChar c)
 {
-    if (caseSensitive != Qt::CaseInsensitive) {
-        return c;
-    }
     return c.isLower() ? c : c.toLower();
 }
 
-static inline bool matchesAbbreviationHelper(const QString &word,
-                                             const QString &typed,
-                                             const QVarLengthArray<int, 32> &offsets,
-                                             Qt::CaseSensitivity caseSensitive,
-                                             int &depth,
-                                             int atWord = -1,
-                                             int i = 0)
-{
-    int atLetter = 1;
-    for (; i < typed.size(); i++) {
-        const QChar c = toLowerIfInsensitive(typed.at(i), caseSensitive);
-        bool haveNextWord = offsets.size() > atWord + 1;
-        bool canCompare = atWord != -1 && word.size() > offsets.at(atWord) + atLetter;
-        if (canCompare && c == toLowerIfInsensitive(word.at(offsets.at(atWord) + atLetter), caseSensitive)) {
-            // the typed letter matches a letter after the current word beginning
-            if (!haveNextWord || c != toLowerIfInsensitive(word.at(offsets.at(atWord + 1)), caseSensitive)) {
-                // good, simple case, no conflict
-                atLetter += 1;
-                continue;
-            }
-            // For maliciously crafted data, the code used here theoretically can have very high
-            // complexity. Thus ensure we don't run into this case, by limiting the amount of branches
-            // we walk through to 128.
-            depth++;
-            if (depth > 128) {
-                return false;
-            }
-            // the letter matches both the next word beginning and the next character in the word
-            if (haveNextWord && matchesAbbreviationHelper(word, typed, offsets, caseSensitive, depth, atWord + 1, i + 1)) {
-                // resolving the conflict by taking the next word's first character worked, fine
-                return true;
-            }
-            // otherwise, continue by taking the next letter in the current word.
-            atLetter += 1;
-            continue;
-        } else if (haveNextWord && c == toLowerIfInsensitive(word.at(offsets.at(atWord + 1)), caseSensitive)) {
-            // the typed letter matches the next word beginning
-            atWord++;
-            atLetter = 1;
-            continue;
-        }
-        // no match
-        return false;
-    }
-    // all characters of the typed word were matched
-    return true;
-}
-
-bool KateCompletionModel::matchesAbbreviation(const QString &word, const QString &typed, Qt::CaseSensitivity caseSensitive)
+bool KateCompletionModel::matchesAbbreviation(const QString &word, const QString &typed)
 {
     // A mismatch is very likely for random even for the first letter,
     // thus this optimization makes sense.
-    if (toLowerIfInsensitive(word.at(0), caseSensitive) != toLowerIfInsensitive(typed.at(0), caseSensitive)) {
+    if (toLowerIfInsensitive(word.at(0)) != toLowerIfInsensitive(typed.at(0))) {
         return false;
     }
 
-    // First, check if all letters are contained in the word in the right order.
-    int atLetter = 0;
-    for (const QChar c : typed) {
-        while (toLowerIfInsensitive(c, caseSensitive) != toLowerIfInsensitive(word.at(atLetter), caseSensitive)) {
-            atLetter += 1;
-            if (atLetter >= word.size()) {
-                return false;
-            }
-        }
-    }
-
-    bool haveUnderscore = true;
-    QVarLengthArray<int, 32> offsets;
-    // We want to make "KComplM" match "KateCompletionModel"; this means we need
-    // to allow parts of the typed text to be not part of the actual abbreviation,
-    // which consists only of the uppercased / underscored letters (so "KCM" in this case).
-    // However it might be ambiguous whether a letter is part of such a word or part of
-    // the following abbreviation, so we need to find all possible word offsets first,
-    // then compare.
-    for (int i = 0; i < word.size(); i++) {
-        const QChar c = word.at(i);
-        if (c == QLatin1Char('_')) {
-            haveUnderscore = true;
-        } else if (haveUnderscore || c.isUpper()) {
-            offsets.append(i);
-            haveUnderscore = false;
-        }
-    }
-    int depth = 0;
-    return matchesAbbreviationHelper(word, typed, offsets, caseSensitive, depth);
+    return KFuzzyMatcher::matchSimple(typed, word);
 }
 
-static inline bool containsAtWordBeginning(const QString &word, const QString &typed, Qt::CaseSensitivity caseSensitive)
+static inline bool containsAtWordBeginning(const QString &word, const QString &typed)
 {
     if (typed.size() > word.size()) {
         return false;
@@ -1789,7 +1710,7 @@ static inline bool containsAtWordBeginning(const QString &word, const QString &t
         if (!(prev == QLatin1Char('_') || (c.isUpper() && !prev.isUpper()))) {
             continue;
         }
-        if (QStringView(word).mid(i).startsWith(typed, caseSensitive)) {
+        if (QStringView(word).mid(i).startsWith(typed, Qt::CaseInsensitive)) {
             return true;
         }
 
@@ -1815,29 +1736,25 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
         return NoMatch;
     }
 
-    matchCompletion = (m_nameColumn.startsWith(match, model->matchCaseSensitivity()) ? StartsWithMatch : NoMatch);
+    matchCompletion = (m_nameColumn.startsWith(match) ? StartsWithMatch : NoMatch);
     if (matchCompletion == NoMatch) {
         // if no match, try for "contains"
         // Only match when the occurrence is at a "word" beginning, marked by
         // an underscore or a capital. So Foo matches BarFoo and Bar_Foo, but not barfoo.
         // Starting at 1 saves looking at the beginning of the word, that was already checked above.
-        if (containsAtWordBeginning(m_nameColumn, match, model->matchCaseSensitivity())) {
+        if (containsAtWordBeginning(m_nameColumn, match)) {
             matchCompletion = ContainsMatch;
         }
     }
 
     if (matchCompletion == NoMatch && !m_nameColumn.isEmpty() && !match.isEmpty()) {
         // if still no match, try abbreviation matching
-        if (matchesAbbreviation(m_nameColumn, match, model->matchCaseSensitivity())) {
+        if (matchesAbbreviation(m_nameColumn, match)) {
             matchCompletion = AbbreviationMatch;
         }
     }
 
     if (matchCompletion && match.length() == m_nameColumn.length()) {
-        if (model->matchCaseSensitivity() == Qt::CaseInsensitive && model->exactMatchCaseSensitivity() == Qt::CaseSensitive
-            && !m_nameColumn.startsWith(match, Qt::CaseSensitive)) {
-            return matchCompletion;
-        }
         matchCompletion = PerfectMatch;
         m_haveExactMatch = true;
     }
@@ -1858,16 +1775,6 @@ const KateCompletionModel::ModelRow &KateCompletionModel::Item::sourceRow() cons
 QString KateCompletionModel::currentCompletion(KTextEditor::CodeCompletionModel *model) const
 {
     return m_currentMatch.value(model);
-}
-
-Qt::CaseSensitivity KateCompletionModel::matchCaseSensitivity() const
-{
-    return m_matchCaseSensitivity;
-}
-
-Qt::CaseSensitivity KateCompletionModel::exactMatchCaseSensitivity() const
-{
-    return m_exactMatchCaseSensitivity;
 }
 
 void KateCompletionModel::addCompletionModel(KTextEditor::CodeCompletionModel *model)
