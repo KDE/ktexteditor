@@ -4366,6 +4366,14 @@ void KTextEditor::DocumentPrivate::onModOnHdReload()
     m_modOnHd = false;
     m_prevModOnHdReason = OnDiskUnmodified;
     Q_EMIT modifiedOnDisk(this, false, OnDiskUnmodified);
+
+    // MUST Clear Undo/Redo here because by the time we get here
+    // the checksum has already been updated and the undo manager
+    // sees the new checksum and thinks nothing changed and loads
+    // a bad undo history resulting in funny things.
+    m_undoManager->clearUndo();
+    m_undoManager->clearRedo();
+
     documentReload();
     delete m_modOnHdHandler;
 }
@@ -4407,6 +4415,12 @@ void KTextEditor::DocumentPrivate::onModOnHdAutoReload()
         m_modOnHd = false;
         m_prevModOnHdReason = OnDiskUnmodified;
         Q_EMIT modifiedOnDisk(this, false, OnDiskUnmodified);
+
+        // MUST clear undo/redo. This comes way after KDirWatch signaled us
+        // and the checksum is already updated by the time we start reload.
+        m_undoManager->clearUndo();
+        m_undoManager->clearRedo();
+
         documentReload();
         m_autoReloadThrottle.start();
     }

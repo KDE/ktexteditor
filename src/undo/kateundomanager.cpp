@@ -41,6 +41,7 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
                 Q_EMIT undoChanged();
             }
         }
+        docChecksumBeforeReload.clear();
         savedUndoItems.clear();
         savedRedoItems.clear();
     });
