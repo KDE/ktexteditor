@@ -70,6 +70,8 @@ void CamelCursorTest::testWordMovementSingleRow_data()
     // CSS Color
     QTest::addRow("#ff00ff")              << QStringLiteral("#ff00ff")                      << 2 << QVector<int>{1, 7} << QStringLiteral("CSS");
     QTest::addRow("#00FF00")              << QStringLiteral("#00FF00")                      << 4 << QVector<int>{1, 3, 4, 7} << QStringLiteral("HTML");
+
+    QTest::addRow("Bug 448692")             << QStringLiteral("asdf a")                         << 2 << QVector<int>{5, 6} << QString();
     // clang-format on
 }
 

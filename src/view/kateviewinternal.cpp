@@ -1350,7 +1350,22 @@ public:
 
             const QString &text = thisLine->textLine()->text();
             int col = std::min<int>(column(), text.size() - 1);
+            // decrement because we might be standing at a camel hump
+            // already and don't want to return the same position
             col = col - 1;
+
+            // if we are at the end of line
+            if (column() == text.size()) {
+                // there is a letter before
+                if (text.at(col + 1).isLetter()) {
+                    // and a space before that
+                    if (text.at(col).isSpace()) {
+                        // we have a one letter word,
+                        // so move forward to end of word
+                        ++col;
+                    }
+                }
+            }
 
             // skip any spaces
             if (col > 0 && text.at(col).isSpace()) {
