@@ -973,11 +973,11 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
 
     changeTypes changeType = Change;
 
-    if (current.length() > completion.length() && current.startsWith(completion, m_matchCaseSensitivity)) {
+    if (current.length() > completion.length() && current.startsWith(completion, Qt::CaseInsensitive)) {
         // Filter has been broadened
         changeType = Broaden;
 
-    } else if (current.length() < completion.length() && completion.startsWith(current, m_matchCaseSensitivity)) {
+    } else if (current.length() < completion.length() && completion.startsWith(current, Qt::CaseInsensitive)) {
         // Filter has been narrowed
         changeType = Narrow;
     }
@@ -1679,20 +1679,38 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     return doHide;
 }
 
-static inline QChar toLowerIfInsensitive(QChar c)
+static inline QChar toLower(QChar c)
 {
     return c.isLower() ? c : c.toLower();
 }
 
-bool KateCompletionModel::matchesAbbreviation(const QString &word, const QString &typed)
+bool KateCompletionModel::matchesAbbreviation(const QString &word, const QString &typed, int &score)
 {
     // A mismatch is very likely for random even for the first letter,
     // thus this optimization makes sense.
-    if (toLowerIfInsensitive(word.at(0)) != toLowerIfInsensitive(typed.at(0))) {
+
+    // We require that first letter must match before we do fuzzy matching.
+    // Not sure how well this well it works in practice, but seems ok so far.
+    // Also, 0 might not be the first letter. Some sources add a space or a marker
+    // at the beginning. So look for first letter
+    const int firstLetter = [&word] {
+        for (auto it = word.cbegin(); it != word.cend(); ++it) {
+            if (it->isLetter())
+                return int(it - word.cbegin());
+        }
+        return 0;
+    }();
+
+    QStringView wordView = word;
+    wordView = wordView.mid(firstLetter);
+
+    if (toLower(wordView.at(0)) != toLower(typed.at(0))) {
         return false;
     }
 
-    return KFuzzyMatcher::matchSimple(typed, word);
+    const auto res = KFuzzyMatcher::match(typed, wordView);
+    score = res.score;
+    return res.matched;
 }
 
 static inline bool containsAtWordBeginning(const QString &word, const QString &typed)
@@ -1737,6 +1755,16 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
     }
 
     matchCompletion = (m_nameColumn.startsWith(match) ? StartsWithMatch : NoMatch);
+
+    if (matchCompletion == NoMatch && !m_nameColumn.isEmpty() && !match.isEmpty()) {
+        // if still no match, try abbreviation matching
+        int score = 0;
+        if (matchesAbbreviation(m_nameColumn, match, score)) {
+            inheritanceDepth -= score;
+            matchCompletion = AbbreviationMatch;
+        }
+    }
+
     if (matchCompletion == NoMatch) {
         // if no match, try for "contains"
         // Only match when the occurrence is at a "word" beginning, marked by
@@ -1744,13 +1772,6 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
         // Starting at 1 saves looking at the beginning of the word, that was already checked above.
         if (containsAtWordBeginning(m_nameColumn, match)) {
             matchCompletion = ContainsMatch;
-        }
-    }
-
-    if (matchCompletion == NoMatch && !m_nameColumn.isEmpty() && !match.isEmpty()) {
-        // if still no match, try abbreviation matching
-        if (matchesAbbreviation(m_nameColumn, match)) {
-            matchCompletion = AbbreviationMatch;
         }
     }
 

@@ -288,7 +288,7 @@ private:
 
     void resort();
 
-    static bool matchesAbbreviation(const QString &word, const QString &typed);
+    static bool matchesAbbreviation(const QString &word, const QString &typed, int &score);
 
     bool m_hasGroups = false;
 
@@ -313,11 +313,6 @@ private:
     QMultiHash<int, Group *> m_groupHash;
     // Maps custom group-names to their specific groups
     QHash<QString, Group *> m_customGroupHash;
-
-    // ### Configurable state
-    // Matching
-    Qt::CaseSensitivity m_matchCaseSensitivity = Qt::CaseInsensitive;
-    Qt::CaseSensitivity m_exactMatchCaseSensitivity = Qt::CaseInsensitive; // Must be equal to or stricter than m_matchCaseSensitivity.
 
     // Grouping
     bool m_groupingEnabled = false;
