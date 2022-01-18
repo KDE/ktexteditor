@@ -3906,24 +3906,42 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromRegion(const KTextE
   Remove from the beginning of each line of the
   selection a start comment line mark.
 */
-bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib)
+bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib, bool toggleComment)
 {
     const QString shortCommentMark = highlight()->getCommentSingleLineStart(attrib);
     const QString longCommentMark = shortCommentMark + QLatin1Char(' ');
 
-    int sl = view->selectionRange().start().line();
-    int el = view->selectionRange().end().line();
+    int startLine = view->selectionRange().start().line();
+    int endLine = view->selectionRange().end().line();
 
-    if ((view->selectionRange().end().column() == 0) && (el > 0)) {
-        el--;
+    if ((view->selectionRange().end().column() == 0) && (endLine > 0)) {
+        endLine--;
     }
 
     bool removed = false;
 
+    // If we are toggling, we check whether all lines in the selection start
+    // with a comment. If they don't, we return early
+    // NOTE: When toggling, we only remove comments if all lines in the selection
+    // are comments, otherwise we recomment the comments
+    if (toggleComment) {
+        bool allLinesAreCommented = true;
+        for (int line = endLine; line >= startLine; line--) {
+            const auto ln = m_buffer->plainLine(line);
+            if (!ln->startsWith(shortCommentMark) && !ln->startsWith(longCommentMark)) {
+                allLinesAreCommented = false;
+                break;
+            }
+        }
+        if (!allLinesAreCommented) {
+            return false;
+        }
+    }
+
     editStart();
 
     // For each line of the selection
-    for (int z = el; z >= sl; z--) {
+    for (int z = endLine; z >= startLine; z--) {
         // Try to remove the long comment mark first
         removed = (removeStringFromBeginning(z, longCommentMark) || removeStringFromBeginning(z, shortCommentMark) || removed);
     }
@@ -3946,18 +3964,18 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
         setWordWrap(false);
     }
 
-    bool hassel = v->selection();
-    int c = 0;
+    const bool hasSelection = v->selection();
+    int selectionCol = 0;
 
-    if (hassel) {
-        c = v->selectionRange().start().column();
+    if (hasSelection) {
+        selectionCol = v->selectionRange().start().column();
     }
 
     int startAttrib = 0;
     Kate::TextLine ln = kateTextLine(line);
 
-    if (c < ln->length()) {
-        startAttrib = ln->attribute(c);
+    if (selectionCol < ln->length()) {
+        startAttrib = ln->attribute(selectionCol);
     } else if (!ln->attributesList().isEmpty()) {
         startAttrib = ln->attributesList().back().attributeValue;
     }
@@ -3966,7 +3984,7 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty()) && !(highlight()->getCommentEnd(startAttrib).isEmpty()));
 
     if (change > 0) { // comment
-        if (!hassel) {
+        if (!hasSelection) {
             if (hasStartLineCommentMark) {
                 addStartLineCommentToSingleLine(line, startAttrib);
             } else if (hasStartStopCommentMark) {
@@ -3992,17 +4010,18 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
         }
     } else { // uncomment
         bool removed = false;
-        if (!hassel) {
+        const bool toggleComment = change == 0;
+        if (!hasSelection) {
             removed = (hasStartLineCommentMark && removeStartLineCommentFromSingleLine(line, startAttrib))
                 || (hasStartStopCommentMark && removeStartStopCommentFromSingleLine(line, startAttrib));
         } else {
             // anders: this seems like it will work with above changes :)
             removed = (hasStartStopCommentMark && removeStartStopCommentFromSelection(v, startAttrib))
-                || (hasStartLineCommentMark && removeStartLineCommentFromSelection(v, startAttrib));
+                || (hasStartLineCommentMark && removeStartLineCommentFromSelection(v, startAttrib, toggleComment));
         }
 
         // recursive call for toggle comment
-        if (!removed && change == 0) {
+        if (!removed && toggleComment) {
             comment(v, line, column, 1);
         }
     }

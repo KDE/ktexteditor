@@ -945,7 +945,7 @@ private:
     /**
      * @see removeStartStopCommentFromSelection.
      */
-    bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
+    bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib, bool toggleComment);
 
 public:
     KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor start, int maxLines);
