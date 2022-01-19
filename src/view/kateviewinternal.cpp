@@ -3297,6 +3297,12 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
         }
 
         if (!m_scrollY) {
+            // We are on top of line number area and dragging
+            // Since we never get negative y, ensure to scroll up
+            // a bit otherwise we get stuck on the topview line
+            if (!m_mouseY) {
+                m_scrollY -= d;
+            }
             placeCursor(QPoint(m_mouseX, m_mouseY), true);
         }
 
