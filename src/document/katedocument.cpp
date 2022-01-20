@@ -72,6 +72,7 @@
 #include <QMimeDatabase>
 #include <QProcess>
 #include <QRegularExpression>
+#include <QStandardPaths>
 #include <QTemporaryFile>
 #include <QTextCodec>
 #include <QTextStream>
@@ -5054,18 +5055,22 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         // skip that, if document is modified!
         // only do that, if the file is still there, else reload makes no sense!
         if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())) {
-            QProcess git;
-            const QStringList args{QStringLiteral("cat-file"), QStringLiteral("-e"), QString::fromUtf8(oldDigest)};
-            git.start(QStringLiteral("git"), args);
-            if (git.waitForStarted()) {
-                git.closeWriteChannel();
-                if (git.waitForFinished()) {
-                    if (git.exitCode() == 0) {
-                        // this hash exists still in git => just reload
-                        m_modOnHd = false;
-                        m_modOnHdReason = OnDiskUnmodified;
-                        m_prevModOnHdReason = OnDiskUnmodified;
-                        documentReload();
+            // we only want to use git from PATH, cache this
+            static const QString fullGitPath = QStandardPaths::findExecutable(QStringLiteral("git"));
+            if (!fullGitPath.isEmpty()) {
+                QProcess git;
+                const QStringList args{QStringLiteral("cat-file"), QStringLiteral("-e"), QString::fromUtf8(oldDigest)};
+                git.start(fullGitPath, args);
+                if (git.waitForStarted()) {
+                    git.closeWriteChannel();
+                    if (git.waitForFinished()) {
+                        if (git.exitCode() == 0) {
+                            // this hash exists still in git => just reload
+                            m_modOnHd = false;
+                            m_modOnHdReason = OnDiskUnmodified;
+                            m_prevModOnHdReason = OnDiskUnmodified;
+                            documentReload();
+                        }
                     }
                 }
             }

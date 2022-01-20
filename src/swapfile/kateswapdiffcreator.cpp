@@ -14,6 +14,7 @@
 #include <KMessageBox>
 
 #include <QDir>
+#include <QStandardPaths>
 #include <QTextCodec>
 
 // BEGIN SwapDiffCreator
@@ -85,13 +86,21 @@ void SwapDiffCreator::viewDiff()
     connect(&m_proc, &QProcess::readyRead, this, &SwapDiffCreator::slotDataAvailable, Qt::UniqueConnection);
     connect(&m_proc, &QProcess::finished, this, &SwapDiffCreator::slotDiffFinished, Qt::UniqueConnection);
 
-    // try to start diff process, if we can't be started be done with error
-    m_proc.start(QStringLiteral("diff"), QStringList() << QStringLiteral("-u") << m_originalFile.fileName() << m_recoveredFile.fileName());
-    if (!m_proc.waitForStarted()) {
+    // use diff from PATH only => inform if not found at all
+    const QString fullDiffPath = QStandardPaths::findExecutable(QStringLiteral("diff"));
+    if (fullDiffPath.isEmpty()) {
         KMessageBox::sorry(nullptr,
-                           i18n("The diff command could not be started. Please make sure that "
+                           i18n("The diff command could not be found. Please make sure that "
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
+        deleteLater();
+        return;
+    }
+
+    // try to start the diff program, might fail, too
+    m_proc.start(fullDiffPath, QStringList() << QStringLiteral("-u") << m_originalFile.fileName() << m_recoveredFile.fileName());
+    if (!m_proc.waitForStarted()) {
+        KMessageBox::sorry(nullptr, i18n("The diff command '%1' could not be started.").arg(fullDiffPath), i18n("Error Creating Diff"));
         deleteLater();
         return;
     }
