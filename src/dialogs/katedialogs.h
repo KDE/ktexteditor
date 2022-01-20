@@ -376,6 +376,7 @@ private:
     KTextEditor::DocumentPrivate *m_doc;
     QPointer<KTextEditor::Message> m_message;
     KTextEditor::ModificationInterface::ModifiedOnDiskReason m_modtype;
+    QString m_fullDiffPath;
     KProcess *m_proc;
     QTemporaryFile *m_diffFile;
     QAction *m_diffAction;

@@ -1317,6 +1317,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
     : QObject(doc)
     , m_doc(doc)
     , m_modtype(modtype)
+    , m_fullDiffPath(QStandardPaths::findExecutable(QStringLiteral("diff")))
     , m_proc(nullptr)
     , m_diffFile(nullptr)
     , m_diffAction(nullptr)
@@ -1334,7 +1335,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
         m_message->addAction(aAutoReload, false);
         connect(aAutoReload, &QAction::triggered, this, &KateModOnHdPrompt::autoReloadTriggered);
 
-        if (!QStandardPaths::findExecutable(QStringLiteral("diff")).isEmpty()) {
+        if (!m_fullDiffPath.isEmpty()) {
             m_diffAction = new QAction(i18n("View &Difference"), this);
             m_diffAction->setIcon(QIcon::fromTheme(QStringLiteral("document-multiple")));
             m_diffAction->setToolTip(i18n("Shows a diff of the changes"));
@@ -1394,7 +1395,7 @@ void KateModOnHdPrompt::slotDiff()
     // Start a KProcess that creates a diff
     m_proc = new KProcess(this);
     m_proc->setOutputChannelMode(KProcess::MergedChannels);
-    *m_proc << QStringLiteral("diff") << QStringLiteral("-u") << QStringLiteral("-") << m_doc->url().toLocalFile();
+    *m_proc << m_fullDiffPath << QStringLiteral("-u") << QStringLiteral("-") << m_doc->url().toLocalFile();
     connect(m_proc, &KProcess::readyRead, this, &KateModOnHdPrompt::slotDataAvailable);
     connect(m_proc, &KProcess::finished, this, &KateModOnHdPrompt::slotPDone);
 
