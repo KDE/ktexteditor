@@ -3579,6 +3579,10 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
     // base class
     KTextEditor::View::paintEvent(e);
 
+    if (!config()->showFocusFrame()) {
+        return;
+    }
+
     const QRect contentsRect = m_topSpacer->geometry() | m_bottomSpacer->geometry() | m_leftSpacer->geometry() | m_rightSpacer->geometry();
 
     if (contentsRect.isValid()) {

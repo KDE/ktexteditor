@@ -1017,6 +1017,7 @@ public:
         WordCompletion,
         WordCompletionMinimalWordLength,
         WordCompletionRemoveTail,
+        ShowFocusFrame,
     };
 
 public:
@@ -1098,6 +1099,11 @@ public:
     int showScrollbars() const
     {
         return value(ShowScrollbars).toInt();
+    }
+
+    bool showFocusFrame() const
+    {
+        return value(ShowFocusFrame).toBool();
     }
 
     bool iconBar() const

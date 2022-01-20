@@ -534,6 +534,7 @@ KateViewConfig::KateViewConfig()
         return inBounds(0, value, 99);
     }));
     addConfigEntry(ConfigEntry(WordCompletionRemoveTail, "Word Completion Remove Tail", QString(), true));
+    addConfigEntry(ConfigEntry(ShowFocusFrame, "Show Focus Frame Around Editor", QString(), true));
 
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();

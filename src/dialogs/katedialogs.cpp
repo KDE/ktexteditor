@@ -703,6 +703,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(textareaUi->chkShowWordCount);
     observeChanges(textareaUi->cmbDynamicWordWrapIndicator);
     observeChanges(textareaUi->cbxWordWrap);
+    observeChanges(textareaUi->chkFocusFrame);
     auto a = [ui = textareaUi, cbx = textareaUi->cbxWordWrap]() {
         ui->chkDynWrapAtStaticMarker->setEnabled(cbx->isChecked());
         ui->chkDynWrapAnywhere->setEnabled(cbx->isChecked());
@@ -777,6 +778,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setValue(KateViewConfig::FoldFirstLine, textareaUi->chkFoldFirstLine->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ScrollBarMiniMapWidth, bordersUi->spBoxMiniMapWidth->value());
     KateViewConfig::global()->setValue(KateViewConfig::ShowBracketMatchPreview, textareaUi->chkShowBracketMatchPreview->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowFocusFrame, textareaUi->chkFocusFrame->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingBar, bordersUi->chkShowFoldingMarkers->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingPreview, bordersUi->chkShowFoldingPreview->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowIconBar, bordersUi->chkIconBorder->isChecked());
@@ -827,6 +829,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
     textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
     textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());
+    textareaUi->chkFocusFrame->setChecked(KateViewConfig::global()->showFocusFrame());
 }
 
 void KateViewDefaultsConfig::reset()
