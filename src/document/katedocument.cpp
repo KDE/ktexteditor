@@ -5064,7 +5064,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
     const QByteArray oldDigest = checksum();
     if (!oldDigest.isEmpty() && !url().isEmpty() && url().isLocalFile()) {
         // if current checksum == checksum of new file => unmodified
-        if (m_modOnHdReason != OnDiskDeleted && createDigest() && oldDigest == checksum()) {
+        if (m_modOnHdReason != OnDiskDeleted && m_modOnHdReason != OnDiskCreated && createDigest() && oldDigest == checksum()) {
             m_modOnHd = false;
             m_modOnHdReason = OnDiskUnmodified;
             m_prevModOnHdReason = OnDiskUnmodified;
