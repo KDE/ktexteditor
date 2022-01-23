@@ -448,7 +448,18 @@ function tryCKeywords(line, isBrace)
         //     --b)
         cursor = document.anchor(currentLine, lastPos, '(');
         if (cursor.isValid()) {
-            indentation = document.toVirtualColumn(cursor.line, cursor.column + 1);
+            // Same line, we know there is a keyword here
+            if (cursor.line == line) {
+                indentation = document.toVirtualColumn(cursor.line, cursor.column + 1);
+            } else {
+                // check that the returned cursor's line contains
+                // a keyword and isn't a func call.
+                var cursorLine = document.line(cursor.line);
+                var s = cursorLine.search(/^\s*(if\b|for(each)?|do\b|while|switch|[}]?\s*else(if)?)/);
+                if (s != -1) {
+                    indentation = document.toVirtualColumn(cursor.line, cursor.column + 1);
+                }
+            }
         }
     }
 
