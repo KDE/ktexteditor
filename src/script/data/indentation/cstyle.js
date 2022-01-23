@@ -468,6 +468,27 @@ function tryCKeywords(line, isBrace)
 }
 
 /**
+ * Is this line a single statement of a condition:
+ * if (true)
+ *     doWork();
+ * - Finds the previous non empty line
+ * - Checks if it has control keyword
+ * - Checks if it doesn't have brace
+ */
+function isSingleStmtCondition(line)
+{
+    if (line > 1) {
+        var prev = lastNonEmptyLine(line - 1);
+        var prevText = document.line(prev);
+        var hasKeyword = prevText.search(/^\s*(if\b|[}]?\s*else(if)?\b|do\b|while\b|for(each)?\b)/);
+        if (hasKeyword != -1 && !prevText.contains("{")) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
  * Search for if, do, while, for, ... as we want to indent then.
  * Return null, if nothing useful found.
  * Note: The code is written to be called *after* tryCComment and tryCppComment!
@@ -496,6 +517,18 @@ function tryCondition(line)
         if (currentIndentation == 0)
             return -1;
 
+        // Is this a condition with only one stmt in it
+        var singleStmt = isSingleStmtCondition(currentLine);
+        if (singleStmt) {
+            var leftBrace = findLeftBrace(currentLine, 0);
+            if (leftBrace != -1) {
+                indentation = leftBrace + gIndentWidth;
+                dbg("tryCondition(1): success in line " + currentLine);
+                return indentation;
+            }
+        }
+
+
         var lineDelimiter = 10; // 10 limit search, hope this is a sane value
         while (currentLine > 0 && lineDelimiter > 0) {
             --currentLine;
@@ -515,7 +548,7 @@ function tryCondition(line)
         }
     }
 
-    if (indentation != -1) dbg("tryCondition: success in line " + currentLine);
+    if (indentation != -1) dbg("tryCondition(2): success in line " + currentLine);
     return indentation;
 }
 
