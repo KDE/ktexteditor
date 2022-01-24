@@ -5078,7 +5078,8 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
             static const QString fullGitPath = QStandardPaths::findExecutable(QStringLiteral("git"));
             if (!fullGitPath.isEmpty()) {
                 QProcess git;
-                const QStringList args{QStringLiteral("cat-file"), QStringLiteral("-e"), QString::fromUtf8(oldDigest)};
+                const QStringList args{QStringLiteral("cat-file"), QStringLiteral("-e"), QString::fromUtf8(oldDigest.toHex())};
+                git.setWorkingDirectory(url().adjusted(QUrl::RemoveFilename).toLocalFile());
                 git.start(fullGitPath, args);
                 if (git.waitForStarted()) {
                     git.closeWriteChannel();
