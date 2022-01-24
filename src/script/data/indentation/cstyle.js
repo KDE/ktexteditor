@@ -821,7 +821,7 @@ function processChar(line, c)
     } else if (firstPos == column - 1 && c == '}'  && firstPos > prevFirstPos) {
         // align indentation to previous line when creating new block with auto brackets enabled
         // prevents over-indentation for if blocks and loops
-        return prevFirstPos;
+        return document.toVirtualColumn(line - 1, prevFirstPos);
     } else if (cfgSnapSlash && c == '/' && lastPos == column - 1) {
         // try to snap the string "* /" to "*/"
         var currentString = document.line(line);

@@ -140,6 +140,7 @@ QString KateAutoIndent::tabString(int length, int align) const
         s.append(QString(length / tabWidth, QLatin1Char('\t')));
         length = length % tabWidth;
     }
+    // we use tabs to indent any left over length
     s.append(QString(length + spaces, QLatin1Char(' ')));
 
     return s;
