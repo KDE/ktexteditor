@@ -113,6 +113,11 @@ public:
      */
     Q_INVOKABLE void setAutoBrackets(bool enable = true);
 
+    /*
+     * Whether to replace tabs with spaces
+     */
+    Q_INVOKABLE void replaceTabs(bool enable = true);
+
     // Aliases
     Q_INVOKABLE void enter(int cnt = 1); // KeyReturn
     Q_INVOKABLE void cursorPrev(int cnt = 1); // CursorLeft

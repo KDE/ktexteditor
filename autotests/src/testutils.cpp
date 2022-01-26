@@ -163,6 +163,11 @@ void KateViewObject::setAutoBrackets(bool enable)
     view()->config()->setValue(KateViewConfig::AutoBrackets, enable);
 }
 
+void KateViewObject::replaceTabs(bool enable)
+{
+    view()->doc()->config()->setValue(KateDocumentConfig::ReplaceTabsWithSpaces, enable);
+}
+
 #define ALIAS(alias, func)                                                                                                                                     \
     void KateViewObject::alias(int cnt)                                                                                                                        \
     {                                                                                                                                                          \
