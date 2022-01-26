@@ -442,7 +442,7 @@ Q_SIGNALS:
      *
      * \param document the document that was reloaded.
      *
-     * @since 5.90
+     * @since 5.91
      */
     void aboutToSave(KTextEditor::Document *document);
 
