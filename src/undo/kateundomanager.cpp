@@ -34,16 +34,14 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
 
     // After reload restore it only if checksum of the doc is same
     connect(doc, &KTextEditor::DocumentPrivate::loaded, this, [this](KTextEditor::Document *doc) {
-        if (doc && doc->checksum() == docChecksumBeforeReload) {
-            if (!doc->checksum().isEmpty() && !docChecksumBeforeReload.isEmpty()) {
-                undoItems = savedUndoItems;
-                redoItems = savedRedoItems;
-                Q_EMIT undoChanged();
-            } else {
-                // Else delete everything, we don't want to leak
-                qDeleteAll(savedUndoItems);
-                qDeleteAll(savedRedoItems);
-            }
+        if (doc && !doc->checksum().isEmpty() && !docChecksumBeforeReload.isEmpty() && doc->checksum() == docChecksumBeforeReload) {
+            undoItems = savedUndoItems;
+            redoItems = savedRedoItems;
+            Q_EMIT undoChanged();
+        } else {
+            // Else delete everything, we don't want to leak
+            qDeleteAll(savedUndoItems);
+            qDeleteAll(savedRedoItems);
         }
         docChecksumBeforeReload.clear();
         savedUndoItems.clear();
