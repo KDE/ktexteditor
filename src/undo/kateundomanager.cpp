@@ -40,8 +40,9 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
                 redoItems = savedRedoItems;
                 Q_EMIT undoChanged();
             } else {
+                // Else delete everything, we don't want to leak
                 qDeleteAll(savedUndoItems);
-                qDeleteAll(redoItems);
+                qDeleteAll(savedRedoItems);
             }
         }
         docChecksumBeforeReload.clear();
