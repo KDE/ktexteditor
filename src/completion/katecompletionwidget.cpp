@@ -1191,12 +1191,20 @@ void KateCompletionWidget::showDocTip(const QModelIndex &idx)
 {
     auto data = idx.data(KTextEditor::CodeCompletionModel::ExpandingWidget);
     // No data => hide
-    if (!data.isValid() || !data.canConvert<QString>()) {
+    if (!data.isValid()) {
         m_docTip->hide();
         return;
+    } else if (data.canConvert<QWidget *>()) {
+        m_docTip->setWidget(data.value<QWidget *>());
+    } else if (data.canConvert<QString>()) {
+        QString text = data.toString();
+        if (text.isEmpty()) {
+            m_docTip->hide();
+            return;
+        }
+        m_docTip->setText(text);
     }
-    // Reposition and show
-    m_docTip->setPlainText(data.toString());
+
     m_docTip->updatePosition();
     m_docTip->show();
 }
