@@ -17,6 +17,9 @@ class QKeyEvent;
 
 namespace KateVi
 {
+
+class KeyEvent;
+
 /**
  * for encoding keypresses w/ modifiers into an internal QChar representation and back again to a
  * descriptive text string
@@ -41,9 +44,11 @@ public:
     int vi2qt(const QString &keypress) const;
     int encoded2qt(const QString &keypress) const;
     const QChar KeyEventToQChar(const QKeyEvent &keyEvent);
+    const QChar KeyEventToQChar(const KeyEvent &keyEvent);
 
 private:
     void initKeyTables();
+    const QChar KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods);
 
     QHash<int, QString> m_qt2katevi;
     QHash<QString, int> m_katevi2qt;

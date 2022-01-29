@@ -8,6 +8,7 @@
 #define KATEVI_LASTCHANGERECORDER_H
 
 #include "completion.h"
+#include "keyevent.h"
 
 #include <QKeyEvent>
 #include <QList>
@@ -22,7 +23,7 @@ class InputModeManager;
  * doesn't actually appear to be a ShortcutOverride) and then, whether the "ShortcutOverride" was accepted or not,
  * again as a KeyPress.  We don't want to store both, so this helper helps to decide what to do.
  */
-bool isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKeyPress, const QList<QKeyEvent> &keyEventLog);
+bool isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKeyPress, const QList<KeyEvent> &keyEventLog);
 
 class LastChangeRecorder
 {
@@ -41,7 +42,7 @@ public:
 private:
     InputModeManager *m_viInputModeManager;
 
-    QList<QKeyEvent> m_changeLog;
+    QList<KeyEvent> m_changeLog;
 
     bool m_isReplaying;
 };

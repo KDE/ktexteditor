@@ -275,6 +275,7 @@ vimode/emulatedcommandbar/interactivesedreplacemode.cpp
 vimode/emulatedcommandbar/searchmode.cpp
 vimode/emulatedcommandbar/commandmode.cpp
 vimode/commandrangeexpressionparser.cpp
+vimode/keyevent.cpp
 vimode/keymapper.cpp
 vimode/marks.cpp
 vimode/jumps.cpp

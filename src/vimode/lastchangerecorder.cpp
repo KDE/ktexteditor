@@ -11,12 +11,12 @@
 
 using namespace KateVi;
 
-bool KateVi::isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKeyPress, const QList<QKeyEvent> &keyEventLog)
+bool KateVi::isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKeyPress, const QList<KeyEvent> &keyEventLog)
 {
     if (keyEventLog.empty()) {
         return false;
     }
-    const QKeyEvent &lastKeyPress = keyEventLog.last();
+    const KeyEvent &lastKeyPress = keyEventLog.last();
     if (lastKeyPress.type() == QEvent::ShortcutOverride && currentKeyPress.type() == QEvent::KeyPress && lastKeyPress.key() == currentKeyPress.key()
         && lastKeyPress.modifiers() == currentKeyPress.modifiers()) {
         return true;
@@ -37,7 +37,7 @@ void LastChangeRecorder::record(const QKeyEvent &e)
     }
 
     if (e.key() != Qt::Key_Shift && e.key() != Qt::Key_Control && e.key() != Qt::Key_Meta && e.key() != Qt::Key_Alt) {
-        m_changeLog.append(e);
+        m_changeLog.append(KeyEvent::fromQKeyEvent(e));
     }
 }
 
@@ -56,7 +56,7 @@ QString LastChangeRecorder::encodedChanges() const
 {
     QString result;
 
-    QList<QKeyEvent> keyLog = m_changeLog;
+    QList<KeyEvent> keyLog = m_changeLog;
 
     for (int i = 0; i < keyLog.size(); i++) {
         int keyCode = keyLog.at(i).key();

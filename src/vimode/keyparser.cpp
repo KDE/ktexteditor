@@ -7,6 +7,7 @@
 
 #include <QKeyEvent>
 #include <QStringList>
+#include <vimode/keyevent.h>
 #include <vimode/keyparser.h>
 
 using namespace KateVi;
@@ -662,10 +663,16 @@ const QString KeyParser::decodeKeySequence(const QString &keys) const
 
 const QChar KeyParser::KeyEventToQChar(const QKeyEvent &keyEvent)
 {
-    const int keyCode = keyEvent.key();
-    const QString text = keyEvent.text();
-    const Qt::KeyboardModifiers mods = keyEvent.modifiers();
+    return KeyEventToQChar(keyEvent.key(), keyEvent.text(), keyEvent.modifiers());
+}
 
+const QChar KeyParser::KeyEventToQChar(const KeyEvent &keyEvent)
+{
+    return KeyEventToQChar(keyEvent.key(), keyEvent.text(), keyEvent.modifiers());
+}
+
+const QChar KeyParser::KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods)
+{
     // If previous key press was AltGr, return key value right away and don't go
     // down the "handle modifiers" code path. AltGr is really confusing...
     if (mods & Qt::GroupSwitchModifier) {
