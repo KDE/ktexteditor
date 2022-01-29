@@ -387,6 +387,7 @@ private:
 private Q_SLOTS:
     void highlightFolding();
     void handleDestroyedAnnotationItemDelegate();
+    void delayedUpdateOfSizeWithRepaint();
 
 private:
     QString m_hoveredAnnotationGroupIdentifier;

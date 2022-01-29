@@ -2193,10 +2193,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             // Don't forget our "text-stuck-to-border" protector + border line
             lnX += 2 * m_separatorWidth;
             m_positionToArea.push_back(AreaPosition(lnX, None));
+
             // Now that we know our needed space, ensure we are painted properly
-            updateGeometry();
-            update();
-            return;
+            // we still keep painting to not have strange flicker
+            QTimer::singleShot(0, this, &KateIconBorder::delayedUpdateOfSizeWithRepaint);
         }
     }
 }
@@ -2632,15 +2632,22 @@ void KateIconBorder::setAnnotationItemDelegate(KTextEditor::AbstractAnnotationIt
     connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged, this, &KateIconBorder::updateAnnotationBorderWidth);
 
     if (m_annotationBorderOn) {
-        updateGeometry();
-
-        QTimer::singleShot(0, this, SLOT(update()));
+        QTimer::singleShot(0, this, &KateIconBorder::delayedUpdateOfSizeWithRepaint);
     }
 }
 
 void KateIconBorder::handleDestroyedAnnotationItemDelegate()
 {
     setAnnotationItemDelegate(nullptr);
+}
+
+void KateIconBorder::delayedUpdateOfSizeWithRepaint()
+{
+    // ensure we update size + repaint at once to avoid flicker, see bug 435361
+    setUpdatesEnabled(false);
+    updateGeometry();
+    repaint();
+    setUpdatesEnabled(true);
 }
 
 void KateIconBorder::initStyleOption(KTextEditor::StyleOptionAnnotationItem *styleOption) const
