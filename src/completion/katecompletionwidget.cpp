@@ -15,6 +15,7 @@
 #include "katerenderer.h"
 #include "kateview.h"
 
+#include "documentation_tip.h"
 #include "kateargumenthintmodel.h"
 #include "kateargumenthinttree.h"
 #include "katecompletionmodel.h"
@@ -91,6 +92,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_entryList(new KateCompletionTree(this))
     , m_argumentHintModel(new KateArgumentHintModel(this))
     , m_argumentHintTree(new KateArgumentHintTree(this))
+    , m_docTip(new DocTip(this))
     , m_automaticInvocationDelay(100)
     , m_filterInstalled(false)
     , m_lastInsertionByUser(false)
@@ -188,6 +190,8 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     // Position the entry-list so a frame can be drawn around it
     m_entryList->move(frameWidth(), frameWidth());
+
+    m_docTip->setVisible(false);
 }
 
 KateCompletionWidget::~KateCompletionWidget()
@@ -620,8 +624,8 @@ void KateCompletionWidget::updateHeight()
 {
     QRect geom = geometry();
 
-    int minBaseHeight = 10;
-    int maxBaseHeight = 300;
+    constexpr int minBaseHeight = 10;
+    constexpr int maxBaseHeight = 300;
 
     int baseHeight = 0;
     int calculatedCustomHeight = 0;
@@ -831,6 +835,10 @@ void KateCompletionWidget::abortCompletion()
     // qCDebug(LOG_KTE) ;
 
     m_isSuspended = false;
+
+    if (!docTip()->isHidden()) {
+        docTip()->hide();
+    }
 
     bool wasActive = isCompletionActive();
 
@@ -1177,6 +1185,20 @@ bool KateCompletionWidget::canCollapseCurrentItem() const
         }
         return m_argumentHintModel->isExpandable(m_argumentHintTree->currentIndex()) && m_argumentHintModel->isExpanded(m_argumentHintTree->currentIndex());
     }
+}
+
+void KateCompletionWidget::showDocTip(const QModelIndex &idx)
+{
+    auto data = idx.data(KTextEditor::CodeCompletionModel::ExpandingWidget);
+    // No data => hide
+    if (!data.isValid() || !data.canConvert<QString>()) {
+        m_docTip->hide();
+        return;
+    }
+    // Reposition and show
+    m_docTip->setPlainText(data.toString());
+    m_docTip->updatePosition();
+    m_docTip->show();
 }
 
 void KateCompletionWidget::setCurrentItemExpanded(bool expanded)

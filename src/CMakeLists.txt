@@ -63,6 +63,7 @@ completion/katecompletiondelegate.cpp
 completion/expandingtree/expandingwidgetmodel.cpp
 completion/expandingtree/expandingdelegate.cpp
 completion/expandingtree/expandingtree.cpp
+completion/documentation_tip.cpp
 
 # simple internal word completion
 completion/katewordcompletion.cpp

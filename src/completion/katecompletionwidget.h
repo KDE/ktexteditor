@@ -26,6 +26,7 @@ namespace KTextEditor
 {
 class ViewPrivate;
 }
+class DocTip;
 class KateCompletionModel;
 class KateCompletionTree;
 class KateArgumentHintTree;
@@ -131,6 +132,12 @@ public:
 
     void updateHeight();
 
+    void showDocTip(const QModelIndex &idx);
+    DocTip *docTip() const
+    {
+        return m_docTip;
+    }
+
 public Q_SLOTS:
     void waitForModelReset();
 
@@ -195,6 +202,7 @@ private:
     KateCompletionTree *m_entryList;
     KateArgumentHintModel *m_argumentHintModel;
     KateArgumentHintTree *m_argumentHintTree;
+    DocTip *m_docTip;
 
     QTimer *m_automaticInvocationTimer;
 

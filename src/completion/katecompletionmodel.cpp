@@ -168,16 +168,6 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    if (role == Qt::DecorationRole && index.column() == KTextEditor::CodeCompletionModel::Prefix && isExpandable(index)) {
-        cacheIcons();
-
-        if (!isExpanded(index)) {
-            return QVariant(m_collapsedIcon);
-        } else {
-            return QVariant(m_expandedIcon);
-        }
-    }
-
     // groupOfParent returns a group when the index is a member of that group, but not the group head/label.
     if (!hasGroups() || groupOfParent(index)) {
         if (role == Qt::TextAlignmentRole) {
@@ -2055,9 +2045,8 @@ void KateCompletionModel::updateBestMatches()
     hideOrShowGroup(m_bestMatches);
 }
 
-void KateCompletionModel::rowSelected(const QModelIndex &row)
+void KateCompletionModel::rowSelected(const QModelIndex & /*row*/)
 {
-    ExpandingWidgetModel::rowSelected(row);
     ///@todo delay this
     int rc = widget()->argumentHintModel()->rowCount(QModelIndex());
     if (rc == 0) {

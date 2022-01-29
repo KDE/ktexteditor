@@ -19,12 +19,13 @@
 #include "katerenderer.h"
 #include "kateview.h"
 
+#include "documentation_tip.h"
 #include "katecompletiondelegate.h"
 #include "katecompletionmodel.h"
 #include "katecompletionwidget.h"
 
 KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
-    : ExpandingTree(parent)
+    : QTreeView(parent)
 {
     m_scrollingEnabled = true;
     header()->hide();
@@ -33,6 +34,9 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     setFrameStyle(QFrame::NoFrame);
     setAllColumnsShowFocus(true);
     setAlternatingRowColors(true);
+    setUniformRowHeights(true);
+    header()->setMinimumSectionSize(0);
+
     // We need ScrollPerItem, because ScrollPerPixel is too slow with a very large completion-list(see KDevelop).
     setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
 
@@ -55,8 +59,9 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
 
 void KateCompletionTree::currentChanged(const QModelIndex &current, const QModelIndex &previous)
 {
+    widget()->showDocTip(current);
     widget()->model()->rowSelected(current);
-    ExpandingTree::currentChanged(current, previous);
+    QTreeView::currentChanged(current, previous);
 }
 
 void KateCompletionTree::setScrollingEnabled(bool enabled)
@@ -104,6 +109,10 @@ void KateCompletionTree::resizeColumnsSlot()
 {
     if (model()) {
         resizeColumns();
+
+        if (!widget()->docTip()->isHidden()) {
+            widget()->docTip()->updatePosition();
+        }
     }
 }
 

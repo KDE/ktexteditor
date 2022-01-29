@@ -8,14 +8,14 @@
 #ifndef KATECOMPLETIONTREE_H
 #define KATECOMPLETIONTREE_H
 
-#include "expandingtree/expandingtree.h"
+#include <QTreeView>
 
 class KateCompletionWidget;
 class KateCompletionModel;
 
 class QTimer;
 
-class KateCompletionTree : public ExpandingTree
+class KateCompletionTree : public QTreeView
 {
     Q_OBJECT
 
@@ -26,6 +26,11 @@ public:
     KateCompletionModel *kateModel() const;
 
     void resizeColumns(bool firstShow = false, bool forceResize = false);
+
+    int sizeHintForColumn(int column) const override final
+    {
+        return columnWidth(column);
+    }
 
     // Navigation
     bool nextCompletion();
