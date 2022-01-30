@@ -165,7 +165,9 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     // No smart lock, no queued connects
     connect(view(), &KTextEditor::ViewPrivate::cursorPositionChanged, this, &KateCompletionWidget::cursorPositionChanged);
-    connect(view(), &KTextEditor::ViewPrivate::verticalScrollPositionChanged, this, &KateCompletionWidget::updatePositionSlot);
+    connect(view(), &KTextEditor::ViewPrivate::verticalScrollPositionChanged, this, [this] {
+        abortCompletion();
+    });
 
     // connect to all possible editing primitives
     connect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
@@ -538,11 +540,6 @@ void KateCompletionWidget::updateAndShow()
     } else {
         hide();
     }
-}
-
-void KateCompletionWidget::updatePositionSlot()
-{
-    updatePosition();
 }
 
 bool KateCompletionWidget::updatePosition(bool force)

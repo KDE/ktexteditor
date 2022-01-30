@@ -135,9 +135,6 @@ public Q_SLOTS:
     void waitForModelReset();
 
     void abortCompletion();
-    /*    void viewFocusIn();
-        void viewFocusOut();*/
-    void updatePositionSlot();
     void automaticInvocation();
 
     /*    void updateFocus();*/
