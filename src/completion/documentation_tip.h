@@ -11,6 +11,8 @@ public:
     explicit DocTip(QWidget *parent = nullptr);
     void updatePosition();
 
+    QWidget *currentWidget();
+
     void setText(const QString &);
     void setWidget(QWidget *w);
 

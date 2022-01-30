@@ -24,6 +24,11 @@ DocTip::DocTip(QWidget *parent)
     m_stack.addWidget(m_textEdit);
 }
 
+QWidget *DocTip::currentWidget()
+{
+    return m_stack.currentWidget();
+}
+
 void DocTip::setText(const QString &s)
 {
     m_textEdit->setPlainText(s);

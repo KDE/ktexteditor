@@ -2840,11 +2840,13 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
 
 void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 {
+#if 0
     if (e->key() == Qt::Key_Alt && view()->completionWidget()->isCompletionActive()
         && ((m_completionItemExpanded && (view()->completionWidget()->hadNavigation() || m_altDownTime.elapsed() > 300))
             || (!m_completionItemExpanded && !view()->completionWidget()->hadNavigation()))) {
         view()->completionWidget()->toggleExpanded(false, true);
     }
+#endif
 
     if (m_shiftKeyPressed && (e->modifiers() & Qt::ShiftModifier) == 0) {
         m_shiftKeyPressed = false;

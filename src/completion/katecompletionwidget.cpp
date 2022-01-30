@@ -1145,6 +1145,7 @@ bool KateCompletionWidget::navigateBack()
 
 bool KateCompletionWidget::toggleExpanded(bool forceExpand, bool forceUnExpand)
 {
+#if 0
     if ((canExpandCurrentItem() || forceExpand) && !forceUnExpand) {
         bool ret = canExpandCurrentItem();
         setCurrentItemExpanded(true);
@@ -1154,6 +1155,7 @@ bool KateCompletionWidget::toggleExpanded(bool forceExpand, bool forceUnExpand)
         setCurrentItemExpanded(false);
         return ret;
     }
+#endif
     return false;
 }
 
@@ -1258,6 +1260,8 @@ bool KateCompletionWidget::navigateUp()
 
 QWidget *KateCompletionWidget::currentEmbeddedWidget()
 {
+    return m_docTip->currentWidget();
+#if 0
     QModelIndex index = selectedIndex();
     if (!index.isValid()) {
         return nullptr;
@@ -1269,6 +1273,7 @@ QWidget *KateCompletionWidget::currentEmbeddedWidget()
         }
     }
     return nullptr;
+#endif
 }
 
 void KateCompletionWidget::cursorDown()
