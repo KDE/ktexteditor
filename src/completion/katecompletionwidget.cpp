@@ -152,7 +152,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     // trigger completion on double click on completion list
     connect(m_entryList, &KateCompletionTree::doubleClicked, this, &KateCompletionWidget::execute);
 
-    connect(m_entryList->verticalScrollBar(), &QScrollBar::valueChanged, m_presentationModel, &KateCompletionModel::placeExpandingWidgets);
     connect(m_argumentHintTree->verticalScrollBar(), &QScrollBar::valueChanged, m_argumentHintModel, &KateArgumentHintModel::placeExpandingWidgets);
     connect(view(), &KTextEditor::ViewPrivate::focusOut, this, &KateCompletionWidget::viewFocusOut);
 
@@ -684,12 +683,10 @@ void KateCompletionWidget::updateHeight()
 
     int newExpandingAddedHeight = 0;
 
-    if (baseHeight == maxBaseHeight && model()->expandingWidgetsHeight()) {
+    if (baseHeight == maxBaseHeight) {
         // Eventually add some more height
-        if (calculatedCustomHeight && calculatedCustomHeight > baseHeight && calculatedCustomHeight < (maxBaseHeight + model()->expandingWidgetsHeight())) {
+        if (calculatedCustomHeight && calculatedCustomHeight > baseHeight && calculatedCustomHeight < maxBaseHeight) {
             newExpandingAddedHeight = calculatedCustomHeight - baseHeight;
-        } else {
-            newExpandingAddedHeight = model()->expandingWidgetsHeight();
         }
     }
 
@@ -1143,50 +1140,11 @@ bool KateCompletionWidget::navigateBack()
     return false;
 }
 
-bool KateCompletionWidget::toggleExpanded(bool forceExpand, bool forceUnExpand)
+bool KateCompletionWidget::toggleExpanded(bool /*forceExpand*/, bool /*forceUnExpand*/)
 {
-#if 0
-    if ((canExpandCurrentItem() || forceExpand) && !forceUnExpand) {
-        bool ret = canExpandCurrentItem();
-        setCurrentItemExpanded(true);
-        return ret;
-    } else if (canCollapseCurrentItem() || forceUnExpand) {
-        bool ret = canCollapseCurrentItem();
-        setCurrentItemExpanded(false);
-        return ret;
-    }
-#endif
+    // In future, if we want to show the documentation tip on demand for e.g in response
+    // to a user keypress, we can do it here.
     return false;
-}
-
-bool KateCompletionWidget::canExpandCurrentItem() const
-{
-    if (m_inCompletionList) {
-        if (!m_entryList->currentIndex().isValid()) {
-            return false;
-        }
-        return model()->isExpandable(m_entryList->currentIndex()) && !model()->isExpanded(m_entryList->currentIndex());
-    } else {
-        if (!m_argumentHintTree->currentIndex().isValid()) {
-            return false;
-        }
-        return argumentHintModel()->isExpandable(m_argumentHintTree->currentIndex()) && !argumentHintModel()->isExpanded(m_argumentHintTree->currentIndex());
-    }
-}
-
-bool KateCompletionWidget::canCollapseCurrentItem() const
-{
-    if (m_inCompletionList) {
-        if (!m_entryList->currentIndex().isValid()) {
-            return false;
-        }
-        return model()->isExpandable(m_entryList->currentIndex()) && model()->isExpanded(m_entryList->currentIndex());
-    } else {
-        if (!m_argumentHintTree->currentIndex().isValid()) {
-            return false;
-        }
-        return m_argumentHintModel->isExpandable(m_argumentHintTree->currentIndex()) && m_argumentHintModel->isExpanded(m_argumentHintTree->currentIndex());
-    }
 }
 
 void KateCompletionWidget::showDocTip(const QModelIndex &idx)
@@ -1209,22 +1167,6 @@ void KateCompletionWidget::showDocTip(const QModelIndex &idx)
 
     m_docTip->updatePosition();
     m_docTip->show();
-}
-
-void KateCompletionWidget::setCurrentItemExpanded(bool expanded)
-{
-    if (m_inCompletionList) {
-        if (!m_entryList->currentIndex().isValid()) {
-            return;
-        }
-        model()->setExpanded(m_entryList->currentIndex(), expanded);
-        updateHeight();
-    } else {
-        if (!m_argumentHintTree->currentIndex().isValid()) {
-            return;
-        }
-        m_argumentHintModel->setExpanded(m_argumentHintTree->currentIndex(), expanded);
-    }
 }
 
 bool KateCompletionWidget::eventFilter(QObject *watched, QEvent *event)
@@ -1261,25 +1203,10 @@ bool KateCompletionWidget::navigateUp()
 QWidget *KateCompletionWidget::currentEmbeddedWidget()
 {
     return m_docTip->currentWidget();
-#if 0
-    QModelIndex index = selectedIndex();
-    if (!index.isValid()) {
-        return nullptr;
-    }
-    if (qobject_cast<const ExpandingWidgetModel *>(index.model())) {
-        const ExpandingWidgetModel *model = static_cast<const ExpandingWidgetModel *>(index.model());
-        if (model->isExpanded(index)) {
-            return model->expandingWidget(index);
-        }
-    }
-    return nullptr;
-#endif
 }
 
 void KateCompletionWidget::cursorDown()
 {
-    bool wasPartiallyExpanded = model()->partiallyExpandedRow().isValid();
-
     if (m_inCompletionList) {
         m_entryList->nextCompletion();
     } else {
@@ -1287,16 +1214,10 @@ void KateCompletionWidget::cursorDown()
             switchList();
         }
     }
-
-    if (wasPartiallyExpanded != model()->partiallyExpandedRow().isValid()) {
-        updateHeight();
-    }
 }
 
 void KateCompletionWidget::cursorUp()
 {
-    bool wasPartiallyExpanded = model()->partiallyExpandedRow().isValid();
-
     if (m_inCompletionList) {
         if (!m_entryList->previousCompletion()) {
             switchList();
@@ -1304,16 +1225,10 @@ void KateCompletionWidget::cursorUp()
     } else {
         m_argumentHintTree->previousCompletion();
     }
-
-    if (wasPartiallyExpanded != model()->partiallyExpandedRow().isValid()) {
-        updateHeight();
-    }
 }
 
 void KateCompletionWidget::pageDown()
 {
-    bool wasPartiallyExpanded = model()->partiallyExpandedRow().isValid();
-
     if (m_inCompletionList) {
         m_entryList->pageDown();
     } else {
@@ -1321,16 +1236,10 @@ void KateCompletionWidget::pageDown()
             switchList();
         }
     }
-
-    if (wasPartiallyExpanded != model()->partiallyExpandedRow().isValid()) {
-        updateHeight();
-    }
 }
 
 void KateCompletionWidget::pageUp()
 {
-    bool wasPartiallyExpanded = model()->partiallyExpandedRow().isValid();
-
     if (m_inCompletionList) {
         if (!m_entryList->pageUp()) {
             switchList();
@@ -1338,39 +1247,23 @@ void KateCompletionWidget::pageUp()
     } else {
         m_argumentHintTree->pageUp();
     }
-
-    if (wasPartiallyExpanded != model()->partiallyExpandedRow().isValid()) {
-        updateHeight();
-    }
 }
 
 void KateCompletionWidget::top()
 {
-    bool wasPartiallyExpanded = model()->partiallyExpandedRow().isValid();
-
     if (m_inCompletionList) {
         m_entryList->top();
     } else {
         m_argumentHintTree->top();
     }
-
-    if (wasPartiallyExpanded != model()->partiallyExpandedRow().isValid()) {
-        updateHeight();
-    }
 }
 
 void KateCompletionWidget::bottom()
 {
-    bool wasPartiallyExpanded = model()->partiallyExpandedRow().isValid();
-
     if (m_inCompletionList) {
         m_entryList->bottom();
     } else {
         m_argumentHintTree->bottom();
-    }
-
-    if (wasPartiallyExpanded != model()->partiallyExpandedRow().isValid()) {
-        updateHeight();
     }
 }
 

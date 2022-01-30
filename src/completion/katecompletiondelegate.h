@@ -16,7 +16,7 @@ class DocumentPrivate;
 }
 class KateCompletionWidget;
 
-class KateCompletionDelegate : public ExpandingDelegate
+class KateCompletionDelegate final : public ExpandingDelegate
 {
 public:
     explicit KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent);
@@ -31,6 +31,16 @@ protected:
     mutable QList<int> m_cachedColumnStarts;
     void heightChanged() const override;
     QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const override;
+
+    bool editorEvent(QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &) override
+    {
+        return false;
+    }
+
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
+    {
+        return QItemDelegate::sizeHint(option, index);
+    }
 };
 
 #endif

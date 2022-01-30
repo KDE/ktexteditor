@@ -113,12 +113,6 @@ public:
 
     QWidget *currentEmbeddedWidget();
 
-    bool canExpandCurrentItem() const;
-
-    bool canCollapseCurrentItem() const;
-
-    void setCurrentItemExpanded(bool);
-
     // Returns true if a screen border has been hit
     bool updatePosition(bool force = false);
 
