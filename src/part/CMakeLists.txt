@@ -11,4 +11,4 @@ install( FILES ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop  DESTINATION  ${KDE_
 target_link_libraries (katepart KF5TextEditor KF5::SyntaxHighlighting)
 
 # install the part
-install (TARGETS katepart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/parts)
+install (TARGETS katepart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/parts)
