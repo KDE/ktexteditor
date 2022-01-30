@@ -4516,7 +4516,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
         });
         v->setCursorPosition(it->second);
         if (v->isVisible()) {
-            v->repaintText(false);
+            v->repaint();
         }
     }
 
