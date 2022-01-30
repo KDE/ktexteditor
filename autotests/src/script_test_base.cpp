@@ -17,7 +17,8 @@
 #include "kateview.h"
 
 #include <QCryptographicHash>
-#include <QDirIterator>
+#include <QDir>
+#include <QFileInfo>
 #include <QJSEngine>
 #include <QMainWindow>
 #include <QProcess>
@@ -70,21 +71,13 @@ void ScriptTestBase::getTestData(const QString &script)
         }
     }
 
-    const QString testDir(testDataPath + m_section + QLatin1Char('/') + script + QLatin1Char('/'));
-    if (!QFile::exists(testDir)) {
-        QSKIP(qPrintable(QString(testDir + QLatin1String(" does not exist"))), SkipAll);
+    const QDir testDir(testDataPath + m_section + QLatin1Char('/') + script + QLatin1Char('/'));
+    if (!testDir.exists()) {
+        QSKIP(qPrintable(QString(testDir.path() + QLatin1String(" does not exist"))), SkipAll);
     }
-    QDirIterator contents(testDir);
-    while (contents.hasNext()) {
-        QString entry = contents.next();
-        if (entry.endsWith(QLatin1Char('.'))) {
-            continue;
-        }
-        QFileInfo info(entry);
-        if (!info.isDir()) {
-            continue;
-        }
-        QTest::newRow(info.baseName().toLocal8Bit().constData()) << info.absoluteFilePath();
+    const auto testList = testDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name);
+    for (const auto &info : testList) {
+        QTest::newRow(info.baseName().toUtf8().constData()) << info.absoluteFilePath();
     }
 }
 
