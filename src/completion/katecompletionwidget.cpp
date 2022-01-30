@@ -809,7 +809,8 @@ void KateCompletionWidget::cursorPositionChanged()
 
     if (oldCurrentSourceIndex.isValid()) {
         QModelIndex idx = m_presentationModel->mapFromSource(oldCurrentSourceIndex);
-        if (idx.isValid()) {
+        // We only want to reselect this if it is still the first item
+        if (idx.isValid() && idx.row() == 0) {
             // qCDebug(LOG_KTE) << "setting" << idx;
             m_entryList->setCurrentIndex(idx.sibling(idx.row(), 0));
             //       m_entryList->nextCompletion();
