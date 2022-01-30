@@ -2,7 +2,7 @@
 #define KTEXTEDITOR_DOC_TIP_H
 
 #include <QStackedWidget>
-#include <QTextEdit>
+#include <QTextBrowser>
 
 class DocTip : public QFrame
 {
@@ -18,7 +18,7 @@ public:
 
 private:
     QStackedWidget m_stack;
-    QTextEdit *const m_textEdit;
+    QTextBrowser *const m_textView;
 };
 
 #endif

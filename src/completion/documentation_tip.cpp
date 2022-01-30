@@ -6,12 +6,12 @@
 
 DocTip::DocTip(QWidget *parent)
     : QFrame(parent)
-    , m_textEdit(new QTextEdit(this))
+    , m_textView(new QTextBrowser(this))
 {
     setFocusPolicy(Qt::NoFocus);
     setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
 
-    m_textEdit->setFrameStyle(QFrame::Box | QFrame::Raised);
+    m_textView->setFrameStyle(QFrame::Box | QFrame::Raised);
 
     setFixedWidth(250);
     setFixedHeight(150);
@@ -21,7 +21,7 @@ DocTip::DocTip(QWidget *parent)
     layout->setSpacing(0);
     setContentsMargins({});
     layout->addWidget(&m_stack);
-    m_stack.addWidget(m_textEdit);
+    m_stack.addWidget(m_textView);
 }
 
 QWidget *DocTip::currentWidget()
@@ -31,11 +31,11 @@ QWidget *DocTip::currentWidget()
 
 void DocTip::setText(const QString &s)
 {
-    m_textEdit->setPlainText(s);
-    if (m_stack.currentWidget() != m_textEdit) {
+    m_textView->setPlainText(s);
+    if (m_stack.currentWidget() != m_textView) {
         m_stack.removeWidget(m_stack.currentWidget());
-        m_stack.addWidget(m_textEdit);
-        m_stack.setCurrentWidget(m_textEdit);
+        m_stack.addWidget(m_textView);
+        m_stack.setCurrentWidget(m_textView);
     }
 }
 
