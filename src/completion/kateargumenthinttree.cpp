@@ -18,6 +18,23 @@
 #include "kateview.h"
 #include <QModelIndex>
 
+class ArgumentHintDelegate : public KateCompletionDelegate
+{
+public:
+    using KateCompletionDelegate::KateCompletionDelegate;
+
+protected:
+    bool editorEvent(QEvent *e, QAbstractItemModel *m, const QStyleOptionViewItem &o, const QModelIndex &i) override
+    {
+        return ExpandingDelegate::editorEvent(e, m, o, i);
+    }
+
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
+    {
+        return ExpandingDelegate::sizeHint(option, index);
+    }
+};
+
 KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
     : ExpandingTree(nullptr)
     , m_parent(parent) // Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
@@ -38,7 +55,7 @@ KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
     setIndentation(0);
     setAllColumnsShowFocus(true);
     setAlternatingRowColors(true);
-    setItemDelegate(new KateCompletionDelegate(parent->argumentHintModel(), parent));
+    setItemDelegate(new ArgumentHintDelegate(parent->argumentHintModel(), parent));
 }
 
 void KateArgumentHintTree::clearCompletion()

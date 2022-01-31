@@ -16,7 +16,7 @@ class DocumentPrivate;
 }
 class KateCompletionWidget;
 
-class KateCompletionDelegate final : public ExpandingDelegate
+class KateCompletionDelegate : public ExpandingDelegate
 {
 public:
     explicit KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent);

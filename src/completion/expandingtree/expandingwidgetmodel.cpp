@@ -341,7 +341,7 @@ void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
                 m_expandingWidgets[idx] = v.value<QWidget *>();
             } else if (v.canConvert<QString>()) {
                 // Create a html widget that shows the given string
-                KTextEdit *edit = new KTextEdit(v.toString());
+                QTextEdit *edit = new QTextEdit(v.toString());
                 edit->setReadOnly(true);
                 edit->resize(200, 50); // Make the widget small so it embeds nicely.
                 m_expandingWidgets[idx] = edit;

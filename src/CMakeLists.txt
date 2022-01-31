@@ -319,7 +319,6 @@ PRIVATE
   KF5::ItemViews
   KF5::SonnetCore
   KF5::SonnetUi
-  KF5::TextWidgets
   KF5::AuthCore
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
