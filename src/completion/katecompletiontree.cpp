@@ -59,7 +59,10 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
 
 void KateCompletionTree::currentChanged(const QModelIndex &current, const QModelIndex &previous)
 {
-    widget()->showDocTip(current);
+    // If config is enabled OR the tip is already visible => show / update it
+    if (widget()->view()->config()->showDocWithCompletion() || widget()->docTip()->isVisible()) {
+        widget()->showDocTip(current);
+    }
     widget()->model()->rowSelected(current);
     QTreeView::currentChanged(current, previous);
 }

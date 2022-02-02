@@ -1018,6 +1018,7 @@ public:
         WordCompletionMinimalWordLength,
         WordCompletionRemoveTail,
         ShowFocusFrame,
+        ShowDocWithCompletion,
     };
 
 public:
@@ -1104,6 +1105,11 @@ public:
     bool showFocusFrame() const
     {
         return value(ShowFocusFrame).toBool();
+    }
+
+    bool showDocWithCompletion() const
+    {
+        return value(ShowDocWithCompletion).toBool();
     }
 
     bool iconBar() const

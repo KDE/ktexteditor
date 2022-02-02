@@ -69,8 +69,7 @@ public Q_SLOTS:
 public:
     void tab(bool shift);
 
-    /// Returns whether the current item was expanded/unexpanded
-    bool toggleExpanded(bool forceExpand = false, bool forceUnExpand = false);
+    void toggleDocumentation();
 
     const KateCompletionModel *model() const;
     KateCompletionModel *model();
@@ -147,9 +146,6 @@ public Q_SLOTS:
     bool navigateRight();
     bool navigateAccept();
     bool navigateBack();
-
-    bool hadNavigation() const;
-    void resetHadNavigation();
 
 protected:
     void showEvent(QShowEvent *event) override;

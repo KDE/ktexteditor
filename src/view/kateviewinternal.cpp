@@ -111,7 +111,6 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_cursor(doc()->buffer(), KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert)
     , m_mouse()
     , m_possibleTripleClick(false)
-    , m_completionItemExpanded(false)
     , m_bm(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmStart(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmEnd(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
@@ -2749,9 +2748,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
     }
 
     if (e->key() == Qt::Key_Alt && view()->completionWidget()->isCompletionActive()) {
-        m_completionItemExpanded = view()->completionWidget()->toggleExpanded(true);
-        view()->completionWidget()->resetHadNavigation();
-        m_altDownTime.start();
+        view()->completionWidget()->toggleDocumentation();
     }
 
     // Note: AND'ing with <Shift> is a quick hack to fix Key_Enter
@@ -2840,14 +2837,6 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
 
 void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 {
-#if 0
-    if (e->key() == Qt::Key_Alt && view()->completionWidget()->isCompletionActive()
-        && ((m_completionItemExpanded && (view()->completionWidget()->hadNavigation() || m_altDownTime.elapsed() > 300))
-            || (!m_completionItemExpanded && !view()->completionWidget()->hadNavigation()))) {
-        view()->completionWidget()->toggleExpanded(false, true);
-    }
-#endif
-
     if (m_shiftKeyPressed && (e->modifiers() & Qt::ShiftModifier) == 0) {
         m_shiftKeyPressed = false;
 

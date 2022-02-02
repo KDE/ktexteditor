@@ -1122,16 +1122,6 @@ bool KateCompletionWidget::navigateRight()
     return false;
 }
 
-bool KateCompletionWidget::hadNavigation() const
-{
-    return m_hadCompletionNavigation;
-}
-
-void KateCompletionWidget::resetHadNavigation()
-{
-    m_hadCompletionNavigation = false;
-}
-
 bool KateCompletionWidget::navigateBack()
 {
     m_hadCompletionNavigation = true;
@@ -1141,11 +1131,27 @@ bool KateCompletionWidget::navigateBack()
     return false;
 }
 
-bool KateCompletionWidget::toggleExpanded(bool /*forceExpand*/, bool /*forceUnExpand*/)
+void KateCompletionWidget::toggleDocumentation()
 {
-    // In future, if we want to show the documentation tip on demand for e.g in response
-    // to a user keypress, we can do it here.
-    return false;
+    // user has configured the doc to be always visible
+    // whenever its available.
+    if (view()->config()->showDocWithCompletion()) {
+        return;
+    }
+
+    if (m_docTip->isVisible()) {
+        m_hadCompletionNavigation = false;
+        QTimer::singleShot(400, this, [this] {
+            // if 400ms later this is not false, it means
+            // that the user navigated inside the active
+            // widget in doc tip
+            if (!m_hadCompletionNavigation) {
+                m_docTip->hide();
+            }
+        });
+    } else {
+        showDocTip(m_entryList->currentIndex());
+    }
 }
 
 void KateCompletionWidget::showDocTip(const QModelIndex &idx)

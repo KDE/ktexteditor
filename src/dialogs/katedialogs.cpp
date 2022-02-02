@@ -229,6 +229,7 @@ KateCompletionConfigTab::KateCompletionConfigTab(QWidget *parent)
     observeChanges(ui->chkAutoCompletionEnabled);
     observeChanges(ui->chkAutoSelectFirstEntry);
     observeChanges(ui->gbKeywordCompletion);
+    observeChanges(ui->gbShowDoc);
     observeChanges(ui->gbWordCompletion);
     observeChanges(ui->minimalWordLength);
     observeChanges(ui->removeTail);
@@ -262,6 +263,7 @@ void KateCompletionConfigTab::apply()
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletion, ui->gbWordCompletion->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionMinimalWordLength, ui->minimalWordLength->value());
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, ui->removeTail->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowDocWithCompletion, ui->gbShowDoc->isChecked());
 
     KateViewConfig::global()->configEnd();
 }
@@ -273,6 +275,7 @@ void KateCompletionConfigTab::reload()
 
     ui->gbKeywordCompletion->setChecked(KateViewConfig::global()->keywordCompletion());
     ui->gbWordCompletion->setChecked(KateViewConfig::global()->wordCompletion());
+    ui->gbShowDoc->setChecked(KateViewConfig::global()->showDocWithCompletion());
 
     ui->minimalWordLength->setValue(KateViewConfig::global()->wordCompletionMinimalWordLength());
     ui->removeTail->setChecked(KateViewConfig::global()->wordCompletionRemoveTail());
