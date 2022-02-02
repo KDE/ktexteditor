@@ -864,6 +864,7 @@ void KateCompletionWidget::clear()
     m_presentationModel->clearCompletionModels();
     m_argumentHintTree->clearCompletion();
     m_argumentHintModel->clear();
+    m_docTip->clearWidgets();
 
     const auto keys = m_completionRanges.keys();
     for (KTextEditor::CodeCompletionModel *model : keys) {

@@ -16,9 +16,12 @@ public:
     void setText(const QString &);
     void setWidget(QWidget *w);
 
+    void clearWidgets();
+
 private:
     QStackedWidget m_stack;
     QTextBrowser *const m_textView;
+    std::vector<QWidget *> m_widgets;
 };
 
 #endif

@@ -501,7 +501,6 @@ QModelIndex KateCompletionModel::indexForGroup(Group *g) const
 
 void KateCompletionModel::clearGroups()
 {
-    clearExpanding();
     m_ungrouped->clear();
     m_argumentHints->clear();
     m_bestMatches->clear();
@@ -1002,8 +1001,6 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
     if (resetModel) {
         endResetModel();
     }
-
-    clearExpanding(); // We need to do this, or be aware of expanding-widgets while filtering.
 
     Q_EMIT layoutChanged();
 }

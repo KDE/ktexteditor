@@ -31,21 +31,36 @@ QWidget *DocTip::currentWidget()
     return m_stack.currentWidget();
 }
 
+void DocTip::clearWidgets()
+{
+    for (auto *widget : m_widgets) {
+        widget->deleteLater();
+    }
+    m_widgets.clear();
+}
+
 void DocTip::setText(const QString &s)
 {
     m_textView->setPlainText(s);
     if (m_stack.currentWidget() != m_textView) {
         m_stack.removeWidget(m_stack.currentWidget());
         m_stack.addWidget(m_textView);
-        m_stack.setCurrentWidget(m_textView);
     }
+    Q_ASSERT(m_stack.count() == 1);
 }
 
 void DocTip::setWidget(QWidget *w)
 {
-    m_stack.removeWidget(m_stack.currentWidget());
+    if (auto w = m_stack.currentWidget()) {
+        if (w != m_textView) {
+            m_widgets.push_back(w);
+        }
+        m_stack.removeWidget(w);
+    }
+
     m_stack.addWidget(w);
-    m_stack.setCurrentWidget(w);
+
+    Q_ASSERT(m_stack.count() == 1);
 }
 
 void DocTip::updatePosition()
