@@ -96,11 +96,6 @@ QVariant ExpandingWidgetModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void ExpandingWidgetModel::clearMatchQualities()
-{
-    m_contextMatchQualities.clear();
-}
-
 QModelIndex ExpandingWidgetModel::partiallyExpandedRow() const
 {
     if (m_partiallyExpanded.isEmpty()) {
@@ -112,7 +107,6 @@ QModelIndex ExpandingWidgetModel::partiallyExpandedRow() const
 
 void ExpandingWidgetModel::clearExpanding()
 {
-    clearMatchQualities();
     QMap<QModelIndex, ExpandingWidgetModel::ExpandingType> oldExpandState = m_expandState;
     for (auto &widget : std::as_const(m_expandingWidgets)) {
         if (widget) {

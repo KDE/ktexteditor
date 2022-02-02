@@ -31,8 +31,6 @@ public:
     /// Expand/collapse the current item
     void setCurrentItemExpanded(bool);
 
-    void clearMatchQualities();
-
     /// Unexpand all rows and clear all cached information about them(this includes deleting the expanding-widgets)
     void clearExpanding();
 
@@ -122,8 +120,6 @@ private:
     // Store expanding-widgets and cache whether items can be expanded
     mutable QMap<QModelIndex, ExpandingType> m_expandState;
     QMap<QModelIndex, QPointer<QWidget>> m_expandingWidgets; // Map rows to their expanding-widgets
-    QMap<QModelIndex, int>
-        m_contextMatchQualities; // Map rows to their context-match qualities(undefined if unknown, else 0 to 10). Not used yet, eventually remove.
 };
 
 /**
