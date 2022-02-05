@@ -958,6 +958,7 @@ public:
 
 private:
     void updateDocName();
+    void uniquifyDocNames(const std::vector<KTextEditor::DocumentPrivate *> &docs);
 
 public:
     /**

@@ -4288,12 +4288,15 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
     int count = -1;
 
+    std::vector<KTextEditor::DocumentPrivate *> docsWithSameName;
+
     const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
     for (KTextEditor::DocumentPrivate *doc : docs) {
         if ((doc != this) && (doc->url().fileName() == url().fileName())) {
             if (doc->m_docNameNumber > count) {
                 count = doc->m_docNameNumber;
             }
+            docsWithSameName.push_back(doc);
         }
     }
 
@@ -4303,6 +4306,13 @@ void KTextEditor::DocumentPrivate::updateDocName()
     m_docName = removeNewLines(url().fileName());
 
     m_isUntitled = m_docName.isEmpty();
+
+    if (!m_isUntitled && !docsWithSameName.empty()) {
+        docsWithSameName.push_back(this);
+        uniquifyDocNames(docsWithSameName);
+        return;
+    }
+
     if (m_isUntitled) {
         m_docName = i18n("Untitled");
     }
@@ -4314,6 +4324,84 @@ void KTextEditor::DocumentPrivate::updateDocName()
     // avoid to emit this, if name doesn't change!
     if (oldName != m_docName) {
         Q_EMIT documentNameChanged(this);
+    }
+}
+
+/**
+ * Find the shortest prefix for doc from urls
+ * @p urls contains a list of urls
+ *  - /path/to/some/file
+ *  - /some/to/path/file
+ *
+ * we find the shortest path prefix which can be used to
+ * identify @p doc
+ *
+ * for above, it will return "some" for first and "path" for second
+ */
+static QString shortestPrefix(const std::vector<QString> &urls, KTextEditor::DocumentPrivate *doc)
+{
+    const auto url = doc->url().toString(QUrl::NormalizePathSegments | QUrl::PreferLocalFile);
+    int lastSlash = url.lastIndexOf(QLatin1Char('/'));
+    if (lastSlash == -1) {
+        // just filename?
+        return url;
+    }
+    int fileNameStart = lastSlash;
+
+    lastSlash--;
+    lastSlash = url.lastIndexOf(QLatin1Char('/'), lastSlash);
+    if (lastSlash == -1) {
+        // already too short?
+        lastSlash = 0;
+        return url.mid(lastSlash, fileNameStart);
+    }
+
+    QStringView urlView = url;
+    QStringView urlv = url;
+    urlv = urlv.mid(lastSlash);
+
+    for (size_t i = 0; i < urls.size(); ++i) {
+        if (urls[i] == url) {
+            continue;
+        }
+
+        if (urls[i].endsWith(urlv)) {
+            lastSlash = url.lastIndexOf(QLatin1Char('/'), lastSlash - 1);
+            if (lastSlash == -1) {
+                // reached end
+                return url.mid(0, fileNameStart);
+            }
+            // else update urlv and match again from start
+            urlv = urlView.mid(lastSlash);
+            i = -1;
+        }
+    }
+
+    return url.mid(lastSlash + 1, fileNameStart - (lastSlash + 1));
+}
+
+void KTextEditor::DocumentPrivate::uniquifyDocNames(const std::vector<KTextEditor::DocumentPrivate *> &docs)
+{
+    std::vector<QString> paths;
+    paths.reserve(docs.size());
+    std::transform(docs.begin(), docs.end(), std::back_inserter(paths), [](const KTextEditor::DocumentPrivate *d) {
+        return d->url().toString(QUrl::NormalizePathSegments | QUrl::PreferLocalFile);
+    });
+
+    for (const auto doc : docs) {
+        const QString prefix = shortestPrefix(paths, doc);
+        const QString fileName = doc->url().fileName();
+        const QString oldName = doc->m_docName;
+
+        if (!prefix.isEmpty()) {
+            doc->m_docName = fileName + QStringLiteral(" - ") + prefix;
+        } else {
+            doc->m_docName = fileName;
+        }
+
+        if (doc->m_docName != oldName) {
+            Q_EMIT doc->documentNameChanged(doc);
+        }
     }
 }
 
