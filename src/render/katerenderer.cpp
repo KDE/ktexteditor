@@ -447,8 +447,7 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return false;
 }
 
-QVector<QTextLayout::FormatRange>
-KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, bool completionHighlight, bool completionSelected) const
+QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly) const
 {
     // limit number of attributes we can highlight in reasonable time
     const int limitOfRanges = 1024;
@@ -474,48 +473,45 @@ KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool 
         }
     }
 
-    if (!completionHighlight) {
-        // check for dynamic hl stuff
-        const QSet<Kate::TextRange *> *rangesMouseIn = m_view ? m_view->rangesMouseIn() : nullptr;
-        const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : nullptr;
-        bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
+    // check for dynamic hl stuff
+    const QSet<Kate::TextRange *> *rangesMouseIn = m_view ? m_view->rangesMouseIn() : nullptr;
+    const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : nullptr;
+    bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
 
-        // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart
-        // rangs behavior ;)
-        std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
+    // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart
+    // rangs behavior ;)
+    std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
 
-        renderRanges.reserve(rangesWithAttributes.size());
-        // loop over all ranges
-        for (int i = 0; i < rangesWithAttributes.size(); ++i) {
-            // real range
-            Kate::TextRange *kateRange = rangesWithAttributes[i];
+    renderRanges.reserve(rangesWithAttributes.size());
+    // loop over all ranges
+    for (int i = 0; i < rangesWithAttributes.size(); ++i) {
+        // real range
+        Kate::TextRange *kateRange = rangesWithAttributes[i];
 
-            // calculate attribute, default: normal attribute
-            KTextEditor::Attribute::Ptr attribute = kateRange->attribute();
-            if (anyDynamicHlsActive) {
-                // check mouse in
-                if (KTextEditor::Attribute::Ptr attributeMouseIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)) {
-                    if (rangesMouseIn->contains(kateRange)) {
-                        attribute = attributeMouseIn;
-                    }
-                }
-
-                // check caret in
-                if (KTextEditor::Attribute::Ptr attributeCaretIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn)) {
-                    if (rangesCaretIn->contains(kateRange)) {
-                        attribute = attributeCaretIn;
-                    }
+        // calculate attribute, default: normal attribute
+        KTextEditor::Attribute::Ptr attribute = kateRange->attribute();
+        if (anyDynamicHlsActive) {
+            // check mouse in
+            if (KTextEditor::Attribute::Ptr attributeMouseIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)) {
+                if (rangesMouseIn->contains(kateRange)) {
+                    attribute = attributeMouseIn;
                 }
             }
 
-            // span range
-            renderRanges.pushNewRange().addRange(*kateRange, std::move(attribute));
+            // check caret in
+            if (KTextEditor::Attribute::Ptr attributeCaretIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn)) {
+                if (rangesCaretIn->contains(kateRange)) {
+                    attribute = attributeCaretIn;
+                }
+            }
         }
+
+        // span range
+        renderRanges.pushNewRange().addRange(*kateRange, std::move(attribute));
     }
 
     // Add selection highlighting if we're creating the selection decorations
-    if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected)
-        || (m_view && m_view->blockSelection())) {
+    if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (m_view && m_view->blockSelection())) {
         auto &currentRange = renderRanges.pushNewRange();
 
         // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?
@@ -528,9 +524,7 @@ KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool 
         backgroundAttribute->setForeground(attribute(KTextEditor::dsNormal)->selectedForeground().color());
 
         // Create a range for the current selection
-        if (completionHighlight && completionSelected) {
-            currentRange.addRange(KTextEditor::Range(line, 0, line + 1, 0), backgroundAttribute);
-        } else if (m_view->blockSelection() && m_view->selectionRange().overlapsLine(line)) {
+        if (m_view->blockSelection() && m_view->selectionRange().overlapsLine(line)) {
             currentRange.addRange(m_doc->rangeOnLine(m_view->selectionRange(), line), backgroundAttribute);
         } else {
             currentRange.addRange(m_view->selectionRange(), backgroundAttribute);
