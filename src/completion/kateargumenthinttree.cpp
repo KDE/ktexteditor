@@ -7,8 +7,8 @@
 #include "kateargumenthinttree.h"
 
 #include <QApplication>
+#include <QDesktopWidget>
 #include <QHeaderView>
-#include <QScreen>
 #include <QScrollBar>
 
 #include "expandingtree/expandingwidgetmodel.h"
@@ -136,8 +136,7 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
     bool enableScrollBars = false;
 
     // Resize and move so it fits the screen horizontally
-    const QRect screenGeometry = m_parent->screen()->availableGeometry();
-    int maxWidth = (screenGeometry.width() * 3) / 4;
+    int maxWidth = (QApplication::desktop()->screenGeometry(m_parent->view()).width() * 3) / 4;
     if (geom.width() > maxWidth) {
         geom.setWidth(maxWidth);
         geom.setHeight(geom.height() + horizontalScrollBar()->height() + 2);
@@ -145,23 +144,20 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
         enableScrollBars = true;
     }
 
-    const int rightPos = screenGeometry.right();
-    if (geom.right() > rightPos) {
-        geom.moveRight(rightPos);
+    if (geom.right() > QApplication::desktop()->screenGeometry(m_parent->view()).right()) {
+        geom.moveRight(QApplication::desktop()->screenGeometry(m_parent->view()).right());
     }
 
-    const int leftPos = screenGeometry.left();
-    if (geom.left() < leftPos) {
-        geom.moveLeft(leftPos);
+    if (geom.left() < QApplication::desktop()->screenGeometry(m_parent->view()).left()) {
+        geom.moveLeft(QApplication::desktop()->screenGeometry(m_parent->view()).left());
     }
 
     // Resize and move so it fits the screen vertically
     bool resized = false;
-    const int topPos = screenGeometry.top();
-    if (geom.top() < topPos) {
-        int offset = topPos - geom.top();
+    if (geom.top() < QApplication::desktop()->screenGeometry(m_parent->view()).top()) {
+        int offset = QApplication::desktop()->screenGeometry(m_parent->view()).top() - geom.top();
         geom.setBottom(geom.bottom() - offset);
-        geom.moveTo(geom.left(), topPos);
+        geom.moveTo(geom.left(), QApplication::desktop()->screenGeometry(m_parent->view()).top());
         resized = true;
     }
 
