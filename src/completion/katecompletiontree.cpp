@@ -83,26 +83,6 @@ void KateCompletionTree::scrollContentsBy(int dx, int dy)
     }
 }
 
-int KateCompletionTree::columnTextViewportPosition(int column) const
-{
-    int ret = columnViewportPosition(column);
-    QModelIndex i = model()->index(0, column, QModelIndex());
-    QModelIndex base = model()->index(0, 0, QModelIndex());
-
-    // If it's just a group header, use the first child
-    if (base.isValid() && model()->rowCount(base)) {
-        i = model()->index(0, column, base);
-    }
-
-    if (i.isValid()) {
-        QIcon icon = i.data(Qt::DecorationRole).value<QIcon>();
-        if (!icon.isNull()) {
-            ret += icon.actualSize(sizeHintForIndex(i)).width();
-        }
-    }
-    return ret;
-}
-
 KateCompletionWidget *KateCompletionTree::widget() const
 {
     return static_cast<KateCompletionWidget *>(const_cast<QObject *>(parent()));

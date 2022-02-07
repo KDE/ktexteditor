@@ -144,8 +144,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     m_entryList->setColumnWidth(1, 0);
     m_entryList->setColumnWidth(2, 0);
 
-    m_entryList->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
-
     m_argumentHintTree->setParent(nullptr, Qt::ToolTip);
     m_argumentHintTree->setModel(m_argumentHintModel);
 

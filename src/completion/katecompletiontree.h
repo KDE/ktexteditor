@@ -15,7 +15,7 @@ class KateCompletionModel;
 
 class QTimer;
 
-class KateCompletionTree : public QTreeView
+class KateCompletionTree final : public QTreeView
 {
     Q_OBJECT
 
@@ -27,7 +27,7 @@ public:
 
     void resizeColumns(bool firstShow = false, bool forceResize = false);
 
-    int sizeHintForColumn(int column) const override final
+    int sizeHintForColumn(int column) const override
     {
         return columnWidth(column);
     }
@@ -43,9 +43,6 @@ public:
     void scheduleUpdate();
 
     void setScrollingEnabled(bool);
-
-    /// Returns the approximated viewport position of the text in the given column, skipping an eventual icon
-    int columnTextViewportPosition(int column) const;
 
 private Q_SLOTS:
     void resizeColumnsSlot();
