@@ -46,7 +46,7 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     connect(m_resizeTimer, &QTimer::timeout, this, &KateCompletionTree::resizeColumnsSlot);
 
     // Provide custom highlighting to completion entries
-    setItemDelegate(new KateCompletionDelegate(widget()->model(), widget()));
+    setItemDelegate(new KateCompletionDelegate(this));
     // make sure we adapt to size changes when the model got reset
     // this is important for delayed creation of groups, without this
     // the first column would never get resized to the correct size
@@ -175,7 +175,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     const int numColumns = model()->columnCount();
     QVarLengthArray<int, 8> columnSize(numColumns);
     for (int i = 0; i < numColumns; ++i) {
-        columnSize[i] = 5;
+        columnSize[i] = 0;
     }
     QModelIndex current = indexAt(QPoint(1, 1));
     //    const bool changed = current.isValid();

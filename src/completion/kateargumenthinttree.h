@@ -36,6 +36,8 @@ public Q_SLOTS:
     void updateGeometry();
     void updateGeometry(QRect rect);
 
+    KateArgumentHintModel *model() const;
+
 protected:
     void paintEvent(QPaintEvent *event) override;
     void drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
@@ -45,7 +47,6 @@ protected:
 
 private:
     uint rowHeight(const QModelIndex &index) const;
-    KateArgumentHintModel *model() const;
     int sizeHintForColumn(int column) const override;
 
     KateCompletionWidget *m_parent;

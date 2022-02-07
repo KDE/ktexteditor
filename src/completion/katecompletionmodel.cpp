@@ -168,6 +168,11 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
+    if (role == InternalRole::IsNonEmptyGroup) {
+        auto group = groupForIndex(index);
+        return group && !group->isEmpty;
+    }
+
     // groupOfParent returns a group when the index is a member of that group, but not the group head/label.
     if (!hasGroups() || groupOfParent(index)) {
         if (role == Qt::TextAlignmentRole) {

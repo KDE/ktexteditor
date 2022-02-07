@@ -26,14 +26,44 @@ public:
     using KateCompletionDelegate::KateCompletionDelegate;
 
 protected:
-    bool editorEvent(QEvent *e, QAbstractItemModel *m, const QStyleOptionViewItem &o, const QModelIndex &i) override
+    bool editorEvent(QEvent *event, QAbstractItemModel *m, const QStyleOptionViewItem &o, const QModelIndex &index) override
     {
-        return ExpandingDelegate::editorEvent(e, m, o, i);
+        if (event->type() == QEvent::MouseButtonRelease) {
+            event->accept();
+            model()->setExpanded(index, !model()->isExpanded(index));
+
+            return true;
+        } else {
+            event->ignore();
+        }
+
+        return false;
+    }
+
+    KateArgumentHintTree *tree() const
+    {
+        return static_cast<KateArgumentHintTree *>(parent());
+    }
+
+    KateArgumentHintModel *model() const
+    {
+        auto tree = this->tree();
+        return static_cast<KateArgumentHintModel *>(tree->model());
     }
 
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
     {
-        return ExpandingDelegate::sizeHint(option, index);
+        QSize s = QStyledItemDelegate::sizeHint(option, index);
+        if (model()->isExpanded(index) && model()->expandingWidget(index)) {
+            QWidget *widget = model()->expandingWidget(index);
+            QSize widgetSize = widget->size();
+
+            s.setHeight(widgetSize.height() + s.height()
+                        + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidgets
+        } else if (model()->isPartiallyExpanded(index)) {
+            s.setHeight(s.height() + 30 + 10);
+        }
+        return s;
     }
 };
 
@@ -59,7 +89,7 @@ KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
     setIndentation(0);
     setAllColumnsShowFocus(true);
     setAlternatingRowColors(true);
-    setItemDelegate(new ArgumentHintDelegate(parent->argumentHintModel(), parent));
+    setItemDelegate(new ArgumentHintDelegate(this));
 }
 
 void KateArgumentHintTree::clearCompletion()

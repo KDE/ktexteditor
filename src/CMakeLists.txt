@@ -61,7 +61,6 @@ completion/kateargumenthinttree.cpp
 completion/kateargumenthintmodel.cpp
 completion/katecompletiondelegate.cpp
 completion/expandingtree/expandingwidgetmodel.cpp
-completion/expandingtree/expandingdelegate.cpp
 completion/documentation_tip.cpp
 
 # simple internal word completion

@@ -7,28 +7,30 @@
 #ifndef KATECOMPLETIONDELEGATE_H
 #define KATECOMPLETIONDELEGATE_H
 
-#include "expandingtree/expandingdelegate.h"
+// #include "expandingtree/expandingdelegate.h"
+#include <QStyledItemDelegate>
+#include <QTextLayout>
 
 class KateCompletionWidget;
+class KateCompletionModel;
 
-class KateCompletionDelegate : public ExpandingDelegate
+class KateCompletionDelegate : public QStyledItemDelegate
 {
 public:
-    explicit KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent);
+    explicit KateCompletionDelegate(QObject *parent);
+
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
 protected:
-    void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const override;
-    QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const override;
+    //     void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const;
+    QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index) const;
 
-    bool editorEvent(QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &) override
-    {
-        return false;
-    }
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
-    {
-        return QItemDelegate::sizeHint(option, index);
-    }
+private:
+    mutable int m_currentColumnStart = 0; // Text-offset for custom highlighting, will be applied to m_cachedHighlights(Only highlights starting after this will
+                                          // be used). Should be zero of the highlighting is not taken from kate.
+    QAbstractItemModel *const m_model = nullptr;
 };
 
 #endif

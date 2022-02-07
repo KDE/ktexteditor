@@ -39,6 +39,10 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
     Q_OBJECT
 
 public:
+    enum InternalRole {
+        IsNonEmptyGroup = KTextEditor::CodeCompletionModel::LastExtraItemDataRole + 1,
+    };
+
     explicit KateCompletionModel(KateCompletionWidget *parent = nullptr);
     ~KateCompletionModel() override;
 

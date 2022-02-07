@@ -18,30 +18,148 @@
 #include "katecompletiontree.h"
 #include "katecompletionwidget.h"
 
-KateCompletionDelegate::KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent)
-    : ExpandingDelegate(model, parent)
+#include <QApplication>
+#include <QPainter>
+
+KateCompletionDelegate::KateCompletionDelegate(QObject *parent)
+    : QStyledItemDelegate(parent)
 {
 }
 
-void KateCompletionDelegate::adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const
-{
-    if (index.column() == 0) {
-        // We always want to use the match-color if available, also for highlighted items.
-        ///@todo Only do this for the "current" item, for others the model is asked for the match color.
-        uint color = model()->matchColor(index);
-        if (color != 0) {
-            QColor match(color);
+// void KateCompletionDelegate::adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const
+// {
+//     if (index.column() == 0) {
+//         // We always want to use the match-color if available, also for highlighted items.
+//         ///@todo Only do this for the "current" item, for others the model is asked for the match color.
+//         uint color = model()->matchColor(index);
+//         if (color != 0) {
+//             QColor match(color);
+//
+//             for (int a = 0; a <= 2; a++) {
+//                 option.palette.setColor((QPalette::ColorGroup)a, QPalette::Highlight, match);
+//             }
+//         }
+//     }
+// }
 
-            for (int a = 0; a <= 2; a++) {
-                option.palette.setColor((QPalette::ColorGroup)a, QPalette::Highlight, match);
-            }
-        }
+static void paintItemViewText(QPainter *p, const QString &text, const QStyleOptionViewItem &options, QVector<QTextLayout::FormatRange> formats)
+{
+    // set formats
+    QTextLayout textLayout(text, options.font, p->device());
+    auto fmts = textLayout.formats();
+    formats.append(fmts);
+    textLayout.setFormats(formats);
+
+    // set alignment, rtls etc
+    QTextOption textOption;
+    textOption.setTextDirection(options.direction);
+    textOption.setAlignment(QStyle::visualAlignment(options.direction, options.displayAlignment));
+    textLayout.setTextOption(textOption);
+
+    // layout the text
+    textLayout.beginLayout();
+
+    QTextLine line = textLayout.createLine();
+    if (!line.isValid())
+        return;
+
+    const int lineWidth = options.rect.width();
+    line.setLineWidth(lineWidth);
+    line.setPosition(QPointF(0, 0));
+
+    textLayout.endLayout();
+
+    int y = QStyle::alignedRect(Qt::LayoutDirectionAuto, Qt::AlignVCenter, textLayout.boundingRect().size().toSize(), options.rect).y();
+
+    // draw the text
+    const auto pos = QPointF(options.rect.x(), y);
+    textLayout.draw(p, pos);
+}
+
+void KateCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewItem &o, const QModelIndex &index) const
+{
+    QStyleOptionViewItem opt = o;
+    initStyleOption(&opt, index);
+    QString text = opt.text;
+
+    if (text.isEmpty()) {
+        QStyledItemDelegate::paint(painter, o, index);
+        return;
     }
+
+    auto *style = opt.widget->style() ? opt.widget->style() : qApp->style();
+
+    opt.text.clear();
+
+    style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, opt.widget);
+
+    QRect textRect = style->subElementRect(QStyle::SE_ItemViewItemText, &opt, opt.widget);
+
+    const bool isGroup = index.data(KateCompletionModel::IsNonEmptyGroup).toBool();
+    if (!isGroup && !opt.features.testFlag(QStyleOptionViewItem::HasDecoration)) {
+        // 3 because 2 margins for the icon, and one left margin for the text
+        int hMargins = style->pixelMetric(QStyle::PM_FocusFrameHMargin) * 3;
+        textRect.adjust(hMargins + opt.decorationSize.width(), 0, 0, 0);
+    }
+
+#if 0
+    auto p = painter->pen();
+    painter->setPen(Qt::yellow);
+    painter->drawRect(opt.rect);
+
+    painter->setPen(Qt::red);
+    painter->drawRect(textRect);
+    painter->setPen(p);
+#endif
+
+    auto highlightings = createHighlighting(index);
+    opt.rect = textRect;
+    paintItemViewText(painter, text, opt, std::move(highlightings));
 }
 
-QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &) const
+QSize KateCompletionDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QVariant highlight = model()->data(index, KTextEditor::CodeCompletionModel::HighlightingMethod);
+    if (index.data().toString().isEmpty()) {
+        return {};
+    }
+
+    QSize size = QStyledItemDelegate::sizeHint(option, index);
+    if (!index.data(Qt::DecorationRole).isNull()) {
+        return size;
+    }
+    const int hMargins = option.widget->style()->pixelMetric(QStyle::PM_FocusFrameHMargin) * 3;
+    size.rwidth() += option.decorationSize.width() + hMargins;
+    return size;
+}
+
+static QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList<QVariant> &customHighlights)
+{
+    QVector<QTextLayout::FormatRange> ret;
+
+    for (int i = 0; i + 2 < customHighlights.count(); i += 3) {
+        if (!customHighlights[i].canConvert(QVariant::Int) || !customHighlights[i + 1].canConvert(QVariant::Int)
+            || !customHighlights[i + 2].canConvert<QTextFormat>()) {
+            qCWarning(LOG_KTE) << "Unable to convert triple to custom formatting.";
+            continue;
+        }
+
+        QTextLayout::FormatRange format;
+        format.start = customHighlights[i].toInt();
+        format.length = customHighlights[i + 1].toInt();
+        format.format = customHighlights[i + 2].value<QTextFormat>().toCharFormat();
+
+        if (!format.format.isValid()) {
+            qCWarning(LOG_KTE) << "Format is not valid";
+        }
+
+        ret << format;
+    }
+    return ret;
+}
+
+QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index) const
+{
+    QVariant highlight = index.data(KTextEditor::CodeCompletionModel::HighlightingMethod);
 
     // TODO: config enable specifying no highlight as default
     int highlightMethod = KTextEditor::CodeCompletionModel::InternalHighlighting;
@@ -51,7 +169,7 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
 
     if (highlightMethod & KTextEditor::CodeCompletionModel::CustomHighlighting) {
         m_currentColumnStart = 0;
-        return highlightingFromVariantList(model()->data(index, KTextEditor::CodeCompletionModel::CustomHighlight).toList());
+        return highlightingFromVariantList(index.data(KTextEditor::CodeCompletionModel::CustomHighlight).toList());
     }
 
     return {};
