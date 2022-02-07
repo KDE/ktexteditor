@@ -7,13 +7,14 @@
 #ifndef KATEARGUMENTHINTTREE_H
 #define KATEARGUMENTHINTTREE_H
 
-#include "expandingtree/expandingtree.h"
+#include <QTextDocument>
+#include <QTreeView>
 
 class KateCompletionWidget;
 class KateArgumentHintModel;
 class QRect;
 
-class KateArgumentHintTree : public ExpandingTree
+class KateArgumentHintTree : public QTreeView
 {
     Q_OBJECT
 public:
@@ -37,6 +38,7 @@ public Q_SLOTS:
 
 protected:
     void paintEvent(QPaintEvent *event) override;
+    void drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
     void rowsInserted(const QModelIndex &parent, int start, int end) override;
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>()) override;
     void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
@@ -47,6 +49,7 @@ private:
     int sizeHintForColumn(int column) const override;
 
     KateCompletionWidget *m_parent;
+    mutable QTextDocument m_drawText;
 };
 
 #endif

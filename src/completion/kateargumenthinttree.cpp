@@ -6,17 +6,19 @@
 
 #include "kateargumenthinttree.h"
 
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QHeaderView>
-#include <QScrollBar>
-
 #include "expandingtree/expandingwidgetmodel.h"
 #include "kateargumenthintmodel.h"
 #include "katecompletiondelegate.h"
 #include "katecompletionwidget.h"
 #include "kateview.h"
+
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QHeaderView>
 #include <QModelIndex>
+#include <QPainter>
+#include <QScrollBar>
 
 class ArgumentHintDelegate : public KateCompletionDelegate
 {
@@ -36,13 +38,15 @@ protected:
 };
 
 KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
-    : ExpandingTree(nullptr)
+    : QTreeView(parent)
     , m_parent(parent) // Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
 {
     setFrameStyle(QFrame::Box | QFrame::Raised);
     setLineWidth(1);
 
-    connect(parent, &QObject::destroyed, this, &QObject::deleteLater);
+    m_drawText.documentLayout()->setPaintDevice(this);
+    setUniformRowHeights(false);
+    header()->setMinimumSectionSize(0);
 
     setFrameStyle(QFrame::NoFrame);
     setFrameStyle(QFrame::Box | QFrame::Plain);
@@ -72,6 +76,33 @@ void KateArgumentHintTree::paintEvent(QPaintEvent *event)
 {
     QTreeView::paintEvent(event);
     updateGeometry(); ///@todo delay this. It is needed here, because visualRect(...) returns an invalid rect in updateGeometry before the content is painted
+}
+
+void KateArgumentHintTree::drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    QTreeView::drawRow(painter, option, index);
+
+    const ExpandingWidgetModel *eModel = qobject_cast<const ExpandingWidgetModel *>(model());
+    if (eModel && eModel->isPartiallyExpanded(index)) {
+        QRect rect = eModel->partialExpandRect(index);
+        if (rect.isValid()) {
+            painter->fillRect(rect, QBrush(0xffffffff));
+
+            QAbstractTextDocumentLayout::PaintContext ctx;
+            // since arbitrary HTML can be shown use a black on white color scheme here
+            ctx.palette = QPalette(Qt::black, Qt::white);
+            ctx.clip = QRectF(0, 0, rect.width(), rect.height());
+            ;
+            painter->setViewTransformEnabled(true);
+            painter->translate(rect.left(), rect.top());
+
+            m_drawText.setHtml(eModel->partialExpandText(index));
+            m_drawText.setPageSize(QSizeF(rect.width(), rect.height()));
+            m_drawText.documentLayout()->draw(painter, ctx);
+
+            painter->translate(-rect.left(), -rect.top());
+        }
+    }
 }
 
 void KateArgumentHintTree::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
