@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2007 David Nolden <david.nolden.kdevelop@art-master.de>
+    SPDX-FileCopyrightText: 2022 Waqar Ahmed <waqar.17a@gmail.com>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
@@ -25,22 +26,6 @@ KateCompletionDelegate::KateCompletionDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
 {
 }
-
-// void KateCompletionDelegate::adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const
-// {
-//     if (index.column() == 0) {
-//         // We always want to use the match-color if available, also for highlighted items.
-//         ///@todo Only do this for the "current" item, for others the model is asked for the match color.
-//         uint color = model()->matchColor(index);
-//         if (color != 0) {
-//             QColor match(color);
-//
-//             for (int a = 0; a <= 2; a++) {
-//                 option.palette.setColor((QPalette::ColorGroup)a, QPalette::Highlight, match);
-//             }
-//         }
-//     }
-// }
 
 static void paintItemViewText(QPainter *p, const QString &text, const QStyleOptionViewItem &options, QVector<QTextLayout::FormatRange> formats)
 {
@@ -69,7 +54,7 @@ static void paintItemViewText(QPainter *p, const QString &text, const QStyleOpti
 
     textLayout.endLayout();
 
-    int y = QStyle::alignedRect(Qt::LayoutDirectionAuto, Qt::AlignVCenter, textLayout.boundingRect().size().toSize(), options.rect).y();
+    int y = QStyle::alignedRect(Qt::LayoutDirectionAuto, options.displayAlignment, textLayout.boundingRect().size().toSize(), options.rect).y();
 
     // draw the text
     const auto pos = QPointF(options.rect.x(), y);
@@ -114,13 +99,14 @@ void KateCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewItem
 
     auto highlightings = createHighlighting(index);
     opt.rect = textRect;
+    opt.displayAlignment = m_alignTop ? Qt::AlignTop : Qt::AlignVCenter;
     paintItemViewText(painter, text, opt, std::move(highlightings));
 }
 
 QSize KateCompletionDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     if (index.data().toString().isEmpty()) {
-        return {};
+        return QStyledItemDelegate::sizeHint(option, index);
     }
 
     QSize size = QStyledItemDelegate::sizeHint(option, index);
@@ -168,7 +154,6 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
     }
 
     if (highlightMethod & KTextEditor::CodeCompletionModel::CustomHighlighting) {
-        m_currentColumnStart = 0;
         return highlightingFromVariantList(index.data(KTextEditor::CodeCompletionModel::CustomHighlight).toList());
     }
 

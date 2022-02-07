@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2007 David Nolden <david.nolden.kdevelop@art-master.de>
+    SPDX-FileCopyrightText: 2022 Waqar Ahmed <waqar.17a@gmail.com>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
@@ -21,15 +21,21 @@ public:
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+    QSize basicSizeHint(const QModelIndex &idx) const
+    {
+        return QStyledItemDelegate::sizeHint({}, idx);
+    }
+
 protected:
-    //     void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const;
     QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index) const;
 
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+    // This variable is used by ArgumentHintDelegate to put the text at the top of the item so that
+    // it isn't hidden by the expanding widget
+    mutable bool m_alignTop = false;
+
 private:
-    mutable int m_currentColumnStart = 0; // Text-offset for custom highlighting, will be applied to m_cachedHighlights(Only highlights starting after this will
-                                          // be used). Should be zero of the highlighting is not taken from kate.
     QAbstractItemModel *const m_model = nullptr;
 };
 

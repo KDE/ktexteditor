@@ -26,7 +26,7 @@ public:
     using KateCompletionDelegate::KateCompletionDelegate;
 
 protected:
-    bool editorEvent(QEvent *event, QAbstractItemModel *m, const QStyleOptionViewItem &o, const QModelIndex &index) override
+    bool editorEvent(QEvent *event, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &index) override
     {
         if (event->type() == QEvent::MouseButtonRelease) {
             event->accept();
@@ -59,11 +59,20 @@ protected:
             QSize widgetSize = widget->size();
 
             s.setHeight(widgetSize.height() + s.height()
-                        + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidgets
-        } else if (model()->isPartiallyExpanded(index)) {
-            s.setHeight(s.height() + 30 + 10);
+                        + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidget
         }
         return s;
+    }
+
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override
+    {
+        if (index.column() == 0) {
+            model()->placeExpandingWidget(index);
+        }
+        // paint the text at top if there is a widget below
+        m_alignTop = model()->isExpanded(index);
+
+        KateCompletionDelegate::paint(painter, option, index);
     }
 };
 
@@ -74,7 +83,6 @@ KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
     setFrameStyle(QFrame::Box | QFrame::Raised);
     setLineWidth(1);
 
-    m_drawText.documentLayout()->setPaintDevice(this);
     setUniformRowHeights(false);
     header()->setMinimumSectionSize(0);
 
@@ -106,47 +114,6 @@ void KateArgumentHintTree::paintEvent(QPaintEvent *event)
 {
     QTreeView::paintEvent(event);
     updateGeometry(); ///@todo delay this. It is needed here, because visualRect(...) returns an invalid rect in updateGeometry before the content is painted
-}
-
-void KateArgumentHintTree::drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-    QTreeView::drawRow(painter, option, index);
-
-    const ExpandingWidgetModel *eModel = qobject_cast<const ExpandingWidgetModel *>(model());
-    if (eModel && eModel->isPartiallyExpanded(index)) {
-        QRect rect = eModel->partialExpandRect(index);
-        if (rect.isValid()) {
-            painter->fillRect(rect, QBrush(0xffffffff));
-
-            QAbstractTextDocumentLayout::PaintContext ctx;
-            // since arbitrary HTML can be shown use a black on white color scheme here
-            ctx.palette = QPalette(Qt::black, Qt::white);
-            ctx.clip = QRectF(0, 0, rect.width(), rect.height());
-            ;
-            painter->setViewTransformEnabled(true);
-            painter->translate(rect.left(), rect.top());
-
-            m_drawText.setHtml(eModel->partialExpandText(index));
-            m_drawText.setPageSize(QSizeF(rect.width(), rect.height()));
-            m_drawText.documentLayout()->draw(painter, ctx);
-
-            painter->translate(-rect.left(), -rect.top());
-        }
-    }
-}
-
-void KateArgumentHintTree::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
-{
-    Q_UNUSED(roles)
-    QTreeView::dataChanged(topLeft, bottomRight);
-    // updateGeometry();
-}
-
-void KateArgumentHintTree::currentChanged(const QModelIndex &current, const QModelIndex &previous)
-{
-    /*  qCDebug(LOG_KTE) << "currentChanged()";*/
-    static_cast<ExpandingWidgetModel *>(model())->rowSelected(current);
-    QTreeView::currentChanged(current, previous);
 }
 
 void KateArgumentHintTree::rowsInserted(const QModelIndex &parent, int start, int end)

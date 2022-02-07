@@ -65,7 +65,7 @@ public:
     /// If there is no common prefix, extracts the next useful prefix for the selected index
     QString commonPrefix(QModelIndex selectedIndex) const;
 
-    void rowSelected(const QModelIndex &row) override;
+    void rowSelected(const QModelIndex &row);
 
     bool indexIsItem(const QModelIndex &index) const override;
 
