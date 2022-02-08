@@ -9,15 +9,8 @@
 
 #include <ktexteditor/codecompletionmodel.h>
 
-#include "katedocument.h"
-#include "katehighlight.h"
 #include "katepartdebug.h"
-#include "katetextline.h"
-#include "kateview.h"
-
 #include "katecompletionmodel.h"
-#include "katecompletiontree.h"
-#include "katecompletionwidget.h"
 
 #include <QApplication>
 #include <QPainter>

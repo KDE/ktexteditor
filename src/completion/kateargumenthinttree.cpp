@@ -12,7 +12,6 @@
 #include "katecompletionwidget.h"
 #include "kateview.h"
 
-#include <QAbstractTextDocumentLayout>
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QHeaderView>
