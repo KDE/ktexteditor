@@ -31,19 +31,10 @@ public:
     ///@return whether the row given through index is expandable
     bool isExpandable(const QModelIndex &index) const;
 
-    enum ExpansionType {
-        NotExpanded = 0,
-        ExpandDownwards, // The additional(expanded) information is shown UNDER the original information
-        ExpandUpwards // The additional(expanded) information is shown ABOVE the original information
-    };
-
     ///@return whether row is currently expanded
     bool isExpanded(const QModelIndex &row) const;
     /// Change the expand-state of the row given through index. The display will be updated.
     void setExpanded(QModelIndex index, bool expanded);
-
-    /// Returns the total height added through all open expanding-widgets
-    int expandingWidgetsHeight() const;
 
     ///@return the expanding-widget for the given row, if available. Expanding-widgets are in best case available for all expanded rows.
     /// This does not return the partially-expand widget.

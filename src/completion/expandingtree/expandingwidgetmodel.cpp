@@ -252,17 +252,6 @@ void ExpandingWidgetModel::placeExpandingWidgets()
     }
 }
 
-int ExpandingWidgetModel::expandingWidgetsHeight() const
-{
-    int sum = 0;
-    for (QMap<QModelIndex, QPointer<QWidget>>::const_iterator it = m_expandingWidgets.constBegin(); it != m_expandingWidgets.constEnd(); ++it) {
-        if (isExpanded(it.key()) && (*it)) {
-            sum += (*it)->height();
-        }
-    }
-    return sum;
-}
-
 QWidget *ExpandingWidgetModel::expandingWidget(const QModelIndex &idx_) const
 {
     QModelIndex idx(firstColumn(idx_));
