@@ -1781,6 +1781,25 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
     return w;
 }
 
+QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
+{
+    // per default we use the url of the current document
+    // if that is empty, we will try to get the url of the last used view, we assume some properly ordered views() list is around
+    QUrl startUrl = url();
+    if (auto mainWindow = KTextEditor::Editor::instance()->application()->activeMainWindow(); mainWindow && !startUrl.isValid()) {
+        for (auto view : mainWindow->views()) {
+            if (view->document()->url().isValid()) {
+                // we remove the filename, otherwise we propose to save as some other already existing file, that is confusing
+                startUrl = view->document()->url().adjusted(QUrl::RemoveFilename);
+                break;
+            }
+        }
+    }
+
+    // spawn the dialog, dialogParent will take care of proper parent
+    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrl.isValid() ? startUrl : QUrl());
+}
+
 // BEGIN KTextEditor::HighlightingInterface stuff
 bool KTextEditor::DocumentPrivate::setMode(const QString &name)
 {
@@ -4437,11 +4456,10 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
 void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
 {
     m_modOnHd = false;
-    QWidget *parentWidget(dialogParent());
-    const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), url());
+    const QUrl res = getSaveFileUrl(i18n("Save File"));
     if (!res.isEmpty()) {
         if (!saveAs(res)) {
-            KMessageBox::error(parentWidget, i18n("Save failed"));
+            KMessageBox::error(dialogParent(), i18n("Save failed"));
             m_modOnHd = true;
         } else {
             delete m_modOnHdHandler;
@@ -4642,7 +4660,7 @@ bool KTextEditor::DocumentPrivate::documentSave()
 
 bool KTextEditor::DocumentPrivate::documentSaveAs()
 {
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url());
+    const QUrl saveUrl = getSaveFileUrl(i18n("Save File"));
     if (saveUrl.isEmpty()) {
         return false;
     }
@@ -4652,7 +4670,7 @@ bool KTextEditor::DocumentPrivate::documentSaveAs()
 
 bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &encoding)
 {
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url());
+    const QUrl saveUrl = getSaveFileUrl(i18n("Save File"));
     if (saveUrl.isEmpty()) {
         return false;
     }
@@ -4663,7 +4681,7 @@ bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &enc
 
 bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
 {
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save Copy of File"), url());
+    const QUrl saveUrl = getSaveFileUrl(i18n("Save Copy of File"));
     if (saveUrl.isEmpty()) {
         return false;
     }
@@ -5347,9 +5365,8 @@ void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abor
 {
     *handled = true;
     *abortClosing = true;
-    if (this->url().isEmpty()) {
-        QWidget *parentWidget(dialogParent());
-        const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"));
+    if (url().isEmpty()) {
+        const QUrl res = getSaveFileUrl(i18n("Save File"));
         if (res.isEmpty()) {
             *abortClosing = true;
             return;
@@ -5540,7 +5557,7 @@ bool KTextEditor::DocumentPrivate::queryClose()
         sigQueryClose(&handled, &abortClose);
         if (!handled) {
             if (url().isEmpty()) {
-                QUrl url = QFileDialog::getSaveFileUrl(dialogParent());
+                const QUrl url = getSaveFileUrl(i18n("Save File"));
                 if (url.isEmpty()) {
                     return false;
                 }

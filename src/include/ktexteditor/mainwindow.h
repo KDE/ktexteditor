@@ -90,6 +90,11 @@ Q_SIGNALS:
 public:
     /**
      * Get a list of all views for this main window.
+     *
+     * It is beneficial if the list is sorted by most recently used,
+     * as the library will e.g. try to use the most recent used url() by walking over this
+     * list for save and other such things.
+     *
      * @return all views, might be empty!
      */
     QList<KTextEditor::View *> views();

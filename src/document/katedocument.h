@@ -417,6 +417,14 @@ private:
      */
     QWidget *dialogParent();
 
+    /**
+     * Wrapper around QFileDialog::getSaveFileUrl, will use proper dialogParent
+     * and try it's best to find a good directory as start
+     * @param dialogTitle dialog title string
+     * @return url to save to or empty url if aborted
+     */
+    QUrl getSaveFileUrl(const QString &dialogTitle);
+
     /*
      * Access to the mode/highlighting subsystem
      */
