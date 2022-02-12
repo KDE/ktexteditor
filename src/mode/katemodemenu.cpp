@@ -28,11 +28,6 @@ void KateModeMenu::init()
     m_actionGroup = new QActionGroup(menu());
 }
 
-KateModeMenu::~KateModeMenu()
-{
-    qDeleteAll(subMenus);
-}
-
 void KateModeMenu::updateMenu(KTextEditor::Document *doc)
 {
     m_doc = static_cast<KTextEditor::DocumentPrivate *>(doc);
@@ -54,7 +49,8 @@ void KateModeMenu::slotAboutToShow()
         if (!hlSection.isEmpty() && !names.contains(hlName)) {
             if (!subMenusName.contains(hlSection)) {
                 subMenusName << hlSection;
-                QMenu *qmenu = new QMenu(hlSection);
+                // pass proper parent for cleanup + Wayland correctness
+                QMenu *qmenu = new QMenu(hlSection, menu());
                 connect(qmenu, &QMenu::triggered, this, &KateModeMenu::setType);
                 subMenus.append(qmenu);
                 menu()->addMenu(qmenu);
