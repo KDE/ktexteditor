@@ -46,8 +46,9 @@ void KateHighlightingMenu::slotAboutToShow()
                 auto it = std::find(subMenusName.begin(), subMenusName.end(), hlSection);
                 if (it == subMenusName.end()) {
                     subMenusName.push_back(hlSection);
-                    subMenus.emplace_back(new QMenu(QLatin1Char('&') + hlSection));
-                    menu()->addMenu(subMenus.back().get());
+                    // pass proper parent for cleanup + Wayland correctness
+                    subMenus.emplace_back(new QMenu(QLatin1Char('&') + hlSection, menu()));
+                    menu()->addMenu(subMenus.back());
 
                     // last element is the one we just inserted
                     it = --subMenusName.end();

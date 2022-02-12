@@ -11,7 +11,6 @@
 
 #include <KActionMenu>
 
-#include <memory>
 #include <vector>
 
 namespace KTextEditor
@@ -39,7 +38,7 @@ private:
     QPointer<KTextEditor::DocumentPrivate> m_doc;
     std::vector<QString> subMenusName;
     std::vector<QString> names;
-    std::vector<std::unique_ptr<QMenu>> subMenus;
+    std::vector<QMenu *> subMenus;
     std::vector<QAction *> subActions;
     QActionGroup *m_actionGroup;
 
