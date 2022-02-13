@@ -54,7 +54,7 @@ void DocTip::setText(const QString &s)
     Q_ASSERT(m_stack.count() == 1);
 }
 
-void DocTip::setWidget(QWidget *w)
+void DocTip::setWidget(QWidget *widget)
 {
     if (auto w = m_stack.currentWidget()) {
         if (w != m_textView) {
@@ -63,7 +63,11 @@ void DocTip::setWidget(QWidget *w)
         m_stack.removeWidget(w);
     }
 
-    m_stack.addWidget(w);
+    if (!widget) {
+        return;
+    }
+
+    m_stack.addWidget(widget);
 
     Q_ASSERT(m_stack.count() == 1);
 }
