@@ -8,6 +8,8 @@
 
 #include "config.h"
 
+#include <KAuth/HelperSupport>
+
 #ifndef Q_OS_WIN
 #include <cerrno>
 #include <unistd.h>

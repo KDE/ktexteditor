@@ -11,7 +11,7 @@
 #include <QObject>
 #include <QString>
 
-#include <KAuth>
+#include <KAuth/ActionReply>
 
 using namespace KAuth;
 

@@ -16,6 +16,9 @@
 #include "katepartdebug.h"
 #include "kateview.h"
 
+#include <KAuth/Action>
+#include <KAuth/ExecuteJob>
+
 #ifndef Q_OS_WIN
 #include <cerrno>
 #include <unistd.h>
