@@ -44,6 +44,8 @@ class StatusBarButton : public QPushButton
     Q_OBJECT
 public:
     explicit StatusBarButton(KateStatusBar *parent, const QString &text = QString());
+    QSize sizeHint() const override;
+    QSize minimumSizeHint() const override;
 };
 
 class KateStatusBar : public KateViewBarWidget

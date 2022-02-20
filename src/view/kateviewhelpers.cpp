@@ -3070,6 +3070,7 @@ void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
     }
 
     // raise correct widget
+    m_stack->addWidget(barWidget);
     m_stack->setCurrentWidget(barWidget);
     barWidget->show();
     barWidget->setFocus(Qt::ShortcutFocusReason);
@@ -3086,11 +3087,15 @@ void KateViewBar::hideCurrentBarWidget()
 {
     KateViewBarWidget *current = qobject_cast<KateViewBarWidget *>(m_stack->currentWidget());
     if (current) {
+        m_stack->removeWidget(current);
         current->closed();
     }
 
     // if we have any permanent widget, make it visible again
     if (m_permanentBarWidget) {
+        if (!hasBarWidget(m_permanentBarWidget)) {
+            m_stack->addWidget(m_permanentBarWidget);
+        }
         m_stack->setCurrentWidget(m_permanentBarWidget);
     } else {
         // else: hide the bar

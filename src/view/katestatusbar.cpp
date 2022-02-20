@@ -55,6 +55,20 @@ StatusBarButton::StatusBarButton(KateStatusBar *parent, const QString &text /*= 
     setMinimumSize(QSize(1, minimumSizeHint().height()));
 }
 
+QSize StatusBarButton::sizeHint() const
+{
+    return minimumSizeHint();
+}
+
+QSize StatusBarButton::minimumSizeHint() const
+{
+    const auto fm = QFontMetrics(font());
+    const int h = fm.lineSpacing();
+    QSize size = QPushButton::sizeHint();
+    size.setHeight(h + 4);
+    return size;
+}
+
 // END StatusBarButton
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
@@ -70,7 +84,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     // just add our status bar to central widget, full sized
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
-    topLayout->setSpacing(4);
+    topLayout->setSpacing(0);
 
     // show modification state of the document
     // TODO Using a (StatusBar)Button is currently pointless but handy due to no "setIcon()" function in QLabel.
