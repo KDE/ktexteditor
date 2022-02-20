@@ -47,8 +47,16 @@ inline static bool overlapScrollBar()
 }
 }
 
-void KateModeMenuList::init(const SearchBarPosition searchBarPos)
+void KateModeMenuList::init()
 {
+    connect(this, &QMenu::aboutToShow, this, &KateModeMenuList::onAboutToShowMenu);
+}
+
+void KateModeMenuList::onAboutToShowMenu()
+{
+    if (m_initialized) {
+        return;
+    }
     /*
      * Fix font size & font style: display the font correctly when changing it from the
      * KDE Plasma preferences. For example, the font type "Menu" is displayed, but "font()"
@@ -164,13 +172,8 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     }
 
     layoutSearchBar->addWidget(m_searchBar);
-    if (searchBarPos == Top) {
-        layoutContainer->addLayout(layoutSearchBar);
-    }
     layoutContainer->addLayout(m_layoutList);
-    if (searchBarPos == Bottom) {
-        layoutContainer->addLayout(layoutSearchBar);
-    }
+    layoutContainer->addLayout(layoutSearchBar);
 
     QWidgetAction *widAct = new QWidgetAction(this);
     widAct->setDefaultWidget(container);
@@ -181,6 +184,8 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
      * This also applies to double-clicks.
      */
     connect(m_list, &KateModeMenuListData::ListView::clicked, this, &KateModeMenuList::selectHighlighting);
+
+    m_initialized = true;
 }
 
 void KateModeMenuList::reloadItems()

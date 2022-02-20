@@ -90,42 +90,10 @@ public:
      */
     enum AutoScroll { ScrollToSelectedItem, ScrollToTop };
 
-    /**
-     * @param searchBarPos Search bar position, can be top or bottom.
-     * @see SearchBarPosition
-     */
-    KateModeMenuList(const SearchBarPosition searchBarPos = Bottom)
-        : QMenu()
-    {
-        init(searchBarPos);
-    }
-    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos = Bottom)
-        : QMenu(title)
-    {
-        init(searchBarPos);
-    }
-    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos, QWidget *parent)
-        : QMenu(title, parent)
-    {
-        init(searchBarPos);
-    }
     KateModeMenuList(const QString &title, QWidget *parent)
         : QMenu(title, parent)
     {
-        init(Bottom);
-    }
-    KateModeMenuList(const SearchBarPosition searchBarPos, QWidget *parent)
-        : QMenu(parent)
-    {
-        init(searchBarPos);
-    }
-    KateModeMenuList(QWidget *parent)
-        : QMenu(parent)
-    {
-        init(Bottom);
-    }
-    ~KateModeMenuList() override
-    {
+        init();
     }
 
     /**
@@ -199,7 +167,9 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private:
-    void init(const SearchBarPosition searchBarPos);
+    void init();
+
+    void onAboutToShowMenu();
 
     /**
      * Define the size of the list widget, in pixels. The @p width is also
@@ -290,6 +260,8 @@ private:
     int m_defaultHeightItemSection;
 
     QPointer<KTextEditor::DocumentPrivate> m_doc;
+
+    bool m_initialized = false;
 
 private Q_SLOTS:
     /**
