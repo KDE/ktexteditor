@@ -24,6 +24,7 @@
 #include "katelayoutcache.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
+#include "katestatusbar.h"
 #include "katesyntaxmanager.h"
 #include "katetextlayout.h"
 #include "katetextpreview.h"
@@ -2986,15 +2987,10 @@ KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivat
     : QWidget(parent)
     , m_external(external)
     , m_view(view)
-    , m_permanentBarWidget(nullptr)
-
+    , m_statusBar(nullptr)
 {
     m_layout = new QVBoxLayout(this);
-    m_stack = new QStackedWidget(this);
-    m_layout->addWidget(m_stack);
     m_layout->setContentsMargins(0, 0, 0, 0);
-
-    m_stack->hide();
     hide();
 }
 
@@ -3007,7 +3003,7 @@ void KateViewBar::addBarWidget(KateViewBarWidget *newBarWidget)
 
     // add new widget, invisible...
     newBarWidget->hide();
-    m_stack->addWidget(newBarWidget);
+    m_layout->insertWidget(0, newBarWidget);
     newBarWidget->setAssociatedViewBar(this);
     connect(newBarWidget, &KateViewBarWidget::hideMe, this, &KateViewBar::hideCurrentBarWidget);
 }
@@ -3016,93 +3012,86 @@ void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
 {
     // remove only if there
     if (!hasBarWidget(barWidget)) {
+        qWarning() << "Trying to remove a widget from viewbar which was never added" << barWidget;
         return;
     }
 
-    m_stack->removeWidget(barWidget);
+    m_layout->removeWidget(barWidget);
     barWidget->setAssociatedViewBar(nullptr);
     barWidget->hide();
     disconnect(barWidget, nullptr, this, nullptr);
 }
 
-void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
+void KateViewBar::setStatusBar(class KateStatusBar *statusBar)
 {
-    Q_ASSERT(barWidget);
-    Q_ASSERT(!m_permanentBarWidget);
+    Q_ASSERT(statusBar && !m_statusBar);
+    Q_ASSERT(m_layout->indexOf(statusBar) == -1);
 
-    m_stack->addWidget(barWidget);
-    m_stack->setCurrentWidget(barWidget);
-    m_stack->show();
-    m_permanentBarWidget = barWidget;
-    m_permanentBarWidget->show();
+    m_layout->addWidget(statusBar);
+
+    m_statusBar = statusBar;
+    m_statusBar->show();
 
     setViewBarVisible(true);
 }
 
-void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
+void KateViewBar::removeStatusBar(class KateStatusBar *statusBar)
 {
-    Q_ASSERT(m_permanentBarWidget == barWidget);
-    Q_UNUSED(barWidget);
+    Q_ASSERT(m_statusBar && m_statusBar == statusBar);
 
-    const bool hideBar = m_stack->currentWidget() == m_permanentBarWidget;
-
-    m_permanentBarWidget->hide();
-    m_stack->removeWidget(m_permanentBarWidget);
-    m_permanentBarWidget = nullptr;
-
-    if (hideBar) {
-        m_stack->hide();
-        setViewBarVisible(false);
-    }
-}
-
-bool KateViewBar::hasPermanentWidget(KateViewBarWidget *barWidget) const
-{
-    return (m_permanentBarWidget == barWidget);
+    m_statusBar->hide();
+    m_layout->removeWidget(m_statusBar);
+    m_statusBar = nullptr;
 }
 
 void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
 {
-    Q_ASSERT(barWidget != nullptr);
+    Q_ASSERT(barWidget);
 
-    if (barWidget != qobject_cast<KateViewBarWidget *>(m_stack->currentWidget())) {
-        hideCurrentBarWidget();
-    }
-
-    // raise correct widget
-    m_stack->addWidget(barWidget);
-    m_stack->setCurrentWidget(barWidget);
+    m_layout->insertWidget(0, barWidget);
     barWidget->show();
     barWidget->setFocus(Qt::ShortcutFocusReason);
-    m_stack->show();
     setViewBarVisible(true);
 }
 
 bool KateViewBar::hasBarWidget(KateViewBarWidget *barWidget) const
 {
-    return m_stack->indexOf(barWidget) != -1;
+    return m_layout->indexOf(barWidget) != -1;
 }
 
 void KateViewBar::hideCurrentBarWidget()
 {
-    KateViewBarWidget *current = qobject_cast<KateViewBarWidget *>(m_stack->currentWidget());
-    if (current) {
-        m_stack->removeWidget(current);
-        current->closed();
+    auto topItem = m_layout->itemAt(0);
+    if (!topItem || !topItem->widget()) {
+        qWarning() << "Unexpected hiding widget when there is no widget in layout";
+        Q_ASSERT(false);
+        return;
     }
 
-    // if we have any permanent widget, make it visible again
-    if (m_permanentBarWidget) {
-        if (!hasBarWidget(m_permanentBarWidget)) {
-            m_stack->addWidget(m_permanentBarWidget);
+    const auto widget = topItem->widget();
+    if (widget == m_statusBar) {
+        qWarning() << "Can't hide status bar using this API";
+        Q_ASSERT(false);
+        return;
+    }
+
+    m_layout->removeWidget(widget);
+    KateViewBarWidget *current = qobject_cast<KateViewBarWidget *>(widget);
+    if (!current) {
+        qWarning() << "Unexpected non viewbar widget!" << current;
+        Q_ASSERT(false);
+    }
+    current->close();
+
+    // We don't have a statusbar
+    if (!m_statusBar) {
+        const int count = m_layout->count();
+        if (count != 0) {
+            qWarning() << "Trying to hide a non empty viewbar" << Q_FUNC_INFO;
+            Q_ASSERT(false);
         }
-        m_stack->setCurrentWidget(m_permanentBarWidget);
-    } else {
-        // else: hide the bar
-        m_stack->hide();
         setViewBarVisible(false);
     }
-
     m_view->setFocus();
 }
 
@@ -3119,10 +3108,14 @@ void KateViewBar::setViewBarVisible(bool visible)
     }
 }
 
-bool KateViewBar::hiddenOrPermanent() const
+bool KateViewBar::canHideWidgets() const
 {
-    KateViewBarWidget *current = qobject_cast<KateViewBarWidget *>(m_stack->currentWidget());
-    if (!isVisible() || (m_permanentBarWidget && m_permanentBarWidget == current)) {
+    if (isHidden()) {
+        return false;
+    }
+    if (m_statusBar && m_layout->count() > 1) {
+        return true;
+    } else if (!m_statusBar && m_layout->count() >= 1) {
         return true;
     }
     return false;
