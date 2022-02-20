@@ -346,12 +346,14 @@ void KateStatusBar::updateDictionary()
         }
         if (!found) {
             // User has chose some other dictionary from combo box, we need to add that
-            QString dictName = Sonnet::Speller().availableDictionaries().key(newDict);
-            QAction *action = m_dictionaryGroup->addAction(dictName);
-            action->setData(newDict);
-            action->setCheckable(true);
-            action->setChecked(true);
-            m_dictionaryMenu->addAction(action);
+            QString dictName = availableDictionaries.key(newDict);
+            if (!dictName.isEmpty()) {
+                QAction *action = m_dictionaryGroup->addAction(dictName);
+                action->setData(newDict);
+                action->setCheckable(true);
+                action->setChecked(true);
+                m_dictionaryMenu->addAction(action);
+            }
         }
         m_dictionaryGroup->blockSignals(false);
     }
