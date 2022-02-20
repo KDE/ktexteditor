@@ -312,6 +312,14 @@ void KateStatusBar::cursorPositionChanged()
 
 void KateStatusBar::updateDictionary()
 {
+    const auto spellchecker = Sonnet::Speller();
+    const auto availableDictionaries = spellchecker.availableDictionaries();
+    // No dictionaries available? => hide
+    if (availableDictionaries.isEmpty()) {
+        m_dictionary->hide();
+        return;
+    }
+
     QString newDict;
     // Check if at the current cursor position is a special dictionary in use
     KTextEditor::Cursor position(m_view->cursorPositionVirtual());
@@ -327,7 +335,7 @@ void KateStatusBar::updateDictionary()
     if (newDict.isEmpty()) {
         newDict = m_view->doc()->defaultDictionary();
         if (newDict.isEmpty()) {
-            newDict = Sonnet::Speller().defaultLanguage();
+            newDict = spellchecker.defaultLanguage();
         }
     }
     // Update button and menu only on a changed dictionary
