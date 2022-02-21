@@ -9,6 +9,7 @@
 #include <QStringList>
 #include <vimode/keyevent.h>
 #include <vimode/keyparser.h>
+#include "definitions.h"
 
 using namespace KateVi;
 
@@ -670,16 +671,6 @@ const QChar KeyParser::KeyEventToQChar(const KeyEvent &keyEvent)
 {
     return KeyEventToQChar(keyEvent.key(), keyEvent.text(), keyEvent.modifiers());
 }
-
-#ifdef Q_OS_MACOS
-// From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
-// keyboard, and the MetaModifier value corresponds to the Control keys.
-#define CONTROL_MODIFIER Qt::MetaModifier
-#define META_MODIFIER Qt::ControlModifier
-#else
-#define CONTROL_MODIFIER Qt::ControlModifier
-#define META_MODIFIER Qt::MetaModifier
-#endif
 
 const QChar KeyParser::KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods)
 {

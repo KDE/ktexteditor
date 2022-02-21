@@ -7,6 +7,16 @@
 #ifndef KATEVI_DEFINITIONS_H
 #define KATEVI_DEFINITIONS_H
 
+#ifdef Q_OS_MACOS
+// From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
+// keyboard, and the MetaModifier value corresponds to the Control keys.
+#define CONTROL_MODIFIER Qt::MetaModifier
+#define META_MODIFIER Qt::ControlModifier
+#else
+#define CONTROL_MODIFIER Qt::ControlModifier
+#define META_MODIFIER Qt::MetaModifier
+#endif
+
 namespace KateVi
 {
 /**

@@ -293,14 +293,6 @@ bool InsertViMode::commandSwitchToNormalModeForJustOneCommand()
     return true;
 }
 
-#ifdef Q_OS_MACOS
-// From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
-// keyboard, and the MetaModifier value corresponds to the Control keys.
-#define CONTROL_MODIFIER Qt::MetaModifier
-#else
-#define CONTROL_MODIFIER Qt::ControlModifier
-#endif
-
 /**
  * checks if the key is a valid command
  * @return true if a command was completed and executed, false otherwise

@@ -33,16 +33,9 @@ BaseTest::BaseTest()
     mainWindow->setCentralWidget(centralWidget);
     mainWindow->resize(640, 480);
 
-#ifdef Q_OS_MACOS
-    // From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
-    // keyboard, and the MetaModifier value corresponds to the Control keys.
-    m_codesToModifiers.insert("ctrl", Qt::MetaModifier);
-    m_codesToModifiers.insert("meta", Qt::ControlModifier);
-#else
-    m_codesToModifiers.insert("ctrl", Qt::ControlModifier);
-    m_codesToModifiers.insert("meta", Qt::MetaModifier);
-#endif
+    m_codesToModifiers.insert("ctrl", CONTROL_MODIFIER);
     m_codesToModifiers.insert("alt", Qt::AltModifier);
+    m_codesToModifiers.insert("meta", META_MODIFIER);
     m_codesToModifiers.insert("keypad", Qt::KeypadModifier);
 
     m_codesToSpecialKeys.insert("backspace", Qt::Key_Backspace);
