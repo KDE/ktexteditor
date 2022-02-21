@@ -559,13 +559,8 @@ public:
     void removePermanentBarWidget(KateViewBarWidget *barWidget);
 
     /**
-     * @return if viewbar has permanent widget @p barWidget
-     */
-    bool hasPermanentWidget(KateViewBarWidget *barWidget) const;
-
-    /**
-     * @return true if the KateViewBar is hidden or displays a permanentBarWidget */
-    bool hiddenOrPermanent() const;
+     * @return true if the a KateViewBar is visible*/
+    bool barWidgetVisible() const;
 
 public Q_SLOTS:
     /**

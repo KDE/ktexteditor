@@ -3030,9 +3030,7 @@ void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
     Q_ASSERT(barWidget);
     Q_ASSERT(!m_permanentBarWidget);
 
-    m_stack->addWidget(barWidget);
-    m_stack->setCurrentWidget(barWidget);
-    m_stack->show();
+    m_layout->addWidget(barWidget);
     m_permanentBarWidget = barWidget;
     m_permanentBarWidget->show();
 
@@ -3044,21 +3042,9 @@ void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
     Q_ASSERT(m_permanentBarWidget == barWidget);
     Q_UNUSED(barWidget);
 
-    const bool hideBar = m_stack->currentWidget() == m_permanentBarWidget;
-
     m_permanentBarWidget->hide();
-    m_stack->removeWidget(m_permanentBarWidget);
+    m_layout->removeWidget(m_permanentBarWidget);
     m_permanentBarWidget = nullptr;
-
-    if (hideBar) {
-        m_stack->hide();
-        setViewBarVisible(false);
-    }
-}
-
-bool KateViewBar::hasPermanentWidget(KateViewBarWidget *barWidget) const
-{
-    return (m_permanentBarWidget == barWidget);
 }
 
 void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
@@ -3091,15 +3077,9 @@ void KateViewBar::hideCurrentBarWidget()
         current->closed();
     }
 
-    // if we have any permanent widget, make it visible again
-    if (m_permanentBarWidget) {
-        if (!hasBarWidget(m_permanentBarWidget)) {
-            m_stack->addWidget(m_permanentBarWidget);
-        }
-        m_stack->setCurrentWidget(m_permanentBarWidget);
-    } else {
-        // else: hide the bar
-        m_stack->hide();
+    // hide the bar
+    m_stack->hide();
+    if (!m_permanentBarWidget) {
         setViewBarVisible(false);
     }
 
@@ -3119,13 +3099,10 @@ void KateViewBar::setViewBarVisible(bool visible)
     }
 }
 
-bool KateViewBar::hiddenOrPermanent() const
+bool KateViewBar::barWidgetVisible() const
 {
     KateViewBarWidget *current = qobject_cast<KateViewBarWidget *>(m_stack->currentWidget());
-    if (!isVisible() || (m_permanentBarWidget && m_permanentBarWidget == current)) {
-        return true;
-    }
-    return false;
+    return current && current->isVisible();
 }
 
 void KateViewBar::keyPressEvent(QKeyEvent *event)
