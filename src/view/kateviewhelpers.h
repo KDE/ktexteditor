@@ -538,13 +538,34 @@ public:
      */
     void showBarWidget(KateViewBarWidget *barWidget);
 
-    void setStatusBar(class KateStatusBar *m_statusBar);
+    /**
+     * Adds widget that will be always shown in the viewbar.
+     * After adding permanent widget viewbar is immediately shown.
+     * ViewBar with permanent widget won't hide itself
+     * until permanent widget is removed.
+     * OTOH showing/hiding regular barWidgets will work as usual
+     * (they will be shown above permanent widget)
+     *
+     * If permanent widget already exists, asserts!
+     */
+    void addPermanentBarWidget(KateViewBarWidget *barWidget);
 
-    void removeStatusBar(class KateStatusBar *m_statusBar);
+    /**
+     * Removes permanent bar widget from viewbar.
+     * If no other viewbar widgets are shown, viewbar gets hidden.
+     *
+     * barWidget is not deleted, caller must do it if it wishes
+     */
+    void removePermanentBarWidget(KateViewBarWidget *barWidget);
+
+    /**
+     * @return if viewbar has permanent widget @p barWidget
+     */
+    bool hasPermanentWidget(KateViewBarWidget *barWidget) const;
 
     /**
      * @return true if the KateViewBar is hidden or displays a permanentBarWidget */
-    bool canHideWidgets() const;
+    bool hiddenOrPermanent() const;
 
 public Q_SLOTS:
     /**
@@ -565,9 +586,10 @@ private:
     bool m_external;
 
 private:
-    KTextEditor::ViewPrivate *m_view = nullptr;
-    QVBoxLayout *m_layout = nullptr;
-    class KateStatusBar *m_statusBar = nullptr;
+    KTextEditor::ViewPrivate *m_view;
+    QStackedWidget *m_stack;
+    KateViewBarWidget *m_permanentBarWidget;
+    QVBoxLayout *m_layout;
 };
 
 class KTEXTEDITOR_EXPORT KateCommandLineBar : public KateViewBarWidget

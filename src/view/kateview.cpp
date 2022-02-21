@@ -267,7 +267,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
 {
     // if there, delete it
     if (m_statusBar) {
-        bottomViewBar()->removeStatusBar(m_statusBar);
+        bottomViewBar()->removePermanentBarWidget(m_statusBar);
         delete m_statusBar;
         m_statusBar = nullptr;
         Q_EMIT statusBarEnabledChanged(this, false);
@@ -276,7 +276,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
 
     // else: create it
     m_statusBar = new KateStatusBar(this);
-    bottomViewBar()->setStatusBar(m_statusBar);
+    bottomViewBar()->addPermanentBarWidget(m_statusBar);
     Q_EMIT statusBarEnabledChanged(this, true);
 }
 

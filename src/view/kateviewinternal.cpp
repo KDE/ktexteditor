@@ -2629,7 +2629,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
                 k->accept();
                 // qCDebug(LOG_KTE) << obj << "shortcut override" << k->key() << "aborting completion";
                 return true;
-            } else if (view()->bottomViewBar()->canHideWidgets()) {
+            } else if (!view()->bottomViewBar()->hiddenOrPermanent()) {
                 view()->bottomViewBar()->hideCurrentBarWidget();
                 k->accept();
                 // qCDebug(LOG_KTE) << obj << "shortcut override" << k->key() << "closing view bar";
