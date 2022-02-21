@@ -671,6 +671,16 @@ const QChar KeyParser::KeyEventToQChar(const KeyEvent &keyEvent)
     return KeyEventToQChar(keyEvent.key(), keyEvent.text(), keyEvent.modifiers());
 }
 
+#ifdef Q_OS_MACOS
+// From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
+// keyboard, and the MetaModifier value corresponds to the Control keys.
+#define CONTROL_MODIFIER Qt::MetaModifier
+#define META_MODIFIER Qt::ControlModifier
+#else
+#define CONTROL_MODIFIER Qt::ControlModifier
+#define META_MODIFIER Qt::MetaModifier
+#endif
+
 const QChar KeyParser::KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods)
 {
     // If previous key press was AltGr, return key value right away and don't go
@@ -686,9 +696,9 @@ const QChar KeyParser::KeyEventToQChar(int keyCode, const QString &text, Qt::Key
 
         keyPress.append(QLatin1Char('<'));
         keyPress.append((mods & Qt::ShiftModifier) ? QStringLiteral("s-") : QString());
-        keyPress.append((mods & Qt::ControlModifier) ? QStringLiteral("c-") : QString());
+        keyPress.append((mods & CONTROL_MODIFIER) ? QStringLiteral("c-") : QString());
         keyPress.append((mods & Qt::AltModifier) ? QStringLiteral("a-") : QString());
-        keyPress.append((mods & Qt::MetaModifier) ? QStringLiteral("m-") : QString());
+        keyPress.append((mods & META_MODIFIER) ? QStringLiteral("m-") : QString());
         keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : qt2vi(keyCode));
         keyPress.append(QLatin1Char('>'));
 

@@ -78,15 +78,24 @@ bool ReplaceViMode::commandMoveOneWordRight()
     return true;
 }
 
+#ifdef Q_OS_MACOS
+// From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
+// keyboard, and the MetaModifier value corresponds to the Control keys.
+#define CONTROL_MODIFIER Qt::MetaModifier
+#else
+#define CONTROL_MODIFIER Qt::ControlModifier
+#endif
+
 bool ReplaceViMode::handleKeypress(const QKeyEvent *e)
 {
     // backspace should work even if the shift key is down
-    if (e->modifiers() != Qt::ControlModifier && e->key() == Qt::Key_Backspace) {
+    if (e->modifiers() != CONTROL_MODIFIER && e->key() == Qt::Key_Backspace) {
         backspace();
         return true;
     }
 
-    if (e->modifiers() == Qt::NoModifier) {
+    // on macOS the KeypadModifier is set for the arrow keys too
+    if (e->modifiers() == Qt::NoModifier || e->modifiers() == Qt::KeypadModifier) {
         switch (e->key()) {
         case Qt::Key_Escape:
             m_overwritten.clear();
@@ -133,7 +142,7 @@ bool ReplaceViMode::handleKeypress(const QKeyEvent *e)
         default:
             return false;
         }
-    } else if (e->modifiers() == Qt::ControlModifier) {
+    } else if (e->modifiers() == CONTROL_MODIFIER) {
         switch (e->key()) {
         case Qt::Key_BracketLeft:
         case Qt::Key_C:

@@ -87,6 +87,14 @@ NormalViMode::~NormalViMode()
     qDeleteAll(m_highlightedYanks);
 }
 
+#ifdef Q_OS_MACOS
+// From the Qt docs: On macOS, the ControlModifier value corresponds to the Command keys on the
+// keyboard, and the MetaModifier value corresponds to the Control keys.
+#define CONTROL_MODIFIER Qt::MetaModifier
+#else
+#define CONTROL_MODIFIER Qt::ControlModifier
+#endif
+
 /**
  * parses a key stroke to check if it's a valid (part of) a command
  * @return true if a command was completed and executed, false otherwise
@@ -102,8 +110,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     clearYankHighlight();
 
-    if (keyCode == Qt::Key_Escape || (keyCode == Qt::Key_C && e->modifiers() == Qt::ControlModifier)
-        || (keyCode == Qt::Key_BracketLeft && e->modifiers() == Qt::ControlModifier)) {
+    if (keyCode == Qt::Key_Escape || (keyCode == Qt::Key_C && e->modifiers() == CONTROL_MODIFIER)
+        || (keyCode == Qt::Key_BracketLeft && e->modifiers() == CONTROL_MODIFIER)) {
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
         m_pendingResetIsDueToExit = true;
         // Vim in weird as if we e.g. i<ctrl-o><ctrl-c> it claims (in the status bar) to still be in insert mode,
