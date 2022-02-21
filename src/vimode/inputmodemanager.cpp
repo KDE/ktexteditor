@@ -18,6 +18,7 @@
 
 #include "completionrecorder.h"
 #include "completionreplayer.h"
+#include "definitions.h"
 #include "globalstate.h"
 #include "jumps.h"
 #include "kateconfig.h"
@@ -173,7 +174,7 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
 
                 int c = decoded.indexOf(QLatin1String("c-"));
                 if (c != -1) {
-                    mods |= Qt::ControlModifier;
+                    mods |= CONTROL_MODIFIER;
                     decoded.remove(c, 2);
                 }
 
@@ -185,7 +186,7 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
 
                 int m = decoded.indexOf(QLatin1String("m-"));
                 if (m != -1) {
-                    mods |= Qt::MetaModifier;
+                    mods |= META_MODIFIER;
                     decoded.remove(m, 2);
                 }
 

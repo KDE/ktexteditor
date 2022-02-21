@@ -151,14 +151,14 @@ void EmulatedCommandBar::switchToMode(ActiveMode *newMode)
 
 bool EmulatedCommandBar::barHandledKeypress(const QKeyEvent *keyEvent)
 {
-    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_H) || keyEvent->key() == Qt::Key_Backspace) {
+    if ((keyEvent->modifiers() == CONTROL_MODIFIER && keyEvent->key() == Qt::Key_H) || keyEvent->key() == Qt::Key_Backspace) {
         if (m_edit->text().isEmpty()) {
             Q_EMIT hideMe();
         }
         m_edit->backspace();
         return true;
     }
-    if (keyEvent->modifiers() != Qt::ControlModifier) {
+    if (keyEvent->modifiers() != CONTROL_MODIFIER) {
         return false;
     }
     if (keyEvent->key() == Qt::Key_B) {
@@ -191,7 +191,7 @@ void EmulatedCommandBar::insertRegisterContents(const QKeyEvent *keyEvent)
 
         const int oldCursorPosition = m_edit->cursorPosition();
         QString textToInsert;
-        if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_W) {
+        if (keyEvent->modifiers() == CONTROL_MODIFIER && keyEvent->key() == Qt::Key_W) {
             textToInsert = m_view->doc()->wordAt(m_view->cursorPosition());
         } else {
             textToInsert = m_viInputModeManager->globalState()->registers()->getContent(key);
@@ -267,7 +267,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         return true;
     }
 
-    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
+    if (keyEvent->modifiers() == CONTROL_MODIFIER && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
         Q_EMIT hideMe();
         return true;
     }

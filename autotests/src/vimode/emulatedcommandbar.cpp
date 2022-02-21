@@ -3221,12 +3221,15 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     vi_global->mappings()->add(Mappings::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyqggidone<esc>", Mappings::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "donefoo foo bar foo foo foo");
 
+#ifndef Q_OS_MACOS
     // Don't swallow "Ctrl+<key>" meant for the text edit.
+    // On MacOS the QKeySequence for undo is defined as "Ctrl+Z" as well, however it's actually Cmd+Z...
     if (QKeySequence::keyBindings(QKeySequence::Undo).contains(QKeySequence("Ctrl+Z"))) {
         DoTest("foo bar", "/bar\\ctrl-z\\enterrX", "Xoo bar");
     } else {
         qWarning() << "Skipped test: Ctrl+Z is not Undo on this platform";
     }
+#endif
 
     // Don't give invalid cursor position to updateCursor in Visual Mode: it will cause a crash!
     DoTest("xyz\nfoo\nbar\n123", "/foo\\\\nbar\\\\n\\enterggv//e\\enter\\ctrl-crX", "xyz\nfoo\nbaX\n123");

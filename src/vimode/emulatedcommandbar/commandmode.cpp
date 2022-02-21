@@ -66,7 +66,7 @@ CommandMode::CommandMode(EmulatedCommandBar *emulatedCommandBar,
 
 bool CommandMode::handleKeyPress(const QKeyEvent *keyEvent)
 {
-    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_D || keyEvent->key() == Qt::Key_F)) {
+    if (keyEvent->modifiers() == CONTROL_MODIFIER && (keyEvent->key() == Qt::Key_D || keyEvent->key() == Qt::Key_F)) {
         CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
         if (parsedSedExpression.parsedSuccessfully) {
             const bool clearFindTerm = (keyEvent->key() == Qt::Key_D);

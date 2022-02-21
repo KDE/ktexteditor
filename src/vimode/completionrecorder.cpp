@@ -8,6 +8,7 @@
 #include "katepartdebug.h"
 #include "lastchangerecorder.h"
 #include "macrorecorder.h"
+#include "vimode/definitions.h"
 #include <vimode/inputmodemanager.h>
 
 #include <QKeyEvent>
@@ -25,7 +26,7 @@ void CompletionRecorder::logCompletionEvent(const Completion &completion)
 {
     // Ctrl-space is a special code that means: if you're replaying a macro, fetch and execute
     // the next logged completion.
-    static const QKeyEvent CompletionEvent(QKeyEvent::KeyPress, Qt::Key_Space, Qt::ControlModifier, QStringLiteral(" "));
+    static const QKeyEvent CompletionEvent(QKeyEvent::KeyPress, Qt::Key_Space, CONTROL_MODIFIER, QStringLiteral(" "));
 
     if (m_viInputModeManager->macroRecorder()->isRecording()) {
         m_viInputModeManager->macroRecorder()->record(CompletionEvent);

@@ -11,6 +11,7 @@ using namespace KateVi;
 
 #include "activemode.h"
 #include "kateview.h"
+#include "vimode/definitions.h"
 
 #include <QAbstractItemView>
 #include <QCompleter>
@@ -75,18 +76,18 @@ bool Completer::completerHandledKeypress(const QKeyEvent *keyEvent)
         return false;
     }
 
-    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
+    if (keyEvent->modifiers() == CONTROL_MODIFIER && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
         if (m_currentCompletionType != CompletionStartParams::None && m_completer->popup()->isVisible()) {
             abortCompletionAndResetToPreCompletion();
             return true;
         }
     }
-    if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_Space) {
+    if (keyEvent->modifiers() == CONTROL_MODIFIER && keyEvent->key() == Qt::Key_Space) {
         CompletionStartParams completionStartParams = activateWordFromDocumentCompletion();
         startCompletion(completionStartParams);
         return true;
     }
-    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
+    if ((keyEvent->modifiers() == CONTROL_MODIFIER && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
         if (!m_completer->popup()->isVisible()) {
             const CompletionStartParams completionStartParams = m_currentMode->completionInvoked(CompletionInvocation::ExtraContext);
             startCompletion(completionStartParams);
@@ -103,7 +104,7 @@ bool Completer::completerHandledKeypress(const QKeyEvent *keyEvent)
         }
         return true;
     }
-    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
+    if ((keyEvent->modifiers() == CONTROL_MODIFIER && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
         if (!m_completer->popup()->isVisible()) {
             const CompletionStartParams completionStartParams = m_currentMode->completionInvoked(CompletionInvocation::NormalContext);
             startCompletion(completionStartParams);
