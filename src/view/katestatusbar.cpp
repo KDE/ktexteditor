@@ -65,7 +65,9 @@ QSize StatusBarButton::minimumSizeHint() const
     const auto fm = QFontMetrics(font());
     const int h = fm.lineSpacing();
     QSize size = QPushButton::sizeHint();
-    size.setHeight(h + 4);
+    int margin = style()->pixelMetric(QStyle::PM_FocusFrameVMargin) * 2;
+
+    size.setHeight(h + margin);
     return size;
 }
 
