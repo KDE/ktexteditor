@@ -134,6 +134,8 @@ void CompletionTest::FakeCodeCompletionTests()
     FinishTest("(w_123completion");
     // "Removing tail on complete" is apparently done in three stages:
     // delete word up to the cursor; insert new word; then delete remainder.
+    const bool oldRemoveTailOnCompletion = KateViewConfig::global()->wordCompletionRemoveTail();
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     BeginTest("(w_123comp");
     TestPressKey("6li");
@@ -142,6 +144,7 @@ void CompletionTest::FakeCodeCompletionTests()
     FinishTest("(w_123completion");
 
     // If we don't remove tail, just delete up to the cursor and insert.
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     BeginTest("(w_123comp");
     TestPressKey("6li");
@@ -154,6 +157,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // The addition of "function()" is done in two steps: first "function", then "()".
     BeginTest("object->");
     fakeCodeCompletionModel->setCompletions({"functionCall()"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("$a\\ctrl- \\enter");
@@ -172,6 +176,7 @@ void CompletionTest::FakeCodeCompletionTests()
     qDebug() << "Fleep";
     BeginTest("object->");
     fakeCodeCompletionModel->setCompletions({"functionCall(...)"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("$a\\ctrl- \\enter");
@@ -192,6 +197,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // No brackets are added.  No removals occur if there is no word before the cursor.
     BeginTest("object->(");
     fakeCodeCompletionModel->setCompletions({"functionCall()"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f(i\\ctrl- \\enter");
@@ -205,6 +211,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // There can't be any non-whitespace between cursor position and opening bracket, though!
     BeginTest("object->|(   (");
     fakeCodeCompletionModel->setCompletions({"functionCall()"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -220,6 +227,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // Whitespace before the bracket is fine, though.
     BeginTest("object->    (<-Cursor here!");
     fakeCodeCompletionModel->setCompletions({"functionCall()"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -233,6 +241,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // Be careful with positioning the cursor if we delete leading text!
     BeginTest("object->    (<-Cursor here!");
     fakeCodeCompletionModel->setCompletions({"functionCall()"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>afunct");
@@ -251,6 +260,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // bracket *after* the word (not the cursor) that's important.
     BeginTest("object->function    (<-Cursor here!");
     fakeCodeCompletionModel->setCompletions({"functionCall()"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("12li"); // Start inserting before the "t" in "function"
@@ -262,6 +272,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // Repeat of bracket-merging stuff, this time for functions that take at least one argument.
     BeginTest("object->(");
     fakeCodeCompletionModel->setCompletions({"functionCall(...)"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f(i\\ctrl- \\enter");
@@ -276,6 +287,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // There can't be any non-whitespace between cursor position and opening bracket, though!
     BeginTest("object->|(   (");
     fakeCodeCompletionModel->setCompletions({"functionCall(...)"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -292,6 +304,7 @@ void CompletionTest::FakeCodeCompletionTests()
     BeginTest("object->    (<-Cursor here!");
     qDebug() << "NooooO";
     fakeCodeCompletionModel->setCompletions({"functionCall(...)"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -305,6 +318,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // Be careful with positioning the cursor if we delete leading text!
     BeginTest("object->    (<-Cursor here!");
     fakeCodeCompletionModel->setCompletions({"functionCall(...)"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>afunct");
@@ -323,6 +337,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // bracket *after* the word (not the cursor) that's important.
     BeginTest("object->function    (<-Cursor here!");
     fakeCodeCompletionModel->setCompletions({"functionCall(...)"});
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("12li"); // Start inserting before the "t" in "function"
@@ -386,6 +401,7 @@ void CompletionTest::FakeCodeCompletionTests()
     TestPressKey("ifun\\ctrl- \\enterX");
     FinishTest("functionCall(X);(<-old bracket");
 
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, oldRemoveTailOnCompletion);
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, oldStealKeys);
     kate_view->hide();
     mainWindow->hide();
