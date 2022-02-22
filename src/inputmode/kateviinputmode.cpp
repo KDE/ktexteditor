@@ -259,7 +259,7 @@ KateVi::EmulatedCommandBar *KateViInputMode::viModeEmulatedCommandBar()
 
 void KateViInputMode::updateRendererConfig()
 {
-    // do nothing
+    m_viModeManager->searcher()->updateHighlightColors();
 }
 
 bool KateViInputMode::keyPress(QKeyEvent *e)

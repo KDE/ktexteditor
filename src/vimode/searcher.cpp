@@ -22,11 +22,7 @@ Searcher::Searcher(InputModeManager *manager)
     , m_lastHlSearchRange(KTextEditor::Range::invalid())
     , highlightMatchAttribute(new KTextEditor::Attribute())
 {
-    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
-    const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
-    // init match attribute
-    highlightMatchAttribute->setForeground(foregroundColor);
-    highlightMatchAttribute->setBackground(searchColor);
+    updateHighlightColors();
 
     if (m_hlMode == HighlightMode::Enable) {
         connectDisplayRangeChanged();
@@ -199,6 +195,15 @@ void Searcher::hideCurrentHighlight()
 {
     m_hlMode = HighlightMode::HideCurrent;
     clearHighlights();
+}
+
+void Searcher::updateHighlightColors()
+{
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
+    // init match attribute
+    highlightMatchAttribute->setForeground(foregroundColor);
+    highlightMatchAttribute->setBackground(searchColor);
 }
 
 void Searcher::enableHighlightSearch(bool enable)

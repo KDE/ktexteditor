@@ -54,6 +54,7 @@ public:
     void clearHighlights();
     void enableHighlightSearch(bool enable);
     void hideCurrentHighlight();
+    void updateHighlightColors();
 
 private:
     Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count = 1);
