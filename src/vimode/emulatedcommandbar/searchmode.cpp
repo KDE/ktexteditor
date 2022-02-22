@@ -334,6 +334,8 @@ void SearchMode::deactivate(bool wasAborted)
     if (!wasAborted) {
         // Search was actually executed, so store it as the last search.
         viInputModeManager()->searcher()->setLastSearchParams(m_currentSearchParams);
+    } else {
+        viInputModeManager()->searcher()->clearHighlights();
     }
     // Append the raw text of the search to the search history (i.e. without conversion
     // from Vim-style regex; without case-sensitivity markers stripped; etc.

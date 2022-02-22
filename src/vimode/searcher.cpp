@@ -8,6 +8,7 @@
 #include "globalstate.h"
 #include "history.h"
 #include "katedocument.h"
+#include "katerenderer.h"
 #include "kateview.h"
 #include "ktexteditor/range.h"
 #include <vimode/inputmodemanager.h>
@@ -18,7 +19,24 @@ using namespace KateVi;
 Searcher::Searcher(InputModeManager *manager)
     : m_viInputModeManager(manager)
     , m_view(manager->view())
+    , m_lastHlSearchRange(KTextEditor::Range::invalid())
+    , highlightMatchAttribute(new KTextEditor::Attribute())
 {
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
+    // init match attribute
+    highlightMatchAttribute->setForeground(foregroundColor);
+    highlightMatchAttribute->setBackground(searchColor);
+
+    if (m_hlMode == HighlightMode::Enable) {
+        connectDisplayRangeChanged();
+    }
+}
+
+Searcher::~Searcher()
+{
+    disconnectDisplayRangeChanged();
+    clearHighlights();
 }
 
 const QString Searcher::getLastSearchPattern() const
@@ -87,6 +105,10 @@ Range Searcher::findPatternForMotion(const SearchParams &searchParams, const KTe
     }
 
     KTextEditor::Range match = findPatternWorker(searchParams, startFrom, count);
+
+    if (m_hlMode == HighlightMode::Enable)
+        highlightVisibleResults(searchParams);
+
     return Range(match.start(), match.end(), ExclusiveMotion);
 }
 
@@ -99,6 +121,8 @@ Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTe
     m_viInputModeManager->globalState()->searchHistory()->append(QStringLiteral("\\<%1\\>").arg(word));
     QString pattern = QStringLiteral("\\b%1\\b").arg(word);
     m_lastSearchConfig.pattern = pattern;
+    if (m_hlMode == HighlightMode::HideCurrent)
+        m_hlMode = HighlightMode::Enable;
 
     return findPatternForMotion(m_lastSearchConfig, startFrom, count);
 }
@@ -110,7 +134,101 @@ KTextEditor::Range Searcher::findPattern(const SearchParams &searchParams, const
         m_lastSearchConfig = searchParams;
     }
 
-    return findPatternWorker(searchParams, startFrom, count);
+    KTextEditor::Range r = findPatternWorker(searchParams, startFrom, count);
+    if (m_hlMode == HighlightMode::HideCurrent)
+        m_hlMode = HighlightMode::Enable;
+
+    if (m_hlMode == HighlightMode::Enable)
+        highlightVisibleResults(searchParams);
+
+    return r;
+}
+
+void Searcher::highlightVisibleResults(const SearchParams &searchParams, bool force)
+{
+    auto vr = m_view->visibleRange();
+
+    const SearchParams &l = searchParams;
+    const SearchParams &r = m_lastHlSearchConfig;
+
+    if (!force && l.pattern == r.pattern && l.isCaseSensitive == r.isCaseSensitive && vr == m_lastHlSearchRange) {
+        return;
+    }
+
+    m_lastHlSearchConfig = searchParams;
+    m_lastHlSearchRange = vr;
+
+    clearHighlights();
+
+    KTextEditor::SearchOptions flags = KTextEditor::Regex;
+    m_lastSearchWrapped = false;
+
+    const QString &pattern = searchParams.pattern;
+
+    if (!searchParams.isCaseSensitive) {
+        flags |= KTextEditor::CaseInsensitive;
+    }
+
+    KTextEditor::Range match;
+    KTextEditor::Cursor current(vr.start());
+
+    do {
+        match = m_view->doc()->searchText(KTextEditor::Range(current, vr.end()), pattern, flags).first();
+        if (match.isValid()) {
+            auto highlight = m_view->doc()->newMovingRange(match, Kate::TextRange::DoNotExpand);
+            highlight->setView(m_view);
+            highlight->setAttributeOnlyForViews(true);
+            highlight->setZDepth(-10000.0);
+            highlight->setAttribute(highlightMatchAttribute);
+            m_hlRanges.append(highlight);
+
+            current = match.end();
+        }
+    } while (match.isValid());
+}
+
+void Searcher::clearHighlights()
+{
+    if (!m_hlRanges.empty()) {
+        qDeleteAll(m_hlRanges);
+        m_hlRanges.clear();
+    }
+}
+
+void Searcher::hideCurrentHighlight()
+{
+    m_hlMode = HighlightMode::HideCurrent;
+    clearHighlights();
+}
+
+void Searcher::enableHighlightSearch(bool enable)
+{
+    if (enable) {
+        m_hlMode = HighlightMode::Enable;
+
+        connectDisplayRangeChanged();
+        highlightVisibleResults(m_lastSearchConfig, true);
+    } else {
+        m_hlMode = HighlightMode::Disable;
+
+        disconnectDisplayRangeChanged();
+        clearHighlights();
+    }
+}
+
+void Searcher::disconnectDisplayRangeChanged()
+{
+    QObject::disconnect(m_displayRangeChangedConnection);
+}
+
+void Searcher::connectDisplayRangeChanged()
+{
+    disconnectDisplayRangeChanged();
+
+    m_displayRangeChangedConnection = QObject::connect(m_view, &KTextEditor::ViewPrivate::displayRangeChanged, [this]() {
+        if (m_hlMode == HighlightMode::Enable)
+            highlightVisibleResults(m_lastSearchConfig);
+    });
 }
 
 KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count)

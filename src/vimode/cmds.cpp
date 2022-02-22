@@ -16,6 +16,7 @@
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/normalvimode.h>
+#include <vimode/searcher.h>
 
 #include <KLocalizedString>
 
@@ -51,6 +52,15 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
                 msg = i18n("Missing argument. Usage: %1 <from>", cmd);
                 return false;
             }
+        } else if (cmd == QLatin1String("nohlsearch") || cmd == QLatin1String("noh")) {
+            m_viInputModeManager->searcher()->hideCurrentHighlight();
+            return true;
+        } else if (cmd == QLatin1String("set-hlsearch") || cmd == QLatin1String("set-hls")) {
+            m_viInputModeManager->searcher()->enableHighlightSearch(true);
+            return true;
+        } else if (cmd == QLatin1String("set-nohlsearch") || cmd == QLatin1String("set-nohls")) {
+            m_viInputModeManager->searcher()->enableHighlightSearch(false);
+            return true;
         }
         if (args.count() == 1) {
             msg = m_viGlobal->mappings()->get(modeForMapCommand(cmd), args.at(0), true);
@@ -198,6 +208,9 @@ const QStringList &Commands::mappingCommands()
                          << QStringLiteral("cm") << QStringLiteral("cnoremap") << QStringLiteral("cno");
 
         mappingsCommands << QStringLiteral("nunmap") << QStringLiteral("vunmap") << QStringLiteral("iunmap") << QStringLiteral("cunmap");
+
+        mappingsCommands << QStringLiteral("nohlsearch") << QStringLiteral("noh") << QStringLiteral("set-hlsearch") << QStringLiteral("set-hls")
+                         << QStringLiteral("set-nohlsearch") << QStringLiteral("set-nohls");
     }
     return mappingsCommands;
 }
