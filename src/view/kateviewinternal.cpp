@@ -205,7 +205,13 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     prop.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
     prop.setScrollMetric(QScrollerProperties::DragStartDistance, 0.0);
     m_scroller->setScrollerProperties(prop);
+#ifndef Q_OS_MACOS
+    // On macOS the trackpad also emits touch events which are sometimes picked up by the flick
+    // gesture recogniser registered by QScroller; this results in some odd scrolling behaviour
+    // as described in bug #442060.  Therefore it's better to not let the QScroller register
+    // it on that platform.
     m_scroller->grabGesture(this);
+#endif
 
     if (m_view->dynWordWrap()) {
         m_columnScroll->hide();
