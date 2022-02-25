@@ -78,6 +78,8 @@ void KateBookmarks::createActions(KActionCollection *ac)
     m_bookmarksMenu = actionMenu->menu();
 
     connect(m_bookmarksMenu, &QMenu::aboutToShow, this, &KateBookmarks::bookmarkMenuAboutToShow);
+    // Ensure the bookmarks menu is populated with at least the basic actions, otherwise macOS will not show it in the global menu bar.
+    bookmarkMenuAboutToShow();
 
     marksChanged();
 
