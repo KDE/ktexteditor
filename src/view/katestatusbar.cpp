@@ -76,7 +76,6 @@ QSize StatusBarButton::minimumSizeHint() const
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
-    , m_modifiedStatus(-1)
     , m_selectionMode(-1)
     , m_wordCounter(nullptr)
 {
@@ -87,13 +86,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
     topLayout->setSpacing(0);
-
-    // show modification state of the document
-    // TODO Using a (StatusBar)Button is currently pointless but handy due to no "setIcon()" function in QLabel.
-    //      Add some useful action when button is clicked, e.g. save document or show tool-tip
-    //      or find a way to not show a "focus frame" when hovered by mouse
-    m_modified = new StatusBarButton(this);
-    topLayout->addWidget(m_modified);
 
     // show Line XXX, Column XXX
     m_cursorPosition = new StatusBarButton(this);
@@ -203,9 +195,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateStatusBar::cursorPositionChanged);
     connect(m_view, &KTextEditor::View::viewModeChanged, this, &KateStatusBar::viewModeChanged);
     connect(m_view, &KTextEditor::View::selectionChanged, this, &KateStatusBar::selectionChanged);
-    connect(m_view->document(), &KTextEditor::DocumentPrivate::modifiedChanged, this, &KateStatusBar::modifiedChanged);
-    connect(m_view->doc(), &KTextEditor::DocumentPrivate::modifiedOnDisk, this, &KateStatusBar::modifiedChanged);
-    connect(m_view->doc(), &KTextEditor::DocumentPrivate::readWriteChanged, this, &KateStatusBar::modifiedChanged);
     connect(m_view->doc(), &KTextEditor::Document::configChanged, this, &KateStatusBar::documentConfigChanged);
     connect(m_view->document(), &KTextEditor::DocumentPrivate::modeChanged, this, &KateStatusBar::modeChanged);
     connect(m_view, &KTextEditor::View::configChanged, this, &KateStatusBar::configChanged);
@@ -263,7 +252,6 @@ void KateStatusBar::updateStatus()
     selectionChanged();
     viewModeChanged();
     cursorPositionChanged();
-    modifiedChanged();
     documentConfigChanged();
     modeChanged();
     updateDictionary();
@@ -366,51 +354,6 @@ void KateStatusBar::updateDictionary()
             }
         }
         m_dictionaryGroup->blockSignals(false);
-    }
-}
-
-void KateStatusBar::modifiedChanged()
-{
-    const bool mod = m_view->doc()->isModified();
-    const bool modOnHD = m_view->doc()->isModifiedOnDisc();
-    const bool readOnly = !m_view->doc()->isReadWrite();
-
-    // combine to modified status, update only if changed
-    unsigned int newStatus = (unsigned int)mod | ((unsigned int)modOnHD << 1) | ((unsigned int)readOnly << 2);
-    if (m_modifiedStatus == newStatus) {
-        return;
-    }
-
-    m_modifiedStatus = newStatus;
-    switch (m_modifiedStatus) {
-    case 0x0:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
-        break;
-
-    case 0x1:
-    case 0x5:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
-        break;
-
-    case 0x2:
-    case 0x6:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted on disk"));
-        break;
-
-    case 0x3:
-    case 0x7:
-        m_modified->setIcon(
-            QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")), QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
-        m_modified->setWhatsThis(QString());
-        break;
-
-    default:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("lock")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document is in read-only mode"));
-        break;
     }
 }
 

@@ -69,8 +69,6 @@ public Q_SLOTS:
 
     void selectionChanged();
 
-    void modifiedChanged();
-
     void documentConfigChanged();
 
     void modeChanged();
@@ -91,7 +89,6 @@ private:
     KTextEditor::ViewPrivate *const m_view;
     StatusBarButton *m_cursorPosition = nullptr;
     QString m_wordCount;
-    StatusBarButton *m_modified = nullptr;
     StatusBarButton *m_zoomLevel = nullptr;
     StatusBarButton *m_inputMode = nullptr;
     StatusBarButton *m_mode = nullptr;
@@ -102,7 +99,6 @@ private:
     KateStatusBarOpenUpMenu *m_dictionaryMenu = nullptr;
     QMenu *m_indentSettingsMenu;
     KateModeMenuList *m_modeMenuList = nullptr;
-    unsigned int m_modifiedStatus;
     unsigned int m_selectionMode;
     QActionGroup *m_tabGroup;
     QActionGroup *m_indentGroup;
