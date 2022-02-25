@@ -193,8 +193,10 @@ void Searcher::clearHighlights()
 
 void Searcher::hideCurrentHighlight()
 {
-    m_hlMode = HighlightMode::HideCurrent;
-    clearHighlights();
+    if (m_hlMode == HighlightMode::Enable) {
+        m_hlMode = HighlightMode::HideCurrent;
+        clearHighlights();
+    }
 }
 
 void Searcher::updateHighlightColors()
