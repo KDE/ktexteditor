@@ -753,14 +753,7 @@ bool TextBuffer::save(const QString &filename)
 
 bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFile)
 {
-    // construct stream
-    QTextStream stream(&saveFile);
-
-    // set the correct codec
-    stream.setCodec(m_textCodec);
-
-    // generate byte order mark?
-    stream.setGenerateByteOrderMark(generateByteOrderMark());
+    std::unique_ptr<QTextEncoder> encoder(m_textCodec->makeEncoder(generateByteOrderMark() ? QTextCodec::DefaultConversion : QTextCodec::IgnoreHeader));
 
     // our loved eol string ;)
     QString eol = QStringLiteral("\n");
@@ -773,15 +766,15 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
     // just dump the lines out ;)
     for (int i = 0; i < m_lines; ++i) {
         // dump current line
-        stream << line(i)->text();
+        saveFile.write(encoder->fromUnicode(line(i)->text()));
 
         // append correct end of line string
         if ((i + 1) < m_lines) {
-            stream << eol;
+            saveFile.write(encoder->fromUnicode(eol));
         }
 
         // early out on stream errors
-        if (stream.status() != QTextStream::Ok) {
+        if (saveFile.error() != QFileDevice::NoError) {
             return false;
         }
     }
@@ -792,19 +785,12 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
         const Kate::TextLine lastLine = line(m_lines - 1);
         const int firstChar = lastLine->firstChar();
         if (firstChar > -1 || lastLine->length() > 0) {
-            stream << eol;
+            saveFile.write(encoder->fromUnicode(eol));
         }
     }
 
-    // flush stream
-    // TODO: QTextStream::flush only writes bytes when it contains text. This is a fine optimization for most cases, but this makes saving
+    // TODO: this only writes bytes when there is text. This is a fine optimization for most cases, but this makes saving
     // an empty file with the BOM set impossible (results to an empty file with 0 bytes, no BOM)
-    stream.flush();
-
-    // only finalize if stream status == OK
-    if (stream.status() != QTextStream::Ok) {
-        return false;
-    }
 
     // close the file, we might want to read from underlying buffer below
     saveFile.close();
