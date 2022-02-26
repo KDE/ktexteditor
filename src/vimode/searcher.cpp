@@ -171,6 +171,9 @@ void Searcher::highlightVisibleResults(const SearchParams &searchParams, bool fo
     do {
         match = m_view->doc()->searchText(KTextEditor::Range(current, vr.end()), pattern, flags).first();
         if (match.isValid()) {
+            if (match.isEmpty())
+                match = KTextEditor::Range(match.start(), 1);
+
             auto highlight = m_view->doc()->newMovingRange(match, Kate::TextRange::DoNotExpand);
             highlight->setView(m_view);
             highlight->setAttributeOnlyForViews(true);
