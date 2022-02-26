@@ -85,7 +85,7 @@ void KateViInputMode::deactivate()
     view()->doc()->setUndoMergeAllEdits(false);
     m_activated = false;
     viewInternal()->iconBorder()->setRelLineNumbersOn(false);
-    m_viModeManager->searcher()->clearHighlights();
+    m_viModeManager->searcher()->enableHighlightSearch(false);
 }
 
 void KateViInputMode::reset()
