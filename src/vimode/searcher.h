@@ -51,10 +51,12 @@ public:
     const QString getLastSearchPattern() const;
     bool lastSearchWrapped() const;
     void setLastSearchParams(const SearchParams &searchParams);
-    void clearHighlights();
+
     void enableHighlightSearch(bool enable);
+    bool isHighlightSearchEnabled() const;
     void hideCurrentHighlight();
     void updateHighlightColors();
+    void clearHighlights();
 
 private:
     Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count = 1);

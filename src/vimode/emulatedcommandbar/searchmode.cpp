@@ -310,7 +310,8 @@ void SearchMode::editTextChanged(const QString &newText)
         }
     }
 
-    updateMatchHighlight(match);
+    if (!viInputModeManager()->searcher()->isHighlightSearchEnabled())
+        updateMatchHighlight(match);
 }
 
 void SearchMode::deactivate(bool wasAborted)

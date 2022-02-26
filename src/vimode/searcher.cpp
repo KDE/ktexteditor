@@ -226,6 +226,11 @@ void Searcher::enableHighlightSearch(bool enable)
     }
 }
 
+bool Searcher::isHighlightSearchEnabled() const
+{
+    return m_hlMode != HighlightMode::Disable;
+}
+
 void Searcher::disconnectDisplayRangeChanged()
 {
     QObject::disconnect(m_displayRangeChangedConnection);
