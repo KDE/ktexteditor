@@ -854,11 +854,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Test no highlighting when bar is dismissed.
     DoTest("foo bar xyz", "/bar\\ctrl-c", "foo bar xyz");
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
-    DoTest("foo bar xyz", "/bar\\enter", "foo bar xyz");
+    DoTest("foo bar xyz", ":set-nohls\\enter/bar\\enter", "foo bar xyz");
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
     DoTest("foo bar xyz", "/bar\\ctrl-[", "foo bar xyz");
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
-    DoTest("foo bar xyz", "/bar\\return", "foo bar xyz");
+    DoTest("foo bar xyz", ":set-nohls\\enter/bar\\return", "foo bar xyz");
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
     DoTest("foo bar xyz", "/bar\\esc", "foo bar xyz");
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
