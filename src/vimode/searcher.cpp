@@ -42,7 +42,8 @@ const QString Searcher::getLastSearchPattern() const
 
 void Searcher::setLastSearchParams(const SearchParams &searchParams)
 {
-    m_lastSearchConfig = searchParams;
+    if (!searchParams.pattern.isEmpty())
+        m_lastSearchConfig = searchParams;
 }
 
 bool Searcher::lastSearchWrapped() const
@@ -131,17 +132,19 @@ KTextEditor::Range Searcher::findPattern(const SearchParams &searchParams, const
     }
 
     KTextEditor::Range r = findPatternWorker(searchParams, startFrom, count);
-    if (m_hlMode == HighlightMode::HideCurrent)
-        m_hlMode = HighlightMode::Enable;
 
-    if (m_hlMode == HighlightMode::Enable)
+    if (m_hlMode != HighlightMode::Disable)
         highlightVisibleResults(searchParams);
 
+    newPattern = false;
     return r;
 }
 
 void Searcher::highlightVisibleResults(const SearchParams &searchParams, bool force)
 {
+    if (newPattern && searchParams.pattern.isEmpty())
+        return;
+
     auto vr = m_view->visibleRange();
 
     const SearchParams &l = searchParams;
@@ -197,7 +200,7 @@ void Searcher::clearHighlights()
 
 void Searcher::hideCurrentHighlight()
 {
-    if (m_hlMode == HighlightMode::Enable) {
+    if (m_hlMode != HighlightMode::Disable) {
         m_hlMode = HighlightMode::HideCurrent;
         clearHighlights();
     }
@@ -245,6 +248,21 @@ void Searcher::connectDisplayRangeChanged()
         if (m_hlMode == HighlightMode::Enable)
             highlightVisibleResults(m_lastSearchConfig);
     });
+}
+
+void Searcher::patternDone(bool wasAborted)
+{
+    if (wasAborted) {
+        if (m_hlMode == HighlightMode::HideCurrent || m_lastSearchConfig.pattern.isEmpty())
+            clearHighlights();
+        else if (m_hlMode == HighlightMode::Enable)
+            highlightVisibleResults(m_lastSearchConfig);
+
+    } else {
+        if (m_hlMode == HighlightMode::HideCurrent)
+            m_hlMode = HighlightMode::Enable;
+    }
+    newPattern = true;
 }
 
 KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count)

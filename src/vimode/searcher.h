@@ -57,6 +57,7 @@ public:
     void hideCurrentHighlight();
     void updateHighlightColors();
     void clearHighlights();
+    void patternDone(bool wasAborted);
 
 private:
     Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count = 1);
@@ -85,6 +86,7 @@ private:
     KTextEditor::Range m_lastHlSearchRange;
     KTextEditor::Attribute::Ptr highlightMatchAttribute;
     QMetaObject::Connection m_displayRangeChangedConnection;
+    bool newPattern{true};
 };
 }
 

@@ -335,13 +335,12 @@ void SearchMode::deactivate(bool wasAborted)
     if (!wasAborted) {
         // Search was actually executed, so store it as the last search.
         viInputModeManager()->searcher()->setLastSearchParams(m_currentSearchParams);
-    } else {
-        viInputModeManager()->searcher()->clearHighlights();
     }
     // Append the raw text of the search to the search history (i.e. without conversion
     // from Vim-style regex; without case-sensitivity markers stripped; etc.
     // Vim does this even if the search was aborted, so we follow suit.
     viInputModeManager()->globalState()->searchHistory()->append(m_edit->text());
+    viInputModeManager()->searcher()->patternDone(wasAborted);
 }
 
 CompletionStartParams SearchMode::completionInvoked(Completer::CompletionInvocation invocationType)
