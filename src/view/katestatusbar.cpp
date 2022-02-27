@@ -23,6 +23,7 @@
 #include <QActionGroup>
 #include <QHBoxLayout>
 #include <QInputDialog>
+#include <QStylePainter>
 
 // BEGIN menu
 KateStatusBarOpenUpMenu::KateStatusBarOpenUpMenu(QWidget *parent)
@@ -55,6 +56,15 @@ StatusBarButton::StatusBarButton(KateStatusBar *parent, const QString &text /*= 
     setMinimumSize(QSize(1, minimumSizeHint().height()));
 }
 
+void StatusBarButton::paintEvent(QPaintEvent *)
+{
+    QStylePainter p(this);
+    QStyleOptionButton opt;
+    initStyleOption(&opt);
+    opt.features &= (~QStyleOptionButton::HasMenu);
+    p.drawControl(QStyle::CE_PushButton, opt);
+}
+
 QSize StatusBarButton::sizeHint() const
 {
     return minimumSizeHint();
@@ -65,9 +75,14 @@ QSize StatusBarButton::minimumSizeHint() const
     const auto fm = QFontMetrics(font());
     const int h = fm.lineSpacing();
     QSize size = QPushButton::sizeHint();
-    int margin = style()->pixelMetric(QStyle::PM_FocusFrameVMargin) * 2;
-
+    const int margin = style()->pixelMetric(QStyle::PM_FocusFrameVMargin) * 2;
     size.setHeight(h + margin);
+
+    if (menu()) {
+        const int menuArrowWidth = style()->pixelMetric(QStyle::PM_MenuButtonIndicator);
+        size.rwidth() -= menuArrowWidth;
+    }
+
     return size;
 }
 
