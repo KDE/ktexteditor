@@ -596,6 +596,13 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
         currentPosition = nextPosition;
     }
 
+    // ensure bold & italic fonts work, even if the main font is e.g. light or something like that
+    for (auto &formatRange : newHighlight) {
+        if (formatRange.format.fontWeight() == QFont::Bold || formatRange.format.fontItalic()) {
+            formatRange.format.setFontStyleName(QString());
+        }
+    }
+
     return newHighlight;
 }
 

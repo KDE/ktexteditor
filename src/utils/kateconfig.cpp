@@ -906,7 +906,7 @@ void KateRendererConfig::setFontWithDroppedStyleName(const QFont &font)
 {
     // Drop styleName, otherwise stuff like bold/italic/... won't work as style!
     m_font = font;
-    m_font.setStyleName(QString());
+    // m_font.setStyleName(QString());
     m_fontSet = true;
 }
 
