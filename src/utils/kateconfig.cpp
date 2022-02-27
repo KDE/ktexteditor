@@ -690,8 +690,8 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
-    // read font, but drop all styles, else we have no bold/italic/... variants
-    setFontWithDroppedStyleName(config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont)));
+    // read font
+    setFont(config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont)));
 
     // setSchema will default to right theme
     setSchema(config.readEntry(KEY_COLOR_THEME, QString()));
@@ -898,16 +898,9 @@ void KateRendererConfig::setFont(const QFont &font)
     }
 
     configStart();
-    setFontWithDroppedStyleName(font);
-    configEnd();
-}
-
-void KateRendererConfig::setFontWithDroppedStyleName(const QFont &font)
-{
-    // Drop styleName, otherwise stuff like bold/italic/... won't work as style!
     m_font = font;
-    // m_font.setStyleName(QString());
     m_fontSet = true;
+    configEnd();
 }
 
 bool KateRendererConfig::wordWrapMarker() const
