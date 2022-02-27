@@ -5,6 +5,7 @@
 */
 
 #include "attribute.h"
+#include "editor.h"
 #include "kateextendedattribute.h"
 
 using namespace KTextEditor;
@@ -183,7 +184,11 @@ bool Attribute::fontBold() const
 
 void Attribute::setFontBold(bool bold)
 {
-    setFontWeight(bold ? QFont::Bold : QFont::Normal);
+    if (bold) {
+        setFontWeight(QFont::Bold);
+    } else {
+        clearProperty(QTextFormat::FontWeight);
+    }
 }
 
 bool Attribute::hasAnyProperty() const
