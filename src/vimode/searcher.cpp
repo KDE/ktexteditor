@@ -103,8 +103,14 @@ Range Searcher::findPatternForMotion(const SearchParams &searchParams, const KTe
 
     KTextEditor::Range match = findPatternWorker(searchParams, startFrom, count);
 
-    if (m_hlMode == HighlightMode::Enable)
-        highlightVisibleResults(searchParams);
+    if (m_hlMode != HighlightMode::Disable) {
+        if (m_hlMode == HighlightMode::HideCurrent) {
+            m_hlMode = HighlightMode::Enable;
+            highlightVisibleResults(searchParams, true);
+        } else {
+            highlightVisibleResults(searchParams);
+        }
+    }
 
     return Range(match.start(), match.end(), ExclusiveMotion);
 }
