@@ -102,14 +102,16 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->setContentsMargins(0, 0, 0, 0);
     topLayout->setSpacing(0);
 
+    // ensure all elements of the status bar are right aligned
+    // for Kate this is nice, as on the left side are the tool view buttons
+    // for KWrite this makes it more consistent with Kate
+    topLayout->addStretch(1);
+
     // show Line XXX, Column XXX
     m_cursorPosition = new StatusBarButton(this);
     topLayout->addWidget(m_cursorPosition);
     m_cursorPosition->setWhatsThis(i18n("Current cursor position. Click to go to a specific line."));
     connect(m_cursorPosition, &StatusBarButton::clicked, m_view, &KTextEditor::ViewPrivate::gotoLine);
-
-    // Separate the status line in a left and right part
-    topLayout->addStretch(1);
 
     // show the zoom level of the text
     m_zoomLevel = new StatusBarButton(this);
