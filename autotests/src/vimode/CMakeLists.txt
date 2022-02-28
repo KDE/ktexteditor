@@ -22,5 +22,6 @@ vimode_unit_test(view view.cpp base.cpp)
 vimode_unit_test(completion completion.cpp base.cpp fakecodecompletiontestmodel.cpp)
 vimode_unit_test(keys keys.cpp base.cpp fakecodecompletiontestmodel.cpp emulatedcommandbarsetupandteardown.cpp)
 vimode_unit_test(emulatedcommandbar emulatedcommandbar.cpp base.cpp fakecodecompletiontestmodel.cpp emulatedcommandbarsetupandteardown.cpp)
+vimode_unit_test(hlsearch hlsearch.cpp base.cpp emulatedcommandbarsetupandteardown.cpp)
 
 add_custom_target(vimode_tests ${CMAKE_CTEST_COMMAND} --force-new-ctest-process -R "^vimode_")
