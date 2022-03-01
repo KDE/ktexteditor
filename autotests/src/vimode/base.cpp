@@ -201,7 +201,7 @@ void BaseTest::TestPressKey(const QString &str)
 
 void BaseTest::BeginTest(const QString &original)
 {
-    vi_input_mode_manager->viEnterNormalMode();
+    vi_input_mode->viInputModeManager()->viEnterNormalMode();
     vi_input_mode->reset();
     vi_input_mode_manager = vi_input_mode->viInputModeManager();
     kate_document->setText(original);
