@@ -336,11 +336,22 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             newAttribute->clearProperty(SelectedBackground);
         }
 
-        newAttribute->setFontBold(format.isBold(currentTheme));
-        newAttribute->setFontItalic(format.isItalic(currentTheme));
-        newAttribute->setFontUnderline(format.isUnderline(currentTheme));
-        newAttribute->setFontStrikeOut(format.isStrikeThrough(currentTheme));
-        newAttribute->setSkipSpellChecking(format.spellCheck());
+        // Only set attributes if true, otherwise we waste memory
+        if (format.isBold(currentTheme)) {
+            newAttribute->setFontBold(true);
+        }
+        if (format.isItalic(currentTheme)) {
+            newAttribute->setFontItalic(true);
+        }
+        if (format.isUnderline(currentTheme)) {
+            newAttribute->setFontUnderline(true);
+        }
+        if (format.isStrikeThrough(currentTheme)) {
+            newAttribute->setFontStrikeOut(true);
+        }
+        if (format.spellCheck()) {
+            newAttribute->setSkipSpellChecking(true);
+        }
         array.append(newAttribute);
     }
     return array;

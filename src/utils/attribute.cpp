@@ -5,7 +5,6 @@
 */
 
 #include "attribute.h"
-#include "editor.h"
 #include "kateextendedattribute.h"
 
 using namespace KTextEditor;

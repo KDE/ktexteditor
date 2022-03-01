@@ -2449,7 +2449,9 @@ void KateViewInternal::updateBracketMarks()
 
             KTextEditor::Attribute::Ptr attribute = attributeAt(flashPos);
             attribute->setBackground(view()->m_renderer->config()->highlightedBracketColor());
-            attribute->setFontBold(m_bmStart->attribute()->fontBold());
+            if (m_bmStart->attribute()->fontBold()) {
+                attribute->setFontBold(true);
+            }
 
             flashChar(flashPos, attribute);
         }
