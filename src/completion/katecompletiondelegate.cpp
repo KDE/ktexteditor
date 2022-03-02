@@ -136,7 +136,7 @@ static QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList
     return ret;
 }
 
-QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index) const
+QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index)
 {
     QVariant highlight = index.data(KTextEditor::CodeCompletionModel::HighlightingMethod);
 

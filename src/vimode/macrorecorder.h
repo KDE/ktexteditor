@@ -31,7 +31,7 @@ public:
     void dropLast();
 
     void replay(const QChar &macroRegister);
-    bool isReplaying();
+    bool isReplaying() const;
 
 private:
     InputModeManager *m_viInputModeManager;

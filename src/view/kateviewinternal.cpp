@@ -2861,7 +2861,7 @@ void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
     return;
 }
 
-bool KateViewInternal::isAcceptableInput(const QKeyEvent *e) const
+bool KateViewInternal::isAcceptableInput(const QKeyEvent *e)
 {
     // reimplemented from QInputControl::isAcceptableInput()
 

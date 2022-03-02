@@ -328,7 +328,7 @@ bool KateVariableExpansionManager::expandVariable(const QString &name, KTextEdit
     return false;
 }
 
-QString KateVariableExpansionManager::expandText(const QString &text, KTextEditor::View *view) const
+QString KateVariableExpansionManager::expandText(const QString &text, KTextEditor::View *view)
 {
     return KateMacroExpander::expandMacro(text, view);
 }

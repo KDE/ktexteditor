@@ -403,8 +403,8 @@ class KateViewEncodingAction : public KSelectAction
 public:
     KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
-    int mibForName(const QString &codecName, bool *ok = nullptr) const;
-    QTextCodec *codecForMib(int mib) const;
+    static int mibForName(const QString &codecName, bool *ok = nullptr);
+    static QTextCodec *codecForMib(int mib);
 
     QTextCodec *currentCodec() const;
     bool setCurrentCodec(QTextCodec *codec);
@@ -599,7 +599,7 @@ public:
     void execute(const QString &text);
 
 public Q_SLOTS:
-    void showHelpPage();
+    static void showHelpPage();
 
 private:
     class KateCmdLineEdit *m_lineEdit;

@@ -232,7 +232,7 @@ public:
 private:
     void fixDropEvent(QDropEvent *event);
 
-    bool isAcceptableInput(const QKeyEvent *e) const;
+    static bool isAcceptableInput(const QKeyEvent *e);
 
 protected:
     void hideEvent(QHideEvent *e) override;
@@ -387,7 +387,7 @@ private:
 
     // returns the maximum X value / col value a cursor can take for a specific line range
     int lineMaxCursorX(const KateTextLayout &line);
-    int lineMaxCol(const KateTextLayout &line);
+    static int lineMaxCol(const KateTextLayout &line);
 
     class KateLayoutCache *cache() const;
     KateLayoutCache *m_layoutCache;

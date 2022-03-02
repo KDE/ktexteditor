@@ -233,9 +233,9 @@ public:
     /**
      * Change to a different font (soon to be font set?)
      */
-    void increaseFontSizes(qreal step = 1.0);
-    void decreaseFontSizes(qreal step = 1.0);
-    void resetFontSizes();
+    void increaseFontSizes(qreal step = 1.0) const;
+    void decreaseFontSizes(qreal step = 1.0) const;
+    void resetFontSizes() const;
 
     /**
      * Access currently used font.
@@ -283,7 +283,7 @@ public:
      * (see https://bugs.kde.org/show_bug.cgi?id=178594). As this function is internal
      * the way it work will probably change between releases. Be warned!
      */
-    bool isLineRightToLeft(KateLineLayoutPtr lineLayout) const;
+    static bool isLineRightToLeft(KateLineLayoutPtr lineLayout);
 
     /**
      * The ultimate decoration creation function.
@@ -402,16 +402,16 @@ private:
     /**
      * Paint a trailing space on position (x, y).
      */
-    void paintSpace(QPainter &paint, qreal x, qreal y);
+    void paintSpace(QPainter &paint, qreal x, qreal y) const;
     /**
      * Paint a tab stop marker on position (x, y).
      */
-    void paintTabstop(QPainter &paint, qreal x, qreal y);
+    void paintTabstop(QPainter &paint, qreal x, qreal y) const;
 
     /**
      * Paint a non-breaking space marker on position (x, y).
      */
-    void paintNonBreakSpace(QPainter &paint, qreal x, qreal y);
+    void paintNonBreakSpace(QPainter &paint, qreal x, qreal y) const;
 
     /**
      * Paint non printable spaces bounding box
@@ -421,7 +421,7 @@ private:
     /** Paint a SciTE-like indent marker. */
     void paintIndentMarker(QPainter &paint, uint x, int line);
 
-    void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute) const;
+    static void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute);
 
     // update font height
     void updateFontHeight();

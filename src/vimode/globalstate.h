@@ -57,7 +57,7 @@ public:
     }
 
 private:
-    KSharedConfigPtr config() const;
+    static KSharedConfigPtr config();
 
 private:
     Macros *m_macros;

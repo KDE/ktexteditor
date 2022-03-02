@@ -54,7 +54,7 @@ public:
 
     bool shouldHideItemsWithEqualNames() const override;
 
-    QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const;
+    static QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range);
 
     void executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
 
@@ -86,7 +86,7 @@ private:
     QString word() const;
     KTextEditor::Range range() const;
 
-    QString findLongestUnique(const QStringList &matches, int lead) const;
+    static QString findLongestUnique(const QStringList &matches, int lead);
 
     KTextEditor::View *m_view;
     KateWordCompletionModel *m_dWCompletionModel;

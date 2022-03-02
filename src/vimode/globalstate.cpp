@@ -61,7 +61,7 @@ void GlobalState::readConfig(const KConfig *configFile)
     m_registers->readConfig(config);
 }
 
-KSharedConfigPtr GlobalState::config() const
+KSharedConfigPtr GlobalState::config()
 {
     // use dummy config for unit tests!
     return KTextEditor::EditorPrivate::unitTestMode()

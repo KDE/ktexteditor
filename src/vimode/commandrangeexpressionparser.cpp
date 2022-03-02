@@ -58,7 +58,7 @@ CommandRangeExpressionParser::CommandRangeExpressionParser(InputModeManager *vim
 {
 }
 
-QString CommandRangeExpressionParser::parseRangeString(const QString &command) const
+QString CommandRangeExpressionParser::parseRangeString(const QString &command)
 {
     if (command.isEmpty()) {
         return QString();
@@ -156,7 +156,7 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string) const
     return result;
 }
 
-bool CommandRangeExpressionParser::matchLineNumber(const QString &line, QList<int> &values) const
+bool CommandRangeExpressionParser::matchLineNumber(const QString &line, QList<int> &values)
 {
     QRegularExpressionMatch match = RE_Line().match(line);
 

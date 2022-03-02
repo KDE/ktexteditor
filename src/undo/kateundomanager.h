@@ -193,7 +193,7 @@ private Q_SLOTS:
     void updateModified();
 
     void undoCancel();
-    void viewCreated(KTextEditor::Document *, KTextEditor::View *newView);
+    void viewCreated(KTextEditor::Document *, KTextEditor::View *newView) const;
 
 private:
     KTextEditor::View *activeView();

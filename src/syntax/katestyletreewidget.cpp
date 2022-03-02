@@ -30,7 +30,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
 private:
-    QBrush getBrushForColorColumn(const QModelIndex &index, int column) const;
+    static QBrush getBrushForColorColumn(const QModelIndex &index, int column);
     KateStyleTreeWidget *m_widget;
 };
 // END
@@ -343,7 +343,7 @@ KateStyleTreeDelegate::KateStyleTreeDelegate(KateStyleTreeWidget *widget)
 {
 }
 
-QBrush KateStyleTreeDelegate::getBrushForColorColumn(const QModelIndex &index, int column) const
+QBrush KateStyleTreeDelegate::getBrushForColorColumn(const QModelIndex &index, int column)
 {
     QModelIndex colorIndex = index.sibling(index.row(), column);
     QVariant displayData = colorIndex.model()->data(colorIndex);

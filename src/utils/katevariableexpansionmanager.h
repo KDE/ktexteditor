@@ -51,7 +51,7 @@ public:
 
     bool expandVariable(const QString &variable, KTextEditor::View *view, QString &output) const;
 
-    QString expandText(const QString &text, KTextEditor::View *view) const;
+    static QString expandText(const QString &text, KTextEditor::View *view);
 
     void showDialog(const QVector<QWidget *> &widgets, const QStringList &names) const;
 

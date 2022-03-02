@@ -178,7 +178,7 @@ public:
     Q_INVOKABLE void indent(const QJSValue &jsrange, int change);
 
 private:
-    bool _isCode(int defaultStyle);
+    static bool _isCode(int defaultStyle);
 
     KTextEditor::DocumentPrivate *m_document;
     QJSEngine *m_engine;

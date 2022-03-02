@@ -147,12 +147,12 @@ void KeyMapper::setDoNotMapNextKeypress()
     m_doNotMapNextKeypress = true;
 }
 
-bool KeyMapper::isExecutingMapping()
+bool KeyMapper::isExecutingMapping() const
 {
     return m_numMappingsBeingExecuted > 0;
 }
 
-bool KeyMapper::isPlayingBackRejectedKeys()
+bool KeyMapper::isPlayingBackRejectedKeys() const
 {
     return m_isPlayingBackRejectedKeys;
 }

@@ -115,7 +115,7 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
     QApplication::processEvents();
 }
 
-bool EmulatedCommandBar::isActive()
+bool EmulatedCommandBar::isActive() const
 {
     return m_isActive;
 }

@@ -68,7 +68,7 @@ public:
 
 protected:
     // helper methods
-    void yankToClipBoard(QChar chosen_register, const QString &text);
+    static void yankToClipBoard(QChar chosen_register, const QString &text);
     bool deleteRange(Range &r, OperationMode mode = LineWise, bool addToRegister = true);
     const QString getRange(Range &r, OperationMode mode = LineWise) const;
     const QString getLine(int line = -1) const;
@@ -91,7 +91,7 @@ protected:
 
     int findLineStartingWitchChar(const QChar &c, int count, bool forward = true) const;
     void updateCursor(const KTextEditor::Cursor c) const;
-    const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht) const;
+    static const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht);
 
     void addToNumberUnderCursor(int count);
 

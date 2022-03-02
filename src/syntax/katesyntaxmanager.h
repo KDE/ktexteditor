@@ -30,7 +30,7 @@ public:
     static KateHlManager *self();
 
     KateHighlighting *getHl(int n);
-    int nameFind(const QString &name);
+    int nameFind(const QString &name) const;
 
     void reload();
 

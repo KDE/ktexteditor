@@ -139,20 +139,20 @@ void KateRenderer::setShowSelections(bool showSelections)
     m_showSelections = showSelections;
 }
 
-void KateRenderer::increaseFontSizes(qreal step)
+void KateRenderer::increaseFontSizes(qreal step) const
 {
     QFont f(config()->baseFont());
     f.setPointSizeF(f.pointSizeF() + step);
     config()->setFont(f);
 }
 
-void KateRenderer::resetFontSizes()
+void KateRenderer::resetFontSizes() const
 {
     QFont f(KateRendererConfig::global()->baseFont());
     config()->setFont(f);
 }
 
-void KateRenderer::decreaseFontSizes(qreal step)
+void KateRenderer::decreaseFontSizes(qreal step) const
 {
     QFont f(config()->baseFont());
     if ((f.pointSizeF() - step) > 0) {
@@ -241,7 +241,7 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
     }
 }
 
-void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y)
+void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y) const
 {
     QPen penBackup(paint.pen());
     QPen pen(config()->tabMarkerColor());
@@ -263,7 +263,7 @@ void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y)
     paint.setPen(penBackup);
 }
 
-void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y)
+void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y) const
 {
     QPen penBackup(paint.pen());
     QPen pen(config()->tabMarkerColor());
@@ -277,7 +277,7 @@ void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y)
     paint.setRenderHint(QPainter::Antialiasing, false);
 }
 
-void KateRenderer::paintNonBreakSpace(QPainter &paint, qreal x, qreal y)
+void KateRenderer::paintNonBreakSpace(QPainter &paint, qreal x, qreal y) const
 {
     QPen penBackup(paint.pen());
     QPen pen(config()->tabMarkerColor());
@@ -606,7 +606,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
     return newHighlight;
 }
 
-void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute) const
+void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute)
 {
     if (attribute.hasProperty(SelectedForeground)) {
         target.format.setForeground(attribute.selectedForeground());
@@ -1149,7 +1149,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 // 3) QString::isRightToLeft() does not seem to work on my setup
 // 4) isStringRightToLeft() should behave much better than QString::isRightToLeft() therefore:
 // 5) isStringRightToLeft() kicks ass
-bool KateRenderer::isLineRightToLeft(KateLineLayoutPtr lineLayout) const
+bool KateRenderer::isLineRightToLeft(KateLineLayoutPtr lineLayout)
 {
     QString s = lineLayout->textLine()->text();
     int i = 0;

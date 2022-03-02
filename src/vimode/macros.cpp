@@ -103,7 +103,7 @@ int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMac
     return macroCompletionsIndex;
 }
 
-QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMacro) const
+QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMacro)
 {
     const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1Char(';'));
     QString encodedMacroCompletion = completionForMacro.completedText().remove(QStringLiteral("()")).remove(QLatin1Char(';'));

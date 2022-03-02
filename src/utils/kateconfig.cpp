@@ -447,7 +447,7 @@ QTextCodec *KateDocumentConfig::codec() const
     return KCharsets::charsets()->codecForName(encoding);
 }
 
-QString KateDocumentConfig::eolString()
+QString KateDocumentConfig::eolString() const
 {
     switch (eol()) {
     case KateDocumentConfig::eolDos:
@@ -1419,7 +1419,7 @@ void KateRendererConfig::setShowWholeBracketExpression(bool on)
     configEnd();
 }
 
-bool KateRendererConfig::animateBracketMatching() const
+bool KateRendererConfig::animateBracketMatching()
 {
     return s_global->m_animateBracketMatching;
 }

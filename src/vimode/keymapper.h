@@ -32,8 +32,8 @@ public:
     bool handleKeypress(QChar key);
     void setMappingTimeout(int timeoutMS);
     void setDoNotMapNextKeypress();
-    bool isExecutingMapping();
-    bool isPlayingBackRejectedKeys();
+    bool isExecutingMapping() const;
+    bool isPlayingBackRejectedKeys() const;
 
 public Q_SLOTS:
     void mappingTimerTimeOut();

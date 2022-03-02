@@ -966,7 +966,7 @@ public:
 
 private:
     void updateDocName();
-    void uniquifyDocNames(const std::vector<KTextEditor::DocumentPrivate *> &docs);
+    static void uniquifyDocNames(const std::vector<KTextEditor::DocumentPrivate *> &docs);
 
 public:
     /**
@@ -1289,7 +1289,7 @@ public:
 
     typedef QList<QPair<int, int>> OffsetList;
 
-    int computePositionWrtOffsets(const OffsetList &offsetList, int pos);
+    static int computePositionWrtOffsets(const OffsetList &offsetList, int pos);
 
     /**
      * The first OffsetList is from decoded to encoded, and the second OffsetList from

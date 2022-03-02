@@ -76,9 +76,9 @@ public:
     }
 
 private:
-    const QStringList &mappingCommands();
-    Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
-    bool isMapCommandRecursive(const QString &mapCommand);
+    static const QStringList &mappingCommands();
+    static Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
+    static bool isMapCommandRecursive(const QString &mapCommand);
 };
 
 /**

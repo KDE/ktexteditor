@@ -268,7 +268,7 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::currentMatchReplacemen
     return i18n("replace with %1?", replacementTextForCurrentMatch().replace(QLatin1Char('\n'), QLatin1String("\\n")));
 }
 
-QString KateCommands::SedReplace::InteractiveSedReplacer::finalStatusReportMessage()
+QString KateCommands::SedReplace::InteractiveSedReplacer::finalStatusReportMessage() const
 {
     return i18ncp("%2 is the translation of the next message",
                   "1 replacement done on %2",

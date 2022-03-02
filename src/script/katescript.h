@@ -158,7 +158,7 @@ public:
     }
 
     /** Returns the backtrace when a script has errored out */
-    QString backtrace(const QJSValue &error, const QString &header = QString());
+    static QString backtrace(const QJSValue &error, const QString &header = QString());
 
     /** Execute a piece of code **/
     QJSValue evaluate(const QString &program, const FieldMap &env = FieldMap());

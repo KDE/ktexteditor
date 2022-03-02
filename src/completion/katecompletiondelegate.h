@@ -27,7 +27,7 @@ public:
     }
 
 protected:
-    QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index) const;
+    static QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index);
 
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 

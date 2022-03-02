@@ -111,7 +111,7 @@ public:
         void replaceCurrentMatch();
         void replaceAllRemaining();
         QString currentMatchReplacementConfirmationMessage();
-        QString finalStatusReportMessage();
+        QString finalStatusReportMessage() const;
 
     private:
         const QString m_findPattern;

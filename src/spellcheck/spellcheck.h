@@ -31,7 +31,7 @@ public:
     explicit KateSpellCheckManager(QObject *parent = nullptr);
     ~KateSpellCheckManager() override;
 
-    QStringList suggestions(const QString &word, const QString &dictionary);
+    static QStringList suggestions(const QString &word, const QString &dictionary);
 
     void ignoreWord(const QString &word, const QString &dictionary);
     void addToDictionary(const QString &word, const QString &dictionary);
@@ -50,7 +50,7 @@ Q_SIGNALS:
     void wordIgnored(const QString &word);
 
 public:
-    QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range);
+    static QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range);
 
     QList<QPair<KTextEditor::Range, QString>> spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc,
                                                                               KTextEditor::Range range,
@@ -59,10 +59,10 @@ public:
                                                                               bool returnSingleRange = false);
     QList<QPair<KTextEditor::Range, QString>> spellCheckRanges(KTextEditor::DocumentPrivate *doc, KTextEditor::Range range, bool singleLine = false);
 
-    void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, KTextEditor::Range replacementRange);
+    static void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, KTextEditor::Range replacementRange);
 
 private:
-    void trimRange(KTextEditor::DocumentPrivate *doc, KTextEditor::Range &r);
+    static void trimRange(KTextEditor::DocumentPrivate *doc, KTextEditor::Range &r);
 };
 
 #endif

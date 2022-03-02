@@ -542,7 +542,7 @@ void KateLayoutCache::relayoutLines(int startRealLine, int endRealLine)
     m_lineLayouts.relayoutLines(startRealLine, endRealLine);
 }
 
-bool KateLayoutCache::acceptDirtyLayouts()
+bool KateLayoutCache::acceptDirtyLayouts() const
 {
     return m_acceptDirtyLayouts;
 }

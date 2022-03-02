@@ -87,7 +87,7 @@ void MacroRecorder::replay(const QChar &macroRegister)
     m_macrosBeingReplayedCount--;
 }
 
-bool MacroRecorder::isReplaying()
+bool MacroRecorder::isReplaying() const
 {
     return m_macrosBeingReplayedCount > 0;
 }

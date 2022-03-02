@@ -1099,7 +1099,7 @@ QString ModeBase::getVerbatimKeys() const
     return m_keysVerbatim;
 }
 
-const QChar ModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidth) const
+const QChar ModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidth)
 {
     int column = 0;
     int tempCol = 0;

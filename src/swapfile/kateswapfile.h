@@ -84,7 +84,7 @@ protected Q_SLOTS:
     void writeFileToDisk();
 
 private:
-    QTimer *syncTimer();
+    static QTimer *syncTimer();
 
 public Q_SLOTS:
     void showSwapFileMessage();

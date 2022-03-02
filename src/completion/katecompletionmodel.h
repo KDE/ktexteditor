@@ -65,7 +65,7 @@ public:
     /// If there is no common prefix, extracts the next useful prefix for the selected index
     QString commonPrefix(QModelIndex selectedIndex) const;
 
-    void rowSelected(const QModelIndex &row);
+    void rowSelected(const QModelIndex &row) const;
 
     bool indexIsItem(const QModelIndex &index) const override;
 
@@ -159,7 +159,7 @@ private:
     QTreeView *treeView() const override;
 
     friend class KateArgumentHintModel;
-    ModelRow modelRowPair(const QModelIndex &index) const;
+    static ModelRow modelRowPair(const QModelIndex &index);
 
     // Represents a source row; provides sorting method
     class Item
@@ -288,7 +288,7 @@ private:
 
     /// Removes attributes not used in grouping from the input \a attribute
     int groupingAttributes(int attribute) const;
-    int countBits(int value) const;
+    static int countBits(int value);
 
     void resort();
 

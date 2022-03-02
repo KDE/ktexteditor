@@ -52,7 +52,7 @@ KateHighlighting *KateHlManager::getHl(int n)
     return it->second.get();
 }
 
-int KateHlManager::nameFind(const QString &name)
+int KateHlManager::nameFind(const QString &name) const
 {
     const auto modeList = this->modeList();
     int idx = 0;

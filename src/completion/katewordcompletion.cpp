@@ -192,7 +192,7 @@ void KateWordCompletionModel::completionInvoked(KTextEditor::View *view, const K
  * ignoring any dublets and words shorter than configured and/or
  * reasonable minimum length.
  */
-QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const
+QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const KTextEditor::Range &range)
 {
     QSet<QString> result;
     const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
@@ -482,7 +482,7 @@ void KateWordCompletionView::slotCursorMoved()
 }
 
 // Contributed by <brain@hdsnet.hu> FIXME
-QString KateWordCompletionView::findLongestUnique(const QStringList &matches, int lead) const
+QString KateWordCompletionView::findLongestUnique(const QStringList &matches, int lead)
 {
     QString partial = matches.first();
 

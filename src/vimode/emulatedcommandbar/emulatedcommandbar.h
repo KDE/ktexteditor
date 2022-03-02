@@ -43,7 +43,7 @@ public:
     explicit EmulatedCommandBar(KateViInputMode *viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
     ~EmulatedCommandBar() override;
     void init(Mode mode, const QString &initialText = QString());
-    bool isActive();
+    bool isActive() const;
     void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
     bool handleKeyPress(const QKeyEvent *keyEvent);
     bool isSendingSyntheticSearchCompletedKeypress();

@@ -848,7 +848,7 @@ public:
      * Based on current set eol mode.
      * @return current end of line string
      */
-    QString eolString();
+    QString eolString() const;
 
     void setEol(int mode)
     {
@@ -1425,7 +1425,7 @@ public:
     bool showWholeBracketExpression() const;
     void setShowWholeBracketExpression(bool on);
 
-    bool animateBracketMatching() const;
+    static bool animateBracketMatching();
     void setAnimateBracketMatching(bool on);
 
     const QColor &templateBackgroundColor() const;

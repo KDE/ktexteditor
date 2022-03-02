@@ -672,7 +672,7 @@ const QChar KeyParser::KeyEventToQChar(const KeyEvent &keyEvent)
     return KeyEventToQChar(keyEvent.key(), keyEvent.text(), keyEvent.modifiers());
 }
 
-const QChar KeyParser::KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods)
+const QChar KeyParser::KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods) const
 {
     // If previous key press was AltGr, return key value right away and don't go
     // down the "handle modifiers" code path. AltGr is really confusing...

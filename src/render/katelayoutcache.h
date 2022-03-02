@@ -71,7 +71,7 @@ public:
     bool wrap() const;
     void setWrap(bool wrap);
 
-    bool acceptDirtyLayouts();
+    bool acceptDirtyLayouts() const;
     void setAcceptDirtyLayouts(bool accept);
 
     // BEGIN generic methods to get/set layouts

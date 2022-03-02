@@ -22,7 +22,7 @@ public:
     explicit VariableLineEdit(QWidget *parent = nullptr);
     ~VariableLineEdit() override = default;
 
-    void addKateItems(VariableListView *listview);
+    static void addKateItems(VariableListView *listview);
     QString text();
 
 public Q_SLOTS:

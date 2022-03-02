@@ -2859,7 +2859,7 @@ void KateViewEncodingAction::setEncoding(const QString &e)
     view->reloadFile();
 }
 
-int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok) const
+int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok)
 {
     // FIXME logic is good but code is ugly
 
@@ -2889,7 +2889,7 @@ int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok) const
     return MIB_DEFAULT;
 }
 
-QTextCodec *KateViewEncodingAction::codecForMib(int mib) const
+QTextCodec *KateViewEncodingAction::codecForMib(int mib)
 {
     if (mib == MIB_DEFAULT) {
         // FIXME offer to change the default codec

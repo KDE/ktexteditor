@@ -48,7 +48,7 @@ public:
 
 private:
     void initKeyTables();
-    const QChar KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods);
+    const QChar KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods) const;
 
     QHash<int, QString> m_qt2katevi;
     QHash<QString, int> m_katevi2qt;

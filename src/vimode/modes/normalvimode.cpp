@@ -3839,7 +3839,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
     return true;
 }
 
-KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText) const
+KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor pasteLocation, const QString &pastedText)
 {
     KTextEditor::Cursor cAfter = pasteLocation;
     const int lineCount = pastedText.count(QLatin1Char('\n')) + 1;

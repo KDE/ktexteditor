@@ -36,12 +36,12 @@ public:
      * Attempts to find range expression for vi command
      * @returns range sub string of passed command or empty if not found
      */
-    QString parseRangeString(const QString &command) const;
+    static QString parseRangeString(const QString &command);
 
 private:
     int calculatePosition(const QString &string) const;
 
-    bool matchLineNumber(const QString &line, QList<int> &values) const;
+    static bool matchLineNumber(const QString &line, QList<int> &values);
     bool matchLastLine(const QString &line, QList<int> &values) const;
     bool matchThisLine(const QString &line, QList<int> &values) const;
     bool matchMark(const QString &line, QList<int> &values) const;

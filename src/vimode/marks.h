@@ -55,7 +55,7 @@ public:
 
 private:
     void syncViMarksAndBookmarks();
-    bool isShowable(const QChar &mark);
+    static bool isShowable(const QChar &mark);
 
     void setMark(const QChar &mark, const KTextEditor::Cursor pos);
 

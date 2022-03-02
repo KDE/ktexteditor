@@ -35,8 +35,8 @@ public:
 
 private:
     int readMacroCompletions(const QChar &reg, const QStringList &encodedMacroCompletions, int macroCompletionIndex);
-    QString encodeMacroCompletionForConfig(const Completion &completionForMacro) const;
-    Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
+    static QString encodeMacroCompletionForConfig(const Completion &completionForMacro);
+    static Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
 
 private:
     QHash<QChar, QString> m_macros;

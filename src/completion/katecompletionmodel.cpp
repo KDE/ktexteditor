@@ -360,7 +360,7 @@ int KateCompletionModel::columnCount(const QModelIndex &) const
     return isColumnMergingEnabled() && !m_columnMerges.isEmpty() ? m_columnMerges.count() : KTextEditor::CodeCompletionModel::ColumnCount;
 }
 
-KateCompletionModel::ModelRow KateCompletionModel::modelRowPair(const QModelIndex &index) const
+KateCompletionModel::ModelRow KateCompletionModel::modelRowPair(const QModelIndex &index)
 {
     return qMakePair(static_cast<CodeCompletionModel *>(const_cast<QAbstractItemModel *>(index.model())), index);
 }
@@ -1431,7 +1431,7 @@ void KateCompletionModel::setAccessIncludeSignalSlot(bool include)
     }
 }
 
-int KateCompletionModel::countBits(int value) const
+int KateCompletionModel::countBits(int value)
 {
     int count = 0;
     for (int i = 1; i; i <<= 1) {
@@ -2047,7 +2047,7 @@ void KateCompletionModel::updateBestMatches()
     hideOrShowGroup(m_bestMatches);
 }
 
-void KateCompletionModel::rowSelected(const QModelIndex & /*row*/)
+void KateCompletionModel::rowSelected(const QModelIndex & /*row*/) const
 {
     ///@todo delay this
     int rc = widget()->argumentHintModel()->rowCount(QModelIndex());

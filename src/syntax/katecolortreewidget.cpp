@@ -62,7 +62,7 @@ public:
         setData(2, Qt::ToolTipRole, tooltip);
     }
 
-    QString key()
+    QString key() const
     {
         return m_colorItem.key;
     }

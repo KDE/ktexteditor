@@ -65,7 +65,7 @@ KTextEditor::Document *KateUndoManager::document()
     return m_document;
 }
 
-void KateUndoManager::viewCreated(KTextEditor::Document *, KTextEditor::View *newView)
+void KateUndoManager::viewCreated(KTextEditor::Document *, KTextEditor::View *newView) const
 {
     connect(newView, &KTextEditor::View::cursorPositionChanged, this, &KateUndoManager::undoCancel);
 }

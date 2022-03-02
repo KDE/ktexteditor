@@ -107,7 +107,7 @@ private:
      * multiple lines even after replacing "\s" with "[ \t]"; otherwise it's set to false
      * \return the modified pattern
      */
-    QString repairPattern(const QString &pattern, bool &stillMultiLine);
+    static QString repairPattern(const QString &pattern, bool &stillMultiLine);
 
 private:
     const KTextEditor::Document *const m_document;
