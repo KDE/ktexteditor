@@ -5745,7 +5745,7 @@ QList<QPair<KTextEditor::MovingRange *, QString>> KTextEditor::DocumentPrivate::
 
 void KTextEditor::DocumentPrivate::clearDictionaryRanges()
 {
-    for (QList<QPair<KTextEditor::MovingRange *, QString>>::iterator i = m_dictionaryRanges.begin(); i != m_dictionaryRanges.end(); ++i) {
+    for (auto i = m_dictionaryRanges.cbegin(); i != m_dictionaryRanges.cend(); ++i) {
         delete (*i).first;
     }
     m_dictionaryRanges.clear();

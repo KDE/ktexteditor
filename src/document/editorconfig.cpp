@@ -103,7 +103,7 @@ int EditorConfig::parse()
             QStringList eols;
 
             // NOTE: EOLs are declared in Kate::TextBuffer::EndOfLineMode
-            eols << QLatin1String("lf") << QLatin1String("crlf") << QLatin1String("cr");
+            eols << QStringLiteral("lf") << QStringLiteral("crlf") << QStringLiteral("cr");
 
             if ((intValue = eols.indexOf(value)) != -1) {
                 m_document->config()->setEol(intValue);

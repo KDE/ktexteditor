@@ -38,9 +38,9 @@ void SwapDiffCreator::viewDiff()
     }
 
     // create all needed tempfiles
-    m_originalFile.setFileTemplate(QDir::temp().filePath(QLatin1String("katepart_XXXXXX.original")));
-    m_recoveredFile.setFileTemplate(QDir::temp().filePath(QLatin1String("katepart_XXXXXX.recovered")));
-    m_diffFile.setFileTemplate(QDir::temp().filePath(QLatin1String("katepart_XXXXXX.diff")));
+    m_originalFile.setFileTemplate(QDir::temp().filePath(QStringLiteral("katepart_XXXXXX.original")));
+    m_recoveredFile.setFileTemplate(QDir::temp().filePath(QStringLiteral("katepart_XXXXXX.recovered")));
+    m_diffFile.setFileTemplate(QDir::temp().filePath(QStringLiteral("katepart_XXXXXX.diff")));
 
     if (!m_originalFile.open() || !m_recoveredFile.open() || !m_diffFile.open()) {
         qCWarning(LOG_KTE) << "Can't open temporary files needed for diffing";
