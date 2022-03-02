@@ -197,7 +197,8 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     /* Prepare list of highlighting modes */
     QStringList hls;
     hls.reserve(KateHlManager::self()->modeList().size());
-    for (const auto &hl : KateHlManager::self()->modeList()) {
+    const auto modeList = KateHlManager::self()->modeList();
+    for (const auto &hl : modeList) {
         hls << hl.name();
     }
 

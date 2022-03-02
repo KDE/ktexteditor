@@ -3971,7 +3971,8 @@ QVarLengthArray<KateInlineNoteData, 8> KTextEditor::ViewPrivate::inlineNotes(int
     QVarLengthArray<KateInlineNoteData, 8> allInlineNotes;
     for (KTextEditor::InlineNoteProvider *provider : m_inlineNoteProviders) {
         int index = 0;
-        for (auto column : provider->inlineNotes(line)) {
+        const auto columns = provider->inlineNotes(line);
+        for (int column : columns) {
             const bool underMouse = Cursor(line, column) == m_viewInternal->m_activeInlineNote.m_position;
             KateInlineNoteData note =
                 {provider, this, {line, column}, index, underMouse, m_viewInternal->renderer()->currentFont(), m_viewInternal->renderer()->lineHeight()};

@@ -74,7 +74,8 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         auto &properties = m_properties[propertiesIndex];
         properties.definition = includedDefinition;
         properties.emptyLines.reserve(includedDefinition.foldingIgnoreList().size());
-        for (const auto &emptyLine : includedDefinition.foldingIgnoreList()) {
+        const auto foldingIgnoreList = includedDefinition.foldingIgnoreList();
+        for (const auto &emptyLine : foldingIgnoreList) {
             properties.emptyLines.push_back(QRegularExpression(emptyLine, QRegularExpression::UseUnicodePropertiesOption));
         }
         properties.singleLineCommentMarker = includedDefinition.singleLineCommentMarker();
@@ -84,14 +85,16 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         properties.multiLineCommentEnd = multiLineComment.second;
 
         // collect character characters
-        for (const auto &enc : includedDefinition.characterEncodings()) {
+        const auto encodings = includedDefinition.characterEncodings();
+        for (const auto &enc : encodings) {
             properties.characterEncodingsPrefixStore.addPrefix(enc.second);
             properties.characterEncodings[enc.second] = enc.first;
             properties.reverseCharacterEncodings[enc.first] = enc.second;
         }
 
         // collect formats
-        for (const auto &format : includedDefinition.formats()) {
+        const auto formats = includedDefinition.formats();
+        for (const auto &format : formats) {
             // register format id => internal attributes, we want no clashs
             const auto nextId = m_formats.size();
             m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId));
@@ -437,7 +440,8 @@ QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate *
     const auto &def = m_propertiesForFormat.at(attributeForLocation(doc, cursor))->definition;
     QStringList keywords;
     keywords.reserve(def.keywordLists().size());
-    for (const auto &keylist : def.keywordLists()) {
+    const auto keyWordLists = def.keywordLists();
+    for (const auto &keylist : keyWordLists) {
         keywords += def.keywordList(keylist);
     }
     return keywords;

@@ -595,7 +595,7 @@ void KateCompletionModel::createGroups()
 
     // since notifyModel = false above, we just appended the data as is,
     // we sort it now
-    for (auto g : groups) {
+    for (auto g : qAsConst(groups)) {
         std::sort(g->prefilter.begin(), g->prefilter.end());
         std::sort(g->filtered.begin(), g->filtered.end());
     }

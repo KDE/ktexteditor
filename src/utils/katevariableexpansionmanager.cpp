@@ -380,7 +380,7 @@ void KateVariableExpansionManager::showDialog(const QVector<QWidget *> &widgets,
     }
 
     // add provided variables...
-    for (const auto &var : vars) {
+    for (const auto &var : qAsConst(vars)) {
         if (var.isValid()) {
             dlg->addVariable(var);
         }

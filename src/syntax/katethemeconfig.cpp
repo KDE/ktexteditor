@@ -691,7 +691,8 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
 
     headerLayout->addStretch();
 
-    for (const auto &hl : KateHlManager::self()->modeList()) {
+    const auto modeList = KateHlManager::self()->modeList();
+    for (const auto &hl : modeList) {
         const auto section = hl.translatedSection();
         if (!section.isEmpty()) {
             hlCombo->addItem(section + QLatin1Char('/') + hl.translatedName());

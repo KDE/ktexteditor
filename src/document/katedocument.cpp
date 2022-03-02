@@ -1781,7 +1781,8 @@ QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
     // if that is empty, we will try to get the url of the last used view, we assume some properly ordered views() list is around
     QUrl startUrl = url();
     if (auto mainWindow = KTextEditor::Editor::instance()->application()->activeMainWindow(); mainWindow && !startUrl.isValid()) {
-        for (auto view : mainWindow->views()) {
+        const auto views = mainWindow->views();
+        for (auto view : views) {
             if (view->document()->url().isValid()) {
                 // we remove the filename, otherwise we propose to save as some other already existing file, that is confusing
                 startUrl = view->document()->url().adjusted(QUrl::RemoveFilename);

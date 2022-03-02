@@ -352,7 +352,8 @@ void KateStatusBar::updateDictionary()
         m_dictionary->setText(newDict.section(QLatin1Char('-'), 0, 0));
         // For maximum user clearness, change the checked menu option
         m_dictionaryGroup->blockSignals(true);
-        for (auto a : m_dictionaryGroup->actions()) {
+        const auto acts = m_dictionaryGroup->actions();
+        for (auto a : acts) {
             if (a->data().toString() == newDict) {
                 a->setChecked(true);
                 found = true;
@@ -436,7 +437,8 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w)
     QAction *m1 = nullptr;
     bool found = false;
     // linear search should be fast enough here, no additional hash
-    for (QAction *action : group->actions()) {
+    const auto acts = group->actions();
+    for (QAction *action : acts) {
         int val = action->data().toInt();
         if (val == -1) {
             m1 = action;
