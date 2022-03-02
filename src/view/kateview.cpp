@@ -3482,7 +3482,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     } else if (key == QLatin1String("font") && value.canConvert(QVariant::Font)) {
         renderer()->config()->setFont(value.value<QFont>());
     } else if (key == QLatin1String("theme") && value.type() == QVariant::String) {
-        renderer()->config()->setSchema(value.value<QString>());
+        renderer()->config()->setSchema(value.toString());
     }
 }
 
