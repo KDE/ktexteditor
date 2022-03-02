@@ -201,31 +201,40 @@ void KateViewTest::testSelection()
     const QPoint afterC = view->cursorToCoordinate(Cursor(2, 1));
 
     // click after A
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me = new QMouseEvent(QEvent::MouseButtonPress, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me);
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me1 = new QMouseEvent(QEvent::MouseButtonRelease, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me1);
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
+
     // drag to right
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me2 = new QMouseEvent(QEvent::MouseButtonPress, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me2);
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseMove, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me3 = new QMouseEvent(QEvent::MouseMove, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me3);
 
-    QCoreApplication::sendEvent(internalView,
-                                new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me4 = new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me4);
 
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     QVERIFY(!view->selection());
 
     // click after C
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterC, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me5 = new QMouseEvent(QEvent::MouseButtonPress, afterC, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me5);
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterC, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
+    auto me6 = new QMouseEvent(QEvent::MouseButtonRelease, afterC, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QCoreApplication::sendEvent(internalView, me6);
 
     QCOMPARE(view->cursorPosition(), Cursor(2, 1));
     // shift+click after B
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterB, Qt::LeftButton, Qt::LeftButton, Qt::ShiftModifier));
+    auto me7 = new QMouseEvent(QEvent::MouseButtonPress, afterB, Qt::LeftButton, Qt::LeftButton, Qt::ShiftModifier);
+    QCoreApplication::sendEvent(internalView, me7);
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterB, Qt::LeftButton, Qt::LeftButton, Qt::ShiftModifier));
+    auto me8 = new QMouseEvent(QEvent::MouseButtonRelease, afterB, Qt::LeftButton, Qt::LeftButton, Qt::ShiftModifier);
+    QCoreApplication::sendEvent(internalView, me8);
 
     QCOMPARE(view->cursorPosition(), Cursor(1, 1));
     QCOMPARE(view->selectionRange(), Range(1, 1, 2, 1));
