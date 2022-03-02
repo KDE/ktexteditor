@@ -29,7 +29,7 @@ class KTEXTEDITOR_EXPORT KateRegExpSearch
 {
 public:
     explicit KateRegExpSearch(const KTextEditor::Document *document);
-    ~KateRegExpSearch();
+    ~KateRegExpSearch() = default;
 
     //
     // KTextEditor::SearchInterface stuff

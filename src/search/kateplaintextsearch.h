@@ -28,7 +28,7 @@ class KTEXTEDITOR_EXPORT KatePlainTextSearch
 {
 public:
     explicit KatePlainTextSearch(const KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity, bool wholeWords);
-    ~KatePlainTextSearch();
+    ~KatePlainTextSearch() = default;
 
 public:
     /**
