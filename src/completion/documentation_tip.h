@@ -9,7 +9,7 @@
 #include <QStackedWidget>
 #include <QTextBrowser>
 
-class DocTip : public QFrame
+class DocTip final : public QFrame
 {
     Q_OBJECT
 public:

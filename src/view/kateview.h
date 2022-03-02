@@ -75,12 +75,12 @@ namespace KTextEditor
 //
 // Kate KTextEditor::View class ;)
 //
-class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
-                                       public KTextEditor::TextHintInterface,
-                                       public KTextEditor::CodeCompletionInterfaceV2,
-                                       public KTextEditor::ConfigInterface,
-                                       public KTextEditor::InlineNoteInterface,
-                                       public KTextEditor::AnnotationViewInterfaceV2
+class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View,
+                                             public KTextEditor::TextHintInterface,
+                                             public KTextEditor::CodeCompletionInterfaceV2,
+                                             public KTextEditor::ConfigInterface,
+                                             public KTextEditor::InlineNoteInterface,
+                                             public KTextEditor::AnnotationViewInterfaceV2
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)

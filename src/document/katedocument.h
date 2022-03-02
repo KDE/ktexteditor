@@ -68,13 +68,13 @@ class KToggleAction;
  * @warning This file is @e private API and not part of the public
  *          KTextEditor interfaces.
  */
-class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
-                                                        public KTextEditor::MarkInterfaceV2,
-                                                        public KTextEditor::ModificationInterface,
-                                                        public KTextEditor::ConfigInterface,
-                                                        public KTextEditor::AnnotationInterface,
-                                                        public KTextEditor::MovingInterface,
-                                                        private KTextEditor::MovingRangeFeedback
+class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor::Document,
+                                                              public KTextEditor::MarkInterfaceV2,
+                                                              public KTextEditor::ModificationInterface,
+                                                              public KTextEditor::ConfigInterface,
+                                                              public KTextEditor::AnnotationInterface,
+                                                              public KTextEditor::MovingInterface,
+                                                              private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::MarkInterface)

@@ -57,7 +57,7 @@ class QScroller;
 class QScrollEvent;
 class QScrollPrepareEvent;
 
-class KTEXTEDITOR_EXPORT KateViewInternal : public QWidget
+class KTEXTEDITOR_EXPORT KateViewInternal final : public QWidget
 {
     Q_OBJECT
 

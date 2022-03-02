@@ -1024,7 +1024,7 @@ protected:
     KateViewInternal *m_vi;
 };
 
-class BoundedCursor : public CalculatingCursor
+class BoundedCursor final : public CalculatingCursor
 {
 public:
     BoundedCursor(KateViewInternal *vi)
@@ -1097,7 +1097,7 @@ public:
     }
 };
 
-class WrappingCursor : public CalculatingCursor
+class WrappingCursor final : public CalculatingCursor
 {
 public:
     WrappingCursor(KateViewInternal *vi)
@@ -1272,7 +1272,7 @@ public:
  *
  * @author Waqar Ahmed <waqar.17a@gmail.com>
  */
-class CamelCursor : public CalculatingCursor
+class CamelCursor final : public CalculatingCursor
 {
 public:
     CamelCursor(KateViewInternal *vi, const KTextEditor::Cursor c)

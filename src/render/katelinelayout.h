@@ -23,7 +23,7 @@ class DocumentPrivate;
 class KateTextLayout;
 class KateRenderer;
 
-class KateLineLayout : public QSharedData
+class KateLineLayout final : public QSharedData
 {
 public:
     explicit KateLineLayout(KateRenderer &renderer);

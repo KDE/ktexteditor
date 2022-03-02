@@ -25,18 +25,9 @@ UndoManagerTest::UndoManagerTest()
     KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
-class UndoManagerTest::TestDocument : public KTextEditor::DocumentPrivate
-{
-public:
-    TestDocument()
-        : KTextEditor::DocumentPrivate()
-    {
-    }
-};
-
 void UndoManagerTest::testUndoRedoCount()
 {
-    TestDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KateUndoManager *undoManager = doc.undoManager();
 
     // no undo/redo items at the beginning
@@ -89,7 +80,7 @@ void UndoManagerTest::testUndoRedoCount()
 
 void UndoManagerTest::testSafePoint()
 {
-    TestDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KateUndoManager *undoManager = doc.undoManager();
 
     doc.insertText(Cursor(0, 0), QLatin1String("a"));
@@ -135,7 +126,7 @@ void UndoManagerTest::testSafePoint()
 
 void UndoManagerTest::testCursorPosition()
 {
-    TestDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setText(
@@ -161,7 +152,7 @@ void UndoManagerTest::testCursorPosition()
 
 void UndoManagerTest::testSelectionUndo()
 {
-    TestDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setText(
@@ -194,7 +185,7 @@ void UndoManagerTest::testSelectionUndo()
 
 void UndoManagerTest::testUndoWordWrapBug301367()
 {
-    TestDocument doc;
+    KTextEditor::DocumentPrivate doc;
     doc.setWordWrap(true);
     doc.setWordWrapAt(20);
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
@@ -231,7 +222,7 @@ void UndoManagerTest::testUndoWordWrapBug301367()
 
 void UndoManagerTest::testUndoIndentBug373009()
 {
-    TestDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setMode("C");

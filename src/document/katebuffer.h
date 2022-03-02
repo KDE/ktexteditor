@@ -27,7 +27,7 @@ class KateHighlighting;
  * @author Waldo Bastian <bastian@kde.org>
  * @author Christoph Cullmann <cullmann@kde.org>
  */
-class KTEXTEDITOR_EXPORT KateBuffer : public Kate::TextBuffer
+class KTEXTEDITOR_EXPORT KateBuffer final : public Kate::TextBuffer
 {
     Q_OBJECT
 
