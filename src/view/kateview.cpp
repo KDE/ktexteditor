@@ -3917,7 +3917,7 @@ KateAbstractInputMode *KTextEditor::ViewPrivate::currentInputMode() const
 
 void KTextEditor::ViewPrivate::toggleInputMode()
 {
-    if (QAction *a = dynamic_cast<QAction *>(sender())) {
+    if (QAction *a = qobject_cast<QAction *>(sender())) {
         setInputMode(static_cast<KTextEditor::View::InputMode>(a->data().toInt()));
     }
 }

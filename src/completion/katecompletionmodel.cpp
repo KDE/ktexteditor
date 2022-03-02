@@ -1640,7 +1640,7 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
         for (const Item &item : std::as_const(group->filtered)) {
             if (item.haveExactMatch()) {
                 KTextEditor::CodeCompletionModelControllerInterface *iface3 =
-                    dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
+                    qobject_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
                 bool hide = false;
                 if (!iface3) {
                     hide = true;
@@ -1911,7 +1911,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 
     QVector<KTextEditor::CodeCompletionModel *> needShadowing;
     for (KTextEditor::CodeCompletionModel *model : std::as_const(m_completionModels)) {
-        KTextEditor::CodeCompletionModelControllerInterface *v4 = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);
+        KTextEditor::CodeCompletionModelControllerInterface *v4 = qobject_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);
         if (v4 && v4->shouldHideItemsWithEqualNames()) {
             needShadowing.push_back(model);
         }

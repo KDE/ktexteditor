@@ -47,7 +47,7 @@ protected:
     KateArgumentHintModel *model() const
     {
         auto tree = this->tree();
-        return static_cast<KateArgumentHintModel *>(tree->model());
+        return tree->model();
     }
 
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
