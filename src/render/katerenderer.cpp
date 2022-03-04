@@ -710,7 +710,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
 
             // draw an open box to mark non-breaking spaces
-            const QString &text = range->textLine()->string();
+            const QString &text = range->textLine()->text();
             int y = lineHeight() * i + fm.ascent() - fm.strikeOutPos();
             int nbSpaceIndex = text.indexOf(nbSpaceChar, line.lineLayout().xToCursor(xStart));
 
@@ -1026,9 +1026,9 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     QTextLayout *l = lineLayout->layout();
     if (!l) {
-        l = new QTextLayout(textLine->string(), m_font);
+        l = new QTextLayout(textLine->text(), m_font);
     } else {
-        l->setText(textLine->string());
+        l->setText(textLine->text());
         l->setFont(m_font);
     }
 
@@ -1151,7 +1151,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 // 5) isStringRightToLeft() kicks ass
 bool KateRenderer::isLineRightToLeft(KateLineLayoutPtr lineLayout) const
 {
-    QString s = lineLayout->textLine()->string();
+    QString s = lineLayout->textLine()->text();
     int i = 0;
 
     // borrowed from QString::updateProperties()

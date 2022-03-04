@@ -4199,7 +4199,7 @@ QVariant KateViewInternal::inputMethodQuery(Qt::InputMethodQuery query) const
 
     case Qt::ImSurroundingText:
         if (Kate::TextLine l = doc()->kateTextLine(m_cursor.line())) {
-            return l->string();
+            return l->text();
         } else {
             return QString();
         }

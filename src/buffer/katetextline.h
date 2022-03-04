@@ -274,15 +274,6 @@ public:
     }
 
     /**
-     * Returns the complete text line (as a QString reference).
-     * @return text of this line, read-only
-     */
-    const QString &string() const
-    {
-        return m_text;
-    }
-
-    /**
      * Returns the substring with \e length beginning at the given \e column.
      * @param column start column of text to return
      * @param length length of text to return

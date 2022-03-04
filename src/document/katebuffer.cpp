@@ -198,9 +198,9 @@ bool KateBuffer::canEncode()
     }
 
     for (int i = 0; i < lines(); i++) {
-        if (!codec->canEncode(line(i)->string())) {
+        if (!codec->canEncode(line(i)->text())) {
             qCDebug(LOG_KTE) << QLatin1String("ENC NAME: ") << codec->name();
-            qCDebug(LOG_KTE) << QLatin1String("STRING LINE: ") << line(i)->string();
+            qCDebug(LOG_KTE) << QLatin1String("STRING LINE: ") << line(i)->text();
             qCDebug(LOG_KTE) << QLatin1String("ENC WORKING: FALSE");
 
             return false;

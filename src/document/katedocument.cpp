@@ -497,7 +497,7 @@ QString KTextEditor::DocumentPrivate::text(const KTextEditor::Range &range, bool
                 } else if (i == range.end().line()) {
                     s.append(textLine->string(0, range.end().column()));
                 } else {
-                    s.append(textLine->string());
+                    s.append(textLine->text());
                 }
             } else {
                 KTextEditor::Range subRange = rangeOnLine(range, i);
@@ -612,7 +612,7 @@ QStringList KTextEditor::DocumentPrivate::textLines(const KTextEditor::Range &ra
                 } else if (i == range.end().line()) {
                     ret << textLine->string(0, range.end().column());
                 } else {
-                    ret << textLine->string();
+                    ret << textLine->text();
                 }
             } else {
                 KTextEditor::Range subRange = rangeOnLine(range, i);
@@ -632,7 +632,7 @@ QString KTextEditor::DocumentPrivate::line(int line) const
         return QString();
     }
 
-    return l->string();
+    return l->text();
 }
 
 bool KTextEditor::DocumentPrivate::setText(const QString &s)
@@ -1119,7 +1119,7 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
 
             // take tabs into account here, too
             int x = 0;
-            const QString &t = l->string();
+            const QString &t = l->text();
             int z2 = 0;
             for (; z2 < l->length(); z2++) {
                 static const QChar tabChar(QLatin1Char('\t'));
@@ -1345,7 +1345,7 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
 
     editStart();
 
-    QString oldText = l->string().mid(col, len);
+    QString oldText = l->string(col, len);
 
     m_undoManager->slotTextRemoved(line, col, oldText);
 

@@ -137,7 +137,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
     // a bit ugly: we set the line to highlight as member to be able to update its stats in the applyFormat and applyFolding member functions
     m_textLineToHighlight = textLine;
     const KSyntaxHighlighting::State initialState(!prevLine ? KSyntaxHighlighting::State() : prevLine->highlightingState());
-    const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
+    const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->text(), initialState);
     m_textLineToHighlight = nullptr;
 
     // update highlighting state if needed
@@ -377,7 +377,7 @@ QStringList KateHighlighting::getEmbeddedHighlightingModes() const
 
 bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
 {
-    const QString &txt = textline->string();
+    const QString &txt = textline->text();
     if (txt.isEmpty()) {
         return true;
     }

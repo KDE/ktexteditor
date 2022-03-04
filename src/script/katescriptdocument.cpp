@@ -215,7 +215,7 @@ KTextEditor::Cursor KateScriptDocument::rfindInternal(int line, int column, cons
         }
 
         int foundAt;
-        while ((foundAt = QStringView(textLine->string()).left(cursor.column()).lastIndexOf(text)) >= 0) {
+        while ((foundAt = QStringView(textLine->text()).left(cursor.column()).lastIndexOf(text)) >= 0) {
             bool hasStyle = true;
             if (attribute != -1) {
                 const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(textLine->attribute(foundAt));
