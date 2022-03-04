@@ -108,18 +108,17 @@ public:
     /**
      * Construct an empty text line.
      */
-    TextLineData();
+    TextLineData() = default;
 
     /**
      * Construct an text line with given text.
      * @param text text to use for this line
      */
-    explicit TextLineData(const QString &text);
-
-    /**
-     * Destruct the text line
-     */
-    ~TextLineData();
+    explicit TextLineData(const QString &text)
+        : m_text(text)
+        , m_flags(0)
+    {
+    }
 
     /**
      * Accessor to the text contained in this line.
