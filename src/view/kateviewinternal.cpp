@@ -2041,6 +2041,7 @@ void KateViewInternal::cursorDown(bool sel)
 
 void KateViewInternal::cursorToMatchingBracket(bool sel)
 {
+    view()->clearSecondaryCursors();
     KTextEditor::Cursor c = findMatchingBracket();
 
     if (c.isValid()) {
@@ -2051,6 +2052,7 @@ void KateViewInternal::cursorToMatchingBracket(bool sel)
 
 void KateViewInternal::topOfView(bool sel)
 {
+    view()->clearSecondaryCursors();
     KTextEditor::Cursor c = viewLineOffset(startPos(), m_minLinesVisible);
     updateSelection(toRealCursor(c), sel);
     updateCursor(toRealCursor(c));
@@ -2058,6 +2060,7 @@ void KateViewInternal::topOfView(bool sel)
 
 void KateViewInternal::bottomOfView(bool sel)
 {
+    view()->clearSecondaryCursors();
     KTextEditor::Cursor c = viewLineOffset(endPos(), -m_minLinesVisible);
     updateSelection(toRealCursor(c), sel);
     updateCursor(toRealCursor(c));
@@ -2103,6 +2106,7 @@ void KateViewInternal::pageUp(bool sel, bool half)
         view()->completionWidget()->pageUp();
         return;
     }
+    view()->clearSecondaryCursors();
 
     // remember the view line and x pos
     int viewLine = cache()->displayViewLine(m_displayCursor);
@@ -2146,6 +2150,8 @@ void KateViewInternal::pageDown(bool sel, bool half)
         view()->completionWidget()->pageDown();
         return;
     }
+
+    view()->clearSecondaryCursors();
 
     // remember the view line
     int viewLine = cache()->displayViewLine(m_displayCursor);
@@ -2220,6 +2226,7 @@ void KateViewInternal::top(bool sel)
 
     newCursor = renderer()->xToCursor(cache()->textLayout(newCursor), m_preservedX, !view()->wrapCursor());
 
+    view()->clearSecondaryCursors();
     updateSelection(newCursor, sel);
     updateCursor(newCursor);
 }
@@ -2230,6 +2237,7 @@ void KateViewInternal::bottom(bool sel)
 
     newCursor = renderer()->xToCursor(cache()->textLayout(newCursor), m_preservedX, !view()->wrapCursor());
 
+    view()->clearSecondaryCursors();
     updateSelection(newCursor, sel);
     updateCursor(newCursor);
 }
@@ -2241,6 +2249,7 @@ void KateViewInternal::top_home(bool sel)
         return;
     }
 
+    view()->clearSecondaryCursors();
     KTextEditor::Cursor c(0, 0);
     updateSelection(c, sel);
     updateCursor(c);
@@ -2253,6 +2262,7 @@ void KateViewInternal::bottom_end(bool sel)
         return;
     }
 
+    view()->clearSecondaryCursors();
     KTextEditor::Cursor c(doc()->lastLine(), doc()->lineLength(doc()->lastLine()));
     updateSelection(c, sel);
     updateCursor(c);
