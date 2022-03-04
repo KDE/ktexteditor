@@ -3186,6 +3186,12 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
                                 KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
         view->setSelection(selectionRange);
     } else {
+        // handle multi cursor input
+        const auto sc = view->secondaryCursors();
+        for (auto c : sc) {
+            insertText(c, chars);
+        }
+        // then our normal cursor
         insertText(view->cursorPosition(), chars);
     }
 
@@ -3235,7 +3241,13 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     // end edit session here, to have updated HL in userTypedChar!
     editEnd();
 
-    // trigger indentation
+    // indentation for multi cursors
+    const auto secondaryCursors = view->secondaryCursors();
+    for (auto c : secondaryCursors) {
+        m_indenter->userTypedChar(view, c, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
+    }
+
+    // trigger indentation for primary
     KTextEditor::Cursor b(view->cursorPosition());
     m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
 

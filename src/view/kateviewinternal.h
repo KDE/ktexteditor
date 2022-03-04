@@ -184,6 +184,13 @@ public:
     void top_home(bool sel = false);
     void bottom_end(bool sel = false);
 
+private:
+    // Takes as input @p c and applies the home command on it
+    KTextEditor::Cursor home_internal(KTextEditor::Cursor c);
+    // Takes as input @p c and applies the end command on it
+    KTextEditor::Cursor end_internal(KTextEditor::Cursor c);
+
+public:
     /**
      * Accessor to the current caret position
      * @return position of the caret as @c KTextEditor::Cursor
@@ -283,6 +290,7 @@ private:
 
     int lineToY(int viewLine) const;
 
+    void updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos);
     void updateSelection(const KTextEditor::Cursor, bool keepSel);
     void setSelection(KTextEditor::Range);
     void moveCursorToSelectionEdge();
@@ -393,9 +401,13 @@ private:
     KateLayoutCache *m_layoutCache;
 
     // convenience methods
-    KateTextLayout currentLayout() const;
-    KateTextLayout previousLayout() const;
-    KateTextLayout nextLayout() const;
+
+    /// returns layout for the line c.line()
+    KateTextLayout currentLayout(KTextEditor::Cursor c) const;
+    // returns layout for the line previous to @p c
+    KateTextLayout previousLayout(KTextEditor::Cursor c) const;
+    // returns layout for the line next to @p c
+    KateTextLayout nextLayout(KTextEditor::Cursor c) const;
 
     // find the cursor offset by (offset) view lines from a cursor.
     // when keepX is true, the column position will be calculated based on the x

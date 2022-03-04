@@ -2263,6 +2263,19 @@ bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
     return true;
 }
 
+bool KTextEditor::ViewPrivate::setSecondarySelections()
+{
+    // clear existing
+    //     qDeleteAll(m_secondarySelections);
+    //     m_secondarySelections.clear();
+
+    //     const auto primarySelection = m_selection.toRange();
+    //     primarySelection.
+    //     for (auto *c : qAsConst(m_secondaryCursors)) {
+    //     }
+    return true;
+}
+
 bool KTextEditor::ViewPrivate::clearSelection()
 {
     return clearSelection(true);
@@ -2614,6 +2627,47 @@ bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
     return true;
 }
 
+bool KTextEditor::ViewPrivate::toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor)
+{
+    for (const auto moving : qAsConst(m_secondaryCursors)) {
+        if (moving->toCursor() == cursor) {
+            m_secondaryCursors.removeAll(moving);
+            delete moving;
+            return false;
+        }
+    }
+    auto moving = m_doc->newMovingCursor(cursor);
+    m_secondaryCursors.append(moving);
+
+    qDebug() << "new list of secondary cursors:" << m_secondaryCursors;
+
+    return true;
+}
+
+void KTextEditor::ViewPrivate::clearSecondaryCursors()
+{
+    for (auto *c : qAsConst(m_secondaryCursors)) {
+        tagLine(c->toCursor());
+    }
+    qDeleteAll(m_secondaryCursors);
+    m_secondaryCursors.clear();
+    for (auto r : qAsConst(m_secondarySelections)) {
+        delete r.range;
+    }
+    //     qDeleteAll(m_secondarySelections);
+    m_secondarySelections.clear();
+}
+
+QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::secondaryCursors() const
+{
+    QVector<KTextEditor::Cursor> cursors;
+    cursors.reserve(m_secondaryCursors.size());
+    for (const auto moving : qAsConst(m_secondaryCursors)) {
+        cursors.append(moving->toCursor());
+    }
+    return cursors;
+}
+
 bool KTextEditor::ViewPrivate::isCompletionActive() const
 {
     return completionWidget()->isCompletionActive();
@@ -2918,6 +2972,12 @@ void KTextEditor::ViewPrivate::noIndentNewline()
 
 void KTextEditor::ViewPrivate::backspace()
 {
+    // FIXME: the function should return new position
+    //  and not modify the view's cursor itself
+    //     for (auto *c : qAsConst(m_secondaryCursors)) {
+    //         doc()->backspace(this, c->toCursor());
+    //     }
+
     doc()->backspace(this, cursorPosition());
 }
 

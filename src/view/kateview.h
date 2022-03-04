@@ -193,6 +193,18 @@ public:
     bool mouseTrackingEnabled() const override;
     bool setMouseTrackingEnabled(bool enable) override;
 
+    QVector<KTextEditor::Cursor> secondaryCursors() const;
+    bool toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor);
+    void clearSecondaryCursors();
+
+private:
+    QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
+    struct SecondarySelection {
+        KTextEditor::Cursor anchor;
+        Kate::TextRange *range;
+    };
+    QVector<SecondarySelection> m_secondarySelections;
+
 private:
     void notifyMousePositionChanged(const KTextEditor::Cursor newPosition);
 
@@ -305,6 +317,7 @@ private Q_SLOTS:
     //
 public Q_SLOTS:
     bool setSelection(const KTextEditor::Range &selection) override;
+    bool setSecondarySelections();
 
     bool removeSelection() override
     {
