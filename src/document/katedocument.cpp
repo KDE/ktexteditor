@@ -917,11 +917,7 @@ int KTextEditor::DocumentPrivate::totalCharacters() const
     int l = 0;
 
     for (int i = 0; i < m_buffer->count(); ++i) {
-        Kate::TextLine line = m_buffer->plainLine(i);
-
-        if (line) {
-            l += line->length();
-        }
+        l += m_buffer->lineLength(i);
     }
 
     return l;
@@ -1568,8 +1564,6 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     // insert text
     m_buffer->insertText(KTextEditor::Cursor(line, 0), s);
 
-    Kate::TextLine tl = m_buffer->line(line);
-
     QVarLengthArray<KTextEditor::Mark *, 8> list;
     for (const auto &mark : std::as_const(m_marks)) {
         if (mark->line >= line) {
@@ -1590,7 +1584,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
         Q_EMIT marksChanged(this);
     }
 
-    KTextEditor::Range rangeInserted(line, 0, line, tl->length());
+    KTextEditor::Range rangeInserted(line, 0, line, m_buffer->lineLength(line));
 
     if (line) {
         int prevLineLength = lineLength(line - 1);
@@ -1636,11 +1630,11 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
 
     // first remove text
     for (int line = to; line >= from; --line) {
-        Kate::TextLine tl = m_buffer->line(line);
-        oldText.prepend(this->line(line));
-        m_undoManager->slotLineRemoved(line, this->line(line));
+        const QString l = this->line(line);
+        oldText.prepend(l);
+        m_undoManager->slotLineRemoved(line, l);
 
-        m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, tl->text().size())));
+        m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, l.size())));
     }
 
     // then collapse lines
@@ -3451,7 +3445,7 @@ void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTe
         return;
     }
 
-    if (c.column() < (int)m_buffer->plainLine(c.line())->length()) {
+    if (c.column() < m_buffer->lineLength(c.line())) {
         KTextEditor::Cursor endCursor(c.line(), view->textLayout(c)->nextCursorPosition(c.column()));
         removeText(KTextEditor::Range(c, endCursor));
     } else if (c.line() < lastLine()) {
@@ -3723,7 +3717,7 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSingleLine(int line, int
     insertText(KTextEditor::Cursor(line, 0), startCommentMark);
 
     // Go to the end of the line
-    const int col = m_buffer->plainLine(line)->length();
+    const int col = m_buffer->lineLength(line);
 
     // Add the stop comment mark
     insertText(KTextEditor::Cursor(line, col), stopCommentMark);
@@ -3879,7 +3873,7 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEdit
         --ec;
     } else if (el > 0) {
         --el;
-        ec = m_buffer->plainLine(el)->length() - 1;
+        ec = m_buffer->lineLength(el) - 1;
     }
 
     const int startCommentLen = startComment.length();
