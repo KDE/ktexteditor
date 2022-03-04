@@ -166,21 +166,7 @@ public:
     inline QChar at(int column) const
     {
         if (column >= 0 && column < m_text.length()) {
-            return m_text[column];
-        }
-
-        return QChar();
-    }
-
-    /**
-     * Same as at().
-     * @param column column you want char for
-     * @return char at given column or QChar()
-     */
-    inline QChar operator[](int column) const
-    {
-        if (column >= 0 && column < m_text.length()) {
-            return m_text[column];
+            return m_text.at(column);
         }
 
         return QChar();
