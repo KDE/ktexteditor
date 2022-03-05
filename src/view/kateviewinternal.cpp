@@ -1869,8 +1869,10 @@ void KateViewInternal::cursorUp(bool sel)
 
     m_preserveX = true;
 
-    // Multi cursors
-    QVarLengthArray<KTextEditor::Cursor> cursorsToRemove;
+    // Handle Multi cursors
+
+    // usually this will have only one element, rarely
+    std::vector<KTextEditor::Cursor> cursorsToRemove;
     int i = 0;
     for (auto *c : qAsConst(view()->m_secondaryCursors)) {
         auto cursor = c->toCursor();
@@ -1880,8 +1882,28 @@ void KateViewInternal::cursorUp(bool sel)
         if (vCursor.line() == 0 && (!view()->dynWordWrap() || cache()->viewLine(cursor) == 0)) {
             // is it already at pos 0 in the doc?
             if (cursor.column() == 0) {
-                // kill this cursor
-                cursorsToRemove.push_back(cursor);
+                // kill this cursor?
+
+                // Count the number of cursors in line 0
+                int count = 0;
+                for (auto *cur : qAsConst(view()->m_secondaryCursors)) {
+                    if (toVirtualCursor(cur->toCursor()).line() == 0) {
+                        count++;
+                        // if there is more than one break
+                        if (count == 2)
+                            break;
+                    }
+                }
+
+                count += m_cursor.line() == 0;
+
+                // if there are more than one cursors in line,
+                // we need to remove this one
+                if (count > 1) {
+                    cursorsToRemove.push_back(cursor);
+                } else {
+                    tagLine(vCursor);
+                }
             } else {
                 auto newPos = home_internal(cursor);
                 c->setPosition(newPos);
@@ -1912,18 +1934,7 @@ void KateViewInternal::cursorUp(bool sel)
         tagLines(newVcursor.line(), vCursor.line());
         i++;
     }
-
-    for (auto cur : cursorsToRemove) {
-        auto &sec = view()->m_secondaryCursors;
-        auto it = std::find_if(sec.begin(), sec.end(), [cur](KTextEditor::MovingCursor *c) {
-            return c->toCursor() == cur;
-        });
-        if (it != sec.end()) {
-            delete *it;
-            view()->m_secondaryCursors.erase(it);
-            tagLine(toVirtualCursor(cur));
-        }
-    }
+    view()->removeSecondaryCursors(cursorsToRemove);
 
     // Normal single cursor
 
@@ -1962,7 +1973,7 @@ void KateViewInternal::cursorDown(bool sel)
 
     // Handle multiple cursors
     int i = 0;
-    QVarLengthArray<KTextEditor::Cursor> cursorsToRemove;
+    std::vector<KTextEditor::Cursor> cursorsToRemove;
     for (auto *c : qAsConst(view()->m_secondaryCursors)) {
         auto cursor = c->toCursor();
         auto vCursor = toVirtualCursor(cursor);
@@ -2004,18 +2015,7 @@ void KateViewInternal::cursorDown(bool sel)
         tagLines(vCursor.line(), vNewPos.line());
         i++;
     }
-
-    for (auto cur : cursorsToRemove) {
-        auto &sec = view()->m_secondaryCursors;
-        auto it = std::find_if(sec.begin(), sec.end(), [cur](KTextEditor::MovingCursor *c) {
-            return c->toCursor() == cur;
-        });
-        if (it != sec.end()) {
-            delete *it;
-            view()->m_secondaryCursors.erase(it);
-            tagLine(toVirtualCursor(cur));
-        }
-    }
+    view()->removeSecondaryCursors(cursorsToRemove);
 
     // Handle normal single cursor
 

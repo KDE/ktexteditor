@@ -2654,7 +2654,6 @@ void KTextEditor::ViewPrivate::clearSecondaryCursors()
     for (auto r : qAsConst(m_secondarySelections)) {
         delete r.range;
     }
-    //     qDeleteAll(m_secondarySelections);
     m_secondarySelections.clear();
 }
 
@@ -2666,6 +2665,28 @@ QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::secondaryCursors() const
         cursors.append(moving->toCursor());
     }
     return cursors;
+}
+
+void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorsToRemove)
+{
+    for (auto cur : cursorsToRemove) {
+        auto &sec = m_secondaryCursors;
+        auto it = std::find_if(sec.begin(), sec.end(), [cur](KTextEditor::MovingCursor *c) {
+            return c->toCursor() == cur;
+        });
+        if (it != sec.end()) {
+            const int idx = std::distance(sec.begin(), it);
+            // Remove selection for this cursor if there
+            if (idx < m_secondarySelections.size()) {
+                delete m_secondarySelections[idx].range;
+                m_secondarySelections.remove(idx);
+            }
+
+            delete *it;
+            m_secondaryCursors.erase(it);
+            tagLine(m_viewInternal->toVirtualCursor(cur));
+        }
+    }
 }
 
 bool KTextEditor::ViewPrivate::isCompletionActive() const

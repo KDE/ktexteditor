@@ -194,10 +194,12 @@ public:
     bool setMouseTrackingEnabled(bool enable) override;
 
     QVector<KTextEditor::Cursor> secondaryCursors() const;
-    bool toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor);
-    void clearSecondaryCursors();
 
 private:
+    bool toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor);
+    void clearSecondaryCursors();
+    void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
+
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
     struct SecondarySelection {
         KTextEditor::Cursor anchor;
