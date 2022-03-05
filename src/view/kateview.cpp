@@ -3059,7 +3059,17 @@ void KTextEditor::ViewPrivate::deleteWordLeft()
 
 void KTextEditor::ViewPrivate::keyDelete()
 {
+    doc()->editBegin();
+
+    // multi cursor
+    for (auto *c : qAsConst(m_secondaryCursors)) {
+        doc()->del(this, c->toCursor());
+    }
+
+    // primary cursor
     doc()->del(this, cursorPosition());
+
+    doc()->editEnd();
 }
 
 void KTextEditor::ViewPrivate::deleteWordRight()
