@@ -198,12 +198,19 @@ public:
     {
         return m_secondaryCursors;
     }
+    void addSecondaryCursorWithSelection(KTextEditor::Range selRange);
+
+    // Returns the last secondary selection range if available
+    // Otherwise returns m_selection
+    // Returns nothing if no selection
+    KTextEditor::Range lastSelectionRange();
 
 private:
-    bool toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor);
+    bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
     void clearSecondaryCursors();
     void clearSecondarySelections();
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
+    Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
 
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
     struct SecondarySelection {

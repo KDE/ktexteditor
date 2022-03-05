@@ -2647,12 +2647,14 @@ bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
     return true;
 }
 
-bool KTextEditor::ViewPrivate::toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor)
+bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
 {
     for (const auto moving : qAsConst(m_secondaryCursors)) {
         if (moving->toCursor() == cursor) {
-            m_secondaryCursors.removeAll(moving);
-            delete moving;
+            if (toggle) {
+                m_secondaryCursors.removeAll(moving);
+                delete moving;
+            }
             return false;
         }
     }
@@ -2709,6 +2711,62 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
             tagLine(m_viewInternal->toVirtualCursor(cur));
         }
     }
+}
+
+void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange)
+{
+    // If cursor position is the same as primary, ignore.
+    if (selRange.isEmpty() || cursorPosition() == selRange.end()) {
+        return;
+    }
+    // If we already have cursors but no selection, trigger selection
+    // because we always want both these vectors to be same
+    if (m_secondarySelections.isEmpty() && !m_secondaryCursors.isEmpty()) {
+        for (auto *c : m_secondaryCursors) {
+            const auto range = doc()->wordRangeAt(c->toCursor());
+            m_secondarySelections.append({range.start(), newSecondarySelectionRange(range)});
+            c->setPosition(range.end());
+            tagLines(range);
+        }
+    }
+
+    auto cursorPos = selRange.end();
+    addSecondaryCursorAt(cursorPos, /*toggle=*/false);
+    int last = lastDisplayedLine();
+    int first = firstDisplayedLine();
+    // Scroll if needed
+    if (cursorPos.line() > last || cursorPos.line() < first) {
+        m_viewInternal->scrollPos(cursorPos);
+    }
+    m_secondarySelections.push_back({selRange.start(), newSecondarySelectionRange(selRange)});
+    tagLines(selRange);
+    m_viewInternal->updateDirty();
+}
+
+Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEditor::Range selRange)
+{
+    constexpr auto expandBehaviour = KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight;
+    auto range = new Kate::TextRange(doc()->buffer(), selRange, expandBehaviour);
+    static KTextEditor::Attribute::Ptr selAttr;
+    if (!selAttr) {
+        selAttr = new KTextEditor::Attribute;
+        auto color = QColor::fromRgba(theme().editorColor(KSyntaxHighlighting::Theme::TextSelection));
+        selAttr->setBackground(color);
+    }
+    range->setZDepth(-999999.);
+    range->setAttribute(selAttr);
+    return range;
+}
+
+KTextEditor::Range KTextEditor::ViewPrivate::lastSelectionRange()
+{
+    if (!selection()) {
+        return KTextEditor::Range::invalid();
+    }
+    if (m_secondarySelections.isEmpty()) {
+        return selectionRange();
+    }
+    return m_secondarySelections.back().range->toRange();
 }
 
 bool KTextEditor::ViewPrivate::isCompletionActive() const

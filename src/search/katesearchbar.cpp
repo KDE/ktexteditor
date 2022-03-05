@@ -1255,6 +1255,11 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
     givePatternFeedback();
 }
 
+static void addSecondarySelection(KTextEditor::ViewPrivate *view, KTextEditor::Range range)
+{
+    view->addSecondaryCursorWithSelection(range);
+}
+
 void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection)
 {
     if (!view->selection()) {
@@ -1276,7 +1281,7 @@ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, Search
         }
 
         // Where to find?
-        const Range selRange = view->selectionRange();
+        const Range selRange = view->lastSelectionRange();
         Range inputRange;
         if (searchDirection == SearchForward) {
             inputRange.setRange(selRange.end(), view->doc()->documentEnd());
@@ -1289,7 +1294,7 @@ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, Search
         match.searchText(inputRange, pattern);
 
         if (match.isValid()) {
-            selectRange(view, match.range());
+            addSecondarySelection(view, match.range());
         } else {
             // Find, second try
             m_view->showSearchWrappedHint(searchDirection == SearchBackward);
@@ -1301,7 +1306,7 @@ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, Search
             KateMatch match2(view->doc(), enabledOptions);
             match2.searchText(inputRange, pattern);
             if (match2.isValid()) {
-                selectRange(view, match2.range());
+                addSecondarySelection(view, match2.range());
             }
         }
     }

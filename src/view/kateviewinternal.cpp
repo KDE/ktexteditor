@@ -2316,16 +2316,7 @@ void KateViewInternal::updateSecondarySelection(int cursorIdx, KTextEditor::Curs
     }
 
     if (cursorIdx >= view()->m_secondarySelections.size()) {
-        auto expandBehaviour = KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight;
-        auto range = new Kate::TextRange(doc()->buffer(), {old, newPos}, expandBehaviour);
-        static KTextEditor::Attribute::Ptr selAttr;
-        if (!selAttr) {
-            selAttr = new KTextEditor::Attribute;
-            auto color = QColor::fromRgba(view()->theme().editorColor(KSyntaxHighlighting::Theme::TextSelection));
-            selAttr->setBackground(color);
-        }
-        range->setAttribute(selAttr);
-        view()->m_secondarySelections.append({old, range});
+        view()->m_secondarySelections.append({old, view()->newSecondarySelectionRange({old, newPos})});
     } else {
         auto selection = view()->m_secondarySelections[cursorIdx];
         selection.range->setRange(selection.anchor, newPos);
@@ -3211,14 +3202,10 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
         if (e->modifiers() == (Qt::AltModifier)) {
             setSelection({});
-            view()->toggleSecondaryCursorAt(coordinatesToCursor(e->pos(), false));
+            view()->addSecondaryCursorAt(coordinatesToCursor(e->pos(), false));
             e->accept();
             return;
         } else {
-            const auto sc = view()->m_secondaryCursors;
-            for (auto c : sc) {
-                tagLine(toVirtualCursor(c->toCursor()));
-            }
             view()->clearSecondaryCursors();
         }
 
