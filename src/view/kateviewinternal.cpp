@@ -1440,10 +1440,7 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
         } else {
             c->setPosition(BoundedCursor(this, c->toCursor()) += bias);
         }
-        if (sel) {
-            updateSecondarySelection(i, oldPos, c->toCursor());
-        }
-        tagLine(toVirtualCursor(c->toCursor()));
+        updateSecondaryCursor(i, oldPos, c->toCursor(), sel);
         ++i;
     }
 
@@ -1514,11 +1511,7 @@ void KateViewInternal::wordPrev(bool sel)
         auto oldPos = cursor->toCursor();
         auto newCursorPos = wordPrevious(cursor->toCursor());
         cursor->setPosition(newCursorPos);
-
-        if (sel) {
-            updateSecondarySelection(i, oldPos, newCursorPos);
-        }
-        tagLine(toVirtualCursor(newCursorPos));
+        updateSecondaryCursor(i, oldPos, newCursorPos, sel);
         i++;
     }
 
@@ -1577,11 +1570,7 @@ void KateViewInternal::wordNext(bool sel)
         auto oldPos = cursor->toCursor();
         auto newCursorPos = nextWord(cursor->toCursor());
         cursor->setPosition(newCursorPos);
-
-        if (sel) {
-            updateSecondarySelection(i, oldPos, newCursorPos);
-        }
-        tagLine(toVirtualCursor(newCursorPos));
+        updateSecondaryCursor(i, oldPos, newCursorPos, sel);
         i++;
     }
 
@@ -1641,10 +1630,7 @@ void KateViewInternal::home(bool sel)
         auto oldPos = c->toCursor();
         auto newPos = home_internal(oldPos);
         c->setPosition(newPos);
-        if (sel) {
-            updateSecondarySelection(i, oldPos, newPos);
-        }
-        tagLine(toVirtualCursor(newPos));
+        updateSecondaryCursor(i, oldPos, newPos, sel);
         i++;
     }
 
@@ -1701,10 +1687,7 @@ void KateViewInternal::end(bool sel)
         auto oldPos = c->toCursor();
         auto newPos = end_internal(oldPos);
         c->setPosition(newPos);
-        if (sel) {
-            updateSecondarySelection(i, oldPos, newPos);
-        }
-        tagLine(toVirtualCursor(newPos));
+        updateSecondaryCursor(i, oldPos, newPos, sel);
         i++;
     }
 
@@ -1938,6 +1921,8 @@ void KateViewInternal::cursorUp(bool sel)
                 auto newVcursor = toVirtualCursor(newPos);
                 if (sel) {
                     updateSecondarySelection(i, cursor, newPos);
+                } else {
+                    view()->clearSecondarySelections();
                 }
                 tagLines(newVcursor.line(), vCursor.line());
             }
@@ -1958,6 +1943,8 @@ void KateViewInternal::cursorUp(bool sel)
         auto newVcursor = toVirtualCursor(newPos);
         if (sel) {
             updateSecondarySelection(i, cursor, newPos);
+        } else {
+            view()->clearSecondarySelections();
         }
         tagLines(newVcursor.line(), vCursor.line());
         i++;
@@ -2023,6 +2010,8 @@ void KateViewInternal::cursorDown(bool sel)
                 c->setPosition(newPos);
                 if (sel) {
                     updateSecondarySelection(i, cursor, newPos);
+                } else {
+                    view()->clearSecondarySelections();
                 }
                 auto vNewPos = toVirtualCursor(newPos);
                 tagLines(vCursor.line(), vNewPos.line());
@@ -2042,6 +2031,8 @@ void KateViewInternal::cursorDown(bool sel)
         c->setPosition(newPos);
         if (sel) {
             updateSecondarySelection(i, cursor, newPos);
+        } else {
+            view()->clearSecondarySelections();
         }
         auto vNewPos = toVirtualCursor(newPos);
         tagLines(vCursor.line(), vNewPos.line());
@@ -2588,6 +2579,17 @@ void KateViewInternal::updateFoldingMarkersHighlighting()
     }
     m_fmStart->setRange(KTextEditor::Range::invalid());
     m_fmEnd->setRange(KTextEditor::Range::invalid());
+}
+
+void KateViewInternal::updateSecondaryCursor(int idx, KTextEditor::Cursor oldPos, KTextEditor::Cursor newPos, bool sel)
+{
+    if (sel) {
+        updateSecondarySelection(idx, oldPos, newPos);
+    } else {
+        view()->clearSecondarySelections();
+    }
+    auto vNewPos = toVirtualCursor(newPos);
+    tagLines(toVirtualCursor(oldPos).line(), vNewPos.line());
 }
 
 void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally)

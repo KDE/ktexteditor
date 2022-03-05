@@ -202,6 +202,7 @@ public:
 private:
     bool toggleSecondaryCursorAt(const KTextEditor::Cursor &cursor);
     void clearSecondaryCursors();
+    void clearSecondarySelections();
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
 
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;

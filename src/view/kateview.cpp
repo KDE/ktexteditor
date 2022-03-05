@@ -2663,11 +2663,16 @@ bool KTextEditor::ViewPrivate::toggleSecondaryCursorAt(const KTextEditor::Cursor
 
 void KTextEditor::ViewPrivate::clearSecondaryCursors()
 {
+    clearSecondarySelections();
     for (auto *c : qAsConst(m_secondaryCursors)) {
         tagLine(c->toCursor());
     }
     qDeleteAll(m_secondaryCursors);
     m_secondaryCursors.clear();
+}
+
+void KTextEditor::ViewPrivate::clearSecondarySelections()
+{
     for (auto r : qAsConst(m_secondarySelections)) {
         delete r.range;
     }
@@ -3143,7 +3148,7 @@ void KTextEditor::ViewPrivate::cursorLeft()
             m_viewInternal->updateCursor(selectionRange().start());
             setSelection(KTextEditor::Range::invalid());
         }
-
+        clearSecondarySelections();
     } else {
         if (currentTextLine().isRightToLeft()) {
             m_viewInternal->cursorNextChar();
@@ -3172,7 +3177,7 @@ void KTextEditor::ViewPrivate::cursorRight()
             m_viewInternal->updateCursor(selectionRange().end());
             setSelection(KTextEditor::Range::invalid());
         }
-
+        clearSecondarySelections();
     } else {
         if (currentTextLine().isRightToLeft()) {
             m_viewInternal->cursorPrevChar();

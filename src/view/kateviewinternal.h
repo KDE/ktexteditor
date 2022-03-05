@@ -298,6 +298,10 @@ private:
     void updateBracketMarks();
     void beginSelectLine(const QPoint &pos);
 
+    // @brief updates the secondary cursor, schedules repaint
+    // MUST setPosition of the corresponding moving cursor before calling this
+    void updateSecondaryCursor(int idx, KTextEditor::Cursor oldPos, KTextEditor::Cursor newPos, bool sel);
+
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);
     // Returns whether the given range affects the area currently visible in the view
