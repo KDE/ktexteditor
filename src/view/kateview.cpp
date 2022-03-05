@@ -2273,19 +2273,6 @@ bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
     return true;
 }
 
-bool KTextEditor::ViewPrivate::setSecondarySelections()
-{
-    // clear existing
-    //     qDeleteAll(m_secondarySelections);
-    //     m_secondarySelections.clear();
-
-    //     const auto primarySelection = m_selection.toRange();
-    //     primarySelection.
-    //     for (auto *c : qAsConst(m_secondaryCursors)) {
-    //     }
-    return true;
-}
-
 bool KTextEditor::ViewPrivate::clearSelection()
 {
     return clearSelection(true);
@@ -2334,6 +2321,7 @@ QString KTextEditor::ViewPrivate::selectionText() const
     if (blockSelect) {
         return doc()->text(m_selection, blockSelect);
     }
+
     QVarLengthArray<KTextEditor::Range, 16> ranges;
     for (const auto &selRange : m_secondarySelections) {
         ranges.push_back(selRange.range->toRange());

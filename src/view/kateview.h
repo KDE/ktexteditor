@@ -331,7 +331,6 @@ private Q_SLOTS:
     //
 public Q_SLOTS:
     bool setSelection(const KTextEditor::Range &selection) override;
-    bool setSecondarySelections();
 
     bool removeSelection() override
     {
