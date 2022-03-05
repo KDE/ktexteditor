@@ -2332,6 +2332,14 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
 
     doc()->editStart();
 
+    // Handle multicursors selection removal
+    if (!blockSelect) {
+        for (const auto &sel : m_secondarySelections) {
+            doc()->removeText(sel.range->toRange());
+            delete sel.range; // delete the range
+        }
+    }
+
     // Optimization: clear selection before removing text
     KTextEditor::Range selection = m_selection;
 
@@ -2346,6 +2354,7 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
         setSelection(newSelection);
         setCursorPositionInternal(newSelection.start());
     } else {
+        m_secondarySelections.clear();
         clearSelection(false);
     }
 
