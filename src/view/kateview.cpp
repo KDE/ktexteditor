@@ -2663,6 +2663,8 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
     }
     auto moving = m_doc->newMovingCursor(cursor);
     m_secondaryCursors.append(moving);
+    tagLine(cursor);
+    m_viewInternal->updateDirty();
     return true;
 }
 
@@ -2674,6 +2676,7 @@ void KTextEditor::ViewPrivate::clearSecondaryCursors()
     }
     qDeleteAll(m_secondaryCursors);
     m_secondaryCursors.clear();
+    m_viewInternal->updateDirty();
 }
 
 void KTextEditor::ViewPrivate::clearSecondarySelections()
@@ -2712,6 +2715,7 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
             delete *it;
             m_secondaryCursors.erase(it);
             tagLine(m_viewInternal->toVirtualCursor(cur));
+            m_viewInternal->updateDirty();
         }
     }
 }

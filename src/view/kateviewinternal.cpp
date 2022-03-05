@@ -2923,6 +2923,38 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             }
         }
 
+        if (k->key() == Qt::Key_Down && k->modifiers() == (Qt::CTRL | Qt::ALT)) {
+            KTextEditor::Cursor last = cursorPosition();
+            if (!view()->m_secondaryCursors.isEmpty()) {
+                last = view()->m_secondaryCursors.back()->toCursor();
+            }
+            auto nextRange = nextLayout(last);
+            if (!nextRange.isValid()) {
+                return QWidget::eventFilter(obj, e);
+            }
+            int x = renderer()->cursorToX(currentLayout(last), last.column());
+            auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
+            view()->addSecondaryCursorAt(next);
+            k->accept();
+            return true;
+        }
+
+        if (k->key() == Qt::Key_Up && k->modifiers() == (Qt::CTRL | Qt::ALT)) {
+            KTextEditor::Cursor last = cursorPosition();
+            if (!view()->m_secondaryCursors.isEmpty()) {
+                last = view()->m_secondaryCursors.back()->toCursor();
+            }
+            auto nextRange = previousLayout(last);
+            if (!nextRange.isValid()) {
+                return QWidget::eventFilter(obj, e);
+            }
+            int x = renderer()->cursorToX(currentLayout(last), last.column());
+            auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
+            view()->addSecondaryCursorAt(next);
+            k->accept();
+            return true;
+        }
+
         if (m_currentInputMode->stealKey(k)) {
             k->accept();
             return true;
