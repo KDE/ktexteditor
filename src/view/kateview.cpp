@@ -2931,16 +2931,38 @@ void KTextEditor::ViewPrivate::uppercase()
 
 void KTextEditor::ViewPrivate::killLine()
 {
+    std::vector<int> linesToRemove;
     if (m_selection.isEmpty()) {
-        doc()->removeLine(cursorPosition().line());
+        // collect lines of all cursors
+        linesToRemove.reserve(m_secondaryCursors.size() + 1);
+        for (auto *c : qAsConst(m_secondaryCursors)) {
+            linesToRemove.push_back(c->line());
+        }
+        // add primary cursor line
+        linesToRemove.push_back(cursorPosition().line());
     } else {
-        doc()->editStart();
+        linesToRemove.reserve(m_secondaryCursors.size() + 1);
+        for (const auto &sel : qAsConst(m_secondarySelections)) {
+            const auto range = sel.range;
+            for (int line = range->end().line(); line >= range->start().line(); line--) {
+                linesToRemove.push_back(line);
+            }
+        }
+
         // cache endline, else that moves and we might delete complete document if last line is selected!
         for (int line = m_selection.end().line(), endLine = m_selection.start().line(); line >= endLine; line--) {
-            doc()->removeLine(line);
+            linesToRemove.push_back(line);
         }
-        doc()->editEnd();
     }
+
+    std::sort(linesToRemove.begin(), linesToRemove.end(), std::greater{});
+    linesToRemove.erase(std::unique(linesToRemove.begin(), linesToRemove.end()), linesToRemove.end());
+
+    doc()->editStart();
+    std::for_each(linesToRemove.begin(), linesToRemove.end(), [this](int line) {
+        doc()->removeLine(line);
+    });
+    doc()->editEnd();
 }
 
 void KTextEditor::ViewPrivate::lowercase()
