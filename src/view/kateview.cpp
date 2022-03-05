@@ -2331,7 +2331,22 @@ bool KTextEditor::ViewPrivate::selection() const
 
 QString KTextEditor::ViewPrivate::selectionText() const
 {
-    return doc()->text(m_selection, blockSelect);
+    if (blockSelect) {
+        return doc()->text(m_selection, blockSelect);
+    }
+    QVarLengthArray<KTextEditor::Range, 16> ranges;
+    for (const auto &selRange : m_secondarySelections) {
+        ranges.push_back(selRange.range->toRange());
+    }
+    ranges.push_back(m_selection);
+    std::sort(ranges.begin(), ranges.end());
+    QString text;
+    for (int i = 0; i < ranges.size() - 1; ++i) {
+        text += doc()->text(ranges[i]) + QStringLiteral("\n");
+    }
+    text += doc()->text(ranges.last());
+
+    return text;
 }
 
 bool KTextEditor::ViewPrivate::removeSelectedText()
