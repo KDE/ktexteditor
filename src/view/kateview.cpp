@@ -3032,12 +3032,7 @@ void KTextEditor::ViewPrivate::noIndentNewline()
 
 void KTextEditor::ViewPrivate::backspace()
 {
-    // FIXME: the function should return new position
-    //  and not modify the view's cursor itself
-    //     for (auto *c : qAsConst(m_secondaryCursors)) {
-    //         doc()->backspace(this, c->toCursor());
-    //     }
-
+    // Will take care of both multi and primary cursors
     doc()->backspace(this, cursorPosition());
 }
 

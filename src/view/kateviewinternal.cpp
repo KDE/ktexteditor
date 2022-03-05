@@ -1431,7 +1431,6 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
         c = BoundedCursor(this, m_cursor) += bias;
     }
 
-    ;
     const auto sc = view()->m_secondaryCursors;
     int i = 0;
     for (auto c : sc) {
@@ -1635,6 +1634,21 @@ KTextEditor::Cursor KateViewInternal::home_internal(KTextEditor::Cursor cursor)
 
 void KateViewInternal::home(bool sel)
 {
+    // Multicursor
+    const auto secondaryCursors = view()->m_secondaryCursors;
+    int i = 0;
+    for (auto *c : secondaryCursors) {
+        auto oldPos = c->toCursor();
+        auto newPos = home_internal(oldPos);
+        c->setPosition(newPos);
+        if (sel) {
+            updateSecondarySelection(i, oldPos, newPos);
+        }
+        tagLine(toVirtualCursor(newPos));
+        i++;
+    }
+
+    // Primary cursor
     auto newPos = home_internal(m_cursor);
     if (newPos.isValid()) {
         updateSelection(newPos, sel);
@@ -1680,6 +1694,20 @@ KTextEditor::Cursor KateViewInternal::end_internal(KTextEditor::Cursor cursor)
 
 void KateViewInternal::end(bool sel)
 {
+    // Multicursor
+    const auto secondaryCursors = view()->m_secondaryCursors;
+    int i = 0;
+    for (auto *c : secondaryCursors) {
+        auto oldPos = c->toCursor();
+        auto newPos = end_internal(oldPos);
+        c->setPosition(newPos);
+        if (sel) {
+            updateSecondarySelection(i, oldPos, newPos);
+        }
+        tagLine(toVirtualCursor(newPos));
+        i++;
+    }
+
     auto newPos = end_internal(m_cursor);
     if (newPos.isValid()) {
         updateSelection(newPos, sel);
@@ -1943,7 +1971,11 @@ void KateViewInternal::cursorUp(bool sel)
 
     // move cursor to start of line, if we are at first line!
     if (m_displayCursor.line() == 0 && (!view()->dynWordWrap() || cache()->viewLine(m_cursor) == 0)) {
-        home(sel);
+        auto newPos = home_internal(m_cursor);
+        if (newPos.isValid()) {
+            updateSelection(newPos, sel);
+            updateCursor(newPos, true);
+        }
         return;
     }
 
@@ -2022,7 +2054,11 @@ void KateViewInternal::cursorDown(bool sel)
     // move cursor to end of line, if we are at last line!
     if ((m_displayCursor.line() >= view()->textFolding().visibleLines() - 1)
         && (!view()->dynWordWrap() || cache()->viewLine(m_cursor) == cache()->lastViewLine(m_cursor.line()))) {
-        end(sel);
+        auto newPos = end_internal(m_cursor);
+        if (newPos.isValid()) {
+            updateSelection(newPos, sel);
+            updateCursor(newPos);
+        }
         return;
     }
 
