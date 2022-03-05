@@ -1413,6 +1413,11 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
         return;
     }
 
+    // No multi cursors for vi
+    if (mode == KTextEditor::View::InputMode::ViInputMode) {
+        clearSecondaryCursors();
+    }
+
     m_viewInternal->m_currentInputMode->deactivate();
     m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode].get();
     m_viewInternal->m_currentInputMode->activate();
@@ -1614,6 +1619,11 @@ void KTextEditor::ViewPrivate::toggleInsert()
 {
     doc()->config()->setOvr(!doc()->config()->ovr());
     m_toggleInsert->setChecked(isOverwriteMode());
+
+    // No multi cursors for overwrite mode
+    if (isOverwriteMode()) {
+        clearSecondaryCursors();
+    }
 
     Q_EMIT viewModeChanged(this, viewMode());
     Q_EMIT viewInputModeChanged(this, viewInputMode());
