@@ -2,6 +2,12 @@
     SPDX-FileCopyrightText: 2001-2010 Christoph Cullmann <cullmann@kde.org>
     SPDX-FileCopyrightText: 2009 Erlend Hamberg <ehamberg@gmail.com>
 
+    For the addScrollablePage original
+    SPDX-FileCopyrightText: 2003 Benjamin C Meyer <ben+kdelibs at meyerhome dot net>
+    SPDX-FileCopyrightText: 2003 Waldo Bastian <bastian@kde.org>
+    SPDX-FileCopyrightText: 2004 Michael Brade <brade@kde.org>
+    SPDX-FileCopyrightText: 2021 Ahmad Samir <a.samirh78@gmail.com>
+
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
@@ -41,6 +47,9 @@
 #include <QClipboard>
 #include <QFrame>
 #include <QPushButton>
+#include <QScreen>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QStringListModel>
 #include <QTimer>
 
@@ -251,9 +260,64 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
 
 // END KTextEditor::Editor config stuff
 
+// config dialog with improved sizing and that allows scrolling
+class KTextEditorConfigDialog : public KPageDialog
+{
+public:
+    KTextEditorConfigDialog(QWidget *parent)
+        : KPageDialog(parent)
+    {
+    }
+
+    QSize sizeHint() const override
+    {
+        // start with a bit enlarged default size hint to minimize changes of useless scrollbars
+        QSize size = KPageDialog::sizeHint() * 1.3;
+
+        // enlarge it to half of the main window size, if that is larger
+        if (parentWidget() && parentWidget()->window()) {
+            size = size.expandedTo(parentWidget()->window()->size() * 0.5);
+        }
+
+        // return bounded size to available real screen space
+        return size.boundedTo(screen()->availableSize() * 0.9);
+    }
+
+    KPageWidgetItem *addScrollablePage(QWidget *page, const QString &itemName)
+    {
+        // inspired by KPageWidgetItem *KConfigDialogPrivate::addPageInternal(QWidget *page, const QString &itemName, const QString &pixmapName, const QString
+        // &header)
+        QWidget *frame = new QWidget;
+        QVBoxLayout *boxLayout = new QVBoxLayout(frame);
+        boxLayout->setContentsMargins(0, 0, 0, 0);
+        boxLayout->setContentsMargins(0, 0, 0, 0);
+
+        QScrollArea *scroll = new QScrollArea;
+        scroll->setFrameShape(QFrame::NoFrame);
+        scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        scroll->setWidget(page);
+        scroll->setWidgetResizable(true);
+        scroll->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
+
+        if (page->minimumSizeHint().height() > scroll->sizeHint().height() - 2) {
+            if (page->sizeHint().width() < scroll->sizeHint().width() + 2) {
+                // QScrollArea is planning only a vertical scroll bar,
+                // try to avoid the horizontal one by reserving space for the vertical one.
+                // Currently KPageViewPrivate::_k_modelChanged() queries the minimumSizeHint().
+                // We can only set the minimumSize(), so this approach relies on QStackedWidget size calculation.
+                scroll->setMinimumWidth(scroll->sizeHint().width() + qBound(0, scroll->verticalScrollBar()->sizeHint().width(), 200) + 4);
+            }
+        }
+
+        boxLayout->addWidget(scroll);
+        return addPage(frame, itemName);
+    }
+};
+
 void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
 {
-    QPointer<KPageDialog> kd = new KPageDialog(parent);
+    QPointer<KTextEditorConfigDialog> kd = new KTextEditorConfigDialog(parent);
 
     kd->setWindowTitle(i18n("Configure"));
     kd->setFaceType(KPageDialog::List);
@@ -265,7 +329,7 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
         QFrame *page = new QFrame();
         KTextEditor::ConfigPage *cp = configPage(i, page);
 
-        KPageWidgetItem *item = kd->addPage(page, cp->name());
+        KPageWidgetItem *item = kd->addScrollablePage(page, cp->name());
         item->setHeader(cp->fullName());
         item->setIcon(cp->icon());
 
