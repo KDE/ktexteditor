@@ -62,7 +62,6 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool
     , m_textCodec(nullptr)
     , m_generateByteOrderMark(false)
     , m_endOfLineMode(eolUnix)
-    , m_newLineAtEof(false)
     , m_lineLengthLimit(4096)
     , m_alwaysUseKAuthForSave(alwaysUseKAuth)
 {
@@ -776,16 +775,6 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
         // early out on stream errors
         if (saveFile.error() != QFileDevice::NoError) {
             return false;
-        }
-    }
-
-    // do we need to add a trailing newline char?
-    if (m_newLineAtEof) {
-        Q_ASSERT(m_lines > 0); // see .h file
-        const Kate::TextLine lastLine = line(m_lines - 1);
-        const int firstChar = lastLine->firstChar();
-        if (firstChar > -1 || lastLine->length() > 0) {
-            saveFile.write(encoder->fromUnicode(eol));
         }
     }
 

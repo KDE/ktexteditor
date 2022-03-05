@@ -166,15 +166,6 @@ public:
     }
 
     /**
-     * Set whether to insert a newline character on save at the end of the file
-     * @param newlineAtEof should newline be added if non-existing
-     */
-    void setNewLineAtEof(bool newlineAtEof)
-    {
-        m_newLineAtEof = newlineAtEof;
-    }
-
-    /**
      * Set line length limit
      * @param lineLengthLimit new line length limit
      */
@@ -665,11 +656,6 @@ private:
      * End of line mode, default is Unix
      */
     EndOfLineMode m_endOfLineMode;
-
-    /**
-     * Insert newline character at the end of the file?
-     */
-    bool m_newLineAtEof;
 
     /**
      * Limit for line length, longer lines will be wrapped on load

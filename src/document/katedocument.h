@@ -1076,9 +1076,10 @@ private:
     QString reasonedMOHString() const;
 
     /**
-     * Removes all trailing whitespace in the document.
+     * Removes all trailing whitespace in the document and add new line at eof
+     * if configured that way.
      */
-    void removeTrailingSpaces();
+    void removeTrailingSpacesAndAddNewLineAtEof();
 
 public:
     /**

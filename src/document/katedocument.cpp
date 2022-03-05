@@ -2556,10 +2556,10 @@ bool KTextEditor::DocumentPrivate::saveFile()
     // remove file from dirwatch
     deactivateDirWatch();
 
-    // remove all trailing spaces in the document (as edit actions)
+    // remove all trailing spaces in the document and potential add a new line (as edit actions)
     // NOTE: we need this as edit actions, since otherwise the edit actions
     //       in the swap file recovery may happen at invalid cursor positions
-    removeTrailingSpaces();
+    removeTrailingSpacesAndAddNewLineAtEof();
 
     //
     // try to save
@@ -5254,10 +5254,12 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
     return QString();
 }
 
-void KTextEditor::DocumentPrivate::removeTrailingSpaces()
+void KTextEditor::DocumentPrivate::removeTrailingSpacesAndAddNewLineAtEof()
 {
+    // skip all work if the user doesn't want any adjustments
     const int remove = config()->removeSpaces();
-    if (remove == 0) {
+    const bool newLineAtEof = config()->newLineAtEof();
+    if (remove == 0 && !newLineAtEof) {
         return;
     }
 
@@ -5269,19 +5271,33 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
 
     editStart();
 
+    // handle trailing space striping if needed
     const int lines = this->lines();
-    for (int line = 0; line < lines; ++line) {
-        Kate::TextLine textline = plainKateTextLine(line);
+    if (remove != 0) {
+        for (int line = 0; line < lines; ++line) {
+            Kate::TextLine textline = plainKateTextLine(line);
 
-        // remove trailing spaces in entire document, remove = 2
-        // remove trailing spaces of touched lines, remove = 1
-        // remove trailing spaces of lines saved on disk, remove = 1
-        if (remove == 2 || textline->markedAsModified() || textline->markedAsSavedOnDisk()) {
-            const int p = textline->lastChar() + 1;
-            const int l = textline->length() - p;
-            if (l > 0) {
-                editRemoveText(line, p, l);
+            // remove trailing spaces in entire document, remove = 2
+            // remove trailing spaces of touched lines, remove = 1
+            // remove trailing spaces of lines saved on disk, remove = 1
+            if (remove == 2 || textline->markedAsModified() || textline->markedAsSavedOnDisk()) {
+                const int p = textline->lastChar() + 1;
+                const int l = textline->length() - p;
+                if (l > 0) {
+                    editRemoveText(line, p, l);
+                }
             }
+        }
+    }
+
+    // add a trailing empty line if we want a final line break
+    // do we need to add a trailing newline char?
+    if (newLineAtEof) {
+        Q_ASSERT(lines > 0);
+        const Kate::TextLine lastLine = plainKateTextLine(lines - 1);
+        const int firstChar = lastLine->firstChar();
+        if (firstChar > -1 || lastLine->length() > 0) {
+            editWrapLine(lines - 1, lastLine->length());
         }
     }
 

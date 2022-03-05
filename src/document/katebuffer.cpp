@@ -223,9 +223,6 @@ bool KateBuffer::saveFile(const QString &m_file)
     // generate bom?
     setGenerateByteOrderMark(m_doc->config()->bom());
 
-    // append a newline character at the end of the file (eof) ?
-    setNewLineAtEof(m_doc->config()->newLineAtEof());
-
     // try to save
     if (!save(m_file)) {
         return false;
