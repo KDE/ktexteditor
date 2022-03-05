@@ -857,6 +857,10 @@ public:
     void swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord);
     void paste(KTextEditor::ViewPrivate *view, const QString &text);
 
+private:
+    // Helper function for use with multiple cursors
+    KTextEditor::Cursor backspace_internal(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
+
 public:
     void indent(KTextEditor::Range range, int change);
     void comment(KTextEditor::ViewPrivate *view, uint line, uint column, int change);

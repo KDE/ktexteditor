@@ -3357,31 +3357,18 @@ void KTextEditor::DocumentPrivate::swapTextRanges(KTextEditor::Range firstWord, 
     editEnd();
 }
 
-void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor c)
+KTextEditor::Cursor KTextEditor::DocumentPrivate::backspace_internal(KTextEditor::ViewPrivate *view, KTextEditor::Cursor c)
 {
-    if (!view->config()->persistentSelection() && view->selection()) {
-        KTextEditor::Range range = view->selectionRange();
-        editStart(); // Avoid bad selection in case of undo
-        if (view->blockSelection() && view->selection() && range.start().column() > 0 && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
-            // Remove one character before vertical selection line by expanding the selection
-            range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
-            view->setSelection(range);
-        }
-        view->removeSelectedText();
-        editEnd();
-        return;
-    }
-
     uint col = qMax(c.column(), 0);
     uint line = qMax(c.line(), 0);
     if ((col == 0) && (line == 0)) {
-        return;
+        return KTextEditor::Cursor::invalid();
     }
 
     const Kate::TextLine textLine = m_buffer->plainLine(line);
     // don't forget this check!!!! really!!!!
     if (!textLine) {
-        return;
+        return KTextEditor::Cursor::invalid();
     }
 
     if (col > 0) {
@@ -3416,23 +3403,63 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             removeText(KTextEditor::Range(beginCursor, endCursor));
             // in most cases cursor is moved by removeText, but we should do it manually
             // for past-end-of-line cursors in block mode
-            view->setCursorPosition(beginCursor);
+            return beginCursor;
         }
-
+        return KTextEditor::Cursor::invalid();
     } else {
         // col == 0: wrap to previous line
         const Kate::TextLine textLine = m_buffer->plainLine(line - 1);
+        KTextEditor::Cursor ret = KTextEditor::Cursor::invalid();
 
         if (line > 0 && textLine) {
             if (config()->wordWrap() && textLine->endsWith(QStringLiteral(" "))) {
                 // gg: in hard wordwrap mode, backspace must also eat the trailing space
+                ret = KTextEditor::Cursor(line - 1, textLine->length() - 1);
                 removeText(KTextEditor::Range(line - 1, textLine->length() - 1, line, 0));
             } else {
+                ret = KTextEditor::Cursor(line - 1, textLine->length());
                 removeText(KTextEditor::Range(line - 1, textLine->length(), line, 0));
             }
         }
+        return ret;
+    }
+}
+
+void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor c)
+{
+    if (!view->config()->persistentSelection() && view->selection()) {
+        KTextEditor::Range range = view->selectionRange();
+        editStart(); // Avoid bad selection in case of undo
+        if (view->blockSelection() && view->selection() && range.start().column() > 0 && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
+            // Remove one character before vertical selection line by expanding the selection
+            range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
+            view->setSelection(range);
+        }
+        view->removeSelectedText();
+        editEnd();
+        return;
     }
 
+    editStart();
+
+    // Handle multi cursors
+    const auto &multiCursors = view->secondaryMovingCursors();
+    for (auto *c : multiCursors) {
+        auto newPos = backspace_internal(view, c->toCursor());
+        if (newPos.isValid()) {
+            c->setPosition(newPos);
+        }
+    }
+
+    // Handle primary cursor
+    auto newPos = backspace_internal(view, c);
+    if (newPos.isValid()) {
+        view->setCursorPosition(newPos);
+    }
+
+    editEnd();
+
+    // TODO: Handle this for multiple cursors?
     if (m_currentAutobraceRange) {
         const auto r = m_currentAutobraceRange->toRange();
         if (r.columnWidth() == 1 && view->cursorPosition() == r.start()) {

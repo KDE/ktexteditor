@@ -2365,6 +2365,7 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
 
 bool KTextEditor::ViewPrivate::selectAll()
 {
+    clearSecondaryCursors();
     setBlockSelection(false);
     // We use setSelection here to ensure we don't scroll anywhere
     // The cursor stays in place i.e., it doesn't move to end of selection
@@ -2647,9 +2648,6 @@ bool KTextEditor::ViewPrivate::toggleSecondaryCursorAt(const KTextEditor::Cursor
     }
     auto moving = m_doc->newMovingCursor(cursor);
     m_secondaryCursors.append(moving);
-
-    qDebug() << "new list of secondary cursors:" << m_secondaryCursors;
-
     return true;
 }
 
