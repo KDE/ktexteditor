@@ -5294,10 +5294,9 @@ void KTextEditor::DocumentPrivate::removeTrailingSpacesAndAddNewLineAtEof()
     // do we need to add a trailing newline char?
     if (newLineAtEof) {
         Q_ASSERT(lines > 0);
-        const Kate::TextLine lastLine = plainKateTextLine(lines - 1);
-        const int firstChar = lastLine->firstChar();
-        if (firstChar > -1 || lastLine->length() > 0) {
-            editWrapLine(lines - 1, lastLine->length());
+        const auto length = lineLength(lines - 1);
+        if (length > 0) {
+            editWrapLine(lines - 1, length);
         }
     }
 
