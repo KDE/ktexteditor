@@ -2655,6 +2655,11 @@ bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
 
 bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
 {
+    // No multicursors here
+    if (isOverwriteMode()) {
+        return false;
+    }
+
     for (const auto moving : qAsConst(m_secondaryCursors)) {
         if (moving->toCursor() == cursor) {
             if (toggle) {
