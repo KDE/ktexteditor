@@ -2665,6 +2665,8 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
             if (toggle) {
                 m_secondaryCursors.removeAll(moving);
                 delete moving;
+                tagLine(cursor);
+                m_viewInternal->updateDirty();
             }
             return false;
         }
