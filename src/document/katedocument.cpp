@@ -4704,6 +4704,12 @@ bool KTextEditor::DocumentPrivate::documentReload()
         return std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>(v, v->cursorPosition());
     });
 
+    // clear multicursors
+    // FIXME: Restore multicursors, at least for the case where doc is unmodified
+    for (auto *view : m_views) {
+        view->clearSecondaryCursors();
+    }
+
     m_reloading = true;
     KTextEditor::DocumentPrivate::openUrl(url());
 

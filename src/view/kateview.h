@@ -215,9 +215,10 @@ public:
     // Returns nothing if no selection
     KTextEditor::Range lastSelectionRange();
 
+    void clearSecondaryCursors();
+
 private:
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
-    void clearSecondaryCursors();
     void clearSecondarySelections();
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
