@@ -174,6 +174,26 @@ void HlSearchTest::highlightModeTests()
         }
         FinishTest(text);
     }
+    // test highlighting when typing in search triggers a visual range change
+    {
+        QString text = "foo bar xyz\n\n\n\n\nfoo ab barx";
+        BeginTest(text);
+        auto vr = kate_view->visibleRange();
+        // ensure that last line is not visible
+        QVERIFY(vr.end().line() < 4);
+
+        TestPressKey("/barx");
+        {
+            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QCOMPARE(ranges.size(), rangesInitial.size());
+            ranges = rangesOnLine(5);
+            QCOMPARE(ranges.size(), rangesInitial.size() + 1);
+            TestHighlight(*ranges[0], {5, 7}, {5, 11}, searchHighlightColor);
+        }
+        TestPressKey("\\enter");
+
+        FinishTest(text);
+    }
     // test that normal search highlight is deactivated when hls mode is active
     {
         QString text = "foo bar xyz";
