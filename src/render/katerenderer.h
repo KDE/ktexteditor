@@ -423,6 +423,8 @@ private:
 
     static void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute);
 
+    void paintCaret(const KTextEditor::Cursor *cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd);
+
     // update font height
     void updateFontHeight();
 
