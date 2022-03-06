@@ -2660,17 +2660,18 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
         return false;
     }
 
-    for (const auto moving : qAsConst(m_secondaryCursors)) {
-        if (moving->toCursor() == cursor) {
+    for (auto it = m_secondaryCursors.begin(); it != m_secondaryCursors.end(); ++it) {
+        if ((*it)->toCursor() == cursor) {
             if (toggle) {
-                m_secondaryCursors.removeAll(moving);
-                delete moving;
+                delete *it;
+                it = m_secondaryCursors.erase(it);
                 tagLine(cursor);
                 m_viewInternal->updateDirty();
             }
             return false;
         }
     }
+
     auto moving = m_doc->newMovingCursor(cursor);
     m_secondaryCursors.append(moving);
     tagLine(cursor);
