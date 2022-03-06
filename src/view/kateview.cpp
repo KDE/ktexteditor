@@ -2584,6 +2584,9 @@ bool KTextEditor::ViewPrivate::setBlockSelection(bool on)
 
 bool KTextEditor::ViewPrivate::toggleBlockSelection()
 {
+    // no multicursors for blockselect
+    clearSecondaryCursors();
+
     m_toggleBlockSelection->setChecked(!blockSelect);
     return setBlockSelection(!blockSelect);
 }
