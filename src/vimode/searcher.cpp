@@ -25,13 +25,13 @@ Searcher::Searcher(InputModeManager *manager)
     updateHighlightColors();
 
     if (m_hlMode == HighlightMode::Enable) {
-        connectDisplayRangeChanged();
+        connectSignals();
     }
 }
 
 Searcher::~Searcher()
 {
-    disconnectDisplayRangeChanged();
+    disconnectSignals();
     clearHighlights();
 }
 
@@ -226,12 +226,12 @@ void Searcher::enableHighlightSearch(bool enable)
     if (enable) {
         m_hlMode = HighlightMode::Enable;
 
-        connectDisplayRangeChanged();
+        connectSignals();
         highlightVisibleResults(m_lastSearchConfig, true);
     } else {
         m_hlMode = HighlightMode::Disable;
 
-        disconnectDisplayRangeChanged();
+        disconnectSignals();
         clearHighlights();
     }
 }
@@ -241,18 +241,23 @@ bool Searcher::isHighlightSearchEnabled() const
     return m_hlMode != HighlightMode::Disable;
 }
 
-void Searcher::disconnectDisplayRangeChanged()
+void Searcher::disconnectSignals()
 {
     QObject::disconnect(m_displayRangeChangedConnection);
+    QObject::disconnect(m_textChangedConnection);
 }
 
-void Searcher::connectDisplayRangeChanged()
+void Searcher::connectSignals()
 {
-    disconnectDisplayRangeChanged();
+    disconnectSignals();
 
     m_displayRangeChangedConnection = QObject::connect(m_view, &KTextEditor::ViewPrivate::displayRangeChanged, [this]() {
         if (m_hlMode == HighlightMode::Enable)
             highlightVisibleResults(m_lastHlSearchConfig);
+    });
+    m_textChangedConnection = QObject::connect(m_view->doc(), &KTextEditor::Document::textChanged, [this]() {
+        if (m_hlMode == HighlightMode::Enable)
+            highlightVisibleResults(m_lastHlSearchConfig, true);
     });
 }
 

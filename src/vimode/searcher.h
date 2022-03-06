@@ -64,8 +64,8 @@ private:
     KTextEditor::Range findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor startFrom, int count);
 
     void highlightVisibleResults(const SearchParams &searchParams, bool force = false);
-    void disconnectDisplayRangeChanged();
-    void connectDisplayRangeChanged();
+    void disconnectSignals();
+    void connectSignals();
 
 private:
     enum class HighlightMode {
@@ -86,6 +86,7 @@ private:
     KTextEditor::Range m_lastHlSearchRange;
     KTextEditor::Attribute::Ptr highlightMatchAttribute;
     QMetaObject::Connection m_displayRangeChangedConnection;
+    QMetaObject::Connection m_textChangedConnection;
     bool newPattern{true};
 };
 }

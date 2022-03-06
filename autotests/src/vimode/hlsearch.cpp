@@ -622,6 +622,27 @@ void HlSearchTest::highlightModeTests()
         }
         FinishTest(text);
     }
+    // test that newly inserted text will be highlighted
+    {
+        QString text = "foo xbar abcd bar";
+
+        TestPressKey("/xbar\\enter");
+        {
+            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QCOMPARE(ranges.size(), rangesInitial.size() + 1);
+            TestHighlight(*ranges[0], {0, 4}, {0, 8}, searchHighlightColor);
+        }
+        TestPressKey("wwix\\esc");
+        {
+            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QCOMPARE(ranges.size(), rangesInitial.size() + 2);
+            TestHighlight(*ranges[0], {0, 4}, {0, 8}, searchHighlightColor);
+            TestHighlight(*ranges[1], {0, 14}, {0, 18}, searchHighlightColor);
+        }
+
+        BeginTest(text);
+        FinishTest(text);
+    }
 }
 
 QVector<Kate::TextRange *> HlSearchTest::rangesOnLine(int line)
