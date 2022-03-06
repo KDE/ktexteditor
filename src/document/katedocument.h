@@ -860,6 +860,7 @@ public:
 private:
     // Helper function for use with multiple cursors
     KTextEditor::Cursor backspace_internal(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
+    void comment_internal(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int changeType);
 
 public:
     void indent(KTextEditor::Range range, int change);
@@ -943,11 +944,11 @@ private:
      * Add a comment marker as defined by the language providing the attribute
      * @p attrib to each line in the selection.
      */
-    void addStartStopCommentToSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
+    void addStartStopCommentToSelection(KTextEditor::Range, bool blockSelection, int attrib = 0);
     /**
      * @see addStartStopCommentToSelection.
      */
-    void addStartLineCommentToSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
+    void addStartLineCommentToSelection(KTextEditor::Range, int attrib = 0);
 
     /**
      * Removes comment markers relevant to the language providing
@@ -955,11 +956,11 @@ private:
      *
      * @return whether the operation succeeded.
      */
-    bool removeStartStopCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
+    bool removeStartStopCommentFromSelection(KTextEditor::Range, int attrib = 0);
     /**
      * @see removeStartStopCommentFromSelection.
      */
-    bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib, bool toggleComment);
+    bool removeStartLineCommentFromSelection(KTextEditor::Range, int attrib, bool toggleComment);
 
 public:
     KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor start, int maxLines);

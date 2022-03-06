@@ -3804,12 +3804,12 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSingleLine(int line
   Add to the current selection a start comment mark at the beginning
   and a stop comment mark at the end.
 */
-void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::ViewPrivate *view, int attrib)
+void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::Range selection, bool blockSelection, int attrib)
 {
     const QString startComment = highlight()->getCommentStart(attrib);
     const QString endComment = highlight()->getCommentEnd(attrib);
 
-    KTextEditor::Range range = view->selectionRange();
+    KTextEditor::Range range = selection;
 
     if ((range.end().column() == 0) && (range.end().line() > 0)) {
         range.setEnd(KTextEditor::Cursor(range.end().line() - 1, lineLength(range.end().line() - 1)));
@@ -3817,7 +3817,7 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::V
 
     editStart();
 
-    if (!view->blockSelection()) {
+    if (!blockSelection) {
         insertText(range.end(), endComment);
         insertText(range.start(), startComment);
     } else {
@@ -3835,15 +3835,15 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::V
 /*
   Add to the current selection a comment line mark at the beginning of each line.
 */
-void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::ViewPrivate *view, int attrib)
+void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::Range selection, int attrib)
 {
     // const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
 
-    int sl = view->selectionRange().start().line();
-    int el = view->selectionRange().end().line();
+    int sl = selection.start().line();
+    int el = selection.end().line();
 
     // if end of selection is in column 0 in last line, omit the last line
-    if ((view->selectionRange().end().column() == 0) && (el > 0)) {
+    if ((selection.end().column() == 0) && (el > 0)) {
         el--;
     }
 
@@ -3909,15 +3909,15 @@ bool KTextEditor::DocumentPrivate::previousNonSpaceCharPos(int &line, int &col)
   Remove from the selection a start comment mark at
   the beginning and a stop comment mark at the end.
 */
-bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib)
+bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEditor::Range selection, int attrib)
 {
     const QString startComment = highlight()->getCommentStart(attrib);
     const QString endComment = highlight()->getCommentEnd(attrib);
 
-    int sl = qMax<int>(0, view->selectionRange().start().line());
-    int el = qMin<int>(view->selectionRange().end().line(), lastLine());
-    int sc = view->selectionRange().start().column();
-    int ec = view->selectionRange().end().column();
+    int sl = qMax<int>(0, selection.start().line());
+    int el = qMin<int>(selection.end().line(), lastLine());
+    int sc = selection.start().column();
+    int ec = selection.end().column();
 
     // The selection ends on the char before selectEnd
     if (ec != 0) {
@@ -3970,15 +3970,15 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromRegion(const KTextE
   Remove from the beginning of each line of the
   selection a start comment line mark.
 */
-bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib, bool toggleComment)
+bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEditor::Range selection, int attrib, bool toggleComment)
 {
     const QString shortCommentMark = highlight()->getCommentSingleLineStart(attrib);
     const QString longCommentMark = shortCommentMark + QLatin1Char(' ');
 
-    int startLine = view->selectionRange().start().line();
-    int endLine = view->selectionRange().end().line();
+    int startLine = selection.start().line();
+    int endLine = selection.end().line();
 
-    if ((view->selectionRange().end().column() == 0) && (endLine > 0)) {
+    if ((selection.end().column() == 0) && (endLine > 0)) {
         endLine--;
     }
 
@@ -4016,24 +4016,15 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
     return removed;
 }
 
-/*
-  Comment or uncomment the selection or the current
-  line if there is no selection.
-*/
-void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint line, uint column, int change)
+void KTextEditor::DocumentPrivate::comment_internal(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int change)
 {
-    // skip word wrap bug #105373
-    const bool skipWordWrap = wordWrap();
-    if (skipWordWrap) {
-        setWordWrap(false);
-    }
-
-    const bool hasSelection = v->selection();
+    const bool hasSelection = !selection.isEmpty();
     int selectionCol = 0;
 
     if (hasSelection) {
-        selectionCol = v->selectionRange().start().column();
+        selectionCol = selection.start().column();
     }
+    const int line = c.line();
 
     int startAttrib = 0;
     Kate::TextLine ln = kateTextLine(line);
@@ -4062,14 +4053,14 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
             // TODO We should try to detect nesting.
             //    - if selection ends at col 0, most likely she wanted that
             // line ignored
-            const KTextEditor::Range sel = v->selectionRange();
+            const KTextEditor::Range sel = selection;
             if (hasStartStopCommentMark
                 && (!hasStartLineCommentMark
                     || ((sel.start().column() > m_buffer->plainLine(sel.start().line())->firstChar())
                         || (sel.end().column() > 0 && sel.end().column() < (m_buffer->plainLine(sel.end().line())->length()))))) {
-                addStartStopCommentToSelection(v, startAttrib);
+                addStartStopCommentToSelection(selection, blockSelect, startAttrib);
             } else if (hasStartLineCommentMark) {
-                addStartLineCommentToSelection(v, startAttrib);
+                addStartLineCommentToSelection(selection, startAttrib);
             }
         }
     } else { // uncomment
@@ -4080,15 +4071,50 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
                 || (hasStartStopCommentMark && removeStartStopCommentFromSingleLine(line, startAttrib));
         } else {
             // anders: this seems like it will work with above changes :)
-            removed = (hasStartStopCommentMark && removeStartStopCommentFromSelection(v, startAttrib))
-                || (hasStartLineCommentMark && removeStartLineCommentFromSelection(v, startAttrib, toggleComment));
+            removed = (hasStartStopCommentMark && removeStartStopCommentFromSelection(selection, startAttrib))
+                || (hasStartLineCommentMark && removeStartLineCommentFromSelection(selection, startAttrib, toggleComment));
         }
 
         // recursive call for toggle comment
         if (!removed && toggleComment) {
-            comment(v, line, column, 1);
+            comment_internal(selection, c, blockSelect, 1);
         }
     }
+}
+
+/*
+  Comment or uncomment the selection or the current
+  line if there is no selection.
+*/
+void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint line, uint column, int change)
+{
+    // skip word wrap bug #105373
+    const bool skipWordWrap = wordWrap();
+    if (skipWordWrap) {
+        setWordWrap(false);
+    }
+
+    editBegin();
+
+    if (v->selection()) {
+        const auto &selections = v->secondarySelections();
+        int i = 0;
+        for (const auto &sel : selections) {
+            KTextEditor::Cursor c = v->secondaryMovingCursors().at(i)->toCursor();
+            comment_internal(sel.range->toRange(), c, false, change);
+            i++;
+        }
+        KTextEditor::Cursor c(line, column);
+        comment_internal(v->selectionRange(), c, v->blockSelection(), change);
+    } else {
+        const auto &cursors = v->secondaryMovingCursors();
+        for (auto *c : cursors) {
+            comment_internal({}, c->toCursor(), false, change);
+        }
+        comment_internal({}, KTextEditor::Cursor(line, column), false, change);
+    }
+
+    editEnd();
 
     if (skipWordWrap) {
         setWordWrap(true); // see begin of function ::comment (bug #105373)
