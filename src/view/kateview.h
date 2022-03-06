@@ -193,10 +193,20 @@ public:
     bool mouseTrackingEnabled() const override;
     bool setMouseTrackingEnabled(bool enable) override;
 
+    // Helper struct to work with multicursor selections
+    struct SecondarySelection {
+        KTextEditor::Cursor anchor;
+        Kate::TextRange *range;
+    };
+
     QVector<KTextEditor::Cursor> secondaryCursors() const;
     const QVector<KTextEditor::MovingCursor *> &secondaryMovingCursors() const
     {
         return m_secondaryCursors;
+    }
+    const QVector<SecondarySelection> &secondarySelections() const
+    {
+        return m_secondarySelections;
     }
     void addSecondaryCursorWithSelection(KTextEditor::Range selRange);
 
@@ -213,10 +223,6 @@ private:
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
 
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
-    struct SecondarySelection {
-        KTextEditor::Cursor anchor;
-        Kate::TextRange *range;
-    };
     QVector<SecondarySelection> m_secondarySelections;
 
 private:

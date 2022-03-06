@@ -876,13 +876,15 @@ public:
       lowercase the character right of the cursor is transformed, for capitalize
       the word under the cursor is transformed.
     */
-    void transform(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor, TextTransform);
+    void transform(KTextEditor::ViewPrivate *view, KTextEditor::Cursor, TextTransform);
     /**
       Unwrap a range of lines.
     */
     void joinLines(uint first, uint last);
 
 private:
+    void transform_internal(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor, KTextEditor::Range selection, TextTransform);
+
     bool removeStringFromBeginning(int line, const QString &str);
     bool removeStringFromEnd(int line, const QString &str);
 

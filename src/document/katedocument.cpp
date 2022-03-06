@@ -4095,13 +4095,13 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     }
 }
 
-void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor c, KTextEditor::DocumentPrivate::TextTransform t)
+void KTextEditor::DocumentPrivate::transform_internal(KTextEditor::ViewPrivate *v,
+                                                      KTextEditor::Cursor c,
+                                                      KTextEditor::Range selection,
+                                                      KTextEditor::DocumentPrivate::TextTransform t)
 {
     if (v->selection()) {
         editStart();
-
-        // cache the selection and cursor, so we can be sure to restore.
-        KTextEditor::Range selection = v->selectionRange();
 
         KTextEditor::Range range(selection.start(), 0);
         while (range.start().line() <= selection.end().line()) {
@@ -4158,11 +4158,6 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
         }
 
         editEnd();
-
-        // restore selection & cursor
-        v->setSelection(selection);
-        v->setCursorPosition(c);
-
     } else { // no selection
         editStart();
 
@@ -4195,6 +4190,36 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
 
         editEnd();
     }
+}
+
+void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor c, KTextEditor::DocumentPrivate::TextTransform t)
+{
+    editBegin();
+
+    if (v->selection()) {
+        const auto &secondarySelections = v->secondarySelections();
+        int i = 0;
+        for (const auto &s : secondarySelections) {
+            auto *cursor = v->secondaryMovingCursors().at(i);
+            auto pos = cursor->toCursor();
+            transform_internal(v, s.anchor, s.range->toRange(), t);
+            cursor->setPosition(pos);
+            i++;
+        }
+        // cache the selection and cursor, so we can be sure to restore.
+        const auto selRange = v->selectionRange();
+        transform_internal(v, c, v->selectionRange(), t);
+        v->setSelection(selRange);
+        v->setCursorPosition(c);
+    } else { // no selection
+        const auto &secondaryCursors = v->secondaryMovingCursors();
+        for (auto *c : secondaryCursors) {
+            transform_internal(v, c->toCursor(), {}, t);
+        }
+        transform_internal(v, c, {}, t);
+    }
+
+    editEnd();
 }
 
 void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
