@@ -2932,6 +2932,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             if (!nextRange.isValid()) {
                 return QWidget::eventFilter(obj, e);
             }
+            view()->clearSecondarySelections();
             int x = renderer()->cursorToX(currentLayout(last), last.column());
             auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
             view()->addSecondaryCursorAt(next);
@@ -2948,6 +2949,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             if (!nextRange.isValid()) {
                 return QWidget::eventFilter(obj, e);
             }
+            view()->clearSecondarySelections();
             int x = renderer()->cursorToX(currentLayout(last), last.column());
             auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
             view()->addSecondaryCursorAt(next);
@@ -3234,6 +3236,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
         if (e->modifiers() == (Qt::AltModifier)) {
             setSelection({});
+            view()->clearSecondarySelections();
             view()->addSecondaryCursorAt(coordinatesToCursor(e->pos(), false));
             e->accept();
             return;
