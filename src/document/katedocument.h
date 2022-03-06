@@ -859,8 +859,8 @@ public:
 
 private:
     // Helper function for use with multiple cursors
-    KTextEditor::Cursor backspace_internal(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
-    void comment_internal(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int changeType);
+    KTextEditor::Cursor backspaceAtCursor(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
+    void commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int changeType);
 
 public:
     void indent(KTextEditor::Range range, int change);
@@ -884,7 +884,7 @@ public:
     void joinLines(uint first, uint last);
 
 private:
-    void transform_internal(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor, KTextEditor::Range selection, TextTransform);
+    void transformCursorOrRange(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor, KTextEditor::Range selection, TextTransform);
 
     bool removeStringFromBeginning(int line, const QString &str);
     bool removeStringFromEnd(int line, const QString &str);

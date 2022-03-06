@@ -3368,7 +3368,7 @@ void KTextEditor::DocumentPrivate::swapTextRanges(KTextEditor::Range firstWord, 
     editEnd();
 }
 
-KTextEditor::Cursor KTextEditor::DocumentPrivate::backspace_internal(KTextEditor::ViewPrivate *view, KTextEditor::Cursor c)
+KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor::ViewPrivate *view, KTextEditor::Cursor c)
 {
     uint col = qMax(c.column(), 0);
     uint line = qMax(c.line(), 0);
@@ -3456,14 +3456,14 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     // Handle multi cursors
     const auto &multiCursors = view->secondaryMovingCursors();
     for (auto *c : multiCursors) {
-        auto newPos = backspace_internal(view, c->toCursor());
+        auto newPos = backspaceAtCursor(view, c->toCursor());
         if (newPos.isValid()) {
             c->setPosition(newPos);
         }
     }
 
     // Handle primary cursor
-    auto newPos = backspace_internal(view, c);
+    auto newPos = backspaceAtCursor(view, c);
     if (newPos.isValid()) {
         view->setCursorPosition(newPos);
     }
@@ -4016,7 +4016,7 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
     return removed;
 }
 
-void KTextEditor::DocumentPrivate::comment_internal(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int change)
+void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int change)
 {
     const bool hasSelection = !selection.isEmpty();
     int selectionCol = 0;
@@ -4077,7 +4077,7 @@ void KTextEditor::DocumentPrivate::comment_internal(KTextEditor::Range selection
 
         // recursive call for toggle comment
         if (!removed && toggleComment) {
-            comment_internal(selection, c, blockSelect, 1);
+            commentSelection(selection, c, blockSelect, 1);
         }
     }
 }
@@ -4101,17 +4101,17 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
         int i = 0;
         for (const auto &sel : selections) {
             KTextEditor::Cursor c = v->secondaryMovingCursors().at(i)->toCursor();
-            comment_internal(sel.range->toRange(), c, false, change);
+            commentSelection(sel.range->toRange(), c, false, change);
             i++;
         }
         KTextEditor::Cursor c(line, column);
-        comment_internal(v->selectionRange(), c, v->blockSelection(), change);
+        commentSelection(v->selectionRange(), c, v->blockSelection(), change);
     } else {
         const auto &cursors = v->secondaryMovingCursors();
         for (auto *c : cursors) {
-            comment_internal({}, c->toCursor(), false, change);
+            commentSelection({}, c->toCursor(), false, change);
         }
-        comment_internal({}, KTextEditor::Cursor(line, column), false, change);
+        commentSelection({}, KTextEditor::Cursor(line, column), false, change);
     }
 
     editEnd();
@@ -4121,10 +4121,10 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     }
 }
 
-void KTextEditor::DocumentPrivate::transform_internal(KTextEditor::ViewPrivate *v,
-                                                      KTextEditor::Cursor c,
-                                                      KTextEditor::Range selection,
-                                                      KTextEditor::DocumentPrivate::TextTransform t)
+void KTextEditor::DocumentPrivate::transformCursorOrRange(KTextEditor::ViewPrivate *v,
+                                                          KTextEditor::Cursor c,
+                                                          KTextEditor::Range selection,
+                                                          KTextEditor::DocumentPrivate::TextTransform t)
 {
     if (v->selection()) {
         editStart();
@@ -4228,21 +4228,21 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
         for (const auto &s : secondarySelections) {
             auto *cursor = v->secondaryMovingCursors().at(i);
             auto pos = cursor->toCursor();
-            transform_internal(v, s.anchor, s.range->toRange(), t);
+            transformCursorOrRange(v, s.anchor, s.range->toRange(), t);
             cursor->setPosition(pos);
             i++;
         }
         // cache the selection and cursor, so we can be sure to restore.
         const auto selRange = v->selectionRange();
-        transform_internal(v, c, v->selectionRange(), t);
+        transformCursorOrRange(v, c, v->selectionRange(), t);
         v->setSelection(selRange);
         v->setCursorPosition(c);
     } else { // no selection
         const auto &secondaryCursors = v->secondaryMovingCursors();
         for (auto *c : secondaryCursors) {
-            transform_internal(v, c->toCursor(), {}, t);
+            transformCursorOrRange(v, c->toCursor(), {}, t);
         }
-        transform_internal(v, c, {}, t);
+        transformCursorOrRange(v, c, {}, t);
     }
 
     editEnd();
