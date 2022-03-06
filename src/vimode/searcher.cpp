@@ -176,7 +176,6 @@ void Searcher::highlightVisibleResults(const SearchParams &searchParams, bool fo
 
     KTextEditor::Range match;
     KTextEditor::Cursor current(vr.start());
-    KTextEditor::Cursor end(m_view->doc()->documentRange().end());
 
     do {
         match = m_view->doc()->searchText(KTextEditor::Range(current, vr.end()), pattern, flags).first();
@@ -193,7 +192,7 @@ void Searcher::highlightVisibleResults(const SearchParams &searchParams, bool fo
 
             current = match.end();
         }
-    } while (match.isValid() && current < end);
+    } while (match.isValid() && current < vr.end());
 }
 
 void Searcher::clearHighlights()

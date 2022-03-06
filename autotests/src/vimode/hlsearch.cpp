@@ -643,6 +643,18 @@ void HlSearchTest::highlightModeTests()
         BeginTest(text);
         FinishTest(text);
     }
+    // test that no endless loop is triggered
+    {
+        QString text = "foo bar xyz\nabc def\nghi jkl\nmno pqr\nstu vwx\nfoo ab bar x";
+        BeginTest(text);
+        auto vr = kate_view->visibleRange();
+        // ensure that last line is not visible
+        QVERIFY(vr.end().line() < 4);
+
+        TestPressKey("/\\\\<\\enter");
+
+        FinishTest(text);
+    }
 }
 
 QVector<Kate::TextRange *> HlSearchTest::rangesOnLine(int line)
