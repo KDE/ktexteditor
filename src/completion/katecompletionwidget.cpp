@@ -935,6 +935,16 @@ bool KateCompletionWidget::execute()
     std::unique_ptr<KTextEditor::MovingCursor> afterTailMCursor(view()->doc()->newMovingCursor(view()->cursorPosition()));
     afterTailMCursor->move(tailStr.size());
 
+    // Handle completion for multi cursors
+    // TODO: Should we handle tail string removal for multicursors?
+    const auto &multicursors = view()->secondaryMovingCursors();
+    for (auto *c : multicursors) {
+        const auto nameCol = toExecute.sibling(toExecute.row(), KTextEditor::CodeCompletionModel::Name);
+        const auto complText = nameCol.data().toString();
+        KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(c->toCursor());
+        view()->doc()->replaceText(wordToReplace, complText);
+    }
+
     model->executeCompletionItem(view(), *m_completionRanges[model].range, toExecute);
     // NOTE the CompletionRange is now removed from m_completionRanges
 
