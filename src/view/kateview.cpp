@@ -2728,6 +2728,10 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
             m_viewInternal->updateDirty();
         }
     }
+
+    if (cursorPosition() == KTextEditor::Cursor(0, 0)) {
+        m_viewInternal->paintCursor();
+    }
 }
 
 void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange)
