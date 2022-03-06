@@ -2705,6 +2705,7 @@ QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::secondaryCursors() const
     for (const auto moving : qAsConst(m_secondaryCursors)) {
         cursors.append(moving->toCursor());
     }
+    std::sort(cursors.begin(), cursors.end(), std::greater{});
     return cursors;
 }
 
