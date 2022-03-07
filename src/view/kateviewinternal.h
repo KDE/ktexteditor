@@ -305,6 +305,7 @@ private:
     // @brief updates the secondary cursor, schedules repaint
     // MUST setPosition of the corresponding moving cursors before calling this
     void updateSecondaryCursors(const QVarLengthArray<CursorPair, 16> &cursors, bool sel);
+    void mergeSelections();
 
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);

@@ -1442,10 +1442,10 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
         }
         multiCursors.push_back({oldPos, c->toCursor()});
     }
-    updateSecondaryCursors(multiCursors, sel);
 
     updateSelection(c, sel);
     updateCursor(c);
+    updateSecondaryCursors(multiCursors, sel);
 }
 
 void KateViewInternal::cursorPrevChar(bool sel)
@@ -1513,12 +1513,13 @@ void KateViewInternal::wordPrev(bool sel)
         cursor->setPosition(newCursorPos);
         cursorsToUpdate.push_back({oldPos, newCursorPos});
     }
-    updateSecondaryCursors(cursorsToUpdate, sel);
 
     // update primary cursor
     const auto c = wordPrevious(m_cursor);
     updateSelection(c, sel);
     updateCursor(c);
+
+    updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
 void KateViewInternal::wordNext(bool sel)
@@ -1572,12 +1573,13 @@ void KateViewInternal::wordNext(bool sel)
         cursor->setPosition(newCursorPos);
         cursorsToUpdate.push_back({oldPos, newCursorPos});
     }
-    updateSecondaryCursors(cursorsToUpdate, sel);
 
     // update primary cursor
     const auto c = nextWord(m_cursor);
     updateSelection(c, sel);
     updateCursor(c);
+
+    updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
 void KateViewInternal::moveEdge(KateViewInternal::Bias bias, bool sel)
@@ -1632,7 +1634,6 @@ void KateViewInternal::home(bool sel)
         c->setPosition(newPos);
         cursorsToUpdate.push_back({oldPos, newPos});
     }
-    updateSecondaryCursors(cursorsToUpdate, sel);
 
     // Primary cursor
     auto newPos = home_internal(m_cursor);
@@ -1640,6 +1641,7 @@ void KateViewInternal::home(bool sel)
         updateSelection(newPos, sel);
         updateCursor(newPos, true);
     }
+    updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
 KTextEditor::Cursor KateViewInternal::end_internal(KTextEditor::Cursor cursor)
@@ -1689,13 +1691,17 @@ void KateViewInternal::end(bool sel)
         c->setPosition(newPos);
         cursorsToUpdate.push_back({oldPos, newPos});
     }
-    updateSecondaryCursors(cursorsToUpdate, sel);
 
     auto newPos = end_internal(m_cursor);
     if (newPos.isValid()) {
         updateSelection(newPos, sel);
         updateCursor(newPos);
     }
+
+    if (!sel && !secondaryCursors.isEmpty()) { }
+
+    updateSecondaryCursors(cursorsToUpdate, sel);
+    paintCursor();
 }
 
 KateTextLayout KateViewInternal::currentLayout(KTextEditor::Cursor c) const
@@ -1921,6 +1927,7 @@ void KateViewInternal::cursorUp(bool sel)
                 auto newVcursor = toVirtualCursor(newPos);
                 if (sel) {
                     updateSecondarySelection(i, cursor, newPos);
+                    mergeSelections();
                 } else {
                     view()->clearSecondarySelections();
                 }
@@ -1943,6 +1950,7 @@ void KateViewInternal::cursorUp(bool sel)
         auto newVcursor = toVirtualCursor(newPos);
         if (sel) {
             updateSecondarySelection(i, cursor, newPos);
+            mergeSelections();
         } else {
             view()->clearSecondarySelections();
         }
@@ -2299,7 +2307,6 @@ void KateViewInternal::updateSecondarySelection(int cursorIdx, KTextEditor::Curs
 {
     if (m_selectionMode != SelectionMode::Default) {
         view()->clearSecondaryCursors();
-        // TODO: Also clear ranges
     }
 
     const auto secondaryCursors = view()->m_secondaryCursors;
@@ -2578,11 +2585,13 @@ void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 
         for (int i = 0; i < cursors.size(); ++i) {
             updateSecondarySelection(i, cursors[i].oldPos, cursors[i].newPos);
         }
-        // FIXME: Handle overlapping selections by merging cursors
-        return;
+        if (!cursors.isEmpty()) {
+            mergeSelections();
+        }
+    } else {
+        view()->clearSecondarySelections();
     }
 
-    view()->clearSecondarySelections();
     QVarLengthArray<int> linesToUpdate;
     for (auto cpair : cursors) {
         linesToUpdate.push_back(cpair.oldPos.line());
@@ -2611,6 +2620,120 @@ void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 
         int endLine = range.first + range.second;
         tagLines(startLine, endLine, /*realLines=*/true);
     }
+}
+
+void KateViewInternal::mergeSelections()
+{
+    struct CursorAndSel {
+        int idx; // index
+        int mergeIdx; // index that we will merge this range into
+        KTextEditor::Cursor c;
+        KTextEditor::Range sel;
+        KTextEditor::Cursor anchor;
+    };
+    std::vector<CursorAndSel> ranges;
+
+    // Add our primary cursor
+    CursorAndSel primary{// special -1 idx
+                         -1,
+                         -1,
+                         view()->cursorPosition(),
+                         view()->selectionRange(),
+                         m_selectAnchor};
+    ranges.push_back(primary);
+
+    std::vector<CursorAndSel> toMerge;
+
+    int i = 0;
+    bool isLeftSel = false;
+    const auto &cursors = view()->m_secondaryCursors;
+    for (const auto &sel : qAsConst(view()->m_secondarySelections)) {
+        const auto cursor = cursors[i]->toCursor();
+        ranges.push_back({i, -1, cursor, sel.range->toRange(), sel.anchor});
+        isLeftSel = cursor < sel.anchor;
+        i++;
+    }
+
+    if (isLeftSel) {
+        std::sort(ranges.begin(), ranges.end(), [](const CursorAndSel &l, const CursorAndSel &r) {
+            return l.c < r.c;
+        });
+
+        for (auto it = ranges.begin(); it != ranges.end(); ++it) {
+            if (it + 1 == ranges.end()) {
+                break;
+            }
+            const auto cur = it->sel;
+            const auto nextIt = it + 1;
+            const auto nextSel = nextIt->sel;
+            if (cur.overlaps(nextSel)) {
+                toMerge.push_back(*nextIt);
+                toMerge.back().mergeIdx = it->idx;
+            }
+        }
+    } else {
+        std::sort(ranges.begin(), ranges.end(), [](const CursorAndSel &l, const CursorAndSel &r) {
+            return l.c > r.c;
+        });
+
+        for (auto it = ranges.begin(); it != ranges.end(); ++it) {
+            if (it + 1 == ranges.end()) {
+                break;
+            }
+            const auto cur = it->sel;
+            const auto nextIt = it + 1;
+            const auto nextSel = nextIt->sel;
+            if (cur.overlaps(nextSel)) {
+                toMerge.push_back(*nextIt);
+                toMerge.back().mergeIdx = it->idx;
+            }
+        }
+    }
+
+    std::vector<KTextEditor::Cursor> cursorsToRemove;
+
+    for (auto &x : toMerge) {
+        int mergeIdx = x.mergeIdx;
+
+        if (mergeIdx == -1) { // Multicursor overlaps primary => merge into primary
+            //                 qDebug() << "Merge into primary";
+            auto newSel = view()->m_selection.toRange();
+            KTextEditor::Range rangeToExpandTo = x.sel;
+            newSel.expandToRange(rangeToExpandTo);
+            view()->m_selection.setRange(newSel);
+            m_selectAnchor = x.anchor;
+            continue;
+        }
+
+        KTextEditor::Range mergeRange;
+        KTextEditor::Cursor newAnchor;
+        mergeRange = view()->m_secondarySelections[mergeIdx].range->toRange();
+        mergeRange.expandToRange(x.sel);
+        newAnchor = x.anchor;
+
+        if (x.idx == -1) { // Primary cursor is overlapping a multi => make multi primary and remove multi
+            //                 qDebug() << "make multi primary and remove multi";
+            // remove this multicursor, and replace it with primary
+            // essentially just make it primary
+            auto newCursor = view()->m_secondaryCursors[mergeIdx]->toCursor();
+            cursorsToRemove.push_back(newCursor);
+            // make this our primary selection
+            m_selectAnchor = x.anchor;
+            setSelection(mergeRange);
+            // make the multicursor our primary cursor
+            updateCursor(newCursor);
+        } else {
+            //                 qDebug() << "merge multi into multi";
+            view()->m_secondarySelections[mergeIdx].anchor = x.anchor;
+            view()->m_secondarySelections[mergeIdx].range->setRange(mergeRange);
+        }
+    }
+
+    // Finally remove the cursors whose selections got merged
+    for (auto &cc : toMerge) {
+        cursorsToRemove.push_back(cc.c);
+    }
+    view()->removeSecondaryCursors(cursorsToRemove);
 }
 
 void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally)
