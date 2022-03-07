@@ -1590,7 +1590,7 @@ void KateViewInternal::moveEdge(KateViewInternal::Bias bias, bool sel)
     updateCursor(c);
 }
 
-KTextEditor::Cursor KateViewInternal::home_internal(KTextEditor::Cursor cursor)
+KTextEditor::Cursor KateViewInternal::moveCursorToLineStart(KTextEditor::Cursor cursor)
 {
     if (view()->dynWordWrap() && currentLayout(cursor).startCol()) {
         // Allow us to go to the real start if we're already at the start of the view line
@@ -1637,7 +1637,7 @@ void KateViewInternal::home(bool sel)
             cursorsToRemove.push_back(oldPos);
             continue;
         }
-        auto newPos = home_internal(oldPos);
+        auto newPos = moveCursorToLineStart(oldPos);
         c->setPosition(newPos);
         cursorsToUpdate.push_back({oldPos, newPos});
     }
@@ -1646,7 +1646,7 @@ void KateViewInternal::home(bool sel)
     }
 
     // Primary cursor
-    auto newPos = home_internal(m_cursor);
+    auto newPos = moveCursorToLineStart(m_cursor);
     if (newPos.isValid()) {
         updateSelection(newPos, sel);
         updateCursor(newPos, true);
@@ -1654,7 +1654,7 @@ void KateViewInternal::home(bool sel)
     updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
-KTextEditor::Cursor KateViewInternal::end_internal(KTextEditor::Cursor cursor)
+KTextEditor::Cursor KateViewInternal::moveCursorToLineEnd(KTextEditor::Cursor cursor)
 {
     KateTextLayout layout = currentLayout(cursor);
 
@@ -1706,7 +1706,7 @@ void KateViewInternal::end(bool sel)
             continue;
         }
 
-        auto newPos = end_internal(oldPos);
+        auto newPos = moveCursorToLineEnd(oldPos);
         c->setPosition(newPos);
         cursorsToUpdate.push_back({oldPos, newPos});
     }
@@ -1714,7 +1714,7 @@ void KateViewInternal::end(bool sel)
         view()->removeSecondaryCursors(cursorsToRemove);
     }
 
-    auto newPos = end_internal(m_cursor);
+    auto newPos = moveCursorToLineEnd(m_cursor);
     if (newPos.isValid()) {
         updateSelection(newPos, sel);
         updateCursor(newPos);
@@ -1942,7 +1942,7 @@ void KateViewInternal::cursorUp(bool sel)
                     tagLine(vCursor);
                 }
             } else {
-                auto newPos = home_internal(cursor);
+                auto newPos = moveCursorToLineStart(cursor);
                 c->setPosition(newPos);
                 auto newVcursor = toVirtualCursor(newPos);
                 if (sel) {
@@ -1986,7 +1986,7 @@ void KateViewInternal::cursorUp(bool sel)
 
     // move cursor to start of line, if we are at first line!
     if (m_displayCursor.line() == 0 && (!view()->dynWordWrap() || cache()->viewLine(m_cursor) == 0)) {
-        auto newPos = home_internal(m_cursor);
+        auto newPos = moveCursorToLineStart(m_cursor);
         if (newPos.isValid()) {
             updateSelection(newPos, sel);
             updateCursor(newPos, true);
@@ -2034,7 +2034,7 @@ void KateViewInternal::cursorDown(bool sel)
                 cursorsToRemove.push_back(cursor);
             } else {
                 // move to edge
-                KTextEditor::Cursor newPos = end_internal(cursor);
+                KTextEditor::Cursor newPos = moveCursorToLineEnd(cursor);
                 c->setPosition(newPos);
                 if (sel) {
                     updateSecondarySelection(i, cursor, newPos);
@@ -2073,7 +2073,7 @@ void KateViewInternal::cursorDown(bool sel)
     // move cursor to end of line, if we are at last line!
     if ((m_displayCursor.line() >= view()->textFolding().visibleLines() - 1)
         && (!view()->dynWordWrap() || cache()->viewLine(m_cursor) == cache()->lastViewLine(m_cursor.line()))) {
-        auto newPos = end_internal(m_cursor);
+        auto newPos = moveCursorToLineEnd(m_cursor);
         if (newPos.isValid()) {
             updateSelection(newPos, sel);
             updateCursor(newPos);

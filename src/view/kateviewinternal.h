@@ -186,9 +186,9 @@ public:
 
 private:
     // Takes as input @p c and applies the home command on it
-    KTextEditor::Cursor home_internal(KTextEditor::Cursor c);
+    KTextEditor::Cursor moveCursorToLineStart(KTextEditor::Cursor c);
     // Takes as input @p c and applies the end command on it
-    KTextEditor::Cursor end_internal(KTextEditor::Cursor c);
+    KTextEditor::Cursor moveCursorToLineEnd(KTextEditor::Cursor c);
 
 public:
     /**
