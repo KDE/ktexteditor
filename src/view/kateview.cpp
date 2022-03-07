@@ -2805,6 +2805,29 @@ Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEdito
     return range;
 }
 
+void KTextEditor::ViewPrivate::ensureSingleCursorPerLine()
+{
+    if (!m_secondaryCursors.isEmpty()) {
+        std::vector<KTextEditor::Cursor> cursorsToRemove;
+        // Clear cursors in same line, we will have one after the function is done
+        const auto cursors = secondaryCursors();
+        auto matchLine = [](KTextEditor::Cursor l, KTextEditor::Cursor r) {
+            return l.line() == r.line();
+        };
+
+        auto it = std::adjacent_find(cursors.begin(), cursors.end(), matchLine);
+        while (it != cursors.end()) {
+            cursorsToRemove.push_back(*it);
+            ++it;
+            it = std::adjacent_find(it, cursors.end(), matchLine);
+        }
+
+        if (!cursorsToRemove.empty()) {
+            removeSecondaryCursors(cursorsToRemove);
+        }
+    }
+}
+
 KTextEditor::Range KTextEditor::ViewPrivate::lastSelectionRange()
 {
     if (!selection()) {

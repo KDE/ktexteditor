@@ -1626,13 +1626,23 @@ KTextEditor::Cursor KateViewInternal::home_internal(KTextEditor::Cursor cursor)
 void KateViewInternal::home(bool sel)
 {
     // Multicursor
+    view()->ensureSingleCursorPerLine();
     const auto secondaryCursors = view()->m_secondaryCursors;
     QVarLengthArray<CursorPair, 16> cursorsToUpdate;
+    std::vector<KTextEditor::Cursor> cursorsToRemove;
     for (auto *c : secondaryCursors) {
         auto oldPos = c->toCursor();
+        // These will end up in same place so just remove
+        if (oldPos.line() == m_cursor.line()) {
+            cursorsToRemove.push_back(oldPos);
+            continue;
+        }
         auto newPos = home_internal(oldPos);
         c->setPosition(newPos);
         cursorsToUpdate.push_back({oldPos, newPos});
+    }
+    if (!cursorsToRemove.empty()) {
+        view()->removeSecondaryCursors(cursorsToRemove);
     }
 
     // Primary cursor
@@ -1683,13 +1693,25 @@ KTextEditor::Cursor KateViewInternal::end_internal(KTextEditor::Cursor cursor)
 void KateViewInternal::end(bool sel)
 {
     // Multicursor
-    const auto secondaryCursors = view()->m_secondaryCursors;
+    view()->ensureSingleCursorPerLine();
+
+    std::vector<KTextEditor::Cursor> cursorsToRemove;
     QVarLengthArray<CursorPair, 16> cursorsToUpdate;
+    const auto secondaryCursors = view()->m_secondaryCursors;
     for (auto *c : secondaryCursors) {
         auto oldPos = c->toCursor();
+        // These will end up in same place so just remove
+        if (oldPos.line() == m_cursor.line()) {
+            cursorsToRemove.push_back(oldPos);
+            continue;
+        }
+
         auto newPos = end_internal(oldPos);
         c->setPosition(newPos);
         cursorsToUpdate.push_back({oldPos, newPos});
+    }
+    if (!cursorsToRemove.empty()) {
+        view()->removeSecondaryCursors(cursorsToRemove);
     }
 
     auto newPos = end_internal(m_cursor);
@@ -1697,8 +1719,6 @@ void KateViewInternal::end(bool sel)
         updateSelection(newPos, sel);
         updateCursor(newPos);
     }
-
-    if (!sel && !secondaryCursors.isEmpty()) { }
 
     updateSecondaryCursors(cursorsToUpdate, sel);
     paintCursor();

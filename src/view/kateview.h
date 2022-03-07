@@ -225,6 +225,7 @@ private:
     void clearSecondarySelections();
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
+    void ensureSingleCursorPerLine();
 
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
     QVector<SecondarySelection> m_secondarySelections;
