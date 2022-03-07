@@ -298,9 +298,13 @@ private:
     void updateBracketMarks();
     void beginSelectLine(const QPoint &pos);
 
+    struct CursorPair {
+        KTextEditor::Cursor oldPos;
+        KTextEditor::Cursor newPos;
+    };
     // @brief updates the secondary cursor, schedules repaint
-    // MUST setPosition of the corresponding moving cursor before calling this
-    void updateSecondaryCursor(int idx, KTextEditor::Cursor oldPos, KTextEditor::Cursor newPos, bool sel);
+    // MUST setPosition of the corresponding moving cursors before calling this
+    void updateSecondaryCursors(const QVarLengthArray<CursorPair, 16> &cursors, bool sel);
 
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);

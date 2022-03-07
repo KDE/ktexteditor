@@ -1432,7 +1432,7 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
     }
 
     const auto sc = view()->m_secondaryCursors;
-    int i = 0;
+    QVarLengthArray<CursorPair, 16> multiCursors;
     for (auto c : sc) {
         auto oldPos = c->toCursor();
         if (view()->wrapCursor()) {
@@ -1440,9 +1440,9 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
         } else {
             c->setPosition(BoundedCursor(this, c->toCursor()) += bias);
         }
-        updateSecondaryCursor(i, oldPos, c->toCursor(), sel);
-        ++i;
+        multiCursors.push_back({oldPos, c->toCursor()});
     }
+    updateSecondaryCursors(multiCursors, sel);
 
     updateSelection(c, sel);
     updateCursor(c);
@@ -1506,14 +1506,14 @@ void KateViewInternal::wordPrev(bool sel)
     };
 
     const auto secondaryCursors = view()->m_secondaryCursors;
-    int i = 0;
+    QVarLengthArray<CursorPair, 16> cursorsToUpdate;
     for (auto *cursor : secondaryCursors) {
         auto oldPos = cursor->toCursor();
         auto newCursorPos = wordPrevious(cursor->toCursor());
         cursor->setPosition(newCursorPos);
-        updateSecondaryCursor(i, oldPos, newCursorPos, sel);
-        i++;
+        cursorsToUpdate.push_back({oldPos, newCursorPos});
     }
+    updateSecondaryCursors(cursorsToUpdate, sel);
 
     // update primary cursor
     const auto c = wordPrevious(m_cursor);
@@ -1565,14 +1565,14 @@ void KateViewInternal::wordNext(bool sel)
 
     QVarLengthArray<int> lines;
     const auto secondaryCursors = view()->m_secondaryCursors;
-    int i = 0;
+    QVarLengthArray<CursorPair, 16> cursorsToUpdate;
     for (auto *cursor : secondaryCursors) {
         auto oldPos = cursor->toCursor();
         auto newCursorPos = nextWord(cursor->toCursor());
         cursor->setPosition(newCursorPos);
-        updateSecondaryCursor(i, oldPos, newCursorPos, sel);
-        i++;
+        cursorsToUpdate.push_back({oldPos, newCursorPos});
     }
+    updateSecondaryCursors(cursorsToUpdate, sel);
 
     // update primary cursor
     const auto c = nextWord(m_cursor);
@@ -1625,14 +1625,14 @@ void KateViewInternal::home(bool sel)
 {
     // Multicursor
     const auto secondaryCursors = view()->m_secondaryCursors;
-    int i = 0;
+    QVarLengthArray<CursorPair, 16> cursorsToUpdate;
     for (auto *c : secondaryCursors) {
         auto oldPos = c->toCursor();
         auto newPos = home_internal(oldPos);
         c->setPosition(newPos);
-        updateSecondaryCursor(i, oldPos, newPos, sel);
-        i++;
+        cursorsToUpdate.push_back({oldPos, newPos});
     }
+    updateSecondaryCursors(cursorsToUpdate, sel);
 
     // Primary cursor
     auto newPos = home_internal(m_cursor);
@@ -1682,14 +1682,14 @@ void KateViewInternal::end(bool sel)
 {
     // Multicursor
     const auto secondaryCursors = view()->m_secondaryCursors;
-    int i = 0;
+    QVarLengthArray<CursorPair, 16> cursorsToUpdate;
     for (auto *c : secondaryCursors) {
         auto oldPos = c->toCursor();
         auto newPos = end_internal(oldPos);
         c->setPosition(newPos);
-        updateSecondaryCursor(i, oldPos, newPos, sel);
-        i++;
+        cursorsToUpdate.push_back({oldPos, newPos});
     }
+    updateSecondaryCursors(cursorsToUpdate, sel);
 
     auto newPos = end_internal(m_cursor);
     if (newPos.isValid()) {
@@ -2572,15 +2572,45 @@ void KateViewInternal::updateFoldingMarkersHighlighting()
     m_fmEnd->setRange(KTextEditor::Range::invalid());
 }
 
-void KateViewInternal::updateSecondaryCursor(int idx, KTextEditor::Cursor oldPos, KTextEditor::Cursor newPos, bool sel)
+void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 16> &cursors, bool sel)
 {
     if (sel) {
-        updateSecondarySelection(idx, oldPos, newPos);
-    } else {
-        view()->clearSecondarySelections();
+        for (int i = 0; i < cursors.size(); ++i) {
+            updateSecondarySelection(i, cursors[i].oldPos, cursors[i].newPos);
+        }
+        // FIXME: Handle overlapping selections by merging cursors
+        return;
     }
-    auto vNewPos = toVirtualCursor(newPos);
-    tagLines(toVirtualCursor(oldPos).line(), vNewPos.line());
+
+    view()->clearSecondarySelections();
+    QVarLengthArray<int> linesToUpdate;
+    for (auto cpair : cursors) {
+        linesToUpdate.push_back(cpair.oldPos.line());
+        linesToUpdate.push_back(cpair.newPos.line());
+    }
+    // Remove duplicate stuff
+    std::sort(linesToUpdate.begin(), linesToUpdate.end());
+    auto it = std::unique(linesToUpdate.begin(), linesToUpdate.end());
+
+    // Collapse ranges to avoid extra work
+    using Range = std::pair<int, int>; // start, length
+    QVarLengthArray<Range> ranges;
+    int prev = 0;
+    for (auto i = linesToUpdate.begin(); i != it; ++i) {
+        int curLine = *i;
+        if (!ranges.isEmpty() && prev + 1 == curLine) {
+            ranges.back().second++;
+        } else {
+            ranges.push_back({curLine, 0});
+        }
+        prev = curLine;
+    }
+
+    for (auto range : ranges) {
+        int startLine = range.first;
+        int endLine = range.first + range.second;
+        tagLines(startLine, endLine, /*realLines=*/true);
+    }
 }
 
 void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally)
