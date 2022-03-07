@@ -17,6 +17,7 @@
 #include "kateviinputmode.h"
 #include <vimode/completionrecorder.h>
 #include <vimode/completionreplayer.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/keyparser.h>
 #include <vimode/lastchangerecorder.h>
@@ -358,6 +359,10 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                         completionFinished();
                         return true;
                     }
+                } else if (m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->isSendingSyntheticSearchCompletedKeypress()) {
+                    // BUG #451076, Do not record/send return for a newline when doing a search via Ctrl+F/Edit->Find menu
+                    m_viInputModeManager->doNotLogCurrentKeypress();
+                    return true;
                 }
                 Q_FALLTHROUGH();
             default:

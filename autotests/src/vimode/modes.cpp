@@ -11,6 +11,7 @@
 #include <kateconfig.h>
 #include <katedocument.h>
 #include <kateview.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
 using namespace KTextEditor;
 
@@ -1127,6 +1128,20 @@ void ModesTest::InsertKeysTests()
     DoTest("", "ifoo\\returnbar", "foo\nbar");
     DoTest("", "\\insertfoo", "foo");
     DoTest("foo bar", "i\\home\\delete", "oo bar");
+
+    // BUG #451076, don't want an extra newline when using the "Find" action from the menu or Ctrl-F
+    BaseTest::ensureKateViewVisible(); // required for the bug to trigger
+    BeginTest("foobar");
+    TestPressKey("i");
+    kate_view->find();
+    TestPressKey("bar\\return");
+    // ensure the cursor is at 'foo_b_ar'
+    QCOMPARE(kate_view->cursorPosition().line(), 0);
+    QCOMPARE(kate_view->cursorPosition().column(), 3);
+    FinishTest("foobar");
+    // hide the view again
+    kate_view->hide();
+    mainWindow->hide();
 }
 
 // END: Insert mode.
@@ -1564,6 +1579,20 @@ void ModesTest::ReplaceBasicTests()
     DoTest("foobarbaz", "Rbar\\esc2.", "babarbarz");
     DoTest("foobarbaz", "Rbar\\esc4.", "babarbarbarbar");
     DoTest("foobarbaz", "Rbar\\esc2.R\\esc2.", "babarbarz");
+
+    // BUG #451076, don't want an extra newline when using the "Find" action from the menu or Ctrl-F
+    BaseTest::ensureKateViewVisible(); // required for the bug to trigger
+    BeginTest("foobar");
+    TestPressKey("R");
+    kate_view->find();
+    TestPressKey("bar\\return");
+    // ensure the cursor is at 'foo_b_ar'
+    QCOMPARE(kate_view->cursorPosition().line(), 0);
+    QCOMPARE(kate_view->cursorPosition().column(), 3);
+    FinishTest("foobar");
+    // hide the view again
+    kate_view->hide();
+    mainWindow->hide();
 }
 
 void ModesTest::ReplaceUndoTests()

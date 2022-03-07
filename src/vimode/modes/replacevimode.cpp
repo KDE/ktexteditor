@@ -4,9 +4,11 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 #include "katedocument.h"
+#include "kateviinputmode.h"
 
 #include <utils/kateconfig.h>
 #include <view/kateviewinternal.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/marks.h>
 #include <vimode/modes/replacevimode.h>
@@ -131,6 +133,14 @@ bool ReplaceViMode::handleKeypress(const QKeyEvent *e)
         case Qt::Key_Insert:
             startInsertMode();
             return true;
+        case Qt::Key_Enter:
+        case Qt::Key_Return:
+            if (m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->isSendingSyntheticSearchCompletedKeypress()) {
+                // BUG #451076, Do not record/send return for a newline when doing a search via Ctrl+F/Edit->Find menu
+                m_viInputModeManager->doNotLogCurrentKeypress();
+                return true;
+            }
+            Q_FALLTHROUGH();
         default:
             return false;
         }
