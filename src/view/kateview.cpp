@@ -2736,6 +2736,30 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
     }
 }
 
+void KTextEditor::ViewPrivate::ensureUniqueCursors()
+{
+    // These are sorted
+    auto secondary = secondaryCursors();
+    auto it = std::unique(secondary.begin(), secondary.end());
+    std::vector<KTextEditor::Cursor> toRemove;
+
+    if (it != secondary.end()) {
+        toRemove.reserve(std::distance(it, secondary.end()));
+        std::copy(it, secondary.end(), std::back_inserter(toRemove));
+    }
+
+    // Check if any cursor is the same as our primary
+    for (auto c : qAsConst(secondary)) {
+        if (c == cursorPosition()) {
+            toRemove.push_back(c);
+        }
+    }
+
+    if (!toRemove.empty()) {
+        removeSecondaryCursors(toRemove);
+    }
+}
+
 void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange)
 {
     // If cursor position is the same as primary, ignore.
@@ -3066,6 +3090,8 @@ void KTextEditor::ViewPrivate::killLine()
         doc()->removeLine(line);
     });
     doc()->editEnd();
+
+    ensureUniqueCursors();
 }
 
 void KTextEditor::ViewPrivate::lowercase()
@@ -3134,6 +3160,9 @@ void KTextEditor::ViewPrivate::deleteWordLeft()
     KTextEditor::Range selection = selectionRange();
     removeSelectedText();
     doc()->editEnd();
+
+    ensureUniqueCursors();
+
     m_viewInternal->tagRange(selection, true);
     m_viewInternal->updateDirty();
 }
@@ -3141,7 +3170,6 @@ void KTextEditor::ViewPrivate::deleteWordLeft()
 void KTextEditor::ViewPrivate::keyDelete()
 {
     doc()->editBegin();
-
     // multi cursor
     for (auto *c : qAsConst(m_secondaryCursors)) {
         doc()->del(this, c->toCursor());
@@ -3149,8 +3177,9 @@ void KTextEditor::ViewPrivate::keyDelete()
 
     // primary cursor
     doc()->del(this, cursorPosition());
-
     doc()->editEnd();
+
+    ensureUniqueCursors();
 }
 
 void KTextEditor::ViewPrivate::deleteWordRight()
@@ -3160,6 +3189,9 @@ void KTextEditor::ViewPrivate::deleteWordRight()
     KTextEditor::Range selection = selectionRange();
     removeSelectedText();
     doc()->editEnd();
+
+    ensureUniqueCursors();
+
     m_viewInternal->tagRange(selection, true);
     m_viewInternal->updateDirty();
 }

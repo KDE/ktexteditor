@@ -217,6 +217,9 @@ public:
 
     void clearSecondaryCursors();
 
+    // Check all the cursors, and remove cursors which have the same positions
+    void ensureUniqueCursors();
+
 private:
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
     void clearSecondarySelections();
