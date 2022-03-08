@@ -6,7 +6,6 @@
 #include "config.h"
 #include "kateglobal.h"
 
-#include "katesecuretextbuffer_p.h"
 #include "katetextbuffer.h"
 #include "katetextloader.h"
 
@@ -16,8 +15,6 @@
 #include "katepartdebug.h"
 #include "kateview.h"
 
-#include <KAuth/Action>
-#include <KAuth/ExecuteJob>
 
 #ifndef Q_OS_WIN
 #include <cerrno>
@@ -33,6 +30,12 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QTemporaryFile>
+
+#if HAVE_KAUTH
+#include "katesecuretextbuffer_p.h"
+#include <KAuth/Action>
+#include <KAuth/ExecuteJob>
+#endif
 
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
@@ -823,6 +826,7 @@ TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filenam
 
 bool TextBuffer::saveBufferEscalated(const QString &filename)
 {
+#if HAVE_KAUTH
     // construct correct filter device
     // we try to use the same compression as for opening
     const KCompressionDevice::CompressionType type = KCompressionDevice::compressionTypeForMimeType(m_mimeTypeForFilterDev);
@@ -908,6 +912,9 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     }
 
     return true;
+#else
+    return false;
+#endif
 }
 
 void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint)

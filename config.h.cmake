@@ -7,4 +7,6 @@
 
 #cmakedefine01 HAVE_FDATASYNC
 
+#cmakedefine01 HAVE_KAUTH
+
 #endif

@@ -44,7 +44,6 @@ include_directories(
 # KTextEditor interface sources
 set(ktexteditor_LIB_SRCS
 # text buffer & buffer helpers
-buffer/katesecuretextbuffer.cpp
 buffer/katetextbuffer.cpp
 buffer/katetextblock.cpp
 buffer/katetextline.cpp
@@ -214,6 +213,10 @@ if(EditorConfig_FOUND)
     set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} document/editorconfig.cpp)
 endif()
 
+if(HAVE_KAUTH)
+    set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} buffer/katesecuretextbuffer.cpp)
+endif()
+
 ecm_qt_declare_logging_category(ktexteditor_LIB_SRCS
     HEADER katepartdebug.h
     IDENTIFIER LOG_KTE
@@ -317,9 +320,12 @@ PRIVATE
   KF5::ItemViews
   KF5::SonnetCore
   KF5::SonnetUi
-  KF5::AuthCore
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
+
+if(HAVE_KAUTH)
+  target_link_libraries(KF5TextEditor PRIVATE KF5::AuthCore)
+endif()
 
 set_target_properties(KF5TextEditor
    PROPERTIES
@@ -395,14 +401,13 @@ include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
-
-add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
-target_link_libraries(kauth_ktexteditor_helper
-  KF5::AuthCore
-)
-install(TARGETS kauth_ktexteditor_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR} )
-kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor.katetextbuffer root)
-kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktexteditor.katetextbuffer.actions)
+if(HAVE_KAUTH)
+    add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
+    target_link_libraries(kauth_ktexteditor_helper KF5::AuthCore)
+    install(TARGETS kauth_ktexteditor_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR} )
+    kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor.katetextbuffer root)
+    kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktexteditor.katetextbuffer.actions)
+endif()
 
 # add part
 add_subdirectory(part)
