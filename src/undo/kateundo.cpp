@@ -12,6 +12,7 @@
 
 #include "katedocument.h"
 #include "kateundomanager.h"
+#include "kateview.h"
 
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
@@ -214,11 +215,17 @@ void KateEditMarkLineAutoWrappedUndo::redo()
     doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }
 
-KateUndoGroup::KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor cursorPosition, KTextEditor::Range selectionRange)
+KateUndoGroup::KateUndoGroup(KateUndoManager *manager,
+                             const KTextEditor::Cursor cursorPosition,
+                             const QVector<KTextEditor::Cursor> &cursors,
+                             KTextEditor::Range selection,
+                             const QVector<KTextEditor::Range> &secondarySelectionRanges)
     : m_manager(manager)
-    , m_undoSelection(selectionRange)
+    , m_undoSelections(secondarySelectionRanges)
+    , m_undoSelection(selection)
     , m_redoSelection(-1, -1, -1, -1)
     , m_undoCursor(cursorPosition)
+    , m_undoSecondaryCursors(cursors)
     , m_redoCursor(-1, -1)
 {
 }
@@ -228,7 +235,7 @@ KateUndoGroup::~KateUndoGroup()
     qDeleteAll(m_items);
 }
 
-void KateUndoGroup::undo(KTextEditor::View *view)
+void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
 {
     if (m_items.isEmpty()) {
         return;
@@ -242,9 +249,19 @@ void KateUndoGroup::undo(KTextEditor::View *view)
 
     if (view != nullptr) {
         if (m_undoSelection.isValid()) {
+            if (!m_undoSelections.isEmpty() && !m_undoSecondaryCursors.isEmpty()) {
+                view->clearSecondaryCursors();
+                int i = 0;
+                for (const auto r : qAsConst(m_undoSelections)) {
+                    view->addSecondaryCursorWithSelection(r, m_undoSecondaryCursors[i]);
+                    i++;
+                }
+            }
+
             view->setSelection(m_undoSelection);
         } else {
             view->removeSelection();
+            view->clearSecondarySelections();
         }
 
         if (m_undoCursor.isValid()) {
@@ -255,7 +272,7 @@ void KateUndoGroup::undo(KTextEditor::View *view)
     m_manager->endUndo();
 }
 
-void KateUndoGroup::redo(KTextEditor::View *view)
+void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
 {
     if (m_items.isEmpty()) {
         return;
@@ -269,9 +286,18 @@ void KateUndoGroup::redo(KTextEditor::View *view)
 
     if (view != nullptr) {
         if (m_redoSelection.isValid()) {
+            if (!m_redoSelections.isEmpty() && !m_redoSecondaryCursors.isEmpty()) {
+                view->clearSecondaryCursors();
+                int i = 0;
+                for (const auto r : qAsConst(m_redoSelections)) {
+                    view->addSecondaryCursorWithSelection(r, m_redoSecondaryCursors[i]);
+                    i++;
+                }
+            }
             view->setSelection(m_redoSelection);
         } else {
             view->removeSelection();
+            view->clearSecondarySelections();
         }
 
         if (m_redoCursor.isValid()) {
@@ -282,10 +308,15 @@ void KateUndoGroup::redo(KTextEditor::View *view)
     m_manager->endUndo();
 }
 
-void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition, KTextEditor::Range selectionRange)
+void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
+                            const QVector<KTextEditor::Cursor> &cursors,
+                            KTextEditor::Range selectionRange,
+                            const QVector<KTextEditor::Range> &secondarySelectionRanges)
 {
     m_redoCursor = cursorPosition;
+    m_redoSecondaryCursors = cursors;
     m_redoSelection = selectionRange;
+    m_redoSelections = secondarySelectionRanges;
 }
 
 void KateUndoGroup::addItem(KateUndo *u)
@@ -325,7 +356,9 @@ bool KateUndoGroup::merge(KateUndoGroup *newGroup, bool complex)
         }
 
         m_redoCursor = newGroup->m_redoCursor;
+        m_redoSecondaryCursors = newGroup->m_redoSecondaryCursors;
         m_redoSelection = newGroup->m_redoSelection;
+        m_redoSelections = newGroup->m_redoSelections;
 
         return true;
     }

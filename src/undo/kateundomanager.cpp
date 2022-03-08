@@ -11,6 +11,7 @@
 #include "katedocument.h"
 #include "katemodifiedundo.h"
 #include "katepartdebug.h"
+#include "kateview.h"
 
 #include <QBitArray>
 
@@ -80,10 +81,24 @@ void KateUndoManager::editStart()
     Q_ASSERT(m_editCurrentUndo == nullptr); // make sure to enter a clean state
 
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
-    const KTextEditor::Range selectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
+    const KTextEditor::Range primarySelectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
+    QVector<KTextEditor::Range> secondarySelections;
+    QVector<KTextEditor::Cursor> secondaryCursors;
+    if (activeView()) {
+        const auto sels = activeView()->secondarySelections();
+        secondarySelections.reserve(sels.size());
+        for (const auto &s : sels) {
+            secondarySelections.push_back(s.range->toRange());
+        }
+        const auto cursors = activeView()->secondaryMovingCursors();
+        secondaryCursors.reserve(cursors.size());
+        for (auto *c : cursors) {
+            secondaryCursors << c->toCursor();
+        }
+    }
 
     // new current undo item
-    m_editCurrentUndo = new KateUndoGroup(this, cursorPosition, selectionRange);
+    m_editCurrentUndo = new KateUndoGroup(this, cursorPosition, secondaryCursors, primarySelectionRange, secondarySelections);
 
     Q_ASSERT(m_editCurrentUndo != nullptr); // a new undo group must be created by this method
 }
@@ -100,7 +115,22 @@ void KateUndoManager::editEnd()
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range selectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
 
-    m_editCurrentUndo->editEnd(cursorPosition, selectionRange);
+    QVector<KTextEditor::Range> secondarySelections;
+    QVector<KTextEditor::Cursor> secondaryCursors;
+    if (activeView()) {
+        const auto sels = activeView()->secondarySelections();
+        secondarySelections.reserve(sels.size());
+        for (const auto &s : sels) {
+            secondarySelections.push_back(s.range->toRange());
+        }
+        const auto cursors = activeView()->secondaryMovingCursors();
+        secondaryCursors.reserve(cursors.size());
+        for (auto *c : cursors) {
+            secondaryCursors << c->toCursor();
+        }
+    }
+
+    m_editCurrentUndo->editEnd(cursorPosition, secondaryCursors, selectionRange, secondarySelections);
 
     bool changedUndo = false;
 
@@ -454,7 +484,7 @@ void KateUndoManager::setAllowComplexMerge(bool allow)
     m_undoComplexMerge = allow;
 }
 
-KTextEditor::View *KateUndoManager::activeView()
+KTextEditor::ViewPrivate *KateUndoManager::activeView()
 {
-    return m_document->activeView();
+    return static_cast<KTextEditor::ViewPrivate *>(m_document->activeView());
 }

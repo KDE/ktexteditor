@@ -208,7 +208,7 @@ public:
     {
         return m_secondarySelections;
     }
-    void addSecondaryCursorWithSelection(KTextEditor::Range selRange);
+    void addSecondaryCursorWithSelection(KTextEditor::Range selRange, KTextEditor::Cursor cursorPos = KTextEditor::Cursor::invalid());
 
     // Returns the last secondary selection range if available
     // Otherwise returns m_selection
@@ -216,13 +216,13 @@ public:
     KTextEditor::Range lastSelectionRange();
 
     void clearSecondaryCursors();
+    void clearSecondarySelections();
 
     // Check all the cursors, and remove cursors which have the same positions
     void ensureUniqueCursors();
 
 private:
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
-    void clearSecondarySelections();
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
     void ensureSingleCursorPerLine();

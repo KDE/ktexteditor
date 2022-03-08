@@ -2791,7 +2791,7 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors()
     }
 }
 
-void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange)
+void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange, KTextEditor::Cursor cursorPos)
 {
     // If cursor position is the same as primary, ignore.
     if (selRange.isEmpty() || cursorPosition() == selRange.end()) {
@@ -2808,7 +2808,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Rang
         }
     }
 
-    auto cursorPos = selRange.end();
+    cursorPos = cursorPos.isValid() ? cursorPos : selRange.end();
     addSecondaryCursorAt(cursorPos, /*toggle=*/false);
     int last = lastDisplayedLine();
     int first = firstDisplayedLine();

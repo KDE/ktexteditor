@@ -24,6 +24,7 @@ namespace KTextEditor
 {
 class Document;
 class View;
+class ViewPrivate;
 class Cursor;
 }
 
@@ -196,7 +197,7 @@ private Q_SLOTS:
     void viewCreated(KTextEditor::Document *, KTextEditor::View *newView) const;
 
 private:
-    KTextEditor::View *activeView();
+    KTextEditor::ViewPrivate *activeView();
 
 private:
     KTextEditor::DocumentPrivate *m_document = nullptr;
