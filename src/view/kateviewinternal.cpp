@@ -3011,12 +3011,14 @@ void KateViewInternal::paintCursor()
         updateDirty(); // paintText (0,0,width(), height(), true);
     }
 
-    const auto sc = view()->secondaryCursors();
-    for (auto c : sc) {
-        if (tagLine(c)) {
-            updateDirty(); // paintText (0,0,width(), height(), true);
-        }
+    QVector<KTextEditor::Cursor> multiCursors = view()->secondaryCursors();
+    auto it = std::unique(multiCursors.begin(), multiCursors.end(), [](KTextEditor::Cursor l, KTextEditor::Cursor r) {
+        return l.line() == r.line();
+    });
+    for (auto i = multiCursors.cbegin(); i != it; ++i) {
+        tagLine(*i);
     }
+    updateDirty(); // paintText (0,0,width(), height(), true);
 }
 
 // Point in content coordinates
