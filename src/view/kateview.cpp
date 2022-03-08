@@ -2706,7 +2706,14 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
     auto moving = m_doc->newMovingCursor(cursor);
     m_secondaryCursors.append(moving);
     tagLine(cursor);
-    m_viewInternal->updateDirty();
+
+    if (m_viewInternal->m_cursorTimer.isActive()) {
+        if (QApplication::cursorFlashTime() > 0) {
+            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
+        }
+        renderer()->setDrawCaret(true);
+    }
+    m_viewInternal->paintCursor();
     return true;
 }
 
