@@ -1272,7 +1272,8 @@ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, Search
         }
     }
     if (view->selection()) {
-        const QString pattern = view->selectionText();
+        // We only want text of one of the selection ranges
+        const QString pattern = view->doc()->text(view->selectionRange());
 
         // How to find?
         SearchOptions enabledOptions(KTextEditor::Default);
