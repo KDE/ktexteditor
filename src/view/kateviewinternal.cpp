@@ -3101,10 +3101,13 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             }
         }
 
+        // TODO: Handle this more properly
         if (k->key() == Qt::Key_Down && k->modifiers() == (Qt::CTRL | Qt::ALT)) {
             KTextEditor::Cursor last = cursorPosition();
-            if (!view()->m_secondaryCursors.isEmpty()) {
-                last = view()->m_secondaryCursors.back()->toCursor();
+            const auto secondary = view()->secondaryCursors();
+            if (!secondary.isEmpty()) {
+                last = secondary.front();
+                last = std::max(cursorPosition(), last);
             }
             auto nextRange = nextLayout(last);
             if (!nextRange.isValid()) {
@@ -3120,8 +3123,10 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
 
         if (k->key() == Qt::Key_Up && k->modifiers() == (Qt::CTRL | Qt::ALT)) {
             KTextEditor::Cursor last = cursorPosition();
-            if (!view()->m_secondaryCursors.isEmpty()) {
-                last = view()->m_secondaryCursors.back()->toCursor();
+            const auto secondary = view()->secondaryCursors();
+            if (!secondary.isEmpty()) {
+                last = secondary.back();
+                last = std::min(cursorPosition(), last);
             }
             auto nextRange = previousLayout(last);
             if (!nextRange.isValid()) {
