@@ -2645,6 +2645,7 @@ void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 
         int endLine = range.first + range.second;
         tagLines(startLine, endLine, /*realLines=*/true);
     }
+    updateDirty();
 }
 
 void KateViewInternal::mergeSelections()
