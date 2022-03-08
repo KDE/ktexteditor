@@ -47,6 +47,7 @@
 #include <QMimeData>
 #include <QPainter>
 #include <QPixmap>
+#include <QScopeGuard>
 #include <QScroller>
 #include <QStyle>
 #include <QToolTip>
@@ -1947,7 +1948,6 @@ void KateViewInternal::cursorUp(bool sel)
                 auto newVcursor = toVirtualCursor(newPos);
                 if (sel) {
                     updateSecondarySelection(i, cursor, newPos);
-                    mergeSelections();
                 } else {
                     view()->clearSecondarySelections();
                 }
@@ -1970,7 +1970,6 @@ void KateViewInternal::cursorUp(bool sel)
         auto newVcursor = toVirtualCursor(newPos);
         if (sel) {
             updateSecondarySelection(i, cursor, newPos);
-            mergeSelections();
         } else {
             view()->clearSecondarySelections();
         }
@@ -1978,6 +1977,9 @@ void KateViewInternal::cursorUp(bool sel)
         i++;
     }
     view()->removeSecondaryCursors(cursorsToRemove);
+    auto mergeOnFuncEnd = qScopeGuard([this] {
+        mergeSelections();
+    });
 
     // Normal single cursor
 
@@ -2067,6 +2069,9 @@ void KateViewInternal::cursorDown(bool sel)
         i++;
     }
     view()->removeSecondaryCursors(cursorsToRemove);
+    auto mergeOnFuncEnd = qScopeGuard([this] {
+        mergeSelections();
+    });
 
     // Handle normal single cursor
 
