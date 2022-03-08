@@ -3153,7 +3153,6 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
                 return true;
             }
         }
-
     } break;
 
     case QEvent::KeyPress: {

@@ -854,6 +854,12 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(KStandardAction::Replace, this, SLOT(replace()));
     a->setWhatsThis(i18n("Look up a piece of text or regular expression and replace the result with some given text."));
 
+    a = ac->addAction(QStringLiteral("edit_create_multi_crusor_from_sel"));
+    a->setText(i18n("Create multiple cursors from selection"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::Key_I));
+    a->setWhatsThis(i18n("Creates a cursor at the end of every line in selection."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::createMultiCursorsFromSelection);
+
     m_spell->createActions(ac);
     m_toggleOnTheFlySpellCheck = new KToggleAction(i18n("Automatic Spell Checking"), this);
     m_toggleOnTheFlySpellCheck->setWhatsThis(i18n("Enable/disable automatic spell checking"));
@@ -1918,6 +1924,31 @@ void KTextEditor::ViewPrivate::showSearchWrappedHint(bool isReverseSearch)
         m_wrappedMessage->setAutoHideMode(KTextEditor::Message::Immediate);
         m_wrappedMessage->setView(this);
         this->doc()->postMessage(m_wrappedMessage);
+    }
+}
+
+void KTextEditor::ViewPrivate::createMultiCursorsFromSelection()
+{
+    if (!selection() || selectionRange().isEmpty()) {
+        return;
+    }
+    // Is this really needed?
+    // Lets just clear them now for simplicity
+    clearSecondaryCursors();
+
+    const auto range = selectionRange();
+    QVarLengthArray<KTextEditor::Cursor> cursorsToAdd;
+    const auto start = range.start().line() < 0 ? 0 : range.start().line();
+    const auto end = range.end().line() > doc()->lines() ? doc()->lines() : range.end().line();
+    for (int line = start; line <= end; ++line) {
+        cursorsToAdd.push_back({line, doc()->lineLength(line)});
+    }
+    // clear selection
+    setSelection({});
+    for (auto c : cursorsToAdd) {
+        if (c.line() != cursorPosition().line()) {
+            addSecondaryCursorAt(c);
+        }
     }
 }
 
