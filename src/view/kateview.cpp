@@ -2687,7 +2687,7 @@ bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
 bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
 {
     // No multicursors here
-    if (isOverwriteMode()) {
+    if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
         return false;
     }
 
@@ -2816,6 +2816,11 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
 
 void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange, KTextEditor::Cursor cursorPos)
 {
+    // No multicursors here
+    if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
+        return;
+    }
+
     // If cursor position is the same as primary, ignore.
     if (selRange.isEmpty() || cursorPosition() == selRange.end()) {
         return;
