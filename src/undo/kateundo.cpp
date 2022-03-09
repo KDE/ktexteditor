@@ -265,6 +265,7 @@ void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
         }
 
         if (m_undoCursor.isValid()) {
+            view->addSecondaryCursors(m_undoSecondaryCursors);
             view->setCursorPosition(m_undoCursor);
         }
     }
@@ -301,6 +302,7 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
         }
 
         if (m_redoCursor.isValid()) {
+            view->addSecondaryCursors(m_redoSecondaryCursors);
             view->setCursorPosition(m_redoCursor);
         }
     }

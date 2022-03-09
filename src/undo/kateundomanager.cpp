@@ -95,6 +95,9 @@ void KateUndoManager::editStart()
         for (auto *c : cursors) {
             secondaryCursors << c->toCursor();
         }
+        if (!secondarySelections.isEmpty() && secondaryCursors.size() != secondarySelections.size()) {
+            qDebug() << "Unexpected size mismatch in multicursor and multiselect" << __FUNCTION__ << __LINE__;
+        }
     }
 
     // new current undo item
