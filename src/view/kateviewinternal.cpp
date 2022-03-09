@@ -3119,7 +3119,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
                 return QWidget::eventFilter(obj, e);
             }
             view()->clearSecondarySelections();
-            int x = renderer()->cursorToX(currentLayout(last), last.column());
+            int x = renderer()->cursorToX(currentLayout(cursorPosition()), cursorPosition().column());
             auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
             view()->addSecondaryCursorAt(next);
             k->accept();
@@ -3138,7 +3138,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
                 return QWidget::eventFilter(obj, e);
             }
             view()->clearSecondarySelections();
-            int x = renderer()->cursorToX(currentLayout(last), last.column());
+            int x = renderer()->cursorToX(currentLayout(cursorPosition()), cursorPosition().column());
             auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
             view()->addSecondaryCursorAt(next);
             k->accept();
