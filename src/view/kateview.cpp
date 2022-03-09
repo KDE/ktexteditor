@@ -1937,19 +1937,17 @@ void KTextEditor::ViewPrivate::createMultiCursorsFromSelection()
     clearSecondaryCursors();
 
     const auto range = selectionRange();
-    QVarLengthArray<KTextEditor::Cursor> cursorsToAdd;
+    QVector<KTextEditor::Cursor> cursorsToAdd;
     const auto start = range.start().line() < 0 ? 0 : range.start().line();
     const auto end = range.end().line() > doc()->lines() ? doc()->lines() : range.end().line();
     for (int line = start; line <= end; ++line) {
-        cursorsToAdd.push_back({line, doc()->lineLength(line)});
+        if (line != cursorPosition().line()) {
+            cursorsToAdd.push_back({line, doc()->lineLength(line)});
+        }
     }
     // clear selection
     setSelection({});
-    for (auto c : cursorsToAdd) {
-        if (c.line() != cursorPosition().line()) {
-            addSecondaryCursorAt(c);
-        }
-    }
+    addSecondaryCursors(cursorsToAdd);
 }
 
 void KTextEditor::ViewPrivate::slotSelectionChanged()
@@ -2715,6 +2713,39 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
     }
     m_viewInternal->paintCursor();
     return true;
+}
+
+void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cursor> &positions)
+{
+    // No multicursors here
+    if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
+        return;
+    }
+
+    auto hasCursorAlready = [this](KTextEditor::Cursor c) {
+        for (auto it = m_secondaryCursors.cbegin(); it != m_secondaryCursors.cend(); ++it) {
+            if ((*it)->toCursor() == c) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    for (auto p : positions) {
+        if (!hasCursorAlready(p)) {
+            auto moving = m_doc->newMovingCursor(p);
+            m_secondaryCursors.append(moving);
+            tagLine(p);
+        }
+    }
+
+    if (m_viewInternal->m_cursorTimer.isActive()) {
+        if (QApplication::cursorFlashTime() > 0) {
+            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
+        }
+        renderer()->setDrawCaret(true);
+    }
+    m_viewInternal->paintCursor();
 }
 
 void KTextEditor::ViewPrivate::clearSecondaryCursors()
