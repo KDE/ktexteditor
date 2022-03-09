@@ -672,7 +672,6 @@ public Q_SLOTS:
     void setEol(int eol);
     void setAddBom(bool enabled);
     void find();
-    void findMultiSelectedForwards();
     void findSelectedForwards();
     void findSelectedBackwards();
     void replace();

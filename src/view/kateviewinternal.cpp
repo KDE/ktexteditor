@@ -3757,6 +3757,9 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     }
 
     if (e->buttons() & Qt::LeftButton) {
+        // TODO: support creating multiple selections using mouse
+        view()->clearSecondaryCursors();
+
         if (m_dragInfo.state == diPending) {
             // we had a mouse down, but haven't confirmed a drag yet
             // if the mouse has moved sufficiently, we will confirm
