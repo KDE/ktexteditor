@@ -3447,6 +3447,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             view->setSelection(range);
         }
         view->removeSelectedText();
+        view->ensureUniqueCursors();
         editEnd();
         return;
     }
@@ -3467,6 +3468,8 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     if (newPos.isValid()) {
         view->setCursorPosition(newPos);
     }
+
+    view->ensureUniqueCursors();
 
     editEnd();
 
