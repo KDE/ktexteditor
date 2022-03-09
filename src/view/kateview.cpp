@@ -2774,16 +2774,32 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
     }
 }
 
-void KTextEditor::ViewPrivate::ensureUniqueCursors()
+void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
 {
+    if (m_secondaryCursors.isEmpty()) {
+        return;
+    }
     // These are sorted
-    auto secondary = secondaryCursors();
-    auto it = std::unique(secondary.begin(), secondary.end());
+    const auto secondary = secondaryCursors();
     std::vector<KTextEditor::Cursor> toRemove;
 
-    if (it != secondary.end()) {
-        toRemove.reserve(std::distance(it, secondary.end()));
-        std::copy(it, secondary.end(), std::back_inserter(toRemove));
+    if (matchLine) {
+        auto matchLine = [](KTextEditor::Cursor l, KTextEditor::Cursor r) {
+            return l.line() == r.line();
+        };
+        auto it = std::adjacent_find(secondary.begin(), secondary.end(), matchLine);
+        while (it != secondary.cend()) {
+            toRemove.push_back(*it);
+            ++it;
+            it = std::adjacent_find(it, secondary.end());
+        }
+    } else {
+        auto it = std::adjacent_find(secondary.begin(), secondary.end());
+        while (it != secondary.cend()) {
+            toRemove.push_back(*it);
+            ++it;
+            it = std::adjacent_find(it, secondary.end());
+        }
     }
 
     // Check if any cursor is the same as our primary
@@ -2841,29 +2857,6 @@ Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEdito
     range->setZDepth(-999999.);
     range->setAttribute(selAttr);
     return range;
-}
-
-void KTextEditor::ViewPrivate::ensureSingleCursorPerLine()
-{
-    if (!m_secondaryCursors.isEmpty()) {
-        std::vector<KTextEditor::Cursor> cursorsToRemove;
-        // Clear cursors in same line, we will have one after the function is done
-        const auto cursors = secondaryCursors();
-        auto matchLine = [](KTextEditor::Cursor l, KTextEditor::Cursor r) {
-            return l.line() == r.line();
-        };
-
-        auto it = std::adjacent_find(cursors.begin(), cursors.end(), matchLine);
-        while (it != cursors.end()) {
-            cursorsToRemove.push_back(*it);
-            ++it;
-            it = std::adjacent_find(it, cursors.end(), matchLine);
-        }
-
-        if (!cursorsToRemove.empty()) {
-            removeSecondaryCursors(cursorsToRemove);
-        }
-    }
 }
 
 KTextEditor::Range KTextEditor::ViewPrivate::lastSelectionRange()

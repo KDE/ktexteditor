@@ -1520,6 +1520,7 @@ void KateViewInternal::wordPrev(bool sel)
     updateSelection(c, sel);
     updateCursor(c);
 
+    view()->ensureUniqueCursors();
     updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
@@ -1565,7 +1566,6 @@ void KateViewInternal::wordNext(bool sel)
         return c;
     };
 
-    QVarLengthArray<int> lines;
     const auto secondaryCursors = view()->m_secondaryCursors;
     QVarLengthArray<CursorPair, 16> cursorsToUpdate;
     for (auto *cursor : secondaryCursors) {
@@ -1580,6 +1580,8 @@ void KateViewInternal::wordNext(bool sel)
     updateSelection(c, sel);
     updateCursor(c);
 
+    // Remove cursors which have same position
+    view()->ensureUniqueCursors();
     updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
@@ -1627,7 +1629,7 @@ KTextEditor::Cursor KateViewInternal::moveCursorToLineStart(KTextEditor::Cursor 
 void KateViewInternal::home(bool sel)
 {
     // Multicursor
-    view()->ensureSingleCursorPerLine();
+    view()->ensureUniqueCursors(/*matchLine*/ true);
     const auto secondaryCursors = view()->m_secondaryCursors;
     QVarLengthArray<CursorPair, 16> cursorsToUpdate;
     std::vector<KTextEditor::Cursor> cursorsToRemove;
@@ -1694,7 +1696,7 @@ KTextEditor::Cursor KateViewInternal::moveCursorToLineEnd(KTextEditor::Cursor cu
 void KateViewInternal::end(bool sel)
 {
     // Multicursor
-    view()->ensureSingleCursorPerLine();
+    view()->ensureUniqueCursors(/*matchLine*/ true);
 
     std::vector<KTextEditor::Cursor> cursorsToRemove;
     QVarLengthArray<CursorPair, 16> cursorsToUpdate;

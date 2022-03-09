@@ -219,13 +219,13 @@ public:
     void clearSecondarySelections();
 
     // Check all the cursors, and remove cursors which have the same positions
-    void ensureUniqueCursors();
+    // if @p matchLine is true, cursors whose line are same will be considered equal
+    void ensureUniqueCursors(bool matchLine = false);
 
 private:
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
-    void ensureSingleCursorPerLine();
 
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
     QVector<SecondarySelection> m_secondarySelections;
@@ -672,6 +672,7 @@ public Q_SLOTS:
     void setEol(int eol);
     void setAddBom(bool enabled);
     void find();
+    void findMultiSelectedForwards();
     void findSelectedForwards();
     void findSelectedBackwards();
     void replace();
