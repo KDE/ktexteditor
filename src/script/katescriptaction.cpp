@@ -120,7 +120,7 @@ void KateScriptActionMenu::repopulate()
             m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
             const QString shortcut = action.value(QStringLiteral("shortcut")).toString();
             if (!shortcut.isEmpty()) {
-                m_view->actionCollection()->setDefaultShortcut(a, shortcut);
+                m_view->actionCollection()->setDefaultShortcut(a, QKeySequence(shortcut, QKeySequence::PortableText));
             }
 
             m_actions.append(a);
