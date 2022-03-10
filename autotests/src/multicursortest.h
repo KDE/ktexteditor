@@ -25,6 +25,11 @@ private Q_SLOTS:
 
     // Text transformations
     void testKillline();
+
+    // Movement
+    void moveCharTest();
+    void moveWordTest();
+    void homeEndKeyTest();
 };
 
 #endif // KATE_VIEW_TEST_H
