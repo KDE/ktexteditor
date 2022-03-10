@@ -611,7 +611,6 @@ void KateViewTest::testTransposeWord()
     QCOMPARE(view->cursorPosition(), wordBelow + KTextEditor::Cursor(0, 12)); // end of line, transpose backwards instead
 }
 
-#include <iostream>
 void KateViewTest::testFindMatchingFoldingMarker()
 {
     KTextEditor::DocumentPrivate doc(false, false);
