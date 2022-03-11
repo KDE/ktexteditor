@@ -21,12 +21,12 @@ var katescript = {
         },
         {   "function": "duplicateLinesDown",
             "name": "Duplicate Selected Lines Down",
-            "shortcut": "Ctrl+Alt+Down",
+            "shortcut": "Ctrl+.",
             "category": "Editing"
         },
         {   "function": "duplicateLinesUp",
             "name": "Duplicate Selected Lines Up",
-            "shortcut": "Ctrl+Alt+Up",
+            "shortcut": "Ctrl+Shift+.",
             "category": "Editing"
         },
         {   "function": "encodeURISelection",
