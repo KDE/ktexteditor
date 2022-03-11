@@ -860,6 +860,18 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Creates a cursor at the end of every line in selection."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::createMultiCursorsFromSelection);
 
+    a = ac->addAction(QStringLiteral("edit_create_multi_crusor_down"));
+    a->setText(i18n("Add a caret below current cursor"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::CTRL | Qt::Key_Down));
+    a->setWhatsThis(i18n("Adds a caret in the line below the current caret."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::addSecondaryCursorDown);
+
+    a = ac->addAction(QStringLiteral("edit_create_multi_crusor_up"));
+    a->setText(i18n("Add a caret above current cursor"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::CTRL | Qt::Key_Up));
+    a->setWhatsThis(i18n("Adds a caret in the line above the current caret."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::addSecondaryCursorUp);
+
     m_spell->createActions(ac);
     m_toggleOnTheFlySpellCheck = new KToggleAction(i18n("Automatic Spell Checking"), this);
     m_toggleOnTheFlySpellCheck->setWhatsThis(i18n("Enable/disable automatic spell checking"));
@@ -2919,6 +2931,42 @@ KTextEditor::Range KTextEditor::ViewPrivate::lastSelectionRange()
         return selectionRange();
     }
     return m_secondarySelections.back().range->toRange();
+}
+
+void KTextEditor::ViewPrivate::addSecondaryCursorDown()
+{
+    KTextEditor::Cursor last = cursorPosition();
+    const auto secondary = secondaryCursors();
+    if (!secondary.isEmpty()) {
+        last = secondary.front();
+        last = std::max(cursorPosition(), last);
+    }
+    auto nextRange = m_viewInternal->nextLayout(last);
+    if (!nextRange.isValid()) {
+        return;
+    }
+    clearSecondarySelections();
+    int x = renderer()->cursorToX(m_viewInternal->currentLayout(cursorPosition()), cursorPosition().column());
+    auto next = renderer()->xToCursor(nextRange, x, !wrapCursor());
+    addSecondaryCursorAt(next);
+}
+
+void KTextEditor::ViewPrivate::addSecondaryCursorUp()
+{
+    KTextEditor::Cursor last = cursorPosition();
+    const auto secondary = secondaryCursors();
+    if (!secondary.isEmpty()) {
+        last = secondary.back();
+        last = std::min(cursorPosition(), last);
+    }
+    auto nextRange = m_viewInternal->previousLayout(last);
+    if (!nextRange.isValid()) {
+        return;
+    }
+    clearSecondarySelections();
+    int x = renderer()->cursorToX(m_viewInternal->currentLayout(cursorPosition()), cursorPosition().column());
+    auto next = renderer()->xToCursor(nextRange, x, !wrapCursor());
+    addSecondaryCursorAt(next);
 }
 
 bool KTextEditor::ViewPrivate::isCompletionActive() const

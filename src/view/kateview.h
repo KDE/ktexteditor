@@ -234,6 +234,9 @@ private:
     QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
     QVector<SecondarySelection> m_secondarySelections;
 
+    void addSecondaryCursorDown();
+    void addSecondaryCursorUp();
+
 private:
     void notifyMousePositionChanged(const KTextEditor::Cursor newPosition);
 

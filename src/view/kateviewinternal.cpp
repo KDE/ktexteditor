@@ -3106,45 +3106,6 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             }
         }
 
-        // TODO: Handle this more properly
-        if (k->key() == Qt::Key_Down && k->modifiers() == (Qt::CTRL | Qt::ALT)) {
-            KTextEditor::Cursor last = cursorPosition();
-            const auto secondary = view()->secondaryCursors();
-            if (!secondary.isEmpty()) {
-                last = secondary.front();
-                last = std::max(cursorPosition(), last);
-            }
-            auto nextRange = nextLayout(last);
-            if (!nextRange.isValid()) {
-                return QWidget::eventFilter(obj, e);
-            }
-            view()->clearSecondarySelections();
-            int x = renderer()->cursorToX(currentLayout(cursorPosition()), cursorPosition().column());
-            auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
-            view()->addSecondaryCursorAt(next);
-            k->accept();
-            return true;
-        }
-
-        if (k->key() == Qt::Key_Up && k->modifiers() == (Qt::CTRL | Qt::ALT)) {
-            KTextEditor::Cursor last = cursorPosition();
-            const auto secondary = view()->secondaryCursors();
-            if (!secondary.isEmpty()) {
-                last = secondary.back();
-                last = std::min(cursorPosition(), last);
-            }
-            auto nextRange = previousLayout(last);
-            if (!nextRange.isValid()) {
-                return QWidget::eventFilter(obj, e);
-            }
-            view()->clearSecondarySelections();
-            int x = renderer()->cursorToX(currentLayout(cursorPosition()), cursorPosition().column());
-            auto next = renderer()->xToCursor(nextRange, x, !view()->wrapCursor());
-            view()->addSecondaryCursorAt(next);
-            k->accept();
-            return true;
-        }
-
         if (m_currentInputMode->stealKey(k)) {
             k->accept();
             return true;
