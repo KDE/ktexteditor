@@ -681,6 +681,7 @@ public Q_SLOTS:
     void find();
     void findSelectedForwards();
     void findSelectedBackwards();
+    void findNextOccurunceAndSelect();
     void replace();
     void findNext();
     void findPrevious();

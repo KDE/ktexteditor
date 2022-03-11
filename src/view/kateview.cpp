@@ -843,6 +843,12 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Finds previous occurrence of selected text."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findSelectedBackwards);
 
+    a = ac->addAction(QStringLiteral("edit_find_multicursor_next_occurrence"));
+    a->setText(i18n("Find and Select Next Occurrence"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::Key_J));
+    a->setWhatsThis(i18n("Finds next occurrence of word under cursor and add it to selection."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findNextOccurunceAndSelect);
+
     a = ac->addAction(KStandardAction::FindNext, this, SLOT(findNext()));
     a->setWhatsThis(i18n("Look up the next occurrence of the search phrase."));
     addAction(a);
@@ -1907,6 +1913,57 @@ void KTextEditor::ViewPrivate::findSelectedBackwards()
     currentInputMode()->findSelectedBackwards();
 }
 
+void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
+{
+    if (currentInputMode()->viewInputMode() == View::ViInputMode) {
+        return;
+    }
+
+    const auto text = selection() ? doc()->text(selectionRange()) : QString();
+    if (text.isEmpty()) {
+        const auto selection = doc()->wordRangeAt(cursorPosition());
+        setSelection(selection);
+        setCursorPosition(selection.end());
+
+        for (auto *c : qAsConst(m_secondaryCursors)) {
+            const auto range = doc()->wordRangeAt(c->toCursor());
+            m_secondarySelections.append({range.start(), newSecondarySelectionRange(range)});
+            c->setPosition(range.end());
+            tagLines(range);
+        }
+        return;
+    }
+
+    const QString pattern = QLatin1String("\\b") + QRegularExpression::escape(text) + QLatin1String("\\b");
+
+    // Use selection range end as starting point
+    const auto lastSelectionRange = selectionRange();
+
+    KTextEditor::Range searchRange(lastSelectionRange.end(), doc()->documentRange().end());
+    QVector<KTextEditor::Range> matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
+    if (!matches.isEmpty() && !matches.constFirst().isValid()) {
+        searchRange.setRange(doc()->documentRange().start(), lastSelectionRange.end());
+        matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
+    }
+
+    auto alreadyHasRangeSelected = [this](const KTextEditor::Range selecion) {
+        for (const auto &sel : qAsConst(m_secondarySelections)) {
+            if (sel.range->toRange() == selecion) {
+                return true;
+            }
+        }
+        return selectionRange() == selecion;
+    };
+
+    if (!matches.isEmpty() && matches.constFirst().isValid() && !alreadyHasRangeSelected(matches.constFirst())) {
+        // Move our primary to cursor to this match and select it
+        setSelection(matches.constFirst());
+        setCursorPosition(matches.constFirst().end());
+        // make our previous primary selection a secondary
+        addSecondaryCursorWithSelection(lastSelectionRange);
+    }
+}
+
 void KTextEditor::ViewPrivate::replace()
 {
     currentInputMode()->findReplace();
@@ -2886,22 +2943,11 @@ void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Rang
     // If we already have cursors but no selection, trigger selection
     // because we always want both these vectors to be same
     if (m_secondarySelections.isEmpty() && !m_secondaryCursors.isEmpty()) {
-        for (auto *c : m_secondaryCursors) {
-            const auto range = doc()->wordRangeAt(c->toCursor());
-            m_secondarySelections.append({range.start(), newSecondarySelectionRange(range)});
-            c->setPosition(range.end());
-            tagLines(range);
-        }
+        qWarning() << "Unexpected empty selection ranges but cursors not empty!";
     }
 
     cursorPos = cursorPos.isValid() ? cursorPos : selRange.end();
     addSecondaryCursorAt(cursorPos, /*toggle=*/false);
-    int last = lastDisplayedLine();
-    int first = firstDisplayedLine();
-    // Scroll if needed
-    if (cursorPos.line() > last || cursorPos.line() < first) {
-        m_viewInternal->scrollPos(cursorPos);
-    }
     m_secondarySelections.push_back({selRange.start(), newSecondarySelectionRange(selRange)});
     tagLines(selRange);
     m_viewInternal->updateDirty();
