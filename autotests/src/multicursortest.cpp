@@ -11,6 +11,7 @@
 #include <kateconfig.h>
 #include <katedocument.h>
 #include <kateglobal.h>
+#include <kateundomanager.h>
 #include <kateview.h>
 #include <kateviewinternal.h>
 #include <ktexteditor/message.h>
@@ -67,6 +68,94 @@ void MulticursorTest::testKillline()
     view->killLine();
 
     QCOMPARE(doc.text(), QString());
+}
+
+void MulticursorTest::insertRemoveText()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);
+    QObject *internalView = findViewInternal(view);
+    QVERIFY(internalView);
+
+    { // Same line
+        view->addSecondaryCursorAt({0, 1});
+        view->addSecondaryCursorAt({0, 2});
+        view->addSecondaryCursorAt({0, 3});
+        QKeyEvent ke(QKeyEvent::KeyPress, Qt::Key_L, Qt::NoModifier, QStringLiteral("L"));
+        QCoreApplication::sendEvent(internalView, &ke);
+
+        QCOMPARE(doc.line(0), QStringLiteral("LfLoLoL"));
+
+        // Removal
+        view->backspace();
+        QCOMPARE(doc.line(0), QStringLiteral("foo"));
+
+        view->clearSecondaryCursors();
+    }
+
+    { // Different lines
+        view->addSecondaryCursorAt({1, 0});
+        view->addSecondaryCursorAt({2, 0});
+        QKeyEvent ke(QKeyEvent::KeyPress, Qt::Key_L, Qt::NoModifier, QStringLiteral("L"));
+        QCoreApplication::sendEvent(internalView, &ke);
+
+        QCOMPARE(doc.line(0), QStringLiteral("Lfoo"));
+        QCOMPARE(doc.line(1), QStringLiteral("Lbar"));
+        QCOMPARE(doc.line(2), QStringLiteral("Lfoo"));
+
+        view->backspace();
+
+        QCOMPARE(doc.line(0), QStringLiteral("foo"));
+        QCOMPARE(doc.line(1), QStringLiteral("bar"));
+        QCOMPARE(doc.line(2), QStringLiteral("foo"));
+
+        view->clearSecondaryCursors();
+    }
+
+    // Three empty lines
+    doc.setText(QStringLiteral("\n\n\n"));
+    view->setCursorPosition({0, 0});
+    view->addSecondaryCursorAt({1, 0});
+    view->addSecondaryCursorAt({2, 0});
+
+    // cursors should merge
+    view->backspace();
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+}
+
+void MulticursorTest::testUndoRedo()
+{
+    CREATE_VIEW_AND_DOC("foo\nfoo", 0, 3);
+
+    // single cursor backspace
+    view->backspace();
+    QCOMPARE(doc.text(), QStringLiteral("fo\nfoo"));
+    doc.undoManager()->undoSafePoint();
+
+    // backspace with 2 cursors
+    view->addSecondaryCursorAt({1, 3});
+    view->backspace();
+    QCOMPARE(doc.text(), QStringLiteral("f\nfo"));
+
+    view->doc()->undo();
+    QCOMPARE(doc.text(), QStringLiteral("fo\nfoo"));
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 3));
+
+    // Another undo, multicursor should be gone
+    view->doc()->undo();
+    QCOMPARE(doc.text(), QStringLiteral("foo\nfoo"));
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+
+    // One redo
+    view->doc()->redo();
+    QCOMPARE(doc.text(), QStringLiteral("fo\nfoo"));
+
+    // Second redo, multicursor should be back
+    view->doc()->redo();
+    QCOMPARE(doc.text(), QStringLiteral("f\nfo"));
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 2));
 }
 
 void MulticursorTest::testCreateMultiCursor()

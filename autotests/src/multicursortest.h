@@ -26,6 +26,10 @@ private Q_SLOTS:
     // Text transformations
     void testKillline();
 
+    // Insert & Remove tests
+    void insertRemoveText();
+    void testUndoRedo();
+
     // Movement
     void moveCharTest();
     void moveWordTest();
