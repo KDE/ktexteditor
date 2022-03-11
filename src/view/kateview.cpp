@@ -846,8 +846,14 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(QStringLiteral("edit_find_multicursor_next_occurrence"));
     a->setText(i18n("Find and Select Next Occurrence"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::Key_J));
-    a->setWhatsThis(i18n("Finds next occurrence of word under cursor and add it to selection."));
+    a->setWhatsThis(i18n("Finds next occurrence of the word under cursor and add it to selection."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findNextOccurunceAndSelect);
+
+    a = ac->addAction(QStringLiteral("edit_find_multicursor_all_occurrences"));
+    a->setText(i18n("Find and Select All Occurrences"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::CTRL | Qt::Key_J));
+    a->setWhatsThis(i18n("Finds all occurrences of the word under cursor and select them."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findAllOccuruncesAndSelect);
 
     a = ac->addAction(KStandardAction::FindNext, this, SLOT(findNext()));
     a->setWhatsThis(i18n("Look up the next occurrence of the search phrase."));
@@ -1964,6 +1970,48 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
     }
 }
 
+void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
+{
+    if (currentInputMode()->viewInputMode() == View::ViInputMode) {
+        return;
+    }
+
+    QString text = selection() ? doc()->text(selectionRange()) : QString();
+    if (text.isEmpty()) {
+        const auto selection = doc()->wordRangeAt(cursorPosition());
+        setSelection(selection);
+        setCursorPosition(selection.end());
+        text = doc()->text(selection);
+
+        for (auto *c : qAsConst(m_secondaryCursors)) {
+            const auto range = doc()->wordRangeAt(c->toCursor());
+            m_secondarySelections.append({range.start(), newSecondarySelectionRange(range)});
+            c->setPosition(range.end());
+            tagLines(range);
+        }
+    }
+    const QString pattern = QLatin1String("\\b") + QRegularExpression::escape(text) + QLatin1String("\\b");
+
+    KTextEditor::Range searchRange(doc()->documentRange());
+    QVector<KTextEditor::Range> matches;
+    std::vector<KTextEditor::Range> resultRanges;
+    do {
+        matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
+
+        if (matches.constFirst().isValid()) {
+            // Dont add if matches primary selection
+            if (matches.constFirst() != selectionRange()) {
+                resultRanges.push_back(matches.constFirst());
+            }
+            searchRange.setStart(matches.constFirst().end());
+        }
+    } while (matches.first().isValid());
+
+    for (auto r : resultRanges) {
+        addSecondaryCursorWithSelection(r);
+    }
+}
+
 void KTextEditor::ViewPrivate::replace()
 {
     currentInputMode()->findReplace();
@@ -2940,17 +2988,16 @@ void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Rang
     if (selRange.isEmpty() || cursorPosition() == selRange.end()) {
         return;
     }
-    // If we already have cursors but no selection, trigger selection
-    // because we always want both these vectors to be same
-    if (m_secondarySelections.isEmpty() && !m_secondaryCursors.isEmpty()) {
-        qWarning() << "Unexpected empty selection ranges but cursors not empty!";
-    }
 
     cursorPos = cursorPos.isValid() ? cursorPos : selRange.end();
     addSecondaryCursorAt(cursorPos, /*toggle=*/false);
     m_secondarySelections.push_back({selRange.start(), newSecondarySelectionRange(selRange)});
     tagLines(selRange);
     m_viewInternal->updateDirty();
+
+    if (m_secondarySelections.size() != m_secondaryCursors.size()) {
+        qWarning() << "Unexpected mismatch in secondary cursors and secondary selection sizes, please fix." << __FILE__ << ":" << __LINE__;
+    }
 }
 
 Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEditor::Range selRange)
