@@ -265,7 +265,11 @@ void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
         }
 
         if (m_undoCursor.isValid()) {
-            view->addSecondaryCursors(m_undoSecondaryCursors);
+            if (!m_undoSecondaryCursors.isEmpty()) {
+                view->addSecondaryCursors(m_undoSecondaryCursors);
+            } else {
+                view->clearSecondaryCursors();
+            }
             view->setCursorPosition(m_undoCursor);
         }
     }
@@ -302,7 +306,11 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
         }
 
         if (m_redoCursor.isValid()) {
-            view->addSecondaryCursors(m_redoSecondaryCursors);
+            if (m_redoSecondaryCursors.isEmpty()) {
+                view->clearSecondaryCursors();
+            } else {
+                view->addSecondaryCursors(m_redoSecondaryCursors);
+            }
             view->setCursorPosition(m_redoCursor);
         }
     }
