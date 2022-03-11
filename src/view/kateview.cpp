@@ -1947,7 +1947,7 @@ void KTextEditor::ViewPrivate::createMultiCursorsFromSelection()
     }
     // clear selection
     setSelection({});
-    addSecondaryCursors(cursorsToAdd);
+    setSecondaryCursors(cursorsToAdd);
 }
 
 void KTextEditor::ViewPrivate::slotSelectionChanged()
@@ -2752,6 +2752,12 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
         renderer()->setDrawCaret(true);
     }
     m_viewInternal->paintCursor();
+}
+
+void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cursor> &cursors)
+{
+    clearSecondaryCursors();
+    addSecondaryCursors(cursors);
 }
 
 void KTextEditor::ViewPrivate::clearSecondaryCursors()

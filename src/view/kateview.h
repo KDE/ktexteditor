@@ -202,6 +202,7 @@ public:
     // Adds a secondary cursor
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
     void addSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
+    void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
 
     QVector<KTextEditor::Cursor> secondaryCursors() const;
     const QVector<KTextEditor::MovingCursor *> &secondaryMovingCursors() const
