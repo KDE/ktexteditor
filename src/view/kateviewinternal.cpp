@@ -3313,7 +3313,14 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
             if (tabHandling == KateDocumentConfig::tabInsertsTab) {
                 doc()->typeChars(m_view, QStringLiteral("\t"));
             } else {
+                doc()->editBegin();
+                for (auto *c : qAsConst(m_view->m_secondaryCursors)) {
+                    auto cursor = c->toCursor();
+                    doc()->indent(KTextEditor::Range(cursor.line(), 0, cursor.line(), 0), 1);
+                }
+
                 doc()->indent(view()->selection() ? view()->selectionRange() : KTextEditor::Range(m_cursor.line(), 0, m_cursor.line(), 0), 1);
+                doc()->editEnd();
             }
 
             e->accept();
