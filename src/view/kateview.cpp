@@ -2684,6 +2684,9 @@ bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
 
 bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
 {
+    if (cursor == cursorPosition()) {
+        return false;
+    }
     // No multicursors here
     if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
         return false;
@@ -2717,6 +2720,9 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
 
 void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cursor> &positions)
 {
+    if (positions.isEmpty()) {
+        return;
+    }
     // No multicursors here
     if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
         return;
@@ -2732,7 +2738,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
     };
 
     for (auto p : positions) {
-        if (!hasCursorAlready(p)) {
+        if (!hasCursorAlready(p) && p != cursorPosition()) {
             auto moving = m_doc->newMovingCursor(p);
             m_secondaryCursors.append(moving);
             tagLine(p);
@@ -2750,6 +2756,9 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
 
 void KTextEditor::ViewPrivate::clearSecondaryCursors()
 {
+    if (m_secondaryCursors.isEmpty()) {
+        return;
+    }
     clearSecondarySelections();
     for (auto *c : qAsConst(m_secondaryCursors)) {
         tagLine(c->toCursor());
