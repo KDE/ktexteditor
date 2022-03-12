@@ -3026,7 +3026,8 @@ void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Rang
 
     cursorPos = cursorPos.isValid() ? cursorPos : selRange.end();
     addSecondaryCursorAt(cursorPos, /*toggle=*/false);
-    m_secondarySelections.push_back({selRange.start(), newSecondarySelectionRange(selRange)});
+    const auto anchor = selRange.start() == cursorPos ? selRange.end() : selRange.start();
+    m_secondarySelections.push_back({anchor, newSecondarySelectionRange(selRange)});
     tagLines(selRange);
     m_viewInternal->updateDirty();
 

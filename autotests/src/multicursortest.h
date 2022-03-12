@@ -29,6 +29,7 @@ private Q_SLOTS:
     // Insert & Remove tests
     void insertRemoveText();
     void testUndoRedo();
+    void testUndoRedoWithSelection();
 
     // Movement
     void moveCharTest();

@@ -158,6 +158,32 @@ void MulticursorTest::testUndoRedo()
     QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 2));
 }
 
+void MulticursorTest::testUndoRedoWithSelection()
+{
+    CREATE_VIEW_AND_DOC("foo\nfoo", 0, 3);
+    view->addSecondaryCursorAt({1, 3});
+
+    // select a word & remove it
+    view->shiftWordLeft();
+    view->backspace();
+
+    QCOMPARE(doc.text(), QStringLiteral("\n"));
+    QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
+    QCOMPARE(view->secondarySelections().size(), 0);
+
+    view->doc()->undo();
+
+    QCOMPARE(doc.text(), QStringLiteral("foo\nfoo"));
+    QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
+    QCOMPARE(view->secondarySelections().size(), 1);
+    QCOMPARE(*view->secondarySelections().at(0).range, Range(1, 0, 1, 3));
+    QCOMPARE(view->secondarySelections().at(0).anchor, Cursor(1, 3));
+}
+
 void MulticursorTest::testCreateMultiCursor()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);

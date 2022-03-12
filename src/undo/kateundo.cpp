@@ -265,7 +265,12 @@ void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
         }
 
         if (m_undoCursor.isValid()) {
-            view->setSecondaryCursors(m_undoSecondaryCursors);
+            // Only do it if we don't have selections,
+            // Because setting the selection automatically sets the
+            // cursor. Doing it again here will remove the selection.
+            if (m_undoSelections.isEmpty()) {
+                view->setSecondaryCursors(m_undoSecondaryCursors);
+            }
             view->setCursorPosition(m_undoCursor);
         }
     }
@@ -302,7 +307,9 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
         }
 
         if (m_redoCursor.isValid()) {
-            view->setSecondaryCursors(m_redoSecondaryCursors);
+            if (m_redoSelections.isEmpty()) {
+                view->setSecondaryCursors(m_redoSecondaryCursors);
+            }
             view->setCursorPosition(m_redoCursor);
         }
     }
