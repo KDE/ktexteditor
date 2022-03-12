@@ -884,6 +884,11 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Adds a caret in the line above the current caret."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::addSecondaryCursorUp);
 
+    a = ac->addAction(QStringLiteral("edit_toggle_camel_case_cursor"));
+    a->setText(i18n("Toggle camel case cursor movement"));
+    a->setWhatsThis(i18n("Toggle between normal word movement and camel case cursor movement."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleCamelCaseCursor);
+
     m_spell->createActions(ac);
     m_toggleOnTheFlySpellCheck = new KToggleAction(i18n("Automatic Spell Checking"), this);
     m_toggleOnTheFlySpellCheck->setWhatsThis(i18n("Enable/disable automatic spell checking"));
@@ -1599,6 +1604,22 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
 void KTextEditor::ViewPrivate::slotClipboardHistoryChanged()
 {
     m_pasteMenu->setEnabled(doc()->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
+}
+
+void KTextEditor::ViewPrivate::toggleCamelCaseCursor()
+{
+    const auto enabled = doc()->config()->camelCursor();
+    doc()->config()->setCamelCursor(!enabled);
+    KTextEditor::Message *m;
+    if (enabled) {
+        m = new KTextEditor::Message(i18n("Camel case movement disabled"));
+    } else {
+        m = new KTextEditor::Message(i18n("Camel case movement enabled"));
+    }
+    m->setPosition(KTextEditor::Message::TopInView);
+    m->setAutoHide(1000);
+    m->setAutoHideMode(KTextEditor::Message::Immediate);
+    doc()->postMessage(m);
 }
 
 void KTextEditor::ViewPrivate::slotUpdateUndo()

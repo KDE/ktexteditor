@@ -753,6 +753,7 @@ public Q_SLOTS:
     void switchToCmdLine();
     void slotReadWriteChanged();
     void slotClipboardHistoryChanged();
+    void toggleCamelCaseCursor();
 
 Q_SIGNALS:
     void dropEventPass(QDropEvent *);
