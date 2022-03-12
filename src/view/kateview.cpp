@@ -1928,8 +1928,10 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
     const auto text = selection() ? doc()->text(selectionRange()) : QString();
     if (text.isEmpty()) {
         const auto selection = doc()->wordRangeAt(cursorPosition());
+        // We don't want matching word highlights
         setSelection(selection);
         setCursorPosition(selection.end());
+        clearHighlights();
 
         for (auto *c : qAsConst(m_secondaryCursors)) {
             const auto range = doc()->wordRangeAt(c->toCursor());
@@ -1938,6 +1940,8 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
             tagLines(range);
         }
         return;
+    } else if (!m_rangesForHighlights.empty()) {
+        clearHighlights();
     }
 
     const QString pattern = QLatin1String("\\b") + QRegularExpression::escape(text) + QLatin1String("\\b");
@@ -1963,8 +1967,11 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
 
     if (!matches.isEmpty() && matches.constFirst().isValid() && !alreadyHasRangeSelected(matches.constFirst())) {
         // Move our primary to cursor to this match and select it
+        // Ensure we don't create occurence highlights
         setSelection(matches.constFirst());
         setCursorPosition(matches.constFirst().end());
+        clearHighlights();
+
         // make our previous primary selection a secondary
         addSecondaryCursorWithSelection(lastSelectionRange);
     }
@@ -1981,6 +1988,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
         const auto selection = doc()->wordRangeAt(cursorPosition());
         setSelection(selection);
         setCursorPosition(selection.end());
+        clearHighlights();
         text = doc()->text(selection);
 
         for (auto *c : qAsConst(m_secondaryCursors)) {
@@ -1990,6 +1998,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
             tagLines(range);
         }
     }
+
     const QString pattern = QLatin1String("\\b") + QRegularExpression::escape(text) + QLatin1String("\\b");
 
     KTextEditor::Range searchRange(doc()->documentRange());
@@ -2006,6 +2015,11 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
             searchRange.setStart(matches.constFirst().end());
         }
     } while (matches.first().isValid());
+
+    // ensure to clear occurence highlights
+    if (!resultRanges.empty()) {
+        clearHighlights();
+    }
 
     for (auto r : resultRanges) {
         addSecondaryCursorWithSelection(r);
