@@ -4562,7 +4562,8 @@ void KateViewInternal::viewSelectionChanged()
     if (!view()->selection()) {
         m_selectAnchor = KTextEditor::Cursor::invalid();
     } else {
-        m_selectAnchor = view()->selectionRange().start();
+        const auto r = view()->selectionRange();
+        m_selectAnchor = r.start() == m_cursor ? r.end() : r.start();
     }
     // Do NOT nuke the entire range! The reason is that a shift+DC selection
     // might (correctly) set the range to be empty (i.e. start() == end()), and
