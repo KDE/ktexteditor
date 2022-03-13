@@ -2856,7 +2856,7 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
         }
     }
 
-    auto moving = m_doc->newMovingCursor(cursor);
+    auto moving = static_cast<Kate::TextCursor *>(m_doc->newMovingCursor(cursor));
     m_secondaryCursors.append(moving);
     tagLine(cursor);
 
@@ -2880,20 +2880,29 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
         return;
     }
 
-    auto hasCursorAlready = [this](KTextEditor::Cursor c) {
-        for (auto it = m_secondaryCursors.cbegin(); it != m_secondaryCursors.cend(); ++it) {
-            if ((*it)->toCursor() == c) {
-                return true;
+    if (m_secondaryCursors.isEmpty()) {
+        for (auto p : positions) {
+            if (p != cursorPosition()) {
+                auto moving = static_cast<Kate::TextCursor *>(m_doc->newMovingCursor(p));
+                m_secondaryCursors.append(moving);
+                tagLine(p);
             }
         }
-        return false;
-    };
-
-    for (auto p : positions) {
-        if (!hasCursorAlready(p) && p != cursorPosition()) {
-            auto moving = m_doc->newMovingCursor(p);
-            m_secondaryCursors.append(moving);
-            tagLine(p);
+    } else {
+        auto hasCursorAlready = [this](KTextEditor::Cursor c) {
+            for (auto it = m_secondaryCursors.cbegin(); it != m_secondaryCursors.cend(); ++it) {
+                if ((*it)->toCursor() == c) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        for (auto p : positions) {
+            if (!hasCursorAlready(p) && p != cursorPosition()) {
+                auto moving = static_cast<Kate::TextCursor *>(m_doc->newMovingCursor(p));
+                m_secondaryCursors.append(moving);
+                tagLine(p);
+            }
         }
     }
 

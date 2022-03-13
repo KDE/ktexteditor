@@ -795,11 +795,12 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         }
 
         // Draw caret
-        paintCaret(cursor, range, paint, xStart, xEnd);
-        const auto secCursors = view()->secondaryCursors();
+        const auto secCursors = view()->secondaryMovingCursors();
         for (auto cur : secCursors) {
-            paintCaret(&cur, range, paint, xStart, xEnd);
+            auto pos = cur->toCursor();
+            paintCaret(&pos, range, paint, xStart, xEnd);
         }
+        paintCaret(cursor, range, paint, xStart, xEnd);
     }
 
     // show word wrap marker if desirable

@@ -38,11 +38,12 @@ namespace KTextEditor
 class AnnotationModel;
 class Message;
 class InlineNoteProvider;
+class DocumentPrivate;
 }
 
-namespace KTextEditor
+namespace Kate
 {
-class DocumentPrivate;
+class TextCursor;
 }
 class KateBookmarks;
 class KateViewConfig;
@@ -205,7 +206,7 @@ public:
     void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
 
     QVector<KTextEditor::Cursor> secondaryCursors() const;
-    const QVector<KTextEditor::MovingCursor *> &secondaryMovingCursors() const
+    const QVector<Kate::TextCursor *> &secondaryMovingCursors() const
     {
         return m_secondaryCursors;
     }
@@ -231,7 +232,7 @@ private:
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
 
-    QVector<KTextEditor::MovingCursor *> m_secondaryCursors;
+    QVector<Kate::TextCursor *> m_secondaryCursors;
     QVector<SecondarySelection> m_secondarySelections;
 
     void addSecondaryCursorDown();
