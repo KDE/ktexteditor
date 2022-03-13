@@ -277,6 +277,23 @@ void MulticursorTest::moveCharTest()
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
 }
 
+void MulticursorTest::moveCharInFirstOrLastLineTest()
+{
+    CREATE_VIEW_AND_DOC("foo", 0, 0);
+    view->addSecondaryCursorAt({0, 1});
+    // |f|oo
+
+    view->cursorLeft();
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+
+    view->setCursorPosition({0, 2});
+    view->addSecondaryCursorAt({0, 3});
+    view->cursorRight();
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+}
+
 void MulticursorTest::moveWordTest()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);
@@ -349,6 +366,37 @@ void MulticursorTest::homeEndKeyTest()
     view->home();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
     QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
+}
+
+void MulticursorTest::moveUpDown()
+{
+    /** TEST UP **/
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 0, 0);
+
+    view->addSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
+    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+
+    view->up();
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+
+    view->up();
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+
+    /** TEST DOWN **/
+
+    view->addSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
+    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+
+    view->down();
+    QCOMPARE(view->secondaryMovingCursors().size(), 2); // last cursor moves to end of line
+    QCOMPARE(*view->secondaryMovingCursors().at(1), Cursor(2, 3));
+
+    view->down();
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+
+    view->down();
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->cursorPosition(), Cursor(2, 3));
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

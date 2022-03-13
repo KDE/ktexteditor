@@ -1434,6 +1434,8 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
 
     const auto sc = view()->m_secondaryCursors;
     QVarLengthArray<CursorPair, 16> multiCursors;
+    const int lastLine = doc()->lastLine();
+    bool shouldEnsureUniqueCursors = false;
     for (auto c : sc) {
         auto oldPos = c->toCursor();
         if (view()->wrapCursor()) {
@@ -1441,12 +1443,20 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
         } else {
             c->setPosition(BoundedCursor(this, c->toCursor()) += bias);
         }
-        multiCursors.push_back({oldPos, c->toCursor()});
+        const auto newPos = c->toCursor();
+        multiCursors.push_back({oldPos, newPos});
+        // We only need to do this if cursors were in first or last line
+        if (!shouldEnsureUniqueCursors) {
+            shouldEnsureUniqueCursors = newPos.line() == 0 || newPos.line() == lastLine;
+        }
     }
 
     updateSelection(c, sel);
     updateCursor(c);
     updateSecondaryCursors(multiCursors, sel);
+    if (shouldEnsureUniqueCursors) {
+        view()->ensureUniqueCursors();
+    }
 }
 
 void KateViewInternal::cursorPrevChar(bool sel)
@@ -1978,9 +1988,14 @@ void KateViewInternal::cursorUp(bool sel)
         tagLines(newVcursor.line(), vCursor.line());
         i++;
     }
+
     view()->removeSecondaryCursors(cursorsToRemove);
-    auto mergeOnFuncEnd = qScopeGuard([this] {
-        mergeSelections();
+    auto mergeOnFuncEnd = qScopeGuard([this, sel] {
+        if (sel) {
+            mergeSelections();
+        } else {
+            view()->ensureUniqueCursors();
+        }
     });
 
     // Normal single cursor
@@ -2071,8 +2086,12 @@ void KateViewInternal::cursorDown(bool sel)
         i++;
     }
     view()->removeSecondaryCursors(cursorsToRemove);
-    auto mergeOnFuncEnd = qScopeGuard([this] {
-        mergeSelections();
+    auto mergeOnFuncEnd = qScopeGuard([this, sel] {
+        if (sel) {
+            mergeSelections();
+        } else {
+            view()->ensureUniqueCursors();
+        }
     });
 
     // Handle normal single cursor

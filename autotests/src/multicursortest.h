@@ -33,8 +33,10 @@ private Q_SLOTS:
 
     // Movement
     void moveCharTest();
+    void moveCharInFirstOrLastLineTest();
     void moveWordTest();
     void homeEndKeyTest();
+    void moveUpDown();
 };
 
 #endif // KATE_VIEW_TEST_H
