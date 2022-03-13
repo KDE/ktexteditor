@@ -367,6 +367,8 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     ui = new Ui::NavigationConfigWidget();
     ui->setupUi(newWidget);
 
+    initMulticursorModifierComboBox();
+
     // "What's This?" help can be found in the ui file
 
     reload();
@@ -378,6 +380,7 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     observeChanges(ui->chkSmartHome);
     observeChanges(ui->sbAutoCenterCursor);
     observeChanges(ui->chkCamelCursor);
+    observeChanges(ui->cmbMultiCursorModifier);
 
     layout->addWidget(newWidget);
 }
@@ -385,6 +388,29 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
 KateNavigationConfigTab::~KateNavigationConfigTab()
 {
     delete ui;
+}
+
+void KateNavigationConfigTab::initMulticursorModifierComboBox()
+{
+    // On macOS, the ControlModifier value corresponds to the Command keys on the
+    // keyboard, and the MetaModifier value corresponds to the Control keys.
+    auto *c = ui->cmbMultiCursorModifier;
+
+#ifndef Q_OS_DARWIN
+    c->insertItem(0, i18n("Alt"), (int)Qt::ALT);
+    c->insertItem(1, i18n("Ctrl"), (int)Qt::CTRL);
+    c->insertItem(2, i18n("Meta"), (int)Qt::META);
+    c->insertItem(3, i18n("Ctrl + Alt"), (int)(Qt::CTRL | Qt::ALT));
+    c->insertItem(4, i18n("Meta + Alt"), (int)(Qt::META | Qt::ALT));
+    c->insertItem(5, i18n("Ctrl + Meta"), (int)(Qt::CTRL | Qt::META));
+#else
+    c->insertItem(0, i18n("Alt"), (int)Qt::ALT);
+    c->insertItem(1, i18n("Cmd"), (int)Qt::CTRL);
+    c->insertItem(2, i18n("Ctrl"), (int)Qt::META);
+    c->insertItem(3, i18n("Cmd + Alt"), (int)(Qt::CTRL | Qt::ALT));
+    c->insertItem(4, i18n("Ctrl + Alt"), (int)(Qt::META | Qt::ALT));
+    c->insertItem(5, i18n("Cmd + Ctrl"), (int)(Qt::CTRL | Qt::META));
+#endif
 }
 
 void KateNavigationConfigTab::apply()
@@ -407,6 +433,9 @@ void KateNavigationConfigTab::apply()
     KateViewConfig::global()->setValue(KateViewConfig::PersistentSelection, ui->cbTextSelectionMode->currentIndex() == 1);
     KateViewConfig::global()->setValue(KateViewConfig::ScrollPastEnd, ui->chkScrollPastEnd->isChecked());
 
+    const int modifers = ui->cmbMultiCursorModifier->currentData().toInt();
+    KateViewConfig::global()->setMultiCursorModifiers(Qt::KeyboardModifiers(modifers));
+
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
 }
@@ -422,6 +451,16 @@ void KateNavigationConfigTab::reload()
     ui->chkCamelCursor->setChecked(KateDocumentConfig::global()->camelCursor());
 
     ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
+
+    const int mods = KateViewConfig::global()->multiCursorModifiers();
+    const auto count = ui->cmbMultiCursorModifier->count();
+    for (int i = 0; i < count; ++i) {
+        int idxMods = ui->cmbMultiCursorModifier->itemData(i).toInt();
+        if (idxMods == mods) {
+            ui->cmbMultiCursorModifier->setCurrentIndex(i);
+            break;
+        }
+    }
 }
 
 QString KateNavigationConfigTab::name() const

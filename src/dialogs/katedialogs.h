@@ -217,6 +217,8 @@ public:
 private:
     Ui::NavigationConfigWidget *ui;
 
+    void initMulticursorModifierComboBox();
+
 public Q_SLOTS:
     void apply() override;
     void reload() override;

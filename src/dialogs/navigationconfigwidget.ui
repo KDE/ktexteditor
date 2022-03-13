@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
-    <height>280</height>
+    <width>455</width>
+    <height>440</height>
    </rect>
   </property>
   <layout class="QVBoxLayout">
@@ -177,6 +177,25 @@
          <string>Backspace key removes character’s base with its diacritics</string>
         </property>
        </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="gbMulticursor">
+     <property name="title">
+      <string>Multicursor</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblMulticursormodifiers">
+        <property name="text">
+         <string>Multiple Cursor Modifiers</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="cmbMultiCursorModifier"/>
       </item>
      </layout>
     </widget>

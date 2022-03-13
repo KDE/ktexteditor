@@ -1019,6 +1019,7 @@ public:
         WordCompletionRemoveTail,
         ShowFocusFrame,
         ShowDocWithCompletion,
+        MultiCursorModifier
     };
 
 public:
@@ -1110,6 +1111,16 @@ public:
     bool showDocWithCompletion() const
     {
         return value(ShowDocWithCompletion).toBool();
+    }
+
+    Qt::KeyboardModifiers multiCursorModifiers() const
+    {
+        return static_cast<Qt::KeyboardModifiers>(value(MultiCursorModifier).toInt());
+    }
+
+    void setMultiCursorModifiers(Qt::KeyboardModifiers m)
+    {
+        setValue(MultiCursorModifier, (int)m);
     }
 
     bool iconBar() const

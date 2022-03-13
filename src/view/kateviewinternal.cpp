@@ -3389,7 +3389,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
         m_selChangedByUser = false;
 
-        if (e->modifiers() == (Qt::AltModifier)) {
+        if (e->modifiers() == view()->config()->multiCursorModifiers()) {
             setSelection({});
             view()->clearSecondarySelections();
             view()->addSecondaryCursorAt(coordinatesToCursor(e->pos(), false));
