@@ -851,4 +851,52 @@ void KateDocumentTest::testKeepUndoOverReload()
     QCOMPARE(doc.text(), insertedText + initialText);
 }
 
+void KateDocumentTest::testToggleComment()
+{
+    { // BUG: 451471
+        KTextEditor::DocumentPrivate doc;
+        QVERIFY(doc.highlightingModes().contains(QStringLiteral("Python")));
+        doc.setHighlightingMode(QStringLiteral("Python"));
+        const QString original = QStringLiteral("import hello;\n def method():");
+        doc.setText(original);
+        QVERIFY(doc.lines() == 2);
+
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0); // 0 == ToggleComment
+        QCOMPARE(doc.text(), QStringLiteral("#import hello;\n #def method():"));
+
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0); // 0 == ToggleComment
+        QCOMPARE(doc.text(), original);
+    }
+
+    { // Comment C++;
+        KTextEditor::DocumentPrivate doc;
+        QVERIFY(doc.highlightingModes().contains(QStringLiteral("C++")));
+        doc.setHighlightingMode(QStringLiteral("C++"));
+        QString original = QStringLiteral("#include<iostream>\nint main()\n{\nreturn 0;\n}\n");
+        doc.setText(original);
+        QVERIFY(doc.lines() == 6);
+
+        doc.commentSelection(doc.documentRange(), {5, 0}, false, 0); // 0 == ToggleComment
+        QCOMPARE(doc.text(), QStringLiteral("// #include<iostream>\n// int main()\n// {\n// return 0;\n// }\n"));
+
+        doc.commentSelection(doc.documentRange(), {5, 0}, false, 0); // 0 == ToggleComment
+        QCOMPARE(doc.text(), original);
+
+        // Comment just a portion
+        doc.commentSelection(Range(1, 0, 1, 3), Cursor(1, 3), false, 0);
+        QCOMPARE(doc.text(), QStringLiteral("#include<iostream>\n/*int*/ main()\n{\nreturn 0;\n}\n"));
+        doc.commentSelection(Range(1, 0, 1, 7), Cursor(1, 3), false, 0);
+        QCOMPARE(doc.text(), original);
+
+        // mixed, one line commented, one not => both get commented
+        original = QStringLiteral(" // int main()\n{}");
+        doc.setText(original);
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0);
+        QCOMPARE(doc.text(), QStringLiteral("//  // int main()\n// {}"));
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0);
+        // after uncommenting, we get original text back with one line commented
+        QCOMPARE(doc.text(), original);
+    }
+}
+
 #include "katedocument_test.moc"

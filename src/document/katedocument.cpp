@@ -3995,7 +3995,11 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
         bool allLinesAreCommented = true;
         for (int line = endLine; line >= startLine; line--) {
             const auto ln = m_buffer->plainLine(line);
-            if (!ln->startsWith(shortCommentMark) && !ln->startsWith(longCommentMark)) {
+            const QString &text = ln->text();
+            QStringView textView(text.data(), text.size());
+            // Must trim any spaces at the beginning
+            textView = textView.trimmed();
+            if (!textView.startsWith(shortCommentMark) && !textView.startsWith(longCommentMark)) {
                 allLinesAreCommented = false;
                 break;
             }
@@ -4031,6 +4035,10 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
 
     int startAttrib = 0;
     Kate::TextLine ln = kateTextLine(line);
+    if (!ln) {
+        qWarning() << __FUNCTION__ << __LINE__ << "Unexpected null TextLine for " << line << " lineCount: " << lines();
+        return;
+    }
 
     if (selectionCol < ln->length()) {
         startAttrib = ln->attribute(selectionCol);

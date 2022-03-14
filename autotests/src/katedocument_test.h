@@ -46,6 +46,7 @@ private Q_SLOTS:
     void testIndentOnPaste();
     void testAboutToSave();
     void testKeepUndoOverReload();
+    void testToggleComment();
 };
 
 #endif // KATE_DOCUMENT_TEST_H
