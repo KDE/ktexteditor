@@ -11,6 +11,7 @@
 #ifndef QT_NO_ACCESSIBILITY
 
 #include "katedocument.h"
+#include "kateview.h"
 #include "kateviewinternal.h"
 
 #include <KLocalizedString>
@@ -184,14 +185,14 @@ public:
     int positionFromCursor(KateViewInternal *view, const KTextEditor::Cursor &cursor) const
     {
         int pos = m_lastPosition;
-        const auto *doc = view->view()->document();
+        const KTextEditor::DocumentPrivate *doc = view->view()->doc();
 
         // m_lastPosition < 0 is invalid, calculate from the beginning of the document
         if (m_lastPosition < 0 || view != m_lastView) {
             pos = 0;
             // Default (worst) case
             for (int line = 0; line < cursor.line(); ++line) {
-                pos += doc->line(line).size();
+                pos += doc->lineLength(line);
             }
             // new line for each line
             pos += cursor.line();
@@ -202,13 +203,13 @@ public:
                 // If the cursor is after the previous cursor
                 if (m_lastCursor.line() < cursor.line()) {
                     for (int line = m_lastCursor.line(); line < cursor.line(); ++line) {
-                        pos += doc->line(line).size();
+                        pos += doc->lineLength(line);
                     }
                     // add new line character for each line
                     pos += cursor.line() - m_lastCursor.line();
                 } else {
                     for (int line = cursor.line(); line < m_lastCursor.line(); ++line) {
-                        pos -= doc->line(line).size();
+                        pos -= doc->lineLength(line);
                     }
                     // remove new line character for each line
                     pos -= m_lastCursor.line() - cursor.line();
