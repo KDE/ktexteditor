@@ -251,11 +251,7 @@ void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
         if (m_undoSelection.isValid()) {
             if (!m_undoSelections.isEmpty() && !m_undoSecondaryCursors.isEmpty()) {
                 view->clearSecondaryCursors();
-                int i = 0;
-                for (const auto r : qAsConst(m_undoSelections)) {
-                    view->addSecondaryCursorWithSelection(r, m_undoSecondaryCursors[i]);
-                    i++;
-                }
+                view->addSecondaryCursorsWithSelection(m_undoSelections, m_undoSecondaryCursors);
             }
 
             view->setSelection(m_undoSelection);
@@ -294,11 +290,7 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
         if (m_redoSelection.isValid()) {
             if (!m_redoSelections.isEmpty() && !m_redoSecondaryCursors.isEmpty()) {
                 view->clearSecondaryCursors();
-                int i = 0;
-                for (const auto r : qAsConst(m_redoSelections)) {
-                    view->addSecondaryCursorWithSelection(r, m_redoSecondaryCursors[i]);
-                    i++;
-                }
+                view->addSecondaryCursorsWithSelection(m_redoSelections, m_redoSecondaryCursors);
             }
             view->setSelection(m_redoSelection);
         } else {

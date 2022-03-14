@@ -214,7 +214,7 @@ public:
     {
         return m_secondarySelections;
     }
-    void addSecondaryCursorWithSelection(KTextEditor::Range selRange, KTextEditor::Cursor cursorPos = KTextEditor::Cursor::invalid());
+    void addSecondaryCursorsWithSelection(const QVector<KTextEditor::Range> &selRanges, const QVector<KTextEditor::Cursor> cursorPositions);
 
     // Returns the last secondary selection range if available
     // Otherwise returns m_selection

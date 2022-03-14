@@ -1994,7 +1994,7 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         clearHighlights();
 
         // make our previous primary selection a secondary
-        addSecondaryCursorWithSelection(lastSelectionRange);
+        addSecondaryCursorsWithSelection({lastSelectionRange}, {KTextEditor::Cursor::invalid()});
     }
 }
 
@@ -2043,7 +2043,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
     }
 
     for (auto r : resultRanges) {
-        addSecondaryCursorWithSelection(r);
+        addSecondaryCursorsWithSelection({r}, {KTextEditor::Cursor::invalid()});
     }
 }
 
@@ -2528,10 +2528,12 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
 
     // Handle multicursors selection removal
     if (!blockSelect) {
+        completionWidget()->setIgnoreBufferSignals(true);
         for (const auto &sel : m_secondarySelections) {
             doc()->removeText(sel.range->toRange());
             delete sel.range; // delete the range
         }
+        completionWidget()->setIgnoreBufferSignals(false);
     }
 
     // Optimization: clear selection before removing text
@@ -3021,7 +3023,8 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
     }
 }
 
-void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Range selRange, KTextEditor::Cursor cursorPos)
+void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<KTextEditor::Range> &selRanges,
+                                                                const QVector<KTextEditor::Cursor> cursorPositions)
 {
     // No multicursors here
     if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
@@ -3029,16 +3032,21 @@ void KTextEditor::ViewPrivate::addSecondaryCursorWithSelection(KTextEditor::Rang
     }
 
     // If cursor position is the same as primary, ignore.
-    if (selRange.isEmpty() || cursorPosition() == selRange.end()) {
+    if (selRanges.isEmpty() /*|| cursorPosition() == selRange.end()*/) {
+        return;
+    }
+    if (selRanges.size() != cursorPositions.size()) {
+        qWarning() << __FUNCTION__ << __LINE__ << "Unexpected size mismatch";
         return;
     }
 
-    cursorPos = cursorPos.isValid() ? cursorPos : selRange.end();
-    addSecondaryCursorAt(cursorPos, /*toggle=*/false);
-    const auto anchor = selRange.start() == cursorPos ? selRange.end() : selRange.start();
-    m_secondarySelections.push_back({anchor, newSecondarySelectionRange(selRange)});
-    tagLines(selRange);
-    m_viewInternal->updateDirty();
+    addSecondaryCursors(cursorPositions);
+    int idx = 0;
+    for (auto selRange : selRanges) {
+        const auto anchor = selRange.start() == cursorPositions[idx] ? selRange.end() : selRange.start();
+        m_secondarySelections.push_back({anchor, newSecondarySelectionRange(selRange)});
+        idx++;
+    }
 
     if (m_secondarySelections.size() != m_secondaryCursors.size()) {
         qWarning() << "Unexpected mismatch in secondary cursors and secondary selection sizes, please fix." << __FILE__ << ":" << __LINE__;

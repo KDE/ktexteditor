@@ -1372,6 +1372,21 @@ int KateCompletionWidget::automaticInvocationDelay() const
     return m_automaticInvocationDelay;
 }
 
+void KateCompletionWidget::setIgnoreBufferSignals(bool ignore)
+{
+    if (ignore) {
+        disconnect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
+        disconnect(&view()->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
+        disconnect(&view()->doc()->buffer(), &KateBuffer::textInserted, this, &KateCompletionWidget::insertText);
+        disconnect(&view()->doc()->buffer(), &KateBuffer::textRemoved, this, &KateCompletionWidget::removeText);
+    } else {
+        connect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
+        connect(&view()->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
+        connect(&view()->doc()->buffer(), &KateBuffer::textInserted, this, &KateCompletionWidget::insertText);
+        connect(&view()->doc()->buffer(), &KateBuffer::textRemoved, this, &KateCompletionWidget::removeText);
+    }
+}
+
 void KateCompletionWidget::setAutomaticInvocationDelay(int delay)
 {
     m_automaticInvocationDelay = delay;
@@ -1434,6 +1449,8 @@ void KateCompletionWidget::insertText(const KTextEditor::Cursor &position, const
 
 void KateCompletionWidget::removeText(const KTextEditor::Range &)
 {
+    static int i = 1;
+    printf("%d)\n", i++);
     m_lastInsertionByUser = !m_completionEditRunning;
 
     // just removal

@@ -82,6 +82,10 @@ public:
     int automaticInvocationDelay() const;
     void setAutomaticInvocationDelay(int delay);
 
+    void setIgnoreBufferSignals(bool ignore);
+
+    bool m_ignoreBufferSignals = false;
+
     struct CompletionRange {
         CompletionRange()
         {

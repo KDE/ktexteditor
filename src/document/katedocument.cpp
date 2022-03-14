@@ -17,6 +17,7 @@
 #include "kateabstractinputmode.h"
 #include "kateautoindent.h"
 #include "katebuffer.h"
+#include "katecompletionwidget.h"
 #include "kateconfig.h"
 #include "katedialogs.h"
 #include "kateglobal.h"
@@ -3187,10 +3188,14 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         view->setSelection(selectionRange);
     } else {
         // handle multi cursor input
+        // We don't want completionWidget to be doing useless stuff, it
+        // should only respond to main cursor text changes
+        view->completionWidget()->setIgnoreBufferSignals(true);
         const auto sc = view->secondaryCursors();
         for (auto c : sc) {
             insertText(c, chars);
         }
+        view->completionWidget()->setIgnoreBufferSignals(false);
         // then our normal cursor
         insertText(view->cursorPosition(), chars);
     }
@@ -3456,12 +3461,14 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
 
     // Handle multi cursors
     const auto &multiCursors = view->secondaryMovingCursors();
+    view->completionWidget()->setIgnoreBufferSignals(true);
     for (auto *c : multiCursors) {
         auto newPos = backspaceAtCursor(view, c->toCursor());
         if (newPos.isValid()) {
             c->setPosition(newPos);
         }
     }
+    view->completionWidget()->setIgnoreBufferSignals(false);
 
     // Handle primary cursor
     auto newPos = backspaceAtCursor(view, c);
