@@ -3032,13 +3032,15 @@ void KateViewInternal::paintCursor()
         updateDirty(); // paintText (0,0,width(), height(), true);
     }
 
-    QVector<KTextEditor::Cursor> multiCursors = view()->secondaryCursors();
-    auto it = std::unique(multiCursors.begin(), multiCursors.end(), [](KTextEditor::Cursor l, KTextEditor::Cursor r) {
-        return l.line() == r.line();
-    });
-    for (auto i = multiCursors.cbegin(); i != it; ++i) {
-        tagLine(*i);
+    const int s = view()->firstDisplayedLine();
+    const int e = view()->lastDisplayedLine();
+    for (auto *c : qAsConst(view()->m_secondaryCursors)) {
+        auto p = c->toCursor();
+        if (p.line() >= s - 1 && p.line() <= e + 1) {
+            tagLines(p, p, true);
+        }
     }
+
     updateDirty(); // paintText (0,0,width(), height(), true);
 }
 
