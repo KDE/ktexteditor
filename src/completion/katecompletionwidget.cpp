@@ -1449,8 +1449,6 @@ void KateCompletionWidget::insertText(const KTextEditor::Cursor &position, const
 
 void KateCompletionWidget::removeText(const KTextEditor::Range &)
 {
-    static int i = 1;
-    printf("%d)\n", i++);
     m_lastInsertionByUser = !m_completionEditRunning;
 
     // just removal

@@ -3191,9 +3191,9 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         // We don't want completionWidget to be doing useless stuff, it
         // should only respond to main cursor text changes
         view->completionWidget()->setIgnoreBufferSignals(true);
-        const auto sc = view->secondaryCursors();
-        for (auto c : sc) {
-            insertText(c, chars);
+        const auto sc = view->secondaryMovingCursors();
+        for (auto *c : sc) {
+            insertText(*c, chars);
         }
         view->completionWidget()->setIgnoreBufferSignals(false);
         // then our normal cursor
@@ -3247,9 +3247,9 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     editEnd();
 
     // indentation for multi cursors
-    const auto secondaryCursors = view->secondaryCursors();
-    for (auto c : secondaryCursors) {
-        m_indenter->userTypedChar(view, c, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
+    const auto secondaryCursors = view->secondaryMovingCursors();
+    for (auto *c : secondaryCursors) {
+        m_indenter->userTypedChar(view, *c, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
     }
 
     // trigger indentation for primary
