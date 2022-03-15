@@ -26,7 +26,6 @@ var katescript = {
         },
         {   "function": "duplicateLinesUp",
             "name": "Duplicate Selected Lines Up",
-            "shortcut": "Ctrl+Shift+.",
             "category": "Editing"
         },
         {   "function": "encodeURISelection",
