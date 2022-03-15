@@ -1994,7 +1994,7 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         clearHighlights();
 
         // make our previous primary selection a secondary
-        addSecondaryCursorsWithSelection({lastSelectionRange}, {KTextEditor::Cursor::invalid()});
+        addSecondaryCursorsWithSelection({lastSelectionRange}, {lastSelectionRange.end()});
     }
 }
 
@@ -2024,7 +2024,8 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
 
     KTextEditor::Range searchRange(doc()->documentRange());
     QVector<KTextEditor::Range> matches;
-    std::vector<KTextEditor::Range> resultRanges;
+    QVector<KTextEditor::Range> resultRanges;
+    QVector<KTextEditor::Cursor> cursors;
     do {
         matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
 
@@ -2032,6 +2033,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
             // Dont add if matches primary selection
             if (matches.constFirst() != selectionRange()) {
                 resultRanges.push_back(matches.constFirst());
+                cursors.push_back(resultRanges.back().end());
             }
             searchRange.setStart(matches.constFirst().end());
         }
@@ -2042,9 +2044,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
         clearHighlights();
     }
 
-    for (auto r : resultRanges) {
-        addSecondaryCursorsWithSelection({r}, {KTextEditor::Cursor::invalid()});
-    }
+    addSecondaryCursorsWithSelection(resultRanges, cursors);
 }
 
 void KTextEditor::ViewPrivate::replace()
@@ -3024,7 +3024,7 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
 }
 
 void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<KTextEditor::Range> &selRanges,
-                                                                const QVector<KTextEditor::Cursor> cursorPositions)
+                                                                const QVector<KTextEditor::Cursor> &cursorPositions)
 {
     // No multicursors here
     if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
@@ -3032,7 +3032,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<KT
     }
 
     // If cursor position is the same as primary, ignore.
-    if (selRanges.isEmpty() /*|| cursorPosition() == selRange.end()*/) {
+    if (selRanges.isEmpty()) {
         return;
     }
     if (selRanges.size() != cursorPositions.size()) {
@@ -3043,6 +3043,10 @@ void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<KT
     addSecondaryCursors(cursorPositions);
     int idx = 0;
     for (auto selRange : selRanges) {
+        // Ensure to not create a selection for our primary cursor position
+        if (cursorPositions[idx] == cursorPosition()) {
+            continue;
+        }
         const auto anchor = selRange.start() == cursorPositions[idx] ? selRange.end() : selRange.start();
         m_secondarySelections.push_back({anchor, newSecondarySelectionRange(selRange)});
         idx++;
