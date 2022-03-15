@@ -399,4 +399,64 @@ void MulticursorTest::moveUpDown()
     QCOMPARE(view->cursorPosition(), Cursor(2, 3));
 }
 
+void MulticursorTest::findNextOccurenceTest()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
+
+    // No selection
+    view->findNextOccurunceAndSelect();
+    QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
+    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+
+    view->clearSelection();
+    // with selection
+    view->setSelection(Range(0, 0, 0, 3));
+    view->findNextOccurunceAndSelect();
+    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), Cursor(0, 3));
+    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(0, 0, 0, 3));
+    // primary cursor has the last selection
+    QCOMPARE(view->cursorPosition(), Cursor(2, 3));
+    QCOMPARE(view->selectionRange(), Range(2, 0, 2, 3));
+
+    // find another
+    view->findNextOccurunceAndSelect();
+    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), Cursor(0, 3));
+    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(0, 0, 0, 3));
+    QCOMPARE(view->secondaryMovingCursors().at(1)->toCursor(), Cursor(2, 3));
+    QCOMPARE(view->secondarySelections().at(1).range->toRange(), Range(2, 0, 2, 3));
+    // primary cursor has the last selection
+    QCOMPARE(view->cursorPosition(), Cursor(3, 3));
+    QCOMPARE(view->selectionRange(), Range(3, 0, 3, 3));
+
+    // Try to find another, there is none so nothing should change
+    view->findNextOccurunceAndSelect();
+    QCOMPARE(view->cursorPosition(), Cursor(3, 3));
+    QCOMPARE(view->selectionRange(), Range(3, 0, 3, 3));
+}
+
+void MulticursorTest::findAllOccurenceTest()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
+
+    // No selection
+    view->findAllOccuruncesAndSelect();
+    QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
+    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+    // first
+    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), Cursor(2, 3));
+    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(2, 0, 2, 3));
+    // second
+    QCOMPARE(view->secondaryMovingCursors().at(1)->toCursor(), Cursor(3, 3));
+    QCOMPARE(view->secondarySelections().at(1).range->toRange(), Range(3, 0, 3, 3));
+
+    // Try to find another, there is none so nothing should change
+    view->findAllOccuruncesAndSelect();
+    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+    QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

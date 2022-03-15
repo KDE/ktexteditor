@@ -1530,7 +1530,9 @@ void KateViewInternal::wordPrev(bool sel)
     updateSelection(c, sel);
     updateCursor(c);
 
-    view()->ensureUniqueCursors();
+    if (!sel) {
+        view()->ensureUniqueCursors();
+    }
     updateSecondaryCursors(cursorsToUpdate, sel);
 }
 
@@ -1591,7 +1593,9 @@ void KateViewInternal::wordNext(bool sel)
     updateCursor(c);
 
     // Remove cursors which have same position
-    view()->ensureUniqueCursors();
+    if (!sel) {
+        view()->ensureUniqueCursors();
+    }
     updateSecondaryCursors(cursorsToUpdate, sel);
 }
 

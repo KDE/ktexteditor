@@ -37,6 +37,10 @@ private Q_SLOTS:
     void moveWordTest();
     void homeEndKeyTest();
     void moveUpDown();
+
+    // Find occurunce
+    void findNextOccurenceTest();
+    void findAllOccurenceTest();
 };
 
 #endif // KATE_VIEW_TEST_H
