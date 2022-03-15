@@ -2044,6 +2044,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
         clearHighlights();
     }
 
+    clearSecondaryCursors();
     addSecondaryCursorsWithSelection(resultRanges, cursors);
 }
 
