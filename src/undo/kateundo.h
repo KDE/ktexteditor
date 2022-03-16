@@ -14,17 +14,13 @@
 #include <QList>
 
 #include <QBitArray>
+#include <kateview.h>
 #include <ktexteditor/range.h>
 
 class KateUndoManager;
 namespace KTextEditor
 {
 class DocumentPrivate;
-}
-
-namespace KTextEditor
-{
-class ViewPrivate;
 }
 
 /**
@@ -425,9 +421,8 @@ public:
      */
     explicit KateUndoGroup(KateUndoManager *manager,
                            const KTextEditor::Cursor cursorPosition,
-                           const QVector<KTextEditor::Cursor> &cursors,
                            KTextEditor::Range selection,
-                           const QVector<KTextEditor::Range> &secondarySelectionRanges);
+                           const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &);
 
     /**
      * Destructor
@@ -449,9 +444,8 @@ public:
     void redo(KTextEditor::ViewPrivate *view);
 
     void editEnd(const KTextEditor::Cursor cursorPosition,
-                 const QVector<KTextEditor::Cursor> &cursors,
                  KTextEditor::Range selectionRange,
-                 const QVector<KTextEditor::Range> &secondarySelectionRanges);
+                 const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondaryCursors);
 
     /**
      * merge this group with an other
@@ -538,20 +532,10 @@ private:
      * prohibit merging with the next group
      */
     bool m_safePoint = false;
-
-    /**
-     * the text selection of the active view before the edit step
-     */
-    QVector<KTextEditor::Range> m_undoSelections;
     /*
      * Selection Range of primary cursor
      */
     const KTextEditor::Range m_undoSelection;
-
-    /**
-     * the text selections of the active view after the edit step
-     */
-    QVector<KTextEditor::Range> m_redoSelections;
     /*
      * Selection Range of primary cursor
      */
@@ -564,7 +548,7 @@ private:
     /**
      * the cursor positions of the active view before the edit step
      */
-    QVector<KTextEditor::Cursor> m_undoSecondaryCursors;
+    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> m_undoSecondaryCursors;
 
     /**
      * the cursor position of the active view after the edit step
@@ -573,7 +557,7 @@ private:
     /**
      * the cursor positions of the active view before the edit step
      */
-    QVector<KTextEditor::Cursor> m_redoSecondaryCursors;
+    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> m_redoSecondaryCursors;
 };
 
 #endif

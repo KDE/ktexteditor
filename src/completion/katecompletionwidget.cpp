@@ -937,11 +937,11 @@ bool KateCompletionWidget::execute()
 
     // Handle completion for multi cursors
     // TODO: Should we handle tail string removal for multicursors?
-    const auto &multicursors = view()->secondaryMovingCursors();
-    for (auto *c : multicursors) {
+    const auto &multicursors = view()->secondaryCursors();
+    for (const auto &c : multicursors) {
         const auto nameCol = toExecute.sibling(toExecute.row(), KTextEditor::CodeCompletionModel::Name);
         const auto complText = nameCol.data().toString();
-        KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(c->toCursor());
+        KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(c.cursor());
         view()->doc()->replaceText(wordToReplace, complText);
     }
 

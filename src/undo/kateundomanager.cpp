@@ -82,26 +82,13 @@ void KateUndoManager::editStart()
 
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range primarySelectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
-    QVector<KTextEditor::Range> secondarySelections;
-    QVector<KTextEditor::Cursor> secondaryCursors;
+    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> secondaryCursors;
     if (activeView()) {
-        const auto sels = activeView()->secondarySelections();
-        secondarySelections.reserve(sels.size());
-        for (const auto &s : sels) {
-            secondarySelections.push_back(s.range->toRange());
-        }
-        const auto cursors = activeView()->secondaryMovingCursors();
-        secondaryCursors.reserve(cursors.size());
-        for (auto *c : cursors) {
-            secondaryCursors << c->toCursor();
-        }
-        if (!secondarySelections.isEmpty() && secondaryCursors.size() != secondarySelections.size()) {
-            qDebug() << "Unexpected size mismatch in multicursor and multiselect" << __FUNCTION__ << __LINE__;
-        }
+        secondaryCursors = activeView()->plainSecondaryCursors();
     }
 
     // new current undo item
-    m_editCurrentUndo = new KateUndoGroup(this, cursorPosition, secondaryCursors, primarySelectionRange, secondarySelections);
+    m_editCurrentUndo = new KateUndoGroup(this, cursorPosition, primarySelectionRange, secondaryCursors);
 
     Q_ASSERT(m_editCurrentUndo != nullptr); // a new undo group must be created by this method
 }
@@ -118,22 +105,12 @@ void KateUndoManager::editEnd()
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range selectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
 
-    QVector<KTextEditor::Range> secondarySelections;
-    QVector<KTextEditor::Cursor> secondaryCursors;
+    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> secondaryCursors;
     if (activeView()) {
-        const auto sels = activeView()->secondarySelections();
-        secondarySelections.reserve(sels.size());
-        for (const auto &s : sels) {
-            secondarySelections.push_back(s.range->toRange());
-        }
-        const auto cursors = activeView()->secondaryMovingCursors();
-        secondaryCursors.reserve(cursors.size());
-        for (auto *c : cursors) {
-            secondaryCursors << c->toCursor();
-        }
+        secondaryCursors = activeView()->plainSecondaryCursors();
     }
 
-    m_editCurrentUndo->editEnd(cursorPosition, secondaryCursors, selectionRange, secondarySelections);
+    m_editCurrentUndo->editEnd(cursorPosition, selectionRange, secondaryCursors);
 
     bool changedUndo = false;
 

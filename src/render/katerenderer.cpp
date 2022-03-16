@@ -794,11 +794,21 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
         }
 
-        // Draw caret
-        const auto secCursors = view()->secondaryMovingCursors();
-        for (auto cur : secCursors) {
-            auto pos = cur->toCursor();
-            paintCaret(&pos, range, paint, xStart, xEnd);
+        // Draw carets
+        const auto &secCursors = view()->secondaryCursors();
+        // Find carets on this line
+        auto mIt = std::lower_bound(secCursors.begin(), secCursors.end(), range->line(), [](const KTextEditor::ViewPrivate::SecondaryCursor &l, int line) {
+            return l.pos->line() < line;
+        });
+        if (mIt != secCursors.end() && mIt->cursor().line() == range->line()) {
+            for (; mIt != secCursors.end(); ++mIt) {
+                auto cursor = mIt->cursor();
+                if (cursor.line() == range->line()) {
+                    paintCaret(&cursor, range, paint, xStart, xEnd);
+                } else {
+                    break;
+                }
+            }
         }
         paintCaret(cursor, range, paint, xStart, xEnd);
     }

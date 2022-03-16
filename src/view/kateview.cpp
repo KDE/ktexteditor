@@ -1954,10 +1954,13 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         setCursorPosition(selection.end());
         clearHighlights();
 
-        for (auto *c : qAsConst(m_secondaryCursors)) {
-            const auto range = doc()->wordRangeAt(c->toCursor());
-            m_secondarySelections.append({range.start(), newSecondarySelectionRange(range)});
-            c->setPosition(range.end());
+        for (auto &c : m_secondaryCursors) {
+            const auto range = doc()->wordRangeAt(c.cursor());
+            if (!c.range && !c.anchor.isValid()) {
+                c.anchor = range.start();
+                c.range.reset(newSecondarySelectionRange(range));
+                c.pos->setPosition(range.end());
+            }
             tagLines(range);
         }
         return;
@@ -1978,8 +1981,8 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
     }
 
     auto alreadyHasRangeSelected = [this](const KTextEditor::Range selecion) {
-        for (const auto &sel : qAsConst(m_secondarySelections)) {
-            if (sel.range->toRange() == selecion) {
+        for (const auto &c : m_secondaryCursors) {
+            if (c.range && c.range->toRange() == selecion) {
                 return true;
             }
         }
@@ -1993,8 +1996,11 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         setCursorPosition(matches.constFirst().end());
         clearHighlights();
 
+        PlainSecondaryCursor c;
+        c.pos = lastSelectionRange.end();
+        c.range = lastSelectionRange;
         // make our previous primary selection a secondary
-        addSecondaryCursorsWithSelection({lastSelectionRange}, {lastSelectionRange.end()});
+        addSecondaryCursorsWithSelection({c});
     }
 }
 
@@ -2012,10 +2018,13 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
         clearHighlights();
         text = doc()->text(selection);
 
-        for (auto *c : qAsConst(m_secondaryCursors)) {
-            const auto range = doc()->wordRangeAt(c->toCursor());
-            m_secondarySelections.append({range.start(), newSecondarySelectionRange(range)});
-            c->setPosition(range.end());
+        for (auto &c : m_secondaryCursors) {
+            const auto range = doc()->wordRangeAt(c.cursor());
+            if (!c.range && !c.anchor.isValid()) {
+                c.anchor = range.start();
+                c.range.reset(newSecondarySelectionRange(range));
+                c.pos->setPosition(range.end());
+            }
             tagLines(range);
         }
     }
@@ -2024,16 +2033,17 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
 
     KTextEditor::Range searchRange(doc()->documentRange());
     QVector<KTextEditor::Range> matches;
-    QVector<KTextEditor::Range> resultRanges;
-    QVector<KTextEditor::Cursor> cursors;
+    QVector<PlainSecondaryCursor> resultRanges;
     do {
         matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
 
         if (matches.constFirst().isValid()) {
             // Dont add if matches primary selection
             if (matches.constFirst() != selectionRange()) {
-                resultRanges.push_back(matches.constFirst());
-                cursors.push_back(resultRanges.back().end());
+                PlainSecondaryCursor c;
+                c.pos = matches.constFirst().end();
+                c.range = matches.constFirst();
+                resultRanges.push_back(c);
             }
             searchRange.setStart(matches.constFirst().end());
         }
@@ -2045,7 +2055,7 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
     }
 
     clearSecondaryCursors();
-    addSecondaryCursorsWithSelection(resultRanges, cursors);
+    addSecondaryCursorsWithSelection(resultRanges);
 }
 
 void KTextEditor::ViewPrivate::replace()
@@ -2505,12 +2515,15 @@ QString KTextEditor::ViewPrivate::selectionText() const
     }
 
     QVarLengthArray<KTextEditor::Range, 16> ranges;
-    for (const auto &selRange : m_secondarySelections) {
-        ranges.push_back(selRange.range->toRange());
+    for (const auto &c : m_secondaryCursors) {
+        if (c.range) {
+            ranges.push_back(c.range->toRange());
+        }
     }
-    ranges.push_back(m_selection);
-    std::sort(ranges.begin(), ranges.end());
+    ranges.push_back(m_selection.toRange());
+
     QString text;
+    text.reserve(ranges.size() * m_selection.toRange().columnWidth());
     for (int i = 0; i < ranges.size() - 1; ++i) {
         text += doc()->text(ranges[i]) + QStringLiteral("\n");
     }
@@ -2530,9 +2543,10 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
     // Handle multicursors selection removal
     if (!blockSelect) {
         completionWidget()->setIgnoreBufferSignals(true);
-        for (const auto &sel : m_secondarySelections) {
-            doc()->removeText(sel.range->toRange());
-            delete sel.range; // delete the range
+        for (const auto &c : m_secondaryCursors) {
+            if (c.range) {
+                doc()->removeText(c.range->toRange());
+            }
         }
         completionWidget()->setIgnoreBufferSignals(false);
     }
@@ -2551,7 +2565,7 @@ bool KTextEditor::ViewPrivate::removeSelectedText()
         setSelection(newSelection);
         setCursorPositionInternal(newSelection.start());
     } else {
-        m_secondarySelections.clear();
+        clearSecondarySelections();
         clearSelection(false);
     }
 
@@ -2852,9 +2866,8 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
     }
 
     for (auto it = m_secondaryCursors.begin(); it != m_secondaryCursors.end(); ++it) {
-        if ((*it)->toCursor() == cursor) {
+        if ((it->pos->toCursor() == cursor)) {
             if (toggle) {
-                delete *it;
                 it = m_secondaryCursors.erase(it);
                 tagLine(cursor);
                 m_viewInternal->updateDirty();
@@ -2863,8 +2876,11 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
         }
     }
 
-    auto moving = static_cast<Kate::TextCursor *>(m_doc->newMovingCursor(cursor));
-    m_secondaryCursors.append(moving);
+    SecondaryCursor c;
+    c.pos.reset(static_cast<Kate::TextCursor *>(doc()->newMovingCursor(cursor)));
+    m_secondaryCursors.push_back(std::move(c));
+    std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
+
     tagLine(cursor);
 
     if (m_viewInternal->m_cursorTimer.isActive()) {
@@ -2877,8 +2893,10 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
     return true;
 }
 
-void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cursor> &positions)
+void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions)
 {
+    clearSecondaryCursors();
+
     if (positions.isEmpty()) {
         return;
     }
@@ -2886,31 +2904,16 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
         return;
     }
 
-    if (m_secondaryCursors.isEmpty()) {
-        for (auto p : positions) {
-            if (p != cursorPosition()) {
-                auto moving = static_cast<Kate::TextCursor *>(m_doc->newMovingCursor(p));
-                m_secondaryCursors.append(moving);
-                tagLine(p);
-            }
-        }
-    } else {
-        auto hasCursorAlready = [this](KTextEditor::Cursor c) {
-            for (auto it = m_secondaryCursors.cbegin(); it != m_secondaryCursors.cend(); ++it) {
-                if ((*it)->toCursor() == c) {
-                    return true;
-                }
-            }
-            return false;
-        };
-        for (auto p : positions) {
-            if (!hasCursorAlready(p) && p != cursorPosition()) {
-                auto moving = static_cast<Kate::TextCursor *>(m_doc->newMovingCursor(p));
-                m_secondaryCursors.append(moving);
-                tagLine(p);
-            }
+    for (auto p : positions) {
+        if (p != cursorPosition()) {
+            SecondaryCursor c;
+            c.pos.reset(static_cast<Kate::TextCursor *>(doc()->newMovingCursor(p)));
+            m_secondaryCursors.push_back(std::move(c));
+            tagLine(p);
         }
     }
+    std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
+    ensureUniqueCursors();
 
     if (m_viewInternal->m_cursorTimer.isActive()) {
         if (QApplication::cursorFlashTime() > 0) {
@@ -2921,42 +2924,41 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
     m_viewInternal->paintCursor();
 }
 
-void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cursor> &cursors)
+void KTextEditor::ViewPrivate::clearSecondarySelections()
 {
-    clearSecondaryCursors();
-    addSecondaryCursors(cursors);
+    for (auto &c : m_secondaryCursors) {
+        c.range.reset();
+        c.anchor = KTextEditor::Cursor::invalid();
+    }
 }
 
 void KTextEditor::ViewPrivate::clearSecondaryCursors()
 {
-    if (m_secondaryCursors.isEmpty()) {
+    if (m_secondaryCursors.empty()) {
         return;
     }
-    clearSecondarySelections();
-    for (auto *c : qAsConst(m_secondaryCursors)) {
-        tagLine(c->toCursor());
+    for (const auto &c : m_secondaryCursors) {
+        tagLine(c.cursor());
     }
-    qDeleteAll(m_secondaryCursors);
     m_secondaryCursors.clear();
     m_viewInternal->updateDirty();
 }
 
-void KTextEditor::ViewPrivate::clearSecondarySelections()
+const std::vector<KTextEditor::ViewPrivate::SecondaryCursor> &KTextEditor::ViewPrivate::secondaryCursors() const
 {
-    for (auto r : qAsConst(m_secondarySelections)) {
-        delete r.range;
-    }
-    m_secondarySelections.clear();
+    return m_secondaryCursors;
 }
 
-QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::secondaryCursors() const
+QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> KTextEditor::ViewPrivate::plainSecondaryCursors() const
 {
-    QVector<KTextEditor::Cursor> cursors;
+    QVector<PlainSecondaryCursor> cursors;
     cursors.reserve(m_secondaryCursors.size());
-    for (const auto moving : qAsConst(m_secondaryCursors)) {
-        cursors.append(moving->toCursor());
-    }
-    std::sort(cursors.begin(), cursors.end(), std::greater{});
+    std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(cursors), [](const SecondaryCursor &c) {
+        if (c.range) {
+            return PlainSecondaryCursor{c.cursor(), c.range->toRange()};
+        }
+        return PlainSecondaryCursor{c.cursor(), KTextEditor::Range::invalid()};
+    });
     return cursors;
 }
 
@@ -2964,24 +2966,16 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
 {
     for (auto cur : cursorsToRemove) {
         auto &sec = m_secondaryCursors;
-        auto it = std::find_if(sec.begin(), sec.end(), [cur](KTextEditor::MovingCursor *c) {
-            return c->toCursor() == cur;
+        auto it = std::find_if(sec.begin(), sec.end(), [cur](const SecondaryCursor &c) {
+            return c.cursor() == cur;
         });
         if (it != sec.end()) {
-            const int idx = std::distance(sec.begin(), it);
-            // Remove selection for this cursor if there
-            if (idx < m_secondarySelections.size()) {
-                delete m_secondarySelections[idx].range;
-                m_secondarySelections.remove(idx);
-            }
-
-            delete *it;
             m_secondaryCursors.erase(it);
             tagLine(m_viewInternal->toVirtualCursor(cur));
-            m_viewInternal->updateDirty();
         }
     }
 
+    m_viewInternal->updateDirty();
     if (cursorPosition() == KTextEditor::Cursor(0, 0)) {
         m_viewInternal->paintCursor();
     }
@@ -2989,75 +2983,76 @@ void KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
 
 void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
 {
-    if (m_secondaryCursors.isEmpty()) {
+    if (m_secondaryCursors.empty()) {
         return;
     }
-    // These are sorted
-    const auto secondary = secondaryCursors();
-    std::vector<KTextEditor::Cursor> toRemove;
+
+    std::vector<SecondaryCursor>::iterator it;
+    if (matchLine) {
+        auto matchLine = [](const SecondaryCursor &l, const SecondaryCursor &r) {
+            return l.cursor().line() == r.cursor().line();
+        };
+        it = std::unique(m_secondaryCursors.begin(), m_secondaryCursors.end(), matchLine);
+    } else {
+        it = std::unique(m_secondaryCursors.begin(), m_secondaryCursors.end());
+    }
+    if (it != m_secondaryCursors.end()) {
+        m_secondaryCursors.erase(it, m_secondaryCursors.end());
+    }
 
     if (matchLine) {
-        auto matchLine = [](KTextEditor::Cursor l, KTextEditor::Cursor r) {
-            return l.line() == r.line();
-        };
-        auto it = std::adjacent_find(secondary.begin(), secondary.end(), matchLine);
-        while (it != secondary.cend()) {
-            toRemove.push_back(*it);
-            ++it;
-            it = std::adjacent_find(it, secondary.end());
-        }
+        const int ln = cursorPosition().line();
+        m_secondaryCursors.erase(std::remove_if(m_secondaryCursors.begin(),
+                                                m_secondaryCursors.end(),
+                                                [ln](const SecondaryCursor &c) {
+                                                    return c.cursor().line() == ln;
+                                                }),
+                                 m_secondaryCursors.end());
     } else {
-        auto it = std::adjacent_find(secondary.begin(), secondary.end());
-        while (it != secondary.cend()) {
-            toRemove.push_back(*it);
-            ++it;
-            it = std::adjacent_find(it, secondary.end());
-        }
-    }
-
-    // Check if any cursor is the same as our primary
-    for (auto c : qAsConst(secondary)) {
-        if (c == cursorPosition()) {
-            toRemove.push_back(c);
-        }
-    }
-
-    if (!toRemove.empty()) {
-        removeSecondaryCursors(toRemove);
+        const auto cp = cursorPosition();
+        m_secondaryCursors.erase(std::remove_if(m_secondaryCursors.begin(),
+                                                m_secondaryCursors.end(),
+                                                [cp](const SecondaryCursor &c) {
+                                                    return c.cursor() == cp;
+                                                }),
+                                 m_secondaryCursors.end());
     }
 }
 
-void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<KTextEditor::Range> &selRanges,
-                                                                const QVector<KTextEditor::Cursor> &cursorPositions)
+void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<PlainSecondaryCursor> &cursorsWithSelection)
 {
     if (isMulticursorNotAllowed()) {
         return;
     }
 
     // If cursor position is the same as primary, ignore.
-    if (selRanges.isEmpty()) {
-        return;
-    }
-    if (selRanges.size() != cursorPositions.size()) {
-        qWarning() << __FUNCTION__ << __LINE__ << "Unexpected size mismatch";
+    if (cursorsWithSelection.isEmpty()) {
         return;
     }
 
-    addSecondaryCursors(cursorPositions);
-    int idx = 0;
-    for (auto selRange : selRanges) {
-        // Ensure to not create a selection for our primary cursor position
-        if (cursorPositions[idx] == cursorPosition()) {
+    for (const auto &c : cursorsWithSelection) {
+        // We don't want to add on top of primary cursor
+        if (c.pos == cursorPosition()) {
             continue;
         }
-        const auto anchor = selRange.start() == cursorPositions[idx] ? selRange.end() : selRange.start();
-        m_secondarySelections.push_back({anchor, newSecondarySelectionRange(selRange)});
-        idx++;
+        SecondaryCursor n;
+        n.pos.reset(static_cast<Kate::TextCursor *>(doc()->newMovingCursor(c.pos)));
+        if (c.range.isValid()) {
+            n.range.reset(newSecondarySelectionRange(c.range));
+            n.anchor = c.range.start() == c.pos ? c.range.end() : c.range.end();
+        }
+        m_secondaryCursors.push_back(std::move(n));
     }
+    std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
+    ensureUniqueCursors();
 
-    if (m_secondarySelections.size() != m_secondaryCursors.size()) {
-        qWarning() << "Unexpected mismatch in secondary cursors and secondary selection sizes, please fix." << __FILE__ << ":" << __LINE__;
+    if (m_viewInternal->m_cursorTimer.isActive()) {
+        if (QApplication::cursorFlashTime() > 0) {
+            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
+        }
+        renderer()->setDrawCaret(true);
     }
+    m_viewInternal->paintCursor();
 }
 
 Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEditor::Range selRange)
@@ -3075,29 +3070,23 @@ Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEdito
     return range;
 }
 
-KTextEditor::Range KTextEditor::ViewPrivate::lastSelectionRange()
-{
-    if (!selection()) {
-        return KTextEditor::Range::invalid();
-    }
-    if (m_secondarySelections.isEmpty()) {
-        return selectionRange();
-    }
-    return m_secondarySelections.back().range->toRange();
-}
-
 void KTextEditor::ViewPrivate::addSecondaryCursorDown()
 {
     KTextEditor::Cursor last = cursorPosition();
-    const auto secondary = secondaryCursors();
-    if (!secondary.isEmpty()) {
-        last = secondary.front();
+    const auto &secondary = secondaryCursors();
+    if (!secondary.empty()) {
+        last = secondary.back().cursor();
         last = std::max(cursorPosition(), last);
     }
+    if (last.line() >= doc()->lastLine()) {
+        return;
+    }
+
     auto nextRange = m_viewInternal->nextLayout(last);
     if (!nextRange.isValid()) {
         return;
     }
+    setSelection({});
     clearSecondarySelections();
     int x = renderer()->cursorToX(m_viewInternal->currentLayout(cursorPosition()), cursorPosition().column());
     auto next = renderer()->xToCursor(nextRange, x, !wrapCursor());
@@ -3107,15 +3096,19 @@ void KTextEditor::ViewPrivate::addSecondaryCursorDown()
 void KTextEditor::ViewPrivate::addSecondaryCursorUp()
 {
     KTextEditor::Cursor last = cursorPosition();
-    const auto secondary = secondaryCursors();
-    if (!secondary.isEmpty()) {
-        last = secondary.back();
+    const auto &secondary = secondaryCursors();
+    if (!secondary.empty()) {
+        last = secondary.front().cursor();
         last = std::min(cursorPosition(), last);
+    }
+    if (last.line() == 0) {
+        return;
     }
     auto nextRange = m_viewInternal->previousLayout(last);
     if (!nextRange.isValid()) {
         return;
     }
+    setSelection({});
     clearSecondarySelections();
     int x = renderer()->cursorToX(m_viewInternal->currentLayout(cursorPosition()), cursorPosition().column());
     auto next = renderer()->xToCursor(nextRange, x, !wrapCursor());
@@ -3368,15 +3361,18 @@ void KTextEditor::ViewPrivate::killLine()
     if (m_selection.isEmpty()) {
         // collect lines of all cursors
         linesToRemove.reserve(m_secondaryCursors.size() + 1);
-        for (auto *c : qAsConst(m_secondaryCursors)) {
-            linesToRemove.push_back(c->line());
+        for (const auto &c : m_secondaryCursors) {
+            linesToRemove.push_back(c.pos->line());
         }
         // add primary cursor line
         linesToRemove.push_back(cursorPosition().line());
     } else {
         linesToRemove.reserve(m_secondaryCursors.size() + 1);
-        for (const auto &sel : qAsConst(m_secondarySelections)) {
-            const auto range = sel.range;
+        for (const auto &c : m_secondaryCursors) {
+            const auto &range = c.range;
+            if (!range) {
+                continue;
+            }
             for (int line = range->end().line(); line >= range->start().line(); line--) {
                 linesToRemove.push_back(line);
             }
@@ -3477,8 +3473,8 @@ void KTextEditor::ViewPrivate::keyDelete()
 {
     doc()->editBegin();
     // multi cursor
-    for (auto *c : qAsConst(m_secondaryCursors)) {
-        doc()->del(this, c->toCursor());
+    for (const auto &c : m_secondaryCursors) {
+        doc()->del(this, c.cursor());
     }
 
     // primary cursor
@@ -3505,8 +3501,8 @@ void KTextEditor::ViewPrivate::deleteWordRight()
 void KTextEditor::ViewPrivate::transpose()
 {
     doc()->editBegin();
-    for (auto *c : qAsConst(m_secondaryCursors)) {
-        doc()->transpose(c->toCursor());
+    for (const auto &c : m_secondaryCursors) {
+        doc()->transpose(c.cursor());
     }
     doc()->transpose(cursorPosition());
     doc()->editEnd();

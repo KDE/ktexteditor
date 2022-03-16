@@ -3191,9 +3191,9 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         // We don't want completionWidget to be doing useless stuff, it
         // should only respond to main cursor text changes
         view->completionWidget()->setIgnoreBufferSignals(true);
-        const auto sc = view->secondaryMovingCursors();
-        for (auto *c : sc) {
-            insertText(*c, chars);
+        const auto &sc = view->secondaryCursors();
+        for (const auto &c : sc) {
+            insertText(c.pos->toCursor(), chars);
         }
         view->completionWidget()->setIgnoreBufferSignals(false);
         // then our normal cursor
@@ -3247,9 +3247,9 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     editEnd();
 
     // indentation for multi cursors
-    const auto secondaryCursors = view->secondaryMovingCursors();
-    for (auto *c : secondaryCursors) {
-        m_indenter->userTypedChar(view, *c, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
+    const auto &secondaryCursors = view->secondaryCursors();
+    for (const auto &c : secondaryCursors) {
+        m_indenter->userTypedChar(view, c.cursor(), chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
     }
 
     // trigger indentation for primary
@@ -3301,12 +3301,12 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
     };
 
     // Handle multicursors
-    const auto &secondaryCursors = v->secondaryMovingCursors();
-    for (auto *c : secondaryCursors) {
-        insertNewLine(c->toCursor());
+    const auto &secondaryCursors = v->secondaryCursors();
+    for (const auto &c : secondaryCursors) {
+        insertNewLine(c.cursor());
         // second: if "indent" is true, indent the new line, if needed...
         if (indent == KTextEditor::DocumentPrivate::Indent) {
-            m_indenter->userTypedChar(v, c->toCursor(), QLatin1Char('\n'));
+            m_indenter->userTypedChar(v, c.cursor(), QLatin1Char('\n'));
         }
     }
 
@@ -3460,12 +3460,12 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     editStart();
 
     // Handle multi cursors
-    const auto &multiCursors = view->secondaryMovingCursors();
+    const auto &multiCursors = view->secondaryCursors();
     view->completionWidget()->setIgnoreBufferSignals(true);
-    for (auto *c : multiCursors) {
-        auto newPos = backspaceAtCursor(view, c->toCursor());
+    for (const auto &c : multiCursors) {
+        auto newPos = backspaceAtCursor(view, c.cursor());
         if (newPos.isValid()) {
-            c->setPosition(newPos);
+            c.pos->setPosition(newPos);
         }
     }
     view->completionWidget()->setIgnoreBufferSignals(false);
@@ -4115,19 +4115,21 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     editBegin();
 
     if (v->selection()) {
-        const auto &selections = v->secondarySelections();
+        const auto &cursors = v->secondaryCursors();
         int i = 0;
-        for (const auto &sel : selections) {
-            KTextEditor::Cursor c = v->secondaryMovingCursors().at(i)->toCursor();
-            commentSelection(sel.range->toRange(), c, false, change);
+        for (const auto &c : cursors) {
+            if (!c.range) {
+                continue;
+            }
+            commentSelection(c.range->toRange(), c.cursor(), false, change);
             i++;
         }
         KTextEditor::Cursor c(line, column);
         commentSelection(v->selectionRange(), c, v->blockSelection(), change);
     } else {
-        const auto &cursors = v->secondaryMovingCursors();
-        for (auto *c : cursors) {
-            commentSelection({}, c->toCursor(), false, change);
+        const auto &cursors = v->secondaryCursors();
+        for (const auto &c : cursors) {
+            commentSelection({}, c.cursor(), false, change);
         }
         commentSelection({}, KTextEditor::Cursor(line, column), false, change);
     }
@@ -4241,13 +4243,15 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
     editBegin();
 
     if (v->selection()) {
-        const auto &secondarySelections = v->secondarySelections();
+        const auto &cursors = v->secondaryCursors();
         int i = 0;
-        for (const auto &s : secondarySelections) {
-            auto *cursor = v->secondaryMovingCursors().at(i);
-            auto pos = cursor->toCursor();
-            transformCursorOrRange(v, s.anchor, s.range->toRange(), t);
-            cursor->setPosition(pos);
+        for (const auto &c : cursors) {
+            if (!c.range) {
+                continue;
+            }
+            auto pos = c.pos->toCursor();
+            transformCursorOrRange(v, c.anchor, c.range->toRange(), t);
+            c.pos->setPosition(pos);
             i++;
         }
         // cache the selection and cursor, so we can be sure to restore.
@@ -4256,9 +4260,9 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
         v->setSelection(selRange);
         v->setCursorPosition(c);
     } else { // no selection
-        const auto &secondaryCursors = v->secondaryMovingCursors();
-        for (auto *c : secondaryCursors) {
-            transformCursorOrRange(v, c->toCursor(), {}, t);
+        const auto &secondaryCursors = v->secondaryCursors();
+        for (const auto &c : secondaryCursors) {
+            transformCursorOrRange(v, c.cursor(), {}, t);
         }
         transformCursorOrRange(v, c, {}, t);
     }

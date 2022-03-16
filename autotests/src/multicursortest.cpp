@@ -39,7 +39,7 @@ MulticursorTest::~MulticursorTest()
 {
 }
 
-static QWidget *findViewInternal(KTextEditor::View *view)
+static QWidget *findViewInternal(KTextEditor::ViewPrivate *view)
 {
     for (QObject *child : view->children()) {
         if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
@@ -119,7 +119,7 @@ void MulticursorTest::insertRemoveText()
 
     // cursors should merge
     view->backspace();
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
 }
 
@@ -139,13 +139,13 @@ void MulticursorTest::testUndoRedo()
 
     view->doc()->undo();
     QCOMPARE(doc.text(), QStringLiteral("fo\nfoo"));
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 3));
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 3));
 
     // Another undo, multicursor should be gone
     view->doc()->undo();
     QCOMPARE(doc.text(), QStringLiteral("foo\nfoo"));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 
     // One redo
     view->doc()->redo();
@@ -154,8 +154,8 @@ void MulticursorTest::testUndoRedo()
     // Second redo, multicursor should be back
     view->doc()->redo();
     QCOMPARE(doc.text(), QStringLiteral("f\nfo"));
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 2));
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 2));
 }
 
 void MulticursorTest::testUndoRedoWithSelection()
@@ -169,19 +169,17 @@ void MulticursorTest::testUndoRedoWithSelection()
 
     QCOMPARE(doc.text(), QStringLiteral("\n"));
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
-    QCOMPARE(view->secondarySelections().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 0));
 
     view->doc()->undo();
 
     QCOMPARE(doc.text(), QStringLiteral("foo\nfoo"));
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
-    QCOMPARE(view->secondarySelections().size(), 1);
-    QCOMPARE(*view->secondarySelections().at(0).range, Range(1, 0, 1, 3));
-    QCOMPARE(view->secondarySelections().at(0).anchor, Cursor(1, 3));
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 0));
+    QCOMPARE(*view->secondaryCursors().at(0).range, Range(1, 0, 1, 3));
+    QCOMPARE(view->secondaryCursors().at(0).anchor, Cursor(1, 3));
 }
 
 void MulticursorTest::testCreateMultiCursor()
@@ -193,21 +191,21 @@ void MulticursorTest::testCreateMultiCursor()
 
     // Alt + click should add a cursor
     clickAtPosition(view, internalView, {1, 0}, Qt::AltModifier);
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
-    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), KTextEditor::Cursor(1, 0));
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), KTextEditor::Cursor(1, 0));
 
     // Alt + click at the same point should remove the cursor
     clickAtPosition(view, internalView, {1, 0}, Qt::AltModifier);
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 
     // Create two cursors using alt+click
     clickAtPosition(view, internalView, {1, 0}, Qt::AltModifier);
     clickAtPosition(view, internalView, {1, 1}, Qt::AltModifier);
-    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+    QCOMPARE(view->secondaryCursors().size(), 2);
 
     // now simple click => show remove all secondary cursors
     clickAtPosition(view, internalView, {0, 0}, Qt::NoModifier);
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
 }
 
@@ -217,12 +215,12 @@ void MulticursorTest::testCreateMultiCursorFromSelection()
     view->setSelection(KTextEditor::Range(0, 0, 2, 3));
     view->createMultiCursorsFromSelection();
 
-    const auto &cursors = view->secondaryMovingCursors();
+    const auto &cursors = view->secondaryCursors();
     QCOMPARE(cursors.size(), doc.lines() - 1); // 1 cursor is primary, not included
 
     int i = 0;
-    for (auto *c : cursors) {
-        QCOMPARE(c->toCursor(), KTextEditor::Cursor(i, 3));
+    for (const auto &c : cursors) {
+        QCOMPARE(c.cursor(), KTextEditor::Cursor(i, 3));
         i++;
     }
 }
@@ -235,22 +233,22 @@ void MulticursorTest::moveCharTest()
     view->addSecondaryCursorAt({1, 0});
     view->cursorRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 1));
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(1, 1));
 
     view->cursorLeft();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(1, 0));
 
     // Shift pressed
     view->shiftCursorRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 1));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(1, 0, 1, 1));
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(1, 1));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(1, 0, 1, 1));
 
     view->shiftCursorLeft();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(1, 0, 1, 0));
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(1, 0));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(1, 0, 1, 0));
 
     view->clearSecondaryCursors();
 
@@ -261,7 +259,7 @@ void MulticursorTest::moveCharTest()
     view->shiftCursorLeft();
     view->shiftCursorLeft();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
 
     view->clearSelection();
@@ -273,7 +271,7 @@ void MulticursorTest::moveCharTest()
     view->shiftCursorRight();
     view->shiftCursorRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
 }
 
@@ -284,13 +282,13 @@ void MulticursorTest::moveCharInFirstOrLastLineTest()
     // |f|oo
 
     view->cursorLeft();
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
 
     view->setCursorPosition({0, 2});
     view->addSecondaryCursorAt({0, 3});
     view->cursorRight();
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
 }
 
@@ -302,22 +300,22 @@ void MulticursorTest::moveWordTest()
     view->addSecondaryCursorAt({1, 0});
     view->wordRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 3));
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 3));
 
     view->wordLeft();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 0));
 
     // Shift pressed
     view->shiftWordRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 3));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(1, 0, 1, 3));
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 3));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(1, 0, 1, 3));
 
     view->shiftWordLeft();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(1, 0, 1, 0));
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 0));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(1, 0, 1, 0));
 
     view->clearSecondaryCursors();
 
@@ -326,7 +324,7 @@ void MulticursorTest::moveWordTest()
     view->addSecondaryCursorAt({0, 1}); // f|oo
     view->shiftWordRight(); // foo|
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
 
     // Three cursors in same word, => word movement should merge them (no sel)
@@ -335,7 +333,7 @@ void MulticursorTest::moveWordTest()
     view->addSecondaryCursorAt({0, 1}); // f|oo
     view->wordLeft(); // foo|
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 }
 
 void MulticursorTest::homeEndKeyTest()
@@ -346,18 +344,18 @@ void MulticursorTest::homeEndKeyTest()
     view->addSecondaryCursorAt({0, 1});
     view->home();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 
     // Two cursor in same line => end should merge them
     view->addSecondaryCursorAt({0, 1});
     view->end();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 
     view->addSecondaryCursorAt({1, 0});
     view->end();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 3));
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 3));
 
     view->clearSecondaryCursors();
 
@@ -365,7 +363,7 @@ void MulticursorTest::homeEndKeyTest()
     view->addSecondaryCursorAt({1, 3});
     view->home();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
-    QCOMPARE(*view->secondaryMovingCursors().at(0), Cursor(1, 0));
+    QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 0));
 }
 
 void MulticursorTest::moveUpDown()
@@ -373,29 +371,29 @@ void MulticursorTest::moveUpDown()
     /** TEST UP **/
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 0, 0);
 
-    view->addSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
-    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+    view->setSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
+    QCOMPARE(view->secondaryCursors().size(), 2);
 
     view->up();
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(view->secondaryCursors().size(), 1);
 
     view->up();
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 
     /** TEST DOWN **/
 
-    view->addSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
-    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+    view->setSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
+    QCOMPARE(view->secondaryCursors().size(), 2);
 
     view->down();
-    QCOMPARE(view->secondaryMovingCursors().size(), 2); // last cursor moves to end of line
-    QCOMPARE(*view->secondaryMovingCursors().at(1), Cursor(2, 3));
+    QCOMPARE(view->secondaryCursors().size(), 2); // last cursor moves to end of line
+    QCOMPARE(*view->secondaryCursors().at(1).pos, Cursor(2, 3));
 
     view->down();
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
+    QCOMPARE(view->secondaryCursors().size(), 1);
 
     view->down();
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(2, 3));
 }
 
@@ -407,26 +405,26 @@ void MulticursorTest::findNextOccurenceTest()
     view->findNextOccurunceAndSelect();
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(view->secondaryMovingCursors().size(), 0);
+    QCOMPARE(view->secondaryCursors().size(), 0);
 
     view->clearSelection();
     // with selection
     view->setSelection(Range(0, 0, 0, 3));
     view->findNextOccurunceAndSelect();
-    QCOMPARE(view->secondaryMovingCursors().size(), 1);
-    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), Cursor(0, 3));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(0, 0, 0, 3));
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(0, 3));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(0, 0, 0, 3));
     // primary cursor has the last selection
     QCOMPARE(view->cursorPosition(), Cursor(2, 3));
     QCOMPARE(view->selectionRange(), Range(2, 0, 2, 3));
 
     // find another
     view->findNextOccurunceAndSelect();
-    QCOMPARE(view->secondaryMovingCursors().size(), 2);
-    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), Cursor(0, 3));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(0, 0, 0, 3));
-    QCOMPARE(view->secondaryMovingCursors().at(1)->toCursor(), Cursor(2, 3));
-    QCOMPARE(view->secondarySelections().at(1).range->toRange(), Range(2, 0, 2, 3));
+    QCOMPARE(view->secondaryCursors().size(), 2);
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(0, 3));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(0, 0, 0, 3));
+    QCOMPARE(view->secondaryCursors().at(1).cursor(), Cursor(2, 3));
+    QCOMPARE(view->secondaryCursors().at(1).range->toRange(), Range(2, 0, 2, 3));
     // primary cursor has the last selection
     QCOMPARE(view->cursorPosition(), Cursor(3, 3));
     QCOMPARE(view->selectionRange(), Range(3, 0, 3, 3));
@@ -445,13 +443,13 @@ void MulticursorTest::findAllOccurenceTest()
     view->findAllOccuruncesAndSelect();
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QCOMPARE(view->secondaryMovingCursors().size(), 2);
+    QCOMPARE(view->secondaryCursors().size(), 2);
     // first
-    QCOMPARE(view->secondaryMovingCursors().at(0)->toCursor(), Cursor(2, 3));
-    QCOMPARE(view->secondarySelections().at(0).range->toRange(), Range(2, 0, 2, 3));
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(2, 3));
+    QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(2, 0, 2, 3));
     // second
-    QCOMPARE(view->secondaryMovingCursors().at(1)->toCursor(), Cursor(3, 3));
-    QCOMPARE(view->secondarySelections().at(1).range->toRange(), Range(3, 0, 3, 3));
+    QCOMPARE(view->secondaryCursors().at(1).cursor(), Cursor(3, 3));
+    QCOMPARE(view->secondaryCursors().at(1).range->toRange(), Range(3, 0, 3, 3));
 
     // Try to find another, there is none so nothing should change
     view->findAllOccuruncesAndSelect();

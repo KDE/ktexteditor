@@ -217,15 +217,13 @@ void KateEditMarkLineAutoWrappedUndo::redo()
 
 KateUndoGroup::KateUndoGroup(KateUndoManager *manager,
                              const KTextEditor::Cursor cursorPosition,
-                             const QVector<KTextEditor::Cursor> &cursors,
                              KTextEditor::Range selection,
-                             const QVector<KTextEditor::Range> &secondarySelectionRanges)
+                             const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondary)
     : m_manager(manager)
-    , m_undoSelections(secondarySelectionRanges)
     , m_undoSelection(selection)
     , m_redoSelection(-1, -1, -1, -1)
     , m_undoCursor(cursorPosition)
-    , m_undoSecondaryCursors(cursors)
+    , m_undoSecondaryCursors(secondary)
     , m_redoCursor(-1, -1)
 {
 }
@@ -249,24 +247,14 @@ void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
 
     if (view != nullptr) {
         if (m_undoSelection.isValid()) {
-            if (!m_undoSelections.isEmpty() && !m_undoSecondaryCursors.isEmpty()) {
-                view->clearSecondaryCursors();
-                view->addSecondaryCursorsWithSelection(m_undoSelections, m_undoSecondaryCursors);
-            }
-
             view->setSelection(m_undoSelection);
         } else {
             view->removeSelection();
-            view->clearSecondarySelections();
         }
+        view->clearSecondaryCursors();
+        view->addSecondaryCursorsWithSelection(m_undoSecondaryCursors);
 
         if (m_undoCursor.isValid()) {
-            // Only do it if we don't have selections,
-            // Because setting the selection automatically sets the
-            // cursor. Doing it again here will remove the selection.
-            if (m_undoSelections.isEmpty()) {
-                view->setSecondaryCursors(m_undoSecondaryCursors);
-            }
             view->setCursorPosition(m_undoCursor);
         }
     }
@@ -288,20 +276,14 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
 
     if (view != nullptr) {
         if (m_redoSelection.isValid()) {
-            if (!m_redoSelections.isEmpty() && !m_redoSecondaryCursors.isEmpty()) {
-                view->clearSecondaryCursors();
-                view->addSecondaryCursorsWithSelection(m_redoSelections, m_redoSecondaryCursors);
-            }
             view->setSelection(m_redoSelection);
         } else {
             view->removeSelection();
-            view->clearSecondarySelections();
         }
+        view->clearSecondaryCursors();
+        view->addSecondaryCursorsWithSelection(m_redoSecondaryCursors);
 
         if (m_redoCursor.isValid()) {
-            if (m_redoSelections.isEmpty()) {
-                view->setSecondaryCursors(m_redoSecondaryCursors);
-            }
             view->setCursorPosition(m_redoCursor);
         }
     }
@@ -310,14 +292,12 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
 }
 
 void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
-                            const QVector<KTextEditor::Cursor> &cursors,
                             KTextEditor::Range selectionRange,
-                            const QVector<KTextEditor::Range> &secondarySelectionRanges)
+                            const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondaryCursors)
 {
     m_redoCursor = cursorPosition;
-    m_redoSecondaryCursors = cursors;
+    m_redoSecondaryCursors = secondaryCursors;
     m_redoSelection = selectionRange;
-    m_redoSelections = secondarySelectionRanges;
 }
 
 void KateUndoGroup::addItem(KateUndo *u)
@@ -359,7 +339,7 @@ bool KateUndoGroup::merge(KateUndoGroup *newGroup, bool complex)
         m_redoCursor = newGroup->m_redoCursor;
         m_redoSecondaryCursors = newGroup->m_redoSecondaryCursors;
         m_redoSelection = newGroup->m_redoSelection;
-        m_redoSelections = newGroup->m_redoSelections;
+        //         m_redoSelections = newGroup->m_redoSelections;
 
         return true;
     }

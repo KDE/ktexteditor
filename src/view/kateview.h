@@ -194,39 +194,51 @@ public:
     bool mouseTrackingEnabled() const override;
     bool setMouseTrackingEnabled(bool enable) override;
 
-    // Helper struct to work with multicursor selections
-    struct SecondarySelection {
-        KTextEditor::Cursor anchor;
-        Kate::TextRange *range;
-    };
-
     /*
      * multicursor stuff
      */
+
+    // Helper structs to work with multicursors
+    struct PlainSecondaryCursor {
+        KTextEditor::Cursor pos;
+        KTextEditor::Range range;
+    };
+    struct SecondaryCursor {
+        std::unique_ptr<Kate::TextCursor> pos;
+        std::unique_ptr<Kate::TextRange> range;
+        KTextEditor::Cursor anchor = KTextEditor::Cursor::invalid();
+
+        KTextEditor::Cursor cursor() const
+        {
+            return pos->toCursor();
+        }
+
+        friend bool operator<(const SecondaryCursor &l, const SecondaryCursor &r)
+        {
+            return l.cursor() < r.cursor();
+        }
+
+        friend bool operator<(const SecondaryCursor &l, const KTextEditor::Cursor &r)
+        {
+            return l.cursor() < r;
+        }
+
+        friend bool operator==(const SecondaryCursor &l, const SecondaryCursor &r)
+        {
+            return l.cursor() == r.cursor();
+        }
+    };
 
     // Just a helper to control the states in which we disallow multicursor
     bool isMulticursorNotAllowed() const;
 
     // Adds a secondary cursor
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
-    void addSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
     void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
 
-    QVector<KTextEditor::Cursor> secondaryCursors() const;
-    const QVector<Kate::TextCursor *> &secondaryMovingCursors() const
-    {
-        return m_secondaryCursors;
-    }
-    const QVector<SecondarySelection> &secondarySelections() const
-    {
-        return m_secondarySelections;
-    }
-    void addSecondaryCursorsWithSelection(const QVector<KTextEditor::Range> &selRanges, const QVector<KTextEditor::Cursor> &cursorPositions);
-
-    // Returns the last secondary selection range if available
-    // Otherwise returns m_selection
-    // Returns nothing if no selection
-    KTextEditor::Range lastSelectionRange();
+    const std::vector<SecondaryCursor> &secondaryCursors() const;
+    QVector<PlainSecondaryCursor> plainSecondaryCursors() const;
+    void addSecondaryCursorsWithSelection(const QVector<PlainSecondaryCursor> &cursorsWithSelection);
 
     void clearSecondaryCursors();
     void clearSecondarySelections();
@@ -239,8 +251,7 @@ private:
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
 
-    QVector<Kate::TextCursor *> m_secondaryCursors;
-    QVector<SecondarySelection> m_secondarySelections;
+    std::vector<SecondaryCursor> m_secondaryCursors;
 
     void addSecondaryCursorDown();
     void addSecondaryCursorUp();
