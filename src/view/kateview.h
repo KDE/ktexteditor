@@ -200,6 +200,13 @@ public:
         Kate::TextRange *range;
     };
 
+    /*
+     * multicursor stuff
+     */
+
+    // Just a helper to control the states in which we disallow multicursor
+    bool isMulticursorNotAllowed() const;
+
     // Adds a secondary cursor
     bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
     void addSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);

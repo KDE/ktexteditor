@@ -1942,7 +1942,7 @@ void KTextEditor::ViewPrivate::findSelectedBackwards()
 
 void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
 {
-    if (currentInputMode()->viewInputMode() == View::ViInputMode) {
+    if (isMulticursorNotAllowed()) {
         return;
     }
 
@@ -2000,7 +2000,7 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
 
 void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
 {
-    if (currentInputMode()->viewInputMode() == View::ViInputMode) {
+    if (isMulticursorNotAllowed()) {
         return;
     }
 
@@ -2837,13 +2837,17 @@ bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
     return true;
 }
 
+bool KTextEditor::ViewPrivate::isMulticursorNotAllowed() const
+{
+    return blockSelection() || isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode;
+}
+
 bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
 {
     if (cursor == cursorPosition()) {
         return false;
     }
-    // No multicursors here
-    if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
+    if (isMulticursorNotAllowed()) {
         return false;
     }
 
@@ -2878,8 +2882,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursors(const QVector<KTextEditor::Cu
     if (positions.isEmpty()) {
         return;
     }
-    // No multicursors here
-    if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
+    if (isMulticursorNotAllowed()) {
         return;
     }
 
@@ -3027,8 +3030,7 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
 void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<KTextEditor::Range> &selRanges,
                                                                 const QVector<KTextEditor::Cursor> &cursorPositions)
 {
-    // No multicursors here
-    if (isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode) {
+    if (isMulticursorNotAllowed()) {
         return;
     }
 
