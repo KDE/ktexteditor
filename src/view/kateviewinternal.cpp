@@ -2658,116 +2658,84 @@ void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 
 
 void KateViewInternal::mergeSelections()
 {
-    struct CursorAndSel {
-        int idx; // index
-        int mergeIdx; // index that we will merge this range into
-        KTextEditor::Cursor c;
-        KTextEditor::Range sel;
-        KTextEditor::Cursor anchor;
+    auto doMerge = [](KTextEditor::Range newRange, KTextEditor::ViewPrivate::SecondaryCursor &a, KTextEditor::ViewPrivate::SecondaryCursor &b) {
+        a.range->setRange(newRange);
+
+        b.pos.reset();
+        b.range.reset();
     };
-    std::vector<CursorAndSel> ranges;
 
-    // Add our primary cursor
-    CursorAndSel primary{// special -1 idx
-                         -1,
-                         -1,
-                         view()->cursorPosition(),
-                         view()->selectionRange(),
-                         m_selectAnchor};
-    ranges.push_back(primary);
-
-    std::vector<CursorAndSel> toMerge;
-
-    int i = 0;
-    bool isLeftSel = false;
-    const auto &cursors = view()->m_secondaryCursors;
-    for (auto &sel : view()->m_secondaryCursors) {
-        const auto cursor = cursors[i].cursor();
-        ranges.push_back({i, -1, cursor, sel.range->toRange(), sel.anchor});
-        isLeftSel = cursor < sel.anchor;
-        i++;
-    }
-
-    if (isLeftSel) {
-        std::sort(ranges.begin(), ranges.end(), [](const CursorAndSel &l, const CursorAndSel &r) {
-            return l.c < r.c;
-        });
-
-        for (auto it = ranges.begin(); it != ranges.end(); ++it) {
-            if (it + 1 == ranges.end()) {
-                break;
-            }
-            const auto cur = it->sel;
-            const auto nextIt = it + 1;
-            const auto nextSel = nextIt->sel;
-            if (cur.overlaps(nextSel)) {
-                toMerge.push_back(*nextIt);
-                toMerge.back().mergeIdx = it->idx;
-            }
+    auto &cursors = view()->m_secondaryCursors;
+    for (auto it = cursors.begin(); it != cursors.end(); ++it) {
+        if (!it->range) {
+            continue;
         }
-    } else {
-        std::sort(ranges.begin(), ranges.end(), [](const CursorAndSel &l, const CursorAndSel &r) {
-            return l.c > r.c;
-        });
-
-        for (auto it = ranges.begin(); it != ranges.end(); ++it) {
-            if (it + 1 == ranges.end()) {
-                break;
-            }
-            const auto cur = it->sel;
-            const auto nextIt = it + 1;
-            const auto nextSel = nextIt->sel;
-            if (cur.overlaps(nextSel)) {
-                toMerge.push_back(*nextIt);
-                toMerge.back().mergeIdx = it->idx;
-            }
+        auto curRange = it->range->toRange();
+        if (it + 1 == cursors.end()) {
+            break;
         }
-    }
 
-    std::vector<KTextEditor::Cursor> cursorsToRemove;
-
-    for (auto &x : toMerge) {
-        int mergeIdx = x.mergeIdx;
-
-        if (mergeIdx == -1) { // Multicursor overlaps primary => merge into primary
-            //                 qDebug() << "Merge into primary";
-            auto newSel = view()->m_selection.toRange();
-            KTextEditor::Range rangeToExpandTo = x.sel;
-            newSel.expandToRange(rangeToExpandTo);
-            view()->m_selection.setRange(newSel);
-            m_selectAnchor = x.anchor;
+        auto n = std::next(it);
+        auto nextRange = n->range->toRange();
+        if (!curRange.overlaps(nextRange)) {
             continue;
         }
 
-        KTextEditor::Range mergeRange;
-        KTextEditor::Cursor newAnchor;
-        mergeRange = view()->m_secondaryCursors[mergeIdx].range->toRange();
-        mergeRange.expandToRange(x.sel);
-        newAnchor = x.anchor;
+        bool isLefSel = it->cursor() < it->anchor;
 
-        if (x.idx == -1) { // Primary cursor is overlapping a multi => make multi primary and remove multi
-            //                 qDebug() << "make multi primary and remove multi";
-            // remove this multicursor, and replace it with primary
-            // essentially just make it primary
-            auto newCursor = view()->m_secondaryCursors[mergeIdx].cursor();
-            cursorsToRemove.push_back(newCursor);
-            // make this our primary selection
-            m_selectAnchor = x.anchor;
-            setSelection(mergeRange);
-            // make the multicursor our primary cursor
-            updateCursor(newCursor);
+        // if the ranges overlap we expand the next range
+        // to include the current one. This allows us to
+        // check all ranges for overlap in one go
+        auto curPos = it->cursor();
+        nextRange.expandToRange(curRange);
+        if (isLefSel) {
+            // in left selection our next cursor
+            // is ahead somewhere, we want to keep
+            // the smallest position
+            n->pos->setPosition(curPos);
+            n->anchor = qMax(n->anchor, it->anchor);
         } else {
-            //                 qDebug() << "merge multi into multi";
-            view()->m_secondaryCursors[mergeIdx].anchor = x.anchor;
-            view()->m_secondaryCursors[mergeIdx].range->setRange(mergeRange);
+            n->anchor = qMin(n->anchor, it->anchor);
+        }
+        doMerge(nextRange, *n, *it);
+    }
+
+    auto primarySel = view()->m_selection.toRange();
+    auto primCursor = cursorPosition();
+    for (auto it = cursors.begin(); it != cursors.end(); ++it) {
+        if (!it->range) {
+            continue;
+        }
+        auto curRange = it->range->toRange();
+        if (primarySel.overlaps(curRange)) {
+            primarySel.expandToRange(curRange);
+            bool isLeft = it->cursor() < it->anchor;
+
+            if (isLeft) {
+                if (it->cursor() < primCursor) {
+                    updateCursor(it->cursor());
+                }
+                m_selectAnchor = qMax(m_selectAnchor, it->anchor);
+            } else {
+                if (it->cursor() > primCursor) {
+                    updateCursor(it->cursor());
+                }
+                m_selectAnchor = qMin(m_selectAnchor, it->anchor);
+            }
+
+            setSelection(primarySel);
+            it->pos.reset();
+            it->range.reset();
+            continue;
         }
     }
 
-    // Finally remove the cursors whose selections got merged
-    for (auto &cc : toMerge) {
-        cursorsToRemove.push_back(cc.c);
-    }
-    view()->removeSecondaryCursors(cursorsToRemove);
+    cursors.erase(std::remove_if(cursors.begin(),
+                                 cursors.end(),
+                                 [](const KTextEditor::ViewPrivate::SecondaryCursor &c) {
+                                     return !c.pos.get();
+                                 }),
+                  cursors.end());
 }
 
 void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally)
