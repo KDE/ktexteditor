@@ -65,6 +65,7 @@ class KateAbstractInputMode;
 class KateScriptActionMenu;
 class KateMessageLayout;
 class KateInlineNoteData;
+class MulticursorTest;
 
 class KToggleAction;
 class KSelectAction;
@@ -96,6 +97,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View,
     friend class ::KateViewInternal;
     friend class ::KateIconBorder;
     friend class ::KateTextPreview;
+    friend MulticursorTest;
 
 public:
     ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);

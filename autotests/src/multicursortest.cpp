@@ -397,6 +397,152 @@ void MulticursorTest::moveUpDown()
     QCOMPARE(view->cursorPosition(), Cursor(2, 3));
 }
 
+void MulticursorTest::testSelectionMerge()
+{
+    // 8 lines
+    {
+        // Left movement, cursor at top
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 0, 3);
+
+        view->selectAll();
+        view->createMultiCursorsFromSelection();
+
+        QCOMPARE(view->secondaryCursors().size(), 6);
+
+        view->shiftWordLeft();
+        view->shiftWordLeft();
+        view->shiftWordLeft();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+        QCOMPARE(view->selectionRange(), Range(0, 0, 6, 3));
+    }
+
+    {
+        // Left movement, cursor at bottom
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 6, 3);
+
+        view->selectAll();
+        view->createMultiCursorsFromSelection();
+
+        QCOMPARE(view->secondaryCursors().size(), 6);
+        QCOMPARE(view->cursorPosition(), Cursor(6, 3));
+
+        view->shiftWordLeft();
+        view->shiftWordLeft();
+        view->shiftWordLeft();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+        QCOMPARE(view->selectionRange(), Range(0, 0, 6, 3));
+    }
+
+    {
+        // Left word movement, cursor in the middle
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 3, 3);
+
+        for (int i = 0; i < 10; ++i) {
+            view->addSecondaryCursorUp();
+            view->addSecondaryCursorDown();
+        }
+
+        QCOMPARE(view->secondaryCursors().size(), 6);
+        QCOMPARE(view->cursorPosition(), Cursor(3, 3));
+
+        view->shiftWordLeft();
+        view->shiftWordLeft();
+        view->shiftWordLeft();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+        QCOMPARE(view->selectionRange(), Range(0, 0, 6, 3));
+    }
+
+    {
+        // Left word + char movement, cursor in the middle
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 3, 3);
+
+        view->addSecondaryCursorUp();
+        view->addSecondaryCursorUp();
+        view->addSecondaryCursorDown();
+        view->addSecondaryCursorDown();
+
+        QCOMPARE(view->secondaryCursors().size(), 4);
+        QCOMPARE(view->cursorPosition(), Cursor(3, 3));
+
+        view->shiftWordLeft();
+        view->shiftCursorLeft();
+        view->shiftCursorLeft();
+        view->shiftCursorLeft();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(0, 1));
+        QCOMPARE(view->selectionRange(), Range(0, 1, 5, 3));
+    }
+
+    {
+        // Right movement, cursor at bottom line
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 6, 0);
+
+        for (int i = 0; i < 10; ++i) {
+            view->addSecondaryCursorUp();
+        }
+
+        QCOMPARE(view->secondaryCursors().size(), 6);
+        QCOMPARE(view->cursorPosition(), Cursor(6, 0));
+
+        view->shiftWordRight();
+        view->shiftWordRight();
+        view->shiftWordRight();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(6, 3));
+        QCOMPARE(view->selectionRange(), Range(0, 0, 6, 3));
+    }
+
+    {
+        // Right movement, cursor at top line
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 0, 0);
+
+        for (int i = 0; i < 10; ++i) {
+            view->addSecondaryCursorDown();
+        }
+
+        QCOMPARE(view->secondaryCursors().size(), 6);
+        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+
+        view->shiftWordRight();
+        view->shiftWordRight();
+        view->shiftWordRight();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(6, 3));
+        QCOMPARE(view->selectionRange(), Range(0, 0, 6, 3));
+    }
+
+    {
+        // Right word + char movement, cursor in the middle
+        CREATE_VIEW_AND_DOC("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 3, 0);
+
+        view->addSecondaryCursorUp();
+        view->addSecondaryCursorUp();
+        view->addSecondaryCursorDown();
+        view->addSecondaryCursorDown();
+
+        QCOMPARE(view->secondaryCursors().size(), 4);
+        QCOMPARE(view->cursorPosition(), Cursor(3, 0));
+
+        view->shiftWordRight();
+        view->shiftCursorRight();
+        view->shiftCursorRight();
+        view->shiftCursorRight();
+
+        QCOMPARE(view->secondaryCursors().size(), 0);
+        QCOMPARE(view->cursorPosition(), Cursor(6, 2));
+        QCOMPARE(view->selectionRange(), Range(1, 0, 6, 2));
+    }
+}
+
 void MulticursorTest::findNextOccurenceTest()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);

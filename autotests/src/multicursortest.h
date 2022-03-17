@@ -37,6 +37,7 @@ private Q_SLOTS:
     void moveWordTest();
     void homeEndKeyTest();
     void moveUpDown();
+    void testSelectionMerge();
 
     // Find occurunce
     void findNextOccurenceTest();
