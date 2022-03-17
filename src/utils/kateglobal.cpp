@@ -264,9 +264,26 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
 class KTextEditorConfigDialog : public KPageDialog
 {
 public:
-    KTextEditorConfigDialog(QWidget *parent)
+    QList<KTextEditor::ConfigPage *> editorPages;
+
+    KTextEditorConfigDialog(KTextEditor::EditorPrivate *editor, QWidget *parent)
         : KPageDialog(parent)
     {
+        setWindowTitle(i18n("Configure"));
+        setFaceType(KPageDialog::List);
+        setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply | QDialogButtonBox::Help);
+
+        // create pages already in construct to have proper layout for sizeHint
+        editorPages.reserve(editor->configPages());
+        for (int i = 0; i < editor->configPages(); ++i) {
+            KTextEditor::ConfigPage *page = editor->configPage(i, this);
+            KPageWidgetItem *item = addScrollablePage(page, page->name());
+            item->setHeader(page->fullName());
+            item->setIcon(page->icon());
+
+            connect(button(QDialogButtonBox::Apply), &QPushButton::clicked, page, &KTextEditor::ConfigPage::apply);
+            editorPages.append(page);
+        }
     }
 
     QSize sizeHint() const override
@@ -317,38 +334,15 @@ public:
 
 void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
 {
-    QPointer<KTextEditorConfigDialog> kd = new KTextEditorConfigDialog(parent);
-
-    kd->setWindowTitle(i18n("Configure"));
-    kd->setFaceType(KPageDialog::List);
-    kd->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply | QDialogButtonBox::Help);
-
-    QList<KTextEditor::ConfigPage *> editorPages;
-    editorPages.reserve(configPages());
-    for (int i = 0; i < configPages(); ++i) {
-        QFrame *page = new QFrame();
-        KTextEditor::ConfigPage *cp = configPage(i, page);
-
-        KPageWidgetItem *item = kd->addScrollablePage(page, cp->name());
-        item->setHeader(cp->fullName());
-        item->setIcon(cp->icon());
-
-        QVBoxLayout *topLayout = new QVBoxLayout(page);
-        topLayout->setContentsMargins(0, 0, 0, 0);
-
-        connect(kd->button(QDialogButtonBox::Apply), &QPushButton::clicked, cp, &KTextEditor::ConfigPage::apply);
-        topLayout->addWidget(cp);
-        editorPages.append(cp);
-    }
-
+    QPointer<KTextEditorConfigDialog> kd = new KTextEditorConfigDialog(this, parent);
     if (kd->exec() && kd) {
         KateGlobalConfig::global()->configStart();
         KateDocumentConfig::global()->configStart();
         KateViewConfig::global()->configStart();
         KateRendererConfig::global()->configStart();
 
-        for (int i = 0; i < editorPages.count(); ++i) {
-            editorPages.at(i)->apply();
+        for (int i = 0; i < kd->editorPages.count(); ++i) {
+            kd->editorPages.at(i)->apply();
         }
 
         KateGlobalConfig::global()->configEnd();
@@ -356,7 +350,6 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
         KateViewConfig::global()->configEnd();
         KateRendererConfig::global()->configEnd();
     }
-
     delete kd;
 }
 
