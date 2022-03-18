@@ -3583,6 +3583,14 @@ void KTextEditor::ViewPrivate::cursorLeft()
             m_viewInternal->updateCursor(selectionRange().start());
             setSelection(KTextEditor::Range::invalid());
         }
+
+        for (const auto &c : m_secondaryCursors) {
+            if (!c.range) {
+                continue;
+            }
+            const bool rtl = doc()->line(c.cursor().line()).isRightToLeft();
+            c.pos->setPosition(rtl ? c.range->end() : c.range->start());
+        }
         clearSecondarySelections();
     } else {
         if (currentTextLine().isRightToLeft()) {
@@ -3611,6 +3619,14 @@ void KTextEditor::ViewPrivate::cursorRight()
         } else {
             m_viewInternal->updateCursor(selectionRange().end());
             setSelection(KTextEditor::Range::invalid());
+        }
+
+        for (const auto &c : m_secondaryCursors) {
+            if (!c.range) {
+                continue;
+            }
+            const bool rtl = doc()->line(c.cursor().line()).isRightToLeft();
+            c.pos->setPosition(rtl ? c.range->start() : c.range->end());
         }
         clearSecondarySelections();
     } else {
