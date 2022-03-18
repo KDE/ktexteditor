@@ -936,14 +936,20 @@ bool KateCompletionWidget::execute()
     afterTailMCursor->move(tailStr.size());
 
     // Handle completion for multi cursors
-    // TODO: Should we handle tail string removal for multicursors?
-    const auto &multicursors = view()->secondaryCursors();
-    for (const auto &c : multicursors) {
-        const auto nameCol = toExecute.sibling(toExecute.row(), KTextEditor::CodeCompletionModel::Name);
-        const auto complText = nameCol.data().toString();
-        KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(c.cursor());
-        view()->doc()->replaceText(wordToReplace, complText);
-    }
+    QSharedPointer<QMetaObject::Connection> connection(new QMetaObject::Connection());
+    auto autoCompleteMulticursors = [connection, this](KTextEditor::Document *document, const KTextEditor::Range &range) {
+        disconnect(*connection);
+        const QString text = document->text(range);
+        if (text.isEmpty()) {
+            return;
+        }
+        const auto &multicursors = view()->secondaryCursors();
+        for (const auto &c : multicursors) {
+            KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(c.cursor());
+            view()->doc()->replaceText(wordToReplace, text);
+        }
+    };
+    *connection = connect(view()->doc(), &KTextEditor::DocumentPrivate::textInsertedRange, this, autoCompleteMulticursors);
 
     model->executeCompletionItem(view(), *m_completionRanges[model].range, toExecute);
     // NOTE the CompletionRange is now removed from m_completionRanges
