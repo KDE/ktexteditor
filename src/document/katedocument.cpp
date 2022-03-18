@@ -3053,6 +3053,36 @@ int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor cu
     return fromVirtualColumn(cursor.line(), cursor.column());
 }
 
+bool KTextEditor::DocumentPrivate::skipAutoBrace(QChar closingBracket, KTextEditor::Cursor pos)
+{
+    // auto bracket handling for newly inserted text
+    // we inserted a bracket?
+    // => add the matching closing one to the view + input chars
+    // try to preserve the cursor position
+    bool skipAutobrace = closingBracket == QLatin1Char('\'');
+    if (highlight() && skipAutobrace) {
+        // skip adding ' in spellchecked areas, because those are text
+        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, pos - Cursor{0, 1});
+    }
+
+    if (!skipAutobrace && (closingBracket == QLatin1Char('\''))) {
+        // skip auto quotes when these looks already balanced, bug 405089
+        Kate::TextLine textLine = m_buffer->plainLine(pos.line());
+        // RegEx match quote, but not escaped quote, thanks to https://stackoverflow.com/a/11819111
+        static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'"));
+        const int count = textLine->text().left(pos.column()).count(re);
+        skipAutobrace = (count % 2 == 0) ? true : false;
+    }
+    if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
+        // ...same trick for double quotes
+        Kate::TextLine textLine = m_buffer->plainLine(pos.line());
+        static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\""));
+        const int count = textLine->text().left(pos.column()).count(re);
+        skipAutobrace = (count % 2 == 0) ? true : false;
+    }
+    return skipAutobrace;
+}
+
 void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QString chars)
 {
     // nop for empty chars
@@ -3192,8 +3222,15 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         // should only respond to main cursor text changes
         view->completionWidget()->setIgnoreBufferSignals(true);
         const auto &sc = view->secondaryCursors();
+        const bool hasClosingBracket = !closingBracket.isNull();
+        const QString closingChar = closingBracket;
         for (const auto &c : sc) {
-            insertText(c.pos->toCursor(), chars);
+            insertText(c.cursor(), chars);
+            auto pos = c.cursor();
+            if (hasClosingBracket && !skipAutoBrace(closingBracket, pos)) {
+                insertText(c.cursor(), closingChar);
+                c.pos->setPosition(pos);
+            }
         }
         view->completionWidget()->setIgnoreBufferSignals(false);
         // then our normal cursor
@@ -3204,31 +3241,9 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     // we inserted a bracket?
     // => add the matching closing one to the view + input chars
     // try to preserve the cursor position
-    bool skipAutobrace = closingBracket == QLatin1Char('\'');
-    if (highlight() && skipAutobrace) {
-        // skip adding ' in spellchecked areas, because those are text
-        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
-    }
-
-    const auto cursorPos(view->cursorPosition());
-    if (!skipAutobrace && (closingBracket == QLatin1Char('\''))) {
-        // skip auto quotes when these looks already balanced, bug 405089
-        Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
-        // RegEx match quote, but not escaped quote, thanks to https://stackoverflow.com/a/11819111
-        static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'"));
-        const int count = textLine->text().left(cursorPos.column()).count(re);
-        skipAutobrace = (count % 2 == 0) ? true : false;
-    }
-    if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
-        // ...same trick for double quotes
-        Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
-        static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\""));
-        const int count = textLine->text().left(cursorPos.column()).count(re);
-        skipAutobrace = (count % 2 == 0) ? true : false;
-    }
-
-    if (!closingBracket.isNull() && !skipAutobrace) {
+    if (!closingBracket.isNull() && !skipAutoBrace(closingBracket, view->cursorPosition())) {
         // add bracket to the view
+        const auto cursorPos = view->cursorPosition();
         const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
         if (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber()) {
             insertText(view->cursorPosition(), QString(closingBracket));
@@ -3302,12 +3317,24 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
 
     // Handle multicursors
     const auto &secondaryCursors = v->secondaryCursors();
-    for (const auto &c : secondaryCursors) {
-        insertNewLine(c.cursor());
-        // second: if "indent" is true, indent the new line, if needed...
-        if (indent == KTextEditor::DocumentPrivate::Indent) {
-            m_indenter->userTypedChar(v, c.cursor(), QLatin1Char('\n'));
+    if (!secondaryCursors.empty()) {
+        // Save the original position of our primary cursor
+        Kate::TextCursor savedPrimary(buffer(), v->cursorPosition(), Kate::TextCursor::MoveOnInsert);
+        for (const auto &c : secondaryCursors) {
+            insertNewLine(c.cursor());
+            // second: if "indent" is true, indent the new line, if needed...
+            if (indent == KTextEditor::DocumentPrivate::Indent) {
+                // Make this secondary cursor primary for a moment
+                // this is necessary because the scripts modify primary cursor
+                // position which can lead to weird indent issues with multicursor
+                v->setCursorPosition(c.cursor());
+                m_indenter->userTypedChar(v, c.cursor(), QLatin1Char('\n'));
+                // restore
+                c.pos->setPosition(v->cursorPosition());
+            }
         }
+        // Restore the original primary cursor
+        v->setCursorPosition(savedPrimary.toCursor());
     }
 
     // Handle primary cursor

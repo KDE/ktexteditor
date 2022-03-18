@@ -30,6 +30,7 @@ private Q_SLOTS:
     void insertRemoveText();
     void testUndoRedo();
     void testUndoRedoWithSelection();
+    void keyReturnIndentTest();
 
     // Movement
     void moveCharTest();

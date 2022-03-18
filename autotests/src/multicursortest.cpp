@@ -182,6 +182,25 @@ void MulticursorTest::testUndoRedoWithSelection()
     QCOMPARE(view->secondaryCursors().at(0).anchor, Cursor(1, 3));
 }
 
+void MulticursorTest::keyReturnIndentTest()
+{
+    CREATE_VIEW_AND_DOC("\n\n", 0, 0);
+    QCOMPARE(doc.lines(), 3);
+    doc.setMode(QStringLiteral("C++"));
+    view->config()->setValue(KateViewConfig::AutoBrackets, true);
+
+    view->addSecondaryCursorDown();
+    view->addSecondaryCursorDown();
+    QCOMPARE(view->secondaryCursors().size(), 2);
+
+    doc.typeChars(view, QStringLiteral("{"));
+    QCOMPARE(doc.text(), QStringLiteral("{}\n{}\n{}"));
+    QCOMPARE(view->secondaryCursors().size(), 2);
+
+    view->keyReturn();
+    QCOMPARE(doc.text(), QStringLiteral("{\n    \n}\n{\n    \n}\n{\n    \n}"));
+}
+
 void MulticursorTest::testCreateMultiCursor()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);

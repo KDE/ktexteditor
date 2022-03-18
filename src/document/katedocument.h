@@ -861,6 +861,7 @@ private:
     // Helper function for use with multiple cursors
     KTextEditor::Cursor backspaceAtCursor(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
     void commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int changeType);
+    bool skipAutoBrace(QChar closingBracket, KTextEditor::Cursor pos);
 
 public:
     void indent(KTextEditor::Range range, int change);
