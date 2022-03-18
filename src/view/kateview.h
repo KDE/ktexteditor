@@ -586,6 +586,10 @@ public Q_SLOTS:
      */
     void noIndentNewline();
 
+    void newLineAbove();
+
+    void newLineBelow();
+
     /**
      * Insert a tabulator char at current cursor position.
      */

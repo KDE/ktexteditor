@@ -1215,6 +1215,24 @@ void KTextEditor::ViewPrivate::setupEditActions()
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::noIndentNewline);
         m_editActions.push_back(a);
 
+        a = ac->addAction(QStringLiteral("newline_above"));
+        a->setText(i18n("Insert a Newline Above Current Line"));
+        a->setWhatsThis(i18n("Insert a new line above current line without modifying the current line."));
+        scuts.clear();
+        scuts << QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_Return) << QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_Enter);
+        ac->setDefaultShortcuts(a, scuts);
+        connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::newLineAbove);
+        m_editActions.push_back(a);
+
+        a = ac->addAction(QStringLiteral("newline_below"));
+        a->setText(i18n("Insert a Newline Below Current Line"));
+        a->setWhatsThis(i18n("Insert a new line below current line without modifying the current line."));
+        scuts.clear();
+        scuts << QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Return) << QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Enter);
+        ac->setDefaultShortcuts(a, scuts);
+        connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::newLineBelow);
+        m_editActions.push_back(a);
+
         a = ac->addAction(QStringLiteral("tools_indent"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-indent-more")));
         a->setText(i18n("&Indent"));
@@ -3455,6 +3473,20 @@ void KTextEditor::ViewPrivate::smartNewline()
 void KTextEditor::ViewPrivate::noIndentNewline()
 {
     doc()->newLine(this, KTextEditor::DocumentPrivate::NoIndent);
+    m_viewInternal->iconBorder()->updateForCursorLineChange();
+    m_viewInternal->updateView();
+}
+
+void KTextEditor::ViewPrivate::newLineAbove()
+{
+    doc()->newLine(this, KTextEditor::DocumentPrivate::Indent, KTextEditor::DocumentPrivate::Above);
+    m_viewInternal->iconBorder()->updateForCursorLineChange();
+    m_viewInternal->updateView();
+}
+
+void KTextEditor::ViewPrivate::newLineBelow()
+{
+    doc()->newLine(this, KTextEditor::DocumentPrivate::Indent, KTextEditor::DocumentPrivate::Below);
     m_viewInternal->iconBorder()->updateForCursorLineChange();
     m_viewInternal->updateView();
 }

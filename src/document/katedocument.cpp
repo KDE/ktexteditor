@@ -3308,7 +3308,7 @@ void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View *, 
     }
 }
 
-void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEditor::DocumentPrivate::NewLineIndent indent)
+void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEditor::DocumentPrivate::NewLineIndent indent, NewLinePos newLinePos)
 {
     editStart();
 
@@ -3341,13 +3341,39 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
         m_buffer->updateHighlighting();
     };
 
+    // Helper which allows adding a new line and moving the cursor there
+    // without modifying the current line
+    auto adjustCusorPos = [newLinePos, this](KTextEditor::Cursor pos) {
+        // Handle primary cursor
+        bool moveCursorToTop = false;
+        if (newLinePos == Above) {
+            if (pos.line() <= 0) {
+                pos.setLine(0);
+                pos.setColumn(0);
+                moveCursorToTop = true;
+            } else {
+                pos.setLine(pos.line() - 1);
+                pos.setColumn(lineLength(pos.line()));
+            }
+        } else if (newLinePos == Below) {
+            int lastCol = lineLength(pos.line());
+            pos.setColumn(lastCol);
+        }
+        return std::pair{pos, moveCursorToTop};
+    };
+
     // Handle multicursors
     const auto &secondaryCursors = v->secondaryCursors();
     if (!secondaryCursors.empty()) {
         // Save the original position of our primary cursor
         Kate::TextCursor savedPrimary(buffer(), v->cursorPosition(), Kate::TextCursor::MoveOnInsert);
         for (const auto &c : secondaryCursors) {
+            const auto [newPos, moveCursorToTop] = adjustCusorPos(c.cursor());
+            c.pos->setPosition(newPos);
             insertNewLine(c.cursor());
+            if (moveCursorToTop) {
+                c.pos->setPosition({0, 0});
+            }
             // second: if "indent" is true, indent the new line, if needed...
             if (indent == KTextEditor::DocumentPrivate::Indent) {
                 // Make this secondary cursor primary for a moment
@@ -3363,8 +3389,12 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
         v->setCursorPosition(savedPrimary.toCursor());
     }
 
-    // Handle primary cursor
+    const auto [newPos, moveCursorToTop] = adjustCusorPos(v->cursorPosition());
+    v->setCursorPosition(newPos);
     insertNewLine(v->cursorPosition());
+    if (moveCursorToTop) {
+        v->setCursorPosition({0, 0});
+    }
     // second: if "indent" is true, indent the new line, if needed...
     if (indent == KTextEditor::DocumentPrivate::Indent) {
         m_indenter->userTypedChar(v, v->cursorPosition(), QLatin1Char('\n'));
