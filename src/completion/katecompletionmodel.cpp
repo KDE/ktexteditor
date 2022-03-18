@@ -914,6 +914,11 @@ QModelIndex KateCompletionModel::mapToSource(const QModelIndex &proxyIndex) cons
     }
 
     if (Group *g = groupOfParent(proxyIndex)) {
+        if (!m_rowTable.contains(g)) {
+            qWarning() << Q_FUNC_INFO << "Stale proxy index for which there is no group";
+            return {};
+        }
+
         if (proxyIndex.row() >= 0 && proxyIndex.row() < (int)g->filtered.size()) {
             ModelRow source = g->filtered[proxyIndex.row()].sourceRow();
             return source.second.sibling(source.second.row(), proxyIndex.column());
