@@ -3156,6 +3156,21 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
             }
 
         } else {
+            for (const auto &cursor : view->secondaryCursors()) {
+                if (!cursor.range) {
+                    continue;
+                }
+                const auto &currSelectionRange = cursor.range;
+                auto expandBehaviour = currSelectionRange->insertBehaviors();
+                currSelectionRange->setInsertBehaviors(KTextEditor::MovingRange::DoNotExpand);
+                insertText(currSelectionRange->end(), QString(closingBracket));
+                insertText(currSelectionRange->start(), chars);
+                currSelectionRange->setInsertBehaviors(expandBehaviour);
+                cursor.pos->setPosition(currSelectionRange->end());
+                auto mutableCursor = const_cast<KTextEditor::ViewPrivate::SecondaryCursor *>(&cursor);
+                mutableCursor->anchor = currSelectionRange->start().toCursor();
+            }
+
             // No block, just add to start & end of selection
             insertText(selectionRange->end(), QString(closingBracket));
             view->slotTextInserted(view, selectionRange->end(), QString(closingBracket));

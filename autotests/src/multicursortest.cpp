@@ -201,6 +201,19 @@ void MulticursorTest::keyReturnIndentTest()
     QCOMPARE(doc.text(), QStringLiteral("{\n    \n}\n{\n    \n}\n{\n    \n}"));
 }
 
+void MulticursorTest::wrapSelectionWithCharsTest()
+{
+    CREATE_VIEW_AND_DOC("foo\nfoo\nfoo", 0, 3);
+
+    view->addSecondaryCursorDown();
+    view->addSecondaryCursorDown();
+    QCOMPARE(view->secondaryCursors().size(), 2);
+
+    view->shiftWordLeft();
+    doc.typeChars(view, QStringLiteral("{"));
+    QCOMPARE(doc.text(), QStringLiteral("{foo}\n{foo}\n{foo}"));
+}
+
 void MulticursorTest::testCreateMultiCursor()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);
