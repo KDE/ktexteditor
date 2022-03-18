@@ -1535,6 +1535,10 @@ void KTextEditor::ViewPrivate::slotLostFocus()
         m_viewInternal->m_columnScroll->update();
     }
 
+    if (doc()->config()->autoSave() && doc()->config()->autoSaveOnFocusOut() && doc()->isModified() && doc()->url().isLocalFile()) {
+        doc()->documentSave();
+    }
+
     Q_EMIT focusOut(this);
 }
 

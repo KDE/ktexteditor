@@ -1468,6 +1468,8 @@ private:
     // To calculate a QHash.keys() is quite expensive,
     // better keep a copy of that list updated when a view is added or removed.
     QList<KTextEditor::View *> m_viewsCache;
+
+    QTimer m_autoSaveTimer;
 };
 
 #endif

@@ -350,6 +350,11 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(CamelCursor, "Camel Cursor", QString(), true));
     addConfigEntry(ConfigEntry(AutoDetectIndent, "Auto Detect Indent", QString(), true));
 
+    // Auto save and co.
+    addConfigEntry(ConfigEntry(AutoSave, "Auto Save", QString(), false));
+    addConfigEntry(ConfigEntry(AutoSaveOnFocusOut, "Auto Save On Focus Out", QString(), false));
+    addConfigEntry(ConfigEntry(AutoSaveInteral, "Auto Save Interval", QString(), 0));
+
     // finalize the entries, e.g. hashs them
     finalizeConfigEntries();
 

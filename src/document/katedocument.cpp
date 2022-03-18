@@ -286,6 +286,13 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
 
     // make sure correct defaults are set (indenter, ...)
     updateConfig();
+
+    m_autoSaveTimer.setSingleShot(true);
+    connect(&m_autoSaveTimer, &QTimer::timeout, this, [this] {
+        if (isModified() && url().isLocalFile()) {
+            documentSave();
+        }
+    });
 }
 
 //
@@ -1042,6 +1049,10 @@ bool KTextEditor::DocumentPrivate::editEnd()
     // before we did that on textInsert/Removed
     if (m_editLastChangeStartCursor.isValid()) {
         saveEditingPositions(m_editLastChangeStartCursor);
+    }
+
+    if (config()->autoSave() && config()->autoSaveInterval() > 0) {
+        m_autoSaveTimer.start();
     }
 
     editIsRunning = false;
@@ -4939,6 +4950,18 @@ void KTextEditor::DocumentPrivate::updateConfig()
     // update on-the-fly spell checking as spell checking defaults might have changes
     if (m_onTheFlyChecker) {
         m_onTheFlyChecker->updateConfig();
+    }
+
+    if (config()->autoSave()) {
+        int interval = config()->autoSaveInterval();
+        if (interval == 0) {
+            m_autoSaveTimer.stop();
+        } else {
+            m_autoSaveTimer.setInterval(interval * 1000);
+            if (isModified()) {
+                m_autoSaveTimer.start();
+            }
+        }
     }
 
     Q_EMIT configChanged(this);

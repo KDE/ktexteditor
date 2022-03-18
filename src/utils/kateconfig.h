@@ -548,6 +548,19 @@ public:
          * Automatically detect file indentation
          */
         AutoDetectIndent,
+
+        /**
+         * Automatically save?
+         */
+        AutoSave,
+        /**
+         * Automatically save on focus lost
+         */
+        AutoSaveOnFocusOut,
+        /**
+         * Auto save interval
+         */
+        AutoSaveInteral,
     };
 
 public:
@@ -937,6 +950,21 @@ public:
         return value(AutoDetectIndent).toBool();
     }
 
+    bool autoSave() const
+    {
+        return value(AutoSave).toBool();
+    }
+
+    bool autoSaveOnFocusOut() const
+    {
+        return value(AutoSaveOnFocusOut).toBool();
+    }
+
+    int autoSaveInterval() const
+    {
+        return value(AutoSaveInteral).toInt();
+    }
+
 private:
     static KateDocumentConfig *s_global;
     KTextEditor::DocumentPrivate *m_doc = nullptr;
@@ -1019,7 +1047,7 @@ public:
         WordCompletionRemoveTail,
         ShowFocusFrame,
         ShowDocWithCompletion,
-        MultiCursorModifier
+        MultiCursorModifier,
     };
 
 public:

@@ -938,6 +938,9 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(ui->cmbEncodingDetection);
     observeChanges(ui->cmbEncodingFallback);
     observeChanges(ui->lineLengthLimit);
+    observeChanges(ui->gbAutoSave);
+    observeChanges(ui->cbAutoSaveOnFocus);
+    observeChanges(ui->spbAutoSaveInterval);
 
     observeChanges(uiadv->chkBackupLocalFiles);
     observeChanges(uiadv->chkBackupRemoteFiles);
@@ -1048,6 +1051,10 @@ void KateSaveConfigTab::apply()
 
     KateDocumentConfig::global()->setLineLengthLimit(ui->lineLengthLimit->value());
 
+    KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoSave, ui->gbAutoSave->isChecked());
+    KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoSaveOnFocusOut, ui->cbAutoSaveOnFocus->isChecked());
+    KateDocumentConfig::global()->setValue(KateDocumentConfig::AutoSaveInteral, ui->spbAutoSaveInterval->value());
+
     KateDocumentConfig::global()->configEnd();
     KateGlobalConfig::global()->configEnd();
 }
@@ -1115,6 +1122,10 @@ void KateSaveConfigTab::reload()
     uiadv->kurlSwapDirectory->setUrl(QUrl::fromLocalFile(KateDocumentConfig::global()->swapDirectory()));
     uiadv->spbSwapFileSync->setValue(KateDocumentConfig::global()->swapSyncInterval());
     swapFileModeChanged(KateDocumentConfig::global()->swapFileMode());
+
+    ui->gbAutoSave->setChecked(KateDocumentConfig::global()->autoSave());
+    ui->cbAutoSaveOnFocus->setChecked(KateDocumentConfig::global()->autoSaveOnFocusOut());
+    ui->spbAutoSaveInterval->setValue(KateDocumentConfig::global()->autoSaveInterval());
 }
 
 void KateSaveConfigTab::reset()
