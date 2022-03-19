@@ -116,8 +116,7 @@ public:
 
     QWidget *currentEmbeddedWidget();
 
-    // Returns true if a screen border has been hit
-    bool updatePosition(bool force = false);
+    void updatePosition(bool force = false);
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 

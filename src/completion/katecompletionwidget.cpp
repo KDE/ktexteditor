@@ -25,15 +25,17 @@
 #include <QAbstractScrollArea>
 #include <QApplication>
 #include <QBoxLayout>
-#include <QDesktopWidget>
 #include <QHeaderView>
 #include <QLabel>
 #include <QPushButton>
 #include <QScopedPointer>
+#include <QScreen>
 #include <QScrollBar>
 #include <QSizeGrip>
 #include <QTimer>
 #include <QToolButton>
+
+#include <KWindowSystem>
 
 const bool hideAutomaticCompletionOnExactMatch = true;
 
@@ -543,20 +545,20 @@ void KateCompletionWidget::updateAndShow()
     }
 }
 
-bool KateCompletionWidget::updatePosition(bool force)
+void KateCompletionWidget::updatePosition(bool force)
 {
     if (!force && !isCompletionActive()) {
-        return false;
+        return;
     }
 
     if (!completionRange()) {
-        return false;
+        return;
     }
     QPoint cursorPosition = view()->cursorToCoordinate(completionRange()->start());
     if (cursorPosition == QPoint(-1, -1)) {
         // Start of completion range is now off-screen -> abort
         abortCompletion();
-        return false;
+        return;
     }
 
     QPoint p = view()->mapToGlobal(cursorPosition);
@@ -565,23 +567,21 @@ bool KateCompletionWidget::updatePosition(bool force)
 
     y += view()->renderer()->currentFontMetrics().height() + 2;
 
-    bool borderHit = false;
+    if (!KWindowSystem::isPlatformWayland()) {
+        const auto screenGeometry = view()->screen()->availableGeometry();
 
-    if (x + width() > QApplication::desktop()->screenGeometry(view()).right()) {
-        x = QApplication::desktop()->screenGeometry(view()).right() - width();
-        borderHit = true;
-    }
+        if (x + width() > screenGeometry.right()) {
+            x = screenGeometry.right() - width();
+        }
 
-    if (x < QApplication::desktop()->screenGeometry(view()).left()) {
-        x = QApplication::desktop()->screenGeometry(view()).left();
-        borderHit = true;
+        if (x < screenGeometry.left()) {
+            x = screenGeometry.left();
+        }
     }
 
     move(QPoint(x, y));
 
-    //   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry() << borderHit;
-
-    return borderHit;
+    //   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry();
 }
 
 void KateCompletionWidget::updateArgumentHintGeometry()
@@ -693,7 +693,7 @@ void KateCompletionWidget::updateHeight()
         baseHeight = m_expandedAddedHeightBase;
     }
 
-    int screenBottom = QApplication::desktop()->screenGeometry(view()).bottom();
+    int screenBottom = view()->screen()->availableGeometry().bottom();
 
     // Limit the height to the bottom of the screen
     int bottomPosition = baseHeight + newExpandingAddedHeight + geometry().top();

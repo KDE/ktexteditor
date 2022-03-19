@@ -13,11 +13,13 @@
 #include "kateview.h"
 
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QHeaderView>
 #include <QModelIndex>
 #include <QPainter>
+#include <QScreen>
 #include <QScrollBar>
+
+#include <KWindowSystem>
 
 class ArgumentHintDelegate : public KateCompletionDelegate
 {
@@ -180,7 +182,8 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
     bool enableScrollBars = false;
 
     // Resize and move so it fits the screen horizontally
-    int maxWidth = (QApplication::desktop()->screenGeometry(m_parent->view()).width() * 3) / 4;
+    const auto screenGeometry = m_parent->view()->screen()->availableGeometry();
+    const int maxWidth = (screenGeometry.width() * 3) / 4;
     if (geom.width() > maxWidth) {
         geom.setWidth(maxWidth);
         geom.setHeight(geom.height() + horizontalScrollBar()->height() + 2);
@@ -188,21 +191,23 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
         enableScrollBars = true;
     }
 
-    if (geom.right() > QApplication::desktop()->screenGeometry(m_parent->view()).right()) {
-        geom.moveRight(QApplication::desktop()->screenGeometry(m_parent->view()).right());
-    }
-
-    if (geom.left() < QApplication::desktop()->screenGeometry(m_parent->view()).left()) {
-        geom.moveLeft(QApplication::desktop()->screenGeometry(m_parent->view()).left());
-    }
-
-    // Resize and move so it fits the screen vertically
     bool resized = false;
-    if (geom.top() < QApplication::desktop()->screenGeometry(m_parent->view()).top()) {
-        int offset = QApplication::desktop()->screenGeometry(m_parent->view()).top() - geom.top();
-        geom.setBottom(geom.bottom() - offset);
-        geom.moveTo(geom.left(), QApplication::desktop()->screenGeometry(m_parent->view()).top());
-        resized = true;
+    if (!KWindowSystem::isPlatformWayland()) {
+        if (geom.right() > screenGeometry.right()) {
+            geom.moveRight(screenGeometry.right());
+        }
+
+        if (geom.left() < screenGeometry.left()) {
+            geom.moveLeft(screenGeometry.left());
+        }
+
+        // Resize and move so it fits the screen vertically
+        if (geom.top() < screenGeometry.top()) {
+            const int offset = screenGeometry.top() - geom.top();
+            geom.setBottom(geom.bottom() - offset);
+            geom.moveTo(geom.left(), screenGeometry.top());
+            resized = true;
+        }
     }
 
     if (geom != geometry()) {
