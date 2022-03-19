@@ -3086,9 +3086,14 @@ void KTextEditor::ViewPrivate::addSecondaryCursorDown()
     if (!nextRange.isValid()) {
         return;
     }
+    auto primaryCursorLineLayout = m_viewInternal->currentLayout(cursorPosition());
+    if (!primaryCursorLineLayout.isValid()) {
+        return;
+    }
+
     setSelection({});
     clearSecondarySelections();
-    int x = renderer()->cursorToX(m_viewInternal->currentLayout(cursorPosition()), cursorPosition().column());
+    int x = renderer()->cursorToX(primaryCursorLineLayout, cursorPosition().column(), !wrapCursor());
     auto next = renderer()->xToCursor(nextRange, x, !wrapCursor());
     addSecondaryCursorAt(next);
 }
@@ -3108,9 +3113,15 @@ void KTextEditor::ViewPrivate::addSecondaryCursorUp()
     if (!nextRange.isValid()) {
         return;
     }
+
+    auto primaryCursorLineLayout = m_viewInternal->currentLayout(cursorPosition());
+    if (!primaryCursorLineLayout.isValid()) {
+        return;
+    }
+
     setSelection({});
     clearSecondarySelections();
-    int x = renderer()->cursorToX(m_viewInternal->currentLayout(cursorPosition()), cursorPosition().column());
+    int x = renderer()->cursorToX(primaryCursorLineLayout, cursorPosition().column(), !wrapCursor());
     auto next = renderer()->xToCursor(nextRange, x, !wrapCursor());
     addSecondaryCursorAt(next);
 }
