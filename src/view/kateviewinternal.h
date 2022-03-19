@@ -307,6 +307,7 @@ private:
     void updateSecondaryCursors(const QVarLengthArray<CursorPair, 16> &cursors, bool sel);
     void mergeSelections();
 
+    KTextEditor::Cursor cursorForPoint(QPoint p);
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);
     // Returns whether the given range affects the area currently visible in the view

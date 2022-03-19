@@ -2999,8 +2999,7 @@ void KateViewInternal::paintCursor()
     updateDirty(); // paintText (0,0,width(), height(), true);
 }
 
-// Point in content coordinates
-void KateViewInternal::placeCursor(const QPoint &p, bool keepSelection, bool updateSelection)
+KTextEditor::Cursor KateViewInternal::cursorForPoint(QPoint p)
 {
     KateTextLayout thisLine = yToKateTextLayout(p.y());
     KTextEditor::Cursor c;
@@ -3012,6 +3011,16 @@ void KateViewInternal::placeCursor(const QPoint &p, bool keepSelection, bool upd
     c = renderer()->xToCursor(thisLine, startX() + p.x(), !view()->wrapCursor());
 
     if (c.line() < 0 || c.line() >= doc()->lines()) {
+        return KTextEditor::Cursor::invalid();
+    }
+    return c;
+}
+
+// Point in content coordinates
+void KateViewInternal::placeCursor(const QPoint &p, bool keepSelection, bool updateSelection)
+{
+    KTextEditor::Cursor c = cursorForPoint(p);
+    if (!c.isValid()) {
         return;
     }
 
@@ -3366,7 +3375,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
         if (e->modifiers() == view()->config()->multiCursorModifiers()) {
             setSelection({});
             view()->clearSecondarySelections();
-            view()->addSecondaryCursorAt(coordinatesToCursor(e->pos(), false));
+            view()->addSecondaryCursorAt(cursorForPoint(e->pos()));
             e->accept();
             return;
         } else {
