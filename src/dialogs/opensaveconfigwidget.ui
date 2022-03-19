@@ -260,14 +260,14 @@
         <item>
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Auto save interval. The value 0 means never.</string>
+           <string>Auto save interval:</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QSpinBox" name="spbAutoSaveInterval">
-          <property name="specialValueText">
-           <string/>
+         <property name="specialValueText">
+           <string>Never</string>
           </property>
           <property name="suffix">
            <string> seconds</string>
