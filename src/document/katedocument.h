@@ -856,6 +856,7 @@ public:
     void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
     void transpose(const KTextEditor::Cursor);
     void swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord);
+    bool multiPaste(KTextEditor::ViewPrivate *view, const QStringList &texts);
     void paste(KTextEditor::ViewPrivate *view, const QString &text);
 
 private:

@@ -566,3 +566,13 @@ void KTextEditor::EditorPrivate::emitConfigChanged()
         Q_EMIT configChanged(this);
     }
 }
+
+void KTextEditor::EditorPrivate::copyToMulticursorClipboard(const QStringList &texts)
+{
+    m_multicursorClipboard = texts;
+}
+
+QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
+{
+    return m_multicursorClipboard;
+}

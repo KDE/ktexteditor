@@ -204,6 +204,10 @@ public:
     struct PlainSecondaryCursor {
         KTextEditor::Cursor pos;
         KTextEditor::Range range;
+        friend bool operator<(const PlainSecondaryCursor &l, const PlainSecondaryCursor &r)
+        {
+            return l.pos < r.pos;
+        }
     };
     struct SecondaryCursor {
         std::unique_ptr<Kate::TextCursor> pos;

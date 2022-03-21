@@ -635,4 +635,29 @@ void MulticursorTest::findAllOccurenceTest()
     QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
 }
 
+void MulticursorTest::testMultiCopyPaste()
+{
+    // Create two docs, copy from one to the other
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
+        view->addSecondaryCursorAt({1, 0});
+        view->addSecondaryCursorAt({2, 0});
+        view->addSecondaryCursorAt({3, 0});
+        view->shiftWordRight();
+        view->copy();
+    }
+
+    {
+        KTextEditor::DocumentPrivate doc;
+        doc.setText("\n\n\n\n");
+        KTextEditor::ViewPrivate *v = new KTextEditor::ViewPrivate(&doc, nullptr);
+        v->setCursorPosition({0, 0});
+        v->addSecondaryCursorAt({1, 0});
+        v->addSecondaryCursorAt({2, 0});
+        v->addSecondaryCursorAt({3, 0});
+        v->paste();
+        QCOMPARE(doc.text(), QStringLiteral("foo\nbar\nfoo\nfoo\n"));
+    }
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

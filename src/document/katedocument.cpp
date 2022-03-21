@@ -3597,6 +3597,41 @@ void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTe
     }
 }
 
+bool KTextEditor::DocumentPrivate::multiPaste(KTextEditor::ViewPrivate *view, const QStringList &texts)
+{
+    if (texts.isEmpty() || view->isMulticursorNotAllowed() || view->secondaryCursors().size() + 1 != (size_t)texts.size()) {
+        return false;
+    }
+
+    m_undoManager->undoSafePoint();
+
+    editStart();
+    if (view->selection()) {
+        view->removeSelectedText();
+    }
+
+    auto plainSecondaryCursors = view->plainSecondaryCursors();
+    KTextEditor::ViewPrivate::PlainSecondaryCursor primary;
+    primary.pos = view->cursorPosition();
+    primary.range = view->selectionRange();
+    plainSecondaryCursors.append(primary);
+    std::sort(plainSecondaryCursors.begin(), plainSecondaryCursors.end());
+
+    static const QRegularExpression re(QStringLiteral("\r\n?"));
+
+    for (int i = 0; i < texts.size(); ++i) {
+        QString text = texts[i];
+        text.replace(re, QStringLiteral("\n"));
+        KTextEditor::Cursor pos = plainSecondaryCursors[i].pos;
+        if (pos.isValid()) {
+            insertText(pos, text, /*blockmode=*/false);
+        }
+    }
+
+    editEnd();
+    return true;
+}
+
 void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const QString &text)
 {
     // nop if nothing to paste

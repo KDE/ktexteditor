@@ -44,6 +44,9 @@ private Q_SLOTS:
     // Find occurunce
     void findNextOccurenceTest();
     void findAllOccurenceTest();
+
+    // Multicopypaste
+    void testMultiCopyPaste();
 };
 
 #endif // KATE_VIEW_TEST_H

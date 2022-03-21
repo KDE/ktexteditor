@@ -2712,6 +2712,7 @@ void KTextEditor::ViewPrivate::cut()
 void KTextEditor::ViewPrivate::copy() const
 {
     QString text;
+    KTextEditor::EditorPrivate::self()->copyToMulticursorClipboard({});
 
     if (!selection()) {
         if (!m_config->smartCopyCut()) {
@@ -2721,6 +2722,23 @@ void KTextEditor::ViewPrivate::copy() const
         m_viewInternal->moveEdge(KateViewInternal::left, false);
     } else {
         text = selectionText();
+
+        // Multicursor copy
+        if (!m_secondaryCursors.empty()) {
+            QVarLengthArray<KTextEditor::Range, 16> ranges;
+            for (const auto &c : m_secondaryCursors) {
+                if (c.range) {
+                    ranges.push_back(c.range->toRange());
+                }
+            }
+            ranges.push_back(m_selection.toRange());
+            std::sort(ranges.begin(), ranges.end());
+            QStringList texts;
+            for (auto range : ranges) {
+                texts.append(doc()->text(range));
+            }
+            KTextEditor::EditorPrivate::self()->copyToMulticursorClipboard(texts);
+        }
     }
 
     // copy to clipboard and our history!
@@ -3226,6 +3244,14 @@ void KTextEditor::ViewPrivate::sendCompletionAborted()
 
 void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
 {
+    const int cursorCount = m_secondaryCursors.size() + 1; // 1 primary cursor
+    const auto multicursorClipboard = KTextEditor::EditorPrivate::self()->multicursorClipboard();
+    if (cursorCount == multicursorClipboard.size() && !textToPaste) {
+        if (doc()->multiPaste(this, multicursorClipboard)) {
+            return;
+        }
+    }
+
     m_temporaryAutomaticInvocationDisabled = true;
     doc()->paste(this, textToPaste ? *textToPaste : QApplication::clipboard()->text(QClipboard::Clipboard));
     m_temporaryAutomaticInvocationDisabled = false;

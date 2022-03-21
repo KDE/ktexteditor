@@ -407,6 +407,10 @@ public:
      */
     void triggerConfigChanged();
 
+    void copyToMulticursorClipboard(const QStringList &texts);
+
+    QStringList multicursorClipboard() const;
+
 private Q_SLOTS:
     /**
      * Emit configChanged if needed.
@@ -537,6 +541,14 @@ private:
      * for all input modes in the KTextEditor::View::InputMode we have here an entry
      */
     std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::ViInputMode + 1> m_inputModeFactories;
+
+    /**
+     * simple list that stores text copied
+     * from all cursors selection
+     * It's main purpose is providing multi-paste
+     * support.
+     */
+    QStringList m_multicursorClipboard;
 
     /**
      * Shared history models for search & replace.
