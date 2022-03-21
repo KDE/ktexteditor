@@ -1484,6 +1484,13 @@ public:
     const QColor &replaceHighlightColor() const;
     void setReplaceHighlightColor(const QColor &col);
 
+    void setLineHeightMultiplier(qreal value);
+
+    qreal lineHeightMultiplier() const
+    {
+        return s_global->m_lineHeightMultiplier;
+    }
+
 private:
     /**
      * Read the schema properties from the config file.
@@ -1516,6 +1523,8 @@ private:
     QColor m_savedLineColor;
     QColor m_searchHighlightColor;
     QColor m_replaceHighlightColor;
+
+    qreal m_lineHeightMultiplier = 1.0;
 
     bool m_wordWrapMarker = false;
     bool m_showIndentationLines = false;

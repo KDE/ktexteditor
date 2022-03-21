@@ -746,6 +746,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(textareaUi->cmbDynamicWordWrapIndicator);
     observeChanges(textareaUi->cbxWordWrap);
     observeChanges(textareaUi->chkFocusFrame);
+    observeChanges(textareaUi->spbLineHeightMultiplier);
     auto a = [ui = textareaUi, cbx = textareaUi->cbxWordWrap]() {
         ui->chkDynWrapAtStaticMarker->setEnabled(cbx->isChecked());
         ui->chkDynWrapAnywhere->setEnabled(cbx->isChecked());
@@ -805,6 +806,7 @@ void KateViewDefaultsConfig::apply()
     KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
     KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
     KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
+    KateRendererConfig::global()->setLineHeightMultiplier(textareaUi->spbLineHeightMultiplier->value());
 
     KateViewConfig::global()->setDynWordWrap(textareaUi->cbxWordWrap->isChecked());
     KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
@@ -872,6 +874,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
     textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());
     textareaUi->chkFocusFrame->setChecked(KateViewConfig::global()->showFocusFrame());
+    textareaUi->spbLineHeightMultiplier->setValue(KateRendererConfig::global()->lineHeightMultiplier());
 }
 
 void KateViewDefaultsConfig::reset()

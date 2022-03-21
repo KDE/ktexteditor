@@ -4512,12 +4512,14 @@ void KTextEditor::ViewPrivate::createHighlights()
         matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
 
         if (matches.first().isValid()) {
-            std::unique_ptr<KTextEditor::MovingRange> mr(doc()->newMovingRange(matches.first()));
-            mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
-            mr->setAttribute(attr);
-            mr->setView(this);
-            mr->setAttributeOnlyForViews(true);
-            m_rangesForHighlights.push_back(std::move(mr));
+            if (matches.first() != selectionRange()) {
+                std::unique_ptr<KTextEditor::MovingRange> mr(doc()->newMovingRange(matches.first()));
+                mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
+                mr->setAttribute(attr);
+                mr->setView(this);
+                mr->setAttributeOnlyForViews(true);
+                m_rangesForHighlights.push_back(std::move(mr));
+            }
             start = matches.first().end();
         }
     } while (matches.first().isValid());

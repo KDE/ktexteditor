@@ -687,6 +687,7 @@ const char KEY_WORD_WRAP_MARKER[] = "Word Wrap Marker";
 const char KEY_SHOW_INDENTATION_LINES[] = "Show Indentation Lines";
 const char KEY_SHOW_WHOLE_BRACKET_EXPRESSION[] = "Show Whole Bracket Expression";
 const char KEY_ANIMATE_BRACKET_MATCHING[] = "Animate Bracket Matching";
+const char KEY_LINE_HEIGHT_MULTIPLIER[] = "Line Height Multiplier";
 }
 
 void KateRendererConfig::readConfig(const KConfigGroup &config)
@@ -710,6 +711,8 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
 
     setAnimateBracketMatching(config.readEntry(KEY_ANIMATE_BRACKET_MATCHING, false));
 
+    setLineHeightMultiplier(config.readEntry<qreal>(KEY_LINE_HEIGHT_MULTIPLIER, 1.0));
+
     configEnd();
 }
 
@@ -729,6 +732,8 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_SHOW_WHOLE_BRACKET_EXPRESSION, showWholeBracketExpression());
 
     config.writeEntry(KEY_ANIMATE_BRACKET_MATCHING, animateBracketMatching());
+
+    config.writeEntry<qreal>(KEY_LINE_HEIGHT_MULTIPLIER, lineHeightMultiplier());
 }
 
 void KateRendererConfig::updateConfig()
@@ -1376,6 +1381,13 @@ void KateRendererConfig::setReplaceHighlightColor(const QColor &col)
     m_replaceHighlightColorSet = true;
     m_replaceHighlightColor = col;
 
+    configEnd();
+}
+
+void KateRendererConfig::setLineHeightMultiplier(qreal value)
+{
+    configStart();
+    m_lineHeightMultiplier = value;
     configEnd();
 }
 
