@@ -922,6 +922,10 @@ void KateRenderer::paintCaret(const KTextEditor::Cursor *cursor, const KateLineL
         }
 
         if (cursor->column() <= range->length()) {
+            // Ensure correct cursor placement for RTL text
+            if (range->layout()->textOption().textDirection() == Qt::RightToLeft) {
+                xStart += caretWidth;
+            }
             range->layout()->drawCursor(&paint, QPoint(-xStart, 0), cursor->column(), caretWidth);
         } else {
             // Off the end of the line... must be block mode. Draw the caret ourselves.
@@ -1076,6 +1080,13 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     if (isLineRightToLeft(lineLayout)) {
         opt.setAlignment(Qt::AlignRight);
         opt.setTextDirection(Qt::RightToLeft);
+        // Must turn off this flag otherwise cursor placement
+        // is totally broken.
+        if (view()->config()->dynWordWrap()) {
+            auto flags = opt.flags();
+            flags.setFlag(QTextOption::IncludeTrailingSpaces, false);
+            opt.setFlags(flags);
+        }
     } else {
         opt.setAlignment(Qt::AlignLeft);
         opt.setTextDirection(Qt::LeftToRight);
