@@ -516,7 +516,7 @@ public:
     */
     bool isOverwriteMode() const;
 
-    QString currentTextLine();
+    bool isLineRTL(int line) const;
 
     QTextLayout *textLayout(int line) const;
     QTextLayout *textLayout(const KTextEditor::Cursor pos) const;

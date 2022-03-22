@@ -3312,9 +3312,34 @@ bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor
     return setCursorPositionInternal(position, doc()->config()->tabWidth(), true);
 }
 
-QString KTextEditor::ViewPrivate::currentTextLine()
+bool KTextEditor::ViewPrivate::isLineRTL(int line) const
 {
-    return doc()->line(cursorPosition().line());
+    const QString s = doc()->line(line);
+    if (s.isEmpty()) {
+        int line = cursorPosition().line();
+        if (line == 0) {
+            const int count = doc()->lines();
+            for (int i = 1; i < count; ++i) {
+                const QString ln = doc()->line(i);
+                if (ln.isEmpty()) {
+                    continue;
+                }
+                return ln.isRightToLeft();
+            }
+        } else {
+            int line = cursorPosition().line();
+            for (; line >= 0; --line) {
+                const QString s = doc()->line(line);
+                if (s.isEmpty()) {
+                    continue;
+                }
+                return s.isRightToLeft();
+            }
+        }
+        return false;
+    } else {
+        return s.isRightToLeft();
+    }
 }
 
 QTextLayout *KTextEditor::ViewPrivate::textLayout(int line) const
@@ -3608,7 +3633,7 @@ void KTextEditor::ViewPrivate::transposeWord()
 void KTextEditor::ViewPrivate::cursorLeft()
 {
     if (selection() && !config()->persistentSelection()) {
-        if (currentTextLine().isRightToLeft()) {
+        if (isLineRTL(cursorPosition().line())) {
             m_viewInternal->updateCursor(selectionRange().end());
             setSelection(KTextEditor::Range::invalid());
         } else {
@@ -3620,12 +3645,12 @@ void KTextEditor::ViewPrivate::cursorLeft()
             if (!c.range) {
                 continue;
             }
-            const bool rtl = doc()->line(c.cursor().line()).isRightToLeft();
+            const bool rtl = isLineRTL(c.cursor().line());
             c.pos->setPosition(rtl ? c.range->end() : c.range->start());
         }
         clearSecondarySelections();
     } else {
-        if (currentTextLine().isRightToLeft()) {
+        if (isLineRTL(cursorPosition().line())) {
             m_viewInternal->cursorNextChar();
         } else {
             m_viewInternal->cursorPrevChar();
@@ -3635,7 +3660,7 @@ void KTextEditor::ViewPrivate::cursorLeft()
 
 void KTextEditor::ViewPrivate::shiftCursorLeft()
 {
-    if (currentTextLine().isRightToLeft()) {
+    if (isLineRTL(cursorPosition().line())) {
         m_viewInternal->cursorNextChar(true);
     } else {
         m_viewInternal->cursorPrevChar(true);
@@ -3645,7 +3670,7 @@ void KTextEditor::ViewPrivate::shiftCursorLeft()
 void KTextEditor::ViewPrivate::cursorRight()
 {
     if (selection() && !config()->persistentSelection()) {
-        if (currentTextLine().isRightToLeft()) {
+        if (isLineRTL(cursorPosition().line())) {
             m_viewInternal->updateCursor(selectionRange().start());
             setSelection(KTextEditor::Range::invalid());
         } else {
@@ -3662,7 +3687,7 @@ void KTextEditor::ViewPrivate::cursorRight()
         }
         clearSecondarySelections();
     } else {
-        if (currentTextLine().isRightToLeft()) {
+        if (isLineRTL(cursorPosition().line())) {
             m_viewInternal->cursorPrevChar();
         } else {
             m_viewInternal->cursorNextChar();
@@ -3672,7 +3697,7 @@ void KTextEditor::ViewPrivate::cursorRight()
 
 void KTextEditor::ViewPrivate::shiftCursorRight()
 {
-    if (currentTextLine().isRightToLeft()) {
+    if (isLineRTL(cursorPosition().line())) {
         m_viewInternal->cursorPrevChar(true);
     } else {
         m_viewInternal->cursorNextChar(true);
@@ -3681,7 +3706,7 @@ void KTextEditor::ViewPrivate::shiftCursorRight()
 
 void KTextEditor::ViewPrivate::wordLeft()
 {
-    if (currentTextLine().isRightToLeft()) {
+    if (isLineRTL(cursorPosition().line())) {
         m_viewInternal->wordNext();
     } else {
         m_viewInternal->wordPrev();
@@ -3690,7 +3715,7 @@ void KTextEditor::ViewPrivate::wordLeft()
 
 void KTextEditor::ViewPrivate::shiftWordLeft()
 {
-    if (currentTextLine().isRightToLeft()) {
+    if (isLineRTL(cursorPosition().line())) {
         m_viewInternal->wordNext(true);
     } else {
         m_viewInternal->wordPrev(true);
@@ -3699,7 +3724,7 @@ void KTextEditor::ViewPrivate::shiftWordLeft()
 
 void KTextEditor::ViewPrivate::wordRight()
 {
-    if (currentTextLine().isRightToLeft()) {
+    if (isLineRTL(cursorPosition().line())) {
         m_viewInternal->wordPrev();
     } else {
         m_viewInternal->wordNext();
@@ -3708,7 +3733,7 @@ void KTextEditor::ViewPrivate::wordRight()
 
 void KTextEditor::ViewPrivate::shiftWordRight()
 {
-    if (currentTextLine().isRightToLeft()) {
+    if (isLineRTL(cursorPosition().line())) {
         m_viewInternal->wordPrev(true);
     } else {
         m_viewInternal->wordNext(true);

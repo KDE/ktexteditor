@@ -119,7 +119,7 @@ const QString ModeBase::getRange(Range &r, OperationMode mode) const
 
 const QString ModeBase::getLine(int line) const
 {
-    return (line < 0) ? m_view->currentTextLine() : doc()->line(line);
+    return (line < 0) ? m_view->doc()->line(m_view->cursorPosition().line()) : doc()->line(line);
 }
 
 const QChar ModeBase::getCharUnderCursor() const
