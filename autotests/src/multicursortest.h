@@ -50,6 +50,7 @@ private Q_SLOTS:
 
     // Misc
     void testSelectionTextOrdering();
+    void testViewClear();
 };
 
 #endif // KATE_VIEW_TEST_H

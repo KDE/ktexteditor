@@ -648,6 +648,7 @@ void MulticursorTest::testMultiCopyPaste()
         view->copy();
     }
 
+    // Same number of cursors when pasting => each line gets pasted into matching cursor postion
     {
         KTextEditor::DocumentPrivate doc;
         doc.setText("\n\n\n\n");
@@ -658,6 +659,18 @@ void MulticursorTest::testMultiCopyPaste()
         v->addSecondaryCursorAt({3, 0});
         v->paste();
         QCOMPARE(doc.text(), QStringLiteral("foo\nbar\nfoo\nfoo\n"));
+
+        // Different number of cursors
+        v->clear();
+        QVERIFY(doc.clear());
+        doc.setText(QStringLiteral("\n\n"));
+        v->setCursorPosition({0, 0});
+        v->addSecondaryCursorAt({1, 0});
+        QCOMPARE(v->secondaryCursors().size(), 1);
+
+        v->paste();
+        QString text = doc.text();
+        QCOMPARE(text, QStringLiteral("foo\nbar\nfoo\nfoo\nfoo\nbar\nfoo\nfoo\n"));
     }
 }
 
@@ -673,6 +686,15 @@ void MulticursorTest::testSelectionTextOrdering()
 
     view->copy();
     QCOMPARE(QApplication::clipboard()->text(QClipboard::Clipboard), selText);
+}
+
+void MulticursorTest::testViewClear()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
+    view->addSecondaryCursorAt({1, 0});
+    QCOMPARE(view->secondaryCursors().size(), 1);
+    view->clear();
+    QCOMPARE(view->secondaryCursors().size(), 0);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

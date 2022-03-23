@@ -4290,6 +4290,7 @@ void KateViewInternal::clear()
     m_startPos.setPosition(0, 0);
     m_displayCursor = KTextEditor::Cursor(0, 0);
     m_cursor.setPosition(0, 0);
+    view()->clearSecondaryCursors();
     cache()->clear();
     updateView(true);
     m_lineScroll->updatePixmap();

@@ -3619,7 +3619,7 @@ bool KTextEditor::DocumentPrivate::multiPaste(KTextEditor::ViewPrivate *view, co
 
     static const QRegularExpression re(QStringLiteral("\r\n?"));
 
-    for (int i = 0; i < texts.size(); ++i) {
+    for (int i = texts.size() - 1; i >= 0; --i) {
         QString text = texts[i];
         text.replace(re, QStringLiteral("\n"));
         KTextEditor::Cursor pos = plainSecondaryCursors[i].pos;

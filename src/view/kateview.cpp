@@ -3251,6 +3251,20 @@ void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
         if (doc()->multiPaste(this, multicursorClipboard)) {
             return;
         }
+    } else if (!textToPaste && cursorCount > 1) {
+        // We still have multiple cursors, but the amount
+        // of multicursors doesn't match the entry count in clipboard
+        QStringList texts;
+        texts.reserve(cursorCount);
+        QString clipboard = QApplication::clipboard()->text(QClipboard::Clipboard);
+        for (int i = 0; i < cursorCount; ++i) {
+            texts << clipboard;
+        }
+        // It might still fail for e.g., if we are in block mode,
+        // in that case we will fallback to normal pasting below
+        if (doc()->multiPaste(this, texts)) {
+            return;
+        }
     }
 
     m_temporaryAutomaticInvocationDisabled = true;
