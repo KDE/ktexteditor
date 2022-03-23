@@ -30,6 +30,12 @@ using namespace KTextEditor;
 
 QTEST_MAIN(MulticursorTest)
 
+template<typename Cont>
+bool isSorted(const Cont &c)
+{
+    return std::is_sorted(c.begin(), c.end());
+}
+
 MulticursorTest::MulticursorTest()
     : QObject()
 {
@@ -65,6 +71,7 @@ void MulticursorTest::testKillline()
     view->setCursorPositionInternal(KTextEditor::Cursor(0, 0));
     view->addSecondaryCursorAt(KTextEditor::Cursor(1, 0));
     view->addSecondaryCursorAt(KTextEditor::Cursor(2, 0));
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     view->killLine();
 
@@ -81,6 +88,7 @@ void MulticursorTest::insertRemoveText()
         view->addSecondaryCursorAt({0, 1});
         view->addSecondaryCursorAt({0, 2});
         view->addSecondaryCursorAt({0, 3});
+        QVERIFY(isSorted(view->secondaryCursors()));
         QKeyEvent ke(QKeyEvent::KeyPress, Qt::Key_L, Qt::NoModifier, QStringLiteral("L"));
         QCoreApplication::sendEvent(internalView, &ke);
 
@@ -104,11 +112,13 @@ void MulticursorTest::insertRemoveText()
         QCOMPARE(doc.line(2), QStringLiteral("Lfoo"));
 
         view->backspace();
+        QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(doc.line(0), QStringLiteral("foo"));
         QCOMPARE(doc.line(1), QStringLiteral("bar"));
         QCOMPARE(doc.line(2), QStringLiteral("foo"));
 
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->clearSecondaryCursors();
     }
 
@@ -117,6 +127,7 @@ void MulticursorTest::insertRemoveText()
     view->setCursorPosition({0, 0});
     view->addSecondaryCursorAt({1, 0});
     view->addSecondaryCursorAt({2, 0});
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     // cursors should merge
     view->backspace();
@@ -193,10 +204,12 @@ void MulticursorTest::keyReturnIndentTest()
     view->addSecondaryCursorDown();
     view->addSecondaryCursorDown();
     QCOMPARE(view->secondaryCursors().size(), 2);
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     doc.typeChars(view, QStringLiteral("{"));
     QCOMPARE(doc.text(), QStringLiteral("{}\n{}\n{}"));
     QCOMPARE(view->secondaryCursors().size(), 2);
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     view->keyReturn();
     QCOMPARE(doc.text(), QStringLiteral("{\n    \n}\n{\n    \n}\n{\n    \n}"));
@@ -235,6 +248,7 @@ void MulticursorTest::testCreateMultiCursor()
     clickAtPosition(view, internalView, {1, 0}, Qt::AltModifier);
     clickAtPosition(view, internalView, {1, 1}, Qt::AltModifier);
     QCOMPARE(view->secondaryCursors().size(), 2);
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     // now simple click => show remove all secondary cursors
     clickAtPosition(view, internalView, {0, 0}, Qt::NoModifier);
@@ -247,6 +261,7 @@ void MulticursorTest::testCreateMultiCursorFromSelection()
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 2, 3);
     view->setSelection(KTextEditor::Range(0, 0, 2, 3));
     view->createMultiCursorsFromSelection();
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     const auto &cursors = view->secondaryCursors();
     QCOMPARE(cursors.size(), doc.lines() - 1); // 1 cursor is primary, not included
@@ -406,6 +421,7 @@ void MulticursorTest::moveUpDown()
 
     view->setSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
     QCOMPARE(view->secondaryCursors().size(), 2);
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     view->up();
     QCOMPARE(view->secondaryCursors().size(), 1);
@@ -421,6 +437,7 @@ void MulticursorTest::moveUpDown()
     view->down();
     QCOMPARE(view->secondaryCursors().size(), 2); // last cursor moves to end of line
     QCOMPARE(*view->secondaryCursors().at(1).pos, Cursor(2, 3));
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     view->down();
     QCOMPARE(view->secondaryCursors().size(), 1);
@@ -439,11 +456,14 @@ void MulticursorTest::testSelectionMerge()
 
         view->selectAll();
         view->createMultiCursorsFromSelection();
+        QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(view->secondaryCursors().size(), 6);
 
         view->shiftWordLeft();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftWordLeft();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftWordLeft();
 
         QCOMPARE(view->secondaryCursors().size(), 0);
@@ -457,12 +477,15 @@ void MulticursorTest::testSelectionMerge()
 
         view->selectAll();
         view->createMultiCursorsFromSelection();
+        QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(view->secondaryCursors().size(), 6);
         QCOMPARE(view->cursorPosition(), Cursor(6, 3));
 
         view->shiftWordLeft();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftWordLeft();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftWordLeft();
 
         QCOMPARE(view->secondaryCursors().size(), 0);
@@ -499,6 +522,7 @@ void MulticursorTest::testSelectionMerge()
         view->addSecondaryCursorUp();
         view->addSecondaryCursorDown();
         view->addSecondaryCursorDown();
+        QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(view->secondaryCursors().size(), 4);
         QCOMPARE(view->cursorPosition(), Cursor(3, 3));
@@ -525,7 +549,9 @@ void MulticursorTest::testSelectionMerge()
         QCOMPARE(view->cursorPosition(), Cursor(6, 0));
 
         view->shiftWordRight();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftWordRight();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftWordRight();
 
         QCOMPARE(view->secondaryCursors().size(), 0);
@@ -561,13 +587,17 @@ void MulticursorTest::testSelectionMerge()
         view->addSecondaryCursorUp();
         view->addSecondaryCursorDown();
         view->addSecondaryCursorDown();
+        QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(view->secondaryCursors().size(), 4);
         QCOMPARE(view->cursorPosition(), Cursor(3, 0));
 
         view->shiftWordRight();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftCursorRight();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftCursorRight();
+        QVERIFY(isSorted(view->secondaryCursors()));
         view->shiftCursorRight();
 
         QCOMPARE(view->secondaryCursors().size(), 0);
@@ -600,6 +630,7 @@ void MulticursorTest::findNextOccurenceTest()
     // find another
     view->findNextOccurunceAndSelect();
     QCOMPARE(view->secondaryCursors().size(), 2);
+    QVERIFY(isSorted(view->secondaryCursors()));
     QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(0, 3));
     QCOMPARE(view->secondaryCursors().at(0).range->toRange(), Range(0, 0, 0, 3));
     QCOMPARE(view->secondaryCursors().at(1).cursor(), Cursor(2, 3));
@@ -680,6 +711,7 @@ void MulticursorTest::testSelectionTextOrdering()
     view->addSecondaryCursorAt({1, 0});
     view->addSecondaryCursorAt({2, 0});
     view->shiftWordRight();
+    QVERIFY(isSorted(view->secondaryCursors()));
 
     QString selText = view->selectionText();
     QCOMPARE(selText, QStringLiteral("foo\nbar\nfoo"));
