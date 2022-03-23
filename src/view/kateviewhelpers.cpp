@@ -3045,6 +3045,10 @@ void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
     m_permanentBarWidget->hide();
     m_layout->removeWidget(m_permanentBarWidget);
     m_permanentBarWidget = nullptr;
+
+    if (!barWidgetVisible()) {
+        setViewBarVisible(false);
+    }
 }
 
 void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
