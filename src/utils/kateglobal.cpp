@@ -569,6 +569,12 @@ void KTextEditor::EditorPrivate::emitConfigChanged()
 
 void KTextEditor::EditorPrivate::copyToMulticursorClipboard(const QStringList &texts)
 {
+    if (texts.size() == 1) {
+        qWarning() << "Unexpected size 1 of multicursorClipboard. It should either be empty or greater than 1";
+        m_multicursorClipboard = QStringList();
+        Q_ASSERT(false);
+        return;
+    }
     m_multicursorClipboard = texts;
 }
 
