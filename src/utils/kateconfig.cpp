@@ -476,7 +476,7 @@ KateViewConfig::KateViewConfig()
     // NOTE: Ensure to keep the same order as listed in enum ConfigEntryTypes or it will later assert!
     // addConfigEntry(ConfigEntry(<EnumKey>, <ConfigKey>, <CommandName>, <DefaultValue>,  [<ValidatorFunction>]))
     addConfigEntry(ConfigEntry(AllowMarkMenu, "Allow Mark Menu", QStringLiteral("allow-mark-menu"), true));
-    addConfigEntry(ConfigEntry(AutoBrackets, "Auto Brackets", QStringLiteral("auto-brackets"), false));
+    addConfigEntry(ConfigEntry(AutoBrackets, "Auto Brackets", QStringLiteral("auto-brackets"), true));
     addConfigEntry(ConfigEntry(AutoCenterLines, "Auto Center Lines", QStringLiteral("auto-center-lines"), 0));
     addConfigEntry(ConfigEntry(AutomaticCompletionInvocation, "Auto Completion", QString(), true));
     addConfigEntry(ConfigEntry(AutomaticCompletionPreselectFirst, "Auto Completion Preselect First Entry", QString(), true));
