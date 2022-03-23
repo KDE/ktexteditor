@@ -7,6 +7,7 @@
 
 #include "multicursortest.h"
 
+#include <QClipboard>
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
@@ -658,6 +659,20 @@ void MulticursorTest::testMultiCopyPaste()
         v->paste();
         QCOMPARE(doc.text(), QStringLiteral("foo\nbar\nfoo\nfoo\n"));
     }
+}
+
+void MulticursorTest::testSelectionTextOrdering()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
+    view->addSecondaryCursorAt({1, 0});
+    view->addSecondaryCursorAt({2, 0});
+    view->shiftWordRight();
+
+    QString selText = view->selectionText();
+    QCOMPARE(selText, QStringLiteral("foo\nbar\nfoo"));
+
+    view->copy();
+    QCOMPARE(QApplication::clipboard()->text(QClipboard::Clipboard), selText);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

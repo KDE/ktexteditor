@@ -47,6 +47,9 @@ private Q_SLOTS:
 
     // Multicopypaste
     void testMultiCopyPaste();
+
+    // Misc
+    void testSelectionTextOrdering();
 };
 
 #endif // KATE_VIEW_TEST_H

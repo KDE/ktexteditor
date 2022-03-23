@@ -2543,6 +2543,7 @@ QString KTextEditor::ViewPrivate::selectionText() const
         }
     }
     ranges.push_back(m_selection.toRange());
+    std::sort(ranges.begin(), ranges.end());
 
     QString text;
     text.reserve(ranges.size() * m_selection.toRange().columnWidth());
