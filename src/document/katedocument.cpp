@@ -4622,8 +4622,8 @@ static QString shortestPrefix(const std::vector<QString> &urls, KTextEditor::Doc
 
         if (urls[i].endsWith(urlv)) {
             lastSlash = url.lastIndexOf(QLatin1Char('/'), lastSlash - 1);
-            if (lastSlash == -1) {
-                // reached end
+            if (lastSlash <= 0) {
+                // reached end if we either found no / or found the slash at the start
                 return url.mid(0, fileNameStart);
             }
             // else update urlv and match again from start
