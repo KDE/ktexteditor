@@ -3080,7 +3080,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<Pl
         n.pos.reset(static_cast<Kate::TextCursor *>(doc()->newMovingCursor(c.pos)));
         if (c.range.isValid()) {
             n.range.reset(newSecondarySelectionRange(c.range));
-            n.anchor = c.range.start() == c.pos ? c.range.end() : c.range.end();
+            n.anchor = c.range.start() == c.pos ? c.range.end() : c.range.start();
         }
         m_secondaryCursors.push_back(std::move(n));
     }
