@@ -1475,6 +1475,9 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
     m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode].get();
     m_viewInternal->m_currentInputMode->activate();
 
+    config()->setValue(KateViewConfig::InputMode,
+                       mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
+
     /* small duplication, but need to do this if not toggled by action */
     const auto inputModeActions = m_inputModeActions->actions();
     for (QAction *action : inputModeActions) {
