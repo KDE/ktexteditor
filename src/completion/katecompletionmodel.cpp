@@ -1880,12 +1880,12 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
         {
             std::vector<Item> temp;
             temp.reserve(items.size());
-            had.reserve(items.size());
             for (const Item &item : items) {
                 auto it = had.constFind(item.name());
                 if (it != had.constEnd() && *it != item.sourceRow().first && m_needShadowing.contains(item.sourceRow().first)) {
                     continue;
                 }
+
                 had.insert(item.name(), item.sourceRow().first);
                 temp.push_back(item);
             }
