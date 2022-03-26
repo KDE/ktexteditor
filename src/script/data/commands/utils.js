@@ -21,7 +21,6 @@ var katescript = {
         },
         {   "function": "duplicateLinesDown",
             "name": "Duplicate Selected Lines Down",
-            "shortcut": "Ctrl+.",
             "category": "Editing"
         },
         {   "function": "duplicateLinesUp",
