@@ -119,7 +119,7 @@ public:
     InputMode viewInputMode() const override;
     QString viewInputModeHuman() const override;
 
-    void setInputMode(InputMode mode);
+    void setInputMode(InputMode mode, const bool rememberInConfig = true);
 
 public:
     KateViewInternal *getViewInternal()

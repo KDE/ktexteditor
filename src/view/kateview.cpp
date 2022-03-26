@@ -1460,7 +1460,7 @@ QString KTextEditor::ViewPrivate::viewInputModeHuman() const
     return currentInputMode()->viewInputModeHuman();
 }
 
-void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
+void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode, const bool rememberInConfig)
 {
     if (currentInputMode()->viewInputMode() == mode) {
         return;
@@ -1475,8 +1475,10 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
     m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode].get();
     m_viewInternal->m_currentInputMode->activate();
 
-    config()->setValue(KateViewConfig::InputMode,
-                       mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
+    // remember in local config if requested, we skip this for the calls in updateConfig
+    if (rememberInConfig) {
+        config()->setValue(KateViewConfig::InputMode, mode);
+    }
 
     /* small duplication, but need to do this if not toggled by action */
     const auto inputModeActions = m_inputModeActions->actions();
@@ -2220,7 +2222,7 @@ void KTextEditor::ViewPrivate::updateConfig()
         input->updateConfig();
     }
 
-    setInputMode(config()->inputMode());
+    setInputMode(config()->inputMode(), false /* don't remember in config for these calls */);
 
     reflectOnTheFlySpellCheckStatus(doc()->isOnTheFlySpellCheckingEnabled());
 
