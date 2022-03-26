@@ -49,17 +49,15 @@ function sort()
 function uniq()
 {
     each(function(lines) {
-        for ( var i = 1; i < lines.length; ++i ) {
-          for ( var j = i - 1; j >= 0; --j ) {
-            if ( lines[i] == lines[j] ) {
-              lines.splice(i, 1);
-              // gets increased in the for
-              --i;
-              break;
+        var uniq_lines = [];
+        var seen = new Set();
+        for ( var i = 0; i < lines.length; ++i ) {
+            if (!seen.has(lines[i])) {
+                seen.add(lines[i]);
+                uniq_lines.push(lines[i]);
             }
-          }
         }
-        return lines;
+        return uniq_lines;
     });
 }
 
