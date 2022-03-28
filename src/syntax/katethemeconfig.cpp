@@ -15,6 +15,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
+#include "katerenderer.h"
 #include "katestyletreewidget.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"
@@ -991,7 +992,94 @@ void KateThemeConfigHighlightTab::showEvent(QShowEvent *event)
 KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     : KateConfigPage(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->setContentsMargins({});
+
+    QTabWidget *tabWidget = new QTabWidget(this);
+    layout->addWidget(tabWidget);
+
+    auto *themeEditor = new QWidget(this);
+    auto *themeChooser = new QWidget(this);
+    tabWidget->addTab(themeChooser, i18n("Default Theme"));
+    tabWidget->addTab(themeEditor, i18n("Theme Editor"));
+    layoutThemeChooserTab(themeChooser);
+    layoutThemeEditorTab(themeEditor);
+
+    reload();
+}
+
+void KateThemeConfigPage::layoutThemeChooserTab(QWidget *tab)
+{
+    QVBoxLayout *layout = new QVBoxLayout(tab);
+    layout->setContentsMargins({});
+
+    auto *comboLayout = new QHBoxLayout;
+
+    auto lHl = new QLabel(i18n("Select theme:"), this);
+    comboLayout->addWidget(lHl);
+
+    defaultSchemaCombo = new QComboBox(this);
+    comboLayout->addWidget(defaultSchemaCombo);
+    defaultSchemaCombo->setEditable(false);
+    lHl->setBuddy(defaultSchemaCombo);
+    connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::slotChanged);
+    comboLayout->addStretch();
+
+    layout->addLayout(comboLayout);
+
+    m_doc = new KTextEditor::DocumentPrivate;
+    m_doc->setParent(this);
+
+    const auto code = R"sample(/**
+* SPDX-FileCopyrightText: 2020 Christoph Cullmann <cullmann@kde.org>
+* SPDX-License-Identifier: MIT
+*/
+
+// BEGIN
+#include <QString>
+#include <string>
+// END
+
+/**
+* TODO: improve documentation
+* @param magicArgument some magic argument
+* @return magic return value
+*/
+int main(uint64_t magicArgument)
+{
+    if (magicArgument > 1) {
+        const std::string string = "source file: \"" __FILE__ "\"";
+        const QString qString(QStringLiteral("test"));
+        return qrand();
+    }
+
+    /* BUG: bogus integer constant inside next line */
+    const double g = 1.1e12 * 0b01'01'01'01 - 43a + 0x11234 * 0234ULL - 'c' * 42;
+    return g > 1.3f;
+})sample";
+
+    m_doc->setText(QString::fromUtf8(code));
+    m_doc->setHighlightingMode(QStringLiteral("C++"));
+    m_themePreview = new KTextEditor::ViewPrivate(m_doc, this);
+
+    lHl = new QLabel(i18n("Preview:"), this);
+    layout->addWidget(lHl);
+    layout->addWidget(m_themePreview);
+
+    connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, [this](int idx) {
+        const QString schema = defaultSchemaCombo->itemData(idx).toString();
+        m_themePreview->renderer()->config()->setSchema(schema);
+        if (schema.isEmpty()) {
+            m_themePreview->renderer()->config()->setValue(KateRendererConfig::AutoColorThemeSelection, true);
+        } else {
+            m_themePreview->renderer()->config()->setValue(KateRendererConfig::AutoColorThemeSelection, false);
+        }
+    });
+}
+
+void KateThemeConfigPage::layoutThemeEditorTab(QWidget *tab)
+{
+    QVBoxLayout *layout = new QVBoxLayout(tab);
     layout->setContentsMargins(0, 0, 0, 0);
 
     // header
@@ -1050,18 +1138,6 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
 
     QHBoxLayout *footLayout = new QHBoxLayout;
     layout->addLayout(footLayout);
-
-    lHl = new QLabel(i18n("&Default theme for %1:", QCoreApplication::applicationName()), this);
-    footLayout->addWidget(lHl);
-
-    defaultSchemaCombo = new QComboBox(this);
-    footLayout->addWidget(defaultSchemaCombo);
-    defaultSchemaCombo->setEditable(false);
-    lHl->setBuddy(defaultSchemaCombo);
-
-    reload();
-
-    connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::slotChanged);
 }
 
 void KateThemeConfigPage::exportFullSchema()
@@ -1190,7 +1266,7 @@ void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString 
     // reinitialize combo boxes
     schemaCombo->clear();
     defaultSchemaCombo->clear();
-    defaultSchemaCombo->addItem(i18n("Automatic Selection"), QString());
+    defaultSchemaCombo->addItem(i18n("Follow System Color Scheme"), QString());
     defaultSchemaCombo->insertSeparator(1);
     const auto themes = KateHlManager::self()->sortedThemes();
     for (const auto &theme : themes) {
@@ -1222,6 +1298,8 @@ void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString 
 
     schemaCombo->blockSignals(false);
     defaultSchemaCombo->blockSignals(false);
+
+    m_themePreview->renderer()->config()->setSchema(defaultSchemaName);
 }
 
 void KateThemeConfigPage::reset()

@@ -20,6 +20,12 @@ class KateColorTreeWidget;
 class KMessageWidget;
 class KateColorItem;
 
+namespace KTextEditor
+{
+class ViewPrivate;
+class DocumentPrivate;
+}
+
 class QComboBox;
 
 class KateThemeConfigColorTab : public QWidget
@@ -139,6 +145,8 @@ public Q_SLOTS:
     void importFullSchema();
 
 private Q_SLOTS:
+    void layoutThemeChooserTab(QWidget *tab);
+    void layoutThemeEditorTab(QWidget *tab);
     void deleteSchema();
     bool copyTheme();
     void schemaChanged(const QString &schema);
@@ -157,6 +165,8 @@ private:
     KateThemeConfigColorTab *m_colorTab;
     KateThemeConfigDefaultStylesTab *m_defaultStylesTab;
     KateThemeConfigHighlightTab *m_highlightTab;
+    KTextEditor::DocumentPrivate *m_doc = nullptr;
+    KTextEditor::ViewPrivate *m_themePreview = nullptr;
 };
 
 #endif
