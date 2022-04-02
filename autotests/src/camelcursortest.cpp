@@ -18,6 +18,8 @@ CamelCursorTest::CamelCursorTest(QObject *parent)
 {
     doc = new KTextEditor::DocumentPrivate(false, false);
     view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
+    view->resize(100, 100);
+    view->show();
 }
 
 CamelCursorTest::~CamelCursorTest()
