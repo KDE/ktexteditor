@@ -85,6 +85,7 @@ void BaseTest::init()
 
     kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
+    kate_view->config()->setValue(KateViewConfig::AutoBrackets, false);
     kate_view->setInputMode(View::ViInputMode);
     Q_ASSERT(kate_view->currentInputMode()->viewInputMode() == KTextEditor::View::ViInputMode);
     vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
