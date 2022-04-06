@@ -190,6 +190,11 @@ void KateModeMenuList::onAboutToShowMenu()
 
 void KateModeMenuList::reloadItems()
 {
+    // We aren't initialized, nothing to reload
+    if (!m_initialized) {
+        return;
+    }
+
     const QString searchText = m_searchBar->text().trimmed();
     m_searchBar->m_bestResults.clear();
     if (!isHidden()) {
