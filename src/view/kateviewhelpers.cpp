@@ -1083,7 +1083,7 @@ KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *
 
 void KateCommandLineBar::showHelpPage()
 {
-    KHelpClient::invokeHelp(QStringLiteral("advanced-editing-tools-commandline"), QStringLiteral("kate"));
+    KHelpClient::invokeHelp(QStringLiteral("advanced-editing-tools-commandline"), QStringLiteral("katepart"));
 }
 
 KateCommandLineBar::~KateCommandLineBar() = default;
