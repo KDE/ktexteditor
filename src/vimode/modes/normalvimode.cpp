@@ -3620,6 +3620,7 @@ void NormalViMode::initializeCommands()
     ADDMOTION("k", motionUp, 0);
     ADDMOTION("<up>", motionUp, 0);
     ADDMOTION("-", motionUpToFirstNonBlank, 0);
+    ADDMOTION("+", motionDownToFirstNonBlank, 0);
     ADDMOTION("l", motionRight, 0);
     ADDMOTION("<right>", motionRight, 0);
     ADDMOTION(" ", motionRight, 0);

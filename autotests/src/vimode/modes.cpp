@@ -116,6 +116,7 @@ void ModesTest::NormalMotionsTests()
 
     // Testing "-"
     DoTest("0\n1\n2\n3\n4\n5", "5j-x2-x", "0\n1\n\n3\n\n5");
+    DoTest("foo\n\t \t bar\nbaz", "3j-r.", "foo\n\t \t .ar\nbaz");
 
     // Testing "^"
     DoTest(" foo bar", "$^x", " oo bar");
@@ -175,9 +176,10 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo bar xyz", "\\ctrl-\\rightrX", "foo Xar xyz");
     DoTest("foo bar xyz", "$\\ctrl-\\leftrX", "foo bar Xyz");
 
-    // Enter/ Return.
+    // Enter / Return / "+"
     DoTest("foo\n\t \t bar", "\\enterr.", "foo\n\t \t .ar");
     DoTest("foo\n\t \t bar", "\\returnr.", "foo\n\t \t .ar");
+    DoTest("foo\n\t \t bar", "+r.", "foo\n\t \t .ar");
 
     // TEXT OBJECTS
     DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lci'", "foo \"bar baz ('first', '' or 'third')\"");
