@@ -454,6 +454,7 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     QVERIFY(dir.remove());
 }
 
+#if HAVE_KAUTH
 void KateTextBufferTest::saveFileWithElevatedPrivileges()
 {
     // create temp dir and get file name inside
@@ -488,3 +489,4 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     QVERIFY(f.remove());
     QVERIFY(dir.remove());
 }
+#endif

@@ -12,6 +12,8 @@
 #include <QObject>
 #include <QTest>
 
+#include <config.h>
+
 class KateTextBufferTest : public QObject
 {
     Q_OBJECT
@@ -28,7 +30,10 @@ private Q_SLOTS:
     void foldingTest();
     void nestedFoldingTest();
     void saveFileInUnwritableFolder();
+
+#if HAVE_KAUTH
     void saveFileWithElevatedPrivileges();
+#endif
 };
 
 #endif // KATETEXTBUFFERTEST_H
