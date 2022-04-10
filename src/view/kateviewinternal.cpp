@@ -1487,7 +1487,7 @@ void KateViewInternal::wordPrev(bool sel)
 
         KateHighlighting *h = doc()->highlight();
         if (!c.atEdge(left)) {
-            while (!c.atEdge(left) && (c.column() >= doc()->lineLength(c.line()) || doc()->line(c.line())[c.column() - 1].isSpace())) {
+            while (!c.atEdge(left) && (c.column() > doc()->lineLength(c.line()) || doc()->line(c.line())[c.column() - 1].isSpace())) {
                 --c;
             }
         }
