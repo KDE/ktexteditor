@@ -524,16 +524,14 @@ void KateDocumentTest::testInsertAfterEOF()
 void KateDocumentTest::testDigest()
 {
     // Git hash of test file (git hash-object autotests/input/encoding/latin15.txt):
-    const QByteArray gitHash = "974d9ab0860c755a4f5686b3b6b429e1efd48a96";
-    // QCryptographicHash is used, therefore we need fromHex here
-    const QByteArray fileDigest = QByteArray::fromHex(gitHash);
+    const QByteArray fileDigest = "974d9ab0860c755a4f5686b3b6b429e1efd48a96";
 
     // make sure, Kate::TextBuffer and KTextEditor::DocumentPrivate::createDigest() equal
     KTextEditor::DocumentPrivate doc;
     doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "encoding/latin15.txt")));
-    const QByteArray bufferDigest(doc.checksum());
+    const QByteArray bufferDigest(doc.checksum().toHex());
     QVERIFY(doc.createDigest());
-    const QByteArray docDigest(doc.checksum());
+    const QByteArray docDigest(doc.checksum().toHex());
 
     QCOMPARE(bufferDigest, fileDigest);
     QCOMPARE(docDigest, fileDigest);
