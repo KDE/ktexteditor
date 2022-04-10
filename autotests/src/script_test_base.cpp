@@ -23,6 +23,7 @@
 #include <QJSEngine>
 #include <QMainWindow>
 #include <QProcess>
+#include <QStandardPaths>
 #include <QTest>
 
 #include <iostream>
@@ -126,10 +127,13 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     const QByteArray expectedChecksum = digestForFile(fileExpected);
 
     if (actualChecksum != expectedChecksum) {
+        static const QString diffExecutable = QStandardPaths::findExecutable(QStringLiteral("diff"));
+        QVERIFY2(!diffExecutable.isEmpty(), "diff utility needed for testing");
+
         // diff actual and expected
         QProcess diff;
         QStringList args(QStringList() << QLatin1String("-u") << fileExpected << fileActual);
-        diff.start(QLatin1String("diff"), args);
+        diff.start(diffExecutable, args);
         diff.waitForFinished();
 
         QByteArray out = diff.readAllStandardOutput();
