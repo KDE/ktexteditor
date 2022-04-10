@@ -27,7 +27,7 @@ void IndentDetectTest::test_data()
     QTest::addRow("2space") << QString(dir + QStringLiteral("2space.js")) << false << 2;
     QTest::addRow("4space") << QString(dir + QStringLiteral("4space.cpp")) << false << 4;
     QTest::addRow("tabs") << QString(dir + QStringLiteral("tab.c")) << true << 4;
-    QTest::addRow("this_file") << QString(dir + QStringLiteral("indentdetect_test.cpp")) << false << 4;
+    QTest::addRow("this_file") << QString::fromUtf8(__FILE__) << false << 4;
 }
 
 void IndentDetectTest::test()
