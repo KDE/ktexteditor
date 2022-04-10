@@ -84,6 +84,52 @@ void ScriptTestBase::getTestData(const QString &script)
     }
 }
 
+/**
+ * helper to compare files
+ * @param refFile reference file
+ * @param outFile output file
+ */
+inline bool filesEqual(const QString &refFile, const QString &outFile)
+{
+    /**
+     * quick compare, all fine, if no diffs!
+     * use text mode + text streams to avoid unix/windows mismatches
+     */
+    QFile ref(refFile);
+    QFile out(outFile);
+    ref.open(QIODevice::ReadOnly | QIODevice::Text);
+    out.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream refIn(&ref);
+    QTextStream outIn(&out);
+    const QString refContent = refIn.readAll();
+    const QString outContent = outIn.readAll();
+    const bool equalResults = refContent == outContent;
+    if (equalResults) {
+        return true;
+    }
+
+    /**
+     * elaborate diff output, if possible
+     */
+    static const QString diffExecutable = QStandardPaths::findExecutable(QStringLiteral("diff"));
+    if (!diffExecutable.isEmpty()) {
+        QProcess proc;
+        proc.setProcessChannelMode(QProcess::ForwardedChannels);
+        proc.start(diffExecutable, {QStringLiteral("-u"), refFile, outFile});
+        proc.waitForFinished();
+    }
+
+    /**
+     * else: trivial output of mismatching characters, e.g. for windows testing without diff
+     */
+    else {
+        qDebug() << "'diff' executable is not in the PATH, no difference output";
+    }
+
+    // there were diffs
+    return false;
+}
+
 void ScriptTestBase::runTest(const ExpectedFailures &failures)
 {
     if (!QFile::exists(testDataPath + m_section)) {
@@ -122,58 +168,12 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
 
     url.setPath(fileActual);
     m_document->saveAs(url);
-
-    const QByteArray actualChecksum = m_document->checksum();
-    const QByteArray expectedChecksum = digestForFile(fileExpected);
-
-    if (actualChecksum != expectedChecksum) {
-        static const QString diffExecutable = QStandardPaths::findExecutable(QStringLiteral("diff"));
-        QVERIFY2(!diffExecutable.isEmpty(), "diff utility needed for testing");
-
-        // diff actual and expected
-        QProcess diff;
-        QStringList args(QStringList() << QLatin1String("-u") << fileExpected << fileActual);
-        diff.start(diffExecutable, args);
-        diff.waitForFinished();
-
-        QByteArray out = diff.readAllStandardOutput();
-        QByteArray err = diff.readAllStandardError();
-
-        if (!err.isEmpty()) {
-            qWarning() << err;
-        }
-
-        if (diff.exitCode() != EXIT_SUCCESS) {
-            std::cout << qPrintable(out) << std::endl;
-        }
-
-        for (const Failure &failure : failures) {
-            QEXPECT_FAIL(failure.first, failure.second, Abort);
-        }
-
-        QCOMPARE(diff.exitCode(), EXIT_SUCCESS);
-    }
-
     m_document->closeUrl();
-}
 
-QByteArray ScriptTestBase::digestForFile(const QString &file)
-{
-    QByteArray digest;
-
-    QFile f(file);
-    if (f.open(QIODevice::ReadOnly)) {
-        // init the hash with the git header
-        QCryptographicHash crypto(QCryptographicHash::Sha1);
-        const QString header = QString(QLatin1String("blob %1")).arg(f.size());
-        crypto.addData(QByteArray(header.toLatin1() + '\0'));
-
-        while (!f.atEnd()) {
-            crypto.addData(f.read(256 * 1024));
-        }
-
-        digest = crypto.result();
+    for (const Failure &failure : failures) {
+        QEXPECT_FAIL(failure.first, failure.second, Abort);
     }
 
-    return digest;
+    // compare files, expected fail will invert this verify
+    QVERIFY(filesEqual(fileExpected, fileActual));
 }

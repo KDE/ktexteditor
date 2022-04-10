@@ -31,7 +31,6 @@ protected:
     typedef QList<Failure> ExpectedFailures;
     void getTestData(const QString &script);
     void runTest(const ExpectedFailures &failures);
-    QByteArray digestForFile(const QString &file);
 
     TestScriptEnv *m_env;
     KTextEditor::DocumentPrivate *m_document;
