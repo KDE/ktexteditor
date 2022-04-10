@@ -35,7 +35,7 @@ void MessageTest::testPostMessage()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
 
     QPointer<Message> message = new Message("Message text", Message::Information);
     message->setPosition(Message::TopInView);
@@ -63,7 +63,7 @@ void MessageTest::testAutoHide()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
@@ -95,7 +95,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
@@ -138,7 +138,7 @@ void MessageTest::testMessageQueue()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
 
     //
     // add two messages, both with autoHide to 1 second, and check that the queue is processed correctly
@@ -195,7 +195,7 @@ void MessageTest::testPriority()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
 
     //
     // add two messages
@@ -275,9 +275,9 @@ void MessageTest::testCreateView()
     v2->show();
     v1->resize(400, 300);
     v2->resize(400, 300);
-    QVERIFY(QTest::qWaitForWindowExposed(v1));
-    QVERIFY(QTest::qWaitForWindowExposed(v2));
-    QTest::qWait(1000);
+    (void)QTest::qWaitForWindowExposed(v1);
+    (void)QTest::qWaitForWindowExposed(v2);
+    QTest::qWait(100);
 
     // make sure both views show the message
     QVERIFY(v1->messageWidget()->isVisible());
@@ -300,7 +300,7 @@ void MessageTest::testHideView()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
     QTest::qWait(1000);
 
     // create message that hides after 2s immediately
@@ -347,7 +347,7 @@ void MessageTest::testHideViewAfterUserInteraction()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
-    QTest::qWaitForWindowExposed(view);
+    (void)QTest::qWaitForWindowExposed(view);
     QTest::qWait(1000);
 
     // create message that hides after 2s immediately
