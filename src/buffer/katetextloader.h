@@ -53,8 +53,10 @@ public:
     {
         // try to get mimetype for on the fly decompression, don't rely on filename!
         QFile testMime(filename);
+        if (testMime.open(QIODevice::ReadOnly)) {
+            m_fileSize = testMime.size();
+        }
         m_mimeType = QMimeDatabase().mimeTypeForFileNameAndData(filename, &testMime).name();
-        m_fileSize = testMime.size();
 
         // construct filter device
         KCompressionDevice::CompressionType compressionType = KCompressionDevice::compressionTypeForMimeType(m_mimeType);
