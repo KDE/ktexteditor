@@ -515,12 +515,14 @@ void KTextEditor::ViewPrivate::setupActions()
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::comment);
 
         a = ac->addAction(QStringLiteral("Previous Editing Line"));
-        a->setText(i18n("Go to previous editing line"));
+        a->setText(i18n("Go to Previous Editing Location"));
+        a->setIcon(QIcon::fromTheme(QStringLiteral("arrow-left")));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_E));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::goToPreviousEditingPosition);
 
         a = ac->addAction(QStringLiteral("Next Editing Line"));
-        a->setText(i18n("Go to next editing line"));
+        a->setText(i18n("Go to Next Editing Location"));
+        a->setIcon(QIcon::fromTheme(QStringLiteral("arrow-right")));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_E));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::goToNextEditingPosition);
 
@@ -623,12 +625,14 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("This command opens a dialog and lets you choose a line that you want the cursor to move to."));
 
     a = ac->addAction(QStringLiteral("modified_line_up"));
-    a->setText(i18n("Move to Previous Modified Line"));
+    a->setIcon(QIcon::fromTheme(QStringLiteral("go-previous")));
+    a->setText(i18n("Go to Previous Modified Line"));
     a->setWhatsThis(i18n("Move upwards to the previous modified line."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toPrevModifiedLine);
 
     a = ac->addAction(QStringLiteral("modified_line_down"));
-    a->setText(i18n("Move to Next Modified Line"));
+    a->setIcon(QIcon::fromTheme(QStringLiteral("go-next")));
+    a->setText(i18n("Go to Next Modified Line"));
     a->setWhatsThis(i18n("Move downwards to the next modified line."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toNextModifiedLine);
 
@@ -649,7 +653,8 @@ void KTextEditor::ViewPrivate::setupActions()
     menu->setWhatsThis(i18n("Here you can choose how the current document should be highlighted."));
     menu->updateMenu(m_doc);
 
-    KateViewSchemaAction *schemaMenu = new KateViewSchemaAction(i18n("&Color Theme"), this);
+    KateViewSchemaAction *schemaMenu = new KateViewSchemaAction(i18n("&Editor Color Theme"), this);
+    schemaMenu->setIcon(QIcon::fromTheme(QStringLiteral("kcolorchooser")));
     ac->addAction(QStringLiteral("view_schemas"), schemaMenu);
     schemaMenu->updateMenu(this);
 
@@ -1136,7 +1141,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
     m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("to_matching_bracket"));
-    a->setText(i18n("Move to Matching Bracket"));
+    a->setText(i18n("Go to Matching Bracket"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_6));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toMatchingBracket);
     // m_editActions << a;

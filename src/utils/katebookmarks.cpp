@@ -74,6 +74,7 @@ void KateBookmarks::createActions(KActionCollection *ac)
 
     KActionMenu *actionMenu = new KActionMenu(i18n("&Bookmarks"), this);
     actionMenu->setPopupMode(QToolButton::InstantPopup);
+    actionMenu->setIcon(QIcon::fromTheme(QStringLiteral("bookmarks")));
     ac->addAction(QStringLiteral("bookmarks"), actionMenu);
     m_bookmarksMenu = actionMenu->menu();
 
