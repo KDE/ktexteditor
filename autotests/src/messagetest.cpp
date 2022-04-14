@@ -52,7 +52,7 @@ void MessageTest::testPostMessage()
 
     QVERIFY(message != nullptr);
     delete message;
-    QTest::qWait(600); // fadeout animation takes 500 ms
+    QTest::qWait(1000); // fadeout animation takes 500 ms
     QVERIFY(!view->messageWidget()->isVisible());
 }
 
