@@ -642,9 +642,8 @@ void KateDocumentTest::testAutoReload()
 {
     QTemporaryFile file("AutoReloadTestFile");
     file.open();
-    QTextStream stream(&file);
-    stream << "Hello";
-    stream.flush();
+    file.write("Hello");
+    file.flush();
 
     KTextEditor::DocumentPrivate doc;
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
@@ -660,12 +659,12 @@ void KateDocumentTest::testAutoReload()
     // it tend to work with 600, but is not guarantied to work even with 800
     QTest::qWait(1000);
 
-    stream << "\nTest";
-    stream.flush();
+    file.write("\nTest");
+    file.flush();
 
     // Hardcoded delay m_modOnHdTimer in DocumentPrivate
     // + min val with which it looks working reliable here
-    QTest::qWait(200 + 800);
+    QTest::qWait(1000);
     QCOMPARE(doc.text(), "Hello\nTest");
     // ...stay in the last line after reload!
     QCOMPARE(view->cursorPosition().line(), doc.documentEnd().line());
@@ -674,11 +673,10 @@ void KateDocumentTest::testAutoReload()
     Cursor c(0, 3);
     view->setCursorPosition(c);
 
-    stream << "\nWorld!";
-    stream.flush();
-    file.close();
+    file.write("\nWorld!");
+    file.flush();
 
-    QTest::qWait(200 + 800);
+    QTest::qWait(1000);
     QCOMPARE(doc.text(), "Hello\nTest\nWorld!");
     // ...and ensure we have not move around
     QCOMPARE(view->cursorPosition(), c);
