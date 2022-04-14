@@ -557,6 +557,10 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
         endPosition = KTextEditor::Cursor(line + 1, 0);
     }
 
+    // Background formats have lower priority so they get overriden by selection
+    const bool shoudlClearBackground = hasCustomLineHeight() && m_view->selection();
+    const KTextEditor::Range selectionRange = m_view->selectionRange();
+
     // Main iterative loop.  This walks through each set of highlighting ranges, and stops each
     // time the highlighting changes.  It then creates the corresponding QTextLayout::FormatRanges.
     QVector<QTextLayout::FormatRange> newHighlight;
@@ -591,6 +595,11 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
             if (selectionsOnly) {
                 assignSelectionBrushesFromAttribute(fr, *a);
             }
+        }
+
+        // Clear background if this position overlaps selection
+        if (shoudlClearBackground && fr.format.hasProperty(QTextFormat::BackgroundBrush) && selectionRange.overlapsColumn(currentPosition.column())) {
+            fr.format.clearBackground();
         }
 
         newHighlight.append(fr);
