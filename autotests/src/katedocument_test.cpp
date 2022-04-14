@@ -523,12 +523,16 @@ void KateDocumentTest::testInsertAfterEOF()
 // sure, these two implementations result in the same checksum.
 void KateDocumentTest::testDigest()
 {
-    // Git hash of test file (git hash-object autotests/input/encoding/latin15.txt):
-    const QByteArray fileDigest = "974d9ab0860c755a4f5686b3b6b429e1efd48a96";
+    // we will write the test file here to avoid that any line ending conversion for git will break it
+    const QByteArray fileDigest = "aa22605da164a4e4e55f4c9738cfe1e53d4467f9";
+    QTemporaryFile file("testDigest");
+    file.open();
+    file.write("974d9ab0860c755a4f5686b3b6b429e1efd48a96\ntest\ntest\n\r\n\r\n\r\n");
+    file.flush();
 
     // make sure, Kate::TextBuffer and KTextEditor::DocumentPrivate::createDigest() equal
     KTextEditor::DocumentPrivate doc;
-    doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "encoding/latin15.txt")));
+    doc.openUrl(QUrl::fromLocalFile(file.fileName()));
     const QByteArray bufferDigest(doc.checksum().toHex());
     QVERIFY(doc.createDigest());
     const QByteArray docDigest(doc.checksum().toHex());
