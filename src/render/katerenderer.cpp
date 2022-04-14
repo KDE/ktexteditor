@@ -27,6 +27,7 @@
 
 #include <QBrush>
 #include <QPainter>
+#include <QPainterPath>
 #include <QRegularExpression>
 #include <QStack>
 #include <QtMath> // qCeil
@@ -629,7 +630,7 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
 
 void KateRenderer::paintTextLineSelection(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges)
 {
-    const QBrush selBrush = config()->selectionColor();
+    QPainterPath p;
     for (const auto &sel : selRanges) {
         const int s = sel.start;
         const int e = sel.start + sel.length;
@@ -642,7 +643,7 @@ void KateRenderer::paintTextLineSelection(QPainter &paint, KateLineLayoutPtr lay
             const int endX = cursorToX(l, e);
             const int y = startViewLine * lineHeight();
             QRect r(startX, y, (endX - startX), lineHeight());
-            paint.fillRect(r, selBrush);
+            p.addRect(r);
         } else {
             for (int l = startViewLine; l <= endViewLine; ++l) {
                 auto kateLayout = layout->viewLine(l);
@@ -656,10 +657,11 @@ void KateRenderer::paintTextLineSelection(QPainter &paint, KateLineLayoutPtr lay
 
                 const int y = l * lineHeight();
                 QRect r(sx, y, width - sx, lineHeight());
-                paint.fillRect(r, selBrush);
+                p.addRect(r);
             }
         }
     }
+    paint.fillPath(p, config()->selectionColor());
 }
 
 void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
