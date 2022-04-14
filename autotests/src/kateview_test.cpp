@@ -406,7 +406,7 @@ void KateViewTest::testDragAndDrop()
 {
     // ATM fails on Windows, mark as such to be able to enforce test success in CI
 #ifdef Q_OS_WIN
-    QEXPECT_FAIL("", "Fails ATM, please fix", Continue);
+    QSKIP("Fails ATM, please fix");
 #endif
 
     KTextEditor::DocumentPrivate doc(false, false);
