@@ -542,6 +542,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowFocusFrame, "Show Focus Frame Around Editor", QString(), true));
     addConfigEntry(ConfigEntry(ShowDocWithCompletion, "Show Documentation With Completion", QString(), true));
     addConfigEntry(ConfigEntry(MultiCursorModifier, "Multiple Cursor Modifier", QString(), (int)Qt::AltModifier));
+    addConfigEntry(ConfigEntry(ShowFoldingOnHoverOnly, "Show Folding Icons On Hover Only", QString(), true));
 
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();

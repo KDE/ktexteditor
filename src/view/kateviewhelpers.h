@@ -329,6 +329,7 @@ private:
     void contextMenuEvent(QContextMenuEvent *e) override;
     void leaveEvent(QEvent *event) override;
     void wheelEvent(QWheelEvent *e) override;
+    void enterEvent(QEvent *e) override;
 
     void showMarkMenu(uint line, const QPoint &pos);
 
@@ -358,6 +359,7 @@ private:
     bool m_dynWrapIndicatorsOn : 1;
     bool m_annotationBorderOn : 1;
     bool m_updatePositionToArea : 1;
+    bool m_mouseOver = false;
 
     typedef QPair<int, KateIconBorder::BorderArea> AreaPosition;
     std::vector<AreaPosition> m_positionToArea;

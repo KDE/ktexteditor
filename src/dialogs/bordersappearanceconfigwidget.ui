@@ -46,7 +46,7 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="4" column="1">
       <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -62,14 +62,14 @@
        </property>
       </spacer>
      </item>
-     <item row="3" column="0">
+     <item row="6" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Left side:</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="6" column="1">
       <widget class="QCheckBox" name="chkIconBorder">
        <property name="whatsThis">
         <string>&lt;p&gt;If this option is checked, every new view will display an icon border on the left hand side.&lt;/p&gt;&lt;p&gt;The icon border shows bookmark signs, for instance.&lt;/p&gt;</string>
@@ -79,7 +79,7 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="7" column="1">
       <widget class="QCheckBox" name="chkLineNumbers">
        <property name="whatsThis">
         <string>If this option is checked, every new view will display line numbers on the left hand side.</string>
@@ -89,7 +89,7 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="8" column="1">
       <widget class="QCheckBox" name="chkShowLineModification">
        <property name="whatsThis">
         <string>If this option is checked, a small indicator for modified and saved lines is shown on the left hand side.</string>
@@ -99,7 +99,7 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
+     <item row="9" column="1">
       <spacer name="verticalSpacer_3">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -115,14 +115,14 @@
        </property>
       </spacer>
      </item>
-     <item row="7" column="0">
+     <item row="10" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Scrollbars</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
+     <item row="10" column="1">
       <widget class="QCheckBox" name="chkScrollbarMarks">
        <property name="whatsThis">
         <string>&lt;p&gt;If this option is checked, every new view will show marks on the vertical scrollbar.&lt;/p&gt;&lt;p&gt;These marks will show bookmarks, for instance.&lt;/p&gt;</string>
@@ -132,7 +132,7 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
+     <item row="11" column="1">
       <widget class="QCheckBox" name="chkScrollbarPreview">
        <property name="whatsThis">
         <string>&lt;p&gt;If this option is checked, hovering over the vertical scrollbar will show a preview of the text.&lt;/p&gt;</string>
@@ -142,7 +142,7 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="1">
+     <item row="13" column="1">
       <spacer name="verticalSpacer_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -158,14 +158,14 @@
        </property>
       </spacer>
      </item>
-     <item row="11" column="0">
+     <item row="14" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Minimap:</string>
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
+     <item row="14" column="1">
       <widget class="QCheckBox" name="chkScrollbarMiniMap">
        <property name="whatsThis">
         <string>If this option is checked, every new view will show a mini map on the vertical scrollbar.</string>
@@ -175,7 +175,7 @@
        </property>
       </widget>
      </item>
-     <item row="13" column="1">
+     <item row="16" column="1">
       <widget class="QCheckBox" name="chkScrollbarMiniMapAll">
        <property name="enabled">
         <bool>false</bool>
@@ -191,7 +191,7 @@
        </property>
       </widget>
      </item>
-     <item row="12" column="1">
+     <item row="15" column="1">
       <widget class="QSpinBox" name="spBoxMiniMapWidth">
        <property name="minimum">
         <number>40</number>
@@ -207,7 +207,7 @@
        </property>
       </widget>
      </item>
-     <item row="12" column="0">
+     <item row="15" column="0">
       <widget class="QLabel" name="labelMiniMapWidth">
        <property name="text">
         <string>Minim&amp;ap width:</string>
@@ -217,7 +217,7 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="1">
+     <item row="12" column="1">
       <widget class="QComboBox" name="cmbShowScrollbars">
        <item>
         <property name="text">
@@ -236,7 +236,7 @@
        </item>
       </widget>
      </item>
-     <item row="9" column="0">
+     <item row="12" column="0">
       <widget class="QLabel" name="lblShowScrollbars">
        <property name="text">
         <string>Scro&amp;llbars visibility:</string>
@@ -246,7 +246,7 @@
        </property>
       </widget>
      </item>
-     <item row="15" column="1">
+     <item row="18" column="1">
       <widget class="QRadioButton" name="rbSortBookmarksByCreation">
        <property name="whatsThis">
         <string>Each new bookmark will be added to the bottom, independently from where it is placed in the document.</string>
@@ -256,7 +256,7 @@
        </property>
       </widget>
      </item>
-     <item row="16" column="1">
+     <item row="19" column="1">
       <widget class="QRadioButton" name="rbSortBookmarksByPosition">
        <property name="whatsThis">
         <string>The bookmarks will be ordered by the line numbers they are placed at.</string>
@@ -266,14 +266,14 @@
        </property>
       </widget>
      </item>
-     <item row="15" column="0">
+     <item row="18" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Sort bookmarks menu:</string>
        </property>
       </widget>
      </item>
-     <item row="14" column="1">
+     <item row="17" column="1">
       <spacer name="verticalSpacer_5">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -288,6 +288,27 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Folding arrows visibility:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="cmbFoldingArrowVisiblity">
+       <item>
+        <property name="text">
+         <string>Show On Hover</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Show Always</string>
+        </property>
+       </item>
+      </widget>
      </item>
     </layout>
    </item>

@@ -2147,12 +2147,14 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                         }
                     }
                     const Kate::TextLine tl = m_doc->kateTextLine(realLine);
-                    if (!startingRanges.isEmpty() || tl->markedAsFoldingStart()) {
-                        if (anyFolded) {
-                            paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
-                        } else {
-                            // Don't try to use currentLineNumberColor, the folded icon gets also not highligted
-                            paintTriangle(p, lineNumberColor, lnX, y, m_foldingAreaWidth, h, true);
+                    if (!m_view->config()->showFoldingOnHoverOnly() || m_mouseOver) {
+                        if (!startingRanges.isEmpty() || tl->markedAsFoldingStart()) {
+                            if (anyFolded) {
+                                paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
+                            } else {
+                                // Don't try to use currentLineNumberColor, the folded icon gets also not highligted
+                                paintTriangle(p, lineNumberColor, lnX, y, m_foldingAreaWidth, h, true);
+                            }
                         }
                     }
                 }
@@ -2344,10 +2346,21 @@ void KateIconBorder::hideFolding()
     delete m_foldingPreview;
 }
 
+void KateIconBorder::enterEvent(QEvent *event)
+{
+    m_mouseOver = true;
+    if (m_view->config()->showFoldingOnHoverOnly())
+        repaint();
+    QWidget::enterEvent(event);
+}
+
 void KateIconBorder::leaveEvent(QEvent *event)
 {
+    m_mouseOver = false;
     hideFolding();
     removeAnnotationHovering();
+    if (m_view->config()->showFoldingOnHoverOnly())
+        repaint();
 
     QWidget::leaveEvent(event);
 }

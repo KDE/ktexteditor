@@ -1048,6 +1048,7 @@ public:
         ShowFocusFrame,
         ShowDocWithCompletion,
         MultiCursorModifier,
+        ShowFoldingOnHoverOnly,
     };
 
 public:
@@ -1335,6 +1336,11 @@ public:
     bool backspaceRemoveComposed() const
     {
         return value(BackspaceRemoveComposedCharacters).toBool();
+    }
+
+    bool showFoldingOnHoverOnly() const
+    {
+        return value(ShowFoldingOnHoverOnly).toBool();
     }
 
 private:

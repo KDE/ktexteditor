@@ -779,6 +779,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(bordersUi->rbSortBookmarksByCreation);
     observeChanges(bordersUi->rbSortBookmarksByPosition);
     observeChanges(bordersUi->spBoxMiniMapWidth);
+    observeChanges(bordersUi->cmbFoldingArrowVisiblity);
 }
 
 KateViewDefaultsConfig::~KateViewDefaultsConfig()
@@ -834,6 +835,8 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMapAll, bordersUi->chkScrollbarMiniMapAll->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarPreview, bordersUi->chkScrollbarPreview->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowScrollbars, bordersUi->cmbShowScrollbars->currentIndex());
+    bool showOnHoverOnly = bordersUi->cmbFoldingArrowVisiblity->currentIndex() == 0;
+    KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingOnHoverOnly, showOnHoverOnly);
 
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -854,6 +857,7 @@ void KateViewDefaultsConfig::reload()
     bordersUi->rbSortBookmarksByCreation->setChecked(KateViewConfig::global()->bookmarkSort() == 1);
     bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
+    bordersUi->cmbFoldingArrowVisiblity->setCurrentIndex(KateViewConfig::global()->showFoldingOnHoverOnly() ? 0 : 1);
 
     textareaUi->kfontrequester->setFont(KateRendererConfig::global()->baseFont());
 
