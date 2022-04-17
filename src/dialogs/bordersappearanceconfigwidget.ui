@@ -300,7 +300,7 @@
       <widget class="QComboBox" name="cmbFoldingArrowVisiblity">
        <item>
         <property name="text">
-         <string>Show On Hover</string>
+         <string>Show on Hover</string>
         </property>
        </item>
        <item>
