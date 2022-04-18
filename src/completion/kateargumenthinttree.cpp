@@ -82,13 +82,10 @@ KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
     , m_parent(parent) // Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
 {
     setFrameStyle(QFrame::Box | QFrame::Raised);
-    setLineWidth(1);
 
     setUniformRowHeights(false);
     header()->setMinimumSectionSize(0);
 
-    setFrameStyle(QFrame::NoFrame);
-    setFrameStyle(QFrame::Box | QFrame::Plain);
     setFocusPolicy(Qt::NoFocus);
     setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
     setUniformRowHeights(false);
