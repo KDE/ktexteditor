@@ -2346,7 +2346,11 @@ void KateIconBorder::hideFolding()
     delete m_foldingPreview;
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+void KateIconBorder::enterEvent(QEnterEvent *event)
+#else
 void KateIconBorder::enterEvent(QEvent *event)
+#endif
 {
     m_mouseOver = true;
     if (m_view->config()->showFoldingOnHoverOnly())
