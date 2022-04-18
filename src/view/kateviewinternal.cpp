@@ -3120,7 +3120,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
     } break;
 
     case QEvent::DragMove: {
-        QPoint currentPoint = ((QDragMoveEvent *)e)->pos();
+        QPoint currentPoint = ((QDragMoveEvent *)e)->position().toPoint();
 
         QRect doNotScrollRegion(s_scrollMargin, s_scrollMargin, width() - s_scrollMargin * 2, height() - s_scrollMargin * 2);
 
@@ -3728,8 +3728,8 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
             return;
         }
 
-        m_mouseX = e->x();
-        m_mouseY = e->y();
+        m_mouseX = e->position().x();
+        m_mouseY = e->position().y();
 
         m_scrollX = 0;
         m_scrollY = 0;

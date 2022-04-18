@@ -2216,13 +2216,13 @@ KateIconBorder::BorderArea KateIconBorder::positionToArea(const QPoint &p) const
 
 void KateIconBorder::mousePressEvent(QMouseEvent *e)
 {
-    const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->y());
+    const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->position().y());
     if (t.isValid()) {
         m_lastClickedLine = t.line();
         const auto area = positionToArea(e->pos());
         // IconBorder and AnnotationBorder have their own behavior; don't forward to view
         if (area != IconBorder && area != AnnotationBorder) {
-            const auto pos = QPoint(0, e->y());
+            const auto pos = QPoint(0, e->position().y());
             if (area == LineNumbers && e->button() == Qt::LeftButton && !(e->modifiers() & Qt::ShiftModifier)) {
                 // setup view so the following mousePressEvent will select the line
                 m_viewInternal->beginSelectLine(pos);
@@ -2371,7 +2371,7 @@ void KateIconBorder::leaveEvent(QEvent *event)
 
 void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
 {
-    const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->y());
+    const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->position().y());
     if (!t.isValid()) {
         // Cleanup everything which may be shown
         removeAnnotationHovering();
@@ -2393,7 +2393,7 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
                 KTextEditor::StyleOptionAnnotationItem styleOption;
                 initStyleOption(&styleOption);
                 styleOption.rect = annotationLineRectInView(t.line());
-                setStyleOptionLineData(&styleOption, e->y(), t.line(), model, m_hoveredAnnotationGroupIdentifier);
+                setStyleOptionLineData(&styleOption, e->position().y(), t.line(), model, m_hoveredAnnotationGroupIdentifier);
                 m_annotationItemDelegate->helpEvent(&helpEvent, m_view, styleOption, model, t.line());
 
                 QTimer::singleShot(0, this, SLOT(update()));
@@ -2418,7 +2418,7 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
 
 void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
 {
-    const int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
+    const int cursorOnLine = m_viewInternal->yToKateTextLayout(e->position().y()).line();
     if (cursorOnLine == m_lastClickedLine && cursorOnLine >= 0 && cursorOnLine <= m_doc->lastLine()) {
         const BorderArea area = positionToArea(e->pos());
         if (area == IconBorder) {
@@ -2463,13 +2463,13 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
         }
     }
 
-    QMouseEvent forward(QEvent::MouseButtonRelease, QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
+    QMouseEvent forward(QEvent::MouseButtonRelease, QPoint(0, e->position().y()), e->button(), e->buttons(), e->modifiers());
     m_viewInternal->mouseReleaseEvent(&forward);
 }
 
 void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
 {
-    int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
+    int cursorOnLine = m_viewInternal->yToKateTextLayout(e->position().y()).line();
 
     if (cursorOnLine == m_lastClickedLine && cursorOnLine <= m_doc->lastLine()) {
         const BorderArea area = positionToArea(e->pos());
