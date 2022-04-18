@@ -381,7 +381,7 @@ void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
     }
 
     QVariant displayData = index.model()->data(index);
-    if (displayData.typeId() != QMetaType::QBrush) {
+    if (displayData.type() != QVariant::Brush) {
         return;
     }
 

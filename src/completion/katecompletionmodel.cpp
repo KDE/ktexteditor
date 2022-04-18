@@ -211,7 +211,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
             for (int column : m_columnMerges[index.column()]) {
                 QModelIndex sourceIndex = mapToSource(createIndex(index.row(), column, index.internalPointer()));
                 QVariant method = sourceIndex.data(CodeCompletionModel::HighlightingMethod);
-                if (method.typeId() == QMetaType::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
+                if (method.type() == QVariant::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
                     return QVariant(CodeCompletionModel::CustomHighlighting);
                 }
             }
@@ -304,14 +304,14 @@ int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
         QModelIndex hintIndex = row.second;
 
         QVariant depth = hintIndex.data(CodeCompletionModel::ArgumentHintDepth);
-        if (!depth.isValid() || depth.typeId() != QMetaType::Int || depth.toInt() != 1) {
+        if (!depth.isValid() || depth.type() != QVariant::Int || depth.toInt() != 1) {
             continue; // Only match completion-items to argument-hints of depth 1(the ones the item will be given to as argument)
         }
 
         hintIndex.data(CodeCompletionModel::SetMatchContext);
 
         QVariant matchQuality = realIndex.data(CodeCompletionModel::MatchQuality);
-        if (matchQuality.isValid() && matchQuality.typeId() == QMetaType::Int) {
+        if (matchQuality.isValid() && matchQuality.type() == QVariant::Int) {
             int m = matchQuality.toInt();
             if (m > bestMatch) {
                 bestMatch = m;
@@ -321,7 +321,7 @@ int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
 
     if (m_argumentHints->filtered.empty()) {
         QVariant matchQuality = realIndex.data(CodeCompletionModel::MatchQuality);
-        if (matchQuality.isValid() && matchQuality.typeId() == QMetaType::Int) {
+        if (matchQuality.isValid() && matchQuality.type() == QVariant::Int) {
             int m = matchQuality.toInt();
             if (m > bestMatch) {
                 bestMatch = m;
@@ -1958,7 +1958,7 @@ void KateCompletionModel::updateBestMatches()
 
             QVariant v = source.second.data(CodeCompletionModel::BestMatchesCount);
 
-            if (v.typeId() == QMetaType::Int && v.toInt() > 0) {
+            if (v.type() == QVariant::Int && v.toInt() > 0) {
                 int quality = contextMatchQuality(source);
                 if (quality > 0) {
                     rowsForQuality.insert(quality, row);
@@ -2005,7 +2005,7 @@ void KateCompletionModel::updateBestMatches()
 
             QVariant v = source.second.data(CodeCompletionModel::BestMatchesCount);
 
-            if (v.typeId() == QMetaType::Int && v.toInt() > 0) {
+            if (v.type() == QVariant::Int && v.toInt() > 0) {
                 // Return the best match with any of the argument-hints
 
                 int quality = contextMatchQuality(source);
