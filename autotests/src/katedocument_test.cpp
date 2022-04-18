@@ -616,7 +616,7 @@ void KateDocumentTest::testTypeCharsWithSurrogateAndNewLine()
 {
     KTextEditor::DocumentPrivate doc;
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
-    const uint surrogateUcs4String[] = {0x1f346, '\n', 0x1f346, 0};
+    const char32_t surrogateUcs4String[] = {0x1f346, '\n', 0x1f346, 0};
     const auto surrogateString = QString::fromUcs4(surrogateUcs4String);
     doc.typeChars(view, surrogateString);
 
@@ -715,7 +715,7 @@ void KateDocumentTest::testSearch()
         }
 
         auto result = pattern.match(textToMatch, 0, QRegularExpression::PartialPreferFirstMatch);
-        printf("lala %d %d %d %d\n", result.hasMatch(), result.hasPartialMatch(), result.capturedStart(), result.capturedLength());
+        qDebug() << "match" << result.hasMatch() << result.hasPartialMatch() << result.capturedStart() << result.capturedLength();
 
         if (result.hasMatch()) {
             printf("found stuff starting in line %d\n", matchStartLine);

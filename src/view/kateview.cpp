@@ -4132,7 +4132,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     }
 
     // No success? Go the old way
-    if (value.canConvert(QVariant::Color)) {
+    if (value.canConvert<QColor>()) {
         if (key == QLatin1String("background-color")) {
             renderer()->config()->setBackgroundColor(value.value<QColor>());
         } else if (key == QLatin1String("selection-color")) {
@@ -4160,7 +4160,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
         } else if (key == QLatin1String("line-count")) {
             config()->setShowLineCount(value.toBool());
         }
-    } else if (key == QLatin1String("font") && value.canConvert(QVariant::Font)) {
+    } else if (key == QLatin1String("font") && value.canConvert<QFont>()) {
         renderer()->config()->setFont(value.value<QFont>());
     } else if (key == QLatin1String("theme") && value.type() == QVariant::String) {
         renderer()->config()->setSchema(value.toString());

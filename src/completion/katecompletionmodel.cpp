@@ -93,12 +93,12 @@ int HierarchicalModelHandler::inheritanceDepth(const QModelIndex &i) const
 void HierarchicalModelHandler::takeRole(const QModelIndex &index)
 {
     QVariant v = index.data(CodeCompletionModel::GroupRole);
-    if (v.isValid() && v.canConvert(QVariant::Int)) {
+    if (v.isValid() && v.canConvert<int>()) {
         QVariant value = index.data(v.toInt());
         if (v.toInt() == Qt::DisplayRole) {
             m_customGroup = index.data(Qt::DisplayRole).toString();
             QVariant sortingKey = index.data(CodeCompletionModel::InheritanceDepth);
-            if (sortingKey.canConvert(QVariant::Int)) {
+            if (sortingKey.canConvert<int>()) {
                 m_groupSortingKey = sortingKey.toInt();
             }
         } else {

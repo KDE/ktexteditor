@@ -116,8 +116,7 @@ static QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList
     QVector<QTextLayout::FormatRange> ret;
 
     for (int i = 0; i + 2 < customHighlights.count(); i += 3) {
-        if (!customHighlights[i].canConvert(QVariant::Int) || !customHighlights[i + 1].canConvert(QVariant::Int)
-            || !customHighlights[i + 2].canConvert<QTextFormat>()) {
+        if (!customHighlights[i].canConvert<int>() || !customHighlights[i + 1].canConvert<int>() || !customHighlights[i + 2].canConvert<QTextFormat>()) {
             qCWarning(LOG_KTE) << "Unable to convert triple to custom formatting.";
             continue;
         }
@@ -142,7 +141,7 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
 
     // TODO: config enable specifying no highlight as default
     int highlightMethod = KTextEditor::CodeCompletionModel::InternalHighlighting;
-    if (highlight.canConvert(QVariant::Int)) {
+    if (highlight.canConvert<int>()) {
         highlightMethod = highlight.toInt();
     }
 
