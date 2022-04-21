@@ -260,8 +260,11 @@ void MulticursorTest::testCreateMultiCursorFromSelection()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 2, 3);
     view->setSelection(KTextEditor::Range(0, 0, 2, 3));
+    // move primary cursor to beginning of line, so we can check whether it is moved to end of line
+    view->setCursorPosition({view->cursorPosition().line(), 0});
     view->createMultiCursorsFromSelection();
     QVERIFY(isSorted(view->secondaryCursors()));
+    QCOMPARE(view->cursorPosition().column(), 3);
 
     const auto &cursors = view->secondaryCursors();
     QCOMPARE(cursors.size(), doc.lines() - 1); // 1 cursor is primary, not included

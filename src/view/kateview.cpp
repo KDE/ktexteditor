@@ -2127,8 +2127,10 @@ void KTextEditor::ViewPrivate::createMultiCursorsFromSelection()
     QVector<KTextEditor::Cursor> cursorsToAdd;
     const auto start = range.start().line() < 0 ? 0 : range.start().line();
     const auto end = range.end().line() > doc()->lines() ? doc()->lines() : range.end().line();
+    const auto currentLine = cursorPosition().line();
+    setCursorPosition({currentLine, doc()->lineLength(currentLine)});
     for (int line = start; line <= end; ++line) {
-        if (line != cursorPosition().line()) {
+        if (line != currentLine) {
             cursorsToAdd.push_back({line, doc()->lineLength(line)});
         }
     }
