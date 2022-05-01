@@ -522,16 +522,17 @@ void CompletionTest::testAsyncMatching()
 
 void CompletionTest::benchCompletionModel()
 {
+    const int testFactor = 1;
     const QString text("abcdefg abcdef");
     m_doc->setText(text);
     CodeCompletionTestModel *testModel1 = new CodeCompletionTestModel(m_view, QStringLiteral("abcdefg"));
-    testModel1->setRowCount(500);
+    testModel1->setRowCount(50 * testFactor);
     CodeCompletionTestModel *testModel2 = new CodeCompletionTestModel(m_view, QStringLiteral("abcdef"));
-    testModel2->setRowCount(500);
+    testModel2->setRowCount(50 * testFactor);
     CodeCompletionTestModel *testModel3 = new CodeCompletionTestModel(m_view, QStringLiteral("abcde"));
-    testModel3->setRowCount(500);
+    testModel3->setRowCount(50 * testFactor);
     CodeCompletionTestModel *testModel4 = new CodeCompletionTestModel(m_view, QStringLiteral("abcd"));
-    testModel4->setRowCount(5000);
+    testModel4->setRowCount(500 * testFactor);
     QBENCHMARK_ONCE {
         for (int i = 0; i < text.size(); ++i) {
             m_view->setCursorPosition(Cursor(0, i));
