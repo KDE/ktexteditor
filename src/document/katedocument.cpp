@@ -5555,7 +5555,23 @@ void KTextEditor::DocumentPrivate::removeTrailingSpacesAndAddNewLineAtEof()
         Q_ASSERT(lines > 0);
         const auto length = lineLength(lines - 1);
         if (length > 0) {
+            // ensure the cursor is not wrapped to the next line if at the end of the document
+            // see bug 453252
+            const auto oldEndOfDocumentCursor = documentEnd();
+            std::vector<KTextEditor::ViewPrivate *> viewsToRestoreCursors;
+            for (auto v : std::as_const(m_views)) {
+                if (v->cursorPosition() == oldEndOfDocumentCursor) {
+                    viewsToRestoreCursors.push_back(v);
+                }
+            }
+
+            // wrap the last line, this might move the cursor
             editWrapLine(lines - 1, length);
+
+            // undo cursor moving
+            for (auto v : viewsToRestoreCursors) {
+                v->setCursorPosition(oldEndOfDocumentCursor);
+            }
         }
     }
 
