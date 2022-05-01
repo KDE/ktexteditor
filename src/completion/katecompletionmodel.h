@@ -17,6 +17,8 @@
 #include "expandingtree/expandingwidgetmodel.h"
 #include <ktexteditor_export.h>
 
+#include <set>
+
 class KateCompletionWidget;
 class KateArgumentHintModel;
 namespace KTextEditor
@@ -252,6 +254,8 @@ public:
         int customSortingKey;
     };
 
+    typedef std::set<Group *> GroupSet;
+
     bool hasGroups() const;
 
 private:
@@ -260,10 +264,10 @@ private:
     void createGroups();
     /// Creates all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     /// i must be an index in the source model
-    QSet<Group *> createItems(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
+    GroupSet createItems(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// Deletes all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     /// i must be an index in the source model
-    QSet<Group *> deleteItems(const QModelIndex &i);
+    GroupSet deleteItems(const QModelIndex &i);
     Group *createItem(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// @note Make sure you're in a {begin,end}ResetModel block when calling this!
     void clearGroups();

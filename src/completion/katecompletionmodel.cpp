@@ -537,10 +537,10 @@ void KateCompletionModel::clearGroups()
     m_groupHash.insert(BestMatchesProperty, m_bestMatches);
 }
 
-QSet<KateCompletionModel::Group *> KateCompletionModel::createItems(const HierarchicalModelHandler &_handler, const QModelIndex &i, bool notifyModel)
+KateCompletionModel::GroupSet KateCompletionModel::createItems(const HierarchicalModelHandler &_handler, const QModelIndex &i, bool notifyModel)
 {
     HierarchicalModelHandler handler(_handler);
-    QSet<Group *> ret;
+    GroupSet ret;
     QAbstractItemModel *model = handler.model();
 
     if (model->rowCount(i) == 0) {
@@ -550,16 +550,16 @@ QSet<KateCompletionModel::Group *> KateCompletionModel::createItems(const Hierar
         // Non-leaf node, take the role from the node, and recurse to the sub-nodes
         handler.takeRole(i);
         for (int a = 0; a < model->rowCount(i); a++) {
-            ret += createItems(handler, model->index(a, 0, i), notifyModel);
+            ret.merge(createItems(handler, model->index(a, 0, i), notifyModel));
         }
     }
 
     return ret;
 }
 
-QSet<KateCompletionModel::Group *> KateCompletionModel::deleteItems(const QModelIndex &i)
+KateCompletionModel::GroupSet KateCompletionModel::deleteItems(const QModelIndex &i)
 {
-    QSet<Group *> ret;
+    GroupSet ret;
 
     if (i.model()->rowCount(i) == 0) {
         // Leaf node, delete the item
@@ -569,7 +569,7 @@ QSet<KateCompletionModel::Group *> KateCompletionModel::deleteItems(const QModel
     } else {
         // Non-leaf node
         for (int a = 0; a < i.model()->rowCount(i); a++) {
-            ret += deleteItems(i.model()->index(a, 0, i));
+            ret.merge(deleteItems(i.model()->index(a, 0, i)));
         }
     }
 
@@ -583,19 +583,18 @@ void KateCompletionModel::createGroups()
     // new groups.
     clearGroups();
 
-    QSet<Group *> groups;
-
     bool has_groups = false;
+    GroupSet groups;
     for (CodeCompletionModel *sourceModel : std::as_const(m_completionModels)) {
         has_groups |= sourceModel->hasGroups();
         for (int i = 0; i < sourceModel->rowCount(); ++i) {
-            groups += createItems(HierarchicalModelHandler(sourceModel), sourceModel->index(i, 0));
+            groups.merge(createItems(HierarchicalModelHandler(sourceModel), sourceModel->index(i, 0)));
         }
     }
 
     // since notifyModel = false above, we just appended the data as is,
     // we sort it now
-    for (auto g : qAsConst(groups)) {
+    for (auto g : groups) {
         std::sort(g->prefilter.begin(), g->prefilter.end());
         std::sort(g->filtered.begin(), g->filtered.end());
     }
@@ -668,12 +667,12 @@ void KateCompletionModel::slotRowsInserted(const QModelIndex &parent, int start,
         handler.collectRoles(parent);
     }
 
-    QSet<Group *> affectedGroups;
+    GroupSet affectedGroups;
     for (int i = start; i <= end; ++i) {
-        affectedGroups += createItems(handler, handler.model()->index(i, 0, parent), /* notifyModel= */ true);
+        affectedGroups.merge(createItems(handler, handler.model()->index(i, 0, parent), /* notifyModel= */ true));
     }
 
-    for (Group *g : std::as_const(affectedGroups)) {
+    for (auto g : affectedGroups) {
         hideOrShowGroup(g, true);
     }
 }
@@ -682,15 +681,13 @@ void KateCompletionModel::slotRowsRemoved(const QModelIndex &parent, int start, 
 {
     CodeCompletionModel *source = static_cast<CodeCompletionModel *>(sender());
 
-    QSet<Group *> affectedGroups;
-
+    GroupSet affectedGroups;
     for (int i = start; i <= end; ++i) {
         QModelIndex index = source->index(i, 0, parent);
-
-        affectedGroups += deleteItems(index);
+        affectedGroups.merge(deleteItems(index));
     }
 
-    for (Group *g : std::as_const(affectedGroups)) {
+    for (auto g : affectedGroups) {
         hideOrShowGroup(g, true);
     }
 }
