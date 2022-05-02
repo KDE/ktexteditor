@@ -871,19 +871,19 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(KStandardAction::Replace, this, SLOT(replace()));
     a->setWhatsThis(i18n("Look up a piece of text or regular expression and replace the result with some given text."));
 
-    a = ac->addAction(QStringLiteral("edit_create_multi_crusor_from_sel"));
+    a = ac->addAction(QStringLiteral("edit_create_multi_cursor_from_sel"));
     a->setText(i18n("Add Cursors to Line Ends"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::Key_I));
     a->setWhatsThis(i18n("Creates a cursor at the end of every line in selection."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::createMultiCursorsFromSelection);
 
-    a = ac->addAction(QStringLiteral("edit_create_multi_crusor_down"));
+    a = ac->addAction(QStringLiteral("edit_create_multi_cursor_down"));
     a->setText(i18n("Add Caret below Cursor"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::CTRL | Qt::Key_Down));
     a->setWhatsThis(i18n("Adds a caret in the line below the current caret."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::addSecondaryCursorDown);
 
-    a = ac->addAction(QStringLiteral("edit_create_multi_crusor_up"));
+    a = ac->addAction(QStringLiteral("edit_create_multi_cursor_up"));
     a->setText(i18n("Add Caret above Cursor"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::CTRL | Qt::Key_Up));
     a->setWhatsThis(i18n("Adds a caret in the line above the current caret."));

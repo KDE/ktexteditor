@@ -58,9 +58,9 @@
     <Action name="tools_align" group="edit_selection" />
     <Action name="tools_apply_wordwrap" group="edit_selection" />
     <Separator group="edit_selection"/>
-    <Action name="edit_create_multi_crusor_up" group="edit_selection"/>
-    <Action name="edit_create_multi_crusor_down" group="edit_selection"/>
-    <Action name="edit_create_multi_crusor_from_sel" group="edit_selection"/>
+    <Action name="edit_create_multi_cursor_up" group="edit_selection"/>
+    <Action name="edit_create_multi_cursor_down" group="edit_selection"/>
+    <Action name="edit_create_multi_cursor_from_sel" group="edit_selection"/>
     <Action name="edit_find_multicursor_next_occurrence" group="edit_selection"/>
     <Action name="edit_find_multicursor_all_occurrences" group="edit_selection"/>
   </Menu>
