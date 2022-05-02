@@ -3963,227 +3963,223 @@ bool NormalViMode::executeKateCommand(const QString &command)
     return p->exec(m_view, command, msg);
 }
 
-#define ADDCMD(STR, FUNC, FLGS) global.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
+#define ADDCMD(STR, FUNC, FLGS) Command(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)
 
-#define ADDMOTION(STR, FUNC, FLGS) global.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
+#define ADDMOTION(STR, FUNC, FLGS) Motion(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)
 
 const std::vector<Command> &NormalViMode::commands()
 {
     // init once, is expensive
-    static std::vector<Command> global;
-    if (global.empty()) {
-        ADDCMD("a", commandEnterInsertModeAppend, IS_CHANGE);
-        ADDCMD("A", commandEnterInsertModeAppendEOL, IS_CHANGE);
-        ADDCMD("i", commandEnterInsertMode, IS_CHANGE);
-        ADDCMD("<insert>", commandEnterInsertMode, IS_CHANGE);
-        ADDCMD("I", commandEnterInsertModeBeforeFirstNonBlankInLine, IS_CHANGE);
-        ADDCMD("gi", commandEnterInsertModeLast, IS_CHANGE);
-        ADDCMD("v", commandEnterVisualMode, 0);
-        ADDCMD("V", commandEnterVisualLineMode, 0);
-        ADDCMD("<c-v>", commandEnterVisualBlockMode, 0);
-        ADDCMD("gv", commandReselectVisual, SHOULD_NOT_RESET);
-        ADDCMD("o", commandOpenNewLineUnder, IS_CHANGE);
-        ADDCMD("O", commandOpenNewLineOver, IS_CHANGE);
-        ADDCMD("J", commandJoinLines, IS_CHANGE);
-        ADDCMD("c", commandChange, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("C", commandChangeToEOL, IS_CHANGE);
-        ADDCMD("cc", commandChangeLine, IS_CHANGE);
-        ADDCMD("s", commandSubstituteChar, IS_CHANGE);
-        ADDCMD("S", commandSubstituteLine, IS_CHANGE);
-        ADDCMD("dd", commandDeleteLine, IS_CHANGE);
-        ADDCMD("d", commandDelete, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("D", commandDeleteToEOL, IS_CHANGE);
-        ADDCMD("x", commandDeleteChar, IS_CHANGE);
-        ADDCMD("<delete>", commandDeleteChar, IS_CHANGE);
-        ADDCMD("X", commandDeleteCharBackward, IS_CHANGE);
-        ADDCMD("gu", commandMakeLowercase, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("guu", commandMakeLowercaseLine, IS_CHANGE);
-        ADDCMD("gU", commandMakeUppercase, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("gUU", commandMakeUppercaseLine, IS_CHANGE);
-        ADDCMD("y", commandYank, NEEDS_MOTION);
-        ADDCMD("yy", commandYankLine, 0);
-        ADDCMD("Y", commandYankToEOL, 0);
-        ADDCMD("p", commandPaste, IS_CHANGE);
-        ADDCMD("P", commandPasteBefore, IS_CHANGE);
-        ADDCMD("gp", commandgPaste, IS_CHANGE);
-        ADDCMD("gP", commandgPasteBefore, IS_CHANGE);
-        ADDCMD("]p", commandIndentedPaste, IS_CHANGE);
-        ADDCMD("[p", commandIndentedPasteBefore, IS_CHANGE);
-        ADDCMD("r.", commandReplaceCharacter, IS_CHANGE | REGEX_PATTERN);
-        ADDCMD("R", commandEnterReplaceMode, IS_CHANGE);
-        ADDCMD(":", commandSwitchToCmdLine, 0);
-        ADDCMD("u", commandUndo, 0);
-        ADDCMD("<c-r>", commandRedo, 0);
-        ADDCMD("U", commandRedo, 0);
-        ADDCMD("m.", commandSetMark, REGEX_PATTERN);
-        ADDCMD(">>", commandIndentLine, IS_CHANGE);
-        ADDCMD("<<", commandUnindentLine, IS_CHANGE);
-        ADDCMD(">", commandIndentLines, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("<", commandUnindentLines, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("<c-f>", commandScrollPageDown, 0);
-        ADDCMD("<pagedown>", commandScrollPageDown, 0);
-        ADDCMD("<c-b>", commandScrollPageUp, 0);
-        ADDCMD("<pageup>", commandScrollPageUp, 0);
-        ADDCMD("<c-u>", commandScrollHalfPageUp, 0);
-        ADDCMD("<c-d>", commandScrollHalfPageDown, 0);
-        ADDCMD("z.", commandCenterViewOnNonBlank, 0);
-        ADDCMD("zz", commandCenterViewOnCursor, 0);
-        ADDCMD("z<return>", commandTopViewOnNonBlank, 0);
-        ADDCMD("zt", commandTopViewOnCursor, 0);
-        ADDCMD("z-", commandBottomViewOnNonBlank, 0);
-        ADDCMD("zb", commandBottomViewOnCursor, 0);
-        ADDCMD("ga", commandPrintCharacterCode, SHOULD_NOT_RESET);
-        ADDCMD(".", commandRepeatLastChange, 0);
-        ADDCMD("==", commandAlignLine, IS_CHANGE);
-        ADDCMD("=", commandAlignLines, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("~", commandChangeCase, IS_CHANGE);
-        ADDCMD("g~", commandChangeCaseRange, IS_CHANGE | NEEDS_MOTION);
-        ADDCMD("g~~", commandChangeCaseLine, IS_CHANGE);
-        ADDCMD("<c-a>", commandAddToNumber, IS_CHANGE);
-        ADDCMD("<c-x>", commandSubtractFromNumber, IS_CHANGE);
-        ADDCMD("<c-o>", commandGoToPrevJump, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDCMD("<c-i>", commandGoToNextJump, CAN_LAND_INSIDE_FOLDING_RANGE);
+    static const std::vector<Command> global{
+        ADDCMD("a", commandEnterInsertModeAppend, IS_CHANGE),
+        ADDCMD("A", commandEnterInsertModeAppendEOL, IS_CHANGE),
+        ADDCMD("i", commandEnterInsertMode, IS_CHANGE),
+        ADDCMD("<insert>", commandEnterInsertMode, IS_CHANGE),
+        ADDCMD("I", commandEnterInsertModeBeforeFirstNonBlankInLine, IS_CHANGE),
+        ADDCMD("gi", commandEnterInsertModeLast, IS_CHANGE),
+        ADDCMD("v", commandEnterVisualMode, 0),
+        ADDCMD("V", commandEnterVisualLineMode, 0),
+        ADDCMD("<c-v>", commandEnterVisualBlockMode, 0),
+        ADDCMD("gv", commandReselectVisual, SHOULD_NOT_RESET),
+        ADDCMD("o", commandOpenNewLineUnder, IS_CHANGE),
+        ADDCMD("O", commandOpenNewLineOver, IS_CHANGE),
+        ADDCMD("J", commandJoinLines, IS_CHANGE),
+        ADDCMD("c", commandChange, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("C", commandChangeToEOL, IS_CHANGE),
+        ADDCMD("cc", commandChangeLine, IS_CHANGE),
+        ADDCMD("s", commandSubstituteChar, IS_CHANGE),
+        ADDCMD("S", commandSubstituteLine, IS_CHANGE),
+        ADDCMD("dd", commandDeleteLine, IS_CHANGE),
+        ADDCMD("d", commandDelete, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("D", commandDeleteToEOL, IS_CHANGE),
+        ADDCMD("x", commandDeleteChar, IS_CHANGE),
+        ADDCMD("<delete>", commandDeleteChar, IS_CHANGE),
+        ADDCMD("X", commandDeleteCharBackward, IS_CHANGE),
+        ADDCMD("gu", commandMakeLowercase, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("guu", commandMakeLowercaseLine, IS_CHANGE),
+        ADDCMD("gU", commandMakeUppercase, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("gUU", commandMakeUppercaseLine, IS_CHANGE),
+        ADDCMD("y", commandYank, NEEDS_MOTION),
+        ADDCMD("yy", commandYankLine, 0),
+        ADDCMD("Y", commandYankToEOL, 0),
+        ADDCMD("p", commandPaste, IS_CHANGE),
+        ADDCMD("P", commandPasteBefore, IS_CHANGE),
+        ADDCMD("gp", commandgPaste, IS_CHANGE),
+        ADDCMD("gP", commandgPasteBefore, IS_CHANGE),
+        ADDCMD("]p", commandIndentedPaste, IS_CHANGE),
+        ADDCMD("[p", commandIndentedPasteBefore, IS_CHANGE),
+        ADDCMD("r.", commandReplaceCharacter, IS_CHANGE | REGEX_PATTERN),
+        ADDCMD("R", commandEnterReplaceMode, IS_CHANGE),
+        ADDCMD(":", commandSwitchToCmdLine, 0),
+        ADDCMD("u", commandUndo, 0),
+        ADDCMD("<c-r>", commandRedo, 0),
+        ADDCMD("U", commandRedo, 0),
+        ADDCMD("m.", commandSetMark, REGEX_PATTERN),
+        ADDCMD(">>", commandIndentLine, IS_CHANGE),
+        ADDCMD("<<", commandUnindentLine, IS_CHANGE),
+        ADDCMD(">", commandIndentLines, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("<", commandUnindentLines, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("<c-f>", commandScrollPageDown, 0),
+        ADDCMD("<pagedown>", commandScrollPageDown, 0),
+        ADDCMD("<c-b>", commandScrollPageUp, 0),
+        ADDCMD("<pageup>", commandScrollPageUp, 0),
+        ADDCMD("<c-u>", commandScrollHalfPageUp, 0),
+        ADDCMD("<c-d>", commandScrollHalfPageDown, 0),
+        ADDCMD("z.", commandCenterViewOnNonBlank, 0),
+        ADDCMD("zz", commandCenterViewOnCursor, 0),
+        ADDCMD("z<return>", commandTopViewOnNonBlank, 0),
+        ADDCMD("zt", commandTopViewOnCursor, 0),
+        ADDCMD("z-", commandBottomViewOnNonBlank, 0),
+        ADDCMD("zb", commandBottomViewOnCursor, 0),
+        ADDCMD("ga", commandPrintCharacterCode, SHOULD_NOT_RESET),
+        ADDCMD(".", commandRepeatLastChange, 0),
+        ADDCMD("==", commandAlignLine, IS_CHANGE),
+        ADDCMD("=", commandAlignLines, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("~", commandChangeCase, IS_CHANGE),
+        ADDCMD("g~", commandChangeCaseRange, IS_CHANGE | NEEDS_MOTION),
+        ADDCMD("g~~", commandChangeCaseLine, IS_CHANGE),
+        ADDCMD("<c-a>", commandAddToNumber, IS_CHANGE),
+        ADDCMD("<c-x>", commandSubtractFromNumber, IS_CHANGE),
+        ADDCMD("<c-o>", commandGoToPrevJump, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDCMD("<c-i>", commandGoToNextJump, CAN_LAND_INSIDE_FOLDING_RANGE),
 
-        ADDCMD("<c-w>h", commandSwitchToLeftView, 0);
-        ADDCMD("<c-w><c-h>", commandSwitchToLeftView, 0);
-        ADDCMD("<c-w><left>", commandSwitchToLeftView, 0);
-        ADDCMD("<c-w>j", commandSwitchToDownView, 0);
-        ADDCMD("<c-w><c-j>", commandSwitchToDownView, 0);
-        ADDCMD("<c-w><down>", commandSwitchToDownView, 0);
-        ADDCMD("<c-w>k", commandSwitchToUpView, 0);
-        ADDCMD("<c-w><c-k>", commandSwitchToUpView, 0);
-        ADDCMD("<c-w><up>", commandSwitchToUpView, 0);
-        ADDCMD("<c-w>l", commandSwitchToRightView, 0);
-        ADDCMD("<c-w><c-l>", commandSwitchToRightView, 0);
-        ADDCMD("<c-w><right>", commandSwitchToRightView, 0);
-        ADDCMD("<c-w>w", commandSwitchToNextView, 0);
-        ADDCMD("<c-w><c-w>", commandSwitchToNextView, 0);
+        ADDCMD("<c-w>h", commandSwitchToLeftView, 0),
+        ADDCMD("<c-w><c-h>", commandSwitchToLeftView, 0),
+        ADDCMD("<c-w><left>", commandSwitchToLeftView, 0),
+        ADDCMD("<c-w>j", commandSwitchToDownView, 0),
+        ADDCMD("<c-w><c-j>", commandSwitchToDownView, 0),
+        ADDCMD("<c-w><down>", commandSwitchToDownView, 0),
+        ADDCMD("<c-w>k", commandSwitchToUpView, 0),
+        ADDCMD("<c-w><c-k>", commandSwitchToUpView, 0),
+        ADDCMD("<c-w><up>", commandSwitchToUpView, 0),
+        ADDCMD("<c-w>l", commandSwitchToRightView, 0),
+        ADDCMD("<c-w><c-l>", commandSwitchToRightView, 0),
+        ADDCMD("<c-w><right>", commandSwitchToRightView, 0),
+        ADDCMD("<c-w>w", commandSwitchToNextView, 0),
+        ADDCMD("<c-w><c-w>", commandSwitchToNextView, 0),
 
-        ADDCMD("<c-w>s", commandSplitHoriz, 0);
-        ADDCMD("<c-w>S", commandSplitHoriz, 0);
-        ADDCMD("<c-w><c-s>", commandSplitHoriz, 0);
-        ADDCMD("<c-w>v", commandSplitVert, 0);
-        ADDCMD("<c-w><c-v>", commandSplitVert, 0);
-        ADDCMD("<c-w>c", commandCloseView, 0);
+        ADDCMD("<c-w>s", commandSplitHoriz, 0),
+        ADDCMD("<c-w>S", commandSplitHoriz, 0),
+        ADDCMD("<c-w><c-s>", commandSplitHoriz, 0),
+        ADDCMD("<c-w>v", commandSplitVert, 0),
+        ADDCMD("<c-w><c-v>", commandSplitVert, 0),
+        ADDCMD("<c-w>c", commandCloseView, 0),
 
-        ADDCMD("gt", commandSwitchToNextTab, 0);
-        ADDCMD("gT", commandSwitchToPrevTab, 0);
+        ADDCMD("gt", commandSwitchToNextTab, 0),
+        ADDCMD("gT", commandSwitchToPrevTab, 0),
 
-        ADDCMD("gqq", commandFormatLine, IS_CHANGE);
-        ADDCMD("gq", commandFormatLines, IS_CHANGE | NEEDS_MOTION);
+        ADDCMD("gqq", commandFormatLine, IS_CHANGE),
+        ADDCMD("gq", commandFormatLines, IS_CHANGE | NEEDS_MOTION),
 
-        ADDCMD("zo", commandExpandLocal, 0);
-        ADDCMD("zc", commandCollapseLocal, 0);
-        ADDCMD("za", commandToggleRegionVisibility, 0);
-        ADDCMD("zr", commandExpandAll, 0);
-        ADDCMD("zm", commandCollapseToplevelNodes, 0);
+        ADDCMD("zo", commandExpandLocal, 0),
+        ADDCMD("zc", commandCollapseLocal, 0),
+        ADDCMD("za", commandToggleRegionVisibility, 0),
+        ADDCMD("zr", commandExpandAll, 0),
+        ADDCMD("zm", commandCollapseToplevelNodes, 0),
 
-        ADDCMD("q.", commandStartRecordingMacro, REGEX_PATTERN);
-        ADDCMD("@.", commandReplayMacro, REGEX_PATTERN);
+        ADDCMD("q.", commandStartRecordingMacro, REGEX_PATTERN),
+        ADDCMD("@.", commandReplayMacro, REGEX_PATTERN),
 
-        ADDCMD("ZZ", commandCloseWrite, 0);
-        ADDCMD("ZQ", commandCloseNocheck, 0);
-    }
-
+        ADDCMD("ZZ", commandCloseWrite, 0),
+        ADDCMD("ZQ", commandCloseNocheck, 0),
+    };
     return global;
 }
 
 const std::vector<Motion> &NormalViMode::motions()
 {
     // init once, is expensive
-    static std::vector<Motion> global;
-    if (global.empty()) {
+    static const std::vector<Motion> global{
         // regular motions
-        ADDMOTION("h", motionLeft, 0);
-        ADDMOTION("<left>", motionLeft, 0);
-        ADDMOTION("<backspace>", motionLeft, 0);
-        ADDMOTION("j", motionDown, 0);
-        ADDMOTION("<down>", motionDown, 0);
-        ADDMOTION("<enter>", motionDownToFirstNonBlank, 0);
-        ADDMOTION("<return>", motionDownToFirstNonBlank, 0);
-        ADDMOTION("k", motionUp, 0);
-        ADDMOTION("<up>", motionUp, 0);
-        ADDMOTION("-", motionUpToFirstNonBlank, 0);
-        ADDMOTION("+", motionDownToFirstNonBlank, 0);
-        ADDMOTION("l", motionRight, 0);
-        ADDMOTION("<right>", motionRight, 0);
-        ADDMOTION(" ", motionRight, 0);
-        ADDMOTION("$", motionToEOL, 0);
-        ADDMOTION("<end>", motionToEOL, 0);
-        ADDMOTION("0", motionToColumn0, 0);
-        ADDMOTION("<home>", motionToColumn0, 0);
-        ADDMOTION("^", motionToFirstCharacterOfLine, 0);
-        ADDMOTION("f.", motionFindChar, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("F.", motionFindCharBackward, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("t.", motionToChar, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("T.", motionToCharBackward, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION(";", motionRepeatlastTF, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION(",", motionRepeatlastTFBackward, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("n", motionFindNext, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("N", motionFindPrev, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("gg", motionToLineFirst, 0);
-        ADDMOTION("G", motionToLineLast, 0);
-        ADDMOTION("w", motionWordForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("W", motionWORDForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("<c-right>", motionWordForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("<c-left>", motionWordBackward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("b", motionWordBackward, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("B", motionWORDBackward, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("e", motionToEndOfWord, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("E", motionToEndOfWORD, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("ge", motionToEndOfPrevWord, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("gE", motionToEndOfPrevWORD, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("|", motionToScreenColumn, 0);
-        ADDMOTION("%", motionToMatchingItem, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("`[a-zA-Z^><\\.\\[\\]]", motionToMark, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("'[a-zA-Z^><]", motionToMarkLine, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("[[", motionToPreviousBraceBlockStart, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("]]", motionToNextBraceBlockStart, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("[]", motionToPreviousBraceBlockEnd, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("][", motionToNextBraceBlockEnd, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("*", motionToNextOccurrence, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("#", motionToPrevOccurrence, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("H", motionToFirstLineOfWindow, 0);
-        ADDMOTION("M", motionToMiddleLineOfWindow, 0);
-        ADDMOTION("L", motionToLastLineOfWindow, 0);
-        ADDMOTION("gj", motionToNextVisualLine, 0);
-        ADDMOTION("g<down>", motionToNextVisualLine, 0);
-        ADDMOTION("gk", motionToPrevVisualLine, 0);
-        ADDMOTION("g<up>", motionToPrevVisualLine, 0);
-        ADDMOTION("(", motionToPreviousSentence, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION(")", motionToNextSentence, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("{", motionToBeforeParagraph, CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("}", motionToAfterParagraph, CAN_LAND_INSIDE_FOLDING_RANGE);
+        ADDMOTION("h", motionLeft, 0),
+        ADDMOTION("<left>", motionLeft, 0),
+        ADDMOTION("<backspace>", motionLeft, 0),
+        ADDMOTION("j", motionDown, 0),
+        ADDMOTION("<down>", motionDown, 0),
+        ADDMOTION("<enter>", motionDownToFirstNonBlank, 0),
+        ADDMOTION("<return>", motionDownToFirstNonBlank, 0),
+        ADDMOTION("k", motionUp, 0),
+        ADDMOTION("<up>", motionUp, 0),
+        ADDMOTION("-", motionUpToFirstNonBlank, 0),
+        ADDMOTION("+", motionDownToFirstNonBlank, 0),
+        ADDMOTION("l", motionRight, 0),
+        ADDMOTION("<right>", motionRight, 0),
+        ADDMOTION(" ", motionRight, 0),
+        ADDMOTION("$", motionToEOL, 0),
+        ADDMOTION("<end>", motionToEOL, 0),
+        ADDMOTION("0", motionToColumn0, 0),
+        ADDMOTION("<home>", motionToColumn0, 0),
+        ADDMOTION("^", motionToFirstCharacterOfLine, 0),
+        ADDMOTION("f.", motionFindChar, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("F.", motionFindCharBackward, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("t.", motionToChar, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("T.", motionToCharBackward, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION(";", motionRepeatlastTF, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION(",", motionRepeatlastTFBackward, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("n", motionFindNext, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("N", motionFindPrev, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("gg", motionToLineFirst, 0),
+        ADDMOTION("G", motionToLineLast, 0),
+        ADDMOTION("w", motionWordForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("W", motionWORDForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("<c-right>", motionWordForward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("<c-left>", motionWordBackward, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("b", motionWordBackward, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("B", motionWORDBackward, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("e", motionToEndOfWord, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("E", motionToEndOfWORD, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("ge", motionToEndOfPrevWord, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("gE", motionToEndOfPrevWORD, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("|", motionToScreenColumn, 0),
+        ADDMOTION("%", motionToMatchingItem, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("`[a-zA-Z^><\\.\\[\\]]", motionToMark, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("'[a-zA-Z^><]", motionToMarkLine, REGEX_PATTERN | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("[[", motionToPreviousBraceBlockStart, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("]]", motionToNextBraceBlockStart, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("[]", motionToPreviousBraceBlockEnd, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("][", motionToNextBraceBlockEnd, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("*", motionToNextOccurrence, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("#", motionToPrevOccurrence, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("H", motionToFirstLineOfWindow, 0),
+        ADDMOTION("M", motionToMiddleLineOfWindow, 0),
+        ADDMOTION("L", motionToLastLineOfWindow, 0),
+        ADDMOTION("gj", motionToNextVisualLine, 0),
+        ADDMOTION("g<down>", motionToNextVisualLine, 0),
+        ADDMOTION("gk", motionToPrevVisualLine, 0),
+        ADDMOTION("g<up>", motionToPrevVisualLine, 0),
+        ADDMOTION("(", motionToPreviousSentence, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION(")", motionToNextSentence, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("{", motionToBeforeParagraph, CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("}", motionToAfterParagraph, CAN_LAND_INSIDE_FOLDING_RANGE),
 
         // text objects
-        ADDMOTION("iw", textObjectInnerWord, 0);
-        ADDMOTION("aw", textObjectAWord, IS_NOT_LINEWISE);
-        ADDMOTION("iW", textObjectInnerWORD, 0);
-        ADDMOTION("aW", textObjectAWORD, IS_NOT_LINEWISE);
-        ADDMOTION("is", textObjectInnerSentence, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("as", textObjectASentence, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("ip", textObjectInnerParagraph, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("ap", textObjectAParagraph, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i\"", textObjectInnerQuoteDouble, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a\"", textObjectAQuoteDouble, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i'", textObjectInnerQuoteSingle, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a'", textObjectAQuoteSingle, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i`", textObjectInnerBackQuote, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a`", textObjectABackQuote, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i[()b]", textObjectInnerParen, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a[()b]", textObjectAParen, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i[{}B]", textObjectInnerCurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a[{}B]", textObjectACurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i[><]", textObjectInnerInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a[><]", textObjectAInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i[\\[\\]]", textObjectInnerBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a[\\[\\]]", textObjectABracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("i,", textObjectInnerComma, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("a,", textObjectAComma, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
+        ADDMOTION("iw", textObjectInnerWord, 0),
+        ADDMOTION("aw", textObjectAWord, IS_NOT_LINEWISE),
+        ADDMOTION("iW", textObjectInnerWORD, 0),
+        ADDMOTION("aW", textObjectAWORD, IS_NOT_LINEWISE),
+        ADDMOTION("is", textObjectInnerSentence, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("as", textObjectASentence, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("ip", textObjectInnerParagraph, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("ap", textObjectAParagraph, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i\"", textObjectInnerQuoteDouble, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a\"", textObjectAQuoteDouble, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i'", textObjectInnerQuoteSingle, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a'", textObjectAQuoteSingle, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i`", textObjectInnerBackQuote, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a`", textObjectABackQuote, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i[()b]", textObjectInnerParen, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a[()b]", textObjectAParen, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i[{}B]", textObjectInnerCurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a[{}B]", textObjectACurlyBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i[><]", textObjectInnerInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a[><]", textObjectAInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i[\\[\\]]", textObjectInnerBracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a[\\[\\]]", textObjectABracket, REGEX_PATTERN | IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("i,", textObjectInnerComma, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("a,", textObjectAComma, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
 
-        ADDMOTION("/<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-        ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE);
-    }
-
+        ADDMOTION("/<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+        ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE | CAN_LAND_INSIDE_FOLDING_RANGE),
+    };
     return global;
 }
