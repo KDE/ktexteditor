@@ -289,7 +289,6 @@ public:
 
 protected:
     void resetParser();
-    void initializeCommands();
     QRegularExpression generateMatchingItemRegex() const;
     void executeCommand(const Command *cmd);
     OperationMode getOperationMode() const;
@@ -323,6 +322,18 @@ protected:
     KTextEditor::Cursor findParagraphStart();
     KTextEditor::Cursor findParagraphEnd();
 
+    /**
+     * Return commands available for this mode.
+     * Overwritten in sub classes to replace them, must be a stable reference!
+     */
+    virtual const std::vector<Command> &commands();
+
+    /**
+     * Return motions available for this mode.
+     * Overwritten in sub classes to replace them, must be a stable reference!
+     */
+    virtual const std::vector<Motion> &motions();
+
 protected:
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
     // line for linewise.
@@ -338,8 +349,6 @@ protected:
     int m_motionOperatorIndex;
     int m_scroll_count_limit;
 
-    std::vector<Command> m_commands;
-    std::vector<Motion> m_motions;
     QVector<int> m_matchingCommands;
     QVector<int> m_matchingMotions;
     QStack<int> m_awaitingMotionOrTextObject;

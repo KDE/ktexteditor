@@ -81,8 +81,17 @@ protected:
      */
     void goToPos(const Range &r) override;
 
-private:
-    void initializeCommands();
+    /**
+     * Return commands available for this mode.
+     * Overwritten in sub classes to replace them, must be a stable reference!
+     */
+    virtual const std::vector<Command> &commands() override;
+
+    /**
+     * Return motions available for this mode.
+     * Overwritten in sub classes to replace them, must be a stable reference!
+     */
+    virtual const std::vector<Motion> &motions() override;
 
 public Q_SLOTS:
     /**
