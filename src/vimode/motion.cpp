@@ -8,13 +8,13 @@
 
 using namespace KateVi;
 
-Motion::Motion(NormalViMode *parent, const QString &pattern, Range (NormalViMode::*commandMethod)(), unsigned int flags)
-    : Command(parent, pattern, nullptr, flags)
+Motion::Motion(const QString &pattern, Range (NormalViMode::*commandMethod)(), unsigned int flags)
+    : Command(pattern, nullptr, flags)
 {
     m_ptr2commandMethod = commandMethod;
 }
 
-Range Motion::execute() const
+Range Motion::execute(NormalViMode *mode) const
 {
-    return (m_parent->*m_ptr2commandMethod)();
+    return (mode->*m_ptr2commandMethod)();
 }

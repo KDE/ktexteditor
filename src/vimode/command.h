@@ -29,12 +29,12 @@ enum CommandFlags {
 class Command
 {
 public:
-    Command(NormalViMode *parent, const QString &pattern, bool (NormalViMode::*pt2Func)(), unsigned int flags = 0);
-    ~Command();
+    Command(const QString &pattern, bool (NormalViMode::*pt2Func)(), unsigned int flags = 0);
+    virtual ~Command();
 
     bool matches(const QString &pattern) const;
     bool matchesExact(const QString &pattern) const;
-    bool execute() const;
+    bool execute(NormalViMode *mode) const;
     const QString pattern() const
     {
         return m_pattern;
@@ -69,7 +69,6 @@ public:
     }
 
 protected:
-    NormalViMode *m_parent;
     QString m_pattern;
     unsigned int m_flags;
     bool (NormalViMode::*m_ptr2commandMethod)();

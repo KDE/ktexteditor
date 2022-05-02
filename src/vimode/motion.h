@@ -23,8 +23,8 @@ class NormalViMode;
 class KTEXTEDITOR_EXPORT Motion : public Command
 {
 public:
-    Motion(NormalViMode *parent, const QString &pattern, Range (NormalViMode::*commandMethod)(), unsigned int flags = 0);
-    Range execute() const;
+    Motion(const QString &pattern, Range (NormalViMode::*commandMethod)(), unsigned int flags = 0);
+    Range execute(NormalViMode *mode) const;
 
 protected:
     Range (NormalViMode::*m_ptr2commandMethod)();

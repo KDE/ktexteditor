@@ -42,9 +42,9 @@
 
 using namespace KateVi;
 
-#define ADDCMD(STR, FUNC, FLGS) m_commands.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
+#define ADDCMD(STR, FUNC, FLGS) m_commands.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
 NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : ModeBase()
@@ -271,7 +271,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                     if (checkFrom == 0) {
                         // no command given before motion, just move the cursor to wherever
                         // the motion says it should go to
-                        Range r = m_motions.at(i).execute();
+                        Range r = m_motions.at(i).execute(this);
                         m_motionCanChangeWholeVisualModeSelection = m_motions.at(i).canChangeWholeVisualModeSelection();
 
                         if (!m_motions.at(i).canLandInsideFoldingRange()) {
@@ -320,7 +320,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         // execute the specified command and supply the position returned from
                         // the motion
 
-                        m_commandRange = m_motions.at(i).execute();
+                        m_commandRange = m_motions.at(i).execute(this);
                         m_linewiseCommand = m_motions.at(i).isLineWise();
 
                         // if we didn't get an explicit start position, use the current cursor position
@@ -458,7 +458,7 @@ void NormalViMode::executeCommand(const Command *cmd)
 {
     const ViMode originalViMode = m_viInputModeManager->getCurrentViMode();
 
-    cmd->execute();
+    cmd->execute(this);
 
     // if normal mode was started by using Ctrl-O in insert mode,
     // it's time to go back to insert mode.

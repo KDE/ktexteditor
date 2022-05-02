@@ -11,9 +11,8 @@
 
 using namespace KateVi;
 
-Command::Command(NormalViMode *parent, const QString &pattern, bool (NormalViMode::*commandMethod)(), unsigned int flags)
+Command::Command(const QString &pattern, bool (NormalViMode::*commandMethod)(), unsigned int flags)
 {
-    m_parent = parent;
     m_pattern = KeyParser::self()->encodeKeySequence(pattern);
     m_flags = flags;
     m_ptr2commandMethod = commandMethod;
@@ -21,9 +20,9 @@ Command::Command(NormalViMode *parent, const QString &pattern, bool (NormalViMod
 
 Command::~Command() = default;
 
-bool Command::execute() const
+bool Command::execute(NormalViMode *mode) const
 {
-    return (m_parent->*m_ptr2commandMethod)();
+    return (mode->*m_ptr2commandMethod)();
 }
 
 bool Command::matches(const QString &pattern) const

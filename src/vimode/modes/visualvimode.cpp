@@ -17,9 +17,9 @@
 
 using namespace KateVi;
 
-#define ADDCMD(STR, FUNC, FLGS) m_commands.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
+#define ADDCMD(STR, FUNC, FLGS) m_commands.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.emplace_back(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS);
 
 VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : NormalViMode(viInputModeManager, view, viewInternal)
