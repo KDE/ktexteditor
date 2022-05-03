@@ -1578,13 +1578,9 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         // The timeout should be cancelled when we invoke the command bar again.
         BeginTest("");
         TestPressKey(":commandthatdoesnotexist\\enter");
-        const QDateTime waitStartedTime = QDateTime::currentDateTime();
         TestPressKey(":");
         // Wait ample time for the timeout to fire.  Do not use waitForEmulatedCommandBarToHide for this!
-        while (waitStartedTime.msecsTo(QDateTime::currentDateTime()) < commandResponseMessageTimeOutMS * 2) {
-            QApplication::processEvents();
-        }
-        QVERIFY(emulatedCommandBar->isVisible());
+        QTRY_VERIFY_WITH_TIMEOUT(emulatedCommandBar->isVisible(), commandResponseMessageTimeOutMS * 2);
         TestPressKey("\\esc"); // Dismiss the bar.
         FinishTest("");
     }
@@ -1596,7 +1592,6 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         TestPressKey(":commandthatdoesnotexist\\enter");
         // Wait for any focus changes to take effect.
         QApplication::processEvents();
-        const QDateTime waitStartedTime = QDateTime::currentDateTime();
         QLineEdit *dummyToFocus = new QLineEdit(QString("Sausage"), mainWindow);
         // Take focus away from kate_view by giving it to dummyToFocus.
         QApplication::setActiveWindow(mainWindow);
@@ -1606,24 +1601,17 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         dummyToFocus->setEnabled(true);
         dummyToFocus->setFocus();
         // Allow dummyToFocus to receive focus.
-        while (!dummyToFocus->hasFocus()) {
-            QApplication::processEvents();
-        }
-        QVERIFY(dummyToFocus->hasFocus());
+        QTRY_VERIFY(dummyToFocus->hasFocus());
         // Wait ample time for the timeout to fire.  Do not use waitForEmulatedCommandBarToHide for this -
         // the bar never actually hides in this instance, and I think it would take some deep changes in
         // Kate to make it do so (the KateCommandLineBar as the same issue).
-        while (waitStartedTime.msecsTo(QDateTime::currentDateTime()) < commandResponseMessageTimeOutMS * 2) {
-            QApplication::processEvents();
-        }
+        QTest::qWait(commandResponseMessageTimeOutMS * 2);
         QVERIFY(dummyToFocus->hasFocus());
         QVERIFY(emulatedCommandBar->isVisible());
         mainWindowLayout->removeWidget(dummyToFocus);
         // Restore focus to the kate_view.
         kate_view->setFocus();
-        while (!kate_view->hasFocus()) {
-            QApplication::processEvents();
-        }
+        QTRY_VERIFY(kate_view->hasFocus());
         // *Now* wait for the command bar to disappear - giving kate_view focus should trigger it.
         waitForEmulatedCommandBarToHide(commandResponseMessageTimeOutMS * 4);
         FinishTest("");
@@ -3358,11 +3346,7 @@ QLabel *EmulatedCommandBarTest::commandResponseMessageDisplay()
 
 void EmulatedCommandBarTest::waitForEmulatedCommandBarToHide(long int timeout)
 {
-    const QDateTime waitStartedTime = QDateTime::currentDateTime();
-    while (emulatedCommandBar()->isVisible() && waitStartedTime.msecsTo(QDateTime::currentDateTime()) < timeout) {
-        QApplication::processEvents();
-    }
-    QVERIFY(!emulatedCommandBar()->isVisible());
+    QTRY_VERIFY_WITH_TIMEOUT(!emulatedCommandBar()->isVisible(), timeout);
 }
 
 void EmulatedCommandBarTest::verifyShowsNumberOfReplacementsAcrossNumberOfLines(int numReplacements, int acrossNumLines)
