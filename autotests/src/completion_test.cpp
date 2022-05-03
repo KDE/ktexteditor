@@ -44,26 +44,12 @@ int countItems(KateCompletionModel *model)
 
 static void verifyCompletionStarted(KTextEditor::ViewPrivate *view)
 {
-    const QDateTime startTime = QDateTime::currentDateTime();
-    while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000) {
-        QApplication::processEvents();
-        if (view->completionWidget()->isCompletionActive()) {
-            break;
-        }
-    }
-    QVERIFY(view->completionWidget()->isCompletionActive());
+    QTRY_VERIFY_WITH_TIMEOUT(view->completionWidget()->isCompletionActive(), 1000);
 }
 
 static void verifyCompletionAborted(KTextEditor::ViewPrivate *view)
 {
-    const QDateTime startTime = QDateTime::currentDateTime();
-    while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000) {
-        QApplication::processEvents();
-        if (!view->completionWidget()->isCompletionActive()) {
-            break;
-        }
-    }
-    QVERIFY(!view->completionWidget()->isCompletionActive());
+    QTRY_VERIFY_WITH_TIMEOUT(!view->completionWidget()->isCompletionActive(), 1000);
 }
 
 static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
