@@ -232,9 +232,9 @@ void VisualViMode::updateSelection()
     m_commandRange.endColumn--;
 }
 
-#define ADDCMD(STR, FUNC, FLGS) global.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)
+#define ADDCMD(STR, FUNC, FLGS) Command(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)
 
-#define ADDMOTION(STR, FUNC, FLGS) global.emplace_back(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)
+#define ADDMOTION(STR, FUNC, FLGS) Motion(QStringLiteral(STR), &NormalViMode::FUNC, FLGS)
 
 const std::vector<Command> &VisualViMode::commands()
 {
