@@ -8,6 +8,7 @@
 #ifndef KATEVI_COMMAND_H
 #define KATEVI_COMMAND_H
 
+#include <QRegularExpression>
 #include <QString>
 
 namespace KateVi
@@ -69,9 +70,15 @@ public:
     }
 
 protected:
-    QString m_pattern;
-    unsigned int m_flags;
+    // constant stuff, we create each command just once globally
+    const QString m_pattern;
+    const unsigned int m_flags;
     bool (NormalViMode::*m_ptr2commandMethod)();
+
+    // we create commands only once globally
+    // regex compile is costly, we do this at first match of this command
+    mutable QRegularExpression m_patternRegex;
+    mutable QRegularExpression m_patternAnchoredRegex;
 };
 
 }
