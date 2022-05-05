@@ -4157,7 +4157,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
         } else if (key == QLatin1String("current-line-number-color")) {
             renderer()->config()->setCurrentLineNumberColor(value.value<QColor>());
         }
-    } else if (value.type() == QVariant::Bool) {
+    }
+    if (value.type() == QVariant::Bool) {
         // Note explicit type check above. If we used canConvert, then
         // values of type UInt will be trapped here.
         if (key == QLatin1String("dynamic-word-wrap")) {
