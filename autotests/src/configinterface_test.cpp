@@ -12,6 +12,9 @@
 #include <kateglobal.h>
 #include <kateview.h>
 #include <ktexteditor/configinterface.h>
+#include <katesyntaxmanager.h>
+#include <repository.h>
+#include <theme.h>
 
 #include <QFont>
 #include <QTest>
@@ -172,6 +175,18 @@ void KateConfigInterfaceTest::testView()
 
     iface->setConfigValue(QLatin1String("font"), QFont("Times", 10, QFont::Bold));
     QCOMPARE(iface->configValue(QLatin1String("font")).value<QFont>(), QFont("Times", 10, QFont::Bold));
+
+    {
+        KSyntaxHighlighting::Repository& repository = KTextEditor::EditorPrivate::self()->hlManager()->repository();
+
+        auto lightTheme = repository.defaultTheme(KSyntaxHighlighting::Repository::LightTheme);
+        iface->setConfigValue(QLatin1String("theme"), lightTheme.name());
+        QCOMPARE(iface->configValue(QLatin1String("theme")).value<QString>(), lightTheme.name());
+
+        auto darkTheme = repository.defaultTheme(KSyntaxHighlighting::Repository::DarkTheme);
+        iface->setConfigValue(QLatin1String("theme"), darkTheme.name());
+        QCOMPARE(iface->configValue(QLatin1String("theme")).value<QString>(), darkTheme.name());
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
