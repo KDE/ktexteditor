@@ -10,7 +10,6 @@
 #include "katedocument.h"
 #include "katerenderer.h"
 #include "kateview.h"
-#include "ktexteditor/range.h"
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/modebase.h>
 

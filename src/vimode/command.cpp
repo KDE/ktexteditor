@@ -7,8 +7,6 @@
 #include <vimode/command.h>
 #include <vimode/keyparser.h>
 
-#include <QRegularExpression>
-
 using namespace KateVi;
 
 Command::Command(const QString &pattern, bool (NormalViMode::*commandMethod)(), unsigned int flags)
