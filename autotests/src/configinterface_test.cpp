@@ -13,8 +13,8 @@
 #include <kateview.h>
 #include <ktexteditor/configinterface.h>
 #include <katesyntaxmanager.h>
-#include <repository.h>
-#include <theme.h>
+#include <KSyntaxHighlighting/Repository>
+#include <KSyntaxHighlighting/Theme>
 
 #include <QFont>
 #include <QTest>
