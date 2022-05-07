@@ -239,7 +239,7 @@ public:
     bool isMulticursorNotAllowed() const;
 
     // Adds a secondary cursor
-    bool addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
+    void addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
     void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
 
     const std::vector<SecondaryCursor> &secondaryCursors() const;
@@ -263,6 +263,8 @@ public:
 private:
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
+    void sortCursors();
+    void paintCursors();
 
     std::vector<SecondaryCursor> m_secondaryCursors;
 

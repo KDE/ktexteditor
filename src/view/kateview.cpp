@@ -2906,13 +2906,10 @@ bool KTextEditor::ViewPrivate::isMulticursorNotAllowed() const
     return blockSelection() || isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode;
 }
 
-bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
+void KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle)
 {
-    if (cursor == cursorPosition()) {
-        return false;
-    }
-    if (isMulticursorNotAllowed()) {
-        return false;
+    if (cursor == cursorPosition() || isMulticursorNotAllowed()) {
+        return;
     }
 
     for (auto it = m_secondaryCursors.begin(); it != m_secondaryCursors.end(); ++it) {
@@ -2922,7 +2919,7 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
                 tagLine(cursor);
                 m_viewInternal->updateDirty();
             }
-            return false;
+            return;
         }
     }
 
@@ -2932,25 +2929,14 @@ bool KTextEditor::ViewPrivate::addSecondaryCursorAt(const KTextEditor::Cursor &c
     std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
 
     tagLine(cursor);
-
-    if (m_viewInternal->m_cursorTimer.isActive()) {
-        if (QApplication::cursorFlashTime() > 0) {
-            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
-        }
-        renderer()->setDrawCaret(true);
-    }
-    m_viewInternal->paintCursor();
-    return true;
+    paintCursors();
 }
 
 void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions)
 {
     clearSecondaryCursors();
 
-    if (positions.isEmpty()) {
-        return;
-    }
-    if (isMulticursorNotAllowed()) {
+    if (positions.isEmpty() || isMulticursorNotAllowed()) {
         return;
     }
 
@@ -2962,16 +2948,8 @@ void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cu
             tagLine(p);
         }
     }
-    std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
-    ensureUniqueCursors();
-
-    if (m_viewInternal->m_cursorTimer.isActive()) {
-        if (QApplication::cursorFlashTime() > 0) {
-            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
-        }
-        renderer()->setDrawCaret(true);
-    }
-    m_viewInternal->paintCursor();
+    sortCursors();
+    paintCursors();
 }
 
 void KTextEditor::ViewPrivate::clearSecondarySelections()
@@ -3071,12 +3049,7 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
 
 void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<PlainSecondaryCursor> &cursorsWithSelection)
 {
-    if (isMulticursorNotAllowed()) {
-        return;
-    }
-
-    // If cursor position is the same as primary, ignore.
-    if (cursorsWithSelection.isEmpty()) {
+    if (isMulticursorNotAllowed() || cursorsWithSelection.isEmpty()) {
         return;
     }
 
@@ -3093,16 +3066,8 @@ void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<Pl
         }
         m_secondaryCursors.push_back(std::move(n));
     }
-    std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
-    ensureUniqueCursors();
-
-    if (m_viewInternal->m_cursorTimer.isActive()) {
-        if (QApplication::cursorFlashTime() > 0) {
-            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
-        }
-        renderer()->setDrawCaret(true);
-    }
-    m_viewInternal->paintCursor();
+    sortCursors();
+    paintCursors();
 }
 
 Kate::TextRange *KTextEditor::ViewPrivate::newSecondarySelectionRange(KTextEditor::Range selRange)
@@ -3243,10 +3208,18 @@ void KTextEditor::ViewPrivate::setSelections(const QVector<KTextEditor::Range> &
         n.anchor = r.start();
         m_secondaryCursors.push_back(std::move(n));
     }
+    sortCursors();
+    paintCursors();
+}
 
+void KTextEditor::ViewPrivate::sortCursors()
+{
     std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
     ensureUniqueCursors();
+}
 
+void KTextEditor::ViewPrivate::paintCursors()
+{
     if (m_viewInternal->m_cursorTimer.isActive()) {
         if (QApplication::cursorFlashTime() > 0) {
             m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
