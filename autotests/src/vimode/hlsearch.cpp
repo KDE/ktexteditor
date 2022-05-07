@@ -659,11 +659,7 @@ void HlSearchTest::highlightModeTests()
 
 QVector<Kate::TextRange *> HlSearchTest::rangesOnLine(int line)
 {
-    return sortRanges(kate_document->buffer().rangesForLine(line, kate_view, true));
-}
-
-QVector<Kate::TextRange *> HlSearchTest::sortRanges(QVector<Kate::TextRange *> &&arr)
-{
+    QVector<Kate::TextRange *> arr = kate_document->buffer().rangesForLine(line, kate_view, true);
     std::sort(arr.begin(), arr.end(), [](const Kate::TextRange *l, const Kate::TextRange *r) {
         return l->toRange().start() < r->toRange().start();
     });
