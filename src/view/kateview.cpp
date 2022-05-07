@@ -3176,6 +3176,86 @@ void KTextEditor::ViewPrivate::addSecondaryCursorUp()
     addSecondaryCursorAt(next);
 }
 
+QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::cursors() const
+{
+    QVector<KTextEditor::Cursor> ret;
+    ret.reserve(m_secondaryCursors.size() + 1);
+    ret << cursorPosition();
+    std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(ret), [](const SecondaryCursor &c) {
+        return c.cursor();
+    });
+    return ret;
+}
+
+QVector<KTextEditor::Range> KTextEditor::ViewPrivate::selectionRanges() const
+{
+    if (!selection()) {
+        return {};
+    }
+
+    QVector<KTextEditor::Range> ret;
+    ret.reserve(m_secondaryCursors.size() + 1);
+    ret << selectionRange();
+    std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(ret), [](const SecondaryCursor &c) {
+        return c.range->toRange();
+    });
+    return ret;
+}
+
+void KTextEditor::ViewPrivate::setCursors(const QVector<KTextEditor::Cursor> &cursorPositions)
+{
+    clearSecondaryCursors();
+    if (cursorPositions.empty()) {
+        return;
+    }
+
+    const auto primary = cursorPositions.front();
+    setCursorPosition(primary);
+    // First will be auto ignored because it equals cursorPosition()
+    setSecondaryCursors(cursorPositions);
+}
+
+void KTextEditor::ViewPrivate::setSelections(const QVector<KTextEditor::Range> &selectionRanges)
+{
+    clearSecondaryCursors();
+    if (isMulticursorNotAllowed() || selectionRanges.isEmpty()) {
+        return;
+    }
+
+    auto first = selectionRanges.front();
+    setCursorPosition(first.end());
+    setSelection(first);
+
+    if (selectionRanges.size() == 1) {
+        return;
+    }
+
+    for (auto it = selectionRanges.begin() + 1; it != selectionRanges.end(); ++it) {
+        KTextEditor::Cursor c = it->end();
+        KTextEditor::Range r = *it;
+        if (c == cursorPosition() || !r.isValid() || r.isEmpty()) {
+            continue;
+        }
+
+        SecondaryCursor n;
+        n.pos.reset(static_cast<Kate::TextCursor *>(doc()->newMovingCursor(c)));
+        n.range.reset(newSecondarySelectionRange(r));
+        n.anchor = r.start();
+        m_secondaryCursors.push_back(std::move(n));
+    }
+
+    std::sort(m_secondaryCursors.begin(), m_secondaryCursors.end());
+    ensureUniqueCursors();
+
+    if (m_viewInternal->m_cursorTimer.isActive()) {
+        if (QApplication::cursorFlashTime() > 0) {
+            m_viewInternal->m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
+        }
+        renderer()->setDrawCaret(true);
+    }
+    m_viewInternal->paintCursor();
+}
+
 bool KTextEditor::ViewPrivate::isCompletionActive() const
 {
     return completionWidget()->isCompletionActive();

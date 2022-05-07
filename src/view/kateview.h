@@ -253,6 +253,13 @@ public:
     // if @p matchLine is true, cursors whose line are same will be considered equal
     void ensureUniqueCursors(bool matchLine = false);
 
+    // For multicursor external api
+    QVector<KTextEditor::Cursor> cursors() const;
+    QVector<KTextEditor::Range> selectionRanges() const;
+
+    void setCursors(const QVector<KTextEditor::Cursor> &cursorPositions);
+    void setSelections(const QVector<KTextEditor::Range> &selectionRanges);
+
 private:
     void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);

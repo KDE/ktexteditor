@@ -51,6 +51,10 @@ private Q_SLOTS:
     // Misc
     void testSelectionTextOrdering();
     void testViewClear();
+
+    // API
+    static void testSetGetCursors();
+    static void testSetGetSelections();
 };
 
 #endif // KATE_VIEW_TEST_H

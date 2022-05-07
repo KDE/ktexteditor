@@ -732,4 +732,40 @@ void MulticursorTest::testViewClear()
     QCOMPARE(view->secondaryCursors().size(), 0);
 }
 
+void MulticursorTest::testSetGetCursors()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
+    // primary included
+    QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
+
+    const QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}, {3, 1}};
+    view->setCursors(cursors);
+    QCOMPARE(view->cursors(), cursors);
+    QVERIFY(isSorted(view->cursors()));
+    QCOMPARE(view->cursorPosition(), Cursor(0, 1));
+    // We have no selection
+    QVERIFY(!view->selection());
+    QCOMPARE(view->selectionRanges(), QVector<Range>{});
+}
+
+void MulticursorTest::testSetGetSelections()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 0, 0);
+    // primary included
+    QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
+
+    QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
+    view->setCursors(cursors);
+    QCOMPARE(view->cursors(), cursors);
+    QVERIFY(isSorted(view->cursors()));
+    view->shiftCursorRight();
+    QVERIFY(view->selection());
+    cursors = {{0, 2}, {1, 2}, {2, 2}};
+    QCOMPARE(view->cursors(), cursors);
+    QVector<Range> selections = {Range(0, 1, 0, 2), Range(1, 1, 1, 2), Range(2, 1, 2, 2)};
+    QCOMPARE(view->selectionRanges(), selections);
+    QVERIFY(isSorted(view->selectionRanges()));
+    QCOMPARE(view->selectionRange(), selections.front());
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
