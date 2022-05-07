@@ -34,9 +34,6 @@ protected:
     // This variable is used by ArgumentHintDelegate to put the text at the top of the item so that
     // it isn't hidden by the expanding widget
     mutable bool m_alignTop = false;
-
-private:
-    QAbstractItemModel *const m_model = nullptr;
 };
 
 #endif
