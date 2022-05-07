@@ -1,6 +1,7 @@
 Dependencies:
 - 'on': ['Linux', 'FreeBSD', 'Windows', 'macOS']
   'require':
+    'frameworks/breeze-icons': '@same'
     'frameworks/extra-cmake-modules': '@same'
     'frameworks/karchive' : '@same'
     'frameworks/kconfig' : '@same'
