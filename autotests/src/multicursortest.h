@@ -20,37 +20,37 @@ public:
 
 private Q_SLOTS:
     // Creation
-    void testCreateMultiCursor();
-    void testCreateMultiCursorFromSelection();
+    static void testCreateMultiCursor();
+    static void testCreateMultiCursorFromSelection();
 
     // Text transformations
-    void testKillline();
+    static void testKillline();
 
     // Insert & Remove tests
-    void insertRemoveText();
-    void testUndoRedo();
-    void testUndoRedoWithSelection();
-    void keyReturnIndentTest();
-    void wrapSelectionWithCharsTest();
+    static void insertRemoveText();
+    static void testUndoRedo();
+    static void testUndoRedoWithSelection();
+    static void keyReturnIndentTest();
+    static void wrapSelectionWithCharsTest();
 
     // Movement
-    void moveCharTest();
-    void moveCharInFirstOrLastLineTest();
-    void moveWordTest();
-    void homeEndKeyTest();
-    void moveUpDown();
-    void testSelectionMerge();
+    static void moveCharTest();
+    static void moveCharInFirstOrLastLineTest();
+    static void moveWordTest();
+    static void homeEndKeyTest();
+    static void moveUpDown();
+    static void testSelectionMerge();
 
     // Find occurunce
-    void findNextOccurenceTest();
-    void findAllOccurenceTest();
+    static void findNextOccurenceTest();
+    static void findAllOccurenceTest();
 
     // Multicopypaste
-    void testMultiCopyPaste();
+    static void testMultiCopyPaste();
 
     // Misc
-    void testSelectionTextOrdering();
-    void testViewClear();
+    static void testSelectionTextOrdering();
+    static void testViewClear();
 
     // API
     static void testSetGetCursors();
