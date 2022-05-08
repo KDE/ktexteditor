@@ -2009,13 +2009,13 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
     }
 
-    auto alreadyHasRangeSelected = [this](const KTextEditor::Range selecion) {
+    auto alreadyHasRangeSelected = [this](const KTextEditor::Range selection) {
         for (const auto &c : m_secondaryCursors) {
-            if (c.range && c.range->toRange() == selecion) {
+            if (c.range && c.range->toRange() == selection) {
                 return true;
             }
         }
-        return selectionRange() == selecion;
+        return selectionRange() == selection;
     };
 
     if (!matches.isEmpty() && matches.constFirst().isValid() && !alreadyHasRangeSelected(matches.constFirst())) {
@@ -2940,8 +2940,9 @@ void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cu
         return;
     }
 
+    const auto totalLines = doc()->lines();
     for (auto p : positions) {
-        if (p != cursorPosition()) {
+        if (p != cursorPosition() && p.line() < totalLines) {
             SecondaryCursor c;
             c.pos.reset(static_cast<Kate::TextCursor *>(doc()->newMovingCursor(p)));
             m_secondaryCursors.push_back(std::move(c));
@@ -3162,6 +3163,10 @@ QVector<KTextEditor::Range> KTextEditor::ViewPrivate::selectionRanges() const
     ret.reserve(m_secondaryCursors.size() + 1);
     ret << selectionRange();
     std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(ret), [](const SecondaryCursor &c) {
+        if (!c.range) {
+            qWarning() << "selectionRanges(): Unexpected null selection range, please fix";
+            return KTextEditor::Range::invalid();
+        }
         return c.range->toRange();
     });
     return ret;
@@ -3169,12 +3174,22 @@ QVector<KTextEditor::Range> KTextEditor::ViewPrivate::selectionRanges() const
 
 void KTextEditor::ViewPrivate::setCursors(const QVector<KTextEditor::Cursor> &cursorPositions)
 {
+    if (isMulticursorNotAllowed()) {
+        qWarning() << "setCursors failed: Multicursors not allowed because one of the following is true"
+                   << ", blockSelection: " << blockSelection() << ", overwriteMode: " << isOverwriteMode()
+                   << ", viMode: " << (currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode);
+        return;
+    }
+
     clearSecondaryCursors();
     if (cursorPositions.empty()) {
         return;
     }
 
     const auto primary = cursorPositions.front();
+    // We clear primary selection because primary and secondary
+    // cursors should always have same selection state
+    setSelection({});
     setCursorPosition(primary);
     // First will be auto ignored because it equals cursorPosition()
     setSecondaryCursors(cursorPositions);
@@ -3182,8 +3197,16 @@ void KTextEditor::ViewPrivate::setCursors(const QVector<KTextEditor::Cursor> &cu
 
 void KTextEditor::ViewPrivate::setSelections(const QVector<KTextEditor::Range> &selectionRanges)
 {
+    if (isMulticursorNotAllowed()) {
+        qWarning() << "setSelections failed: Multicursors not allowed because one of the following is true"
+                   << ", blockSelection: " << blockSelection() << ", overwriteMode: " << isOverwriteMode()
+                   << ", viMode: " << (currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode);
+        return;
+    }
+
     clearSecondaryCursors();
-    if (isMulticursorNotAllowed() || selectionRanges.isEmpty()) {
+    setSelection({});
+    if (selectionRanges.isEmpty()) {
         return;
     }
 
@@ -3195,10 +3218,11 @@ void KTextEditor::ViewPrivate::setSelections(const QVector<KTextEditor::Range> &
         return;
     }
 
+    const auto docRange = doc()->documentRange();
     for (auto it = selectionRanges.begin() + 1; it != selectionRanges.end(); ++it) {
-        KTextEditor::Cursor c = it->end();
         KTextEditor::Range r = *it;
-        if (c == cursorPosition() || !r.isValid() || r.isEmpty()) {
+        KTextEditor::Cursor c = r.end();
+        if (c == cursorPosition() || !r.isValid() || r.isEmpty() || !docRange.contains(r)) {
             continue;
         }
 
@@ -3208,6 +3232,8 @@ void KTextEditor::ViewPrivate::setSelections(const QVector<KTextEditor::Range> &
         n.anchor = r.start();
         m_secondaryCursors.push_back(std::move(n));
     }
+    m_viewInternal->mergeSelections();
+
     sortCursors();
     paintCursors();
 }

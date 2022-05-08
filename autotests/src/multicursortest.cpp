@@ -734,38 +734,115 @@ void MulticursorTest::testViewClear()
 
 void MulticursorTest::testSetGetCursors()
 {
-    CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
-    // primary included
-    QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
+    using Cursors = QVector<Cursor>;
+    // Simple check
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
 
-    const QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}, {3, 1}};
-    view->setCursors(cursors);
-    QCOMPARE(view->cursors(), cursors);
-    QVERIFY(isSorted(view->cursors()));
-    QCOMPARE(view->cursorPosition(), Cursor(0, 1));
-    // We have no selection
-    QVERIFY(!view->selection());
-    QCOMPARE(view->selectionRanges(), QVector<Range>{});
+        // primary included
+        QCOMPARE(view->cursors(), Cursors{Cursor(0, 0)});
+
+        const Cursors cursors = {{0, 1}, {1, 1}, {2, 1}, {3, 1}};
+        view->setCursors(cursors);
+        QCOMPARE(view->cursors(), cursors);
+        QVERIFY(isSorted(view->cursors()));
+        QCOMPARE(view->cursorPosition(), Cursor(0, 1));
+        // We have no selection
+        QVERIFY(!view->selection());
+        QCOMPARE(view->selectionRanges(), QVector<Range>{});
+    }
+
+    // Test duplicate cursor positions
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
+
+        QCOMPARE(view->cursors(), Cursors{Cursor(0, 0)});
+        const Cursors cursors = {{0, 0}, {1, 1}, {0, 0}, {1, 1}};
+        view->setCursors(cursors);
+        auto expectedCursors = Cursors{Cursor(0, 0), Cursor(1, 1)};
+        QCOMPARE(view->cursors(), expectedCursors);
+        QVERIFY(isSorted(view->cursors()));
+        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+
+        QVERIFY(view->cursors().size() > 1);
+        view->setCursors({});
+        QVERIFY(view->cursors().size() == 1);
+    }
 }
 
 void MulticursorTest::testSetGetSelections()
 {
-    CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 0, 0);
-    // primary included
-    QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
+    // Set cursors => press shift+right
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 0, 0);
+        QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
+        QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
+        view->setCursors(cursors);
+        QCOMPARE(view->cursors(), cursors);
+        QVERIFY(isSorted(view->cursors()));
+        view->shiftCursorRight();
+        QVERIFY(view->selection());
+        cursors = {{0, 2}, {1, 2}, {2, 2}};
+        QCOMPARE(view->cursors(), cursors);
+        QVector<Range> selections = {Range(0, 1, 0, 2), Range(1, 1, 1, 2), Range(2, 1, 2, 2)};
+        QCOMPARE(view->selectionRanges(), selections);
+        QVERIFY(isSorted(view->selectionRanges()));
+        QCOMPARE(view->selectionRange(), selections.front());
+    }
 
-    QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
-    view->setCursors(cursors);
-    QCOMPARE(view->cursors(), cursors);
-    QVERIFY(isSorted(view->cursors()));
-    view->shiftCursorRight();
-    QVERIFY(view->selection());
-    cursors = {{0, 2}, {1, 2}, {2, 2}};
-    QCOMPARE(view->cursors(), cursors);
-    QVector<Range> selections = {Range(0, 1, 0, 2), Range(1, 1, 1, 2), Range(2, 1, 2, 2)};
-    QCOMPARE(view->selectionRanges(), selections);
-    QVERIFY(isSorted(view->selectionRanges()));
-    QCOMPARE(view->selectionRange(), selections.front());
+    // Set cursors including an invalid position cursor
+    // - primary already has selection
+    // - try to get selection
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
+        view->shiftWordRight();
+        QVERIFY(view->selection());
+        QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
+
+        QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
+        view->setCursors(cursors);
+        QVERIFY(!view->selection()); // selection is lost
+        auto expectedCursors = QVector<Cursor>{Cursor(0, 1), Cursor(1, 1)};
+        QCOMPARE(view->cursors(), expectedCursors);
+    }
+
+    // Set selections
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
+
+        QVERIFY(!view->selection());
+        QVector<Range> selections = {Range(0, 0, 0, 1), Range(1, 0, 1, 1)};
+        view->setSelections(selections);
+        QVERIFY(view->selection());
+        QCOMPARE(view->selectionRanges(), selections);
+    }
+
+    // Set overlapping selections
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
+
+        QVERIFY(!view->selection());
+        QVector<Range> selections = {Range(0, 0, 0, 3), Range(0, 1, 0, 2), Range(0, 0, 0, 1)};
+        view->setSelections(selections);
+        QVERIFY(view->selection());
+        QVector<Range> expectedSelections = {Range(0, 0, 0, 3)};
+        QCOMPARE(view->selectionRanges(), expectedSelections);
+
+        view->setSelections({});
+        QVERIFY(!view->selection());
+    }
+
+    // Set selections with invalid range
+    {
+        CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
+
+        QVERIFY(!view->selection());
+        QVector<Range> selections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1), Range(2, 0, 2, 1)};
+        view->setSelections(selections);
+        QVERIFY(view->selection());
+        QVector<Range> expectedSelections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1)};
+        QCOMPARE(view->selectionRanges(), expectedSelections);
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
