@@ -894,6 +894,11 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Toggle between normal word movement and camel case cursor movement."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleCamelCaseCursor);
 
+    a = ac->addAction(QStringLiteral("edit_remove_cursors_from_empty_lines"));
+    a->setText(i18n("Remove cursors from empty lines"));
+    a->setWhatsThis(i18n("Remove cursors from empty lines"));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::removeCursorsFromEmptyLines);
+
     m_spell->createActions(ac);
     m_toggleOnTheFlySpellCheck = new KToggleAction(i18n("Automatic Spell Checking"), this);
     m_toggleOnTheFlySpellCheck->setWhatsThis(i18n("Enable/disable automatic spell checking"));
@@ -2142,6 +2147,20 @@ void KTextEditor::ViewPrivate::createMultiCursorsFromSelection()
     // clear selection
     setSelection({});
     setSecondaryCursors(cursorsToAdd);
+}
+
+void KTextEditor::ViewPrivate::removeCursorsFromEmptyLines()
+{
+    if (!m_secondaryCursors.empty()) {
+        std::vector<KTextEditor::Cursor> cursorsToRemove;
+        for (const auto &c : m_secondaryCursors) {
+            auto cursor = c.cursor();
+            if (doc()->lineLength(cursor.line()) == 0) {
+                cursorsToRemove.push_back(cursor);
+            }
+        }
+        removeSecondaryCursors(cursorsToRemove);
+    }
 }
 
 void KTextEditor::ViewPrivate::slotSelectionChanged()
