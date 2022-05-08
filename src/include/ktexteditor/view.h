@@ -393,7 +393,7 @@ Q_SIGNALS:
 public:
     /**
      * Set the view's new cursor to \p position. A \e TAB character
-     * is handeled as only on character.
+     * is handled as only on character.
      * \param position new cursor position
      * \return \e true on success, otherwise \e false
      * \see cursorPosition()
@@ -401,12 +401,36 @@ public:
     virtual bool setCursorPosition(Cursor position) = 0;
 
     /**
+     * Set the view's new cursors to \p positions. A \e TAB character
+     * is handled as only on character.
+     *
+     * This allows to create multiple cursors in this view.
+     *
+     * The first passed position will be used for the primary cursor
+     * just like if you would call \ref setCursorPosition.
+     *
+     * \param positions new cursor positions
+     * \see cursorPositions()
+     */
+    void setCursorPositions(const QVector<KTextEditor::Cursor> &positions);
+
+    /**
      * Get the view's current cursor position. A \e TAB character is
-     * handeled as only one character.
+     * handled as only one character.
      * \return current cursor position
      * \see setCursorPosition()
      */
     virtual Cursor cursorPosition() const = 0;
+
+    /**
+     * Get the view's current cursor position. A \e TAB character is
+     * handled as only one character.
+     *
+     * The returned vector will include the primary cursor, too.
+     *
+     * \return all currently existing cursors
+     */
+    QVector<KTextEditor::Cursor> cursorPositions() const;
 
     /**
      * Get the current \e virtual cursor position, \e virtual means the
@@ -552,6 +576,14 @@ public:
     virtual bool setSelection(const Range &range) = 0;
 
     /**
+     * Set the view's selection to the range \p selection.
+     * The old selection will be discarded.
+     * \param ranges the ranges of the new selections
+     * \see selectionRanges(), selection()
+     */
+    void setSelections(const QVector<KTextEditor::Range> &ranges);
+
+    /**
      * Query the view whether it has selected text, i.e. whether a selection
      * exists.
      * \return \e true if a text selection exists, otherwise \e false
@@ -565,6 +597,13 @@ public:
      * \see setSelection()
      */
     virtual Range selectionRange() const = 0;
+
+    /**
+     * Get the ranges occupied by the current selections.
+     * \return selection ranges, valid only if a selection currently exists.
+     * \see setSelections()
+     */
+    QVector<KTextEditor::Range> selectionRanges() const;
 
     /**
      * Get the view's selected text.

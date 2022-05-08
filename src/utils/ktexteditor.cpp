@@ -185,6 +185,26 @@ KSyntaxHighlighting::Theme View::theme() const
     return KateHlManager::self()->repository().theme(d->renderer()->config()->schema());
 }
 
+void View::setCursorPositions(const QVector<KTextEditor::Cursor> &positions)
+{
+    d->setCursors(positions);
+}
+
+QVector<KTextEditor::Cursor> View::cursorPositions() const
+{
+    return d->cursors();
+}
+
+void View::setSelections(const QVector<KTextEditor::Range> &ranges)
+{
+    d->setSelections(ranges);
+}
+
+QVector<KTextEditor::Range> View::selectionRanges() const
+{
+    return d->selectionRanges();
+}
+
 ConfigPage::ConfigPage(QWidget *parent)
     : QWidget(parent)
     , d(nullptr)
