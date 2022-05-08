@@ -57,6 +57,17 @@ QJSValue KateScriptView::cursorPosition()
     return cursorToScriptValue(m_engine, m_view->cursorPosition());
 }
 
+QJSValue KateScriptView::cursorPositions()
+{
+    // pack our stuff into js array
+    const auto cursors = m_view->cursorPositions();
+    QJSValue jsArray = m_engine->newArray(cursors.size());
+    for (int i = 0; i < cursors.size(); ++i) {
+        jsArray.setProperty(i, cursorToScriptValue(m_engine, cursors[i]));
+    }
+    return jsArray;
+}
+
 void KateScriptView::setCursorPosition(int line, int column)
 {
     const KTextEditor::Cursor cursor(line, column);
@@ -67,6 +78,17 @@ void KateScriptView::setCursorPosition(const QJSValue &jscursor)
 {
     const auto cursor = cursorFromScriptValue(jscursor);
     m_view->setCursorPosition(cursor);
+}
+
+void KateScriptView::setCursorPositions(const QJSValue &cursors)
+{
+    // unpack the array of cursors
+    QVector<KTextEditor::Cursor> unboxedCursors;
+    const int length = cursors.property(QStringLiteral("length")).toInt();
+    for (int i = 0; i < length; ++i) {
+        unboxedCursors.append(cursorFromScriptValue(cursors.property(i)));
+    }
+    m_view->setCursorPositions(unboxedCursors);
 }
 
 QJSValue KateScriptView::virtualCursorPosition()
@@ -101,9 +123,31 @@ QJSValue KateScriptView::selection()
     return rangeToScriptValue(m_engine, m_view->selectionRange());
 }
 
+QJSValue KateScriptView::selections()
+{
+    // pack our stuff into js array
+    const auto ranges = m_view->selectionRanges();
+    QJSValue jsArray = m_engine->newArray(ranges.size());
+    for (int i = 0; i < ranges.size(); ++i) {
+        jsArray.setProperty(i, rangeToScriptValue(m_engine, ranges[i]));
+    }
+    return jsArray;
+}
+
 void KateScriptView::setSelection(const QJSValue &jsrange)
 {
     m_view->setSelection(rangeFromScriptValue(jsrange));
+}
+
+void KateScriptView::setSelections(const QJSValue &ranges)
+{
+    // unpack the array of ranges
+    QVector<KTextEditor::Range> unboxedRanges;
+    const int length = ranges.property(QStringLiteral("length")).toInt();
+    for (int i = 0; i < length; ++i) {
+        unboxedRanges.append(rangeFromScriptValue(ranges.property(i)));
+    }
+    m_view->setSelections(unboxedRanges);
 }
 
 void KateScriptView::removeSelectedText()
