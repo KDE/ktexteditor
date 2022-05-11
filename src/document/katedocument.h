@@ -1279,6 +1279,10 @@ public:
     QString defaultDictionary() const;
     QList<QPair<KTextEditor::MovingRange *, QString>> dictionaryRanges() const;
     bool isOnTheFlySpellCheckingEnabled() const;
+    KateOnTheFlyChecker *onTheFlySpellChecker() const
+    {
+        return m_onTheFlyChecker;
+    }
 
     QString dictionaryForMisspelledRange(KTextEditor::Range range) const;
     void clearMisspellingForWord(const QString &word);

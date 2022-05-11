@@ -44,6 +44,7 @@ public:
 
     QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor cursor) const;
     QString dictionaryForMisspelledRange(KTextEditor::Range range) const;
+    MovingRangeList installedMovingRanges(KTextEditor::Range range) const;
 
     void clearMisspellingForWord(const QString &word);
 
@@ -68,8 +69,6 @@ protected:
     QMap<KTextEditor::View *, KTextEditor::Range> m_displayRangeMap;
 
     void freeDocument();
-
-    MovingRangeList installedMovingRanges(KTextEditor::Range range);
 
     void queueLineSpellCheck(KTextEditor::DocumentPrivate *document, int line);
     /**

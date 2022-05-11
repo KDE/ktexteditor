@@ -9,6 +9,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "kateview.h"
+#include "ontheflycheck.h"
 #include "spellcheck/spellcheck.h"
 
 #include "katepartdebug.h"
@@ -108,6 +109,24 @@ void KateSpellingMenu::rangeDeleted(KTextEditor::MovingRange *range)
 
 void KateSpellingMenu::prepareToBeShown()
 {
+    if (!m_view->doc()->onTheFlySpellChecker()) {
+        // Nothing todo!
+        return;
+    }
+
+    auto sr = m_view->selectionRange();
+    if (sr.isValid()) {
+        // Selected words need a special handling to work properly
+        auto imv = m_view->doc()->onTheFlySpellChecker()->installedMovingRanges(sr);
+        for (int i = 0; i < imv.size(); ++i) {
+            if (imv.at(i)->toRange() == sr) {
+                m_currentMisspelledRange = nullptr;
+                m_currentMisspelledRange = imv.at(i);
+                break;
+            }
+        }
+    }
+
     setEnabled(m_currentMisspelledRange != nullptr);
     setVisible(m_currentMisspelledRange != nullptr);
 }

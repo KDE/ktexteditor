@@ -607,12 +607,12 @@ void KateOnTheFlyChecker::spellCheckDone()
     }
 }
 
-QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(KTextEditor::Range range)
+QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(KTextEditor::Range range) const
 {
     ON_THE_FLY_DEBUG << range;
     MovingRangeList toReturn;
 
-    for (QList<SpellCheckItem>::iterator i = m_misspelledList.begin(); i != m_misspelledList.end(); ++i) {
+    for (QList<SpellCheckItem>::const_iterator i = m_misspelledList.begin(); i != m_misspelledList.end(); ++i) {
         KTextEditor::MovingRange *movingRange = (*i).first;
         if (movingRange->overlaps(range)) {
             toReturn.push_back(movingRange);
