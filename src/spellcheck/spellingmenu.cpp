@@ -22,25 +22,12 @@ KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
     , m_addToDictionaryAction(nullptr)
     , m_spellingMenu(nullptr)
     , m_currentMisspelledRange(nullptr)
-    , // we have to use 'm_currentMisspelledRange'
-    // as QSignalMapper doesn't work with pairs of objects;
-    // it just points to the object pointed to by either
-    // 'm_currentMouseMisspelledRange' or 'm_currentCaretMisspelledRange'
-    // TODO: pass the range into the lambda instead
-    m_currentMouseMisspelledRange(nullptr)
-    , m_currentCaretMisspelledRange(nullptr)
-    , m_useMouseForMisspelledRange(false)
 {
 }
 
 KateSpellingMenu::~KateSpellingMenu()
 {
     m_currentMisspelledRange = nullptr; // it shouldn't be accessed anymore as it could
-    // point to a non-existing object (bug 226724)
-    // (for example, when it pointed to m_currentCaretMisspelledRange
-    // and that range got deleted after the caret had left)
-    m_currentCaretMisspelledRange = nullptr;
-    m_currentMouseMisspelledRange = nullptr;
 }
 
 bool KateSpellingMenu::isEnabled() const
@@ -96,70 +83,41 @@ void KateSpellingMenu::createActions(KActionCollection *ac)
 
 void KateSpellingMenu::caretEnteredMisspelledRange(KTextEditor::MovingRange *range)
 {
-    if (m_currentCaretMisspelledRange == range) {
+    if (m_currentMisspelledRange == range) {
         return;
     }
-    m_currentCaretMisspelledRange = nullptr;
-    setEnabled(true);
-    m_currentCaretMisspelledRange = range;
+    m_currentMisspelledRange = nullptr;
+    m_currentMisspelledRange = range;
 }
 
 void KateSpellingMenu::caretExitedMisspelledRange(KTextEditor::MovingRange *range)
 {
-    if (range != m_currentCaretMisspelledRange) { // order of 'exit' and 'entered' signals
-        return; // was wrong
-    }
-    setEnabled(false);
-    m_currentCaretMisspelledRange = nullptr;
-}
-
-void KateSpellingMenu::mouseEnteredMisspelledRange(KTextEditor::MovingRange *range)
-{
-    if (m_currentMouseMisspelledRange == range) {
+    if (range != m_currentMisspelledRange) {
+        // The order of 'exited' and 'entered' signals was wrong
         return;
     }
-    m_currentMouseMisspelledRange = range;
-}
-
-void KateSpellingMenu::mouseExitedMisspelledRange(KTextEditor::MovingRange *range)
-{
-    if (range != m_currentMouseMisspelledRange) { // order of 'exit' and 'entered' signals
-        return; // was wrong
-    }
-    m_currentMouseMisspelledRange = nullptr;
+    m_currentMisspelledRange = nullptr;
 }
 
 void KateSpellingMenu::rangeDeleted(KTextEditor::MovingRange *range)
 {
-    if (m_currentCaretMisspelledRange == range) {
-        m_currentCaretMisspelledRange = nullptr;
-    }
-    if (m_currentMouseMisspelledRange == range) {
-        m_currentMouseMisspelledRange = nullptr;
-    }
     if (m_currentMisspelledRange == range) {
         m_currentMisspelledRange = nullptr;
     }
-    setEnabled(m_currentCaretMisspelledRange != nullptr);
 }
 
-void KateSpellingMenu::setUseMouseForMisspelledRange(bool b)
+void KateSpellingMenu::prepareToBeShown()
 {
-    m_useMouseForMisspelledRange = b;
-    if (m_useMouseForMisspelledRange) {
-        setEnabled(m_currentMouseMisspelledRange != nullptr);
-    } else if (!m_useMouseForMisspelledRange) {
-        setEnabled(m_currentCaretMisspelledRange != nullptr);
-    }
+    setEnabled(m_currentMisspelledRange != nullptr);
+    setVisible(m_currentMisspelledRange != nullptr);
 }
 
 void KateSpellingMenu::populateSuggestionsMenu()
 {
     m_spellingMenu->clear();
-    if ((m_useMouseForMisspelledRange && !m_currentMouseMisspelledRange) || (!m_useMouseForMisspelledRange && !m_currentCaretMisspelledRange)) {
+    if (!m_currentMisspelledRange) {
         return;
     }
-    m_currentMisspelledRange = (m_useMouseForMisspelledRange ? m_currentMouseMisspelledRange : m_currentCaretMisspelledRange);
     m_spellingMenu->addAction(m_ignoreWordAction);
     m_spellingMenu->addAction(m_addToDictionaryAction);
     m_spellingMenu->addSeparator();

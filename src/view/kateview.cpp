@@ -4140,7 +4140,7 @@ void KTextEditor::ViewPrivate::aboutToShowContextMenu()
 
 void KTextEditor::ViewPrivate::aboutToHideContextMenu()
 {
-    m_spellingMenu->setUseMouseForMisspelledRange(false);
+    // We may need this function soon again
 }
 
 // BEGIN ConfigInterface stff

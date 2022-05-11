@@ -90,8 +90,6 @@ protected:
     bool removeRangeFromSpellCheckQueue(KTextEditor::MovingRange *range);
     void rangeEmpty(KTextEditor::MovingRange *range) override;
     void rangeInvalid(KTextEditor::MovingRange *range) override;
-    void mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
-    void mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
     void caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
     void caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
 

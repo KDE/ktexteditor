@@ -37,10 +37,9 @@ public:
 
     /**
      * This method has to be called before the menu is shown in response to a context
-     * menu event. It will trigger that the misspelled range located under the mouse pointer
-     * is considered for the spelling suggestions.
+     * menu event.
      **/
-    void setUseMouseForMisspelledRange(bool b);
+    void prepareToBeShown();
 
 public Q_SLOTS:
     void setEnabled(bool b);
@@ -52,9 +51,6 @@ protected:
     QAction *m_ignoreWordAction, *m_addToDictionaryAction;
     QMenu *m_spellingMenu;
     KTextEditor::MovingRange *m_currentMisspelledRange;
-    KTextEditor::MovingRange *m_currentMouseMisspelledRange;
-    KTextEditor::MovingRange *m_currentCaretMisspelledRange;
-    bool m_useMouseForMisspelledRange;
     QStringList m_currentSuggestions;
 
     // These methods are called from KateOnTheFlyChecker to inform about events involving
@@ -62,8 +58,6 @@ protected:
     void rangeDeleted(KTextEditor::MovingRange *range);
     void caretEnteredMisspelledRange(KTextEditor::MovingRange *range);
     void caretExitedMisspelledRange(KTextEditor::MovingRange *range);
-    void mouseEnteredMisspelledRange(KTextEditor::MovingRange *range);
-    void mouseExitedMisspelledRange(KTextEditor::MovingRange *range);
 
 protected Q_SLOTS:
     void populateSuggestionsMenu();

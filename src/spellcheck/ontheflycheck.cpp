@@ -471,18 +471,6 @@ void KateOnTheFlyChecker::rangeInvalid(KTextEditor::MovingRange *range)
     deleteMovingRange(range);
 }
 
-void KateOnTheFlyChecker::mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view)
-{
-    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
-    kateView->spellingMenu()->mouseEnteredMisspelledRange(range);
-}
-
-void KateOnTheFlyChecker::mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view)
-{
-    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
-    kateView->spellingMenu()->mouseExitedMisspelledRange(range);
-}
-
 /**
  * It is not enough to use 'caret/Entered/ExitedRange' only as the cursor doesn't move when some
  * text has been selected.
