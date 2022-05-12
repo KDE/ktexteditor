@@ -142,17 +142,17 @@ void KateSpellingMenu::populateSuggestionsMenu()
     m_spellingMenu->addSeparator();
     const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
     const QString dictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
-    m_currentSuggestions = KTextEditor::EditorPrivate::self()->spellCheckManager()->suggestions(misspelledWord, dictionary);
+    const auto suggestionList = KTextEditor::EditorPrivate::self()->spellCheckManager()->suggestions(misspelledWord, dictionary);
 
-    int counter = 0;
-    for (QStringList::const_iterator i = m_currentSuggestions.cbegin(); i != m_currentSuggestions.cend() && counter < 10; ++i) {
+    int counter = 10;
+    for (QStringList::const_iterator i = suggestionList.cbegin(); i != suggestionList.cend() && counter > 0; ++i) {
         const QString &suggestion = *i;
         QAction *action = new QAction(suggestion, m_spellingMenu);
         connect(action, &QAction::triggered, this, [suggestion, this]() {
             replaceWordBySuggestion(suggestion);
         });
         m_spellingMenu->addAction(action);
-        ++counter;
+        --counter;
     }
 }
 
