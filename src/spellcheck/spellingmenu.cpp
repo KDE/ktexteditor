@@ -125,8 +125,15 @@ void KateSpellingMenu::prepareToBeShown()
         }
     }
 
-    setEnabled(m_currentMisspelledRange != nullptr);
-    setVisible(m_currentMisspelledRange != nullptr);
+    if (m_currentMisspelledRange != nullptr) {
+        setVisible(true);
+        setEnabled(true);
+        const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
+        m_spellingMenuAction->setText(i18n("Spelling '%1'", misspelledWord));
+    } else {
+        setVisible(false);
+        setEnabled(false);
+    }
 }
 
 void KateSpellingMenu::populateSuggestionsMenu()
