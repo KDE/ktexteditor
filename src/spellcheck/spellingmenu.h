@@ -32,6 +32,7 @@ public:
     ~KateSpellingMenu() override;
 
     bool isEnabled() const;
+    bool isVisible() const;
 
     void createActions(KActionCollection *ac);
 
@@ -46,7 +47,6 @@ public:
      **/
     void cleanUpAfterShown();
 
-public Q_SLOTS:
     void setEnabled(bool b);
     void setVisible(bool b);
 

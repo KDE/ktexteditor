@@ -39,16 +39,18 @@ bool KateSpellingMenu::isEnabled() const
     return m_spellingMenuAction->isEnabled();
 }
 
+bool KateSpellingMenu::isVisible() const
+{
+    if (!m_spellingMenuAction) {
+        return false;
+    }
+    return m_spellingMenuAction->isVisible();
+}
+
 void KateSpellingMenu::setEnabled(bool b)
 {
     if (m_spellingMenuAction) {
         m_spellingMenuAction->setEnabled(b);
-    }
-    if (m_ignoreWordAction) {
-        m_ignoreWordAction->setEnabled(b);
-    }
-    if (m_addToDictionaryAction) {
-        m_addToDictionaryAction->setEnabled(b);
     }
 }
 
@@ -56,12 +58,6 @@ void KateSpellingMenu::setVisible(bool b)
 {
     if (m_spellingMenuAction) {
         m_spellingMenuAction->setVisible(b);
-    }
-    if (m_ignoreWordAction) {
-        m_ignoreWordAction->setVisible(b);
-    }
-    if (m_addToDictionaryAction) {
-        m_addToDictionaryAction->setVisible(b);
     }
 }
 
@@ -78,7 +74,6 @@ void KateSpellingMenu::createActions(KActionCollection *ac)
     m_addToDictionaryAction = new QAction(i18n("Add to Dictionary"), this);
     connect(m_addToDictionaryAction, &QAction::triggered, this, &KateSpellingMenu::addCurrentWordToDictionary);
 
-    setEnabled(false);
     setVisible(false);
 }
 
@@ -136,12 +131,10 @@ void KateSpellingMenu::prepareToBeShown()
 
     if (m_currentMisspelledRange != nullptr) {
         setVisible(true);
-        setEnabled(true);
         const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
         m_spellingMenuAction->setText(i18n("Spelling '%1'", misspelledWord));
     } else {
         setVisible(false);
-        setEnabled(false);
     }
 }
 
