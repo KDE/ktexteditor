@@ -106,6 +106,14 @@ void KateSpellingMenu::rangeDeleted(KTextEditor::MovingRange *range)
     }
 }
 
+void KateSpellingMenu::cleanUpAfterShown()
+{
+    if (m_currentMisspelledRangeNeedCleanUp) {
+        m_currentMisspelledRange = nullptr;
+        m_currentMisspelledRangeNeedCleanUp = false;
+    }
+}
+
 void KateSpellingMenu::prepareToBeShown()
 {
     if (!m_view->doc()->onTheFlySpellChecker()) {
@@ -120,6 +128,7 @@ void KateSpellingMenu::prepareToBeShown()
         for (int i = 0; i < imv.size(); ++i) {
             if (imv.at(i)->toRange() == sr) {
                 m_currentMisspelledRange = imv.at(i);
+                m_currentMisspelledRangeNeedCleanUp = true;
                 break;
             }
         }

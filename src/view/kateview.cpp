@@ -4140,7 +4140,7 @@ void KTextEditor::ViewPrivate::aboutToShowContextMenu()
 
 void KTextEditor::ViewPrivate::aboutToHideContextMenu()
 {
-    // We may need this function soon again
+    m_spellingMenu->cleanUpAfterShown();
 }
 
 // BEGIN ConfigInterface stff

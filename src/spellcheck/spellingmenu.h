@@ -41,6 +41,11 @@ public:
      **/
     void prepareToBeShown();
 
+    /**
+     * This method has to be called after a context menu event.
+     **/
+    void cleanUpAfterShown();
+
 public Q_SLOTS:
     void setEnabled(bool b);
     void setVisible(bool b);
@@ -51,6 +56,11 @@ protected:
     QAction *m_ignoreWordAction, *m_addToDictionaryAction;
     QMenu *m_spellingMenu;
     KTextEditor::MovingRange *m_currentMisspelledRange;
+    /**
+     * Set to true when a word was selected. Needed because in such case we got no "exited-notification"
+     * and end up with an always active m_currentMisspelledRange
+     **/
+    bool m_currentMisspelledRangeNeedCleanUp = false;
 
     // These methods are called from KateOnTheFlyChecker to inform about events involving
     // moving ranges.
