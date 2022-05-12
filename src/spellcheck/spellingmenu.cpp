@@ -87,7 +87,6 @@ void KateSpellingMenu::caretEnteredMisspelledRange(KTextEditor::MovingRange *ran
     if (m_currentMisspelledRange == range) {
         return;
     }
-    m_currentMisspelledRange = nullptr;
     m_currentMisspelledRange = range;
 }
 
@@ -120,7 +119,6 @@ void KateSpellingMenu::prepareToBeShown()
         auto imv = m_view->doc()->onTheFlySpellChecker()->installedMovingRanges(sr);
         for (int i = 0; i < imv.size(); ++i) {
             if (imv.at(i)->toRange() == sr) {
-                m_currentMisspelledRange = nullptr;
                 m_currentMisspelledRange = imv.at(i);
                 break;
             }
