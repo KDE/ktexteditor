@@ -218,6 +218,7 @@ void KateSpellingMenu::replaceWordBySuggestion(const QString &suggestion)
     }
     KTextEditor::DocumentPrivate *doc = m_view->doc();
     KTextEditor::EditorPrivate::self()->spellCheckManager()->replaceCharactersEncodedIfNecessary(suggestion, doc, *m_currentMisspelledRange);
+    m_view->clearSelection(); // Ensure next right click works properly if there was a selection
 }
 
 void KateSpellingMenu::addCurrentWordToDictionary()
@@ -229,6 +230,7 @@ void KateSpellingMenu::addCurrentWordToDictionary()
     const QString dictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
     KTextEditor::EditorPrivate::self()->spellCheckManager()->addToDictionary(misspelledWord, dictionary);
     m_view->doc()->clearMisspellingForWord(misspelledWord); // WARNING: 'm_currentMisspelledRange' is deleted here!
+    m_view->clearSelection();
 }
 
 void KateSpellingMenu::ignoreCurrentWord()
@@ -240,4 +242,5 @@ void KateSpellingMenu::ignoreCurrentWord()
     const QString dictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
     KTextEditor::EditorPrivate::self()->spellCheckManager()->ignoreWord(misspelledWord, dictionary);
     m_view->doc()->clearMisspellingForWord(misspelledWord); // WARNING: 'm_currentMisspelledRange' is deleted here!
+    m_view->clearSelection();
 }
