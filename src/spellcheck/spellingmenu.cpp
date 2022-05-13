@@ -135,7 +135,7 @@ void KateSpellingMenu::prepareToBeShown()
     }
 
     m_selectedRange = m_view->selectionRange();
-    if (m_selectedRange.isValid()) {
+    if (m_selectedRange.isValid() && !m_selectedRange.isEmpty()) {
         // Selected words need a special handling to work properly
         auto imv = m_view->doc()->onTheFlySpellChecker()->installedMovingRanges(m_selectedRange);
         for (int i = 0; i < imv.size(); ++i) {
@@ -152,7 +152,7 @@ void KateSpellingMenu::prepareToBeShown()
         m_selectedRange = m_currentMisspelledRange->toRange(); // Support actions of m_dictionaryGroup
         const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
         m_spellingMenuAction->setText(i18n("Spelling '%1'", misspelledWord));
-    } else if (m_selectedRange.isValid()) {
+    } else if (m_selectedRange.isValid() && !m_selectedRange.isEmpty()) {
         setVisible(true);
         m_spellingMenuAction->setText(i18n("Spelling"));
     } else {
@@ -203,7 +203,7 @@ void KateSpellingMenu::populateSuggestionsMenu()
             --counter;
         }
 
-    } else if (m_selectedRange.isValid()) {
+    } else if (m_selectedRange.isValid() && !m_selectedRange.isEmpty()) {
         for (auto action : m_dictionaryGroup->actions()) {
             action->setCheckable(false);
             m_spellingMenu->addAction(action);
