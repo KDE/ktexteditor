@@ -118,8 +118,12 @@ void KateSpellingMenu::rangeDeleted(KTextEditor::MovingRange *range)
 void KateSpellingMenu::cleanUpAfterShown()
 {
     if (m_currentMisspelledRangeNeedCleanUp) {
-        m_currentMisspelledRange = nullptr;
-        m_currentMisspelledRangeNeedCleanUp = false;
+        QTimer::singleShot(0, [this]() {
+            // Ugly hack to avoid segfault, cleanUpAfterShown/ViewPrivate::aboutToHideContextMenu
+            // is called before some action slot is processed
+            m_currentMisspelledRange = nullptr;
+            m_currentMisspelledRangeNeedCleanUp = false;
+        });
     }
 }
 
