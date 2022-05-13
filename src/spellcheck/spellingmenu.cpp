@@ -117,14 +117,22 @@ void KateSpellingMenu::rangeDeleted(KTextEditor::MovingRange *range)
 
 void KateSpellingMenu::cleanUpAfterShown()
 {
-    if (m_currentMisspelledRangeNeedCleanUp) {
-        QTimer::singleShot(0, [this]() {
-            // Ugly hack to avoid segfault, cleanUpAfterShown/ViewPrivate::aboutToHideContextMenu
-            // is called before some action slot is processed
+    // Ugly hack to avoid segfaults.
+    // cleanUpAfterShown/ViewPrivate::aboutToHideContextMenu is called before
+    // some action slot is processed.
+    QTimer::singleShot(0, [this]() {
+        if (m_currentMisspelledRangeNeedCleanUp) {
             m_currentMisspelledRange = nullptr;
             m_currentMisspelledRangeNeedCleanUp = false;
-        });
-    }
+        }
+
+        // We need to remove our list or they will accumulated on next show event
+        for (auto act : m_menuOnTopSuggestionList) {
+            act->parentWidget()->removeAction(act);
+            delete act;
+        }
+        m_menuOnTopSuggestionList.clear();
+    });
 }
 
 void KateSpellingMenu::prepareToBeShown(QMenu *contextMenu)
@@ -154,6 +162,25 @@ void KateSpellingMenu::prepareToBeShown(QMenu *contextMenu)
         m_selectedRange = m_currentMisspelledRange->toRange(); // Support actions of m_dictionaryGroup
         const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
         m_spellingMenuAction->setText(i18n("Spelling '%1'", misspelledWord));
+        // Add suggestions on top of menu
+        m_currentDictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
+        m_currentSuggestions = KTextEditor::EditorPrivate::self()->spellCheckManager()->suggestions(misspelledWord, m_currentDictionary);
+        int counter = 5;
+        QFont boldFont; // Emphasize on-top suggestions, so does Falkon
+        boldFont.setBold(true);
+        for (QStringList::const_iterator i = m_currentSuggestions.cbegin(); i != m_currentSuggestions.cend() && counter > 0; ++i) {
+            const QString &suggestion = *i;
+            QAction *action = new QAction(suggestion, contextMenu);
+            action->setFont(boldFont);
+            m_menuOnTopSuggestionList.append(action);
+            connect(action, &QAction::triggered, this, [suggestion, this]() {
+                replaceWordBySuggestion(suggestion);
+            });
+            m_spellingMenu->addAction(action);
+            --counter;
+        }
+        contextMenu->insertActions(m_spellingMenuAction, m_menuOnTopSuggestionList);
+
     } else if (m_selectedRange.isValid() && !m_selectedRange.isEmpty()) {
         setVisible(true);
         m_spellingMenuAction->setText(i18n("Spelling"));
@@ -171,31 +198,27 @@ void KateSpellingMenu::populateSuggestionsMenu()
         m_spellingMenu->addAction(m_addToDictionaryAction);
 
         m_spellingMenu->addSeparator();
-        const QString dictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
         bool dictFound = false;
         for (auto action : m_dictionaryGroup->actions()) {
             action->setCheckable(true);
-            if (action->data().toString() == dictionary) {
+            if (action->data().toString() == m_currentDictionary) {
                 dictFound = true;
                 action->setChecked(true);
             }
             m_spellingMenu->addAction(action);
         }
         if (!dictFound) {
-            const QString dictName = Sonnet::Speller().availableDictionaries().key(dictionary);
+            const QString dictName = Sonnet::Speller().availableDictionaries().key(m_currentDictionary);
             QAction *action = m_dictionaryGroup->addAction(dictName);
-            action->setData(dictionary);
+            action->setData(m_currentDictionary);
             action->setCheckable(true);
             action->setChecked(true);
             m_spellingMenu->addAction(action);
         }
 
         m_spellingMenu->addSeparator();
-        const QString &misspelledWord = m_view->doc()->text(*m_currentMisspelledRange);
-        const auto suggestionList = KTextEditor::EditorPrivate::self()->spellCheckManager()->suggestions(misspelledWord, dictionary);
-
         int counter = 10;
-        for (QStringList::const_iterator i = suggestionList.cbegin(); i != suggestionList.cend() && counter > 0; ++i) {
+        for (QStringList::const_iterator i = m_currentSuggestions.cbegin(); i != m_currentSuggestions.cend() && counter > 0; ++i) {
             const QString &suggestion = *i;
             QAction *action = new QAction(suggestion, m_spellingMenu);
             connect(action, &QAction::triggered, this, [suggestion, this]() {

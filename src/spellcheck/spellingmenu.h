@@ -55,6 +55,7 @@ protected:
     KActionMenu *m_spellingMenuAction;
     QAction *m_ignoreWordAction, *m_addToDictionaryAction;
     QActionGroup *m_dictionaryGroup;
+    QList<QAction *> m_menuOnTopSuggestionList;
     QMenu *m_spellingMenu;
     KTextEditor::MovingRange *m_currentMisspelledRange;
     /**
@@ -63,6 +64,8 @@ protected:
      **/
     bool m_currentMisspelledRangeNeedCleanUp = false;
     KTextEditor::Range m_selectedRange;
+    QString m_currentDictionary;
+    QStringList m_currentSuggestions;
 
     // These methods are called from KateOnTheFlyChecker to inform about events involving
     // moving ranges.
