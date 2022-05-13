@@ -38,9 +38,9 @@ public:
 
     /**
      * This method has to be called before the menu is shown in response to a context
-     * menu event.
+     * menu event. Ensure contextMenu is valid pointer!
      **/
-    void prepareToBeShown();
+    void prepareToBeShown(QMenu *contextMenu);
 
     /**
      * This method has to be called after a context menu event.

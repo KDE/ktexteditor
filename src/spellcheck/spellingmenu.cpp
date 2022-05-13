@@ -127,8 +127,10 @@ void KateSpellingMenu::cleanUpAfterShown()
     }
 }
 
-void KateSpellingMenu::prepareToBeShown()
+void KateSpellingMenu::prepareToBeShown(QMenu *contextMenu)
 {
+    Q_ASSERT(contextMenu);
+
     if (!m_view->doc()->onTheFlySpellChecker()) {
         // Nothing todo!
         return;

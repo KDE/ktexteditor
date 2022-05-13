@@ -44,6 +44,7 @@
 #include <QClipboard>
 #include <QKeyEvent>
 #include <QLayout>
+#include <QMenu>
 #include <QMimeData>
 #include <QPainter>
 #include <QPixmap>
@@ -3349,9 +3350,10 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
     }
 
     // show it
-    if (view()->contextMenu()) {
-        view()->spellingMenu()->prepareToBeShown();
-        view()->contextMenu()->popup(mapToGlobal(p));
+    QMenu *cm = view()->contextMenu();
+    if (cm) {
+        view()->spellingMenu()->prepareToBeShown(cm);
+        cm->popup(mapToGlobal(p));
         e->accept();
     }
 }
