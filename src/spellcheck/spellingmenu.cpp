@@ -17,6 +17,7 @@
 #include <QActionGroup>
 
 #include <KLocalizedString>
+#include <KTextEditor/Range>
 
 KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
     : QObject(view)
@@ -244,9 +245,17 @@ void KateSpellingMenu::replaceWordBySuggestion(const QString &suggestion)
     if (!m_currentMisspelledRange) {
         return;
     }
+    // Ensure we keep some special dictionary setting...
+    const QString dictionary = m_view->doc()->dictionaryForMisspelledRange(*m_currentMisspelledRange);
+    KTextEditor::Range newRange = m_currentMisspelledRange->toRange();
+    newRange.setEnd(KTextEditor::Cursor(newRange.start().line(), newRange.start().column() + suggestion.size()));
+
     KTextEditor::DocumentPrivate *doc = m_view->doc();
     KTextEditor::EditorPrivate::self()->spellCheckManager()->replaceCharactersEncodedIfNecessary(suggestion, doc, *m_currentMisspelledRange);
-    m_view->clearSelection(); // Ensure next right click works properly if there was a selection
+
+    // ...on the replaced word
+    m_view->doc()->setDictionary(dictionary, newRange);
+    m_view->clearSelection(); // Ensure cursor move and next right click works properly if there was a selection
 }
 
 void KateSpellingMenu::addCurrentWordToDictionary()
