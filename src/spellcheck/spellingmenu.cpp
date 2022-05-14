@@ -13,6 +13,9 @@
 #include "spellcheck/spellcheck.h"
 
 #include "katepartdebug.h"
+
+#include <QActionGroup>
+
 #include <KLocalizedString>
 
 KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
