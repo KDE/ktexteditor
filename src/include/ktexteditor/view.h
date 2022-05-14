@@ -411,6 +411,8 @@ public:
      *
      * \param positions new cursor positions
      * \see cursorPositions()
+     *
+     * @since 5.95
      */
     void setCursorPositions(const QVector<KTextEditor::Cursor> &positions);
 
@@ -423,10 +425,12 @@ public:
     virtual Cursor cursorPosition() const = 0;
 
     /**
-     * Get the view's current cursor position. A \e TAB character is
+     * Get the view's current cursor positions. A \e TAB character is
      * handled as only one character.
      *
-     * The returned vector will include the primary cursor, too.
+     * The returned vector contains the primary cursor as first element.
+     *
+     * @since 5.95
      *
      * \return all currently existing cursors
      */
@@ -580,6 +584,8 @@ public:
      * The old selection will be discarded.
      * \param ranges the ranges of the new selections
      * \see selectionRanges(), selection()
+     *
+     * @since 5.95
      */
     void setSelections(const QVector<KTextEditor::Range> &ranges);
 
@@ -602,6 +608,8 @@ public:
      * Get the ranges occupied by the current selections.
      * \return selection ranges, valid only if a selection currently exists.
      * \see setSelections()
+     *
+     * @since 5.95
      */
     QVector<KTextEditor::Range> selectionRanges() const;
 
