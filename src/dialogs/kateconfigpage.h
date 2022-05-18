@@ -13,10 +13,11 @@ class KFontRequester;
 class KUrlRequester;
 class QAbstractButton;
 class QAbstractSlider;
-class QAbstractSpinBox;
+class QSpinBox;
 class QComboBox;
 class QGroupBox;
 class QLineEdit;
+class QDoubleSpinBox;
 
 class KateConfigPage : public KTextEditor::ConfigPage
 {
@@ -37,7 +38,8 @@ public:
     void observeChanges(KUrlRequester *requester) const;
     void observeChanges(QAbstractButton *button) const;
     void observeChanges(QAbstractSlider *slider) const;
-    void observeChanges(QAbstractSpinBox *spinBox) const;
+    void observeChanges(QSpinBox *spinBox) const;
+    void observeChanges(QDoubleSpinBox *spinBox) const;
     void observeChanges(QComboBox *comboBox) const;
     void observeChanges(QGroupBox *groupBox) const;
     void observeChanges(QLineEdit *lineEdit) const;

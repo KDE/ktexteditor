@@ -11,10 +11,10 @@
 
 #include <QAbstractButton>
 #include <QAbstractSlider>
-#include <QAbstractSpinBox>
 #include <QComboBox>
 #include <QGroupBox>
 #include <QLineEdit>
+#include <QSpinBox>
 
 KateConfigPage::KateConfigPage(QWidget *parent, const char *)
     : KTextEditor::ConfigPage(parent)
@@ -46,9 +46,14 @@ void KateConfigPage::observeChanges(QAbstractSlider *slider) const
     connect(slider, &QAbstractSlider::valueChanged, this, &KateConfigPage::slotChanged);
 }
 
-void KateConfigPage::observeChanges(QAbstractSpinBox *spinBox) const
+void KateConfigPage::observeChanges(QSpinBox *spinBox) const
 {
-    connect(spinBox, &QAbstractSpinBox::editingFinished, this, &KateConfigPage::slotChanged);
+    connect(spinBox, &QSpinBox::textChanged, this, &KateConfigPage::slotChanged);
+}
+
+void KateConfigPage::observeChanges(QDoubleSpinBox *spinBox) const
+{
+    connect(spinBox, &QDoubleSpinBox::textChanged, this, &KateConfigPage::slotChanged);
 }
 
 void KateConfigPage::observeChanges(QComboBox *comboBox) const
