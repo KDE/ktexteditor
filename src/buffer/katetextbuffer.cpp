@@ -806,7 +806,7 @@ TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filenam
     // construct correct filter device
     // we try to use the same compression as for opening
     const KCompressionDevice::CompressionType type = KCompressionDevice::compressionTypeForMimeType(m_mimeTypeForFilterDev);
-    QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
+    auto saveFile = std::make_unique<KCompressionDevice>(filename, type);
 
     if (!saveFile->open(QIODevice::WriteOnly)) {
 #ifdef CAN_USE_ERRNO
@@ -830,10 +830,10 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     // construct correct filter device
     // we try to use the same compression as for opening
     const KCompressionDevice::CompressionType type = KCompressionDevice::compressionTypeForMimeType(m_mimeTypeForFilterDev);
-    QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
+    auto saveFile = std::make_unique<KCompressionDevice>(filename, type);
     uint ownerId = -2;
     uint groupId = -2;
-    QScopedPointer<QIODevice> temporaryBuffer;
+    std::unique_ptr<QIODevice> temporaryBuffer;
 
     // Memorize owner and group.
     const QFileInfo fileInfo(filename);
@@ -844,7 +844,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 
     // if that fails we need more privileges to save this file
     // -> we write to a temporary file and then send its path to KAuth action for privileged save
-    temporaryBuffer.reset(new QBuffer());
+    temporaryBuffer = std::make_unique<QBuffer>();
 
     // open buffer for write and read (read is used for checksum computing and writing to temporary file)
     if (!temporaryBuffer->open(QIODevice::ReadWrite)) {
@@ -852,7 +852,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     }
 
     // we are now saving to a temporary buffer with potential compression proxy
-    saveFile.reset(new KCompressionDevice(temporaryBuffer.data(), false, type));
+    saveFile = std::make_unique<KCompressionDevice>(temporaryBuffer.get(), false, type);
     if (!saveFile->open(QIODevice::WriteOnly)) {
         return false;
     }

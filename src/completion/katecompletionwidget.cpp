@@ -28,7 +28,6 @@
 #include <QHeaderView>
 #include <QLabel>
 #include <QPushButton>
-#include <QScopedPointer>
 #include <QScreen>
 #include <QScrollBar>
 #include <QSizeGrip>
@@ -922,7 +921,7 @@ bool KateCompletionWidget::execute()
     m_completionEditRunning = true;
 
     // create scoped pointer, to ensure deletion of cursor
-    QScopedPointer<KTextEditor::MovingCursor> oldPos(view()->doc()->newMovingCursor(view()->cursorPosition(), KTextEditor::MovingCursor::StayOnInsert));
+    std::unique_ptr<KTextEditor::MovingCursor> oldPos(view()->doc()->newMovingCursor(view()->cursorPosition(), KTextEditor::MovingCursor::StayOnInsert));
 
     KTextEditor::CodeCompletionModel *model = static_cast<KTextEditor::CodeCompletionModel *>(const_cast<QAbstractItemModel *>(toExecute.model()));
     Q_ASSERT(model);

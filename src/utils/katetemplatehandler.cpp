@@ -44,7 +44,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     m_templateScript.setView(m_view);
 
     // remember selection, it will be lost when inserting the template
-    QScopedPointer<MovingRange> selection(doc()->newMovingRange(m_view->selectionRange(), MovingRange::DoNotExpand));
+    std::unique_ptr<MovingRange> selection(doc()->newMovingRange(m_view->selectionRange(), MovingRange::DoNotExpand));
 
     m_undoManager->setAllowComplexMerge(true);
 
