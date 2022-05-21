@@ -42,7 +42,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="3" column="0">
       <spacer name="verticalSpacer_5">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -58,14 +58,14 @@
        </property>
       </spacer>
      </item>
-     <item row="2" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Show whitespace indicators:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="4" column="1">
       <widget class="QComboBox" name="spacesComboBox">
        <item>
         <property name="text">
@@ -84,14 +84,14 @@
        </item>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="lbMarkerDescription">
        <property name="text">
         <string>Whitespace indicator size:</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="5" column="1">
       <widget class="QSlider" name="sliSetMarkerSize">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -111,6 +111,9 @@
        <property name="singleStep">
         <number>1</number>
        </property>
+       <property name="pageStep">
+        <number>1</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -122,14 +125,14 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="7" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Show tab indicators:</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="7" column="1">
       <widget class="QCheckBox" name="chkShowTabs">
        <property name="whatsThis">
         <string>The editor will display a symbol to indicate the presence of a tab in the text.</string>
@@ -139,21 +142,21 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
+     <item row="8" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
         <string>Show focus frame around editor</string>
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
+     <item row="8" column="1">
       <widget class="QCheckBox" name="chkFocusFrame">
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
+     <item row="9" column="0">
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -169,14 +172,14 @@
        </property>
       </spacer>
      </item>
-     <item row="8" column="0">
+     <item row="10" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Bracket matching:</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
+     <item row="10" column="1">
       <widget class="QCheckBox" name="chkShowWholeBracketExpression">
        <property name="whatsThis">
         <string>If this is enabled, the range between the selected matching brackets will be highlighted.</string>
@@ -186,7 +189,7 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="1">
+     <item row="11" column="1">
       <widget class="QCheckBox" name="chkShowBracketMatchPreview">
        <property name="toolTip">
         <string>Show the matching open bracket and lines adjacent to it for context</string>
@@ -199,7 +202,7 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="1">
+     <item row="12" column="1">
       <widget class="QCheckBox" name="chkAnimateBracketMatching">
        <property name="toolTip">
         <string>Flash matching brackets</string>
@@ -212,7 +215,7 @@
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
+     <item row="13" column="1">
       <widget class="QCheckBox" name="chkShowIndentationLines">
        <property name="whatsThis">
         <string>If this is enabled, the editor will display vertical lines to help identify indent lines.</string>
@@ -222,7 +225,7 @@
        </property>
       </widget>
      </item>
-     <item row="13" column="0">
+     <item row="15" column="0">
       <spacer name="verticalSpacer_7">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -238,14 +241,14 @@
        </property>
       </spacer>
      </item>
-     <item row="14" column="0">
+     <item row="16" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
         <string>Counts:</string>
        </property>
       </widget>
      </item>
-     <item row="14" column="1">
+     <item row="16" column="1">
       <widget class="QCheckBox" name="chkShowWordCount">
        <property name="toolTip">
         <string>Show/hide word count in status bar</string>
@@ -255,7 +258,7 @@
        </property>
       </widget>
      </item>
-     <item row="15" column="1">
+     <item row="17" column="1">
       <widget class="QCheckBox" name="chkShowLineCount">
        <property name="toolTip">
         <string>Show/hide line count in status bar</string>
@@ -265,7 +268,7 @@
        </property>
       </widget>
      </item>
-     <item row="16" column="0">
+     <item row="18" column="0">
       <spacer name="verticalSpacer_3">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -281,7 +284,7 @@
        </property>
       </spacer>
      </item>
-     <item row="17" column="1">
+     <item row="19" column="1">
       <widget class="QCheckBox" name="chkFoldFirstLine">
        <property name="toolTip">
         <string>When this setting is enabled, the editor view automatically folds
@@ -294,7 +297,7 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="18" column="0">
+     <item row="20" column="0">
       <spacer name="verticalSpacer_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -307,28 +310,28 @@ beginning of a file.</string>
        </property>
       </spacer>
      </item>
-     <item row="19" column="0">
+     <item row="21" column="0">
       <widget class="QCheckBox" name="cbxWordWrap">
        <property name="text">
         <string>Dynamic Word Wrap:</string>
        </property>
       </widget>
      </item>
-     <item row="19" column="1">
+     <item row="21" column="1">
       <widget class="QCheckBox" name="chkDynWrapAtStaticMarker">
        <property name="text">
         <string>Wrap dynamically at static word wrap marker</string>
        </property>
       </widget>
      </item>
-     <item row="20" column="1">
+     <item row="22" column="1">
       <widget class="QCheckBox" name="chkDynWrapAnywhere">
        <property name="text">
         <string>Disregard word boundaries for dynamic wrapping</string>
        </property>
       </widget>
      </item>
-     <item row="21" column="0">
+     <item row="23" column="0">
       <widget class="QLabel" name="lblDynamicWordWrapIndicators">
        <property name="text">
         <string>D&amp;ynamic word wrap indicators:</string>
@@ -338,14 +341,14 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="21" column="1">
+     <item row="23" column="1">
       <widget class="QComboBox" name="cmbDynamicWordWrapIndicator">
        <property name="whatsThis">
         <string>Choose when the Dynamic Word Wrap Indicators should be displayed.</string>
        </property>
       </widget>
      </item>
-     <item row="22" column="1">
+     <item row="24" column="1">
       <spacer name="verticalSpacer_6">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -361,21 +364,21 @@ beginning of a file.</string>
        </property>
       </spacer>
      </item>
-     <item row="23" column="0">
+     <item row="25" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Indent wrapped lines:</string>
        </property>
       </widget>
      </item>
-     <item row="23" column="1">
+     <item row="25" column="1">
       <widget class="QCheckBox" name="cbxIndentWrappedLines">
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
-     <item row="24" column="0">
+     <item row="26" column="0">
       <widget class="QLabel" name="lblDynamicWordWrapIndicators_2">
        <property name="text">
         <string>Don't indent lines wider than:</string>
@@ -385,7 +388,7 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="24" column="1">
+     <item row="26" column="1">
       <widget class="QSpinBox" name="sbDynamicWordWrapDepth">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -410,14 +413,7 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="25" column="0">
-      <widget class="QLabel" name="lblLineHeight">
-       <property name="text">
-        <string>Line Height Multiplier:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="25" column="1">
+     <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="spbLineHeightMultiplier">
        <property name="toolTip">
         <string>This value will be multiplied with the font's default line height. A value of 1.0 means that the default height will be used.</string>
@@ -433,6 +429,13 @@ beginning of a file.</string>
        </property>
        <property name="singleStep">
         <double>0.125000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="lblLineHeight">
+       <property name="text">
+        <string>Line Height Multiplier:</string>
        </property>
       </widget>
      </item>
