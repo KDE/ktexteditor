@@ -289,7 +289,7 @@ bool KateScriptManager::exec(KTextEditor::View *view, const QString &_cmd, QStri
     Q_UNUSED(errorMsg)
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-    const QVector args = QStringView(_cmd).split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
+    const QVector<QStringView> args = QStringView(_cmd).split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
 #else
     const QVector args = _cmd.splitRef(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
 #endif

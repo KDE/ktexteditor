@@ -49,7 +49,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, KTextEditor:
 
     // split multi-line needle into single lines
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-    const QVector needleLines = QStringView(text).split(QLatin1Char('\n'));
+    const QVector<QStringView> needleLines = QStringView(text).split(QLatin1Char('\n'));
 #else
     const QVector needleLines = text.splitRef(QLatin1Char('\n'));
 #endif
