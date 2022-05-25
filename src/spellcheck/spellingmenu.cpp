@@ -211,7 +211,7 @@ void KateSpellingMenu::populateSuggestionsMenu()
             }
             m_spellingMenu->addAction(action);
         }
-        if (!dictFound) {
+        if (!dictFound && !m_currentDictionary.isEmpty()) {
             const QString dictName = Sonnet::Speller().availableDictionaries().key(m_currentDictionary);
             QAction *action = m_dictionaryGroup->addAction(dictName);
             action->setData(m_currentDictionary);
