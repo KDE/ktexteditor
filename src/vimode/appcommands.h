@@ -49,6 +49,7 @@ private:
 
 private Q_SLOTS:
     void closeCurrentDocument();
+    void closeDocuments(const QList<KTextEditor::Document *> &documents);
     void closeCurrentView();
     void closeCurrentSplitView();
     void closeOtherSplitViews();
