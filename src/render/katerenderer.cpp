@@ -599,7 +599,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
         }
 
         // Clear background if this position overlaps selection
-        if (shoudlClearBackground && fr.format.hasProperty(QTextFormat::BackgroundBrush) && selectionRange.overlapsColumn(currentPosition.column())) {
+        if (shoudlClearBackground && selectionRange.contains(currentPosition) && fr.format.hasProperty(QTextFormat::BackgroundBrush)) {
             fr.format.clearBackground();
         }
 
