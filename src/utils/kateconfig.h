@@ -561,6 +561,11 @@ public:
          * Auto save interval
          */
         AutoSaveInteral,
+
+        /**
+         * Should we auto-reload if the old state is in version control?
+         */
+        AutoReloadIfStateIsInVersionControl
     };
 
 public:

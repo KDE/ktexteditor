@@ -5433,7 +5433,9 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         // if still modified, try to take a look at git
         // skip that, if document is modified!
         // only do that, if the file is still there, else reload makes no sense!
-        if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())) {
+        // we have a config option to disable this
+        if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())
+            && config()->value(KateDocumentConfig::AutoReloadIfStateIsInVersionControl).toBool()) {
             // we only want to use git from PATH, cache this
             static const QString fullGitPath = QStandardPaths::findExecutable(QStringLiteral("git"));
             if (!fullGitPath.isEmpty()) {

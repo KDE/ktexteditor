@@ -355,6 +355,9 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(AutoSaveOnFocusOut, "Auto Save On Focus Out", QString(), false));
     addConfigEntry(ConfigEntry(AutoSaveInteral, "Auto Save Interval", QString(), 0));
 
+    // Shall we do auto reloading for stuff e.g. in Git?
+    addConfigEntry(ConfigEntry(AutoReloadIfStateIsInVersionControl, "Auto Reload If State Is In Version Control", QString(), true));
+
     // finalize the entries, e.g. hashs them
     finalizeConfigEntries();
 
