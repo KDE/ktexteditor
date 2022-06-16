@@ -1796,15 +1796,16 @@ QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
         const auto views = mainWindow->views();
         for (auto view : views) {
             if (view->document()->url().isValid()) {
-                // we remove the filename, otherwise we propose to save as some other already existing file, that is confusing
-                startUrl = view->document()->url().adjusted(QUrl::RemoveFilename);
+                startUrl = view->document()->url();
                 break;
             }
         }
     }
 
     // spawn the dialog, dialogParent will take care of proper parent
-    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrl.isValid() ? startUrl : QUrl());
+    // we remove the filename, otherwise we propose to save as some other already existing file, that is confusing
+    // beside we need to do that to avoid to use the filename as directory name, see bug 454648
+    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrl.isValid() ? startUrl.adjusted(QUrl::RemoveFilename) : QUrl());
 }
 
 // BEGIN KTextEditor::HighlightingInterface stuff
