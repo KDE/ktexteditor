@@ -28,6 +28,7 @@ include(KDEPackageAppTemplates)
 include(GenerateExportHeader)
 include(ECMAddQch)
 include(ECMQtDeclareLoggingCategory)
+include(ECMDeprecationSettings)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
@@ -72,9 +73,11 @@ find_package(EditorConfig)
 
 # forbid some old things
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055900)
-add_definitions(-DKWIDGETSADDONS_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054D00) # We need KSelectAction::triggered(QString)
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+    KF 5.95.0
+    KWIDGETSADDONS 5.77 # We need KSelectAction::triggered(QString)
+)
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
