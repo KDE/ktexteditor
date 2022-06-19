@@ -2733,7 +2733,6 @@ void KTextEditor::ViewPrivate::cut()
 
     copy();
     if (!selection()) {
-        m_viewInternal->moveEdge(KateViewInternal::left, false);
         selectLine(cursorPosition());
     }
     removeSelectedText();
@@ -2749,6 +2748,7 @@ void KTextEditor::ViewPrivate::copy() const
             return;
         }
         text = doc()->line(cursorPosition().line()) + QLatin1Char('\n');
+        m_viewInternal->moveEdge(KateViewInternal::left, false);
     } else {
         text = selectionText();
 
