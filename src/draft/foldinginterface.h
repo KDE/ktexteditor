@@ -49,7 +49,7 @@ public:
          */
         Folded = 0x2
     };
-    Q_DECLARE_FLAGS(FoldingRangeFlags, FoldingRangeFlag);
+    Q_DECLARE_FLAGS(FoldingRangeFlags, FoldingRangeFlag)
 
     /**
      * \name Creation, Folding and Unfolding
