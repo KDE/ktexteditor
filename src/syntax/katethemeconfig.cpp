@@ -1378,6 +1378,7 @@ bool KateThemeConfigPage::copyTheme()
         newNameDialog.setInputMode(QInputDialog::TextInput);
         newNameDialog.setWindowTitle(i18n("Copy theme"));
         newNameDialog.setLabelText(i18n("Name for copy of color theme \"%1\":", currentThemeName));
+        newNameDialog.setTextValue(currentThemeName);
         if (newNameDialog.exec() == QDialog::Rejected) {
             return false;
         }
