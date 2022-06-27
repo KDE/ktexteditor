@@ -197,6 +197,9 @@ KateCompletionWidget::~KateCompletionWidget()
     // ensure no slot triggered during destruction => else we access already invalidated stuff
     m_presentationModel->disconnect(this);
     m_argumentHintModel->disconnect(this);
+
+    delete m_argumentHintTree;
+    m_argumentHintTree = nullptr;
 }
 
 void KateCompletionWidget::viewFocusOut()
