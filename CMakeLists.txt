@@ -35,6 +35,14 @@ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt 
 
 option(ENABLE_PCH "Enable Precompiled Headers support" OFF)
 
+if (NOT WIN32)
+    set(ENABLE_KAUTH_DEFAULT ON)
+else()
+    set(ENABLE_KAUTH_DEFAULT OFF)
+endif()
+option(ENABLE_KAUTH "Enable KAuth integration" ${ENABLE_KAUTH_DEFAULT})
+add_feature_info(KAUTH ${ENABLE_KAUTH} "KAuth integration for editing system files")
+
 ecm_setup_version(
   PROJECT
   VARIABLE_PREFIX KTEXTEDITOR
@@ -63,10 +71,12 @@ find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5TextWidgets ${KF_DEP_VERSION} REQUIRED)
 
-if(NOT WIN32)
+if (ENABLE_KAUTH)
     find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
+    set(HAVE_KAUTH ${KF5Auth_FOUND})
+else()
+    set(HAVE_KAUTH FALSE)
 endif()
-set(HAVE_KAUTH ${KF5Auth_FOUND})
 
 # EditorConfig integration
 find_package(EditorConfig)
