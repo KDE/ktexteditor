@@ -3,6 +3,7 @@
 Name=C++
 Name[ar]=سي++
 Name[az]=C++
+Name[bg]=C++
 Name[ca]=C++
 Name[ca@valencia]=C++
 Name[cs]=C++
@@ -47,6 +48,7 @@ Name[zh_TW]=C++
 Comment=Generates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.
 Comment[ar]=يُولّد ملحقة «محرّر نصوصك» بلغة سي++ لإجراء عمليات خاصة على النصوص في «كاتبك» و«كيت» و«مطوّرك» وغيرها.
 Comment[az]=KWrite, Kate, KDevelop və s. proqramlarında mətnlər üzərində iş üçün C++ proqram dilində yazılmış KTextEditor əlavəsi modulu.
+Comment[bg]=Генерира KTextEditor C++ плъгин за извършване на специални текстови операции в KWrite, Kate, KDevelop и др.
 Comment[ca]=Genera un connector en C++ del KTextEditor per a portar a terme operacions especials amb el text al KWrite, Kate, KDevelop, etc.
 Comment[ca@valencia]=Genera un connector en C++ de KTextEditor per a portar a terme operacions especials amb el text a KWrite, Kate, KDevelop, etc.
 Comment[da]=Genererer en skabelon til et KTextEditor C++-plugin til at udføre særlige handlinger på tekst i KWrite, Kate, KDevelop osv.
