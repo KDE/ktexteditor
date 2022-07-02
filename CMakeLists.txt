@@ -69,7 +69,6 @@ find_package(KF5KIO ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Parts ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5TextWidgets ${KF_DEP_VERSION} REQUIRED)
 
 if (ENABLE_KAUTH)
     find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
