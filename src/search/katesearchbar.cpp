@@ -616,8 +616,8 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         wrap = (KMessageBox::questionYesNo(nullptr,
                                            question,
                                            i18n("Continue search?"),
-                                           KStandardGuiItem::yes(),
-                                           KStandardGuiItem::no(),
+                                           KStandardGuiItem::cont(),
+                                           KStandardGuiItem::cancel(),
                                            QStringLiteral("DoNotShowAgainContinueSearchDialog"))
                 == KMessageBox::Yes);
     }
