@@ -153,6 +153,8 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
         KTextEditor::EditorPrivate::self()->inputModeFactories()[KTextEditor::View::NormalInputMode]->createInputMode(this));
     m_inputModes[KTextEditor::View::ViInputMode].reset(
         KTextEditor::EditorPrivate::self()->inputModeFactories()[KTextEditor::View::ViInputMode]->createInputMode(this));
+    m_inputModes[KTextEditor::View::LeapInputMode].reset(
+        KTextEditor::EditorPrivate::self()->inputModeFactories()[KTextEditor::View::LeapInputMode]->createInputMode(this));
     m_currentInputMode = m_inputModes[KTextEditor::View::NormalInputMode].get();
 
     setMinimumSize(0, 0);
@@ -3301,6 +3303,10 @@ void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 
             m_selChangedByUser = false;
         }
+    }
+
+    if (m_currentInputMode->keyRelease(e)) {
+        return;
     }
 
     e->ignore();

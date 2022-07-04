@@ -503,7 +503,7 @@ private:
 
     // input modes
 private:
-    std::array<std::unique_ptr<KateAbstractInputMode>, KTextEditor::View::ViInputMode + 1> m_inputModes;
+    std::array<std::unique_ptr<KateAbstractInputMode>, KTextEditor::View::LeapInputMode + 1> m_inputModes;
     KateAbstractInputMode *m_currentInputMode;
 
     KateInlineNoteData m_activeInlineNote;

@@ -377,7 +377,7 @@ public:
     /**
      * @return list of available input mode factories
      */
-    const std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::ViInputMode + 1> &inputModeFactories()
+    const std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::LeapInputMode + 1> &inputModeFactories()
     {
         return m_inputModeFactories;
     }
@@ -540,7 +540,7 @@ private:
      * input modes factories
      * for all input modes in the KTextEditor::View::InputMode we have here an entry
      */
-    std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::ViInputMode + 1> m_inputModeFactories;
+    std::array<std::unique_ptr<KateAbstractInputModeFactory>, KTextEditor::View::LeapInputMode + 1> m_inputModeFactories;
 
     /**
      * simple list that stores text copied

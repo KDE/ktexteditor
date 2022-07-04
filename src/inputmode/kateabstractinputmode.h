@@ -65,6 +65,10 @@ public:
     virtual void activateCommandLine() = 0;
 
     virtual bool keyPress(QKeyEvent *) = 0;
+    virtual bool keyRelease(QKeyEvent *)
+    {
+        return false;
+    };
     virtual bool blinkCaret() const = 0;
     virtual KateRenderer::caretStyles caretStyle() const = 0;
 

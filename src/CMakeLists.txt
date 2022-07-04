@@ -246,6 +246,12 @@ dialogs/spellcheckconfigwidget.ui)
 qt_add_resources( ktexteditor_qrc_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
 set_source_files_properties(${ktexteditor_qrc_SRCS} PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
+# leap mode
+set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} ${ktexteditor_qrc_SRCS}
+    inputmode/kateleapinputmode.cpp
+    inputmode/kateleapinputmodefactory.cpp
+)
+
 # vi mode
 ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
 set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} ${ktexteditor_qrc_SRCS}

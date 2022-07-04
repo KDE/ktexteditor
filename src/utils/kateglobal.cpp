@@ -34,6 +34,7 @@
 #include "katewordcompletion.h"
 #include "spellcheck/spellcheck.h"
 
+#include "kateleapinputmodefactory.h"
 #include "katenormalinputmodefactory.h"
 #include "kateviinputmodefactory.h"
 
@@ -183,9 +184,10 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // input mode factories
     //
-    Q_ASSERT(m_inputModeFactories.size() == KTextEditor::View::ViInputMode + 1);
+    Q_ASSERT(m_inputModeFactories.size() == KTextEditor::View::LeapInputMode + 1);
     m_inputModeFactories[KTextEditor::View::NormalInputMode].reset(new KateNormalInputModeFactory());
     m_inputModeFactories[KTextEditor::View::ViInputMode].reset(new KateViInputModeFactory());
+    m_inputModeFactories[KTextEditor::View::LeapInputMode].reset(new KateLeapInputModeFactory());
 
     //
     // spell check manager

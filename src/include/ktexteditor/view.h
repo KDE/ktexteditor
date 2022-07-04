@@ -188,7 +188,8 @@ public:
      */
     enum InputMode {
         NormalInputMode = 0, /**< Normal Mode. */
-        ViInputMode = 1 /**< Vi mode. The view will behave like the editor vi(m) */
+        ViInputMode = 1, /**< Vi mode. The view will behave like the editor vi(m) */
+        LeapInputMode = 2, /**< Leap mode. The view will use leap keys instead of arrow keys. */
     };
 
     /**
@@ -204,7 +205,11 @@ public:
         ViModeVisual = 12,
         ViModeVisualLine = 13,
         ViModeVisualBlock = 14,
-        ViModeReplace = 15
+        ViModeReplace = 15,
+
+        LeapModeNormal = 20,
+        LeapModeLeapBack = 21,
+        LeapModeLeapForward = 22,
     };
 
     /**
