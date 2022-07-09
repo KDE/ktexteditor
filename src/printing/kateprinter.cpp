@@ -186,7 +186,7 @@ bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
     QPrinter printer;
     KatePrinterPrivate p(view->doc(), view);
     p.setColorScheme(QStringLiteral("Printing"));
-    QPrintPreviewDialog preview(&printer);
+    QPrintPreviewDialog preview(&printer, view);
     QObject::connect(&preview, &QPrintPreviewDialog::paintRequested, &p, &KatePrinterPrivate::paint);
     return preview.exec();
 }
