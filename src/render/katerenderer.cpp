@@ -559,8 +559,8 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
     }
 
     // Background formats have lower priority so they get overriden by selection
-    const bool shoudlClearBackground = hasCustomLineHeight() && m_view->selection();
-    const KTextEditor::Range selectionRange = m_view->selectionRange();
+    const bool shoudlClearBackground = m_view && hasCustomLineHeight() && m_view->selection();
+    const KTextEditor::Range selectionRange = shoudlClearBackground ? m_view->selectionRange() : KTextEditor::Range::invalid();
 
     // Main iterative loop.  This walks through each set of highlighting ranges, and stops each
     // time the highlighting changes.  It then creates the corresponding QTextLayout::FormatRanges.
