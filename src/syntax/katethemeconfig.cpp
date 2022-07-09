@@ -89,14 +89,6 @@ static inline QString defaultStyleName(int n)
 }
 
 /**
- * Return the number of default styles.
- */
-static int defaultStyleCount()
-{
-    return KTextEditor::dsError + 1;
-}
-
-/**
  * Helper to get json object for given valid theme.
  * @param theme theme to get json object for
  * @return json object of theme
@@ -492,10 +484,11 @@ KateAttributeList *KateThemeConfigDefaultStylesTab::attributeList(const QString 
     auto it = m_defaultStyleLists.find(schema);
     if (it == m_defaultStyleLists.end()) {
         // get list of all default styles
+        const auto numStyles = KTextEditor::defaultStyleCount();
         KateAttributeList list;
-        list.reserve(defaultStyleCount());
+        list.reserve(numStyles);
         const KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(schema);
-        for (int z = 0; z < defaultStyleCount(); z++) {
+        for (int z = 0; z < numStyles; z++) {
             KTextEditor::Attribute::Ptr i(new KTextEditor::Attribute());
             const auto style = defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z));
 
@@ -619,7 +612,8 @@ void KateThemeConfigDefaultStylesTab::apply()
 
         // patch the text-styles part
         QJsonObject styles;
-        for (int z = 0; z < defaultStyleCount(); z++) {
+        const auto numStyles = KTextEditor::defaultStyleCount();
+        for (int z = 0; z < numStyles; z++) {
             QJsonObject style;
             KTextEditor::Attribute::Ptr p = kv.second.at(z);
             if (p->hasProperty(QTextFormat::ForegroundBrush)) {

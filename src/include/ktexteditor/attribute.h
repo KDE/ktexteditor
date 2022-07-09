@@ -22,6 +22,8 @@ namespace KTextEditor
  * The following lists all valid default styles that are used for the syntax
  * highlighting files in the itemData's defStyleNum attribute.
  * Not all default styles are used by a syntax highlighting file.
+ *
+ * \sa defaultStyleCount
  */
 enum DefaultStyle {
     //
@@ -105,12 +107,14 @@ enum DefaultStyle {
     dsOthers,
     /** Used to indicate wrong syntax. */
     dsError
-
-    //
-    // WARNING: Whenever you add a default style to this list,
-    //          make sure to adapt KateHlManager::defaultStyleCount()
-    //
 };
+
+/**
+ * \returns the number of default styles.
+ *
+ * \sa DefaultStyle
+ */
+int defaultStyleCount();
 
 /**
  * \class Attribute attribute.h <KTextEditor/Attribute>

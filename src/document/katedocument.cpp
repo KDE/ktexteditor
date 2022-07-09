@@ -1822,7 +1822,7 @@ KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(const KTe
     }
 
     int ds = const_cast<KTextEditor::DocumentPrivate *>(this)->defStyleNum(position.line(), position.column());
-    if (ds < 0 || ds > static_cast<int>(dsError)) {
+    if (ds < 0 || ds > defaultStyleCount()) {
         return dsNormal;
     }
 
