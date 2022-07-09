@@ -39,53 +39,80 @@
 /**
  * Return the translated name of default style @p n.
  */
-static inline QString defaultStyleName(int n)
+static inline QString defaultStyleName(KTextEditor::DefaultStyle style)
 {
-    static QStringList translatedNames;
-    if (translatedNames.isEmpty()) {
-        translatedNames << i18nc("@item:intable Text context", "Normal");
-        translatedNames << i18nc("@item:intable Text context", "Keyword");
-        translatedNames << i18nc("@item:intable Text context", "Function");
-        translatedNames << i18nc("@item:intable Text context", "Variable");
-        translatedNames << i18nc("@item:intable Text context", "Control Flow");
-        translatedNames << i18nc("@item:intable Text context", "Operator");
-        translatedNames << i18nc("@item:intable Text context", "Built-in");
-        translatedNames << i18nc("@item:intable Text context", "Extension");
-        translatedNames << i18nc("@item:intable Text context", "Preprocessor");
-        translatedNames << i18nc("@item:intable Text context", "Attribute");
+    using namespace KTextEditor;
+    switch (style) {
+    case dsNormal:
+        return i18nc("@item:intable Text context", "Normal");
+    case dsKeyword:
+        return i18nc("@item:intable Text context", "Keyword");
+    case dsFunction:
+        return i18nc("@item:intable Text context", "Function");
+    case dsVariable:
+        return i18nc("@item:intable Text context", "Variable");
+    case dsControlFlow:
+        return i18nc("@item:intable Text context", "Control Flow");
+    case dsOperator:
+        return i18nc("@item:intable Text context", "Operator");
+    case dsBuiltIn:
+        return i18nc("@item:intable Text context", "Built-in");
+    case dsExtension:
+        return i18nc("@item:intable Text context", "Extension");
+    case dsPreprocessor:
+        return i18nc("@item:intable Text context", "Preprocessor");
+    case dsAttribute:
+        return i18nc("@item:intable Text context", "Attribute");
 
-        translatedNames << i18nc("@item:intable Text context", "Character");
-        translatedNames << i18nc("@item:intable Text context", "Special Character");
-        translatedNames << i18nc("@item:intable Text context", "String");
-        translatedNames << i18nc("@item:intable Text context", "Verbatim String");
-        translatedNames << i18nc("@item:intable Text context", "Special String");
-        translatedNames << i18nc("@item:intable Text context", "Imports, Modules, Includes");
+    case dsChar:
+        return i18nc("@item:intable Text context", "Character");
+    case dsSpecialChar:
+        return i18nc("@item:intable Text context", "Special Character");
+    case dsString:
+        return i18nc("@item:intable Text context", "String");
+    case dsVerbatimString:
+        return i18nc("@item:intable Text context", "Verbatim String");
+    case dsSpecialString:
+        return i18nc("@item:intable Text context", "Special String");
+    case dsImport:
+        return i18nc("@item:intable Text context", "Imports, Modules, Includes");
 
-        translatedNames << i18nc("@item:intable Text context", "Data Type");
-        translatedNames << i18nc("@item:intable Text context", "Decimal/Value");
-        translatedNames << i18nc("@item:intable Text context", "Base-N Integer");
-        translatedNames << i18nc("@item:intable Text context", "Floating Point");
-        translatedNames << i18nc("@item:intable Text context", "Constant");
+    case dsDataType:
+        return i18nc("@item:intable Text context", "Data Type");
+    case dsDecVal:
+        return i18nc("@item:intable Text context", "Decimal/Value");
+    case dsBaseN:
+        return i18nc("@item:intable Text context", "Base-N Integer");
+    case dsFloat:
+        return i18nc("@item:intable Text context", "Floating Point");
+    case dsConstant:
+        return i18nc("@item:intable Text context", "Constant");
 
-        translatedNames << i18nc("@item:intable Text context", "Comment");
-        translatedNames << i18nc("@item:intable Text context", "Documentation");
-        translatedNames << i18nc("@item:intable Text context", "Annotation");
-        translatedNames << i18nc("@item:intable Text context", "Comment Variable");
+    case dsComment:
+        return i18nc("@item:intable Text context", "Comment");
+    case dsDocumentation:
+        return i18nc("@item:intable Text context", "Documentation");
+    case dsAnnotation:
+        return i18nc("@item:intable Text context", "Annotation");
+    case dsCommentVar:
+        return i18nc("@item:intable Text context", "Comment Variable");
+    case dsRegionMarker:
         // this next one is for denoting the beginning/end of a user defined folding region
-        translatedNames << i18nc("@item:intable Text context", "Region Marker");
-        translatedNames << i18nc("@item:intable Text context", "Information");
-        translatedNames << i18nc("@item:intable Text context", "Warning");
-        translatedNames << i18nc("@item:intable Text context", "Alert");
+        return i18nc("@item:intable Text context", "Region Marker");
+    case dsInformation:
+        return i18nc("@item:intable Text context", "Information");
+    case dsWarning:
+        return i18nc("@item:intable Text context", "Warning");
+    case dsAlert:
+        return i18nc("@item:intable Text context", "Alert");
 
-        translatedNames << i18nc("@item:intable Text context", "Others");
+    case dsOthers:
+        return i18nc("@item:intable Text context", "Others");
+    case dsError:
         // this one is for marking invalid input
-        translatedNames << i18nc("@item:intable Text context", "Error");
-    }
-
-    // sanity checks
-    Q_ASSERT(n >= 0);
-    Q_ASSERT(n < translatedNames.size());
-    return translatedNames[n];
+        return i18nc("@item:intable Text context", "Error");
+    };
+    Q_UNREACHABLE();
 }
 
 /**
@@ -541,35 +568,35 @@ void KateThemeConfigDefaultStylesTab::schemaChanged(const QString &schema)
     QTreeWidgetItem *parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Normal Text & Source Code"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsNormal; i <= (int)KTextEditor::dsAttribute; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
     }
 
     // Number, Types & Constants
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Numbers, Types & Constants"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsDataType; i <= (int)KTextEditor::dsConstant; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
     }
 
     // strings & characters
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Strings & Characters"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsChar; i <= (int)KTextEditor::dsImport; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
     }
 
     // comments & documentation
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Comments & Documentation"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsComment; i <= (int)KTextEditor::dsAlert; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
     }
 
     // Misc
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Miscellaneous"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsOthers; i <= (int)KTextEditor::dsError; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
     }
 
     m_defaultStyles->expandAll();
