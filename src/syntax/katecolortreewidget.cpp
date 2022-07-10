@@ -234,6 +234,10 @@ KateColorTreeWidget::KateColorTreeWidget(QWidget *parent)
 
 bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QEvent *event)
 {
+    if (m_readOnly) {
+        return false;
+    }
+
     // accept edit only for color buttons in column 1 and reset in column 2
     if (!index.parent().isValid() || index.column() < 1) {
         return QTreeWidget::edit(index, trigger, event);
@@ -368,4 +372,14 @@ QColor KateColorTreeWidget::findColor(const QString &key) const
         }
     }
     return QColor();
+}
+
+bool KateColorTreeWidget::readOnly() const
+{
+    return m_readOnly;
+}
+
+void KateColorTreeWidget::setReadOnly(bool readOnly)
+{
+    m_readOnly = readOnly;
 }

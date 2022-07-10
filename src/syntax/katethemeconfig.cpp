@@ -379,7 +379,7 @@ void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
 {
     // ensure invalid or read-only stuff can't be changed
     const auto theme = KateHlManager::self()->repository().theme(newSchema);
-    setDisabled(!theme.isValid() || theme.isReadOnly());
+    ui->setReadOnly(!theme.isValid() || theme.isReadOnly());
 
     // save current schema
     if (!m_currentSchema.isEmpty()) {
@@ -555,7 +555,7 @@ void KateThemeConfigDefaultStylesTab::schemaChanged(const QString &schema)
 {
     // ensure invalid or read-only stuff can't be changed
     const auto theme = KateHlManager::self()->repository().theme(schema);
-    setDisabled(!theme.isValid() || theme.isReadOnly());
+    m_defaultStyles->setReadOnly(!theme.isValid() || theme.isReadOnly());
 
     m_currentSchema = schema;
 
@@ -809,7 +809,11 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
 {
     // ensure invalid or read-only stuff can't be changed
     const auto theme = KateHlManager::self()->repository().theme(schema);
-    setDisabled(!theme.isValid() || theme.isReadOnly());
+
+    // NOTE: None (m_hl == 0) can't be changed with the current way
+    // TODO: removed it from the list?
+    const auto isNoneSchema = m_hl == 0;
+    m_styles->setReadOnly(!theme.isValid() || theme.isReadOnly() || isNoneSchema);
 
     m_schema = schema;
 
@@ -860,10 +864,6 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
     if (it1 == subMap.end()) {
         it1 = subMap.insert(m_hl, attributes);
     }
-
-    // None can't be changed with the current way
-    // TODO: removed it from the list?
-    m_styles->setDisabled(m_hl == 0);
 
     QHash<QString, QTreeWidgetItem *> prefixes;
     const auto &attribs = it1.value();

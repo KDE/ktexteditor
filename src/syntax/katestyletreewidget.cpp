@@ -162,6 +162,10 @@ QIcon brushIcon(const QColor &color)
 
 bool KateStyleTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QEvent *event)
 {
+    if (m_readOnly) {
+        return false;
+    }
+
     if (index.column() == KateStyleTreeWidgetItem::Context) {
         return false;
     }
@@ -200,6 +204,10 @@ void KateStyleTreeWidget::showEvent(QShowEvent *event)
 
 void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
 {
+    if (m_readOnly) {
+        return;
+    }
+
     KateStyleTreeWidgetItem *i = dynamic_cast<KateStyleTreeWidgetItem *>(itemAt(event->pos()));
     if (!i) {
         return;
@@ -726,5 +734,15 @@ void KateStyleTreeWidgetItem::unsetColor(int colorId)
 KateStyleTreeWidget *KateStyleTreeWidgetItem::treeWidget() const
 {
     return static_cast<KateStyleTreeWidget *>(QTreeWidgetItem::treeWidget());
+}
+
+bool KateStyleTreeWidget::readOnly() const
+{
+    return m_readOnly;
+}
+
+void KateStyleTreeWidget::setReadOnly(bool readOnly)
+{
+    m_readOnly = readOnly;
 }
 // END

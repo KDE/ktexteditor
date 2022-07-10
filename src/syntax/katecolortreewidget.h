@@ -46,6 +46,9 @@ public:
 
     QColor findColor(const QString &key) const;
 
+    bool readOnly() const;
+    void setReadOnly(bool readOnly);
+
 public Q_SLOTS:
     void selectDefaults();
 
@@ -55,6 +58,9 @@ Q_SIGNALS:
 protected:
     bool edit(const QModelIndex &index, EditTrigger trigger, QEvent *event) override;
     void drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const override;
+
+private:
+    bool m_readOnly = false;
 };
 
 #endif

@@ -38,6 +38,9 @@ public:
 
     void resizeColumns();
 
+    bool readOnly() const;
+    void setReadOnly(bool readOnly);
+
 Q_SIGNALS:
     void changed();
 
@@ -50,6 +53,9 @@ private Q_SLOTS:
     void changeProperty();
     void unsetColor();
     void updateGroupHeadings();
+
+private:
+    bool m_readOnly = false;
 };
 
 #endif
