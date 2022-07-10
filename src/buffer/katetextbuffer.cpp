@@ -913,6 +913,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 
     return true;
 #else
+    Q_UNUSED(filename);
     return false;
 #endif
 }
