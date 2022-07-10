@@ -846,22 +846,24 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         }
 
         // Draw carets
-        const auto &secCursors = view()->secondaryCursors();
-        // Find carets on this line
-        auto mIt = std::lower_bound(secCursors.begin(), secCursors.end(), range->line(), [](const KTextEditor::ViewPrivate::SecondaryCursor &l, int line) {
-            return l.pos->line() < line;
-        });
-        if (mIt != secCursors.end() && mIt->cursor().line() == range->line()) {
-            for (; mIt != secCursors.end(); ++mIt) {
-                auto cursor = mIt->cursor();
-                if (cursor.line() == range->line()) {
-                    paintCaret(&cursor, range, paint, xStart, xEnd);
-                } else {
-                    break;
+        if (m_view && cursor && drawCaret()) {
+            const auto &secCursors = view()->secondaryCursors();
+            // Find carets on this line
+            auto mIt = std::lower_bound(secCursors.begin(), secCursors.end(), range->line(), [](const KTextEditor::ViewPrivate::SecondaryCursor &l, int line) {
+                return l.pos->line() < line;
+            });
+            if (mIt != secCursors.end() && mIt->cursor().line() == range->line()) {
+                for (; mIt != secCursors.end(); ++mIt) {
+                    auto cursor = mIt->cursor();
+                    if (cursor.line() == range->line()) {
+                        paintCaret(cursor, range, paint, xStart, xEnd);
+                    } else {
+                        break;
+                    }
                 }
             }
+            paintCaret(*cursor, range, paint, xStart, xEnd);
         }
-        paintCaret(cursor, range, paint, xStart, xEnd);
     }
 
     // show word wrap marker if desirable
@@ -907,13 +909,13 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 }
 
-void KateRenderer::paintCaret(const KTextEditor::Cursor *cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd)
+void KateRenderer::paintCaret(const KTextEditor::Cursor &cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd)
 {
-    if (drawCaret() && cursor && range->includesCursor(*cursor)) {
+    if (range->includesCursor(cursor)) {
         int caretWidth;
         int lineWidth = 2;
         QColor color;
-        QTextLine line = range->layout()->lineForTextPosition(qMin(cursor->column(), range->length()));
+        QTextLine line = range->layout()->lineForTextPosition(qMin(cursor.column(), range->length()));
 
         // Determine the caret's style
         caretStyles style = caretStyle();
@@ -921,8 +923,8 @@ void KateRenderer::paintCaret(const KTextEditor::Cursor *cursor, const KateLineL
         // Make the caret the desired width
         if (style == Line) {
             caretWidth = lineWidth;
-        } else if (line.isValid() && cursor->column() < range->length()) {
-            caretWidth = int(line.cursorToX(cursor->column() + 1) - line.cursorToX(cursor->column()));
+        } else if (line.isValid() && cursor.column() < range->length()) {
+            caretWidth = int(line.cursorToX(cursor.column() + 1) - line.cursorToX(cursor.column()));
             if (caretWidth < 0) {
                 caretWidth = -caretWidth;
             }
@@ -939,7 +941,7 @@ void KateRenderer::paintCaret(const KTextEditor::Cursor *cursor, const KateLineL
             // search for the FormatRange that includes the cursor
             const auto formatRanges = range->layout()->formats();
             for (const QTextLayout::FormatRange &r : formatRanges) {
-                if ((r.start <= cursor->column()) && ((r.start + r.length) > cursor->column())) {
+                if ((r.start <= cursor.column()) && ((r.start + r.length) > cursor.column())) {
                     // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
                     QBrush foregroundBrush = r.format.foreground();
                     if (foregroundBrush != Qt::NoBrush) {
@@ -972,16 +974,16 @@ void KateRenderer::paintCaret(const KTextEditor::Cursor *cursor, const KateLineL
             break;
         }
 
-        if (cursor->column() <= range->length()) {
+        if (cursor.column() <= range->length()) {
             // Ensure correct cursor placement for RTL text
             if (range->layout()->textOption().textDirection() == Qt::RightToLeft) {
                 xStart += caretWidth;
             }
-            range->layout()->drawCursor(&paint, QPoint(-xStart, 0), cursor->column(), caretWidth);
+            range->layout()->drawCursor(&paint, QPoint(-xStart, 0), cursor.column(), caretWidth);
         } else {
             // Off the end of the line... must be block mode. Draw the caret ourselves.
             const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
-            int x = cursorToX(lastLine, KTextEditor::Cursor(range->line(), cursor->column()), true);
+            int x = cursorToX(lastLine, KTextEditor::Cursor(range->line(), cursor.column()), true);
             if ((x >= xStart) && (x <= xEnd)) {
                 paint.fillRect(x - xStart, (int)lastLine.lineLayout().y(), caretWidth, lineHeight(), color);
             }
