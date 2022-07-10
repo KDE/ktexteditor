@@ -141,13 +141,9 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
     headerItem()->setIcon(3, QIcon::fromTheme(QStringLiteral("format-text-underline")));
     headerItem()->setIcon(4, QIcon::fromTheme(QStringLiteral("format-text-strikethrough")));
 
-    // grap the bg color, selected color and default font
-    bgcol = KateRendererConfig::global()->backgroundColor();
-    selcol = KateRendererConfig::global()->selectionColor();
-    docfont = KateRendererConfig::global()->baseFont();
-
+    // grab the background color and apply it to the palette
     QPalette pal = viewport()->palette();
-    pal.setColor(QPalette::Window, bgcol);
+    pal.setColor(QPalette::Window, KateRendererConfig::global()->backgroundColor());
     viewport()->setPalette(pal);
 }
 

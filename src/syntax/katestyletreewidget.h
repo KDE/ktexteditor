@@ -30,15 +30,6 @@ public:
 
     void emitChanged();
 
-    void setBgCol(const QColor &c)
-    {
-        bgcol = c;
-    }
-    void setSelCol(const QColor &c)
-    {
-        selcol = c;
-    }
-
     void addItem(QTreeWidgetItem *parent,
                  const QString &styleName,
                  KTextEditor::Attribute::Ptr defaultstyle,
@@ -59,10 +50,6 @@ private Q_SLOTS:
     void changeProperty();
     void unsetColor();
     void updateGroupHeadings();
-
-private:
-    QColor bgcol, selcol;
-    QFont docfont;
 };
 
 #endif
