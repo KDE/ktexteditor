@@ -904,4 +904,17 @@ void KateDocumentTest::testToggleComment()
     }
 }
 
+void KateDocumentTest::testInsertTextTooLargeColumn()
+{
+    KTextEditor::DocumentPrivate doc;
+    const QString original = QStringLiteral("01234567\n01234567");
+    doc.setText(original);
+    QVERIFY(doc.lines() == 2);
+    QCOMPARE(doc.text(), original);
+
+    // try to insert text with initial \n at wrong column, did trigger invalid call to editWrapLine
+    doc.insertText(KTextEditor::Cursor(0, 10), QStringLiteral("\nxxxx"));
+    QCOMPARE(doc.text(), QStringLiteral("01234567  \nxxxx\n01234567"));
+}
+
 #include "katedocument_test.moc"

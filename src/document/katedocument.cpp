@@ -769,7 +769,15 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
             }
 
             if (!block) {
-                editWrapLine(currentLine, insertColumn + pos - currentLineStart);
+                // ensure we can handle wrap positions behind maximal column, same handling as in editInsertText for invalid columns
+                const auto wrapColumn = insertColumn + pos - currentLineStart;
+                const auto currentLineLength = lineLength(currentLine);
+                if (wrapColumn > currentLineLength) {
+                    editInsertText(currentLine, currentLineLength, QString(wrapColumn - currentLineLength, QLatin1Char(' ')));
+                }
+
+                // wrap line call is now save, as wrapColumn is valid for sure!
+                editWrapLine(currentLine, wrapColumn);
                 insertColumn = 0;
             }
 
