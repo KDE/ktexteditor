@@ -1497,7 +1497,7 @@ void KateModOnHdPrompt::slotPDone()
     m_proc = nullptr;
 
     if (es != QProcess::NormalExit) {
-        KMessageBox::sorry(nullptr,
+        KMessageBox::error(nullptr,
                            i18n("The diff command failed. Please make sure that "
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
