@@ -72,6 +72,7 @@ completion/katekeywordcompletion.cpp
 dialogs/kateconfigpage.cpp
 dialogs/katedialogs.cpp
 dialogs/kateconfigpage.cpp
+dialogs/quickdialog.cpp
 
 # document (THE document, buffer, lines/cursors/..., CORE STUFF)
 document/katedocument.cpp
