@@ -468,7 +468,7 @@ void KTextEditor::EditorPrivate::updateColorPalette()
     m_rendererConfig->updateConfig();
 }
 
-void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
+void KTextEditor::EditorPrivate::copyToClipboard(const QString &text, const QString &fileName)
 {
     // empty => nop
     if (text.isEmpty()) {
@@ -480,8 +480,9 @@ void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
 
     // LRU, kill potential duplicated, move new entry to top
     // cut after 10 entries
-    m_clipboardHistory.removeOne(text);
-    m_clipboardHistory.prepend(text);
+    auto entry = ClipboardEntry{text, fileName};
+    m_clipboardHistory.removeOne(entry);
+    m_clipboardHistory.prepend(entry);
     if (m_clipboardHistory.size() > 10) {
         m_clipboardHistory.removeLast();
     }

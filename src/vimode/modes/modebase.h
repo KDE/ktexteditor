@@ -68,7 +68,7 @@ public:
 
 protected:
     // helper methods
-    static void yankToClipBoard(QChar chosen_register, const QString &text);
+    void yankToClipBoard(QChar chosen_register, const QString &text);
     bool deleteRange(Range &r, OperationMode mode = LineWise, bool addToRegister = true);
     const QString getRange(Range &r, OperationMode mode = LineWise) const;
     const QString getLine(int line = -1) const;

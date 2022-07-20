@@ -73,6 +73,7 @@ dialogs/kateconfigpage.cpp
 dialogs/katedialogs.cpp
 dialogs/kateconfigpage.cpp
 dialogs/quickdialog.cpp
+dialogs/clipboardhistorydialog.cpp
 
 # document (THE document, buffer, lines/cursors/..., CORE STUFF)
 document/katedocument.cpp
@@ -322,6 +323,7 @@ PRIVATE
   KF5::ItemViews
   KF5::SonnetCore
   KF5::SonnetUi
+  KF5::CoreAddons
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 

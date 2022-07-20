@@ -24,7 +24,7 @@
     <Action name="edit_paste" group="edit_paste_merge" />
     <Action name="edit_paste_selection" group="edit_paste_merge" />
     <Action name="edit_swap_with_clipboard" group="edit_paste_merge" />
-    <Action name="edit_paste_menu" group="edit_paste_merge" />/>
+    <Action name="clipboard_history_paste" group="edit_paste_merge" />/>
     <Separator group="edit_select_merge" />
     <Action name="view_input_modes" group="edit_select_merge" />
     <Action name="set_insert" group="edit_select_merge" />

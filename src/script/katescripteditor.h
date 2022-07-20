@@ -12,6 +12,8 @@
 
 #include <ktexteditor_export.h>
 
+#include "kateglobal.h"
+
 namespace KTextEditor
 {
 class ViewPrivate;
@@ -30,8 +32,8 @@ public:
     explicit KateScriptEditor(QJSEngine *engine, QObject *parent = nullptr);
 
     Q_INVOKABLE QString clipboardText() const;
-    Q_INVOKABLE QStringList clipboardHistory() const;
-    Q_INVOKABLE void setClipboardText(const QString &text);
+    Q_INVOKABLE const QVector<KTextEditor::EditorPrivate::ClipboardEntry> clipboardHistory() const;
+    Q_INVOKABLE void setClipboardText(const QString &text, const QString &fileName);
 
 private:
     QJSEngine *m_engine = nullptr;

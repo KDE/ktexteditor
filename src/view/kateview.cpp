@@ -14,6 +14,7 @@
 // BEGIN includes
 #include "kateview.h"
 
+#include "clipboardhistorydialog.h"
 #include "export/exporter.h"
 #include "inlinenotedata.h"
 #include "kateabstractinputmode.h"
@@ -454,6 +455,13 @@ void KTextEditor::ViewPrivate::setupActions()
 
     m_copy = a = ac->addAction(KStandardAction::Copy, this, SLOT(copy()));
     a->setWhatsThis(i18n("Use this command to copy the currently selected text to the system clipboard."));
+
+    a = ac->addAction(QStringLiteral("clipboard_history_paste"), this, [this] {
+        ClipboardHistoryDialog chd(mainWindow()->window(), this);
+        chd.openDialog(KTextEditor::EditorPrivate::self()->clipboardHistory());
+    });
+    a->setText(i18n("Clipboard &History Paste"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_V));
 
     if (QApplication::clipboard()->supportsSelection()) {
         m_pasteSelection = a = ac->addAction(QStringLiteral("edit_paste_selection"), this, SLOT(pasteSelection()));
@@ -2800,7 +2808,7 @@ void KTextEditor::ViewPrivate::copy() const
     }
 
     // copy to clipboard and our history!
-    KTextEditor::EditorPrivate::self()->copyToClipboard(text);
+    KTextEditor::EditorPrivate::self()->copyToClipboard(text, m_doc->url().fileName());
 }
 
 void KTextEditor::ViewPrivate::pasteSelection()
