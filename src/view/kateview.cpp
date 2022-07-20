@@ -455,12 +455,6 @@ void KTextEditor::ViewPrivate::setupActions()
     m_copy = a = ac->addAction(KStandardAction::Copy, this, SLOT(copy()));
     a->setWhatsThis(i18n("Use this command to copy the currently selected text to the system clipboard."));
 
-    m_pasteMenu = ac->addAction(QStringLiteral("edit_paste_menu"), new KatePasteMenu(i18n("Clipboard &History"), this));
-    connect(KTextEditor::EditorPrivate::self(),
-            &KTextEditor::EditorPrivate::clipboardHistoryChanged,
-            this,
-            &KTextEditor::ViewPrivate::slotClipboardHistoryChanged);
-
     if (QApplication::clipboard()->supportsSelection()) {
         m_pasteSelection = a = ac->addAction(QStringLiteral("edit_paste_selection"), this, SLOT(pasteSelection()));
         a->setText(i18n("Paste Selection"));
@@ -597,7 +591,7 @@ void KTextEditor::ViewPrivate::setupActions()
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Space));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::userInvokedCompletion);
     } else {
-        for (auto *action : {m_cut, m_paste, m_pasteMenu, m_swapWithClipboard}) {
+        for (auto *action : {m_cut, m_paste, m_swapWithClipboard}) {
             action->setEnabled(false);
         }
 
@@ -960,7 +954,6 @@ void KTextEditor::ViewPrivate::setupActions()
     // widget and setting the shortcut context
     setupEditActions();
     setupCodeFolding();
-    slotClipboardHistoryChanged();
 
     ac->addAssociatedWidget(m_viewInternal);
 
@@ -1616,7 +1609,6 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
 
     m_cut->setEnabled(doc()->isReadWrite() && (selection() || m_config->smartCopyCut()));
     m_paste->setEnabled(doc()->isReadWrite());
-    m_pasteMenu->setEnabled(doc()->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
     if (m_pasteSelection) {
         m_pasteSelection->setEnabled(doc()->isReadWrite());
     }
@@ -1654,11 +1646,6 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     // => view mode changed
     Q_EMIT viewModeChanged(this, viewMode());
     Q_EMIT viewInputModeChanged(this, viewInputMode());
-}
-
-void KTextEditor::ViewPrivate::slotClipboardHistoryChanged()
-{
-    m_pasteMenu->setEnabled(doc()->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
 }
 
 void KTextEditor::ViewPrivate::toggleCamelCaseCursor()

@@ -805,7 +805,6 @@ public Q_SLOTS:
     void toggleWriteLock();
     void switchToCmdLine();
     void slotReadWriteChanged();
-    void slotClipboardHistoryChanged();
     void toggleCamelCaseCursor();
 
 Q_SIGNALS:

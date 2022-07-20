@@ -3144,48 +3144,6 @@ void KateViewBar::hideEvent(QHideEvent *event)
 
 // END KateViewBar related classes
 
-KatePasteMenu::KatePasteMenu(const QString &text, KTextEditor::ViewPrivate *view)
-    : KActionMenu(text, view)
-    , m_view(view)
-{
-    connect(menu(), &QMenu::aboutToShow, this, &KatePasteMenu::slotAboutToShow);
-}
-
-void KatePasteMenu::slotAboutToShow()
-{
-    menu()->clear();
-
-    // insert complete paste history
-    int i = 0;
-    for (const QString &text : KTextEditor::EditorPrivate::self()->clipboardHistory()) {
-        // get text for the menu ;)
-        QString leftPart = (text.size() > 48) ? (text.left(48) + QLatin1String("...")) : text;
-        QAction *a = menu()->addAction(leftPart.replace(QLatin1Char('\n'), QLatin1Char(' ')), this, SLOT(paste()));
-        a->setData(i++);
-    }
-}
-
-void KatePasteMenu::paste()
-{
-    if (!sender()) {
-        return;
-    }
-
-    QAction *action = qobject_cast<QAction *>(sender());
-    if (!action) {
-        return;
-    }
-
-    // get index
-    int i = action->data().toInt();
-    if (i >= KTextEditor::EditorPrivate::self()->clipboardHistory().size()) {
-        return;
-    }
-
-    // paste
-    m_view->paste(&KTextEditor::EditorPrivate::self()->clipboardHistory()[i]);
-}
-
 // BEGIN SCHEMA ACTION -- the 'View->Color theme' menu action
 void KateViewSchemaAction::init()
 {

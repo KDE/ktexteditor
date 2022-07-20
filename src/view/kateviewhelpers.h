@@ -661,21 +661,6 @@ private:
     QTimer *m_hideTimer;
 };
 
-class KatePasteMenu : public KActionMenu
-{
-    Q_OBJECT
-
-public:
-    KatePasteMenu(const QString &text, KTextEditor::ViewPrivate *view);
-
-private:
-    KTextEditor::ViewPrivate *m_view;
-
-private Q_SLOTS:
-    void slotAboutToShow();
-    void paste();
-};
-
 class KateViewSchemaAction : public KActionMenu
 {
     Q_OBJECT
