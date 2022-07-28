@@ -1,9 +1,9 @@
 var katescript = {
-    "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>",
+    "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>, Pablo Rauzy <r_NOSPAM_@uzy.me>",
     "license": "LGPL-2.1+",
     "revision": 9,
     "kate-version": "5.1",
-    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"],
+    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "align", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"],
     "actions": [
         {   "function": "sort",
             "name": "Sort Selected Text",
@@ -84,6 +84,40 @@ function trim()
 function rmblank()
 {
     filter(function(l) { return l.length > 0; });
+}
+
+function align(pattern)
+{
+    if (typeof pattern == "undefined") {
+        pattern = /[^\s]/; // align on first non-blank by default
+    }
+    each(function(lines) {
+        var indexes = lines.map(function(l) {
+            m = l.match(pattern);
+            if (m == null) { // no match
+                return -1;
+            }
+            else if (m.length == 1) { // pattern has no group
+                return l.indexOf(m[0]);
+            }
+            else { // pattern has a group
+                return l.indexOf(m[1], l.indexOf(m[0]));
+            }
+        });
+        var maxIndex = Math.max(...indexes);
+        aligned = [];
+        for (i = 0; i < lines.length; i++) {
+            if (indexes[i] == -1) {
+                aligned.push(lines[i]);
+            }
+            else {
+                aligned.push(lines[i].slice(0, indexes[i]) +
+                            ' '.repeat(maxIndex - indexes[i]) +
+                            lines[i].slice(indexes[i]));
+            }
+        }
+        return aligned;
+    });
 }
 
 function join(separator)
@@ -375,6 +409,8 @@ function help(cmd)
         return i18n("Joins selected lines or whole document. Optionally pass a separator to put between each line:<br><code>join ', '</code> will e.g. join lines and separate them by a comma.");
     } else if (cmd == "rmblank") {
         return i18n("Removes empty lines from selection or whole document.");
+    } else if (cmd == "align") {
+        return i18n("Align selected lines or whole document on the column given by a regular expression or on the first non blank character by default:<br><code>align</code> will indent all lines to the level of the most indented one;<br><code>align -</code> will insert spaces before the first '-' of each lines so that they're all on the same column;<br><code>align :(\\\\s+)</code> will insert spaces before the matched blanks and after the colon so that the first non blank space after the colon of each lines are aligned.");
     } else if (cmd == "unwrap") {
         return "Unwraps all paragraphs in the text selection, or the paragraph under the text cursor if there is no selected text.";
     } else if (cmd == "each") {
