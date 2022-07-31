@@ -3,7 +3,7 @@ var katescript = {
     "license": "LGPL-2.1+",
     "revision": 9,
     "kate-version": "5.1",
-    "functions": ["fselect", "bselect", "sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"],
+    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
         {   "function": "sort",
             "name": "Sort Selected Text",
@@ -40,51 +40,6 @@ var katescript = {
 
 // required katepart js libraries
 require ("range.js");
-
-function fselect(target) // forward select
-{
-    startSel = view.cursorPosition();
-    // by default, select til the end of the current line
-    if (typeof target == "undefined") {
-        view.setSelection(new Range(startSel, new Cursor(startSel.line, document.lastColumn(startSel.line) + 1)));
-        return;
-    }
-    // otherwise, select to the first occurrence of the given target (including it)
-    endSel = null;
-    lines = document.text(new Range(startSel, document.documentRange().end)).split("\n");
-    for ( var i = 0; i < lines.length; ++i ) {
-        col = lines[i].indexOf(target);
-        if (col == -1) continue;
-        endSel = new Cursor(startSel.line + i, col + target.length);
-        if (i == 0) endSel.column += startSel.column;
-        break;
-    }
-    if (endSel == null) return false;
-    view.setCursorPosition(endSel);
-    view.setSelection(new Range(startSel, endSel));
-}
-
-function bselect(target) // backward select
-{
-    endSel = view.cursorPosition();
-    // by default, select from the beginning of the current line
-    if (typeof target == "undefined") {
-        view.setSelection(new Range(new Cursor(endSel.line, 0), endSel));
-        return;
-    }
-    // otherwise, select from the last occurrence of the given target (including it)
-    startSel = null;
-    lines = document.text(new Range(document.documentRange().start, endSel)).split("\n");
-    for ( var i = lines.length - 1; i >= 0; --i ) {
-        col = lines[i].lastIndexOf(target);
-        if (col == -1) continue;
-        startSel = new Cursor(endSel.line - (lines.length - i) + 1, col);
-        break;
-    }
-    if (startSel == null) return false;
-    view.setCursorPosition(startSel);
-    view.setSelection(new Range(startSel, endSel));
-}
 
 function sort()
 {
@@ -398,6 +353,51 @@ function decodeURISelection()
     _uri_transform_selection(decodeURIComponent);
 }
 
+function fsel(target) // forward select
+{
+    startSel = view.cursorPosition();
+    // by default, select til the end of the current line
+    if (typeof target == "undefined") {
+        view.setSelection(new Range(startSel, new Cursor(startSel.line, document.lastColumn(startSel.line) + 1)));
+        return;
+    }
+    // otherwise, select to the first occurrence of the given target (including it)
+    endSel = null;
+    lines = document.text(new Range(startSel, document.documentRange().end)).split("\n");
+    for ( var i = 0; i < lines.length; ++i ) {
+        col = lines[i].indexOf(target);
+        if (col == -1) continue;
+        endSel = new Cursor(startSel.line + i, col + target.length);
+        if (i == 0) endSel.column += startSel.column;
+        break;
+    }
+    if (endSel == null) return false;
+    view.setCursorPosition(endSel);
+    view.setSelection(new Range(startSel, endSel));
+}
+
+function bsel(target) // backward select
+{
+    endSel = view.cursorPosition();
+    // by default, select from the beginning of the current line
+    if (typeof target == "undefined") {
+        view.setSelection(new Range(new Cursor(endSel.line, 0), endSel));
+        return;
+    }
+    // otherwise, select from the last occurrence of the given target (including it)
+    startSel = null;
+    lines = document.text(new Range(document.documentRange().start, endSel)).split("\n");
+    for ( var i = lines.length - 1; i >= 0; --i ) {
+        col = lines[i].lastIndexOf(target);
+        if (col == -1) continue;
+        startSel = new Cursor(endSel.line - (lines.length - i) + 1, col);
+        break;
+    }
+    if (startSel == null) return false;
+    view.setCursorPosition(startSel);
+    view.setSelection(new Range(startSel, endSel));
+}
+
 function help(cmd)
 {
     if (cmd == "sort") {
@@ -436,6 +436,10 @@ function help(cmd)
         return i18n("Encode special chars in a single line selection, so the result text can be used as URI.");
     } else if (cmd == "decodeURISelection") {
         return i18n("Reverse action of URI encode.");
+    } else if (cmd == "fsel") {
+        return i18n("Select text forward from current cursor position to the first occurrence of the given argument after it (or the end of the current line by default).");
+    } else if (cmd == "bsel") {
+        return i18n("Select text backward from current cursor position to the last occurrence of the given argument before it (or the beginning of the current line by default).");
     }
 }
 
