@@ -60,6 +60,7 @@ function fselect(target) // forward select
         break;
     }
     if (endSel == null) return false;
+    view.setCursorPosition(endSel);
     view.setSelection(new Range(startSel, endSel));
 }
 
@@ -81,6 +82,7 @@ function bselect(target) // backward select
         break;
     }
     if (startSel == null) return false;
+    view.setCursorPosition(startSel);
     view.setSelection(new Range(startSel, endSel));
 }
 
