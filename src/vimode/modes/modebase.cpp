@@ -68,19 +68,19 @@ bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
         res = doc()->removeText(r.toEditorRange(), mode == Block);
     }
 
-    // the BlackHoleRegister here is only a placeholder to signify that no register was selected
+    // the UnnamedRegister here is only a placeholder to signify that no register was selected
     // this is needed because the fallback register depends on whether the deleted text spans a line/lines
-    QChar chosenRegister = getChosenRegister(BlackHoleRegister);
+    QChar chosenRegister = getChosenRegister(UnnamedRegister);
     if (addToRegister) {
         fillRegister(chosenRegister, removedText, mode);
     }
 
     const QChar lastChar = removedText.count() > 0 ? removedText.back() : QLatin1Char('\0');
-    if (r.startLine != r.endLine || lastChar == QLatin1Char('\n') || lastChar == QLatin1Char('\r')) {
+    if (chosenRegister != BlackHoleRegister && (r.startLine != r.endLine || lastChar == QLatin1Char('\n') || lastChar == QLatin1Char('\r'))) {
         // for deletes spanning a line/lines, always prepend to the numbered registers
         fillRegister(PrependNumberedRegister, removedText, mode);
         chosenRegister = PrependNumberedRegister;
-    } else if (chosenRegister == BlackHoleRegister) {
+    } else if (chosenRegister == UnnamedRegister) {
         // only set the SmallDeleteRegister when no register was selected
         fillRegister(SmallDeleteRegister, removedText, mode);
         chosenRegister = SmallDeleteRegister;
