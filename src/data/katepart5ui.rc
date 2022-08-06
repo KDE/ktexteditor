@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="99" translationDomain="ktexteditor5">
+<gui name="KatePartView" version="100" translationDomain="ktexteditor5">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -55,7 +55,8 @@
     </Menu>
     <Separator group="edit_selection"/>
     <Action name="tools_cleanIndent" group="edit_selection" />
-    <Action name="tools_align" group="edit_selection" />
+    <Action name="tools_formatIndent" group="edit_selection" />
+    <Action name="tools_alignOn" group="edit_selection" />
     <Action name="tools_apply_wordwrap" group="edit_selection" />
     <Separator group="edit_selection"/>
     <Action name="edit_create_multi_cursor_up" group="edit_selection"/>

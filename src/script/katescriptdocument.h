@@ -176,6 +176,7 @@ public:
     Q_INVOKABLE bool endsWith(int line, const QString &pattern, bool skipWhiteSpaces);
 
     Q_INVOKABLE void indent(const QJSValue &jsrange, int change);
+    Q_INVOKABLE void alignOn(const QJSValue &jsrange, const QJSValue &pattern);
 
 private:
     static bool _isCode(int defaultStyle);

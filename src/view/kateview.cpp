@@ -69,6 +69,7 @@
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFont>
+#include <QInputDialog>
 #include <QKeyEvent>
 #include <QLayout>
 #include <QMimeData>
@@ -501,10 +502,23 @@ void KTextEditor::ViewPrivate::setupActions()
                  "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::cleanIndent);
 
-        a = ac->addAction(QStringLiteral("tools_align"));
-        a->setText(i18n("&Align"));
-        a->setWhatsThis(i18n("Use this to align the current line or block of text to its proper indent level."));
-        connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::align);
+        a = ac->addAction(QStringLiteral("tools_formatIndent"));
+        a->setText(i18n("&Format Indentation"));
+        a->setWhatsThis(i18n("Use this to auto indent the current line or block of text to its proper indent level."));
+        connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::formatIndent);
+
+        a = ac->addAction(QStringLiteral("tools_alignOn"));
+        a->setText(i18n("&Align On..."));
+        a->setWhatsThis(
+            i18n("This command aligns lines in the selected block or whole document on the column given by a regular expression "
+                 "that you will be prompted for.<br /><br />"
+                 "If you give an empty pattern it will align on the first non-blank character by default.<br />"
+                 "If the pattern has a capture it will indent on the captured match.<br /><br />"
+                 "<i>Examples</i>:<br />"
+                 "With '-' it will insert spaces before the first '-' of each lines to align them all on the same column.<br />"
+                 "With ':\\s+(.)' it will insert spaces before the first non-blank character that occurs after a colon to align "
+                 "them all on the same column."));
+        connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::alignOn);
 
         a = ac->addAction(QStringLiteral("tools_comment"));
         a->setText(i18n("C&omment"));
@@ -1608,7 +1622,8 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
                            QStringLiteral("tools_indent"),
                            QStringLiteral("tools_unindent"),
                            QStringLiteral("tools_cleanIndent"),
-                           QStringLiteral("tools_align"),
+                           QStringLiteral("tools_formatIndet"),
+                           QStringLiteral("tools_alignOn"),
                            QStringLiteral("tools_comment"),
                            QStringLiteral("tools_uncomment"),
                            QStringLiteral("tools_toggle_comment"),
@@ -3525,16 +3540,38 @@ void KTextEditor::ViewPrivate::cleanIndent()
     doc()->indent(r, 0);
 }
 
-void KTextEditor::ViewPrivate::align()
+void KTextEditor::ViewPrivate::formatIndent()
 {
     // no selection: align current line; selection: use selection range
     const int line = cursorPosition().line();
-    KTextEditor::Range alignRange(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, 0));
+    KTextEditor::Range formatRange(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, 0));
     if (selection()) {
-        alignRange = selectionRange();
+        formatRange = selectionRange();
     }
 
-    doc()->align(this, alignRange);
+    doc()->align(this, formatRange);
+}
+
+// alias of formatIndent, for backward compatibility
+void KTextEditor::ViewPrivate::align()
+{
+    formatIndent();
+}
+
+void KTextEditor::ViewPrivate::alignOn()
+{
+    KTextEditor::Range range;
+    if (!selection()) {
+        range = doc()->documentRange();
+    } else {
+        range = selectionRange();
+    }
+    bool ok;
+    QString pattern = QInputDialog::getText(window(), i18n("Align On"), i18n("Alignment pattern:"), QLineEdit::Normal, QStringLiteral(""), &ok);
+    if (!ok) {
+        return;
+    }
+    doc()->alignOn(range, pattern);
 }
 
 void KTextEditor::ViewPrivate::comment()

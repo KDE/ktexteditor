@@ -824,3 +824,12 @@ void KateScriptDocument::indent(const QJSValue &jsrange, int change)
     const auto range = rangeFromScriptValue(jsrange);
     m_document->indent(range, change);
 }
+
+void KateScriptDocument::alignOn(const QJSValue &jsrange, const QJSValue &pattern)
+{
+    if (!pattern.isString()) {
+        return;
+    }
+    const auto range = rangeFromScriptValue(jsrange);
+    m_document->alignOn(range, pattern.toString());
+}

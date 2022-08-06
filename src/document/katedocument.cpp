@@ -3738,6 +3738,33 @@ void KTextEditor::DocumentPrivate::align(KTextEditor::ViewPrivate *view, KTextEd
     m_indenter->indent(view, range);
 }
 
+void KTextEditor::DocumentPrivate::alignOn(KTextEditor::Range range, const QString &pattern)
+{
+    QRegularExpression re(pattern.isEmpty() ? QStringLiteral("[^\\s]") : pattern);
+    QList<QString> lines = textLines(range);
+    QList<int> indexes;
+    for (const auto &line : lines) {
+        QRegularExpressionMatch match = re.match(line);
+        if (!match.hasMatch()) { // no match
+            indexes.append(-1);
+        } else if (match.lastCapturedIndex() == 0) { // pattern has no group
+            indexes.append(match.capturedStart(0));
+        } else { // pattern has a group
+            indexes.append(match.capturedStart(1));
+        }
+    }
+    int maxIndex = *std::max_element(indexes.cbegin(), indexes.cend());
+    QStringList aligned;
+    for (int i = 0; i < lines.size(); ++i) {
+        if (indexes.at(i) == -1) {
+            aligned.append(lines.at(i));
+        } else {
+            aligned.append(lines.at(i).left(indexes.at(i)) + QString(maxIndex - indexes.at(i), QChar::Space) + lines.at(i).mid(indexes.at(i)));
+        }
+    }
+    replaceText(range, aligned.join(QChar::LineFeed));
+}
+
 void KTextEditor::DocumentPrivate::insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor)
 {
     if (!isReadWrite()) {

@@ -538,7 +538,9 @@ public Q_SLOTS:
     void indent();
     void unIndent();
     void cleanIndent();
-    void align();
+    void formatIndent();
+    void align(); // alias of formatIndent, for backward compatibility
+    void alignOn();
     void comment();
     void uncomment();
     void toggleComment();
