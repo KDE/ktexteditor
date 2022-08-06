@@ -171,6 +171,20 @@ void KateScriptView::align(const QJSValue &jsrange)
     m_view->doc()->align(m_view, range);
 }
 
+QJSValue KateScriptView::searchText(const QJSValue &range, const QString &pattern, bool backward)
+{
+    KTextEditor::SearchOptions option = backward ? KTextEditor::Backwards : KTextEditor::Default;
+    KTextEditor::Range match = m_view->doc()->searchText(rangeFromScriptValue(range), pattern, option).first();
+    if (!match.isValid()) {
+        return QJSValue::NullValue;
+    }
+    if (backward) {
+        return cursorToScriptValue(m_engine, match.start());
+    } else {
+        return cursorToScriptValue(m_engine, match.end());
+    }
+}
+
 QJSValue KateScriptView::executeCommand(const QString &command, const QString &args, const QJSValue &jsrange)
 {
     QString message;

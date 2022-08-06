@@ -362,15 +362,7 @@ function fsel(target) // forward select
         return;
     }
     // otherwise, select to the first occurrence of the given target (including it)
-    endSel = null;
-    lines = document.text(new Range(startSel, document.documentRange().end)).split("\n");
-    for ( var i = 0; i < lines.length; ++i ) {
-        col = lines[i].indexOf(target);
-        if (col == -1) continue;
-        endSel = new Cursor(startSel.line + i, col + target.length);
-        if (i == 0) endSel.column += startSel.column;
-        break;
-    }
+    endSel = view.searchText(new Range(startSel, document.documentRange().end), target, false);
     if (endSel == null) return false;
     view.setCursorPosition(endSel);
     view.setSelection(new Range(startSel, endSel));
@@ -385,14 +377,7 @@ function bsel(target) // backward select
         return;
     }
     // otherwise, select from the last occurrence of the given target (including it)
-    startSel = null;
-    lines = document.text(new Range(document.documentRange().start, endSel)).split("\n");
-    for ( var i = lines.length - 1; i >= 0; --i ) {
-        col = lines[i].lastIndexOf(target);
-        if (col == -1) continue;
-        startSel = new Cursor(endSel.line - (lines.length - i) + 1, col);
-        break;
-    }
+    startSel = view.searchText(new Range(document.documentRange().start, endSel), target, true);
     if (startSel == null) return false;
     view.setCursorPosition(startSel);
     view.setSelection(new Range(startSel, endSel));
