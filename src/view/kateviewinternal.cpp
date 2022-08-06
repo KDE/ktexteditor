@@ -1366,7 +1366,7 @@ public:
                 // there is a letter before
                 if (text.at(col + 1).isLetter()) {
                     // and a space before that
-                    if (text.at(col).isSpace()) {
+                    if (col >= 0 && text.at(col).isSpace()) {
                         // we have a one letter word,
                         // so move forward to end of word
                         ++col;
