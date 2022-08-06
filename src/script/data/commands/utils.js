@@ -356,14 +356,13 @@ function decodeURISelection()
 function fsel(target) // forward select
 {
     startSel = view.cursorPosition();
-    // by default, select til the end of the current line
-    if (typeof target == "undefined") {
-        view.setSelection(new Range(startSel, new Cursor(startSel.line, document.lastColumn(startSel.line) + 1)));
-        return;
+    if (typeof target == "undefined") { // by default, select til the end of the current line
+        endSel = new Cursor(startSel.line, document.lastColumn(startSel.line) + 1);
+    } else { // otherwise, select to the first occurrence of the given target (including it)
+        match = view.searchText(new Range(startSel, document.documentRange().end), target, false);
+        if (match == null) return false;
+        else endSel = match.end;
     }
-    // otherwise, select to the first occurrence of the given target (including it)
-    endSel = view.searchText(new Range(startSel, document.documentRange().end), target, false);
-    if (endSel == null) return false;
     view.setCursorPosition(endSel);
     view.setSelection(new Range(startSel, endSel));
 }
@@ -371,14 +370,13 @@ function fsel(target) // forward select
 function bsel(target) // backward select
 {
     endSel = view.cursorPosition();
-    // by default, select from the beginning of the current line
-    if (typeof target == "undefined") {
-        view.setSelection(new Range(new Cursor(endSel.line, 0), endSel));
-        return;
+    if (typeof target == "undefined") { // by default, select from the beginning of the current line
+        startSel = new Cursor(endSel.line, 0);
+    } else { // otherwise, select from the last occurrence of the given target (including it)
+        match = view.searchText(new Range(document.documentRange().start, endSel), target, true);
+        if (match == null) return false;
+        else startSel = match.start;
     }
-    // otherwise, select from the last occurrence of the given target (including it)
-    startSel = view.searchText(new Range(document.documentRange().start, endSel), target, true);
-    if (startSel == null) return false;
     view.setCursorPosition(startSel);
     view.setSelection(new Range(startSel, endSel));
 }

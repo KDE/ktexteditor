@@ -178,11 +178,7 @@ QJSValue KateScriptView::searchText(const QJSValue &range, const QString &patter
     if (!match.isValid()) {
         return QJSValue::NullValue;
     }
-    if (backward) {
-        return cursorToScriptValue(m_engine, match.start());
-    } else {
-        return cursorToScriptValue(m_engine, match.end());
-    }
+    return rangeToScriptValue(m_engine, match);
 }
 
 QJSValue KateScriptView::executeCommand(const QString &command, const QString &args, const QJSValue &jsrange)
