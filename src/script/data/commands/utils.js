@@ -359,7 +359,7 @@ function fsel(target) // forward select
     if (typeof target == "undefined") { // by default, select til the end of the current line
         endSel = new Cursor(startSel.line, document.lastColumn(startSel.line) + 1);
     } else { // otherwise, select to the first occurrence of the given target (including it)
-        match = view.searchText(new Range(startSel, document.documentRange().end), target, false);
+        match = view.searchText(new Range(startSel, document.documentRange().end), target);
         if (match == null) return false;
         else endSel = match.end;
     }
