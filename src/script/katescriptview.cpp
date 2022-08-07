@@ -175,9 +175,6 @@ QJSValue KateScriptView::searchText(const QJSValue &range, const QString &patter
 {
     KTextEditor::SearchOptions option = backwards ? KTextEditor::Backwards : KTextEditor::Default;
     KTextEditor::Range match = m_view->doc()->searchText(rangeFromScriptValue(range), pattern, option).first();
-    if (!match.isValid()) {
-        return QJSValue::NullValue;
-    }
     return rangeToScriptValue(m_engine, match);
 }
 

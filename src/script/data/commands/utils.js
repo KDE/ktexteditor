@@ -360,7 +360,7 @@ function fsel(target) // forward select
         endSel = new Cursor(startSel.line, document.lastColumn(startSel.line) + 1);
     } else { // otherwise, select to the first occurrence of the given target (including it)
         match = view.searchText(new Range(startSel, document.documentRange().end), target);
-        if (match == null) return false;
+        if (!match.isValid()) return false;
         else endSel = match.end;
     }
     view.setCursorPosition(endSel);
@@ -374,7 +374,7 @@ function bsel(target) // backward select
         startSel = new Cursor(endSel.line, 0);
     } else { // otherwise, select from the last occurrence of the given target (including it)
         match = view.searchText(new Range(document.documentRange().start, endSel), target, true);
-        if (match == null) return false;
+        if (!match.isValid()) return false;
         else startSel = match.start;
     }
     view.setCursorPosition(startSel);
