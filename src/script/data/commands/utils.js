@@ -440,6 +440,7 @@ function each(func)
 {
     func = __toFunc(func, 'lines');
 
+    var cursor = view.cursorPosition();
     var selection = view.selection();
     if (!selection.isValid()) {
         // use whole range
@@ -452,11 +453,15 @@ function each(func)
     var text = document.text(selection);
 
     var lines = text.split("\n");
+    oldLineCount = lines.length;
+    oldCurrentLineLength = document.lineLength(cursor.line);
     lines = func(lines);
     if ( typeof(lines) == "object" ) {
       text = lines.join("\n");
+      newLineCount = lines.length;
     } else if ( typeof(lines) == "string" ) {
       text = lines
+      newLineCount = (lines.match('\n') || []).length;
     } else {
       throw "callback function for each has to return object or array of lines";
     }
@@ -467,6 +472,12 @@ function each(func)
     document.removeText(selection);
     document.insertText(selection.start, text);
     document.editEnd();
+    if (newLineCount == oldLineCount) {
+        if (document.lineLength(cursor.line) != oldCurrentLineLength) {
+            cursor.column = document.lastColumn(cursor.line) + 1;
+        }
+        view.setCursorPosition(cursor);
+    }
 }
 
 function filter(func)
