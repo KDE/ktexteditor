@@ -867,7 +867,7 @@ void KateDocumentTest::testToggleComment()
         QVERIFY(doc.lines() == 2);
 
         doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
-        QCOMPARE(doc.text(), QStringLiteral("#import hello;\n #def method():"));
+        QCOMPARE(doc.text(), QStringLiteral("# import hello;\n # def method():"));
 
         doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);

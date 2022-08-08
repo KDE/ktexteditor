@@ -3855,12 +3855,11 @@ QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::C
 */
 void KTextEditor::DocumentPrivate::addStartLineCommentToSingleLine(int line, int attrib)
 {
-    QString commentLineMark = highlight()->getCommentSingleLineStart(attrib);
+    const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
     int pos = -1;
 
     if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::StartOfLine) {
         pos = 0;
-        commentLineMark += QLatin1Char(' ');
     } else {
         const Kate::TextLine l = kateTextLine(line);
         pos = l->firstChar();
