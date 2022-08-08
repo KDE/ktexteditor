@@ -859,15 +859,22 @@ public:
     bool multiPaste(KTextEditor::ViewPrivate *view, const QStringList &texts);
     void paste(KTextEditor::ViewPrivate *view, const QString &text);
 
+public:
+    enum CommentType {
+        UnComment = -1,
+        ToggleComment = 0,
+        Comment = 1,
+    };
+
 private:
     // Helper function for use with multiple cursors
     KTextEditor::Cursor backspaceAtCursor(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
-    void commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int changeType);
+    void commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, CommentType changeType);
     bool skipAutoBrace(QChar closingBracket, KTextEditor::Cursor pos);
 
 public:
     void indent(KTextEditor::Range range, int change);
-    void comment(KTextEditor::ViewPrivate *view, uint line, uint column, int change);
+    void comment(KTextEditor::ViewPrivate *view, uint line, uint column, CommentType change);
     void align(KTextEditor::ViewPrivate *view, KTextEditor::Range range);
     void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
 

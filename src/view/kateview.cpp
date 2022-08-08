@@ -3540,19 +3540,19 @@ void KTextEditor::ViewPrivate::align()
 void KTextEditor::ViewPrivate::comment()
 {
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandLeft | Kate::TextRange::ExpandRight);
-    doc()->comment(this, cursorPosition().line(), cursorPosition().column(), 1);
+    doc()->comment(this, cursorPosition().line(), cursorPosition().column(), DocumentPrivate::Comment);
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandRight);
 }
 
 void KTextEditor::ViewPrivate::uncomment()
 {
-    doc()->comment(this, cursorPosition().line(), cursorPosition().column(), -1);
+    doc()->comment(this, cursorPosition().line(), cursorPosition().column(), DocumentPrivate::UnComment);
 }
 
 void KTextEditor::ViewPrivate::toggleComment()
 {
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandLeft | Kate::TextRange::ExpandRight);
-    doc()->comment(this, cursorPosition().line(), cursorPosition().column(), 0);
+    doc()->comment(this, cursorPosition().line(), cursorPosition().column(), DocumentPrivate::ToggleComment);
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandRight);
 }
 

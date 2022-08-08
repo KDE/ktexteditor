@@ -4157,7 +4157,7 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
     return removed;
 }
 
-void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, int change)
+void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, CommentType changeType)
 {
     const bool hasSelection = !selection.isEmpty();
     int selectionCol = 0;
@@ -4183,7 +4183,7 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
     bool hasStartLineCommentMark = !(highlight()->getCommentSingleLineStart(startAttrib).isEmpty());
     bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty()) && !(highlight()->getCommentEnd(startAttrib).isEmpty()));
 
-    if (change > 0) { // comment
+    if (changeType == Comment) {
         if (!hasSelection) {
             if (hasStartLineCommentMark) {
                 addStartLineCommentToSingleLine(line, startAttrib);
@@ -4210,7 +4210,7 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
         }
     } else { // uncomment
         bool removed = false;
-        const bool toggleComment = change == 0;
+        const bool toggleComment = changeType == ToggleComment;
         if (!hasSelection) {
             removed = (hasStartLineCommentMark && removeStartLineCommentFromSingleLine(line, startAttrib))
                 || (hasStartStopCommentMark && removeStartStopCommentFromSingleLine(line, startAttrib));
@@ -4222,7 +4222,7 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
 
         // recursive call for toggle comment
         if (!removed && toggleComment) {
-            commentSelection(selection, c, blockSelect, 1);
+            commentSelection(selection, c, blockSelect, Comment);
         }
     }
 }
@@ -4231,7 +4231,7 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
   Comment or uncomment the selection or the current
   line if there is no selection.
 */
-void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint line, uint column, int change)
+void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint line, uint column, CommentType change)
 {
     // skip word wrap bug #105373
     const bool skipWordWrap = wordWrap();

@@ -866,10 +866,10 @@ void KateDocumentTest::testToggleComment()
         doc.setText(original);
         QVERIFY(doc.lines() == 2);
 
-        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0); // 0 == ToggleComment
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), QStringLiteral("#import hello;\n #def method():"));
 
-        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0); // 0 == ToggleComment
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);
     }
 
@@ -881,24 +881,24 @@ void KateDocumentTest::testToggleComment()
         doc.setText(original);
         QVERIFY(doc.lines() == 6);
 
-        doc.commentSelection(doc.documentRange(), {5, 0}, false, 0); // 0 == ToggleComment
+        doc.commentSelection(doc.documentRange(), {5, 0}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), QStringLiteral("// #include<iostream>\n// int main()\n// {\n// return 0;\n// }\n"));
 
-        doc.commentSelection(doc.documentRange(), {5, 0}, false, 0); // 0 == ToggleComment
+        doc.commentSelection(doc.documentRange(), {5, 0}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);
 
         // Comment just a portion
-        doc.commentSelection(Range(1, 0, 1, 3), Cursor(1, 3), false, 0);
+        doc.commentSelection(Range(1, 0, 1, 3), Cursor(1, 3), false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), QStringLiteral("#include<iostream>\n/*int*/ main()\n{\nreturn 0;\n}\n"));
-        doc.commentSelection(Range(1, 0, 1, 7), Cursor(1, 3), false, 0);
+        doc.commentSelection(Range(1, 0, 1, 7), Cursor(1, 3), false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);
 
         // mixed, one line commented, one not => both get commented
         original = QStringLiteral(" // int main()\n{}");
         doc.setText(original);
-        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0);
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), QStringLiteral("//  // int main()\n// {}"));
-        doc.commentSelection(doc.documentRange(), {1, 2}, false, 0);
+        doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
         // after uncommenting, we get original text back with one line commented
         QCOMPARE(doc.text(), original);
     }
