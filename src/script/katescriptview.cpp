@@ -180,6 +180,13 @@ void KateScriptView::alignOn(const QJSValue &jsrange, const QJSValue &pattern)
     m_view->doc()->alignOn(range, pattern.toString(), m_view->blockSelection());
 }
 
+QJSValue KateScriptView::searchText(const QJSValue &range, const QString &pattern, bool backwards)
+{
+    KTextEditor::SearchOptions option = backwards ? KTextEditor::Backwards : KTextEditor::Default;
+    KTextEditor::Range match = m_view->doc()->searchText(rangeFromScriptValue(range), pattern, option).first();
+    return rangeToScriptValue(m_engine, match);
+}
+
 QJSValue KateScriptView::executeCommand(const QString &command, const QString &args, const QJSValue &jsrange)
 {
     QString message;

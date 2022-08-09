@@ -70,6 +70,8 @@ public:
     Q_INVOKABLE void align(const QJSValue &range);
     Q_INVOKABLE void alignOn(const QJSValue &jsrange, const QJSValue &pattern = QJSValue(QStringLiteral("")));
 
+    Q_INVOKABLE QJSValue searchText(const QJSValue &range, const QString &pattern, bool backwards = false);
+
     Q_INVOKABLE QJSValue executeCommand(const QString &command, const QString &args = QString(), const QJSValue &jsrange = QJSValue());
 
 private:
