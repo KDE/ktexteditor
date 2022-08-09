@@ -3571,7 +3571,7 @@ void KTextEditor::ViewPrivate::alignOn()
     if (!ok) {
         return;
     }
-    doc()->alignOn(range, pattern);
+    doc()->alignOn(range, pattern, this->blockSelection());
 }
 
 void KTextEditor::ViewPrivate::comment()

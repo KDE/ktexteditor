@@ -869,7 +869,7 @@ public:
     void indent(KTextEditor::Range range, int change);
     void comment(KTextEditor::ViewPrivate *view, uint line, uint column, int change);
     void align(KTextEditor::ViewPrivate *view, KTextEditor::Range range);
-    void alignOn(KTextEditor::Range range, const QString &pattern);
+    void alignOn(KTextEditor::Range range, const QString &pattern, bool blockwise);
     void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
 
     enum TextTransform { Uppercase, Lowercase, Capitalize };

@@ -171,6 +171,15 @@ void KateScriptView::align(const QJSValue &jsrange)
     m_view->doc()->align(m_view, range);
 }
 
+void KateScriptView::alignOn(const QJSValue &jsrange, const QJSValue &pattern)
+{
+    if (!pattern.isString()) {
+        return;
+    }
+    const auto range = rangeFromScriptValue(jsrange);
+    m_view->doc()->alignOn(range, pattern.toString(), m_view->blockSelection());
+}
+
 QJSValue KateScriptView::executeCommand(const QString &command, const QString &args, const QJSValue &jsrange)
 {
     QString message;

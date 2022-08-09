@@ -3738,31 +3738,41 @@ void KTextEditor::DocumentPrivate::align(KTextEditor::ViewPrivate *view, KTextEd
     m_indenter->indent(view, range);
 }
 
-void KTextEditor::DocumentPrivate::alignOn(KTextEditor::Range range, const QString &pattern)
+void KTextEditor::DocumentPrivate::alignOn(KTextEditor::Range range, const QString &pattern, bool blockwise)
 {
+    QStringList lines = textLines(range, blockwise);
+    // if we have less then two lines in the selection there is nothing to do
+    if (lines.size() < 2) {
+        return;
+    }
+    // align on first non-blank character by default
     QRegularExpression re(pattern.isEmpty() ? QStringLiteral("[^\\s]") : pattern);
-    QList<QString> lines = textLines(range);
-    QList<int> indexes;
+    // find all matches actual column (normal selection: first line has offset ; block selection: all lines have offset)
+    int selectionStartColumn = range.start().column();
+    QList<int> patternStartColumns;
     for (const auto &line : lines) {
         QRegularExpressionMatch match = re.match(line);
         if (!match.hasMatch()) { // no match
-            indexes.append(-1);
+            patternStartColumns.append(-1);
         } else if (match.lastCapturedIndex() == 0) { // pattern has no group
-            indexes.append(match.capturedStart(0));
+            patternStartColumns.append(match.capturedStart(0) + (blockwise ? selectionStartColumn : 0));
         } else { // pattern has a group
-            indexes.append(match.capturedStart(1));
+            patternStartColumns.append(match.capturedStart(1) + (blockwise ? selectionStartColumn : 0));
         }
     }
-    int maxIndex = *std::max_element(indexes.cbegin(), indexes.cend());
-    QStringList aligned;
+    if (!blockwise && patternStartColumns[0] != -1) {
+        patternStartColumns[0] += selectionStartColumn;
+    }
+    // find which column we'll align with
+    int maxColumn = *std::max_element(patternStartColumns.cbegin(), patternStartColumns.cend());
+    // align!
+    editBegin();
     for (int i = 0; i < lines.size(); ++i) {
-        if (indexes.at(i) == -1) {
-            aligned.append(lines.at(i));
-        } else {
-            aligned.append(lines.at(i).left(indexes.at(i)) + QString(maxIndex - indexes.at(i), QChar::Space) + lines.at(i).mid(indexes.at(i)));
+        if (patternStartColumns[i] != -1) {
+            insertText(KTextEditor::Cursor(range.start().line() + i, patternStartColumns[i]), QString(maxColumn - patternStartColumns[i], QChar::Space));
         }
     }
-    replaceText(range, aligned.join(QChar::LineFeed));
+    editEnd();
 }
 
 void KTextEditor::DocumentPrivate::insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor)

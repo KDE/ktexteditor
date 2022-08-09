@@ -95,9 +95,7 @@ function alignon(pattern)
     if (!selection.isValid()) {
         selection = document.documentRange();
     }
-    document.editBegin();
-    document.alignOn(selection, pattern);
-    document.editEnd();
+    view.alignOn(selection, pattern);
 }
 
 function join(separator)
