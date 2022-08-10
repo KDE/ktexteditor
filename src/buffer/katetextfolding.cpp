@@ -692,10 +692,13 @@ void TextFolding::appendFoldedRanges(TextFolding::FoldingRange::Vector &newFolde
 
 QJsonDocument TextFolding::exportFoldingRanges() const
 {
+    QJsonObject obj;
     QJsonArray array;
     exportFoldingRanges(m_foldingRanges, array);
+    obj.insert(QStringLiteral("ranges"), array);
+    obj.insert(QStringLiteral("checksum"), QString::fromLocal8Bit(m_buffer.digest().toHex()));
     QJsonDocument folds;
-    folds.setArray(array);
+    folds.setObject(obj);
     return folds;
 }
 
@@ -721,8 +724,13 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
     clearFoldingRanges();
 
+    const auto checksum = QByteArray::fromHex(folds.object().value(QStringLiteral("checksum")).toString().toLocal8Bit());
+    if (checksum != m_buffer.digest()) {
+        return;
+    }
+
     // try to create all folding ranges
-    const auto jsonRanges = folds.array();
+    const auto jsonRanges = folds.object().value(QStringLiteral("ranges")).toArray();
     for (const auto &rangeVariant : jsonRanges) {
         // get map
         const auto rangeMap = rangeVariant.toObject();
