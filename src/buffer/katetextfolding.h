@@ -175,6 +175,8 @@ public:
      */
     void debugPrint(const QString &title) const;
 
+    void editEnd(int startLine, int endLine);
+
 public Q_SLOTS:
     /**
      * Clear the complete folding.
