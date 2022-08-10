@@ -3582,7 +3582,7 @@ void KTextEditor::ViewPrivate::align()
 
 void KTextEditor::ViewPrivate::alignOn()
 {
-    static QString pattern = QStringLiteral("");
+    static QString pattern;
     KTextEditor::Range range;
     if (!selection()) {
         range = doc()->documentRange();
