@@ -3560,6 +3560,7 @@ void KTextEditor::ViewPrivate::align()
 
 void KTextEditor::ViewPrivate::alignOn()
 {
+    static QString pattern = QStringLiteral("");
     KTextEditor::Range range;
     if (!selection()) {
         range = doc()->documentRange();
@@ -3567,7 +3568,7 @@ void KTextEditor::ViewPrivate::alignOn()
         range = selectionRange();
     }
     bool ok;
-    QString pattern = QInputDialog::getText(window(), i18n("Align On"), i18n("Alignment pattern:"), QLineEdit::Normal, QStringLiteral(""), &ok);
+    pattern = QInputDialog::getText(window(), i18n("Align On"), i18n("Alignment pattern:"), QLineEdit::Normal, pattern, &ok);
     if (!ok) {
         return;
     }
