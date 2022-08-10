@@ -267,6 +267,7 @@ private:
     void paintCursors();
 
     std::vector<SecondaryCursor> m_secondaryCursors;
+    bool m_skipCurrentSelection = false;
 
     void addSecondaryCursorDown();
     void addSecondaryCursorUp();
@@ -721,6 +722,7 @@ public Q_SLOTS:
     void findSelectedBackwards();
     void findNextOccurunceAndSelect();
     void findAllOccuruncesAndSelect();
+    void skipCurrentOccurunceSelection();
     void replace();
     void findNext();
     void findPrevious();

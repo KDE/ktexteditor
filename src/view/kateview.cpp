@@ -854,6 +854,12 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Finds next occurrence of the word under cursor and add it to selection."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findNextOccurunceAndSelect);
 
+    a = ac->addAction(QStringLiteral("edit_skip_multicursor_current_occurrence"));
+    a->setText(i18n("Find and Select Next Occurrence"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::Key_K));
+    a->setWhatsThis(i18n("Finds next occurrence of the word under cursor and add it to selection."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::skipCurrentOccurunceSelection);
+
     a = ac->addAction(QStringLiteral("edit_find_multicursor_all_occurrences"));
     a->setText(i18n("Find and Select All Occurrences"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::CTRL | Qt::Key_J));
@@ -1974,6 +1980,14 @@ void KTextEditor::ViewPrivate::findSelectedBackwards()
     currentInputMode()->findSelectedBackwards();
 }
 
+void KTextEditor::ViewPrivate::skipCurrentOccurunceSelection()
+{
+    if (isMulticursorNotAllowed()) {
+        return;
+    }
+    m_skipCurrentSelection = true;
+}
+
 void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
 {
     if (isMulticursorNotAllowed()) {
@@ -2014,28 +2028,35 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
     }
 
-    auto alreadyHasRangeSelected = [this](const KTextEditor::Range selection) {
-        for (const auto &c : m_secondaryCursors) {
-            if (c.range && c.range->toRange() == selection) {
-                return true;
-            }
-        }
-        return selectionRange() == selection;
-    };
+    // No match found or only one possible match
+    if (matches.empty() || !matches.constFirst().isValid() || matches.constFirst() == selectionRange()) {
+        return;
+    }
 
-    if (!matches.isEmpty() && matches.constFirst().isValid() && !alreadyHasRangeSelected(matches.constFirst())) {
-        // Move our primary to cursor to this match and select it
-        // Ensure we don't create occurence highlights
-        setSelection(matches.constFirst());
-        setCursorPosition(matches.constFirst().end());
-        clearHighlights();
+    auto it = std::find_if(m_secondaryCursors.begin(), m_secondaryCursors.end(), [&](const SecondaryCursor &c) {
+        return c.range && c.range->toRange() == matches.constFirst();
+    });
 
+    if (it != m_secondaryCursors.end()) {
+        m_secondaryCursors.erase(it);
+    }
+
+    // Move our primary to cursor to this match and select it
+    // Ensure we don't create occurence highlights
+    setSelection(matches.constFirst());
+    setCursorPosition(matches.constFirst().end());
+    clearHighlights();
+
+    // If we are skipping this selection, then we don't have to do anything
+    if (!m_skipCurrentSelection) {
         PlainSecondaryCursor c;
         c.pos = lastSelectionRange.end();
         c.range = lastSelectionRange;
         // make our previous primary selection a secondary
         addSecondaryCursorsWithSelection({c});
     }
+    // reset value
+    m_skipCurrentSelection = false;
 }
 
 void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
