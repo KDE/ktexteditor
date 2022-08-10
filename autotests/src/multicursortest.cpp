@@ -643,9 +643,11 @@ void MulticursorTest::findNextOccurenceTest()
     QCOMPARE(view->selectionRange(), Range(3, 0, 3, 3));
 
     // Try to find another, there is none so nothing should change
+    // except that the primary cursor position is moved to newest found
     view->findNextOccurunceAndSelect();
-    QCOMPARE(view->cursorPosition(), Cursor(3, 3));
-    QCOMPARE(view->selectionRange(), Range(3, 0, 3, 3));
+    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+    QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
+    QVERIFY(isSorted(view->secondaryCursors()));
 }
 
 void MulticursorTest::findAllOccurenceTest()

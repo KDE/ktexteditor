@@ -416,7 +416,7 @@ int TextBuffer::blockForLine(int line) const
 {
     // only allow valid lines
     if ((line < 0) || (line >= lines())) {
-        qFatal("out of range line requested in text buffer (%d out of [0, %d[)", line, lines());
+        qFatal("out of range line requested in text buffer (%d out of [0, %d])", line, lines());
     }
 
     // we need blocks and last used block should not be negative

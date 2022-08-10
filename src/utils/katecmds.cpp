@@ -273,7 +273,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_c
         if (range.isValid()) {
             v->doc()->editStart();
             for (int line = range.start().line(); line <= range.end().line(); line++) {
-                v->doc()->comment(v, line, 0, 1);
+                v->doc()->comment(v, line, 0, KTextEditor::DocumentPrivate::Comment);
             }
             v->doc()->editEnd();
         } else {
@@ -284,7 +284,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_c
         if (range.isValid()) {
             v->doc()->editStart();
             for (int line = range.start().line(); line <= range.end().line(); line++) {
-                v->doc()->comment(v, line, 0, -1);
+                v->doc()->comment(v, line, 0, KTextEditor::DocumentPrivate::UnComment);
             }
             v->doc()->editEnd();
         } else {

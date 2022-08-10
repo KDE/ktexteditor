@@ -440,6 +440,34 @@ void TextFolding::debugPrint(const QString &title) const
     printf("%s\n    %s\n", qPrintable(title), qPrintable(debugDump()));
 }
 
+void TextFolding::editEnd(int startLine, int endLine)
+{
+    // Document was edited, see if any ranges need to be removed
+    for (int i = startLine; i <= endLine; ++i) {
+        if (i >= m_buffer.lines()) {
+            continue;
+        }
+        auto ranges = foldingRangesStartingOnLine(i);
+        if (ranges.empty()) {
+            continue;
+        }
+        auto l = m_buffer.line(i);
+        if (l->markedAsFoldingStart()) {
+            continue;
+        }
+
+        for (const auto &f : ranges) {
+            auto it = m_idToFoldingRange.find(f.first);
+            if (it != m_idToFoldingRange.end() && it.value()) {
+                const auto foldingRange = it.value();
+                m_foldingRanges.removeOne(foldingRange);
+                m_foldedFoldingRanges.removeOne(foldingRange);
+                m_idToFoldingRange.erase(it);
+            }
+        }
+    }
+}
+
 QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, bool recurse)
 {
     // dump all ranges recursively
@@ -692,10 +720,13 @@ void TextFolding::appendFoldedRanges(TextFolding::FoldingRange::Vector &newFolde
 
 QJsonDocument TextFolding::exportFoldingRanges() const
 {
+    QJsonObject obj;
     QJsonArray array;
     exportFoldingRanges(m_foldingRanges, array);
+    obj.insert(QStringLiteral("ranges"), array);
+    obj.insert(QStringLiteral("checksum"), QString::fromLocal8Bit(m_buffer.digest().toHex()));
     QJsonDocument folds;
-    folds.setArray(array);
+    folds.setObject(obj);
     return folds;
 }
 
@@ -721,8 +752,13 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
     clearFoldingRanges();
 
+    const auto checksum = QByteArray::fromHex(folds.object().value(QStringLiteral("checksum")).toString().toLocal8Bit());
+    if (checksum != m_buffer.digest()) {
+        return;
+    }
+
     // try to create all folding ranges
-    const auto jsonRanges = folds.array();
+    const auto jsonRanges = folds.object().value(QStringLiteral("ranges")).toArray();
     for (const auto &rangeVariant : jsonRanges) {
         // get map
         const auto rangeMap = rangeVariant.toObject();
