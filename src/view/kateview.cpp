@@ -869,9 +869,9 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findNextOccurunceAndSelect);
 
     a = ac->addAction(QStringLiteral("edit_skip_multicursor_current_occurrence"));
-    a->setText(i18n("Find and Select Next Occurrence"));
+    a->setText(i18n("Mark Currently Selected Occurrence as Skipped"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::Key_K));
-    a->setWhatsThis(i18n("Finds next occurrence of the word under cursor and add it to selection."));
+    a->setWhatsThis(i18n("Marks the currently selected word as skipped."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::skipCurrentOccurunceSelection);
 
     a = ac->addAction(QStringLiteral("edit_find_multicursor_all_occurrences"));
