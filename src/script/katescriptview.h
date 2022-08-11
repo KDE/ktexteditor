@@ -67,6 +67,9 @@ public:
     Q_INVOKABLE void selectAll();
     Q_INVOKABLE void clearSelection();
 
+    Q_INVOKABLE void setBlockSelection(bool on);
+    Q_INVOKABLE bool blockSelection();
+
     Q_INVOKABLE void align(const QJSValue &range);
     Q_INVOKABLE void alignOn(const QJSValue &jsrange, const QJSValue &pattern = QJSValue(QStringLiteral("")));
 

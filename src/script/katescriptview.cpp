@@ -165,6 +165,16 @@ void KateScriptView::clearSelection()
     m_view->clearSelection();
 }
 
+void KateScriptView::setBlockSelection(bool on)
+{
+    m_view->setBlockSelection(on);
+}
+
+bool KateScriptView::blockSelection()
+{
+    return m_view->blockSelection();
+}
+
 void KateScriptView::align(const QJSValue &jsrange)
 {
     const auto range = rangeFromScriptValue(jsrange);
