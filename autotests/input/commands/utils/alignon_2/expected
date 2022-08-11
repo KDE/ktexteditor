@@ -1,0 +1,4 @@
+    - foobar: lala, lili, lolo, lulu
+    - baz:    a,    b,  c,  d
+    - quux:   this, is, an, automated test
+x   - hello:  world!
