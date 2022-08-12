@@ -7,6 +7,7 @@
 
 #include "clipboardhistorydialog.h"
 #include "katedocument.h"
+#include "katerenderer.h"
 #include "kateview.h"
 
 #include <QBoxLayout>
@@ -213,7 +214,8 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
 {
     m_proxyModel->setSourceModel(m_model);
 
-    const auto font = editorFont();
+    const QFont font = viewPrivate->renderer()->config()->baseFont();
+
     m_treeView.setModel(m_proxyModel);
     m_treeView.setItemDelegate(new SingleLineDelegate(font));
     m_treeView.setTextElideMode(Qt::ElideRight);
@@ -284,15 +286,6 @@ void ClipboardHistoryDialog::slotReturnPressed()
 
     clearLineEdit();
     hide();
-}
-
-QFont ClipboardHistoryDialog::editorFont()
-{
-    if (KTextEditor::Editor::instance()) {
-        return KTextEditor::Editor::instance()->font();
-    }
-    qWarning() << __func__ << "Editor::instance() is null! falling back to system fixed font";
-    return QFontDatabase::systemFont(QFontDatabase::FixedFont);
 }
 
 #include "clipboardhistorydialog.moc"

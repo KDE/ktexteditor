@@ -39,7 +39,6 @@ private Q_SLOTS:
     void slotReturnPressed() override;
 
 private:
-    QFont editorFont();
     void showSelectedText(const QModelIndex &idx);
 
 private:
