@@ -103,6 +103,7 @@ bool KatePrinterPrivate::print(QPrinter *printer)
     m_painter.setPrintLineNumbers(kpts->printLineNumbers());
 
     m_painter.setColorScheme(kpl->colorScheme());
+    m_painter.setTextFont(kpl->textFont());
     m_painter.setUseBackground(kpl->useBackground());
     m_painter.setUseBox(kpl->useBox());
     m_painter.setBoxMargin(kpl->boxMargin());

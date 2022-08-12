@@ -117,17 +117,22 @@ public:
     ~KatePrintLayout() override;
 
     QString colorScheme();
+    QFont textFont();
     bool useBackground();
     bool useBox();
     int boxWidth();
     int boxMargin();
     QColor boxColor();
 
+private Q_SLOTS:
+    void setTextFont();
+
 private:
     void readSettings();
     void writeSettings();
 
     QComboBox *cmbSchema;
+    QLabel *lFontPreview;
     QCheckBox *cbEnableBox;
     QCheckBox *cbDrawBackground;
     QGroupBox *gbBoxProps;

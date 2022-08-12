@@ -436,7 +436,7 @@ void KatePrintHeaderFooter::readSettings()
     kcbtnFooterBg->setColor(footerBackground);
 
     // Font
-    QFont headerFooterFont = headerFooterGroup.readEntry("HeaderFooterFont", QFont());
+    QFont headerFooterFont = headerFooterGroup.readEntry("HeaderFooterFont", KTextEditor::Editor::instance()->font());
     lFontPreview->setFont(headerFooterFont);
     lFontPreview->setText(QString(headerFooterFont.family() + QLatin1String(", %1pt")).arg(headerFooterFont.pointSize()));
 }
@@ -494,6 +494,18 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     hb->addWidget(cmbSchema);
     cmbSchema->setEditable(false);
     lSchema->setBuddy(cmbSchema);
+
+    // font
+    QHBoxLayout *lo2 = new QHBoxLayout();
+    lo->addLayout(lo2);
+    lo2->addWidget(new QLabel(i18n("Font:"), this));
+    lFontPreview = new QLabel(this);
+    lFontPreview->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    lo2->addWidget(lFontPreview);
+    lo2->setStretchFactor(lFontPreview, 1);
+    QPushButton *btnChooseFont = new QPushButton(i18n("Choo&se Font..."), this);
+    lo2->addWidget(btnChooseFont);
+    connect(btnChooseFont, &QPushButton::clicked, this, &KatePrintLayout::setTextFont);
 
     cbDrawBackground = new QCheckBox(i18n("Draw bac&kground color"), this);
     lo->addWidget(cbDrawBackground);
@@ -564,6 +576,21 @@ KatePrintLayout::~KatePrintLayout()
     writeSettings();
 }
 
+void KatePrintLayout::setTextFont()
+{
+    bool ok = false;
+    const QFont selectedFont = QFontDialog::getFont(&ok, lFontPreview->font(), this);
+    if (ok) {
+        lFontPreview->setFont(selectedFont);
+        lFontPreview->setText(i18n("%1, %2pt", selectedFont.family(), selectedFont.pointSize()));
+    }
+}
+
+QFont KatePrintLayout::textFont()
+{
+    return lFontPreview->font();
+}
+
 QString KatePrintLayout::colorScheme()
 {
     return cmbSchema->itemData(cmbSchema->currentIndex()).toString();
@@ -608,6 +635,11 @@ void KatePrintLayout::readSettings()
         cmbSchema->setCurrentIndex(index);
     }
 
+    // Font
+    QFont font = layoutGroup.readEntry("Font", KTextEditor::Editor::instance()->font());
+    lFontPreview->setFont(font);
+    lFontPreview->setText(QString(font.family() + QLatin1String(", %1pt")).arg(font.pointSize()));
+
     bool isBackgroundChecked = layoutGroup.readEntry("BackgroundColorEnabled", false);
     cbDrawBackground->setChecked(isBackgroundChecked);
 
@@ -631,6 +663,7 @@ void KatePrintLayout::writeSettings()
 
     KConfigGroup layoutGroup(&printGroup, "Layout");
     layoutGroup.writeEntry("ColorScheme", colorScheme());
+    layoutGroup.writeEntry("Font", textFont());
     layoutGroup.writeEntry("BackgroundColorEnabled", useBackground());
     layoutGroup.writeEntry("BoxEnabled", useBox());
     layoutGroup.writeEntry("BoxWidth", boxWidth());

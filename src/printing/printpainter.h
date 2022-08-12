@@ -83,6 +83,7 @@ public:
     {
         m_fhFont = font;
     }
+    void setTextFont(const QFont &font);
 
     void setHeaderBackground(const QColor &color);
     void setHeaderForeground(const QColor &color);

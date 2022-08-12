@@ -94,6 +94,11 @@ PrintPainter::~PrintPainter()
     delete m_folding;
 }
 
+void PrintPainter::setTextFont(const QFont &font)
+{
+    m_renderer->config()->setFont(font);
+}
+
 void PrintPainter::setUseBox(const bool on)
 {
     m_useBox = on;
