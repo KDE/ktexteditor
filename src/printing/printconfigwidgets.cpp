@@ -26,7 +26,6 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QSpinBox>
-#include <kfontrequester.h>
 
 using namespace KatePrinter;
 
