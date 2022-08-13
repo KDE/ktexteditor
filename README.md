@@ -15,30 +15,13 @@ IDE.
 
 ## Usage
 
-### KPart
-
-As with other KParts, you should use KParts::MainWindow as your main window.
-You can directly request "katepart", as in
-
-```cpp
-KService::Ptr service = KService::serviceByDesktopName("katepart");
-if (service) {
-    m_part = service->createInstance<KParts::ReadWritePart>();
-}
-```
-
-See the KParts documentation for more information on using KParts.
-
-### Library
-
 If you are using CMake, you need to have
 
 ```cmake
 find_package(KF5TextEditor)
 ```
 
-(or similar) in your CMakeLists.txt file, and you need to link to
-KF5::TextEditor.
+(or similar) in your CMakeLists.txt file, and you need to link to KF5::TextEditor.
 
 After that, you can use KTextEditor::Editor to create an editor instance, and
 use that to manage KTextEditor::Document instances.
@@ -48,11 +31,14 @@ use that to manage KTextEditor::Document instances.
 #include <KTextEditor/Editor>
 #include <KTextEditor/View>
 
-KTextEditor::Editor *editor = KTextEditor::Editor::instance();
+// get access to the global editor singleton
+auto editor = KTextEditor::Editor::instance();
+
 // create a new document
-KTextEditor::Document *doc = editor->createDocument(this);
+auto doc = editor->createDocument(this);
+
 // create a widget to display the document
-KTextEditor::View *view = doc->createView(containerWidget);
+auto view = doc->createView(yourWidgetParent);
 ```
 
 See the documentation for these classes for more information.
