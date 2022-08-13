@@ -1,6 +1,13 @@
 # kate part itself just is core + the factory
 add_library (katepart MODULE katepart.cpp)
 
+# no KTextEditor/Document in KF6
+if(QT_MAJOR_VERSION STREQUAL "5")
+    set(KF_EXTRA_PART_TYPES ",KTextEditor/Document")
+else()
+    set(KF_EXTRA_PART_TYPES "")
+endif()
+
 configure_file(katepart.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop @ONLY)
 
 # service => json and install
