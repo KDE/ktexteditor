@@ -14,18 +14,19 @@
 
 #include <KColorButton>
 #include <KConfigGroup>
+#include <KFontRequester>
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <QComboBox>
 
 #include <QBoxLayout>
 #include <QCheckBox>
-#include <QFontDialog>
 #include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
 #include <QMenu>
 #include <QSpinBox>
+#include <kfontrequester.h>
 
 using namespace KatePrinter;
 
@@ -118,13 +119,8 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     QHBoxLayout *lo2 = new QHBoxLayout();
     lo->addLayout(lo2);
     lo2->addWidget(new QLabel(i18n("Header/footer font:"), this));
-    lFontPreview = new QLabel(this);
-    lFontPreview->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    lFontPreview = new KFontRequester(this);
     lo2->addWidget(lFontPreview);
-    lo2->setStretchFactor(lFontPreview, 1);
-    QPushButton *btnChooseFont = new QPushButton(i18n("Choo&se Font..."), this);
-    lo2->addWidget(btnChooseFont);
-    connect(btnChooseFont, &QPushButton::clicked, this, &KatePrintHeaderFooter::setHFFont);
 
     // header
     gbHeader = new QGroupBox(this);
@@ -329,16 +325,6 @@ bool KatePrintHeaderFooter::useFooterBackground()
     return cbFooterEnableBgColor->isChecked();
 }
 
-void KatePrintHeaderFooter::setHFFont()
-{
-    bool ok = false;
-    const QFont selectedFont = QFontDialog::getFont(&ok, lFontPreview->font(), this);
-    if (ok) {
-        lFontPreview->setFont(selectedFont);
-        lFontPreview->setText(i18n("%1, %2pt", selectedFont.family(), selectedFont.pointSize()));
-    }
-}
-
 void KatePrintHeaderFooter::showContextMenu(const QPoint &pos)
 {
     QLineEdit *lineEdit = qobject_cast<QLineEdit *>(sender());
@@ -435,10 +421,7 @@ void KatePrintHeaderFooter::readSettings()
     QColor footerBackground = headerFooterGroup.readEntry("FooterBackground", QColor("lightgrey"));
     kcbtnFooterBg->setColor(footerBackground);
 
-    // Font
-    QFont headerFooterFont = headerFooterGroup.readEntry("HeaderFooterFont", KTextEditor::Editor::instance()->font());
-    lFontPreview->setFont(headerFooterFont);
-    lFontPreview->setText(QString(headerFooterFont.family() + QLatin1String(", %1pt")).arg(headerFooterFont.pointSize()));
+    lFontPreview->setFont(headerFooterGroup.readEntry("HeaderFooterFont", KTextEditor::Editor::instance()->font()));
 }
 
 void KatePrintHeaderFooter::writeSettings()
@@ -499,13 +482,8 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     QHBoxLayout *lo2 = new QHBoxLayout();
     lo->addLayout(lo2);
     lo2->addWidget(new QLabel(i18n("Font:"), this));
-    lFontPreview = new QLabel(this);
-    lFontPreview->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    lFontPreview = new KFontRequester(this);
     lo2->addWidget(lFontPreview);
-    lo2->setStretchFactor(lFontPreview, 1);
-    QPushButton *btnChooseFont = new QPushButton(i18n("Choo&se Font..."), this);
-    lo2->addWidget(btnChooseFont);
-    connect(btnChooseFont, &QPushButton::clicked, this, &KatePrintLayout::setTextFont);
 
     cbDrawBackground = new QCheckBox(i18n("Draw bac&kground color"), this);
     lo->addWidget(cbDrawBackground);
@@ -576,16 +554,6 @@ KatePrintLayout::~KatePrintLayout()
     writeSettings();
 }
 
-void KatePrintLayout::setTextFont()
-{
-    bool ok = false;
-    const QFont selectedFont = QFontDialog::getFont(&ok, lFontPreview->font(), this);
-    if (ok) {
-        lFontPreview->setFont(selectedFont);
-        lFontPreview->setText(i18n("%1, %2pt", selectedFont.family(), selectedFont.pointSize()));
-    }
-}
-
 QFont KatePrintLayout::textFont()
 {
     return lFontPreview->font();
@@ -636,9 +604,7 @@ void KatePrintLayout::readSettings()
     }
 
     // Font
-    QFont font = layoutGroup.readEntry("Font", KTextEditor::Editor::instance()->font());
-    lFontPreview->setFont(font);
-    lFontPreview->setText(QString(font.family() + QLatin1String(", %1pt")).arg(font.pointSize()));
+    lFontPreview->setFont(layoutGroup.readEntry("Font", KTextEditor::Editor::instance()->font()));
 
     bool isBackgroundChecked = layoutGroup.readEntry("BackgroundColorEnabled", false);
     cbDrawBackground->setChecked(isBackgroundChecked);
