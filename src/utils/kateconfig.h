@@ -1061,6 +1061,7 @@ public:
         ShowStatusbarTabSettings,
         ShowStatusbarFileEncoding,
         StatusbarLineColumnCompact,
+        ShowStatusbarEOL,
     };
 
 public:

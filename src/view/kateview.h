@@ -750,6 +750,7 @@ public Q_SLOTS:
 
 public:
     int getEol() const;
+    QMenu *getEolMenu();
 
 public:
     KateRenderer *renderer();

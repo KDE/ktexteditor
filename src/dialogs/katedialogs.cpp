@@ -794,6 +794,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(statusBarUi->cbShowLineColumn);
     observeChanges(statusBarUi->cbShowTabSetting);
     observeChanges(statusBarUi->cbShowEncoding);
+    observeChanges(statusBarUi->cbShowEOL);
 }
 
 KateViewDefaultsConfig::~KateViewDefaultsConfig()
@@ -860,6 +861,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarLineColumn, statusBarUi->cbShowLineColumn->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarTabSettings, statusBarUi->cbShowTabSetting->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarFileEncoding, statusBarUi->cbShowEncoding->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarEOL, statusBarUi->cbShowEOL->isChecked());
 
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -909,6 +911,7 @@ void KateViewDefaultsConfig::reload()
     statusBarUi->cbShowHighlightingMode->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarHighlightingMode).toBool());
     statusBarUi->cbShowInputMode->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarInputMode).toBool());
     statusBarUi->cbShowEncoding->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarFileEncoding).toBool());
+    statusBarUi->cbShowEOL->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarEOL).toBool());
 }
 
 void KateViewDefaultsConfig::reset()

@@ -84,6 +84,8 @@ public Q_SLOTS:
 
     void changeDictionary(QAction *action);
 
+    void updateEOL();
+
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
     void contextMenuEvent(QContextMenuEvent *event) override;
@@ -98,6 +100,7 @@ private:
     StatusBarButton *m_encoding = nullptr;
     StatusBarButton *m_tabsIndent = nullptr;
     StatusBarButton *m_dictionary = nullptr;
+    StatusBarButton *m_eol = nullptr;
     QActionGroup *m_dictionaryGroup = nullptr;
     KateStatusBarOpenUpMenu *m_dictionaryMenu = nullptr;
     QMenu *m_indentSettingsMenu;

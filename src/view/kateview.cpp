@@ -1809,6 +1809,11 @@ int KTextEditor::ViewPrivate::getEol() const
     return doc()->config()->eol();
 }
 
+QMenu *KTextEditor::ViewPrivate::getEolMenu()
+{
+    return m_setEndOfLine->menu();
+}
+
 void KTextEditor::ViewPrivate::setEol(int eol)
 {
     if (!doc()->isReadWrite()) {

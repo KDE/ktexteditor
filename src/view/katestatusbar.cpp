@@ -195,6 +195,12 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setWhatsThis(i18n("Encoding"));
 
+    m_eol = new StatusBarButton(this);
+    m_eol->setWhatsThis(i18n("End of line type"));
+    m_eol->setToolTip(i18n("End of line type"));
+    m_eol->setMenu(m_view->getEolMenu());
+    topLayout->addWidget(m_eol);
+
     // load the mode menu, which contains a scrollable list + search bar.
     // This is an alternative menu to the mode action menu of the view.
     m_modeMenuList = new KateModeMenuList(i18n("Mode"), this);
@@ -277,6 +283,7 @@ void KateStatusBar::updateStatus()
     documentConfigChanged();
     modeChanged();
     updateDictionary();
+    updateEOL();
 }
 
 void KateStatusBar::selectionChanged()
@@ -424,6 +431,7 @@ void KateStatusBar::documentConfigChanged()
 
     updateGroup(m_tabGroup, tabWidth);
     updateGroup(m_indentGroup, indentationWidth);
+    updateEOL();
 }
 
 void KateStatusBar::modeChanged()
@@ -590,6 +598,7 @@ void KateStatusBar::configChanged()
     updateButtonVisibility(m_cursorPosition, KateViewConfig::ShowStatusbarLineColumn);
     updateButtonVisibility(m_tabsIndent, KateViewConfig::ShowStatusbarTabSettings);
     updateButtonVisibility(m_encoding, KateViewConfig::ShowStatusbarFileEncoding);
+    updateButtonVisibility(m_eol, KateViewConfig::ShowStatusbarEOL);
 
     bool v = cfg->value(KateViewConfig::ShowStatusbarDictionary).toBool();
     if (v != (!m_dictionary->isHidden()) && !Sonnet::Speller().availableDictionaries().isEmpty()) {
@@ -607,6 +616,26 @@ void KateStatusBar::changeDictionary(QAction *action)
         m_view->doc()->setDictionary(dictionary, selection);
     } else {
         m_view->doc()->setDefaultDictionary(dictionary);
+    }
+}
+
+void KateStatusBar::updateEOL()
+{
+    const int eol = m_view->getEol();
+    QString text;
+    switch (eol) {
+    case KateDocumentConfig::eolUnix:
+        text = QStringLiteral("LF");
+        break;
+    case KateDocumentConfig::eolDos:
+        text = QStringLiteral("CRLF");
+        break;
+    case KateDocumentConfig::eolMac:
+        text = QStringLiteral("CR");
+        break;
+    }
+    if (text != m_eol->text()) {
+        m_eol->setText(text);
     }
 }
 
