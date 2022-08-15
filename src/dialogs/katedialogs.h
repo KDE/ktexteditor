@@ -71,6 +71,7 @@ class OpenSaveConfigWidget;
 class OpenSaveConfigAdvWidget;
 class CompletionConfigTab;
 class SpellCheckConfigWidget;
+class StatusbarConfigWidget;
 }
 
 class KateGotoBar : public KateViewBarWidget
@@ -303,6 +304,7 @@ public Q_SLOTS:
 private:
     Ui::TextareaAppearanceConfigWidget *const textareaUi;
     Ui::BordersAppearanceConfigWidget *const bordersUi;
+    Ui::StatusbarConfigWidget *const statusBarUi;
 };
 
 class KateSaveConfigTab : public KateConfigPage

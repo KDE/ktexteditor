@@ -38,6 +38,7 @@
 #include "ui_opensaveconfigadvwidget.h"
 #include "ui_opensaveconfigwidget.h"
 #include "ui_spellcheckconfigwidget.h"
+#include "ui_statusbarconfigwidget.h"
 #include "ui_textareaappearanceconfigwidget.h"
 
 #include <KIO/Job>
@@ -709,6 +710,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     : KateConfigPage(parent)
     , textareaUi(new Ui::TextareaAppearanceConfigWidget())
     , bordersUi(new Ui::BordersAppearanceConfigWidget())
+    , statusBarUi(new Ui::StatusbarConfigWidget())
 {
     QLayout *layout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
@@ -722,6 +724,10 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     QWidget *bordersTab = new QWidget(tabWidget);
     bordersUi->setupUi(bordersTab);
     tabWidget->addTab(bordersTab, i18n("Borders"));
+
+    QWidget *statusbarTab = new QWidget(tabWidget);
+    statusBarUi->setupUi(statusbarTab);
+    tabWidget->addTab(statusbarTab, i18n("Statusbar"));
 
     textareaUi->cmbDynamicWordWrapIndicator->addItem(i18n("Off"));
     textareaUi->cmbDynamicWordWrapIndicator->addItem(i18n("Follow Line Numbers"));
@@ -780,12 +786,21 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(bordersUi->rbSortBookmarksByPosition);
     observeChanges(bordersUi->spBoxMiniMapWidth);
     observeChanges(bordersUi->cmbFoldingArrowVisiblity);
+
+    // statusBarUi
+    observeChanges(statusBarUi->cbShowActiveDictionary);
+    observeChanges(statusBarUi->cbShowHighlightingMode);
+    observeChanges(statusBarUi->cbShowInputMode);
+    observeChanges(statusBarUi->cbShowLineColumn);
+    observeChanges(statusBarUi->cbShowTabSetting);
+    observeChanges(statusBarUi->cbShowEncoding);
 }
 
 KateViewDefaultsConfig::~KateViewDefaultsConfig()
 {
     delete bordersUi;
     delete textareaUi;
+    delete statusBarUi;
 }
 
 void KateViewDefaultsConfig::apply()
@@ -838,6 +853,14 @@ void KateViewDefaultsConfig::apply()
     bool showOnHoverOnly = bordersUi->cmbFoldingArrowVisiblity->currentIndex() == 0;
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingOnHoverOnly, showOnHoverOnly);
 
+    // Statusbar stuff
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarDictionary, statusBarUi->cbShowActiveDictionary->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarHighlightingMode, statusBarUi->cbShowHighlightingMode->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarInputMode, statusBarUi->cbShowInputMode->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarLineColumn, statusBarUi->cbShowLineColumn->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarTabSettings, statusBarUi->cbShowTabSetting->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowStatusbarFileEncoding, statusBarUi->cbShowEncoding->isChecked());
+
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
 }
@@ -879,6 +902,13 @@ void KateViewDefaultsConfig::reload()
     textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());
     textareaUi->chkFocusFrame->setChecked(KateViewConfig::global()->showFocusFrame());
     textareaUi->spbLineHeightMultiplier->setValue(KateRendererConfig::global()->lineHeightMultiplier());
+
+    statusBarUi->cbShowLineColumn->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarLineColumn).toBool());
+    statusBarUi->cbShowActiveDictionary->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarDictionary).toBool());
+    statusBarUi->cbShowTabSetting->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarTabSettings).toBool());
+    statusBarUi->cbShowHighlightingMode->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarHighlightingMode).toBool());
+    statusBarUi->cbShowInputMode->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarInputMode).toBool());
+    statusBarUi->cbShowEncoding->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowStatusbarFileEncoding).toBool());
 }
 
 void KateViewDefaultsConfig::reset()

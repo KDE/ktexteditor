@@ -238,6 +238,7 @@ dialogs/filetypeconfigwidget.ui
 dialogs/indentationconfigwidget.ui
 dialogs/opensaveconfigwidget.ui
 dialogs/opensaveconfigadvwidget.ui
+dialogs/statusbarconfigwidget.ui
 search/searchbarincremental.ui
 search/searchbarpower.ui
 spellcheck/spellcheckbar.ui

@@ -1054,6 +1054,13 @@ public:
         ShowDocWithCompletion,
         MultiCursorModifier,
         ShowFoldingOnHoverOnly,
+        ShowStatusbarLineColumn,
+        ShowStatusbarDictionary,
+        ShowStatusbarInputMode,
+        ShowStatusbarHighlightingMode,
+        ShowStatusbarTabSettings,
+        ShowStatusbarFileEncoding,
+        StatusbarLineColumnCompact,
     };
 
 public:

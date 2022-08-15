@@ -75,13 +75,13 @@ QSize StatusBarButton::minimumSizeHint() const
     const auto fm = QFontMetrics(font());
     const int h = fm.lineSpacing();
     QSize size = QPushButton::sizeHint();
-    const int margin = style()->pixelMetric(QStyle::PM_FocusFrameVMargin) * 2;
-    size.setHeight(h + margin);
+    const int vMmargin = style()->pixelMetric(QStyle::PM_FocusFrameVMargin) * 2;
+    size.setHeight(h + vMmargin);
 
-    if (menu()) {
-        const int menuArrowWidth = style()->pixelMetric(QStyle::PM_MenuButtonIndicator);
-        size.rwidth() -= menuArrowWidth;
-    }
+    const int w = fm.horizontalAdvance(text());
+    const int bm = style()->pixelMetric(QStyle::PM_ButtonMargin) * 2;
+    const int hMargin = style()->pixelMetric(QStyle::PM_FocusFrameHMargin) * 2;
+    size.setWidth(w + bm + hMargin);
 
     return size;
 }
@@ -251,6 +251,11 @@ void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
     QAction *showWords = menu.addAction(i18n("Show word count"), this, &KateStatusBar::toggleShowWords);
     showWords->setCheckable(true);
     showWords->setChecked(KateViewConfig::global()->showWordCount());
+    auto a = menu.addAction(i18n("Line/Column compact mode"), this, [](bool checked) {
+        KateViewConfig::global()->setValue(KateViewConfig::StatusbarLineColumnCompact, checked);
+    });
+    a->setCheckable(true);
+    a->setChecked(KateViewConfig::global()->value(KateViewConfig::StatusbarLineColumnCompact).toBool());
     menu.exec(event->globalPos());
 }
 
@@ -300,16 +305,23 @@ void KateStatusBar::viewModeChanged()
 void KateStatusBar::cursorPositionChanged()
 {
     KTextEditor::Cursor position(m_view->cursorPositionVirtual());
+    const int l = position.line() + 1;
+    const int c = position.column() + 1;
 
     // Update line/column label
     QString text;
-    if (KateViewConfig::global()->showLineCount()) {
-        text = i18n("Line %1 of %2, Column %3",
-                    QLocale().toString(position.line() + 1),
-                    QLocale().toString(m_view->doc()->lines()),
-                    QLocale().toString(position.column() + 1));
+    if (KateViewConfig::global()->value(KateViewConfig::StatusbarLineColumnCompact).toBool()) {
+        if (KateViewConfig::global()->showLineCount()) {
+            text = i18n("%1/%2:%3", QLocale().toString(l), QLocale().toString(m_view->doc()->lines()), QLocale().toString(c));
+        } else {
+            text = i18n("%1:%2", QLocale().toString(l), QLocale().toString(c));
+        }
     } else {
-        text = i18n("Line %1, Column %2", QLocale().toString(position.line() + 1), QLocale().toString(position.column() + 1));
+        if (KateViewConfig::global()->showLineCount()) {
+            text = i18n("Line %1 of %2, Column %3", QLocale().toString(l), QLocale().toString(m_view->doc()->lines()), QLocale().toString(c));
+        } else {
+            text = i18n("Line %1, Column %2", QLocale().toString(l), QLocale().toString(c));
+        }
     }
     if (m_wordCounter) {
         text.append(QLatin1String(", ") + m_wordCount);
@@ -565,6 +577,15 @@ void KateStatusBar::configChanged()
     } else {
         m_zoomLevel->hide();
     }
+
+    auto cfg = KateViewConfig::global();
+    m_inputMode->setVisible(cfg->value(KateViewConfig::ShowStatusbarInputMode).toBool());
+    m_mode->setVisible(cfg->value(KateViewConfig::ShowStatusbarHighlightingMode).toBool());
+    m_cursorPosition->setVisible(cfg->value(KateViewConfig::ShowStatusbarLineColumn).toBool());
+    m_tabsIndent->setVisible(cfg->value(KateViewConfig::ShowStatusbarTabSettings).toBool());
+    m_dictionary->setVisible(cfg->value(KateViewConfig::ShowStatusbarDictionary).toBool());
+    m_encoding->setVisible(cfg->value(KateViewConfig::ShowStatusbarFileEncoding).toBool());
+    updateDictionary();
 }
 
 void KateStatusBar::changeDictionary(QAction *action)

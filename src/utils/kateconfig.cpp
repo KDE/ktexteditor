@@ -547,6 +547,15 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(MultiCursorModifier, "Multiple Cursor Modifier", QString(), (int)Qt::AltModifier));
     addConfigEntry(ConfigEntry(ShowFoldingOnHoverOnly, "Show Folding Icons On Hover Only", QString(), true));
 
+    // Statusbar stuff
+    addConfigEntry(ConfigEntry(ShowStatusbarLineColumn, "Show Statusbar Line Column", QString(), true));
+    addConfigEntry(ConfigEntry(ShowStatusbarDictionary, "Show Statusbar Dictionary", QString(), true));
+    addConfigEntry(ConfigEntry(ShowStatusbarInputMode, "Show Statusbar Input Mode", QString(), true));
+    addConfigEntry(ConfigEntry(ShowStatusbarHighlightingMode, "Show Statusbar Highlighting Mode", QString(), true));
+    addConfigEntry(ConfigEntry(ShowStatusbarTabSettings, "Show Statusbar Tab Settings", QString(), true));
+    addConfigEntry(ConfigEntry(ShowStatusbarFileEncoding, "Show File Encoding", QString(), true));
+    addConfigEntry(ConfigEntry(StatusbarLineColumnCompact, "Statusbar Line Column Compact Mode", QString(), true));
+
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();
 
