@@ -48,7 +48,7 @@ private:
     KTextEditor::ViewPrivate *m_viewPrivate;
 
     ClipboardHistoryModel *m_model;
-    ClipboardHistoryFilterModel *m_proxyModel;
+    QSortFilterProxyModel *m_proxyModel;
 
     /*
      * Document for the selected text to paste

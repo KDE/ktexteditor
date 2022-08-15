@@ -15,10 +15,8 @@
 #include <QItemSelectionModel>
 #include <QMimeDatabase>
 #include <QSortFilterProxyModel>
-#include <QStringListModel>
 #include <QStyledItemDelegate>
 
-#include <KFuzzyMatcher>
 #include <KLocalizedString>
 #include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/Repository>
@@ -28,7 +26,7 @@ class ClipboardHistoryModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    enum Role { FuzzyScore = Qt::UserRole + 1, OriginalSorting, HighlightingRole };
+    enum Role { HighlightingRole = Qt::UserRole + 1,  };
 
     explicit ClipboardHistoryModel(QObject *parent)
         : QAbstractTableModel(parent)
@@ -58,10 +56,6 @@ public:
         const ClipboardEntry &clipboardEntry = m_modelEntries.at(idx.row());
         if (role == Qt::DisplayRole) {
             return clipboardEntry.text;
-        } else if (role == Role::FuzzyScore) {
-            return clipboardEntry.score;
-        } else if (role == Role::OriginalSorting) {
-            return clipboardEntry.dateSort;
         } else if (role == Role::HighlightingRole) {
             return clipboardEntry.fileName;
         } else if (role == Qt::DecorationRole) {
@@ -83,7 +77,7 @@ public:
                 icon = QIcon::fromTheme(QStringLiteral("text-plain"));
             }
 
-            temp.append({entry.text, entry.fileName, icon, -1, i});
+            temp.append({entry.text, entry.fileName, icon});
         }
 
         beginResetModel();
@@ -98,76 +92,14 @@ public:
         endResetModel();
     }
 
-    bool setData(const QModelIndex &index, const QVariant &value, int role) override
-    {
-        if (!index.isValid()) {
-            return false;
-        }
-        if (role == Role::FuzzyScore) {
-            auto row = index.row();
-            m_modelEntries[row].score = value.toInt();
-        }
-        return QAbstractTableModel::setData(index, value, role);
-    }
-
 private:
     struct ClipboardEntry {
         QString text;
         QString fileName;
         QIcon icon;
-        int score;
-        int dateSort;
     };
 
     QVector<ClipboardEntry> m_modelEntries;
-};
-
-class ClipboardHistoryFilterModel : public QSortFilterProxyModel
-{
-    Q_OBJECT
-
-public:
-    explicit ClipboardHistoryFilterModel(QObject *parent = nullptr)
-        : QSortFilterProxyModel(parent)
-    {
-    }
-
-    Q_SLOT void setFilterString(const QString &string)
-    {
-        beginResetModel();
-        m_pattern = string;
-        endResetModel();
-    }
-
-protected:
-    bool lessThan(const QModelIndex &sourceLeft, const QModelIndex &sourceRight) const override
-    {
-        if (m_pattern.isEmpty()) {
-            const int l = sourceLeft.data(ClipboardHistoryModel::OriginalSorting).toInt();
-            const int r = sourceRight.data(ClipboardHistoryModel::OriginalSorting).toInt();
-            return l > r;
-        }
-        const int l = sourceLeft.data(ClipboardHistoryModel::FuzzyScore).toInt();
-        const int r = sourceRight.data(ClipboardHistoryModel::FuzzyScore).toInt();
-        return l < r;
-    }
-
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override
-    {
-        if (m_pattern.isEmpty()) {
-            return true;
-        }
-
-        const auto idx = sourceModel()->index(sourceRow, 0, sourceParent);
-        const QString string = idx.data().toString();
-        const KFuzzyMatcher::Result res = KFuzzyMatcher::match(m_pattern, string);
-
-        sourceModel()->setData(idx, res.score, ClipboardHistoryModel::FuzzyScore);
-        return res.matched;
-    }
-
-private:
-    QString m_pattern;
 };
 
 class SingleLineDelegate : public QStyledItemDelegate
@@ -209,10 +141,11 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
     : QuickDialog(nullptr, window)
     , m_viewPrivate(viewPrivate)
     , m_model(new ClipboardHistoryModel(this))
-    , m_proxyModel(new ClipboardHistoryFilterModel(this))
+    , m_proxyModel(new QSortFilterProxyModel(this))
     , m_selectedDoc(new KTextEditor::DocumentPrivate)
 {
     m_proxyModel->setSourceModel(m_model);
+    m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
 
     const QFont font = viewPrivate->renderer()->config()->baseFont();
 
@@ -241,7 +174,8 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
     });
 
     connect(&m_lineEdit, &QLineEdit::textChanged, this, [this](const QString &s) {
-        m_proxyModel->setFilterString(s);
+        m_proxyModel->setFilterFixedString(s);
+
 
         const auto bestMatch = m_proxyModel->index(0, 0);
         m_treeView.setCurrentIndex(bestMatch);
