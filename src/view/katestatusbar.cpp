@@ -579,13 +579,22 @@ void KateStatusBar::configChanged()
     }
 
     auto cfg = KateViewConfig::global();
-    m_inputMode->setVisible(cfg->value(KateViewConfig::ShowStatusbarInputMode).toBool());
-    m_mode->setVisible(cfg->value(KateViewConfig::ShowStatusbarHighlightingMode).toBool());
-    m_cursorPosition->setVisible(cfg->value(KateViewConfig::ShowStatusbarLineColumn).toBool());
-    m_tabsIndent->setVisible(cfg->value(KateViewConfig::ShowStatusbarTabSettings).toBool());
-    m_dictionary->setVisible(cfg->value(KateViewConfig::ShowStatusbarDictionary).toBool());
-    m_encoding->setVisible(cfg->value(KateViewConfig::ShowStatusbarFileEncoding).toBool());
-    updateDictionary();
+    auto updateButtonVisibility = [cfg](StatusBarButton *b, KateViewConfig::ConfigEntryTypes c) {
+        bool v = cfg->value(c).toBool();
+        if (v != (!b->isHidden())) {
+            b->setVisible(v);
+        }
+    };
+    updateButtonVisibility(m_inputMode, KateViewConfig::ShowStatusbarInputMode);
+    updateButtonVisibility(m_mode, KateViewConfig::ShowStatusbarHighlightingMode);
+    updateButtonVisibility(m_cursorPosition, KateViewConfig::ShowStatusbarLineColumn);
+    updateButtonVisibility(m_tabsIndent, KateViewConfig::ShowStatusbarTabSettings);
+    updateButtonVisibility(m_encoding, KateViewConfig::ShowStatusbarFileEncoding);
+
+    bool v = cfg->value(KateViewConfig::ShowStatusbarDictionary).toBool();
+    if (v != (!m_dictionary->isHidden()) && !Sonnet::Speller().availableDictionaries().isEmpty()) {
+        updateButtonVisibility(m_dictionary, KateViewConfig::ShowStatusbarDictionary);
+    }
 }
 
 void KateStatusBar::changeDictionary(QAction *action)
