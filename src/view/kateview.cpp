@@ -2036,16 +2036,14 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
         clearHighlights();
     }
 
-    const QString pattern = QLatin1String("\\b") + QRegularExpression::escape(text) + QLatin1String("\\b");
-
     // Use selection range end as starting point
     const auto lastSelectionRange = selectionRange();
 
     KTextEditor::Range searchRange(lastSelectionRange.end(), doc()->documentRange().end());
-    QVector<KTextEditor::Range> matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
+    QVector<KTextEditor::Range> matches = doc()->searchText(searchRange, text, KTextEditor::Default);
     if (!matches.isEmpty() && !matches.constFirst().isValid()) {
         searchRange.setRange(doc()->documentRange().start(), lastSelectionRange.end());
-        matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
+        matches = doc()->searchText(searchRange, text, KTextEditor::Default);
     }
 
     // No match found or only one possible match
@@ -2104,13 +2102,11 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
         }
     }
 
-    const QString pattern = QLatin1String("\\b") + QRegularExpression::escape(text) + QLatin1String("\\b");
-
     KTextEditor::Range searchRange(doc()->documentRange());
     QVector<KTextEditor::Range> matches;
     QVector<PlainSecondaryCursor> resultRanges;
     do {
-        matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
+        matches = doc()->searchText(searchRange, text, KTextEditor::Default);
 
         if (matches.constFirst().isValid()) {
             // Dont add if matches primary selection
