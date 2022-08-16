@@ -182,6 +182,32 @@
        </property>
       </widget>
      </item>
+    <item row="13" column="0">
+      <widget class="QLabel" name="lblClipboardHistoryEntries">
+       <property name="text">
+        <string>Max Clipboard History Entries:</string>
+       </property>
+       <property name="buddy">
+        <cstring>sbClipboardHistoryEntries</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="KPluralHandlingSpinBox" name="sbClipboardHistoryEntries">
+       <property name="whatsThis">
+        <string>This determines the number of entries to keep in the clipboard history</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>999</number>
+       </property>
+       <property name="value">
+        <number>20</number>
+       </property>
+      </widget>
+     </item>
      <item row="8" column="1">
       <widget class="QLabel" name="lblBracketHelp">
        <property name="sizePolicy">

@@ -493,6 +493,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     observeChanges(ui->chkShowStaticWordWrapMarker);
     observeChanges(ui->chkTextDragAndDrop);
     observeChanges(ui->chkSmartCopyCut);
+    observeChanges(ui->sbClipboardHistoryEntries);
     observeChanges(ui->chkStaticWordWrap);
     observeChanges(ui->cmbEncloseSelection);
     ui->lblBracketHelp->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
@@ -549,6 +550,7 @@ void KateEditGeneralConfigTab::apply()
     KateViewConfig::global()->setValue(KateViewConfig::MousePasteAtCursorPosition, ui->chkMousePasteAtCursorPosition->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::TextDragAndDrop, ui->chkTextDragAndDrop->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::SmartCopyCut, ui->chkSmartCopyCut->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ClipboardHistoryEntries, ui->sbClipboardHistoryEntries->value());
 
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -562,6 +564,7 @@ void KateEditGeneralConfigTab::reload()
     ui->chkTextDragAndDrop->setChecked(KateViewConfig::global()->textDragAndDrop());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
     ui->chkStaticWordWrap->setChecked(KateDocumentConfig::global()->wordWrap());
+    ui->sbClipboardHistoryEntries->setValue(KateViewConfig::global()->clipboardHistoryEntries());
 
     ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at (value is at 20 or larger)", " character", " characters"));
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());

@@ -1014,6 +1014,7 @@ public:
         BackspaceRemoveComposedCharacters,
         BookmarkSorting,
         CharsToEncloseSelection,
+        ClipboardHistoryEntries,
         DefaultMarkType,
         DynWordWrapAlignIndent,
         DynWordWrapIndicators,
@@ -1300,6 +1301,11 @@ public:
     bool mousePasteAtCursorPosition() const
     {
         return value(MousePasteAtCursorPosition).toBool();
+    }
+
+    int clipboardHistoryEntries() const
+    {
+        return value(ClipboardHistoryEntries).toInt();
     }
 
     bool scrollPastEnd() const

@@ -486,6 +486,9 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
     addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QStringLiteral("<>(){}[]'\"")));
+    addConfigEntry(ConfigEntry(ClipboardHistoryEntries, "Max Clipboard History Entries", QString(), 20, [](const QVariant &value) {
+        return inBounds(1, value, 999);
+    }));
     addConfigEntry(ConfigEntry(DefaultMarkType,
                                "Default Mark Type",
                                QStringLiteral("default-mark-type"),
