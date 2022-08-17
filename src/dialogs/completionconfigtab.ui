@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>235</height>
+    <width>463</width>
+    <height>416</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -40,7 +49,7 @@
    <item>
     <widget class="QGroupBox" name="gbWordCompletion">
      <property name="title">
-      <string>A&amp;uto Word Completion</string>
+      <string>A&amp;uto word completion</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -86,6 +95,16 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Word completion provides suggestions based on the words found in the document</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -114,7 +133,7 @@
    <item>
     <widget class="QGroupBox" name="gbShowDoc">
      <property name="title">
-      <string>Documentation with Completion</string>
+      <string>Documentation with completion</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
