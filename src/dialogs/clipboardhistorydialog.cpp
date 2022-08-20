@@ -206,6 +206,13 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
         m_treeView.setCurrentIndex(bestMatch);
         showSelectedText(bestMatch);
     });
+
+    m_treeView.removeEventFilter(parent());
+    m_lineEdit.removeEventFilter(parent());
+
+    m_treeView.installEventFilter(this);
+    m_lineEdit.installEventFilter(this);
+    m_selectedView->installEventFilter(this);
 }
 
 void ClipboardHistoryDialog::showSelectedText(const QModelIndex &idx)
@@ -245,6 +252,45 @@ void ClipboardHistoryDialog::slotReturnPressed()
 
     clearLineEdit();
     hide();
+}
+
+bool ClipboardHistoryDialog::eventFilter(QObject *obj, QEvent *event)
+{
+    // catch key presses + shortcut overrides to allow to have ESC as application wide shortcut, too, see bug 409856
+    if (event->type() == QEvent::KeyPress || event->type() == QEvent::ShortcutOverride) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (obj == &m_lineEdit) {
+            const bool forward2list = (keyEvent->key() == Qt::Key_Up) || (keyEvent->key() == Qt::Key_Down) || (keyEvent->key() == Qt::Key_PageUp)
+                || (keyEvent->key() == Qt::Key_PageDown);
+            if (forward2list) {
+                QCoreApplication::sendEvent(&m_treeView, event);
+                return true;
+            }
+
+            if (keyEvent->key() == Qt::Key_Escape) {
+                clearLineEdit();
+                keyEvent->accept();
+                hide();
+                return true;
+            }
+        } else {
+            const bool forward2input = (keyEvent->key() != Qt::Key_Up) && (keyEvent->key() != Qt::Key_Down) && (keyEvent->key() != Qt::Key_PageUp)
+                && (keyEvent->key() != Qt::Key_PageDown) && (keyEvent->key() != Qt::Key_Tab) && (keyEvent->key() != Qt::Key_Backtab);
+            if (forward2input) {
+                QCoreApplication::sendEvent(&m_lineEdit, event);
+                return true;
+            }
+        }
+    }
+
+    // hide on focus out, if neither input field nor list have focus!
+    else if (event->type() == QEvent::FocusOut && !(m_lineEdit.hasFocus() || m_treeView.hasFocus() || m_selectedView->hasFocus())) {
+        clearLineEdit();
+        hide();
+        return true;
+    }
+
+    return QWidget::eventFilter(obj, event);
 }
 
 #include "clipboardhistorydialog.moc"

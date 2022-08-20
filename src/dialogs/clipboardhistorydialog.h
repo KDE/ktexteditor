@@ -30,6 +30,9 @@ public:
     void resetValues();
     void openDialog(const QVector<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory);
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
 private Q_SLOTS:
     void slotReturnPressed() override;
 
