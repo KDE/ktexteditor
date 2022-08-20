@@ -24,13 +24,13 @@ class QuickDialog : public QMenu
 public:
     QuickDialog(QWidget *parent, QWidget *mainWindow);
 
+public Q_SLOTS:
+    virtual void slotReturnPressed() = 0;
+
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
     void updateViewGeometry();
     void clearLineEdit();
-
-protected Q_SLOTS:
-    virtual void slotReturnPressed() = 0;
 
 protected:
     QTreeView m_treeView;

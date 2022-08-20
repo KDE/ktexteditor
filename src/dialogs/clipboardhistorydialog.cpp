@@ -190,6 +190,9 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
 
     m_lineEdit.setFont(font);
 
+    disconnect(&m_treeView, &QTreeView::clicked, this, &QuickDialog::slotReturnPressed);
+    connect(&m_treeView, &QTreeView::doubleClicked, this, &QuickDialog::slotReturnPressed);
+
     connect(m_treeView.selectionModel(), &QItemSelectionModel::currentRowChanged, this, [this](const QModelIndex &current, const QModelIndex &previous) {
         Q_UNUSED(previous);
         showSelectedText(current);
