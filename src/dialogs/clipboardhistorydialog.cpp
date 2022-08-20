@@ -26,7 +26,7 @@ class ClipboardHistoryModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    enum Role { HighlightingRole = Qt::UserRole + 1,  };
+    enum Role { HighlightingRole = Qt::UserRole + 1, OriginalSorting };
 
     explicit ClipboardHistoryModel(QObject *parent)
         : QAbstractTableModel(parent)
@@ -60,6 +60,8 @@ public:
             return clipboardEntry.fileName;
         } else if (role == Qt::DecorationRole) {
             return clipboardEntry.icon;
+        } else if (role == Role::OriginalSorting) {
+            return clipboardEntry.dateSort;
         }
 
         return {};
@@ -77,7 +79,7 @@ public:
                 icon = QIcon::fromTheme(QStringLiteral("text-plain"));
             }
 
-            temp.append({entry.text, entry.fileName, icon});
+            temp.append({entry.text, entry.fileName, icon, i});
         }
 
         beginResetModel();
@@ -97,9 +99,29 @@ private:
         QString text;
         QString fileName;
         QIcon icon;
+        int dateSort;
     };
 
     QVector<ClipboardEntry> m_modelEntries;
+};
+
+class ClipboardHistoryFilterModel : public QSortFilterProxyModel
+{
+    Q_OBJECT
+
+public:
+    explicit ClipboardHistoryFilterModel(QObject *parent = nullptr)
+        : QSortFilterProxyModel(parent)
+    {
+    }
+
+protected:
+    bool lessThan(const QModelIndex &sourceLeft, const QModelIndex &sourceRight) const override
+    {
+        const int l = sourceLeft.data(ClipboardHistoryModel::OriginalSorting).toInt();
+        const int r = sourceRight.data(ClipboardHistoryModel::OriginalSorting).toInt();
+        return l < r;
+    }
 };
 
 class SingleLineDelegate : public QStyledItemDelegate
@@ -141,7 +163,7 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
     : QuickDialog(nullptr, window)
     , m_viewPrivate(viewPrivate)
     , m_model(new ClipboardHistoryModel(this))
-    , m_proxyModel(new QSortFilterProxyModel(this))
+    , m_proxyModel(new ClipboardHistoryFilterModel(this))
     , m_selectedDoc(new KTextEditor::DocumentPrivate)
 {
     m_proxyModel->setSourceModel(m_model);

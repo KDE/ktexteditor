@@ -11,11 +11,6 @@
 #include "kateglobal.h"
 #include "quickdialog.h"
 
-class QFont;
-class QPalette;
-class QSortFilterProxyModel;
-class QTextEdit;
-
 class ClipboardHistoryModel;
 class ClipboardHistoryFilterModel;
 
@@ -48,7 +43,7 @@ private:
     KTextEditor::ViewPrivate *m_viewPrivate;
 
     ClipboardHistoryModel *m_model;
-    QSortFilterProxyModel *m_proxyModel;
+    ClipboardHistoryFilterModel *m_proxyModel;
 
     /*
      * Document for the selected text to paste
