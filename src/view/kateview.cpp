@@ -456,7 +456,7 @@ void KTextEditor::ViewPrivate::setupActions()
     m_copy = a = ac->addAction(KStandardAction::Copy, this, SLOT(copy()));
     a->setWhatsThis(i18n("Use this command to copy the currently selected text to the system clipboard."));
 
-    a = ac->addAction(QStringLiteral("clipboard_history_paste"), this, [this] {
+    m_clipboardHistory = a = ac->addAction(QStringLiteral("clipboard_history_paste"), this, [this] {
         ClipboardHistoryDialog chd(mainWindow()->window(), this);
         chd.openDialog(KTextEditor::EditorPrivate::self()->clipboardHistory());
     });
@@ -599,7 +599,7 @@ void KTextEditor::ViewPrivate::setupActions()
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Space));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::userInvokedCompletion);
     } else {
-        for (auto *action : {m_cut, m_paste, m_swapWithClipboard}) {
+        for (auto *action : {m_cut, m_paste, m_clipboardHistory, m_swapWithClipboard}) {
             action->setEnabled(false);
         }
 

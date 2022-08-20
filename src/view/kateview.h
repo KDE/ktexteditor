@@ -851,7 +851,6 @@ private:
     std::vector<QAction *> m_editActions;
     QAction *m_editUndo;
     QAction *m_editRedo;
-    QAction *m_pasteMenu;
     bool m_gotoBottomAfterReload;
     KToggleAction *m_toggleFoldingMarkers;
     KToggleAction *m_toggleIconBar;
@@ -874,6 +873,7 @@ private:
     QAction *m_copy;
     QAction *m_copyHtmlAction;
     QAction *m_paste;
+    QAction *m_clipboardHistory;
     // always nullptr if paste selection isn't supported
     QAction *m_pasteSelection = nullptr;
     QAction *m_swapWithClipboard;
