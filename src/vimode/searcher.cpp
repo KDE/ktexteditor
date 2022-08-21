@@ -52,7 +52,7 @@ bool Searcher::lastSearchWrapped() const
 
 void Searcher::findNext()
 {
-    const Range r = motionFindPrev();
+    const Range r = motionFindNext();
     if (r.valid) {
         m_viInputModeManager->getCurrentViModeHandler()->goToPos(r);
     }
