@@ -123,7 +123,7 @@ protected:
     {
         const int l = sourceLeft.data(ClipboardHistoryModel::OriginalSorting).toInt();
         const int r = sourceRight.data(ClipboardHistoryModel::OriginalSorting).toInt();
-        return l < r;
+        return l > r;
     }
 };
 
