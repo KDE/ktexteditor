@@ -4148,7 +4148,7 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
     const QString shortCommentMark = highlight()->getCommentSingleLineStart(attrib);
     const QString longCommentMark = shortCommentMark + QLatin1Char(' ');
 
-    int startLine = selection.start().line();
+    const int startLine = selection.start().line();
     int endLine = selection.end().line();
 
     if ((selection.end().column() == 0) && (endLine > 0)) {
@@ -4166,6 +4166,10 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
         for (int line = endLine; line >= startLine; line--) {
             const auto ln = m_buffer->plainLine(line);
             const QString &text = ln->text();
+            // Empty lines in between comments is ok
+            if (text.isEmpty()) {
+                continue;
+            }
             QStringView textView(text.data(), text.size());
             // Must trim any spaces at the beginning
             textView = textView.trimmed();

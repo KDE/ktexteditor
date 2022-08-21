@@ -902,6 +902,20 @@ void KateDocumentTest::testToggleComment()
         // after uncommenting, we get original text back with one line commented
         QCOMPARE(doc.text(), original);
     }
+
+    { // BUG: 458126
+        KTextEditor::DocumentPrivate doc;
+        doc.setText("another:\n\nanother2: hello");
+        QVERIFY(doc.highlightingModes().contains(QStringLiteral("YAML")));
+        doc.setHighlightingMode("YAML");
+        const QString original = doc.text();
+
+        doc.commentSelection(doc.documentRange(), {2, 0}, false, DocumentPrivate::ToggleComment);
+        QCOMPARE(doc.text(), "# another:\n\n# another2: hello");
+
+        doc.commentSelection(doc.documentRange(), {2, 0}, false, DocumentPrivate::ToggleComment);
+        QCOMPARE(doc.text(), original);
+    }
 }
 
 void KateDocumentTest::testInsertTextTooLargeColumn()
