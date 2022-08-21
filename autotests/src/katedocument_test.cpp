@@ -633,7 +633,8 @@ void KateDocumentTest::testRemoveComposedCharacters()
 
     QCOMPARE(doc.text(), QString::fromUtf8(("क्तियों")));
 
-    doc.backspace(view, Cursor(0, 7));
+    view->setCursorPosition({0, 7});
+    doc.backspace(view);
 
     QCOMPARE(doc.text(), QString::fromUtf8(("क्ति")));
 }

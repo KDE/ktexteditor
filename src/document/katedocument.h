@@ -852,7 +852,7 @@ public:
     enum NewLinePos { Normal, Above, Below };
 
     void newLine(KTextEditor::ViewPrivate *view, NewLineIndent indent = NewLineIndent::Indent, NewLinePos newLinePos = Normal); // Changes input
-    void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
+    void backspace(KTextEditor::ViewPrivate *view);
     void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor);
     void transpose(const KTextEditor::Cursor);
     void swapTextRanges(KTextEditor::Range firstWord, KTextEditor::Range secondWord);

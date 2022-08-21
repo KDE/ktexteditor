@@ -22,12 +22,15 @@ private Q_SLOTS:
     // Creation
     static void testCreateMultiCursor();
     static void testCreateMultiCursorFromSelection();
+    static void testMulticursorToggling();
 
     // Text transformations
     static void testKillline();
 
     // Insert & Remove tests
     static void insertRemoveText();
+    static void backspace();
+    static void keyDelete();
     static void testUndoRedo();
     static void testUndoRedoWithSelection();
     static void keyReturnIndentTest();

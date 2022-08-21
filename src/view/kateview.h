@@ -233,13 +233,19 @@ public:
         {
             return l.cursor() == r.cursor();
         }
+
+        void clearSelection()
+        {
+            range.reset();
+            anchor = KTextEditor::Cursor::invalid();
+        }
     };
 
     // Just a helper to control the states in which we disallow multicursor
     bool isMulticursorNotAllowed() const;
 
     // Adds a secondary cursor
-    void addSecondaryCursorAt(const KTextEditor::Cursor &cursor, bool toggle = true);
+    void addSecondaryCursor(const KTextEditor::Cursor &cursor);
     void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
 
     const std::vector<SecondaryCursor> &secondaryCursors() const;
@@ -260,8 +266,11 @@ public:
     void setCursors(const QVector<KTextEditor::Cursor> &cursorPositions);
     void setSelections(const QVector<KTextEditor::Range> &selectionRanges);
 
+    // Returns true if primary or secondary cursors have selection
+    bool hasSelections() const;
+
 private:
-    void removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove);
+    bool removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove, bool removeIfOverlapsSelection = false);
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
     void sortCursors();
     void paintCursors();

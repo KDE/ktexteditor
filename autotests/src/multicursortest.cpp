@@ -59,6 +59,7 @@ static QWidget *findViewInternal(KTextEditor::ViewPrivate *view)
 static void clickAtPosition(ViewPrivate *view, QObject *internalView, Cursor pos, Qt::KeyboardModifiers m)
 {
     QPoint p = view->cursorToCoordinate(pos);
+    QVERIFY(p.x() >= 0 && p.y() >= 0);
     auto me = QMouseEvent(QEvent::MouseButtonPress, p, Qt::LeftButton, Qt::LeftButton, m);
     QCoreApplication::sendEvent(internalView, &me);
 }
@@ -69,8 +70,8 @@ void MulticursorTest::testKillline()
     doc.insertLines(0, {"foo", "bar", "baz"});
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->setCursorPositionInternal(KTextEditor::Cursor(0, 0));
-    view->addSecondaryCursorAt(KTextEditor::Cursor(1, 0));
-    view->addSecondaryCursorAt(KTextEditor::Cursor(2, 0));
+    view->addSecondaryCursor(KTextEditor::Cursor(1, 0));
+    view->addSecondaryCursor(KTextEditor::Cursor(2, 0));
     QVERIFY(isSorted(view->secondaryCursors()));
 
     view->killLine();
@@ -85,10 +86,11 @@ void MulticursorTest::insertRemoveText()
     QVERIFY(internalView);
 
     { // Same line
-        view->addSecondaryCursorAt({0, 1});
-        view->addSecondaryCursorAt({0, 2});
-        view->addSecondaryCursorAt({0, 3});
+        view->addSecondaryCursor({0, 1});
+        view->addSecondaryCursor({0, 2});
+        view->addSecondaryCursor({0, 3});
         QVERIFY(isSorted(view->secondaryCursors()));
+        QCOMPARE(view->secondaryCursors().size(), 3);
         QKeyEvent ke(QKeyEvent::KeyPress, Qt::Key_L, Qt::NoModifier, QStringLiteral("L"));
         QCoreApplication::sendEvent(internalView, &ke);
 
@@ -102,8 +104,9 @@ void MulticursorTest::insertRemoveText()
     }
 
     { // Different lines
-        view->addSecondaryCursorAt({1, 0});
-        view->addSecondaryCursorAt({2, 0});
+        view->setCursorPosition(Cursor(0, 0));
+        view->addSecondaryCursor({1, 0});
+        view->addSecondaryCursor({2, 0});
         QKeyEvent ke(QKeyEvent::KeyPress, Qt::Key_L, Qt::NoModifier, QStringLiteral("L"));
         QCoreApplication::sendEvent(internalView, &ke);
 
@@ -125,14 +128,86 @@ void MulticursorTest::insertRemoveText()
     // Three empty lines
     doc.setText(QStringLiteral("\n\n\n"));
     view->setCursorPosition({0, 0});
-    view->addSecondaryCursorAt({1, 0});
-    view->addSecondaryCursorAt({2, 0});
+    view->addSecondaryCursor({1, 0});
+    view->addSecondaryCursor({2, 0});
     QVERIFY(isSorted(view->secondaryCursors()));
 
     // cursors should merge
     view->backspace();
     QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+}
+
+void MulticursorTest::backspace()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nbaz", 0, 3);
+    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
+
+    {
+        // Mixed cursors, one doesn't have selection
+        // the two below have selection
+        cursors.append({Cursor(1, 3), Range(1, 0, 1, 3)});
+        cursors.append({Cursor(2, 3), Range(2, 0, 2, 3)});
+        view->addSecondaryCursorsWithSelection(cursors);
+
+        // Pressing backspace should only remove selected text
+        view->backspace();
+        QVERIFY(isSorted(view->secondaryCursors()));
+        QCOMPARE(doc.text(), QStringLiteral("foo\n\n"));
+
+        // Pressing backspace again
+        view->backspace();
+        QVERIFY(view->secondaryCursors().empty());
+        QCOMPARE(doc.text(), QStringLiteral("fo"));
+    }
+
+    {
+        // No selection
+        doc.setText("foo\nbar\nbaz");
+        view->setCursors({Cursor(0, 3), Cursor(1, 3), Cursor(2, 3)});
+        view->backspace();
+        QCOMPARE(doc.text(), QStringLiteral("fo\nba\nba"));
+        view->backspace();
+        view->backspace();
+        QCOMPARE(doc.text(), QStringLiteral("\n\n"));
+        QCOMPARE(view->cursors().size(), 3);
+    }
+}
+
+void MulticursorTest::keyDelete()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nbaz", 0, 0);
+    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
+
+    {
+        // Mixed cursors, one doesn't have selection
+        // the two below have selection
+        cursors.append({Cursor(1, 0), Range(1, 0, 1, 3)});
+        cursors.append({Cursor(2, 0), Range(2, 0, 2, 3)});
+        view->addSecondaryCursorsWithSelection(cursors);
+
+        // Pressing del should only remove selected text
+        view->keyDelete();
+        QVERIFY(isSorted(view->secondaryCursors()));
+        QCOMPARE(doc.text(), QStringLiteral("foo\n\n"));
+
+        // Pressing del again
+        view->keyDelete();
+        QCOMPARE(view->secondaryCursors().size(), 1);
+        QCOMPARE(doc.text(), QStringLiteral("oo\n"));
+    }
+
+    {
+        // No selection
+        doc.setText("foo\nbar\nbaz");
+        view->setCursors({Cursor(0, 0), Cursor(1, 0), Cursor(2, 0)});
+        view->keyDelete();
+        QCOMPARE(doc.text(), QStringLiteral("oo\nar\naz"));
+        view->keyDelete();
+        view->keyDelete();
+        QCOMPARE(doc.text(), QStringLiteral("\n\n"));
+        QCOMPARE(view->cursors().size(), 3);
+    }
 }
 
 void MulticursorTest::testUndoRedo()
@@ -145,7 +220,7 @@ void MulticursorTest::testUndoRedo()
     doc.undoManager()->undoSafePoint();
 
     // backspace with 2 cursors
-    view->addSecondaryCursorAt({1, 3});
+    view->setCursors({view->cursorPosition(), Cursor{1, 3}});
     view->backspace();
     QCOMPARE(doc.text(), QStringLiteral("f\nfo"));
 
@@ -173,7 +248,7 @@ void MulticursorTest::testUndoRedo()
 void MulticursorTest::testUndoRedoWithSelection()
 {
     CREATE_VIEW_AND_DOC("foo\nfoo", 0, 3);
-    view->addSecondaryCursorAt({1, 3});
+    view->setCursors({Cursor(0, 3), Cursor(1, 3)});
 
     // select a word & remove it
     view->shiftWordLeft();
@@ -236,9 +311,13 @@ void MulticursorTest::testCreateMultiCursor()
     QVERIFY(internalView);
 
     // Alt + click should add a cursor
+    auto primary = view->cursorPosition();
     clickAtPosition(view, internalView, {1, 0}, Qt::AltModifier);
     QCOMPARE(view->secondaryCursors().size(), 1);
-    QCOMPARE(view->secondaryCursors().at(0).cursor(), KTextEditor::Cursor(1, 0));
+    // primary cursor moved to the position which is clicked
+    QCOMPARE(view->cursorPosition(), Cursor(1, 0));
+    // secondary was created where primary cursor was
+    QCOMPARE(view->secondaryCursors().at(0).cursor(), primary);
 
     // Alt + click at the same point should remove the cursor
     clickAtPosition(view, internalView, {1, 0}, Qt::AltModifier);
@@ -250,10 +329,10 @@ void MulticursorTest::testCreateMultiCursor()
     QCOMPARE(view->secondaryCursors().size(), 2);
     QVERIFY(isSorted(view->secondaryCursors()));
 
-    // now simple click => show remove all secondary cursors
-    clickAtPosition(view, internalView, {0, 0}, Qt::NoModifier);
+    // now simple click => should remove all secondary cursors
+    clickAtPosition(view, internalView, {1, 0}, Qt::NoModifier);
     QCOMPARE(view->secondaryCursors().size(), 0);
-    QCOMPARE(view->cursorPosition(), Cursor(0, 0));
+    QCOMPARE(view->cursorPosition(), Cursor(1, 0));
 }
 
 void MulticursorTest::testCreateMultiCursorFromSelection()
@@ -276,12 +355,28 @@ void MulticursorTest::testCreateMultiCursorFromSelection()
     }
 }
 
+void MulticursorTest::testMulticursorToggling()
+{
+    CREATE_VIEW_AND_DOC("foo\nbar\nfoo", 0, 0);
+    view->setSelections({Range(0, 0, 0, 3), Range(1, 0, 1, 3)});
+    QCOMPARE(view->selectionRanges().size(), 2);
+
+    // Trying to add a cursor in one of the selection region
+    // will remove it
+    view->addSecondaryCursor(Cursor(0, 2));
+    QCOMPARE(view->selectionRanges().size(), 1);
+
+    // Trying to toggle last remaining selection will do nothing
+    view->addSecondaryCursor(Cursor(1, 2));
+    QCOMPARE(view->selectionRanges().size(), 1);
+}
+
 void MulticursorTest::moveCharTest()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);
+    view->setCursors({Cursor(0, 0), Cursor(1, 0)});
 
     // Simple left right
-    view->addSecondaryCursorAt({1, 0});
     view->cursorRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     QCOMPARE(view->secondaryCursors().at(0).cursor(), Cursor(1, 1));
@@ -304,8 +399,7 @@ void MulticursorTest::moveCharTest()
     view->clearSecondaryCursors();
 
     // Selection merge test => merge into primary cursor
-    view->setCursorPosition({0, 2}); // fo|o
-    view->addSecondaryCursorAt({0, 3}); // foo|
+    view->setCursors({Cursor(0, 2), Cursor(0, 3)}); // fo|o|
     // Two shift left should result in one cursor
     view->shiftCursorLeft();
     view->shiftCursorLeft();
@@ -317,7 +411,7 @@ void MulticursorTest::moveCharTest()
 
     // Selection merge test => merge primary into multi => multi becomes primary
     view->setCursorPosition({0, 0}); // fo|o
-    view->addSecondaryCursorAt({0, 1}); // foo|
+    view->addSecondaryCursor({0, 1}); // foo|
     // Two shift left should result in one cursor
     view->shiftCursorRight();
     view->shiftCursorRight();
@@ -329,7 +423,7 @@ void MulticursorTest::moveCharTest()
 void MulticursorTest::moveCharInFirstOrLastLineTest()
 {
     CREATE_VIEW_AND_DOC("foo", 0, 0);
-    view->addSecondaryCursorAt({0, 1});
+    view->addSecondaryCursor({0, 1});
     // |f|oo
 
     view->cursorLeft();
@@ -337,7 +431,7 @@ void MulticursorTest::moveCharInFirstOrLastLineTest()
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
 
     view->setCursorPosition({0, 2});
-    view->addSecondaryCursorAt({0, 3});
+    view->addSecondaryCursor({0, 3});
     view->cursorRight();
     QCOMPARE(view->secondaryCursors().size(), 0);
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
@@ -346,9 +440,9 @@ void MulticursorTest::moveCharInFirstOrLastLineTest()
 void MulticursorTest::moveWordTest()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);
+    view->setCursors({Cursor(0, 0), Cursor(1, 0)});
 
     // Simple left right
-    view->addSecondaryCursorAt({1, 0});
     view->wordRight();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
     QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 3));
@@ -372,7 +466,7 @@ void MulticursorTest::moveWordTest()
 
     // Two cursors in same word, => word movement should merge them (sel)
     view->setCursorPosition({0, 0}); // |foo
-    view->addSecondaryCursorAt({0, 1}); // f|oo
+    view->addSecondaryCursor({0, 1}); // f|oo
     view->shiftWordRight(); // foo|
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
     QCOMPARE(view->secondaryCursors().size(), 0);
@@ -380,8 +474,8 @@ void MulticursorTest::moveWordTest()
 
     // Three cursors in same word, => word movement should merge them (no sel)
     view->setCursorPosition({0, 3}); // foo|
-    view->addSecondaryCursorAt({0, 2}); // fo|o
-    view->addSecondaryCursorAt({0, 1}); // f|oo
+    view->addSecondaryCursor({0, 2}); // fo|o
+    view->addSecondaryCursor({0, 1}); // f|oo
     view->wordLeft(); // foo|
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
     QCOMPARE(view->secondaryCursors().size(), 0);
@@ -390,28 +484,27 @@ void MulticursorTest::moveWordTest()
 void MulticursorTest::homeEndKeyTest()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);
+    view->setCursors({Cursor(0, 0), Cursor(0, 1)});
 
     // Two cursor in same line => home should merge them
-    view->addSecondaryCursorAt({0, 1});
     view->home();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
     QCOMPARE(view->secondaryCursors().size(), 0);
 
     // Two cursor in same line => end should merge them
-    view->addSecondaryCursorAt({0, 1});
+    view->setCursors({Cursor(0, 0), Cursor(0, 1)});
     view->end();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
     QCOMPARE(view->secondaryCursors().size(), 0);
 
-    view->addSecondaryCursorAt({1, 0});
+    view->setCursors({Cursor(0, 3), Cursor(1, 0)});
     view->end();
     QCOMPARE(view->cursorPosition(), Cursor(0, 3));
     QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 3));
 
     view->clearSecondaryCursors();
 
-    view->setCursorPosition({0, 3});
-    view->addSecondaryCursorAt({1, 3});
+    view->setCursors({Cursor(0, 3), Cursor(1, 3)});
     view->home();
     QCOMPARE(view->cursorPosition(), Cursor(0, 0));
     QCOMPARE(*view->secondaryCursors().at(0).pos, Cursor(1, 0));
@@ -506,7 +599,6 @@ void MulticursorTest::testSelectionMerge()
         }
 
         QCOMPARE(view->secondaryCursors().size(), 6);
-        QCOMPARE(view->cursorPosition(), Cursor(3, 3));
 
         view->shiftWordLeft();
         view->shiftWordLeft();
@@ -528,7 +620,6 @@ void MulticursorTest::testSelectionMerge()
         QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(view->secondaryCursors().size(), 4);
-        QCOMPARE(view->cursorPosition(), Cursor(3, 3));
 
         view->shiftWordLeft();
         view->shiftCursorLeft();
@@ -549,7 +640,6 @@ void MulticursorTest::testSelectionMerge()
         }
 
         QCOMPARE(view->secondaryCursors().size(), 6);
-        QCOMPARE(view->cursorPosition(), Cursor(6, 0));
 
         view->shiftWordRight();
         QVERIFY(isSorted(view->secondaryCursors()));
@@ -571,7 +661,6 @@ void MulticursorTest::testSelectionMerge()
         }
 
         QCOMPARE(view->secondaryCursors().size(), 6);
-        QCOMPARE(view->cursorPosition(), Cursor(0, 0));
 
         view->shiftWordRight();
         view->shiftWordRight();
@@ -593,7 +682,6 @@ void MulticursorTest::testSelectionMerge()
         QVERIFY(isSorted(view->secondaryCursors()));
 
         QCOMPARE(view->secondaryCursors().size(), 4);
-        QCOMPARE(view->cursorPosition(), Cursor(3, 0));
 
         view->shiftWordRight();
         QVERIFY(isSorted(view->secondaryCursors()));
@@ -677,9 +765,9 @@ void MulticursorTest::testMultiCopyPaste()
     // Create two docs, copy from one to the other
     {
         CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
-        view->addSecondaryCursorAt({1, 0});
-        view->addSecondaryCursorAt({2, 0});
-        view->addSecondaryCursorAt({3, 0});
+        view->addSecondaryCursor({1, 0});
+        view->addSecondaryCursor({2, 0});
+        view->addSecondaryCursor({3, 0});
         view->shiftWordRight();
         view->copy();
     }
@@ -690,9 +778,9 @@ void MulticursorTest::testMultiCopyPaste()
         doc.setText("\n\n\n\n");
         KTextEditor::ViewPrivate *v = new KTextEditor::ViewPrivate(&doc, nullptr);
         v->setCursorPosition({0, 0});
-        v->addSecondaryCursorAt({1, 0});
-        v->addSecondaryCursorAt({2, 0});
-        v->addSecondaryCursorAt({3, 0});
+        v->addSecondaryCursor({1, 0});
+        v->addSecondaryCursor({2, 0});
+        v->addSecondaryCursor({3, 0});
         v->paste();
         QCOMPARE(doc.text(), QStringLiteral("foo\nbar\nfoo\nfoo\n"));
 
@@ -701,7 +789,7 @@ void MulticursorTest::testMultiCopyPaste()
         QVERIFY(doc.clear());
         doc.setText(QStringLiteral("\n\n"));
         v->setCursorPosition({0, 0});
-        v->addSecondaryCursorAt({1, 0});
+        v->addSecondaryCursor({1, 0});
         QCOMPARE(v->secondaryCursors().size(), 1);
 
         v->paste();
@@ -713,8 +801,8 @@ void MulticursorTest::testMultiCopyPaste()
 void MulticursorTest::testSelectionTextOrdering()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\nfoo", 0, 0);
-    view->addSecondaryCursorAt({1, 0});
-    view->addSecondaryCursorAt({2, 0});
+    view->addSecondaryCursor({1, 0});
+    view->addSecondaryCursor({2, 0});
     view->shiftWordRight();
     QVERIFY(isSorted(view->secondaryCursors()));
 
@@ -728,7 +816,7 @@ void MulticursorTest::testSelectionTextOrdering()
 void MulticursorTest::testViewClear()
 {
     CREATE_VIEW_AND_DOC("foo\nbar", 0, 0);
-    view->addSecondaryCursorAt({1, 0});
+    view->addSecondaryCursor({1, 0});
     QCOMPARE(view->secondaryCursors().size(), 1);
     view->clear();
     QCOMPARE(view->secondaryCursors().size(), 0);

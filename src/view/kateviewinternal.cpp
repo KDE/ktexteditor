@@ -1908,9 +1908,7 @@ void KateViewInternal::cursorUp(bool sel)
     m_preserveX = true;
 
     // Handle Multi cursors
-
     // usually this will have only one element, rarely
-    std::vector<KTextEditor::Cursor> cursorsToRemove;
     int i = 0;
     for (const auto &c : view()->m_secondaryCursors) {
         auto cursor = c.pos->toCursor();
@@ -1918,41 +1916,15 @@ void KateViewInternal::cursorUp(bool sel)
 
         // our cursor is in the first line already
         if (vCursor.line() == 0 && (!view()->dynWordWrap() || cache()->viewLine(cursor) == 0)) {
-            // is it already at pos 0 in the doc?
-            if (cursor.column() == 0) {
-                // kill this cursor?
-
-                // Count the number of cursors in line 0
-                int count = 0;
-                for (const auto &cur : view()->m_secondaryCursors) {
-                    if (toVirtualCursor(cur.pos->toCursor()).line() == 0) {
-                        count++;
-                        // if there is more than one break
-                        if (count == 2)
-                            break;
-                    }
-                }
-
-                count += m_cursor.line() == 0;
-
-                // if there are more than one cursors in line,
-                // we need to remove this one
-                if (count > 1) {
-                    cursorsToRemove.push_back(cursor);
-                } else {
-                    tagLine(vCursor);
-                }
+            auto newPos = moveCursorToLineStart(cursor);
+            c.pos->setPosition(newPos);
+            auto newVcursor = toVirtualCursor(newPos);
+            if (sel) {
+                updateSecondarySelection(i, cursor, newPos);
             } else {
-                auto newPos = moveCursorToLineStart(cursor);
-                c.pos->setPosition(newPos);
-                auto newVcursor = toVirtualCursor(newPos);
-                if (sel) {
-                    updateSecondarySelection(i, cursor, newPos);
-                } else {
-                    view()->clearSecondarySelections();
-                }
-                tagLines(newVcursor.line(), vCursor.line());
+                view()->clearSecondarySelections();
             }
+            tagLines(newVcursor.line(), vCursor.line());
             i++;
             continue;
         }
@@ -1977,7 +1949,6 @@ void KateViewInternal::cursorUp(bool sel)
         i++;
     }
 
-    view()->removeSecondaryCursors(cursorsToRemove);
     auto mergeOnFuncEnd = qScopeGuard([this, sel] {
         if (sel) {
             mergeSelections();
@@ -2027,7 +1998,6 @@ void KateViewInternal::cursorDown(bool sel)
 
     // Handle multiple cursors
     int i = 0;
-    std::vector<KTextEditor::Cursor> cursorsToRemove;
     for (const auto &c : view()->m_secondaryCursors) {
         auto cursor = c.cursor();
         auto vCursor = toVirtualCursor(cursor);
@@ -2035,22 +2005,15 @@ void KateViewInternal::cursorDown(bool sel)
         // at end?
         if ((vCursor.line() >= view()->textFolding().visibleLines() - 1)
             && (!view()->dynWordWrap() || cache()->viewLine(cursor) == cache()->lastViewLine(cursor.line()))) {
-            WrappingCursor w(this, cursor);
-            // at full edge of the doc?
-            if (w.atEdge(right)) {
-                cursorsToRemove.push_back(cursor);
+            KTextEditor::Cursor newPos = moveCursorToLineEnd(cursor);
+            c.pos->setPosition(newPos);
+            if (sel) {
+                updateSecondarySelection(i, cursor, newPos);
             } else {
-                // move to edge
-                KTextEditor::Cursor newPos = moveCursorToLineEnd(cursor);
-                c.pos->setPosition(newPos);
-                if (sel) {
-                    updateSecondarySelection(i, cursor, newPos);
-                } else {
-                    view()->clearSecondarySelections();
-                }
-                auto vNewPos = toVirtualCursor(newPos);
-                tagLines(vCursor.line(), vNewPos.line());
+                view()->clearSecondarySelections();
             }
+            auto vNewPos = toVirtualCursor(newPos);
+            tagLines(vCursor.line(), vNewPos.line());
             i++;
             continue;
         }
@@ -2073,7 +2036,6 @@ void KateViewInternal::cursorDown(bool sel)
         tagLines(vCursor.line(), vNewPos.line());
         i++;
     }
-    view()->removeSecondaryCursors(cursorsToRemove);
     auto mergeOnFuncEnd = qScopeGuard([this, sel] {
         if (sel) {
             mergeSelections();
@@ -2110,7 +2072,6 @@ void KateViewInternal::cursorDown(bool sel)
 
 void KateViewInternal::cursorToMatchingBracket(bool sel)
 {
-    view()->clearSecondaryCursors();
     KTextEditor::Cursor c = findMatchingBracket();
 
     if (c.isValid()) {
@@ -2357,6 +2318,7 @@ void KateViewInternal::updateSecondarySelection(int cursorIdx, KTextEditor::Curs
     }
 
     if (cursor.range) {
+        Q_ASSERT(cursor.anchor.isValid());
         cursor.range->setRange(cursor.anchor, newPos);
     } else {
         cursor.range.reset(view()->newSecondarySelectionRange({old, newPos}));
@@ -2659,7 +2621,9 @@ void KateViewInternal::updateSecondaryCursors(const QVarLengthArray<CursorPair, 
 
 void KateViewInternal::mergeSelections()
 {
-    auto doMerge = [](KTextEditor::Range newRange, KTextEditor::ViewPrivate::SecondaryCursor &a, KTextEditor::ViewPrivate::SecondaryCursor &b) {
+    using SecondaryCursor = KTextEditor::ViewPrivate::SecondaryCursor;
+    using Range = KTextEditor::Range;
+    auto doMerge = [](Range newRange, SecondaryCursor &a, SecondaryCursor &b) {
         a.range->setRange(newRange);
 
         b.pos.reset();
@@ -2668,15 +2632,18 @@ void KateViewInternal::mergeSelections()
 
     auto &cursors = view()->m_secondaryCursors;
     for (auto it = cursors.begin(); it != cursors.end(); ++it) {
-        if (!it->range) {
+        if (!it->range)
             continue;
-        }
-        auto curRange = it->range->toRange();
         if (it + 1 == cursors.end()) {
             break;
         }
 
         auto n = std::next(it);
+        if (/*!it->range || */ !n->range) {
+            continue;
+        }
+
+        auto curRange = it->range->toRange();
         auto nextRange = n->range->toRange();
         if (!curRange.overlaps(nextRange)) {
             continue;
@@ -2701,39 +2668,48 @@ void KateViewInternal::mergeSelections()
         doMerge(nextRange, *n, *it);
     }
 
-    auto primarySel = view()->m_selection.toRange();
-    auto primCursor = cursorPosition();
-    for (auto it = cursors.begin(); it != cursors.end(); ++it) {
-        if (!it->range) {
-            continue;
-        }
-        auto curRange = it->range->toRange();
-        if (primarySel.overlaps(curRange)) {
-            primarySel.expandToRange(curRange);
-            bool isLeft = it->cursor() < it->anchor;
+    if (view()->selection()) {
+        auto primarySel = view()->m_selection.toRange();
+        auto primCursor = cursorPosition();
+        for (auto it = cursors.begin(); it != cursors.end(); ++it) {
+            // If range is valid, we merge selection into primary
+            // Otherwise if cursor is inside primary selection, it
+            // is removed
+            auto curRange = it->range ? it->range->toRange() : Range::invalid();
+            if (curRange.isValid() && primarySel.overlaps(curRange)) {
+                primarySel.expandToRange(curRange);
+                bool isLeft = it->cursor() < it->anchor;
 
-            if (isLeft) {
-                if (it->cursor() < primCursor) {
-                    updateCursor(it->cursor());
+                if (isLeft) {
+                    if (it->cursor() < primCursor) {
+                        updateCursor(it->cursor());
+                    }
+                    m_selectAnchor = qMax(m_selectAnchor, it->anchor);
+                } else {
+                    if (it->cursor() > primCursor) {
+                        updateCursor(it->cursor());
+                    }
+                    m_selectAnchor = qMin(m_selectAnchor, it->anchor);
                 }
-                m_selectAnchor = qMax(m_selectAnchor, it->anchor);
-            } else {
-                if (it->cursor() > primCursor) {
-                    updateCursor(it->cursor());
+
+                setSelection(primarySel);
+                it->pos.reset();
+                it->range.reset();
+            } else if (it->pos) {
+                // This only needs to be done for primary selection
+                // because remember, mouse selection is always with
+                // primary cursor
+                auto pos = it->cursor();
+                if (!primarySel.boundaryAtCursor(pos) && primarySel.contains(pos)) {
+                    it->pos.reset();
                 }
-                m_selectAnchor = qMin(m_selectAnchor, it->anchor);
             }
-
-            setSelection(primarySel);
-            it->pos.reset();
-            it->range.reset();
-            continue;
         }
     }
 
     cursors.erase(std::remove_if(cursors.begin(),
                                  cursors.end(),
-                                 [](const KTextEditor::ViewPrivate::SecondaryCursor &c) {
+                                 [](const SecondaryCursor &c) {
                                      return !c.pos.get();
                                  }),
                   cursors.end());
@@ -3374,12 +3350,13 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
         m_selChangedByUser = false;
 
-        if (e->modifiers() == view()->config()->multiCursorModifiers()) {
-            setSelection({});
-            view()->clearSecondarySelections();
-            view()->addSecondaryCursorAt(cursorForPoint(e->pos()));
-            e->accept();
-            return;
+        if (!view()->isMulticursorNotAllowed() && e->modifiers() == view()->config()->multiCursorModifiers()) {
+            auto pos = cursorForPoint(e->pos());
+            if (pos.isValid()) {
+                view()->addSecondaryCursor(pos);
+                e->accept();
+                return;
+            }
         } else {
             view()->clearSecondaryCursors();
         }
@@ -3610,6 +3587,11 @@ void KateViewInternal::mouseReleaseEvent(QMouseEvent *e)
 
         m_dragInfo.state = diNone;
 
+        // merge any overlapping selections/cursors
+        if (view()->selection() && !view()->m_secondaryCursors.empty()) {
+            mergeSelections();
+        }
+
         e->accept();
         break;
 
@@ -3710,9 +3692,6 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     }
 
     if (e->buttons() & Qt::LeftButton) {
-        // TODO: support creating multiple selections using mouse
-        view()->clearSecondaryCursors();
-
         if (m_dragInfo.state == diPending) {
             // we had a mouse down, but haven't confirmed a drag yet
             // if the mouse has moved sufficiently, we will confirm
@@ -3764,7 +3743,6 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
             }
             placeCursor(QPoint(m_mouseX, m_mouseY), true);
         }
-
     } else {
         if (view()->config()->textDragAndDrop() && isTargetSelected(e->pos())) {
             // mouse is over selected text. indicate that the text is draggable by setting

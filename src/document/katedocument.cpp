@@ -3533,11 +3533,12 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
     }
 }
 
-void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor c)
+void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view)
 {
-    if (!view->config()->persistentSelection() && view->selection()) {
+    if (!view->config()->persistentSelection() && view->hasSelections()) {
         KTextEditor::Range range = view->selectionRange();
         editStart(); // Avoid bad selection in case of undo
+
         if (view->blockSelection() && view->selection() && range.start().column() > 0 && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
             // Remove one character before vertical selection line by expanding the selection
             range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
@@ -3555,7 +3556,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     const auto &multiCursors = view->secondaryCursors();
     view->completionWidget()->setIgnoreBufferSignals(true);
     for (const auto &c : multiCursors) {
-        auto newPos = backspaceAtCursor(view, c.cursor());
+        const auto newPos = backspaceAtCursor(view, c.cursor());
         if (newPos.isValid()) {
             c.pos->setPosition(newPos);
         }
@@ -3563,7 +3564,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     view->completionWidget()->setIgnoreBufferSignals(false);
 
     // Handle primary cursor
-    auto newPos = backspaceAtCursor(view, c);
+    auto newPos = backspaceAtCursor(view, view->cursorPosition());
     if (newPos.isValid()) {
         view->setCursorPosition(newPos);
     }
