@@ -11,11 +11,14 @@
 #include "kateview.h"
 
 #include <QBoxLayout>
+#include <QCoreApplication>
 #include <QFont>
 #include <QItemSelectionModel>
+#include <QKeyEvent>
 #include <QMimeDatabase>
 #include <QSortFilterProxyModel>
 #include <QStyledItemDelegate>
+#include <QVBoxLayout>
 
 #include <KLocalizedString>
 #include <KSyntaxHighlighting/Definition>
@@ -159,13 +162,52 @@ private:
     QRegularExpression m_newLineRegExp;
 };
 
-ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::ViewPrivate *viewPrivate)
-    : QuickDialog(nullptr, window)
+ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *mainWindow, KTextEditor::ViewPrivate *viewPrivate)
+    : QMenu(mainWindow)
+    , m_mainWindow(mainWindow)
     , m_viewPrivate(viewPrivate)
     , m_model(new ClipboardHistoryModel(this))
     , m_proxyModel(new ClipboardHistoryFilterModel(this))
     , m_selectedDoc(new KTextEditor::DocumentPrivate)
 {
+    // --------------------------------------------------
+    // start of copy from Kate quickdialog.cpp (slight changes)
+    // --------------------------------------------------
+
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setSpacing(0);
+    layout->setContentsMargins(4, 4, 4, 4);
+    setLayout(layout);
+
+    setFocusProxy(&m_lineEdit);
+
+    layout->addWidget(&m_lineEdit);
+
+    layout->addWidget(&m_treeView, 2);
+    m_treeView.setTextElideMode(Qt::ElideLeft);
+    m_treeView.setUniformRowHeights(true);
+
+    connect(&m_lineEdit, &QLineEdit::returnPressed, this, &ClipboardHistoryDialog::slotReturnPressed);
+    // user can add this as necessary
+    //    connect(m_lineEdit, &QLineEdit::textChanged, delegate, &StyleDelegate::setFilterString);
+    connect(&m_lineEdit, &QLineEdit::textChanged, this, [this]() {
+        m_treeView.viewport()->update();
+    });
+    connect(&m_treeView, &QTreeView::doubleClicked, this, &ClipboardHistoryDialog::slotReturnPressed);
+    m_treeView.setSortingEnabled(true);
+
+    m_treeView.setHeaderHidden(true);
+    m_treeView.setRootIsDecorated(false);
+    m_treeView.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_treeView.setSelectionMode(QTreeView::SingleSelection);
+
+    updateViewGeometry();
+    setFocus();
+
+    // --------------------------------------------------
+    // end of copy from Kate quickdialog.cpp
+    // --------------------------------------------------
+
     m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
 
@@ -184,14 +226,9 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
     m_selectedView->setScrollBarMarks(false);
     m_selectedView->setScrollBarMiniMap(false);
 
-    auto *d_layout = static_cast<QVBoxLayout *>(layout());
-    d_layout->setStretchFactor(&m_treeView, 2);
-    d_layout->addWidget(m_selectedView, 3);
+    layout->addWidget(m_selectedView, 3);
 
     m_lineEdit.setFont(font);
-
-    disconnect(&m_treeView, &QTreeView::clicked, this, &QuickDialog::slotReturnPressed);
-    connect(&m_treeView, &QTreeView::doubleClicked, this, &QuickDialog::slotReturnPressed);
 
     connect(m_treeView.selectionModel(), &QItemSelectionModel::currentRowChanged, this, [this](const QModelIndex &current, const QModelIndex &previous) {
         Q_UNUSED(previous);
@@ -206,9 +243,6 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *window, KTextEditor::Vie
         m_treeView.setCurrentIndex(bestMatch);
         showSelectedText(bestMatch);
     });
-
-    m_treeView.removeEventFilter(parent());
-    m_lineEdit.removeEventFilter(parent());
 
     m_treeView.installEventFilter(this);
     m_lineEdit.installEventFilter(this);
@@ -244,6 +278,10 @@ void ClipboardHistoryDialog::openDialog(const QVector<KTextEditor::EditorPrivate
 
     exec();
 }
+
+// --------------------------------------------------
+// start of copy from Kate quickdialog.cpp
+// --------------------------------------------------
 
 void ClipboardHistoryDialog::slotReturnPressed()
 {
@@ -292,5 +330,34 @@ bool ClipboardHistoryDialog::eventFilter(QObject *obj, QEvent *event)
 
     return QWidget::eventFilter(obj, event);
 }
+
+void ClipboardHistoryDialog::updateViewGeometry()
+{
+    if (!m_mainWindow)
+        return;
+
+    const QSize centralSize = m_mainWindow->size();
+
+    // width: 2.4 of editor, height: 1/2 of editor
+    const QSize viewMaxSize(centralSize.width() / 2.4, centralSize.height() / 2);
+
+    // Position should be central over window
+    const int xPos = std::max(0, (centralSize.width() - viewMaxSize.width()) / 2);
+    const int yPos = std::max(0, (centralSize.height() - viewMaxSize.height()) * 1 / 4);
+    const QPoint p(xPos, yPos);
+    move(p + m_mainWindow->pos());
+
+    this->setFixedSize(viewMaxSize);
+}
+
+void ClipboardHistoryDialog::clearLineEdit()
+{
+    const QSignalBlocker block(m_lineEdit);
+    m_lineEdit.clear();
+}
+
+// --------------------------------------------------
+// end of copy from Kate quickdialog.cpp
+// --------------------------------------------------
 
 #include "clipboardhistorydialog.moc"

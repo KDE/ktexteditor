@@ -9,7 +9,11 @@
 #define CLIPBOARD_HISTORY_DIALOG_H
 
 #include "kateglobal.h"
-#include "quickdialog.h"
+
+#include <QLineEdit>
+#include <QMenu>
+#include <QPointer>
+#include <QTreeView>
 
 class ClipboardHistoryModel;
 class ClipboardHistoryFilterModel;
@@ -20,7 +24,7 @@ class DocumentPrivate;
 class ViewPrivate;
 }
 
-class ClipboardHistoryDialog : public QuickDialog
+class ClipboardHistoryDialog : public QMenu
 {
     Q_OBJECT
 
@@ -30,16 +34,20 @@ public:
     void resetValues();
     void openDialog(const QVector<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory);
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event) override;
-
 private Q_SLOTS:
-    void slotReturnPressed() override;
+    void slotReturnPressed();
 
 private:
+    bool eventFilter(QObject *obj, QEvent *event) override;
+    void updateViewGeometry();
+    void clearLineEdit();
     void showSelectedText(const QModelIndex &idx);
 
 private:
+    QTreeView m_treeView;
+    QLineEdit m_lineEdit;
+    QPointer<QWidget> m_mainWindow;
+
     /*
      * View containing the currently open document
      */

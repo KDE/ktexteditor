@@ -72,7 +72,6 @@ completion/katekeywordcompletion.cpp
 dialogs/kateconfigpage.cpp
 dialogs/katedialogs.cpp
 dialogs/kateconfigpage.cpp
-dialogs/quickdialog.cpp
 dialogs/clipboardhistorydialog.cpp
 
 # document (THE document, buffer, lines/cursors/..., CORE STUFF)
