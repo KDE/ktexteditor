@@ -471,7 +471,7 @@ void KTextEditor::ViewPrivate::setupActions()
     }
 
     m_swapWithClipboard = a = ac->addAction(QStringLiteral("edit_swap_with_clipboard"), this, SLOT(swapWithClipboard()));
-    a->setText(i18n("Swap with clipboard contents"));
+    a->setText(i18n("Swap with Clipboard Contents"));
     a->setWhatsThis(i18n("Swap the selected text with the clipboard contents"));
 
     if (!doc()->readOnly()) {
@@ -720,7 +720,7 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleBlockSelection);
 
     a = ac->addAction(QStringLiteral("switch_next_input_mode"));
-    a->setText(i18n("Switch to next Input Mode"));
+    a->setText(i18n("Switch to Next Input Mode"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_V));
     a->setWhatsThis(i18n("Switch to the next input mode."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::cycleInputMode);
@@ -912,12 +912,12 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::addSecondaryCursorUp);
 
     a = ac->addAction(QStringLiteral("edit_toggle_camel_case_cursor"));
-    a->setText(i18n("Toggle camel case cursor movement"));
+    a->setText(i18n("Toggle Camel Case Cursor Movement"));
     a->setWhatsThis(i18n("Toggle between normal word movement and camel case cursor movement."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleCamelCaseCursor);
 
     a = ac->addAction(QStringLiteral("edit_remove_cursors_from_empty_lines"));
-    a->setText(i18n("Remove cursors from empty lines"));
+    a->setText(i18n("Remove Cursors from Empty Lines"));
     a->setWhatsThis(i18n("Remove cursors from empty lines"));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::removeCursorsFromEmptyLines);
 
@@ -1238,7 +1238,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("no_indent_newline"));
-        a->setText(i18n("Insert a non-indented Newline"));
+        a->setText(i18n("Insert a Non-Indented Newline"));
         a->setWhatsThis(i18n("Insert a new line without indentation, regardless of indentation settings."));
         scuts.clear();
         scuts << QKeySequence(Qt::CTRL | Qt::Key_Return) << QKeySequence(Qt::CTRL | Qt::Key_Enter);

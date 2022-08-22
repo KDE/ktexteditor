@@ -48,7 +48,7 @@ void KateSpellCheckDialog::createActions(KActionCollection *ac)
 {
     ac->addAction(KStandardAction::Spelling, this, SLOT(spellcheck()));
 
-    QAction *a = new QAction(i18n("Spelling (from cursor)..."), this);
+    QAction *a = new QAction(i18n("Spelling (from Cursor)..."), this);
     ac->addAction(QStringLiteral("tools_spelling_from_cursor"), a);
     a->setIcon(QIcon::fromTheme(QStringLiteral("tools-check-spelling")));
     a->setWhatsThis(i18n("Check the document's spelling from the cursor and forward"));

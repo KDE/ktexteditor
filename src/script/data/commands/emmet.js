@@ -6,80 +6,80 @@ var katescript = {
     "functions": ["emmetExpand", "emmetWrap", "emmetSelectTagPairInwards", "emmetSelectTagPairOutwards", "emmetMatchingPair", "emmetToggleComment", "emmetNext", "emmetPrev", "emmetSelectNext", "emmetSelectPrev", "emmetDelete", "emmetSplitJoinTab", "emmetEvaluateMathExpression", "emmetDecrementNumberBy1", "emmetDecrementNumberBy10", "emmetDecrementNumberBy01", "emmetIncrementNumberBy1", "emmetIncrementNumberBy10", "emmetIncrementNumberBy01"],
     "actions": [
         {   "function": "emmetExpand",
-            "name": "Expand abbreviation",
+            "name": "Expand Abbreviation",
             "category": "Emmet"
         },
         {   "function": "emmetWrap",
-            "name": "Wrap with tag",
+            "name": "Wrap with Tag",
             "category": "Emmet",
             "interactive": 1
         },
         {   "function": "emmetMatchingPair",
-            "name": "Move cursor to matching tag",
+            "name": "Move Cursor to Matching Tag",
             "category": "Emmet"
         },
         {   "function": "emmetSelectTagPairInwards",
-            "name": "Select HTML/XML tag contents inwards",
+            "name": "Select HTML/XML Tag Contents Inwards",
             "category": "Emmet"
         },
         {   "function": "emmetSelectTagPairOutwards",
-            "name": "Select HTML/XML tag contents outwards",
+            "name": "Select HTML/XML Tag Contents Outwards",
             "category": "Emmet"
         },
         {   "function": "emmetToggleComment",
-            "name": "Toggle comment",
+            "name": "Toggle Comment",
             "category": "Emmet"
         },
         {   "function": "emmetNext",
-            "name": "Go to next edit point",
+            "name": "Go to Next Edit Point",
             "category": "Emmet"
         },
         {   "function": "emmetPrev",
-            "name": "Go to previous edit point",
+            "name": "Go to Previous Edit Point",
             "category": "Emmet"
         },
         {   "function": "emmetSelectNext",
-            "name": "Select next edit point",
+            "name": "Select Next Edit Point",
             "category": "Emmet"
         },
         {   "function": "emmetSelectPrev",
-            "name": "Select previous edit point",
+            "name": "Select Previous Edit Point",
             "category": "Emmet"
         },
         {   "function": "emmetDelete",
-            "name": "Delete tag under cursor",
+            "name": "Delete Tag Under Cursor",
             "category": "Emmet"
         },
         {   "function": "emmetSplitJoinTab",
-            "name": "Split or join a tag",
+            "name": "Split or Join a Tag",
             "category": "Emmet"
         },
         {   "function": "emmetEvaluateMathExpression",
-            "name": "Evaluate a simple math expression",
+            "name": "Evaluate a Simple Math Expression",
             "category": "Emmet"
         },
         {   "function": "emmetDecrementNumberBy1",
-            "name": "Decrement number by 1",
+            "name": "Decrement Number by 1",
             "category": "Emmet"
         },
         {   "function": "emmetDecrementNumberBy10",
-            "name": "Decrement number by 10",
+            "name": "Decrement Number by 10",
             "category": "Emmet"
         },
         {   "function": "emmetDecrementNumberBy01",
-            "name": "Decrement number by 0.1",
+            "name": "Decrement Number by 0.1",
             "category": "Emmet"
         },
         {   "function": "emmetIncrementNumberBy1",
-            "name": "Increment number by 1",
+            "name": "Increment Number by 1",
             "category": "Emmet"
         },
         {   "function": "emmetIncrementNumberBy10",
-            "name": "Increment number by 10",
+            "name": "Increment Number by 10",
             "category": "Emmet"
         },
         {   "function": "emmetIncrementNumberBy01",
-            "name": "Increment number by 0.1",
+            "name": "Increment Number by 0.1",
             "category": "Emmet"
         }
     ]

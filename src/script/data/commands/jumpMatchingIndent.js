@@ -6,12 +6,12 @@ var katescript = {
     "functions": ["jumpIndentUp", "jumpIndentDown"],
     "actions": [
         {   "function": "jumpIndentUp",
-            "name": "Move cursor to previous matching indent",
+            "name": "Move Cursor to Previous Matching Indent",
             "shortcut": "Alt+Shift+Up",
             "category": "Navigation"
         },
         {   "function": "jumpIndentDown",
-            "name": "Move cursor to next matching indent",
+            "name": "Move Cursor to Next Matching Indent",
             "shortcut": "Alt+Shift+Down",
             "category": "Navigation"
         }
