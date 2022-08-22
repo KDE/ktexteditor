@@ -6,6 +6,10 @@
 
 #include "katescripteditor.h"
 
+#include "kateglobal.h"
+
+using KTextEditor::EditorPrivate;
+
 #include <QApplication>
 #include <QClipboard>
 #include <QJSEngine>
@@ -21,12 +25,19 @@ QString KateScriptEditor::clipboardText() const
     return QApplication::clipboard()->text();
 }
 
-const QVector<KTextEditor::EditorPrivate::ClipboardEntry> KateScriptEditor::clipboardHistory() const
+QStringList KateScriptEditor::clipboardHistory() const
 {
-    return KTextEditor::EditorPrivate::self()->clipboardHistory();
+    const auto clipboardHistory = KTextEditor::EditorPrivate::self()->clipboardHistory();
+
+    QStringList res;
+    for (const auto &entry : clipboardHistory) {
+        res << entry.text;
+    }
+
+    return res;
 }
 
-void KateScriptEditor::setClipboardText(const QString &text, const QString &fileName)
+void KateScriptEditor::setClipboardText(const QString &text)
 {
-    KTextEditor::EditorPrivate::self()->copyToClipboard(text, fileName);
+    KTextEditor::EditorPrivate::self()->copyToClipboard(text, QStringLiteral());
 }
