@@ -3894,18 +3894,16 @@ QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::C
 void KTextEditor::DocumentPrivate::addStartLineCommentToSingleLine(int line, int attrib)
 {
     const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
-    int pos = -1;
+    int pos = 0;
 
-    if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::StartOfLine) {
-        pos = 0;
-    } else {
+    if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::AfterWhitespace) {
         const Kate::TextLine l = kateTextLine(line);
-        pos = l->firstChar();
+        if (!l) {
+            return;
+        }
+        pos = qMax(0, l->firstChar());
     }
-
-    if (pos >= 0) {
-        insertText(KTextEditor::Cursor(line, pos), commentLineMark);
-    }
+    insertText(KTextEditor::Cursor(line, pos), commentLineMark);
 }
 
 /*
@@ -4011,8 +4009,6 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::R
 */
 void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::Range selection, int attrib)
 {
-    // const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
-
     int sl = selection.start().line();
     int el = selection.end().line();
 
@@ -4023,14 +4019,47 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::R
 
     editStart();
 
+    const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
+    const auto line = plainKateTextLine(sl);
+    if (!line) {
+        return;
+    }
+
+    int col = 0;
+    if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::AfterWhitespace) {
+        // For afterwhitespace, we add comment mark at col for all the lines,
+        // where col == smallest indent in selection
+        // This means that for somelines for example, a statement in an if block
+        // might not have its comment mark exactly afterwhitespace, which is okay
+        // and _good_ because if someone runs a formatter after commenting we will
+        // loose indentation, which is _really_ bad and makes afterwhitespace useless
+
+        col = std::numeric_limits<int>::max();
+        // For each line in selection, try to find the smallest indent
+        for (int l = el; l >= sl; l--) {
+            const auto line = plainKateTextLine(l);
+            if (!line || line->length() == 0) {
+                continue;
+            }
+            col = qMin(col, qMax(0, line->firstChar()));
+            if (col == 0) {
+                // early out: there can't be an indent smaller than 0
+                break;
+            }
+        }
+
+        if (col == std::numeric_limits<int>::max()) {
+            col = 0;
+        }
+        Q_ASSERT(col >= 0);
+    }
+
     // For each line of the selection
-    for (int z = el; z >= sl; z--) {
-        // insertText (z, 0, commentLineMark);
-        addStartLineCommentToSingleLine(z, attrib);
+    for (int l = el; l >= sl; l--) {
+        insertText(KTextEditor::Cursor(l, col), commentLineMark);
     }
 
     editEnd();
-    // selection automatically updated (MovingRange)
 }
 
 bool KTextEditor::DocumentPrivate::nextNonSpaceCharPos(int &line, int &col)

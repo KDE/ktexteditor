@@ -863,12 +863,12 @@ void KateDocumentTest::testToggleComment()
         KTextEditor::DocumentPrivate doc;
         QVERIFY(doc.highlightingModes().contains(QStringLiteral("Python")));
         doc.setHighlightingMode(QStringLiteral("Python"));
-        const QString original = QStringLiteral("import hello;\n def method():");
+        const QString original = QStringLiteral("import hello;\ndef method():");
         doc.setText(original);
         QVERIFY(doc.lines() == 2);
 
         doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
-        QCOMPARE(doc.text(), QStringLiteral("# import hello;\n # def method():"));
+        QCOMPARE(doc.text(), QStringLiteral("# import hello;\n# def method():"));
 
         doc.commentSelection(doc.documentRange(), {1, 2}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);
@@ -912,7 +912,7 @@ void KateDocumentTest::testToggleComment()
         const QString original = doc.text();
 
         doc.commentSelection(doc.documentRange(), {2, 0}, false, DocumentPrivate::ToggleComment);
-        QCOMPARE(doc.text(), "# another:\n\n# another2: hello");
+        QCOMPARE(doc.text(), "# another:\n# \n# another2: hello");
 
         doc.commentSelection(doc.documentRange(), {2, 0}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);
