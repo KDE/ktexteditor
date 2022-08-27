@@ -111,13 +111,15 @@ void KateFoldingTest::testBug295632()
 void KateFoldingTest::testCrash367466()
 {
     KTextEditor::DocumentPrivate doc;
+
+    // we use only x to have equal width characters, else we fail for non-fixed width fonts
     QString text =
-        "fold begin\n"
+        "xxxx xxxx\n"
         "\n"
         "\n"
-        "fold end\n"
-        "hello\n"
-        "world\n";
+        "xxxx xxx\n"
+        "xxxxx\n"
+        "xxxxx\n";
     doc.setText(text);
 
     // view must be visible...
