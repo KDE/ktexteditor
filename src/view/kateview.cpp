@@ -461,7 +461,7 @@ void KTextEditor::ViewPrivate::setupActions()
         chd.openDialog(KTextEditor::EditorPrivate::self()->clipboardHistory());
     });
     a->setText(i18n("Clipboard &History Paste"));
-    // clashs with konsole action ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_V));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::ALT | Qt::Key_V));
 
     if (QApplication::clipboard()->supportsSelection()) {
         m_pasteSelection = a = ac->addAction(QStringLiteral("edit_paste_selection"), this, SLOT(pasteSelection()));
