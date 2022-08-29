@@ -948,7 +948,9 @@ bool KateCompletionWidget::execute()
         }
         const auto &multicursors = view()->secondaryCursors();
         for (const auto &c : multicursors) {
-            KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(c.cursor());
+            const KTextEditor::Cursor pos = c.cursor();
+            KTextEditor::Range wordToReplace = view()->doc()->wordRangeAt(pos);
+            wordToReplace.setEnd(pos); // limit the word to the current cursor position
             view()->doc()->replaceText(wordToReplace, text);
         }
     };
