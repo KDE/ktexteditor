@@ -303,6 +303,19 @@ void MulticursorTest::wrapSelectionWithCharsTest()
     QCOMPARE(doc.text(), QStringLiteral("{foo}\n{foo}\n{foo}"));
 }
 
+void MulticursorTest::insertAutoBrackets()
+{
+    CREATE_VIEW_AND_DOC("hello\nhello", 0, 0);
+    QCOMPARE(doc.lines(), 2);
+    doc.setMode(QStringLiteral("C++"));
+    view->config()->setValue(KateViewConfig::AutoBrackets, true);
+    view->setSecondaryCursors({Cursor(0, 0), Cursor(1, 0)});
+    QCOMPARE(view->cursors().size(), 2);
+
+    doc.typeChars(view, QStringLiteral("("));
+    QCOMPARE(doc.text(), QStringLiteral("(hello\n(hello"));
+}
+
 void MulticursorTest::testCreateMultiCursor()
 {
     CREATE_VIEW_AND_DOC("foo\nbar\nfoo\n", 0, 0);

@@ -35,6 +35,7 @@ private Q_SLOTS:
     static void testUndoRedoWithSelection();
     static void keyReturnIndentTest();
     static void wrapSelectionWithCharsTest();
+    static void insertAutoBrackets();
 
     // Movement
     static void moveCharTest();

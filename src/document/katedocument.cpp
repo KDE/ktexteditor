@@ -3261,8 +3261,9 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         const QString closingChar = closingBracket;
         for (const auto &c : sc) {
             insertText(c.cursor(), chars);
-            auto pos = c.cursor();
-            if (hasClosingBracket && !skipAutoBrace(closingBracket, pos)) {
+            const auto pos = c.cursor();
+            const auto nextChar = view->document()->text({pos, pos + Cursor{0, 1}}).trimmed();
+            if (hasClosingBracket && !skipAutoBrace(closingBracket, pos) && (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber())) {
                 insertText(c.cursor(), closingChar);
                 c.pos->setPosition(pos);
             }
