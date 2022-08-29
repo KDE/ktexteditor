@@ -8,7 +8,7 @@
 #include "katepartdebug.h"
 #include "kateswapfile.h"
 
-#include <KIO/JobUiDelegate>
+#include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -151,7 +151,7 @@ void SwapDiffCreator::slotDiffFinished()
     m_diffFile.setAutoRemove(false);
 
     KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(m_diffFile.fileName()), QStringLiteral("text/x-patch"));
-    job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, m_swapFile->document()->activeView()));
+    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, m_swapFile->document()->activeView()));
     job->setDeleteTemporaryFile(true); // delete the file, once the client exits
     job->start();
 
