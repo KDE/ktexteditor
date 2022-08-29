@@ -1559,7 +1559,7 @@ void KateModOnHdPrompt::slotPDone()
     m_diffFile = nullptr;
 
     KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url, QStringLiteral("text/x-patch"));
-    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, nullptr /*TODO window*/));
+    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, m_doc->activeView()));
     job->setDeleteTemporaryFile(true); // delete the file, once the client exits
     job->start();
 }
