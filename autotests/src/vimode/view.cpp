@@ -86,9 +86,7 @@ void ViewTest::visualLineUpDownTests()
     // Need to ensure we have dynamic wrap, a fixed width font, and a decent size kate_view.
     ensureKateViewVisible();
     const QFont oldFont = kate_view->renderer()->config()->baseFont();
-    QFont fixedWidthFont("Courier");
-    fixedWidthFont.setStyleHint(QFont::TypeWriter);
-    Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(), "setting up visual line up down tests", "Need a fixed pitch font!");
+    QFont fixedWidthFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
     kate_view->renderer()->config()->setFont(fixedWidthFont);
     const bool oldDynWordWrap = KateViewConfig::global()->dynWordWrap();
     KateViewConfig::global()->setDynWordWrap(true);
