@@ -146,35 +146,22 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int ne
     } else {
         realLine = m_renderer->folding().visibleLineToLine(startPos.line());
     }
+
+    // compute the correct view line
     int _viewLine = 0;
-
     if (wrap()) {
-        // TODO check these assumptions are ok... probably they don't give much speedup anyway?
-        if (startPos == m_startPos && !m_textLayouts.empty()) {
-            _viewLine = m_textLayouts.front().viewLine();
-
-        } else if (viewLinesScrolled > 0 && (size_t)viewLinesScrolled < m_textLayouts.size()) {
-            _viewLine = m_textLayouts[viewLinesScrolled].viewLine();
-
-        } else {
-            KateLineLayoutPtr l = line(realLine);
-            if (l) {
-                Q_ASSERT(l->isValid());
-                Q_ASSERT(l->length() >= startPos.column() || m_renderer->view()->wrapCursor());
-
-                bool found = false;
-                for (; _viewLine < l->viewLineCount(); ++_viewLine) {
-                    const KateTextLayout &t = l->viewLine(_viewLine);
-                    if (t.startCol() >= startPos.column() || _viewLine == l->viewLineCount() - 1) {
-                        found = true;
-                        break;
-                    }
+        if (KateLineLayoutPtr l = line(realLine)) {
+            Q_ASSERT(l->isValid());
+            Q_ASSERT(l->length() >= startPos.column() || m_renderer->view()->wrapCursor());
+            bool found = false;
+            for (; _viewLine < l->viewLineCount(); ++_viewLine) {
+                const KateTextLayout &t = l->viewLine(_viewLine);
+                if (t.startCol() >= startPos.column() || _viewLine == l->viewLineCount() - 1) {
+                    found = true;
+                    break;
                 }
-
-                // FIXME FIXME need to calculate past-end-of-line position here...
-                Q_ASSERT(found);
-                Q_UNUSED(found);
             }
+            Q_ASSERT(found);
         }
     }
 
@@ -195,15 +182,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int ne
     // Resize functionality
     if (newViewLineCount > oldViewLineCount) {
         m_textLayouts.reserve(newViewLineCount);
-
     } else if (newViewLineCount < oldViewLineCount) {
-        /* FIXME reintroduce... check we're not missing any
-        int lastLine = m_textLayouts[newSize - 1].line();
-        for (int i = oldSize; i < newSize; i++) {
-          const KateTextLayout& layout = m_textLayouts[i];
-          if (layout.line() > lastLine && !layout.viewLine())
-            layout.kateLineLayout()->layout()->setCacheEnabled(false);
-        }*/
         m_textLayouts.resize(newViewLineCount);
     }
 
