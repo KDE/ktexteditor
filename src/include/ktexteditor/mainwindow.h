@@ -307,6 +307,22 @@ Q_SIGNALS:
      */
     void pluginViewDeleted(const QString &name, QObject *pluginView);
 
+    //
+    // Custom widget handling
+    //
+public:
+    /**
+     * Add a widget to the main window.
+     * This is useful to show non-KTextEditor::View widgets in the main window.
+     * The host application should try to manage this like some KTextEditor::View (e.g. as a tab) and provide
+     * the means to close it.
+     * \param widget widget to add
+     * \return success, if false, the plugin needs to take care to show the widget itself, otherwise
+     *         the main window will take ownership of the widget
+     * \since 5.98
+     */
+    bool addWidget(QWidget *widget);
+
 private:
     /**
      * Private d-pointer class is our best friend ;)

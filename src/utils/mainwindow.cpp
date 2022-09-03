@@ -210,4 +210,12 @@ QObject *MainWindow::pluginView(const QString &name)
     return pluginView;
 }
 
+bool MainWindow::addWidget(QWidget *widget)
+{
+    // dispatch to parent
+    bool success = false;
+    QMetaObject::invokeMethod(parent(), "addWidget", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(QWidget *, widget));
+    return success;
+}
+
 } // namespace KTextEditor
