@@ -218,4 +218,11 @@ bool MainWindow::addWidget(QWidget *widget)
     return success;
 }
 
+bool MainWindow::showMessage(const QVariantMap &message)
+{
+    // dispatch to parent
+    bool success = false;
+    QMetaObject::invokeMethod(parent(), "showMessage", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(const QVariantMap &, message));
+    return success;
+}
 } // namespace KTextEditor

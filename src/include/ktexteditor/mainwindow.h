@@ -323,6 +323,52 @@ public:
      */
     bool addWidget(QWidget *widget);
 
+    //
+    // Message output
+    //
+public:
+    /**
+     * Display a message to the user.
+     * The host application might show this inside a dedicated output view.
+     *
+     * \param message incoming message we shall handle
+     * \return true, if the host application was able to handle the message, else false
+     * \since 5.98
+     *
+     * details of message format:
+     *
+     * message text, will be trimmed before output
+     *
+     *    message["text"] = i18n("your cool message")
+     *
+     * the text will be split in lines, all lines beside the first can be collapsed away
+     *
+     * message type, we support at the moment
+     *
+     *    message["type"] = "Error"
+     *    message["type"] = "Warning"
+     *    message["type"] = "Info"
+     *    message["type"] = "Log"
+     *
+     * this is take from https://microsoft.github.io/language-server-protocol/specification#window_showMessage MessageType of LSP
+     *
+     * will lead to appropriate icons/... in the output view
+     *
+     * a message should have some category, like Git, LSP, ....
+     *
+     *    message["category"] = i18n(...)
+     *
+     * will be used to allow the user to filter for
+     *
+     * one can additionally provide a categoryIcon
+     *
+     *    message["categoryIcon"] = QIcon(...)
+     *
+     * the categoryIcon icon QVariant must contain a QIcon, nothing else!
+     *
+     */
+    bool showMessage(const QVariantMap &message);
+
 private:
     /**
      * Private d-pointer class is our best friend ;)
