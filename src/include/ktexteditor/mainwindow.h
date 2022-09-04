@@ -366,6 +366,11 @@ public:
      *
      * the categoryIcon icon QVariant must contain a QIcon, nothing else!
      *
+     * A string token can be passed to allow to replace messages already send out with new ones.
+     * That is useful for e.g. progress output
+     *
+     *     message["token"] = "yourmessagetoken"
+     *
      */
     bool showMessage(const QVariantMap &message);
 
