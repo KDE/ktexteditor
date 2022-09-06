@@ -61,6 +61,7 @@ Name[x-test]=xxEmbedded Advanced Text Editorxx
 Name[zh_CN]=嵌入式高级文本编辑器
 Name[zh_TW]=嵌入式進階文字編輯器
 Comment=Reusable text editor component
+Comment[ar]=مكون محرر نصوص قابل للاستخدام
 Comment[az]=Təkrar istifadə olunabilən mətn redaktoru hissələri
 Comment[bg]=Компонент на текстов редактор за многократно ползване
 Comment[ca]=Component reutilitzable d'edició de text
