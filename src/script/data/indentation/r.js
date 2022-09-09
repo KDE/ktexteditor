@@ -25,7 +25,7 @@ operators = ['+', '-', '*', '/', '^',
              '%>%', '%T>%', '%$%', '%<>%'];
 equalOperatorSigns = ['=', '>', '<', '!'];
 
-var debugMode = true;
+var debugMode = false;
 
 function dbg() {
     if (debugMode) {
