@@ -1,3 +1,2 @@
 v.selectAll();
-v.copy();
-v.paste();
+v.paste(document.text());
