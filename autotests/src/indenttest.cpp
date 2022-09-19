@@ -13,6 +13,9 @@
 // BEGIN Includes
 #include "indenttest.h"
 
+#include "kateconfig.h"
+#include "katedocument.h"
+
 #include <QtTestWidgets>
 
 #include "testutils.h"
@@ -24,6 +27,7 @@ QTEST_MAIN(IndentTest)
 void IndentTest::initTestCase()
 {
     ScriptTestBase::initTestCase();
+    m_document->config()->setValue(KateDocumentConfig::IndentOnTextPaste, true);
     m_section = "indent";
     m_script_dir = "indentation";
 }
