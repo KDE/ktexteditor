@@ -142,7 +142,6 @@ public:
 
     KateTextLayout yToKateTextLayout(int y) const;
 
-    void prepareForDynWrapChange();
     void dynWrapChanged();
 
 public Q_SLOTS:
@@ -431,7 +430,6 @@ private:
     bool m_preserveX;
     int m_preservedX;
 
-    int m_wrapChangeViewLine;
     KTextEditor::Cursor m_cachedMaxStartPos;
 
     //

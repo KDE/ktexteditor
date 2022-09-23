@@ -2229,8 +2229,6 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     // dyn. word wrap & markers
     if (m_hasWrap != config()->dynWordWrap()) {
-        m_viewInternal->prepareForDynWrapChange();
-
         m_hasWrap = config()->dynWordWrap();
 
         m_viewInternal->dynWrapChanged();

@@ -297,12 +297,6 @@ KateViewInternal::~KateViewInternal()
 #endif
 }
 
-void KateViewInternal::prepareForDynWrapChange()
-{
-    // Which is the current view line?
-    m_wrapChangeViewLine = cache()->displayViewLine(m_displayCursor, true);
-}
-
 void KateViewInternal::dynWrapChanged()
 {
     m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
@@ -323,14 +317,7 @@ void KateViewInternal::dynWrapChanged()
         scrollColumns(0);
     }
 
-    // Determine where the cursor should be to get the cursor on the same view line
-    if (m_wrapChangeViewLine != -1) {
-        KTextEditor::Cursor newStart = viewLineOffset(m_displayCursor, -m_wrapChangeViewLine);
-        makeVisible(newStart, newStart.column(), true);
-
-    } else {
-        update();
-    }
+    update();
 }
 
 KTextEditor::Cursor KateViewInternal::endPos() const
