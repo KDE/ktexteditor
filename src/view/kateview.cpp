@@ -1182,7 +1182,6 @@ void KTextEditor::ViewPrivate::setupEditActions()
     if (!doc()->readOnly()) {
         a = ac->addAction(QStringLiteral("transpose_char"));
         a->setText(i18n("Transpose Characters"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_T));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::transpose);
         m_editActions.push_back(a);
 
