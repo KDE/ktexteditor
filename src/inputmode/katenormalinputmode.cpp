@@ -201,7 +201,7 @@ bool KateNormalInputMode::keyPress(QKeyEvent *e)
     const int key = e->key() | (e->modifiers() & Qt::ShiftModifier);
 
     if (view()->isCompletionActive()) {
-        if (key == Qt::Key_Enter || key == Qt::Key_Return) {
+        if (key == Qt::Key_Enter || key == Qt::Key_Return || key == Qt::Key_Tab) {
             if (view()->completionWidget()->execute()) {
                 e->accept();
                 return true;

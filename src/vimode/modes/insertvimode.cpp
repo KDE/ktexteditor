@@ -345,6 +345,7 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                 return true;
             case Qt::Key_Enter:
             case Qt::Key_Return:
+            case Qt::Key_Tab:
                 if (m_view->completionWidget()->isCompletionActive() && !m_viInputModeManager->macroRecorder()->isReplaying()
                     && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
                     m_isExecutingCompletion = true;
