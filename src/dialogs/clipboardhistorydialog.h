@@ -10,6 +10,7 @@
 
 #include "kateglobal.h"
 
+#include <QLabel>
 #include <QLineEdit>
 #include <QMenu>
 #include <QPointer>
@@ -42,6 +43,7 @@ private:
     void updateViewGeometry();
     void clearLineEdit();
     void showSelectedText(const QModelIndex &idx);
+    void showEmptyPlaceholder();
 
 private:
     QTreeView m_treeView;
@@ -65,6 +67,8 @@ private:
      * View containing the selected text to paste
      */
     KTextEditor::ViewPrivate *m_selectedView;
+
+    QLabel *m_noEntries;
 };
 
 #endif

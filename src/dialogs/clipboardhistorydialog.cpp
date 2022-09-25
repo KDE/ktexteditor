@@ -13,6 +13,7 @@
 #include <QBoxLayout>
 #include <QCoreApplication>
 #include <QFont>
+#include <QGraphicsOpacityEffect>
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QMimeDatabase>
@@ -147,8 +148,7 @@ public:
 
     QString displayText(const QVariant &value, const QLocale &locale) const override
     {
-        QString baseText = QStyledItemDelegate::displayText(value, locale);
-        baseText = baseText.trimmed();
+        QString baseText = QStyledItemDelegate::displayText(value, locale).trimmed();
         auto endOfLine = baseText.indexOf(m_newLineRegExp, 0);
         if (endOfLine != -1) {
             baseText.truncate(endOfLine);
@@ -272,11 +272,35 @@ void ClipboardHistoryDialog::openDialog(const QVector<KTextEditor::EditorPrivate
     m_model->refresh(clipboardHistory);
     resetValues();
 
-    const auto first = m_proxyModel->index(0, 0);
-    m_treeView.setCurrentIndex(first);
-    showSelectedText(first);
+    if (m_model->rowCount(m_model->index(-1, -1)) == 0) {
+        showEmptyPlaceholder();
+    } else {
+        const auto first = m_proxyModel->index(0, 0);
+        m_treeView.setCurrentIndex(first);
+        showSelectedText(first);
+    }
 
     exec();
+}
+
+void ClipboardHistoryDialog::showEmptyPlaceholder()
+{
+    QVBoxLayout *noRecentsLayout = new QVBoxLayout(&m_treeView);
+    m_treeView.setLayout(noRecentsLayout);
+    m_noEntries = new QLabel(&m_treeView);
+    QFont placeholderLabelFont;
+    // To match the size of a level 2 Heading/KTitleWidget
+    placeholderLabelFont.setPointSize(qRound(placeholderLabelFont.pointSize() * 1.3));
+    noRecentsLayout->addWidget(m_noEntries);
+    m_noEntries->setFont(placeholderLabelFont);
+    m_noEntries->setTextInteractionFlags(Qt::NoTextInteraction);
+    m_noEntries->setWordWrap(true);
+    m_noEntries->setAlignment(Qt::AlignCenter);
+    m_noEntries->setText(i18n("No entries in clipboard history"));
+    // Match opacity of QML placeholder label component
+    auto *effect = new QGraphicsOpacityEffect(m_noEntries);
+    effect->setOpacity(0.5);
+    m_noEntries->setGraphicsEffect(effect);
 }
 
 // --------------------------------------------------
