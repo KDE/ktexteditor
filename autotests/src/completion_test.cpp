@@ -400,26 +400,6 @@ void CompletionTest::testAutoCompletionPreselectFirst()
 
     verifyCompletionAborted(m_view);
     QCOMPARE(m_doc->text(), "a\n");
-
-    // When no completion entry is selected, tab key should select the first entry
-    m_doc->setText("a");
-    m_view->completionWidget()->automaticInvocation();
-    m_view->completionWidget()->tab(false);
-    m_view->completionWidget()->execute();
-
-    QVERIFY(!m_view->completionWidget()->isCompletionActive());
-    QCOMPARE(m_doc->text(), "aaa0");
-
-    // Ensure that auto completion still works when AutomaticCompletionPreselectFirst is enabled (default)
-    m_view->config()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, true);
-    m_doc->setText("a");
-    m_view->completionWidget()->automaticInvocation();
-
-    m_view->completionWidget()->tab(false); // tab should "auto-fill" completion
-    QCOMPARE(m_doc->text(), "aa");
-    m_view->completionWidget()->execute();
-    QCOMPARE(m_doc->text(), "aaa0");
-    QVERIFY(!m_view->completionWidget()->isCompletionActive());
 }
 
 void CompletionTest::benchAbbreviationEngineGoodCase()

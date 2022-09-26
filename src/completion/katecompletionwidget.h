@@ -67,8 +67,6 @@ public Q_SLOTS:
     void cursorUp();
 
 public:
-    void tab(bool shift);
-
     void toggleDocumentation();
 
     const KateCompletionModel *model() const;
