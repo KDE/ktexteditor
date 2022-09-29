@@ -127,6 +127,7 @@ endmacro()
 ecm_add_tests(
   src/katetextbuffertest.cpp
   src/range_test.cpp
+  src/cursorwords_test.cpp
   src/undomanager_test.cpp
   src/plaintextsearch_test.cpp
   src/regexpsearch_test.cpp
