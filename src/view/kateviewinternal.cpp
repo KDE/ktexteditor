@@ -1463,8 +1463,13 @@ void KateViewInternal::cursorNextChar(bool sel)
 
 void KateViewInternal::wordPrev(bool sel)
 {
-    auto wordPrevious = [this](KTextEditor::Cursor cursor) -> KTextEditor::Cursor {
+    auto characterAtPreviousColumn = [this](KTextEditor::Cursor cursor) -> QChar {
+        return doc()->characterAt({cursor.line(), cursor.column() - 1});
+    };
+
+    auto wordPrevious = [this, &characterAtPreviousColumn](KTextEditor::Cursor cursor) -> KTextEditor::Cursor {
         WrappingCursor c(this, cursor);
+
         // First we skip backwards all space.
         // Then we look up into which category the current position falls:
         // 1. a "word" character
@@ -1474,29 +1479,29 @@ void KateViewInternal::wordPrev(bool sel)
         // The code assumes that space is never part of the word character class.
 
         KateHighlighting *h = doc()->highlight();
-        if (!c.atEdge(left)) {
-            while (!c.atEdge(left) && (c.column() > doc()->lineLength(c.line()) || doc()->line(c.line())[c.column() - 1].isSpace())) {
-                --c;
-            }
+
+        while (!c.atEdge(left) && (c.column() > doc()->lineLength(c.line()) || characterAtPreviousColumn(c).isSpace())) {
+            --c;
         }
+
         if (c.atEdge(left)) {
             --c;
-        } else if (h->isInWord(doc()->line(c.line())[c.column() - 1])) {
+        } else if (h->isInWord(characterAtPreviousColumn(c))) {
             if (doc()->config()->camelCursor()) {
                 CamelCursor cc(this, cursor);
                 --cc;
                 return cc;
             } else {
-                while (!c.atEdge(left) && h->isInWord(doc()->line(c.line())[c.column() - 1])) {
+                while (!c.atEdge(left) && h->isInWord(characterAtPreviousColumn(c))) {
                     --c;
                 }
             }
         } else {
             while (!c.atEdge(left)
-                   && !h->isInWord(doc()->line(c.line())[c.column() - 1])
+                   && !h->isInWord(characterAtPreviousColumn(c))
                    // in order to stay symmetric to wordLeft()
                    // we must not skip space preceding a non-word sequence
-                   && !doc()->line(c.line())[c.column() - 1].isSpace()) {
+                   && !characterAtPreviousColumn(c).isSpace()) {
                 --c;
             }
         }
@@ -1540,29 +1545,30 @@ void KateViewInternal::wordNext(bool sel)
         KateHighlighting *h = doc()->highlight();
         if (c.atEdge(right)) {
             ++c;
-        } else if (h->isInWord(doc()->line(c.line())[c.column()])) {
+        } else if (h->isInWord(doc()->characterAt(c))) {
             if (doc()->config()->camelCursor()) {
                 CamelCursor cc(this, cursor);
                 ++cc;
                 return cc;
             } else {
-                while (!c.atEdge(right) && h->isInWord(doc()->line(c.line())[c.column()])) {
+                while (!c.atEdge(right) && h->isInWord(doc()->characterAt(c))) {
                     ++c;
                 }
             }
         } else {
             while (!c.atEdge(right)
-                   && !h->isInWord(doc()->line(c.line())[c.column()])
+                   && !h->isInWord(doc()->characterAt(c))
                    // we must not skip space, because if that space is followed
                    // by more non-word characters, we would skip them, too
-                   && !doc()->line(c.line())[c.column()].isSpace()) {
+                   && !doc()->characterAt(c).isSpace()) {
                 ++c;
             }
         }
 
-        while (!c.atEdge(right) && doc()->line(c.line())[c.column()].isSpace()) {
+        while (!c.atEdge(right) && doc()->characterAt(c).isSpace()) {
             ++c;
         }
+
         return c;
     };
 
