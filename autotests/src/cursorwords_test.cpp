@@ -17,14 +17,26 @@ QTEST_MAIN(CursorWordsTest)
 
 using namespace KTextEditor;
 
-// clang-format off
-#define CREATE_DOC_AND_VIEW(text, line, col)                   \
-    auto doc = DocumentPrivate();                              \
-    doc.config()->setCamelCursor(false);                       \
-    auto view = new ViewPrivate(&doc, nullptr);                \
-    doc.setText(text);                                         \
-    view->setCursorPosition({line, col})
-// clang-format on
+struct DocAndView {
+    DocumentPrivate *doc;
+    ViewPrivate *view;
+
+    ~DocAndView()
+    {
+        delete view;
+        delete doc;
+    }
+};
+
+DocAndView createDocAndView(const QString &text, int line, int column)
+{
+    auto doc = new DocumentPrivate();
+    doc->config()->setCamelCursor(false);
+    auto view = new ViewPrivate(doc, nullptr);
+    doc->setText(text);
+    view->setCursorPosition({line, column});
+    return {doc, view};
+}
 
 CursorWordsTest::CursorWordsTest(QObject *parent)
     : QObject(parent)
@@ -40,7 +52,7 @@ void CursorWordsTest::testMoveToNextWordSingleLine()
 {
     { // single space between words
 
-        CREATE_DOC_AND_VIEW("foo bar quzzi", 0, 0);
+        auto [doc, view] = createDocAndView("foo bar quzzi", 0, 0);
 
         view->wordRight();
 
@@ -57,7 +69,7 @@ void CursorWordsTest::testMoveToNextWordSingleLine()
 
     { // cursor inside multiple spaces between words
 
-        CREATE_DOC_AND_VIEW("  -  1234  xyz", 0, 1); // cursro at second space
+        auto [doc, view] = createDocAndView("  -  1234  xyz", 0, 1); // cursor at second space
 
         view->wordRight();
 
@@ -77,7 +89,7 @@ void CursorWordsTest::testMoveToPrevWordSingleLine()
 {
     { // single space between words
 
-        CREATE_DOC_AND_VIEW("foo bar quzzi", 0, 8); // cursor at the start of "quzzi"
+        auto [doc, view] = createDocAndView("foo bar quzzi", 0, 8); // cursor at the start of "quzzi"
 
         view->wordLeft();
 
@@ -90,7 +102,7 @@ void CursorWordsTest::testMoveToPrevWordSingleLine()
 
     { // cursor inside multiple spaces between words
 
-        CREATE_DOC_AND_VIEW("  12  -  ", 0, 8); // cursor at the last space
+        auto [doc, view] = createDocAndView("  12  -  ", 0, 8); // cursor at the last space
 
         view->wordLeft();
 
@@ -110,7 +122,7 @@ void CursorWordsTest::testMoveToPrevWordSingleLine()
 
 void CursorWordsTest::testMoveToWordsMultipleLines()
 {
-    CREATE_DOC_AND_VIEW("hello  there...\n\tno  one answers.", 0, 0);
+    auto [doc, view] = createDocAndView("hello  there...\n\tno  one answers.", 0, 0);
 
     view->wordRight();
     COMPARE_CHAR_AND_CURSOR(view, Cursor(0, 7), 't');
