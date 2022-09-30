@@ -4911,6 +4911,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
         return KateDocumentTmpMark{line(mark->line), *mark};
     });
 
+    // Remember some settings which may changed at reload
     const QString oldMode = mode();
     const bool modeByUser = m_fileTypeSetByUser;
     const QString oldHlMode = highlightingMode();
@@ -4959,8 +4960,9 @@ bool KTextEditor::DocumentPrivate::documentReload()
         ++z;
     }
 
+    // Restore old settings
     if (modeByUser) {
-        setMode(oldMode);
+        updateFileType(oldMode, true);
     }
     if (hlByUser) {
         setHighlightingMode(oldHlMode);
