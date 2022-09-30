@@ -39,7 +39,7 @@ SearchBarTest::~SearchBarTest()
 void SearchBarTest::initTestCase()
 {
     KTextEditor::EditorPrivate::enableUnitTestMode();
-    KMessageBox::saveDontShowAgainYesNo(QLatin1String("DoNotShowAgainContinueSearchDialog"), KMessageBox::Yes);
+    KMessageBox::saveDontShowAgainTwoActions(QLatin1String("DoNotShowAgainContinueSearchDialog"), KMessageBox::PrimaryAction);
 }
 
 void SearchBarTest::cleanupTestCase()

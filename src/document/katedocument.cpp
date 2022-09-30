@@ -5910,19 +5910,19 @@ bool KTextEditor::DocumentPrivate::queryClose()
 
     QString docName = documentName();
 
-    int res = KMessageBox::warningYesNoCancel(dialogParent(),
-                                              i18n("The document \"%1\" has been modified.\n"
-                                                   "Do you want to save your changes or discard them?",
-                                                   docName),
-                                              i18n("Close Document"),
-                                              KStandardGuiItem::save(),
-                                              KStandardGuiItem::discard());
+    int res = KMessageBox::warningTwoActionsCancel(dialogParent(),
+                                                   i18n("The document \"%1\" has been modified.\n"
+                                                        "Do you want to save your changes or discard them?",
+                                                        docName),
+                                                   i18n("Close Document"),
+                                                   KStandardGuiItem::save(),
+                                                   KStandardGuiItem::discard());
 
     bool abortClose = false;
     bool handled = false;
 
     switch (res) {
-    case KMessageBox::Yes:
+    case KMessageBox::PrimaryAction:
         sigQueryClose(&handled, &abortClose);
         if (!handled) {
             if (url().isEmpty()) {
@@ -5939,7 +5939,7 @@ bool KTextEditor::DocumentPrivate::queryClose()
             return false;
         }
         return waitSaveComplete();
-    case KMessageBox::No:
+    case KMessageBox::SecondaryAction:
         return true;
     default: // case KMessageBox::Cancel :
         return false;

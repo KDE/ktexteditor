@@ -613,13 +613,13 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     if (askWrap) {
         QString question =
             searchDirection == SearchForward ? i18n("Bottom of file reached. Continue from top?") : i18n("Top of file reached. Continue from bottom?");
-        wrap = (KMessageBox::questionYesNo(nullptr,
-                                           question,
-                                           i18n("Continue search?"),
-                                           KStandardGuiItem::cont(),
-                                           KStandardGuiItem::cancel(),
-                                           QStringLiteral("DoNotShowAgainContinueSearchDialog"))
-                == KMessageBox::Yes);
+        wrap = (KMessageBox::questionTwoActions(nullptr,
+                                                question,
+                                                i18n("Continue search?"),
+                                                KStandardGuiItem::cont(),
+                                                KStandardGuiItem::cancel(),
+                                                QStringLiteral("DoNotShowAgainContinueSearchDialog"))
+                == KMessageBox::PrimaryAction);
     }
     if (wrap) {
         m_view->showSearchWrappedHint(searchDirection == SearchBackward);
