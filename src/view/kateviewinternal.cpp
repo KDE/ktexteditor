@@ -3430,7 +3430,12 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
                         m_selectAnchor = m_selectionCached.start();
                     }
                 }
+
+                // update selection and do potential clipboard update, see bug 443642
                 setSelection(KTextEditor::Range(m_selectAnchor, m_cursor));
+                if (view()->selection()) {
+                    QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
+                }
             } else {
                 placeCursor(e->pos());
             }
