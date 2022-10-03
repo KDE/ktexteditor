@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-02 00:43+0000\n"
-"PO-Revision-Date: 2022-09-24 11:25+0200\n"
+"PO-Revision-Date: 2022-10-02 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -444,7 +444,7 @@ msgstr "Välj text att klistra in."
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Inga poster i klippbordshistoriken"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -3275,6 +3275,15 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Kommandot justerar rader i det markerade blocket eller hela dokumentet "
+"enligt kolumn angiven av ett reguljärt uttryck vilket anges som argument."
+"<br><br>Om du anger ett tomt mönster justeras till det första tecknet som "
+"inte är ett blanktecken som förval.<br>Om mönstret har en infångning "
+"indenteras till infångad matchning.<br><br><i>Exempel</i>:<br>'<code>alignon "
+"-</code>' infogar mellanslag innan det första '-' på varje rad för att "
+"justera alla till samma kolumn.<br>'<code>alignon :\\s+(.)</code>' infogar "
+"mellanslag innan det första tecknet som finns efter ett kolon och inte är "
+"ett blanktecken för att justera alla till samma kolumn."
 
 #: script/data/commands/utils.js:423
 #, kde-format
@@ -3355,6 +3364,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Markera text framåt från aktuell markörposition till den första förekomsten "
+"av det angivna argumentet efter den (eller till slutet på aktuell rad som "
+"förval)."
 
 #: script/data/commands/utils.js:439
 #, kde-format
@@ -3363,6 +3375,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Markera text bakåt från aktuell markörposition till den sista förekomsten av "
+"det angivna argumentet före den (eller till början på aktuell rad som "
+"förval)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -6618,6 +6633,15 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Kommandot justerar rader i det markerade blocket eller hela dokumentet "
+"enligt kolumn angiven av ett reguljärt uttryck som du blir tillfrågad om."
+"<br><br>Om du anger ett tomt mönster justeras till det första tecknet som "
+"inte är ett blanktecken som förval.<br />Om mönstret har en infångning "
+"indenteras till infångad matchning.<br /><br /><i>Exempel</i>:<br />Med '-' "
+"infogas mellanslag innan det första '-' på varje rad för att justera alla "
+"till samma kolumn.<br />Med ':\\s+(.)' infogas mellanslag innan det första "
+"tecknet som finns efter ett kolon och inte är ett blanktecken för att "
+"justera alla till samma kolumn."
 
 #: view/kateview.cpp:526
 #, kde-format
