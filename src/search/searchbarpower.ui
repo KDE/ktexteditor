@@ -287,7 +287,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset theme="games-config-options"/>
+          <iconset theme="games-config-options">
+           <normaloff>.</normaloff>.</iconset>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -348,6 +349,15 @@
   <tabstop>pattern</tabstop>
   <tabstop>replacement</tabstop>
   <tabstop>searchMode</tabstop>
+  <tabstop>matchCase</tabstop>
+  <tabstop>selectionOnly</tabstop>
+  <tabstop>findNext</tabstop>
+  <tabstop>findPrev</tabstop>
+  <tabstop>replaceNext</tabstop>
+  <tabstop>replaceAll</tabstop>
+  <tabstop>findAll</tabstop>
+  <tabstop>mutate</tabstop>
+  <tabstop>cancel</tabstop>
  </tabstops>
  <resources/>
  <connections/>
