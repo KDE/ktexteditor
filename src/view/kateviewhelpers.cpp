@@ -2879,8 +2879,6 @@ void KateViewEncodingAction::setEncoding(const QString &e)
 int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok)
 {
     // FIXME logic is good but code is ugly
-
-    int mib = MIB_DEFAULT;
     KCharsets *charsets = KCharsets::charsets();
 
     QTextCodec *codec = QTextCodec::codecForName(codecName.toUtf8());
