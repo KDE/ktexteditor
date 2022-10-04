@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-02 00:43+0000\n"
+"POT-Creation-Date: 2022-10-04 00:41+0000\n"
 "PO-Revision-Date: 2022-09-26 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -3817,7 +3817,7 @@ msgid "F&ind:"
 msgstr "&Cerca:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:314
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
 msgstr "Text a cercar"
@@ -3946,7 +3946,7 @@ msgid "Switch to incremental search bar"
 msgstr "Commuta a la barra de cerca incremental"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:333
+#: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
 msgstr "Substitueix el text amb"

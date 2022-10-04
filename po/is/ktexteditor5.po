@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-02 00:43+0000\n"
+"POT-Creation-Date: 2022-10-04 00:41+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -3917,7 +3917,7 @@ msgid "F&ind:"
 msgstr "F&inna:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:314
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
 msgstr "Texti til að leita eftir"
@@ -4049,7 +4049,7 @@ msgid "Switch to incremental search bar"
 msgstr "Skipta í áhaldastiku fyrir stigvaxandi leit"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:333
+#: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
 msgstr "Texti sem kemur í staðinn"

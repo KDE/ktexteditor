@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-02 00:43+0000\n"
+"POT-Creation-Date: 2022-10-04 00:41+0000\n"
 "PO-Revision-Date: 2022-09-28 18:30+0200\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -3748,7 +3748,7 @@ msgid "F&ind:"
 msgstr "&Tìm:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:314
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
 msgstr "Văn bản để tìm kiếm"
@@ -3877,7 +3877,7 @@ msgid "Switch to incremental search bar"
 msgstr "Chuyển sang thanh tìm kiếm từng bước"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:333
+#: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
 msgstr "Văn bản dùng để thay thế"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-02 00:43+0000\n"
+"POT-Creation-Date: 2022-10-04 00:41+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -3537,7 +3537,7 @@ msgid "F&ind:"
 msgstr "&Bibîne"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:314
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
 msgstr ""
@@ -3668,7 +3668,7 @@ msgid "Switch to incremental search bar"
 msgstr "Lêgerîna paşde ya lêzêdeker"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:333
+#: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
 msgstr ""

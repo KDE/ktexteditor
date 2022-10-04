@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-02 00:43+0000\n"
+"POT-Creation-Date: 2022-10-04 00:41+0000\n"
 "PO-Revision-Date: 2022-09-26 08:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -3801,7 +3801,7 @@ msgid "F&ind:"
 msgstr "З&найти:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:314
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
 msgstr "Текст, який слід шукати"
@@ -3930,7 +3930,7 @@ msgid "Switch to incremental search bar"
 msgstr "Перемкнутися на покроковий пошук"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:333
+#: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
 msgstr "Замінити цим текстом"

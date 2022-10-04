@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-02 00:43+0000\n"
-"PO-Revision-Date: 2022-09-30 09:58+0400\n"
+"POT-Creation-Date: 2022-10-04 00:41+0000\n"
+"PO-Revision-Date: 2022-10-03 17:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -110,7 +110,7 @@ msgstr "&ملفّ"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Export/Print"
-msgstr ""
+msgstr "صدّر/اطبع"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1140,10 +1140,9 @@ msgid "Feature is not active"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:576
-#, fuzzy, kde-format
-#| msgid "Disabled Breakpoint"
+#, kde-format
 msgid "Disable Feature"
-msgstr "نقطة مقاطعة معطّلة"
+msgstr "عطّل ميزة"
 
 #: dialogs/katedialogs.cpp:578
 #, kde-format
@@ -1540,10 +1539,9 @@ msgstr "أدخل لاحقة لإضافتها بعد أسماء الملفّات 
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "ملفّ التّبديل:"
+msgstr "وضع ملفّ التّبديل:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
@@ -1559,17 +1557,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "ملفّ التّبديل:"
+msgstr "خزن ملفّ التّبديل في :"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "ملفّ التّبديل:"
+msgstr "احفظ ملفّ التّبديل كل:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1807,51 +1803,45 @@ msgstr " ثانية"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "إبراز الصّياغة"
+msgstr "أظهر نمط إبراز الصّياغة"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "استعمل نمط إدخال VI"
+msgstr "أظهر نمط الإدخال"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change Dictionary..."
+#, kde-format
 msgid "Show active dictionary"
-msgstr "غيّر القاموس..."
+msgstr "أظهر القاموس النشط"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show tab setting"
-msgstr "أظهر إشارات تعديل الأسطر"
+msgstr "أظهر إعدادات الجدولة"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show line column"
-msgstr "أظهر أر&قام الأسطر"
+msgstr "أظهر رقم العمود"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "E&ncoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "الت&رميز"
+msgstr "أظهر ترميز الملف"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "أظهر نوع نهاية السطر"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1861,18 +1851,15 @@ msgstr "خطّ المحرّر:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
-#, fuzzy, kde-format
-#| msgid "Ignore white space changes"
+#, kde-format
 msgid "Show whitespace indicators:"
-msgstr "تجاهل تغيّرات الفراغ"
+msgstr "أَظهِر مؤشرات المسافة البيضاء:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Sets the end of line mode."
+#, kde-format
 msgid "At the end of a line"
-msgstr "يضبط وضع نهاية الأسطر."
+msgstr "عند نهاية الأسطر"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
@@ -1882,10 +1869,9 @@ msgstr "دائمًا"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:90
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator size:"
-msgstr "إبراز المسافات"
+msgstr "حجم مؤشر المسافة البيضاء:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:103
@@ -2117,10 +2103,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
-#, fuzzy, kde-format
-#| msgid "Line length limit:"
+#, kde-format
 msgid "Line Height Multiplier:"
-msgstr "حدّ طول السّطر:"
+msgstr "مضاعف ارتفاع السّطر:"
 
 #: document/katebuffer.cpp:151
 #, kde-format
@@ -2134,10 +2119,9 @@ msgid "The file %1 does not exist."
 msgstr "الملفّ %1 غير موجود."
 
 #: document/katedocument.cpp:246
-#, fuzzy, kde-format
-#| msgid "Close Document"
+#, kde-format
 msgid "Auto Reload Document"
-msgstr "أغلق المستند"
+msgstr "أعد تحميل المستند آليا"
 
 #: document/katedocument.cpp:247
 #, kde-format
@@ -2757,10 +2741,9 @@ msgid "L&ayout"
 msgstr "التّ&صميم"
 
 #: printing/printconfigwidgets.cpp:473
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Color theme:"
-msgstr "الألوان"
+msgstr "&سمة الألوان:"
 
 #: printing/printconfigwidgets.cpp:483
 #, kde-format
@@ -2798,10 +2781,9 @@ msgid "Co&lor:"
 msgstr "اللو&ن:"
 
 #: printing/printconfigwidgets.cpp:536
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "اختر مخطّط الألوان لاستخدامه للطّباعة."
+msgstr "اختر سمة الألوان لاستخدامها للطّباعة."
 
 #: printing/printconfigwidgets.cpp:538
 #, fuzzy, kde-format
@@ -2882,9 +2864,7 @@ msgid "Wrap with Tag"
 msgstr ""
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "انقل المؤشّر إلى الوسم المطابق"
@@ -2902,111 +2882,88 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr ""
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Fold Current Node"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "اطوِ العقدة الحاليّة"
+msgstr "بدّل بين التّعليقات"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "انتقل إلى نقطة التّحرير التّالية"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "انتقل إلى نقطة التّحرير السّابقة"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "حدّد إلى نهاية السّطر"
+msgstr "حدد نقطة التّحرير التّالية"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgid "Select to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "حدّد إلى السّطر السّابق"
+msgstr "حدد نقطة التّحرير السابقة"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "احذف الوسم أسفل المؤشّر"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgid "Splits or joins a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr "يقسم أو يدمج وسمًا"
+msgstr "اقسم أو ادمج وسم"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgid "Evaluates a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr "يقدّر تعبيرًا رياضيًّا بسيطًا"
+msgstr "احسب تعبيرًا رياضيًّا بسيطًا"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr "أنقص العدد بمقدار 1"
+msgstr "أنقص العدد بمقدار ١"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr "أنقص العدد بمقدار 10"
+msgstr "أنقص العدد بمقدار ١٠"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr "أنقص العدد بمقدار 0.1"
+msgstr "أنقص العدد بمقدار ٠٫١"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr "زِد العدد بمقدار 1"
+msgstr "زِد العدد بمقدار ١"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr "زِد العدد بمقدار 10"
+msgstr "زِد العدد بمقدار ١٠"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr "زِد العدد بمقدار 0.1"
+msgstr "زِد العدد بمقدار ٠٫١"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -3639,10 +3596,9 @@ msgid "Whitespace (excluding line breaks)"
 msgstr "مسافة (عدى كاسر الأسطر)"
 
 #: search/katesearchbar.cpp:1207
-#, fuzzy, kde-format
-#| msgid "Spaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "مسافات"
+msgstr "ليست-مسافات"
 
 #: search/katesearchbar.cpp:1208
 #, kde-format
@@ -3675,10 +3631,9 @@ msgid "Group, non-capturing"
 msgstr "مجموعة غير لاقطة"
 
 #: search/katesearchbar.cpp:1219
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "طالع خلفًا"
+msgstr "طالع أمامًا"
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
@@ -3732,7 +3687,7 @@ msgid "F&ind:"
 msgstr "أو&جد:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:314
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
 msgstr "النّصّ للبحث عنه"
@@ -3861,7 +3816,7 @@ msgid "Switch to incremental search bar"
 msgstr "حوّل إلى شريط البحث التّزايديّ"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:333
+#: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
 msgstr "النّصّ ليكون الاستبدال به"
@@ -4099,8 +4054,7 @@ msgid "I&gnore All"
 msgstr "تجا&هل الكلّ"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
 msgstr "الهجاء (من المؤشّر)..."
 
@@ -4125,14 +4079,11 @@ msgid "Spelling '%1'"
 msgstr "هجاء '%1'"
 
 #: swapfile/kateswapdiffcreator.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command failed. Please make sure that diff(1) is installed and "
-#| "in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
-msgstr "فشل أمر الفرق. فضلًا تحقّق بأنّ diff(1)‎ مثبّت وفي مسارك PATH."
+msgstr "لم يعثر على أمر الفرق. فضلًا تحقّق بأنّ diff(1)‎ مثبّت وفي مسارك PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:103
 #, kde-format
@@ -4394,13 +4345,13 @@ msgstr "أنواع البيانات"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Decimal/Value"
-msgstr ""
+msgstr "عشري/قيمة"
 
 #: syntax/katethemeconfig.cpp:85
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Base-N Integer"
-msgstr ""
+msgstr "عدد صحيح بقاعدة متغيرة"
 
 #: syntax/katethemeconfig.cpp:87
 #, kde-format
@@ -4436,13 +4387,13 @@ msgstr "شرح"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Comment Variable"
-msgstr ""
+msgstr "متغير التعليق"
 
 #: syntax/katethemeconfig.cpp:101
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Region Marker"
-msgstr ""
+msgstr "مؤشر المنطقة"
 
 #: syntax/katethemeconfig.cpp:103
 #, kde-format
@@ -4475,10 +4426,9 @@ msgid "Error"
 msgstr "الأخطاء"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "استخدم الافتراضيّ"
+msgstr "استخدم الألوان المبدئية"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4889,22 +4839,19 @@ msgid "Highlighting Text Styles"
 msgstr "أنماط نصوص الإبراز"
 
 #: syntax/katethemeconfig.cpp:1169
-#, fuzzy, kde-format
-#| msgid "Exporting color schema: %1"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "تصدير مخطّط الألوان: %1"
+msgstr "تصدير سمة الألوان: %1"
 
 #: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color theme"
-msgstr "الألوان"
+msgstr "سمة الألوان"
 
 #: syntax/katethemeconfig.cpp:1192
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "استيراد مخطّط ألوان"
+msgstr "استيراد سمة ألوان"
 
 #: syntax/katethemeconfig.cpp:1206
 #, kde-format
@@ -4930,16 +4877,14 @@ msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Delete Next Character"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "احذف المحرف التّالي"
+msgstr "احذف على أية حال"
 
 #: syntax/katethemeconfig.cpp:1400
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy theme"
-msgstr "الألوان"
+msgstr "انسخ سمة"
 
 #: syntax/katethemeconfig.cpp:1401
 #, kde-format
