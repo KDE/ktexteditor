@@ -53,7 +53,6 @@
 #include <KParts/Event>
 
 #include <KActionCollection>
-#include <KCharsets>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KCursor>

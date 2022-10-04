@@ -15,7 +15,6 @@
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
 
-#include <KCharsets>
 #include <KLocalizedString>
 
 #include <QDate>

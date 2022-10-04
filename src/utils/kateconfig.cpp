@@ -14,7 +14,6 @@
 #include "katesyntaxmanager.h"
 #include "kateview.h"
 
-#include <KCharsets>
 #include <KConfigGroup>
 
 #include <QGuiApplication>
@@ -215,9 +214,8 @@ KateRendererConfig *KateRendererConfig::s_global = nullptr;
  */
 static bool isEncodingOk(const QString &name)
 {
-    bool found = false;
-    auto codec = KCharsets::charsets()->codecForName(name, found);
-    return found && codec;
+    auto codec = QTextCodec::codecForName(name.toUtf8());
+    return codec;
 }
 
 static bool inBounds(const int min, const QVariant &value, const int max)
@@ -293,7 +291,11 @@ QTextCodec *KateGlobalConfig::fallbackCodec() const
     }
 
     // use configured encoding
-    return KCharsets::charsets()->codecForName(encoding);
+    auto codec = QTextCodec::codecForName(encoding.toUtf8());
+    if (codec) {
+        codec = QTextCodec::codecForLocale();
+    }
+    return codec;
 }
 // END
 
@@ -452,7 +454,11 @@ QTextCodec *KateDocumentConfig::codec() const
     }
 
     // use configured encoding
-    return KCharsets::charsets()->codecForName(encoding);
+    auto codec = QTextCodec::codecForName(encoding.toUtf8());
+    if (codec) {
+        return codec;
+    }
+    return QTextCodec::codecForName("UTF-8");
 }
 
 QString KateDocumentConfig::eolString() const

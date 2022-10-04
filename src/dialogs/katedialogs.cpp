@@ -1116,10 +1116,9 @@ void KateSaveConfigTab::reload()
     QStringList encodings(KCharsets::charsets()->descriptiveEncodingNames());
     int insert = 0;
     for (int i = 0; i < encodings.count(); i++) {
-        bool found = false;
-        QTextCodec *codecForEnc = KCharsets::charsets()->codecForName(KCharsets::charsets()->encodingForName(encodings[i]), found);
+        QTextCodec *codecForEnc = QTextCodec::codecForName(KCharsets::charsets()->encodingForName(encodings[i]));
 
-        if (found) {
+        if (codecForEnc) {
             ui->cmbEncoding->addItem(encodings[i]);
             ui->cmbEncodingFallback->addItem(encodings[i]);
 

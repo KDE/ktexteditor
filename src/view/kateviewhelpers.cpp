@@ -2880,26 +2880,21 @@ int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok)
 {
     // FIXME logic is good but code is ugly
 
-    bool success = false;
     int mib = MIB_DEFAULT;
     KCharsets *charsets = KCharsets::charsets();
 
-    QTextCodec *codec = charsets->codecForName(codecName, success);
-    if (!success) {
+    QTextCodec *codec = QTextCodec::codecForName(codecName.toUtf8());
+    if (!codec) {
         // Maybe we got a description name instead
-        codec = charsets->codecForName(charsets->encodingForName(codecName), success);
-    }
-
-    if (codec) {
-        mib = codec->mibEnum();
+        codec = QTextCodec::codecForName(charsets->encodingForName(codecName).toUtf8());
     }
 
     if (ok) {
-        *ok = success;
+        *ok = bool(codec);
     }
 
-    if (success) {
-        return mib;
+    if (codec) {
+        return codec->mibEnum();
     }
 
     qCWarning(LOG_KTE) << "Invalid codec name: " << codecName;
@@ -2937,7 +2932,7 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
                     continue;
                 }
 
-                if (codec == KCharsets::charsets()->codecForName(actions().at(i)->menu()->actions().at(j)->text())) {
+                if (codec == QTextCodec::codecForName(actions().at(i)->menu()->actions().at(j)->text().toUtf8())) {
                     d->currentSubAction = actions().at(i)->menu()->actions().at(j);
                     d->currentSubAction->setChecked(true);
                 } else {
@@ -2958,7 +2953,11 @@ QString KateViewEncodingAction::currentCodecName() const
 
 bool KateViewEncodingAction::setCurrentCodec(const QString &codecName)
 {
-    return setCurrentCodec(KCharsets::charsets()->codecForName(codecName));
+    auto codec = QTextCodec::codecForName(codecName.toUtf8());
+    if (!codec) {
+        codec = QTextCodec::codecForLocale();
+    }
+    return setCurrentCodec(codec);
 }
 
 int KateViewEncodingAction::currentCodecMib() const
