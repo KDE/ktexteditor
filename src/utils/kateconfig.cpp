@@ -293,9 +293,9 @@ QTextCodec *KateGlobalConfig::fallbackCodec() const
     // use configured encoding
     auto codec = QTextCodec::codecForName(encoding.toUtf8());
     if (codec) {
-        codec = QTextCodec::codecForLocale();
+        return codec;
     }
-    return codec;
+    return QTextCodec::codecForLocale();
 }
 // END
 
