@@ -1083,8 +1083,6 @@ int main(uint64_t magicArgument)
     m_doc->setHighlightingMode(QStringLiteral("C++"));
     m_themePreview = new KTextEditor::ViewPrivate(m_doc, this);
 
-    lHl = new QLabel(i18n("Preview:"), this);
-    layout->addWidget(lHl);
     layout->addWidget(m_themePreview);
 
     connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, [this](int idx) {
