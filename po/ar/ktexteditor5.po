@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-05 00:43+0000\n"
-"PO-Revision-Date: 2022-10-04 21:39+0400\n"
+"PO-Revision-Date: 2022-10-05 19:16+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -7041,7 +7041,7 @@ msgstr ""
 #: view/kateview.cpp:879
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "ابحث عن جميع الأحداث وحددها"
 
 #: view/kateview.cpp:881
 #, fuzzy, kde-format
@@ -7369,9 +7369,9 @@ msgid "Delete Next Character"
 msgstr "احذف المحرف التّالي"
 
 #: view/kateview.cpp:1217
-#, fuzzy, kde-format
+#, kde-format
 msgid "Backspace"
-msgstr "Backspace"
+msgstr "فراغ عكسي"
 
 #: view/kateview.cpp:1225
 #, kde-format

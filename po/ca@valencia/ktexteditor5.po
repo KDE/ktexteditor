@@ -100,7 +100,7 @@ msgstr "Reutilitza la paraula de més avall"
 #: data/katepart5ui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&Fitxer"
+msgstr "Fi&txer"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
@@ -136,7 +136,7 @@ msgstr "Escriu en majúscula la primera lletra"
 #: data/katepart5ui.rc:69
 #, kde-format
 msgid "&View"
-msgstr "&Visualitza"
+msgstr "Vi&sualitza"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
 #: data/katepart5ui.rc:74
@@ -364,7 +364,7 @@ msgstr "Mapa de tot el document"
 #: dialogs/bordersappearanceconfigwidget.ui:213
 #, kde-format
 msgid "Minim&ap width:"
-msgstr "&Amplària del mapa en miniatura:"
+msgstr "A&mplària del mapa en miniatura:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:737
@@ -691,7 +691,7 @@ msgstr ""
 #: dialogs/filetypeconfigwidget.ui:14
 #, kde-format
 msgid "&Filetype:"
-msgstr "Tipus de &fitxer:"
+msgstr "Tipus de fi&txer:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbFiletypes)
 #: dialogs/filetypeconfigwidget.ui:24
@@ -1356,7 +1356,7 @@ msgid ""
 "your PATH."
 msgstr ""
 "No s'ha pogut executar l'ordre «diff». Assegureu-vos que diff(1) està "
-"instal·lat i que es troba a la PATH."
+"instal·lat i que es troba en la PATH."
 
 #: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:95
 #: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
@@ -3859,7 +3859,7 @@ msgstr "Bu&sca:"
 #: search/searchbarpower.ui:63
 #, kde-format
 msgid "Rep&lace:"
-msgstr "&Substituïx:"
+msgstr "Su&bstituïx:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
@@ -3914,7 +3914,7 @@ msgstr "Substituïx la coincidència següent"
 #: search/searchbarpower.ui:214 spellcheck/spellcheckbar.ui:130
 #, kde-format
 msgid "&Replace"
-msgstr "&Substituïx"
+msgstr "Su&bstituïx"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:240
@@ -4919,7 +4919,7 @@ msgstr "Comentaris i documentació"
 #, kde-format
 msgctxt "@item:intable"
 msgid "Miscellaneous"
-msgstr "Miscelànea"
+msgstr "Miscel·lània"
 
 #: syntax/katethemeconfig.cpp:704
 #, kde-format
