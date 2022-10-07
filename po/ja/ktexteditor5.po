@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-05 00:43+0000\n"
+"POT-Creation-Date: 2022-10-07 00:41+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -766,7 +766,7 @@ msgid "Delete the current file type."
 msgstr "現在のファイルタイプを削除します。"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1121
 #, kde-format
 msgid "&Delete"
 msgstr "削除(&D)"
@@ -1968,10 +1968,9 @@ msgstr "行末まで選択"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
-#, fuzzy, kde-format
-#| msgid "Always On"
+#, kde-format
 msgid "Always"
-msgstr "常に表示"
+msgstr "常に"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:90
@@ -2382,8 +2381,8 @@ msgstr ""
 "の両方が変更されています。一部のデータが失われることになります。"
 
 #: document/katedocument.cpp:2533 document/katedocument.cpp:2549
-#: document/katedocument.cpp:2841 syntax/katethemeconfig.cpp:1207
-#: syntax/katethemeconfig.cpp:1357
+#: document/katedocument.cpp:2841 syntax/katethemeconfig.cpp:1205
+#: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "データの消失の可能性"
@@ -5056,127 +5055,122 @@ msgstr ""
 msgid "Select theme:"
 msgstr "選択時"
 
-#: syntax/katethemeconfig.cpp:1086
-#, kde-format
-msgid "Preview:"
-msgstr ""
-
-#: syntax/katethemeconfig.cpp:1110
+#: syntax/katethemeconfig.cpp:1108
 #, kde-format
 msgid "&Theme:"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1119
+#: syntax/katethemeconfig.cpp:1117
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Copy..."
 msgstr "別名で保存(&S)..."
 
-#: syntax/katethemeconfig.cpp:1127
+#: syntax/katethemeconfig.cpp:1125
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "Export..."
 msgstr "通常の色(&C)..."
 
-#: syntax/katethemeconfig.cpp:1131
+#: syntax/katethemeconfig.cpp:1129
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "Import..."
 msgstr "通常の色(&C)..."
 
-#: syntax/katethemeconfig.cpp:1138
+#: syntax/katethemeconfig.cpp:1136
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1149
+#: syntax/katethemeconfig.cpp:1147
 #, kde-format
 msgid "Colors"
 msgstr "色"
 
-#: syntax/katethemeconfig.cpp:1153
+#: syntax/katethemeconfig.cpp:1151
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Text Styles"
 msgstr "標準スタイル"
 
-#: syntax/katethemeconfig.cpp:1157
+#: syntax/katethemeconfig.cpp:1155
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "強調表示スタイル"
 
-#: syntax/katethemeconfig.cpp:1169
+#: syntax/katethemeconfig.cpp:1167
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Exporting color theme: %1"
 msgstr "フォントと色のスキーマ"
 
-#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Color theme"
 msgstr "フォントと色のスキーマ"
 
-#: syntax/katethemeconfig.cpp:1192
+#: syntax/katethemeconfig.cpp:1190
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Importing Color Theme"
 msgstr "フォントと色のスキーマ"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1204
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1208
+#: syntax/katethemeconfig.cpp:1206
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Import Nevertheless"
 msgstr "それでも閉じる"
 
-#: syntax/katethemeconfig.cpp:1290
+#: syntax/katethemeconfig.cpp:1288
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1356
+#: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1358
+#: syntax/katethemeconfig.cpp:1356
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Delete Nevertheless"
 msgstr "それでも閉じる"
 
-#: syntax/katethemeconfig.cpp:1400
+#: syntax/katethemeconfig.cpp:1398
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Copy theme"
 msgstr "フォントと色のスキーマ"
 
-#: syntax/katethemeconfig.cpp:1401
+#: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1413
+#: syntax/katethemeconfig.cpp:1411
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1414
+#: syntax/katethemeconfig.cpp:1412
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "色"
 
-#: syntax/katethemeconfig.cpp:1467 syntax/katethemeconfig.cpp:1472
+#: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"
@@ -8231,238 +8225,3 @@ msgstr "'%1' %2,  十六進 %3,  八進 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "マークが未セット: %1"
-
-#, fuzzy
-#~| msgid "Toggle Comment"
-#~ msgctxt "Script command name"
-#~ msgid "Toggle comment"
-#~ msgstr "コメントのオン/オフ"
-
-#~ msgid "Choo&se Font..."
-#~ msgstr "フォントを選択(&S)..."
-
-#, fuzzy
-#~| msgid "E&ncoding"
-#~ msgctxt "Script command category"
-#~ msgid "Quick Coding"
-#~ msgstr "エンコーディング(&N)"
-
-# ACCELERATOR changed by translator
-#, fuzzy
-#~| msgid "&Default schema for %1:"
-#~ msgid "&Default theme for %1:"
-#~ msgstr "%1 のデフォルトのスキーマ(&K):"
-
-#, fuzzy
-#~| msgid "Automatic Spell Checking"
-#~ msgid "Automatic Selection"
-#~ msgstr "自動スペルチェック"
-
-#, fuzzy
-#~| msgid "The file '%1' was modified by another program."
-#~ msgid "Meaning of current icon: Document was modified or deleted on disk"
-#~ msgstr ""
-#~ "ディスク上のファイル <filename>%1</filename> は他のプログラムによって変更"
-#~ "されました。"
-
-#, fuzzy
-#~| msgid "The file '%1' was modified by another program."
-#~ msgid "Meaning of current icon: Document is in read-only mode"
-#~ msgstr ""
-#~ "ディスク上のファイル <filename>%1</filename> は他のプログラムによって変更"
-#~ "されました。"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Lua"
-#~ msgctxt "Autoindent mode"
-#~ msgid "Lua"
-#~ msgstr "Lua"
-
-#, fuzzy
-#~| msgid "Show Folding &Markers"
-#~ msgid "Show &folding markers"
-#~ msgstr "折りたたみマーカーを表示(&M)"
-
-#, fuzzy
-#~| msgid "Show Folding &Markers"
-#~ msgid "Show line modification markers"
-#~ msgstr "折りたたみマーカーを表示(&M)"
-
-#~ msgid ""
-#~ "Choose how the bookmarks should be ordered in the <b>Bookmarks</b> menu."
-#~ msgstr ""
-#~ "ブックマークをブックマークメニューにどのような順序で表示するかを選択しま"
-#~ "す。"
-
-#, fuzzy
-#~| msgid "By c&reation"
-#~ msgid "B&y creation"
-#~ msgstr "作成日時で(&R)"
-
-#, fuzzy
-#~| msgid "By &position"
-#~ msgid "By posi&tion"
-#~ msgstr "位置で(&P)"
-
-#~ msgid ""
-#~ "<p>Backing up on save will cause Kate to copy the disk file to '&lt;"
-#~ "prefix&gt;&lt;filename&gt;&lt;suffix&gt;' before saving changes.<p>The "
-#~ "suffix defaults to <strong>~</strong> and prefix is empty by default."
-#~ msgstr ""
-#~ "<qt><p>保存時にバックアップを作成するように設定すると、Kate は変更を保存す"
-#~ "る前にディスク上のファイルを &lt;プレフィックス&gt;&lt;ファイル名&gt;&lt;"
-#~ "サフィックス&gt; の形式でコピーします。</p><p>標準設定では、サフィックス"
-#~ "は <strong>~</strong> になり、プレフィックスは付きません。</p></qt>"
-
-#~ msgid "Backup on Save"
-#~ msgstr "保存時のバックアップ"
-
-#~ msgid "&Prefix:"
-#~ msgstr "プレフィックス(&P):"
-
-#~ msgid "&Suffix:"
-#~ msgstr "サフィックス(&S):"
-
-#, fuzzy
-#~| msgid "Disabled"
-#~ msgid "Disable"
-#~ msgstr "無効"
-
-#~ msgid "Enable static &word wrap"
-#~ msgstr "固定的な行の折り返しを有効にする(&W)"
-
-#, fuzzy
-#~| msgid "Show Static &Word Wrap Marker"
-#~ msgid "Show static word wra&p marker"
-#~ msgstr "固定的な行の折り返しマーカーを表示(&W)"
-
-#, fuzzy
-#~| msgid "Vi Input Mode"
-#~ msgid "Input Mode"
-#~ msgstr "VI 入力モード"
-
-#, fuzzy
-#~| msgid "Select to Matching Bracket"
-#~ msgid "Enable automatic brackets"
-#~ msgstr "マッチする括弧を選択"
-
-#, fuzzy
-#~| msgid "Align dynamically wrapped lines to indentation depth:"
-#~ msgid "&Align dynamically wrapped lines to indentation depth:"
-#~ msgstr "動的に折り返された行の行頭を字下げの深さに応じて揃える:"
-
-#~ msgid ""
-#~ "If this option is checked, the text lines will be wrapped at the view "
-#~ "border on the screen."
-#~ msgstr ""
-#~ "このオプションをチェックすると、スクリーンの表示境界でテキストを改行しま"
-#~ "す。"
-
-#, fuzzy
-#~| msgid "Dynamic &word wrap indicators (if applicable):"
-#~ msgid "D&ynamic word wrap indicators (if applicable):"
-#~ msgstr "(有効時の) 動的な行の折り返しマーカーの表示(&W):"
-
-#, fuzzy
-#~| msgid "Highlighting for Ferite"
-#~ msgid "Highlight marker size:"
-#~ msgstr "Ferite の構文強調表示"
-
-#, fuzzy
-#~| msgid "&Spaces"
-#~ msgid "Whitespaces"
-#~ msgstr "スペース(&S)"
-
-# ACCELERATOR changed by translator
-#, fuzzy
-#~| msgid "&Highlight tabulators"
-#~ msgid "Highlight tabulators"
-#~ msgstr "タブを強調表示する(&G)"
-
-#~ msgid "Prefix"
-#~ msgstr "プレフィックス"
-
-#~ msgid "Icon"
-#~ msgstr "アイコン"
-
-#~ msgid "Scope"
-#~ msgstr "スコープ"
-
-#~ msgid "Name"
-#~ msgstr "名前"
-
-#~ msgid "Arguments"
-#~ msgstr "引数"
-
-#~ msgid "Postfix"
-#~ msgstr "ポストフィックス"
-
-#~ msgid "Public"
-#~ msgstr "Public"
-
-#~ msgid "Protected"
-#~ msgstr "Protected"
-
-#~ msgid "Private"
-#~ msgstr "Private"
-
-#~ msgid "Static"
-#~ msgstr "Static"
-
-#~ msgid "Constant"
-#~ msgstr "定数"
-
-#~ msgid "Namespace"
-#~ msgstr "名前空間"
-
-#~ msgid "Class"
-#~ msgstr "クラス"
-
-#~ msgid "Struct"
-#~ msgstr "構造体"
-
-#~ msgid "Union"
-#~ msgstr "共用体"
-
-#~ msgid "Function"
-#~ msgstr "関数"
-
-#~ msgid "Variable"
-#~ msgstr "変数"
-
-#~ msgid "Enumeration"
-#~ msgstr "列挙型"
-
-#~ msgid "Template"
-#~ msgstr "テンプレート"
-
-#~ msgid "Virtual"
-#~ msgstr "仮想"
-
-#~ msgid "Override"
-#~ msgstr "オーバーライド"
-
-#~ msgid "Inline"
-#~ msgstr "インライン"
-
-#~ msgid "Friend"
-#~ msgstr "フレンド"
-
-#~ msgid "Signal"
-#~ msgstr "シグナル"
-
-#~ msgid "Slot"
-#~ msgstr "スロット"
-
-#~ msgid "Local Scope"
-#~ msgstr "ローカルスコープ"
-
-#~ msgid "Namespace Scope"
-#~ msgstr "名前空間スコープ"
-
-#~ msgid "Global Scope"
-#~ msgstr "グローバルスコープ"
-
-#~ msgid "Unknown Property"
-#~ msgstr "未知のプロパティ"
