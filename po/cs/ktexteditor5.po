@@ -7870,6 +7870,3 @@ msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"
-
-#~ msgid "Preview:"
-#~ msgstr "Náhled:"
