@@ -105,8 +105,6 @@ public:
     static const int AccessTypeMask = 0x7;
     static const int ItemTypeMask = 0xfe0;
 
-    GroupingMethods groupingMethod() const;
-
     // Column merging
     bool isColumnMergingEnabled() const;
 
@@ -255,7 +253,7 @@ private:
     void clearGroups();
     void hideOrShowGroup(Group *g, bool notifyModel = false);
     /// When forceGrouping is enabled, all given attributes will be used for grouping, regardless of the completion settings.
-    Group *fetchGroup(int attribute, const QString &scope = QString(), bool forceGrouping = false);
+    Group *fetchGroup(int attribute, bool forceGrouping = false);
     // If this returns nonzero on an index, the index is the header of the returned group
     Group *groupForIndex(const QModelIndex &index) const;
     inline Group *groupOfParent(const QModelIndex &child) const
@@ -303,9 +301,6 @@ private:
     QMultiHash<int, Group *> m_groupHash;
     // Maps custom group-names to their specific groups
     QHash<QString, Group *> m_customGroupHash;
-
-    // Grouping
-    GroupingMethods m_groupingMethod;
 
     // Column merging
     bool m_columnMergingEnabled = true;

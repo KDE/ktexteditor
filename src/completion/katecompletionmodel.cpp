@@ -148,8 +148,6 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     m_groupHash.insert(-1, m_argumentHints);
     m_groupHash.insert(BestMatchesProperty, m_argumentHints);
 
-    m_groupingMethod = KateCompletionModel::ScopeType | KateCompletionModel::AccessType;
-
     QList<QList<int>> mergedColumns;
     mergedColumns << (QList<int>() << 0);
     mergedColumns << (QList<int>() << 1 << 2 << 3 << 4);
@@ -633,10 +631,6 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
 
     int completionFlags = handler.getData(CodeCompletionModel::CompletionRole, sourceIndex).toInt();
 
-    // Scope is expensive, should not be used with big models
-    QString scopeIfNeeded =
-        (groupingMethod() & Scope) ? sourceIndex.sibling(sourceIndex.row(), CodeCompletionModel::Scope).data(Qt::DisplayRole).toString() : QString();
-
     int argumentHintDepth = handler.getData(CodeCompletionModel::ArgumentHintDepth, sourceIndex).toInt();
 
     Group *g;
@@ -654,7 +648,7 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
                 m_customGroupHash.insert(customGroup, g);
             }
         } else {
-            g = fetchGroup(completionFlags, scopeIfNeeded, handler.hasHierarchicalRoles());
+            g = fetchGroup(completionFlags, handler.hasHierarchicalRoles());
         }
     }
 
@@ -702,7 +696,7 @@ void KateCompletionModel::slotRowsRemoved(const QModelIndex &parent, int start, 
     }
 }
 
-KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const QString &scope, bool forceGrouping)
+KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, bool forceGrouping)
 {
     Q_UNUSED(forceGrouping);
 
@@ -715,15 +709,7 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
     // qCDebug(LOG_KTE) << attribute << " " << groupingAttribute;
 
     if (m_groupHash.contains(groupingAttribute)) {
-        if (groupingMethod() & Scope) {
-            for (auto it = m_groupHash.constFind(groupingAttribute); it != m_groupHash.constEnd() && it.key() == groupingAttribute; ++it) {
-                if (it.value()->scope == scope) {
-                    return it.value();
-                }
-            }
-        } else {
-            return m_groupHash.value(groupingAttribute);
-        }
+        return m_groupHash.value(groupingAttribute);
     }
 
     QString st;
@@ -731,72 +717,34 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
     QString it;
     QString title;
 
-    if (groupingMethod() & ScopeType) {
-        if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
-            st = QStringLiteral("Global");
-        } else if (attribute & KTextEditor::CodeCompletionModel::NamespaceScope) {
-            st = QStringLiteral("Namespace");
-        } else if (attribute & KTextEditor::CodeCompletionModel::LocalScope) {
-            st = QStringLiteral("Local");
-        }
-
-        title = st;
+    if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
+        st = QStringLiteral("Global");
+    } else if (attribute & KTextEditor::CodeCompletionModel::NamespaceScope) {
+        st = QStringLiteral("Namespace");
+    } else if (attribute & KTextEditor::CodeCompletionModel::LocalScope) {
+        st = QStringLiteral("Local");
     }
 
-    if (groupingMethod() & Scope) {
+    title = st;
+
+    if (attribute & KTextEditor::CodeCompletionModel::Public) {
+        at = QStringLiteral("Public");
+    } else if (attribute & KTextEditor::CodeCompletionModel::Protected) {
+        at = QStringLiteral("Protected");
+    } else if (attribute & KTextEditor::CodeCompletionModel::Private) {
+        at = QStringLiteral("Private");
+    }
+
+    if (!at.isEmpty()) {
         if (!title.isEmpty()) {
-            title.append(QLatin1Char(' '));
+            title.append(QLatin1String(", "));
         }
 
-        title.append(scope);
-    }
-
-    if (groupingMethod() & AccessType) {
-        if (attribute & KTextEditor::CodeCompletionModel::Public) {
-            at = QStringLiteral("Public");
-        } else if (attribute & KTextEditor::CodeCompletionModel::Protected) {
-            at = QStringLiteral("Protected");
-        } else if (attribute & KTextEditor::CodeCompletionModel::Private) {
-            at = QStringLiteral("Private");
-        }
-
-        if (!at.isEmpty()) {
-            if (!title.isEmpty()) {
-                title.append(QLatin1String(", "));
-            }
-
-            title.append(at);
-        }
-    }
-
-    if (groupingMethod() & ItemType) {
-        if (attribute & CodeCompletionModel::Namespace) {
-            it = i18n("Namespaces");
-        } else if (attribute & CodeCompletionModel::Class) {
-            it = i18n("Classes");
-        } else if (attribute & CodeCompletionModel::Struct) {
-            it = i18n("Structs");
-        } else if (attribute & CodeCompletionModel::Union) {
-            it = i18n("Unions");
-        } else if (attribute & CodeCompletionModel::Function) {
-            it = i18n("Functions");
-        } else if (attribute & CodeCompletionModel::Variable) {
-            it = i18n("Variables");
-        } else if (attribute & CodeCompletionModel::Enum) {
-            it = i18n("Enumerations");
-        }
-
-        if (!it.isEmpty()) {
-            if (!title.isEmpty()) {
-                title.append(QLatin1Char(' '));
-            }
-
-            title.append(it);
-        }
+        title.append(at);
     }
 
     Group *ret = new Group(title, attribute, this);
-    ret->scope = scope;
+    ret->scope = QString();
 
     m_emptyGroups.append(ret);
     m_groupHash.insert(groupingAttribute, ret);
@@ -1256,58 +1204,26 @@ int KateCompletionModel::groupingAttributes(int attribute) const
 {
     int ret = 0;
 
-    if (m_groupingMethod & ScopeType) {
-        if (countBits(attribute & ScopeTypeMask) > 1) {
-            qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one scope type modifier provided.";
-        }
-
-        if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
-            ret |= KTextEditor::CodeCompletionModel::GlobalScope;
-        } else if (attribute & KTextEditor::CodeCompletionModel::NamespaceScope) {
-            ret |= KTextEditor::CodeCompletionModel::NamespaceScope;
-        } else if (attribute & KTextEditor::CodeCompletionModel::LocalScope) {
-            ret |= KTextEditor::CodeCompletionModel::LocalScope;
-        }
+    if (countBits(attribute & ScopeTypeMask) > 1) {
+        qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one scope type modifier provided.";
+    }
+    if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
+        ret |= KTextEditor::CodeCompletionModel::GlobalScope;
+    } else if (attribute & KTextEditor::CodeCompletionModel::NamespaceScope) {
+        ret |= KTextEditor::CodeCompletionModel::NamespaceScope;
+    } else if (attribute & KTextEditor::CodeCompletionModel::LocalScope) {
+        ret |= KTextEditor::CodeCompletionModel::LocalScope;
     }
 
-    if (m_groupingMethod & AccessType) {
-        if (countBits(attribute & AccessTypeMask) > 1) {
-            qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one access type modifier provided.";
-        }
-
-        if (attribute & KTextEditor::CodeCompletionModel::Public) {
-            ret |= KTextEditor::CodeCompletionModel::Public;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Protected) {
-            ret |= KTextEditor::CodeCompletionModel::Protected;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Private) {
-            ret |= KTextEditor::CodeCompletionModel::Private;
-        }
+    if (countBits(attribute & AccessTypeMask) > 1) {
+        qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one access type modifier provided.";
     }
-
-    if (m_groupingMethod & ItemType) {
-        if (countBits(attribute & ItemTypeMask) > 1) {
-            qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one item type modifier provided.";
-        }
-
-        if (attribute & KTextEditor::CodeCompletionModel::Namespace) {
-            ret |= KTextEditor::CodeCompletionModel::Namespace;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Class) {
-            ret |= KTextEditor::CodeCompletionModel::Class;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Struct) {
-            ret |= KTextEditor::CodeCompletionModel::Struct;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Union) {
-            ret |= KTextEditor::CodeCompletionModel::Union;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Function) {
-            ret |= KTextEditor::CodeCompletionModel::Function;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Variable) {
-            ret |= KTextEditor::CodeCompletionModel::Variable;
-        } else if (attribute & KTextEditor::CodeCompletionModel::Enum) {
-            ret |= KTextEditor::CodeCompletionModel::Enum;
-        }
-
-        /*
-        if (itemIncludeTemplate() && attribute & KTextEditor::CodeCompletionModel::Template)
-          ret |= KTextEditor::CodeCompletionModel::Template;*/
+    if (attribute & KTextEditor::CodeCompletionModel::Public) {
+        ret |= KTextEditor::CodeCompletionModel::Public;
+    } else if (attribute & KTextEditor::CodeCompletionModel::Protected) {
+        ret |= KTextEditor::CodeCompletionModel::Protected;
+    } else if (attribute & KTextEditor::CodeCompletionModel::Private) {
+        ret |= KTextEditor::CodeCompletionModel::Private;
     }
 
     return ret;
@@ -1323,11 +1239,6 @@ int KateCompletionModel::countBits(int value)
     }
 
     return count;
-}
-
-KateCompletionModel::GroupingMethods KateCompletionModel::groupingMethod() const
-{
-    return m_groupingMethod;
 }
 
 KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, const HierarchicalModelHandler &handler, ModelRow sr)
