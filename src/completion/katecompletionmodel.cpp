@@ -1844,7 +1844,11 @@ void KateCompletionModel::removeCompletionModel(CodeCompletionModel *model)
         return;
     }
 
-    beginResetModel();
+    bool willCreateGroups = (m_completionModels.size() - 1) > 0;
+
+    if (!willCreateGroups) {
+        beginResetModel();
+    }
     m_currentMatch.remove(model);
 
     clearGroups();
@@ -1852,9 +1856,11 @@ void KateCompletionModel::removeCompletionModel(CodeCompletionModel *model)
     model->disconnect(this);
 
     m_completionModels.removeAll(model);
-    endResetModel();
+    if (!willCreateGroups) {
+        endResetModel();
+    }
 
-    if (!m_completionModels.isEmpty()) {
+    if (willCreateGroups) {
         // This performs the reset
         createGroups();
     }
