@@ -869,16 +869,16 @@ void KateCompletionModel::setCurrentCompletion(QMap<KTextEditor::CodeCompletionM
     m_currentMatch = currentMatch;
 
     if (!hasGroups()) {
-        changeCompletions(m_ungrouped, Change, /*notifyModel=*/false);
+        changeCompletions(m_ungrouped);
     } else {
         for (Group *g : std::as_const(m_rowTable)) {
             if (g != m_argumentHints) {
-                changeCompletions(g, Change, /*notifyModel=*/false);
+                changeCompletions(g);
             }
         }
         for (Group *g : std::as_const(m_emptyGroups)) {
             if (g != m_argumentHints) {
-                changeCompletions(g, Change, /*notifyModel=*/false);
+                changeCompletions(g);
             }
         }
     }
@@ -949,46 +949,16 @@ QString KateCompletionModel::commonPrefix(QModelIndex selectedIndex) const
     return commonPrefix;
 }
 
-void KateCompletionModel::changeCompletions(Group *g, changeTypes changeType, bool notifyModel)
+void KateCompletionModel::changeCompletions(Group *g)
 {
-    if (changeType != Narrow) {
-        g->filtered = g->prefilter;
-        // In the "Broaden" or "Change" case, just re-filter everything,
-        // and don't notify the model. The model is notified afterwards through a reset().
-    }
+    // This code determines what of the filtered items still fit
+    // don't notify the model. The model is notified afterwards through a reset().
+    g->filtered.clear();
+    std::remove_copy_if(g->prefilter.begin(), g->prefilter.end(), std::back_inserter(g->filtered), [](Item &item) {
+        return !item.match();
+    });
 
-    // This code determines what of the filtered items still fit, and computes the ranges that were removed, giving
-    // them to beginRemoveRows(..) in batches
-
-    std::vector<KateCompletionModel::Item> newFiltered;
-    int deleteUntil = -1; // In each state, the range [currentRow+1, deleteUntil] needs to be deleted
-    auto &filtered = g->filtered;
-    newFiltered.reserve(filtered.size());
-    for (int currentRow = filtered.size() - 1; currentRow >= 0; --currentRow) {
-        if (filtered[currentRow].match()) {
-            // This row does not need to be deleted, which means that currentRow+1 to deleteUntil need to be deleted now
-            if (deleteUntil != -1 && notifyModel) {
-                beginRemoveRows(indexForGroup(g), currentRow + 1, deleteUntil);
-                endRemoveRows();
-            }
-            deleteUntil = -1;
-
-            newFiltered.push_back(std::move(filtered[currentRow]));
-        } else {
-            if (deleteUntil == -1) {
-                deleteUntil = currentRow; // Mark that this row needs to be deleted
-            }
-        }
-    }
-
-    if (deleteUntil != -1 && notifyModel) {
-        beginRemoveRows(indexForGroup(g), 0, deleteUntil);
-        endRemoveRows();
-    }
-
-    std::reverse(newFiltered.begin(), newFiltered.end());
-    g->filtered = std::move(newFiltered);
-    hideOrShowGroup(g, notifyModel);
+    hideOrShowGroup(g, /*notifyModel=*/false);
 }
 
 int KateCompletionModel::Group::orderNumber() const
