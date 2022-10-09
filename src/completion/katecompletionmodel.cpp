@@ -184,26 +184,21 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
     // groupOfParent returns a group when the index is a member of that group, but not the group head/label.
     if (!hasGroups() || groupOfParent(index)) {
         if (role == Qt::TextAlignmentRole) {
-            if (isColumnMergingEnabled() && !m_columnMerges.isEmpty()) {
-                int c = 0;
-                for (const QList<int> &list : std::as_const(m_columnMerges)) {
-                    if (index.column() < c + list.size()) {
-                        c += list.size();
-                        continue;
-                    } else if (list.count() == 1 && list.first() == CodeCompletionModel::Scope) {
-                        return Qt::AlignRight;
-                    } else {
-                        return QVariant();
-                    }
+            int c = 0;
+            for (const QList<int> &list : std::as_const(m_columnMerges)) {
+                if (index.column() < c + list.size()) {
+                    c += list.size();
+                    continue;
+                } else if (list.count() == 1 && list.first() == CodeCompletionModel::Scope) {
+                    return Qt::AlignRight;
+                } else {
+                    return QVariant();
                 }
-
-            } else if ((!isColumnMergingEnabled() || m_columnMerges.isEmpty()) && index.column() == CodeCompletionModel::Scope) {
-                return Qt::AlignRight;
             }
         }
 
         // Merge text for column merging
-        if (role == Qt::DisplayRole && !m_columnMerges.isEmpty() && isColumnMergingEnabled()) {
+        if (role == Qt::DisplayRole) {
             QString text;
             for (int column : m_columnMerges[index.column()]) {
                 QModelIndex sourceIndex = mapToSource(createIndex(index.row(), column, index.internalPointer()));
@@ -365,7 +360,7 @@ KTextEditor::ViewPrivate *KateCompletionModel::view() const
 
 int KateCompletionModel::columnCount(const QModelIndex &) const
 {
-    return isColumnMergingEnabled() && !m_columnMerges.isEmpty() ? m_columnMerges.count() : KTextEditor::CodeCompletionModel::ColumnCount;
+    return 3;
 }
 
 KateCompletionModel::ModelRow KateCompletionModel::modelRowPair(const QModelIndex &index)
@@ -1162,11 +1157,6 @@ void KateCompletionModel::debugStats()
 bool KateCompletionModel::hasCompletionModel() const
 {
     return !m_completionModels.isEmpty();
-}
-
-bool KateCompletionModel::isColumnMergingEnabled() const
-{
-    return m_columnMergingEnabled;
 }
 
 int KateCompletionModel::translateColumn(int sourceColumn) const

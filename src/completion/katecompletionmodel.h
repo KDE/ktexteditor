@@ -105,9 +105,6 @@ public:
     static const int AccessTypeMask = 0x7;
     static const int ItemTypeMask = 0xfe0;
 
-    // Column merging
-    bool isColumnMergingEnabled() const;
-
     void debugStats();
 
     /// Returns whether one of the filtered items exactly matches its completion string
@@ -301,9 +298,6 @@ private:
     QMultiHash<int, Group *> m_groupHash;
     // Maps custom group-names to their specific groups
     QHash<QString, Group *> m_customGroupHash;
-
-    // Column merging
-    bool m_columnMergingEnabled = true;
 
     friend class CompletionTest;
 };
