@@ -111,24 +111,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     // FIXME: this was imported from the config dialog deactivated years ago
     // without this setup either nothing shows or it segfaults
 
-    // Grouping
-    m_presentationModel->setGroupingEnabled(true);
-
-    m_presentationModel->setGroupingMethod(KateCompletionModel::ScopeType | KateCompletionModel::AccessType);
-
-    m_presentationModel->setAccessIncludeConst(false);
-    m_presentationModel->setAccessIncludeStatic(false);
-    m_presentationModel->setAccessIncludeSignalSlot(false);
-
-    // Column merging
-    m_presentationModel->setColumnMergingEnabled(true);
-
-    QList<QList<int>> mergedColumns;
-    mergedColumns << (QList<int>() << 0);
-    mergedColumns << (QList<int>() << 1 << 2 << 3 << 4);
-    mergedColumns << (QList<int>() << 5);
-    m_presentationModel->setColumnMerges(mergedColumns);
-
     connect(parent, &KTextEditor::ViewPrivate::navigateAccept, this, &KateCompletionWidget::navigateAccept);
     connect(parent, &KTextEditor::ViewPrivate::navigateBack, this, &KateCompletionWidget::navigateBack);
     connect(parent, &KTextEditor::ViewPrivate::navigateDown, this, &KateCompletionWidget::navigateDown);

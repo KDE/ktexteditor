@@ -147,6 +147,22 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     m_groupHash.insert(0, m_ungrouped);
     m_groupHash.insert(-1, m_argumentHints);
     m_groupHash.insert(BestMatchesProperty, m_argumentHints);
+
+    setGroupingEnabled(true);
+    setGroupingMethod(KateCompletionModel::ScopeType | KateCompletionModel::AccessType);
+
+    setAccessIncludeConst(false);
+    setAccessIncludeStatic(false);
+    setAccessIncludeSignalSlot(false);
+
+    // Column merging
+    setColumnMergingEnabled(true);
+
+    QList<QList<int>> mergedColumns;
+    mergedColumns << (QList<int>() << 0);
+    mergedColumns << (QList<int>() << 1 << 2 << 3 << 4);
+    mergedColumns << (QList<int>() << 5);
+    setColumnMerges(mergedColumns);
 }
 
 KateCompletionModel::~KateCompletionModel()
