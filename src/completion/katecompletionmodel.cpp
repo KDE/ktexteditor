@@ -955,49 +955,23 @@ QModelIndex KateCompletionModel::mapFromSource(const QModelIndex &sourceIndex) c
     return QModelIndex();
 }
 
-void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel *model, const QString &completion)
+void KateCompletionModel::setCurrentCompletion(QMap<KTextEditor::CodeCompletionModel *, QString> currentMatch)
 {
-    auto &current = m_currentMatch[model];
-    if (current == completion) {
-        return;
-    }
+    beginResetModel();
 
-    if (!hasCompletionModel()) {
-        current = completion;
-        return;
-    }
-
-    changeTypes changeType = Change;
-
-    if (current.length() > completion.length() && current.startsWith(completion, Qt::CaseInsensitive)) {
-        // Filter has been broadened
-        changeType = Broaden;
-
-    } else if (current.length() < completion.length() && completion.startsWith(current, Qt::CaseInsensitive)) {
-        // Filter has been narrowed
-        changeType = Narrow;
-    }
-
-    // qCDebug(LOG_KTE) << model << "Old match: " << current << ", new: " << completion << ", type: " << changeType;
-
-    current = completion;
-
-    const bool resetModel = (changeType != Narrow);
-    if (resetModel) {
-        beginResetModel();
-    }
+    m_currentMatch = currentMatch;
 
     if (!hasGroups()) {
-        changeCompletions(m_ungrouped, changeType, !resetModel);
+        changeCompletions(m_ungrouped, Change, /*notifyModel=*/false);
     } else {
         for (Group *g : std::as_const(m_rowTable)) {
             if (g != m_argumentHints) {
-                changeCompletions(g, changeType, !resetModel);
+                changeCompletions(g, Change, /*notifyModel=*/false);
             }
         }
         for (Group *g : std::as_const(m_emptyGroups)) {
             if (g != m_argumentHints) {
-                changeCompletions(g, changeType, !resetModel);
+                changeCompletions(g, Change, /*notifyModel=*/false);
             }
         }
     }
@@ -1005,11 +979,7 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
     // NOTE: best matches are also updated in resort
     resort();
 
-    if (resetModel) {
-        endResetModel();
-    }
-
-    Q_EMIT layoutChanged();
+    endResetModel();
 }
 
 QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) const

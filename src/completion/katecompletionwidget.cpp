@@ -743,10 +743,14 @@ void KateCompletionWidget::cursorPositionChanged()
         oldCurrentSourceIndex = m_presentationModel->mapToSource(m_entryList->currentIndex());
     }
 
+    QMap<KTextEditor::CodeCompletionModel *, QString> filterStringByModel;
+
+    disconnect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
+    disconnect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
+
     // Check the models and eventually abort some
     const QList<KTextEditor::CodeCompletionModel *> checkCompletionRanges = m_completionRanges.keys();
-    for (QList<KTextEditor::CodeCompletionModel *>::const_iterator it = checkCompletionRanges.begin(); it != checkCompletionRanges.end(); ++it) {
-        KTextEditor::CodeCompletionModel *model = *it;
+    for (auto model : checkCompletionRanges) {
         if (!m_completionRanges.contains(model)) {
             continue;
         }
@@ -802,9 +806,14 @@ void KateCompletionWidget::cursorPositionChanged()
                 m_presentationModel->removeCompletionModel(model);
             }
         } else {
-            m_presentationModel->setCurrentCompletion(model, currentCompletion);
+            filterStringByModel[model] = currentCompletion;
         }
     }
+
+    connect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
+    connect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
+
+    m_presentationModel->setCurrentCompletion(filterStringByModel);
 
     if (oldCurrentSourceIndex.isValid()) {
         QModelIndex idx = m_presentationModel->mapFromSource(oldCurrentSourceIndex);
@@ -1445,15 +1454,6 @@ void KateCompletionWidget::insertText(const KTextEditor::Cursor &position, const
         m_automaticInvocationTimer->stop();
         return;
     }
-
-    // TODO: Following is disabled because it causes some tests to fail, check
-    // and fix the tests / remove this
-
-    // We are triggering automaticInvocation()
-    // insertText tiggeres cursorPositionChanged()
-    // which will trigger modelContentChanged() indirectly. So we disconnect here
-    //     disconnect(this->model(), &KateCompletionModel::layoutChanged, this, &KateCompletionWidget::modelContentChanged);
-    //     disconnect(this->model(), &KateCompletionModel::modelReset, this, &KateCompletionWidget::modelContentChanged);
 
     m_automaticInvocationTimer->start(m_automaticInvocationDelay);
 }

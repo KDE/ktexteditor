@@ -59,7 +59,7 @@ public:
     KateCompletionWidget *widget() const;
 
     QString currentCompletion(KTextEditor::CodeCompletionModel *model) const;
-    void setCurrentCompletion(KTextEditor::CodeCompletionModel *model, const QString &completion);
+    void setCurrentCompletion(QMap<KTextEditor::CodeCompletionModel *, QString> currentMatch);
 
     int translateColumn(int sourceColumn) const;
 
