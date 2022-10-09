@@ -93,9 +93,6 @@ public:
     /// Maps from an index in a source-model to the index of the item in this display-model
     virtual QModelIndex mapFromSource(const QModelIndex &sourceIndex) const;
 
-    // Grouping
-    bool isGroupingEnabled() const;
-
     enum gm { ScopeType = 0x1, Scope = 0x2, AccessType = 0x4, ItemType = 0x8 };
 
     enum { // An own property that will be used to mark the best-matches group internally
@@ -109,20 +106,9 @@ public:
     static const int ItemTypeMask = 0xfe0;
 
     GroupingMethods groupingMethod() const;
-    void setGroupingMethod(GroupingMethods m);
-
-    bool accessIncludeConst() const;
-    void setAccessIncludeConst(bool include);
-    bool accessIncludeStatic() const;
-    void setAccessIncludeStatic(bool include);
-    bool accessIncludeSignalSlot() const;
-    void setAccessIncludeSignalSlot(bool include);
 
     // Column merging
     bool isColumnMergingEnabled() const;
-
-    const QList<QList<int>> &columnMerges() const;
-    void setColumnMerges(const QList<QList<int>> &columnMerges);
 
     void debugStats();
 
@@ -138,10 +124,6 @@ Q_SIGNALS:
     void expandIndex(const QModelIndex &index);
     // Emitted whenever something has changed about the group of argument-hints
     void argumentHintsChanged();
-
-public Q_SLOTS:
-    void setGroupingEnabled(bool enable);
-    void setColumnMergingEnabled(bool enable);
 
 private Q_SLOTS:
     void slotRowsInserted(const QModelIndex &parent, int start, int end);
@@ -323,12 +305,11 @@ private:
     QHash<QString, Group *> m_customGroupHash;
 
     // Grouping
-    bool m_groupingEnabled = false;
+    bool m_groupingEnabled = true;
     GroupingMethods m_groupingMethod;
-    bool m_accessConst = false, m_accessStatic = false, m_accesSignalSlot = false;
 
     // Column merging
-    bool m_columnMergingEnabled = false /*, m_haveExactMatch*/;
+    bool m_columnMergingEnabled = true;
 
     friend class CompletionTest;
 };

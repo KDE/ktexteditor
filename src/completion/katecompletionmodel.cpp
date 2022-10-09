@@ -148,21 +148,15 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     m_groupHash.insert(-1, m_argumentHints);
     m_groupHash.insert(BestMatchesProperty, m_argumentHints);
 
-    setGroupingEnabled(true);
-    setGroupingMethod(KateCompletionModel::ScopeType | KateCompletionModel::AccessType);
-
-    setAccessIncludeConst(false);
-    setAccessIncludeStatic(false);
-    setAccessIncludeSignalSlot(false);
-
-    // Column merging
-    setColumnMergingEnabled(true);
+    m_groupingMethod = KateCompletionModel::ScopeType | KateCompletionModel::AccessType;
 
     QList<QList<int>> mergedColumns;
     mergedColumns << (QList<int>() << 0);
     mergedColumns << (QList<int>() << 1 << 2 << 3 << 4);
     mergedColumns << (QList<int>() << 5);
-    setColumnMerges(mergedColumns);
+    m_columnMerges = mergedColumns;
+
+    createGroups();
 }
 
 KateCompletionModel::~KateCompletionModel()
@@ -766,14 +760,6 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
             at = QStringLiteral("Private");
         }
 
-        if (accessIncludeStatic() && attribute & KTextEditor::CodeCompletionModel::Static) {
-            at.append(QLatin1String(" Static"));
-        }
-
-        if (accessIncludeConst() && attribute & KTextEditor::CodeCompletionModel::Const) {
-            at.append(QLatin1String(" Const"));
-        }
-
         if (!at.isEmpty()) {
             if (!title.isEmpty()) {
                 title.append(QLatin1String(", "));
@@ -1230,38 +1216,9 @@ bool KateCompletionModel::hasCompletionModel() const
     return !m_completionModels.isEmpty();
 }
 
-void KateCompletionModel::setGroupingEnabled(bool enable)
-{
-    m_groupingEnabled = enable;
-}
-
-void KateCompletionModel::setColumnMergingEnabled(bool enable)
-{
-    if (m_columnMergingEnabled != enable) {
-        m_columnMergingEnabled = enable;
-    }
-}
-
 bool KateCompletionModel::isColumnMergingEnabled() const
 {
     return m_columnMergingEnabled;
-}
-
-bool KateCompletionModel::isGroupingEnabled() const
-{
-    return m_groupingEnabled;
-}
-
-const QList<QList<int>> &KateCompletionModel::columnMerges() const
-{
-    return m_columnMerges;
-}
-
-void KateCompletionModel::setColumnMerges(const QList<QList<int>> &columnMerges)
-{
-    beginResetModel();
-    m_columnMerges = columnMerges;
-    endResetModel();
 }
 
 int KateCompletionModel::translateColumn(int sourceColumn) const
@@ -1325,14 +1282,6 @@ int KateCompletionModel::groupingAttributes(int attribute) const
         } else if (attribute & KTextEditor::CodeCompletionModel::Private) {
             ret |= KTextEditor::CodeCompletionModel::Private;
         }
-
-        if (accessIncludeStatic() && attribute & KTextEditor::CodeCompletionModel::Static) {
-            ret |= KTextEditor::CodeCompletionModel::Static;
-        }
-
-        if (accessIncludeConst() && attribute & KTextEditor::CodeCompletionModel::Const) {
-            ret |= KTextEditor::CodeCompletionModel::Const;
-        }
     }
 
     if (m_groupingMethod & ItemType) {
@@ -1362,61 +1311,6 @@ int KateCompletionModel::groupingAttributes(int attribute) const
     }
 
     return ret;
-}
-
-void KateCompletionModel::setGroupingMethod(GroupingMethods m)
-{
-    m_groupingMethod = m;
-
-    createGroups();
-}
-
-bool KateCompletionModel::accessIncludeConst() const
-{
-    return m_accessConst;
-}
-
-void KateCompletionModel::setAccessIncludeConst(bool include)
-{
-    if (m_accessConst != include) {
-        m_accessConst = include;
-
-        if (groupingMethod() & AccessType) {
-            createGroups();
-        }
-    }
-}
-
-bool KateCompletionModel::accessIncludeStatic() const
-{
-    return m_accessStatic;
-}
-
-void KateCompletionModel::setAccessIncludeStatic(bool include)
-{
-    if (m_accessStatic != include) {
-        m_accessStatic = include;
-
-        if (groupingMethod() & AccessType) {
-            createGroups();
-        }
-    }
-}
-
-bool KateCompletionModel::accessIncludeSignalSlot() const
-{
-    return m_accesSignalSlot;
-}
-
-void KateCompletionModel::setAccessIncludeSignalSlot(bool include)
-{
-    if (m_accesSignalSlot != include) {
-        m_accesSignalSlot = include;
-
-        if (groupingMethod() & AccessType) {
-            createGroups();
-        }
-    }
 }
 
 int KateCompletionModel::countBits(int value)
