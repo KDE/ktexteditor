@@ -1479,7 +1479,7 @@ static inline bool containsAtWordBeginning(const QString &word, const QString &t
 
 KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
 {
-    QString match = model->currentCompletion(m_sourceRow.first);
+    const QString match = model->currentCompletion(m_sourceRow.first);
 
     m_haveExactMatch = false;
 
