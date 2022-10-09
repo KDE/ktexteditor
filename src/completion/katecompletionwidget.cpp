@@ -38,9 +38,6 @@
 
 const bool hideAutomaticCompletionOnExactMatch = true;
 
-// If this is true, the completion-list is navigated up/down when 'tab' is pressed, instead of doing partial completion
-const bool shellLikeTabCompletion = false;
-
 #define CALLCI(WHAT, WHATELSE, WHAT2, model, FUNC)                                                                                                             \
     {                                                                                                                                                          \
         static KTextEditor::CodeCompletionModelControllerInterface defaultIf;                                                                                  \
@@ -282,9 +279,6 @@ KateCompletionModel *KateCompletionWidget::model()
 void KateCompletionWidget::rowsInserted(const QModelIndex &parent, int rowFrom, int rowEnd)
 {
     m_entryList->setAnimated(false);
-    if (!model()->isGroupingEnabled()) {
-        return;
-    }
 
     if (!parent.isValid()) {
         for (int i = rowFrom; i <= rowEnd; ++i) {
@@ -1374,7 +1368,7 @@ int KateCompletionWidget::automaticInvocationDelay() const
     return m_automaticInvocationDelay;
 }
 
-void KateCompletionWidget::setIgnoreBufferSignals(bool ignore)
+void KateCompletionWidget::setIgnoreBufferSignals(bool ignore) const
 {
     if (ignore) {
         disconnect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);

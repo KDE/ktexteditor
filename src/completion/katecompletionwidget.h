@@ -80,7 +80,7 @@ public:
     int automaticInvocationDelay() const;
     void setAutomaticInvocationDelay(int delay);
 
-    void setIgnoreBufferSignals(bool ignore);
+    void setIgnoreBufferSignals(bool ignore) const;
 
     bool m_ignoreBufferSignals = false;
 
