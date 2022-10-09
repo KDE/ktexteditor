@@ -8,10 +8,8 @@
 #include "katecompletionmodel.h"
 
 #include "kateargumenthintmodel.h"
-#include "katecompletiondelegate.h"
 #include "katecompletiontree.h"
 #include "katecompletionwidget.h"
-#include "kateconfig.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateview.h"
@@ -22,7 +20,6 @@
 
 #include <QApplication>
 #include <QMultiMap>
-#include <QTextEdit>
 #include <QTimer>
 #include <QVarLengthArray>
 
@@ -432,30 +429,6 @@ QModelIndex KateCompletionModel::index(int row, int column, const QModelIndex &p
     return createIndex(row, column, quintptr(0));
 }
 
-/*QModelIndex KateCompletionModel::sibling( int row, int column, const QModelIndex & index ) const
-{
-  if (row < 0 || column < 0 || column >= columnCount(QModelIndex()))
-    return QModelIndex();
-
-  if (!index.isValid()) {
-  }
-
-  if (Group* g = groupOfParent(index)) {
-    if (row >= g->filtered.count())
-      return QModelIndex();
-
-    return createIndex(row, column, g);
-  }
-
-  if (hasGroups())
-    return QModelIndex();
-
-  if (row >= m_ungrouped->filtered.count())
-    return QModelIndex();
-
-  return createIndex(row, column, m_ungrouped);
-}*/
-
 bool KateCompletionModel::hasIndex(int row, int column, const QModelIndex &parent) const
 {
     if (row < 0 || column < 0 || column >= columnCount(QModelIndex())) {
@@ -778,17 +751,6 @@ KateCompletionModel::Group *KateCompletionModel::groupForIndex(const QModelIndex
 
     return m_rowTable[index.row()];
 }
-
-/*QMap< int, QVariant > KateCompletionModel::itemData( const QModelIndex & index ) const
-{
-  if (!hasGroups() || groupOfParent(index)) {
-    QModelIndex index = mapToSource(index);
-    if (index.isValid())
-      return index.model()->itemData(index);
-  }
-
-  return QAbstractItemModel::itemData(index);
-}*/
 
 QModelIndex KateCompletionModel::parent(const QModelIndex &index) const
 {
