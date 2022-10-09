@@ -805,12 +805,6 @@ int KateCompletionModel::rowCount(const QModelIndex &parent) const
     return g->filtered.size();
 }
 
-void KateCompletionModel::sort(int column, Qt::SortOrder order)
-{
-    Q_UNUSED(column)
-    Q_UNUSED(order)
-}
-
 QModelIndex KateCompletionModel::mapToSource(const QModelIndex &proxyIndex) const
 {
     if (!proxyIndex.isValid()) {

@@ -83,10 +83,6 @@ public:
     QModelIndex parent(const QModelIndex &index) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    // Disabled in case of bugs, reenable once fully debugged.
-    // virtual QModelIndex sibling ( int row, int column, const QModelIndex & index ) const;
-    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
-
     /// Maps from this display-model into the appropriate source code-completion model
     virtual QModelIndex mapToSource(const QModelIndex &proxyIndex) const;
 
@@ -149,10 +145,6 @@ private:
         bool isValid() const;
         // Returns true if the item is not filtered and matches the current completion string
         bool isVisible() const;
-        // Returns whether the item is filtered or not
-        bool isFiltered() const;
-        // Returns whether the item matches the current completion string
-        bool isMatching() const;
 
         enum MatchType { NoMatch = 0, PerfectMatch, StartsWithMatch, AbbreviationMatch, ContainsMatch };
         MatchType match();
@@ -181,7 +173,7 @@ private:
         KateCompletionModel *model;
         ModelRow m_sourceRow;
 
-        mutable QString m_nameColumn;
+        QString m_nameColumn;
 
         int inheritanceDepth;
 
@@ -263,7 +255,7 @@ private:
     enum changeTypes { Broaden, Narrow, Change };
 
     // Returns whether the model needs to be reset
-    void changeCompletions(Group *g, changeTypes changeType, bool notifyModel);
+    void changeCompletions(Group *g);
 
     bool hasCompletionModel() const;
 
