@@ -571,7 +571,9 @@ void KateCompletionModel::createGroups()
     // since notifyModel = false above, we just appended the data as is,
     // we sort it now
     for (auto g : groups) {
-        std::sort(g->prefilter.begin(), g->prefilter.end());
+        // no need to sort prefiltered, it is just the raw dump of everything
+        // filtered is what gets displayed
+        //         std::sort(g->prefilter.begin(), g->prefilter.end());
         std::sort(g->filtered.begin(), g->filtered.end());
     }
 
