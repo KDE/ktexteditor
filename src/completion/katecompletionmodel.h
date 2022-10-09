@@ -305,7 +305,6 @@ private:
     QHash<QString, Group *> m_customGroupHash;
 
     // Grouping
-    bool m_groupingEnabled = true;
     GroupingMethods m_groupingMethod;
 
     // Column merging

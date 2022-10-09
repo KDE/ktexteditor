@@ -812,7 +812,7 @@ bool KateCompletionModel::hasGroups() const
     // be populated with a delay from within a background-thread.
     // Proper solution: Ask all attached code-models(Through a new interface) whether they want to use grouping,
     // and if at least one wants to, return true, else return false.
-    return m_groupingEnabled && m_hasGroups;
+    return m_hasGroups;
 }
 
 KateCompletionModel::Group *KateCompletionModel::groupForIndex(const QModelIndex &index) const
