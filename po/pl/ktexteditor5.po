@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-07 00:41+0000\n"
-"PO-Revision-Date: 2022-09-28 20:46+0200\n"
+"PO-Revision-Date: 2022-10-09 11:39+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -2942,7 +2942,7 @@ msgstr "Wybierz treść znacznika HTML/XML do zewnątrz"
 #, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "Włącz/wyłącz komentarze"
+msgstr "Przełącz komentarz"
 
 #: script/data/commands/emmet.js:34
 #, kde-format
@@ -6701,7 +6701,7 @@ msgstr ""
 #: view/kateview.cpp:553
 #, kde-format
 msgid "Toggle Comment"
-msgstr "Włącz/wyłącz komentarze"
+msgstr "Przełącz komentarz"
 
 #: view/kateview.cpp:557
 #, kde-format
