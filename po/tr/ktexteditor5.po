@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2022-09-26 22:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -28,51 +28,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 22.08.1\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Argüman ipuçları"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "En uygun eşleşen"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Ad alanları"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Sınıflar"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Yapılar"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Birleşimler"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "İşlevler"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Değişkenler"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Sayımlar"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5872,6 +5836,11 @@ msgstr "<değer>"
 msgid "Insert variable"
 msgstr "Değişken ekle"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Değişkenler"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8133,6 +8102,24 @@ msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Ad alanları"
+
+#~ msgid "Classes"
+#~ msgstr "Sınıflar"
+
+#~ msgid "Structs"
+#~ msgstr "Yapılar"
+
+#~ msgid "Unions"
+#~ msgstr "Birleşimler"
+
+#~ msgid "Functions"
+#~ msgstr "İşlevler"
+
+#~ msgid "Enumerations"
+#~ msgstr "Sayımlar"
 
 #~ msgid "Preview:"
 #~ msgstr "Önizleme:"

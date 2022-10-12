@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2009-01-19 13:14+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <maithili.sf.net>\n"
@@ -24,51 +24,15 @@ msgstr ""
 "\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "आर्गुमेंट-हिंट्स"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "सर्वोत्तम मिलान"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "नेम-स्पेसेज़"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "वर्ग"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "सट्रक्ट"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "संघ"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "प्रकार्यसभ"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "चर"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "एनुमरेशन"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5799,6 +5763,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "परिवर्तनीय"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "चर"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "Filtering"
@@ -8057,6 +8026,24 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "मार्क टाइप %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "नेम-स्पेसेज़"
+
+#~ msgid "Classes"
+#~ msgstr "वर्ग"
+
+#~ msgid "Structs"
+#~ msgstr "सट्रक्ट"
+
+#~ msgid "Unions"
+#~ msgstr "संघ"
+
+#~ msgid "Functions"
+#~ msgstr "प्रकार्यसभ"
+
+#~ msgid "Enumerations"
+#~ msgstr "एनुमरेशन"
 
 #, fuzzy
 #~| msgctxt "@item:intable Text context"

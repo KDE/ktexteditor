@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2021-04-20 01:49+0200\n"
 "Last-Translator: enolp <enolp@softastur.org>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -17,50 +17,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.03.90\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
 msgstr ""
 
 #: completion/katekeywordcompletion.cpp:143
@@ -5396,6 +5360,11 @@ msgstr ""
 #: utils/katevariableexpansionhelpers.cpp:213
 #, kde-format
 msgid "Insert variable"
+msgstr ""
+
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
 msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:221

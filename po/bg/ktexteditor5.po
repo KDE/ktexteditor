@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2022-09-26 19:00+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -19,51 +19,15 @@ msgstr ""
 "X-Generator: Lokalize 22.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Аргумент-подсказки"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Най-добри съвпадения"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Области с имена"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Класове"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Структури"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Обединения"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Функции"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Променливи"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Изброявания"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5888,6 +5852,11 @@ msgstr "<стойност>"
 msgid "Insert variable"
 msgstr "Вмъкване на променлива"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Променливи"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8149,6 +8118,24 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Области с имена"
+
+#~ msgid "Classes"
+#~ msgstr "Класове"
+
+#~ msgid "Structs"
+#~ msgstr "Структури"
+
+#~ msgid "Unions"
+#~ msgstr "Обединения"
+
+#~ msgid "Functions"
+#~ msgstr "Функции"
+
+#~ msgid "Enumerations"
+#~ msgstr "Изброявания"
 
 #~ msgid "Preview:"
 #~ msgstr "Преглед:"

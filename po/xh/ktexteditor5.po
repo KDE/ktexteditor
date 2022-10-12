@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -23,51 +23,15 @@ msgstr ""
 "X-Generator: KBabel 1.0beta2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr ""
-
-#: completion/katecompletionmodel.cpp:772
-#, fuzzy, kde-format
-msgid "Namespaces"
-msgstr "Isiganeko sokwalo Sekhowudi"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:776
-#, fuzzy, kde-format
-msgid "Structs"
-msgstr "Ezimfutshane"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:780
-#, fuzzy, kde-format
-msgid "Functions"
-msgstr "Umsebenzi"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, fuzzy, kde-format
-msgid "Variables"
-msgstr "Umahluko"
-
-#: completion/katecompletionmodel.cpp:784
-#, fuzzy, kde-format
-msgid "Enumerations"
-msgstr "Ulwimi"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5641,6 +5605,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "&Yenza amathanda"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, fuzzy, kde-format
+msgid "Variables"
+msgstr "Umahluko"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "String"
@@ -7881,6 +7850,22 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Phawula Uhlobo %1"
+
+#, fuzzy
+#~ msgid "Namespaces"
+#~ msgstr "Isiganeko sokwalo Sekhowudi"
+
+#, fuzzy
+#~ msgid "Structs"
+#~ msgstr "Ezimfutshane"
+
+#, fuzzy
+#~ msgid "Functions"
+#~ msgstr "Umsebenzi"
+
+#, fuzzy
+#~ msgid "Enumerations"
+#~ msgstr "Ulwimi"
 
 #, fuzzy
 #~| msgid "Comment"

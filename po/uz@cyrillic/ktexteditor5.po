@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2006-10-01 21:04+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -17,51 +17,15 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr ""
-
-#: completion/katecompletionmodel.cpp:772
-#, fuzzy, kde-format
-msgid "Namespaces"
-msgstr "Бўш жойлар сони:"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:776
-#, fuzzy, kde-format
-msgid "Structs"
-msgstr "Тугмалар бирикмаси"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, fuzzy, kde-format
-msgid "Variables"
-msgstr "Ў&згарувчилар:"
-
-#: completion/katecompletionmodel.cpp:784
-#, fuzzy, kde-format
-msgid "Enumerations"
-msgstr "Мослаш"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5633,6 +5597,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "Ўрна&тиш"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, fuzzy, kde-format
+msgid "Variables"
+msgstr "Ў&згарувчилар:"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "Editing"
@@ -7824,6 +7793,18 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr " Сатр: %1"
+
+#, fuzzy
+#~ msgid "Namespaces"
+#~ msgstr "Бўш жойлар сони:"
+
+#, fuzzy
+#~ msgid "Structs"
+#~ msgstr "Тугмалар бирикмаси"
+
+#, fuzzy
+#~ msgid "Enumerations"
+#~ msgstr "Мослаш"
 
 #, fuzzy
 #~| msgid "Comment"

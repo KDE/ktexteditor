@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2022-09-10 14:04+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -25,51 +25,15 @@ msgstr ""
 "X-Generator: Lokalize 22.08.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Argumentuen iradokizuna"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Egokien datozenak"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Izen-lekuak"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Klaseak"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Egiturak"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Bilketak"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Funtzioak"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Aldagaiak"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Zenbakikuntzak"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -6023,6 +5987,11 @@ msgstr "<balioa>"
 msgid "Insert variable"
 msgstr "Txertatu aldagaia"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Aldagaiak"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8329,6 +8298,24 @@ msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Izen-lekuak"
+
+#~ msgid "Classes"
+#~ msgstr "Klaseak"
+
+#~ msgid "Structs"
+#~ msgstr "Egiturak"
+
+#~ msgid "Unions"
+#~ msgstr "Bilketak"
+
+#~ msgid "Functions"
+#~ msgstr "Funtzioak"
+
+#~ msgid "Enumerations"
+#~ msgstr "Zenbakikuntzak"
 
 #~ msgctxt "Script command name"
 #~ msgid "Expand abbreviation"

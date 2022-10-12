@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -20,51 +20,15 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "인자-힌트"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "가장 좋은 일치"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "네임스페이스"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "클래스"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "구조체"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "공용체"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "함수"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "변수"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "열거형"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5804,6 +5768,11 @@ msgstr "<값>"
 msgid "Insert variable"
 msgstr "값 삽입"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "변수"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8027,6 +7996,24 @@ msgstr "'%1' %2,  16진수 %3,  8진수 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "표시가 설정되지 않음: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "네임스페이스"
+
+#~ msgid "Classes"
+#~ msgstr "클래스"
+
+#~ msgid "Structs"
+#~ msgstr "구조체"
+
+#~ msgid "Unions"
+#~ msgstr "공용체"
+
+#~ msgid "Functions"
+#~ msgstr "함수"
+
+#~ msgid "Enumerations"
+#~ msgstr "열거형"
 
 #~ msgid "Preview:"
 #~ msgstr "미리 보기:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -17,51 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "ئۆزگەرگۈچى مىقدار ئەسكەرتىشى"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "ئەڭ ياخشى ماسلىشىشلار"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "ئات بوشلۇقى"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "تىپلار"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "قۇرۇلمىلار"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "بىرلەشمىلەر"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "فۇنكسىيىلەر"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "ئۆزگەرگۈچىلەر"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "ساناقلار"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5859,6 +5823,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "جەدۋەل بەلگىسى قىستۇر"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "ئۆزگەرگۈچىلەر"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "Filtering"
@@ -8135,6 +8104,24 @@ msgstr "'%1' %2،  ئون ئالتىلىك %3،  سەككىزلىك %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "بەلگە تەڭشەلمىدى: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "ئات بوشلۇقى"
+
+#~ msgid "Classes"
+#~ msgstr "تىپلار"
+
+#~ msgid "Structs"
+#~ msgstr "قۇرۇلمىلار"
+
+#~ msgid "Unions"
+#~ msgstr "بىرلەشمىلەر"
+
+#~ msgid "Functions"
+#~ msgstr "فۇنكسىيىلەر"
+
+#~ msgid "Enumerations"
+#~ msgstr "ساناقلار"
 
 #, fuzzy
 #~| msgid "Toggle Comment"

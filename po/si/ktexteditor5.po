@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -17,51 +17,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "විස්තාරක-ඉඟිය"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "හොඳම ගැළපුම්"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "නාම ඉඩ"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "පන්ති"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Structs"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "සංගම"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "ක්‍රියා"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "විචල්‍ය"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "ප්‍රගණන"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5974,6 +5938,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "ටැබ් ඇතුල් කරන්න"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "විචල්‍ය"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "Filtering"
@@ -8226,6 +8195,24 @@ msgstr "'%1' %2,  16 පාදයේ %3,  8 පාදයේ %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "නොයෙදූ ලකුණ: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "නාම ඉඩ"
+
+#~ msgid "Classes"
+#~ msgstr "පන්ති"
+
+#~ msgid "Structs"
+#~ msgstr "Structs"
+
+#~ msgid "Unions"
+#~ msgstr "සංගම"
+
+#~ msgid "Functions"
+#~ msgstr "ක්‍රියා"
+
+#~ msgid "Enumerations"
+#~ msgstr "ප්‍රගණන"
 
 #, fuzzy
 #~| msgid "Toggle Comment"

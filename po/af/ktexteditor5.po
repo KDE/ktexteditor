@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -15,51 +15,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr ""
-
-#: completion/katecompletionmodel.cpp:772
-#, fuzzy, kde-format
-msgid "Namespaces"
-msgstr "Hoeveelheid spasies:"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:776
-#, fuzzy, kde-format
-msgid "Structs"
-msgstr "Kortpaaie"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:780
-#, fuzzy, kde-format
-msgid "Functions"
-msgstr "Funksie"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, fuzzy, kde-format
-msgid "Variables"
-msgstr "Veranderlikes:"
-
-#: completion/katecompletionmodel.cpp:784
-#, fuzzy, kde-format
-msgid "Enumerations"
-msgstr "Konfigurasie"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5991,6 +5955,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "Inkeep"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, fuzzy, kde-format
+msgid "Variables"
+msgstr "Veranderlikes:"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "String"
@@ -8307,6 +8276,22 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Merk Tipe %1"
+
+#, fuzzy
+#~ msgid "Namespaces"
+#~ msgstr "Hoeveelheid spasies:"
+
+#, fuzzy
+#~ msgid "Structs"
+#~ msgstr "Kortpaaie"
+
+#, fuzzy
+#~ msgid "Functions"
+#~ msgstr "Funksie"
+
+#, fuzzy
+#~ msgid "Enumerations"
+#~ msgstr "Konfigurasie"
 
 #, fuzzy
 #~| msgid "Comment"

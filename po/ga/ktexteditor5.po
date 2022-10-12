@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -18,51 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
 "3 : 4\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Leideanna argóintí"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Torthaí is comhoiriúnaí"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Ainmspásanna"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Aicmí"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Struchtúir"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Aontas"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Feidhmeanna"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Athróga"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Cineál Ináirithe"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5644,6 +5608,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "Ionsáigh Táb"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Athróga"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "Filtering"
@@ -7840,6 +7809,24 @@ msgstr "'%1' %2,  Heics %3,  Ocht %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marc gan socrú: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Ainmspásanna"
+
+#~ msgid "Classes"
+#~ msgstr "Aicmí"
+
+#~ msgid "Structs"
+#~ msgstr "Struchtúir"
+
+#~ msgid "Unions"
+#~ msgstr "Aontas"
+
+#~ msgid "Functions"
+#~ msgstr "Feidhmeanna"
+
+#~ msgid "Enumerations"
+#~ msgstr "Cineál Ináirithe"
 
 #, fuzzy
 #~| msgid "Toggle comment"

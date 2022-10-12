@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -24,51 +24,15 @@ msgstr ""
 "X-Generator: Lokalize 20.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Argumendivihjed"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Parim sobivus"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Nimeruumid"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Klassid"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Struktuurid"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Ühendid"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Funktsioonid"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Muutujad"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Loendid"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5954,6 +5918,11 @@ msgstr "<väärtus>"
 msgid "Insert variable"
 msgstr "Lisa muutuja"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Muutujad"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8234,6 +8203,24 @@ msgstr "'%1' %2,  16nd %3,  8nd %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Märk pole määratud: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Nimeruumid"
+
+#~ msgid "Classes"
+#~ msgstr "Klassid"
+
+#~ msgid "Structs"
+#~ msgstr "Struktuurid"
+
+#~ msgid "Unions"
+#~ msgstr "Ühendid"
+
+#~ msgid "Functions"
+#~ msgstr "Funktsioonid"
+
+#~ msgid "Enumerations"
+#~ msgstr "Loendid"
 
 #~ msgctxt "Script command name"
 #~ msgid "Expand abbreviation"

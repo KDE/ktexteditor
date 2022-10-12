@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -18,51 +18,15 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "X-Language: km-KH\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "ព័ត៌មាន​ជំនួយ​អាគុយម៉ង់"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "ការ​ផ្គូផ្គង​ល្អ​បំផុត"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "ចន្លោះ​ឈ្មោះ"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "ថ្នាក់"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "កំណត់​រចនាសម្ព័ន្ធ"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "ការរួបរួម"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "មុខងារ"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "អថេរ"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "ការ​រៀបរាប់"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5981,6 +5945,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "បញ្ចូល​ថេប"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "អថេរ"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "Filtering"
@@ -8274,6 +8243,24 @@ msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "ចន្លោះ​ឈ្មោះ"
+
+#~ msgid "Classes"
+#~ msgstr "ថ្នាក់"
+
+#~ msgid "Structs"
+#~ msgstr "កំណត់​រចនាសម្ព័ន្ធ"
+
+#~ msgid "Unions"
+#~ msgstr "ការរួបរួម"
+
+#~ msgid "Functions"
+#~ msgstr "មុខងារ"
+
+#~ msgid "Enumerations"
+#~ msgstr "ការ​រៀបរាប់"
 
 #, fuzzy
 #~| msgid "Expand abbreviation"

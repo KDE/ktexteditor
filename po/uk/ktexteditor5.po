@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2022-09-26 08:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -23,51 +23,15 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Підказки щодо параметрів"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Найкращі відповідники"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Простори імен"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Класи"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Структури"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Об’єднання"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Функції"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Змінні"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Нумерації"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5932,6 +5896,11 @@ msgstr "<значення>"
 msgid "Insert variable"
 msgstr "Вставити змінну"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Змінні"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8216,6 +8185,24 @@ msgstr "«%1» %2,  Шістн. %3,  Вісімк. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Позначку не встановлено: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Простори імен"
+
+#~ msgid "Classes"
+#~ msgstr "Класи"
+
+#~ msgid "Structs"
+#~ msgstr "Структури"
+
+#~ msgid "Unions"
+#~ msgstr "Об’єднання"
+
+#~ msgid "Functions"
+#~ msgstr "Функції"
+
+#~ msgid "Enumerations"
+#~ msgstr "Нумерації"
 
 #~ msgid "Preview:"
 #~ msgstr "Перегляд:"

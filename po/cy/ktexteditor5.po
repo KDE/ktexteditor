@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2003-11-12 14:22+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -21,51 +21,15 @@ msgstr ""
 "\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr ""
-
-#: completion/katecompletionmodel.cpp:772
-#, fuzzy, kde-format
-msgid "Namespaces"
-msgstr "Nifer o fylchau:"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:776
-#, fuzzy, kde-format
-msgid "Structs"
-msgstr "Byrlwybrau"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr ""
-
-#: completion/katecompletionmodel.cpp:780
-#, fuzzy, kde-format
-msgid "Functions"
-msgstr "Ffwythiant"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, fuzzy, kde-format
-msgid "Variables"
-msgstr "&Newidynnau :"
-
-#: completion/katecompletionmodel.cpp:784
-#, fuzzy, kde-format
-msgid "Enumerations"
-msgstr "Ffurfwedd"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5560,6 +5524,11 @@ msgstr ""
 msgid "Insert variable"
 msgstr "&Mewnoliad"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, fuzzy, kde-format
+msgid "Variables"
+msgstr "&Newidynnau :"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, fuzzy, kde-format
 #| msgid "String"
@@ -7731,6 +7700,22 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "Llinell: %1 "
+
+#, fuzzy
+#~ msgid "Namespaces"
+#~ msgstr "Nifer o fylchau:"
+
+#, fuzzy
+#~ msgid "Structs"
+#~ msgstr "Byrlwybrau"
+
+#, fuzzy
+#~ msgid "Functions"
+#~ msgstr "Ffwythiant"
+
+#, fuzzy
+#~ msgid "Enumerations"
+#~ msgstr "Ffurfwedd"
 
 #, fuzzy
 #~| msgid "Comment"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2022-08-30 17:32+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -23,51 +23,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.08.0\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Suggerimenti per gli argomenti"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Migliori corrispondenze"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Spazi di nomi"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Classi"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Strutture"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Unioni"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Funzioni"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Variabili"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Enumerazioni"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -5926,6 +5890,11 @@ msgstr "<valore>"
 msgid "Insert variable"
 msgstr "Inserisci variabile"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Variabili"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8221,6 +8190,24 @@ msgstr "«%1» %2, Esa %3, Ottale %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Segno non impostato: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Spazi di nomi"
+
+#~ msgid "Classes"
+#~ msgstr "Classi"
+
+#~ msgid "Structs"
+#~ msgstr "Strutture"
+
+#~ msgid "Unions"
+#~ msgstr "Unioni"
+
+#~ msgid "Functions"
+#~ msgstr "Funzioni"
+
+#~ msgid "Enumerations"
+#~ msgstr "Enumerazioni"
 
 #~ msgid "Preview:"
 #~ msgstr "Anteprima:"

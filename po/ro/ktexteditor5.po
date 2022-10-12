@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-07 00:41+0000\n"
+"POT-Creation-Date: 2022-10-12 00:43+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -20,51 +20,15 @@ msgstr ""
 "20)) ? 1 : 2;\n"
 "X-Generator: Lokalize 19.12.3\n"
 
-#: completion/katecompletionmodel.cpp:136
+#: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
 msgstr "Indicii argument"
 
-#: completion/katecompletionmodel.cpp:137
+#: completion/katecompletionmodel.cpp:134
 #, kde-format
 msgid "Best matches"
 msgstr "Cele mai bune potriviri"
-
-#: completion/katecompletionmodel.cpp:772
-#, kde-format
-msgid "Namespaces"
-msgstr "Domenii de nume"
-
-#: completion/katecompletionmodel.cpp:774
-#, kde-format
-msgid "Classes"
-msgstr "Clase"
-
-#: completion/katecompletionmodel.cpp:776
-#, kde-format
-msgid "Structs"
-msgstr "Structuri"
-
-#: completion/katecompletionmodel.cpp:778
-#, kde-format
-msgid "Unions"
-msgstr "Uniuni"
-
-#: completion/katecompletionmodel.cpp:780
-#, kde-format
-msgid "Functions"
-msgstr "Funcții"
-
-#: completion/katecompletionmodel.cpp:782
-#: utils/katevariableexpansionhelpers.cpp:217
-#, kde-format
-msgid "Variables"
-msgstr "Variabile"
-
-#: completion/katecompletionmodel.cpp:784
-#, kde-format
-msgid "Enumerations"
-msgstr "Enumerări"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -6039,6 +6003,11 @@ msgstr "<valoare>"
 msgid "Insert variable"
 msgstr "Inserează variabilă"
 
+#: utils/katevariableexpansionhelpers.cpp:217
+#, kde-format
+msgid "Variables"
+msgstr "Variabile"
+
 #: utils/katevariableexpansionhelpers.cpp:221
 #, kde-format
 msgid "Filter"
@@ -8330,6 +8299,24 @@ msgstr "'%1' %2,  Hexazecimal %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marcaj nestabilit: %1"
+
+#~ msgid "Namespaces"
+#~ msgstr "Domenii de nume"
+
+#~ msgid "Classes"
+#~ msgstr "Clase"
+
+#~ msgid "Structs"
+#~ msgstr "Structuri"
+
+#~ msgid "Unions"
+#~ msgstr "Uniuni"
+
+#~ msgid "Functions"
+#~ msgstr "Funcții"
+
+#~ msgid "Enumerations"
+#~ msgstr "Enumerări"
 
 #, fuzzy
 #~| msgid "Toggle Comment"
