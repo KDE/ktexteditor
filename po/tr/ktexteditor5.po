@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-12 00:43+0000\n"
-"PO-Revision-Date: 2022-09-26 22:18+0300\n"
+"PO-Revision-Date: 2022-10-13 00:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -520,13 +520,13 @@ msgid ""
 "be <i>visually wrapped</i> instead, according to the width of the view, "
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
-"<p>Mevcut satır <b>Sözcükleri kaydır:</b>seçeneğinde belirtilen sınırı "
-"aştığında otomatik olarak yeni bir satır başlat.</p><p>Bu seçenek mevcut "
+"<p>Geçerli satır, <b>Sözcükleri kaydır:</b>seçeneğinde belirtilen sınırı "
+"aştığında otomatik olarak yeni bir satır başlat.</p><p>Bu seçenek var olan "
 "satırları kaydırmayacaktır, bunun için <b>Araçlar</b> menüsünden <b>Statik "
 "Sözcük Kaydırmayı Uygula</b> seçeneğini seçin.</p><p>Eğer istediğiniz "
 "<i>görsel olarak kaydırılması</i> ise görünüm genişliğine bağlı olarak, "
-"yapılandırma sayfasında <b>Görünüm</b> altındaki <b>Dinamik Sözcük Kaydır</"
-"b> seçeneğini seçin.</p>"
+"yapılandırma sayfasında <b>Görünüm</b> altındaki <b>Devingen Sözcük "
+"Kaydırma</b> seçeneğini seçin.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:32
@@ -2112,7 +2112,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:438
 #, kde-format
 msgid "Line Height Multiplier:"
-msgstr "Satır Yüksekliği Çarpanı:"
+msgstr "Satır yüksekliği çarpanı:"
 
 #: document/katebuffer.cpp:150
 #, kde-format
@@ -8008,7 +8008,7 @@ msgstr "Düğme Eşlemleme"
 #: vimode/config/configwidget.ui:76
 #, kde-format
 msgid "Normal mode"
-msgstr "Normal kip"
+msgstr "Normal Kip"
 
 #. i18n: ectx: property (text), widget (QTableWidget, tblNormalModeMappings)
 #. i18n: ectx: property (text), widget (QTableWidget, tblInsertModeMappings)
@@ -8041,25 +8041,25 @@ msgstr "Özyinelemeli?"
 #: vimode/config/configwidget.ui:114
 #, kde-format
 msgid "Insert mode"
-msgstr "Ekleme kipi"
+msgstr "Ekleme Kipi"
 
 #. i18n: ectx: attribute (title), widget (QWidget, visualTab)
 #: vimode/config/configwidget.ui:152
 #, kde-format
 msgid "Visual mode"
-msgstr "Görsel kip"
+msgstr "Görsel Kip"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnRemoveSelectedRows)
 #: vimode/config/configwidget.ui:195
 #, kde-format
 msgid "Remove selected"
-msgstr "Seçiliyi kaldır"
+msgstr "Seçiliyi Kaldır"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnAddNewRow)
 #: vimode/config/configwidget.ui:202
 #, kde-format
 msgid "Add new mapping"
-msgstr "Yeni haritalama ekle"
+msgstr "Yeni Eşlem Ekle"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, btnImportNormal)
 #: vimode/config/configwidget.ui:209
@@ -8075,7 +8075,7 @@ msgstr ""
 #: vimode/config/configwidget.ui:212
 #, kde-format
 msgid "Import from vimrc file"
-msgstr "vimrc dosyasından içe aktar"
+msgstr "vimrc'den İçe Aktar"
 
 #: vimode/marks.cpp:111
 #, kde-format
