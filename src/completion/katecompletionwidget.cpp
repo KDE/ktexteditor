@@ -1478,3 +1478,48 @@ void KateCompletionWidget::userInvokedCompletion()
 {
     startCompletion(KTextEditor::CodeCompletionModel::UserInvocation);
 }
+
+void KateCompletionWidget::tab(bool shift)
+{
+    m_noAutoHide = true;
+    if (!m_entryList->currentIndex().isValid()) {
+        // No current selection. To not make the tab key a noop, select the first entry
+        cursorDown();
+        return;
+    }
+
+    if (!shift) {
+        QString prefix = m_presentationModel->commonPrefix((m_inCompletionList && !shellLikeTabCompletion) ? m_entryList->currentIndex() : QModelIndex());
+        if (!prefix.isEmpty()) {
+            view()->insertText(prefix);
+        } else if (shellLikeTabCompletion) {
+            cursorDown();
+            return;
+        }
+    } else {
+        if (shellLikeTabCompletion) {
+            cursorUp();
+            return;
+        }
+
+        // Reset left boundaries, so completion isn't stopped
+        typedef QMap<KTextEditor::CodeCompletionModel *, CompletionRange> CompletionRangeMap;
+        for (CompletionRangeMap::iterator it = m_completionRanges.begin(); it != m_completionRanges.end(); ++it) {
+            (*it).leftBoundary = (*it).range->start();
+        }
+
+        // Remove suffix until the completion-list filter is widened again
+        uint itemCount = m_presentationModel->filteredItemCount();
+
+        while (view()->cursorPosition().column() > 0 && m_presentationModel->filteredItemCount() == itemCount) {
+            KTextEditor::Range lastcharRange = KTextEditor::Range(view()->cursorPosition() - KTextEditor::Cursor(0, 1), view()->cursorPosition());
+            QString cursorText = view()->document()->text(lastcharRange);
+            if (!cursorText[0].isSpace()) {
+                view()->document()->removeText(lastcharRange);
+                QApplication::sendPostedEvents();
+            } else {
+                break;
+            }
+        }
+    }
+}
