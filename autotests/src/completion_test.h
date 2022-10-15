@@ -53,6 +53,7 @@ private Q_SLOTS:
     void testAsyncMatching();
     void testAbbreviationEngine();
     void testAutoCompletionPreselectFirst();
+    void testTabCompletion();
     void benchAbbreviationEngineNormalCase();
     void benchAbbreviationEngineWorstCase();
     void benchAbbreviationEngineGoodCase();

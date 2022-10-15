@@ -39,8 +39,11 @@ void KateConfig::addConfigEntry(ConfigEntry &&entry)
     // shall only be called for toplevel config
     Q_ASSERT(isGlobal());
 
-    // there shall be no gaps in the entries
+    // There shall be no gaps in the entries; i.e. in KateViewConfig constructor
+    // addConfigEntry() is called on each value from the ConfigEntryTypes enum in
+    // the same order as the enumrators.
     // we might later want to use a vector
+    // qDebug() << m_configEntries.size() << entry.enumKey;
     Q_ASSERT(m_configEntries.size() == static_cast<size_t>(entry.enumKey));
 
     // add new element
@@ -526,6 +529,7 @@ KateViewConfig::KateViewConfig()
     }));
     addConfigEntry(ConfigEntry(ScrollPastEnd, "Scroll Past End", QString(), false));
     addConfigEntry(ConfigEntry(SearchFlags, "Search/Replace Flags", QString(), IncFromCursor | PowerMatchCase | PowerModePlainText));
+    addConfigEntry(ConfigEntry(TabCompletion, "Enable Tab completion", QString(), false));
     addConfigEntry(ConfigEntry(ShowBracketMatchPreview, "Bracket Match Preview", QStringLiteral("bracket-match-preview"), false));
     addConfigEntry(ConfigEntry(ShowFoldingBar, "Folding Bar", QStringLiteral("folding-bar"), true));
     addConfigEntry(ConfigEntry(ShowFoldingPreview, "Folding Preview", QStringLiteral("folding-preview"), true));

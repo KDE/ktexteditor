@@ -1003,7 +1003,9 @@ public:
 
     /**
      * All known config keys
-     * Keep them sorted alphabetic for our convenience
+     * Keep them sorted alphabetically for our convenience.
+     * Keep the same order when adding config entries with addConfigEntry() in
+     * KateViewConfig::KateViewConfig() otherwise the code will assert.
      */
     enum ConfigEntryTypes {
         AllowMarkMenu,
@@ -1030,6 +1032,7 @@ public:
         ScrollBarMiniMapWidth,
         ScrollPastEnd,
         SearchFlags,
+        TabCompletion,
         ShowBracketMatchPreview,
         ShowFoldingBar,
         ShowFoldingPreview,
@@ -1266,6 +1269,11 @@ public:
     bool automaticCompletionPreselectFirst() const
     {
         return value(AutomaticCompletionPreselectFirst).toBool();
+    }
+
+    bool tabCompletion() const
+    {
+        return value(TabCompletion).toBool();
     }
 
     bool wordCompletion() const

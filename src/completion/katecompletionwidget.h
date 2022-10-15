@@ -67,7 +67,12 @@ public Q_SLOTS:
     void cursorUp();
 
 public:
-    void tab(bool shift);
+    enum Direction {
+        Down,
+        Up,
+    };
+
+    void tabCompletion(Direction direction = Down);
 
     void toggleDocumentation();
 

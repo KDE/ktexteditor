@@ -43,6 +43,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="chkTabCompletion">
+        <property name="text">
+         <string>Cycle through the list of completions using Tab / Shift+Tab</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

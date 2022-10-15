@@ -400,26 +400,67 @@ void CompletionTest::testAutoCompletionPreselectFirst()
 
     verifyCompletionAborted(m_view);
     QCOMPARE(m_doc->text(), "a\n");
+}
 
-    // When no completion entry is selected, tab key should select the first entry
-    m_doc->setText("a");
-    m_view->completionWidget()->automaticInvocation();
-    m_view->completionWidget()->tab(false);
-    m_view->completionWidget()->execute();
+void CompletionTest::testTabCompletion()
+{
+    new CodeCompletionTestModel(m_view, QStringLiteral("a"));
 
-    QVERIFY(!m_view->completionWidget()->isCompletionActive());
-    QCOMPARE(m_doc->text(), "aaa0");
+    m_view->config()->setValue(KateViewConfig::TabCompletion, true);
 
-    // Ensure that auto completion still works when AutomaticCompletionPreselectFirst is enabled (default)
+    // First entry already selected
     m_view->config()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, true);
+
+    // Nothing to do, already selected
     m_doc->setText("a");
     m_view->completionWidget()->automaticInvocation();
-
-    m_view->completionWidget()->tab(false); // tab should "auto-fill" completion
-    QCOMPARE(m_doc->text(), "aa");
+    QVERIFY(m_view->completionWidget()->isCompletionActive());
     m_view->completionWidget()->execute();
-    QCOMPARE(m_doc->text(), "aaa0");
     QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    QCOMPARE(m_doc->text(), "aaa0");
+
+    // First entry already selected, going down will select the next completion
+    m_doc->setText("a");
+    m_view->completionWidget()->automaticInvocation();
+    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    m_view->completionWidget()->tabCompletion(KateCompletionWidget::Down);
+    m_view->completionWidget()->execute();
+    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    QCOMPARE(m_doc->text(), "aad3");
+
+    // First entry _not_ already selected...
+    m_view->config()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, false);
+
+    m_doc->setText("a");
+    m_view->completionWidget()->automaticInvocation();
+    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    // ... Tab will select the first entry
+    m_view->completionWidget()->tabCompletion(KateCompletionWidget::Down);
+    m_view->completionWidget()->execute();
+    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    QCOMPARE(m_doc->text(), "aaa0");
+
+    // While at the top, going up, cycles to the bottom of the list
+    m_doc->setText("a");
+    m_view->completionWidget()->automaticInvocation();
+    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    m_view->completionWidget()->cursorDown(); // Select first entry
+    m_view->completionWidget()->tabCompletion(KateCompletionWidget::Up);
+    m_view->completionWidget()->execute();
+    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    QCOMPARE(m_doc->text(), "ac\u008738");
+
+    // While at the bottom, going down cycles to the top of the list
+    m_doc->setText("a");
+    m_view->completionWidget()->automaticInvocation();
+    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    m_view->completionWidget()->cursorDown(); // Select first entry
+    m_view->completionWidget()->tabCompletion(KateCompletionWidget::Up); // Go to bottom
+    // While at the bottom, Tab goes to the top of the list
+    m_view->completionWidget()->tabCompletion(KateCompletionWidget::Down);
+    m_view->completionWidget()->execute();
+    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    QCOMPARE(m_doc->text(), "aaa0");
 }
 
 void CompletionTest::benchAbbreviationEngineGoodCase()

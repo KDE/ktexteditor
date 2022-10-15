@@ -201,6 +201,16 @@ bool KateNormalInputMode::keyPress(QKeyEvent *e)
     const int key = e->key() | (e->modifiers() & Qt::ShiftModifier);
 
     if (view()->isCompletionActive()) {
+        if (key == Qt::Key_Tab || key == Qt::SHIFT + Qt::Key_Backtab || key == Qt::Key_Backtab) {
+            if (KateViewConfig::global()->tabCompletion()) {
+                e->accept();
+                using W = KateCompletionWidget;
+                const auto direction = key == Qt::Key_Tab ? W::Down : W::Up;
+                view()->completionWidget()->tabCompletion(direction);
+                return true;
+            }
+        }
+
         if (key == Qt::Key_Enter || key == Qt::Key_Return || key == Qt::Key_Tab) {
             if (view()->completionWidget()->execute()) {
                 e->accept();
