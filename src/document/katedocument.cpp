@@ -6002,7 +6002,9 @@ void KTextEditor::DocumentPrivate::slotCanceled()
         setReadWrite(m_readWriteStateBeforeLoading);
         delete m_loadingMessage;
 
-        showAndSetOpeningErrorAccess();
+        if (!m_openingError) {
+            showAndSetOpeningErrorAccess();
+        }
 
         updateDocName();
     }
