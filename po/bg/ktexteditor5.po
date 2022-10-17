@@ -8118,24 +8118,3 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "Области с имена"
-
-#~ msgid "Classes"
-#~ msgstr "Класове"
-
-#~ msgid "Structs"
-#~ msgstr "Структури"
-
-#~ msgid "Unions"
-#~ msgstr "Обединения"
-
-#~ msgid "Functions"
-#~ msgstr "Функции"
-
-#~ msgid "Enumerations"
-#~ msgstr "Изброявания"
-
-#~ msgid "Preview:"
-#~ msgstr "Преглед:"

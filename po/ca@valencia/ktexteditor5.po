@@ -1406,8 +1406,8 @@ msgid ""
 "Sets the number of lines to maintain visible above and below the cursor when "
 "possible."
 msgstr ""
-"Establix el nombre de línies que s'han de mantindre visibles per damunt i "
-"per davall del cursor, sempre que siga possible."
+"Establix el nombre de línies que es mantindran visibles per damunt i per "
+"davall del cursor, sempre que siga possible."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
@@ -1619,7 +1619,7 @@ msgid ""
 "This defines the standard encoding to use to open/save files, if not changed "
 "in the open/save dialog or by using a command line option."
 msgstr ""
-"Establix la codificació estàndard que s'ha d'utilitzar per a obrir/guardar "
+"Establix la codificació estàndard que s'utilitzarà per a obrir/guardar "
 "fitxers, si no s'ha canviat en el diàleg d'obrir/guardar o utilitzant una "
 "opció de la línia d'ordres."
 
@@ -3785,7 +3785,7 @@ msgstr "Bu&sca:"
 #: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
-msgstr "Text que cal buscar"
+msgstr "Text que s'ha de buscar"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findNext)
 #. i18n: ectx: property (toolTip), widget (QToolButton, next)
@@ -8204,24 +8204,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "Espais de nom"
-
-#~ msgid "Classes"
-#~ msgstr "Classes"
-
-#~ msgid "Structs"
-#~ msgstr "Estructures"
-
-#~ msgid "Unions"
-#~ msgstr "Unions"
-
-#~ msgid "Functions"
-#~ msgstr "Funcions"
-
-#~ msgid "Enumerations"
-#~ msgstr "Enumeracions"
-
-#~ msgid "Preview:"
-#~ msgstr "Vista prèvia:"
