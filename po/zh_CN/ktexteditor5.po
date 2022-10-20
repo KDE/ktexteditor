@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-12 00:43+0000\n"
-"PO-Revision-Date: 2022-10-02 15:49\n"
+"PO-Revision-Date: 2022-10-19 13:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -7792,24 +7792,3 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
-
-#~ msgid "Namespaces"
-#~ msgstr "命名空间"
-
-#~ msgid "Classes"
-#~ msgstr "类"
-
-#~ msgid "Structs"
-#~ msgstr "结构"
-
-#~ msgid "Unions"
-#~ msgstr "联合体"
-
-#~ msgid "Functions"
-#~ msgstr "函数"
-
-#~ msgid "Enumerations"
-#~ msgstr "枚举"
-
-#~ msgid "Preview:"
-#~ msgstr "预览："
