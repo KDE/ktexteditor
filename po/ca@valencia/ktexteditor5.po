@@ -5652,7 +5652,7 @@ msgstr "Scott Manson"
 #: utils/kateglobal.cpp:122
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
-msgstr "Implementació del ressaltat de la sintaxi XML a KWrite"
+msgstr "Implementació del ressaltat de la sintaxi XML en KWrite"
 
 #: utils/kateglobal.cpp:123
 #, kde-format
