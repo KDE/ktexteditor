@@ -1837,7 +1837,7 @@ msgstr "Dosya kodlamasını göster"
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr "Satır Sonu Türünü Göster"
+msgstr "Satır sonu türünü göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -8102,24 +8102,3 @@ msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "Ad alanları"
-
-#~ msgid "Classes"
-#~ msgstr "Sınıflar"
-
-#~ msgid "Structs"
-#~ msgstr "Yapılar"
-
-#~ msgid "Unions"
-#~ msgstr "Birleşimler"
-
-#~ msgid "Functions"
-#~ msgstr "İşlevler"
-
-#~ msgid "Enumerations"
-#~ msgstr "Sayımlar"
-
-#~ msgid "Preview:"
-#~ msgstr "Önizleme:"
