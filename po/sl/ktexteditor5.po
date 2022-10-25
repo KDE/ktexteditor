@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:43+0000\n"
+"POT-Creation-Date: 2022-10-25 00:43+0000\n"
 "PO-Revision-Date: 2022-09-27 19:07+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2158,12 +2158,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Znova naloži"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6525
 #, kde-format
 msgid "&Close"
 msgstr "Zapri"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6524
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6526
 #, kde-format
 msgid "Close message"
 msgstr "Zapri sporočilo"
@@ -2428,12 +2428,12 @@ msgstr ""
 msgid "Close Document"
 msgstr "Zapri dokument"
 
-#: document/katedocument.cpp:6026
+#: document/katedocument.cpp:6028
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datoteka <a href=\"%1\">%2</a> se še vedno nalaga."
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6033
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Prekini nalaganje"

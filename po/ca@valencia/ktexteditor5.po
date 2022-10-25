@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:43+0000\n"
+"POT-Creation-Date: 2022-10-25 00:43+0000\n"
 "PO-Revision-Date: 2022-09-26 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -409,7 +409,7 @@ msgstr "Mostra sempre"
 #: dialogs/clipboardhistorydialog.cpp:267
 #, kde-format
 msgid "Select text to paste."
-msgstr "Selecciona el text a apegar."
+msgstr "Selecciona el text que s'apegarà."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
@@ -447,7 +447,7 @@ msgstr "Compleció a&utomàtica de paraules"
 #: dialogs/completionconfigtab.ui:66
 #, kde-format
 msgid "Minimal word length to complete:"
-msgstr "Llargària mínima de la paraula a completar:"
+msgstr "Llargària mínima de la paraula que s'ha de completar:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:91
@@ -595,7 +595,7 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
-"Quan hi ha text seleccionat, s'afegiran estos caràcters a ambdós extrems de "
+"Quan hi ha text seleccionat, s'afegiran estos caràcters en ambdós extrems de "
 "manera pareixent a com ho fa «Parèntesis automàtics»"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
@@ -639,7 +639,8 @@ msgstr "Màx. d'entrades de l'historial del porta-retalls:"
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
-"Determina el nombre d'entrades a mantindre en l'historial del porta-retalls"
+"Determina el nombre d'entrades que s'han de mantindre en l'historial del "
+"porta-retalls"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -1597,7 +1598,7 @@ msgstr "s"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
-"Esta cadena està localitzada a «katedialogs.cpp» en el constructor de "
+"Esta cadena està localitzada en «katedialogs.cpp» en el constructor de "
 "KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
@@ -2187,12 +2188,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6525
 #, kde-format
 msgid "&Close"
 msgstr "Tan&ca"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6524
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6526
 #, kde-format
 msgid "Close message"
 msgstr "Tanca el missatge"
@@ -2456,12 +2457,12 @@ msgstr ""
 msgid "Close Document"
 msgstr "Tanca el document"
 
-#: document/katedocument.cpp:6026
+#: document/katedocument.cpp:6028
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "El fitxer <a href=\"%1\">%2</a> encara s'està carregant."
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6033
 #, kde-format
 msgid "&Abort Loading"
 msgstr "In&terromp la càrrega"
@@ -3960,8 +3961,9 @@ msgstr ""
 "coincidix amb cap entrada del diccionari actualment en ús. També pot ser una "
 "paraula d'un idioma estranger.</p>\n"
 "<p>Si la paraula no està mal escrita, podeu afegir-la al diccionari clicant "
-"a <b>Afig al diccionari</b>. Si no voleu afegir-la al diccionari, però voleu "
-"deixar-la sense canviar, cliqueu <b>Ignora</b> o <b>Ignora-ho tot</b>.</p>\n"
+"en <b>Afig al diccionari</b>. Si no voleu afegir-la al diccionari, però "
+"voleu deixar-la sense canviar, cliqueu <b>Ignora</b> o <b>Ignora-ho tot</b>."
+"</p>\n"
 "<p>En canvi, si la paraula està mal escrita, podeu intentar de trobar la "
 "substitució correcta en la llista a continuació. Si no hi trobeu una "
 "substitució, podeu escriure al quadro de text a continuació i clicar "
@@ -6356,8 +6358,8 @@ msgstr "Establix l'amplària de la tabulació."
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
-"Establix el nombre de passos a desfer que es poden recordar (0 equival a "
-"infinit)."
+"Establix el nombre de passos que es desfaran que es poden recordar (0 "
+"equival a infinit)."
 
 #: variableeditor/variablelineedit.cpp:334
 #, kde-format

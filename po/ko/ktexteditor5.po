@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:43+0000\n"
+"POT-Creation-Date: 2022-10-25 00:43+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2118,12 +2118,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "다시 시도"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6525
 #, kde-format
 msgid "&Close"
 msgstr "닫기(&C)"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6524
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6526
 #, kde-format
 msgid "Close message"
 msgstr "메시지 닫기"
@@ -2383,12 +2383,12 @@ msgstr ""
 msgid "Close Document"
 msgstr "문서 닫기"
 
-#: document/katedocument.cpp:6026
+#: document/katedocument.cpp:6028
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "파일 <a href=\"%1\">%2</a>을(를) 불러오고 있습니다."
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6033
 #, kde-format
 msgid "&Abort Loading"
 msgstr "불러오기 중단(&A)"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:43+0000\n"
+"POT-Creation-Date: 2022-10-25 00:43+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -2233,12 +2233,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mėginti vėl"
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6525
 #, kde-format
 msgid "&Close"
 msgstr "&Užverti"
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6524
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6526
 #, kde-format
 msgid "Close message"
 msgstr "Užverti žinutę"
@@ -2497,12 +2497,12 @@ msgstr ""
 msgid "Close Document"
 msgstr "Užverti dokumentą"
 
-#: document/katedocument.cpp:6026
+#: document/katedocument.cpp:6028
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Failas <a href=\"%1\">%2</a> vis dar įkeliamas."
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6033
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Nutraukti įkėlimą"

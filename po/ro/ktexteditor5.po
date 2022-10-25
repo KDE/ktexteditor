@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:43+0000\n"
+"POT-Creation-Date: 2022-10-25 00:43+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -2268,12 +2268,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2316 document/katedocument.cpp:6523
+#: document/katedocument.cpp:2316 document/katedocument.cpp:6525
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2317 document/katedocument.cpp:6524
+#: document/katedocument.cpp:2317 document/katedocument.cpp:6526
 #, kde-format
 msgid "Close message"
 msgstr ""
@@ -2552,12 +2552,12 @@ msgstr ""
 msgid "Close Document"
 msgstr "Închide documentul"
 
-#: document/katedocument.cpp:6026
+#: document/katedocument.cpp:6028
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Fișierul <a href=\"%1\">%2</a> încă se încarcă."
 
-#: document/katedocument.cpp:6031
+#: document/katedocument.cpp:6033
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Abandonează încărcarea"
