@@ -355,7 +355,7 @@ function tryCppComment(line)
 }
 
 /**
- * If the last non-empty line ends with a {, take its indentation level (or
+ * If the last non-empty line ends with a { or [, take its indentation level (or
  * maybe the one found by tryParenthesisBeforeBrace()) and return it increased
  * by 1 indetation level (special case: namespaces indentation depends on
  * cfgIndentNamespace). If not found, return null.
@@ -377,9 +377,12 @@ function tryBrace(line)
     var lastPos = document.lastColumn(currentLine);
     var indentation = -1;
 
-
     var currentString = document.line(currentLine);
     var matchColumn = currentString.search(/\{[^\}]*$/);
+    // line ends with [, e.g., array in js or dart
+    if (matchColumn == -1 && currentString.endsWith("[")) {
+        matchColumn = currentString.length - 1;
+    }
 
     if (matchColumn != -1 && document.isCode(currentLine, matchColumn)) {
         dbg("tryBrace: Closing bracket in line " + currentLine);
