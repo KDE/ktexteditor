@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-25 00:43+0000\n"
+"POT-Creation-Date: 2022-10-28 00:42+0000\n"
 "PO-Revision-Date: 2022-09-26 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -152,7 +152,7 @@ msgid "&Settings"
 msgstr "A&rranjament"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:174
+#: data/katepart5ui.rc:172
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
