@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:42+0000\n"
+"POT-Creation-Date: 2022-10-29 00:43+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -104,7 +104,7 @@ msgid "Word Wrap"
 msgstr "자동 줄 바꿈"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:729
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
 #, kde-format
 msgid "Borders"
 msgstr "경계선"
@@ -315,7 +315,7 @@ msgid "Minim&ap width:"
 msgstr "미니맵 너비(&A):"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:737
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Always On"
 msgstr "항상 켬"
@@ -402,8 +402,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:595
-#: dialogs/katedialogs.cpp:725 dialogs/katedialogs.cpp:1004
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
+#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -421,33 +421,39 @@ msgstr "자동 완성 활성화(&A)"
 msgid "Auto select &first completion entry"
 msgstr "자동으로 첫 번째 자동 완성 항목 선택(&F)"
 
+#. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
+#: dialogs/completionconfigtab.ui:49
+#, kde-format
+msgid "Cycle through the list of completions using Tab / Shift+Tab"
+msgstr ""
+
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
-#: dialogs/completionconfigtab.ui:52
+#: dialogs/completionconfigtab.ui:59
 #, fuzzy, kde-format
 #| msgid "A&uto Word Completion"
 msgid "A&uto word completion"
 msgstr "자동 단어 완성(&U)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:66
+#: dialogs/completionconfigtab.ui:73
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr "자동 완성할 최소 단어 길이:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:91
+#: dialogs/completionconfigtab.ui:98
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr "자동 완성 항목을 목록에서 선택했을 때 이전 단어의 뒷 부분 삭제"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:94
+#: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail on complete"
 msgstr "완료 시 뒷부분 삭제"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:108
 #, fuzzy, kde-format
 #| msgid ""
 #| "Keyword completion provides suggestions based on the keywords which exist "
@@ -457,13 +463,13 @@ msgid ""
 msgstr "키워드 완성은 문서에 존재하는 키워드를 기반으로 단어를 제안합니다."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:114
+#: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid "&Keyword completion"
 msgstr "키워드 완성(&K)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:123
+#: dialogs/completionconfigtab.ui:130
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -471,14 +477,14 @@ msgid ""
 msgstr "키워드 완성은 문서에 존재하는 키워드를 기반으로 단어를 제안합니다."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:136
+#: dialogs/completionconfigtab.ui:143
 #, fuzzy, kde-format
 #| msgid "Documentation with Completion"
 msgid "Documentation with completion"
 msgstr "자동 완성과 문서 같이 표시"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:145
+#: dialogs/completionconfigtab.ui:152
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1027,131 +1033,131 @@ msgstr[0] " 글자"
 msgid "Indentation"
 msgstr "들여쓰기"
 
-#: dialogs/katedialogs.cpp:287
+#: dialogs/katedialogs.cpp:290
 #, kde-format
 msgid "Auto Completion"
 msgstr "자동 완성"
 
-#: dialogs/katedialogs.cpp:354
+#: dialogs/katedialogs.cpp:357
 #, kde-format
 msgid "Spellcheck"
 msgstr "맞춤법 검사"
 
-#: dialogs/katedialogs.cpp:401 dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:402 dialogs/katedialogs.cpp:410
+#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:403
+#: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:405
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:469
+#: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
 msgstr "텍스트 탐색"
 
-#: dialogs/katedialogs.cpp:569
+#: dialogs/katedialogs.cpp:572
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
 msgstr[0] "글자"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, kde-format
 msgid "Feature is not active"
 msgstr "기능이 활성화되지 않았음"
 
-#: dialogs/katedialogs.cpp:576
+#: dialogs/katedialogs.cpp:579
 #, kde-format
 msgid "Disable Feature"
 msgstr "기능 비활성화"
 
-#: dialogs/katedialogs.cpp:578
+#: dialogs/katedialogs.cpp:581
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Markdown 형식을 편집할 때 편리할 수 있습니다"
 
-#: dialogs/katedialogs.cpp:580
+#: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr "글자 대칭, 자동 괄호와 비슷하게 작동함"
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:585
 #, kde-format
 msgid "Non letter character"
 msgstr "글자가 아닌 문자"
 
-#: dialogs/katedialogs.cpp:696
+#: dialogs/katedialogs.cpp:699
 #, kde-format
 msgid "Editing"
 msgstr "편집"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:704
 #, kde-format
 msgid "Editing Options"
 msgstr "편집 옵션"
 
-#: dialogs/katedialogs.cpp:733
+#: dialogs/katedialogs.cpp:736
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:735
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Off"
 msgstr "끔"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "줄 번호 따라가기"
 
-#: dialogs/katedialogs.cpp:930 dialogs/katedialogs.cpp:935
+#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
 #, kde-format
 msgid "Appearance"
 msgstr "모양"
 
-#: dialogs/katedialogs.cpp:968
+#: dialogs/katedialogs.cpp:971
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1162,120 +1168,120 @@ msgstr ""
 "면 시스템이 충돌했을 때 %1에서 작업 중인 내용을 복원할 수 있습니다. 스왑 파일"
 "을 비활성화하면 시스템 충돌 시 데이터 손실이 발생할 수 있습니다."
 
-#: dialogs/katedialogs.cpp:1005
+#: dialogs/katedialogs.cpp:1008
 #, kde-format
 msgid "Advanced"
 msgstr "고급"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "백업 파일의 접두사나 접미사가 없습니다. 기본 접미사 '~'를 사용합니다."
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "백업 파일 접두사나 접미사 없음"
 
-#: dialogs/katedialogs.cpp:1203
+#: dialogs/katedialogs.cpp:1206
 #, kde-format
 msgid "Open/Save"
 msgstr "열기/저장"
 
-#: dialogs/katedialogs.cpp:1208
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "파일 열기 및 저장"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1234
 #, kde-format
 msgid "&Line:"
 msgstr "줄(&L):"
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1235
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "클립보드의 줄 번호로 이동"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
 msgstr "이동"
 
-#: dialogs/katedialogs.cpp:1323
+#: dialogs/katedialogs.cpp:1326
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "클립보드에 줄 번호 없음"
 
-#: dialogs/katedialogs.cpp:1387
+#: dialogs/katedialogs.cpp:1390
 #, kde-format
 msgid "Dictionary:"
 msgstr "사전:"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "자동 새로 고침 사용하기"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "Will never again warn about on disk changes but always reload."
 msgstr "디스크의 변경 여부를 알리지 않고 항상 새로 고칩니다."
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "View &Difference"
 msgstr "차이 보기(&D)"
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1452
 #, kde-format
 msgid "Shows a diff of the changes"
 msgstr "변경 사항의 차이점 보기"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "&Reload"
 msgstr "새로 고침(&R)"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Reload the file from disk. Unsaved changes will be lost."
 msgstr "파일을 디스크에서 새로 고칩니다. 저장되지 않은 변경 사항은 무시됩니다."
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "파일 닫기(&C)"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Close the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
 msgstr "다른 이름으로 저장(&S)..."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "파일의 위치를 선택하고 다시 저장하도록 합니다."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "무시(&I)"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "추가 변경 없이 디스크의 변경 사항을 무시합니다."
 
-#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1284,18 +1290,18 @@ msgstr ""
 "diff 명령이 실패했습니다. diff(1)가 설치되어 있고 PATH에 포함되어 있는지 확인"
 "하십시오."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:95
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
 #: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "diff 생성 실패"
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "The files are identical."
 msgstr "파일이 같습니다."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 출력"

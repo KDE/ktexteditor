@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:42+0000\n"
+"POT-Creation-Date: 2022-10-29 00:43+0000\n"
 "PO-Revision-Date: 2014-01-31 20:37+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: bosanski <bs@li.org>\n"
@@ -113,7 +113,7 @@ msgid "Word Wrap"
 msgstr "Statičko prelamanje teksta"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:729
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
 #, kde-format
 msgid "Borders"
 msgstr "Ivice"
@@ -353,7 +353,7 @@ msgstr "Širina minimapiranja"
 
 # >> Wrap indicators
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:737
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Always On"
 msgstr "uvijek uključeni"
@@ -447,8 +447,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:595
-#: dialogs/katedialogs.cpp:725 dialogs/katedialogs.cpp:1004
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
+#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -466,48 +466,54 @@ msgstr "Omogući &automatsko kompletiranje"
 msgid "Auto select &first completion entry"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
+#: dialogs/completionconfigtab.ui:49
+#, kde-format
+msgid "Cycle through the list of completions using Tab / Shift+Tab"
+msgstr ""
+
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
-#: dialogs/completionconfigtab.ui:52
+#: dialogs/completionconfigtab.ui:59
 #, fuzzy, kde-format
 #| msgid "Auto Word Completion"
 msgid "A&uto word completion"
 msgstr "Samodopuna riječi"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:66
+#: dialogs/completionconfigtab.ui:73
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr "Najmanja dužina riječi za dopunu:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:91
+#: dialogs/completionconfigtab.ui:98
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
 "Ukloni trag prethodne riječi prilikom kompletiranja stavke izabrane iz liste"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:94
+#: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail on complete"
 msgstr "Ukloni kraj pri završetku"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:108
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:114
+#: dialogs/completionconfigtab.ui:121
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "&Keyword completion"
 msgstr "Dopuna riječi"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:123
+#: dialogs/completionconfigtab.ui:130
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -515,14 +521,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:136
+#: dialogs/completionconfigtab.ui:143
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Documentation with completion"
 msgstr "Samodopuna"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:145
+#: dialogs/completionconfigtab.ui:152
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1090,71 +1096,71 @@ msgstr[2] " znak"
 msgid "Indentation"
 msgstr "Uvlačenje"
 
-#: dialogs/katedialogs.cpp:287
+#: dialogs/katedialogs.cpp:290
 #, kde-format
 msgid "Auto Completion"
 msgstr "Samodopuna"
 
 # >> @title:tab
-#: dialogs/katedialogs.cpp:354
+#: dialogs/katedialogs.cpp:357
 #, kde-format
 msgid "Spellcheck"
 msgstr "Provjera pravopisa"
 
-#: dialogs/katedialogs.cpp:401 dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Alert"
 msgid "Alt"
 msgstr "upozorenje"
 
-#: dialogs/katedialogs.cpp:402 dialogs/katedialogs.cpp:410
+#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:403
+#: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:405
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "naredba"
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:469
+#: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
 msgstr "Navigacija Teksta"
 
-#: dialogs/katedialogs.cpp:569
+#: dialogs/katedialogs.cpp:572
 #, fuzzy, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
@@ -1163,45 +1169,45 @@ msgstr[0] " znak"
 msgstr[1] " znak"
 msgstr[2] " znak"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, kde-format
 msgid "Feature is not active"
 msgstr ""
 
 # >> @item:inlistbox
-#: dialogs/katedialogs.cpp:576
+#: dialogs/katedialogs.cpp:579
 #, fuzzy, kde-format
 #| msgid "Disabled Breakpoint"
 msgid "Disable Feature"
 msgstr "isključena prijelomna tačka"
 
-#: dialogs/katedialogs.cpp:578
+#: dialogs/katedialogs.cpp:581
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:580
+#: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:585
 #, fuzzy, kde-format
 #| msgid "Non-word character"
 msgid "Non letter character"
 msgstr "nije znak riječi"
 
-#: dialogs/katedialogs.cpp:696
+#: dialogs/katedialogs.cpp:699
 #, kde-format
 msgid "Editing"
 msgstr "Izmjena"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:704
 #, kde-format
 msgid "Editing Options"
 msgstr "Uređivačke opcije"
 
-#: dialogs/katedialogs.cpp:733
+#: dialogs/katedialogs.cpp:736
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
@@ -1209,22 +1215,22 @@ msgid "Statusbar"
 msgstr "Stata"
 
 # >> Wrap indicators
-#: dialogs/katedialogs.cpp:735
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Off"
 msgstr "isključeni"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Prati brojeve linija"
 
-#: dialogs/katedialogs.cpp:930 dialogs/katedialogs.cpp:935
+#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
 #, kde-format
 msgid "Appearance"
 msgstr "Izgled"
 
-#: dialogs/katedialogs.cpp:968
+#: dialogs/katedialogs.cpp:971
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1232,87 +1238,87 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1005
+#: dialogs/katedialogs.cpp:1008
 #, kde-format
 msgid "Advanced"
 msgstr "Napredno"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "Niste unijeli prefiks ili sufiks za ime rezerve. Koristim podrazumijevani: ~"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Nema sufiksa ili prefiksa rezerve"
 
-#: dialogs/katedialogs.cpp:1203
+#: dialogs/katedialogs.cpp:1206
 #, kde-format
 msgid "Open/Save"
 msgstr "Radnje s datotekom"
 
-#: dialogs/katedialogs.cpp:1208
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Otvaranje i upisivanje datoteka"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1234
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1235
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1323
+#: dialogs/katedialogs.cpp:1326
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1387
+#: dialogs/katedialogs.cpp:1390
 #, kde-format
 msgid "Dictionary:"
 msgstr "Rječnik:"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1443
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "Omogući &automatsko kompletiranje"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "Will never again warn about on disk changes but always reload."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "Prikaži &razliku"
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1452
 #, kde-format
 msgid "Shows a diff of the changes"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "&Učitaj ponovo"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
@@ -1321,43 +1327,43 @@ msgstr ""
 "Učitaj ponovo datoteku sa diska. Ako imate nesačuvanih izmjena, biće "
 "izgubljene."
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1463
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Zatvori"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Close the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1469
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "&Snimi datoteku kao..."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Možete izabrati lokaciju i ponovo sačuvati datoteku."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
 #, fuzzy, kde-format
 #| msgid "Ignore Word"
 msgid "&Ignore"
 msgstr "Ignoriši riječ"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignoriši izmjene. Nećete biti ponovo upitani."
 
-#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1366,18 +1372,18 @@ msgstr ""
 "Naredba <command>diff</command> nije uspjela. Uvjerite se da je <command "
 "section='1'>diff</command> instalirana i da se nalazi u putanji."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:95
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
 #: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Greška pri razlikovanju"
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "The files are identical."
 msgstr "Datoteke su identične."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "Diff Output"
 msgstr "Izlaz razlike"

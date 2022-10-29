@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:42+0000\n"
+"POT-Creation-Date: 2022-10-29 00:43+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -105,7 +105,7 @@ msgid "Word Wrap"
 msgstr "Szótördelés"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:729
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
 #, kde-format
 msgid "Borders"
 msgstr "Szegélyek"
@@ -326,7 +326,7 @@ msgid "Minim&ap width:"
 msgstr "Minitérké&p szélessége:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:737
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Always On"
 msgstr "mindig bekapcsolva"
@@ -419,8 +419,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:595
-#: dialogs/katedialogs.cpp:725 dialogs/katedialogs.cpp:1004
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
+#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -438,21 +438,27 @@ msgstr "&Automatikus kiegészítés bekapcsolása"
 msgid "Auto select &first completion entry"
 msgstr "&Első kiegészítési bejegyzés automatikus kiválasztása"
 
+#. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
+#: dialogs/completionconfigtab.ui:49
+#, kde-format
+msgid "Cycle through the list of completions using Tab / Shift+Tab"
+msgstr ""
+
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
-#: dialogs/completionconfigtab.ui:52
+#: dialogs/completionconfigtab.ui:59
 #, fuzzy, kde-format
 #| msgid "A&uto Word Completion"
 msgid "A&uto word completion"
 msgstr "A&utomatikus kiegészítés"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:66
+#: dialogs/completionconfigtab.ui:73
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr "Minimális szóhossz kiegészítéshez:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:91
+#: dialogs/completionconfigtab.ui:98
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
@@ -460,13 +466,13 @@ msgstr ""
 "kiválasztásara a listából"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:94
+#: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail on complete"
 msgstr "Vég eltávolítása kiegészítéskor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:108
 #, fuzzy, kde-format
 #| msgid ""
 #| "Keyword completion provides suggestions based on the keywords which exist "
@@ -478,13 +484,13 @@ msgstr ""
 "a javaslatokat."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:114
+#: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid "&Keyword completion"
 msgstr "&Kulcsszó-kiegészítés"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:123
+#: dialogs/completionconfigtab.ui:130
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -494,14 +500,14 @@ msgstr ""
 "a javaslatokat."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:136
+#: dialogs/completionconfigtab.ui:143
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Documentation with completion"
 msgstr "Automatikus kiegészítés"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:145
+#: dialogs/completionconfigtab.ui:152
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1062,70 +1068,70 @@ msgstr[1] " karakter"
 msgid "Indentation"
 msgstr "Behúzás"
 
-#: dialogs/katedialogs.cpp:287
+#: dialogs/katedialogs.cpp:290
 #, kde-format
 msgid "Auto Completion"
 msgstr "Automatikus kiegészítés"
 
-#: dialogs/katedialogs.cpp:354
+#: dialogs/katedialogs.cpp:357
 #, kde-format
 msgid "Spellcheck"
 msgstr "Helyesírás-ellenőrzés"
 
-#: dialogs/katedialogs.cpp:401 dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Alert"
 msgid "Alt"
 msgstr "Figyelmeztetés"
 
-#: dialogs/katedialogs.cpp:402 dialogs/katedialogs.cpp:410
+#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:403
+#: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:405
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "Parancs"
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:469
+#: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
 msgstr "Szöveg navigáció"
 
-#: dialogs/katedialogs.cpp:569
+#: dialogs/katedialogs.cpp:572
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
@@ -1133,65 +1139,65 @@ msgid_plural " characters"
 msgstr[0] " karakter"
 msgstr[1] " karakter"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, kde-format
 msgid "Feature is not active"
 msgstr "A funkció nincs bekapcsolva"
 
-#: dialogs/katedialogs.cpp:576
+#: dialogs/katedialogs.cpp:579
 #, kde-format
 msgid "Disable Feature"
 msgstr "Funkció kikapcsolása"
 
-#: dialogs/katedialogs.cpp:578
+#: dialogs/katedialogs.cpp:581
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Markdownnal praktikus lehet"
 
-#: dialogs/katedialogs.cpp:580
+#: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 "Karakterek tükrözése, hasonló, de nem ugyanaz, mint az automatikus zárójelek"
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:585
 #, kde-format
 msgid "Non letter character"
 msgstr "Nem betű karakter"
 
-#: dialogs/katedialogs.cpp:696
+#: dialogs/katedialogs.cpp:699
 #, kde-format
 msgid "Editing"
 msgstr "Szerkesztés"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:704
 #, kde-format
 msgid "Editing Options"
 msgstr "Szerkesztési beállítások"
 
-#: dialogs/katedialogs.cpp:733
+#: dialogs/katedialogs.cpp:736
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:735
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Off"
 msgstr "Ki"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "a sorszámok után"
 
-#: dialogs/katedialogs.cpp:930 dialogs/katedialogs.cpp:935
+#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
 #, kde-format
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#: dialogs/katedialogs.cpp:968
+#: dialogs/katedialogs.cpp:971
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1203,12 +1209,12 @@ msgstr ""
 "visszaállítását rendszerösszeomlás esetén. Az ideiglenes fájlok kikapcsolása "
 "adatvesztést okozhat."
 
-#: dialogs/katedialogs.cpp:1005
+#: dialogs/katedialogs.cpp:1008
 #, kde-format
 msgid "Advanced"
 msgstr "Speciális"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1216,111 +1222,111 @@ msgstr ""
 "Nincs megadva előtag vagy utótag a biztonsági mentéshez, az alapértelmezés "
 "(„~”) lesz érvényes"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Nincs előtag vagy utótag a biztonsági mentéshez"
 
-#: dialogs/katedialogs.cpp:1203
+#: dialogs/katedialogs.cpp:1206
 #, kde-format
 msgid "Open/Save"
 msgstr "Megnyitás/mentés"
 
-#: dialogs/katedialogs.cpp:1208
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Fájlok megnyitása, mentése"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1234
 #, kde-format
 msgid "&Line:"
 msgstr "&Sor:"
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1235
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Ugrás a vágólapon található sorszámra"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
 msgstr "Ugrás"
 
-#: dialogs/katedialogs.cpp:1323
+#: dialogs/katedialogs.cpp:1326
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Nem található érvényes sorszám a vágólapon"
 
-#: dialogs/katedialogs.cpp:1387
+#: dialogs/katedialogs.cpp:1390
 #, kde-format
 msgid "Dictionary:"
 msgstr "Szótár:"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Automatikus újratöltés bekapcsolása"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "Will never again warn about on disk changes but always reload."
 msgstr ""
 "Soha többé nem figyelmeztet a lemezen történt változtatásokra, hanem mindig "
 "újratölt."
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "View &Difference"
 msgstr "Az &eltérések megtekintése"
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1452
 #, kde-format
 msgid "Shows a diff of the changes"
 msgstr "Megjeleníti a változtatások különbségeit"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "&Reload"
 msgstr "Újr&atöltés"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Reload the file from disk. Unsaved changes will be lost."
 msgstr "A fájl újratöltése a lemezről. A nem mentett módosítások elvesznek."
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Fájl &bezárása"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Close the file, discarding its content."
 msgstr "A fájl bezárása, a tartalmának eldobásával."
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
 msgstr "Men&tés másként…"
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Lehetővé teszi a fájl elmentését más helyre."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Figyelmen kívül hagyás"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Mellőzi a lemezen történt változtatásokat."
 
-#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1329,18 +1335,18 @@ msgstr ""
 "A diff parancs végrehajtása nem sikerült. Ellenőrizze, hogy a diff(1) "
 "parancs telepítve van-e és szerepel-e az elérési útban."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:95
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
 #: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Hiba történt a diff-fájl létrehozásakor"
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "The files are identical."
 msgstr "A fájlok teljesen egyformák."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff kimenet"

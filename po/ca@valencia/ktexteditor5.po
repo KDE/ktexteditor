@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:42+0000\n"
+"POT-Creation-Date: 2022-10-29 00:43+0000\n"
 "PO-Revision-Date: 2022-09-26 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -109,7 +109,7 @@ msgid "Word Wrap"
 msgstr "Ajust de les paraules"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:729
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
 #, kde-format
 msgid "Borders"
 msgstr "Vores"
@@ -331,7 +331,7 @@ msgid "Minim&ap width:"
 msgstr "A&mplària del mapa en miniatura:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:737
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Always On"
 msgstr "Sempre actives"
@@ -418,8 +418,8 @@ msgstr "No hi ha cap entrada en l'historial del porta-retalls"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:595
-#: dialogs/katedialogs.cpp:725 dialogs/katedialogs.cpp:1004
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
+#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -437,20 +437,26 @@ msgstr "Activa la compleció &automàtica"
 msgid "Auto select &first completion entry"
 msgstr "Selecciona automàticament la &primera entrada de compleció"
 
+#. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
+#: dialogs/completionconfigtab.ui:49
+#, kde-format
+msgid "Cycle through the list of completions using Tab / Shift+Tab"
+msgstr ""
+
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
-#: dialogs/completionconfigtab.ui:52
+#: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "A&uto word completion"
 msgstr "Compleció a&utomàtica de paraules"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:66
+#: dialogs/completionconfigtab.ui:73
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr "Llargària mínima de la paraula que s'ha de completar:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:91
+#: dialogs/completionconfigtab.ui:98
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
@@ -458,13 +464,13 @@ msgstr ""
 "des d'una llista"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:94
+#: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail on complete"
 msgstr "Elimina el final en la compleció"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:108
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
@@ -473,13 +479,13 @@ msgstr ""
 "trobades en el document"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:114
+#: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid "&Keyword completion"
 msgstr "Compleció de paraules &clau"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:123
+#: dialogs/completionconfigtab.ui:130
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -489,13 +495,13 @@ msgstr ""
 "paraules clau que existixen en el llenguatge del document."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:136
+#: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid "Documentation with completion"
 msgstr "Documentació amb la compleció"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:145
+#: dialogs/completionconfigtab.ui:152
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1059,67 +1065,67 @@ msgstr[1] " caràcters"
 msgid "Indentation"
 msgstr "Sagnat"
 
-#: dialogs/katedialogs.cpp:287
+#: dialogs/katedialogs.cpp:290
 #, kde-format
 msgid "Auto Completion"
 msgstr "Compleció automàtica"
 
-#: dialogs/katedialogs.cpp:354
+#: dialogs/katedialogs.cpp:357
 #, kde-format
 msgid "Spellcheck"
 msgstr "Verificació ortogràfica"
 
-#: dialogs/katedialogs.cpp:401 dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:402 dialogs/katedialogs.cpp:410
+#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:403
+#: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:405
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:469
+#: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
 msgstr "Navegació pel text"
 
-#: dialogs/katedialogs.cpp:569
+#: dialogs/katedialogs.cpp:572
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
@@ -1127,63 +1133,63 @@ msgid_plural " characters"
 msgstr[0] " caràcter"
 msgstr[1] " caràcters"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, kde-format
 msgid "Feature is not active"
 msgstr "La característica no està activa"
 
-#: dialogs/katedialogs.cpp:576
+#: dialogs/katedialogs.cpp:579
 #, kde-format
 msgid "Disable Feature"
 msgstr "Desactiva la funcionalitat"
 
-#: dialogs/katedialogs.cpp:578
+#: dialogs/katedialogs.cpp:581
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Pot ser útil amb Markdown"
 
-#: dialogs/katedialogs.cpp:580
+#: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 "Caràcters en espill, pareixent però no igual que els Parèntesis automàtics"
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:585
 #, kde-format
 msgid "Non letter character"
 msgstr "Caràcter de no lletra"
 
-#: dialogs/katedialogs.cpp:696
+#: dialogs/katedialogs.cpp:699
 #, kde-format
 msgid "Editing"
 msgstr "Edició"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:704
 #, kde-format
 msgid "Editing Options"
 msgstr "Opcions de l'edició"
 
-#: dialogs/katedialogs.cpp:733
+#: dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Statusbar"
 msgstr "Barra d'estat"
 
-#: dialogs/katedialogs.cpp:735
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Off"
 msgstr "Inactiu"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Seguix els números de línia"
 
-#: dialogs/katedialogs.cpp:930 dialogs/katedialogs.cpp:935
+#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
 #, kde-format
 msgid "Appearance"
 msgstr "Aparença"
 
-#: dialogs/katedialogs.cpp:968
+#: dialogs/katedialogs.cpp:971
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1196,12 +1202,12 @@ msgstr ""
 "fitxers d'intercanvi pot provocar la pèrdua de dades en cas d'una fallada "
 "del sistema."
 
-#: dialogs/katedialogs.cpp:1005
+#: dialogs/katedialogs.cpp:1008
 #, kde-format
 msgid "Advanced"
 msgstr "Avançat"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1209,112 +1215,112 @@ msgstr ""
 "No heu proporcionat cap sufix o prefix de les còpies de seguretat. De manera "
 "predeterminada, s'utilitzarà: «~»"
 
-#: dialogs/katedialogs.cpp:1070
+#: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Sense sufix o prefix de la còpia de seguretat"
 
-#: dialogs/katedialogs.cpp:1203
+#: dialogs/katedialogs.cpp:1206
 #, kde-format
 msgid "Open/Save"
 msgstr "Obri i guarda"
 
-#: dialogs/katedialogs.cpp:1208
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Òbriga i guarda fitxers"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1234
 #, kde-format
 msgid "&Line:"
 msgstr "&Línia:"
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1235
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Va al número de línia del porta-retalls"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
 msgstr "Ves a"
 
-#: dialogs/katedialogs.cpp:1323
+#: dialogs/katedialogs.cpp:1326
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "No s'ha trobat cap número vàlid de línia al porta-retalls"
 
-#: dialogs/katedialogs.cpp:1387
+#: dialogs/katedialogs.cpp:1390
 #, kde-format
 msgid "Dictionary:"
 msgstr "Diccionari:"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Activa la recàrrega automàtica"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "Will never again warn about on disk changes but always reload."
 msgstr ""
 "Mai més tornarà a avisar dels canvis en el disc, i sempre es tornarà a "
 "carregar."
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "View &Difference"
 msgstr "Visualitza la &diferència"
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1452
 #, kde-format
 msgid "Shows a diff of the changes"
 msgstr "Mostra un «diff» dels canvis"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "&Reload"
 msgstr "Torna a ca&rregar"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Reload the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Torna a carregar el fitxer des del disc. Els canvis no guardats es perdran."
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Tan&ca el fitxer"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Close the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
 msgstr "Guar&da com a..."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Us permet seleccionar una ubicació i tornar a guardar el fitxer."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignora"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignora els canvis en el disc sense cap acció."
 
-#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1323,18 +1329,18 @@ msgstr ""
 "No s'ha pogut executar l'ordre «diff». Assegureu-vos que diff(1) està "
 "instal·lat i que es troba en la PATH."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:95
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
 #: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "S'ha produït un error en crear «diff»"
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "The files are identical."
 msgstr "Els fitxers són idèntics."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "Diff Output"
 msgstr "Eixida de «diff»"
