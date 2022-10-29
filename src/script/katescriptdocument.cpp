@@ -7,6 +7,7 @@
 
 #include "katescriptdocument.h"
 
+#include "katebuffer.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "katehighlight.h"
@@ -267,43 +268,41 @@ KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QCh
         return KTextEditor::Cursor::invalid();
     }
 
-    // cache line
-    Kate::TextLine currentLine = document()->plainKateTextLine(line);
-    if (!currentLine) {
-        return KTextEditor::Cursor::invalid();
-    }
+    auto *highlighter = m_document->highlight();
+    auto isCodePos = [highlighter](const Kate::TextLine &currentLine, int i) {
+        const KTextEditor::DefaultStyle ds = highlighter->defaultStyleForAttribute(currentLine->attribute(i));
+        return _isCode(ds);
+    };
 
     // Move backwards char by char and find the opening character
     int count = 1;
-    KTextEditor::DocumentCursor cursor(document(), KTextEditor::Cursor(line, column));
-    while (cursor.move(-1, KTextEditor::DocumentCursor::Wrap)) {
-        // need to fetch new line?
-        if (line != cursor.line()) {
-            line = cursor.line();
-            currentLine = document()->plainKateTextLine(line);
-            if (!currentLine) {
-                return KTextEditor::Cursor::invalid();
-            }
+    for (int l = line; l >= 0; --l) {
+        const Kate::TextLine currentLine = document()->buffer().plainLine(l);
+        if (!currentLine) {
+            return KTextEditor::Cursor::invalid();
         }
 
-        // get current char
-        const QChar ch = currentLine->at(cursor.column());
-        if (ch == lc) {
-            const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(currentLine->attribute(cursor.column()));
-            if (_isCode(ds)) {
+        const QString &lineText = currentLine->text();
+        if (l < line) {
+            // If the line is first line, we use the column
+            // specified by the caller of this function
+            // otherwise we start at line length
+            column = lineText.length();
+        }
+        for (int i = column - 1; i >= 0; --i) {
+            const QChar ch = lineText[i];
+            if (ch == lc && isCodePos(currentLine, i)) {
                 --count;
-            }
-        } else if (ch == rc) {
-            const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(currentLine->attribute(cursor.column()));
-            if (_isCode(ds)) {
+            } else if (ch == rc && isCodePos(currentLine, i)) {
                 ++count;
             }
-        }
 
-        if (count == 0) {
-            return cursor.toCursor();
+            if (count == 0) {
+                return KTextEditor::Cursor(l, i);
+            }
         }
     }
+
     return KTextEditor::Cursor::invalid();
 }
 
