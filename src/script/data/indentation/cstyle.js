@@ -638,6 +638,10 @@ function tryStatement(line)
                 while (document.isSpace(braceCursor.line, indentation))
                     ++indentation;
             }
+        } else if (gMode == "Dart" && result[2] == ',' && currentString.contains("(") && currentString.contains(")")) {
+            // Dart has a lot of stuff and function calls inside ctors
+            // and code is not aligned at the opening paren hence:
+            // do nothing
         } else {
             cursor = document.anchor(currentLine, result[1].length, '(');
         }
