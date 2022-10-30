@@ -39,6 +39,7 @@
 #include "spellcheck/ontheflycheck.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/spellcheck.h"
+#include <dirent.h>
 
 #if EDITORCONFIG_FOUND
 #include "editorconfig.h"
@@ -1798,22 +1799,28 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
 QUrl KTextEditor::DocumentPrivate::getSaveFileUrl(const QString &dialogTitle)
 {
     // per default we use the url of the current document
-    // if that is empty, we will try to get the url of the last used view, we assume some properly ordered views() list is around
     QUrl startUrl = url();
-    if (auto mainWindow = KTextEditor::Editor::instance()->application()->activeMainWindow(); mainWindow && !startUrl.isValid()) {
+    if (startUrl.isValid()) {
+        // for remote files we cut the file name to avoid confusion if it is some directory or not, see bug 454648
+        if (!startUrl.isLocalFile()) {
+            startUrl = startUrl.adjusted(QUrl::RemoveFilename);
+        }
+    }
+
+    // if that is empty, we will try to get the url of the last used view, we assume some properly ordered views() list is around
+    else if (auto mainWindow = KTextEditor::Editor::instance()->application()->activeMainWindow(); mainWindow) {
         const auto views = mainWindow->views();
         for (auto view : views) {
             if (view->document()->url().isValid()) {
-                startUrl = view->document()->url();
+                // as we here pick some perhaps unrelated file, always cut the file name
+                startUrl = view->document()->url().adjusted(QUrl::RemoveFilename);
                 break;
             }
         }
     }
 
     // spawn the dialog, dialogParent will take care of proper parent
-    // we remove the filename, otherwise we propose to save as some other already existing file, that is confusing
-    // beside we need to do that to avoid to use the filename as directory name, see bug 454648
-    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrl.isValid() ? startUrl.adjusted(QUrl::RemoveFilename) : QUrl());
+    return QFileDialog::getSaveFileUrl(dialogParent(), dialogTitle, startUrl);
 }
 
 // BEGIN KTextEditor::HighlightingInterface stuff
