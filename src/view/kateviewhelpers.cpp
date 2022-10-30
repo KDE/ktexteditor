@@ -2012,7 +2012,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 const uint mrk(m_doc->mark(realLine)); // call only once
                 if (mrk && lineLayout.startCol() == 0) {
                     for (uint bit = 0; bit < 32; bit++) {
-                        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
+                        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1U << bit);
                         if (mrk & markType) {
                             const QIcon markIcon = m_doc->markIcon(markType);
 
@@ -2546,7 +2546,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     int i = 1;
 
     for (uint bit = 0; bit < 32; bit++) {
-        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
+        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1U << bit);
         if (!(m_doc->editableMarks() & markType)) {
             continue;
         }

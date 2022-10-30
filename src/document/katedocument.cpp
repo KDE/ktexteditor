@@ -2233,7 +2233,7 @@ QPixmap KTextEditor::DocumentPrivate::markPixmap(MarkInterface::MarkTypes type) 
 
 QColor KTextEditor::DocumentPrivate::markColor(MarkInterface::MarkTypes type) const
 {
-    uint reserved = (0x1 << KTextEditor::MarkInterface::reservedMarkersCount()) - 1;
+    uint reserved = (1U << KTextEditor::MarkInterface::reservedMarkersCount()) - 1;
     if ((uint)type >= (uint)markType01 && (uint)type <= reserved) {
         return KateRendererConfig::global()->lineMarkerColor(type);
     } else {
