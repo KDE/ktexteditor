@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-29 00:43+0000\n"
-"PO-Revision-Date: 2022-09-26 16:51+0100\n"
+"PO-Revision-Date: 2022-10-29 13:09+0100\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -493,7 +493,7 @@ msgstr "Seleccionar automaticamente o &primeiro item da completação"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Circular pela lista de completações com o Tab / Shift+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -8244,24 +8244,3 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marcação não definida: %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "Espaços de nomes"
-
-#~ msgid "Classes"
-#~ msgstr "Classes"
-
-#~ msgid "Structs"
-#~ msgstr "Estruturas"
-
-#~ msgid "Unions"
-#~ msgstr "Uniões"
-
-#~ msgid "Functions"
-#~ msgstr "Funções"
-
-#~ msgid "Enumerations"
-#~ msgstr "Enumerados"
-
-#~ msgid "Preview:"
-#~ msgstr "Antevisão:"

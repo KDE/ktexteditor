@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-29 00:43+0000\n"
-"PO-Revision-Date: 2022-10-28 14:13+0200\n"
+"PO-Revision-Date: 2022-10-29 12:04+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -437,11 +437,12 @@ msgstr "Activa la compleció &automàtica"
 msgid "Auto select &first completion entry"
 msgstr "Selecciona automàticament la &primera entrada de compleció"
 
+# skip-rule: kct-tab
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Circula entre la llista de complecions usant Tab / Maj+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
