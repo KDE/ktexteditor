@@ -39,7 +39,6 @@
 #include "spellcheck/ontheflycheck.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/spellcheck.h"
-#include <dirent.h>
 
 #if EDITORCONFIG_FOUND
 #include "editorconfig.h"
