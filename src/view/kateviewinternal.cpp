@@ -1277,6 +1277,10 @@ public:
             return *this;
         }
 
+        auto isSurrogate = [](QChar c) {
+            return c.isLowSurrogate() || c.isHighSurrogate();
+        };
+
         if (n >= 0) {
             auto skipCaps = [](QStringView text, int &col) {
                 int count = 0;
@@ -1302,7 +1306,11 @@ public:
             }
 
             for (int i = col; i < thisLine->length(); ++i) {
-                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()) {
+                const auto c = text.at(i);
+                if (isSurrogate(c)) {
+                    col++;
+                    continue;
+                } else if (c.isUpper() || !c.isLetterOrNumber()) {
                     break;
                 }
                 ++col;
@@ -1380,13 +1388,17 @@ public:
             }
 
             for (int i = col; i > 0; --i) {
-                if (text.at(i).isUpper() || !text.at(i).isLetterOrNumber()) {
+                const auto c = text.at(i);
+                if (isSurrogate(c)) {
+                    --col;
+                    continue;
+                } else if (c.isUpper() || !c.isLetterOrNumber()) {
                     break;
                 }
                 --col;
             }
 
-            if (col >= 0 && !text.at(col).isLetterOrNumber()) {
+            if (col >= 0 && !text.at(col).isLetterOrNumber() && !isSurrogate(text.at(col))) {
                 ++col;
             }
 
