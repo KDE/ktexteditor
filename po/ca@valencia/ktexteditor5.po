@@ -209,7 +209,7 @@ msgid ""
 "</p>"
 msgstr ""
 "<p>Si esta opció està activada, cada vista nova mostrarà una vora per a les "
-"icones al costat esquerre.</p><p>Per exemple, la vora per a les icones "
+"icones en el costat esquerre.</p><p>Per exemple, la vora per a les icones "
 "mostra els punts.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
@@ -228,7 +228,7 @@ msgid ""
 "left hand side."
 msgstr ""
 "Si esta opció està activada, cada vista nova mostrarà els números de les "
-"línies al costat esquerre."
+"línies en el costat esquerre."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:88
@@ -244,7 +244,7 @@ msgid ""
 "shown on the left hand side."
 msgstr ""
 "Si esta opció està activada, es mostrarà un indicador xicotet per a les "
-"línies modificades i les línies guardades al costat esquerre."
+"línies modificades i les línies guardades en el costat esquerre."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
