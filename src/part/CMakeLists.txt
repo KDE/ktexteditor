@@ -12,7 +12,10 @@ configure_file(katepart.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop 
 
 # service => json and install
 kcoreaddons_desktop_to_json (katepart ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop SERVICE_TYPES kpart.desktop)
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop  DESTINATION  ${KDE_INSTALL_KSERVICESDIR} )
+
+if (QT_VERSION STREQUAL "5")
+    install( FILES ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop  DESTINATION  ${KDE_INSTALL_KSERVICESDIR} )
+endif()
 
 # link the part, use kate part core + kde stuff
 target_link_libraries (katepart KF5TextEditor KF5::SyntaxHighlighting)
