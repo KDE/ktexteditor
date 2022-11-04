@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-31 00:42+0000\n"
-"PO-Revision-Date: 2022-09-27 21:36+0530\n"
+"PO-Revision-Date: 2022-11-03 21:02+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -2283,10 +2283,9 @@ msgid "Save failed"
 msgstr "சேமிக்க முடியவில்லை"
 
 #: document/katedocument.cpp:5014
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Save Copy of File"
-msgstr "கோப்பினைச் சேமி..."
+msgstr "கோப்பை நகலெடுத்து சேமி"
 
 #: document/katedocument.cpp:5026
 #, kde-format
@@ -2296,10 +2295,10 @@ msgid ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 msgstr ""
-"ஆவணம் சேமிக்க முடியவில்லை, இது %1 ல் எழுத முடியவில்லை.\n"
+"%1 என்பதற்கு எழுத முடியாத‍தால், ஆவணத்தைச் செமிக்க முடியவில்லை.\n"
 "\n"
-"உங்களுக்கு இந்த கோப்பினை எழுத அனுமதி அல்லது போதுமான அளவு வட்டு இடம் இருக்கிறதா என்று "
-"சோதிக்கவும்."
+"இக்கோப்புக்கு எழுதும் அனுமதி உங்களிடம் உள்ளதையும், வட்டில் போதுமான இடம் உள்ளதையும் "
+"சரிபாருங்கள்."
 
 #: document/katedocument.cpp:5276
 #, kde-format
@@ -2320,22 +2319,19 @@ msgid ""
 msgstr ""
 
 #: document/katedocument.cpp:5591
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "கோப்பு '%1' வேறு நிரலால மாற்றப்பட்டது."
+msgstr "'%1' எனும் கோப்பு வட்டில் மாற்றப்பட்டுள்ளது."
 
 #: document/katedocument.cpp:5594
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "கோப்பு '%1' வேறு நிரலால உருவாக்கப்பட்டது."
+msgstr "'%1' எனும் கோப்பு வட்டில் உருவாக்கப்பட்டுள்ளது."
 
 #: document/katedocument.cpp:5597
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "கோப்பு '%1' வேறு நிரலால நீக்கப்பட்டது."
+msgstr "'%1' எனும் கோப்பு வட்டிலிருந்து நீக்கப்பட்டுள்ளது."
 
 #: document/katedocument.cpp:5920
 #, kde-format
@@ -2343,38 +2339,38 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
+"\"%1\" எனும் ஆவணம் மாற்றப்பட்டுள்ளது.\n"
+"உங்கள் மாற்றங்களை கைவிடலாமா, அல்லது அவற்றைச் சேமிக்க வேண்டுமா?"
 
 #: document/katedocument.cpp:5923
-#, fuzzy, kde-format
-#| msgid "&Word Wrap Document"
+#, kde-format
 msgid "Close Document"
-msgstr "வார்த்தை மடிப்பு ஆவணங்கள்"
+msgstr "ஆவணத்தை மூடு"
 
 #: document/katedocument.cpp:6034
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr ""
+msgstr "<a href=\"%1\">%2</a> எனும் கோப்பு ஏற்றப்படுகிறது."
 
 #: document/katedocument.cpp:6039
 #, kde-format
 msgid "&Abort Loading"
-msgstr ""
+msgstr "&ஏற்றுவதை கைவிடு"
 
 #: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "OVERWRITE"
-msgstr ""
+msgstr "மேலெழுது"
 
 #: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "INSERT"
-msgstr ""
+msgstr "நுழை"
 
 #: inputmode/katenormalinputmodefactory.cpp:29
-#, fuzzy, kde-format
-#| msgid "Normal Text"
+#, kde-format
 msgid "Normal Mode"
-msgstr "சாதாரண உரை"
+msgstr "சாதாரண பயன்முறை"
 
 #: inputmode/kateviinputmode.cpp:29
 #, kde-format
@@ -2421,22 +2417,22 @@ msgstr "குறிமுறையாக்கு"
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
-msgstr ""
+msgstr "Vi பயன்முறை"
 
 #: mode/katemodeconfigpage.cpp:46
 #, kde-format
 msgid "<Unchanged>"
-msgstr "<மாற்றமற்ற>"
+msgstr "<மாற்றமில்லாமல்>"
 
 #: mode/katemodeconfigpage.cpp:58
 #, kde-format
 msgid "Use Default"
-msgstr "முன்னிருப்பை பயன்படுத்து"
+msgstr "இயல்பிருப்பை பயன்படுத்து"
 
 #: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
 #, kde-format
 msgid "Properties of %1"
-msgstr "%1இன் பண்புகள்"
+msgstr "%1 என்பதன் பண்புகள்"
 
 #: mode/katemodeconfigpage.cpp:178
 #, kde-format
