@@ -46,6 +46,7 @@
 #include <QActionGroup>
 #include <QBoxLayout>
 #include <QCursor>
+#include <QGuiApplication>
 #include <QKeyEvent>
 #include <QLinearGradient>
 #include <QMenu>
@@ -2427,7 +2428,8 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
                     KateViewConfig *config = m_view->config();
                     const uint editBits = m_doc->editableMarks();
                     // is the default or the only editable mark
-                    const uint singleMark = qPopulationCount(editBits) > 1 ? editBits & config->defaultMarkType() : editBits;
+                    bool ctrlPressed = QGuiApplication::keyboardModifiers() == Qt::KeyboardModifier::ControlModifier;
+                    const uint singleMark = qPopulationCount(editBits) > 1 ? editBits & config->defaultMarkType() & ctrlPressed : editBits;
                     if (singleMark) {
                         if (m_doc->mark(cursorOnLine) & singleMark) {
                             m_doc->removeMark(cursorOnLine, singleMark);
