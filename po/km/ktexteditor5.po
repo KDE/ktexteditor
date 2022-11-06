@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-31 00:42+0000\n"
+"POT-Creation-Date: 2022-11-06 00:43+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -4849,7 +4849,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "ពណ៌​ឧបករណ៍​សម្គាល់"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1474
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1475
 #, kde-format
 msgid "Bookmark"
 msgstr "ចំណាំ"
@@ -7787,8 +7787,8 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:302 view/kateviewhelpers.cpp:345
-#: view/kateviewhelpers.cpp:981
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:346
+#: view/kateviewhelpers.cpp:982
 #, fuzzy, kde-format
 #| msgctxt "from line - to line"
 #| msgid "<center>%1<br>&mdash;<br/>%2</center>"
@@ -7796,12 +7796,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br>&mdash;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1150
+#: view/kateviewhelpers.cpp:1151
 #, kde-format
 msgid "Available Commands"
 msgstr "ពាក្យ​បញ្ជា​ដែល​អាច​ប្រើ​បាន"
 
-#: view/kateviewhelpers.cpp:1151
+#: view/kateviewhelpers.cpp:1152
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7809,17 +7809,17 @@ msgid ""
 msgstr ""
 "<p>សម្រាប់​ជំនួយ​អំពី​ពាក្យ​បញ្ជា​នីមួយៗ សូម​ធ្វើ <code>'help &lt;command&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1158
+#: view/kateviewhelpers.cpp:1159
 #, kde-format
 msgid "No help for '%1'"
 msgstr "គ្មាន​ជំនួយ​សម្រាប់ '%1' ឡើយ"
 
-#: view/kateviewhelpers.cpp:1161
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "គ្មាន​ពាក្យ​បញ្ជា <b>%1</b> ​បែប​នេះទេ"
 
-#: view/kateviewhelpers.cpp:1167
+#: view/kateviewhelpers.cpp:1168
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7832,37 +7832,37 @@ msgstr ""
 "<code><b>help list</b></code><br />ចំពោះ​ជំនួយ​អំពី​ពាក្យ​បញ្ជី​នីមួយៗ សូម​បញ្ចូល <code><b>help "
 "&lt;ពាក្យ​បញ្ជា&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1255 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1256 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "គ្មាន​ពាក្យ​បញ្ជា​បែប​នេះទេ ៖ \"%1\""
 
-#: view/kateviewhelpers.cpp:1258 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "កំហុស ៖ គ្មាន​ជួរ​បាន​អនុញ្ញាត​សម្រាប់​ពាក្យ​បញ្ជា \"%1\" ។"
 
-#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "ជោគជ័យ ៖ "
 
-#: view/kateviewhelpers.cpp:1282 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1283 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ពាក្យ​បញ្ជា \"%1\" បាន​បរាជ័យ ។"
 
-#: view/kateviewhelpers.cpp:2561 view/kateviewhelpers.cpp:2562
+#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
 #, kde-format
 msgid "Mark Type %1"
 msgstr "សម្គាល់​ប្រភេទ %1"
 
-#: view/kateviewhelpers.cpp:2585
+#: view/kateviewhelpers.cpp:2587
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "កំណត់​ប្រភេទ​សម្គាល់​លំនាំដើម"
 
-#: view/kateviewhelpers.cpp:2726
+#: view/kateviewhelpers.cpp:2728
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "បិទ​របារ​ចំណារ"
