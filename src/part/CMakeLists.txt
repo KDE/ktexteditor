@@ -13,7 +13,7 @@ configure_file(katepart.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop 
 # service => json and install
 kcoreaddons_desktop_to_json (katepart ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop SERVICE_TYPES kpart.desktop)
 
-if (QT_VERSION STREQUAL "5")
+if (QT_MAJOR_VERSION STREQUAL "5")
     install( FILES ${CMAKE_CURRENT_BINARY_DIR}/katepart.desktop  DESTINATION  ${KDE_INSTALL_KSERVICESDIR} )
 endif()
 
