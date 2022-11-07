@@ -1222,7 +1222,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         m_editActions.push_back(a);
 
         a = ac->addAction(QStringLiteral("insert_tabulator"));
-        a->setText(i18n("Insert Tab"));
+        a->setText(i18n("Insert Tab Character"));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::insertTab);
         m_editActions.push_back(a);
 
