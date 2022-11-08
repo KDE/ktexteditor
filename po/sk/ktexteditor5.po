@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2022-02-14 19:57+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -7589,8 +7589,9 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
+#, fuzzy, kde-format
+#| msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "Vložiť kartu"
 
 #: view/kateview.cpp:1230

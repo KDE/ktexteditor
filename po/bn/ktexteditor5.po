@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -7168,8 +7168,8 @@ msgstr "ওপর সংরক্ষণ করো"
 
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
-msgid "Insert Tab"
-msgstr "&ইনস্টল"
+msgid "Insert Tab Character"
+msgstr "মধ্যে ঢোকাও ইনডেন্ট অক্ষর"
 
 #: view/kateview.cpp:1230
 #, fuzzy, kde-format
@@ -7691,6 +7691,10 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ধরন ১"
+
+#, fuzzy
+#~ msgid "Insert Tab"
+#~ msgstr "&ইনস্টল"
 
 #, fuzzy
 #~ msgid "Namespaces"
@@ -9632,10 +9636,6 @@ msgstr "ধরন ১"
 #, fuzzy
 #~ msgid "Tab Key Mode if Nothing Selected"
 #~ msgstr "যদি নির্বাচিত"
-
-#, fuzzy
-#~ msgid "Insert indent &characters"
-#~ msgstr "মধ্যে ঢোকাও ইনডেন্ট অক্ষর"
 
 #, fuzzy
 #~ msgid "Check this if you want to indent with spaces rather than tabs."

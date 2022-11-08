@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2022-11-06 01:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -7223,8 +7223,9 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
+#, fuzzy, kde-format
+#| msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "插入制表符"
 
 #: view/kateview.cpp:1230

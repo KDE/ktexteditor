@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -7490,8 +7490,9 @@ msgstr "बेकस्पेस"
 
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
-msgid "Insert Tab"
-msgstr "हाशिया (&I)"
+#| msgid "I&nsert tab character"
+msgid "Insert Tab Character"
+msgstr "टैब अक्षर जोड़ें (&n)"
 
 #: view/kateview.cpp:1230
 #, fuzzy, kde-format
@@ -8031,6 +8032,10 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "मार्क टाइप %1"
+
+#, fuzzy
+#~ msgid "Insert Tab"
+#~ msgstr "हाशिया (&I)"
 
 #~ msgid "Namespaces"
 #~ msgstr "नेम-स्पेसेज़"
@@ -10766,9 +10771,6 @@ msgstr "मार्क टाइप %1"
 
 #~ msgid "Insert indent &characters"
 #~ msgstr "हाशिया तथा अक्षर जोड़ें (&c)"
-
-#~ msgid "I&nsert tab character"
-#~ msgstr "टैब अक्षर जोड़ें (&n)"
 
 #~ msgid "Check this if you want to indent with spaces rather than tabs."
 #~ msgstr "इसे चेक करें यदि आप स्पेस के साथ हाशिया चाहते हैं बजाए टैब्स के."

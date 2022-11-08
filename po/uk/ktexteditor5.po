@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2022-10-29 08:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -7580,8 +7580,9 @@ msgid "Backspace"
 msgstr "Стерти символ зліва"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
+#, fuzzy, kde-format
+#| msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "Вставити табуляцію"
 
 #: view/kateview.cpp:1230

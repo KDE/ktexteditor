@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2011-07-06 18:12+0200\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux@walon.org>\n"
@@ -7308,9 +7308,9 @@ msgid "Backspace"
 msgstr "Backspace (Erî)"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
-msgstr ""
+#, fuzzy, kde-format
+msgid "Insert Tab Character"
+msgstr "Caractere"
 
 #: view/kateview.cpp:1230
 #, kde-format

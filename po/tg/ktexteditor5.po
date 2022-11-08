@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2019-09-29 12:28+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -7649,8 +7649,9 @@ msgstr "Фосила"
 
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
-msgid "Insert Tab"
-msgstr "&Фосила"
+#| msgid "I&nsert tab character"
+msgid "Insert Tab Character"
+msgstr "Гузориши ишоротҳои &табулятивӣ"
 
 #: view/kateview.cpp:1230
 #, fuzzy, kde-format
@@ -8192,6 +8193,10 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Ҷудокунии Намуди %1"
+
+#, fuzzy
+#~ msgid "Insert Tab"
+#~ msgstr "&Фосила"
 
 #, fuzzy
 #~ msgid "Namespaces"
@@ -10611,9 +10616,6 @@ msgstr "Ҷудокунии Намуди %1"
 
 #~ msgid "Insert indent &characters"
 #~ msgstr "Гузориши &ишоротҳои бозгашт"
-
-#~ msgid "I&nsert tab character"
-#~ msgstr "Гузориши ишоротҳои &табулятивӣ"
 
 #~ msgid "Check this if you want to indent with spaces rather than tabs."
 #~ msgstr ""

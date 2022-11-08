@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -7282,9 +7282,10 @@ msgid "Backspace"
 msgstr "Cúlspás"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
-msgstr "Ionsáigh Táb"
+#, fuzzy, kde-format
+#| msgid "I&nsert tab character"
+msgid "Insert Tab Character"
+msgstr "Io&nsáigh táb"
 
 #: view/kateview.cpp:1230
 #, kde-format
@@ -7815,6 +7816,9 @@ msgstr "'%1' %2,  Heics %3,  Ocht %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marc gan socrú: %1"
+
+#~ msgid "Insert Tab"
+#~ msgstr "Ionsáigh Táb"
 
 #~ msgid "Namespaces"
 #~ msgstr "Ainmspásanna"
@@ -9777,9 +9781,6 @@ msgstr "Marc gan socrú: %1"
 
 #~ msgid "N&ame:"
 #~ msgstr "&Ainm:"
-
-#~ msgid "I&nsert tab character"
-#~ msgstr "Io&nsáigh táb"
 
 #~ msgid "Memory Usage"
 #~ msgstr "Úsáid na Cuimhne"

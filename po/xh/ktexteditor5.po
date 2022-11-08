@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -7323,7 +7323,7 @@ msgstr "Isiganeko sokwalo Sekhowudi"
 
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
-msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "&Yenza amathanda"
 
 #: view/kateview.cpp:1230

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2022-07-23 23:23+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -7723,8 +7723,9 @@ msgid "Backspace"
 msgstr "Rücktaste"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
+#, fuzzy, kde-format
+#| msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "Tabulator einfügen"
 
 #: view/kateview.cpp:1230

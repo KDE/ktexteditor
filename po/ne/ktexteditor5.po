@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -7754,7 +7754,7 @@ msgstr "ब्याकस्पेस"
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
 #| msgid "&Insert"
-msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "घुसाउनुहोस्"
 
 #: view/kateview.cpp:1230

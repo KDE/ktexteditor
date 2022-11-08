@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -7684,8 +7684,9 @@ msgid "Backspace"
 msgstr "Dzēst iepriekšējo rakstzīmi"
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
+#, fuzzy, kde-format
+#| msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "Ievietot tabulatoru"
 
 #: view/kateview.cpp:1230

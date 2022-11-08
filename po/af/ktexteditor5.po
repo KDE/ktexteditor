@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -7727,8 +7727,9 @@ msgstr "Terugruimte"
 
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
-msgid "Insert Tab"
-msgstr "Inkeep"
+#| msgid "I&nsert tab character"
+msgid "Insert Tab Character"
+msgstr "Invoeg oortjie karakter"
 
 #: view/kateview.cpp:1230
 #, fuzzy, kde-format
@@ -8282,6 +8283,10 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Merk Tipe %1"
+
+#, fuzzy
+#~ msgid "Insert Tab"
+#~ msgstr "Inkeep"
 
 #, fuzzy
 #~ msgid "Namespaces"
@@ -10934,9 +10939,6 @@ msgstr "Merk Tipe %1"
 
 #~ msgid "Insert indent &characters"
 #~ msgstr "Invoeg inkeep karakters"
-
-#~ msgid "I&nsert tab character"
-#~ msgstr "Invoeg oortjie karakter"
 
 #~ msgid "Check this if you want to indent with spaces rather than tabs."
 #~ msgstr "Bevestig hierdie as jy wil inkeep met spasies eerder as oortjies."

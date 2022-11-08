@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2004-09-28 14:05+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud.com>\n"
 "Language-Team: Brezhoneg <Suav.Icb.fr>\n"
@@ -7310,7 +7310,7 @@ msgstr "War-gil"
 #: view/kateview.cpp:1225
 #, fuzzy, kde-format
 #| msgid "&Insert"
-msgid "Insert Tab"
+msgid "Insert Tab Character"
 msgstr "&Enlakaat"
 
 #: view/kateview.cpp:1230

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2009-01-08 12:55+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -7627,9 +7627,10 @@ msgid "Backspace"
 msgstr ""
 
 #: view/kateview.cpp:1225
-#, kde-format
-msgid "Insert Tab"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Transpose Characters"
+msgid "Insert Tab Character"
+msgstr "Смени места на знаци"
 
 #: view/kateview.cpp:1230
 #, kde-format
