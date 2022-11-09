@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-10-29 12:15+0300\n"
+"PO-Revision-Date: 2022-11-08 20:47+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1032,7 +1032,7 @@ msgstr ""
 "b> seçeneğinde belirtilen kadar girintilenir.<p> Ekleme noktası ilk "
 "boşluktan sonra ise ve seçilmiş alan yok ise boşluk bir sonraki konuma "
 "gelir. Eğer <b>Düzelt</b> bölümünde <b>Sekme yerine boşluk ekle</b> seçeneği "
-"seçili ise boşluklar eklenir, diğer türlü, tek bir sekme eklenir."
+"seçiliyse boşluklar eklenir, diğer türlü, tek bir sekme eklenir."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:299
@@ -4691,7 +4691,7 @@ msgstr "Sekme ve Boşluk İmleyicileri"
 #: syntax/katethemeconfig.cpp:299
 #, kde-format
 msgid "<p>Sets the color of the tabulator marks.</p>"
-msgstr "<p>Sekmeleyici imlerinin rengini ayarlar.</p>"
+msgstr "<p>Sekme imlerinin rengini ayarlar.</p>"
 
 #: syntax/katethemeconfig.cpp:304
 #, kde-format
@@ -6144,7 +6144,7 @@ msgstr "Düzenleyici kenarlığında katlama önizlemeyi etkinleştir."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
-msgstr "Belgenin yazıtipi boyutunu nokta olarak ayarla."
+msgstr "Belgenin yazıtipi boyutunu nokta türünden ayarla."
 
 #: variableeditor/variablelineedit.cpp:193
 #, kde-format
@@ -6156,7 +6156,7 @@ msgstr "Belgenin yazıtipini ayarla."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
-msgstr "Sözdizimi vurgulamasını ayarla"
+msgstr "Sözdizim vurgulamasını ayarla"
 
 #: variableeditor/variablelineedit.cpp:214
 #, kde-format
@@ -6342,12 +6342,12 @@ msgstr "Girintileme Kipi"
 #: view/katestatusbar.cpp:178
 #, kde-format
 msgid "Tabulators && Spaces"
-msgstr "Tablolayıcılar ve Boşluklar"
+msgstr "Sekmeler ve Boşluklar"
 
 #: view/katestatusbar.cpp:181
 #, kde-format
 msgid "Tabulators"
-msgstr "Tablolayıcılar"
+msgstr "Sekmeler"
 
 #: view/katestatusbar.cpp:184
 #, kde-format
@@ -7507,10 +7507,9 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Sekme Ekle"
+msgstr "Sekme Karakteri Ekle"
 
 #: view/kateview.cpp:1230
 #, kde-format
