@@ -258,7 +258,7 @@ msgstr "Değiştirilmiş ve kaydedilmemiş satırları vurgula"
 #: dialogs/bordersappearanceconfigwidget.ui:121
 #, kde-format
 msgid "Scrollbars"
-msgstr "Kaydırma çubukları"
+msgstr "Sarma Çubukları"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -267,7 +267,7 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>Bu seçenek işaretliyse her yeni görünümde dikey kaydırma çubuğunda imler "
+"<p>Bu seçenek işaretliyse her yeni görünümde dikey sarma çubuğunda imler "
 "görüntülenecektir.</p><p>Örneğin bu imler yer imlerini gösterir.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
@@ -277,14 +277,14 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>Bu seçenek imlendiğinde, dikey kaydırma çubuğunun üzerine gelmek, metnin "
-"bir önizlemesini gösterir.</p>"
+"<p>Bu seçenek imlendiğinde, dikey sarma çubuğunun üzerine gelmek, metnin bir "
+"önizlemesini gösterir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Kaydırma çubuğu üzerine gelindiğinde önizlemeyi göster"
+msgstr "Sarma çubuğu üzerine gelindiğinde önizlemeyi göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
@@ -299,7 +299,7 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Bu seçenek imlendiğinde, her yeni görünüm dikey kaydırma çubuğunda küçük bir "
+"Bu seçenek imlendiğinde, her yeni görünüm dikey sarma çubuğunda küçük bir "
 "harita gösterecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
@@ -315,8 +315,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
-"Bu seçenek imlendiğinde, her yeni görünüm dikey kaydırma çubuğunda tüm "
-"belgenin küçük bir haritasını gösterecektir."
+"Bu seçenek imlendiğinde, her yeni görünüm dikey sarma çubuğunda tüm belgenin "
+"küçük bir haritasını gösterecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:187
@@ -1442,7 +1442,7 @@ msgstr "Kalıcı"
 #: dialogs/navigationconfigwidget.ui:167
 #, kde-format
 msgid "Allow scrolling past the end of the document"
-msgstr "Belgenin sonunu aşan kaydırmaya izin ver"
+msgstr "Belgenin sonunu aşan sarmaya izin ver"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:174
@@ -6240,13 +6240,13 @@ msgstr "Belgeyi kaydederken gereksiz boşlukları kaldır."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Kaydırma çubuğu küçük haritasını göster."
+msgstr "Sarma çubuğu küçük haritasını göster."
 
 #: variableeditor/variablelineedit.cpp:285
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "Kaydırma çubuğu önizlemesini göster."
+msgstr "Sarma çubuğu önizlemesini göster."
 
 #: variableeditor/variablelineedit.cpp:296
 #, kde-format
@@ -7018,7 +7018,7 @@ msgstr "Görünümün sol yanında satır numaralarının görünüp/gizleneceğ
 #: view/kateview.cpp:781
 #, kde-format
 msgid "Show Scroll&bar Marks"
-msgstr "Kaydırma Çu&buğu İmlerini Göster"
+msgstr "Sarma Çu&buğu İmlerini Göster"
 
 #: view/kateview.cpp:783
 #, kde-format
@@ -7026,13 +7026,13 @@ msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
 "bookmarks, for instance."
 msgstr ""
-"Dikey kaydırma çubuğu işaretlerini göster/gizle.<br /><br />Örneğin, imler, "
-"yer imlerini gösterir."
+"Dikey sarma çubuğu imlerini göster/gizle.<br /><br />Örneğin, imler, yer "
+"imlerini gösterir."
 
 #: view/kateview.cpp:786
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
-msgstr "Kaydırma Çubuğu Küçük Haritasını Göster"
+msgstr "Sarma Çubuğu Küçük Haritasını Göster"
 
 #: view/kateview.cpp:788
 #, kde-format
@@ -7040,8 +7040,8 @@ msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
 "shows an overview of the whole document."
 msgstr ""
-"Dikey kaydırma çubuğunda küçük haritayı göster/gizle.<br /><br />Küçük "
-"harita, tüm belgenin bir özetini gösterir."
+"Dikey sarma çubuğunda küçük haritayı göster/gizle.<br /><br />Küçük harita, "
+"tüm belgenin bir özetini gösterir."
 
 #. i18n("Show the whole document in the Mini-Map"), this);
 #. ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
@@ -7389,7 +7389,7 @@ msgstr "Önceki Satıra Kadar Seç"
 #: view/kateview.cpp:1079
 #, kde-format
 msgid "Scroll Line Up"
-msgstr "Satırı Yukarı Kaydır"
+msgstr "Satırı Yukarı Sar"
 
 #: view/kateview.cpp:1085
 #, kde-format
@@ -7419,12 +7419,12 @@ msgstr "Sonraki Satıra Kadar Seç"
 #: view/kateview.cpp:1115
 #, kde-format
 msgid "Scroll Line Down"
-msgstr "Satırı Aşağı Kaydır"
+msgstr "Satırı Aşağı Sar"
 
 #: view/kateview.cpp:1121
 #, kde-format
 msgid "Scroll Page Up"
-msgstr "Sayfayı Yukarı Kaydır"
+msgstr "Sayfayı Yukarı Sar"
 
 #: view/kateview.cpp:1127
 #, kde-format
@@ -7444,7 +7444,7 @@ msgstr "Görünümün Başına Kadar Seç"
 #: view/kateview.cpp:1145
 #, kde-format
 msgid "Scroll Page Down"
-msgstr "Sayfayı Aşağı Kaydır"
+msgstr "Sayfayı Aşağı Sar"
 
 #: view/kateview.cpp:1151
 #, kde-format

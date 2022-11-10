@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-06 00:43+0000\n"
+"POT-Creation-Date: 2022-11-08 00:43+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -7358,8 +7358,8 @@ msgstr "Rettetast"
 
 #: view/kateview.cpp:1225
 #, kde-format
-msgid "Insert Tab"
-msgstr "Sett inn fane"
+msgid "Insert Tab Character"
+msgstr ""
 
 #: view/kateview.cpp:1230
 #, kde-format

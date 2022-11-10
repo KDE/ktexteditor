@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-09-12 20:14+0200\n"
+"PO-Revision-Date: 2022-11-09 06:32+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -129,7 +129,7 @@ msgstr "&ხელსაწყოები"
 #: data/katepart5ui.rc:133
 #, kde-format
 msgid "Word Completion"
-msgstr ""
+msgstr "სიტყვების ავტომატური დასრულება"
 
 #. i18n: ectx: Menu (spelling)
 #: data/katepart5ui.rc:139 spellcheck/spellingmenu.cpp:70
@@ -187,7 +187,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:68
 #, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "მარცხენა მხარე:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -204,7 +204,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:131
 #, kde-format
 msgid "Show marks"
-msgstr ""
+msgstr "ნიშნების ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:85
@@ -218,7 +218,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:88
 #, kde-format
 msgid "Show &line numbers"
-msgstr ""
+msgstr "&ხაზის ნომრების ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:95
@@ -238,7 +238,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:121
 #, kde-format
 msgid "Scrollbars"
-msgstr ""
+msgstr "ჩოჩიები"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -266,7 +266,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:164
 #, kde-format
 msgid "Minimap:"
-msgstr ""
+msgstr "მინირუკა:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -280,7 +280,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:174
 #, kde-format
 msgid "Show minimap"
-msgstr ""
+msgstr "მინირუკის ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -1107,7 +1107,7 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1234
 #, kde-format
 msgid "&Line:"
-msgstr ""
+msgstr "&ხაზი:"
 
 #: dialogs/katedialogs.cpp:1235
 #, kde-format
@@ -1117,7 +1117,7 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
-msgstr ""
+msgstr "გადასვლა"
 
 #: dialogs/katedialogs.cpp:1326
 #, kde-format
@@ -1212,7 +1212,7 @@ msgstr "ფაილები ერთნაირია."
 #: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
 msgid "Diff Output"
-msgstr ""
+msgstr "Diff -ის გამოტანა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbCursorMovement)
 #: dialogs/navigationconfigwidget.ui:29
@@ -1957,7 +1957,7 @@ msgstr "ახალი ფაილი"
 #: document/katebuffer.cpp:157
 #, kde-format
 msgid "The file %1 does not exist."
-msgstr ""
+msgstr "ფაილი არ არსებობს: %1."
 
 #: document/katedocument.cpp:246
 #, kde-format
@@ -1990,7 +1990,7 @@ msgstr "დაკე&ტვა"
 #: document/katedocument.cpp:2323 document/katedocument.cpp:6532
 #, kde-format
 msgid "Close message"
-msgstr ""
+msgstr "შეტყობინების დახურვა"
 
 #: document/katedocument.cpp:2334
 #, kde-format
@@ -2139,7 +2139,7 @@ msgstr "ფაილის შენახვა"
 #: document/katedocument.cpp:4784
 #, kde-format
 msgid "Save failed"
-msgstr ""
+msgstr "შენახვის შეცდომა"
 
 #: document/katedocument.cpp:5014
 #, kde-format
@@ -2225,7 +2225,7 @@ msgstr "INSERT"
 #: inputmode/katenormalinputmodefactory.cpp:29
 #, kde-format
 msgid "Normal Mode"
-msgstr ""
+msgstr "ნორმალური რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:29
 #, kde-format
@@ -2406,7 +2406,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:130
 #, kde-format
 msgid "&Format:"
-msgstr ""
+msgstr "&ფორმატი:"
 
 #: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
 #, kde-format
@@ -2436,7 +2436,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:210
 #, kde-format
 msgid "&Background"
-msgstr ""
+msgstr "&ფონი"
 
 #: printing/printconfigwidgets.cpp:239
 #, kde-format
@@ -2557,7 +2557,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:514
 #, kde-format
 msgid "Co&lor:"
-msgstr ""
+msgstr "&ფერი:"
 
 #: printing/printconfigwidgets.cpp:536
 #, kde-format
@@ -3272,17 +3272,17 @@ msgstr ""
 #: search/katesearchbar.cpp:1162
 #, kde-format
 msgid "One or more occurrences"
-msgstr ""
+msgstr "ერთი ან მეტი გამოვლენა"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
 msgid "Zero or more occurrences"
-msgstr ""
+msgstr "ნული ან მეტი გამოვლენა"
 
 #: search/katesearchbar.cpp:1164
 #, kde-format
 msgid "Zero or one occurrences"
-msgstr ""
+msgstr "ნული ან ერთი გამოვლენა"
 
 #: search/katesearchbar.cpp:1167
 #, kde-format
@@ -3443,33 +3443,33 @@ msgstr ""
 #: search/searchbarincremental.ui:50
 #, kde-format
 msgid "F&ind:"
-msgstr ""
+msgstr "&ძებნა:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
 #: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
 #, kde-format
 msgid "Text to search for"
-msgstr ""
+msgstr "მოსაძებნი ეტქსტი"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findNext)
 #. i18n: ectx: property (toolTip), widget (QToolButton, next)
 #: search/searchbarincremental.ui:91 search/searchbarpower.ui:183
 #, kde-format
 msgid "Jump to next match"
-msgstr ""
+msgstr "შემდეგ დამთხვევაზე გადასვლა"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
 #: search/searchbarincremental.ui:106 search/searchbarpower.ui:197
 #, kde-format
 msgid "Jump to previous match"
-msgstr ""
+msgstr "წინა დამთხვევაზე გადასვლა"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
 #: search/searchbarincremental.ui:121 search/searchbarpower.ui:136
 #, kde-format
 msgid "Match case sensitive"
-msgstr ""
+msgstr "რეგისტრზე-დამოკიდებული დამთხვევა"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarincremental.ui:161
@@ -3481,25 +3481,25 @@ msgstr ""
 #: search/searchbarpower.ui:50
 #, kde-format
 msgid "Fin&d:"
-msgstr ""
+msgstr "&ძებნა:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: search/searchbarpower.ui:63
 #, kde-format
 msgid "Rep&lace:"
-msgstr ""
+msgstr "&ჩანაცვლება:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
 #, kde-format
 msgid "&Mode:"
-msgstr ""
+msgstr "&რეჟიმი:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:103
 #, kde-format
 msgid "Search mode"
-msgstr ""
+msgstr "ძებნის რეჟიმი"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:113
@@ -3560,7 +3560,7 @@ msgstr "ყველას &ჩანაცვლება"
 #: search/searchbarpower.ui:250
 #, kde-format
 msgid "&Find All"
-msgstr ""
+msgstr "&ყველას პოვნა"
 
 #. i18n: ectx: property (text), widget (QPushButton, cancel)
 #: search/searchbarpower.ui:273
@@ -3578,7 +3578,7 @@ msgstr ""
 #: search/searchbarpower.ui:334
 #, kde-format
 msgid "Text to replace with"
-msgstr ""
+msgstr "ჩასანაცვლებელი ტექსტი"
 
 #: spellcheck/spellcheckbar.cpp:148
 #, kde-format
@@ -3793,7 +3793,7 @@ msgstr "სიტყვის ლექსიკონში ჩამატე�
 #: spellcheck/spellingmenu.cpp:168
 #, kde-format
 msgid "Spelling '%1'"
-msgstr ""
+msgstr "მართლწერა '%1'"
 
 #: swapfile/kateswapdiffcreator.cpp:93
 #, kde-format
@@ -3815,12 +3815,12 @@ msgstr ""
 #: swapfile/kateswapfile.cpp:634
 #, kde-format
 msgid "View Changes"
-msgstr ""
+msgstr "ცვლილებების ნახვა"
 
 #: swapfile/kateswapfile.cpp:635
 #, kde-format
 msgid "Recover Data"
-msgstr ""
+msgstr "მონაცემების აღდგენა"
 
 #: swapfile/kateswapfile.cpp:636
 #, kde-format
@@ -4055,7 +4055,7 @@ msgstr ""
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Data Type"
-msgstr ""
+msgstr "მონაცემების ტიპი"
 
 #: syntax/katethemeconfig.cpp:83
 #, kde-format
@@ -4177,7 +4177,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:200
 #, kde-format
 msgid "Current Line"
-msgstr ""
+msgstr "მიმდინარე ხაზი"
 
 #: syntax/katethemeconfig.cpp:202
 #, kde-format
@@ -4495,7 +4495,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1108
 #, kde-format
 msgid "&Theme:"
-msgstr ""
+msgstr "&თემა:"
 
 #: syntax/katethemeconfig.cpp:1117
 #, kde-format
@@ -4540,7 +4540,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
 #, kde-format
 msgid "Color theme"
-msgstr ""
+msgstr "ფერის თემა"
 
 #: syntax/katethemeconfig.cpp:1190
 #, kde-format
@@ -4975,7 +4975,7 @@ msgstr "Dominik Haumann"
 #: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
 #, kde-format
 msgid "Core Developer"
-msgstr ""
+msgstr "ძირითადი პროგრამისტი"
 
 #: utils/kateglobal.cpp:99
 #, kde-format
@@ -5085,7 +5085,7 @@ msgstr "Michael Koch"
 #: utils/kateglobal.cpp:118
 #, kde-format
 msgid "KWrite port to KParts"
-msgstr ""
+msgstr "KWrite -ის პორტირება KParts-ზე"
 
 #: utils/kateglobal.cpp:119
 #, kde-format
@@ -5125,7 +5125,7 @@ msgstr "John Firebaugh"
 #: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Patches and more"
-msgstr ""
+msgstr "პატჩები და სხვა"
 
 #: utils/kateglobal.cpp:124
 #, kde-format
@@ -6209,7 +6209,7 @@ msgstr ""
 #: view/kateview.cpp:617
 #, kde-format
 msgid "Show print preview of current document"
-msgstr ""
+msgstr "მიმდინარე დოკუმენტების დაბეჭდვისწინა გადახედვის ჩვენება"
 
 #: view/kateview.cpp:621
 #, kde-format
@@ -6338,7 +6338,7 @@ msgstr ""
 #: view/kateview.cpp:710
 #, kde-format
 msgid "Reset Font Size"
-msgstr ""
+msgstr "ფონტის ზომის საწყის მნიშვნელობაზე დაბრუნება"
 
 #: view/kateview.cpp:712
 #, kde-format
@@ -6405,7 +6405,7 @@ msgstr ""
 #: view/kateview.cpp:746
 #, kde-format
 msgid "&Off"
-msgstr ""
+msgstr "&გამორთ"
 
 #: view/kateview.cpp:746
 #, kde-format
@@ -6929,7 +6929,7 @@ msgstr ""
 #: view/kateview.cpp:1193
 #, kde-format
 msgid "Delete Line"
-msgstr ""
+msgstr "ხაზის წაშლა"
 
 #: view/kateview.cpp:1199
 #, kde-format
@@ -6952,11 +6952,9 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Character"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "სიმბოლო"
+msgstr "ტაბულაციის სიმბოლოს ჩასმა"
 
 #: view/kateview.cpp:1230
 #, kde-format
@@ -7091,7 +7089,7 @@ msgstr ""
 #: view/kateviewhelpers.cpp:1151
 #, kde-format
 msgid "Available Commands"
-msgstr ""
+msgstr "ხელმისაწვდომი ბრძანებები"
 
 #: view/kateviewhelpers.cpp:1152
 #, kde-format
