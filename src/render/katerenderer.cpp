@@ -979,7 +979,15 @@ void KateRenderer::paintCaret(const KTextEditor::Cursor &cursor, const KateLineL
             if (range->layout()->textOption().textDirection() == Qt::RightToLeft) {
                 xStart += caretWidth;
             }
-            range->layout()->drawCursor(&paint, QPoint(-xStart, 0), cursor.column(), caretWidth);
+            qreal width = 0;
+            const auto inlineNotes = m_view->inlineNotes(range->line());
+            for (const auto &inlineNoteData : inlineNotes) {
+                KTextEditor::InlineNote inlineNote(inlineNoteData);
+                if (inlineNote.position().column() == cursor.column()) {
+                    width = inlineNote.width() + (caretStyle() == Line ? 2.0 : 0.0);
+                }
+            }
+            range->layout()->drawCursor(&paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth);
         } else {
             // Off the end of the line... must be block mode. Draw the caret ourselves.
             const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
@@ -1181,7 +1189,8 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
                 firstLineOffset = width;
             } else if (column < l->text().length()) {
                 QTextCharFormat text_char_format;
-                text_char_format.setFontLetterSpacing(width);
+                const qreal caretWidth = caretStyle() == Line ? 2.0 : 0.0;
+                text_char_format.setFontLetterSpacing(width + caretWidth);
                 text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
                 decorations.append(QTextLayout::FormatRange{column - 1, 1, text_char_format});
             }

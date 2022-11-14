@@ -2995,6 +2995,35 @@ KTextEditor::Cursor KateViewInternal::cursorForPoint(QPoint p)
     if (c.line() < 0 || c.line() >= doc()->lines()) {
         return KTextEditor::Cursor::invalid();
     }
+
+    // loop over all notes and check if the point is inside it
+    const auto inlineNotes = view()->inlineNotes(c.line());
+    p = mapToGlobal(p);
+    for (const auto &note : inlineNotes) {
+        auto noteCursor = note.m_position;
+        // we are not interested in notes that are past the end or at 0
+        if (note.m_position.column() >= doc()->lineLength(c.line()) || note.m_position.column() == 0) {
+            continue;
+        }
+        // an inline note is "part" of a char i.e., char width is increased so that
+        // an inline note can be painted beside it. So we need to find the actual
+        // char width
+        const auto caretWidth = renderer()->caretStyle() == KateRenderer::Line ? 2. : 0.;
+        const auto width = KTextEditor::InlineNote(note).width() + caretWidth;
+        const auto charWidth = renderer()->currentFontMetrics().horizontalAdvance(doc()->characterAt(noteCursor));
+        const auto halfCharWidth = (charWidth / 2);
+        // we leave the first half of the char width. If the user has clicked in the first half, let it go the
+        // previous column.
+        const auto totalWidth = width + halfCharWidth;
+        auto start = mapToGlobal(cursorToCoordinate(noteCursor, true, false));
+        start = start - QPoint(totalWidth, 0);
+        QRect r(start, QSize{(int)halfCharWidth, renderer()->lineHeight()});
+        if (r.contains(p)) {
+            c = noteCursor;
+            break;
+        }
+    }
+
     return c;
 }
 
