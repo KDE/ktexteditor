@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-11-08 20:47+0300\n"
+"PO-Revision-Date: 2022-11-14 14:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -352,7 +352,7 @@ msgstr "Her Zaman Kapalı"
 #: dialogs/bordersappearanceconfigwidget.ui:242
 #, kde-format
 msgid "Scro&llbars visibility:"
-msgstr "&Kaydırma çubukları görünürlüğü:"
+msgstr "&Sarma çubukları görünürlüğü:"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByCreation)
 #: dialogs/bordersappearanceconfigwidget.ui:252
@@ -531,7 +531,7 @@ msgstr ""
 "satırları kaydırmayacaktır, bunun için <b>Araçlar</b> menüsünden <b>Statik "
 "Sözcük Kaydırmayı Uygula</b> seçeneğini seçin.</p><p>Eğer istediğiniz "
 "<i>görsel olarak kaydırılması</i> ise görünüm genişliğine bağlı olarak, "
-"yapılandırma sayfasında <b>Görünüm</b> altındaki <b>Devingen Sözcük "
+"yapılandırma sayfasında <b>Görünüş</b> altındaki <b>Devingen Sözcük "
 "Kaydırma</b> seçeneğini seçin.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
@@ -1173,7 +1173,7 @@ msgstr "Satır Numaralarını Takip Et"
 #: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
 #, kde-format
 msgid "Appearance"
-msgstr "Görünüm"
+msgstr "Görünüş"
 
 #: dialogs/katedialogs.cpp:971
 #, kde-format
