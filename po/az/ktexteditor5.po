@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-11-11 18:11+0400\n"
+"PO-Revision-Date: 2022-11-15 18:11+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -934,16 +934,7 @@ msgstr "&Başdakı boşluqda Backspace düyməsi abzası kiçildir"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -958,10 +949,11 @@ msgstr ""
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
-"<p>Tab düyməsini fəaliyyəti (əlavə heç nə seçilməyibsə) <a href=\"Əgər "
-"<b>Tab</b>Emacs-da olduğu kimi cari kod blokunda mətnin düzülməsini həyata "
-"keçirsin, <b>Düzləndirmə</b> əməli üçün <a href=\"If you want <b>Tab</b> "
-"qısayol kimi seçin. \"><span>Daha çox...</span></a></p></body></html>"
+"<p>Tab düyməsini fəaliyyəti (əlavə heç nə seçilməyibsə) <a href="
+"\"Əgəristəsəniz ki, <b>Tab</b> Emacs-da olduğu kimi cari sətri cari kod "
+"blokunda yerləşdirsin, o zaman <b>Tab</b> düyməsini <b>Formatlaşdırılmış "
+"abzas</b> əməli üçün qısayol kimi seçin.\"><span>Daha çox burada ...</span></"
+"a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1148,7 +1140,7 @@ msgstr "Düzəliş seçimləri"
 #: dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Statusbar"
-msgstr ""
+msgstr "Vəziyyət paneli"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1808,51 +1800,45 @@ msgstr " saniyələr"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Sintaksis işıqlanması"
+msgstr "İşarələmə rejimini göstərmək"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Show &icon border"
+#, kde-format
 msgid "Show input mode"
-msgstr "&İkon sərhəddini göstərin"
+msgstr "Daxiletmə rejimini göstərmək"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Lüğəti dəyişmək"
+msgstr "İşlək lüğəti göstərmək"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Vərəq göstəricisini gösərmək:"
+msgstr "Vərəq ayarlarını"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Sətirlərin sayını göstər"
+msgstr "Xəttin mövqeyini göstərmək"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Sətirlərin sayını göstər"
+msgstr "Fayl kodlaşmasını göstərmək"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Sətrin sona çatması növünü göstərmək"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -2773,10 +2759,9 @@ msgid "&Color theme:"
 msgstr "&Rəng sxemi:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Şrift"
+msgstr "Şrift:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2886,144 +2871,109 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr "Etiketlə sarın"
+msgstr "Bu etiketi yığcam etmək"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "Kursoru uyğun etiketə gətirin"
+msgstr "Kursoru oxşr etiketə yerini dəyişmək"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr "Daxildəki HTML / XML etiket məzmununu seçin"
+msgstr "HTML/XML etiketlıri ilə ayrılmış məzmunu seçin"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr "Kənardakı HTML / XML etiket məzmununu seçin"
+msgstr "Kənardakı HTML/XML etiket məzmununu seçin"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "Kommentləri idarə etmək"
+msgstr "Şərh etməni açmaq və ya bağlamaq"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "Növbəti düzəli. nöqtəsinə gedin"
+msgstr "Növbəti düzəli. nöqtəsinə keçin"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "Əvvəlki düzəliş nöqtəsinə gedin"
+msgstr "Əvvəlki düzəliş nöqtəsinə keçin"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "Nıvbəti düzəliş nöqtəsini seçin"
+msgstr "Növbəti düzəliş nöqtəsini seçin"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Əvvəlki düzəliş nöqtəsini seçin"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Kursorun altındakı etiketi silin"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Etiketi bölmək və ya birləşdirmək"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Sadə riyazi məsələni hesablamaq"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Sayı 1 azaldın"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Sayı 10 azaldın"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Sayı 0.1 azaldın"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Sayı 1 artırın"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Sayı 10 artırın"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Sayı 0.1 artırın"
@@ -3138,9 +3088,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Kursorun altındakı sayı 0.1 artırın"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Kursoru əvvəlki oxşar abzasa keçirmək"
@@ -3153,9 +3101,7 @@ msgid "Navigation"
 msgstr "Naviqasiya"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Kursoru sonrakı oxşar abzasa keçirmək"
