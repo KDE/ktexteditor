@@ -2429,8 +2429,8 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
                     const uint editBits = m_doc->editableMarks();
                     // is the default or the only editable mark
                     bool ctrlPressed = QGuiApplication::keyboardModifiers() == Qt::KeyboardModifier::ControlModifier;
-                    const uint singleMark = qPopulationCount(editBits) > 1 ? editBits & config->defaultMarkType() & ctrlPressed : editBits;
-                    if (singleMark) {
+                    if (qPopulationCount(editBits) == 1 || ctrlPressed) {
+                        const uint singleMark = (qPopulationCount(editBits) > 1) ? (editBits & config->defaultMarkType()) : editBits;
                         if (m_doc->mark(cursorOnLine) & singleMark) {
                             m_doc->removeMark(cursorOnLine, singleMark);
                         } else {
