@@ -18,14 +18,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-06-24 15:25+0300\n"
+"PO-Revision-Date: 2022-11-17 16:10+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -410,16 +410,14 @@ msgid "Show Always"
 msgstr "Показывать всегда"
 
 #: dialogs/clipboardhistorydialog.cpp:267
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Выделить следующую точку редактирования"
+msgstr "Выберите текст для вставки."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "В журнале буфера обмена нет записей"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -446,12 +444,11 @@ msgstr "Автоматическое выделение &первой запис
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Циклический переход по списку дополнений с помощью Tab / Shift+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "Авто&дополнение слов"
 
@@ -477,15 +474,12 @@ msgstr "Удалять окончание при завершении"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"Функция дополнения ключевых слов предлагает для подстановки ключевые слова "
-"из языка текущего документа."
+"Функция дополнения слов предлагает для подстановки слова, найденные в "
+"документе"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -505,8 +499,7 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Documentation with Completion"
+#, kde-format
 msgid "Documentation with completion"
 msgstr "Документация с автодополнением"
 
@@ -645,16 +638,15 @@ msgstr "Не перемещать текстовый указатель при �
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "&История буфера обмена"
+msgstr "Макс. кол-во записей в журнале буфера обмена:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "Определяет количество записей для хранения в журнале буфера обмена"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -964,16 +956,7 @@ msgstr "У&меньшение отступа клавишей Backspace"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -988,11 +971,11 @@ msgstr ""
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
-"<p>Действие при нажатии клавиши Tab (если ничего не выделено) <a href=\"Для "
-"того чтобы по нажатию клавиши <b>Tab</b> выполнялось выравнивание текста в "
-"текущем блоке кода как в Emacs, укажите для пункта меню <b>Сервис</b>—"
-"<b>Выровнять</b> клавишу <b>Tab</b>.\"><span>подробнее...</span></a></p></"
-"body></html>"
+"<p>Действие при нажатии клавиши Tab (если ничего не выделено) <a href="
+"\"Чтобы по нажатию клавиши <b>Tab</b> выполнялось выравнивание текста в "
+"текущем блоке кода как в Emacs, укажите для действия <b>Сервис</b>—"
+"<b>Форматированный отступ</b> клавишу <b>Tab</b>.\"><span>Подробнее...</"
+"span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1183,11 +1166,9 @@ msgid "Editing Options"
 msgstr "Параметры редактирования"
 
 #: dialogs/katedialogs.cpp:736
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Строка состояния"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1840,51 +1821,45 @@ msgstr " сек."
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Подсветка синтаксиса"
+msgstr "Показывать режим подсветки"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Использовать режим ввода Vi"
+msgstr "Показывать режим ввода"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Выбрать словарь"
+msgstr "Показывать активный словарь"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Tabs As"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Ширина символа табуляции"
+msgstr "Показывать параметр табуляции"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Показать счётчик строк"
+msgstr "Показывать позицию в строке"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Неправильная кодировка"
+msgstr "Показывать кодировку файла"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Показывать тип конца строки"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -2809,10 +2784,9 @@ msgid "&Color theme:"
 msgstr "&Цветовая схема:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Шрифт"
+msgstr "Шрифт:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2921,144 +2895,109 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Обернуть в тег"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Переместить курсор к соответствующему тегу"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "Выделить содержимое тега HTML/XML, перемещаясь внутрь"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Выделить содержимое тега HTML/XML, перемещаясь наружу"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Закомментировать или раскомментировать"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Перейти к следующей точке редактирования"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Перейти к предыдущей точке редактирования"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Выделить следующую точку редактирования"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Выделить предыдущую точку редактирования"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Удалить тег под курсором"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Разделить или объединить тег"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Вычислить простое математическое выражение"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Уменьшить число на 1"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Уменьшить число на 10"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Уменьшить число на 0,1"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Увеличить число на 1"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Увеличить число на 10"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Увеличить число на 0,1"
@@ -3175,9 +3114,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Увеличивает число под курсором на 0,1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Перейти к предыдущему такому же отступу"
@@ -3190,9 +3127,7 @@ msgid "Navigation"
 msgstr "Навигация"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Перейти к следующему такому же отступу"
@@ -3341,6 +3276,16 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Эта команда выравнивает строки в выбранном блоке или всём документе по "
+"позиции, определённой регулярным выражением, которое указано в качестве "
+"аргумента.<br><br>Если указать пустой образец, выравнивание по умолчанию "
+"выполняется по первому непустому символу.<br>Если в образце есть блок "
+"захвата, выравнивание будет выполнено по захваченному совпадению."
+"<br><br><i>Примеры</i>:<br>«<code>alignon -</code>» вставит пробелы перед "
+"первым «-» в каждой строке, чтобы выровнять их все по одной и той же позиции."
+"<br>«<code>alignon :\\s+(.)</code>» вставит пробелы перед первым непустым "
+"символом, который идёт после двоеточия, чтобы выровнять их все по одной и "
+"той же позиции."
 
 #: script/data/commands/utils.js:423
 #, kde-format
@@ -3416,6 +3361,8 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Выбор текста по направлению вперёд от текущей позиции курсора до первого "
+"вхождения указанного аргумента (или конца текущей строки по умолчанию)."
 
 #: script/data/commands/utils.js:439
 #, kde-format
@@ -3424,6 +3371,8 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Выбор текста по направлению назад от текущей позиции курсора до последнего "
+"вхождения указанного аргумента (или начала текущей строки по умолчанию)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -4193,8 +4142,7 @@ msgid "I&gnore All"
 msgstr "Игнорировать вез&де"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
 msgstr "Проверка орфографии от курсора..."
 
@@ -6437,10 +6385,9 @@ msgid "Encoding"
 msgstr "Кодировка"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Конец строки"
+msgstr "Тип конца строки"
 
 #: view/katestatusbar.cpp:206
 #, kde-format
@@ -6464,7 +6411,7 @@ msgstr "Подсветка синтаксиса"
 #: view/katestatusbar.cpp:260
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Компактный режим строк и столбцов"
 
 #: view/katestatusbar.cpp:306
 #, kde-format
@@ -6474,12 +6421,12 @@ msgstr "[Блок] %1"
 #: view/katestatusbar.cpp:322
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:328
 #, kde-format
@@ -6566,10 +6513,9 @@ msgid ""
 msgstr "Копирование выделенного фрагмента текста в буфер обмена."
 
 #: view/kateview.cpp:462
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "&История буфера обмена"
+msgstr "Вставка из журнала буфера обмена"
 
 #: view/kateview.cpp:467
 #, kde-format
@@ -6579,13 +6525,12 @@ msgstr "Вставить выделенное"
 #: view/kateview.cpp:469
 #, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Вставить текст, скопированный ранее выделенный мышью"
+msgstr "Вставить текст, ранее выделенный мышью"
 
 #: view/kateview.cpp:473
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Вставить с заменой буфера обмена выделением"
+msgstr "Вставить с заменой буфера обмена"
 
 #: view/kateview.cpp:474
 #, kde-format
@@ -6646,28 +6591,23 @@ msgstr ""
 "уровня отступа и использование символов табуляции/пробелов можно настроить."
 
 #: view/kateview.cpp:507
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Расстановка отступов"
+msgstr "&Форматированный отступ"
 
 #: view/kateview.cpp:508
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Выравнивание текущей строки или выделенного фрагмента текста с "
-"соответствующим отступом."
+"Автоматический отступ текущей строки или выделенного фрагмента текста на "
+"надлежащее расстояние."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "В&ыровнять"
+msgstr "В&ыровнять по…"
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6682,6 +6622,15 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Эта команда выравнивает строки в выбранном блоке или всём документе по "
+"позиции, определённой регулярным выражением, которое будет предложено "
+"указать.<br /><br />Если указать пустой образец, выравнивание по умолчанию "
+"выполняется по первому непустому символу.<br />Если в образце есть блок "
+"захвата, выравнивание будет выполнено по захваченному совпадению.<br /><br /"
+"><i>Примеры</i>:<br« />С «-» будут вставлены пробелы перед первым «-» в "
+"каждой строке, чтобы выровнять их все по одной и той же позиции.<br« />С «:"
+"\\s+(.)» будут вставлены пробелы перед первым непустым символом, который "
+"идёт после двоеточия, чтобы выровнять их все по одной и той же позиции."
 
 #: view/kateview.cpp:525
 #, kde-format
@@ -6961,8 +6910,7 @@ msgstr ""
 "(прямоугольным) выделением."
 
 #: view/kateview.cpp:722
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Переключить на следующий режим ввода"
 
@@ -7226,7 +7174,7 @@ msgstr "Предыдущее вхождение выделенного текс�
 #: view/kateview.cpp:863
 #, kde-format
 msgid "Finds previous occurrence of selected text."
-msgstr "Найти предыдущее вхождение выделенного текста."
+msgstr "Находит предыдущее вхождение выделенного текста."
 
 #: view/kateview.cpp:867
 #, kde-format
@@ -7242,12 +7190,12 @@ msgstr ""
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Отметить выделенное вхождение как пропущенное"
 
 #: view/kateview.cpp:875
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Отмечает выделенное слово как пропущенное."
 
 #: view/kateview.cpp:879
 #, kde-format
@@ -7309,8 +7257,7 @@ msgid "Adds a caret in the line above the current caret."
 msgstr "Добавляет точку вставки в строку над текущим курсором."
 
 #: view/kateview.cpp:914
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Включить или отключить перемещение курсора по горбатому регистру"
 
@@ -7322,8 +7269,7 @@ msgstr ""
 "горбатому регистру"
 
 #: view/kateview.cpp:919
-#, fuzzy, kde-format
-#| msgid "Remove cursors from empty lines"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Удалить курсоры из пустых строк"
 
@@ -7588,8 +7534,7 @@ msgid "Backspace"
 msgstr "Удалить символ слева"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
 msgstr "Вставить символ табуляции"
 
@@ -7608,8 +7553,7 @@ msgstr ""
 "символы, как на текущей строке."
 
 #: view/kateview.cpp:1239
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Вставить строку без отступа"
 
@@ -7716,15 +7660,14 @@ msgid "Search wrapped"
 msgstr "Поиск продолжен"
 
 #: view/kateview.cpp:3656
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "В&ыровнять"
+msgstr "В&ыровнять по"
 
 #: view/kateview.cpp:3656
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Образец выравнивания:"
 
 #: view/kateview.cpp:4743
 #, kde-format
