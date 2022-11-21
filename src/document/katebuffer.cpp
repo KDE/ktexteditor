@@ -355,7 +355,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
         }
 
         ctxChanged = false;
-        m_highlight->doHighlight(prevLine.data(), textLine.data(), nextLine.data(), ctxChanged, tabWidth());
+        m_highlight->doHighlight(prevLine.get(), textLine.get(), nextLine.get(), ctxChanged, tabWidth());
 
 #ifdef BUFFER_DEBUGGING
         // debug stuff
@@ -448,7 +448,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
             }
 
             // empty line? continue
-            if (m_highlight->isEmptyLine(textLine.data())) {
+            if (m_highlight->isEmptyLine(textLine.get())) {
                 continue;
             }
 
@@ -461,7 +461,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
 
         // backtrack all empty lines, we don't want to add them to the fold!
         while (lastLine > startLine) {
-            if (m_highlight->isEmptyLine(plainLine(lastLine).data())) {
+            if (m_highlight->isEmptyLine(plainLine(lastLine).get())) {
                 --lastLine;
             } else {
                 break;

@@ -49,7 +49,7 @@ TextLine TextBlock::line(int line) const
 
 void TextBlock::appendLine(const QString &textOfLine)
 {
-    m_lines.push_back(TextLine::create(textOfLine));
+    m_lines.push_back(std::make_shared<Kate::TextLineData>(textOfLine));
 }
 
 void TextBlock::clearLines()

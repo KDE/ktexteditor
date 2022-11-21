@@ -32,7 +32,7 @@ class TextRange;
 class TextCursor;
 class TextBlock;
 class TextLineData;
-typedef QSharedPointer<TextLineData> TextLine;
+typedef std::shared_ptr<TextLineData> TextLine;
 /**
  * Class representing a text buffer.
  * The interface is line based, internally the text will be stored in blocks of text lines.

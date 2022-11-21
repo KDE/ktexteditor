@@ -458,8 +458,7 @@ private:
 /**
  * The normal world only accesses the text lines with shared pointers.
  */
-typedef QSharedPointer<TextLineData> TextLine;
-
+typedef std::shared_ptr<TextLineData> TextLine;
 }
 
 #endif

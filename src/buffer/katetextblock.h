@@ -30,7 +30,7 @@ class TextBuffer;
 class TextCursor;
 class TextRange;
 class TextLineData;
-typedef QSharedPointer<TextLineData> TextLine;
+typedef std::shared_ptr<TextLineData> TextLine;
 
 /**
  * Class representing a text block.
