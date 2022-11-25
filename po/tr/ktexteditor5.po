@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-11-21 22:33+0300\n"
+"PO-Revision-Date: 2022-11-24 17:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -927,7 +927,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr "&Panodan yapıştırılan kodun girintilemesini ayarla"
+msgstr "Panodan &yapıştırılan kodun girintilemesini ayarla"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -4883,7 +4883,7 @@ msgstr "&Tema:"
 #: syntax/katethemeconfig.cpp:1117
 #, kde-format
 msgid "&Copy..."
-msgstr "Kop&yala..."
+msgstr "Ko&pyala..."
 
 #: syntax/katethemeconfig.cpp:1125
 #, kde-format
@@ -6755,7 +6755,7 @@ msgstr "Kodlamayla Farklı Kaydet..."
 #: view/kateview.cpp:635
 #, kde-format
 msgid "Save &Copy As..."
-msgstr "Kop&yayı Farklı Kaydet..."
+msgstr "Ko&pyayı Farklı Kaydet..."
 
 #: view/kateview.cpp:636
 #, kde-format
