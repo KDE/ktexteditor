@@ -157,30 +157,6 @@ static inline bool isBracket(const QChar c)
     return isStartBracket(c) || isEndBracket(c);
 }
 
-/**
- * normalize given url
- * @param url input url
- * @return normalized url
- */
-static QUrl normalizeUrl(const QUrl &url)
-{
-    // only normalize local urls
-
-    if (url.isEmpty() || !url.isLocalFile()
-        || KNetworkMounts::self()->isOptionEnabledForPath(url.toLocalFile(), KNetworkMounts::StrongSideEffectsOptimizations)) {
-        return url;
-    }
-    // don't normalize if not existing!
-    // canonicalFilePath won't work!
-    const QString normalizedUrl(QFileInfo(url.toLocalFile()).canonicalFilePath());
-    if (normalizedUrl.isEmpty()) {
-        return url;
-    }
-
-    // else: use canonicalFilePath to normalize
-    return QUrl::fromLocalFile(normalizedUrl);
-}
-
 // BEGIN d'tor, c'tor
 //
 // KTextEditor::DocumentPrivate Constructor
@@ -2825,7 +2801,7 @@ bool KTextEditor::DocumentPrivate::openUrl(const QUrl &url)
         // Reset filetype when opening url
         m_fileTypeSetByUser = false;
     }
-    bool res = KTextEditor::Document::openUrl(normalizeUrl(url));
+    bool res = KTextEditor::Document::openUrl(url);
     updateDocName();
     return res;
 }
@@ -6128,7 +6104,7 @@ bool KTextEditor::DocumentPrivate::saveAs(const QUrl &url)
     m_documentState = DocumentPreSavingAs;
 
     // call base implementation for real work
-    return KTextEditor::Document::saveAs(normalizeUrl(url));
+    return KTextEditor::Document::saveAs(url);
 }
 
 QString KTextEditor::DocumentPrivate::defaultDictionary() const
