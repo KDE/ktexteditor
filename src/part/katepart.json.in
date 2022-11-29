@@ -1,6 +1,14 @@
 {
     "KPlugin": {
         "Description": "Reusable text editor component",
+        "Description[ca@valencia]": "Component reutilitzable d'edició de text",
+        "Description[ca]": "Component reutilitzable d'edició de text",
+        "Description[es]": "Componente de edición de texto reutilizable",
+        "Description[nl]": "Herbruikbare tekstbewerkercomponent",
+        "Description[pt]": "Componente de edição de texto reutilizável",
+        "Description[tr]": "Yeniden kullanılabilir metin düzenleyici bileşeni",
+        "Description[uk]": "Універсальний компонент текстового редактора",
+        "Description[x-test]": "xxReusable text editor componentxx",
         "Icon": "accessories-text-editor",
         "InitialPreference": 8,
         "License": "LGPL 2.1+",
@@ -42,6 +50,14 @@
             "model/vrml"
         ],
         "Name": "Embedded Advanced Text Editor",
+        "Name[ca@valencia]": "Editor de text avançat incrustat",
+        "Name[ca]": "Editor de text avançat incrustat",
+        "Name[es]": "Editor de texto avanzado incrustado",
+        "Name[nl]": "Ingebed geavanceerd tekstinvoercomponent",
+        "Name[pt]": "Editor de Texto Avançado Incorporado",
+        "Name[tr]": "Gömülü Gelişmiş Metin Düzenleyici",
+        "Name[uk]": "Вмонтований потужний текстовий редактор",
+        "Name[x-test]": "xxEmbedded Advanced Text Editorxx",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
             "KParts/ReadWritePart"
