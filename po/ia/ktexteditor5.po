@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-07-15 12:05+0200\n"
+"PO-Revision-Date: 2022-11-28 16:17+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -444,7 +444,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "A&uto Word Completion"
 msgid "A&uto word completion"
-msgstr "Completion de parola a&utomatic"
+msgstr "Completamento de parola automatic"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -1173,11 +1173,9 @@ msgid "Editing Options"
 msgstr "Optiones per editar"
 
 #: dialogs/katedialogs.cpp:736
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Barra de Stato"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -2821,10 +2819,9 @@ msgid "&Color theme:"
 msgstr "Thema de &Color:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Font"
+msgstr "Font:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2965,8 +2962,7 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Selige contentos de etiquetta HTML/XML verso le exterior"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Il habilita/dishabilita commento"
