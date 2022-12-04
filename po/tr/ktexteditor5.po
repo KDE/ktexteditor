@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-11-24 17:10+0300\n"
+"PO-Revision-Date: 2022-12-03 19:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -3760,7 +3760,7 @@ msgstr "Önceki eşleşmeye git"
 #: search/searchbarincremental.ui:121 search/searchbarpower.ui:136
 #, kde-format
 msgid "Match case sensitive"
-msgstr "Büyük küçük harf duyarlı eşleştir"
+msgstr "BÜYÜK/küçük harf duyarlı eşleştir"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarincremental.ui:161
