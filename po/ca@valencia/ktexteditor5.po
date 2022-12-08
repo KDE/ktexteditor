@@ -176,7 +176,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr "Mostra les fletxes per reduir els blocs de codi"
+msgstr "Mostra les fletxes per a reduir els blocs de codi"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -2013,7 +2013,7 @@ msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
 msgstr ""
-"Si està activada, l'editor mostrarà línies verticals per ajudar a "
+"Si està activada, l'editor mostrarà línies verticals per a ajudar a "
 "identificar el sagnat de les línies."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
@@ -3291,7 +3291,7 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
-"Esta ordre alinea les línies del bloc seleccionat o de tot el document a la "
+"Esta ordre alinea les línies del bloc seleccionat o de tot el document en la "
 "columna indicada per una expressió regular proporcionada com a argument."
 "<br><br>Si proporcioneu un patró buit, s'alinearà al primer caràcter no "
 "blanc de manera predeterminada.<br>Si el patró té una captura, se sagnarà en "
@@ -6678,7 +6678,7 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
-"Esta ordre alinea les línies del bloc seleccionat o de tot el document a la "
+"Esta ordre alinea les línies del bloc seleccionat o de tot el document en la "
 "columna indicada per una expressió regular que se us demanarà.<br /><br />Si "
 "proporcioneu un patró buit, s'alinearà al primer caràcter no blanc de manera "
 "predeterminada.<br />Si el patró té una captura, se sagnarà en la "
@@ -7953,7 +7953,7 @@ msgid ""
 msgstr ""
 "<p><b>e[dit] &mdash; torna a carregar el document actual</b></p><p>Sintaxi: "
 "<tt><b>e[dit]</b></tt></p><p>Inicia l'<b>e</b>dició del document actual de "
-"nou. Açò és útil per tornar a editar el fitxer actual, quan ha sigut "
+"nou. Açò és útil per a tornar a editar el fitxer actual, quan ha sigut "
 "modificat en el disc.</p>"
 
 #: vimode/appcommands.cpp:512
