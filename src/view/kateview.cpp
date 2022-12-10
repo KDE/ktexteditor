@@ -1364,8 +1364,7 @@ KTextEditor::Range KTextEditor::ViewPrivate::foldLine(int line)
 
     // Ensure not to fold the end marker to avoid a deceptive look, but only on token based folding
     // ensure we don't compute an invalid line by moving outside of the foldingRange range by checking onSingleLine(), see bug 417890
-    Kate::TextLine startTextLine = doc()->buffer().plainLine(line);
-    if (!startTextLine->markedAsFoldingStartIndentation() && !foldingRange.onSingleLine()) {
+    if (!m_doc->buffer().isFoldingStartingOnLine(line).second && !foldingRange.onSingleLine()) {
         const int adjustedLine = foldingRange.end().line() - 1;
         foldingRange.setEnd(KTextEditor::Cursor(adjustedLine, doc()->buffer().plainLine(adjustedLine)->length()));
     }

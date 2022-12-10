@@ -220,15 +220,6 @@ public:
     }
 
     /**
-     * Is on this line a folding start per indentation?
-     * @return folding start line per indentation? or not?
-     */
-    bool markedAsFoldingStartIndentation() const
-    {
-        return m_flags & flagFoldingStartIndentation;
-    }
-
-    /**
      * Mark as folding start line of an attribute based folding.
      */
     void markAsFoldingStartAttribute()
