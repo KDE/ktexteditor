@@ -417,12 +417,12 @@ std::pair<bool, bool> KateBuffer::isFoldingStartingOnLine(int startLine)
     const auto startTextLine = plainLine(startLine);
 
     // we prefer token based folding
-    if (startTextLine->markedAsFoldingStart()) {
+    if (startTextLine->markedAsFoldingStartAttribute()) {
         return {true, false};
     }
 
     // check for indentation based folding
-    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0) && !startTextLine->markedAsFoldingStartAttribute()) {
+    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0)) {
         // compute if we increase indentation in next line
         const auto nextLine = plainLine(startLine + 1);
         if (nextLine && startTextLine->highlightingState().indentationBasedFoldingEnabled() && !m_highlight->isEmptyLine(startTextLine.get())

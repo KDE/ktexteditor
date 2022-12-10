@@ -442,6 +442,7 @@ void TextFolding::debugPrint(const QString &title) const
 
 void TextFolding::editEnd(int startLine, int endLine)
 {
+#if 0 // FIXME check all ranges with startLine and endLine matching with isFoldingStartingOnLine
     // Document was edited, see if any ranges need to be removed
     for (int i = startLine; i <= endLine; ++i) {
         if (i >= m_buffer.lines()) {
@@ -466,6 +467,7 @@ void TextFolding::editEnd(int startLine, int endLine)
             }
         }
     }
+#endif
 }
 
 QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, bool recurse)

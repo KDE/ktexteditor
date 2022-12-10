@@ -2147,9 +2147,8 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                             anyFolded = true;
                         }
                     }
-                    const Kate::TextLine tl = m_doc->kateTextLine(realLine);
                     if (!m_view->config()->showFoldingOnHoverOnly() || m_mouseOver) {
-                        if (!startingRanges.isEmpty() || tl->markedAsFoldingStart()) {
+                        if (!startingRanges.isEmpty() || m_doc->buffer().isFoldingStartingOnLine(realLine).first) {
                             if (anyFolded) {
                                 paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
                             } else {

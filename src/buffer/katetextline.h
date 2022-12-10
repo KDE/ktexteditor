@@ -203,15 +203,6 @@ public:
     }
 
     /**
-     * Is on this line a folding start?
-     * @return folding start line or not?
-     */
-    bool markedAsFoldingStart() const
-    {
-        return m_flags & (flagFoldingStartAttribute | flagFoldingStartIndentation);
-    }
-
-    /**
      * Clear folding start status.
      */
     void clearMarkedAsFoldingStart()
