@@ -89,19 +89,9 @@ void KateBuffer::updateHighlighting()
         return;
     }
 
-    // look one line too far, needed for linecontinue stuff
-    const int editTagLineEnd = editingMaximalLineChanged() + 1;
-
-    // for indentation sensitive folding, we need to redo things
-    // one line up, to e.g. get notified about new folding starts
-    // see bug 351496
-    int editTagLineStart = editingMinimalLineChanged();
-    if ((editTagLineStart > 0) && m_highlight->foldingIndentationSensitive()) {
-        --editTagLineStart;
-    }
-
     // really update highlighting
-    doHighlight(editTagLineStart, editTagLineEnd, true);
+    // look one line too far, needed for linecontinue stuff
+    doHighlight(editingMinimalLineChanged(), editingMaximalLineChanged() + 1, true);
 }
 
 void KateBuffer::clear()
@@ -410,29 +400,52 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
 #endif
 }
 
-KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
+std::pair<bool, bool> KateBuffer::isFoldingStartingOnLine(int startLine)
 {
     // ensure valid input
     if (startLine < 0 || startLine >= lines()) {
-        return KTextEditor::Range::invalid();
+        return {false, false};
     }
 
     // no highlighting, no folding, ATM
     if (!m_highlight || m_highlight->noHighlighting()) {
-        return KTextEditor::Range::invalid();
+        return {false, false};
     }
 
     // first: get the wanted start line highlighted
     ensureHighlighted(startLine);
-    Kate::TextLine startTextLine = plainLine(startLine);
+    const auto startTextLine = plainLine(startLine);
 
-    // return if no folding start!
-    if (!startTextLine->markedAsFoldingStart()) {
-        return KTextEditor::Range::invalid();
+    // we prefer token based folding
+    if (startTextLine->markedAsFoldingStart()) {
+        return {true, false};
     }
 
+    // check for indentation based folding
+    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0) && !startTextLine->markedAsFoldingStartAttribute()) {
+        // compute if we increase indentation in next line
+        const auto nextLine = plainLine(startLine + 1);
+        if (nextLine && startTextLine->highlightingState().indentationBasedFoldingEnabled() && !m_highlight->isEmptyLine(startTextLine.get())
+            && !m_highlight->isEmptyLine(nextLine.get()) && (startTextLine->indentDepth(tabWidth()) < nextLine->indentDepth(tabWidth()))) {
+            return {true, true};
+        }
+    }
+
+    // no folding start of any kind
+    return {false, false};
+}
+
+KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
+{
+    // check for start, will trigger highlighting, too, and rule out bad lines
+    const auto [foldingStart, foldingIndentationSensitive] = isFoldingStartingOnLine(startLine);
+    if (!foldingStart) {
+        return KTextEditor::Range::invalid();
+    }
+    const auto startTextLine = plainLine(startLine);
+
     // now: decided if indentation based folding or not!
-    if (startTextLine->markedAsFoldingStartIndentation()) {
+    if (foldingIndentationSensitive) {
         // get our start indentation level
         const int startIndentation = startTextLine->indentDepth(tabWidth());
 

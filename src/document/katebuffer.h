@@ -230,6 +230,13 @@ public:
     void invalidateHighlighting();
 
     /**
+     * For a given line, compute if folding starts here.
+     * @param startLine start line
+     * @return does folding start here and is it indentation based?
+     */
+    std::pair<bool, bool> isFoldingStartingOnLine(int startLine);
+
+    /**
      * For a given line, compute the folding range that starts there
      * to be used to fold e.g. from the icon border
      * @param startLine start line

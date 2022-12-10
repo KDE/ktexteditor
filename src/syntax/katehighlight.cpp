@@ -107,11 +107,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 }
 
-void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
-                                   Kate::TextLineData *textLine,
-                                   const Kate::TextLineData *nextLine,
-                                   bool &ctxChanged,
-                                   int tabWidth)
+void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, const Kate::TextLineData *, bool &ctxChanged, int)
 {
     // default: no context change
     ctxChanged = false;
@@ -158,15 +154,6 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
 
         // clear hash for next doHighlight
         m_foldingStartToCount.clear();
-    }
-
-    // check for indentation based folding
-    if (m_foldingIndentationSensitive && (tabWidth > 0) && !textLine->markedAsFoldingStartAttribute()) {
-        // compute if we increase indentation in next line
-        if (endOfLineState.indentationBasedFoldingEnabled() && !isEmptyLine(textLine) && !isEmptyLine(nextLine)
-            && (textLine->indentDepth(tabWidth) < nextLine->indentDepth(tabWidth))) {
-            textLine->markAsFoldingStartIndentation();
-        }
     }
 }
 
