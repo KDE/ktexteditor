@@ -332,13 +332,14 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
     int start_spellchecking = -1;
     int last_line_spellchecking = -1;
     bool ctxChanged = false;
-    Kate::TextLine textLine = plainLine(current_line);
-    Kate::TextLine nextLine;
     // loop over the lines of the block, from startline to endline or end of block
     // if stillcontinue forces us to do so
     for (; current_line < qMin(endLine + 1, lines()); ++current_line) {
+        // handle one line
         ctxChanged = false;
+        Kate::TextLine textLine = plainLine(current_line);
         m_highlight->doHighlight(prevLine.get(), textLine.get(), ctxChanged);
+        prevLine = textLine;
 
 #ifdef BUFFER_DEBUGGING
         // debug stuff
@@ -359,10 +360,6 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
         } else if (!stillcontinue && start_spellchecking >= 0) {
             last_line_spellchecking = current_line;
         }
-
-        // move around the lines
-        prevLine = textLine;
-        textLine = nextLine;
     }
 
     // perhaps we need to adjust the maximal highlighted line
