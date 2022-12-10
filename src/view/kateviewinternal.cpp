@@ -2916,7 +2916,11 @@ bool KateViewInternal::tagLines(KTextEditor::Cursor start, KTextEditor::Cursor e
         }
     }
 
-    if (!view()->dynWordWrap()) {
+    // full update of border it we have indentation based hl and show the markers always
+    if (!m_view->config()->showFoldingOnHoverOnly() && doc()->highlight() && doc()->highlight()->foldingIndentationSensitive()) {
+        // not the default setting, can be optimized if ever some issue
+        m_leftBorder->update();
+    } else if (!view()->dynWordWrap()) {
         int y = lineToY(start.line());
         // FIXME is this enough for when multiple lines are deleted
         int h = (end.line() - start.line() + 2) * renderer()->lineHeight();
