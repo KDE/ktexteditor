@@ -3080,7 +3080,11 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
         QKeyEvent *k = static_cast<QKeyEvent *>(e);
 
         if (k->key() == Qt::Key_Escape && k->modifiers() == Qt::NoModifier) {
-            view()->clearSecondaryCursors();
+            if (!view()->m_secondaryCursors.empty()) {
+                view()->clearSecondaryCursors();
+                k->accept();
+                return true;
+            }
 
             if (view()->isCompletionActive()) {
                 view()->abortCompletion();
