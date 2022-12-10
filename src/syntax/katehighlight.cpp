@@ -107,7 +107,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 }
 
-void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, const Kate::TextLineData *, bool &ctxChanged, int)
+void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged)
 {
     // default: no context change
     ctxChanged = false;

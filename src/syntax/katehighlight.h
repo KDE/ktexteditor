@@ -117,11 +117,9 @@ public:
      *
      * @param prevLine The previous line, the context array is picked up from that if present.
      * @param textLine The text line to parse
-     * @param nextLine The next line, to check if indentation changed for indentation based folding.
      * @param ctxChanged will be set to reflect if the context changed
-     * @param tabWidth tab width for indentation based folding, if wanted, else 0
      */
-    void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, const Kate::TextLineData *nextLine, bool &ctxChanged, int tabWidth = 0);
+    void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged);
 
     const QString &name() const
     {

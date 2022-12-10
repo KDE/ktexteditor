@@ -337,15 +337,8 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
     // loop over the lines of the block, from startline to endline or end of block
     // if stillcontinue forces us to do so
     for (; current_line < qMin(endLine + 1, lines()); ++current_line) {
-        // get next line, if any
-        if ((current_line + 1) < lines()) {
-            nextLine = plainLine(current_line + 1);
-        } else {
-            nextLine = Kate::TextLine(new Kate::TextLineData());
-        }
-
         ctxChanged = false;
-        m_highlight->doHighlight(prevLine.get(), textLine.get(), nextLine.get(), ctxChanged, tabWidth());
+        m_highlight->doHighlight(prevLine.get(), textLine.get(), ctxChanged);
 
 #ifdef BUFFER_DEBUGGING
         // debug stuff
