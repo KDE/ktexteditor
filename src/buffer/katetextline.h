@@ -103,7 +103,7 @@ public:
     /**
      * Flags of TextLineData
      */
-    enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagFoldingStartIndentation = 4, flagLineModified = 8, flagLineSavedOnDisk = 16 };
+    enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagLineModified = 4, flagLineSavedOnDisk = 8 };
 
     /**
      * Construct an empty text line.
@@ -207,7 +207,7 @@ public:
      */
     void clearMarkedAsFoldingStart()
     {
-        m_flags &= ~(flagFoldingStartAttribute | flagFoldingStartIndentation);
+        m_flags &= ~flagFoldingStartAttribute;
     }
 
     /**
@@ -224,17 +224,7 @@ public:
      */
     void markAsFoldingStartAttribute()
     {
-        clearMarkedAsFoldingStart();
         m_flags |= flagFoldingStartAttribute;
-    }
-
-    /**
-     * Mark as folding start line of an indentation based folding.
-     */
-    void markAsFoldingStartIndentation()
-    {
-        clearMarkedAsFoldingStart();
-        m_flags |= flagFoldingStartIndentation;
     }
 
     /**
