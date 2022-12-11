@@ -412,12 +412,22 @@ std::pair<bool, bool> KateBuffer::isFoldingStartingOnLine(int startLine)
     }
 
     // check for indentation based folding
-    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0)) {
-        // compute if we increase indentation in next line
-        const auto nextLine = plainLine(startLine + 1);
-        if (nextLine && startTextLine->highlightingState().indentationBasedFoldingEnabled() && !m_highlight->isEmptyLine(startTextLine.get())
-            && !m_highlight->isEmptyLine(nextLine.get()) && (startTextLine->indentDepth(tabWidth()) < nextLine->indentDepth(tabWidth()))) {
-            return {true, true};
+    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0) && startTextLine->highlightingState().indentationBasedFoldingEnabled()
+        && !m_highlight->isEmptyLine(startTextLine.get())) {
+        // do some look ahead if this line might be a folding start
+        // we limit this to avoid runtime disaster
+        int linesVisited = 0;
+        while (const auto nextLine = plainLine(++startLine)) {
+            if (!m_highlight->isEmptyLine(nextLine.get())) {
+                const bool foldingStart = startTextLine->indentDepth(tabWidth()) < nextLine->indentDepth(tabWidth());
+                return {foldingStart, foldingStart};
+            }
+
+            // ensure some sensible limit of look ahead
+            constexpr int lookAheadLimit = 64;
+            if (++linesVisited > lookAheadLimit) {
+                break;
+            }
         }
     }
 
