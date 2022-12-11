@@ -1,16 +1,16 @@
 var katescript = {
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>, Pablo Rauzy <r_NOSPAM_@uzy.me>",
     "license": "LGPL-2.1+",
-    "revision": 9,
+    "revision": 10,
     "kate-version": "5.1",
     "functions": ["sort", "sortuniq", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
         {   "function": "sort",
-            "name": "Sort Selected Text",
+            "name": "Sort Selected Text Alphabetically",
             "category": "Editing"
         },
         {   "function": "sortuniq",
-            "name": "Sort Unique Selected Text",
+            "name": "Remove Duplicates and Sort Selected Text Alphabetically",
             "category": "Editing"
         },
         {   "function": "moveLinesDown",
