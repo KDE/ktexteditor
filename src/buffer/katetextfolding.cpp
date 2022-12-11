@@ -440,34 +440,28 @@ void TextFolding::debugPrint(const QString &title) const
     printf("%s\n    %s\n", qPrintable(title), qPrintable(debugDump()));
 }
 
-void TextFolding::editEnd(int startLine, int endLine)
+void TextFolding::editEnd(int startLine, int endLine, std::function<bool(int)> isLineFoldingStart)
 {
-#if 0 // FIXME check all ranges with startLine and endLine matching with isFoldingStartingOnLine
-    // Document was edited, see if any ranges need to be removed
-    for (int i = startLine; i <= endLine; ++i) {
-        if (i >= m_buffer.lines()) {
-            continue;
-        }
-        auto ranges = foldingRangesStartingOnLine(i);
-        if (ranges.empty()) {
-            continue;
-        }
-        auto l = m_buffer.line(i);
-        if (l->markedAsFoldingStart()) {
+    // search upper bound, index to item with start line higher than our one
+    auto foldIt = std::upper_bound(m_foldedFoldingRanges.begin(), m_foldedFoldingRanges.end(), startLine, compareRangeByStartWithLine);
+    if (foldIt != m_foldedFoldingRanges.begin()) {
+        --foldIt;
+    }
+
+    // handle all ranges until we go behind the last line
+    while (foldIt != m_foldedFoldingRanges.end() && (*foldIt)->start->line() <= endLine) {
+        // shall we keep this folding?
+        if (isLineFoldingStart((*foldIt)->start->line())) {
+            ++foldIt;
             continue;
         }
 
-        for (const auto &f : ranges) {
-            auto it = m_idToFoldingRange.find(f.first);
-            if (it != m_idToFoldingRange.end() && it.value()) {
-                const auto foldingRange = it.value();
-                m_foldingRanges.removeOne(foldingRange);
-                m_foldedFoldingRanges.removeOne(foldingRange);
-                m_idToFoldingRange.erase(it);
-            }
-        }
+        // else kill it
+        m_foldingRanges.removeOne(*foldIt);
+        m_idToFoldingRange.remove((*foldIt)->id);
+        delete *foldIt;
+        foldIt = m_foldedFoldingRanges.erase(foldIt);
     }
-#endif
 }
 
 QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, bool recurse)

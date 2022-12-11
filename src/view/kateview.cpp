@@ -2427,7 +2427,9 @@ void KTextEditor::ViewPrivate::editStart()
 void KTextEditor::ViewPrivate::editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom)
 {
     m_viewInternal->editEnd(editTagLineStart, editTagLineEnd, tagFrom);
-    textFolding().editEnd(editTagLineStart, editTagLineEnd);
+    textFolding().editEnd(editTagLineStart, editTagLineEnd, [this](int line) {
+        return m_doc->buffer().isFoldingStartingOnLine(line).first;
+    });
 }
 
 void KTextEditor::ViewPrivate::editSetCursor(const KTextEditor::Cursor cursor)
