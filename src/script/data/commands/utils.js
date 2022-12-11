@@ -3,7 +3,7 @@ var katescript = {
     "license": "LGPL-2.1+",
     "revision": 9,
     "kate-version": "5.1",
-    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
+    "functions": ["sort", "sortuniq", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
         {   "function": "sort",
             "name": "Sort Selected Text",
