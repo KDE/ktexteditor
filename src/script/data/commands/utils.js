@@ -9,6 +9,10 @@ var katescript = {
             "name": "Sort Selected Text",
             "category": "Editing"
         },
+        {   "function": "sortuniq",
+            "name": "Sort Unique Selected Text",
+            "category": "Editing"
+        },
         {   "function": "moveLinesDown",
             "name": "Move Lines Down",
             "shortcut": "Ctrl+Shift+Down",
@@ -58,6 +62,21 @@ function uniq()
             }
         }
         return uniq_lines;
+    });
+}
+
+function sortuniq()
+{
+    each(function(lines) {
+        var uniq_lines = [];
+        var seen = new Set();
+        for ( var i = 0; i < lines.length; ++i ) {
+            if (!seen.has(lines[i])) {
+                seen.add(lines[i]);
+                uniq_lines.push(lines[i]);
+            }
+        }
+        return uniq_lines.sort();
     });
 }
 
