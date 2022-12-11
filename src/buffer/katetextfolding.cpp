@@ -449,6 +449,7 @@ void TextFolding::editEnd(int startLine, int endLine, std::function<bool(int)> i
     }
 
     // handle all ranges until we go behind the last line
+    bool anyUpdate = false;
     while (foldIt != m_foldedFoldingRanges.end() && (*foldIt)->start->line() <= endLine) {
         // shall we keep this folding?
         if (isLineFoldingStart((*foldIt)->start->line())) {
@@ -461,6 +462,13 @@ void TextFolding::editEnd(int startLine, int endLine, std::function<bool(int)> i
         m_idToFoldingRange.remove((*foldIt)->id);
         delete *foldIt;
         foldIt = m_foldedFoldingRanges.erase(foldIt);
+        anyUpdate = true;
+    }
+
+    // ensure we do the proper updates outside
+    // we might change some range outside of the lines we edited
+    if (anyUpdate) {
+        Q_EMIT foldingRangesChanged();
     }
 }
 
