@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-12 00:43+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2088,13 +2088,13 @@ msgstr ""
 msgid "Line Height Multiplier:"
 msgstr "줄 높이 배수:"
 
-#: document/katebuffer.cpp:150
+#: document/katebuffer.cpp:140
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "새 파일"
 
-#: document/katebuffer.cpp:157
+#: document/katebuffer.cpp:147
 #, kde-format
 msgid "The file %1 does not exist."
 msgstr "파일 %1이(가) 없습니다."
@@ -3114,77 +3114,86 @@ msgid "Move cursor to next matching indent"
 msgstr "다음 일치하는 들여쓰기로 커서 이동"
 
 #: script/data/commands/utils.js:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
 msgctxt "Script command name"
-msgid "Sort Selected Text"
+msgid "Sort Selected Text Alphabetically"
 msgstr "선택한 문자열 정렬하기"
 
-#: script/data/commands/utils.js:10 script/data/commands/utils.js:15
-#: script/data/commands/utils.js:20 script/data/commands/utils.js:24
+#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
+#: script/data/commands/utils.js:19 script/data/commands/utils.js:24
 #: script/data/commands/utils.js:28 script/data/commands/utils.js:32
-#: script/data/commands/utils.js:36
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
 msgstr "편집"
 
 #: script/data/commands/utils.js:13
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgctxt "Script command name"
+msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgstr "선택한 문자열이나 전체 문서의 중복된 줄을 삭제합니다."
+
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "줄 아래로 이동"
 
-#: script/data/commands/utils.js:18
+#: script/data/commands/utils.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "줄 위로 이동"
 
-#: script/data/commands/utils.js:23
+#: script/data/commands/utils.js:27
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "선택한 줄을 아래로 복제"
 
-#: script/data/commands/utils.js:27
+#: script/data/commands/utils.js:31
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "선택한 줄을 위로 복제"
 
-#: script/data/commands/utils.js:31
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "선택한 문자열 URI 인코드"
 
-#: script/data/commands/utils.js:35
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "선택한 문자열 URI 디코드"
 
-#: script/data/commands/utils.js:399
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "선택한 문자열이나 전체 문서를 정렬합니다."
 
-#: script/data/commands/utils.js:401
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Move selected lines down."
 msgstr "선택한 줄을 아래로 이동합니다."
 
-#: script/data/commands/utils.js:403
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Move selected lines up."
 msgstr "선택한 줄을 위로 이동합니다."
 
-#: script/data/commands/utils.js:405
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "선택한 문자열이나 전체 문서의 중복된 줄을 삭제합니다."
 
-#: script/data/commands/utils.js:407
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3195,22 +3204,22 @@ msgstr ""
 "렬 방법과 자연 언어 순 정렬의 차이는 다음과 같습니다:<br />sort(a10, a1, a2) "
 "=> a1, a10, a2<br />natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:409
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "선택한 문자열이나 전체 문서에서 마지막 빈 줄을 삭제합니다."
 
-#: script/data/commands/utils.js:411
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "선택한 문자열이나 전체 문서의 첫 빈 줄을 삭제합니다."
 
-#: script/data/commands/utils.js:413
+#: script/data/commands/utils.js:432
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "선택한 문자열이나 전체 문서의 맨 앞과 맨 뒤 빈 줄을 삭제합니다."
 
-#: script/data/commands/utils.js:415
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3221,12 +3230,12 @@ msgstr ""
 "수 있습니다:<br><code>join ', '</code>를 입력하면 개별적인 줄을 합치고 줄 사"
 "이를 쉼표로 구분합니다."
 
-#: script/data/commands/utils.js:417
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "선택한 문자열이나 전체 문서에서 빈 줄을 삭제합니다."
 
-#: script/data/commands/utils.js:419
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3240,7 +3249,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:423
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3255,7 +3264,7 @@ msgstr ""
 "할 분량을 줄이려면 다음과 같이 축약해서 쓸 수도 있습니다.<br> <code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:425
+#: script/data/commands/utils.js:444
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3270,7 +3279,7 @@ msgstr ""
 "0;}'</code><br>입력할 분량을 줄이려면 다음과 같이 축약해서 쓸 수도 있습니다."
 "<br><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:427
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3286,17 +3295,17 @@ msgstr ""
 "\"\");}'</code><br>입력할 분량을 줄이려면 다음과 같이 축약해서 쓸 수도 있습니"
 "다.<br> <code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:429
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "선택한 줄을 위로 복제합니다."
 
-#: script/data/commands/utils.js:431
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "선택한 줄을 아래로 복제합니다."
 
-#: script/data/commands/utils.js:433
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3304,12 +3313,12 @@ msgid ""
 msgstr ""
 "한 줄 선택의 특수 문자를 인코딩하여 선택한 문자열을 올바른 URI로 변환합니다."
 
-#: script/data/commands/utils.js:435
+#: script/data/commands/utils.js:454
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "URI 인코딩 동작의 역을 수행합니다."
 
-#: script/data/commands/utils.js:437
+#: script/data/commands/utils.js:456
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3318,7 +3327,7 @@ msgstr ""
 "현재 커서 위치로부터 인자로 지정한 단어가 처음 나타나는 위치(또는 기본값으로 "
 "현재 줄의 끝)까지 전방 선택"
 
-#: script/data/commands/utils.js:439
+#: script/data/commands/utils.js:458
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -7510,38 +7519,38 @@ msgstr "현재 노드 전환"
 msgid "Toggle Contained Nodes"
 msgstr "포함된 노드 전환"
 
-#: view/kateview.cpp:1475
+#: view/kateview.cpp:1474
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(읽기 전용) %1"
 
-#: view/kateview.cpp:1663
+#: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "캐멀케이스 커서 이동 비활성화됨"
 
-#: view/kateview.cpp:1665
+#: view/kateview.cpp:1664
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "캐멀케이스 커서 이동 활성화됨"
 
-#: view/kateview.cpp:2147
+#: view/kateview.cpp:2146
 #, kde-format
 msgid "Search wrapped"
 msgstr "끝까지 검색되어 돌아옴"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "정렬(&A)"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4743
+#: view/kateview.cpp:4744
 #, kde-format
 msgid "Export File as HTML"
 msgstr "파일 HTML로 내보내기"
@@ -7610,17 +7619,17 @@ msgstr "성공: "
 msgid "Command \"%1\" failed."
 msgstr "명령 \"%1\"을 실행하는 데 실패했습니다."
 
-#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
+#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
 #, kde-format
 msgid "Mark Type %1"
 msgstr "형식 %1 표시"
 
-#: view/kateviewhelpers.cpp:2587
+#: view/kateviewhelpers.cpp:2586
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "기본 표시 형식 선택"
 
-#: view/kateviewhelpers.cpp:2728
+#: view/kateviewhelpers.cpp:2727
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "주석 표시줄 끄기"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-12 00:43+0000\n"
 "PO-Revision-Date: 2022-10-02 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2120,13 +2120,13 @@ msgstr ""
 msgid "Line Height Multiplier:"
 msgstr "Radhöjdsmultiplikator:"
 
-#: document/katebuffer.cpp:150
+#: document/katebuffer.cpp:140
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Ny fil"
 
-#: document/katebuffer.cpp:157
+#: document/katebuffer.cpp:147
 #, kde-format
 msgid "The file %1 does not exist."
 msgstr "Filen %1 finns inte."
@@ -3116,78 +3116,88 @@ msgid "Move cursor to next matching indent"
 msgstr "Flytta markören till nästa motsvarande indentering"
 
 #: script/data/commands/utils.js:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
 msgctxt "Script command name"
-msgid "Sort Selected Text"
+msgid "Sort Selected Text Alphabetically"
 msgstr "Sortera markerad text"
 
-#: script/data/commands/utils.js:10 script/data/commands/utils.js:15
-#: script/data/commands/utils.js:20 script/data/commands/utils.js:24
+#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
+#: script/data/commands/utils.js:19 script/data/commands/utils.js:24
 #: script/data/commands/utils.js:28 script/data/commands/utils.js:32
-#: script/data/commands/utils.js:36
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
 msgstr "Redigering"
 
 #: script/data/commands/utils.js:13
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgctxt "Script command name"
+msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgstr ""
+"Ta bort duplicerade rader från markerad text eller från hela dokumentet."
+
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Flytta ner rader"
 
-#: script/data/commands/utils.js:18
+#: script/data/commands/utils.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Flytta upp rader"
 
-#: script/data/commands/utils.js:23
+#: script/data/commands/utils.js:27
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Duplicera markerade rader neråt"
 
-#: script/data/commands/utils.js:27
+#: script/data/commands/utils.js:31
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Duplicera markerade rader uppåt"
 
-#: script/data/commands/utils.js:31
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Koda markerad text till webbadress"
 
-#: script/data/commands/utils.js:35
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Avkoda markerad text från webbadress"
 
-#: script/data/commands/utils.js:399
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Sortera markerad text eller hela dokumentet."
 
-#: script/data/commands/utils.js:401
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Flytta ner markerade rader."
 
-#: script/data/commands/utils.js:403
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Flytta upp markerade rader."
 
-#: script/data/commands/utils.js:405
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
 "Ta bort duplicerade rader från markerad text eller från hela dokumentet."
 
-#: script/data/commands/utils.js:407
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3198,25 +3208,25 @@ msgstr ""
 "ett exempel som visar skillnaden mot den normala sorteringsmetoden:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:409
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
 "Tar bort avslutande blanktecken från markeringen eller hela dokumentet."
 
-#: script/data/commands/utils.js:411
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Tar bort inledande blanktecken från markeringen eller hela dokumentet."
 
-#: script/data/commands/utils.js:413
+#: script/data/commands/utils.js:432
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Tar bort inledande och avslutande blanktecken från markeringen eller hela "
 "dokumentet."
 
-#: script/data/commands/utils.js:415
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3227,12 +3237,12 @@ msgstr ""
 "skiljetecken att placera mellan varje rad:<br><code>join ', '</code> "
 "sammanfogar t.ex. rader och skiljer dem åt med ett kommatecken."
 
-#: script/data/commands/utils.js:417
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Tar bort tomma rader från markeringen eller hela dokumentet."
 
-#: script/data/commands/utils.js:419
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3255,7 +3265,7 @@ msgstr ""
 "mellanslag innan det första tecknet som finns efter ett kolon och inte är "
 "ett blanktecken för att justera alla till samma kolumn."
 
-#: script/data/commands/utils.js:423
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3271,7 +3281,7 @@ msgstr ""
 "också att göra följande för att uppnå samma sak:<br><code>each 'lines."
 "join(\", \")'</code>"
 
-#: script/data/commands/utils.js:425
+#: script/data/commands/utils.js:444
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3287,7 +3297,7 @@ msgstr ""
 "går det också att göra följande för att uppnå samma sak:<br><code>filter "
 "'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:427
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3304,17 +3314,17 @@ msgstr ""
 "tangentbordsanvändningen, går det också att göra följande för att uppnå "
 "samma sak:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:429
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Duplicera markerade rader uppåt."
 
-#: script/data/commands/utils.js:431
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Duplicera markerade rader neråt."
 
-#: script/data/commands/utils.js:433
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3323,12 +3333,12 @@ msgstr ""
 "Koda specialtecken i en enradsmarkering, så att resultattexten kan användas "
 "som en webbadress."
 
-#: script/data/commands/utils.js:435
+#: script/data/commands/utils.js:454
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Omvänd åtgärden att koda till webbadress."
 
-#: script/data/commands/utils.js:437
+#: script/data/commands/utils.js:456
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3338,7 +3348,7 @@ msgstr ""
 "av det angivna argumentet efter den (eller till slutet på aktuell rad som "
 "förval)."
 
-#: script/data/commands/utils.js:439
+#: script/data/commands/utils.js:458
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -7621,37 +7631,37 @@ msgstr "Byt aktuell nod"
 msgid "Toggle Contained Nodes"
 msgstr "Byt underliggande noder"
 
-#: view/kateview.cpp:1475
+#: view/kateview.cpp:1474
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(LÄS) %1"
 
-#: view/kateview.cpp:1663
+#: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Förflyttning till stor bokstav inne i ord inaktiverad"
 
-#: view/kateview.cpp:1665
+#: view/kateview.cpp:1664
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Förflyttning till stor bokstav inne i ord aktiverad"
 
-#: view/kateview.cpp:2147
+#: view/kateview.cpp:2146
 #, kde-format
 msgid "Search wrapped"
 msgstr "Sökning omstartad"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, kde-format
 msgid "Align On"
 msgstr "Justera till"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Justeringsmönster:"
 
-#: view/kateview.cpp:4743
+#: view/kateview.cpp:4744
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportera fil som HTML"
@@ -7720,17 +7730,17 @@ msgstr "Lyckades: "
 msgid "Command \"%1\" failed."
 msgstr "Kommandot \"%1\" misslyckades."
 
-#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
+#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Markeringstyp %1"
 
-#: view/kateviewhelpers.cpp:2587
+#: view/kateviewhelpers.cpp:2586
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Använd standardtyp för markering"
 
-#: view/kateviewhelpers.cpp:2728
+#: view/kateviewhelpers.cpp:2727
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Inaktivera kommentarrad"

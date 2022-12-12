@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:43+0000\n"
-"PO-Revision-Date: 2022-12-03 19:54+0300\n"
+"POT-Creation-Date: 2022-12-12 00:43+0000\n"
+"PO-Revision-Date: 2022-12-11 20:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -2120,13 +2120,13 @@ msgstr ""
 msgid "Line Height Multiplier:"
 msgstr "Satır yüksekliği çarpanı:"
 
-#: document/katebuffer.cpp:150
+#: document/katebuffer.cpp:140
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Yeni dosya"
 
-#: document/katebuffer.cpp:157
+#: document/katebuffer.cpp:147
 #, kde-format
 msgid "The file %1 does not exist."
 msgstr "%1 dosyası bulunamadı."
@@ -3119,77 +3119,86 @@ msgid "Move cursor to next matching indent"
 msgstr "İmleci sonraki eşleşen girintiye taşı"
 
 #: script/data/commands/utils.js:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
 msgctxt "Script command name"
-msgid "Sort Selected Text"
+msgid "Sort Selected Text Alphabetically"
 msgstr "Seçili Metni Sırala"
 
-#: script/data/commands/utils.js:10 script/data/commands/utils.js:15
-#: script/data/commands/utils.js:20 script/data/commands/utils.js:24
+#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
+#: script/data/commands/utils.js:19 script/data/commands/utils.js:24
 #: script/data/commands/utils.js:28 script/data/commands/utils.js:32
-#: script/data/commands/utils.js:36
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
 msgstr "Düzenleme"
 
 #: script/data/commands/utils.js:13
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgctxt "Script command name"
+msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgstr "Seçili metin veya tüm belgeden yinelenmiş satırları kaldır."
+
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Satırı Aşağı Taşı"
 
-#: script/data/commands/utils.js:18
+#: script/data/commands/utils.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Satırı Yukarı Taşı"
 
-#: script/data/commands/utils.js:23
+#: script/data/commands/utils.js:27
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Seçili Satırların Aynısını Aşağı Kopyala"
 
-#: script/data/commands/utils.js:27
+#: script/data/commands/utils.js:31
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Seçili Satırların Aynısını Yukarı Kopyala"
 
-#: script/data/commands/utils.js:31
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Seçili Metnin URI Kodlamasını Yap"
 
-#: script/data/commands/utils.js:35
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Seçili Metnin URI Kodunu Çöz"
 
-#: script/data/commands/utils.js:399
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Seçili metni veya tüm belgeyi sırala."
 
-#: script/data/commands/utils.js:401
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Seçili satırı aşağı taşı."
 
-#: script/data/commands/utils.js:403
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Seçili satırı yukarı taşı."
 
-#: script/data/commands/utils.js:405
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Seçili metin veya tüm belgeden yinelenmiş satırları kaldır."
 
-#: script/data/commands/utils.js:407
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3200,23 +3209,23 @@ msgstr ""
 "sıralama yöntemiyle farkını gösteren bir örnek var:<br>sort(a10,a1,a2) => "
 "a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:409
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Seçimden veya tüm belgeden gereksiz son boşlukları siler."
 
-#: script/data/commands/utils.js:411
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Seçimden veya tüm belgeden gereksiz başlangıç boşluklarını siler."
 
-#: script/data/commands/utils.js:413
+#: script/data/commands/utils.js:432
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Seçimden veya tüm belgeden gereksiz başlangıç ve bitiş boşluklarını siler."
 
-#: script/data/commands/utils.js:415
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3227,12 +3236,12 @@ msgstr ""
 "bir birinden ayırmak için ayırıcı kullanın:<br><code>join ', '</code> "
 "satırları birleştirecek ve virgülle ayıracaktır."
 
-#: script/data/commands/utils.js:417
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Seçimden veya tüm belgeden gereksiz boş satırları siler."
 
-#: script/data/commands/utils.js:419
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3255,7 +3264,7 @@ msgstr ""
 "iki nokta öncesi oluşan ilk boş olmayan karakter öncesi boşluklar "
 "ekleyecektir."
 
-#: script/data/commands/utils.js:423
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3270,7 +3279,7 @@ msgstr ""
 "yazarak da aynı şeyi elde edebilirsiniz:<br><code>each 'lines.join(\", \")'</"
 "code>"
 
-#: script/data/commands/utils.js:425
+#: script/data/commands/utils.js:444
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3285,7 +3294,7 @@ msgstr ""
 "code><br>Şunu yazarak da aynı şeyi elde edebilirsiniz:<br><code>each 'lines."
 "join(\", \")'</code>"
 
-#: script/data/commands/utils.js:427
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3301,17 +3310,17 @@ msgstr ""
 "code><br>Şunu yazarak da aynı şeyi elde edebilirsiniz:<br><code>map 'line."
 "replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:429
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Seçili satırları yukarı kopyalar."
 
-#: script/data/commands/utils.js:431
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Seçili satırları aşağı kopyalar."
 
-#: script/data/commands/utils.js:433
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3320,12 +3329,12 @@ msgstr ""
 "Bir satır seçimindeki özel karakterleri kodlar ve sonuç metin URI olarak "
 "kullanılabilir."
 
-#: script/data/commands/utils.js:435
+#: script/data/commands/utils.js:454
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "URI kodlama eylemini geri çevir."
 
-#: script/data/commands/utils.js:437
+#: script/data/commands/utils.js:456
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3334,7 +3343,7 @@ msgstr ""
 "Geçerli imleç konumundan verilen argümanın kendisinden sonraki ilk geçtiği "
 "yere (veya öntanımlı olarak geçerli satırın sonuna kadar) metni seçin."
 
-#: script/data/commands/utils.js:439
+#: script/data/commands/utils.js:458
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3513,12 +3522,12 @@ msgstr[1] "%1 eşleşme bulundu"
 #: search/katesearchbar.cpp:374
 #, kde-format
 msgid "Reached top, continued from bottom"
-msgstr "Başa ulaşıldı, sondan devam ediliyor"
+msgstr "Başa ulaşıldı, sondan sürdürülüyor"
 
 #: search/katesearchbar.cpp:376
 #, kde-format
 msgid "Reached bottom, continued from top"
-msgstr "Sona ulaşıldı, baştan devam ediliyor"
+msgstr "Sona ulaşıldı, baştan sürdürülüyor"
 
 #: search/katesearchbar.cpp:381
 #, kde-format
@@ -3528,17 +3537,17 @@ msgstr "Bulunamadı"
 #: search/katesearchbar.cpp:615
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
-msgstr "Dosyanın sonuna ulaşıldı. Baştan devam edilsin mi?"
+msgstr "Dosyanın sonuna ulaşıldı. Baştan sürdürülsün mü?"
 
 #: search/katesearchbar.cpp:615
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
-msgstr "Dosyanın başına ulaşıldı. Sondan devam edilsin mi?"
+msgstr "Dosyanın başına ulaşıldı. Sondan sürdürülsün mü?"
 
 #: search/katesearchbar.cpp:618
 #, kde-format
 msgid "Continue search?"
-msgstr "Aramaya devam edilsin mi?"
+msgstr "Arama sürdürülsün mü?"
 
 #: search/katesearchbar.cpp:919
 #, kde-format
@@ -3880,7 +3889,7 @@ msgstr "Yazım denetimi iptal edildi."
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "Yazım denetimi devam ediyor..."
+msgstr "Yazım denetimi sürüyor..."
 
 #: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
 #, kde-format
@@ -7608,37 +7617,37 @@ msgstr "Geçerli Düğümü Aç/Kapat"
 msgid "Toggle Contained Nodes"
 msgstr "Kapsanılan Düğümleri Aç/Kapat"
 
-#: view/kateview.cpp:1475
+#: view/kateview.cpp:1474
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1663
+#: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Deve biçimli hareket devre dışı"
 
-#: view/kateview.cpp:1665
+#: view/kateview.cpp:1664
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Deve biçimli hareket etkin"
 
-#: view/kateview.cpp:2147
+#: view/kateview.cpp:2146
 #, kde-format
 msgid "Search wrapped"
 msgstr "Kaydırılmış ara"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, kde-format
 msgid "Align On"
 msgstr "Hizalama"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Hizalama dizgisi:"
 
-#: view/kateview.cpp:4743
+#: view/kateview.cpp:4744
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Dosyayı HTML olarak Aktar"
@@ -7707,17 +7716,17 @@ msgstr "Başarılı: "
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" komutunun işletilmesinde hata."
 
-#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
+#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 İm Türü"
 
-#: view/kateviewhelpers.cpp:2587
+#: view/kateviewhelpers.cpp:2586
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Öntanımlı İm Türünü Ayarla"
 
-#: view/kateviewhelpers.cpp:2728
+#: view/kateviewhelpers.cpp:2727
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Açıklama Çubuğunu Gösterme"
@@ -7870,10 +7879,10 @@ msgid ""
 "\") in document list. </p><p> <b>[N]</b> defaults to one. </p><p>Wraps "
 "around the start of the document list.</p>"
 msgstr ""
-"<p><b>bp,bprev &mdash; önceki tampon</b></p><p>Kullanım: <tt><b>bp[revious] "
-"[N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci önceki belgeye "
-"(\"<b>b</b>uffer\" (tampondaki)) gider. </p><p> <b>[N]</b> öntanımlı olarak "
-"birdir. </p><p>Belge listesinin başından devam eder.</p>"
+"<p><b>bp,bprev &mdash; önceki arabellek</b></p><p>Kullanım: "
+"<tt><b>bp[revious] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci "
+"önceki belgeye (\"<b>b</b>uffer\" (tampondaki)) gider. </p><p> <b>[N]</b> "
+"öntanımlı olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
 
 #: vimode/appcommands.cpp:525
 #, kde-format
@@ -7886,7 +7895,7 @@ msgstr ""
 "<p><b>bp,bprev &mdash; sonraki belgeye geç</b></p><p>Kullanım: "
 "<tt><b>bn[ext] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci sonraki "
 "belgeye (\"<b>b</b>uffer\" (tampondaki)) gider. <b>[N]</b> öntanımlı olarak "
-"birdir. </p><p>Belge listesinin sonundan devam eder.</p>"
+"birdir. </p><p>Belge listesinin sonundan sürer.</p>"
 
 #: vimode/appcommands.cpp:533
 #, kde-format

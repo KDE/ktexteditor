@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-12 00:43+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2158,13 +2158,13 @@ msgstr ""
 msgid "Line Height Multiplier:"
 msgstr "Reapikkuse piirang:"
 
-#: document/katebuffer.cpp:150
+#: document/katebuffer.cpp:140
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Uus fail"
 
-#: document/katebuffer.cpp:157
+#: document/katebuffer.cpp:147
 #, kde-format
 msgid "The file %1 does not exist."
 msgstr "Faili %1 ei ole olemas."
@@ -3197,77 +3197,86 @@ msgid "Move cursor to next matching indent"
 msgstr "Kursori viimine järgmisele sobivale taandele"
 
 #: script/data/commands/utils.js:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Sort Selected Text"
 msgctxt "Script command name"
-msgid "Sort Selected Text"
+msgid "Sort Selected Text Alphabetically"
 msgstr "Sordi valitud tekst:"
 
-#: script/data/commands/utils.js:10 script/data/commands/utils.js:15
-#: script/data/commands/utils.js:20 script/data/commands/utils.js:24
+#: script/data/commands/utils.js:10 script/data/commands/utils.js:14
+#: script/data/commands/utils.js:19 script/data/commands/utils.js:24
 #: script/data/commands/utils.js:28 script/data/commands/utils.js:32
-#: script/data/commands/utils.js:36
+#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
 msgstr "Redigeerimine"
 
 #: script/data/commands/utils.js:13
+#, fuzzy, kde-format
+#| msgid "Remove duplicate lines from the selected text or whole document."
+msgctxt "Script command name"
+msgid "Remove Duplicates and Sort Selected Text Alphabetically"
+msgstr "Topeltridade eemaldamine valitud tekstist või kogu dokumendist."
+
+#: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Liiguta read alla"
 
-#: script/data/commands/utils.js:18
+#: script/data/commands/utils.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Liiguta read üles"
 
-#: script/data/commands/utils.js:23
+#: script/data/commands/utils.js:27
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Klooni valitud read allapoole"
 
-#: script/data/commands/utils.js:27
+#: script/data/commands/utils.js:31
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Klooni valitud read ülespoole"
 
-#: script/data/commands/utils.js:31
+#: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Kodeeri valitud tekst URI-ks"
 
-#: script/data/commands/utils.js:35
+#: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Dekodeeri valitud tekst URI-st"
 
-#: script/data/commands/utils.js:399
+#: script/data/commands/utils.js:418
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Valitud teksti või kogu dokumendi sortimine."
 
-#: script/data/commands/utils.js:401
+#: script/data/commands/utils.js:420
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Valitud ridade liigutamine alla."
 
-#: script/data/commands/utils.js:403
+#: script/data/commands/utils.js:422
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Valitud ridade liigutamine üles."
 
-#: script/data/commands/utils.js:405
+#: script/data/commands/utils.js:424
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Topeltridade eemaldamine valitud tekstist või kogu dokumendist."
 
-#: script/data/commands/utils.js:407
+#: script/data/commands/utils.js:426
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3278,26 +3287,26 @@ msgstr ""
 "<br>Näide, mis selgitab erinevust tavalisest sortimisviisist:<br>sort(a10, "
 "a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:409
+#: script/data/commands/utils.js:428
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
 "Üleliigsete lõpetavate tühimärkide eemaldamine valikust või kogu dokumendist."
 
-#: script/data/commands/utils.js:411
+#: script/data/commands/utils.js:430
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
 "Üleliigsete alustavate tühimärkide eemaldamine valikust või kogu dokumendist."
 
-#: script/data/commands/utils.js:413
+#: script/data/commands/utils.js:432
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Üleliigsete alustavate ja lõpetavate tühimärkide eemaldamine valikust või "
 "kogu dokumendist."
 
-#: script/data/commands/utils.js:415
+#: script/data/commands/utils.js:434
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3308,12 +3317,12 @@ msgstr ""
 "vahele asetada eraldaja:<br><code>join ', '</code> näiteks ühendab read ja "
 "eraldab need komaga."
 
-#: script/data/commands/utils.js:417
+#: script/data/commands/utils.js:436
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Tühjade ridade eemaldamine valikust või kogu dokumendist."
 
-#: script/data/commands/utils.js:419
+#: script/data/commands/utils.js:438
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3327,7 +3336,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:423
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3342,7 +3351,7 @@ msgstr ""
 "lines.join(\", \");}'</code><br>Kirjutamisvaeva vähendamiseks võib seda teha "
 "ka lihtsalt nii:<br><code>each 'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:425
+#: script/data/commands/utils.js:444
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3357,7 +3366,7 @@ msgstr ""
 "'function(l){return l.length > 0;}'</code><br>Kirjutamisvaeva vähendamiseks "
 "võib seda teha ka nii:<br><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:427
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3373,17 +3382,17 @@ msgstr ""
 "replace(/^\\s+/, \"\");}'</code><br>Kirjutamisvaeva vähendamiseks võib seda "
 "teha ka nii:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:429
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Kloonib valitud read ülespoole."
 
-#: script/data/commands/utils.js:431
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Kloonib valitud read allapoole."
 
-#: script/data/commands/utils.js:433
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3391,19 +3400,19 @@ msgid ""
 msgstr ""
 "Erisümboli kodeerimine ühe rea valikus, nii et tulemust saab kasutada URI-na."
 
-#: script/data/commands/utils.js:435
+#: script/data/commands/utils.js:454
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "URI kodeerimine tagasivõtmine."
 
-#: script/data/commands/utils.js:437
+#: script/data/commands/utils.js:456
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:439
+#: script/data/commands/utils.js:458
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -7702,38 +7711,38 @@ msgstr "Lülita aktiivset sõlme"
 msgid "Toggle Contained Nodes"
 msgstr "Lülita sisalduvaid sõlmi"
 
-#: view/kateview.cpp:1475
+#: view/kateview.cpp:1474
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(Kirjutuskaitstud) %1"
 
-#: view/kateview.cpp:1663
+#: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1665
+#: view/kateview.cpp:1664
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2147
+#: view/kateview.cpp:2146
 #, kde-format
 msgid "Search wrapped"
 msgstr "Otsimisega mindi teisest otsast edasi"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Joonda"
 
-#: view/kateview.cpp:3656
+#: view/kateview.cpp:3657
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4743
+#: view/kateview.cpp:4744
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Faili salvestamine HTML-ina"
@@ -7802,17 +7811,17 @@ msgstr "Õnnestus: "
 msgid "Command \"%1\" failed."
 msgstr "Käsk \"%1\" nurjus."
 
-#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
+#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Märgistustüüp %1"
 
-#: view/kateviewhelpers.cpp:2587
+#: view/kateviewhelpers.cpp:2586
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Vaikimisi märgistustüübi määramine"
 
-#: view/kateviewhelpers.cpp:2728
+#: view/kateviewhelpers.cpp:2727
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Annotatsiooniriba keelamine"
