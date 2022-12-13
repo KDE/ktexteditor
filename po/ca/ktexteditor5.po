@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-12 00:43+0000\n"
-"PO-Revision-Date: 2022-11-08 10:56+0100\n"
+"PO-Revision-Date: 2022-12-12 09:33+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -3160,12 +3160,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Mou el cursor fins al sagnat següent que concordi"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Ordena el text seleccionat"
+msgstr "Ordena alfabèticament el text seleccionat"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3177,12 +3175,10 @@ msgid "Editing"
 msgstr "Edició"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Elimina les línies duplicades del text seleccionat o de tot el document."
+msgstr "Elimina els duplicats i ordena alfabèticament el text seleccionat"
 
 #: script/data/commands/utils.js:17
 #, kde-format

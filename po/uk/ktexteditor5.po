@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-12 00:43+0000\n"
-"PO-Revision-Date: 2022-11-08 13:42+0200\n"
+"PO-Revision-Date: 2022-12-12 16:38+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -3142,12 +3142,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Пересунути курсор до наступного відповідного відступу"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Впорядкувати позначений текст"
+msgstr "Впорядкувати позначений текст за абеткою"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3159,12 +3157,10 @@ msgid "Editing"
 msgstr "Редагування"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Вилучити рядки-дублікати з позначеного фрагмента тексту або всього документа."
+msgstr "Вилучити дублікати і упорядкувати позначений текст за абеткою"
 
 #: script/data/commands/utils.js:17
 #, kde-format

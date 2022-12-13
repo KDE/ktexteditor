@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-12 00:43+0000\n"
-"PO-Revision-Date: 2022-12-11 20:19+0300\n"
+"PO-Revision-Date: 2022-12-12 19:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -3119,12 +3119,10 @@ msgid "Move cursor to next matching indent"
 msgstr "İmleci sonraki eşleşen girintiye taşı"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Seçili Metni Sırala"
+msgstr "Seçili Metni Abecesel Olarak Sırala"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3136,11 +3134,10 @@ msgid "Editing"
 msgstr "Düzenleme"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Seçili metin veya tüm belgeden yinelenmiş satırları kaldır."
+msgstr "Yinelenmişleri Kaldır ve Seçili Metni Abecesel Olarak Sırala"
 
 #: script/data/commands/utils.js:17
 #, kde-format
