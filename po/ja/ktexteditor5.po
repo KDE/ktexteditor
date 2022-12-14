@@ -8207,21 +8207,3 @@ msgstr "'%1' %2,  十六進 %3,  八進 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "マークが未セット: %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "名前空間"
-
-#~ msgid "Classes"
-#~ msgstr "クラス"
-
-#~ msgid "Structs"
-#~ msgstr "構造体"
-
-#~ msgid "Unions"
-#~ msgstr "共用体"
-
-#~ msgid "Functions"
-#~ msgstr "関数"
-
-#~ msgid "Enumerations"
-#~ msgstr "列挙型"

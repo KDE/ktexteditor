@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-12 00:43+0000\n"
-"PO-Revision-Date: 2022-11-03 21:02+0530\n"
+"PO-Revision-Date: 2022-12-13 19:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -2408,10 +2408,9 @@ msgid "vi-mode"
 msgstr ""
 
 #: inputmode/kateviinputmode.cpp:157
-#, fuzzy, kde-format
-#| msgid "E&ncoding"
+#, kde-format
 msgid "recording"
-msgstr "குறிமுறையாக்கு"
+msgstr "பதிவு செய்கிறது"
 
 #: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
 #: vimode/config/configtab.cpp:233
@@ -2456,17 +2455,15 @@ msgid "Select Mime Types"
 msgstr "மைம்வகைகளைத் தேர்ந்தெடுக்கவும்"
 
 #: mode/katemodeconfigpage.cpp:306
-#, fuzzy, kde-format
-#| msgid "Modes & Filetypes"
+#, kde-format
 msgid "Modes && Filetypes"
-msgstr "முறைகளும் & கோப்பு வகைகளும்"
+msgstr "பயன்முறைகளும் கோப்பு வகைகளும்"
 
 #: mode/katemodemenulist.cpp:141
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr "தேடு"
+msgstr "தேடு..."
 
 #: mode/katemodemenulist.cpp:143
 #, kde-format
@@ -2475,12 +2472,14 @@ msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
 msgstr ""
+"கோப்புவகையின் அடிப்படையிலோ, நிரலாக்க மொழியின் பெயரின் அடிப்படையிலோ, முன்னிலைப்பாட்டு "
+"பயன்முறைகளைத் தேடுங்கள் (எ.கா. C++ அல்லது .cpp)"
 
 #: mode/katemodemenulist.cpp:566
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
-msgstr ""
+msgstr "உங்கள் தேடலுக்கு பொருத்தமானது ஏதுமில்லை"
 
 #: mode/katemodemenulist.cpp:1093
 #, kde-format
@@ -2489,7 +2488,7 @@ msgctxt ""
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Match"
-msgstr ""
+msgstr "சிறந்த பொருத்தம்"
 
 #: mode/katemodemenulist.cpp:1098
 #, kde-format
@@ -2498,17 +2497,17 @@ msgctxt ""
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Matches"
-msgstr ""
+msgstr "சிறந்த பொருத்தங்கள்"
 
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
 msgid "Te&xt Settings"
-msgstr "உரை அமைவுகள்"
+msgstr "&உரை அமைப்புகள்"
 
 #: printing/printconfigwidgets.cpp:40
 #, kde-format
 msgid "Print line &numbers"
-msgstr "வரி &எண்களை அச்சிடுக"
+msgstr "வரி &எண்களை அச்சிடு"
 
 #: printing/printconfigwidgets.cpp:43
 #, fuzzy, kde-format

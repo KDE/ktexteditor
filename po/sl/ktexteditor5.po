@@ -17,17 +17,17 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-12 00:43+0000\n"
-"PO-Revision-Date: 2022-11-29 07:55+0100\n"
+"PO-Revision-Date: 2022-12-13 07:04+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -3127,12 +3127,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Premakni kazalko do naslednjega ujemajočega se zamika"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Razvrsti izbrano besedilo"
+msgstr "Razvrsti izbrano besedilo po abecedi"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3144,12 +3142,10 @@ msgid "Editing"
 msgstr "Urejanje"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Odstrani podvojene vrstice iz izbranega besedila ali celotnega dokumenta."
+msgstr "Odstrani podvojene vrstice in razvrsti izbrano besedilo po abecedi"
 
 #: script/data/commands/utils.js:17
 #, kde-format
