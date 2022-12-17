@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-12 00:43+0000\n"
-"PO-Revision-Date: 2022-11-10 10:18+0100\n"
+"PO-Revision-Date: 2022-12-16 11:02+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -3158,12 +3158,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Sposta il cursore al rientro corrispondente successivo"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Ordina il testo selezionato"
+msgstr "Ordina il testo selezionato in ordine alfabetico"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3175,11 +3173,11 @@ msgid "Editing"
 msgstr "Modifica"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Rimuovi le righe duplicate dal testo selezionato o tutto il documento."
+msgstr ""
+"Rimuovi i duplicati e ordina il testo selezionato in ordine alfabetico."
 
 #: script/data/commands/utils.js:17
 #, kde-format
