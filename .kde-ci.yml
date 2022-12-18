@@ -12,6 +12,7 @@ Dependencies:
     'frameworks/kparts' : '@same'
     'frameworks/sonnet' : '@same'
     'frameworks/kxmlgui' : '@same'
+    'frameworks/kwindowsystem' : '@same'
     'frameworks/syntax-highlighting' : '@same'
 
 - 'on': ['Linux', 'FreeBSD', 'macOS']

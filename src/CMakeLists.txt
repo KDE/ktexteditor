@@ -321,6 +321,7 @@ PRIVATE
   KF5::GuiAddons
   KF5::ItemViews
   KF5::SonnetCore
+  KF5::WindowSystem
   KF5::SonnetUi
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
