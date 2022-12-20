@@ -316,6 +316,9 @@ private:
 
     KateRenderer *renderer() const;
 
+    bool sendMouseEventToInputContext(QMouseEvent *e);
+    void commitPreedit();
+
     KTextEditor::ViewPrivate *m_view;
     class KateIconBorder *m_leftBorder;
 

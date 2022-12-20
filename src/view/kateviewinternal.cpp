@@ -3372,6 +3372,10 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
 
 void KateViewInternal::mousePressEvent(QMouseEvent *e)
 {
+    if (sendMouseEventToInputContext(e)) {
+        return;
+    }
+
     // was an inline note clicked?
     const auto noteData = inlineNoteAt(e->globalPos());
     const KTextEditor::InlineNote note(noteData);
@@ -3379,6 +3383,8 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
         note.provider()->inlineNoteActivated(noteData, e->button(), e->globalPos());
         return;
     }
+
+    commitPreedit();
 
     // no -- continue with normal handling
     switch (e->button()) {
@@ -3514,6 +3520,9 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
 void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
 {
+    if (sendMouseEventToInputContext(e)) {
+        return;
+    }
     if (e->button() == Qt::LeftButton) {
         m_selectionMode = Word;
 
@@ -3606,6 +3615,10 @@ void KateViewInternal::beginSelectLine(const QPoint &pos)
 
 void KateViewInternal::mouseReleaseEvent(QMouseEvent *e)
 {
+    if (sendMouseEventToInputContext(e)) {
+        return;
+    }
+
     switch (e->button()) {
     case Qt::LeftButton:
         m_selectionMode = Default;
@@ -4946,4 +4959,35 @@ KateInlineNoteData KateViewInternal::inlineNoteAt(const QPoint &globalPos) const
     }
     // none found -- return an invalid note
     return {};
+}
+
+bool KateViewInternal::sendMouseEventToInputContext(QMouseEvent *e)
+{
+    if (!m_imPreeditRange) {
+        return false;
+    }
+
+    KTextEditor::Cursor c = cursorForPoint(e->pos());
+    if (!m_imPreeditRange->contains(c) && c != m_imPreeditRange->end()) {
+        return false;
+    }
+
+    auto cursorPos = (c - m_imPreeditRange->start());
+
+    if (cursorPos.column() >= 0) {
+        if (e->type() == QEvent::MouseButtonRelease)
+            QGuiApplication::inputMethod()->invokeAction(QInputMethod::Click, cursorPos.column());
+        e->setAccepted(true);
+        return true;
+    }
+    return false;
+}
+
+void KateViewInternal::commitPreedit()
+{
+    if (!m_imPreeditRange) {
+        return;
+    }
+
+    QGuiApplication::inputMethod()->commit();
 }
