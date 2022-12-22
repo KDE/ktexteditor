@@ -2670,7 +2670,8 @@ bool KTextEditor::ViewPrivate::selectAll()
     // mistakenly triggered, and also to if you just want to copy text,
     // there is no need to scroll anywhere.
     setSelection(doc()->documentRange());
-    m_viewInternal->m_selectAnchor = cursorPosition();
+    m_viewInternal->moveCursorToSelectionEdge(/*scroll=*/false);
+    m_viewInternal->updateMicroFocus();
     return true;
 }
 

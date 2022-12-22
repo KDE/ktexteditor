@@ -2467,7 +2467,7 @@ void KateViewInternal::setSelection(KTextEditor::Range range)
     connect(m_view, &KTextEditor::ViewPrivate::selectionChanged, this, &KateViewInternal::viewSelectionChanged);
 }
 
-void KateViewInternal::moveCursorToSelectionEdge()
+void KateViewInternal::moveCursorToSelectionEdge(bool scroll)
 {
     if (!view()->selection()) {
         return;
@@ -2477,9 +2477,12 @@ void KateViewInternal::moveCursorToSelectionEdge()
     m_minLinesVisible = 0;
 
     if (view()->selectionRange().start() < m_selectAnchor) {
-        updateCursor(view()->selectionRange().start());
+        updateCursor(view()->selectionRange().start(), false, false, false, scroll);
     } else {
-        updateCursor(view()->selectionRange().end());
+        updateCursor(view()->selectionRange().end(), false, false, false, scroll);
+    }
+    if (!scroll) {
+        m_madeVisible = false;
     }
 
     m_minLinesVisible = tmp;
@@ -2720,11 +2723,11 @@ void KateViewInternal::mergeSelections()
                   cursors.end());
 }
 
-void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally)
+void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool force, bool center, bool calledExternally, bool scroll)
 {
     if (!force && (m_cursor.toCursor() == newCursor)) {
         m_displayCursor = toVirtualCursor(newCursor);
-        if (!m_madeVisible && m_view == doc()->activeView()) {
+        if (scroll && !m_madeVisible && m_view == doc()->activeView()) {
             // unfold if required
             view()->textFolding().ensureLineIsVisible(newCursor.line());
 
@@ -2746,7 +2749,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool fo
     m_displayCursor = toVirtualCursor(newCursor);
     m_cursor.setPosition(newCursor);
 
-    if (m_view == doc()->activeView()) {
+    if (m_view == doc()->activeView() && scroll) {
         makeVisible(m_displayCursor, m_displayCursor.column(), false, center, calledExternally);
     }
 
@@ -4589,6 +4592,7 @@ void KateViewInternal::viewSelectionChanged()
     // this happens, we use the cached end to restore the cached start so that
     // updateSelection is not confused. See also comments in updateSelection.
     m_selectionCached.setStart(KTextEditor::Cursor::invalid());
+    updateMicroFocus();
 }
 
 KateLayoutCache *KateViewInternal::cache() const

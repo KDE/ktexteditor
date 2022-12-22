@@ -292,8 +292,8 @@ private:
     void updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos);
     void updateSelection(const KTextEditor::Cursor, bool keepSel);
     void setSelection(KTextEditor::Range);
-    void moveCursorToSelectionEdge();
-    void updateCursor(const KTextEditor::Cursor newCursor, bool force = false, bool center = false, bool calledExternally = false);
+    void moveCursorToSelectionEdge(bool scroll = true);
+    void updateCursor(const KTextEditor::Cursor newCursor, bool force = false, bool center = false, bool calledExternally = false, bool scroll = true);
     void updateBracketMarks();
     void beginSelectLine(const QPoint &pos);
 
