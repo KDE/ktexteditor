@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-12 00:43+0000\n"
+"POT-Creation-Date: 2022-12-27 00:45+0000\n"
 "PO-Revision-Date: 2009-01-08 12:55+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -7753,18 +7753,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "Режим на пребарување"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Порамни"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4744
+#: view/kateview.cpp:4745
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Изнеси датотека како HTML"

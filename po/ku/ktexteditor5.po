@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-12 00:43+0000\n"
+"POT-Creation-Date: 2022-12-27 00:45+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -7205,18 +7205,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "Lêgerîn"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Bike texmek"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4744
+#: view/kateview.cpp:4745
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-12 00:43+0000\n"
+"POT-Creation-Date: 2022-12-27 00:45+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -7288,17 +7288,17 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "সন্ধান"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, fuzzy, kde-format
 msgid "Align On"
 msgstr "&সব"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4744
+#: view/kateview.cpp:4745
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "ফাইল অন্য ফর্ম্যাটে রপ্তানি করো"

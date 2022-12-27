@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-12 00:43+0000\n"
+"POT-Creation-Date: 2022-12-27 00:45+0000\n"
 "PO-Revision-Date: 2017-05-24 08:19-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -7391,18 +7391,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "מצב חיפוש"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&ישר"
 
-#: view/kateview.cpp:3657
+#: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4744
+#: view/kateview.cpp:4745
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ייצוא קובץ בתור HTML"
