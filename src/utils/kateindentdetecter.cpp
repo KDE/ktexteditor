@@ -104,7 +104,7 @@ KateIndentDetecter::Result KateIndentDetecter::detect(int defaultTabSize, bool d
     QString previousLineText; // content of latest line that contained non-whitespace chars
     int previousLineIndentation = 0; // index at which latest line contained the first non-whitespace char
 
-    constexpr int ALLOWED_TAB_SIZE_GUESSES[8] = {2, 4, 6, 8, 3, 5, 7, 1}; // prefer even guesses for `tabSize`, limit to [2, 8].
+    constexpr int ALLOWED_TAB_SIZE_GUESSES[7] = {2, 4, 6, 8, 3, 5, 7}; // prefer even guesses for `tabSize`, limit to [2, 8].
     constexpr int MAX_ALLOWED_TAB_SIZE_GUESS = 8; // max(ALLOWED_TAB_SIZE_GUESSES) = 8
 
     int spacesDiffCount[] = {0, 0, 0, 0, 0, 0, 0, 0, 0}; // `tabSize` scores
@@ -181,7 +181,7 @@ KateIndentDetecter::Result KateIndentDetecter::detect(int defaultTabSize, bool d
     // Guess tabSize only if inserting spaces...
     if (insertSpaces) {
         int tabSizeScore = 0;
-        for (int i = 0; i < 8; ++i) {
+        for (int i = 0; i < 7; ++i) {
             int possibleTabSize = ALLOWED_TAB_SIZE_GUESSES[i];
             const int possibleTabSizeScore = spacesDiffCount[possibleTabSize];
             if (possibleTabSizeScore > tabSizeScore) {
@@ -194,6 +194,15 @@ KateIndentDetecter::Result KateIndentDetecter::detect(int defaultTabSize, bool d
         // (only in case 4 was guessed)
         if (tabSize == 4 && spacesDiffCount[4] > 0 && spacesDiffCount[2] > 0 && spacesDiffCount[2] >= spacesDiffCount[4] / 2) {
             tabSize = 2;
+        }
+
+        // If no indent detected, check if the file is 1 space indented
+        if (tabSizeScore == 0) {
+            const auto it = std::max_element(spacesDiffCount, spacesDiffCount + 9);
+            const auto maxIdx = std::distance(spacesDiffCount, it);
+            if (maxIdx == 1) {
+                tabSize = 1;
+            }
         }
     }
 

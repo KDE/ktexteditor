@@ -29,6 +29,7 @@ void IndentDetectTest::test_data()
     QTest::addRow("tabs") << QString(dir + QStringLiteral("tab.c")) << true << 4;
     QTest::addRow("this_file") << QString(dir + QStringLiteral("indentdetect_test.cpp")) << false << 4;
     QTest::addRow("xml_1_space") << QString(dir + QStringLiteral("a.xml")) << false << 1;
+    QTest::addRow("main_bad_1_space") << QString(dir + QStringLiteral("main_bad_1_space.cpp")) << false << 4;
 }
 
 void IndentDetectTest::test()
