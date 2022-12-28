@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-27 00:45+0000\n"
-"PO-Revision-Date: 2022-11-09 06:32+0100\n"
+"PO-Revision-Date: 2022-12-27 07:44+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -46,12 +46,12 @@ msgstr "გარსის სიტყვების დასრულებ�
 #: completion/katewordcompletion.cpp:282
 #, kde-format
 msgid "Reuse Word Above"
-msgstr ""
+msgstr "ზედა სიტყვის თავიდან გამოყენება"
 
 #: completion/katewordcompletion.cpp:288
 #, kde-format
 msgid "Reuse Word Below"
-msgstr ""
+msgstr "ქვედა სიტყვის თავიდან გამოყენება"
 
 #. i18n: ectx: Menu (file)
 #: data/katepart5ui.rc:4
@@ -111,7 +111,7 @@ msgstr "საზღვრები"
 #: data/katepart5ui.rc:88
 #, kde-format
 msgid "&Code Folding"
-msgstr ""
+msgstr "&კოდის დაკეცვა"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:104
@@ -300,7 +300,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:213
 #, kde-format
 msgid "Minim&ap width:"
-msgstr ""
+msgstr "&მინირუკის სიგანე:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
@@ -312,7 +312,7 @@ msgstr "ყოველთვის ჩართული"
 #: dialogs/bordersappearanceconfigwidget.ui:229
 #, kde-format
 msgid "Show When Needed"
-msgstr ""
+msgstr "ჩვენება, როცა საჭროა"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:234
@@ -324,7 +324,7 @@ msgstr "ყოველთვის გამორთული"
 #: dialogs/bordersappearanceconfigwidget.ui:242
 #, kde-format
 msgid "Scro&llbars visibility:"
-msgstr ""
+msgstr "ჩოჩიების &ხილვადობა"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByCreation)
 #: dialogs/bordersappearanceconfigwidget.ui:252
@@ -338,7 +338,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "შექმნის თარიღით"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -350,19 +350,19 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:265
 #, kde-format
 msgid "By line number"
-msgstr ""
+msgstr "ხაზის ნომრით"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
 #, kde-format
 msgid "Sort bookmarks menu:"
-msgstr ""
+msgstr "სანიშნების მენიუს დალაგება:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
 #, kde-format
 msgid "Folding arrows visibility:"
-msgstr ""
+msgstr "დაკეცვის ისრების ხილვადობა:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
@@ -384,7 +384,7 @@ msgstr "მონიშნეთ ჩასასმელი ტექსტი.
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "ბუფერის ისტორიაში ჩანაწერები არაა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -399,7 +399,7 @@ msgstr "მთავარი"
 #: dialogs/completionconfigtab.ui:35
 #, kde-format
 msgid "Enable &auto completion"
-msgstr ""
+msgstr "ავტომატური დასრულების &ჩართვა"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
@@ -528,7 +528,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:91
 #, kde-format
 msgid "Default input mode:"
-msgstr ""
+msgstr "ნაგულისხმები შეყვანის რეჟიმი"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:117
@@ -560,7 +560,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:160
 #, kde-format
 msgid "Copy and paste:"
-msgstr ""
+msgstr "კოპირება და ჩასმა:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
@@ -604,7 +604,7 @@ msgstr ""
 #: dialogs/filetypeconfigwidget.ui:14
 #, kde-format
 msgid "&Filetype:"
-msgstr ""
+msgstr "&ფაილის ტპი:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbFiletypes)
 #: dialogs/filetypeconfigwidget.ui:24
@@ -616,7 +616,7 @@ msgstr ""
 #: dialogs/filetypeconfigwidget.ui:31
 #, kde-format
 msgid "Create a new file type."
-msgstr ""
+msgstr "შექმენით ახალი ფაილის ტიპი."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnNew)
 #: dialogs/filetypeconfigwidget.ui:34
@@ -628,7 +628,7 @@ msgstr "&ახალი"
 #: dialogs/filetypeconfigwidget.ui:41
 #, kde-format
 msgid "Delete the current file type."
-msgstr ""
+msgstr "მიმდინარე ფაილის ტიპის წაშლა."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
 #: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1121
@@ -659,7 +659,7 @@ msgstr ""
 #: dialogs/filetypeconfigwidget.ui:89
 #, kde-format
 msgid "&Section:"
-msgstr ""
+msgstr "&სექცია:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtSection)
 #: dialogs/filetypeconfigwidget.ui:99
@@ -735,7 +735,7 @@ msgstr ""
 #: dialogs/filetypeconfigwidget.ui:197
 #, kde-format
 msgid "P&riority:"
-msgstr ""
+msgstr "&პრიორიტეტი:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbPriority)
 #: dialogs/filetypeconfigwidget.ui:207
@@ -765,7 +765,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:75
 #, kde-format
 msgid "Indent using"
-msgstr ""
+msgstr "სწორება"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbIndentWidth)
 #: dialogs/indentationconfigwidget.ui:81
@@ -781,7 +781,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:97
 #, kde-format
 msgid "&Spaces"
-msgstr ""
+msgstr "&ადგილები"
 
 #. i18n: ectx: property (text), widget (QLabel, lblIndentWidth)
 #: dialogs/indentationconfigwidget.ui:104
@@ -793,13 +793,13 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:114
 #, kde-format
 msgid "Tab wi&dth:"
-msgstr ""
+msgstr "&ტაბის სიგანე:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithTabs)
 #: dialogs/indentationconfigwidget.ui:153
 #, kde-format
 msgid "&Tabulators"
-msgstr ""
+msgstr "&ტაბულატორები"
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentMixed)
 #: dialogs/indentationconfigwidget.ui:160
