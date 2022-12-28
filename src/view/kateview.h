@@ -1000,6 +1000,13 @@ private Q_SLOTS:
      */
     void applyFoldingState();
 
+public:
+    /**
+     * Clear any saved folding state
+     */
+    void clearFoldingState();
+
+private:
     void clearHighlights();
     void createHighlights();
 

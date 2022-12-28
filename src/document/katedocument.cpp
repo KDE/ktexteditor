@@ -4905,6 +4905,18 @@ bool KTextEditor::DocumentPrivate::documentReload()
         return false;
     }
 
+    // If we are modified externally clear undo and redo
+    // Why:
+    // Our checksum() is already updated at this point by
+    // slotDelayedHandleModOnHd() so we will end up restoring
+    // undo because undo manager relies on checksum() to check
+    // if the doc is same or different. Hence any checksum matching
+    // is useless at this point and we must clear it here
+    if (m_modOnHd) {
+        m_undoManager->clearUndo();
+        m_undoManager->clearRedo();
+    }
+
     // typically, the message for externally modified files is visible. Since it
     // does not make sense showing an additional dialog, just hide the message.
     delete m_modOnHdHandler;
@@ -4935,6 +4947,10 @@ bool KTextEditor::DocumentPrivate::documentReload()
     // FIXME: Restore multicursors, at least for the case where doc is unmodified
     for (auto *view : m_views) {
         view->clearSecondaryCursors();
+        // Clear folding state if we are modified on hd
+        if (m_modOnHd) {
+            view->clearFoldingState();
+        }
     }
 
     m_reloading = true;

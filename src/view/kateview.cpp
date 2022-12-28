@@ -4724,6 +4724,11 @@ void KTextEditor::ViewPrivate::saveFoldingState()
     m_savedFoldingState = m_textFolding.exportFoldingRanges();
 }
 
+void KTextEditor::ViewPrivate::clearFoldingState()
+{
+    m_savedFoldingState = {};
+}
+
 void KTextEditor::ViewPrivate::applyFoldingState()
 {
     m_textFolding.importFoldingRanges(m_savedFoldingState);
