@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:45+0000\n"
+"POT-Creation-Date: 2022-12-29 00:48+0000\n"
 "PO-Revision-Date: 2022-12-12 12:30+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2184,12 +2184,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Opnieuw proberen"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6531
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr "&Sluiten"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6532
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
 #, kde-format
 msgid "Close message"
 msgstr "Bericht sluiten"
@@ -2371,9 +2371,9 @@ msgstr "Toch sluiten"
 msgid "Untitled"
 msgstr "Naamloos"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:4993
-#: document/katedocument.cpp:5003 document/katedocument.cpp:5744
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Bestand opslaan"
@@ -2383,12 +2383,12 @@ msgstr "Bestand opslaan"
 msgid "Save failed"
 msgstr "Opslag mislukt"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:5030
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Kopie van bestand opslaan"
 
-#: document/katedocument.cpp:5026
+#: document/katedocument.cpp:5042
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2402,7 +2402,7 @@ msgstr ""
 "Controleer of u schrijftoegang hebt tot dit bestand of dat er voldoende "
 "schijfruimte aanwezig is."
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2415,7 +2415,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5298
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2428,22 +2428,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5591
+#: document/katedocument.cpp:5607
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Het bestand '%1' is op de schijf veranderd."
 
-#: document/katedocument.cpp:5594
+#: document/katedocument.cpp:5610
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Het bestand '%1' is aangemaakt op de schijf."
 
-#: document/katedocument.cpp:5597
+#: document/katedocument.cpp:5613
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Het bestand '%1' is verwijderd van schijf."
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2452,17 +2452,17 @@ msgstr ""
 "Het document \"%1\" is gewijzigd.\n"
 "Wilt u de wijzigingen opslaan of verwerpen?"
 
-#: document/katedocument.cpp:5923
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "Document sluiten"
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Het bestand <a href=\"%1\">%2</a> wordt nog steeds geladen."
 
-#: document/katedocument.cpp:6039
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Laden &afbreken"
@@ -7733,7 +7733,7 @@ msgstr "Uitlijnen op"
 msgid "Alignment pattern:"
 msgstr "Uitlijnpatroon:"
 
-#: view/kateview.cpp:4745
+#: view/kateview.cpp:4750
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Bestand exporteren als HTML"

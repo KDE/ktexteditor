@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:45+0000\n"
+"POT-Creation-Date: 2022-12-29 00:48+0000\n"
 "PO-Revision-Date: 2010-12-31 22:34+0700\n"
 "Last-Translator: Phuwanat Sakornsakolpat <narachai@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2197,12 +2197,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6531
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6532
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
 #, kde-format
 msgid "Close message"
 msgstr ""
@@ -2387,9 +2387,9 @@ msgstr "ทำการปิดต่อไป"
 msgid "Untitled"
 msgstr "ยังไม่กำหนดชื่อ"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:4993
-#: document/katedocument.cpp:5003 document/katedocument.cpp:5744
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "บันทึกแฟ้ม"
@@ -2399,13 +2399,13 @@ msgstr "บันทึกแฟ้ม"
 msgid "Save failed"
 msgstr "การบันทึกล้มเหลว"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:5030
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "บันทึกแฟ้ม"
 
-#: document/katedocument.cpp:5026
+#: document/katedocument.cpp:5042
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2417,7 +2417,7 @@ msgstr ""
 "\n"
 "โปรดตรวจสอบว่าคุณมีสิทธิ์ที่จะเขียนลงแฟ้มนี้หรือไม่ หรือมีที่ว่างบนดิสก์เหลือเพียงพอหรือไม่"
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2426,7 +2426,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5298
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2435,25 +2435,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5591
+#: document/katedocument.cpp:5607
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "แฟ้ม '%1' ถูกแก้ไขโดยโปรแกรมอื่น"
 
-#: document/katedocument.cpp:5594
+#: document/katedocument.cpp:5610
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "แฟ้ม '%1' ถูกสร้างขึ้นโดยโปรแกรมอื่น"
 
-#: document/katedocument.cpp:5597
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "แฟ้ม '%1' ถูกลบโดยโปรแกรมอื่น"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2463,17 +2463,17 @@ msgstr ""
 "\"%1\"\n"
 "คุณต้องการจะบันทึกมันหรือจะละทิ้งการเปลี่ยนแปลง ?"
 
-#: document/katedocument.cpp:5923
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "ปิดเอกสาร"
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6039
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -7712,7 +7712,7 @@ msgstr "จัดให้อยู่ในตำแหน่งที่&ถ�
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4745
+#: view/kateview.cpp:4750
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ส่งออกแฟ้มเป็นแบบ HTML"

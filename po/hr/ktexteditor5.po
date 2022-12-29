@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:45+0000\n"
+"POT-Creation-Date: 2022-12-29 00:48+0000\n"
 "PO-Revision-Date: 2010-06-06 14:00+0200\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -2169,12 +2169,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6531
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6532
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
 #, kde-format
 msgid "Close message"
 msgstr ""
@@ -2332,9 +2332,9 @@ msgstr "Zatvori unatoč tome"
 msgid "Untitled"
 msgstr "Neograničeno"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:4993
-#: document/katedocument.cpp:5003 document/katedocument.cpp:5744
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Spremi datoteku"
@@ -2344,13 +2344,13 @@ msgstr "Spremi datoteku"
 msgid "Save failed"
 msgstr "Spremanje nije uspjelo"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:5030
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Spremi datoteku"
 
-#: document/katedocument.cpp:5026
+#: document/katedocument.cpp:5042
 #, fuzzy, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2363,7 +2363,7 @@ msgstr ""
 "Provjerite da li imate pravo upisa u ovaj fajl ili da li ima dovoljno "
 "praznog prostora na disku."
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2372,7 +2372,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5298
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2381,28 +2381,28 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5591
+#: document/katedocument.cpp:5607
 #, fuzzy, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 "Datoteka %1 je izmjenjena (obrisana) na disku od strane drugog programa!\n"
 "\n"
 
-#: document/katedocument.cpp:5594
+#: document/katedocument.cpp:5610
 #, fuzzy, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 "Datoteka %1 je izmjenjena (obrisana) na disku od strane drugog programa!\n"
 "\n"
 
-#: document/katedocument.cpp:5597
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr ""
 "Datoteka %1 je izmjenjena (obrisana) na disku od strane drugog programa!\n"
 "\n"
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2411,18 +2411,18 @@ msgstr ""
 "Datoteka \"%1\" je izmijenjena.\n"
 "Želite li sačuvati ili odbaciti promjene?"
 
-#: document/katedocument.cpp:5923
+#: document/katedocument.cpp:5939
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "&dokument s prijelomom teksta"
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6039
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -7666,7 +7666,7 @@ msgstr "&Poravnaj"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4745
+#: view/kateview.cpp:4750
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "Izvezi datoteku kao "

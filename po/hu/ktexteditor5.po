@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:45+0000\n"
+"POT-Creation-Date: 2022-12-29 00:48+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2191,12 +2191,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Próbálja újra"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6531
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr "&Bezárás"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6532
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
 #, kde-format
 msgid "Close message"
 msgstr "Üzenet bezárása"
@@ -2374,9 +2374,9 @@ msgstr "Bezárás"
 msgid "Untitled"
 msgstr "Nincs cím"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:4993
-#: document/katedocument.cpp:5003 document/katedocument.cpp:5744
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "A fájl mentése"
@@ -2386,12 +2386,12 @@ msgstr "A fájl mentése"
 msgid "Save failed"
 msgstr "A mentés nem sikerült"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:5030
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Másolat mentése"
 
-#: document/katedocument.cpp:5026
+#: document/katedocument.cpp:5042
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2404,7 +2404,7 @@ msgstr ""
 "Ellenőrizze, hogy rendelkezik-e írási jogosultsággal a fájlhoz és van-e elég "
 "szabad lemezterület."
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2417,7 +2417,7 @@ msgstr ""
 "kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5298
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2430,25 +2430,25 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5591
+#: document/katedocument.cpp:5607
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "A(z) „%1” fájlt megváltoztatta egy másik program a lemezen."
 
-#: document/katedocument.cpp:5594
+#: document/katedocument.cpp:5610
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "A(z) „%1” fájlt létrehozta egy másik program a lemezen."
 
-#: document/katedocument.cpp:5597
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Egy másik program törölte ezt a fájlt: „%1”."
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2457,17 +2457,17 @@ msgstr ""
 "Megváltozott egy dokumentum: \"%1\".\n"
 "El szeretné menteni a módosításokat?"
 
-#: document/katedocument.cpp:5923
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "A dokumentum bezárása"
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "A(z) <a href=\"%1\">%2</a> fájl betöltése még folyamatban."
 
-#: document/katedocument.cpp:6039
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Betöltés &megszakítása"
@@ -7753,7 +7753,7 @@ msgstr "&Igazítás"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4745
+#: view/kateview.cpp:4750
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportálás HTML formátumban"

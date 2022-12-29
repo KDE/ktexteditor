@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:45+0000\n"
+"POT-Creation-Date: 2022-12-29 00:48+0000\n"
 "PO-Revision-Date: 2022-09-10 14:04+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2219,12 +2219,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Berriz saiatu"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6531
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr "&Itxi"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6532
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
 #, kde-format
 msgid "Close message"
 msgstr "Itxi mezua"
@@ -2402,9 +2402,9 @@ msgstr "Itxi hala ere"
 msgid "Untitled"
 msgstr "Titulu gabea"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:4993
-#: document/katedocument.cpp:5003 document/katedocument.cpp:5744
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
 msgstr "Gorde fitxategia"
@@ -2414,12 +2414,12 @@ msgstr "Gorde fitxategia"
 msgid "Save failed"
 msgstr "Gordetzeak huts egin du"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:5030
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gorde fitxategiaren kopia"
 
-#: document/katedocument.cpp:5026
+#: document/katedocument.cpp:5042
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2432,7 +2432,7 @@ msgstr ""
 "Egiaztatu fitxategian idazteko baimena duzula, edo diskoan nahikoa leku "
 "dagoela."
 
-#: document/katedocument.cpp:5276
+#: document/katedocument.cpp:5292
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2450,7 +2450,7 @@ msgstr ""
 "docs.kde.org/stable/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5282
+#: document/katedocument.cpp:5298
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2468,25 +2468,25 @@ msgstr ""
 "kde.org/stable/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5591
+#: document/katedocument.cpp:5607
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Beste programa batek '%1' fitxategia aldatu du."
 
-#: document/katedocument.cpp:5594
+#: document/katedocument.cpp:5610
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "'%1' fitxategia beste programa batek sortu du."
 
-#: document/katedocument.cpp:5597
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "'%1' fitxategia beste programa batek ezabatu du."
 
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2495,17 +2495,17 @@ msgstr ""
 "«%1» dokumentua aldatu egin da.\n"
 "Aldaketak gorde edo baztertu nahi dituzu?"
 
-#: document/katedocument.cpp:5923
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
 msgstr "Itxi dokumentua"
 
-#: document/katedocument.cpp:6034
+#: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> fitxategia oraindik zamatzen ari da."
 
-#: document/katedocument.cpp:6039
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
 msgstr "G&alarazi zamatzea"
@@ -7832,7 +7832,7 @@ msgstr "&Lerrokatu"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4745
+#: view/kateview.cpp:4750
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Esportatu fitxategia HTML gisa"
