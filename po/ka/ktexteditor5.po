@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-12-29 10:15+0100\n"
+"PO-Revision-Date: 2022-12-30 07:40+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -417,7 +417,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "A&uto word completion"
-msgstr ""
+msgstr "სიტყვების &ავტომატური დასრულება"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -435,7 +435,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail on complete"
-msgstr ""
+msgstr "დასრულებისას კუდის წაშლა"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
@@ -448,7 +448,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid "&Keyword completion"
-msgstr ""
+msgstr "&საკვანძო სიტყვების დასრულება"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/completionconfigtab.ui:130
@@ -462,7 +462,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid "Documentation with completion"
-msgstr ""
+msgstr "დოკუმენტაცია დასრულებით"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -817,7 +817,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:177
 #, kde-format
 msgid "Indentation Properties"
-msgstr ""
+msgstr "სწორების თვისებები"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:183
@@ -851,7 +851,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:206
 #, kde-format
 msgid "Indentation Actions"
-msgstr ""
+msgstr "სწორების ქმედებები"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:212
@@ -1132,7 +1132,7 @@ msgstr "ლექსიკონი:"
 #: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr ""
+msgstr "ავტომატური გადატვირთვა"
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1142,7 +1142,7 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "View &Difference"
-msgstr ""
+msgstr "სხვაობის &ნახვა"
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1202,7 +1202,7 @@ msgstr ""
 #: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Error Creating Diff"
-msgstr ""
+msgstr "სხვაობის შექმნის შეცდომა"
 
 #: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
 #, kde-format
@@ -1445,7 +1445,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:196
 #, kde-format
 msgid "s"
-msgstr ""
+msgstr "წმ"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
 #: dialogs/opensaveconfigadvwidget.ui:221
@@ -1464,7 +1464,7 @@ msgstr "ფაილის ფორმატი"
 #: dialogs/opensaveconfigwidget.ui:40
 #, kde-format
 msgid "&Encoding:"
-msgstr ""
+msgstr "&კოდირება:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncoding)
 #: dialogs/opensaveconfigwidget.ui:50
@@ -1608,13 +1608,13 @@ msgstr "არასდროს"
 #: dialogs/opensaveconfigwidget.ui:198
 #, kde-format
 msgid "On Modified Lines"
-msgstr ""
+msgstr "შეცვლილ ხაზებზე"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:203
 #, kde-format
 msgid "In Entire Document"
-msgstr ""
+msgstr "მთელ დოკუმენტში"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:226
