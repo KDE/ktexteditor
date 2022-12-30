@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-12-10 11:30+0100\n"
+"PO-Revision-Date: 2022-12-29 10:57+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 ">\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
@@ -3131,12 +3131,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Przenieś kursor do następnego pasującego wcięcia"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Uszereguj zaznaczony tekst"
+msgstr "Uszereguj zaznaczony tekst alfabetycznie"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3148,11 +3146,10 @@ msgid "Editing"
 msgstr "Edytowanie"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Usuń powielone wiersze z oznaczonego tekstu lub całego dokumentu."
+msgstr "Usuń powielenia i uszereguj zaznaczony tekst alfabetycznie"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -6857,7 +6854,7 @@ msgstr ""
 #: view/kateview.cpp:671
 #, kde-format
 msgid "&Editor Color Theme"
-msgstr "Zestaw kolorów &edytora"
+msgstr "Zestaw barw &edytora"
 
 #: view/kateview.cpp:677
 #, kde-format

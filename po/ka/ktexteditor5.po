@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-12-28 09:33+0100\n"
+"PO-Revision-Date: 2022-12-29 10:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -950,7 +950,7 @@ msgstr "სწორება"
 #: dialogs/katedialogs.cpp:290
 #, kde-format
 msgid "Auto Completion"
-msgstr ""
+msgstr "ავტომატური დასრულება"
 
 #: dialogs/katedialogs.cpp:357
 #, kde-format
@@ -1005,7 +1005,7 @@ msgstr "Cmd + Ctrl"
 #: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
-msgstr ""
+msgstr "ტექსტის ნავიგაცია"
 
 #: dialogs/katedialogs.cpp:572
 #, kde-format
@@ -1018,7 +1018,7 @@ msgstr[1] " სიმბოლო"
 #: dialogs/katedialogs.cpp:577
 #, kde-format
 msgid "Feature is not active"
-msgstr ""
+msgstr "თვისება აქტიური არაა"
 
 #: dialogs/katedialogs.cpp:579
 #, kde-format
@@ -1102,7 +1102,7 @@ msgstr "გახსნა/შენახვა"
 #: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
-msgstr ""
+msgstr "ფაილის გახსნა და შენახვა"
 
 #: dialogs/katedialogs.cpp:1234
 #, kde-format
@@ -1478,7 +1478,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:57
 #, kde-format
 msgid "&Encoding detection:"
-msgstr ""
+msgstr "&კოდირების გამოვლენა:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:67
@@ -1566,7 +1566,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:142
 #, kde-format
 msgid "Line length limit:"
-msgstr ""
+msgstr "ხაზის სიგრძის ლიმიტი:"
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, lineLengthLimit)
 #: dialogs/opensaveconfigwidget.ui:152
