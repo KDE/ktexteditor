@@ -67,6 +67,7 @@ Comment[hu]=KTextEditor C++ bővítményt generál speciális szövegműveletek 
 Comment[ia]=Genera un plugin de KTextEditor C++ per exequer operationes special operations sur texto in KWrite, Kate, KDevelop etc.
 Comment[id]=Menghasilkan sebuah plugin KTextEditor C++ untuk melakukan operasi khusus pada teks dalam KWrite, Kate, KDevelop dll.
 Comment[it]=Genera un'estensione KTextEditor C++ per eseguire particolari operazioni sul testo in KWrite, Kate, KDevelop ecc.
+Comment[ka]=აგენერირებს KTextEditor -ის C++ დამატებას KWrite-ში, Kate-ში, KDevelop-ში და ა.შ. ტექსტზე დამატებითი ოპერაციების ჩასატარებლად.
 Comment[ko]=KWrite, Kate, KDevelop 등에서 텍스트에 작업을 수행하는 KTextEditor C++ 플러그인을 만듭니다.
 Comment[lt]=Generuoja KTextEditor C++ papildinį, skirtą atlikti specialius veiksmus su tekstu programose KWrite, Kate, KDevelop ir t.t.
 Comment[nl]=Genereert een KTextEditor C++ plug-in om speciale bewerkingen uit te voeren op tekst in KWrite, Kate, KDevelop etc.
