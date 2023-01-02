@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-12-30 07:40+0100\n"
+"PO-Revision-Date: 2023-01-01 08:08+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1512,7 +1512,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:91
 #, kde-format
 msgid "E&nd of line:"
-msgstr ""
+msgstr "&ხაზის დასასრული:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbEOL)
 #: dialogs/opensaveconfigwidget.ui:102
@@ -1831,7 +1831,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:247
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "რაოდენობები:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:254
@@ -2304,7 +2304,7 @@ msgstr ""
 #: mode/katemodeconfigpage.cpp:295
 #, kde-format
 msgid "Select Mime Types"
-msgstr ""
+msgstr "აირჩიეთ MIME ტიპები"
 
 #: mode/katemodeconfigpage.cpp:306
 #, kde-format
@@ -2315,7 +2315,7 @@ msgstr ""
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr ""
+msgstr "ძებნა..."
 
 #: mode/katemodemenulist.cpp:143
 #, kde-format
@@ -5093,7 +5093,7 @@ msgstr "Waldo Bastian"
 #: utils/kateglobal.cpp:113
 #, kde-format
 msgid "The cool buffersystem"
-msgstr ""
+msgstr "ბუფერის საკაიფო განხორციელება"
 
 #: utils/kateglobal.cpp:114
 #, kde-format
@@ -5233,7 +5233,7 @@ msgstr "Gerald Senarclens de Grancy"
 #: utils/kateglobal.cpp:133
 #, kde-format
 msgid "QA and Scripting"
-msgstr ""
+msgstr "ხარისხის კონტროლი, სკრიპტები"
 
 #: utils/kateglobal.cpp:137
 #, kde-format
