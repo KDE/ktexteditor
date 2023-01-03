@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2023-01-01 08:08+0100\n"
+"PO-Revision-Date: 2023-01-02 09:19+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -787,7 +787,7 @@ msgstr "&ადგილები"
 #: dialogs/indentationconfigwidget.ui:104
 #, kde-format
 msgid "&Indentation width:"
-msgstr ""
+msgstr "&სწორების სიგანე:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblTabWidth)
 #: dialogs/indentationconfigwidget.ui:114
@@ -1163,7 +1163,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
-msgstr ""
+msgstr "ფაილის &დახურვა"
 
 #: dialogs/katedialogs.cpp:1465
 #, kde-format

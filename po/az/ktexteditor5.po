@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the ktexteditor package.
 #
-# Xəyyam <xxmn77@gmail.com>, 2020, 2021, 2022.
+# Xəyyam <xxmn77@gmail.com>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-11-15 18:11+0400\n"
+"PO-Revision-Date: 2023-01-02 22:58+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -3117,12 +3117,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Kursoru sonrakı oxşar abzasa keçirmək"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Seçilmiş mətni çeşidləmək"
+msgstr "Seçilmiş mətni əlifba sırası ilə sıralayın"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3134,11 +3132,10 @@ msgid "Editing"
 msgstr "Düzəliş etmək"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Seçilmiş mətndən və ya bütün sənəddən təkrarlanan sıtirləri silin."
+msgstr "Təkrarları silin və seçilən mətni əlifba sırası ilə sıralayın"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -3240,7 +3237,7 @@ msgstr ""
 #: script/data/commands/utils.js:436
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
-msgstr "Boş sətirləri seçilmiş və ya bütün sənəddən silmək."
+msgstr "Boş sətirləri seçilmiş və ya bütün sənəddən silir."
 
 #: script/data/commands/utils.js:438
 #, kde-format
@@ -3255,6 +3252,15 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Bu əmr seçilmiş blokdakı və ya bütöv sənəddəki sütunlarda müntəzəm ifadə ilə "
+"arqument kimi verilmiş sətirləri düzləndirir.<br><br>Əgər bir boş nümunə "
+"vermiş olsanız builk boş olmayan simvolda düzüləcəkdir.<br>Əgər nümunədə bir "
+"tutulma bloku varsa düzülüş tutulmuş bloka uyğun gələnə görə icra "
+"olunacaqdır.<br><br><i>Nümunələr</i>:<br>\"<code>alognon -</code>\" boşluğu "
+"hər sətirdəki birinci \"-\" simvolunun önünə qoymaq lazımdır ki, onlar "
+"hamısı bir sütunda düzülsün.<br>\"<code>alignon :\\s+(.)</code>\" boşluğu "
+"qoşa nöqtədən sonra gələn ilk boş olmayan simvolun önünə qoyur ki, onlar "
+"hamısı bir sütunda düzülsün."
 
 #: script/data/commands/utils.js:442
 #, kde-format
