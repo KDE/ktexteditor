@@ -8,6 +8,7 @@
 #include <ktexteditor/plugin.h>
 
 #include <KXMLGUIFactory>
+#include <QIcon>
 
 // clang-format off
 
