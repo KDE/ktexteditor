@@ -3,7 +3,7 @@
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020.
 # Lukáš Tinkl <ltinkl@redhat.com>, 2011.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# Vit Pelcak <vpelcak@suse.cz>, 2021, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2021, 2022.
 #
 msgid ""
 msgstr ""
@@ -3034,12 +3034,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Přejít na následující odpovídající odsazení"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Seřadit vybraný text"
+msgstr ""
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3051,11 +3049,10 @@ msgid "Editing"
 msgstr "Úpravy"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Odstranit duplicitní řádky z vybraného textu nebo celého dokumentu."
+msgstr ""
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -7282,10 +7279,9 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Vložit tabulátor"
+msgstr ""
 
 #: view/kateview.cpp:1230
 #, kde-format
@@ -7855,21 +7851,3 @@ msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "Prostory jmen"
-
-#~ msgid "Classes"
-#~ msgstr "Třídy"
-
-#~ msgid "Structs"
-#~ msgstr "Struktury"
-
-#~ msgid "Unions"
-#~ msgstr "Unie"
-
-#~ msgid "Functions"
-#~ msgstr "Funkce"
-
-#~ msgid "Enumerations"
-#~ msgstr "Výčty"

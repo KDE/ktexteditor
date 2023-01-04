@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2023-01-02 09:19+0100\n"
+"PO-Revision-Date: 2023-01-03 08:29+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3214,8 +3214,8 @@ msgstr "დამატება..."
 msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 ჩანაცვლებულია"
+msgstr[1] "%1 ჩანაცვლებულია"
 
 #: search/katesearchbar.cpp:300
 #, kde-format
@@ -5610,7 +5610,7 @@ msgstr "მცდარი"
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
-msgstr ""
+msgstr "არა"
 
 #: variableeditor/variableeditor.cpp:310
 #, kde-format
@@ -5960,7 +5960,7 @@ msgstr ""
 #: view/katestatusbar.cpp:322
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:324
 #, kde-format
@@ -6006,8 +6006,8 @@ msgstr "სხვა..."
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "სხვა (%1)"
+msgstr[1] "სხვა (%1)"
 
 #: view/katestatusbar.cpp:488
 #, kde-format
@@ -6601,19 +6601,19 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
-msgstr ""
+msgstr "&UNIX"
 
 #: view/kateview.cpp:834
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
-msgstr ""
+msgstr "&Windows/DOS"
 
 #: view/kateview.cpp:835
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
-msgstr ""
+msgstr "&Macintosh"
 
 #: view/kateview.cpp:840
 #, kde-format
@@ -6630,7 +6630,7 @@ msgstr ""
 #: view/kateview.cpp:847
 #, kde-format
 msgid "E&ncoding"
-msgstr ""
+msgstr "&კოდირება"
 
 #: view/kateview.cpp:851
 #, kde-format
@@ -7115,7 +7115,7 @@ msgstr ""
 #: view/kateview.cpp:2146
 #, kde-format
 msgid "Search wrapped"
-msgstr ""
+msgstr "გადატანილში ძებნა"
 
 #: view/kateview.cpp:3658
 #, kde-format
