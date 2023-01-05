@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2023-01-03 08:29+0100\n"
+"PO-Revision-Date: 2023-01-04 09:03+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1843,7 +1843,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:257
 #, kde-format
 msgid "Show word count"
-msgstr ""
+msgstr "სიტყვების რაოდენობის ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:264
@@ -1855,7 +1855,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:267 view/katestatusbar.cpp:254
 #, kde-format
 msgid "Show line count"
-msgstr ""
+msgstr "ხაზების რაოდენობის ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:293
@@ -1962,7 +1962,7 @@ msgstr "ფაილი არ არსებობს: %1."
 #: document/katedocument.cpp:246
 #, kde-format
 msgid "Auto Reload Document"
-msgstr ""
+msgstr "დოკუმენტის თავიდან ჩატვირთვა"
 
 #: document/katedocument.cpp:247
 #, kde-format
@@ -2062,7 +2062,7 @@ msgstr ""
 #: document/katedocument.cpp:2556
 #, kde-format
 msgid "Save Nevertheless"
-msgstr ""
+msgstr "მაინც შენახვა"
 
 #: document/katedocument.cpp:2538
 #, kde-format
@@ -2076,7 +2076,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
-msgstr ""
+msgstr "შესაძლებელია მონაცემების დაკარგვა"
 
 #: document/katedocument.cpp:2553
 #, kde-format
@@ -2230,37 +2230,37 @@ msgstr "ნორმალური რეჟიმი"
 #: inputmode/kateviinputmode.cpp:29
 #, kde-format
 msgid "VI: INSERT MODE"
-msgstr ""
+msgstr "VI: ჩასმის რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:32
 #, kde-format
 msgid "VI: NORMAL MODE"
-msgstr ""
+msgstr "VI: ნორმალური რეჟიმი"
 
 #: inputmode/kateviinputmode.cpp:35
 #, kde-format
 msgid "VI: VISUAL"
-msgstr ""
+msgstr "VI: ვიზუალი"
 
 #: inputmode/kateviinputmode.cpp:38
 #, kde-format
 msgid "VI: VISUAL BLOCK"
-msgstr ""
+msgstr "VI: ვიზუალური ბლოკი"
 
 #: inputmode/kateviinputmode.cpp:41
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr ""
+msgstr "VI: ვიზუალური ხაზი"
 
 #: inputmode/kateviinputmode.cpp:44
 #, kde-format
 msgid "VI: REPLACE"
-msgstr ""
+msgstr "VI: ჩანაცვლება"
 
 #: inputmode/kateviinputmode.cpp:144
 #, kde-format
 msgid "vi-mode"
-msgstr ""
+msgstr "vi-mode"
 
 #: inputmode/kateviinputmode.cpp:157
 #, kde-format
@@ -2271,7 +2271,7 @@ msgstr "ჩაწერა"
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
-msgstr ""
+msgstr "Vi-ის შეყვანის რეჟიმი"
 
 #: mode/katemodeconfigpage.cpp:46
 #, kde-format
@@ -2352,7 +2352,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
 msgid "Te&xt Settings"
-msgstr ""
+msgstr "&ტექსტის მორგება"
 
 #: printing/printconfigwidgets.cpp:40
 #, kde-format
@@ -2362,7 +2362,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:43
 #, kde-format
 msgid "Print &legend"
-msgstr ""
+msgstr "&ბეჭდვს შინაარსი"
 
 #: printing/printconfigwidgets.cpp:51
 #, kde-format
