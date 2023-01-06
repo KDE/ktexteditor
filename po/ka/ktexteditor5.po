@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2023-01-04 09:03+0100\n"
+"PO-Revision-Date: 2023-01-05 05:37+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -831,7 +831,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:186
 #, kde-format
 msgid "&Keep extra spaces"
-msgstr ""
+msgstr "&დამატებითი გამოტოვებების შენარჩუნება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:193
@@ -1339,7 +1339,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "მულტიკურსორი"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
@@ -1385,7 +1385,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:61
 #, kde-format
 msgid "&Remote files"
-msgstr ""
+msgstr "&დაშორებული ფაილები"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/opensaveconfigadvwidget.ui:84
@@ -1646,7 +1646,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "ავტომატური შენახვის ინტერვალი:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
@@ -1658,43 +1658,43 @@ msgstr " წამი"
 #: dialogs/statusbarconfigwidget.ui:19
 #, kde-format
 msgid "Show highlighting mode"
-msgstr ""
+msgstr "გამოკვეთის რეჟიმის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
 #, kde-format
 msgid "Show input mode"
-msgstr ""
+msgstr "შეყვანის რეჟიმის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
 #, kde-format
 msgid "Show active dictionary"
-msgstr ""
+msgstr "აქტიური ლექსიკონს ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
 #, kde-format
 msgid "Show tab setting"
-msgstr ""
+msgstr "ტაბულაციის პარამეტრის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
 #, kde-format
 msgid "Show line column"
-msgstr ""
+msgstr "ხაზის სვეტის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
 #, kde-format
 msgid "Show File Encoding"
-msgstr ""
+msgstr "ფალის კოდირების ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "ხაზის დასრულების ტიპის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1706,13 +1706,13 @@ msgstr "რედაქტორის ფონტი:"
 #: dialogs/textareaappearanceconfigwidget.ui:64
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr ""
+msgstr "გამოტოვების ინდიკატორების ჩვენება"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
 #, kde-format
 msgid "At the end of a line"
-msgstr ""
+msgstr "ფაილის ბოლოში"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
