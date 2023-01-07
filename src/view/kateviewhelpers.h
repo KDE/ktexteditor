@@ -403,15 +403,10 @@ private:
 class KateViewEncodingAction : public KSelectAction
 {
     Q_OBJECT
-
-    Q_PROPERTY(QString codecName READ currentCodecName WRITE setCurrentCodec)
-
 public:
     KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
     bool setCurrentCodec(QTextCodec *codec);
-
-    QString currentCodecName() const;
     bool setCurrentCodec(const QString &codecName);
 
 private:

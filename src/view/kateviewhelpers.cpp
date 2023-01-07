@@ -2902,11 +2902,6 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
     return true;
 }
 
-QString KateViewEncodingAction::currentCodecName() const
-{
-    return d->currentSubAction->text();
-}
-
 bool KateViewEncodingAction::setCurrentCodec(const QString &codecName)
 {
     auto codec = QTextCodec::codecForName(codecName.toUtf8());
