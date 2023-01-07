@@ -2895,16 +2895,6 @@ int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok)
     return MIB_DEFAULT;
 }
 
-QTextCodec *KateViewEncodingAction::codecForMib(int mib)
-{
-    if (mib == MIB_DEFAULT) {
-        // FIXME offer to change the default codec
-        return QTextCodec::codecForLocale();
-    } else {
-        return QTextCodec::codecForMib(mib);
-    }
-}
-
 bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
 {
     disconnect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);

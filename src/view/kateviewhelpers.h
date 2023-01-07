@@ -410,7 +410,6 @@ public:
     KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
     static int mibForName(const QString &codecName, bool *ok = nullptr);
-    static QTextCodec *codecForMib(int mib);
 
     bool setCurrentCodec(QTextCodec *codec);
 
