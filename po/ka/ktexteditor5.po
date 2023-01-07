@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2023-01-05 05:37+0100\n"
+"PO-Revision-Date: 2023-01-06 06:27+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -154,7 +154,7 @@ msgstr "ხელსაწყოთა მთავარი ზოლი"
 #: dialogs/bordersappearanceconfigwidget.ui:25
 #, kde-format
 msgid "Code block folding:"
-msgstr ""
+msgstr "კოდის ბლოკის ჩაკეცვა:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -167,7 +167,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "ბლოკის კოდის ჩამოსაშლელად ისრების ჩვენება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -181,7 +181,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr ""
+msgstr "გადატარებისას ჩაკეცილი ბლოკების მინიატურის ჩვენება"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
@@ -232,7 +232,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:98
 #, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr ""
+msgstr "შეცვლილი და შეუნახავი ხაზების გამოკვეთა"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
@@ -294,7 +294,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:187
 #, kde-format
 msgid "Map the whole document"
-msgstr ""
+msgstr "მთელი დოკუმენტის რუკა"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:213
@@ -514,7 +514,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:49
 #, kde-format
 msgid "Wra&p words at:"
-msgstr ""
+msgstr "&სიტყვების გადატანის მაჩვენებელი სიმბოლო:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -554,7 +554,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:140
 #, kde-format
 msgid "Enclosing characters:"
-msgstr ""
+msgstr "დამასრულებელი სიმბოლოები:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
@@ -566,7 +566,7 @@ msgstr "კოპირება და ჩასმა:"
 #: dialogs/editconfigwidget.ui:167
 #, kde-format
 msgid "Move selected text when dragged"
-msgstr ""
+msgstr "ტექსტის გადატანა გადათრევისას"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
@@ -749,7 +749,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:43
 #, kde-format
 msgid "Default indentation mode:"
-msgstr ""
+msgstr "ნაგულისხმები სწორების რეჟიმი"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbMode)
 #: dialogs/indentationconfigwidget.ui:53
@@ -1038,7 +1038,7 @@ msgstr ""
 #: dialogs/katedialogs.cpp:585
 #, kde-format
 msgid "Non letter character"
-msgstr ""
+msgstr "სიმბოლო ასო არაა"
 
 #: dialogs/katedialogs.cpp:699
 #, kde-format
@@ -1063,7 +1063,7 @@ msgstr "გამორთ"
 #: dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Follow Line Numbers"
-msgstr ""
+msgstr "ხაზის ნომრების მიყოლა"
 
 #: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
 #, kde-format
@@ -1706,7 +1706,7 @@ msgstr "რედაქტორის ფონტი:"
 #: dialogs/textareaappearanceconfigwidget.ui:64
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr "გამოტოვების ინდიკატორების ჩვენება"
+msgstr "გამოტოვების ინდიკატორების ჩვენება:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
