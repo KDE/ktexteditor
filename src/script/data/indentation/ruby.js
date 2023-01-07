@@ -199,12 +199,19 @@ function isBlockStart(stmt)
   var cnt = stmt.content();
   var len = cnt.length;
 
-  if (rxIndent.test(cnt))
+  if (rxIndent.test(cnt) && !isRuby3EndlessMethodDefinition(stmt))
     return true;
 
   var rx = /((\bdo\b|\{)(\s*\|.*\|)?\s*)/g;
 
   return testAtEnd(stmt, rx);
+}
+
+function isRuby3EndlessMethodDefinition(stmt)
+{
+  var rx = /^\s*def\s+(?<method_name>[^\s(=]+)(?<params>\s*\([^)]*\))?\s+=/;
+
+  return rx.test(stmt.content());
 }
 
 function isBlockEnd(stmt)
