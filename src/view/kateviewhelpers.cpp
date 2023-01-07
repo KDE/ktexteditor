@@ -2905,11 +2905,6 @@ QTextCodec *KateViewEncodingAction::codecForMib(int mib)
     }
 }
 
-QTextCodec *KateViewEncodingAction::currentCodec() const
-{
-    return codecForMib(currentCodecMib());
-}
-
 bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
 {
     disconnect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);

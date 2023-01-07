@@ -413,7 +413,6 @@ public:
     static int mibForName(const QString &codecName, bool *ok = nullptr);
     static QTextCodec *codecForMib(int mib);
 
-    QTextCodec *currentCodec() const;
     bool setCurrentCodec(QTextCodec *codec);
 
     QString currentCodecName() const;
