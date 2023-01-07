@@ -2949,11 +2949,6 @@ bool KateViewEncodingAction::setCurrentCodec(const QString &codecName)
     return setCurrentCodec(codec);
 }
 
-int KateViewEncodingAction::currentCodecMib() const
-{
-    return mibForName(currentCodecName());
-}
-
 bool KateViewEncodingAction::setCurrentCodec(int mib)
 {
     return setCurrentCodec(codecForMib(mib));
