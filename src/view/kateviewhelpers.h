@@ -422,12 +422,6 @@ public:
     int currentCodecMib() const;
     bool setCurrentCodec(int mib);
 
-Q_SIGNALS:
-    /**
-     * Specific (proper) codec was selected
-     */
-    void codecSelected(QTextCodec *codec);
-
 private:
     KTextEditor::DocumentPrivate *doc;
     KTextEditor::ViewPrivate *view;
