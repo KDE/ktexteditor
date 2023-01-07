@@ -2855,7 +2855,12 @@ KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_do
 
 void KateViewEncodingAction::slotAboutToShow()
 {
-    setCurrentCodec(doc->config()->encoding());
+    auto codec = QTextCodec::codecForName(doc->config()->encoding().toUtf8());
+    if (!codec) {
+        codec = QTextCodec::codecForLocale();
+    }
+
+    setCurrentCodec(codec);
 }
 
 void KateViewEncodingAction::setEncoding(const QString &e)
@@ -2900,15 +2905,6 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
 
     connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
     return true;
-}
-
-bool KateViewEncodingAction::setCurrentCodec(const QString &codecName)
-{
-    auto codec = QTextCodec::codecForName(codecName.toUtf8());
-    if (!codec) {
-        codec = QTextCodec::codecForLocale();
-    }
-    return setCurrentCodec(codec);
 }
 
 // END KateViewEncodingAction

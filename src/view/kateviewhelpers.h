@@ -407,7 +407,6 @@ public:
     KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
     bool setCurrentCodec(QTextCodec *codec);
-    bool setCurrentCodec(const QString &codecName);
 
 private:
     KTextEditor::DocumentPrivate *doc;
