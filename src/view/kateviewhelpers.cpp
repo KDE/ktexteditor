@@ -2800,40 +2800,40 @@ bool lessThanAction(KSelectAction *a, KSelectAction *b)
     return a->text() < b->text();
 }
 
-void KateViewEncodingAction::Private::init()
+void KateViewEncodingAction::init()
 {
     QList<KSelectAction *> actions;
 
-    q->setToolBarMode(MenuMode);
+    setToolBarMode(MenuMode);
 
     int i;
     const auto encodingsByScript = KCharsets::charsets()->encodingsByScript();
     actions.reserve(encodingsByScript.size());
     for (const QStringList &encodingsForScript : encodingsByScript) {
-        KSelectAction *tmp = new KSelectAction(encodingsForScript.at(0), q);
+        KSelectAction *tmp = new KSelectAction(encodingsForScript.at(0), this);
 
         for (i = 1; i < encodingsForScript.size(); ++i) {
             tmp->addAction(encodingsForScript.at(i));
         }
-        q->connect(tmp, qOverload<QAction *>(&KSelectAction::triggered), q, [this](QAction *action) {
-            _k_subActionTriggered(action);
+        connect(tmp, qOverload<QAction *>(&KSelectAction::triggered), this, [this](QAction *action) {
+            subActionTriggered(action);
         });
         // tmp->setCheckable(true);
         actions << tmp;
     }
     std::sort(actions.begin(), actions.end(), lessThanAction);
     for (KSelectAction *action : std::as_const(actions)) {
-        q->addAction(action);
+        addAction(action);
     }
 }
 
-void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
+void KateViewEncodingAction::subActionTriggered(QAction *action)
 {
     if (currentSubAction == action) {
         return;
     }
     currentSubAction = action;
-    Q_EMIT q->textTriggered(action->text());
+    Q_EMIT textTriggered(action->text());
 }
 
 KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc,
@@ -2844,10 +2844,9 @@ KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_do
     : KSelectAction(text, parent)
     , doc(_doc)
     , view(_view)
-    , d(new Private(this))
     , m_saveAsMode(saveAsMode)
 {
-    d->init();
+    init();
 
     connect(menu(), &QMenu::aboutToShow, this, &KateViewEncodingAction::slotAboutToShow);
     connect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
@@ -2894,8 +2893,8 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
                 }
 
                 if (codec == QTextCodec::codecForName(actions().at(i)->menu()->actions().at(j)->text().toUtf8())) {
-                    d->currentSubAction = actions().at(i)->menu()->actions().at(j);
-                    d->currentSubAction->setChecked(true);
+                    currentSubAction = actions().at(i)->menu()->actions().at(j);
+                    currentSubAction->setChecked(true);
                 } else {
                     actions().at(i)->menu()->actions().at(j)->setChecked(false);
                 }

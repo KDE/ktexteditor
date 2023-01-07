@@ -409,29 +409,12 @@ public:
     bool setCurrentCodec(QTextCodec *codec);
 
 private:
+    void init();
+    void subActionTriggered(QAction *);
+
     KTextEditor::DocumentPrivate *doc;
     KTextEditor::ViewPrivate *view;
-
-    class Private
-    {
-    public:
-        explicit Private(KateViewEncodingAction *parent)
-            : q(parent)
-            , currentSubAction(nullptr)
-        {
-        }
-
-        void init();
-
-        void _k_subActionTriggered(QAction *);
-
-        KateViewEncodingAction *q;
-        QAction *currentSubAction;
-    };
-
-    std::unique_ptr<Private> const d;
-    Q_PRIVATE_SLOT(d, void _k_subActionTriggered(QAction *))
-
+    QAction *currentSubAction;
     const bool m_saveAsMode;
 
 private Q_SLOTS:
