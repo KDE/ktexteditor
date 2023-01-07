@@ -417,8 +417,6 @@ public:
     QString currentCodecName() const;
     bool setCurrentCodec(const QString &codecName);
 
-    bool setCurrentCodec(int mib);
-
 private:
     KTextEditor::DocumentPrivate *doc;
     KTextEditor::ViewPrivate *view;
