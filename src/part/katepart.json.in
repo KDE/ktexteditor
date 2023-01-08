@@ -16,6 +16,7 @@
         "Description[sl]": "Ponovno uporabljiva komponenta urejevalnika besedil",
         "Description[tr]": "Yeniden kullanılabilir metin düzenleyici bileşeni",
         "Description[uk]": "Універсальний компонент текстового редактора",
+        "Description[vi]": "Thành phần trình biên tập văn bản có khả năng tái sử dụng",
         "Description[x-test]": "xxReusable text editor componentxx",
         "Icon": "accessories-text-editor",
         "InitialPreference": 8,
@@ -74,6 +75,7 @@
         "Name[sl]": "Vgrajeni napredni urejevalnik besedil",
         "Name[tr]": "Gömülü Gelişmiş Metin Düzenleyici",
         "Name[uk]": "Вмонтований потужний текстовий редактор",
+        "Name[vi]": "Trình biên tập văn bản nâng cao có khả năng nhúng",
         "Name[x-test]": "xxEmbedded Advanced Text Editorxx",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
