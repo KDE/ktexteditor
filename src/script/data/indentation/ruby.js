@@ -209,7 +209,7 @@ function isBlockStart(stmt)
 
 function isRuby3EndlessMethodDefinition(stmt)
 {
-  var rx = /^\s*def\s+(?<method_name>[^\s(=]+)(?<params>\s*\([^)]*\))?\s+=/;
+  var rx = /^\s*def\s+([^\s(=]+)(\s*\([^)]*\))?\s+=/;
 
   return rx.test(stmt.content());
 }
