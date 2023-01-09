@@ -2,7 +2,7 @@
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 1999, 2000, 2002, 2003, 2004, 2005, 2006.
 # Håvard Korsvoll <korsvoll@skulelinux.no>, 2003, 2005.
-# Karl Ove Hufthammer <karl@huftis.org>, 2004, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Karl Ove Hufthammer <karl@huftis.org>, 2004, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Jørgen Grønlund <jorgenhg@broadpark.no>, 2005.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008, 2009, 2010.
 # Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018, 2019.
@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-10-30 11:00+0100\n"
+"PO-Revision-Date: 2023-01-08 12:15+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -93,7 +93,7 @@ msgstr "Utval"
 #: data/katepart5ui.rc:51
 #, kde-format
 msgid "Capitalization"
-msgstr ""
+msgstr "Store/små bokstavar"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -174,7 +174,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Vis piler for å falda saman kodeblokker"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -190,7 +190,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr ""
+msgstr "Førehandsvis samanfaldne blokker når peikaren er over"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
@@ -246,7 +246,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:98
 #, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr ""
+msgstr "Framhev endra og ulagra filer"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
@@ -278,7 +278,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:141
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr ""
+msgstr "Vis førehandsvising når peikaren er over rullefeltet"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
@@ -362,7 +362,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "Etter opprettingstidspunkt"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -374,13 +374,13 @@ msgstr "Bokmerka vert sorterte etter linjenummer dei høyrer til."
 #: dialogs/bordersappearanceconfigwidget.ui:265
 #, kde-format
 msgid "By line number"
-msgstr ""
+msgstr "Etter linjenummer"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
 #, kde-format
 msgid "Sort bookmarks menu:"
-msgstr ""
+msgstr "Sorter bokmerkemenyen:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
@@ -392,23 +392,23 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:303
 #, kde-format
 msgid "Show on Hover"
-msgstr ""
+msgstr "Vis når peikaren er over"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
 #, kde-format
 msgid "Show Always"
-msgstr ""
+msgstr "Alltid vis"
 
 #: dialogs/clipboardhistorydialog.cpp:267
 #, kde-format
 msgid "Select text to paste."
-msgstr ""
+msgstr "Merk tekst å lima inn."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Ingen oppføringar i utklippstavlehistorikken"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -441,7 +441,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "A&uto word completion"
-msgstr ""
+msgstr "Automatisk &ordfullføring"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -502,7 +502,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:22
 #, kde-format
 msgid "Word wrap:"
-msgstr ""
+msgstr "Tekstbryting:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -571,7 +571,7 @@ msgstr "Standard tastemodus:"
 #: dialogs/editconfigwidget.ui:117
 #, kde-format
 msgid "Brackets:"
-msgstr ""
+msgstr "Parentesar:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
@@ -593,13 +593,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:140
 #, kde-format
 msgid "Enclosing characters:"
-msgstr ""
+msgstr "Omsluttande teikn:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
 #, kde-format
 msgid "Copy and paste:"
-msgstr ""
+msgstr "Kopier og lim inn:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
@@ -1040,32 +1040,32 @@ msgstr "Stavekontroll"
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
@@ -1134,7 +1134,7 @@ msgstr "Redigeringsval"
 #: dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Statusbar"
-msgstr ""
+msgstr "Statuslinje"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1438,7 +1438,7 @@ msgstr "Rettetasten skal fjerna grunnteikn saman med aksentane"
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "Fleire skrivemerke"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
@@ -1779,7 +1779,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:273
 #, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " sekund"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
@@ -1797,13 +1797,13 @@ msgstr ""
 #: dialogs/statusbarconfigwidget.ui:33
 #, kde-format
 msgid "Show active dictionary"
-msgstr ""
+msgstr "Vis gjeldande ordbok"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
 #, kde-format
 msgid "Show tab setting"
-msgstr ""
+msgstr "Vis faneval"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
@@ -1815,19 +1815,19 @@ msgstr ""
 #: dialogs/statusbarconfigwidget.ui:54
 #, kde-format
 msgid "Show File Encoding"
-msgstr ""
+msgstr "Vis filteiknkoding"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Vis type linjeskift"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
 #, kde-format
 msgid "Editor font:"
-msgstr ""
+msgstr "Skriveskrift:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
@@ -1839,7 +1839,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:77
 #, kde-format
 msgid "At the end of a line"
-msgstr ""
+msgstr "På slutten av linja"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
@@ -1863,7 +1863,7 @@ msgstr "Storleik på den synlege fargeleggingsmarkøren."
 #: dialogs/textareaappearanceconfigwidget.ui:131
 #, kde-format
 msgid "Show tab indicators:"
-msgstr ""
+msgstr "Vis tabulatorsymbol:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1883,7 +1883,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:178
 #, kde-format
 msgid "Bracket matching:"
-msgstr ""
+msgstr "Markering av parentespar:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:185
@@ -2016,13 +2016,13 @@ msgstr "Fald saman første linje"
 #: dialogs/textareaappearanceconfigwidget.ui:316
 #, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr ""
+msgstr "Dynamisk tekstbryting:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr ""
+msgstr "Dynamisk tekstbryting ved tekstbrytingsmerket"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
@@ -2856,7 +2856,7 @@ msgstr "Emmet"
 #, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr ""
+msgstr "Legg taggar rundt"
 
 #: script/data/commands/emmet.js:18
 #, kde-format
@@ -2886,79 +2886,79 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr ""
+msgstr "Gå til neste redigeringspunkt"
 
 #: script/data/commands/emmet.js:38
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr ""
+msgstr "Gå til førre redigeringspunkt"
 
 #: script/data/commands/emmet.js:42
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr ""
+msgstr "Vel neste redigeringspunkt"
 
 #: script/data/commands/emmet.js:46
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr ""
+msgstr "Vel førre redigeringspunkt"
 
 #: script/data/commands/emmet.js:50
 #, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr ""
+msgstr "Slett taggen under peikaren"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr ""
+msgstr "Del opp / slå saman tagg"
 
 #: script/data/commands/emmet.js:58
 #, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr ""
+msgstr "Evaluer eit enkelt matematisk uttrykk"
 
 #: script/data/commands/emmet.js:62
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr ""
+msgstr "Trekk 1 frå talet"
 
 #: script/data/commands/emmet.js:66
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr ""
+msgstr "Trekk 10 frå talet"
 
 #: script/data/commands/emmet.js:70
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr ""
+msgstr "Trekk 0,1 frå talet"
 
 #: script/data/commands/emmet.js:74
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr ""
+msgstr "Legg 1 til talet"
 
 #: script/data/commands/emmet.js:78
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr ""
+msgstr "Legg 10 til talet"
 
 #: script/data/commands/emmet.js:82
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr ""
+msgstr "Legg 0,1 til talet"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -4066,7 +4066,7 @@ msgstr "I&gnorer alle"
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr ""
+msgstr "Stavekontroll (frå skrivemerket) …"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -6505,7 +6505,7 @@ msgstr ""
 #: view/kateview.cpp:507
 #, kde-format
 msgid "&Format Indentation"
-msgstr ""
+msgstr "Formater med &innrykk"
 
 #: view/kateview.cpp:508
 #, kde-format
@@ -6517,7 +6517,7 @@ msgstr ""
 #: view/kateview.cpp:512
 #, kde-format
 msgid "&Align On..."
-msgstr ""
+msgstr "&Juster på …"
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6745,10 +6745,11 @@ msgstr "&Syntaksmerking"
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Vel korleis dokumentet skal syntaksmerkjast."
 
+# Jf. liknande melding i kate.po.
 #: view/kateview.cpp:671
 #, kde-format
 msgid "&Editor Color Theme"
-msgstr ""
+msgstr "Fargetema for &skriveprogram"
 
 #: view/kateview.cpp:677
 #, kde-format
@@ -7041,7 +7042,7 @@ msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
 msgstr ""
-"Viss det er kryssa av her, vert det lagt til byterekkjefølgje-merke (BOM) "
+"Viss det er kryssa av her, vert det lagt til byterekkjefølgje-markør (BOM) "
 "ved lagring av UTF-8- og UTF-16-koda filer."
 
 #: view/kateview.cpp:847
@@ -7077,7 +7078,7 @@ msgstr "Finn førre førekomst av merkt tekst."
 #: view/kateview.cpp:867
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Finn og merk neste søkjetreff"
 
 #: view/kateview.cpp:869
 #, kde-format
@@ -7097,7 +7098,7 @@ msgstr ""
 #: view/kateview.cpp:879
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "Finn og merk alle søkjetreffa"
 
 #: view/kateview.cpp:881
 #, kde-format
@@ -7136,22 +7137,22 @@ msgstr ""
 #: view/kateview.cpp:902
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Legg til skrivemerke nedanfor"
 
 #: view/kateview.cpp:904
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr ""
+msgstr "Legg til eit skrivemerke i linja nedanfor der skrivemerket er no."
 
 #: view/kateview.cpp:908
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Legg til skrivemerke ovanfor"
 
 #: view/kateview.cpp:910
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "Legg til eit skrivemerke i linja ovanfor der skrivemerket er no."
 
 #: view/kateview.cpp:914
 #, kde-format
@@ -7381,7 +7382,7 @@ msgstr "Merk til nedst i tekstruta"
 #: view/kateview.cpp:1169
 #, kde-format
 msgid "Go to Matching Bracket"
-msgstr ""
+msgstr "Gå til parentestvillingen"
 
 #: view/kateview.cpp:1175
 #, kde-format
