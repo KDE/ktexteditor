@@ -562,12 +562,16 @@ void KateStatusBar::toggleWordCount(bool on)
 void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, int charsInDocument, int charsInSelection)
 {
     if (m_wordCounter) {
-        m_wordCount = i18nc("%1 and %3 are the selected words/chars count, %2 and %4 are the total words/chars count.",
-                            "Words %1/%2, Chars %3/%4",
-                            wordsInSelection,
-                            wordsInDocument,
-                            charsInSelection,
-                            charsInDocument);
+        if (charsInSelection > 0) {
+            m_wordCount = i18nc("%1 and %3 are the selected words/chars count, %2 and %4 are the total words/chars count.",
+                                "Words %1/%2, Chars %3/%4",
+                                wordsInSelection,
+                                wordsInDocument,
+                                charsInSelection,
+                                charsInDocument);
+        } else {
+            m_wordCount = i18nc("%1 and %2 are the total words/chars count.", "Words %1, Chars %2", wordsInDocument, charsInDocument);
+        }
     } else {
         m_wordCount.clear();
     }
