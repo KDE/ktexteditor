@@ -755,7 +755,10 @@ function tryMatchedAnchor(line, alignOnly)
 }
 
 function escapeForRegex(string) {
-    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    if (string !== null) {
+        return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+    return string;
 }
 
 /**
