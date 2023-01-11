@@ -188,8 +188,8 @@ KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEd
     , m_numReplacementsDone(0)
     , m_numLinesTouched(0)
     , m_lastChangedLineNum(-1)
+    , m_currentSearchPos(KTextEditor::Cursor(startLine, 0))
 {
-    m_currentSearchPos = KTextEditor::Cursor(startLine, 0);
 }
 
 KTextEditor::Range KateCommands::SedReplace::InteractiveSedReplacer::currentMatch()

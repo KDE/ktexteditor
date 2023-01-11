@@ -20,14 +20,13 @@
 KateTextAnimation::KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
     : QObject(view)
     , m_range(range)
+    , m_text(view->view()->doc()->text(range))
     , m_attribute(std::move(attribute))
     , m_doc(view->view()->doc())
     , m_view(view)
     , m_timeLine(new QTimeLine(250, this))
     , m_value(0.0)
 {
-    m_text = view->view()->doc()->text(range);
-
     connect(m_timeLine, &QTimeLine::valueChanged, this, &KateTextAnimation::nextFrame);
     connect(m_timeLine, &QTimeLine::finished, this, &KateTextAnimation::deleteLater);
 

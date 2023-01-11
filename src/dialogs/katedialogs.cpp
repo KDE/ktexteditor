@@ -1427,13 +1427,13 @@ void KateDictionaryBar::dictionaryChanged(const QString &dictionary)
 KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype, const QString &reason)
     : QObject(doc)
     , m_doc(doc)
+    , m_message(new KTextEditor::Message(reason, KTextEditor::Message::Information))
     , m_modtype(modtype)
     , m_fullDiffPath(QStandardPaths::findExecutable(QStringLiteral("diff")))
     , m_proc(nullptr)
     , m_diffFile(nullptr)
     , m_diffAction(nullptr)
 {
-    m_message = new KTextEditor::Message(reason, KTextEditor::Message::Information);
     m_message->setPosition(KTextEditor::Message::AboveView);
     m_message->setWordWrap(true);
 
