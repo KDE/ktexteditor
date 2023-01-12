@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -6554,7 +6554,7 @@ msgstr "Adja meg a kívánt tabulátorszélességet:"
 msgid "Please specify the wanted indentation width:"
 msgstr "Adja meg a kívánt behúzási szélességet:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6562,7 +6562,17 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "%1 / %2 szó, %3 / %4 karakter"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
+#| "words/chars count."
+#| msgid "Words %1/%2, Chars %3/%4"
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "%1 / %2 szó, %3 / %4 karakter"
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Nagyítás: %1%"

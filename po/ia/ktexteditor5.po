@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
 "PO-Revision-Date: 2022-11-28 16:17+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -6580,7 +6580,7 @@ msgstr "Pro favor specifica le largessa de tab volite:"
 msgid "Please specify the wanted indentation width:"
 msgstr "Pro favor specifica le largessa de indentation volite:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6588,7 +6588,17 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "Parolas %1/%2, Characteres %3/%4"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
+#| "words/chars count."
+#| msgid "Words %1/%2, Chars %3/%4"
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "Parolas %1/%2, Characteres %3/%4"
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Zoom: %1%"

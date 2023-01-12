@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
 "PO-Revision-Date: 2020-02-14 00:50+0800\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -6389,7 +6389,7 @@ msgstr "請輸入定位點的寬度："
 msgid "Please specify the wanted indentation width:"
 msgstr "請指定定位點的寬度："
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6397,7 +6397,17 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "選取了 %1/%2 個單字，%3/%4 個字元"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
+#| "words/chars count."
+#| msgid "Words %1/%2, Chars %3/%4"
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "選取了 %1/%2 個單字，%3/%4 個字元"
+
+#: view/katestatusbar.cpp:588
 #, fuzzy, kde-format
 #| msgid "Zoom"
 msgid "Zoom: %1%"

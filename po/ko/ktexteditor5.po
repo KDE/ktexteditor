@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -6395,7 +6395,7 @@ msgstr "탭 간격을 입력하십시오:"
 msgid "Please specify the wanted indentation width:"
 msgstr "들여쓰기 간격을 입력하십시오:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6403,7 +6403,17 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "%1/%2 단어, %3/%4 글자"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
+#| "words/chars count."
+#| msgid "Words %1/%2, Chars %3/%4"
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "%1/%2 단어, %3/%4 글자"
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "크기 조정: %1%"
