@@ -18,6 +18,7 @@
         "Description[uk]": "Універсальний компонент текстового редактора",
         "Description[vi]": "Thành phần trình biên tập văn bản có khả năng tái sử dụng",
         "Description[x-test]": "xxReusable text editor componentxx",
+        "Description[zh_CN]": "可复用文本编辑器组件",
         "Icon": "accessories-text-editor",
         "InitialPreference": 8,
         "License": "LGPL 2.1+",
@@ -77,6 +78,7 @@
         "Name[uk]": "Вмонтований потужний текстовий редактор",
         "Name[vi]": "Trình biên tập văn bản nâng cao có khả năng nhúng",
         "Name[x-test]": "xxEmbedded Advanced Text Editorxx",
+        "Name[zh_CN]": "嵌入式多功能文本编辑器",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
             "KParts/ReadWritePart"
