@@ -3,20 +3,20 @@
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007, 2009.
 # Yasen Pramatarov <yasen@lindeas.com>, 2010, 2011.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
+# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2022-12-14 20:16+0100\n"
+"PO-Revision-Date: 2023-01-12 19:41+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -6498,14 +6498,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Думи %1/%2, символи %3/%4"
 
 #: view/katestatusbar.cpp:573
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Думи %1/%2, символи %3/%4"
+msgstr "Думи %1, Символи %2"
 
 #: view/katestatusbar.cpp:588
 #, kde-format

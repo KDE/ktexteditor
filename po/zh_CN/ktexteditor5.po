@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-02 07:11\n"
+"PO-Revision-Date: 2023-01-12 10:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -388,7 +388,7 @@ msgstr "选择要粘贴的文本。"
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "剪贴板历史中没有条目"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -415,7 +415,7 @@ msgstr "自动选择第一个补全项 (&F)"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "使用Tab / Shift+Tab 循环代码补全列表"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -2994,7 +2994,7 @@ msgstr "移动光标至下一个匹配的缩进"
 #, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "按字母顺序排序选定的文本"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3009,7 +3009,7 @@ msgstr "编辑"
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "移除重复项并按字母顺序排序选定的文本"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -7241,7 +7241,7 @@ msgstr "Backspace"
 #: view/kateview.cpp:1225
 #, kde-format
 msgid "Insert Tab Character"
-msgstr ""
+msgstr "插入 Tab 字符"
 
 #: view/kateview.cpp:1230
 #, kde-format

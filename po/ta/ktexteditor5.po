@@ -8,13 +8,13 @@
 # ஸ்ரீராமதாஸ் <shriramadhas@gmail.com>, 2007.
 # ஆமாச்சு <amachu@ubuntu.com>, 2007.
 # amachu <amachu@amachu.com>, 2010.
-# Kishore G <kishore96@gmail.com>, 2021, 2022.
+# Kishore G <kishore96@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2022-12-13 19:30+0530\n"
+"PO-Revision-Date: 2023-01-12 21:24+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -2634,50 +2634,47 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:341
 #, kde-format
 msgid "Add Placeholder..."
-msgstr ""
+msgstr "கொள்ளிடத்தை சேர்..."
 
 #: printing/printconfigwidgets.cpp:343
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current User Name"
-msgstr "நடைமுறை வரி:"
+msgstr "தற்போதைய பயனரின் பெயர்"
 
 #: printing/printconfigwidgets.cpp:345
 #, kde-format
 msgid "Complete Date/Time (short format)"
-msgstr ""
+msgstr "முழு தேதி/நேரம் (சுருக்கமாக)"
 
 #: printing/printconfigwidgets.cpp:347
 #, kde-format
 msgid "Complete Date/Time (long format)"
-msgstr ""
+msgstr "முழு தேதி/நேரம் (விரிவாக)"
 
 #: printing/printconfigwidgets.cpp:349
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current Time"
-msgstr "நடைமுறை வரி:"
+msgstr "தற்போதைய நேரம்"
 
 #: printing/printconfigwidgets.cpp:351
 #, kde-format
 msgid "Current Date (short format)"
-msgstr ""
+msgstr "தற்போதைய தேதி (சுருக்கமாக)"
 
 #: printing/printconfigwidgets.cpp:353
 #, kde-format
 msgid "Current Date (long format)"
-msgstr ""
+msgstr "தற்போதைய தேதி (விரிவாக)"
 
 #: printing/printconfigwidgets.cpp:355
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "File Name"
-msgstr "பெயர்"
+msgstr "கோப்புப்பெயர்"
 
 #: printing/printconfigwidgets.cpp:357
 #, kde-format
 msgid "Full document URL"
-msgstr ""
+msgstr "ஆவணத்தின் முழு முகவரி"
 
 #: printing/printconfigwidgets.cpp:359
 #, kde-format
@@ -2687,28 +2684,27 @@ msgstr "பக்க எண்"
 #: printing/printconfigwidgets.cpp:361
 #, kde-format
 msgid "Total Amount of Pages"
-msgstr "மொத்த பக்கங்களின் எண்ணிக்கை"
+msgstr "பக்கங்களின் மொத்த எண்ணிக்கை"
 
 #: printing/printconfigwidgets.cpp:467
 #, kde-format
 msgid "L&ayout"
-msgstr "உருவரை"
+msgstr "&தளவமைப்பு"
 
 #: printing/printconfigwidgets.cpp:473
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Color theme:"
-msgstr "நிறங்கள்"
+msgstr "&நிறத்திட்டம்:"
 
 #: printing/printconfigwidgets.cpp:483
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "எழுத்துரு:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
 msgid "Draw bac&kground color"
-msgstr "பின்னணி வண்ணத்தை வரை"
+msgstr "&பின்புல நிறத்தை அச்சிடு"
 
 #: printing/printconfigwidgets.cpp:490
 #, kde-format
