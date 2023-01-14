@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Reusable text editor component",
+        "Description[ar]": "مكون محرر نصوص قابل للاستخدام",
         "Description[bg]": "Компонент на текстов редактор за многократно ползване",
         "Description[ca@valencia]": "Component reutilitzable d'edició de text",
         "Description[ca]": "Component reutilitzable d'edició de text",
@@ -60,6 +61,7 @@
             "model/vrml"
         ],
         "Name": "Embedded Advanced Text Editor",
+        "Name[ar]": "محرّر نصوص متقدم يمكن تضمينه",
         "Name[bg]": "Вграден усъвършенстван текстов редактор",
         "Name[ca@valencia]": "Editor de text avançat incrustat",
         "Name[ca]": "Editor de text avançat incrustat",
