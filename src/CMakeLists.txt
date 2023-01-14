@@ -323,6 +323,7 @@ PRIVATE
   KF5::SonnetCore
   KF5::WindowSystem
   KF5::SonnetUi
+  KF5::Codecs
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 

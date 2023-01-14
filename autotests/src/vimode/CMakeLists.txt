@@ -7,6 +7,7 @@ include_directories(
 set (VIMODE_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
   KF5::SyntaxHighlighting
+  KF5::Codecs
   Qt${QT_MAJOR_VERSION}::Qml
   Qt${QT_MAJOR_VERSION}::Test
 )
