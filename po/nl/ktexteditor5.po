@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-12 10:55+0100\n"
+"PO-Revision-Date: 2023-01-15 15:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5870,7 +5870,7 @@ msgstr "freekdekruijf@kde.nl"
 #: utils/kateglobal.cpp:272
 #, kde-format
 msgid "Configure"
-msgstr "Instellen"
+msgstr "Configureren"
 
 #: utils/katesedcmd.cpp:268
 #, kde-format
