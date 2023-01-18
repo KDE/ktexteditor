@@ -1,7 +1,7 @@
 var katescript = {
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>, Pablo Rauzy <r_NOSPAM_@uzy.me>",
     "license": "LGPL-2.1+",
-    "revision": 10,
+    "revision": 11,
     "kate-version": "5.1",
     "functions": ["sort", "sortuniq", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
@@ -11,6 +11,26 @@ var katescript = {
         },
         {   "function": "sortuniq",
             "name": "Remove Duplicates and Sort Selected Text Alphabetically",
+            "category": "Editing"
+        },
+        {   "function": "uniq",
+            "name": "Remove Duplicate Lines",
+            "category": "Editing"
+        },
+        {   "function": "rtrim",
+            "name": "Remove Trailing Spaces",
+            "category": "Editing"
+        },
+        {   "function": "ltrim",
+            "name": "Remove Leading Spaces",
+            "category": "Editing"
+        },
+        {   "function": "trim",
+            "name": "Remove Trailing and Leading Spaces",
+            "category": "Editing"
+        },
+        {   "function": "join",
+            "name": "Join Lines",
             "category": "Editing"
         },
         {   "function": "moveLinesDown",
@@ -37,6 +57,10 @@ var katescript = {
         },
         {   "function": "decodeURISelection",
             "name": "URI-decode Selected Text",
+            "category": "Editing"
+        },
+        {   "function": "rmblank",
+            "name": "Remove Empty Lines",
             "category": "Editing"
         }
     ]
