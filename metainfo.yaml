@@ -12,8 +12,8 @@ deprecated: false
 release: true
 libraries:
  - qmake: KTextEditor
-   cmake: "KF5::TextEditor"
-cmakename: KF5TextEditor
+   cmake: "KF6::TextEditor"
+cmakename: KF6TextEditor
 
 public_lib: true
 group: Frameworks

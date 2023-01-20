@@ -47,8 +47,8 @@ ecm_setup_version(
   PROJECT
   VARIABLE_PREFIX KTEXTEDITOR
   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_version.h"
-  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfigVersion.cmake"
-  SOVERSION 5
+  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEditorConfigVersion.cmake"
+  SOVERSION 6
 )
 
 # Dependencies
@@ -61,19 +61,19 @@ if (QT_MAJOR_VERSION STREQUAL "6")
     find_package(Qt6Core5Compat)
 endif()
 
-find_package(KF5Archive ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5Config ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5GuiAddons ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5I18n ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5KIO ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5Parts ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5WindowSystem ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6Archive ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6Config ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6GuiAddons ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6I18n ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6KIO ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6Parts ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6Sonnet ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
+find_package(KF6WindowSystem ${KF_DEP_VERSION} REQUIRED)
 
 if (ENABLE_KAUTH)
-    find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
-    set(HAVE_KAUTH ${KF5Auth_FOUND})
+    find_package(KF6Auth ${KF_DEP_VERSION} REQUIRED)
+    set(HAVE_KAUTH ${KF6Auth_FOUND})
 else()
     set(HAVE_KAUTH FALSE)
 endif()
@@ -100,36 +100,36 @@ endif()
 add_subdirectory(templates)
 
 # Create a Config.cmake and a ConfigVersion.cmake file and install them
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5TextEditor")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextEditor")
 
 if (BUILD_QCH)
     ecm_install_qch_export(
-        TARGETS KF5TextEditor_QCH
-        FILE KF5TextEditorQchTargets.cmake
+        TARGETS KF6TextEditor_QCH
+        FILE KF6TextEditorQchTargets.cmake
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel
     )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5TextEditorQchTargets.cmake\")")
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6TextEditorQchTargets.cmake\")")
 endif()
 
 configure_package_config_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/KF5TextEditorConfig.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfig.cmake"
+  "${CMAKE_CURRENT_SOURCE_DIR}/KF6TextEditorConfig.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEditorConfig.cmake"
   INSTALL_DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
 )
 
 install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfig.cmake"
-  "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEditorConfig.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEditorConfigVersion.cmake"
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
   COMPONENT Devel
 )
 
 install(EXPORT
-  KF5TextEditorTargets
+  KF6TextEditorTargets
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-  FILE KF5TextEditorTargets.cmake
-  NAMESPACE KF5::
+  FILE KF6TextEditorTargets.cmake
+  NAMESPACE KF6::
 )
 
 install(FILES

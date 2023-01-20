@@ -5,7 +5,7 @@ Full text editor component
 ## Introduction
 
 KTextEditor provides a powerful text editor component that you can embed in your
-application, either as a KPart or using the KF5::TextEditor library (if you need
+application, either as a KPart or using the KF6::TextEditor library (if you need
 more control).
 
 The text editor component contains many useful features, from syntax
@@ -18,10 +18,10 @@ IDE.
 If you are using CMake, you need to have
 
 ```cmake
-find_package(KF5TextEditor)
+find_package(KF6TextEditor)
 ```
 
-(or similar) in your CMakeLists.txt file, and you need to link to KF5::TextEditor.
+(or similar) in your CMakeLists.txt file, and you need to link to KF6::TextEditor.
 
 After that, you can use KTextEditor::Editor to create an editor instance, and
 use that to manage KTextEditor::Document instances.

@@ -1,9 +1,0 @@
-@PACKAGE_INIT@
-
-# KF5 Deps
-include(CMakeFindDependencyMacro)
-find_dependency(KF5Parts "@KF_DEP_VERSION@")
-find_dependency(KF5SyntaxHighlighting "@KF_DEP_VERSION@")
-
-include("${CMAKE_CURRENT_LIST_DIR}/KF5TextEditorTargets.cmake")
-@PACKAGE_INCLUDE_QCHTARGETS@

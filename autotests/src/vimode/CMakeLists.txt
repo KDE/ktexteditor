@@ -4,10 +4,10 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/src/vimode
 )
 
-set (VIMODE_TEST_LINK_LIBS KF5TextEditor
-  KF5::I18n
-  KF5::SyntaxHighlighting
-  KF5::Codecs
+set (VIMODE_TEST_LINK_LIBS KF6TextEditor
+  KF6::I18n
+  KF6::SyntaxHighlighting
+  KF6::Codecs
   Qt${QT_MAJOR_VERSION}::Qml
   Qt${QT_MAJOR_VERSION}::Test
 )

@@ -295,8 +295,8 @@ vimode/macrorecorder.cpp
 vimode/lastchangerecorder.cpp
 )
 
-add_library(KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
-ecm_generate_export_header(KF5TextEditor
+add_library(KF6TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
+ecm_generate_export_header(KF6TextEditor
     BASE_NAME KTextEditor
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
@@ -304,34 +304,34 @@ ecm_generate_export_header(KF5TextEditor
     DEPRECATION_VERSIONS 5.80
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
-add_library(KF5::TextEditor ALIAS KF5TextEditor)
+add_library(KF6::TextEditor ALIAS KF6TextEditor)
 
-target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor>")
+target_include_directories(KF6TextEditor INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor>")
 
 # API is more or less KParts & KSyntaxHighlighting, other stuff is used only internally
-target_link_libraries(KF5TextEditor
+target_link_libraries(KF6TextEditor
 PUBLIC
-  KF5::Parts
-  KF5::SyntaxHighlighting
+  KF6::Parts
+  KF6::SyntaxHighlighting
 PRIVATE
   Qt${QT_MAJOR_VERSION}::Qml
   Qt${QT_MAJOR_VERSION}::PrintSupport
-  KF5::I18n
-  KF5::Archive
-  KF5::GuiAddons
-  KF5::ItemViews
-  KF5::SonnetCore
-  KF5::WindowSystem
-  KF5::SonnetUi
-  KF5::Codecs
+  KF6::I18n
+  KF6::Archive
+  KF6::GuiAddons
+  KF6::ItemViews
+  KF6::SonnetCore
+  KF6::WindowSystem
+  KF6::SonnetUi
+  KF6::Codecs
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 
 if(HAVE_KAUTH)
-  target_link_libraries(KF5TextEditor PRIVATE KF5::AuthCore)
+  target_link_libraries(KF6TextEditor PRIVATE KF6::AuthCore)
 endif()
 
-set_target_properties(KF5TextEditor
+set_target_properties(KF6TextEditor
    PROPERTIES
    VERSION ${KTEXTEDITOR_VERSION}
    SOVERSION ${KTEXTEDITOR_SOVERSION}
@@ -340,7 +340,7 @@ set_target_properties(KF5TextEditor
 
 # precompiled headers support
 if(ENABLE_PCH)
-    target_precompile_headers(KF5TextEditor
+    target_precompile_headers(KF6TextEditor
         PRIVATE
             <QHash>
             <QList>
@@ -365,7 +365,7 @@ if(ENABLE_PCH)
     )
 endif()
 
-install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6TextEditor EXPORT KF6TextEditorTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_export.h
@@ -375,9 +375,9 @@ install(FILES
 
 if(BUILD_QCH)
     ecm_add_qch(
-        KF5TextEditor_QCH
+        KF6TextEditor_QCH
         NAME KTextEditor
-        BASE_NAME KF5TextEditor
+        BASE_NAME KF6TextEditor
         VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
@@ -389,7 +389,7 @@ if(BUILD_QCH)
         MD_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md"
         IMAGE_DIRS "${CMAKE_SOURCE_DIR}/docs/pics"
         LINK_QCHS
-            KF5Parts_QCH
+            KF6Parts_QCH
         BLANK_MACROS
             KTEXTEDITOR_EXPORT
             KTEXTEDITOR_DEPRECATED
@@ -402,12 +402,12 @@ if(BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
+ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF6TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
 if(HAVE_KAUTH)
     add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
-    target_link_libraries(kauth_ktexteditor_helper KF5::AuthCore)
+    target_link_libraries(kauth_ktexteditor_helper KF6::AuthCore)
     install(TARGETS kauth_ktexteditor_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR} )
     kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor.katetextbuffer root)
     kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktexteditor.katetextbuffer.actions)

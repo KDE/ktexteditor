@@ -8,8 +8,8 @@ set(%{APPNAMELC}_SRCS
 add_library(%{APPNAMELC} MODULE ${%{APPNAMELC}_SRCS})
 
 target_link_libraries(%{APPNAMELC}
-    KF5::TextEditor
-    KF5::I18n
+    KF6::TextEditor
+    KF6::I18n
 )
 
 install(TARGETS %{APPNAMELC} DESTINATION ${KDE_INSTALL_PLUGINDIR}/ktexteditor)
