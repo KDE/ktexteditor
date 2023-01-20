@@ -59,7 +59,7 @@ public:
      * \param start start position
      * \param end end position
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT : m_start(qMin(start, end)), m_end(qMax(start, end))
+    Q_DECL_CONSTEXPR Range(Cursor start, Cursor end) Q_DECL_NOEXCEPT : m_start(qMin(start, end)), m_end(qMax(start, end))
     {
     }
 
@@ -70,8 +70,8 @@ public:
      * \param start start position
      * \param width width of this range in columns along the same line
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, int width) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(start.line(), start.column() + width))),
-                                                                             m_end(qMax(start, Cursor(start.line(), start.column() + width)))
+    Q_DECL_CONSTEXPR Range(Cursor start, int width) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(start.line(), start.column() + width))),
+                                                                      m_end(qMax(start, Cursor(start.line(), start.column() + width)))
     {
     }
 
@@ -82,8 +82,8 @@ public:
      * \param endLine end line
      * \param endColumn end column
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(endLine, endColumn))),
-                                                                                              m_end(qMax(start, Cursor(endLine, endColumn)))
+    Q_DECL_CONSTEXPR Range(Cursor start, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(endLine, endColumn))),
+                                                                                       m_end(qMax(start, Cursor(endLine, endColumn)))
     {
     }
 
@@ -226,7 +226,7 @@ public:
      * \param start start cursor
      * \param end end cursor
      */
-    void setRange(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT;
+    void setRange(Cursor start, Cursor end) Q_DECL_NOEXCEPT;
 
     /**
      * Set the start cursor to \e start.
@@ -235,7 +235,7 @@ public:
      *
      * \param start new start cursor
      */
-    inline void setStart(const Cursor &start) Q_DECL_NOEXCEPT
+    inline void setStart(Cursor start) Q_DECL_NOEXCEPT
     {
         if (start > end()) {
             setRange(start, start);
@@ -251,7 +251,7 @@ public:
      *
      * \param end new end cursor
      */
-    inline void setEnd(const Cursor &end) Q_DECL_NOEXCEPT
+    inline void setEnd(Cursor end) Q_DECL_NOEXCEPT
     {
         if (end < start()) {
             setRange(end, end);
@@ -352,7 +352,7 @@ public:
      *
      * \return \e true if the cursor is contained within this range, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool contains(const Cursor &cursor) const Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline bool contains(Cursor cursor) const Q_DECL_NOEXCEPT
     {
         return cursor >= start() && cursor < end();
     }
@@ -429,7 +429,7 @@ public:
      * \return \e true if the cursor is equal to \p start() or \p end(),
      *         otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool boundaryAtCursor(const Cursor &cursor) const Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline bool boundaryAtCursor(Cursor cursor) const Q_DECL_NOEXCEPT
     {
         return cursor == start() || cursor == end();
     }
@@ -459,8 +459,9 @@ public:
      */
     Q_DECL_CONSTEXPR inline Range encompass(const Range &range) const Q_DECL_NOEXCEPT
     {
-        return (!isValid()) ? (range.isValid() ? range : invalid())
-                            : (!range.isValid()) ? (*this) : Range(qMin(start(), range.start()), qMax(end(), range.end()));
+        return (!isValid())      ? (range.isValid() ? range : invalid())
+            : (!range.isValid()) ? (*this)
+                                 : Range(qMin(start(), range.start()), qMax(end(), range.end()));
     }
 
     /**

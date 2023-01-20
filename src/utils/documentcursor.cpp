@@ -17,7 +17,7 @@ DocumentCursor::DocumentCursor(KTextEditor::Document *document)
     Q_ASSERT(m_document);
 }
 
-DocumentCursor::DocumentCursor(KTextEditor::Document *document, const KTextEditor::Cursor &position)
+DocumentCursor::DocumentCursor(KTextEditor::Document *document, KTextEditor::Cursor position)
     : m_document(document)
     , m_cursor(position)
 {

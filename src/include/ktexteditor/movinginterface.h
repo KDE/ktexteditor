@@ -57,7 +57,7 @@ public:
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    virtual MovingCursor *newMovingCursor(const Cursor &position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
+    virtual MovingCursor *newMovingCursor(KTextEditor::Cursor position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
 
     /**
      * Create a new moving range for this document.

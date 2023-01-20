@@ -26,7 +26,7 @@ TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, I
     setPosition(position, true);
 }
 
-TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor position, InsertBehavior insertBehavior)
+TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, KTextEditor::Cursor position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
     , m_range(range)
     , m_block(nullptr)
@@ -66,7 +66,7 @@ void TextCursor::setPosition(const TextCursor &position)
     }
 }
 
-void TextCursor::setPosition(const KTextEditor::Cursor &position, bool init)
+void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
 {
     // any change or init? else do nothing
     if (!init && position.line() == line()) {
@@ -116,7 +116,7 @@ void TextCursor::setPosition(const KTextEditor::Cursor &position, bool init)
     m_block->insertCursor(this);
 }
 
-void TextCursor::setPosition(const KTextEditor::Cursor &position)
+void TextCursor::setPosition(KTextEditor::Cursor position)
 {
     setPosition(position, false);
 }

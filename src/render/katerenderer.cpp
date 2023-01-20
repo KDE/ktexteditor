@@ -909,7 +909,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 }
 
-void KateRenderer::paintCaret(const KTextEditor::Cursor &cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd)
+void KateRenderer::paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd)
 {
     if (range->includesCursor(cursor)) {
         int caretWidth;

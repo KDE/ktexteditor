@@ -182,7 +182,7 @@ public:
      * @return the number of chars (including one character for new lines)
      *         from the beginning of the file.
      */
-    int positionFromCursor(KateViewInternal *view, const KTextEditor::Cursor &cursor) const
+    int positionFromCursor(KateViewInternal *view, KTextEditor::Cursor cursor) const
     {
         int pos = m_lastPosition;
         const KTextEditor::DocumentPrivate *doc = view->view()->doc();

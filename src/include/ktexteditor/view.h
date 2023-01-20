@@ -314,7 +314,7 @@ Q_SIGNALS:
      * \param text the text the user has typed into the editor
      * \see insertText()
      */
-    void textInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
+    void textInserted(KTextEditor::View *view, KTextEditor::Cursor position, const QString &text);
 
     /*
      * Context menu handling
@@ -461,7 +461,7 @@ public:
      *
      * \see cursorPositionCoordinates(), coordinatesToCursor()
      */
-    virtual QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const = 0;
+    virtual QPoint cursorToCoordinate(KTextEditor::Cursor cursor) const = 0;
 
     /**
      * Get the screen coordinates (x, y) of the cursor position in pixels.
@@ -505,14 +505,14 @@ Q_SIGNALS:
      *        cursor position, not the virtual)
      * \see cursorPosition(), cursorPositionVirtual()
      */
-    void cursorPositionChanged(KTextEditor::View *view, const KTextEditor::Cursor &newPosition);
+    void cursorPositionChanged(KTextEditor::View *view, KTextEditor::Cursor newPosition);
 
     /**
      * This signal should be emitted whenever the \p view is scrolled vertically.
      * \param view view which emitted the signal
      * \param newPos the new scroll position
      */
-    void verticalScrollPositionChanged(KTextEditor::View *view, const KTextEditor::Cursor &newPos);
+    void verticalScrollPositionChanged(KTextEditor::View *view, KTextEditor::Cursor newPos);
 
     /**
      * This signal should be emitted whenever the \p view is scrolled horizontally.
@@ -562,7 +562,7 @@ Q_SIGNALS:
      *        mouse moved out of the \p view.
      * \see mouseTrackingEnabled()
      */
-    void mousePositionChanged(KTextEditor::View *view, const KTextEditor::Cursor &newPosition);
+    void mousePositionChanged(KTextEditor::View *view, KTextEditor::Cursor newPosition);
 
     /*
      * Selection methods.
@@ -701,7 +701,7 @@ public:
      * \param script script with functions which can be used in @p templateScript
      * \return true on success, false if insertion failed (e.g. read-only mode)
      */
-    bool insertTemplate(const KTextEditor::Cursor &insertPosition, const QString &templateString, const QString &script = QString());
+    bool insertTemplate(KTextEditor::Cursor insertPosition, const QString &templateString, const QString &script = QString());
 
     /**
      * Scroll view to cursor.
@@ -710,7 +710,7 @@ public:
      *
      * \since 5.33
      */
-    void setScrollPosition(KTextEditor::Cursor &cursor);
+    void setScrollPosition(KTextEditor::Cursor cursor);
 
     /**
      * Horizontally scroll view to position.

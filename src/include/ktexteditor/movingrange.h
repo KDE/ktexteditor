@@ -348,7 +348,7 @@ public:
      * @param start new start for this clever range
      * @param end new end for this clever range
      */
-    void setRange(const Cursor &start, const Cursor &end);
+    void setRange(Cursor start, Cursor end);
 
     /**
      * Convert this clever range into a dumb one.
@@ -441,7 +441,7 @@ public:
      *
      * \return \e true if the cursor is contained within this range, otherwise \e false.
      */
-    inline bool contains(const Cursor &cursor) const
+    inline bool contains(Cursor cursor) const
     {
         return cursor >= start() && cursor < end();
     }

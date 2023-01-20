@@ -34,7 +34,7 @@ private:
     void verifyCommandBarCompletionsMatches(const QStringList &expectedCompletionList);
     void verifyCommandBarCompletionContains(const QStringList &expectedCompletionList);
     QLabel *emulatedCommandTypeIndicator();
-    void verifyCursorAt(const KTextEditor::Cursor &expectedCursorPos);
+    void verifyCursorAt(KTextEditor::Cursor expectedCursorPos);
 
     void clearSearchHistory();
     QStringList searchHistory();

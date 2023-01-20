@@ -155,8 +155,8 @@ public Q_SLOTS:
     bool setText(const QStringList &text) override;
     bool clear() override;
 
-    bool insertText(const KTextEditor::Cursor &position, const QString &s, bool block = false) override;
-    bool insertText(const KTextEditor::Cursor &position, const QStringList &text, bool block = false) override;
+    bool insertText(KTextEditor::Cursor position, const QString &s, bool block = false) override;
+    bool insertText(KTextEditor::Cursor position, const QStringList &text, bool block = false) override;
 
     bool insertLine(int line, const QString &s) override;
     bool insertLines(int line, const QStringList &s) override;
@@ -178,10 +178,10 @@ public:
     QStringList textLines(const KTextEditor::Range &range, bool block = false) const override;
     QString text() const override;
     QString line(int line) const override;
-    QChar characterAt(const KTextEditor::Cursor &position) const override;
-    QString wordAt(const KTextEditor::Cursor &cursor) const override;
-    KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const override;
-    bool isValidTextPosition(const KTextEditor::Cursor &cursor) const override;
+    QChar characterAt(KTextEditor::Cursor position) const override;
+    QString wordAt(KTextEditor::Cursor cursor) const override;
+    KTextEditor::Range wordRangeAt(KTextEditor::Cursor cursor) const override;
+    bool isValidTextPosition(KTextEditor::Cursor cursor) const override;
     int lines() const override;
     bool isLineModified(int line) const override;
     bool isLineSaved(int line) const override;
@@ -191,7 +191,7 @@ public:
     int lineLength(int line) const override;
 
 Q_SIGNALS:
-    void charactersSemiInteractivelyInserted(const KTextEditor::Cursor &position, const QString &text);
+    void charactersSemiInteractivelyInserted(KTextEditor::Cursor position, const QString &text);
 
     /**
      * The \p document emits this signal whenever text was inserted.  The
@@ -432,7 +432,7 @@ public:
     /**
      * @copydoc KTextEditor::Document::defaultStyleAt()
      */
-    KTextEditor::DefaultStyle defaultStyleAt(const KTextEditor::Cursor &position) const override;
+    KTextEditor::DefaultStyle defaultStyleAt(KTextEditor::Cursor position) const override;
 
     /**
      * Return the name of the currently used mode
@@ -650,7 +650,7 @@ public:
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    KTextEditor::MovingCursor *newMovingCursor(const KTextEditor::Cursor &position,
+    KTextEditor::MovingCursor *newMovingCursor(KTextEditor::Cursor position,
                                                KTextEditor::MovingCursor::InsertBehavior insertBehavior = KTextEditor::MovingCursor::MoveOnInsert) override;
 
     /**
@@ -1268,7 +1268,7 @@ public:
     //
 public:
     QStringList embeddedHighlightingModes() const override;
-    QString highlightingModeAt(const KTextEditor::Cursor &position) override;
+    QString highlightingModeAt(KTextEditor::Cursor position) override;
 
     //
     // BEGIN: KTextEditor::MessageInterface

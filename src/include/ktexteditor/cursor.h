@@ -170,7 +170,7 @@ public:
      *
      * \param position new cursor position
      */
-    inline void setPosition(const Cursor &position) Q_DECL_NOEXCEPT
+    inline void setPosition(Cursor position) Q_DECL_NOEXCEPT
     {
         m_line = position.m_line;
         m_column = position.m_column;
@@ -262,7 +262,7 @@ public:
      * \param c2 the second position
      * \return a the summation of the two input cursors
      */
-    Q_DECL_CONSTEXPR inline friend Cursor operator+(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend Cursor operator+(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return Cursor(c1.line() + c2.line(), c1.column() + c2.column());
     }
@@ -273,7 +273,7 @@ public:
      * \param c2 the position to add
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Cursor &operator+=(Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    inline friend Cursor &operator+=(Cursor &c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         c1.setPosition(c1.line() + c2.line(), c1.column() + c2.column());
         return c1;
@@ -287,7 +287,7 @@ public:
      * \param c2 the second position
      * \return a cursor representing the subtraction of \p c2 from \p c1
      */
-    Q_DECL_CONSTEXPR inline friend Cursor operator-(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend Cursor operator-(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return Cursor(c1.line() - c2.line(), c1.column() - c2.column());
     }
@@ -298,7 +298,7 @@ public:
      * \param c2 the position to subtract
      * \return a reference to the cursor which has just been subtracted from
      */
-    inline friend Cursor &operator-=(Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    inline friend Cursor &operator-=(Cursor &c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         c1.setPosition(c1.line() - c2.line(), c1.column() - c2.column());
         return c1;
@@ -314,7 +314,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e equal.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator==(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend bool operator==(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return c1.line() == c2.line() && c1.column() == c2.column();
     }
@@ -325,7 +325,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e not equal.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator!=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend bool operator!=(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return !(c1 == c2);
     }
@@ -337,7 +337,7 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator>(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend bool operator>(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column > c2.m_column);
     }
@@ -349,7 +349,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator>=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend bool operator>=(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column >= c2.m_column);
     }
@@ -361,7 +361,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator<(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend bool operator<(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return !(c1 >= c2);
     }
@@ -373,7 +373,7 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator<=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend bool operator<=(Cursor c1, Cursor c2) Q_DECL_NOEXCEPT
     {
         return !(c1 > c2);
     }
@@ -381,7 +381,7 @@ public:
     /**
      * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<<(QDebug s, const Cursor &cursor)
+    inline friend QDebug operator<<(QDebug s, Cursor cursor)
     {
         s.nospace() << "(" << cursor.line() << ", " << cursor.column() << ")";
         return s.space();
@@ -412,7 +412,7 @@ Q_DECLARE_METATYPE(KTextEditor::Cursor)
  * QHash function for KTextEditor::Cursor.
  * Returns the hash value for @p cursor.
  */
-inline uint qHash(const KTextEditor::Cursor &cursor, uint seed = 0) Q_DECL_NOTHROW
+inline uint qHash(KTextEditor::Cursor cursor, uint seed = 0) Q_DECL_NOTHROW
 {
     return qHash(qMakePair(cursor.line(), cursor.column()), seed);
 }

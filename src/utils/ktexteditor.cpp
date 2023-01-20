@@ -170,7 +170,7 @@ void View::setStatusBarEnabled(bool enable)
     d->toggleStatusBar();
 }
 
-bool View::insertTemplate(const KTextEditor::Cursor &insertPosition, const QString &templateString, const QString &script)
+bool View::insertTemplate(KTextEditor::Cursor insertPosition, const QString &templateString, const QString &script)
 {
     return d->insertTemplateInternal(insertPosition, templateString, script);
 }
@@ -400,7 +400,7 @@ void Command::processText(KTextEditor::View *, const QString &)
 {
 }
 
-void View::setScrollPosition(KTextEditor::Cursor &cursor)
+void View::setScrollPosition(KTextEditor::Cursor cursor)
 {
     d->setScrollPositionInternal(cursor);
 }

@@ -104,7 +104,7 @@ public:
      * @param start new start for this clever range
      * @param end new end for this clever range
      */
-    void setRange(const KTextEditor::Cursor &start, const KTextEditor::Cursor &end)
+    void setRange(KTextEditor::Cursor start, KTextEditor::Cursor end)
     {
         KTextEditor::MovingRange::setRange(start, end);
     }

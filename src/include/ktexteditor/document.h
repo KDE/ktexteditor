@@ -562,7 +562,7 @@ public:
      * \return the requested character, or QChar() for invalid cursors.
      * \see setText()
      */
-    virtual QChar characterAt(const Cursor &position) const = 0;
+    virtual QChar characterAt(KTextEditor::Cursor position) const = 0;
 
     /**
      * Get the word at the text position \p cursor.
@@ -579,7 +579,7 @@ public:
      *
      * \see wordRangeAt(), characterAt()
      */
-    virtual QString wordAt(const KTextEditor::Cursor &cursor) const = 0;
+    virtual QString wordAt(KTextEditor::Cursor cursor) const = 0;
 
     /**
      * Get the text range for the word located under the text position \p cursor.
@@ -597,7 +597,7 @@ public:
      *
      * \see wordAt(), characterAt(), KTextEditor::Range::isValid()
      */
-    virtual KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const = 0;
+    virtual KTextEditor::Range wordRangeAt(KTextEditor::Cursor cursor) const = 0;
 
     /**
      * Get whether \p cursor is a valid text position.
@@ -613,7 +613,7 @@ public:
      *
      * \since 5.0
      */
-    virtual bool isValidTextPosition(const KTextEditor::Cursor &cursor) const = 0;
+    virtual bool isValidTextPosition(KTextEditor::Cursor cursor) const = 0;
 
     /**
      * Get the document content within the given \p range.
@@ -755,7 +755,7 @@ public:
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText()
      */
-    virtual bool insertText(const Cursor &position, const QString &text, bool block = false) = 0;
+    virtual bool insertText(KTextEditor::Cursor position, const QString &text, bool block = false) = 0;
 
     /**
      * Insert \p text at \p position.
@@ -765,7 +765,7 @@ public:
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText()
      */
-    virtual bool insertText(const Cursor &position, const QStringList &text, bool block = false) = 0;
+    virtual bool insertText(KTextEditor::Cursor position, const QStringList &text, bool block = false) = 0;
 
     /**
      * Replace text from \p range with specified \p text.
@@ -885,7 +885,7 @@ Q_SIGNALS:
      * \param document document which emitted this signal
      * @param position position where the wrap occurred
      */
-    void lineWrapped(KTextEditor::Document *document, const KTextEditor::Cursor &position);
+    void lineWrapped(KTextEditor::Document *document, KTextEditor::Cursor position);
 
     /**
      * A line got unwrapped.
@@ -900,7 +900,7 @@ Q_SIGNALS:
      * @param position position where the insertion occurred
      * @param text inserted text
      */
-    void textInserted(KTextEditor::Document *document, const KTextEditor::Cursor &position, const QString &text);
+    void textInserted(KTextEditor::Document *document, KTextEditor::Cursor position, const QString &text);
 
     /**
      * Text got removed.
@@ -939,7 +939,7 @@ public:
      * @return default style, see enum KTextEditor::DefaultStyle
      * @see View::defaultStyleAttribute(), View::lineAttributes()
      */
-    virtual DefaultStyle defaultStyleAt(const KTextEditor::Cursor &position) const = 0;
+    virtual DefaultStyle defaultStyleAt(KTextEditor::Cursor position) const = 0;
 
     /**
      * Return the name of the currently used mode
@@ -980,7 +980,7 @@ public:
      *
      * \see highlightingModes()
      */
-    virtual QString highlightingModeAt(const Cursor &position) = 0;
+    virtual QString highlightingModeAt(KTextEditor::Cursor position) = 0;
 
     /**
      * Return a list of the names of all possible modes

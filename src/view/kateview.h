@@ -177,7 +177,7 @@ public:
 
     KTextEditor::Cursor cursorPositionVirtual() const override;
 
-    QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const override;
+    QPoint cursorToCoordinate(KTextEditor::Cursor cursor) const override;
 
     KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const override;
 
@@ -223,7 +223,7 @@ public:
             return l.cursor() < r.cursor();
         }
 
-        friend bool operator<(const SecondaryCursor &l, const KTextEditor::Cursor &r)
+        friend bool operator<(const SecondaryCursor &l, KTextEditor::Cursor r)
         {
             return l.cursor() < r;
         }
@@ -244,7 +244,7 @@ public:
     bool isMulticursorNotAllowed() const;
 
     // Adds a secondary cursor
-    void addSecondaryCursor(const KTextEditor::Cursor &cursor);
+    void addSecondaryCursor(KTextEditor::Cursor cursor);
     void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
 
     const std::vector<SecondaryCursor> &secondaryCursors() const;
@@ -343,7 +343,7 @@ public:
     void setAutomaticInvocationEnabled(bool enabled = true) override;
 
 Q_SIGNALS:
-    void completionExecuted(KTextEditor::View *view, const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &);
+    void completionExecuted(KTextEditor::View *view, KTextEditor::Cursor position, KTextEditor::CodeCompletionModel *model, const QModelIndex &);
     void completionAborted(KTextEditor::View *view);
 
 public Q_SLOTS:

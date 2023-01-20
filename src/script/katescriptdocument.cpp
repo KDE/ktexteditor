@@ -234,7 +234,7 @@ KTextEditor::Cursor KateScriptDocument::rfindInternal(int line, int column, cons
     return KTextEditor::Cursor::invalid();
 }
 
-KTextEditor::Cursor KateScriptDocument::rfind(const KTextEditor::Cursor &cursor, const QString &text, int attribute)
+KTextEditor::Cursor KateScriptDocument::rfind(KTextEditor::Cursor cursor, const QString &text, int attribute)
 {
     return rfindInternal(cursor.line(), cursor.column(), text, attribute);
 }
@@ -306,7 +306,7 @@ KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QCh
     return KTextEditor::Cursor::invalid();
 }
 
-KTextEditor::Cursor KateScriptDocument::anchor(const KTextEditor::Cursor &cursor, QChar character)
+KTextEditor::Cursor KateScriptDocument::anchor(KTextEditor::Cursor cursor, QChar character)
 {
     return anchorInternal(cursor.line(), cursor.column(), character);
 }

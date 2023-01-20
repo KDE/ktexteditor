@@ -149,11 +149,11 @@ public:
     Q_INVOKABLE QJSValue fromVirtualCursor(const QJSValue &jscursor);
 
     KTextEditor::Cursor anchorInternal(int line, int column, QChar character);
-    KTextEditor::Cursor anchor(const KTextEditor::Cursor &cursor, QChar character);
+    KTextEditor::Cursor anchor(KTextEditor::Cursor cursor, QChar character);
     Q_INVOKABLE QJSValue anchor(int line, int column, QChar character);
     Q_INVOKABLE QJSValue anchor(const QJSValue &cursor, QChar character);
     KTextEditor::Cursor rfindInternal(int line, int column, const QString &text, int attribute = -1);
-    KTextEditor::Cursor rfind(const KTextEditor::Cursor &cursor, const QString &text, int attribute = -1);
+    KTextEditor::Cursor rfind(KTextEditor::Cursor cursor, const QString &text, int attribute = -1);
     Q_INVOKABLE QJSValue rfind(int line, int column, const QString &text, int attribute = -1);
     Q_INVOKABLE QJSValue rfind(const QJSValue &cursor, const QString &text, int attribute = -1);
 

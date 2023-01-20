@@ -48,7 +48,7 @@ const bool hideAutomaticCompletionOnExactMatch = true;
             WHAT2 ret->FUNC;                                                                                                                                   \
     }
 
-static KTextEditor::Range _completionRange(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Cursor &cursor)
+static KTextEditor::Range _completionRange(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, KTextEditor::Cursor cursor)
 {
     CALLCI(return, , return, model, completionRange(view, cursor));
 }
@@ -58,8 +58,7 @@ static KTextEditor::Range _updateRange(KTextEditor::CodeCompletionModel *model, 
     CALLCI(, return range, return, model, updateCompletionRange(view, range));
 }
 
-static QString
-_filterString(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const KTextEditor::Cursor &cursor)
+static QString _filterString(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, KTextEditor::Cursor cursor)
 {
     CALLCI(return, , return, model, filterString(view, range, cursor));
 }
@@ -79,7 +78,7 @@ static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model,
                                    KTextEditor::View *view,
                                    const QString &automaticInvocationLine,
                                    bool m_lastInsertionByUser,
-                                   const KTextEditor::Cursor &cursor)
+                                   KTextEditor::Cursor cursor)
 {
     CALLCI(return, , return, model, shouldStartCompletion(view, automaticInvocationLine, m_lastInsertionByUser, cursor));
 }
@@ -1388,7 +1387,7 @@ void KateCompletionWidget::setAutomaticInvocationDelay(int delay)
     m_automaticInvocationDelay = delay;
 }
 
-void KateCompletionWidget::wrapLine(const KTextEditor::Cursor &)
+void KateCompletionWidget::wrapLine(KTextEditor::Cursor)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 
@@ -1406,7 +1405,7 @@ void KateCompletionWidget::unwrapLine(int)
     m_automaticInvocationTimer->stop();
 }
 
-void KateCompletionWidget::insertText(const KTextEditor::Cursor &position, const QString &text)
+void KateCompletionWidget::insertText(KTextEditor::Cursor position, const QString &text)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 

@@ -107,7 +107,7 @@ public:
      *
      * \param position new cursor position
      */
-    virtual void setPosition(const KTextEditor::Cursor &position) = 0;
+    virtual void setPosition(KTextEditor::Cursor position) = 0;
 
     /**
      * Retrieve the line on which this cursor is situated.

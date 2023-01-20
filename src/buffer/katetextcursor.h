@@ -94,7 +94,7 @@ public:
      *
      * \param position new cursor position
      */
-    void setPosition(const KTextEditor::Cursor &position) override;
+    void setPosition(KTextEditor::Cursor position) override;
 
     /**
      * \overload
@@ -204,7 +204,7 @@ private:
      * @param position new cursor position
      * @param init is this the initial setup of the position in the constructor?
      */
-    void setPosition(const KTextEditor::Cursor &position, bool init);
+    void setPosition(KTextEditor::Cursor position, bool init);
 
 private:
     /**

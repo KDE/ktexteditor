@@ -40,7 +40,7 @@ void Range::setRange(const Range &range) Q_DECL_NOEXCEPT
     m_end = range.end();
 }
 
-void Range::setRange(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT
+void Range::setRange(Cursor start, Cursor end) Q_DECL_NOEXCEPT
 {
     if (start > end) {
         setRange(Range(end, start));

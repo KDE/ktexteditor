@@ -3291,7 +3291,7 @@ QLabel *EmulatedCommandBarTest::emulatedCommandTypeIndicator()
     return emulatedCommandBar()->findChild<QLabel *>("bartypeindicator");
 }
 
-void EmulatedCommandBarTest::verifyCursorAt(const Cursor &expectedCursorPos)
+void EmulatedCommandBarTest::verifyCursorAt(Cursor expectedCursorPos)
 {
     QCOMPARE(kate_view->cursorPosition().line(), expectedCursorPos.line());
     QCOMPARE(kate_view->cursorPosition().column(), expectedCursorPos.column());

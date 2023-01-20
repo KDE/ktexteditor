@@ -80,7 +80,7 @@ public:
     /**
      * Constructor that creates a DocumentCursor located at \p position.
      */
-    DocumentCursor(KTextEditor::Document *document, const KTextEditor::Cursor &position);
+    DocumentCursor(KTextEditor::Document *document, KTextEditor::Cursor position);
 
     /**
      * Constructor that creates a DocumentCursor located at \p line and \p column.
@@ -325,7 +325,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e equal.
      */
-    inline friend bool operator==(const DocumentCursor &c1, const DocumentCursor &c2)
+    inline friend bool operator==(DocumentCursor c1, DocumentCursor c2)
     {
         return c1.document() == c2.document() && c1.line() == c2.line() && c1.column() == c2.column();
     }
@@ -336,7 +336,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e not equal.
      */
-    inline friend bool operator!=(const DocumentCursor &c1, const DocumentCursor &c2)
+    inline friend bool operator!=(DocumentCursor c1, DocumentCursor c2)
     {
         return !(c1 == c2);
     }
@@ -348,7 +348,7 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const DocumentCursor &c1, const DocumentCursor &c2)
+    inline friend bool operator>(DocumentCursor c1, DocumentCursor c2)
     {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column());
     }
@@ -360,7 +360,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const DocumentCursor &c1, const DocumentCursor &c2)
+    inline friend bool operator>=(DocumentCursor c1, DocumentCursor c2)
     {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column());
     }
@@ -372,7 +372,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const DocumentCursor &c1, const DocumentCursor &c2)
+    inline friend bool operator<(DocumentCursor c1, DocumentCursor c2)
     {
         return !(c1 >= c2);
     }
@@ -384,7 +384,7 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const DocumentCursor &c1, const DocumentCursor &c2)
+    inline friend bool operator<=(DocumentCursor c1, DocumentCursor c2)
     {
         return !(c1 > c2);
     }

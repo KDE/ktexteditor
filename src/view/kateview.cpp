@@ -77,7 +77,7 @@
 #include <QRegularExpression>
 #include <QToolTip>
 
-//#define VIEW_RANGE_DEBUG
+// #define VIEW_RANGE_DEBUG
 
 // END includes
 
@@ -2960,7 +2960,7 @@ bool KTextEditor::ViewPrivate::isMulticursorNotAllowed() const
     return blockSelection() || isOverwriteMode() || currentInputMode()->viewInputMode() == KTextEditor::View::InputMode::ViInputMode;
 }
 
-void KTextEditor::ViewPrivate::addSecondaryCursor(const KTextEditor::Cursor &pos)
+void KTextEditor::ViewPrivate::addSecondaryCursor(KTextEditor::Cursor pos)
 {
     auto primaryCursor = cursorPosition();
     const bool overlapsOrOnPrimary = pos == primaryCursor || (selection() && selectionRange().contains(pos));
@@ -3071,10 +3071,9 @@ bool KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
         m_secondaryCursors.erase(std::remove_if(m_secondaryCursors.begin(),
                                                 m_secondaryCursors.end(),
                                                 [&](const SecondaryCursor &c) {
-                                                    auto it =
-                                                        std::find_if(cursorsToRemove.begin(), cursorsToRemove.end(), [&c](const KTextEditor::Cursor &pos) {
-                                                            return c.cursor() == pos || (c.range && c.range->contains(pos));
-                                                        });
+                                                    auto it = std::find_if(cursorsToRemove.begin(), cursorsToRemove.end(), [&c](KTextEditor::Cursor pos) {
+                                                        return c.cursor() == pos || (c.range && c.range->contains(pos));
+                                                    });
                                                     const bool match = it != cursorsToRemove.end();
                                                     if (match) {
                                                         linesToTag.push_back(c.cursor());
@@ -3086,10 +3085,9 @@ bool KTextEditor::ViewPrivate::removeSecondaryCursors(const std::vector<KTextEdi
         m_secondaryCursors.erase(std::remove_if(m_secondaryCursors.begin(),
                                                 m_secondaryCursors.end(),
                                                 [&](const SecondaryCursor &c) {
-                                                    auto it =
-                                                        std::find_if(cursorsToRemove.begin(), cursorsToRemove.end(), [&c](const KTextEditor::Cursor &pos) {
-                                                            return c.cursor() == pos;
-                                                        });
+                                                    auto it = std::find_if(cursorsToRemove.begin(), cursorsToRemove.end(), [&c](KTextEditor::Cursor pos) {
+                                                        return c.cursor() == pos;
+                                                    });
                                                     const bool match = it != cursorsToRemove.end();
                                                     if (match) {
                                                         linesToTag.push_back(c.cursor());
@@ -3496,7 +3494,7 @@ KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPositionVirtual() const
     return KTextEditor::Cursor(m_viewInternal->cursorPosition().line(), virtualCursorColumn());
 }
 
-QPoint KTextEditor::ViewPrivate::cursorToCoordinate(const KTextEditor::Cursor &cursor) const
+QPoint KTextEditor::ViewPrivate::cursorToCoordinate(KTextEditor::Cursor cursor) const
 {
     // map from ViewInternal to View coordinates
     const QPoint pt = m_viewInternal->cursorToCoordinate(cursor, true, false);

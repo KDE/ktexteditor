@@ -15,7 +15,7 @@ MovingRange::MovingRange() = default;
 
 MovingRange::~MovingRange() = default;
 
-void MovingRange::setRange(const Cursor &start, const Cursor &end)
+void MovingRange::setRange(Cursor start, Cursor end)
 {
     // just use other function, KTextEditor::Range will handle some normalization
     setRange(Range(start, end));

@@ -495,7 +495,7 @@ QString KTextEditor::DocumentPrivate::text(const KTextEditor::Range &range, bool
     return s;
 }
 
-QChar KTextEditor::DocumentPrivate::characterAt(const KTextEditor::Cursor &position) const
+QChar KTextEditor::DocumentPrivate::characterAt(KTextEditor::Cursor position) const
 {
     Kate::TextLine textLine = m_buffer->plainLine(position.line());
 
@@ -506,12 +506,12 @@ QChar KTextEditor::DocumentPrivate::characterAt(const KTextEditor::Cursor &posit
     return textLine->at(position.column());
 }
 
-QString KTextEditor::DocumentPrivate::wordAt(const KTextEditor::Cursor &cursor) const
+QString KTextEditor::DocumentPrivate::wordAt(KTextEditor::Cursor cursor) const
 {
     return text(wordRangeAt(cursor));
 }
 
-KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(const KTextEditor::Cursor &cursor) const
+KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(KTextEditor::Cursor cursor) const
 {
     // get text line
     const int line = cursor.line();
@@ -539,7 +539,7 @@ KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(const KTextEditor::
     return KTextEditor::Range(line, start, line, end);
 }
 
-bool KTextEditor::DocumentPrivate::isValidTextPosition(const KTextEditor::Cursor &cursor) const
+bool KTextEditor::DocumentPrivate::isValidTextPosition(KTextEditor::Cursor cursor) const
 {
     const int ln = cursor.line();
     const int col = cursor.column();
@@ -697,7 +697,7 @@ bool KTextEditor::DocumentPrivate::clear()
     return editRemoveLines(0, lastLine());
 }
 
-bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &position, const QString &text, bool block)
+bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, const QString &text, bool block)
 {
     if (!isReadWrite()) {
         return false;
@@ -781,7 +781,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
     return true;
 }
 
-bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &position, const QStringList &textLines, bool block)
+bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, const QStringList &textLines, bool block)
 {
     if (!isReadWrite()) {
         return false;
@@ -1802,7 +1802,7 @@ bool KTextEditor::DocumentPrivate::setMode(const QString &name)
     return updateFileType(name);
 }
 
-KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(const KTextEditor::Cursor &position) const
+KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(KTextEditor::Cursor position) const
 {
     // TODO, FIXME KDE5: in surrogate, use 2 bytes before
     if (!isValidTextPosition(position)) {
@@ -5816,8 +5816,7 @@ void KTextEditor::DocumentPrivate::setUndoMergeAllEdits(bool merge)
 }
 
 // BEGIN KTextEditor::MovingInterface
-KTextEditor::MovingCursor *KTextEditor::DocumentPrivate::newMovingCursor(const KTextEditor::Cursor &position,
-                                                                         KTextEditor::MovingCursor::InsertBehavior insertBehavior)
+KTextEditor::MovingCursor *KTextEditor::DocumentPrivate::newMovingCursor(KTextEditor::Cursor position, KTextEditor::MovingCursor::InsertBehavior insertBehavior)
 {
     return new Kate::TextCursor(buffer(), position, insertBehavior);
 }
@@ -6425,7 +6424,7 @@ QStringList KTextEditor::DocumentPrivate::embeddedHighlightingModes() const
     return highlight()->getEmbeddedHighlightingModes();
 }
 
-QString KTextEditor::DocumentPrivate::highlightingModeAt(const KTextEditor::Cursor &position)
+QString KTextEditor::DocumentPrivate::highlightingModeAt(KTextEditor::Cursor position)
 {
     return highlight()->higlightingModeForLocation(this, position);
 }
