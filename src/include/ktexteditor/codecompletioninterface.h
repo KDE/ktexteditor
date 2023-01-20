@@ -94,7 +94,7 @@ public:
     /**
      * Invoke code completion over a given range, with a specific \a model.
      */
-    virtual void startCompletion(const Range &word, CodeCompletionModel *model) = 0;
+    virtual void startCompletion(Range word, CodeCompletionModel *model) = 0;
 
     /**
      * Abort the currently displayed code completion without executing any currently

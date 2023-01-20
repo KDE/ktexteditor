@@ -448,7 +448,7 @@ QString KTextEditor::DocumentPrivate::text() const
     return m_buffer->text();
 }
 
-QString KTextEditor::DocumentPrivate::text(const KTextEditor::Range &range, bool blockwise) const
+QString KTextEditor::DocumentPrivate::text(KTextEditor::Range range, bool blockwise) const
 {
     if (!range.isValid()) {
         qCWarning(LOG_KTE) << "Text requested for invalid range" << range;
@@ -561,7 +561,7 @@ bool KTextEditor::DocumentPrivate::isValidTextPosition(KTextEditor::Cursor curso
     return (!str.at(col).isLowSurrogate()) || (!str.at(col - 1).isHighSurrogate());
 }
 
-QStringList KTextEditor::DocumentPrivate::textLines(const KTextEditor::Range &range, bool blockwise) const
+QStringList KTextEditor::DocumentPrivate::textLines(KTextEditor::Range range, bool blockwise) const
 {
     QStringList ret;
 
@@ -791,7 +791,7 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
     return insertText(position, textLines.join(QLatin1Char('\n')), block);
 }
 
-bool KTextEditor::DocumentPrivate::removeText(const KTextEditor::Range &_range, bool block)
+bool KTextEditor::DocumentPrivate::removeText(KTextEditor::Range _range, bool block)
 {
     KTextEditor::Range range = _range;
 
@@ -5772,7 +5772,7 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::documentEnd() const
     return KTextEditor::Cursor(lastLine(), lineLength(lastLine()));
 }
 
-bool KTextEditor::DocumentPrivate::replaceText(const KTextEditor::Range &range, const QString &s, bool block)
+bool KTextEditor::DocumentPrivate::replaceText(KTextEditor::Range range, const QString &s, bool block)
 {
     // TODO more efficient?
     editStart();
@@ -5821,7 +5821,7 @@ KTextEditor::MovingCursor *KTextEditor::DocumentPrivate::newMovingCursor(KTextEd
     return new Kate::TextCursor(buffer(), position, insertBehavior);
 }
 
-KTextEditor::MovingRange *KTextEditor::DocumentPrivate::newMovingRange(const KTextEditor::Range &range,
+KTextEditor::MovingRange *KTextEditor::DocumentPrivate::newMovingRange(KTextEditor::Range range,
                                                                        KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
                                                                        KTextEditor::MovingRange::EmptyBehavior emptyBehavior)
 {

@@ -173,7 +173,7 @@ private Q_SLOTS:
     void wrapLine(KTextEditor::Cursor position);
     void unwrapLine(int line);
     void insertText(KTextEditor::Cursor position, const QString &text);
-    void removeText(const KTextEditor::Range &range);
+    void removeText(KTextEditor::Range range);
 
 private:
     void updateAndShow();

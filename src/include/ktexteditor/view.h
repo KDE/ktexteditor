@@ -577,7 +577,7 @@ public:
      *         range is invalid)
      * \see selectionRange(), selection()
      */
-    virtual bool setSelection(const Range &range) = 0;
+    virtual bool setSelection(Range range) = 0;
 
     /**
      * Set the view's selection to the range \p selection.

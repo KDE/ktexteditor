@@ -554,7 +554,7 @@ public:
      * \return the requested text part, or QString() for invalid ranges.
      * \see setText()
      */
-    virtual QString text(const Range &range, bool block = false) const = 0;
+    virtual QString text(Range range, bool block = false) const = 0;
 
     /**
      * Get the character at text position \p cursor.
@@ -624,7 +624,7 @@ public:
      *         no end of line termination is included.
      * \see setText()
      */
-    virtual QStringList textLines(const Range &range, bool block = false) const = 0;
+    virtual QStringList textLines(Range range, bool block = false) const = 0;
 
     /**
      * Get a single text line.
@@ -775,7 +775,7 @@ public:
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText(), insertText()
      */
-    virtual bool replaceText(const Range &range, const QString &text, bool block = false);
+    virtual bool replaceText(Range range, const QString &text, bool block = false);
 
     /**
      * Replace text from \p range with specified \p text.
@@ -785,7 +785,7 @@ public:
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText(), insertText()
      */
-    virtual bool replaceText(const Range &range, const QStringList &text, bool block = false);
+    virtual bool replaceText(Range range, const QStringList &text, bool block = false);
 
     /**
      * Remove the text specified in \p range.
@@ -794,7 +794,7 @@ public:
      * \return \e true on success, otherwise \e false
      * \see setText(), insertText()
      */
-    virtual bool removeText(const Range &range, bool block = false) = 0;
+    virtual bool removeText(Range range, bool block = false) = 0;
 
     /**
      * Insert line(s) at the given line number. The newline character '\\n'
@@ -853,7 +853,7 @@ public:
      *
      * \since 5.11
      */
-    QVector<KTextEditor::Range> searchText(const KTextEditor::Range &range, const QString &pattern, const SearchOptions options = Default) const;
+    QVector<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options = Default) const;
 
     /*
      * SIGNALS
@@ -908,7 +908,7 @@ Q_SIGNALS:
      * @param range range where the removal occurred
      * @param text removed text
      */
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &text);
+    void textRemoved(KTextEditor::Document *document, KTextEditor::Range range, const QString &text);
 
     /**
      * The \p document emits this signal whenever its text changes.

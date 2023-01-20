@@ -1433,7 +1433,7 @@ void KateCompletionWidget::insertText(KTextEditor::Cursor position, const QStrin
     m_automaticInvocationTimer->start(m_automaticInvocationDelay);
 }
 
-void KateCompletionWidget::removeText(const KTextEditor::Range &)
+void KateCompletionWidget::removeText(KTextEditor::Range)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 

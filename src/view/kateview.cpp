@@ -2521,7 +2521,7 @@ void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cur
 
 // BEGIN KTextEditor::SelectionInterface stuff
 
-bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
+bool KTextEditor::ViewPrivate::setSelection(KTextEditor::Range selection)
 {
     // anything to do?
     if (selection == m_selection) {
@@ -3388,7 +3388,7 @@ KateCompletionWidget *KTextEditor::ViewPrivate::completionWidget() const
     return m_completionWidget;
 }
 
-void KTextEditor::ViewPrivate::startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model)
+void KTextEditor::ViewPrivate::startCompletion(KTextEditor::Range word, KTextEditor::CodeCompletionModel *model)
 {
     completionWidget()->startCompletion(word, model);
 }

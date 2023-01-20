@@ -329,7 +329,7 @@ public:
     //
 public:
     bool isCompletionActive() const override;
-    void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model) override;
+    void startCompletion(KTextEditor::Range word, KTextEditor::CodeCompletionModel *model) override;
     void startCompletion(const Range &word,
                          const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(),
                          KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation) override;
@@ -391,7 +391,7 @@ private Q_SLOTS:
     // KTextEditor::SelectionInterface stuff
     //
 public Q_SLOTS:
-    bool setSelection(const KTextEditor::Range &selection) override;
+    bool setSelection(KTextEditor::Range selection) override;
 
     bool removeSelection() override
     {

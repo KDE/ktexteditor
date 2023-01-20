@@ -94,7 +94,7 @@ public:
      * automatically invalid!
      * @param range new range for this clever range
      */
-    void setRange(const KTextEditor::Range &range) override;
+    void setRange(KTextEditor::Range range) override;
 
     /**
      * \overload

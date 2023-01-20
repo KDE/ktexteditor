@@ -98,7 +98,7 @@ void TextRange::setEmptyBehavior(EmptyBehavior emptyBehavior)
     }
 }
 
-void TextRange::setRange(const KTextEditor::Range &range)
+void TextRange::setRange(KTextEditor::Range range)
 {
     // avoid work if nothing changed!
     if (range == toRange()) {

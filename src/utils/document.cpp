@@ -87,7 +87,7 @@ QString Document::openingErrorMessage() const
     return d->m_openingErrorMessage;
 }
 
-bool KTextEditor::Document::replaceText(const Range &range, const QString &text, bool block)
+bool KTextEditor::Document::replaceText(Range range, const QString &text, bool block)
 {
     bool success = true;
     EditingTransaction transaction(this);
@@ -96,7 +96,7 @@ bool KTextEditor::Document::replaceText(const Range &range, const QString &text,
     return success;
 }
 
-bool Document::replaceText(const Range &range, const QStringList &text, bool block)
+bool Document::replaceText(Range range, const QStringList &text, bool block)
 {
     bool success = true;
     EditingTransaction transaction(this);
@@ -110,7 +110,7 @@ bool Document::isEmpty() const
     return documentEnd() == Cursor::start();
 }
 
-QVector<KTextEditor::Range> Document::searchText(const KTextEditor::Range &range, const QString &pattern, const SearchOptions options) const
+QVector<KTextEditor::Range> Document::searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options) const
 {
     return d->searchText(range, pattern, options);
 }

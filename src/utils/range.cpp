@@ -34,7 +34,7 @@ Range Range::fromString(QStringView str) Q_DECL_NOEXCEPT
     return Range(Cursor::fromString(str.mid(startIndex + 1, closeIndex - startIndex)), Cursor::fromString(str.mid(closeIndex + 2, endIndex - closeIndex - 2)));
 }
 
-void Range::setRange(const Range &range) Q_DECL_NOEXCEPT
+void Range::setRange(Range range) Q_DECL_NOEXCEPT
 {
     m_start = range.start();
     m_end = range.end();
@@ -49,7 +49,7 @@ void Range::setRange(Cursor start, Cursor end) Q_DECL_NOEXCEPT
     }
 }
 
-bool Range::confineToRange(const Range &range) Q_DECL_NOEXCEPT
+bool Range::confineToRange(Range range) Q_DECL_NOEXCEPT
 {
     if (start() < range.start()) {
         if (end() > range.end()) {
@@ -66,7 +66,7 @@ bool Range::confineToRange(const Range &range) Q_DECL_NOEXCEPT
     return true;
 }
 
-bool Range::expandToRange(const Range &range) Q_DECL_NOEXCEPT
+bool Range::expandToRange(Range range) Q_DECL_NOEXCEPT
 {
     if (start() > range.start()) {
         if (end() < range.end()) {

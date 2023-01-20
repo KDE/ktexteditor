@@ -66,7 +66,7 @@ public:
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    virtual MovingRange *newMovingRange(const Range &range,
+    virtual MovingRange *newMovingRange(Range range,
                                         MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand,
                                         MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
 

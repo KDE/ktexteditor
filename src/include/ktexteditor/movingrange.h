@@ -208,7 +208,7 @@ public:
      * automatically invalid!
      * @param range new range for this clever range
      */
-    virtual void setRange(const KTextEditor::Range &range) = 0;
+    virtual void setRange(KTextEditor::Range range) = 0;
 
     /**
      * Retrieve start cursor of this range, read-only.

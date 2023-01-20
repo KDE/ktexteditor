@@ -161,21 +161,21 @@ public Q_SLOTS:
     bool insertLine(int line, const QString &s) override;
     bool insertLines(int line, const QStringList &s) override;
 
-    bool removeText(const KTextEditor::Range &range, bool block = false) override;
+    bool removeText(KTextEditor::Range range, bool block = false) override;
     bool removeLine(int line) override;
 
-    bool replaceText(const KTextEditor::Range &range, const QString &s, bool block = false) override;
+    bool replaceText(KTextEditor::Range range, const QString &s, bool block = false) override;
 
     // unhide method...
-    bool replaceText(const KTextEditor::Range &r, const QStringList &l, bool b) override
+    bool replaceText(KTextEditor::Range r, const QStringList &l, bool b) override
     {
         return KTextEditor::Document::replaceText(r, l, b);
     }
 
 public:
     bool isEditingTransactionRunning() const override;
-    QString text(const KTextEditor::Range &range, bool blockwise = false) const override;
-    QStringList textLines(const KTextEditor::Range &range, bool block = false) const override;
+    QString text(KTextEditor::Range range, bool blockwise = false) const override;
+    QStringList textLines(KTextEditor::Range range, bool block = false) const override;
     QString text() const override;
     QString line(int line) const override;
     QChar characterAt(KTextEditor::Cursor position) const override;
@@ -201,7 +201,7 @@ Q_SIGNALS:
      * \param range range that the newly inserted text occupies
      * \see insertText(), insertLine()
      */
-    void textInsertedRange(KTextEditor::Document *document, const KTextEditor::Range &range);
+    void textInsertedRange(KTextEditor::Document *document, KTextEditor::Range range);
 
     /**
      * The \p document emits this signal whenever \p range was removed, i.e.
@@ -211,7 +211,7 @@ Q_SIGNALS:
      * \param oldText the text that has been removed
      * \see removeText(), removeLine(), clear()
      */
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
+    void textRemoved(KTextEditor::Document *document, KTextEditor::Range range, const QString &oldText);
 
 public:
     // BEGIN editStart/editEnd (start, end, undo, cursor update, view update)
@@ -660,7 +660,7 @@ public:
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    KTextEditor::MovingRange *newMovingRange(const KTextEditor::Range &range,
+    KTextEditor::MovingRange *newMovingRange(KTextEditor::Range range,
                                              KTextEditor::MovingRange::InsertBehaviors insertBehaviors = KTextEditor::MovingRange::DoNotExpand,
                                              KTextEditor::MovingRange::EmptyBehavior emptyBehavior = KTextEditor::MovingRange::AllowEmpty) override;
 
