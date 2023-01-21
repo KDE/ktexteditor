@@ -312,6 +312,7 @@ target_include_directories(KF6TextEditor INTERFACE "$<INSTALL_INTERFACE:${KDE_IN
 target_link_libraries(KF6TextEditor
 PUBLIC
   KF6::Parts
+  KF6::Completion
   KF6::SyntaxHighlighting
 PRIVATE
   Qt${QT_MAJOR_VERSION}::Qml
@@ -324,6 +325,7 @@ PRIVATE
   KF6::WindowSystem
   KF6::SonnetUi
   KF6::Codecs
+  KF6::KIOWidgets
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 

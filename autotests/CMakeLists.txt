@@ -39,6 +39,7 @@ set (KTEXTEDITOR_TEST_LINK_LIBS KF6TextEditor
   KF6::GuiAddons
   KF6::SyntaxHighlighting
   KF6::Codecs
+  KF6::Completion
   Qt${QT_MAJOR_VERSION}::Qml
 )
 
