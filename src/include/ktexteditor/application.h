@@ -154,52 +154,6 @@ Q_SIGNALS:
      */
     void documentDeleted(KTextEditor::Document *document);
 
-#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(5, 80)
-    /**
-     * This signal is emitted before the batch of documents is being created.
-     *
-     * You can use it to pause some updates.
-     * @deprecated Since 5.80, Deprecated due to lack of usage
-     */
-    KTEXTEDITOR_DEPRECATED_VERSION(5, 80, "Deprecated due to lack of usage")
-    void aboutToCreateDocuments();
-#endif
-
-#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(5, 80)
-    /**
-     * This signal is emitted after the batch of documents is created.
-     *
-     * @param documents list of documents that have been created
-     * @deprecated Since 5.80, use documentCreated(KTextEditor::Document *document) instead
-     */
-    KTEXTEDITOR_DEPRECATED_VERSION(5, 80, "Use documentCreated(KTextEditor::Document *document) instead")
-    void documentsCreated(const QList<KTextEditor::Document *> &documents);
-#endif
-
-#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(5, 80)
-    /**
-     * This signal is emitted before the documents batch is going to be deleted
-     *
-     * note that the batch can be interrupted in the middle and only some
-     * of the documents may be actually deleted. See documentsDeleted() signal.
-     * @deprecated Since 5.80, use documentWillBeDeleted(KTextEditor::Document *document) instead
-     */
-    KTEXTEDITOR_DEPRECATED_VERSION(5, 80, "Use documentWillBeDeleted(KTextEditor::Document *document) instead")
-    void aboutToDeleteDocuments(const QList<KTextEditor::Document *> &);
-#endif
-
-#if KTEXTEDITOR_ENABLE_DEPRECATED_SINCE(5, 80)
-    /**
-     * This signal is emitted after the documents batch was deleted
-     *
-     * This is the batch closing signal for aboutToDeleteDocuments
-     * @param documents the documents that weren't deleted after all
-     * @deprecated Since 5.80, use documentDeleted(KTextEditor::Document *document) instead
-     */
-    KTEXTEDITOR_DEPRECATED_VERSION(5, 80, "Use documentDeleted(KTextEditor::Document *document) instead")
-    void documentsDeleted(const QList<KTextEditor::Document *> &documents);
-#endif
-
     //
     // Application plugin accessors
     //
