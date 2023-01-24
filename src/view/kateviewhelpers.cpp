@@ -2815,7 +2815,7 @@ void KateViewEncodingAction::init()
         for (i = 1; i < encodingsForScript.size(); ++i) {
             tmp->addAction(encodingsForScript.at(i));
         }
-        connect(tmp, qOverload<QAction *>(&KSelectAction::triggered), this, [this](QAction *action) {
+        connect(tmp, &KSelectAction::actionTriggered, this, [this](QAction *action) {
             subActionTriggered(action);
         });
         // tmp->setCheckable(true);
