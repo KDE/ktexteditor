@@ -1617,7 +1617,7 @@ KTextEditor::Cursor KateViewInternal::moveCursorToLineStart(KTextEditor::Cursor 
 {
     if (view()->dynWordWrap() && currentLayout(cursor).startCol()) {
         // Allow us to go to the real start if we're already at the start of the view line
-        if (m_cursor.column() != currentLayout(cursor).startCol()) {
+        if (cursor.column() != currentLayout(cursor).startCol()) {
             KTextEditor::Cursor c = currentLayout(cursor).start();
             return c;
         }
