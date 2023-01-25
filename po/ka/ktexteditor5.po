@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-07 07:33+0100\n"
+"PO-Revision-Date: 2023-01-24 09:09+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3338,7 +3338,7 @@ msgstr "Tab"
 #: search/katesearchbar.cpp:1202
 #, kde-format
 msgid "Word boundary"
-msgstr ""
+msgstr "სიტყვის საზღვარი"
 
 #: search/katesearchbar.cpp:1203
 #, kde-format
@@ -4516,7 +4516,7 @@ msgstr "სხვადასხვა"
 #: syntax/katethemeconfig.cpp:704
 #, kde-format
 msgid "H&ighlight:"
-msgstr "&გამოკვეთა"
+msgstr "&გამოკვეთა:"
 
 #: syntax/katethemeconfig.cpp:746
 #, kde-format
@@ -5123,7 +5123,7 @@ msgstr "Michael Bartl"
 #: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Former Core Developer"
-msgstr ""
+msgstr "ყოფილი ძირითადი პროგრამისტი"
 
 #: utils/kateglobal.cpp:117
 #, kde-format
@@ -5158,7 +5158,7 @@ msgstr "Glen Parker"
 #: utils/kateglobal.cpp:121
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
-msgstr ""
+msgstr "KWrite -ის გაუქმების ისტორია, Kspell -ის ინტეგრაცია"
 
 #: utils/kateglobal.cpp:122
 #, kde-format
@@ -5168,7 +5168,7 @@ msgstr "Scott Manson"
 #: utils/kateglobal.cpp:122
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
-msgstr ""
+msgstr "KWrite XML სინტაქსის გამოკვეთის მხარდაჭერა"
 
 #: utils/kateglobal.cpp:123
 #, kde-format
@@ -5338,7 +5338,7 @@ msgstr "Cristi Dumitrescu"
 #: utils/kateglobal.cpp:147
 #, kde-format
 msgid "PHP Keyword/Datatype list"
-msgstr ""
+msgstr "PHP საკვანძო/მონაცემების ტიპების სია"
 
 #: utils/kateglobal.cpp:148
 #, kde-format
@@ -6360,7 +6360,7 @@ msgstr ""
 #: view/kateview.cpp:677
 #, kde-format
 msgid "&Indentation"
-msgstr ""
+msgstr "&სწორება"
 
 #: view/kateview.cpp:685
 #, kde-format
