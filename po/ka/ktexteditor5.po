@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-24 09:09+0100\n"
+"PO-Revision-Date: 2023-01-25 06:14+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -5406,7 +5406,7 @@ msgstr[1] "%1 ხაზი"
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
 msgid "<value>"
-msgstr ""
+msgstr "<მნიშვნელობა>"
 
 #: utils/katevariableexpansionhelpers.cpp:213
 #, kde-format
@@ -5589,12 +5589,12 @@ msgstr ""
 #: utils/katevariableexpansionmanager.cpp:244
 #, kde-format
 msgid "Generate a new UUID."
-msgstr ""
+msgstr "ახალი UUID-ის გენერაცია."
 
 #: variableeditor/katehelpbutton.cpp:19
 #, kde-format
 msgid "Kate Handbook."
-msgstr ""
+msgstr "Kate-ის სახელმძღვანელო."
 
 #: variableeditor/variableeditor.cpp:172
 #, kde-format
@@ -6159,7 +6159,7 @@ msgstr ""
 #: view/kateview.cpp:525
 #, kde-format
 msgid "C&omment"
-msgstr ""
+msgstr "&კომენტარი"
 
 #: view/kateview.cpp:528
 #, kde-format
