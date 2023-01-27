@@ -3231,20 +3231,21 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
         return;
     }
 
-    if ((key == Qt::Key_Return) || (key == Qt::Key_Enter) || (key == Qt::SHIFT + Qt::Key_Return) || (key == Qt::SHIFT + Qt::Key_Enter)) {
+    if ((key == Qt::Key_Return) || (key == Qt::Key_Enter) || key == (Qt::SHIFT | Qt::Key_Return).toCombined()
+        || key == (Qt::SHIFT | Qt::Key_Enter).toCombined()) {
         view()->keyReturn();
         e->accept();
         return;
     }
 
-    if (key == Qt::Key_Backspace || key == Qt::SHIFT + Qt::Key_Backspace) {
+    if (key == Qt::Key_Backspace || key == (Qt::SHIFT | Qt::Key_Backspace).toCombined()) {
         // view()->backspace();
         e->accept();
 
         return;
     }
 
-    if (key == Qt::Key_Tab || key == Qt::SHIFT + Qt::Key_Backtab || key == Qt::Key_Backtab) {
+    if (key == Qt::Key_Tab || key == (Qt::SHIFT | Qt::Key_Backtab).toCombined() || key == Qt::Key_Backtab) {
         if (key == Qt::Key_Tab) {
             uint tabHandling = doc()->config()->tabHandling();
             // convert tabSmart into tabInsertsTab or tabIndents:
