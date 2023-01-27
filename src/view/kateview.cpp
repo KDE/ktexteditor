@@ -4389,7 +4389,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             renderer()->config()->setCurrentLineNumberColor(value.value<QColor>());
         }
     }
-    if (value.type() == QVariant::Bool) {
+    if (value.userType() == QMetaType::Bool) {
         // Note explicit type check above. If we used canConvert, then
         // values of type UInt will be trapped here.
         if (key == QLatin1String("dynamic-word-wrap")) {
@@ -4401,7 +4401,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
         }
     } else if (key == QLatin1String("font") && value.canConvert<QFont>()) {
         renderer()->config()->setFont(value.value<QFont>());
-    } else if (key == QLatin1String("theme") && value.type() == QVariant::String) {
+    } else if (key == QLatin1String("theme") && value.userType() == QMetaType::QString) {
         renderer()->config()->setSchema(value.toString());
     }
 }

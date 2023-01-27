@@ -62,7 +62,7 @@ void KateArgumentHintModel::buildRows()
         KateCompletionModel::ModelRow source = group()->filtered[a].sourceRow();
         QModelIndex sourceIndex = source.second.sibling(source.second.row(), 0);
         QVariant v = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth);
-        if (v.type() == QVariant::Int) {
+        if (v.userType() == QMetaType::Int) {
             QList<int> &lst(m_depths[v.toInt()]);
             lst << a;
         }
@@ -160,7 +160,7 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
         // Return that we are doing custom-highlighting of one of the sub-strings does it
         for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
             QVariant method = source.second.sibling(source.second.row(), a).data(CodeCompletionModel::HighlightingMethod);
-            if (method.type() == QVariant::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
+            if (method.userType() == QMetaType::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
                 return QVariant(CodeCompletionModel::CustomHighlighting);
             }
         }
@@ -318,7 +318,7 @@ int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
         sourceIndex.data(CodeCompletionModel::SetMatchContext);
 
         QVariant v = selectedIndex.data(CodeCompletionModel::MatchQuality);
-        if (v.type() == QVariant::Int) {
+        if (v.userType() == QMetaType::Int) {
             return v.toInt();
         }
     } break;
