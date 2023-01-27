@@ -62,8 +62,6 @@
 #include <KToggleAction>
 #include <KXMLGUIFactory>
 
-#include <kparts_version.h>
-
 #include <QApplication>
 #include <QClipboard>
 #include <QCryptographicHash>
