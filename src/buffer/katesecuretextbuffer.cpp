@@ -70,7 +70,7 @@ bool SecureTextBuffer::saveFileInternal(const QString &sourceFile,
     char buffer[bufferLength];
     qint64 read = -1;
     while ((read = readFile.read(buffer, bufferLength)) > 0) {
-        cryptographicHash.addData(buffer, read);
+        cryptographicHash.addData(QByteArrayView(buffer, read));
         if (tempFile.write(buffer, read) == -1) {
             return false;
         }

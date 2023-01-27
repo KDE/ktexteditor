@@ -75,7 +75,7 @@ bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
         fillRegister(chosenRegister, removedText, mode);
     }
 
-    const QChar lastChar = removedText.count() > 0 ? removedText.back() : QLatin1Char('\0');
+    const QChar lastChar = removedText.size() > 0 ? removedText.back() : QLatin1Char('\0');
     if (chosenRegister != BlackHoleRegister && (r.startLine != r.endLine || lastChar == QLatin1Char('\n') || lastChar == QLatin1Char('\r'))) {
         // for deletes spanning a line/lines, always prepend to the numbered registers
         fillRegister(PrependNumberedRegister, removedText, mode);

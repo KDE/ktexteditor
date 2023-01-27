@@ -131,7 +131,7 @@ public:
             return false;
         }
 
-        QChar lastChar = insertedText.at(insertedText.count() - 1);
+        QChar lastChar = insertedText.at(insertedText.size() - 1);
         if (lastChar == '%') {
             return true;
         }

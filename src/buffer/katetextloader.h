@@ -203,7 +203,7 @@ public:
                     // if any text is there, append it....
                     if (c > 0) {
                         // update hash sum
-                        m_digest.addData(m_buffer.data(), c);
+                        m_digest.addData(QByteArrayView(m_buffer.data(), c));
 
                         // detect byte order marks & codec for byte order marks on first read
                         int bomBytes = 0;

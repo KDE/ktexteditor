@@ -120,7 +120,7 @@ public:
         const QString &before = m_insertBefore[index];
         const QString &after = m_insertAfter[index];
         lineEdit->insert(before + after);
-        lineEdit->setCursorPosition(cursorPos + before.count());
+        lineEdit->setCursorPosition(cursorPos + before.size());
         lineEdit->setFocus();
     }
 };

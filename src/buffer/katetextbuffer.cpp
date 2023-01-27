@@ -878,7 +878,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     qint64 read = -1;
     QCryptographicHash cryptographicHash(SecureTextBuffer::checksumAlgorithm);
     while ((read = temporaryBuffer->read(buffer, bufferLength)) > 0) {
-        cryptographicHash.addData(buffer, read);
+        cryptographicHash.addData(QByteArrayView(buffer, read));
         if (tempFile.write(buffer, read) == -1) {
             return false;
         }
