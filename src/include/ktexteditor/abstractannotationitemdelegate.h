@@ -112,7 +112,7 @@ protected:
  * interfaces. It has five methods to implement.
  *
  * \since 5.53
- * \see KTextEditor::AnnotationModel, KTextEditor::AnnotationViewInterfaceV2
+ * \see KTextEditor::AnnotationModel, KTextEditor::AnnotationViewInterface
  */
 class KTEXTEDITOR_EXPORT AbstractAnnotationItemDelegate : public QObject
 {
@@ -144,7 +144,7 @@ public:
      * This should be the size for the display for a single displayed content line,
      * i.e. with no line wrapping or consecutive multiple annotation item of the same group assumed.
      *
-     * @note If AnnotationViewInterfaceV2::uniformAnnotationItemSizes() is @c true for the view
+     * @note If AnnotationViewInterface::uniformAnnotationItemSizes() is @c true for the view
      * this delegate is used by, it is assumed that the returned value is the same for
      * any line.
      *
@@ -188,7 +188,7 @@ Q_SIGNALS:
     /**
      * This signal must be emitted when the sizeHint() for @p model and @p line changed.
      * The view automatically connects to this signal and relayouts as necessary.
-     * If AnnotationViewInterfaceV2::uniformAnnotationItemSizes is set on the view,
+     * If AnnotationViewInterface::uniformAnnotationItemSizes is set on the view,
      * it is sufficient to emit sizeHintChanged only for one line.
      * @param model the annotation model providing the annotation information
      * @param line index of the real line the annotation information should be painted for

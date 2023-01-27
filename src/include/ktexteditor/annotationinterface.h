@@ -175,15 +175,20 @@ public:
  *
  * \section annoview_intro Introduction
  *
- * The AnnotationViewInterface allows to do two things:
+ * The AnnotationViewInterface allows to do these things:
  * - (1) show/hide the annotation border along with the possibility to add actions
  *       into its context menu.
  * - (2) set a separate AnnotationModel for the View: Note that this interface
  *       inherits the AnnotationInterface.
+ * - (3) set a custom AbstractAnnotationItemDelegate for the View.
  *
  * For a more detailed explanation about whether you want an AnnotationModel
  * in the Document or the View, read the detailed documentation about the
  * AnnotationInterface.
+ *
+ * For a more detailed explanation about whether you want to set a custom
+ * delegate for rendering the annotations, read the detailed documentation about the
+ * AbstractAnnotationItemDelegate.
  *
  * \section annoview_access Accessing the AnnotationViewInterface
  *
@@ -199,10 +204,17 @@ public:
  *     // the implementation supports the interface
  *     // do stuff
  *     iface->setAnnotationBorderVisible(true);
+ *     iface->setAnnotationItemDelegate(myDelegate);
+ *     iface->setAnnotationUniformItemSizes(true);
  * } else {
  *     // the implementation does not support the interface
  * }
  * \endcode
+ *
+ *  Porting from KF5 to KF6:
+ *
+ *  The subclass AnnotationViewInterfaceV2 was merged into its baseclass
+ *  AnnotationViewInterface.
  *
  * \since 4.1
  */
@@ -260,52 +272,6 @@ public:
      * \param visible the current visibility state
      */
     virtual void annotationBorderVisibilityChanged(KTextEditor::View *view, bool visible) = 0;
-};
-
-/**
- * \brief Annotation interface for the View, version 2
- *
- * \ingroup kte_group_view_extensions
- *
- * \section annoview_intro Introduction
- *
- * The AnnotationViewInterfaceV2 allows to do the same as AnnotationViewInterface
- * and additionally
- * - (1) set a custom AbstractAnnotationItemDelegate for the View.
- *
- * For a more detailed explanation about whether you want to set a custom
- * delegate for rendering the annotations, read the detailed documentation about the
- * AbstractAnnotationItemDelegate.
- *
- * \section annoview_access Accessing the AnnotationViewInterfaceV2
- *
- * The AnnotationViewInterfaceV2 is an extension interface for a
- * View, i.e. the View inherits the interface \e provided that the
- * used KTextEditor library implements the interface. Use qobject_cast to
- * access the interface:
- * \code
- * // view is of type KTextEditor::View*
- * auto iface = qobject_cast<KTextEditor::AnnotationViewInterfaceV2*>(view);
- *
- * if (iface) {
- *     // the implementation supports the interface
- *     // do stuff
- *     iface->setAnnotationItemDelegate(myDelegate);
- *     iface->setAnnotationUniformItemSizes(true);
- * } else {
- *     // the implementation does not support the interface
- * }
- * \endcode
- *
- * \since 5.53
- */
-class KTEXTEDITOR_EXPORT AnnotationViewInterfaceV2 : public AnnotationViewInterface
-{
-    // KF6: Merge KTextEditor::AnnotationViewInterfaceV2 into KTextEditor::AnnotationViewInterface (kossebau)
-public:
-    ~AnnotationViewInterfaceV2() override
-    {
-    }
 
     /**
      * Sets the AbstractAnnotationItemDelegate for this view and the model
@@ -313,6 +279,8 @@ public:
      * Ownership is not transferred.
      *
      * \param delegate the new AbstractAnnotationItemDelegate, or \c nullptr to reset to the default delegate
+     *
+     * @since 6.0
      */
     virtual void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate) = 0;
 
@@ -320,6 +288,8 @@ public:
      * Returns the currently used AbstractAnnotationItemDelegate
      *
      * @returns the current AbstractAnnotationItemDelegate
+     *
+     * @since 6.0
      */
     virtual KTextEditor::AbstractAnnotationItemDelegate *annotationItemDelegate() const = 0;
 
@@ -331,11 +301,15 @@ public:
      * By default the value of this property is \c false .
      *
      * @param uniformItemSizes if \c true the annotation items are considered to all have the same size
+     *
+     * @since 6.0
      */
     virtual void setAnnotationUniformItemSizes(bool uniformItemSizes) = 0;
 
     /**
      * Checks whether the annotation items all have the same size.
+     *
+     * @since 6.0
      */
     virtual bool uniformAnnotationItemSizes() const = 0;
 };
@@ -344,6 +318,5 @@ public:
 
 Q_DECLARE_INTERFACE(KTextEditor::AnnotationInterface, "org.kde.KTextEditor.AnnotationInterface")
 Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterface, "org.kde.KTextEditor.AnnotationViewInterface")
-Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterfaceV2, "org.kde.KTextEditor.AnnotationViewInterfaceV2")
 
 #endif
