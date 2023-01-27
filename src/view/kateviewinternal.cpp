@@ -3142,7 +3142,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
     } break;
 
     case QEvent::DragMove: {
-        QPoint currentPoint = ((QDragMoveEvent *)e)->pos();
+        QPoint currentPoint = ((QDragMoveEvent *)e)->position().toPoint();
 
         QRect doNotScrollRegion(s_scrollMargin, s_scrollMargin, width() - s_scrollMargin * 2, height() - s_scrollMargin * 2);
 
@@ -3381,10 +3381,10 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
     }
 
     // was an inline note clicked?
-    const auto noteData = inlineNoteAt(e->globalPos());
+    const auto noteData = inlineNoteAt(e->globalPosition().toPoint());
     const KTextEditor::InlineNote note(noteData);
     if (note.position().isValid()) {
-        note.provider()->inlineNoteActivated(noteData, e->button(), e->globalPos());
+        note.provider()->inlineNoteActivated(noteData, e->button(), e->globalPosition().toPoint());
         return;
     }
 
@@ -3723,7 +3723,7 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     }
 
     if (e->buttons() == Qt::NoButton) {
-        auto noteData = inlineNoteAt(e->globalPos());
+        auto noteData = inlineNoteAt(e->globalPosition().toPoint());
         auto focusChanged = false;
         if (noteData.m_position.isValid()) {
             if (!m_activeInlineNote.m_position.isValid()) {
@@ -3731,10 +3731,10 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
                 tagLine(noteData.m_position);
                 focusChanged = true;
                 noteData.m_underMouse = true;
-                noteData.m_provider->inlineNoteFocusInEvent(KTextEditor::InlineNote(noteData), e->globalPos());
+                noteData.m_provider->inlineNoteFocusInEvent(KTextEditor::InlineNote(noteData), e->globalPosition().toPoint());
                 m_activeInlineNote = noteData;
             } else {
-                noteData.m_provider->inlineNoteMouseMoveEvent(KTextEditor::InlineNote(noteData), e->globalPos());
+                noteData.m_provider->inlineNoteMouseMoveEvent(KTextEditor::InlineNote(noteData), e->globalPosition().toPoint());
             }
         } else if (m_activeInlineNote.m_position.isValid()) {
             tagLine(m_activeInlineNote.m_position);
@@ -3767,8 +3767,8 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
             return;
         }
 
-        m_mouseX = e->x();
-        m_mouseY = e->y();
+        m_mouseX = e->position().x();
+        m_mouseY = e->position().y();
 
         m_scrollX = 0;
         m_scrollY = 0;
@@ -3819,7 +3819,7 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
         // We need to check whether the mouse position is actually within the widget,
         // because other widgets like the icon border forward their events to this,
         // and we will create invalid text hint requests if we don't check
-        if (textHintsEnabled() && geometry().contains(parentWidget()->mapFromGlobal(e->globalPos()))) {
+        if (textHintsEnabled() && geometry().contains(parentWidget()->mapFromGlobal(e->globalPosition()).toPoint())) {
             if (QToolTip::isVisible()) {
                 QToolTip::hideText();
             }
@@ -4235,11 +4235,11 @@ void KateViewInternal::fixDropEvent(QDropEvent *event)
     } else {
         Qt::DropAction action = Qt::MoveAction;
 #ifdef Q_WS_MAC
-        if (event->keyboardModifiers() & Qt::AltModifier) {
+        if (event->modifiers() & Qt::AltModifier) {
             action = Qt::CopyAction;
         }
 #else
-        if (event->keyboardModifiers() & Qt::ControlModifier) {
+        if (event->modifiers() & Qt::ControlModifier) {
             action = Qt::CopyAction;
         }
 #endif
@@ -4250,7 +4250,7 @@ void KateViewInternal::fixDropEvent(QDropEvent *event)
 void KateViewInternal::dragMoveEvent(QDragMoveEvent *event)
 {
     // track the cursor to the current drop location
-    placeCursor(event->pos(), true, false);
+    placeCursor(event->position().toPoint(), true, false);
 
     // important: accept action to switch between copy and move mode
     // without this, the text will always be copied.
