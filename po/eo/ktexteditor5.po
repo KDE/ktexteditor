@@ -1,8 +1,10 @@
-# translation of katepart4.po to Esperanto
+# translation of ktexteditor5.pot to Esperanto
 # Copyright (C) 2003, 2007, 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the ktexteditor package.
 # Heiko Evermann <heiko@evermann.de>, 2003.
 # Oliver M. Kellogg <okellogg@users.sourceforge.net>, 2007.
 # Cindy McKee <cfmckee@gmail.com>, 2007, 2008.
+#
 # Minuskloj: ĉ ĝ ĵ ĥ ŝ ŭ   Majuskloj: Ĉ Ĝ Ĵ Ĥ Ŝ Ŭ
 #
 msgid ""
@@ -10,8 +12,8 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2008-01-03 15:40-0600\n"
-"Last-Translator: Cindy McKee <cfmckee@gmail.com>\n"
+"PO-Revision-Date: 2023-01-26 19:26+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -36,16 +38,14 @@ msgid "Language keywords"
 msgstr ""
 
 #: completion/katewordcompletion.cpp:73
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Auto Word Completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #: completion/katewordcompletion.cpp:276
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Shell Completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #: completion/katewordcompletion.cpp:282
 #, kde-format
@@ -83,17 +83,15 @@ msgstr ""
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Selection"
-msgstr "&Sekcio:"
+msgstr ""
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Majuskligi"
+msgstr ""
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -103,10 +101,9 @@ msgstr "&Montri"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
 #: data/katepart5ui.rc:74
-#, fuzzy, kde-format
-#| msgid "Static Word Wrap"
+#, kde-format
 msgid "Word Wrap"
-msgstr "Statika linifaldo"
+msgstr ""
 
 #. i18n: ectx: Menu (view_menu_borders)
 #: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
@@ -122,10 +119,9 @@ msgstr "&Kodfaldado"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:104
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Iri"
+msgstr ""
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:119
@@ -160,10 +156,9 @@ msgstr "Ĉefa ilobreto"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
-#, fuzzy, kde-format
-#| msgid "&Code Folding"
+#, kde-format
 msgid "Code block folding:"
-msgstr "&Kodfaldado"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -181,25 +176,17 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If this option is checked, every new view will show marks on the "
-#| "vertical scrollbar.</p><p>These marks will show bookmarks, for instance.</"
-#| "p>"
+#, kde-format
 msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
-"<p>Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros markojn ĉe la "
-"vertikala rulumskalo.</p></p>Ĉi tiuj markoj, montros, ekzemple, legosignojn."
-"</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Presi la aktualan dokumenton."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
@@ -223,10 +210,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:78
 #: dialogs/bordersappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Show marks"
-msgstr "Montri rulum&skalajn markojn"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:85
@@ -262,10 +248,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Scrollbars"
-msgstr "Montri rulum&skalajn markojn"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -280,52 +265,37 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:138
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If this option is checked, every new view will show marks on the "
-#| "vertical scrollbar.</p><p>These marks will show bookmarks, for instance.</"
-#| "p>"
+#, kde-format
 msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros markojn ĉe la "
-"vertikala rulumskalo.</p></p>Ĉi tiuj markoj, montros, ekzemple, legosignojn."
-"</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Presi la aktualan dokumenton."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Minimap:"
-msgstr "Ta&ba larĝeco:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, every new view will display line numbers on "
-#| "the left hand side."
+#, kde-format
 msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros lininombrojn ĉe la "
-"maldekstra flanko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Show minimap"
-msgstr "Montri rulum&skalajn markojn"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -339,17 +309,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:187
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Map the whole document"
-msgstr "Konservi la nunan dokumenton"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:213
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Minim&ap width:"
-msgstr "Ta&ba larĝeco:"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
@@ -365,10 +333,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:234
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Always Off"
-msgstr "Ĉiam"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:242
@@ -401,17 +368,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:265
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "By line number"
-msgstr "Montri &lininombrojn"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Menuo pri ordigado de legosignoj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
@@ -421,23 +386,20 @@ msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "Montri p&iktogramrandon"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Show Always"
-msgstr "Ĉiam"
+msgstr ""
 
 #: dialogs/clipboardhistorydialog.cpp:267
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Selekti ĝis sekva linio"
+msgstr ""
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
@@ -455,17 +417,15 @@ msgstr "Ĝenerala"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoCompletionEnabled)
 #: dialogs/completionconfigtab.ui:35
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Enable &auto completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Auto select &first completion entry"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
@@ -475,10 +435,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "A&uto word completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -494,10 +453,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:101
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces"
+#, kde-format
 msgid "Remove tail on complete"
-msgstr "&Forigi linifinajn spacojn"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
@@ -508,10 +466,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "&Keyword completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/completionconfigtab.ui:130
@@ -523,10 +480,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -538,10 +494,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Static Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Statika linifaldo"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -569,16 +524,11 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"Se vi markas ĉi tiun opcion, la linioj de teksto saltos al la sekva linio ĉe "
-"la rando de la ekrano."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -588,10 +538,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
-#, fuzzy, kde-format
-#| msgid "W&rap words at:"
+#, kde-format
 msgid "Wra&p words at:"
-msgstr "Lini&faldo ĉe:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -605,17 +554,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
-#, fuzzy, kde-format
-#| msgid "Default indentation mode:"
+#, kde-format
 msgid "Default input mode:"
-msgstr "Defaŭlta deŝovreĝimo:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:117
-#, fuzzy, kde-format
-#| msgid "Auto &brackets"
+#, kde-format
 msgid "Brackets:"
-msgstr "&Aŭtomataj krampoj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
@@ -633,25 +580,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
-#, fuzzy, kde-format
-#| msgid " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " signoj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
-#, fuzzy, kde-format
-#| msgid "Roland Pabel"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Roland Pabel"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Elektita"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
@@ -776,10 +719,9 @@ msgstr "&Emfazado:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblIndenter)
 #: dialogs/filetypeconfigwidget.ui:136
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Indentation mode:"
-msgstr "&Deŝovo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblExtensions)
 #: dialogs/filetypeconfigwidget.ui:149
@@ -854,10 +796,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbIndentationMode)
 #: dialogs/indentationconfigwidget.ui:75
-#, fuzzy, kde-format
-#| msgid "Indentation"
+#, kde-format
 msgid "Indent using"
-msgstr "Deŝovo"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbIndentWidth)
 #: dialogs/indentationconfigwidget.ui:81
@@ -871,17 +812,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithSpaces)
 #: dialogs/indentationconfigwidget.ui:97
-#, fuzzy, kde-format
-#| msgid "Replace"
+#, kde-format
 msgid "&Spaces"
-msgstr "Anstataŭigi"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblIndentWidth)
 #: dialogs/indentationconfigwidget.ui:104
-#, fuzzy, kde-format
-#| msgid "Indentation width:"
+#, kde-format
 msgid "&Indentation width:"
-msgstr "Larĝeco de deŝovo:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblTabWidth)
 #: dialogs/indentationconfigwidget.ui:114
@@ -891,24 +830,21 @@ msgstr "Ta&ba larĝeco:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithTabs)
 #: dialogs/indentationconfigwidget.ui:153
-#, fuzzy, kde-format
-#| msgid "Tabulators"
+#, kde-format
 msgid "&Tabulators"
-msgstr "Taboj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentMixed)
 #: dialogs/indentationconfigwidget.ui:160
-#, fuzzy, kde-format
-#| msgid "Tabulators"
+#, kde-format
 msgid "Tabulators &and Spaces"
-msgstr "Taboj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "Aŭtomata ekkono de linifino"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -926,10 +862,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
-#, fuzzy, kde-format
-#| msgid "Keep extra spaces"
+#, kde-format
 msgid "&Keep extra spaces"
-msgstr "Teni aldonajn spacojn"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:193
@@ -941,10 +876,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:196
-#, fuzzy, kde-format
-#| msgid "Adjust indentation of code pasted from the clipboard"
+#, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr "Agordi deŝovon de fontkodo regluita el la tondujo"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -963,10 +897,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
-#, fuzzy, kde-format
-#| msgid "Backspace key in leading blank space unindents"
+#, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr "Retrosigno en prefiksaj spacoj maldeŝovas"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
@@ -1036,12 +969,11 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
-#, fuzzy, kde-format
-#| msgid " characters"
+#, kde-format
 msgid " character"
 msgid_plural " characters"
-msgstr[0] " signoj"
-msgstr[1] " signoj"
+msgstr[0] ""
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:209
 #, kde-format
@@ -1049,10 +981,9 @@ msgid "Indentation"
 msgstr "Deŝovo"
 
 #: dialogs/katedialogs.cpp:290
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Auto Completion"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:357
 #, kde-format
@@ -1060,11 +991,9 @@ msgid "Spellcheck"
 msgstr "Literumado"
 
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "Averto"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
@@ -1092,10 +1021,9 @@ msgid "Ctrl + Meta"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:412
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "Komando"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
@@ -1108,20 +1036,17 @@ msgid "Cmd + Ctrl"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:472
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Configuration"
+#, kde-format
 msgid "Text Navigation"
-msgstr "Agordo"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:572
-#, fuzzy, kde-format
-#| msgid " characters"
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
-msgstr[0] " signoj"
-msgstr[1] " signoj"
+msgstr[0] ""
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:577
 #, kde-format
@@ -1129,10 +1054,9 @@ msgid "Feature is not active"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:579
-#, fuzzy, kde-format
-#| msgid "Disabled Breakpoint"
+#, kde-format
 msgid "Disable Feature"
-msgstr "Malaktiva Haltpunkto"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:581
 #, kde-format
@@ -1145,10 +1069,9 @@ msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:585
-#, fuzzy, kde-format
-#| msgid "Non-word character"
+#, kde-format
 msgid "Non letter character"
-msgstr "Ne-vorta signo"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:699
 #, kde-format
@@ -1161,11 +1084,9 @@ msgid "Editing Options"
 msgstr "Redakto-agordo"
 
 #: dialogs/katedialogs.cpp:736
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1238,16 +1159,14 @@ msgid "No valid line number found in clipboard"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1390
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Dictionary:"
-msgstr "&Sekcio:"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1443
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Enable Auto Reload"
-msgstr "Vortkompletigo"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1255,10 +1174,9 @@ msgid "Will never again warn about on disk changes but always reload."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1450
-#, fuzzy, kde-format
-#| msgid "&View Difference"
+#, kde-format
 msgid "View &Difference"
-msgstr "&Vidigi diferencon"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1266,25 +1184,20 @@ msgid "Shows a diff of the changes"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Reloa&d"
+#, kde-format
 msgid "&Reload"
-msgstr "Remal&fermi"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1459
-#, fuzzy, kde-format
-#| msgid ""
-#| "Reload the file from disk. If you have unsaved changes, they will be lost."
+#, kde-format
 msgid "Reload the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Reŝargi la dosieron de disko. Se vi havas nesavitajn ŝanĝojn, ili perdiĝos."
 
 #: dialogs/katedialogs.cpp:1463
-#, fuzzy, kde-format
-#| msgid "&Reload File"
+#, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
-msgstr "&Reŝargi dosieron"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1465
 #, kde-format
@@ -1292,10 +1205,9 @@ msgid "Close the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1469
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgid "&Save As..."
-msgstr "Konservi dosieron kiel..."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1471
 #, kde-format
@@ -1309,10 +1221,9 @@ msgid "&Ignore"
 msgstr "&Ignori"
 
 #: dialogs/katedialogs.cpp:1477
-#, fuzzy, kde-format
-#| msgid "Ignore the changes. You will not be prompted again."
+#, kde-format
 msgid "Ignores the changes on disk without any action."
-msgstr "Ignori la ŝanĝojn. Vi ne plu estos pridemandata."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
@@ -1367,30 +1278,33 @@ msgid ""
 "Selects whether the PageUp and PageDown keys should alter the vertical "
 "position of the cursor relative to the top of the view."
 msgstr ""
+"Elektas ĉu la klavoj PageUp kaj PageDown ŝanĝu la vertikalan pozicion de "
+"lakursoro rilate al la supro de la vido."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkPagingMovesCursor)
 #: dialogs/navigationconfigwidget.ui:48
 #, kde-format
 msgid "&PageUp/PageDown moves cursor"
-msgstr "&PaĝoSupren/Malsupren movas la kursoron"
+msgstr "&PaĝoSupren/PaĝoSuben movas la kursoron"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
+"Elektas ĉu kursoro saltas plenajn vortojn aŭ haltas ĉe miksusklaj transiĝoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "Ebligi movon de la kursoro laŭ usklaj limoj"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
 #, kde-format
 msgid "&Autocenter cursor:"
-msgstr ""
+msgstr "&Aŭtomate centrigi kursoron:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:89
@@ -1399,6 +1313,8 @@ msgid ""
 "Sets the number of lines to maintain visible above and below the cursor when "
 "possible."
 msgstr ""
+"Difinas la nombron da linioj por konservi videbla super kaj sub la kursoro "
+"kiam eblas."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbSwapFileSync)
@@ -1411,10 +1327,9 @@ msgstr "Malŝaltita"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:95
-#, fuzzy, kde-format
-#| msgid "Inline"
+#, kde-format
 msgid " lines"
-msgstr "Enlinia"
+msgstr " linioj"
 
 #. i18n: ectx: property (title), widget (QGroupBox, cbNavigationMisc)
 #: dialogs/navigationconfigwidget.ui:120
@@ -1424,10 +1339,9 @@ msgstr "Diversaj"
 
 #. i18n: ectx: property (text), widget (QLabel, lblTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:128
-#, fuzzy, kde-format
-#| msgid "Text Selection Mode"
+#, kde-format
 msgid "Text selection mode:"
-msgstr "Tekstelekta Moduso"
+msgstr "Tekstelekta reĝimo:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:139 inputmode/katenormalinputmode.cpp:64
@@ -1438,16 +1352,15 @@ msgstr "Normala"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbTextSelectionMode)
 #: dialogs/navigationconfigwidget.ui:144
-#, fuzzy, kde-format
-#| msgid "P&ersistent"
+#, kde-format
 msgid "Persistent"
-msgstr "P&ersista"
+msgstr "Persistenta"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollPastEnd)
 #: dialogs/navigationconfigwidget.ui:167
 #, kde-format
 msgid "Allow scrolling past the end of the document"
-msgstr ""
+msgstr "Permesi ruliĝi preter la fino de la dokumento"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:174
@@ -1456,37 +1369,38 @@ msgid ""
 "When selected, composed characters are removed with their diacritics instead "
 "of only removing the base character. This is useful for Indic locales."
 msgstr ""
+"Se elektitaj, kunmetitaj signoj estas forigitaj per siaj diakritaj signoj "
+"anstataŭ nur forigi la bazan signon. Ĉi tio estas utila por hindaj lokoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:177
 #, kde-format
 msgid "Backspace key removes character’s base with its diacritics"
-msgstr ""
+msgstr "Retroklavo forigas la bazon de karaktero kun siaj diakritaj signoj"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
-#, fuzzy, kde-format
-#| msgid "From cursor"
+#, kde-format
 msgid "Multicursor"
-msgstr "Ekde kursilo"
+msgstr "Multkursoro"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Multoblaj Kursoro-Modifiloj"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Aŭtomate reŝargi dosierojn en versio-kontrolo"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Skribi rezervan dosieron laŭ konservado por:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1495,6 +1409,8 @@ msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
 msgstr ""
+"Se ĉi tiu opcio estas ebligita, sekurkopioj por lokaj dosieroj estos kreataj "
+"dum konservado."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
@@ -1509,76 +1425,74 @@ msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
 msgstr ""
+"Se ĉi tiu opcio estas ebligita, sekurkopioj por foraj dosieroj estos kreataj "
+"dum konservado."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
 #, kde-format
 msgid "&Remote files"
-msgstr "Malp&roksimaj dosieroj"
+msgstr "Fo&raj dosieroj"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Prefikso por rezervaj dosieroj:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
-msgstr ""
+msgstr "Enigu la prefikson por antaŭmeti al la rezervaj dosiernomoj."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Sufikso por rezervaj dosieroj:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
-msgstr ""
+msgstr "Enigu la sufikson por aldoni al la rezervaj dosiernomoj."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Nova dosiertipo"
+msgstr "Permutodosiera reĝimo:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Ebligita, Konservi En Defaŭlta Dosierujo"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Ebligita, Konservi En Propra Dosierujo"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Nova dosiertipo"
+msgstr "Konservi permutodosierojn en:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Nova dosiertipo"
+msgstr "Konservi permutodosierojn ĉiujn:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
-#, fuzzy, kde-format
-#| msgid "as"
+#, kde-format
 msgid "s"
-msgstr "kiel"
+msgstr "s"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
 #: dialogs/opensaveconfigadvwidget.ui:221
@@ -1586,18 +1500,20 @@ msgstr "kiel"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
+"Ĉi tiu signoĉeno troviĝas en katedialogs.cpp en la konstruilo de "
+"KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
 #, kde-format
 msgid "File Format"
-msgstr "Dosierformato"
+msgstr "Dosiera Formato"
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncoding)
 #: dialogs/opensaveconfigwidget.ui:40
 #, kde-format
 msgid "&Encoding:"
-msgstr "Kodprez&ento:"
+msgstr "&Enkodigo:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncoding)
 #: dialogs/opensaveconfigwidget.ui:50
@@ -1606,13 +1522,14 @@ msgid ""
 "This defines the standard encoding to use to open/save files, if not changed "
 "in the open/save dialog or by using a command line option."
 msgstr ""
+"Ĉi tio difinas la norman kodigon uzendan por malfermi/konservi dosierojn, se "
+"ne ŝanĝita en la dialogo malfermi/konservi aŭ uzante komandlinian opcion."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:57
-#, fuzzy, kde-format
-#| msgid "&Encoding:"
+#, kde-format
 msgid "&Encoding detection:"
-msgstr "Kodprez&ento:"
+msgstr "Kodiga d&etekto:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:67
@@ -1622,13 +1539,15 @@ msgid ""
 "in the open/save dialog, nor the encoding specified on command line match "
 "the content of the file, this detection will be run."
 msgstr ""
+"Se nek la kodigo elektita kiel norma supre, nek la kodigo specifita en la "
+"malferma/konserva dialogo, nek la kodigo specifita sur komandlinio kongruas "
+"kun la enhavo de la dosiero, ĉi tiu detekto estos rulita."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
-#, fuzzy, kde-format
-#| msgid "&Encoding:"
+#, kde-format
 msgid "&Fallback encoding:"
-msgstr "Kodprez&ento:"
+msgstr "Retrode&faŭlta kodigo:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingFallback)
 #: dialogs/opensaveconfigwidget.ui:84
@@ -1642,18 +1561,26 @@ msgid ""
 "found, the right Unicode encoding will be chosen; otherwise encoding "
 "detection will run, if both fail the fallback encoding will be tried."
 msgstr ""
+"Ĉi tio difinas la retrodefaŭltan kodigon provendan por malfermi dosierojn se "
+"nek la kodigo elektita kiel norma supre, nek la kodigo specifita en la "
+"malferma/konserva dialogo, nek la kodigo specifita sur komandlinio kongruas "
+"kun la enhavo de la dosiero. Antaŭ ol tio estas uzata, estos provata "
+"determini la kodigon uzendan serĉante bajtan ordomarkon ĉe la komenco de "
+"dosiero: se estas trovata, la ĝusta Unikoda kodigo estos elektata; alie "
+"kodig-detekto rulos; se ambaŭ malsukcesas, la retrodefaŭlta kodigo estos "
+"provata."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEOL)
 #: dialogs/opensaveconfigwidget.ui:91
 #, kde-format
 msgid "E&nd of line:"
-msgstr "&Linifino:"
+msgstr "Linifi&no:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbEOL)
 #: dialogs/opensaveconfigwidget.ui:102
 #, kde-format
 msgid "UNIX"
-msgstr ""
+msgstr "UNIX"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbEOL)
 #: dialogs/opensaveconfigwidget.ui:107
@@ -1674,6 +1601,8 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
+"Se ĉi tiu opcio estas ebligita, la redaktilo aŭtomate detektos la tipon de "
+"liniofino. La unua linifinaĵa tipo trovita estos uzata por la tuta dosiero."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -1690,31 +1619,33 @@ msgid ""
 "Unicode encoding. The byte order mark is not visible in the displayed "
 "document."
 msgstr ""
+"La bajta ordomarko estas speciala sekvenco komence de Unikode koditaj "
+"dokumentoj. Ĝi helpas redaktilojn malfermi tekstodokumentojn kun la ĝusta "
+"Unikoda kodigo. La bajta ordomarko ne estas videbla en la montrata dokumento."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:135
 #, kde-format
 msgid "Enable byte order mark (BOM)"
-msgstr ""
+msgstr "Ebligi bajtan ordomarkon (BOM)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigwidget.ui:142
 #, kde-format
 msgid "Line length limit:"
-msgstr ""
+msgstr "Limlongo de linio:"
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, lineLengthLimit)
 #: dialogs/opensaveconfigwidget.ui:152
 #, kde-format
 msgid "Unlimited"
-msgstr "Nelimigita"
+msgstr "Senlima"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbCleanups)
 #: dialogs/opensaveconfigwidget.ui:168
-#, fuzzy, kde-format
-#| msgid "Automatic Cleanups on Load/Save"
+#, kde-format
 msgid "Automatic Cleanups on Save"
-msgstr "Aŭtomataj purigoj dum Malfermado/Konservado"
+msgstr "Aŭtomataj Purigoj dum Konservado"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lblRemoveTrailingSpaces)
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cbRemoveTrailingSpaces)
@@ -1724,37 +1655,35 @@ msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
 msgstr ""
+"Depende de la elekto, linivostaj spacoj estos forigataj dum konservado de "
+"dokumento, aŭ en la tuta dokumento aŭ nur en modifitaj linioj."
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces"
+#, kde-format
 msgid "Re&move trailing spaces:"
-msgstr "&Forigi linifinajn spacojn"
+msgstr "Forigi &finajn spacojn:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
 #: dialogs/textareaappearanceconfigwidget.ui:72
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#, kde-format
 msgid "Never"
-msgstr "Inversigi"
+msgstr "Neniam"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:198
-#, fuzzy, kde-format
-#| msgid "Scroll Line Up"
+#, kde-format
 msgid "On Modified Lines"
-msgstr "Ruli je unu linio supren"
+msgstr "Sur Modifitaj Linioj"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:203
-#, fuzzy, kde-format
-#| msgid "&Word Wrap Document"
+#, kde-format
 msgid "In Entire Document"
-msgstr "&Linifaldi dokumenton"
+msgstr "En Tuta Dokumento"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:226
@@ -1763,105 +1692,98 @@ msgid ""
 "On save, a line break is appended to the document if not already present. "
 "The line break is visible after reloading the file."
 msgstr ""
+"Konservante, linisalto estos almetata al la dokumento se ne jam ĉeestas. La "
+"liniosalto estos videbla post reŝargo de la dosiero."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:229
 #, kde-format
 msgid "Append newline at end of file on save"
-msgstr ""
+msgstr "Aldoni novlinion ĉe la dosierfino dum konservado"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Vortkompletigo"
+msgstr "Ebligi Aŭtomatan Konservadon (nur lokaj dosieroj)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "Aŭtomate konservi dokumenton kiam fokuso forlasas la redaktilon"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Intervalo de aŭtomata konservado:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
 #, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " sekundoj"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Kate Syntax Highlighting Parser"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Sintaksemfaziga anazilo de Kate"
+msgstr "Montri reliefreĝimon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Show &icon border"
+#, kde-format
 msgid "Show input mode"
-msgstr "Montri p&iktogramrandon"
+msgstr "Montri enigreĝimon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Elekti redaktilon..."
+msgstr "Montri aktivan vortaron"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Folding &Markers"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Montri kodfaldajn &markojn"
+msgstr "Montri tab-agordon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show line column"
-msgstr "Montri &lininombrojn"
+msgstr "Montri liniokolumnon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "E&ncoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Kodopreze&nto"
+msgstr "Montri Dosierkodigon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Montri Tipon de Liniofino"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
-#, fuzzy, kde-format
-#| msgid "Editor Plugins"
+#, kde-format
 msgid "Editor font:"
-msgstr "Redaktilaj kromprogrametoj"
+msgstr "Tiparo de la redaktilo:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr ""
+msgstr "Montri blankspac-indkikilojn:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgid "At the end of a line"
-msgstr "Selekti ĝis linifino"
+msgstr "Ĉe la fino de linio"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
@@ -1871,23 +1793,21 @@ msgstr "Ĉiam"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:90
-#, fuzzy, kde-format
-#| msgid "&Highlighting"
+#, kde-format
 msgid "Whitespace indicator size:"
-msgstr "&Emfazado"
+msgstr "Grandeco de blankspaca indikilo:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:103
 #, kde-format
 msgid "Size of the visible highlight marker."
-msgstr ""
+msgstr "Grandeco de la videbla emfaz-markilo."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show Folding &Markers"
+#, kde-format
 msgid "Show tab indicators:"
-msgstr "Montri kodfaldajn &markojn"
+msgstr "Montri tab-indikilojn:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1895,20 +1815,20 @@ msgstr "Montri kodfaldajn &markojn"
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
 "text."
-msgstr "La redaktilo montras tabojn en la teksto per speciala simbolo."
+msgstr ""
+"La redaktilo montros simbolon por indiki la ĉeeston de tabo en la teksto."
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Montri fokusan kadron ĉirkaŭ redaktilo"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
-#, fuzzy, kde-format
-#| msgid "Bracket highlight:"
+#, kde-format
 msgid "Bracket matching:"
-msgstr "Emfazo de krampoj:"
+msgstr "Rekono de krampkongruo:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:185
@@ -1917,12 +1837,14 @@ msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
 msgstr ""
+"Se ĉi tio estas ebligita, la intervalo inter la elektitaj kongruaj krampoj "
+"estos reliefigata."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:188
 #, kde-format
 msgid "Highlight range between selected brackets"
-msgstr ""
+msgstr "Emfazi gamon inter elektitaj krampoj"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:195
@@ -1942,17 +1864,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Presi la aktualan dokumenton."
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:208
-#, fuzzy, kde-format
-#| msgid "Select to Matching Bracket"
+#, kde-format
 msgid "Flash matching brackets"
-msgstr "Selekti ĝis koresponda krampo"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:211
@@ -1997,10 +1917,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:257
-#, fuzzy, kde-format
-#| msgid "Not word boundary"
+#, kde-format
 msgid "Show word count"
-msgstr "Ne vortlimo"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:264
@@ -2010,10 +1929,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:267 view/katestatusbar.cpp:254
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show line count"
-msgstr "Montri &lininombrojn"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:293
@@ -2027,24 +1945,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:296
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "Fold first line"
-msgstr "Fino de linio"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:316
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "&Dinamika linifaldo"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
-#, fuzzy, kde-format
-#| msgid "Enable static &word wrap"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "Enŝal&ti statikan linifaldon"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
@@ -2054,10 +1969,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:337
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Indikiloj pri dinamika linifaldo"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:347
@@ -2067,10 +1981,9 @@ msgstr "Elektu kiam la indikiloj pri dinamika linifaldo estu videblaj."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Indent wrapped lines:"
-msgstr "Deŝovtrajtoj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:384
@@ -2119,11 +2032,10 @@ msgid "Line Height Multiplier:"
 msgstr ""
 
 #: document/katebuffer.cpp:140
-#, fuzzy, kde-format
-#| msgid "New Filetype"
+#, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
-msgstr "Nova dosiertipo"
+msgstr ""
 
 #: document/katebuffer.cpp:147
 #, kde-format
@@ -2131,10 +2043,9 @@ msgid "The file %1 does not exist."
 msgstr ""
 
 #: document/katedocument.cpp:246
-#, fuzzy, kde-format
-#| msgid "&Word Wrap Document"
+#, kde-format
 msgid "Auto Reload Document"
-msgstr "&Linifaldi dokumenton"
+msgstr ""
 
 #: document/katedocument.cpp:247
 #, kde-format
@@ -2271,24 +2182,14 @@ msgid "Possible Data Loss"
 msgstr "Ebla perdiĝo de datumoj"
 
 #: document/katedocument.cpp:2553
-#, fuzzy, kde-format
-#| msgid ""
-#| "The selected encoding cannot encode every unicode character in this "
-#| "document. Do you really want to save it? There could be some data lost."
+#, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
 "document. Do you really want to save it? There could be some data lost."
 msgstr ""
-"La elektita kodoprezento ne povas kodigi ĉiun unikodan signon en ĉi tiu "
-"dokumento. Ĉu vi vere volas konservi ĝin? Povus okazi perdo de datumoj."
 
 #: document/katedocument.cpp:2598
-#, fuzzy, kde-format
-#| msgid ""
-#| "The document could not be saved, as it was not possible to write to %1.\n"
-#| "\n"
-#| "Check that you have write access to this file or that enough disk space "
-#| "is available."
+#, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
 "Check that you have write access to this file or that enough disk space is "
@@ -2296,10 +2197,6 @@ msgid ""
 "The original file may be lost or damaged. Don't quit the application until "
 "the file is successfully written."
 msgstr ""
-"Ne povis konservi la dokumento, ne povi skribi al %1.\n"
-"\n"
-"Kontrolu ke vi havas skribpermeson por ĉi tiu dosiero aŭ ke vi havas sufiĉan "
-"diskan spacon."
 
 #: document/katedocument.cpp:2719
 #, kde-format
@@ -2352,10 +2249,9 @@ msgid "Save failed"
 msgstr "Konservado malsukcesis"
 
 #: document/katedocument.cpp:5030
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Save Copy of File"
-msgstr "Konservi dosieron"
+msgstr ""
 
 #: document/katedocument.cpp:5042
 #, kde-format
@@ -2389,22 +2285,19 @@ msgid ""
 msgstr ""
 
 #: document/katedocument.cpp:5607
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "La dosiero '%1' estis modifita de alia programo."
+msgstr ""
 
 #: document/katedocument.cpp:5610
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "La dosiero '%1' estis kreita de alia programo."
+msgstr ""
 
 #: document/katedocument.cpp:5613
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "La dosiero '%1' estis forigita de alia programo."
+msgstr ""
 
 #: document/katedocument.cpp:5936
 #, kde-format
@@ -2416,10 +2309,9 @@ msgstr ""
 "Ĉu vi volas konservi aŭ forĵeti tiujn ŝanĝojn?"
 
 #: document/katedocument.cpp:5939
-#, fuzzy, kde-format
-#| msgid "&Word Wrap Document"
+#, kde-format
 msgid "Close Document"
-msgstr "&Linifaldi dokumenton"
+msgstr ""
 
 #: document/katedocument.cpp:6050
 #, kde-format
@@ -2442,10 +2334,9 @@ msgid "INSERT"
 msgstr ""
 
 #: inputmode/katenormalinputmodefactory.cpp:29
-#, fuzzy, kde-format
-#| msgid "Normal Text"
+#, kde-format
 msgid "Normal Mode"
-msgstr "Normala teksto"
+msgstr ""
 
 #: inputmode/kateviinputmode.cpp:29
 #, kde-format
@@ -2483,10 +2374,9 @@ msgid "vi-mode"
 msgstr ""
 
 #: inputmode/kateviinputmode.cpp:157
-#, fuzzy, kde-format
-#| msgid "E&ncoding"
+#, kde-format
 msgid "recording"
-msgstr "Kodopreze&nto"
+msgstr ""
 
 #: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
 #: vimode/config/configtab.cpp:233
@@ -2500,10 +2390,9 @@ msgid "<Unchanged>"
 msgstr "<Neŝanĝita>"
 
 #: mode/katemodeconfigpage.cpp:58
-#, fuzzy, kde-format
-#| msgid "Use Default Style"
+#, kde-format
 msgid "Use Default"
-msgstr "Uzi defaŭltan stilon"
+msgstr ""
 
 #: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
 #, kde-format
@@ -2531,17 +2420,15 @@ msgid "Select Mime Types"
 msgstr "Elekti MIME-tipojn"
 
 #: mode/katemodeconfigpage.cpp:306
-#, fuzzy, kde-format
-#| msgid "Modes & Filetypes"
+#, kde-format
 msgid "Modes && Filetypes"
-msgstr "Reĝimoj kaj dosiertipoj"
+msgstr ""
 
 #: mode/katemodemenulist.cpp:141
-#, fuzzy, kde-format
-#| msgid "Search mode"
+#, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr "Serĉreĝimo"
+msgstr ""
 
 #: mode/katemodemenulist.cpp:143
 #, kde-format
@@ -2558,24 +2445,22 @@ msgid "No items matching your search"
 msgstr ""
 
 #: mode/katemodemenulist.cpp:1093
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Match"
-msgstr "Plej taŭgaj kongruaĵoj"
+msgstr ""
 
 #: mode/katemodemenulist.cpp:1098
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Matches"
-msgstr "Plej taŭgaj kongruaĵoj"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
@@ -2699,16 +2584,14 @@ msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr "<p>Formato de la paĝopiedo. La sekvantaj etikedoj haveblas:</p>"
 
 #: printing/printconfigwidgets.cpp:341
-#, fuzzy, kde-format
-#| msgid "Use placeholders"
+#, kde-format
 msgid "Add Placeholder..."
-msgstr "Uzi ŝtopaĵojn"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:343
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current User Name"
-msgstr "Nuna linio:"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:345
 #, kde-format
@@ -2721,10 +2604,9 @@ msgid "Complete Date/Time (long format)"
 msgstr ""
 
 #: printing/printconfigwidgets.cpp:349
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current Time"
-msgstr "Nuna linio:"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:351
 #, kde-format
@@ -2737,10 +2619,9 @@ msgid "Current Date (long format)"
 msgstr ""
 
 #: printing/printconfigwidgets.cpp:355
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "File Name"
-msgstr "Nomo"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:357
 #, kde-format
@@ -2763,16 +2644,14 @@ msgid "L&ayout"
 msgstr "&Aranĝo"
 
 #: printing/printconfigwidgets.cpp:473
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Color theme:"
-msgstr "Koloroj"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Tiparo"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2805,23 +2684,16 @@ msgid "Co&lor:"
 msgstr "&Koloro:"
 
 #: printing/printconfigwidgets.cpp:536
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "Elekti la koloraron por la presado."
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:538
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If enabled, the background color of the editor will be used.</"
-#| "p><p>This may be useful if your color scheme is designed for a dark "
-#| "background.</p>"
+#, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
-"<p>Se enŝaltita, la fona koloro de la redaktilo estos uzata.</p><p>Tio povas "
-"esti utila se via kolorskemo estas desegnata por malhela fono.</p>"
 
 #: printing/printconfigwidgets.cpp:541
 #, kde-format
@@ -2892,11 +2764,10 @@ msgid "Wrap with Tag"
 msgstr ""
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: script/data/commands/emmet.js:22
 #, kde-format
@@ -2911,47 +2782,40 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr ""
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "Komento"
+msgstr ""
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "Selekti ĝis sekva linio"
+msgstr ""
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "Al antaŭa linio"
+msgstr ""
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "Selekti ĝis sekva linio"
+msgstr ""
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgid "Select to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "Selekti ĝis "
+msgstr ""
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgid "Delete the current file type."
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr "Forigi la aktualan dosiertipon."
+msgstr ""
 
 #: script/data/commands/emmet.js:54
 #, kde-format
@@ -3043,16 +2907,14 @@ msgid "Move to the previous edit point (tag or empty attribute)."
 msgstr ""
 
 #: script/data/commands/emmet.js:103
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr "Selekti ĝis sekva linio"
+msgstr ""
 
 #: script/data/commands/emmet.js:104
-#, fuzzy, kde-format
-#| msgid "Select to Previous Line"
+#, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr "Selekti ĝis "
+msgstr ""
 
 #: script/data/commands/emmet.js:105
 #, kde-format
@@ -3060,10 +2922,9 @@ msgid "Toggle comment of current tag or CSS selector"
 msgstr ""
 
 #: script/data/commands/emmet.js:106
-#, fuzzy, kde-format
-#| msgid "Delete the current file type."
+#, kde-format
 msgid "Deletes tag under cursor"
-msgstr "Forigi la aktualan dosiertipon."
+msgstr ""
 
 #: script/data/commands/emmet.js:107
 #, kde-format
@@ -3106,46 +2967,39 @@ msgid "Increment number under cursor by 0.1"
 msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Configuration"
+#, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
-msgstr "Agordo"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:44
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:47
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Move cursor to next matching indent"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Elektita teksto:"
+msgstr ""
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3163,68 +3017,55 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr ""
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgid "Scroll Line Down"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
-msgstr "Ruli je unu linio malsupren"
+msgstr ""
 
 #: script/data/commands/utils.js:22
-#, fuzzy, kde-format
-#| msgid "Scroll Line Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
-msgstr "Ruli je unu linio supren"
+msgstr ""
 
 #: script/data/commands/utils.js:27
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
-msgstr "Elektita"
+msgstr ""
 
 #: script/data/commands/utils.js:31
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
-msgstr "Elektita"
+msgstr ""
 
 #: script/data/commands/utils.js:35
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
-msgstr "Elektita teksto:"
+msgstr ""
 
 #: script/data/commands/utils.js:39
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
-msgstr "Elektita teksto:"
+msgstr ""
 
 #: script/data/commands/utils.js:418
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Sort the selected text or whole document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: script/data/commands/utils.js:420
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Move selected lines down."
-msgstr "Elektita"
+msgstr ""
 
 #: script/data/commands/utils.js:422
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Move selected lines up."
-msgstr "Elektita"
+msgstr ""
 
 #: script/data/commands/utils.js:424
 #, kde-format
@@ -3350,12 +3191,10 @@ msgid ""
 msgstr ""
 
 #: script/data/indentation/ada.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Ada"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "ada"
-msgstr "Ada"
+msgstr ""
 
 #: script/data/indentation/cmake.js:2
 #, kde-format
@@ -3370,11 +3209,10 @@ msgid "C++/boost Style"
 msgstr ""
 
 #: script/data/indentation/cstyle.js:2
-#, fuzzy, kde-format
-#| msgid "Kate Styles"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "C Style"
-msgstr "Kate-Stiloj"
+msgstr ""
 
 #: script/data/indentation/haskell.js:2
 #, kde-format
@@ -3389,11 +3227,10 @@ msgid "Julia"
 msgstr ""
 
 #: script/data/indentation/latex.js:2
-#, fuzzy, kde-format
-#| msgid "Latest"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Latex"
-msgstr "Plej nova"
+msgstr ""
 
 #: script/data/indentation/lilypond.js:2
 #, kde-format
@@ -3426,11 +3263,10 @@ msgid "R"
 msgstr ""
 
 #: script/data/indentation/replicode.js:2
-#, fuzzy, kde-format
-#| msgid "Replace"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Replicode"
-msgstr "Anstataŭigi"
+msgstr ""
 
 #: script/data/indentation/ruby.js:2
 #, kde-format
@@ -3439,11 +3275,10 @@ msgid "Ruby"
 msgstr "Ruby"
 
 #: script/data/indentation/xml.js:2
-#, fuzzy, kde-format
-#| msgid "Kate Styles"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "XML Style"
-msgstr "Kate-Stiloj"
+msgstr ""
 
 #: script/katecommandlinescript.cpp:37
 #, kde-format
@@ -3451,10 +3286,9 @@ msgid "Function '%1' not found in script: %2"
 msgstr ""
 
 #: script/katecommandlinescript.cpp:51
-#, fuzzy, kde-format
-#| msgid "Error: %1"
+#, kde-format
 msgid "Error calling %1"
-msgstr "Eraro: %1"
+msgstr ""
 
 #: script/katecommandlinescript.cpp:68
 #, kde-format
@@ -3478,10 +3312,9 @@ msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
 #: script/katescript.cpp:209
-#, fuzzy, kde-format
-#| msgid "Error: %1"
+#, kde-format
 msgid "Error loading script %1\n"
-msgstr "Eraro: %1"
+msgstr ""
 
 #: script/katescript.cpp:210
 #, kde-format
@@ -3512,19 +3345,17 @@ msgstr[0] "Faris 1 anstataŭigon"
 msgstr[1] "Faris %1 anstataŭigojn"
 
 #: search/katesearchbar.cpp:300
-#, fuzzy, kde-format
-#| msgid "Not found"
+#, kde-format
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
-msgstr[0] "Ne trovita"
-msgstr[1] "Ne trovita"
+msgstr[0] ""
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:374
-#, fuzzy, kde-format
-#| msgid "Reached bottom, continued from top"
+#, kde-format
 msgid "Reached top, continued from bottom"
-msgstr "Atingis finon, daŭrigis dekomence"
+msgstr ""
 
 #: search/katesearchbar.cpp:376
 #, kde-format
@@ -3537,28 +3368,24 @@ msgid "Not found"
 msgstr "Ne trovita"
 
 #: search/katesearchbar.cpp:615
-#, fuzzy, kde-format
-#| msgid "Reached bottom, continued from top"
+#, kde-format
 msgid "Bottom of file reached. Continue from top?"
-msgstr "Atingis finon, daŭrigis dekomence"
+msgstr ""
 
 #: search/katesearchbar.cpp:615
-#, fuzzy, kde-format
-#| msgid "Reached bottom, continued from top"
+#, kde-format
 msgid "Top of file reached. Continue from bottom?"
-msgstr "Atingis finon, daŭrigis dekomence"
+msgstr ""
 
 #: search/katesearchbar.cpp:618
-#, fuzzy, kde-format
-#| msgid "Case-sensitive searching"
+#, kde-format
 msgid "Continue search?"
-msgstr "Usklecdistinga serĉado"
+msgstr ""
 
 #: search/katesearchbar.cpp:919
-#, fuzzy, kde-format
-#| msgid "&Highlighting"
+#, kde-format
 msgid "SearchHighLight"
-msgstr "&Emfazado"
+msgstr ""
 
 #: search/katesearchbar.cpp:1158
 #, kde-format
@@ -3571,10 +3398,9 @@ msgid "End of line"
 msgstr "Fino de linio"
 
 #: search/katesearchbar.cpp:1161
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "Iu unuopa signo (ekskluzivante linisaltojn)"
+msgstr ""
 
 #: search/katesearchbar.cpp:1162
 #, kde-format
@@ -3662,10 +3488,9 @@ msgid "Whitespace (excluding line breaks)"
 msgstr "Spacoj (ekskludante linisaltojn)"
 
 #: search/katesearchbar.cpp:1207
-#, fuzzy, kde-format
-#| msgid "Spaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "Spacoj"
+msgstr ""
 
 #: search/katesearchbar.cpp:1208
 #, kde-format
@@ -3698,10 +3523,9 @@ msgid "Group, non-capturing"
 msgstr "Grupo, nekaptema"
 
 #: search/katesearchbar.cpp:1219
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "Negativa anticipado"
+msgstr ""
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
@@ -3734,29 +3558,25 @@ msgid "End case conversion"
 msgstr "Fini uskleckonvertadon"
 
 #: search/katesearchbar.cpp:1233
-#, fuzzy, kde-format
-#| msgid "Begin lowercase conversion"
+#, kde-format
 msgid "Lowercase first character conversion"
-msgstr "Komenci konvertadon minusklen"
+msgstr ""
 
 #: search/katesearchbar.cpp:1234
-#, fuzzy, kde-format
-#| msgid "Begin uppercase conversion"
+#, kde-format
 msgid "Uppercase first character conversion"
-msgstr "Komenci konvertadon majusklen"
+msgstr ""
 
 #: search/katesearchbar.cpp:1235
-#, fuzzy, kde-format
-#| msgid "Replacement counter (for Replace all)"
+#, kde-format
 msgid "Replacement counter (for Replace All)"
-msgstr "Nombrilo de anstataŭigoj (por Anstataŭigi Ĉion)"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarincremental.ui:50
-#, fuzzy, kde-format
-#| msgid "Find:"
+#, kde-format
 msgid "F&ind:"
-msgstr "Trovi:"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
 #: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
@@ -3780,10 +3600,9 @@ msgstr "Salti al la antaŭa kongruo"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
 #: search/searchbarincremental.ui:121 search/searchbarpower.ui:136
-#, fuzzy, kde-format
-#| msgid "Case Sensitive"
+#, kde-format
 msgid "Match case sensitive"
-msgstr "Uskleco gravas"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarincremental.ui:161
@@ -3799,10 +3618,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: search/searchbarpower.ui:63
-#, fuzzy, kde-format
-#| msgid "Replace:"
+#, kde-format
 msgid "Rep&lace:"
-msgstr "Anstataŭigi:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
@@ -3842,10 +3660,9 @@ msgstr "Regula esprimo"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, selectionOnly)
 #: search/searchbarpower.ui:153
-#, fuzzy, kde-format
-#| msgid "Selection only   "
+#, kde-format
 msgid "Search in the selection only"
-msgstr "Nur elekto   "
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceNext)
 #: search/searchbarpower.ui:211
@@ -3856,10 +3673,9 @@ msgstr "Anstataŭigi sekvan kongruon"
 #. i18n: ectx: property (text), widget (QPushButton, replaceNext)
 #. i18n: ectx: property (text), widget (QPushButton, m_replaceBtn)
 #: search/searchbarpower.ui:214 spellcheck/spellcheckbar.ui:130
-#, fuzzy, kde-format
-#| msgid "Replace"
+#, kde-format
 msgid "&Replace"
-msgstr "Anstataŭigi"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:240
@@ -3869,10 +3685,9 @@ msgstr "Anstataŭigi ĉiujn kongruojn"
 
 #. i18n: ectx: property (text), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:243
-#, fuzzy, kde-format
-#| msgid "Replace &all"
+#, kde-format
 msgid "Replace &All"
-msgstr "&Anstataŭigi ĉiujn"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, findAll)
 #: search/searchbarpower.ui:250
@@ -3899,30 +3714,26 @@ msgid "Text to replace with"
 msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:148
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgid "Spell check canceled."
-msgstr "Elekto de literumado..."
+msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:246
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "Elekto de literumado..."
+msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Spelling"
-msgstr "Literumo"
+msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:433 spellcheck/spellcheckbar.cpp:436
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgid "Spell check complete."
-msgstr "Elekto de literumado..."
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLabel, m_unknownWord)
@@ -3977,10 +3788,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_addBtn)
 #: spellcheck/spellcheckbar.ui:75
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "<< Add to Dictionary"
-msgstr "&Sekcio:"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:89
@@ -3997,10 +3807,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:92
-#, fuzzy, kde-format
-#| msgid "Replace next match"
+#, kde-format
 msgid "Replace with:"
-msgstr "Anstataŭigi sekvan kongruon"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_suggestBtn)
 #: spellcheck/spellcheckbar.ui:118
@@ -4068,11 +3877,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_autoCorrect)
 #: spellcheck/spellcheckbar.ui:200
-#, fuzzy, kde-format
-#| msgctxt "Encodings menu"
-#| msgid "Autodetect"
+#, kde-format
 msgid "Autocorrect"
-msgstr "Aŭtomate trovi"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:209
@@ -4097,10 +3904,9 @@ msgid "I&gnore All"
 msgstr "I&gnori"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Literumado (ekde kursilo)..."
+msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4108,34 +3914,26 @@ msgid "Check the document's spelling from the cursor and forward"
 msgstr "Kontroli literumadon de la dokumento ekde kursoro kaj antaŭen"
 
 #: spellcheck/spellingmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "&Ignore"
+#, kde-format
 msgid "Ignore Word"
-msgstr "&Ignori"
+msgstr ""
 
 #: spellcheck/spellingmenu.cpp:78
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Add to Dictionary"
-msgstr "&Sekcio:"
+msgstr ""
 
 #: spellcheck/spellingmenu.cpp:168
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Literumo"
+msgstr ""
 
 #: swapfile/kateswapdiffcreator.cpp:93
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command failed. Please make sure that diff(1) is installed and "
-#| "in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"La diff komando malsukcesis. Certiĝu ke diff(1) estas instalita kaj en via "
-"PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:103
 #, kde-format
@@ -4148,22 +3946,19 @@ msgid "The file was not closed properly."
 msgstr ""
 
 #: swapfile/kateswapfile.cpp:634
-#, fuzzy, kde-format
-#| msgid "&Ignore Changes"
+#, kde-format
 msgid "View Changes"
-msgstr "&Ignori ŝanĝojn"
+msgstr ""
 
 #: swapfile/kateswapfile.cpp:635
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#, kde-format
 msgid "Recover Data"
-msgstr "Inversigi"
+msgstr ""
 
 #: swapfile/kateswapfile.cpp:636
-#, fuzzy, kde-format
-#| msgid "Disabled"
+#, kde-format
 msgid "Discard"
-msgstr "Malŝaltita"
+msgstr ""
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
@@ -4171,9 +3966,7 @@ msgid "Use default color from the color theme"
 msgstr ""
 
 #: syntax/katehighlightmenu.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Autoindent mode"
-#| msgid "None"
+#, kde-format
 msgid "None"
 msgstr "Neniu"
 
@@ -4253,16 +4046,14 @@ msgid "S&elected Background Color..."
 msgstr "Koloro de s&elektita fono..."
 
 #: syntax/katestyletreewidget.cpp:268
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgid "Unset Normal Color"
-msgstr "Normala &koloro..."
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:271
-#, fuzzy, kde-format
-#| msgid "Unset Selected Background Color"
+#, kde-format
 msgid "Unset Selected Color"
-msgstr "Malelekti Koloron de selektita fono"
+msgstr ""
 
 #: syntax/katestyletreewidget.cpp:277
 #, kde-format
@@ -4280,9 +4071,7 @@ msgid "Use &Default Style"
 msgstr "Uzi &defaŭltan stilon"
 
 #: syntax/katestyletreewidget.cpp:401
-#, fuzzy, kde-format
-#| msgctxt "No text or background colour set"
-#| msgid "None set"
+#, kde-format
 msgctxt "No text or background color set"
 msgid "None set"
 msgstr "Neniu"
@@ -4343,11 +4132,10 @@ msgid "Built-in"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:61
-#, fuzzy, kde-format
-#| msgid "Extensions"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Extension"
-msgstr "Finaĵoj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:63
 #, kde-format
@@ -4368,12 +4156,10 @@ msgid "Character"
 msgstr "Signo"
 
 #: syntax/katethemeconfig.cpp:70
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Character"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special Character"
-msgstr "Signo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:72
 #, kde-format
@@ -4388,11 +4174,10 @@ msgid "Verbatim String"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:76
-#, fuzzy, kde-format
-#| msgid "Filtering"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special String"
-msgstr "Filtrado"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:78
 #, kde-format
@@ -4437,25 +4222,22 @@ msgid "Comment"
 msgstr "Komento"
 
 #: syntax/katethemeconfig.cpp:94
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Documentation"
-msgstr "Mo&ntri deŝovliniojn"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:96
-#, fuzzy, kde-format
-#| msgid "Indentation"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Annotation"
-msgstr "Deŝovo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:98
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Comment Variable"
-msgstr "Variablo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:101
 #, kde-format
@@ -4464,12 +4246,10 @@ msgid "Region Marker"
 msgstr "Regiona marko"
 
 #: syntax/katethemeconfig.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Inform"
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Information"
-msgstr "Inform"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:105
 #, kde-format
@@ -4496,22 +4276,19 @@ msgid "Error"
 msgstr "Eraro"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default Style"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "Uzi defaŭltan stilon"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:182
-#, fuzzy, kde-format
-#| msgid "Unset Background Color"
+#, kde-format
 msgid "Editor Background Colors"
-msgstr "Malelekti Fonkoloron"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:184
-#, fuzzy, kde-format
-#| msgid "Text Area Background"
+#, kde-format
 msgid "Text Area"
-msgstr "Fono de la teksta regiono"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:186
 #, kde-format
@@ -4519,10 +4296,9 @@ msgid "<p>Sets the background color of the editing area.</p>"
 msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
 
 #: syntax/katethemeconfig.cpp:191
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Selected Text"
-msgstr "Elektita teksto:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:194
 #, kde-format
@@ -4535,10 +4311,9 @@ msgstr ""
 "elektita teksto, uzu la dialogon \"<b>Agordu emfazadon</b>\".</p>"
 
 #: syntax/katethemeconfig.cpp:200
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current Line"
-msgstr "Nuna linio:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:202
 #, kde-format
@@ -4550,47 +4325,39 @@ msgstr ""
 "kie estas la kursoro.</p>"
 
 #: syntax/katethemeconfig.cpp:207
-#, fuzzy, kde-format
-#| msgid "&Highlighting"
+#, kde-format
 msgid "Search Highlight"
-msgstr "&Emfazado"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:209
-#, fuzzy, kde-format
-#| msgid "<p>Sets the background color of the editing area.</p>"
+#, kde-format
 msgid "<p>Sets the background color of search results.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:214
-#, fuzzy, kde-format
-#| msgid "&Highlighting"
+#, kde-format
 msgid "Replace Highlight"
-msgstr "&Emfazado"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:216
-#, fuzzy, kde-format
-#| msgid "<p>Sets the background color of the editing area.</p>"
+#, kde-format
 msgid "<p>Sets the background color of replaced text.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:223
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Icon Border"
-msgstr "Montri p&iktogramrandon"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:226
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Background"
+#, kde-format
 msgid "Background Area"
-msgstr "Fono"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:228
-#, fuzzy, kde-format
-#| msgid "<p>Sets the background color of the editing area.</p>"
+#, kde-format
 msgid "<p>Sets the background color of the icon border.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:233
 #, kde-format
@@ -4603,22 +4370,16 @@ msgid "<p>This color will be used to draw the line numbers (if enabled).</p>"
 msgstr "<p>Ĉi tiu koloro estos uzita por la lininombroj (se ebligitaj).</p>"
 
 #: syntax/katethemeconfig.cpp:240
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current Line Number"
-msgstr "Nuna linio:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:242
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This color will be used to draw the line numbers (if enabled) and the "
-#| "lines in the code-folding pane.</p>"
+#, kde-format
 msgid ""
 "<p>This color will be used to draw the number of the current line (if "
 "enabled).</p>"
 msgstr ""
-"<p>Ĉi tiu koloro estos uzita por la lininombroj (se ebligitaj) kaj la linioj "
-"en la kodfalda panelo.</p>"
 
 #: syntax/katethemeconfig.cpp:247
 #, kde-format
@@ -4626,22 +4387,16 @@ msgid "Separator"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:249
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This color will be used to draw the line numbers (if enabled) and the "
-#| "lines in the code-folding pane.</p>"
+#, kde-format
 msgid ""
 "<p>This color will be used to draw the line between line numbers and the "
 "icon borders, if both are enabled.</p>"
 msgstr ""
-"<p>Ĉi tiu koloro estos uzita por la lininombroj (se ebligitaj) kaj la linioj "
-"en la kodfalda panelo.</p>"
 
 #: syntax/katethemeconfig.cpp:254
-#, fuzzy, kde-format
-#| msgid "Word wrap markers:"
+#, kde-format
 msgid "Word Wrap Marker"
-msgstr "Indikiloj por linifaldo:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:257
 #, kde-format
@@ -4657,47 +4412,40 @@ msgstr ""
 "videble falditaj linioj</dd></dl>"
 
 #: syntax/katethemeconfig.cpp:264
-#, fuzzy, kde-format
-#| msgid "&Code Folding"
+#, kde-format
 msgid "Code Folding"
-msgstr "&Kodfaldado"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:266
-#, fuzzy, kde-format
-#| msgid "<p>Sets the background color of the editing area.</p>"
+#, kde-format
 msgid "<p>Sets the color of the code folding bar.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:271
-#, fuzzy, kde-format
-#| msgid "Scroll Line Up"
+#, kde-format
 msgid "Modified Lines"
-msgstr "Ruli je unu linio supren"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:273
-#, fuzzy, kde-format
-#| msgid "<p>Sets the color of the tabulator marks.</p>"
+#, kde-format
 msgid ""
 "<p>Sets the color of the line modification marker for modified lines.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:278
-#, fuzzy, kde-format
-#| msgid "Save File"
+#, kde-format
 msgid "Saved Lines"
-msgstr "Konservi dosieron"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:280
-#, fuzzy, kde-format
-#| msgid "<p>Sets the color of the tabulator marks.</p>"
+#, kde-format
 msgid "<p>Sets the color of the line modification marker for saved lines.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:287
-#, fuzzy, kde-format
-#| msgid "Text Selection Mode"
+#, kde-format
 msgid "Text Decorations"
-msgstr "Tekstelekta Moduso"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:290
 #, kde-format
@@ -4705,11 +4453,10 @@ msgid "Spelling Mistake Line"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:292
-#, fuzzy, kde-format
-#| msgid "<p>Sets the color of the tabulator marks.</p>"
+#, kde-format
 msgid ""
 "<p>Sets the color of the line that is used to indicate spelling mistakes.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:297
 #, kde-format
@@ -4722,22 +4469,19 @@ msgid "<p>Sets the color of the tabulator marks.</p>"
 msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
 
 #: syntax/katethemeconfig.cpp:304
-#, fuzzy, kde-format
-#| msgid "Indentation"
+#, kde-format
 msgid "Indentation Line"
-msgstr "Deŝovo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:306
-#, fuzzy, kde-format
-#| msgid "<p>Sets the color of the tabulator marks.</p>"
+#, kde-format
 msgid "<p>Sets the color of the vertical indentation lines.</p>"
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:311
-#, fuzzy, kde-format
-#| msgid "Bracket highlight:"
+#, kde-format
 msgid "Bracket Highlight"
-msgstr "Emfazo de krampoj:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:314
 #, kde-format
@@ -4750,10 +4494,9 @@ msgstr ""
 "p>"
 
 #: syntax/katethemeconfig.cpp:322
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Marker Colors"
-msgstr "Koloroj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1475
 #, kde-format
@@ -4810,31 +4553,22 @@ msgid "Background"
 msgstr "Fono"
 
 #: syntax/katethemeconfig.cpp:355
-#, fuzzy, kde-format
-#| msgid "Template Editable Placeholder"
+#, kde-format
 msgid "Editable Placeholder"
-msgstr "Lokokupilo, modifebla ŝablono"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:361
-#, fuzzy, kde-format
-#| msgid "Template Editable Placeholder"
+#, kde-format
 msgid "Focused Editable Placeholder"
-msgstr "Lokokupilo, modifebla ŝablono"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:367
-#, fuzzy, kde-format
-#| msgid "Template Editable Placeholder"
+#, kde-format
 msgid "Not Editable Placeholder"
-msgstr "Lokokupilo, modifebla ŝablono"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -4842,18 +4576,12 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Tiu listo montras la defaŭltajn stilojn por la aktuala skemo kaj ebligas "
-"ties redaktado. La stilnomo respegulas la aktualajn stil-agordojn.</p><p>Por "
-"redakti la kolorojn, alklaku la kolorkvadraton aŭ elektu la ŝanĝendan "
-"koloron el la ŝprucmenuo.</p><p>Vi povas malelekti la Fonan kaj Selekititan "
-"Fonan kolorojn ekde la ŝprucmenuo kiam dezirata.</p>"
 
 #: syntax/katethemeconfig.cpp:568
-#, fuzzy, kde-format
-#| msgid "Normal Text"
+#, kde-format
 msgctxt "@item:intable"
 msgid "Normal Text & Source Code"
-msgstr "Normala teksto"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:575
 #, kde-format
@@ -4862,18 +4590,16 @@ msgid "Numbers, Types & Constants"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:582
-#, fuzzy, kde-format
-#| msgid "Set of characters"
+#, kde-format
 msgctxt "@item:intable"
 msgid "Strings & Characters"
-msgstr "Signaro"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:589
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgctxt "@item:intable"
 msgid "Comments & Documentation"
-msgstr "Mo&ntri deŝovliniojn"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:596
 #, kde-format
@@ -4905,47 +4631,39 @@ msgstr ""
 "Fonan kaj Selekititan Fonan kolorojn ekde la ŝprucmenuo kiam dezirata.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
-#, fuzzy, kde-format
-#| msgid "Normal Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Normalaj tekstostiloj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1025
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Theme Editor"
-msgstr "Elekti redaktilon..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1039
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Select theme:"
-msgstr "Elektita teksto:"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1108
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Scheme"
+#, kde-format
 msgid "&Theme:"
-msgstr "Scheme"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1117
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgid "&Copy..."
-msgstr "Konservi dosieron kiel..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1125
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgid "Export..."
-msgstr "&Eksporti kiel HTML..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1129
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgid "Import..."
-msgstr "Normala &koloro..."
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1136
 #, kde-format
@@ -4958,10 +4676,9 @@ msgid "Colors"
 msgstr "Koloroj"
 
 #: syntax/katethemeconfig.cpp:1151
-#, fuzzy, kde-format
-#| msgid "Normal Text Styles"
+#, kde-format
 msgid "Default Text Styles"
-msgstr "Normalaj tekstostiloj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1155
 #, kde-format
@@ -4969,22 +4686,19 @@ msgid "Highlighting Text Styles"
 msgstr "Emfazadaj tekststiloj"
 
 #: syntax/katethemeconfig.cpp:1167
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "Signara kaj Kolora Skemo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color theme"
-msgstr "Koloroj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1190
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "Signara kaj Kolora Skemo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1204
 #, kde-format
@@ -4994,16 +4708,14 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1206
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "Tamen fermi"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Signara kaj Kolora Skemo"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
@@ -5011,16 +4723,14 @@ msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1356
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "Tamen fermi"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1398
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy theme"
-msgstr "Koloroj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1399
 #, kde-format
@@ -5035,16 +4745,14 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1412
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy Theme"
-msgstr "Koloroj"
+msgstr ""
 
 #: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "Koloroj"
+msgstr ""
 
 #: utils/kateautoindent.cpp:89
 #, kde-format
@@ -5163,10 +4871,9 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:91
-#, fuzzy, kde-format
-#| msgid "Delete the current file type."
+#, kde-format
 msgid "Deletes the current line."
-msgstr "Forigi la aktualan dosiertipon."
+msgstr ""
 
 #: utils/katecmds.cpp:95
 #, kde-format
@@ -5294,10 +5001,9 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:199
-#, fuzzy, kde-format
-#| msgid "Use this command to print the current document"
+#, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
-msgstr "Uzu tiun ĉi por presi la aktualan dokumenton"
+msgstr ""
 
 #: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
@@ -5399,10 +5105,9 @@ msgid "Embeddable editor component"
 msgstr "Enkonstruebla redaktilkomponanto"
 
 #: utils/kateglobal.cpp:77
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2005 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "(c) 2000-2005 La aŭtoroj de Kate"
+msgstr ""
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -5461,10 +5166,9 @@ msgid "Michel Ludwig"
 msgstr ""
 
 #: utils/kateglobal.cpp:110
-#, fuzzy, kde-format
-#| msgid "Spellcheck"
+#, kde-format
 msgid "On-the-fly spell checking"
-msgstr "Literumado"
+msgstr ""
 
 #: utils/kateglobal.cpp:111
 #, kde-format
@@ -5617,10 +5321,9 @@ msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhemly"
 
 #: utils/kateglobal.cpp:131
-#, fuzzy, kde-format
-#| msgid "KWrite Author"
+#, kde-format
 msgid "Original KWrite Author"
-msgstr "Aŭtoro de KWrite"
+msgstr ""
 
 #: utils/kateglobal.cpp:132
 #, kde-format
@@ -5628,11 +5331,9 @@ msgid "Gerald Senarclens de Grancy"
 msgstr ""
 
 #: utils/kateglobal.cpp:133
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Quake Script"
+#, kde-format
 msgid "QA and Scripting"
-msgstr "Quake-skripto"
+msgstr ""
 
 #: utils/kateglobal.cpp:137
 #, kde-format
@@ -5784,20 +5485,17 @@ msgid "Configure"
 msgstr "Agordado"
 
 #: utils/katesedcmd.cpp:268
-#, fuzzy, kde-format
-#| msgid "Replace next match"
+#, kde-format
 msgid "replace with %1?"
-msgstr "Anstataŭigi sekvan kongruon"
+msgstr ""
 
 #: utils/katesedcmd.cpp:274
-#, fuzzy, kde-format
-#| msgid "1 replacement done"
-#| msgid_plural "%1 replacements done"
+#, kde-format
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
-msgstr[0] "Faris 1 anstataŭigon"
-msgstr[1] "Faris %1 anstataŭigojn"
+msgstr[0] ""
+msgstr[1] ""
 
 #: utils/katesedcmd.cpp:277
 #, kde-format
@@ -5813,10 +5511,9 @@ msgid "<value>"
 msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:213
-#, fuzzy, kde-format
-#| msgid "Insert: %1"
+#, kde-format
 msgid "Insert variable"
-msgstr "Enmeti: %1"
+msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:217
 #, kde-format
@@ -5824,10 +5521,9 @@ msgid "Variables"
 msgstr "Variabloj"
 
 #: utils/katevariableexpansionhelpers.cpp:221
-#, fuzzy, kde-format
-#| msgid "Filtering"
+#, kde-format
 msgid "Filter"
-msgstr "Filtrado"
+msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:240
 #: utils/katevariableexpansionhelpers.cpp:261
@@ -5836,52 +5532,44 @@ msgid "Please select a variable."
 msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:254
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Current value: %1<value>"
-msgstr "Mankas argumento. Uzado: %1 <valoro>"
+msgstr ""
 
 #: utils/katevariableexpansionhelpers.cpp:258
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Current value: %1"
-msgstr "Nuna linio:"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:33
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File base name without path and suffix of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:41
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File extension of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:49
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "File name without path of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:57
-#, fuzzy, kde-format
-#| msgid "Reload the current document from disk."
+#, kde-format
 msgid "Full path of the current document including the file name."
-msgstr "Reŝargi la aktualan dokumenton de disko."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:65
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Contents of the current document."
-msgstr "Presi la aktualan dokumenton."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:72
-#, fuzzy, kde-format
-#| msgid "Reload the current document from disk."
+#, kde-format
 msgid "Full path of the current document excluding the file name."
-msgstr "Reŝargi la aktualan dokumenton de disko."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:80
 #, kde-format
@@ -5921,46 +5609,39 @@ msgid "Y component in global screen coordinates of the cursor position."
 msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:124
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Text selection of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start line of selected text of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:138
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Start column of selected text of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:145
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End line of selected text of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:152
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "End column of selected text of the current document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:159
-#, fuzzy, kde-format
-#| msgid "Remove all bookmarks of the current document."
+#, kde-format
 msgid "Number of rows of the current document."
-msgstr "Forigi ĉiujn legosignojn de la aktuala dokumento"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:166
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "Variablo"
+msgstr ""
 
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
@@ -6018,10 +5699,9 @@ msgid "Kate Handbook."
 msgstr ""
 
 #: variableeditor/variableeditor.cpp:172
-#, fuzzy, kde-format
-#| msgid "Struct"
+#, kde-format
 msgid "true"
-msgstr "Strukturo"
+msgstr ""
 
 #: variableeditor/variableeditor.cpp:173
 #, kde-format
@@ -6035,11 +5715,10 @@ msgid "none"
 msgstr ""
 
 #: variableeditor/variableeditor.cpp:310
-#, fuzzy, kde-format
-#| msgid "Scroll Line Up"
+#, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
-msgstr "Ruli je unu linio supren"
+msgstr ""
 
 #: variableeditor/variableeditor.cpp:311
 #, kde-format
@@ -6053,11 +5732,10 @@ msgid "Show list of valid variables."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:115
-#, fuzzy, kde-format
-#| msgid "Select to Matching Bracket"
+#, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Selekti ĝis koresponda krampo"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
@@ -6066,25 +5744,22 @@ msgid "Set the number of autocenter lines."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:126
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
-msgstr "Koloro de s&elektita fono..."
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:131
-#, fuzzy, kde-format
-#| msgid "Backspace key in leading blank space unindents"
+#, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
-msgstr "Retrosigno en prefiksaj spacoj maldeŝovas"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:139
-#, fuzzy, kde-format
-#| msgid "Bl&ock Selection Mode"
+#, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
-msgstr "Bl&oka elektomaniero"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:144
 #, kde-format
@@ -6093,18 +5768,16 @@ msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:149
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
-msgstr "Elekti la koloraron por la presado."
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:154
-#, fuzzy, kde-format
-#| msgid "<p>Sets the background color of the editing area.</p>"
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
-msgstr "<p>Metas la fonkoloron por la redaktoareo.</p>"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:160
 #, kde-format
@@ -6113,18 +5786,16 @@ msgid "Set the default dictionary used for spell checking."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:165
-#, fuzzy, kde-format
-#| msgid "Enable static &word wrap"
+#, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
-msgstr "Enŝal&ti statikan linifaldon"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:172
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
-msgstr "Selekti ĝis linifino"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:177
 #, kde-format
@@ -6139,25 +5810,22 @@ msgid "Enable folding preview in the editor border."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:188
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:193
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:209
-#, fuzzy, kde-format
-#| msgid "Kate Syntax Highlighting Parser"
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
-msgstr "Sintaksemfaziga anazilo de Kate"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:214
 #, kde-format
@@ -6172,18 +5840,16 @@ msgid "Enable the icon border in the editor view."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:224
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
-msgstr "Mo&ntri deŝovliniojn"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:229
-#, fuzzy, kde-format
-#| msgid "Adjust indentation of code pasted from the clipboard"
+#, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "Agordi deŝovon de fontkodo regluita el la tondujo"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:235
 #, kde-format
@@ -6198,11 +5864,10 @@ msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:245
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
-msgstr "Montri &lininombrojn"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:250
 #, kde-format
@@ -6229,39 +5894,34 @@ msgid "Replace tabs with spaces when saving the document."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:270
-#, fuzzy, kde-format
-#| msgid "Replace all matches"
+#, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
-msgstr "Anstataŭigi ĉiujn kongruojn"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:275
-#, fuzzy, kde-format
-#| msgid "Remove &trailing spaces while editing"
+#, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
-msgstr "&Forigi linifinajn spacojn dum la redaktado"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:280
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Montri rulum&skalajn markojn"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:285
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "Montri rulum&skalajn markojn"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:296
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
-msgstr "Signara kaj Kolora Skemo"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:301
 #, kde-format
@@ -6270,18 +5930,16 @@ msgid "Set the text selection color."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:306
-#, fuzzy, kde-format
-#| msgid "Highlight trailing &spaces"
+#, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
-msgstr "Emfazadi linifinajn spacojn"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:311
-#, fuzzy, kde-format
-#| msgid "Word Completion"
+#, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
-msgstr "Vortkompletigo"
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:316
 #, kde-format
@@ -6296,14 +5954,10 @@ msgid "Set the tab display width."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:328
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sets the number of undo/redo steps to record. More steps uses more memory."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
-"Donas la nombron da memorataj malfaro/refaro-paŝoj. Ju pli da paŝoj des pli "
-"da memoruzo."
 
 #: variableeditor/variablelineedit.cpp:334
 #, kde-format
@@ -6312,11 +5966,10 @@ msgid "Set the word wrap column."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:339
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
-msgstr "Koloro de s&elektita fono..."
+msgstr ""
 
 #: variableeditor/variablelineedit.cpp:344
 #, kde-format
@@ -6335,28 +5988,24 @@ msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
 
 #: view/katestatusbar.cpp:134
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Change dictionary"
-msgstr "Elekti redaktilon..."
+msgstr ""
 
 #: view/katestatusbar.cpp:160 view/katestatusbar.cpp:488
-#, fuzzy, kde-format
-#| msgid "Tab wi&dth:"
+#, kde-format
 msgid "Tab Width"
-msgstr "Ta&ba larĝeco:"
+msgstr ""
 
 #: view/katestatusbar.cpp:168 view/katestatusbar.cpp:503
-#, fuzzy, kde-format
-#| msgid "Indentation width:"
+#, kde-format
 msgid "Indentation Width"
-msgstr "Larĝeco de deŝovo:"
+msgstr ""
 
 #: view/katestatusbar.cpp:176
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "Indentation Mode"
-msgstr "&Deŝovo"
+msgstr ""
 
 #: view/katestatusbar.cpp:178
 #, kde-format
@@ -6379,16 +6028,14 @@ msgid "Encoding"
 msgstr "Kodoprezento"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Fino de linio"
+msgstr ""
 
 #: view/katestatusbar.cpp:206
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "Mode"
-msgstr "&Reĝimo"
+msgstr ""
 
 #: view/katestatusbar.cpp:208 view/kateview.cpp:663
 #, kde-format
@@ -6400,10 +6047,9 @@ msgstr ""
 "Tio influos ekzemple, la tipon de emfazado kaj linifaldon."
 
 #: view/katestatusbar.cpp:215
-#, fuzzy, kde-format
-#| msgid "Kate Syntax Highlighting Parser"
+#, kde-format
 msgid "Syntax highlighting"
-msgstr "Sintaksemfaziga anazilo de Kate"
+msgstr ""
 
 #: view/katestatusbar.cpp:260
 #, kde-format
@@ -6411,10 +6057,9 @@ msgid "Line/Column compact mode"
 msgstr ""
 
 #: view/katestatusbar.cpp:306
-#, fuzzy, kde-format
-#| msgid " BLOCK "
+#, kde-format
 msgid "[BLOCK] %1"
-msgstr " BLOKO "
+msgstr ""
 
 #: view/katestatusbar.cpp:322
 #, kde-format
@@ -6427,10 +6072,9 @@ msgid "%1:%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:328
-#, fuzzy, kde-format
-#| msgid "Line %1, Column %2"
+#, kde-format
 msgid "Line %1 of %2, Column %3"
-msgstr " Linio: %1, Kol: %2"
+msgstr ""
 
 #: view/katestatusbar.cpp:330
 #, kde-format
@@ -6521,28 +6165,24 @@ msgid "Clipboard &History Paste"
 msgstr ""
 
 #: view/kateview.cpp:467
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Paste Selection"
-msgstr "Aŭtomata ekkono de linifino"
+msgstr ""
 
 #: view/kateview.cpp:469
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Alglui la antaŭe kopiitan aŭ eltonditan enhavon de la poŝo"
+msgstr ""
 
 #: view/kateview.cpp:473
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Alglui la antaŭe kopiitan aŭ eltonditan enhavon de la poŝo"
+msgstr ""
 
 #: view/kateview.cpp:474
-#, fuzzy, kde-format
-#| msgid "Cut the selected text and move it to the clipboard"
+#, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Eltondi la elektitan tekston kaj movi ĝin al la poŝo"
+msgstr ""
 
 #: view/kateview.cpp:478
 #, kde-format
@@ -6565,10 +6205,9 @@ msgid "&Scripts"
 msgstr "&Skriptoj"
 
 #: view/kateview.cpp:492
-#, fuzzy, kde-format
-#| msgid "Word Wrap"
+#, kde-format
 msgid "Apply &Word Wrap"
-msgstr "Linifaldo"
+msgstr ""
 
 #: view/kateview.cpp:494
 #, kde-format
@@ -6595,28 +6234,21 @@ msgstr ""
 "ekzistantajn tabojn aŭ anstataŭigi tabojn per spacetoj."
 
 #: view/kateview.cpp:507
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Deŝovo"
+msgstr ""
 
 #: view/kateview.cpp:508
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Uzu ĉi tion por ĝisrandigi la nunan linion aŭ korpon de teksto al la "
-"dezirata deŝova nivelo."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "Ĝis&randigi"
+msgstr ""
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6649,16 +6281,14 @@ msgstr ""
 "la emfazado de la lingvo."
 
 #: view/kateview.cpp:533
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Al antaŭa linio"
+msgstr ""
 
 #: view/kateview.cpp:539
-#, fuzzy, kde-format
-#| msgid "Select to Next Line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Selekti ĝis sekva linio"
+msgstr ""
 
 #: view/kateview.cpp:545
 #, kde-format
@@ -6677,11 +6307,9 @@ msgstr ""
 "difinitaj ene de la emfazado de la lingvo."
 
 #: view/kateview.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment"
+#, kde-format
 msgid "Toggle Comment"
-msgstr "Komento"
+msgstr ""
 
 #: view/kateview.cpp:557
 #, kde-format
@@ -6760,10 +6388,9 @@ msgid "Print the current document."
 msgstr "Presi la aktualan dokumenton."
 
 #: view/kateview.cpp:617
-#, fuzzy, kde-format
-#| msgid "Print the current document."
+#, kde-format
 msgid "Show print preview of current document"
-msgstr "Presi la aktualan dokumenton."
+msgstr ""
 
 #: view/kateview.cpp:621
 #, kde-format
@@ -6786,16 +6413,14 @@ msgid "Save As with Encoding..."
 msgstr ""
 
 #: view/kateview.cpp:635
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgid "Save &Copy As..."
-msgstr "Konservi dosieron kiel..."
+msgstr ""
 
 #: view/kateview.cpp:636
-#, fuzzy, kde-format
-#| msgid "Reload the current document from disk."
+#, kde-format
 msgid "Save a copy of the current document to disk."
-msgstr "Reŝargi la aktualan dokumenton de disko."
+msgstr ""
 
 #: view/kateview.cpp:640
 #, kde-format
@@ -6807,22 +6432,19 @@ msgstr ""
 "vi volas ke la kursoro moviĝu."
 
 #: view/kateview.cpp:644
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Al antaŭa linio"
+msgstr ""
 
 #: view/kateview.cpp:645
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: view/kateview.cpp:650
-#, fuzzy, kde-format
-#| msgid "Move to Next Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Al sekva linio"
+msgstr ""
 
 #: view/kateview.cpp:651
 #, kde-format
@@ -6855,10 +6477,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Vi povas elekti la tipon de emfazado por la nuna dokumento."
 
 #: view/kateview.cpp:671
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Koloroj"
+msgstr ""
 
 #: view/kateview.cpp:677
 #, kde-format
@@ -6904,10 +6525,9 @@ msgid "Reset Font Size"
 msgstr ""
 
 #: view/kateview.cpp:712
-#, fuzzy, kde-format
-#| msgid "This increases the display font size."
+#, kde-format
 msgid "This resets the display font size."
-msgstr "Tio igas la surekranan tiparon pli granda."
+msgstr ""
 
 #: view/kateview.cpp:715
 #, kde-format
@@ -6924,16 +6544,14 @@ msgstr ""
 "kaj la bloka elektomaniero."
 
 #: view/kateview.cpp:722
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgid "Switch to Next Input Mode"
-msgstr "Selekti ĝis linifino"
+msgstr ""
 
 #: view/kateview.cpp:724
-#, fuzzy, kde-format
-#| msgid "Select to End of Line"
+#, kde-format
 msgid "Switch to the next input mode."
-msgstr "Selekti ĝis linifino"
+msgstr ""
 
 #: view/kateview.cpp:727
 #, kde-format
@@ -6955,17 +6573,12 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dinamika linifaldo"
 
 #: view/kateview.cpp:738
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not changed."
 msgstr ""
-"Se vi markas ĉi tiun opcion, la linioj de teksto saltos al la sekva linio ĉe "
-"la rando de la ekrano."
 
 #: view/kateview.cpp:742
 #, kde-format
@@ -6998,16 +6611,11 @@ msgid "Static Word Wrap"
 msgstr "Statika linifaldo"
 
 #: view/kateview.cpp:752
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
 msgstr ""
-"Se vi markas ĉi tiun opcion, la linioj de teksto saltos al la sekva linio ĉe "
-"la rando de la ekrano."
 
 #: view/kateview.cpp:759
 #, kde-format
@@ -7074,10 +6682,9 @@ msgstr ""
 "montras, ekzemple, legosignojn."
 
 #: view/kateview.cpp:786
-#, fuzzy, kde-format
-#| msgid "Show Scroll&bar Marks"
+#, kde-format
 msgid "Show Scrollbar Mini-Map"
-msgstr "Montri rulumskalajn &indikilojn"
+msgstr ""
 
 #: view/kateview.cpp:788
 #, kde-format
@@ -7140,18 +6747,16 @@ msgid "&UNIX"
 msgstr ""
 
 #: view/kateview.cpp:834
-#, fuzzy, kde-format
-#| msgid "DOS/Windows"
+#, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
-msgstr "DOS/Windows"
+msgstr ""
 
 #: view/kateview.cpp:835
-#, fuzzy, kde-format
-#| msgid "Macintosh"
+#, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
-msgstr "Makintoŝo"
+msgstr ""
 
 #: view/kateview.cpp:840
 #, kde-format
@@ -7201,10 +6806,9 @@ msgid "Find and Select Next Occurrence"
 msgstr ""
 
 #: view/kateview.cpp:869
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "Trovas la sekvantan okazon de elektita teksto."
+msgstr ""
 
 #: view/kateview.cpp:873
 #, kde-format
@@ -7222,10 +6826,9 @@ msgid "Find and Select All Occurrences"
 msgstr ""
 
 #: view/kateview.cpp:881
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
-msgstr "Trovas la sekvantan okazon de elektita teksto."
+msgstr ""
 
 #: view/kateview.cpp:885
 #, kde-format
@@ -7261,10 +6864,9 @@ msgid "Add Caret below Cursor"
 msgstr ""
 
 #: view/kateview.cpp:904
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Elekti la kompletan tekston de la aktuala dokumento."
+msgstr ""
 
 #: view/kateview.cpp:908
 #, kde-format
@@ -7277,10 +6879,9 @@ msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
 #: view/kateview.cpp:914
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "Tekstkursila movado"
+msgstr ""
 
 #: view/kateview.cpp:915
 #, kde-format
@@ -7288,22 +6889,19 @@ msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
 #: view/kateview.cpp:919
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: view/kateview.cpp:920
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: view/kateview.cpp:924
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatic Spell Checking"
-msgstr "Aŭtomata ekkono de linifino"
+msgstr ""
 
 #: view/kateview.cpp:925
 #, kde-format
@@ -7311,10 +6909,9 @@ msgid "Enable/disable automatic spell checking"
 msgstr ""
 
 #: view/kateview.cpp:931
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Change Dictionary..."
-msgstr "Elekti redaktilon..."
+msgstr ""
 
 #: view/kateview.cpp:932
 #, kde-format
@@ -7347,10 +6944,9 @@ msgstr ""
 "sistema poŝo."
 
 #: view/kateview.cpp:949
-#, fuzzy, kde-format
-#| msgid "Export File as HTML"
+#, kde-format
 msgid "E&xport as HTML..."
-msgstr "Eksporti dosieron kiel HTML"
+msgstr ""
 
 #: view/kateview.cpp:951
 #, kde-format
@@ -7452,16 +7048,14 @@ msgid "Move to Previous Line"
 msgstr "Al antaŭa linio"
 
 #: view/kateview.cpp:1097
-#, fuzzy, kde-format
-#| msgid "Move Word Right"
+#, kde-format
 msgid "Move Cursor Right"
-msgstr "Unu vorton dekstren"
+msgstr ""
 
 #: view/kateview.cpp:1103
-#, fuzzy, kde-format
-#| msgid "Move Word Left"
+#, kde-format
 msgid "Move Cursor Left"
-msgstr "Unu vorton maldekstren"
+msgstr ""
 
 #: view/kateview.cpp:1109
 #, kde-format
@@ -7514,10 +7108,9 @@ msgid "Select to Bottom of View"
 msgstr "Selekti ĝis fino de rigardo"
 
 #: view/kateview.cpp:1169
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Iri al koresponda krampo"
+msgstr ""
 
 #: view/kateview.cpp:1175
 #, kde-format
@@ -7530,10 +7123,9 @@ msgid "Transpose Characters"
 msgstr "Interŝanĝi signojn"
 
 #: view/kateview.cpp:1188
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "Interŝanĝi signojn"
+msgstr ""
 
 #: view/kateview.cpp:1193
 #, kde-format
@@ -7561,10 +7153,9 @@ msgid "Backspace"
 msgstr "Retropaŝo"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert: %1"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Enmeti: %1"
+msgstr ""
 
 #: view/kateview.cpp:1230
 #, kde-format
@@ -7638,29 +7229,24 @@ msgid "Use this to unindent a selected block of text."
 msgstr "Uzu tion por malfari la deŝovon de elektita korpo de teksto."
 
 #: view/kateview.cpp:1295
-#, fuzzy, kde-format
-#| msgid "Collapse Toplevel"
+#, kde-format
 msgid "Fold Toplevel Nodes"
-msgstr "Faldi globalnivele"
+msgstr ""
 
 #: view/kateview.cpp:1300
-#, fuzzy, kde-format
-#| msgid "Expand Toplevel"
+#, kde-format
 msgid "Unfold Toplevel Nodes"
-msgstr "Ekspandi globalnivele"
+msgstr ""
 
 #: view/kateview.cpp:1313
-#, fuzzy, kde-format
-#| msgid "Current line:"
+#, kde-format
 msgid "Toggle Current Node"
-msgstr "Nuna linio:"
+msgstr ""
 
 #: view/kateview.cpp:1317
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment"
+#, kde-format
 msgid "Toggle Contained Nodes"
-msgstr "Komento"
+msgstr ""
 
 #: view/kateview.cpp:1474
 #, kde-format
@@ -7678,16 +7264,14 @@ msgid "Camel case movement enabled"
 msgstr ""
 
 #: view/kateview.cpp:2146
-#, fuzzy, kde-format
-#| msgid "Search mode"
+#, kde-format
 msgid "Search wrapped"
-msgstr "Serĉreĝimo"
+msgstr ""
 
 #: view/kateview.cpp:3658
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "Ĝis&randigi"
+msgstr ""
 
 #: view/kateview.cpp:3658
 #, kde-format
@@ -7779,16 +7363,14 @@ msgid "Disable Annotation Bar"
 msgstr ""
 
 #: vimode/appcommands.cpp:67
-#, fuzzy, kde-format
-#| msgid "Document to open"
+#, kde-format
 msgid "All documents written to disk"
-msgstr "Malfermota dokumento"
+msgstr ""
 
 #: vimode/appcommands.cpp:70
-#, fuzzy, kde-format
-#| msgid "Document to open"
+#, kde-format
 msgid "Document written to disk"
-msgstr "Malfermota dokumento"
+msgstr ""
 
 #: vimode/appcommands.cpp:202
 #, kde-format
@@ -7917,10 +7499,9 @@ msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr ""
 
 #: vimode/cmds.cpp:52
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Missing argument. Usage: %1 <from>"
-msgstr "Mankas argumento. Uzado: %1 <valoro>"
+msgstr ""
 
 #: vimode/cmds.cpp:68
 #, kde-format
@@ -7933,28 +7514,24 @@ msgid "\"%1\" is mapped to \"%2\""
 msgstr ""
 
 #: vimode/cmds.cpp:77
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Missing argument(s). Usage: %1 <from> [<to>]"
-msgstr "Mankas argumento. Uzado: %1 <valoro>"
+msgstr ""
 
 #: vimode/cmds.cpp:145 vimode/cmds.cpp:161
-#, fuzzy, kde-format
-#| msgid "Arguments"
+#, kde-format
 msgid "Wrong arguments"
-msgstr "Argumentoj"
+msgstr ""
 
 #: vimode/config/configtab.cpp:201
-#, fuzzy, kde-format
-#| msgid "Unable to open %1"
+#, kde-format
 msgid "Unable to open the config file for reading."
-msgstr "Ne eblis malfermi %1"
+msgstr ""
 
 #: vimode/config/configtab.cpp:201
-#, fuzzy, kde-format
-#| msgid "Unable to open %1"
+#, kde-format
 msgid "Unable to open file"
-msgstr "Ne eblis malfermi %1"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViCommandsOverride)
 #: vimode/config/configwidget.ui:35
@@ -7973,19 +7550,17 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Show/hide the line numbers on the left hand side of the view."
+#, kde-format
 msgid ""
 "Show the line number relative to the line with the cursor in front of each "
 "line."
-msgstr "Montri/kaŝi la lininombrojn ĉe la maldekstra flanko de la rigardo."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Print line &numbers"
+#, kde-format
 msgid "Display relative line numbers"
-msgstr "Presi lini&nombrojn"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:63
@@ -8009,10 +7584,9 @@ msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, normalTab)
 #: vimode/config/configwidget.ui:76
-#, fuzzy, kde-format
-#| msgid "Normal Text"
+#, kde-format
 msgid "Normal mode"
-msgstr "Normala teksto"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QTableWidget, tblNormalModeMappings)
 #. i18n: ectx: property (text), widget (QTableWidget, tblInsertModeMappings)
@@ -8028,10 +7602,9 @@ msgstr "Komando"
 #. i18n: ectx: property (text), widget (QTableWidget, tblVisualModeMappings)
 #: vimode/config/configwidget.ui:100 vimode/config/configwidget.ui:138
 #: vimode/config/configwidget.ui:176
-#, fuzzy, kde-format
-#| msgid "Replace"
+#, kde-format
 msgid "Replacement"
-msgstr "Anstataŭigi"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QTableWidget, tblNormalModeMappings)
 #. i18n: ectx: property (text), widget (QTableWidget, tblInsertModeMappings)
@@ -8044,25 +7617,21 @@ msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, insertTab)
 #: vimode/config/configwidget.ui:114
-#, fuzzy, kde-format
-#| msgid "Insert: %1"
+#, kde-format
 msgid "Insert mode"
-msgstr "Enmeti: %1"
+msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, visualTab)
 #: vimode/config/configwidget.ui:152
-#, fuzzy, kde-format
-#| msgid "Normal Text"
+#, kde-format
 msgid "Visual mode"
-msgstr "Normala teksto"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, btnRemoveSelectedRows)
 #: vimode/config/configwidget.ui:195
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Remove selected"
-msgstr "Elektita"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, btnAddNewRow)
 #: vimode/config/configwidget.ui:202
@@ -8085,16 +7654,14 @@ msgid "Import from vimrc file"
 msgstr ""
 
 #: vimode/marks.cpp:111
-#, fuzzy, kde-format
-#| msgid "Mark Type %1"
+#, kde-format
 msgid "Mark set: %1"
-msgstr "Marka tipo %1"
+msgstr ""
 
 #: vimode/marks.cpp:157
-#, fuzzy, kde-format
-#| msgid "Go to the next bookmark."
+#, kde-format
 msgid "There are no more chars for the next bookmark."
-msgstr "Iri al la sekva legosigno"
+msgstr ""
 
 #: vimode/modes/insertvimode.cpp:259 vimode/modes/modebase.cpp:790
 #: vimode/modes/normalvimode.cpp:3558
@@ -8108,2367 +7675,6 @@ msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
 #: vimode/modes/normalvimode.cpp:2524
-#, fuzzy, kde-format
-#| msgid "Mark Type %1"
+#, kde-format
 msgid "Mark not set: %1"
-msgstr "Marka tipo %1"
-
-#~ msgid "Namespaces"
-#~ msgstr "Nomspacoj"
-
-#~ msgid "Classes"
-#~ msgstr "Klasoj"
-
-#~ msgid "Structs"
-#~ msgstr "Strukturoj"
-
-#~ msgid "Unions"
-#~ msgstr "Unioj"
-
-#~ msgid "Functions"
-#~ msgstr "Funkcioj"
-
-#~ msgid "Enumerations"
-#~ msgstr "Enumeracioj"
-
-#, fuzzy
-#~| msgctxt "@item:intable Text context"
-#~| msgid "Comment"
-#~ msgctxt "Script command name"
-#~ msgid "Toggle comment"
-#~ msgstr "Komento"
-
-#~ msgid "Choo&se Font..."
-#~ msgstr "Elekti &tiparon..."
-
-#, fuzzy
-#~| msgid "E&ncoding"
-#~ msgctxt "Script command category"
-#~ msgid "Quick Coding"
-#~ msgstr "Kodopreze&nto"
-
-#, fuzzy
-#~| msgid "&Default schema for %1:"
-#~ msgid "&Default theme for %1:"
-#~ msgstr "&Defaŭlta skemo por %1:"
-
-#, fuzzy
-#~| msgid "A&utomatic end of line detection"
-#~ msgid "Automatic Selection"
-#~ msgstr "Aŭtomata ekkono de linifino"
-
-#, fuzzy
-#~| msgid "The file '%1' was modified by another program."
-#~ msgid "Meaning of current icon: Document was modified or deleted on disk"
-#~ msgstr "La dosiero '%1' estis modifita de alia programo."
-
-#, fuzzy
-#~| msgid "The file '%1' was modified by another program."
-#~ msgid "Meaning of current icon: Document is in read-only mode"
-#~ msgstr "La dosiero '%1' estis modifita de alia programo."
-
-#~ msgctxt "Autoindent mode"
-#~ msgid "Lua"
-#~ msgstr "Lua"
-
-#~ msgid "Show &folding markers"
-#~ msgstr "Montri &faldajn markojn"
-
-#, fuzzy
-#~| msgid "Show Folding &Markers"
-#~ msgid "Show line modification markers"
-#~ msgstr "Montri kodfaldajn &markojn"
-
-#~ msgid ""
-#~ "Choose how the bookmarks should be ordered in the <b>Bookmarks</b> menu."
-#~ msgstr "Elekti la ordigadon de legosignoj en la <b>Legosignoj</b> menuo."
-
-#, fuzzy
-#~| msgid "By c&reation"
-#~ msgid "B&y creation"
-#~ msgstr "Laŭ k&reo"
-
-#, fuzzy
-#~| msgid "By &position"
-#~ msgid "By posi&tion"
-#~ msgstr "Laŭ &pozicio"
-
-#~ msgid "Backup on Save"
-#~ msgstr "Restaŭrokopio dum Konservado"
-
-#~ msgid "&Prefix:"
-#~ msgstr "&Prefikso:"
-
-#~ msgid "&Suffix:"
-#~ msgstr "&Sufikso:"
-
-#, fuzzy
-#~| msgid "Disabled"
-#~ msgid "Disable"
-#~ msgstr "Malŝaltita"
-
-#~ msgid "Enable static &word wrap"
-#~ msgstr "Enŝal&ti statikan linifaldon"
-
-#, fuzzy
-#~| msgid "Show Static &Word Wrap Marker"
-#~ msgid "Show static word wra&p marker"
-#~ msgstr "Montri &statikan linifaldan indikilon"
-
-#, fuzzy
-#~| msgid "&Indentation"
-#~ msgid "Input Mode"
-#~ msgstr "&Deŝovo"
-
-#, fuzzy
-#~| msgid "Select to Matching Bracket"
-#~ msgid "Enable automatic brackets"
-#~ msgstr "Selekti ĝis koresponda krampo"
-
-#, fuzzy
-#~| msgid "Cursor & Selection"
-#~ msgid "Chars to enclose selection:"
-#~ msgstr "Kursoro kaj elekto"
-
-#, fuzzy
-#~| msgid "Align dynamically wrapped lines to indentation depth:"
-#~ msgid "&Align dynamically wrapped lines to indentation depth:"
-#~ msgstr "Ĝisrandigi dinamike falditajn liniojn ĝis deŝova profundo:"
-
-#~ msgid ""
-#~ "If this option is checked, the text lines will be wrapped at the view "
-#~ "border on the screen."
-#~ msgstr ""
-#~ "Se vi markas ĉi tiun opcion, la linioj de teksto saltos al la sekva linio "
-#~ "ĉe la rando de la ekrano."
-
-#, fuzzy
-#~| msgid "Dynamic &word wrap indicators (if applicable):"
-#~ msgid "D&ynamic word wrap indicators (if applicable):"
-#~ msgstr "Indikiloj pri d&inamika linifaldo (se aplikebla):"
-
-#, fuzzy
-#~| msgid "Highlighting for Ferite"
-#~ msgid "Highlight marker size:"
-#~ msgstr "Emfazado por Ferito"
-
-#, fuzzy
-#~| msgid "Spaces"
-#~ msgid "Whitespaces"
-#~ msgstr "Spacoj"
-
-#, fuzzy
-#~| msgid "&Highlight tabulators"
-#~ msgid "Highlight tabulators"
-#~ msgstr "&Emfazadi tabojn"
-
-#~ msgid "Prefix"
-#~ msgstr "Prefikso"
-
-#~ msgid "Icon"
-#~ msgstr "Piktogramo"
-
-#~ msgid "Scope"
-#~ msgstr "Regiono"
-
-#~ msgid "Name"
-#~ msgstr "Nomo"
-
-#~ msgid "Arguments"
-#~ msgstr "Argumentoj"
-
-#~ msgid "Postfix"
-#~ msgstr "Postmeto"
-
-#~ msgid "Public"
-#~ msgstr "Publika"
-
-#~ msgid "Protected"
-#~ msgstr "Protektata"
-
-#~ msgid "Private"
-#~ msgstr "Privata"
-
-#~ msgid "Static"
-#~ msgstr "Statika"
-
-#~ msgid "Constant"
-#~ msgstr "Konstanto"
-
-#~ msgid "Namespace"
-#~ msgstr "Nomospaco"
-
-#~ msgid "Class"
-#~ msgstr "Klaso"
-
-#~ msgid "Struct"
-#~ msgstr "Strukturo"
-
-#~ msgid "Union"
-#~ msgstr "Unio"
-
-#~ msgid "Function"
-#~ msgstr "Funkcio"
-
-#~ msgid "Variable"
-#~ msgstr "Variablo"
-
-#~ msgid "Enumeration"
-#~ msgstr "Enumeracio"
-
-#~ msgid "Template"
-#~ msgstr "Ŝablono"
-
-#~ msgid "Virtual"
-#~ msgstr "Virtuala"
-
-#~ msgid "Override"
-#~ msgstr "Anstataŭigo"
-
-#~ msgid "Inline"
-#~ msgstr "Enlinia"
-
-#~ msgid "Signal"
-#~ msgstr "Signalo"
-
-#~ msgid "Slot"
-#~ msgstr "Fako"
-
-#~ msgid "Local Scope"
-#~ msgstr "Loka regiono"
-
-#~ msgid "Namespace Scope"
-#~ msgstr "Nomspaca regiono"
-
-#~ msgid "Global Scope"
-#~ msgstr "Malloka regiono"
-
-#~ msgid "Unknown Property"
-#~ msgstr "Nekonata trajto"
-
-#~ msgid "Code Completion Configuration"
-#~ msgstr "Agordo de kodkompletigo"
-
-#~ msgid "Description"
-#~ msgstr "Priskribo"
-
-#, fuzzy
-#~| msgid "Edit entry..."
-#~ msgid "Edit Entry..."
-#~ msgstr "Redakti eron..."
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Remove Entry"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "Add entry..."
-#~ msgid "Add Entry..."
-#~ msgstr "Aldoni eron..."
-
-#~ msgid "Further Notes"
-#~ msgstr "Pluaj notoj"
-
-#~ msgid ""
-#~ "<p>The entries are accessible through the submenu <b>Commands</b> in the "
-#~ "<b>Tools</b> menu. For faster access it is possible to assign "
-#~ "<b>shortcuts</b> in the shortcut configuration page after applying the "
-#~ "changes.</p>"
-#~ msgstr ""
-#~ "<p>Oni atingas la erojn per la submenuo <b>Komandoj</b> en la <b>Iloj</b> "
-#~ "menuo. Por pli rapida aliro estas ebla asigni <b>fulmoklavojn</b> en la "
-#~ "klavkombina agorda paĝo post apliko de la ŝanĝoj.</p>"
-
-#~ msgid "Edit Command"
-#~ msgstr "Redakti komandon"
-
-#~ msgid "&Associated command:"
-#~ msgstr "&Asociita komando:"
-
-#~ msgid "Choose an icon."
-#~ msgstr "Elektu piktogramon."
-
-#~ msgid "<p>This icon will be displayed in the menu and toolbar.</p>"
-#~ msgstr "<p>Ĉi tiu piktogramo montriĝos en la menu- kaj ilo-breto.</p>"
-
-#~ msgid "&Description:"
-#~ msgstr "&Priskribo:"
-
-#~ msgid "&Category:"
-#~ msgstr "&Kategorio:"
-
-#~ msgid "Sorting"
-#~ msgstr "Ordigado"
-
-#~ msgid "Alphabetical"
-#~ msgstr "Alfabeta"
-
-#~ msgid "Reverse"
-#~ msgstr "Inversigi"
-
-#, fuzzy
-#~| msgid "Case Sensitive"
-#~ msgid "Case sensitive"
-#~ msgstr "Uskleco gravas"
-
-#, fuzzy
-#~| msgid "Inheritance Depth"
-#~ msgid "Inheritance depth"
-#~ msgstr "Profundo de heredaĵo"
-
-#, fuzzy
-#~| msgid "Order of groupings (select a grouping method to configure):"
-#~ msgid "Order of Groupings (select a grouping method to configure):"
-#~ msgstr "Ordigado de grupado (elektu grupadan metodon por agordi):"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "\\/"
-#~ msgstr "\\/"
-
-#~ msgid "Filtering"
-#~ msgstr "Filtrado"
-
-#~ msgid "Suitable context matches only"
-#~ msgstr "Nur taŭgaj kuntekstaj kongruaĵoj"
-
-#~ msgid "Hide completions with the following attributes:"
-#~ msgstr "Kaŝi kompletigojn kun la sekvaj atribuoj:"
-
-#, fuzzy
-#~| msgid "Maximum inheritance depth"
-#~ msgid "Maximum inheritance depth:"
-#~ msgstr "Maksimuma profundo de heredaĵo"
-
-#~ msgid "Infinity"
-#~ msgstr "Senlimo"
-
-#~ msgid "Grouping"
-#~ msgstr "Grupado"
-
-#, fuzzy
-#~| msgid "Grouping method"
-#~ msgid "Grouping Method"
-#~ msgstr "Metodo de grupado"
-
-#~ msgid "Scope type (local, namespace, global)"
-#~ msgstr "Tipo de regiono (loka, nomspaca, malloka)"
-
-#~ msgid "Scope (eg. per class)"
-#~ msgstr "Regiono (ekz. laŭ klaso)"
-
-#~ msgid "Access type (public etc.)"
-#~ msgstr "Alira tipo (publika ktp.)"
-
-#~ msgid "Item type (function etc.)"
-#~ msgstr "Era tipo (funkcio ktp.)"
-
-#, fuzzy
-#~| msgid "Access Grouping properties"
-#~ msgid "Access Grouping Properties"
-#~ msgstr "Ecoj de alira grupado"
-
-#~ msgid "Include static in grouping"
-#~ msgstr "Inkluzivi statikan en grupado"
-
-#~ msgid "Include signals and slots in grouping"
-#~ msgstr "Inkluzivi signalojn/fakojn en grupado"
-
-#~ msgid "Item Grouping properties"
-#~ msgstr "Ecoj de erogrupado"
-
-#~ msgid "Include templates in grouping"
-#~ msgstr "Inkluzivi ŝablonojn en grupado"
-
-#~ msgid "Column Merging"
-#~ msgstr "Kunfando de kolumnoj"
-
-#~ msgid "Columns"
-#~ msgstr "Kolumnoj"
-
-#~ msgid "Merged"
-#~ msgstr "Kunfandita"
-
-#~ msgid "Shown"
-#~ msgstr "Montrita"
-
-#, fuzzy
-#~| msgid "(c) 2000-2016 The Kate Authors"
-#~ msgid "(c) 2000-2019 The Kate Authors"
-#~ msgstr "(c) 2000-2016 La aŭtoroj de Kate"
-
-#, fuzzy
-#~| msgid "What do you want to do?"
-#~ msgid "How do you want to import the schema?"
-#~ msgstr "Kion vi volas fari?"
-
-#, fuzzy
-#~| msgid "Replace next match"
-#~ msgid "Replace current schema?"
-#~ msgstr "Anstataŭigi sekvan kongruon"
-
-#, fuzzy
-#~| msgid "Replace next match"
-#~ msgid "Replace existing schema %1"
-#~ msgstr "Anstataŭigi sekvan kongruon"
-
-#, fuzzy
-#~| msgid "Name for New Schema"
-#~ msgid "Import as new schema:"
-#~ msgstr "Nomo por nova skemo"
-
-#, fuzzy
-#~| msgid "Highlighting for Scheme"
-#~ msgid "Loading all highlightings for schema"
-#~ msgstr "Emfazado por Skemo"
-
-#, fuzzy
-#~| msgid "Font & Color Schemas"
-#~ msgid "Kate color schema"
-#~ msgstr "Signara kaj Kolora Skemo"
-
-#, fuzzy
-#~| msgid "File Format"
-#~ msgid "Fileformat error"
-#~ msgstr "Dosierformato"
-
-#~ msgid "&New..."
-#~ msgstr "&Nova..."
-
-#, fuzzy
-#~| msgid "Replace next match"
-#~ msgid "Replace existing theme %1"
-#~ msgstr "Anstataŭigi sekvan kongruon"
-
-#, fuzzy
-#~| msgid "Namespace"
-#~ msgid "Name unspecified"
-#~ msgstr "Nomospaco"
-
-#~ msgid "Name for New Schema"
-#~ msgstr "Nomo por nova skemo"
-
-#~ msgid "Name:"
-#~ msgstr "Nomo:"
-
-#~ msgid "New Schema"
-#~ msgstr "Nova Skemo"
-
-#~ msgid "&Schema:"
-#~ msgstr "&Skemo:"
-
-#~ msgid "Fonts & Colors"
-#~ msgstr "Signaro kaj Koloroj"
-
-#~ msgid "Font & Color Schemas"
-#~ msgstr "Signara kaj Kolora Skemo"
-
-#~ msgid "&Schema"
-#~ msgstr "&Skemo"
-
-#~ msgid "Non-whitespace (excluding line breaks)"
-#~ msgstr "Nespacoj (ekskludante linisaltojn)"
-
-#~ msgid "Lookahead"
-#~ msgstr "Anticipado"
-
-#~ msgid ""
-#~ "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
-#~ msgstr ""
-#~ "Dokumento nomita \"%1\" jam ekzistas. Ĉu vi vere volas anstataŭigi ĝin?"
-
-#~ msgid "Overwrite File?"
-#~ msgstr "Ĉu anstataŭigi dosieron?"
-
-#~ msgid "Show static word wra&p marker (if applicable)"
-#~ msgstr "Montri marki&lojn pri statika linifaldo (se aplikebla)"
-
-#~ msgid ""
-#~ "Use this command to wrap all lines of the current document which are "
-#~ "longer than the width of the current view, to fit into this view.<br /"
-#~ "><br /> This is a static word wrap, meaning it is not updated when the "
-#~ "view is resized."
-#~ msgstr ""
-#~ "Uzu ĉi tiun komandon por faldi ĉiujn liniojn de la nuna dokumento kiuj "
-#~ "estas pli longaj ol la larĝeco de la nuna rigardo, por bone sidi en ĉi "
-#~ "tiu rigardo.<br /><br /> Tio estas statika linifaldo, kiu signifas ke ĝi "
-#~ "ne aktualiĝas post regrandigo de la dokumento"
-
-#~ msgid "Highlight trailing &spaces"
-#~ msgstr "Emfazadi linifinajn spacojn"
-
-#~ msgid "Spellcheck Selection..."
-#~ msgstr "Elekto de literumado..."
-
-#~ msgid "Check spelling of the selected text"
-#~ msgstr "Kontroli literumadon de la elektita teksto"
-
-#~ msgid "&Go to line:"
-#~ msgstr "&Iri al linio:"
-
-#~ msgid "What do you want to do?"
-#~ msgstr "Kion vi volas fari?"
-
-#~ msgid "File Was Changed on Disk"
-#~ msgstr "Dosiero estis ŝanĝita surdiske"
-
-#~ msgid "&Ignore Changes"
-#~ msgstr "&Ignori ŝanĝojn"
-
-#~ msgid "Download Highlighting Files..."
-#~ msgstr "Elŝuti Emfazadajn Regulojn..."
-
-#~ msgid "Highlight Download"
-#~ msgstr "Emfazo-elŝuto"
-
-#~ msgid "Select the syntax highlighting files you want to update:"
-#~ msgstr "Elektu la sintaksajn emfazadajn dosierojn kiujn vi volas ĝisdatigi:"
-
-#~ msgid "Installed"
-#~ msgstr "Instalita"
-
-#~ msgid "Latest"
-#~ msgstr "Plej nova"
-
-#~ msgid "<b>Note:</b> New versions are selected automatically."
-#~ msgstr "<b>Noto:</b>Novaj versioj estas elektitaj aŭtomate."
-
-#~ msgid "&Install"
-#~ msgstr "&Instali"
-
-#~ msgctxt "Syntax highlighting"
-#~ msgid "None"
-#~ msgstr "Nenio"
-
-#~ msgid "Normal Text"
-#~ msgstr "Normala teksto"
-
-#~ msgid ""
-#~ "<b>%1</b>: Deprecated syntax. Attribute (%2) not addressed by symbolic "
-#~ "name<br />"
-#~ msgstr ""
-#~ "<b>%1</b>: Evitinda sintakso. Atribuo (%2) ne estas adresita per simbola "
-#~ "nomo<br />"
-
-#~ msgid "<b>%1</b>: Deprecated syntax. Context %2 has no symbolic name<br />"
-#~ msgstr ""
-#~ "<b>%1</b>: Evitinda sintakso. Kunteksto %2 ne havas simbolan nomon<br />"
-
-#~ msgid ""
-#~ "<B>%1</B>:Deprecated syntax. Context %2 not addressed by a symbolic name"
-#~ msgstr ""
-#~ "<B>%1</B>: Evitinda sintakso. Kunteksto %2 ne estas adresita per simbola "
-#~ "nomo"
-
-#~ msgid ""
-#~ "There were warning(s) and/or error(s) while parsing the syntax "
-#~ "highlighting configuration."
-#~ msgstr ""
-#~ "Estis averto(j) kaj/aŭ eraro(j) dum analizado de la sintaksa emfazada "
-#~ "agordo."
-
-#~ msgid "Kate Syntax Highlighting Parser"
-#~ msgstr "Sintaksemfaziga anazilo de Kate"
-
-#~ msgid ""
-#~ "Since there has been an error parsing the highlighting description, this "
-#~ "highlighting will be disabled"
-#~ msgstr ""
-#~ "Ĉar estis eraro dum analizado de la emfazada priskribo, ĉi tiu emfazado "
-#~ "estas malebligita"
-
-#~ msgid ""
-#~ "<b>%1</b>: Specified multiline comment region (%2) could not be "
-#~ "resolved<br />"
-#~ msgstr ""
-#~ "<b>%1</b>: la specifita plurlinia komenta regiono (%2) ne povis esti "
-#~ "solvita<br />"
-
-#~ msgid "Unable to open %1"
-#~ msgstr "Ne eblis malfermi %1"
-
-#~ msgid ""
-#~ "<qt>The error <b>%4</b><br /> has been detected in the file %1 at %2/%3</"
-#~ "qt>"
-#~ msgstr "<qt>Trovis eraron <b>%4</b><br /> en la dosiero %1 ĉe %2/%3</qt>"
-
-#, fuzzy
-#~| msgid "Case-sensitive searching"
-#~ msgid "Continuing search from top"
-#~ msgstr "Usklecdistinga serĉado"
-
-#, fuzzy
-#~| msgid "Case-sensitive searching"
-#~ msgid "Continuing search from bottom"
-#~ msgstr "Usklecdistinga serĉado"
-
-#~ msgctxt "Language Section"
-#~ msgid "Scripts"
-#~ msgstr "Skriptoj"
-
-#~ msgctxt "Language"
-#~ msgid "ABAP"
-#~ msgstr "ABAP"
-
-#~ msgctxt "Language Section"
-#~ msgid "Sources"
-#~ msgstr "Fontoj"
-
-#~ msgctxt "Language"
-#~ msgid "ABC"
-#~ msgstr "ABC"
-
-#~ msgctxt "Language Section"
-#~ msgid "Other"
-#~ msgstr "Alia"
-
-#~ msgctxt "Language"
-#~ msgid "ActionScript 2.0"
-#~ msgstr "ActionScript 2.0"
-
-#~ msgctxt "Language"
-#~ msgid "Ada"
-#~ msgstr "Ada"
-
-#~ msgctxt "Language"
-#~ msgid "AHDL"
-#~ msgstr "AHDL"
-
-#~ msgctxt "Language Section"
-#~ msgid "Hardware"
-#~ msgstr "Aparataro"
-
-#~ msgctxt "Language"
-#~ msgid "Alerts"
-#~ msgstr "Avertoj"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Alerts"
-#~ msgctxt "Language"
-#~ msgid "Alerts_indent"
-#~ msgstr "Avertoj"
-
-#~ msgctxt "Language"
-#~ msgid "AMPLE"
-#~ msgstr "AMPLE"
-
-#~ msgctxt "Language"
-#~ msgid "ANS-Forth94"
-#~ msgstr "ANS-Forth94"
-
-#~ msgctxt "Language"
-#~ msgid "ANSI C89"
-#~ msgstr "ANSI C89"
-
-#~ msgctxt "Language"
-#~ msgid "Ansys"
-#~ msgstr "Ansys"
-
-#~ msgctxt "Language Section"
-#~ msgid "Scientific"
-#~ msgstr "Scienca"
-
-#~ msgctxt "Language"
-#~ msgid "Apache Configuration"
-#~ msgstr "Agordo de Apache"
-
-#~ msgctxt "Language Section"
-#~ msgid "Configuration"
-#~ msgstr "Agordo"
-
-#~ msgctxt "Language Section"
-#~ msgid "Assembler"
-#~ msgstr "Asemblilo"
-
-#~ msgctxt "Language"
-#~ msgid "AVR Assembler"
-#~ msgstr "AVR-asemblilo"
-
-#~ msgctxt "Language"
-#~ msgid "Asm6502"
-#~ msgstr "Asm6502"
-
-#~ msgctxt "Language"
-#~ msgid "ASN.1"
-#~ msgstr "ASN.1"
-
-#~ msgctxt "Language Section"
-#~ msgid "Markup"
-#~ msgstr "Marklingvo"
-
-#~ msgctxt "Language"
-#~ msgid "ASP"
-#~ msgstr "ASP"
-
-#~ msgctxt "Language"
-#~ msgid "Asterisk"
-#~ msgstr "Asterisk"
-
-#~ msgctxt "Language"
-#~ msgid "AWK"
-#~ msgstr "AWK"
-
-#~ msgctxt "Language"
-#~ msgid "Bash"
-#~ msgstr "Bash"
-
-#~ msgctxt "Language"
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#~ msgctxt "Language"
-#~ msgid "B-Method"
-#~ msgstr "Metodo B"
-
-#~ msgctxt "Language"
-#~ msgid "Boo"
-#~ msgstr "Boo"
-
-#~ msgctxt "Language"
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgctxt "Language"
-#~ msgid "Cg"
-#~ msgstr "Cg"
-
-#~ msgctxt "Language"
-#~ msgid "CGiS"
-#~ msgstr "CGiS"
-
-#~ msgctxt "Language"
-#~ msgid "ChangeLog"
-#~ msgstr "Ŝanĝoprotokolo"
-
-#~ msgctxt "Language"
-#~ msgid "Cisco"
-#~ msgstr "Cisco"
-
-#~ msgctxt "Language"
-#~ msgid "Clipper"
-#~ msgstr "Clipper"
-
-#, fuzzy
-#~| msgid "Scripts"
-#~ msgctxt "Language"
-#~ msgid "CoffeeScript"
-#~ msgstr "Skriptoj"
-
-#~ msgctxt "Language"
-#~ msgid "ColdFusion"
-#~ msgstr "ColdFusion"
-
-#~ msgctxt "Language"
-#~ msgid "Common Lisp"
-#~ msgstr "Common Lisp"
-
-#~ msgctxt "Language"
-#~ msgid "Component-Pascal"
-#~ msgstr "Component-Pascal"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "CMake"
-#~ msgctxt "Language"
-#~ msgid "Crack"
-#~ msgstr "CMake"
-
-#~ msgctxt "Language"
-#~ msgid "C#"
-#~ msgstr "C#"
-
-#~ msgctxt "Language"
-#~ msgid "CSS"
-#~ msgstr "CSS"
-
-#~ msgctxt "Language"
-#~ msgid "CubeScript"
-#~ msgstr "Skriptoj"
-
-#~ msgctxt "Language"
-#~ msgid "CUE Sheet"
-#~ msgstr "CUE Sheet"
-
-#~ msgctxt "Language"
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgctxt "Language"
-#~ msgid "Debian Changelog"
-#~ msgstr "Debiana ŝanĝoprotokolo"
-
-#~ msgctxt "Language"
-#~ msgid "Debian Control"
-#~ msgstr "Debian Control"
-
-#~ msgctxt "Language"
-#~ msgid ".desktop"
-#~ msgstr ".desktop"
-
-#~ msgctxt "Language"
-#~ msgid "Diff"
-#~ msgstr "Diff"
-
-#~ msgctxt "Language"
-#~ msgid "Django HTML Template"
-#~ msgstr "Django HTML-ŝablono"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Makefile"
-#~ msgctxt "Language"
-#~ msgid "Dockerfile"
-#~ msgstr "Muntodosiero"
-
-#~ msgctxt "Language"
-#~ msgid "Doxygen"
-#~ msgstr "Doxygen"
-
-#~ msgctxt "Language"
-#~ msgid "DoxygenLua"
-#~ msgstr "DoxygenLua"
-
-#~ msgctxt "Language"
-#~ msgid "DTD"
-#~ msgstr "DTD"
-
-#~ msgctxt "Language"
-#~ msgid "E Language"
-#~ msgstr "E-lingvo"
-
-#~ msgctxt "Language"
-#~ msgid "Eiffel"
-#~ msgstr "Eiffel"
-
-#~ msgctxt "Language"
-#~ msgid "Email"
-#~ msgstr "Retpoŝto"
-
-#~ msgctxt "Language"
-#~ msgid "Erlang"
-#~ msgstr "Erlang"
-
-#~ msgctxt "Language"
-#~ msgid "Euphoria"
-#~ msgstr "Euphoria"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Intel x86 (NASM)"
-#~ msgctxt "Language"
-#~ msgid "Intel x86 (FASM)"
-#~ msgstr "Intel x86 (NASM)"
-
-#~ msgctxt "Language"
-#~ msgid "ferite"
-#~ msgstr "ferite"
-
-#~ msgctxt "Language"
-#~ msgid "4GL"
-#~ msgstr "4GL"
-
-#~ msgctxt "Language Section"
-#~ msgid "Database"
-#~ msgstr "Datumbazo"
-
-#~ msgctxt "Language"
-#~ msgid "4GL-PER"
-#~ msgstr "4GL-PER"
-
-#~ msgctxt "Language"
-#~ msgid "Fortran"
-#~ msgstr "Fortran"
-
-#~ msgctxt "Language"
-#~ msgid "FreeBASIC"
-#~ msgstr "FreeBASIC"
-
-#~ msgctxt "Language"
-#~ msgid "fstab"
-#~ msgstr "fstab"
-
-#~ msgctxt "Language"
-#~ msgid "GAP"
-#~ msgstr "GAP"
-
-#, fuzzy
-#~| msgid "Backspace"
-#~ msgctxt "Language"
-#~ msgid "GDB Backtrace"
-#~ msgstr "Retropaŝo"
-
-#~ msgctxt "Language"
-#~ msgid "GDL"
-#~ msgstr "GDL"
-
-#~ msgctxt "Language"
-#~ msgid "GNU Gettext"
-#~ msgstr "GNU Gettext"
-
-#, fuzzy
-#~| msgid "&Ignore"
-#~ msgctxt "Language"
-#~ msgid "Git Ignore"
-#~ msgstr "&Ignori"
-
-#~ msgctxt "Language"
-#~ msgid "GLSL"
-#~ msgstr "GLSL"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "D"
-#~ msgctxt "Language Section"
-#~ msgid "3D"
-#~ msgstr "D"
-
-#~ msgctxt "Language"
-#~ msgid "GNU Assembler"
-#~ msgstr "GNU-asemblilo"
-
-#~ msgctxt "Language"
-#~ msgid "Go"
-#~ msgstr "Iri"
-
-#~ msgctxt "Language"
-#~ msgid "Haskell"
-#~ msgstr "Haskell"
-
-#~ msgctxt "Language"
-#~ msgid "Haxe"
-#~ msgstr "Haxe"
-
-#~ msgctxt "Language"
-#~ msgid "HTML"
-#~ msgstr "HTML"
-
-#~ msgctxt "Language"
-#~ msgid "Quake Script"
-#~ msgstr "Quake-skripto"
-
-#~ msgctxt "Language"
-#~ msgid "IDL"
-#~ msgstr "IDL"
-
-#~ msgctxt "Language"
-#~ msgid "ILERPG"
-#~ msgstr "ILERPG"
-
-#~ msgctxt "Language"
-#~ msgid "Inform"
-#~ msgstr "Inform"
-
-#~ msgctxt "Language"
-#~ msgid "INI Files"
-#~ msgstr "INI-dosieroj"
-
-#~ msgctxt "Language"
-#~ msgid "Java"
-#~ msgstr "Ĝavo"
-
-#~ msgctxt "Language"
-#~ msgid "Javadoc"
-#~ msgstr "Javadoc"
-
-#~ msgctxt "Language"
-#~ msgid "JavaScript"
-#~ msgstr "Ĝavoskripto"
-
-#~ msgctxt "Language"
-#~ msgid "JSON"
-#~ msgstr "JSON"
-
-#~ msgctxt "Language"
-#~ msgid "JSP"
-#~ msgstr "JSP"
-
-#~ msgctxt "Language"
-#~ msgid "KBasic"
-#~ msgstr "KBasic"
-
-#, fuzzy
-#~| msgid "Configure"
-#~ msgctxt "Language"
-#~ msgid "Kconfig"
-#~ msgstr "Agordado"
-
-#~ msgctxt "Language"
-#~ msgid "LaTeX"
-#~ msgstr "LaTeX"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Quake Script"
-#~ msgctxt "Language"
-#~ msgid "GNU Linker Script"
-#~ msgstr "Quake-skripto"
-
-#~ msgctxt "Language"
-#~ msgid "LDIF"
-#~ msgstr "LDIF"
-
-#~ msgctxt "Language"
-#~ msgid "Lex/Flex"
-#~ msgstr "Lex/Flex"
-
-#~ msgctxt "Language"
-#~ msgid "LilyPond"
-#~ msgstr "LilyPond"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Literate Haskell"
-#~ msgctxt "Language"
-#~ msgid "Literate Curry"
-#~ msgstr "Literate Haskell"
-
-#~ msgctxt "Language"
-#~ msgid "Literate Haskell"
-#~ msgstr "Literate Haskell"
-
-#~ msgctxt "Language"
-#~ msgid "Logtalk"
-#~ msgstr "Logtalk"
-
-#~ msgctxt "Language"
-#~ msgid "LPC"
-#~ msgstr "LPC"
-
-#~ msgctxt "Language"
-#~ msgid "LSL"
-#~ msgstr "LSL"
-
-#~ msgctxt "Language"
-#~ msgid "Lua"
-#~ msgstr "Lua"
-
-#~ msgctxt "Language"
-#~ msgid "M3U"
-#~ msgstr "M3U"
-
-#~ msgctxt "Language"
-#~ msgid "MAB-DB"
-#~ msgstr "MAB-DB"
-
-#~ msgctxt "Language"
-#~ msgid "Makefile"
-#~ msgstr "Muntodosiero"
-
-#~ msgctxt "Language"
-#~ msgid "Troff Mandoc"
-#~ msgstr "Troff Mandoc"
-
-#~ msgctxt "Language"
-#~ msgid "Mason"
-#~ msgstr "Mason"
-
-#~ msgctxt "Language"
-#~ msgid "Matlab"
-#~ msgstr "Matlab"
-
-#~ msgctxt "Language"
-#~ msgid "Maxima"
-#~ msgstr "Maxima"
-
-#~ msgctxt "Language"
-#~ msgid "MediaWiki"
-#~ msgstr "MediaWiki"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "SML"
-#~ msgctxt "Language"
-#~ msgid "MEL"
-#~ msgstr "SML"
-
-#~ msgctxt "Language"
-#~ msgid "MIPS Assembler"
-#~ msgstr "MIPS-asemblilo"
-
-#~ msgctxt "Language"
-#~ msgid "Modelica"
-#~ msgstr "Modelica"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Modelica"
-#~ msgctxt "Language"
-#~ msgid "Modelines"
-#~ msgstr "Modelica"
-
-#~ msgctxt "Language"
-#~ msgid "Modula-2"
-#~ msgstr "Modula-2"
-
-#~ msgctxt "Language"
-#~ msgid "MonoBasic"
-#~ msgstr "MonoBasic"
-
-#~ msgctxt "Language"
-#~ msgid "Music Publisher"
-#~ msgstr "Music Publisher"
-
-#~ msgctxt "Language"
-#~ msgid "Intel x86 (NASM)"
-#~ msgstr "Intel x86 (NASM)"
-
-#~ msgctxt "Language"
-#~ msgid "Nemerle"
-#~ msgstr "Nemerle"
-
-#~ msgctxt "Language"
-#~ msgid "noweb"
-#~ msgstr "noweb"
-
-#~ msgctxt "Language"
-#~ msgid "Objective-C"
-#~ msgstr "Objective-C"
-
-#~ msgctxt "Language"
-#~ msgid "Objective-C++"
-#~ msgstr "Objective-C++"
-
-#~ msgctxt "Language"
-#~ msgid "Objective Caml"
-#~ msgstr "Objective Caml"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Objective Caml"
-#~ msgctxt "Language"
-#~ msgid "Objective Caml Ocamllex"
-#~ msgstr "Objective Caml"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Objective Caml"
-#~ msgctxt "Language"
-#~ msgid "Objective Caml Ocamlyacc"
-#~ msgstr "Objective Caml"
-
-#~ msgctxt "Language"
-#~ msgid "Octave"
-#~ msgstr "Octave"
-
-#~ msgctxt "Language"
-#~ msgid "OPAL"
-#~ msgstr "OPAL"
-
-#~ msgctxt "Language"
-#~ msgid "Pascal"
-#~ msgstr "Pascal"
-
-#~ msgctxt "Language"
-#~ msgid "Perl"
-#~ msgstr "Perl"
-
-#~ msgctxt "Language"
-#~ msgid "PHP/PHP"
-#~ msgstr "PHP/PHP"
-
-#~ msgctxt "Language"
-#~ msgid "PicAsm"
-#~ msgstr "PicAsm"
-
-#~ msgctxt "Language"
-#~ msgid "Pike"
-#~ msgstr "Pike"
-
-#~ msgctxt "Language"
-#~ msgid "PostScript"
-#~ msgstr "PostScript"
-
-#~ msgctxt "Language"
-#~ msgid "POV-Ray"
-#~ msgstr "POV-Ray"
-
-#~ msgctxt "Language"
-#~ msgid "progress"
-#~ msgstr "progreso"
-
-#~ msgctxt "Language"
-#~ msgid "PureBasic"
-#~ msgstr "PureBasic"
-
-#~ msgctxt "Language"
-#~ msgid "Python"
-#~ msgstr "Python"
-
-#~ msgctxt "Language"
-#~ msgid "QMake"
-#~ msgstr "QMake"
-
-#~ msgctxt "Language"
-#~ msgid "QML"
-#~ msgstr "QML"
-
-#~ msgctxt "Language"
-#~ msgid "R Script"
-#~ msgstr "R Script"
-
-#~ msgctxt "Language"
-#~ msgid "RapidQ"
-#~ msgstr "RapidQ"
-
-#, fuzzy
-#~| msgid "Replace"
-#~ msgctxt "Language"
-#~ msgid "Replicode"
-#~ msgstr "Anstataŭigi"
-
-#~ msgctxt "Language"
-#~ msgid "REXX"
-#~ msgstr "REXX"
-
-#~ msgctxt "Language"
-#~ msgid "Ruby/Rails/RHTML"
-#~ msgstr "Ruby/Rails/RHTML"
-
-#~ msgctxt "Language"
-#~ msgid "RenderMan RIB"
-#~ msgstr "RenderMan RIB"
-
-#~ msgctxt "Language"
-#~ msgid "Roff"
-#~ msgstr "Roff"
-
-#~ msgctxt "Language"
-#~ msgid "RPM Spec"
-#~ msgstr "RPM Spec"
-
-#~ msgctxt "Language"
-#~ msgid "RSI IDL"
-#~ msgstr "RSI IDL"
-
-#, fuzzy
-#~| msgid "File Format"
-#~ msgctxt "Language"
-#~ msgid "Rich Text Format"
-#~ msgstr "Dosierformato"
-
-#~ msgctxt "Language"
-#~ msgid "Ruby"
-#~ msgstr "Ruby"
-
-#~ msgctxt "Language"
-#~ msgid "Sather"
-#~ msgstr "Sather"
-
-#~ msgctxt "Language"
-#~ msgid "Scala"
-#~ msgstr "Scala"
-
-#~ msgctxt "Language"
-#~ msgid "scilab"
-#~ msgstr "scilab"
-
-#~ msgctxt "Language"
-#~ msgid "SGML"
-#~ msgstr "SGML"
-
-#~ msgctxt "Language"
-#~ msgid "Sieve"
-#~ msgstr "Sieve"
-
-#~ msgctxt "Language"
-#~ msgid "SiSU"
-#~ msgstr "SiSU"
-
-#~ msgctxt "Language"
-#~ msgid "SML"
-#~ msgstr "SML"
-
-#~ msgctxt "Language"
-#~ msgid "Spice"
-#~ msgstr "Spice"
-
-#~ msgctxt "Language"
-#~ msgid "SQL (MySQL)"
-#~ msgstr "SQL (MySQL)"
-
-#~ msgctxt "Language"
-#~ msgid "SQL (PostgreSQL)"
-#~ msgstr "SQL (PostgreSQL)"
-
-#~ msgctxt "Language"
-#~ msgid "SQL"
-#~ msgstr "SQL"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "LSL"
-#~ msgctxt "Language"
-#~ msgid "STL"
-#~ msgstr "LSL"
-
-#~ msgctxt "Language"
-#~ msgid "SystemC"
-#~ msgstr "SystemC"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Verilog"
-#~ msgctxt "Language"
-#~ msgid "SystemVerilog"
-#~ msgstr "Verilog"
-
-#~ msgctxt "Language"
-#~ msgid "Tcl/Tk"
-#~ msgstr "Tcl/Tk"
-
-#~ msgctxt "Language"
-#~ msgid "Texinfo"
-#~ msgstr "Texinfo"
-
-#, fuzzy
-#~| msgid "Text Area Background"
-#~ msgctxt "Language"
-#~ msgid "Textile"
-#~ msgstr "Fono de la teksta regiono"
-
-#~ msgctxt "Language"
-#~ msgid "TI Basic"
-#~ msgstr "TI Basic"
-
-#~ msgctxt "Language"
-#~ msgid "txt2tags"
-#~ msgstr "txt2tags"
-
-#~ msgctxt "Language"
-#~ msgid "UnrealScript"
-#~ msgstr "UnrealScript"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Apache Configuration"
-#~ msgctxt "Language"
-#~ msgid "Varnish Configuration Language"
-#~ msgstr "Agordo de Apache"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Apache Configuration"
-#~ msgctxt "Language"
-#~ msgid "Varnish 4 Configuration Language"
-#~ msgstr "Agordo de Apache"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Apache Configuration"
-#~ msgctxt "Language"
-#~ msgid "Varnish Test Case language"
-#~ msgstr "Agordo de Apache"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "Apache Configuration"
-#~ msgctxt "Language"
-#~ msgid "Varnish 4 Test Case language"
-#~ msgstr "Agordo de Apache"
-
-#~ msgctxt "Language"
-#~ msgid "Velocity"
-#~ msgstr "Velocity"
-
-#~ msgctxt "Language"
-#~ msgid "Verilog"
-#~ msgstr "Verilog"
-
-#~ msgctxt "Language"
-#~ msgid "VHDL"
-#~ msgstr "VHDL"
-
-#~ msgctxt "Language"
-#~ msgid "VRML"
-#~ msgstr "VRML"
-
-#~ msgctxt "Language"
-#~ msgid "WINE Config"
-#~ msgstr "WINE-agordo"
-
-#~ msgctxt "Language"
-#~ msgid "xHarbour"
-#~ msgstr "xHarbour"
-
-#~ msgctxt "Language"
-#~ msgid "XML"
-#~ msgstr "XML"
-
-#~ msgctxt "Language"
-#~ msgid "XML (Debug)"
-#~ msgstr "XML (sencimigo)"
-
-#, fuzzy
-#~| msgctxt "Language"
-#~| msgid "PostScript"
-#~ msgctxt "Language"
-#~ msgid "Xonotic Script"
-#~ msgstr "PostScript"
-
-#~ msgctxt "Language"
-#~ msgid "x.org Configuration"
-#~ msgstr "x.org-agordo"
-
-#~ msgctxt "Language"
-#~ msgid "xslt"
-#~ msgstr "xslt"
-
-#~ msgctxt "Language"
-#~ msgid "XUL"
-#~ msgstr "XUL"
-
-#~ msgctxt "Language"
-#~ msgid "yacas"
-#~ msgstr "yacas"
-
-#~ msgctxt "Language"
-#~ msgid "Yacc/Bison"
-#~ msgstr "Yacc/Bison"
-
-#~ msgctxt "Language"
-#~ msgid "YAML"
-#~ msgstr "YAML"
-
-#~ msgctxt "Language"
-#~ msgid "Zonnon"
-#~ msgstr "Zonnon"
-
-#~ msgid "File Was Deleted on Disk"
-#~ msgstr "Dosiero estis forigita surdiske"
-
-#~ msgid "File Changed on Disk"
-#~ msgstr "Dosiero ŝanĝiĝis surdiske"
-
-#~ msgid ""
-#~ "Do nothing. Next time you focus the file, or try to save it or close it, "
-#~ "you will be prompted again."
-#~ msgstr ""
-#~ "Fari nenion. La sekva fojo ke vi enfokusigas la dosieron, aŭ penas "
-#~ "konservi aŭ ŝanĝi ĝin, vi ricevos alian peton."
-
-#~ msgid "Overwrite the disk file with the editor content."
-#~ msgstr "Anstataŭigi la surdiskan dosieron per la redaktila enhavo."
-
-#, fuzzy
-#~| msgid "&Word Wrap Document"
-#~ msgid "Close the document."
-#~ msgstr "&Linifaldi dokumenton"
-
-#, fuzzy
-#~| msgid "Besides white space changes, the files are identical."
-#~ msgid "Ignoring amount of white space changed, the files are identical."
-#~ msgstr "Krom ŝanĝoj al blanka spaco, la dosieroj estas la samaj."
-
-#~ msgid ""
-#~ "Ignoring means that you will not be warned again (unless the disk file "
-#~ "changes once more): if you save the document, you will overwrite the file "
-#~ "on disk; if you do not save then the disk file (if present) is what you "
-#~ "have."
-#~ msgstr ""
-#~ "Ignori signifas ke vi ne ricevos alian averton (krom se la surdiska "
-#~ "dosiero ŝanĝiĝas denove): se vi konservas la dokumenton, vi anstataŭigos "
-#~ "la surdiskan dosieron; se vi ne konservas, tiaokaze la surdiska dosiero "
-#~ "(se ekzistas) ja estos tion, kion vi havos."
-
-#~ msgid "You Are on Your Own"
-#~ msgstr "Kate lasas vin sola"
-
-#~ msgid "KDE Default"
-#~ msgstr "KDE-defaŭlta"
-
-#, fuzzy
-#~| msgid "Next"
-#~ msgid "&Next"
-#~ msgstr "Sekva"
-
-#, fuzzy
-#~| msgid "Previous"
-#~ msgid "&Previous"
-#~ msgstr "Antaŭa"
-
-#~ msgid "&Match case"
-#~ msgstr "&Konsideri usklecon"
-
-#~ msgid "Case-sensitive searching"
-#~ msgstr "Usklecdistinga serĉado"
-
-#, fuzzy
-#~| msgid "&Mode"
-#~ msgid "Mo&de:"
-#~ msgstr "&Reĝimo"
-
-#, fuzzy
-#~| msgid " characters"
-#~ msgctxt "spinbox special value for 1"
-#~ msgid "1 character"
-#~ msgstr " signoj"
-
-#, fuzzy
-#~| msgid " characters"
-#~ msgctxt "suffix for spinbox >1 wrap words at (value is at 20 or larger)"
-#~ msgid " characters"
-#~ msgstr " signoj"
-
-#~ msgid "Folder Config File"
-#~ msgstr "Agordodosiero por dosierujoj"
-
-#, fuzzy
-#~| msgid "Indentation width:"
-#~ msgid "Indentation width"
-#~ msgstr "Larĝeco de deŝovo:"
-
-#, fuzzy
-#~| msgid "Error: %1"
-#~ msgid "Error calling action(%1)"
-#~ msgstr "Eraro: %1"
-
-#~ msgid "Errors!"
-#~ msgstr "Eraroj!"
-
-#~ msgid "Error: %1"
-#~ msgstr "Eraro: %1"
-
-#, fuzzy
-#~| msgid "Selected text:"
-#~ msgctxt "Language"
-#~ msgid "Restructured Text"
-#~ msgstr "Elektita teksto:"
-
-#, fuzzy
-#~| msgid "Unable to open %1"
-#~ msgid "Unable to find '%1'"
-#~ msgstr "Ne eblis malfermi %1"
-
-#, fuzzy
-#~| msgid "Word Completion"
-#~ msgid "A&uto Word Completion HI"
-#~ msgstr "Vortkompletigo"
-
-#, fuzzy
-#~| msgid "Move to Matching Bracket"
-#~ msgid "Matching Bracket"
-#~ msgstr "Iri al koresponda krampo"
-
-#~ msgid "Other"
-#~ msgstr "Alia"
-
-#~ msgctxt "Language"
-#~ msgid "C++"
-#~ msgstr "C++"
-
-#~ msgid "Do not use config file"
-#~ msgstr "Ne uzi agordodosieron"
-
-#~ msgid "Text Area Background"
-#~ msgstr "Fono de la teksta regiono"
-
-#~ msgid "Normal text:"
-#~ msgstr "Normala teksto:"
-
-#~ msgid ""
-#~ "<p>Sets the background color of the selection.</p><p>To set the text "
-#~ "color for selected text, use the \"<b>Configure Highlighting</b>\" dialog."
-#~ "</p>"
-#~ msgstr ""
-#~ "<p>Metas la fonkoloron por la elekto.</p><p>Por difini la tekstokoloron "
-#~ "por elektita teksto, uzu la dialogon \"<b>Agordu emfazadon</b>\".</p>"
-
-#~ msgid "<p>Select the marker type you want to change.</p>"
-#~ msgstr "<p>Elektu la indikiltipon kiun vi volas ŝanĝi.</p>"
-
-#~ msgid ""
-#~ "<p>Sets the background color of the selected marker type.</p><p><b>Note</"
-#~ "b>: The marker color is displayed lightly because of transparency.</p>"
-#~ msgstr ""
-#~ "<p>Metas la fonkoloron por la elekto.</p><p><b>Noto</b>: La markilkoloro "
-#~ "estas montrata malforte pro la travideblo.</p>"
-
-#~ msgid "Additional Elements"
-#~ msgstr "Pluaj Elementoj"
-
-#~ msgid "Left border background:"
-#~ msgstr "Fono de maldekstra rando:"
-
-#~ msgid "Line numbers:"
-#~ msgstr "Lininombroj:"
-
-#~ msgid ""
-#~ "<p>This color will be used to draw the line numbers (if enabled) and the "
-#~ "lines in the code-folding pane.</p>"
-#~ msgstr ""
-#~ "<p>Ĉi tiu koloro estos uzita por la lininombroj (se ebligitaj) kaj la "
-#~ "linioj en la kodfalda panelo.</p>"
-
-#~ msgid "Word wrap markers:"
-#~ msgstr "Indikiloj por linifaldo:"
-
-#~ msgid "Tab and space markers:"
-#~ msgstr "Indikiloj por tabo kaj spaco:"
-
-#, fuzzy
-#~| msgid "Namespace"
-#~ msgid "Na&mespace:"
-#~ msgstr "Nomospaco"
-
-#, fuzzy
-#~| msgid "&Filetype:"
-#~ msgid "&File types:"
-#~ msgstr "&Dosiertipo:"
-
-#, fuzzy
-#~| msgid "&Help"
-#~ msgid "Help"
-#~ msgstr "&Helpo"
-
-#, fuzzy
-#~| msgid "&Prefix:"
-#~ msgid "Display &Prefix:"
-#~ msgstr "&Prefikso:"
-
-#, fuzzy
-#~| msgid "Arguments"
-#~ msgid "Display &Arguments:"
-#~ msgstr "Argumentoj"
-
-#, fuzzy
-#~| msgid "Shortcuts"
-#~ msgid "Shortcut:"
-#~ msgstr "Klavkombinoj"
-
-#, fuzzy
-#~| msgid "Scripts"
-#~ msgid "S&cripts"
-#~ msgstr "Skriptoj"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "<empty repository>"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid ""
-#~| "The file '%1' could not be opened: it is not a normal file, it is a "
-#~| "folder."
-#~ msgid "Output file '%1' could not be opened for writing"
-#~ msgstr ""
-#~ "Ne povis malfermi la dosieron '%1': ne estas dosiero, estas dosierujo."
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Cannot open snippet repository %1."
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "Hide completions with the following attributes:"
-#~ msgid "Applies to all filetypes"
-#~ msgstr "Kaŝi kompletigojn kun la sekvaj atribuoj:"
-
-#, fuzzy
-#~| msgid "Hide completions with the following attributes:"
-#~ msgid "Applies to the following filetypes: %1"
-#~ msgstr "Kaŝi kompletigojn kun la sekvaj atribuoj:"
-
-#, fuzzy
-#~| msgid "&Section:"
-#~ msgid "Add Repository"
-#~ msgstr "&Sekcio:"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Remove Repository"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Remove Snippet"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "Filtering"
-#~ msgid "Filter..."
-#~ msgstr "Filtrado"
-
-#~ msgid "Extensions Manager"
-#~ msgstr "Administrilo por Etendaĵoj"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Create Snippet"
-#~ msgstr "Forigi eron"
-
-#~ msgid "OVR"
-#~ msgstr "ANS"
-
-#~ msgid "INS"
-#~ msgstr "ENM"
-
-#, fuzzy
-#~| msgid "Move Word Left"
-#~ msgid "Move Left"
-#~ msgstr "Unu vorton maldekstren"
-
-#, fuzzy
-#~| msgid "Move Word Right"
-#~ msgid "Move Right"
-#~ msgstr "Unu vorton dekstren"
-
-#, fuzzy
-#~| msgid "Scroll Line Up"
-#~ msgid "Move Up"
-#~ msgstr "Ruli je unu linio supren"
-
-#, fuzzy
-#~| msgid "Scroll Line Down"
-#~ msgid "Move Down"
-#~ msgstr "Ruli je unu linio malsupren"
-
-#, fuzzy
-#~| msgid "Execution"
-#~ msgid "Execute"
-#~ msgstr "Lanĉado"
-
-#, fuzzy
-#~| msgid "Show/hide the command line on the bottom of the view."
-#~ msgid "Show/hide the JavaScript Console on the bottom of the view."
-#~ msgstr "Montri/kaŝi la komandlinion malsupre de la rigardo."
-
-#, fuzzy
-#~| msgid "Always On"
-#~ msgid "Always on"
-#~ msgstr "Ĉiam"
-
-#~ msgid "Sorry, but Kate is not able to replace newlines, yet"
-#~ msgstr "Pardonu, sed Kate ankoraŭ ne kapablas anstataŭigi linifinilojn."
-
-#, fuzzy
-#~| msgid "Print the current document."
-#~ msgid "Modify the current snippet"
-#~ msgstr "Presi la aktualan dokumenton."
-
-#, fuzzy
-#~| msgid "Create a new file type."
-#~ msgid "Create a new repository file"
-#~ msgstr "Krei novan dosiertipon."
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Kate Snippets"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "New Snippet"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "&Filetype:"
-#~ msgid "all file types"
-#~ msgstr "&Dosiertipo:"
-
-#, fuzzy
-#~| msgid "Namespace"
-#~ msgid "No file specified"
-#~ msgstr "Nomospaco"
-
-#, fuzzy
-#~| msgid ""
-#~| "The file '%1' could not be opened: it is not a normal file, it is a "
-#~| "folder."
-#~ msgid "File could not be copied to repository"
-#~ msgstr ""
-#~ "Ne povis malfermi la dosieron '%1': ne estas dosiero, estas dosierujo."
-
-#, fuzzy
-#~| msgid "&Section:"
-#~ msgid "Snippet Repository:"
-#~ msgstr "&Sekcio:"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Get New Snippets..."
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "Remove entry"
-#~ msgid "Kate Part Snippets"
-#~ msgstr "Forigi eron"
-
-#, fuzzy
-#~| msgid "&Highlighting"
-#~ msgid "&Keep highlighting"
-#~ msgstr "&Emfazado"
-
-#~ msgid "Show &folding markers (if available)"
-#~ msgstr "Montri &faldad-markojn (se aplikebla)"
-
-#~ msgid "Plugins"
-#~ msgstr "Kromprogrametoj"
-
-#, fuzzy
-#~| msgid "Move Word Left"
-#~ msgid "Programmer's Move Word Left"
-#~ msgstr "Unu vorton maldekstren"
-
-#, fuzzy
-#~| msgid "Select Word Left"
-#~ msgid "Programmer's Select Word Left"
-#~ msgstr "Elekti vorton maldekstre"
-
-#, fuzzy
-#~| msgid "Move Word Right"
-#~ msgid "Programmer's Move Word Right"
-#~ msgstr "Unu vorton dekstren"
-
-#, fuzzy
-#~| msgid "Select Word Right"
-#~ msgid "Programmer's Select Word Right"
-#~ msgstr "Unu vorton dekstre"
-
-#~ msgctxt "Language"
-#~ msgid "Prolog"
-#~ msgstr "Prolog"
-
-#~ msgid ""
-#~ "Selections will be overwritten by typed text and will be lost on cursor "
-#~ "movement."
-#~ msgstr ""
-#~ "Elektoj estos superskribataj dum teksttajpado kaj perdiĝos dum kursor-"
-#~ "moviĝo."
-
-#~ msgid "&Normal"
-#~ msgstr "&Normala"
-
-#~ msgid "Selections will stay even after cursor movement and typing."
-#~ msgstr "Elektoj restos eĉ post kursor-moviĝoj kaj tajpado."
-
-#~ msgid ""
-#~ "When the user types a left bracket ([,(, or {) KateView automatically "
-#~ "enters the right bracket (}, ), or ]) to the right of the cursor."
-#~ msgstr ""
-#~ "Kiam la uzanto tajpas maldekstran krampon, t.e. [ aŭ ( aŭ {, la redaktilo "
-#~ "aŭtomate skribas la konvenan dekstran krampon ] aŭ ) aŭ } dekstre de la "
-#~ "kursilo."
-
-#~ msgid "The file %1 is a binary, saving it will result in a corrupt file."
-#~ msgstr "La dosiero %1 estas duuma, konservo malbonigos ĝin."
-
-#~ msgid "Trying to Save Binary File"
-#~ msgstr "Provas konservi duuman dosieron"
-
-#~ msgid ""
-#~ "<p>When on, moving the insertion cursor using the <b>Left</b> and "
-#~ "<b>Right</b> keys will go on to previous/next line at beginning/end of "
-#~ "the line, similar to most editors.</p><p>When off, the insertion cursor "
-#~ "cannot be moved left of the line start, but it can be moved off the line "
-#~ "end, which can be very handy for programmers.</p>"
-#~ msgstr ""
-#~ "<p>Se enŝaltita, la kursilo linifine migras al la sekva linio, kiam vi "
-#~ "premas la klavon <b>dekstren</b> kaj linikomence migras al la antaŭa "
-#~ "linio kiam vi premas la klavon <b>maldeksten</b> - kiel ĉe la plej multaj "
-#~ "redaktiloj.</p><p>Se elŝaltita la kursilo ne povas moviĝi maldekstren de "
-#~ "la linio sed moviĝas al la fino de la sama linio, kio povas esti avantaĝa "
-#~ "por programistoj.</p>"
-
-#~ msgid "Wrap c&ursor"
-#~ msgstr "Linirompa k&ursilo"
-
-#, fuzzy
-#~| msgid ""
-#~| "If this is enabled, the editor will remove any trailing whitespace on "
-#~| "lines when they are left by the insertion cursor."
-#~ msgid ""
-#~ "If this is enabled, the editor will remove any trailing whitespace on "
-#~ "lines that are changed through editing."
-#~ msgstr ""
-#~ "Se vi ebligas ĉi tion, la redaktilo forigos spacojn ĉe linifinoj kiujn la "
-#~ "enmeta kursoro postlasas."
-
-#~ msgid "Remove &trailing spaces while editing"
-#~ msgstr "&Forigi linifinajn spacojn dum la redaktado"
-
-#, fuzzy
-#~| msgid ""
-#~| "The editor will automatically eliminate extra spaces at the ends of "
-#~| "lines of text while loading/saving the file. This change is only visible "
-#~| "after a save if you reload the file."
-#~ msgid ""
-#~ "The editor will automatically eliminate extra spaces at the ends of lines "
-#~ "of text while saving the file. This change is only visible after a save "
-#~ "if you reload the file."
-#~ msgstr ""
-#~ "La redaktilo aŭtomate forigas spacsignojn ĉe linifinoj dum la malfermado "
-#~ "kaj konservado de la dosiero."
-
-#, fuzzy
-#~| msgid "Remove &trailing spaces while editing"
-#~ msgctxt "short translation please"
-#~ msgid "Remove trailing spaces when editing a line."
-#~ msgstr "&Forigi linifinajn spacojn dum la redaktado"
-
-#~ msgid "Overwrite"
-#~ msgstr "Anstataŭigi"
-
-#, fuzzy
-#~| msgid "Scope"
-#~ msgid "Stop"
-#~ msgstr "Regiono"
-
-#, fuzzy
-#~| msgid "Colors"
-#~ msgctxt "@title:column a color button"
-#~ msgid "Color"
-#~ msgstr "Koloroj"
-
-#, fuzzy
-#~| msgid "Normal &Color..."
-#~ msgid "Export HlColors..."
-#~ msgstr "Normala &koloro..."
-
-#, fuzzy
-#~| msgid "Normal &Color..."
-#~ msgid "Import HlColors..."
-#~ msgstr "Normala &koloro..."
-
-#~ msgid "Template Background"
-#~ msgstr "Ŝablona Fono"
-
-#~ msgid "Collapse One Local Level"
-#~ msgstr "Faldi je unu loka nivelo"
-
-#~ msgid "Expand One Local Level"
-#~ msgstr "Ekspandi je unu loka nivelo"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 1"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 2"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 3"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 4"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 5"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 6"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 7"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 8"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "Collapse Level 9"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 1"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 2"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 3"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 4"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 5"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 6"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 7"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 8"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Expand Toplevel"
-#~ msgid "Expand Level 9"
-#~ msgstr "Ekspandi globalnivele"
-
-#, fuzzy
-#~| msgid "Collapse Toplevel"
-#~ msgid "&Collapse"
-#~ msgstr "Faldi globalnivele"
-
-#, fuzzy
-#~| msgid "&Format:"
-#~ msgid "Form"
-#~ msgstr "&Formato:"
-
-#~ msgid ""
-#~ "A KDE text-editor component could not be found;\n"
-#~ "please check your KDE installation."
-#~ msgstr ""
-#~ "Ne trovis KDE-tekstredaktilan komponanton;\n"
-#~ "bonvolu kontroli vian KDE-instalon."
-
-#~ msgid "Use this to close the current document"
-#~ msgstr "Uzu tiun ĉi por fermi la aktualan dokumenton"
-
-#~ msgid "Use this command to create a new document"
-#~ msgstr "Uzu ĉi tiun komandon por krei novan dokumenton"
-
-#~ msgid "Use this command to open an existing document for editing"
-#~ msgstr ""
-#~ "Uzu ĉi tiun komandon por malfermi ekzistantan dokumenton por redakti"
-
-#~ msgid ""
-#~ "This lists files which you have opened recently, and allows you to easily "
-#~ "open them again."
-#~ msgstr ""
-#~ "Ĉi tio listigas dosierojn kiujn vi malfermis lastatempe, kaj permesas la "
-#~ "rapidan malfermon de ili denove."
-
-#~ msgid "&New Window"
-#~ msgstr "&Nova fenestro"
-
-#~ msgid "Create another view containing the current document"
-#~ msgstr "Krei alian rigardon enhavanta la aktualan dokumenton"
-
-#, fuzzy
-#~| msgid "Override the system wide setting for the default editing component"
-#~ msgid "Override the system-wide setting for the default editing component"
-#~ msgstr ""
-#~ "Anstataŭigi la tutsisteman agordon por la defaŭlta redakta komponanto"
-
-#~ msgid "Close the current document view"
-#~ msgstr "Fermi la ktualan dokumentorigardon"
-
-#~ msgid "Use this command to show or hide the view's statusbar"
-#~ msgstr "Uzu ĉi tiun komandon por montri/kaŝi la statobreton de la rigardo"
-
-#~ msgid "Sho&w Path"
-#~ msgstr "Mon&tri Padon"
-
-#~ msgid "Show the complete document path in the window caption"
-#~ msgstr "Montri la tutan dokumentan vojon en la fenestra apudskribo"
-
-#~ msgid "Configure the application's keyboard shortcut assignments."
-#~ msgstr "Agordi la klavokombinojn de la aplikaĵo."
-
-#~ msgid "Configure which items should appear in the toolbar(s)."
-#~ msgstr "Agordi la erojn kiuj aperu en la ilobreto(j)."
-
-#~ msgid "&About Editor Component"
-#~ msgstr "Pri Redaktila Kompon&anto"
-
-#~ msgid " INS "
-#~ msgstr " ENM "
-
-#~ msgid " LINE "
-#~ msgstr " LINIO "
-
-#~ msgid "Open File"
-#~ msgstr "Malfermi dosieron"
-
-#~ msgid ""
-#~ "The given file could not be read, check if it exists or if it is readable "
-#~ "for the current user."
-#~ msgstr ""
-#~ "Ne povas legi tiun dosieron, kontrolu la ekziston, aŭ ĉu la uzanto havas "
-#~ "legan permeson por tiu dosiero."
-
-#~ msgid "Read the contents of stdin"
-#~ msgstr "Legi la enhavon de stdin"
-
-#~ msgid "Set encoding for the file to open"
-#~ msgstr "Difinu la kodoprezenton de la malfermota dosiero"
-
-#~ msgid "Navigate to this line"
-#~ msgstr "Navigadi al ĉi tiu linio"
-
-#~ msgid "Navigate to this column"
-#~ msgstr "Navigadi al ĉi tiu kolumno"
-
-#~ msgid "KWrite"
-#~ msgstr "KWrite"
-
-#~ msgid "KWrite - Text Editor"
-#~ msgstr "KWrite - Tekstredaktilo"
-
-#~ msgid "Choose Editor Component"
-#~ msgstr "Elekti redaktilan komponanton"
-
-#~ msgid "Directory containing tests, basedir and output directories."
-#~ msgstr ""
-#~ "Dosierujo kiu enhavas testojn, bazdosierujon, kaj eligajn dosierujojn."
-
-#~ msgid ""
-#~ "Compare failures of this testrun against snapshot <snapshot>. Defaults to "
-#~ "the most recently captured failure snapshot or none if none exists."
-#~ msgstr ""
-#~ "Kompari malsukcesojn de ĉi tiu testrulado kun momenta kopio <snapshot>. "
-#~ "La defaŭlta estas la plej lastatempa malsukcesa momenta kopio, aŭ nenio "
-#~ "se nenia kopio ekzistas."
-
-#~ msgid "Do not suppress debug output"
-#~ msgstr "Ne malhelpi sencimigan eligon"
-
-#~ msgid "Regenerate baseline (instead of checking)"
-#~ msgstr "Regeneri bazlinion (anstataŭ kontroli)"
-
-#~ msgid "Keep output files even on success"
-#~ msgstr "Konservi eligajn dosierojn eĉ se estas sukceso"
-
-#~ msgid "Save failures of this testrun as failure snapshot <snapshot>"
-#~ msgstr ""
-#~ "Konservi malsukcesojn de ĉi tiu testrulado kiel malsukcesan momentan "
-#~ "kopion <snapshot>"
-
-#~ msgid "Show the window while running tests"
-#~ msgstr "Vidigi fenestron dum la rulado de testoj"
-
-#~ msgid "Only run a single test. Multiple options allowed."
-#~ msgstr "Ruli nur unu teston. Multoblaj opcioj estas permesataj."
-
-#~ msgid "Put output in <directory> instead of <base_dir>/output"
-#~ msgstr "Meti eligon en <directory> anstataŭ en <base_dir>/output"
-
-#~ msgid ""
-#~ "Directory containing tests, basedir and output directories. Only regarded "
-#~ "if -b is not specified."
-#~ msgstr ""
-#~ "Dosierujo kiu enhavas testojn, bazdosierujon, kaj eligajn dosierujojn. "
-#~ "Nur efikas se -b ne estas difinita."
-
-#~ msgid ""
-#~ "Relative path to testcase, or directory of testcases to be run "
-#~ "(equivalent to -t)."
-#~ msgstr ""
-#~ "Relativa vojo al testokazo, aŭ dosierujo de ruligotaj testokazoj "
-#~ "(ekvivalenta de -t)."
-
-#~ msgid "TestRegression"
-#~ msgstr "TestRegresado"
-
-#~ msgid "Regression tester for kate"
-#~ msgstr "Regresia testilo por kate"
-
-#~ msgid "Error: "
-#~ msgstr "Eraro: "
-
-#~ msgid ""
-#~ "If this is enabled, the editor will calculate the number of spaces up to "
-#~ "the next tab position as defined by the tab width, and insert that number "
-#~ "of spaces instead of a TAB character."
-#~ msgstr ""
-#~ "Se vi ebligas ĉi tion, la redaktilo kalkulos la nombron da spacetoj ĝis "
-#~ "la sekva taba pozicio, kiel difinita per la taba larĝeco, kaj enmetos "
-#~ "tiun nombron da spacetoj anŝtataŭ tabo."
-
-#~ msgid "&Insert spaces instead of tabulators"
-#~ msgstr "Enmet&i spacetojn anstataŭ tabojn"
-
-#, fuzzy
-#~| msgid "&View Difference"
-#~ msgid "View Differences"
-#~ msgstr "&Vidigi diferencon"
-
-#, fuzzy
-#~| msgid "Disabled"
-#~ msgctxt "Encodings menu"
-#~ msgid "Disabled"
-#~ msgstr "Malŝaltita"
-
-#, fuzzy
-#~| msgid ""
-#~| "The file %1 was opened with UTF-8 encoding but contained invalid "
-#~| "characters. It is set to read-only mode, as saving might destroy it's "
-#~| "content. Either reopen the file with the correct encoding chosen or "
-#~| "enable the read-write mode again in the menu to be able to edit it."
-#~ msgid ""
-#~ "The file %1 was opened with 2 encoding but contained invalid characters. "
-#~ "It is set to read-only mode, as saving might destroy its content. Either "
-#~ "reopen the file with the correct encoding chosen or enable the read-write "
-#~ "mode again in the menu to be able to edit it."
-#~ msgstr ""
-#~ "Malfermis dosieron %1 kun kodoprezento de UTF-8, sed ĝi enhavas "
-#~ "nevalidajn signojn. Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus "
-#~ "detrui la enhavon. Aŭ denove malfermi la dosieron en la ĝusta "
-#~ "kodoprezento, aŭ ebligi redakteblan reĝimon el la menuo por modifi ĝin."
-
-#~ msgid "Binary File Opened"
-#~ msgstr "Malfermis duuman dosieron"
-
-#~ msgid "Broken UTF-8 File Opened"
-#~ msgstr "Malfermis rompitan UTF-8 dosieron"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "Universal"
-#~ msgstr "Ĝenerala"
-
-#~ msgid "&Word Wrap Document"
-#~ msgstr "&Linifaldi dokumenton"
-
-#~ msgid "Modify search behavior"
-#~ msgstr "Modifi la serĉan konduton"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "&Options"
-#~ msgstr "Opcioj"
-
-#~ msgid "From &cursor"
-#~ msgstr "Ekde &kursilo"
-
-#~ msgid "Hi&ghlight all"
-#~ msgstr "Em&fazi ĉion"
-
-#, fuzzy
-#~| msgid "(c) 2000-2005 The Kate Authors"
-#~ msgid "(c) 2000-2008 The Kate Authors"
-#~ msgstr "(c) 2000-2005 La aŭtoroj de Kate"
-
-#~ msgid "Developer & Highlight wizard"
-#~ msgstr "Programisto kaj emfazada klerulo"
-
-#~ msgid "Unable to read file: '%1'"
-#~ msgstr "Ne eblas legi dosieron: '%1'"
-
-#~ msgid "Failed to start interpreter for script %1, command %2"
-#~ msgstr "Malsukcesis lanĉi interpretilon por skripto %1, komando %2"
-
-#~ msgid "Success"
-#~ msgstr "Sukceso"
-
-#~ msgid "Move Character Right"
-#~ msgstr "Unu signon dekstren"
-
-#~ msgid "Move Character Left"
-#~ msgstr "Unu signon maldekstren"
-
-#~ msgid "&Overwrite"
-#~ msgstr "&Anstataŭigi"
-
-#~ msgid "&Dynamic word wrap"
-#~ msgstr "&Dinamika linifaldo"
-
-#~ msgid "(c) 2000-2007 The Kate Authors"
-#~ msgstr "(c) 2000-2007 La aŭtoroj de Kate"
-
-#~ msgid "Line must be at least 1"
-#~ msgstr "Linio devas esti almenaŭ 1."
-
-#~ msgid "There is not that many lines in this document"
-#~ msgstr "Ne estas tiom da linioj en ĉi dokumento."
-
-#~ msgid "Highlight all matches"
-#~ msgstr "Emfazadi ĉiujn kongruojn"
-
-#~ msgid "Match case"
-#~ msgstr "Konsideri usklecon"
-
-#~ msgid "Shortcuts Configuration"
-#~ msgstr "Agordo de klavkombinoj"
-
-#~ msgid ""
-#~ "You are trying to save a python file as non ASCII, without specifiying a "
-#~ "correct source encoding line for encoding \"%1\""
-#~ msgstr ""
-#~ "Vi penas konservi pitonan dosieron kiel ne-ASCII, sen specifi ĝustan "
-#~ "fontan kodoprezentan linion por kodoprezento \"%1\""
-
-#~ msgid "No encoding header"
-#~ msgstr "Neniu kodoprezenta kapo"
-
-#~ msgid ""
-#~ "The spelling program could not be started. Please make sure you have set "
-#~ "the correct spelling program and that it is properly configured and in "
-#~ "your PATH."
-#~ msgstr ""
-#~ "Ne eblis lanĉi la literumadkontrolan programon. Bonvolu certigi ke vi "
-#~ "ĝuste agordis la literumilon kaj ke ĝia pado troviĝas en PATH."
-
-#~ msgid "The spelling program seems to have crashed."
-#~ msgstr "Ŝajne la literumilo mortis."
-
-#~ msgid "unknown"
-#~ msgstr "nekonata"
-
-#~ msgid "Context '%1': Incorrect number of arguments in '%2'"
-#~ msgstr "Kunteksto '%1': neĝusta nombro da argumentoj en '%2'"
-
-#~ msgid "Exception, line %1: %2"
-#~ msgstr "Escepto, linio %1: %2"
-
-#~ msgid "Could not access view."
-#~ msgstr "Ne povis aliri rigardon."
-
-#~ msgid "Could not access lookup object."
-#~ msgstr "Ne povis aliri serĉilan objekton."
-
-#~ msgid "Exception: Unable to find function '%1': %2"
-#~ msgstr "Escepto: ne povis trovi funkcion '%1': %2"
-
-#~ msgid "Exception in line %1: %2"
-#~ msgstr "Escepto en linio %1: %2"
-
-#~ msgid "Sort: None"
-#~ msgstr "Ordigo: Nenio"
-
-#~ msgid "Filter: None"
-#~ msgstr "Filtro: Nenio"
-
-#~ msgid "Setup"
-#~ msgstr "Agordo"
-
-#~ msgid "&Maximum undo steps:"
-#~ msgstr "&Maksimumaj malfarpaŝoj:"
-
-#~ msgid ""
-#~ "The file %1 was opened with UTF-8 encoding but contained invalid "
-#~ "characters. It is set to read-only mode, as saving might destroy it's "
-#~ "content. Either reopen the file with the correct encoding chosen or "
-#~ "enable the read-write mode again in the menu to be able to edit it."
-#~ msgstr ""
-#~ "Malfermis dosieron %1 kun kodoprezento de UTF-8, sed ĝi enhavas "
-#~ "nevalidajn signojn. Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus "
-#~ "detrui la enhavon. Aŭ denove malfermi la dosieron en la ĝusta "
-#~ "kodoprezento, aŭ ebligi redakteblan reĝimon el la menuo por modifi ĝin."
+msgstr ""
