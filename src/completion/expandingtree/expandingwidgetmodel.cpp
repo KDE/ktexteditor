@@ -179,7 +179,7 @@ int ExpandingWidgetModel::basicRowHeight(const QModelIndex &idx_) const
 {
     QModelIndex idx(firstColumn(idx_));
 
-    auto *delegate = (KateCompletionDelegate *)treeView()->itemDelegate(idx);
+    auto *delegate = (KateCompletionDelegate *)treeView()->itemDelegateForIndex(idx);
     if (!delegate || !idx.isValid()) {
         qCDebug(LOG_KTE) << "ExpandingWidgetModel::basicRowHeight: Could not get delegate";
         return 15;

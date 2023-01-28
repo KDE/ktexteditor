@@ -490,7 +490,11 @@ void TextBlock::debugPrint(int blockIndex) const
 {
     // print all blocks
     for (size_t i = 0; i < m_lines.size(); ++i) {
-        printf("%4d - %4lld : %4d : '%s'\n", blockIndex, (unsigned long long)startLine() + i, m_lines.at(i)->text().size(), qPrintable(m_lines.at(i)->text()));
+        printf("%4d - %4llu : %4llu : '%s'\n",
+               blockIndex,
+               (unsigned long long)startLine() + i,
+               (unsigned long long)m_lines.at(i)->text().size(),
+               qPrintable(m_lines.at(i)->text()));
     }
 }
 

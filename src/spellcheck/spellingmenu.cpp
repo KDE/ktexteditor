@@ -132,7 +132,7 @@ void KateSpellingMenu::cleanUpAfterShown()
 
         // We need to remove our list or they will accumulated on next show event
         for (auto act : m_menuOnTopSuggestionList) {
-            act->parentWidget()->removeAction(act);
+            qobject_cast<QWidget *>(act->parent())->removeAction(act);
             delete act;
         }
         m_menuOnTopSuggestionList.clear();
