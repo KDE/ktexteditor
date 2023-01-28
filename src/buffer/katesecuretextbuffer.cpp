@@ -112,10 +112,11 @@ void SecureTextBuffer::setOwner(const int filedes, const uint ownerId, const uin
 {
 #ifndef Q_OS_WIN
     if (ownerId != (uint)-2 && groupId != (uint)-2) {
-        const int result = fchown(filedes, ownerId, groupId);
+        int result = fchown(filedes, ownerId, groupId);
         // set at least correct group if owner cannot be changed
         if (result != 0 && errno == EPERM) {
-            fchown(filedes, getuid(), groupId);
+            result = fchown(filedes, getuid(), groupId);
+            (void)result; // ignore if we can't do a thing
         }
     }
 #else
