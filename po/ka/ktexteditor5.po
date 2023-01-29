@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-27 08:56+0100\n"
+"PO-Revision-Date: 2023-01-28 08:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1433,7 +1433,7 @@ msgstr "ჩართულია. შეინახება მითითე
 #: dialogs/opensaveconfigadvwidget.ui:163
 #, kde-format
 msgid "Store swap files in:"
-msgstr "სვოპ ფაილების საქაღალდე"
+msgstr "სვოპ ფაილების საქაღალდე:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
@@ -3187,12 +3187,12 @@ msgstr ""
 #: script/katescript.cpp:209
 #, kde-format
 msgid "Error loading script %1\n"
-msgstr ""
+msgstr "სკრიპტის (%1) ჩატვირთვის შეცდომა\n"
 
 #: script/katescript.cpp:210
 #, kde-format
 msgid "Error loading script %1"
-msgstr ""
+msgstr "სკრიპტის (%1) ჩატვირთვის შეცდომა"
 
 #: script/katescriptmanager.cpp:315
 #, kde-format
@@ -3202,7 +3202,7 @@ msgstr ""
 #: script/katescriptview.cpp:209
 #, kde-format
 msgid "Command not found: %1"
-msgstr ""
+msgstr "ბრძანება ვერ ვიპოვე: %1"
 
 #: search/katesearchbar.cpp:73
 #, kde-format
@@ -3222,8 +3222,8 @@ msgstr[1] "%1 ჩანაცვლებულია"
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ნაპოვნია 1 დამთხვევა"
+msgstr[1] "ნაპოვნია %1 დამთხვევა"
 
 #: search/katesearchbar.cpp:374
 #, kde-format
@@ -3253,7 +3253,7 @@ msgstr ""
 #: search/katesearchbar.cpp:618
 #, kde-format
 msgid "Continue search?"
-msgstr ""
+msgstr "გავაგრძელო ძებნა?"
 
 #: search/katesearchbar.cpp:919
 #, kde-format
@@ -6527,7 +6527,7 @@ msgstr ""
 #: view/kateview.cpp:776
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr ""
+msgstr "&ხაზის ნომრების ჩვენება"
 
 #: view/kateview.cpp:778
 #, kde-format
