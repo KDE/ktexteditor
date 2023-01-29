@@ -5435,7 +5435,7 @@ bool KTextEditor::DocumentPrivate::checkIntValue(const QString &val, int *result
 
 bool KTextEditor::DocumentPrivate::checkColorValue(const QString &val, QColor &c)
 {
-    c.setNamedColor(val);
+    c = QColor::fromString(val);
     return c.isValid();
 }
 

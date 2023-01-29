@@ -84,8 +84,7 @@ find_package(EditorConfig)
 # forbid some old things
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 ecm_set_disabled_deprecation_versions(
-    QT 5.15.2
-    KF 5.97.0
+    QT 6.4
 )
 
 # Subdirectories
