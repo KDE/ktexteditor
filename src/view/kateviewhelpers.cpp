@@ -291,7 +291,8 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
             newVal = qBound(0, newVal, maximum());
             setSliderPosition(newVal);
         }
-        QMouseEvent eMod(QEvent::MouseButtonPress, QPoint(6, minimapYToStdY(e->pos().y())), e->button(), e->buttons(), e->modifiers());
+        const QPoint pos(6, minimapYToStdY(e->pos().y()));
+        QMouseEvent eMod(QEvent::MouseButtonPress, pos, mapToGlobal(pos), e->button(), e->buttons(), e->modifiers());
         QScrollBar::mousePressEvent(&eMod);
     } else {
         QScrollBar::mousePressEvent(e);
@@ -320,7 +321,8 @@ void KateScrollBar::mouseReleaseEvent(QMouseEvent *e)
     }
 
     if (m_showMiniMap) {
-        QMouseEvent eMod(QEvent::MouseButtonRelease, QPoint(e->pos().x(), minimapYToStdY(e->pos().y())), e->button(), e->buttons(), e->modifiers());
+        const QPoint pos(e->pos().x(), minimapYToStdY(e->pos().y()));
+        QMouseEvent eMod(QEvent::MouseButtonRelease, pos, mapToGlobal(pos), e->button(), e->buttons(), e->modifiers());
         QScrollBar::mouseReleaseEvent(&eMod);
     } else {
         QScrollBar::mouseReleaseEvent(e);
@@ -330,7 +332,8 @@ void KateScrollBar::mouseReleaseEvent(QMouseEvent *e)
 void KateScrollBar::mouseMoveEvent(QMouseEvent *e)
 {
     if (m_showMiniMap) {
-        QMouseEvent eMod(QEvent::MouseMove, QPoint(e->pos().x(), minimapYToStdY(e->pos().y())), e->button(), e->buttons(), e->modifiers());
+        const QPoint pos(e->pos().x(), minimapYToStdY(e->pos().y()));
+        QMouseEvent eMod(QEvent::MouseMove, pos, mapToGlobal(pos), e->button(), e->buttons(), e->modifiers());
         QScrollBar::mouseMoveEvent(&eMod);
     } else {
         QScrollBar::mouseMoveEvent(e);
@@ -2227,7 +2230,7 @@ void KateIconBorder::mousePressEvent(QMouseEvent *e)
                 // setup view so the following mousePressEvent will select the line
                 m_viewInternal->beginSelectLine(pos);
             }
-            QMouseEvent forward(QEvent::MouseButtonPress, pos, e->button(), e->buttons(), e->modifiers());
+            QMouseEvent forward(QEvent::MouseButtonPress, pos, m_viewInternal->mapToGlobal(pos), e->button(), e->buttons(), e->modifiers());
             m_viewInternal->mousePressEvent(&forward);
         }
         return e->accept();
@@ -2408,7 +2411,7 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
         }
         if (area != IconBorder) {
             QPoint p = m_viewInternal->mapFromGlobal(e->globalPosition().toPoint());
-            QMouseEvent forward(QEvent::MouseMove, p, e->button(), e->buttons(), e->modifiers());
+            QMouseEvent forward(QEvent::MouseMove, p, m_viewInternal->mapToGlobal(p), e->button(), e->buttons(), e->modifiers());
             m_viewInternal->mouseMoveEvent(&forward);
         }
     }
@@ -2464,7 +2467,8 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
         }
     }
 
-    QMouseEvent forward(QEvent::MouseButtonRelease, QPoint(0, e->position().y()), e->button(), e->buttons(), e->modifiers());
+    const QPoint pos(0, e->position().y());
+    QMouseEvent forward(QEvent::MouseButtonRelease, pos, m_viewInternal->mapToGlobal(pos), e->button(), e->buttons(), e->modifiers());
     m_viewInternal->mouseReleaseEvent(&forward);
 }
 
@@ -2479,7 +2483,8 @@ void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
             Q_EMIT m_view->annotationActivated(m_view, cursorOnLine);
         }
     }
-    QMouseEvent forward(QEvent::MouseButtonDblClick, QPoint(0, e->position().y()), e->button(), e->buttons(), e->modifiers());
+    const QPoint pos(0, e->position().y());
+    QMouseEvent forward(QEvent::MouseButtonDblClick, pos, m_viewInternal->mapToGlobal(pos), e->button(), e->buttons(), e->modifiers());
     m_viewInternal->mouseDoubleClickEvent(&forward);
 }
 

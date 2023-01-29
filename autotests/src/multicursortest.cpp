@@ -70,11 +70,11 @@ static QWidget *findViewInternal(KTextEditor::ViewPrivate *view)
     return nullptr;
 }
 
-static void clickAtPosition(ViewPrivate *view, QObject *internalView, Cursor pos, Qt::KeyboardModifiers m)
+static void clickAtPosition(ViewPrivate *view, QWidget *internalView, Cursor pos, Qt::KeyboardModifiers m)
 {
     QPoint p = view->cursorToCoordinate(pos);
     QVERIFY(p.x() >= 0 && p.y() >= 0);
-    auto me = QMouseEvent(QEvent::MouseButtonPress, p, Qt::LeftButton, Qt::LeftButton, m);
+    auto me = QMouseEvent(QEvent::MouseButtonPress, p, internalView->mapToGlobal(p), Qt::LeftButton, Qt::LeftButton, m);
     QCoreApplication::sendEvent(internalView, &me);
 }
 
@@ -334,7 +334,7 @@ void MulticursorTest::testCreateMultiCursor()
 {
     auto [doc, view] = createDocAndView("foo\nbar\nfoo\n", 0, 0);
 
-    QObject *internalView = findViewInternal(view);
+    auto *internalView = findViewInternal(view);
     QVERIFY(internalView);
 
     // Alt + click should add a cursor
