@@ -4294,13 +4294,11 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
 
     if (v->selection()) {
         const auto &cursors = v->secondaryCursors();
-        int i = 0;
         for (const auto &c : cursors) {
             if (!c.range) {
                 continue;
             }
             commentSelection(c.range->toRange(), c.cursor(), false, change);
-            i++;
         }
         KTextEditor::Cursor c(line, column);
         commentSelection(v->selectionRange(), c, v->blockSelection(), change);
@@ -4422,7 +4420,6 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
 
     if (v->selection()) {
         const auto &cursors = v->secondaryCursors();
-        int i = 0;
         for (const auto &c : cursors) {
             if (!c.range) {
                 continue;
@@ -4430,7 +4427,6 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
             auto pos = c.pos->toCursor();
             transformCursorOrRange(v, c.anchor, c.range->toRange(), t);
             c.pos->setPosition(pos);
-            i++;
         }
         // cache the selection and cursor, so we can be sure to restore.
         const auto selRange = v->selectionRange();
