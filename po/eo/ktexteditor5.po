@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-26 19:26+0100\n"
+"PO-Revision-Date: 2023-01-30 00:49+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1850,7 +1850,7 @@ msgstr "Emfazi gamon inter elektitaj krampoj"
 #: dialogs/textareaappearanceconfigwidget.ui:195
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
-msgstr ""
+msgstr "Montri la kongruan malferman krampon kaj liniojn apud ĝi por kunteksto"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:198
@@ -1861,18 +1861,22 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"Se ĉi tio estas ebligita, antaŭprezento de la linioj proksime de kongrua "
+"malferma krampo estas montrata. Ĉi tio povas helpi rapide determini la "
+"kuntekston de ferma krampo, precipe en longaj funkcioj/klasaj deklaroj kaj "
+"profunde nestitaj 'if'-blokoj."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
 #, kde-format
 msgid "Show preview of matching open bracket"
-msgstr ""
+msgstr "Montri antaŭrigardon de kongrua malferma krampo"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:208
 #, kde-format
 msgid "Flash matching brackets"
-msgstr ""
+msgstr "Ekbriligi kongruajn krampojn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:211
@@ -1880,12 +1884,14 @@ msgstr ""
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
+"Se ĉi tio estas ebligita, kongruaj krampoj estas vigligataj por pli bona "
+"videbleco."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:214
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "Ekbriligi kongruan krampon kiam kursoro moviĝas al alia krampo duope"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -1907,31 +1913,31 @@ msgstr "Mo&ntri deŝovliniojn"
 #: dialogs/textareaappearanceconfigwidget.ui:247
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "Kalkuloj:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:254
 #, kde-format
 msgid "Show/hide word count in status bar"
-msgstr ""
+msgstr "Montri/kaŝi vortkalkulon en statusbreto"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:257
 #, kde-format
 msgid "Show word count"
-msgstr ""
+msgstr "Montri vortkalkulon"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:264
 #, kde-format
 msgid "Show/hide line count in status bar"
-msgstr ""
+msgstr "Montri/kaŝi linikalkulon en statusbreto"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:267 view/katestatusbar.cpp:254
 #, kde-format
 msgid "Show line count"
-msgstr ""
+msgstr "Montri liniokalkulon"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:293
@@ -1942,36 +1948,40 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
+"Kiam ĉi tiu agordo estas ebligita, la redaktora vido aŭtomate faldas\n"
+"komentajn blokojn kiuj komenciĝas sur la unua linio de la dokumento. Ĉi tio\n"
+"estas utila por kaŝi licencajn kapliniojn, kiuj estas kutime lokitaj ĉe la\n"
+"komenco de dosiero."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:296
 #, kde-format
 msgid "Fold first line"
-msgstr ""
+msgstr "Faldi la unuan linion"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:316
 #, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr ""
+msgstr "Dinamika Liniofaldo:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr ""
+msgstr "Faldi dinamike ĉe senmova vortfalda markilo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
-msgstr ""
+msgstr "Nekonsideri vortlimojn por dinamika linifaldo"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr ""
+msgstr "D&inamikaj linifaldaj indikiloj:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:347
@@ -1983,13 +1993,13 @@ msgstr "Elektu kiam la indikiloj pri dinamika linifaldo estu videblaj."
 #: dialogs/textareaappearanceconfigwidget.ui:370
 #, kde-format
 msgid "Indent wrapped lines:"
-msgstr ""
+msgstr "Deŝovi falditajn liniojn:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:384
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "Ne deŝovi liniojn pli larĝajn ol:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
@@ -2015,7 +2025,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:403
 #, no-c-format, kde-format
 msgid "% of View Width"
-msgstr "% de Videbla larĝeco"
+msgstr "% de Videja Larĝo"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:419
@@ -2024,33 +2034,35 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Ĉi tiu valoro multobliĝos kun la defaŭlta linialteco de la tiparo. Valoro de "
+"1.0 signifas, ke la defaŭlta alteco estos uzata."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
 #, kde-format
 msgid "Line Height Multiplier:"
-msgstr ""
+msgstr "Linialteco-Multiplikilo:"
 
 #: document/katebuffer.cpp:140
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
-msgstr ""
+msgstr "Nova dosiero"
 
 #: document/katebuffer.cpp:147
 #, kde-format
 msgid "The file %1 does not exist."
-msgstr ""
+msgstr "La dosiero %1 ne ekzistas."
 
 #: document/katedocument.cpp:246
 #, kde-format
 msgid "Auto Reload Document"
-msgstr ""
+msgstr "Aŭtomate Reŝargi Dokumenton"
 
 #: document/katedocument.cpp:247
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
-msgstr ""
+msgstr "Aŭtomate reŝargi la dokumenton kiam ĝi estis ŝanĝita sur disko"
 
 #: document/katedocument.cpp:2313
 #, kde-format
@@ -2067,17 +2079,17 @@ msgstr ""
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
-msgstr ""
+msgstr "Provi denove"
 
 #: document/katedocument.cpp:2322 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
-msgstr ""
+msgstr "&Fermi"
 
 #: document/katedocument.cpp:2323 document/katedocument.cpp:6548
 #, kde-format
 msgid "Close message"
-msgstr ""
+msgstr "Fermi mesaĝon"
 
 #: document/katedocument.cpp:2334
 #, kde-format
@@ -2099,10 +2111,10 @@ msgid ""
 ">Either reopen the file with the correct encoding chosen or enable the read-"
 "write mode again in the tools menu to be able to edit it."
 msgstr ""
-"Malfermis dosieron %1 kun kodoprezento de %2, sed ĝi enhavas nevalidajn "
-"signojn. <br/> Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus detrui "
-"la enhavon. <br/> Aŭ denove malfermu la dosieron en la ĝusta kodoprezento, "
-"aŭ ebligu redakteblan reĝimon el la menuo por modifi ĝin."
+"Malfermis dosieron %1 kun kodigo de %2, sed ĝi enhavas nevalidajn signojn."
+"<br/>Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus detrui la enhavon."
+"<br/>Aŭ denove malfermu la dosieron en la ĝusta kodoprezento, aŭ ebligu "
+"redakteblan reĝimon el la menuo por modifi ĝin."
 
 #: document/katedocument.cpp:2470
 #, kde-format
@@ -2112,10 +2124,10 @@ msgid ""
 "the file with the correct encoding chosen or enable the read-write mode "
 "again in the tools menu to be able to edit it."
 msgstr ""
-"Malfermis dosieron %1 kun kodoprezento de %2, sed ĝi enhavas nevalidajn "
-"signojn. Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus detrui la "
-"enhavon. Aŭ denove malfermu la dosieron en la ĝusta kodoprezento, aŭ ebligu "
-"redakteblan reĝimon el la menuo por modifi ĝin."
+"Malfermis dosieron %1 kun kodigo de %2, sed ĝi enhavas nevalidajn signojn. "
+"Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus detrui la enhavon. Aŭ "
+"denove malfermu la dosieron en la ĝusta kodoprezento, aŭ ebligu redakteblan "
+"reĝimon el la menuo por modifi ĝin."
 
 #: document/katedocument.cpp:2483
 #, kde-format
@@ -2125,16 +2137,20 @@ msgid ""
 "characters long<br/>Those lines were wrapped and the document is set to read-"
 "only mode, as saving will modify its content."
 msgstr ""
+"La dosiero %1 estis malfermita kaj enhavis liniojn pli longajn ol la "
+"agordita Linio-longo (%2 signoj).<br />La plej longa el tiuj linioj estis %3 "
+"signoj<br/>Tiuj linioj estis falditaj kaj la dokumento estas agordita al "
+"nurlegebla reĝimo, ĉar konservado modifos ĝian enhavon."
 
 #: document/katedocument.cpp:2490
 #, kde-format
 msgid "Temporarily raise limit and reload file"
-msgstr ""
+msgstr "Provizore altigi limon kaj reŝargi dosieron"
 
 #: document/katedocument.cpp:2493
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "Fermi"
 
 #: document/katedocument.cpp:2500
 #, kde-format
@@ -2144,6 +2160,10 @@ msgid ""
 "characters long<br/>Those lines were wrapped and the document is set to read-"
 "only mode, as saving will modify its content."
 msgstr ""
+"La dosiero %1 estis malfermita kaj enhavis liniojn pli longajn ol la "
+"agordita Linio-longo (%2 signoj).<br/>La plej longa el tiuj linioj estis %3 "
+"signoj<br/>Tiuj linioj estis falditaj kaj la dokumento estas agordita al "
+"nurlegebla reĝimo, ĉar konservado modifos ĝian enhavon."
 
 #: document/katedocument.cpp:2527
 #, kde-format
@@ -2157,7 +2177,7 @@ msgstr ""
 #: document/katedocument.cpp:2528
 #, kde-format
 msgid "Trying to Save Unmodified File"
-msgstr "Provas konservi nemodifitan dosieron"
+msgstr "Provante Konservi Nemodifitan Dosieron"
 
 #: document/katedocument.cpp:2529 document/katedocument.cpp:2540
 #: document/katedocument.cpp:2556
@@ -2187,6 +2207,8 @@ msgid ""
 "The selected encoding cannot encode every Unicode character in this "
 "document. Do you really want to save it? There could be some data lost."
 msgstr ""
+"La elektita kodigo ne povas kodi ĉiun Unikodan signon en ĉi tiu dokumento. "
+"Ĉu vi vere volas konservi ĝin? Povus okazi perdo de datumoj."
 
 #: document/katedocument.cpp:2598
 #, kde-format
@@ -2197,6 +2219,11 @@ msgid ""
 "The original file may be lost or damaged. Don't quit the application until "
 "the file is successfully written."
 msgstr ""
+"La dokumento ne povis esti konservita, ĉar ne eblis skribi al %1.\n"
+"Kontrolu ke vi havas skriban aliron al ĉi tiu dosiero aŭ ke sufiĉe da "
+"diskospaco estas disponebla.\n"
+"La originala dosiero eble estos perdita aŭ difektita. Ne forlasu la "
+"aplikaĵon ĝis kiam la dosiero estas sukcese skribita."
 
 #: document/katedocument.cpp:2719
 #, kde-format
@@ -2241,7 +2268,7 @@ msgstr "Sentitola"
 #: document/katedocument.cpp:5951
 #, kde-format
 msgid "Save File"
-msgstr "Konservi dosieron"
+msgstr "Konservi Dosieron"
 
 #: document/katedocument.cpp:4784
 #, kde-format
@@ -2251,7 +2278,7 @@ msgstr "Konservado malsukcesis"
 #: document/katedocument.cpp:5030
 #, kde-format
 msgid "Save Copy of File"
-msgstr ""
+msgstr "Konservi Kopion de Dosiero"
 
 #: document/katedocument.cpp:5042
 #, kde-format
@@ -2261,10 +2288,10 @@ msgid ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 msgstr ""
-"Ne povis konservi la dokumento, ne povi skribi al %1.\n"
+"La dokumento ne povis esti konservita, ĉar ne eblis skribi al %1.\n"
 "\n"
 "Kontrolu ke vi havas skribpermeson por ĉi tiu dosiero aŭ ke vi havas sufiĉan "
-"diskan spacon."
+"diskospacon."
 
 #: document/katedocument.cpp:5292
 #, kde-format
@@ -2274,6 +2301,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"Uzante malrekomenditan reĝimlinion 'remove-trailing-space'. Bonvolu "
+"anstataŭigi per 'remove-trailing-spaces modified;', vidu https://docs.kde."
+"org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5298
 #, kde-format
@@ -2283,21 +2314,25 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"Uzante malrekomenditan reĝimlinion 'replace-trailing-space-save'. Bonvolu "
+"anstataŭigi per 'remove-trailing-spaces all;', vidu https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5607
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr ""
+msgstr "La dosiero '%1' estis modifita sur disko."
 
 #: document/katedocument.cpp:5610
 #, kde-format
 msgid "The file '%1' was created on disk."
-msgstr ""
+msgstr "La dosiero '%1' estis kreita sur disko."
 
 #: document/katedocument.cpp:5613
 #, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr ""
+msgstr "La dosiero '%1' estis forigita sur disko."
 
 #: document/katedocument.cpp:5936
 #, kde-format
@@ -2305,84 +2340,84 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
-"La dokumento \"%1\" estas ŝanĝita.\n"
-"Ĉu vi volas konservi aŭ forĵeti tiujn ŝanĝojn?"
+"La dokumento \"%1\" estas modifita.\n"
+"Ĉu vi volas konservi viajn ŝanĝojn aŭ forĵeti ilin?"
 
 #: document/katedocument.cpp:5939
 #, kde-format
 msgid "Close Document"
-msgstr ""
+msgstr "Fermi Dokumenton"
 
 #: document/katedocument.cpp:6050
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr ""
+msgstr "La dosiero <a href=\"%1\">%2</a> ankoraŭ ŝargiĝas."
 
 #: document/katedocument.cpp:6055
 #, kde-format
 msgid "&Abort Loading"
-msgstr ""
+msgstr "Ĉesigi Ŝ&argon"
 
 #: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "OVERWRITE"
-msgstr ""
+msgstr "OVERWRITE"
 
 #: inputmode/katenormalinputmode.cpp:74
 #, kde-format
 msgid "INSERT"
-msgstr ""
+msgstr "INSERT"
 
 #: inputmode/katenormalinputmodefactory.cpp:29
 #, kde-format
 msgid "Normal Mode"
-msgstr ""
+msgstr "Normala Reĝimo"
 
 #: inputmode/kateviinputmode.cpp:29
 #, kde-format
 msgid "VI: INSERT MODE"
-msgstr ""
+msgstr "VI: INSERT MODE"
 
 #: inputmode/kateviinputmode.cpp:32
 #, kde-format
 msgid "VI: NORMAL MODE"
-msgstr ""
+msgstr "VI: NORMAL MODE"
 
 #: inputmode/kateviinputmode.cpp:35
 #, kde-format
 msgid "VI: VISUAL"
-msgstr ""
+msgstr "VI: VISUAL"
 
 #: inputmode/kateviinputmode.cpp:38
 #, kde-format
 msgid "VI: VISUAL BLOCK"
-msgstr ""
+msgstr "VI: VISUAL BLOCK"
 
 #: inputmode/kateviinputmode.cpp:41
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr ""
+msgstr "VI: VISUAL LINE"
 
 #: inputmode/kateviinputmode.cpp:44
 #, kde-format
 msgid "VI: REPLACE"
-msgstr ""
+msgstr "VI: REPLACE"
 
 #: inputmode/kateviinputmode.cpp:144
 #, kde-format
 msgid "vi-mode"
-msgstr ""
+msgstr "vi-reĝimo"
 
 #: inputmode/kateviinputmode.cpp:157
 #, kde-format
 msgid "recording"
-msgstr ""
+msgstr "registrado"
 
 #: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
-msgstr ""
+msgstr "Vi Eniga Reĝimo"
 
 #: mode/katemodeconfigpage.cpp:46
 #, kde-format
@@ -2392,17 +2427,17 @@ msgstr "<Neŝanĝita>"
 #: mode/katemodeconfigpage.cpp:58
 #, kde-format
 msgid "Use Default"
-msgstr ""
+msgstr "Uzi Defaŭlton"
 
 #: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
 #, kde-format
 msgid "Properties of %1"
-msgstr "Ecoj de %1"
+msgstr "Trajtoj de %1"
 
 #: mode/katemodeconfigpage.cpp:178
 #, kde-format
 msgid "New Filetype"
-msgstr "Nova dosiertipo"
+msgstr "Nova Dosiertipo"
 
 #: mode/katemodeconfigpage.cpp:293
 #, kde-format
@@ -2422,13 +2457,13 @@ msgstr "Elekti MIME-tipojn"
 #: mode/katemodeconfigpage.cpp:306
 #, kde-format
 msgid "Modes && Filetypes"
-msgstr ""
+msgstr "Reĝimoj && Dosiertipoj"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr ""
+msgstr "Serĉi..."
 
 #: mode/katemodemenulist.cpp:143
 #, kde-format
@@ -2437,12 +2472,14 @@ msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
 msgstr ""
+"Serĉi sintaksemfazajn reĝimojn laŭ lingvonomo aŭ dosiera etendo (ekzemple C+"
+"+ aŭ .cpp)"
 
 #: mode/katemodemenulist.cpp:566
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
-msgstr ""
+msgstr "Neniuj eroj kongruas kun via serĉo"
 
 #: mode/katemodemenulist.cpp:1093
 #, kde-format
@@ -2451,7 +2488,7 @@ msgctxt ""
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Match"
-msgstr ""
+msgstr "Plej Bona Serĉkongruo"
 
 #: mode/katemodemenulist.cpp:1098
 #, kde-format
@@ -2460,7 +2497,7 @@ msgctxt ""
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Matches"
-msgstr ""
+msgstr "Plej Bonaj Serĉkongruoj"
 
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
@@ -2475,7 +2512,7 @@ msgstr "Presi lini&nombrojn"
 #: printing/printconfigwidgets.cpp:43
 #, kde-format
 msgid "Print &legend"
-msgstr "Presu &legendon"
+msgstr "Presi &legendon"
 
 #: printing/printconfigwidgets.cpp:51
 #, kde-format
@@ -2498,7 +2535,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:105
 #, kde-format
 msgid "Hea&der && Footer"
-msgstr "Ka&po kaj piedo"
+msgstr "K&apo && Piedo"
 
 #: printing/printconfigwidgets.cpp:112
 #, kde-format
@@ -2513,12 +2550,12 @@ msgstr "Presi piedo&n"
 #: printing/printconfigwidgets.cpp:120
 #, kde-format
 msgid "Header/footer font:"
-msgstr "Kapa/pieda tiparo:"
+msgstr "Tiparo de la kaplinio/piedlinio:"
 
 #: printing/printconfigwidgets.cpp:126
 #, kde-format
 msgid "Header Properties"
-msgstr "Kapaj edoj"
+msgstr "Kapliniaj Trajtoj"
 
 #: printing/printconfigwidgets.cpp:130
 #, kde-format
@@ -2533,7 +2570,7 @@ msgstr "Koloroj:"
 #: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
 #, kde-format
 msgid "Foreground:"
-msgstr "Teksto:"
+msgstr "Malfono:"
 
 #: printing/printconfigwidgets.cpp:164
 #, kde-format
@@ -2543,7 +2580,7 @@ msgstr "&Fono:"
 #: printing/printconfigwidgets.cpp:170
 #, kde-format
 msgid "Footer Properties"
-msgstr "Piedaj ecoj"
+msgstr "Piedaj Trajtoj"
 
 #: printing/printconfigwidgets.cpp:175
 #, kde-format
@@ -2586,57 +2623,57 @@ msgstr "<p>Formato de la paĝopiedo. La sekvantaj etikedoj haveblas:</p>"
 #: printing/printconfigwidgets.cpp:341
 #, kde-format
 msgid "Add Placeholder..."
-msgstr ""
+msgstr "Aldoni anstataŭilon..."
 
 #: printing/printconfigwidgets.cpp:343
 #, kde-format
 msgid "Current User Name"
-msgstr ""
+msgstr "Nuna Uzantnomo"
 
 #: printing/printconfigwidgets.cpp:345
 #, kde-format
 msgid "Complete Date/Time (short format)"
-msgstr ""
+msgstr "Kompleta Dato/Tempo (mallonga formato)"
 
 #: printing/printconfigwidgets.cpp:347
 #, kde-format
 msgid "Complete Date/Time (long format)"
-msgstr ""
+msgstr "Kompleta Dato/Tempo (longa formato)"
 
 #: printing/printconfigwidgets.cpp:349
 #, kde-format
 msgid "Current Time"
-msgstr ""
+msgstr "Nuna Tempo"
 
 #: printing/printconfigwidgets.cpp:351
 #, kde-format
 msgid "Current Date (short format)"
-msgstr ""
+msgstr "Nuna dato (mallonga formato)"
 
 #: printing/printconfigwidgets.cpp:353
 #, kde-format
 msgid "Current Date (long format)"
-msgstr ""
+msgstr "Nuna Dato (longa formato)"
 
 #: printing/printconfigwidgets.cpp:355
 #, kde-format
 msgid "File Name"
-msgstr ""
+msgstr "Dosiernomo"
 
 #: printing/printconfigwidgets.cpp:357
 #, kde-format
 msgid "Full document URL"
-msgstr ""
+msgstr "Plena dokumenta URL"
 
 #: printing/printconfigwidgets.cpp:359
 #, kde-format
 msgid "Page Number"
-msgstr ""
+msgstr "Paĝa Nombro"
 
 #: printing/printconfigwidgets.cpp:361
 #, kde-format
 msgid "Total Amount of Pages"
-msgstr ""
+msgstr "Tuta Kvanto de Paĝoj"
 
 #: printing/printconfigwidgets.cpp:467
 #, kde-format
@@ -2646,22 +2683,22 @@ msgstr "&Aranĝo"
 #: printing/printconfigwidgets.cpp:473
 #, kde-format
 msgid "&Color theme:"
-msgstr ""
+msgstr "&Kolora etoso:"
 
 #: printing/printconfigwidgets.cpp:483
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "Tiparo:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
 msgid "Draw bac&kground color"
-msgstr "Pentri &fonkoloron"
+msgstr "Pentri fon&koloron"
 
 #: printing/printconfigwidgets.cpp:490
 #, kde-format
 msgid "Draw &boxes"
-msgstr "&Pentri skatolojn"
+msgstr "Pentri &skatolojn"
 
 #: printing/printconfigwidgets.cpp:494
 #, kde-format
@@ -2681,12 +2718,12 @@ msgstr "&Marĝeno:"
 #: printing/printconfigwidgets.cpp:514
 #, kde-format
 msgid "Co&lor:"
-msgstr "&Koloro:"
+msgstr "Ko&loro:"
 
 #: printing/printconfigwidgets.cpp:536
 #, kde-format
 msgid "Select the color theme to use for the print."
-msgstr ""
+msgstr "Elektu la koloretoson uzendan por la presaĵo."
 
 #: printing/printconfigwidgets.cpp:538
 #, kde-format
@@ -2694,6 +2731,8 @@ msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
+"<p>Se enŝaltite, la fonkoloro de la redaktilo estos uzata.</p><p>Ĉi tio "
+"povas esti utila se via kolora etoso estas desegnita por malhela fono.</p>"
 
 #: printing/printconfigwidgets.cpp:541
 #, kde-format
@@ -2740,7 +2779,7 @@ msgstr "teksto"
 #, kde-format
 msgctxt "Script command name"
 msgid "Expand Abbreviation"
-msgstr ""
+msgstr "Vastigi Mallongigon"
 
 #: script/data/commands/emmet.js:10 script/data/commands/emmet.js:14
 #: script/data/commands/emmet.js:19 script/data/commands/emmet.js:23
@@ -2755,115 +2794,115 @@ msgstr ""
 #, kde-format
 msgctxt "Script command category"
 msgid "Emmet"
-msgstr ""
+msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
 #, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr ""
+msgstr "Faldi kun etikedo"
 
 #: script/data/commands/emmet.js:18
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr ""
+msgstr "Movi Kursoron al Kongrua Etikedo"
 
 #: script/data/commands/emmet.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr ""
+msgstr "Elekti HTML/XML-etikedan Enhavon Enen"
 
 #: script/data/commands/emmet.js:26
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr ""
+msgstr "Elekti HTML/XML-Etikedenhavon eksteren"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr ""
+msgstr "Ŝaltigi Komenton"
 
 #: script/data/commands/emmet.js:34
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr ""
+msgstr "Iri al Sekva Redakta Punkto"
 
 #: script/data/commands/emmet.js:38
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr ""
+msgstr "Iri al Antaŭa Redakta Punkto"
 
 #: script/data/commands/emmet.js:42
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr ""
+msgstr "Elekti Sekvan Redaktan Punkton"
 
 #: script/data/commands/emmet.js:46
 #, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr ""
+msgstr "Elekti Antaŭan Redaktan Punkton"
 
 #: script/data/commands/emmet.js:50
 #, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr ""
+msgstr "Forigi Etikedon Sub Kursoro"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr ""
+msgstr "Dividi aŭ Kunigi Etikedon"
 
 #: script/data/commands/emmet.js:58
 #, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr ""
+msgstr "Taksi Simplan Matematikan Esprimon"
 
 #: script/data/commands/emmet.js:62
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr ""
+msgstr "Malpliigi Nombron per 1"
 
 #: script/data/commands/emmet.js:66
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr ""
+msgstr "Malpliigi Nombron per 10"
 
 #: script/data/commands/emmet.js:70
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr ""
+msgstr "Malpliigi Nombron per 0.1"
 
 #: script/data/commands/emmet.js:74
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr ""
+msgstr "Pliigi Nombron per 1"
 
 #: script/data/commands/emmet.js:78
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr ""
+msgstr "Pliigi Nombron per 10"
 
 #: script/data/commands/emmet.js:82
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr ""
+msgstr "Pliigi Nombron per 0.1"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -2871,6 +2910,8 @@ msgid ""
 "Expands the abbreviation using Emmet expressions; see http://code.google.com/"
 "p/zen-coding/wiki/ZenHTMLSelectorsEn"
 msgstr ""
+"Vastigas la mallongigon uzante Emmet-esprimojn; vidu http://code.google.com/"
+"p/zen-coding/wiki/ZenHTMLSelectorsEn"
 
 #: script/data/commands/emmet.js:97
 #, kde-format
@@ -2878,128 +2919,132 @@ msgid ""
 "Wraps the selected text in XML tags constructed from the provided Emmet "
 "expression (defaults to div)."
 msgstr ""
+"Envolvas la elektitan tekston en XML-etikedojn konstruitajn el la provizita "
+"Emmet-esprimo (defaŭlte al div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
 msgid "Moves the caret to the current tag's pair"
-msgstr ""
+msgstr "Movas la tajpmontrilon al la paro de la nuna etikedo"
 
 #: script/data/commands/emmet.js:99
 #, kde-format
 msgid ""
 "Select contents of HTML/XML tag, moving inward on continuous invocations"
 msgstr ""
+"Elekti enhavon de HTML/XML-etikedo, moviĝante internen per kontinuaj alvokoj"
 
 #: script/data/commands/emmet.js:100
 #, kde-format
 msgid ""
 "Select contents of HTML/XML tag, moving outwards on continuous invocations"
 msgstr ""
+"Elekti enhavon de HTML/XML-etikedo, moviĝante eksteren per kontinuaj alvokoj"
 
 #: script/data/commands/emmet.js:101
 #, kde-format
 msgid "Move to the next edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Movi al la sekva redaktpunkto (etikedo aŭ malplena atributo)."
 
 #: script/data/commands/emmet.js:102
 #, kde-format
 msgid "Move to the previous edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Movi al la antaŭa redaktpunkto (etikedo aŭ malplena atributo)."
 
 #: script/data/commands/emmet.js:103
 #, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Elekti sekvan redaktan punkton (etikedo aŭ malplena atributo)."
 
 #: script/data/commands/emmet.js:104
 #, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr ""
+msgstr "Elekti antaŭan redaktopunkton (etikedo aŭ malplena atributo)."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
 msgid "Toggle comment of current tag or CSS selector"
-msgstr ""
+msgstr "Ŝalti komenton de nuna etikedo aŭ CSS-elektilo"
 
 #: script/data/commands/emmet.js:106
 #, kde-format
 msgid "Deletes tag under cursor"
-msgstr ""
+msgstr "Forigas etikedon sub kursoro"
 
 #: script/data/commands/emmet.js:107
 #, kde-format
 msgid "Splits or joins a tag"
-msgstr ""
+msgstr "Dividas aŭ kunigas etikedon"
 
 #: script/data/commands/emmet.js:108
 #, kde-format
 msgid "Evaluates a simple math expression"
-msgstr ""
+msgstr "Taksas simplan matematikan esprimon"
 
 #: script/data/commands/emmet.js:109
 #, kde-format
 msgid "Decrement number under cursor by 1"
-msgstr ""
+msgstr "Malpliigi nombron sub kursoro je 1"
 
 #: script/data/commands/emmet.js:110
 #, kde-format
 msgid "Decrement number under cursor by 10"
-msgstr ""
+msgstr "Malpliigi nombron sub la kursoro je 10"
 
 #: script/data/commands/emmet.js:111
 #, kde-format
 msgid "Decrement number under cursor by 0.1"
-msgstr ""
+msgstr "Malpliigi nombron sub kursoro je 0.1"
 
 #: script/data/commands/emmet.js:112
 #, kde-format
 msgid "Increment number under cursor by 1"
-msgstr ""
+msgstr "Pliigi nombron sub la kursoro je 1"
 
 #: script/data/commands/emmet.js:113
 #, kde-format
 msgid "Increment number under cursor by 10"
-msgstr ""
+msgstr "Pliigi nombron sub la kursoro je 10"
 
 #: script/data/commands/emmet.js:114
 #, kde-format
 msgid "Increment number under cursor by 0.1"
-msgstr ""
+msgstr "Pliigi nombron sub kursoro je 0.1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr ""
+msgstr "Movi Kursoron al Antaŭa Kongrua Deŝovo"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
 #, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
-msgstr ""
+msgstr "Navigado"
 
 #: script/data/commands/jumpMatchingIndent.js:14
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr ""
+msgstr "Movi Kursoron al Sekva Kongrua Deŝovo"
 
 #: script/data/commands/jumpMatchingIndent.js:44
 #, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr ""
+msgstr "Movi kursoron al antaŭa kongrua deŝovo"
 
 #: script/data/commands/jumpMatchingIndent.js:47
 #, kde-format
 msgid "Move cursor to next matching indent"
-msgstr ""
+msgstr "Movi kursoron al la sekva kongrua deŝovo"
 
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "Ordigi Elektitan Tekston Alfabete"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3014,63 +3059,63 @@ msgstr "Redaktado"
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "Forigi Duplikatojn kaj Ordigi Elektitan Tekston Alfabete"
 
 #: script/data/commands/utils.js:17
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
-msgstr ""
+msgstr "Movi Liniojn Malsupren"
 
 #: script/data/commands/utils.js:22
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
-msgstr ""
+msgstr "Movi Liniojn Supren"
 
 #: script/data/commands/utils.js:27
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
-msgstr ""
+msgstr "Duobligi Elektitajn Liniojn Malsupre"
 
 #: script/data/commands/utils.js:31
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
-msgstr ""
+msgstr "Duobligi Elektitajn Liniojn Supre"
 
 #: script/data/commands/utils.js:35
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
-msgstr ""
+msgstr "URI-kodigi Elektitan Tekston"
 
 #: script/data/commands/utils.js:39
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
-msgstr ""
+msgstr "URI-malkodi Elektitan Tekston"
 
 #: script/data/commands/utils.js:418
 #, kde-format
 msgid "Sort the selected text or whole document."
-msgstr ""
+msgstr "Ordigi la elektitan tekston aŭ tutan dokumenton."
 
 #: script/data/commands/utils.js:420
 #, kde-format
 msgid "Move selected lines down."
-msgstr ""
+msgstr "Movi elektitajn liniojn malsupren."
 
 #: script/data/commands/utils.js:422
 #, kde-format
 msgid "Move selected lines up."
-msgstr ""
+msgstr "Movi elektitajn liniojn supren."
 
 #: script/data/commands/utils.js:424
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
-msgstr ""
+msgstr "Forigi duobligitajn liniojn de la elektita teksto aŭ tuta dokumento."
 
 #: script/data/commands/utils.js:426
 #, kde-format
@@ -3079,21 +3124,25 @@ msgid ""
 "example to show the difference to the normal sort method:<br>sort(a10, a1, "
 "a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgstr ""
+"Ordigi la elektitan tekston aŭ tutan dokumenton en natura ordo.<br>Jen "
+"ekzemplo por montri la diferencon al la normala ordiga metodo:<br>sort(a10, "
+"a1, a2) => a1, a10, a2<br>natsort (a10, a1, a2) => a1, a2, a10"
 
 #: script/data/commands/utils.js:428
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
-msgstr ""
+msgstr "Tondas malantaŭan blankspacon de elekto aŭ tuta dokumento."
 
 #: script/data/commands/utils.js:430
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
-msgstr ""
+msgstr "Tondas komencan blankspacon de elekto aŭ tuta dokumento."
 
 #: script/data/commands/utils.js:432
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
+"Tranĉas antaŭan kaj malantaŭan blankspacon de elekto aŭ tuta dokumento."
 
 #: script/data/commands/utils.js:434
 #, kde-format
@@ -3102,11 +3151,14 @@ msgid ""
 "between each line:<br><code>join ', '</code> will e.g. join lines and "
 "separate them by a comma."
 msgstr ""
+"Kunigas elektitajn liniojn aŭ tutan dokumenton. Laŭvole pasigu apartigilon "
+"por meti inter ĉiu linio:<br><code>join ', '</code> ekz. kunigu liniojn kaj "
+"apartigu ilin per komo."
 
 #: script/data/commands/utils.js:436
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
-msgstr ""
+msgstr "Forigas malplenajn liniojn de elekto aŭ tuta dokumento."
 
 #: script/data/commands/utils.js:438
 #, kde-format
@@ -3121,6 +3173,14 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Ĉi tiu komando vicigas liniojn en la elektita bloko aŭ tuta dokumento sur la "
+"kolumno donita per regula esprimo donita kiel argumento.<br><br>Se vi donas "
+"malplenan ŝablonon ĝi viciĝos al la unua nemalplena signo defaŭlte.< br>Se "
+"la ŝablono havas kapton ĝi enŝovos sur la kaptita kongruo."
+"<br><br><i>Ekzemploj</i>:<br>'<code>alignon -</code>' enmetos spacojn antaŭ "
+"la unua '-' de ĉiu linio por vicigi ilin ĉiujn sur la sama kolumno."
+"<br>'<code>alignon :\\s+(.)</code>' enmetos spacojn antaŭ la unua nemalplena "
+"signo kiu okazas post dupunkto por vicigi ilin ĉiujn sur la sama kolumno."
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3131,6 +3191,12 @@ msgid ""
 "lines.join(\", \");}'</code><br>To save you some typing, you can also do "
 "this to achieve the same:<br><code>each 'lines.join(\", \")'</code>"
 msgstr ""
+"Donita JavaScript-funkcion kiel argumenton, voku tion por la listo de "
+"(elektitaj) linioj kaj anstataŭigu ilin per la revena valoro de tiu revoko."
+"<br>Ekzemplo (kunigi elektitajn liniojn):<br><code>each 'function(lines) "
+"{return lines.join(\", \");}'</code><br>Por ŝpari al vi iom da tajpado, vi "
+"ankaŭ povas fari tion por atingi la samon:<br><code>each 'lines.join( \", "
+"\")'</code>"
 
 #: script/data/commands/utils.js:444
 #, kde-format
