@@ -315,8 +315,8 @@ PUBLIC
   KF6::Completion
   KF6::SyntaxHighlighting
 PRIVATE
-  Qt${QT_MAJOR_VERSION}::Qml
-  Qt${QT_MAJOR_VERSION}::PrintSupport
+  Qt6::Qml
+  Qt6::PrintSupport
   KF6::I18n
   KF6::Archive
   KF6::GuiAddons

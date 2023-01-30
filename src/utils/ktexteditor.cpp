@@ -41,13 +41,6 @@
 
 using namespace KTextEditor;
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-Cursor Cursor::fromString(const QStringRef &str) Q_DECL_NOEXCEPT
-{
-    return fromString(QStringView(str));
-}
-#endif
-
 Cursor Cursor::fromString(QStringView str) Q_DECL_NOEXCEPT
 {
     // parse format "(line, column)"

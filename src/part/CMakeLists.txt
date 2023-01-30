@@ -15,4 +15,4 @@ endif()
 target_link_libraries (katepart KF6TextEditor KF6::SyntaxHighlighting)
 
 # install the part
-install (TARGETS katepart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/parts)
+install (TARGETS katepart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/parts)

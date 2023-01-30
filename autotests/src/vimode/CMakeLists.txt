@@ -9,8 +9,8 @@ set (VIMODE_TEST_LINK_LIBS KF6TextEditor
   KF6::SyntaxHighlighting
   KF6::Codecs
   KF6::Completion
-  Qt${QT_MAJOR_VERSION}::Qml
-  Qt${QT_MAJOR_VERSION}::Test
+  Qt6::Qml
+  Qt6::Test
 )
 
 macro(vimode_unit_test)

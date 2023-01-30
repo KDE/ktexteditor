@@ -1,4 +1,4 @@
-find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
+find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
 
 include(ECMMarkAsTest)
 include(ECMAddTests)
@@ -40,7 +40,7 @@ set (KTEXTEDITOR_TEST_LINK_LIBS KF6TextEditor
   KF6::SyntaxHighlighting
   KF6::Codecs
   KF6::Completion
-  Qt${QT_MAJOR_VERSION}::Qml
+  Qt6::Qml
 )
 
 include(ECMMarkAsTest)
@@ -97,7 +97,7 @@ KTEXTEDITOR_ENCODING_TEST ("ISO 8859-15" "latin15-with-utf8-bom.txt")
 # test executable for indentation
 add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/testutils.cpp)
 target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
-    Qt${QT_MAJOR_VERSION}::Test)
+    Qt6::Test)
 ecm_mark_as_test(kateindenttest)
 
 # test macro for indentation tests
@@ -123,7 +123,7 @@ KTEXTEDITOR_INDENT_TEST ("testReplicode")
 macro(ktexteditor_unit_test testname)
   ecm_add_test(src/${testname}.cpp ${ARGN}
                TEST_NAME ${testname}
-               LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt${QT_MAJOR_VERSION}::Test)
+               LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
 endmacro()
 
 ecm_add_tests(
@@ -156,7 +156,7 @@ ecm_add_tests(
   src/encodingtest.cpp
   src/indentdetect_test.cpp
   src/multicursortest.cpp
-  LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt${QT_MAJOR_VERSION}::Test
+  LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test
 )
 
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
@@ -176,7 +176,7 @@ add_subdirectory(src/vimode)
 add_executable(katemodemanager_benchmark src/katemodemanager_test_base.cpp src/katemodemanager_benchmark.cpp)
 ecm_mark_nongui_executable(katemodemanager_benchmark)
 add_test(NAME katemodemanager_benchmark COMMAND katemodemanager_benchmark CONFIGURATIONS BENCHMARK)
-target_link_libraries(katemodemanager_benchmark ${KTEXTEDITOR_TEST_LINK_LIBS} Qt${QT_MAJOR_VERSION}::Test)
+target_link_libraries(katemodemanager_benchmark ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
 
 add_executable(bench_search src/benchmarks/bench_search.cpp)
 target_link_libraries(bench_search PRIVATE ${KTEXTEDITOR_TEST_LINK_LIBS})
