@@ -2294,7 +2294,7 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
     connect(tryAgainAction, &QAction::triggered, this, &KTextEditor::DocumentPrivate::documentReload, Qt::QueuedConnection);
 
     QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), nullptr);
-    closeAction->setToolTip(i18n("Close message"));
+    closeAction->setToolTip(i18nc("Close the message being displayed", "Close message"));
 
     // add try again and close actions
     message->addAction(tryAgainAction);
@@ -6518,7 +6518,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     // if there are no actions, add a close action by default if widget does not auto-hide
     if (message->actions().count() == 0 && message->autoHide() < 0) {
         QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), nullptr);
-        closeAction->setToolTip(i18n("Close message"));
+        closeAction->setToolTip(i18nc("Close the message being displayed", "Close message"));
         message->addAction(closeAction);
     }
 
