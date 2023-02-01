@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-12 08:58+0200\n"
-"Last-Translator: Fracture dept <yurchor@ukr.net>\n"
+"PO-Revision-Date: 2023-01-31 08:26+0200\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -7286,7 +7286,7 @@ msgstr ""
 #: view/kateview.cpp:896
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr "Додавати курсори на кінцях рядків"
+msgstr "Додати курсори на кінцях рядків"
 
 #: view/kateview.cpp:898
 #, kde-format
@@ -7296,7 +7296,7 @@ msgstr "Створює курсор наприкінці кожного рядк
 #: view/kateview.cpp:902
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr "Додавати каретку під курсором"
+msgstr "Додати каретку під курсором"
 
 #: view/kateview.cpp:904
 #, kde-format
@@ -7306,7 +7306,7 @@ msgstr "Додає каретку у рядок під поточним курс
 #: view/kateview.cpp:908
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr "Додавати каретку над курсором"
+msgstr "Додати каретку над курсором"
 
 #: view/kateview.cpp:910
 #, kde-format
