@@ -3,22 +3,22 @@
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020.
 # Lukáš Tinkl <ltinkl@redhat.com>, 2011.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# Vit Pelcak <vit@pelcak.org>, 2021, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2022-01-11 17:41+0100\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"PO-Revision-Date: 2023-02-03 11:45+0100\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -65,7 +65,7 @@ msgstr "&Soubor"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Export/Print"
-msgstr ""
+msgstr "Export/Tisk"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -156,7 +156,7 @@ msgstr "Hlavní panel nástrojů"
 #: dialogs/bordersappearanceconfigwidget.ui:25
 #, kde-format
 msgid "Code block folding:"
-msgstr ""
+msgstr "Skládání bloků kódu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -171,7 +171,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Zobrazit šipky pro sbalení bloků kódu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -180,18 +180,20 @@ msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
+"Pokud zaškrtnuto, při přejetí myší nad sbalenou oblastí zobrazí náhled "
+"sbaleného textu ve vyskakovacím okně."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr ""
+msgstr "Zobrazit náhledy složených bloků při přejetí myši"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
 #, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "Levá strana:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -211,7 +213,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:131
 #, kde-format
 msgid "Show marks"
-msgstr ""
+msgstr "Zobrazit značky"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:85
@@ -243,7 +245,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:98
 #, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr ""
+msgstr "Zvýraznit změněné a neuložené řádky"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
@@ -273,13 +275,13 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:141
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr ""
+msgstr "Zobrazit náhled při najetí myší nad posuvník"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
 #, kde-format
 msgid "Minimap:"
-msgstr ""
+msgstr "Minimapa:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -295,7 +297,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:174
 #, kde-format
 msgid "Show minimap"
-msgstr ""
+msgstr "Ukázat minimapu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -357,7 +359,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "Podle data vytvoření"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -369,41 +371,41 @@ msgstr "Záložky budou tříděny podle čísla řádky, na kterých jsou umís
 #: dialogs/bordersappearanceconfigwidget.ui:265
 #, kde-format
 msgid "By line number"
-msgstr ""
+msgstr "Podle čísla řádku"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
 #, kde-format
 msgid "Sort bookmarks menu:"
-msgstr ""
+msgstr "Řadit nabídku se záložkami:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
 #, kde-format
 msgid "Folding arrows visibility:"
-msgstr ""
+msgstr "Viditelnost skládacích šipek:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
 #, kde-format
 msgid "Show on Hover"
-msgstr ""
+msgstr "Zobrazit při přejetí myší"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
 #, kde-format
 msgid "Show Always"
-msgstr ""
+msgstr "Vždy zobrazit"
 
 #: dialogs/clipboardhistorydialog.cpp:267
 #, kde-format
 msgid "Select text to paste."
-msgstr ""
+msgstr "Vyberte text pro vložení."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Žádné záznamy v historii schránky"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -424,19 +426,19 @@ msgstr "Povolit &automatické doplňování"
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr ""
+msgstr "Automaticky vybrat &první položku pro doplnění"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Procházet seznam doplňování pomocí Tab / Shift+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "A&uto word completion"
-msgstr ""
+msgstr "A&utomatické doplnění slov"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -462,6 +464,7 @@ msgstr ""
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
+"Doplňování slov poskytuje návrhy slov podle slov nalezených v dokumentu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -483,7 +486,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid "Documentation with completion"
-msgstr ""
+msgstr "Dokumentace s doplněním"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -492,6 +495,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Zobrazit dokumentaci vedle doplňovací nabídky. Pokud vypnuto, dokumentaci "
+"lze zobrazit stiskem klávesy Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -521,7 +526,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "Zalamovat slov&a na pevném sloupci"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -535,7 +540,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr ""
+msgstr "Na&kreslit svislou čáru v místě slupce pro zalomení slova"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -569,7 +574,7 @@ msgstr "Závorky:"
 #: dialogs/editconfigwidget.ui:124
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Automaticky zavírat závorky pokud je napsána otevírací závorka"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:137
@@ -583,7 +588,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:140
 #, kde-format
 msgid "Enclosing characters:"
-msgstr ""
+msgstr "Uzavírací znaky:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
@@ -595,25 +600,27 @@ msgstr "Kopírovat a vložit:"
 #: dialogs/editconfigwidget.ui:167
 #, kde-format
 msgid "Move selected text when dragged"
-msgstr ""
+msgstr "Přesunout vybraný text při přetažení"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
 msgstr ""
+"Kopírovat/vyjmout aktuální řádek pokud zavoláno bez toho, že by byl vyznačen "
+"nějaký text"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:181
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Nehýbat kurzorem při vkládání myší"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
 #, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr ""
+msgstr "Max záznamů v historii schránky:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
@@ -628,6 +635,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Pokud napíšete tyto znaky zatímco je text vybrán, obklopí daný text namísto "
+"jeho nahrazení."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -859,7 +868,7 @@ msgstr "Tabulátory &a mezery"
 #: dialogs/indentationconfigwidget.ui:167
 #, kde-format
 msgid "Automatically detect file indentation"
-msgstr ""
+msgstr "Automaticky detekovat odsazení textu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -935,6 +944,14 @@ msgid ""
 "<b>Tab</b> a shortcut to the action <b>Format Indentation</b>."
 "\"><span>More ...</span></a></p></body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body>\n"
+"<p>Činnost klávesy Tab (pokud není nic vybráno) <a href=\"Pokud chcete aby "
+"<b>Tab</b> zarovnával současný řádek v současném bloku kódu jako v Emacs, "
+"nastavte <b>Tab</b> jako zkratku na činnost <b>Odsazení formátu</b>."
+"\"><span>Více ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1044,17 +1061,17 @@ msgstr "Meta"
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
@@ -1074,7 +1091,7 @@ msgstr ""
 #: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
-msgstr "Textová navigace"
+msgstr "Pohyb v textu"
 
 #: dialogs/katedialogs.cpp:572
 #, kde-format
@@ -1093,7 +1110,7 @@ msgstr "Vlastnost není aktivní"
 #: dialogs/katedialogs.cpp:579
 #, kde-format
 msgid "Disable Feature"
-msgstr ""
+msgstr "Zakázat vlastnost"
 
 #: dialogs/katedialogs.cpp:581
 #, kde-format
@@ -1204,7 +1221,7 @@ msgstr "Slovník:"
 #: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr ""
+msgstr "Povolit automatické opětovné načtení"
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1418,25 +1435,25 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "Mnohonásobné kurzory"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Modifikátory mnohonásobných kurzorů"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Automaticky opětovně načíst soubory ve správě verzí"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Vytvořit zálohu při uložení pro:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1470,7 +1487,7 @@ msgstr "Vzdálené soubo&ry"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Předpona souborů zálohy:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1482,7 +1499,7 @@ msgstr "Zadejte předponu, která se přidá před název souboru se zálohou."
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Přípona souborů zálohy:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -1494,31 +1511,31 @@ msgstr "Zadejte příponu, která se přidá za název souboru se zálohou."
 #: dialogs/opensaveconfigadvwidget.ui:134
 #, kde-format
 msgid "Swap file mode:"
-msgstr ""
+msgstr "Režim odkládacího souboru:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Povoleno. Ukládat ve výchozím adresáři"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Povoleno. Ukládat ve vlastním adresáři"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
 #, kde-format
 msgid "Store swap files in:"
-msgstr ""
+msgstr "Ukládat odkládací soubory v:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
 #, kde-format
 msgid "Save swap files every:"
-msgstr ""
+msgstr "Uložit odkládací soubory každých:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1733,19 +1750,19 @@ msgstr "Před uložením ukončit poslední řádek znakem nového řádku"
 #: dialogs/opensaveconfigwidget.ui:239
 #, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr ""
+msgstr "Povolit automatické ukládání (pouze místní soubory)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "Automaticky uložit dokument když uživatel přepne jinam"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Interval automatického ukládání:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
@@ -1757,43 +1774,43 @@ msgstr " sekund"
 #: dialogs/statusbarconfigwidget.ui:19
 #, kde-format
 msgid "Show highlighting mode"
-msgstr ""
+msgstr "Zobrazit režim zvýrazňování"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
 #, kde-format
 msgid "Show input mode"
-msgstr ""
+msgstr "Zobrazit vstupní režim"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
 #, kde-format
 msgid "Show active dictionary"
-msgstr ""
+msgstr "Zobrazit aktivní slovník"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
 #, kde-format
 msgid "Show tab setting"
-msgstr ""
+msgstr "Zobrazit nastavení karet"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
 #, kde-format
 msgid "Show line column"
-msgstr ""
+msgstr "Zobrazit sloupec s řádky"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
 #, kde-format
 msgid "Show File Encoding"
-msgstr ""
+msgstr "Zobrazit kódování souboru"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Zobrazit typ ukončení řádku"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1849,7 +1866,7 @@ msgstr "Editor bude zobrazovat symbol pro zviditelnění tabulátorů v textu."
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Zobrazit rámec zaměření okolo editoru"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
@@ -1911,6 +1928,7 @@ msgstr ""
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
+"Zvýraznit odpovídající závorku pokud kurzor přejede k její párové závorce"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -1938,7 +1956,7 @@ msgstr "Počet:"
 #: dialogs/textareaappearanceconfigwidget.ui:254
 #, kde-format
 msgid "Show/hide word count in status bar"
-msgstr ""
+msgstr "Zobrazit/skrýt počet slov ve stavové liště"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:257
@@ -1984,13 +2002,13 @@ msgstr "Dynamické zalamování slov:"
 #: dialogs/textareaappearanceconfigwidget.ui:323
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr ""
+msgstr "Dynamicky zalamovat na statické značce pro zalomení textu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
-msgstr ""
+msgstr "Při dynamickém zalamování slov nehledět na okraje slov"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:337
@@ -2049,12 +2067,14 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Tato hodnota bude vynásobena výchozí velikostí písma. Hodnota 1.0 znamená, "
+"že bude použita výchozí výška."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
 #, kde-format
 msgid "Line Height Multiplier:"
-msgstr ""
+msgstr "Násobič výšky řádků:"
 
 #: document/katebuffer.cpp:140
 #, kde-format
@@ -2070,7 +2090,7 @@ msgstr "Soubor %1 neexistuje."
 #: document/katedocument.cpp:246
 #, kde-format
 msgid "Auto Reload Document"
-msgstr ""
+msgstr "Automaticky znovu načíst dokument"
 
 #: document/katedocument.cpp:247
 #, kde-format
@@ -2799,13 +2819,13 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr ""
+msgstr "Zalamovat se značkou"
 
 #: script/data/commands/emmet.js:18
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr ""
+msgstr "Přesunout kurzor na odpovídající značku"
 
 #: script/data/commands/emmet.js:22
 #, kde-format
@@ -2823,7 +2843,7 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr ""
+msgstr "Přepnout komentář"
 
 #: script/data/commands/emmet.js:34
 #, kde-format
@@ -2853,13 +2873,13 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr ""
+msgstr "Smazat značku pod kurzorem"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr ""
+msgstr "Rozdělit nebo spojit značku"
 
 #: script/data/commands/emmet.js:58
 #, kde-format
@@ -2967,7 +2987,7 @@ msgstr "Smaže značku pod kurzorem"
 #: script/data/commands/emmet.js:107
 #, kde-format
 msgid "Splits or joins a tag"
-msgstr ""
+msgstr "Rozdělí nebo sloučí značku"
 
 #: script/data/commands/emmet.js:108
 #, kde-format
@@ -3021,7 +3041,7 @@ msgstr "Procházení"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr ""
+msgstr "Přejít na následující odpovídající odsazení"
 
 #: script/data/commands/jumpMatchingIndent.js:44
 #, kde-format
@@ -4037,7 +4057,7 @@ msgstr "Přidat do slovníku"
 #: spellcheck/spellingmenu.cpp:168
 #, kde-format
 msgid "Spelling '%1'"
-msgstr ""
+msgstr "Kontrola pravopisu '%1'"
 
 #: swapfile/kateswapdiffcreator.cpp:93
 #, kde-format
@@ -4755,17 +4775,17 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1024
 #, kde-format
 msgid "Default Theme"
-msgstr ""
+msgstr "Výchozí motiv"
 
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Theme Editor"
-msgstr ""
+msgstr "Editor motivů"
 
 #: syntax/katethemeconfig.cpp:1039
 #, kde-format
 msgid "Select theme:"
-msgstr ""
+msgstr "Zvolte motiv:"
 
 #: syntax/katethemeconfig.cpp:1108
 #, kde-format
@@ -4791,6 +4811,8 @@ msgstr "Importovat..."
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
+"Přidaný motiv pouze pro čtení. Pokud jej chcete upravit, musíte jej "
+"zkopírovat."
 
 #: syntax/katethemeconfig.cpp:1147
 #, kde-format
@@ -4837,7 +4859,7 @@ msgstr "Přesto importovat"
 #: syntax/katethemeconfig.cpp:1288
 #, kde-format
 msgid "Follow System Color Scheme"
-msgstr ""
+msgstr "Následovat barevné schéma systému"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
@@ -5231,7 +5253,7 @@ msgstr "Komponenta vestavěného editoru"
 #: utils/kateglobal.cpp:77
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr ""
+msgstr "(c) 2000-2022 autoři Kate"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -6363,7 +6385,7 @@ msgstr ""
 #: view/kateview.cpp:507
 #, kde-format
 msgid "&Format Indentation"
-msgstr ""
+msgstr "Odsazení &formátu"
 
 #: view/kateview.cpp:508
 #, kde-format
@@ -7410,7 +7432,7 @@ msgstr ""
 #: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Vzorec zarovnání:"
 
 #: view/kateview.cpp:4750
 #, kde-format
