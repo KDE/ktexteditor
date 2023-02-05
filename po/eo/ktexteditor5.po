@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-02-03 16:17+0100\n"
+"PO-Revision-Date: 2023-02-04 10:04+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -5105,6 +5105,8 @@ msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
 "number <b>width</b>. Used only if you are indenting with spaces.</p>"
 msgstr ""
+"<p>set-indent-width <b>larĝo</b></p><p>Metas la deŝovlarĝon al la nombro "
+"<b>larĝo</b>. Uzata nur se vi deŝovigas per spacoj.</p>"
 
 #: utils/katecmds.cpp:130
 #, kde-format
@@ -5112,6 +5114,8 @@ msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
 "in the Tools - Indentation menu</p>"
 msgstr ""
+"<p>set-indent-mode <b>reĝimo</b></p><p>La reĝima parametro estas valoro kiel "
+"vidita en la menuo Iloj - Deŝovo</p>"
 
 #: utils/katecmds.cpp:135
 #, kde-format
@@ -5120,6 +5124,9 @@ msgid ""
 "p><p>possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
+"<p>set-auto-indent <b>enable</b></p><p>Ebligi aŭ malŝalti aŭtomatan deŝovon."
+"</p><p>eblaj veraj valoroj: 1 on true<br/>eblaj malveraj valoroj: 0 off "
+"false</p>"
 
 #: utils/katecmds.cpp:142
 #, kde-format
@@ -5128,6 +5135,9 @@ msgid ""
 "numbers pane.</p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
+"<p>set-line-numbers <b>enable</b></p><p>Metas la videblecon de la lininumero-"
+"fenestro.</p><p> eblaj veraj valoroj: 1 on true<br/> eblaj falsaj valoroj: 0 "
+"off false</p>"
 
 #: utils/katecmds.cpp:149
 #, kde-format
@@ -5136,6 +5146,9 @@ msgid ""
 "folding markers pane.</p><p> possible true values: 1 on true<br/>possible "
 "false values: 0 off false</p>"
 msgstr ""
+"<p>set-folding-markers <b>enable</b></p><p>Metas la videblecon de la panelo "
+"de faldmarkiloj.</p><p> eblaj veraj valoroj: 1 on true<br/> eblaj falsaj "
+"valoroj: 0 off false</p>"
 
 #: utils/katecmds.cpp:156
 #, kde-format
@@ -5144,6 +5157,9 @@ msgid ""
 "border.</p><p> possible true values: 1 on true<br/>possible false values: 0 "
 "off false</p>"
 msgstr ""
+"<p>set-icon-border <b>enable</b></p><p>Metas la videblecon de la piktograma "
+"bordero.</p><p> eblaj veraj valoroj: 1 on true<br/>ebla malveraj valoroj: 0 "
+"off false</p>"
 
 #: utils/katecmds.cpp:163
 #, kde-format
@@ -5152,6 +5168,9 @@ msgid ""
 "<b>enable</b></p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
+"<p>set-word-wrap <b>enable</b></p><p>Ebligas dinamikan linifaldon laŭ "
+"<b><b>enable</b></p><p> eblaj veraj valoroj: 1 on true<br/>eblaj malveraj "
+"valoroj: 0 off false</p>"
 
 #: utils/katecmds.cpp:170
 #, kde-format
@@ -5160,6 +5179,9 @@ msgid ""
 "wrapping to <b>width</b>. This is used if you are having your text wrapped "
 "automatically.</p>"
 msgstr ""
+"<p>set-word-wrap-column <b>larĝo</b></p><p>Metas la linilarĝon por malmola "
+"linifaldo al <b>larĝo</b>. Ĉi tio estas uzata se via teksto estu faldata "
+"aŭtomate.</p>"
 
 #: utils/katecmds.cpp:175
 #, kde-format
@@ -5168,6 +5190,10 @@ msgid ""
 "replaced with whitespace whenever the document is saved.</p><p> possible "
 "true values: 1 on true<br/>possible false values: 0 off false</p>"
 msgstr ""
+"<p>set-replace-tabs-save <b>enable</b></p><p>Kiam estas enŝaltita, taboj "
+"estos anstataŭigataj per blankspaco kiam la dokumento estas konservita.</"
+"p><p> eblaj veraj valoroj : 1 on true<br/>eblaj malveraj valoroj: 0 off "
+"false</p>"
 
 #: utils/katecmds.cpp:182
 #, kde-format
@@ -5177,11 +5203,17 @@ msgid ""
 "the Tools → Highlighting menu. This command provides an autocompletion list "
 "for its argument.</p>"
 msgstr ""
+"<p>set-highlight <b>highlight</b></p><p>Metas la sintaksreliefigan sistemon "
+"por la dokumento. La argumento devas esti valida nomo de emfazigo, kiel "
+"vidite en la menuo Iloj → Emfazigo. Ĉi tiu komando provizas aŭtomatan liston "
+"por siaj argumentoj.</p>"
 
 #: utils/katecmds.cpp:188
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
+"<p>set-mode <b>reĝimo</b></p><p>Metas la reĝimon kiel vidite en Iloj - "
+"Reĝimo</p>"
 
 #: utils/katecmds.cpp:193
 #, kde-format
@@ -5190,11 +5222,14 @@ msgid ""
 "visualized by a vertical dotted line.</p><p> possible true values: 1 on "
 "true<br/>possible false values: 0 off false</p>"
 msgstr ""
+"<p>set-show-indent <b>enable</b></p><p>Se ebligita, deŝovo estos bildigata "
+"per vertikala punktlinio.</p><p> eblaj veraj valoroj: 1 on true<br/>eblaj "
+"malveraj valoroj: 0 off false</p>"
 
 #: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
-msgstr ""
+msgstr "<p>Malfermi la dialogon Presi por presi la aktualan dokumenton.</p>"
 
 #: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
@@ -5209,12 +5244,12 @@ msgstr "Ne ekzistas emfazado '%1'"
 #: utils/katecmds.cpp:333
 #, kde-format
 msgid "No such mode '%1'"
-msgstr "Ne ekzistas reĝimo: '%1'"
+msgstr "Ne ekzistas reĝimo '%1'"
 
 #: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "Ne eblis konverti '%1' al entjera valoro."
+msgstr "Malsukcesis konverti argumenton '%1' al entjero."
 
 #: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
@@ -5241,6 +5276,7 @@ msgstr "Maltaŭga argumento '%1'. Uzado: %2 on|off|1|0|true|false"
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
+"Uzo: set-remove-trailing-spaces 0|-|neniu aŭ 1|+|mod|modifitaj aŭ 2|*|ĉio"
 
 #: utils/katecmds.cpp:435 vimode/cmds.cpp:168
 #, kde-format
@@ -5255,9 +5291,53 @@ msgid ""
 "form.</p><p>Examples:<ul><li>char <b>234</b></li><li>char <b>0x1234</b></"
 "li></ul></p>"
 msgstr ""
+"<p> char <b>identigilo</b> </p><p>Ĉi tiu komando permesas enmeti laŭvortajn "
+"signojn per ilia nombra identigilo, en decimala, okta aŭ deksesuma formo.</"
+"p><p>Ekzemploj:< </ekz> <li>char <b>234</b></li>char <b>0x1234</b></li></"
+"ul></p>"
 
 #: utils/katecmds.cpp:560
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined "
+#| "by the specified format, or the format yyyy-MM-dd hh:mm:ss if none is "
+#| "specified.</p><p>Possible format specifiers are:<table><tr><td>d</"
+#| "td><td>The day as number without a leading zero (1-31).</td></"
+#| "tr><tr><td>dd</td><td>The day as number with a leading zero (01-31).</"
+#| "td></tr><tr><td>ddd</td><td>The abbreviated localized day name (e.g. "
+#| "'Mon'..'Sun').</td></tr><tr><td>dddd</td><td>The long localized day name "
+#| "(e.g. 'Monday'..'Sunday').</td></tr><tr><td>M</td><td>The month as number "
+#| "without a leading zero (1-12).</td></tr><tr><td>MM</td><td>The month as "
+#| "number with a leading zero (01-12).</td></tr><tr><td>MMM</td><td>The "
+#| "abbreviated localized month name (e.g. 'Jan'..'Dec').</td></"
+#| "tr><tr><td>yy</td><td>The year as two digit number (00-99).</td></"
+#| "tr><tr><td>yyyy</td><td>The year as four digit number (1752-8000).</td></"
+#| "tr><tr><td>h</td><td>The hour without a leading zero <p>date or date "
+#| "<b>format</b></p><p>Inserts a date/time string as defined by the "
+#| "specified format, or the format yyyy-MM-dd hh:mm:ss if none is specified."
+#| "</p><p>Possible format specifiers are:<table><tr><td>d</td><td>The day as "
+#| "number without a leading zero (1-31).</td></tr><tr><td>dd</td><td>The day "
+#| "as number with a leading zero (01-31).</td></tr><tr><td>ddd</td><td>The "
+#| "abbreviated localized day name (e.g. 'Mon'..'Sun').</td></"
+#| "tr><tr><td>dddd</td><td>The long localized day name (e.g. "
+#| "'Monday'..'Sunday').</td></tr><tr><td>M</td><td>The month as number "
+#| "without a leading zero (1-12).</td></tr><tr><td>MM</td><td>The month as "
+#| "number with a leading zero (01-12).</td></tr><tr><td>MMM</td><td>The "
+#| "abbreviated localized month name (e.g. 'Jan'..'Dec').</td></"
+#| "tr><tr><td>yy</td><td>The year as two digit number (00-99).</td></"
+#| "tr><tr><td>yyyy</td><td>The year as four digit number (1752-8000).</td></"
+#| "tr><tr><td>h</td><td>The hour without a leading zero (0..23 or 1..12 if "
+#| "AM/PM display).</td></tr><tr><td>hh</td><td>The hour with a leading zero "
+#| "(00..23 or 01..12 if AM/PM display).</td></tr><tr><td>m</td><td>The "
+#| "minute without a leading zero (0..59).</td></tr><tr><td>mm</td><td>The "
+#| "minute with a leading zero (00..59).</td></tr><tr><td>s</td><td>The "
+#| "second without a leading zero (0..59).</td></tr><tr><td>ss</td><td>The "
+#| "second with a leading zero (00..59).</td></tr><tr><td>z</td><td>The "
+#| "milliseconds without leading zeroes (0..999).</td></tr><tr><td>zzz</"
+#| "td><td>The milliseconds with leading zeroes (000..999).</td></"
+#| "tr><tr><td>AP</td><td>Use AM/PM display. AP will be replaced by either "
+#| "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will "
+#| "be replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
 "the specified format, or the format yyyy-MM-dd hh:mm:ss if none is specified."
@@ -5284,6 +5364,29 @@ msgid ""
 "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will be "
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
+"<p>dato aŭ data <b>formato</b></p><p>Enmetas daton/horan ĉenon kiel difinita "
+"per la specifita formato, aŭ la formato jjjj-MM-dd hh:mm:ss se neniu estas "
+"specifita.</p><p>Eblaj formato-specifiloj estas:<table><tr><td>d</td><td>La "
+"tago kiel nombro sen unua nulo (1-31).</td>< /tr><tr><td>dd</td><td>La tago "
+"kiel nombro kun unua nulo (01-31).</td></tr><tr><td>ddd</td><td>La "
+"mallongigita lokalizita tagnomo (ekz. 'Lun'..'Dim').</td></tr><tr><td>dddd</"
+"td><td>La longa lokalizita tagnomo (ekz. 'Lundo'..'Dimanĉo').</td></"
+"tr><tr><td>M</td><td>La monato kiel nombro sen unua nulo (1-12).</td></"
+"tr><tr><td>MM</td><td>La monato kiel nombro kun unua nulo (01-12).</td></"
+"tr><tr><td>MMM</td><td>La mallongigita lokalizita monata nomo (ekz. "
+"'Jan'..'Dec').</td></tr><tr><td>jj</td><td>La jaro kiel ducifera nombro "
+"(00-99).</td></tr><tr><td>jjjj</td><td>La jaro kiel kvarcifera nombro "
+"(1752-8000).</td></tr><tr><td>h</td><td>La horo sen unua nulo (0..23 aŭ "
+"1..12 se montriĝas AM/PM).</td></tr><tr><td>hh</td><td>La horo kun unua nulo "
+"(00..23 aŭ 01..12 se montriĝas AM/PM).</td></tr><tr><td>m</td><td>La minuto "
+"sen unua nulo (0..59).</td></tr><tr><td>mm</td><td>La minuto kun unua nulo "
+"(00.. 59).</td></tr><tr><td>s</td><td>La dua sen unua nulo (0..59).</td></"
+"tr><tr><td>ss</td><td>La dua kun unua nulo (00..59).</td></tr><tr><td>z</"
+"td><td>La milisekundoj sen antaŭaj nuloj (0..999).</td></tr><tr><td>zzz</"
+"td><td>La milisekundoj kun antaŭaj nuloj (000..999).</td></tr><tr><td>AP</"
+"td><td>Uzi AM/PM-montrilon. AP estos anstataŭigita per aŭ \"AM\" aŭ \"PM\".</"
+"td></tr><tr><td>ap</td><td>Uzi am/pm-montrilon. ap estos anstataŭigata per "
+"aŭ \"am\" aŭ \"pm\".</td></tr></table></p>"
 
 #: utils/kateglobal.cpp:73
 #, kde-format
