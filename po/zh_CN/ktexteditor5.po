@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-12 00:52+0000\n"
-"PO-Revision-Date: 2023-01-12 10:30\n"
+"PO-Revision-Date: 2023-02-07 11:02\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -6238,14 +6238,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "词数 %1/%2，字符数 %3/%4"
 
 #: view/katestatusbar.cpp:573
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "词数 %1/%2，字符数 %3/%4"
+msgstr "单词数 %1，字符数 %2"
 
 #: view/katestatusbar.cpp:588
 #, kde-format
