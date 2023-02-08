@@ -50,8 +50,6 @@
 #include <KTextEditor/Message>
 #include <ktexteditor/inlinenoteprovider.h>
 
-#include <KParts/Event>
-
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigGroup>
