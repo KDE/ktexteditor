@@ -1,6 +1,3 @@
-# handle data files, .desktop & .cmake
-add_subdirectory(data)
-
 # jscripts for the part
 add_subdirectory( script/data )
 
