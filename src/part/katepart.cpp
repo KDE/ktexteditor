@@ -33,10 +33,8 @@ public:
      * \param parentWidget Only used if the requested plugin is a KPart.
      * \param parent The parent object for the plugin object.
      * \param args A plugin specific list of arbitrary arguments.
-     * \param keyword A string that uniquely identifies the plugin. If a KService is used this
-     * keyword is read from the X-KDE-PluginKeyword entry in the .desktop file.
      */
-    QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &, const QString &) override
+    QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &) override
     {
         // iface == classname to construct
         const QByteArray classname(iface);
