@@ -285,7 +285,7 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
     }
 
     if (m_showMiniMap) {
-        if (m_leftMouseDown && e->pos().y() > m_mapGroveRect.top() && e->pos().y() < m_mapGroveRect.bottom()) {
+        if (!m_sliderRect.contains(e->pos()) && m_leftMouseDown && e->pos().y() > m_mapGroveRect.top() && e->pos().y() < m_mapGroveRect.bottom()) {
             // if we show the minimap left-click jumps directly to the selected position
             int newVal = (e->pos().y() - m_mapGroveRect.top()) / (double)m_mapGroveRect.height() * (double)(maximum() + pageStep()) - pageStep() / 2;
             newVal = qBound(0, newVal, maximum());
@@ -911,6 +911,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     sliderColor.setAlpha(50);
     painter.fillRect(sliderRect, sliderColor);
     painter.setPen(QPen(highlightColor, 0));
+    m_sliderRect = sliderRect;
     // rounded rect looks ugly for some reason, so we draw 4 lines.
     painter.drawLine(sliderRect.left(), sliderRect.top() + 1, sliderRect.left(), sliderRect.bottom() - 1);
     painter.drawLine(sliderRect.right(), sliderRect.top() + 1, sliderRect.right(), sliderRect.bottom() - 1);
