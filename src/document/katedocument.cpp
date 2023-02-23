@@ -73,7 +73,6 @@
 #include <QRegularExpression>
 #include <QStandardPaths>
 #include <QTemporaryFile>
-#include <QTextCodec>
 #include <QTextStream>
 
 #include <cmath>

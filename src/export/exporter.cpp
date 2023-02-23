@@ -21,7 +21,6 @@
 #include <QClipboard>
 #include <QFileDialog>
 #include <QMimeData>
-#include <QTextCodec>
 
 void KateExporter::exportToClipboard()
 {

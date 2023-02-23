@@ -15,7 +15,6 @@
 
 #include <QDir>
 #include <QStandardPaths>
-#include <QTextCodec>
 
 // BEGIN SwapDiffCreator
 SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)
