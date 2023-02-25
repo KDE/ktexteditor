@@ -247,10 +247,11 @@ void KateAutoIndent::keepIndent(int line)
     // remove leading whitespace, then insert the leading indentation
     doc->editStart();
 
-    if (!keepExtra) {
-        const QString currentWhitespace = textLine->leadingWhitespace();
-        doc->editRemoveText(line, 0, currentWhitespace.length());
-    }
+    int indentDepth = textLine->indentDepth(tabWidth);
+    int extraSpaces = indentDepth % indentWidth;
+    doc->editRemoveText(line, 0, indentDepth);
+    if (keepExtra && extraSpaces > 0)
+        doc->editInsertText(line, 0, QString(extraSpaces, QLatin1Char(' ')));
 
     doc->editInsertText(line, 0, previousWhitespace);
     doc->editEnd();
@@ -403,12 +404,15 @@ void KateAutoIndent::indent(KTextEditor::ViewPrivate *view, KTextEditor::Range r
     // we want one undo action >= START
     doc->setUndoMergeAllEdits(true);
 
+    bool prevKeepExtra = keepExtra;
+    keepExtra = false; // we are formatting a block of code, no extra spaces
     // loop over all lines given...
     for (int line = range.start().line() < 0 ? 0 : range.start().line(); line <= qMin(range.end().line(), doc->lines() - 1); ++line) {
         // let the script indent for us...
         scriptIndent(view, KTextEditor::Cursor(line, 0), QChar());
     }
 
+    keepExtra = prevKeepExtra;
     // we want one undo action => END
     doc->setUndoMergeAllEdits(false);
 }
