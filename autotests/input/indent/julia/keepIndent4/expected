@@ -1,0 +1,4 @@
+function test(x)
+    x *= 5
+    for i in 1:10 x += i end
+    y = x / 5
