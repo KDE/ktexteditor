@@ -20,7 +20,7 @@
 #include <QDate>
 #include <QFile>
 #include <QFileInfo>
-#include <QTextCodec>
+#include <QStringEncoder>
 #include <QTextStream>
 #include <QTimer>
 
@@ -112,8 +112,8 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
 {
     // first: setup fallback and normal encoding
     setEncodingProberType(KateGlobalConfig::global()->proberType());
-    setFallbackTextCodec(KateGlobalConfig::global()->fallbackCodec());
-    setTextCodec(m_doc->config()->codec());
+    setFallbackTextCodec(KateGlobalConfig::global()->fallbackEncoding());
+    setTextCodec(m_doc->config()->encoding());
 
     // setup eol
     setEndOfLineMode((EndOfLineMode)m_doc->config()->eol());
@@ -161,7 +161,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     }
 
     // save back encoding
-    m_doc->config()->setEncoding(QString::fromLatin1(textCodec()->name()));
+    m_doc->config()->setEncoding(textCodec());
 
     // set eol mode, if a eol char was found
     if (m_doc->config()->allowEolDetection()) {
@@ -179,16 +179,26 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
 
 bool KateBuffer::canEncode()
 {
-    QTextCodec *codec = m_doc->config()->codec();
-
     // hardcode some Unicode encodings which can encode all chars
-    if ((QString::fromLatin1(codec->name()) == QLatin1String("UTF-8")) || (QString::fromLatin1(codec->name()) == QLatin1String("ISO-10646-UCS-2"))) {
-        return true;
+    if (const auto setEncoding = QStringConverter::encodingForName(m_doc->config()->encoding().toUtf8().constData())) {
+        for (const auto encoding : {QStringConverter::Utf8,
+                                    QStringConverter::Utf16,
+                                    QStringConverter::Utf16BE,
+                                    QStringConverter::Utf16LE,
+                                    QStringConverter::Utf32,
+                                    QStringConverter::Utf32BE,
+                                    QStringConverter::Utf32LE}) {
+            if (setEncoding == encoding) {
+                return true;
+            }
+        }
     }
 
+    QStringEncoder encoder(m_doc->config()->encoding().toUtf8().constData());
     for (int i = 0; i < lines(); i++) {
-        if (!codec->canEncode(line(i)->text())) {
-            qCDebug(LOG_KTE) << QLatin1String("ENC NAME: ") << codec->name();
+        encoder.encode(line(i)->text());
+        if (encoder.hasError()) {
+            qCDebug(LOG_KTE) << QLatin1String("ENC NAME: ") << m_doc->config()->encoding();
             qCDebug(LOG_KTE) << QLatin1String("STRING LINE: ") << line(i)->text();
             qCDebug(LOG_KTE) << QLatin1String("ENC WORKING: FALSE");
 
@@ -203,8 +213,8 @@ bool KateBuffer::saveFile(const QString &m_file)
 {
     // first: setup fallback and normal encoding
     setEncodingProberType(KateGlobalConfig::global()->proberType());
-    setFallbackTextCodec(KateGlobalConfig::global()->fallbackCodec());
-    setTextCodec(m_doc->config()->codec());
+    setFallbackTextCodec(KateGlobalConfig::global()->fallbackEncoding());
+    setTextCodec(m_doc->config()->encoding());
 
     // setup eol
     setEndOfLineMode((EndOfLineMode)m_doc->config()->eol());

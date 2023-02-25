@@ -56,7 +56,7 @@ set(REQUIRED_QT_VERSION 6.4.0)
 
 # Required Qt components to build this framework
 find_package(Qt6 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
-  PrintSupport Xml Core5Compat)
+  PrintSupport Xml)
 
 find_package(KF6Archive ${KF_DEP_VERSION} REQUIRED)
 find_package(KF6Config ${KF_DEP_VERSION} REQUIRED)

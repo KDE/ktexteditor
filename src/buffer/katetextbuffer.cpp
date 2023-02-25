@@ -29,6 +29,7 @@
 #include <QCryptographicHash>
 #include <QFile>
 #include <QFileInfo>
+#include <QStringEncoder>
 #include <QTemporaryFile>
 
 #if HAVE_KAUTH
@@ -61,8 +62,6 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool
     , m_editingMinimalLineChanged(-1)
     , m_editingMaximalLineChanged(-1)
     , m_encodingProberType(KEncodingProber::Universal)
-    , m_fallbackTextCodec(nullptr)
-    , m_textCodec(nullptr)
     , m_generateByteOrderMark(false)
     , m_endOfLineMode(eolUnix)
     , m_lineLengthLimit(4096)
@@ -548,10 +547,10 @@ void TextBuffer::debugPrint(const QString &title) const
 bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLongLinesWrapped, int &longestLineLoaded, bool enforceTextCodec)
 {
     // fallback codec must exist
-    Q_ASSERT(m_fallbackTextCodec);
+    Q_ASSERT(!m_fallbackTextCodec.isEmpty());
 
     // codec must be set!
-    Q_ASSERT(m_textCodec);
+    Q_ASSERT(!m_textCodec.isEmpty());
 
     // first: clear buffer in any case!
     clear();
@@ -581,9 +580,9 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         // in round 0 + 3 use the given encoding from user
         // in round 1 use 0, to trigger detection
         // in round 2 use fallback
-        QTextCodec *codec = m_textCodec;
+        QString codec = m_textCodec;
         if (i == 1) {
-            codec = nullptr;
+            codec.clear();
         } else if (i == 2) {
             codec = m_fallbackTextCodec;
         }
@@ -606,7 +605,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
 
             // bail out on encoding error, if not last round!
             if (encodingErrors && i < (enforceTextCodec ? 0 : 3)) {
-                BUFFER_DEBUG << "Failed try to load file" << filename << "with codec" << (file.textCodec() ? file.textCodec()->name() : "(null)");
+                BUFFER_DEBUG << "Failed try to load file" << filename << "with codec" << file.textCodec();
                 break;
             }
 
@@ -686,7 +685,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     Q_ASSERT(m_lines > 0);
 
     // report CODEC + ERRORS
-    BUFFER_DEBUG << "Loaded file " << filename << "with codec" << m_textCodec->name() << (encodingErrors ? "with" : "without") << "encoding errors";
+    BUFFER_DEBUG << "Loaded file " << filename << "with codec" << m_textCodec << (encodingErrors ? "with" : "without") << "encoding errors";
 
     // report BOM
     BUFFER_DEBUG << (file.byteOrderMarkFound() ? "Found" : "Didn't find") << "byte order mark";
@@ -711,24 +710,30 @@ void TextBuffer::setDigest(const QByteArray &checksum)
     m_digest = checksum;
 }
 
-void TextBuffer::setTextCodec(QTextCodec *codec)
+void TextBuffer::setTextCodec(const QString &codec)
 {
     m_textCodec = codec;
 
     // enforce bom for some encodings
-    int mib = m_textCodec->mibEnum();
-    if (mib == 1013 || mib == 1014 || mib == 1015) { // utf16
-        setGenerateByteOrderMark(true);
-    }
-    if (mib == 1017 || mib == 1018 || mib == 1019) { // utf32
-        setGenerateByteOrderMark(true);
+    if (const auto setEncoding = QStringConverter::encodingForName(m_textCodec.toUtf8().constData())) {
+        for (const auto encoding : {QStringConverter::Utf16,
+                                    QStringConverter::Utf16BE,
+                                    QStringConverter::Utf16LE,
+                                    QStringConverter::Utf32,
+                                    QStringConverter::Utf32BE,
+                                    QStringConverter::Utf32LE}) {
+            if (setEncoding == encoding) {
+                setGenerateByteOrderMark(true);
+                break;
+            }
+        }
     }
 }
 
 bool TextBuffer::save(const QString &filename)
 {
     // codec must be set, else below we fail!
-    Q_ASSERT(m_textCodec);
+    Q_ASSERT(!m_textCodec.isEmpty());
 
     SaveResult saveRes = saveBufferUnprivileged(filename);
 
@@ -755,7 +760,7 @@ bool TextBuffer::save(const QString &filename)
 
 bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFile)
 {
-    std::unique_ptr<QTextEncoder> encoder(m_textCodec->makeEncoder(generateByteOrderMark() ? QTextCodec::DefaultConversion : QTextCodec::IgnoreHeader));
+    QStringEncoder encoder(m_textCodec.toUtf8().constData(), generateByteOrderMark() ? QStringConverter::Flag::WriteBom : QStringConverter::Flag::Default);
 
     // our loved eol string ;)
     QString eol = QStringLiteral("\n");
@@ -768,11 +773,11 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
     // just dump the lines out ;)
     for (int i = 0; i < m_lines; ++i) {
         // dump current line
-        saveFile.write(encoder->fromUnicode(line(i)->text()));
+        saveFile.write(encoder.encode(line(i)->text()));
 
         // append correct end of line string
         if ((i + 1) < m_lines) {
-            saveFile.write(encoder->fromUnicode(eol));
+            saveFile.write(encoder.encode(eol));
         }
 
         // early out on stream errors

@@ -18,8 +18,9 @@
 
 #include <QGuiApplication>
 #include <QSettings>
+#include <QStringDecoder>
+#include <QStringEncoder>
 #include <QStringListModel>
-#include <QTextCodec>
 
 #include <Sonnet/GuessLanguage>
 #include <Sonnet/Speller>
@@ -217,8 +218,7 @@ KateRendererConfig *KateRendererConfig::s_global = nullptr;
  */
 static bool isEncodingOk(const QString &name)
 {
-    auto codec = QTextCodec::codecForName(name.toUtf8());
-    return codec;
+    return QStringDecoder(name.toUtf8().constData()).isValid() && QStringEncoder(name.toUtf8().constData()).isValid();
 }
 
 static bool inBounds(const int min, const QVariant &value, const int max)
@@ -244,9 +244,13 @@ KateGlobalConfig::KateGlobalConfig()
 
     // init all known config entries
     addConfigEntry(ConfigEntry(EncodingProberType, "Encoding Prober Type", QString(), KEncodingProber::Universal));
-    addConfigEntry(ConfigEntry(FallbackEncoding, "Fallback Encoding", QString(), QStringLiteral("ISO 8859-15"), [](const QVariant &value) {
-        return isEncodingOk(value.toString());
-    }));
+    addConfigEntry(ConfigEntry(FallbackEncoding,
+                               "Fallback Encoding",
+                               QString(),
+                               QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Latin1)),
+                               [](const QVariant &value) {
+                                   return isEncodingOk(value.toString());
+                               }));
 
     // finalize the entries, e.g. hashs them
     finalizeConfigEntries();
@@ -283,22 +287,6 @@ void KateGlobalConfig::updateConfig()
 
     // trigger emission of KTextEditor::Editor::configChanged
     KTextEditor::EditorPrivate::self()->triggerConfigChanged();
-}
-
-QTextCodec *KateGlobalConfig::fallbackCodec() const
-{
-    // query stored encoding, always fallback to ISO 8859-15 if nothing valid set
-    const auto encoding = value(FallbackEncoding).toString();
-    if (encoding.isEmpty()) {
-        return QTextCodec::codecForName("ISO 8859-15");
-    }
-
-    // use configured encoding
-    auto codec = QTextCodec::codecForName(encoding.toUtf8());
-    if (codec) {
-        return codec;
-    }
-    return QTextCodec::codecForLocale();
 }
 // END
 
@@ -342,9 +330,10 @@ KateDocumentConfig::KateDocumentConfig()
     }));
     addConfigEntry(ConfigEntry(NewlineAtEOF, "Newline at End of File", QString(), true));
     addConfigEntry(ConfigEntry(OverwriteMode, "Overwrite Mode", QString(), false));
-    addConfigEntry(ConfigEntry(Encoding, "Encoding", QString(), QStringLiteral("UTF-8"), [](const QVariant &value) {
-        return isEncodingOk(value.toString());
-    }));
+    addConfigEntry(
+        ConfigEntry(Encoding, "Encoding", QString(), QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Utf8)), [](const QVariant &value) {
+            return isEncodingOk(value.toString());
+        }));
     addConfigEntry(ConfigEntry(EndOfLine, "End of Line", QString(), 0));
     addConfigEntry(ConfigEntry(AllowEndOfLineDetection, "Allow End of Line Detection", QString(), true));
     addConfigEntry(ConfigEntry(ByteOrderMark, "BOM", QString(), false));
@@ -446,22 +435,6 @@ void KateDocumentConfig::updateConfig()
         // trigger emission of KTextEditor::Editor::configChanged
         KTextEditor::EditorPrivate::self()->triggerConfigChanged();
     }
-}
-
-QTextCodec *KateDocumentConfig::codec() const
-{
-    // query stored encoding, always fallback to UTF-8 if nothing valid set
-    const auto encoding = value(Encoding).toString();
-    if (encoding.isEmpty()) {
-        return QTextCodec::codecForName("UTF-8");
-    }
-
-    // use configured encoding
-    auto codec = QTextCodec::codecForName(encoding.toUtf8());
-    if (codec) {
-        return codec;
-    }
-    return QTextCodec::codecForName("UTF-8");
 }
 
 QString KateDocumentConfig::eolString() const

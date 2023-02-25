@@ -41,8 +41,6 @@ class EditorPrivate;
 
 class KConfig;
 
-class QTextCodec;
-
 /**
  * Base Class for the Kate Config Classes
  * Current childs are KateDocumentConfig/KateDocumentConfig/KateDocumentConfig
@@ -335,13 +333,6 @@ public:
     {
         return setValue(EncodingProberType, type);
     }
-
-    /**
-     * Fallback codec.
-     * Based on fallback encoding.
-     * @return fallback codec
-     */
-    QTextCodec *fallbackCodec() const;
 
     QString fallbackEncoding() const
     {
@@ -836,13 +827,6 @@ public:
     {
         return value(IndentOnTab).toBool();
     }
-
-    /**
-     * Get current text codec.
-     * Based on current set encoding
-     * @return current text codec.
-     */
-    QTextCodec *codec() const;
 
     QString encoding() const
     {

@@ -13,7 +13,7 @@ void KateEncodingTest::utfBomTest()
 {
     // setup stuff
     Kate::TextBuffer buffer(nullptr);
-    buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
+    buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
     bool encodingErrors;
     bool tooLongLinesWrapped;
     bool success;
@@ -21,7 +21,7 @@ void KateEncodingTest::utfBomTest()
     QString prefixText;
 
     // utf8 tests
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
+    buffer.setTextCodec(QStringLiteral("UTF-8"));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf8.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     QVERIFY(!buffer.generateByteOrderMark()); // file has no bom
@@ -29,7 +29,7 @@ void KateEncodingTest::utfBomTest()
     prefixText = buffer.text().left(3);
     QCOMPARE(prefixText, QLatin1String("Tes"));
 
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
+    buffer.setTextCodec(QStringLiteral("UTF-8"));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf8-bom-only.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     QVERIFY(buffer.generateByteOrderMark());
@@ -37,17 +37,17 @@ void KateEncodingTest::utfBomTest()
     prefixText = buffer.text();
     QVERIFY(prefixText.isEmpty());
 
-    // utf16 tests
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-16"));
-    success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf16.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
+    // utf16 tests, we need to allow encoding detection as if the byteorder is not ok, QStringDecoder will not show errors
+    buffer.setTextCodec(QStringLiteral("UTF-16"));
+    success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf16.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, false);
     QVERIFY(success && !encodingErrors);
     QVERIFY(buffer.generateByteOrderMark());
     // since the utf16 bom is 2 bytes, the first 2 chars should not be the bom
     prefixText = buffer.text().left(2);
     QCOMPARE(prefixText, QLatin1String("Te"));
 
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-16"));
-    success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf16be.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
+    buffer.setTextCodec(QStringLiteral("UTF-16"));
+    success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf16be.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, false);
     QVERIFY(success && !encodingErrors);
     QVERIFY(buffer.generateByteOrderMark());
     // since the utf16 bom is 2 bytes, the first 2 chars should not be the bom
@@ -55,7 +55,7 @@ void KateEncodingTest::utfBomTest()
     QCOMPARE(prefixText, QLatin1String("Te"));
 
     // utf32 tests
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-32"));
+    buffer.setTextCodec(QStringLiteral("UTF-32"));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf32.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     QVERIFY(buffer.generateByteOrderMark());
@@ -63,7 +63,7 @@ void KateEncodingTest::utfBomTest()
     prefixText = buffer.text().left(4);
     QCOMPARE(prefixText, QLatin1String("Test"));
 
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-32"));
+    buffer.setTextCodec(QStringLiteral("UTF-32"));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf32be.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     QVERIFY(buffer.generateByteOrderMark());
@@ -72,7 +72,7 @@ void KateEncodingTest::utfBomTest()
     QCOMPARE(prefixText, QLatin1String("Test"));
 
     // Ensure that a mismatching bom is not processed (e.g. utf8 bom should not be used for utf16)
-    buffer.setTextCodec(QTextCodec::codecForName("UTF-16"));
+    buffer.setTextCodec(QStringLiteral("UTF-16"));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/utf8-bom-only.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     // even though the file does not have a bom, Kate::TextBuffer::setTextCodec always enables bom generation
@@ -87,7 +87,7 @@ void KateEncodingTest::nonUtfNoBomTest()
 {
     // setup stuff
     Kate::TextBuffer buffer(nullptr);
-    buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
+    buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
     bool encodingErrors;
     bool tooLongLinesWrapped;
     bool success;
@@ -95,7 +95,7 @@ void KateEncodingTest::nonUtfNoBomTest()
     QString prefixText;
 
     // latin15, should not contain any bom
-    buffer.setTextCodec(QTextCodec::codecForName("ISO 8859-15"));
+    buffer.setTextCodec(QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Latin1)));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/latin15.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     QVERIFY(!buffer.generateByteOrderMark());
@@ -103,7 +103,7 @@ void KateEncodingTest::nonUtfNoBomTest()
     QCOMPARE(prefixText, QLatin1String("Test"));
 
     // Even if a bom is somehow found, it should be processed normally as text for non-UTF char sets
-    buffer.setTextCodec(QTextCodec::codecForName("ISO 8859-15"));
+    buffer.setTextCodec(QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Latin1)));
     success = buffer.load(QLatin1String(TEST_DATA_DIR "encoding/latin15-with-utf8-bom.txt"), encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(success && !encodingErrors);
     QVERIFY(!buffer.generateByteOrderMark()); // utf8 bom shouldn't be processed

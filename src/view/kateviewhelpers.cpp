@@ -57,7 +57,6 @@
 #include <QRegularExpression>
 #include <QStyle>
 #include <QStyleOption>
-#include <QTextCodec>
 #include <QToolButton>
 #include <QToolTip>
 #include <QVariant>
@@ -2856,12 +2855,7 @@ KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_do
 
 void KateViewEncodingAction::slotAboutToShow()
 {
-    auto codec = QTextCodec::codecForName(doc->config()->encoding().toUtf8());
-    if (!codec) {
-        codec = QTextCodec::codecForLocale();
-    }
-
-    setCurrentCodec(codec);
+    setCurrentCodec(doc->config()->encoding());
 }
 
 void KateViewEncodingAction::setEncoding(const QString &e)
@@ -2878,7 +2872,7 @@ void KateViewEncodingAction::setEncoding(const QString &e)
     view->reloadFile();
 }
 
-bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
+bool KateViewEncodingAction::setCurrentCodec(const QString &codec)
 {
     disconnect(this, &KSelectAction::textTriggered, this, &KateViewEncodingAction::setEncoding);
 
@@ -2894,7 +2888,7 @@ bool KateViewEncodingAction::setCurrentCodec(QTextCodec *codec)
                     continue;
                 }
 
-                if (codec == QTextCodec::codecForName(actions().at(i)->menu()->actions().at(j)->text().toUtf8())) {
+                if (codec == actions().at(i)->menu()->actions().at(j)->text()) {
                     currentSubAction = actions().at(i)->menu()->actions().at(j);
                     currentSubAction->setChecked(true);
                 } else {

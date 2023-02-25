@@ -2432,7 +2432,7 @@ bool KTextEditor::DocumentPrivate::openFile()
                  "It is set to read-only mode, as saving might destroy its content.<br />"
                  "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.",
                  this->url().toDisplayString(QUrl::PreferLocalFile),
-                 QString::fromLatin1(m_buffer->textCodec()->name())),
+                 m_buffer->textCodec()),
             KTextEditor::Message::Warning);
         message->setWordWrap(true);
         postMessage(message);
@@ -2444,7 +2444,7 @@ bool KTextEditor::DocumentPrivate::openFile()
             " It is set to read-only mode, as saving might destroy its content."
             " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.",
             this->url().toDisplayString(QUrl::PreferLocalFile),
-            QString::fromLatin1(m_buffer->textCodec()->name()));
+            m_buffer->textCodec());
     }
 
     // warn: too long lines

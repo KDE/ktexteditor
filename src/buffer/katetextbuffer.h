@@ -9,7 +9,6 @@
 #include <QObject>
 #include <QSet>
 #include <QString>
-#include <QTextCodec>
 #include <QVector>
 
 #include "katetextblock.h"
@@ -93,9 +92,9 @@ public:
 
     /**
      * Set fallback codec for this buffer to use for load.
-     * @param codec fallback QTextCodec to use for encoding
+     * @param codec fallback to use for encoding
      */
-    void setFallbackTextCodec(QTextCodec *codec)
+    void setFallbackTextCodec(const QString &codec)
     {
         m_fallbackTextCodec = codec;
     }
@@ -104,7 +103,7 @@ public:
      * Get fallback codec for this buffer
      * @return currently in use fallback codec of this buffer
      */
-    QTextCodec *fallbackTextCodec() const
+    QString fallbackTextCodec() const
     {
         return m_fallbackTextCodec;
     }
@@ -113,15 +112,15 @@ public:
      * Set codec for this buffer to use for load/save.
      * Loading might overwrite this, if it encounters problems and finds a better codec.
      * Might change BOM setting.
-     * @param codec QTextCodec to use for encoding
+     * @param codec to use for encoding
      */
-    void setTextCodec(QTextCodec *codec);
+    void setTextCodec(const QString &codec);
 
     /**
      * Get codec for this buffer
      * @return currently in use codec of this buffer
      */
-    QTextCodec *textCodec() const
+    QString textCodec() const
     {
         return m_textCodec;
     }
@@ -634,12 +633,12 @@ private:
     /**
      * Fallback text codec to use
      */
-    QTextCodec *m_fallbackTextCodec;
+    QString m_fallbackTextCodec;
 
     /**
      * Text codec to use
      */
-    QTextCodec *m_textCodec;
+    QString m_textCodec;
 
     /**
      * Mime-Type used for transparent compression/decompression support

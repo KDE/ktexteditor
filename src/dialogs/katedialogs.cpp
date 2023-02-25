@@ -74,7 +74,6 @@
 #include <QStringList>
 #include <QTabBar>
 #include <QTemporaryFile>
-#include <QTextCodec>
 #include <QTextStream>
 #include <QToolButton>
 #include <QWhatsThis>
@@ -1117,24 +1116,19 @@ void KateSaveConfigTab::reload()
     ui->cmbEncoding->clear();
     ui->cmbEncodingFallback->clear();
     QStringList encodings(KCharsets::charsets()->descriptiveEncodingNames());
-    int insert = 0;
     for (int i = 0; i < encodings.count(); i++) {
-        QTextCodec *codecForEnc = QTextCodec::codecForName(KCharsets::charsets()->encodingForName(encodings[i]).toUtf8());
+        const auto encodingName = KCharsets::charsets()->encodingForName(encodings[i]);
 
-        if (codecForEnc) {
-            ui->cmbEncoding->addItem(encodings[i]);
-            ui->cmbEncodingFallback->addItem(encodings[i]);
+        ui->cmbEncoding->addItem(encodings[i]);
+        ui->cmbEncodingFallback->addItem(encodings[i]);
 
-            if (codecForEnc == KateDocumentConfig::global()->codec()) {
-                ui->cmbEncoding->setCurrentIndex(insert);
-            }
+        if (encodingName == KateDocumentConfig::global()->encoding()) {
+            ui->cmbEncoding->setCurrentIndex(i);
+        }
 
-            if (codecForEnc == KateGlobalConfig::global()->fallbackCodec()) {
-                // adjust index for fallback config, has no default!
-                ui->cmbEncodingFallback->setCurrentIndex(insert);
-            }
-
-            insert++;
+        if (encodingName == KateGlobalConfig::global()->fallbackEncoding()) {
+            // adjust index for fallback config, has no default!
+            ui->cmbEncodingFallback->setCurrentIndex(i);
         }
     }
 

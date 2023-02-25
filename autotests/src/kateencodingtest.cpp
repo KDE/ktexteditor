@@ -10,6 +10,7 @@
 #include <kateglobal.h>
 
 #include <QCoreApplication>
+#include <qchar.h>
 
 int main(int argc, char *argv[])
 {
@@ -27,8 +28,8 @@ int main(int argc, char *argv[])
     Kate::TextBuffer buffer(nullptr);
 
     // set codec
-    buffer.setFallbackTextCodec(QTextCodec::codecForName("ISO 8859-15"));
-    buffer.setTextCodec(QTextCodec::codecForName(encoding.toLatin1()));
+    buffer.setFallbackTextCodec(QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Latin1)));
+    buffer.setTextCodec(encoding);
 
     // switch to Mac EOL, this will test eol detection, as files are normal unix or dos
     buffer.setEndOfLineMode(Kate::TextBuffer::eolMac);

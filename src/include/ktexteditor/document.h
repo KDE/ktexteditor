@@ -324,7 +324,7 @@ public:
      * opened without the correct encoding, this will \e not fix it, you
      * would for example need to trigger a reload for this.
      * \param encoding new encoding for the document, the name must be
-     *        accepted by QTextCodec, if an empty encoding name is given, the
+     *        accepted by QStringDecoder/QStringEncoder, if an empty encoding name is given, the
      *        part should fallback to its own default encoding, e.g. the
      *        system encoding or the global user settings
      * \return \e true on success, or \e false, if the encoding could not be set.

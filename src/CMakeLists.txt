@@ -311,7 +311,6 @@ PUBLIC
   KF6::Parts
   KF6::Completion
   KF6::SyntaxHighlighting
-  Qt6::Core5Compat
 PRIVATE
   Qt6::Qml
   Qt6::PrintSupport

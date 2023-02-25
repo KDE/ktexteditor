@@ -11,9 +11,10 @@
 #include <QFile>
 #include <QMimeDatabase>
 #include <QString>
+#include <QStringDecoder>
 
-// on the fly compression
 #include <KCompressionDevice>
+#include <KEncodingProber>
 
 namespace Kate
 {
@@ -36,8 +37,7 @@ public:
      * @param proberType prober type
      */
     TextLoader(const QString &filename, KEncodingProber::ProberType proberType)
-        : m_codec(nullptr)
-        , m_eof(false) // default to not eof
+        : m_eof(false) // default to not eof
         , m_lastWasEndOfLine(true) // at start of file, we had a virtual newline
         , m_lastWasR(false) // we have not found a \r as last char
         , m_position(0)
@@ -45,7 +45,6 @@ public:
         , m_eol(TextBuffer::eolUnknown) // no eol type detected atm
         , m_buffer(KATE_FILE_LOADER_BS, 0)
         , m_digest(QCryptographicHash::Sha1)
-        , m_converterState(nullptr)
         , m_bomFound(false)
         , m_firstRead(true)
         , m_proberType(proberType)
@@ -69,7 +68,6 @@ public:
     ~TextLoader()
     {
         delete m_file;
-        delete m_converterState;
     }
 
     /**
@@ -77,7 +75,7 @@ public:
      * @param codec codec to use, if 0, will do some auto-detect or fallback
      * @return success
      */
-    bool open(QTextCodec *codec)
+    bool open(const QString &codec)
     {
         m_codec = codec;
         m_eof = false;
@@ -87,8 +85,7 @@ public:
         m_lastLineStart = 0;
         m_eol = TextBuffer::eolUnknown;
         m_text.clear();
-        delete m_converterState;
-        m_converterState = new QTextCodec::ConverterState(QTextCodec::DefaultConversion);
+        m_converterState = m_codec.isEmpty() ? QStringDecoder() : QStringDecoder(m_codec.toUtf8().constData());
         m_bomFound = false;
         m_firstRead = true;
 
@@ -155,7 +152,7 @@ public:
      * Get codec for this loader
      * @return currently in use codec of this loader
      */
-    QTextCodec *textCodec() const
+    QString textCodec() const
     {
         return m_codec;
     }
@@ -206,80 +203,58 @@ public:
                         m_digest.addData(QByteArrayView(m_buffer.data(), c));
 
                         // detect byte order marks & codec for byte order marks on first read
-                        int bomBytes = 0;
                         if (m_firstRead) {
-                            // use first 16 bytes max to allow BOM detection of codec
-                            QByteArray bom(m_buffer.data(), qMin(16, c));
-                            QTextCodec *codecForByteOrderMark = QTextCodec::codecForUtfText(bom, nullptr);
-
-                            // if codecForByteOrderMark != null, we found a BOM!
-                            // BUT we only capture BOM if no codec was set, or the BOM encodes the same codec as m_codec.
-                            // These additional checks are necessary so that the (coincidentally matching) BOM characters won't be eaten for non-UTF encodings
-                            // TODO: support BOMs for other encodings? (see e.g. https://en.wikipedia.org/wiki/Byte_order_mark#Byte_order_marks_by_encoding)
-                            if (codecForByteOrderMark && (!m_codec || codecForByteOrderMark->mibEnum() == m_codec->mibEnum())) {
-                                m_bomFound = true;
-
-                                // eat away the different boms!
-                                const int mib = codecForByteOrderMark->mibEnum();
-                                if (mib == 106) { // utf8
-                                    bomBytes = 3;
-                                } else if (mib == 1013 || mib == 1014 || mib == 1015) { // utf16
-                                    bomBytes = 2;
-                                } else if (mib == 1017 || mib == 1018 || mib == 1019) { // utf32
-                                    bomBytes = 4;
-                                }
-                            }
-
                             /**
                              * if no codec given, do autodetection
                              */
-                            if (!m_codec) {
+                            if (!m_converterState.isValid()) {
                                 /**
-                                 * byte order said something about encoding?
+                                 * first: try to get HTML header encoding, includes BOM handling
                                  */
-                                if (codecForByteOrderMark) {
-                                    m_codec = codecForByteOrderMark;
-                                } else {
-                                    /**
-                                     * no Unicode BOM found, trigger prober
-                                     */
+                                m_converterState = QStringDecoder::decoderForHtml(m_buffer);
 
-                                    /**
-                                     * first: try to get HTML header encoding
-                                     */
-                                    if (QTextCodec *codecForHtml = QTextCodec::codecForHtml(m_buffer, nullptr)) {
-                                        m_codec = codecForHtml;
+                                /**
+                                 * else: use KEncodingProber
+                                 */
+                                if (!m_converterState.isValid()) {
+                                    KEncodingProber prober(m_proberType);
+                                    prober.feed(m_buffer.constData(), c);
+
+                                    // we found codec with some confidence?
+                                    if (prober.confidence() > 0.5) {
+                                        m_converterState = QStringDecoder(prober.encoding().constData());
                                     }
+                                }
 
-                                    /**
-                                     * else: use KEncodingProber
-                                     */
-                                    else {
-                                        KEncodingProber prober(m_proberType);
-                                        prober.feed(m_buffer.constData(), c);
-
-                                        // we found codec with some confidence?
-                                        if (prober.confidence() > 0.5) {
-                                            m_codec = QTextCodec::codecForName(prober.encoding());
-                                        }
-                                    }
-
-                                    // no codec, no chance, encoding error
-                                    if (!m_codec) {
-                                        return false;
-                                    }
+                                // no codec, no chance, encoding error, else remember the codec name
+                                if (!m_converterState.isValid()) {
+                                    return false;
                                 }
                             }
 
-                            m_firstRead = false;
+                            // we want to convert the bom for later detection
+                            m_converterState = QStringDecoder(m_converterState.name(), QStringConverter::Flag::ConvertInitialBom);
+
+                            // remember name, might have changed
+                            m_codec = QString::fromUtf8(m_converterState.name());
                         }
 
-                        // detect broken encoding, we did before use QTextCodec::ConvertInvalidToNull and check for 0 chars
-                        // this lead to issues with files containing 0 chars, therefore use the invalidChars field of the state
-                        Q_ASSERT(m_codec);
-                        QString unicode = m_codec->toUnicode(m_buffer.constData() + bomBytes, c - bomBytes, m_converterState);
-                        encodingError = encodingError || m_converterState->invalidChars;
-                        m_text.append(unicode);
+                        // detect broken encoding
+                        Q_ASSERT(m_converterState.isValid());
+                        const QString unicode = m_converterState.decode(QByteArrayView(m_buffer.data(), c));
+                        encodingError = encodingError || m_converterState.hasError();
+
+                        // check and remove bom
+                        if (m_firstRead && !unicode.isEmpty() && (unicode.front() == QChar::ByteOrderMark || unicode.front() == QChar::ByteOrderSwapped)) {
+                            m_bomFound = true;
+                            m_text.append(QStringView(unicode).last(unicode.size() - 1));
+
+                            // swapped BOM is encoding error
+                            encodingError = encodingError || unicode.front() == QChar::ByteOrderSwapped;
+                        } else {
+                            m_text.append(unicode);
+                        }
+                        m_firstRead = false;
                     }
 
                     // is file completely read ?
@@ -383,7 +358,7 @@ public:
     }
 
 private:
-    QTextCodec *m_codec;
+    QString m_codec;
     bool m_eof;
     bool m_lastWasEndOfLine;
     bool m_lastWasR;
@@ -395,7 +370,7 @@ private:
     QByteArray m_buffer;
     QCryptographicHash m_digest;
     QString m_text;
-    QTextCodec::ConverterState *m_converterState;
+    QStringDecoder m_converterState;
     bool m_bomFound;
     bool m_firstRead;
     KEncodingProber::ProberType m_proberType;
