@@ -21,14 +21,6 @@ block_continue_lineend = ["else", "finally", "catch"];
 block_continue_linemid = ["elseif", "catch"];
 unindenter = "end";
 
-var debugMode = false;
-
-function dbg() {
-    if (debugMode) {
-        debug.apply(this, arguments);
-    }
-}
-
 triggerCharacters = "efhyd ";
 
 immediate_unindenters = new Set(block_continue.concat([unindenter]));
@@ -79,7 +71,7 @@ function getCode(lineNr, virtcol=-1) {
     if (virtcol < 0)
         return code;
     for (;virtcol < line.length; ++virtcol) {
-        if (document.isCode(lineNr, virtcol)) {
+        if (!document.isComment(lineNr, virtcol)) {
             code += line[virtcol];
         }
     }
@@ -92,7 +84,7 @@ function getLastCodePosition(lineNr, lastVirtCol=-1) {
     if (virtcol < 0)
         return -1
     for (; virtcol >= 0; --virtcol) {
-        if (document.isCode(lineNr, virtcol) && !document.isSpace(lineNr, virtcol))
+        if (!document.isComment(lineNr, virtcol) && !document.isSpace(lineNr, virtcol))
             break;
     }
     return virtcol;
@@ -223,8 +215,8 @@ function findMatchingBlock(lineNr, trigger) {
     var nested_threshold = trigger == unindenter ? 1 : 0;
     var nestedBlocks = 0;
     var found = false;
-    for (; lineNr >= 0; --lineNr) {
-        var lline = getCode(lineNr);
+    for (var linenr = lineNr; linenr >= 0; --linenr) {
+        var lline = getCode(linenr);
         var matches = [];
         while (match = full_block_expr.exec(lline)) {
             matches.push(match);
@@ -250,7 +242,7 @@ function findMatchingBlock(lineNr, trigger) {
         if (found)
             break;
     }
-    return found ? document.firstVirtualColumn(lineNr) : -1;
+    return found && linenr < lineNr ? document.firstVirtualColumn(linenr) : -1;
 }
 
 // Return the amount of characters (in spaces) to be indented.
@@ -263,11 +255,14 @@ function indent(line, indentWidth, character) {
     if (line == 0)  // don't ever act on document's first line
         return -2;
 
-    var lline = getCode(line);
-    dbg(lline);
-    if (immediate_unindenters.has(lline)) {
-        dbg("immediate unindent");
-        return findMatchingBlock(lline == unindenter ? line : line - 1, lline);
+    var alignOnly = character == "";
+
+    if (alignOnly || character != '\n') {
+        var lline = getCode(line);
+        if (immediate_unindenters.has(lline))
+            return findMatchingBlock(lline == unindenter ? line : line - 1, lline);
+        else if (!alignOnly)
+            return -2
     }
 
     while (line > 0 && !document.line(line - 1).length) // ignore empty lines
@@ -301,6 +296,16 @@ function indent(line, indentWidth, character) {
         }
     }
 
+    // this also covers single-line blocks
+    var match = lastLine.match(unindenters_newline_expr);
+    if (match) {
+        var mblock = findMatchingBlock(line, match[0]);
+        if (mblock > -1) {
+            return match[0] == unindenter ? mblock : mblock + indentWidth;
+        } else
+            return -1;
+    }
+
     startblock = lastLine.search(linestart_block_start_expr);
     if (startblock == 0) {
         if (indent > virtcol)
@@ -325,21 +330,10 @@ function indent(line, indentWidth, character) {
             else
                 indent = virtcol + indentWidth;
         }
-    } else {
-        var match = lastLine.match(unindenters_newline_expr);
-        if (match) {
-            var mblock = findMatchingBlock(line, match[0]);
-            if (mblock > -1) {
-                return match[0] == unindenter ? mblock : mblock + indentWidth;
-            } else
-                return -1;
-        }
     }
     if (shouldUnindent(line, false) && (indent == -1)) {
-        dbg("shouldUnindent");
         indent = Math.max(0, virtcol - indentWidth);
     }
-    dbg(indent);
     return indent;
 }
 
