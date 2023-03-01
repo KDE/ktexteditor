@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"POT-Creation-Date: 2023-03-01 22:21+0000\n"
 "PO-Revision-Date: 2023-02-08 10:51+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -77,8 +77,8 @@ msgstr "&Файл"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Export/Print"
-msgstr "Экспорт/Печать"
+msgid "Print/Export"
+msgstr ""
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -117,7 +117,7 @@ msgid "Word Wrap"
 msgstr "Перенос строк"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:731
 #, kde-format
 msgid "Borders"
 msgstr "Границы"
@@ -334,7 +334,7 @@ msgid "Minim&ap width:"
 msgstr "&Ширина мини-карты:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Always On"
 msgstr "Видны всегда"
@@ -421,8 +421,8 @@ msgstr "В журнале буфера обмена нет записей"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
-#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:597
+#: dialogs/katedialogs.cpp:727 dialogs/katedialogs.cpp:1006
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1043,7 +1043,7 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "Ув&еличивать уровень отступа если курсор стоит в начале строки"
 
 # Tab width, indent width. --aspotashev
-#: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
+#: dialogs/katedialogs.cpp:182 dialogs/katedialogs.cpp:184
 #, kde-format
 msgid " character"
 msgid_plural " characters"
@@ -1052,73 +1052,73 @@ msgstr[1] " символа"
 msgstr[2] " символов"
 msgstr[3] " символ"
 
-#: dialogs/katedialogs.cpp:209
+#: dialogs/katedialogs.cpp:208
 #, kde-format
 msgid "Indentation"
 msgstr "Отступы"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:289
 #, kde-format
 msgid "Auto Completion"
 msgstr "Автодополнение"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:356
 #, kde-format
 msgid "Spellcheck"
 msgstr "Проверка правописания"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:403 dialogs/katedialogs.cpp:410
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:405
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:406 dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:407
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:471
 #, kde-format
 msgid "Text Navigation"
 msgstr "Навигация по тексту"
 
 # Переносить после ... --aspotashev
-#: dialogs/katedialogs.cpp:572
+#: dialogs/katedialogs.cpp:571
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
@@ -1128,64 +1128,64 @@ msgstr[1] " символов"
 msgstr[2] " символов"
 msgstr[3] " символа"
 
-#: dialogs/katedialogs.cpp:577
+#: dialogs/katedialogs.cpp:576
 #, kde-format
 msgid "Feature is not active"
 msgstr "Функция неактивна"
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:578
 #, kde-format
 msgid "Disable Feature"
 msgstr "Не использовать"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:580
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Набор символов, использующийся в разметке Markdown"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 "Набор символов, похожий на использующийся для автоматической вставки парных "
 "скобок"
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:584
 #, kde-format
 msgid "Non letter character"
 msgstr "Небуквенные символы"
 
-#: dialogs/katedialogs.cpp:699
+#: dialogs/katedialogs.cpp:698
 #, kde-format
 msgid "Editing"
 msgstr "Редактирование"
 
-#: dialogs/katedialogs.cpp:704
+#: dialogs/katedialogs.cpp:703
 #, kde-format
 msgid "Editing Options"
 msgstr "Параметры редактирования"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:735
 #, kde-format
 msgid "Statusbar"
 msgstr "Строка состояния"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:737
 #, kde-format
 msgid "Off"
 msgstr "Выключить"
 
-#: dialogs/katedialogs.cpp:739
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "За номерами строк"
 
-#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
+#: dialogs/katedialogs.cpp:932 dialogs/katedialogs.cpp:937
 #, kde-format
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: dialogs/katedialogs.cpp:971
+#: dialogs/katedialogs.cpp:970
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1196,12 +1196,12 @@ msgstr ""
 "подкачки позволяют %1 восстановить работу в случае сбоя системы. Отключение "
 "файлов подкачки может привести к потере данных в случае сбоя системы."
 
-#: dialogs/katedialogs.cpp:1008
+#: dialogs/katedialogs.cpp:1007
 #, kde-format
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: dialogs/katedialogs.cpp:1073
+#: dialogs/katedialogs.cpp:1072
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1209,112 +1209,112 @@ msgstr ""
 "Не задан суффикс или префикс файлов резервных копий. Используется суффикс по "
 "умолчанию: «~»"
 
-#: dialogs/katedialogs.cpp:1073
+#: dialogs/katedialogs.cpp:1072
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Резервные копии без суффикса или префикса"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1200
 #, kde-format
 msgid "Open/Save"
 msgstr "Открытие и сохранение"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1205
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Открытие и сохранение файлов"
 
-#: dialogs/katedialogs.cpp:1234
+#: dialogs/katedialogs.cpp:1228
 #, kde-format
 msgid "&Line:"
 msgstr "С&трока:"
 
-#: dialogs/katedialogs.cpp:1235
+#: dialogs/katedialogs.cpp:1229
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Перейти к строке с номером из буфера обмена"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "Go to"
 msgstr "Перейти"
 
-#: dialogs/katedialogs.cpp:1326
+#: dialogs/katedialogs.cpp:1320
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Буфер обмена не содержит действительного номера строки"
 
-#: dialogs/katedialogs.cpp:1390
+#: dialogs/katedialogs.cpp:1384
 #, kde-format
 msgid "Dictionary:"
 msgstr "Словарь:"
 
-#: dialogs/katedialogs.cpp:1443
+#: dialogs/katedialogs.cpp:1437
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Загружать документ при его изменении"
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1439
 #, kde-format
 msgid "Will never again warn about on disk changes but always reload."
 msgstr "Всегда загружать изменённый файл без дополнительных подтверждений."
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1444
 #, kde-format
 msgid "View &Difference"
 msgstr "Просмотреть &различия"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1446
 #, kde-format
 msgid "Shows a diff of the changes"
 msgstr "Показать список изменений"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1451
 #, kde-format
 msgid "&Reload"
 msgstr "&Перезагрузить файл"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1453
 #, kde-format
 msgid "Reload the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Открыть файл с диска. Если у вас есть несохранённые изменения, они будут "
 "потеряны."
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Закрыть файл"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Close the file, discarding its content."
 msgstr "Закрыть текущий файл без сохранения изменений."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "&Save As..."
 msgstr "Сохранить &как..."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Сохранить файл в другом месте и/или под другим именем."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1470 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Игнорировать"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr ""
 "Игнорировать изменения на диске, то есть не выполнять никаких действий."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1537 swapfile/kateswapdiffcreator.cpp:128
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1323,18 +1323,18 @@ msgstr ""
 "Ошибка вызова команды «diff». Проверьте, установлена ли программа diff (1) и "
 "доступна ли она в пути, определённом переменной PATH."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1539 swapfile/kateswapdiffcreator.cpp:88
+#: swapfile/kateswapdiffcreator.cpp:96 swapfile/kateswapdiffcreator.cpp:130
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Ошибка поиска различий"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "The files are identical."
 msgstr "Файлы идентичны."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Diff Output"
 msgstr "Результат сравнения"
@@ -2153,17 +2153,17 @@ msgstr "Новый файл"
 msgid "The file %1 does not exist."
 msgstr "Файл %1 не найден."
 
-#: document/katedocument.cpp:246
+#: document/katedocument.cpp:219
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Загружать документ при его изменении"
 
-#: document/katedocument.cpp:247
+#: document/katedocument.cpp:220
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Автоматически загружать документ при его изменении"
 
-#: document/katedocument.cpp:2313
+#: document/katedocument.cpp:2286
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2171,23 +2171,25 @@ msgid ""
 msgstr ""
 "Не удалось открыть файл %1.<br />Проверьте ваши права на чтение этого файла."
 
-#: document/katedocument.cpp:2318
+#: document/katedocument.cpp:2291
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторить попытку"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6515
 #, kde-format
 msgid "&Close"
 msgstr "&Закрыть"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
-#, kde-format
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6516
+#, fuzzy, kde-format
+#| msgid "Close message"
+msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Закрыть сообщение"
 
-#: document/katedocument.cpp:2334
+#: document/katedocument.cpp:2307
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2198,7 +2200,7 @@ msgstr ""
 "\n"
 "Проверьте ваши права на чтение этого файла."
 
-#: document/katedocument.cpp:2458
+#: document/katedocument.cpp:2431
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2211,7 +2213,7 @@ msgstr ""
 "<br />Либо откройте данный файл, выбрав правильную кодировку, либо отключите "
 "защиту от изменений в меню «Сервис»."
 
-#: document/katedocument.cpp:2470
+#: document/katedocument.cpp:2443
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2225,7 +2227,7 @@ msgstr ""
 "защиту от изменений в меню «Сервис»."
 
 # BUGME: add full stop after "characters long" --aspotashev
-#: document/katedocument.cpp:2483
+#: document/katedocument.cpp:2456
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2238,17 +2240,17 @@ msgstr ""
 "содержит %3 символов.<br/>Эти строки были разбиты на более короткие, и был "
 "установлен режим «только чтение», так как сохранение может повредить файл."
 
-#: document/katedocument.cpp:2490
+#: document/katedocument.cpp:2463
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Временно ослабить ограничение и загрузить файл"
 
-#: document/katedocument.cpp:2493
+#: document/katedocument.cpp:2466
 #, kde-format
 msgid "Close"
 msgstr "Закрыть"
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2261,7 +2263,7 @@ msgstr ""
 "%3 символов.<br/>Эти строки были разбиты на более короткие, и был установлен "
 "режим «только чтение», так как сохранение может повредить файл."
 
-#: document/katedocument.cpp:2527
+#: document/katedocument.cpp:2500
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2270,18 +2272,18 @@ msgstr ""
 "Вы действительно хотите сохранить не изменённый файл? Вы можете потерять "
 "изменения, внесённые в файл другой программой."
 
-#: document/katedocument.cpp:2528
+#: document/katedocument.cpp:2501
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Попытка сохранения не изменённого файла"
 
-#: document/katedocument.cpp:2529 document/katedocument.cpp:2540
-#: document/katedocument.cpp:2556
+#: document/katedocument.cpp:2502 document/katedocument.cpp:2513
+#: document/katedocument.cpp:2529
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Продолжить"
 
-#: document/katedocument.cpp:2538
+#: document/katedocument.cpp:2511
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2290,14 +2292,14 @@ msgstr ""
 "Вы действительно хотите сохранить файл? Открытый файл и файл на диске были "
 "изменены. Некоторые данные могут быть утеряны."
 
-#: document/katedocument.cpp:2539 document/katedocument.cpp:2555
-#: document/katedocument.cpp:2847 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2512 document/katedocument.cpp:2528
+#: document/katedocument.cpp:2820 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Возможна потеря данных"
 
-#: document/katedocument.cpp:2553
+#: document/katedocument.cpp:2526
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2308,7 +2310,7 @@ msgstr ""
 "утеряны. Если вы не уверены, какую кодировку использовать, выберите UTF-8 "
 "или UTF-16."
 
-#: document/katedocument.cpp:2598
+#: document/katedocument.cpp:2571
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2323,7 +2325,7 @@ msgstr ""
 "Исходный файл может быть утерян или повреждён. Не выходите из приложения до "
 "тех пор, пока файл не будет успешно сохранён."
 
-#: document/katedocument.cpp:2719
+#: document/katedocument.cpp:2692
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2335,49 +2337,49 @@ msgstr ""
 "сохранении может привести к потере данных. Возможно, носитель данных "
 "заполнен или у вас нет прав на запись в папку, содержащую данный файл."
 
-#: document/katedocument.cpp:2723
+#: document/katedocument.cpp:2696
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Невозможно создать резервную копию."
 
-#: document/katedocument.cpp:2724
+#: document/katedocument.cpp:2697
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Всё равно попробовать сохранить"
 
-#: document/katedocument.cpp:2846
+#: document/katedocument.cpp:2819
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Закрыть этот файл? Возможна потеря данных."
 
-#: document/katedocument.cpp:2848
+#: document/katedocument.cpp:2821
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Не сохранять"
 
-#: document/katedocument.cpp:4658
+#: document/katedocument.cpp:4627
 #, kde-format
 msgid "Untitled"
 msgstr "Безымянный"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:4750 document/katedocument.cpp:4978
+#: document/katedocument.cpp:4988 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5919
 #, kde-format
 msgid "Save File"
 msgstr "Сохранить"
 
-#: document/katedocument.cpp:4784
+#: document/katedocument.cpp:4753
 #, kde-format
 msgid "Save failed"
 msgstr "Ошибка сохранения"
 
-#: document/katedocument.cpp:5030
+#: document/katedocument.cpp:4999
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Сохранение копии файла"
 
-#: document/katedocument.cpp:5042
+#: document/katedocument.cpp:5011
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2389,7 +2391,7 @@ msgstr ""
 "\n"
 "Проверьте права на запись в этот файл и наличие доступного места на диске."
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5261
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2402,7 +2404,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5267
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2415,22 +2417,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5576
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файл «%1» был изменён на диске."
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5579
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Файл «%1» был создан на диске."
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5582
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Файл «%1» был удалён с диска."
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2439,17 +2441,17 @@ msgstr ""
 "Документ «%1» был изменён.\n"
 "Сохранить изменения или отклонить их?"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5907
 #, kde-format
 msgid "Close Document"
 msgstr "Закрыть документ"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6018
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Загрузка файла <a href=\"%1\">%2</a> ещё не завершена."
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6023
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Прерв&ать загрузку"
@@ -3149,9 +3151,12 @@ msgid "Sort Selected Text Alphabetically"
 msgstr "Упорядочить выделенный текст в алфавитном порядке"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
-#: script/data/commands/utils.js:19 script/data/commands/utils.js:24
-#: script/data/commands/utils.js:28 script/data/commands/utils.js:32
-#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
+#: script/data/commands/utils.js:18 script/data/commands/utils.js:22
+#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
+#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:44 script/data/commands/utils.js:48
+#: script/data/commands/utils.js:52 script/data/commands/utils.js:56
+#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3164,63 +3169,106 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Удалить дубликаты и упорядочить выделенный текст в алфавитном порядке"
 
 #: script/data/commands/utils.js:17
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Remove Duplicate Lines"
+msgstr "Продублировать выделенные строки выше"
+
+#: script/data/commands/utils.js:21
+#, fuzzy, kde-format
+#| msgid "Re&move trailing spaces:"
+msgctxt "Script command name"
+msgid "Remove Trailing Spaces"
+msgstr "У&далять пробелы в конце строк:"
+
+#: script/data/commands/utils.js:25
+#, fuzzy, kde-format
+#| msgid "Re&move trailing spaces:"
+msgctxt "Script command name"
+msgid "Remove Leading Spaces"
+msgstr "У&далять пробелы в конце строк:"
+
+#: script/data/commands/utils.js:29
+#, fuzzy, kde-format
+#| msgid "Re&move trailing spaces:"
+msgctxt "Script command name"
+msgid "Remove Trailing and Leading Spaces"
+msgstr "У&далять пробелы в конце строк:"
+
+#: script/data/commands/utils.js:33
+#, fuzzy, kde-format
+#| msgid "Join Lines"
+msgctxt "Script command name"
+msgid "Join Lines"
+msgstr "Объединить строки"
+
+#: script/data/commands/utils.js:37
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "Переместить строки ниже"
 
-#: script/data/commands/utils.js:22
+#: script/data/commands/utils.js:42
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "Переместить строки выше"
 
-#: script/data/commands/utils.js:27
+#: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "Продублировать выделенные строки ниже"
 
-#: script/data/commands/utils.js:31
+#: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "Продублировать выделенные строки выше"
 
-#: script/data/commands/utils.js:35
+#: script/data/commands/utils.js:55
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Закодировать выделенный текст в формат URI"
 
-#: script/data/commands/utils.js:39
+#: script/data/commands/utils.js:59
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Декодировать выделенный текст в формате URI"
 
-#: script/data/commands/utils.js:418
+#: script/data/commands/utils.js:63
+#, fuzzy, kde-format
+#| msgid "Remove Cursors from Empty Lines"
+msgctxt "Script command name"
+msgid "Remove Empty Lines"
+msgstr "Удалить курсоры из пустых строк"
+
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Отсортировать выделенный текст или весь текст текущего документа."
 
-#: script/data/commands/utils.js:420
+#: script/data/commands/utils.js:444
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Переместить выделенные строки ниже"
 
-#: script/data/commands/utils.js:422
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Переместить выделенные строки выше"
 
-#: script/data/commands/utils.js:424
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
 "Удалить повторяющиеся строки из выделенного текста или из всего документа."
 
-#: script/data/commands/utils.js:426
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3232,28 +3280,28 @@ msgstr ""
 "сортировки: <br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => "
 "a1, a2, a10"
 
-#: script/data/commands/utils.js:428
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
 "Удалить пробельные символы в конце строк из выделенного текста или из всего "
 "документа."
 
-#: script/data/commands/utils.js:430
+#: script/data/commands/utils.js:454
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
 "Удалить пробельные символы в начале строк из выделенного текста или из всего "
 "документа."
 
-#: script/data/commands/utils.js:432
+#: script/data/commands/utils.js:456
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Удалить пробельные символы в начале и в конце строк из выделенного текста "
 "или из всего документа."
 
-#: script/data/commands/utils.js:434
+#: script/data/commands/utils.js:458
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3264,12 +3312,12 @@ msgstr ""
 "можно передать разделитель строк:<br><code>join ', '</code> объединит "
 "строки, разделяя их запятыми."
 
-#: script/data/commands/utils.js:436
+#: script/data/commands/utils.js:460
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Удалить пустые строки из выделенного текста или из всего документа."
 
-#: script/data/commands/utils.js:438
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3293,7 +3341,7 @@ msgstr ""
 "символом, который идёт после двоеточия, чтобы выровнять их все по одной и "
 "той же позиции."
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:466
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3307,7 +3355,7 @@ msgstr ""
 "'function(lines){return lines.join(\", \");}'</code><br>То же самое можно "
 "сделать проще:<br><code>each 'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3321,7 +3369,7 @@ msgstr ""
 "<br><code>filter 'function(l){return l.length > 0;}'</code><br>То же самое "
 "можно сделать проще:<br><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3337,17 +3385,17 @@ msgstr ""
 "code><br>То же самое можно сделать проще:<br><code>map 'line.replace(/^\\s"
 "+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Скопировать выделенные строки выше."
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Скопировать выделенные строки ниже."
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3356,12 +3404,12 @@ msgstr ""
 "Закодировать спецсимволы в выделенной строке так, чтобы результат можно было "
 "использовать в URI."
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Обратная операция к кодированию URI."
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3370,7 +3418,7 @@ msgstr ""
 "Выбор текста по направлению вперёд от текущей позиции курсора до первого "
 "вхождения указанного аргумента (или конца текущей строки по умолчанию)."
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3513,7 +3561,7 @@ msgstr "Ошибка загрузки сценария %1\n"
 msgid "Error loading script %1"
 msgstr "Ошибка загрузки сценария %1"
 
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
@@ -4172,7 +4220,7 @@ msgstr "Добавить в словарь"
 msgid "Spelling '%1'"
 msgstr "Правописание «%1»"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:86
 #, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
@@ -4181,7 +4229,7 @@ msgstr ""
 "Не удаётся найти команду «diff». Проверьте, установлена ли программа diff "
 "(1) и доступна ли она в пути, определённом переменной PATH."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:96
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr "Не удалось запустить команду diff «%1»."
@@ -4746,7 +4794,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Маркеры"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1475
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "Закладка"
@@ -6055,29 +6103,29 @@ msgstr "Создать новый UUID."
 msgid "Kate Handbook."
 msgstr "Руководство пользователя Kate"
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "да"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "нет"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "нет"
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "изменённые"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
@@ -6400,7 +6448,7 @@ msgstr "Тип конца строки"
 msgid "Mode"
 msgstr "Режим"
 
-#: view/katestatusbar.cpp:208 view/kateview.cpp:663
+#: view/katestatusbar.cpp:208 view/kateview.cpp:661
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6508,73 +6556,73 @@ msgstr "Слова: %1, символы: %2"
 msgid "Zoom: %1%"
 msgstr "Масштаб: %1%"
 
-#: view/kateview.cpp:450
+#: view/kateview.cpp:448
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Вырезать выделенный текст и поместить его в буфер обмена"
 
-#: view/kateview.cpp:453
+#: view/kateview.cpp:451
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "Вставить текст, скопированный ранее в буфер обмена"
 
-#: view/kateview.cpp:456
+#: view/kateview.cpp:454
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr "Копирование выделенного фрагмента текста в буфер обмена."
 
-#: view/kateview.cpp:462
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "Вставка из журнала буфера обмена"
 
-#: view/kateview.cpp:467
+#: view/kateview.cpp:465
 #, kde-format
 msgid "Paste Selection"
 msgstr "Вставить выделенное"
 
-#: view/kateview.cpp:469
+#: view/kateview.cpp:467
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "Вставить текст, ранее выделенный мышью"
 
-#: view/kateview.cpp:473
+#: view/kateview.cpp:471
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Вставить с заменой буфера обмена"
 
-#: view/kateview.cpp:474
+#: view/kateview.cpp:472
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Вставить с заменой буфера обмена выделением"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:476
 #, kde-format
 msgid "Save the current document"
 msgstr "Сохранить текущий документ"
 
-#: view/kateview.cpp:481
+#: view/kateview.cpp:479
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "Возвратить часто используемые команды редактирования"
 
-#: view/kateview.cpp:484
+#: view/kateview.cpp:482
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "Возвратить часто используемые команды отмены"
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:486
 #, kde-format
 msgid "&Scripts"
 msgstr "С&ценарии"
 
-#: view/kateview.cpp:492
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "Выпо&лнить перенос строк"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:492
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6586,12 +6634,12 @@ msgstr ""
 "«Переносить слова на новую строку после:» в диалоге настройки.<br /><br /"
 ">Это статический перенос строк, то есть документ будет изменён."
 
-#: view/kateview.cpp:500
+#: view/kateview.cpp:498
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Привести отступы в порядок"
 
-#: view/kateview.cpp:502
+#: view/kateview.cpp:500
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6602,12 +6650,12 @@ msgstr ""
 "правилами расстановки отступов.<br/><br/>Количество пробелов для одного "
 "уровня отступа и использование символов табуляции/пробелов можно настроить."
 
-#: view/kateview.cpp:507
+#: view/kateview.cpp:505
 #, kde-format
 msgid "&Format Indentation"
 msgstr "&Форматированный отступ"
 
-#: view/kateview.cpp:508
+#: view/kateview.cpp:506
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6616,12 +6664,12 @@ msgstr ""
 "Автоматический отступ текущей строки или выделенного фрагмента текста на "
 "надлежащее расстояние."
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:510
 #, kde-format
 msgid "&Align On..."
 msgstr "В&ыровнять по…"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:512
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6644,12 +6692,12 @@ msgstr ""
 "\\s+(.)» будут вставлены пробелы перед первым непустым символом, который "
 "идёт после двоеточия, чтобы выровнять их все по одной и той же позиции."
 
-#: view/kateview.cpp:525
+#: view/kateview.cpp:523
 #, kde-format
 msgid "C&omment"
 msgstr "Зако&мментировать"
 
-#: view/kateview.cpp:528
+#: view/kateview.cpp:526
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6660,22 +6708,22 @@ msgstr ""
 "текста. <br/><br/>Символы комментариев зависят от языка и задаются в "
 "описании подсветки синтаксиса."
 
-#: view/kateview.cpp:533
+#: view/kateview.cpp:531
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "Перейти к предыдущему месту редактирования"
 
-#: view/kateview.cpp:539
+#: view/kateview.cpp:537
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "Перейти к следующему месту редактирования"
 
-#: view/kateview.cpp:545
+#: view/kateview.cpp:543
 #, kde-format
 msgid "Unco&mment"
 msgstr "Р&аскомментировать"
 
-#: view/kateview.cpp:548
+#: view/kateview.cpp:546
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6686,27 +6734,27 @@ msgstr ""
 "текста. <br/><br/>Символы комментариев зависят от языка и задаются в "
 "подсветке синтаксиса."
 
-#: view/kateview.cpp:553
+#: view/kateview.cpp:551
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Закомментировать или раскомментировать"
 
-#: view/kateview.cpp:557
+#: view/kateview.cpp:555
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "За&блокировать изменение текста"
 
-#: view/kateview.cpp:558
+#: view/kateview.cpp:556
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Защитить документ от изменений"
 
-#: view/kateview.cpp:565
+#: view/kateview.cpp:563
 #, kde-format
 msgid "Uppercase"
 msgstr "Перевести в ВЕРХНИЙ РЕГИСТР"
 
-#: view/kateview.cpp:568
+#: view/kateview.cpp:566
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6715,12 +6763,12 @@ msgstr ""
 "Преобразовать выделение (или символ справа, если текст не выделен) в верхний "
 "регистр."
 
-#: view/kateview.cpp:574
+#: view/kateview.cpp:572
 #, kde-format
 msgid "Lowercase"
 msgstr "Перевести в нижний регистр"
 
-#: view/kateview.cpp:577
+#: view/kateview.cpp:575
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6729,12 +6777,12 @@ msgstr ""
 "Преобразовать выделение (или символ справа, если текст не выделен) в нижний "
 "регистр."
 
-#: view/kateview.cpp:583
+#: view/kateview.cpp:581
 #, kde-format
 msgid "Capitalize"
 msgstr "Перевести в регистр Как в предложениях"
 
-#: view/kateview.cpp:586
+#: view/kateview.cpp:584
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6744,175 +6792,175 @@ msgstr ""
 "не выделен) в регистр как предложениях (первая буква слова — заглавная, "
 "остальные — в нижнем регистре)."
 
-#: view/kateview.cpp:591
+#: view/kateview.cpp:589
 #, kde-format
 msgid "Join Lines"
 msgstr "Объединить строки"
 
-#: view/kateview.cpp:596
+#: view/kateview.cpp:594
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Дополнить код"
 
-#: view/kateview.cpp:597
+#: view/kateview.cpp:595
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
 "this action."
 msgstr "Вызвать функцию дополнения кода, обычно посредством комбинации клавиш."
 
-#: view/kateview.cpp:614
+#: view/kateview.cpp:612
 #, kde-format
 msgid "Print the current document."
 msgstr "Печать текущего документа."
 
-#: view/kateview.cpp:617
+#: view/kateview.cpp:615
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Показать предварительный просмотр текущего документа"
 
-#: view/kateview.cpp:621
+#: view/kateview.cpp:619
 #, kde-format
 msgid "Reloa&d"
 msgstr "О&бновить"
 
-#: view/kateview.cpp:623
+#: view/kateview.cpp:621
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Обновляет текущий документ с диска."
 
-#: view/kateview.cpp:627
+#: view/kateview.cpp:625
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr ""
 "Сохраняет документ на диске с запросом его нового имени и расположения."
 
 # BUGME: remove ellipsis because it this opens a submenu? --aspotashev
-#: view/kateview.cpp:629
+#: view/kateview.cpp:627
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr "Сохранить в другой кодировке..."
 
-#: view/kateview.cpp:635
+#: view/kateview.cpp:633
 #, kde-format
 msgid "Save &Copy As..."
 msgstr "Сохранить ко&пию как..."
 
-#: view/kateview.cpp:636
+#: view/kateview.cpp:634
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Сохранить на диске копию текущего документа."
 
-#: view/kateview.cpp:640
+#: view/kateview.cpp:638
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
 "cursor to move to."
 msgstr "Переходит на указанную в диалоге строку."
 
-#: view/kateview.cpp:644
+#: view/kateview.cpp:642
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Перейти к предыдущей изменённой строке"
 
-#: view/kateview.cpp:645
+#: view/kateview.cpp:643
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Подняться вверх к предыдущей изменённой строке."
 
-#: view/kateview.cpp:650
+#: view/kateview.cpp:648
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Перейти к следующей изменённой строке"
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:649
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Опуститься вниз к следующей изменённой строке."
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:653
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "&Настроить редактор..."
 
-#: view/kateview.cpp:657
+#: view/kateview.cpp:655
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Настройка различных параметров редактора."
 
-#: view/kateview.cpp:660
+#: view/kateview.cpp:658
 #, kde-format
 msgid "&Mode"
 msgstr "&Тип документа"
 
-#: view/kateview.cpp:666
+#: view/kateview.cpp:664
 #, kde-format
 msgid "&Highlighting"
 msgstr "Под&светка"
 
-#: view/kateview.cpp:668
+#: view/kateview.cpp:666
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Здесь вы можете настроить подсветку синтаксиса в текущем документе."
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:669
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "&Цветовая схема редактора"
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:675
 #, kde-format
 msgid "&Indentation"
 msgstr "&Расстановка отступов"
 
-#: view/kateview.cpp:685
+#: view/kateview.cpp:683
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Выделяет весь текст текущего документа."
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:686
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
 msgstr "Если в документе уже есть выделение, то оно снимается."
 
-#: view/kateview.cpp:692
+#: view/kateview.cpp:690
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Увеличить размер шрифта"
 
-#: view/kateview.cpp:694
+#: view/kateview.cpp:692
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Увеличивает размер шрифта текста документа."
 
-#: view/kateview.cpp:701
+#: view/kateview.cpp:699
 #, kde-format
 msgid "Shrink Font"
 msgstr "Уменьшить размер шрифта"
 
-#: view/kateview.cpp:703
+#: view/kateview.cpp:701
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Уменьшает размер шрифта текста документа."
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:708
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Сбросить размер шрифта"
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:710
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Сбрасывает размер шрифта текста документа в исходное значение."
 
-#: view/kateview.cpp:715
+#: view/kateview.cpp:713
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "&Блочное выделение"
 
-#: view/kateview.cpp:718
+#: view/kateview.cpp:716
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -6921,34 +6969,34 @@ msgstr ""
 "Переключает режим выделения между обычным (выделение по строкам) и блочным "
 "(прямоугольным) выделением."
 
-#: view/kateview.cpp:722
+#: view/kateview.cpp:720
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Переключить на следующий режим ввода"
 
-#: view/kateview.cpp:724
+#: view/kateview.cpp:722
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Сменить режим ввода на следующий."
 
-#: view/kateview.cpp:727
+#: view/kateview.cpp:725
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Режим &замены"
 
-#: view/kateview.cpp:730
+#: view/kateview.cpp:728
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr "Переключает режимы вставки текста или его перезаписи при вводе текста."
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:732
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Динамический перенос строк"
 
-#: view/kateview.cpp:738
+#: view/kateview.cpp:736
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -6959,37 +7007,37 @@ msgstr ""
 "><br />Данный параметр изменяет только способ отображения документа, а не "
 "изменяет его содержимое."
 
-#: view/kateview.cpp:742
+#: view/kateview.cpp:740
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Маркеры динамического переноса строк"
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:742
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "Маркеры динамически перенесённых строк"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:744
 #, kde-format
 msgid "&Off"
 msgstr "&Не показывать"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:744
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "За &номерами строк"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:744
 #, kde-format
 msgid "&Always On"
 msgstr "&Всегда показывать"
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:748
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Статический перенос строк"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:750
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -6998,12 +7046,12 @@ msgstr ""
 "При включении этого параметра строки будут переносится по достижению длины, "
 "заданной в параметрах."
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:757
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Маркеры &статического переноса строк"
 
-#: view/kateview.cpp:762
+#: view/kateview.cpp:760
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7012,12 +7060,12 @@ msgstr ""
 "Показать/скрыть границу переноса строк (вертикальную линию в позиции, "
 "определённой в свойствах редактора)"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Полоса сворачивания &блоков"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:766
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7026,12 +7074,12 @@ msgstr ""
 "Вы можете включить полосу сворачивания блоков программы, если это возможно "
 "для выбранного документа."
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:769
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Полоса &закладок"
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:771
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7040,22 +7088,22 @@ msgstr ""
 "Показать/скрыть полосу отметок.<br /><br />В этой полосе показываются "
 "закладки."
 
-#: view/kateview.cpp:776
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "&Номера строк"
 
-#: view/kateview.cpp:778
+#: view/kateview.cpp:776
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Показать/скрыть номера строк по левой стороне окна."
 
-#: view/kateview.cpp:781
+#: view/kateview.cpp:779
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "О&тметки на полосе прокрутки"
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:781
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7064,12 +7112,12 @@ msgstr ""
 "Показать/скрыть отметки на вертикальной полосе прокрутки.<br /><br />Они "
 "показывают позиции закладок в тексте."
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:784
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Мини-карта в полосе прокрутки"
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:786
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7083,73 +7131,73 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:800
+#: view/kateview.cpp:798
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Показать непечатаемые пробелы"
 
-#: view/kateview.cpp:802
+#: view/kateview.cpp:800
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Показать/скрыть рамку вокруг непечатаемых пробельных символов"
 
-#: view/kateview.cpp:806
+#: view/kateview.cpp:804
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Командная строка"
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:806
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Показать/скрыть командную строку под документом."
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:809
 #, kde-format
 msgid "Input Modes"
 msgstr "Режимы ввода"
 
 # BUGME: word puzzle, fix it in code! Until that happens, we can use Transcript to fix Russian translation. --aspotashev
-#: view/kateview.cpp:820
+#: view/kateview.cpp:818
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Включить или выключить %1"
 
-#: view/kateview.cpp:830
+#: view/kateview.cpp:828
 #, kde-format
 msgid "&End of Line"
 msgstr "Коне&ц строки"
 
-#: view/kateview.cpp:832
+#: view/kateview.cpp:830
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr ""
 "Устанавливает символы конца строк, которые будут использованы при сохранении "
 "документов."
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:831
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "UNIX"
 
-#: view/kateview.cpp:834
+#: view/kateview.cpp:832
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "Windows/DOS"
 
-#: view/kateview.cpp:835
+#: view/kateview.cpp:833
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "Макинтош"
 
-#: view/kateview.cpp:840
+#: view/kateview.cpp:838
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Добавлять отметку о порядке ба&йтов (BOM)"
 
-#: view/kateview.cpp:843
+#: view/kateview.cpp:841
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7158,78 +7206,78 @@ msgstr ""
 "Включить или выключить добавление отметок о порядке байтов в файлы в "
 "кодировках UTF-8 и UTF-16 при их сохранении"
 
-#: view/kateview.cpp:847
+#: view/kateview.cpp:845
 #, kde-format
 msgid "E&ncoding"
 msgstr "&Кодировка"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:849
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Поиск первого вхождения указанного текста или регулярного выражения."
 
-#: view/kateview.cpp:855
+#: view/kateview.cpp:853
 #, kde-format
 msgid "Find Selected"
 msgstr "Следующее вхождение выделенного текста"
 
-#: view/kateview.cpp:857
+#: view/kateview.cpp:855
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Найти следующее вхождение выделенного текста."
 
-#: view/kateview.cpp:861
+#: view/kateview.cpp:859
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Предыдущее вхождение выделенного текста"
 
-#: view/kateview.cpp:863
+#: view/kateview.cpp:861
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Находит предыдущее вхождение выделенного текста."
 
-#: view/kateview.cpp:867
+#: view/kateview.cpp:865
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Найти и выбрать следующее вхождение"
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:867
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
 "Находит следующее вхождение слова под курсором и добавляет его к выделению."
 
-#: view/kateview.cpp:873
+#: view/kateview.cpp:871
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Отметить выделенное вхождение как пропущенное"
 
-#: view/kateview.cpp:875
+#: view/kateview.cpp:873
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Отмечает выделенное слово как пропущенное."
 
-#: view/kateview.cpp:879
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Найти и выбрать все вхождения"
 
-#: view/kateview.cpp:881
+#: view/kateview.cpp:879
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "Находит все вхождения слова под курсором и выбирает их."
 
-#: view/kateview.cpp:885
+#: view/kateview.cpp:883
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Поиск следующего соответствия поисковой фразе."
 
-#: view/kateview.cpp:889
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Поиск предыдущего соответствия фразе поиска."
 
-#: view/kateview.cpp:893
+#: view/kateview.cpp:891
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7238,84 +7286,84 @@ msgstr ""
 "Поиск текста, соответствующего указанному тексту или регулярному выражению и "
 "замена его другим текстом."
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:894
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Добавить курсоры в конце строк"
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:896
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Создаёт курсор в конце каждой строки в выбранном фрагменте."
 
-#: view/kateview.cpp:902
+#: view/kateview.cpp:900
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "Добавить точку вставки под курсором"
 
-#: view/kateview.cpp:904
+#: view/kateview.cpp:902
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Добавляет точку вставки в строку под текущим курсором."
 
-#: view/kateview.cpp:908
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "Добавить точку вставки над курсором"
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:908
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "Добавляет точку вставки в строку над текущим курсором."
 
-#: view/kateview.cpp:914
+#: view/kateview.cpp:912
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Включить или отключить перемещение курсора по горбатому регистру"
 
-#: view/kateview.cpp:915
+#: view/kateview.cpp:913
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 "Переключение между обычным перемещением курсора по словам и перемещением по "
 "горбатому регистру"
 
-#: view/kateview.cpp:919
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Удалить курсоры из пустых строк"
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:918
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Удалить курсоры из пустых строк"
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Автоматическая проверка орфографии"
 
-#: view/kateview.cpp:925
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Включение/выключение автоматической проверки орфографии"
 
-#: view/kateview.cpp:931
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Change Dictionary..."
 msgstr "Выбрать словарь..."
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:930
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Выбрать словарь, используемый для проверки орфографии."
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:934
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Один словарь для всего текста"
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:936
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7324,24 +7372,24 @@ msgstr ""
 "текста. Для всего текста в документе при проверке орфографии будет "
 "использоваться словарь по умолчанию."
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:942
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Копировать в ф&ормате HTML"
 
-#: view/kateview.cpp:945
+#: view/kateview.cpp:943
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
 "clipboard."
 msgstr "Копировать текст с подсветкой в формате HTML в буфер обмена."
 
-#: view/kateview.cpp:949
+#: view/kateview.cpp:947
 #, kde-format
 msgid "E&xport as HTML..."
 msgstr "&Экспорт в HTML..."
 
-#: view/kateview.cpp:951
+#: view/kateview.cpp:949
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7350,212 +7398,212 @@ msgstr ""
 "Эта команда позволяет экспортировать текущий документ с подсветкой кода в "
 "виде страницы HTML."
 
-#: view/kateview.cpp:989
+#: view/kateview.cpp:987
 #, kde-format
 msgid "Move Word Left"
 msgstr "На слово влево"
 
-#: view/kateview.cpp:995
+#: view/kateview.cpp:993
 #, kde-format
 msgid "Select Character Left"
 msgstr "Выделить символ слева"
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:999
 #, kde-format
 msgid "Select Word Left"
 msgstr "Выделить слово слева"
 
-#: view/kateview.cpp:1007
+#: view/kateview.cpp:1005
 #, kde-format
 msgid "Move Word Right"
 msgstr "На слово вправо"
 
-#: view/kateview.cpp:1013
+#: view/kateview.cpp:1011
 #, kde-format
 msgid "Select Character Right"
 msgstr "Выделить символ справа"
 
-#: view/kateview.cpp:1019
+#: view/kateview.cpp:1017
 #, kde-format
 msgid "Select Word Right"
 msgstr "Выделить слово справа"
 
-#: view/kateview.cpp:1025
+#: view/kateview.cpp:1023
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "На начало строки"
 
-#: view/kateview.cpp:1031
+#: view/kateview.cpp:1029
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "На начало документа"
 
-#: view/kateview.cpp:1037
+#: view/kateview.cpp:1035
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Выделить до начала строки"
 
-#: view/kateview.cpp:1043
+#: view/kateview.cpp:1041
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Выделить до начала документа"
 
-#: view/kateview.cpp:1049
+#: view/kateview.cpp:1047
 #, kde-format
 msgid "Move to End of Line"
 msgstr "На конец строки"
 
-#: view/kateview.cpp:1055
+#: view/kateview.cpp:1053
 #, kde-format
 msgid "Move to End of Document"
 msgstr "На конец документа"
 
-#: view/kateview.cpp:1061
+#: view/kateview.cpp:1059
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Выделить до конца строки"
 
-#: view/kateview.cpp:1067
+#: view/kateview.cpp:1065
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Выделить до конца документа"
 
-#: view/kateview.cpp:1073
+#: view/kateview.cpp:1071
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Выделить до предыдущей строки"
 
-#: view/kateview.cpp:1079
+#: view/kateview.cpp:1077
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Прокрутить на одну строку вверх"
 
-#: view/kateview.cpp:1085
+#: view/kateview.cpp:1083
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Перейти на следующую строку"
 
-#: view/kateview.cpp:1091
+#: view/kateview.cpp:1089
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Перейти на предыдущую строку"
 
-#: view/kateview.cpp:1097
+#: view/kateview.cpp:1095
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Переместить курсор вправо"
 
-#: view/kateview.cpp:1103
+#: view/kateview.cpp:1101
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Переместить курсор влево"
 
-#: view/kateview.cpp:1109
+#: view/kateview.cpp:1107
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Выделить до следующей строки"
 
-#: view/kateview.cpp:1115
+#: view/kateview.cpp:1113
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Прокрутить на одну строку вниз"
 
-#: view/kateview.cpp:1121
+#: view/kateview.cpp:1119
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Прокрутить на одну страницу вверх"
 
-#: view/kateview.cpp:1127
+#: view/kateview.cpp:1125
 #, kde-format
 msgid "Select Page Up"
 msgstr "Выделить на одну страницу вверх"
 
-#: view/kateview.cpp:1133
+#: view/kateview.cpp:1131
 #, kde-format
 msgid "Move to Top of View"
 msgstr "На начало вида"
 
-#: view/kateview.cpp:1139
+#: view/kateview.cpp:1137
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Выделить до начала вида"
 
-#: view/kateview.cpp:1145
+#: view/kateview.cpp:1143
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Прокрутить на одну страницу вниз"
 
-#: view/kateview.cpp:1151
+#: view/kateview.cpp:1149
 #, kde-format
 msgid "Select Page Down"
 msgstr "Выделить на одну страницу вниз"
 
-#: view/kateview.cpp:1157
+#: view/kateview.cpp:1155
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "На конец вида"
 
-#: view/kateview.cpp:1163
+#: view/kateview.cpp:1161
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Выделить до конца вида"
 
-#: view/kateview.cpp:1169
+#: view/kateview.cpp:1167
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Перейти к парной скобке"
 
-#: view/kateview.cpp:1175
+#: view/kateview.cpp:1173
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Выделить до открывающей/закрывающей скобки"
 
-#: view/kateview.cpp:1183
+#: view/kateview.cpp:1181
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Поменять символы местами"
 
-#: view/kateview.cpp:1188
+#: view/kateview.cpp:1186
 #, kde-format
 msgid "Transpose Words"
 msgstr "Поменять слова местами"
 
-#: view/kateview.cpp:1193
+#: view/kateview.cpp:1191
 #, kde-format
 msgid "Delete Line"
 msgstr "Удалить строку"
 
-#: view/kateview.cpp:1199
+#: view/kateview.cpp:1197
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Удалить слово слева"
 
-#: view/kateview.cpp:1205
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Удалить слово справа"
 
-#: view/kateview.cpp:1211
+#: view/kateview.cpp:1209
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Удалить символ справа"
 
-#: view/kateview.cpp:1217
+#: view/kateview.cpp:1215
 #, kde-format
 msgid "Backspace"
 msgstr "Удалить символ слева"
 
-#: view/kateview.cpp:1225
+#: view/kateview.cpp:1223
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "Вставить символ табуляции"
 
-#: view/kateview.cpp:1230
+#: view/kateview.cpp:1228
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Вставить строку с отступом"
 
-#: view/kateview.cpp:1231
+#: view/kateview.cpp:1229
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7564,12 +7612,12 @@ msgstr ""
 "Вставить новую строку и вставить в её начало все начальные пробельные "
 "символы, как на текущей строке."
 
-#: view/kateview.cpp:1239
+#: view/kateview.cpp:1237
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Вставить строку без отступа"
 
-#: view/kateview.cpp:1240
+#: view/kateview.cpp:1238
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
@@ -7577,12 +7625,12 @@ msgstr ""
 "Вставить новую строку без отступа, вне зависимости от заданных параметров "
 "отступа в начале новой строки."
 
-#: view/kateview.cpp:1248
+#: view/kateview.cpp:1246
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "Вставить новую строку над текущей строкой"
 
-#: view/kateview.cpp:1249
+#: view/kateview.cpp:1247
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
@@ -7590,12 +7638,12 @@ msgstr ""
 "Вставить новую строку над текущей строкой без внесения изменений в текущую "
 "строку."
 
-#: view/kateview.cpp:1257
+#: view/kateview.cpp:1255
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "Вставить новую строку под текущей строкой"
 
-#: view/kateview.cpp:1258
+#: view/kateview.cpp:1256
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
@@ -7603,12 +7651,12 @@ msgstr ""
 "Вставить новую строку под текущей строкой без внесения изменений в текущую "
 "строку."
 
-#: view/kateview.cpp:1267
+#: view/kateview.cpp:1265
 #, kde-format
 msgid "&Indent"
 msgstr "&Вставить отступ"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1267
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7619,86 +7667,86 @@ msgstr ""
 "настроить на сколько символов будет осуществлён отступ и будут ли "
 "использован символ табуляции или пробелы в диалоге настройки."
 
-#: view/kateview.cpp:1276
+#: view/kateview.cpp:1274
 #, kde-format
 msgid "&Unindent"
 msgstr "Уме&ньшить отступ"
 
-#: view/kateview.cpp:1277
+#: view/kateview.cpp:1275
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr ""
 "Сдвигает строки выделенного фрагмента текста влево на один шаг отступа."
 
-#: view/kateview.cpp:1295
+#: view/kateview.cpp:1293
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Свернуть блоки 1-го уровня"
 
-#: view/kateview.cpp:1300
+#: view/kateview.cpp:1298
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "Развернуть блоки 1-го уровня"
 
-#: view/kateview.cpp:1313
+#: view/kateview.cpp:1311
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "Свернуть или развернуть текущий блок кода"
 
-#: view/kateview.cpp:1317
+#: view/kateview.cpp:1315
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "Свернуть или вложенные блоки кода"
 
 # BUGME: need to shorten Russian translation? TBD: see this in GUI and decide. --aspotashev
-#: view/kateview.cpp:1474
+#: view/kateview.cpp:1472
 #, kde-format
 msgid "(R/O) %1"
 msgstr "%1 (только чтение)"
 
-#: view/kateview.cpp:1662
+#: view/kateview.cpp:1660
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Перемещение курсора по горбатому регистру отключено"
 
-#: view/kateview.cpp:1664
+#: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Перемещение курсора по горбатому регистру включено"
 
-#: view/kateview.cpp:2146
+#: view/kateview.cpp:2144
 #, kde-format
 msgid "Search wrapped"
 msgstr "Поиск продолжен"
 
-#: view/kateview.cpp:3658
+#: view/kateview.cpp:3654
 #, kde-format
 msgid "Align On"
 msgstr "В&ыровнять по"
 
-#: view/kateview.cpp:3658
+#: view/kateview.cpp:3654
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Образец выравнивания:"
 
-#: view/kateview.cpp:4750
+#: view/kateview.cpp:4746
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Экспорт файла в HTML"
 
-#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:346
-#: view/kateviewhelpers.cpp:982
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>—<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1151
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "Доступные команды"
 
-#: view/kateviewhelpers.cpp:1152
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7707,17 +7755,17 @@ msgstr ""
 "<p>Для справки по отдельным командам введите <code>help &lt;имя-команды&gt;</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Справка по «%1» отсутствует"
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Команда <b>%1</b> не существует"
 
-#: view/kateviewhelpers.cpp:1168
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7730,37 +7778,37 @@ msgstr ""
 "list</b></code><br/>Для справки по отдельным командам введите <code><b>help "
 "&lt;имя-команды&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1256 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Команда «%1» не существует"
 
-#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Ошибка: нельзя указывать диапазон для команды «%1»."
 
-#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Успешно: "
 
-#: view/kateviewhelpers.cpp:1283 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Команда «%1» не выполнена."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Тип закладки %1"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2587
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Установить тип пометки по умолчанию"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2728
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Убрать столбец аннотации"
@@ -8159,6 +8207,9 @@ msgstr "«%1» %2,  шестн. %3,  восм. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Отметка не установлена: %1"
+
+#~ msgid "Export/Print"
+#~ msgstr "Экспорт/Печать"
 
 #~ msgid "Namespaces"
 #~ msgstr "Пространства имён"

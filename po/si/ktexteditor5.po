@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"POT-Creation-Date: 2023-03-01 22:21+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -61,7 +61,7 @@ msgstr "ගොනුව (~F)"
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
 #, kde-format
-msgid "Export/Print"
+msgid "Print/Export"
 msgstr ""
 
 #. i18n: ectx: Menu (edit)
@@ -104,7 +104,7 @@ msgid "Word Wrap"
 msgstr "ස්ථිතික වචන එතීම"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:731
 #, kde-format
 msgid "Borders"
 msgstr "මායිම්"
@@ -346,7 +346,7 @@ msgid "Minim&ap width:"
 msgstr "ටැබ් පළල: (~d)"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Always On"
 msgstr "සැමවිටම සක්‍රිය"
@@ -437,8 +437,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
-#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:597
+#: dialogs/katedialogs.cpp:727 dialogs/katedialogs.cpp:1006
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1066,7 +1066,7 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr "ආරම්භක හිස් ඉඩක සිටී නම් අනුච්ඡේදන මට්ටම වැඩි කරන්න"
 
-#: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
+#: dialogs/katedialogs.cpp:182 dialogs/katedialogs.cpp:184
 #, fuzzy, kde-format
 #| msgctxt "Wrap words at"
 #| msgid " character"
@@ -1076,77 +1076,77 @@ msgid_plural " characters"
 msgstr[0] " අනු ලකුණ"
 msgstr[1] "අනු ලකුණු"
 
-#: dialogs/katedialogs.cpp:209
+#: dialogs/katedialogs.cpp:208
 #, kde-format
 msgid "Indentation"
 msgstr "අනුච්ඡේදනය"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:289
 #, kde-format
 msgid "Auto Completion"
 msgstr "ස්වයං සම්පූර්ණ කිරීම"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:356
 #, kde-format
 msgid "Spellcheck"
 msgstr "අක්ෂර වින්‍යාසය පරීක්ෂා කිරීම"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:403 dialogs/katedialogs.cpp:410
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Alert"
 msgid "Alt"
 msgstr "අනතුරු ඇඟවීම"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:405
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:406 dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:407
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:411
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "විධානය"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:471
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Configuration"
 msgid "Text Navigation"
 msgstr "වින්‍යාසය"
 
-#: dialogs/katedialogs.cpp:572
+#: dialogs/katedialogs.cpp:571
 #, fuzzy, kde-format
 #| msgctxt "Wrap words at"
 #| msgid " character"
@@ -1157,66 +1157,66 @@ msgid_plural " characters"
 msgstr[0] " අනු ලකුණ"
 msgstr[1] "අනු ලකුණු"
 
-#: dialogs/katedialogs.cpp:577
+#: dialogs/katedialogs.cpp:576
 #, kde-format
 msgid "Feature is not active"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:578
 #, fuzzy, kde-format
 #| msgid "Disabled Breakpoint"
 msgid "Disable Feature"
 msgstr "බිඳුම් ලක්ෂය අක්‍රිය කරන්න"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:580
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:584
 #, fuzzy, kde-format
 #| msgid "Non-word character"
 msgid "Non letter character"
 msgstr "වචන නොවන අනු ලකුණ"
 
-#: dialogs/katedialogs.cpp:699
+#: dialogs/katedialogs.cpp:698
 #, kde-format
 msgid "Editing"
 msgstr "සංස්කරණය කරමින්"
 
-#: dialogs/katedialogs.cpp:704
+#: dialogs/katedialogs.cpp:703
 #, kde-format
 msgid "Editing Options"
 msgstr "සංස්කරණ විකල්ප"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:735
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:737
 #, kde-format
 msgid "Off"
 msgstr "අක්‍රීය"
 
-#: dialogs/katedialogs.cpp:739
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "පේළි අංක ලුහුබදින්න"
 
-#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
+#: dialogs/katedialogs.cpp:932 dialogs/katedialogs.cpp:937
 #, kde-format
 msgid "Appearance"
 msgstr "පෙනුම"
 
-#: dialogs/katedialogs.cpp:971
+#: dialogs/katedialogs.cpp:970
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1224,128 +1224,128 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1008
+#: dialogs/katedialogs.cpp:1007
 #, kde-format
 msgid "Advanced"
 msgstr "උසස්"
 
-#: dialogs/katedialogs.cpp:1073
+#: dialogs/katedialogs.cpp:1072
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "ඔබ උපස්ථ උපසර්ගයක් සපයා නැත. පෙරනිමි උපසර්ගය භාවිතා කරමින්: '~'"
 
-#: dialogs/katedialogs.cpp:1073
+#: dialogs/katedialogs.cpp:1072
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "උපස්ථ උපසර්ගයක් නැත"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1200
 #, kde-format
 msgid "Open/Save"
 msgstr "විවෘත කරන්න/සුරකින්න"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1205
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "ගොනුව විවෘත කිරීම සහ සුරැකීම"
 
-#: dialogs/katedialogs.cpp:1234
+#: dialogs/katedialogs.cpp:1228
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1235
+#: dialogs/katedialogs.cpp:1229
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1326
+#: dialogs/katedialogs.cpp:1320
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1390
+#: dialogs/katedialogs.cpp:1384
 #, kde-format
 msgid "Dictionary:"
 msgstr "ශබ්දකෝෂය:"
 
-#: dialogs/katedialogs.cpp:1443
+#: dialogs/katedialogs.cpp:1437
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "ස්වයං සම්පූර්ණ කිරීම සක්‍රිය කරන්න (~a)"
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1439
 #, kde-format
 msgid "Will never again warn about on disk changes but always reload."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1444
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "වෙනස්කම පෙන්වන්න (~V)"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1446
 #, kde-format
 msgid "Shows a diff of the changes"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1451
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "නැවත ප්‍රවේශ කරන්න (~d)"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1453
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reload the file from disk. Unsaved changes will be lost."
 msgstr "ගොනුව තැටියෙන් නැවත ප්‍රවේශ කරන්න. ඔබ සුරැකා නැති වෙනස්කම් තිබේනම්, ඒවා නැති වනු ඇත."
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "ගොනුව නැවත ප්‍රවේශ කරන්න (~R)"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Close the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1463
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "ගොනුව මේ ලෙස සුරකින්න... (~S)"
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "ඔබට පිහිටීමක් තේරීමට අවස්ථාව ලබා දී ගොනුව නැවත සුරකියි."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1470 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "නොතකන්න (~I)"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1471
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "වෙනස්කම් නොතකන්න. ඔබෙන් නැවත ඒ පිළිබඳ නොවිමසනු ඇත."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1537 swapfile/kateswapdiffcreator.cpp:128
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1354,18 +1354,18 @@ msgstr ""
 "diff විධානය අසාර්ථක විය. කරුණාකර diff(1) ස්ථාපනය කර ඇති සහ එය ඔබගේ PATH එකෙහි බව "
 "තහවුරු වෙන්න."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1539 swapfile/kateswapdiffcreator.cpp:88
+#: swapfile/kateswapdiffcreator.cpp:96 swapfile/kateswapdiffcreator.cpp:130
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff තැනීමේදී දෝෂය"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "The files are identical."
 msgstr "ගොනු සර්වසම වෙයි."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff ප්‍රතිදානය"
@@ -2203,18 +2203,18 @@ msgstr "නව ගොනු වර්ගය"
 msgid "The file %1 does not exist."
 msgstr "ගොනු සර්වසම වෙයි."
 
-#: document/katedocument.cpp:246
+#: document/katedocument.cpp:219
 #, fuzzy, kde-format
 #| msgid "Close Document"
 msgid "Auto Reload Document"
 msgstr "ලිපිය වහන්න"
 
-#: document/katedocument.cpp:247
+#: document/katedocument.cpp:220
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2313
+#: document/katedocument.cpp:2286
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2228,23 +2228,24 @@ msgstr ""
 "\n"
 "ඔබට ගොනුව කියවීමට අවසර ඇත්දැයි පරීක්ෂාකර බලන්න."
 
-#: document/katedocument.cpp:2318
+#: document/katedocument.cpp:2291
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6515
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6516
 #, kde-format
+msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr ""
 
-#: document/katedocument.cpp:2334
+#: document/katedocument.cpp:2307
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2255,7 +2256,7 @@ msgstr ""
 "\n"
 "ඔබට ගොනුව කියවීමට අවසර ඇත්දැයි පරීක්ෂාකර බලන්න."
 
-#: document/katedocument.cpp:2458
+#: document/katedocument.cpp:2431
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters. "
@@ -2273,7 +2274,7 @@ msgstr ""
 "එකෙකෝ නිවැරදි කේතීකරණය තෝරා ගොනුව නැවත විවෘත කරන්න හෝ නැවතත් මෙනුවෙන් ලිවීමේ-කියවීමේ "
 "ආකාරය සක්‍රිය කරන්න."
 
-#: document/katedocument.cpp:2470
+#: document/katedocument.cpp:2443
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters. "
@@ -2291,7 +2292,7 @@ msgstr ""
 "එකෙකෝ නිවැරදි කේතීකරණය තෝරා ගොනුව නැවත විවෘත කරන්න හෝ නැවතත් මෙනුවෙන් ලිවීමේ-කියවීමේ "
 "ආකාරය සක්‍රිය කරන්න."
 
-#: document/katedocument.cpp:2483
+#: document/katedocument.cpp:2456
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened and contained too long lines (more than %2 "
@@ -2306,17 +2307,17 @@ msgstr ""
 "%1 ගොනුව විවෘත කල අතර ඉතා දිගු පේළි අඩංගු වේ (%2 ට වඩා වැඩි අක්‍ෂර ගණනක්). ඉතා දිගු පේළි "
 "එතෙන අතර සුරැකීමේදී එහි අන්තර්ගතය වෙනස්වන නිසා ලේඛනය කියවීම්-පමණක් ප්‍රකාරයට සැකසේ."
 
-#: document/katedocument.cpp:2490
+#: document/katedocument.cpp:2463
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2493
+#: document/katedocument.cpp:2466
 #, kde-format
 msgid "Close"
 msgstr ""
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2473
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened and contained too long lines (more than %2 "
@@ -2331,7 +2332,7 @@ msgstr ""
 "%1 ගොනුව විවෘත කල අතර ඉතා දිගු පේළි අඩංගු වේ (%2 ට වඩා වැඩි අක්‍ෂර ගණනක්). ඉතා දිගු පේළි "
 "එතෙන අතර සුරැකීමේදී එහි අන්තර්ගතය වෙනස්වන නිසා ලේඛනය කියවීම්-පමණක් ප්‍රකාරයට සැකසේ."
 
-#: document/katedocument.cpp:2527
+#: document/katedocument.cpp:2500
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2340,18 +2341,18 @@ msgstr ""
 "ඔබට ඇත්තටම මෙම වෙනස් නොකල ගොනුව සුරැකීමට අවශ්‍යද? ඔබ තැටියේ ඇති ගොනුවේ වෙනස් කල දත්ත උඩින් "
 "ලිවීමට හැකියාව ඇත."
 
-#: document/katedocument.cpp:2528
+#: document/katedocument.cpp:2501
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "වෙනස් නොකල ගොනු ව සුරැකීමට උත්සහ කරමින්"
 
-#: document/katedocument.cpp:2529 document/katedocument.cpp:2540
-#: document/katedocument.cpp:2556
+#: document/katedocument.cpp:2502 document/katedocument.cpp:2513
+#: document/katedocument.cpp:2529
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "කෙසේනමුත් සුරකින්න"
 
-#: document/katedocument.cpp:2538
+#: document/katedocument.cpp:2511
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2360,14 +2361,14 @@ msgstr ""
 "ඔබට ඇත්තටම මෙම ගොනුව සුරැකීමට අවශ්‍යද? ඔබගේ විවෘත කල ගොනුව සහ තැටියේ ගොනුව යන දෙකම "
 "වෙනස් කර ඇත. දත්ත සමහරක් නැතිවීම සිදුවිය හැක."
 
-#: document/katedocument.cpp:2539 document/katedocument.cpp:2555
-#: document/katedocument.cpp:2847 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2512 document/katedocument.cpp:2528
+#: document/katedocument.cpp:2820 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "විය හැකි දත්ත හානි"
 
-#: document/katedocument.cpp:2553
+#: document/katedocument.cpp:2526
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2379,7 +2380,7 @@ msgstr ""
 "තේරූ කේතීකරණයට මෙම ලිපියේ අති සෑම යුනිකේත අනු ලකුණක්ම කේතීකරණය කිරීමට නොහැක. ඔබට ඇත්තටම එය "
 "සුරැකීමට අවශ්‍යද? දත්ත සමහරක් නැතිවීමට හැක."
 
-#: document/katedocument.cpp:2598
+#: document/katedocument.cpp:2571
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2397,7 +2398,7 @@ msgstr ""
 "\n"
 "ඔබට මෙම ගොනුවට ලිවීමේ අවසර තිබේද හෝ ප්‍රමාණවත් තැටි ඉඩ තිබේද යන්න පරීක්ෂා කරන්න."
 
-#: document/katedocument.cpp:2719
+#: document/katedocument.cpp:2692
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2409,50 +2410,50 @@ msgstr ""
 "වුවහොත් මෙම ගොනුවේ දත්ත ඔබට නැති විය හැක. හේතුවක් විය හැක්කේ ඔබ ලියන මාධ්‍යය පිරී ඇත හෝ "
 "ගොනුවේ නාමාවලිය ඔබ සඳහා කියවීමට පමණක් වීමයි."
 
-#: document/katedocument.cpp:2723
+#: document/katedocument.cpp:2696
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "උපස්ථ පිටපත සෑදීම අසාර්ථක විය."
 
-#: document/katedocument.cpp:2724
+#: document/katedocument.cpp:2697
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "කෙසේනමුත් සුරැකීමට උත්සහ කරන්න"
 
-#: document/katedocument.cpp:2846
+#: document/katedocument.cpp:2819
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "ඔබට ඇත්තටම මෙම ගොනුව වැසීමට අවශ්‍යද? දත්ත හානි ඇතිවිය හැක."
 
-#: document/katedocument.cpp:2848
+#: document/katedocument.cpp:2821
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "කෙසේවුවත් වහන්න"
 
-#: document/katedocument.cpp:4658
+#: document/katedocument.cpp:4627
 #, kde-format
 msgid "Untitled"
 msgstr "තේමා රහිත"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:4750 document/katedocument.cpp:4978
+#: document/katedocument.cpp:4988 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5919
 #, kde-format
 msgid "Save File"
 msgstr "ගොනුව සුරකින්න"
 
-#: document/katedocument.cpp:4784
+#: document/katedocument.cpp:4753
 #, kde-format
 msgid "Save failed"
 msgstr "සුරැකීම අසාර්ථක විය"
 
-#: document/katedocument.cpp:5030
+#: document/katedocument.cpp:4999
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ගොනුව සුරකින්න"
 
-#: document/katedocument.cpp:5042
+#: document/katedocument.cpp:5011
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2464,7 +2465,7 @@ msgstr ""
 "\n"
 "ඔබට මෙම ගොනුවට ලිවීමේ අවසර තිබේද හෝ ප්‍රමාණවත් තැටි ඉඩ තිබේද යන්න පරීක්ෂා කරන්න."
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5261
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2473,7 +2474,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5267
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2482,25 +2483,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5576
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව වෙනස් කරන ලදි."
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5579
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව තනන කරන ලදි."
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5582
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව මකන ලදි."
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2509,17 +2510,17 @@ msgstr ""
 "\"%1\" ලිපිය වෙනස්කර ඇත.\n"
 "ඔබට ඔබගේ වෙනස්කම් සුරැකීමට හෝ ඉවත දැමීමට අවශ්‍යද?"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5907
 #, kde-format
 msgid "Close Document"
 msgstr "ලිපිය වහන්න"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6018
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6023
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3239,9 +3240,12 @@ msgid "Sort Selected Text Alphabetically"
 msgstr "තේරූ පෙළ සුබෙදන්න"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
-#: script/data/commands/utils.js:19 script/data/commands/utils.js:24
-#: script/data/commands/utils.js:28 script/data/commands/utils.js:32
-#: script/data/commands/utils.js:36 script/data/commands/utils.js:40
+#: script/data/commands/utils.js:18 script/data/commands/utils.js:22
+#: script/data/commands/utils.js:26 script/data/commands/utils.js:30
+#: script/data/commands/utils.js:34 script/data/commands/utils.js:39
+#: script/data/commands/utils.js:44 script/data/commands/utils.js:48
+#: script/data/commands/utils.js:52 script/data/commands/utils.js:56
+#: script/data/commands/utils.js:60 script/data/commands/utils.js:64
 #, fuzzy, kde-format
 #| msgid "Editing"
 msgctxt "Script command category"
@@ -3257,67 +3261,109 @@ msgstr "තේරූ පෙළෙන් හෝ මුළු ලිපියෙ�
 
 #: script/data/commands/utils.js:17
 #, fuzzy, kde-format
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Remove Duplicate Lines"
+msgstr "තේරූ පේළි ඉහළට අනුපිටපත් කරන්න"
+
+#: script/data/commands/utils.js:21
+#, fuzzy, kde-format
+#| msgid "Re&move trailing spaces"
+msgctxt "Script command name"
+msgid "Remove Trailing Spaces"
+msgstr "අවසාන හිස් ඉඩ ඉවත් කරමින් (~m)"
+
+#: script/data/commands/utils.js:25
+#, fuzzy, kde-format
+#| msgid "Re&move trailing spaces"
+msgctxt "Script command name"
+msgid "Remove Leading Spaces"
+msgstr "අවසාන හිස් ඉඩ ඉවත් කරමින් (~m)"
+
+#: script/data/commands/utils.js:29
+#, fuzzy, kde-format
+#| msgid "Re&move trailing spaces"
+msgctxt "Script command name"
+msgid "Remove Trailing and Leading Spaces"
+msgstr "අවසාන හිස් ඉඩ ඉවත් කරමින් (~m)"
+
+#: script/data/commands/utils.js:33
+#, fuzzy, kde-format
+#| msgid "Join Lines"
+msgctxt "Script command name"
+msgid "Join Lines"
+msgstr "රේඛා සම්බන්ධ කරන්න"
+
+#: script/data/commands/utils.js:37
+#, fuzzy, kde-format
 #| msgid "Move Lines Down"
 msgctxt "Script command name"
 msgid "Move Lines Down"
 msgstr "පේළි පහළට ගෙන යන්න"
 
-#: script/data/commands/utils.js:22
+#: script/data/commands/utils.js:42
 #, fuzzy, kde-format
 #| msgid "Move Lines Up"
 msgctxt "Script command name"
 msgid "Move Lines Up"
 msgstr "පේළි ඉහළට ගෙන යන්න"
 
-#: script/data/commands/utils.js:27
+#: script/data/commands/utils.js:47
 #, fuzzy, kde-format
 #| msgid "Duplicate Selected Lines Down"
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
 msgstr "තේරූ පේළි පහළට අනුපිටපත් කරන්න"
 
-#: script/data/commands/utils.js:31
+#: script/data/commands/utils.js:51
 #, fuzzy, kde-format
 #| msgid "Duplicate Selected Lines Up"
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
 msgstr "තේරූ පේළි ඉහළට අනුපිටපත් කරන්න"
 
-#: script/data/commands/utils.js:35
+#: script/data/commands/utils.js:55
 #, fuzzy, kde-format
 #| msgid "Sort Selected Text"
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "තේරූ පෙළ සුබෙදන්න"
 
-#: script/data/commands/utils.js:39
+#: script/data/commands/utils.js:59
 #, fuzzy, kde-format
 #| msgid "Sort Selected Text"
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "තේරූ පෙළ සුබෙදන්න"
 
-#: script/data/commands/utils.js:418
+#: script/data/commands/utils.js:63
+#, fuzzy, kde-format
+#| msgid "Move to Matching Bracket"
+msgctxt "Script command name"
+msgid "Remove Empty Lines"
+msgstr "ගැළපෙන වරහනට ගෙන යන්න"
+
+#: script/data/commands/utils.js:442
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "තේරූ පෙළ හෝ මුළු ලිපියම සුබෙදන්න."
 
-#: script/data/commands/utils.js:420
+#: script/data/commands/utils.js:444
 #, kde-format
 msgid "Move selected lines down."
 msgstr "තේරූ පේළි පහළට ගෙන යන්න"
 
-#: script/data/commands/utils.js:422
+#: script/data/commands/utils.js:446
 #, kde-format
 msgid "Move selected lines up."
 msgstr "තේරූ පේළි ඉහළට ගෙන යන්න"
 
-#: script/data/commands/utils.js:424
+#: script/data/commands/utils.js:448
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "තේරූ පෙළෙන් හෝ මුළු ලිපියෙන්ම අනුපිටපත් පේළි ඉවත් කරන්න."
 
-#: script/data/commands/utils.js:426
+#: script/data/commands/utils.js:450
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3328,22 +3374,22 @@ msgstr ""
 "ආකාරයට වෙනස්කම පෙන්වන උදාහරණයකි:<br>sort(a10, a1, a2) => a1, a10, "
 "a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:428
+#: script/data/commands/utils.js:452
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "තේරීමෙන් හෝ මුළු ලිපියෙන්ම අවසානයේ ඇති හිස් ඉඩ ඉවත් කරයි."
 
-#: script/data/commands/utils.js:430
+#: script/data/commands/utils.js:454
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "තේරීමෙන් හෝ මුළු ලිපියෙන්ම ආරම්භයේ ඇති හිස් ඉඩ ඉවත් කරයි."
 
-#: script/data/commands/utils.js:432
+#: script/data/commands/utils.js:456
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "තේරීමෙන් හෝ මුළු ලිපියෙන්ම ආරම්භයේ සහ අවසානයේ ඇති හිස් ඉඩ ඉවත් කරයි."
 
-#: script/data/commands/utils.js:434
+#: script/data/commands/utils.js:458
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3353,12 +3399,12 @@ msgstr ""
 "තේරූ පේළි හෝ මුළු ලිපියම් සම්බන්ධ කරයි. අමතරව සෑම පේළියක් අතරටම බෙදුමක් යොදයි:උදා ලෙස "
 "<br><code>join ', '</code> පේළි එක් කර ඒවා කොමාවකින් වෙන් කරයි."
 
-#: script/data/commands/utils.js:436
+#: script/data/commands/utils.js:460
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "තේරූ පෙළෙන් හෝ මුළු ලිපියෙන්ම හිස් පේළි ඉවත් කරයි."
 
-#: script/data/commands/utils.js:438
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3372,7 +3418,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:466
 #, fuzzy, kde-format
 #| msgid ""
 #| "Given a JavaScript function as argument, call that for the list of "
@@ -3393,7 +3439,7 @@ msgstr ""
 "යතුරු ලියනය ඉතිරි කර ගැනීම සඳහා, ඔබට එයම ලබා ගැනීමට මෙසේද කල හැක:<br><code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3408,7 +3454,7 @@ msgstr ""
 "ඉතිරි කර ගැනීම සඳහා, ඔබට එයම ලබා ගැනීමට මෙසේද කල හැක:<br><code>filter 'line."
 "length > 0'</code>"
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:470
 #, fuzzy, kde-format
 #| msgid ""
 #| "Given a JavaScript function as argument, call that for the list of "
@@ -3431,36 +3477,36 @@ msgstr ""
 "code><br>ඔබගේ යතුරු ලියනය ඉතිරි කර ගැනීම සඳහා, ඔබට එයම ලබා ගැනීමට මෙසේද කල හැක:"
 "<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "තේරූ පේළි ඉහළට අනුපිටපත් කරයි."
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "තේරූ පේළි පහළට අනුපිටපත් කරයි."
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr ""
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr ""
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
@@ -3617,7 +3663,7 @@ msgstr "%1 ස්ක්‍රිප්ටය ප්‍රවේශ කිරී�
 msgid "Error loading script %1"
 msgstr "%1 සක්‍රිප්ටය ප්‍රවේශ කිරීමේදී දෝෂය"
 
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "සියළු JavaScript ගොනු නැවත ප්‍රවේශ කරන්න (අනුච්ඡේදක, විධාන රේඛා සක්‍රිප්ට් ආදිය)."
@@ -4253,7 +4299,7 @@ msgstr "ශබ්දකෝෂයට එක් කරන්න"
 msgid "Spelling '%1'"
 msgstr "අක්ෂර වින්‍යාසය"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:86
 #, fuzzy, kde-format
 #| msgid ""
 #| "The diff command failed. Please make sure that diff(1) is installed and "
@@ -4265,7 +4311,7 @@ msgstr ""
 "diff විධානය අසාර්ථක විය. කරුණාකර diff(1) ස්ථාපනය කර ඇති සහ එය ඔබගේ PATH එකෙහි බව "
 "තහවුරු වෙන්න."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:96
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
@@ -4891,7 +4937,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "වර්ණ"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1475
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "පිටු සළකුණ"
@@ -6150,30 +6196,30 @@ msgstr ""
 msgid "Kate Handbook."
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "සත්‍ය"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "අසත්‍ය"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, fuzzy, kde-format
 #| msgid "Move Lines Up"
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "පේළි ඉහළට ගෙන යන්න"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
@@ -6510,7 +6556,7 @@ msgstr "පේළියේ අවසානය"
 msgid "Mode"
 msgstr "ආකාරය (~M)"
 
-#: view/katestatusbar.cpp:208 view/kateview.cpp:663
+#: view/katestatusbar.cpp:208 view/kateview.cpp:661
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6621,77 +6667,77 @@ msgstr ""
 msgid "Zoom: %1%"
 msgstr ""
 
-#: view/kateview.cpp:450
+#: view/kateview.cpp:448
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "තේරූ පෙළ කපා පසුරු පුවරුවට ගෙන යන්න"
 
-#: view/kateview.cpp:453
+#: view/kateview.cpp:451
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "පෙර පසුරු පුවරුවට පිටපත් කල හෝ කැපූ අන්තර්ගතය අලවන්න"
 
-#: view/kateview.cpp:456
+#: view/kateview.cpp:454
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr "දැනට තේරූ පෙළ පද්ධති පසුරු පුවරුවට පිටපත් කිරීම සඳහා මෙම විධානය භාවිතා කරන්න."
 
-#: view/kateview.cpp:462
+#: view/kateview.cpp:460
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr ""
 
-#: view/kateview.cpp:467
+#: view/kateview.cpp:465
 #, fuzzy, kde-format
 #| msgid "Automatic Spell Checking"
 msgid "Paste Selection"
 msgstr "ස්වයං අක්ෂර වින්‍යාස පිරික්සුම"
 
-#: view/kateview.cpp:469
+#: view/kateview.cpp:467
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Paste previously mouse selection contents"
 msgstr "පෙර පසුරු පුවරුවට පිටපත් කල හෝ කැපූ අන්තර්ගතය අලවන්න"
 
-#: view/kateview.cpp:473
+#: view/kateview.cpp:471
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Swap with Clipboard Contents"
 msgstr "පෙර පසුරු පුවරුවට පිටපත් කල හෝ කැපූ අන්තර්ගතය අලවන්න"
 
-#: view/kateview.cpp:474
+#: view/kateview.cpp:472
 #, fuzzy, kde-format
 #| msgid "Cut the selected text and move it to the clipboard"
 msgid "Swap the selected text with the clipboard contents"
 msgstr "තේරූ පෙළ කපා පසුරු පුවරුවට ගෙන යන්න"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:476
 #, kde-format
 msgid "Save the current document"
 msgstr "වත්මන් ලිපිය සුරකින්න"
 
-#: view/kateview.cpp:481
+#: view/kateview.cpp:479
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "වඩාත්ම මෑත සංස්කරණ ක්‍රියා ප්‍රතිවර්තනය කරයි"
 
-#: view/kateview.cpp:484
+#: view/kateview.cpp:482
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "වඩාත්ම මෑත ආපස්සට කිරීමේ ක්‍රියා ප්‍රතිවර්තනය කරයි"
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:486
 #, kde-format
 msgid "&Scripts"
 msgstr "ස්ක්‍රිප්ට් (~S)"
 
-#: view/kateview.cpp:492
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "වචන එතීම යොදන්න (~W)"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:492
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6699,12 +6745,12 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 
-#: view/kateview.cpp:500
+#: view/kateview.cpp:498
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "අනුච්ඡේදනය ඉවත් කරන්න (~C)"
 
-#: view/kateview.cpp:502
+#: view/kateview.cpp:500
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6715,13 +6761,13 @@ msgstr ""
 "><br />ටැබ් සැලකිය යුතුද සහ හිස් ඉඩ සමඟ භාවිතා කල යුතුද ප්‍රතිස්ථාපනය කල යුතුද යන්න වින්‍යාසගත "
 "කිරීමේ සංවාදයෙන් ඔබට වින්‍යාසගතකල හැක."
 
-#: view/kateview.cpp:507
+#: view/kateview.cpp:505
 #, fuzzy, kde-format
 #| msgid "&Indentation"
 msgid "&Format Indentation"
 msgstr "අනුච්ඡේදනය (~I)"
 
-#: view/kateview.cpp:508
+#: view/kateview.cpp:506
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this to align the current line or block of text to its proper indent "
@@ -6732,13 +6778,13 @@ msgid ""
 msgstr ""
 "දැනට පවතින පේළිය හෝ පෙළ කට්ටය එහි නියම අනුච්ඡේදන මට්ටමට පෙළගැස්වීමට මෙය භාවිතා කරන්න."
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:510
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "&Align On..."
 msgstr "පෙළගස්සන්න (~A)"
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:512
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6752,12 +6798,12 @@ msgid ""
 "column."
 msgstr ""
 
-#: view/kateview.cpp:525
+#: view/kateview.cpp:523
 #, kde-format
 msgid "C&omment"
 msgstr "අදහස (~o)"
 
-#: view/kateview.cpp:528
+#: view/kateview.cpp:526
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6767,24 +6813,24 @@ msgstr ""
 "මෙම විධානය දැනට පවතින පේළිය හෝ තේරූ පෙළ කට්ටය අදහසක් බවට පත් කරයි.<br /><br />තනි/බහු "
 "පේළි අදහස් සඳහා අනු ලකුණු භාෂාවේ ඉස්මතු කිරීමේ අර්ථ දක්වා ඇත."
 
-#: view/kateview.cpp:533
+#: view/kateview.cpp:531
 #, fuzzy, kde-format
 #| msgid "Move to Previous Line"
 msgid "Go to Previous Editing Location"
 msgstr "පෙර පේළියට ගෙන යන්න"
 
-#: view/kateview.cpp:539
+#: view/kateview.cpp:537
 #, fuzzy, kde-format
 #| msgid "Select to Next Line"
 msgid "Go to Next Editing Location"
 msgstr "ඊළඟ පේළියට තෝරන්න"
 
-#: view/kateview.cpp:545
+#: view/kateview.cpp:543
 #, kde-format
 msgid "Unco&mment"
 msgstr "අදහස ඉවත් කරන්න (~m)"
 
-#: view/kateview.cpp:548
+#: view/kateview.cpp:546
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6794,232 +6840,232 @@ msgstr ""
 "මෙම විධානය දැනට පවතින පේළියෙන් හෝ තේරූ පෙළ කට්ටයෙන් අදහස ඉවත් කරයි.<br /><br />තනි/බහු "
 "පේළි අදහස් සඳහා අනු ලකුණු භාෂාවේ ඉස්මතු කිරීමේ අර්ථ දක්වා ඇත."
 
-#: view/kateview.cpp:553
+#: view/kateview.cpp:551
 #, kde-format
 msgid "Toggle Comment"
 msgstr "අදහස් මාරු කරන්න"
 
-#: view/kateview.cpp:557
+#: view/kateview.cpp:555
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "කියවීමට පමණයි ආකාරය (~R)"
 
-#: view/kateview.cpp:558
+#: view/kateview.cpp:556
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "ලිපිය ලිවීම සඳහා අඟුළු දමන්න / අඟුළු අරින්න"
 
-#: view/kateview.cpp:565
+#: view/kateview.cpp:563
 #, kde-format
 msgid "Uppercase"
 msgstr "විශාලකුරු"
 
-#: view/kateview.cpp:568
+#: view/kateview.cpp:566
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
 "cursor if no text is selected."
 msgstr "තේරීම හෝ පෙළ තෝරා නැත්නම් කර්සරයේ දකුණට වන්නට ඇති අනු ලකුණ විශාල අකුරකට හරවයි."
 
-#: view/kateview.cpp:574
+#: view/kateview.cpp:572
 #, kde-format
 msgid "Lowercase"
 msgstr "කුඩාකුරු"
 
-#: view/kateview.cpp:577
+#: view/kateview.cpp:575
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
 "cursor if no text is selected."
 msgstr "තේරීම හෝ පෙළ තෝරා නැත්නම් කර්සරයේ දකුණට වන්නට ඇති අනු ලකුණ කුඩා අකුරකට හරවයි."
 
-#: view/kateview.cpp:583
+#: view/kateview.cpp:581
 #, kde-format
 msgid "Capitalize"
 msgstr "කැපිටල් කරන්න"
 
-#: view/kateview.cpp:586
+#: view/kateview.cpp:584
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
 "selected."
 msgstr "තේරීම හෝ පෙළ තෝරා නැත්නම් කර්සරයට යටින් ඇති වචනය විශාල අකුරකට හරවයි."
 
-#: view/kateview.cpp:591
+#: view/kateview.cpp:589
 #, kde-format
 msgid "Join Lines"
 msgstr "රේඛා සම්බන්ධ කරන්න"
 
-#: view/kateview.cpp:596
+#: view/kateview.cpp:594
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "කේත සම්පූර්ණකරණය ඉල්ලා සිටින්න"
 
-#: view/kateview.cpp:597
+#: view/kateview.cpp:595
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
 "this action."
 msgstr "විධාන සම්පූර්ණ කිරීම අතින් ඉල්ලා සිටී, සාමාන්‍යයෙන් මෙම ක්‍රියාවට බැඳුනු කෙටි මඟකින්."
 
-#: view/kateview.cpp:614
+#: view/kateview.cpp:612
 #, kde-format
 msgid "Print the current document."
 msgstr "වත්මන් ලිපිය මුද්‍රණය කරන්න."
 
-#: view/kateview.cpp:617
+#: view/kateview.cpp:615
 #, fuzzy, kde-format
 #| msgid "Print the current document."
 msgid "Show print preview of current document"
 msgstr "වත්මන් ලිපිය මුද්‍රණය කරන්න."
 
-#: view/kateview.cpp:621
+#: view/kateview.cpp:619
 #, kde-format
 msgid "Reloa&d"
 msgstr "නැවත ප්‍රවේශ කරන්න (~d)"
 
-#: view/kateview.cpp:623
+#: view/kateview.cpp:621
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "වත්මන් ලිපිය තැටියෙන් නැවත ප්‍රවේශ කරන්න."
 
-#: view/kateview.cpp:627
+#: view/kateview.cpp:625
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "වත්මන් ලිපිය ඔබට කැමති නමකින් තැටියේ සුරකින්න."
 
-#: view/kateview.cpp:629
+#: view/kateview.cpp:627
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr ""
 
-#: view/kateview.cpp:635
+#: view/kateview.cpp:633
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Save &Copy As..."
 msgstr "ගොනුව මේ ලෙස සුරකින්න... (~S)"
 
-#: view/kateview.cpp:636
+#: view/kateview.cpp:634
 #, fuzzy, kde-format
 #| msgid "Reload the current document from disk."
 msgid "Save a copy of the current document to disk."
 msgstr "වත්මන් ලිපිය තැටියෙන් නැවත ප්‍රවේශ කරන්න."
 
-#: view/kateview.cpp:640
+#: view/kateview.cpp:638
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
 "cursor to move to."
 msgstr "මෙම විධානය සංවාදයක් විවෘත කර ඔබට කර්සරය ගමන් කරවීමට අවශ්‍ය පේළිය තේරීමට ඉඩ දෙයි."
 
-#: view/kateview.cpp:644
+#: view/kateview.cpp:642
 #, fuzzy, kde-format
 #| msgid "Move to Previous Line"
 msgid "Go to Previous Modified Line"
 msgstr "පෙර පේළියට ගෙන යන්න"
 
-#: view/kateview.cpp:645
+#: view/kateview.cpp:643
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Move upwards to the previous modified line."
 msgstr "ගැළපෙන වරහනට ගෙන යන්න"
 
-#: view/kateview.cpp:650
+#: view/kateview.cpp:648
 #, fuzzy, kde-format
 #| msgid "Move to Next Line"
 msgid "Go to Next Modified Line"
 msgstr "ඊළඟ පේළියට ගෙන යන්න"
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:649
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr ""
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:653
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "සංස්කාරක වින්‍යාසගත කරන්න... (~C)"
 
-#: view/kateview.cpp:657
+#: view/kateview.cpp:655
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "මෙම සංස්කාරකයේ විවිධ අංශ වින්‍යාසගත කරන්න."
 
-#: view/kateview.cpp:660
+#: view/kateview.cpp:658
 #, kde-format
 msgid "&Mode"
 msgstr "ආකාරය (~M)"
 
-#: view/kateview.cpp:666
+#: view/kateview.cpp:664
 #, kde-format
 msgid "&Highlighting"
 msgstr "ඉස්මතු කිරීම (~H)"
 
-#: view/kateview.cpp:668
+#: view/kateview.cpp:666
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "වත්මන් ලිපිය කෙසේ ඉස්මති විය යුතුදැයි ඔබට මෙහිදී තේරිය හැක."
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:669
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "&Editor Color Theme"
 msgstr "වර්ණ"
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:675
 #, kde-format
 msgid "&Indentation"
 msgstr "අනුච්ඡේදනය (~I)"
 
-#: view/kateview.cpp:685
+#: view/kateview.cpp:683
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "වත්මන් ලිපියේ මුළු පෙළ තෝරන්න."
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:686
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
 msgstr "ඔබ වත්මන් ලිපියේ කුමක් හෝ තෝරා ඇත්නම් මෙය තවදුරටත් නොතේරෙනු ඇත."
 
-#: view/kateview.cpp:692
+#: view/kateview.cpp:690
 #, kde-format
 msgid "Enlarge Font"
 msgstr "ෆොන්ට විශාල කරන්න"
 
-#: view/kateview.cpp:694
+#: view/kateview.cpp:692
 #, kde-format
 msgid "This increases the display font size."
 msgstr "මෙය ප්‍රදර්ශන ෆොන්ට ප්‍රමාන්‍ය වැඩි කරයි."
 
-#: view/kateview.cpp:701
+#: view/kateview.cpp:699
 #, kde-format
 msgid "Shrink Font"
 msgstr "ෆොන්ටය හකුලන්න"
 
-#: view/kateview.cpp:703
+#: view/kateview.cpp:701
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "මෙය ප්‍රදර්ශන ෆොන්ට ප්‍රමාන්‍ය අඩු කරයි."
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:708
 #, kde-format
 msgid "Reset Font Size"
 msgstr ""
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:710
 #, fuzzy, kde-format
 #| msgid "This increases the display font size."
 msgid "This resets the display font size."
 msgstr "මෙය ප්‍රදර්ශන ෆොන්ට ප්‍රමාන්‍ය වැඩි කරයි."
 
-#: view/kateview.cpp:715
+#: view/kateview.cpp:713
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "කුට්ටි තේරීමේ ආකාරය (~o)"
 
-#: view/kateview.cpp:718
+#: view/kateview.cpp:716
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7028,37 +7074,37 @@ msgstr ""
 "මෙම විධානය සාමාන්‍යය තේරීම් ආකාරය (පේළි පදනම් වූ) සහ කට්ටි තේරීම් ආකාරය අතර මාරුවීමට ඉඩ "
 "දෙයි."
 
-#: view/kateview.cpp:722
+#: view/kateview.cpp:720
 #, fuzzy, kde-format
 #| msgid "Vi Input Mode"
 msgid "Switch to Next Input Mode"
 msgstr "Vi ආදාන ආකාරය"
 
-#: view/kateview.cpp:724
+#: view/kateview.cpp:722
 #, fuzzy, kde-format
 #| msgctxt "short translation please"
 #| msgid "Sets the end of line mode."
 msgid "Switch to the next input mode."
 msgstr "පේළි ප්‍රකාරයේ අවසානය සකසයි."
 
-#: view/kateview.cpp:727
+#: view/kateview.cpp:725
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "මත ලිවීමේ ආකාරය (~i)"
 
-#: view/kateview.cpp:730
+#: view/kateview.cpp:728
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr "ඔබ යතුරු ලියනය කරන පෙළ ඇතුලත් කල යුතුද උඩින ලිවිය යුතුද යන්න තෝරන්න."
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:732
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "ගතික වචන එතීම (~D)"
 
-#: view/kateview.cpp:738
+#: view/kateview.cpp:736
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7069,37 +7115,37 @@ msgid ""
 "will not changed."
 msgstr "මෙම විකල්පය සළකුණු කර ඇත්නම්, තිරයේ දසුන් මායිමේදී පෙළ රේඛා එතෙනු ඇත."
 
-#: view/kateview.cpp:742
+#: view/kateview.cpp:740
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "ගතික වචන එතුම් හඟවන"
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:742
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "ගතික වචන එතීමේ හඟවන මොන අවස්ථාවේ පෙන්විය යුතුදැයි තෝරන්න"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:744
 #, kde-format
 msgid "&Off"
 msgstr "අක්‍රීය (~O)"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:744
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "පේළි අංක ලුහුබදින්න (~L)"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:744
 #, kde-format
 msgid "&Always On"
 msgstr "සැමවිටම සක්‍රිය (~A)"
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:748
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "ස්ථිතික වචන එතීම"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:750
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7109,12 +7155,12 @@ msgid ""
 "defined in the editing properties."
 msgstr "මෙම විකල්පය සළකුණු කර ඇත්නම්, තිරයේ දසුන් මායිමේදී පෙළ රේඛා එතෙනු ඇත."
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:757
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "ස්ථිතික වචන එතුම් ලකුණුකරණය පෙන්වන්න (~W)"
 
-#: view/kateview.cpp:762
+#: view/kateview.cpp:760
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7123,59 +7169,59 @@ msgstr ""
 "වචන එතුම් ලකුණුකරණය පෙන්වන්න/සඟවන්න, සංස්කාරක ගුණාංගවල අර්ථ දක්වා ඇති පරිදි වචන එතුම් තීරුවේ "
 "ඇඳ ඇති සිරස් රේඛාව"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "හැකිලීම් සහ ලකුණුකරණ පෙන්වන්න (~M)"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:766
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr "කේත හැකිලීම කල හැකිනම් කේත හැකිලීමේ ලකුණු පෙන්විය යුතුදැයි ඔබට තෝරාගත හැක."
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:769
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "අයිකන මායිම පෙන්වන්න (~I)"
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:771
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
 "symbols, for instance."
 msgstr "අයිකන මායිම පෙන්වයි/සඟවයි.<br /><br />උදාහරණයක් ලෙස අයිකන මායිම පිටු සළකුණු පෙන්වයි."
 
-#: view/kateview.cpp:776
+#: view/kateview.cpp:774
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "පේළි අංක පෙන්වන්න (~L)"
 
-#: view/kateview.cpp:778
+#: view/kateview.cpp:776
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "දසුනේ වම් අත පැත්තේ පේළි අංක පෙන්වන්න/සඟවන්න."
 
-#: view/kateview.cpp:781
+#: view/kateview.cpp:779
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "අනුචලන තීරු ලකුණු පෙන්වන්න (~b)"
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:781
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
 "bookmarks, for instance."
 msgstr "සිරස් අනුචලන තීරුවේ ලකුණු පෙන්වයි/සඟවයි. උදාහරණයක් ලෙස ලකුණු පිටු සළකුණු පෙන්වයි."
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:784
 #, fuzzy, kde-format
 #| msgid "Show Scroll&bar Marks"
 msgid "Show Scrollbar Mini-Map"
 msgstr "අනුචලන තීරු ලකුණු පෙන්වන්න (~b)"
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:786
 #, fuzzy, kde-format
 #| msgid ""
 #| "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7190,75 +7236,75 @@ msgstr "සිරස් අනුචලන තීරුවේ ලකුණු �
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:800
+#: view/kateview.cpp:798
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr ""
 
-#: view/kateview.cpp:802
+#: view/kateview.cpp:800
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr ""
 
-#: view/kateview.cpp:806
+#: view/kateview.cpp:804
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "විධාන රේඛාවට මාරු වෙන්න"
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:806
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "දසුනේ ඉහළ විධාන රේඛාව පෙන්වන්න/සඟවන්න."
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:809
 #, fuzzy, kde-format
 #| msgid "Vi Input Mode"
 msgid "Input Modes"
 msgstr "Vi ආදාන ආකාරය"
 
-#: view/kateview.cpp:820
+#: view/kateview.cpp:818
 #, fuzzy, kde-format
 #| msgid "Activate/deactivate VI input mode"
 msgid "Activate/deactivate %1"
 msgstr "VI ආදාන ආකාරය සක්‍රිය/අක්‍රිය කරන්න"
 
-#: view/kateview.cpp:830
+#: view/kateview.cpp:828
 #, kde-format
 msgid "&End of Line"
 msgstr "පේළියේ අවසානය (~E)"
 
-#: view/kateview.cpp:832
+#: view/kateview.cpp:830
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "ඔබ ලිපිය සුරැකීමේදී කුමන පේළි අවසාන භාවිතා කල යුතුද යන්න තෝරන්න"
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:831
 #, fuzzy, kde-format
 #| msgid "UNIX"
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "UNIX"
 
-#: view/kateview.cpp:834
+#: view/kateview.cpp:832
 #, fuzzy, kde-format
 #| msgid "DOS/Windows"
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "DOS/Windows"
 
-#: view/kateview.cpp:835
+#: view/kateview.cpp:833
 #, fuzzy, kde-format
 #| msgid "Macintosh"
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "Macintosh"
 
-#: view/kateview.cpp:840
+#: view/kateview.cpp:838
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "බයිට පිළිවෙළ ලකුණ (BOM) එක් කරන්න (~B)"
 
-#: view/kateview.cpp:843
+#: view/kateview.cpp:841
 #, fuzzy, kde-format
 #| msgid ""
 #| "Enable/disable adding of byte order markers for UTF-8/UTF-16 encoded "
@@ -7269,178 +7315,178 @@ msgid ""
 msgstr ""
 "සුරැකීමේදී UTF-8/UTF-16 කේතීකරණය කල ගොනු සඳහා බයිට පිළිවෙළ ලකුණු එක් කිරීම සක්‍රිය අක්‍රිය කරයි"
 
-#: view/kateview.cpp:847
+#: view/kateview.cpp:845
 #, kde-format
 msgid "E&ncoding"
 msgstr "කේතීකරණය (~n)"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:849
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "පෙළ කොටසක් හෝ සාමාන්‍යය ප්‍රකාශනයක පළමු යෙදීම සොයන්න."
 
-#: view/kateview.cpp:855
+#: view/kateview.cpp:853
 #, kde-format
 msgid "Find Selected"
 msgstr "තෝරාගත් ඒවා සොයන්න"
 
-#: view/kateview.cpp:857
+#: view/kateview.cpp:855
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "තේරූ පෙළේ ඊළඟ යෙදීම සොයන්න."
 
-#: view/kateview.cpp:861
+#: view/kateview.cpp:859
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "තෝරාගත් ඒවා පසුපසට සොයන්න"
 
-#: view/kateview.cpp:863
+#: view/kateview.cpp:861
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "තේරූ පෙළේ පෙර යෙදීම සොයන්න."
 
-#: view/kateview.cpp:867
+#: view/kateview.cpp:865
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr ""
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:867
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "තේරූ පෙළේ ඊළඟ යෙදීම සොයන්න."
 
-#: view/kateview.cpp:873
+#: view/kateview.cpp:871
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:875
+#: view/kateview.cpp:873
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:879
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr ""
 
-#: view/kateview.cpp:881
+#: view/kateview.cpp:879
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "තේරූ පෙළේ ඊළඟ යෙදීම සොයන්න."
 
-#: view/kateview.cpp:885
+#: view/kateview.cpp:883
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "සෙවුම් වාක්‍ය ඛණ්ඩයේ ඊළඟ යෙදීම සොයන්න."
 
-#: view/kateview.cpp:889
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "සෙවුම් වාක්‍ය ඛණ්ඩයේ පෙර යෙදීම සොයන්න."
 
-#: view/kateview.cpp:893
+#: view/kateview.cpp:891
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
 "some given text."
 msgstr "පෙළ කොටසක් හෝ සාමාන්‍යය ප්‍රකාශනයක් සොයා දී ඇති පෙළ වලින් ප්‍රතිඵලය ප්‍රතිස්ථාපනය කරන්න."
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:894
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr ""
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:896
 #, fuzzy, kde-format
 #| msgctxt "short translation please"
 #| msgid "Wrap the text cursor at the end of a line."
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "පේළිය අවසානයේ පෙළ සැරිත්ත ඔතන්න."
 
-#: view/kateview.cpp:902
+#: view/kateview.cpp:900
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr ""
 
-#: view/kateview.cpp:904
+#: view/kateview.cpp:902
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Adds a caret in the line below the current caret."
 msgstr "වත්මන් ලිපියේ මුළු පෙළ තෝරන්න."
 
-#: view/kateview.cpp:908
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr ""
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:908
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
-#: view/kateview.cpp:914
+#: view/kateview.cpp:912
 #, fuzzy, kde-format
 #| msgid "Text Cursor Movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "පෙළ කර්සර ගමන් කිරීම"
 
-#: view/kateview.cpp:915
+#: view/kateview.cpp:913
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
-#: view/kateview.cpp:919
+#: view/kateview.cpp:917
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Remove Cursors from Empty Lines"
 msgstr "ගැළපෙන වරහනට ගෙන යන්න"
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:918
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Remove cursors from empty lines"
 msgstr "ගැළපෙන වරහනට ගෙන යන්න"
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "ස්වයං අක්ෂර වින්‍යාස පිරික්සුම"
 
-#: view/kateview.cpp:925
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "ස්වයං අක්ෂර වින්‍යාසය පිරික්සීම සක්‍රිය/අක්‍රිය කරන්න"
 
-#: view/kateview.cpp:931
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Change Dictionary..."
 msgstr "නාමාවලිය මාරු කරන්න..."
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:930
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "අක්ෂර වින්‍යාස පිරික්සීමට භාවිතා කල නාමාවලිය වෙනස් කරන්න."
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:934
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "ශබ්දකෝෂ පරාස හිස් කරන්න"
 
-#: view/kateview.cpp:938
+#: view/kateview.cpp:936
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr "අක්ෂර වින්‍යාස පිරික්සීමට භාවිතා කල සියළු විවික්ත ශබ්ද කෝෂ ඉවත් කරන්න."
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:942
 #, kde-format
 msgid "Copy as &HTML"
 msgstr ""
 
-#: view/kateview.cpp:945
+#: view/kateview.cpp:943
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this command to copy the currently selected text to the system "
@@ -7450,274 +7496,274 @@ msgid ""
 "clipboard."
 msgstr "දැනට තේරූ පෙළ පද්ධති පසුරු පුවරුවට පිටපත් කිරීම සඳහා මෙම විධානය භාවිතා කරන්න."
 
-#: view/kateview.cpp:949
+#: view/kateview.cpp:947
 #, fuzzy, kde-format
 #| msgid "Export schema ..."
 msgid "E&xport as HTML..."
 msgstr "ක්‍රමානු රූප නිර්යාත කරන්න..."
 
-#: view/kateview.cpp:951
+#: view/kateview.cpp:949
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
 "information into a HTML document."
 msgstr ""
 
-#: view/kateview.cpp:989
+#: view/kateview.cpp:987
 #, kde-format
 msgid "Move Word Left"
 msgstr "වචනය වමට ගෙන යන්න"
 
-#: view/kateview.cpp:995
+#: view/kateview.cpp:993
 #, kde-format
 msgid "Select Character Left"
 msgstr "වමේ අනු ලකුණ තෝරන්න"
 
-#: view/kateview.cpp:1001
+#: view/kateview.cpp:999
 #, kde-format
 msgid "Select Word Left"
 msgstr "වමේ වචනය තෝරන්න"
 
-#: view/kateview.cpp:1007
+#: view/kateview.cpp:1005
 #, kde-format
 msgid "Move Word Right"
 msgstr "වචනය දකුණට ගෙන යන්න"
 
-#: view/kateview.cpp:1013
+#: view/kateview.cpp:1011
 #, kde-format
 msgid "Select Character Right"
 msgstr "දකුණේ අනු ලකුණ තෝරන්න"
 
-#: view/kateview.cpp:1019
+#: view/kateview.cpp:1017
 #, kde-format
 msgid "Select Word Right"
 msgstr "දකුණේ වචනය තෝරන්න"
 
-#: view/kateview.cpp:1025
+#: view/kateview.cpp:1023
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "පේළියේ ආරම්භයට ගෙන යන්න"
 
-#: view/kateview.cpp:1031
+#: view/kateview.cpp:1029
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "ලිපියේ ආරම්භයට ගෙන යන්න"
 
-#: view/kateview.cpp:1037
+#: view/kateview.cpp:1035
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "පේළියේ ආරම්භයට තෝරන්න"
 
-#: view/kateview.cpp:1043
+#: view/kateview.cpp:1041
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "ලිපියේ ආරම්භයට තෝරන්න"
 
-#: view/kateview.cpp:1049
+#: view/kateview.cpp:1047
 #, kde-format
 msgid "Move to End of Line"
 msgstr "පේළියේ අවසානයට ගෙන යන්න"
 
-#: view/kateview.cpp:1055
+#: view/kateview.cpp:1053
 #, kde-format
 msgid "Move to End of Document"
 msgstr "ලිපියේ අවසානයට ගෙන යන්න"
 
-#: view/kateview.cpp:1061
+#: view/kateview.cpp:1059
 #, kde-format
 msgid "Select to End of Line"
 msgstr "පේළියේ අවසානයට තෝරන්න"
 
-#: view/kateview.cpp:1067
+#: view/kateview.cpp:1065
 #, kde-format
 msgid "Select to End of Document"
 msgstr "ලිපියේ අවසානයට තෝරන්න"
 
-#: view/kateview.cpp:1073
+#: view/kateview.cpp:1071
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "පෙර පේළියට තෝරන්න"
 
-#: view/kateview.cpp:1079
+#: view/kateview.cpp:1077
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "පේළිය උඩට අනුචලනය කරන්න"
 
-#: view/kateview.cpp:1085
+#: view/kateview.cpp:1083
 #, kde-format
 msgid "Move to Next Line"
 msgstr "ඊළඟ පේළියට ගෙන යන්න"
 
-#: view/kateview.cpp:1091
+#: view/kateview.cpp:1089
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "පෙර පේළියට ගෙන යන්න"
 
-#: view/kateview.cpp:1097
+#: view/kateview.cpp:1095
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "කර්සරය දකුණට ගෙන යන්න"
 
-#: view/kateview.cpp:1103
+#: view/kateview.cpp:1101
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "කර්සරය වමට ගෙන යන්න"
 
-#: view/kateview.cpp:1109
+#: view/kateview.cpp:1107
 #, kde-format
 msgid "Select to Next Line"
 msgstr "ඊළඟ පේළියට තෝරන්න"
 
-#: view/kateview.cpp:1115
+#: view/kateview.cpp:1113
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "පේළිය පහලට අනුචලනය කරන්න"
 
-#: view/kateview.cpp:1121
+#: view/kateview.cpp:1119
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "පිටුව ඉහළට අනුචලනය කරන්න"
 
-#: view/kateview.cpp:1127
+#: view/kateview.cpp:1125
 #, kde-format
 msgid "Select Page Up"
 msgstr "පිටුව ඉහළට තෝරන්න"
 
-#: view/kateview.cpp:1133
+#: view/kateview.cpp:1131
 #, kde-format
 msgid "Move to Top of View"
 msgstr "ඉහළ දසුනට ගෙන යන්න"
 
-#: view/kateview.cpp:1139
+#: view/kateview.cpp:1137
 #, kde-format
 msgid "Select to Top of View"
 msgstr "ඉහළ දසුනට තෝරන්න"
 
-#: view/kateview.cpp:1145
+#: view/kateview.cpp:1143
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "පිටුව පහළට අනුචලනය කරන්න"
 
-#: view/kateview.cpp:1151
+#: view/kateview.cpp:1149
 #, kde-format
 msgid "Select Page Down"
 msgstr "පිටුව පහළට තෝරන්න"
 
-#: view/kateview.cpp:1157
+#: view/kateview.cpp:1155
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "දසුනේ පහළට ගෙන යන්න"
 
-#: view/kateview.cpp:1163
+#: view/kateview.cpp:1161
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "දසුනේ පහළට තෝරන්න"
 
-#: view/kateview.cpp:1169
+#: view/kateview.cpp:1167
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Go to Matching Bracket"
 msgstr "ගැළපෙන වරහනට ගෙන යන්න"
 
-#: view/kateview.cpp:1175
+#: view/kateview.cpp:1173
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "ගැළපෙන වරහනට තෝරන්න"
 
-#: view/kateview.cpp:1183
+#: view/kateview.cpp:1181
 #, kde-format
 msgid "Transpose Characters"
 msgstr "පෙරළුම් අනු ලකුණු"
 
-#: view/kateview.cpp:1188
+#: view/kateview.cpp:1186
 #, fuzzy, kde-format
 #| msgid "Transpose Characters"
 msgid "Transpose Words"
 msgstr "පෙරළුම් අනු ලකුණු"
 
-#: view/kateview.cpp:1193
+#: view/kateview.cpp:1191
 #, kde-format
 msgid "Delete Line"
 msgstr "පේළිය මකන්න"
 
-#: view/kateview.cpp:1199
+#: view/kateview.cpp:1197
 #, kde-format
 msgid "Delete Word Left"
 msgstr "වමේ වචනය මකන්න"
 
-#: view/kateview.cpp:1205
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Delete Word Right"
 msgstr "දකුණේ වචනය මකන්න"
 
-#: view/kateview.cpp:1211
+#: view/kateview.cpp:1209
 #, kde-format
 msgid "Delete Next Character"
 msgstr "ඊළඟ අනු ලකුණ මකන්න"
 
-#: view/kateview.cpp:1217
+#: view/kateview.cpp:1215
 #, kde-format
 msgid "Backspace"
 msgstr "ආපසුයවනය"
 
-#: view/kateview.cpp:1225
+#: view/kateview.cpp:1223
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "ටැබ් ඇතුල් කරන්න"
 
-#: view/kateview.cpp:1230
+#: view/kateview.cpp:1228
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "කදිම නව පේළියක් ඇතුල් කරන්න"
 
-#: view/kateview.cpp:1231
+#: view/kateview.cpp:1229
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
 msgstr "දැනට පවතින පේළියේ අකුරු හෝ අංක නොවන ආරම්භක අනු ලකුණු අඩංගු නව පේළිය ඇතුල් කරන්න."
 
-#: view/kateview.cpp:1239
+#: view/kateview.cpp:1237
 #, fuzzy, kde-format
 #| msgid "Insert Smart Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "කදිම නව පේළියක් ඇතුල් කරන්න"
 
-#: view/kateview.cpp:1240
+#: view/kateview.cpp:1238
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 
-#: view/kateview.cpp:1248
+#: view/kateview.cpp:1246
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1249
+#: view/kateview.cpp:1247
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1257
+#: view/kateview.cpp:1255
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1258
+#: view/kateview.cpp:1256
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1267
+#: view/kateview.cpp:1265
 #, kde-format
 msgid "&Indent"
 msgstr "අනුච්ඡේදනය කරන්න (~I)"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1267
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7728,90 +7774,90 @@ msgstr ""
 "ඉඩ සමඟ භාවිතා කල යුතුද ප්‍රතිස්ථාපනය කල යුතුද යන්න වින්‍යාසගත කිරීමේ සංවාදයෙන් ඔබට වින්‍යාසගතකල "
 "හැක."
 
-#: view/kateview.cpp:1276
+#: view/kateview.cpp:1274
 #, kde-format
 msgid "&Unindent"
 msgstr "අනුච්ඡේදනය ඉවත් කරන්න (~U)"
 
-#: view/kateview.cpp:1277
+#: view/kateview.cpp:1275
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "තේරූ පෙළ කට්ටයක අනුච්ඡේදනය ඉවත් කිරීමට මෙය භාවිතා කරන්න."
 
-#: view/kateview.cpp:1295
+#: view/kateview.cpp:1293
 #, fuzzy, kde-format
 #| msgid "Collapse Toplevel"
 msgid "Fold Toplevel Nodes"
 msgstr "ඉහළ මට්ටම අකුලන්න"
 
-#: view/kateview.cpp:1300
+#: view/kateview.cpp:1298
 #, fuzzy, kde-format
 #| msgid "Expand Toplevel"
 msgid "Unfold Toplevel Nodes"
 msgstr "ඉහළ මට්ටම විහිදුවන්න"
 
-#: view/kateview.cpp:1313
+#: view/kateview.cpp:1311
 #, fuzzy, kde-format
 #| msgid "Current line:"
 msgid "Toggle Current Node"
 msgstr "දැනට පවතින පේළිය:"
 
-#: view/kateview.cpp:1317
+#: view/kateview.cpp:1315
 #, fuzzy, kde-format
 #| msgid "Toggle Comment"
 msgid "Toggle Contained Nodes"
 msgstr "අදහස් මාරු කරන්න"
 
-#: view/kateview.cpp:1474
+#: view/kateview.cpp:1472
 #, kde-format
 msgid "(R/O) %1"
 msgstr ""
 
-#: view/kateview.cpp:1662
+#: view/kateview.cpp:1660
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1664
+#: view/kateview.cpp:1662
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2146
+#: view/kateview.cpp:2144
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "සෙවුම් ආකාරය"
 
-#: view/kateview.cpp:3658
+#: view/kateview.cpp:3654
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "පෙළගස්සන්න (~A)"
 
-#: view/kateview.cpp:3658
+#: view/kateview.cpp:3654
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4750
+#: view/kateview.cpp:4746
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:346
-#: view/kateviewhelpers.cpp:982
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1151
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "ලබාගත හැකි විධාන"
 
-#: view/kateviewhelpers.cpp:1152
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7820,17 +7866,17 @@ msgstr ""
 "<p>තනි විධාන පිළිබඳ උපකාර සඳහා <code>'help &lt;command&gt;' ලෙස ලබා දෙන්න</code></"
 "p>"
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1' සඳහා උදව් නැත"
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "එවැනි විධානයක් නැත <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1168
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7843,37 +7889,37 @@ msgstr ""
 "කරන්න<br />තනි විධානයක් සඳහා උපකාර සඳහා <code><b>help &lt;command&gt;</b> ඇතුලත් "
 "කරන්න</code></p>"
 
-#: view/kateviewhelpers.cpp:1256 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "එවැනි විධානයක් නැත: \"%1\""
 
-#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "දෝෂය: \"%1\" විධානය සඳහා පරාසයක් අවසර දී නැත."
 
-#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "සාර්ථක: "
 
-#: view/kateviewhelpers.cpp:1283 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "විධානය \"%1\" අසමත් විය."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2563 view/kateviewhelpers.cpp:2564
 #, kde-format
 msgid "Mark Type %1"
 msgstr "ලකුණුකරණ වර්ගය %1"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2587
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "පෙරනිමි ලකුණුකරණ වර්ගය සකසන්න"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2728
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "සජීවන තීරුව අක්‍රිය කරන්න"
