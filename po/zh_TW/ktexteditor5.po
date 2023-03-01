@@ -11,19 +11,20 @@
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2020-02-14 00:50+0800\n"
-"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"PO-Revision-Date: 2023-01-20 00:37+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.2\n"
+"X-Generator: Lokalize 22.12.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -6389,7 +6390,7 @@ msgstr "請輸入定位點的寬度："
 msgid "Please specify the wanted indentation width:"
 msgstr "請指定定位點的寬度："
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6397,7 +6398,17 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "選取了 %1/%2 個單字，%3/%4 個字元"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
+#| "words/chars count."
+#| msgid "Words %1/%2, Chars %3/%4"
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "選取了 %1/%2 個單字，%3/%4 個字元"
+
+#: view/katestatusbar.cpp:588
 #, fuzzy, kde-format
 #| msgid "Zoom"
 msgid "Zoom: %1%"
@@ -7524,7 +7535,7 @@ msgstr ""
 #: view/kateview.cpp:2146
 #, kde-format
 msgid "Search wrapped"
-msgstr "搜尋"
+msgstr "從另一端重新搜尋"
 
 #: view/kateview.cpp:3658
 #, fuzzy, kde-format

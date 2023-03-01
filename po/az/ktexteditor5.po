@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2023-01-02 22:58+0400\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -199,7 +199,7 @@ msgid ""
 "</p>"
 msgstr ""
 "<p>Bu seçim hər yeni pəncərə üçün işarə zolağını aktiv edəcək.</p><p>Bu "
-"zolaqda əlvəcinlər göstərilir.</p>"
+"zolaqda əlfəcinlər göstərilir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
@@ -3335,6 +3335,8 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Mətni, kursorun cari mövqeyindən irəli, verilmiş arqument başlayan yerə "
+"(vəya standart olaraq cari sətrin sonuna) qədər seç."
 
 #: script/data/commands/utils.js:458
 #, kde-format
@@ -3343,6 +3345,8 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Mətni, kursorun cari mövqeyindən geriyə verilmiş arqumentin sonuna (və ya "
+"standart olaraq sətrin başlanğıcına) qədər seç."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -4114,10 +4118,9 @@ msgid "I&gnore All"
 msgstr "Heç birini nə&zərə alma"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Kursordan orfoqrafiyanı yoxlamaq..."
+msgstr "Orfoqrafiya yoxlaması (kursordan başlayaraq)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -6344,10 +6347,9 @@ msgid "Encoding"
 msgstr "Kodlaşdırma"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Sətirin sonu"
+msgstr "Sətirin sonu növü"
 
 #: view/katestatusbar.cpp:206
 #, kde-format
@@ -6371,7 +6373,7 @@ msgstr "Sintaksis işıqlanması"
 #: view/katestatusbar.cpp:260
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Sətir/Sütun yığcam rejimi"
 
 #: view/katestatusbar.cpp:306
 #, kde-format
@@ -6381,12 +6383,12 @@ msgstr "[BLOCK] %1"
 #: view/katestatusbar.cpp:322
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:328
 #, kde-format
@@ -6440,7 +6442,7 @@ msgstr "İstədiyiniz Tab enini göstərin:"
 msgid "Please specify the wanted indentation width:"
 msgstr "İstədiyiniz Abzas enini göstərin:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6448,7 +6450,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "Sözlər %1/%2, Simvollar %3/%4"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, kde-format
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "Sözlər %1, Simvollar %2"
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Miqyas: %1%"
@@ -6472,10 +6480,9 @@ msgstr ""
 "edin."
 
 #: view/kateview.cpp:462
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "Bufer yaddaş &Jurnalı"
+msgstr "Mübadilə yaddaşı &jurnalından yerləşdir"
 
 #: view/kateview.cpp:467
 #, kde-format
@@ -6488,10 +6495,9 @@ msgid "Paste previously mouse selection contents"
 msgstr "Az öncə siçanla seçilən tərkibləri yerləşdirin"
 
 #: view/kateview.cpp:473
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Mübadilə buferi tərkibləri ilə mübadilə"
+msgstr "Mübadilə yaddaşı tərkibləri ilə əvəz et"
 
 #: view/kateview.cpp:474
 #, kde-format
@@ -6553,28 +6559,23 @@ msgstr ""
 "istifadə olunmasını tənzimləyə bilərsiniz."
 
 #: view/kateview.cpp:507
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Abzas"
+msgstr "&Abzas formatı"
 
 #: view/kateview.cpp:508
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Cari sətri və ya mətn blokunu lazımi abzas səviyyəsinə uyğunlaşdırmaq üçün "
-"bundan istifadə edin."
+"Cari sətri və ya mətni lazımi abzas səviyyəsinə uyğunlaşdırmaq üçün "
+"avtomatik abzasdan istifadə edin."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Düzəltmək"
+msgstr "&Nizamlamaq..."
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6589,6 +6590,15 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Bu əmr, sizdən tələb olunan müntəzəm ifadə tərəfindən verilən sütunda "
+"seçilmiş blokdakı və ya bütün sənəddəki sətirləri nizamlayır.<br /><br /"
+">Əgər boş bir nümunə göstərsəniz, standart olaraq ilk boş olmayan simvol "
+"nizmalanacaq.<br />Əgər nümunədə bir blok əhatələnməsi varsa, əhatələnmiş "
+"sahəyə uyğun nizamlanacaqdır.<br /><br /><i>Misal üçün</i>:<br />O, \"-\" "
+"ilə hər sətrə aid ilk \"-\" simvolundan əvvəl, onların hamısını eyni sütunda "
+"nizamlamaq üçün boşluqlar qoyacaqdır.<br />O, ':\\s+(.)' ilə kolondan sonra "
+"gələn ilk boş olmayan simvoldan öncə, onların hamısını eyni sütunda "
+"nizamlamaq üçün boşluqlar qoyacaqdır."
 
 #: view/kateview.cpp:525
 #, kde-format
@@ -6871,8 +6881,7 @@ msgstr ""
 "arasında keçimə imkan verir."
 
 #: view/kateview.cpp:722
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Növbəti daxiletmə rejiminə keçid"
 
@@ -7152,12 +7161,12 @@ msgstr ""
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Cari seçilmiş girişi ötürülmüş kimi işarələmək"
 
 #: view/kateview.cpp:875
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Cari seçilmiş sözü ötürülmüş kimi işarələyir."
 
 #: view/kateview.cpp:879
 #, kde-format
@@ -7220,10 +7229,9 @@ msgid "Adds a caret in the line above the current caret."
 msgstr "Hazırkı kare (^) işarəsinin üsündəki sətirə bir kare (^) əlavə edir."
 
 #: view/kateview.cpp:914
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "CamelCase kursorunun hərəkətini dəyişdirin"
+msgstr "Kursorun qövsvari hərəkətini açmaq və ya söndürmək"
 
 #: view/kateview.cpp:915
 #, kde-format
@@ -7231,8 +7239,7 @@ msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "Normal söz hərəkəti və CamelCase kursorunun hərəkəti arasında keçid"
 
 #: view/kateview.cpp:919
-#, fuzzy, kde-format
-#| msgid "Remove cursors from empty lines"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Kursorları boş sətirlərdən silin"
 
@@ -7498,8 +7505,7 @@ msgid "Backspace"
 msgstr "Soldakı simvolu sil"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
 msgstr "Tab simvolunu daxil etmək"
 
@@ -7518,8 +7524,7 @@ msgstr ""
 "sətir daxil edin."
 
 #: view/kateview.cpp:1239
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Abzassız Yeni sətri daxil edin"
 
@@ -7621,15 +7626,14 @@ msgid "Search wrapped"
 msgstr "Axtarış davam etdirildi"
 
 #: view/kateview.cpp:3658
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Düzəltmək"
+msgstr "Nizamlamaq"
 
 #: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Nizamlama nümunəsi:"
 
 #: view/kateview.cpp:4750
 #, kde-format

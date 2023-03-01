@@ -12,20 +12,20 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Julia Dronova <juliette.tux@gmail.com>, 2013.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2018, 2019, 2020, 2021.
-# Мария Шикунова <translation-team@basealt.ru>, 2022.
+# Мария Шикунова <translation-team@basealt.ru>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-11-17 16:10+0300\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"PO-Revision-Date: 2023-02-08 10:51+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 22.08.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -3143,12 +3143,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Перейти к следующему такому же отступу"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Отсортировать выделенный текст"
+msgstr "Упорядочить выделенный текст в алфавитном порядке"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3160,12 +3158,10 @@ msgid "Editing"
 msgstr "Редактирование"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Удалить повторяющиеся строки из выделенного текста или из всего документа."
+msgstr "Удалить дубликаты и упорядочить выделенный текст в алфавитном порядке"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -6493,7 +6489,7 @@ msgstr "Укажите желаемую ширину табуляции:"
 msgid "Please specify the wanted indentation width:"
 msgstr "Укажите желаемую ширину отступа:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6501,7 +6497,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "Слова: %1/%2, символы: %3/%4"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, kde-format
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "Слова: %1, символы: %2"
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Масштаб: %1%"

@@ -12,13 +12,13 @@
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2015, 2017, 2019.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
-"PO-Revision-Date: 2022-12-12 19:26+0300\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"PO-Revision-Date: 2023-02-04 20:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -178,7 +178,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr "Kod bloklarını çökertmek için okları göster"
+msgstr "Kod bloklarını daraltmak için okları göster"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -4150,7 +4150,7 @@ msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"diff komutu bulunamadı. Lütfen diff(1)'in yüklü olduğundan ve PATH'inizde "
+"diff komutu bulunamadı. Lütfen diff(1)'in kurulu olduğundan ve PATH'inizde "
 "olduğundan emin olun."
 
 #: swapfile/kateswapdiffcreator.cpp:103
@@ -6192,7 +6192,7 @@ msgstr "Panodan yapıştırılan metnin girintisini ayarla."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
-msgstr "Her girinti seviyesi için girinti derinliğini ayarla."
+msgstr "Her girinti düzeyi için girinti derinliğini ayarla."
 
 #: variableeditor/variablelineedit.cpp:240
 #, kde-format
@@ -6462,7 +6462,7 @@ msgstr "Lütfen istediğiniz sekme genişliğini girin:"
 msgid "Please specify the wanted indentation width:"
 msgstr "Lütfen istediğiniz girinti genişliğini girin:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6470,7 +6470,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr "%1/%2 sözcük, %3/%4 karakter"
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, kde-format
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr "%1 sözcük, %2 karakter"
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr "Yakınlıştarma: %​%1"

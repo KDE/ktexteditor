@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:48+0000\n"
+"POT-Creation-Date: 2023-01-12 00:52+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -929,8 +929,8 @@ msgstr "&Rettetast i blanktegn ved starten av linje tar vekk innrykk"
 #: dialogs/indentationconfigwidget.ui:225
 #, kde-format
 msgid ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-"css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</b> "
@@ -3204,8 +3204,8 @@ msgid ""
 "(selected) lines and replace the line with the return value of the callback."
 "<br>Example (see also <code>ltrim</code>):<br><code>map 'function(line)"
 "{return line.replace(/^\\s+/, \"\");}'</code><br>To save you some typing, "
-"you can also do this to achieve the same:<br><code>map 'line.replace(/"
-"^\\s+/, \"\")'</code>"
+"you can also do this to achieve the same:<br><code>map 'line.replace(/^\\s"
+"+/, \"\")'</code>"
 msgstr ""
 "Gitt en JavaScript-funksjon som argument, kall funksjonen for lista over "
 "(valgte) linjer og erstatt linja med returverdien fra funksjonen.<br> "
@@ -6335,7 +6335,7 @@ msgstr "Oppgi ønsket tabulatorbredde:"
 msgid "Please specify the wanted indentation width:"
 msgstr "Oppgi ønsket innrykksbredde:"
 
-#: view/katestatusbar.cpp:566
+#: view/katestatusbar.cpp:567
 #, kde-format
 msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
@@ -6343,7 +6343,13 @@ msgctxt ""
 msgid "Words %1/%2, Chars %3/%4"
 msgstr ""
 
-#: view/katestatusbar.cpp:584
+#: view/katestatusbar.cpp:573
+#, kde-format
+msgctxt "%1 and %2 are the total words/chars count."
+msgid "Words %1, Chars %2"
+msgstr ""
+
+#: view/katestatusbar.cpp:588
 #, kde-format
 msgid "Zoom: %1%"
 msgstr ""
@@ -7716,9 +7722,9 @@ msgstr ""
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
-"[N]</b></tt></p><p>Goes to <b>[N]</b>th previous document (\"<b>b</"
-"b>uffer\") in document list. </p><p> <b>[N]</b> defaults to one. </"
-"p><p>Wraps around the start of the document list.</p>"
+"[N]</b></tt></p><p>Goes to <b>[N]</b>th previous document (\"<b>b</b>uffer"
+"\") in document list. </p><p> <b>[N]</b> defaults to one. </p><p>Wraps "
+"around the start of the document list.</p>"
 msgstr ""
 "<p><b>bp, bprev &mdash; forrige buffer</b></p><p>Bruk; <tt><b>bn[ext] [N] </"
 "b></tt></p> <p>Går til det <b>[N]</b>'te forrige dokumentet («<b>b</"
