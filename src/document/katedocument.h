@@ -1014,7 +1014,7 @@ public Q_SLOTS:
     bool documentSave() override;
     bool documentSaveAs() override;
     bool documentSaveAsWithEncoding(const QString &encoding);
-    bool documentSaveCopyAs();
+    void documentSaveCopyAs();
 
     bool save() override;
 

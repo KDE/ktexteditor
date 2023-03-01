@@ -5025,38 +5025,39 @@ bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &enc
     return saveAs(saveUrl);
 }
 
-bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
+void KTextEditor::DocumentPrivate::documentSaveCopyAs()
 {
     const QUrl saveUrl = getSaveFileUrl(i18n("Save Copy of File"));
     if (saveUrl.isEmpty()) {
-        return false;
+        return;
     }
 
-    QTemporaryFile file;
-    if (!file.open()) {
-        return false;
+    std::unique_ptr<QTemporaryFile> file = std::make_unique<QTemporaryFile>();
+    if (!file->open()) {
+        return;
     }
 
-    if (!m_buffer->saveFile(file.fileName())) {
+    if (!m_buffer->saveFile(file->fileName())) {
         KMessageBox::error(dialogParent(),
                            i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or "
                                 "that enough disk space is available.",
                                 this->url().toDisplayString(QUrl::PreferLocalFile)));
-        return false;
+        return;
     }
 
     // get the right permissions, start with safe default
     KIO::StatJob *statJob = KIO::statDetails(url(), KIO::StatJob::SourceSide, KIO::StatBasic);
     KJobWidgets::setWindow(statJob, QApplication::activeWindow());
-    int permissions = -1;
-    if (statJob->exec()) {
-        permissions = KFileItem(statJob->statResult(), url()).permissions();
-    }
-
-    // KIO move, important: allow overwrite, we checked above!
-    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), saveUrl, permissions, KIO::Overwrite);
-    KJobWidgets::setWindow(job, QApplication::activeWindow());
-    return job->exec();
+    const auto url = this->url();
+    connect(statJob, &KIO::StatJob::result, this, [url, file = std::move(file), saveUrl](KJob *j) {
+        if (auto sj = qobject_cast<KIO::StatJob *>(j)) {
+            const int permissions = KFileItem(sj->statResult(), url).permissions();
+            KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file->fileName()), saveUrl, permissions, KIO::Overwrite);
+            KJobWidgets::setWindow(job, QApplication::activeWindow());
+            job->start();
+        }
+    });
+    statJob->start();
 }
 
 void KTextEditor::DocumentPrivate::setWordWrap(bool on)
