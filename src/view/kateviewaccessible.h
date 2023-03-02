@@ -17,6 +17,7 @@
 #include <KLocalizedString>
 #include <QAccessible>
 #include <QAccessibleWidget>
+#include <QTextBoundaryFinder>
 
 /**
  * This class implements a QAccessible-interface for a KateViewInternal.
@@ -109,6 +110,7 @@ public:
         *endOffset = characterCount();
         return QString();
     }
+
     QRect characterRect(int offset) const override
     {
         KTextEditor::Cursor c = cursorFromInt(offset);
@@ -120,15 +122,22 @@ public:
         QPoint size = view()->cursorToCoordinate(endCursor) - p;
         return QRect(view()->mapToGlobal(p), QSize(size.x(), size.y()));
     }
+
     int cursorPosition() const override
     {
         KTextEditor::Cursor c = view()->cursorPosition();
         return positionFromCursor(view(), c);
     }
-    int offsetAtPoint(const QPoint & /*point*/) const override
+
+    int offsetAtPoint(const QPoint &point) const override
     {
+        if (view()) {
+            KTextEditor::Cursor c = view()->coordinatesToCursor(point);
+            return positionFromCursor(view(), c);
+        }
         return 0;
     }
+
     void removeSelection(int selectionIndex) override
     {
         if (selectionIndex != 0) {
@@ -136,10 +145,16 @@ public:
         }
         view()->view()->clearSelection();
     }
-    void scrollToSubstring(int /*startIndex*/, int /*endIndex*/) override
+
+    void scrollToSubstring(int startIndex, int /*endIndex*/) override
     {
-        // FIXME
+        auto c = cursorFromInt(startIndex);
+        if (!c.isValid()) {
+            return;
+        }
+        view()->view()->setScrollPosition(c);
     }
+
     void selection(int selectionIndex, int *startOffset, int *endOffset) const override
     {
         if (selectionIndex != 0 || !view()->view()->selection()) {
@@ -156,10 +171,12 @@ public:
     {
         return view()->view()->selection() ? 1 : 0;
     }
+
     void setCursorPosition(int position) override
     {
         view()->view()->setCursorPosition(cursorFromInt(position));
     }
+
     void setSelection(int selectionIndex, int startOffset, int endOffset) override
     {
         if (selectionIndex != 0) {
@@ -168,12 +185,103 @@ public:
         KTextEditor::Range range = KTextEditor::Range(cursorFromInt(startOffset), cursorFromInt(endOffset));
         view()->view()->setSelection(range);
     }
+
     QString text(int startOffset, int endOffset) const override
     {
         if (startOffset > endOffset) {
             return QString();
         }
         return view()->view()->document()->text().mid(startOffset, endOffset - startOffset);
+    }
+
+    QString textAtOffset(int offset, QAccessible::TextBoundaryType boundaryType, int *startOffset, int *endOffset) const override
+    {
+        *startOffset = -1;
+        *endOffset = -1;
+        if (!view() || !startOffset || !endOffset) {
+            return {};
+        }
+        if (offset == -1) {
+            offset = positionFromCursor(view(), view()->view()->doc()->documentEnd());
+        }
+        KTextEditor::Cursor c = cursorFromInt(offset);
+        if (!c.isValid()) {
+            return {};
+        }
+        auto doc = view()->view()->doc();
+
+        switch (boundaryType) {
+        case QAccessible::TextBoundaryType::CharBoundary: {
+            QString t = doc->characterAt(c);
+            *startOffset = offset;
+            *endOffset = *startOffset + 1;
+            return t;
+        } break;
+        case QAccessible::TextBoundaryType::WordBoundary: {
+            QString t = doc->wordAt(c);
+            *startOffset = offset;
+            *endOffset = offset + t.size();
+            return t;
+        } break;
+        case QAccessible::TextBoundaryType::LineBoundary: {
+            QString t = doc->wordAt(c);
+            *startOffset = offset;
+            *endOffset = offset + t.size();
+            return t;
+            break;
+        }
+        case QAccessible::TextBoundaryType::ParagraphBoundary: {
+            const QString line = doc->line(c.line());
+            if (line.isEmpty()) {
+                *startOffset = offset;
+                *endOffset = offset;
+                return {};
+            }
+            const int start = positionFromCursor(view(), KTextEditor::Cursor(c.line(), 0));
+            *startOffset = start;
+            *endOffset = offset + line.size();
+            return line;
+        } break;
+        case QAccessible::TextBoundaryType::SentenceBoundary: {
+            const QString line = doc->line(c.line());
+            if (line.isEmpty()) {
+                *startOffset = offset;
+                *endOffset = offset;
+                return {};
+            }
+            QTextBoundaryFinder bf(QTextBoundaryFinder::BoundaryType::Sentence, line);
+            int e = bf.toNextBoundary();
+            if (e != -1) {
+                int start = positionFromCursor(view(), KTextEditor::Cursor(c.line(), 0));
+                *startOffset = start;
+                *endOffset = start + bf.position();
+                return line.mid(0, e);
+            }
+        } break;
+        case QAccessible::TextBoundaryType::NoBoundary: {
+            const QString text = doc->text();
+            *startOffset = 0;
+            *endOffset = text.size();
+            return text;
+        } break;
+        }
+
+        return {};
+    }
+
+    QString textBeforeOffset(int /*offset*/, QAccessible::TextBoundaryType /*boundaryType*/, int *startOffset, int *endOffset) const override
+    {
+        // FIXME
+        *startOffset = -1;
+        *endOffset = -1;
+        return {};
+    }
+    QString textAfterOffset(int /*offset*/, QAccessible::TextBoundaryType /*boundaryType*/, int *startOffset, int *endOffset) const override
+    {
+        // FIXME
+        *startOffset = -1;
+        *endOffset = -1;
+        return {};
     }
 
     /**
