@@ -264,8 +264,11 @@ void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y) const
     paint.setPen(penBackup);
 }
 
-void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y) const
+void KateRenderer::paintSpaces(QPainter &paint, const QPointF *points, const int count) const
 {
+    if (count == 0) {
+        return;
+    }
     QPen penBackup(paint.pen());
     QPen pen(config()->tabMarkerColor());
 
@@ -273,7 +276,7 @@ void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y) const
     pen.setCapStyle(Qt::RoundCap);
     paint.setPen(pen);
     paint.setRenderHint(QPainter::Antialiasing, true);
-    paint.drawPoint(QPointF(x, y));
+    paint.drawPoints(points, count);
     paint.setPen(penBackup);
     paint.setRenderHint(QPainter::Antialiasing, false);
 }
@@ -793,6 +796,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine()->lastChar(), 0);
 
                 if (spaceIndex >= trailingPos) {
+                    QVarLengthArray<int, 32> spacePositions;
                     for (; spaceIndex >= line.startCol(); --spaceIndex) {
                         if (!text.at(spaceIndex).isSpace()) {
                             if (showSpaces() == KateDocumentConfig::Trailing) {
@@ -801,14 +805,32 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                                 continue;
                             }
                         }
-
                         if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
-                            if (range->layout()->textOption().alignment() == Qt::AlignRight) { // Draw on left for RTL lines
-                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart - spaceWidth() / 2.0, y);
-                            } else {
-                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
-                            }
+                            spacePositions << spaceIndex;
                         }
+                    }
+
+                    QPointF prev;
+                    QVarLengthArray<QPointF, 32> spacePoints;
+                    const auto spaceWidth = this->spaceWidth();
+                    // reverse because we want to look at the spaces at the beginning of line first
+                    for (auto rit = spacePositions.rbegin(); rit != spacePositions.rend(); ++rit) {
+                        const int spaceIdx = *rit;
+                        qreal x;
+                        if (range->layout()->textOption().alignment() == Qt::AlignRight) {
+                            x = line.lineLayout().cursorToX(spaceIdx) - xStart - spaceWidth / 2.0;
+                        } else {
+                            x = (line.lineLayout().cursorToX(spaceIdx) - xStart) + (spaceWidth / 2.0);
+                        }
+                        const QPointF currentPoint(x, y);
+                        if (!prev.isNull() && currentPoint == prev) {
+                            break;
+                        }
+                        spacePoints << currentPoint;
+                        prev = QPointF(x, y);
+                    }
+                    if (!spacePoints.isEmpty()) {
+                        paintSpaces(paint, spacePoints.constData(), spacePoints.size());
                     }
                 }
             }
