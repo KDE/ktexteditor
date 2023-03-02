@@ -404,7 +404,7 @@ private:
     /**
      * Paint a trailing space on position (x, y).
      */
-    void paintSpace(QPainter &paint, qreal x, qreal y) const;
+    void paintSpaces(QPainter &paint, const QPointF *points, const int count) const;
     /**
      * Paint a tab stop marker on position (x, y).
      */
