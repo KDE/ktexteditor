@@ -4910,7 +4910,7 @@ msgstr "그래도 가져오기"
 #: syntax/katethemeconfig.cpp:1288
 #, kde-format
 msgid "Follow System Color Scheme"
-msgstr "시스템 색 배열 사용"
+msgstr "시스템 색 구성표 사용"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
@@ -6193,7 +6193,7 @@ msgstr "스크롤 바에 미리 보기를 표시합니다."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
-msgstr "색 배열을 설정합니다."
+msgstr "색 구성표를 설정합니다."
 
 #: variableeditor/variablelineedit.cpp:301
 #, kde-format
