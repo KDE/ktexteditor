@@ -3,3 +3,4 @@ int main(int argc, char const *argv[])
   const char * multilinestringliteral = R"(
   return 0;
 }
+// kate: hl C++;
