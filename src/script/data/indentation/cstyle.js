@@ -765,11 +765,16 @@ function escapeForRegex(string) {
  * Don't indent on multiline string literals of form R"[optional delimiter text]()[optional delimiter text]"
  */
 function tryMultiLineStringLiteral(line) {
+    // The algorithm in this function is only valid for C++, don't waste time for other languages
+    if (!gMode.contains("C++")) {
+        return -1;
+    }
     var currentLine = line;
     var currentString;
     var delim = "";
     var found = false;
 
+    var limit = 0; // ensure we don't search the whole document all the time
     // go line up as long as the previous line ends with an escape character '\'
     // go line up until we find something of form R"[delim](
     while (currentLine >= 0) {
@@ -781,6 +786,10 @@ function tryMultiLineStringLiteral(line) {
             break;
         }
         --currentLine;
+        if (limit >= 25) {
+            break;
+        }
+        limit++;
     }
 
     if (!found) {
