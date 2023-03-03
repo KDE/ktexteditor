@@ -797,6 +797,10 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
                 if (spaceIndex >= trailingPos) {
                     QVarLengthArray<int, 32> spacePositions;
+                    // Adjust to visible contents
+                    spaceIndex = std::min(line.lineLayout().xToCursor(xEnd), spaceIndex);
+                    int visibleStart = line.lineLayout().xToCursor(xStart);
+
                     for (; spaceIndex >= line.startCol(); --spaceIndex) {
                         if (!text.at(spaceIndex).isSpace()) {
                             if (showSpaces() == KateDocumentConfig::Trailing) {
@@ -807,6 +811,10 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                         }
                         if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
                             spacePositions << spaceIndex;
+                        }
+
+                        if (spaceIndex < visibleStart) {
+                            break;
                         }
                     }
 
