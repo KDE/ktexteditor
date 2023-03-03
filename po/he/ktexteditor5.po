@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 22:21+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2017-05-24 08:19-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -2096,12 +2096,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "נסה שוב"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6515
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6516
 #, kde-format
 msgid "&Close"
 msgstr "&סגור"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6516
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6517
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2281,8 +2281,8 @@ msgid "Untitled"
 msgstr "ללא שם"
 
 #: document/katedocument.cpp:4750 document/katedocument.cpp:4978
-#: document/katedocument.cpp:4988 document/katedocument.cpp:5729
-#: document/katedocument.cpp:5919
+#: document/katedocument.cpp:4988 document/katedocument.cpp:5730
+#: document/katedocument.cpp:5920
 #, kde-format
 msgid "Save File"
 msgstr "שמור קובץ"
@@ -2309,7 +2309,7 @@ msgstr ""
 "\n"
 "בדוק שיש לך הרשאת כתיבה לקובץ זה ושיש מספיק מקום פנוי בדיסק."
 
-#: document/katedocument.cpp:5261
+#: document/katedocument.cpp:5262
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2318,7 +2318,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5268
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2327,25 +2327,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5576
+#: document/katedocument.cpp:5577
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "הקובץ \"%1\" שונה על ידי תוכנית אחרת."
 
-#: document/katedocument.cpp:5579
+#: document/katedocument.cpp:5580
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "הקובץ \"%1\" נוצר ידי תוכנית אחרת."
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5583
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "הקובץ \"%1\" נמחק על ידי תוכנית אחרת."
 
-#: document/katedocument.cpp:5904
+#: document/katedocument.cpp:5905
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2354,17 +2354,17 @@ msgstr ""
 "המסמך \"%1\" שונה.\n"
 "האם ברצונך לשמור את השינויים או לשכוח מהם?"
 
-#: document/katedocument.cpp:5907
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Close Document"
 msgstr "סגור מסמך"
 
-#: document/katedocument.cpp:6018
+#: document/katedocument.cpp:6019
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "הקובץ <a href=\"%1\">%2</a> עדיין נטען."
 
-#: document/katedocument.cpp:6023
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&בטל טעינה"

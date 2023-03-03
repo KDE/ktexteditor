@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 22:21+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2023-01-08 12:15+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -2129,12 +2129,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Prøv på nytt"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6515
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6516
 #, kde-format
 msgid "&Close"
 msgstr "Lu&kk"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6516
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6517
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2315,8 +2315,8 @@ msgid "Untitled"
 msgstr "Namnlaus"
 
 #: document/katedocument.cpp:4750 document/katedocument.cpp:4978
-#: document/katedocument.cpp:4988 document/katedocument.cpp:5729
-#: document/katedocument.cpp:5919
+#: document/katedocument.cpp:4988 document/katedocument.cpp:5730
+#: document/katedocument.cpp:5920
 #, kde-format
 msgid "Save File"
 msgstr "Lagra fil"
@@ -2344,7 +2344,7 @@ msgstr ""
 "Sjå til at du har skriveløyve til denne fila og at det er nok ledig plass på "
 "disken."
 
-#: document/katedocument.cpp:5261
+#: document/katedocument.cpp:5262
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2357,7 +2357,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces for meir informasjon."
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5268
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2370,22 +2370,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces for meir informasjon."
 
-#: document/katedocument.cpp:5576
+#: document/katedocument.cpp:5577
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5579
+#: document/katedocument.cpp:5580
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5583
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5904
+#: document/katedocument.cpp:5905
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2394,17 +2394,17 @@ msgstr ""
 "Dokumentet «%1» er endra.\n"
 "Vil du lagra eller forkasta endringane?"
 
-#: document/katedocument.cpp:5907
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Close Document"
 msgstr "Lukk dokumentet"
 
-#: document/katedocument.cpp:6018
+#: document/katedocument.cpp:6019
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Fila <a href=\"%1\">%2</a> vert framleis lasta inn."
 
-#: document/katedocument.cpp:6023
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Avbryt innlasting"
@@ -8072,6 +8072,3 @@ msgstr "«%1» %2, heks %3, oktal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merke ikkje definert: %1"
-
-#~ msgid "Export/Print"
-#~ msgstr "Eksporterer / skriv ut"

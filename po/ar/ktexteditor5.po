@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-01 22:21+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2022-10-05 19:16+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2103,12 +2103,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "جرّب مجدّدًا"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6515
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6516
 #, kde-format
 msgid "&Close"
 msgstr "أ&غلق"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6516
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6517
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2282,8 +2282,8 @@ msgid "Untitled"
 msgstr "غير معنون"
 
 #: document/katedocument.cpp:4750 document/katedocument.cpp:4978
-#: document/katedocument.cpp:4988 document/katedocument.cpp:5729
-#: document/katedocument.cpp:5919
+#: document/katedocument.cpp:4988 document/katedocument.cpp:5730
+#: document/katedocument.cpp:5920
 #, kde-format
 msgid "Save File"
 msgstr "احفظ الملفّ"
@@ -2310,7 +2310,7 @@ msgstr ""
 "\n"
 "افحص صلاحيّات الكتابة لديك إلى هذا الملفّ أو توفّر مساحة كافية على القرص."
 
-#: document/katedocument.cpp:5261
+#: document/katedocument.cpp:5262
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2326,7 +2326,7 @@ msgstr ""
 "trailing-spaces modified;‎'، طالع http://docs.kde.org/stable/en/applications/"
 "kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5268
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2342,25 +2342,25 @@ msgstr ""
 "trailing-spaces all;‎'، طالع http://docs.kde.org/stable/en/applications/kate/"
 "config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5576
+#: document/katedocument.cpp:5577
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "لقد عدّل الملفّ '%1' برنامج آخر."
 
-#: document/katedocument.cpp:5579
+#: document/katedocument.cpp:5580
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "أنشأ الملفّ '%1' برنامج آخر."
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5583
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "حذف الملفّ '%1' برنامج آخر."
 
-#: document/katedocument.cpp:5904
+#: document/katedocument.cpp:5905
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2369,17 +2369,17 @@ msgstr ""
 "عُدّل المستند \"%1\" ولم يُحفظ.\n"
 "أتريد حفظ التّعديلات أو رفضها؟"
 
-#: document/katedocument.cpp:5907
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Close Document"
 msgstr "أغلق المستند"
 
-#: document/katedocument.cpp:6018
+#: document/katedocument.cpp:6019
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ما زال الملفّ <a href=\"%1\">%2</a> يحمّل."
 
-#: document/katedocument.cpp:6023
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "&Abort Loading"
 msgstr "أ&جهض التّحميل"
