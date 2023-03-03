@@ -755,7 +755,7 @@ function tryMatchedAnchor(line, alignOnly)
 }
 
 function escapeForRegex(string) {
-    if (string !== null) {
+    if (string !== null && string != undefined) {
         return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
     }
     return string;
@@ -782,7 +782,8 @@ function tryMultiLineStringLiteral(line) {
         var startMatch = currentString.match(multiLineStringLiteralStartRegex);
         if (startMatch !== null) {
             found = true;
-            delim = startMatch[1];
+            delim = startMatch[1] != undefined ? startMatch[1] : "";
+            currentLine--;
             break;
         }
         --currentLine;
@@ -797,13 +798,10 @@ function tryMultiLineStringLiteral(line) {
     }
 
     // iterate through all lines and toggle bool insideString for every quote
-    var insideString = true;
     var endReached = false;
-    var indentation = null;
-    const multiLineStringLiteralEndRegex = new RegExp('\\)' + escapeForRegex(delim) + '"');
+    const multiLineStringLiteralEndRegex = delim.length != 0 ? new RegExp('\\)' + escapeForRegex(delim) + '"') : new RegExp("\)\"");
     while (currentLine < line) {
         currentString = document.line(currentLine);
-        dbg(currentString);
         var endMatch = currentString.match(multiLineStringLiteralEndRegex);
         if (endMatch !== null) {
             dbg("End reached: " + currentString);
@@ -812,9 +810,8 @@ function tryMultiLineStringLiteral(line) {
         }
         ++currentLine;
     }
-    indentation = document.firstVirtualColumn(line);
-    dbg(endReached ? -1 : indentation);
-    return endReached ? -1 : indentation;
+
+    return endReached ? -1 : document.firstVirtualColumn(line);
 }
 
 /**
