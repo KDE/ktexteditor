@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"POT-Creation-Date: 2023-03-04 00:43+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2219,12 +2219,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6549
 #, kde-format
 msgid "Close message"
 msgstr "បិទ​សារ"
@@ -2419,8 +2419,8 @@ msgid "Untitled"
 msgstr "គ្មាន​ចំណង​ជើង"
 
 #: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5761
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Save File"
 msgstr "រក្សាទុក​ឯកសារ"
@@ -2448,7 +2448,7 @@ msgstr ""
 "\n"
 "ពិនិត្យ​មើល​ថា អ្នក​មាន​សិទ្ធិ​សរសេរ​ទៅ​ឯកសារ​នេះ ឬ​មាន​ទំហំ​ថាស​គ្រប់​គ្រាន់ ។"
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5293
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2464,7 +2464,7 @@ msgstr ""
 "នៅ​ខាងក្រោម​​ដែល​បាន​កែប្រែ​ចេញ;', មើល http://docs.kde.org/stable/en/kde-baseapps/"
 "kate/config-variables.html#variable-យក​​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាង​ក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5299
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2480,25 +2480,25 @@ msgstr ""
 "ចន្លោះ​​មិន​ឃើញ​នៅ​ខាង​ក្រោយ​ចេញ​ទាំងអស់;', មើល http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-​យក​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាងក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​កែប្រែ​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​បង្កើត​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5614
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​លុប​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2507,18 +2507,18 @@ msgstr ""
 "ឯកសារ \"%1\" ត្រូវ​បាន​កែប្រែ ។\n"
 "តើ​អ្នក​ចង់​រក្សាទុក​ការ​ផ្លាស់ប្ដូរ ឬ​បោះបង់​ពួកវា ?"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5940
 #, kde-format
 msgid "Close Document"
 msgstr "បិទ​ឯកសារ"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6051
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ឯកសារ %1 នៅ​តែ​កំពុង​ផ្ទុក ។"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-12 00:52+0000\n"
+"POT-Creation-Date: 2023-03-04 00:43+0000\n"
 "PO-Revision-Date: 2023-01-31 08:26+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2175,12 +2175,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторити спробу"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6547
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr "&Закрити"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6549
 #, kde-format
 msgid "Close message"
 msgstr "Закрити повідомлення"
@@ -2362,8 +2362,8 @@ msgid "Untitled"
 msgstr "Без назви"
 
 #: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5761
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Save File"
 msgstr "Зберегти файл"
@@ -2391,7 +2391,7 @@ msgstr ""
 "Перевірте, що у вас є право запису до цього файла, та наявність достатнього "
 "вільного місця."
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2404,7 +2404,7 @@ msgstr ""
 "org/?application=katepart&branch=stable5&language=uk&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5299
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2417,22 +2417,22 @@ msgstr ""
 "org/?application=katepart&branch=stable5&language=uk&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файл «%1» було змінено на диску."
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5611
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Файл «%1» було створено на диску."
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5614
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Файл «%1» було вилучено на диску."
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2441,17 +2441,17 @@ msgstr ""
 "Документ «%1» було змінено.\n"
 "Що ви бажаєте зробити зі змінами: зберегти чи відкинути їх?"
 
-#: document/katedocument.cpp:5939
+#: document/katedocument.cpp:5940
 #, kde-format
 msgid "Close Document"
 msgstr "Закрити документ"
 
-#: document/katedocument.cpp:6050
+#: document/katedocument.cpp:6051
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Завантаження файла <a href=\"%1\">%2</a> ще не завершено."
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Перервати завантаження"
