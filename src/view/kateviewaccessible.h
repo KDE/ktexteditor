@@ -297,14 +297,7 @@ public:
 
         // m_lastPosition < 0 is invalid, calculate from the beginning of the document
         if (m_lastPosition < 0 || view != m_lastView) {
-            pos = 0;
-            // Default (worst) case
-            for (int line = 0; line < cursor.line(); ++line) {
-                pos += doc->lineLength(line);
-            }
-            // new line for each line
-            pos += cursor.line();
-            m_lastView = view;
+            pos = doc->cursorToOffset(cursor) - cursor.column();
         } else {
             // if the lines are the same, just add the cursor.column(), otherwise
             if (cursor.line() != m_lastCursor.line()) {

@@ -164,6 +164,30 @@ TextLine TextBuffer::line(int line) const
     return m_blocks.at(blockIndex)->line(line);
 }
 
+int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
+{
+    if (!c.isValid()) {
+        return -1;
+    }
+
+    int off = 0;
+    int line = 0;
+    for (auto block : m_blocks) {
+        const int lines = block->lines();
+        for (int i = 0; i < lines; ++i) {
+            if (line >= c.line()) {
+                off += c.column();
+                return off;
+            }
+            off += block->lineLength(line) + 1;
+            line++;
+        }
+    }
+
+    Q_ASSERT(false);
+    return -1;
+}
+
 QString TextBuffer::text() const
 {
     QString text;

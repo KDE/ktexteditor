@@ -922,6 +922,11 @@ int KTextEditor::DocumentPrivate::lineLength(int line) const
     return m_buffer->lineLength(line);
 }
 
+int KTextEditor::DocumentPrivate::cursorToOffset(KTextEditor::Cursor c) const
+{
+    return m_buffer->cursorToOffset(c);
+}
+
 bool KTextEditor::DocumentPrivate::isLineModified(int line) const
 {
     if (line < 0 || line >= lines()) {
