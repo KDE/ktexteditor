@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-01-13 01:05+0100\n"
+"PO-Revision-Date: 2023-03-04 00:52+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -78,7 +78,7 @@ msgstr "&Archivo"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Imprimir/exportar"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -2208,8 +2208,7 @@ msgid "&Close"
 msgstr "&Cerrar"
 
 #: document/katedocument.cpp:2296 document/katedocument.cpp:6517
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Cerrar mensaje"
@@ -3200,37 +3199,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Eliminar duplicados y ordenar el texto seleccionado alfabéticamente"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplicar las líneas seleccionadas arriba"
+msgstr "Eliminar líneas duplicadas"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Eli&minar los espacios finales:"
+msgstr "Eliminar espacios sobrantes al final"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Eli&minar los espacios finales:"
+msgstr "Eliminar espacios sobrantes al principio"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Eli&minar los espacios finales:"
+msgstr "Eliminar espacios sobrantes al principio y al final"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Unir líneas"
@@ -3272,11 +3265,10 @@ msgid "URI-decode Selected Text"
 msgstr "Decodificar URI del texto seleccionado"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Eliminar cursores de la líneas vacías"
+msgstr "Eliminar líneas vacías"
 
 #: script/data/commands/utils.js:442
 #, kde-format
