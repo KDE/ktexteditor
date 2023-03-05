@@ -48,7 +48,7 @@ QString KateScript::backtrace(const QJSValue &error, const QString &header)
         bt += header + QLatin1String(":\n");
     }
     if (error.isError()) {
-        bt += error.toString() + QLatin1Char('\n');
+        bt += error.toString() + QLatin1String("\nStrack trace:\n") + error.property(QStringLiteral("stack")).toString();
     }
 
     return bt;
@@ -206,8 +206,8 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
 bool KateScript::hasException(const QJSValue &object, const QString &file)
 {
     if (object.isError()) {
-        displayBacktrace(object, i18n("Error loading script %1\n", file));
         m_errorMessage = i18n("Error loading script %1", file);
+        displayBacktrace(object, m_errorMessage);
         delete m_engine;
         m_engine = nullptr;
         m_loadSuccessful = false;
