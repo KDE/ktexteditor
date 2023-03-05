@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-02-03 16:08+0100\n"
+"PO-Revision-Date: 2023-03-04 13:56+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -63,7 +63,7 @@ msgstr "&ფაილი"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "დაბეჭდვა/გატანა"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1988,8 +1988,7 @@ msgid "&Close"
 msgstr "დაკე&ტვა"
 
 #: document/katedocument.cpp:2296 document/katedocument.cpp:6517
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "შეტყობინების დახურვა"
@@ -2901,11 +2900,10 @@ msgid "Remove Duplicate Lines"
 msgstr ""
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Remove tail on complete"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "დასრულებისას კუდის წაშლა"
+msgstr "მიწერილი გამოტოვებების მოცილება"
 
 #: script/data/commands/utils.js:25
 #, kde-format
@@ -2920,8 +2918,7 @@ msgid "Remove Trailing and Leading Spaces"
 msgstr ""
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "ხაზების შეერთება"
@@ -3351,7 +3348,7 @@ msgstr "ან"
 #: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "Set of characters"
-msgstr ""
+msgstr "სიმბოლოების ნაკრები"
 
 #: search/katesearchbar.cpp:1176
 #, kde-format
@@ -6225,7 +6222,7 @@ msgstr ""
 #: view/kateview.cpp:543
 #, kde-format
 msgid "Unco&mment"
-msgstr ""
+msgstr "&კომენტარის მოხსნა"
 
 #: view/kateview.cpp:546
 #, kde-format
@@ -6472,7 +6469,7 @@ msgstr ""
 #: view/kateview.cpp:725
 #, kde-format
 msgid "Overwr&ite Mode"
-msgstr ""
+msgstr "&თავზე გადაწერის რეჟიმი"
 
 #: view/kateview.cpp:728
 #, kde-format
@@ -7106,7 +7103,7 @@ msgstr ""
 #: view/kateview.cpp:1265
 #, kde-format
 msgid "&Indent"
-msgstr ""
+msgstr "&შეწევა"
 
 #: view/kateview.cpp:1267
 #, kde-format
@@ -7511,7 +7508,7 @@ msgstr ""
 #: vimode/config/configwidget.ui:114
 #, kde-format
 msgid "Insert mode"
-msgstr ""
+msgstr "ჩასმის რეჟიმი"
 
 #. i18n: ectx: attribute (title), widget (QWidget, visualTab)
 #: vimode/config/configwidget.ui:152

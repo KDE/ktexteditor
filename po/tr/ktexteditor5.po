@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-02-04 20:27+0300\n"
+"PO-Revision-Date: 2023-03-04 13:32+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -73,7 +73,7 @@ msgstr "&Dosya"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Yazdır/Dışa Aktar"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1733,14 +1733,14 @@ msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
 msgstr ""
-"Bu seçime bağlı olarak belge kaydedilirken, ya tüm belgede ya da "
-"değiştirilmiş satırların sonundaki boşuklar kaldırılır."
+"Seçime bağlı olarak, bir belgeyi kaydederken tüm belgede veya yalnızca "
+"değiştirilen satırlarda sondaki boşluklar kaldırılır."
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
 #, kde-format
 msgid "Re&move trailing spaces:"
-msgstr "Ge&reksiz boşlukları kaldır:"
+msgstr "Satır &sonu boşluklarını kaldır:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
@@ -1942,7 +1942,7 @@ msgstr ""
 "Bu etkinleştirilmişse eşleşen açık bir ayracın yanında satır önizlemesi "
 "gösterilir. Bu, bir kapatan ayracın bağlamını hızlıca anlamaya yardımcı "
 "olur; özellikle uzun işlev/sınıf beyanlarında ve derince iç içe geçmiş if "
-"bloklarında yararlıdır."
+"bloklarında yararlıdır"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
@@ -2162,8 +2162,7 @@ msgid "&Close"
 msgstr "&Kapat"
 
 #: document/katedocument.cpp:2296 document/katedocument.cpp:6517
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "İletiyi Kapat"
@@ -3145,37 +3144,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Yinelenmişleri Kaldır ve Seçili Metni Abecesel Olarak Sırala"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Seçili Satırların Aynısını Yukarı Kopyala"
+msgstr "Yinelenmiş Satırları Kaldır"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Ge&reksiz boşlukları kaldır:"
+msgstr "Satır Sonu Boşluklarını Kaldır"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Ge&reksiz boşlukları kaldır:"
+msgstr "Satır Başı Boşluklarını Kaldır"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Ge&reksiz boşlukları kaldır:"
+msgstr "Satır Başı ve Sonu Boşluklarını Kaldır"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Satırları Birleştir"
@@ -3217,11 +3210,10 @@ msgid "URI-decode Selected Text"
 msgstr "Seçili Metnin URI Kodunu Çöz"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Boş Satırlardan İmleçleri Kaldır"
+msgstr "Boş Satırları Kaldır"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3257,7 +3249,7 @@ msgstr ""
 #: script/data/commands/utils.js:452
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
-msgstr "Seçimden veya tüm belgeden gereksiz son boşlukları siler."
+msgstr "Seçimden veya tüm belgeden sondaki boşlukları kırpar."
 
 #: script/data/commands/utils.js:454
 #, kde-format
@@ -3267,8 +3259,7 @@ msgstr "Seçimden veya tüm belgeden gereksiz başlangıç boşluklarını siler
 #: script/data/commands/utils.js:456
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
-msgstr ""
-"Seçimden veya tüm belgeden gereksiz başlangıç ve bitiş boşluklarını siler."
+msgstr "Seçimden veya tüm belgeden baştaki ve sondaki boşlukları kırpar."
 
 #: script/data/commands/utils.js:458
 #, kde-format
@@ -6288,7 +6279,7 @@ msgstr "Sekmeleri boşluk ile değiştir."
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
-msgstr "Belgeyi kaydederken gereksiz boşlukları kaldır."
+msgstr "Belgeyi kaydederken sondaki boşlukları kaldırın."
 
 #: variableeditor/variablelineedit.cpp:280
 #, kde-format
@@ -6318,7 +6309,7 @@ msgstr "Metin seçme rengini ayarla."
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
-msgstr "Sekmeleri ve sürekli boşlukları göster."
+msgstr "Sekmeleri ve sondaki boşlukları görselleştirin."
 
 #: variableeditor/variablelineedit.cpp:311
 #, kde-format
@@ -7582,8 +7573,8 @@ msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
 msgstr ""
-"harf yada sayı olmayan, mevcut baş anakarakterlerini de içeren bir satır "
-"ekle."
+"Geçerli satırın harf veya sayı olmayan baştaki karakterleri içermek üzere "
+"yeni satır ekleyin."
 
 #: view/kateview.cpp:1237
 #, kde-format
@@ -8168,6 +8159,3 @@ msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
-
-#~ msgid "Export/Print"
-#~ msgstr "Dışa Aktar/Yazdır"
