@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
+"POT-Creation-Date: 2023-03-06 02:12+0000\n"
 "PO-Revision-Date: 2023-01-12 16:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2180,7 +2180,7 @@ msgstr "Torna a carregar automàticament el document"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Torna a carregar automàticament el document quan es canvie en el disc"
 
-#: document/katedocument.cpp:2286
+#: document/katedocument.cpp:2291
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2189,25 +2189,25 @@ msgstr ""
 "No s'ha pogut carregar el fitxer %1, perquè no s'ha pogut llegir.<br /"
 ">Comproveu si teniu accés de lectura a este fitxer."
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2296
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6516
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
 #, kde-format
 msgid "&Close"
 msgstr "Tan&ca"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6517
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Tanca el missatge"
 
-#: document/katedocument.cpp:2307
+#: document/katedocument.cpp:2312
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2218,7 +2218,7 @@ msgstr ""
 "\n"
 "Comproveu si teniu accés de lectura a este fitxer."
 
-#: document/katedocument.cpp:2431
+#: document/katedocument.cpp:2436
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2232,7 +2232,7 @@ msgstr ""
 "lo a obrir amb la codificació correcta o podeu tornar a activar el mode de "
 "lectura i escriptura en el menú Eines."
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2448
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2246,7 +2246,7 @@ msgstr ""
 "codificació correcta o podeu tornar a activar el mode de lectura i "
 "escriptura en el menú d'eines per a poder-lo editar."
 
-#: document/katedocument.cpp:2456
+#: document/katedocument.cpp:2461
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2259,17 +2259,17 @@ msgstr ""
 "té %3 caràcters.<br />Estes línies s'ajustaran i el document s'establirà al "
 "mode de només lectura, ja que en guardar-lo es modificaria el seu contingut."
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2468
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Eleva el límit temporalment i torna a carregar el fitxer"
 
-#: document/katedocument.cpp:2466
+#: document/katedocument.cpp:2471
 #, kde-format
 msgid "Close"
 msgstr "Tanca"
 
-#: document/katedocument.cpp:2473
+#: document/katedocument.cpp:2478
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2282,7 +2282,7 @@ msgstr ""
 "té %3 caràcters.<br />Estes línies s'ajustaran i el document s'establirà al "
 "mode de només lectura, ja que en guardar-lo es modificaria el seu contingut."
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2505
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2291,18 +2291,18 @@ msgstr ""
 "Segur que voleu guardar este fitxer sense modificar? Podeu estar "
 "sobreescrivint les dades canviades en el fitxer que residix en el disc."
 
-#: document/katedocument.cpp:2501
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Intenta guardar un fitxer sense modificar"
 
-#: document/katedocument.cpp:2502 document/katedocument.cpp:2513
-#: document/katedocument.cpp:2529
+#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
+#: document/katedocument.cpp:2534
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Guarda de totes maneres"
 
-#: document/katedocument.cpp:2511
+#: document/katedocument.cpp:2516
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2311,14 +2311,14 @@ msgstr ""
 "Segur que voleu guardar este fitxer? Tant el fitxer obert com el que està en "
 "el disc han rebut canvis. Amb açò es podrien perdre algunes dades."
 
-#: document/katedocument.cpp:2512 document/katedocument.cpp:2528
-#: document/katedocument.cpp:2820 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
+#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Possible pèrdua de dades"
 
-#: document/katedocument.cpp:2526
+#: document/katedocument.cpp:2531
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2327,7 +2327,7 @@ msgstr ""
 "La codificació seleccionada no pot codificar cadascun dels caràcters Unicode "
 "d'este document. Segur que voleu guardar-lo? Podrien perdre's algunes dades."
 
-#: document/katedocument.cpp:2571
+#: document/katedocument.cpp:2576
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2342,7 +2342,7 @@ msgstr ""
 "El fitxer original es pot perdre o malmetre. No eixiu de l'aplicació fins "
 "que el fitxer s'haja escrit amb èxit."
 
-#: document/katedocument.cpp:2692
+#: document/katedocument.cpp:2697
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2355,50 +2355,50 @@ msgstr ""
 "fitxer. Una raó pot ser que el suport d'escriptura siga ple o el directori "
 "del fitxer siga de només lectura."
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2701
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "No s'ha pogut crear la còpia de seguretat."
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Guarda de totes maneres"
 
-#: document/katedocument.cpp:2819
+#: document/katedocument.cpp:2824
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Segur que voleu continuar i tancar este fitxer? Es podrien perdre les dades."
 
-#: document/katedocument.cpp:2821
+#: document/katedocument.cpp:2826
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Tanca de totes maneres"
 
-#: document/katedocument.cpp:4627
+#: document/katedocument.cpp:4632
 #, kde-format
 msgid "Untitled"
 msgstr "Sense títol"
 
-#: document/katedocument.cpp:4750 document/katedocument.cpp:4978
-#: document/katedocument.cpp:4988 document/katedocument.cpp:5730
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
+#: document/katedocument.cpp:5925
 #, kde-format
 msgid "Save File"
 msgstr "Guarda el fitxer"
 
-#: document/katedocument.cpp:4753
+#: document/katedocument.cpp:4758
 #, kde-format
 msgid "Save failed"
 msgstr "No s'ha pogut fer la guardada"
 
-#: document/katedocument.cpp:4999
+#: document/katedocument.cpp:5004
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Guarda una còpia del fitxer"
 
-#: document/katedocument.cpp:5011
+#: document/katedocument.cpp:5016
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2411,7 +2411,7 @@ msgstr ""
 "Comproveu que teniu accés d'escriptura a este fitxer o que hi ha prou espai "
 "disponible."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5267
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2424,7 +2424,7 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2437,22 +2437,22 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5582
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "El fitxer «%1» s'ha modificat en el disc."
 
-#: document/katedocument.cpp:5580
+#: document/katedocument.cpp:5585
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "El fitxer «%1» s'ha creat en el disc."
 
-#: document/katedocument.cpp:5583
+#: document/katedocument.cpp:5588
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "El fitxer «%1» s'ha suprimit en el disc."
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5910
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2461,17 +2461,17 @@ msgstr ""
 "El document «%1» ha sigut modificat.\n"
 "Voleu guardar els canvis o descartar-los?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5913
 #, kde-format
 msgid "Close Document"
 msgstr "Tanca el document"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "El fitxer <a href=\"%1\">%2</a> encara s'està carregant."
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6029
 #, kde-format
 msgid "&Abort Loading"
 msgstr "In&terromp la càrrega"
@@ -3574,11 +3574,6 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "No s'ha definit cap ajuda per a l'ordre «%1» en l'script %2"
 
 #: script/katescript.cpp:209
-#, kde-format
-msgid "Error loading script %1\n"
-msgstr "S'ha produït un error en carregar l'script %1\n"
-
-#: script/katescript.cpp:210
 #, kde-format
 msgid "Error loading script %1"
 msgstr "S'ha produït un error en carregar l'script %1"
@@ -8273,6 +8268,9 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
+
+#~ msgid "Error loading script %1\n"
+#~ msgstr "S'ha produït un error en carregar l'script %1\n"
 
 #~ msgid "Export/Print"
 #~ msgstr "Exportació/Impressió"

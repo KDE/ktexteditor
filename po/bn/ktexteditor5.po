@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
+"POT-Creation-Date: 2023-03-06 02:12+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -2017,7 +2017,7 @@ msgstr "ডকুমেন্টের শেষে চলে যাও"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2286
+#: document/katedocument.cpp:2291
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2031,24 +2031,24 @@ msgstr ""
 "\n"
 "পরীক্ষা করে দেখুন আপনার এই ফাইলটি পড়ার অনুমতি আছে কি না।"
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2296
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6516
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6517
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr ""
 
-#: document/katedocument.cpp:2307
+#: document/katedocument.cpp:2312
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2059,7 +2059,7 @@ msgstr ""
 "\n"
 "পরীক্ষা করে দেখুন আপনার এই ফাইলটি পড়ার অনুমতি আছে কি না।"
 
-#: document/katedocument.cpp:2431
+#: document/katedocument.cpp:2436
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2068,7 +2068,7 @@ msgid ""
 "write mode again in the tools menu to be able to edit it."
 msgstr ""
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2448
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2077,7 +2077,7 @@ msgid ""
 "again in the tools menu to be able to edit it."
 msgstr ""
 
-#: document/katedocument.cpp:2456
+#: document/katedocument.cpp:2461
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2086,17 +2086,17 @@ msgid ""
 "only mode, as saving will modify its content."
 msgstr ""
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2468
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2466
+#: document/katedocument.cpp:2471
 #, kde-format
 msgid "Close"
 msgstr ""
 
-#: document/katedocument.cpp:2473
+#: document/katedocument.cpp:2478
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2105,7 +2105,7 @@ msgid ""
 "only mode, as saving will modify its content."
 msgstr ""
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2505
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2114,18 +2114,18 @@ msgstr ""
 "আপনি কি সত্যিই এই অপরিবর্তিত ফাইলটি সংরক্ষণ করতে চান? এর ফলে ফাইলে করা অন্যান্য "
 "পরিবর্তনগুলি হারিয়ে যেতে পারে।"
 
-#: document/katedocument.cpp:2501
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr ""
 
-#: document/katedocument.cpp:2502 document/katedocument.cpp:2513
-#: document/katedocument.cpp:2529
+#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
+#: document/katedocument.cpp:2534
 #, kde-format
 msgid "Save Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:2511
+#: document/katedocument.cpp:2516
 #, fuzzy, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2134,14 +2134,14 @@ msgstr ""
 "আপনি সত্যি চাই প্রতি সংরক্ষণ করা এই ফাইল আপনার খোলা,পড়া, খোলা হোক ফাইল এবং টি "
 "ফাইল ওপর ডিস্ক ছিল পরিবর্তিত পারে কিছু তথ্য হারানো."
 
-#: document/katedocument.cpp:2512 document/katedocument.cpp:2528
-#: document/katedocument.cpp:2820 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
+#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr ""
 
-#: document/katedocument.cpp:2526
+#: document/katedocument.cpp:2531
 #, fuzzy, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2150,7 +2150,7 @@ msgstr ""
 "নথী পারে নয় সংরক্ষিত   টি নির্বাচিত এনকোডিং যাবে না প্রত্যেক ইউনিকোড বর্ণ, অক্ষর "
 "ইঞ্চি এটি আপনি -র কোন এনকোডিং প্রতি ব্যবহার চেষ্টা অথবা."
 
-#: document/katedocument.cpp:2571
+#: document/katedocument.cpp:2576
 #, fuzzy, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2162,7 +2162,7 @@ msgstr ""
 "নথী পারে নয় সংরক্ষিত   এটি ছিল নয় সম্ভব প্রতি লেখো প্রতি ঐ আপনি লেখো ব্যবহারের "
 "সুযোগ প্রতি এই ফাইল অথবা ঐ যথেষ্ট ডিস্ক স্থান আছে পাওয়া যাচ্ছে."
 
-#: document/katedocument.cpp:2692
+#: document/katedocument.cpp:2697
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2171,50 +2171,50 @@ msgid ""
 "only for you."
 msgstr ""
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2701
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr ""
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:2819
+#: document/katedocument.cpp:2824
 #, fuzzy, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "আপনি সত্যি চাই প্রতি চলিয়ে যাও প্রতি বন্ধ এই ফাইল ক্ষতি হয়তো ঘটা."
 
-#: document/katedocument.cpp:2821
+#: document/katedocument.cpp:2826
 #, kde-format
 msgid "Close Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:4627
+#: document/katedocument.cpp:4632
 #, fuzzy, kde-format
 msgid "Untitled"
 msgstr "অসীম"
 
-#: document/katedocument.cpp:4750 document/katedocument.cpp:4978
-#: document/katedocument.cpp:4988 document/katedocument.cpp:5730
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
+#: document/katedocument.cpp:5925
 #, kde-format
 msgid "Save File"
 msgstr "ফাইল সংরক্ষণ করো "
 
-#: document/katedocument.cpp:4753
+#: document/katedocument.cpp:4758
 #, fuzzy, kde-format
 msgid "Save failed"
 msgstr "ফাইল সংরক্ষণ করো "
 
-#: document/katedocument.cpp:4999
+#: document/katedocument.cpp:5004
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ফাইল সংরক্ষণ করো "
 
-#: document/katedocument.cpp:5011
+#: document/katedocument.cpp:5016
 #, fuzzy, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2225,7 +2225,7 @@ msgstr ""
 "নথী পারে নয় সংরক্ষিত   এটি ছিল নয় সম্ভব প্রতি লেখো প্রতি ঐ আপনি লেখো ব্যবহারের "
 "সুযোগ প্রতি এই ফাইল অথবা ঐ যথেষ্ট ডিস্ক স্থান আছে পাওয়া যাচ্ছে."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5267
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2234,7 +2234,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5273
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2243,45 +2243,45 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5577
+#: document/katedocument.cpp:5582
 #, fuzzy, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 "অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
 "\n"
 
-#: document/katedocument.cpp:5580
+#: document/katedocument.cpp:5585
 #, fuzzy, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 "অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
 "\n"
 
-#: document/katedocument.cpp:5583
+#: document/katedocument.cpp:5588
 #, fuzzy, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr ""
 "অপর একটি প্রোগ্রাম %1 ফাইলটিকে ডিস্ক-এ পাল্টেছে (মুছে ফেলেছে)!\n"
 "\n"
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5910
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5913
 #, kde-format
 msgid "Close Document"
 msgstr ""
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6029
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -3339,12 +3339,6 @@ msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
 #: script/katescript.cpp:209
-#, fuzzy, kde-format
-#| msgid "Error: %1"
-msgid "Error loading script %1\n"
-msgstr "সমস্যা: %1"
-
-#: script/katescript.cpp:210
 #, kde-format
 msgid "Error loading script %1"
 msgstr ""
@@ -7743,6 +7737,11 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ধরন ১"
+
+#, fuzzy
+#~| msgid "Error: %1"
+#~ msgid "Error loading script %1\n"
+#~ msgstr "সমস্যা: %1"
 
 #, fuzzy
 #~ msgid "Insert Tab"

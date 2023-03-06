@@ -1,28 +1,27 @@
-# Translation of ktexteditor5.po to Euskara/Basque (eu).
-# Copyright (C) 2002-2018, Free Software Foundation.
-# Copyright (C) 2019-2020, This file is copyright:
+# Translation for ktexteditor5.po to Euskara/Basque (eu).
+# Copyright (C) 2002-2023 This file is copyright:
 # This file is distributed under the same license as the ktexteditor package.
-# KDE euskaratzeko proiektuaren arduraduna <xalba@euskalnet.net>.
+# KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>.
 #
 # Translators:
 # Juan Irigoien <juanirigoien@yahoo.es>, 2004.
 # Ion Gaztañaga <igaztanaga@gmail.com>, 2005.
 # marcos <marcos@euskalgnu.org>, 2002,2003, 2004, 2005, 2006, 2009, 2010.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009, 2011.
-# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2010, 2011, 2017, 2018, 2019, 2020, 2022.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2010, 2011, 2017, 2018, 2019, 2020, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2022-09-10 14:04+0200\n"
+"POT-Creation-Date: 2023-03-06 02:12+0000\n"
+"PO-Revision-Date: 2023-03-05 16:26+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
-"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language-Team: Basque\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -70,7 +69,7 @@ msgstr "&Fitxategia"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Inprimatzea/Esportatzea"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -86,29 +85,27 @@ msgstr "Aurkitu aldaerak"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Selection"
-msgstr "&Atala:"
+msgstr "Hautapena"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Kapitalizatu"
+msgstr "Aurreneko letra larriz ipintzea"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
 #, kde-format
 msgid "&View"
-msgstr "&Ikusi"
+msgstr "&Ikuspegia"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
 #: data/katepart5ui.rc:74
 #, kde-format
 msgid "Word Wrap"
-msgstr "Itzulbiratu"
+msgstr "Itzulbira"
 
 #. i18n: ectx: Menu (view_menu_borders)
 #: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:731
@@ -124,10 +121,9 @@ msgstr "&Kodea tolestea"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:104
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Joan"
+msgstr "&Joan"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:119
@@ -162,10 +158,9 @@ msgstr "Tresna-barra nagusia"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
-#, fuzzy, kde-format
-#| msgid "Code Folding"
+#, kde-format
 msgid "Code block folding:"
-msgstr "Kode-tolestea"
+msgstr "Kode-blokea tolestea:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -180,7 +175,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Erakutsi kode-blokeak tolesteko geziak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -194,16 +189,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Erakutsi tolestutako kodearen aurreikuspegia"
+msgstr "Erakutsi tolestutako kodearen aurreikuspegia gainetik igarotzean"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
 #, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "Ezker aldea:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -221,10 +215,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:78
 #: dialogs/bordersappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Show marks"
-msgstr "Erakutsi &labaintze-barrako markak"
+msgstr "Erakutsi markak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:85
@@ -254,17 +247,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
-#, fuzzy, kde-format
-#| msgid "Highlight range between selected brackets"
+#, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr "Nabarmendu hautatutako parentesien barrutia"
+msgstr "Nabarmendu aldatutako eta gorde gabeko lerroak"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Scrollbars"
-msgstr "Erakutsi &labaintze-barrako markak"
+msgstr "Kiribiltzeko-barrak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -289,17 +280,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
-#, fuzzy, kde-format
-#| msgid "Show text &preview on scrollbar"
+#, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Erakutsi testuaren aurreikus&pegia labaintze-barran"
+msgstr "Erakutsi aurreikuspegia kiribiltzeko-barraren gainetik igarotzean"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
-#, fuzzy, kde-format
-#| msgid "Minim&ap width:"
+#, kde-format
 msgid "Minimap:"
-msgstr "M&apa-txikiaren zabalera:"
+msgstr "Mapa-txikia:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -313,10 +302,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Show scrollbar mini-map"
+#, kde-format
 msgid "Show minimap"
-msgstr "Erakutsi labaintze-barran mapa-txikia"
+msgstr "Erakutsi mapa-txikia"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -378,7 +366,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "Sorrera dataren arabera"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -389,31 +377,27 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:265
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "By line number"
-msgstr "Erakutsi &lerro-zenbakiak"
+msgstr "Lerro-zenbakiaren arabera"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Ordenatu laster-marken menua"
+msgstr "Sailkatu laster-marken menua:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
-#, fuzzy, kde-format
-#| msgid "Scro&llbars visibility:"
+#, kde-format
 msgid "Folding arrows visibility:"
-msgstr "&Labaintze-barren ikusgaitasuna:"
+msgstr "Tolesteko gezien ikusgaitasuna:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "Erakutsi &ikonoen ertza"
+msgstr "Erakutsi gainetik igarotzean"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
@@ -422,16 +406,14 @@ msgid "Show Always"
 msgstr "Beti erakutsi"
 
 #: dialogs/clipboardhistorydialog.cpp:267
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Hautatu hurrengo editatzeko puntua"
+msgstr "Hautatu itsatsi beharreko testua."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Arbelaren historian sarrerarik ez"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -450,23 +432,21 @@ msgstr "Gaitu osatze &automatikoa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
-#, fuzzy, kde-format
-#| msgid "&Auto completion enabled"
+#, kde-format
 msgid "Auto select &first completion entry"
-msgstr "Hitzak &automatikoki osatzea gaituta"
+msgstr "Automatikoki hautatu osatzeko &aurreneko sarrera"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Zikloa osatzeko zerrendan zehar Tab / Maius. + Tab erabiliz"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
-msgstr "Hitz osatze a&utomatikoa"
+msgstr "Hitz-osatze a&utomatikoa"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -1620,10 +1600,10 @@ msgstr "s"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
 #: dialogs/opensaveconfigadvwidget.ui:221
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
-msgstr ""
+msgstr "Kate hori "
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1828,98 +1808,87 @@ msgstr "Erantsi lerro-berria fitxategiaren amaieran gordetzean"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Enable Auto Reload"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Gaitu birzamatze automatikoa"
+msgstr "Gaitu gordetze automatikoa (fitxategi lokalak bakarrik)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "Gorde dokumentua automatikoki fokuak editorea uzten duenean"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Automatikoki gordetzeko bitartea:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
 #, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " segundo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Sintaxia nabarmentzea"
+msgstr "Erakutsi sintaxia nabarmentzeko modua"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Erabili VIren sarrera modua"
+msgstr "Erakutsi sarrera-modua"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Aldatu hiztegia"
+msgstr "Erakutsi hiztegi aktiboa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Erakutsi lerro aldaketa markak"
+msgstr "Erakutsi Tab ezarpena"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Erakutsi lerro kopurua"
+msgstr "Erakutsi lerroa zutabea"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Hondatutako kodeketa"
+msgstr "Erakutsi fitxategiaren kodeketa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Erakutsi lerro-amaiera mota"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
-#, fuzzy, kde-format
-#| msgid "Editor Plugins"
+#, kde-format
 msgid "Editor font:"
-msgstr "Editorearen pluginak"
+msgstr "Editorearen letra-tipoa:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
-#, fuzzy, kde-format
-#| msgid "Ignore white space changes"
+#, kde-format
 msgid "Show whitespace indicators:"
-msgstr "&Ez ikusi egin zuriuneen aldaketei"
+msgstr "Erakutsi zuriune adierazleak:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Sets the end of line mode."
+#, kde-format
 msgid "At the end of a line"
-msgstr "Lerro moduaren amaiera ezartzen du."
+msgstr "Lerro baten amaieran"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
@@ -1929,10 +1898,9 @@ msgstr "Beti"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:90
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator size:"
-msgstr "Zuriuneen &nabarmentzea"
+msgstr "Zuriune adierazleen neurria:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:103
@@ -1942,10 +1910,9 @@ msgstr "Nabarmentzeko marka ikusgaien neurria."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show tab indicators:"
-msgstr "Erakutsi lerro aldaketa markak"
+msgstr "Erakutsi Tab adierazleak:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -2049,7 +2016,7 @@ msgstr "Erakutsi &koska-lerroak"
 #: dialogs/textareaappearanceconfigwidget.ui:247
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "Kopurua:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:254
@@ -2097,10 +2064,9 @@ msgstr "Tolestu lehenengo lerroa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:316
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "Itzulbiratze &dinamikoa"
+msgstr "Itzulbiratze dinamikoa:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
@@ -2130,16 +2096,15 @@ msgstr "Aukeratu itzulbira dinamikoaren adierazleak bistaratu behar direnean."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Indent wrapped lines:"
-msgstr "Koskaren propietateak"
+msgstr "Koskatu itzulbiratutako lerroak:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:384
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "Ez koskatu hau baino zabalagoak diren lerroak:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
@@ -2178,10 +2143,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
-#, fuzzy, kde-format
-#| msgid "Line length limit:"
+#, kde-format
 msgid "Line Height Multiplier:"
-msgstr "Lerro luzeraren muga:"
+msgstr "Lerro-altueraren biderkatzailea:"
 
 #: document/katebuffer.cpp:140
 #, kde-format
@@ -2204,7 +2168,7 @@ msgstr "Automatikoki birzamatu dokumentua"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Automatikoki birzamatu dokumentua diskoan aldatua izan denean"
 
-#: document/katedocument.cpp:2286
+#: document/katedocument.cpp:2291
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2213,25 +2177,24 @@ msgstr ""
 "%1 fitxategia ezin izan da zamatu, ezin izan baita irakurri.<br />Egiaztatu "
 "fitxategi hau irakurtzeko baimenik duzun."
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2296
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Berriz saiatu"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6516
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
 #, kde-format
 msgid "&Close"
 msgstr "&Itxi"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6517
-#, fuzzy, kde-format
-#| msgid "Close message"
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Itxi mezua"
 
-#: document/katedocument.cpp:2307
+#: document/katedocument.cpp:2312
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2242,7 +2205,7 @@ msgstr ""
 "\n"
 "Egiaztatu fitxategia irakurtzeko baimena duzula."
 
-#: document/katedocument.cpp:2431
+#: document/katedocument.cpp:2436
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2256,7 +2219,7 @@ msgstr ""
 "edo gaitu berriz irakurri-idazteko modua tresnen menuan berau editatu ahal "
 "izateko."
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2448
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2270,7 +2233,7 @@ msgstr ""
 "gaitu berriz irakurri-idazteko modua tresnen menuan berau editatu ahal "
 "izateko."
 
-#: document/katedocument.cpp:2456
+#: document/katedocument.cpp:2461
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2283,17 +2246,17 @@ msgstr ""
 "luzera du.<br/>Lerro horiek itzulbiratu egin dira eta dokumentua soilik "
 "irakurtzeko moduan ezarri da, gordetzeak bere edukia aldatuko lukeelako."
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2468
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Aldi baterako altxatu muga eta birzamatu fitxategia"
 
-#: document/katedocument.cpp:2466
+#: document/katedocument.cpp:2471
 #, kde-format
 msgid "Close"
 msgstr "Itxi"
 
-#: document/katedocument.cpp:2473
+#: document/katedocument.cpp:2478
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2306,7 +2269,7 @@ msgstr ""
 "luzera du.<br/>Lerro horiek itzulbiratu egin dira eta dokumentua soilik "
 "irakurtzeko moduan ezarri da, gordetzeak bere edukia aldatuko lukeelako."
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2505
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2315,18 +2278,18 @@ msgstr ""
 "Aldatu gabeko fitxategia gordetzea nahi duzu? Diskoko fitxategian aldatutako "
 "datuak gainidatz ditzakezu."
 
-#: document/katedocument.cpp:2501
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Aldatu gabeko fitxategia gordetzen saiatzen"
 
-#: document/katedocument.cpp:2502 document/katedocument.cpp:2513
-#: document/katedocument.cpp:2529
+#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
+#: document/katedocument.cpp:2534
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Gorde hala ere"
 
-#: document/katedocument.cpp:2511
+#: document/katedocument.cpp:2516
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2335,14 +2298,14 @@ msgstr ""
 "Fitxategia gordetzea nahi duzu? Bai irekitako fitxategia bai diskoan dagoena "
 "aldatuta daude. Baliteke datu batzuk galtzea."
 
-#: document/katedocument.cpp:2512 document/katedocument.cpp:2528
-#: document/katedocument.cpp:2820 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
+#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Datuen galera posiblea"
 
-#: document/katedocument.cpp:2526
+#: document/katedocument.cpp:2531
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2351,7 +2314,7 @@ msgstr ""
 "Hautatutako kodeketak ezin ditu dokumentuko unicode karaktere guztiak "
 "kodetu. Benetan gorde nahi duzu? Baliteke datu batzuk galtzea."
 
-#: document/katedocument.cpp:2571
+#: document/katedocument.cpp:2576
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2366,7 +2329,7 @@ msgstr ""
 "Jatorrizko fitxategia galduta edo kaltetua egon daiteke. Ez irten "
 "aplikaziotik fitxategia ondo idatzi den arte."
 
-#: document/katedocument.cpp:2692
+#: document/katedocument.cpp:2697
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2379,49 +2342,49 @@ msgstr ""
 "gordetzea nahi duzun euskarrian lekurik ez egotea, edo fitxategiaren "
 "direktorioak irakurtzeko soilik baimena izatea zuretzako."
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2701
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Huts egin du babeskopia sortzean."
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Saiatu gordetzen hala ere"
 
-#: document/katedocument.cpp:2819
+#: document/katedocument.cpp:2824
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Ziur zaude fitxategia ixtea nahi duzula? Baliteke datu batzuk galtzea."
 
-#: document/katedocument.cpp:2821
+#: document/katedocument.cpp:2826
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Itxi hala ere"
 
-#: document/katedocument.cpp:4627
+#: document/katedocument.cpp:4632
 #, kde-format
 msgid "Untitled"
 msgstr "Titulu gabea"
 
-#: document/katedocument.cpp:4750 document/katedocument.cpp:4978
-#: document/katedocument.cpp:4988 document/katedocument.cpp:5730
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
+#: document/katedocument.cpp:5925
 #, kde-format
 msgid "Save File"
 msgstr "Gorde fitxategia"
 
-#: document/katedocument.cpp:4753
+#: document/katedocument.cpp:4758
 #, kde-format
 msgid "Save failed"
 msgstr "Gordetzeak huts egin du"
 
-#: document/katedocument.cpp:4999
+#: document/katedocument.cpp:5004
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gorde fitxategiaren kopia"
 
-#: document/katedocument.cpp:5011
+#: document/katedocument.cpp:5016
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2434,7 +2397,7 @@ msgstr ""
 "Egiaztatu fitxategian idazteko baimena duzula, edo diskoan nahikoa leku "
 "dagoela."
 
-#: document/katedocument.cpp:5262
+#: document/katedocument.cpp:5267
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2452,7 +2415,7 @@ msgstr ""
 "docs.kde.org/stable/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5268
+#: document/katedocument.cpp:5273
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2470,25 +2433,22 @@ msgstr ""
 "kde.org/stable/en/applications/katepart/config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5577
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#: document/katedocument.cpp:5582
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "Beste programa batek '%1' fitxategia aldatu du."
+msgstr "'%1' fitxategia diskoan aldatu da."
 
-#: document/katedocument.cpp:5580
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#: document/katedocument.cpp:5585
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "'%1' fitxategia beste programa batek sortu du."
+msgstr "'%1' fitxategia diskoan sortu da."
 
-#: document/katedocument.cpp:5583
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#: document/katedocument.cpp:5588
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "'%1' fitxategia beste programa batek ezabatu du."
+msgstr "'%1' fitxategia diskotik ezabatu da."
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5910
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2497,17 +2457,17 @@ msgstr ""
 "«%1» dokumentua aldatu egin da.\n"
 "Aldaketak gorde edo baztertu nahi dituzu?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5913
 #, kde-format
 msgid "Close Document"
 msgstr "Itxi dokumentua"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> fitxategia oraindik zamatzen ari da."
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6029
 #, kde-format
 msgid "&Abort Loading"
 msgstr "G&alarazi zamatzea"
@@ -2837,16 +2797,14 @@ msgid "L&ayout"
 msgstr "&Diseinua"
 
 #: printing/printconfigwidgets.cpp:473
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Color theme:"
-msgstr "Koloreak"
+msgstr "&Kolore-gaia:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Letra-tipoa"
+msgstr "Letra-tipoa:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2993,115 +2951,88 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Hautatu HTML/XML etiketaren edukia kanporantz"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Txandakatu iruzkina"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "Joan hurrengo editatzeko puntura"
+msgstr "Joan editatzeko hurrengo puntura"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "Joan aurreko editatzeko puntura"
+msgstr "Joan editatzeko aurreko puntura"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "Hautatu hurrengo editatzeko puntua"
+msgstr "Hautatu editatzeko hurrengo puntua"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "Hautatu aurreko editatzeko puntua"
+msgstr "Hautatu editatzeko aurreko puntua"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Ezabatu kurtsorearen azpiko etiketa"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr "Banatu edo batu etiketa bat"
+msgstr "Etiketa bat zatitu edo batu"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr "Balioztatu adierazpen matematiko erraz bat"
+msgstr "Ebaluatu matematikako adierazpen samur bat"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr "Gutxitu 1 zenbakiari"
+msgstr "Zenbakiari 1 kentzea"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr "Gutxitu 10 zenbakiari"
+msgstr "Zenbakiari 10 kentzea"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr "Gutxitu 0,1 zenbakiari"
+msgstr "Zenbakiari 0,1 kentzea"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr "Gehitu 1 zenbakiari"
+msgstr "Zenbakiari 1 gehitzea"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr "Gehitu 10 zenbakiari"
+msgstr "Zenbakiari 10 gehitzea"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr "Gehitu 0,1 zenbakiari"
+msgstr "Zenbakiari 0,1 gehitzea"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -3244,12 +3175,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Sailkatu hautatutako testua"
+msgstr "Sailkatu hautatutako testua alfabetikoki"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3264,44 +3193,37 @@ msgid "Editing"
 msgstr "Editatzea"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Kendu bikoiztutako lerroak hautatutako testutik edo dokumentu osotik"
+msgstr "Kendu bikoiztuak eta sailkatu hautatutako testua alfabetikoki"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Bikoiztu hautatutako lerroak goian"
+msgstr "Kendu bikoiztutako lerroak"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Ke&ndu amaierako zuriuneak:"
+msgstr "Kendu amaierako zuriuneak"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Ke&ndu amaierako zuriuneak:"
+msgstr "Kendu hasierako zuriuneak"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Ke&ndu amaierako zuriuneak:"
+msgstr "Kendu amaierako eta hasierako zuriuneak"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Elkartu lerroak"
@@ -3343,11 +3265,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI-deskodetu hautatutako testua"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Kendu lerro hutsak"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3548,7 +3469,7 @@ msgstr "Haskell"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Julia"
-msgstr ""
+msgstr "Julia"
 
 #: script/data/indentation/latex.js:2
 #, kde-format
@@ -3638,11 +3559,6 @@ msgid "No help specified for command '%1' in script %2"
 msgstr "Ez da '%1' komandoaren laguntza zehaztu %2 script-ean"
 
 #: script/katescript.cpp:209
-#, kde-format
-msgid "Error loading script %1\n"
-msgstr "Errorea %1 script-a kargatzean\n"
-
-#: script/katescript.cpp:210
 #, kde-format
 msgid "Error loading script %1"
 msgstr "Errorea %1 script-a kargatzean"
@@ -4349,10 +4265,9 @@ msgid "Discard"
 msgstr "Baztertu"
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
-#, fuzzy, kde-format
-#| msgid "Use default color from the KDE color scheme"
+#, kde-format
 msgid "Use default color from the color theme"
-msgstr "Erabili kolore lehenetsia KDEren kolore-antolaeratik"
+msgstr "Erabili kolore-gaiko kolore lehenetsia"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4666,10 +4581,9 @@ msgid "Error"
 msgstr "Errorea"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "Erabili lehenetsia"
+msgstr "Erabili kolore lehenetsiak"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -5046,34 +4960,29 @@ msgstr ""
 "denean.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Testu-estilo lehenetsia"
+msgstr "Gai lehenetsia"
 
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Theme Editor"
-msgstr ""
+msgstr "Gai-editorea"
 
 #: syntax/katethemeconfig.cpp:1039
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Select theme:"
-msgstr "Hautatutako testua:"
+msgstr "Hautatu gaia:"
 
 #: syntax/katethemeconfig.cpp:1108
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Scheme"
+#, kde-format
 msgid "&Theme:"
-msgstr "Scheme"
+msgstr "&Gaia:"
 
 #: syntax/katethemeconfig.cpp:1117
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "&Copy..."
-msgstr "Gorde &kopia honela..."
+msgstr "&Kopiatu..."
 
 #: syntax/katethemeconfig.cpp:1125
 #, kde-format
@@ -5106,22 +5015,19 @@ msgid "Highlighting Text Styles"
 msgstr "Testu-estilo nabarmenduak"
 
 #: syntax/katethemeconfig.cpp:1167
-#, fuzzy, kde-format
-#| msgid "Exporting color schema: %1"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "Kolore-antolaera inportatzen: %1"
+msgstr "Kolore-gaia inportatzen: %1"
 
 #: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color theme"
-msgstr "Koloreak"
+msgstr "Kolore-gaia"
 
 #: syntax/katethemeconfig.cpp:1190
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "Kolore-antolaera inportatzen"
+msgstr "Kolore-gaia inportatzen"
 
 #: syntax/katethemeconfig.cpp:1204
 #, kde-format
@@ -5131,61 +5037,52 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1206
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "Itxi hala ere"
+msgstr "Inportatu hala ere"
 
 #: syntax/katethemeconfig.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Erabili KDE koloreen antolaera"
+msgstr "Erabili sistemaren kolore-antolaera"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "Benetan ezabatu nahi duzu \"%1\" gaia? Hori ezin da desegin."
 
 #: syntax/katethemeconfig.cpp:1356
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "Itxi hala ere"
+msgstr "Ezabatu hala ere"
 
 #: syntax/katethemeconfig.cpp:1398
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy theme"
-msgstr "Koloreak"
+msgstr "Kopiatu gaia"
 
 #: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "\"%1\" kolore-gaiaren kopiaren izena:"
 
 #: syntax/katethemeconfig.cpp:1411
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
-#| "name.</p>"
+#, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
-"<p>%1 antolaera badago dagoeneko.</p><p>Hautatu beste antolaera izan bat.</p>"
+"<p>%1 gaia dagoeneko badago.</p><p>Mesedez, hautatu beste gai-izen bat.</p>"
 
 #: syntax/katethemeconfig.cpp:1412
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy Theme"
-msgstr "Koloreak"
+msgstr "Kopiatu gaia"
 
 #: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "Koloreak"
+msgstr "Kolore-gaiak"
 
 #: utils/kateautoindent.cpp:89
 #, kde-format
@@ -5637,10 +5534,9 @@ msgid "Embeddable editor component"
 msgstr "Editore-osagai kapsulagarria"
 
 #: utils/kateglobal.cpp:77
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2019 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "(c) 2000-2019 Kate-n egileak"
+msgstr "(c) 2000-2022 «Kate»n egileak"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -6183,11 +6079,9 @@ msgid "Number of rows of the current document."
 msgstr "Lerro kopurua uneko dokumentuan."
 
 #: utils/katevariableexpansionmanager.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "Iruzkin aldagaia"
+msgstr "Irakurri dokumentu-aldagai bat."
 
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
@@ -6577,10 +6471,9 @@ msgid "Encoding"
 msgstr "Kodeketa"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Lerroaren amaiera"
+msgstr "Lerro-amaiera mota"
 
 #: view/katestatusbar.cpp:206
 #, kde-format
@@ -6604,7 +6497,7 @@ msgstr "Sintaxia nabarmentzea"
 #: view/katestatusbar.cpp:260
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Lerro/Zutabe modu trinkoa"
 
 #: view/katestatusbar.cpp:306
 #, kde-format
@@ -6614,12 +6507,12 @@ msgstr "[BLOK] %1"
 #: view/katestatusbar.cpp:322
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:328
 #, kde-format
@@ -6682,20 +6575,15 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Hitzak %1/%2, karaktereak %3/%4"
 
 #: view/katestatusbar.cpp:573
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Hitzak %1/%2, karaktereak %3/%4"
+msgstr "Hitzak %1, karaktereak %2"
 
 #: view/katestatusbar.cpp:588
-#, fuzzy, kde-format
-#| msgid "Zoom"
+#, kde-format
 msgid "Zoom: %1%"
-msgstr "Zoom"
+msgstr "Zooma: %%1"
 
 #: view/kateview.cpp:448
 #, kde-format
@@ -6720,10 +6608,9 @@ msgid "Clipboard &History Paste"
 msgstr "Arbelaren &historia"
 
 #: view/kateview.cpp:465
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Paste Selection"
-msgstr "Hizkuntza hautapena"
+msgstr "Itsatsi hautapena"
 
 #: view/kateview.cpp:467
 #, fuzzy, kde-format
@@ -6732,16 +6619,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Itsatsi lehen kopiatu edo ebakitako arbeleko edukia"
 
 #: view/kateview.cpp:471
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Itsatsi lehen kopiatu edo ebakitako arbeleko edukia"
+msgstr "Trukatu arbeleko edukiarekin"
 
 #: view/kateview.cpp:472
-#, fuzzy, kde-format
-#| msgid "Cut the selected text and move it to the clipboard"
+#, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Ebaki hautatutako testua eta eraman arbelera"
+msgstr "Trukatu hautatutako testua arbeleko edukiarekin"
 
 #: view/kateview.cpp:476
 #, kde-format
@@ -6814,10 +6699,9 @@ msgstr ""
 "Erabili uneko lerro edo testua bere koska maila egokiarekin lerrokatzeko."
 
 #: view/kateview.cpp:510
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Lerrokatu"
+msgstr "&Lerroka hemen..."
 
 #: view/kateview.cpp:512
 #, kde-format
@@ -6850,16 +6734,14 @@ msgstr ""
 "nabarmentze baitan ezartzen dira."
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Joan editatzeko aurreko lerrora"
+msgstr "Joan editatzeko aurreko kokalekura"
 
 #: view/kateview.cpp:537
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Joan editatzeko hurrengo lerrora"
+msgstr "Joan editatzeko hurrengo kokalekura"
 
 #: view/kateview.cpp:543
 #, kde-format
@@ -7003,10 +6885,9 @@ msgstr ""
 "dizu kurtsorea berton kokatzeko."
 
 #: view/kateview.cpp:642
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Mugitu aldatutako aurreko lerrora"
+msgstr "Joan aldatutako aurreko lerrora"
 
 #: view/kateview.cpp:643
 #, kde-format
@@ -7014,10 +6895,9 @@ msgid "Move upwards to the previous modified line."
 msgstr "Mugitu gora aldatutako aurreko lerrora."
 
 #: view/kateview.cpp:648
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Mugitu aldatutako hurrengo lerrora"
+msgstr "Joan aldatutako hurrengo lerrora"
 
 #: view/kateview.cpp:649
 #, kde-format
@@ -7050,10 +6930,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Uneko dokumentua nola nabarmendu behar den hauta dezakezu."
 
 #: view/kateview.cpp:669
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Koloreak"
+msgstr "&Editorearen kolore-gaia"
 
 #: view/kateview.cpp:675
 #, kde-format
@@ -7119,10 +6998,9 @@ msgstr ""
 "hautapenaren artean aldatzea eskaintzen dizu."
 
 #: view/kateview.cpp:720
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
-msgstr "Aldatu hurrengo sarrera modura"
+msgstr "Aldatu hurrengo sarrera-modura"
 
 #: view/kateview.cpp:722
 #, kde-format
@@ -7390,34 +7268,34 @@ msgstr "Bilatu hautatutako testuaren aurreko agerpena."
 #: view/kateview.cpp:865
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Aurkitu eta hautatu hurrengo agerraldia"
 
 #: view/kateview.cpp:867
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "Hautatutako testuaren hurrengo agerpena bilatzen du."
+msgstr ""
+"Kurtsorearen azpiko hitzaren hurrengo agerraldia aurkitu eta hautatzen du."
 
 #: view/kateview.cpp:871
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Unean hautatutako hitza ezikusi gisa markatu"
 
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Unean hautatutako hitza ezikusi gisa markatzen du."
 
 #: view/kateview.cpp:877
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "Aurkitu eta hautatu agerraldi guztiak"
 
 #: view/kateview.cpp:879
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
-msgstr "Hautatutako testuaren hurrengo agerpena bilatzen du."
+msgstr ""
+"Kurtsorearen azpiko hitzaren agerraldi guztiak aurkitu eta hautatzen ditu."
 
 #: view/kateview.cpp:883
 #, kde-format
@@ -7441,7 +7319,7 @@ msgstr ""
 #: view/kateview.cpp:894
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "Gehitu kurtsoreak lerroen bukaeran"
 
 #: view/kateview.cpp:896
 #, fuzzy, kde-format
@@ -7483,16 +7361,14 @@ msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
 #: view/kateview.cpp:917
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Kendu kurtsoreak lerro hutsetatik"
 
 #: view/kateview.cpp:918
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
+msgstr "Kendu kurtsoreak lerro hutsetatik"
 
 #: view/kateview.cpp:922
 #, kde-format
@@ -7706,10 +7582,9 @@ msgid "Select to Bottom of View"
 msgstr "Hautatu ikuspegiaren beheraino"
 
 #: view/kateview.cpp:1167
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Eraman dagokion parentesiraino"
+msgstr "Joan parentesi baliokidera"
 
 #: view/kateview.cpp:1173
 #, kde-format
@@ -7753,10 +7628,9 @@ msgid "Backspace"
 msgstr "Atzera tekla"
 
 #: view/kateview.cpp:1223
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Txertatu tabulazioa"
+msgstr "Sartu Tab karakterea"
 
 #: view/kateview.cpp:1228
 #, kde-format
@@ -7773,10 +7647,9 @@ msgstr ""
 "zenbakiak ez direnak) barne."
 
 #: view/kateview.cpp:1237
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
-msgstr "Txertatu koskatu gabeko lerro berri bat"
+msgstr "Sartu koskatu gabeko lerro berri bat"
 
 #: view/kateview.cpp:1238
 #, kde-format
@@ -7789,24 +7662,24 @@ msgstr ""
 #: view/kateview.cpp:1246
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "Sartu lerro berri bat unekoaren gainean"
 
 #: view/kateview.cpp:1247
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
-msgstr ""
+msgstr "Sartu lerro berri bat unekoaren gainean uneko lerroa aldatu gabe."
 
 #: view/kateview.cpp:1255
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "Sartu lerro berri bat unekoaren azpian"
 
 #: view/kateview.cpp:1256
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
-msgstr ""
+msgstr "Sartu lerro berri bat unekoaren azpian uneko lerroa aldatu gabe."
 
 #: view/kateview.cpp:1265
 #, kde-format
@@ -7880,15 +7753,14 @@ msgid "Search wrapped"
 msgstr "Bilaketa zirkularra"
 
 #: view/kateview.cpp:3654
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Lerrokatu"
+msgstr ""
 
 #: view/kateview.cpp:3654
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Lerrokatze eredua:"
 
 #: view/kateview.cpp:4746
 #, kde-format
@@ -8372,6 +8244,9 @@ msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"
+
+#~ msgid "Error loading script %1\n"
+#~ msgstr "Errorea %1 script-a kargatzean\n"
 
 #~ msgid "Namespaces"
 #~ msgstr "Izen-lekuak"
