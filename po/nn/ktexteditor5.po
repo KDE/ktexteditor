@@ -8067,6 +8067,3 @@ msgstr "«%1» %2, heks %3, oktal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merke ikkje definert: %1"
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Feil ved opning av skriptet «%1»\n"

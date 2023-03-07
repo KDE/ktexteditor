@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:12+0000\n"
-"PO-Revision-Date: 2023-01-12 16:23+0100\n"
+"PO-Revision-Date: 2023-03-05 13:06+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -70,7 +70,7 @@ msgstr "Fi&txer"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Impressió/Exportació"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1360,7 +1360,7 @@ msgid ""
 "whitespace and go to the start of a line's text. The same applies for the "
 "end key."
 msgstr ""
-"Quan està seleccionat, en prémer la tecla d'inici el cursor ignorarà els "
+"Quan està seleccionada, en prémer la tecla d'inici el cursor ignorarà els "
 "espais en blanc i anirà al començament d'una línia de text. El mateix "
 "s'aplica a la tecla de final."
 
@@ -2201,8 +2201,7 @@ msgid "&Close"
 msgstr "Tan&ca"
 
 #: document/katedocument.cpp:2301 document/katedocument.cpp:6522
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Tanca el missatge"
@@ -3188,37 +3187,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Elimina els duplicats i ordena alfabèticament el text seleccionat"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplica les línies seleccionades cap amunt"
+msgstr "Elimina les línies duplicades"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Eli&mina els espais finals:"
+msgstr "Elimina els espais finals"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Eli&mina els espais finals:"
+msgstr "Elimina els espais inicials"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Eli&mina els espais finals:"
+msgstr "Elimina els espais inicials i finals"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Unix les línies"
@@ -3260,11 +3253,10 @@ msgid "URI-decode Selected Text"
 msgstr "Descodifica en un URI el text seleccionat"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Elimina els cursors de les línies buides"
+msgstr "Elimina les línies buides"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -8116,7 +8108,7 @@ msgid ""
 "example: Ctrl+R will redo, and override the standard action (showing the "
 "search and replace dialog)."
 msgstr ""
-"Quan està seleccionat, les ordres del vi substituïxen les ordres integrades "
+"Quan està seleccionada, les ordres de vi substituïxen les ordres integrades "
 "de Kate. Per exemple: Ctrl+R refarà i substituirà l'acció estàndard (mostra "
 "el diàleg de busca i substitució)."
 
@@ -8268,9 +8260,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "S'ha produït un error en carregar l'script %1\n"
-
-#~ msgid "Export/Print"
-#~ msgstr "Exportació/Impressió"
