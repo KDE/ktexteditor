@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-04 00:43+0000\n"
-"PO-Revision-Date: 2023-02-04 20:27+0300\n"
+"PO-Revision-Date: 2023-03-07 20:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -2688,7 +2688,7 @@ msgstr ""
 "kısa saat biçimi</li><li><tt>%D</tt>: tam tarih/uzun saat biçimi</li><li><tt>"
 "%h</tt>: geçerli saat</li><li><tt>%y</tt>: kısa biçimde geçerli gün</"
 "li><li><tt>%Y</tt>: uzun biçimde geçerli gün</li><li><tt>%f</tt>dosya adı</"
-"li><li><tt>%U</tt>: belgenin tam adresi</li><li><tt>%p</tt>: sayfa numarası</"
+"li><li><tt>%U</tt>: belgenin tam URL'si</li><li><tt>%p</tt>: sayfa numarası</"
 "li><li><tt>%P</tt>: toplam sayfa miktarı</li></ul><br />"
 
 #: printing/printconfigwidgets.cpp:255
@@ -2740,7 +2740,7 @@ msgstr "Dosya Adı"
 #: printing/printconfigwidgets.cpp:357
 #, kde-format
 msgid "Full document URL"
-msgstr "Belgenin tam adresi"
+msgstr "Belgenin tam URL'si"
 
 #: printing/printconfigwidgets.cpp:359
 #, kde-format
