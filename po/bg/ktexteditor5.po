@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:12+0000\n"
-"PO-Revision-Date: 2023-01-12 19:41+0100\n"
+"PO-Revision-Date: 2023-03-08 22:26+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -64,7 +64,7 @@ msgstr "&Файл"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Отпечатване/Експортиране"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -2164,8 +2164,7 @@ msgid "&Close"
 msgstr "&Затваряне"
 
 #: document/katedocument.cpp:2301 document/katedocument.cpp:6522
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Затваряне на съобщението"
@@ -3156,37 +3155,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Премахване на дубликати и сортиране по забучен ред на избрания текст"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Дублиране на избраните редове нагоре"
+msgstr "Изтриване на  дублиращи се редове"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Премахване на крайните интервали:"
+msgstr "Премахване на крайните интервали"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Премахване на крайните интервали:"
+msgstr "Премахване на интервалите в началото на реда"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Премахване на крайните интервали:"
+msgstr "Премахване на интервалите в началото и края на реда:"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Обединение на редове"
@@ -3228,11 +3221,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI-декодиране на избрания текст"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Премахване на курсора от празните редове"
+msgstr "Премахване на празните редове"
 
 #: script/data/commands/utils.js:442
 #, kde-format

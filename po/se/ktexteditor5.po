@@ -7697,6 +7697,3 @@ msgstr "«%1» %2, Hex %3, Oktála %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mearka ii meroštuvvon: %1"
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Meattáhus vieččadettiin skripta %1\n"
