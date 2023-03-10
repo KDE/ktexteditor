@@ -5120,6 +5120,26 @@ void KTextEditor::DocumentPrivate::updateConfig()
 */
 void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 {
+    const bool hasVariableline = [this] {
+        const QLatin1String s("kate", sizeof("kate") - 1);
+        if (lines() > 10) {
+            for (int i = qMax(10, lines() - 10); i < lines(); ++i) {
+                if (line(i).contains(s)) {
+                    return true;
+                }
+            }
+        }
+        for (int i = 0; i < qMin(9, lines()); ++i) {
+            if (line(i).contains(s)) {
+                return true;
+            }
+        }
+        return false;
+    }();
+    if (!hasVariableline) {
+        return;
+    }
+
     if (!onlyViewAndRenderer) {
         m_config->configStart();
     }
