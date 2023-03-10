@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:12+0000\n"
-"PO-Revision-Date: 2023-02-17 16:21+0100\n"
+"PO-Revision-Date: 2023-03-02 18:21+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -65,7 +65,7 @@ msgstr "&Soubor"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Tisknout/Exportovat"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -2118,8 +2118,7 @@ msgid "&Close"
 msgstr "&Zavřít"
 
 #: document/katedocument.cpp:2301 document/katedocument.cpp:6522
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Zavřít zprávu"
@@ -3080,37 +3079,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr ""
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplikovat vybrané řádky nahoru"
+msgstr "Odstranit duplicitní řádky"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Odstranit &mezery na konci řádku:"
+msgstr "Odstranit mezery na konci řádku"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Odstranit &mezery na konci řádku:"
+msgstr "Odstranit mezery na začátku řádku"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Odstranit &mezery na konci řádku:"
+msgstr "Odstranit mezery na začátku a na konci řádku"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Spojit řádky"
@@ -3155,7 +3148,7 @@ msgstr "URI-Dešifrovat vybraný text"
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr ""
+msgstr "Odstranit prázdné řádky"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -7921,9 +7914,3 @@ msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Chyba při načítání skriptu %1\n"
-
-#~ msgid "Export/Print"
-#~ msgstr "Export/Tisk"
