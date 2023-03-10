@@ -5121,7 +5121,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
 void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 {
     const bool hasVariableline = [this] {
-        const QLatin1String s("kate", sizeof("kate") - 1);
+        const QLatin1String s("kate");
         if (lines() > 10) {
             for (int i = qMax(10, lines() - 10); i < lines(); ++i) {
                 if (line(i).contains(s)) {
