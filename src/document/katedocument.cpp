@@ -4356,10 +4356,10 @@ void KTextEditor::DocumentPrivate::transformCursorOrRange(KTextEditor::ViewPriva
 
             if (t == Uppercase) {
                 // honor locale, see bug 467104
-                s = QLocale::system().toUpper(s);
+                s = QLocale().toUpper(s);
             } else if (t == Lowercase) {
                 // honor locale, see bug 467104
-                s = QLocale::system().toLower(s);
+                s = QLocale().toLower(s);
             } else { // Capitalize
                 Kate::TextLine l = m_buffer->plainLine(range.start().line());
                 int p(0);
