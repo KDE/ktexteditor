@@ -67,6 +67,7 @@
 #include <QCryptographicHash>
 #include <QFile>
 #include <QFileDialog>
+#include <QLocale>
 #include <QMap>
 #include <QMimeDatabase>
 #include <QProcess>
@@ -4354,9 +4355,11 @@ void KTextEditor::DocumentPrivate::transformCursorOrRange(KTextEditor::ViewPriva
             QString old = s;
 
             if (t == Uppercase) {
-                s = s.toUpper();
+                // honor locale, see bug 467104
+                s = QLocale::system().toUpper(s);
             } else if (t == Lowercase) {
-                s = s.toLower();
+                // honor locale, see bug 467104
+                s = QLocale::system().toLower(s);
             } else { // Capitalize
                 Kate::TextLine l = m_buffer->plainLine(range.start().line());
                 int p(0);
