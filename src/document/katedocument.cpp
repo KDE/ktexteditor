@@ -39,6 +39,7 @@
 #include "spellcheck/ontheflycheck.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/spellcheck.h"
+#include <qchar.h>
 
 #if EDITORCONFIG_FOUND
 #include "editorconfig.h"
@@ -5197,12 +5198,17 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
     } else if ((match = kvLineWildcard.match(t)).hasMatch()) { // regex given
         const QStringList wildcards(match.captured(1).split(QLatin1Char(';'), Qt::SkipEmptyParts));
         const QString nameOfFile = url().fileName();
+        const QString pathOfFile = url().path();
 
         bool found = false;
         for (const QString &pattern : wildcards) {
-            QRegularExpression wildcard(QRegularExpression::wildcardToRegularExpression(pattern));
-            found = wildcard.match(nameOfFile).hasMatch();
-
+            // wildcard with path match, bug 453541, check for /
+            // in that case we do some not anchored matching
+            const bool matchPath = pattern.contains(QLatin1Char('/'));
+            const QRegularExpression wildcard(QRegularExpression::wildcardToRegularExpression(pattern,
+                                                                                              matchPath ? QRegularExpression::UnanchoredWildcardConversion
+                                                                                                        : QRegularExpression::DefaultWildcardConversion));
+            found = wildcard.match(matchPath ? pathOfFile : nameOfFile).hasMatch();
             if (found) {
                 break;
             }

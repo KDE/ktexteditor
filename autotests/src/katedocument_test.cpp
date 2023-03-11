@@ -603,6 +603,23 @@ void KateDocumentTest::testModelines()
         doc.readVariableLine(QStringLiteral("kate-mimetype(text/foo;text/plain;text/bar): indent-width 9;"));
         QCOMPARE(doc.config()->indentationWidth(), 9);
     }
+
+    // wildcard with path match, bug 453541
+    {
+        KTextEditor::DocumentPrivate doc;
+        doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "encoding/utf8.txt")));
+        QVERIFY(!doc.isEmpty());
+
+        // read wrong wildcard
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(encodings/*.txt): indent-width 5;"));
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+
+        // read correct wildcard
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(encoding/*.txt): indent-width 5;"));
+        QCOMPARE(doc.config()->indentationWidth(), 5);
+    }
 }
 
 void KateDocumentTest::testDefStyleNum()
