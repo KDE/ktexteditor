@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 02:12+0000\n"
+"POT-Creation-Date: 2023-03-11 02:40+0000\n"
 "PO-Revision-Date: 2011-07-06 18:12+0200\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux@walon.org>\n"
@@ -2066,12 +2066,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2215,8 +2215,8 @@ msgid "Untitled"
 msgstr "Sins no"
 
 #: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
-#: document/katedocument.cpp:5925
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Save File"
 msgstr "Schaper l' fitchî"
@@ -2241,7 +2241,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2250,7 +2250,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5273
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2259,24 +2259,24 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "File Was Deleted on Disk"
 msgid "The file '%1' was created on disk."
 msgstr "Li fitchî a stî disfacé sol plake"
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "File Was Deleted on Disk"
 msgid "The file '%1' was deleted on disk."
 msgstr "Li fitchî a stî disfacé sol plake"
 
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:5930
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2285,17 +2285,17 @@ msgstr ""
 "Li documint «%1» a candjî.\n"
 "Voloz vs schaper vos candjmints oudonbén ls abandner?"
 
-#: document/katedocument.cpp:5913
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid "Close Document"
 msgstr "Clôre documint"
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6044
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6029
+#: document/katedocument.cpp:6049
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""

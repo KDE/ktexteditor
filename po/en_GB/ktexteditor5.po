@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 02:12+0000\n"
-"PO-Revision-Date: 2023-02-26 19:48+0000\n"
+"POT-Creation-Date: 2023-03-11 02:40+0000\n"
+"PO-Revision-Date: 2023-03-10 19:27+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.03.70\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -66,7 +66,7 @@ msgstr "&File"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Print/Export"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -2145,14 +2145,13 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Try Again"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "&Close"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
-#, fuzzy, kde-format
-#| msgid "Close message"
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Close message"
@@ -2330,8 +2329,8 @@ msgid "Untitled"
 msgstr "Untitled"
 
 #: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
-#: document/katedocument.cpp:5925
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Save File"
 msgstr "Save File"
@@ -2359,7 +2358,7 @@ msgstr ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2372,7 +2371,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5273
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2385,22 +2384,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "The file '%1' was modified on disk."
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "The file '%1' was created on disk."
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "The file '%1' was deleted on disk."
 
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:5930
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2409,17 +2408,17 @@ msgstr ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 
-#: document/katedocument.cpp:5913
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid "Close Document"
 msgstr "Close Document"
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6044
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "The file <a href=\"%1\">%2</a> is still loading."
 
-#: document/katedocument.cpp:6029
+#: document/katedocument.cpp:6049
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Abort Loading"
@@ -3131,37 +3130,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Remove Duplicates and Sort Selected Text Alphabetically"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplicate Selected Lines Up"
+msgstr "Remove Duplicate Lines"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Re&move trailing spaces:"
+msgstr "Remove Trailing Spaces"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Re&move trailing spaces:"
+msgstr "Remove Leading Spaces"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Re&move trailing spaces:"
+msgstr "Remove Trailing and Leading Spaces"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Join Lines"
@@ -3203,11 +3196,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI-decode Selected Text"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Remove Cursors from Empty Lines"
+msgstr "Remove Empty Lines"
 
 #: script/data/commands/utils.js:442
 #, kde-format

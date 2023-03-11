@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 02:12+0000\n"
+"POT-Creation-Date: 2023-03-11 02:40+0000\n"
 "PO-Revision-Date: 2022-10-02 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2156,12 +2156,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Försök igen"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "Stän&g"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2343,8 +2343,8 @@ msgid "Untitled"
 msgstr "Namnlös"
 
 #: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
-#: document/katedocument.cpp:5925
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Save File"
 msgstr "Spara fil"
@@ -2373,7 +2373,7 @@ msgstr ""
 "Kontrollera att du har skrivbehörighet till filen, och att tillräckligt "
 "diskutrymme finns tillgängligt."
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2386,7 +2386,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5273
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2398,22 +2398,22 @@ msgstr ""
 "'remove-trailing-spaces all;', se https://docs.kde.org/stable5/en/"
 "applications/katepart/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Filen \"%1\" ändrades på disken."
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Filen \"%1\" skapades på disken."
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Filen \"%1\" togs bort på disken."
 
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:5930
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2422,17 +2422,17 @@ msgstr ""
 "Dokumentet \"%1\" har ändrats.\n"
 "Vill du spara dina ändringar eller kasta dem?"
 
-#: document/katedocument.cpp:5913
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid "Close Document"
 msgstr "Stäng dokument"
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6044
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Filen <a href=\"%1\">%2</a> håller fortfarande på att läsas in."
 
-#: document/katedocument.cpp:6029
+#: document/katedocument.cpp:6049
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Avbryt inläsning"

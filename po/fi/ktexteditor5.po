@@ -10,7 +10,7 @@
 # Teemu Rytilahti <tpr@d5k.net>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2008, 2012.
-# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2010, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2022.
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 02:12+0000\n"
-"PO-Revision-Date: 2022-08-30 13:59+0300\n"
+"POT-Creation-Date: 2023-03-11 02:40+0000\n"
+"PO-Revision-Date: 2023-02-26 16:23+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:21:58+0000\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -418,16 +418,14 @@ msgid "Show Always"
 msgstr "Näytä aina"
 
 #: dialogs/clipboardhistorydialog.cpp:267
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Valitse seuraava muokkauskohta"
+msgstr "Valitse liitettävä teksti."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Ei kohteita leikepöytähistoriassa"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -458,10 +456,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
-msgstr "A&utomaattinen sanantäydennys"
+msgstr "&Automaattinen sanantäydennys"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -483,15 +480,12 @@ msgstr "Poista häntä täydennettäessä"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"Avainsanojen täydennys tarjoaa ehdotuksia, jotka perustuvat tiedoston kielen "
-"avainsanoihin."
+"Sanojen täydennys tarjoaa ehdotuksia tiedostosta löytyneiden sanojen "
+"perusteella"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -511,8 +505,7 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Documentation with Completion"
+#, kde-format
 msgid "Documentation with completion"
 msgstr "Ohjeistus täydennyksellä"
 
@@ -650,16 +643,15 @@ msgstr "Älä siirrä tekstikohdistinta hiirellä liitettäessä"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "Leikepöydän &historia"
+msgstr "Leikepöytähistorian kohteita enintään:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "Tämä määrittää leikepöytähistoriassa säilytettävien kohteiden määrän"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -803,9 +795,9 @@ msgid ""
 "semicolon-separated list of mimetypes, for example <code>text/plain; text/"
 "english</code>."
 msgstr ""
-"Mime-tyyppisuotimen avulla voit valita vain tietyntyyppisiä tiedostoja. "
-"Erota tyypit toisistaan puolipisteellä. Esimerkiksi <code>text/plain; text/"
-"english</code>."
+"MIME-tyyppisuodattimella voi valita tietyntyyppisiä tiedostoja. Merkkijono "
+"on puolipistein erotettu MIME-tyyppien luettelo, esim. <code>text/plain; "
+"text/english</code>."
 
 #. i18n: ectx: property (whatsThis), widget (QToolButton, btnMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:188
@@ -967,16 +959,7 @@ msgstr "&Palautusnäppäin vähentää sisennystä"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -1182,11 +1165,9 @@ msgid "Editing Options"
 msgstr "Muokkausasetukset"
 
 #: dialogs/katedialogs.cpp:735
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Tilarivi"
 
 #: dialogs/katedialogs.cpp:737
 #, kde-format
@@ -1835,51 +1816,45 @@ msgstr " sekuntia"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Syntaksin korostus"
+msgstr "Näytä korostustila"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Käytä Vi-syöttötilaa"
+msgstr "Näytä syötetapa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Vaihda sanastoa"
+msgstr "Näytä aktiivinen sanasto"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Tabs As"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Sarkainten näyttäminen"
+msgstr "Näytä sarkausasetus"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Näytä rivimäärä"
+msgstr "Näytä rivin sarake"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Virheellinen koodaus"
+msgstr "Näytä merkistökoodaus"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Näytä rivinlopputyyppi"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -2188,12 +2163,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Yritä uudelleen"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6521
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
 #, kde-format
 msgid "&Close"
 msgstr "&Sulje"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6522
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2375,8 +2350,8 @@ msgid "Untitled"
 msgstr "Nimetön"
 
 #: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5735
-#: document/katedocument.cpp:5925
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Save File"
 msgstr "Tallenna tiedosto"
@@ -2404,7 +2379,7 @@ msgstr ""
 "Tarkista, että sinulla on kirjoitusoikeudet tiedostoon, ja että "
 "kiintolevyllä on vapaata levytilaa riittävästi."
 
-#: document/katedocument.cpp:5267
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2417,7 +2392,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5273
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2430,22 +2405,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5582
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Tiedostoa ”%1” on muutettu levyllä."
 
-#: document/katedocument.cpp:5585
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Tiedosto ”%1” on luotu levylle."
 
-#: document/katedocument.cpp:5588
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Tiedosto ”%1” on poistettu levyltä."
 
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:5930
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2454,17 +2429,17 @@ msgstr ""
 "Tiedostoa ”%1” on muutettu.\n"
 "Haluatko tallentaa muutokset vai hylätä ne?"
 
-#: document/katedocument.cpp:5913
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid "Close Document"
 msgstr "Sulje tiedosto"
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6044
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Tiedosto <a href=\"%1\">%2</a> latautuu vielä."
 
-#: document/katedocument.cpp:6029
+#: document/katedocument.cpp:6049
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Keskeytä lataus"
@@ -2797,10 +2772,9 @@ msgid "&Color theme:"
 msgstr "&Väriteema:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Fontti"
+msgstr "Fontti:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2911,144 +2885,109 @@ msgstr "Emmet"
 
 # Merkitys on sama kuin viestissä: ”Wraps the selected text in XML tags constructed from the provided Emmet expression (defaults to div).”
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Ympäröi tunnisteella"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Siirrä kohdistin vastaavaan tunnisteeseen"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "Valitse HTML- tai XML-tunnisteen sisältö sisäänpäin"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Valitse HTML- tai XML-tunnisteen sisältö ulospäin"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Kommentoi tai poista kommentointi"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Siirry seuraavaan muokkauskohtaan"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Siirry edelliseen muokkauskohtaan"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Valitse seuraava muokkauskohta"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Valitse edellinen muokkauskohta"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Poista kohdistimen osoittama tunniste"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr "Erota tai yhdistä tunniste"
+msgstr "Jaa tai yhdistä tunniste"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Suorita yksinkertainen matemaattinen lauseke"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Vähennä lukua 1:llä"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Vähennä lukua 10:llä"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Vähennä lukua 0,1:llä"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Kasvata lukua 1:llä"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Kasvata lukua 10:llä"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Kasvata lukua 0,1:llä"
@@ -3165,12 +3104,10 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Kasvata kohdistimen kohdalla olevaa lukua 0,1:llä"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr "Siirrä kohdistin edellisen vastaavaan sisennyksen kohdalle"
+msgstr "Siirrä kohdistin edelliseen vastaavaan sisennykseen"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
@@ -3180,12 +3117,10 @@ msgid "Navigation"
 msgstr "Navigointi"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "Siirrä kohdistin seuraavan vastaavaan sisennyksen kohdalle"
+msgstr "Siirrä kohdistin seuraavaan vastaavaan sisennykseen"
 
 #: script/data/commands/jumpMatchingIndent.js:44
 #, kde-format
@@ -3379,6 +3314,15 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Tämä komento tasaa valitun lohkon tai koko tiedoston rivit parametrina "
+"annetun säännöllisen lausekkeen mukaiseen sarakkeeseen.<br><br>Jos annat "
+"tyhjän kuvion, tasataan oletuksena ensimmäiseen ei-tyhjään merkkiin.<br /"
+">Jos kuviossa on kaappaus, sisennetään kaapattuun osumaan.<br /><br /"
+"><i>Esimerkkejä</i>:<br />”<code>alignon -</code>” lisää välilyöntejä ennen "
+"kunkin rivin ensimmäistä ”-”:ä niiden tasaamiseksi samaan sarakkeeseen.<br /"
+">”<code>alignon :\\s+(.)</code>” lisää välilyöntejä ennen ensimmäistä "
+"kaksoispisteen jälkeistä ei-tyhjää merkkiä näiden rivien tasaamiseksi samaan "
+"sarakkeeseen."
 
 #: script/data/commands/utils.js:466
 #, kde-format
@@ -4233,10 +4177,9 @@ msgid "I&gnore All"
 msgstr "&Hylkää kaikki"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Oikoluku (kohdistimen kohdalta)…"
+msgstr "Oikoluku (kohdistimesta)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -6470,10 +6413,9 @@ msgid "Encoding"
 msgstr "Koodaus"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Rivin loppu"
+msgstr "Rivinlopputyyppi"
 
 #: view/katestatusbar.cpp:206
 #, kde-format
@@ -6497,7 +6439,7 @@ msgstr "Syntaksin korostus"
 #: view/katestatusbar.cpp:260
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Rivi/sarake, tiivis tila"
 
 #: view/katestatusbar.cpp:306
 #, kde-format
@@ -6507,12 +6449,12 @@ msgstr "[LOHKO] %1"
 #: view/katestatusbar.cpp:322
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:324
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:328
 #, kde-format
@@ -6606,10 +6548,9 @@ msgid ""
 msgstr "Käytä tätä kopioidaksesi valittu teksti leikepöydälle."
 
 #: view/kateview.cpp:460
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "Leikepöydän &historia"
+msgstr "Liitä leikepöytä&historiasta"
 
 #: view/kateview.cpp:465
 #, kde-format
@@ -6622,8 +6563,7 @@ msgid "Paste previously mouse selection contents"
 msgstr "Liittää aiemman hiirivalinnan sisältö"
 
 #: view/kateview.cpp:471
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Vaihda leikepöydän sisältöön"
 
@@ -6687,28 +6627,23 @@ msgstr ""
 "välilyönneillä."
 
 #: view/kateview.cpp:505
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "S&isennys"
+msgstr "Muotoile &sisennys"
 
 #: view/kateview.cpp:506
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Käytä tätä nykyisen rivin tai tekstikatkelman tasaamiseksi oikealle "
-"sisennystasolle."
+"Käytä tätä nykyisen rivin tai tekstilohkon sisentämiseksi automaattisesti "
+"oikeaan kohtaan."
 
 #: view/kateview.cpp:510
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Tasaa"
+msgstr "&Tasaa…"
 
 #: view/kateview.cpp:512
 #, kde-format
@@ -6723,6 +6658,14 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Tämä komento tasaa valitun lohkon tai koko tiedoston rivit sinulta "
+"pyydettävän säännöllisen lausekkeen mukaiseen sarakkeeseen.<br /><br />Jos "
+"annat tyhjän kuvion, tasataan oletuksena ensimmäiseen ei-tyhjään merkkiin."
+"<br />Jos kuviossa on kaappaus, sisennetään kaapattuun osumaan.<br /><br /"
+"><i>Esimerkkejä</i>:<br />Kuviolla ”-” lisätään välilyöntejä ennen kunkin "
+"rivin ensimmäistä ”-”:ä niiden tasaamiseksi samaan sarakkeeseen.<br /"
+">Kuviolla ”:\\s+(.)” lisätään välilyöntejä ennen ensimmäistä kaksoispisteen "
+"jälkeistä ei-tyhjää merkkiä näiden rivien tasaamiseksi samaan sarakkeeseen."
 
 #: view/kateview.cpp:523
 #, kde-format
@@ -7003,10 +6946,9 @@ msgstr ""
 "lohkopohjaisen valintatilan välillä."
 
 #: view/kateview.cpp:720
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
-msgstr "Vaihda seuraavaan syöttötilaan"
+msgstr "Vaihda seuraavaan syöttötapaan"
 
 #: view/kateview.cpp:722
 #, kde-format
@@ -7285,12 +7227,12 @@ msgstr ""
 #: view/kateview.cpp:871
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Merkitsee valitun esiintymän ohitetuksi"
 
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Merkitsee valitun sana ohitetuksi."
 
 #: view/kateview.cpp:877
 #, kde-format
@@ -7364,8 +7306,7 @@ msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "Vaihda tavallisen sanasiirtymän ja aakkostasosiirtymän välillä."
 
 #: view/kateview.cpp:917
-#, fuzzy, kde-format
-#| msgid "Remove cursors from empty lines"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Poista kohdistimet tyhjiltä riveiltä"
 
@@ -7649,8 +7590,7 @@ msgstr ""
 "kirjaimia tai numeroita."
 
 #: view/kateview.cpp:1237
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Lisää sisentämätön rivinvaihto"
 
@@ -7748,15 +7688,14 @@ msgid "Search wrapped"
 msgstr "Reuna saavutettiin. Jatketaan toisesta päästä."
 
 #: view/kateview.cpp:3654
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Tasaa"
+msgstr "Tasaa"
 
 #: view/kateview.cpp:3654
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Tasauskuvio:"
 
 #: view/kateview.cpp:4746
 #, kde-format
