@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-11 02:40+0000\n"
+"POT-Creation-Date: 2023-03-12 04:10+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -2216,18 +2216,18 @@ msgstr "Jauna datne"
 msgid "The file %1 does not exist."
 msgstr "Datne %1 nepastāv."
 
-#: document/katedocument.cpp:219
+#: document/katedocument.cpp:220
 #, fuzzy, kde-format
 #| msgid "Close Document"
 msgid "Auto Reload Document"
 msgstr "Aizvērt dokumentu"
 
-#: document/katedocument.cpp:220
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2292
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2236,25 +2236,25 @@ msgstr ""
 "Nevar ielādēt datni %1, jo tā nebija lasāma.<br />Pārbaudiet, vai jums ir "
 "lasīšanas atļauja šai datnei."
 
-#: document/katedocument.cpp:2296
+#: document/katedocument.cpp:2297
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mēģināt vēlreiz"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6544
 #, kde-format
 msgid "&Close"
 msgstr "&Aizvērt"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2302 document/katedocument.cpp:6545
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Aizvērt ziņojumu"
 
-#: document/katedocument.cpp:2312
+#: document/katedocument.cpp:2313
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2265,7 +2265,7 @@ msgstr ""
 "\n"
 "Pārbaudiet, vai jums ir lasīšanas atļauja šai datnei."
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2437
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2283,7 +2283,7 @@ msgstr ""
 "datnes saturu. <br />Lai rediģētu, atveriet to, lietojot pareizo kodējumu, "
 "vai arī izvēlnē ieslēdziet rediģēšanas režīmu."
 
-#: document/katedocument.cpp:2448
+#: document/katedocument.cpp:2449
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters. "
@@ -2301,7 +2301,7 @@ msgstr ""
 "saturu. Lai rediģētu, atveriet to, lietojot pareizo kodējumu, vai arī "
 "izvēlnē ieslēdziet rediģēšanas režīmu."
 
-#: document/katedocument.cpp:2461
+#: document/katedocument.cpp:2462
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened and contained lines longer than the configured "
@@ -2318,17 +2318,17 @@ msgstr ""
 "dokuments tika iestatīts “tikai lasīt” režīmā, jo saglabāšana izmainīs tā "
 "saturu."
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2469
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2472
 #, kde-format
 msgid "Close"
 msgstr "Aizvērt"
 
-#: document/katedocument.cpp:2478
+#: document/katedocument.cpp:2479
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened and contained lines longer than the configured "
@@ -2345,7 +2345,7 @@ msgstr ""
 "dokuments tika iestatīts “tikai lasīt” režīmā, jo saglabāšana izmainīs tā "
 "saturu."
 
-#: document/katedocument.cpp:2505
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2354,18 +2354,18 @@ msgstr ""
 "Vai tiešām vēlaties saglabāt šo nemainīto datni? Jūs varat pārrakstīt "
 "izmainītus datus uz diska."
 
-#: document/katedocument.cpp:2506
+#: document/katedocument.cpp:2507
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Mēģina saglabāt nemainītu datni."
 
-#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
-#: document/katedocument.cpp:2534
+#: document/katedocument.cpp:2508 document/katedocument.cpp:2519
+#: document/katedocument.cpp:2535
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Tomēr saglabāt"
 
-#: document/katedocument.cpp:2516
+#: document/katedocument.cpp:2517
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2374,14 +2374,14 @@ msgstr ""
 "Vai tiešām vēlaties saglabāt šo datni? Gan atvērtā datne, gan datne uz diska "
 "ir mainījušās. Jūs varat pazaudēt daļu datu."
 
-#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2518 document/katedocument.cpp:2534
+#: document/katedocument.cpp:2826 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Iespējama datu zaudēšana"
 
-#: document/katedocument.cpp:2531
+#: document/katedocument.cpp:2532
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2393,7 +2393,7 @@ msgstr ""
 "Šajā dokumentā izvēlētajā kodējumā nevar pierakstīt visas unikoda "
 "rakstzīmes. Vai tiešām vēlaties to saglabāt? Jūs varat pazaudēt daļu datu."
 
-#: document/katedocument.cpp:2576
+#: document/katedocument.cpp:2577
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2412,7 +2412,7 @@ msgstr ""
 "Pārbaudiet, vai jums ir rakstīšanas atļauja šai datnei un vai ir pieejams "
 "pietiekams daudzums brīvās diska vietas."
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2698
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2424,51 +2424,51 @@ msgstr ""
 "kļūda saglabāšanas laikā, jūs varat zaudēt šīs datnes saturu. Iespējamie "
 "iemesli — datu nesējs ir pilns vai datnes mape ir tikai lasāma."
 
-#: document/katedocument.cpp:2701
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Neizdevās izveidot rezerves kopiju."
 
-#: document/katedocument.cpp:2702
+#: document/katedocument.cpp:2703
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Mēģināt tomēr saglabāt"
 
-#: document/katedocument.cpp:2824
+#: document/katedocument.cpp:2825
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Vai tiešām vēlaties turpināt datnes aizvēršanu? Iespējams, tiks pazaudēti "
 "dati."
 
-#: document/katedocument.cpp:2826
+#: document/katedocument.cpp:2827
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Tomēr aizvērt"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4635
 #, kde-format
 msgid "Untitled"
 msgstr "Nenosaukts"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:4758 document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Saglabāt datni"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4761
 #, kde-format
 msgid "Save failed"
 msgstr "Saglabāšana neizdevās"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Saglabāt datnes kopiju"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5019
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2481,7 +2481,7 @@ msgstr ""
 "Pārbaudiet, vai jums ir rakstīšanas atļauja šai datnei un vai ir pieejams "
 "pietiekams daudzums brīvās diska vietas."
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5290
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2497,7 +2497,7 @@ msgstr ""
 "to ar 'remove-trailing-spaces modified;', skatiet http://docs.kde.org/stable/"
 "en/kde-baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5296
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2514,25 +2514,25 @@ msgstr ""
 "org/stable/en/kde-baseapps/kate/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Datni “%1” izmainīja cita programma."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Datni “%1” izveidoja cita programma."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Datni “%1” izdzēsa cita programma."
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2541,18 +2541,18 @@ msgstr ""
 "Dokuments “%1” ir mainīts.\n"
 "Vai vēlaties to saglabāt vai izmest?"
 
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Aizvērt dokumentu"
 
-#: document/katedocument.cpp:6044
+#: document/katedocument.cpp:6047
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datne %1 joprojām tiek ielādēta."
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Pārtr&aukt ielādi"

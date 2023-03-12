@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-11 02:40+0000\n"
+"POT-Creation-Date: 2023-03-12 04:10+0000\n"
 "PO-Revision-Date: 2023-03-04 10:04+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2139,17 +2139,17 @@ msgstr "Nova datoteka"
 msgid "The file %1 does not exist."
 msgstr "Datoteka %1 ne obstaja."
 
-#: document/katedocument.cpp:219
+#: document/katedocument.cpp:220
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Avtomatsko ponovno naloži dokument"
 
-#: document/katedocument.cpp:220
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Avtomatsko ponovno naloži dokument, ko je bi spremenjen na disku"
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2292
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2158,24 +2158,24 @@ msgstr ""
 "Datoteka %1 ni bila naložena, ker ni bilo mogoče brati iz nje.<br /"
 ">Preverite, če imate dovoljenja za branje te datoteke."
 
-#: document/katedocument.cpp:2296
+#: document/katedocument.cpp:2297
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Znova naloži"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6544
 #, kde-format
 msgid "&Close"
 msgstr "Zapri"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2302 document/katedocument.cpp:6545
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Zapri sporočilo"
 
-#: document/katedocument.cpp:2312
+#: document/katedocument.cpp:2313
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2186,7 +2186,7 @@ msgstr ""
 "\n"
 "Preverite, če imate dovoljenja za branje te datoteke."
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2437
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2200,7 +2200,7 @@ msgstr ""
 "kodiranjem, ali pa s pomočjo menija z orodji omogočite način za branje in "
 "pisanje, če jo želite urediti."
 
-#: document/katedocument.cpp:2448
+#: document/katedocument.cpp:2449
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2214,7 +2214,7 @@ msgstr ""
 "ali pa s pomočjo menija z orodji omogočite način za branje in pisanje, če jo "
 "želite urediti."
 
-#: document/katedocument.cpp:2461
+#: document/katedocument.cpp:2462
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2228,17 +2228,17 @@ msgstr ""
 "prestavljen v način samo za branje, saj bi shranjevanje spremenilo njegovo "
 "vsebino."
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2469
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Začasno zvišaj omejitev in znova naloži datoteko"
 
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2472
 #, kde-format
 msgid "Close"
 msgstr "Zapri"
 
-#: document/katedocument.cpp:2478
+#: document/katedocument.cpp:2479
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2252,7 +2252,7 @@ msgstr ""
 "prestavljen v način samo za branje, saj bi shranjevanje spremenilo njegovo "
 "vsebino."
 
-#: document/katedocument.cpp:2505
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2261,18 +2261,18 @@ msgstr ""
 "Ali zares želite shraniti to nespremenjeno datoteko? S tem lahko prepišete "
 "spremenjene podatke na disku."
 
-#: document/katedocument.cpp:2506
+#: document/katedocument.cpp:2507
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Poskus shranjevanja nespremenjene datoteke"
 
-#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
-#: document/katedocument.cpp:2534
+#: document/katedocument.cpp:2508 document/katedocument.cpp:2519
+#: document/katedocument.cpp:2535
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Vseeno shrani"
 
-#: document/katedocument.cpp:2516
+#: document/katedocument.cpp:2517
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2281,14 +2281,14 @@ msgstr ""
 "Ali zares želite shraniti to datoteko? Obe datoteki (odprta in tista na "
 "disku) sta bili spremenjeni. Lahko pride do izgube podatkov."
 
-#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2518 document/katedocument.cpp:2534
+#: document/katedocument.cpp:2826 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Mogoča izguba podatkov"
 
-#: document/katedocument.cpp:2531
+#: document/katedocument.cpp:2532
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2297,7 +2297,7 @@ msgstr ""
 "Izbrano kodiranje ne more kodirati vsak znak iz nabora Unicode v tem "
 "dokumentu. Ali ga zares želite shraniti? Lahko pride do izgube podatkov."
 
-#: document/katedocument.cpp:2576
+#: document/katedocument.cpp:2577
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2312,7 +2312,7 @@ msgstr ""
 "Izvirna verzija datoteke je morda izgubljena ali poškodovana. Ne zapuščajte "
 "programa, dokler datoteka ni uspešno napisana."
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2698
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2325,49 +2325,49 @@ msgstr ""
 "podatkov. Mogoče je nosilec na katerega pišete poln, ali pa je mapa te "
 "datoteke za vas na voljo samo za branje."
 
-#: document/katedocument.cpp:2701
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Ustvarjanje varnostne kopije je spodletelo."
 
-#: document/katedocument.cpp:2702
+#: document/katedocument.cpp:2703
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Vseeno poskusi shraniti"
 
-#: document/katedocument.cpp:2824
+#: document/katedocument.cpp:2825
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Ali zares želite zapreti to datoteko? Lahko pride do izgube podatkov."
 
-#: document/katedocument.cpp:2826
+#: document/katedocument.cpp:2827
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Vseeno zapri"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4635
 #, kde-format
 msgid "Untitled"
 msgstr "Brez naslova"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:4758 document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Shrani datoteko"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4761
 #, kde-format
 msgid "Save failed"
 msgstr "Shranjevanje ni uspelo"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Shrani kopijo datoteke"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5019
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2380,7 +2380,7 @@ msgstr ""
 "Preverite, da imate pravice do pisanja v to datoteko oz. da je na voljo "
 "dovolj prostora."
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5290
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2393,7 +2393,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5296
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2406,22 +2406,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Datoteka '%1' je bila spremenjena na disku."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Datoteka '%1' je bila ustvarjena na disku."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Datoteka '%1' je bila izbrisana na disku."
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2430,17 +2430,17 @@ msgstr ""
 "Dokument \"%1\" je bil spremenjen.\n"
 "Ali želite shraniti spremembe ali jih zavreči?"
 
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Zapri dokument"
 
-#: document/katedocument.cpp:6044
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datoteka <a href=\"%1\">%2</a> se še vedno nalaga."
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Prekini nalaganje"

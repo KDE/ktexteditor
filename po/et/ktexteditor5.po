@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-11 02:40+0000\n"
+"POT-Creation-Date: 2023-03-12 04:10+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2169,17 +2169,17 @@ msgstr "Uus fail"
 msgid "The file %1 does not exist."
 msgstr "Faili %1 ei ole olemas."
 
-#: document/katedocument.cpp:219
+#: document/katedocument.cpp:220
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Dokumendi automaatne taaslaadimine"
 
-#: document/katedocument.cpp:220
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Dokumendi automaatne taaslaadimine, kui seda on kettal muudetud"
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2292
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2188,25 +2188,25 @@ msgstr ""
 "Faili %1 ei saa avada, sest seda ei olnud võimalik lugeda.<br />Palun "
 "kontrolli, kas sul on selle faili lugemisõigus."
 
-#: document/katedocument.cpp:2296
+#: document/katedocument.cpp:2297
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Proovi uuesti"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6544
 #, kde-format
 msgid "&Close"
 msgstr "&Sulge"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
+#: document/katedocument.cpp:2302 document/katedocument.cpp:6545
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Sulge teade"
 
-#: document/katedocument.cpp:2312
+#: document/katedocument.cpp:2313
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2217,7 +2217,7 @@ msgstr ""
 "\n"
 "Palun kontrolli, kas sul on selle faili lugemisõigus."
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2437
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2230,7 +2230,7 @@ msgstr ""
 "uuesti korrektse kodeeringuga või lülita tööriistamenüüst sisse lugemis-"
 "kirjutamisrežiim, et saada võimalus faili muuta."
 
-#: document/katedocument.cpp:2448
+#: document/katedocument.cpp:2449
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2243,7 +2243,7 @@ msgstr ""
 "uuesti korrektse kodeeringuga või lülita tööriistamenüüst sisse lugemis-"
 "kirjutamisrežiim, et saada võimalus faili muuta."
 
-#: document/katedocument.cpp:2461
+#: document/katedocument.cpp:2462
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2256,17 +2256,17 @@ msgstr ""
 "pikad<br/>Liiga pikad read murti ja dokument määrati kirjutuskaitstuks, sest "
 "salvestamine muudaks selle sisu."
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2469
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Tõsta ajutiselt piirangut ja laadi fail uuesti"
 
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2472
 #, kde-format
 msgid "Close"
 msgstr "Sulge"
 
-#: document/katedocument.cpp:2478
+#: document/katedocument.cpp:2479
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2279,7 +2279,7 @@ msgstr ""
 "pikad<br/>Liiga pikad read murti ja dokument määrati kirjutuskaitstuks, sest "
 "salvestamine muudaks selle sisu."
 
-#: document/katedocument.cpp:2505
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2288,18 +2288,18 @@ msgstr ""
 "Kas tõesti salvestada fail muutmata kujul? Nii kirjutatakse üle kettal "
 "muudetud andmed."
 
-#: document/katedocument.cpp:2506
+#: document/katedocument.cpp:2507
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Salvestamise üritamine muutmata kujul"
 
-#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
-#: document/katedocument.cpp:2534
+#: document/katedocument.cpp:2508 document/katedocument.cpp:2519
+#: document/katedocument.cpp:2535
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Salvesta igal juhul"
 
-#: document/katedocument.cpp:2516
+#: document/katedocument.cpp:2517
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2308,14 +2308,14 @@ msgstr ""
 "Kas tõesti salvestada fail? Muudetud on nii avatud fail kui seesama fail "
 "kettal, mistõttu mingid andmed võivad kaotsi minna."
 
-#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2518 document/katedocument.cpp:2534
+#: document/katedocument.cpp:2826 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Võimalik andmete kadu"
 
-#: document/katedocument.cpp:2531
+#: document/katedocument.cpp:2532
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2325,7 +2325,7 @@ msgstr ""
 "selle Unicode sümboleid. Kas tõesti see salvestada? See võib tuua kaasa "
 "andmekao."
 
-#: document/katedocument.cpp:2576
+#: document/katedocument.cpp:2577
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2340,7 +2340,7 @@ msgstr ""
 "Algne fail võib olla vigane või kaotsi läinud. Ära sulge rakendust, enne kui "
 "faili pole õnnestunud edukalt kirjutada."
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2698
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2353,49 +2353,49 @@ msgstr ""
 "Põhjus võib peituda selles, et andmekandja, kuhu soovid kirjutada, on täis, "
 "või on sul faili kataloogis ainult lugemisõigus."
 
-#: document/katedocument.cpp:2701
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Varukoopia loomine nurjus"
 
-#: document/katedocument.cpp:2702
+#: document/katedocument.cpp:2703
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Salvesta igal juhul"
 
-#: document/katedocument.cpp:2824
+#: document/katedocument.cpp:2825
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Kas tõesti sulgeda see fail? Andmed võivad kaotsi minna."
 
-#: document/katedocument.cpp:2826
+#: document/katedocument.cpp:2827
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Sulge igal juhul"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4635
 #, kde-format
 msgid "Untitled"
 msgstr "Pealkirjata"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:4758 document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Faili salvestamine"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4761
 #, kde-format
 msgid "Save failed"
 msgstr "Salvestamine nurjus"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Faili koopia salvestamine"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5019
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2408,7 +2408,7 @@ msgstr ""
 "Palun kontrolli, et sul oleks selle faili kirjutamisõigus ja et kettal "
 "jaguks ruumi."
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5290
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2421,7 +2421,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5296
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2434,25 +2434,25 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Faili '%1' on muutnud mingi muud rakendus."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Faili '%1' on loonud mingi muu rakendus."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Faili '%1' kustutanud mingi muu rakendus."
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2461,17 +2461,17 @@ msgstr ""
 "Dokumenti \"%1\" on muudetud.\n"
 "Kas soovid muudatused salvestada või need unustada?"
 
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Sulge dokument"
 
-#: document/katedocument.cpp:6044
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Faili <a href=\"%1\">%2</a> veel laaditakse."
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Loo&bu laadimisest"

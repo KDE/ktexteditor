@@ -1,19 +1,19 @@
 # translation of ktexteditor5.po to Slovak
-# Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2016.
+# Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2016, 2023.
 # Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-11 02:40+0000\n"
-"PO-Revision-Date: 2022-02-14 19:57+0100\n"
-"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
-"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2023-03-12 04:10+0000\n"
+"PO-Revision-Date: 2023-03-11 18:23+0100\n"
+"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -77,17 +77,16 @@ msgstr "Hľadať varianty"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Selection"
-msgstr "&Sekcia:"
+msgstr "Výber"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
 #, fuzzy, kde-format
 #| msgid "Capitalize"
 msgid "Capitalization"
-msgstr "Veľké prvé písmená"
+msgstr "Prvé veľké písmená:"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -118,7 +117,7 @@ msgstr "Za&baľovanie kódu"
 #, fuzzy, kde-format
 #| msgid "Go"
 msgid "&Go"
-msgstr "Prejsť"
+msgstr "Pre&jsť"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:119
@@ -192,9 +191,9 @@ msgstr "Zobraziť náhľad zloženého kódu"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
-#, kde-format
+#, fuzzy, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "Ľavá strana"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -406,7 +405,7 @@ msgstr "Zobraziť okraje &ikony"
 #, fuzzy, kde-format
 #| msgid "Always"
 msgid "Show Always"
-msgstr "Vždy"
+msgstr "Vždy zobraziť"
 
 #: dialogs/clipboardhistorydialog.cpp:267
 #, fuzzy, kde-format
@@ -592,7 +591,7 @@ msgstr "Predvolený vstupný režim:"
 #, fuzzy, kde-format
 #| msgid "Auto Brackets"
 msgid "Brackets:"
-msgstr "Automatické zátvorky"
+msgstr "Zátvorky"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
@@ -1082,36 +1081,34 @@ msgid "Spellcheck"
 msgstr "Kontrola pravopisu"
 
 #: dialogs/katedialogs.cpp:403 dialogs/katedialogs.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "Varovanie"
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:405
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:406 dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:407
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:411
 #, fuzzy, kde-format
@@ -1122,12 +1119,12 @@ msgstr "Príkaz"
 #: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:471
 #, kde-format
@@ -1179,11 +1176,9 @@ msgid "Editing Options"
 msgstr "Možnosti editovania"
 
 #: dialogs/katedialogs.cpp:735
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Stavový riadok"
 
 #: dialogs/katedialogs.cpp:737
 #, kde-format
@@ -1818,9 +1813,9 @@ msgstr ""
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
-#, kde-format
+#, fuzzy, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " sekundy"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
@@ -1874,7 +1869,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:28
 #, kde-format
 msgid "Editor font:"
-msgstr ""
+msgstr "Pismo editora:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
@@ -2158,17 +2153,17 @@ msgstr "Nový súbor"
 msgid "The file %1 does not exist."
 msgstr "Súbor %1 neexistuje."
 
-#: document/katedocument.cpp:219
+#: document/katedocument.cpp:220
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Automaticky obnoviť dokument"
 
-#: document/katedocument.cpp:220
+#: document/katedocument.cpp:221
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Automaticky znova načítať dokument, keď bol zmenený na disku"
 
-#: document/katedocument.cpp:2291
+#: document/katedocument.cpp:2292
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2177,25 +2172,24 @@ msgstr ""
 "Súbor %1 nie je možné načítať, pretože z neho nie je možné čítať.<br /"
 ">Overte, či máte právo pre čítanie tohto súboru."
 
-#: document/katedocument.cpp:2296
+#: document/katedocument.cpp:2297
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Skúsiť znova"
 
-#: document/katedocument.cpp:2300 document/katedocument.cpp:6541
+#: document/katedocument.cpp:2301 document/katedocument.cpp:6544
 #, kde-format
 msgid "&Close"
 msgstr "&Zavrieť"
 
-#: document/katedocument.cpp:2301 document/katedocument.cpp:6542
-#, fuzzy, kde-format
-#| msgid "Close message"
+#: document/katedocument.cpp:2302 document/katedocument.cpp:6545
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Zatvoriť správu"
 
-#: document/katedocument.cpp:2312
+#: document/katedocument.cpp:2313
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2206,7 +2200,7 @@ msgstr ""
 "\n"
 "Overte, či máte právo pre čítanie tohto súboru."
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2437
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2219,7 +2213,7 @@ msgstr ""
 "znovu otvorte súbor so správne zvoleným kódovaním alebo povoľte zápis v menu "
 "aby ste dokument mohli upravovať."
 
-#: document/katedocument.cpp:2448
+#: document/katedocument.cpp:2449
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters. It "
@@ -2232,7 +2226,7 @@ msgstr ""
 "súbor so správne zvoleným kódovaním alebo povoľte zápis v menu aby ste "
 "dokument mohli upravovať."
 
-#: document/katedocument.cpp:2461
+#: document/katedocument.cpp:2462
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2245,17 +2239,17 @@ msgstr ""
 "dlhý<br /> Tieto riadky boli zalomené a dokument je nastavený na režim len "
 "na čítanie, pretože uloženie by zmenilo jeho obsah."
 
-#: document/katedocument.cpp:2468
+#: document/katedocument.cpp:2469
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Dočasne zvýšiť obmedzenie a znovu načítať súbor"
 
-#: document/katedocument.cpp:2471
+#: document/katedocument.cpp:2472
 #, kde-format
 msgid "Close"
 msgstr "Zavrieť"
 
-#: document/katedocument.cpp:2478
+#: document/katedocument.cpp:2479
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2268,7 +2262,7 @@ msgstr ""
 "dlhý<br/> Tieto riadky boli zalomené a dokument je nastavený na režim len na "
 "čítanie, pretože uloženie by zmenilo jeho obsah."
 
-#: document/katedocument.cpp:2505
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2276,18 +2270,18 @@ msgid ""
 msgstr ""
 "Naozaj chcete uložiť tento nezmenený súbor? Môžete si prepísať dáta na disku."
 
-#: document/katedocument.cpp:2506
+#: document/katedocument.cpp:2507
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Skúša sa uložiť nezmenený súbor"
 
-#: document/katedocument.cpp:2507 document/katedocument.cpp:2518
-#: document/katedocument.cpp:2534
+#: document/katedocument.cpp:2508 document/katedocument.cpp:2519
+#: document/katedocument.cpp:2535
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Napriek tomu uložiť"
 
-#: document/katedocument.cpp:2516
+#: document/katedocument.cpp:2517
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2296,14 +2290,14 @@ msgstr ""
 "Naozaj chcete uložiť dáta do tohto súboru? Súbor na disku aj súbor v editore "
 "sú zmenené. Môžete stratiť niektoré dáta."
 
-#: document/katedocument.cpp:2517 document/katedocument.cpp:2533
-#: document/katedocument.cpp:2825 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2518 document/katedocument.cpp:2534
+#: document/katedocument.cpp:2826 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Možná strata dát"
 
-#: document/katedocument.cpp:2531
+#: document/katedocument.cpp:2532
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2312,7 +2306,7 @@ msgstr ""
 "Vybrali ste kódovanie, ktoré nepodporuje všetky znaky Unicode, ktoré súbor "
 "obsahuje. Naozaj ho chcete uložiť? Niektoré dáta sa môžu stratiť."
 
-#: document/katedocument.cpp:2576
+#: document/katedocument.cpp:2577
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2327,7 +2321,7 @@ msgstr ""
 "Pôvodný súbor môže byť stratený alebo poškodený. Neukončujte aplikáciu, kým "
 "sa súbor úspešne nezapíše."
 
-#: document/katedocument.cpp:2697
+#: document/katedocument.cpp:2698
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2339,51 +2333,51 @@ msgstr ""
 "chyba počas ukladania,  môžete stratiť dáta v tomto súbore. Dôvod môže byť, "
 "že médium je plné alebo priečinok má nastavené iba pre čítanie parametre. "
 
-#: document/katedocument.cpp:2701
+#: document/katedocument.cpp:2702
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Zlyhal pri vytvorení zálohovacej kópie."
 
-#: document/katedocument.cpp:2702
+#: document/katedocument.cpp:2703
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Napriek tomu skúsiť uložiť"
 
-#: document/katedocument.cpp:2824
+#: document/katedocument.cpp:2825
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Naozaj chcete pokračovať a zatvoriť tento súbor? Môžete stratiť niektoré "
 "dáta."
 
-#: document/katedocument.cpp:2826
+#: document/katedocument.cpp:2827
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Napriek tomu zavrieť"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4635
 #, kde-format
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5755
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:4758 document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Uložiť súbor"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4761
 #, kde-format
 msgid "Save failed"
 msgstr "Uloženie zlyhalo"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Uložiť kópiu súboru"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5019
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2396,7 +2390,7 @@ msgstr ""
 "Overte, že máte dostatočné práva pre zápis tohto súboru a že je\n"
 "k dispozíci dosť miesta na disku."
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5290
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2414,7 +2408,7 @@ msgstr ""
 "org/stable5/en/applications/katepart/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5296
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2432,25 +2426,25 @@ msgstr ""
 "stable5/en/applications/katepart/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Súbor '%1' bol zmenený na disku iným programom."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Súbor '%1' bol vytvorený na disku iným programom."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5611
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Súbor '%1' bol odstránený z disku iným programom."
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2459,17 +2453,17 @@ msgstr ""
 "Dokument \"%1\" bol upravený.\n"
 "Chcete uložiť alebo zahodiť zmeny?"
 
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Zatvoriť dokument"
 
-#: document/katedocument.cpp:6044
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Súbor <a href=\"%1\">%2</a> sa stále načítava."
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Prerušiť načítanie"
@@ -2801,10 +2795,9 @@ msgid "&Color theme:"
 msgstr "Farebná téma:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Písmo"
+msgstr "Písmo:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2950,8 +2943,7 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Vybrať obsah HTML/XML značku von"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Prepnúť komentár"
@@ -3018,7 +3010,7 @@ msgstr "Vyhodnotiť jednoduchý matematický výraz"
 #| msgid "Decrement number by 1"
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr "Znížiť číslo o 1"
+msgstr "Znížiť číslo o 10"
 
 #: script/data/commands/emmet.js:66
 #, fuzzy, kde-format
@@ -3034,7 +3026,7 @@ msgstr "Znížiť číslo o 10"
 #| msgid "Decrement number by 0.1"
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr "Znížiť číslo o 0,1"
+msgstr "Znížiť číslo o 10"
 
 #: script/data/commands/emmet.js:74
 #, fuzzy, kde-format
@@ -3042,7 +3034,7 @@ msgstr "Znížiť číslo o 0,1"
 #| msgid "Increment number by 1"
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr "Zvýšiť číslo o 1"
+msgstr "Zvýšiť číslo o 10"
 
 #: script/data/commands/emmet.js:78
 #, fuzzy, kde-format
@@ -3058,7 +3050,7 @@ msgstr "Zvýšiť číslo o 10"
 #| msgid "Increment number by 0.1"
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr "Zvýšiť číslo o 0,1"
+msgstr "Zvýšiť číslo o 10"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -3256,8 +3248,7 @@ msgid "Remove Trailing and Leading Spaces"
 msgstr "&Odstrániť prebytočné medzery:"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Spojiť riadky"
@@ -4978,10 +4969,9 @@ msgstr ""
 "nastavenie farby pozadia alebo farby pozadia označeného textu.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Predvolené štýly textu"
+msgstr "Štandardná téma"
 
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
@@ -4993,7 +4983,7 @@ msgstr ""
 #| msgctxt "@title:column Text style"
 #| msgid "Selected"
 msgid "Select theme:"
-msgstr "Vybrané"
+msgstr "Vybrať tému"
 
 #: syntax/katethemeconfig.cpp:1108
 #, kde-format
