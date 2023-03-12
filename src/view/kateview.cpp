@@ -42,6 +42,7 @@
 #include "kateviewinternal.h"
 #include "katewordcompletion.h"
 #include "printing/kateprinter.h"
+#include "screenshotdialog.h"
 #include "script/katescriptaction.h"
 #include "script/katescriptmanager.h"
 #include "spellcheck/spellcheck.h"
@@ -75,6 +76,8 @@
 #include <QPainter>
 #include <QRegularExpression>
 #include <QToolTip>
+#include <qgraphicseffect.h>
+#include <qnamespace.h>
 
 // #define VIEW_RANGE_DEBUG
 
@@ -471,6 +474,9 @@ void KTextEditor::ViewPrivate::setupActions()
     m_swapWithClipboard = a = ac->addAction(QStringLiteral("edit_swap_with_clipboard"), this, SLOT(swapWithClipboard()));
     a->setText(i18n("Swap with Clipboard Contents"));
     a->setWhatsThis(i18n("Swap the selected text with the clipboard contents"));
+
+    m_screenshotSelection = a = ac->addAction(QStringLiteral("text_screenshot_selection"), this, &KTextEditor::ViewPrivate::screenshot);
+    a->setText(i18n("Take Screenshot of Selection"));
 
     if (!doc()->readOnly()) {
         a = ac->addAction(KStandardAction::Save, m_doc, SLOT(documentSave()));
@@ -2205,6 +2211,8 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
     }
 
     m_cut->setEnabled(selection() || m_config->smartCopyCut());
+    m_screenshotSelection->setVisible(selection());
+    m_screenshotSelection->setEnabled(selection());
 }
 
 void KTextEditor::ViewPrivate::switchToCmdLine()
@@ -2480,7 +2488,6 @@ void KTextEditor::ViewPrivate::repaintText(bool paintOnlyDirty)
 void KTextEditor::ViewPrivate::updateView(bool changed)
 {
     // qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::updateView";
-
     m_viewInternal->updateView(changed);
     m_viewInternal->m_leftBorder->update();
 }
@@ -2806,6 +2813,17 @@ void KTextEditor::ViewPrivate::copy() const
 
     // copy to clipboard and our history!
     KTextEditor::EditorPrivate::self()->copyToClipboard(text, m_doc->url().fileName());
+}
+
+void KTextEditor::ViewPrivate::screenshot()
+{
+    if (!selection()) {
+        return;
+    }
+
+    ScreenshotDialog d(selectionRange(), this);
+    d.renderScreenshot(m_renderer);
+    d.exec();
 }
 
 void KTextEditor::ViewPrivate::pasteSelection()
@@ -4239,6 +4257,8 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
     if (m_pasteSelection) {
         menu->addAction(m_pasteSelection);
     }
+
+    menu->addAction(m_screenshotSelection);
     menu->addAction(m_swapWithClipboard);
     menu->addSeparator();
     menu->addAction(m_selectAll);

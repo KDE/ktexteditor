@@ -146,6 +146,7 @@ view/katetextanimation.cpp
 view/katetextpreview.cpp
 view/katestatusbar.cpp
 view/wordcounter.cpp
+view/screenshotdialog.cpp
 
 # spell checking
 spellcheck/prefixstore.h

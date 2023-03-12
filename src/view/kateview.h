@@ -132,6 +132,7 @@ public Q_SLOTS:
     void paste(const QString *textToPaste = nullptr);
     void cut();
     void copy() const;
+    void screenshot();
 
 private Q_SLOTS:
     /**
@@ -877,6 +878,7 @@ private:
     QAction *m_swapWithClipboard;
     QAction *m_selectAll;
     QAction *m_deSelect;
+    QAction *m_screenshotSelection = nullptr;
 
     QActionGroup *m_inputModeActions;
 

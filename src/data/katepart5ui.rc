@@ -160,6 +160,7 @@
   <Action name="edit_paste" group="popup_operations" />
   <Action name="edit_paste_selection" group="popup_operations" />
   <Action name="edit_swap_with_clipboard" group="popup_operations" />
+  <Action name="text_screenshot_selection" group="popup_operations" />
   <Separator group="popup_operations" />
   <Action name="tools_scripts_Editing" group="popup_operations" />
   <Separator group="popup_operations" />
