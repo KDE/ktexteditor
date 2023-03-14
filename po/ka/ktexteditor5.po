@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-12 04:10+0000\n"
-"PO-Revision-Date: 2023-03-05 04:33+0100\n"
+"PO-Revision-Date: 2023-03-13 12:04+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2177,17 +2177,17 @@ msgstr ""
 #: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr ""
+msgstr "ფაილი '%1' დისკზე შეიცვალა."
 
 #: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was created on disk."
-msgstr ""
+msgstr "ფაილი '%1' დისკზე შეიქმნა."
 
 #: document/katedocument.cpp:5611
 #, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr ""
+msgstr "ფაილი '%1' დისკიდან წაიშალა."
 
 #: document/katedocument.cpp:5933
 #, kde-format
@@ -2206,7 +2206,7 @@ msgstr "დოკუმენტის დახურვა"
 #: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr ""
+msgstr "ფაილი <a href=\"%1\">%2</a> ჯერ კიდევ იტვირთება."
 
 #: document/katedocument.cpp:6052
 #, kde-format
@@ -2277,7 +2277,7 @@ msgstr "Vi-ის შეყვანის რეჟიმი"
 #: mode/katemodeconfigpage.cpp:46
 #, kde-format
 msgid "<Unchanged>"
-msgstr ""
+msgstr "<Unchanged>"
 
 #: mode/katemodeconfigpage.cpp:58
 #, kde-format
@@ -2614,7 +2614,7 @@ msgstr "ტექსტი"
 #, kde-format
 msgctxt "Script command name"
 msgid "Expand Abbreviation"
-msgstr ""
+msgstr "აბრევიატურის გაშლა"
 
 #: script/data/commands/emmet.js:10 script/data/commands/emmet.js:14
 #: script/data/commands/emmet.js:19 script/data/commands/emmet.js:23
@@ -3998,7 +3998,7 @@ msgstr "ფონის &ფერი..."
 #: syntax/katestyletreewidget.cpp:262
 #, kde-format
 msgid "S&elected Background Color..."
-msgstr "&არჩეული ფერის ფონი"
+msgstr "&არჩეული ფერის ფონი..."
 
 #: syntax/katestyletreewidget.cpp:268
 #, kde-format
@@ -5668,7 +5668,7 @@ msgstr "სწორი ცვლადების სიის ცვენე
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "ბრჭყალების ავტომატური დასმის ჩართვა"
+msgstr "ბრჭყალების ავტომატური დასმის ჩართვა."
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
