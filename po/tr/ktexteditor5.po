@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-12 04:10+0000\n"
-"PO-Revision-Date: 2023-03-07 19:13+0300\n"
+"PO-Revision-Date: 2023-03-15 13:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -7230,12 +7230,12 @@ msgstr "İmleç altındaki sözcüğün tüm eşleşmelerini bulur ve onları se
 #: view/kateview.cpp:883
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
-msgstr "Aranan ifadenin bir sonraki eşleşmesini bul."
+msgstr "Aranan ifadenin bir sonraki eşleşmesini bulun."
 
 #: view/kateview.cpp:887
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
-msgstr "Aranan ifadenin bir önceki eşleşmesini bul."
+msgstr "Aranan ifadenin bir önceki eşleşmesini bulun."
 
 #: view/kateview.cpp:891
 #, kde-format
