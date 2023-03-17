@@ -3307,19 +3307,19 @@ msgstr "ليلي بوند"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "LISP"
-msgstr "لِسپ"
+msgstr "لِسب"
 
 #: script/data/indentation/pascal.js:2
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Pascal"
-msgstr "پاسكال"
+msgstr "باسكال"
 
 #: script/data/indentation/python.js:2
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Python"
-msgstr "پيثون"
+msgstr "بيثون"
 
 #: script/data/indentation/r.js:2
 #, kde-format
@@ -3331,7 +3331,7 @@ msgstr "أر"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Replicode"
-msgstr "ريپلكود"
+msgstr "ريبلكود"
 
 #: script/data/indentation/ruby.js:2
 #, kde-format
@@ -5500,7 +5500,7 @@ msgstr "Matteo Merli"
 #: utils/kateglobal.cpp:137
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
-msgstr "إبراز ملفّات المواصفات ل‍RPM، وپيرل، وملفّات الفرق وغيرها"
+msgstr "إبراز ملفّات المواصفات ل‍RPM، وبيرل، وملفّات الفرق وغيرها"
 
 #: utils/kateglobal.cpp:138
 #, kde-format
@@ -5560,7 +5560,7 @@ msgstr "Per Wigren"
 #: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
-msgstr "إبراز Makefile وپيثون"
+msgstr "إبراز Makefile وبيثون"
 
 #: utils/kateglobal.cpp:144
 #, kde-format
@@ -5570,7 +5570,7 @@ msgstr "Jan Fritz"
 #: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Highlighting for Python"
-msgstr "إبراز پيثون"
+msgstr "إبراز بيثون"
 
 #: utils/kateglobal.cpp:145
 #, kde-format
@@ -8582,7 +8582,7 @@ msgstr ""
 
 #~ msgctxt "Language"
 #~ msgid "Component-Pascal"
-#~ msgstr "مكوّن-پاسكال"
+#~ msgstr "مكوّن-باسكال"
 
 #~ msgctxt "Language"
 #~ msgid "C#"
@@ -8694,28 +8694,28 @@ msgstr ""
 
 #~ msgctxt "Language"
 #~ msgid "OpenCL"
-#~ msgstr "أوپن‌سي‌إل"
+#~ msgstr "أوبن‌سي‌إل"
 
 #~ msgctxt "Language"
 #~ msgid "Pango"
-#~ msgstr "پانغو"
+#~ msgstr "بانغو"
 
 #~ msgctxt "Language"
 #~ msgid "Pascal"
-#~ msgstr "پاسكال"
+#~ msgstr "باسكال"
 
 #~ msgctxt "Language"
 #~ msgid "Perl"
-#~ msgstr "پيرل"
+#~ msgstr "بيرل"
 
 #, fuzzy
 #~ msgctxt "Language"
 #~ msgid "Puppet"
-#~ msgstr "پَپِت"
+#~ msgstr "بَبِت"
 
 #~ msgctxt "Language"
 #~ msgid "Python"
-#~ msgstr "پيثون"
+#~ msgstr "بيثون"
 
 #, fuzzy
 #~ msgctxt "Language"
@@ -8724,7 +8724,7 @@ msgstr ""
 
 #~ msgctxt "Language"
 #~ msgid "Replicode"
-#~ msgstr "ريپلكود"
+#~ msgstr "ريبلكود"
 
 #, fuzzy
 #~ msgctxt "Language"
