@@ -16,7 +16,9 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
+#include <katerenderer.h>
 #include <kateview.h>
+#include <ktexteditor/range.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/history.h>
 

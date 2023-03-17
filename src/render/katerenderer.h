@@ -13,7 +13,7 @@
 #define KATE_RENDERER_H
 
 #include "kateconfig.h"
-#include "range.h"
+#include "ktexteditor/range.h"
 
 #include <QFlags>
 #include <QFont>

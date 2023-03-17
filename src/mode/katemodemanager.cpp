@@ -9,8 +9,8 @@
 #include "katemodemenulist.h"
 #include "katestatusbar.h"
 
+#include "document.h"
 #include "kateconfig.h"
-#include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
@@ -221,7 +221,7 @@ void KateModeManager::save(const QList<KateFileType *> &v)
     update();
 }
 
-QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QString &fileToReadFrom)
+QString KateModeManager::fileType(KTextEditor::Document *doc, const QString &fileToReadFrom)
 {
     if (!doc) {
         return QString();

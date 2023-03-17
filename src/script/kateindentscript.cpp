@@ -10,8 +10,6 @@
 #include <QJSEngine>
 #include <QJSValue>
 
-#include "katedocument.h"
-
 KateIndentScript::KateIndentScript(const QString &url, const KateIndentScriptHeader &header)
     : KateScript(url)
     , m_indentHeader(header)

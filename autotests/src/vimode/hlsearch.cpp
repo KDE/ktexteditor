@@ -11,6 +11,7 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
+#include <katerenderer.h>
 #include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 

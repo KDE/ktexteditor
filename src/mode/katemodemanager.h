@@ -17,7 +17,7 @@
 
 namespace KTextEditor
 {
-class DocumentPrivate;
+class Document;
 }
 
 class KateFileType
@@ -72,7 +72,7 @@ public:
     /**
      * @return the right KateFileType name for the given document or an empty string if none found
      */
-    QString fileType(KTextEditor::DocumentPrivate *doc, const QString &fileToReadFrom);
+    QString fileType(KTextEditor::Document *doc, const QString &fileToReadFrom);
 
     /**
      * Don't store the pointer somewhere longer times, won't be valid after the next update()

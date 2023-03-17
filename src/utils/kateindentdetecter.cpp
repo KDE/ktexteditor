@@ -5,6 +5,8 @@
 */
 #include "kateindentdetecter.h"
 
+#include "katedocument.h"
+
 KateIndentDetecter::KateIndentDetecter(KTextEditor::DocumentPrivate *doc)
     : m_doc(doc)
 {

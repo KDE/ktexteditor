@@ -10,6 +10,7 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
+#include <katerenderer.h>
 #include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
@@ -927,7 +928,7 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo   ", "lllcwxyz\\esc", "fooxyz");
 
     DoTest("foo", "yr", "foo");
-    QCOMPARE(kate_view->renderer()->caretStyle(), KateRenderer::Block);
+    QCOMPARE(kate_view->renderer()->caretStyle(), KTextEditor::caretStyles::Block);
 
     // BUG #332523
     const bool oldDynWordWrap = KateViewConfig::global()->dynWordWrap();
@@ -1379,7 +1380,7 @@ void ModesTest::VisualCommandsTests()
     // BUG #328277 - make sure kate doesn't crash
     BeginTest("aaa\nbbb");
     TestPressKey("Vj>u>.");
-    QCOMPARE(kate_view->renderer()->caretStyle(), KateRenderer::Block);
+    QCOMPARE(kate_view->renderer()->caretStyle(), KTextEditor::caretStyles::Block);
     FinishTest("aaa\nbbb");
 }
 

@@ -7,7 +7,7 @@
 */
 
 #include "katescript.h"
-#include "katedocument.h"
+
 #include "katepartdebug.h"
 #include "katescriptdocument.h"
 #include "katescripteditor.h"

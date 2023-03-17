@@ -6,7 +6,10 @@
 #ifndef KATE_INDENT_DETECTER_H
 #define KATE_INDENT_DETECTER_H
 
-#include <katedocument.h>
+namespace KTextEditor
+{
+class DocumentPrivate;
+};
 
 /**
  * File indentation detecter. Mostly ported from VSCode to here

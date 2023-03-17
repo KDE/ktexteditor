@@ -12,6 +12,7 @@
 #include <QVBoxLayout>
 #include <QtTestWidgets>
 #include <inputmodemanager.h>
+#include <ktexteditor/range.h>
 
 namespace KTextEditor
 {

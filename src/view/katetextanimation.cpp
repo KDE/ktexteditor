@@ -6,7 +6,6 @@
 
 #include "katetextanimation.h"
 
-#include "katedocument.h"
 #include "katerenderer.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
@@ -20,7 +19,7 @@
 KateTextAnimation::KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
     : QObject(view)
     , m_range(range)
-    , m_text(view->view()->doc()->text(range))
+    , m_text(view->view()->document()->text(range))
     , m_attribute(std::move(attribute))
     , m_doc(view->view()->doc())
     , m_view(view)
@@ -54,7 +53,7 @@ QRectF KateTextAnimation::rectForText()
     if (pixelPos.x() == -1 || pixelPos.y() == -1) {
         return QRectF();
     } else {
-        QRectF rect(pixelPos.x(), pixelPos.y(), fm.boundingRect(m_view->view()->doc()->text(m_range)).width(), lineHeight);
+        QRectF rect(pixelPos.x(), pixelPos.y(), fm.boundingRect(m_view->view()->document()->text(m_range)).width(), lineHeight);
         const QPointF center = rect.center();
         const qreal factor = 1.0 + 0.5 * m_value;
         rect.setWidth(rect.width() * factor);
