@@ -7,12 +7,12 @@
 #ifndef KTEXTEDITOR_MESSAGE_H
 #define KTEXTEDITOR_MESSAGE_H
 
-#include <QAction>
-#include <QIcon>
-#include <QList>
 #include <QObject>
 
 #include <ktexteditor_export.h>
+
+class QIcon;
+class QAction;
 
 namespace KTextEditor
 {

@@ -47,6 +47,7 @@
 
 #include <KTextEditor/Attribute>
 #include <KTextEditor/DocumentCursor>
+#include <ktexteditor/message.h>
 
 #include <KConfigGroup>
 #include <KDirWatch>

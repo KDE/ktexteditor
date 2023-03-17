@@ -20,7 +20,6 @@
 #include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/markinterface.h>
-#include <ktexteditor/message.h>
 #include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/movinginterface.h>
 
@@ -49,6 +48,7 @@ class SwapFile;
 class KateBuffer;
 namespace KTextEditor
 {
+class Message;
 class ViewPrivate;
 }
 class KateDocumentConfig;

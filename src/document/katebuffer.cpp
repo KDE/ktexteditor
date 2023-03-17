@@ -14,6 +14,7 @@
 #include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
+#include "ktexteditor/message.h"
 
 #include <KLocalizedString>
 

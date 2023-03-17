@@ -14,6 +14,7 @@
 #include "katerenderer.h"
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"
+#include "ktexteditor/message.h"
 #include <vimode/globalstate.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/jumps.h>

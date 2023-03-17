@@ -15,7 +15,7 @@
 #include "kateswapfile.h"
 #include "katetextbuffer.h"
 #include "kateundomanager.h"
-
+#include "ktexteditor/message.h"
 #include <ktexteditor/view.h>
 
 #include <KLocalizedString>
