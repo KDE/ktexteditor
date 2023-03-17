@@ -352,10 +352,11 @@ if(ENABLE_PCH)
             <QTextFormat>
             <QTimer>
             <QVariant>
-            <QVector>
+            <QJsonDocument>
             <QWidget>
             <algorithm>
             <functional>
+            <filesystem>
             <memory>
             <string>
             <type_traits>
