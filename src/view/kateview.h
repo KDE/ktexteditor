@@ -20,12 +20,7 @@
 #include <ktexteditor/view.h>
 
 #include <QJsonDocument>
-#include <QMenu>
-#include <QModelIndex>
 #include <QPointer>
-#include <QScopedPointer>
-#include <QSpacerItem>
-#include <QTextLayout>
 #include <QTimer>
 
 #include <array>
@@ -71,6 +66,10 @@ class KToggleAction;
 class KSelectAction;
 
 class QAction;
+class QTextLayout;
+class QSpacerItem;
+class QMenu;
+class QActionGroup;
 
 namespace KTextEditor
 {
@@ -1222,7 +1221,7 @@ private:
      * destruction before other QObject auto-cleanup as it
      * manage sub objects on its own that have this view as parent
      */
-    QScopedPointer<KateScriptActionMenu> m_scriptActionMenu;
+    std::unique_ptr<KateScriptActionMenu> m_scriptActionMenu;
 
     // for showSearchWrappedHint()
     QPointer<KTextEditor::Message> m_wrappedMessage;

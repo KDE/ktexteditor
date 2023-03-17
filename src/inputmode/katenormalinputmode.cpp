@@ -8,6 +8,7 @@
 #include "katecompletionwidget.h"
 #include "kateconfig.h"
 #include "katedocument.h"
+#include "katerenderer.h"
 #include "katesearchbar.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
@@ -227,9 +228,9 @@ bool KateNormalInputMode::blinkCaret() const
     return true;
 }
 
-KateRenderer::caretStyles KateNormalInputMode::caretStyle() const
+KTextEditor::caretStyles KateNormalInputMode::caretStyle() const
 {
-    return view()->isOverwriteMode() ? KateRenderer::Block : KateRenderer::Line;
+    return view()->isOverwriteMode() ? KTextEditor::caretStyles::Block : KTextEditor::caretStyles::Line;
 }
 
 void KateNormalInputMode::toggleInsert()

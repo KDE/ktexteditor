@@ -12,6 +12,7 @@
 #include "kateglobal.h"
 #include "katemodemanager.h"
 #include "katemodemenulist.h"
+#include "katerenderer.h"
 #include "kateview.h"
 #include "wordcounter.h"
 

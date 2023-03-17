@@ -25,6 +25,7 @@
 #include <KLocalizedString>
 
 #include <QActionGroup>
+#include <QMenu>
 
 #include <cctype>
 

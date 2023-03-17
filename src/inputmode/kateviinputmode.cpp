@@ -7,6 +7,7 @@
 #include "kateviinputmode.h"
 #include "kateconfig.h"
 #include "katedocument.h"
+#include "katerenderer.h"
 #include "kateviewinternal.h"
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/macrorecorder.h>
@@ -53,7 +54,7 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalS
     : KateAbstractInputMode(viewInternal)
     , m_viModeEmulatedCommandBar(nullptr)
     , m_viGlobal(global)
-    , m_caret(KateRenderer::Block)
+    , m_caret(KTextEditor::caretStyles::Block)
     , m_nextKeypressIsOverriddenShortCut(false)
     , m_relLineNumbers(KateViewConfig::global()->viRelativeLineNumbers())
     , m_activated(false)
@@ -64,7 +65,7 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalS
 void KateViInputMode::activate()
 {
     m_activated = true;
-    setCaretStyle(KateRenderer::Block); // TODO: can we end up in insert mode?
+    setCaretStyle(KTextEditor::caretStyles::Block); // TODO: can we end up in insert mode?
     reset(); // TODO: is this necessary? (well, not anymore I guess)
 
     if (view()->selection()) {
@@ -285,7 +286,7 @@ bool KateViInputMode::blinkCaret() const
     return false;
 }
 
-KateRenderer::caretStyles KateViInputMode::caretStyle() const
+KTextEditor::caretStyles KateViInputMode::caretStyle() const
 {
     return m_caret;
 }
@@ -305,7 +306,7 @@ QString KateViInputMode::bookmarkLabel(int line) const
     return m_viModeManager->marks()->getMarksOnTheLine(line);
 }
 
-void KateViInputMode::setCaretStyle(const KateRenderer::caretStyles caret)
+void KateViInputMode::setCaretStyle(const KTextEditor::caretStyles caret)
 {
     if (m_caret != caret) {
         m_caret = caret;

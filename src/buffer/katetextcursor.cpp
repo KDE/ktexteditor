@@ -9,6 +9,7 @@
 
 #include "katetextcursor.h"
 #include "katedocument.h"
+#include "katetextblock.h"
 #include "katetextbuffer.h"
 #include "katetextrange.h"
 

@@ -15,6 +15,7 @@
 #include "katepartdebug.h"
 
 #include <QActionGroup>
+#include <QMenu>
 
 #include <KLocalizedString>
 #include <KTextEditor/Range>

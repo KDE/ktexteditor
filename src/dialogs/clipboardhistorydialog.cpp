@@ -238,7 +238,6 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *mainWindow, KTextEditor:
     connect(&m_lineEdit, &QLineEdit::textChanged, this, [this](const QString &s) {
         m_proxyModel->setFilterFixedString(s);
 
-
         const auto bestMatch = m_proxyModel->index(0, 0);
         m_treeView.setCurrentIndex(bestMatch);
         showSelectedText(bestMatch);

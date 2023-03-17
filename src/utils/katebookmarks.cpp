@@ -21,6 +21,7 @@
 #include <KXMLGUIFactory>
 
 #include <QEvent>
+#include <QMenu>
 #include <QRegularExpression>
 #include <QVector>
 

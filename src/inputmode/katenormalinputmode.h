@@ -56,7 +56,7 @@ public:
 
     bool keyPress(QKeyEvent *) override;
     bool blinkCaret() const override;
-    KateRenderer::caretStyles caretStyle() const override;
+    KTextEditor::caretStyles caretStyle() const override;
 
     void toggleInsert() override;
     void launchInteractiveCommand(const QString &command) override;

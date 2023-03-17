@@ -14,8 +14,6 @@
 #include <QStack>
 #include <QTimer>
 
-#include <KJob>
-
 #include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/configinterface.h>
 #include <ktexteditor/document.h>
@@ -29,6 +27,7 @@
 #include "katetextline.h"
 #include <ktexteditor_export.h>
 
+class KJob;
 class KateTemplateHandler;
 namespace KTextEditor
 {

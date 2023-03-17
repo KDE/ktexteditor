@@ -33,6 +33,7 @@
 #include <QComboBox>
 #include <QCompleter>
 #include <QElapsedTimer>
+#include <QMenu>
 #include <QRegularExpression>
 #include <QShortcut>
 #include <QStringListModel>

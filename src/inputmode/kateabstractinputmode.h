@@ -10,18 +10,19 @@
 class KateLayoutCache;
 class KateViewInternal;
 
-#include "katerenderer.h"
 #include "ktexteditor/view.h"
 #include "ktexteditor_export.h" // for tests
-
-#include <KConfigGroup>
 
 #include <QKeyEvent>
 
 class KateViewInternal;
+class KConfigGroup;
+class QKeyEvent;
 namespace KTextEditor
 {
 class ViewPrivate;
+enum class caretStyles;
+class Cursor;
 }
 
 class KTEXTEDITOR_EXPORT KateAbstractInputMode
@@ -66,7 +67,7 @@ public:
 
     virtual bool keyPress(QKeyEvent *) = 0;
     virtual bool blinkCaret() const = 0;
-    virtual KateRenderer::caretStyles caretStyle() const = 0;
+    virtual KTextEditor::caretStyles caretStyle() const = 0;
 
     virtual void toggleInsert() = 0;
     virtual void launchInteractiveCommand(const QString &command) = 0;

@@ -20,6 +20,7 @@
 #include "katetextlayout.h"
 #include "kateview.h"
 
+#include "ktexteditor/attribute.h"
 #include "ktexteditor/inlinenote.h"
 #include "ktexteditor/inlinenoteprovider.h"
 
@@ -42,7 +43,7 @@ KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding 
     , m_view(view)
     , m_tabWidth(m_doc->config()->tabWidth())
     , m_indentWidth(m_doc->config()->indentationWidth())
-    , m_caretStyle(KateRenderer::Line)
+    , m_caretStyle(KTextEditor::caretStyles::Line)
     , m_drawCaret(true)
     , m_showSelections(true)
     , m_showTabs(true)
@@ -90,7 +91,7 @@ void KateRenderer::setDrawCaret(bool drawCaret)
     m_drawCaret = drawCaret;
 }
 
-void KateRenderer::setCaretStyle(KateRenderer::caretStyles style)
+void KateRenderer::setCaretStyle(KTextEditor::caretStyles style)
 {
     m_caretStyle = style;
 }
@@ -948,10 +949,10 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPt
         QTextLine line = range->layout()->lineForTextPosition(qMin(cursor.column(), range->length()));
 
         // Determine the caret's style
-        caretStyles style = caretStyle();
+        KTextEditor::caretStyles style = caretStyle();
 
         // Make the caret the desired width
-        if (style == Line) {
+        if (style == KTextEditor::caretStyles::Line) {
             caretWidth = lineWidth;
         } else if (line.isValid() && cursor.column() < range->length()) {
             caretWidth = int(line.cursorToX(cursor.column() + 1) - line.cursorToX(cursor.column()));
@@ -988,17 +989,17 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPt
 
         paint.save();
         switch (style) {
-        case Line:
+        case KTextEditor::caretStyles::Line:
             paint.setPen(QPen(color, caretWidth));
             break;
-        case Block:
+        case KTextEditor::caretStyles::Block:
             // use a gray caret so it's possible to see the character
             color.setAlpha(128);
             paint.setPen(QPen(color, caretWidth));
             break;
-        case Underline:
+        case KTextEditor::caretStyles::Underline:
             break;
-        case Half:
+        case KTextEditor::caretStyles::Half:
             color.setAlpha(128);
             paint.setPen(QPen(color, caretWidth));
             break;
@@ -1014,7 +1015,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPt
             for (const auto &inlineNoteData : inlineNotes) {
                 KTextEditor::InlineNote inlineNote(inlineNoteData);
                 if (inlineNote.position().column() == cursor.column()) {
-                    width = inlineNote.width() + (caretStyle() == Line ? 2.0 : 0.0);
+                    width = inlineNote.width() + (caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0);
                 }
             }
             range->layout()->drawCursor(&paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth);
@@ -1219,7 +1220,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
                 firstLineOffset = width;
             } else if (column < l->text().length()) {
                 QTextCharFormat text_char_format;
-                const qreal caretWidth = caretStyle() == Line ? 2.0 : 0.0;
+                const qreal caretWidth = caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0;
                 text_char_format.setFontLetterSpacing(width + caretWidth);
                 text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
                 decorations.append(QTextLayout::FormatRange{column - 1, 1, text_char_format});

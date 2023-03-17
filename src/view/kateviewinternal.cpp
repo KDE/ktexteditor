@@ -26,6 +26,7 @@
 #include "katelayoutcache.h"
 #include "katemessagewidget.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
 #include "katetextanimation.h"
 #include "katetextpreview.h"
 #include "kateview.h"
@@ -202,7 +203,8 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     QScrollerProperties prop;
     prop.setScrollMetric(QScrollerProperties::DecelerationFactor, 0.3);
     prop.setScrollMetric(QScrollerProperties::MaximumVelocity, 1);
-    prop.setScrollMetric(QScrollerProperties::AcceleratingFlickMaximumTime, 0.2); // Workaround for QTBUG-88249 (non-flick gestures recognized as accelerating flick)
+    prop.setScrollMetric(QScrollerProperties::AcceleratingFlickMaximumTime,
+                         0.2); // Workaround for QTBUG-88249 (non-flick gestures recognized as accelerating flick)
     prop.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
     prop.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
     prop.setScrollMetric(QScrollerProperties::DragStartDistance, 0.0);
@@ -3015,7 +3017,7 @@ KTextEditor::Cursor KateViewInternal::cursorForPoint(QPoint p)
         // an inline note is "part" of a char i.e., char width is increased so that
         // an inline note can be painted beside it. So we need to find the actual
         // char width
-        const auto caretWidth = renderer()->caretStyle() == KateRenderer::Line ? 2. : 0.;
+        const auto caretWidth = renderer()->caretStyle() == KTextEditor::caretStyles::Line ? 2. : 0.;
         const auto width = KTextEditor::InlineNote(note).width() + caretWidth;
         const auto charWidth = renderer()->currentFontMetrics().horizontalAdvance(doc()->characterAt(noteCursor));
         const auto halfCharWidth = (charWidth / 2);
@@ -3167,12 +3169,14 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
     case QEvent::ScrollPrepare: {
         QScrollPrepareEvent *s = static_cast<QScrollPrepareEvent *>(e);
         scrollPrepareEvent(s);
-    } return true;
+    }
+        return true;
 
     case QEvent::Scroll: {
         QScrollEvent *s = static_cast<QScrollEvent *>(e);
         scrollEvent(s);
-    } return true;
+    }
+        return true;
 
     default:
         break;
@@ -4407,7 +4411,7 @@ void KateViewInternal::scrollPrepareEvent(QScrollPrepareEvent *event)
 void KateViewInternal::scrollEvent(QScrollEvent *event)
 {
     // FIXME Add horizontal scrolling, overscroll, scroll between lines, and word wrap awareness
-    KTextEditor::Cursor newPos((int) event->contentPos().y() / renderer()->lineHeight(), 0);
+    KTextEditor::Cursor newPos((int)event->contentPos().y() / renderer()->lineHeight(), 0);
     scrollPos(newPos);
     event->accept();
 }

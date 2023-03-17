@@ -33,6 +33,7 @@
 #include "katemessagewidget.h"
 #include "katemodemenu.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
 #include "katestatusbar.h"
 #include "katetemplatehandler.h"
 #include "katetextline.h"
@@ -484,7 +485,7 @@ void KTextEditor::ViewPrivate::setupActions()
         // Tools > Scripts
         // stored inside scoped pointer to ensure we destruct it early enough as it does internal cleanups of other child objects
         m_scriptActionMenu.reset(new KateScriptActionMenu(this, i18n("&Scripts")));
-        ac->addAction(QStringLiteral("tools_scripts"), m_scriptActionMenu.data());
+        ac->addAction(QStringLiteral("tools_scripts"), m_scriptActionMenu.get());
 
         a = ac->addAction(QStringLiteral("tools_apply_wordwrap"));
         a->setText(i18n("Apply &Word Wrap"));

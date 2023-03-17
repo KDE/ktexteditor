@@ -15,6 +15,7 @@
 #include "kateview.h"
 
 #include <QActionGroup>
+#include <QMenu>
 // END Includes
 
 void KateModeMenu::init()

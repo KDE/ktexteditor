@@ -15,6 +15,7 @@
 #include "kateviewhelpers.h"
 
 #include <QJsonObject>
+#include <QMenu>
 
 #include <KActionCollection>
 #include <KLocalizedString>

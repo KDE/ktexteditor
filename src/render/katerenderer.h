@@ -13,7 +13,6 @@
 #define KATE_RENDERER_H
 
 #include "kateconfig.h"
-#include <ktexteditor/attribute.h>
 
 #include <QFlags>
 #include <QFont>
@@ -40,6 +39,16 @@ class KateTextLayout;
 class KateLineLayout;
 typedef QExplicitlySharedDataPointer<KateLineLayout> KateLineLayoutPtr;
 
+namespace KTextEditor
+{
+enum class caretStyles {
+    Line,
+    Block,
+    Underline,
+    Half,
+};
+}
+
 /**
  * Handles all of the work of rendering the text
  * (used for the views and printing)
@@ -64,7 +73,6 @@ public:
      * ## \__,_|        ##\__,_|#          \__,_|         ##\__,_|#
      * ##               #########        #########        #########
      */
-    enum caretStyles { Line, Block, Underline, Half };
 
     /**
      * Constructor
@@ -127,7 +135,7 @@ public:
      * The style of the caret (text cursor) to be painted.
      * @return caretStyle
      */
-    inline KateRenderer::caretStyles caretStyle() const
+    inline KTextEditor::caretStyles caretStyle() const
     {
         return m_caretStyle;
     }
@@ -136,7 +144,7 @@ public:
      * Set the style of caret to be painted.
      * @param style style to set
      */
-    void setCaretStyle(KateRenderer::caretStyles style);
+    void setCaretStyle(KTextEditor::caretStyles style);
 
     /**
      * Set a \a brush with which to override drawing of the caret.  Set to QColor() to clear.
@@ -450,7 +458,7 @@ private:
     KTextEditor::Range m_currentBracketRange = KTextEditor::Range::invalid();
 
     // some internal flags
-    KateRenderer::caretStyles m_caretStyle;
+    KTextEditor::caretStyles m_caretStyle;
     bool m_drawCaret;
     bool m_showSelections;
     bool m_showTabs;

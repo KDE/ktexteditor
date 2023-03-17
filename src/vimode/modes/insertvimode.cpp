@@ -12,6 +12,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"
@@ -288,7 +289,7 @@ bool InsertViMode::commandSwitchToNormalModeForJustOneCommand()
     if (doc()->line(cursorPos.line()).length() == cursorPos.column()) {
         m_view->setCursorPosition(KTextEditor::Cursor(cursorPos.line(), cursorPos.column() - 1));
     }
-    m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
+    m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Block);
     Q_EMIT m_view->viewModeChanged(m_view, m_view->viewMode());
     m_viewInternal->repaint();
     return true;

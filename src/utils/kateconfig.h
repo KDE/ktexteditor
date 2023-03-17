@@ -18,7 +18,7 @@
 #include <map>
 #include <memory>
 
-#include <QBitRef>
+#include <QBitArray>
 #include <QColor>
 #include <QObject>
 #include <QVector>

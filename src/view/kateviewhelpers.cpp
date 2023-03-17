@@ -55,6 +55,7 @@
 #include <QPalette>
 #include <QPen>
 #include <QRegularExpression>
+#include <QStackedWidget>
 #include <QStyle>
 #include <QStyleOption>
 #include <QToolButton>

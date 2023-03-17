@@ -11,6 +11,8 @@
 #include <vimode/keyparser.h>
 #include <vimode/mappings.h>
 
+#include <KConfigGroup>
+
 using namespace KateVi;
 
 void Mappings::readConfig(const KConfigGroup &config)

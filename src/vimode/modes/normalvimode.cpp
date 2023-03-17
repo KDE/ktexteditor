@@ -15,6 +15,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
 #include "kateundomanager.h"
 #include "kateviewhelpers.h"
 #include "kateviewinternal.h"
@@ -99,7 +100,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     if (keyCode == Qt::Key_Escape || (keyCode == Qt::Key_C && e->modifiers() == CONTROL_MODIFIER)
         || (keyCode == Qt::Key_BracketLeft && e->modifiers() == CONTROL_MODIFIER)) {
-        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Block);
         m_pendingResetIsDueToExit = true;
         // Vim in weird as if we e.g. i<ctrl-o><ctrl-c> it claims (in the status bar) to still be in insert mode,
         // but behaves as if it's in normal mode. I'm treating the status bar thing as a bug and just exiting
@@ -116,7 +117,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     // Use replace caret when reading a character for "r"
     if (key == QLatin1Char('r') && !waitingForRegisterOrCharToSearch) {
-        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Underline);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Underline);
     }
 
     m_keysVerbatim.append(KeyParser::self()->decodeKeySequence(key));
@@ -245,7 +246,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     // in normal mode. We need to check that we are indeed in normal mode
     // since visual mode inherits from it.
     if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode && !m_awaitingMotionOrTextObject.isEmpty()) {
-        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Half);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Half);
     }
 
     // look for matching motion commands from position 'checkFrom'
@@ -346,7 +347,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         }
 
                         if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
-                            m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
+                            m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Block);
                         }
                         m_commandWithMotion = false;
                         reset();
@@ -374,7 +375,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     if (m_matchingCommands.size() == 1) {
         if (commands().at(m_matchingCommands.at(0)).matchesExact(m_keys) && !commands().at(m_matchingCommands.at(0)).needsMotion()) {
             if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
-                m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
+                m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Block);
             }
 
             const Command &cmd = commands().at(m_matchingCommands.at(0));
@@ -431,7 +432,7 @@ void NormalViMode::resetParser()
     m_currentChangeEndMarker = KTextEditor::Cursor::invalid();
 
     if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
-        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KTextEditor::caretStyles::Block);
     }
 }
 

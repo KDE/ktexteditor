@@ -24,6 +24,7 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
+#include "katerenderer.h"
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"
 #include "lastchangerecorder.h"
@@ -335,7 +336,7 @@ void InputModeManager::viEnterNormalMode()
     if (moveCursorLeft) {
         m_viewInternal->cursorPrevChar();
     }
-    m_inputAdapter->setCaretStyle(KateRenderer::Block);
+    m_inputAdapter->setCaretStyle(KTextEditor::caretStyles::Block);
     m_viewInternal->update();
 }
 
@@ -348,7 +349,7 @@ void InputModeManager::viEnterInsertMode()
         // after returning from temporary normal mode will be treated as commands!
         m_lastChangeRecorder->record(QKeyEvent(QEvent::KeyPress, Qt::Key_I, Qt::NoModifier, QStringLiteral("i")));
     }
-    m_inputAdapter->setCaretStyle(KateRenderer::Line);
+    m_inputAdapter->setCaretStyle(KTextEditor::caretStyles::Line);
     setTemporaryNormalMode(false);
     m_viewInternal->update();
 }
@@ -359,7 +360,7 @@ void InputModeManager::viEnterVisualMode(ViMode mode)
 
     // If the selection is inclusive, the caret should be a block.
     // If the selection is exclusive, the caret should be a line.
-    m_inputAdapter->setCaretStyle(KateRenderer::Block);
+    m_inputAdapter->setCaretStyle(KTextEditor::caretStyles::Block);
     m_viewInternal->update();
     getViVisualMode()->setVisualModeType(mode);
     getViVisualMode()->init();
@@ -369,7 +370,7 @@ void InputModeManager::viEnterReplaceMode()
 {
     changeViMode(ViMode::ReplaceMode);
     m_marks->setStartEditYanked(KTextEditor::Cursor(m_view->cursorPosition()));
-    m_inputAdapter->setCaretStyle(KateRenderer::Underline);
+    m_inputAdapter->setCaretStyle(KTextEditor::caretStyles::Underline);
     m_viewInternal->update();
 }
 

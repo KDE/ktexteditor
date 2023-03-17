@@ -22,8 +22,6 @@
 #include <QPixmap>
 #include <QPointer>
 #include <QScrollBar>
-#include <QStackedWidget>
-#include <QTextLayout>
 #include <QTimer>
 
 #include "katetextline.h"
@@ -57,6 +55,7 @@ class TextRange;
 
 class QTimer;
 class QVBoxLayout;
+class QStackedWidget;
 
 /**
  * Class to layout KTextEditor::Message%s in KateView. Only the floating

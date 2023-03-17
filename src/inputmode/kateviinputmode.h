@@ -61,7 +61,7 @@ public:
 
     bool keyPress(QKeyEvent *) override;
     bool blinkCaret() const override;
-    KateRenderer::caretStyles caretStyle() const override;
+    KTextEditor::caretStyles caretStyle() const override;
 
     void toggleInsert() override;
     void launchInteractiveCommand(const QString &command) override;
@@ -83,12 +83,12 @@ public:
     {
         return m_activated;
     }
-    void setCaretStyle(const KateRenderer::caretStyles caret);
+    void setCaretStyle(const KTextEditor::caretStyles caret);
 
 private:
     KateVi::EmulatedCommandBar *m_viModeEmulatedCommandBar;
     KateVi::GlobalState *m_viGlobal;
-    KateRenderer::caretStyles m_caret;
+    KTextEditor::caretStyles m_caret;
 
     bool m_nextKeypressIsOverriddenShortCut;
 
