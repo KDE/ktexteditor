@@ -61,6 +61,7 @@
 #include <QDomDocument>
 #include <QFile>
 #include <QFileDialog>
+#include <QFontDatabase>
 #include <QGroupBox>
 #include <QKeyEvent>
 #include <QLabel>

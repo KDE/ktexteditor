@@ -10,7 +10,6 @@
 
 #include <ktexteditor_export.h>
 
-#include <ktexteditor/attribute.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
@@ -25,6 +24,7 @@ class KConfigGroup;
 
 namespace KTextEditor
 {
+enum DefaultStyle : unsigned int;
 class DocumentPrivate;
 class EditingTransactionPrivate;
 class MainWindow;

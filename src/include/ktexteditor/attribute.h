@@ -25,7 +25,7 @@ namespace KTextEditor
  *
  * \sa defaultStyleCount
  */
-enum DefaultStyle {
+enum DefaultStyle : unsigned int {
     //
     // normal text
     //

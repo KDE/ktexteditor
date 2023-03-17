@@ -15,6 +15,7 @@ using namespace KateVi;
 
 #include <QAbstractItemView>
 #include <QCompleter>
+#include <QKeyEvent>
 #include <QLineEdit>
 #include <QRegularExpression>
 #include <QStringListModel>
