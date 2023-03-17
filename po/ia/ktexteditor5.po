@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-12 04:10+0000\n"
-"PO-Revision-Date: 2023-02-23 15:37+0100\n"
+"PO-Revision-Date: 2023-03-16 11:00+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 21.12.1\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -441,10 +441,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
-msgstr "Completamento de parola automatic"
+msgstr "Completamento de parola a&utomatic"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -2209,8 +2208,7 @@ msgid "&Close"
 msgstr "&Claude"
 
 #: document/katedocument.cpp:2302 document/katedocument.cpp:6545
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Claude message"
@@ -3253,11 +3251,10 @@ msgid "Remove Duplicate Lines"
 msgstr "Duplica lineas seligite in alto"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Re&move spatios de tracia (avante):"
+msgstr "Remove spatios de tracia (avante)"
 
 #: script/data/commands/utils.js:25
 #, fuzzy, kde-format
@@ -3274,8 +3271,7 @@ msgid "Remove Trailing and Leading Spaces"
 msgstr "Re&move spatios de tracia (avante):"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Junge lineas"
@@ -4252,10 +4248,9 @@ msgid "I&gnore All"
 msgstr "I&gnora omnes"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Orthographia (ex cursor)..."
+msgstr "Orthographia (ex Cursor)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -5010,10 +5005,9 @@ msgid "Default Theme"
 msgstr "Thema predefinite:"
 
 #: syntax/katethemeconfig.cpp:1025
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Theme Editor"
-msgstr "Tu Elige le Editor ..."
+msgstr "Editor de Thema"
 
 #: syntax/katethemeconfig.cpp:1039
 #, kde-format
