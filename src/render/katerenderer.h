@@ -13,6 +13,7 @@
 #define KATE_RENDERER_H
 
 #include "kateconfig.h"
+#include "range.h"
 
 #include <QFlags>
 #include <QFont>
@@ -22,10 +23,8 @@
 namespace KTextEditor
 {
 class DocumentPrivate;
-}
-namespace KTextEditor
-{
 class ViewPrivate;
+class Attribute;
 }
 class KateRendererConfig;
 namespace Kate
@@ -38,6 +37,7 @@ typedef std::shared_ptr<TextLineData> TextLine;
 class KateTextLayout;
 class KateLineLayout;
 typedef QExplicitlySharedDataPointer<KateLineLayout> KateLineLayoutPtr;
+typedef QExplicitlySharedDataPointer<KTextEditor::Attribute> AttributePtr;
 
 namespace KTextEditor
 {
@@ -390,8 +390,8 @@ public:
      *
      *   attribute(myktextline->attribute(position));
      */
-    KTextEditor::Attribute::Ptr attribute(uint pos) const;
-    KTextEditor::Attribute::Ptr specificAttribute(int context) const;
+    AttributePtr attribute(uint pos) const;
+    AttributePtr specificAttribute(int context) const;
 
     /**
      * Paints a range of text into @a d. This function is mainly used to paint the pixmap
@@ -468,7 +468,7 @@ private:
     bool m_printerFriendly;
     QColor m_caretOverrideColor;
 
-    QVector<KTextEditor::Attribute::Ptr> m_attributes;
+    QVector<AttributePtr> m_attributes;
 
     /**
      * Configuration

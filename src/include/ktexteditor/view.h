@@ -10,29 +10,34 @@
 #ifndef KTEXTEDITOR_VIEW_H
 #define KTEXTEDITOR_VIEW_H
 
-#include <ktexteditor/attribute.h>
-#include <ktexteditor/document.h>
-#include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
 
 // gui merging
 #include <KXMLGUIClient>
 
-// theme support
-#include <KSyntaxHighlighting/Theme>
-
 // widget
+#include <QSet>
 #include <QWidget>
 
 class QMenu;
 
 class KConfigGroup;
 
+namespace KSyntaxHighlighting
+{
+class Theme;
+}
+
 namespace KTextEditor
 {
+enum DefaultStyle : unsigned int;
 class Document;
 class MainWindow;
 class ViewPrivate;
+class Attribute;
+class AttributeBlock;
+class Range;
+class Cursor;
 
 /**
  * \class View view.h <KTextEditor/View>
@@ -839,7 +844,7 @@ public:
      * @param defaultStyle default style to get the attribute for
      * @see KTextEditor::Attribute
      */
-    virtual KTextEditor::Attribute::Ptr defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const = 0;
+    virtual QExplicitlySharedDataPointer<KTextEditor::Attribute> defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const = 0;
 
     /**
      * Get the list of AttributeBlocks for a given \p line in the document.
