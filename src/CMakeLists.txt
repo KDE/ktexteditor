@@ -341,24 +341,18 @@ set_target_properties(KF6TextEditor
 if(ENABLE_PCH)
     target_precompile_headers(KF6TextEditor
         PRIVATE
-            <QHash>
             <QList>
-            <QMap>
             <QPointer>
             <QSharedData>
-            <QSharedPointer>
             <QString>
             <QStringList>
-            <QTextFormat>
-            <QTimer>
-            <QVariant>
             <QJsonDocument>
+            <QTextFormat>
             <QWidget>
+            <QObject>
+            <QDebug>
             <algorithm>
             <functional>
-            <filesystem>
-            <memory>
-            <string>
             <type_traits>
             <utility>
             <vector>
