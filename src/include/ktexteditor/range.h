@@ -124,7 +124,7 @@ public:
      */
     QString toString() const
     {
-        return QLatin1Char('[') + m_start.toString() + QLatin1String(", ") + m_end.toString() + QLatin1Char(']');
+        return u'[' + m_start.toString() + u", " + m_end.toString() + u']';
     }
 
     /**
@@ -611,7 +611,7 @@ Q_DECLARE_METATYPE(KTextEditor::Range)
  * QHash function for KTextEditor::Range.
  * Returns the hash value for @p range.
  */
-inline uint qHash(const KTextEditor::Range &range, uint seed = 0) Q_DECL_NOTHROW
+inline size_t qHash(const KTextEditor::Range &range, size_t seed = 0) Q_DECL_NOTHROW
 {
     return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
 }

@@ -125,7 +125,7 @@ public:
      */
     QString toString() const
     {
-        return QLatin1Char('(') + QString::number(m_line) + QLatin1String(", ") + QString::number(m_column) + QLatin1Char(')');
+        return u'(' + QString::number(m_line) + u", " + QString::number(m_column) + u')';
     }
 
     /**
@@ -389,7 +389,7 @@ Q_DECLARE_METATYPE(KTextEditor::Cursor)
  * QHash function for KTextEditor::Cursor.
  * Returns the hash value for @p cursor.
  */
-inline uint qHash(KTextEditor::Cursor cursor, uint seed = 0) Q_DECL_NOTHROW
+inline size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) Q_DECL_NOTHROW
 {
     return qHash(qMakePair(cursor.line(), cursor.column()), seed);
 }
