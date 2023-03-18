@@ -928,7 +928,7 @@ public:
     /**
      * Get the default style of the character located at @p position.
      * If @p position is not a valid text position, the default style
-     * DefaultStyle::dsNormal is returned.
+     * KSyntaxHighlighting::Theme::TextStyle::Normal is returned.
      *
      * @note Further information about the colors of default styles depend on
      *       the currently chosen schema. Since each View may have a different
@@ -936,7 +936,7 @@ public:
      *       View::defaultStyleAttribute() and View::lineAttributes().
      *
      * @param position text position
-     * @return default style, see enum KTextEditor::DefaultStyle
+     * @return default style, see enum KSyntaxHighlighting::Theme::TextStyle
      * @see View::defaultStyleAttribute(), View::lineAttributes()
      */
     virtual KSyntaxHighlighting::Theme::TextStyle defaultStyleAt(KTextEditor::Cursor position) const = 0;
