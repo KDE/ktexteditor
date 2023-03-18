@@ -374,7 +374,7 @@ void KateDocumentTest::testAutoBrackets()
     view->setBlockSelection(true);
     doc.setText(QStringLiteral("012xxx678\n012xxx678"));
     view->setSelection(Range(0, 3, 1, 6));
-    typeText("[(");
+    typeText(QStringLiteral("[("));
     QCOMPARE(doc.text(), QStringLiteral("012[(xxx)]678\n012[(xxx)]678"));
     QCOMPARE(view->selectionRange(), Range(0, 5, 1, 8));
 

@@ -391,7 +391,7 @@ void CompletionTest::testAutoCompletionPreselectFirst()
     m_view->config()->setValue(KateViewConfig::AutomaticCompletionPreselectFirst, false);
     // When AutomaticCompletionPreselectFirst is disabled, immediately pressing enter
     // should result into a newline instead of completion
-    m_doc->setText("a");
+    m_doc->setText(QStringLiteral("a"));
     m_view->setCursorPosition(Cursor(0, 1));
     m_view->completionWidget()->automaticInvocation();
     verifyCompletionStarted(m_view);

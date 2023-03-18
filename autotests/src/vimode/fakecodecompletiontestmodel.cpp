@@ -105,7 +105,7 @@ void FakeCodeCompletionTestModel::executeCompletionItem(KTextEditor::View *view,
     // Merge brackets?
     const QString noArgFunctionCallMarker = QStringLiteral("()");
     const QString withArgFunctionCallMarker = QStringLiteral("(...)");
-    const bool endedWithSemiColon = textToInsert.endsWith(';');
+    const bool endedWithSemiColon = textToInsert.endsWith(u';');
     if (textToInsert.contains(noArgFunctionCallMarker) || textToInsert.contains(withArgFunctionCallMarker)) {
         Q_ASSERT(m_removeTailOnCompletion && "Function completion items without removing tail is not yet supported!");
         const bool takesArgument = textToInsert.contains(withArgFunctionCallMarker);
