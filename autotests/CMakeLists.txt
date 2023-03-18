@@ -97,7 +97,7 @@ add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/te
 target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
     Qt6::Test)
 ecm_mark_as_test(kateindenttest)
-  target_precompile_headers(kateindenttest REUSE_FROM KF6TextEditor)
+#target_precompile_headers(kateindenttest REUSE_FROM KF6TextEditor)
 
 # test macro for indentation tests
 MACRO(KTEXTEDITOR_INDENT_TEST _testname)
@@ -123,7 +123,7 @@ macro(ktexteditor_unit_test testname)
   ecm_add_test(src/${testname}.cpp ${ARGN}
                TEST_NAME ${testname}
                LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
-  target_precompile_headers(${testname} REUSE_FROM KF6TextEditor)
+  #target_precompile_headers(${testname} REUSE_FROM KF6TextEditor)
 endmacro()
 
 ktexteditor_unit_test(katetextbuffertest)
