@@ -33,7 +33,7 @@ include(ECMDeprecationSettings)
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
-option(ENABLE_PCH "Enable Precompiled Headers support" OFF)
+option(ENABLE_PCH "Enable Precompiled Headers support" ON)
 
 if (NOT WIN32)
     set(ENABLE_KAUTH_DEFAULT ON)
