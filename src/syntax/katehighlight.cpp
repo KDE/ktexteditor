@@ -228,9 +228,9 @@ bool KateHighlighting::attributeRequiresSpellchecking(int attr)
     return m_formats[sanitizeFormatIndex(attr)].spellCheck();
 }
 
-KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) const
+KSyntaxHighlighting::Theme::TextStyle KateHighlighting::defaultStyleForAttribute(int attr) const
 {
-    return textStyleToDefaultStyle(m_formats[sanitizeFormatIndex(attr)].textStyle());
+    return m_formats[sanitizeFormatIndex(attr)].textStyle();
 }
 
 QString KateHighlighting::nameForAttrib(int attrib) const
@@ -304,7 +304,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
     const auto currentTheme = KateHlManager::self()->repository().theme(schema);
     for (const auto &format : m_formats) {
         // create a KTextEditor attribute matching the given format
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), format.textStyle()));
 
         if (const auto color = format.textColor(currentTheme).rgba()) {
             newAttribute->setForeground(QColor::fromRgba(color));

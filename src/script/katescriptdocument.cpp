@@ -75,7 +75,7 @@ bool KateScriptDocument::isComment(const QJSValue &jscursor)
 bool KateScriptDocument::isString(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::dsString;
+    return defaultStyle == KSyntaxHighlighting::Theme::TextStyle::String;
 }
 
 bool KateScriptDocument::isString(const QJSValue &jscursor)
@@ -87,7 +87,7 @@ bool KateScriptDocument::isString(const QJSValue &jscursor)
 bool KateScriptDocument::isRegionMarker(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::dsRegionMarker;
+    return defaultStyle == KSyntaxHighlighting::Theme::TextStyle::RegionMarker;
 }
 
 bool KateScriptDocument::isRegionMarker(const QJSValue &jscursor)
@@ -99,7 +99,7 @@ bool KateScriptDocument::isRegionMarker(const QJSValue &jscursor)
 bool KateScriptDocument::isChar(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::dsChar;
+    return defaultStyle == KSyntaxHighlighting::Theme::TextStyle::Char;
 }
 
 bool KateScriptDocument::isChar(const QJSValue &jscursor)
@@ -111,7 +111,7 @@ bool KateScriptDocument::isChar(const QJSValue &jscursor)
 bool KateScriptDocument::isOthers(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::dsOthers;
+    return defaultStyle == KSyntaxHighlighting::Theme::TextStyle::Others;
 }
 
 bool KateScriptDocument::isOthers(const QJSValue &jscursor)
@@ -219,7 +219,7 @@ KTextEditor::Cursor KateScriptDocument::rfindInternal(int line, int column, cons
         while ((foundAt = QStringView(textLine->text()).left(cursor.column()).lastIndexOf(text)) >= 0) {
             bool hasStyle = true;
             if (attribute != -1) {
-                const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(textLine->attribute(foundAt));
+                const KSyntaxHighlighting::Theme::TextStyle ds = m_document->highlight()->defaultStyleForAttribute(textLine->attribute(foundAt));
                 hasStyle = (ds == attribute);
             }
 
@@ -270,7 +270,7 @@ KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QCh
 
     auto *highlighter = m_document->highlight();
     auto isCodePos = [highlighter](const Kate::TextLine &currentLine, int i) {
-        const KTextEditor::DefaultStyle ds = highlighter->defaultStyleForAttribute(currentLine->attribute(i));
+        const KSyntaxHighlighting::Theme::TextStyle ds = highlighter->defaultStyleForAttribute(currentLine->attribute(i));
         return _isCode(ds);
     };
 
@@ -814,8 +814,9 @@ void KateScriptDocument::setVariable(const QString &s, const QString &v)
 
 bool KateScriptDocument::_isCode(int defaultStyle)
 {
-    return (defaultStyle != KTextEditor::dsComment && defaultStyle != KTextEditor::dsAlert && defaultStyle != KTextEditor::dsString
-            && defaultStyle != KTextEditor::dsRegionMarker && defaultStyle != KTextEditor::dsChar && defaultStyle != KTextEditor::dsOthers);
+    using S = KSyntaxHighlighting::Theme::TextStyle;
+    return (defaultStyle != S::Comment && defaultStyle != S::Alert && defaultStyle != S::String && defaultStyle != S::RegionMarker && defaultStyle != S::Char
+            && defaultStyle != S::Others);
 }
 
 void KateScriptDocument::indent(const QJSValue &jsrange, int change)

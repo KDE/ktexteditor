@@ -1188,7 +1188,7 @@ public:
     /**
      * Returns the attribute for the default style \p defaultStyle.
      */
-    Attribute::Ptr defaultStyleAttribute(DefaultStyle defaultStyle) const override;
+    Attribute::Ptr defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle defaultStyle) const override;
 
     /**
      * Get the list of AttributeBlocks for a given \p line in the document.

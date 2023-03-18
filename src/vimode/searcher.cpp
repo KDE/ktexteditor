@@ -212,7 +212,7 @@ void Searcher::hideCurrentHighlight()
 
 void Searcher::updateHighlightColors()
 {
-    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
     const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
     // init match attribute
     highlightMatchAttribute->setForeground(foregroundColor);

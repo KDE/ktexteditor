@@ -575,8 +575,8 @@ void KateScrollBar::updatePixmap()
     // qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d";
     // qCDebug(LOG_KTE) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
 
-    const QBrush backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background();
-    const QBrush defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground();
+    const QBrush backgroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->background();
+    const QBrush defaultTextColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground();
     const QBrush selectionBgColor = m_view->renderer()->config()->selectionColor();
 
     QColor modifiedLineColor = m_view->renderer()->config()->modifiedLineColor();
@@ -786,8 +786,8 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     visibleRect.setHeight(visibleEnd - visibleStart);
 
     // calculate colors
-    const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
-    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    const QColor backgroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->background().color();
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
     const QColor highlightColor = palette().highlight().color();
 
     const int backgroundLightness = backgroundColor.lightness();

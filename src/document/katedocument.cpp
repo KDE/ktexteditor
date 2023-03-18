@@ -1809,19 +1809,19 @@ bool KTextEditor::DocumentPrivate::setMode(const QString &name)
     return updateFileType(name);
 }
 
-KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(KTextEditor::Cursor position) const
+KSyntaxHighlighting::Theme::TextStyle KTextEditor::DocumentPrivate::defaultStyleAt(KTextEditor::Cursor position) const
 {
     // TODO, FIXME KDE5: in surrogate, use 2 bytes before
     if (!isValidTextPosition(position)) {
-        return dsNormal;
+        return KSyntaxHighlighting::Theme::TextStyle::Normal;
     }
 
     int ds = const_cast<KTextEditor::DocumentPrivate *>(this)->defStyleNum(position.line(), position.column());
     if (ds < 0 || ds > defaultStyleCount()) {
-        return dsNormal;
+        return KSyntaxHighlighting::Theme::TextStyle::Normal;
     }
 
-    return static_cast<DefaultStyle>(ds);
+    return static_cast<KSyntaxHighlighting::Theme::TextStyle>(ds);
 }
 
 QString KTextEditor::DocumentPrivate::mode() const
@@ -6504,7 +6504,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
 bool KTextEditor::DocumentPrivate::isComment(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::dsComment;
+    return defaultStyle == KSyntaxHighlighting::Theme::TextStyle::Comment;
 }
 
 int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)

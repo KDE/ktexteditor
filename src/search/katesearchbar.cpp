@@ -1644,7 +1644,7 @@ bool KateSearchBar::clearHighlights()
 
 void KateSearchBar::updateHighlightColors()
 {
-    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
     const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
     const QColor &replaceColor = m_view->renderer()->config()->replaceHighlightColor();
 

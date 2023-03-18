@@ -39,76 +39,76 @@
 /**
  * Return the translated name of default style @p n.
  */
-static inline QString defaultStyleName(KTextEditor::DefaultStyle style)
+static inline QString defaultStyleName(KSyntaxHighlighting::Theme::TextStyle style)
 {
     using namespace KTextEditor;
     switch (style) {
-    case dsNormal:
+    case KSyntaxHighlighting::Theme::TextStyle::Normal:
         return i18nc("@item:intable Text context", "Normal");
-    case dsKeyword:
+    case KSyntaxHighlighting::Theme::TextStyle::Keyword:
         return i18nc("@item:intable Text context", "Keyword");
-    case dsFunction:
+    case KSyntaxHighlighting::Theme::TextStyle::Function:
         return i18nc("@item:intable Text context", "Function");
-    case dsVariable:
+    case KSyntaxHighlighting::Theme::TextStyle::Variable:
         return i18nc("@item:intable Text context", "Variable");
-    case dsControlFlow:
+    case KSyntaxHighlighting::Theme::TextStyle::ControlFlow:
         return i18nc("@item:intable Text context", "Control Flow");
-    case dsOperator:
+    case KSyntaxHighlighting::Theme::TextStyle::Operator:
         return i18nc("@item:intable Text context", "Operator");
-    case dsBuiltIn:
+    case KSyntaxHighlighting::Theme::TextStyle::BuiltIn:
         return i18nc("@item:intable Text context", "Built-in");
-    case dsExtension:
+    case KSyntaxHighlighting::Theme::TextStyle::Extension:
         return i18nc("@item:intable Text context", "Extension");
-    case dsPreprocessor:
+    case KSyntaxHighlighting::Theme::TextStyle::Preprocessor:
         return i18nc("@item:intable Text context", "Preprocessor");
-    case dsAttribute:
+    case KSyntaxHighlighting::Theme::TextStyle::Attribute:
         return i18nc("@item:intable Text context", "Attribute");
 
-    case dsChar:
+    case KSyntaxHighlighting::Theme::TextStyle::Char:
         return i18nc("@item:intable Text context", "Character");
-    case dsSpecialChar:
+    case KSyntaxHighlighting::Theme::TextStyle::SpecialChar:
         return i18nc("@item:intable Text context", "Special Character");
-    case dsString:
+    case KSyntaxHighlighting::Theme::TextStyle::String:
         return i18nc("@item:intable Text context", "String");
-    case dsVerbatimString:
+    case KSyntaxHighlighting::Theme::TextStyle::VerbatimString:
         return i18nc("@item:intable Text context", "Verbatim String");
-    case dsSpecialString:
+    case KSyntaxHighlighting::Theme::TextStyle::SpecialString:
         return i18nc("@item:intable Text context", "Special String");
-    case dsImport:
+    case KSyntaxHighlighting::Theme::TextStyle::Import:
         return i18nc("@item:intable Text context", "Imports, Modules, Includes");
 
-    case dsDataType:
+    case KSyntaxHighlighting::Theme::TextStyle::DataType:
         return i18nc("@item:intable Text context", "Data Type");
-    case dsDecVal:
+    case KSyntaxHighlighting::Theme::TextStyle::DecVal:
         return i18nc("@item:intable Text context", "Decimal/Value");
-    case dsBaseN:
+    case KSyntaxHighlighting::Theme::TextStyle::BaseN:
         return i18nc("@item:intable Text context", "Base-N Integer");
-    case dsFloat:
+    case KSyntaxHighlighting::Theme::TextStyle::Float:
         return i18nc("@item:intable Text context", "Floating Point");
-    case dsConstant:
+    case KSyntaxHighlighting::Theme::TextStyle::Constant:
         return i18nc("@item:intable Text context", "Constant");
 
-    case dsComment:
+    case KSyntaxHighlighting::Theme::TextStyle::Comment:
         return i18nc("@item:intable Text context", "Comment");
-    case dsDocumentation:
+    case KSyntaxHighlighting::Theme::TextStyle::Documentation:
         return i18nc("@item:intable Text context", "Documentation");
-    case dsAnnotation:
+    case KSyntaxHighlighting::Theme::TextStyle::Annotation:
         return i18nc("@item:intable Text context", "Annotation");
-    case dsCommentVar:
+    case KSyntaxHighlighting::Theme::TextStyle::CommentVar:
         return i18nc("@item:intable Text context", "Comment Variable");
-    case dsRegionMarker:
+    case KSyntaxHighlighting::Theme::TextStyle::RegionMarker:
         // this next one is for denoting the beginning/end of a user defined folding region
         return i18nc("@item:intable Text context", "Region Marker");
-    case dsInformation:
+    case KSyntaxHighlighting::Theme::TextStyle::Information:
         return i18nc("@item:intable Text context", "Information");
-    case dsWarning:
+    case KSyntaxHighlighting::Theme::TextStyle::Warning:
         return i18nc("@item:intable Text context", "Warning");
-    case dsAlert:
+    case KSyntaxHighlighting::Theme::TextStyle::Alert:
         return i18nc("@item:intable Text context", "Alert");
 
-    case dsOthers:
+    case KSyntaxHighlighting::Theme::TextStyle::Others:
         return i18nc("@item:intable Text context", "Others");
-    case dsError:
+    case KSyntaxHighlighting::Theme::TextStyle::Error:
         // this one is for marking invalid input
         return i18nc("@item:intable Text context", "Error");
     };
@@ -517,7 +517,7 @@ KateAttributeList *KateThemeConfigDefaultStylesTab::attributeList(const QString 
         const KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(schema);
         for (int z = 0; z < numStyles; z++) {
             KTextEditor::Attribute::Ptr i(new KTextEditor::Attribute());
-            const auto style = defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z));
+            const auto style = static_cast<KSyntaxHighlighting::Theme::TextStyle>(z);
 
             if (const auto col = currentTheme.textColor(style)) {
                 i->setForeground(QColor::fromRgba(col));
@@ -567,36 +567,36 @@ void KateThemeConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // normal text and source code
     QTreeWidgetItem *parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Normal Text & Source Code"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsNormal; i <= (int)KTextEditor::dsAttribute; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
+    for (int i = (int)KSyntaxHighlighting::Theme::TextStyle::Normal; i <= (int)KSyntaxHighlighting::Theme::TextStyle::Attribute; ++i) {
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KSyntaxHighlighting::Theme::TextStyle>(i)), l->at(i));
     }
 
     // Number, Types & Constants
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Numbers, Types & Constants"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsDataType; i <= (int)KTextEditor::dsConstant; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
+    for (int i = (int)KSyntaxHighlighting::Theme::TextStyle::DataType; i <= (int)KSyntaxHighlighting::Theme::TextStyle::Constant; ++i) {
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KSyntaxHighlighting::Theme::TextStyle>(i)), l->at(i));
     }
 
     // strings & characters
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Strings & Characters"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsChar; i <= (int)KTextEditor::dsImport; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
+    for (int i = (int)KSyntaxHighlighting::Theme::TextStyle::Char; i <= (int)KSyntaxHighlighting::Theme::TextStyle::Import; ++i) {
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KSyntaxHighlighting::Theme::TextStyle>(i)), l->at(i));
     }
 
     // comments & documentation
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Comments & Documentation"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsComment; i <= (int)KTextEditor::dsAlert; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
+    for (int i = (int)KSyntaxHighlighting::Theme::TextStyle::Comment; i <= (int)KSyntaxHighlighting::Theme::TextStyle::Alert; ++i) {
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KSyntaxHighlighting::Theme::TextStyle>(i)), l->at(i));
     }
 
     // Misc
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Miscellaneous"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsOthers; i <= (int)KTextEditor::dsError; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KTextEditor::DefaultStyle>(i)), l->at(i));
+    for (int i = (int)KSyntaxHighlighting::Theme::TextStyle::Others; i <= (int)KSyntaxHighlighting::Theme::TextStyle::Error; ++i) {
+        m_defaultStyles->addItem(parent, defaultStyleName(static_cast<KSyntaxHighlighting::Theme::TextStyle>(i)), l->at(i));
     }
 
     m_defaultStyles->expandAll();
@@ -667,7 +667,7 @@ void KateThemeConfigDefaultStylesTab::apply()
             if (p->hasProperty(QTextFormat::FontStrikeOut) && p->fontStrikeOut()) {
                 style[QLatin1String("strike-through")] = true;
             }
-            styles[QLatin1String(metaEnum.key(defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z))))] = style;
+            styles[QLatin1String(metaEnum.key((z)))] = style;
         }
         newThemeObject[QLatin1String("text-styles")] = styles;
 
@@ -769,7 +769,7 @@ static KateAttributeList defaultsForHighlighting(const std::vector<KSyntaxHighli
     for (const auto &format : formats) {
         // create a KTextEditor attribute matching the default style for this format
         // use the default style attribute we got passed to have the one we currently have configured in the settings here
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleAttributes.at(textStyleToDefaultStyle(format.textStyle()))));
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleAttributes.at(format.textStyle())));
 
         // check for override => if yes, set attribute as overridden, use invalid theme to avoid the usage of theme override!
 

@@ -432,7 +432,7 @@ public:
     /**
      * @copydoc KTextEditor::Document::defaultStyleAt()
      */
-    KTextEditor::DefaultStyle defaultStyleAt(KTextEditor::Cursor position) const override;
+    KSyntaxHighlighting::Theme::TextStyle defaultStyleAt(KTextEditor::Cursor position) const override;
 
     /**
      * Return the name of the currently used mode

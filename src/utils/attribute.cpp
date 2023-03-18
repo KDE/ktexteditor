@@ -21,7 +21,7 @@ using namespace KTextEditor;
 
 int KTextEditor::defaultStyleCount()
 {
-    auto styleCount = KTextEditor::dsError + 1;
+    auto styleCount = KSyntaxHighlighting::Theme::TextStyle::Error + 1;
     Q_ASSERT(syntaxHighlightingStyleCount() == styleCount);
     return styleCount;
 }
@@ -43,7 +43,7 @@ Attribute::Attribute()
 {
 }
 
-Attribute::Attribute(const QString &name, DefaultStyle style)
+Attribute::Attribute(const QString &name, KSyntaxHighlighting::Theme::TextStyle style)
     : d(new AttributePrivate())
 {
     setName(name);
@@ -108,12 +108,12 @@ void Attribute::setName(const QString &name)
     setProperty(AttributeName, name);
 }
 
-DefaultStyle Attribute::defaultStyle() const
+KSyntaxHighlighting::Theme::TextStyle Attribute::defaultStyle() const
 {
-    return static_cast<DefaultStyle>(intProperty(AttributeDefaultStyleIndex));
+    return static_cast<KSyntaxHighlighting::Theme::TextStyle>(intProperty(AttributeDefaultStyleIndex));
 }
 
-void Attribute::setDefaultStyle(DefaultStyle style)
+void Attribute::setDefaultStyle(KSyntaxHighlighting::Theme::TextStyle style)
 {
     setProperty(AttributeDefaultStyleIndex, QVariant(static_cast<int>(style)));
 }

@@ -34,7 +34,7 @@ public:
             }
         }
 
-        m_defaultAttribute = view->defaultStyleAttribute(KTextEditor::dsNormal);
+        m_defaultAttribute = view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal);
         m_defaultAttribute->setBackground(QBrush(defaultBackground));
     }
 

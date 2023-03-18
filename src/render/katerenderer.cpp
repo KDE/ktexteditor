@@ -528,7 +528,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
         if (!hasCustomLineHeight()) {
             backgroundAttribute->setBackground(config()->selectionColor());
         }
-        backgroundAttribute->setForeground(attribute(KTextEditor::dsNormal)->selectedForeground().color());
+        backgroundAttribute->setForeground(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->selectedForeground().color());
 
         // Create a range for the current selection
         if (m_view->blockSelection() && m_view->selectionRange().overlapsLine(line)) {
@@ -726,7 +726,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             // We may have changed the pen, be absolutely sure it gets set back to
             // normal foreground color before drawing text for text that does not
             // set the pen color
-            paint.setPen(attribute(KTextEditor::dsNormal)->foreground().color());
+            paint.setPen(attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color());
             // Draw the text :)
             if (drawSelection) {
                 additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
@@ -983,7 +983,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPt
             }
             // still no color found, fall back to default style
             if (!color.isValid()) {
-                color = attribute(KTextEditor::dsNormal)->foreground().color();
+                color = attribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
             }
         }
 

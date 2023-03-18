@@ -15,6 +15,7 @@
 
 // our main baseclass of the KTextEditor::Document
 #include <KParts/ReadWritePart>
+#include <KSyntaxHighlighting/Theme>
 
 // the list of views
 #include <QList>
@@ -24,7 +25,6 @@ class KConfigGroup;
 
 namespace KTextEditor
 {
-enum DefaultStyle : unsigned int;
 class DocumentPrivate;
 class EditingTransactionPrivate;
 class MainWindow;
@@ -939,7 +939,7 @@ public:
      * @return default style, see enum KTextEditor::DefaultStyle
      * @see View::defaultStyleAttribute(), View::lineAttributes()
      */
-    virtual DefaultStyle defaultStyleAt(KTextEditor::Cursor position) const = 0;
+    virtual KSyntaxHighlighting::Theme::TextStyle defaultStyleAt(KTextEditor::Cursor position) const = 0;
 
     /**
      * Return the name of the currently used mode

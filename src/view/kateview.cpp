@@ -4795,7 +4795,7 @@ void KTextEditor::ViewPrivate::createHighlights()
     attr->setBackground(Qt::yellow);
 
     // set correct highlight color from Kate's color schema
-    QColor fgColor = defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    QColor fgColor = defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
     QColor bgColor = renderer()->config()->searchHighlightColor();
     attr->setForeground(fgColor);
     attr->setBackground(bgColor);
@@ -4928,7 +4928,7 @@ void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
 
 // END KTextEditor::InlineNoteInterface
 
-KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const
+KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle defaultStyle) const
 {
     KateRendererConfig *renderConfig = const_cast<KTextEditor::ViewPrivate *>(this)->renderer()->config();
 
