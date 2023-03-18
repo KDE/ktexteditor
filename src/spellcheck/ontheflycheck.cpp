@@ -112,7 +112,7 @@ void KateOnTheFlyChecker::handleRespellCheckBlock(int start, int end)
     m_modificationList.push_back(ModificationItem(TEXT_INSERTED, movingRange));
     ON_THE_FLY_DEBUG << "added" << *movingRange;
     if (listEmpty) {
-        QTimer::singleShot(0, this, SLOT(handleModifiedRanges()));
+        QTimer::singleShot(0, this, &KateOnTheFlyChecker::handleModifiedRanges);
     }
 }
 
@@ -146,7 +146,7 @@ void KateOnTheFlyChecker::textInserted(KTextEditor::Document *document, KTextEdi
     }
 
     if (listEmptyAtStart && !m_modificationList.isEmpty()) {
-        QTimer::singleShot(0, this, SLOT(handleModifiedRanges()));
+        QTimer::singleShot(0, this, &KateOnTheFlyChecker::handleModifiedRanges);
     }
 }
 
@@ -200,7 +200,7 @@ void KateOnTheFlyChecker::handleInsertedText(KTextEditor::Range range)
     queueSpellCheckVisibleRange(spellCheckRange);
 
     if (spellCheckInProgress || (emptyAtStart && !m_spellCheckQueue.isEmpty())) {
-        QTimer::singleShot(0, this, SLOT(performSpellCheck()));
+        QTimer::singleShot(0, this, &KateOnTheFlyChecker::performSpellCheck);
     }
 }
 
@@ -234,7 +234,7 @@ void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, KTextEdit
         }
     }
     if (listEmptyAtStart && !m_modificationList.isEmpty()) {
-        QTimer::singleShot(0, this, SLOT(handleModifiedRanges()));
+        QTimer::singleShot(0, this, &KateOnTheFlyChecker::handleModifiedRanges);
     }
 }
 
@@ -310,7 +310,7 @@ void KateOnTheFlyChecker::handleRemovedText(KTextEditor::Range range)
 
     ON_THE_FLY_DEBUG << "finished";
     if (spellCheckInProgress || (emptyAtStart && !m_spellCheckQueue.isEmpty())) {
-        QTimer::singleShot(0, this, SLOT(performSpellCheck()));
+        QTimer::singleShot(0, this, &KateOnTheFlyChecker::performSpellCheck);
     }
 }
 
@@ -443,7 +443,7 @@ bool KateOnTheFlyChecker::removeRangeFromSpellCheckQueue(KTextEditor::MovingRang
 {
     if (removeRangeFromCurrentSpellCheck(range)) {
         if (!m_spellCheckQueue.isEmpty()) {
-            QTimer::singleShot(0, this, SLOT(performSpellCheck()));
+            QTimer::singleShot(0, this, &KateOnTheFlyChecker::performSpellCheck);
         }
         return true;
     }
@@ -603,7 +603,7 @@ void KateOnTheFlyChecker::spellCheckDone()
     deleteMovingRangeQuickly(movingRange);
 
     if (!m_spellCheckQueue.empty()) {
-        QTimer::singleShot(0, this, SLOT(performSpellCheck()));
+        QTimer::singleShot(0, this, &KateOnTheFlyChecker::performSpellCheck);
     }
 }
 
@@ -709,7 +709,7 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *
             }
         }
         if (emptyAtStart && !m_spellCheckQueue.isEmpty()) {
-            QTimer::singleShot(0, this, SLOT(performSpellCheck()));
+            QTimer::singleShot(0, this, &KateOnTheFlyChecker::performSpellCheck);
         }
     }
 }

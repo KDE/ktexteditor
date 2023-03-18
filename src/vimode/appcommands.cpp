@@ -110,10 +110,10 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
             }
 
             if (mainWin->views().size() > 1) {
-                QTimer::singleShot(0, this, SLOT(closeCurrentView()));
+                QTimer::singleShot(0, this, &AppCommands::closeCurrentView);
             } else {
                 Q_ASSERT(app->documents().size() > 0);
-                QTimer::singleShot(0, this, SLOT(closeCurrentDocument()));
+                QTimer::singleShot(0, this, &AppCommands::closeCurrentDocument);
             }
         }
     } else if ((match = re_exit.match(command)).hasMatch()) {
@@ -122,16 +122,16 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
             for (KTextEditor::Document *doc : docs) {
                 doc->save();
             }
-            QTimer::singleShot(0, this, SLOT(quit()));
+            QTimer::singleShot(0, this, &AppCommands::quit);
         } else {
             if (view->document()->isModified()) {
                 view->document()->documentSave();
             }
 
             if (app->documents().size() > 1) {
-                QTimer::singleShot(0, this, SLOT(closeCurrentDocument()));
+                QTimer::singleShot(0, this, &AppCommands::closeCurrentDocument);
             } else {
-                QTimer::singleShot(0, this, SLOT(quit()));
+                QTimer::singleShot(0, this, &AppCommands::quit);
             }
         }
     } else if ((match = re_edit.match(command)).hasMatch()) {
@@ -185,9 +185,9 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
     } else if ((match = re_vsplit.match(command)).hasMatch()) {
         mainWin->splitView(Qt::Horizontal);
     } else if ((match = re_vclose.match(command)).hasMatch()) {
-        QTimer::singleShot(0, this, SLOT(closeCurrentSplitView()));
+        QTimer::singleShot(0, this, &AppCommands::closeCurrentSplitView);
     } else if ((match = re_only.match(command)).hasMatch()) {
-        QTimer::singleShot(0, this, SLOT(closeOtherSplitViews()));
+        QTimer::singleShot(0, this, &AppCommands::closeOtherSplitViews);
     }
 
     return true;

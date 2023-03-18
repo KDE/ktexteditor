@@ -52,9 +52,9 @@ void KateAnimation::show()
         // launch show effect
         // NOTE: use a singleShot timer to avoid resizing issues when showing the message widget the first time (bug #316666)
         if (m_fadeEffect) {
-            QTimer::singleShot(0, m_fadeEffect, SLOT(fadeIn()));
+            QTimer::singleShot(0, m_fadeEffect, &KateFadeEffect::fadeIn);
         } else {
-            QTimer::singleShot(0, m_widget, SLOT(animatedShow()));
+            QTimer::singleShot(0, m_widget.data(), &KMessageWidget::animatedShow);
         }
     } else {
         m_widget->show();
