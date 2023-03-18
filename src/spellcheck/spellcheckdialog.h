@@ -40,6 +40,7 @@ class SpellCheckBar;
 
 class KateSpellCheckDialog : public QObject
 {
+    Q_OBJECT
 public:
     explicit KateSpellCheckDialog(KTextEditor::ViewPrivate *);
     ~KateSpellCheckDialog() override;
@@ -47,7 +48,7 @@ public:
     void createActions(KActionCollection *);
 
     // spellcheck from cursor, selection
-private:
+private Q_SLOTS:
     void spellcheckFromCursor();
 
     // defined here in anticipation of per view selections ;)
