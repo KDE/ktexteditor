@@ -57,13 +57,16 @@ void KeysTest::MappingTests()
         // Check that '123 is mapped after the timeout, given that we also have mappings that
         // extend it (e.g. '1234, '12345, etc) and which it itself extends ('1, '12, etc).
         clearAllMappings();
-        BeginTest(QLatin1String(""));
+        BeginTest(QString());
         vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
         ;
         QString consectiveDigits;
         for (int i = 1; i < 9; i++) {
             consectiveDigits += QString::number(i);
-            vi_global->mappings()->add(Mappings::NormalModeMapping, '\'' + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", Mappings::Recursive);
+            vi_global->mappings()->add(Mappings::NormalModeMapping,
+                                       QLatin1Char('\'') + consectiveDigits,
+                                       QStringLiteral("iMapped from ") + consectiveDigits + QStringLiteral("<esc>"),
+                                       Mappings::Recursive);
         }
         TestPressKey(QStringLiteral("'123"));
         QCOMPARE(kate_document->text(), QString()); // Shouldn't add anything until after the timeout!
@@ -1538,7 +1541,7 @@ void KeysTest::MacroTests()
     if (false) { // FIXME: test currently fails in newer Qt >= 5.11, but works with Qt 5.10
         clearAllMacros();
         BeginTest(QLatin1String(""));
-        fakeCodeCompletionModel->setCompletions({"completionMacro", "completionRepeatLastChange"});
+        fakeCodeCompletionModel->setCompletions({QStringLiteral("completionMacro"), QStringLiteral("completionRepeatLastChange")});
         fakeCodeCompletionModel->setFailTestOnInvocation(false);
         TestPressKey(QStringLiteral("qqicompletionM\\ctrl- \\enter\\ctrl-c"));
         TestPressKey(QStringLiteral("a completionRep\\ctrl- \\enter\\ctrl-c"));

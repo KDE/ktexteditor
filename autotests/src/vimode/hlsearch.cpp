@@ -34,12 +34,12 @@ void HlSearchTest::highlightModeTests()
 
     // test commands exist
     {
-        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand("set-hls").size(), 0);
-        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand("set-hlsearch").size(), 0);
-        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand("set-nohls").size(), 0);
-        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand("set-nohlsearch").size(), 0);
-        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand("noh").size(), 0);
-        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand("nohlsearch").size(), 0);
+        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand(QStringLiteral("set-hls")).size(), 0);
+        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand(QStringLiteral("set-hlsearch")).size(), 0);
+        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand(QStringLiteral("set-nohls")).size(), 0);
+        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand(QStringLiteral("set-nohlsearch")).size(), 0);
+        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand(QStringLiteral("noh")).size(), 0);
+        QCOMPARE(vi_input_mode->viModeEmulatedCommandBar()->executeCommand(QStringLiteral("nohlsearch")).size(), 0);
     }
     // test highlight initiated by *
     {

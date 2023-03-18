@@ -150,7 +150,7 @@ void KateViewTest::testLowerCaseBlockSelection()
     view1->setSelection(Range(0, 1, 1, 3));
     view1->lowercase();
 
-    QCOMPARE(doc.text(), QString("ny\nnyy\n"));
+    QCOMPARE(doc.text(), QStringLiteral("ny\nnyy\n"));
 }
 
 namespace
