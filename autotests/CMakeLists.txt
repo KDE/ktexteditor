@@ -97,6 +97,7 @@ add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/te
 target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
     Qt6::Test)
 ecm_mark_as_test(kateindenttest)
+  target_precompile_headers(kateindenttest REUSE_FROM KF6TextEditor)
 
 # test macro for indentation tests
 MACRO(KTEXTEDITOR_INDENT_TEST _testname)
@@ -122,40 +123,38 @@ macro(ktexteditor_unit_test testname)
   ecm_add_test(src/${testname}.cpp ${ARGN}
                TEST_NAME ${testname}
                LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
+  target_precompile_headers(${testname} REUSE_FROM KF6TextEditor)
 endmacro()
 
-ecm_add_tests(
-  src/katetextbuffertest.cpp
-  src/range_test.cpp
-  src/cursorwords_test.cpp
-  src/undomanager_test.cpp
-  src/plaintextsearch_test.cpp
-  src/regexpsearch_test.cpp
-  src/scriptdocument_test.cpp
-  src/wordcompletiontest.cpp
-  src/searchbar_test.cpp
-  src/movingcursor_test.cpp
-  src/configinterface_test.cpp
-  src/messagetest.cpp
-  src/kte_documentcursor.cpp
-  src/bug313769.cpp
-  src/katedocument_test.cpp
-  src/movingrange_test.cpp
-  src/kateview_test.cpp
-  src/revision_test.cpp
-  src/modificationsystem_test.cpp
-  src/inlinenote_test.cpp
-  src/variable_test.cpp
-  src/templatehandler_test.cpp
-  src/katefoldingtest.cpp
-  src/bug286887.cpp
-  src/katetextblocktest.cpp
-  src/camelcursortest.cpp
-  src/encodingtest.cpp
-  src/indentdetect_test.cpp
-  src/multicursortest.cpp
-  LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test
-)
+ktexteditor_unit_test(katetextbuffertest)
+ktexteditor_unit_test(range_test)
+ktexteditor_unit_test(cursorwords_test)
+ktexteditor_unit_test(undomanager_test)
+ktexteditor_unit_test(plaintextsearch_test)
+ktexteditor_unit_test(regexpsearch_test)
+ktexteditor_unit_test(scriptdocument_test)
+ktexteditor_unit_test(wordcompletiontest)
+ktexteditor_unit_test(searchbar_test)
+ktexteditor_unit_test(movingcursor_test)
+ktexteditor_unit_test(configinterface_test)
+ktexteditor_unit_test(messagetest)
+ktexteditor_unit_test(kte_documentcursor)
+ktexteditor_unit_test(bug313769)
+ktexteditor_unit_test(katedocument_test)
+ktexteditor_unit_test(movingrange_test)
+ktexteditor_unit_test(kateview_test)
+ktexteditor_unit_test(revision_test)
+ktexteditor_unit_test(modificationsystem_test)
+ktexteditor_unit_test(inlinenote_test)
+ktexteditor_unit_test(variable_test)
+ktexteditor_unit_test(templatehandler_test)
+ktexteditor_unit_test(katefoldingtest)
+ktexteditor_unit_test(bug286887)
+ktexteditor_unit_test(katetextblocktest)
+ktexteditor_unit_test(camelcursortest)
+ktexteditor_unit_test(encodingtest)
+ktexteditor_unit_test(indentdetect_test)
+ktexteditor_unit_test(multicursortest)
 
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
 ktexteditor_unit_test(commands_test src/script_test_base.cpp src/testutils.cpp)
