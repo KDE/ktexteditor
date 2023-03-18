@@ -9,21 +9,15 @@
 
 #include <KSyntaxHighlighting/Theme>
 
+#include <QDebug>
 #include <QMetaEnum>
 
 using namespace KTextEditor;
 
-[[maybe_unused]] int syntaxHighlightingStyleCount()
+int KTextEditor::defaultStyleCount()
 {
     auto metaEnum = QMetaEnum::fromType<KSyntaxHighlighting::Theme::TextStyle>();
     return metaEnum.keyCount();
-}
-
-int KTextEditor::defaultStyleCount()
-{
-    auto styleCount = KSyntaxHighlighting::Theme::TextStyle::Error + 1;
-    Q_ASSERT(syntaxHighlightingStyleCount() == styleCount);
-    return styleCount;
 }
 
 class KTextEditor::AttributePrivate
