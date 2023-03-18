@@ -13,7 +13,6 @@
 #include "kateconfig.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
-#include "katerenderer.h"
 #include "kateview.h"
 #include "spellcheck.h"
 #include "spellingmenu.h"

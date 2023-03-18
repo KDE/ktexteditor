@@ -3777,7 +3777,7 @@ void NormalViMode::updateYankHighlightAttrib()
     if (!m_highlightYankAttribute) {
         m_highlightYankAttribute = new KTextEditor::Attribute;
     }
-    const QColor &yankedColor = m_view->renderer()->config()->savedLineColor();
+    const QColor &yankedColor = m_view->rendererConfig()->savedLineColor();
     m_highlightYankAttribute->setBackground(yankedColor);
     KTextEditor::Attribute::Ptr mouseInAttribute(new KTextEditor::Attribute());
     mouseInAttribute->setFontBold(true);

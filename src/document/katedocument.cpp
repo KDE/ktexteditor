@@ -5138,7 +5138,7 @@ bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
     for (auto view : std::as_const(m_views)) {
         auto v = static_cast<ViewPrivate *>(view);
         v->config()->configStart();
-        v->renderer()->config()->configStart();
+        v->rendererConfig()->configStart();
     }
     // read a number of lines in the top/bottom of the document
     for (int i = 0; i < qMin(9, lines()); ++i) {
@@ -5157,7 +5157,7 @@ bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
     for (auto view : std::as_const(m_views)) {
         auto v = static_cast<ViewPrivate *>(view);
         v->config()->configEnd();
-        v->renderer()->config()->configEnd();
+        v->rendererConfig()->configEnd();
     }
     return true;
 }
@@ -5390,7 +5390,7 @@ void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QSt
             help = state;
         }
         if (v->config()->setValue(var, help)) {
-        } else if (v->renderer()->config()->setValue(var, help)) {
+        } else if (v->rendererConfig()->setValue(var, help)) {
             // No success? Go the old way
         } else if (var == QLatin1String("dynamic-word-wrap") && checkBoolValue(val, &state)) {
             v->config()->setDynWordWrap(state);
@@ -5399,19 +5399,19 @@ void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QSt
 
             // else if ( var = "dynamic-word-wrap-indicators" )
         } else if (var == QLatin1String("icon-bar-color") && checkColorValue(val, c)) {
-            v->renderer()->config()->setIconBarColor(c);
+            v->rendererConfig()->setIconBarColor(c);
         }
         // RENDERER
         else if (var == QLatin1String("background-color") && checkColorValue(val, c)) {
-            v->renderer()->config()->setBackgroundColor(c);
+            v->rendererConfig()->setBackgroundColor(c);
         } else if (var == QLatin1String("selection-color") && checkColorValue(val, c)) {
-            v->renderer()->config()->setSelectionColor(c);
+            v->rendererConfig()->setSelectionColor(c);
         } else if (var == QLatin1String("current-line-color") && checkColorValue(val, c)) {
-            v->renderer()->config()->setHighlightedLineColor(c);
+            v->rendererConfig()->setHighlightedLineColor(c);
         } else if (var == QLatin1String("bracket-highlight-color") && checkColorValue(val, c)) {
-            v->renderer()->config()->setHighlightedBracketColor(c);
+            v->rendererConfig()->setHighlightedBracketColor(c);
         } else if (var == QLatin1String("word-wrap-marker-color") && checkColorValue(val, c)) {
-            v->renderer()->config()->setWordWrapMarkerColor(c);
+            v->rendererConfig()->setWordWrapMarkerColor(c);
         } else if (var == QLatin1String("font") || (checkIntValue(val, &n) && n > 0 && var == QLatin1String("font-size"))) {
             QFont _f(v->renderer()->currentFont());
 
@@ -5422,9 +5422,9 @@ void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QSt
                 _f.setPointSize(n);
             }
 
-            v->renderer()->config()->setFont(_f);
+            v->rendererConfig()->setFont(_f);
         } else if (var == QLatin1String("scheme")) {
-            v->renderer()->config()->setSchema(val);
+            v->rendererConfig()->setSchema(val);
         }
     }
 }
@@ -5740,7 +5740,7 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
         for (auto view : std::as_const(m_views)) {
             auto v = static_cast<ViewPrivate *>(view);
             v->config()->configStart();
-            v->renderer()->config()->configStart();
+            v->rendererConfig()->configStart();
         }
 
         bool bom_settings = false;
@@ -5755,7 +5755,7 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
         for (auto view : std::as_const(m_views)) {
             auto v = static_cast<ViewPrivate *>(view);
             v->config()->configEnd();
-            v->renderer()->config()->configEnd();
+            v->rendererConfig()->configEnd();
         }
     }
 

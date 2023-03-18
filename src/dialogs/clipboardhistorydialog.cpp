@@ -6,8 +6,8 @@
 */
 
 #include "clipboardhistorydialog.h"
+#include "kateconfig.h"
 #include "katedocument.h"
-#include "katerenderer.h"
 #include "kateview.h"
 
 #include <QBoxLayout>
@@ -206,7 +206,7 @@ ClipboardHistoryDialog::ClipboardHistoryDialog(QWidget *mainWindow, KTextEditor:
     m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
 
-    const QFont font = viewPrivate->renderer()->config()->baseFont();
+    const QFont font = viewPrivate->rendererConfig()->baseFont();
 
     m_treeView.setModel(m_proxyModel);
     m_treeView.setItemDelegate(new SingleLineDelegate(font));

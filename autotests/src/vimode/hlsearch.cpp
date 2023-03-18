@@ -11,7 +11,6 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <katerenderer.h>
 #include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
@@ -33,7 +32,7 @@ void HlSearchTest::highlightModeTests()
     const QList<Kate::TextRange *> rangesInitial = rangesOnLine(0);
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
 
-    const QColor searchHighlightColor = kate_view->renderer()->config()->searchHighlightColor();
+    const QColor searchHighlightColor = kate_view->rendererConfig()->searchHighlightColor();
 
     // test commands exist
     {
@@ -672,7 +671,7 @@ QList<Kate::TextRange *> HlSearchTest::rangesOnLine(int line)
 
 void HlSearchTest::setWindowSize()
 {
-    const QFont font = kate_view->renderer()->config()->baseFont();
+    const QFont font = kate_view->rendererConfig()->baseFont();
     QFontMetrics fm(font);
     auto fontHeight = fm.height();
 

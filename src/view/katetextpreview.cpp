@@ -111,7 +111,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
 
     QPainter paint(this);
     paint.setClipRect(r);
-    paint.fillRect(r, renderer->config()->backgroundColor());
+    paint.fillRect(r, m_view->rendererConfig()->backgroundColor());
 
     //     renderer->setShowTabs(doc()->config()->showTabs());
     //     renderer->setShowTrailingSpaces(doc()->config()->showSpaces());

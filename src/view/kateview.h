@@ -36,6 +36,7 @@ namespace Kate
 class TextCursor;
 }
 class KateBookmarks;
+class KateRendererConfig;
 class KateViewConfig;
 class KateRenderer;
 class KateSpellCheckDialog;
@@ -753,6 +754,7 @@ public:
 
 public:
     KateRenderer *renderer();
+    KateRendererConfig *rendererConfig();
 
     bool iconBorder();
     bool lineNumbersOn();

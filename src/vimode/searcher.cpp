@@ -7,8 +7,8 @@
 #include "searcher.h"
 #include "globalstate.h"
 #include "history.h"
+#include "kateconfig.h"
 #include "katedocument.h"
-#include "katerenderer.h"
 #include "kateview.h"
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/modebase.h>
@@ -213,7 +213,7 @@ void Searcher::hideCurrentHighlight()
 void Searcher::updateHighlightColors()
 {
     const QColor foregroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
-    const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
+    const QColor &searchColor = m_view->rendererConfig()->searchHighlightColor();
     // init match attribute
     highlightMatchAttribute->setForeground(foregroundColor);
     highlightMatchAttribute->setBackground(searchColor);

@@ -6,6 +6,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include <QKeyEvent>
 #include <QQueue>
 #include <QRegularExpression>
 
@@ -17,7 +18,6 @@
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "kateregexpsearch.h"
-#include "katerenderer.h"
 #include "katetemplatehandler.h"
 #include "kateundomanager.h"
 #include "kateview.h"
@@ -327,7 +327,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
 
 void KateTemplateHandler::setupFieldRanges()
 {
-    auto config = m_view->renderer()->config();
+    auto config = m_view->rendererConfig();
     auto editableAttribute = getAttribute(config->templateEditablePlaceholderColor(), 255);
     editableAttribute->setDynamicAttribute(Attribute::ActivateCaretIn, getAttribute(config->templateFocusedEditablePlaceholderColor(), 255));
     auto notEditableAttribute = getAttribute(config->templateNotEditablePlaceholderColor(), 255);

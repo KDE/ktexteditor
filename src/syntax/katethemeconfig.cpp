@@ -15,7 +15,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
-#include "katerenderer.h"
 #include "katestyletreewidget.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"
@@ -32,6 +31,7 @@
 #include <QLabel>
 #include <QMetaEnum>
 #include <QPushButton>
+#include <QShowEvent>
 #include <QTabWidget>
 
 // END
@@ -1088,11 +1088,11 @@ int main(uint64_t magicArgument)
 
     connect(defaultSchemaCombo, &QComboBox::currentIndexChanged, this, [this](int idx) {
         const QString schema = defaultSchemaCombo->itemData(idx).toString();
-        m_themePreview->renderer()->config()->setSchema(schema);
+        m_themePreview->rendererConfig()->setSchema(schema);
         if (schema.isEmpty()) {
-            m_themePreview->renderer()->config()->setValue(KateRendererConfig::AutoColorThemeSelection, true);
+            m_themePreview->rendererConfig()->setValue(KateRendererConfig::AutoColorThemeSelection, true);
         } else {
-            m_themePreview->renderer()->config()->setValue(KateRendererConfig::AutoColorThemeSelection, false);
+            m_themePreview->rendererConfig()->setValue(KateRendererConfig::AutoColorThemeSelection, false);
         }
     });
 }
@@ -1319,7 +1319,7 @@ void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString 
     schemaCombo->blockSignals(false);
     defaultSchemaCombo->blockSignals(false);
 
-    m_themePreview->renderer()->config()->setSchema(defaultSchemaName);
+    m_themePreview->rendererConfig()->setSchema(defaultSchemaName);
 }
 
 void KateThemeConfigPage::reset()

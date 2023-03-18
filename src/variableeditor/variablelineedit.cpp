@@ -10,7 +10,6 @@
 #include "kateautoindent.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katerenderer.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"
 #include "variableitem.h"
@@ -107,7 +106,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
         activeDoc = activeView->doc();
         viewConfig = activeView->config();
         docConfig = activeDoc->config();
-        rendererConfig = activeView->renderer()->config();
+        rendererConfig = activeView->rendererConfig();
     }
 
     // Add 'auto-brackets' to list

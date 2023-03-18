@@ -13,7 +13,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katematch.h"
-#include "katerenderer.h"
 #include "kateundomanager.h"
 #include "kateview.h"
 
@@ -33,6 +32,7 @@
 #include <QComboBox>
 #include <QCompleter>
 #include <QElapsedTimer>
+#include <QKeyEvent>
 #include <QMenu>
 #include <QRegularExpression>
 #include <QShortcut>
@@ -1642,8 +1642,8 @@ bool KateSearchBar::clearHighlights()
 void KateSearchBar::updateHighlightColors()
 {
     const QColor foregroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
-    const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
-    const QColor &replaceColor = m_view->renderer()->config()->replaceHighlightColor();
+    const QColor &searchColor = m_view->rendererConfig()->searchHighlightColor();
+    const QColor &replaceColor = m_view->rendererConfig()->replaceHighlightColor();
 
     // init match attribute
     highlightMatchAttribute->setForeground(foregroundColor);

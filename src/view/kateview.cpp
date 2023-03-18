@@ -2292,6 +2292,11 @@ KateRenderer *KTextEditor::ViewPrivate::renderer()
     return m_renderer;
 }
 
+KateRendererConfig *KTextEditor::ViewPrivate::rendererConfig()
+{
+    return m_renderer->config();
+}
+
 void KTextEditor::ViewPrivate::updateConfig()
 {
     if (m_startingUp) {
@@ -4413,13 +4418,13 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
     } else if (key == QLatin1String("dynamic-word-wrap")) {
         return config()->dynWordWrap();
     } else if (key == QLatin1String("background-color")) {
-        return renderer()->config()->backgroundColor();
+        return rendererConfig()->backgroundColor();
     } else if (key == QLatin1String("selection-color")) {
-        return renderer()->config()->selectionColor();
+        return rendererConfig()->selectionColor();
     } else if (key == QLatin1String("search-highlight-color")) {
-        return renderer()->config()->searchHighlightColor();
+        return rendererConfig()->searchHighlightColor();
     } else if (key == QLatin1String("replace-highlight-color")) {
-        return renderer()->config()->replaceHighlightColor();
+        return rendererConfig()->replaceHighlightColor();
     } else if (key == QLatin1String("default-mark-type")) {
         return config()->defaultMarkType();
     } else if (key == QLatin1String("allow-mark-menu")) {
@@ -4429,13 +4434,13 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
     } else if (key == QLatin1String("folding-preview")) {
         return config()->foldingPreview();
     } else if (key == QLatin1String("icon-border-color")) {
-        return renderer()->config()->iconBarColor();
+        return rendererConfig()->iconBarColor();
     } else if (key == QLatin1String("folding-marker-color")) {
-        return renderer()->config()->foldingColor();
+        return rendererConfig()->foldingColor();
     } else if (key == QLatin1String("line-number-color")) {
-        return renderer()->config()->lineNumberColor();
+        return rendererConfig()->lineNumberColor();
     } else if (key == QLatin1String("current-line-number-color")) {
-        return renderer()->config()->currentLineNumberColor();
+        return rendererConfig()->currentLineNumberColor();
     } else if (key == QLatin1String("modification-markers")) {
         return config()->lineModification();
     } else if (key == QLatin1String("keyword-completion")) {
@@ -4449,9 +4454,9 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
     } else if (key == QLatin1String("scrollbar-preview")) {
         return config()->scrollBarPreview();
     } else if (key == QLatin1String("font")) {
-        return renderer()->config()->baseFont();
+        return rendererConfig()->baseFont();
     } else if (key == QLatin1String("theme")) {
-        return renderer()->config()->schema();
+        return rendererConfig()->schema();
     }
 
     // return invalid variant
@@ -4464,28 +4469,28 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     if (config()->setValue(key, value)) {
         return;
 
-    } else if (renderer()->config()->setValue(key, value)) {
+    } else if (rendererConfig()->setValue(key, value)) {
         return;
     }
 
     // No success? Go the old way
     if (value.canConvert<QColor>()) {
         if (key == QLatin1String("background-color")) {
-            renderer()->config()->setBackgroundColor(value.value<QColor>());
+            rendererConfig()->setBackgroundColor(value.value<QColor>());
         } else if (key == QLatin1String("selection-color")) {
-            renderer()->config()->setSelectionColor(value.value<QColor>());
+            rendererConfig()->setSelectionColor(value.value<QColor>());
         } else if (key == QLatin1String("search-highlight-color")) {
-            renderer()->config()->setSearchHighlightColor(value.value<QColor>());
+            rendererConfig()->setSearchHighlightColor(value.value<QColor>());
         } else if (key == QLatin1String("replace-highlight-color")) {
-            renderer()->config()->setReplaceHighlightColor(value.value<QColor>());
+            rendererConfig()->setReplaceHighlightColor(value.value<QColor>());
         } else if (key == QLatin1String("icon-border-color")) {
-            renderer()->config()->setIconBarColor(value.value<QColor>());
+            rendererConfig()->setIconBarColor(value.value<QColor>());
         } else if (key == QLatin1String("folding-marker-color")) {
-            renderer()->config()->setFoldingColor(value.value<QColor>());
+            rendererConfig()->setFoldingColor(value.value<QColor>());
         } else if (key == QLatin1String("line-number-color")) {
-            renderer()->config()->setLineNumberColor(value.value<QColor>());
+            rendererConfig()->setLineNumberColor(value.value<QColor>());
         } else if (key == QLatin1String("current-line-number-color")) {
-            renderer()->config()->setCurrentLineNumberColor(value.value<QColor>());
+            rendererConfig()->setCurrentLineNumberColor(value.value<QColor>());
         }
     }
     if (value.userType() == QMetaType::Bool) {
@@ -4499,9 +4504,9 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setShowLineCount(value.toBool());
         }
     } else if (key == QLatin1String("font") && value.canConvert<QFont>()) {
-        renderer()->config()->setFont(value.value<QFont>());
+        rendererConfig()->setFont(value.value<QFont>());
     } else if (key == QLatin1String("theme") && value.userType() == QMetaType::QString) {
-        renderer()->config()->setSchema(value.toString());
+        rendererConfig()->setSchema(value.toString());
     }
 }
 
@@ -4899,7 +4904,7 @@ void KTextEditor::ViewPrivate::createHighlights()
 
     // set correct highlight color from Kate's color schema
     QColor fgColor = defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground().color();
-    QColor bgColor = renderer()->config()->searchHighlightColor();
+    QColor bgColor = rendererConfig()->searchHighlightColor();
     attr->setForeground(fgColor);
     attr->setBackground(bgColor);
 
@@ -5033,7 +5038,7 @@ void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
 
 KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle defaultStyle) const
 {
-    KateRendererConfig *renderConfig = const_cast<KTextEditor::ViewPrivate *>(this)->renderer()->config();
+    KateRendererConfig *renderConfig = const_cast<KTextEditor::ViewPrivate *>(this)->rendererConfig();
 
     KTextEditor::Attribute::Ptr style = doc()->highlight()->attributes(renderConfig->schema()).at(defaultStyle);
     if (!style->hasProperty(QTextFormat::BackgroundBrush)) {

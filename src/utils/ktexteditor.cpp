@@ -178,7 +178,7 @@ bool View::insertTemplate(KTextEditor::Cursor insertPosition, const QString &tem
 
 KSyntaxHighlighting::Theme View::theme() const
 {
-    return KateHlManager::self()->repository().theme(d->renderer()->config()->schema());
+    return KateHlManager::self()->repository().theme(d->rendererConfig()->schema());
 }
 
 void View::setCursorPositions(const QList<KTextEditor::Cursor> &positions)

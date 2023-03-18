@@ -40,7 +40,7 @@ void MatchHighlighter::updateMatchHighlight(KTextEditor::Range matchRange)
 
 void MatchHighlighter::updateMatchHighlightAttrib()
 {
-    const QColor &matchColour = m_view->renderer()->config()->searchHighlightColor();
+    const QColor &matchColour = m_view->rendererConfig()->searchHighlightColor();
     if (!m_highlightMatchAttribute) {
         m_highlightMatchAttribute = new KTextEditor::Attribute;
     }

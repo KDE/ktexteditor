@@ -16,7 +16,6 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <katerenderer.h>
 #include <kateview.h>
 #include <ktexteditor/range.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
@@ -779,7 +778,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     FinishTest("foo\nbar\nbbc");
 
     // Search-highlighting tests.
-    const QColor searchHighlightColour = kate_view->renderer()->config()->searchHighlightColor();
+    const QColor searchHighlightColour = kate_view->rendererConfig()->searchHighlightColor();
     BeginTest(QStringLiteral("foo bar xyz"));
 
     // Sanity test.
@@ -873,7 +872,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral("foo bar xyz"));
     TestPressKey(QStringLiteral("/xyz"));
     const QColor newSearchHighlightColour = QColor(255, 0, 0);
-    kate_view->renderer()->config()->setSearchHighlightColor(newSearchHighlightColour);
+    kate_view->rendererConfig()->setSearchHighlightColor(newSearchHighlightColour);
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().constFirst()->attribute()->background().color(), newSearchHighlightColour);
     TestPressKey(QStringLiteral("\\enter"));

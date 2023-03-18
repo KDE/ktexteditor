@@ -12,7 +12,6 @@
 #include "katedocument.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
-#include "katerenderer.h"
 #include "katescript.h"
 #include "scriptcursor.h"
 #include "scriptrange.h"

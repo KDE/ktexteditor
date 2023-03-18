@@ -10,7 +10,6 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katerenderer.h"
 #include "kateview.h"
 
 #include <ktexteditor/movingrange.h>
@@ -295,7 +294,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
         static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
 
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
-    a->setBackground(static_cast<KTextEditor::ViewPrivate *>(view)->renderer()->config()->selectionColor());
+    a->setBackground(static_cast<KTextEditor::ViewPrivate *>(view)->rendererConfig()->selectionColor());
     d->liRange->setAttribute(a);
 
     QAction *action;

@@ -7,11 +7,11 @@
 
 #include "view.h"
 #include <QClipboard>
+#include <QFontDatabase>
 #include <inputmode/kateviinputmode.h>
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <katerenderer.h>
 #include <kateview.h>
 
 #include <QMainWindow>
@@ -23,7 +23,7 @@ QTEST_MAIN(ViewTest)
 
 void ViewTest::yankHighlightingTests()
 {
-    const QColor yankHighlightColour = kate_view->renderer()->config()->savedLineColor();
+    const QColor yankHighlightColour = kate_view->rendererConfig()->savedLineColor();
 
     BeginTest(QStringLiteral("foo bar xyz"));
     const QList<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
@@ -60,7 +60,7 @@ void ViewTest::yankHighlightingTests()
     // Update colour on config change.
     DoTest("foo bar xyz", "yiw", "foo bar xyz");
     const QColor newYankHighlightColour = QColor(255, 0, 0);
-    kate_view->renderer()->config()->setSavedLineColor(newYankHighlightColour);
+    kate_view->rendererConfig()->setSavedLineColor(newYankHighlightColour);
     QCOMPARE(rangesOnFirstLine().first()->attribute()->background().color(), newYankHighlightColour);
 
     // Visual Mode.
@@ -89,9 +89,9 @@ void ViewTest::visualLineUpDownTests()
 {
     // Need to ensure we have dynamic wrap, a fixed width font, and a decent size kate_view.
     ensureKateViewVisible();
-    const QFont oldFont = kate_view->renderer()->config()->baseFont();
+    const QFont oldFont = kate_view->rendererConfig()->baseFont();
     QFont fixedWidthFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
-    kate_view->renderer()->config()->setFont(fixedWidthFont);
+    kate_view->rendererConfig()->setFont(fixedWidthFont);
     const bool oldDynWordWrap = KateViewConfig::global()->dynWordWrap();
     KateViewConfig::global()->setDynWordWrap(true);
     const bool oldReplaceTabsDyn = kate_document->config()->replaceTabsDyn();
@@ -318,7 +318,7 @@ void ViewTest::visualLineUpDownTests()
     }
 
     // Restore back to how we were before.
-    kate_view->renderer()->config()->setFont(oldFont);
+    kate_view->rendererConfig()->setFont(oldFont);
     KateViewConfig::global()->setDynWordWrap(oldDynWordWrap);
     kate_document->config()->setReplaceTabsDyn(oldReplaceTabsDyn);
     kate_document->config()->setTabWidth(oldTabWidth);
@@ -331,13 +331,13 @@ void ViewTest::ScrollViewTests()
     // First of all, we have to initialize some sizes and fonts.
     ensureKateViewVisible();
 
-    const QFont oldFont = kate_view->renderer()->config()->baseFont();
+    const QFont oldFont = kate_view->rendererConfig()->baseFont();
     QFont fixedWidthFont(QStringLiteral("Monospace"));
 
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
     fixedWidthFont.setPixelSize(14);
     Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(), "setting up ScrollViewTests", "Need a fixed pitch font!");
-    kate_view->renderer()->config()->setFont(fixedWidthFont);
+    kate_view->rendererConfig()->setFont(fixedWidthFont);
 
     // Generating our text here.
     QString text;
@@ -396,7 +396,7 @@ void ViewTest::ScrollViewTests()
     FinishTest(text.toUtf8().constData());
 
     // Restore back to how we were before.
-    kate_view->renderer()->config()->setFont(oldFont);
+    kate_view->rendererConfig()->setFont(oldFont);
 }
 
 void ViewTest::clipboardTests_data()

@@ -315,7 +315,7 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
 
     width += leftMargin + rightMargin;
     QPixmap pix(width, height);
-    pix.fill(renderer.config()->backgroundColor());
+    pix.fill(renderer.view()->rendererConfig()->backgroundColor());
 
     QPainter paint(&pix);
 

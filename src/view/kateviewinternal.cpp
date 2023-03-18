@@ -2599,7 +2599,7 @@ void KateViewInternal::updateFoldingMarkersHighlighting()
             }
 
             KTextEditor::Attribute::Ptr fill = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
-            fill->setBackground(view()->m_renderer->config()->highlightedBracketColor());
+            fill->setBackground(view()->rendererConfig()->highlightedBracketColor());
 
             m_fmStart->setAttribute(fill);
             m_fmEnd->setAttribute(fill);
@@ -2820,7 +2820,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor newCursor, bool fo
 void KateViewInternal::updateBracketMarkAttributes()
 {
     KTextEditor::Attribute::Ptr bracketFill = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
-    bracketFill->setBackground(view()->m_renderer->config()->highlightedBracketColor());
+    bracketFill->setBackground(view()->rendererConfig()->highlightedBracketColor());
     bracketFill->setBackgroundFillWhitespace(false);
     if (QFontInfo(renderer()->currentFont()).fixedPitch()) {
         // make font bold only for fixed fonts, otherwise text jumps around
@@ -2830,9 +2830,9 @@ void KateViewInternal::updateBracketMarkAttributes()
     m_bmStart->setAttribute(bracketFill);
     m_bmEnd->setAttribute(bracketFill);
 
-    if (view()->m_renderer->config()->showWholeBracketExpression()) {
+    if (view()->rendererConfig()->showWholeBracketExpression()) {
         KTextEditor::Attribute::Ptr expressionFill = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
-        expressionFill->setBackground(view()->m_renderer->config()->highlightedBracketColor());
+        expressionFill->setBackground(view()->rendererConfig()->highlightedBracketColor());
         expressionFill->setBackgroundFillWhitespace(false);
 
         m_bm->setAttribute(expressionFill);
@@ -2868,7 +2868,7 @@ void KateViewInternal::updateBracketMarks()
         }
 
         // flash matching bracket
-        if (!renderer()->config()->animateBracketMatching()) {
+        if (!m_view->rendererConfig()->animateBracketMatching()) {
             return;
         }
 
@@ -2877,7 +2877,7 @@ void KateViewInternal::updateBracketMarks()
             m_bmLastFlashPos->setPosition(flashPos);
 
             KTextEditor::Attribute::Ptr attribute = attributeAt(flashPos);
-            attribute->setBackground(view()->m_renderer->config()->highlightedBracketColor());
+            attribute->setBackground(view()->rendererConfig()->highlightedBracketColor());
             if (m_bmStart->attribute()->fontBold()) {
                 attribute->setFontBold(true);
             }
@@ -3944,7 +3944,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
             if (!(z >= lineRangesSize)) {
                 cache()->viewLine(z).setDirty(false);
             }
-            paint.fillRect(0, 0, unionRect.width(), h, renderer()->config()->backgroundColor());
+            paint.fillRect(0, 0, unionRect.width(), h, m_view->rendererConfig()->backgroundColor());
         }
 
         // paint text lines
@@ -3968,7 +3968,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 // compute rect for line, fill the stuff
                 // important: as we allow some ARGB colors for other stuff, it is REALLY important to fill the full range once!
                 const QRectF lineRect(0, 0, unionRect.width(), h * thisLine.kateLineLayout()->viewLineCount());
-                paint.fillRect(lineRect, renderer()->config()->backgroundColor());
+                paint.fillRect(lineRect, m_view->rendererConfig()->backgroundColor());
 
                 // THIS IS ULTRA EVIL AND ADDS STRANGE RENDERING ARTIFACTS WITH SCALING!!!!
                 // SEE BUG https://bugreports.qt.io/browse/QTBUG-66036

@@ -474,12 +474,12 @@ private:
      * Configuration
      */
 public:
+    void updateConfig();
+
     inline KateRendererConfig *config() const
     {
         return m_config.get();
     }
-
-    void updateConfig();
 
 private:
     std::unique_ptr<KateRendererConfig> const m_config;

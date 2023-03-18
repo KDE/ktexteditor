@@ -825,7 +825,7 @@ void KateRendererConfig::reloadSchema()
     if (isGlobal()) {
         setSchemaInternal(m_schema);
         for (KTextEditor::ViewPrivate *view : KTextEditor::EditorPrivate::self()->views()) {
-            view->renderer()->config()->reloadSchema();
+            view->rendererConfig()->reloadSchema();
         }
     }
 

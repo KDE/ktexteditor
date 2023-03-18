@@ -566,10 +566,10 @@ void KateScrollBar::updatePixmap()
 
     const QBrush backgroundColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->background();
     const QBrush defaultTextColor = m_view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal)->foreground();
-    const QBrush selectionBgColor = m_view->renderer()->config()->selectionColor();
+    const QBrush selectionBgColor = m_view->rendererConfig()->selectionColor();
 
-    QColor modifiedLineColor = m_view->renderer()->config()->modifiedLineColor();
-    QColor savedLineColor = m_view->renderer()->config()->savedLineColor();
+    QColor modifiedLineColor = m_view->rendererConfig()->modifiedLineColor();
+    QColor savedLineColor = m_view->rendererConfig()->savedLineColor();
     // move the modified line color away from the background color
     modifiedLineColor.setHsv(modifiedLineColor.hue(), 255, 255 - backgroundColor.color().value() / 3);
     savedLineColor.setHsv(savedLineColor.hue(), 100, 255 - backgroundColor.color().value() / 3);
@@ -1995,10 +1995,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
     // Fetch often used data only once, improve readability
     const int w = width();
-    const QColor iconBarColor = m_view->renderer()->config()->iconBarColor(); // Effective our background
-    const QColor lineNumberColor = m_view->renderer()->config()->lineNumberColor();
-    const QColor backgroundColor = m_view->renderer()->config()->backgroundColor(); // Of the edit area
-    const QColor currentLineHighlight = m_view->renderer()->config()->highlightedLineColor(); // Of the edit area
+    const QColor iconBarColor = m_view->rendererConfig()->iconBarColor(); // Effective our background
+    const QColor lineNumberColor = m_view->rendererConfig()->lineNumberColor();
+    const QColor backgroundColor = m_view->rendererConfig()->backgroundColor(); // Of the edit area
+    const QColor currentLineHighlight = m_view->rendererConfig()->highlightedLineColor(); // Of the edit area
 
     // Paint the border in chunks line by line
     for (uint z = startz; z < endz; z++) {
@@ -2080,7 +2080,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 QColor usedLineNumberColor;
                 const int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
                 if (distanceToCurrent == 0) {
-                    usedLineNumberColor = m_view->renderer()->config()->currentLineNumberColor();
+                    usedLineNumberColor = m_view->rendererConfig()->currentLineNumberColor();
                 } else {
                     usedLineNumberColor = lineNumberColor;
                 }
@@ -2135,9 +2135,9 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             if (m_view->config()->lineModification() && !m_doc->url().isEmpty()) {
                 const Kate::TextLine tl = m_doc->plainKateTextLine(realLine);
                 if (tl->markedAsModified()) {
-                    p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->modifiedLineColor());
+                    p.fillRect(lnX, y, m_modAreaWidth, h, m_view->rendererConfig()->modifiedLineColor());
                 } else if (tl->markedAsSavedOnDisk()) {
-                    p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->savedLineColor());
+                    p.fillRect(lnX, y, m_modAreaWidth, h, m_view->rendererConfig()->savedLineColor());
                 }
 
                 lnX += m_modAreaWidth; // No m_separatorWidth
@@ -2148,7 +2148,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
             // folding markers
             if (m_foldingMarkersOn) {
-                const QColor foldingColor(m_view->renderer()->config()->foldingColor());
+                const QColor foldingColor(m_view->rendererConfig()->foldingColor());
                 // possible additional folding highlighting
                 if (m_foldingRange && m_foldingRange->overlapsLine(realLine)) {
                     p.fillRect(lnX, y, m_foldingAreaWidth, h, foldingColor);
@@ -2192,7 +2192,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         if (realLine >= 0 && m_view->selection() && !m_view->blockSelection() && m_view->selectionRange().start() < lineLayout.start()
             && m_view->selectionRange().end() >= lineLayout.start()) {
             // selection overpaint to signal the end of the previous line is included in the selection
-            p.fillRect(w - 2 * m_separatorWidth, y, w, h, m_view->renderer()->config()->selectionColor());
+            p.fillRect(w - 2 * m_separatorWidth, y, w, h, m_view->rendererConfig()->selectionColor());
         } else if (isCurrentLine) {
             // normal current line overpaint
             p.fillRect(w - 2 * m_separatorWidth, y, w, h, currentLineHighlight);
@@ -2200,8 +2200,8 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
         // add separator line if needed
         // we do this AFTER all other painting to ensure this leaves no artifacts
-        p.setPen(m_view->renderer()->config()->separatorColor());
-        p.setBrush(m_view->renderer()->config()->separatorColor());
+        p.setPen(m_view->rendererConfig()->separatorColor());
+        p.setBrush(m_view->rendererConfig()->separatorColor());
         p.drawLine(w - 2 * m_separatorWidth, y, w - 2 * m_separatorWidth, y + h);
 
         // we might need to trigger geometry updates
@@ -2310,7 +2310,7 @@ void KateIconBorder::highlightFolding()
 
         // create highlighting color
         // we avoid alpha as overpainting leads to ugly lines (https://bugreports.qt.io/browse/QTBUG-66036)
-        attr->setBackground(QBrush(m_view->renderer()->config()->foldingColor()));
+        attr->setBackground(QBrush(m_view->rendererConfig()->foldingColor()));
 
         m_foldingRange->setView(m_view);
         // use z depth defined in moving ranges interface
@@ -3130,7 +3130,7 @@ void KateViewSchemaAction::slotAboutToShow()
         return;
     }
 
-    QString id = view->renderer()->config()->schema();
+    QString id = view->rendererConfig()->schema();
     const auto menuActions = menu()->actions();
     for (QAction *a : menuActions) {
         a->setChecked(a->data().toString() == id);
@@ -3149,7 +3149,7 @@ void KateViewSchemaAction::setSchema()
     KTextEditor::ViewPrivate *view = m_view;
 
     if (view) {
-        view->renderer()->config()->setSchema(mode);
+        view->rendererConfig()->setSchema(mode);
     }
 }
 // END SCHEMA ACTION
