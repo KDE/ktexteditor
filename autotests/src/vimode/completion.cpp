@@ -477,8 +477,8 @@ void CompletionTest::CompletionTests()
     // Make sure the "Enter"/ "Return" used when invoking completions is not swallowed before being
     // passed to the key mapper.
     kate_view->registerCompletionModel(testModel);
-    vi_global->mappings()->add(Mappings::InsertModeMapping, "cb", "mapped-shouldntbehere", Mappings::Recursive);
-    BeginTest(QString());
+    vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("cb"), QStringLiteral("mapped-shouldntbehere"), Mappings::Recursive);
+    BeginTest(QStringLiteral(""));
     TestPressKey(QStringLiteral("ic"));
     kate_view->userInvokedCompletion();
     waitForCompletionWidgetToActivate();
@@ -529,7 +529,7 @@ void CompletionTest::CompletionTests()
     clearTrackedDocumentChanges();
     clearAllMacros();
     BeginTest(QStringLiteral("funct\nnoa\ncomtail\ncomtail"));
-    fakeCodeCompletionModel->setCompletions({QStringLiteral("completionA", "functionwithargs(...)", "noargfunction()")});
+    fakeCodeCompletionModel->setCompletions({QStringLiteral("completionA"), QStringLiteral("functionwithargs(...)"), QStringLiteral("noargfunction()")});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     // Record 'a'.
     TestPressKey(QStringLiteral("i\\right\\right\\right\\right\\right\\ctrl- \\enterfirstArg")); // Function with args.
@@ -546,7 +546,7 @@ void CompletionTest::CompletionTests()
 
     // Replay.
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("funct\nnoa\ncomtail\ncomtail");
+    kate_document->setText(QStringLiteral("funct\nnoa\ncomtail\ncomtail"));
     clearTrackedDocumentChanges();
     TestPressKey(QStringLiteral("gg."));
     FinishTest("functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail");
