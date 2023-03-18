@@ -6,6 +6,9 @@
 
 #include "ktexteditor/message.h"
 
+#include <QAction>
+#include <QIcon>
+
 namespace KTextEditor
 {
 class MessagePrivate
