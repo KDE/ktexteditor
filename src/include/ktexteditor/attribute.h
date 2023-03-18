@@ -21,13 +21,6 @@ namespace KTextEditor
 {
 
 /**
- * \returns the number of default styles.
- *
- * \sa DefaultStyle
- */
-int defaultStyleCount();
-
-/**
  * \class Attribute attribute.h <KTextEditor/Attribute>
  *
  * \brief A class which provides customized text decorations.

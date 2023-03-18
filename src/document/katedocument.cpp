@@ -1816,12 +1816,7 @@ KSyntaxHighlighting::Theme::TextStyle KTextEditor::DocumentPrivate::defaultStyle
         return KSyntaxHighlighting::Theme::TextStyle::Normal;
     }
 
-    int ds = const_cast<KTextEditor::DocumentPrivate *>(this)->defStyleNum(position.line(), position.column());
-    if (ds < 0 || ds > defaultStyleCount()) {
-        return KSyntaxHighlighting::Theme::TextStyle::Normal;
-    }
-
-    return static_cast<KSyntaxHighlighting::Theme::TextStyle>(ds);
+    return const_cast<KTextEditor::DocumentPrivate *>(this)->defStyleNum(position.line(), position.column());
 }
 
 QString KTextEditor::DocumentPrivate::mode() const

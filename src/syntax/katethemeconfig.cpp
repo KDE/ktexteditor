@@ -511,7 +511,7 @@ KateAttributeList *KateThemeConfigDefaultStylesTab::attributeList(const QString 
     auto it = m_defaultStyleLists.find(schema);
     if (it == m_defaultStyleLists.end()) {
         // get list of all default styles
-        const auto numStyles = KTextEditor::defaultStyleCount();
+        const auto numStyles = QMetaEnum::fromType<KSyntaxHighlighting::Theme::TextStyle>().keyCount();
         KateAttributeList list;
         list.reserve(numStyles);
         const KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(schema);
@@ -639,7 +639,7 @@ void KateThemeConfigDefaultStylesTab::apply()
 
         // patch the text-styles part
         QJsonObject styles;
-        const auto numStyles = KTextEditor::defaultStyleCount();
+        const auto numStyles = QMetaEnum::fromType<KSyntaxHighlighting::Theme::TextStyle>().keyCount();
         for (int z = 0; z < numStyles; z++) {
             QJsonObject style;
             KTextEditor::Attribute::Ptr p = kv.second.at(z);

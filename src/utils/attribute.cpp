@@ -14,12 +14,6 @@
 
 using namespace KTextEditor;
 
-int KTextEditor::defaultStyleCount()
-{
-    auto metaEnum = QMetaEnum::fromType<KSyntaxHighlighting::Theme::TextStyle>();
-    return metaEnum.keyCount();
-}
-
 class KTextEditor::AttributePrivate
 {
 public:
