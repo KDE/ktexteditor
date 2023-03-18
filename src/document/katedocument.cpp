@@ -6469,11 +6469,11 @@ Kate::SwapFile *KTextEditor::DocumentPrivate::swapFile()
  * \return \c -1 if \c line or \c column invalid, otherwise one of
  * standard style attribute number
  */
-int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
+KSyntaxHighlighting::Theme::TextStyle KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
 {
     // Validate parameters to prevent out of range access
     if (line < 0 || line >= lines() || column < 0) {
-        return -1;
+        return KSyntaxHighlighting::Theme::TextStyle::Normal;
     }
 
     // get highlighted line
@@ -6481,7 +6481,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
 
     // make sure the textline is a valid pointer
     if (!tl) {
-        return -1;
+        return KSyntaxHighlighting::Theme::TextStyle::Normal;
     }
 
     // either get char attribute or attribute of context still active at end of line
@@ -6492,10 +6492,10 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
         if (!tl->attributesList().isEmpty()) {
             attribute = tl->attributesList().back().attributeValue;
         } else {
-            return -1;
+            return KSyntaxHighlighting::Theme::TextStyle::Normal;
         }
     } else {
-        return -1;
+        return KSyntaxHighlighting::Theme::TextStyle::Normal;
     }
 
     return highlight()->defaultStyleForAttribute(attribute);
@@ -6503,8 +6503,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
 
 bool KTextEditor::DocumentPrivate::isComment(int line, int column)
 {
-    const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KSyntaxHighlighting::Theme::TextStyle::Comment;
+    return defStyleNum(line, column) == KSyntaxHighlighting::Theme::TextStyle::Comment;
 }
 
 int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)
