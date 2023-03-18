@@ -371,7 +371,7 @@ private:
     bool editIsRunning = false;
     bool m_undoMergeAllEdits = false;
     KTextEditor::Cursor m_editLastChangeStartCursor = KTextEditor::Cursor::invalid();
-    QStack<QSharedPointer<KTextEditor::MovingCursor>> m_editingStack;
+    QStack<std::shared_ptr<KTextEditor::MovingCursor>> m_editingStack;
     int m_editingStackPosition = -1;
 
     //
@@ -1280,7 +1280,7 @@ public Q_SLOTS:
     void messageDestroyed(KTextEditor::Message *message);
 
 private:
-    QHash<KTextEditor::Message *, QList<QSharedPointer<QAction>>> m_messageHash;
+    QHash<KTextEditor::Message *, QList<std::shared_ptr<QAction>>> m_messageHash;
     // END KTextEditor::MessageInterface
 
 public:

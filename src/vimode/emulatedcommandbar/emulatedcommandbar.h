@@ -46,7 +46,7 @@ public:
     bool handleKeyPress(const QKeyEvent *keyEvent);
     bool isSendingSyntheticSearchCompletedKeypress();
 
-    void startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+    void startInteractiveSearchAndReplace(std::shared_ptr<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
     QString executeCommand(const QString &commandToExecute);
 
     void setViInputModeManager(InputModeManager *viInputModeManager);
@@ -72,13 +72,13 @@ private:
     void hideAllWidgetsExcept(QWidget *widgetToKeepVisible);
 
     friend class ActiveMode;
-    QScopedPointer<MatchHighlighter> m_matchHighligher;
+    std::unique_ptr<MatchHighlighter> m_matchHighligher;
 
-    QScopedPointer<Completer> m_completer;
+    std::unique_ptr<Completer> m_completer;
 
-    QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
-    QScopedPointer<SearchMode> m_searchMode;
-    QScopedPointer<CommandMode> m_commandMode;
+    std::unique_ptr<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
+    std::unique_ptr<SearchMode> m_searchMode;
+    std::unique_ptr<CommandMode> m_commandMode;
 
     void switchToMode(ActiveMode *newMode);
     ActiveMode *m_currentMode = nullptr;

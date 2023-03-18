@@ -197,7 +197,7 @@ private:
     // Describes a single template field, e.g. ${foo}.
     struct TemplateField {
         // up-to-date range for the field
-        QSharedPointer<KTextEditor::MovingRange> range;
+        std::shared_ptr<KTextEditor::MovingRange> range;
         // contents of the field, i.e. identifier or function to call
         QString identifier;
         // default value, if applicable; else empty
@@ -228,7 +228,7 @@ private:
 
     /// A range that occupies the whole range of the inserted template.
     /// When the an edit happens outside it, the template handler gets closed.
-    QSharedPointer<KTextEditor::MovingRange> m_wholeTemplateRange;
+    std::shared_ptr<KTextEditor::MovingRange> m_wholeTemplateRange;
 
     /// Set to true when currently updating dependent fields, to prevent recursion.
     bool m_internalEdit;

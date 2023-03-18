@@ -39,7 +39,7 @@ public:
     /**
      * Post a new incoming message. Show either directly, or queue
      */
-    void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions);
+    void postMessage(KTextEditor::Message *message, QList<std::shared_ptr<QAction>> actions);
 
     // for unit test
     QString text() const;
@@ -77,7 +77,7 @@ private:
     // pointer to current Message
     QPointer<KTextEditor::Message> m_currentMessage;
     // shared pointers to QActions as guard
-    QHash<KTextEditor::Message *, QList<QSharedPointer<QAction>>> m_messageHash;
+    QHash<KTextEditor::Message *, QList<std::shared_ptr<QAction>>> m_messageHash;
     // the message widget, showing the actual contents
     KMessageWidget *m_messageWidget;
     // the show / hide effect controller

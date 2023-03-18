@@ -60,7 +60,7 @@ InputModeManager::InputModeManager(KateViInputMode *inputAdapter, KTextEditor::V
 
     m_insideHandlingKeyPressCount = 0;
 
-    m_keyMapperStack.push(QSharedPointer<KeyMapper>(new KeyMapper(this, m_view->doc(), m_view)));
+    m_keyMapperStack.push(std::make_shared<KeyMapper>(this, m_view->doc(), m_view));
 
     m_temporaryNormalMode = false;
 
@@ -437,7 +437,7 @@ void InputModeManager::reset()
 
 KeyMapper *InputModeManager::keyMapper()
 {
-    return m_keyMapperStack.top().data();
+    return m_keyMapperStack.top().get();
 }
 
 void InputModeManager::updateCursor(const KTextEditor::Cursor c)
@@ -455,7 +455,7 @@ KTextEditor::ViewPrivate *InputModeManager::view() const
     return m_view;
 }
 
-void InputModeManager::pushKeyMapper(QSharedPointer<KeyMapper> mapper)
+void InputModeManager::pushKeyMapper(std::shared_ptr<KeyMapper> mapper)
 {
     m_keyMapperStack.push(mapper);
 }

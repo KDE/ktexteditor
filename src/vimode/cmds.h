@@ -107,7 +107,7 @@ public:
     }
 
 protected:
-    bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace) override;
+    bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, std::shared_ptr<InteractiveSedReplacer> interactiveSedReplace) override;
 };
 
 }

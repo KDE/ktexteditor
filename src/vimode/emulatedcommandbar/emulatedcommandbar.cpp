@@ -74,11 +74,11 @@ EmulatedCommandBar::EmulatedCommandBar(KateViInputMode *viInputMode, InputModeMa
 
     m_completer.reset(new Completer(this, m_view, m_edit));
 
-    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view));
+    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.get(), m_viInputModeManager, m_view));
     layout->addWidget(m_interactiveSedReplaceMode->label());
-    m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit));
+    m_searchMode.reset(new SearchMode(this, m_matchHighligher.get(), m_viInputModeManager, m_view, m_edit));
     m_commandMode.reset(
-        new CommandMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
+        new CommandMode(this, m_matchHighligher.get(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.get(), m_completer.get()));
 
     m_edit->installEventFilter(this);
     connect(m_edit, &QLineEdit::textChanged, this, &EmulatedCommandBar::editTextChanged);
@@ -95,10 +95,10 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
     showBarTypeIndicator(mode);
 
     if (mode == KateVi::EmulatedCommandBar::SearchBackward || mode == SearchForward) {
-        switchToMode(m_searchMode.data());
+        switchToMode(m_searchMode.get());
         m_searchMode->init(mode == SearchBackward ? SearchMode::SearchDirection::Backward : SearchMode::SearchDirection::Forward);
     } else {
-        switchToMode(m_commandMode.data());
+        switchToMode(m_commandMode.get());
     }
 
     m_edit->setFocus();
@@ -308,12 +308,12 @@ bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
     return m_searchMode->isSendingSyntheticSearchCompletedKeypress();
 }
 
-void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
+void EmulatedCommandBar::startInteractiveSearchAndReplace(std::shared_ptr<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(),
                "startInteractiveSearchAndReplace",
                "KateCommands shouldn't initiate an interactive sed replace with no initial match");
-    switchToMode(m_interactiveSedReplaceMode.data());
+    switchToMode(m_interactiveSedReplaceMode.get());
     m_interactiveSedReplaceMode->activate(interactiveSedReplace);
 }
 

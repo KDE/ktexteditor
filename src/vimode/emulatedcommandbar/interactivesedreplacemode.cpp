@@ -22,7 +22,7 @@ InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar *emulate
     m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
 }
 
-void InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
+void InteractiveSedReplaceMode::activate(std::shared_ptr<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(),
                "startInteractiveSearchAndReplace",
@@ -96,5 +96,5 @@ void InteractiveSedReplaceMode::finishInteractiveSedReplace()
 {
     deactivate(false);
     closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
-    m_interactiveSedReplacer.clear();
+    m_interactiveSedReplacer.reset();
 }

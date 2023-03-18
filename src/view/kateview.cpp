@@ -4716,7 +4716,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     oldSet = newRangesIn;
 }
 
-void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions)
+void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message, QList<std::shared_ptr<QAction>> actions)
 {
     // just forward to KateMessageWidget :-)
     auto messageWidget = m_messageWidgets[message->position()];

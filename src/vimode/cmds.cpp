@@ -262,7 +262,7 @@ bool Commands::isMapCommandRecursive(const QString &mapCommand)
 // BEGIN SedReplace
 SedReplace *SedReplace::m_instance = nullptr;
 
-bool SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
+bool SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, std::shared_ptr<InteractiveSedReplacer> interactiveSedReplace)
 {
     EmulatedCommandBar *emulatedCommandBar = m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar();
     emulatedCommandBar->startInteractiveSearchAndReplace(interactiveSedReplace);

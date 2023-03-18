@@ -110,7 +110,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
         endLine = r.end().line();
     }
 
-    QSharedPointer<InteractiveSedReplacer> interactiveSedReplacer(new InteractiveSedReplacer(doc, find, replace, !noCase, !repeat, startLine, endLine));
+    std::shared_ptr<InteractiveSedReplacer> interactiveSedReplacer(new InteractiveSedReplacer(doc, find, replace, !noCase, !repeat, startLine, endLine));
 
     if (interactive) {
         const bool hasInitialMatch = interactiveSedReplacer->currentMatch().isValid();
@@ -129,7 +129,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
     return true;
 }
 
-bool KateCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer>)
+bool KateCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, std::shared_ptr<InteractiveSedReplacer>)
 {
     qCDebug(LOG_KTE) << "Interactive sedreplace is only currently supported with Vi mode plus Vi emulated command bar.";
     return false;

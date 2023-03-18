@@ -923,7 +923,7 @@ bool KateCompletionWidget::execute()
     afterTailMCursor->move(tailStr.size());
 
     // Handle completion for multi cursors
-    QSharedPointer<QMetaObject::Connection> connection(new QMetaObject::Connection());
+    std::shared_ptr<QMetaObject::Connection> connection(new QMetaObject::Connection());
     auto autoCompleteMulticursors = [connection, this](KTextEditor::Document *document, const KTextEditor::Range &range) {
         disconnect(*connection);
         const QString text = document->text(range);

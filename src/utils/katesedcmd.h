@@ -12,7 +12,6 @@
 #include "kateregexpsearch.h"
 #include <KTextEditor/Command>
 
-#include <QSharedPointer>
 #include <QStringList>
 
 namespace KTextEditor
@@ -132,7 +131,7 @@ public:
     };
 
 protected:
-    virtual bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace);
+    virtual bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, std::shared_ptr<InteractiveSedReplacer> interactiveSedReplace);
 };
 
 } // namespace KateCommands

@@ -226,7 +226,7 @@ public:
 
     void updateCursor(const KTextEditor::Cursor c);
 
-    void pushKeyMapper(QSharedPointer<KeyMapper> mapper);
+    void pushKeyMapper(std::shared_ptr<KeyMapper> mapper);
     void popKeyMapper();
 
 private:
@@ -245,7 +245,7 @@ private:
 
     // Create a new keymapper for each macro event, to simplify expansion of mappings in macros
     // where the macro itself was triggered by expanding a mapping!
-    QStack<QSharedPointer<KeyMapper>> m_keyMapperStack;
+    QStack<std::shared_ptr<KeyMapper>> m_keyMapperStack;
 
     int m_insideHandlingKeyPressCount;
 

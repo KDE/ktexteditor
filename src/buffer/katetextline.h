@@ -7,13 +7,14 @@
 #ifndef KATE_TEXTLINE_H
 #define KATE_TEXTLINE_H
 
-#include <QSharedPointer>
 #include <QString>
 #include <QVector>
 
 #include <ktexteditor_export.h>
 
 #include <KSyntaxHighlighting/State>
+
+#include <memory>
 
 namespace Kate
 {

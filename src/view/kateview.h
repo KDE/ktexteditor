@@ -1104,7 +1104,7 @@ public:
     /**
      * Used by Document::postMessage().
      */
-    void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions);
+    void postMessage(KTextEditor::Message *message, QList<std::shared_ptr<QAction>> actions);
 
 private:
     /**

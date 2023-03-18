@@ -11,8 +11,6 @@
 
 #include "../cmds.h"
 
-#include <QSharedPointer>
-
 class QKeyEvent;
 class QLabel;
 
@@ -31,7 +29,7 @@ public:
     ~InteractiveSedReplaceMode() override
     {
     }
-    void activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+    void activate(std::shared_ptr<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
     bool isActive() const
     {
         return m_isActive;
@@ -43,7 +41,7 @@ public:
 private:
     void updateInteractiveSedReplaceLabelText();
     void finishInteractiveSedReplace();
-    QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
+    std::shared_ptr<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
     bool m_isActive;
     QLabel *m_interactiveSedReplaceLabel;
 };

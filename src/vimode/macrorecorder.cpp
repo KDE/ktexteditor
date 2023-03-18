@@ -75,7 +75,7 @@ void MacroRecorder::replay(const QChar &macroRegister)
     m_lastPlayedMacroRegister = reg;
     const QString macroAsFeedableKeypresses = m_viInputModeManager->globalState()->macros()->get(reg);
 
-    QSharedPointer<KeyMapper> mapper(new KeyMapper(m_viInputModeManager, m_viInputModeManager->view()->doc(), m_viInputModeManager->view()));
+    std::shared_ptr<KeyMapper> mapper(new KeyMapper(m_viInputModeManager, m_viInputModeManager->view()->doc(), m_viInputModeManager->view()));
     CompletionList completions = m_viInputModeManager->globalState()->macros()->getCompletions(reg);
 
     m_macrosBeingReplayedCount++;

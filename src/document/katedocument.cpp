@@ -329,7 +329,7 @@ void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Curso
     }
 
     // try to be clever: reuse existing cursors if possible
-    QSharedPointer<KTextEditor::MovingCursor> mc;
+    std::shared_ptr<KTextEditor::MovingCursor> mc;
 
     // we might pop last one: reuse that
     if (!m_editingStack.isEmpty() && cursor.line() == m_editingStack.top()->line()) {
@@ -351,7 +351,7 @@ void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Curso
     if (mc) {
         mc->setPosition(cursor);
     } else {
-        mc = QSharedPointer<KTextEditor::MovingCursor>(newMovingCursor(cursor));
+        mc = std::shared_ptr<KTextEditor::MovingCursor>(newMovingCursor(cursor));
     }
 
     // add new one as top of stack
@@ -6548,12 +6548,12 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     }
 
     // reparent actions, as we want full control over when they are deleted
-    QList<QSharedPointer<QAction>> managedMessageActions;
+    QList<std::shared_ptr<QAction>> managedMessageActions;
     const auto messageActions = message->actions();
     managedMessageActions.reserve(messageActions.size());
     for (QAction *action : messageActions) {
         action->setParent(nullptr);
-        managedMessageActions.append(QSharedPointer<QAction>(action));
+        managedMessageActions.append(std::shared_ptr<QAction>(action));
     }
     m_messageHash.insert(message, managedMessageActions);
 
