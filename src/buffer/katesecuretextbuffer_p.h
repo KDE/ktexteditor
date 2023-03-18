@@ -26,10 +26,7 @@ using namespace KAuth;
  */
 class SecureTextBuffer : public QObject
 {
-    Q_OBJECT
-
 public:
-
     /**
      * Common helper method
      */
@@ -45,7 +42,7 @@ private:
 
     static bool moveFile(const QString &sourceFile, const QString &targetFile);
 
-public Q_SLOTS:
+public:
     /**
      * KAuth action to perform both prepare or move work based on given parameters.
      * We keep this code in one method to prevent multiple KAuth user queries during one save action.

@@ -128,15 +128,13 @@ public:
 
 class KateThemeConfigPage : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateThemeConfigPage(QWidget *parent);
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override;
@@ -144,7 +142,7 @@ public Q_SLOTS:
     void exportFullSchema();
     void importFullSchema();
 
-private Q_SLOTS:
+private:
     void layoutThemeChooserTab(QWidget *tab);
     void layoutThemeEditorTab(QWidget *tab);
     void deleteSchema();

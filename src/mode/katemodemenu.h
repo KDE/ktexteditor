@@ -21,8 +21,6 @@ class DocumentPrivate;
 
 class KateModeMenu : public KActionMenu
 {
-    Q_OBJECT
-
 public:
     KateModeMenu(const QString &text, QObject *parent)
         : KActionMenu(text, parent)
@@ -42,10 +40,10 @@ private:
     QList<QMenu *> subMenus;
     QActionGroup *m_actionGroup;
 
-public Q_SLOTS:
+public:
     void slotAboutToShow();
 
-private Q_SLOTS:
+private:
     void setType(QAction *);
 };
 

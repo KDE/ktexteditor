@@ -28,7 +28,6 @@
 
 class ClipboardHistoryModel : public QAbstractTableModel
 {
-    Q_OBJECT
 public:
     enum Role { HighlightingRole = Qt::UserRole + 1, OriginalSorting };
 
@@ -111,8 +110,6 @@ private:
 
 class ClipboardHistoryFilterModel : public QSortFilterProxyModel
 {
-    Q_OBJECT
-
 public:
     explicit ClipboardHistoryFilterModel(QObject *parent = nullptr)
         : QSortFilterProxyModel(parent)
@@ -130,8 +127,6 @@ protected:
 
 class SingleLineDelegate : public QStyledItemDelegate
 {
-    Q_OBJECT
-
 public:
     explicit SingleLineDelegate(const QFont &font)
         : QStyledItemDelegate(nullptr)
@@ -382,5 +377,3 @@ void ClipboardHistoryDialog::clearLineEdit()
 // --------------------------------------------------
 // end of copy from Kate quickdialog.cpp
 // --------------------------------------------------
-
-#include "clipboardhistorydialog.moc"

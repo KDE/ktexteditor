@@ -19,8 +19,6 @@ class InputModeManager;
 
 class VisualViMode : public NormalViMode
 {
-    Q_OBJECT
-
 public:
     explicit VisualViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
 
@@ -93,7 +91,7 @@ protected:
      */
     virtual const std::vector<Motion> &motions() override;
 
-public Q_SLOTS:
+public:
     /**
      * Updates the visual mode's range to reflect a new cursor position. This
      * needs to be called if modifying the range from outside the vi mode, e.g.
@@ -105,7 +103,6 @@ private:
     KTextEditor::Cursor m_start;
     ViMode m_mode, m_lastVisualMode;
 };
-
 }
 
 #endif /* KATEVI_VISUAL_VI_MODE_H */

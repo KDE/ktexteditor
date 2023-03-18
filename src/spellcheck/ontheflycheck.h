@@ -26,8 +26,6 @@ class BackgroundChecker;
 
 class KateOnTheFlyChecker : public QObject, private KTextEditor::MovingRangeFeedback
 {
-    Q_OBJECT
-
     enum ModificationType { TEXT_INSERTED = 0, TEXT_REMOVED };
 
     typedef QPair<KTextEditor::MovingRange *, QString> SpellCheckItem;
@@ -48,7 +46,7 @@ public:
 
     void clearMisspellingForWord(const QString &word);
 
-public Q_SLOTS:
+public:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
     void textRemoved(KTextEditor::Document *document, KTextEditor::Range range);
 
@@ -99,7 +97,7 @@ protected:
     void deleteMovingRangeQuickly(KTextEditor::MovingRange *range);
     void stopCurrentSpellCheck();
 
-protected Q_SLOTS:
+protected:
     void performSpellCheck();
     void addToDictionary(const QString &word);
     void addToSession(const QString &word);

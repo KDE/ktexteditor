@@ -18,7 +18,6 @@ class QTreeView;
  */
 class ExpandingWidgetModel : public QAbstractItemModel
 {
-    Q_OBJECT
 public:
     explicit ExpandingWidgetModel(QWidget *parent);
     ~ExpandingWidgetModel() override;
@@ -55,7 +54,7 @@ public:
     /// Returns the match-color for the given index, or zero if match-quality could not be computed.
     uint matchColor(const QModelIndex &index) const;
 
-public Q_SLOTS:
+public:
     /// Place or hides all expanding-widgets to the correct positions. Should be called after the view was scrolled.
     void placeExpandingWidgets();
 

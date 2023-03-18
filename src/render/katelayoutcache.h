@@ -58,8 +58,6 @@ private:
 
 class KateLayoutCache : public QObject
 {
-    Q_OBJECT
-
 public:
     explicit KateLayoutCache(KateRenderer *renderer, QObject *parent);
 
@@ -135,7 +133,7 @@ public:
     void viewCacheDebugOutput() const;
     // END
 
-private Q_SLOTS:
+private:
     void wrapLine(const KTextEditor::Cursor position);
     void unwrapLine(int line);
     void insertText(const KTextEditor::Cursor position, const QString &text);

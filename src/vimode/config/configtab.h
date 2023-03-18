@@ -21,8 +21,6 @@ class ConfigWidget;
 
 class ConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit ConfigTab(QWidget *parent, Mappings *mappings);
     ~ConfigTab() override;
@@ -36,13 +34,13 @@ private:
     void applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode);
     void reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode);
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override;
     void defaults() override;
 
-private Q_SLOTS:
+private:
     void showWhatsThis(const QString &text);
     void addMappingRow();
     void removeSelectedMappingRows();
@@ -51,7 +49,6 @@ private Q_SLOTS:
 private:
     Mappings *m_mappings;
 };
-
 }
 
 #endif /* KATEVI_CONFIG_TAB_H */

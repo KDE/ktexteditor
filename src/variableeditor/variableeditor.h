@@ -66,11 +66,10 @@ private:
 
 class VariableIntEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableIntEditor(VariableIntItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(int newValue);
 
 private:
@@ -79,11 +78,10 @@ private:
 
 class VariableBoolEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableBoolEditor(VariableBoolItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(int enabled);
 
 private:
@@ -92,11 +90,10 @@ private:
 
 class VariableStringListEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableStringListEditor(VariableStringListItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(const QString &newValue);
 
 private:
@@ -105,11 +102,10 @@ private:
 
 class VariableColorEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableColorEditor(VariableColorItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(const QColor &newValue);
 
 private:
@@ -118,11 +114,10 @@ private:
 
 class VariableFontEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableFontEditor(VariableFontItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(const QFont &newValue);
 
 private:
@@ -131,11 +126,10 @@ private:
 
 class VariableStringEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableStringEditor(VariableStringItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(const QString &newValue);
 
 private:
@@ -144,11 +138,10 @@ private:
 
 class VariableSpellCheckEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableSpellCheckEditor(VariableSpellCheckItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(const QString &newValue);
 
 private:
@@ -157,11 +150,10 @@ private:
 
 class VariableRemoveSpacesEditor : public VariableEditor
 {
-    Q_OBJECT
 public:
     VariableRemoveSpacesEditor(VariableRemoveSpacesItem *item, QWidget *parent);
 
-protected Q_SLOTS:
+protected:
     void setItemValue(int enabled);
 
 private:

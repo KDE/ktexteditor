@@ -32,7 +32,6 @@ namespace KatePrinter
  */
 class KatePrintTextSettings : public QWidget
 {
-    Q_OBJECT
 public:
     explicit KatePrintTextSettings(QWidget *parent = nullptr);
     ~KatePrintTextSettings() override;
@@ -60,7 +59,6 @@ private:
 
 class KatePrintHeaderFooter : public QWidget
 {
-    Q_OBJECT
 public:
     explicit KatePrintHeaderFooter(QWidget *parent = nullptr);
     ~KatePrintHeaderFooter() override;
@@ -79,7 +77,7 @@ public:
     QColor footerBackground();
     bool useFooterBackground();
 
-public Q_SLOTS:
+public:
     void showContextMenu(const QPoint &pos);
 
 private:
@@ -111,7 +109,6 @@ private:
  */
 class KatePrintLayout : public QWidget
 {
-    Q_OBJECT
 public:
     explicit KatePrintLayout(QWidget *parent = nullptr);
     ~KatePrintLayout() override;

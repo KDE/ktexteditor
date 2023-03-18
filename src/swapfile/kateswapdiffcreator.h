@@ -16,19 +16,17 @@ class SwapFile;
 
 class SwapDiffCreator : public QObject
 {
-    Q_OBJECT
-
 public:
     explicit SwapDiffCreator(Kate::SwapFile *swapFile);
     ~SwapDiffCreator() override = default;
 
-public Q_SLOTS:
+public:
     void viewDiff();
 
 private:
     Kate::SwapFile *const m_swapFile;
 
-protected Q_SLOTS:
+protected:
     void slotDataAvailable();
     void slotDiffFinished();
 

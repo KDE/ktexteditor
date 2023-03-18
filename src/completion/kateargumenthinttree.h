@@ -16,7 +16,6 @@ class QRect;
 
 class KateArgumentHintTree : public QTreeView
 {
-    Q_OBJECT
 public:
     explicit KateArgumentHintTree(KateCompletionWidget *parent);
 
@@ -32,7 +31,8 @@ public:
     int resizeColumns();
 
     void clearCompletion();
-public Q_SLOTS:
+
+public:
     void updateGeometry();
     void updateGeometry(QRect rect);
 

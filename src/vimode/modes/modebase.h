@@ -36,8 +36,6 @@ enum Direction { Up, Down, Left, Right, Next, Prev };
 
 class KTEXTEDITOR_EXPORT ModeBase : public QObject
 {
-    Q_OBJECT
-
 public:
     ModeBase() = default;
     ~ModeBase() override = default;
@@ -152,7 +150,6 @@ protected:
     // info message of vi mode
     QPointer<KTextEditor::Message> m_infoMessage;
 };
-
 }
 
 #endif

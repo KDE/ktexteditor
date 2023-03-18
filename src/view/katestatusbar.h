@@ -28,7 +28,6 @@ class KateModeMenuList;
 
 class KateStatusBarOpenUpMenu : public QMenu
 {
-    Q_OBJECT
 public:
     explicit KateStatusBarOpenUpMenu(QWidget *parent);
     void setVisible(bool) override;
@@ -41,7 +40,6 @@ public:
  */
 class StatusBarButton : public QPushButton
 {
-    Q_OBJECT
 public:
     explicit StatusBarButton(KateStatusBar *parent, const QString &text = QString());
     QSize sizeHint() const override;

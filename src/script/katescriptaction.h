@@ -24,12 +24,10 @@ class ViewPrivate;
  */
 class KateScriptAction : public QAction
 {
-    Q_OBJECT
-
 public:
     KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view);
 
-public Q_SLOTS:
+public:
     void exec();
 
 private:
@@ -45,15 +43,13 @@ private:
  */
 class KateScriptActionMenu : public KActionMenu
 {
-    Q_OBJECT
-
 public:
     KateScriptActionMenu(KTextEditor::ViewPrivate *view, const QString &text);
     ~KateScriptActionMenu() override;
 
     void cleanup();
 
-public Q_SLOTS:
+public:
     void repopulate();
 
 private:

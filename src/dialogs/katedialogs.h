@@ -76,17 +76,15 @@ class StatusbarConfigWidget;
 
 class KateGotoBar : public KateViewBarWidget
 {
-    Q_OBJECT
-
 public:
     explicit KateGotoBar(KTextEditor::View *view, QWidget *parent = nullptr);
 
     void closed() override;
 
-public Q_SLOTS:
+public:
     void updateData();
 
-protected Q_SLOTS:
+protected:
     void gotoLine();
     void gotoClipboard();
 
@@ -105,16 +103,14 @@ private:
 
 class KateDictionaryBar : public KateViewBarWidget
 {
-    Q_OBJECT
-
 public:
     explicit KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent = nullptr);
     ~KateDictionaryBar() override;
 
-public Q_SLOTS:
+public:
     void updateData();
 
-protected Q_SLOTS:
+protected:
     void dictionaryChanged(const QString &dictionary);
 
 private:
@@ -124,8 +120,6 @@ private:
 
 class KateIndentConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateIndentConfigTab(QWidget *parent);
     ~KateIndentConfigTab() override;
@@ -134,7 +128,7 @@ public:
 protected:
     Ui::IndentationConfigWidget *ui;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override
@@ -144,15 +138,13 @@ public Q_SLOTS:
     {
     }
 
-private Q_SLOTS:
+private:
     void slotChanged();
     void showWhatsThis(const QString &text);
 };
 
 class KateCompletionConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateCompletionConfigTab(QWidget *parent);
     ~KateCompletionConfigTab() override;
@@ -161,7 +153,7 @@ public:
 protected:
     Ui::CompletionConfigTab *ui;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override
@@ -171,14 +163,12 @@ public Q_SLOTS:
     {
     }
 
-private Q_SLOTS:
+private:
     void showWhatsThis(const QString &text);
 };
 
 class KateEditGeneralConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateEditGeneralConfigTab(QWidget *parent);
     ~KateEditGeneralConfigTab() override;
@@ -195,7 +185,7 @@ private:
         UserData // Ensure to keep it at bottom of this list
     };
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override
@@ -208,8 +198,6 @@ public Q_SLOTS:
 
 class KateNavigationConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateNavigationConfigTab(QWidget *parent);
     ~KateNavigationConfigTab() override;
@@ -220,7 +208,7 @@ private:
 
     void initMulticursorModifierComboBox();
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override
@@ -233,8 +221,6 @@ public Q_SLOTS:
 
 class KateSpellCheckConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateSpellCheckConfigTab(QWidget *parent);
     ~KateSpellCheckConfigTab() override;
@@ -244,7 +230,7 @@ protected:
     Ui::SpellCheckConfigWidget *ui;
     Sonnet::ConfigWidget *m_sonnetConfigWidget;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override
@@ -254,14 +240,12 @@ public Q_SLOTS:
     {
     }
 
-private Q_SLOTS:
+private:
     void showWhatsThis(const QString &text);
 };
 
 class KateEditConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateEditConfigTab(QWidget *parent);
     ~KateEditConfigTab() override;
@@ -269,7 +253,7 @@ public:
     QString fullName() const override;
     QIcon icon() const override;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override;
@@ -286,8 +270,6 @@ private:
 
 class KateViewDefaultsConfig : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateViewDefaultsConfig(QWidget *parent);
     ~KateViewDefaultsConfig() override;
@@ -295,7 +277,7 @@ public:
     QString fullName() const override;
     QIcon icon() const override;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override;
@@ -309,8 +291,6 @@ private:
 
 class KateSaveConfigTab : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateSaveConfigTab(QWidget *parent);
     ~KateSaveConfigTab() override;
@@ -318,7 +298,7 @@ public:
     QString fullName() const override;
     QIcon icon() const override;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override;

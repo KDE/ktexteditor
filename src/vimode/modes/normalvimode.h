@@ -38,8 +38,6 @@ class InputModeManager;
  */
 class KTEXTEDITOR_EXPORT NormalViMode : public ModeBase
 {
-    Q_OBJECT
-
     friend KateViInputMode;
 
 public:
@@ -379,7 +377,7 @@ protected:
     KTextEditor::Cursor m_currentChangeEndMarker;
     KTextEditor::Cursor m_positionWhenIncrementalSearchBegan;
 
-private Q_SLOTS:
+private:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
     void textRemoved(KTextEditor::Document *, KTextEditor::Range);
     void undoBeginning();
@@ -389,7 +387,6 @@ private Q_SLOTS:
     void clearYankHighlight();
     void aboutToDeleteMovingInterfaceContent();
 };
-
 }
 
 #endif /* KATEVI_NORMAL_VI_MODE_H */

@@ -32,14 +32,13 @@ using namespace KatePrinter;
 // BEGIN KatePrinterPrivate
 class KatePrinterPrivate : public QObject
 {
-    Q_OBJECT
 public:
     KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = nullptr);
 
     bool print(QPrinter *printer);
     void setColorScheme(const QString &scheme);
 
-public Q_SLOTS:
+public:
     void paint(QPrinter *printer);
 
 private:
@@ -210,5 +209,3 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
 }
 
 // END KatePrinter
-
-#include "kateprinter.moc"

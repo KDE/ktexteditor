@@ -36,8 +36,6 @@ class Completer;
  */
 class KTEXTEDITOR_EXPORT EmulatedCommandBar : public KateViewBarWidget
 {
-    Q_OBJECT
-
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
     explicit EmulatedCommandBar(KateViInputMode *viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
@@ -104,11 +102,10 @@ private:
     void createAndInitExitStatusMessageDisplayTimer();
     void createAndAddWaitingForRegisterIndicator(QLayout *layout);
 
-private Q_SLOTS:
+private:
     void editTextChanged(const QString &newText);
     void startHideExitStatusMessageTimer();
 };
-
 }
 
 #endif /* KATEVI_EMULATED_COMMAND_BAR_H */

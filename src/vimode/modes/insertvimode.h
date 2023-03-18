@@ -31,8 +31,6 @@ enum BlockInsert { None, Prepend, Append, AppendEOL };
 
 class KTEXTEDITOR_EXPORT InsertViMode : public ModeBase
 {
-    Q_OBJECT
-
 public:
     explicit InsertViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~InsertViMode() override;
@@ -93,10 +91,9 @@ protected:
     QString m_textInsertedByCompletion;
     KTextEditor::Cursor m_textInsertedByCompletionEndPos;
 
-private Q_SLOTS:
+private:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
 };
-
 }
 
 #endif /* KATEVI_INSERT_VI_MODE_H */

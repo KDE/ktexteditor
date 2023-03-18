@@ -17,8 +17,6 @@ class KateViewInternal;
 
 class KateAnnotationItemDelegate : public KTextEditor::AbstractAnnotationItemDelegate
 {
-    Q_OBJECT
-
 public:
     explicit KateAnnotationItemDelegate(QObject *parent);
     ~KateAnnotationItemDelegate() override;

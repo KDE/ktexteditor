@@ -11,8 +11,6 @@
 
 class KateHelpButton : public QToolButton
 {
-    Q_OBJECT
-
 public:
     enum IconState { IconColored = 0, IconHidden };
 
@@ -21,7 +19,7 @@ public:
 public:
     explicit KateHelpButton(QWidget *parent = nullptr);
 
-public Q_SLOTS:
+public:
     void setIconState(IconState state);
     void invokeHelp();
 

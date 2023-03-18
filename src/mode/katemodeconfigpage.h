@@ -20,20 +20,18 @@ class FileTypeConfigWidget;
 
 class ModeConfigPage : public KateConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit ModeConfigPage(QWidget *parent);
     ~ModeConfigPage() override;
     QString name() const override;
 
-public Q_SLOTS:
+public:
     void apply() override;
     void reload() override;
     void reset() override;
     void defaults() override;
 
-private Q_SLOTS:
+private:
     void update();
     void deleteType();
     void newType();

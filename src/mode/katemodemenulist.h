@@ -56,8 +56,6 @@ class KateFileType;
  */
 class KateModeMenuList : public QMenu
 {
-    Q_OBJECT
-
 public:
     /**
      * Horizontal Alignment with respect to the trigger button.
@@ -263,7 +261,7 @@ private:
 
     bool m_initialized = false;
 
-private Q_SLOTS:
+private:
     /**
      * Action when selecting a item in the list. This also applies
      * the syntax highlighting in the document and hides the menu.
@@ -280,8 +278,6 @@ namespace KateModeMenuListData
  */
 class ListView : public QListView
 {
-    Q_OBJECT
-
 private:
     ListView(KateModeMenuList *menu)
         : QListView(menu)
@@ -420,8 +416,6 @@ public:
  */
 class SearchLine : public QLineEdit
 {
-    Q_OBJECT
-
 public:
     ~SearchLine() override
     {
@@ -482,11 +476,11 @@ protected:
      */
     void keyPressEvent(QKeyEvent *event) override;
 
-public Q_SLOTS:
+public:
     virtual void clear();
     virtual void updateSearch(const QString &s = QString());
 
-private Q_SLOTS:
+private:
     void _k_queueSearch(const QString &s);
     void _k_activateSearch();
 };

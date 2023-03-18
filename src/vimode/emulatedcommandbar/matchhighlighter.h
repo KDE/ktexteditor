@@ -22,12 +22,12 @@ namespace KateVi
 {
 class MatchHighlighter : public QObject
 {
-    Q_OBJECT
 public:
     explicit MatchHighlighter(KTextEditor::ViewPrivate *view);
     ~MatchHighlighter() override;
     void updateMatchHighlight(KTextEditor::Range matchRange);
-private Q_SLOTS:
+
+private:
     void updateMatchHighlightAttrib();
 
 private:

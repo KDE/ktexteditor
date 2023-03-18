@@ -17,8 +17,6 @@ class QTimer;
 
 class KateCompletionTree final : public QTreeView
 {
-    Q_OBJECT
-
 public:
     explicit KateCompletionTree(KateCompletionWidget *parent);
 
@@ -44,7 +42,7 @@ public:
 
     void setScrollingEnabled(bool);
 
-private Q_SLOTS:
+private:
     void resizeColumnsSlot();
 
 protected:

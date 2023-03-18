@@ -27,15 +27,13 @@ class ViewPrivate;
 
 class ClipboardHistoryDialog : public QMenu
 {
-    Q_OBJECT
-
 public:
     ClipboardHistoryDialog(QWidget *mainwindow, KTextEditor::ViewPrivate *mainWindow);
 
     void resetValues();
     void openDialog(const QVector<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory);
 
-private Q_SLOTS:
+private:
     void slotReturnPressed();
 
 private:

@@ -32,8 +32,6 @@ namespace Kate
  */
 class SwapFile : public QObject
 {
-    Q_OBJECT
-
 public:
     explicit SwapFile(KTextEditor::DocumentPrivate *document);
     ~SwapFile() override;
@@ -54,7 +52,7 @@ private:
     KTextEditor::DocumentPrivate *m_document;
     bool m_trackingEnabled;
 
-protected Q_SLOTS:
+protected:
     void fileSaved(const QString &filename);
     void fileLoaded(const QString &filename);
     void modifiedChanged();
@@ -67,7 +65,7 @@ protected Q_SLOTS:
     void insertText(const KTextEditor::Cursor position, const QString &text);
     void removeText(KTextEditor::Range range);
 
-public Q_SLOTS:
+public:
     void discard();
     void recover();
     bool recover(QDataStream &, bool checkDigest = true);
@@ -80,20 +78,19 @@ private:
     bool m_needSync;
     static QTimer *s_timer;
 
-protected Q_SLOTS:
+protected:
     void writeFileToDisk();
 
 private:
     static QTimer *syncTimer();
 
-public Q_SLOTS:
+public:
     void showSwapFileMessage();
     void showDiff();
 
 private:
     QPointer<KTextEditor::Message> m_swapMessage;
 };
-
 }
 
 #endif // KATE_SWAPFILE_H

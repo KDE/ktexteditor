@@ -25,8 +25,6 @@ class InputModeManager;
 
 class KTEXTEDITOR_EXPORT KeyMapper : public QObject
 {
-    Q_OBJECT
-
 public:
     KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
     bool handleKeypress(QChar key);
@@ -35,7 +33,7 @@ public:
     bool isExecutingMapping() const;
     bool isPlayingBackRejectedKeys() const;
 
-public Q_SLOTS:
+public:
     void mappingTimerTimeOut();
 
 private:
@@ -61,7 +59,6 @@ private:
     void executeMapping();
     void playBackRejectedKeys();
 };
-
 }
 
 #endif /* KATEVI_KEY_MAPPER_H */

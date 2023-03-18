@@ -22,8 +22,6 @@ class QAction;
 
 class KateBookmarks : public QObject
 {
-    Q_OBJECT
-
 public:
     enum Sorting { Position, Creation };
     explicit KateBookmarks(KTextEditor::ViewPrivate *parent, Sorting sort = Position);
@@ -43,7 +41,7 @@ public:
 protected:
     void insertBookmarks(QMenu &menu);
 
-private Q_SLOTS:
+private:
     void toggleBookmark();
     void clearBookmarks();
 

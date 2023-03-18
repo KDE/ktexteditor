@@ -397,7 +397,6 @@ private:
 
 class KateViewEncodingAction : public KSelectAction
 {
-    Q_OBJECT
 public:
     KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
@@ -412,7 +411,7 @@ private:
     QAction *currentSubAction;
     const bool m_saveAsMode;
 
-private Q_SLOTS:
+private:
     void setEncoding(const QString &e);
     void slotAboutToShow();
 };
@@ -554,8 +553,6 @@ private:
 
 class KTEXTEDITOR_EXPORT KateCommandLineBar : public KateViewBarWidget
 {
-    Q_OBJECT
-
 public:
     explicit KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent = nullptr);
     ~KateCommandLineBar() override;
@@ -563,7 +560,7 @@ public:
     void setText(const QString &text, bool selected = true);
     void execute(const QString &text);
 
-public Q_SLOTS:
+public:
     static void showHelpPage();
 
 private:
@@ -621,8 +618,6 @@ private:
 
 class KateViewSchemaAction : public KActionMenu
 {
-    Q_OBJECT
-
 public:
     KateViewSchemaAction(const QString &text, QObject *parent)
         : KActionMenu(text, parent)
@@ -641,10 +636,10 @@ private:
     QActionGroup *m_group;
     int last;
 
-public Q_SLOTS:
+public:
     void slotAboutToShow();
 
-private Q_SLOTS:
+private:
     void setSchema();
 };
 

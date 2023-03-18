@@ -21,8 +21,6 @@ class QDoubleSpinBox;
 
 class KateConfigPage : public KTextEditor::ConfigPage
 {
-    Q_OBJECT
-
 public:
     explicit KateConfigPage(QWidget *parent = nullptr, const char *name = nullptr);
     ~KateConfigPage() override;
@@ -45,10 +43,10 @@ public:
     void observeChanges(QLineEdit *lineEdit) const;
     void observeChanges(KFontRequester *chooser) const;
 
-protected Q_SLOTS:
+protected:
     void slotChanged();
 
-private Q_SLOTS:
+private:
     void somethingHasChanged();
 
 protected:

@@ -29,7 +29,6 @@ class QPainter;
  */
 class KateTextAnimation : public QObject
 {
-    Q_OBJECT
 public:
     KateTextAnimation(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view);
     ~KateTextAnimation() override;
@@ -37,7 +36,7 @@ public:
     // draw the text to highlight, given the current animation progress
     void draw(QPainter &painter);
 
-public Q_SLOTS:
+public:
     // request repaint from view of the respective region
     void nextFrame(qreal value);
 

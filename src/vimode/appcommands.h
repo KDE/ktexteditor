@@ -21,8 +21,6 @@ namespace KateVi
 {
 class AppCommands : public KTextEditor::Command
 {
-    Q_OBJECT
-
     AppCommands();
     static AppCommands *m_instance;
 
@@ -47,7 +45,7 @@ private:
      */
     static KTextEditor::View *findViewInDifferentSplitView(KTextEditor::MainWindow *window, KTextEditor::View *view);
 
-private Q_SLOTS:
+private:
     void closeCurrentDocument();
     void closeDocuments(const QList<KTextEditor::Document *> &documents);
     void closeCurrentView();
@@ -71,8 +69,6 @@ private:
 
 class BufferCommands : public KTextEditor::Command
 {
-    Q_OBJECT
-
     BufferCommands();
     static BufferCommands *m_instance;
 
@@ -103,7 +99,6 @@ private:
     static void activateDocument(KTextEditor::View *, KTextEditor::Document *);
     static QList<KTextEditor::Document *> documents();
 };
-
 }
 
 #endif /* KATEVI_APP_COMMANDS_H */

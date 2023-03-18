@@ -26,8 +26,6 @@ class InputModeManager;
 
 class Marks : public QObject
 {
-    Q_OBJECT
-
 public:
     explicit Marks(InputModeManager *imm);
 
@@ -59,7 +57,7 @@ private:
 
     void setMark(const QChar &mark, const KTextEditor::Cursor pos);
 
-private Q_SLOTS:
+private:
     void markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action);
 
 private:

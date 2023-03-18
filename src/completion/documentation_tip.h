@@ -11,7 +11,6 @@
 
 class DocTip final : public QFrame
 {
-    Q_OBJECT
 public:
     explicit DocTip(QWidget *parent = nullptr);
     void updatePosition();

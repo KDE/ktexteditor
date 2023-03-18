@@ -65,13 +65,11 @@ private:
 
 class KateWordCompletionView : public QObject
 {
-    Q_OBJECT
-
 public:
     KateWordCompletionView(KTextEditor::View *view, KActionCollection *ac);
     ~KateWordCompletionView() override;
 
-private Q_SLOTS:
+private:
     void completeBackwards();
     void completeForwards();
     void slotCursorMoved();
