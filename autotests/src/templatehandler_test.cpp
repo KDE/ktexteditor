@@ -159,7 +159,6 @@ void TemplateHandlerTest::testAdjacentRanges()
     auto doc = new KTextEditor::DocumentPrivate();
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
-    using S = QString;
     view->insertTemplate({0, 0}, QStringLiteral("${foo} ${foo}"));
     QCOMPARE(doc->text(), QStringLiteral("foo foo"));
     doc->removeText(KTextEditor::Range({0, 3}, {0, 4}));
