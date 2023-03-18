@@ -1809,29 +1809,20 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral(":sort\\enter"));
     QCOMPARE(commandHistory(), QStringList() << "sort");
     TestPressKey(QStringLiteral(":yank\\enter"));
-    QCOMPARE(commandHistory(),
-             QStringList() << "sort"
-                           << "yank");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("sort") << QStringLiteral("yank"));
     // Add to history immediately: don't wait for the command response display to timeout.
     TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enter"));
-    QCOMPARE(commandHistory(),
-             QStringList() << "sort"
-                           << "yank"
-                           << "commandthatdoesnotexist");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("sort") << QStringLiteral("yank") << QStringLiteral("commandthatdoesnotexist"));
     // Vim adds aborted commands to the history too, oddly.
     TestPressKey(QStringLiteral(":abortedcommand\\ctrl-c"));
     QCOMPARE(commandHistory(),
-             QStringList() << "sort"
-                           << "yank"
-                           << "commandthatdoesnotexist"
-                           << "abortedcommand");
+             QStringList() << QStringLiteral("sort") << QStringLiteral("yank") << QStringLiteral("commandthatdoesnotexist")
+                           << QStringLiteral("abortedcommand"));
     // Only add for commands, not searches!
     TestPressKey(QStringLiteral("/donotaddme\\enter?donotaddmeeither\\enter/donotaddme\\ctrl-c?donotaddmeeither\\ctrl-c"));
     QCOMPARE(commandHistory(),
-             QStringList() << "sort"
-                           << "yank"
-                           << "commandthatdoesnotexist"
-                           << "abortedcommand");
+             QStringList() << QStringLiteral("sort") << QStringLiteral("yank") << QStringLiteral("commandthatdoesnotexist")
+                           << QStringLiteral("abortedcommand"));
     FinishTest("");
 
     // Commands should not be added to the search history!
@@ -2773,7 +2764,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
     // Replacement uses grouping, etc.
     BeginTest(QStringLiteral(" xyz  def 123 foo bar"));
-    TestPressKey(":s/d\\\\(e\\\\)\\\\(f\\\\)/x\\\\1\\\\U\\\\2/gc\\enter");
+    TestPressKey(QStringLiteral(":s/d\\\\(e\\\\)\\\\(f\\\\)/x\\\\1\\\\U\\\\2/gc\\enter"));
     TestPressKey(QStringLiteral("y"));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest(" xyz  xeF 123 foo bar");
@@ -3171,13 +3162,13 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearCommandHistory();
     BeginTest(QStringLiteral("foo"));
     TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
-    QCOMPARE(commandHistory(), QStringList() << "s/foo/bar/c");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("s/foo/bar/c"));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
     clearCommandHistory();
     BeginTest(QStringLiteral("foo"));
     TestPressKey(QStringLiteral(":s/notfound/bar/c\\enter"));
-    QCOMPARE(commandHistory(), QStringList() << "s/notfound/bar/c");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("s/notfound/bar/c"));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
@@ -3374,5 +3365,5 @@ FailsIfSlotCalled::FailsIfSlotCalled(const QString &failureMessage)
 
 void FailsIfSlotCalled::slot()
 {
-    QFAIL(qPrintable(m_failureMessage.toLatin1()));
+    QFAIL(qPrintable(m_failureMessage));
 }

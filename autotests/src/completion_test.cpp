@@ -399,7 +399,7 @@ void CompletionTest::testAutoCompletionPreselectFirst()
     QApplication::sendEvent(m_view->focusProxy(), &enterKeyEvent);
 
     verifyCompletionAborted(m_view);
-    QCOMPARE(m_doc->text(), "a\n");
+    QCOMPARE(m_doc->text(), QStringLiteral("a\n"));
 }
 
 void CompletionTest::testTabCompletion()

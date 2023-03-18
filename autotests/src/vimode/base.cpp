@@ -115,7 +115,7 @@ void BaseTest::TestPressKey(const QString &str)
         QString key;
         int keyCode = -1;
         // Looking for keyboard modifiers
-        if (str[i] == QChar('\\')) {
+        if (str[i] == QLatin1Char('\\')) {
             int endOfModifier = -1;
             Qt::KeyboardModifier parsedModifier = parseCodedModifier(str, i, &endOfModifier);
             int endOfSpecialKey = -1;
@@ -139,8 +139,8 @@ void BaseTest::TestPressKey(const QString &str)
             } else if (str.mid(i, 2) == QStringLiteral("\\:")) {
                 int start_cmd = i + 2;
                 for (i += 2; true; i++) {
-                    if (str.at(i) == '\\') {
-                        if (i + 1 < str.length() && str.at(i + 1) == '\\') {
+                    if (str.at(i) == QLatin1Char('\\')) {
+                        if (i + 1 < str.length() && str.at(i + 1) == QLatin1Char('\\')) {
                             // A backslash within a command; skip.
                             i += 2;
                         } else {
@@ -261,7 +261,7 @@ Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int sta
             if (destEndOfCodedModifier) {
                 // destEndOfCodeModifier lies on the trailing '-'.
                 *destEndOfCodedModifier = startPos + modifierCode.length() + 1;
-                Q_ASSERT(string[*destEndOfCodedModifier] == '-');
+                Q_ASSERT(string[*destEndOfCodedModifier] == QLatin1Char('-'));
             }
             return it.value();
         }
