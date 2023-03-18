@@ -50,12 +50,12 @@ void DocumentCursorTest::testConvenienceApi()
 {
     KTextEditor::DocumentPrivate doc;
     doc.setText(
-        "\n"
-        "1\n"
-        "22\n"
-        "333\n"
-        "4444\n"
-        "55555");
+        QStringLiteral("\n"
+                       "1\n"
+                       "22\n"
+                       "333\n"
+                       "4444\n"
+                       "55555"));
 
     // check start and end of document
     DocumentCursor startOfDoc(&doc);
@@ -114,9 +114,9 @@ void DocumentCursorTest::testOperators()
 {
     KTextEditor::DocumentPrivate doc;
     doc.setText(
-        "--oo--\n"
-        "--oo--\n"
-        "--oo--");
+        QStringLiteral("--oo--\n"
+                       "--oo--\n"
+                       "--oo--"));
 
     // create lots of cursors for comparison
     Cursor invalid = Cursor::invalid();

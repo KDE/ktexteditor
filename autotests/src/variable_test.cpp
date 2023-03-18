@@ -42,15 +42,15 @@ void VariableTest::testReturnValues()
 
     // exact matches
     QVERIFY(!editor->unregisterVariableMatch(name));
-    QVERIFY(editor->registerVariableMatch(name, "Document Text", func));
-    QVERIFY(!editor->registerVariableMatch(name, "Document Text", func));
+    QVERIFY(editor->registerVariableMatch(name, QStringLiteral("Document Text"), func));
+    QVERIFY(!editor->registerVariableMatch(name, QStringLiteral("Document Text"), func));
     QVERIFY(editor->unregisterVariableMatch(name));
     QVERIFY(!editor->unregisterVariableMatch(name));
 
     // prefix matches
     QVERIFY(!editor->unregisterVariablePrefix(name));
-    QVERIFY(editor->registerVariablePrefix(name, "Document Text", func));
-    QVERIFY(!editor->registerVariablePrefix(name, "Document Text", func));
+    QVERIFY(editor->registerVariablePrefix(name, QStringLiteral("Document Text"), func));
+    QVERIFY(!editor->registerVariablePrefix(name, QStringLiteral("Document Text"), func));
     QVERIFY(editor->unregisterVariablePrefix(name));
     QVERIFY(!editor->unregisterVariablePrefix(name));
 }
@@ -61,12 +61,8 @@ void VariableTest::testExactMatch_data()
     QTest::addColumn<QString>("expected");
     QTest::addColumn<QString>("expectedText");
 
-    QTest::newRow("World") << "World"
-                           << "World"
-                           << "World";
-    QTest::newRow("Smart World") << "Smart World"
-                                 << "Smart World"
-                                 << "Smart World";
+    QTest::newRow("World") << QStringLiteral("World") << QStringLiteral("World") << QStringLiteral("World");
+    QTest::newRow("Smart World") << QStringLiteral("Smart World") << QStringLiteral("Smart World") << QStringLiteral("Smart World");
 }
 
 void VariableTest::testExactMatch()
@@ -85,7 +81,7 @@ void VariableTest::testExactMatch()
         return view->document()->text();
     };
 
-    QVERIFY(editor->registerVariableMatch(name, "Document Text", func));
+    QVERIFY(editor->registerVariableMatch(name, QStringLiteral("Document Text"), func));
 
     // expandVariable
     QString output;
@@ -99,7 +95,7 @@ void VariableTest::testExactMatch()
     editor->expandText(QStringLiteral("Hello %{Doc:Text} %{Doc:Text}!"), view, output);
     QCOMPARE(output, QStringLiteral("Hello ") + expectedText + QLatin1Char(' ') + expectedText + QLatin1Char('!'));
 
-    QVERIFY(editor->unregisterVariableMatch("Doc:Text"));
+    QVERIFY(editor->unregisterVariableMatch(QStringLiteral("Doc:Text")));
 
     delete doc;
 }
@@ -118,7 +114,7 @@ void VariableTest::testPrefixMatch()
         return out;
     };
 
-    QVERIFY(editor->registerVariablePrefix(prefix, "Reverse text", func));
+    QVERIFY(editor->registerVariablePrefix(prefix, QStringLiteral("Reverse text"), func));
 
     QString output;
     QVERIFY(editor->expandVariable(QStringLiteral("Mirror:12345"), nullptr, output));
@@ -145,7 +141,7 @@ void VariableTest::testRecursiveMatch()
     auto func = [](const QStringView &, KTextEditor::View *view) {
         return view->document()->text();
     };
-    QVERIFY(editor->registerVariableMatch(name, "Document Text", func));
+    QVERIFY(editor->registerVariableMatch(name, QStringLiteral("Document Text"), func));
 
     // Test recursive expansion
     doc->setText(QStringLiteral("Text"));

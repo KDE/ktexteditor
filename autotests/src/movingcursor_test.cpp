@@ -44,10 +44,7 @@ void MovingCursorTest::testMovingCursor()
     QCOMPARE(stayOnInsert->toCursor(), Cursor(0, 0));
 
     // insert some text
-    doc.insertText(Cursor(0, 0),
-                   "\n"
-                   "1\n"
-                   "22");
+    doc.insertText(Cursor(0, 0), QStringLiteral("\n1\n22"));
 
     // check new cursor positions
     QCOMPARE(moveOnInsert->toCursor(), Cursor(2, 2));
@@ -56,13 +53,13 @@ void MovingCursorTest::testMovingCursor()
     // set position to (1, 1) and insert text before cursor
     stayOnInsert->setPosition(Cursor(1, 1));
     QCOMPARE(stayOnInsert->toCursor(), Cursor(1, 1));
-    doc.insertText(Cursor(1, 0), "test");
+    doc.insertText(Cursor(1, 0), QStringLiteral("test"));
     QCOMPARE(stayOnInsert->toCursor(), Cursor(1, 5));
     doc.undo();
     QCOMPARE(stayOnInsert->toCursor(), Cursor(1, 1));
 
     // position still at (1, 1). insert text at cursor
-    doc.insertText(Cursor(1, 1), "test");
+    doc.insertText(Cursor(1, 1), QStringLiteral("test"));
     QCOMPARE(stayOnInsert->toCursor(), Cursor(1, 1));
     doc.undo();
     QCOMPARE(stayOnInsert->toCursor(), Cursor(1, 1));
@@ -73,13 +70,13 @@ void MovingCursorTest::testMovingCursor()
     // set position to (1, 1) and insert text before cursor
     moveOnInsert->setPosition(Cursor(1, 1));
     QCOMPARE(moveOnInsert->toCursor(), Cursor(1, 1));
-    doc.insertText(Cursor(1, 0), "test");
+    doc.insertText(Cursor(1, 0), QStringLiteral("test"));
     QCOMPARE(moveOnInsert->toCursor(), Cursor(1, 5));
     doc.undo();
     QCOMPARE(moveOnInsert->toCursor(), Cursor(1, 1));
 
     // position still at (1, 1). insert text at cursor
-    doc.insertText(Cursor(1, 1), "test");
+    doc.insertText(Cursor(1, 1), QStringLiteral("test"));
     QCOMPARE(moveOnInsert->toCursor(), Cursor(1, 5));
     doc.undo();
     QCOMPARE(moveOnInsert->toCursor(), Cursor(1, 1));
@@ -106,12 +103,12 @@ void MovingCursorTest::testConvenienceApi()
 {
     KTextEditor::DocumentPrivate doc;
     doc.setText(
-        "\n"
-        "1\n"
-        "22\n"
-        "333\n"
-        "4444\n"
-        "55555");
+        QStringLiteral("\n"
+                       "1\n"
+                       "22\n"
+                       "333\n"
+                       "4444\n"
+                       "55555"));
 
     // check start and end of document
     MovingCursor *startOfDoc = doc.newMovingCursor(Cursor(0, 0));
@@ -167,9 +164,9 @@ void MovingCursorTest::testOperators()
 {
     KTextEditor::DocumentPrivate doc;
     doc.setText(
-        "--oo--\n"
-        "--oo--\n"
-        "--oo--");
+        QStringLiteral("--oo--\n"
+                       "--oo--\n"
+                       "--oo--"));
 
     // create lots of cursors for comparison
     Cursor invalid = Cursor::invalid();

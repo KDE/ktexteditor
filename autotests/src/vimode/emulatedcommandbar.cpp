@@ -50,345 +50,345 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QVERIFY(!emulatedCommandBar->isVisible());
 
     // Test that "/" invokes the emulated command bar (if we are configured to use it)
-    BeginTest("");
-    TestPressKey("/");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(emulatedCommandBar->isVisible());
-    QCOMPARE(emulatedCommandTypeIndicator()->text(), QString("/"));
+    QCOMPARE(emulatedCommandTypeIndicator()->text(), QStringLiteral("/"));
     QVERIFY(emulatedCommandTypeIndicator()->isVisible());
     QVERIFY(emulatedCommandBarTextEdit());
     QVERIFY(emulatedCommandBarTextEdit()->text().isEmpty());
     // Make sure the keypresses end up changing the text.
     QVERIFY(emulatedCommandBarTextEdit()->isVisible());
-    TestPressKey("foo");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
+    TestPressKey(QStringLiteral("foo"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
     // Make sure ctrl-c dismisses it (assuming we allow Vim to steal the ctrl-c shortcut).
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     QVERIFY(!emulatedCommandBar->isVisible());
 
     // Ensure that ESC dismisses it, too.
-    BeginTest("");
-    TestPressKey("/");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\esc");
+    TestPressKey(QStringLiteral("\\esc"));
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("");
 
     // Ensure that Ctrl-[ dismisses it, too.
-    BeginTest("");
-    TestPressKey("/");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\ctrl-[");
+    TestPressKey(QStringLiteral("\\ctrl-["));
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("");
 
     // Ensure that Enter dismisses it, too.
-    BeginTest("");
-    TestPressKey("/");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("");
 
     // Ensure that Return dismisses it, too.
-    BeginTest("");
-    TestPressKey("/");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\return");
+    TestPressKey(QStringLiteral("\\return"));
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("");
 
     // Ensure that text is always initially empty.
-    BeginTest("");
-    TestPressKey("/a\\enter");
-    TestPressKey("/");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/a\\enter"));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(emulatedCommandBarTextEdit()->text().isEmpty());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check backspace works.
-    BeginTest("");
-    TestPressKey("/foo\\backspace");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("fo"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo\\backspace"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("fo"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-h works.
-    BeginTest("");
-    TestPressKey("/bar\\ctrl-h");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("ba"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/bar\\ctrl-h"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("ba"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // ctrl-h should dismiss bar when empty.
-    BeginTest("");
-    TestPressKey("/\\ctrl-h");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/\\ctrl-h"));
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("");
 
     // ctrl-h should not dismiss bar when there is stuff to the left of cursor.
-    BeginTest("");
-    TestPressKey("/a\\ctrl-h");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/a\\ctrl-h"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // ctrl-h should not dismiss bar when bar is not empty, even if there is nothing to the left of cursor.
-    BeginTest("");
-    TestPressKey("/a\\left\\ctrl-h");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/a\\left\\ctrl-h"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Same for backspace.
-    BeginTest("");
-    TestPressKey("/bar\\backspace");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("ba"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/bar\\backspace"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("ba"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
-    BeginTest("");
-    TestPressKey("/\\backspace");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/\\backspace"));
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("");
-    BeginTest("");
-    TestPressKey("/a\\backspace");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/a\\backspace"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
-    BeginTest("");
-    TestPressKey("/a\\left\\backspace");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/a\\left\\backspace"));
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-b works.
-    BeginTest("");
-    TestPressKey("/bar foo xyz\\ctrl-bX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("Xbar foo xyz"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/bar foo xyz\\ctrl-bX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("Xbar foo xyz"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-e works.
-    BeginTest("");
-    TestPressKey("/bar foo xyz\\ctrl-b\\ctrl-eX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("bar foo xyzX"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/bar foo xyz\\ctrl-b\\ctrl-eX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("bar foo xyzX"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works.
-    BeginTest("");
-    TestPressKey("/foo bar\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo "));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo bar\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo "));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works on empty command bar.
-    BeginTest("");
-    TestPressKey("/\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(""));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(""));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works in middle of word.
-    BeginTest("");
-    TestPressKey("/foo bar\\left\\left\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo ar"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo bar\\left\\left\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo ar"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w leaves the cursor in the right place when in the middle of word.
-    BeginTest("");
-    TestPressKey("/foo bar\\left\\left\\ctrl-wX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo Xar"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo bar\\left\\left\\ctrl-wX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo Xar"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works when at the beginning of the text.
-    BeginTest("");
-    TestPressKey("/foo\\left\\left\\left\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo\\left\\left\\left\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works when the character to the left is a space.
-    BeginTest("");
-    TestPressKey("/foo bar   \\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo "));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo bar   \\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo "));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works when all characters to the left of the cursor are spaces.
-    BeginTest("");
-    TestPressKey("/   \\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(""));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/   \\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(""));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w works when all characters to the left of the cursor are non-spaces.
-    BeginTest("");
-    TestPressKey("/foo\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(""));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(""));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w does not continue to delete subsequent alphanumerics if the characters to the left of the cursor
     // are non-space, non-alphanumerics.
-    BeginTest("");
-    TestPressKey("/foo!!!\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo!!!\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
     // Check ctrl-w does not continue to delete subsequent alphanumerics if the characters to the left of the cursor
     // are non-space, non-alphanumerics.
-    BeginTest("");
-    TestPressKey("/foo!!!\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo!!!\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w deletes underscores and alphanumerics to the left of the cursor, but stops when it reaches a
     // character that is none of these.
-    BeginTest("");
-    TestPressKey("/foo!!!_d1\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo!!!"));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo!!!_d1\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo!!!"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w doesn't swallow the spaces preceding the block of non-word chars.
-    BeginTest("");
-    TestPressKey("/foo !!!\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo "));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo !!!\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo "));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check ctrl-w doesn't swallow the spaces preceding the word.
-    BeginTest("");
-    TestPressKey("/foo 1d_\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo "));
-    TestPressKey("\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo 1d_\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo "));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Check there is a "waiting for register" indicator, initially hidden.
-    BeginTest("");
-    TestPressKey("/");
-    QLabel *waitingForRegisterIndicator = emulatedCommandBar->findChild<QLabel *>("waitingforregisterindicator");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/"));
+    QLabel *waitingForRegisterIndicator = emulatedCommandBar->findChild<QLabel *>(QStringLiteral("waitingforregisterindicator"));
     QVERIFY(waitingForRegisterIndicator);
     QVERIFY(!waitingForRegisterIndicator->isVisible());
-    QCOMPARE(waitingForRegisterIndicator->text(), QString("\""));
-    TestPressKey("\\enter");
+    QCOMPARE(waitingForRegisterIndicator->text(), QStringLiteral("\""));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Test that ctrl-r causes it to become visible.  It is displayed to the right of the text edit.
-    BeginTest("");
-    TestPressKey("/\\ctrl-r");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/\\ctrl-r"));
     QVERIFY(waitingForRegisterIndicator->isVisible());
     QVERIFY(waitingForRegisterIndicator->x() >= emulatedCommandBarTextEdit()->x() + emulatedCommandBarTextEdit()->width());
-    TestPressKey("\\ctrl-c");
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("");
 
     // The first ctrl-c after ctrl-r (when no register entered) hides the waiting for register
     // indicator, but not the bar.
-    BeginTest("");
-    TestPressKey("/\\ctrl-r");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/\\ctrl-r"));
     QVERIFY(waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     QVERIFY(!waitingForRegisterIndicator->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss the bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss the bar.
     FinishTest("");
 
     // The first ctrl-c after ctrl-r (when no register entered) aborts waiting for register.
-    BeginTest("foo");
-    TestPressKey("\"cyiw/\\ctrl-r\\ctrl-ca");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("a"));
-    TestPressKey("\\ctrl-c"); // Dismiss the bar.
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\"cyiw/\\ctrl-r\\ctrl-ca"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("a"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss the bar.
     FinishTest("foo");
 
     // Same as above, but for ctrl-[ instead of ctrl-c.
-    BeginTest("");
-    TestPressKey("/\\ctrl-r");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/\\ctrl-r"));
     QVERIFY(waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\ctrl-[");
+    TestPressKey(QStringLiteral("\\ctrl-["));
     QVERIFY(!waitingForRegisterIndicator->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss the bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss the bar.
     FinishTest("");
-    BeginTest("foo");
-    TestPressKey("\"cyiw/\\ctrl-r\\ctrl-[a");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("a"));
-    TestPressKey("\\ctrl-c"); // Dismiss the bar.
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\"cyiw/\\ctrl-r\\ctrl-[a"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("a"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss the bar.
     FinishTest("foo");
 
     // Check ctrl-r works with registers, and hides the "waiting for register" indicator.
-    BeginTest("xyz");
-    TestPressKey("\"ayiw/foo\\ctrl-ra");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("fooxyz"));
+    BeginTest(QStringLiteral("xyz"));
+    TestPressKey(QStringLiteral("\"ayiw/foo\\ctrl-ra"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("fooxyz"));
     QVERIFY(!waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("xyz");
 
     // Check ctrl-r inserts text at the current cursor position.
-    BeginTest("xyz");
-    TestPressKey("\"ayiw/foo\\left\\ctrl-ra");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foxyzo"));
-    TestPressKey("\\enter");
+    BeginTest(QStringLiteral("xyz"));
+    TestPressKey(QStringLiteral("\"ayiw/foo\\left\\ctrl-ra"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foxyzo"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("xyz");
 
     // Check ctrl-r ctrl-w inserts word under the cursor, and hides the "waiting for register" indicator.
-    BeginTest("foo bar xyz");
-    TestPressKey("w/\\left\\ctrl-r\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("bar"));
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("w/\\left\\ctrl-r\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("bar"));
     QVERIFY(!waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Check ctrl-r ctrl-w doesn't insert the contents of register w!
-    BeginTest("foo baz xyz");
-    TestPressKey("\"wyiww/\\left\\ctrl-r\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("baz"));
-    TestPressKey("\\enter");
+    BeginTest(QStringLiteral("foo baz xyz"));
+    TestPressKey(QStringLiteral("\"wyiww/\\left\\ctrl-r\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("baz"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo baz xyz");
 
     // Check ctrl-r ctrl-w inserts at the current cursor position.
-    BeginTest("foo nose xyz");
-    TestPressKey("w/bar\\left\\ctrl-r\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("banoser"));
-    TestPressKey("\\enter");
+    BeginTest(QStringLiteral("foo nose xyz"));
+    TestPressKey(QStringLiteral("w/bar\\left\\ctrl-r\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("banoser"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo nose xyz");
 
     // Cursor position is at the end of the inserted text after ctrl-r ctrl-w.
-    BeginTest("foo nose xyz");
-    TestPressKey("w/bar\\left\\ctrl-r\\ctrl-wX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("banoseXr"));
-    TestPressKey("\\enter");
+    BeginTest(QStringLiteral("foo nose xyz"));
+    TestPressKey(QStringLiteral("w/bar\\left\\ctrl-r\\ctrl-wX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("banoseXr"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo nose xyz");
 
     // Cursor position is at the end of the inserted register contents after ctrl-r.
-    BeginTest("xyz");
-    TestPressKey("\"ayiw/foo\\left\\ctrl-raX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foxyzXo"));
-    TestPressKey("\\enter");
+    BeginTest(QStringLiteral("xyz"));
+    TestPressKey(QStringLiteral("\"ayiw/foo\\left\\ctrl-raX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foxyzXo"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("xyz");
 
     // Insert clipboard contents on ctrl-r +.  We implicitly need to test the ability to handle
     // shift key key events when waiting for register (they should be ignored).
-    BeginTest("xyz");
-    QApplication::clipboard()->setText("vimodetestclipboardtext");
-    TestPressKey("/\\ctrl-r");
+    BeginTest(QStringLiteral("xyz"));
+    QApplication::clipboard()->setText(QStringLiteral("vimodetestclipboardtext"));
+    TestPressKey(QStringLiteral("/\\ctrl-r"));
     QKeyEvent *shiftKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Shift, Qt::NoModifier);
     QApplication::postEvent(emulatedCommandBarTextEdit(), shiftKeyDown);
     QApplication::sendPostedEvents();
-    TestPressKey("+");
+    TestPressKey(QStringLiteral("+"));
     QKeyEvent *shiftKeyUp = new QKeyEvent(QEvent::KeyPress, Qt::Key_Shift, Qt::NoModifier);
     QApplication::postEvent(emulatedCommandBarTextEdit(), shiftKeyUp);
     QApplication::sendPostedEvents();
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("vimodetestclipboardtext"));
-    TestPressKey("\\enter");
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("vimodetestclipboardtext"));
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("xyz");
 
     // Similarly, test that we can press "ctrl" after ctrl-r without it being taken for a register.
-    BeginTest("wordundercursor");
-    TestPressKey("/\\ctrl-r");
+    BeginTest(QStringLiteral("wordundercursor"));
+    TestPressKey(QStringLiteral("/\\ctrl-r"));
     QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
     QApplication::postEvent(emulatedCommandBarTextEdit(), ctrlKeyDown);
     QApplication::sendPostedEvents();
@@ -396,27 +396,27 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QApplication::postEvent(emulatedCommandBarTextEdit(), ctrlKeyUp);
     QApplication::sendPostedEvents();
     QVERIFY(waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("wordundercursor"));
-    TestPressKey("\\ctrl-c"); // Dismiss the bar.
+    TestPressKey(QStringLiteral("\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("wordundercursor"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss the bar.
     FinishTest("wordundercursor");
 
     // Begin tests for ctrl-g, which is almost identical to ctrl-r save that the contents, when added,
     // are escaped for searching.
     // Normal register contents/ word under cursor are added as normal.
-    BeginTest("wordinregisterb wordundercursor");
-    TestPressKey("\"byiw");
-    TestPressKey("/\\ctrl-g");
+    BeginTest(QStringLiteral("wordinregisterb wordundercursor"));
+    TestPressKey(QStringLiteral("\"byiw"));
+    TestPressKey(QStringLiteral("/\\ctrl-g"));
     QVERIFY(waitingForRegisterIndicator->isVisible());
     QVERIFY(waitingForRegisterIndicator->x() >= emulatedCommandBarTextEdit()->x() + emulatedCommandBarTextEdit()->width());
-    TestPressKey("b");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("wordinregisterb"));
+    TestPressKey(QStringLiteral("b"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("wordinregisterb"));
     QVERIFY(!waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\ctrl-c\\ctrl-cw/\\ctrl-g\\ctrl-w");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("wordundercursor"));
+    TestPressKey(QStringLiteral("\\ctrl-c\\ctrl-cw/\\ctrl-g\\ctrl-w"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("wordundercursor"));
     QVERIFY(!waitingForRegisterIndicator->isVisible());
-    TestPressKey("\\ctrl-c");
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("wordinregisterb wordundercursor");
 
     // \'s must be escaped when inserted via ctrl-g.
@@ -456,94 +456,94 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest(" \nfoo\nfoo\nxyz\nbar\n123", "jjvjjllygg/\\ctrl-g0\\enterrX", " \nfoo\nXoo\nxyz\nbar\n123");
     DoTest(" \nfoo\nfoo\nxyz\nbar\n123", "jjvjjllygg/\\ctrl-g0/e\\enterrX", " \nfoo\nfoo\nxyz\nbaX\n123");
     // Don't do any escaping for ctrl-r, though.
-    BeginTest("foo .*$^\\/");
-    TestPressKey("wY/\\ctrl-r0");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".*$^\\/"));
-    TestPressKey("\\ctrl-c");
-    TestPressKey("\\ctrl-c");
+    BeginTest(QStringLiteral("foo .*$^\\/"));
+    TestPressKey(QStringLiteral("wY/\\ctrl-r0"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".*$^\\/"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo .*$^\\/");
     // Ensure that the flag that says "next register insertion should be escaped for searching"
     // is cleared if we do ctrl-g but then abort with ctrl-c.
     DoTest("foo a$b", "/\\ctrl-g\\ctrl-c\\ctrl-cwYgg/\\ctrl-r0\\enterrX", "Xoo a$b");
 
     // Ensure that we actually perform a search while typing.
-    BeginTest("abcd");
-    TestPressKey("/c");
+    BeginTest(QStringLiteral("abcd"));
+    TestPressKey(QStringLiteral("/c"));
     verifyCursorAt(Cursor(0, 2));
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("abcd");
 
     // Ensure that the search is from the cursor.
-    BeginTest("acbcd");
-    TestPressKey("ll/c");
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("ll/c"));
     verifyCursorAt(Cursor(0, 3));
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("acbcd");
 
     // Reset the cursor to the original position on Ctrl-C
-    BeginTest("acbcd");
-    TestPressKey("ll/c\\ctrl-crX");
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("ll/c\\ctrl-crX"));
     FinishTest("acXcd");
 
     // Reset the cursor to the original position on Ctrl-[
-    BeginTest("acbcd");
-    TestPressKey("ll/c\\ctrl-[rX");
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("ll/c\\ctrl-[rX"));
     FinishTest("acXcd");
 
     // Reset the cursor to the original position on ESC
-    BeginTest("acbcd");
-    TestPressKey("ll/c\\escrX");
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("ll/c\\escrX"));
     FinishTest("acXcd");
 
     // *Do not* reset the cursor to the original position on Enter.
-    BeginTest("acbcd");
-    TestPressKey("ll/c\\enterrX");
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("ll/c\\enterrX"));
     FinishTest("acbXd");
 
     // *Do not* reset the cursor to the original position on Return.
-    BeginTest("acbcd");
-    TestPressKey("ll/c\\returnrX");
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("ll/c\\returnrX"));
     FinishTest("acbXd");
 
     // Should work with mappings.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmapping", "/c<enter>rX", Mappings::Recursive);
-    BeginTest("acbcd");
-    TestPressKey("'testmapping");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'testmapping"), QStringLiteral("/c<enter>rX"), Mappings::Recursive);
+    BeginTest(QStringLiteral("acbcd"));
+    TestPressKey(QStringLiteral("'testmapping"));
     FinishTest("aXbcd");
     clearAllMappings();
     // Don't send keys that were part of a mapping to the emulated command bar.
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "H", "/a", Mappings::Recursive);
-    BeginTest("foo a aH");
-    TestPressKey("H\\enterrX");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("H"), QStringLiteral("/a"), Mappings::Recursive);
+    BeginTest(QStringLiteral("foo a aH"));
+    TestPressKey(QStringLiteral("H\\enterrX"));
     FinishTest("foo X aH");
     clearAllMappings();
 
     // Incremental searching from the original position.
-    BeginTest("foo bar foop fool food");
-    TestPressKey("ll/foo");
+    BeginTest(QStringLiteral("foo bar foop fool food"));
+    TestPressKey(QStringLiteral("ll/foo"));
     verifyCursorAt(Cursor(0, 8));
-    TestPressKey("l");
+    TestPressKey(QStringLiteral("l"));
     verifyCursorAt(Cursor(0, 13));
-    TestPressKey("\\backspace");
+    TestPressKey(QStringLiteral("\\backspace"));
     verifyCursorAt(Cursor(0, 8));
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar foop fool food");
 
     // End up back at the start if no match found
-    BeginTest("foo bar foop fool food");
-    TestPressKey("ll/fool");
+    BeginTest(QStringLiteral("foo bar foop fool food"));
+    TestPressKey(QStringLiteral("ll/fool"));
     verifyCursorAt(Cursor(0, 13));
-    TestPressKey("\\backspacex");
+    TestPressKey(QStringLiteral("\\backspacex"));
     verifyCursorAt(Cursor(0, 2));
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar foop fool food");
 
     // Wrap around if no match found.
-    BeginTest("afoom bar foop fool food");
-    TestPressKey("lll/foom");
+    BeginTest(QStringLiteral("afoom bar foop fool food"));
+    TestPressKey(QStringLiteral("lll/foom"));
     verifyCursorAt(Cursor(0, 1));
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("afoom bar foop fool food");
 
     // SmartCase: match case-insensitively if the search text is all lower-case.
@@ -583,9 +583,9 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("foo \\Cba\\Cr", "/\\\\\\\\Cb\\\\Ca\\\\\\\\C\\\\C\\\\Cr\\enterrX", "foo XCba\\Cr");
     // The item added to the search history should contain all the original \C's.
     clearSearchHistory();
-    BeginTest("foo \\Cba\\Cr");
-    TestPressKey("/\\\\\\\\Cb\\\\Ca\\\\\\\\C\\\\C\\\\Cr\\enterrX");
-    QCOMPARE(searchHistory().first(), QString("\\\\Cb\\Ca\\\\C\\C\\Cr"));
+    BeginTest(QStringLiteral("foo \\Cba\\Cr"));
+    TestPressKey(QStringLiteral("/\\\\\\\\Cb\\\\Ca\\\\\\\\C\\\\C\\\\Cr\\enterrX"));
+    QCOMPARE(searchHistory().first(), QStringLiteral("\\\\Cb\\Ca\\\\C\\C\\Cr"));
     FinishTest("foo XCba\\Cr");
     // If there is an escaped C, assume case sensitivity.
     DoTest("foo bAr BAr bar", "/ba\\\\Cr\\enterrX", "foo bAr BAr Xar");
@@ -606,26 +606,26 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
     // Test that "?" summons the search bar, with empty text and with the "?" indicator.
     QVERIFY(!emulatedCommandBar->isVisible());
-    BeginTest("");
-    TestPressKey("?");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("?"));
     QVERIFY(emulatedCommandBar->isVisible());
-    QCOMPARE(emulatedCommandTypeIndicator()->text(), QString("?"));
+    QCOMPARE(emulatedCommandTypeIndicator()->text(), QStringLiteral("?"));
     QVERIFY(emulatedCommandTypeIndicator()->isVisible());
     QVERIFY(emulatedCommandBarTextEdit());
     QVERIFY(emulatedCommandBarTextEdit()->text().isEmpty());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("");
 
     // Search backwards.
     DoTest("foo foo bar foo foo", "ww?foo\\enterrX", "foo Xoo bar foo foo");
 
     // Reset cursor if we find nothing.
-    BeginTest("foo foo bar foo foo");
-    TestPressKey("ww?foo");
+    BeginTest(QStringLiteral("foo foo bar foo foo"));
+    TestPressKey(QStringLiteral("ww?foo"));
     verifyCursorAt(Cursor(0, 4));
-    TestPressKey("d");
+    TestPressKey(QStringLiteral("d"));
     verifyCursorAt(Cursor(0, 8));
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo foo bar foo foo");
 
     // Wrap to the end if we find nothing.
@@ -635,10 +635,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("foo foo bar foo foo", "ww?foo\\enter^wwnrX", "foo Xoo bar foo foo");
 
     // ... and make sure we do  the equivalent with "/"
-    BeginTest("foo foo bar foo foo");
-    TestPressKey("ww?foo\\enter^ww/foo");
-    QCOMPARE(emulatedCommandTypeIndicator()->text(), QString("/"));
-    TestPressKey("\\enter^wwnrX");
+    BeginTest(QStringLiteral("foo foo bar foo foo"));
+    TestPressKey(QStringLiteral("ww?foo\\enter^ww/foo"));
+    QCOMPARE(emulatedCommandTypeIndicator()->text(), QStringLiteral("/"));
+    TestPressKey(QStringLiteral("\\enter^wwnrX"));
     FinishTest("foo foo bar Xoo foo");
 
     // If we are at the beginning of a word, that word is not the first match in a search
@@ -734,123 +734,128 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Counting in Visual Mode.
     DoTest("foo bar bar bar", "v2/bar\\enterd", "ar bar");
     // Should update the selection in Visual Mode as we search.
-    BeginTest("foo bar bbc");
-    TestPressKey("vl/b");
-    QCOMPARE(kate_view->selectionText(), QString("foo b"));
-    TestPressKey("b");
-    QCOMPARE(kate_view->selectionText(), QString("foo bar b"));
-    TestPressKey("\\ctrl-h");
-    QCOMPARE(kate_view->selectionText(), QString("foo b"));
-    TestPressKey("notexists");
-    QCOMPARE(kate_view->selectionText(), QString("fo"));
-    TestPressKey("\\enter"); // Dismiss bar.
-    QCOMPARE(kate_view->selectionText(), QString("fo"));
+    BeginTest(QStringLiteral("foo bar bbc"));
+    TestPressKey(QStringLiteral("vl/b"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo b"));
+    TestPressKey(QStringLiteral("b"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo bar b"));
+    TestPressKey(QStringLiteral("\\ctrl-h"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo b"));
+    TestPressKey(QStringLiteral("notexists"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("fo"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("fo"));
     FinishTest("foo bar bbc");
-    BeginTest("foo\nxyz\nbar\nbbc");
-    TestPressKey("Vj/b");
-    QCOMPARE(kate_view->selectionText(), QString("foo\nxyz\nbar"));
-    TestPressKey("b");
-    QCOMPARE(kate_view->selectionText(), QString("foo\nxyz\nbar\nbbc"));
-    TestPressKey("\\ctrl-h");
-    QCOMPARE(kate_view->selectionText(), QString("foo\nxyz\nbar"));
-    TestPressKey("notexists");
-    QCOMPARE(kate_view->selectionText(), QString("foo\nxyz"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo\nxyz\nbar\nbbc"));
+    TestPressKey(QStringLiteral("Vj/b"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo\nxyz\nbar"));
+    TestPressKey(QStringLiteral("b"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo\nxyz\nbar\nbbc"));
+    TestPressKey(QStringLiteral("\\ctrl-h"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo\nxyz\nbar"));
+    TestPressKey(QStringLiteral("notexists"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo\nxyz"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo\nxyz\nbar\nbbc");
     // Dismissing the search bar in visual mode should leave original selection.
-    BeginTest("foo bar bbc");
-    TestPressKey("vl/\\ctrl-c");
-    QCOMPARE(kate_view->selectionText(), QString("fo"));
+    BeginTest(QStringLiteral("foo bar bbc"));
+    TestPressKey(QStringLiteral("vl/\\ctrl-c"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("fo"));
     FinishTest("foo bar bbc");
-    BeginTest("foo bar bbc");
-    TestPressKey("vl?\\ctrl-c");
-    QCOMPARE(kate_view->selectionText(), QString("fo"));
+    BeginTest(QStringLiteral("foo bar bbc"));
+    TestPressKey(QStringLiteral("vl?\\ctrl-c"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("fo"));
     FinishTest("foo bar bbc");
-    BeginTest("foo bar bbc");
-    TestPressKey("vl/b\\ctrl-c");
-    QCOMPARE(kate_view->selectionText(), QString("fo"));
+    BeginTest(QStringLiteral("foo bar bbc"));
+    TestPressKey(QStringLiteral("vl/b\\ctrl-c"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("fo"));
     FinishTest("foo bar bbc");
-    BeginTest("foo\nbar\nbbc");
-    TestPressKey("Vl/b\\ctrl-c");
-    QCOMPARE(kate_view->selectionText(), QString("foo"));
+    BeginTest(QStringLiteral("foo\nbar\nbbc"));
+    TestPressKey(QStringLiteral("Vl/b\\ctrl-c"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("foo"));
     FinishTest("foo\nbar\nbbc");
 
     // Search-highlighting tests.
+<<<<<<< Updated upstream
     const QColor searchHighlightColour = kate_view->renderer()->config()->searchHighlightColor();
     BeginTest("foo bar xyz");
+=======
+    const QColor searchHighlightColour = kate_view->rendererConfig()->searchHighlightColor();
+    BeginTest(QStringLiteral("foo bar xyz"));
+>>>>>>> Stashed changes
     // Sanity test.
     const QVector<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
     FinishTest("foo bar xyz");
 
     // Test highlighting single character match.
-    BeginTest("foo bar xyz");
-    TestPressKey("/b");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("/b"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->attribute()->background().color(), searchHighlightColour);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 4);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 5);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Test highlighting two character match.
-    BeginTest("foo bar xyz");
-    TestPressKey("/ba");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("/ba"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 4);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 6);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Test no highlighting if no longer a match.
-    BeginTest("foo bar xyz");
-    TestPressKey("/baz");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("/baz"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Test highlighting on wraparound.
-    BeginTest(" foo bar xyz");
-    TestPressKey("ww/foo");
+    BeginTest(QStringLiteral(" foo bar xyz"));
+    TestPressKey(QStringLiteral("ww/foo"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 1);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 4);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest(" foo bar xyz");
 
     // Test highlighting backwards
-    BeginTest("foo bar xyz");
-    TestPressKey("$?ba");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("$?ba"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 4);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 6);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Test no highlighting when no match is found searching backwards
-    BeginTest("foo bar xyz");
-    TestPressKey("$?baz");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("$?baz"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Test highlight when wrapping around after searching backwards.
-    BeginTest("foo bar xyz");
-    TestPressKey("w?xyz");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("w?xyz"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 8);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 11);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Test no highlighting when bar is dismissed.
@@ -866,13 +871,13 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
 
     // Update colour on config change.
-    BeginTest("foo bar xyz");
-    TestPressKey("/xyz");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("/xyz"));
     const QColor newSearchHighlightColour = QColor(255, 0, 0);
     kate_view->renderer()->config()->setSearchHighlightColor(newSearchHighlightColour);
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->attribute()->background().color(), newSearchHighlightColour);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Set the background colour appropriately.
@@ -880,16 +885,16 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     const QColor normalBackgroundColour = QPalette().brush(QPalette::Base).color();
     const QColor matchBackgroundColour = currentColorScheme.background(KColorScheme::PositiveBackground).color();
     const QColor noMatchBackgroundColour = currentColorScheme.background(KColorScheme::NegativeBackground).color();
-    BeginTest("foo bar xyz");
-    TestPressKey("/xyz");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("/xyz"));
     verifyTextEditBackgroundColour(matchBackgroundColour);
-    TestPressKey("a");
+    TestPressKey(QStringLiteral("a"));
     verifyTextEditBackgroundColour(noMatchBackgroundColour);
-    TestPressKey("\\ctrl-w");
+    TestPressKey(QStringLiteral("\\ctrl-w"));
     verifyTextEditBackgroundColour(normalBackgroundColour);
-    TestPressKey("/xyz\\enter/");
+    TestPressKey(QStringLiteral("/xyz\\enter/"));
     verifyTextEditBackgroundColour(normalBackgroundColour);
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
     // Escape regex's in a Vim-ish style.
@@ -994,8 +999,8 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // History auto-completion tests.
     clearSearchHistory();
     QVERIFY(searchHistory().isEmpty());
-    vi_global->searchHistory()->append("foo");
-    vi_global->searchHistory()->append("bar");
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
     QCOMPARE(searchHistory(),
              QStringList() << "foo"
                            << "bar");
@@ -1020,11 +1025,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QCOMPARE(searchHistory(), QStringList() << "nose");
 
     clearSearchHistory();
-    vi_global->searchHistory()->append("foo");
-    vi_global->searchHistory()->append("bar");
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
     QVERIFY(emulatedCommandBarCompleter() != nullptr);
-    BeginTest("foo bar");
-    TestPressKey("/\\ctrl-p");
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/\\ctrl-p"));
     verifyCommandBarCompletionVisible();
     // Make sure the completion appears in roughly the correct place: this is a little fragile :/
     const QPoint completerRectTopLeft = emulatedCommandBarCompleter()->popup()->mapToGlobal(emulatedCommandBarCompleter()->popup()->rect().topLeft());
@@ -1032,107 +1037,107 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QCOMPARE(completerRectTopLeft.x(), barEditBottomLeft.x());
     QVERIFY(qAbs(completerRectTopLeft.y() - barEditBottomLeft.y()) <= 1);
     // Will activate the current completion item, activating the search, and dismissing the bar.
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
     // Close the command bar.
     FinishTest("foo bar");
 
     // Don't show completion with an empty search bar.
     clearSearchHistory();
-    vi_global->searchHistory()->append("foo");
-    BeginTest("foo bar");
-    TestPressKey("/");
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar");
 
     // Don't auto-complete, either.
     clearSearchHistory();
-    vi_global->searchHistory()->append("foo");
-    BeginTest("foo bar");
-    TestPressKey("/f");
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/f"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar");
 
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyz");
-    vi_global->searchHistory()->append("bar");
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
     QVERIFY(emulatedCommandBarCompleter() != nullptr);
-    BeginTest("foo bar");
-    TestPressKey("/\\ctrl-p");
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("bar"));
-    TestPressKey("\\enter"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("bar"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo bar");
 
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyz");
-    vi_global->searchHistory()->append("bar");
-    vi_global->searchHistory()->append("foo");
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
     QVERIFY(emulatedCommandBarCompleter() != nullptr);
-    BeginTest("foo bar");
-    TestPressKey("/\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("foo"));
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("foo"));
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 0);
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("bar"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("bar"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("bar"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("bar"));
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 1);
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("xyz"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("xyz"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("xyz"));
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 2);
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("foo")); // Wrap-around
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("foo")); // Wrap-around
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 0);
-    TestPressKey("\\enter"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo bar");
 
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyz");
-    vi_global->searchHistory()->append("bar");
-    vi_global->searchHistory()->append("foo");
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
     QVERIFY(emulatedCommandBarCompleter() != nullptr);
-    BeginTest("foo bar");
-    TestPressKey("/\\ctrl-n");
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/\\ctrl-n"));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("xyz"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("xyz"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("xyz"));
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 2);
-    TestPressKey("\\ctrl-n");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("bar"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("bar"));
+    TestPressKey(QStringLiteral("\\ctrl-n"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("bar"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("bar"));
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 1);
-    TestPressKey("\\ctrl-n");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("foo"));
+    TestPressKey(QStringLiteral("\\ctrl-n"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("foo"));
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 0);
-    TestPressKey("\\ctrl-n");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz"));
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("xyz")); // Wrap-around.
+    TestPressKey(QStringLiteral("\\ctrl-n"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("xyz"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("xyz")); // Wrap-around.
     QCOMPARE(emulatedCommandBarCompleter()->popup()->currentIndex().row(), 2);
-    TestPressKey("\\enter"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo bar");
 
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyz");
-    vi_global->searchHistory()->append("bar");
-    vi_global->searchHistory()->append("foo");
-    BeginTest("foo bar");
-    TestPressKey("/\\ctrl-n\\ctrl-n");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("bar"));
-    TestPressKey("\\enter"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/\\ctrl-n\\ctrl-n"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("bar"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo bar");
 
     // If we add something to the history, remove any earliest occurrences (this is what Vim appears to do)
     // and append to the end.
     clearSearchHistory();
-    vi_global->searchHistory()->append("bar");
-    vi_global->searchHistory()->append("xyz");
-    vi_global->searchHistory()->append("foo");
-    vi_global->searchHistory()->append("xyz");
+    vi_global->searchHistory()->append(QStringLiteral("bar"));
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    vi_global->searchHistory()->append(QStringLiteral("foo"));
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
     QCOMPARE(searchHistory(),
              QStringList() << "bar"
                            << "foo"
@@ -1142,15 +1147,15 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     const int HISTORY_SIZE_LIMIT = 100;
     clearSearchHistory();
     for (int i = 1; i <= HISTORY_SIZE_LIMIT; i++) {
-        vi_global->searchHistory()->append(QString("searchhistoryitem %1").arg(i));
+        vi_global->searchHistory()->append(QStringLiteral("searchhistoryitem %1").arg(i));
     }
     QCOMPARE(searchHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(searchHistory().first(), QString("searchhistoryitem 1"));
-    QCOMPARE(searchHistory().last(), QString("searchhistoryitem 100"));
-    vi_global->searchHistory()->append(QString("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    QCOMPARE(searchHistory().first(), QStringLiteral("searchhistoryitem 1"));
+    QCOMPARE(searchHistory().last(), QStringLiteral("searchhistoryitem 100"));
+    vi_global->searchHistory()->append(QStringLiteral("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(searchHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(searchHistory().first(), QString("searchhistoryitem 2"));
-    QCOMPARE(searchHistory().last(), QString("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    QCOMPARE(searchHistory().first(), QStringLiteral("searchhistoryitem 2"));
+    QCOMPARE(searchHistory().last(), QStringLiteral("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty searches to the history.
     clearSearchHistory();
@@ -1159,71 +1164,66 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
     // "*" and "#" should add the relevant word to the search history, enclosed between \< and \>
     clearSearchHistory();
-    BeginTest("foo bar");
-    TestPressKey("*");
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("*"));
     QVERIFY(!searchHistory().isEmpty());
-    QCOMPARE(searchHistory().last(), QString("\\<foo\\>"));
-    TestPressKey("w#");
+    QCOMPARE(searchHistory().last(), QStringLiteral("\\<foo\\>"));
+    TestPressKey(QStringLiteral("w#"));
     QCOMPARE(searchHistory().size(), 2);
-    QCOMPARE(searchHistory().last(), QString("\\<bar\\>"));
+    QCOMPARE(searchHistory().last(), QStringLiteral("\\<bar\\>"));
 
     // Auto-complete words from the document on ctrl-space.
     // Test that we can actually find a single word and add it to the list of completions.
-    BeginTest("foo");
-    TestPressKey("/\\ctrl- ");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("foo"));
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo");
 
     // Count digits and underscores as being part of a word.
-    BeginTest("foo_12");
-    TestPressKey("/\\ctrl- ");
+    BeginTest(QStringLiteral("foo_12"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("foo_12"));
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("foo_12"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo_12");
 
     // This feels a bit better to me, usability-wise: in the special case of completion from document, where
     // the completion list is manually summoned, allow one to press Enter without the bar being dismissed
     // (just dismiss the completion list instead).
-    BeginTest("foo_12");
-    TestPressKey("/\\ctrl- \\ctrl-p\\enter");
+    BeginTest(QStringLiteral("foo_12"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-p\\enter"));
     QVERIFY(emulatedCommandBar->isVisible());
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\enter"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo_12");
 
     // Check that we can find multiple words on one line.
-    BeginTest("bar (foo) [xyz]");
-    TestPressKey("/\\ctrl- ");
+    BeginTest(QStringLiteral("bar (foo) [xyz]"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
     QStringListModel *completerStringListModel = dynamic_cast<QStringListModel *>(emulatedCommandBarCompleter()->model());
     Q_ASSERT(completerStringListModel);
     QCOMPARE(completerStringListModel->stringList(),
              QStringList() << "bar"
                            << "foo"
                            << "xyz");
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("bar (foo) [xyz]");
 
     // Check that we arrange the found words in case-insensitive sorted order.
-    BeginTest("D c e a b f");
-    TestPressKey("/\\ctrl- ");
-    verifyCommandBarCompletionsMatches(QStringList() << "a"
-                                                     << "b"
-                                                     << "c"
-                                                     << "D"
-                                                     << "e"
-                                                     << "f");
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    BeginTest(QStringLiteral("D c e a b f"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("a") << QStringLiteral("b") << QStringLiteral("c") << QStringLiteral("D")
+                                                     << QStringLiteral("e") << QStringLiteral("f"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("D c e a b f");
 
     // Check that we don't include the same word multiple times.
-    BeginTest("foo bar bar bar foo");
-    TestPressKey("/\\ctrl- ");
-    verifyCommandBarCompletionsMatches(QStringList() << "bar"
-                                                     << "foo");
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    BeginTest(QStringLiteral("foo bar bar bar foo"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("bar") << QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo bar bar bar foo");
 
     // Check that we search only a narrow portion of the document, around the cursor (4096 lines either
@@ -1231,271 +1231,262 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QStringList manyLines;
     for (int i = 1; i < 2 * 4096 + 3; i++) {
         // Pad the digits so that when sorted alphabetically, they are also sorted numerically.
-        manyLines << QString("word%1").arg(i, 5, 10, QChar('0'));
+        manyLines << QStringLiteral("word%1").arg(i, 5, 10, QChar('0'));
     }
     QStringList allButFirstAndLastOfManyLines = manyLines;
     allButFirstAndLastOfManyLines.removeFirst();
     allButFirstAndLastOfManyLines.removeLast();
 
-    BeginTest(manyLines.join("\n"));
-    TestPressKey("4097j/\\ctrl- ");
+    BeginTest(manyLines.join(QStringLiteral("\n")).toUtf8().constData());
+    TestPressKey(QStringLiteral("4097j/\\ctrl- "));
     verifyCommandBarCompletionsMatches(allButFirstAndLastOfManyLines);
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
-    FinishTest(manyLines.join("\n"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
+    FinishTest(manyLines.join("\n").toUtf8().constData());
 
     // "The current word" means the word before the cursor in the command bar, and includes numbers
     // and underscores. Make sure also that the completion prefix is set when the completion is first invoked.
-    BeginTest("foo fee foa_11 foa_11b");
+    BeginTest(QStringLiteral("foo fee foa_11 foa_11b"));
     // Write "bar(foa112$nose" and position cursor before the "2", then invoke completion.
-    TestPressKey("/bar(foa_112$nose\\left\\left\\left\\left\\left\\left\\ctrl- ");
-    verifyCommandBarCompletionsMatches(QStringList() << "foa_11"
-                                                     << "foa_11b");
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    TestPressKey(QStringLiteral("/bar(foa_112$nose\\left\\left\\left\\left\\left\\left\\ctrl- "));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foa_11") << QStringLiteral("foa_11b"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo fee foa_11 foa_11b");
 
     // But don't count "-" as being part of the current word.
-    BeginTest("foo_12");
-    TestPressKey("/bar-foo\\ctrl- ");
+    BeginTest(QStringLiteral("foo_12"));
+    TestPressKey(QStringLiteral("/bar-foo\\ctrl- "));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("foo_12"));
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("foo_12"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo_12");
 
     // Be case insensitive.
-    BeginTest("foo Fo12 fOo13 FO45");
-    TestPressKey("/fo\\ctrl- ");
-    verifyCommandBarCompletionsMatches(QStringList() << "Fo12"
-                                                     << "FO45"
-                                                     << "foo"
-                                                     << "fOo13");
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    BeginTest(QStringLiteral("foo Fo12 fOo13 FO45"));
+    TestPressKey(QStringLiteral("/fo\\ctrl- "));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("Fo12") << QStringLiteral("FO45") << QStringLiteral("foo") << QStringLiteral("fOo13"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo Fo12 fOo13 FO45");
 
     // Feed the current word to complete to the completer as we type/ edit.
-    BeginTest("foo fee foa foab");
-    TestPressKey("/xyz|f\\ctrl- o");
-    verifyCommandBarCompletionsMatches(QStringList() << "foa"
-                                                     << "foab"
-                                                     << "foo");
-    TestPressKey("a");
-    verifyCommandBarCompletionsMatches(QStringList() << "foa"
-                                                     << "foab");
-    TestPressKey("\\ctrl-h");
-    verifyCommandBarCompletionsMatches(QStringList() << "foa"
-                                                     << "foab"
-                                                     << "foo");
-    TestPressKey("o");
-    verifyCommandBarCompletionsMatches(QStringList() << "foo");
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    BeginTest(QStringLiteral("foo fee foa foab"));
+    TestPressKey(QStringLiteral("/xyz|f\\ctrl- o"));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foa") << QStringLiteral("foab") << QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("a"));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foa") << QStringLiteral("foab"));
+    TestPressKey(QStringLiteral("\\ctrl-h"));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foa") << QStringLiteral("foab") << QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("o"));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo fee foa foab");
 
     // Upon selecting a completion with an empty command bar, add the completed text to the command bar.
-    BeginTest("foo fee fob foables");
-    TestPressKey("/\\ctrl- foa\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foables"));
+    BeginTest(QStringLiteral("foo fee fob foables"));
+    TestPressKey(QStringLiteral("/\\ctrl- foa\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foables"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo fee fob foables");
 
     // If bar is non-empty, replace the word under the cursor.
-    BeginTest("foo fee foa foab");
-    TestPressKey("/xyz|f$nose\\left\\left\\left\\left\\left\\ctrl- oa\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz|foab$nose"));
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    BeginTest(QStringLiteral("foo fee foa foab"));
+    TestPressKey(QStringLiteral("/xyz|f$nose\\left\\left\\left\\left\\left\\ctrl- oa\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("xyz|foab$nose"));
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("foo fee foa foab");
 
     // Place the cursor at the end of the completed text.
-    BeginTest("foo fee foa foab");
-    TestPressKey("/xyz|f$nose\\left\\left\\left\\left\\left\\ctrl- oa\\ctrl-p\\enterX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz|foabX$nose"));
-    TestPressKey("\\ctrl-c"); // Dismiss completion, then bar.
+    BeginTest(QStringLiteral("foo fee foa foab"));
+    TestPressKey(QStringLiteral("/xyz|f$nose\\left\\left\\left\\left\\left\\ctrl- oa\\ctrl-p\\enterX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("xyz|foabX$nose"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completion, then bar.
     FinishTest("foo fee foa foab");
 
     // If we're completing from history, though, the entire text gets set, and the completion prefix
     // is the beginning of the entire text, not the current word before the cursor.
     clearSearchHistory();
-    vi_global->searchHistory()->append("foo(bar");
-    BeginTest("");
-    TestPressKey("/foo(b\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("foo(bar"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo(b\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "foo(bar");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo(bar"));
-    TestPressKey("\\enter"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foo(bar"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo(bar"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("");
 
     // If we're completing from history and we abort the completion via ctrl-c or ctrl-[, we revert the whole
     // text to the last manually typed text.
     clearSearchHistory();
-    vi_global->searchHistory()->append("foo(b|ar");
-    BeginTest("");
-    TestPressKey("/foo(b\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("foo(b|ar"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/foo(b\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "foo(b|ar");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo(b|ar"));
-    TestPressKey("\\ctrl-c"); // Dismiss completion.
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo(b"));
-    TestPressKey("\\enter"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foo(b|ar"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo(b|ar"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completion.
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo(b"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("");
 
     // Scroll completion list if necessary so that currently selected completion is visible.
-    BeginTest("a b c d e f g h i j k l m n o p q r s t u v w x y z");
-    TestPressKey("/\\ctrl- ");
+    BeginTest(QStringLiteral("a b c d e f g h i j k l m n o p q r s t u v w x y z"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
     const int lastItemRow = 25;
     const QRect initialLastCompletionItemRect =
         emulatedCommandBarCompleter()->popup()->visualRect(emulatedCommandBarCompleter()->popup()->model()->index(lastItemRow, 0));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->rect().contains(
         initialLastCompletionItemRect)); // If this fails, then we have an error in the test setup: initially, the last item in the list should be outside of
                                          // the bounds of the popup.
-    TestPressKey("\\ctrl-n");
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("z"));
+    TestPressKey(QStringLiteral("\\ctrl-n"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("z"));
     const QRect lastCompletionItemRect =
         emulatedCommandBarCompleter()->popup()->visualRect(emulatedCommandBarCompleter()->popup()->model()->index(lastItemRow, 0));
     QVERIFY(emulatedCommandBarCompleter()->popup()->rect().contains(lastCompletionItemRect));
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("a b c d e f g h i j k l m n o p q r s t u v w x y z");
 
     // Ensure that the completion list changes size appropriately as the number of candidate completions changes.
-    BeginTest("a ab abc");
-    TestPressKey("/\\ctrl- ");
+    BeginTest(QStringLiteral("a ab abc"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
     const int initialPopupHeight = emulatedCommandBarCompleter()->popup()->height();
-    TestPressKey("ab");
+    TestPressKey(QStringLiteral("ab"));
     const int popupHeightAfterEliminatingOne = emulatedCommandBarCompleter()->popup()->height();
     QVERIFY(popupHeightAfterEliminatingOne < initialPopupHeight);
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("a ab abc");
 
     // Ensure that the completion list disappears when no candidate completions are found, but re-appears
     // when some are found.
-    BeginTest("a ab abc");
-    TestPressKey("/\\ctrl- ");
-    TestPressKey("abd");
+    BeginTest(QStringLiteral("a ab abc"));
+    TestPressKey(QStringLiteral("/\\ctrl- "));
+    TestPressKey(QStringLiteral("abd"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-h");
+    TestPressKey(QStringLiteral("\\ctrl-h"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\enter\\enter"); // Dismiss completion, then bar.
+    TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("a ab abc");
 
     // ctrl-c and ctrl-[ when the completion list is visible should dismiss the completion list, but *not*
     // the emulated command bar. TODO - same goes for ESC, but this is harder as KateViewInternal dismisses it
     // itself.
-    BeginTest("a ab abc");
-    TestPressKey("/\\ctrl- \\ctrl-cdiw");
+    BeginTest(QStringLiteral("a ab abc"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-cdiw"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter"); // Dismiss bar.
-    TestPressKey("/\\ctrl- \\ctrl-[diw");
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-[diw"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    TestPressKey("\\enter"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("a ab abc");
 
     // If we implicitly choose an element from the summoned completion list (by highlighting it, then
     // continuing to edit the text), the completion box should not re-appear unless explicitly summoned
     // again, even if the current word has a valid completion.
-    BeginTest("a ab abc");
-    TestPressKey("/\\ctrl- \\ctrl-p");
-    TestPressKey(".a");
+    BeginTest(QStringLiteral("a ab abc"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-p"));
+    TestPressKey(QStringLiteral(".a"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\enter"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("a ab abc");
 
     // If we dismiss the summoned completion list via ctrl-c or ctrl-[, it should not re-appear unless explicitly summoned
     // again, even if the current word has a valid completion.
-    BeginTest("a ab abc");
-    TestPressKey("/\\ctrl- \\ctrl-c");
-    TestPressKey(".a");
+    BeginTest(QStringLiteral("a ab abc"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-c"));
+    TestPressKey(QStringLiteral(".a"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\enter");
-    TestPressKey("/\\ctrl- \\ctrl-[");
-    TestPressKey(".a");
+    TestPressKey(QStringLiteral("\\enter"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-["));
+    TestPressKey(QStringLiteral(".a"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\enter"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("a ab abc");
 
     // If we select a completion from an empty bar, but then dismiss it via ctrl-c or ctrl-[, then we
     // should restore the empty text.
-    BeginTest("foo");
-    TestPressKey("/\\ctrl- \\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    TestPressKey("\\ctrl-c");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(""));
-    TestPressKey("\\enter"); // Dismiss bar.
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(""));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo");
-    BeginTest("foo");
-    TestPressKey("/\\ctrl- \\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
-    TestPressKey("\\ctrl-[");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("/\\ctrl- \\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("\\ctrl-["));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(""));
-    TestPressKey("\\enter"); // Dismiss bar.
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(""));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("foo");
 
     // If we select a completion but then dismiss it via ctrl-c or ctrl-[, then we
     // should restore the last manually typed word.
-    BeginTest("fooabc");
-    TestPressKey("/f\\ctrl- o\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("fooabc"));
-    TestPressKey("\\ctrl-c");
+    BeginTest(QStringLiteral("fooabc"));
+    TestPressKey(QStringLiteral("/f\\ctrl- o\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("fooabc"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
     QVERIFY(emulatedCommandBar->isVisible());
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("fo"));
-    TestPressKey("\\enter"); // Dismiss bar.
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("fo"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("fooabc");
 
     // If we select a completion but then dismiss it via ctrl-c or ctrl-[, then we
     // should restore the word currently being typed to the last manually typed word.
-    BeginTest("fooabc");
-    TestPressKey("/ab\\ctrl- |fo\\ctrl-p");
-    TestPressKey("\\ctrl-c");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("ab|fo"));
-    TestPressKey("\\enter"); // Dismiss bar.
+    BeginTest(QStringLiteral("fooabc"));
+    TestPressKey(QStringLiteral("/ab\\ctrl- |fo\\ctrl-p"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("ab|fo"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("fooabc");
 
     // Set the completion prefix for the search history completion as soon as it is shown.
     clearSearchHistory();
-    vi_global->searchHistory()->append("foo(bar");
-    vi_global->searchHistory()->append("xyz");
-    BeginTest("");
-    TestPressKey("/f\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("foo(bar"));
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("/f\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "foo(bar");
-    TestPressKey("\\enter"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("foo(bar"));
+    TestPressKey(QStringLiteral("\\enter")); // Dismiss bar.
     FinishTest("");
 
     // Command Mode (:) tests.
     // ":" should summon the command bar, with ":" as the label.
-    BeginTest("");
-    TestPressKey(":");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":"));
     QVERIFY(emulatedCommandBar->isVisible());
-    QCOMPARE(emulatedCommandTypeIndicator()->text(), QString(":"));
+    QCOMPARE(emulatedCommandTypeIndicator()->text(), QStringLiteral(":"));
     QVERIFY(emulatedCommandTypeIndicator()->isVisible());
     QVERIFY(emulatedCommandBarTextEdit());
     QVERIFY(emulatedCommandBarTextEdit()->text().isEmpty());
-    TestPressKey("\\esc");
+    TestPressKey(QStringLiteral("\\esc"));
     FinishTest("");
 
     // If we have a selection, it should be encoded as a range in the text edit.
-    BeginTest("d\nb\na\nc");
-    TestPressKey("Vjjj:");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("'<,'>"));
-    TestPressKey("\\esc");
+    BeginTest(QStringLiteral("d\nb\na\nc"));
+    TestPressKey(QStringLiteral("Vjjj:"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("'<,'>"));
+    TestPressKey(QStringLiteral("\\esc"));
     FinishTest("d\nb\na\nc");
 
     // If we have a count, it should be encoded as a range in the text edit.
-    BeginTest("d\nb\na\nc");
-    TestPressKey("7:");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+6"));
-    TestPressKey("\\esc");
+    BeginTest(QStringLiteral("d\nb\na\nc"));
+    TestPressKey(QStringLiteral("7:"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+6"));
+    TestPressKey(QStringLiteral("\\esc"));
     FinishTest("d\nb\na\nc");
 
     // Don't go doing an incremental search when we press keys!
-    BeginTest("foo bar xyz");
-    TestPressKey(":bar");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral(":bar"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
-    TestPressKey("\\esc");
+    TestPressKey(QStringLiteral("\\esc"));
     FinishTest("foo bar xyz");
 
     // Execute the command on Enter.
@@ -1505,12 +1496,12 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("123", ":42nonexistentcommand\\enter", "123");
 
     // Bar background should always be normal for command bar.
-    BeginTest("foo");
-    TestPressKey("/foo\\enter:");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("/foo\\enter:"));
     verifyTextEditBackgroundColour(normalBackgroundColour);
-    TestPressKey("\\ctrl-c/bar\\enter:");
+    TestPressKey(QStringLiteral("\\ctrl-c/bar\\enter:"));
     verifyTextEditBackgroundColour(normalBackgroundColour);
-    TestPressKey("\\esc");
+    TestPressKey(QStringLiteral("\\esc"));
     FinishTest("foo");
 
     const int commandResponseMessageTimeOutMSOverride = QString::fromLatin1(qgetenv("KATE_VIMODE_TEST_COMMANDRESPONSEMESSAGETIMEOUTMS")).toInt();
@@ -1519,9 +1510,9 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         // If there is any output from the command, show it in a label for a short amount of time
         // (make sure the bar type indicator is hidden, here, as it looks messy).
         emulatedCommandBar->setCommandResponseMessageTimeout(commandResponseMessageTimeOutMS);
-        BeginTest("foo bar xyz");
+        BeginTest(QStringLiteral("foo bar xyz"));
         const QDateTime timeJustBeforeCommandExecuted = QDateTime::currentDateTime();
-        TestPressKey(":commandthatdoesnotexist\\enter");
+        TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enter"));
         QVERIFY(emulatedCommandBar->isVisible());
         QVERIFY(commandResponseMessageDisplay());
         QVERIFY(commandResponseMessageDisplay()->isVisible());
@@ -1537,22 +1528,22 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         // up the conditions again in a separate test impossible ;)
         // When we next summon the bar, the response message should be invisible; the editor visible & editable;
         // and the bar type indicator visible again.
-        TestPressKey("/");
+        TestPressKey(QStringLiteral("/"));
         QVERIFY(!commandResponseMessageDisplay()->isVisible());
         QVERIFY(emulatedCommandBarTextEdit()->isVisible());
         QVERIFY(emulatedCommandBarTextEdit()->isEnabled());
         QVERIFY(emulatedCommandBar->isVisible());
-        TestPressKey("\\esc"); // Dismiss the bar.
+        TestPressKey(QStringLiteral("\\esc")); // Dismiss the bar.
         FinishTest("foo bar xyz");
     }
 
     {
         // Show the same message twice in a row.
-        BeginTest("foo bar xyz");
-        TestPressKey(":othercommandthatdoesnotexist\\enter");
+        BeginTest(QStringLiteral("foo bar xyz"));
+        TestPressKey(QStringLiteral(":othercommandthatdoesnotexist\\enter"));
         QDateTime startWaitingForMessageToHide = QDateTime::currentDateTime();
         waitForEmulatedCommandBarToHide(4 * commandResponseMessageTimeOutMS);
-        TestPressKey(":othercommandthatdoesnotexist\\enter");
+        TestPressKey(QStringLiteral(":othercommandthatdoesnotexist\\enter"));
         QVERIFY(commandResponseMessageDisplay()->isVisible());
         // Wait for it to disappear again, as a courtesy for the next test.
         waitForEmulatedCommandBarToHide(4 * commandResponseMessageTimeOutMS);
@@ -1560,41 +1551,41 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
     {
         // Emulated command bar should not steal keypresses when it is merely showing the results of an executed command.
-        BeginTest("foo bar");
-        TestPressKey(":commandthatdoesnotexist\\enterrX");
+        BeginTest(QStringLiteral("foo bar"));
+        TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enterrX"));
         Q_ASSERT_X(commandResponseMessageDisplay()->isVisible(), "running test", "Need to increase timeJustBeforeCommandExecuted!");
         FinishTest("Xoo bar");
     }
 
     {
         // Don't send the synthetic "enter" keypress (for making search-as-a-motion work) when we finally hide.
-        BeginTest("foo bar\nbar");
-        TestPressKey(":commandthatdoesnotexist\\enter");
+        BeginTest(QStringLiteral("foo bar\nbar"));
+        TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enter"));
         Q_ASSERT_X(commandResponseMessageDisplay()->isVisible(), "running test", "Need to increase timeJustBeforeCommandExecuted!");
         waitForEmulatedCommandBarToHide(commandResponseMessageTimeOutMS * 4);
-        TestPressKey("rX");
+        TestPressKey(QStringLiteral("rX"));
         FinishTest("Xoo bar\nbar");
     }
 
     {
         // The timeout should be cancelled when we invoke the command bar again.
-        BeginTest("");
-        TestPressKey(":commandthatdoesnotexist\\enter");
-        TestPressKey(":");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enter"));
+        TestPressKey(QStringLiteral(":"));
         // Wait ample time for the timeout to fire.  Do not use waitForEmulatedCommandBarToHide for this!
         QTRY_VERIFY_WITH_TIMEOUT(emulatedCommandBar->isVisible(), commandResponseMessageTimeOutMS * 2);
-        TestPressKey("\\esc"); // Dismiss the bar.
+        TestPressKey(QStringLiteral("\\esc")); // Dismiss the bar.
         FinishTest("");
     }
 
     {
         // The timeout should not cause kate_view to regain focus if we have manually taken it away.
         qDebug() << " NOTE: this test is weirdly fragile, so if it starts failing, comment it out and e-mail me:  it may well be more trouble that it's worth.";
-        BeginTest("");
-        TestPressKey(":commandthatdoesnotexist\\enter");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enter"));
         // Wait for any focus changes to take effect.
         QApplication::processEvents();
-        QLineEdit *dummyToFocus = new QLineEdit(QString("Sausage"), mainWindow);
+        QLineEdit *dummyToFocus = new QLineEdit(QStringLiteral("Sausage"), mainWindow);
         // Take focus away from kate_view by giving it to dummyToFocus.
         QApplication::setActiveWindow(mainWindow);
         kate_view->setFocus();
@@ -1622,44 +1613,43 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     {
         // No completion should be shown when the bar is first shown: this gives us an opportunity
         // to invoke command history via ctrl-p and ctrl-n.
-        BeginTest("");
-        TestPressKey(":");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral(":"));
         QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-        TestPressKey("\\ctrl-c"); // Dismiss bar
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
         FinishTest("");
     }
 
     {
         // Should be able to switch to completion from document, even when we have a completion from commands.
-        BeginTest("soggy1 soggy2");
-        TestPressKey(":so");
-        verifyCommandBarCompletionContains(QStringList() << "sort");
-        TestPressKey("\\ctrl- ");
-        verifyCommandBarCompletionsMatches(QStringList() << "soggy1"
-                                                         << "soggy2");
-        TestPressKey("\\ctrl-c"); // Dismiss completer
-        TestPressKey("\\ctrl-c"); // Dismiss bar
+        BeginTest(QStringLiteral("soggy1 soggy2"));
+        TestPressKey(QStringLiteral(":so"));
+        verifyCommandBarCompletionContains(QStringList() << QStringLiteral("sort"));
+        TestPressKey(QStringLiteral("\\ctrl- "));
+        verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("soggy1") << QStringLiteral("soggy2"));
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
         FinishTest("soggy1 soggy2");
     }
 
     {
         // If we dismiss the command completion then change the text, it should summon the completion
         // again.
-        BeginTest("");
-        TestPressKey(":so");
-        TestPressKey("\\ctrl-c"); // Dismiss completer
-        TestPressKey("r");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral(":so"));
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+        TestPressKey(QStringLiteral("r"));
         verifyCommandBarCompletionVisible();
-        verifyCommandBarCompletionContains(QStringList() << "sort");
-        TestPressKey("\\ctrl-c"); // Dismiss completer
-        TestPressKey("\\ctrl-c"); // Dismiss bar
+        verifyCommandBarCompletionContains(QStringList() << QStringLiteral("sort"));
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
         FinishTest("");
     }
 
     {
         // Completion should be dismissed when we are showing command response text.
-        BeginTest("");
-        TestPressKey(":set-au\\enter");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral(":set-au\\enter"));
         QVERIFY(commandResponseMessageDisplay()->isVisible());
         QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
         waitForEmulatedCommandBarToHide(commandResponseMessageTimeOutMS * 4);
@@ -1668,118 +1658,116 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
     // If we abort completion via ctrl-c or ctrl-[, we should revert the current word to the last
     // manually entered word.
-    BeginTest("");
-    TestPressKey(":se\\ctrl-p");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":se\\ctrl-p"));
     verifyCommandBarCompletionVisible();
     QVERIFY(emulatedCommandBarTextEdit()->text() != "se");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("se"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("se"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // In practice, it's annoying if, as we enter ":s/se", completions pop up after the "se":
     // for now, only summon completion if we are on the first word in the text.
-    BeginTest("");
-    TestPressKey(":s/se");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/se"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
-    BeginTest("");
-    TestPressKey(":.,.+7s/se");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":.,.+7s/se"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // Don't blank the text if we activate command history completion with no command history.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearCommandHistory();
-    TestPressKey(":s/se\\ctrl-p");
+    TestPressKey(QStringLiteral(":s/se\\ctrl-p"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/se"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/se"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // On completion, only update the command in front of the cursor.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearCommandHistory();
-    TestPressKey(":.,.+6s/se\\left\\left\\leftet-auto-in\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+6set-auto-indent/se"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer.
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral(":.,.+6s/se\\left\\left\\leftet-auto-in\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+6set-auto-indent/se"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // On completion, place the cursor after the new command.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearCommandHistory();
-    TestPressKey(":.,.+6s/fo\\left\\left\\leftet-auto-in\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+6set-auto-indentX/fo"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer.
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral(":.,.+6s/fo\\left\\left\\leftet-auto-in\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+6set-auto-indentX/fo"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // "The current word", for Commands, can contain "-".
-    BeginTest("");
-    TestPressKey(":set-\\ctrl-p");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":set-\\ctrl-p"));
     verifyCommandBarCompletionVisible();
     QVERIFY(emulatedCommandBarTextEdit()->text() != "set-");
     QVERIFY(emulatedCommandBarCompleter()->currentCompletion().startsWith(QLatin1String("set-")));
     QCOMPARE(emulatedCommandBarTextEdit()->text(), emulatedCommandBarCompleter()->currentCompletion());
-    TestPressKey("\\ctrl-c"); // Dismiss completion.
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completion.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     {
         // Don't switch from word-from-document to command-completion just because we press a key, though!
-        BeginTest("soggy1 soggy2");
-        TestPressKey(":\\ctrl- s");
-        TestPressKey("o");
+        BeginTest(QStringLiteral("soggy1 soggy2"));
+        TestPressKey(QStringLiteral(":\\ctrl- s"));
+        TestPressKey(QStringLiteral("o"));
         verifyCommandBarCompletionVisible();
-        verifyCommandBarCompletionsMatches(QStringList() << "soggy1"
-                                                         << "soggy2");
-        TestPressKey("\\ctrl-c"); // Dismiss completer
-        TestPressKey("\\ctrl-c"); // Dismiss bar
+        verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("soggy1") << QStringLiteral("soggy2"));
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
         FinishTest("soggy1 soggy2");
     }
 
     {
         // If we're in a place where there is no command completion allowed, don't go hiding the word
         // completion as we type.
-        BeginTest("soggy1 soggy2");
-        TestPressKey(":s/s\\ctrl- o");
+        BeginTest(QStringLiteral("soggy1 soggy2"));
+        TestPressKey(QStringLiteral(":s/s\\ctrl- o"));
         verifyCommandBarCompletionVisible();
-        verifyCommandBarCompletionsMatches(QStringList() << "soggy1"
-                                                         << "soggy2");
-        TestPressKey("\\ctrl-c"); // Dismiss completer
-        TestPressKey("\\ctrl-c"); // Dismiss bar
+        verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("soggy1") << QStringLiteral("soggy2"));
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
         FinishTest("soggy1 soggy2");
     }
 
     {
         // Don't show command completion before we start typing a command: we want ctrl-p/n
         // to go through command history instead (we'll test for that second part later).
-        BeginTest("soggy1 soggy2");
-        TestPressKey(":");
+        BeginTest(QStringLiteral("soggy1 soggy2"));
+        TestPressKey(QStringLiteral(":"));
         QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-        TestPressKey("\\ctrl-cvl:");
+        TestPressKey(QStringLiteral("\\ctrl-cvl:"));
         QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-        TestPressKey("\\ctrl-c"); // Dismiss bar
+        TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
         FinishTest("soggy1 soggy2");
     }
 
     {
         // Aborting ":" should leave us in normal mode with no selection.
-        BeginTest("foo bar");
-        TestPressKey("vw:\\ctrl-[");
+        BeginTest(QStringLiteral("foo bar"));
+        TestPressKey(QStringLiteral("vw:\\ctrl-["));
         QVERIFY(kate_view->selectionText().isEmpty());
-        TestPressKey("wdiw");
-        BeginTest("foo ");
+        TestPressKey(QStringLiteral("wdiw"));
+        BeginTest(QStringLiteral("foo "));
     }
 
     // Command history tests.
     clearCommandHistory();
     QVERIFY(commandHistory().isEmpty());
-    vi_global->commandHistory()->append("foo");
-    vi_global->commandHistory()->append("bar");
+    vi_global->commandHistory()->append(QStringLiteral("foo"));
+    vi_global->commandHistory()->append(QStringLiteral("bar"));
     QCOMPARE(commandHistory(),
              QStringList() << "foo"
                            << "bar");
@@ -1789,10 +1777,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // If we add something to the history, remove any earliest occurrences (this is what Vim appears to do)
     // and append to the end.
     clearCommandHistory();
-    vi_global->commandHistory()->append("bar");
-    vi_global->commandHistory()->append("xyz");
-    vi_global->commandHistory()->append("foo");
-    vi_global->commandHistory()->append("xyz");
+    vi_global->commandHistory()->append(QStringLiteral("bar"));
+    vi_global->commandHistory()->append(QStringLiteral("xyz"));
+    vi_global->commandHistory()->append(QStringLiteral("foo"));
+    vi_global->commandHistory()->append(QStringLiteral("xyz"));
     QCOMPARE(commandHistory(),
              QStringList() << "bar"
                            << "foo"
@@ -1801,15 +1789,15 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Push out older entries if we have too many command items in the history.
     clearCommandHistory();
     for (int i = 1; i <= HISTORY_SIZE_LIMIT; i++) {
-        vi_global->commandHistory()->append(QString("commandhistoryitem %1").arg(i));
+        vi_global->commandHistory()->append(QStringLiteral("commandhistoryitem %1").arg(i));
     }
     QCOMPARE(commandHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(commandHistory().first(), QString("commandhistoryitem 1"));
-    QCOMPARE(commandHistory().last(), QString("commandhistoryitem 100"));
-    vi_global->commandHistory()->append(QString("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    QCOMPARE(commandHistory().first(), QStringLiteral("commandhistoryitem 1"));
+    QCOMPARE(commandHistory().last(), QStringLiteral("commandhistoryitem 100"));
+    vi_global->commandHistory()->append(QStringLiteral("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(commandHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(commandHistory().first(), QString("commandhistoryitem 2"));
-    QCOMPARE(commandHistory().last(), QString("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    QCOMPARE(commandHistory().first(), QStringLiteral("commandhistoryitem 2"));
+    QCOMPARE(commandHistory().last(), QStringLiteral("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty commands to the history.
     clearCommandHistory();
@@ -1817,28 +1805,28 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QVERIFY(commandHistory().isEmpty());
 
     clearCommandHistory();
-    BeginTest("");
-    TestPressKey(":sort\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":sort\\enter"));
     QCOMPARE(commandHistory(), QStringList() << "sort");
-    TestPressKey(":yank\\enter");
+    TestPressKey(QStringLiteral(":yank\\enter"));
     QCOMPARE(commandHistory(),
              QStringList() << "sort"
                            << "yank");
     // Add to history immediately: don't wait for the command response display to timeout.
-    TestPressKey(":commandthatdoesnotexist\\enter");
+    TestPressKey(QStringLiteral(":commandthatdoesnotexist\\enter"));
     QCOMPARE(commandHistory(),
              QStringList() << "sort"
                            << "yank"
                            << "commandthatdoesnotexist");
     // Vim adds aborted commands to the history too, oddly.
-    TestPressKey(":abortedcommand\\ctrl-c");
+    TestPressKey(QStringLiteral(":abortedcommand\\ctrl-c"));
     QCOMPARE(commandHistory(),
              QStringList() << "sort"
                            << "yank"
                            << "commandthatdoesnotexist"
                            << "abortedcommand");
     // Only add for commands, not searches!
-    TestPressKey("/donotaddme\\enter?donotaddmeeither\\enter/donotaddme\\ctrl-c?donotaddmeeither\\ctrl-c");
+    TestPressKey(QStringLiteral("/donotaddme\\enter?donotaddmeeither\\enter/donotaddme\\ctrl-c?donotaddmeeither\\ctrl-c"));
     QCOMPARE(commandHistory(),
              QStringList() << "sort"
                            << "yank"
@@ -1849,74 +1837,74 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Commands should not be added to the search history!
     clearCommandHistory();
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":sort\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":sort\\enter"));
     QVERIFY(searchHistory().isEmpty());
     FinishTest("");
 
     // With an empty command bar, ctrl-p / ctrl-n should go through history.
     clearCommandHistory();
-    vi_global->commandHistory()->append("command1");
-    vi_global->commandHistory()->append("command2");
-    BeginTest("");
-    TestPressKey(":\\ctrl-p");
+    vi_global->commandHistory()->append(QStringLiteral("command1"));
+    vi_global->commandHistory()->append(QStringLiteral("command2"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("command2"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("command2"));
     QCOMPARE(emulatedCommandBarTextEdit()->text(), emulatedCommandBarCompleter()->currentCompletion());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
     clearCommandHistory();
-    vi_global->commandHistory()->append("command1");
-    vi_global->commandHistory()->append("command2");
-    BeginTest("");
-    TestPressKey(":\\ctrl-n");
+    vi_global->commandHistory()->append(QStringLiteral("command1"));
+    vi_global->commandHistory()->append(QStringLiteral("command2"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":\\ctrl-n"));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("command1"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("command1"));
     QCOMPARE(emulatedCommandBarTextEdit()->text(), emulatedCommandBarCompleter()->currentCompletion());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // If we're at a place where command completions are not allowed, ctrl-p/n should go through history.
     clearCommandHistory();
-    vi_global->commandHistory()->append("s/command1");
-    vi_global->commandHistory()->append("s/command2");
-    BeginTest("");
-    TestPressKey(":s/\\ctrl-p");
+    vi_global->commandHistory()->append(QStringLiteral("s/command1"));
+    vi_global->commandHistory()->append(QStringLiteral("s/command2"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("s/command2"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("s/command2"));
     QCOMPARE(emulatedCommandBarTextEdit()->text(), emulatedCommandBarCompleter()->currentCompletion());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
     clearCommandHistory();
-    vi_global->commandHistory()->append("s/command1");
-    vi_global->commandHistory()->append("s/command2");
-    BeginTest("");
-    TestPressKey(":s/\\ctrl-n");
+    vi_global->commandHistory()->append(QStringLiteral("s/command1"));
+    vi_global->commandHistory()->append(QStringLiteral("s/command2"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/\\ctrl-n"));
     verifyCommandBarCompletionVisible();
-    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("s/command1"));
+    QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QStringLiteral("s/command1"));
     QCOMPARE(emulatedCommandBarTextEdit()->text(), emulatedCommandBarCompleter()->currentCompletion());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("");
 
     // Cancelling word-from-document completion should revert the whole text to what it was before.
-    BeginTest("sausage bacon");
-    TestPressKey(":s/b\\ctrl- \\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/bacon"));
+    BeginTest(QStringLiteral("sausage bacon"));
+    TestPressKey(QStringLiteral(":s/b\\ctrl- \\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/bacon"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/b"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/b"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
     FinishTest("sausage bacon");
 
     // "Replace" history tests.
     clearReplaceHistory();
     QVERIFY(replaceHistory().isEmpty());
-    vi_global->replaceHistory()->append("foo");
-    vi_global->replaceHistory()->append("bar");
+    vi_global->replaceHistory()->append(QStringLiteral("foo"));
+    vi_global->replaceHistory()->append(QStringLiteral("bar"));
     QCOMPARE(replaceHistory(),
              QStringList() << "foo"
                            << "bar");
@@ -1926,10 +1914,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // If we add something to the history, remove any earliest occurrences (this is what Vim appears to do)
     // and append to the end.
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("bar");
-    vi_global->replaceHistory()->append("xyz");
-    vi_global->replaceHistory()->append("foo");
-    vi_global->replaceHistory()->append("xyz");
+    vi_global->replaceHistory()->append(QStringLiteral("bar"));
+    vi_global->replaceHistory()->append(QStringLiteral("xyz"));
+    vi_global->replaceHistory()->append(QStringLiteral("foo"));
+    vi_global->replaceHistory()->append(QStringLiteral("xyz"));
     QCOMPARE(replaceHistory(),
              QStringList() << "bar"
                            << "foo"
@@ -1938,19 +1926,19 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Push out older entries if we have too many replace items in the history.
     clearReplaceHistory();
     for (int i = 1; i <= HISTORY_SIZE_LIMIT; i++) {
-        vi_global->replaceHistory()->append(QString("replacehistoryitem %1").arg(i));
+        vi_global->replaceHistory()->append(QStringLiteral("replacehistoryitem %1").arg(i));
     }
     QCOMPARE(replaceHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(replaceHistory().first(), QString("replacehistoryitem 1"));
-    QCOMPARE(replaceHistory().last(), QString("replacehistoryitem 100"));
-    vi_global->replaceHistory()->append(QString("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    QCOMPARE(replaceHistory().first(), QStringLiteral("replacehistoryitem 1"));
+    QCOMPARE(replaceHistory().last(), QStringLiteral("replacehistoryitem 100"));
+    vi_global->replaceHistory()->append(QStringLiteral("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(replaceHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(replaceHistory().first(), QString("replacehistoryitem 2"));
-    QCOMPARE(replaceHistory().last(), QString("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    QCOMPARE(replaceHistory().first(), QStringLiteral("replacehistoryitem 2"));
+    QCOMPARE(replaceHistory().last(), QStringLiteral("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty replaces to the history.
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("");
+    vi_global->replaceHistory()->append(QLatin1String(""));
     QVERIFY(replaceHistory().isEmpty());
 
     // Some misc SedReplace tests.
@@ -1967,50 +1955,50 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("bar\nbar\nbar", ":0,2s/bar/foo/g\\enter", "foo\nfoo\nbar");
 
     // On ctrl-d, delete the "search" term in a s/search/replace/xx
-    BeginTest("foo bar");
-    TestPressKey(":s/x\\\\\\\\\\\\/yz/rep\\\\\\\\\\\\/lace/g\\ctrl-d");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s//rep\\\\\\/lace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s/x\\\\\\\\\\\\/yz/rep\\\\\\\\\\\\/lace/g\\ctrl-d"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s//rep\\\\\\/lace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Move cursor to position of deleted search term.
-    BeginTest("foo bar");
-    TestPressKey(":s/x\\\\\\\\\\\\/yz/rep\\\\\\\\\\\\/lace/g\\ctrl-dX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/X/rep\\\\\\/lace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s/x\\\\\\\\\\\\/yz/rep\\\\\\\\\\\\/lace/g\\ctrl-dX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/X/rep\\\\\\/lace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Do nothing on ctrl-d in search mode.
-    BeginTest("foo bar");
-    TestPressKey("/s/search/replace/g\\ctrl-d");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/replace/g"));
-    TestPressKey("\\ctrl-c?s/searchbackwards/replace/g\\ctrl-d");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/searchbackwards/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/s/search/replace/g\\ctrl-d"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c?s/searchbackwards/replace/g\\ctrl-d"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/searchbackwards/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // On ctrl-f, delete "replace" term in a s/search/replace/xx
-    BeginTest("foo bar");
-    TestPressKey(":s/a\\\\\\\\\\\\/bc/rep\\\\\\\\\\\\/lace/g\\ctrl-f");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/a\\\\\\/bc//g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s/a\\\\\\\\\\\\/bc/rep\\\\\\\\\\\\/lace/g\\ctrl-f"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/a\\\\\\/bc//g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Move cursor to position of deleted replace term.
-    BeginTest("foo bar");
-    TestPressKey(":s:a/bc:replace:g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:a/bc:X:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s:a/bc:replace:g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:a/bc:X:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Do nothing on ctrl-d in search mode.
-    BeginTest("foo bar");
-    TestPressKey("/s/search/replace/g\\ctrl-f");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/replace/g"));
-    TestPressKey("\\ctrl-c?s/searchbackwards/replace/g\\ctrl-f");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/searchbackwards/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("/s/search/replace/g\\ctrl-f"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c?s/searchbackwards/replace/g\\ctrl-f"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/searchbackwards/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Do nothing on ctrl-d / ctrl-f if the current expression is not a sed expression.
-    BeginTest("foo bar");
-    TestPressKey(":s/notasedreplaceexpression::gi\\ctrl-f\\ctrl-dX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/notasedreplaceexpression::giX"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s/notasedreplaceexpression::gi\\ctrl-f\\ctrl-dX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/notasedreplaceexpression::giX"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Need to convert Vim-style regex's to Qt one's in Sed Replace.
     DoTest("foo xbacba(boo)|[y", ":s/x[abc]\\\\+(boo)|[y/boo/g\\enter", "foo boo");
@@ -2018,76 +2006,76 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Just convert the search term, please :)
     DoTest("foo xbacba(boo)|[y", ":s/x[abc]\\\\+(boo)|[y/boo()/g\\enter", "foo boo()");
     // With an empty search expression, ctrl-d should still position the cursor correctly.
-    BeginTest("foo bar");
-    TestPressKey(":s//replace/g\\ctrl-dX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/X/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":s::replace:g\\ctrl-dX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:X:replace:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-dX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/X/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":s::replace:g\\ctrl-dX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:X:replace:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // With an empty replace expression, ctrl-f should still position the cursor correctly.
-    BeginTest("foo bar");
-    TestPressKey(":s/sear\\\\/ch//g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/sear\\/ch/X/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":s:sear\\\\:ch::g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:sear\\:ch:X:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s/sear\\\\/ch//g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/sear\\/ch/X/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":s:sear\\\\:ch::g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:sear\\:ch:X:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // With both empty search *and* replace expressions, ctrl-f should still position the cursor correctly.
-    BeginTest("foo bar");
-    TestPressKey(":s///g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s//X/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":s:::g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s::X:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s///g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s//X/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":s:::g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s::X:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Should be able to undo ctrl-f or ctrl-d.
-    BeginTest("foo bar");
-    TestPressKey(":s/find/replace/g\\ctrl-d");
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":s/find/replace/g\\ctrl-d"));
     emulatedCommandBarTextEdit()->undo();
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/find/replace/g"));
-    TestPressKey("\\ctrl-f");
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/find/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-f"));
     emulatedCommandBarTextEdit()->undo();
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/find/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/find/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // ctrl-f / ctrl-d should cleanly finish sed find/ replace history completion.
     clearReplaceHistory();
     clearSearchHistory();
-    vi_global->searchHistory()->append("searchxyz");
-    vi_global->replaceHistory()->append("replacexyz");
-    TestPressKey(":s///g\\ctrl-d\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("searchxyz"));
+    vi_global->replaceHistory()->append(QStringLiteral("replacexyz"));
+    TestPressKey(QStringLiteral(":s///g\\ctrl-d\\ctrl-p"));
     QVERIFY(emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-f");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/searchxyz//g"));
+    TestPressKey(QStringLiteral("\\ctrl-f"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/searchxyz//g"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-p");
+    TestPressKey(QStringLiteral("\\ctrl-p"));
     QVERIFY(emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-d");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s//replacexyz/g"));
+    TestPressKey(QStringLiteral("\\ctrl-d"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s//replacexyz/g"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Don't hang if we execute a sed replace with empty search term.
     DoTest("foo bar", ":s//replace/g\\enter", "foo bar");
 
     // ctrl-f & ctrl-d should work even when there is a range expression at the beginning of the sed replace.
-    BeginTest("foo bar");
-    TestPressKey(":'<,'>s/search/replace/g\\ctrl-d");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("'<,'>s//replace/g"));
-    TestPressKey("\\ctrl-c:.,.+6s/search/replace/g\\ctrl-f");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+6s/search//g"));
-    TestPressKey("\\ctrl-c:%s/search/replace/g\\ctrl-f");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("%s/search//g"));
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral(":'<,'>s/search/replace/g\\ctrl-d"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("'<,'>s//replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c:.,.+6s/search/replace/g\\ctrl-f"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+6s/search//g"));
+    TestPressKey(QStringLiteral("\\ctrl-c:%s/search/replace/g\\ctrl-f"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("%s/search//g"));
     // Place the cursor in the right place even when there is a range expression.
-    TestPressKey("\\ctrl-c:.,.+6s/search/replace/g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+6s/search/X/g"));
-    TestPressKey("\\ctrl-c:%s/search/replace/g\\ctrl-fX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("%s/search/X/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c:.,.+6s/search/replace/g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+6s/search/X/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c:%s/search/replace/g\\ctrl-fX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("%s/search/X/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("foo bar");
     // Don't crash on ctrl-f/d if we have an empty command.
     DoTest("", ":\\ctrl-f\\ctrl-d\\ctrl-c", "");
@@ -2095,63 +2083,63 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("", ":.,.+\\ctrl-f\\ctrl-d\\ctrl-c", "");
 
     // Command-completion should be invoked on the command being typed even when preceded by a range expression.
-    BeginTest("");
-    TestPressKey(":0,'>so");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":0,'>so"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Command-completion should ignore the range expression.
-    BeginTest("");
-    TestPressKey(":.,.+6so");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":.,.+6so"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // A sed-replace should immediately add the search term to the search history.
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":s/search/replace/g\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search/replace/g\\enter"));
     QCOMPARE(searchHistory(), QStringList() << "search");
     FinishTest("");
 
     // An aborted sed-replace should not add the search term to the search history.
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":s/search/replace/g\\ctrl-c");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search/replace/g\\ctrl-c"));
     QCOMPARE(searchHistory(), QStringList());
     FinishTest("");
 
     // A non-sed-replace should leave the search history unchanged.
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":s,search/replace/g\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s,search/replace/g\\enter"));
     QCOMPARE(searchHistory(), QStringList());
     FinishTest("");
 
     // A sed-replace should immediately add the replace term to the replace history.
     clearReplaceHistory();
-    BeginTest("");
-    TestPressKey(":s/search/replace/g\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search/replace/g\\enter"));
     QCOMPARE(replaceHistory(), QStringList() << "replace");
     clearReplaceHistory();
-    TestPressKey(":'<,'>s/search/replace1/g\\enter");
+    TestPressKey(QStringLiteral(":'<,'>s/search/replace1/g\\enter"));
     QCOMPARE(replaceHistory(), QStringList() << "replace1");
     FinishTest("");
 
     // An aborted sed-replace should not add the replace term to the replace history.
     clearReplaceHistory();
-    BeginTest("");
-    TestPressKey(":s/search/replace/g\\ctrl-c");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search/replace/g\\ctrl-c"));
     QCOMPARE(replaceHistory(), QStringList());
     FinishTest("");
 
     // A non-sed-replace should leave the replace history unchanged.
     clearReplaceHistory();
-    BeginTest("");
-    TestPressKey(":s,search/replace/g\\enter");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s,search/replace/g\\enter"));
     QCOMPARE(replaceHistory(), QStringList());
     FinishTest("");
 
@@ -2214,55 +2202,56 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     DoTest("foo", "\\:s/foo/\\\\a/g\\", "\x07");
     // End "generic" (i.e. not involving any Vi mode tricks/ transformations) sed replace tests: the remaining
     // ones should go via the EmulatedCommandBar.
-    BeginTest("foo foo\nxyz\nfoo");
-    TestPressKey(":%s/foo/bar/g\\enter");
+    BeginTest(QStringLiteral("foo foo\nxyz\nfoo"));
+    TestPressKey(QStringLiteral(":%s/foo/bar/g\\enter"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(3, 2);
     FinishTest("bar bar\nxyz\nbar");
 
     // ctrl-p on the first character of the search term in a sed-replace should
     // invoke search history completion.
     clearSearchHistory();
-    vi_global->searchHistory()->append("search");
-    BeginTest("");
-    TestPressKey(":s/search/replace/g\\ctrl-b\\right\\right\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("search"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search/replace/g\\ctrl-b\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s/search/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":'<,'>s/search/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on the last character of the search term in a sed-replace should
     // invoke search history completion.
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyz");
-    BeginTest("");
-    TestPressKey(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     QVERIFY(!emulatedCommandBar->isVisible());
-    TestPressKey(":'<,'>s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
+    TestPressKey(QStringLiteral(":'<,'>s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on some arbitrary character of the search term in a sed-replace should
     // invoke search history completion.
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyzaaaaaa");
-    BeginTest("");
-    TestPressKey(":s/xyzaaaaaa/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("xyzaaaaaa"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/xyzaaaaaa/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s/xyzaaaaaa/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(
+        QStringLiteral(":'<,'>s/xyzaaaaaa/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on some character *after" the search term should
@@ -2272,111 +2261,107 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearSearchHistory();
     clearCommandHistory();
     clearReplaceHistory();
-    vi_global->searchHistory()->append("xyz");
-    BeginTest("");
-    TestPressKey(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("xyz"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\ctrl-p"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     clearSearchHistory();
     clearCommandHistory();
-    TestPressKey(":'<,'>s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
+    TestPressKey(QStringLiteral(":'<,'>s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
 
     // Make sure it's the search history we're invoking.
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyzaaaaaa");
-    BeginTest("");
-    TestPressKey(":s//replace/g\\ctrl-b\\right\\right\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("xyzaaaaaa"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-b\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "xyzaaaaaa");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":.,.+6s//replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
-    verifyCommandBarCompletionsMatches(QStringList() << "xyzaaaaaa");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("xyzaaaaaa"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":.,.+6s//replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p"));
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("xyzaaaaaa"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // (Search history should be reversed).
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyzaaaaaa");
-    vi_global->searchHistory()->append("abc");
-    vi_global->searchHistory()->append("def");
-    BeginTest("");
-    TestPressKey(":s//replace/g\\ctrl-b\\right\\right\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("xyzaaaaaa"));
+    vi_global->searchHistory()->append(QStringLiteral("abc"));
+    vi_global->searchHistory()->append(QStringLiteral("def"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-b\\right\\right\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "def"
-                                                     << "abc"
-                                                     << "xyzaaaaaa");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("def") << QStringLiteral("abc") << QStringLiteral("xyzaaaaaa"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Completion prefix is the current find term.
     clearSearchHistory();
-    vi_global->searchHistory()->append("xy:zaaaaaa");
-    vi_global->searchHistory()->append("abc");
-    vi_global->searchHistory()->append("def");
-    vi_global->searchHistory()->append("xy:zbaaaaa");
-    vi_global->searchHistory()->append("xy:zcaaaaa");
-    BeginTest("");
-    TestPressKey(":s//replace/g\\ctrl-dxy:z\\ctrl-p");
+    vi_global->searchHistory()->append(QStringLiteral("xy:zaaaaaa"));
+    vi_global->searchHistory()->append(QStringLiteral("abc"));
+    vi_global->searchHistory()->append(QStringLiteral("def"));
+    vi_global->searchHistory()->append(QStringLiteral("xy:zbaaaaa"));
+    vi_global->searchHistory()->append(QStringLiteral("xy:zcaaaaa"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-dxy:z\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "xy:zcaaaaa"
-                                                     << "xy:zbaaaaa"
-                                                     << "xy:zaaaaaa");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("xy:zcaaaaa") << QStringLiteral("xy:zbaaaaa") << QStringLiteral("xy:zaaaaaa"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Replace entire search term with completion.
     clearSearchHistory();
-    vi_global->searchHistory()->append("ab,cd");
-    vi_global->searchHistory()->append("ab,xy");
-    BeginTest("");
-    TestPressKey(":s//replace/g\\ctrl-dab,\\ctrl-p\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/ab,cd/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s//replace/g\\ctrl-dab,\\ctrl-p\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("'<,'>s/ab,cd/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("ab,cd"));
+    vi_global->searchHistory()->append(QStringLiteral("ab,xy"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-dab,\\ctrl-p\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/ab,cd/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":'<,'>s//replace/g\\ctrl-dab,\\ctrl-p\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("'<,'>s/ab,cd/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Place the cursor at the end of find term.
     clearSearchHistory();
-    vi_global->searchHistory()->append("ab,xy");
-    BeginTest("");
-    TestPressKey(":s//replace/g\\ctrl-dab,\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/ab,xyX/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":.,.+7s//replace/g\\ctrl-dab,\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+7s/ab,xyX/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("ab,xy"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-dab,\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/ab,xyX/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":.,.+7s//replace/g\\ctrl-dab,\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+7s/ab,xyX/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Leave find term unchanged if there is no search history.
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":s/nose/replace/g\\ctrl-b\\right\\right\\right\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/nose/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/nose/replace/g\\ctrl-b\\right\\right\\right\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/nose/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Leave cursor position unchanged if there is no search history.
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":s/nose/replace/g\\ctrl-b\\right\\right\\right\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/nXose/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/nose/replace/g\\ctrl-b\\right\\right\\right\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/nXose/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on the first character of the replace term in a sed-replace should
@@ -2384,46 +2369,46 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearSearchHistory();
     clearReplaceHistory();
     clearCommandHistory();
-    vi_global->replaceHistory()->append("replace");
-    BeginTest("");
-    TestPressKey(":s/search/replace/g\\left\\left\\left\\left\\left\\left\\left\\left\\left\\ctrl-p");
+    vi_global->replaceHistory()->append(QStringLiteral("replace"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search/replace/g\\left\\left\\left\\left\\left\\left\\left\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s/search/replace/g\\left\\left\\left\\left\\left\\left\\left\\left\\left\\ctrl-p");
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":'<,'>s/search/replace/g\\left\\left\\left\\left\\left\\left\\left\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on the last character of the replace term in a sed-replace should
     // invoke replace history completion.
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("replace");
-    BeginTest("");
-    TestPressKey(":s/xyz/replace/g\\left\\left\\ctrl-p");
+    vi_global->replaceHistory()->append(QStringLiteral("replace"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/xyz/replace/g\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s/xyz/replace/g\\left\\left\\ctrl-p");
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":'<,'>s/xyz/replace/g\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on some arbitrary character of the search term in a sed-replace should
     // invoke search history completion.
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("replaceaaaaaa");
-    BeginTest("");
-    TestPressKey(":s/xyzaaaaaa/replace/g\\left\\left\\left\\left\\ctrl-p");
+    vi_global->replaceHistory()->append(QStringLiteral("replaceaaaaaa"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/xyzaaaaaa/replace/g\\left\\left\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s/xyzaaaaaa/replace/g\\left\\left\\left\\left\\ctrl-p");
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":'<,'>s/xyzaaaaaa/replace/g\\left\\left\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // ctrl-p on some character *after" the replace term should
@@ -2433,664 +2418,660 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearSearchHistory();
     clearCommandHistory();
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("xyz");
-    BeginTest("");
-    TestPressKey(":s/xyz/replace/g\\left\\ctrl-p");
+    vi_global->replaceHistory()->append(QStringLiteral("xyz"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/xyz/replace/g\\left\\ctrl-p"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     clearSearchHistory();
     clearCommandHistory();
-    TestPressKey(":'<,'>s/xyz/replace/g\\left\\ctrl-p");
+    TestPressKey(QStringLiteral(":'<,'>s/xyz/replace/g\\left\\ctrl-p"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
 
     // (Replace history should be reversed).
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("xyzaaaaaa");
-    vi_global->replaceHistory()->append("abc");
-    vi_global->replaceHistory()->append("def");
-    BeginTest("");
-    TestPressKey(":s/search//g\\left\\left\\ctrl-p");
+    vi_global->replaceHistory()->append(QStringLiteral("xyzaaaaaa"));
+    vi_global->replaceHistory()->append(QStringLiteral("abc"));
+    vi_global->replaceHistory()->append(QStringLiteral("def"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search//g\\left\\left\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "def"
-                                                     << "abc"
-                                                     << "xyzaaaaaa");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("def") << QStringLiteral("abc") << QStringLiteral("xyzaaaaaa"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Completion prefix is the current replace term.
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("xy:zaaaaaa");
-    vi_global->replaceHistory()->append("abc");
-    vi_global->replaceHistory()->append("def");
-    vi_global->replaceHistory()->append("xy:zbaaaaa");
-    vi_global->replaceHistory()->append("xy:zcaaaaa");
-    BeginTest("");
-    TestPressKey(":'<,'>s/replace/search/g\\ctrl-fxy:z\\ctrl-p");
+    vi_global->replaceHistory()->append(QStringLiteral("xy:zaaaaaa"));
+    vi_global->replaceHistory()->append(QStringLiteral("abc"));
+    vi_global->replaceHistory()->append(QStringLiteral("def"));
+    vi_global->replaceHistory()->append(QStringLiteral("xy:zbaaaaa"));
+    vi_global->replaceHistory()->append(QStringLiteral("xy:zcaaaaa"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":'<,'>s/replace/search/g\\ctrl-fxy:z\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    verifyCommandBarCompletionsMatches(QStringList() << "xy:zcaaaaa"
-                                                     << "xy:zbaaaaa"
-                                                     << "xy:zaaaaaa");
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    verifyCommandBarCompletionsMatches(QStringList() << QStringLiteral("xy:zcaaaaa") << QStringLiteral("xy:zbaaaaa") << QStringLiteral("xy:zaaaaaa"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Replace entire search term with completion.
     clearReplaceHistory();
     clearSearchHistory();
-    vi_global->replaceHistory()->append("ab,cd");
-    vi_global->replaceHistory()->append("ab,xy");
-    BeginTest("");
-    TestPressKey(":s/search//g\\ctrl-fab,\\ctrl-p\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/ab,cd/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":'<,'>s/search//g\\ctrl-fab,\\ctrl-p\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("'<,'>s/search/ab,cd/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->replaceHistory()->append(QStringLiteral("ab,cd"));
+    vi_global->replaceHistory()->append(QStringLiteral("ab,xy"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search//g\\ctrl-fab,\\ctrl-p\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/ab,cd/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":'<,'>s/search//g\\ctrl-fab,\\ctrl-p\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("'<,'>s/search/ab,cd/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Place the cursor at the end of replace term.
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("ab,xy");
-    BeginTest("");
-    TestPressKey(":s/search//g\\ctrl-fab,\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/ab,xyX/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
-    TestPressKey(":.,.+7s/search//g\\ctrl-fab,\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString(".,.+7s/search/ab,xyX/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->replaceHistory()->append(QStringLiteral("ab,xy"));
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/search//g\\ctrl-fab,\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/ab,xyX/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
+    TestPressKey(QStringLiteral(":.,.+7s/search//g\\ctrl-fab,\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral(".,.+7s/search/ab,xyX/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Leave replace term unchanged if there is no replace history.
     clearReplaceHistory();
-    BeginTest("");
-    TestPressKey(":s/nose/replace/g\\left\\left\\left\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/nose/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/nose/replace/g\\left\\left\\left\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/nose/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Leave cursor position unchanged if there is no replace history.
     clearSearchHistory();
-    BeginTest("");
-    TestPressKey(":s/nose/replace/g\\left\\left\\left\\left\\ctrl-pX");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/nose/replaXce/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":s/nose/replace/g\\left\\left\\left\\left\\ctrl-pX"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/nose/replaXce/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Invoke replacement history even when the "find" term is empty.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearReplaceHistory();
     clearSearchHistory();
-    vi_global->replaceHistory()->append("ab,xy");
-    vi_global->searchHistory()->append("whoops");
-    TestPressKey(":s///g\\ctrl-f\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s//ab,xy/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->replaceHistory()->append(QStringLiteral("ab,xy"));
+    vi_global->searchHistory()->append(QStringLiteral("whoops"));
+    TestPressKey(QStringLiteral(":s///g\\ctrl-f\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s//ab,xy/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Move the cursor back to the last manual edit point when aborting completion.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearSearchHistory();
-    vi_global->searchHistory()->append("xyzaaaaa");
-    TestPressKey(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\righta\\ctrl-p\\ctrl-[X");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/xyzaX/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("xyzaaaaa"));
+    TestPressKey(QStringLiteral(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\righta\\ctrl-p\\ctrl-[X"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/xyzaX/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Don't blank the "find" term if there is no search history that begins with the
     // current "find" term.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearSearchHistory();
-    vi_global->searchHistory()->append("doesnothavexyzasaprefix");
-    TestPressKey(":s//replace/g\\ctrl-dxyz\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/xyz/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("doesnothavexyzasaprefix"));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-dxyz\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/xyz/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Escape the delimiter if it occurs in a search history term - searching for it likely won't
     // work, but at least it won't crash!
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearSearchHistory();
-    vi_global->searchHistory()->append("search");
-    vi_global->searchHistory()->append("aa/aa\\/a");
-    vi_global->searchHistory()->append("ss/ss");
-    TestPressKey(":s//replace/g\\ctrl-d\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/ss\\/ss/replace/g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/aa\\/aa\\/a/replace/g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("search"));
+    vi_global->searchHistory()->append(QStringLiteral("aa/aa\\/a"));
+    vi_global->searchHistory()->append(QStringLiteral("ss/ss"));
+    TestPressKey(QStringLiteral(":s//replace/g\\ctrl-d\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/ss\\/ss/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/aa\\/aa\\/a/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     clearSearchHistory(); // Now do the same, but with a different delimiter.
-    vi_global->searchHistory()->append("search");
-    vi_global->searchHistory()->append("aa:aa\\:a");
-    vi_global->searchHistory()->append("ss:ss");
-    TestPressKey(":s::replace:g\\ctrl-d\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:ss\\:ss:replace:g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:aa\\:aa\\:a:replace:g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:search:replace:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("search"));
+    vi_global->searchHistory()->append(QStringLiteral("aa:aa\\:a"));
+    vi_global->searchHistory()->append(QStringLiteral("ss:ss"));
+    TestPressKey(QStringLiteral(":s::replace:g\\ctrl-d\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:ss\\:ss:replace:g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:aa\\:aa\\:a:replace:g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:search:replace:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Remove \C if occurs in search history.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearSearchHistory();
-    vi_global->searchHistory()->append("s\\Cear\\\\Cch");
-    TestPressKey(":s::replace:g\\ctrl-d\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:sear\\\\Cch:replace:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("s\\Cear\\\\Cch"));
+    TestPressKey(QStringLiteral(":s::replace:g\\ctrl-d\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:sear\\\\Cch:replace:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Don't blank the "replace" term if there is no search history that begins with the
     // current "replace" term.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("doesnothavexyzasaprefix");
-    TestPressKey(":s/search//g\\ctrl-fxyz\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/xyz/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->replaceHistory()->append(QStringLiteral("doesnothavexyzasaprefix"));
+    TestPressKey(QStringLiteral(":s/search//g\\ctrl-fxyz\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/xyz/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Escape the delimiter if it occurs in a replace history term - searching for it likely won't
     // work, but at least it won't crash!
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearReplaceHistory();
-    vi_global->replaceHistory()->append("replace");
-    vi_global->replaceHistory()->append("aa/aa\\/a");
-    vi_global->replaceHistory()->append("ss/ss");
-    TestPressKey(":s/search//g\\ctrl-f\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/ss\\/ss/g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/aa\\/aa\\/a/g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/replace/g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->replaceHistory()->append(QStringLiteral("replace"));
+    vi_global->replaceHistory()->append(QStringLiteral("aa/aa\\/a"));
+    vi_global->replaceHistory()->append(QStringLiteral("ss/ss"));
+    TestPressKey(QStringLiteral(":s/search//g\\ctrl-f\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/ss\\/ss/g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/aa\\/aa\\/a/g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/search/replace/g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     clearReplaceHistory(); // Now do the same, but with a different delimiter.
-    vi_global->replaceHistory()->append("replace");
-    vi_global->replaceHistory()->append("aa:aa\\:a");
-    vi_global->replaceHistory()->append("ss:ss");
-    TestPressKey(":s:search::g\\ctrl-f\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:search:ss\\:ss:g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:search:aa\\:aa\\:a:g"));
-    TestPressKey("\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:search:replace:g"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->replaceHistory()->append(QStringLiteral("replace"));
+    vi_global->replaceHistory()->append(QStringLiteral("aa:aa\\:a"));
+    vi_global->replaceHistory()->append(QStringLiteral("ss:ss"));
+    TestPressKey(QStringLiteral(":s:search::g\\ctrl-f\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:search:ss\\:ss:g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:search:aa\\:aa\\:a:g"));
+    TestPressKey(QStringLiteral("\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s:search:replace:g"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // In search mode, don't blank current text on completion if there is no item in the search history which
     // has the current text as a prefix.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     clearSearchHistory();
-    vi_global->searchHistory()->append("doesnothavexyzasaprefix");
-    TestPressKey("/xyz\\ctrl-p");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz"));
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    vi_global->searchHistory()->append(QStringLiteral("doesnothavexyzasaprefix"));
+    TestPressKey(QStringLiteral("/xyz\\ctrl-p"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("xyz"));
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Don't dismiss the command completion just because the cursor ends up *temporarily* at a place where
     // command completion is disallowed when cycling through completions.
-    BeginTest("");
-    TestPressKey(":set/se\\left\\left\\left-\\ctrl-p");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral(":set/se\\left\\left\\left-\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    TestPressKey("\\ctrl-c"); // Dismiss completer
-    TestPressKey("\\ctrl-c"); // Dismiss bar.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar.
     FinishTest("");
 
     // Don't expand mappings meant for Normal mode in the emulated command bar.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "foo", "xyz", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("foo"), QStringLiteral("xyz"), Mappings::NonRecursive);
     DoTest("bar foo xyz", "/foo\\enterrX", "bar Xoo xyz");
     clearAllMappings();
 
     // Incremental search and replace.
-    QLabel *interactiveSedReplaceLabel = emulatedCommandBar->findChild<QLabel *>("interactivesedreplace");
+    QLabel *interactiveSedReplaceLabel = emulatedCommandBar->findChild<QLabel *>(QStringLiteral("interactivesedreplace"));
     QVERIFY(interactiveSedReplaceLabel);
 
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
     QVERIFY(interactiveSedReplaceLabel->isVisible());
     QVERIFY(!commandResponseMessageDisplay()->isVisible());
     QVERIFY(!emulatedCommandBarTextEdit()->isVisible());
     QVERIFY(!emulatedCommandTypeIndicator()->isVisible());
-    TestPressKey("\\ctrl-c"); // Dismiss search and replace.
+    TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss search and replace.
     QVERIFY(!emulatedCommandBar->isVisible());
     FinishTest("foo");
 
     // Clear the flag that stops the command response from being shown after an incremental search and
     // replace, and also make sure that the edit and bar type indicator are not forcibly hidden.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter\\ctrl-c");
-    TestPressKey(":s/foo/bar/");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter\\ctrl-c"));
+    TestPressKey(QStringLiteral(":s/foo/bar/"));
     QVERIFY(emulatedCommandBarTextEdit()->isVisible());
     QVERIFY(emulatedCommandTypeIndicator()->isVisible());
-    TestPressKey("\\enter");
+    TestPressKey(QStringLiteral("\\enter"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
     FinishTest("bar");
 
     // Hide the incremental search and replace label when we show the bar.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter\\ctrl-c");
-    TestPressKey(":");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter\\ctrl-c"));
+    TestPressKey(QStringLiteral(":"));
     QVERIFY(!interactiveSedReplaceLabel->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
     // The "c" marker can be anywhere in the three chars following the delimiter.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/cgi\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cgi\\enter"));
     QVERIFY(interactiveSedReplaceLabel->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/igc\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/igc\\enter"));
     QVERIFY(interactiveSedReplaceLabel->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/icg\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/icg\\enter"));
     QVERIFY(interactiveSedReplaceLabel->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/ic\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/ic\\enter"));
     QVERIFY(interactiveSedReplaceLabel->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/ci\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/ci\\enter"));
     QVERIFY(interactiveSedReplaceLabel->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
     // Emulated command bar is still active during an incremental search and replace.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("idef\\esc");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("idef\\esc"));
     FinishTest("foo");
 
     // Emulated command bar text is not edited during an incremental search and replace.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("def");
-    QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/foo/bar/c"));
-    TestPressKey("\\ctrl-c");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("def"));
+    QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("s/foo/bar/c"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
     // Pressing "n" when there is only a single  change we can make aborts incremental search
     // and replace.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("n");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("n"));
     QVERIFY(!interactiveSedReplaceLabel->isVisible());
-    TestPressKey("ixyz\\esc");
+    TestPressKey(QStringLiteral("ixyz\\esc"));
     FinishTest("xyzfoo");
 
     // Pressing "n" when there is only a single  change we can make aborts incremental search
     // and replace, and shows the no replacements on no lines.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("n");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("n"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(0, 0);
     FinishTest("foo");
 
     // First possible match is highlighted when we start an incremental search and replace, and
     // cleared if we press 'n'.
-    BeginTest(" xyz  123 foo bar");
-    TestPressKey(":s/foo/bar/gc\\enter");
+    BeginTest(QStringLiteral(" xyz  123 foo bar"));
+    TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 10);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 13);
-    TestPressKey("n");
+    TestPressKey(QStringLiteral("n"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
     FinishTest(" xyz  123 foo bar");
 
     // Second possible match highlighted if we start incremental search and replace and press 'n',
     // cleared if we press 'n' again.
-    BeginTest(" xyz  123 foo foo bar");
-    TestPressKey(":s/foo/bar/gc\\enter");
-    TestPressKey("n");
+    BeginTest(QStringLiteral(" xyz  123 foo foo bar"));
+    TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("n"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 14);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 17);
-    TestPressKey("n");
+    TestPressKey(QStringLiteral("n"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
     FinishTest(" xyz  123 foo foo bar");
 
     // Perform replacement if we press 'y' on the first match.
-    BeginTest(" xyz  foo 123 foo bar");
-    TestPressKey(":s/foo/bar/gc\\enter");
-    TestPressKey("y");
-    TestPressKey("\\ctrl-c");
+    BeginTest(QStringLiteral(" xyz  foo 123 foo bar"));
+    TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("y"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest(" xyz  bar 123 foo bar");
 
     // Replacement uses grouping, etc.
-    BeginTest(" xyz  def 123 foo bar");
+    BeginTest(QStringLiteral(" xyz  def 123 foo bar"));
     TestPressKey(":s/d\\\\(e\\\\)\\\\(f\\\\)/x\\\\1\\\\U\\\\2/gc\\enter");
-    TestPressKey("y");
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("y"));
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest(" xyz  xeF 123 foo bar");
 
     // On replacement, highlight next match.
-    BeginTest(" xyz  foo 123 foo bar");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral(" xyz  foo 123 foo bar"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("y"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 14);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 17);
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest(" xyz  bar 123 foo bar");
 
     // On replacement, if there is no further match, abort incremental search and replace.
-    BeginTest(" xyz  foo 123 foa bar");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral(" xyz  foo 123 foa bar"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("y"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
-    TestPressKey("ggidone\\esc");
+    TestPressKey(QStringLiteral("ggidone\\esc"));
     FinishTest("done xyz  bar 123 foa bar");
 
     // After replacement, the next match is sought after the end of the replacement text.
-    BeginTest("foofoo");
-    TestPressKey(":s/foo/barfoo/cg\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral("foofoo"));
+    TestPressKey(QStringLiteral(":s/foo/barfoo/cg\\enter"));
+    TestPressKey(QStringLiteral("y"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->start().column(), 6);
     QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
     QCOMPARE(rangesOnFirstLine().first()->end().column(), 9);
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("barfoofoo");
-    BeginTest("xffy");
-    TestPressKey(":s/f/bf/cg\\enter");
-    TestPressKey("yy");
+    BeginTest(QStringLiteral("xffy"));
+    TestPressKey(QStringLiteral(":s/f/bf/cg\\enter"));
+    TestPressKey(QStringLiteral("yy"));
     FinishTest("xbfbfy");
 
     // Make sure the incremental search bar label contains the "instruction" keypresses.
-    const QString interactiveSedReplaceShortcuts = "(y/n/a/q/l)";
-    BeginTest("foofoo");
-    TestPressKey(":s/foo/barfoo/cg\\enter");
+    const QString interactiveSedReplaceShortcuts = QStringLiteral("(y/n/a/q/l)");
+    BeginTest(QStringLiteral("foofoo"));
+    TestPressKey(QStringLiteral(":s/foo/barfoo/cg\\enter"));
     QVERIFY(interactiveSedReplaceLabel->text().contains(interactiveSedReplaceShortcuts));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foofoo");
 
     // Make sure the incremental search bar label contains a reference to the text we're going to
     // replace with.
     // We're going to be a bit vague about the precise text due to localization issues.
-    BeginTest("fabababbbar");
+    BeginTest(QStringLiteral("fabababbbar"));
     TestPressKey(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/c\\enter");
     QVERIFY(interactiveSedReplaceLabel->text().contains("1ABABABBBA2"));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("fabababbbar");
 
     // Replace newlines in the "replace?" message with "\\n"
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar\\\\nxyz\\\\n123/c\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar\\\\nxyz\\\\n123/c\\enter"));
     QVERIFY(interactiveSedReplaceLabel->text().contains("bar\\nxyz\\n123"));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
     // Update the "confirm replace?" message on pressing "y".
-    BeginTest("fabababbbar fabbb");
+    BeginTest(QStringLiteral("fabababbbar fabbb"));
     TestPressKey(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/gc\\enter");
-    TestPressKey("y");
+    TestPressKey(QStringLiteral("y"));
     QVERIFY(interactiveSedReplaceLabel->text().contains("1ABBB2"));
     QVERIFY(interactiveSedReplaceLabel->text().contains(interactiveSedReplaceShortcuts));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("1ABABABBBA2r fabbb");
 
     // Update the "confirm replace?" message on pressing "n".
-    BeginTest("fabababbbar fabab");
+    BeginTest(QStringLiteral("fabababbbar fabab"));
     TestPressKey(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/gc\\enter");
-    TestPressKey("n");
+    TestPressKey(QStringLiteral("n"));
     QVERIFY(interactiveSedReplaceLabel->text().contains("1ABAB2"));
     QVERIFY(interactiveSedReplaceLabel->text().contains(interactiveSedReplaceShortcuts));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("fabababbbar fabab");
 
     // Cursor is placed at the beginning of first match.
-    BeginTest("  foo foo foo");
-    TestPressKey(":s/foo/bar/c\\enter");
+    BeginTest(QStringLiteral("  foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
     verifyCursorAt(Cursor(0, 2));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("  foo foo foo");
 
     // "y" and "n" update the cursor pos.
-    BeginTest("  foo   foo foo");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral("  foo   foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("y"));
     verifyCursorAt(Cursor(0, 8));
-    TestPressKey("n");
+    TestPressKey(QStringLiteral("n"));
     verifyCursorAt(Cursor(0, 12));
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("  bar   foo foo");
 
     // If we end due to a "y" or "n" on the final match, leave the cursor at the beginning of the final match.
-    BeginTest("  foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral("  foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("y"));
     verifyCursorAt(Cursor(0, 2));
     FinishTest("  bar");
-    BeginTest("  foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("n");
+    BeginTest(QStringLiteral("  foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("n"));
     verifyCursorAt(Cursor(0, 2));
     FinishTest("  foo");
 
     // Respect ranges.
-    BeginTest("foo foo\nfoo foo\nfoo foo\nfoo foo\n");
-    TestPressKey("jVj:s/foo/bar/gc\\enter");
-    TestPressKey("ynny");
+    BeginTest(QStringLiteral("foo foo\nfoo foo\nfoo foo\nfoo foo\n"));
+    TestPressKey(QStringLiteral("jVj:s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("ynny"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
-    TestPressKey("ggidone \\ctrl-c");
+    TestPressKey(QStringLiteral("ggidone \\ctrl-c"));
     FinishTest("done foo foo\nbar foo\nfoo bar\nfoo foo\n");
-    BeginTest("foo foo\nfoo foo\nfoo foo\nfoo foo\n");
-    TestPressKey("jVj:s/foo/bar/gc\\enter");
-    TestPressKey("nyyn");
+    BeginTest(QStringLiteral("foo foo\nfoo foo\nfoo foo\nfoo foo\n"));
+    TestPressKey(QStringLiteral("jVj:s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("nyyn"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
-    TestPressKey("ggidone \\ctrl-c");
+    TestPressKey(QStringLiteral("ggidone \\ctrl-c"));
     FinishTest("done foo foo\nfoo bar\nbar foo\nfoo foo\n");
-    BeginTest("foo foo\nfoo foo\nfoo foo\nfoo foo\n");
-    TestPressKey("j:s/foo/bar/gc\\enter");
-    TestPressKey("ny");
+    BeginTest(QStringLiteral("foo foo\nfoo foo\nfoo foo\nfoo foo\n"));
+    TestPressKey(QStringLiteral("j:s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("ny"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
-    TestPressKey("ggidone \\ctrl-c");
+    TestPressKey(QStringLiteral("ggidone \\ctrl-c"));
     FinishTest("done foo foo\nfoo bar\nfoo foo\nfoo foo\n");
-    BeginTest("foo foo\nfoo foo\nfoo foo\nfoo foo\n");
-    TestPressKey("j:s/foo/bar/gc\\enter");
-    TestPressKey("yn");
+    BeginTest(QStringLiteral("foo foo\nfoo foo\nfoo foo\nfoo foo\n"));
+    TestPressKey(QStringLiteral("j:s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("yn"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
-    TestPressKey("ggidone \\ctrl-c");
+    TestPressKey(QStringLiteral("ggidone \\ctrl-c"));
     FinishTest("done foo foo\nbar foo\nfoo foo\nfoo foo\n");
 
     // If no initial match can be found, abort and show a "no replacements" message.
     // The cursor position should remain unnchanged.
-    BeginTest("fab");
-    TestPressKey("l:s/fee/bar/c\\enter");
+    BeginTest(QStringLiteral("fab"));
+    TestPressKey(QStringLiteral("l:s/fee/bar/c\\enter"));
     QVERIFY(commandResponseMessageDisplay()->isVisible());
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(0, 0);
     QVERIFY(!interactiveSedReplaceLabel->isVisible());
-    TestPressKey("rX");
-    BeginTest("fXb");
+    TestPressKey(QStringLiteral("rX"));
+    BeginTest(QStringLiteral("fXb"));
 
     // Case-sensitive by default.
-    BeginTest("foo Foo FOo foo foO");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo Foo FOo foo foO"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar Foo FOo bar foO");
 
     // Case-insensitive if "i" flag is used.
-    BeginTest("foo Foo FOo foo foO");
-    TestPressKey(":s/foo/bar/icg\\enter");
-    TestPressKey("yyyyyggidone\\esc");
+    BeginTest(QStringLiteral("foo Foo FOo foo foO"));
+    TestPressKey(QStringLiteral(":s/foo/bar/icg\\enter"));
+    TestPressKey(QStringLiteral("yyyyyggidone\\esc"));
     FinishTest("donebar bar bar bar bar");
 
     // Only one replacement per-line unless "g" flag is used.
-    BeginTest("boo foo 123 foo\nxyz foo foo\nfoo foo foo\nxyz\nfoo foo\nfoo 123 foo");
-    TestPressKey("jVjjj:s/foo/bar/c\\enter");
-    TestPressKey("yynggidone\\esc");
+    BeginTest(QStringLiteral("boo foo 123 foo\nxyz foo foo\nfoo foo foo\nxyz\nfoo foo\nfoo 123 foo"));
+    TestPressKey(QStringLiteral("jVjjj:s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("yynggidone\\esc"));
     FinishTest("doneboo foo 123 foo\nxyz bar foo\nbar foo foo\nxyz\nfoo foo\nfoo 123 foo");
-    BeginTest("boo foo 123 foo\nxyz foo foo\nfoo foo foo\nxyz\nfoo foo\nfoo 123 foo");
-    TestPressKey("jVjjj:s/foo/bar/c\\enter");
-    TestPressKey("nnyggidone\\esc");
+    BeginTest(QStringLiteral("boo foo 123 foo\nxyz foo foo\nfoo foo foo\nxyz\nfoo foo\nfoo 123 foo"));
+    TestPressKey(QStringLiteral("jVjjj:s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("nnyggidone\\esc"));
     FinishTest("doneboo foo 123 foo\nxyz foo foo\nfoo foo foo\nxyz\nbar foo\nfoo 123 foo");
 
     // If replacement contains new lines, adjust the end line down.
-    BeginTest("foo\nfoo1\nfoo2\nfoo3");
-    TestPressKey("jVj:s/foo/bar\\\\n/gc\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo\nfoo1\nfoo2\nfoo3"));
+    TestPressKey(QStringLiteral("jVj:s/foo/bar\\\\n/gc\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donefoo\nbar\n1\nbar\n2\nfoo3");
-    BeginTest("foo\nfoo1\nfoo2\nfoo3");
-    TestPressKey("jVj:s/foo/bar\\\\nboo\\\\n/gc\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo\nfoo1\nfoo2\nfoo3"));
+    TestPressKey(QStringLiteral("jVj:s/foo/bar\\\\nboo\\\\n/gc\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donefoo\nbar\nboo\n1\nbar\nboo\n2\nfoo3");
 
     // With "g" and a replacement that involves multiple lines, resume search from the end of the last line added.
-    BeginTest("foofoo");
-    TestPressKey(":s/foo/bar\\\\n/gc\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foofoo"));
+    TestPressKey(QStringLiteral(":s/foo/bar\\\\n/gc\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar\nbar\n");
-    BeginTest("foofoo");
-    TestPressKey(":s/foo/bar\\\\nxyz\\\\nfoo/gc\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foofoo"));
+    TestPressKey(QStringLiteral(":s/foo/bar\\\\nxyz\\\\nfoo/gc\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar\nxyz\nfoobar\nxyz\nfoo");
 
     // Without "g" and with a replacement that involves multiple lines, resume search from the line after the line just added.
-    BeginTest("foofoo1\nfoo2\nfoo3");
-    TestPressKey("Vj:s/foo/bar\\\\nxyz\\\\nfoo/c\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foofoo1\nfoo2\nfoo3"));
+    TestPressKey(QStringLiteral("Vj:s/foo/bar\\\\nxyz\\\\nfoo/c\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar\nxyz\nfoofoo1\nbar\nxyz\nfoo2\nfoo3");
 
     // Regression test: handle 'g' when it occurs before 'i' and 'c'.
-    BeginTest("foo fOo");
-    TestPressKey(":s/foo/bar/gci\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo fOo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/gci\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar bar");
 
     // When the search terms swallows several lines, move the endline up accordingly.
-    BeginTest("foo\nfoo1\nfoo\nfoo2\nfoo\nfoo3");
-    TestPressKey("V3j:s/foo\\\\nfoo/bar/cg\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo\nfoo1\nfoo\nfoo2\nfoo\nfoo3"));
+    TestPressKey(QStringLiteral("V3j:s/foo\\\\nfoo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar1\nbar2\nfoo\nfoo3");
-    BeginTest("foo\nfoo\nfoo1\nfoo\nfoo\nfoo2\nfoo\nfoo\nfoo3");
-    TestPressKey("V5j:s/foo\\\\nfoo\\\\nfoo/bar/cg\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo\nfoo\nfoo1\nfoo\nfoo\nfoo2\nfoo\nfoo\nfoo3"));
+    TestPressKey(QStringLiteral("V5j:s/foo\\\\nfoo\\\\nfoo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar1\nbar2\nfoo\nfoo\nfoo3");
     // Make sure we still adjust endline down if the replacement text has '\n's.
-    BeginTest("foo\nfoo\nfoo1\nfoo\nfoo\nfoo2\nfoo\nfoo\nfoo3");
-    TestPressKey("V5j:s/foo\\\\nfoo\\\\nfoo/bar\\\\n/cg\\enter");
-    TestPressKey("yyggidone\\esc");
+    BeginTest(QStringLiteral("foo\nfoo\nfoo1\nfoo\nfoo\nfoo2\nfoo\nfoo\nfoo3"));
+    TestPressKey(QStringLiteral("V5j:s/foo\\\\nfoo\\\\nfoo/bar\\\\n/cg\\enter"));
+    TestPressKey(QStringLiteral("yyggidone\\esc"));
     FinishTest("donebar\n1\nbar\n2\nfoo\nfoo\nfoo3");
 
     // Status reports.
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("y"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(1, 1);
     FinishTest("bar");
-    BeginTest("foo foo foo");
-    TestPressKey(":s/foo/bar/gc\\enter");
-    TestPressKey("yyy");
+    BeginTest(QStringLiteral("foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("yyy"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(3, 1);
     FinishTest("bar bar bar");
-    BeginTest("foo foo foo");
-    TestPressKey(":s/foo/bar/gc\\enter");
-    TestPressKey("yny");
+    BeginTest(QStringLiteral("foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("yny"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(2, 1);
     FinishTest("bar foo bar");
-    BeginTest("foo\nfoo");
-    TestPressKey(":%s/foo/bar/gc\\enter");
-    TestPressKey("yy");
+    BeginTest(QStringLiteral("foo\nfoo"));
+    TestPressKey(QStringLiteral(":%s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("yy"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(2, 2);
     FinishTest("bar\nbar");
-    BeginTest("foo foo\nfoo foo\nfoo foo");
-    TestPressKey(":%s/foo/bar/gc\\enter");
-    TestPressKey("yynnyy");
+    BeginTest(QStringLiteral("foo foo\nfoo foo\nfoo foo"));
+    TestPressKey(QStringLiteral(":%s/foo/bar/gc\\enter"));
+    TestPressKey(QStringLiteral("yynnyy"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(4, 2);
     FinishTest("bar bar\nfoo foo\nbar bar");
-    BeginTest("foofoo");
-    TestPressKey(":s/foo/bar\\\\nxyz/gc\\enter");
-    TestPressKey("yy");
+    BeginTest(QStringLiteral("foofoo"));
+    TestPressKey(QStringLiteral(":s/foo/bar\\\\nxyz/gc\\enter"));
+    TestPressKey(QStringLiteral("yy"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(2, 1);
     FinishTest("bar\nxyzbar\nxyz");
-    BeginTest("foofoofoo");
-    TestPressKey(":s/foo/bar\\\\nxyz\\\\nboo/gc\\enter");
-    TestPressKey("yyy");
+    BeginTest(QStringLiteral("foofoofoo"));
+    TestPressKey(QStringLiteral(":s/foo/bar\\\\nxyz\\\\nboo/gc\\enter"));
+    TestPressKey(QStringLiteral("yyy"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(3, 1);
     FinishTest("bar\nxyz\nboobar\nxyz\nboobar\nxyz\nboo");
     // Tricky one: how many lines are "touched" if a single replacement
     // swallows multiple lines? I'm going to say the number of lines swallowed.
-    BeginTest("foo\nfoo\nfoo");
-    TestPressKey(":s/foo\\\\nfoo\\\\nfoo/bar/c\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral("foo\nfoo\nfoo"));
+    TestPressKey(QStringLiteral(":s/foo\\\\nfoo\\\\nfoo/bar/c\\enter"));
+    TestPressKey(QStringLiteral("y"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(1, 3);
     FinishTest("bar");
-    BeginTest("foo\nfoo\nfoo\n");
-    TestPressKey(":s/foo\\\\nfoo\\\\nfoo\\\\n/bar/c\\enter");
-    TestPressKey("y");
+    BeginTest(QStringLiteral("foo\nfoo\nfoo\n"));
+    TestPressKey(QStringLiteral(":s/foo\\\\nfoo\\\\nfoo\\\\n/bar/c\\enter"));
+    TestPressKey(QStringLiteral("y"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(1, 4);
     FinishTest("bar");
 
     // "Undo" undoes last replacement.
-    BeginTest("foo foo foo foo");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("nyynu");
+    BeginTest(QStringLiteral("foo foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("nyynu"));
     FinishTest("foo bar foo foo");
 
     // "l" does the current replacement then exits.
-    BeginTest("foo foo foo foo foo foo");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("nnl");
+    BeginTest(QStringLiteral("foo foo foo foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("nnl"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(1, 1);
     FinishTest("foo foo bar foo foo foo");
 
     // "q" just exits.
-    BeginTest("foo foo foo foo foo foo");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("yyq");
+    BeginTest(QStringLiteral("foo foo foo foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("yyq"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(2, 1);
     FinishTest("bar bar foo foo foo foo");
 
     // "a" replaces all remaining, then exits.
-    BeginTest("foo foo foo foo foo foo");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("nna");
+    BeginTest(QStringLiteral("foo foo foo foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("nna"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(4, 1);
     FinishTest("foo foo bar bar bar bar");
 
     // The results of "a" can be undone in one go.
-    BeginTest("foo foo foo foo foo foo");
-    TestPressKey(":s/foo/bar/cg\\enter");
-    TestPressKey("ya");
+    BeginTest(QStringLiteral("foo foo foo foo foo foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
+    TestPressKey(QStringLiteral("ya"));
     verifyShowsNumberOfReplacementsAcrossNumberOfLines(6, 1);
-    TestPressKey("u");
+    TestPressKey(QStringLiteral("u"));
     FinishTest("bar foo foo foo foo foo");
 #if 0
     // XXX - as of Qt 5.5, simply replaying the correct QKeyEvents does *not* cause shortcuts
@@ -3146,7 +3127,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QAction *printAction = nullptr;
     const auto viewActions = kate_view->actionCollection()->actions();
     for (QAction *action : viewActions) {
-        if (action->shortcut() == QKeySequence("Ctrl+p")) {
+        if (action->shortcut() == QKeySequence(QStringLiteral("Ctrl+p"))) {
             printAction = action;
             break;
         }
@@ -3158,7 +3139,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     {
         QVERIFY(mainWindow->isActiveWindow());
         QVERIFY(printAction);
-        FailsIfSlotCalled failsIfActionTriggered("The kate_view shortcut should not be triggered by typing it in emulated  command bar!");
+        FailsIfSlotCalled failsIfActionTriggered(QStringLiteral("The kate_view shortcut should not be triggered by typing it in emulated  command bar!"));
         // Don't invoke Print on failure, as this hangs instead of failing.
         // disconnect(printAction, SIGNAL(triggered(bool)), kate_document, SLOT(print()));
         connect(printAction, &QAction::triggered, &failsIfActionTriggered, &FailsIfSlotCalled::slot);
@@ -3176,11 +3157,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     if (printAction) {
         printAction->blockSignals(true);
     }
-    vi_global->commandHistory()->append("s/foo/bar/caa");
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\ctrl-b\\enter\\ctrl-p");
+    vi_global->commandHistory()->append(QStringLiteral("s/foo/bar/caa"));
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\ctrl-b\\enter\\ctrl-p"));
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     if (printAction) {
         printAction->blockSignals(false);
     }
@@ -3188,33 +3169,33 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
     // The interactive sed replace command is added to the history straight away.
     clearCommandHistory();
-    BeginTest("foo");
-    TestPressKey(":s/foo/bar/c\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/foo/bar/c\\enter"));
     QCOMPARE(commandHistory(), QStringList() << "s/foo/bar/c");
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
     clearCommandHistory();
-    BeginTest("foo");
-    TestPressKey(":s/notfound/bar/c\\enter");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral(":s/notfound/bar/c\\enter"));
     QCOMPARE(commandHistory(), QStringList() << "s/notfound/bar/c");
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
     // Should be usable in mappings.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyyl", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("H"), QStringLiteral(":s/foo/bar/gc<enter>nnyyl"), Mappings::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "foo foo bar bar bar foo");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nna", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("H"), QStringLiteral(":s/foo/bar/gc<enter>nna"), Mappings::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "foo foo bar bar bar bar");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyqggidone<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("H"), QStringLiteral(":s/foo/bar/gc<enter>nnyqggidone<esc>"), Mappings::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "donefoo foo bar foo foo foo");
 
 #ifndef Q_OS_MACOS
     // Don't swallow "Ctrl+<key>" meant for the text edit.
     // On MacOS the QKeySequence for undo is defined as "Ctrl+Z" as well, however it's actually Cmd+Z...
-    if (QKeySequence::keyBindings(QKeySequence::Undo).contains(QKeySequence("Ctrl+Z"))) {
+    if (QKeySequence::keyBindings(QKeySequence::Undo).contains(QKeySequence(QStringLiteral("Ctrl+Z")))) {
         DoTest("foo bar", "/bar\\ctrl-z\\enterrX", "Xoo bar");
     } else {
         qWarning() << "Skipped test: Ctrl+Z is not Undo on this platform";
@@ -3228,7 +3209,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
 QCompleter *EmulatedCommandBarTest::emulatedCommandBarCompleter()
 {
-    return vi_input_mode->viModeEmulatedCommandBar()->findChild<QCompleter *>("completer");
+    return vi_input_mode->viModeEmulatedCommandBar()->findChild<QCompleter *>(QStringLiteral("completer"));
 }
 
 void EmulatedCommandBarTest::verifyCommandBarCompletionVisible()
@@ -3290,7 +3271,7 @@ void EmulatedCommandBarTest::verifyCommandBarCompletionContains(const QStringLis
 
 QLabel *EmulatedCommandBarTest::emulatedCommandTypeIndicator()
 {
-    return emulatedCommandBar()->findChild<QLabel *>("bartypeindicator");
+    return emulatedCommandBar()->findChild<QLabel *>(QStringLiteral("bartypeindicator"));
 }
 
 void EmulatedCommandBarTest::verifyCursorAt(Cursor expectedCursorPos)
@@ -3341,7 +3322,7 @@ void EmulatedCommandBarTest::verifyTextEditBackgroundColour(const QColor &expect
 
 QLabel *EmulatedCommandBarTest::commandResponseMessageDisplay()
 {
-    QLabel *commandResponseMessageDisplay = emulatedCommandBar()->findChild<QLabel *>("commandresponsemessage");
+    QLabel *commandResponseMessageDisplay = emulatedCommandBar()->findChild<QLabel *>(QStringLiteral("commandresponsemessage"));
     Q_ASSERT(commandResponseMessageDisplay);
     return commandResponseMessageDisplay;
 }
@@ -3361,7 +3342,7 @@ void EmulatedCommandBarTest::verifyShowsNumberOfReplacementsAcrossNumberOfLines(
     // Be a bit vague about the actual contents due to e.g. localization.
     // TODO - see if we can insist that en_US is available on the Kate Jenkins server and
     // insist that we use it ... ?
-    static const QRegularExpression numReplacementsMessageRegex("^.*(\\d+).*(\\d+).*$");
+    static const QRegularExpression numReplacementsMessageRegex(QStringLiteral("^.*(\\d+).*(\\d+).*$"));
     const auto match = numReplacementsMessageRegex.match(commandMessageResponseText);
     QVERIFY(match.hasMatch());
     const QString actualNumReplacementsAsString = match.captured(1);

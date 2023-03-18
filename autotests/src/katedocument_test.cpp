@@ -150,7 +150,7 @@ void KateDocumentTest::testReplaceQStringList()
                       "foo\n"
                       "foo\n"
                       "bar\n"));
-    doc.replaceText(Range(1, 0, 3, 0), {"new", "text", ""}, false);
+    doc.replaceText(Range(1, 0, 3, 0), {QStringLiteral("new"), QStringLiteral("text"), QLatin1String("")}, false);
     QCOMPARE(doc.text(),
              QLatin1String("asdf\n"
                            "new\n"
@@ -207,10 +207,10 @@ void KateDocumentTest::testSetTextPerformance()
     QString text;
     QVector<Range> ranges;
     ranges.reserve(lines * columns / (rangeLength + rangeGap));
-    const QString line = QString().fill('a', columns);
+    const QString line = QString().fill(QLatin1Char('a'), columns);
     for (int l = 0; l < lines; ++l) {
         text.append(line);
-        text.append('\n');
+        text.append(QLatin1Char('\n'));
         for (int c = 0; c < columns; c += rangeLength + rangeGap) {
             ranges << Range(l, c, l, c + rangeLength);
         }
@@ -248,10 +248,10 @@ void KateDocumentTest::testRemoveTextPerformance()
     KTextEditor::DocumentPrivate doc;
 
     QString text;
-    const QString line = QString().fill('a', columns);
+    const QString line = QString().fill(QLatin1Char('a'), columns);
     for (int l = 0; l < lines; ++l) {
         text.append(line);
-        text.append('\n');
+        text.append(QLatin1Char('\n'));
     }
 
     doc.setText(text);
@@ -279,20 +279,20 @@ void KateDocumentTest::testForgivingApiUsage()
     KTextEditor::DocumentPrivate doc;
 
     QVERIFY(doc.isEmpty());
-    QVERIFY(doc.replaceText(Range(0, 0, 100, 100), "asdf"));
-    QCOMPARE(doc.text(), QString("asdf"));
+    QVERIFY(doc.replaceText(Range(0, 0, 100, 100), QStringLiteral("asdf")));
+    QCOMPARE(doc.text(), QStringLiteral("asdf"));
     QCOMPARE(doc.lines(), 1);
-    QVERIFY(doc.replaceText(Range(2, 5, 2, 100), "asdf"));
+    QVERIFY(doc.replaceText(Range(2, 5, 2, 100), QStringLiteral("asdf")));
     QCOMPARE(doc.lines(), 3);
     QCOMPARE(doc.text(), QLatin1String("asdf\n\n     asdf"));
 
     QVERIFY(doc.removeText(Range(0, 0, 1000, 1000)));
     QVERIFY(doc.removeText(Range(0, 0, 0, 100)));
     QVERIFY(doc.isEmpty());
-    doc.insertText(Cursor(100, 0), "foobar");
-    QCOMPARE(doc.line(100), QString("foobar"));
+    doc.insertText(Cursor(100, 0), QStringLiteral("foobar"));
+    QCOMPARE(doc.line(100), QStringLiteral("foobar"));
 
-    doc.setText("nY\nnYY\n");
+    doc.setText(QStringLiteral("nY\nnYY\n"));
     QVERIFY(doc.removeText(Range(0, 0, 0, 1000)));
 }
 
@@ -302,7 +302,7 @@ void KateDocumentTest::testAutoBrackets()
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&]() {
-        doc.setText("");
+        doc.setText(QLatin1String(""));
         view->setCursorPosition(Cursor(0, 0));
     };
 
@@ -312,78 +312,78 @@ void KateDocumentTest::testAutoBrackets()
         }
     };
 
-    doc.setHighlightingMode("Normal"); // Just to be sure
+    doc.setHighlightingMode(QStringLiteral("Normal")); // Just to be sure
     view->config()->setValue(KateViewConfig::AutoBrackets, true);
 
     QString testInput;
 
-    testInput = ("(");
+    testInput = QStringLiteral("(");
     typeText(testInput);
-    QCOMPARE(doc.text(), "()");
+    QCOMPARE(doc.text(), QStringLiteral("()"));
 
     reset();
-    testInput = ("\"");
+    testInput = QStringLiteral("\"");
     typeText(testInput);
-    QCOMPARE(doc.text(), "\"\"");
+    QCOMPARE(doc.text(), QStringLiteral("\"\""));
 
     reset();
-    testInput = ("'");
+    testInput = QStringLiteral("'");
     typeText(testInput);
-    QCOMPARE(doc.text(), "'"); // In Normal mode there is only one quote to expect
+    QCOMPARE(doc.text(), QStringLiteral("'")); // In Normal mode there is only one quote to expect
 
     //
     // Switch over to some other mode
     //
-    doc.setHighlightingMode("C++");
+    doc.setHighlightingMode(QStringLiteral("C++"));
 
     reset();
     typeText(testInput);
-    QCOMPARE(doc.text(), "''"); // Now it must be two
+    QCOMPARE(doc.text(), QStringLiteral("''")); // Now it must be two
 
     reset();
-    testInput = "('')";
+    testInput = QStringLiteral("('')");
     typeText(testInput);
     // Known bad behaviour in case of nested brackets
     QCOMPARE(doc.text(), testInput);
 
     reset();
-    testInput = ("foo \"bar\" haz");
+    testInput = QStringLiteral("foo \"bar\" haz");
     typeText(testInput);
     QCOMPARE(doc.text(), testInput);
     // Simulate afterwards to add quotes, bug 405089
-    doc.setText("foo \"bar");
-    typeText("\" haz");
+    doc.setText(QStringLiteral("foo \"bar"));
+    typeText(QStringLiteral("\" haz"));
     QCOMPARE(doc.text(), testInput);
 
     // Let's check to add brackets to a selection...
     view->setBlockSelection(false);
-    doc.setText("012xxx678");
+    doc.setText(QStringLiteral("012xxx678"));
     view->setSelection(Range(0, 3, 0, 6));
-    typeText("[");
-    QCOMPARE(doc.text(), "012[xxx]678");
+    typeText(QStringLiteral("["));
+    QCOMPARE(doc.text(), QStringLiteral("012[xxx]678"));
     QCOMPARE(view->selectionRange(), Range(0, 4, 0, 7));
 
     // ...over multiple lines..
-    doc.setText("012xxx678\n012xxx678");
+    doc.setText(QStringLiteral("012xxx678\n012xxx678"));
     view->setSelection(Range(0, 3, 1, 6));
-    typeText("[");
-    QCOMPARE(doc.text(), "012[xxx678\n012xxx]678");
+    typeText(QStringLiteral("["));
+    QCOMPARE(doc.text(), QStringLiteral("012[xxx678\n012xxx]678"));
     QCOMPARE(view->selectionRange(), Range(0, 4, 1, 6));
 
     // ..once again in in block mode with increased complexity..
     view->setBlockSelection(true);
-    doc.setText("012xxx678\n012xxx678");
+    doc.setText(QStringLiteral("012xxx678\n012xxx678"));
     view->setSelection(Range(0, 3, 1, 6));
     typeText("[(");
-    QCOMPARE(doc.text(), "012[(xxx)]678\n012[(xxx)]678");
+    QCOMPARE(doc.text(), QStringLiteral("012[(xxx)]678\n012[(xxx)]678"));
     QCOMPARE(view->selectionRange(), Range(0, 5, 1, 8));
 
     // ..and the same with right->left selection
     view->setBlockSelection(true);
-    doc.setText("012xxx678\n012xxx678");
+    doc.setText(QStringLiteral("012xxx678\n012xxx678"));
     view->setSelection(Range(0, 6, 1, 3));
-    typeText("[(");
-    QCOMPARE(doc.text(), "012[(xxx)]678\n012[(xxx)]678");
+    typeText(QStringLiteral("[("));
+    QCOMPARE(doc.text(), QStringLiteral("012[(xxx)]678\n012[(xxx)]678"));
     QCOMPARE(view->selectionRange(), Range(0, 8, 1, 5));
 }
 
@@ -393,59 +393,59 @@ void KateDocumentTest::testReplaceTabs()
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&]() {
-        doc.setText("  Hi!");
+        doc.setText(QStringLiteral("  Hi!"));
         view->setCursorPosition(Cursor(0, 0));
     };
 
-    doc.setHighlightingMode("C++");
+    doc.setHighlightingMode(QStringLiteral("C++"));
     doc.config()->setTabWidth(4);
-    doc.config()->setIndentationMode("cppstyle");
+    doc.config()->setIndentationMode(QStringLiteral("cppstyle"));
 
     // no replace tabs, no indent pasted text
-    doc.setConfigValue("replace-tabs", false);
-    doc.setConfigValue("indent-pasted-text", false);
+    doc.setConfigValue(QStringLiteral("replace-tabs"), false);
+    doc.setConfigValue(QStringLiteral("indent-pasted-text"), false);
 
     reset();
-    doc.insertText(Cursor(0, 0), "\t");
+    doc.insertText(Cursor(0, 0), QStringLiteral("\t"));
     QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
 
     reset();
-    doc.typeChars(view, "\t");
+    doc.typeChars(view, QStringLiteral("\t"));
     QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
 
     reset();
-    doc.paste(view, "some\ncode\n  3\nhi\n");
+    doc.paste(view, QStringLiteral("some\ncode\n  3\nhi\n"));
     QCOMPARE(doc.text(), QStringLiteral("some\ncode\n  3\nhi\n  Hi!"));
 
     // now, enable replace tabs
-    doc.setConfigValue("replace-tabs", true);
+    doc.setConfigValue(QStringLiteral("replace-tabs"), true);
 
     reset();
-    doc.insertText(Cursor(0, 0), "\t");
+    doc.insertText(Cursor(0, 0), QStringLiteral("\t"));
     // calling insertText does not replace tabs
     QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
 
     reset();
-    doc.typeChars(view, "\t");
+    doc.typeChars(view, QStringLiteral("\t"));
     // typing text replaces tabs
     QCOMPARE(doc.text(), QStringLiteral("      Hi!"));
 
     reset();
-    doc.paste(view, "\t");
+    doc.paste(view, QStringLiteral("\t"));
     // pasting text does not with indent-pasted off
     QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
 
-    doc.setConfigValue("indent-pasted-text", true);
-    doc.setText("int main() {\n    \n}");
+    doc.setConfigValue(QStringLiteral("indent-pasted-text"), true);
+    doc.setText(QStringLiteral("int main() {\n    \n}"));
     view->setCursorPosition(Cursor(1, 4));
-    doc.paste(view, "\tHi");
+    doc.paste(view, QStringLiteral("\tHi"));
     // ... and it still does not with indent-pasted on.
     // This behaviour is up to discussion.
     // \t survives as we don't indent in the given case anymore, see 077dfe954699c674d2c34caf380199a4af7d184a
     QCOMPARE(doc.text(), QStringLiteral("int main() {\n    \tHi\n}"));
 
     reset();
-    doc.paste(view, "some\ncode\n  3\nhi");
+    doc.paste(view, QStringLiteral("some\ncode\n  3\nhi"));
     QCOMPARE(doc.text(), QStringLiteral("some\ncode\n3\nhi  Hi!"));
 }
 
@@ -458,7 +458,7 @@ class SignalHandler : public QObject
 public Q_SLOTS:
     void slotMultipleLinesRemoved(KTextEditor::Document *, const KTextEditor::Range &, const QString &oldText)
     {
-        QCOMPARE(oldText, QString("line2\nline3\n"));
+        QCOMPARE(oldText, QStringLiteral("line2\nline3\n"));
     }
 
     void slotNewlineInserted(KTextEditor::Document *, const KTextEditor::Range &range)
@@ -472,10 +472,10 @@ void KateDocumentTest::testRemoveMultipleLines()
     KTextEditor::DocumentPrivate doc;
 
     doc.setText(
-        "line1\n"
-        "line2\n"
-        "line3\n"
-        "line4\n");
+        QStringLiteral("line1\n"
+                       "line2\n"
+                       "line3\n"
+                       "line4\n"));
 
     SignalHandler handler;
     connect(&doc, &KTextEditor::DocumentPrivate::textRemoved, &handler, &SignalHandler::slotMultipleLinesRemoved);
@@ -487,8 +487,8 @@ void KateDocumentTest::testInsertNewline()
     KTextEditor::DocumentPrivate doc;
 
     doc.setText(
-        "this is line\n"
-        "this is line2\n");
+        QStringLiteral("this is line\n"
+                       "this is line2\n"));
 
     SignalHandler handler;
     connect(&doc, &KTextEditor::DocumentPrivate::textInsertedRange, &handler, &SignalHandler::slotNewlineInserted);
@@ -500,8 +500,8 @@ void KateDocumentTest::testInsertAfterEOF()
     KTextEditor::DocumentPrivate doc;
 
     doc.setText(
-        "line0\n"
-        "line1");
+        QStringLiteral("line0\n"
+                       "line1"));
 
     const QString input = QLatin1String(
         "line3\n"
@@ -525,7 +525,7 @@ void KateDocumentTest::testDigest()
 {
     // we will write the test file here to avoid that any line ending conversion for git will break it
     const QByteArray fileDigest = "aa22605da164a4e4e55f4c9738cfe1e53d4467f9";
-    QTemporaryFile file("testDigest");
+    QTemporaryFile file(QStringLiteral("testDigest"));
     file.open();
     file.write("974d9ab0860c755a4f5686b3b6b429e1efd48a96\ntest\ntest\n\r\n\r\n\r\n");
     file.flush();
@@ -625,7 +625,7 @@ void KateDocumentTest::testModelines()
 void KateDocumentTest::testDefStyleNum()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("foo\nbar\nasdf");
+    doc.setText(QStringLiteral("foo\nbar\nasdf"));
     QCOMPARE(doc.defStyleNum(0, 0), 0);
 }
 
@@ -663,7 +663,7 @@ void KateDocumentTest::testAutoReload()
     QSKIP("Fails ATM, please fix");
 #endif
 
-    QTemporaryFile file("AutoReloadTestFile");
+    QTemporaryFile file(QStringLiteral("AutoReloadTestFile"));
     file.open();
     file.write("Hello");
     file.flush();
@@ -671,7 +671,7 @@ void KateDocumentTest::testAutoReload()
     KTextEditor::DocumentPrivate doc;
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
-    QCOMPARE(doc.text(), "Hello");
+    QCOMPARE(doc.text(), QStringLiteral("Hello"));
     // The cursor should be and stay in the last line...
     QCOMPARE(view->cursorPosition().line(), doc.documentEnd().line());
 
@@ -688,7 +688,7 @@ void KateDocumentTest::testAutoReload()
     // Hardcoded delay m_modOnHdTimer in DocumentPrivate
     // + min val with which it looks working reliable here
     QTest::qWait(1000);
-    QCOMPARE(doc.text(), "Hello\nTest");
+    QCOMPARE(doc.text(), QStringLiteral("Hello\nTest"));
     // ...stay in the last line after reload!
     QCOMPARE(view->cursorPosition().line(), doc.documentEnd().line());
 
@@ -700,7 +700,7 @@ void KateDocumentTest::testAutoReload()
     file.flush();
 
     QTest::qWait(1000);
-    QCOMPARE(doc.text(), "Hello\nTest\nWorld!");
+    QCOMPARE(doc.text(), QStringLiteral("Hello\nTest\nWorld!"));
     // ...and ensure we have not move around
     QCOMPARE(view->cursorPosition(), c);
 }
@@ -713,7 +713,7 @@ void KateDocumentTest::testSearch()
      */
 
     KTextEditor::DocumentPrivate doc;
-    doc.setText("foo\nbar\nzonk");
+    doc.setText(QStringLiteral("foo\nbar\nzonk"));
 
     const QRegularExpression pattern(QStringLiteral("ar\nzonk$"), QRegularExpression::MultilineOption | QRegularExpression::UseUnicodePropertiesOption);
     int startLine = 0;
@@ -761,20 +761,20 @@ void KateDocumentTest::testMatchingBracket_data()
     QTest::addColumn<KTextEditor::Range>("match");
     QTest::addColumn<int>("maxLines");
 
-    QTest::addRow("invalid") << "asdf\nasdf" << KTextEditor::Cursor(1, 0) << KTextEditor::Range::invalid() << 10;
-    QTest::addRow("]-before") << "[\n]" << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("]-after") << "[\n]" << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("[-before") << "[\n]" << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("[-after") << "[\n]" << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("}-before") << "{\n}" << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("}-after") << "{\n}" << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("{-before") << "{\n}" << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("{-after") << "{\n}" << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow(")-before") << "(\n)" << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow(")-after") << "(\n)" << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("(-before") << "(\n)" << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("(-after") << "(\n)" << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("]-maxlines") << "[\n\n]" << KTextEditor::Cursor(1, 0) << KTextEditor::Range::invalid() << 1;
+    QTest::addRow("invalid") << QStringLiteral("asdf\nasdf") << KTextEditor::Cursor(1, 0) << KTextEditor::Range::invalid() << 10;
+    QTest::addRow("]-before") << QStringLiteral("[\n]") << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("]-after") << QStringLiteral("[\n]") << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("[-before") << QStringLiteral("[\n]") << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("[-after") << QStringLiteral("[\n]") << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("}-before") << QStringLiteral("{\n}") << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("}-after") << QStringLiteral("{\n}") << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("{-before") << QStringLiteral("{\n}") << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("{-after") << QStringLiteral("{\n}") << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow(")-before") << QStringLiteral("(\n)") << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow(")-after") << QStringLiteral("(\n)") << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("(-before") << QStringLiteral("(\n)") << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("(-after") << QStringLiteral("(\n)") << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
+    QTest::addRow("]-maxlines") << QStringLiteral("[\n\n]") << KTextEditor::Cursor(1, 0) << KTextEditor::Range::invalid() << 1;
 }
 
 void KateDocumentTest::testMatchingBracket()
@@ -794,11 +794,11 @@ void KateDocumentTest::testIndentOnPaste()
     KTextEditor::DocumentPrivate doc;
     auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
-    doc.setHighlightingMode("C++");
+    doc.setHighlightingMode(QStringLiteral("C++"));
     doc.config()->setTabWidth(4);
-    doc.config()->setIndentationMode("cppstyle");
+    doc.config()->setIndentationMode(QStringLiteral("cppstyle"));
 
-    doc.setConfigValue("indent-pasted-text", true);
+    doc.setConfigValue(QStringLiteral("indent-pasted-text"), true);
 
     /**
      * namespace ns
@@ -923,13 +923,13 @@ void KateDocumentTest::testToggleComment()
 
     { // BUG: 458126
         KTextEditor::DocumentPrivate doc;
-        doc.setText("another:\n\nanother2: hello");
+        doc.setText(QStringLiteral("another:\n\nanother2: hello"));
         QVERIFY(doc.highlightingModes().contains(QStringLiteral("YAML")));
-        doc.setHighlightingMode("YAML");
+        doc.setHighlightingMode(QStringLiteral("YAML"));
         const QString original = doc.text();
 
         doc.commentSelection(doc.documentRange(), {2, 0}, false, DocumentPrivate::ToggleComment);
-        QCOMPARE(doc.text(), "# another:\n# \n# another2: hello");
+        QCOMPARE(doc.text(), QStringLiteral("# another:\n# \n# another2: hello"));
 
         doc.commentSelection(doc.documentRange(), {2, 0}, false, DocumentPrivate::ToggleComment);
         QCOMPARE(doc.text(), original);

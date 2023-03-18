@@ -37,27 +37,27 @@ void KeysTest::MappingTests()
         // Check storage and retrieval of mapping recursion.
         clearAllMappings();
 
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello"), Mappings::Recursive);
         QVERIFY(vi_global->mappings()->isRecursive(Mappings::NormalModeMapping, "'"));
 
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "ihello", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("ihello"), Mappings::NonRecursive);
         QVERIFY(!vi_global->mappings()->isRecursive(Mappings::NormalModeMapping, "a"));
     }
 
     clearAllMappings();
 
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "<esc>ihello<esc>^aworld<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("<esc>ihello<esc>^aworld<esc>"), Mappings::Recursive);
     DoTest("", "'", "hworldello");
 
     // Ensure that the non-mapping logged keypresses are cleared before we execute a mapping
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'a", "rO", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'a"), QStringLiteral("rO"), Mappings::Recursive);
     DoTest("X", "'a", "O");
 
     {
         // Check that '123 is mapped after the timeout, given that we also have mappings that
         // extend it (e.g. '1234, '12345, etc) and which it itself extends ('1, '12, etc).
         clearAllMappings();
-        BeginTest("");
+        BeginTest(QLatin1String(""));
         vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
         ;
         QString consectiveDigits;
@@ -65,7 +65,7 @@ void KeysTest::MappingTests()
             consectiveDigits += QString::number(i);
             vi_global->mappings()->add(Mappings::NormalModeMapping, '\'' + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", Mappings::Recursive);
         }
-        TestPressKey("'123");
+        TestPressKey(QStringLiteral("'123"));
         QCOMPARE(kate_document->text(), QString()); // Shouldn't add anything until after the timeout!
         QTest::qWait(2 * mappingTimeoutMS);
         FinishTest("Mapped from 123");
@@ -74,9 +74,9 @@ void KeysTest::MappingTests()
     // Mappings are not "counted": any count entered applies to the first command/ motion in the mapped sequence,
     // and is not used to replay the entire mapped sequence <count> times in a row.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'downmapping", "j", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmapping", "ifoo<esc>ibar<esc>", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmotionmapping", "lj", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'downmapping"), QStringLiteral("j"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'testmapping"), QStringLiteral("ifoo<esc>ibar<esc>"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'testmotionmapping"), QStringLiteral("lj"), Mappings::Recursive);
     DoTest("AAAA\nXXXX\nXXXX\nXXXX\nXXXX\nBBBB\nCCCC\nDDDD", "jd3'downmapping", "AAAA\nBBBB\nCCCC\nDDDD");
     DoTest("", "5'testmapping", "foofoofoofoofobaro");
     DoTest("XXXX\nXXXX\nXXXX\nXXXX", "3'testmotionmappingrO", "XXXX\nXXXO\nXXXX\nXXXX");
@@ -86,61 +86,61 @@ void KeysTest::MappingTests()
     // will mean "go to position 1 percent of the way through the document" rather than
     // go to matching item.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gl", "%", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gl"), QStringLiteral("%"), Mappings::Recursive);
     DoTest("0\n1\n2\n3\n4\n5\nfoo bar(xyz) baz", "jjjjjjwdgl", "0\n1\n2\n3\n4\n5\nfoo  baz");
 
     // Test that countable mappings work even when triggered by timeouts.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmapping", "ljrO", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmappingdummy", "dummy", Mappings::Recursive);
-    BeginTest("XXXX\nXXXX\nXXXX\nXXXX");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'testmapping"), QStringLiteral("ljrO"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'testmappingdummy"), QStringLiteral("dummy"), Mappings::Recursive);
+    BeginTest(QStringLiteral("XXXX\nXXXX\nXXXX\nXXXX"));
     vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
     ;
-    TestPressKey("3'testmapping");
+    TestPressKey(QStringLiteral("3'testmapping"));
     QTest::qWait(2 * mappingTimeoutMS);
     FinishTest("XXXX\nXXXO\nXXXX\nXXXX");
 
     // Test that telescoping mappings don't interfere with built-in commands. Assumes that gp
     // is implemented and working.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gdummy", "idummy", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gdummy"), QStringLiteral("idummy"), Mappings::Recursive);
     DoTest("hello", "yiwgpx", "hhellollo");
 
     // Test that we can map a sequence of keys that extends a built-in command and use
     // that sequence without the built-in command firing.
     // Once again, assumes that gp is implemented and working.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gpa", "idummy", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gpa"), QStringLiteral("idummy"), Mappings::Recursive);
     DoTest("hello", "yiwgpa", "dummyhello");
 
     // Test that we can map a sequence of keys that extends a built-in command and still
     // have the original built-in command fire if we timeout after entering that command.
     // Once again, assumes that gp is implemented and working.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gpa", "idummy", Mappings::Recursive);
-    BeginTest("hello");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gpa"), QStringLiteral("idummy"), Mappings::Recursive);
+    BeginTest(QStringLiteral("hello"));
     vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
     ;
-    TestPressKey("yiwgp");
+    TestPressKey(QStringLiteral("yiwgp"));
     QTest::qWait(2 * mappingTimeoutMS);
-    TestPressKey("x");
+    TestPressKey(QStringLiteral("x"));
     FinishTest("hhellollo");
 
     // Test that something that starts off as a partial mapping following a command
     // (the "g" in the first "dg" is a partial mapping of "gj"), when extended to something
     // that is definitely not a mapping ("gg"), results in the full command being executed ("dgg").
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gj", "aj", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gj"), QStringLiteral("aj"), Mappings::Recursive);
     DoTest("foo\nbar\nxyz", "jjdgg", "");
 
     // Make sure that a mapped sequence of commands is merged into a single undo-able edit.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'a", "ofoo<esc>ofoo<esc>ofoo<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'a"), QStringLiteral("ofoo<esc>ofoo<esc>ofoo<esc>"), Mappings::Recursive);
     DoTest("bar", "'au", "bar");
 
     // Make sure that a counted mapping is merged into a single undoable edit.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'a", "ofoo<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'a"), QStringLiteral("ofoo<esc>"), Mappings::Recursive);
     DoTest("bar", "5'au", "bar");
 
     // Some test setup for non-recursive mapping g -> gj (cf: bug:314415)
@@ -154,44 +154,44 @@ void KeysTest::MappingTests()
     ensureKateViewVisible(); // Needs to be visible in order for virtual lines to make sense.
     KateViewConfig::global()->setDynWordWrap(true);
     BeginTest(multiVirtualLineText);
-    TestPressKey("gjrX");
+    TestPressKey(QStringLiteral("gjrX"));
     const QString expectedAfterVirtualLineDownAndChange = kate_document->text();
     Q_ASSERT_X(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'),
                "setting up j->gj testcase data",
                "gj doesn't seem to have worked correctly!");
-    FinishTest(expectedAfterVirtualLineDownAndChange);
+    FinishTest(expectedAfterVirtualLineDownAndChange.toUtf8().constData());
 
     // Test that non-recursive mappings are not expanded.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "j", "gj", Mappings::NonRecursive);
-    DoTest(multiVirtualLineText, "jrX", expectedAfterVirtualLineDownAndChange);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("j"), QStringLiteral("gj"), Mappings::NonRecursive);
+    DoTest(multiVirtualLineText.toUtf8().constData(), "jrX", expectedAfterVirtualLineDownAndChange.toUtf8().constData());
     KateViewConfig::global()->setDynWordWrap(false);
 
     // Test that recursive mappings are expanded.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "X", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "X", "rx", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("X"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("X"), QStringLiteral("rx"), Mappings::Recursive);
     DoTest("foo", "la", "fxo");
 
     // Test that the flag that stops mappings being expanded is reset after the mapping has been executed.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "j", "gj", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "X", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "X", "rx", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("j"), QStringLiteral("gj"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("X"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("X"), QStringLiteral("rx"), Mappings::Recursive);
     DoTest("foo", "jla", "fxo");
 
     // Even if we start with a recursive mapping, as soon as we hit one that is not recursive, we should stop
     // expanding.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "X", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "X", "r.", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "i", "a", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("X"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("X"), QStringLiteral("r."), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("i"), QStringLiteral("a"), Mappings::Recursive);
     DoTest("foo", "li", "oo");
 
     // Regression test: Using a mapping may trigger a call to updateSelection(), which can change the mode
     // from VisualLineMode to plain VisualMode.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::VisualModeMapping, "gA", "%", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("gA"), QStringLiteral("%"), Mappings::NonRecursive);
     DoTest("xyz\nfoo\n{\nbar\n}", "jVjgAdgglP", "foo\n{\nbar\n}\nxyz");
     // Piggy back on the previous test with a regression test for issue where, if gA is mapped to %, vgly
     // will yank one more character than it should.
@@ -199,33 +199,33 @@ void KeysTest::MappingTests()
     // Make sure that a successful mapping does not break the "if we select stuff externally in Normal mode,
     // we should switch to Visual Mode" thing.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gA", "%", Mappings::NonRecursive);
-    BeginTest("foo bar xyz()");
-    TestPressKey("gAr.");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gA"), QStringLiteral("%"), Mappings::NonRecursive);
+    BeginTest(QStringLiteral("foo bar xyz()"));
+    TestPressKey(QStringLiteral("gAr."));
     kate_view->setSelection(Range(0, 1, 0, 4)); // Actually selects "oo " (i.e. without the "b").
-    TestPressKey("d");
+    TestPressKey(QStringLiteral("d"));
     FinishTest("fbar xyz(.");
 
     // Regression tests for BUG:260655
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "f", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("f"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("d"), QStringLiteral("i"), Mappings::NonRecursive);
     DoTest("foo dar", "adr.", "foo .ar");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "F", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("F"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("d"), QStringLiteral("i"), Mappings::NonRecursive);
     DoTest("foo dar", "$adr.", "foo .ar");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "t", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("t"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("d"), QStringLiteral("i"), Mappings::NonRecursive);
     DoTest("foo dar", "adr.", "foo.dar");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "T", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("T"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("d"), QStringLiteral("i"), Mappings::NonRecursive);
     DoTest("foo dar", "$adr.", "foo d.r");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "r", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("r"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("d"), QStringLiteral("i"), Mappings::NonRecursive);
     DoTest("foo dar", "ad", "doo dar");
     // Feel free to map the keypress after that, though.
     DoTest("foo dar", "addber\\esc", "berdoo dar");
@@ -237,106 +237,106 @@ void KeysTest::MappingTests()
     clearAllMappings();
     {
         // Ctrl.
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a><c-b>", "ictrl<esc>", Mappings::NonRecursive);
-        BeginTest("");
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<c-a><c-b>"), QStringLiteral("ictrl<esc>"), Mappings::NonRecursive);
+        BeginTest(QLatin1String(""));
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\ctrl-a");
+        TestPressKey(QStringLiteral("\\ctrl-a"));
         ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\ctrl-b");
+        TestPressKey(QStringLiteral("\\ctrl-b"));
         FinishTest("ctrl");
     }
     {
         // Shift.
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a>C", "ishift<esc>", Mappings::NonRecursive);
-        BeginTest("");
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<c-a>C"), QStringLiteral("ishift<esc>"), Mappings::NonRecursive);
+        BeginTest(QLatin1String(""));
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\ctrl-a");
+        TestPressKey(QStringLiteral("\\ctrl-a"));
         QKeyEvent *shiftKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Shift, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), shiftKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("C");
+        TestPressKey(QStringLiteral("C"));
         FinishTest("shift");
     }
     {
         // Alt.
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a><a-b>", "ialt<esc>", Mappings::NonRecursive);
-        BeginTest("");
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<c-a><a-b>"), QStringLiteral("ialt<esc>"), Mappings::NonRecursive);
+        BeginTest(QLatin1String(""));
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\ctrl-a");
+        TestPressKey(QStringLiteral("\\ctrl-a"));
         QKeyEvent *altKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Alt, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), altKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\alt-b");
+        TestPressKey(QStringLiteral("\\alt-b"));
         FinishTest("alt");
     }
     {
         // Meta.
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a><m-b>", "imeta<esc>", Mappings::NonRecursive);
-        BeginTest("");
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<c-a><m-b>"), QStringLiteral("imeta<esc>"), Mappings::NonRecursive);
+        BeginTest(QLatin1String(""));
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\ctrl-a");
+        TestPressKey(QStringLiteral("\\ctrl-a"));
         QKeyEvent *metaKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Meta, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), metaKeyDown);
         QApplication::sendPostedEvents();
-        TestPressKey("\\meta-b");
+        TestPressKey(QStringLiteral("\\meta-b"));
         FinishTest("meta");
     }
     {
         // Can have mappings in Visual mode, distinct from Normal mode..
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "3l", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "inose<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("a"), QStringLiteral("3l"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("inose<esc>"), Mappings::NonRecursive);
         DoTest("0123456", "lvad", "056");
 
         // The recursion in Visual Mode is distinct from that of  Normal mode.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "b", "<esc>", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "b", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "b", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("b"), QStringLiteral("<esc>"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::Recursive);
         DoTest("XXX\nXXX", "lvajd", "XXX");
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "b", "<esc>", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "b", Mappings::Recursive);
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "b", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("b"), QStringLiteral("<esc>"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::NonRecursive);
         DoTest("XXX\nXXX", "lvajd", "XXX\nXXX");
 
         // A Visual mode mapping applies to all Visual modes (line, block, etc).
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "2j", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("a"), QStringLiteral("2j"), Mappings::NonRecursive);
         DoTest("123\n456\n789", "lvad", "19");
         DoTest("123\n456\n789", "l\\ctrl-vad", "13\n46\n79");
         DoTest("123\n456\n789", "lVad", "");
         // Same for recursion.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "b", "2j", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "b", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("b"), QStringLiteral("2j"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::Recursive);
         DoTest("123\n456\n789", "lvad", "19");
         DoTest("123\n456\n789", "l\\ctrl-vad", "13\n46\n79");
         DoTest("123\n456\n789", "lVad", "");
 
         // Can clear Visual mode mappings.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "l", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("h"), QStringLiteral("l"), Mappings::Recursive);
         vi_global->mappings()->clear(Mappings::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "l", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("h"), QStringLiteral("l"), Mappings::Recursive);
         vi_global->mappings()->clear(Mappings::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "l", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("h"), QStringLiteral("l"), Mappings::Recursive);
         vi_global->mappings()->clear(Mappings::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
@@ -345,23 +345,23 @@ void KeysTest::MappingTests()
     {
         // Can have mappings in Insert mode.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "xyz", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "inose<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("a"), QStringLiteral("xyz"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("inose<esc>"), Mappings::NonRecursive);
         DoTest("foo", "ia\\esc", "xyzfoo");
 
         // Recursion for Insert mode.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "b", "c", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "b", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("b"), QStringLiteral("c"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::NonRecursive);
         DoTest("", "ia\\esc", "b");
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "b", "c", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "b", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("b"), QStringLiteral("c"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::Recursive);
         DoTest("", "ia\\esc", "c");
 
         clearAllMappings();
         // Clear mappings for Insert mode.
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "b", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("a"), QStringLiteral("b"), Mappings::NonRecursive);
         vi_global->mappings()->clear(Mappings::InsertModeMapping);
         DoTest("", "ia\\esc", "a");
     }
@@ -370,16 +370,16 @@ void KeysTest::MappingTests()
         EmulatedCommandBarSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         // Can have mappings in Emulated Command Bar.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::CommandModeMapping, "a", "xyz", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("a"), QStringLiteral("xyz"), Mappings::NonRecursive);
         DoTest(" a xyz", "/a\\enterrX", " a Xyz");
         // Use mappings from Normal mode as soon as we exit command bar via Enter.
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "ixyz<c-c>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("a"), QStringLiteral("ixyz<c-c>"), Mappings::NonRecursive);
         DoTest(" a xyz", "/a\\entera", " a xyzxyz");
         // Multiple mappings.
-        vi_global->mappings()->add(Mappings::CommandModeMapping, "b", "123", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("b"), QStringLiteral("123"), Mappings::NonRecursive);
         DoTest("  xyz123", "/ab\\enterrX", "  Xyz123");
         // Recursive mappings.
-        vi_global->mappings()->add(Mappings::CommandModeMapping, "b", "a", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("b"), QStringLiteral("a"), Mappings::Recursive);
         DoTest("  xyz", "/b\\enterrX", "  Xyz");
         // Can clear all.
         vi_global->mappings()->clear(Mappings::CommandModeMapping);
@@ -388,14 +388,14 @@ void KeysTest::MappingTests()
 
     // Test that not *both* of the mapping and the mapped keys are logged for repetition via "."
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "ixyz", "iabc", Mappings::NonRecursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "gl", "%", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("ixyz"), QStringLiteral("iabc"), Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gl"), QStringLiteral("%"), Mappings::NonRecursive);
     DoTest("", "ixyz\\esc.", "ababcc");
     DoTest("foo()X\nbarxyz()Y", "cglbaz\\escggj.", "bazX\nbazY");
 
     // Regression test for a crash when executing a mapping that switches to Normal mode.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "d", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("h"), QStringLiteral("d"), Mappings::Recursive);
     DoTest("foo", "vlh", "o");
 
     {
@@ -405,54 +405,54 @@ void KeysTest::MappingTests()
 
         // "nn" is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("iabc<esc>"), Mappings::NonRecursive);
         DoTest("xxx", "\\:nn foo l\\foorX", "xXx");
 
         // "no" is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("iabc<esc>"), Mappings::NonRecursive);
         DoTest("xxx", "\\:no foo l\\foorX", "xXx");
 
         // "noremap" is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("iabc<esc>"), Mappings::NonRecursive);
         DoTest("xxx", "\\:noremap foo l\\foorX", "xXx");
 
         // "nm" is recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("iabc<esc>"), Mappings::NonRecursive);
         DoTest("xxx", "\\:nm foo l\\foorX", "abXxxx");
 
         // "nmap" is recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("iabc<esc>"), Mappings::NonRecursive);
         DoTest("xxx", "\\:nmap foo l\\foorX", "abXxxx");
 
         // Unfortunately, "map" is a reserved word :/
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("iabc<esc>"), Mappings::NonRecursive);
         DoTest("xxx", "\\:map foo l\\foorX", "abXxxx", ShouldFail, "'map' is reserved for other stuff in Kate command line");
 
         // nunmap works in normal mode.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "w", "ciwabc<esc>", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::NormalModeMapping, "b", "ciwxyz<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("w"), QStringLiteral("ciwabc<esc>"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("b"), QStringLiteral("ciwxyz<esc>"), Mappings::NonRecursive);
         DoTest(" 123 456 789", "\\:nunmap b\\WWwbrX", " 123 Xbc 789");
 
         // nmap and nunmap whose "from" is a complex encoded expression.
         clearAllMappings();
-        BeginTest("123");
-        TestPressKey("\\:nmap <c-9> ciwxyz<esc>\\");
-        TestPressKey("\\ctrl-9");
+        BeginTest(QStringLiteral("123"));
+        TestPressKey(QStringLiteral("\\:nmap <c-9> ciwxyz<esc>\\"));
+        TestPressKey(QStringLiteral("\\ctrl-9"));
         FinishTest("xyz");
-        BeginTest("123");
-        TestPressKey("\\:nunmap <c-9>\\");
-        TestPressKey("\\ctrl-9");
+        BeginTest(QStringLiteral("123"));
+        TestPressKey(QStringLiteral("\\:nunmap <c-9>\\"));
+        TestPressKey(QStringLiteral("\\ctrl-9"));
         FinishTest("123");
 
         // vmap works in Visual mode and is recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("abco", "\\:vmap foo l\\v\\rightfoogU", "co");
 
         // vmap does not work in Normal mode.
@@ -461,49 +461,49 @@ void KeysTest::MappingTests()
 
         // vm works in Visual mode and is recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("abco", "\\:vm foo l\\v\\rightfoogU", "co");
 
         // vn works in Visual mode and is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("abco", "\\:vn foo l\\v\\rightfoogU", "ABCo");
 
         // vnoremap works in Visual mode and is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("abco", "\\:vnoremap foo l\\v\\rightfoogU", "ABCo");
 
         // vunmap works in Visual Mode.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "w", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::VisualModeMapping, "gU", "2b", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("l"), QStringLiteral("w"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, QStringLiteral("gU"), QStringLiteral("2b"), Mappings::NonRecursive);
         DoTest("foo bar xyz", "\\:vunmap gU\\wvlgUd", "foo BAR Xyz");
 
         // imap works in Insert mode and is recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("", "\\:imap foo l\\ifoo\\esc", "d");
 
         // im works in Insert mode and is recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("", "\\:im foo l\\ifoo\\esc", "d");
 
         // ino works in Insert mode and is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("", "\\:ino foo l\\ifoo\\esc", "l");
 
         // inoremap works in Insert mode and is not recursive.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
         DoTest("", "\\:inoremap foo l\\ifoo\\esc", "l");
 
         // iunmap works in Insert mode.
         clearAllMappings();
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
-        vi_global->mappings()->add(Mappings::InsertModeMapping, "m", "e", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("m"), QStringLiteral("e"), Mappings::NonRecursive);
         DoTest("", "\\:iunmap l\\ilm\\esc", "le");
 
         {
@@ -513,28 +513,28 @@ void KeysTest::MappingTests()
             // the emulated command bar (:cmap blah blah\\enter), as this will be subject to mappings, which
             // can interfere with the tests!
             clearAllMappings();
-            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cmap foo l\\/foo\\enterrX", " l X foo");
 
             // cm works in emulated command bar and is recursive.
             clearAllMappings();
-            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cm foo l\\/foo\\enterrX", " l X foo");
 
             // cnoremap works in emulated command bar and is recursive.
             clearAllMappings();
-            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cnoremap foo l\\/foo\\enterrX", " X d foo");
 
             // cno works in emulated command bar and is recursive.
             clearAllMappings();
-            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cno foo l\\/foo\\enterrX", " X d foo");
 
             // cunmap works in emulated command bar.
             clearAllMappings();
-            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
-            vi_global->mappings()->add(Mappings::CommandModeMapping, "m", "e", Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("l"), QStringLiteral("d"), Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, QStringLiteral("m"), QStringLiteral("e"), Mappings::NonRecursive);
             DoTest(" de le", "\\:cunmap l\\/lm\\enterrX", " de Xe");
         }
 
@@ -547,16 +547,16 @@ void KeysTest::MappingTests()
     // be part of a different mapping (but end up not being so).
     // (Here, the leading "i" in "irecursive<c-c>" could be part of the mapping "ihello<c-c>").
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello<c-c>"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("ihello<c-c>"), QStringLiteral("irecursive<c-c>"), Mappings::Recursive);
     DoTest("", "'", "recursive");
 
     // Capslock in insert mode is not handled by Vim nor by KateViewInternal, and ends up
     // being sent to KateViInputModeManager::handleKeypress twice (it could be argued that this is
     // incorrect behaviour on the part of KateViewInternal), which can cause infinite
     // recursion if we are not careful about identifying replayed rejected keypresses.
-    BeginTest("foo bar");
-    TestPressKey("i");
+    BeginTest(QStringLiteral("foo bar"));
+    TestPressKey(QStringLiteral("i"));
     QKeyEvent *capslockKeyPress = new QKeyEvent(QEvent::KeyPress, Qt::Key_CapsLock, Qt::NoModifier);
     QApplication::postEvent(kate_view->focusProxy(), capslockKeyPress);
     QApplication::sendPostedEvents();
@@ -564,20 +564,20 @@ void KeysTest::MappingTests()
 
     // Mapping the u and the U commands to other keys.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "t", "u", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "r", "U", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("t"), QStringLiteral("u"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("r"), QStringLiteral("U"), Mappings::Recursive);
     DoTest("", "ihello\\esct", "");
     DoTest("", "ihello\\esctr", "hello");
 
     // <nop>
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "<nop>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("l"), QStringLiteral("<nop>"), Mappings::Recursive);
     DoTest("Hello", "lrr", "rello");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "<nop>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("<nop>"), Mappings::Recursive);
     DoTest("Hello", "sl\\esc", "ello");
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "<nop>abc", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("l"), QStringLiteral("<nop>abc"), Mappings::Recursive);
     DoTest("Hello", "sl\\esc", "abcello");
 
     // Clear mappings for subsequent tests.
@@ -589,28 +589,28 @@ void KeysTest::MappingTests()
         KateViewConfig::global()->setDynWordWrap(true);
 
         BeginTest(multiVirtualLineText);
-        TestPressKey("gjrX");
+        TestPressKey(QStringLiteral("gjrX"));
         const QString expectedAfterVirtualLineDownAndChange = kate_document->text();
         QVERIFY(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'));
-        FinishTest(expectedAfterVirtualLineDownAndChange);
+        FinishTest(expectedAfterVirtualLineDownAndChange.toUtf8().constData());
 
         BeginTest(multiVirtualLineText);
-        TestPressKey("g\\downrX");
+        TestPressKey(QStringLiteral("g\\downrX"));
         const QString expectedAfterVirtualLineDownAndChangeCursor = kate_document->text();
         QVERIFY(expectedAfterVirtualLineDownAndChangeCursor == expectedAfterVirtualLineDownAndChange);
-        FinishTest(expectedAfterVirtualLineDownAndChangeCursor);
+        FinishTest(expectedAfterVirtualLineDownAndChangeCursor.toUtf8().constData());
 
         BeginTest(multiVirtualLineText);
-        TestPressKey("gkrX");
+        TestPressKey(QStringLiteral("gkrX"));
         const QString expectedAfterVirtualLineUpAndChange = kate_document->text();
         QVERIFY(expectedAfterVirtualLineUpAndChange.contains("X") && !expectedAfterVirtualLineUpAndChange.endsWith('X'));
-        FinishTest(expectedAfterVirtualLineUpAndChange);
+        FinishTest(expectedAfterVirtualLineUpAndChange.toUtf8().constData());
 
         BeginTest(multiVirtualLineText);
         TestPressKey("g\\uprX");
         const QString expectedAfterVirtualLineUpAndChangeCursor = kate_document->text();
         QVERIFY(expectedAfterVirtualLineUpAndChangeCursor == expectedAfterVirtualLineUpAndChange);
-        FinishTest(expectedAfterVirtualLineUpAndChangeCursor);
+        FinishTest(expectedAfterVirtualLineUpAndChangeCursor.toUtf8().constData());
 
         KateViewConfig::global()->setDynWordWrap(false);
     }
@@ -629,30 +629,30 @@ void KeysTest::LeaderTests()
     KConfig viTestKConfig(viTestKConfigFileName);
     vi_global->mappings()->setLeader(QChar());
     vi_global->readConfig(&viTestKConfig);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "<leader>i", "ii", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<leader>i"), QStringLiteral("ii"), Mappings::Recursive);
     DoTest("", "\\\\i", "i");
 
     // We can change the leader and it will work.
     clearAllMappings();
     vi_global->readConfig(&viTestKConfig);
     vi_global->mappings()->setLeader(QChar::fromLatin1(','));
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "<leader>i", "ii", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<leader>i"), QStringLiteral("ii"), Mappings::Recursive);
     DoTest("", ",i", "i");
 
     // Mixing up the <leader> with its value.
     clearAllMappings();
     vi_global->readConfig(&viTestKConfig);
     vi_global->mappings()->setLeader(QChar::fromLatin1(','));
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "<leader>,", "ii", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("<leader>,"), QStringLiteral("ii"), Mappings::Recursive);
     DoTest("", ",,", "i");
-    vi_global->mappings()->add(Mappings::NormalModeMapping, ",<leader>", "ii", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral(",<leader>"), QStringLiteral("ii"), Mappings::Recursive);
     DoTest("", ",,", "i");
 
     // It doesn't work outside normal mode.
     clearAllMappings();
     vi_global->readConfig(&viTestKConfig);
     vi_global->mappings()->setLeader(QChar::fromLatin1(','));
-    vi_global->mappings()->add(Mappings::InsertModeMapping, "<leader>i", "ii", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::InsertModeMapping, QStringLiteral("<leader>i"), QStringLiteral("ii"), Mappings::Recursive);
     DoTest("", "i,ii", ",ii");
 
     // Clear mappings for subsequent tests.
@@ -670,12 +670,12 @@ void KeysTest::ParsingTests()
 
     // Test that it can be used in mappings
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, char_o_diaeresis, "ifoo", Mappings::Recursive);
-    DoTest("hello", QString("ll%1bar").arg(char_o_diaeresis), "hefoobarllo");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, char_o_diaeresis, QStringLiteral("ifoo"), Mappings::Recursive);
+    DoTest2(__LINE__, __FILE__, QStringLiteral("hello"), QStringLiteral("ll%1bar").arg(char_o_diaeresis), QStringLiteral("hefoobarllo"));
 
     // Test that <cr> is parsed like <enter>
     QCOMPARE(KeyParser::self()->vi2qt("cr"), int(Qt::Key_Enter));
-    const QString &enter = KeyParser::self()->encodeKeySequence(QLatin1String("<cr>"));
+    const QString &enter = KeyParser::self()->encodeKeySequence(QStringLiteral("<cr>"));
     QCOMPARE(KeyParser::self()->decodeKeySequence(enter), QLatin1String("<cr>"));
 }
 
@@ -691,25 +691,25 @@ void KeysTest::AltGr()
     // Ensure we have auto brackets off, or the test will fail
     kate_view->config()->setValue(KateViewConfig::AutoBrackets, false);
 
-    BeginTest("");
-    TestPressKey("i");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("i"));
     altGrDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_AltGr, Qt::NoModifier);
     QApplication::postEvent(kate_view->focusProxy(), altGrDown);
     QApplication::sendPostedEvents();
     // Not really Alt-gr and 7, but this is the key event that is reported by Qt if we press that.
-    QKeyEvent *altGrAnd7 = new QKeyEvent(QEvent::KeyPress, Qt::Key_BraceLeft, Qt::GroupSwitchModifier, "{");
+    QKeyEvent *altGrAnd7 = new QKeyEvent(QEvent::KeyPress, Qt::Key_BraceLeft, Qt::GroupSwitchModifier, QStringLiteral("{"));
     QApplication::postEvent(kate_view->focusProxy(), altGrAnd7);
     QApplication::sendPostedEvents();
     altGrUp = new QKeyEvent(QEvent::KeyRelease, Qt::Key_AltGr, Qt::NoModifier);
     QApplication::postEvent(kate_view->focusProxy(), altGrUp);
     QApplication::sendPostedEvents();
-    TestPressKey("\\ctrl-c");
+    TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("{");
 
     // French Bepo keyabord AltGr + Shift + s = Ù = Unicode(0x00D9);
     const QString ugrave = QString(QChar(0x00D9));
-    BeginTest("");
-    TestPressKey("i");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("i"));
     altGrDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_AltGr, Qt::NoModifier);
     QApplication::postEvent(kate_view->focusProxy(), altGrDown);
     QApplication::sendPostedEvents();
@@ -717,34 +717,34 @@ void KeysTest::AltGr()
     QApplication::postEvent(kate_view->focusProxy(), altGrDown);
     QApplication::sendPostedEvents();
     QKeyEvent *altGrAndUGrave = new QKeyEvent(QEvent::KeyPress, Qt::Key_Ugrave, Qt::ShiftModifier | Qt::GroupSwitchModifier, ugrave);
-    qDebug() << QString("%1").arg(altGrAndUGrave->modifiers(), 10, 16);
+    qDebug() << QStringLiteral("%1").arg(altGrAndUGrave->modifiers(), 10, 16);
     QApplication::postEvent(kate_view->focusProxy(), altGrAndUGrave);
     QApplication::sendPostedEvents();
     altGrUp = new QKeyEvent(QEvent::KeyRelease, Qt::Key_AltGr, Qt::NoModifier);
     QApplication::postEvent(kate_view->focusProxy(), altGrUp);
     QApplication::sendPostedEvents();
-    FinishTest(ugrave);
+    FinishTest(ugrave.toUtf8().constData());
 }
 
 void KeysTest::MacroTests()
 {
     // Update the status on qa.
-    const QString macroIsRecordingStatus = QLatin1String("(") + i18n("recording") + QLatin1String(")");
+    const QString macroIsRecordingStatus = u"(" + i18n("recording") + u")";
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
-    TestPressKey("qa");
+    TestPressKey(QStringLiteral("qa"));
     QVERIFY(kate_view->viewModeHuman().contains(macroIsRecordingStatus));
-    TestPressKey("q");
+    TestPressKey(QStringLiteral("q"));
     QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     FinishTest("");
 
     // The closing "q" is not treated as the beginning of a new "begin recording macro" command.
     clearAllMacros();
-    BeginTest("foo");
-    TestPressKey("qaqa");
+    BeginTest(QStringLiteral("foo"));
+    TestPressKey(QStringLiteral("qaqa"));
     QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
-    TestPressKey("xyz\\esc");
+    TestPressKey(QStringLiteral("xyz\\esc"));
     FinishTest("fxyzoo");
 
     // Record and playback a single keypress into macro register "a".
@@ -756,11 +756,11 @@ void KeysTest::MacroTests()
 
     // Update the status on qb.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
-    TestPressKey("qb");
+    TestPressKey(QStringLiteral("qb"));
     QVERIFY(kate_view->viewModeHuman().contains(macroIsRecordingStatus));
-    TestPressKey("q");
+    TestPressKey(QStringLiteral("q"));
     QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     FinishTest("");
 
@@ -824,34 +824,34 @@ void KeysTest::MacroTests()
 
     // Expand mappings,  but don't do *both* original keypresses and executed keypresses.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello<c-c>"), Mappings::Recursive);
     clearAllMacros();
     DoTest("", "qa'q@a", "hellhelloo");
     // Actually, just do the mapped keypresses, not the executed mappings (like Vim).
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello<c-c>"), Mappings::Recursive);
     clearAllMacros();
-    BeginTest("");
-    TestPressKey("qa'q");
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "igoodbye<c-c>", Mappings::Recursive);
-    TestPressKey("@a");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("qa'q"));
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("igoodbye<c-c>"), Mappings::Recursive);
+    TestPressKey(QStringLiteral("@a"));
     FinishTest("hellgoodbyeo");
     // Clear the "stop recording macro keypresses because we're executing a mapping" when the mapping has finished
     // executing.
     clearAllMappings();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello<c-c>"), Mappings::Recursive);
     clearAllMacros();
     DoTest("", "qa'ixyz\\ctrl-cq@a", "hellxyhellxyzozo");
     // ... make sure that *all* mappings have finished, though: take into account recursion.
     clearAllMappings();
     clearAllMacros();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello<c-c>"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("ihello<c-c>"), QStringLiteral("irecursive<c-c>"), Mappings::Recursive);
     DoTest("", "qa'q@a", "recursivrecursivee");
     clearAllMappings();
     clearAllMacros();
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>ixyz<c-c>", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'"), QStringLiteral("ihello<c-c>ixyz<c-c>"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("ihello<c-c>"), QStringLiteral("irecursive<c-c>"), Mappings::Recursive);
     DoTest("", "qa'q@a", "recursivxyrecursivxyzeze");
 
     clearAllMappings();
@@ -899,8 +899,8 @@ void KeysTest::MacroTests()
     clearAllMacros();
     // Expand mapping in an executed macro, if the invocation of the macro "@a" is a prefix of a mapping M, and
     // M ends up not being triggered.
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "@aaaa", "idummy<esc>", Mappings::Recursive);
-    vi_global->mappings()->add(Mappings::NormalModeMapping, "S", "ixyz<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("@aaaa"), QStringLiteral("idummy<esc>"), Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("S"), QStringLiteral("ixyz<esc>"), Mappings::Recursive);
     DoTest("", "qaSq@abrX", "Xyxyzz");
     clearAllMappings();
 
@@ -930,34 +930,34 @@ void KeysTest::MacroTests()
     DoTest("", "qaia\\ctrl-cq@adiw5@@", "aaaaa");
 
     // Test that we can save and restore a single macro.
-    const QString viTestKConfigFileName = "vimodetest-katevimoderc";
+    const QString viTestKConfigFileName = QStringLiteral("vimodetest-katevimoderc");
     {
         clearAllMacros();
         KConfig viTestKConfig(viTestKConfigFileName);
-        BeginTest("");
-        TestPressKey("qaia\\ctrl-cq");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral("qaia\\ctrl-cq"));
         vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite macro "a", and clear the document.
-        TestPressKey("qaidummy\\ctrl-cqdd");
+        TestPressKey(QStringLiteral("qaidummy\\ctrl-cqdd"));
         vi_global->readConfig(&viTestKConfig);
-        TestPressKey("@a");
+        TestPressKey(QStringLiteral("@a"));
         FinishTest("a");
     }
 
     {
         // Test that we can save and restore several macros.
         clearAllMacros();
-        const QString viTestKConfigFileName = "vimodetest-katevimoderc";
+        const QString viTestKConfigFileName = QStringLiteral("vimodetest-katevimoderc");
         KConfig viTestKConfig(viTestKConfigFileName);
-        BeginTest("");
-        TestPressKey("qaia\\ctrl-cqqbib\\ctrl-cq");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral("qaia\\ctrl-cqqbib\\ctrl-cq"));
         vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite macros "a" & "b", and clear the document.
-        TestPressKey("qaidummy\\ctrl-cqqbidummy\\ctrl-cqdd");
+        TestPressKey(QStringLiteral("qaidummy\\ctrl-cqqbidummy\\ctrl-cqdd"));
         vi_global->readConfig(&viTestKConfig);
-        TestPressKey("@a@b");
+        TestPressKey(QStringLiteral("@a@b"));
         FinishTest("ba");
     }
 
@@ -982,30 +982,30 @@ void KeysTest::MacroTests()
     clearAllMacros();
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    BeginTest("");
-    TestPressKey("qqico\\ctrl- \\ctrl-cq");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("qqico\\ctrl- \\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("@q"));
     FinishTest("ccoo");
 
     // Don't invoke completion via ctrl-p when replaying a macro.
     clearAllMacros();
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    BeginTest("");
-    TestPressKey("qqico\\ctrl-p\\ctrl-cq");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("qqico\\ctrl-p\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("@q"));
     FinishTest("ccoo");
 
     // Don't invoke completion via ctrl-n when replaying a macro.
     clearAllMacros();
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    BeginTest("");
-    TestPressKey("qqico\\ctrl-n\\ctrl-cq");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("qqico\\ctrl-n\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("@q"));
     FinishTest("ccoo");
 
     // An "enter" in insert mode when no completion is activated (so, a newline)
@@ -1015,13 +1015,13 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions(QStringList()); // Prevent any completions.
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->clearWasInvoked();
-    BeginTest("");
-    TestPressKey("qqicompl\\enterX\\ctrl-cqdddd");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("qqicompl\\enterX\\ctrl-cqdddd"));
     QVERIFY(!fakeCodeCompletionModel->wasInvoked()); // Error in test setup!
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
-    fakeCodeCompletionModel->forceInvocationIfDocTextIs("compl");
+    fakeCodeCompletionModel->forceInvocationIfDocTextIs(QStringLiteral("compl"));
     fakeCodeCompletionModel->clearWasInvoked();
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("@q"));
     QVERIFY(fakeCodeCompletionModel->wasInvoked()); // Error in test setup!
     fakeCodeCompletionModel->doNotForceInvocation();
     FinishTest("compl\nX");
@@ -1030,95 +1030,95 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions(QStringList()); // Prevent any completions.
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->clearWasInvoked();
-    BeginTest("");
-    TestPressKey("qqicompl\\returnX\\ctrl-cqdddd");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("qqicompl\\returnX\\ctrl-cqdddd"));
     QVERIFY(!fakeCodeCompletionModel->wasInvoked()); // Error in test setup!
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
-    fakeCodeCompletionModel->forceInvocationIfDocTextIs("compl");
+    fakeCodeCompletionModel->forceInvocationIfDocTextIs(QStringLiteral("compl"));
     fakeCodeCompletionModel->clearWasInvoked();
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("@q"));
     QVERIFY(fakeCodeCompletionModel->wasInvoked()); // Error in test setup!
     fakeCodeCompletionModel->doNotForceInvocation();
     FinishTest("compl\nX");
 
     // If we do a plain-text completion in a macro, this should be repeated when we replay it.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqicompl\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqicompl\\ctrl- \\enter\\ctrl-cq"));
     kate_document->clear();
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("@q"));
     FinishTest("completionA");
 
     // Should replace only the current word when we repeat the completion.
     clearAllMacros();
-    BeginTest("compl");
+    BeginTest(QStringLiteral("compl"));
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqfla\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfla\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(compl)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(compl)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(completionA)");
 
     // Tail-clearing completions should be undoable with one undo.
     clearAllMacros();
-    BeginTest("compl");
+    BeginTest(QStringLiteral("compl"));
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqfla\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfla\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(compl)");
-    TestPressKey("gg@qu");
+    kate_document->setText(QStringLiteral("(compl)"));
+    TestPressKey(QStringLiteral("gg@qu"));
     FinishTest("(compl)");
 
     // Should be able to store multiple completions.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqicom\\ctrl-p\\enter com\\ctrl-p\\ctrl-p\\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqicom\\ctrl-p\\enter com\\ctrl-p\\ctrl-p\\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("completionC completionB");
 
     // Clear the completions for a macro when we start recording.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionOrig"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqicom\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqicom\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setCompletions({"completionSecond"});
-    TestPressKey("ddqqicom\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("ddqqicom\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("completionSecond");
 
     // Completions are per macro.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qaicom\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qaicom\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setCompletions({"completionB"});
-    TestPressKey("ddqbicom\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("ddqbicom\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@aA\\enter\\ctrl-c@b");
+    TestPressKey(QStringLiteral("dd@aA\\enter\\ctrl-c@b"));
     FinishTest("completionA\ncompletionB");
 
     // Make sure completions work with recursive macros.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionA1", "completionA2"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     // Record 'a', which calls the (non-yet-existent) macro 'b'.
-    TestPressKey("qaicom\\ctrl- \\enter\\ctrl-cA\\enter\\ctrl-c@bA\\enter\\ctrl-cicom\\ctrl- \\ctrl-p\\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qaicom\\ctrl- \\enter\\ctrl-cA\\enter\\ctrl-c@bA\\enter\\ctrl-cicom\\ctrl- \\ctrl-p\\enter\\ctrl-cq"));
     // Clear document and record 'b'.
     fakeCodeCompletionModel->setCompletions({"completionB"});
-    TestPressKey("ggdGqbicom\\ctrl- \\enter\\ctrl-cq");
-    TestPressKey("dd@a");
+    TestPressKey(QStringLiteral("ggdGqbicom\\ctrl- \\enter\\ctrl-cq"));
+    TestPressKey(QStringLiteral("dd@a"));
     FinishTest("completionA1\ncompletionB\ncompletionA2");
 
     // Test that non-tail-removing completions are respected.
@@ -1130,127 +1130,127 @@ void KeysTest::MacroTests()
     kate_document->config()->setReplaceTabsDyn(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     clearAllMacros();
-    BeginTest("compTail");
+    BeginTest(QStringLiteral("compTail"));
     fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("compTail");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("compTail"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("completionATail");
 
     // A "word" consists of letters & numbers, plus "_".
     clearAllMacros();
-    BeginTest("(123_compTail");
+    BeginTest(QStringLiteral("(123_compTail"));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(123_compTail");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(123_compTail"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(123_completionATail");
 
     // Correctly remove word if we are set to remove tail.
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     clearAllMacros();
-    BeginTest("(123_compTail)");
+    BeginTest(QStringLiteral("(123_compTail)"));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(123_compTail)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(123_compTail)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(123_completionA)");
 
     // Again, a "word" consists of letters & numbers & underscores.
     clearAllMacros();
-    BeginTest("(123_compTail_456)");
+    BeginTest(QStringLiteral("(123_compTail_456)"));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(123_compTail_456)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(123_compTail_456)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(123_completionA)");
 
     // Actually, let whether the tail is swallowed or not depend on the value when the
     // completion occurred, not when we replay it.
     clearAllMacros();
-    BeginTest("(123_compTail_456)");
+    BeginTest(QStringLiteral("(123_compTail_456)"));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-    kate_document->setText("(123_compTail_456)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(123_compTail_456)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(123_completionA)");
     clearAllMacros();
-    BeginTest("(123_compTail_456)");
+    BeginTest(QStringLiteral("(123_compTail_456)"));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-    kate_document->setText("(123_compTail_456)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(123_compTail_456)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(123_completionATail_456)");
 
     // Can have remove-tail *and* non-remove-tail completions in one macro.
     clearAllMacros();
-    BeginTest("(123_compTail_456)\n(123_compTail_456)");
+    BeginTest(QStringLiteral("(123_compTail_456)\n(123_compTail_456)"));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-    TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-c");
+    TestPressKey(QStringLiteral("qqfTi\\ctrl- \\enter\\ctrl-c"));
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-    TestPressKey("j^fTi\\ctrl- \\enter\\ctrl-cq");
-    kate_document->setText("(123_compTail_456)\n(123_compTail_456)");
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("j^fTi\\ctrl- \\enter\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("(123_compTail_456)\n(123_compTail_456)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("(123_completionA)\n(123_completionATail_456)");
 
     // Can repeat plain-text completions when there is no word to the left of the cursor.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqi\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqi\\ctrl- \\enter\\ctrl-cq"));
     kate_document->clear();
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("123_completionA");
 
     // Shouldn't swallow the letter under the cursor if we're not swallowing tails.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-    TestPressKey("qqi\\ctrl- \\enter\\ctrl-cq");
-    kate_document->setText("oldwordshouldbeuntouched");
+    TestPressKey(QStringLiteral("qqi\\ctrl- \\enter\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("oldwordshouldbeuntouched"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("123_completionAoldwordshouldbeuntouched");
 
     // ... but do if we are swallowing tails.
     clearAllMacros();
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-    TestPressKey("qqi\\ctrl- \\enter\\ctrl-cq");
-    kate_document->setText("oldwordshouldbedeleted");
+    TestPressKey(QStringLiteral("qqi\\ctrl- \\enter\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("oldwordshouldbedeleted"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("123_completionA");
 
     // Completion of functions.
@@ -1258,257 +1258,258 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     // A completed, no argument function "function()" is repeated correctly.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("function()");
 
     // Cursor is placed after the closing bracket when completion a no-arg function.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enter.something();\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enter.something();\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("function().something();");
 
     // A function taking some arguments, repeated where there is no opening bracket to
     // merge with, is repeated as "function()").
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enter\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("function()");
 
     // A function taking some arguments, repeated where there is no opening bracket to
     // merge with, places the cursor after the opening bracket.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("function(firstArg)");
 
     // A function taking some arguments, recorded where there was an opening bracket to merge
     // with but repeated where there is no such bracket, is repeated as "function()" and the
     // cursor placed appropriately.
-    BeginTest("(<-Mergeable opening bracket)");
+    BeginTest(QStringLiteral("(<-Mergeable opening bracket)"));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("dd@q");
+    TestPressKey(QStringLiteral("dd@q"));
     FinishTest("function(firstArg)");
 
     // A function taking some arguments, recorded where there was no opening bracket to merge
     // with but repeated where there is such a bracket, is repeated as "function" and the
     // cursor moved to after the merged opening bracket.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(<-firstArg goes here)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(<-firstArg goes here)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(firstArg<-firstArg goes here)");
 
     // A function taking some arguments, recorded where there was an opening bracket to merge
     // with and repeated where there is also such a bracket, is repeated as "function" and the
     // cursor moved to after the merged opening bracket.
-    BeginTest("(<-mergeablebracket)");
+    BeginTest(QStringLiteral("(<-mergeablebracket)"));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(<-firstArg goes here)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(<-firstArg goes here)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(firstArg<-firstArg goes here)");
 
     // The mergeable bracket can be separated by whitespace; the cursor is still placed after the
     // opening bracket.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("   \t (<-firstArg goes here)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("   \t (<-firstArg goes here)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function   \t (firstArg<-firstArg goes here)");
 
     // Whitespace only, though!
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("|   \t ()");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("|   \t ()"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(firstArg)|   \t ()");
 
     // The opening bracket can actually be after the current word (with optional whitespace).
     // Note that this wouldn't be the case if we weren't swallowing tails when completion functions,
     // but this is not currently supported.
-    BeginTest("function");
+    BeginTest(QStringLiteral("function"));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("functxyz    (<-firstArg goes here)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("functxyz    (<-firstArg goes here)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function    (firstArg<-firstArg goes here)");
 
     // Regression test for weird issue with replaying completions when the character to the left of the cursor
     // is not a word char.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqciw\\ctrl- \\enter\\ctrl-cq");
-    TestPressKey("ddi.xyz\\enter123\\enter456\\ctrl-cggl"); // Position cursor just after the "."
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("qqciw\\ctrl- \\enter\\ctrl-cq"));
+    TestPressKey(QStringLiteral("ddi.xyz\\enter123\\enter456\\ctrl-cggl")); // Position cursor just after the "."
+    TestPressKey(QStringLiteral("@q"));
     FinishTest(".completionA\n123\n456");
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqciw\\ctrl- \\enter\\ctrl-cq");
-    TestPressKey("ddi.xyz.abc\\enter123\\enter456\\ctrl-cggl"); // Position cursor just after the "."
-    TestPressKey("@q");
+    TestPressKey(QStringLiteral("qqciw\\ctrl- \\enter\\ctrl-cq"));
+    TestPressKey(QStringLiteral("ddi.xyz.abc\\enter123\\enter456\\ctrl-cggl")); // Position cursor just after the "."
+    TestPressKey(QStringLiteral("@q"));
     FinishTest(".completionA.abc\n123\n456");
 
     // Functions taking no arguments are never bracket-merged.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifunc\\ctrl- \\enter.something();\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifunc\\ctrl- \\enter.something();\\ctrl-cq"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    kate_document->setText("(<-don't merge this bracket)");
-    TestPressKey("gg@q");
+    kate_document->setText(QStringLiteral("(<-don't merge this bracket)"));
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function().something();(<-don't merge this bracket)");
 
     // Not-removing-tail when completing functions is not currently supported,
     // so ignore the "do-not-remove-tail" settings when we try this.
-    BeginTest("funct");
+    BeginTest(QStringLiteral("funct"));
     fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-    TestPressKey("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq");
-    kate_document->setText("functxyz");
+    TestPressKey(QStringLiteral("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("functxyz"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(firstArg)");
-    BeginTest("funct");
+    BeginTest(QStringLiteral("funct"));
     fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-    TestPressKey("qqfta\\ctrl- \\enter\\ctrl-cq");
-    kate_document->setText("functxyz");
+    TestPressKey(QStringLiteral("qqfta\\ctrl- \\enter\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("functxyz"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function()");
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
 
     // Deal with cases where completion ends with ";".
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function();"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enter\\ctrl-cq"));
     kate_document->clear();
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function();");
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function();"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enterX\\ctrl-cq"));
     kate_document->clear();
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function();X");
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enter\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enter\\ctrl-cq"));
     kate_document->clear();
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function();");
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enterX\\ctrl-cq"));
     kate_document->clear();
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(X);");
     // Tests for completions ending in ";" where bracket merging should happen on replay.
     // NB: bracket merging when recording is impossible with completions that end in ";".
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enter\\ctrl-cq");
-    kate_document->setText("(<-mergeable bracket");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enter\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("(<-mergeable bracket"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(<-mergeable bracket");
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
-    kate_document->setText("(<-mergeable bracket");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enterX\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("(<-mergeable bracket"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function(X<-mergeable bracket");
     // Don't merge no arg functions.
-    BeginTest("");
+    BeginTest(QLatin1String(""));
     fakeCodeCompletionModel->setCompletions({"function();"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
-    kate_document->setText("(<-mergeable bracket");
+    TestPressKey(QStringLiteral("qqifun\\ctrl- \\enterX\\ctrl-cq"));
+    kate_document->setText(QStringLiteral("(<-mergeable bracket"));
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    TestPressKey("gg@q");
+    TestPressKey(QStringLiteral("gg@q"));
     FinishTest("function();X(<-mergeable bracket");
 
     {
-        const QString viTestKConfigFileName = "vimodetest-katevimoderc";
+        const QString viTestKConfigFileName = QStringLiteral("vimodetest-katevimoderc");
         KConfig viTestKConfig(viTestKConfigFileName);
         // Test loading and saving of macro completions.
         clearAllMacros();
-        BeginTest("funct\nnoa\ncomtail\ncomtail\ncom");
+        BeginTest(QStringLiteral("funct\nnoa\ncomtail\ncomtail\ncom"));
         fakeCodeCompletionModel->setCompletions({"completionA", "functionwithargs(...)", "noargfunction()"});
         fakeCodeCompletionModel->setFailTestOnInvocation(false);
         // Record 'a'.
-        TestPressKey("qafta\\ctrl- \\enterfirstArg\\ctrl-c"); // Function with args.
-        TestPressKey("\\enterea\\ctrl- \\enter\\ctrl-c"); // Function no args.
+        TestPressKey(QStringLiteral("qafta\\ctrl- \\enterfirstArg\\ctrl-c")); // Function with args.
+        TestPressKey(QStringLiteral("\\enterea\\ctrl- \\enter\\ctrl-c")); // Function no args.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-        TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-c"); // Cut off tail.
+        TestPressKey(QStringLiteral("\\enterfti\\ctrl- \\enter\\ctrl-c")); // Cut off tail.
         fakeCodeCompletionModel->setRemoveTailOnComplete(false);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-        TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-cq"); // Don't cut off tail.
+        TestPressKey(QStringLiteral("\\enterfti\\ctrl- \\enter\\ctrl-cq")); // Don't cut off tail.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
         // Record 'b'.
         fakeCodeCompletionModel->setCompletions({"completionB", "semicolonfunctionnoargs();", "semicolonfunctionwithargs(...);"});
-        TestPressKey("\\enterqbea\\ctrl- \\enter\\ctrl-cosemicolonfunctionw\\ctrl- \\enterX\\ctrl-cosemicolonfunctionn\\ctrl- \\enterX\\ctrl-cq");
+        TestPressKey(
+            QStringLiteral("\\enterqbea\\ctrl- \\enter\\ctrl-cosemicolonfunctionw\\ctrl- \\enterX\\ctrl-cosemicolonfunctionn\\ctrl- \\enterX\\ctrl-cq"));
         // Save.
         vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite 'a' and 'b' and their completions.
         fakeCodeCompletionModel->setCompletions({"blah1"});
-        kate_document->setText("");
-        TestPressKey("ggqaiblah\\ctrl- \\enter\\ctrl-cq");
-        TestPressKey("ddqbiblah\\ctrl- \\enter\\ctrl-cq");
+        kate_document->setText(QLatin1String(""));
+        TestPressKey(QStringLiteral("ggqaiblah\\ctrl- \\enter\\ctrl-cq"));
+        TestPressKey(QStringLiteral("ddqbiblah\\ctrl- \\enter\\ctrl-cq"));
         // Reload.
         vi_global->readConfig(&viTestKConfig);
         // Replay reloaded.
         fakeCodeCompletionModel->setFailTestOnInvocation(true);
-        kate_document->setText("funct\nnoa\ncomtail\ncomtail\ncom");
-        TestPressKey("gg@a\\enter@b");
+        kate_document->setText(QStringLiteral("funct\nnoa\ncomtail\ncomtail\ncom"));
+        TestPressKey(QStringLiteral("gg@a\\enter@b"));
         FinishTest(
             "functionwithargs(firstArg)\nnoargfunction()\ncompletionA\ncompletionAtail\ncompletionB\nsemicolonfunctionwithargs(X);\nsemicolonfunctionnoargs();"
             "X");
@@ -1517,17 +1518,17 @@ void KeysTest::MacroTests()
     // Check that undo/redo operations work properly with macros.
     {
         clearAllMacros();
-        BeginTest("");
-        TestPressKey("ihello\\ctrl-cqauq");
-        TestPressKey("@a\\enter");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral("ihello\\ctrl-cqauq"));
+        TestPressKey(QStringLiteral("@a\\enter"));
         FinishTest("");
     }
     {
         clearAllMacros();
-        BeginTest("");
-        TestPressKey("ihello\\ctrl-cui.bye\\ctrl-cu");
-        TestPressKey("qa\\ctrl-r\\enterq");
-        TestPressKey("@a\\enter");
+        BeginTest(QLatin1String(""));
+        TestPressKey(QStringLiteral("ihello\\ctrl-cui.bye\\ctrl-cu"));
+        TestPressKey(QStringLiteral("qa\\ctrl-r\\enterq"));
+        TestPressKey(QStringLiteral("@a\\enter"));
         FinishTest(".bye");
     }
 
@@ -1536,15 +1537,15 @@ void KeysTest::MacroTests()
     // Ensure that the last change completions log is kept up to date even while we're replaying the macro.
     if (false) { // FIXME: test currently fails in newer Qt >= 5.11, but works with Qt 5.10
         clearAllMacros();
-        BeginTest("");
+        BeginTest(QLatin1String(""));
         fakeCodeCompletionModel->setCompletions({"completionMacro", "completionRepeatLastChange"});
         fakeCodeCompletionModel->setFailTestOnInvocation(false);
-        TestPressKey("qqicompletionM\\ctrl- \\enter\\ctrl-c");
-        TestPressKey("a completionRep\\ctrl- \\enter\\ctrl-c");
-        TestPressKey(".q");
+        TestPressKey(QStringLiteral("qqicompletionM\\ctrl- \\enter\\ctrl-c"));
+        TestPressKey(QStringLiteral("a completionRep\\ctrl- \\enter\\ctrl-c"));
+        TestPressKey(QStringLiteral(".q"));
         qDebug() << "text: " << kate_document->text();
         kate_document->clear();
-        TestPressKey("gg@q");
+        TestPressKey(QStringLiteral("gg@q"));
         FinishTest("completionMacro completionRepeatLastChange completionRepeatLastChange");
     }
 

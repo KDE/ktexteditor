@@ -20,7 +20,7 @@
 #include <QTemporaryFile>
 #include <QtTestWidgets>
 
-#define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toLatin1().data()))
+#define testNewRow() (QTest::newRow(QStringLiteral("line %1").arg(__LINE__).toLatin1().data()))
 
 using namespace KTextEditor;
 
@@ -39,7 +39,7 @@ KateViewTest::~KateViewTest()
 void KateViewTest::testCoordinatesToCursor()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setText("Hi World!\nHi\n");
+    doc.setText(QStringLiteral("Hi World!\nHi\n"));
 
     KTextEditor::View *view1 = static_cast<KTextEditor::View *>(doc.createView(nullptr));
     view1->resize(400, 300);
@@ -66,7 +66,7 @@ void KateViewTest::testCoordinatesToCursor()
     QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(2, 0));
 
     // same test again, but with message widget on top visible
-    KTextEditor::Message *message = new KTextEditor::Message("Jo World!", KTextEditor::Message::Information);
+    KTextEditor::Message *message = new KTextEditor::Message(QStringLiteral("Jo World!"), KTextEditor::Message::Information);
     doc.postMessage(message);
 
     // wait 500ms until show animation is finished, so the message widget is visible
@@ -82,7 +82,7 @@ void KateViewTest::testCoordinatesToCursor()
 void KateViewTest::testCursorToCoordinates()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setText("int a;");
+    doc.setText(QStringLiteral("int a;"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->config()->setDynWordWrap(true);
@@ -96,10 +96,10 @@ void KateViewTest::testCursorToCoordinates()
 
 void KateViewTest::testReloadMultipleViews()
 {
-    QTemporaryFile file("XXXXXX.cpp");
+    QTemporaryFile file(QStringLiteral("XXXXXX.cpp"));
     file.open();
     QTextStream stream(&file);
-    const QString line = "const char* foo = \"asdf\"\n";
+    const QString line = QStringLiteral("const char* foo = \"asdf\"\n");
     for (int i = 0; i < 200; ++i) {
         stream << line;
     }
@@ -108,7 +108,7 @@ void KateViewTest::testReloadMultipleViews()
 
     KTextEditor::DocumentPrivate doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
-    QCOMPARE(doc.highlightingMode(), QString("C++"));
+    QCOMPARE(doc.highlightingMode(), QStringLiteral("C++"));
 
     KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, nullptr);
     KTextEditor::ViewPrivate *view2 = new KTextEditor::ViewPrivate(&doc, nullptr);
@@ -122,7 +122,7 @@ void KateViewTest::testReloadMultipleViews()
 void KateViewTest::testTabCursorOnReload()
 {
     // testcase for https://bugs.kde.org/show_bug.cgi?id=258480
-    QTemporaryFile file("XXXXXX.cpp");
+    QTemporaryFile file(QStringLiteral("XXXXXX.cpp"));
     file.open();
     QTextStream stream(&file);
     stream << "\tfoo\n";
@@ -143,7 +143,7 @@ void KateViewTest::testLowerCaseBlockSelection()
 {
     // testcase for https://bugs.kde.org/show_bug.cgi?id=258480
     KTextEditor::DocumentPrivate doc;
-    doc.setText("nY\nnYY\n");
+    doc.setText(QStringLiteral("nY\nnYY\n"));
 
     KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, nullptr);
     view1->setBlockSelection(true);
@@ -177,7 +177,7 @@ void KateViewTest::testSelection()
     // => expected: selection from B to C
     // => actual: selection from A to C
 
-    QTemporaryFile file("XXXXXX.txt");
+    QTemporaryFile file(QStringLiteral("XXXXXX.txt"));
     file.open();
     QTextStream stream(&file);
     stream << "A\n"
@@ -254,8 +254,8 @@ void KateViewTest::testDeselectByArrowKeys_data()
 {
     QTest::addColumn<QString>("text");
 
-    testNewRow() << "foobarhaz";
-    testNewRow() << "كلسشمن يتبكسب"; // We all win, translates Google
+    testNewRow() << QStringLiteral("foobarhaz");
+    testNewRow() << QStringLiteral("كلسشمن يتبكسب"); // We all win, translates Google
 }
 
 void KateViewTest::testDeselectByArrowKeys()
@@ -312,7 +312,7 @@ void KateViewTest::testDeselectByArrowKeys()
 void KateViewTest::testKillline()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.insertLines(0, {"foo", "bar", "baz"});
+    doc.insertLines(0, {QStringLiteral("foo"), QStringLiteral("bar"), QStringLiteral("baz")});
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
 
@@ -324,7 +324,7 @@ void KateViewTest::testKillline()
     doc.clear();
     QVERIFY(doc.isEmpty());
 
-    doc.insertLines(0, {"foo", "bar", "baz", "xxx"});
+    doc.insertLines(0, {QStringLiteral("foo"), QStringLiteral("bar"), QStringLiteral("baz"), QStringLiteral("xxx")});
 
     view->setCursorPositionInternal(KTextEditor::Cursor(1, 2));
     view->shiftDown();
@@ -370,7 +370,7 @@ void KateViewTest::testScrollPastEndOfDocument()
 
 void KateViewTest::testFoldFirstLine()
 {
-    QTemporaryFile file("XXXXXX.cpp");
+    QTemporaryFile file(QStringLiteral("XXXXXX.cpp"));
     file.open();
     QTextStream stream(&file);
     stream << "/**\n"
@@ -382,7 +382,7 @@ void KateViewTest::testFoldFirstLine()
 
     KTextEditor::DocumentPrivate doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
-    QCOMPARE(doc.highlightingMode(), QString("C++"));
+    QCOMPARE(doc.highlightingMode(), QStringLiteral("C++"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->config()->setValue(KateViewConfig::FoldFirstLine, false);
@@ -421,11 +421,11 @@ void KateViewTest::testDragAndDrop()
 
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText(
-        "line0\n"
-        "line1\n"
-        "line2\n"
-        "\n"
-        "line4");
+        QStringLiteral("line0\n"
+                       "line1\n"
+                       "line2\n"
+                       "\n"
+                       "line4"));
 
     KTextEditor::View *view = static_cast<KTextEditor::View *>(doc.createView(nullptr));
     view->show();
@@ -467,11 +467,11 @@ void KateViewTest::testDragAndDrop()
 
     // final tests of dragged text
     QCOMPARE(doc.text(),
-             QString("line0\n"
-                     "line2\n"
-                     "line1\n"
-                     "\n"
-                     "line4"));
+             QStringLiteral("line0\n"
+                            "line2\n"
+                            "line1\n"
+                            "\n"
+                            "line4"));
 
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(3, 0));
     QCOMPARE(view->selectionRange(), Range(2, 0, 3, 0));
@@ -481,7 +481,7 @@ void KateViewTest::testDragAndDrop()
 void KateViewTest::testGotoMatchingBracket()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setText("foo(bar)baz[]");
+    doc.setText(QStringLiteral("foo(bar)baz[]"));
     //           0123456789
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
@@ -527,10 +527,10 @@ void KateViewTest::testFindSelected()
 {
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText(
-        "foo\n"
-        "bar\n"
-        "foo\n"
-        "bar\n");
+        QStringLiteral("foo\n"
+                       "bar\n"
+                       "foo\n"
+                       "bar\n"));
     //           0123456789
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
@@ -570,10 +570,10 @@ void KateViewTest::testTransposeWord()
 {
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText(
-        "swaps forward\n"
-        "wordAbove\n"
-        "wordLeft (_skips]Spaces.__And___}Sym_bols))))    wordRight)\n"
-        "wordBelow anotherWord yetAnotherWord\n");
+        QStringLiteral("swaps forward\n"
+                       "wordAbove\n"
+                       "wordLeft (_skips]Spaces.__And___}Sym_bols))))    wordRight)\n"
+                       "wordBelow anotherWord yetAnotherWord\n"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     const KTextEditor::Cursor swaps(0, 2); // swa|ps
@@ -629,16 +629,16 @@ void KateViewTest::testTransposeWord()
 void KateViewTest::testFindMatchingFoldingMarker()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setMode(QString("Bash"));
-    doc.setHighlightingMode(QString("Bash"));
+    doc.setMode(QStringLiteral("Bash"));
+    doc.setHighlightingMode(QStringLiteral("Bash"));
 
     doc.setText(
-        "for i in 0 1 2; do\n"
-        "    if [[ i -lt 1 ]]; then echo $i; fi\n"
-        "    if [[ i -eq 2 ]]; then\n"
-        "        echo 'hello :)'\n"
-        "    fi\n"
-        "done\n");
+        QStringLiteral("for i in 0 1 2; do\n"
+                       "    if [[ i -lt 1 ]]; then echo $i; fi\n"
+                       "    if [[ i -eq 2 ]]; then\n"
+                       "        echo 'hello :)'\n"
+                       "    fi\n"
+                       "done\n"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     KateViewInternal *viewInternal = view->getViewInternal();
@@ -670,16 +670,16 @@ void KateViewTest::testFindMatchingFoldingMarker()
 void KateViewTest::testUpdateFoldingMarkersHighlighting()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setMode(QString("Bash"));
-    doc.setHighlightingMode(QString("Bash"));
+    doc.setMode(QStringLiteral("Bash"));
+    doc.setHighlightingMode(QStringLiteral("Bash"));
 
     doc.setText(
-        "for i in 0 1 2; do\n"
-        "    if [[ i -lt 1 ]]; then echo $i; fi\n"
-        "    if [[ i -eq 2 ]]; then\n"
-        "        echo 'hello :)'\n"
-        "    fi\n"
-        "done\n");
+        QStringLiteral("for i in 0 1 2; do\n"
+                       "    if [[ i -lt 1 ]]; then echo $i; fi\n"
+                       "    if [[ i -eq 2 ]]; then\n"
+                       "        echo 'hello :)'\n"
+                       "    fi\n"
+                       "done\n"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     KateViewInternal *viewInternal = view->getViewInternal();

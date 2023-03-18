@@ -3,8 +3,6 @@ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
 include(ECMMarkAsTest)
 include(ECMAddTests)
 
-remove_definitions(-DQT_NO_CAST_FROM_ASCII)
-
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
 include_directories(

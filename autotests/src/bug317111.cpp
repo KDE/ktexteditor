@@ -70,7 +70,7 @@ void BugTest::tryCrash()
     QString code = stream.readAll();
     sourceFile.close();
     // execute script
-    result = env->engine()->evaluate(code, QLatin1String(TEST_DATA_DIR "bug317111.txt"), 1);
+    result = env->engine()->evaluate(code, QStringLiteral(TEST_DATA_DIR "bug317111.txt"), 1);
     QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
     qDebug() << "PASS (no crash)";

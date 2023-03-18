@@ -33,25 +33,25 @@ BaseTest::BaseTest()
     mainWindow->setCentralWidget(centralWidget);
     mainWindow->resize(640, 480);
 
-    m_codesToModifiers.insert("ctrl", CONTROL_MODIFIER);
-    m_codesToModifiers.insert("alt", Qt::AltModifier);
-    m_codesToModifiers.insert("meta", META_MODIFIER);
-    m_codesToModifiers.insert("keypad", Qt::KeypadModifier);
+    m_codesToModifiers.insert(QStringLiteral("ctrl"), CONTROL_MODIFIER);
+    m_codesToModifiers.insert(QStringLiteral("alt"), Qt::AltModifier);
+    m_codesToModifiers.insert(QStringLiteral("meta"), META_MODIFIER);
+    m_codesToModifiers.insert(QStringLiteral("keypad"), Qt::KeypadModifier);
 
-    m_codesToSpecialKeys.insert("backspace", Qt::Key_Backspace);
-    m_codesToSpecialKeys.insert("esc", Qt::Key_Escape);
-    m_codesToSpecialKeys.insert("return", Qt::Key_Return);
-    m_codesToSpecialKeys.insert("enter", Qt::Key_Enter);
-    m_codesToSpecialKeys.insert("left", Qt::Key_Left);
-    m_codesToSpecialKeys.insert("right", Qt::Key_Right);
-    m_codesToSpecialKeys.insert("up", Qt::Key_Up);
-    m_codesToSpecialKeys.insert("down", Qt::Key_Down);
-    m_codesToSpecialKeys.insert("home", Qt::Key_Home);
-    m_codesToSpecialKeys.insert("end", Qt::Key_End);
-    m_codesToSpecialKeys.insert("delete", Qt::Key_Delete);
-    m_codesToSpecialKeys.insert("insert", Qt::Key_Insert);
-    m_codesToSpecialKeys.insert("pageup", Qt::Key_PageUp);
-    m_codesToSpecialKeys.insert("pagedown", Qt::Key_PageDown);
+    m_codesToSpecialKeys.insert(QStringLiteral("backspace"), Qt::Key_Backspace);
+    m_codesToSpecialKeys.insert(QStringLiteral("esc"), Qt::Key_Escape);
+    m_codesToSpecialKeys.insert(QStringLiteral("return"), Qt::Key_Return);
+    m_codesToSpecialKeys.insert(QStringLiteral("enter"), Qt::Key_Enter);
+    m_codesToSpecialKeys.insert(QStringLiteral("left"), Qt::Key_Left);
+    m_codesToSpecialKeys.insert(QStringLiteral("right"), Qt::Key_Right);
+    m_codesToSpecialKeys.insert(QStringLiteral("up"), Qt::Key_Up);
+    m_codesToSpecialKeys.insert(QStringLiteral("down"), Qt::Key_Down);
+    m_codesToSpecialKeys.insert(QStringLiteral("home"), Qt::Key_Home);
+    m_codesToSpecialKeys.insert(QStringLiteral("end"), Qt::Key_End);
+    m_codesToSpecialKeys.insert(QStringLiteral("delete"), Qt::Key_Delete);
+    m_codesToSpecialKeys.insert(QStringLiteral("insert"), Qt::Key_Insert);
+    m_codesToSpecialKeys.insert(QStringLiteral("pageup"), Qt::Key_PageUp);
+    m_codesToSpecialKeys.insert(QStringLiteral("pagedown"), Qt::Key_PageDown);
 }
 
 BaseTest::~BaseTest()
@@ -136,7 +136,7 @@ void BaseTest::TestPressKey(const QString &str)
                 key = parsedSpecialKey <= 0xffff ? QString(QChar(parsedSpecialKey)) : QString();
                 keyCode = parsedSpecialKey;
                 i = endOfSpecialKey;
-            } else if (str.mid(i, 2) == QString("\\:")) {
+            } else if (str.mid(i, 2) == QStringLiteral("\\:")) {
                 int start_cmd = i + 2;
                 for (i += 2; true; i++) {
                     if (str.at(i) == '\\') {
@@ -149,14 +149,14 @@ void BaseTest::TestPressKey(const QString &str)
                         }
                     }
                 }
-                const QString commandToExecute = str.mid(start_cmd, i - start_cmd).replace("\\\\", "\\");
+                const QString commandToExecute = str.mid(start_cmd, i - start_cmd).replace(QLatin1String("\\\\"), QLatin1String("\\"));
                 qDebug() << "Executing command directly from ViModeTest:\n" << commandToExecute;
                 vi_input_mode->viModeEmulatedCommandBar()->executeCommand(commandToExecute);
                 // We've handled the command; go back round the loop, avoiding sending
                 // the closing \ to vi_input_mode_manager.
                 continue;
-            } else if (str.mid(i, 2) == QString("\\\\")) {
-                key = QString("\\");
+            } else if (str.mid(i, 2) == QStringLiteral("\\\\")) {
+                key = QStringLiteral("\\");
                 keyCode = Qt::Key_Backslash;
                 i++;
             } else {
@@ -212,15 +212,15 @@ void BaseTest::BeginTest(const QString &original)
     m_firstBatchOfKeypressesForTest = true;
 }
 
-void BaseTest::FinishTest_(int line, const char *file, const QString &expected, Expectation expectation, const QString &failureReason)
+void BaseTest::FinishTest_(int line, const char *file, const char *expected, Expectation expectation, const char *failureReason)
 {
     if (expectation == ShouldFail) {
-        if (!QTest::qExpectFail("", failureReason.toLocal8Bit().constData(), QTest::Continue, file, line)) {
+        if (!QTest::qExpectFail("", failureReason, QTest::Continue, file, line)) {
             return;
         }
         qDebug() << "Actual text:\n\t" << kate_document->text() << "\nShould be (for this test to pass):\n\t" << expected;
     }
-    if (!QTest::qCompare(kate_document->text(), expected, "kate_document->text()", "expected_text", file, line)) {
+    if (!QTest::qCompare(kate_document->text(), QString::fromUtf8(expected), "kate_document->text()", "expected_text", file, line)) {
         return;
     }
     Q_ASSERT(!emulatedCommandBarTextEdit()->isVisible() && "Make sure you close the command bar before the end of a test!");
@@ -228,15 +228,28 @@ void BaseTest::FinishTest_(int line, const char *file, const QString &expected, 
 
 void BaseTest::DoTest_(int line,
                        const char *file,
+                       const char *original,
+                       const char *command,
+                       const char *expected,
+                       Expectation expectation,
+                       const char *failureReason)
+{
+    BeginTest(QLatin1String(original));
+    TestPressKey(QLatin1String(command));
+    FinishTest_(line, file, expected, expectation, failureReason);
+}
+
+void BaseTest::DoTest2(int line,
+                       const char *file,
                        const QString &original,
                        const QString &command,
                        const QString &expected,
                        Expectation expectation,
-                       const QString &failureReason)
+                       const char *failureReason)
 {
     BeginTest(original);
     TestPressKey(command);
-    FinishTest_(line, file, expected, expectation, failureReason);
+    FinishTest_(line, file, expected.toUtf8().constData(), expectation, failureReason);
 }
 
 Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int startPos, int *destEndOfCodedModifier)
@@ -244,7 +257,7 @@ Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int sta
     for (auto it = m_codesToModifiers.constBegin(), end = m_codesToModifiers.constEnd(); it != end; ++it) {
         const QString &modifierCode = it.key();
         // The "+2" is from the leading '\' and the trailing '-'
-        if (string.mid(startPos, modifierCode.length() + 2) == QString("\\") + modifierCode + "-") {
+        if (string.mid(startPos, modifierCode.length() + 2) == QStringLiteral("\\") + modifierCode + "-") {
             if (destEndOfCodedModifier) {
                 // destEndOfCodeModifier lies on the trailing '-'.
                 *destEndOfCodedModifier = startPos + modifierCode.length() + 1;
@@ -261,7 +274,7 @@ Qt::Key BaseTest::parseCodedSpecialKey(const QString &string, int startPos, int 
     for (auto it = m_codesToSpecialKeys.constBegin(), end = m_codesToSpecialKeys.constEnd(); it != end; ++it) {
         const QString &specialKeyCode = it.key();
         // "+1" is for the leading '\'.
-        if (string.mid(startPos, specialKeyCode.length() + 1) == QString("\\") + specialKeyCode) {
+        if (string.mid(startPos, specialKeyCode.length() + 1) == QStringLiteral("\\") + specialKeyCode) {
             if (destEndOfCodedKey) {
                 *destEndOfCodedKey = startPos + specialKeyCode.length();
             }
@@ -280,7 +293,7 @@ KateVi::EmulatedCommandBar *BaseTest::emulatedCommandBar()
 
 QLineEdit *BaseTest::emulatedCommandBarTextEdit()
 {
-    QLineEdit *emulatedCommandBarText = emulatedCommandBar()->findChild<QLineEdit *>("commandtext");
+    QLineEdit *emulatedCommandBarText = emulatedCommandBar()->findChild<QLineEdit *>(QStringLiteral("commandtext"));
     Q_ASSERT(emulatedCommandBarText);
     return emulatedCommandBarText;
 }

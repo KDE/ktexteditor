@@ -33,7 +33,7 @@ public:
         if (range.start().column() > 0) {
             KTextEditor::Range preRange(Cursor(range.start().line(), range.start().column() - 1), Cursor(range.start().line(), range.start().column()));
             qDebug() << preRange << view->document()->text(preRange);
-            if (view->document()->text(preRange) == "$") {
+            if (view->document()->text(preRange) == QLatin1String("$")) {
                 range.expandToRange(preRange);
                 qDebug() << "using custom completion range" << range;
             }
@@ -45,7 +45,7 @@ public:
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
-        static const QRegularExpression allowedText("^\\$?(?:\\w*)$", QRegularExpression::UseUnicodePropertiesOption);
+        static const QRegularExpression allowedText(QStringLiteral("^\\$?(?:\\w*)$"), QRegularExpression::UseUnicodePropertiesOption);
         return !allowedText.match(currentCompletion).hasMatch();
     }
 };
@@ -64,7 +64,7 @@ public:
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
-        static const QRegularExpression allowedText("^(?:[\\w-]*)", QRegularExpression::UseUnicodePropertiesOption);
+        static const QRegularExpression allowedText(QStringLiteral("^(?:[\\w-]*)"), QRegularExpression::UseUnicodePropertiesOption);
         return !allowedText.match(currentCompletion).hasMatch();
     }
 };
@@ -98,7 +98,7 @@ public:
     Range updateCompletionRange(View *view, const Range &range) override
     {
         Q_UNUSED(view);
-        if (view->document()->text(range) == QString("ab")) {
+        if (view->document()->text(range) == QStringLiteral("ab")) {
             return Range(Cursor(range.start().line(), 0), range.end());
         }
         return range;
@@ -132,7 +132,7 @@ public:
         }
 
         QChar lastChar = insertedText.at(insertedText.size() - 1);
-        if (lastChar == '%') {
+        if (lastChar == u'%') {
             return true;
         }
         return false;

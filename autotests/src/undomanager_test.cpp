@@ -34,7 +34,7 @@ void UndoManagerTest::testUndoRedoCount()
     QCOMPARE(undoManager->undoCount(), 0u);
     QCOMPARE(undoManager->redoCount(), 0u);
 
-    doc.insertText(Cursor(0, 0), QLatin1String("a"));
+    doc.insertText(Cursor(0, 0), QStringLiteral("a"));
 
     // create one insert-group
     QCOMPARE(undoManager->undoCount(), 1u);
@@ -52,7 +52,7 @@ void UndoManagerTest::testUndoRedoCount()
     QCOMPARE(undoManager->undoCount(), 1u);
     QCOMPARE(undoManager->redoCount(), 0u);
 
-    doc.insertText(Cursor(0, 1), QLatin1String("b"));
+    doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // merge "b" into insert-group
     QCOMPARE(undoManager->undoCount(), 1u);
@@ -70,7 +70,7 @@ void UndoManagerTest::testUndoRedoCount()
     QCOMPARE(undoManager->undoCount(), 1u);
     QCOMPARE(undoManager->redoCount(), 1u);
 
-    doc.insertText(Cursor(0, 1), QLatin1String("b"));
+    doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // merge "b" into insert-group
     // and remove remove-group
@@ -83,14 +83,14 @@ void UndoManagerTest::testSafePoint()
     KTextEditor::DocumentPrivate doc;
     KateUndoManager *undoManager = doc.undoManager();
 
-    doc.insertText(Cursor(0, 0), QLatin1String("a"));
+    doc.insertText(Cursor(0, 0), QStringLiteral("a"));
 
     // create one undo group
     QCOMPARE(undoManager->undoCount(), 1u);
     QCOMPARE(undoManager->redoCount(), 0u);
 
     undoManager->undoSafePoint();
-    doc.insertText(Cursor(0, 1), QLatin1String("b"));
+    doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // create a second undo group (don't merge)
     QCOMPARE(undoManager->undoCount(), 2u);
@@ -101,23 +101,23 @@ void UndoManagerTest::testSafePoint()
     QCOMPARE(undoManager->undoCount(), 1u);
     QCOMPARE(undoManager->redoCount(), 1u);
 
-    doc.insertText(Cursor(0, 1), QLatin1String("b"));
+    doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // create a second undo group again, (don't merge)
     QCOMPARE(undoManager->undoCount(), 2u);
     QCOMPARE(undoManager->redoCount(), 0u);
 
     doc.editStart();
-    doc.insertText(Cursor(0, 2), QLatin1String("c"));
+    doc.insertText(Cursor(0, 2), QStringLiteral("c"));
     undoManager->undoSafePoint();
-    doc.insertText(Cursor(0, 3), QLatin1String("d"));
+    doc.insertText(Cursor(0, 3), QStringLiteral("d"));
     doc.editEnd();
 
     // merge both edits into second undo group
     QCOMPARE(undoManager->undoCount(), 2u);
     QCOMPARE(undoManager->redoCount(), 0u);
 
-    doc.insertText(Cursor(0, 4), QLatin1String("e"));
+    doc.insertText(Cursor(0, 4), QStringLiteral("e"));
 
     // create a third undo group (don't merge)
     QCOMPARE(undoManager->undoCount(), 3u);
@@ -130,11 +130,11 @@ void UndoManagerTest::testCursorPosition()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setText(
-        QLatin1String("aaaa bbbb cccc\n"
-                      "dddd  ffff"));
+        QStringLiteral("aaaa bbbb cccc\n"
+                       "dddd  ffff"));
     view->setCursorPosition(KTextEditor::Cursor(1, 5));
 
-    doc.typeChars(view, QLatin1String("eeee"));
+    doc.typeChars(view, QStringLiteral("eeee"));
 
     // cursor position: "dddd eeee| ffff"
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(1, 9));
@@ -156,13 +156,13 @@ void UndoManagerTest::testSelectionUndo()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setText(
-        QLatin1String("aaaa bbbb cccc\n"
-                      "dddd eeee ffff"));
+        QStringLiteral("aaaa bbbb cccc\n"
+                       "dddd eeee ffff"));
     view->setCursorPosition(KTextEditor::Cursor(1, 9));
     KTextEditor::Range selectionRange(KTextEditor::Cursor(0, 5), KTextEditor::Cursor(1, 9));
     view->setSelection(selectionRange);
 
-    doc.typeChars(view, QLatin1String(QLatin1String("eeee")));
+    doc.typeChars(view, QStringLiteral("eeee"));
 
     // cursor position: "aaaa eeee| ffff", no selection anymore
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(0, 9));
@@ -197,7 +197,7 @@ void UndoManagerTest::testUndoWordWrapBug301367()
     doc.setText(text);
     view->setCursorPosition(KTextEditor::Cursor(0, 0));
 
-    doc.typeChars(view, QLatin1String("           "));
+    doc.typeChars(view, QStringLiteral("           "));
 
     while (doc.undoCount() > 1) {
         doc.undo();
@@ -225,7 +225,7 @@ void UndoManagerTest::testUndoIndentBug373009()
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
-    doc.setMode("C");
+    doc.setMode(QStringLiteral("C"));
 
     QString text = QString::fromLatin1(
         "    while (whatever) printf (\"please fix indentation.\\n\");\n"
@@ -236,7 +236,7 @@ void UndoManagerTest::testUndoIndentBug373009()
     view->setCursorPosition(KTextEditor::Cursor(1, 4));
 
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(1, 4));
-    QCOMPARE(doc.characterAt(view->cursorPosition()), 'r');
+    QCOMPARE(doc.characterAt(view->cursorPosition()), QLatin1Char('r'));
 
     view->keyReturn();
 

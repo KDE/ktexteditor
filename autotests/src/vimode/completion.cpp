@@ -95,53 +95,53 @@ void CompletionTest::FakeCodeCompletionTests()
     ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     FakeCodeCompletionTestModel *fakeCodeCompletionModel = new FakeCodeCompletionTestModel(kate_view);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
-    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
-    DoTest("", "i\\ctrl-p\\enter", "completionC");
-    DoTest("", "i\\ctrl-p\\ctrl-p\\enter", "completionB");
-    DoTest("", "i\\ctrl-p\\ctrl-p\\ctrl-p\\enter", "completionA");
-    DoTest("", "i\\ctrl-p\\ctrl-p\\ctrl-p\\ctrl-p\\enter", "completionC");
+    fakeCodeCompletionModel->setCompletions({QStringLiteral("completionA"), QStringLiteral("completionB"), QStringLiteral("completionC")});
+    DoTest("", ("i\\ctrl-p\\enter"), ("completionC"));
+    DoTest("", ("i\\ctrl-p\\ctrl-p\\enter"), ("completionB"));
+    DoTest("", ("i\\ctrl-p\\ctrl-p\\ctrl-p\\enter"), ("completionA"));
+    DoTest("", ("i\\ctrl-p\\ctrl-p\\ctrl-p\\ctrl-p\\enter"), ("completionC"));
     // If no word before cursor, don't delete any text.
     BeginTest("");
     clearTrackedDocumentChanges();
-    TestPressKey("i\\ctrl- \\enter");
+    TestPressKey(QStringLiteral("i\\ctrl- \\enter"));
     QCOMPARE(m_docChanges.length(), 1);
-    FinishTest("completionA");
+    FinishTest(("completionA"));
     // Apparently, we must delete the word before the cursor upon completion
     // (even if we replace it with identical text!)
-    BeginTest("compl");
-    TestPressKey("ea");
+    BeginTest(QStringLiteral("compl"));
+    TestPressKey(QStringLiteral("ea"));
     clearTrackedDocumentChanges();
-    TestPressKey("\\ctrl- \\enter");
+    TestPressKey(QStringLiteral("\\ctrl- \\enter"));
     QCOMPARE(m_docChanges.size(), 2);
     QCOMPARE(m_docChanges[0].changeType(), DocChange::TextRemoved);
     QCOMPARE(m_docChanges[0].changeRange(), Range(Cursor(0, 0), Cursor(0, 5)));
     QCOMPARE(m_docChanges[1].changeType(), DocChange::TextInserted);
     QCOMPARE(m_docChanges[1].changeRange(), Range(Cursor(0, 0), Cursor(0, 11)));
-    QCOMPARE(m_docChanges[1].newText(), QString("completionA"));
-    FinishTest("completionA");
+    QCOMPARE(m_docChanges[1].newText(), QStringLiteral("completionA"));
+    FinishTest(("completionA"));
     // A "word" is currently alphanumeric, plus underscore.
-    fakeCodeCompletionModel->setCompletions({"w_123completion"});
-    BeginTest("(w_123");
-    TestPressKey("ea");
+    fakeCodeCompletionModel->setCompletions({QStringLiteral("w_123completion")});
+    BeginTest(QStringLiteral("(w_123"));
+    TestPressKey(QStringLiteral("ea"));
     clearTrackedDocumentChanges();
-    TestPressKey("\\ctrl- \\enter");
+    TestPressKey(QStringLiteral("\\ctrl- \\enter"));
     QCOMPARE(m_docChanges.size(), 2);
     QCOMPARE(m_docChanges[0].changeType(), DocChange::TextRemoved);
     QCOMPARE(m_docChanges[0].changeRange(), Range(Cursor(0, 1), Cursor(0, 6)));
     QCOMPARE(m_docChanges[1].changeType(), DocChange::TextInserted);
     QCOMPARE(m_docChanges[1].changeRange(), Range(Cursor(0, 1), Cursor(0, 16)));
-    QCOMPARE(m_docChanges[1].newText(), QString("w_123completion"));
-    FinishTest("(w_123completion");
+    QCOMPARE(m_docChanges[1].newText(), QString(QStringLiteral("w_123completion")));
+    FinishTest(("(w_123completion"));
     // "Removing tail on complete" is apparently done in three stages:
     // delete word up to the cursor; insert new word; then delete remainder.
     const bool oldRemoveTailOnCompletion = KateViewConfig::global()->wordCompletionRemoveTail();
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    BeginTest("(w_123comp");
-    TestPressKey("6li");
+    BeginTest(QStringLiteral("(w_123comp"));
+    TestPressKey(QStringLiteral("6li"));
     clearTrackedDocumentChanges();
-    TestPressKey("\\ctrl- \\enter");
-    FinishTest("(w_123completion");
+    TestPressKey(QStringLiteral("\\ctrl- \\enter"));
+    FinishTest(("(w_123completion"));
 
     // If we don't remove tail, just delete up to the cursor and insert.
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);

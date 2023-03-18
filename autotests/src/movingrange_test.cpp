@@ -136,8 +136,8 @@ void MovingRangeTest::testFeedbackEmptyRange()
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
     QString text(
-        "..xxxx\n"
-        "xxxx..");
+        QStringLiteral("..xxxx\n"
+                       "xxxx.."));
     doc.setText(text);
 
     // create range feedback
@@ -173,7 +173,7 @@ void MovingRangeTest::testFeedbackEmptyRange()
     range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
     rf.reset();
     rf.verifyReset();
-    doc.setText("--yyyy\nyyyy--");
+    doc.setText(QStringLiteral("--yyyy\nyyyy--"));
     QVERIFY(rf.rangeInvalidCalled());
     QVERIFY(!rf.rangeEmptyCalled());
     QVERIFY(!rf.mouseEnteredRangeCalled());
@@ -203,8 +203,8 @@ void MovingRangeTest::testFeedbackInvalidRange()
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
     QString text(
-        "..xxxx\n"
-        "xxxx..");
+        QStringLiteral("..xxxx\n"
+                       "xxxx.."));
     doc.setText(text);
 
     // create range feedback
@@ -243,7 +243,7 @@ void MovingRangeTest::testFeedbackInvalidRange()
     range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
     rf.reset();
     rf.verifyReset();
-    doc.setText("--yyyy\nyyyy--");
+    doc.setText(QStringLiteral("--yyyy\nyyyy--"));
     QVERIFY(rf.rangeInvalidCalled());
     QVERIFY(!rf.rangeEmptyCalled());
     QVERIFY(!rf.mouseEnteredRangeCalled());
@@ -273,8 +273,8 @@ void MovingRangeTest::testFeedbackCaret()
     KTextEditor::DocumentPrivate doc;
     // we only use 'x' characters here to have uniform letter sizes for cursorUp/Down movements
     QString text(
-        "xxxxxx\n"
-        "xxxxxx");
+        QStringLiteral("xxxxxx\n"
+                       "xxxxxx"));
     doc.setText(text);
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
@@ -393,8 +393,8 @@ void MovingRangeTest::testFeedbackMouse()
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
     QString text(
-        "..xxxx\n"
-        "xxxx..");
+        QStringLiteral("..xxxx\n"
+                       "xxxx.."));
     doc.setText(text);
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
@@ -440,10 +440,10 @@ void MovingRangeTest::testLineRemoved()
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
     QString text(
-        "abcd\n"
-        "efgh\n"
-        "\n"
-        "hijk");
+        QStringLiteral("abcd\n"
+                       "efgh\n"
+                       "\n"
+                       "hijk"));
     doc.setText(text);
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));

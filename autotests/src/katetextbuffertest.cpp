@@ -50,7 +50,7 @@ void KateTextBufferTest::wrapLineTest()
     buffer.startEditing();
     buffer.wrapLine(KTextEditor::Cursor(0, 0));
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("Two empty lines"));
+    buffer.debugPrint(QStringLiteral("Two empty lines"));
     QVERIFY(buffer.text() == QLatin1String("\n"));
 
     // unwrap again -> only one empty line
@@ -59,7 +59,7 @@ void KateTextBufferTest::wrapLineTest()
     buffer.finishEditing();
 
     // print debug
-    buffer.debugPrint(QLatin1String("Empty Buffer"));
+    buffer.debugPrint(QStringLiteral("Empty Buffer"));
     QVERIFY(buffer.text() == QString());
 }
 
@@ -72,7 +72,7 @@ void KateTextBufferTest::insertRemoveTextTest()
     buffer.startEditing();
     buffer.wrapLine(KTextEditor::Cursor(0, 0));
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("Two empty lines"));
+    buffer.debugPrint(QStringLiteral("Two empty lines"));
     QVERIFY(buffer.text() == QLatin1String("\n"));
 
     // remember second line
@@ -82,7 +82,7 @@ void KateTextBufferTest::insertRemoveTextTest()
     buffer.startEditing();
     buffer.unwrapLine(1);
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("One empty line"));
+    buffer.debugPrint(QStringLiteral("One empty line"));
     QVERIFY(buffer.text() == QString());
 
     // second text line should be still there
@@ -91,30 +91,30 @@ void KateTextBufferTest::insertRemoveTextTest()
 
     // insert text
     buffer.startEditing();
-    buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("testremovetext"));
+    buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("testremovetext"));
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("One line"));
+    buffer.debugPrint(QStringLiteral("One line"));
     QVERIFY(buffer.text() == QLatin1String("testremovetext"));
 
     // remove text
     buffer.startEditing();
     buffer.removeText(KTextEditor::Range(KTextEditor::Cursor(0, 4), KTextEditor::Cursor(0, 10)));
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("One line"));
+    buffer.debugPrint(QStringLiteral("One line"));
     QVERIFY(buffer.text() == QLatin1String("testtext"));
 
     // wrap text
     buffer.startEditing();
     buffer.wrapLine(KTextEditor::Cursor(0, 2));
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("Two line"));
+    buffer.debugPrint(QStringLiteral("Two line"));
     QVERIFY(buffer.text() == QLatin1String("te\nsttext"));
 
     // unwrap text
     buffer.startEditing();
     buffer.unwrapLine(1);
     buffer.finishEditing();
-    buffer.debugPrint(QLatin1String("One line"));
+    buffer.debugPrint(QStringLiteral("One line"));
     QVERIFY(buffer.text() == QLatin1String("testtext"));
 }
 
@@ -130,12 +130,12 @@ void KateTextBufferTest::cursorTest()
 
         // wrap first line
         buffer.startEditing();
-        buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("sfdfjdsklfjlsdfjlsdkfjskldfjklsdfjklsdjkfl"));
+        buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("sfdfjdsklfjlsdfjlsdkfjskldfjklsdfjklsdjkfl"));
         buffer.wrapLine(KTextEditor::Cursor(0, 8));
         buffer.wrapLine(KTextEditor::Cursor(1, 8));
         buffer.wrapLine(KTextEditor::Cursor(2, 8));
         buffer.finishEditing();
-        buffer.debugPrint(QLatin1String("Cursor buffer"));
+        buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
         // construct cursor
         Kate::TextCursor *cursor1 = new Kate::TextCursor(buffer, KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
@@ -153,9 +153,9 @@ void KateTextBufferTest::cursorTest()
 
         // insert text
         buffer.startEditing();
-        buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("hallo"));
+        buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("hallo"));
         buffer.finishEditing();
-        buffer.debugPrint(QLatin1String("Cursor buffer"));
+        buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
         // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 5));
@@ -164,7 +164,7 @@ void KateTextBufferTest::cursorTest()
         buffer.startEditing();
         buffer.removeText(KTextEditor::Range(KTextEditor::Cursor(0, 4), KTextEditor::Cursor(0, 10)));
         buffer.finishEditing();
-        buffer.debugPrint(QLatin1String("Cursor buffer"));
+        buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
         // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
@@ -173,7 +173,7 @@ void KateTextBufferTest::cursorTest()
         buffer.startEditing();
         buffer.wrapLine(KTextEditor::Cursor(0, 3));
         buffer.finishEditing();
-        buffer.debugPrint(QLatin1String("Cursor buffer"));
+        buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
         // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(1, 1));
@@ -182,7 +182,7 @@ void KateTextBufferTest::cursorTest()
         buffer.startEditing();
         buffer.unwrapLine(1);
         buffer.finishEditing();
-        buffer.debugPrint(QLatin1String("Cursor buffer"));
+        buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
         // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
@@ -206,7 +206,7 @@ void KateTextBufferTest::foldingTest()
     // insert some text
     buffer.startEditing();
     for (int i = 0; i < 100; ++i) {
-        buffer.insertText(KTextEditor::Cursor(i, 0), QLatin1String("1234567890"));
+        buffer.insertText(KTextEditor::Cursor(i, 0), QStringLiteral("1234567890"));
         if (i < 99) {
             buffer.wrapLine(KTextEditor::Cursor(i, 10));
         }
@@ -215,7 +215,7 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(buffer.lines() == 100);
 
     // starting with empty folding!
-    folding.debugPrint(QLatin1String("Empty Folding"));
+    folding.debugPrint(QStringLiteral("Empty Folding"));
     QVERIFY(folding.debugDump() == QLatin1String("tree  - folded "));
 
     // check visibility
@@ -229,13 +229,13 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(5, 0), KTextEditor::Cursor(10, 0))) == 0);
 
     // we shall have now exactly one range toplevel, that is not folded!
-    folding.debugPrint(QLatin1String("One Toplevel Fold"));
+    folding.debugPrint(QStringLiteral("One Toplevel Fold"));
     QVERIFY(folding.debugDump() == QLatin1String("tree [5:0  10:0] - folded "));
 
     // fold the range!
     QVERIFY(folding.foldRange(0));
 
-    folding.debugPrint(QLatin1String("One Toplevel Fold - Folded"));
+    folding.debugPrint(QStringLiteral("One Toplevel Fold - Folded"));
     QVERIFY(folding.debugDump() == QLatin1String("tree [5:0 f 10:0] - folded [5:0 f 10:0]"));
 
     // check visibility
@@ -264,7 +264,7 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(20, 0), KTextEditor::Cursor(30, 0)), Kate::TextFolding::Folded) == 1);
 
     // we shall have now exactly two range toplevel
-    folding.debugPrint(QLatin1String("Two Toplevel Folds"));
+    folding.debugPrint(QStringLiteral("Two Toplevel Folds"));
     QVERIFY(folding.debugDump() == QLatin1String("tree [5:0 f 10:0] [20:0 f 30:0] - folded [5:0 f 10:0] [20:0 f 30:0]"));
 
     // check visibility
@@ -314,7 +314,7 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(15, 0), KTextEditor::Cursor(25, 0)), Kate::TextFolding::Folded) == -1);
 
     // we shall still have now exactly two range toplevel
-    folding.debugPrint(QLatin1String("Still Two Toplevel Folds"));
+    folding.debugPrint(QStringLiteral("Still Two Toplevel Folds"));
     QVERIFY(folding.debugDump() == QLatin1String("tree [5:0 f 10:0] [20:0 f 30:0] - folded [5:0 f 10:0] [20:0 f 30:0]"));
 
     // still 15 lines are hidden
@@ -324,7 +324,7 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(15, 0), KTextEditor::Cursor(35, 0)), Kate::TextFolding::Folded) == 2);
 
     // we shall have now exactly two range toplevel and one embedded fold
-    folding.debugPrint(QLatin1String("Two Toplevel Folds, One Nested Fold"));
+    folding.debugPrint(QStringLiteral("Two Toplevel Folds, One Nested Fold"));
     QVERIFY(folding.debugDump() == QLatin1String("tree [5:0 f 10:0] [15:0 f [20:0 f 30:0] 35:0] - folded [5:0 f 10:0] [15:0 f 35:0]"));
 
     // 25 lines are hidden
@@ -349,7 +349,7 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(0, 0), KTextEditor::Cursor(50, 0)), Kate::TextFolding::Folded) == 3);
 
     // we shall have now exactly one range toplevel and many embedded fold
-    folding.debugPrint(QLatin1String("One Toplevel + Embedded Folds"));
+    folding.debugPrint(QStringLiteral("One Toplevel + Embedded Folds"));
     QVERIFY(folding.debugDump() == QLatin1String("tree [0:0 f [5:0 f 10:0] [15:0 f [20:0 f 30:0] 35:0] 50:0] - folded [0:0 f 50:0]"));
 
     // there shall still be one range starting at 20
@@ -361,7 +361,7 @@ void KateTextBufferTest::foldingTest()
     // add more regions starting at 20
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(20, 5), KTextEditor::Cursor(24, 0)), Kate::TextFolding::Folded) == 4);
     QVERIFY(folding.newFoldingRange(KTextEditor::Range(KTextEditor::Cursor(20, 3), KTextEditor::Cursor(25, 0)), Kate::TextFolding::Folded) == 5);
-    folding.debugPrint(QLatin1String("More ranges at 20"));
+    folding.debugPrint(QStringLiteral("More ranges at 20"));
 
     // there shall still be three ranges starting at 20
     forLine = folding.foldingRangesStartingOnLine(20);
@@ -440,7 +440,7 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     buffer.load(file_path, a, b, c, true);
     buffer.clear();
     buffer.startEditing();
-    buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("ABC"));
+    buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("ABC"));
     buffer.finishEditing();
     qDebug() << buffer.text();
     buffer.save(file_path);
@@ -477,7 +477,7 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     buffer.load(file_path, a, b, c, true);
     buffer.clear();
     buffer.startEditing();
-    buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("ABC"));
+    buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("ABC"));
     buffer.finishEditing();
     qDebug() << buffer.text();
     buffer.save(file_path);

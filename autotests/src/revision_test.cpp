@@ -46,7 +46,7 @@ void RevisionTest::testTransformCursor()
     QCOMPARE(doc.revision(), (qint64)0);
 
     // one edit action -> revision now 1, last saved still -1
-    doc.insertText(Cursor(0, 0), "0000");
+    doc.insertText(Cursor(0, 0), QStringLiteral("0000"));
 
     qint64 rev = doc.revision();
     QCOMPARE(rev, (qint64)1);
@@ -55,7 +55,7 @@ void RevisionTest::testTransformCursor()
     doc.lockRevision(rev);
 
     // wrapLine + insertText + wrapLine + insertText
-    doc.insertText(Cursor(0, 2), "\n1111\n2222");
+    doc.insertText(Cursor(0, 2), QStringLiteral("\n1111\n2222"));
 
     // create some cursors, then transform them
     Cursor c01(0, 1);
@@ -97,8 +97,8 @@ void RevisionTest::testTransformRange()
     QCOMPARE(doc.revision(), (qint64)0);
 
     doc.setText(
-        "00\n"
-        "11");
+        QStringLiteral("00\n"
+                       "11"));
 
     // now lock current revision
     qint64 rev = doc.revision();

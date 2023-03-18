@@ -51,7 +51,7 @@ void WordCompletionTest::benchWordRetrievalMixed()
     for (int i = 0; i < count; i++) {
         s.append(QLatin1String("HelloWorld") + QString::number(i / distinctWordRatio));
     }
-    s.prepend("\n");
+    s.prepend(QStringLiteral("\n"));
     m_doc->setText(s);
 
     // creating the view only after inserting the text makes test execution much faster
@@ -71,7 +71,7 @@ void WordCompletionTest::benchWordRetrievalSame()
     for (int i = 0; i < count; i++) {
         s.append(str);
     }
-    s.prepend("\n");
+    s.prepend(QStringLiteral("\n"));
     m_doc->setText(s);
 
     QSharedPointer<KTextEditor::View> v(m_doc->createView(nullptr));
@@ -88,7 +88,7 @@ void WordCompletionTest::benchWordRetrievalDistinct()
     for (int i = 0; i < count; i++) {
         s.append(QLatin1String("HelloWorld") + QString::number(i));
     }
-    s.prepend("\n");
+    s.prepend(QStringLiteral("\n"));
     m_doc->setText(s);
 
     QSharedPointer<KTextEditor::View> v(m_doc->createView(nullptr));

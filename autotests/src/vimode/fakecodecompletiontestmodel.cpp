@@ -103,16 +103,16 @@ void FakeCodeCompletionTestModel::executeCompletionItem(KTextEditor::View *view,
     const int lengthStillToRemove = word.end().column() - origCursorPos.column();
     QString actualTextInserted = textToInsert;
     // Merge brackets?
-    const QString noArgFunctionCallMarker = "()";
-    const QString withArgFunctionCallMarker = "(...)";
+    const QString noArgFunctionCallMarker = QStringLiteral("()");
+    const QString withArgFunctionCallMarker = QStringLiteral("(...)");
     const bool endedWithSemiColon = textToInsert.endsWith(';');
     if (textToInsert.contains(noArgFunctionCallMarker) || textToInsert.contains(withArgFunctionCallMarker)) {
         Q_ASSERT(m_removeTailOnCompletion && "Function completion items without removing tail is not yet supported!");
         const bool takesArgument = textToInsert.contains(withArgFunctionCallMarker);
         // The code for a function call to a function taking no arguments.
-        const QString justFunctionName = textToInsert.left(textToInsert.indexOf("("));
+        const QString justFunctionName = textToInsert.left(textToInsert.indexOf(QLatin1String("(")));
 
-        static const QRegularExpression whitespaceThenOpeningBracket("^\\s*(\\()", QRegularExpression::UseUnicodePropertiesOption);
+        static const QRegularExpression whitespaceThenOpeningBracket(QStringLiteral("^\\s*(\\()"), QRegularExpression::UseUnicodePropertiesOption);
         const QRegularExpressionMatch match = whitespaceThenOpeningBracket.match(textAfterCursor);
         int openingBracketPos = -1;
         if (match.hasMatch()) {
@@ -127,7 +127,7 @@ void FakeCodeCompletionTestModel::executeCompletionItem(KTextEditor::View *view,
             m_kateView->setCursorPosition(Cursor(word.start().line(), openingBracketPos));
         } else {
             // Don't merge.
-            const QString afterFunctionName = endedWithSemiColon ? "();" : "()";
+            const QString afterFunctionName = endedWithSemiColon ? QStringLiteral("();") : QStringLiteral("()");
             view->document()->insertText(Cursor(word.start().line(), word.start().column() + justFunctionName.length()), afterFunctionName);
             if (takesArgument) {
                 // Place the cursor immediately after the opening "(" we just added.

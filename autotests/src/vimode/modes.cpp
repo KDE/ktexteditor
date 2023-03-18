@@ -783,12 +783,12 @@ void ModesTest::NormalCommandsTests()
 
     // Delete. Note that when sent properly via Qt, the key event text() will inexplicably be "127",
     // which can trip up the key parser. Duplicate this oddity here.
-    BeginTest("xyz");
-    TestPressKey("l");
-    QKeyEvent *deleteKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Delete, Qt::NoModifier, "127");
+    BeginTest(QStringLiteral("xyz"));
+    TestPressKey(QStringLiteral("l"));
+    QKeyEvent *deleteKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Delete, Qt::NoModifier, QStringLiteral("127"));
     QApplication::postEvent(kate_view->focusProxy(), deleteKeyDown);
     QApplication::sendPostedEvents();
-    QKeyEvent *deleteKeyUp = new QKeyEvent(QEvent::KeyRelease, Qt::Key_Delete, Qt::NoModifier, "127");
+    QKeyEvent *deleteKeyUp = new QKeyEvent(QEvent::KeyRelease, Qt::Key_Delete, Qt::NoModifier, QStringLiteral("127"));
     QApplication::postEvent(kate_view->focusProxy(), deleteKeyUp);
     QApplication::sendPostedEvents();
     FinishTest("xz");
@@ -932,10 +932,10 @@ void ModesTest::NormalCommandsTests()
 
     // BUG #332523
     const bool oldDynWordWrap = KateViewConfig::global()->dynWordWrap();
-    BeginTest("asdasdasd\nasdasdasdasdasdasdasd");
+    BeginTest(QStringLiteral("asdasdasd\nasdasdasdasdasdasdasd"));
     kate_document->setWordWrap(true);
     kate_document->setWordWrapAt(10);
-    TestPressKey("Jii");
+    TestPressKey(QStringLiteral("Jii"));
     FinishTest("iasdasdasd\n \nasdasdasda \nsdasdasdas \nd");
     kate_document->setWordWrap(oldDynWordWrap);
 }
@@ -1134,10 +1134,10 @@ void ModesTest::InsertKeysTests()
 
     // BUG #451076, don't want an extra newline when using the "Find" action from the menu or Ctrl-F
     BaseTest::ensureKateViewVisible(); // required for the bug to trigger
-    BeginTest("foobar");
-    TestPressKey("i");
+    BeginTest(QStringLiteral("foobar"));
+    TestPressKey(QStringLiteral("i"));
     kate_view->find();
-    TestPressKey("bar\\return");
+    TestPressKey(QStringLiteral("bar\\return"));
     // ensure the cursor is at 'foo_b_ar'
     QCOMPARE(kate_view->cursorPosition().line(), 0);
     QCOMPARE(kate_view->cursorPosition().column(), 3);
@@ -1360,8 +1360,8 @@ void ModesTest::VisualCommandsTests()
 
     // proper yanking in block mode
     {
-        BeginTest("aaaa\nbbbb\ncccc\ndddd");
-        TestPressKey("lj\\ctrl-vljy");
+        BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));
+        TestPressKey(QStringLiteral("lj\\ctrl-vljy"));
         KateBuffer &buffer = kate_document->buffer();
         QVector<Kate::TextRange *> ranges = buffer.rangesForLine(1, kate_view, true);
         QCOMPARE(ranges.size(), 1);
@@ -1372,14 +1372,14 @@ void ModesTest::VisualCommandsTests()
 
     // proper selection in block mode after switching to cmdline
     {
-        BeginTest("aaaa\nbbbb\ncccc\ndddd");
-        TestPressKey("lj\\ctrl-vlj:");
-        QCOMPARE(kate_view->selectionText(), QString("bb\ncc"));
+        BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));
+        TestPressKey(QStringLiteral("lj\\ctrl-vlj:"));
+        QCOMPARE(kate_view->selectionText(), QStringLiteral("bb\ncc"));
     }
 
     // BUG #328277 - make sure kate doesn't crash
-    BeginTest("aaa\nbbb");
-    TestPressKey("Vj>u>.");
+    BeginTest(QStringLiteral("aaa\nbbb"));
+    TestPressKey(QStringLiteral("Vj>u>."));
     QCOMPARE(kate_view->renderer()->caretStyle(), KTextEditor::caretStyles::Block);
     FinishTest("aaa\nbbb");
 }
@@ -1388,32 +1388,32 @@ void ModesTest::VisualExternalTests()
 {
     // Test that selecting a range "externally" to Vim (i.e. via the mouse, or
     // one of the ktexteditor api's) switches us into Visual Mode.
-    BeginTest("foo bar");
+    BeginTest(QStringLiteral("foo bar"));
 
     // Actually selects "oo " (i.e. without the "b").
     kate_view->setSelection(Range(0, 1, 0, 4));
-    TestPressKey("d");
+    TestPressKey(QStringLiteral("d"));
     FinishTest("fbar");
 
     // Always return to normal mode when undoing/redoing.
-    BeginTest("");
-    TestPressKey("iHello World!\\esc");
-    TestPressKey("0wvlldu");
+    BeginTest(QLatin1String(""));
+    TestPressKey(QStringLiteral("iHello World!\\esc"));
+    TestPressKey(QStringLiteral("0wvlldu"));
     QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::NormalMode);
-    QCOMPARE(kate_view->selectionText(), QString(""));
-    QCOMPARE(kate_document->text(), QString("Hello World!"));
-    TestPressKey("u");
+    QCOMPARE(kate_view->selectionText(), QLatin1String(""));
+    QCOMPARE(kate_document->text(), QStringLiteral("Hello World!"));
+    TestPressKey(QStringLiteral("u"));
     QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::NormalMode);
-    QCOMPARE(kate_document->text(), QString(""));
-    TestPressKey("\\ctrl-r");
+    QCOMPARE(kate_document->text(), QLatin1String(""));
+    TestPressKey(QStringLiteral("\\ctrl-r"));
     QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::NormalMode);
     FinishTest("Hello World!");
 
     // Make sure that we don't screw up selection after an undo.
-    BeginTest("Hola\nHola\nHello\nHallo\n");
-    TestPressKey("jVjduVk");
+    BeginTest(QStringLiteral("Hola\nHola\nHello\nHallo\n"));
+    TestPressKey(QStringLiteral("jVjduVk"));
     QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::VisualLineMode);
-    QCOMPARE(kate_view->selectionText(), QString("Hola\nHello"));
+    QCOMPARE(kate_view->selectionText(), QStringLiteral("Hola\nHello"));
     FinishTest("Hola\nHola\nHello\nHallo\n");
 
     // Test that, if kate_view has a selection before the Vi mode stuff is loaded, then we
@@ -1423,28 +1423,28 @@ void ModesTest::VisualExternalTests()
     kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     kate_view->setInputMode(View::NormalInputMode);
     mainWindowLayout->addWidget(kate_view);
-    kate_document->setText("foo bar");
+    kate_document->setText(QStringLiteral("foo bar"));
     kate_view->setSelection(Range(Cursor(0, 1), Cursor(0, 4)));
-    QCOMPARE(kate_document->text(kate_view->selectionRange()), QString("oo "));
+    QCOMPARE(kate_document->text(kate_view->selectionRange()), QStringLiteral("oo "));
     kate_view->setInputMode(View::ViInputMode);
     qDebug() << "selected: " << kate_document->text(kate_view->selectionRange());
     QVERIFY(kate_view->currentInputMode()->viewInputMode() == View::ViInputMode);
     vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
     vi_input_mode_manager = vi_input_mode->viInputModeManager();
     QVERIFY(vi_input_mode_manager->getCurrentViMode() == KateVi::VisualMode);
-    TestPressKey("l");
-    QCOMPARE(kate_document->text(kate_view->selectionRange()), QString("oo b"));
-    TestPressKey("d");
-    QCOMPARE(kate_document->text(), QString("far"));
+    TestPressKey(QStringLiteral("l"));
+    QCOMPARE(kate_document->text(kate_view->selectionRange()), QStringLiteral("oo b"));
+    TestPressKey(QStringLiteral("d"));
+    QCOMPARE(kate_document->text(), QStringLiteral("far"));
 
     // Test returning to correct mode when selecting ranges with mouse
-    BeginTest("foo bar\nbar baz");
-    TestPressKey("i"); // get me into insert mode
+    BeginTest(QStringLiteral("foo bar\nbar baz"));
+    TestPressKey(QStringLiteral("i")); // get me into insert mode
     kate_view->setSelection(Range(0, 1, 1, 4));
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::VisualMode);
     kate_view->setSelection(Range::invalid());
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::InsertMode);
-    TestPressKey("\\esc"); // get me into normal mode
+    TestPressKey(QStringLiteral("\\esc")); // get me into normal mode
     kate_view->setSelection(Range(0, 1, 1, 4));
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::VisualMode);
     kate_view->setSelection(Range::invalid());
@@ -1486,9 +1486,9 @@ void ModesTest::CommandTests()
     // Testing ":c", ":change"
     DoTest("foo\nbar\nbaz", "\\:2change\\", "foo\n\nbaz");
     DoTest("foo\nbar\nbaz", "\\:%c\\", "");
-    BeginTest("foo\nbar\nbaz");
-    TestPressKey("\\:$c\\"); // Work around ambiguity in the code that parses commands to execute.
-    TestPressKey("\\:$change\\");
+    BeginTest(QStringLiteral("foo\nbar\nbaz"));
+    TestPressKey(QStringLiteral("\\:$c\\")); // Work around ambiguity in the code that parses commands to execute.
+    TestPressKey(QStringLiteral("\\:$change\\"));
     FinishTest("foo\nbar\n");
     DoTest("foo\nbar\nbaz", "ma\\:2,'achange\\", "\nbaz");
     DoTest("foo\nbar\nbaz", "\\:2,3c\\", "foo\n");
@@ -1535,9 +1535,9 @@ void ModesTest::CommandDeleteTests()
 {
     DoTest("foo\nbar\nbaz", "\\:2d\\", "foo\nbaz");
     DoTest("foo\nbar\nbaz", "\\:%d\\", "");
-    BeginTest("foo\nbar\nbaz");
-    TestPressKey("\\:$d\\"); // Work around ambiguity in the code that parses commands to execute.
-    TestPressKey("\\:$d\\");
+    BeginTest(QStringLiteral("foo\nbar\nbaz"));
+    TestPressKey(QStringLiteral("\\:$d\\")); // Work around ambiguity in the code that parses commands to execute.
+    TestPressKey(QStringLiteral("\\:$d\\"));
     FinishTest("foo");
     DoTest("foo\nbar\nbaz", "ma\\:2,'ad\\", "baz");
     DoTest("foo\nbar\nbaz", "\\:/foo/,/bar/d\\", "baz");
@@ -1585,10 +1585,10 @@ void ModesTest::ReplaceBasicTests()
 
     // BUG #451076, don't want an extra newline when using the "Find" action from the menu or Ctrl-F
     BaseTest::ensureKateViewVisible(); // required for the bug to trigger
-    BeginTest("foobar");
-    TestPressKey("R");
+    BeginTest(QStringLiteral("foobar"));
+    TestPressKey(QStringLiteral("R"));
     kate_view->find();
-    TestPressKey("bar\\return");
+    TestPressKey(QStringLiteral("bar\\return"));
     // ensure the cursor is at 'foo_b_ar'
     QCOMPARE(kate_view->cursorPosition().line(), 0);
     QCOMPARE(kate_view->cursorPosition().column(), 3);

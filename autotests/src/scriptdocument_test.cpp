@@ -107,9 +107,9 @@ void ScriptDocumentTest::testRfind()
     QFETCH(KTextEditor::Cursor, searchStart);
     QFETCH(KTextEditor::Cursor, result);
 
-    m_scriptDoc->setText("a a a a a a a a a a a a");
+    m_scriptDoc->setText(QStringLiteral("a a a a a a a a a a a a"));
 
-    KTextEditor::Cursor cursor = m_scriptDoc->rfind(searchStart, "a a a");
+    KTextEditor::Cursor cursor = m_scriptDoc->rfind(searchStart, QStringLiteral("a a a"));
     QCOMPARE(cursor, result);
 }
 

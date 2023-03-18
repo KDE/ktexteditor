@@ -28,13 +28,13 @@ void IndentTest::initTestCase()
 {
     ScriptTestBase::initTestCase();
     m_document->config()->setValue(KateDocumentConfig::IndentOnTextPaste, true);
-    m_section = "indent";
-    m_script_dir = "indentation";
+    m_section = QStringLiteral("indent");
+    m_script_dir = QStringLiteral("indentation");
 }
 
 void IndentTest::testCstyle_data()
 {
-    getTestData("cstyle");
+    getTestData(QStringLiteral("cstyle"));
 }
 
 void IndentTest::testCstyle()
@@ -55,7 +55,7 @@ void IndentTest::testCstyle()
 
 void IndentTest::testCppstyle_data()
 {
-    getTestData("cppstyle");
+    getTestData(QStringLiteral("cppstyle"));
 }
 
 void IndentTest::testCppstyle()
@@ -67,7 +67,7 @@ void IndentTest::testCppstyle()
 
 void IndentTest::testCMake_data()
 {
-    getTestData("cmake");
+    getTestData(QStringLiteral("cmake"));
 }
 
 void IndentTest::testCMake()
@@ -77,7 +77,7 @@ void IndentTest::testCMake()
 
 void IndentTest::testPython_data()
 {
-    getTestData("python");
+    getTestData(QStringLiteral("python"));
 }
 
 void IndentTest::testPython()
@@ -87,7 +87,7 @@ void IndentTest::testPython()
 
 void IndentTest::testJulia_data()
 {
-    getTestData("julia");
+    getTestData(QStringLiteral("julia"));
 }
 
 void IndentTest::testJulia()
@@ -97,7 +97,7 @@ void IndentTest::testJulia()
 
 void IndentTest::testHaskell_data()
 {
-    getTestData("haskell");
+    getTestData(QStringLiteral("haskell"));
 }
 
 void IndentTest::testHaskell()
@@ -107,7 +107,7 @@ void IndentTest::testHaskell()
 
 void IndentTest::testLatex_data()
 {
-    getTestData("latex");
+    getTestData(QStringLiteral("latex"));
 }
 
 void IndentTest::testLatex()
@@ -117,7 +117,7 @@ void IndentTest::testLatex()
 
 void IndentTest::testPascal_data()
 {
-    getTestData("pascal");
+    getTestData(QStringLiteral("pascal"));
 }
 
 void IndentTest::testPascal()
@@ -127,7 +127,7 @@ void IndentTest::testPascal()
 
 void IndentTest::testAda_data()
 {
-    getTestData("ada");
+    getTestData(QStringLiteral("ada"));
 }
 
 void IndentTest::testAda()
@@ -137,7 +137,7 @@ void IndentTest::testAda()
 
 void IndentTest::testRuby_data()
 {
-    getTestData("ruby");
+    getTestData(QStringLiteral("ruby"));
 }
 
 void IndentTest::testRuby()
@@ -155,7 +155,7 @@ void IndentTest::testRuby()
 
 void IndentTest::testXml_data()
 {
-    getTestData("xml");
+    getTestData(QStringLiteral("xml"));
 }
 
 void IndentTest::testXml()
@@ -165,7 +165,7 @@ void IndentTest::testXml()
 
 void IndentTest::testNormal_data()
 {
-    getTestData("normal");
+    getTestData(QStringLiteral("normal"));
 }
 
 void IndentTest::testNormal()
@@ -175,7 +175,7 @@ void IndentTest::testNormal()
 
 void IndentTest::testReplicode_data()
 {
-    getTestData("replicode");
+    getTestData(QStringLiteral("replicode"));
 }
 
 void IndentTest::testReplicode()
@@ -185,7 +185,7 @@ void IndentTest::testReplicode()
 
 void IndentTest::testR_data()
 {
-    getTestData("R");
+    getTestData(QStringLiteral("R"));
 }
 
 void IndentTest::testR()

@@ -52,7 +52,7 @@ void CursorWordsTest::testMoveToNextWordSingleLine()
 {
     { // single space between words
 
-        auto [doc, view] = createDocAndView("foo bar quzzi", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo bar quzzi"), 0, 0);
 
         view->wordRight();
 
@@ -69,7 +69,7 @@ void CursorWordsTest::testMoveToNextWordSingleLine()
 
     { // cursor inside multiple spaces between words
 
-        auto [doc, view] = createDocAndView("  -  1234  xyz", 0, 1); // cursor at second space
+        auto [doc, view] = createDocAndView(QStringLiteral("  -  1234  xyz"), 0, 1); // cursor at second space
 
         view->wordRight();
 
@@ -89,7 +89,7 @@ void CursorWordsTest::testMoveToPrevWordSingleLine()
 {
     { // single space between words
 
-        auto [doc, view] = createDocAndView("foo bar quzzi", 0, 8); // cursor at the start of "quzzi"
+        auto [doc, view] = createDocAndView(QStringLiteral("foo bar quzzi"), 0, 8); // cursor at the start of "quzzi"
 
         view->wordLeft();
 
@@ -102,7 +102,7 @@ void CursorWordsTest::testMoveToPrevWordSingleLine()
 
     { // cursor inside multiple spaces between words
 
-        auto [doc, view] = createDocAndView("  12  -  ", 0, 8); // cursor at the last space
+        auto [doc, view] = createDocAndView(QStringLiteral("  12  -  "), 0, 8); // cursor at the last space
 
         view->wordLeft();
 
@@ -116,13 +116,13 @@ void CursorWordsTest::testMoveToPrevWordSingleLine()
 
 // clang-format off
 #define COMPARE_CHAR_AND_CURSOR(view, expectedCursor, expectedCharacter)                  \
-    QCOMPARE(view->document()->characterAt(view->cursorPosition()), expectedCharacter);   \
+    QCOMPARE(view->document()->characterAt(view->cursorPosition()), QLatin1Char(expectedCharacter));   \
     QCOMPARE(view->cursorPosition(), expectedCursor)
 // clang-format on
 
 void CursorWordsTest::testMoveToWordsMultipleLines()
 {
-    auto [doc, view] = createDocAndView("hello  there...\n\tno  one answers.", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("hello  there...\n\tno  one answers."), 0, 0);
 
     view->wordRight();
     COMPARE_CHAR_AND_CURSOR(view, Cursor(0, 7), 't');

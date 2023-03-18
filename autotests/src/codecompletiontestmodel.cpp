@@ -37,14 +37,14 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
             case Prefix:
                 switch (index.row() % 3) {
                 default:
-                    return "void ";
+                    return QStringLiteral("void ");
                 case 1:
-                    return "const QString& ";
+                    return QStringLiteral("const QString& ");
                 case 2:
                     if (index.row() % 6) {
-                        return "inline virtual bool ";
+                        return QStringLiteral("inline virtual bool ");
                     }
-                    return "virtual bool ";
+                    return QStringLiteral("virtual bool ");
                 }
 
             case Scope:
@@ -52,36 +52,36 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
                 default:
                     return QString();
                 case 1:
-                    return "KTextEditor::";
+                    return QStringLiteral("KTextEditor::");
                 case 2:
-                    return "::";
+                    return QStringLiteral("::");
                 case 3:
-                    return "std::";
+                    return QStringLiteral("std::");
                 }
 
             case Name:
-                return QString(m_startText + QString("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
+                return QString(m_startText + QStringLiteral("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
 
             case Arguments:
                 switch (index.row() % 5) {
                 default:
-                    return "()";
+                    return QStringLiteral("()");
                 case 1:
-                    return "(bool trigger)";
+                    return QStringLiteral("(bool trigger)");
                 case 4:
-                    return "(const QString& name, Qt::CaseSensitivity cs)";
+                    return QStringLiteral("(const QString& name, Qt::CaseSensitivity cs)");
                 case 5:
-                    return "(int count)";
+                    return QStringLiteral("(int count)");
                 }
 
             case Postfix:
                 switch (index.row() % 3) {
                 default:
-                    return " const";
+                    return QStringLiteral(" const");
                 case 1:
-                    return " KDE_DEPRECATED";
+                    return QStringLiteral(" KDE_DEPRECATED");
                 case 2:
-                    return "";
+                    return QLatin1String("");
                 }
             }
         } else {
@@ -89,11 +89,11 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
             case Prefix:
                 switch (index.row() % 3) {
                 default:
-                    return "void ";
+                    return QStringLiteral("void ");
                 case 1:
-                    return "const QString ";
+                    return QStringLiteral("const QString ");
                 case 2:
-                    return "bool ";
+                    return QStringLiteral("bool ");
                 }
 
             case Scope:
@@ -101,18 +101,18 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
                 default:
                     return QString();
                 case 1:
-                    return "KTextEditor::";
+                    return QStringLiteral("KTextEditor::");
                 case 2:
-                    return "::";
+                    return QStringLiteral("::");
                 case 3:
-                    return "std::";
+                    return QStringLiteral("std::");
                 }
 
             case Name:
-                return QString(m_startText + QString("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
+                return QString(m_startText + QStringLiteral("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
 
             default:
-                return "";
+                return QLatin1String("");
             }
         }
         break;
@@ -171,17 +171,10 @@ void CodeCompletionTestModel::completionInvoked(KTextEditor::View *view, const K
 AbbreviationCodeCompletionTestModel::AbbreviationCodeCompletionTestModel(KTextEditor::View *parent, const QString &startText)
     : CodeCompletionTestModel(parent, startText)
 {
-    m_items << "SomeCoolAbbreviation"
-            << "someCoolAbbreviation"
-            << "sca"
-            << "SCA";
-    m_items << "some_cool_abbreviation"
-            << "Some_Cool_Abbreviation";
-    m_items << "thisContainsSomeWord"
-            << "this_contains_some_word"
-            << "thiscontainssomeword";
-    m_items << "notmatchedbecausemissingcaps"
-            << "not_m_atch_ed_because_underscores";
+    m_items << QStringLiteral("SomeCoolAbbreviation") << QStringLiteral("someCoolAbbreviation") << QStringLiteral("sca") << QStringLiteral("SCA");
+    m_items << QStringLiteral("some_cool_abbreviation") << QStringLiteral("Some_Cool_Abbreviation");
+    m_items << QStringLiteral("thisContainsSomeWord") << QStringLiteral("this_contains_some_word") << QStringLiteral("thiscontainssomeword");
+    m_items << QStringLiteral("notmatchedbecausemissingcaps") << QStringLiteral("not_m_atch_ed_because_underscores");
     setRowCount(m_items.size());
 }
 

@@ -18,7 +18,7 @@
 
 QTEST_MAIN(RegExpSearchTest)
 
-#define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toLatin1().data()))
+#define testNewRow() (QTest::newRow(QStringLiteral("line %1").arg(__LINE__).toLatin1().data()))
 
 using namespace KTextEditor;
 
@@ -37,44 +37,28 @@ void RegExpSearchTest::testReplaceEscapeSequences_data()
     QTest::addColumn<QString>("pattern");
     QTest::addColumn<QString>("expected");
 
-    testNewRow() << "\\"
-                 << "\\";
-    testNewRow() << "\\0"
-                 << "0";
-    testNewRow() << "\\00"
-                 << "00";
-    testNewRow() << "\\000"
-                 << "000";
-    testNewRow() << "\\0000" << QString(QChar(0));
-    testNewRow() << "\\0377" << QString(QChar(0377));
-    testNewRow() << "\\0378"
-                 << "0378";
-    testNewRow() << "\\a"
-                 << "\a";
-    testNewRow() << "\\f"
-                 << "\f";
-    testNewRow() << "\\n"
-                 << "\n";
-    testNewRow() << "\\r"
-                 << "\r";
-    testNewRow() << "\\t"
-                 << "\t";
-    testNewRow() << "\\v"
-                 << "\v";
-    testNewRow() << "\\x"
-                 << "x";
-    testNewRow() << "\\x0"
-                 << "x0";
-    testNewRow() << "\\x00"
-                 << "x00";
-    testNewRow() << "\\x000"
-                 << "x000";
-    testNewRow() << "\\x0000" << QString(QChar(0x0000));
-    testNewRow() << "\\x00000" << QString(QChar(0x0000) + '0');
-    testNewRow() << "\\xaaaa" << QString(QChar(0xaaaa));
-    testNewRow() << "\\xFFFF" << QString(QChar(0xFFFF));
-    testNewRow() << "\\xFFFg"
-                 << "xFFFg";
+    testNewRow() << QStringLiteral("\\") << QStringLiteral("\\");
+    testNewRow() << QStringLiteral("\\0") << QStringLiteral("0");
+    testNewRow() << QStringLiteral("\\00") << QStringLiteral("00");
+    testNewRow() << QStringLiteral("\\000") << QStringLiteral("000");
+    testNewRow() << QStringLiteral("\\0000") << QString(QChar(0));
+    testNewRow() << QStringLiteral("\\0377") << QString(QChar(0377));
+    testNewRow() << QStringLiteral("\\0378") << QStringLiteral("0378");
+    testNewRow() << QStringLiteral("\\a") << QStringLiteral("\a");
+    testNewRow() << QStringLiteral("\\f") << QStringLiteral("\f");
+    testNewRow() << QStringLiteral("\\n") << QStringLiteral("\n");
+    testNewRow() << QStringLiteral("\\r") << QStringLiteral("\r");
+    testNewRow() << QStringLiteral("\\t") << QStringLiteral("\t");
+    testNewRow() << QStringLiteral("\\v") << QStringLiteral("\v");
+    testNewRow() << QStringLiteral("\\x") << QStringLiteral("x");
+    testNewRow() << QStringLiteral("\\x0") << QStringLiteral("x0");
+    testNewRow() << QStringLiteral("\\x00") << QStringLiteral("x00");
+    testNewRow() << QStringLiteral("\\x000") << QStringLiteral("x000");
+    testNewRow() << QStringLiteral("\\x0000") << QString(QChar(0x0000));
+    testNewRow() << QStringLiteral("\\x00000") << QString(QChar(0x0000) + QLatin1Char('0'));
+    testNewRow() << QStringLiteral("\\xaaaa") << QString(QChar(0xaaaa));
+    testNewRow() << QStringLiteral("\\xFFFF") << QString(QChar(0xFFFF));
+    testNewRow() << QStringLiteral("\\xFFFg") << QStringLiteral("xFFFg");
 }
 
 void RegExpSearchTest::testReplaceEscapeSequences()
@@ -95,23 +79,13 @@ void RegExpSearchTest::testReplacementReferences_data()
     QTest::addColumn<QString>("expected");
     QTest::addColumn<QStringList>("capturedTexts");
 
-    testNewRow() << "\\0"
-                 << "b" << (QStringList() << "b");
-    testNewRow() << "\\00"
-                 << "b0" << (QStringList() << "b");
-    testNewRow() << "\\000"
-                 << "b00" << (QStringList() << "b");
-    testNewRow() << "\\0000" << QString(QChar(0)) << (QStringList() << "b");
-    testNewRow() << "\\1"
-                 << "1" << (QStringList() << "b");
-    testNewRow() << "\\0"
-                 << "b"
-                 << (QStringList() << "b"
-                                   << "c");
-    testNewRow() << "\\1"
-                 << "c"
-                 << (QStringList() << "b"
-                                   << "c");
+    testNewRow() << QStringLiteral("\\0") << QStringLiteral("b") << (QStringList() << QStringLiteral("b"));
+    testNewRow() << QStringLiteral("\\00") << QStringLiteral("b0") << (QStringList() << QStringLiteral("b"));
+    testNewRow() << QStringLiteral("\\000") << QStringLiteral("b00") << (QStringList() << QStringLiteral("b"));
+    testNewRow() << QStringLiteral("\\0000") << QString(QChar(0)) << (QStringList() << QStringLiteral("b"));
+    testNewRow() << QStringLiteral("\\1") << QStringLiteral("1") << (QStringList() << QStringLiteral("b"));
+    testNewRow() << QStringLiteral("\\0") << QStringLiteral("b") << (QStringList() << QStringLiteral("b") << QStringLiteral("c"));
+    testNewRow() << QStringLiteral("\\1") << QStringLiteral("c") << (QStringList() << QStringLiteral("b") << QStringLiteral("c"));
 }
 
 void RegExpSearchTest::testReplacementReferences()
@@ -130,71 +104,43 @@ void RegExpSearchTest::testReplacementCaseConversion_data()
     QTest::addColumn<QString>("pattern");
     QTest::addColumn<QString>("expected");
 
-    testNewRow() << "a\\Uaa"
-                 << "aAA";
-    testNewRow() << "a\\UAa"
-                 << "aAA";
-    testNewRow() << "a\\UaA"
-                 << "aAA";
+    testNewRow() << QStringLiteral("a\\Uaa") << QStringLiteral("aAA");
+    testNewRow() << QStringLiteral("a\\UAa") << QStringLiteral("aAA");
+    testNewRow() << QStringLiteral("a\\UaA") << QStringLiteral("aAA");
 
-    testNewRow() << "a\\Uáa"
-                 << "aÁA";
-    testNewRow() << "a\\UAá"
-                 << "aAÁ";
-    testNewRow() << "a\\UaÁ"
-                 << "aAÁ";
+    testNewRow() << QStringLiteral("a\\Uáa") << QStringLiteral("aÁA");
+    testNewRow() << QStringLiteral("a\\UAá") << QStringLiteral("aAÁ");
+    testNewRow() << QStringLiteral("a\\UaÁ") << QStringLiteral("aAÁ");
 
-    testNewRow() << "a\\uaa"
-                 << "aAa";
-    testNewRow() << "a\\uAa"
-                 << "aAa";
-    testNewRow() << "a\\uaA"
-                 << "aAA";
+    testNewRow() << QStringLiteral("a\\uaa") << QStringLiteral("aAa");
+    testNewRow() << QStringLiteral("a\\uAa") << QStringLiteral("aAa");
+    testNewRow() << QStringLiteral("a\\uaA") << QStringLiteral("aAA");
 
-    testNewRow() << "a\\uáa"
-                 << "aÁa";
-    testNewRow() << "a\\uÁa"
-                 << "aÁa";
-    testNewRow() << "a\\uáA"
-                 << "aÁA";
+    testNewRow() << QStringLiteral("a\\uáa") << QStringLiteral("aÁa");
+    testNewRow() << QStringLiteral("a\\uÁa") << QStringLiteral("aÁa");
+    testNewRow() << QStringLiteral("a\\uáA") << QStringLiteral("aÁA");
 
-    testNewRow() << "A\\LAA"
-                 << "Aaa";
-    testNewRow() << "A\\LaA"
-                 << "Aaa";
-    testNewRow() << "A\\LAa"
-                 << "Aaa";
+    testNewRow() << QStringLiteral("A\\LAA") << QStringLiteral("Aaa");
+    testNewRow() << QStringLiteral("A\\LaA") << QStringLiteral("Aaa");
+    testNewRow() << QStringLiteral("A\\LAa") << QStringLiteral("Aaa");
 
-    testNewRow() << "A\\LÁA"
-                 << "Aáa";
-    testNewRow() << "A\\LaÁ"
-                 << "Aaá";
-    testNewRow() << "A\\LÁa"
-                 << "Aáa";
+    testNewRow() << QStringLiteral("A\\LÁA") << QStringLiteral("Aáa");
+    testNewRow() << QStringLiteral("A\\LaÁ") << QStringLiteral("Aaá");
+    testNewRow() << QStringLiteral("A\\LÁa") << QStringLiteral("Aáa");
 
-    testNewRow() << "A\\lAA"
-                 << "AaA";
-    testNewRow() << "A\\lAa"
-                 << "Aaa";
-    testNewRow() << "A\\laA"
-                 << "AaA";
+    testNewRow() << QStringLiteral("A\\lAA") << QStringLiteral("AaA");
+    testNewRow() << QStringLiteral("A\\lAa") << QStringLiteral("Aaa");
+    testNewRow() << QStringLiteral("A\\laA") << QStringLiteral("AaA");
 
-    testNewRow() << "A\\lÁA"
-                 << "AáA";
-    testNewRow() << "A\\lÁa"
-                 << "Aáa";
-    testNewRow() << "A\\láA"
-                 << "AáA";
+    testNewRow() << QStringLiteral("A\\lÁA") << QStringLiteral("AáA");
+    testNewRow() << QStringLiteral("A\\lÁa") << QStringLiteral("Aáa");
+    testNewRow() << QStringLiteral("A\\láA") << QStringLiteral("AáA");
 
-    testNewRow() << "a\\Ubb\\EaA"
-                 << "aBBaA";
-    testNewRow() << "A\\LBB\\EAa"
-                 << "AbbAa";
+    testNewRow() << QStringLiteral("a\\Ubb\\EaA") << QStringLiteral("aBBaA");
+    testNewRow() << QStringLiteral("A\\LBB\\EAa") << QStringLiteral("AbbAa");
 
-    testNewRow() << "a\\Ubb\\EáA"
-                 << "aBBáA";
-    testNewRow() << "A\\LBB\\EÁa"
-                 << "AbbÁa";
+    testNewRow() << QStringLiteral("a\\Ubb\\EáA") << QStringLiteral("aBBáA");
+    testNewRow() << QStringLiteral("A\\LBB\\EÁa") << QStringLiteral("AbbÁa");
 }
 
 void RegExpSearchTest::testReplacementCaseConversion()
@@ -213,9 +159,9 @@ void RegExpSearchTest::testReplacementCounter_data()
     QTest::addColumn<int>("counter");
     QTest::addColumn<QString>("expected");
 
-    testNewRow() << "a\\#b" << 1 << "a1b";
-    testNewRow() << "a\\#b" << 10 << "a10b";
-    testNewRow() << "a\\#####b" << 1 << "a00001b";
+    testNewRow() << QStringLiteral("a\\#b") << 1 << QStringLiteral("a1b");
+    testNewRow() << QStringLiteral("a\\#b") << 10 << QStringLiteral("a10b");
+    testNewRow() << QStringLiteral("a\\#####b") << 1 << QStringLiteral("a00001b");
 }
 
 void RegExpSearchTest::testReplacementCounter()
@@ -236,59 +182,59 @@ void RegExpSearchTest::testAnchoredRegexp_data()
     QTest::addColumn<bool>("backwards");
     QTest::addColumn<Range>("expected");
 
-    testNewRow() << "fe" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 2);
-    testNewRow() << "fe" << Range(0, 0, 0, 8) << true << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("fe") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("fe") << Range(0, 0, 0, 8) << true << Range(0, 6, 0, 8);
 
-    testNewRow() << "^fe" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 2);
-    testNewRow() << "^fe" << Range(0, 0, 0, 1) << false << Range::invalid();
-    testNewRow() << "^fe" << Range(0, 0, 0, 2) << false << Range(0, 0, 0, 2);
-    testNewRow() << "^fe" << Range(0, 3, 0, 8) << false << Range::invalid(); // only match at line start
-    testNewRow() << "^fe" << Range(0, 0, 0, 2) << true << Range(0, 0, 0, 2);
-    testNewRow() << "^fe" << Range(0, 0, 0, 1) << true << Range::invalid();
-    testNewRow() << "^fe" << Range(0, 0, 0, 2) << true << Range(0, 0, 0, 2);
-    testNewRow() << "^fe" << Range(0, 3, 0, 8) << true << Range::invalid();
+    testNewRow() << QStringLiteral("^fe") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("^fe") << Range(0, 0, 0, 1) << false << Range::invalid();
+    testNewRow() << QStringLiteral("^fe") << Range(0, 0, 0, 2) << false << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("^fe") << Range(0, 3, 0, 8) << false << Range::invalid(); // only match at line start
+    testNewRow() << QStringLiteral("^fe") << Range(0, 0, 0, 2) << true << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("^fe") << Range(0, 0, 0, 1) << true << Range::invalid();
+    testNewRow() << QStringLiteral("^fe") << Range(0, 0, 0, 2) << true << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("^fe") << Range(0, 3, 0, 8) << true << Range::invalid();
 
-    testNewRow() << "fe$" << Range(0, 0, 0, 8) << false << Range(0, 6, 0, 8);
-    testNewRow() << "fe$" << Range(0, 7, 0, 8) << false << Range::invalid();
-    testNewRow() << "fe$" << Range(0, 6, 0, 8) << false << Range(0, 6, 0, 8);
-    testNewRow() << "fe$" << Range(0, 0, 0, 5) << false << Range::invalid(); // only match at line end, fails
-    testNewRow() << "fe$" << Range(0, 0, 0, 8) << true << Range(0, 6, 0, 8);
-    testNewRow() << "fe$" << Range(0, 7, 0, 8) << true << Range::invalid();
-    testNewRow() << "fe$" << Range(0, 6, 0, 8) << true << Range(0, 6, 0, 8);
-    testNewRow() << "fe$" << Range(0, 0, 0, 5) << true << Range::invalid();
+    testNewRow() << QStringLiteral("fe$") << Range(0, 0, 0, 8) << false << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("fe$") << Range(0, 7, 0, 8) << false << Range::invalid();
+    testNewRow() << QStringLiteral("fe$") << Range(0, 6, 0, 8) << false << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("fe$") << Range(0, 0, 0, 5) << false << Range::invalid(); // only match at line end, fails
+    testNewRow() << QStringLiteral("fe$") << Range(0, 0, 0, 8) << true << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("fe$") << Range(0, 7, 0, 8) << true << Range::invalid();
+    testNewRow() << QStringLiteral("fe$") << Range(0, 6, 0, 8) << true << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("fe$") << Range(0, 0, 0, 5) << true << Range::invalid();
 
-    testNewRow() << "^fe fe fe$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 8) << false << Range::invalid();
-    testNewRow() << "^fe fe fe$" << Range(0, 0, 0, 5) << false << Range::invalid();
-    testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 5) << false << Range::invalid();
-    testNewRow() << "^fe fe fe$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 8) << true << Range::invalid();
-    testNewRow() << "^fe fe fe$" << Range(0, 0, 0, 5) << true << Range::invalid();
-    testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 5) << true << Range::invalid();
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 3, 0, 8) << false << Range::invalid();
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 0, 0, 5) << false << Range::invalid();
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 3, 0, 5) << false << Range::invalid();
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 3, 0, 8) << true << Range::invalid();
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 0, 0, 5) << true << Range::invalid();
+    testNewRow() << QStringLiteral("^fe fe fe$") << Range(0, 3, 0, 5) << true << Range::invalid();
 
-    testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() << "fe( fe)*$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() << "fe( fe)*" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() << "^fe( fe)*$" << Range(0, 3, 0, 8) << false << Range::invalid();
-    testNewRow() << "fe( fe)*$" << Range(0, 3, 0, 8) << false << Range(0, 3, 0, 8);
-    testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << false << Range::invalid();
+    testNewRow() << QStringLiteral("^fe( fe)*$") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("^fe( fe)*") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("fe( fe)*$") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("fe( fe)*") << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("^fe( fe)*$") << Range(0, 3, 0, 8) << false << Range::invalid();
+    testNewRow() << QStringLiteral("fe( fe)*$") << Range(0, 3, 0, 8) << false << Range(0, 3, 0, 8);
+    testNewRow() << QStringLiteral("^fe( fe)*$") << Range(0, 0, 0, 5) << false << Range::invalid();
     // fails because the whole line is fed to QRegularExpression, then matches
     // that end beyond the search range are rejected, see KateRegExpSearch::searchText()
     // testNewRow() << "^fe( fe)*"  << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 5);
 
-    testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    testNewRow() << "fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    testNewRow() << "fe( fe)*" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    testNewRow() << "^fe( fe)*$" << Range(0, 3, 0, 8) << true << Range::invalid();
-    testNewRow() << "fe( fe)*$" << Range(0, 3, 0, 8) << true << Range(0, 3, 0, 8);
-    testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << true << Range::invalid();
+    testNewRow() << QStringLiteral("^fe( fe)*$") << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("^fe( fe)*") << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("fe( fe)*$") << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("fe( fe)*") << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    testNewRow() << QStringLiteral("^fe( fe)*$") << Range(0, 3, 0, 8) << true << Range::invalid();
+    testNewRow() << QStringLiteral("fe( fe)*$") << Range(0, 3, 0, 8) << true << Range(0, 3, 0, 8);
+    testNewRow() << QStringLiteral("^fe( fe)*$") << Range(0, 0, 0, 5) << true << Range::invalid();
 
-    testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 2);
-    testNewRow() << "^fe|fe$" << Range(0, 3, 0, 8) << false << Range(0, 6, 0, 8);
-    testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << true << Range(0, 0, 0, 2);
-    testNewRow() << "^fe|fe$" << Range(0, 3, 0, 8) << true << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("^fe|fe$") << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("^fe|fe$") << Range(0, 3, 0, 8) << false << Range(0, 6, 0, 8);
+    testNewRow() << QStringLiteral("^fe|fe$") << Range(0, 0, 0, 5) << true << Range(0, 0, 0, 2);
+    testNewRow() << QStringLiteral("^fe|fe$") << Range(0, 3, 0, 8) << true << Range(0, 6, 0, 8);
 }
 
 void RegExpSearchTest::testAnchoredRegexp()
@@ -299,7 +245,7 @@ void RegExpSearchTest::testAnchoredRegexp()
     QFETCH(Range, expected);
 
     KTextEditor::DocumentPrivate doc;
-    doc.setText("fe fe fe");
+    doc.setText(QStringLiteral("fe fe fe"));
 
     KateRegExpSearch searcher(&doc);
 
@@ -317,17 +263,17 @@ void RegExpSearchTest::testAnchoredRegexp()
 void RegExpSearchTest::testSearchForward()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("  \\piinfercong");
+    doc.setText(QStringLiteral("  \\piinfercong"));
 
     KateRegExpSearch searcher(&doc);
-    QVector<KTextEditor::Range> result = searcher.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15), false);
+    QVector<KTextEditor::Range> result = searcher.search(QStringLiteral("\\\\piinfer(\\w)"), Range(0, 2, 0, 15), false);
 
     QCOMPARE(result.at(0), Range(0, 2, 0, 11));
     QCOMPARE(doc.text(result.at(1)), QLatin1Char('c'));
 
     // Test Unicode
-    doc.setText("  \\piinferćong");
-    result = searcher.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15), false);
+    doc.setText(QStringLiteral("  \\piinferćong"));
+    result = searcher.search(QStringLiteral("\\\\piinfer(\\w)"), Range(0, 2, 0, 15), false);
 
     QCOMPARE(result.at(0), Range(0, 2, 0, 11));
     QCOMPARE(doc.text(result.at(1)), QStringLiteral("ć"));
@@ -336,10 +282,10 @@ void RegExpSearchTest::testSearchForward()
 void RegExpSearchTest::testSearchBackwardInSelection()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("foobar foo bar foo bar foo");
+    doc.setText(QStringLiteral("foobar foo bar foo bar foo"));
 
     KateRegExpSearch searcher(&doc);
-    const Range result = searcher.search("foo", Range(0, 0, 0, 15), true)[0];
+    const Range result = searcher.search(QStringLiteral("foo"), Range(0, 0, 0, 15), true)[0];
 
     QCOMPARE(result, Range(0, 7, 0, 10));
 }
@@ -347,25 +293,25 @@ void RegExpSearchTest::testSearchBackwardInSelection()
 void RegExpSearchTest::test()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("\\newcommand{\\piReductionOut}");
+    doc.setText(QStringLiteral("\\newcommand{\\piReductionOut}"));
 
     KateRegExpSearch searcher(&doc);
-    const QVector<Range> result = searcher.search("\\\\piReduction(\\S)", Range(0, 10, 0, 28), true);
+    const QVector<Range> result = searcher.search(QStringLiteral("\\\\piReduction(\\S)"), Range(0, 10, 0, 28), true);
 
     QCOMPARE(result.size(), 2);
     QCOMPARE(result[0], Range(0, 12, 0, 25));
     QCOMPARE(result[1], Range(0, 24, 0, 25));
-    QCOMPARE(doc.text(result[0]), QString("\\piReductionO"));
-    QCOMPARE(doc.text(result[1]), QString("O"));
+    QCOMPARE(doc.text(result[0]), QStringLiteral("\\piReductionO"));
+    QCOMPARE(doc.text(result[1]), QStringLiteral("O"));
 }
 
 void RegExpSearchTest::testUnicode()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("\\newcommand{\\piReductionOÓut}");
+    doc.setText(QStringLiteral("\\newcommand{\\piReductionOÓut}"));
 
     KateRegExpSearch searcher(&doc);
-    const QVector<Range> result = searcher.search("\\\\piReduction(\\w)(\\w)", Range(0, 10, 0, 28), true);
+    const QVector<Range> result = searcher.search(QStringLiteral("\\\\piReduction(\\w)(\\w)"), Range(0, 10, 0, 28), true);
 
     QCOMPARE(result.size(), 3);
     QCOMPARE(result.at(0), Range(0, 12, 0, 26));

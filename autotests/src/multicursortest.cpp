@@ -81,7 +81,7 @@ static void clickAtPosition(ViewPrivate *view, QWidget *internalView, Cursor pos
 void MulticursorTest::testKillline()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.insertLines(0, {"foo", "bar", "baz"});
+    doc.insertLines(0, {QStringLiteral("foo"), QStringLiteral("bar"), QStringLiteral("baz")});
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->setCursorPositionInternal(KTextEditor::Cursor(0, 0));
     view->addSecondaryCursor(KTextEditor::Cursor(1, 0));
@@ -95,7 +95,7 @@ void MulticursorTest::testKillline()
 
 void MulticursorTest::insertRemoveText()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\n", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
     QObject *internalView = findViewInternal(view);
     QVERIFY(internalView);
 
@@ -154,7 +154,7 @@ void MulticursorTest::insertRemoveText()
 
 void MulticursorTest::backspace()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nbaz", 0, 3);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nbaz"), 0, 3);
     QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
 
     {
@@ -177,7 +177,7 @@ void MulticursorTest::backspace()
 
     {
         // No selection
-        doc->setText("foo\nbar\nbaz");
+        doc->setText(QStringLiteral("foo\nbar\nbaz"));
         view->setCursors({Cursor(0, 3), Cursor(1, 3), Cursor(2, 3)});
         view->backspace();
         QCOMPARE(doc->text(), QStringLiteral("fo\nba\nba"));
@@ -190,7 +190,7 @@ void MulticursorTest::backspace()
 
 void MulticursorTest::keyDelete()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nbaz", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nbaz"), 0, 0);
     QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
 
     {
@@ -213,7 +213,7 @@ void MulticursorTest::keyDelete()
 
     {
         // No selection
-        doc->setText("foo\nbar\nbaz");
+        doc->setText(QStringLiteral("foo\nbar\nbaz"));
         view->setCursors({Cursor(0, 0), Cursor(1, 0), Cursor(2, 0)});
         view->keyDelete();
         QCOMPARE(doc->text(), QStringLiteral("oo\nar\naz"));
@@ -226,7 +226,7 @@ void MulticursorTest::keyDelete()
 
 void MulticursorTest::testUndoRedo()
 {
-    auto [doc, view] = createDocAndView("foo\nfoo", 0, 3);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo"), 0, 3);
 
     // single cursor backspace
     view->backspace();
@@ -261,7 +261,7 @@ void MulticursorTest::testUndoRedo()
 
 void MulticursorTest::testUndoRedoWithSelection()
 {
-    auto [doc, view] = createDocAndView("foo\nfoo", 0, 3);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo"), 0, 3);
     view->setCursors({Cursor(0, 3), Cursor(1, 3)});
 
     // select a word & remove it
@@ -285,7 +285,7 @@ void MulticursorTest::testUndoRedoWithSelection()
 
 void MulticursorTest::keyReturnIndentTest()
 {
-    auto [doc, view] = createDocAndView("\n\n", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("\n\n"), 0, 0);
     QCOMPARE(doc->lines(), 3);
     doc->setMode(QStringLiteral("C++"));
     view->config()->setValue(KateViewConfig::AutoBrackets, true);
@@ -306,7 +306,7 @@ void MulticursorTest::keyReturnIndentTest()
 
 void MulticursorTest::wrapSelectionWithCharsTest()
 {
-    auto [doc, view] = createDocAndView("foo\nfoo\nfoo", 0, 3);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo"), 0, 3);
 
     view->addSecondaryCursorDown();
     view->addSecondaryCursorDown();
@@ -319,7 +319,7 @@ void MulticursorTest::wrapSelectionWithCharsTest()
 
 void MulticursorTest::insertAutoBrackets()
 {
-    auto [doc, view] = createDocAndView("hello\nhello", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("hello\nhello"), 0, 0);
     QCOMPARE(doc->lines(), 2);
     doc->setMode(QStringLiteral("C++"));
     view->config()->setValue(KateViewConfig::AutoBrackets, true);
@@ -332,7 +332,7 @@ void MulticursorTest::insertAutoBrackets()
 
 void MulticursorTest::testCreateMultiCursor()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\n", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
 
     auto *internalView = findViewInternal(view);
     QVERIFY(internalView);
@@ -364,7 +364,7 @@ void MulticursorTest::testCreateMultiCursor()
 
 void MulticursorTest::testCreateMultiCursorFromSelection()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo", 2, 3);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo"), 2, 3);
     view->setSelection(KTextEditor::Range(0, 0, 2, 3));
     // move primary cursor to beginning of line, so we can check whether it is moved to end of line
     view->setCursorPosition({view->cursorPosition().line(), 0});
@@ -384,7 +384,7 @@ void MulticursorTest::testCreateMultiCursorFromSelection()
 
 void MulticursorTest::testMulticursorToggling()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo"), 0, 0);
     view->setSelections({Range(0, 0, 0, 3), Range(1, 0, 1, 3)});
     QCOMPARE(view->selectionRanges().size(), 2);
 
@@ -400,7 +400,7 @@ void MulticursorTest::testMulticursorToggling()
 
 void MulticursorTest::moveCharTest()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\n", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
     view->setCursors({Cursor(0, 0), Cursor(1, 0)});
 
     // Simple left right
@@ -449,7 +449,7 @@ void MulticursorTest::moveCharTest()
 
 void MulticursorTest::moveCharInFirstOrLastLineTest()
 {
-    auto [doc, view] = createDocAndView("foo", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo"), 0, 0);
     view->addSecondaryCursor({0, 1});
     // |f|oo
 
@@ -466,7 +466,7 @@ void MulticursorTest::moveCharInFirstOrLastLineTest()
 
 void MulticursorTest::moveWordTest()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\n", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
     view->setCursors({Cursor(0, 0), Cursor(1, 0)});
 
     // Simple left right
@@ -510,7 +510,7 @@ void MulticursorTest::moveWordTest()
 
 void MulticursorTest::homeEndKeyTest()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\n", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\n"), 0, 0);
     view->setCursors({Cursor(0, 0), Cursor(0, 1)});
 
     // Two cursor in same line => home should merge them
@@ -540,7 +540,7 @@ void MulticursorTest::homeEndKeyTest()
 void MulticursorTest::moveUpDown()
 {
     /** TEST UP **/
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo"), 0, 0);
 
     view->setSecondaryCursors({Cursor(1, 0), Cursor(2, 0)});
     QCOMPARE(view->secondaryCursors().size(), 2);
@@ -575,7 +575,7 @@ void MulticursorTest::testSelectionMerge()
     // 8 lines
     {
         // Left movement, cursor at top
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 0, 3);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 0, 3);
 
         view->selectAll();
         view->createMultiCursorsFromSelection();
@@ -596,7 +596,7 @@ void MulticursorTest::testSelectionMerge()
 
     {
         // Left movement, cursor at bottom
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 6, 3);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 6, 3);
 
         view->selectAll();
         view->createMultiCursorsFromSelection();
@@ -618,7 +618,7 @@ void MulticursorTest::testSelectionMerge()
 
     {
         // Left word movement, cursor in the middle
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 3, 3);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 3, 3);
 
         for (int i = 0; i < 10; ++i) {
             view->addSecondaryCursorUp();
@@ -638,7 +638,7 @@ void MulticursorTest::testSelectionMerge()
 
     {
         // Left word + char movement, cursor in the middle
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 3, 3);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 3, 3);
 
         view->addSecondaryCursorUp();
         view->addSecondaryCursorUp();
@@ -660,7 +660,7 @@ void MulticursorTest::testSelectionMerge()
 
     {
         // Right movement, cursor at bottom line
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 6, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 6, 0);
 
         for (int i = 0; i < 10; ++i) {
             view->addSecondaryCursorUp();
@@ -681,7 +681,7 @@ void MulticursorTest::testSelectionMerge()
 
     {
         // Right movement, cursor at top line
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 0, 0);
 
         for (int i = 0; i < 10; ++i) {
             view->addSecondaryCursorDown();
@@ -700,7 +700,7 @@ void MulticursorTest::testSelectionMerge()
 
     {
         // Right word + char movement, cursor in the middle
-        auto [doc, view] = createDocAndView("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo", 3, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nfoo\nfoo\nfoo\nfoo\nfoo\nfoo"), 3, 0);
 
         view->addSecondaryCursorUp();
         view->addSecondaryCursorUp();
@@ -726,7 +726,7 @@ void MulticursorTest::testSelectionMerge()
 
 void MulticursorTest::findNextOccurenceTest()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\nfoo", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
 
     // No selection
     view->findNextOccurunceAndSelect();
@@ -767,7 +767,7 @@ void MulticursorTest::findNextOccurenceTest()
 
 void MulticursorTest::findAllOccurenceTest()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\nfoo", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
 
     // No selection
     view->findAllOccuruncesAndSelect();
@@ -791,7 +791,7 @@ void MulticursorTest::testMultiCopyPaste()
 {
     // Create two docs, copy from one to the other
     {
-        auto [doc, view] = createDocAndView("foo\nbar\nfoo\nfoo", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
         view->addSecondaryCursor({1, 0});
         view->addSecondaryCursor({2, 0});
         view->addSecondaryCursor({3, 0});
@@ -802,7 +802,7 @@ void MulticursorTest::testMultiCopyPaste()
     // Same number of cursors when pasting => each line gets pasted into matching cursor postion
     {
         KTextEditor::DocumentPrivate doc;
-        doc.setText("\n\n\n\n");
+        doc.setText(QStringLiteral("\n\n\n\n"));
         KTextEditor::ViewPrivate *v = new KTextEditor::ViewPrivate(&doc, nullptr);
         v->setCursorPosition({0, 0});
         v->addSecondaryCursor({1, 0});
@@ -827,7 +827,7 @@ void MulticursorTest::testMultiCopyPaste()
 
 void MulticursorTest::testSelectionTextOrdering()
 {
-    auto [doc, view] = createDocAndView("foo\nbar\nfoo\nfoo", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
     view->addSecondaryCursor({1, 0});
     view->addSecondaryCursor({2, 0});
     view->shiftWordRight();
@@ -842,7 +842,7 @@ void MulticursorTest::testSelectionTextOrdering()
 
 void MulticursorTest::testViewClear()
 {
-    auto [doc, view] = createDocAndView("foo\nbar", 0, 0);
+    auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
     view->addSecondaryCursor({1, 0});
     QCOMPARE(view->secondaryCursors().size(), 1);
     view->clear();
@@ -854,7 +854,7 @@ void MulticursorTest::testSetGetCursors()
     using Cursors = QVector<Cursor>;
     // Simple check
     {
-        auto [doc, view] = createDocAndView("foo\nbar\nfoo\nfoo", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
 
         // primary included
         QCOMPARE(view->cursors(), Cursors{Cursor(0, 0)});
@@ -871,7 +871,7 @@ void MulticursorTest::testSetGetCursors()
 
     // Test duplicate cursor positions
     {
-        auto [doc, view] = createDocAndView("foo\nbar", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QCOMPARE(view->cursors(), Cursors{Cursor(0, 0)});
         const Cursors cursors = {{0, 0}, {1, 1}, {0, 0}, {1, 1}};
@@ -891,7 +891,7 @@ void MulticursorTest::testSetGetSelections()
 {
     // Set cursors => press shift+right
     {
-        auto [doc, view] = createDocAndView("foo\nbar\nfoo", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo"), 0, 0);
         QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
         QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
         view->setCursors(cursors);
@@ -911,7 +911,7 @@ void MulticursorTest::testSetGetSelections()
     // - primary already has selection
     // - try to get selection
     {
-        auto [doc, view] = createDocAndView("foo\nbar", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
         view->shiftWordRight();
         QVERIFY(view->selection());
         QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
@@ -925,7 +925,7 @@ void MulticursorTest::testSetGetSelections()
 
     // Set selections
     {
-        auto [doc, view] = createDocAndView("foo\nbar", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QVERIFY(!view->selection());
         QVector<Range> selections = {Range(0, 0, 0, 1), Range(1, 0, 1, 1)};
@@ -936,7 +936,7 @@ void MulticursorTest::testSetGetSelections()
 
     // Set overlapping selections
     {
-        auto [doc, view] = createDocAndView("foo\nbar", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QVERIFY(!view->selection());
         QVector<Range> selections = {Range(0, 0, 0, 3), Range(0, 1, 0, 2), Range(0, 0, 0, 1)};
@@ -951,7 +951,7 @@ void MulticursorTest::testSetGetSelections()
 
     // Set selections with invalid range
     {
-        auto [doc, view] = createDocAndView("foo\nbar", 0, 0);
+        auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QVERIFY(!view->selection());
         QVector<Range> selections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1), Range(2, 0, 2, 1)};

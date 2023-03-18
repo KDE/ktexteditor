@@ -22,10 +22,10 @@ void ViewTest::yankHighlightingTests()
 {
     const QColor yankHighlightColour = kate_view->renderer()->config()->savedLineColor();
 
-    BeginTest("foo bar xyz");
+    BeginTest(QStringLiteral("foo bar xyz"));
     const QVector<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
-    TestPressKey("wyiw");
+    TestPressKey(QStringLiteral("wyiw"));
     {
         const QVector<Kate::TextRange *> rangesAfterYank = rangesOnFirstLine();
         QCOMPARE(rangesAfterYank.size(), rangesInitial.size() + 1);
@@ -37,8 +37,8 @@ void ViewTest::yankHighlightingTests()
     }
     FinishTest("foo bar xyz");
 
-    BeginTest("foom bar xyz");
-    TestPressKey("wY");
+    BeginTest(QStringLiteral("foom bar xyz"));
+    TestPressKey(QStringLiteral("wY"));
     {
         const QVector<Kate::TextRange *> rangesAfterYank = rangesOnFirstLine();
         QCOMPARE(rangesAfterYank.size(), rangesInitial.size() + 1);
@@ -72,8 +72,8 @@ void ViewTest::yankHighlightingTests()
     // which would clear the highlight) delete all text; if this deletes the yank highlight behind our back
     // and we don't respond correctly to this, it will be double-deleted by KateViNormalMode.
     // Currently, this seems like it doesn't occur, but better safe than sorry :)
-    BeginTest("foo bar xyz");
-    TestPressKey("yiw");
+    BeginTest(QStringLiteral("foo bar xyz"));
+    TestPressKey(QStringLiteral("yiw"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     kate_document->documentReload();
     kate_document->clear();
@@ -101,7 +101,7 @@ void ViewTest::visualLineUpDownTests()
     // Compute the maximum width of text before line-wrapping sets it.
     int textWrappingLength = 1;
     while (true) {
-        QString text = QString("X").repeated(textWrappingLength) + ' ' + 'O';
+        QString text = QStringLiteral("X").repeated(textWrappingLength) + ' ' + 'O';
         const int posOfO = text.length() - 1;
         kate_document->setText(text);
         if (kate_view->cursorToCoordinate(Cursor(0, posOfO)).y() != kate_view->cursorToCoordinate(Cursor(0, 0)).y()) {
@@ -110,7 +110,7 @@ void ViewTest::visualLineUpDownTests()
         }
         textWrappingLength++;
     }
-    const QString fillsLineAndEndsOnSpace = QString("X").repeated(textWrappingLength - 1) + ' ';
+    const QString fillsLineAndEndsOnSpace = QStringLiteral("X").repeated(textWrappingLength - 1) + ' ';
 
     // Create a QString consisting of enough concatenated fillsLineAndEndsOnSpace to completely
     // fill the viewport of the kate View.
@@ -138,7 +138,7 @@ void ViewTest::visualLineUpDownTests()
         kate_document->setText(originalText);
         Q_ASSERT(expectedText[textWrappingLength - 1] == ' ');
         expectedText[textWrappingLength - 1] = '.';
-        DoTest(originalText, "$gkr.", expectedText);
+        DoTest(originalText.toUtf8().constData(), "$gkr.", expectedText.toUtf8().constData());
     }
 
     {
@@ -148,7 +148,7 @@ void ViewTest::visualLineUpDownTests()
         Q_ASSERT(expectedText[expectedText.length() - textWrappingLength - 1] == ' ');
         expectedText[expectedText.length() - textWrappingLength - 1] = '.';
 
-        DoTest(fillsView, "$gkr.", expectedText);
+        DoTest(fillsView.toUtf8().constData(), "$gkr.", expectedText.toUtf8().constData());
     }
 
     {
@@ -176,14 +176,21 @@ void ViewTest::visualLineUpDownTests()
 
         Q_ASSERT(numberLinesToGoDownInOneGo + startVisualLine < totalVisualLines);
         Q_ASSERT(numberLinesToGoDownInOneGo + startVisualLine < numVisibleLinesToFillView);
-        DoTest(startText, QString("gj").repeated(startVisualLine - 1) + QString::number(numberLinesToGoDownInOneGo) + "gjr.", expectedText);
+        DoTest(startText.toUtf8().constData(),
+               QString(QStringLiteral("gj").repeated(startVisualLine - 1) + QString::number(numberLinesToGoDownInOneGo) + QStringLiteral("gjr."))
+                   .toUtf8()
+                   .constData(),
+               expectedText.toUtf8().constData());
         // Now go up a few lines.
         const int numLinesToGoBackUp = 7;
         expectedText = startText;
         expectedText[((startVisualLine - 1) + numberLinesToGoDownInOneGo - numLinesToGoBackUp) * fillsLineAndEndsOnSpace.length()] = '.';
-        DoTest(startText,
-               QString("gj").repeated(startVisualLine - 1) + QString::number(numberLinesToGoDownInOneGo) + "gj" + QString::number(numLinesToGoBackUp) + "gkr.",
-               expectedText);
+        DoTest(startText.toUtf8().constData(),
+               QString(QStringLiteral("gj").repeated(startVisualLine - 1) + QString::number(numberLinesToGoDownInOneGo) + QStringLiteral("gj")
+                       + QString::number(numLinesToGoBackUp) + QStringLiteral("gkr."))
+                   .toUtf8()
+                   .constData(),
+               expectedText.toUtf8().constData());
     }
 
     {
@@ -196,27 +203,29 @@ void ViewTest::visualLineUpDownTests()
         Q_ASSERT(expectedText[expectedText.length() - textWrappingLength - 1] == ' ');
         expectedText[visualColumnNumber + fillsLineAndEndsOnSpace.length() * numberLinesToGoDown] = '.';
 
-        DoTest(fillsView.repeated(2), QString("l").repeated(visualColumnNumber) + QString::number(numberLinesToGoDown) + "gjr.", expectedText);
+        DoTest(fillsView.repeated(2).toUtf8().constData(),
+               QString(QStringLiteral("l").repeated(visualColumnNumber) + QString::number(numberLinesToGoDown) + QStringLiteral("gjr.")).toUtf8().constData(),
+               expectedText.toUtf8().constData());
     }
 
     {
         // Deal with dynamic wrapping and indented blocks - continuations of a line are "invisibly" idented by
         // the same amount as the beginning of the line, and we have to subtract this indentation.
-        const QString unindentedFirstLine = "stickyhelper\n";
+        const QString unindentedFirstLine = QStringLiteral("stickyhelper\n");
         const int numIndentationSpaces = 5;
         Q_ASSERT(textWrappingLength > numIndentationSpaces * 2 /* keep some wriggle room */);
         const QString indentedFillsLineEndsOnSpace =
-            QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
-        DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3",
-               QString("l").repeated(numIndentationSpaces) + "jgjr.",
-               unindentedFirstLine + indentedFillsLineEndsOnSpace + ".INE3");
+            QStringLiteral(" ").repeated(numIndentationSpaces) + QStringLiteral("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
+        DoTest(QString(unindentedFirstLine + indentedFillsLineEndsOnSpace + QStringLiteral("LINE3")).toUtf8().constData(),
+               QString(QStringLiteral("l").repeated(numIndentationSpaces) + QStringLiteral("jgjr.")).toUtf8().constData(),
+               QString(unindentedFirstLine + indentedFillsLineEndsOnSpace + QStringLiteral(".INE3")).toUtf8().constData());
 
         // The first, non-wrapped portion of the line is not invisibly indented, though, so ensure we don't mess that up.
         QString expectedSecondLine = indentedFillsLineEndsOnSpace;
         expectedSecondLine[numIndentationSpaces] = '.';
-        DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3",
-               QString("l").repeated(numIndentationSpaces) + "jgjgkr.",
-               unindentedFirstLine + expectedSecondLine + "LINE3");
+        DoTest(QString(unindentedFirstLine + indentedFillsLineEndsOnSpace + QStringLiteral("LINE3")).toUtf8().constData(),
+               QString(QStringLiteral("l").repeated(numIndentationSpaces) + QStringLiteral("jgjgkr.")).toUtf8().constData(),
+               (unindentedFirstLine + expectedSecondLine + QStringLiteral("LINE3")).toUtf8().constData());
     }
 
     {
@@ -224,28 +233,28 @@ void ViewTest::visualLineUpDownTests()
         const int numIndentationSpaces = 5;
         Q_ASSERT(textWrappingLength > numIndentationSpaces * 2 /* keep some wriggle room */);
         const QString indentedFillsLineEndsOnSpace =
-            QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
+            QStringLiteral(" ").repeated(numIndentationSpaces) + QStringLiteral("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
         const int posInSecondWrappedLineToChange = 3;
         QString expectedText = indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace;
         expectedText[textWrappingLength + posInSecondWrappedLineToChange] = '.';
-        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
-               QString::number(textWrappingLength + posInSecondWrappedLineToChange) + "lgkgjr.",
-               expectedText);
+        DoTest((indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace).toUtf8().constData(),
+               (QString::number(textWrappingLength + posInSecondWrappedLineToChange) + QStringLiteral("lgkgjr.")).toUtf8().constData(),
+               expectedText.toUtf8().constData());
         // Make sure we can do this more than once (i.e. clear any flags that need clearing).
-        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
-               QString::number(textWrappingLength + posInSecondWrappedLineToChange) + "lgkgjr.",
-               expectedText);
+        DoTest((indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace).toUtf8().constData(),
+               (QString::number(textWrappingLength + posInSecondWrappedLineToChange) + QStringLiteral("lgkgjr.")).toUtf8().constData(),
+               expectedText.toUtf8().constData());
     }
 
     {
         // Take into account any invisible indentation when setting the sticky column as above, but use tabs.
-        const QString indentedFillsLineEndsOnSpace = QString("\t") + QString("X").repeated(textWrappingLength - 1 - tabWidth) + ' ';
+        const QString indentedFillsLineEndsOnSpace = QStringLiteral("\t") + QStringLiteral("X").repeated(textWrappingLength - 1 - tabWidth) + ' ';
         const int posInSecondWrappedLineToChange = 3;
         QString expectedText = indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace;
         expectedText[textWrappingLength - tabWidth + posInSecondWrappedLineToChange] = '.';
-        DoTest(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
-               QString("fXf ") + QString::number(posInSecondWrappedLineToChange) + "lgkgjr.",
-               expectedText);
+        DoTest(QString(indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace).toUtf8().constData(),
+               QString(QStringLiteral("fXf ") + QString::number(posInSecondWrappedLineToChange) + QStringLiteral("lgkgjr.")).toUtf8().constData(),
+               expectedText.toUtf8().constData());
     }
 
     {
@@ -255,12 +264,14 @@ void ViewTest::visualLineUpDownTests()
         // move right until we wrap and end up at posInWrappedLineToChange one the second line of the wrapped line.
         // We then move up and down with j and k to set the sticky column to a value to large to adhere to in a
         // visual line, and try to move a visual line up.
-        const QString dummyLineForUseWithK("dummylineforusewithk\n");
+        const QString dummyLineForUseWithK(QStringLiteral("dummylineforusewithk\n"));
         QString startText = dummyLineForUseWithK + fillsLineAndEndsOnSpace.repeated(2);
         const int posInWrappedLineToChange = 3;
         QString expectedText = startText;
         expectedText[dummyLineForUseWithK.length() + posInWrappedLineToChange] = '.';
-        DoTest(startText, 'j' + QString::number(textWrappingLength + posInWrappedLineToChange) + "lkjgkr.", expectedText);
+        DoTest(startText.toUtf8().constData(),
+               QString(QStringLiteral("j") + QString::number(textWrappingLength + posInWrappedLineToChange) + QStringLiteral("lkjgkr.")).toUtf8().constData(),
+               expectedText.toUtf8().constData());
     }
 
     {
@@ -268,37 +279,39 @@ void ViewTest::visualLineUpDownTests()
         Q_ASSERT(fillsLineAndEndsOnSpace.toLower() != fillsLineAndEndsOnSpace);
         QString expectedText = fillsLineAndEndsOnSpace.toLower() + fillsLineAndEndsOnSpace;
         expectedText[textWrappingLength] = expectedText[textWrappingLength].toLower();
-        DoTest(fillsLineAndEndsOnSpace.repeated(2), "vgjgu", expectedText);
+        DoTest(fillsLineAndEndsOnSpace.repeated(2).toUtf8().constData(), QStringLiteral("vgjgu").toUtf8().constData(), expectedText.toUtf8().constData());
     }
 
     {
         // Ensure gk works in Visual mode.
         Q_ASSERT(fillsLineAndEndsOnSpace.toLower() != fillsLineAndEndsOnSpace);
-        DoTest(fillsLineAndEndsOnSpace.repeated(2), "$vgkgu", fillsLineAndEndsOnSpace + fillsLineAndEndsOnSpace.toLower());
+        DoTest(fillsLineAndEndsOnSpace.repeated(2).toUtf8().constData(),
+               QStringLiteral("$vgkgu").toUtf8().constData(),
+               QString(fillsLineAndEndsOnSpace + fillsLineAndEndsOnSpace.toLower()).toUtf8().constData());
     }
 
     {
         // Some tests for how well we handle things with real tabs.
-        QString beginsWithTabFillsLineEndsOnSpace = "\t";
+        QString beginsWithTabFillsLineEndsOnSpace = QStringLiteral("\t");
         while (beginsWithTabFillsLineEndsOnSpace.length() + (tabWidth - 1) < textWrappingLength - 1) {
             beginsWithTabFillsLineEndsOnSpace += 'X';
         }
         beginsWithTabFillsLineEndsOnSpace += ' ';
-        const QString unindentedFirstLine = "stockyhelper\n";
+        const QString unindentedFirstLine = QStringLiteral("stockyhelper\n");
         const int posOnThirdLineToChange = 3;
         QString expectedThirdLine = fillsLineAndEndsOnSpace;
         expectedThirdLine[posOnThirdLineToChange] = '.';
-        DoTest(unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
-               QString("l").repeated(tabWidth + posOnThirdLineToChange) + "gjgjr.",
-               unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + expectedThirdLine);
+        DoTest((unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace).toUtf8().constData(),
+               QString(QStringLiteral("l").repeated(tabWidth + posOnThirdLineToChange) + QStringLiteral("gjgjr.")).toUtf8().constData(),
+               (unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + expectedThirdLine).toUtf8().constData());
 
         // As above, but go down twice and return to the middle line.
         const int posOnSecondLineToChange = 2;
         QString expectedSecondLine = beginsWithTabFillsLineEndsOnSpace;
         expectedSecondLine[posOnSecondLineToChange + 1 /* "+1" as we're not counting the leading tab as a pos */] = '.';
-        DoTest(unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
-               QString("l").repeated(tabWidth + posOnSecondLineToChange) + "gjgjgkr.",
-               unindentedFirstLine + expectedSecondLine + fillsLineAndEndsOnSpace);
+        DoTest((unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace).toUtf8().constData(),
+               QString(QStringLiteral("l").repeated(tabWidth + posOnSecondLineToChange) + QStringLiteral("gjgjgkr.")).toUtf8().constData(),
+               QString(unindentedFirstLine + expectedSecondLine + fillsLineAndEndsOnSpace).toUtf8().constData());
     }
 
     // Restore back to how we were before.
@@ -314,8 +327,13 @@ void ViewTest::ScrollViewTests()
 
     // First of all, we have to initialize some sizes and fonts.
     ensureKateViewVisible();
+<<<<<<< Updated upstream
     const QFont oldFont = kate_view->renderer()->config()->baseFont();
     QFont fixedWidthFont("Monospace");
+=======
+    const QFont oldFont = kate_view->rendererConfig()->baseFont();
+    QFont fixedWidthFont(QStringLiteral("Monospace"));
+>>>>>>> Stashed changes
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
     fixedWidthFont.setPixelSize(14);
     Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(), "setting up ScrollViewTests", "Need a fixed pitch font!");
@@ -324,58 +342,58 @@ void ViewTest::ScrollViewTests()
     // Generating our text here.
     QString text;
     for (int i = 0; i < 20; i++) {
-        text += "    aaaaaaaaaaaaaaaa\n";
+        text += QLatin1String("    aaaaaaaaaaaaaaaa\n");
     }
 
     // TODO: fix the visibleRange's tests.
 
     // zz
     BeginTest(text);
-    TestPressKey("10l9jzz");
+    TestPressKey(QStringLiteral("10l9jzz"));
     QCOMPARE(kate_view->cursorPosition().line(), 9);
     QCOMPARE(kate_view->cursorPosition().column(), 10);
     QCOMPARE(kate_view->visibleRange(), Range(4, 0, 13, 20));
-    FinishTest(text);
+    FinishTest(text.toUtf8().constData());
 
     // z.
     BeginTest(text);
-    TestPressKey("10l9jz.");
+    TestPressKey(QStringLiteral("10l9jz."));
     QCOMPARE(kate_view->cursorPosition().line(), 9);
     QCOMPARE(kate_view->cursorPosition().column(), 4);
     QCOMPARE(kate_view->visibleRange(), Range(4, 0, 13, 20));
-    FinishTest(text);
+    FinishTest(text.toUtf8().constData());
 
     // zt
     BeginTest(text);
-    TestPressKey("10l9jzt");
+    TestPressKey(QStringLiteral("10l9jzt"));
     QCOMPARE(kate_view->cursorPosition().line(), 9);
     QCOMPARE(kate_view->cursorPosition().column(), 10);
     QCOMPARE(kate_view->visibleRange(), Range(9, 0, 18, 20));
-    FinishTest(text);
+    FinishTest(text.toUtf8().constData());
 
     // z<cr>
     BeginTest(text);
-    TestPressKey("10l9jz\\return");
+    TestPressKey(QStringLiteral("10l9jz\\return"));
     QCOMPARE(kate_view->cursorPosition().line(), 9);
     QCOMPARE(kate_view->cursorPosition().column(), 4);
     QCOMPARE(kate_view->visibleRange(), Range(9, 0, 18, 20));
-    FinishTest(text);
+    FinishTest(text.toUtf8().constData());
 
     // zb
     BeginTest(text);
-    TestPressKey("10l9jzb");
+    TestPressKey(QStringLiteral("10l9jzb"));
     QCOMPARE(kate_view->cursorPosition().line(), 9);
     QCOMPARE(kate_view->cursorPosition().column(), 10);
     QCOMPARE(kate_view->visibleRange(), Range(0, 0, 9, 20));
-    FinishTest(text);
+    FinishTest(text.toUtf8().constData());
 
     // z-
     BeginTest(text);
-    TestPressKey("10l9jz-");
+    TestPressKey(QStringLiteral("10l9jz-"));
     QCOMPARE(kate_view->cursorPosition().line(), 9);
     QCOMPARE(kate_view->cursorPosition().column(), 4);
     QCOMPARE(kate_view->visibleRange(), Range(0, 0, 9, 20));
-    FinishTest(text);
+    FinishTest(text.toUtf8().constData());
 
     // Restore back to how we were before.
     kate_view->renderer()->config()->setFont(oldFont);

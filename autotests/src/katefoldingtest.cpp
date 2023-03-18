@@ -40,9 +40,9 @@ void KateFoldingTest::cleanupTestCase()
 void KateFoldingTest::testCrash311866()
 {
     KTextEditor::DocumentPrivate doc;
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug311866.cpp"));
+    const QUrl url = QUrl::fromLocalFile(QStringLiteral(TEST_DATA_DIR "bug311866.cpp"));
     doc.openUrl(url);
-    doc.setHighlightingMode("C++");
+    doc.setHighlightingMode(QStringLiteral("C++"));
     doc.buffer().ensureHighlighted(6);
 
     const std::unique_ptr<ViewPrivate> view{static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr))};
@@ -70,12 +70,12 @@ void KateFoldingTest::testCrash311866()
 void KateFoldingTest::testBug295632()
 {
     KTextEditor::DocumentPrivate doc;
-    QString text =
+    QString text = QStringLiteral(
         "oooossssssss\n"
         "{\n"
         "\n"
         "}\n"
-        "ssssss----------";
+        "ssssss----------");
     doc.setText(text);
 
     // view must be visible...
@@ -95,11 +95,11 @@ void KateFoldingTest::testBug295632()
     view->setCursorPosition(Cursor(4, 6));
 
     QTest::qWait(100);
-    doc.typeChars(view.get(), "x");
+    doc.typeChars(view.get(), QStringLiteral("x"));
     QTest::qWait(100);
 
     QString line = doc.line(0);
-    QCOMPARE(line, QString("oooox----------"));
+    QCOMPARE(line, QStringLiteral("oooox----------"));
 }
 
 // This testcase tests the following:
@@ -113,13 +113,13 @@ void KateFoldingTest::testCrash367466()
     KTextEditor::DocumentPrivate doc;
 
     // we use only x to have equal width characters, else we fail for non-fixed width fonts
-    QString text =
+    QString text = QStringLiteral(
         "xxxx xxxx\n"
         "\n"
         "\n"
         "xxxx xxx\n"
         "xxxxx\n"
-        "xxxxx\n";
+        "xxxxx\n");
     doc.setText(text);
 
     // view must be visible...

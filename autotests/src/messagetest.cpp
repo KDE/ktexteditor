@@ -37,7 +37,7 @@ void MessageTest::testPostMessage()
     view->resize(400, 300);
     (void)QTest::qWaitForWindowExposed(view);
 
-    QPointer<Message> message = new Message("Message text", Message::Information);
+    QPointer<Message> message = new Message(QStringLiteral("Message text"), Message::Information);
     message->setPosition(Message::TopInView);
 
     // posing message should succeed
@@ -69,7 +69,7 @@ void MessageTest::testAutoHide()
     // show a message with autoHide. Check, if it's deleted correctly
     // auto hide mode: Message::Immediate
     //
-    QPointer<Message> message = new Message("Message text", Message::Information);
+    QPointer<Message> message = new Message(QStringLiteral("Message text"), Message::Information);
     message->setPosition(Message::TopInView);
     message->setAutoHide(1000);
     message->setAutoHideMode(Message::Immediate);
@@ -101,7 +101,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
     // show a message with autoHide. Check, if it's deleted correctly
     // auto hide mode: Message::AfterUserInteraction
     //
-    QPointer<Message> message = new Message("Message text", Message::Information);
+    QPointer<Message> message = new Message(QStringLiteral("Message text"), Message::Information);
     message->setPosition(Message::TopInView);
     message->setAutoHide(2000);
     QVERIFY(message->autoHideMode() == Message::AfterUserInteraction);
@@ -112,7 +112,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
     QVERIFY(view->messageWidget()->isVisible());
 
     // now trigger user interaction after 1 second
-    view->insertText("Hello world");
+    view->insertText(QStringLiteral("Hello world"));
     view->setCursorPosition(Cursor(0, 5));
 
     // should still be there after deleted after another 1.9 seconds
@@ -144,12 +144,12 @@ void MessageTest::testMessageQueue()
     // add two messages, both with autoHide to 1 second, and check that the queue is processed correctly
     // auto hide mode: Message::Immediate
     //
-    QPointer<Message> m1 = new Message("Info text", Message::Information);
+    QPointer<Message> m1 = new Message(QStringLiteral("Info text"), Message::Information);
     m1->setPosition(Message::TopInView);
     m1->setAutoHide(1000);
     m1->setAutoHideMode(Message::Immediate);
 
-    QPointer<Message> m2 = new Message("Error text", Message::Error);
+    QPointer<Message> m2 = new Message(QStringLiteral("Error text"), Message::Error);
     m2->setPosition(Message::TopInView);
     m2->setAutoHide(1000);
     m2->setAutoHideMode(Message::Immediate);
@@ -205,11 +205,11 @@ void MessageTest::testPriority()
     // - m1 should be hidden in favour of m2
     // - changing text of m1 while m2 is displayed should not change the displayed text
     //
-    QPointer<Message> m1 = new Message("m1", Message::Positive);
+    QPointer<Message> m1 = new Message(QStringLiteral("m1"), Message::Positive);
     m1->setPosition(Message::TopInView);
     QVERIFY(m1->priority() == 0);
 
-    QPointer<Message> m2 = new Message("m2", Message::Error);
+    QPointer<Message> m2 = new Message(QStringLiteral("m2"), Message::Error);
     m2->setPosition(Message::TopInView);
     m2->setAutoHide(1000);
     m2->setAutoHideMode(Message::Immediate);
@@ -222,7 +222,7 @@ void MessageTest::testPriority()
     // after 1s, message should be displayed
     QTest::qWait(1000);
     QVERIFY(view->messageWidget()->isVisible());
-    QCOMPARE(view->messageWidget()->text(), QString("m1"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("m1"));
     QVERIFY(m1.data() != nullptr);
 
     // post m2, m1 should be hidden, and m2 visible
@@ -231,11 +231,11 @@ void MessageTest::testPriority()
 
     // alter text of m1 when m2 is visible, shouldn't influence m2
     QTest::qWait(600);
-    m1->setText("m1 changed");
+    m1->setText(QStringLiteral("m1 changed"));
 
     // after 0.7 seconds, m2 is visible
     QTest::qWait(100);
-    QCOMPARE(view->messageWidget()->text(), QString("m2"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("m2"));
     QVERIFY(m2.data() != nullptr);
 
     // after 1.6 seconds, m2 is hidden again and m1 is visible again
@@ -246,7 +246,7 @@ void MessageTest::testPriority()
 
     // finally check m1 again
     QTest::qWait(1000);
-    QCOMPARE(view->messageWidget()->text(), QString("m1 changed"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("m1 changed"));
 }
 
 void MessageTest::testCreateView()
@@ -261,7 +261,7 @@ void MessageTest::testCreateView()
     // - verify that both views get the message
     // - verify that, once the message is deleted, both views hide the message
     //
-    QPointer<Message> m1 = new Message("message", Message::Positive);
+    QPointer<Message> m1 = new Message(QStringLiteral("message"), Message::Positive);
     m1->setPosition(Message::TopInView);
     QVERIFY(m1->priority() == 0);
 
@@ -282,8 +282,8 @@ void MessageTest::testCreateView()
     // make sure both views show the message
     QVERIFY(v1->messageWidget()->isVisible());
     QVERIFY(v2->messageWidget()->isVisible());
-    QCOMPARE(v1->messageWidget()->text(), QString("message"));
-    QCOMPARE(v2->messageWidget()->text(), QString("message"));
+    QCOMPARE(v1->messageWidget()->text(), QStringLiteral("message"));
+    QCOMPARE(v2->messageWidget()->text(), QStringLiteral("message"));
     QVERIFY(m1.data() != nullptr);
 
     // delete message, then check after fadeout time 0f 0.5s whether message is gone
@@ -304,7 +304,7 @@ void MessageTest::testHideView()
     QTest::qWait(1000);
 
     // create message that hides after 2s immediately
-    QPointer<Message> message = new Message("Message text", Message::Information);
+    QPointer<Message> message = new Message(QStringLiteral("Message text"), Message::Information);
     message->setAutoHide(2000);
     message->setAutoHideMode(Message::Immediate);
     message->setPosition(Message::TopInView);
@@ -320,7 +320,7 @@ void MessageTest::testHideView()
     //
     QTest::qWait(1100);
     QVERIFY(view->messageWidget()->isVisible());
-    QCOMPARE(view->messageWidget()->text(), QString("Message text"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("Message text"));
 
     // hide view
     view->hide();
@@ -332,7 +332,7 @@ void MessageTest::testHideView()
     // show view again, message contents should be fading for the lasting 300 ms
     view->show();
     QVERIFY(view->messageWidget()->isVisible());
-    QCOMPARE(view->messageWidget()->text(), QString("Message text"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("Message text"));
 
     // wait another 0.5s, then message widget should be hidden
     QTest::qWait(500);
@@ -351,7 +351,7 @@ void MessageTest::testHideViewAfterUserInteraction()
     QTest::qWait(1000);
 
     // create message that hides after 2s immediately
-    QPointer<Message> message = new Message("Message text", Message::Information);
+    QPointer<Message> message = new Message(QStringLiteral("Message text"), Message::Information);
     message->setAutoHide(2000);
     QVERIFY(message->autoHideMode() == Message::AfterUserInteraction);
     message->setPosition(Message::TopInView);
@@ -367,7 +367,7 @@ void MessageTest::testHideViewAfterUserInteraction()
     //
     QTest::qWait(1500);
     QVERIFY(view->messageWidget()->isVisible());
-    QCOMPARE(view->messageWidget()->text(), QString("Message text"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("Message text"));
 
     // hide view
     view->hide();
@@ -382,14 +382,14 @@ void MessageTest::testHideViewAfterUserInteraction()
     //
     view->show();
     QTest::qWait(2000);
-    view->insertText("Hello world");
+    view->insertText(QStringLiteral("Hello world"));
     view->setCursorPosition(Cursor(0, 5));
 
     // wait 1.5s and check that message is still displayed
     QTest::qWait(1500);
     QVERIFY(message.data() != nullptr);
     QVERIFY(view->messageWidget()->isVisible());
-    QCOMPARE(view->messageWidget()->text(), QString("Message text"));
+    QCOMPARE(view->messageWidget()->text(), QStringLiteral("Message text"));
 
     // wait another 0.8s, then the message is deleted
     QTest::qWait(800);

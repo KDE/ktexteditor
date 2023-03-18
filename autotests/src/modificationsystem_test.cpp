@@ -50,7 +50,7 @@ void ModificationSystemTest::testInsertText()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("first line\n");
+    const QString content(QStringLiteral("first line\n"));
     doc.setText(content);
 
     // now all lines should have state "Modified"
@@ -67,7 +67,7 @@ void ModificationSystemTest::testInsertText()
 
     // now we have an a unmodified file, start real tests
     // insert text in line 0, then undo and redo
-    doc.insertText(Cursor(0, 2), "_");
+    doc.insertText(Cursor(0, 2), QStringLiteral("_"));
     QVERIFY(doc.isLineModified(0));
     QVERIFY(!doc.isLineSaved(0));
 
@@ -104,7 +104,7 @@ void ModificationSystemTest::testRemoveText()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("first line\n");
+    const QString content(QStringLiteral("first line\n"));
     doc.setText(content);
 
     // now all lines should have state "Modified"
@@ -159,8 +159,8 @@ void ModificationSystemTest::testInsertLine()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "0\n"
-        "2");
+        QStringLiteral("0\n"
+                       "2"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -169,7 +169,7 @@ void ModificationSystemTest::testInsertLine()
     clearModificationFlags(&doc);
 
     // insert at line 1
-    doc.insertLine(1, "1");
+    doc.insertLine(1, QStringLiteral("1"));
 
     QVERIFY(!doc.isLineModified(0));
     QVERIFY(doc.isLineModified(1));
@@ -228,9 +228,9 @@ void ModificationSystemTest::testRemoveLine()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "0\n"
-        "1\n"
-        "2");
+        QStringLiteral("0\n"
+                       "1\n"
+                       "2"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -296,9 +296,9 @@ void ModificationSystemTest::testWrapLineMid()
         KTextEditor::DocumentPrivate doc;
 
         const QString content(
-            "aaaa\n"
-            "bbbb\n"
-            "cccc");
+            QStringLiteral("aaaa\n"
+                           "bbbb\n"
+                           "cccc"));
         doc.setText(content);
 
         // clear all modification flags, forces no flags
@@ -367,8 +367,8 @@ void ModificationSystemTest::testWrapLineAtEnd()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "aaaa\n"
-        "bbbb");
+        QStringLiteral("aaaa\n"
+                       "bbbb"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -436,8 +436,8 @@ void ModificationSystemTest::testWrapLineAtStart()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "aaaa\n"
-        "bbbb");
+        QStringLiteral("aaaa\n"
+                       "bbbb"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -505,9 +505,9 @@ void ModificationSystemTest::testUnWrapLine()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "aaaa\n"
-        "bbbb\n"
-        "cccc");
+        QStringLiteral("aaaa\n"
+                       "bbbb\n"
+                       "cccc"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -571,9 +571,9 @@ void ModificationSystemTest::testUnWrapLine1Empty()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "aaaa\n"
-        "\n"
-        "bbbb");
+        QStringLiteral("aaaa\n"
+                       "\n"
+                       "bbbb"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -637,9 +637,9 @@ void ModificationSystemTest::testUnWrapLine2Empty()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "aaaa\n"
-        "\n"
-        "bbbb");
+        QStringLiteral("aaaa\n"
+                       "\n"
+                       "bbbb"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -703,9 +703,9 @@ void ModificationSystemTest::testNavigation()
     KTextEditor::DocumentPrivate doc;
 
     const QString content(
-        "0\n"
-        "1\n"
-        "2");
+        QStringLiteral("0\n"
+                       "1\n"
+                       "2"));
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -714,8 +714,8 @@ void ModificationSystemTest::testNavigation()
     clearModificationFlags(&doc);
 
     // touch line 0 and line 2:
-    doc.insertText(Cursor(0, 1), QLatin1String("-"));
-    doc.insertText(Cursor(2, 1), QLatin1String("-"));
+    doc.insertText(Cursor(0, 1), QStringLiteral("-"));
+    doc.insertText(Cursor(2, 1), QStringLiteral("-"));
 
     // test down navigation:
     const bool down = true;

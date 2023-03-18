@@ -127,7 +127,7 @@ InlineNoteTest::~InlineNoteTest()
 void InlineNoteTest::testInlineNote()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText(QLatin1String("xxxxxxxxxx\nxxxxxxxxxx"));
+    doc.setText(QStringLiteral("xxxxxxxxxx\nxxxxxxxxxx"));
 
     KTextEditor::ViewPrivate view(&doc, nullptr);
     view.show();

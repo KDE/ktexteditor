@@ -64,7 +64,7 @@ void CamelCursorTest::testWordMovementSingleRow_data()
     QTest::addRow("aQQ_OPEN")             << QStringLiteral("    aQQ_OPEN")                 << 4 << QVector<int>{4, 5, 8, 12} << QString();
 
     // PHP stuff that starts with $
-    doc->setHighlightingMode("PHP/PHP");
+    doc->setHighlightingMode(QStringLiteral("PHP/PHP"));
     QTest::addRow("$phpVar")              << QStringLiteral("$phpVar = 0;")                 << 6 << QVector<int>{1, 4, 8, 10, 11, 12} << QStringLiteral("PHP/PHP");
     QTest::addRow("$php_Var")             << QStringLiteral("$php_Var = 0;")                << 6 << QVector<int>{1, 5, 9, 11, 12, 13} << QStringLiteral("PHP/PHP");
     QTest::addRow("$_SESSION")            << QStringLiteral("$_SESSION[\"some\"]")          << 6 << QVector<int>{1, 2, 9, 11, 15, 17} << QStringLiteral("PHP/PHP");
@@ -169,7 +169,7 @@ void CamelCursorTest::testWordMovementMultipleRow()
 
 void CamelCursorTest::testDeletionRight()
 {
-    doc->setText("SomeWord");
+    doc->setText(QStringLiteral("SomeWord"));
     view->setCursorPosition({0, 0});
 
     view->deleteWordRight();
@@ -177,7 +177,7 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some Word");
+    doc->setText(QStringLiteral("Some Word"));
     view->setCursorPosition({0, 0});
 
     view->deleteWordRight();
@@ -185,7 +185,7 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some_WORD");
+    doc->setText(QStringLiteral("Some_WORD"));
     view->setCursorPosition({0, 0});
 
     view->deleteWordRight();
@@ -193,7 +193,7 @@ void CamelCursorTest::testDeletionRight()
     view->deleteWordRight();
     QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some      WORD");
+    doc->setText(QStringLiteral("Some      WORD"));
     view->setCursorPosition({0, 0});
 
     view->deleteWordRight();
@@ -204,28 +204,28 @@ void CamelCursorTest::testDeletionRight()
 
 void CamelCursorTest::testDeletionLeft()
 {
-    doc->setText("SomeWord");
+    doc->setText(QStringLiteral("SomeWord"));
     view->setCursorPosition({0, 8});
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some"));
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some Word");
+    doc->setText(QStringLiteral("Some Word"));
     view->setCursorPosition({0, 9});
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some "));
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some_WORD");
+    doc->setText(QStringLiteral("Some_WORD"));
     view->setCursorPosition({0, 9});
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some_"));
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QString());
 
-    doc->setText("Some   WORD");
+    doc->setText(QStringLiteral("Some   WORD"));
     view->setCursorPosition({0, 11});
     view->deleteWordLeft();
     QCOMPARE(doc->text(), QStringLiteral("Some   "));
@@ -235,13 +235,13 @@ void CamelCursorTest::testDeletionLeft()
 
 void CamelCursorTest::testSelectionRight()
 {
-    doc->setText("HelloWorld");
+    doc->setText(QStringLiteral("HelloWorld"));
     view->setCursorPosition({0, 0});
     view->shiftWordRight();
     QCOMPARE(view->selectionText(), QStringLiteral("Hello"));
     QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 0, 0, 5));
 
-    doc->setText("Hello\nWorld");
+    doc->setText(QStringLiteral("Hello\nWorld"));
     view->setCursorPosition({0, 0});
     view->shiftWordRight();
     view->shiftWordRight();
@@ -251,13 +251,13 @@ void CamelCursorTest::testSelectionRight()
 
 void CamelCursorTest::testSelectionLeft()
 {
-    doc->setText("HelloWorld");
+    doc->setText(QStringLiteral("HelloWorld"));
     view->setCursorPosition({0, 10});
     view->shiftWordLeft();
     QCOMPARE(view->selectionText(), QStringLiteral("World"));
     QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 5, 0, 10));
 
-    doc->setText("Hello\nWorld");
+    doc->setText(QStringLiteral("Hello\nWorld"));
     view->setCursorPosition({1, 0});
     view->shiftWordLeft();
     view->shiftWordLeft();

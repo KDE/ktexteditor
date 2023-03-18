@@ -39,13 +39,13 @@ QTEST_MAIN(ScriptingTest)
 void ScriptingTest::initTestCase()
 {
     ScriptTestBase::initTestCase();
-    m_section = "scripting";
-    m_script_dir = "";
+    m_section = QStringLiteral("scripting");
+    m_script_dir = QString();
 }
 
 void ScriptingTest::bugs_data()
 {
-    getTestData("bugs");
+    getTestData(QStringLiteral("bugs"));
 }
 
 void ScriptingTest::bugs()

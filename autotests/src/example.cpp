@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     //     v->setCursorPosition({6, 16});
 
     QToolBar tb(&m);
-    tb.addAction("Config...", &m, [e, &m] {
+    tb.addAction(QStringLiteral("Config..."), &m, [e, &m] {
         e->configDialog(&m);
     });
 
