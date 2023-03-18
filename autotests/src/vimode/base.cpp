@@ -257,7 +257,7 @@ Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int sta
     for (auto it = m_codesToModifiers.constBegin(), end = m_codesToModifiers.constEnd(); it != end; ++it) {
         const QString &modifierCode = it.key();
         // The "+2" is from the leading '\' and the trailing '-'
-        if (string.mid(startPos, modifierCode.length() + 2) == QStringLiteral("\\") + modifierCode + "-") {
+        if (string.mid(startPos, modifierCode.length() + 2) == QStringLiteral("\\") + modifierCode + QStringLiteral("-")) {
             if (destEndOfCodedModifier) {
                 // destEndOfCodeModifier lies on the trailing '-'.
                 *destEndOfCodedModifier = startPos + modifierCode.length() + 1;

@@ -776,13 +776,9 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     FinishTest("foo\nbar\nbbc");
 
     // Search-highlighting tests.
-<<<<<<< Updated upstream
     const QColor searchHighlightColour = kate_view->renderer()->config()->searchHighlightColor();
-    BeginTest("foo bar xyz");
-=======
-    const QColor searchHighlightColour = kate_view->rendererConfig()->searchHighlightColor();
     BeginTest(QStringLiteral("foo bar xyz"));
->>>>>>> Stashed changes
+
     // Sanity test.
     const QVector<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
@@ -1001,28 +997,24 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QVERIFY(searchHistory().isEmpty());
     vi_global->searchHistory()->append(QStringLiteral("foo"));
     vi_global->searchHistory()->append(QStringLiteral("bar"));
-    QCOMPARE(searchHistory(),
-             QStringList() << "foo"
-                           << "bar");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("foo") << QStringLiteral("bar"));
     clearSearchHistory();
     QVERIFY(searchHistory().isEmpty());
 
     // Ensure current search bar text is added to the history if we press enter.
     DoTest("foo bar", "/bar\\enter", "foo bar");
     DoTest("foo bar", "/xyz\\enter", "foo bar");
-    QCOMPARE(searchHistory(),
-             QStringList() << "bar"
-                           << "xyz");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("bar") << QStringLiteral("xyz"));
     // Interesting - Vim adds the search bar text to the history even if we abort via e.g. ctrl-c, ctrl-[, etc.
     clearSearchHistory();
     DoTest("foo bar", "/baz\\ctrl-[", "foo bar");
-    QCOMPARE(searchHistory(), QStringList() << "baz");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("baz"));
     clearSearchHistory();
     DoTest("foo bar", "/foo\\esc", "foo bar");
-    QCOMPARE(searchHistory(), QStringList() << "foo");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("foo"));
     clearSearchHistory();
     DoTest("foo bar", "/nose\\ctrl-c", "foo bar");
-    QCOMPARE(searchHistory(), QStringList() << "nose");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("nose"));
 
     clearSearchHistory();
     vi_global->searchHistory()->append(QStringLiteral("foo"));
@@ -1138,10 +1130,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     vi_global->searchHistory()->append(QStringLiteral("xyz"));
     vi_global->searchHistory()->append(QStringLiteral("foo"));
     vi_global->searchHistory()->append(QStringLiteral("xyz"));
-    QCOMPARE(searchHistory(),
-             QStringList() << "bar"
-                           << "foo"
-                           << "xyz");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("bar") << QStringLiteral("foo") << QStringLiteral("xyz"));
 
     // Push out older entries if we have too many search items in the history.
     const int HISTORY_SIZE_LIMIT = 100;
@@ -1204,10 +1193,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral("/\\ctrl- "));
     QStringListModel *completerStringListModel = dynamic_cast<QStringListModel *>(emulatedCommandBarCompleter()->model());
     Q_ASSERT(completerStringListModel);
-    QCOMPARE(completerStringListModel->stringList(),
-             QStringList() << "bar"
-                           << "foo"
-                           << "xyz");
+    QCOMPARE(completerStringListModel->stringList(), QStringList() << QStringLiteral("bar") << QStringLiteral("foo") << QStringLiteral("xyz"));
     TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
     FinishTest("bar (foo) [xyz]");
 
@@ -1231,17 +1217,17 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QStringList manyLines;
     for (int i = 1; i < 2 * 4096 + 3; i++) {
         // Pad the digits so that when sorted alphabetically, they are also sorted numerically.
-        manyLines << QStringLiteral("word%1").arg(i, 5, 10, QChar('0'));
+        manyLines << QStringLiteral("word%1").arg(i, 5, 10, QLatin1Char('0'));
     }
     QStringList allButFirstAndLastOfManyLines = manyLines;
     allButFirstAndLastOfManyLines.removeFirst();
     allButFirstAndLastOfManyLines.removeLast();
 
-    BeginTest(manyLines.join(QStringLiteral("\n")).toUtf8().constData());
+    BeginTest(manyLines.join(QStringLiteral("\n")));
     TestPressKey(QStringLiteral("4097j/\\ctrl- "));
     verifyCommandBarCompletionsMatches(allButFirstAndLastOfManyLines);
     TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.
-    FinishTest(manyLines.join("\n").toUtf8().constData());
+    FinishTest(manyLines.join(QStringLiteral("\n")).toUtf8().constData());
 
     // "The current word" means the word before the cursor in the command bar, and includes numbers
     // and underscores. Make sure also that the completion prefix is set when the completion is first invoked.
@@ -1519,7 +1505,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         QVERIFY(!emulatedCommandBarTextEdit()->isVisible());
         QVERIFY(!emulatedCommandTypeIndicator()->isVisible());
         // Be a bit vague about the exact message, due to i18n, etc.
-        QVERIFY(commandResponseMessageDisplay()->text().contains("commandthatdoesnotexist"));
+        QVERIFY(commandResponseMessageDisplay()->text().contains(QStringLiteral("commandthatdoesnotexist")));
         waitForEmulatedCommandBarToHide(4 * commandResponseMessageTimeOutMS);
         QVERIFY(timeJustBeforeCommandExecuted.msecsTo(QDateTime::currentDateTime())
                 >= commandResponseMessageTimeOutMS - 500); // "- 500" because coarse timers can fire up to 500ms *prematurely*.
@@ -1661,7 +1647,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QLatin1String(""));
     TestPressKey(QStringLiteral(":se\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    QVERIFY(emulatedCommandBarTextEdit()->text() != "se");
+    QVERIFY(emulatedCommandBarTextEdit()->text() != QStringLiteral("se"));
     TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completer
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QStringLiteral("se"));
     TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss bar
@@ -1711,7 +1697,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QLatin1String(""));
     TestPressKey(QStringLiteral(":set-\\ctrl-p"));
     verifyCommandBarCompletionVisible();
-    QVERIFY(emulatedCommandBarTextEdit()->text() != "set-");
+    QVERIFY(emulatedCommandBarTextEdit()->text() != QLatin1String("set-"));
     QVERIFY(emulatedCommandBarCompleter()->currentCompletion().startsWith(QLatin1String("set-")));
     QCOMPARE(emulatedCommandBarTextEdit()->text(), emulatedCommandBarCompleter()->currentCompletion());
     TestPressKey(QStringLiteral("\\ctrl-c")); // Dismiss completion.
@@ -1768,9 +1754,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QVERIFY(commandHistory().isEmpty());
     vi_global->commandHistory()->append(QStringLiteral("foo"));
     vi_global->commandHistory()->append(QStringLiteral("bar"));
-    QCOMPARE(commandHistory(),
-             QStringList() << "foo"
-                           << "bar");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("foo") << QStringLiteral("bar"));
     clearCommandHistory();
     QVERIFY(commandHistory().isEmpty());
 
@@ -1781,10 +1765,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     vi_global->commandHistory()->append(QStringLiteral("xyz"));
     vi_global->commandHistory()->append(QStringLiteral("foo"));
     vi_global->commandHistory()->append(QStringLiteral("xyz"));
-    QCOMPARE(commandHistory(),
-             QStringList() << "bar"
-                           << "foo"
-                           << "xyz");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("bar") << QStringLiteral("foo") << QStringLiteral("xyz"));
 
     // Push out older entries if we have too many command items in the history.
     clearCommandHistory();
@@ -1807,7 +1788,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearCommandHistory();
     BeginTest(QLatin1String(""));
     TestPressKey(QStringLiteral(":sort\\enter"));
-    QCOMPARE(commandHistory(), QStringList() << "sort");
+    QCOMPARE(commandHistory(), QStringList() << QStringLiteral("sort"));
     TestPressKey(QStringLiteral(":yank\\enter"));
     QCOMPARE(commandHistory(), QStringList() << QStringLiteral("sort") << QStringLiteral("yank"));
     // Add to history immediately: don't wait for the command response display to timeout.
@@ -1896,9 +1877,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     QVERIFY(replaceHistory().isEmpty());
     vi_global->replaceHistory()->append(QStringLiteral("foo"));
     vi_global->replaceHistory()->append(QStringLiteral("bar"));
-    QCOMPARE(replaceHistory(),
-             QStringList() << "foo"
-                           << "bar");
+    QCOMPARE(replaceHistory(), QStringList() << QStringLiteral("foo") << QStringLiteral("bar"));
     clearReplaceHistory();
     QVERIFY(replaceHistory().isEmpty());
 
@@ -1909,10 +1888,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     vi_global->replaceHistory()->append(QStringLiteral("xyz"));
     vi_global->replaceHistory()->append(QStringLiteral("foo"));
     vi_global->replaceHistory()->append(QStringLiteral("xyz"));
-    QCOMPARE(replaceHistory(),
-             QStringList() << "bar"
-                           << "foo"
-                           << "xyz");
+    QCOMPARE(replaceHistory(), QStringList() << QStringLiteral("bar") << QStringLiteral("foo") << QStringLiteral("xyz"));
 
     // Push out older entries if we have too many replace items in the history.
     clearReplaceHistory();
@@ -2093,7 +2069,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearSearchHistory();
     BeginTest(QLatin1String(""));
     TestPressKey(QStringLiteral(":s/search/replace/g\\enter"));
-    QCOMPARE(searchHistory(), QStringList() << "search");
+    QCOMPARE(searchHistory(), QStringList() << QStringLiteral("search"));
     FinishTest("");
 
     // An aborted sed-replace should not add the search term to the search history.
@@ -2114,10 +2090,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearReplaceHistory();
     BeginTest(QLatin1String(""));
     TestPressKey(QStringLiteral(":s/search/replace/g\\enter"));
-    QCOMPARE(replaceHistory(), QStringList() << "replace");
+    QCOMPARE(replaceHistory(), QStringList() << QStringLiteral("replace"));
     clearReplaceHistory();
     TestPressKey(QStringLiteral(":'<,'>s/search/replace1/g\\enter"));
-    QCOMPARE(replaceHistory(), QStringList() << "replace1");
+    QCOMPARE(replaceHistory(), QStringList() << QStringLiteral("replace1"));
     FinishTest("");
 
     // An aborted sed-replace should not add the replace term to the replace history.
@@ -2817,32 +2793,32 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // replace with.
     // We're going to be a bit vague about the precise text due to localization issues.
     BeginTest(QStringLiteral("fabababbbar"));
-    TestPressKey(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/c\\enter");
-    QVERIFY(interactiveSedReplaceLabel->text().contains("1ABABABBBA2"));
+    TestPressKey(QStringLiteral(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/c\\enter"));
+    QVERIFY(interactiveSedReplaceLabel->text().contains(QStringLiteral("1ABABABBBA2")));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("fabababbbar");
 
     // Replace newlines in the "replace?" message with "\\n"
     BeginTest(QStringLiteral("foo"));
     TestPressKey(QStringLiteral(":s/foo/bar\\\\nxyz\\\\n123/c\\enter"));
-    QVERIFY(interactiveSedReplaceLabel->text().contains("bar\\nxyz\\n123"));
+    QVERIFY(interactiveSedReplaceLabel->text().contains(QStringLiteral("bar\\nxyz\\n123")));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("foo");
 
     // Update the "confirm replace?" message on pressing "y".
     BeginTest(QStringLiteral("fabababbbar fabbb"));
-    TestPressKey(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/gc\\enter");
+    TestPressKey(QStringLiteral(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/gc\\enter"));
     TestPressKey(QStringLiteral("y"));
-    QVERIFY(interactiveSedReplaceLabel->text().contains("1ABBB2"));
+    QVERIFY(interactiveSedReplaceLabel->text().contains(QStringLiteral("1ABBB2")));
     QVERIFY(interactiveSedReplaceLabel->text().contains(interactiveSedReplaceShortcuts));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("1ABABABBBA2r fabbb");
 
     // Update the "confirm replace?" message on pressing "n".
     BeginTest(QStringLiteral("fabababbbar fabab"));
-    TestPressKey(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/gc\\enter");
+    TestPressKey(QStringLiteral(":s/f\\\\([ab]\\\\+\\\\)/1\\\\U\\\\12/gc\\enter"));
     TestPressKey(QStringLiteral("n"));
-    QVERIFY(interactiveSedReplaceLabel->text().contains("1ABAB2"));
+    QVERIFY(interactiveSedReplaceLabel->text().contains(QStringLiteral("1ABAB2")));
     QVERIFY(interactiveSedReplaceLabel->text().contains(interactiveSedReplaceShortcuts));
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("fabababbbar fabab");

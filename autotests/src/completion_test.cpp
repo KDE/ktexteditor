@@ -451,7 +451,7 @@ void CompletionTest::testTabCompletion()
     QCOMPARE(m_doc->text(), QStringLiteral("ac\u008738"));
 
     // While at the bottom, going down cycles to the top of the list
-    m_doc->setText("a");
+    m_doc->setText(QStringLiteral("a"));
     m_view->completionWidget()->automaticInvocation();
     QVERIFY(m_view->completionWidget()->isCompletionActive());
     m_view->completionWidget()->cursorDown(); // Select first entry
@@ -550,7 +550,7 @@ void CompletionTest::testAsyncMatching()
 void CompletionTest::benchCompletionModel()
 {
     const int testFactor = 1;
-    const QString text("abcdefg abcdef");
+    const QString text(QStringLiteral("abcdefg abcdef"));
     m_doc->setText(text);
     CodeCompletionTestModel *testModel1 = new CodeCompletionTestModel(m_view, QStringLiteral("abcdefg"));
     testModel1->setRowCount(50 * testFactor);
