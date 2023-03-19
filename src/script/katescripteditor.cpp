@@ -8,8 +8,6 @@
 
 #include "kateglobal.h"
 
-using KTextEditor::EditorPrivate;
-
 #include <QApplication>
 #include <QClipboard>
 #include <QJSEngine>
@@ -39,5 +37,5 @@ QStringList KateScriptEditor::clipboardHistory() const
 
 void KateScriptEditor::setClipboardText(const QString &text)
 {
-    KTextEditor::EditorPrivate::self()->copyToClipboard(text, QStringLiteral());
+    KTextEditor::EditorPrivate::self()->copyToClipboard(text, QString());
 }
