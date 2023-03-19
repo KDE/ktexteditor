@@ -125,7 +125,7 @@ public:
      */
     QString toString() const
     {
-        return u'(' + QString::number(m_line) + u", " + QString::number(m_column) + u')';
+        return QStringLiteral("(%1, %2)").arg(m_line).arg(m_column);
     }
 
     /**

@@ -79,7 +79,7 @@ public:
      */
     QString toString() const
     {
-        return u'[' + QString::number(m_start) + u", " + QString::number(m_end) + u']';
+        return QStringLiteral("[%1, %2]").arg(m_start).arg(m_end);
     }
 
     /**

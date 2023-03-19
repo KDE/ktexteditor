@@ -124,7 +124,7 @@ public:
      */
     QString toString() const
     {
-        return u'[' + m_start.toString() + u", " + m_end.toString() + u']';
+        return QStringLiteral("[%1, %2]").arg(m_start.toString()).arg(m_end.toString());
     }
 
     /**
