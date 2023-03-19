@@ -20,6 +20,8 @@
 #include <QTemporaryFile>
 #include <QtTestWidgets>
 
+#include <KWindowSystem>
+
 #define testNewRow() (QTest::newRow(QStringLiteral("line %1").arg(__LINE__).toLatin1().data()))
 
 using namespace KTextEditor;
@@ -418,6 +420,11 @@ void KateViewTest::testDragAndDrop()
 #ifdef Q_OS_WIN
     QSKIP("Fails ATM, please fix");
 #endif
+
+    // no way to move mouse on wayland ATM
+    if (KWindowSystem::isPlatformWayland()) {
+        QSKIP("No mouse moving on Wayland");
+    }
 
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText(
