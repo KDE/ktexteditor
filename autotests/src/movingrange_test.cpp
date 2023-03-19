@@ -18,6 +18,8 @@
 #include <QTest>
 #include <qtestmouse.h>
 
+#include <KWindowSystem>
+
 using namespace KTextEditor;
 
 QTEST_MAIN(MovingRangeTest)
@@ -389,6 +391,11 @@ void MovingRangeTest::testFeedbackMouse()
 #ifdef Q_OS_WIN
     QSKIP("Fails ATM, please fix");
 #endif
+
+    // no way to move mouse on wayland ATM
+    if (KWindowSystem::isPlatformWayland()) {
+        QSKIP("No mouse moving on Wayland");
+    }
 
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
