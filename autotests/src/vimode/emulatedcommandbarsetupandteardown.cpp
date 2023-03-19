@@ -15,6 +15,7 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QMetaObject>
+#include <QTest>
 
 // BEGIN: WindowKeepActive
 
@@ -56,6 +57,9 @@ EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInp
     QApplication::processEvents();
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true);
     m_window->installEventFilter(&m_windowKeepActive);
+
+    (void)QTest::qWaitForWindowExposed(m_view);
+    QTest::qWait(100); // For whatever reason needed
 }
 EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
 {
