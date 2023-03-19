@@ -15,7 +15,7 @@
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/movingrangefeedback.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 #include <qtestmouse.h>
 
 using namespace KTextEditor;

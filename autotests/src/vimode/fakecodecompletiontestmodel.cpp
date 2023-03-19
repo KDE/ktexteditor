@@ -6,12 +6,15 @@
 */
 
 #include "fakecodecompletiontestmodel.h"
+#include "base.h"
 #include <QRegularExpression>
 #include <katecompletionwidget.h>
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
 #include <katewordcompletion.h>
+
+#include <QTest>
 
 using namespace KTextEditor;
 
@@ -181,3 +184,5 @@ void FakeCodeCompletionTestModel::checkIfShouldForceInvocation()
         BaseTest::waitForCompletionWidgetToActivate(m_kateView);
     }
 }
+
+#include "moc_fakecodecompletiontestmodel.cpp"

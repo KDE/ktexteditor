@@ -26,7 +26,10 @@
 #include <QClipboard>
 #include <QCompleter>
 #include <QLabel>
+#include <QLineEdit>
+#include <QMainWindow>
 #include <QStringListModel>
+#include <QTest>
 
 #include <KActionCollection>
 #include <KColorScheme>
@@ -3343,3 +3346,5 @@ void FailsIfSlotCalled::slot()
 {
     QFAIL(qPrintable(m_failureMessage));
 }
+
+#include "moc_emulatedcommandbar.cpp"

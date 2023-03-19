@@ -8,10 +8,7 @@
 #ifndef BASE_TEST_H
 #define BASE_TEST_H
 
-#include <QMainWindow>
-#include <QVBoxLayout>
-#include <QtTestWidgets>
-#include <inputmodemanager.h>
+#include <QObject>
 #include <ktexteditor/range.h>
 
 namespace KTextEditor
@@ -20,11 +17,16 @@ class ViewPrivate;
 class Document;
 class DocumentPrivate;
 }
+class QMainWindow;
+class QVBoxLayout;
+class KateViInputMode;
 
 class QLineEdit;
 namespace KateVi
 {
 class EmulatedCommandBar;
+class GlobalState;
+class InputModeManager;
 }
 
 /* Syntactic sugar :P */

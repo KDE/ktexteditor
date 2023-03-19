@@ -14,6 +14,9 @@
 #include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
+#include <QMainWindow>
+#include <QTest>
+
 using namespace KTextEditor;
 
 QTEST_MAIN(ModesTest)
@@ -1638,3 +1641,4 @@ void ModesTest::ReplaceInsertFromLineTests()
 }
 
 // END: Replace mode.
+#include "moc_modes.cpp"

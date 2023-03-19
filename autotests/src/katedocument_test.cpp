@@ -17,7 +17,7 @@
 #include <QRegularExpression>
 #include <QSignalSpy>
 #include <QTemporaryFile>
-#include <QtTestWidgets>
+#include <QTest>
 
 #include <stdio.h>
 

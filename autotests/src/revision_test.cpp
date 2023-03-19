@@ -14,7 +14,7 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 using namespace KTextEditor;
 

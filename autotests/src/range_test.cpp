@@ -17,7 +17,7 @@
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(RangeTest)
 

@@ -17,7 +17,8 @@
 
 #include <QPainter>
 #include <QTemporaryFile>
-#include <QtTestWidgets>
+#include <QTest>
+#include <QTestMouseEvent>
 
 using namespace KTextEditor;
 

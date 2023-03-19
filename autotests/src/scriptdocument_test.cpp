@@ -14,7 +14,7 @@
 #include <ktexteditor/view.h>
 
 #include <QJSEngine>
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(ScriptDocumentTest)
 

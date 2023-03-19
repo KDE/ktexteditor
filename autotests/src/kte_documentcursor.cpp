@@ -12,7 +12,7 @@
 #include <ktexteditor/documentcursor.h>
 #include <ktexteditor/view.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(DocumentCursorTest)
 

@@ -28,7 +28,7 @@
 #include <QTextStream>
 #include <QTimer>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 #include "testutils.h"
 

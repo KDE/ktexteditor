@@ -18,6 +18,9 @@
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 
+#include <QApplication>
+#include <QKeyEvent>
+#include <QMouseEvent>
 #include <QTest>
 
 using namespace KTextEditor;

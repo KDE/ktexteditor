@@ -12,7 +12,7 @@
 #include <kateglobal.h>
 #include <kateplaintextsearch.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(PlainTextSearchTest)
 

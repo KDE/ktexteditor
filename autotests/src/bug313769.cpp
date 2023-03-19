@@ -15,7 +15,7 @@
 #include <kateview.h>
 #include <ktexteditor/range.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(BugTest)
 

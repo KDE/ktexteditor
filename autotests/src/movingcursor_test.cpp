@@ -12,7 +12,7 @@
 #include <kateglobal.h>
 #include <ktexteditor/movingcursor.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 using namespace KTextEditor;
 

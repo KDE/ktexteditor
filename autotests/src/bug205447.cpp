@@ -13,7 +13,7 @@
 #include <kmainwindow.h>
 #include <ktexteditor/documentcursor.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 #include "testutils.h"
 

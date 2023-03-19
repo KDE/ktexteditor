@@ -14,6 +14,9 @@
 #include <katerenderer.h>
 #include <kateview.h>
 
+#include <QMainWindow>
+#include <QTest>
+
 using namespace KTextEditor;
 
 QTEST_MAIN(ViewTest)
@@ -438,3 +441,5 @@ QVector<Kate::TextRange *> ViewTest::rangesOnFirstLine()
 {
     return kate_document->buffer().rangesForLine(0, kate_view, true);
 }
+
+#include "moc_view.cpp"

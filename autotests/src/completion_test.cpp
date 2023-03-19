@@ -22,8 +22,9 @@
 #include <katerenderer.h>
 #include <kateview.h>
 
+#include <QApplication>
 #include <QKeyEvent>
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(CompletionTest)
 

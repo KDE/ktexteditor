@@ -15,7 +15,8 @@
 #include <kateview.h>
 
 #include <QString>
-#include <QtTestWidgets>
+#include <QTest>
+#include <QTestKeyEvent>
 
 QTEST_MAIN(TemplateHandlerTest)
 

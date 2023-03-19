@@ -13,7 +13,7 @@
 #include <kateundomanager.h>
 #include <kateview.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(UndoManagerTest)
 

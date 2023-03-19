@@ -19,6 +19,9 @@
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
 
+#include <QMainWindow>
+#include <QTest>
+
 using namespace KTextEditor;
 using KateVi::KeyParser;
 using KateVi::Mappings;
@@ -1621,3 +1624,5 @@ void KeysTest::MarkTests()
 }
 
 // END: KeysTest
+
+#include "moc_keys.cpp"

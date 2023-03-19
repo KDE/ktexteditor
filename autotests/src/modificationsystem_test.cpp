@@ -12,7 +12,7 @@
 #include <kateglobal.h>
 #include <kateundomanager.h>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(ModificationSystemTest)
 

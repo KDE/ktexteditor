@@ -13,7 +13,7 @@
 #include <kmainwindow.h>
 
 #include <QJSEngine>
-#include <QtTestWidgets>
+#include <QTest>
 
 #include "testutils.h"
 

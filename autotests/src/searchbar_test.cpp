@@ -19,7 +19,7 @@
 #include <ktexteditor/movingrange.h>
 
 #include <QStringListModel>
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(SearchBarTest)
 

@@ -16,6 +16,9 @@
 #include <katewordcompletion.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
+#include <QMainWindow>
+#include <QTest>
+
 using namespace KTextEditor;
 using KateVi::Mappings;
 
@@ -581,4 +584,5 @@ void CompletionTest::clearTrackedDocumentChanges()
     m_docChanges.clear();
 }
 
+#include "moc_completion.cpp"
 // END: CompletionTest

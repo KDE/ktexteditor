@@ -15,7 +15,7 @@
 #include <kateview.h>
 
 #include <QJsonDocument>
-#include <QtTestWidgets>
+#include <QTest>
 
 #include <memory>
 

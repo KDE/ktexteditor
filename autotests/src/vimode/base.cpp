@@ -11,11 +11,15 @@
 #include "vimode/mappings.h"
 #include <inputmode/kateviinputmode.h>
 #include <kateconfig.h>
+#include <katedocument.h>
 #include <kateundomanager.h>
+#include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
-#include <katedocument.h>
-#include <kateview.h>
+#include <QMainWindow>
+#include <QTest>
+#include <QVBoxLayout>
+#include <inputmodemanager.h>
 
 using namespace KateVi;
 using namespace KTextEditor;
@@ -336,4 +340,5 @@ void BaseTest::textRemoved(Document *document, KTextEditor::Range range)
     m_docChanges.append(DocChange(DocChange::TextRemoved, range));
 }
 
+#include "moc_base.cpp"
 // END: BaseTest

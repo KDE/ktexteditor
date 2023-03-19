@@ -14,7 +14,7 @@
 
 #include <QRegularExpression>
 
-#include <QtTestWidgets>
+#include <QTest>
 
 QTEST_MAIN(RegExpSearchTest)
 

@@ -8,7 +8,7 @@
 // BEGIN Includes
 #include "commands_test.h"
 
-#include <QtTestWidgets>
+#include <QTest>
 
 #include "testutils.h"
 

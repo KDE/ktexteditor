@@ -16,7 +16,7 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 
-#include <QtTestWidgets>
+#include <QTest>
 
 #include "testutils.h"
 
