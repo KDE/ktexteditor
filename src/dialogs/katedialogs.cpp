@@ -1437,27 +1437,27 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
     if (!onDiskDeleted) {
         QAction *aAutoReload = new QAction(i18n("Enable Auto Reload"), this);
         aAutoReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
-        aAutoReload->setToolTip(i18n("Will never again warn about on disk changes but always reload."));
+        aAutoReload->setToolTip(i18n("Reloads and will automatically reload without warning about disk changes from now until you close either the tab or window."));
         m_message->addAction(aAutoReload, false);
         connect(aAutoReload, &QAction::triggered, this, &KateModOnHdPrompt::autoReloadTriggered);
 
         if (!m_fullDiffPath.isEmpty()) {
             m_diffAction = new QAction(i18n("View &Difference"), this);
             m_diffAction->setIcon(QIcon::fromTheme(QStringLiteral("document-multiple")));
-            m_diffAction->setToolTip(i18n("Shows a diff of the changes"));
+            m_diffAction->setToolTip(i18n("Shows a diff of the changes."));
             m_message->addAction(m_diffAction, false);
             connect(m_diffAction, &QAction::triggered, this, &KateModOnHdPrompt::slotDiff);
         }
 
         QAction *aReload = new QAction(i18n("&Reload"), this);
         aReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
-        aReload->setToolTip(i18n("Reload the file from disk. Unsaved changes will be lost."));
+        aReload->setToolTip(i18n("Reloads the file from disk. Unsaved changes will be lost."));
         m_message->addAction(aReload);
         connect(aReload, &QAction::triggered, this, &KateModOnHdPrompt::reloadTriggered);
     } else {
         QAction *closeFile = new QAction(i18nc("@action:button closes the opened file", "&Close File"), this);
         closeFile->setIcon(QIcon::fromTheme(QStringLiteral("document-close")));
-        closeFile->setToolTip(i18n("Close the file, discarding its content."));
+        closeFile->setToolTip(i18n("Closes the file, discarding its content."));
         m_message->addAction(closeFile, false);
         connect(closeFile, &QAction::triggered, this, &KateModOnHdPrompt::closeTriggered);
 
