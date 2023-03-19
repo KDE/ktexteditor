@@ -20,6 +20,8 @@
 #include <QTest>
 #include <QTestMouseEvent>
 
+#include <KWindowSystem>
+
 using namespace KTextEditor;
 
 QTEST_MAIN(InlineNoteTest)
@@ -179,6 +181,11 @@ void InlineNoteTest::testInlineNote()
 #ifdef Q_OS_WIN
     QSKIP("Fails ATM, please fix");
 #endif
+
+    // no way to move mouse on wayland ATM
+    if (KWindowSystem::isPlatformWayland()) {
+        QSKIP("No mouse moving on Wayland");
+    }
 
     // move mouse onto first note
     auto internalView = findViewInternal(&view);
