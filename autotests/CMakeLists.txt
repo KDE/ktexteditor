@@ -41,6 +41,20 @@ set (KTEXTEDITOR_TEST_LINK_LIBS KF6TextEditor
   Qt6::Qml
 )
 
+if(ENABLE_PCH)
+    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/pch.cpp "/*empty file*/")
+    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/pch.h
+        "#pragma once\n"
+        "#include <QObject>\n"
+        "#include <QTest>\n"
+        "#include <QString>\n"
+    )
+    add_library(kte_test_pch STATIC ${CMAKE_CURRENT_BINARY_DIR}/pch.cpp)
+    target_link_libraries(kte_test_pch ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
+    target_precompile_headers(kte_test_pch PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/pch.h)
+    target_compile_definitions(kte_test_pch PRIVATE QT_FORCE_ASSERTS=1)
+endif()
+
 include(ECMMarkAsTest)
 
 # test executable for encoding
@@ -97,7 +111,9 @@ add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/te
 target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
     Qt6::Test)
 ecm_mark_as_test(kateindenttest)
-#target_precompile_headers(kateindenttest REUSE_FROM KF6TextEditor)
+if(ENABLE_PCH)
+    target_precompile_headers(kateindenttest REUSE_FROM kte_test_pch)
+endif()
 
 # test macro for indentation tests
 MACRO(KTEXTEDITOR_INDENT_TEST _testname)
@@ -123,7 +139,9 @@ macro(ktexteditor_unit_test testname)
   ecm_add_test(src/${testname}.cpp ${ARGN}
                TEST_NAME ${testname}
                LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
-  #target_precompile_headers(${testname} REUSE_FROM KF6TextEditor)
+  if(ENABLE_PCH)
+    target_precompile_headers(${testname} REUSE_FROM kte_test_pch)
+  endif()
 endmacro()
 
 ktexteditor_unit_test(katetextbuffertest)
