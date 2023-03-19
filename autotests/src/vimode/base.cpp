@@ -183,7 +183,7 @@ void BaseTest::TestPressKey(const QString &str)
             }
         }
 
-        QKeyEvent *key_event = new QKeyEvent(QEvent::KeyPress, keyCode, keyboard_modifier, key);
+        QKeyEvent key_event(QEvent::KeyPress, keyCode, keyboard_modifier, key);
         // Attempt to simulate how Qt usually sends events - typically, we want to send them
         // to kate_view->focusProxy() (which is a KateViewInternal).
         QWidget *destWidget = nullptr;
@@ -199,8 +199,7 @@ void BaseTest::TestPressKey(const QString &str)
         } else {
             destWidget = kate_view->focusProxy();
         }
-        QApplication::postEvent(destWidget, key_event);
-        QApplication::sendPostedEvents();
+        QApplication::sendEvent(destWidget, &key_event);
     }
 }
 
