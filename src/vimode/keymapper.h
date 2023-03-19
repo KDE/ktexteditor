@@ -26,7 +26,7 @@ class InputModeManager;
 class KTEXTEDITOR_EXPORT KeyMapper : public QObject
 {
 public:
-    KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
+    KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc);
     bool handleKeypress(QChar key);
     void setMappingTimeout(int timeoutMS);
     void setDoNotMapNextKeypress();
@@ -49,7 +49,6 @@ private:
     QTimer *m_mappingTimer;
     InputModeManager *m_viInputModeManager;
     KTextEditor::DocumentPrivate *m_doc;
-    KTextEditor::ViewPrivate *m_view;
     int m_timeoutlen; // time to wait for the next keypress of a multi-key mapping (default: 1000 ms)
     bool m_doNotMapNextKeypress;
     int m_numMappingsBeingExecuted;

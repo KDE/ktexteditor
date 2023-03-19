@@ -60,7 +60,7 @@ InputModeManager::InputModeManager(KateViInputMode *inputAdapter, KTextEditor::V
 
     m_insideHandlingKeyPressCount = 0;
 
-    m_keyMapperStack.push(std::make_shared<KeyMapper>(this, m_view->doc(), m_view));
+    m_keyMapperStack.push(std::make_shared<KeyMapper>(this, m_view->doc()));
 
     m_temporaryNormalMode = false;
 

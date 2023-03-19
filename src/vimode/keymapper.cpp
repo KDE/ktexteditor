@@ -18,10 +18,9 @@
 
 using namespace KateVi;
 
-KeyMapper::KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
+KeyMapper::KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc)
     : m_viInputModeManager(kateViInputModeManager)
     , m_doc(doc)
-    , m_view(view)
 {
     m_mappingTimer = new QTimer(this);
     m_doNotExpandFurtherMappings = false;
