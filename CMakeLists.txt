@@ -85,7 +85,7 @@ ecm_set_disabled_deprecation_versions(
 )
 
 # Subdirectories
-add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
+add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor6\")
 ki18n_install(po)
 
 add_subdirectory(src)

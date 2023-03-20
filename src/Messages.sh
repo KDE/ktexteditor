@@ -4,4 +4,4 @@ $EXTRACTRC `find . -name \*.rc -o -name \*.ui` >> rc.cpp || exit 11
 grep -n -e '^ *"name":' script/data/indentation/*.js | sed 's!^\(.*\):.*"name": *"\(.*\)".*$!// i18n: file: \1\ni18nc("Autoindent mode", "\2");!' | sed 's/ \+")/")/' >>rc.cpp || exit 13
 grep -n -e '^ *"name":' script/data/commands/*.js | sed 's!^\(.*\):.*"name": *"\(.*\)".*$!// i18n: file: \1\ni18nc("Script command name", "\2");!' | sed 's/ \+")/")/' >>rc.cpp || exit 13
 grep -n -e '^ *"category":' script/data/commands/*.js | sed 's!^\(.*\):.*"category": *"\(.*\)".*$!// i18n: file: \1\ni18nc("Script command category", "\2");!' | sed 's/ \+")/")/' >>rc.cpp || exit 13
-$XGETTEXT `find . -name "*.cpp" -o -name "*.h" -o -name '*.js'` -o $podir/ktexteditor5.pot
+$XGETTEXT `find . -name "*.cpp" -o -name "*.h" -o -name '*.js'` -o $podir/ktexteditor6.pot

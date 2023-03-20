@@ -6,7 +6,7 @@
 
 // Undefine this because we don't want our i18n*() method names to be turned
 // into i18nd*(). This means any translated string in this file should use
-// i18nd("ktexteditor5", "foo") instead of i18n("foo")
+// i18nd("ktexteditor6", "foo") instead of i18n("foo")
 #undef TRANSLATION_DOMAIN
 
 #include "katescripthelpers.h"
