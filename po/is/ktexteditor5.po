@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -1343,7 +1343,9 @@ msgstr "Orðaklárun"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1354,7 +1356,7 @@ msgstr "S&já muninn"
 
 #: dialogs/katedialogs.cpp:1447
 #, kde-format
-msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1452
@@ -1367,7 +1369,7 @@ msgstr "Endurles&a"
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
-msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Endurlesa skrána af disk. Ef þú ert með óvistaðar breytingar þá tapast þær."
 
@@ -1380,7 +1382,7 @@ msgstr "&Endurlesa skrá"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
-msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -1232,9 +1232,10 @@ msgstr "Bật tải lại tự động"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Sẽ không bao giờ cảnh báo về các thay đổi trên đĩa nữa, mà sẽ luôn tải lại."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1242,8 +1243,9 @@ msgid "View &Difference"
 msgstr "&Xem sự khác nhau"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Hiện phần chênh của các thay đổi"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1252,8 +1254,9 @@ msgid "&Reload"
 msgstr "&Tải lại"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Tải lại tệp từ đĩa. Các thay đổi chưa lưu sẽ bị mất."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1263,8 +1266,9 @@ msgid "&Close File"
 msgstr "Đón&g tệp"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Đóng tệp, loại bỏ nội dung."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8200,6 +8204,11 @@ msgstr "'%1' %2,  thập lục phân %3,  bát phân %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Chỉ dấu không được đặt: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Sẽ không bao giờ cảnh báo về các thay đổi trên đĩa nữa, mà sẽ luôn tải "
+#~ "lại."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Lỗi tải kịch bản %1\n"

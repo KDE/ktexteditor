@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1230,8 +1230,10 @@ msgstr "Avtomatik yenilənməni aktiv et"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
-msgstr "Təkrar təsdiqləmədən dəyişdirilmiş fayllar həmişə yenilənsin."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1239,8 +1241,9 @@ msgid "View &Difference"
 msgstr "&Fərqlərə baxmaq"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Dəyişiklikləri göstərmək"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1249,8 +1252,9 @@ msgid "&Reload"
 msgstr "&Yenidən yüklə"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Faylları diskdən yenidən yüklə. Saxlanılmamış dəyişikliklər itiriləcəkdir."
 
@@ -1261,8 +1265,9 @@ msgid "&Close File"
 msgstr "&Faylı bağla"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Dəyişiklikləri saxlamadan faylı bağlamaq."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8212,6 +8217,9 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İşarələnməyib: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr "Təkrar təsdiqləmədən dəyişdirilmiş fayllar həmişə yenilənsin."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "%1 skriptinin yüklənməsi xətası\n"

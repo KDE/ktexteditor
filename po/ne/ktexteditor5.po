@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -1346,7 +1346,9 @@ msgstr "शब्द समाप्ति"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1357,7 +1359,7 @@ msgstr "भिन्नता हेर्नुहोस्"
 
 #: dialogs/katedialogs.cpp:1447
 #, kde-format
-msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1452
@@ -1370,7 +1372,7 @@ msgstr "फेरि लोड गर्नुहोस्"
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
-msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "डिस्कबाट फाइल फेरि लोड गर्नुहोस् । यदि तपाईँसँग बचत नगरिएका परिवर्तन भएमा, तिनीहरू "
 "हराउनेछन् ।"
@@ -1384,7 +1386,7 @@ msgstr "फाइल फेरि लोड गर्नुहोस्"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
-msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464

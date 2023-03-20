@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1184,8 +1184,10 @@ msgstr "启用自动重载"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
-msgstr "总是重新加载，而不会警告磁盘更改。"
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1193,8 +1195,9 @@ msgid "View &Difference"
 msgstr "查看差异(&D)"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "显示更改的差别"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1203,8 +1206,9 @@ msgid "&Reload"
 msgstr "重新加载(&R)"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "重新从磁盘加载文件。未保存的更改将丢失。"
 
 #: dialogs/katedialogs.cpp:1458
@@ -1214,8 +1218,9 @@ msgid "&Close File"
 msgstr "关闭文件(&C)"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "关闭文件，舍弃内容。"
 
 #: dialogs/katedialogs.cpp:1464
@@ -7924,6 +7929,9 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr "总是重新加载，而不会警告磁盘更改。"
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "加载脚本 %1 时出错\n"

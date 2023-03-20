@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -1282,8 +1282,10 @@ msgstr "Aktivér autogenindlæsning"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
-msgstr "Vil aldrig mere advare om ændringer på disken, men altid genindlæse."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1291,8 +1293,9 @@ msgid "View &Difference"
 msgstr "Vis &forskel"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Viser en diff over ændringerne"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1301,8 +1304,9 @@ msgid "&Reload"
 msgstr "&Genindlæs"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Genindlæs filen fra disken. Ikke-gemte ændringer vil gå tabt."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1312,8 +1316,9 @@ msgid "&Close File"
 msgstr "&Luk fil"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Luk filen og kassér indholdet."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8376,6 +8381,10 @@ msgstr "\"%1\" %2,  hex %3,  oktalt %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mærke ikke sat: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Vil aldrig mere advare om ændringer på disken, men altid genindlæse."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Fejl under indlæsning af scriptet %1\n"

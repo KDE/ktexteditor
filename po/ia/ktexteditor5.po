@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
-"PO-Revision-Date: 2023-03-16 11:00+0100\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"PO-Revision-Date: 2023-03-19 21:36+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -62,7 +62,7 @@ msgstr "&File"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Imprime/Exporta"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -410,7 +410,7 @@ msgstr "Selectiona proxime puncto de modification"
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Nulle entratas in chronologia de area de transferentia"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -635,10 +635,9 @@ msgstr "Non move le cursor de texto quando il colla per mus"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "&Histora de area de transferentia"
+msgstr "Maxime Entratas de Chronologia  de area de transferentia"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
@@ -1263,10 +1262,10 @@ msgstr "Habilita recarga automatic"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Il non avisara  plus a proposito de modificationes de disco ma recarga "
-"sempre."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1274,8 +1273,9 @@ msgid "View &Difference"
 msgstr "&Vide differentia"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Monstra un diff del modificationes"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1284,8 +1284,9 @@ msgid "&Reload"
 msgstr "&Recarga"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Recarga le file ex disco. Modificationes non salveguardate,essera perdite."
 
@@ -1296,8 +1297,9 @@ msgid "&Close File"
 msgstr "&Claude file"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Claud le file, abandonante su contento."
 
 #: dialogs/katedialogs.cpp:1464
@@ -1494,7 +1496,7 @@ msgstr "Modificatores de cursor multiple "
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Auto recarga files in controlo de version"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
@@ -1833,51 +1835,45 @@ msgstr " secundas"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Evidentia de syntaxe."
+msgstr "Monstra modo de Evidentia"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Usa modo de insertar de Vi"
+msgstr "Monstra modo de insertar de ingresso"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Cambia dictionario"
+msgstr "Monstra dictionario active"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Tabs As"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Monstra Tabs (tabulationes) como"
+msgstr "Monstra configuration de Tab (tabulationes)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Monstra computo de rango"
+msgstr "Monstra columna de linea"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Codifica imperfecte"
+msgstr "Monstra Codifica de file"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Monstra typo de fin de linea"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -2930,9 +2926,7 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Inveloppa con etiquetta"
@@ -3064,9 +3058,7 @@ msgid "Increment Number by 10"
 msgstr "Augmenta numero per 10"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Augmenta numero per 0.1"
@@ -3182,9 +3174,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Augmenta numero sub cursor per 0.1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Move cursor al previe puncto de indentation correspondente"
@@ -3197,9 +3187,7 @@ msgid "Navigation"
 msgstr "Navigation"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
@@ -3215,12 +3203,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Ordina texto selectionate:"
+msgstr "Ordina alphabeticamente texto selectionate:"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3313,11 +3299,10 @@ msgid "URI-decode Selected Text"
 msgstr "Decodifica  texto selectionate con URI"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Remove lineas vacue"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -5086,10 +5071,9 @@ msgid "Import Nevertheless"
 msgstr "Importa nonobstante isto"
 
 #: syntax/katethemeconfig.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Usa schema de color de KDE"
+msgstr "Seque schema de color"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
@@ -6519,10 +6503,9 @@ msgid "Encoding"
 msgstr "Codifica"
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Fin de linea"
+msgstr "Fin de typo de linea"
 
 #: view/katestatusbar.cpp:207
 #, kde-format
@@ -6547,7 +6530,7 @@ msgstr "Evidentia de syntaxe."
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Modo de compactar linea/Columna"
 
 #: view/katestatusbar.cpp:307
 #, kde-format
@@ -6625,14 +6608,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Parolas %1/%2, Characteres %3/%4"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Parolas %1/%2, Characteres %3/%4"
+msgstr "Parolas %1, Characteres %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
@@ -6659,10 +6638,9 @@ msgstr ""
 "transferentia de systema"
 
 #: view/kateview.cpp:464
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "&Histora de area de transferentia"
+msgstr "Colla C&hronologia de area de transferentia"
 
 #: view/kateview.cpp:469
 #, kde-format
@@ -6675,8 +6653,7 @@ msgid "Paste previously mouse selection contents"
 msgstr "Colla previe contentos de selection de mus"
 
 #: view/kateview.cpp:475
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Commuta con contentos del area de transferentia"
 
@@ -6687,10 +6664,9 @@ msgstr ""
 "Commuta le texto selectionate con le contentos del area de transferentia"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Colla Selection"
+msgstr "Prende instantanee de schermo de selection"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -6747,28 +6723,23 @@ msgstr ""
 "configuration"
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Indentation"
+msgstr "&Forma Indentation"
 
 #: view/kateview.cpp:513
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Usa isto per alinear le linea currente o le bloco de texto al su proprie "
+"Usa isto per indentar le linea currente o le bloco de texto al su proprie "
 "nivello de indentation"
 
 #: view/kateview.cpp:517
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Alinea"
+msgstr "&Alinea Sur..."
 
 #: view/kateview.cpp:519
 #, kde-format
@@ -6801,16 +6772,14 @@ msgstr ""
 "definite intra le evidentias del linguage."
 
 #: view/kateview.cpp:538
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Vade a previe linea de modification"
+msgstr "Vade a previe location de modification"
 
 #: view/kateview.cpp:544
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Vade al proxime linea de modificar"
+msgstr "Vade al proxime location de modificar"
 
 #: view/kateview.cpp:550
 #, kde-format
@@ -6955,10 +6924,9 @@ msgstr ""
 "mover le cursor."
 
 #: view/kateview.cpp:649
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Move al previe rango modificate"
+msgstr "Vade al previe rango modificate"
 
 #: view/kateview.cpp:650
 #, kde-format
@@ -6966,10 +6934,9 @@ msgid "Move upwards to the previous modified line."
 msgstr "Move cursor al previe rango modificate."
 
 #: view/kateview.cpp:655
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Move al proxime rango"
+msgstr "Vade  al proxime rango modificate"
 
 #: view/kateview.cpp:656
 #, kde-format
@@ -7002,10 +6969,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Ci tu pote seliger como le documento currente debe esser evidentiate."
 
 #: view/kateview.cpp:676
-#, fuzzy, kde-format
-#| msgid "&Color Theme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Thema de &Color"
+msgstr "&Editor de Thema de Color"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7071,8 +7037,7 @@ msgstr ""
 "linea) e le modo de selection de bloco."
 
 #: view/kateview.cpp:727
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Commuta al proxime modo de insertar"
 
@@ -7344,7 +7309,7 @@ msgstr "Il trova previe occurrentia del texto selectionate"
 #: view/kateview.cpp:872
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Trova e selige proxime occurrentia"
 
 #: view/kateview.cpp:874
 #, kde-format
@@ -7422,8 +7387,7 @@ msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
 #: view/kateview.cpp:919
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Commuta movimento de cursor de typo \"camel case\" (camelo)"
 
@@ -7434,16 +7398,14 @@ msgstr ""
 "Commuta movimento de cursor de typo normal e de typo \"camel case\" (camelo)"
 
 #: view/kateview.cpp:924
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Remve cursores ab lineas vacue"
 
 #: view/kateview.cpp:925
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Move cursor ab lineas vacue"
 
 #: view/kateview.cpp:929
 #, kde-format
@@ -7657,10 +7619,9 @@ msgid "Select to Bottom of View"
 msgstr "Selectiona le vista de basso"
 
 #: view/kateview.cpp:1174
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Move al parenthese correspondente"
+msgstr "Vade al parenthese correspondente"
 
 #: view/kateview.cpp:1180
 #, kde-format
@@ -7703,10 +7664,9 @@ msgid "Backspace"
 msgstr "Retro spatio"
 
 #: view/kateview.cpp:1230
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Inserta Tab"
+msgstr "Inserta Character de Tab"
 
 #: view/kateview.cpp:1235
 #, kde-format
@@ -7723,10 +7683,9 @@ msgstr ""
 "non es litteras o numeros"
 
 #: view/kateview.cpp:1244
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
-msgstr "Inserta un nove linea (NewLine) non identate"
+msgstr "Inserta un non identate nove linea"
 
 #: view/kateview.cpp:1245
 #, kde-format
@@ -7826,10 +7785,9 @@ msgid "Search wrapped"
 msgstr "Modo excisite (wrapped)"
 
 #: view/kateview.cpp:3673
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Alinea"
+msgstr "Alinea Sur"
 
 #: view/kateview.cpp:3673
 #, kde-format
@@ -7921,63 +7879,54 @@ msgid "Disable Annotation Bar"
 msgstr "Dishabilita le barra de annotation"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Aperi/Salveguarda"
+msgstr "Salveguarda"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Copia..."
+msgstr "Copia"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "Color de &fundo ..."
+msgstr "Color de fundo..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Decorationes de texto"
+msgstr "Monstra Decorationes Extra"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Monstra lineas de i&ndentation"
+msgstr "Monstra Dcorationes de Fenestra"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Captura de schermo..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Monstra numeros de &linea"
+msgstr "Non monstra numeros de linea"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Monstra numeros de &linea"
+msgstr "Monstra numeros de linea ab 1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Monstra numeros de &linea"
+msgstr "Monstra numeros de linea actual"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "&Salveguarda como..."
+msgstr "Salveguarda..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8370,6 +8319,11 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca non fixate: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Il non avisara  plus a proposito de modificationes de disco ma recarga "
+#~ "sempre."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Error in cargamento de script %1\n"

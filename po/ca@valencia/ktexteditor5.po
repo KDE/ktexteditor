@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-03-13 10:48+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1263,10 +1263,10 @@ msgstr "Activa la recàrrega automàtica"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Mai més tornarà a avisar dels canvis en el disc, i sempre es tornarà a "
-"carregar."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1274,8 +1274,9 @@ msgid "View &Difference"
 msgstr "Visualitza la &diferència"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Mostra un «diff» dels canvis"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1284,8 +1285,9 @@ msgid "&Reload"
 msgstr "Torna a ca&rregar"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Torna a carregar el fitxer des del disc. Els canvis no guardats es perdran."
 
@@ -1296,8 +1298,9 @@ msgid "&Close File"
 msgstr "Tan&ca el fitxer"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8325,3 +8328,8 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Mai més tornarà a avisar dels canvis en el disc, i sempre es tornarà a "
+#~ "carregar."

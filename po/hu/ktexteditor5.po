@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1269,10 +1269,10 @@ msgstr "Automatikus újratöltés bekapcsolása"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Soha többé nem figyelmeztet a lemezen történt változtatásokra, hanem mindig "
-"újratölt."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1280,8 +1280,9 @@ msgid "View &Difference"
 msgstr "Az &eltérések megtekintése"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Megjeleníti a változtatások különbségeit"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1290,8 +1291,9 @@ msgid "&Reload"
 msgstr "Újr&atöltés"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "A fájl újratöltése a lemezről. A nem mentett módosítások elvesznek."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1301,8 +1303,9 @@ msgid "&Close File"
 msgstr "Fájl &bezárása"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "A fájl bezárása, a tartalmának eldobásával."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8352,6 +8355,11 @@ msgstr "„%1” %2, hexa %3, okta %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Nincs beállítva jelölés: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Soha többé nem figyelmeztet a lemezen történt változtatásokra, hanem "
+#~ "mindig újratölt."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Nem sikerült betölteni ezt a szkriptet: %1\n"

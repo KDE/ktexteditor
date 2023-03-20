@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-03-03 07:29+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -1360,10 +1360,10 @@ msgstr "Activer le rechargement automatique"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"N'affichera plus jamais d'avertissement relatifs aux modifications sur le "
-"disque mais rechargera systématiquement le fichier."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1371,8 +1371,9 @@ msgid "View &Difference"
 msgstr "Afficher les &différences"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Afficher les différences occasionnées par les changements"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1381,8 +1382,9 @@ msgid "&Reload"
 msgstr "&Recharger"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Recharger le fichier à partir du disque. Si vous avez des modifications non "
 "enregistrées, elles seront perdues."
@@ -1394,8 +1396,9 @@ msgid "&Close File"
 msgstr "Fermer le fi&chier"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Fermer le fichier sans l'enregistrer."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8630,6 +8633,11 @@ msgstr "« %1 » %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marqueur non défini : %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "N'affichera plus jamais d'avertissement relatifs aux modifications sur le "
+#~ "disque mais rechargera systématiquement le fichier."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Erreur lors du chargement du script %1\n"

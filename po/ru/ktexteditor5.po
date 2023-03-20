@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-02-08 10:51+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -1256,8 +1256,10 @@ msgstr "Загружать документ при его изменении"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
-msgstr "Всегда загружать изменённый файл без дополнительных подтверждений."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1265,8 +1267,9 @@ msgid "View &Difference"
 msgstr "Просмотреть &различия"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Показать список изменений"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1275,8 +1278,9 @@ msgid "&Reload"
 msgstr "&Перезагрузить файл"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Открыть файл с диска. Если у вас есть несохранённые изменения, они будут "
 "потеряны."
@@ -1288,8 +1292,9 @@ msgid "&Close File"
 msgstr "&Закрыть файл"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Закрыть текущий файл без сохранения изменений."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8267,6 +8272,9 @@ msgstr "«%1» %2,  шестн. %3,  восм. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Отметка не установлена: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr "Всегда загружать изменённый файл без дополнительных подтверждений."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Ошибка загрузки сценария %1\n"

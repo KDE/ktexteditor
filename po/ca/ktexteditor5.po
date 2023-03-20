@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
-"PO-Revision-Date: 2023-03-13 10:48+0100\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"PO-Revision-Date: 2023-03-19 08:43+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1262,10 +1262,10 @@ msgstr "Activa la recàrrega automàtica"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Mai més es tornarà a avisar dels canvis en el disc, i sempre es tornarà a "
-"carregar."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1273,8 +1273,9 @@ msgid "View &Difference"
 msgstr "Visualitza la &diferència"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Mostra un «diff» dels canvis"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1283,8 +1284,9 @@ msgid "&Reload"
 msgstr "&Recarrega"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Recarrega el fitxer des del disc. Els canvis no desats es perdran."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1294,8 +1296,9 @@ msgid "&Close File"
 msgstr "Tan&ca el fitxer"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
 #: dialogs/katedialogs.cpp:1464
@@ -6635,10 +6638,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Commuta el text seleccionat amb el contingut del porta-retalls"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Enganxa la selecció"
+msgstr "Pren una captura de pantalla de la selecció"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7872,63 +7874,54 @@ msgid "Disable Annotation Bar"
 msgstr "Desactiva la barra d'anotacions"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Obre i desa"
+msgstr "Desa"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Copia..."
+msgstr "Copia"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Color de fons..."
+msgstr "Color de fons..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Decoracions de text"
+msgstr "Mostra les decoracions extres"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Mostra les línies de &sagnat"
+msgstr "Mostra la decoració de les finestres"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Captura de pantalla..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Mostra els números de les &línies"
+msgstr "No mostris els números de les línies"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Mostra els números de les &línies"
+msgstr "Mostra els números de les línies a partir de l'1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Mostra els números de les &línies"
+msgstr "Mostra els números reals de les línies"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "De&sa com a..."
+msgstr "Desa..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8321,5 +8314,7 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 msgid "Mark not set: %1"
 msgstr "Marca no definida: %1"
 
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Error en carregar l'script %1\n"
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Mai més es tornarà a avisar dels canvis en el disc, i sempre es tornarà a "
+#~ "carregar."

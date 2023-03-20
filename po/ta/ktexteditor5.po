@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
-"PO-Revision-Date: 2023-01-12 21:24+0530\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"PO-Revision-Date: 2023-03-19 11:58+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -69,7 +69,7 @@ msgstr "&கோப்பு"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "ஏற்றுமதி/அச்சிடு"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -81,7 +81,7 @@ msgstr "&திருத்து"
 #: data/katepart5ui.rc:34
 #, kde-format
 msgid "Find Variants"
-msgstr ""
+msgstr "திரிபுகளை கண்டுபிடி"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
@@ -412,7 +412,7 @@ msgstr "ஒட்டவேண்டியதைத் தேர்ந்தெ�
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "பிடிப்புப்பலகை வரலாற்றில் பதிவேதும் இல்லை"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -439,7 +439,7 @@ msgstr "&முதல் நிறைவுப்பதிவை தானாக
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "நிறைவுகளின் பட்டியலில் Tab / Shift+Tab விசைகளைக் கொண்டு உலாவலாம்"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -911,7 +911,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr ""
+msgstr "பிடிப்புப்பலகையிலிருந்து ஒட்டப்படும் உரையின் முன்னிடைவெளியை சரிசெய்"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -930,10 +930,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
-#, fuzzy, kde-format
-#| msgid "&Backspace key indents"
+#, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr "பின்நகர்வு விசை உள்ளடக்கம் அமைத்தல்"
+msgstr "&வரிமுதல் காலியிடத்தில் Backspace-ஐ தட்டுவது முன்னிடைவெளியை குறைக்கும்"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
@@ -1025,10 +1024,9 @@ msgid "Spellcheck"
 msgstr "சொல் திருத்தி"
 
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
-#, fuzzy, kde-format
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "எச்சரிக்கை"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
@@ -1056,10 +1054,9 @@ msgid "Ctrl + Meta"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:412
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "ஆணை"
+msgstr ""
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
@@ -1210,8 +1207,10 @@ msgstr "தானாக மீளேற்று"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
-msgstr "வட்டில் கோப்பு வேறு நிரலால் மாற்றப்பட்டாலும், எச்சரிக்காமல் அதை மீளேற்றும்."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1219,8 +1218,9 @@ msgid "View &Difference"
 msgstr "&வித்தியாசங்களை காட்டு"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "மாற்றங்களை காட்டும் (diff முறையில்)"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1229,8 +1229,9 @@ msgid "&Reload"
 msgstr "&மீளேற்று"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "வட்டிலிருந்து கோப்பை மீளேற்றும். சேமிக்கப்படா மாற்றங்களை இழப்பீர்கள்."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1240,8 +1241,9 @@ msgid "&Close File"
 msgstr "&கோப்பை மூடு"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "கோப்பின் உள்ளடக்கத்தை சேமிக்காமல் அதை மூடும்."
 
 #: dialogs/katedialogs.cpp:1464
@@ -1657,7 +1659,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:135
 #, kde-format
 msgid "Enable byte order mark (BOM)"
-msgstr ""
+msgstr "பைட்டு வரிசை குறி (BOM) தனை இயக்கு"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigwidget.ui:142
@@ -1847,7 +1849,7 @@ msgstr "உரையில் தத்தல் உள்ளதை குறி
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "உரைத்திருத்தி குவியத்தில் இருக்கும்போது அதைச்சுற்றி கட்டம் வரை"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
@@ -1910,7 +1912,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:214
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "ஜோடி அடைப்புக்குறிக்கு இடஞ்சுட்டி நகர்த்தப்படும்போது அடைப்புக்குறியை மின்னச்செய்"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -1937,7 +1939,7 @@ msgstr "எண்ணிக்கைகள்"
 #: dialogs/textareaappearanceconfigwidget.ui:254
 #, kde-format
 msgid "Show/hide word count in status bar"
-msgstr ""
+msgstr "சொற்களின் எண்ணிக்கையை நிலைப்பட்டையில் காட்டும்"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:258
@@ -1949,7 +1951,7 @@ msgstr "சொல் எண்ணிக்கையை காட்டு"
 #: dialogs/textareaappearanceconfigwidget.ui:264
 #, kde-format
 msgid "Show/hide line count in status bar"
-msgstr ""
+msgstr "வரிகளின் எண்ணிக்கையை நிலைப்பட்டையில் காட்டும்"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:267 view/katestatusbar.cpp:255
@@ -2059,6 +2061,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"எழுத்துருவின் இயல்பிருப்பு வரியுயரத்துடன் இது பெருக்கப்படும். 1.0 என்றால், இயல்பிருப்பு "
+"உயரமே பயன்படுத்தப்படும்."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
@@ -2085,22 +2089,16 @@ msgstr "ஆவணத்தைத் தானாக மீளேற்று"
 #: document/katedocument.cpp:223
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
-msgstr ""
+msgstr "ஆவணம் வட்டில் மாற்றப்பட்டிருந்தால் அதைத் தானாக மீளேற்று"
 
 #: document/katedocument.cpp:2289
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#| "\n"
-#| "Check if you have read access to this file."
+#, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
 ">Check if you have read access to this file."
 msgstr ""
-"கோப்பிலிருந்து படிக்க இயலாத காரணத்தால்!\n"
-"\n"
-",  கோப்பு %1 முழுமையாக ஏற்ற இயலாது! உங்களுக்கு படிக்க அனுமதி இருக்கின்றதா என்று "
-"பார்க்கவும்."
+"%1 எனும் கோப்பைப் படிக்க முடியாத‍தால் அதை ஏற்ற முடியவில்லை.<br />அதைப் படிக்கும் அனுமதி "
+"உங்களிடம் உள்ளதா எனப் பாருங்கள்."
 
 #: document/katedocument.cpp:2294
 #, kde-format
@@ -2114,23 +2112,21 @@ msgid "&Close"
 msgstr "&மூடு"
 
 #: document/katedocument.cpp:2299 document/katedocument.cpp:6546
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "தகவலை மூடு"
 
 #: document/katedocument.cpp:2310
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
 "\n"
 "Check if you have read access to this file."
 msgstr ""
-"கோப்பிலிருந்து படிக்க இயலாத காரணத்தால்!\n"
+"%1 எனும் கோப்பைப் படிக்க முடியாத‍தால் அதை ஏற்ற முடியவில்லை.\n"
 "\n"
-",  கோப்பு %1 முழுமையாக ஏற்ற இயலாது! உங்களுக்கு படிக்க அனுமதி இருக்கின்றதா என்று "
-"பார்க்கவும்."
+"அதைப் படிக்கும் அனுமதி உங்களிடம் உள்ளதா எனப் பாருங்கள்."
 
 #: document/katedocument.cpp:2434
 #, kde-format
@@ -8184,6 +8180,9 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "குறி வகை%1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr "வட்டில் கோப்பு வேறு நிரலால் மாற்றப்பட்டாலும், எச்சரிக்காமல் அதை மீளேற்றும்."
 
 #, fuzzy
 #~| msgid "Error: %1"

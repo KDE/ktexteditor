@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
-"PO-Revision-Date: 2023-03-15 13:23+0300\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"PO-Revision-Date: 2023-03-19 15:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1247,10 +1247,10 @@ msgstr "Otomatik Yeniden Yüklemeyi Etkinleştir"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Disk değişikliklerinde hiçbir zaman yeniden uyarma; ancak her zaman yeniden "
-"yükle."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1258,8 +1258,9 @@ msgid "View &Difference"
 msgstr "Ayrımları &Görüntüle"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Değişikliklerin ayrımını gösterir"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1268,8 +1269,9 @@ msgid "&Reload"
 msgstr "Yeni&den Yükle"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Diskteki dosyayı yeniden yükle. Kaydedilmemiş değişiklikler kaybolacak."
 
@@ -1280,8 +1282,9 @@ msgid "&Close File"
 msgstr "Dosyayı &Kapat"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Dosyayı kapat ve içeriğini at."
 
 #: dialogs/katedialogs.cpp:1464
@@ -6557,10 +6560,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Seçili metni pano içeriğyle değiştir"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Seçimi Yapıştır"
+msgstr "Seçimin Ekran Görüntüsünü Al"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7775,63 +7777,54 @@ msgid "Disable Annotation Bar"
 msgstr "Açıklama Çubuğunu Gösterme"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Aç/Kaydet"
+msgstr "Kaydet"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "Ko&pyala..."
+msgstr "Kopyala"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Arka Plan Rengi..."
+msgstr "Arka Plan Rengi..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Metin Süslemeleri"
+msgstr "Ek Dekorasyonları Göster"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Girinti satırlarını göster"
+msgstr "Pencere Dekorasyonlarını Göster"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Ekran Görüntüsü..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "S&atır Numaralarını Göster"
+msgstr "Satır Numaralarını Gösterme"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "S&atır Numaralarını Göster"
+msgstr "Satır Numaralarını 1'den Başlayarak Göster"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "S&atır Numaralarını Göster"
+msgstr "Gerçek Satır Numaralarını Göster"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "Fa&rklı Kaydet..."
+msgstr "Kaydet..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8219,6 +8212,11 @@ msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Disk değişikliklerinde hiçbir zaman yeniden uyarma; ancak her zaman "
+#~ "yeniden yükle."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "%1 betiği yüklenirken hata oluştu\n"

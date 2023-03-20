@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2023-03-18 08:44+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1144,7 +1144,9 @@ msgstr "ავტომატური გადატვირთვა"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1153,8 +1155,9 @@ msgid "View &Difference"
 msgstr "სხვაობის &ნახვა"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "ცვლილებების ჩვენება"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1163,8 +1166,9 @@ msgid "&Reload"
 msgstr "თავიდან ჩატვირთვა"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "ფაილი თავიდან ჩაიტვირთება დისკიდან. შეუნახავი ცვლილებები დაიკარგება."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1174,8 +1178,9 @@ msgid "&Close File"
 msgstr "ფაილის &დახურვა"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "ფაილის დახურვა და შინაარსის უგულებელყოფა."
 
 #: dialogs/katedialogs.cpp:1464

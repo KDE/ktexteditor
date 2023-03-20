@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1299,7 +1299,9 @@ msgstr "&Samodopuna"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1308,8 +1310,9 @@ msgid "View &Difference"
 msgstr "Prikaži &razliku"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Prikazuje razliku izmena."
 
 #: dialogs/katedialogs.cpp:1452
@@ -1318,8 +1321,9 @@ msgid "&Reload"
 msgstr "&Učitaj ponovo"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Učitava ponovo fajl sa diska. Nesačuvane izmene će biti izgubljene."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1331,7 +1335,7 @@ msgstr "&Zatvori"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
-msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464

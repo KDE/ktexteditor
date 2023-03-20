@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -1142,7 +1142,9 @@ msgstr "%1 തുറക്കുവാന്‍ സാധ്യമല്ല"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1152,7 +1154,7 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:1447
 #, kde-format
-msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1452
@@ -1162,7 +1164,7 @@ msgstr "വീണ്ടും &ലഭ്യമാക്കുക"
 
 #: dialogs/katedialogs.cpp:1454
 #, fuzzy, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "ഡിസ്കില്‍ നിന്നും ഫയല്‍ വീണ്ടും ലഭ്യമാക്കുക. സൂക്ഷിക്കാത്ത മാറ്റങ്ങള്‍ നിങ്ങള്‍ക്കു് നഷ്ടമാകുന്നതാണു്."
 
@@ -1174,7 +1176,7 @@ msgstr "ഫയല്‍ &വീണ്ടും ലഭ്യമാക്കുക
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
-msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464

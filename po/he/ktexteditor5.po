@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2017-05-24 08:19-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -1220,7 +1220,9 @@ msgstr "אפשר השלמה &אוטומטית"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1230,7 +1232,7 @@ msgstr "&הצג הבדלים"
 
 #: dialogs/katedialogs.cpp:1447
 #, kde-format
-msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1452
@@ -1240,7 +1242,7 @@ msgstr "&טען מחדש"
 
 #: dialogs/katedialogs.cpp:1454
 #, fuzzy, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "טעינת הקובץ מחדש מתוך הכונן. אם יש לך שינויים שלא נשמרו, הם יילכו לאיבוד."
 
@@ -1253,7 +1255,7 @@ msgstr "&סגור"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
-msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464

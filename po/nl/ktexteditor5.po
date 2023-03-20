@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
-"PO-Revision-Date: 2023-03-05 14:30+0100\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"PO-Revision-Date: 2023-03-19 13:33+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1251,10 +1251,10 @@ msgstr "Automatisch herladen inschakelen"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Zal nooit opnieuw waarschuwen over wijzigingen op schijf maar altijd "
-"herladen."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1262,8 +1262,9 @@ msgid "View &Difference"
 msgstr "&Verschil tonen"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Een diff van de wijzigingen tonen"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1272,8 +1273,9 @@ msgid "&Reload"
 msgstr "He&rladen"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Herlaadt het bestand van de schijf. Niet opgeslagen wijzigingen gaan "
 "verloren."
@@ -1285,8 +1287,9 @@ msgid "&Close File"
 msgstr "Bestand &sluiten"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Het bestand sluiten, inhoud ervan weggooien."
 
 #: dialogs/katedialogs.cpp:1464
@@ -6630,10 +6633,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "De geselecteerde tekst met de inhoud op het klembord omwisselen"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Selectie plakken"
+msgstr "Schermafdruk maken van selectie"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7866,63 +7868,54 @@ msgid "Disable Annotation Bar"
 msgstr "Annotatiebalk uitschakelen"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Openen/opslaan"
+msgstr "Opslaan"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Kopiëren..."
+msgstr "Kopiëren"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Achtergrondkleur..."
+msgstr "Achtergrondkleur..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Tekstdecoraties"
+msgstr "Extra decoraties tonen"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "&Inspronglijnen tonen"
+msgstr "Vensterdecoraties tonen"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Schermafdruk..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Rege&lnummering tonen"
+msgstr "Regelnummering niet tonen"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Rege&lnummering tonen"
+msgstr "Regelnummering vanaf 1 tonen"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Rege&lnummering tonen"
+msgstr "Actuele regelnummering tonen"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "Opslaan &als..."
+msgstr "Opslaan..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8318,6 +8311,11 @@ msgstr "'%1' %2,  Hex %3,  Octaal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Markering niet ingesteld: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Zal nooit opnieuw waarschuwen over wijzigingen op schijf maar altijd "
+#~ "herladen."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Fout bij laden van script %1\n"

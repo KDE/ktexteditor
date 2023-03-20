@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2019-02-09 14:04-0800\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -1234,7 +1234,9 @@ msgstr "ਆਟੋ ਮੁਕੰਮਲ"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
@@ -1245,7 +1247,7 @@ msgstr "ਅੰਤਰ ਵੇਖੋ(&V)"
 
 #: dialogs/katedialogs.cpp:1447
 #, kde-format
-msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1452
@@ -1258,7 +1260,7 @@ msgstr "ਮੁੜ-ਲੋਡ(&d)"
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
-msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "ਡਿਸਕ ਤੋਂ ਫਾਈਲ ਮੁੜ ਲੋਡ ਕਰੋ। ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਕੁਝ ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਹੋਈਆਂ ਤਾਂ ਉਹ ਖਤਮ ਹੋ "
 "ਜਾਣਗੀਆਂ।"
@@ -1272,7 +1274,7 @@ msgstr "ਬੰਦ ਕਰੋ(&C)"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
-msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1464

@@ -16,18 +16,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
-"PO-Revision-Date: 2023-03-12 15:03+0100\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"PO-Revision-Date: 2023-03-19 06:21+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1246,9 +1246,10 @@ msgstr "Omogoči samodejno ponovno nalaganje"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
 msgstr ""
-"Ne bo nikoli več opozoril na spremembo na disku, ampak vedno ponovno naložil."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1256,8 +1257,9 @@ msgid "View &Difference"
 msgstr "Poglej razlike"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Pokaže izpis razlik"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1266,8 +1268,9 @@ msgid "&Reload"
 msgstr "Znova naloži"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Znova naloži datoteko z diska. Neshranjene spremembe bodo izgubljene."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1277,8 +1280,9 @@ msgid "&Close File"
 msgstr "Zapri datoteko"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Zapri datoteko, zavrzi njeno vsebino."
 
 #: dialogs/katedialogs.cpp:1464
@@ -6567,10 +6571,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Zamenjaj izbrano besedilo z vsebino odložišča"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Prilepi izbor"
+msgstr "Napravi posnetek zaslona izbire"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7778,63 +7781,54 @@ msgid "Disable Annotation Bar"
 msgstr "Onemogoči vrstico za zabeležke"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Odpri/Shrani"
+msgstr "Shrani"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "Kopiraj..."
+msgstr "Kopiraj"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Barva ozadja ..."
+msgstr "Barva ozadja ..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Okraski besedila"
+msgstr "Pokaži posebne okraske"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Pokaži črte zamikanja"
+msgstr "Pokaži okraske okna"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Posnetek zaslona..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Pokaži številke vrstic"
+msgstr "Ne kaži številk vrstic"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Pokaži številke vrstic"
+msgstr "Pokaži številke vrstic od 1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Pokaži številke vrstic"
+msgstr "Pokaži dejanske številke vrstic"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "&Shrani kot ..."
+msgstr "Shrani..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8222,6 +8216,11 @@ msgstr "'%1' %2,  Šest. %3,  Osm. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Oznaka ni nastavljena: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Ne bo nikoli več opozoril na spremembo na disku, ampak vedno ponovno "
+#~ "naložil."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Napaka med nalaganjem skripta %1\n"

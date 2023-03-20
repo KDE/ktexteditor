@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 02:06+0000\n"
+"POT-Creation-Date: 2023-03-20 02:18+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -1273,8 +1273,10 @@ msgstr "Automaatse taaslaadimise lubamine"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
-msgid "Will never again warn about on disk changes but always reload."
-msgstr "Kunagi ei hoiatata muutuste eest kettal, aga alati laaditakse uuesti."
+msgid ""
+"Reloads and will automatically reload without warning about disk changes "
+"from now until you close either the tab or window."
+msgstr ""
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1282,8 +1284,9 @@ msgid "View &Difference"
 msgstr "&Vaata erinevust"
 
 #: dialogs/katedialogs.cpp:1447
-#, kde-format
-msgid "Shows a diff of the changes"
+#, fuzzy, kde-format
+#| msgid "Shows a diff of the changes"
+msgid "Shows a diff of the changes."
 msgstr "Muudatuste erinevuse näitamine"
 
 #: dialogs/katedialogs.cpp:1452
@@ -1292,8 +1295,9 @@ msgid "&Reload"
 msgstr "Laa&di uuesti"
 
 #: dialogs/katedialogs.cpp:1454
-#, kde-format
-msgid "Reload the file from disk. Unsaved changes will be lost."
+#, fuzzy, kde-format
+#| msgid "Reload the file from disk. Unsaved changes will be lost."
+msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Laadib faili kettalt uuesti. Salvestamata muudatused lähevad kaotsi."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1303,8 +1307,9 @@ msgid "&Close File"
 msgstr "&Sulge fail"
 
 #: dialogs/katedialogs.cpp:1460
-#, kde-format
-msgid "Close the file, discarding its content."
+#, fuzzy, kde-format
+#| msgid "Close the file, discarding its content."
+msgid "Closes the file, discarding its content."
 msgstr "Aktiivse faili sulgemine selle sisu hüljates."
 
 #: dialogs/katedialogs.cpp:1464
@@ -8337,6 +8342,10 @@ msgstr "'%1' %2,  16nd %3,  8nd %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Märk pole määratud: %1"
+
+#~ msgid "Will never again warn about on disk changes but always reload."
+#~ msgstr ""
+#~ "Kunagi ei hoiatata muutuste eest kettal, aga alati laaditakse uuesti."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Viga skripti %1 laadimisel\n"
