@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-20 02:18+0000\n"
-"PO-Revision-Date: 2023-03-19 08:43+0100\n"
+"PO-Revision-Date: 2023-03-20 09:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1266,6 +1266,9 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Torna a carregar i es tornarà a carregar automàticament sense previ avís "
+"sobre els canvis del disc des d'ara fins que tanqueu la pestanya o la "
+"finestra."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1273,10 +1276,9 @@ msgid "View &Difference"
 msgstr "Visualitza la &diferència"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Mostra un «diff» dels canvis"
+msgstr "Mostra un «diff» dels canvis."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1284,8 +1286,7 @@ msgid "&Reload"
 msgstr "&Recarrega"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Recarrega el fitxer des del disc. Els canvis no desats es perdran."
 
@@ -1296,8 +1297,7 @@ msgid "&Close File"
 msgstr "Tan&ca el fitxer"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
@@ -8313,8 +8313,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no definida: %1"
-
-#~ msgid "Will never again warn about on disk changes but always reload."
-#~ msgstr ""
-#~ "Mai més es tornarà a avisar dels canvis en el disc, i sempre es tornarà a "
-#~ "carregar."
