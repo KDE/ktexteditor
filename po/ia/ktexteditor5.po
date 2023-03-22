@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-04 00:43+0000\n"
-"PO-Revision-Date: 2023-03-20 15:16+0100\n"
+"PO-Revision-Date: 2023-03-21 15:25+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -406,7 +406,7 @@ msgstr "Selectiona texto a collar."
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Nulle entratas in le chronologia de area de transferentia"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -950,16 +950,7 @@ msgstr "Clave de Spatio &Retro in ducente spatio vacue de-indenta"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -976,8 +967,8 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Action de clave Tab (si necun selection existe) <a href=\"If you want "
 "<b>Tab</b> pro alinear le linea currente in le bloco de codice currente como "
-"in emacs, tu face <b>Tab</b> un via breve pro le action de <b>Alinea</b>."
-"\"><span>Altere ...</span></a></p></body></html>"
+"in Emacs, tu face <b>Tab</b> un via breve pro le action de <b>Formattar "
+"Identation</b>.\"><span>Altere ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1838,31 +1829,27 @@ msgstr "Monstra modo de insertar"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Cambia dictionario"
+msgstr "Monstra dictionario active"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Tabs As"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Monstra Tabs (tabulationes) como"
+msgstr "Monstra preferentia de Tab (tabulationes) "
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Monstra computo de rango"
+msgstr "Monstra columna de rango"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Codifica imperfecte"
+msgstr "Monstra Codifica de file"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
@@ -2147,6 +2134,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Iste valor essera multiplicate con le altessa de linea predefinite del font. "
+"Un valor de 1.0 significa que essara usate le altessa predefinite."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
@@ -2920,9 +2909,7 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Inveloppa con etiquetta"
@@ -3140,9 +3127,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Augmenta numero sub cursor per 0.1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Move cursor al previe puncto de indentation correspondente"
@@ -3155,9 +3140,7 @@ msgid "Navigation"
 msgstr "Navigation"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
@@ -3173,12 +3156,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Move cursor al proxime puncto de indentation correspondente"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Ordina texto selectionate:"
+msgstr "Ordina texto selectionate alfabeticamente"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -4922,10 +4903,9 @@ msgid "Default Theme"
 msgstr "Thema predefinite:"
 
 #: syntax/katethemeconfig.cpp:1025
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Theme Editor"
-msgstr "Tu Elige le Editor ..."
+msgstr "Editor de thema"
 
 #: syntax/katethemeconfig.cpp:1039
 #, kde-format
@@ -5004,10 +4984,9 @@ msgid "Import Nevertheless"
 msgstr "Importa nonobstante isto"
 
 #: syntax/katethemeconfig.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Usa schema de color de KDE"
+msgstr "Seque schema de color de systema"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
@@ -6437,10 +6416,9 @@ msgid "Encoding"
 msgstr "Codifica"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Fin de linea"
+msgstr "Fin de typo de linea"
 
 #: view/katestatusbar.cpp:206
 #, kde-format
@@ -6543,14 +6521,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Parolas %1/%2, Characteres %3/%4"
 
 #: view/katestatusbar.cpp:573
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Parolas %1/%2, Characteres %3/%4"
+msgstr "Parolas %1, Characteres %2"
 
 #: view/katestatusbar.cpp:588
 #, kde-format
@@ -6577,10 +6551,9 @@ msgstr ""
 "transferentia de systema"
 
 #: view/kateview.cpp:462
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "&Histora de area de transferentia"
+msgstr "Colla C&hronologia de area de transferentia"
 
 #: view/kateview.cpp:467
 #, kde-format
@@ -6658,28 +6631,23 @@ msgstr ""
 "configuration"
 
 #: view/kateview.cpp:507
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Indentation"
+msgstr "&Formattar Indentation"
 
 #: view/kateview.cpp:508
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Usa isto per alinear le linea currente o le bloco de texto al su proprie "
-"nivello de indentation"
+"Usa isto per identar automaticamente le linea currente o le bloco de texto a "
+"su proprie nivello de indentation."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Alinea"
+msgstr "&Alinea a ..."
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -6712,16 +6680,14 @@ msgstr ""
 "definite intra le evidentias del linguage."
 
 #: view/kateview.cpp:533
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Vade a previe linea de modification"
+msgstr "Vade a previe location de modificar"
 
 #: view/kateview.cpp:539
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Vade al proxime linea de modificar"
+msgstr "Vade al proxime location de modificar"
 
 #: view/kateview.cpp:545
 #, kde-format
@@ -6866,8 +6832,7 @@ msgstr ""
 "mover le cursor."
 
 #: view/kateview.cpp:644
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Move al previe rango modificate"
 
@@ -6877,10 +6842,9 @@ msgid "Move upwards to the previous modified line."
 msgstr "Move cursor al previe rango modificate."
 
 #: view/kateview.cpp:650
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Move al proxime rango"
+msgstr "Move al proxime rango moodificate"
 
 #: view/kateview.cpp:651
 #, kde-format
@@ -6913,10 +6877,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Ci tu pote seliger como le documento currente debe esser evidentiate."
 
 #: view/kateview.cpp:671
-#, fuzzy, kde-format
-#| msgid "&Color Theme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Thema de &Color"
+msgstr "Thema de Color de &Editor"
 
 #: view/kateview.cpp:677
 #, kde-format
@@ -6982,8 +6945,7 @@ msgstr ""
 "linea) e le modo de selection de bloco."
 
 #: view/kateview.cpp:722
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Commuta al proxime modo de insertar"
 
@@ -7333,8 +7295,7 @@ msgid "Adds a caret in the line above the current caret."
 msgstr "Adde un caret in le linea supra le caret currente."
 
 #: view/kateview.cpp:914
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Commuta movimento de cursor de typo \"camel case\" (camelo)"
 
@@ -7345,16 +7306,14 @@ msgstr ""
 "Commuta movimento de cursor de typo normal e de typo \"camel case\" (camelo)"
 
 #: view/kateview.cpp:919
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Remove cursores ab lineas vacue"
 
 #: view/kateview.cpp:920
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Move cursor al proxime puncto de indentation correspondente"
+msgstr "Remove cursores ab lineas vacue"
 
 #: view/kateview.cpp:924
 #, kde-format
@@ -7568,10 +7527,9 @@ msgid "Select to Bottom of View"
 msgstr "Selectiona le vista de basso"
 
 #: view/kateview.cpp:1169
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Move al parenthese correspondente"
+msgstr "Vade al parenthese correspondente"
 
 #: view/kateview.cpp:1175
 #, kde-format
@@ -7614,10 +7572,9 @@ msgid "Backspace"
 msgstr "Retro spatio"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Inserta Tab"
+msgstr "Inserta character de Tab"
 
 #: view/kateview.cpp:1230
 #, kde-format
@@ -7634,8 +7591,7 @@ msgstr ""
 "non es litteras o numeros"
 
 #: view/kateview.cpp:1239
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Inserta un nove linea (NewLine) non identate"
 
@@ -7739,10 +7695,9 @@ msgid "Search wrapped"
 msgstr "Modo excisite (wrapped)"
 
 #: view/kateview.cpp:3658
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Alinea"
+msgstr "Alinea A"
 
 #: view/kateview.cpp:3658
 #, kde-format

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-04 00:43+0000\n"
-"PO-Revision-Date: 2023-03-14 19:17+0300\n"
+"PO-Revision-Date: 2023-03-21 21:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -5571,7 +5571,7 @@ msgstr "Michael Koch"
 #: utils/kateglobal.cpp:118
 #, kde-format
 msgid "KWrite port to KParts"
-msgstr "KWrite ile KParts bütünleşmesi"
+msgstr "K Yaz ile KParts bütünleşmesi"
 
 #: utils/kateglobal.cpp:119
 #, kde-format
@@ -5591,7 +5591,7 @@ msgstr "Glen Parker"
 #: utils/kateglobal.cpp:121
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
-msgstr "KWrite Geri Alma Geçmişi, KSpell bütünleşmesi"
+msgstr "K Yaz Geri Alma Geçmişi, KSpell bütünleşmesi"
 
 #: utils/kateglobal.cpp:122
 #, kde-format
@@ -5601,7 +5601,7 @@ msgstr "Scott Manson"
 #: utils/kateglobal.cpp:122
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
-msgstr "KWrite XML renklendirme desteği"
+msgstr "K Yaz XML renklendirme desteği"
 
 #: utils/kateglobal.cpp:123
 #, kde-format
@@ -5656,7 +5656,7 @@ msgstr "Jochen Wilhelmy"
 #: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Original KWrite Author"
-msgstr "Asıl KWrite Yazarı"
+msgstr "Özgün K Yaz Yazarı"
 
 #: utils/kateglobal.cpp:132
 #, kde-format
