@@ -4,7 +4,7 @@
 # Georg Schuster <gschuster@utanet.at>, 2005.
 # Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2007, 2008, 2009, 2010.
 # Burkhard Lück <lueck@hube-lueck.de>, 2006, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
-# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2022.
+# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2022, 2023.
 # Johannes Obermayr <johannesobermayr@gmx.de>, 2010.
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Torbjörn Klatt <torbjoern.k@googlemail.com>, 2011.
@@ -14,15 +14,15 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-20 02:18+0000\n"
-"PO-Revision-Date: 2022-12-19 14:48+0100\n"
-"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
+"PO-Revision-Date: 2023-03-21 20:06+0100\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -69,7 +69,7 @@ msgstr "&Datei"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Druck/Export"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1273,10 +1273,9 @@ msgid "View &Difference"
 msgstr "&Unterschiede anzeigen"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Eine Vergleichsansicht der Änderungen anzeigen"
+msgstr "Eine Vergleichsansicht der Änderungen anzeigen."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1284,11 +1283,10 @@ msgid "&Reload"
 msgstr "&Neu laden"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Datei vom Datenträger neu laden. Ungesicherte Änderungen gehen verloren."
+"Lädt die Datei vom Datenträger neu. Ungesicherte Änderungen gehen verloren."
 
 #: dialogs/katedialogs.cpp:1458
 #, kde-format
@@ -1297,10 +1295,9 @@ msgid "&Close File"
 msgstr "&Datei schließen"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Datei schließen und Inhalt verwerfen."
+msgstr "Schließt die Datei und verwirfst den Inhalt."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -2203,8 +2200,7 @@ msgid "&Close"
 msgstr "&Schließen"
 
 #: document/katedocument.cpp:2299 document/katedocument.cpp:6546
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Nachricht schließen"
@@ -3196,37 +3192,31 @@ msgstr ""
 "Doppelte Zeilen aus der Textauswahl entfernen und alphabetisch sortieren"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Markierte Zeilen nach oben duplizieren"
+msgstr "Doppelte Zeilen entfernen"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "&Anhängende Leerzeichen entfernen:"
+msgstr "Anhängende Leerzeichen entfernen"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "&Anhängende Leerzeichen entfernen:"
+msgstr "Voranstehende Leerzeichen entfernen"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "&Anhängende Leerzeichen entfernen:"
+msgstr "Voranstehende und anhängende Leerzeichen entfernen"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Zeilen zusammenführen"
@@ -3268,11 +3258,10 @@ msgid "URI-decode Selected Text"
 msgstr "Markierten Text als URI dekodieren"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Cursor in leeren Zeilen entfernen"
+msgstr "Leere Zeilen entfernen"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -6617,14 +6606,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Wörter %1/%2, Zeichen %3/%4"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Wörter %1/%2, Zeichen %3/%4"
+msgstr "Wörter %1, Zeichen %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
@@ -6677,10 +6662,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Tauscht den ausgewählten Text mit dem Inhalt der Zwischenablage"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Auswahl einfügen"
+msgstr "Bildschirmfoto der Auswahl aufnehmen"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7915,22 +7899,19 @@ msgid "Disable Annotation Bar"
 msgstr "Anmerkungsleiste deaktivieren"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Öffnen/Speichern"
+msgstr "Speichern"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Kopieren ..."
+msgstr "Kopieren"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Hintergrundfarbe ..."
+msgstr "Hintergrundfarbe ..."
 
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
@@ -7939,39 +7920,34 @@ msgid "Show Extra Decorations"
 msgstr "Textdekoration"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "E&inrückungslinien anzeigen"
+msgstr "Fensterdekoration anzeigen"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Bildschirmfoto ..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Zeilen&nummern anzeigen"
+msgstr "Zeilennummern ausblenden"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Zeilen&nummern anzeigen"
+msgstr "Zeilennummern bei 1 beginnen"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Zeilen&nummern anzeigen"
+msgstr "Tatsächliche Zeilennummern anzeigen"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "&Speichern unter ..."
+msgstr "Speichern ..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format

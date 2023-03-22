@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-20 02:18+0000\n"
-"PO-Revision-Date: 2023-03-19 08:49+0200\n"
+"PO-Revision-Date: 2023-03-21 07:14+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -1260,6 +1260,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Перезавантажує і автоматично перезавантажуватиме дані без попередження щодо "
+"змін на диску від цього моменту до того, як ви закриєте вкладку або вікно."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1267,10 +1269,9 @@ msgid "View &Difference"
 msgstr "Переглянути &розбіжності"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Показує внесені зміни"
+msgstr "Показує внесені зміни."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1278,11 +1279,10 @@ msgid "&Reload"
 msgstr "Перезава&нтажити"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Перезавантажити файл з диска. Якщо є незбережені зміни, ці зміни буде "
+"Перезавантажує файл з диска. Якщо є незбережені зміни, ці зміни буде "
 "втрачено."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1292,10 +1292,9 @@ msgid "&Close File"
 msgstr "&Закрити файл"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Закрити файл і відкинути зміни у його вмісті."
+msgstr "Закриває файл і відкидає зміни у його вмісті."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format

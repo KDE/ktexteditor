@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-20 02:18+0000\n"
-"PO-Revision-Date: 2023-03-20 12:44+0100\n"
+"PO-Revision-Date: 2023-03-21 15:09+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -950,16 +950,7 @@ msgstr "Clave de Spatio &Retro in ducente spatio vacue de-indenta"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -976,8 +967,8 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Action de clave Tab (si necun selection existe) <a href=\"If you want "
 "<b>Tab</b> pro alinear le linea currente in le bloco de codice currente como "
-"in emacs, tu face <b>Tab</b> un via breve pro le action de <b>Alinea</b>."
-"\"><span>Altere ...</span></a></p></body></html>"
+"in Emacs, tu face <b>Tab</b> un via breve pro le action de <b>Formattar "
+"Identation</b>.\"><span>Altere ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1260,6 +1251,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Recarga e recargara automaticamente sin aviso re modificationes de disco ab "
+"nunc usque tu claude o le scheda o le fenestra."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -2143,6 +2136,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Iste valor essera multiplicate con le altessa de linea predefinite del font. "
+"Un valor de 1.0 significa que essara usate le altessa predefinite."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438

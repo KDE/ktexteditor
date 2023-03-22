@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-20 02:18+0000\n"
-"PO-Revision-Date: 2023-03-20 01:09+0100\n"
+"PO-Revision-Date: 2023-03-21 20:14+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.03.80\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -1276,6 +1276,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Vuelve a cargar y volverá a hacerlo automáticamente a partir de ahora sin "
+"avisar de los cambios del disco hasta que cierre la pestaña o la ventana."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1283,10 +1285,9 @@ msgid "View &Difference"
 msgstr "Ver las &diferencias"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Muestra las diferencias de los cambios"
+msgstr "Muestra las diferencias de los cambios."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1294,11 +1295,10 @@ msgid "&Reload"
 msgstr "&Volver a cargar"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Volver a cargar el archivo desde el disco. Los cambios sin guardar se "
+"Vuelve a cargar el archivo desde el disco. Los cambios sin guardar se "
 "perderán."
 
 #: dialogs/katedialogs.cpp:1458
@@ -1308,10 +1308,9 @@ msgid "&Close File"
 msgstr "&Cerrar archivo"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Cerrar el archivo descartando su contenido."
+msgstr "Cierra el archivo descartando su contenido."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
