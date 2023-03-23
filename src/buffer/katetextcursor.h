@@ -189,12 +189,12 @@ private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    TextCursor(const TextCursor &);
+    TextCursor(const TextCursor &) = delete;
 
     /**
      * no assignment operator, no copying around.
      */
-    TextCursor &operator=(const TextCursor &);
+    TextCursor &operator=(const TextCursor &) = delete;
 
     /**
      * Set the current cursor position to \e position.

@@ -139,12 +139,12 @@ private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    MovingCursor(const MovingCursor &);
+    MovingCursor(const MovingCursor &) = delete;
 
     /**
      * no assignment operator, no copying around clever cursors.
      */
-    MovingCursor &operator=(const MovingCursor &);
+    MovingCursor &operator=(const MovingCursor &) = delete;
 
     //
     // convenience API

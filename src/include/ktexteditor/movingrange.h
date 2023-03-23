@@ -329,12 +329,12 @@ private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    MovingRange(const MovingRange &);
+    MovingRange(const MovingRange &) = delete;
 
     /**
      * no assignment operator, no copying around clever ranges.
      */
-    MovingRange &operator=(const MovingRange &);
+    MovingRange &operator=(const MovingRange &) = delete;
 
     //
     // convenience API

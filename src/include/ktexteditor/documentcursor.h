@@ -150,7 +150,7 @@ private:
     /**
      * no default constructor, as we need a document.
      */
-    DocumentCursor();
+    DocumentCursor() = delete;
 
     //
     // convenience API
