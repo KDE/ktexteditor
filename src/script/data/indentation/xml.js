@@ -55,8 +55,12 @@ ignore_tags = [/^<html/, /^<body/];
 //   getCode(x) -> "<p>test</p>"
 function getCode(lineNr) {
     var line = document.line(lineNr);
-    var code = "";
-    for (var col = 0; col < line.length; ++col) {
+    var code = '';
+    // // Skip any spaces at the front
+    var col = document.firstVirtualColumn(lineNr);
+    if (col == -1)
+        return code;
+    for (; col < line.length; ++col) {
         if (document.isCode(lineNr, col))
             code += line[col];
     }
