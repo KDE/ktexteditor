@@ -15,7 +15,6 @@
 #include "katepartdebug.h"
 #include "kateview.h"
 
-
 #ifndef Q_OS_WIN
 #include <cerrno>
 #include <unistd.h>
@@ -54,7 +53,6 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool
     , m_history(*this)
     , m_blockSize(blockSize)
     , m_lines(0)
-    , m_lastUsedBlock(0)
     , m_revision(0)
     , m_editingTransactions(0)
     , m_editingLastRevision(0)
@@ -137,7 +135,6 @@ void TextBuffer::clear()
 
     // reset lines and last used block
     m_lines = 1;
-    m_lastUsedBlock = 0;
 
     // reset revision
     m_revision = 0;
@@ -442,53 +439,35 @@ int TextBuffer::blockForLine(int line) const
         qFatal("out of range line requested in text buffer (%d out of [0, %d])", line, lines());
     }
 
-    // we need blocks and last used block should not be negative
-    Q_ASSERT(!m_blocks.empty());
-    Q_ASSERT(m_lastUsedBlock >= 0);
+    size_t b = line / m_blockSize;
+    if (b >= m_blocks.size()) {
+        b = m_blocks.size() - 1;
+    }
 
-    // shortcut: try last block first
-    if (m_lastUsedBlock < (int)m_blocks.size()) {
-        // check if block matches
-        // if yes, just return again this block
-        TextBlock *block = m_blocks[m_lastUsedBlock];
-        const int start = block->startLine();
-        const int lines = block->lines();
-        if (start <= line && line < (start + lines)) {
-            return m_lastUsedBlock;
+    auto block = m_blocks[b];
+    if (block->startLine() <= line && line < block->startLine() + block->lines()) {
+        return b;
+    }
+
+    bool isEmpty = block->lines() == 0;
+
+    if (block->startLine() > line || isEmpty) {
+        for (int i = b - 1; i >= 0; --i) {
+            auto block = m_blocks[i];
+            if (block->startLine() <= line && line < block->startLine() + block->lines()) {
+                return i;
+            }
         }
     }
 
-    // search for right block
-    // use binary search
-    // if we leave this loop not by returning the found element we have an error
-    int blockStart = 0;
-    int blockEnd = m_blocks.size() - 1;
-    while (blockEnd >= blockStart) {
-        // get middle and ensure it is OK
-        int middle = blockStart + ((blockEnd - blockStart) / 2);
-        Q_ASSERT(middle >= 0);
-        Q_ASSERT(middle < (int)m_blocks.size());
-
-        // facts bout this block
-        TextBlock *block = m_blocks[middle];
-        const int start = block->startLine();
-        const int lines = block->lines();
-
-        // right block found, remember it and return it
-        if (start <= line && line < (start + lines)) {
-            m_lastUsedBlock = middle;
-            return middle;
-        }
-
-        // half our stuff ;)
-        if (line < start) {
-            blockEnd = middle - 1;
-        } else {
-            blockStart = middle + 1;
+    if (block->startLine() < line || isEmpty) {
+        for (size_t i = b + 1; i < m_blocks.size(); ++i) {
+            auto block = m_blocks[i];
+            if (block->startLine() <= line && line < block->startLine() + block->lines()) {
+                return i;
+            }
         }
     }
-
-    // we should always find a block
     qFatal("line requested in text buffer (%d out of [0, %d[), no block found", line, lines());
     return -1;
 }

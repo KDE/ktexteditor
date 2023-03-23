@@ -592,12 +592,6 @@ private:
     int m_lines;
 
     /**
-     * Last used block in the buffer. Is used for speeding up blockForLine.
-     * May contain invalid index, must be checked before using.
-     */
-    mutable int m_lastUsedBlock;
-
-    /**
      * Revision of the buffer.
      */
     qint64 m_revision;
