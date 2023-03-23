@@ -54,10 +54,8 @@ public:
      * Construct an empty text buffer.
      * Empty means one empty line in one block.
      * @param parent parent qobject
-     * @param blockSize block size in lines the buffer should try to hold, default 64 lines
-     * @param alwaysUseKAuth only set this for unit testing purposes
      */
-    explicit TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize = 64, bool alwaysUseKAuth = false);
+    explicit TextBuffer(KTextEditor::DocumentPrivate *parent, bool alwaysUseKAuth = false);
 
     /**
      * Destruct the text buffer
@@ -575,11 +573,6 @@ private:
      * text history
      */
     TextHistory m_history;
-
-    /**
-     * block size in lines the buffer will try to hold
-     */
-    const int m_blockSize;
 
     /**
      * List of blocks which contain the lines of this buffer

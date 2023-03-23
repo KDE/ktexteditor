@@ -27,7 +27,7 @@ KateTextBufferTest::~KateTextBufferTest()
 void KateTextBufferTest::basicBufferTest()
 {
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr, 1);
+    Kate::TextBuffer buffer(nullptr);
 
     // one line per default
     QVERIFY(buffer.lines() == 1);
@@ -44,7 +44,7 @@ void KateTextBufferTest::basicBufferTest()
 void KateTextBufferTest::wrapLineTest()
 {
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr, 1);
+    Kate::TextBuffer buffer(nullptr);
 
     // wrap first empty line -> we should have two empty lines
     buffer.startEditing();
@@ -66,7 +66,7 @@ void KateTextBufferTest::wrapLineTest()
 void KateTextBufferTest::insertRemoveTextTest()
 {
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr, 1);
+    Kate::TextBuffer buffer(nullptr);
 
     // wrap first line
     buffer.startEditing();
@@ -123,84 +123,78 @@ void KateTextBufferTest::cursorTest()
     // last buffer content, for consistence checks
     QString lastBufferContent;
 
-    // test with different block sizes
-    for (int i = 1; i <= 4; ++i) {
-        // construct an empty text buffer
-        Kate::TextBuffer buffer(nullptr, i);
+    // construct an empty text buffer
+    Kate::TextBuffer buffer(nullptr);
 
-        // wrap first line
-        buffer.startEditing();
-        buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("sfdfjdsklfjlsdfjlsdkfjskldfjklsdfjklsdjkfl"));
-        buffer.wrapLine(KTextEditor::Cursor(0, 8));
-        buffer.wrapLine(KTextEditor::Cursor(1, 8));
-        buffer.wrapLine(KTextEditor::Cursor(2, 8));
-        buffer.finishEditing();
-        buffer.debugPrint(QStringLiteral("Cursor buffer"));
+    // wrap first line
+    buffer.startEditing();
+    buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("sfdfjdsklfjlsdfjlsdkfjskldfjklsdfjklsdjkfl"));
+    buffer.wrapLine(KTextEditor::Cursor(0, 8));
+    buffer.wrapLine(KTextEditor::Cursor(1, 8));
+    buffer.wrapLine(KTextEditor::Cursor(2, 8));
+    buffer.finishEditing();
+    buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
-        // construct cursor
-        Kate::TextCursor *cursor1 = new Kate::TextCursor(buffer, KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
-        QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 0));
-        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+    // construct cursor
+    Kate::TextCursor *cursor1 = new Kate::TextCursor(buffer, KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
+    QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 0));
+    // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
 
-        // Kate::TextCursor *cursor2 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1, 8), Kate::TextCursor::MoveOnInsert);
-        // printf ("cursor %d, %d\n", cursor2->line(), cursor2->column());
+    // Kate::TextCursor *cursor2 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1, 8), Kate::TextCursor::MoveOnInsert);
+    // printf ("cursor %d, %d\n", cursor2->line(), cursor2->column());
 
-        // Kate::TextCursor *cursor3 = new Kate::TextCursor (buffer, KTextEditor::Cursor (0, 123), Kate::TextCursor::MoveOnInsert);
-        // printf ("cursor %d, %d\n", cursor3->line(), cursor3->column());
+    // Kate::TextCursor *cursor3 = new Kate::TextCursor (buffer, KTextEditor::Cursor (0, 123), Kate::TextCursor::MoveOnInsert);
+    // printf ("cursor %d, %d\n", cursor3->line(), cursor3->column());
 
-        // Kate::TextCursor *cursor4 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1323, 1), Kate::TextCursor::MoveOnInsert);
-        // printf ("cursor %d, %d\n", cursor4->line(), cursor4->column());
+    // Kate::TextCursor *cursor4 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1323, 1), Kate::TextCursor::MoveOnInsert);
+    // printf ("cursor %d, %d\n", cursor4->line(), cursor4->column());
 
-        // insert text
-        buffer.startEditing();
-        buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("hallo"));
-        buffer.finishEditing();
-        buffer.debugPrint(QStringLiteral("Cursor buffer"));
+    // insert text
+    buffer.startEditing();
+    buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("hallo"));
+    buffer.finishEditing();
+    buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
-        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
-        QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 5));
+    // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+    QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 5));
 
-        // remove text
-        buffer.startEditing();
-        buffer.removeText(KTextEditor::Range(KTextEditor::Cursor(0, 4), KTextEditor::Cursor(0, 10)));
-        buffer.finishEditing();
-        buffer.debugPrint(QStringLiteral("Cursor buffer"));
+    // remove text
+    buffer.startEditing();
+    buffer.removeText(KTextEditor::Range(KTextEditor::Cursor(0, 4), KTextEditor::Cursor(0, 10)));
+    buffer.finishEditing();
+    buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
-        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
-        QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
+    // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+    QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
 
-        // wrap line
-        buffer.startEditing();
-        buffer.wrapLine(KTextEditor::Cursor(0, 3));
-        buffer.finishEditing();
-        buffer.debugPrint(QStringLiteral("Cursor buffer"));
+    // wrap line
+    buffer.startEditing();
+    buffer.wrapLine(KTextEditor::Cursor(0, 3));
+    buffer.finishEditing();
+    buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
-        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
-        QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(1, 1));
+    // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+    QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(1, 1));
 
-        // unwrap line
-        buffer.startEditing();
-        buffer.unwrapLine(1);
-        buffer.finishEditing();
-        buffer.debugPrint(QStringLiteral("Cursor buffer"));
+    // unwrap line
+    buffer.startEditing();
+    buffer.unwrapLine(1);
+    buffer.finishEditing();
+    buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
-        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
-        QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
+    // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+    QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
 
-        // verify content
-        if (i > 1) {
-            QVERIFY(lastBufferContent == buffer.text());
-        }
-
-        // remember content
-        lastBufferContent = buffer.text();
-    }
+    // remember content
+    lastBufferContent = buffer.text();
+    // verify content
+    QVERIFY(lastBufferContent == buffer.text());
 }
 
 void KateTextBufferTest::foldingTest()
 {
     // construct an empty text buffer & folding info
-    Kate::TextBuffer buffer(nullptr, 1);
+    Kate::TextBuffer buffer(nullptr);
     Kate::TextFolding folding(buffer);
 
     // insert some text
@@ -392,7 +386,7 @@ void KateTextBufferTest::foldingTest()
 void KateTextBufferTest::nestedFoldingTest()
 {
     // construct an empty text buffer & folding info
-    Kate::TextBuffer buffer(nullptr, 1);
+    Kate::TextBuffer buffer(nullptr);
     Kate::TextFolding folding(buffer);
 
     // insert two nested folds in 5 lines
@@ -431,7 +425,7 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
 
     QFile::setPermissions(folder_name, QFile::ExeOwner);
 
-    Kate::TextBuffer buffer(nullptr, 1);
+    Kate::TextBuffer buffer(nullptr);
     buffer.setTextCodec(QStringLiteral("UTF-8"));
     buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
     bool a;
@@ -468,7 +462,7 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     QVERIFY(f.flush());
     f.close();
 
-    Kate::TextBuffer buffer(nullptr, 1, true);
+    Kate::TextBuffer buffer(nullptr, true);
     buffer.setTextCodec(QStringLiteral("UTF-8"));
     buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
     bool a;

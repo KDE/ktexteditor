@@ -37,6 +37,8 @@
 #include <KAuth/ExecuteJob>
 #endif
 
+static constexpr int blockSize = 64;
+
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
 #else
@@ -47,11 +49,10 @@
 
 namespace Kate
 {
-TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool alwaysUseKAuth)
+TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, bool alwaysUseKAuth)
     : QObject(parent)
     , m_document(parent)
     , m_history(*this)
-    , m_blockSize(blockSize)
     , m_lines(0)
     , m_revision(0)
     , m_editingTransactions(0)
@@ -65,9 +66,6 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool
     , m_lineLengthLimit(4096)
     , m_alwaysUseKAuthForSave(alwaysUseKAuth)
 {
-    // minimal block size must be > 0
-    Q_ASSERT(m_blockSize > 0);
-
     // create initial state
     clear();
 }
@@ -439,7 +437,7 @@ int TextBuffer::blockForLine(int line) const
         qFatal("out of range line requested in text buffer (%d out of [0, %d])", line, lines());
     }
 
-    size_t b = line / m_blockSize;
+    size_t b = line / blockSize;
     if (b >= m_blocks.size()) {
         b = m_blocks.size() - 1;
     }
@@ -449,9 +447,7 @@ int TextBuffer::blockForLine(int line) const
         return b;
     }
 
-    bool isEmpty = block->lines() == 0;
-
-    if (block->startLine() > line || isEmpty) {
+    if (block->startLine() > line) {
         for (int i = b - 1; i >= 0; --i) {
             auto block = m_blocks[i];
             if (block->startLine() <= line && line < block->startLine() + block->lines()) {
@@ -460,7 +456,7 @@ int TextBuffer::blockForLine(int line) const
         }
     }
 
-    if (block->startLine() < line || isEmpty) {
+    if (block->startLine() < line || (block->lines() == 0)) {
         for (size_t i = b + 1; i < m_blocks.size(); ++i) {
             auto block = m_blocks[i];
             if (block->startLine() <= line && line < block->startLine() + block->lines()) {
@@ -468,6 +464,7 @@ int TextBuffer::blockForLine(int line) const
             }
         }
     }
+
     qFatal("line requested in text buffer (%d out of [0, %d[), no block found", line, lines());
     return -1;
 }
@@ -499,7 +496,7 @@ void TextBuffer::balanceBlock(int index)
     TextBlock *blockToBalance = m_blocks.at(index);
 
     // first case, too big one, split it
-    if (blockToBalance->lines() >= 2 * m_blockSize) {
+    if (blockToBalance->lines() >= 2 * blockSize) {
         // half the block
         int halfSize = blockToBalance->lines() / 2;
 
@@ -521,7 +518,7 @@ void TextBuffer::balanceBlock(int index)
     }
 
     // block still large enough, do nothing
-    if (2 * blockToBalance->lines() > m_blockSize) {
+    if (2 * blockToBalance->lines() > blockSize) {
         return;
     }
 
@@ -539,7 +536,7 @@ void TextBuffer::balanceBlock(int index)
 void TextBuffer::debugPrint(const QString &title) const
 {
     // print header with title
-    printf("%s (lines: %d bs: %d)\n", qPrintable(title), m_lines, m_blockSize);
+    printf("%s (lines: %d)\n", qPrintable(title), m_lines);
 
     // print all blocks
     for (size_t i = 0; i < m_blocks.size(); ++i) {
@@ -650,7 +647,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 unicodeData += lineLength;
 
                 // ensure blocks aren't too large
-                if (m_blocks.back()->lines() >= m_blockSize) {
+                if (m_blocks.back()->lines() >= blockSize) {
                     m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
                 }
 
