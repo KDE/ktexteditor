@@ -137,9 +137,6 @@ public:
     Q_INVOKABLE void shiftWordPrev(int cnt = 1); // ShiftWordLeft
     Q_INVOKABLE void wordNext(int cnt = 1); // WordRight
     Q_INVOKABLE void shiftWordNext(int cnt = 1); // ShiftWordRight
-
-private:
-    Q_DISABLE_COPY(KateViewObject)
 };
 
 /**
@@ -152,9 +149,6 @@ class KateDocumentObject : public KateScriptDocument
 public:
     explicit KateDocumentObject(QJSEngine *engine, KTextEditor::DocumentPrivate *doc);
     ~KateDocumentObject() override;
-
-private:
-    Q_DISABLE_COPY(KateDocumentObject)
 };
 
 /**
