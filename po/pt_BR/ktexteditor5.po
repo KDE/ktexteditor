@@ -10,7 +10,7 @@
 # doutor.zero <doutor.zero@gmail.com>, 2007.
 # Diniz Bortolotto <diniz.bortolotto@gmail.com>, 2007, 2008.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2008, 2009, 2010, 2012, 2017, 2018, 2019, 2020, 2021, 2022.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2008, 2009, 2010, 2012, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010, 2011, 2012.
 # Thiago Masato Costa Sueto <herzenschein@gmail.com>, 2021.
 msgid ""
@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-04 00:43+0000\n"
-"PO-Revision-Date: 2022-05-03 13:57-0300\n"
+"PO-Revision-Date: 2023-03-22 18:00-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -412,16 +412,14 @@ msgid "Show Always"
 msgstr "Mostrar sempre"
 
 #: dialogs/clipboardhistorydialog.cpp:267
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Selecionar o ponto de edição seguinte"
+msgstr "Selecionar texto para colar."
 
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Nenhuma entrada no histórico da área de transferência"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -448,12 +446,11 @@ msgstr "Selec&ionar automaticamente a primeira entrada da complementação"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Percorra a lista de complementação usando Tab / Shift+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "Complementação a&utomática de palavras"
 
@@ -479,15 +476,12 @@ msgstr "Remover o fim com a completação"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"A complementação de palavra-chave oferece sugestões com base nas palavras-"
-"chave que existem no idioma do documento."
+"A complementação de palavra oferece sugestões com base nas palavras "
+"encontradas no documento."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -507,8 +501,7 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Documentation with Completion"
+#, kde-format
 msgid "Documentation with completion"
 msgstr "Documentação com complementação"
 
@@ -649,16 +642,17 @@ msgstr "Não mover o cursor do texto ao colar com o mouse"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "&Histórico da área de transferência"
+msgstr "Máximo de entradas do histórico da área de transferência:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
+"Isso determina o número de entradas a serem mantidas no histórico da área de "
+"transferência"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -969,16 +963,7 @@ msgstr "Tecla &Backspace no espaço em branco inicial retira o recuo"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -995,7 +980,7 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Ação da tecla Tab (se não existe seleção) <a href=\"Se você deseja que o "
 "<b>Tab</b> alinhe a linha atual no bloco de código atual, como no emacs, "
-"faça com que o <b>Tab</b> seja um atalho para a ação <b>Alinhar</b>."
+"faça com que o <b>Tab</b> seja um atalho para a ação <b>Formatar recuo</b>."
 "\"><span>Mais...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1188,7 +1173,7 @@ msgstr "Opções de edição"
 #: dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Statusbar"
-msgstr ""
+msgstr "Barra de status"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -2820,10 +2805,9 @@ msgid "&Color theme:"
 msgstr "Tema de &cores:"
 
 #: printing/printconfigwidgets.cpp:483
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Fonte"
+msgstr "Fonte:"
 
 #: printing/printconfigwidgets.cpp:487
 #, kde-format
@@ -2932,144 +2916,109 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Envolver com a marca"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Mover o cursor para a marca correspondente"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "Selecionar o conteúdo interior da marca HTML/XML"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Selecionar o conteúdo exterior da marca HTML/XML"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Alternar comentário"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Ir para o ponto de edição seguinte"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Ir para o ponto de edição anterior"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Selecionar o ponto de edição seguinte"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Selecionar o ponto de edição anterior"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Excluir a marca sob o cursor"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Dividir ou juntar uma marca"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Avaliar uma expressão matemática simples"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Decrementar 1 ao número"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Decrementar 10 ao número"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Decrementar 0,1 ao número"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Incrementar 1 ao número"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Incrementar 10 ao número"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Incrementar 0,1 ao número"
@@ -3182,9 +3131,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Incrementar 0,1 ao número sob o cursor"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Mover o cursor para o recuo correspondente anterior"
@@ -3197,9 +3144,7 @@ msgid "Navigation"
 msgstr "Navegação"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Mover o cursor para o recuo correspondente seguinte"
@@ -3215,12 +3160,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Mover o cursor para o recuo correspondente seguinte"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Ordenar o texto selecionado"
+msgstr "Ordenar o texto selecionado alfabeticamente"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -4218,8 +4161,7 @@ msgid "I&gnore All"
 msgstr "I&gnorar todas"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
 msgstr "Ortografia (a partir do cursor)..."
 
@@ -4239,10 +4181,9 @@ msgid "Add to Dictionary"
 msgstr "Adicionar ao dicionário"
 
 #: spellcheck/spellingmenu.cpp:168
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Ortografia"
+msgstr "Ortografia de '%1'"
 
 #: swapfile/kateswapdiffcreator.cpp:93
 #, kde-format
@@ -6492,10 +6433,9 @@ msgid "Encoding"
 msgstr "Codificação"
 
 #: view/katestatusbar.cpp:199 view/katestatusbar.cpp:200
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Fim da linha"
+msgstr "Tipo de fim da linha"
 
 #: view/katestatusbar.cpp:206
 #, kde-format
@@ -6647,8 +6587,7 @@ msgid "Paste previously mouse selection contents"
 msgstr "Colar o conteúdo da seleção anterior do mouse"
 
 #: view/kateview.cpp:473
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Trocar com o conteúdo da área de transferência"
 
@@ -6712,10 +6651,9 @@ msgstr ""
 "configuração."
 
 #: view/kateview.cpp:507
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Recuo"
+msgstr "F&ormatar recuo"
 
 #: view/kateview.cpp:508
 #, fuzzy, kde-format
@@ -7029,8 +6967,7 @@ msgstr ""
 "linha) e o modo de seleção de bloco."
 
 #: view/kateview.cpp:722
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Mudar para o próximo modo de entrada"
 
@@ -7681,8 +7618,7 @@ msgstr ""
 "não sejam letras ou números."
 
 #: view/kateview.cpp:1239
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Inserir uma linha nova sem recuo"
 
@@ -8001,12 +7937,7 @@ msgstr ""
 "abre um documento novo.<br /></p>"
 
 #: vimode/appcommands.cpp:270
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
-#| "<tt><b>e[dit]</b></tt></p><p>Starts <b>e</b>diting the current document "
-#| "again. This is useful to re-edit the current file, when it has been "
-#| "changed by another program.</p>"
+#, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
@@ -8014,8 +7945,8 @@ msgid ""
 msgstr ""
 "<p><b>e[dit] &mdash; recarrega o documento atual</b></p><p>Utilização: "
 "<tt><b>e[dit]</b></tt></p><p>Começa a <b>e</b>ditar o documento atual de "
-"novo. Isto é útil para voltar a editar o arquivo atual, quando foi alterado "
-"por outro programa.</p>"
+"novo. Isto é útil para voltar a editar o arquivo atual, quando foi "
+"modificado no disco.</p>"
 
 #: vimode/appcommands.cpp:512
 #, kde-format
