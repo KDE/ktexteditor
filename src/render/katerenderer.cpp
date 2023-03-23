@@ -32,6 +32,8 @@
 #include <QStack>
 #include <QtMath> // qCeil
 
+#include <optional>
+
 static const QChar tabChar(QLatin1Char('\t'));
 static const QChar spaceChar(QLatin1Char(' '));
 static const QChar nbSpaceChar(0xa0); // non-breaking space
@@ -631,12 +633,23 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
     }
 }
 
-void KateRenderer::paintTextLineSelection(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges)
+void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
 {
-    QPainterPath p;
     for (const auto &sel : selRanges) {
         const int s = sel.start;
         const int e = sel.start + sel.length;
+        QBrush br;
+
+        // Prefer using the brush supplied by user
+        if (brush != Qt::NoBrush) {
+            br = brush;
+        } else if (sel.format.background() != Qt::NoBrush) {
+            // Otherwise use the brush in format
+            br = sel.format.background();
+        } else {
+            // skip if no brush to fill with
+            continue;
+        }
 
         const int startViewLine = layout->viewLineForColumn(s);
         const int endViewLine = layout->viewLineForColumn(e);
@@ -646,8 +659,9 @@ void KateRenderer::paintTextLineSelection(QPainter &paint, KateLineLayoutPtr lay
             const int endX = cursorToX(l, e);
             const int y = startViewLine * lineHeight();
             QRect r(startX, y, (endX - startX), lineHeight());
-            p.addRect(r);
+            paint.fillRect(r, br);
         } else {
+            QPainterPath p;
             for (int l = startViewLine; l <= endViewLine; ++l) {
                 auto kateLayout = layout->viewLine(l);
                 int sx = 0;
@@ -662,9 +676,9 @@ void KateRenderer::paintTextLineSelection(QPainter &paint, KateLineLayoutPtr lay
                 QRect r(sx, y, width - sx, lineHeight());
                 p.addRect(r);
             }
+            paint.fillPath(p, br);
         }
     }
-    paint.fillPath(p, config()->selectionColor());
 }
 
 void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
@@ -727,10 +741,28 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             // set the pen color
             paint.setPen(attribute(KTextEditor::dsNormal)->foreground().color());
             // Draw the text :)
+
+            if (range->layout()->textOption().textDirection() == Qt::RightToLeft) {
+                // If the text is RTL, we draw text background ourselves
+                auto decos = decorationsForLine(range->textLine(), range->line(), false);
+                auto sr = view()->selectionRange();
+                auto c = config()->selectionColor();
+                int line = range->line();
+                // Remove "selection" format from decorations
+                // "selection" will get painted below
+                decos.erase(std::remove_if(decos.begin(),
+                                           decos.end(),
+                                           [sr, c, line](const QTextLayout::FormatRange &fr) {
+                                               return sr.overlapsLine(line) && sr.overlapsColumn(fr.start) && fr.format.background().color() == c;
+                                           }),
+                            decos.end());
+                paintTextBackground(paint, range, decos, Qt::NoBrush);
+            }
+
             if (drawSelection) {
                 additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
                 if (hasCustomLineHeight()) {
-                    paintTextLineSelection(paint, range, additionalFormats);
+                    paintTextBackground(paint, range, additionalFormats, config()->selectionColor());
                 }
                 range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats);
 
@@ -1201,6 +1233,30 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     // Syntax highlighting, inbuilt and arbitrary
     QVector<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line());
+
+    // Qt works badly if you have RTL text and formats set on that text.
+    // It will shape the text according to the given format ranges which
+    // produces incorrect results as a letter in RTL can have a different
+    // shape depending upon where in the word it resides. The resulting output
+    // looks like: وقار vs وق ار, i.e, the ligature قا is broken into ق ا which
+    // is really bad for readability
+    if (opt.textDirection() == Qt::RightToLeft) {
+        // We can fix this to a large extent here by using QGlyphRun etc, but for now
+        // we only fix this for formats which have a background color and a foreground
+        // color that is same as "dsNormal". Reasoning is that, it is unlikely that RTL
+        // text will have a lot of cases where you have partially colored ligatures. BG
+        // formats are different, you can easily have a format that covers a ligature partially
+        // as a result of "Search" or "multiple cursor selection"
+        QColor c = view()->theme().textColor(KSyntaxHighlighting::Theme::Normal);
+        decorations.erase(std::remove_if(decorations.begin(),
+                                         decorations.end(),
+                                         [c](const QTextLayout::FormatRange &fr) {
+                                             return fr.format.hasProperty(QTextFormat::BackgroundBrush)
+                                                 && (fr.format.property(QTextFormat::ForegroundBrush).value<QBrush>().color() == c
+                                                     || fr.format.foreground() == Qt::NoBrush);
+                                         }),
+                          decorations.end());
+    }
 
     int firstLineOffset = 0;
 

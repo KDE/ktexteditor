@@ -373,7 +373,7 @@ public:
      */
     void paintTextLineBackground(QPainter &paint, KateLineLayoutPtr layout, int currentViewLine, int xStart, int xEnd);
 
-    void paintTextLineSelection(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges);
+    void paintTextBackground(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &br) const;
 
     /**
      * This takes an in index, and returns all the attributes for it.
