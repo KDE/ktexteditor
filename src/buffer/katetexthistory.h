@@ -84,7 +84,7 @@ private:
     /**
      * Class representing one entry in the editing history.
      */
-    class Entry
+    class KTEXTEDITOR_NO_EXPORT Entry
     {
     public:
         /**
@@ -150,27 +150,32 @@ private:
      * Construct an empty text history.
      * @param buffer buffer this text history belongs to
      */
+    KTEXTEDITOR_NO_EXPORT
     explicit TextHistory(TextBuffer &buffer);
 
     /**
      * Destruct the text history
      */
+    KTEXTEDITOR_NO_EXPORT
     ~TextHistory();
 
     /**
      * Clear the edit history, this is done on clear() in buffer.
      */
+    KTEXTEDITOR_NO_EXPORT
     void clear();
 
     /**
      * Set current revision as last saved revision
      */
+    KTEXTEDITOR_NO_EXPORT
     void setLastSavedRevision();
 
     /**
      * Notify about wrap line at given cursor position.
      * @param position line/column as cursor where to wrap
      */
+    KTEXTEDITOR_NO_EXPORT
     void wrapLine(const KTextEditor::Cursor position);
 
     /**
@@ -178,6 +183,7 @@ private:
      * @param line line to unwrap
      * @param oldLineLength text length of the line in front of this one before this unwrap
      */
+    KTEXTEDITOR_NO_EXPORT
     void unwrapLine(int line, int oldLineLength);
 
     /**
@@ -186,6 +192,7 @@ private:
      * @param length text length to be inserted
      * @param oldLineLength text length of the line before this insert
      */
+    KTEXTEDITOR_NO_EXPORT
     void insertText(const KTextEditor::Cursor position, int length, int oldLineLength);
 
     /**
@@ -193,12 +200,14 @@ private:
      * @param range range of text to remove, must be on one line only.
      * @param oldLineLength text length of the line before this remove
      */
+    KTEXTEDITOR_NO_EXPORT
     void removeText(KTextEditor::Range range, int oldLineLength);
 
     /**
      * Generic function to add a entry to the history. Is used by the above functions for the different editing primitives.
      * @param entry new entry to add
      */
+    KTEXTEDITOR_NO_EXPORT
     void addEntry(const Entry &entry);
 
 private:

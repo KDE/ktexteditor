@@ -34,8 +34,11 @@ public:
     CompletionList getCompletions(const QChar &reg) const;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     int readMacroCompletions(const QChar &reg, const QStringList &encodedMacroCompletions, int macroCompletionIndex);
+    KTEXTEDITOR_NO_EXPORT
     static QString encodeMacroCompletionForConfig(const Completion &completionForMacro);
+    KTEXTEDITOR_NO_EXPORT
     static Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
 
 private:

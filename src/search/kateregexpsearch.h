@@ -91,6 +91,7 @@ private:
      * \param replacementGoodies @c true for buildReplacement(), @c false for escapePlainText()
      * \return resolved text
      */
+    KTEXTEDITOR_NO_EXPORT
     static QString buildReplacement(const QString &text, const QStringList &capturedTexts, int replacementCounter, bool replacementGoodies);
 
     /**
@@ -107,6 +108,7 @@ private:
      * multiple lines even after replacing "\s" with "[ \t]"; otherwise it's set to false
      * \return the modified pattern
      */
+    KTEXTEDITOR_NO_EXPORT
     static QString repairPattern(const QString &pattern, bool &stillMultiLine);
 
 private:

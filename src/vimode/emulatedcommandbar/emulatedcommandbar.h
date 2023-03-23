@@ -61,6 +61,7 @@ private:
     QLineEdit *m_edit = nullptr;
 
     QLabel *m_barTypeIndicator = nullptr;
+    KTEXTEDITOR_NO_EXPORT
     void showBarTypeIndicator(Mode mode);
 
     bool m_suspendEditEventFiltering = false;
@@ -69,6 +70,7 @@ private:
     QLabel *m_waitingForRegisterIndicator;
     bool m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
 
+    KTEXTEDITOR_NO_EXPORT
     void hideAllWidgetsExcept(QWidget *widgetToKeepVisible);
 
     friend class ActiveMode;
@@ -80,30 +82,44 @@ private:
     std::unique_ptr<SearchMode> m_searchMode;
     std::unique_ptr<CommandMode> m_commandMode;
 
+    KTEXTEDITOR_NO_EXPORT
     void switchToMode(ActiveMode *newMode);
     ActiveMode *m_currentMode = nullptr;
 
+    KTEXTEDITOR_NO_EXPORT
     bool barHandledKeypress(const QKeyEvent *keyEvent);
+    KTEXTEDITOR_NO_EXPORT
     void insertRegisterContents(const QKeyEvent *keyEvent);
     bool eventFilter(QObject *object, QEvent *event) override;
+    KTEXTEDITOR_NO_EXPORT
     void deleteSpacesToLeftOfCursor();
+    KTEXTEDITOR_NO_EXPORT
     void deleteWordCharsToLeftOfCursor();
+    KTEXTEDITOR_NO_EXPORT
     bool deleteNonWordCharsToLeftOfCursor();
 
     void closed() override;
+    KTEXTEDITOR_NO_EXPORT
     void closeWithStatusMessage(const QString &exitStatusMessage);
     QTimer *m_exitStatusMessageDisplayHideTimer;
     QLabel *m_exitStatusMessageDisplay;
     long m_exitStatusMessageHideTimeOutMS = 4000;
 
+    KTEXTEDITOR_NO_EXPORT
     void createAndAddBarTypeIndicator(QLayout *layout);
+    KTEXTEDITOR_NO_EXPORT
     void createAndAddEditWidget(QLayout *layout);
+    KTEXTEDITOR_NO_EXPORT
     void createAndAddExitStatusMessageDisplay(QLayout *layout);
+    KTEXTEDITOR_NO_EXPORT
     void createAndInitExitStatusMessageDisplayTimer();
+    KTEXTEDITOR_NO_EXPORT
     void createAndAddWaitingForRegisterIndicator(QLayout *layout);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void editTextChanged(const QString &newText);
+    KTEXTEDITOR_NO_EXPORT
     void startHideExitStatusMessageTimer();
 };
 }

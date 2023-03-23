@@ -197,6 +197,7 @@ private Q_SLOTS:
     void viewCreated(KTextEditor::Document *, KTextEditor::View *newView) const;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     KTextEditor::ViewPrivate *activeView();
 
 private:

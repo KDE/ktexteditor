@@ -176,19 +176,28 @@ private Q_SLOTS:
     void removeText(KTextEditor::Range range);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void updateAndShow();
+    KTEXTEDITOR_NO_EXPORT
     void updateArgumentHintGeometry();
+    KTEXTEDITOR_NO_EXPORT
     QModelIndex selectedIndex() const;
 
+    KTEXTEDITOR_NO_EXPORT
     void clear();
     // Switch cursor between argument-hint list / completion-list
+    KTEXTEDITOR_NO_EXPORT
     void switchList();
+    KTEXTEDITOR_NO_EXPORT
     void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
 
+    KTEXTEDITOR_NO_EXPORT
     QString tailString() const;
 
+    KTEXTEDITOR_NO_EXPORT
     void deleteCompletionRanges();
 
+private:
     QList<KTextEditor::CodeCompletionModel *> m_sourceModels;
     KateCompletionModel *m_presentationModel;
 

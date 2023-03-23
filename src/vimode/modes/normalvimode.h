@@ -378,13 +378,20 @@ protected:
     KTextEditor::Cursor m_positionWhenIncrementalSearchBegan;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
+    KTEXTEDITOR_NO_EXPORT
     void textRemoved(KTextEditor::Document *, KTextEditor::Range);
+    KTEXTEDITOR_NO_EXPORT
     void undoBeginning();
+    KTEXTEDITOR_NO_EXPORT
     void undoEnded();
 
+    KTEXTEDITOR_NO_EXPORT
     void updateYankHighlightAttrib();
+    KTEXTEDITOR_NO_EXPORT
     void clearYankHighlight();
+    KTEXTEDITOR_NO_EXPORT
     void aboutToDeleteMovingInterfaceContent();
 };
 }

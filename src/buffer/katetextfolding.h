@@ -197,7 +197,7 @@ private:
     /**
      * Data holder for text folding range and its nested children
      */
-    class FoldingRange
+    class KTEXTEDITOR_NO_EXPORT FoldingRange
     {
     public:
         /**
@@ -259,6 +259,7 @@ private:
     /**
      * Clear all folding range collections but leave global id counter intact.
      */
+    KTEXTEDITOR_NO_EXPORT
     void clearFoldingRanges();
 
     /**
@@ -266,6 +267,7 @@ private:
      * @param ranges ranges vector to dump
      * @param folds current folds as variant list, will be filled
      */
+    KTEXTEDITOR_NO_EXPORT
     static void exportFoldingRanges(const TextFolding::FoldingRange::Vector &ranges, QJsonArray &folds);
 
     /**
@@ -275,6 +277,7 @@ private:
      * @param recurse recurse to nestedRanges?
      * @return current state as text
      */
+    KTEXTEDITOR_NO_EXPORT
     static QString debugDump(const TextFolding::FoldingRange::Vector &ranges, bool recurse);
 
     /**
@@ -287,6 +290,7 @@ private:
      * @param newRange new folding range
      * @return success, if false, newRange should be deleted afterwards, else it is registered internally
      */
+    KTEXTEDITOR_NO_EXPORT
     bool insertNewFoldingRange(FoldingRange *parent, TextFolding::FoldingRange::Vector &existingRanges, TextFolding::FoldingRange *newRange);
 
     /**
@@ -294,6 +298,7 @@ private:
      * @param newRange new folding range that was inserted, will already contain its new nested ranges, if any!
      * @return any updated done? if yes, the foldingRangesChanged() signal got emitted!
      */
+    KTEXTEDITOR_NO_EXPORT
     bool updateFoldedRangesForNewRange(TextFolding::FoldingRange *newRange);
 
     /**
@@ -301,6 +306,7 @@ private:
      * @param oldRange new folding range that is removed, will still contain its new nested ranges, if any!
      * @return any updated done? if yes, the foldingRangesChanged() signal got emitted!
      */
+    KTEXTEDITOR_NO_EXPORT
     bool updateFoldedRangesForRemovedRange(TextFolding::FoldingRange *oldRange);
 
     /**
@@ -308,6 +314,7 @@ private:
      * @param newFoldedFoldingRanges output vector for folded ranges
      * @param ranges input vector to search recursively folded ranges inside
      */
+    KTEXTEDITOR_NO_EXPORT
     void appendFoldedRanges(TextFolding::FoldingRange::Vector &newFoldedFoldingRanges, const TextFolding::FoldingRange::Vector &ranges) const;
 
     /**
@@ -315,6 +322,7 @@ private:
      * @param a first range
      * @param b second range
      */
+    KTEXTEDITOR_NO_EXPORT
     static bool compareRangeByStart(FoldingRange *a, FoldingRange *b);
 
     /**
@@ -322,6 +330,7 @@ private:
      * @param a first range
      * @param b second range
      */
+    KTEXTEDITOR_NO_EXPORT
     static bool compareRangeByEnd(FoldingRange *a, FoldingRange *b);
 
     /**
@@ -329,6 +338,7 @@ private:
      * @param line line
      * @param range range
      */
+    KTEXTEDITOR_NO_EXPORT
     static bool compareRangeByStartWithLine(int line, FoldingRange *range);
 
     /**
@@ -336,6 +346,7 @@ private:
      * @param range range
      * @param line line
      */
+    KTEXTEDITOR_NO_EXPORT
     static bool compareRangeByLineWithStart(FoldingRange *range, int line);
 
     /**
@@ -345,6 +356,7 @@ private:
      * @param ranges ranges vector to search in
      * @param line line to query starting folding ranges
      */
+    KTEXTEDITOR_NO_EXPORT
     void foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const;
 
 private:

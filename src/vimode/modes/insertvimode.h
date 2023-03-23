@@ -92,6 +92,7 @@ protected:
     KTextEditor::Cursor m_textInsertedByCompletionEndPos;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
 };
 }

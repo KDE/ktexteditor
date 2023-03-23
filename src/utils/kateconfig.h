@@ -967,6 +967,7 @@ private:
     /**
      * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
+    KTEXTEDITOR_NO_EXPORT
     KateViewConfig();
 
 public:
@@ -1367,6 +1368,7 @@ private:
     /**
      * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
+    KTEXTEDITOR_NO_EXPORT
     KateRendererConfig();
 
 public:
@@ -1512,8 +1514,10 @@ private:
     /**
      * Read the schema properties from the config file.
      */
+    KTEXTEDITOR_NO_EXPORT
     void setSchemaInternal(const QString &schema);
 
+private:
     QString m_schema;
     QFont m_font;
     QColor m_backgroundColor;
