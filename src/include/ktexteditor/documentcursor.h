@@ -146,7 +146,7 @@ public:
     //
     // forbidden stuff
     //
-private:
+public:
     /**
      * no default constructor, as we need a document.
      */

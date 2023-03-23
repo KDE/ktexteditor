@@ -493,6 +493,16 @@ public:
         explicit EditingTransaction(Document *document);
 
         /**
+         * No copy constructor, don't allow this to be copied.
+         */
+        EditingTransaction(const EditingTransaction &) = delete;
+
+        /**
+         * No assignment operator, no copying around editing transations.
+         */
+        EditingTransaction &operator=(const EditingTransaction &) = delete;
+
+        /**
          * Destructs the object and, if needed, finishes a running editing
          * transaction by calling finish().
          *
@@ -517,11 +527,6 @@ public:
         void finish();
 
     private:
-        /**
-         * no copying allowed
-         */
-        Q_DISABLE_COPY(EditingTransaction)
-
         /**
          * private d-pointer
          */

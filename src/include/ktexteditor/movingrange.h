@@ -325,7 +325,7 @@ protected:
      */
     MovingRange();
 
-private:
+public:
     /**
      * no copy constructor, don't allow this to be copied.
      */

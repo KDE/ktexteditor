@@ -51,9 +51,19 @@ public:
     TextRange(TextBuffer &buffer, KTextEditor::Range range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
 
     /**
+     * No copy constructor, don't allow this to be copied.
+     */
+    TextRange(const TextRange &) = delete;
+
+    /**
      * Destruct the text block
      */
     ~TextRange() override;
+
+    /**
+     * No assignment operator, no copying around.
+     */
+    TextRange &operator=(const TextRange &) = delete;
 
     /**
      * Set insert behaviors.
@@ -280,16 +290,6 @@ public:
     void setZDepth(qreal zDepth) override;
 
 private:
-    /**
-     * no copy constructor, don't allow this to be copied.
-     */
-    TextRange(const TextRange &) = delete;
-
-    /**
-     * no assignment operator, no copying around.
-     */
-    TextRange &operator=(const TextRange &) = delete;
-
     /**
      * Check if range is valid, used by constructor and setRange.
      * If at least one cursor is invalid, both will set to invalid.
