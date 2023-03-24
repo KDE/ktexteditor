@@ -9,8 +9,6 @@
 #include "katetextcursor.h"
 #include "katetextrange.h"
 
-static constexpr int blockSize = 64;
-
 namespace Kate
 {
 TextBlock::TextBlock(TextBuffer *buffer, int startLine)
@@ -18,7 +16,7 @@ TextBlock::TextBlock(TextBuffer *buffer, int startLine)
     , m_startLine(startLine)
 {
     // reserve the block size
-    m_lines.reserve(blockSize);
+    m_lines.reserve(BufferBlockSize);
 }
 
 TextBlock::~TextBlock()

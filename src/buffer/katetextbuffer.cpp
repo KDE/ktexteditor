@@ -37,8 +37,6 @@
 #include <KAuth/ExecuteJob>
 #endif
 
-static constexpr int blockSize = 64;
-
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
 #else
@@ -437,7 +435,7 @@ int TextBuffer::blockForLine(int line) const
         qFatal("out of range line requested in text buffer (%d out of [0, %d])", line, lines());
     }
 
-    size_t b = line / blockSize;
+    size_t b = line / BufferBlockSize;
     if (b >= m_blocks.size()) {
         b = m_blocks.size() - 1;
     }
@@ -496,7 +494,7 @@ void TextBuffer::balanceBlock(int index)
     TextBlock *blockToBalance = m_blocks.at(index);
 
     // first case, too big one, split it
-    if (blockToBalance->lines() >= 2 * blockSize) {
+    if (blockToBalance->lines() >= 2 * BufferBlockSize) {
         // half the block
         int halfSize = blockToBalance->lines() / 2;
 
@@ -518,7 +516,7 @@ void TextBuffer::balanceBlock(int index)
     }
 
     // block still large enough, do nothing
-    if (2 * blockToBalance->lines() > blockSize) {
+    if (2 * blockToBalance->lines() > BufferBlockSize) {
         return;
     }
 
@@ -647,7 +645,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 unicodeData += lineLength;
 
                 // ensure blocks aren't too large
-                if (m_blocks.back()->lines() >= blockSize) {
+                if (m_blocks.back()->lines() >= BufferBlockSize) {
                     m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
                 }
 
