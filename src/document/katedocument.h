@@ -102,6 +102,7 @@ public:
     void setMetaData(const KPluginMetaData &metaData);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void showAndSetOpeningErrorAccess();
     /*
      * Overload this to have on-demand view creation
@@ -415,6 +416,7 @@ private:
     /**
      * Return a widget suitable to be used as a dialog parent.
      */
+    KTEXTEDITOR_NO_EXPORT
     QWidget *dialogParent();
 
     /**
@@ -423,6 +425,7 @@ private:
      * @param dialogTitle dialog title string
      * @return url to save to or empty url if aborted
      */
+    KTEXTEDITOR_NO_EXPORT
     QUrl getSaveFileUrl(const QString &dialogTitle);
 
     /*
@@ -789,7 +792,9 @@ private Q_SLOTS:
     void autoReloadToggled(bool b);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void activateDirWatch(const QString &useFileName = QString());
+    KTEXTEDITOR_NO_EXPORT
     void deactivateDirWatch();
 
     QString m_dirWatchFile;
@@ -798,6 +803,7 @@ private:
      * Make backup copy during saveFile, if configured that way.
      * @return success? else saveFile should return false and not write the file
      */
+    KTEXTEDITOR_NO_EXPORT
     bool createBackupFile();
 
 public:
@@ -868,8 +874,11 @@ public:
 
 private:
     // Helper function for use with multiple cursors
+    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor backspaceAtCursor(KTextEditor::ViewPrivate *v, KTextEditor::Cursor c);
     void commentSelection(KTextEditor::Range selection, KTextEditor::Cursor c, bool blockSelect, CommentType changeType);
+    // exported for katedocument_test
+    KTEXTEDITOR_NO_EXPORT
     bool skipAutoBrace(QChar closingBracket, KTextEditor::Cursor pos);
 
 public:
@@ -895,9 +904,12 @@ public:
     void joinLines(uint first, uint last);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void transformCursorOrRange(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor, KTextEditor::Range selection, TextTransform);
 
+    KTEXTEDITOR_NO_EXPORT
     bool removeStringFromBeginning(int line, const QString &str);
+    KTEXTEDITOR_NO_EXPORT
     bool removeStringFromEnd(int line, const QString &str);
 
     /**
@@ -905,6 +917,7 @@ private:
       @param cursorPos The current cursor position for the inserted characters.
       @param str The typed characters to expand.
     */
+    KTEXTEDITOR_NO_EXPORT
     QString eventuallyReplaceTabs(const KTextEditor::Cursor cursorPos, const QString &str) const;
 
     /**
@@ -916,6 +929,7 @@ private:
       @return True if the specified or a following character is not a space
                Otherwise false.
     */
+    KTEXTEDITOR_NO_EXPORT
     bool nextNonSpaceCharPos(int &line, int &col);
 
     /**
@@ -925,40 +939,48 @@ private:
       @return True if the specified or a preceding character is not a space.
                Otherwise false.
     */
+    KTEXTEDITOR_NO_EXPORT
     bool previousNonSpaceCharPos(int &line, int &col);
 
     /**
      * Sets a comment marker as defined by the language providing the attribute
      * @p attrib on the line @p line
      */
+    KTEXTEDITOR_NO_EXPORT
     void addStartLineCommentToSingleLine(int line, int attrib = 0);
     /**
      * Removes a comment marker as defined by the language providing the attribute
      * @p attrib on the line @p line
      */
+    KTEXTEDITOR_NO_EXPORT
     bool removeStartLineCommentFromSingleLine(int line, int attrib = 0);
 
     /**
      * @see addStartLineCommentToSingleLine.
      */
+    KTEXTEDITOR_NO_EXPORT
     void addStartStopCommentToSingleLine(int line, int attrib = 0);
     /**
      *@see removeStartLineCommentFromSingleLine.
      */
+    KTEXTEDITOR_NO_EXPORT
     bool removeStartStopCommentFromSingleLine(int line, int attrib = 0);
     /**
      *@see removeStartLineCommentFromSingleLine.
      */
+    KTEXTEDITOR_NO_EXPORT
     bool removeStartStopCommentFromRegion(const KTextEditor::Cursor start, const KTextEditor::Cursor end, int attrib = 0);
 
     /**
      * Add a comment marker as defined by the language providing the attribute
      * @p attrib to each line in the selection.
      */
+    KTEXTEDITOR_NO_EXPORT
     void addStartStopCommentToSelection(KTextEditor::Range, bool blockSelection, int attrib = 0);
     /**
      * @see addStartStopCommentToSelection.
      */
+    KTEXTEDITOR_NO_EXPORT
     void addStartLineCommentToSelection(KTextEditor::Range, int attrib = 0);
 
     /**
@@ -967,10 +989,12 @@ private:
      *
      * @return whether the operation succeeded.
      */
+    KTEXTEDITOR_NO_EXPORT
     bool removeStartStopCommentFromSelection(KTextEditor::Range, int attrib = 0);
     /**
      * @see removeStartStopCommentFromSelection.
      */
+    KTEXTEDITOR_NO_EXPORT
     bool removeStartLineCommentFromSelection(KTextEditor::Range, int attrib, bool toggleComment);
 
 public:
@@ -983,7 +1007,9 @@ public:
     }
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void updateDocName();
+    KTEXTEDITOR_NO_EXPORT
     static void uniquifyDocNames(const std::vector<KTextEditor::DocumentPrivate *> &docs);
 
 public:
@@ -1087,16 +1113,19 @@ private:
      * @return whether the operation was attempted and succeeded.
      */
     bool createDigest();
+    // exported for katedocument_test
 
     /**
      * create a string for the modonhd warnings, giving the reason.
      */
+    KTEXTEDITOR_NO_EXPORT
     QString reasonedMOHString() const;
 
     /**
      * Removes all trailing whitespace in the document and add new line at eof
      * if configured that way.
      */
+    KTEXTEDITOR_NO_EXPORT
     void removeTrailingSpacesAndAddNewLineAtEof();
 
 public:
@@ -1198,6 +1227,7 @@ public:
     void updateConfig();
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void makeAttribs(bool needInvalidate = true);
 
     std::unique_ptr<KateDocumentConfig> const m_config;
@@ -1210,12 +1240,14 @@ private:
     /**
      * read dir config file
      */
+    KTEXTEDITOR_NO_EXPORT
     void readDirConfig();
 
     /**
       Reads all the variables in the document.
       Called when opening/saving a document
     */
+    KTEXTEDITOR_NO_EXPORT
     void readVariables(bool onlyViewAndRenderer = false);
 
     /**
@@ -1223,26 +1255,31 @@ private:
       TODO registered variables gets saved in a [map]
     */
     void readVariableLine(const QString &t, bool onlyViewAndRenderer = false);
+    // exported for katedocument_test
     /**
       Sets a view variable in all the views.
     */
+    KTEXTEDITOR_NO_EXPORT
     void setViewVariable(const QString &var, const QString &val);
     /**
       @return weather a string value could be converted
       to a bool value as supported.
       The value is put in *result.
     */
+    KTEXTEDITOR_NO_EXPORT
     static bool checkBoolValue(QString value, bool *result);
     /**
       @return weather a string value could be converted
       to a integer value.
       The value is put in *result.
     */
+    KTEXTEDITOR_NO_EXPORT
     static bool checkIntValue(const QString &value, int *result);
     /**
       Feeds value into @p col using QColor::setNamedColor() and returns
       whether the color is valid
     */
+    KTEXTEDITOR_NO_EXPORT
     static bool checkColorValue(const QString &value, QColor &col);
 
     bool m_fileChangedDialogsActivated = false;

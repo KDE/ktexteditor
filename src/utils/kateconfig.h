@@ -362,6 +362,7 @@ class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
 private:
     friend class KTextEditor::EditorPrivate;
 
+    KTEXTEDITOR_NO_EXPORT
     KateDocumentConfig();
 
 public:
@@ -983,6 +984,7 @@ private:
     /**
      * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
+    KTEXTEDITOR_NO_EXPORT
     KateViewConfig();
 
 public:
@@ -1383,6 +1385,7 @@ private:
     /**
      * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
+    KTEXTEDITOR_NO_EXPORT
     KateRendererConfig();
 
 public:
@@ -1528,6 +1531,7 @@ private:
     /**
      * Read the schema properties from the config file.
      */
+    KTEXTEDITOR_NO_EXPORT
     void setSchemaInternal(const QString &schema);
 
     QString m_schema;

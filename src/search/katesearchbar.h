@@ -152,36 +152,52 @@ private:
     {
         return findOrReplace(searchDirection, nullptr);
     };
+    KTEXTEDITOR_NO_EXPORT
     bool findOrReplace(SearchDirection searchDirection, const QString *replacement);
 
     /**
      * The entry point to start a search & replace task.
      * Set needed member variables and call @ref findOrReplaceAll() to do the work.
      */
+    KTEXTEDITOR_NO_EXPORT
     void beginFindOrReplaceAll(KTextEditor::Range inputRange, const QString &replacement, bool replaceMode = true);
     void beginFindAll(KTextEditor::Range inputRange)
     {
         beginFindOrReplaceAll(inputRange, QString(), false);
     };
 
+    KTEXTEDITOR_NO_EXPORT
     bool isPatternValid() const;
 
+    KTEXTEDITOR_NO_EXPORT
     KTextEditor::SearchOptions searchOptions(SearchDirection searchDirection = SearchForward) const;
 
+    KTEXTEDITOR_NO_EXPORT
     void highlightMatch(KTextEditor::Range range);
+    KTEXTEDITOR_NO_EXPORT
     void highlightReplacement(KTextEditor::Range range);
+    KTEXTEDITOR_NO_EXPORT
     void indicateMatch(MatchResult matchResult);
+    KTEXTEDITOR_NO_EXPORT
     static void selectRange(KTextEditor::ViewPrivate *view, KTextEditor::Range range);
+    KTEXTEDITOR_NO_EXPORT
     void selectRange2(KTextEditor::Range range);
 
+    KTEXTEDITOR_NO_EXPORT
     QVector<QString> getCapturePatterns(const QString &pattern) const;
+    KTEXTEDITOR_NO_EXPORT
     void showExtendedContextMenu(bool forPattern, const QPoint &pos);
 
+    KTEXTEDITOR_NO_EXPORT
     void givePatternFeedback();
+    KTEXTEDITOR_NO_EXPORT
     void addCurrentTextToHistory(QComboBox *combo);
+    KTEXTEDITOR_NO_EXPORT
     void backupConfig(bool ofPower);
+    KTEXTEDITOR_NO_EXPORT
     void sendConfig();
 
+    KTEXTEDITOR_NO_EXPORT
     void showResultMessage();
 
 private:

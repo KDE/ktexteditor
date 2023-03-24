@@ -42,6 +42,7 @@ private:
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
+    KTEXTEDITOR_NO_EXPORT
     TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
 public:
@@ -204,6 +205,7 @@ private:
      * @param position new cursor position
      * @param init is this the initial setup of the position in the constructor?
      */
+    KTEXTEDITOR_NO_EXPORT
     void setPosition(const KTextEditor::Cursor &position, bool init);
 
 private:

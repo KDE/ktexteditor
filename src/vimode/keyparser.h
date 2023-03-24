@@ -27,6 +27,7 @@ class KeyEvent;
 class KTEXTEDITOR_EXPORT KeyParser
 {
 private:
+    KTEXTEDITOR_NO_EXPORT
     KeyParser();
 
 public:
@@ -47,7 +48,9 @@ public:
     const QChar KeyEventToQChar(const KeyEvent &keyEvent);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void initKeyTables();
+    KTEXTEDITOR_NO_EXPORT
     const QChar KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods) const;
 
     QHash<int, QString> m_qt2katevi;

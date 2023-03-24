@@ -58,7 +58,9 @@ private:
     bool m_isPlayingBackRejectedKeys;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void executeMapping();
+    KTEXTEDITOR_NO_EXPORT
     void playBackRejectedKeys();
 };
 

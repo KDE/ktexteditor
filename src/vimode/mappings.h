@@ -44,7 +44,9 @@ public:
     static MappingMode mappingModeForCurrentViMode(KateViInputMode *viInputMode);
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void writeMappings(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const;
+    KTEXTEDITOR_NO_EXPORT
     void readMappings(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode);
 
 private:

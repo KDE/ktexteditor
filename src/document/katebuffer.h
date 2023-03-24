@@ -253,6 +253,7 @@ private:
      * @param to last line in range
      * @param invalidate should the rehighlighted lines be tagged?
      */
+    KTEXTEDITOR_NO_EXPORT
     void doHighlight(int from, int to, bool invalidate);
 
 Q_SIGNALS:

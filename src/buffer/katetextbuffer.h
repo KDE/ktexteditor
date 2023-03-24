@@ -432,17 +432,20 @@ private:
      * @return index of found block
      */
     int blockForLine(int line) const;
+    // exported for movingrange_test
 
     /**
      * Fix start lines of all blocks after the given one
      * @param startBlock index of block from which we start to fix
      */
+    KTEXTEDITOR_NO_EXPORT
     void fixStartLines(int startBlock);
 
     /**
      * Balance the given block. Look if it is too small or too large.
      * @param index block to balance
      */
+    KTEXTEDITOR_NO_EXPORT
     void balanceBlock(int index);
 
     /**
@@ -461,11 +464,13 @@ private:
      * @param lineRange line range that the change spans
      * @param needsRepaint do we need to trigger repaints? e.g. if ranges with attributes change
      */
+    KTEXTEDITOR_NO_EXPORT
     void notifyAboutRangeChange(KTextEditor::View *view, KTextEditor::LineRange lineRange, bool needsRepaint);
 
     /**
      * Mark all modified lines as lines saved on disk (modified line system).
      */
+    KTEXTEDITOR_NO_EXPORT
     void markModifiedLinesAsSaved();
 
     /**
@@ -474,18 +479,21 @@ private:
      * @param filename path name for display/debugging purposes
      * @param saveFile open device to write the buffer to
      */
+    KTEXTEDITOR_NO_EXPORT
     bool saveBuffer(const QString &filename, KCompressionDevice &saveFile);
 
     /**
      * Attempt to save the buffer content in the given filename location using
      * current privileges.
      */
+    KTEXTEDITOR_NO_EXPORT
     SaveResult saveBufferUnprivileged(const QString &filename);
 
     /**
      * Attempt to save the buffer content in the given filename location using
      * escalated privileges.
      */
+    KTEXTEDITOR_NO_EXPORT
     bool saveBufferEscalated(const QString &filename);
 
 public:

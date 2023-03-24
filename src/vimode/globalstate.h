@@ -57,6 +57,7 @@ public:
     }
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     static KSharedConfigPtr config();
 
 private:

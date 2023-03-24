@@ -270,18 +270,25 @@ public:
     bool hasSelections() const;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     bool removeSecondaryCursors(const std::vector<KTextEditor::Cursor> &cursorToRemove, bool removeIfOverlapsSelection = false);
+    KTEXTEDITOR_NO_EXPORT
     Kate::TextRange *newSecondarySelectionRange(KTextEditor::Range);
+    KTEXTEDITOR_NO_EXPORT
     void sortCursors();
+    KTEXTEDITOR_NO_EXPORT
     void paintCursors();
 
     std::vector<SecondaryCursor> m_secondaryCursors;
     bool m_skipCurrentSelection = false;
 
     void addSecondaryCursorDown();
+    // exported for multicursortest
     void addSecondaryCursorUp();
+    // exported for multicursortest
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void notifyMousePositionChanged(const KTextEditor::Cursor newPosition);
 
     // Internal
@@ -842,10 +849,15 @@ public Q_SLOTS:
     void slotToggleFoldingsInRange();
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void setupLayout();
+    KTEXTEDITOR_NO_EXPORT
     void setupConnections();
+    KTEXTEDITOR_NO_EXPORT
     void setupActions();
+    KTEXTEDITOR_NO_EXPORT
     void setupEditActions();
+    KTEXTEDITOR_NO_EXPORT
     void setupCodeFolding();
 
     std::vector<QAction *> m_editActions;
@@ -945,6 +957,7 @@ public:
     KateDictionaryBar *dictionaryBar();
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     KateGotoBar *gotoBar();
 
     /**
@@ -1007,10 +1020,13 @@ public:
     void clearFoldingState();
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void clearHighlights();
+    KTEXTEDITOR_NO_EXPORT
     void createHighlights();
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     void selectionChangedForHighlights();
 
     /**

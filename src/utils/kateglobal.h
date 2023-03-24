@@ -88,6 +88,7 @@ private:
      * Default constructor, private, as singleton
      * @param staticInstance pointer to fill with content of this
      */
+    KTEXTEDITOR_NO_EXPORT
     explicit EditorPrivate(QPointer<KTextEditor::EditorPrivate> &staticInstance);
 
 public:

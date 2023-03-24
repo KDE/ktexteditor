@@ -134,10 +134,11 @@ private:
     QTreeView *treeView() const override;
 
     friend class KateArgumentHintModel;
+    KTEXTEDITOR_NO_EXPORT
     static ModelRow modelRowPair(const QModelIndex &index);
 
     // Represents a source row; provides sorting method
-    class Item
+    class KTEXTEDITOR_NO_EXPORT Item
     {
     public:
         Item(bool doInitialMatch, KateCompletionModel *model, const HierarchicalModelHandler &handler, ModelRow sourceRow);
@@ -228,44 +229,61 @@ public:
     bool hasGroups() const;
 
 private:
+    KTEXTEDITOR_NO_EXPORT
     QString commonPrefixInternal(const QString &forcePrefix) const;
     /// @note performs model reset
+    KTEXTEDITOR_NO_EXPORT
     void createGroups();
     /// Creates all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     /// i must be an index in the source model
+    KTEXTEDITOR_NO_EXPORT
     GroupSet createItems(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// Deletes all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     /// i must be an index in the source model
+    KTEXTEDITOR_NO_EXPORT
     GroupSet deleteItems(const QModelIndex &i);
+    KTEXTEDITOR_NO_EXPORT
     Group *createItem(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// @note Make sure you're in a {begin,end}ResetModel block when calling this!
+    KTEXTEDITOR_NO_EXPORT
     void clearGroups();
+    KTEXTEDITOR_NO_EXPORT
     void hideOrShowGroup(Group *g, bool notifyModel = false);
     /// When forceGrouping is enabled, all given attributes will be used for grouping, regardless of the completion settings.
+    KTEXTEDITOR_NO_EXPORT
     Group *fetchGroup(int attribute, bool forceGrouping = false);
     // If this returns nonzero on an index, the index is the header of the returned group
+    KTEXTEDITOR_NO_EXPORT
     Group *groupForIndex(const QModelIndex &index) const;
     inline Group *groupOfParent(const QModelIndex &child) const
     {
         return static_cast<Group *>(child.internalPointer());
     }
+    KTEXTEDITOR_NO_EXPORT
     QModelIndex indexForRow(Group *g, int row) const;
+    KTEXTEDITOR_NO_EXPORT
     QModelIndex indexForGroup(Group *g) const;
 
     enum changeTypes { Broaden, Narrow, Change };
 
     // Returns whether the model needs to be reset
+    KTEXTEDITOR_NO_EXPORT
     void changeCompletions(Group *g);
 
+    KTEXTEDITOR_NO_EXPORT
     bool hasCompletionModel() const;
 
     /// Removes attributes not used in grouping from the input \a attribute
+    KTEXTEDITOR_NO_EXPORT
     int groupingAttributes(int attribute) const;
+    KTEXTEDITOR_NO_EXPORT
     static int countBits(int value);
 
+    KTEXTEDITOR_NO_EXPORT
     void resort();
 
     static bool matchesAbbreviation(const QString &word, const QString &typed, int &score);
+    // exported for completion_test
 
     bool m_hasGroups = false;
 
