@@ -23,18 +23,18 @@ public:
 
     inline bool contains(int i) const;
 
-    inline void insert(int realLine, const KateLineLayoutPtr &lineLayoutPtr);
+    inline void insert(int realLine, KateLineLayout *lineLayoutPtr);
 
     inline void viewWidthIncreased();
     inline void viewWidthDecreased(int newWidth);
 
     inline void relayoutLines(int startRealLine, int endRealLine);
 
-    inline void slotEditDone(int fromLine, int toLine, int shiftAmount);
+    inline void slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
 
-    KateLineLayoutPtr &operator[](int i);
+    KateLineLayout *operator[](int i);
 
-    typedef QPair<int, KateLineLayoutPtr> LineLayoutPair;
+    typedef std::pair<int, std::unique_ptr<KateLineLayout>> LineLayoutPair;
 
 private:
     typedef std::vector<LineLayoutPair> LineLayoutMap;
@@ -85,9 +85,9 @@ public:
      * \param virtualLine virtual line number. only needed if you think it may have changed
      *                    (ie. basically internal to KateLayoutCache)
      */
-    KateLineLayoutPtr line(int realLine, int virtualLine = -1);
+    KateLineLayout *line(int realLine, int virtualLine = -1);
     /// \overload
-    KateLineLayoutPtr line(const KTextEditor::Cursor realCursor);
+    KateLineLayout *line(const KTextEditor::Cursor realCursor);
 
     /// Returns the layout describing the text line which is occupied by \p realCursor.
     KateTextLayout textLayout(const KTextEditor::Cursor realCursor);

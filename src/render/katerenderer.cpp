@@ -179,7 +179,7 @@ void KateRenderer::setPrinterFriendly(bool printerFriendly)
     setDrawCaret(false);
 }
 
-void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr layout, int currentViewLine, int xStart, int xEnd)
+void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayout *layout, int currentViewLine, int xStart, int xEnd)
 {
     if (isPrinterFriendly()) {
         return;
@@ -339,7 +339,7 @@ void KateRenderer::paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, co
  * @p openX will be X position of open bracket or -1 if not found
  * @p closeX will be X position of close bracket or -1 if not found
  */
-static KTextEditor::Range cursorAtBracket(KTextEditor::ViewPrivate *view, const KateLineLayoutPtr &range, KTextEditor::Cursor c, int &openX, int &closeX)
+static KTextEditor::Range cursorAtBracket(KTextEditor::ViewPrivate *view, const KateLineLayout *range, KTextEditor::Cursor c, int &openX, int &closeX)
 {
     if (range->line() != c.line()) {
         openX = closeX = -1;
@@ -634,7 +634,7 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
     }
 }
 
-void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
+void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
 {
     for (const auto &sel : selRanges) {
         const int s = sel.start;
@@ -682,7 +682,7 @@ void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayoutPtr layout
     }
 }
 
-void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
+void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xStart, int xEnd, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
 {
     Q_ASSERT(range->isValid());
 
@@ -972,7 +972,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 }
 
-void KateRenderer::paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd)
+void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range, QPainter &paint, int xStart, int xEnd)
 {
     if (range->includesCursor(cursor)) {
         int caretWidth;
@@ -1179,7 +1179,7 @@ qreal KateRenderer::spaceWidth() const
     return m_fontMetrics.horizontalAdvance(spaceChar);
 }
 
-void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool cacheLayout) const
+void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cacheLayout) const
 {
     // if maxwidth == -1 we have no wrap
 
@@ -1343,7 +1343,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 // 3) QString::isRightToLeft() does not seem to work on my setup
 // 4) isStringRightToLeft() should behave much better than QString::isRightToLeft() therefore:
 // 5) isStringRightToLeft() kicks ass
-bool KateRenderer::isLineRightToLeft(KateLineLayoutPtr lineLayout)
+bool KateRenderer::isLineRightToLeft(KateLineLayout *lineLayout)
 {
     QString s = lineLayout->textLine()->text();
     int i = 0;
@@ -1457,13 +1457,13 @@ void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, in
         }
 
         // compute layout WITHOUT cache to not poison it + render it
-        KateLineLayoutPtr lineLayout(new KateLineLayout(*this));
-        lineLayout->setLine(line, -1);
-        layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+        KateLineLayout lineLayout(*this);
+        lineLayout.setLine(line, -1);
+        layoutLine(&lineLayout, -1 /* no wrap */, false /* no layout cache */);
         KateRenderer::PaintTextLineFlags flags;
         flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
         flags.setFlag(KateRenderer::SkipDrawLineSelection);
-        paintTextLine(paint, lineLayout, 0, 0, nullptr, flags);
+        paintTextLine(paint, &lineLayout, 0, 0, nullptr, flags);
 
         // translate for next line
         paint.translate(0, lineHeight);

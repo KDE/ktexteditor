@@ -288,13 +288,13 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
     // Collect line layouts and calculate the needed height
     const int xEnd = width;
     int height = 0;
-    QVarLengthArray<KateLineLayoutPtr> lineLayouts;
+    std::vector<std::unique_ptr<KateLineLayout>> lineLayouts;
     for (int line = startLine; line <= endLine; ++line) {
-        KateLineLayoutPtr lineLayout(new KateLineLayout(renderer));
+        auto lineLayout = std::make_unique<KateLineLayout>(renderer);
         lineLayout->setLine(line, -1);
-        renderer.layoutLine(lineLayout, xEnd, false /* no layout cache */);
+        renderer.layoutLine(lineLayout.get(), xEnd, false /* no layout cache */);
         height += lineLayout->viewLineCount() * renderer.lineHeight();
-        lineLayouts << lineLayout;
+        lineLayouts.push_back(std::move(lineLayout));
     }
 
     if (m_windowDecorations->isChecked()) {
@@ -352,8 +352,8 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
     flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
     flags.setFlag(KateRenderer::SkipDrawLineSelection);
     int lineNo = m_absoluteLineNumbers ? 1 : startLine + 1;
-    for (const auto &lineLayout : lineLayouts) {
-        renderer.paintTextLine(paint, lineLayout, xStart, xEnd, nullptr, flags);
+    for (auto &lineLayout : lineLayouts) {
+        renderer.paintTextLine(paint, lineLayout.get(), xStart, xEnd, nullptr, flags);
         // draw line number
         if (lineNoAreaWidth != 0) {
             paint.drawText(QRect(leftMargin - lnNoAreaSpacing, 0, lineNoAreaWidth, renderer.lineHeight()), Qt::AlignRight, QString::number(lineNo++));

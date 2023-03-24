@@ -1032,7 +1032,7 @@ public:
     }
     CalculatingCursor &operator+=(int n) override
     {
-        KateLineLayoutPtr thisLine = m_vi->cache()->line(line());
+        KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine->isValid()) {
             qCWarning(LOG_KTE) << "Did not retrieve valid layout for line " << line();
             return *this;
@@ -1106,7 +1106,7 @@ public:
 
     CalculatingCursor &operator+=(int n) override
     {
-        KateLineLayoutPtr thisLine = m_vi->cache()->line(line());
+        KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine->isValid()) {
             qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
             return *this;
@@ -1273,7 +1273,7 @@ public:
 
     CalculatingCursor &operator+=(int n) override
     {
-        KateLineLayoutPtr thisLine = m_vi->cache()->line(line());
+        KateLineLayout *thisLine = m_vi->cache()->line(line());
         if (!thisLine->isValid()) {
             qCWarning(LOG_KTE) << "Did not retrieve valid layout for line " << line();
             return *this;
@@ -1826,7 +1826,7 @@ KTextEditor::Cursor KateViewInternal::viewLineOffset(const KTextEditor::Cursor v
 
     while (virtualLine >= 0 && virtualLine < (int)view()->textFolding().visibleLines()) {
         int realLine = view()->textFolding().visibleLineToLine(virtualLine);
-        KateLineLayoutPtr thisLine = cache()->line(realLine, virtualLine);
+        KateLineLayout *thisLine = cache()->line(realLine, virtualLine);
         if (!thisLine) {
             break;
         }
@@ -4533,7 +4533,7 @@ void KateViewInternal::editEnd(int editTagLineStart, int editTagLineEnd, bool ta
     // try to clever calculate the right start column for the tricky dyn word wrap case
     int col = 0;
     if (view()->dynWordWrap()) {
-        if (KateLineLayoutPtr layout = cache()->line(startLine())) {
+        if (KateLineLayout *layout = cache()->line(startLine())) {
             int index = layout->viewLineForColumn(startPos().column());
             if (index >= 0 && index < layout->viewLineCount()) {
                 col = layout->viewLine(index).startCol();
@@ -4879,7 +4879,7 @@ void KateViewInternal::showBracketMatchPreview()
 
     const int previewLine = openBracketCursor.line();
     KateRenderer *const renderer_ = renderer();
-    KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer_));
+    KateLineLayout *lineLayout(new KateLineLayout(*renderer_));
     lineLayout->setLine(previewLine, -1);
 
     // If the opening bracket is on its own line, start preview at the line above it instead (where the context is likely to be)

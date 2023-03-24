@@ -9,8 +9,8 @@
 
 #include "katepartdebug.h"
 
-KateTextLayout::KateTextLayout(KateLineLayoutPtr line, int viewLine)
-    : m_lineLayout(std::move(line))
+KateTextLayout::KateTextLayout(KateLineLayout *line, int viewLine)
+    : m_lineLayout(line)
     , m_viewLine(viewLine)
     , m_startX(m_viewLine ? -1 : 0)
 {
@@ -114,7 +114,7 @@ const QTextLine &KateTextLayout::lineLayout() const
     return m_textLayout;
 }
 
-KateLineLayoutPtr KateTextLayout::kateLineLayout() const
+KateLineLayout *KateTextLayout::kateLineLayout() const
 {
     return m_lineLayout;
 }

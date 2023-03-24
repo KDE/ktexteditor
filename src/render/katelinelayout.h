@@ -23,7 +23,7 @@ class DocumentPrivate;
 class KateTextLayout;
 class KateRenderer;
 
-class KateLineLayout final : public QSharedData
+class KateLineLayout
 {
 public:
     explicit KateLineLayout(KateRenderer &renderer);
@@ -61,10 +61,10 @@ public:
     bool setDirty(int viewLine, bool dirty = true);
 
     int width() const;
-    int widthOfLastLine() const;
+    int widthOfLastLine();
 
     int viewLineCount() const;
-    KateTextLayout viewLine(int viewLine) const;
+    KateTextLayout viewLine(int viewLine);
     int viewLineForColumn(int column) const;
 
     bool startsInvisibleBlock() const;
@@ -105,7 +105,5 @@ private:
     bool m_layoutDirty;
     bool m_usePlainTextLine;
 };
-
-typedef QExplicitlySharedDataPointer<KateLineLayout> KateLineLayoutPtr;
 
 #endif

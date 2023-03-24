@@ -159,14 +159,14 @@ int KateLineLayout::viewLineCount() const
     return m_layout->lineCount();
 }
 
-KateTextLayout KateLineLayout::viewLine(int viewLine) const
+KateTextLayout KateLineLayout::viewLine(int viewLine)
 {
     if (viewLine < 0) {
         viewLine += viewLineCount();
     }
     Q_ASSERT(isValid());
     Q_ASSERT(viewLine >= 0 && viewLine < viewLineCount());
-    return KateTextLayout(KateLineLayoutPtr(const_cast<KateLineLayout *>(this)), viewLine);
+    return KateTextLayout(this, viewLine);
 }
 
 int KateLineLayout::width() const
@@ -180,7 +180,7 @@ int KateLineLayout::width() const
     return width;
 }
 
-int KateLineLayout::widthOfLastLine() const
+int KateLineLayout::widthOfLastLine()
 {
     const KateTextLayout &lastLine = viewLine(viewLineCount() - 1);
     return lastLine.width() + lastLine.xOffset();

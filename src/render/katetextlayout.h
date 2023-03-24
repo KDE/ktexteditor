@@ -33,7 +33,7 @@ public:
     int viewLine() const;
 
     const QTextLine &lineLayout() const;
-    KateLineLayoutPtr kateLineLayout() const;
+    KateLineLayout *kateLineLayout() const;
 
     int startCol() const;
     KTextEditor::Cursor start() const;
@@ -79,10 +79,10 @@ public:
 
     void debugOutput() const;
 
-    explicit KateTextLayout(KateLineLayoutPtr line = KateLineLayoutPtr(), int viewLine = 0);
+    explicit KateTextLayout(KateLineLayout *line = nullptr, int viewLine = 0);
 
 private:
-    KateLineLayoutPtr m_lineLayout;
+    KateLineLayout *m_lineLayout;
     QTextLine m_textLayout;
 
     int m_viewLine;

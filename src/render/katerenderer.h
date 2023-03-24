@@ -36,7 +36,6 @@ typedef std::shared_ptr<TextLineData> TextLine;
 
 class KateTextLayout;
 class KateLineLayout;
-typedef QExplicitlySharedDataPointer<KateLineLayout> KateLineLayoutPtr;
 typedef QExplicitlySharedDataPointer<KTextEditor::Attribute> AttributePtr;
 
 namespace KTextEditor
@@ -279,7 +278,7 @@ public:
     /**
      * Text width & height calculation functions...
      */
-    void layoutLine(KateLineLayoutPtr line, int maxwidth = -1, bool cacheLayout = false) const;
+    void layoutLine(KateLineLayout *line, int maxwidth = -1, bool cacheLayout = false) const;
 
     /**
      * This is a smaller QString::isRightToLeft(). It's also marked as internal to kate
@@ -291,7 +290,7 @@ public:
      * (see https://bugs.kde.org/show_bug.cgi?id=178594). As this function is internal
      * the way it work will probably change between releases. Be warned!
      */
-    static bool isLineRightToLeft(KateLineLayoutPtr lineLayout);
+    static bool isLineRightToLeft(KateLineLayout *lineLayout);
 
     /**
      * The ultimate decoration creation function.
@@ -359,7 +358,7 @@ public:
      * @param flags           flags for customizing the drawing of the line
      */
     void paintTextLine(QPainter &paint,
-                       KateLineLayoutPtr range,
+                       KateLineLayout *range,
                        int xStart,
                        int xEnd,
                        const KTextEditor::Cursor *cursor = nullptr,
@@ -379,9 +378,9 @@ public:
      * @param xStart          starting width in pixels.
      * @param xEnd            ending width in pixels.
      */
-    void paintTextLineBackground(QPainter &paint, KateLineLayoutPtr layout, int currentViewLine, int xStart, int xEnd);
+    void paintTextLineBackground(QPainter &paint, KateLineLayout *layout, int currentViewLine, int xStart, int xEnd);
 
-    void paintTextBackground(QPainter &paint, KateLineLayoutPtr layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &br) const;
+    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &br) const;
 
     /**
      * This takes an in index, and returns all the attributes for it.
@@ -433,7 +432,7 @@ private:
 
     static void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute);
 
-    void paintCaret(KTextEditor::Cursor cursor, const KateLineLayoutPtr &range, QPainter &paint, int xStart, int xEnd);
+    void paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range, QPainter &paint, int xStart, int xEnd);
 
     // update font height
     void updateFontHeight();
