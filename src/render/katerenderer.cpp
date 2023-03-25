@@ -904,15 +904,15 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
             }
 
             // draw word-wrap-honor-indent filling
-            if ((i > 0) && range->shiftX() && (range->shiftX() > xStart)) {
+            if ((i > 0) && range->shiftX && (range->shiftX > xStart)) {
                 // fill background first with selection if we had selection from the previous line
                 if (drawSelection && !m_view->blockSelection() && m_view->selectionRange().start() < line.start()
                     && m_view->selectionRange().end() >= line.start()) {
-                    paint.fillRect(0, lineHeight() * i, range->shiftX() - xStart, lineHeight(), QBrush(config()->selectionColor()));
+                    paint.fillRect(0, lineHeight() * i, range->shiftX - xStart, lineHeight(), QBrush(config()->selectionColor()));
                 }
 
                 // paint the normal filling for the word wrap markers
-                paint.fillRect(0, lineHeight() * i, range->shiftX() - xStart, lineHeight(), QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
+                paint.fillRect(0, lineHeight() * i, range->shiftX - xStart, lineHeight(), QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
             }
         }
 
@@ -1335,7 +1335,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
             // if shiftX > 0, the maxwidth has to adapted
             maxwidth -= shiftX;
 
-            lineLayout->setShiftX(shiftX);
+            lineLayout->shiftX = shiftX;
         }
 
         height += lineHeight();

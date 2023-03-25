@@ -48,7 +48,7 @@ void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
     auto end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(endRealLine, nullptr), lessThan);
 
     while (start != end) {
-        (*start).second->setLayoutDirty();
+        (*start).second->layoutDirty = true;
         ++start;
     }
 }
@@ -80,7 +80,7 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, 
         m_lineLayouts.erase(start, end);
     } else {
         for (auto it = start; it != end; ++it) {
-            (*it).second->setLayoutDirty();
+            (*it).second->layoutDirty = true;
         }
     }
 }
@@ -228,17 +228,17 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
         }
 
         if (!l->isValid()) {
-            l->setUsePlainTextLine(acceptDirtyLayouts());
+            l->usePlainTextLine = acceptDirtyLayouts();
             l->textLine(!acceptDirtyLayouts());
             m_renderer->layoutLine(l, wrap() ? m_viewWidth : -1, enableLayoutCache);
-        } else if (l->isLayoutDirty() && !acceptDirtyLayouts()) {
+        } else if (l->layoutDirty && !acceptDirtyLayouts()) {
             // reset textline
-            l->setUsePlainTextLine(false);
+            l->usePlainTextLine = false;
             l->textLine(true);
             m_renderer->layoutLine(l, wrap() ? m_viewWidth : -1, enableLayoutCache);
         }
 
-        Q_ASSERT(l->isValid() && (!l->isLayoutDirty() || acceptDirtyLayouts()));
+        Q_ASSERT(l->isValid() && (!l->layoutDirty || acceptDirtyLayouts()));
 
         return l;
     }
@@ -253,14 +253,14 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     // Mark it dirty, because it may not have the syntax highlighting applied
     // mark this here, to allow layoutLine to use plainLines...
     if (acceptDirtyLayouts()) {
-        l->setUsePlainTextLine(true);
+        l->usePlainTextLine = true;
     }
 
     m_renderer->layoutLine(l, wrap() ? m_viewWidth : -1, enableLayoutCache);
     Q_ASSERT(l->isValid());
 
     if (acceptDirtyLayouts()) {
-        l->setLayoutDirty(true);
+        l->layoutDirty = true;
     }
 
     // transfer ownership to m_lineLayouts

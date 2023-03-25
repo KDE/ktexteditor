@@ -30,7 +30,6 @@ public:
 
     static KateLineLayout *invalid(KateRenderer &renderer);
 
-    KTextEditor::DocumentPrivate *doc() const;
     void debugOutput() const;
 
     void clear();
@@ -71,6 +70,13 @@ public:
 
     bool startsInvisibleBlock() const;
 
+    QTextLayout *layout() const;
+    void setLayout(QTextLayout *layout);
+    void invalidateLayout();
+
+    bool layoutDirty = true;
+    bool usePlainTextLine = false;
+
     // This variable is used as follows:
     // non-dynamic-wrapping mode: unused
     // dynamic wrapping mode:
@@ -78,18 +84,7 @@ public:
     //   subsequent viewLines: the X offset from the left of the display.
     //
     // this is used to provide a dynamic-wrapping-retains-indent feature.
-    int shiftX() const;
-    void setShiftX(int shiftX);
-
-    QTextLayout *layout() const;
-    void setLayout(QTextLayout *layout);
-    void invalidateLayout();
-
-    bool isLayoutDirty() const;
-    void setLayoutDirty(bool dirty = true);
-
-    bool usePlainTextLine() const;
-    void setUsePlainTextLine(bool plain = true);
+    int shiftX = 0;
 
 private:
     // Disable copy
@@ -99,13 +94,9 @@ private:
     mutable Kate::TextLine m_textLine;
     int m_line;
     int m_virtualLine;
-    int m_shiftX;
 
     std::unique_ptr<QTextLayout> m_layout;
     QList<bool> m_dirtyList;
-
-    bool m_layoutDirty;
-    bool m_usePlainTextLine;
 };
 
 #endif

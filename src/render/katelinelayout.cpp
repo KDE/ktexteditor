@@ -21,10 +21,7 @@ KateLineLayout::KateLineLayout(KateRenderer &renderer)
     , m_textLine()
     , m_line(-1)
     , m_virtualLine(-1)
-    , m_shiftX(0)
     , m_layout(nullptr)
-    , m_layoutDirty(true)
-    , m_usePlainTextLine(false)
 {
 }
 
@@ -33,7 +30,7 @@ void KateLineLayout::clear()
     m_textLine = Kate::TextLine();
     m_line = -1;
     m_virtualLine = -1;
-    m_shiftX = 0;
+    shiftX = 0;
     // not touching dirty
     m_layout.reset();
     // not touching layout dirty
@@ -53,7 +50,7 @@ bool KateLineLayout::includesCursor(const KTextEditor::Cursor realCursor) const
 const Kate::TextLine &KateLineLayout::textLine(bool reloadForce) const
 {
     if (reloadForce || !m_textLine) {
-        m_textLine = usePlainTextLine() ? m_renderer.doc()->plainKateTextLine(line()) : m_renderer.doc()->kateTextLine(line());
+        m_textLine = usePlainTextLine ? m_renderer.doc()->plainKateTextLine(line()) : m_renderer.doc()->kateTextLine(line());
     }
 
     Q_ASSERT(m_textLine);
@@ -92,21 +89,6 @@ bool KateLineLayout::startsInvisibleBlock() const
     return (virtualLine() + 1) != m_renderer.folding().lineToVisibleLine(line() + 1);
 }
 
-int KateLineLayout::shiftX() const
-{
-    return m_shiftX;
-}
-
-void KateLineLayout::setShiftX(int shiftX)
-{
-    m_shiftX = shiftX;
-}
-
-KTextEditor::DocumentPrivate *KateLineLayout::doc() const
-{
-    return m_renderer.doc();
-}
-
 bool KateLineLayout::isValid() const
 {
     return line() != -1 && layout() && textLine();
@@ -123,7 +105,7 @@ void KateLineLayout::setLayout(QTextLayout *layout)
         m_layout.reset(layout);
     }
 
-    m_layoutDirty = !m_layout;
+    layoutDirty = !m_layout;
     m_dirtyList.clear();
     if (m_layout) {
         for (int i = 0; i < qMax(1, m_layout->lineCount()); ++i) {
@@ -214,26 +196,6 @@ int KateLineLayout::viewLineForColumn(int column) const
         }
     }
     return i;
-}
-
-bool KateLineLayout::isLayoutDirty() const
-{
-    return m_layoutDirty;
-}
-
-void KateLineLayout::setLayoutDirty(bool dirty)
-{
-    m_layoutDirty = dirty;
-}
-
-bool KateLineLayout::usePlainTextLine() const
-{
-    return m_usePlainTextLine;
-}
-
-void KateLineLayout::setUsePlainTextLine(bool plain)
-{
-    m_usePlainTextLine = plain;
 }
 
 bool KateLineLayout::isRightToLeft() const
