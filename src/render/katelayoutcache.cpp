@@ -38,14 +38,14 @@ bool KateLineLayoutMap::contains(int i) const
     return std::binary_search(m_lineLayouts.cbegin(), m_lineLayouts.cend(), LineLayoutPair(i, nullptr), lessThan);
 }
 
-void KateLineLayoutMap::insert(int realLine, KateLineLayout *lineLayoutPtr)
+void KateLineLayoutMap::insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr)
 {
     auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
     if (it != m_lineLayouts.end() && (*it) == LineLayoutPair(realLine, nullptr)) {
-        (*it).second = std::unique_ptr<KateLineLayout>(lineLayoutPtr);
+        (*it).second = std::move(lineLayoutPtr);
     } else {
         it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
-        m_lineLayouts.insert(it, LineLayoutPair(realLine, lineLayoutPtr));
+        m_lineLayouts.insert(it, LineLayoutPair(realLine, std::move(lineLayoutPtr)));
     }
 }
 
@@ -274,7 +274,8 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
         l->setLayoutDirty(true);
     }
 
-    m_lineLayouts.insert(realLine, l);
+    // transfer ownership to m_lineLayouts
+    m_lineLayouts.insert(realLine, std::unique_ptr<KateLineLayout>(l));
     return l;
 }
 

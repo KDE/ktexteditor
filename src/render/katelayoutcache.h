@@ -23,7 +23,7 @@ public:
 
     inline bool contains(int i) const;
 
-    inline void insert(int realLine, KateLineLayout *lineLayoutPtr);
+    inline void insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr);
 
     inline void relayoutLines(int startRealLine, int endRealLine);
 
