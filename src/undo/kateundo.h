@@ -33,7 +33,7 @@ public:
      * Constructor
      * @param document the document the undo item belongs to
      */
-    explicit KateUndo(KTextEditor::DocumentPrivate *document);
+    explicit KateUndo() = default;
 
     /**
      * Destructor
@@ -66,12 +66,12 @@ public:
     /**
      * undo this item
      */
-    virtual void undo() = 0;
+    virtual void undo(KTextEditor::DocumentPrivate *doc) = 0;
 
     /**
      * redo this item
      */
-    virtual void redo() = 0;
+    virtual void redo(KTextEditor::DocumentPrivate *doc) = 0;
 
     /**
      * type of item
@@ -79,22 +79,7 @@ public:
      */
     virtual KateUndo::UndoType type() const = 0;
 
-protected:
-    /**
-     * Return the document the undo item belongs to.
-     * @return the document the undo item belongs to
-     */
-    inline KTextEditor::DocumentPrivate *document()
-    {
-        return m_document;
-    }
-
 private:
-    /**
-     * the document the undo item belongs to
-     */
-    KTextEditor::DocumentPrivate *m_document;
-
     //
     // Line modification system
     //
@@ -141,7 +126,7 @@ private:
 class KateEditInsertTextUndo : public KateUndo
 {
 public:
-    explicit KateEditInsertTextUndo(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text);
+    explicit KateEditInsertTextUndo(int line, int col, const QString &text);
 
     /**
      * @copydoc KateUndo::isEmpty()
@@ -151,12 +136,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::mergeWith(const KateUndo)
@@ -190,7 +175,7 @@ private:
 class KateEditRemoveTextUndo : public KateUndo
 {
 public:
-    explicit KateEditRemoveTextUndo(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text);
+    explicit KateEditRemoveTextUndo(int line, int col, const QString &text);
 
     /**
      * @copydoc KateUndo::isEmpty()
@@ -200,12 +185,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::mergeWith(const KateUndo)
@@ -239,8 +224,8 @@ private:
 class KateEditMarkLineAutoWrappedUndo : public KateUndo
 {
 public:
-    explicit KateEditMarkLineAutoWrappedUndo(KTextEditor::DocumentPrivate *document, int line, bool autowrapped)
-        : KateUndo(document)
+    explicit KateEditMarkLineAutoWrappedUndo(int line, bool autowrapped)
+        : KateUndo()
         , m_line(line)
         , m_autowrapped(autowrapped)
     {
@@ -249,12 +234,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::type()
@@ -272,17 +257,17 @@ private:
 class KateEditWrapLineUndo : public KateUndo
 {
 public:
-    explicit KateEditWrapLineUndo(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool newLine);
+    explicit KateEditWrapLineUndo(int line, int col, int len, bool newLine);
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::type()
@@ -308,17 +293,17 @@ private:
 class KateEditUnWrapLineUndo : public KateUndo
 {
 public:
-    explicit KateEditUnWrapLineUndo(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool removeLine);
+    explicit KateEditUnWrapLineUndo(int line, int col, int len, bool removeLine);
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::type()
@@ -344,17 +329,17 @@ private:
 class KateEditInsertLineUndo : public KateUndo
 {
 public:
-    explicit KateEditInsertLineUndo(KTextEditor::DocumentPrivate *document, int line, const QString &text);
+    explicit KateEditInsertLineUndo(int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::type()
@@ -378,17 +363,17 @@ private:
 class KateEditRemoveLineUndo : public KateUndo
 {
 public:
-    explicit KateEditRemoveLineUndo(KTextEditor::DocumentPrivate *document, int line, const QString &text);
+    explicit KateEditRemoveLineUndo(int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *doc) override;
 
     /**
      * @copydoc KateUndo::type()

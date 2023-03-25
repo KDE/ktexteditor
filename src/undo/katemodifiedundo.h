@@ -17,12 +17,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
     void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
@@ -36,12 +36,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
     void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
@@ -55,12 +55,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
     void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
@@ -74,12 +74,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
     void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
@@ -88,17 +88,17 @@ public:
 class KateModifiedInsertLine : public KateEditInsertLineUndo
 {
 public:
-    KateModifiedInsertLine(KTextEditor::DocumentPrivate *document, int line, const QString &text);
+    KateModifiedInsertLine(int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
 };
@@ -111,12 +111,12 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() override;
+    void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() override;
+    void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
 };

@@ -173,7 +173,7 @@ void KateUndoManager::slotTextRemoved(int line, int col, const QString &s)
 void KateUndoManager::slotMarkLineAutoWrapped(int line, bool autowrapped)
 {
     if (m_editCurrentUndo != nullptr) { // do we care about notifications?
-        addUndoItem(new KateEditMarkLineAutoWrappedUndo(m_document, line, autowrapped));
+        addUndoItem(new KateEditMarkLineAutoWrappedUndo(line, autowrapped));
     }
 }
 
@@ -194,7 +194,7 @@ void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool line
 void KateUndoManager::slotLineInserted(int line, const QString &s)
 {
     if (m_editCurrentUndo != nullptr) { // do we care about notifications?
-        addUndoItem(new KateModifiedInsertLine(m_document, line, s));
+        addUndoItem(new KateModifiedInsertLine(line, s));
     }
 }
 
