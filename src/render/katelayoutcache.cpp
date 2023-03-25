@@ -49,26 +49,6 @@ void KateLineLayoutMap::insert(int realLine, KateLineLayout *lineLayoutPtr)
     }
 }
 
-void KateLineLayoutMap::viewWidthIncreased()
-{
-    LineLayoutMap::iterator it = m_lineLayouts.begin();
-    for (; it != m_lineLayouts.end(); ++it) {
-        if ((*it).second->isValid() && (*it).second->viewLineCount() > 1) {
-            (*it).second->invalidateLayout();
-        }
-    }
-}
-
-void KateLineLayoutMap::viewWidthDecreased(int newWidth)
-{
-    LineLayoutMap::iterator it = m_lineLayouts.begin();
-    for (; it != m_lineLayouts.end(); ++it) {
-        if ((*it).second->isValid() && ((*it).second->viewLineCount() > 1 || (*it).second->width() > newWidth)) {
-            (*it).second->invalidateLayout();
-        }
-    }
-}
-
 void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
 {
     LineLayoutMap::iterator start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(startRealLine, nullptr), lessThan);
@@ -499,20 +479,10 @@ void KateLayoutCache::clear()
 
 void KateLayoutCache::setViewWidth(int width)
 {
-    bool wider = width > m_viewWidth;
-
     m_viewWidth = width;
-
     m_lineLayouts.clear();
     m_textLayouts.clear();
     m_startPos = KTextEditor::Cursor(-1, -1);
-
-    // Only get rid of layouts that we have to
-    if (wider) {
-        m_lineLayouts.viewWidthIncreased();
-    } else {
-        m_lineLayouts.viewWidthDecreased(width);
-    }
 }
 
 bool KateLayoutCache::wrap() const

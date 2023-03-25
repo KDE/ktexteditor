@@ -25,9 +25,6 @@ public:
 
     inline void insert(int realLine, KateLineLayout *lineLayoutPtr);
 
-    inline void viewWidthIncreased();
-    inline void viewWidthDecreased(int newWidth);
-
     inline void relayoutLines(int startRealLine, int endRealLine);
 
     inline void slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
