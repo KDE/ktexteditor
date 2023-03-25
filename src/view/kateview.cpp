@@ -3617,7 +3617,6 @@ QTextLayout *KTextEditor::ViewPrivate::textLayout(int line) const
 QTextLayout *KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor pos) const
 {
     KateLineLayout *thisLine = m_viewInternal->cache()->line(pos);
-
     return thisLine->isValid() ? thisLine->layout() : nullptr;
 }
 

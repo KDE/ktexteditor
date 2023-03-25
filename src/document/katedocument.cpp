@@ -3489,7 +3489,9 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
                     beginCursor.setColumn(col - 2);
                 }
             } else {
-                beginCursor.setColumn(view->textLayout(c)->previousCursorPosition(c.column()));
+                if (auto l = view->textLayout(c)) {
+                    beginCursor.setColumn(l->previousCursorPosition(c.column()));
+                }
             }
             removeText(KTextEditor::Range(beginCursor, endCursor));
             // in most cases cursor is moved by removeText, but we should do it manually
