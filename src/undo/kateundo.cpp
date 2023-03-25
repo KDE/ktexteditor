@@ -134,12 +134,10 @@ void KateEditMarkLineAutoWrappedUndo::redo(KTextEditor::DocumentPrivate *doc)
     doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }
 
-KateUndoGroup::KateUndoGroup(KateUndoManager *manager,
-                             const KTextEditor::Cursor cursorPosition,
+KateUndoGroup::KateUndoGroup(const KTextEditor::Cursor cursorPosition,
                              KTextEditor::Range selection,
                              const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondary)
-    : m_manager(manager)
-    , m_undoSelection(selection)
+    : m_undoSelection(selection)
     , m_redoSelection(-1, -1, -1, -1)
     , m_undoCursor(cursorPosition)
     , m_undoSecondaryCursors(secondary)
@@ -152,16 +150,16 @@ KateUndoGroup::~KateUndoGroup()
     qDeleteAll(m_items);
 }
 
-void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
+void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *view)
 {
     if (m_items.isEmpty()) {
         return;
     }
 
-    m_manager->startUndo();
+    manager->startUndo();
 
     for (int i = m_items.size() - 1; i >= 0; --i) {
-        m_items[i]->undo(static_cast<KTextEditor::DocumentPrivate *>(document()));
+        m_items[i]->undo(static_cast<KTextEditor::DocumentPrivate *>(manager->document()));
     }
 
     if (view != nullptr) {
@@ -178,19 +176,19 @@ void KateUndoGroup::undo(KTextEditor::ViewPrivate *view)
         }
     }
 
-    m_manager->endUndo();
+    manager->endUndo();
 }
 
-void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
+void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *view)
 {
     if (m_items.isEmpty()) {
         return;
     }
 
-    m_manager->startUndo();
+    manager->startUndo();
 
     for (int i = 0; i < m_items.size(); ++i) {
-        m_items[i]->redo(static_cast<KTextEditor::DocumentPrivate *>(document()));
+        m_items[i]->redo(static_cast<KTextEditor::DocumentPrivate *>(manager->document()));
     }
 
     if (view != nullptr) {
@@ -207,7 +205,7 @@ void KateUndoGroup::redo(KTextEditor::ViewPrivate *view)
         }
     }
 
-    m_manager->endUndo();
+    manager->endUndo();
 }
 
 void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
@@ -310,11 +308,6 @@ void KateUndoGroup::markRedoAsSaved(QBitArray &lines)
         KateUndo *item = m_items[i];
         item->updateRedoSavedOnDiskFlag(lines);
     }
-}
-
-KTextEditor::Document *KateUndoGroup::document()
-{
-    return m_manager->document();
 }
 
 KateUndo::UndoType KateUndoGroup::singleType() const

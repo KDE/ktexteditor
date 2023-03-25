@@ -343,8 +343,7 @@ public:
      * Constructor
      * @param manager KateUndoManager this undo group will belong to
      */
-    explicit KateUndoGroup(KateUndoManager *manager,
-                           const KTextEditor::Cursor cursorPosition,
+    explicit KateUndoGroup(const KTextEditor::Cursor cursorPosition,
                            KTextEditor::Range selection,
                            const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &);
 
@@ -360,12 +359,12 @@ public:
     /**
      * Undo the contained undo items
      */
-    void undo(KTextEditor::ViewPrivate *view);
+    void undo(KateUndoManager *manager, KTextEditor::ViewPrivate *view);
 
     /**
      * Redo the contained undo items
      */
-    void redo(KTextEditor::ViewPrivate *view);
+    void redo(KateUndoManager *manager, KTextEditor::ViewPrivate *view);
 
     void editEnd(const KTextEditor::Cursor cursorPosition,
                  KTextEditor::Range selectionRange,
@@ -422,8 +421,6 @@ public:
     }
 
 private:
-    KTextEditor::Document *document();
-
     /**
      * singleType
      * @return the type if it's only one type, or editInvalid if it contains multiple types.
@@ -445,8 +442,6 @@ public:
     void addItem(KateUndo *u);
 
 private:
-    KateUndoManager *const m_manager;
-
     /**
      * list of items contained
      */

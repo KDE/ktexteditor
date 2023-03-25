@@ -88,7 +88,7 @@ void KateUndoManager::editStart()
     }
 
     // new current undo item
-    m_editCurrentUndo = new KateUndoGroup(this, cursorPosition, primarySelectionRange, secondaryCursors);
+    m_editCurrentUndo = new KateUndoGroup(cursorPosition, primarySelectionRange, secondaryCursors);
 
     Q_ASSERT(m_editCurrentUndo != nullptr); // a new undo group must be created by this method
 }
@@ -269,7 +269,7 @@ void KateUndoManager::undo()
     if (!undoItems.isEmpty()) {
         Q_EMIT undoStart(document());
 
-        undoItems.last()->undo(activeView());
+        undoItems.last()->undo(this, activeView());
         redoItems.append(undoItems.last());
         undoItems.removeLast();
         updateModified();
@@ -285,7 +285,7 @@ void KateUndoManager::redo()
     if (!redoItems.isEmpty()) {
         Q_EMIT redoStart(document());
 
-        redoItems.last()->redo(activeView());
+        redoItems.last()->redo(this, activeView());
         undoItems.append(redoItems.last());
         redoItems.removeLast();
         updateModified();
