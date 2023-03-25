@@ -148,13 +148,13 @@ private:
     KateLineLayoutMap m_lineLayouts;
 
     // Convenience vector for quick direct access to the specific text layout
-    KTextEditor::Cursor m_startPos;
+    KTextEditor::Cursor m_startPos = KTextEditor::Cursor::invalid();
 
     std::vector<KateTextLayout> m_textLayouts;
 
-    int m_viewWidth;
-    bool m_wrap;
-    bool m_acceptDirtyLayouts;
+    int m_viewWidth = 0;
+    bool m_wrap = false;
+    bool m_acceptDirtyLayouts = false;
 };
 
 #endif

@@ -103,10 +103,6 @@ KateLineLayout *KateLineLayoutMap::operator[](int i)
 KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
     : QObject(parent)
     , m_renderer(renderer)
-    , m_startPos(-1, -1)
-    , m_viewWidth(0)
-    , m_wrap(false)
-    , m_acceptDirtyLayouts(false)
 {
     Q_ASSERT(m_renderer);
 
