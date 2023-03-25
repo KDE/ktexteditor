@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-20 02:18+0000\n"
-"PO-Revision-Date: 2023-03-20 12:45+0300\n"
+"PO-Revision-Date: 2023-03-24 17:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -4211,7 +4211,7 @@ msgstr "Veriyi Kurtar"
 #: swapfile/kateswapfile.cpp:636
 #, kde-format
 msgid "Discard"
-msgstr "Vazgeç"
+msgstr "At"
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
