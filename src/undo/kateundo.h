@@ -126,7 +126,12 @@ private:
 class KateEditInsertTextUndo : public KateUndo
 {
 public:
-    explicit KateEditInsertTextUndo(int line, int col, const QString &text);
+    explicit KateEditInsertTextUndo(int line, int col, const QString &text)
+        : m_line(line)
+        , m_col(col)
+        , m_text(text)
+    {
+    }
 
     /**
      * @copydoc KateUndo::isEmpty()
@@ -175,7 +180,12 @@ private:
 class KateEditRemoveTextUndo : public KateUndo
 {
 public:
-    explicit KateEditRemoveTextUndo(int line, int col, const QString &text);
+    explicit KateEditRemoveTextUndo(int line, int col, const QString &text)
+        : m_line(line)
+        , m_col(col)
+        , m_text(text)
+    {
+    }
 
     /**
      * @copydoc KateUndo::isEmpty()
@@ -257,7 +267,13 @@ private:
 class KateEditWrapLineUndo : public KateUndo
 {
 public:
-    explicit KateEditWrapLineUndo(int line, int col, int len, bool newLine);
+    explicit KateEditWrapLineUndo(int line, int col, int len, bool newLine)
+        : m_line(line)
+        , m_col(col)
+        , m_len(len)
+        , m_newLine(newLine)
+    {
+    }
 
     /**
      * @copydoc KateUndo::undo()
@@ -293,7 +309,13 @@ private:
 class KateEditUnWrapLineUndo : public KateUndo
 {
 public:
-    explicit KateEditUnWrapLineUndo(int line, int col, int len, bool removeLine);
+    explicit KateEditUnWrapLineUndo(int line, int col, int len, bool removeLine)
+        : m_line(line)
+        , m_col(col)
+        , m_len(len)
+        , m_removeLine(removeLine)
+    {
+    }
 
     /**
      * @copydoc KateUndo::undo()
@@ -329,7 +351,11 @@ private:
 class KateEditInsertLineUndo : public KateUndo
 {
 public:
-    explicit KateEditInsertLineUndo(int line, const QString &text);
+    explicit KateEditInsertLineUndo(int line, const QString &text)
+        : m_line(line)
+        , m_text(text)
+    {
+    }
 
     /**
      * @copydoc KateUndo::undo()
@@ -363,7 +389,11 @@ private:
 class KateEditRemoveLineUndo : public KateUndo
 {
 public:
-    explicit KateEditRemoveLineUndo(int line, const QString &text);
+    explicit KateEditRemoveLineUndo(int line, const QString &text)
+        : m_line(line)
+        , m_text(text)
+    {
+    }
 
     /**
      * @copydoc KateUndo::undo()

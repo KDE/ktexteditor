@@ -17,48 +17,6 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
 
-KateEditInsertTextUndo::KateEditInsertTextUndo(int line, int col, const QString &text)
-    : m_line(line)
-    , m_col(col)
-    , m_text(text)
-{
-}
-
-KateEditRemoveTextUndo::KateEditRemoveTextUndo(int line, int col, const QString &text)
-    : m_line(line)
-    , m_col(col)
-    , m_text(text)
-{
-}
-
-KateEditWrapLineUndo::KateEditWrapLineUndo(int line, int col, int len, bool newLine)
-    : m_line(line)
-    , m_col(col)
-    , m_len(len)
-    , m_newLine(newLine)
-{
-}
-
-KateEditUnWrapLineUndo::KateEditUnWrapLineUndo(int line, int col, int len, bool removeLine)
-    : m_line(line)
-    , m_col(col)
-    , m_len(len)
-    , m_removeLine(removeLine)
-{
-}
-
-KateEditInsertLineUndo::KateEditInsertLineUndo(int line, const QString &text)
-    : m_line(line)
-    , m_text(text)
-{
-}
-
-KateEditRemoveLineUndo::KateEditRemoveLineUndo(int line, const QString &text)
-    : m_line(line)
-    , m_text(text)
-{
-}
-
 bool KateUndo::isEmpty() const
 {
     return false;
