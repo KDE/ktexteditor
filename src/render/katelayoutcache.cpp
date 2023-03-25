@@ -276,7 +276,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     }
 
     if (realLine < 0 || realLine >= m_renderer->doc()->lines()) {
-        return nullptr;
+        return KateLineLayout::invalid(*m_renderer);
     }
 
     KateLineLayout *l = new KateLineLayout(*m_renderer);
@@ -306,14 +306,16 @@ KateLineLayout *KateLayoutCache::line(const KTextEditor::Cursor realCursor)
 
 KateTextLayout KateLayoutCache::textLayout(const KTextEditor::Cursor realCursor)
 {
-    KateLineLayout *l = line(realCursor.line());
-    return l->viewLine(viewLine(realCursor));
+    return textLayout(realCursor.line(), viewLine(realCursor));
 }
 
 KateTextLayout KateLayoutCache::textLayout(uint realLine, int _viewLine)
 {
     auto l = line(realLine);
-    return l->viewLine(_viewLine);
+    if (l->isValid()) {
+        return l->viewLine(_viewLine);
+    }
+    return KateTextLayout::invalid();
 }
 
 KateTextLayout &KateLayoutCache::viewLine(int _viewLine)

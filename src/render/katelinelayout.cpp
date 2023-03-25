@@ -39,6 +39,12 @@ void KateLineLayout::clear()
     // not touching layout dirty
 }
 
+KateLineLayout *KateLineLayout::invalid(KateRenderer &renderer)
+{
+    static KateLineLayout invalidLayout(renderer);
+    return &invalidLayout;
+}
+
 bool KateLineLayout::includesCursor(const KTextEditor::Cursor realCursor) const
 {
     return realCursor.line() == line();

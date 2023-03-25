@@ -28,6 +28,8 @@ class KateLineLayout
 public:
     explicit KateLineLayout(KateRenderer &renderer);
 
+    static KateLineLayout *invalid(KateRenderer &renderer);
+
     KTextEditor::DocumentPrivate *doc() const;
     void debugOutput() const;
 
