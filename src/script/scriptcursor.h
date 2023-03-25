@@ -14,20 +14,16 @@
 
 inline QJSValue cursorToScriptValue(QJSEngine *engine, const KTextEditor::Cursor cursor)
 {
-    QString code = QStringLiteral("new Cursor(%1, %2);").arg(cursor.line()).arg(cursor.column());
-    QJSValue result = engine->evaluate(code);
+    const auto result = engine->globalObject().property(QStringLiteral("Cursor")).callAsConstructor(QJSValueList() << cursor.line() << cursor.column());
     Q_ASSERT(!result.isError());
     return result;
 }
 
 inline KTextEditor::Cursor cursorFromScriptValue(const QJSValue &obj)
 {
-    KTextEditor::Cursor cursor;
-    QJSValue line = obj.property(QStringLiteral("line"));
-    QJSValue column = obj.property(QStringLiteral("column"));
-    Q_ASSERT(!line.isError() && !column.isError());
-    cursor.setPosition(line.toInt(), column.toInt());
-    return cursor;
+    const auto line = obj.property(QStringLiteral("line"));
+    const auto column = obj.property(QStringLiteral("column"));
+    return KTextEditor::Cursor(line.toInt(), column.toInt());
 }
 
 #endif

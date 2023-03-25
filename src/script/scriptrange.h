@@ -11,24 +11,22 @@
 #include <QJSValue>
 
 #include "ktexteditor/range.h"
+#include "scriptcursor.h"
 
 inline QJSValue rangeToScriptValue(QJSEngine *engine, KTextEditor::Range range)
 {
-    QString code =
-        QStringLiteral("new Range(%1, %2, %3, %4);").arg(range.start().line()).arg(range.start().column()).arg(range.end().line()).arg(range.end().column());
-    QJSValue result = engine->evaluate(code);
+    const auto result = engine->globalObject()
+                            .property(QStringLiteral("Range"))
+                            .callAsConstructor(QJSValueList() << range.start().line() << range.start().column() << range.end().line() << range.end().column());
     Q_ASSERT(!result.isError());
     return result;
 }
 
 inline KTextEditor::Range rangeFromScriptValue(const QJSValue &obj)
 {
-    KTextEditor::Range range;
-    range.setRange(KTextEditor::Cursor(obj.property(QStringLiteral("start")).property(QStringLiteral("line")).toInt(),
-                                       obj.property(QStringLiteral("start")).property(QStringLiteral("column")).toInt()),
-                   KTextEditor::Cursor(obj.property(QStringLiteral("end")).property(QStringLiteral("line")).toInt(),
-                                       obj.property(QStringLiteral("end")).property(QStringLiteral("column")).toInt()));
-    return range;
+    const auto start = cursorFromScriptValue(obj.property(QStringLiteral("start")));
+    const auto end = cursorFromScriptValue(obj.property(QStringLiteral("end")));
+    return KTextEditor::Range(start, end);
 }
 
 #endif
