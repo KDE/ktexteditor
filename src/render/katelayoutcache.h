@@ -145,12 +145,12 @@ private:
      * Layouts which are not within the current view cache and whose
      * refcount == 1 are only known to the cache and can be safely deleted.
      */
-    mutable KateLineLayoutMap m_lineLayouts;
+    KateLineLayoutMap m_lineLayouts;
 
     // Convenience vector for quick direct access to the specific text layout
     KTextEditor::Cursor m_startPos;
 
-    mutable std::vector<KateTextLayout> m_textLayouts;
+    std::vector<KateTextLayout> m_textLayouts;
 
     int m_viewWidth;
     bool m_wrap;
