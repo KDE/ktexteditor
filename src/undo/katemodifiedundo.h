@@ -14,14 +14,7 @@ class KateModifiedInsertText : public KateEditInsertTextUndo
 public:
     KateModifiedInsertText(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text);
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *document) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
@@ -33,14 +26,7 @@ class KateModifiedRemoveText : public KateEditRemoveTextUndo
 public:
     KateModifiedRemoveText(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text);
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *document) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
@@ -52,14 +38,7 @@ class KateModifiedWrapLine : public KateEditWrapLineUndo
 public:
     KateModifiedWrapLine(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool newLine);
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *document) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
@@ -71,14 +50,7 @@ class KateModifiedUnWrapLine : public KateEditUnWrapLineUndo
 public:
     KateModifiedUnWrapLine(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool removeLine);
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *document) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
@@ -90,9 +62,6 @@ class KateModifiedInsertLine : public KateEditInsertLineUndo
 public:
     KateModifiedInsertLine(int line, const QString &text);
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *document) override;
 
     /**
@@ -108,14 +77,7 @@ class KateModifiedRemoveLine : public KateEditRemoveLineUndo
 public:
     KateModifiedRemoveLine(KTextEditor::DocumentPrivate *document, int line, const QString &text);
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *document) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *document) override;
 
     void updateUndoSavedOnDiskFlag(QBitArray &lines) override;

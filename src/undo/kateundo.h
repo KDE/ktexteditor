@@ -133,29 +133,10 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::isEmpty()
-     */
     bool isEmpty() const override;
-
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::mergeWith(const KateUndo)
-     */
     bool mergeWith(const KateUndo *undo) override;
-
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editInsertText;
@@ -187,29 +168,11 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::isEmpty()
-     */
     bool isEmpty() const override;
-
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::mergeWith(const KateUndo)
-     */
     bool mergeWith(const KateUndo *undo) override;
 
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editRemoveText;
@@ -241,19 +204,8 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editMarkLineAutoWrapped;
@@ -275,19 +227,8 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editWrapLine;
@@ -317,19 +258,8 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editUnWrapLine;
@@ -357,19 +287,9 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
 
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editInsertLine;
@@ -395,19 +315,8 @@ public:
     {
     }
 
-    /**
-     * @copydoc KateUndo::undo()
-     */
     void undo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::redo()
-     */
     void redo(KTextEditor::DocumentPrivate *doc) override;
-
-    /**
-     * @copydoc KateUndo::type()
-     */
     KateUndo::UndoType type() const override
     {
         return KateUndo::editRemoveLine;
