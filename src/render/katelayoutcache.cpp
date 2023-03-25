@@ -40,7 +40,7 @@ bool KateLineLayoutMap::contains(int i) const
 
 void KateLineLayoutMap::insert(int realLine, KateLineLayout *lineLayoutPtr)
 {
-    LineLayoutMap::iterator it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
+    auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
     if (it != m_lineLayouts.end() && (*it) == LineLayoutPair(realLine, nullptr)) {
         (*it).second = std::unique_ptr<KateLineLayout>(lineLayoutPtr);
     } else {
@@ -51,8 +51,8 @@ void KateLineLayoutMap::insert(int realLine, KateLineLayout *lineLayoutPtr)
 
 void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
 {
-    LineLayoutMap::iterator start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(startRealLine, nullptr), lessThan);
-    LineLayoutMap::iterator end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(endRealLine, nullptr), lessThan);
+    auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(startRealLine, nullptr), lessThan);
+    auto end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(endRealLine, nullptr), lessThan);
 
     while (start != end) {
         (*start).second->setLayoutDirty();
@@ -62,18 +62,17 @@ void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
 
 void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts)
 {
-    LineLayoutMap::iterator start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(fromLine, nullptr), lessThan);
-    LineLayoutMap::iterator end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(toLine, nullptr), lessThan);
-    LineLayoutMap::iterator it;
+    auto start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(fromLine, nullptr), lessThan);
+    auto end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(toLine, nullptr), lessThan);
 
     if (shiftAmount != 0) {
-        for (it = end; it != m_lineLayouts.end(); ++it) {
+        for (auto it = end; it != m_lineLayouts.end(); ++it) {
             (*it).first += shiftAmount;
             (*it).second->setLine((*it).second->line() + shiftAmount);
         }
 
         QVarLengthArray<KateLineLayout *, 4> layoutsToRemove;
-        for (it = start; it != end; ++it) {
+        for (auto it = start; it != end; ++it) {
             (*it).second->clear();
             layoutsToRemove << it->second.get();
         }
@@ -87,7 +86,7 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, 
 
         m_lineLayouts.erase(start, end);
     } else {
-        for (it = start; it != end; ++it) {
+        for (auto it = start; it != end; ++it) {
             (*it).second->setLayoutDirty();
         }
     }
@@ -95,7 +94,7 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, 
 
 KateLineLayout *KateLineLayoutMap::operator[](int i)
 {
-    const LineLayoutMap::iterator it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, nullptr), lessThan);
+    const auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, nullptr), lessThan);
     Q_ASSERT(it != m_lineLayouts.end());
     return it->second.get();
 }
