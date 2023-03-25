@@ -1847,8 +1847,8 @@ KTextEditor::Cursor KateViewInternal::viewLineOffset(const KTextEditor::Cursor v
 
                 // keep column position
                 if (keepX) {
-                    KTextEditor::Cursor realCursor = toRealCursor(virtualCursor);
-                    KateTextLayout t = cache()->textLayout(realCursor);
+                    // KTextEditor::Cursor realCursor = toRealCursor(virtualCursor);
+                    // KateTextLayout t = cache()->textLayout(realCursor);
                     // renderer()->cursorToX(t, realCursor, !view()->wrapCursor());
 
                     realCursor = renderer()->xToCursor(thisViewLine, m_preservedX, !view()->wrapCursor());
