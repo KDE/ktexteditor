@@ -7,11 +7,14 @@
 #ifndef KATEUNDOMANAGER_H
 #define KATEUNDOMANAGER_H
 
+#include "kateundo.h"
 #include <QObject>
 
 #include <ktexteditor_export.h>
 
 #include <QList>
+
+#include <optional>
 
 namespace KTextEditor
 {
@@ -204,9 +207,9 @@ private:
     KTextEditor::DocumentPrivate *m_document = nullptr;
     bool m_undoComplexMerge = false;
     bool m_isActive = true;
-    KateUndoGroup *m_editCurrentUndo = nullptr;
-    QList<KateUndoGroup *> undoItems;
-    QList<KateUndoGroup *> redoItems;
+    std::optional<KateUndoGroup> m_editCurrentUndo;
+    std::vector<KateUndoGroup> undoItems;
+    std::vector<KateUndoGroup> redoItems;
     // these two variables are for resetting the document to
     // non-modified if all changes have been undone...
     KateUndoGroup *lastUndoGroupWhenSaved = nullptr;
@@ -215,8 +218,8 @@ private:
     bool docWasSavedWhenRedoWasEmpty = true;
 
     // saved undo items that are used to restore state on doc reload
-    QList<KateUndoGroup *> savedUndoItems;
-    QList<KateUndoGroup *> savedRedoItems;
+    std::vector<KateUndoGroup> savedUndoItems;
+    std::vector<KateUndoGroup> savedRedoItems;
     QByteArray docChecksumBeforeReload;
 };
 
