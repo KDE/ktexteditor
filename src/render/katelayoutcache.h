@@ -19,15 +19,15 @@ class KateRenderer;
 class KateLineLayoutMap
 {
 public:
-    inline void clear();
+    void clear();
 
-    inline bool contains(int i) const;
+    bool contains(int i) const;
 
-    inline void insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr);
+    void insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr);
 
-    inline void relayoutLines(int startRealLine, int endRealLine);
+    void relayoutLines(int startRealLine, int endRealLine);
 
-    inline void slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
+    void slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
 
     KateLineLayout *operator[](int i);
 
