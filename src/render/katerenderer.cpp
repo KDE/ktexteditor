@@ -397,8 +397,8 @@ static KTextEditor::Range cursorAtBracket(KTextEditor::ViewPrivate *view, const 
         } else {
             // Our cursor is at closing bracket
             closeX = line.cursorToX(c.column() + (inFront ? 0 : -1)) + 1;
-            if (auto l = view->textLayout(ret.start().line())) {
-                QTextLine closeLine = view->textLayout(ret.start().line())->lineForTextPosition(ret.start().column());
+            if (const auto l = view->textLayout(ret.start().line())) {
+                QTextLine closeLine = l->lineForTextPosition(ret.start().column());
                 openX = closeLine.cursorToX(ret.start().column()) + 1;
             } else {
                 openX = closeX = -1;
