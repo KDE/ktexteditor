@@ -31,11 +31,6 @@ void KateLineLayoutMap::clear()
     m_lineLayouts.clear();
 }
 
-bool KateLineLayoutMap::contains(int i) const
-{
-    return std::binary_search(m_lineLayouts.cbegin(), m_lineLayouts.cend(), LineLayoutPair(i, nullptr), lessThan);
-}
-
 void KateLineLayoutMap::insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr)
 {
     auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, nullptr), lessThan);
@@ -90,11 +85,13 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, 
     }
 }
 
-KateLineLayout *KateLineLayoutMap::operator[](int i)
+KateLineLayout *KateLineLayoutMap::find(int i)
 {
     const auto it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, nullptr), lessThan);
-    Q_ASSERT(it != m_lineLayouts.end());
-    return it->second.get();
+    if (it != m_lineLayouts.end() && it->first == i) {
+        return it->second.get();
+    }
+    return nullptr;
 }
 // END KateLineLayoutMap
 
@@ -221,9 +218,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int ne
 
 KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
 {
-    if (m_lineLayouts.contains(realLine)) {
-        KateLineLayout *l = m_lineLayouts[realLine];
-
+    if (auto l = m_lineLayouts.find(realLine)) {
         // ensure line is OK
         Q_ASSERT(l->line() == realLine);
         Q_ASSERT(realLine < m_renderer->doc()->buffer().lines());

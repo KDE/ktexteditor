@@ -21,15 +21,13 @@ class KateLineLayoutMap
 public:
     void clear();
 
-    bool contains(int i) const;
-
     void insert(int realLine, std::unique_ptr<KateLineLayout> lineLayoutPtr);
 
     void relayoutLines(int startRealLine, int endRealLine);
 
     void slotEditDone(int fromLine, int toLine, int shiftAmount, std::vector<KateTextLayout> &textLayouts);
 
-    KateLineLayout *operator[](int i);
+    KateLineLayout *find(int i);
 
     typedef std::pair<int, std::unique_ptr<KateLineLayout>> LineLayoutPair;
 
