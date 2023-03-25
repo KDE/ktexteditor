@@ -7,8 +7,6 @@
 
 #include "katelayoutcache.h"
 
-#include <QtAlgorithms>
-
 #include "katebuffer.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
