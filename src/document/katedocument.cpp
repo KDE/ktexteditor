@@ -39,6 +39,7 @@
 #include "spellcheck/ontheflycheck.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/spellcheck.h"
+#include <fcntl.h>
 #include <qchar.h>
 
 #if EDITORCONFIG_FOUND
@@ -5388,8 +5389,8 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
 
 void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QString &val)
 {
-    bool state;
-    int n;
+    bool state = false;
+    int n = 0;
     QColor c;
     for (auto v : std::as_const(m_views)) {
         // First, try the new config interface
