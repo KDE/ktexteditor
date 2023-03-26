@@ -355,39 +355,8 @@ public:
     KateUndoGroup(const KateUndoGroup &) = delete;
     KateUndoGroup &operator=(const KateUndoGroup &) = delete;
 
-    KateUndoGroup(KateUndoGroup &&o)
-        : m_items(std::move(o.m_items))
-        , m_safePoint(o.m_safePoint)
-        , m_undoSelection(o.m_undoSelection)
-        , m_redoSelection(o.m_redoSelection)
-        , m_undoCursor(o.m_undoCursor)
-        , m_undoSecondaryCursors(std::move(o.m_undoSecondaryCursors))
-        , m_redoCursor(o.m_redoCursor)
-        , m_redoSecondaryCursors(std::move(o.m_redoSecondaryCursors))
-    {
-        o.m_undoSelection = KTextEditor::Range::invalid();
-        o.m_redoSelection = KTextEditor::Range::invalid();
-        o.m_undoCursor = KTextEditor::Cursor::invalid();
-        o.m_undoCursor = KTextEditor::Cursor::invalid();
-    }
-
-    KateUndoGroup &operator=(KateUndoGroup &&o)
-    {
-        m_items = std::move(o.m_items);
-        m_safePoint = o.m_safePoint;
-        o.m_safePoint = false;
-        m_undoSelection = o.m_undoSelection;
-        m_redoSelection = o.m_redoSelection;
-        m_undoCursor = o.m_undoCursor;
-        m_undoSecondaryCursors = std::move(o.m_undoSecondaryCursors);
-        m_redoCursor = o.m_redoCursor;
-        m_redoSecondaryCursors = std::move(o.m_redoSecondaryCursors);
-        o.m_undoSelection = KTextEditor::Range::invalid();
-        o.m_redoSelection = KTextEditor::Range::invalid();
-        o.m_undoCursor = KTextEditor::Cursor::invalid();
-        o.m_undoCursor = KTextEditor::Cursor::invalid();
-        return *this;
-    }
+    KateUndoGroup(KateUndoGroup &&o) = default;
+    KateUndoGroup &operator=(KateUndoGroup &&o) = default;
 
 public:
     /**
