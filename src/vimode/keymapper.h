@@ -57,7 +57,7 @@ private:
 private:
     KTEXTEDITOR_NO_EXPORT
     void executeMapping();
-    KTEXTEDITOR_NO_EXPORT;
+    KTEXTEDITOR_NO_EXPORT
     void playBackRejectedKeys();
 };
 }
