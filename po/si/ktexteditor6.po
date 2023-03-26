@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"POT-Creation-Date: 2023-03-26 02:13+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -2236,12 +2236,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2298 document/katedocument.cpp:6545
+#: document/katedocument.cpp:2298 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2299 document/katedocument.cpp:6546
+#: document/katedocument.cpp:2299 document/katedocument.cpp:6548
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2432,30 +2432,30 @@ msgstr "ඔබට ඇත්තටම මෙම ගොනුව වැසීම�
 msgid "Close Nevertheless"
 msgstr "කෙසේවුවත් වහන්න"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4634
 #, kde-format
 msgid "Untitled"
 msgstr "තේමා රහිත"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5950
+#: document/katedocument.cpp:4757 document/katedocument.cpp:4985
+#: document/katedocument.cpp:4995 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Save File"
 msgstr "ගොනුව සුරකින්න"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4760
 #, kde-format
 msgid "Save failed"
 msgstr "සුරැකීම අසාර්ථක විය"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5006
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ගොනුව සුරකින්න"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5018
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2467,7 +2467,7 @@ msgstr ""
 "\n"
 "ඔබට මෙම ගොනුවට ලිවීමේ අවසර තිබේද හෝ ප්‍රමාණවත් තැටි ඉඩ තිබේද යන්න පරීක්ෂා කරන්න."
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2476,7 +2476,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2485,25 +2485,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව වෙනස් කරන ලදි."
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව තනන කරන ලදි."
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5615
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව මකන ලදි."
 
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2512,17 +2512,17 @@ msgstr ""
 "\"%1\" ලිපිය වෙනස්කර ඇත.\n"
 "ඔබට ඔබගේ වෙනස්කම් සුරැකීමට හෝ ඉවත දැමීමට අවශ්‍යද?"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5940
 #, kde-format
 msgid "Close Document"
 msgstr "ලිපිය වහන්න"
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6051
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6054
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -7832,18 +7832,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "සෙවුම් ආකාරය"
 
-#: view/kateview.cpp:3673
+#: view/kateview.cpp:3672
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "පෙළගස්සන්න (~A)"
 
-#: view/kateview.cpp:3673
+#: view/kateview.cpp:3672
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4767
+#: view/kateview.cpp:4766
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""

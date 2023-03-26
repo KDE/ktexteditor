@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"POT-Creation-Date: 2023-03-26 02:13+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2225,12 +2225,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "قايتا سىناش"
 
-#: document/katedocument.cpp:2298 document/katedocument.cpp:6545
+#: document/katedocument.cpp:2298 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr "ياپ(&C)"
 
-#: document/katedocument.cpp:2299 document/katedocument.cpp:6546
+#: document/katedocument.cpp:2299 document/katedocument.cpp:6548
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2415,30 +2415,30 @@ msgstr "سىز راستلا بۇ ھۆججەتنى ياپامسىز؟ سانلى�
 msgid "Close Nevertheless"
 msgstr "ياپىۋەر"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4634
 #, kde-format
 msgid "Untitled"
 msgstr "ماۋزۇسىز"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5950
+#: document/katedocument.cpp:4757 document/katedocument.cpp:4985
+#: document/katedocument.cpp:4995 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Save File"
 msgstr "ھۆججەت ساقلاش"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4760
 #, kde-format
 msgid "Save failed"
 msgstr "ساقلاش مەغلۇپ بولدى"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5006
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ھۆججەت ساقلاش"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5018
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2451,7 +2451,7 @@ msgstr ""
 "سىزنىڭ بۇ ھۆججەتكە يېزىش ھوقۇقىڭىز بار يوقلۇقى ياكى دىسكا بوشلۇقىنىڭ "
 "يېتەرلىك ئىكەنلىكىنى تەكشۈرۈڭ."
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2460,7 +2460,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2469,25 +2469,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ھۆججەت «%1» نى باشقا پروگرامما ئۆزگەرتىپتۇ."
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ھۆججەت «%1» نى باشقا پروگرامما قۇرۇپتۇ."
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5615
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "ھۆججەت «%1» نى باشقا پروگرامما ئۆچۈرۈپتۇ."
 
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2496,17 +2496,17 @@ msgstr ""
 "پۈتۈك %1 ئۆزگەرتىلدى\n"
 "ئۆزگىرىشنى ساقلامسىز؟ تاشلىۋېتەمسىز؟"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5940
 #, kde-format
 msgid "Close Document"
 msgstr "پۈتۈك ياپ"
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6051
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6054
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -7746,18 +7746,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "ئىزدەش ھالىتى"
 
-#: view/kateview.cpp:3673
+#: view/kateview.cpp:3672
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "توغرىلا(&A)"
 
-#: view/kateview.cpp:3673
+#: view/kateview.cpp:3672
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4767
+#: view/kateview.cpp:4766
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""

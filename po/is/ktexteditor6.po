@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-20 02:18+0000\n"
+"POT-Creation-Date: 2023-03-26 02:13+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -2274,12 +2274,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2298 document/katedocument.cpp:6545
+#: document/katedocument.cpp:2298 document/katedocument.cpp:6547
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2299 document/katedocument.cpp:6546
+#: document/katedocument.cpp:2299 document/katedocument.cpp:6548
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2460,30 +2460,30 @@ msgstr "Viltu virkilega loka þessari skrá? Gagnatap er mögulegt."
 msgid "Close Nevertheless"
 msgstr "Loka"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4634
 #, kde-format
 msgid "Untitled"
 msgstr "Nafnlaust"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5950
+#: document/katedocument.cpp:4757 document/katedocument.cpp:4985
+#: document/katedocument.cpp:4995 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Save File"
 msgstr "Vista skrá"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4760
 #, kde-format
 msgid "Save failed"
 msgstr "Vistun mistókst"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:5006
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Vista skrá"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5018
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2496,7 +2496,7 @@ msgstr ""
 "Gakktu úr skugga um að þú hafir skrifréttindi í skrána og að nægjanlegt "
 "diskrými sé til staðar."
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2505,7 +2505,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5298
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2514,25 +2514,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5607
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Skránni '%1' hefur verið breytt af öðru forriti."
 
-#: document/katedocument.cpp:5610
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Skráin '%1' var búin til af öðru forriti."
 
-#: document/katedocument.cpp:5613
+#: document/katedocument.cpp:5615
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Skránni '%1' var eytt af öðru forriti."
 
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:5937
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2541,17 +2541,17 @@ msgstr ""
 "Skjalinu \"%1\" hefur verið breytt.\n"
 "Viltu vista það eða henda breytingunum?"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5940
 #, kde-format
 msgid "Close Document"
 msgstr "Loka skjali"
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6051
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6054
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -7886,18 +7886,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "Leitarhamur"
 
-#: view/kateview.cpp:3673
+#: view/kateview.cpp:3672
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Stilla"
 
-#: view/kateview.cpp:3673
+#: view/kateview.cpp:3672
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4767
+#: view/kateview.cpp:4766
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""
