@@ -4,6 +4,7 @@
     SPDX-FileCopyrightText: 2002 John Firebaugh <jfirebaugh@kde.org>
     SPDX-FileCopyrightText: 2001 Christoph Cullmann <cullmann@kde.org>
     SPDX-FileCopyrightText: 2001 Joseph Wenninger <jowenn@kde.org>
+    SPDX-FileCopyrightText: 2023 Waqar Ahmed <waqar.17a@gmail.com>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
@@ -17,123 +18,6 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
 
-bool KateUndo::isEmpty() const
-{
-    return false;
-}
-
-bool KateEditInsertTextUndo::isEmpty() const
-{
-    return len() == 0;
-}
-
-bool KateEditRemoveTextUndo::isEmpty() const
-{
-    return len() == 0;
-}
-
-bool KateUndo::mergeWith(const KateUndo * /*undo*/)
-{
-    return false;
-}
-
-bool KateEditInsertTextUndo::mergeWith(const KateUndo *undo)
-{
-    // we can do a hard cast, we ensure we are only called with the same types on the outside
-    Q_ASSERT(type() == undo->type());
-    const KateEditInsertTextUndo *u = static_cast<const KateEditInsertTextUndo *>(undo);
-    if (m_line == u->m_line && (m_col + len()) == u->m_col) {
-        m_text += u->m_text;
-        return true;
-    }
-
-    return false;
-}
-
-bool KateEditRemoveTextUndo::mergeWith(const KateUndo *undo)
-{
-    // we can do a hard cast, we ensure we are only called with the same types on the outside
-    Q_ASSERT(type() == undo->type());
-    const KateEditRemoveTextUndo *u = static_cast<const KateEditRemoveTextUndo *>(undo);
-    if (m_line == u->m_line && m_col == (u->m_col + u->len())) {
-        m_text.prepend(u->m_text);
-        m_col = u->m_col;
-        return true;
-    }
-
-    return false;
-}
-
-void KateEditInsertTextUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editRemoveText(m_line, m_col, len());
-}
-
-void KateEditRemoveTextUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editInsertText(m_line, m_col, m_text);
-}
-
-void KateEditWrapLineUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editUnWrapLine(m_line, m_newLine, m_len);
-}
-
-void KateEditUnWrapLineUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editWrapLine(m_line, m_col, m_removeLine);
-}
-
-void KateEditInsertLineUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editRemoveLine(m_line);
-}
-
-void KateEditRemoveLineUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editInsertLine(m_line, m_text);
-}
-
-void KateEditMarkLineAutoWrappedUndo::undo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
-}
-
-void KateEditRemoveTextUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editRemoveText(m_line, m_col, len());
-}
-
-void KateEditInsertTextUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editInsertText(m_line, m_col, m_text);
-}
-
-void KateEditUnWrapLineUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editUnWrapLine(m_line, m_removeLine, m_len);
-}
-
-void KateEditWrapLineUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editWrapLine(m_line, m_col, m_newLine);
-}
-
-void KateEditRemoveLineUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editRemoveLine(m_line);
-}
-
-void KateEditInsertLineUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editInsertLine(m_line, m_text);
-}
-
-void KateEditMarkLineAutoWrappedUndo::redo(KTextEditor::DocumentPrivate *doc)
-{
-    doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
-}
-
 KateUndoGroup::KateUndoGroup(const KTextEditor::Cursor cursorPosition,
                              KTextEditor::Range selection,
                              const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondary)
@@ -145,21 +29,58 @@ KateUndoGroup::KateUndoGroup(const KTextEditor::Cursor cursorPosition,
 {
 }
 
-KateUndoGroup::~KateUndoGroup()
-{
-    qDeleteAll(m_items);
-}
-
 void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *view)
 {
-    if (m_items.isEmpty()) {
+    if (m_items.empty()) {
         return;
     }
 
     manager->startUndo();
 
-    for (int i = m_items.size() - 1; i >= 0; --i) {
-        m_items[i]->undo(static_cast<KTextEditor::DocumentPrivate *>(manager->document()));
+    auto doc = static_cast<KTextEditor::DocumentPrivate *>(manager->document());
+    auto updateDocLine = [doc](const UndoItem &item) {
+        Kate::TextLine tl = doc->plainKateTextLine(item.line);
+        Q_ASSERT(tl);
+        tl->markAsModified(item.lineModFlags.testFlag(UndoItem::UndoLine1Modified));
+        tl->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::UndoLine1Saved));
+    };
+
+    for (auto rit = m_items.rbegin(); rit != m_items.rend(); ++rit) {
+        auto &item = *rit;
+        switch (item.type) {
+        case UndoItem::editInsertText:
+            doc->editRemoveText(item.line, item.col, item.text.size());
+            updateDocLine(item);
+            break;
+        case UndoItem::editRemoveText:
+            doc->editInsertText(item.line, item.col, item.text);
+            updateDocLine(item);
+            break;
+        case UndoItem::editWrapLine:
+            doc->editUnWrapLine(item.line, item.newLine, item.len);
+            updateDocLine(item);
+            break;
+        case UndoItem::editUnWrapLine: {
+            doc->editWrapLine(item.line, item.col, item.removeLine);
+            updateDocLine(item);
+
+            auto next = doc->plainKateTextLine(item.line + 1);
+            next->markAsModified(item.lineModFlags.testFlag(UndoItem::UndoLine2Modified));
+            next->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::UndoLine2Saved));
+        } break;
+        case UndoItem::editInsertLine:
+            doc->editRemoveLine(item.line);
+            break;
+        case UndoItem::editRemoveLine:
+            doc->editInsertLine(item.line, item.text);
+            updateDocLine(item);
+            break;
+        case UndoItem::editMarkLineAutoWrapped:
+            doc->editMarkLineAutoWrapped(item.line, item.autowrapped);
+            break;
+        case UndoItem::editInvalid:
+            break;
+        }
     }
 
     if (view != nullptr) {
@@ -181,14 +102,57 @@ void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
 
 void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *view)
 {
-    if (m_items.isEmpty()) {
+    if (m_items.empty()) {
         return;
     }
 
     manager->startUndo();
 
-    for (int i = 0; i < m_items.size(); ++i) {
-        m_items[i]->redo(static_cast<KTextEditor::DocumentPrivate *>(manager->document()));
+    auto doc = static_cast<KTextEditor::DocumentPrivate *>(manager->document());
+    auto updateDocLine = [doc](const UndoItem &item) {
+        Kate::TextLine tl = doc->plainKateTextLine(item.line);
+        Q_ASSERT(tl);
+        tl->markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine1Modified));
+        tl->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine1Saved));
+    };
+
+    for (auto &item : m_items) {
+        switch (item.type) {
+        case UndoItem::editInsertText:
+            doc->editInsertText(item.line, item.col, item.text);
+            updateDocLine(item);
+            break;
+        case UndoItem::editRemoveText:
+            doc->editRemoveText(item.line, item.col, item.text.size());
+            updateDocLine(item);
+            break;
+        case UndoItem::editWrapLine: {
+            doc->editWrapLine(item.line, item.col, item.newLine);
+            updateDocLine(item);
+
+            Kate::TextLine next = doc->plainKateTextLine(item.line + 1);
+            Q_ASSERT(next);
+
+            next->markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine2Modified));
+            next->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine2Saved));
+        } break;
+        case UndoItem::editUnWrapLine:
+            doc->editUnWrapLine(item.line, item.removeLine, item.len);
+            updateDocLine(item);
+            break;
+        case UndoItem::editInsertLine:
+            doc->editInsertLine(item.line, item.text);
+            updateDocLine(item);
+            break;
+        case UndoItem::editRemoveLine:
+            doc->editRemoveLine(item.line);
+            break;
+        case UndoItem::editMarkLineAutoWrapped:
+            doc->editMarkLineAutoWrapped(item.line, item.autowrapped);
+            break;
+        case UndoItem::editInvalid:
+            break;
+        }
     }
 
     if (view != nullptr) {
@@ -217,22 +181,39 @@ void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
     m_redoSelection = selectionRange;
 }
 
-void KateUndoGroup::addItem(KateUndo *u)
+static bool mergeUndoItems(UndoItem &base, const UndoItem &u)
 {
-    // kill empty items
-    if (u->isEmpty()) {
-        delete u;
-        return;
+    if (base.type != u.type) {
+        return false;
     }
 
+    if (base.type == UndoItem::editRemoveText) {
+        if (base.line == u.line && base.col == (u.col + u.text.size())) {
+            base.text.prepend(u.text);
+            base.col = u.col;
+            return true;
+        }
+    }
+
+    if (base.type == UndoItem::editInsertText) {
+        if (base.line == u.line && (base.col + base.text.size()) == u.col) {
+            base.text += u.text;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void KateUndoGroup::addItem(UndoItem u)
+{
     // try to merge, do that only for equal types, inside mergeWith we do hard casts
-    if (!m_items.isEmpty() && m_items.last()->type() == u->type() && m_items.last()->mergeWith(u)) {
-        delete u;
+    if (!m_items.empty() && m_items.back().type == u.type && mergeUndoItems(m_items.back(), u)) {
         return;
     }
 
     // default: just add new item unchanged
-    m_items.append(u);
+    m_items.push_back(std::move(u));
 }
 
 bool KateUndoGroup::merge(KateUndoGroup *newGroup, bool complex)
@@ -243,11 +224,10 @@ bool KateUndoGroup::merge(KateUndoGroup *newGroup, bool complex)
 
     if (newGroup->isOnlyType(singleType()) || complex) {
         // Take all of its items first -> last
-        KateUndo *u = newGroup->m_items.isEmpty() ? nullptr : newGroup->m_items.takeFirst();
-        while (u) {
-            addItem(u);
-            u = newGroup->m_items.isEmpty() ? nullptr : newGroup->m_items.takeFirst();
+        for (auto &item : newGroup->m_items) {
+            addItem(item);
         }
+        newGroup->m_items.clear();
 
         if (newGroup->m_safePoint) {
             safePoint();
@@ -271,67 +251,166 @@ void KateUndoGroup::safePoint(bool safePoint)
 
 void KateUndoGroup::flagSavedAsModified()
 {
-    for (KateUndo *item : std::as_const(m_items)) {
-        if (item->isFlagSet(KateUndo::UndoLine1Saved)) {
-            item->unsetFlag(KateUndo::UndoLine1Saved);
-            item->setFlag(KateUndo::UndoLine1Modified);
+    for (UndoItem &item : m_items) {
+        if (item.lineModFlags.testFlag(UndoItem::UndoLine1Saved)) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved, false);
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified, true);
         }
 
-        if (item->isFlagSet(KateUndo::UndoLine2Saved)) {
-            item->unsetFlag(KateUndo::UndoLine2Saved);
-            item->setFlag(KateUndo::UndoLine2Modified);
+        if (item.lineModFlags.testFlag(UndoItem::UndoLine2Saved)) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved, false);
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified, true);
         }
 
-        if (item->isFlagSet(KateUndo::RedoLine1Saved)) {
-            item->unsetFlag(KateUndo::RedoLine1Saved);
-            item->setFlag(KateUndo::RedoLine1Modified);
+        if (item.lineModFlags.testFlag(UndoItem::RedoLine1Saved)) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Saved, false);
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Modified, true);
         }
 
-        if (item->isFlagSet(KateUndo::RedoLine2Saved)) {
-            item->unsetFlag(KateUndo::RedoLine2Saved);
-            item->setFlag(KateUndo::RedoLine2Modified);
+        if (item.lineModFlags.testFlag(UndoItem::RedoLine2Saved)) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine2Saved, false);
+            item.lineModFlags.setFlag(UndoItem::RedoLine2Modified, true);
         }
+    }
+}
+
+static void updateUndoSavedOnDiskFlag(UndoItem &item, QBitArray &lines)
+{
+    const int line = item.line;
+    if (line >= lines.size()) {
+        lines.resize(line + 1);
+    }
+
+    const bool wasBitSet = lines.testBit(line);
+    if (!wasBitSet) {
+        lines.setBit(line);
+    }
+
+    auto &lineFlags = item.lineModFlags;
+
+    switch (item.type) {
+    case UndoItem::editInsertText:
+    case UndoItem::editRemoveText:
+    case UndoItem::editRemoveLine:
+        if (!wasBitSet) {
+            lineFlags.setFlag(UndoItem::UndoLine1Modified, false);
+            lineFlags.setFlag(UndoItem::UndoLine1Saved, true);
+        }
+        break;
+    case UndoItem::editWrapLine:
+        if (lineFlags.testFlag(UndoItem::UndoLine1Modified) && !wasBitSet) {
+            lineFlags.setFlag(UndoItem::UndoLine1Modified, false);
+            lineFlags.setFlag(UndoItem::UndoLine1Saved, true);
+        }
+        break;
+    case UndoItem::editUnWrapLine:
+        if (line + 1 >= lines.size()) {
+            lines.resize(line + 2);
+        }
+        if (lineFlags.testFlag(UndoItem::UndoLine1Modified) && !wasBitSet) {
+            lineFlags.setFlag(UndoItem::UndoLine1Modified, false);
+            lineFlags.setFlag(UndoItem::UndoLine1Saved, true);
+        }
+
+        if (lineFlags.testFlag(UndoItem::UndoLine2Modified) && !lines.testBit(line + 1)) {
+            lines.setBit(line + 1);
+
+            lineFlags.setFlag(UndoItem::UndoLine2Modified, false);
+            lineFlags.setFlag(UndoItem::UndoLine2Saved, true);
+        }
+        break;
+    case UndoItem::editInsertLine:
+    case UndoItem::editMarkLineAutoWrapped:
+    case UndoItem::editInvalid:
+        break;
     }
 }
 
 void KateUndoGroup::markUndoAsSaved(QBitArray &lines)
 {
-    for (int i = m_items.size() - 1; i >= 0; --i) {
-        KateUndo *item = m_items[i];
-        item->updateUndoSavedOnDiskFlag(lines);
+    for (auto rit = m_items.rbegin(); rit != m_items.rend(); ++rit) {
+        updateUndoSavedOnDiskFlag(*rit, lines);
+    }
+}
+
+static void updateRedoSavedOnDiskFlag(UndoItem &item, QBitArray &lines)
+{
+    const int line = item.line;
+    if (line >= lines.size()) {
+        lines.resize(line + 1);
+    }
+
+    const bool wasBitSet = lines.testBit(line);
+    if (!wasBitSet) {
+        lines.setBit(line);
+    }
+    auto &lineFlags = item.lineModFlags;
+
+    switch (item.type) {
+    case UndoItem::editInsertText:
+    case UndoItem::editRemoveText:
+    case UndoItem::editInsertLine:
+        lineFlags.setFlag(UndoItem::RedoLine1Modified, false);
+        lineFlags.setFlag(UndoItem::RedoLine1Saved, true);
+        break;
+    case UndoItem::editUnWrapLine:
+        if (lineFlags.testFlag(UndoItem::RedoLine1Modified) && !wasBitSet) {
+            lineFlags.setFlag(UndoItem::RedoLine1Modified, false);
+            lineFlags.setFlag(UndoItem::RedoLine1Saved, true);
+        }
+        break;
+    case UndoItem::editWrapLine:
+        if (line + 1 >= lines.size()) {
+            lines.resize(line + 2);
+        }
+
+        if (lineFlags.testFlag(UndoItem::RedoLine1Modified) && !wasBitSet) {
+            lineFlags.setFlag(UndoItem::RedoLine1Modified, false);
+            lineFlags.setFlag(UndoItem::RedoLine1Saved, true);
+        }
+
+        if (lineFlags.testFlag(UndoItem::RedoLine2Modified) && !lines.testBit(line + 1)) {
+            lineFlags.setFlag(UndoItem::RedoLine2Modified, false);
+            lineFlags.setFlag(UndoItem::RedoLine2Saved, true);
+        }
+        break;
+    case UndoItem::editRemoveLine:
+    case UndoItem::editMarkLineAutoWrapped:
+    case UndoItem::editInvalid:
+        break;
     }
 }
 
 void KateUndoGroup::markRedoAsSaved(QBitArray &lines)
 {
-    for (int i = m_items.size() - 1; i >= 0; --i) {
-        KateUndo *item = m_items[i];
-        item->updateRedoSavedOnDiskFlag(lines);
+    for (auto rit = m_items.rbegin(); rit != m_items.rend(); ++rit) {
+        updateRedoSavedOnDiskFlag(*rit, lines);
     }
 }
 
-KateUndo::UndoType KateUndoGroup::singleType() const
+UndoItem::UndoType KateUndoGroup::singleType() const
 {
-    KateUndo::UndoType ret = KateUndo::editInvalid;
+    UndoItem::UndoType ret = UndoItem::editInvalid;
 
-    for (const KateUndo *item : m_items) {
-        if (ret == KateUndo::editInvalid) {
-            ret = item->type();
-        } else if (ret != item->type()) {
-            return KateUndo::editInvalid;
+    for (const auto &item : m_items) {
+        if (ret == UndoItem::editInvalid) {
+            ret = item.type;
+        } else if (ret != item.type) {
+            return UndoItem::editInvalid;
         }
     }
 
     return ret;
 }
 
-bool KateUndoGroup::isOnlyType(KateUndo::UndoType type) const
+bool KateUndoGroup::isOnlyType(UndoItem::UndoType type) const
 {
-    if (type == KateUndo::editInvalid) {
+    if (type == UndoItem::editInvalid) {
         return false;
     }
-
-    return std::all_of(m_items.begin(), m_items.end(), [type](const KateUndo *item) {
-        return (item->type() == type);
-    });
+    for (const auto &item : m_items) {
+        if (item.type != type)
+            return false;
+    }
+    return true;
 }

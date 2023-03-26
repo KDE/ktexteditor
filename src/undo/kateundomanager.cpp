@@ -9,7 +9,6 @@
 #include <ktexteditor/view.h>
 
 #include "katedocument.h"
-#include "katemodifiedundo.h"
 #include "katepartdebug.h"
 #include "kateview.h"
 
@@ -143,50 +142,200 @@ void KateUndoManager::endUndo()
 
 void KateUndoManager::slotTextInserted(int line, int col, const QString &s)
 {
-    if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateModifiedInsertText(m_document, line, col, s));
+    if (!m_editCurrentUndo.has_value() || s.isEmpty()) { // do we care about notifications?
+        return;
     }
+
+    UndoItem item;
+    item.type = UndoItem::editInsertText;
+    item.line = line;
+    item.col = col;
+    item.text = s;
+    item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+
+    Kate::TextLine tl = m_document->plainKateTextLine(line);
+    Q_ASSERT(tl);
+    if (tl->markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+    } else {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+    }
+    addUndoItem(std::move(item));
 }
 
 void KateUndoManager::slotTextRemoved(int line, int col, const QString &s)
 {
-    if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateModifiedRemoveText(m_document, line, col, s));
+    if (!m_editCurrentUndo.has_value() || s.isEmpty()) { // do we care about notifications?
+        return;
     }
+
+    UndoItem item;
+    item.type = UndoItem::editRemoveText;
+    item.line = line;
+    item.col = col;
+    item.text = s;
+    item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+
+    Kate::TextLine tl = m_document->plainKateTextLine(line);
+    Q_ASSERT(tl);
+    if (tl->markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+    } else {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+    }
+    addUndoItem(std::move(item));
 }
 
 void KateUndoManager::slotMarkLineAutoWrapped(int line, bool autowrapped)
 {
     if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateEditMarkLineAutoWrappedUndo(line, autowrapped));
+        UndoItem item;
+        item.type = UndoItem::editMarkLineAutoWrapped;
+        item.line = line;
+        item.autowrapped = autowrapped;
+        addUndoItem(std::move(item));
     }
 }
 
 void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLine)
 {
-    if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateModifiedWrapLine(m_document, line, col, length, newLine));
+    if (!m_editCurrentUndo.has_value()) { // do we care about notifications?
+        return;
     }
+
+    UndoItem item;
+    item.type = UndoItem::editWrapLine;
+    item.line = line;
+    item.col = col;
+    item.len = length;
+    item.newLine = newLine;
+
+    Kate::TextLine tl = m_document->plainKateTextLine(line);
+    Q_ASSERT(tl);
+    if (length > 0 || tl->markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+    } else if (tl->markedAsSavedOnDisk()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
+    }
+
+    if (col > 0 || length == 0 || tl->markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine2Modified);
+    } else if (tl->markedAsSavedOnDisk()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine2Saved);
+    }
+
+    if (tl->markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+    } else if ((length > 0 && col > 0) || tl->markedAsSavedOnDisk()) {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+    }
+    addUndoItem(std::move(item));
 }
 
 void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool lineRemoved)
 {
-    if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateModifiedUnWrapLine(m_document, line, col, length, lineRemoved));
+    if (!m_editCurrentUndo.has_value()) { // do we care about notifications?
+        return;
     }
+
+    UndoItem item;
+    item.type = UndoItem::editUnWrapLine;
+    item.line = line;
+    item.col = col;
+    item.len = length;
+    item.removeLine = lineRemoved;
+
+    Kate::TextLine tl = m_document->plainKateTextLine(line);
+    Kate::TextLine nextLine = m_document->plainKateTextLine(line + 1);
+    Q_ASSERT(tl);
+    Q_ASSERT(nextLine);
+
+    const int len1 = tl->length();
+    const int len2 = nextLine->length();
+
+    if (len1 > 0 && len2 > 0) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+
+        if (tl->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
+
+        if (nextLine->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
+        }
+    } else if (len1 == 0) {
+        if (nextLine->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+        } else if (nextLine->markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
+        }
+
+        if (tl->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
+
+        if (nextLine->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
+        } else if (nextLine->markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
+        }
+    } else { // len2 == 0
+        if (nextLine->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+        } else if (nextLine->markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
+        }
+
+        if (tl->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else if (tl->markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
+
+        if (nextLine->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
+        }
+    }
+    addUndoItem(std::move(item));
 }
 
 void KateUndoManager::slotLineInserted(int line, const QString &s)
 {
     if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateModifiedInsertLine(line, s));
+        UndoItem item;
+        item.type = UndoItem::editInsertLine;
+        item.line = line;
+        item.text = s;
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+        addUndoItem(std::move(item));
     }
 }
 
 void KateUndoManager::slotLineRemoved(int line, const QString &s)
 {
     if (m_editCurrentUndo.has_value()) { // do we care about notifications?
-        addUndoItem(new KateModifiedRemoveLine(m_document, line, s));
+        UndoItem item;
+        item.type = UndoItem::editRemoveLine;
+        item.line = line;
+        item.text = s;
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+
+        Kate::TextLine tl = m_document->plainKateTextLine(line);
+        Q_ASSERT(tl);
+        if (tl->markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
+        addUndoItem(std::move(item));
     }
 }
 
@@ -209,12 +358,11 @@ void KateUndoManager::undoSafePoint()
     }
 }
 
-void KateUndoManager::addUndoItem(KateUndo *undo)
+void KateUndoManager::addUndoItem(UndoItem undo)
 {
-    Q_ASSERT(undo != nullptr); // don't add null pointers to our history
     Q_ASSERT(m_editCurrentUndo.has_value()); // make sure there is an undo group for our item
 
-    m_editCurrentUndo->addItem(undo);
+    m_editCurrentUndo->addItem(std::move(undo));
 
     // Clear redo buffer
     redoItems.clear();

@@ -190,7 +190,7 @@ private Q_SLOTS:
      *
      * @param undo undo item to be added, must be non-null
      */
-    void addUndoItem(KateUndo *undo);
+    void addUndoItem(UndoItem undo);
 
     void setActive(bool active);
 
