@@ -5421,7 +5421,7 @@ void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QSt
             v->renderer()->config()->setHighlightedBracketColor(c);
         } else if (var == QLatin1String("word-wrap-marker-color") && checkColorValue(val, c)) {
             v->renderer()->config()->setWordWrapMarkerColor(c);
-        } else if (var == QLatin1String("font") || (checkIntValue(val, &n) && var == QLatin1String("font-size"))) {
+        } else if (var == QLatin1String("font") || (checkIntValue(val, &n) && n > 0 && var == QLatin1String("font-size"))) {
             QFont _f(v->renderer()->currentFont());
 
             if (var == QLatin1String("font")) {
