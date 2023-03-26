@@ -64,18 +64,15 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount, 
             (*it).second->setLine((*it).second->line() + shiftAmount);
         }
 
-        QVarLengthArray<KateLineLayout *, 4> layoutsToRemove;
         for (auto it = start; it != end; ++it) {
             (*it).second->clear();
-            layoutsToRemove << it->second.get();
+            for (auto &tl : textLayouts) {
+                if (tl.kateLineLayout() == it->second.get()) {
+                    // Invalidate the layout, this will mark it as dirty
+                    tl = KateTextLayout::invalid();
+                }
+            }
         }
-
-        textLayouts.erase(std::remove_if(textLayouts.begin(),
-                                         textLayouts.end(),
-                                         [&layoutsToRemove](const KateTextLayout &l) {
-                                             return layoutsToRemove.contains(l.kateLineLayout());
-                                         }),
-                          textLayouts.end());
 
         m_lineLayouts.erase(start, end);
     } else {
