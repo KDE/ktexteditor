@@ -46,9 +46,8 @@ public:
         const bool bWantReadOnly = (classname == "KParts::ReadOnlyPart");
 
         // construct right part variant
-        KTextEditor::DocumentPrivate *part = new KTextEditor::DocumentPrivate(bWantSingleView, bWantReadOnly, parentWidget, parent);
+        KTextEditor::DocumentPrivate *part = new KTextEditor::DocumentPrivate(metaData(), bWantSingleView, bWantReadOnly, parentWidget, parent);
         part->setReadWrite(!bWantReadOnly);
-        part->setMetaData(metaData());
         return part;
     }
 };

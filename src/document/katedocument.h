@@ -88,7 +88,11 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor
     friend class ::KateBuffer;
 
 public:
-    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false, QWidget *parentWidget = nullptr, QObject * = nullptr);
+    explicit DocumentPrivate(const KPluginMetaData &data = {},
+                             bool bSingleViewMode = false,
+                             bool bReadOnly = false,
+                             QWidget *parentWidget = nullptr,
+                             QObject * = nullptr);
     ~DocumentPrivate() override;
 
     using ReadWritePart::closeUrl;
@@ -97,8 +101,6 @@ public:
     bool openUrl(const QUrl &url) override;
 
     KTextEditor::Range rangeOnLine(KTextEditor::Range range, int line) const;
-
-    void setMetaData(const KPluginMetaData &metaData);
 
 private:
     KTEXTEDITOR_NO_EXPORT

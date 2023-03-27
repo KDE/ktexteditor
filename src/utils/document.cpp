@@ -9,8 +9,8 @@
 
 using namespace KTextEditor;
 
-Document::Document(DocumentPrivate *impl, QObject *parent)
-    : KParts::ReadWritePart(parent)
+Document::Document(DocumentPrivate *impl, const KPluginMetaData &data, QObject *parent)
+    : KParts::ReadWritePart(parent, data)
     , d(impl)
 {
 }

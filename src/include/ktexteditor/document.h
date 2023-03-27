@@ -198,7 +198,7 @@ protected:
      * \param parent parent object
      * \see Editor::createDocument()
      */
-    Document(DocumentPrivate *impl, QObject *parent);
+    Document(DocumentPrivate *impl, const KPluginMetaData &data, QObject *parent);
 
 public:
     /**

@@ -162,8 +162,8 @@ static inline bool isBracket(const QChar c)
 //
 // KTextEditor::DocumentPrivate Constructor
 //
-KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOnly, QWidget *parentWidget, QObject *parent)
-    : KTextEditor::Document(this, parent)
+KTextEditor::DocumentPrivate::DocumentPrivate(const KPluginMetaData &data, bool bSingleViewMode, bool bReadOnly, QWidget *parentWidget, QObject *parent)
+    : KTextEditor::Document(this, data, parent)
     , m_bSingleViewMode(bSingleViewMode)
     , m_bReadOnly(bReadOnly)
     ,
@@ -432,11 +432,6 @@ KTextEditor::Range KTextEditor::DocumentPrivate::rangeOnLine(KTextEditor::Range 
     const int col1 = toVirtualColumn(range.start());
     const int col2 = toVirtualColumn(range.end());
     return KTextEditor::Range(line, fromVirtualColumn(line, col1), line, fromVirtualColumn(line, col2));
-}
-
-void KTextEditor::DocumentPrivate::setMetaData(const KPluginMetaData &metaData)
-{
-    KParts::Part::setMetaData(metaData);
 }
 
 // BEGIN KTextEditor::EditInterface stuff
