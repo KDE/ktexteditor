@@ -52,7 +52,10 @@ public:
 
     ~KateUndoManager() override;
 
-    KTextEditor::Document *document();
+    KTextEditor::DocumentPrivate *document()
+    {
+        return m_document;
+    }
 
     /**
      * Returns how many undo() actions can be performed.

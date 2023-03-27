@@ -37,7 +37,7 @@ void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
 
     manager->startUndo();
 
-    auto doc = static_cast<KTextEditor::DocumentPrivate *>(manager->document());
+    auto doc = manager->document();
     auto updateDocLine = [doc](const UndoItem &item) {
         Kate::TextLine tl = doc->plainKateTextLine(item.line);
         Q_ASSERT(tl);
@@ -108,7 +108,7 @@ void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
 
     manager->startUndo();
 
-    auto doc = static_cast<KTextEditor::DocumentPrivate *>(manager->document());
+    auto doc = manager->document();
     auto updateDocLine = [doc](const UndoItem &item) {
         Kate::TextLine tl = doc->plainKateTextLine(item.line);
         Q_ASSERT(tl);
