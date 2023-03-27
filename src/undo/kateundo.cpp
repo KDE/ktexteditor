@@ -41,8 +41,10 @@ void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
     auto updateDocLine = [doc](const UndoItem &item) {
         Kate::TextLine tl = doc->plainKateTextLine(item.line);
         Q_ASSERT(tl);
-        tl->markAsModified(item.lineModFlags.testFlag(UndoItem::UndoLine1Modified));
-        tl->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::UndoLine1Saved));
+        if (tl) {
+            tl->markAsModified(item.lineModFlags.testFlag(UndoItem::UndoLine1Modified));
+            tl->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::UndoLine1Saved));
+        }
     };
 
     for (auto rit = m_items.rbegin(); rit != m_items.rend(); ++rit) {
@@ -112,8 +114,10 @@ void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
     auto updateDocLine = [doc](const UndoItem &item) {
         Kate::TextLine tl = doc->plainKateTextLine(item.line);
         Q_ASSERT(tl);
-        tl->markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine1Modified));
-        tl->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine1Saved));
+        if (tl) {
+            tl->markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine1Modified));
+            tl->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine1Saved));
+        }
     };
 
     for (auto &item : m_items) {
@@ -132,9 +136,10 @@ void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
 
             Kate::TextLine next = doc->plainKateTextLine(item.line + 1);
             Q_ASSERT(next);
-
-            next->markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine2Modified));
-            next->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine2Saved));
+            if (next) {
+                next->markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine2Modified));
+                next->markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine2Saved));
+            }
         } break;
         case UndoItem::editUnWrapLine:
             doc->editUnWrapLine(item.line, item.removeLine, item.len);
