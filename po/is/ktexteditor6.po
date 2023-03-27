@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-26 02:13+0000\n"
+"POT-Creation-Date: 2023-03-27 03:31+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -2243,18 +2243,18 @@ msgstr "Ný skráagerð"
 msgid "The file %1 does not exist."
 msgstr ""
 
-#: document/katedocument.cpp:222
+#: document/katedocument.cpp:223
 #, fuzzy, kde-format
 #| msgid "Close Document"
 msgid "Auto Reload Document"
 msgstr "Loka skjali"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:224
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2289
+#: document/katedocument.cpp:2290
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2268,24 +2268,24 @@ msgstr ""
 "\n"
 "Gaktu úr skugga um að þú hafir lesheimildir í hana."
 
-#: document/katedocument.cpp:2294
+#: document/katedocument.cpp:2295
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2298 document/katedocument.cpp:6547
+#: document/katedocument.cpp:2299 document/katedocument.cpp:6548
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2299 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2300 document/katedocument.cpp:6549
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr ""
 
-#: document/katedocument.cpp:2310
+#: document/katedocument.cpp:2311
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -2296,7 +2296,7 @@ msgstr ""
 "\n"
 "Gaktu úr skugga um að þú hafir lesheimildir í hana."
 
-#: document/katedocument.cpp:2434
+#: document/katedocument.cpp:2435
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with UTF-8 encoding but contained invalid "
@@ -2314,7 +2314,7 @@ msgstr ""
 "Annaðhvort þarf að enduropna skrána með réttri kóðun, eða virkja les-skrif "
 "haminn í valmyndinni til að geta breytt skránni."
 
-#: document/katedocument.cpp:2446
+#: document/katedocument.cpp:2447
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with UTF-8 encoding but contained invalid "
@@ -2332,7 +2332,7 @@ msgstr ""
 "Annaðhvort þarf að enduropna skrána með réttri kóðun, eða virkja les-skrif "
 "haminn í valmyndinni til að geta breytt skránni."
 
-#: document/katedocument.cpp:2459
+#: document/katedocument.cpp:2460
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2341,17 +2341,17 @@ msgid ""
 "only mode, as saving will modify its content."
 msgstr ""
 
-#: document/katedocument.cpp:2466
+#: document/katedocument.cpp:2467
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2469
+#: document/katedocument.cpp:2470
 #, kde-format
 msgid "Close"
 msgstr ""
 
-#: document/katedocument.cpp:2476
+#: document/katedocument.cpp:2477
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2360,7 +2360,7 @@ msgid ""
 "only mode, as saving will modify its content."
 msgstr ""
 
-#: document/katedocument.cpp:2503
+#: document/katedocument.cpp:2504
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2369,18 +2369,18 @@ msgstr ""
 "Viltu í alvöru vista þessa óbreyttu skrá? Þú gætir yfirskrifað breytt gögn í "
 "skránni á diski."
 
-#: document/katedocument.cpp:2504
+#: document/katedocument.cpp:2505
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Reyni að vista óbreytta skrá"
 
-#: document/katedocument.cpp:2505 document/katedocument.cpp:2516
-#: document/katedocument.cpp:2532
+#: document/katedocument.cpp:2506 document/katedocument.cpp:2517
+#: document/katedocument.cpp:2533
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Vista eftir sem áður"
 
-#: document/katedocument.cpp:2514
+#: document/katedocument.cpp:2515
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2389,14 +2389,14 @@ msgstr ""
 "Viltu í alvöru vista þessa skrá? Bæði skráin sem þú ert að vinna með og "
 "skráin á diski hafa breyst. Gögn gætu tapast."
 
-#: document/katedocument.cpp:2515 document/katedocument.cpp:2531
-#: document/katedocument.cpp:2823 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2516 document/katedocument.cpp:2532
+#: document/katedocument.cpp:2824 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Mögulegt tap af gögnum"
 
-#: document/katedocument.cpp:2529
+#: document/katedocument.cpp:2530
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2408,7 +2408,7 @@ msgstr ""
 "Valda stafataflan getur ekki sýnt alla stafina í skránni. Viltu virkilega "
 "vista hana? Gögn gætu tapast."
 
-#: document/katedocument.cpp:2574
+#: document/katedocument.cpp:2575
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2427,7 +2427,7 @@ msgstr ""
 "Gakktu úr skugga um að þú hafir skrifréttindi í skrána og að nægjanlegt "
 "diskrými sé til staðar."
 
-#: document/katedocument.cpp:2695
+#: document/katedocument.cpp:2696
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2440,50 +2440,50 @@ msgstr ""
 "ástæður gætu verið til dæmis að miðillinn sem skrifa á inná væri fullur, eða "
 "að mappan sem skráin er í sé aðeins lesanleg fyrir þig."
 
-#: document/katedocument.cpp:2699
+#: document/katedocument.cpp:2700
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Gat ekki búið til afrit."
 
-#: document/katedocument.cpp:2700
+#: document/katedocument.cpp:2701
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Reyna vista eftir sem áður"
 
-#: document/katedocument.cpp:2822
+#: document/katedocument.cpp:2823
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Viltu virkilega loka þessari skrá? Gagnatap er mögulegt."
 
-#: document/katedocument.cpp:2824
+#: document/katedocument.cpp:2825
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Loka"
 
-#: document/katedocument.cpp:4634
+#: document/katedocument.cpp:4635
 #, kde-format
 msgid "Untitled"
 msgstr "Nafnlaust"
 
-#: document/katedocument.cpp:4757 document/katedocument.cpp:4985
-#: document/katedocument.cpp:4995 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:4758 document/katedocument.cpp:4986
+#: document/katedocument.cpp:4996 document/katedocument.cpp:5763
+#: document/katedocument.cpp:5953
 #, kde-format
 msgid "Save File"
 msgstr "Vista skrá"
 
-#: document/katedocument.cpp:4760
+#: document/katedocument.cpp:4761
 #, kde-format
 msgid "Save failed"
 msgstr "Vistun mistókst"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5007
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Vista skrá"
 
-#: document/katedocument.cpp:5018
+#: document/katedocument.cpp:5019
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2496,7 +2496,7 @@ msgstr ""
 "Gakktu úr skugga um að þú hafir skrifréttindi í skrána og að nægjanlegt "
 "diskrými sé til staðar."
 
-#: document/katedocument.cpp:5294
+#: document/katedocument.cpp:5295
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2505,7 +2505,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5300
+#: document/katedocument.cpp:5301
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2514,25 +2514,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5610
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Skránni '%1' hefur verið breytt af öðru forriti."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Skráin '%1' var búin til af öðru forriti."
 
-#: document/katedocument.cpp:5615
+#: document/katedocument.cpp:5616
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Skránni '%1' var eytt af öðru forriti."
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5938
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2541,17 +2541,17 @@ msgstr ""
 "Skjalinu \"%1\" hefur verið breytt.\n"
 "Viltu vista það eða henda breytingunum?"
 
-#: document/katedocument.cpp:5940
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid "Close Document"
 msgstr "Loka skjali"
 
-#: document/katedocument.cpp:6051
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6056
+#: document/katedocument.cpp:6057
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
