@@ -8,7 +8,56 @@
 #ifndef KATE_DOCUMENT_TEST_H
 #define KATE_DOCUMENT_TEST_H
 
-#include <QObject>
+#include <QTest>
+
+#include <ktexteditor/movingrange.h>
+
+class MovingRangeInvalidator : public QObject
+{
+    Q_OBJECT
+public:
+    explicit MovingRangeInvalidator(QObject *parent = nullptr)
+        : QObject(parent)
+    {
+    }
+
+    void addRange(KTextEditor::MovingRange *range)
+    {
+        m_ranges << range;
+    }
+    QList<KTextEditor::MovingRange *> ranges() const
+    {
+        return m_ranges;
+    }
+
+public Q_SLOTS:
+    void aboutToInvalidateMovingInterfaceContent()
+    {
+        qDeleteAll(m_ranges);
+        m_ranges.clear();
+    }
+
+private:
+    QList<KTextEditor::MovingRange *> m_ranges;
+};
+
+/**
+ * Provides slots to check data sent in specific signals. Slot names are derived from corresponding test names.
+ */
+class SignalHandler : public QObject
+{
+    Q_OBJECT
+public Q_SLOTS:
+    void slotMultipleLinesRemoved(KTextEditor::Document *, const KTextEditor::Range &, const QString &oldText)
+    {
+        QCOMPARE(oldText, QStringLiteral("line2\nline3\n"));
+    }
+
+    void slotNewlineInserted(KTextEditor::Document *, const KTextEditor::Range &range)
+    {
+        QCOMPARE(range, KTextEditor::Range(KTextEditor::Cursor(1, 4), KTextEditor::Cursor(2, 0)));
+    }
+};
 
 class KateDocumentTest : public QObject
 {

@@ -12,12 +12,10 @@
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
-#include <ktexteditor/movingcursor.h>
 
 #include <QRegularExpression>
 #include <QSignalSpy>
 #include <QTemporaryFile>
-#include <QTest>
 
 #include <stdio.h>
 
@@ -36,35 +34,6 @@
 using namespace KTextEditor;
 
 QTEST_MAIN(KateDocumentTest)
-
-class MovingRangeInvalidator : public QObject
-{
-    Q_OBJECT
-public:
-    explicit MovingRangeInvalidator(QObject *parent = nullptr)
-        : QObject(parent)
-    {
-    }
-
-    void addRange(MovingRange *range)
-    {
-        m_ranges << range;
-    }
-    QList<MovingRange *> ranges() const
-    {
-        return m_ranges;
-    }
-
-public Q_SLOTS:
-    void aboutToInvalidateMovingInterfaceContent()
-    {
-        qDeleteAll(m_ranges);
-        m_ranges.clear();
-    }
-
-private:
-    QList<MovingRange *> m_ranges;
-};
 
 KateDocumentTest::KateDocumentTest()
     : QObject()
@@ -448,24 +417,6 @@ void KateDocumentTest::testReplaceTabs()
     doc.paste(view, QStringLiteral("some\ncode\n  3\nhi"));
     QCOMPARE(doc.text(), QStringLiteral("some\ncode\n3\nhi  Hi!"));
 }
-
-/**
- * Provides slots to check data sent in specific signals. Slot names are derived from corresponding test names.
- */
-class SignalHandler : public QObject
-{
-    Q_OBJECT
-public Q_SLOTS:
-    void slotMultipleLinesRemoved(KTextEditor::Document *, const KTextEditor::Range &, const QString &oldText)
-    {
-        QCOMPARE(oldText, QStringLiteral("line2\nline3\n"));
-    }
-
-    void slotNewlineInserted(KTextEditor::Document *, const KTextEditor::Range &range)
-    {
-        QCOMPARE(range, Range(Cursor(1, 4), Cursor(2, 0)));
-    }
-};
 
 void KateDocumentTest::testRemoveMultipleLines()
 {
@@ -948,5 +899,3 @@ void KateDocumentTest::testInsertTextTooLargeColumn()
     doc.insertText(KTextEditor::Cursor(0, 10), QStringLiteral("\nxxxx"));
     QCOMPARE(doc.text(), QStringLiteral("01234567  \nxxxx\n01234567"));
 }
-
-#include "katedocument_test.moc"
