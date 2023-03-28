@@ -6,6 +6,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include "kateview.h"
 #include <document/katedocument.h>
 #include <inputmode/kateviinputmode.h>
 

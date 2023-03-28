@@ -25,6 +25,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katerenderer.h"
+#include "kateview.h"
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"
 #include "lastchangerecorder.h"

@@ -8,29 +8,7 @@
 // BEGIN Includes
 #include "scripting_test.h"
 
-#include "katecmd.h"
-#include "kateconfig.h"
-#include "katedocument.h"
-#include "kateglobal.h"
-#include "kateview.h"
-#include <KTextEditor/Command>
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kio/job.h>
-
-#include <QDir>
-#include <QEvent>
-#include <QFile>
-#include <QFileInfo>
-#include <QList>
-#include <QString>
-#include <QTextStream>
-#include <QTimer>
-
 #include <QTest>
-
-#include "testutils.h"
 
 QTEST_MAIN(ScriptingTest)
 

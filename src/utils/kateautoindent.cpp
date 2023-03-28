@@ -20,7 +20,6 @@
 #include "kateindentscript.h"
 #include "katepartdebug.h"
 #include "katescriptmanager.h"
-#include "kateview.h"
 
 #include <KLocalizedString>
 

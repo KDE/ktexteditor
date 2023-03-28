@@ -11,7 +11,6 @@
 #include "katemodemanager.h"
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
-#include "kateview.h"
 
 #include <QAbstractItemView>
 #include <QApplication>

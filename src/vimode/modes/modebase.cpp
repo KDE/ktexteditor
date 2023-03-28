@@ -12,6 +12,7 @@
 #include "kateglobal.h"
 #include "katelayoutcache.h"
 #include "katerenderer.h"
+#include "kateview.h"
 #include "kateviewinternal.h"
 #include "kateviinputmode.h"
 #include "ktexteditor/message.h"

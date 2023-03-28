@@ -14,7 +14,6 @@
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "katescript.h"
-#include "kateview.h"
 #include "scriptcursor.h"
 #include "scriptrange.h"
 

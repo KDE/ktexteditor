@@ -12,7 +12,6 @@
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "katesyntaxmanager.h"
-#include "kateview.h"
 
 #include <QActionGroup>
 #include <QMenu>
