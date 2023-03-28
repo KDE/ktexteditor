@@ -644,6 +644,8 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
 
 void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
 {
+    const bool rtl = layout->isRightToLeft();
+
     for (const auto &sel : selRanges) {
         const int s = sel.start;
         const int e = sel.start + sel.length;
@@ -674,11 +676,23 @@ void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, 
             for (int l = startViewLine; l <= endViewLine; ++l) {
                 auto kateLayout = layout->viewLine(l);
                 int sx = 0;
-                int width = kateLayout.lineLayout().naturalTextWidth();
+                int width = rtl ? kateLayout.lineLayout().width() : kateLayout.lineLayout().naturalTextWidth();
+
                 if (l == startViewLine) {
-                    sx = kateLayout.lineLayout().cursorToX(s);
+                    if (rtl) {
+                        // For rtl, Rect starts at 0 and ends at selection start
+                        sx = 0;
+                        width = kateLayout.lineLayout().cursorToX(s);
+                    } else {
+                        sx = kateLayout.lineLayout().cursorToX(s);
+                    }
                 } else if (l == endViewLine) {
-                    width = kateLayout.lineLayout().cursorToX(e);
+                    if (rtl) {
+                        // Drawing will start at selection end, and end at the view border
+                        sx = kateLayout.lineLayout().cursorToX(e);
+                    } else {
+                        width = kateLayout.lineLayout().cursorToX(e);
+                    }
                 }
 
                 const int y = l * lineHeight();
