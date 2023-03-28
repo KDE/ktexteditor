@@ -111,11 +111,16 @@ bool KateScript::load()
     m_engine = new QJSEngine();
 
     // export read & require function and add the require guard object
-    QJSValue functions = m_engine->newQObject(new Kate::ScriptHelper(m_engine));
+    auto scriptHelper = new Kate::ScriptHelper(m_engine);
+    QJSValue functions = m_engine->newQObject(scriptHelper);
     m_engine->globalObject().setProperty(QStringLiteral("functions"), functions);
     m_engine->globalObject().setProperty(QStringLiteral("read"), functions.property(QStringLiteral("read")));
     m_engine->globalObject().setProperty(QStringLiteral("require"), functions.property(QStringLiteral("require")));
     m_engine->globalObject().setProperty(QStringLiteral("require_guard"), m_engine->newObject());
+
+    // View and Document expose JS Range objects in the API, which will fail to work
+    // if Range is not included. range.js includes cursor.js
+    scriptHelper->require(QStringLiteral("range.js"));
 
     // export debug function
     m_engine->globalObject().setProperty(QStringLiteral("debug"), functions.property(QStringLiteral("debug")));
