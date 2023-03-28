@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-27 03:31+0000\n"
-"PO-Revision-Date: 2023-03-24 17:28+0300\n"
+"PO-Revision-Date: 2023-03-27 20:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -950,7 +950,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:215
 #, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr "&Baştaki boşlukta Geri sil düğmesi girintiyi azaltır"
+msgstr "&Baştaki boşlukta Geri Sil düğmesi girintiyi azaltır"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
@@ -7556,7 +7556,7 @@ msgstr "Sonraki Karakteri Sil"
 #: view/kateview.cpp:1222
 #, kde-format
 msgid "Backspace"
-msgstr "Backspace"
+msgstr "Geri Sil"
 
 #: view/kateview.cpp:1230
 #, kde-format
