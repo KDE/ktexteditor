@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2496,42 +2496,42 @@ msgstr "LISAMINE"
 msgid "Normal Mode"
 msgstr "Tavarežiim"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: LISAMISREŽIIM"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: TAVAREŽIIM"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: VISUAALNE"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: VISUAALNE PLOKK"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: VISUAALNE RIDA"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: ASENDAMINE"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr "vi-režiim"
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, kde-format
 msgid "recording"
 msgstr "salvestamine"
@@ -2583,13 +2583,13 @@ msgstr "MIME tüüpide valimine"
 msgid "Modes && Filetypes"
 msgstr "Režiimid ja failitüübid"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Otsing ..."
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2599,13 +2599,13 @@ msgstr ""
 "Süntaksi esiletõstmise režiimi otsimine keele nime või faililaiendi järgi "
 "(nt. C++ või .cpp)"
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Otsingule ei leitud vasteid"
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2614,7 +2614,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Parim vaste"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3610,7 +3610,7 @@ msgstr ""
 "Kõigi JavaScripti failide (taandetekitajad, käsureaskriptid jms.) "
 "taaslaadimine."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Käsku ei leitud: %1"
@@ -5129,13 +5129,13 @@ msgstr "Värvid"
 msgid "Color Themes"
 msgstr "Värvid"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Puudub"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -8327,7 +8327,7 @@ msgstr "Märk määratud: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Järgmisele järjehoidjale pole enam sümboleid."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

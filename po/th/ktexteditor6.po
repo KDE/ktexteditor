@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
 "PO-Revision-Date: 2010-12-31 22:34+0700\n"
 "Last-Translator: Phuwanat Sakornsakolpat <narachai@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2497,42 +2497,42 @@ msgstr ""
 msgid "Normal Mode"
 msgstr "ข้อความปกติ"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: โหมดแทรก"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: โหมดปกติ"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: แทนที่"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, fuzzy, kde-format
 #| msgid "E&ncoding"
 msgid "recording"
@@ -2584,14 +2584,14 @@ msgstr "เลือกประเภท Mime ของแฟ้ม"
 msgid "Modes && Filetypes"
 msgstr "โหมดและประเภทของแฟ้ม"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "โหมดการค้นหา"
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2599,13 +2599,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -2615,7 +2615,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "ตรงกันมากที่สุด"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -3587,7 +3587,7 @@ msgstr "ผิดพลาดในการโหลดสคริปต์ %1
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "ไม่พบคำสั่ง: %1"
@@ -5127,13 +5127,13 @@ msgstr "สี"
 msgid "Color Themes"
 msgstr "สี"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "ไม่มี"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -8221,7 +8221,7 @@ msgstr "ยังไม่ได้ทำเครื่องหมาย: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "ไปยังคั่นหน้าถัดไป"
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

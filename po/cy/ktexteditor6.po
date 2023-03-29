@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
 "PO-Revision-Date: 2003-11-12 14:22+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -2295,42 +2295,42 @@ msgstr ""
 msgid "Normal Mode"
 msgstr "Testun Arferol"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, fuzzy, kde-format
 #| msgid "E&ncoding"
 msgid "recording"
@@ -2381,14 +2381,14 @@ msgstr ""
 msgid "Modes && Filetypes"
 msgstr "Fformat Ffeil"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, fuzzy, kde-format
 #| msgid "I-Search:"
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Chwilio Cynyddol:"
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2396,13 +2396,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Previous Incremental Search Match"
 msgctxt ""
@@ -2412,7 +2412,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Cydweddiad Cynt o'r Chwiliad Cynyddol"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, fuzzy, kde-format
 #| msgid "Previous Incremental Search Match"
 msgctxt ""
@@ -3337,7 +3337,7 @@ msgstr ""
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr ""
@@ -4811,14 +4811,14 @@ msgstr "Lliwiau"
 msgid "Color Themes"
 msgstr "Lliwiau"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, fuzzy, kde-format
 #| msgid "None"
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Dim"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, fuzzy, kde-format
 #| msgid "Normal"
 msgctxt "Autoindent mode"
@@ -7803,7 +7803,7 @@ msgstr "Llinell: %1 "
 msgid "There are no more chars for the next bookmark."
 msgstr ""
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

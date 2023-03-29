@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -2575,42 +2575,42 @@ msgstr "IEVIETOT"
 msgid "Normal Mode"
 msgstr "Normālais režīms"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: IEVIETOŠANAS REŽĪMS"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: NORMĀLS REŽĪMS"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: VIZUĀLS"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: VIZUĀLS BLOKS"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: VIZUĀLS RINDA"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: AIZVIETOT"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, kde-format
 msgid "recording"
 msgstr "ierakstīšana"
@@ -2661,14 +2661,14 @@ msgstr "Izvēlieties mime tipus"
 msgid "Modes && Filetypes"
 msgstr "Režīmi un datņu tipi"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Meklēšanas režīms"
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2676,13 +2676,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -2692,7 +2692,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Labākā atbilstība"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -3688,7 +3688,7 @@ msgstr ""
 "Pārlādēt visas JavaScript datnes (atkāpju veidotājus, komandrindas skriptus, "
 "utt.)."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Nav atrasta komanda: %1"
@@ -5175,13 +5175,13 @@ msgstr "Krāsas"
 msgid "Color Themes"
 msgstr "Krāsas"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Nav"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -8400,7 +8400,7 @@ msgstr "Marķējums iestatīts: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Iet uz nākamo grāmatzīmi."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2421,42 +2421,42 @@ msgstr "삽입"
 msgid "Normal Mode"
 msgstr "일반 모드"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: 삽입 모드"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: 일반 모드"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: 비주얼"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: 비주얼 블록"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: 비주얼 라인"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: 수정"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr "vi-모드"
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, kde-format
 msgid "recording"
 msgstr "기록 중"
@@ -2507,13 +2507,13 @@ msgstr "MIME 형식 선택"
 msgid "Modes && Filetypes"
 msgstr "모드와 파일 형식"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "검색..."
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2522,13 +2522,13 @@ msgid ""
 msgstr ""
 "언어 이름이나 파일 확장자(예: C++ 또는 .cpp)로 구문 강조 모드를 검색합니다."
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "검색과 일치하는 항목 없음"
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2537,7 +2537,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "가장 좋은 일치"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3521,7 +3521,7 @@ msgstr "스크립트 %1 불러오는 중 오류 발생"
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "모든 자바스크립트 파일 새로 고침 (인덴터, 명령행 스크립트, 기타)."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "명령을 찾을 수 없음: %1"
@@ -4998,13 +4998,13 @@ msgstr "테마 복사"
 msgid "Color Themes"
 msgstr "색 테마"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "없음"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -8120,7 +8120,7 @@ msgstr "표시 설정됨: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "다음 책갈피에 더 이상 글자가 없습니다."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

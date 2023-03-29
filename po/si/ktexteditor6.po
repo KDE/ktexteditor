@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -2543,42 +2543,42 @@ msgstr ""
 msgid "Normal Mode"
 msgstr "සාමාන්‍යය ආකාරය"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: ඇතුළු කිරීමේ ආකාරය"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: සාමාන්‍යය ආකාරය"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: දෘශ්‍ය"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: දෘශ්‍ය කට්ටය"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: දෘශ්‍ය රේඛාව"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: ප්‍රතිස්ථාපනය කරන්න"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr ""
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, fuzzy, kde-format
 #| msgid "E&ncoding"
 msgid "recording"
@@ -2630,14 +2630,14 @@ msgstr "Mime වර්ග තෝරන්න"
 msgid "Modes && Filetypes"
 msgstr "ආකාර ගොනු වර්ග"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "සෙවුම් ආකාරය"
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2645,13 +2645,13 @@ msgid ""
 "example, C++ or .cpp)"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr ""
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -2661,7 +2661,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "හොඳම ගැළපුම්"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, fuzzy, kde-format
 #| msgid "Best matches"
 msgctxt ""
@@ -3665,7 +3665,7 @@ msgstr "%1 සක්‍රිප්ටය ප්‍රවේශ කිරීම�
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "සියළු JavaScript ගොනු නැවත ප්‍රවේශ කරන්න (අනුච්ඡේදක, විධාන රේඛා සක්‍රිප්ට් ආදිය)."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "විධානය සොයාගත නොහැකි විය: %1"
@@ -5228,13 +5228,13 @@ msgstr "වර්ණ"
 msgid "Color Themes"
 msgstr "වර්ණ"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "කිසිවක් නැත"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -8308,7 +8308,7 @@ msgstr "නොයෙදූ ලකුණ: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "ඊළඟ පිටු සළකුණට යන්න."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

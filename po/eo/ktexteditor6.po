@@ -1,4 +1,4 @@
-# translation of ktexteditor5.pot to Esperanto
+# translation of ktexteditor6.pot to Esperanto
 # Copyright (C) 2003, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the ktexteditor package.
 # Heiko Evermann <heiko@evermann.de>, 2003.
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
-"PO-Revision-Date: 2023-02-05 22:48+0100\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
+"PO-Revision-Date: 2023-03-29 00:12+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
 msgid "Argument-hints"
-msgstr ""
+msgstr "Argument-sugestoj"
 
 #: completion/katecompletionmodel.cpp:134
 #, kde-format
@@ -35,17 +35,17 @@ msgstr "Plej taŭgaj kongruaĵoj"
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
 msgid "Language keywords"
-msgstr ""
+msgstr "Lingvaj ŝlosilvortoj"
 
 #: completion/katewordcompletion.cpp:73
 #, kde-format
 msgid "Auto Word Completion"
-msgstr ""
+msgstr "Aŭtomata Vortkompletigo"
 
 #: completion/katewordcompletion.cpp:276
 #, kde-format
 msgid "Shell Completion"
-msgstr ""
+msgstr "Ŝela Kompletigo"
 
 #: completion/katewordcompletion.cpp:282
 #, kde-format
@@ -67,7 +67,7 @@ msgstr "&Dosiero"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Presi/Eksporti"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -79,19 +79,19 @@ msgstr "&Redakti"
 #: data/katepart5ui.rc:34
 #, kde-format
 msgid "Find Variants"
-msgstr ""
+msgstr "Trovi Variaĵojn"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
 #, kde-format
 msgid "Selection"
-msgstr ""
+msgstr "Elekto"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
 #, kde-format
 msgid "Capitalization"
-msgstr ""
+msgstr "Majuskligo"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -103,7 +103,7 @@ msgstr "&Montri"
 #: data/katepart5ui.rc:74
 #, kde-format
 msgid "Word Wrap"
-msgstr ""
+msgstr "Vortvolvado"
 
 #. i18n: ectx: Menu (view_menu_borders)
 #: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
@@ -121,7 +121,7 @@ msgstr "&Kodfaldado"
 #: data/katepart5ui.rc:104
 #, kde-format
 msgid "&Go"
-msgstr ""
+msgstr "I&ri"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:119
@@ -158,7 +158,7 @@ msgstr "Ĉefa ilobreto"
 #: dialogs/bordersappearanceconfigwidget.ui:25
 #, kde-format
 msgid "Code block folding:"
-msgstr ""
+msgstr "Kodbloka faldado:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -172,7 +172,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Montri sagojn por malvastigi kodblokojn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -181,18 +181,20 @@ msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
+"Se markite, ŝvebi super faldita regiono montras antaŭrigardon de la faldita "
+"teksto en ŝprucfenestro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr ""
+msgstr "Montri antaŭrigardon de falditaj blokoj dum ŝvebado"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
 #, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "Maldekstra flanko:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -212,7 +214,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:131
 #, kde-format
 msgid "Show marks"
-msgstr ""
+msgstr "Montri markojn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:85
@@ -244,13 +246,13 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:98
 #, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr ""
+msgstr "Emfazi ŝanĝitajn kaj nekonservitajn liniojn"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
 #, kde-format
 msgid "Scrollbars"
-msgstr ""
+msgstr "Rulumbretoj"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -270,18 +272,20 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
+"<p>Se ĉi tiu opcio estas markita, ŝvebi super la vertikala rulumbreto "
+"montros antaŭrigardon de la teksto.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr ""
+msgstr "Montri antaŭrigardon kiam ŝvebanta super rulumbreto"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
 #, kde-format
 msgid "Minimap:"
-msgstr ""
+msgstr "Minimapo:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -290,12 +294,14 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
+"Se ĉi tiu opcio estas markita, ĉiu nova vido montros minimapon sur la "
+"vertikala rulumbreto."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
 #, kde-format
 msgid "Show minimap"
-msgstr ""
+msgstr "Montri minimapon"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -311,13 +317,13 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:187
 #, kde-format
 msgid "Map the whole document"
-msgstr ""
+msgstr "Mapu la tutan dokumenton"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:213
 #, kde-format
 msgid "Minim&ap width:"
-msgstr ""
+msgstr "Larĝeco de minim&apo:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
@@ -329,19 +335,19 @@ msgstr "Ĉiam"
 #: dialogs/bordersappearanceconfigwidget.ui:229
 #, kde-format
 msgid "Show When Needed"
-msgstr ""
+msgstr "Montri Kiam Bezonata"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:234
 #, kde-format
 msgid "Always Off"
-msgstr ""
+msgstr "Ĉiam Malŝaltita"
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:242
 #, kde-format
 msgid "Scro&llbars visibility:"
-msgstr ""
+msgstr "Videb&leco de rulumbretoj:"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByCreation)
 #: dialogs/bordersappearanceconfigwidget.ui:252
@@ -357,7 +363,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "Laŭ dato kreita"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -370,41 +376,41 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:265
 #, kde-format
 msgid "By line number"
-msgstr ""
+msgstr "Laŭ linionumero"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
 #, kde-format
 msgid "Sort bookmarks menu:"
-msgstr ""
+msgstr "Ordigi legosignan menuon:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
 #, kde-format
 msgid "Folding arrows visibility:"
-msgstr ""
+msgstr "Videbleco de faldaĵosagoj:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
 #, kde-format
 msgid "Show on Hover"
-msgstr ""
+msgstr "Montri dum Ŝvebado"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
 #, kde-format
 msgid "Show Always"
-msgstr ""
+msgstr "Montri Ĉiam"
 
 #: dialogs/clipboardhistorydialog.cpp:261
 #, kde-format
 msgid "Select text to paste."
-msgstr ""
+msgstr "Elektu tekston por alglui."
 
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Neniuj enskriboj en la historio de la tondujo"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -419,43 +425,43 @@ msgstr "Ĝenerala"
 #: dialogs/completionconfigtab.ui:35
 #, kde-format
 msgid "Enable &auto completion"
-msgstr ""
+msgstr "Ebligi &aŭtomatan kompletigon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr ""
+msgstr "Aŭtomate elekti &unuan kompletigaĵon"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Tracickli la liston de kompletigoj uzante Tab / Shift+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "A&uto word completion"
-msgstr ""
+msgstr "Aŭ&tomata vortkompletigo"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
 #, kde-format
 msgid "Minimal word length to complete:"
-msgstr ""
+msgstr "Minimuma vortlongo por kompletigi:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:98
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
-msgstr ""
+msgstr "Forigi voston de antaŭa vorto kiam kompletigo ero elektita el listo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail on complete"
-msgstr ""
+msgstr "Forigi la voston komplete"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
@@ -463,12 +469,14 @@ msgstr ""
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
+"Vortkompletigo provizas sugestojn bazitajn sur la vortoj trovitaj en la "
+"dokumento"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid "&Keyword completion"
-msgstr ""
+msgstr "&Ŝlosilvortkompletigo"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/completionconfigtab.ui:130
@@ -477,12 +485,14 @@ msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
 "the document's language."
 msgstr ""
+"Ŝlosilvorto kompletigo disponigas sugestojn bazitajn sur la ŝlosilvortoj "
+"kiuj ekzistas en la lingvo de la dokumento."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid "Documentation with completion"
-msgstr ""
+msgstr "Dokumentado kun kompletigo"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -491,12 +501,14 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Montru dokumentadon apud kompletiga skatolo. Se malebligita, dokumentaro "
+"povas esti montrita premante Alt-klavon."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
 #, kde-format
 msgid "Word wrap:"
-msgstr ""
+msgstr "Vortvolvaĵo:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -520,7 +532,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "Envolvi &vortojn ĉe fiksa kolumno"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -529,18 +541,20 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
+"<p>Se ĉi tiu opcio estas markita, vertikala linio estos desegnita ĉe la "
+"vortvolva kolumno kiel difinita en la <strong>Redaktado</strong> ecoj.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr ""
+msgstr "&Desegnu vertikalan linion ĉe la vortvolva kolumno"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
 #, kde-format
 msgid "Wra&p words at:"
-msgstr ""
+msgstr "Envolvi vortojn ĉe:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -556,19 +570,19 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:91
 #, kde-format
 msgid "Default input mode:"
-msgstr ""
+msgstr "Defaŭlta eniga reĝimo:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:117
 #, kde-format
 msgid "Brackets:"
-msgstr ""
+msgstr "Krampoj:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Aŭtomate fermu krampojn kiam malferma krampo estas tajpita"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:137
@@ -577,48 +591,51 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
+"Kiam iu teksto estas elektita, ĉi tiuj signoj estos aldonitaj ambaŭflanke "
+"laŭ maniero kiel \"Aŭtomata krampo\"."
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
 #, kde-format
 msgid "Enclosing characters:"
-msgstr ""
+msgstr "Enkondukaj signoj:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
 #, kde-format
 msgid "Copy and paste:"
-msgstr ""
+msgstr "Kopiu kaj algluu:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
 #, kde-format
 msgid "Move selected text when dragged"
-msgstr ""
+msgstr "Movu elektitan tekston kiam trenite"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr ""
+msgstr "Kopiu/tranĉu la nunan linion se alvokite sen ia teksto elektita"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:181
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Ne movu la tekstan kursoron dum algluado per muso"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
 #, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr ""
+msgstr "Maksimumaj Historiaj Enskriboj de Tondujo:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
+"Ĉi tio determinas la nombron da enskriboj konservitaj en la tondujohistorio"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -627,6 +644,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Kiam vi tajpas ĉi tiujn signojn dum teksto estas elektita, ili ĉirkaŭos la "
+"elektitan tekston anstataŭ anstataŭigi ĝin."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -710,6 +729,10 @@ msgid ""
 "set, such as highlight, indent-mode, encoding, etc.</p><p>For a full list of "
 "known variables, see the manual.</p>"
 msgstr ""
+"<p>Ĉi tiu ĉeno permesas agordi la agordojn de Kate por la dosieroj elektitaj "
+"de ĉi tiu mimetipo uzante Kate-variablojn. Preskaŭ ajna agorda opcio povas "
+"esti agordita, kiel reliefigo, deŝov-reĝimo, kodado, ktp.</p><p>Por kompleta "
+"listo de konataj variabloj, vidu la manlibron.</p>"
 
 #. i18n: ectx: property (text), widget (QLabel, lblHl)
 #: dialogs/filetypeconfigwidget.ui:123
@@ -721,7 +744,7 @@ msgstr "&Emfazado:"
 #: dialogs/filetypeconfigwidget.ui:136
 #, kde-format
 msgid "&Indentation mode:"
-msgstr ""
+msgstr "Deŝova reĝ&imo:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExtensions)
 #: dialogs/filetypeconfigwidget.ui:149
@@ -737,6 +760,9 @@ msgid ""
 "an asterisk and the file extension, for example <code>*.txt; *.text</code>. "
 "The string is a semicolon-separated list of masks."
 msgstr ""
+"La masko de ĵokeroj permesas elekti dosierojn laŭ dosiernomo. Tipa masko "
+"uzas steleton kaj la etendon de dosiero, ekzemple <code>*.txt; *.teksto</"
+"code>. La ĉeno estas punktokomo-disigita listo de maskoj."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:166
@@ -793,12 +819,15 @@ msgid ""
 "to set the indentation mode with document variables, modes or a .kateconfig "
 "file."
 msgstr ""
+"Ĉi tio estas listo de disponeblaj indentreĝimoj. La specifita deŝovreĝimo "
+"estos uzata por ĉiuj novaj dokumentoj. Konsciu, ke ankaŭ eblas agordi la "
+"deŝovreĝimon per dokumentvariabloj, reĝimoj aŭ .kateconfig dosiero."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbIndentationMode)
 #: dialogs/indentationconfigwidget.ui:75
 #, kde-format
 msgid "Indent using"
-msgstr ""
+msgstr "Deŝovi uzante"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbIndentWidth)
 #: dialogs/indentationconfigwidget.ui:81
@@ -809,18 +838,22 @@ msgid ""
 "section <b>Editing</b> is disabled, a <b>Tab</b> character is inserted if "
 "the indentation is divisible by the tab width."
 msgstr ""
+"La deŝovlarĝo estas la nombro da spacoj, kiu estas uzata por deŝovi linion. "
+"Se la opcio <b>Enmeti spacojn anstataŭ tabelilojn</b> en la sekcio "
+"<b>Redaktado</b> estas malŝaltita, signo <b>Tab</b> estas enmetita se la "
+"deŝovo estas dividebla per la tabula larĝo ."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithSpaces)
 #: dialogs/indentationconfigwidget.ui:97
 #, kde-format
 msgid "&Spaces"
-msgstr ""
+msgstr "&Spacoj"
 
 #. i18n: ectx: property (text), widget (QLabel, lblIndentWidth)
 #: dialogs/indentationconfigwidget.ui:104
 #, kde-format
 msgid "&Indentation width:"
-msgstr ""
+msgstr "&Deŝova larĝo:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblTabWidth)
 #: dialogs/indentationconfigwidget.ui:114
@@ -832,19 +865,19 @@ msgstr "Ta&ba larĝeco:"
 #: dialogs/indentationconfigwidget.ui:153
 #, kde-format
 msgid "&Tabulators"
-msgstr ""
+msgstr "&Tabeliloj"
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentMixed)
 #: dialogs/indentationconfigwidget.ui:160
 #, kde-format
 msgid "Tabulators &and Spaces"
-msgstr ""
+msgstr "Tabeliloj k&aj Spacoj"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
 #, kde-format
 msgid "Automatically detect file indentation"
-msgstr ""
+msgstr "Aŭtomate detekti dosieran deŝovon"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -859,12 +892,14 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
+"Se ĉi tiu opcio estas malŝaltita, ŝanĝi la deŝovnivelon vicigas linion al "
+"oblo de la larĝo specifita en <b>Indentlarĝo</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
 #, kde-format
 msgid "&Keep extra spaces"
-msgstr ""
+msgstr "&Konservi kromajn spacojn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:193
@@ -873,12 +908,14 @@ msgid ""
 "If this option is selected, pasted code from the clipboard is indented. "
 "Triggering the <b>undo</b>-action removes the indentation."
 msgstr ""
+"Se ĉi tiu opcio estas elektita, algluita kodo el la tondujo estas deŝovita. "
+"Ekfunkciigi la <b>malfari</b>-ago forigas la deŝovaĵon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr ""
+msgstr "Alĝustigi deŝovon de kodo algluita el la tondujo"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -894,12 +931,14 @@ msgid ""
 "indentation level if the cursor is located in the leading blank space of a "
 "line."
 msgstr ""
+"Se ĉi tiu opcio estas elektita, la klavo <b>Retropaŝo</b> malpliigas la "
+"deŝovnivelon se la kursoro troviĝas en la ĉefa malplena spaco de linio."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
 #, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr ""
+msgstr "&Retrospacklavo en gvidaj malplenaj malstrekoj"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
@@ -914,6 +953,14 @@ msgid ""
 "<b>Tab</b> a shortcut to the action <b>Format Indentation</b>."
 "\"><span>More ...</span></a></p></body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body>\n"
+"<p>Tab klavo ago (se neniu elekto ekzistas) <a href=\"Se vi volas ke <b>Tab</"
+"b> vicigu la nunan linion en la nuna kodbloko kiel en Emakso, faru <b>Tab</"
+"b> ŝparvojo al la ago <b>Formati Deŝovon</b>.\"><span>Pli...</span></a ></"
+"p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -924,12 +971,16 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
+"Se ĉi tiu opcio estas elektita, la klavo <b>Tab</b> ĉiam enmetas blankan "
+"spacon tiel ke la sekva tab-pozicio estas atingita. Se la opcio <b>Enmeti "
+"spacojn anstataŭ tabeligilojn</b> en la sekcio <b>Redaktado</b> estas "
+"ebligita, spacoj estas enmetitaj; alie, unuopa tabelilo estas enmetita."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:279
 #, kde-format
 msgid "Always advance to the &next tab position"
-msgstr ""
+msgstr "Ĉiam antaŭeniru al la &sekva langeta pozicio"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:286
@@ -939,12 +990,14 @@ msgid ""
 "line by the number of character positions specified in <b>Indentation width</"
 "b>."
 msgstr ""
+"Se ĉi tiu opcio estas elektita, la klavo <b>Tab</b> ĉiam deŝovas la nunan "
+"linion laŭ la nombro da signopozicioj specifitaj en <b>Deŝovlarĝo</b>."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:289
 #, kde-format
 msgid "Always increase indentation &level"
-msgstr ""
+msgstr "Ĉiam pliigi deŝovan &nivelon"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:296
@@ -961,19 +1014,28 @@ msgid ""
 "b> is enabled, spaces are inserted; otherwise, a single tabulator is "
 "inserted."
 msgstr ""
+"Se ĉi tiu opcio estas elektita, la klavo <b>Tab</b> aŭ deŝovas la nunan "
+"linion aŭ antaŭeniras al la sekva tabula pozicio.<p> Se la enmetpunkto estas "
+"ĉe aŭ antaŭ la unua nespaca signo en la linio, aŭ se estas elekto, la nuna "
+"linio estas deŝovita per la nombro da signopozicioj specifitaj en "
+"<b>Deŝovlarĝo</b>.<p> Se la enmetpunkto troviĝas post la unua nespaca signo "
+"en la linio kaj ne estas elekto, blanka spaco estas enigita tiel ke la sekva "
+"klapopozicio estas atingita: se la opcio <b>Enmeti spacojn anstataŭ "
+"tabeligilojn</b> en la sekcio <b>Redaktado</b> estas ebligita, spacoj estas "
+"enmetitaj ; alie, unuopa tabelilo estas enmetita."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:299
 #, kde-format
 msgid "Increase indentation level if in l&eading blank space"
-msgstr ""
+msgstr "Pliigi deŝovnive&lon se en komenca malplena spaco"
 
 #: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
 #, kde-format
 msgid " character"
 msgid_plural " characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " signo"
+msgstr[1] " signoj"
 
 #: dialogs/katedialogs.cpp:209
 #, kde-format
@@ -983,7 +1045,7 @@ msgstr "Deŝovo"
 #: dialogs/katedialogs.cpp:290
 #, kde-format
 msgid "Auto Completion"
-msgstr ""
+msgstr "Aŭtomata Kompletigo"
 
 #: dialogs/katedialogs.cpp:357
 #, kde-format
@@ -993,85 +1055,85 @@ msgstr "Literumado"
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
-msgstr ""
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
 msgid "Text Navigation"
-msgstr ""
+msgstr "Teksta Navigado"
 
 #: dialogs/katedialogs.cpp:572
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " signo"
+msgstr[1] " signoj"
 
 #: dialogs/katedialogs.cpp:577
 #, kde-format
 msgid "Feature is not active"
-msgstr ""
+msgstr "Trajto ne estas aktiva"
 
 #: dialogs/katedialogs.cpp:579
 #, kde-format
 msgid "Disable Feature"
-msgstr ""
+msgstr "Malebligi Trajton"
 
 #: dialogs/katedialogs.cpp:581
 #, kde-format
 msgid "May be handy with Markdown"
-msgstr ""
+msgstr "Povas esti oportuna kun Markdown"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
-msgstr ""
+msgstr "Speguli signojn, simila sed ne ekzakte kiel aŭtomataj krampoj"
 
 #: dialogs/katedialogs.cpp:585
 #, kde-format
 msgid "Non letter character"
-msgstr ""
+msgstr "Nelitera signo"
 
 #: dialogs/katedialogs.cpp:699
 #, kde-format
@@ -1086,7 +1148,7 @@ msgstr "Redakto-agordo"
 #: dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Statusbar"
-msgstr ""
+msgstr "Statusbreto"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1110,6 +1172,10 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 rezervas nekonservitajn dosierojn al \"interŝanĝaj dosieroj.\" "
+"Interŝanĝaj dosieroj permesas al %1 reakiri vian laboron en kazo de sistema "
+"kraŝo. Malŝalti interŝanĝajn dosierojn povas kaŭzi perdon de datumoj en kazo "
+"de sistema paneo."
 
 #: dialogs/katedialogs.cpp:1008
 #, kde-format
@@ -1141,32 +1207,32 @@ msgstr "Malfermado kaj Konservado de Dosiero"
 #: dialogs/katedialogs.cpp:1229
 #, kde-format
 msgid "&Line:"
-msgstr ""
+msgstr "&Linio:"
 
 #: dialogs/katedialogs.cpp:1230
 #, kde-format
 msgid "Go to line number from clipboard"
-msgstr ""
+msgstr "Iri al linionumero de tondujo"
 
 #: dialogs/katedialogs.cpp:1241
 #, kde-format
 msgid "Go to"
-msgstr ""
+msgstr "Iri al"
 
 #: dialogs/katedialogs.cpp:1321
 #, kde-format
 msgid "No valid line number found in clipboard"
-msgstr ""
+msgstr "Neniu valida linionumero trovita en la tondujo"
 
 #: dialogs/katedialogs.cpp:1385
 #, kde-format
 msgid "Dictionary:"
-msgstr ""
+msgstr "Vortaro:"
 
 #: dialogs/katedialogs.cpp:1438
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr ""
+msgstr "Ebligi Aŭtomatan Reŝargon"
 
 #: dialogs/katedialogs.cpp:1440
 #, kde-format
@@ -1174,42 +1240,44 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Reŝargas kaj aŭtomate reŝargos sen averto pri diskŝanĝoj ekde nun ĝis kiam "
+"vi fermas aŭ la langeton aŭ la fenestron."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "View &Difference"
-msgstr ""
+msgstr "Vidi &Diferencon"
 
 #: dialogs/katedialogs.cpp:1447
 #, kde-format
 msgid "Shows a diff of the changes."
-msgstr ""
+msgstr "Montras diferencon de la ŝanĝoj"
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
 msgid "&Reload"
-msgstr ""
+msgstr "&Reŝargi"
 
 #: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
-msgstr ""
+msgstr "Reŝargi la dosieron de disko. Nekonservitaj ŝanĝoj estos perditaj."
 
 #: dialogs/katedialogs.cpp:1458
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
-msgstr ""
+msgstr "&Fermi Dosieron"
 
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "Closes the file, discarding its content."
-msgstr ""
+msgstr "Fermi la dosieron, forĵetante ĝian enhavon."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "&Save As..."
-msgstr ""
+msgstr "Kon&servi kiel..."
 
 #: dialogs/katedialogs.cpp:1466
 #, kde-format
@@ -1225,7 +1293,7 @@ msgstr "&Ignori"
 #: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "Ignores the changes on disk without any action."
-msgstr ""
+msgstr "Ignoras la ŝanĝojn sur disko sen ia ago."
 
 #: dialogs/katedialogs.cpp:1538 swapfile/kateswapdiffcreator.cpp:128
 #, kde-format
@@ -1245,7 +1313,7 @@ msgstr "Eraro dum kreo de Diff"
 #: dialogs/katedialogs.cpp:1547 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
 msgid "The files are identical."
-msgstr ""
+msgstr "La dosieroj estas identaj."
 
 #: dialogs/katedialogs.cpp:1547 swapfile/kateswapdiffcreator.cpp:137
 #, kde-format
@@ -1266,6 +1334,8 @@ msgid ""
 "whitespace and go to the start of a line's text. The same applies for the "
 "end key."
 msgstr ""
+"Kiam elektita, premante la hejmklavon igos la kursoron salti blankspacon kaj "
+"iros al la komenco de la teksto de linio. La sama validas por la finŝlosilo."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartHome)
 #: dialogs/navigationconfigwidget.ui:38
@@ -2089,8 +2159,7 @@ msgid "&Close"
 msgstr "&Fermi"
 
 #: document/katedocument.cpp:2300 document/katedocument.cpp:6549
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Fermi mesaĝon"
@@ -2377,42 +2446,42 @@ msgstr "INSERT"
 msgid "Normal Mode"
 msgstr "Normala Reĝimo"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: INSERT MODE"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: NORMAL MODE"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: VISUAL"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: VISUAL BLOCK"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: VISUAL LINE"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: REPLACE"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr "vi-reĝimo"
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, kde-format
 msgid "recording"
 msgstr "registrado"
@@ -2463,13 +2532,13 @@ msgstr "Elekti MIME-tipojn"
 msgid "Modes && Filetypes"
 msgstr "Reĝimoj && Dosiertipoj"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Serĉi..."
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2479,13 +2548,13 @@ msgstr ""
 "Serĉi sintaksemfazajn reĝimojn laŭ lingvonomo aŭ dosiera etendo (ekzemple C+"
 "+ aŭ .cpp)"
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Neniuj eroj kongruas kun via serĉo"
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2494,7 +2563,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Plej Bona Serĉkongruo"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3069,37 +3138,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "Forigi Duplikatojn kaj Ordigi Elektitan Tekston Alfabete"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duobligi Elektitajn Liniojn Supre"
+msgstr "Forigi Duobligitajn Liniojn"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Forigi &finajn spacojn:"
+msgstr "Forigi Finajn Spacojn"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Forigi &finajn spacojn:"
+msgstr "Forigi Komencajn Spacojn"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Forigi &finajn spacojn:"
+msgstr "Forigi Finajn kaj Komencajn Spacojn"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Kunigi liniojn"
@@ -3141,11 +3204,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI-malkodi Elektitan Tekston"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Forigi Kursorojn de Malplenaj Linioj"
+msgstr "Forigi Malplenajn Liniojn"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3458,7 +3520,7 @@ msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
 "Reŝargi ĉiujn JavaScript-dosierojn (deŝoviloj, komandliniaj skriptoj, ktp)."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Ne trovis komandon: %1"
@@ -4738,7 +4800,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
 msgid "Text Templates & Snippets"
-msgstr ""
+msgstr "Tekstaj Ŝablonoj kaj Fragmentoj"
 
 #: syntax/katethemeconfig.cpp:349
 #, kde-format
@@ -4956,13 +5018,13 @@ msgstr "Kopii Etoson"
 msgid "Color Themes"
 msgstr "Koloraj Etosoj"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Neniu"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -5337,47 +5399,7 @@ msgstr ""
 "ul></p>"
 
 #: utils/katecmds.cpp:560
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined "
-#| "by the specified format, or the format yyyy-MM-dd hh:mm:ss if none is "
-#| "specified.</p><p>Possible format specifiers are:<table><tr><td>d</"
-#| "td><td>The day as number without a leading zero (1-31).</td></"
-#| "tr><tr><td>dd</td><td>The day as number with a leading zero (01-31).</"
-#| "td></tr><tr><td>ddd</td><td>The abbreviated localized day name (e.g. "
-#| "'Mon'..'Sun').</td></tr><tr><td>dddd</td><td>The long localized day name "
-#| "(e.g. 'Monday'..'Sunday').</td></tr><tr><td>M</td><td>The month as number "
-#| "without a leading zero (1-12).</td></tr><tr><td>MM</td><td>The month as "
-#| "number with a leading zero (01-12).</td></tr><tr><td>MMM</td><td>The "
-#| "abbreviated localized month name (e.g. 'Jan'..'Dec').</td></"
-#| "tr><tr><td>yy</td><td>The year as two digit number (00-99).</td></"
-#| "tr><tr><td>yyyy</td><td>The year as four digit number (1752-8000).</td></"
-#| "tr><tr><td>h</td><td>The hour without a leading zero <p>date or date "
-#| "<b>format</b></p><p>Inserts a date/time string as defined by the "
-#| "specified format, or the format yyyy-MM-dd hh:mm:ss if none is specified."
-#| "</p><p>Possible format specifiers are:<table><tr><td>d</td><td>The day as "
-#| "number without a leading zero (1-31).</td></tr><tr><td>dd</td><td>The day "
-#| "as number with a leading zero (01-31).</td></tr><tr><td>ddd</td><td>The "
-#| "abbreviated localized day name (e.g. 'Mon'..'Sun').</td></"
-#| "tr><tr><td>dddd</td><td>The long localized day name (e.g. "
-#| "'Monday'..'Sunday').</td></tr><tr><td>M</td><td>The month as number "
-#| "without a leading zero (1-12).</td></tr><tr><td>MM</td><td>The month as "
-#| "number with a leading zero (01-12).</td></tr><tr><td>MMM</td><td>The "
-#| "abbreviated localized month name (e.g. 'Jan'..'Dec').</td></"
-#| "tr><tr><td>yy</td><td>The year as two digit number (00-99).</td></"
-#| "tr><tr><td>yyyy</td><td>The year as four digit number (1752-8000).</td></"
-#| "tr><tr><td>h</td><td>The hour without a leading zero (0..23 or 1..12 if "
-#| "AM/PM display).</td></tr><tr><td>hh</td><td>The hour with a leading zero "
-#| "(00..23 or 01..12 if AM/PM display).</td></tr><tr><td>m</td><td>The "
-#| "minute without a leading zero (0..59).</td></tr><tr><td>mm</td><td>The "
-#| "minute with a leading zero (00..59).</td></tr><tr><td>s</td><td>The "
-#| "second without a leading zero (0..59).</td></tr><tr><td>ss</td><td>The "
-#| "second with a leading zero (00..59).</td></tr><tr><td>z</td><td>The "
-#| "milliseconds without leading zeroes (0..999).</td></tr><tr><td>zzz</"
-#| "td><td>The milliseconds with leading zeroes (000..999).</td></"
-#| "tr><tr><td>AP</td><td>Use AM/PM display. AP will be replaced by either "
-#| "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will "
-#| "be replaced by either \"am\" or \"pm\".</td></tr></table></p>"
+#, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
 "the specified format, or the format yyyy-MM-dd hh:mm:ss if none is specified."
@@ -5404,29 +5426,30 @@ msgid ""
 "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will be "
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
-"<p>dato aŭ data <b>formato</b></p><p>Enmetas daton/horan ĉenon kiel difinita "
-"per la specifita formato, aŭ la formato jjjj-MM-dd hh:mm:ss se neniu estas "
-"specifita.</p><p>Eblaj formato-specifiloj estas:<table><tr><td>d</td><td>La "
-"tago kiel nombro sen unua nulo (1-31).</td>< /tr><tr><td>dd</td><td>La tago "
-"kiel nombro kun unua nulo (01-31).</td></tr><tr><td>ddd</td><td>La "
-"mallongigita lokalizita tagnomo (ekz. 'Lun'..'Dim').</td></tr><tr><td>dddd</"
-"td><td>La longa lokalizita tagnomo (ekz. 'Lundo'..'Dimanĉo').</td></"
-"tr><tr><td>M</td><td>La monato kiel nombro sen unua nulo (1-12).</td></"
-"tr><tr><td>MM</td><td>La monato kiel nombro kun unua nulo (01-12).</td></"
-"tr><tr><td>MMM</td><td>La mallongigita lokalizita monata nomo (ekz. "
-"'Jan'..'Dec').</td></tr><tr><td>jj</td><td>La jaro kiel ducifera nombro "
-"(00-99).</td></tr><tr><td>jjjj</td><td>La jaro kiel kvarcifera nombro "
-"(1752-8000).</td></tr><tr><td>h</td><td>La horo sen unua nulo (0..23 aŭ "
-"1..12 se montriĝas AM/PM).</td></tr><tr><td>hh</td><td>La horo kun unua nulo "
-"(00..23 aŭ 01..12 se montriĝas AM/PM).</td></tr><tr><td>m</td><td>La minuto "
-"sen unua nulo (0..59).</td></tr><tr><td>mm</td><td>La minuto kun unua nulo "
-"(00.. 59).</td></tr><tr><td>s</td><td>La dua sen unua nulo (0..59).</td></"
-"tr><tr><td>ss</td><td>La dua kun unua nulo (00..59).</td></tr><tr><td>z</"
-"td><td>La milisekundoj sen antaŭaj nuloj (0..999).</td></tr><tr><td>zzz</"
-"td><td>La milisekundoj kun antaŭaj nuloj (000..999).</td></tr><tr><td>AP</"
-"td><td>Uzi AM/PM-montrilon. AP estos anstataŭigita per aŭ \"AM\" aŭ \"PM\".</"
-"td></tr><tr><td>ap</td><td>Uzi am/pm-montrilon. ap estos anstataŭigata per "
-"aŭ \"am\" aŭ \"pm\".</td></tr></table></p>"
+"<p>dato aŭ dato <b>formato</b></p><p>Enmetas daton/horan ĉenon kiel "
+"difinitan per la specifita formato, aŭ la formato jjjj-MM-dd hh:mm:ss se "
+"neniu estas specifita.</p><p>Eblaj formato-specifiloj estas:"
+"<table><tr><td>d</td><td>La tago kiel nombro sen unua nulo (1-31).</td></"
+"tr><tr><td>dd</td><td>La tago kiel nombro kun unua nulo (01-31).</td></"
+"tr><tr><td>ddd</td><td>La mallongigita lokalizita tagnomo (ekz. "
+"'Lun'..'Dim').</td></tr><tr><td>dddd</td><td>La longa lokalizita tagnomo "
+"(ekz. 'Lundo'...'Dimanĉo').</td></tr><tr><td>M</td><td>La monato kiel nombro "
+"sen unua nulo (1-12).</td></tr><tr><td>MM</td><td>La monato kiel nombro kun "
+"unua nulo (01-12).</td></tr><tr><td>MMM</td><td>La mallongigita lokalizita "
+"monata nomo (ekz. 'Jan'...'Dec').</td></tr><tr><td>jj</td><td>La jaro kiel "
+"ducifera nombro (00 -99).</td></tr><tr><td>jjyy</td><td>La jaro kiel "
+"kvarcifera nombro (1752-8000).</td></tr><tr><td>h</td><td>La horo sen unua "
+"nulo (0..23 aŭ 1..12 se montriĝas AM/PM).</td></tr><tr><td>hh</td><td>La "
+"horo kun unua nulo (00..23 aŭ 01..12 se montriĝas AM/PM).</td></"
+"tr><tr><td>m</td>. td >< td >La minuto sen unua nulo (0..59).</td></"
+"tr><tr><td>mm</td><td>La minuto kun unua nulo (00..59).</td></tr><tr><td>s</"
+"td><td>La dua sen unua nulo (0..59).</td></tr><tr><td>ss</td><td>La dua kun "
+"unua nulo (00..59).</td></tr><tr><td>z</td><td>La milisekundoj sen antaŭaj "
+"nuloj (0..999).</td></tr><tr><td>zzz</td><td>La milisekundoj kun antaŭaj "
+"nuloj (000..999).</td></tr><tr><td>AP</td><td>Uzi AM/PM-bildigon. AP estos "
+"anstataŭigita per aŭ \"AM\" aŭ \"PM\".</td></tr><tr><td>ap</td><td>Uzi am/pm-"
+"montrilon. ap estos anstataŭigita per aŭ \"am\" aŭ \"pm\".</td></tr></"
+"table></p>"
 
 #: utils/kateglobal.cpp:73
 #, kde-format
@@ -5828,8 +5851,8 @@ msgstr "anstataŭigi per %1?"
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 anstataŭigo farita en %2"
+msgstr[1] "%1 anstataŭigoj faritaj en %2"
 
 #: utils/katesedcmd.cpp:277
 #, kde-format
@@ -6527,10 +6550,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Interŝanĝi la elektitan tekston kun la enhavo de la tondujo"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Alglui Elekton"
+msgstr "Preni Ekrankopion de Elekto"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7737,63 +7759,54 @@ msgid "Disable Annotation Bar"
 msgstr "Malebligi Komentarion"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Malfermi/Konservi"
+msgstr "Konservi"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Kopii..."
+msgstr "Kopii"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Fonkoloro..."
+msgstr "Fonkoloro..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Tekstaj Dekoraĵoj"
+msgstr "Montri Ekstrajn Dekoraĵojn"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Mo&ntri deŝovliniojn"
+msgstr "Montri Fenestrajn Dekoraĵojn"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Ekrankopio..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Montri &Lininombrojn"
+msgstr "Ne Montri Linionumerojn"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Montri &Lininombrojn"
+msgstr "Montri Linionumerojn Ekde 1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Montri &Lininombrojn"
+msgstr "Montri Faktajn Linionumerojn"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "Save..."
-msgstr "Konservi &Kopion kiel..."
+msgstr "Konservi..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8168,7 +8181,7 @@ msgstr "Markaro: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Ne estas plu signoj por la sekva legosigno."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"
@@ -8183,6 +8196,3 @@ msgstr "'%1' %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marko ne agordita: %1"
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "Eraro dum ŝargo de skripto %1\n"

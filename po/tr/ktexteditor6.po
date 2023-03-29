@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
-"PO-Revision-Date: 2023-03-27 20:43+0300\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
+"PO-Revision-Date: 2023-03-28 18:00+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -443,7 +443,8 @@ msgstr "İ&lk tamamlama girdisini otomatik seç"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr "Tamamlama listesi ögeleri arasında Sekme/Shift+Sekme kullanarak gezin"
+msgstr ""
+"Tamamlama listesi ögeleri arasında Sekme/Üst Karakter+Sekme kullanarak gezin"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -507,7 +508,7 @@ msgid ""
 "shown by pressing Alt key."
 msgstr ""
 "Belgelendirmeyi tamamlama kutusunun yanında göster. Devre dışıysa "
-"belgelendirme Alt düğmesine basarak gösterilebilir."
+"belgelendirme Seçenek düğmesine basarak gösterilebilir."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -1065,12 +1066,12 @@ msgstr "Yazım Denetimi"
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
-msgstr "Alt"
+msgstr "Seçenek"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr "Ctrl"
+msgstr "Kontrol"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
@@ -1080,32 +1081,32 @@ msgstr "Meta"
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr "Ctrl + Alt"
+msgstr "Kontrol + Seçenek"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr "Meta + Alt"
+msgstr "Meta + Seçenek"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr "Ctrl + Meta"
+msgstr "Kontrol + Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
-msgstr "Cmd"
+msgstr "Komut"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd + Alt"
+msgstr "Komut + Seçenek"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd + Ctrl"
+msgstr "Komut + Kontrol"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -1345,7 +1346,7 @@ msgid ""
 "whitespace and go to the start of a line's text. The same applies for the "
 "end key."
 msgstr ""
-"Seçildiğinde, Home düğmesine basılması durumunda, imleç boşlukları atlar ve "
+"Seçildiğinde, Baş düğmesine basılması durumunda, imleç boşlukları atlar ve "
 "satırın başındaki yazıya konumlanır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartHome)
@@ -1361,14 +1362,14 @@ msgid ""
 "Selects whether the PageUp and PageDown keys should alter the vertical "
 "position of the cursor relative to the top of the view."
 msgstr ""
-"PageUp ve PageDown düğmelerinin görünümün üst kısmına bağlı olarak imlecin "
-"dikey konumunu değiştirip değiştirmeyeceğini seçer."
+"Sayfa Yukarı ve Sayfa Aşağı düğmelerinin görünümün üst kısmına bağlı olarak "
+"imlecin dikey konumunu değiştirip değiştirmeyeceğini seçer."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkPagingMovesCursor)
 #: dialogs/navigationconfigwidget.ui:48
 #, kde-format
 msgid "&PageUp/PageDown moves cursor"
-msgstr "&PageUp/PageDown ile imleç taşıma"
+msgstr "&Sayfa Yukarı/Sayfa Aşağı düğmeleri imleci hareket ettirir"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
@@ -2451,42 +2452,42 @@ msgstr "EKLE"
 msgid "Normal Mode"
 msgstr "Normal Kip"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: EKLE KİPİ"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: NORMAL KİP"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: GÖRSEL"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: GÖRSEL BLOK"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: GÖRSEL SATIR"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: DEĞİŞTİR"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr "vi Kipi"
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, kde-format
 msgid "recording"
 msgstr "kaydediliyor"
@@ -2538,13 +2539,13 @@ msgstr "Mime Türlerini Seç"
 msgid "Modes && Filetypes"
 msgstr "Kipler ve Dosya Türleri"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Ara..."
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2554,13 +2555,13 @@ msgstr ""
 "Sözdizim vurgulama kiplerini dil adı veya dosya uzantısına göre ara (C++ "
 "veya .cpp)"
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Aramanızla eşleşen öge yok"
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2569,7 +2570,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "En İyi Arama Eşleşmesi"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3024,22 +3025,22 @@ msgstr ""
 #: script/data/commands/emmet.js:101
 #, kde-format
 msgid "Move to the next edit point (tag or empty attribute)."
-msgstr "Sonraki düzenleme noktasına git (etiket veya boş nitelik)."
+msgstr "Sonraki düzenleme noktasına git (etiket veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:102
 #, kde-format
 msgid "Move to the previous edit point (tag or empty attribute)."
-msgstr "Önceki düzenleme noktasına git (etiket veya boş nitelik)."
+msgstr "Önceki düzenleme noktasına git (etiket veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:103
 #, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr "Sonraki düzenleme noktasını seç (etiket veya boş nitelik)."
+msgstr "Sonraki düzenleme noktasını seç (etiket veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:104
 #, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr "Önceki düzenleme noktasını seç (etiket veya boş nitelik)."
+msgstr "Önceki düzenleme noktasını seç (etiket veya boş öznitelik)."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
@@ -3525,7 +3526,7 @@ msgstr ""
 "Tüm JavaScript dosyalarını (girintileyiciler, komut satırı betikleri, vb) "
 "yeniden yükle."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Komut bulunamadı: %1"
@@ -4271,7 +4272,7 @@ msgstr "Yatı&k"
 #: syntax/katestyletreewidget.cpp:241
 #, kde-format
 msgid "&Underline"
-msgstr "Alt&çizgi"
+msgstr "&Altı Çizili"
 
 #: syntax/katestyletreewidget.cpp:246
 #, kde-format
@@ -5029,13 +5030,13 @@ msgstr "Temayı Kopyala"
 msgid "Color Themes"
 msgstr "Renk Temaları"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Hiçbiri"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -6329,7 +6330,7 @@ msgstr "Sekme gösterim genişliğini ayarla."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
-msgstr "Hatırlanacak geri al adımlarının sayısı (0 sonsuz)."
+msgstr "Anımsanacak geri al adımlarının sayısı (0 sonsuz)."
 
 #: variableeditor/variablelineedit.cpp:334
 #, kde-format
@@ -8061,7 +8062,7 @@ msgid ""
 "search and replace dialog)."
 msgstr ""
 "Seçiliyken vi komutları Kate'in kendi komutlarının üzerine yazar. Örneğin: "
-"Ctrl+R yinele işlemini yapar ve standart eylemin (ara ve değiştir "
+"Kontrol+R yinele işlemini yapar ve standart eylemin (ara ve değiştir "
 "penceresini gösterme) üzerine yazar."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViCommandsOverride)
@@ -8195,7 +8196,7 @@ msgstr "İm ayarlandı: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Sonraki yer imi için daha fazla karakter yok."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

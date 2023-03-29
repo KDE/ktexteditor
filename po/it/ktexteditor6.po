@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 03:31+0000\n"
-"PO-Revision-Date: 2023-03-03 02:51+0100\n"
+"POT-Creation-Date: 2023-03-29 02:12+0000\n"
+"PO-Revision-Date: 2023-03-22 09:25+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1262,6 +1262,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Ricarica e ricaricherà automaticamente senza avvisi sulle modifiche al disco "
+"da ora fino a quando non chiuderai la scheda o la finestra."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1269,10 +1271,9 @@ msgid "View &Difference"
 msgstr "Visualizza &differenze"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Mostra un diff delle modifiche"
+msgstr "Mostra un diff delle modifiche."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1280,8 +1281,7 @@ msgid "&Reload"
 msgstr "&Ricarica"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Ricarica il file dal disco. Le modifiche non salvate saranno perse."
 
@@ -1292,10 +1292,9 @@ msgid "&Close File"
 msgstr "&Chiudi file"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Chiudi il file, scartando il suo contenuto."
+msgstr "Chiude il file, scartando il suo contenuto."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -2491,42 +2490,42 @@ msgstr "INSERISCI"
 msgid "Normal Mode"
 msgstr "Modalità normale"
 
-#: inputmode/kateviinputmode.cpp:30
+#: inputmode/kateviinputmode.cpp:31
 #, kde-format
 msgid "VI: INSERT MODE"
 msgstr "VI: INSERIMENTO"
 
-#: inputmode/kateviinputmode.cpp:33
+#: inputmode/kateviinputmode.cpp:34
 #, kde-format
 msgid "VI: NORMAL MODE"
 msgstr "VI: NORMALE"
 
-#: inputmode/kateviinputmode.cpp:36
+#: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
 msgstr "VI: VISUALE"
 
-#: inputmode/kateviinputmode.cpp:39
+#: inputmode/kateviinputmode.cpp:40
 #, kde-format
 msgid "VI: VISUAL BLOCK"
 msgstr "VI: BLOCCO VISUALE"
 
-#: inputmode/kateviinputmode.cpp:42
+#: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
 msgstr "VI: RIGA VISUALE"
 
-#: inputmode/kateviinputmode.cpp:45
+#: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
 msgstr "VI: SOSTITUISCI"
 
-#: inputmode/kateviinputmode.cpp:145
+#: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
 msgstr "modalità vi"
 
-#: inputmode/kateviinputmode.cpp:158
+#: inputmode/kateviinputmode.cpp:159
 #, kde-format
 msgid "recording"
 msgstr "registrazione"
@@ -2578,13 +2577,13 @@ msgstr "Seleziona tipi MIME"
 msgid "Modes && Filetypes"
 msgstr "Modi e tipi di file"
 
-#: mode/katemodemenulist.cpp:141
+#: mode/katemodemenulist.cpp:140
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Cerca..."
 
-#: mode/katemodemenulist.cpp:143
+#: mode/katemodemenulist.cpp:142
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2594,13 +2593,13 @@ msgstr ""
 "Cerca le modalità di evidenziazione della sintassi per nome del linguaggio o "
 "estensione del file (ad es., C++ o .cpp)"
 
-#: mode/katemodemenulist.cpp:566
+#: mode/katemodemenulist.cpp:565
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Nessun elemento corrispondente alla tua ricerca"
 
-#: mode/katemodemenulist.cpp:1093
+#: mode/katemodemenulist.cpp:1092
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2609,7 +2608,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Migliori corrispondenza di ricerca"
 
-#: mode/katemodemenulist.cpp:1098
+#: mode/katemodemenulist.cpp:1097
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3575,7 +3574,7 @@ msgstr ""
 "Ricarica tutti i file JavaScript (rientratori, script da riga di comando, "
 "eccetera)."
 
-#: script/katescriptview.cpp:209
+#: script/katescriptview.cpp:207
 #, kde-format
 msgid "Command not found: %1"
 msgstr "Comando non trovato: %1"
@@ -5085,13 +5084,13 @@ msgstr "Copia il tema"
 msgid "Color Themes"
 msgstr "Temi di colori"
 
-#: utils/kateautoindent.cpp:90
+#: utils/kateautoindent.cpp:89
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Nessuno"
 
-#: utils/kateautoindent.cpp:94
+#: utils/kateautoindent.cpp:93
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -6635,10 +6634,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Scambia il testo selezionato con il contenuto degli appunti"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Incolla la selezione"
+msgstr "Acquisisci schermata della selezione"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7869,63 +7867,54 @@ msgid "Disable Annotation Bar"
 msgstr "Disabilita la barra delle annotazioni"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Apri e salva"
+msgstr "Salva"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Copia..."
+msgstr "Copia"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "Colore di s&fondo..."
+msgstr "Colore di sfondo..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Decorazioni del testo"
+msgstr "Mostra decorazioni aggiuntive"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Mostra righe di rie&ntro"
+msgstr "Mostra decorazioni delle finestre"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Schermata..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Mostra i numeri di &riga"
+msgstr "Non mostrare i numeri di riga"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Mostra i numeri di &riga"
+msgstr "Mostra i numeri di riga da 1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Mostra i numeri di &riga"
+msgstr "Mostra i numeri di riga effettivi"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "&Salva come..."
+msgstr "Salva..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8299,7 +8288,7 @@ msgstr "Segno impostato: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Non ci sono più caratteri per il segnalibro successivo."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:791
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"
