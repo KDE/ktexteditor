@@ -812,7 +812,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
             // draw an open box to mark non-breaking spaces
             const QString &text = range->textLine()->text();
-            int y = lineHeight() * i + fm.ascent() - fm.strikeOutPos();
+            int y = lineHeight() * i + m_fontAscent - fm.strikeOutPos();
             int nbSpaceIndex = text.indexOf(nbSpaceChar, line.lineLayout().xToCursor(xStart));
 
             while (nbSpaceIndex != -1 && nbSpaceIndex < line.endCol()) {
@@ -891,7 +891,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
 
             if (showNonPrintableSpaces()) {
-                const int y = lineHeight() * i + fm.ascent();
+                const int y = lineHeight() * i + m_fontAscent;
 
                 static const QRegularExpression nonPrintableSpacesRegExp(
                     QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
