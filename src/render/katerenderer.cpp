@@ -27,6 +27,7 @@
 #include "katepartdebug.h"
 
 #include <QBrush>
+#include <QPaintEngine>
 #include <QPainter>
 #include <QPainterPath>
 #include <QRegularExpression>
@@ -994,6 +995,28 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
     }
 }
 
+static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &pos, int cursorPosition, int width, const int height)
+{
+    if (!layout.isValidCursorPosition(cursorPosition)) {
+        cursorPosition = 0;
+    }
+    const QTextLine l = layout.lineForTextPosition(cursorPosition);
+    Q_ASSERT(l.isValid());
+    if (!l.isValid()) {
+        return;
+    }
+    const QPainter::CompositionMode origCompositionMode = p->compositionMode();
+    if (p->paintEngine()->hasFeature(QPaintEngine::RasterOpModes)) {
+        p->setCompositionMode(QPainter::RasterOp_NotDestination);
+    }
+
+    const QPointF position = pos + layout.position();
+    const qreal x = position.x() + l.cursorToX(cursorPosition);
+    const qreal y = l.lineNumber() * height;
+    p->fillRect(QRectF(x, y, (qreal)width, (qreal)height), p->pen().brush());
+    p->setCompositionMode(origCompositionMode);
+}
+
 void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range, QPainter &paint, int xStart, int xEnd)
 {
     if (range->includesCursor(cursor)) {
@@ -1072,7 +1095,7 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
                     width = inlineNote.width() + (caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0);
                 }
             }
-            range->layout()->drawCursor(&paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth);
+            drawCursor(*range->layout(), &paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth, lineHeight());
         } else {
             // Off the end of the line... must be block mode. Draw the caret ourselves.
             const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
