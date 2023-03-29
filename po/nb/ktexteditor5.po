@@ -1,4 +1,4 @@
-# Translation of ktexteditor5 to Norwegian Bokmål
+# Translation of ktexteditor6 to Norwegian Bokmål
 #
 # Hans Petter Bieker <bieker@kde.org>, 1998, 1999, 2000.
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2002.
