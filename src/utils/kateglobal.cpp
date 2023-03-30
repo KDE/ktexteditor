@@ -251,7 +251,7 @@ KTextEditor::EditorPrivate::~EditorPrivate()
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
 {
-    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(KPluginMetaData(), false, false, nullptr, parent);
+    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(false, false, nullptr, parent);
 
     Q_EMIT documentCreated(this, doc);
 

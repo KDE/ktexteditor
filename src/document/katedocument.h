@@ -88,11 +88,15 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor
     friend class ::KateBuffer;
 
 public:
-    explicit DocumentPrivate(const KPluginMetaData &data = {},
+    explicit DocumentPrivate(const KPluginMetaData &data,
                              bool bSingleViewMode = false,
                              bool bReadOnly = false,
                              QWidget *parentWidget = nullptr,
                              QObject * = nullptr);
+    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false, QWidget *parentWidget = nullptr, QObject * = nullptr)
+        : DocumentPrivate(KPluginMetaData(), bSingleViewMode, bReadOnly, parentWidget)
+    {
+    }
     ~DocumentPrivate() override;
 
     using ReadWritePart::closeUrl;
