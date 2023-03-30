@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-29 02:12+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -3684,7 +3684,7 @@ msgstr "Fehler bi't Opropen vun \"help %1\""
 msgid "No help specified for command '%1' in script %2"
 msgstr "Keen Hülp angeven för den Befehl \"%1\" binnen dat Skript \"%2\""
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1"
 msgstr "Fehler bi't Laden vun't Skript \"%1\""

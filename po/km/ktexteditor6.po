@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-29 02:12+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -3663,7 +3663,7 @@ msgstr "កំហុស​ក្នុងកា​រហៅ​ជំនួយ %1
 msgid "No help specified for command '%1' in script %2"
 msgstr "គ្មាន​ជំនួយ​បានបញ្ជាក់​សម្រាប់​ពាក្យ​បញ្ជា '%1' នៅ​ក្នុង​ស្គ្រីប %2"
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1"
 msgstr "កំហុស​ក្នុងកា​រផ្ទុក​ស្គ្រីប %1"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-29 02:12+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -3655,7 +3655,7 @@ msgstr "'උදව් %1' ඇමතීමේදී දෝෂය"
 msgid "No help specified for command '%1' in script %2"
 msgstr "%2 ස්ක්‍රිප්ටයේ '%1' විධානය සඳහා උදව් විශේෂණය කර නැත"
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1"
 msgstr "%1 සක්‍රිප්ටය ප්‍රවේශ කිරීමේදී දෝෂය"
