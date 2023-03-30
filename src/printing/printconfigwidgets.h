@@ -38,6 +38,7 @@ public:
 
     bool printLineNumbers();
     bool printGuide();
+    bool dontPrintFoldedCode() const;
 
 private:
     void readSettings();
@@ -45,6 +46,7 @@ private:
 
     QCheckBox *cbLineNumbers;
     QCheckBox *cbGuide;
+    QCheckBox *cbFolding;
 };
 // END Text Settings
 

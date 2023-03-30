@@ -43,6 +43,9 @@ KatePrintTextSettings::KatePrintTextSettings(QWidget *parent)
     cbGuide = new QCheckBox(i18n("Print &legend"), this);
     lo->addWidget(cbGuide);
 
+    cbFolding = new QCheckBox(i18n("Don't print folded code"), this);
+    lo->addWidget(cbFolding);
+
     lo->addStretch(1);
 
     // set defaults - nothing to do :-)
@@ -71,6 +74,11 @@ bool KatePrintTextSettings::printGuide()
     return cbGuide->isChecked();
 }
 
+bool KatePrintTextSettings::dontPrintFoldedCode() const
+{
+    return cbFolding->isChecked();
+}
+
 void KatePrintTextSettings::readSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
@@ -82,6 +90,8 @@ void KatePrintTextSettings::readSettings()
 
     bool isLegendChecked = textGroup.readEntry("Legend", false);
     cbGuide->setChecked(isLegendChecked);
+
+    cbFolding->setChecked(textGroup.readEntry("DontPrintFoldedCode", true));
 }
 
 void KatePrintTextSettings::writeSettings()
@@ -92,6 +102,7 @@ void KatePrintTextSettings::writeSettings()
     KConfigGroup textGroup(&printGroup, "Text");
     textGroup.writeEntry("LineNumbers", printLineNumbers());
     textGroup.writeEntry("Legend", printGuide());
+    textGroup.writeEntry("DontPrintFoldedCode", dontPrintFoldedCode());
 
     config->sync();
 }

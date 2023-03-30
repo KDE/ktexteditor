@@ -100,6 +100,7 @@ bool KatePrinterPrivate::print(QPrinter *printer)
     // configure the painter
     m_painter.setPrintGuide(kpts->printGuide());
     m_painter.setPrintLineNumbers(kpts->printLineNumbers());
+    m_painter.setDontPrintFoldedCode(kpts->dontPrintFoldedCode());
 
     m_painter.setColorScheme(kpl->colorScheme());
     m_painter.setTextFont(kpl->textFont());
