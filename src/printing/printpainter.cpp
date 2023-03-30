@@ -80,9 +80,7 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
     , m_headerFormat()
     , m_footerFormat()
 {
-    m_folding = new Kate::TextFolding(m_doc->buffer());
-
-    m_renderer = new KateRenderer(m_doc, *m_folding, m_view);
+    m_renderer = new KateRenderer(m_doc, m_view->renderer()->folding(), m_view);
     m_renderer->setPrinterFriendly(true);
 
     updateCache();
@@ -91,7 +89,6 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
 PrintPainter::~PrintPainter()
 {
     delete m_renderer;
-    delete m_folding;
 }
 
 void PrintPainter::setTextFont(const QFont &font)
@@ -184,6 +181,8 @@ void PrintPainter::paint(QPrinter *printer) const
     bool pageStarted = true;
     uint remainder = 0;
 
+    auto &f = m_view->renderer()->folding();
+
     // On to draw something :-)
     while (lineCount <= pl.lastline) {
         if (y + m_fontHeight > pl.maxHeight) {
@@ -204,11 +203,15 @@ void PrintPainter::paint(QPrinter *printer) const
             painter.translate(pl.xstart, y);
         }
 
-        if (m_printLineNumbers /*&& ! startCol*/) { // don't repeat!
+        const bool skipLine = m_dontPrintFoldedCode && !f.isLineVisible(lineCount);
+
+        if (!skipLine && m_printLineNumbers /*&& ! startCol*/) { // don't repeat!
             paintLineNumber(painter, lineCount, pl);
         }
 
-        paintLine(painter, lineCount, y, remainder, pl);
+        if (!skipLine) {
+            paintLine(painter, lineCount, y, remainder, pl);
+        }
 
         if (!remainder) {
             lineCount++;
@@ -674,17 +677,22 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
         painter.setClipRect(0,
                             (_lines - int(remainder)) * m_fontHeight + 1,
                             pl.maxWidth,
-                            proceedLines * m_fontHeight); //### drop the crosspatch in printerfriendly mode???
+                            proceedLines * m_fontHeight); // ### drop the crosspatch in printerfriendly mode???
         remainder -= proceedLines;
     } else if (y + m_fontHeight * _lines > pl.maxHeight) {
         remainder = _lines - ((pl.maxHeight - y) / m_fontHeight);
-        painter.setClipRect(0, 0, pl.maxWidth, (_lines - int(remainder)) * m_fontHeight + 1); //### drop the crosspatch in printerfriendly mode???
+        painter.setClipRect(0, 0, pl.maxWidth, (_lines - int(remainder)) * m_fontHeight + 1); // ### drop the crosspatch in printerfriendly mode???
     } else if (!pl.selectionOnly) {
         painter.setClipRegion(QRegion());
         painter.setClipping(false);
     }
 
-    m_renderer->paintTextLine(painter, rangeptr, 0, (int)pl.maxWidth);
+    KateRenderer::PaintTextLineFlags flags;
+    if (!m_dontPrintFoldedCode) {
+        flags.setFlag(KateRenderer::PaintTextLineFlag::SkipDrawFirstInvisibleLineUnderlined);
+    }
+
+    m_renderer->paintTextLine(painter, rangeptr, 0, (int)pl.maxWidth, nullptr, flags);
 
     painter.setClipping(false);
     painter.translate(_xadjust, (m_fontHeight * (_lines - remainder)));

@@ -60,6 +60,10 @@ public:
     {
         m_printLineNumbers = on;
     }
+    void setDontPrintFoldedCode(bool p)
+    {
+        m_dontPrintFoldedCode = p;
+    }
     void setUseHeader(const bool on)
     {
         m_useHeader = on;
@@ -129,6 +133,7 @@ private:
 
     bool m_printGuide;
     bool m_printLineNumbers;
+    bool m_dontPrintFoldedCode;
     bool m_useHeader;
     bool m_useFooter;
     bool m_useBackground;
@@ -152,7 +157,6 @@ private:
 
     /* Internal vars */
     KateRenderer *m_renderer;
-    Kate::TextFolding *m_folding;
 
     int m_fontHeight;
     uint m_lineNumberWidth;
