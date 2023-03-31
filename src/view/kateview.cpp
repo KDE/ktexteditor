@@ -602,6 +602,12 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("Manually invoke command completion, usually by using a shortcut bound to this action."));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Space));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::userInvokedCompletion);
+
+        a = ac->addAction(QStringLiteral("remove_trailing_spaces"));
+        a->setText(i18n("Remove Trailing Spaces"));
+        connect(a, &QAction::triggered, this, [this] {
+            doc()->removeAllTrailingSpaces();
+        });
     } else {
         for (auto *action : {m_cut, m_paste, m_clipboardHistory, m_swapWithClipboard}) {
             action->setEnabled(false);

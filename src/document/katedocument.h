@@ -1136,6 +1136,12 @@ private:
 
 public:
     /**
+     * This function doesn't check for config and is
+     * available for use all the time via an action
+     */
+    void removeAllTrailingSpaces();
+
+    /**
      * Returns a git compatible sha1 checksum of this document on disk.
      * @return checksum for this document on disk
      */
