@@ -5689,6 +5689,7 @@ void KTextEditor::DocumentPrivate::removeTrailingSpacesAndAddNewLineAtEof()
 
 void KTextEditor::DocumentPrivate::removeAllTrailingSpaces()
 {
+    editStart();
     const int lines = this->lines();
     for (int line = 0; line < lines; ++line) {
         const Kate::TextLine textline = plainKateTextLine(line);
@@ -5698,6 +5699,7 @@ void KTextEditor::DocumentPrivate::removeAllTrailingSpaces()
             editRemoveText(line, p, l);
         }
     }
+    editEnd();
 }
 
 bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool user)
