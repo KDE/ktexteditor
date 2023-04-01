@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-31 02:17+0000\n"
+"POT-Creation-Date: 2023-04-01 02:10+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -2444,14 +2444,19 @@ msgstr "লাই&ন নম্বর ছাপাও "
 msgid "Print &legend"
 msgstr "লাই&ন নম্বর ছাপাও "
 
-#: printing/printconfigwidgets.cpp:51
+#: printing/printconfigwidgets.cpp:46
+#, kde-format
+msgid "Don't print folded code"
+msgstr ""
+
+#: printing/printconfigwidgets.cpp:54
 #, kde-format
 msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr "<p>সক্রিয় করা হলে পাতার বাঁদিকে লাইন নম্বর ছাপানো হবে</p>"
 
-#: printing/printconfigwidgets.cpp:53
+#: printing/printconfigwidgets.cpp:56
 #, fuzzy, kde-format
 msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
@@ -2460,72 +2465,72 @@ msgstr ""
 "<p> ছাপাও একটি বাক্স প্রদর্শনরত টাইপোগ্রাফি সংক্রান্ত প্রথা জন্য টি নথী ধরন   "
 "উল্লেখকৃত দ্বারা টি বাক্যরীতি হয়ে ব্যবহৃত."
 
-#: printing/printconfigwidgets.cpp:105
+#: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
 msgstr "হেডার (Header) &এবং ফুটার (Footer)"
 
-#: printing/printconfigwidgets.cpp:112
+#: printing/printconfigwidgets.cpp:123
 #, kde-format
 msgid "Pr&int header"
 msgstr "হেডা&র ছাপাও "
 
-#: printing/printconfigwidgets.cpp:114
+#: printing/printconfigwidgets.cpp:125
 #, kde-format
 msgid "Pri&nt footer"
 msgstr "ফুটার ছাপা&ও"
 
-#: printing/printconfigwidgets.cpp:120
+#: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
 msgstr "হেডার/ফুটার ফন্ট:"
 
-#: printing/printconfigwidgets.cpp:126
+#: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
 msgstr "হেডার বৈশিষ্ট্যাবলী"
 
-#: printing/printconfigwidgets.cpp:130
+#: printing/printconfigwidgets.cpp:141
 #, kde-format
 msgid "&Format:"
 msgstr "&ফর্ম্যাট:"
 
-#: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
+#: printing/printconfigwidgets.cpp:163 printing/printconfigwidgets.cpp:209
 #, kde-format
 msgid "Colors:"
 msgstr "রং:"
 
-#: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
+#: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
 msgstr "পুরোভূমি:"
 
-#: printing/printconfigwidgets.cpp:164
+#: printing/printconfigwidgets.cpp:175
 #, kde-format
 msgid "Bac&kground"
 msgstr "প&টভূমি"
 
-#: printing/printconfigwidgets.cpp:170
+#: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
 msgstr "ফুটার বৈশিষ্ট্যাবলী"
 
-#: printing/printconfigwidgets.cpp:175
+#: printing/printconfigwidgets.cpp:186
 #, kde-format
 msgid "For&mat:"
 msgstr "ফর্ম্যা&ট:"
 
-#: printing/printconfigwidgets.cpp:210
+#: printing/printconfigwidgets.cpp:221
 #, kde-format
 msgid "&Background"
 msgstr "&পটভূমি"
 
-#: printing/printconfigwidgets.cpp:239
+#: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr "<p>পাতার হেডার-এর ফর্ম্যাট। নিম্নোক্ত ট্যাগ-গুলি ব্যবহার করা যেতে পারে:</p>"
 
-#: printing/printconfigwidgets.cpp:241
+#: printing/printconfigwidgets.cpp:252
 #, fuzzy, kde-format
 msgid ""
 "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
@@ -2543,121 +2548,121 @@ msgstr ""
 "<li><tt>%p</tt>: পাতার নম্বর</li> </ul><br> <u>Note:</u> Do <b>not</b> use "
 "the '|' (vertical bar) character."
 
-#: printing/printconfigwidgets.cpp:255
+#: printing/printconfigwidgets.cpp:266
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr "<p>পাতার ফুটার-এর ফর্ম্যাট। নিম্নোক্ত ট্যাগ-গুলি ব্যবহার করা যেতে পারে:</p>"
 
-#: printing/printconfigwidgets.cpp:341
+#: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:343
+#: printing/printconfigwidgets.cpp:354
 #, fuzzy, kde-format
 #| msgid "Current line:"
 msgid "Current User Name"
 msgstr "বর্তমান লাইন:"
 
-#: printing/printconfigwidgets.cpp:345
+#: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:347
+#: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:349
+#: printing/printconfigwidgets.cpp:360
 #, fuzzy, kde-format
 #| msgid "Current line:"
 msgid "Current Time"
 msgstr "বর্তমান লাইন:"
 
-#: printing/printconfigwidgets.cpp:351
+#: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:353
+#: printing/printconfigwidgets.cpp:364
 #, kde-format
 msgid "Current Date (long format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:355
+#: printing/printconfigwidgets.cpp:366
 #, fuzzy, kde-format
 #| msgid "Name"
 msgid "File Name"
 msgstr "নাম"
 
-#: printing/printconfigwidgets.cpp:357
+#: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:359
+#: printing/printconfigwidgets.cpp:370
 #, kde-format
 msgid "Page Number"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:361
+#: printing/printconfigwidgets.cpp:372
 #, kde-format
 msgid "Total Amount of Pages"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:467
+#: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
 msgstr "বিন্যা&স"
 
-#: printing/printconfigwidgets.cpp:473
+#: printing/printconfigwidgets.cpp:484
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "&Color theme:"
 msgstr "রং"
 
-#: printing/printconfigwidgets.cpp:483
+#: printing/printconfigwidgets.cpp:494
 #, kde-format
 msgid "Font:"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:487
+#: printing/printconfigwidgets.cpp:498
 #, kde-format
 msgid "Draw bac&kground color"
 msgstr "&পটভূমির রং আঁকো"
 
-#: printing/printconfigwidgets.cpp:490
+#: printing/printconfigwidgets.cpp:501
 #, kde-format
 msgid "Draw &boxes"
 msgstr "বাক্স আঁকো (&ব)"
 
-#: printing/printconfigwidgets.cpp:494
+#: printing/printconfigwidgets.cpp:505
 #, kde-format
 msgid "Box Properties"
 msgstr "বাক্সর বৈশিষ্ট্যাবলী"
 
-#: printing/printconfigwidgets.cpp:498
+#: printing/printconfigwidgets.cpp:509
 #, kde-format
 msgid "W&idth:"
 msgstr "প্রস্থ (&র):"
 
-#: printing/printconfigwidgets.cpp:506
+#: printing/printconfigwidgets.cpp:517
 #, kde-format
 msgid "&Margin:"
 msgstr "মার্জি&ন:"
 
-#: printing/printconfigwidgets.cpp:514
+#: printing/printconfigwidgets.cpp:525
 #, kde-format
 msgid "Co&lor:"
 msgstr "রং (&র):"
 
-#: printing/printconfigwidgets.cpp:536
+#: printing/printconfigwidgets.cpp:547
 #, kde-format
 msgid "Select the color theme to use for the print."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:538
+#: printing/printconfigwidgets.cpp:549
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>If enabled, the background color of the editor will be used.</"
@@ -2670,7 +2675,7 @@ msgstr ""
 "<p>সক্রিয় করা হলে ছাপানোর সময় পটভূমির রং ব্যবহার করা হবে।</p> <p>এটি কাজে লাগতে "
 "পারে যদি আপনার অন্যান্য রংগুলি শুধুমাত্র গাঢ় পটভূমির উপযুক্ত হয়।</p>"
 
-#: printing/printconfigwidgets.cpp:541
+#: printing/printconfigwidgets.cpp:552
 #, fuzzy, kde-format
 msgid ""
 "<p>If enabled, a box as defined in the properties below will be drawn around "
@@ -2680,32 +2685,32 @@ msgstr ""
 "<p> সক্রিয় একটি বাক্স   উল্লেখকৃত ইঞ্চি টি বৈশিষ্ট্যাবলী নীচে   অঙ্কিত চারপাশ টি বস্তু "
 "-র প্রতি পাতা এবং   বিচ্ছিন্ন থেকে টি বস্তু সঙ্গে একটি লাইন   ভাল</p>"
 
-#: printing/printconfigwidgets.cpp:544
+#: printing/printconfigwidgets.cpp:555
 #, kde-format
 msgid "The width of the box outline"
 msgstr "বাক্সের আউটলাইনের প্রস্থ"
 
-#: printing/printconfigwidgets.cpp:545
+#: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
 msgstr "বাক্সের অভ্যন্তরের মার্জিন, পিক্সেলে মাপা"
 
-#: printing/printconfigwidgets.cpp:546
+#: printing/printconfigwidgets.cpp:557
 #, kde-format
 msgid "The line color to use for boxes"
 msgstr "বাক্সের লাইনের জন্য রং"
 
-#: printing/printpainter.cpp:266
+#: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
 msgstr "(নির্বাচন বন্ধ)"
 
-#: printing/printpainter.cpp:519
+#: printing/printpainter.cpp:522
 #, fuzzy, kde-format
 msgid "Typographical Conventions for %1"
 msgstr "%1-র জন্য "
 
-#: printing/printpainter.cpp:552
+#: printing/printpainter.cpp:555
 #, fuzzy, kde-format
 msgid "text"
 msgstr "প্রসঙ্গ"

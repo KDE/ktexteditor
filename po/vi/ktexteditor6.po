@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-31 02:17+0000\n"
+"POT-Creation-Date: 2023-04-01 02:10+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -2582,14 +2582,19 @@ msgstr "In số thứ tự &dòng"
 msgid "Print &legend"
 msgstr "In &chú thích"
 
-#: printing/printconfigwidgets.cpp:51
+#: printing/printconfigwidgets.cpp:46
+#, kde-format
+msgid "Don't print folded code"
+msgstr ""
+
+#: printing/printconfigwidgets.cpp:54
 #, kde-format
 msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr "<p>Nếu bật, các số thứ tự dòng sẽ được in bên trái (các) trang đó.</p>"
 
-#: printing/printconfigwidgets.cpp:53
+#: printing/printconfigwidgets.cpp:56
 #, kde-format
 msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
@@ -2598,72 +2603,72 @@ msgstr ""
 "<p>In một hộp hiển thị các quy ước thuật in máy cho kiểu tài liệu đó, như "
 "được xác định bởi kiểu tô sáng cú pháp đang được dùng.</p>"
 
-#: printing/printconfigwidgets.cpp:105
+#: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
 msgstr "Đầ&u && chân trang"
 
-#: printing/printconfigwidgets.cpp:112
+#: printing/printconfigwidgets.cpp:123
 #, kde-format
 msgid "Pr&int header"
 msgstr "&In đầu trang"
 
-#: printing/printconfigwidgets.cpp:114
+#: printing/printconfigwidgets.cpp:125
 #, kde-format
 msgid "Pri&nt footer"
 msgstr "I&n chân trang"
 
-#: printing/printconfigwidgets.cpp:120
+#: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
 msgstr "Phông chữ đầu/chân trang:"
 
-#: printing/printconfigwidgets.cpp:126
+#: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
 msgstr "Thuộc tính đầu trang"
 
-#: printing/printconfigwidgets.cpp:130
+#: printing/printconfigwidgets.cpp:141
 #, kde-format
 msgid "&Format:"
 msgstr "Định &dạng:"
 
-#: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
+#: printing/printconfigwidgets.cpp:163 printing/printconfigwidgets.cpp:209
 #, kde-format
 msgid "Colors:"
 msgstr "Màu:"
 
-#: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
+#: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
 msgstr "Tiền cảnh:"
 
-#: printing/printconfigwidgets.cpp:164
+#: printing/printconfigwidgets.cpp:175
 #, kde-format
 msgid "Bac&kground"
 msgstr "&Nền"
 
-#: printing/printconfigwidgets.cpp:170
+#: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
 msgstr "Thuộc tính chân trang"
 
-#: printing/printconfigwidgets.cpp:175
+#: printing/printconfigwidgets.cpp:186
 #, kde-format
 msgid "For&mat:"
 msgstr "Định dạn&g:"
 
-#: printing/printconfigwidgets.cpp:210
+#: printing/printconfigwidgets.cpp:221
 #, kde-format
 msgid "&Background"
 msgstr "Nền (&b)"
 
-#: printing/printconfigwidgets.cpp:239
+#: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr "<p>Định dạng của phần đầu trang. Hỗ trợ các thẻ sau đây:</p>"
 
-#: printing/printconfigwidgets.cpp:241
+#: printing/printconfigwidgets.cpp:252
 #, kde-format
 msgid ""
 "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
@@ -2680,117 +2685,117 @@ msgstr ""
 "tệp</li><li><tt>%U</tt>: URL đầy đủ của tài liệu</li><li><tt>%p</tt>: số thứ "
 "tự trang</li><li><tt>%P</tt>: tổng số trang</li></ul><br />"
 
-#: printing/printconfigwidgets.cpp:255
+#: printing/printconfigwidgets.cpp:266
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr "<p>Định dạng của phần chân trang. Hỗ trợ các thẻ sau đây:</p>"
 
-#: printing/printconfigwidgets.cpp:341
+#: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
 msgstr "Thêm phần giữ chỗ..."
 
-#: printing/printconfigwidgets.cpp:343
+#: printing/printconfigwidgets.cpp:354
 #, kde-format
 msgid "Current User Name"
 msgstr "Tên người dùng hiện tại"
 
-#: printing/printconfigwidgets.cpp:345
+#: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
 msgstr "Ngày/giờ đầy đủ (dạng ngắn)"
 
-#: printing/printconfigwidgets.cpp:347
+#: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
 msgstr "Ngày/giờ đầy đủ (dạng dài)"
 
-#: printing/printconfigwidgets.cpp:349
+#: printing/printconfigwidgets.cpp:360
 #, kde-format
 msgid "Current Time"
 msgstr "Giờ hiện tại"
 
-#: printing/printconfigwidgets.cpp:351
+#: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
 msgstr "Ngày hiện tại (dạng ngắn)"
 
-#: printing/printconfigwidgets.cpp:353
+#: printing/printconfigwidgets.cpp:364
 #, kde-format
 msgid "Current Date (long format)"
 msgstr "Ngày hiện tại (dạng dài)"
 
-#: printing/printconfigwidgets.cpp:355
+#: printing/printconfigwidgets.cpp:366
 #, kde-format
 msgid "File Name"
 msgstr "Tên tệp"
 
-#: printing/printconfigwidgets.cpp:357
+#: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
 msgstr "URL đầy đủ của tài liệu"
 
-#: printing/printconfigwidgets.cpp:359
+#: printing/printconfigwidgets.cpp:370
 #, kde-format
 msgid "Page Number"
 msgstr "Số thứ tự trang"
 
-#: printing/printconfigwidgets.cpp:361
+#: printing/printconfigwidgets.cpp:372
 #, kde-format
 msgid "Total Amount of Pages"
 msgstr "Tổng số trang"
 
-#: printing/printconfigwidgets.cpp:467
+#: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
 msgstr "&Bố cục"
 
-#: printing/printconfigwidgets.cpp:473
+#: printing/printconfigwidgets.cpp:484
 #, kde-format
 msgid "&Color theme:"
 msgstr "Chủ đề &màu:"
 
-#: printing/printconfigwidgets.cpp:483
+#: printing/printconfigwidgets.cpp:494
 #, kde-format
 msgid "Font:"
 msgstr "Phông chữ:"
 
-#: printing/printconfigwidgets.cpp:487
+#: printing/printconfigwidgets.cpp:498
 #, kde-format
 msgid "Draw bac&kground color"
 msgstr "Vẽ màu &nền"
 
-#: printing/printconfigwidgets.cpp:490
+#: printing/printconfigwidgets.cpp:501
 #, kde-format
 msgid "Draw &boxes"
 msgstr "Vẽ &hộp"
 
-#: printing/printconfigwidgets.cpp:494
+#: printing/printconfigwidgets.cpp:505
 #, kde-format
 msgid "Box Properties"
 msgstr "Thuộc tính hộp"
 
-#: printing/printconfigwidgets.cpp:498
+#: printing/printconfigwidgets.cpp:509
 #, kde-format
 msgid "W&idth:"
 msgstr "Chiều &rộng:"
 
-#: printing/printconfigwidgets.cpp:506
+#: printing/printconfigwidgets.cpp:517
 #, kde-format
 msgid "&Margin:"
 msgstr "&Viền:"
 
-#: printing/printconfigwidgets.cpp:514
+#: printing/printconfigwidgets.cpp:525
 #, kde-format
 msgid "Co&lor:"
 msgstr "&Màu:"
 
-#: printing/printconfigwidgets.cpp:536
+#: printing/printconfigwidgets.cpp:547
 #, kde-format
 msgid "Select the color theme to use for the print."
 msgstr "Chọn chủ đề màu để dùng cho việc in."
 
-#: printing/printconfigwidgets.cpp:538
+#: printing/printconfigwidgets.cpp:549
 #, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
@@ -2799,7 +2804,7 @@ msgstr ""
 "<p>Nếu bật, màu nền của trình biên tập sẽ được dùng.</p><p>Có thể có ích nếu "
 "chủ đề màu của bạn được thiết kế cho nền tối.</p>"
 
-#: printing/printconfigwidgets.cpp:541
+#: printing/printconfigwidgets.cpp:552
 #, kde-format
 msgid ""
 "<p>If enabled, a box as defined in the properties below will be drawn around "
@@ -2810,32 +2815,32 @@ msgstr ""
 "được vẽ xung quanh nội dung của mỗi trang. Đầu và chân trang cũng sẽ được "
 "phân cách ra khỏi phần nội dung bằng một đường thẳng.</p>"
 
-#: printing/printconfigwidgets.cpp:544
+#: printing/printconfigwidgets.cpp:555
 #, kde-format
 msgid "The width of the box outline"
 msgstr "Độ rộng của đường biên hộp"
 
-#: printing/printconfigwidgets.cpp:545
+#: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
 msgstr "Phần viền phía trong hộp, tính bằng số điểm ảnh"
 
-#: printing/printconfigwidgets.cpp:546
+#: printing/printconfigwidgets.cpp:557
 #, kde-format
 msgid "The line color to use for boxes"
 msgstr "Màu đường thẳng để dùng cho hộp"
 
-#: printing/printpainter.cpp:266
+#: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
 msgstr "(Chọn lựa) "
 
-#: printing/printpainter.cpp:519
+#: printing/printpainter.cpp:522
 #, kde-format
 msgid "Typographical Conventions for %1"
 msgstr "Các quy ước thuật in máy cho %1"
 
-#: printing/printpainter.cpp:552
+#: printing/printpainter.cpp:555
 #, kde-format
 msgid "text"
 msgstr "văn bản"
