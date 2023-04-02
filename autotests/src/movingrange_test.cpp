@@ -504,3 +504,19 @@ void MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache()
     QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).isEmpty());
     QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
 }
+
+void MovingRangeTest::testMultiline()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(
+        QStringLiteral("abcd\n"
+                       "efgh\n"
+                       "hijk\n"));
+
+    // add range to line 1-2
+    auto range = static_cast<Kate::TextRange *>(doc.newMovingRange({1, 0, 2, 3},
+                                                                   KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                                                   KTextEditor::MovingRange::InvalidateIfEmpty));
+    QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).contains(range));
+    QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
+}
