@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:07+0000\n"
-"PO-Revision-Date: 2023-03-19 11:58+0530\n"
+"PO-Revision-Date: 2023-04-02 16:18+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.03.90\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1094,7 +1094,7 @@ msgstr "அம்சத்தை முடக்கு"
 #: dialogs/katedialogs.cpp:581
 #, kde-format
 msgid "May be handy with Markdown"
-msgstr ""
+msgstr "மார்க்குடவுனை பயன்படுத்தம்போது வசதியாக இருக்கலாம்"
 
 #: dialogs/katedialogs.cpp:583
 #, kde-format
@@ -1211,6 +1211,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"இக்கீற்றையோ சாளரத்தையோ அடுத்த‍து மூடும்வரை வட்டில் மாற்றங்கள் ஏற்பட்டால் கேட்காமலேயே தானாக "
+"மீளேற்றும்."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1218,10 +1220,9 @@ msgid "View &Difference"
 msgstr "&வித்தியாசங்களை காட்டு"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "மாற்றங்களை காட்டும் (diff முறையில்)"
+msgstr "மாற்றங்களை காட்டும் (diff முறையில்)."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1229,8 +1230,7 @@ msgid "&Reload"
 msgstr "&மீளேற்று"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "வட்டிலிருந்து கோப்பை மீளேற்றும். சேமிக்கப்படா மாற்றங்களை இழப்பீர்கள்."
 
@@ -1241,8 +1241,7 @@ msgid "&Close File"
 msgstr "&கோப்பை மூடு"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "கோப்பின் உள்ளடக்கத்தை சேமிக்காமல் அதை மூடும்."
 

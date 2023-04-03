@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:07+0000\n"
-"PO-Revision-Date: 2023-04-01 09:11+0300\n"
+"PO-Revision-Date: 2023-04-02 19:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -6855,9 +6855,7 @@ msgstr ""
 "до цієї дії."
 
 #: view/kateview.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Вилучити кінцеві пробіли"
 
