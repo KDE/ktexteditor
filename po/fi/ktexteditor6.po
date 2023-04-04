@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:07+0000\n"
-"PO-Revision-Date: 2023-02-26 16:23+0200\n"
+"PO-Revision-Date: 2023-03-29 23:27+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:21:58+0000\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -81,7 +81,7 @@ msgstr "&Tiedosto"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Tulosta/vie"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -452,7 +452,7 @@ msgstr "&Valitse automaattisesti ensimmäinen täydennysehdotus"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Selaa täydennysluetteloa sarkaimella/vaihto+sarkaimella"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -1259,6 +1259,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Lataa uudelleen automaattisesti ja varoituksetta tiedoston muututtua, kunnes "
+"joko välilehti tai ikkuna suljetaan."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1266,10 +1268,9 @@ msgid "View &Difference"
 msgstr "&Näytä erot"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Näytä versioiden väliset erot"
+msgstr "Näytä muutosten väliset erot."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1277,8 +1278,7 @@ msgid "&Reload"
 msgstr "&Lataa uudelleen"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Lataa tiedosto uudelleen levyltä. Tallentamattomat muutokset menetetään."
@@ -1290,10 +1290,9 @@ msgid "&Close File"
 msgstr "Sul&je tiedosto"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Sulje tiedosto ja hylkää sen sisältö."
+msgstr "Sulkee tiedoston hyläten sen sisällön."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -2174,8 +2173,7 @@ msgid "&Close"
 msgstr "&Sulje"
 
 #: document/katedocument.cpp:2295 document/katedocument.cpp:6559
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Sulje viesti"
@@ -3143,12 +3141,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Siirrä kohdistin seuraavan vastaavaan sisennyksen kohdalle"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Lajittele valittu teksti"
+msgstr "Aakkosta valittu teksti"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3163,44 +3159,37 @@ msgid "Editing"
 msgstr "Muokkaus"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Poista toistuvat rivit valitusta tekstistä tai koko tiedostosta."
+msgstr "Poista toistuvat rivit ja aakkosta valittu teksti"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Monista valitut rivit ylle"
+msgstr "Poista toistuvat rivit"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "&Poista rivinloppuiset välilyönnit:"
+msgstr "Poista rivinloppuiset välilyönnit:"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "&Poista rivinloppuiset välilyönnit:"
+msgstr "Poista rivinalkuiset välilyönnit"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "&Poista rivinloppuiset välilyönnit:"
+msgstr "Poista rivinalkuiset ja -loppuiset välilyönnit"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Yhdistä rivit"
@@ -3242,11 +3231,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI-dekoodaa valittu teksti"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove cursors from empty lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Poista kohdistimet tyhjiltä riveiltä"
+msgstr "Poista tyhjät rivit"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -6527,14 +6515,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Sanoja %1/%2, merkkejä %3/%4"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Sanoja %1/%2, merkkejä %3/%4"
+msgstr "Sanoja %1, merkkejä %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
@@ -6583,10 +6567,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Vaihda valittu teksti ja leikepöydän sisältö keskenään"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Liitä valinta"
+msgstr "Ota valinnasta ruutukaappaus"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -7317,8 +7300,7 @@ msgid "Adds a caret in the line above the current caret."
 msgstr "Lisää nykyisen kohdistusmerkin yllä olevalle riville kohdistusmerkki."
 
 #: view/kateview.cpp:925
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Ota aakkostasosiirtymä käyttöön tai poista se käytöstä"
 
@@ -7592,10 +7574,9 @@ msgid "Backspace"
 msgstr "Askelpalautin"
 
 #: view/kateview.cpp:1236
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Lisää sarkain"
+msgstr "Lisää sarkainmerkki"
 
 #: view/kateview.cpp:1241
 #, kde-format
@@ -7804,63 +7785,54 @@ msgid "Disable Annotation Bar"
 msgstr "Piilota merkintäpalkki"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Avaus ja tallennus"
+msgstr "Tallenna"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "K&opioi…"
+msgstr "Kopioi"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Taustaväri…"
+msgstr "Taustaväri…"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Tekstin korostukset"
+msgstr "Näytä lisäkoristeet"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Näytä &sisennyslinjat"
+msgstr "Näytä ikkunakoristeet"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Ruutukaappaus…"
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Näytä &rivinumerot"
+msgstr "Älä näytä rivinumeroita"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Näytä &rivinumerot"
+msgstr "Näytä rivinumerot 1:stä alkaen"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Näytä &rivinumerot"
+msgstr "Näytä todelliset rivinumerot"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "&Tallenna nimellä…"
+msgstr "Tallenna…"
 
 #: vimode/appcommands.cpp:67
 #, kde-format

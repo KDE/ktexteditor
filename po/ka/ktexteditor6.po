@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:07+0000\n"
-"PO-Revision-Date: 2023-03-28 06:46+0200\n"
+"PO-Revision-Date: 2023-04-03 06:35+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -5846,7 +5846,7 @@ msgstr ""
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
-msgstr "ტაბულაციის მაგიერ გამოტოვებების ჩასმა"
+msgstr "ტაბულაციის მაგიერ გამოტოვებების ჩასმა."
 
 #: variableeditor/variablelineedit.cpp:275
 #, kde-format
@@ -6317,9 +6317,7 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "მიწერილი გამოტოვებების მოცილება"
 

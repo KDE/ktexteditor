@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:07+0000\n"
-"PO-Revision-Date: 2023-03-22 09:25+0100\n"
+"PO-Revision-Date: 2023-04-02 20:06+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2635,7 +2635,7 @@ msgstr "Stampa la &legenda"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Non stampare il codice contratto"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -6859,11 +6859,9 @@ msgstr ""
 "scorciatoia per attivare questa opzione."
 
 #: view/kateview.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "Ri&muovi gli spazi finali"
+msgstr "Rimuovi gli spazi finali"
 
 #: view/kateview.cpp:625
 #, kde-format
