@@ -1260,7 +1260,11 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     // Qt's text renderer ("scribe") version 4.2 assumes a "higher-level protocol"
     // (such as KatePart) will specify the paragraph level, so it does not apply P2 & P3
     // by itself. If this ever change in Qt, the next code block could be removed.
-    if (isLineRightToLeft(lineLayout)) {
+    // -----
+    // Only force RTL direction if dynWordWrap is on. Otherwise the view has infinite width
+    // and the lines will never be forced RTL no matter what direction we set. The layout
+    // can't force a line to the right if it doesn't know where the "right" is
+    if (isLineRightToLeft(lineLayout) || (view()->dynWordWrap() && view()->forceRTLDirection())) {
         opt.setAlignment(Qt::AlignRight);
         opt.setTextDirection(Qt::RightToLeft);
         // Must turn off this flag otherwise cursor placement

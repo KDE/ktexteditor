@@ -565,6 +565,15 @@ void KTextEditor::ViewPrivate::setupActions()
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleWriteLock);
         ac->addAction(QStringLiteral("tools_toggle_write_lock"), a);
 
+        a = m_forceRTLDirection = new KToggleAction(i18n("&Force RTL Direction"), this);
+        a->setWhatsThis(i18n("Force RTL Text Direction"));
+        connect(a, &QAction::triggered, this, [this](bool checked) {
+            m_forceRTL = checked;
+            tagAll();
+            updateView(true);
+        });
+        ac->addAction(QStringLiteral("force_rtl_direction"), a);
+
         a = ac->addAction(QStringLiteral("tools_uppercase"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-uppercase")));
         a->setText(i18n("Uppercase"));
@@ -1782,6 +1791,9 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     m_savedFoldingState = QJsonDocument::fromJson(config.readEntry("TextFolding", QByteArray()));
     applyFoldingState();
 
+    m_forceRTL = config.readEntry("Force RTL Direction", false);
+    m_forceRTLDirection->setChecked(m_forceRTL);
+
     for (const auto &mode : m_viewInternal->m_inputModes) {
         mode->readSessionConfig(config);
     }
@@ -1801,6 +1813,8 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     saveFoldingState();
     config.writeEntry("TextFolding", m_savedFoldingState.toJson(QJsonDocument::Compact));
     m_savedFoldingState = QJsonDocument();
+
+    config.writeEntry("Force RTL Direction", m_forceRTL);
 
     for (const auto &mode : m_viewInternal->m_inputModes) {
         mode->writeSessionConfig(config);
@@ -1961,6 +1975,11 @@ int KTextEditor::ViewPrivate::dynWrapIndicators()
 bool KTextEditor::ViewPrivate::foldingMarkersOn()
 {
     return m_viewInternal->m_leftBorder->foldingMarkersOn();
+}
+
+bool KTextEditor::ViewPrivate::forceRTLDirection()
+{
+    return m_forceRTL;
 }
 
 void KTextEditor::ViewPrivate::toggleWriteLock()

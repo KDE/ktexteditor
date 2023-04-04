@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="103" translationDomain="ktexteditor6">
+<gui name="KatePartView" version="104" translationDomain="ktexteditor6">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -98,6 +98,7 @@
     <Separator group="view_operations" />
     <Action name="view_auto_reload" group="view_operations" />
     <Action name="view_non_printable_spaces" group="view_operations" />
+    <Action name="force_rtl_direction" group="edit_select_merge" />
     <Action name="view_word_count" group="view_operations" />
   </Menu>
 

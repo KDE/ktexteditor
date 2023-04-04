@@ -777,6 +777,7 @@ public:
     bool scrollBarMiniMapAll();
     int dynWrapIndicators();
     bool foldingMarkersOn();
+    bool forceRTLDirection();
 
 private Q_SLOTS:
     /**
@@ -897,8 +898,10 @@ private:
     KToggleAction *m_toggleBlockSelection;
     KToggleAction *m_toggleInsert;
     KToggleAction *m_toggleWriteLock;
+    KToggleAction *m_forceRTLDirection;
 
     bool m_hasWrap;
+    bool m_forceRTL = false;
 
     KTextEditor::DocumentPrivate *const m_doc;
     Kate::TextFolding m_textFolding;
