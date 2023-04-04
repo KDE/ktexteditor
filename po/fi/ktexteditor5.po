@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-04 00:43+0000\n"
-"PO-Revision-Date: 2023-02-26 16:23+0200\n"
+"PO-Revision-Date: 2023-03-29 23:27+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:21:58+0000\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -452,7 +452,7 @@ msgstr "&Valitse automaattisesti ensimmäinen täydennysehdotus"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Selaa täydennysluetteloa sarkaimella/vaihto+sarkaimella"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -3131,12 +3131,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Siirrä kohdistin seuraavan vastaavaan sisennyksen kohdalle"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Lajittele valittu teksti"
+msgstr "Aakkosta valittu teksti"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3148,11 +3146,10 @@ msgid "Editing"
 msgstr "Muokkaus"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "Poista toistuvat rivit valitusta tekstistä tai koko tiedostosta."
+msgstr "Poista toistuvat rivit ja aakkosta valittu teksti"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -6474,14 +6471,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Sanoja %1/%2, merkkejä %3/%4"
 
 #: view/katestatusbar.cpp:573
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Sanoja %1/%2, merkkejä %3/%4"
+msgstr "Sanoja %1, merkkejä %2"
 
 #: view/katestatusbar.cpp:588
 #, kde-format
@@ -7252,8 +7245,7 @@ msgid "Adds a caret in the line above the current caret."
 msgstr "Lisää nykyisen kohdistusmerkin yllä olevalle riville kohdistusmerkki."
 
 #: view/kateview.cpp:914
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Ota aakkostasosiirtymä käyttöön tai poista se käytöstä"
 
@@ -7527,10 +7519,9 @@ msgid "Backspace"
 msgstr "Askelpalautin"
 
 #: view/kateview.cpp:1225
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Lisää sarkain"
+msgstr "Lisää sarkainmerkki"
 
 #: view/kateview.cpp:1230
 #, kde-format
