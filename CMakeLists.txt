@@ -43,10 +43,11 @@ endif()
 option(ENABLE_KAUTH "Enable KAuth integration" ${ENABLE_KAUTH_DEFAULT})
 add_feature_info(KAUTH ${ENABLE_KAUTH} "KAuth integration for editing system files")
 
+set(ktexteditor_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/ktexteditor_version.h")
 ecm_setup_version(
   PROJECT
   VARIABLE_PREFIX KTEXTEDITOR
-  VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_version.h"
+  VERSION_HEADER "${ktexteditor_version_header}"
   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEditorConfigVersion.cmake"
   SOVERSION 6
 )
@@ -128,7 +129,7 @@ install(EXPORT
 )
 
 install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_version.h"
+  "${ktexteditor_version_header}"
   DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor"
   COMPONENT Devel
 )
