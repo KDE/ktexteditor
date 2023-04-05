@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:43+0000\n"
+"POT-Creation-Date: 2023-04-05 00:44+0000\n"
 "PO-Revision-Date: 2019-02-09 14:04-0800\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -2545,86 +2545,91 @@ msgstr "ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ(&n)"
 msgid "Print &legend"
 msgstr "ਪਰਿੰਟ ਸੰਕੇਤ(&l)"
 
-#: printing/printconfigwidgets.cpp:51
+#: printing/printconfigwidgets.cpp:46
+#, kde-format
+msgid "Don't print folded code"
+msgstr ""
+
+#: printing/printconfigwidgets.cpp:54
 #, kde-format
 msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr "<p>ਜੇਕਰ ਯੋਗ ਕੀਤਾ ਤਾਂ ਸਫ਼ੇ ਦੇ ਖੱਬੇ ਪਾਸੇ ਲਾਈਨ ਗਿਣਤੀ ਵੀ ਪਰਿੰਟ ਜਾਵੇਗੀ।</p>"
 
-#: printing/printconfigwidgets.cpp:53
+#: printing/printconfigwidgets.cpp:56
 #, kde-format
 msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
 "as defined by the syntax highlighting being used.</p>"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:105
+#: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
 msgstr "ਹੈੱਡਰ ਅਤੇ ਫੁੱਟਰ(&d)"
 
-#: printing/printconfigwidgets.cpp:112
+#: printing/printconfigwidgets.cpp:123
 #, kde-format
 msgid "Pr&int header"
 msgstr "ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ(&i)"
 
-#: printing/printconfigwidgets.cpp:114
+#: printing/printconfigwidgets.cpp:125
 #, kde-format
 msgid "Pri&nt footer"
 msgstr "ਫੁੱਟਰ ਪਰਿੰਟ ਕਰੋ(&n)"
 
-#: printing/printconfigwidgets.cpp:120
+#: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
 msgstr "ਹੈੱਡਰ/ਫੁੱਟਰ ਫੋਂਟ:"
 
-#: printing/printconfigwidgets.cpp:126
+#: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
 msgstr "ਹੈੱਡਰ ਵਿਸ਼ੇਸ਼ਤਾ"
 
-#: printing/printconfigwidgets.cpp:130
+#: printing/printconfigwidgets.cpp:141
 #, kde-format
 msgid "&Format:"
 msgstr "ਫਾਰਮੈਟ(&F):"
 
-#: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
+#: printing/printconfigwidgets.cpp:163 printing/printconfigwidgets.cpp:209
 #, kde-format
 msgid "Colors:"
 msgstr "ਰੰਗ:"
 
-#: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
+#: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
 msgstr "ਫਾਰਗਰਾਊਂਡ:"
 
-#: printing/printconfigwidgets.cpp:164
+#: printing/printconfigwidgets.cpp:175
 #, kde-format
 msgid "Bac&kground"
 msgstr "ਬੈਕਗਰਾਊਂਡ(&k)"
 
-#: printing/printconfigwidgets.cpp:170
+#: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
 msgstr "ਫੁੱਟਰ ਵਿਸ਼ੇਸ਼ਤਾ"
 
-#: printing/printconfigwidgets.cpp:175
+#: printing/printconfigwidgets.cpp:186
 #, kde-format
 msgid "For&mat:"
 msgstr "ਫਾਰਮੈਟ(&m):"
 
-#: printing/printconfigwidgets.cpp:210
+#: printing/printconfigwidgets.cpp:221
 #, kde-format
 msgid "&Background"
 msgstr "ਬੈਕਗਰਾਊਂਡ(&B)"
 
-#: printing/printconfigwidgets.cpp:239
+#: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr "<p>ਸਫ਼ਾ ਹੈੱਡਰ ਦਾ ਫਾਰਮੈਟ ਹੈ। ਹੇਠ ਦਿੱਤੇ ਟੈਗ ਸਹਾਇਕ ਹਨ:</p>"
 
-#: printing/printconfigwidgets.cpp:241
+#: printing/printconfigwidgets.cpp:252
 #, fuzzy, kde-format
 #| msgid ""
 #| "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
@@ -2649,120 +2654,120 @@ msgstr ""
 "li><li><tt>%p</tt>: ਸਫ਼ਾ ਨੰਬਰ</li></ul><br><u>ਸੂਚਨਾ:</u> '|' (ਖਿਤਿਜੀ ਡੰਡਾ) "
 "<b>ਨਾ</b> ਵਰਤੋਂ।"
 
-#: printing/printconfigwidgets.cpp:255
+#: printing/printconfigwidgets.cpp:266
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr "<p>ਸਫ਼ਾ ਫੁੱਟਰ ਦਾ ਫਾਰਮੈਟ ਹੈ। ਹੇਠ ਦਿੱਤੇ ਟੈਗ ਸਹਾਇਕ ਹਨ:</p>"
 
-#: printing/printconfigwidgets.cpp:341
+#: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:343
+#: printing/printconfigwidgets.cpp:354
 #, kde-format
 msgid "Current User Name"
 msgstr "ਮੌਜੂਦਾ ਯੂਜ਼ਰ ਨਾਂ"
 
-#: printing/printconfigwidgets.cpp:345
+#: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
 msgstr "ਪੂਰੀ ਮਿਤੀ/ਸਮਾਂ (ਛੋਟਾ ਰੂਪ)"
 
-#: printing/printconfigwidgets.cpp:347
+#: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
 msgstr "ਪੂਰੀ ਮਿਤੀ/ਸਮਾਂ (ਲੰਮਾ ਰੂਪ)"
 
-#: printing/printconfigwidgets.cpp:349
+#: printing/printconfigwidgets.cpp:360
 #, kde-format
 msgid "Current Time"
 msgstr "ਮੌਜੂਦਾ ਸਮਾਂ"
 
-#: printing/printconfigwidgets.cpp:351
+#: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
 msgstr "ਮੌਜੂਦਾ ਮਿਤੀ (ਛੋਟਾ ਰੂਪ)"
 
-#: printing/printconfigwidgets.cpp:353
+#: printing/printconfigwidgets.cpp:364
 #, kde-format
 msgid "Current Date (long format)"
 msgstr "ਮੌਜੂਦਾ ਮਿਤੀ (ਵੱਡਾ ਰੂਪ)"
 
-#: printing/printconfigwidgets.cpp:355
+#: printing/printconfigwidgets.cpp:366
 #, kde-format
 msgid "File Name"
 msgstr "ਫਾਈਲ ਨਾਂ"
 
-#: printing/printconfigwidgets.cpp:357
+#: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
 msgstr "ਪੂਰਾ ਡੌਕੂਮੈਂਟ URL"
 
-#: printing/printconfigwidgets.cpp:359
+#: printing/printconfigwidgets.cpp:370
 #, kde-format
 msgid "Page Number"
 msgstr "ਸਫ਼ਾ ਨੰਬਰ"
 
-#: printing/printconfigwidgets.cpp:361
+#: printing/printconfigwidgets.cpp:372
 #, kde-format
 msgid "Total Amount of Pages"
 msgstr "ਸਫ਼ਿਆਂ ਦੀ ਕੁੱਲ ਗਿਣਤੀ"
 
-#: printing/printconfigwidgets.cpp:467
+#: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
 msgstr "ਲੇਆਉਟ(&a)"
 
-#: printing/printconfigwidgets.cpp:473
+#: printing/printconfigwidgets.cpp:484
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "&Color theme:"
 msgstr "ਰੰਗ"
 
-#: printing/printconfigwidgets.cpp:483
+#: printing/printconfigwidgets.cpp:494
 #, fuzzy, kde-format
 #| msgid "Font"
 msgid "Font:"
 msgstr "ਫੋਂਟ"
 
-#: printing/printconfigwidgets.cpp:487
+#: printing/printconfigwidgets.cpp:498
 #, kde-format
 msgid "Draw bac&kground color"
 msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਬਣਾਓ(&k)"
 
-#: printing/printconfigwidgets.cpp:490
+#: printing/printconfigwidgets.cpp:501
 #, kde-format
 msgid "Draw &boxes"
 msgstr "ਬਕਸੇ ਬਣਾਓ(&b)"
 
-#: printing/printconfigwidgets.cpp:494
+#: printing/printconfigwidgets.cpp:505
 #, kde-format
 msgid "Box Properties"
 msgstr "ਬਕਸਾ ਵਿਸ਼ੇਸ਼ਤਾ"
 
-#: printing/printconfigwidgets.cpp:498
+#: printing/printconfigwidgets.cpp:509
 #, kde-format
 msgid "W&idth:"
 msgstr "ਚੌੜਾਈ(&i):"
 
-#: printing/printconfigwidgets.cpp:506
+#: printing/printconfigwidgets.cpp:517
 #, kde-format
 msgid "&Margin:"
 msgstr "ਫਾਸਲਾ(&M):"
 
-#: printing/printconfigwidgets.cpp:514
+#: printing/printconfigwidgets.cpp:525
 #, kde-format
 msgid "Co&lor:"
 msgstr "ਰੰਗ(&l):"
 
-#: printing/printconfigwidgets.cpp:536
+#: printing/printconfigwidgets.cpp:547
 #, fuzzy, kde-format
 #| msgid "Select the color scheme to use for the print."
 msgid "Select the color theme to use for the print."
 msgstr "ਪਰਿੰਟ ਲਈ ਵਰਤਣ ਵਾਸਤੇ ਰੰਗ ਸਕੀਮ ਚੁਣੋ।"
 
-#: printing/printconfigwidgets.cpp:538
+#: printing/printconfigwidgets.cpp:549
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>If enabled, the background color of the editor will be used.</"
@@ -2775,7 +2780,7 @@ msgstr ""
 "<p>ਜੇਕਰ ਯੋਗ ਕੀਤਾ ਤਾਂ ਸੰਪਾਦਕ ਦਾ ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਵਰਤਿਆ ਜਾਵੇਗਾ।</p> <p>ਇਹ ਤਾਂ ਲਾਭਦਾਇਕ ਹੈ, "
 "ਜੇਕਰ ਤੁਹਾਡੀ ਰੰਗ ਸਕੀਮ ਨੂੰ ਇੱਕ ਗੂੜੀ ਬੈਕਗਰਾਊਂਡ ਲਈ ਵਰਤਿਆ ਹੋਵੇ।</p>"
 
-#: printing/printconfigwidgets.cpp:541
+#: printing/printconfigwidgets.cpp:552
 #, kde-format
 msgid ""
 "<p>If enabled, a box as defined in the properties below will be drawn around "
@@ -2783,32 +2788,32 @@ msgid ""
 "contents with a line as well.</p>"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:544
+#: printing/printconfigwidgets.cpp:555
 #, kde-format
 msgid "The width of the box outline"
 msgstr "ਬਕਸੇ ਦੀ ਆਉਟਲਾਈਨ ਦੀ ਚੌੜਾਈ"
 
-#: printing/printconfigwidgets.cpp:545
+#: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
 msgstr "ਬਕਸੇ ਅੰਦਰ ਫਾਸਲਾ, ਪਿਕਸਲ ਵਿੱਚ"
 
-#: printing/printconfigwidgets.cpp:546
+#: printing/printconfigwidgets.cpp:557
 #, kde-format
 msgid "The line color to use for boxes"
 msgstr "ਬਕਸੇ ਲਈ ਵਰਤਣ ਲਈ ਲਾਈਨ ਰੰਗ"
 
-#: printing/printpainter.cpp:266
+#: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
 msgstr "(ਚੋਣ ਵਿੱਚੋਂ) "
 
-#: printing/printpainter.cpp:519
+#: printing/printpainter.cpp:522
 #, kde-format
 msgid "Typographical Conventions for %1"
 msgstr "%1 ਲਈ ਟਾਈਪੋਗਰਾਫ਼ੀਕਲ ਹਦਾਇਤਾਂ"
 
-#: printing/printpainter.cpp:552
+#: printing/printpainter.cpp:555
 #, kde-format
 msgid "text"
 msgstr "ਟੈਕਸਟ"
@@ -3427,12 +3432,12 @@ msgstr "'help %1' ਕਾਲ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ"
 msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1\n"
 msgstr "ਸਕ੍ਰਿਪਟ %1 ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ\n"
 
-#: script/katescript.cpp:210
+#: script/katescript.cpp:215
 #, kde-format
 msgid "Error loading script %1"
 msgstr "ਸਕ੍ਰਿਪਟ %1 ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ"

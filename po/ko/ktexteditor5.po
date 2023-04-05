@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:43+0000\n"
+"POT-Creation-Date: 2023-04-05 00:44+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2554,14 +2554,19 @@ msgstr "행 번호 인쇄(&N)"
 msgid "Print &legend"
 msgstr "범례 인쇄(&L)"
 
-#: printing/printconfigwidgets.cpp:51
+#: printing/printconfigwidgets.cpp:46
+#, kde-format
+msgid "Don't print folded code"
+msgstr ""
+
+#: printing/printconfigwidgets.cpp:54
 #, kde-format
 msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr "<p>만약 활성화되어 있으면 페이지의 왼쪽에 줄 번호가 인쇄됩니다.</p>"
 
-#: printing/printconfigwidgets.cpp:53
+#: printing/printconfigwidgets.cpp:56
 #, kde-format
 msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
@@ -2570,72 +2575,72 @@ msgstr ""
 "<p>구문 강조에서 정의하는 대로 타이포그래피 관습이 담겨 있는 상자를 인쇄합니"
 "다.</p>"
 
-#: printing/printconfigwidgets.cpp:105
+#: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
 msgstr "머리말과 꼬리말(&D)"
 
-#: printing/printconfigwidgets.cpp:112
+#: printing/printconfigwidgets.cpp:123
 #, kde-format
 msgid "Pr&int header"
 msgstr "머리말 인쇄(&I)"
 
-#: printing/printconfigwidgets.cpp:114
+#: printing/printconfigwidgets.cpp:125
 #, kde-format
 msgid "Pri&nt footer"
 msgstr "꼬리말 인쇄(&N)"
 
-#: printing/printconfigwidgets.cpp:120
+#: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
 msgstr "머리말/꼬리말 글꼴:"
 
-#: printing/printconfigwidgets.cpp:126
+#: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
 msgstr "머리말 속성"
 
-#: printing/printconfigwidgets.cpp:130
+#: printing/printconfigwidgets.cpp:141
 #, kde-format
 msgid "&Format:"
 msgstr "형식(&F):"
 
-#: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
+#: printing/printconfigwidgets.cpp:163 printing/printconfigwidgets.cpp:209
 #, kde-format
 msgid "Colors:"
 msgstr "색상:"
 
-#: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
+#: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
 msgstr "배경색:"
 
-#: printing/printconfigwidgets.cpp:164
+#: printing/printconfigwidgets.cpp:175
 #, kde-format
 msgid "Bac&kground"
 msgstr "배경(&K)"
 
-#: printing/printconfigwidgets.cpp:170
+#: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
 msgstr "꼬리말 속성"
 
-#: printing/printconfigwidgets.cpp:175
+#: printing/printconfigwidgets.cpp:186
 #, kde-format
 msgid "For&mat:"
 msgstr "형식(&M):"
 
-#: printing/printconfigwidgets.cpp:210
+#: printing/printconfigwidgets.cpp:221
 #, kde-format
 msgid "&Background"
 msgstr "배경(&B)"
 
-#: printing/printconfigwidgets.cpp:239
+#: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr "<p>머리말의 형식입니다. 다음 태그를 지원합니다:</p>"
 
-#: printing/printconfigwidgets.cpp:241
+#: printing/printconfigwidgets.cpp:252
 #, kde-format
 msgid ""
 "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
@@ -2651,118 +2656,118 @@ msgstr ""
 "li><li><tt>%f</tt>: 파일 이름</li><li><tt>%U</tt>: 문서의 URL</li><li><tt>"
 "%p</tt>: 쪽 번호</li><li><tt>%P</tt>: 총 쪽 수</li></ul><br />"
 
-#: printing/printconfigwidgets.cpp:255
+#: printing/printconfigwidgets.cpp:266
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr "<p>꼬리말의 형식입니다. 다음 태그를 지원합니다:</p>"
 
-#: printing/printconfigwidgets.cpp:341
+#: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
 msgstr "자리 비움자 추가..."
 
-#: printing/printconfigwidgets.cpp:343
+#: printing/printconfigwidgets.cpp:354
 #, kde-format
 msgid "Current User Name"
 msgstr "현재 사용자 이름"
 
-#: printing/printconfigwidgets.cpp:345
+#: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
 msgstr "완전한 날짜/시간 (짧은 형식)"
 
-#: printing/printconfigwidgets.cpp:347
+#: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
 msgstr "완전한 날짜/시간 (긴 형식)"
 
-#: printing/printconfigwidgets.cpp:349
+#: printing/printconfigwidgets.cpp:360
 #, kde-format
 msgid "Current Time"
 msgstr "현재 시간"
 
-#: printing/printconfigwidgets.cpp:351
+#: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
 msgstr "현재 시간 (짧은 형식)"
 
-#: printing/printconfigwidgets.cpp:353
+#: printing/printconfigwidgets.cpp:364
 #, kde-format
 msgid "Current Date (long format)"
 msgstr "현재 시간 (긴 형식)"
 
-#: printing/printconfigwidgets.cpp:355
+#: printing/printconfigwidgets.cpp:366
 #, kde-format
 msgid "File Name"
 msgstr "파일 이름"
 
-#: printing/printconfigwidgets.cpp:357
+#: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
 msgstr "전체 문서 URL"
 
-#: printing/printconfigwidgets.cpp:359
+#: printing/printconfigwidgets.cpp:370
 #, kde-format
 msgid "Page Number"
 msgstr "쪽 번호"
 
-#: printing/printconfigwidgets.cpp:361
+#: printing/printconfigwidgets.cpp:372
 #, kde-format
 msgid "Total Amount of Pages"
 msgstr "전체 쪽 수"
 
-#: printing/printconfigwidgets.cpp:467
+#: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
 msgstr "레이아웃(&A)"
 
-#: printing/printconfigwidgets.cpp:473
+#: printing/printconfigwidgets.cpp:484
 #, kde-format
 msgid "&Color theme:"
 msgstr "색 테마(&C):"
 
-#: printing/printconfigwidgets.cpp:483
+#: printing/printconfigwidgets.cpp:494
 #, fuzzy, kde-format
 #| msgid "Font"
 msgid "Font:"
 msgstr "글꼴"
 
-#: printing/printconfigwidgets.cpp:487
+#: printing/printconfigwidgets.cpp:498
 #, kde-format
 msgid "Draw bac&kground color"
 msgstr "배경색 그리기(&K)"
 
-#: printing/printconfigwidgets.cpp:490
+#: printing/printconfigwidgets.cpp:501
 #, kde-format
 msgid "Draw &boxes"
 msgstr "상자 그리기(&B)"
 
-#: printing/printconfigwidgets.cpp:494
+#: printing/printconfigwidgets.cpp:505
 #, kde-format
 msgid "Box Properties"
 msgstr "상자 속성"
 
-#: printing/printconfigwidgets.cpp:498
+#: printing/printconfigwidgets.cpp:509
 #, kde-format
 msgid "W&idth:"
 msgstr "너비(&I):"
 
-#: printing/printconfigwidgets.cpp:506
+#: printing/printconfigwidgets.cpp:517
 #, kde-format
 msgid "&Margin:"
 msgstr "여백(&M):"
 
-#: printing/printconfigwidgets.cpp:514
+#: printing/printconfigwidgets.cpp:525
 #, kde-format
 msgid "Co&lor:"
 msgstr "색(&L):"
 
-#: printing/printconfigwidgets.cpp:536
+#: printing/printconfigwidgets.cpp:547
 #, kde-format
 msgid "Select the color theme to use for the print."
 msgstr "인쇄할 때 사용할 색 테마를 선택하십시오."
 
-#: printing/printconfigwidgets.cpp:538
+#: printing/printconfigwidgets.cpp:549
 #, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
@@ -2771,7 +2776,7 @@ msgstr ""
 "<p>사용하면 편집기의 배경색을 인쇄합니다.</p><p>만약 색 테마가 어두운 배경을 "
 "기준으로 디자인되어 있으면 유용합니다.</p>"
 
-#: printing/printconfigwidgets.cpp:541
+#: printing/printconfigwidgets.cpp:552
 #, kde-format
 msgid ""
 "<p>If enabled, a box as defined in the properties below will be drawn around "
@@ -2781,32 +2786,32 @@ msgstr ""
 "<p>사용하면 각각 페이지의 내용을 둘러싸는 상자를 출력합니다. 머리말과 꼬리말"
 "은 내용에서 구분되어 인쇄됩니다.</p>"
 
-#: printing/printconfigwidgets.cpp:544
+#: printing/printconfigwidgets.cpp:555
 #, kde-format
 msgid "The width of the box outline"
 msgstr "상자 외곽선의 폭"
 
-#: printing/printconfigwidgets.cpp:545
+#: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
 msgstr "픽셀 단위의 상자 안의 여백"
 
-#: printing/printconfigwidgets.cpp:546
+#: printing/printconfigwidgets.cpp:557
 #, kde-format
 msgid "The line color to use for boxes"
 msgstr "상자의 선 색"
 
-#: printing/printpainter.cpp:266
+#: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
 msgstr "(선택의) "
 
-#: printing/printpainter.cpp:519
+#: printing/printpainter.cpp:522
 #, kde-format
 msgid "Typographical Conventions for %1"
 msgstr "%1의 타이포그래피 관습"
 
-#: printing/printpainter.cpp:552
+#: printing/printpainter.cpp:555
 #, kde-format
 msgid "text"
 msgstr "문자열"
@@ -3458,12 +3463,12 @@ msgstr "'help %1' 호출 오류"
 msgid "No help specified for command '%1' in script %2"
 msgstr "스크립트 %2의 명령 '%1'에 대한 도움말 없음"
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1\n"
 msgstr "스크립트 %1 불러오는 중 오류 발생\n"
 
-#: script/katescript.cpp:210
+#: script/katescript.cpp:215
 #, kde-format
 msgid "Error loading script %1"
 msgstr "스크립트 %1 불러오는 중 오류 발생"

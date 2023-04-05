@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:43+0000\n"
+"POT-Creation-Date: 2023-04-05 00:44+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -2473,7 +2473,12 @@ msgstr "Shici&lela Amanani Elayini"
 msgid "Print &legend"
 msgstr "Shici&lela Amanani Elayini"
 
-#: printing/printconfigwidgets.cpp:51
+#: printing/printconfigwidgets.cpp:46
+#, kde-format
+msgid "Don't print folded code"
+msgstr ""
+
+#: printing/printconfigwidgets.cpp:54
 #, kde-format
 msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
@@ -2482,7 +2487,7 @@ msgstr ""
 "<p>xa yenziwe, amanani elayini azakushicilelwa ecaleni elisekhohlo "
 "lephepha(ama). </p>"
 
-#: printing/printconfigwidgets.cpp:53
+#: printing/printconfigwidgets.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Print a box displaying typographical conventions for the document "
@@ -2494,76 +2499,76 @@ msgstr ""
 "<p>Shicilela ibhokisi ebonisa izivumelwano zoshicilelo zoludidi loxwebhu, "
 "njengokuchazwe luphawuliso lwesivakalisi esisebenziswayo."
 
-#: printing/printconfigwidgets.cpp:105
+#: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
 msgstr "Okubhal&iweyo okuphezulu && Okubhaliweyo okusezantsi"
 
-#: printing/printconfigwidgets.cpp:112
+#: printing/printconfigwidgets.cpp:123
 #, fuzzy, kde-format
 msgid "Pr&int header"
 msgstr "Sh&icilela Okubhaliweyo okuphezulu"
 
-#: printing/printconfigwidgets.cpp:114
+#: printing/printconfigwidgets.cpp:125
 #, fuzzy, kde-format
 msgid "Pri&nt footer"
 msgstr "Shicil&ela Okubhaliweyo okusezantsi"
 
-#: printing/printconfigwidgets.cpp:120
+#: printing/printconfigwidgets.cpp:131
 #, fuzzy, kde-format
 msgid "Header/footer font:"
 msgstr ""
 "Okubhaliweyo okuphezulu kwephepha/Okubhaliweyo okusezantsi kwephepha "
 "Ubungakanani begama:"
 
-#: printing/printconfigwidgets.cpp:126
+#: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
 msgstr "Iimpahla ze header"
 
-#: printing/printconfigwidgets.cpp:130
+#: printing/printconfigwidgets.cpp:141
 #, kde-format
 msgid "&Format:"
 msgstr "&Izibuko:"
 
-#: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
+#: printing/printconfigwidgets.cpp:163 printing/printconfigwidgets.cpp:209
 #, kde-format
 msgid "Colors:"
 msgstr "Imibala:"
 
-#: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
+#: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
 msgstr "Indawo yommameli:"
 
-#: printing/printconfigwidgets.cpp:164
+#: printing/printconfigwidgets.cpp:175
 #, kde-format
 msgid "Bac&kground"
 msgstr "Isiqa&lo"
 
-#: printing/printconfigwidgets.cpp:170
+#: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
 msgstr "Iimpahla Zokubhaliweyo okusezantsi kwephepha"
 
-#: printing/printconfigwidgets.cpp:175
+#: printing/printconfigwidgets.cpp:186
 #, kde-format
 msgid "For&mat:"
 msgstr "Fo&mati:"
 
-#: printing/printconfigwidgets.cpp:210
+#: printing/printconfigwidgets.cpp:221
 #, kde-format
 msgid "&Background"
 msgstr "&Isiqalo"
 
-#: printing/printconfigwidgets.cpp:239
+#: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr ""
 "<p> Ifomati yokubhaliweyo okuphezulu kwephepha. I tags ezilandelayo "
 "azixhaswanga:</p>"
 
-#: printing/printconfigwidgets.cpp:241
+#: printing/printconfigwidgets.cpp:252
 #, fuzzy, kde-format
 #| msgid ""
 #| "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
@@ -2590,121 +2595,121 @@ msgstr ""
 "ul><br><u>Qaphela:</u> Su <b>kusebenzisa</b> i  '|' (i bar ethe nkqo) "
 "abasebenzi."
 
-#: printing/printconfigwidgets.cpp:255
+#: printing/printconfigwidgets.cpp:266
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr ""
 "<p> Ifomati yokubhaliweyo okusezantsi kwephepha. Ezi tags ezilandelayo "
 "azixhaswanga:</p>"
 
-#: printing/printconfigwidgets.cpp:341
+#: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:343
+#: printing/printconfigwidgets.cpp:354
 #, fuzzy, kde-format
 msgid "Current User Name"
 msgstr "Ilsyini yangoku:"
 
-#: printing/printconfigwidgets.cpp:345
+#: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:347
+#: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:349
+#: printing/printconfigwidgets.cpp:360
 #, fuzzy, kde-format
 msgid "Current Time"
 msgstr "Ilsyini yangoku:"
 
-#: printing/printconfigwidgets.cpp:351
+#: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:353
+#: printing/printconfigwidgets.cpp:364
 #, kde-format
 msgid "Current Date (long format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:355
+#: printing/printconfigwidgets.cpp:366
 #, fuzzy, kde-format
 #| msgid "Name"
 msgid "File Name"
 msgstr "Igama"
 
-#: printing/printconfigwidgets.cpp:357
+#: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:359
+#: printing/printconfigwidgets.cpp:370
 #, kde-format
 msgid "Page Number"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:361
+#: printing/printconfigwidgets.cpp:372
 #, kde-format
 msgid "Total Amount of Pages"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:467
+#: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
 msgstr "Ub&eko"
 
-#: printing/printconfigwidgets.cpp:473
+#: printing/printconfigwidgets.cpp:484
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "&Color theme:"
 msgstr "Imibala"
 
-#: printing/printconfigwidgets.cpp:483
+#: printing/printconfigwidgets.cpp:494
 #, kde-format
 msgid "Font:"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:487
+#: printing/printconfigwidgets.cpp:498
 #, fuzzy, kde-format
 msgid "Draw bac&kground color"
 msgstr "Zoba Um&bala Wesiqalo"
 
-#: printing/printconfigwidgets.cpp:490
+#: printing/printconfigwidgets.cpp:501
 #, fuzzy, kde-format
 msgid "Draw &boxes"
 msgstr "Zo&ba Ibhokisi"
 
-#: printing/printconfigwidgets.cpp:494
+#: printing/printconfigwidgets.cpp:505
 #, kde-format
 msgid "Box Properties"
 msgstr "Iimpahla Zebhokisi"
 
-#: printing/printconfigwidgets.cpp:498
+#: printing/printconfigwidgets.cpp:509
 #, fuzzy, kde-format
 msgid "W&idth:"
 msgstr "&Ububanzi"
 
-#: printing/printconfigwidgets.cpp:506
+#: printing/printconfigwidgets.cpp:517
 #, fuzzy, kde-format
 msgid "&Margin:"
 msgstr "&Umda"
 
-#: printing/printconfigwidgets.cpp:514
+#: printing/printconfigwidgets.cpp:525
 #, fuzzy, kde-format
 msgid "Co&lor:"
 msgstr "Um&bala"
 
-#: printing/printconfigwidgets.cpp:536
+#: printing/printconfigwidgets.cpp:547
 #, kde-format
 msgid "Select the color theme to use for the print."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:538
+#: printing/printconfigwidgets.cpp:549
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>If enabled, the background color of the editor will be used.</"
@@ -2717,7 +2722,7 @@ msgstr ""
 "<p>Xa yenziwe, kuzakusebeniswa umbala wesiqalo womhleli.</p><p> Oku "
 "kungabaluncedo ukuba umxholo wakho wemibala wenzelwe isiqalo esimnyama.</p>"
 
-#: printing/printconfigwidgets.cpp:541
+#: printing/printconfigwidgets.cpp:552
 #, kde-format
 msgid ""
 "<p>If enabled, a box as defined in the properties below will be drawn around "
@@ -2728,32 +2733,32 @@ msgstr ""
 "macala onke omxholo wephepha. Okubhaliweyo okuphezulu Nokubhaliweyo "
 "okusezantsi kuzakwehlulwa kumxholo onelayini futhi.</p>"
 
-#: printing/printconfigwidgets.cpp:544
+#: printing/printconfigwidgets.cpp:555
 #, kde-format
 msgid "The width of the box outline"
 msgstr "Ububanzi begqabantshintshi lebhokisi"
 
-#: printing/printconfigwidgets.cpp:545
+#: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
 msgstr "Umda ngaphakathi kweebhokisi, kwi pixels"
 
-#: printing/printconfigwidgets.cpp:546
+#: printing/printconfigwidgets.cpp:557
 #, kde-format
 msgid "The line color to use for boxes"
 msgstr "Umbala welayini engasebenziselwa ii bhokisi"
 
-#: printing/printpainter.cpp:266
+#: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
 msgstr "(Ukhetho lwe)"
 
-#: printing/printpainter.cpp:519
+#: printing/printpainter.cpp:522
 #, fuzzy, kde-format
 msgid "Typographical Conventions for %1"
 msgstr "Izivumelwano Zoshicilelo lwe"
 
-#: printing/printpainter.cpp:552
+#: printing/printpainter.cpp:555
 #, fuzzy, kde-format
 #| msgid "Context"
 msgid "text"
@@ -3356,13 +3361,13 @@ msgstr ""
 msgid "No help specified for command '%1' in script %2"
 msgstr ""
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, fuzzy, kde-format
 #| msgid "Error: %1"
 msgid "Error loading script %1\n"
 msgstr "Imposiso: %1"
 
-#: script/katescript.cpp:210
+#: script/katescript.cpp:215
 #, kde-format
 msgid "Error loading script %1"
 msgstr ""
