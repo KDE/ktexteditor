@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-01-13 01:05+0100\n"
+"PO-Revision-Date: 2023-04-05 04:46+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 23.03.80\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -2643,7 +2643,7 @@ msgstr "Imprimir &leyenda"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "No imprimir el código plegado"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format

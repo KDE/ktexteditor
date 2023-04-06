@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-01-14 19:14+0100\n"
+"PO-Revision-Date: 2023-04-04 16:39+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -2794,7 +2794,7 @@ msgstr "Imprimer la &légende"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Ne pas imprimer le code replié"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
