@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-01-13 01:21+0000\n"
+"PO-Revision-Date: 2023-04-06 10:16+0100\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -2680,7 +2680,7 @@ msgstr "Imprimir a &legenda"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Não imprimir o código dobrado"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
