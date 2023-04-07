@@ -138,7 +138,7 @@ int EditorConfig::parse()
             tabWidthSet = true;
         } else if (QLatin1String("trim_trailing_whitespace") == key && checkBoolValue(value, &boolValue)) {
             if (boolValue) {
-                m_document->config()->setRemoveSpaces(2);
+                m_document->config()->setRemoveSpaces(1 /* remove trailing spaces of modified lines (line modification system) */);
             } else {
                 m_document->config()->setRemoveSpaces(0);
             }
