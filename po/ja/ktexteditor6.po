@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-02 02:07+0000\n"
+"POT-Creation-Date: 2023-04-07 02:03+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -126,38 +126,38 @@ msgid "&Code Folding"
 msgstr "コード折りたたみ(&C)"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:104
+#: data/katepart5ui.rc:105
 #, kde-format
 msgid "&Go"
 msgstr ""
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:119
+#: data/katepart5ui.rc:120
 #, kde-format
 msgid "&Tools"
 msgstr "ツール(&T)"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:133
+#: data/katepart5ui.rc:134
 #, kde-format
 msgid "Word Completion"
 msgstr "単語補完"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:139 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:140 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:191
 #, kde-format
 msgid "Spelling"
 msgstr "スペル"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:149
+#: data/katepart5ui.rc:150
 #, kde-format
 msgid "&Settings"
 msgstr "設定(&S)"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:173
+#: data/katepart5ui.rc:174
 #, kde-format
 msgid "Main Toolbar"
 msgstr "メインツールバー"
@@ -6544,7 +6544,7 @@ msgstr "行末"
 msgid "Mode"
 msgstr "モード(&M)"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:674
+#: view/katestatusbar.cpp:209 view/kateview.cpp:683
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6851,12 +6851,23 @@ msgstr "読み取り専用モード(&R)"
 msgid "Lock/unlock the document for writing"
 msgstr "文書への書き込みのロック/ロック解除"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:568
+#, kde-format
+msgid "&Force RTL Direction"
+msgstr ""
+
+#: view/kateview.cpp:569
+#, fuzzy, kde-format
+#| msgid "Text Selection Mode"
+msgid "Force RTL Text Direction"
+msgstr "テキスト選択モード"
+
+#: view/kateview.cpp:579
 #, kde-format
 msgid "Uppercase"
 msgstr "大文字に"
 
-#: view/kateview.cpp:573
+#: view/kateview.cpp:582
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6865,12 +6876,12 @@ msgstr ""
 "選択範囲 (テキストが選択されていない場合はカーソルの右の文字) を大文字に変換"
 "します。"
 
-#: view/kateview.cpp:579
+#: view/kateview.cpp:588
 #, kde-format
 msgid "Lowercase"
 msgstr "小文字に"
 
-#: view/kateview.cpp:582
+#: view/kateview.cpp:591
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6879,12 +6890,12 @@ msgstr ""
 "選択範囲 (テキストが選択されていない場合はカーソルの右の文字) を小文字に変換"
 "します。"
 
-#: view/kateview.cpp:588
+#: view/kateview.cpp:597
 #, kde-format
 msgid "Capitalize"
 msgstr "先頭を大文字に"
 
-#: view/kateview.cpp:591
+#: view/kateview.cpp:600
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6894,17 +6905,17 @@ msgstr ""
 "します。"
 
 # ACCELERATOR added by translator
-#: view/kateview.cpp:596
+#: view/kateview.cpp:605
 #, kde-format
 msgid "Join Lines"
 msgstr "行を結合(&J)"
 
-#: view/kateview.cpp:601
+#: view/kateview.cpp:610
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "コード補完を開始"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:611
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6913,206 +6924,206 @@ msgstr ""
 "手動でコード補完を開始します。通常はこのアクションに割り当てられたショート"
 "カットを使います。"
 
-#: view/kateview.cpp:607
+#: view/kateview.cpp:616
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces"
 msgid "Remove Trailing Spaces"
 msgstr "末尾のスペースを削除する(&M)"
 
-#: view/kateview.cpp:625
+#: view/kateview.cpp:634
 #, kde-format
 msgid "Print the current document."
 msgstr "現在の文書を印刷します。"
 
-#: view/kateview.cpp:628
+#: view/kateview.cpp:637
 #, fuzzy, kde-format
 #| msgid "Print the current document."
 msgid "Show print preview of current document"
 msgstr "現在の文書を印刷します。"
 
-#: view/kateview.cpp:632
+#: view/kateview.cpp:641
 #, kde-format
 msgid "Reloa&d"
 msgstr "再読み込み(&D)"
 
-#: view/kateview.cpp:634
+#: view/kateview.cpp:643
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "現在の文書をディスクから再読み込みします。"
 
-#: view/kateview.cpp:638
+#: view/kateview.cpp:647
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "選択した名前で、現在の文書をディスクに保存します。"
 
-#: view/kateview.cpp:640
+#: view/kateview.cpp:649
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr ""
 
-#: view/kateview.cpp:646
+#: view/kateview.cpp:655
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Save &Copy As..."
 msgstr "別名で保存(&S)..."
 
-#: view/kateview.cpp:647
+#: view/kateview.cpp:656
 #, fuzzy, kde-format
 #| msgid "Reload the current document from disk."
 msgid "Save a copy of the current document to disk."
 msgstr "現在の文書をディスクから再読み込みします。"
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:660
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
 "cursor to move to."
 msgstr "このコマンドはダイアログを開き、カーソルを移動させる行を選択します。"
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:664
 #, fuzzy, kde-format
 #| msgid "Move to Previous Line"
 msgid "Go to Previous Modified Line"
 msgstr "前の行に移動"
 
-#: view/kateview.cpp:656
+#: view/kateview.cpp:665
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Move upwards to the previous modified line."
 msgstr "マッチする括弧に移動"
 
-#: view/kateview.cpp:661
+#: view/kateview.cpp:670
 #, fuzzy, kde-format
 #| msgid "Move to Next Line"
 msgid "Go to Next Modified Line"
 msgstr "次の行に移動"
 
-#: view/kateview.cpp:662
+#: view/kateview.cpp:671
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr ""
 
-#: view/kateview.cpp:666
+#: view/kateview.cpp:675
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "エディタを設定(&C)..."
 
-#: view/kateview.cpp:668
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "このエディタのさまざまなオプションを設定します。"
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:680
 #, kde-format
 msgid "&Mode"
 msgstr "モード(&M)"
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:686
 #, kde-format
 msgid "&Highlighting"
 msgstr "強調(&H)"
 
-#: view/kateview.cpp:679
+#: view/kateview.cpp:688
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "ここでどのように現在の文書を強調表示するかを選択できます。"
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:691
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "&Editor Color Theme"
 msgstr "フォントと色のスキーマ"
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:697
 #, kde-format
 msgid "&Indentation"
 msgstr "字下げモード(&I)"
 
-#: view/kateview.cpp:696
+#: view/kateview.cpp:705
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "現在の文書のすべてのテキストを選択します。"
 
-#: view/kateview.cpp:699
+#: view/kateview.cpp:708
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
 msgstr "現在の文書のある部分を選択すると、それ以上選択ができなくなります。"
 
-#: view/kateview.cpp:703
+#: view/kateview.cpp:712
 #, kde-format
 msgid "Enlarge Font"
 msgstr "フォントサイズを大きく"
 
-#: view/kateview.cpp:705
+#: view/kateview.cpp:714
 #, kde-format
 msgid "This increases the display font size."
 msgstr "表示フォントサイズを大きくします。"
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:721
 #, kde-format
 msgid "Shrink Font"
 msgstr "フォントサイズを小さく"
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:723
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "表示フォントサイズを小さくします。"
 
-#: view/kateview.cpp:721
+#: view/kateview.cpp:730
 #, kde-format
 msgid "Reset Font Size"
 msgstr ""
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:732
 #, fuzzy, kde-format
 #| msgid "This increases the display font size."
 msgid "This resets the display font size."
 msgstr "表示フォントサイズを大きくします。"
 
-#: view/kateview.cpp:726
+#: view/kateview.cpp:735
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "矩形選択モード(&O)"
 
-#: view/kateview.cpp:729
+#: view/kateview.cpp:738
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
 "and the block selection mode."
 msgstr "このコマンドは標準の行選択モードと矩形選択モードを切り替えます。"
 
-#: view/kateview.cpp:733
+#: view/kateview.cpp:742
 #, fuzzy, kde-format
 #| msgid "Vi Input Mode"
 msgid "Switch to Next Input Mode"
 msgstr "VI 入力モード"
 
-#: view/kateview.cpp:735
+#: view/kateview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Select to End of Line"
 msgid "Switch to the next input mode."
 msgstr "行末まで選択"
 
-#: view/kateview.cpp:738
+#: view/kateview.cpp:747
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "上書きモード(&I)"
 
-#: view/kateview.cpp:741
+#: view/kateview.cpp:750
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr "テキスト入力モードの上書き、挿入を切り替えます。"
 
-#: view/kateview.cpp:745
+#: view/kateview.cpp:754
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "動的な行の折り返し(&D)"
 
-#: view/kateview.cpp:749
+#: view/kateview.cpp:758
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7125,37 +7136,37 @@ msgstr ""
 "このオプションをチェックすると、スクリーンの表示境界でテキストを改行します。"
 
 # ACCELERATOR added by translator
-#: view/kateview.cpp:753
+#: view/kateview.cpp:762
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "動的な行の折り返しマーカー(&Y)"
 
-#: view/kateview.cpp:755
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "動的な行の折り返しマーカーを表示すべき場合を選択してください。"
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:766
 #, kde-format
 msgid "&Off"
 msgstr "表示しない(&O)"
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:766
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "行番号に従う(&L)"
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:766
 #, kde-format
 msgid "&Always On"
 msgstr "常に表示(&A)"
 
-#: view/kateview.cpp:761
+#: view/kateview.cpp:770
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "固定的な行の折り返し"
 
-#: view/kateview.cpp:763
+#: view/kateview.cpp:772
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7166,12 +7177,12 @@ msgid ""
 msgstr ""
 "このオプションをチェックすると、スクリーンの表示境界でテキストを改行します。"
 
-#: view/kateview.cpp:770
+#: view/kateview.cpp:779
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "固定的な行の折り返しマーカーを表示(&W)"
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:782
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7180,12 +7191,12 @@ msgstr ""
 "行の折り返しマーカーの表示/非表示を切り替えます。編集オプションで定義された折"
 "り返し文字数の位置に縦線が表示されます。"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:786
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "折りたたみマーカーを表示(&M)"
 
-#: view/kateview.cpp:779
+#: view/kateview.cpp:788
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7194,12 +7205,12 @@ msgstr ""
 "コード折りたたみが可能な場合にコード折りたたみマーカーを表示させるかどうかを"
 "選択します。"
 
-#: view/kateview.cpp:782
+#: view/kateview.cpp:791
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "アイコンバーを表示(&I)"
 
-#: view/kateview.cpp:784
+#: view/kateview.cpp:793
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7208,22 +7219,22 @@ msgstr ""
 "<qt>アイコンバーの表示/非表示を切り替えます。<br/><br/>アイコンバーはブック"
 "マークなどのアイコンを表示します。</qt>"
 
-#: view/kateview.cpp:787
+#: view/kateview.cpp:796
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "行番号を表示(&L)"
 
-#: view/kateview.cpp:789
+#: view/kateview.cpp:798
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "ビューの左側の行番号の表示/非表示を切り替えます。"
 
-#: view/kateview.cpp:792
+#: view/kateview.cpp:801
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "スクロールバーのマークを表示(&B)"
 
-#: view/kateview.cpp:794
+#: view/kateview.cpp:803
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7232,13 +7243,13 @@ msgstr ""
 "<qt>垂直スクロールバーのマークの表示/非表示を切り替えます。<br/><br/>マークは"
 "ブックマークなどを表示します。</qt>"
 
-#: view/kateview.cpp:797
+#: view/kateview.cpp:806
 #, fuzzy, kde-format
 #| msgid "Show Scroll&bar Marks"
 msgid "Show Scrollbar Mini-Map"
 msgstr "スクロールバーのマークを表示(&B)"
 
-#: view/kateview.cpp:799
+#: view/kateview.cpp:808
 #, fuzzy, kde-format
 #| msgid ""
 #| "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7255,157 +7266,157 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:811
+#: view/kateview.cpp:820
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr ""
 
-#: view/kateview.cpp:813
+#: view/kateview.cpp:822
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr ""
 
 # ACCELERATOR added by translator
-#: view/kateview.cpp:817
+#: view/kateview.cpp:826
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "コマンドラインに切り替え(&T)"
 
-#: view/kateview.cpp:819
+#: view/kateview.cpp:828
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "ビューの下部のコマンドラインの表示/非表示を切り替えます。"
 
-#: view/kateview.cpp:822
+#: view/kateview.cpp:831
 #, fuzzy, kde-format
 #| msgid "Vi Input Mode"
 msgid "Input Modes"
 msgstr "VI 入力モード"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:840
 #, fuzzy, kde-format
 #| msgid "Activate/deactivate VI input mode"
 msgid "Activate/deactivate %1"
 msgstr "VI 入力モードをオン/オフ"
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:850
 #, kde-format
 msgid "&End of Line"
 msgstr "行末(&E)"
 
-#: view/kateview.cpp:843
+#: view/kateview.cpp:852
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "文書を保存する際にどの行末を使用するかを選択します。"
 
-#: view/kateview.cpp:844
+#: view/kateview.cpp:853
 #, fuzzy, kde-format
 #| msgid "UNIX"
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "UNIX"
 
-#: view/kateview.cpp:845
+#: view/kateview.cpp:854
 #, fuzzy, kde-format
 #| msgid "DOS/Windows"
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "DOS/Windows"
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:855
 #, fuzzy, kde-format
 #| msgid "Macintosh"
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "Macintosh"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:860
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "&Byte Order Mark を追加 (BOM)"
 
-#: view/kateview.cpp:854
+#: view/kateview.cpp:863
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
 msgstr ""
 
-#: view/kateview.cpp:858
+#: view/kateview.cpp:867
 #, kde-format
 msgid "E&ncoding"
 msgstr "エンコーディング(&N)"
 
-#: view/kateview.cpp:862
+#: view/kateview.cpp:871
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "テキストまたは正規表現にマッチする最初のものを検索します。"
 
 # ACCELERATOR added by translator
-#: view/kateview.cpp:866
+#: view/kateview.cpp:875
 #, kde-format
 msgid "Find Selected"
 msgstr "選択テキストを検索(&S)"
 
-#: view/kateview.cpp:868
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "選択テキストにマッチする次のものを検索します。"
 
 # ACCELERATOR added by translator
-#: view/kateview.cpp:872
+#: view/kateview.cpp:881
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "選択テキストを後ろ向きに検索(&B)"
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:883
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "選択テキストにマッチする前のものを検索します。"
 
-#: view/kateview.cpp:878
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr ""
 
-#: view/kateview.cpp:880
+#: view/kateview.cpp:889
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "選択テキストにマッチする次のものを検索します。"
 
-#: view/kateview.cpp:884
+#: view/kateview.cpp:893
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:886
+#: view/kateview.cpp:895
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:890
+#: view/kateview.cpp:899
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr ""
 
-#: view/kateview.cpp:892
+#: view/kateview.cpp:901
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "選択テキストにマッチする次のものを検索します。"
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:905
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "テキストまたは正規表現にマッチする次のものを検索します。"
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:909
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "テキストまたは正規表現にマッチする前のものを検索します。"
 
-#: view/kateview.cpp:904
+#: view/kateview.cpp:913
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7414,97 +7425,97 @@ msgstr ""
 "テキストまたは正規表現にマッチするものを検索し、与えられたテキストで置換しま"
 "す。"
 
-#: view/kateview.cpp:907
+#: view/kateview.cpp:916
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr ""
 
-#: view/kateview.cpp:909
+#: view/kateview.cpp:918
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr ""
 
-#: view/kateview.cpp:913
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr ""
 
-#: view/kateview.cpp:915
+#: view/kateview.cpp:924
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Adds a caret in the line below the current caret."
 msgstr "現在の文書のすべてのテキストを選択します。"
 
-#: view/kateview.cpp:919
+#: view/kateview.cpp:928
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr ""
 
-#: view/kateview.cpp:921
+#: view/kateview.cpp:930
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
-#: view/kateview.cpp:925
+#: view/kateview.cpp:934
 #, fuzzy, kde-format
 #| msgid "Text Cursor Movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "テキストカーソルの移動"
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:935
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:939
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Remove Cursors from Empty Lines"
 msgstr "マッチする括弧に移動"
 
-#: view/kateview.cpp:931
+#: view/kateview.cpp:940
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Remove cursors from empty lines"
 msgstr "マッチする括弧に移動"
 
-#: view/kateview.cpp:935
+#: view/kateview.cpp:944
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "自動スペルチェック"
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "自動スペルチェックを有効/無効にします"
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Change Dictionary..."
 msgstr "辞書を変更..."
 
-#: view/kateview.cpp:943
+#: view/kateview.cpp:952
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "スペルチェックに使う辞書を変更します。"
 
-#: view/kateview.cpp:947
+#: view/kateview.cpp:956
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "辞書範囲をクリア"
 
-#: view/kateview.cpp:949
+#: view/kateview.cpp:958
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
 
-#: view/kateview.cpp:955
+#: view/kateview.cpp:964
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "HTML としてコピー(&H)"
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:965
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
@@ -7512,13 +7523,13 @@ msgid ""
 msgstr ""
 "現在選択中のテキストをシステムのクリップボードに HTML としてコピーします。"
 
-#: view/kateview.cpp:960
+#: view/kateview.cpp:969
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "E&xport as HTML..."
 msgstr "通常の色(&C)..."
 
-#: view/kateview.cpp:962
+#: view/kateview.cpp:971
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7527,215 +7538,215 @@ msgstr ""
 "このコマンドは現在の文書に強調表示情報を埋め込み、例えば HTML などのマーク"
 "アップ文書にエクスポートします。"
 
-#: view/kateview.cpp:1000
+#: view/kateview.cpp:1009
 #, kde-format
 msgid "Move Word Left"
 msgstr "左側の単語の先頭に移動"
 
-#: view/kateview.cpp:1006
+#: view/kateview.cpp:1015
 #, kde-format
 msgid "Select Character Left"
 msgstr "左側の 1 文字まで選択"
 
-#: view/kateview.cpp:1012
+#: view/kateview.cpp:1021
 #, kde-format
 msgid "Select Word Left"
 msgstr "左側の単語の先頭まで選択"
 
-#: view/kateview.cpp:1018
+#: view/kateview.cpp:1027
 #, kde-format
 msgid "Move Word Right"
 msgstr "右側の単語の先頭に移動"
 
-#: view/kateview.cpp:1024
+#: view/kateview.cpp:1033
 #, kde-format
 msgid "Select Character Right"
 msgstr "右側の 1 文字まで選択"
 
-#: view/kateview.cpp:1030
+#: view/kateview.cpp:1039
 #, kde-format
 msgid "Select Word Right"
 msgstr "右側の単語の先頭まで選択"
 
-#: view/kateview.cpp:1036
+#: view/kateview.cpp:1045
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "行頭に移動"
 
-#: view/kateview.cpp:1042
+#: view/kateview.cpp:1051
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "文書の先頭に移動"
 
-#: view/kateview.cpp:1048
+#: view/kateview.cpp:1057
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "行頭まで選択"
 
-#: view/kateview.cpp:1054
+#: view/kateview.cpp:1063
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "文書の先頭まで選択"
 
-#: view/kateview.cpp:1060
+#: view/kateview.cpp:1069
 #, kde-format
 msgid "Move to End of Line"
 msgstr "行末に移動"
 
-#: view/kateview.cpp:1066
+#: view/kateview.cpp:1075
 #, kde-format
 msgid "Move to End of Document"
 msgstr "文書の末尾に移動"
 
-#: view/kateview.cpp:1072
+#: view/kateview.cpp:1081
 #, kde-format
 msgid "Select to End of Line"
 msgstr "行末まで選択"
 
-#: view/kateview.cpp:1078
+#: view/kateview.cpp:1087
 #, kde-format
 msgid "Select to End of Document"
 msgstr "文書の末尾まで選択"
 
-#: view/kateview.cpp:1084
+#: view/kateview.cpp:1093
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "前の行まで選択"
 
-#: view/kateview.cpp:1090
+#: view/kateview.cpp:1099
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "1 行上へスクロール"
 
-#: view/kateview.cpp:1096
+#: view/kateview.cpp:1105
 #, kde-format
 msgid "Move to Next Line"
 msgstr "次の行に移動"
 
-#: view/kateview.cpp:1102
+#: view/kateview.cpp:1111
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "前の行に移動"
 
-#: view/kateview.cpp:1108
+#: view/kateview.cpp:1117
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "カーソルを右に移動"
 
-#: view/kateview.cpp:1114
+#: view/kateview.cpp:1123
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "カーソルを左に移動"
 
-#: view/kateview.cpp:1120
+#: view/kateview.cpp:1129
 #, kde-format
 msgid "Select to Next Line"
 msgstr "次の行まで選択"
 
-#: view/kateview.cpp:1126
+#: view/kateview.cpp:1135
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "1 行下へスクロール"
 
-#: view/kateview.cpp:1132
+#: view/kateview.cpp:1141
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "1 画面上へスクロール"
 
-#: view/kateview.cpp:1138
+#: view/kateview.cpp:1147
 #, kde-format
 msgid "Select Page Up"
 msgstr "1 画面上まで選択"
 
-#: view/kateview.cpp:1144
+#: view/kateview.cpp:1153
 #, kde-format
 msgid "Move to Top of View"
 msgstr "ビューの先頭に移動"
 
-#: view/kateview.cpp:1150
+#: view/kateview.cpp:1159
 #, kde-format
 msgid "Select to Top of View"
 msgstr "ビューの先頭まで選択"
 
-#: view/kateview.cpp:1156
+#: view/kateview.cpp:1165
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "1 画面下へスクロール"
 
-#: view/kateview.cpp:1162
+#: view/kateview.cpp:1171
 #, kde-format
 msgid "Select Page Down"
 msgstr "1 画面下まで選択"
 
-#: view/kateview.cpp:1168
+#: view/kateview.cpp:1177
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "ビューの最下部に移動"
 
-#: view/kateview.cpp:1174
+#: view/kateview.cpp:1183
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "ビューの最下部まで選択"
 
-#: view/kateview.cpp:1180
+#: view/kateview.cpp:1189
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Go to Matching Bracket"
 msgstr "マッチする括弧に移動"
 
-#: view/kateview.cpp:1186
+#: view/kateview.cpp:1195
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "マッチする括弧を選択"
 
-#: view/kateview.cpp:1194
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Transpose Characters"
 msgstr "左右の文字を入れ替え"
 
-#: view/kateview.cpp:1199
+#: view/kateview.cpp:1208
 #, fuzzy, kde-format
 #| msgid "Transpose Characters"
 msgid "Transpose Words"
 msgstr "左右の文字を入れ替え"
 
-#: view/kateview.cpp:1204
+#: view/kateview.cpp:1213
 #, kde-format
 msgid "Delete Line"
 msgstr "行を削除"
 
-#: view/kateview.cpp:1210
+#: view/kateview.cpp:1219
 #, kde-format
 msgid "Delete Word Left"
 msgstr "左側の 1 単語を削除"
 
-#: view/kateview.cpp:1216
+#: view/kateview.cpp:1225
 #, kde-format
 msgid "Delete Word Right"
 msgstr "右側の 1 単語を削除"
 
-#: view/kateview.cpp:1222
+#: view/kateview.cpp:1231
 #, kde-format
 msgid "Delete Next Character"
 msgstr "右側の 1 文字を削除"
 
-#: view/kateview.cpp:1228
+#: view/kateview.cpp:1237
 #, kde-format
 msgid "Backspace"
 msgstr "左側の 1 文字を削除"
 
-#: view/kateview.cpp:1236
+#: view/kateview.cpp:1245
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "タブを挿入"
 
-#: view/kateview.cpp:1241
+#: view/kateview.cpp:1250
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "スマート改行を挿入"
 
-#: view/kateview.cpp:1242
+#: view/kateview.cpp:1251
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7744,46 +7755,46 @@ msgstr ""
 "現在の行の先頭にある単語構成文字以外の文字 (スペース、タブ、記号など) を含め"
 "て改行を挿入します。"
 
-#: view/kateview.cpp:1250
+#: view/kateview.cpp:1259
 #, fuzzy, kde-format
 #| msgid "Insert Smart Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "スマート改行を挿入"
 
-#: view/kateview.cpp:1251
+#: view/kateview.cpp:1260
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 
-#: view/kateview.cpp:1259
-#, kde-format
-msgid "Insert a Newline Above Current Line"
-msgstr ""
-
-#: view/kateview.cpp:1260
-#, kde-format
-msgid ""
-"Insert a new line above current line without modifying the current line."
-msgstr ""
-
 #: view/kateview.cpp:1268
 #, kde-format
-msgid "Insert a Newline Below Current Line"
+msgid "Insert a Newline Above Current Line"
 msgstr ""
 
 #: view/kateview.cpp:1269
 #, kde-format
 msgid ""
-"Insert a new line below current line without modifying the current line."
+"Insert a new line above current line without modifying the current line."
+msgstr ""
+
+#: view/kateview.cpp:1277
+#, kde-format
+msgid "Insert a Newline Below Current Line"
 msgstr ""
 
 #: view/kateview.cpp:1278
 #, kde-format
+msgid ""
+"Insert a new line below current line without modifying the current line."
+msgstr ""
+
+#: view/kateview.cpp:1287
+#, kde-format
 msgid "&Indent"
 msgstr "字下げ(&I)"
 
-#: view/kateview.cpp:1280
+#: view/kateview.cpp:1289
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7793,73 +7804,73 @@ msgstr ""
 "<qt>選択したテキストブロックを字下げします。<br/><br/>設定ダイアログで、タブ"
 "を尊重して使用するか、スペースで置換するかを設定できます。</qt>"
 
-#: view/kateview.cpp:1287
+#: view/kateview.cpp:1296
 #, kde-format
 msgid "&Unindent"
 msgstr "字下げを減らす(&U)"
 
-#: view/kateview.cpp:1288
+#: view/kateview.cpp:1297
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "選択したテキストブロックの字下げの深さを 1 段階減らします。"
 
-#: view/kateview.cpp:1306
+#: view/kateview.cpp:1315
 #, fuzzy, kde-format
 #| msgid "Collapse Toplevel"
 msgid "Fold Toplevel Nodes"
 msgstr "トップレベルをたたむ"
 
-#: view/kateview.cpp:1311
+#: view/kateview.cpp:1320
 #, fuzzy, kde-format
 #| msgid "Collapse Toplevel"
 msgid "Unfold Toplevel Nodes"
 msgstr "トップレベルをたたむ"
 
-#: view/kateview.cpp:1324
+#: view/kateview.cpp:1333
 #, fuzzy, kde-format
 #| msgid "Current line:"
 msgid "Toggle Current Node"
 msgstr "現在の行:"
 
-#: view/kateview.cpp:1328
+#: view/kateview.cpp:1337
 #, fuzzy, kde-format
 #| msgid "Toggle Comment"
 msgid "Toggle Contained Nodes"
 msgstr "コメントのオン/オフ"
 
-#: view/kateview.cpp:1485
+#: view/kateview.cpp:1494
 #, kde-format
 msgid "(R/O) %1"
 msgstr ""
 
-#: view/kateview.cpp:1673
+#: view/kateview.cpp:1682
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1675
+#: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2157
+#: view/kateview.cpp:2176
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "検索モード"
 
-#: view/kateview.cpp:3678
+#: view/kateview.cpp:3697
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "整列(&A)"
 
-#: view/kateview.cpp:3678
+#: view/kateview.cpp:3697
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4772
+#: view/kateview.cpp:4791
 #, kde-format
 msgid "Export File as HTML"
 msgstr "HTML としてエクスポート"

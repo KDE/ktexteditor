@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: katepart4\n"
+"Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-02 02:07+0000\n"
-"PO-Revision-Date: 2023-03-29 00:12+0100\n"
+"POT-Creation-Date: 2023-04-07 02:03+0000\n"
+"PO-Revision-Date: 2023-04-07 02:28+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -118,38 +118,38 @@ msgid "&Code Folding"
 msgstr "&Kodfaldado"
 
 #. i18n: ectx: Menu (go)
-#: data/katepart5ui.rc:104
+#: data/katepart5ui.rc:105
 #, kde-format
 msgid "&Go"
 msgstr "I&ri"
 
 #. i18n: ectx: Menu (tools)
-#: data/katepart5ui.rc:119
+#: data/katepart5ui.rc:120
 #, kde-format
 msgid "&Tools"
 msgstr "&Iloj"
 
 #. i18n: ectx: Menu (wordcompletion)
-#: data/katepart5ui.rc:133
+#: data/katepart5ui.rc:134
 #, kde-format
 msgid "Word Completion"
 msgstr "Vortkompletigo"
 
 #. i18n: ectx: Menu (spelling)
-#: data/katepart5ui.rc:139 spellcheck/spellingmenu.cpp:71
+#: data/katepart5ui.rc:140 spellcheck/spellingmenu.cpp:71
 #: spellcheck/spellingmenu.cpp:191
 #, kde-format
 msgid "Spelling"
 msgstr "Literumo"
 
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:149
+#: data/katepart5ui.rc:150
 #, kde-format
 msgid "&Settings"
 msgstr "&Agordoj"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:173
+#: data/katepart5ui.rc:174
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Ĉefa ilobreto"
@@ -959,7 +959,7 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Tab klavo ago (se neniu elekto ekzistas) <a href=\"Se vi volas ke <b>Tab</"
 "b> vicigu la nunan linion en la nuna kodbloko kiel en Emakso, faru <b>Tab</"
-"b> ŝparvojo al la ago <b>Formati Deŝovon</b>.\"><span>Pli...</span></a ></"
+"b> ŝparvojon al la ago <b>Formati Deŝovon</b>.\"><span>Pli...</span></a></"
 "p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -3292,12 +3292,12 @@ msgid ""
 msgstr ""
 "Ĉi tiu komando vicigas liniojn en la elektita bloko aŭ tuta dokumento sur la "
 "kolumno donita per regula esprimo donita kiel argumento.<br><br>Se vi donas "
-"malplenan ŝablonon ĝi viciĝos al la unua nemalplena signo defaŭlte.< br>Se "
-"la ŝablono havas kapton ĝi enŝovos sur la kaptita kongruo."
-"<br><br><i>Ekzemploj</i>:<br>'<code>alignon -</code>' enmetos spacojn antaŭ "
-"la unua '-' de ĉiu linio por vicigi ilin ĉiujn sur la sama kolumno."
-"<br>'<code>alignon :\\s+(.)</code>' enmetos spacojn antaŭ la unua nemalplena "
-"signo kiu okazas post dupunkto por vicigi ilin ĉiujn sur la sama kolumno."
+"malplenan ŝablonon ĝi viciĝos al la unua nemalplena signo defaŭlte.<br>Se la "
+"ŝablono havas kapton ĝi enŝovos sur la kaptita kongruo.<br><br><i>Ekzemploj</"
+"i>:<br>'<code>alignon -</code>' enmetos spacojn antaŭ la unua '-' de ĉiu "
+"linio por vicigi ilin ĉiujn sur la sama kolumno.<br>'<code>alignon :\\s+(.)</"
+"code>' enmetos spacojn antaŭ la unua nemalplena signo kiu okazas post "
+"dupunkto por vicigi ilin ĉiujn sur la sama kolumno."
 
 #: script/data/commands/utils.js:466
 #, kde-format
@@ -4800,7 +4800,7 @@ msgid ""
 "color is displayed lightly because of transparency.</p>"
 msgstr ""
 "<p>Metas la fonkoloron por la elekto.</p><p><b>Noto</b>: La markilkoloro "
-"estas montrata malforte pro la travideblo."
+"estas montrata malforte pro la travideblo.</p>"
 
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
@@ -5178,7 +5178,7 @@ msgid ""
 msgstr ""
 "<p>set-replace-tab <b>enable</b></p><p>Se enŝaltite, langetoj estas "
 "anstataŭigataj per spacoj dum vi tajpas.</p><p>Eblaj veraj valoroj: 1 on "
-"true< br/>eblaj malveraj valoroj: 0 off false</p>"
+"true<br/>eblaj malveraj valoroj: 0 off false</p>"
 
 #: utils/katecmds.cpp:107
 #, kde-format
@@ -5201,9 +5201,9 @@ msgid ""
 "trailing spaces in the entire document.</li></ul></p>"
 msgstr ""
 "<p>set-remove-trailing-spaces <b>reĝimo</b></p><p>Forigas la postajn "
-"spacojnen la dokumento depende de la <b>reĝimo</b>.</p><p >Eblaj valoroj:"
+"spacojnen la dokumento depende de la <b>reĝimo</b>.</p><p>Eblaj valoroj:"
 "<ul><li><b>neniu</b>: neniam forigi postajn spacojn.</li><li><b>modifitaj</"
-"b>: forigi postajn spacojn nur de modifitaj linioj.</ li><li><b>ĉiuj</b>: "
+"b>: forigi postajn spacojn nur de modifitaj linioj.</li><li><b>ĉiuj</b>: "
 "forigi postajn spacojn en la tuta dokumento.</li></ul></p>"
 
 #: utils/katecmds.cpp:125
@@ -5400,8 +5400,8 @@ msgid ""
 msgstr ""
 "<p> char <b>identigilo</b> </p><p>Ĉi tiu komando permesas enmeti laŭvortajn "
 "signojn per ilia nombra identigilo, en decimala, okta aŭ deksesuma formo.</"
-"p><p>Ekzemploj:< </ekz> <li>char <b>234</b></li>char <b>0x1234</b></li></"
-"ul></p>"
+"p><p>Ekzemploj:<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></"
+"p>"
 
 #: utils/katecmds.cpp:560
 #, kde-format
@@ -5446,12 +5446,12 @@ msgstr ""
 "kvarcifera nombro (1752-8000).</td></tr><tr><td>h</td><td>La horo sen unua "
 "nulo (0..23 aŭ 1..12 se montriĝas AM/PM).</td></tr><tr><td>hh</td><td>La "
 "horo kun unua nulo (00..23 aŭ 01..12 se montriĝas AM/PM).</td></"
-"tr><tr><td>m</td>. td >< td >La minuto sen unua nulo (0..59).</td></"
-"tr><tr><td>mm</td><td>La minuto kun unua nulo (00..59).</td></tr><tr><td>s</"
-"td><td>La dua sen unua nulo (0..59).</td></tr><tr><td>ss</td><td>La dua kun "
-"unua nulo (00..59).</td></tr><tr><td>z</td><td>La milisekundoj sen antaŭaj "
-"nuloj (0..999).</td></tr><tr><td>zzz</td><td>La milisekundoj kun antaŭaj "
-"nuloj (000..999).</td></tr><tr><td>AP</td><td>Uzi AM/PM-bildigon. AP estos "
+"tr><tr><td>m</td><td>La minuto sen unua nulo (0..59).</td></tr><tr><td>mm</"
+"td><td>La minuto kun unua nulo (00..59).</td></tr><tr><td>s</td><td>La dua "
+"sen unua nulo (0..59).</td></tr><tr><td>ss</td><td>La dua kun unua nulo "
+"(00..59).</td></tr><tr><td>z</td><td>La milisekundoj sen antaŭaj nuloj "
+"(0..999).</td></tr><tr><td>zzz</td><td>La milisekundoj kun antaŭaj nuloj "
+"(000..999).</td></tr><tr><td>AP</td><td>Uzi AM/PM-bildigon. AP estos "
 "anstataŭigita per aŭ \"AM\" aŭ \"PM\".</td></tr><tr><td>ap</td><td>Uzi am/pm-"
 "montrilon. ap estos anstataŭigita per aŭ \"am\" aŭ \"pm\".</td></tr></"
 "table></p>"
@@ -6407,7 +6407,7 @@ msgstr "Fino de linio-tipo"
 msgid "Mode"
 msgstr "Reĝimo"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:674
+#: view/katestatusbar.cpp:209 view/kateview.cpp:683
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6710,12 +6710,23 @@ msgstr "Nu&r-Lega Reĝimo"
 msgid "Lock/unlock the document for writing"
 msgstr "Ŝlosi/malŝlosi la dokumenton por skribado"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:568
+#, kde-format
+msgid "&Force RTL Direction"
+msgstr ""
+
+#: view/kateview.cpp:569
+#, fuzzy, kde-format
+#| msgid "Text Decorations"
+msgid "Force RTL Text Direction"
+msgstr "Tekstaj Dekoraĵoj"
+
+#: view/kateview.cpp:579
 #, kde-format
 msgid "Uppercase"
 msgstr "Majuskla"
 
-#: view/kateview.cpp:573
+#: view/kateview.cpp:582
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6724,12 +6735,12 @@ msgstr ""
 "Majuskligi la elekton, aŭ la signon kiu estas dekstre de la kursoro se ne "
 "estas elektita teksto."
 
-#: view/kateview.cpp:579
+#: view/kateview.cpp:588
 #, kde-format
 msgid "Lowercase"
 msgstr "Minuskla"
 
-#: view/kateview.cpp:582
+#: view/kateview.cpp:591
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6738,12 +6749,12 @@ msgstr ""
 "Minuskligi la elekton, aŭ la signon kiu estas dekstre de la kursoro se neniu "
 "teksto estas elektita."
 
-#: view/kateview.cpp:588
+#: view/kateview.cpp:597
 #, kde-format
 msgid "Capitalize"
 msgstr "Majuskligi"
 
-#: view/kateview.cpp:591
+#: view/kateview.cpp:600
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6752,17 +6763,17 @@ msgstr ""
 "Majuskligi la elekton, aŭ la vorton sub la kursoro se neniu teksto estas "
 "elektita."
 
-#: view/kateview.cpp:596
+#: view/kateview.cpp:605
 #, kde-format
 msgid "Join Lines"
 msgstr "Kunigi liniojn"
 
-#: view/kateview.cpp:601
+#: view/kateview.cpp:610
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Aktivigi kod-kompletigon"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:611
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6771,54 +6782,52 @@ msgstr ""
 "Mane voki komandan kompletigon, kutime per uzo de fulmoklavo kiu estas "
 "ligita al ĉi tiu ago."
 
-#: view/kateview.cpp:607
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#: view/kateview.cpp:616
+#, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Forigi Finajn Spacojn"
 
-#: view/kateview.cpp:625
+#: view/kateview.cpp:634
 #, kde-format
 msgid "Print the current document."
 msgstr "Presi la aktualan dokumenton."
 
-#: view/kateview.cpp:628
+#: view/kateview.cpp:637
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Montri presan antaŭrigardon de aktuala dokumento"
 
-#: view/kateview.cpp:632
+#: view/kateview.cpp:641
 #, kde-format
 msgid "Reloa&d"
 msgstr "Reŝar&gi"
 
-#: view/kateview.cpp:634
+#: view/kateview.cpp:643
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Reŝargi la aktualan dokumenton de disko."
 
-#: view/kateview.cpp:638
+#: view/kateview.cpp:647
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Konservi la aktualan dokumenton al disko kun nomo de via elekto."
 
-#: view/kateview.cpp:640
+#: view/kateview.cpp:649
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr "Konservi kiel kun kodado..."
 
-#: view/kateview.cpp:646
+#: view/kateview.cpp:655
 #, kde-format
 msgid "Save &Copy As..."
 msgstr "Konservi &Kopion kiel..."
 
-#: view/kateview.cpp:647
+#: view/kateview.cpp:656
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Konservi kopion de la nuna dokumento al disko."
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:660
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6827,67 +6836,67 @@ msgstr ""
 "Ĉi tiu komando malfermas dialogujon kaj permesas la elekton de linio al kiu "
 "vi volas ke la kursoro moviĝu."
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:664
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Iri al Antaŭa Modifita Linio"
 
-#: view/kateview.cpp:656
+#: view/kateview.cpp:665
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Movi supren al la antaŭa modifita linio."
 
-#: view/kateview.cpp:661
+#: view/kateview.cpp:670
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Iri al Sekva Modifita Linio"
 
-#: view/kateview.cpp:662
+#: view/kateview.cpp:671
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Movi malsupren al la sekva modifita linio."
 
-#: view/kateview.cpp:666
+#: view/kateview.cpp:675
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "&Agordi Redaktilon..."
 
-#: view/kateview.cpp:668
+#: view/kateview.cpp:677
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Agordi variajn aspektojn de ĉi redaktilo."
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:680
 #, kde-format
 msgid "&Mode"
 msgstr "Reĝi&mo"
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:686
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Emfazado"
 
-#: view/kateview.cpp:679
+#: view/kateview.cpp:688
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Vi povas elekti la tipon de emfazado por la nuna dokumento."
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:691
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "R&edaktila Koloretoso"
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:697
 #, kde-format
 msgid "&Indentation"
 msgstr "Deŝov&iĝo"
 
-#: view/kateview.cpp:696
+#: view/kateview.cpp:705
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Elekti la kompletan tekston de la aktuala dokumento."
 
-#: view/kateview.cpp:699
+#: view/kateview.cpp:708
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -6895,42 +6904,42 @@ msgid ""
 msgstr ""
 "Se vi jam elektis ion ene de la nuna dokumento, tio jam ne estos elektita."
 
-#: view/kateview.cpp:703
+#: view/kateview.cpp:712
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Pligrandigi tiparon"
 
-#: view/kateview.cpp:705
+#: view/kateview.cpp:714
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Tio igas la surekranan tiparon pli granda."
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:721
 #, kde-format
 msgid "Shrink Font"
 msgstr "Malpligrandigi tiparon"
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:723
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Tio igas la surekranan tiparon malpli granda."
 
-#: view/kateview.cpp:721
+#: view/kateview.cpp:730
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Restarigi tiparograndon"
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:732
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Ĉi tio restarigas la montran tiparon."
 
-#: view/kateview.cpp:726
+#: view/kateview.cpp:735
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Bl&oka Elektomaniero"
 
-#: view/kateview.cpp:729
+#: view/kateview.cpp:738
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -6939,22 +6948,22 @@ msgstr ""
 "Ĉi tiu komando permesas ŝanĝon inter la normala (bazita sur linio) reĝimo "
 "kaj la bloka elektomaniero."
 
-#: view/kateview.cpp:733
+#: view/kateview.cpp:742
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Ŝalti al Sekva Eniga Reĝimo"
 
-#: view/kateview.cpp:735
+#: view/kateview.cpp:744
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Ŝalti al la sekva eniga reĝimo."
 
-#: view/kateview.cpp:738
+#: view/kateview.cpp:747
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Anstataŭ&iga reĝimo"
 
-#: view/kateview.cpp:741
+#: view/kateview.cpp:750
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -6963,12 +6972,12 @@ msgstr ""
 "Vi povas elekti ĉu enmeti la entajpatan tekston aŭ anstataŭigi la "
 "ekzistantan tekston."
 
-#: view/kateview.cpp:745
+#: view/kateview.cpp:754
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Dinamika Linifaldo"
 
-#: view/kateview.cpp:749
+#: view/kateview.cpp:758
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -6979,37 +6988,37 @@ msgstr ""
 "vidobordo sur la ekrano.<br /><br />Ĉi tio estas nur vido-opcio, tio "
 "signifas, ke la dokumento ne ŝanĝiĝos."
 
-#: view/kateview.cpp:753
+#: view/kateview.cpp:762
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Indikiloj pri dinamika linifaldo"
 
-#: view/kateview.cpp:755
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "Elekti kiam montri la indikilojn pri dinamika linifaldo."
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:766
 #, kde-format
 msgid "&Off"
 msgstr "&Neniam"
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:766
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "Sekvi &Lininombrojn"
 
-#: view/kateview.cpp:757
+#: view/kateview.cpp:766
 #, kde-format
 msgid "&Always On"
 msgstr "Ĉi&am"
 
-#: view/kateview.cpp:761
+#: view/kateview.cpp:770
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Statika Linifaldo"
 
-#: view/kateview.cpp:763
+#: view/kateview.cpp:772
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -7018,12 +7027,12 @@ msgstr ""
 "Se ĉi tiu opcio estas markita, la tekstaj linioj estos faldataj ĉe la "
 "kolumno difinita en la redaktaj propraĵoj."
 
-#: view/kateview.cpp:770
+#: view/kateview.cpp:779
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Montri &Statikan Linifaldan Indikilon"
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:782
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7032,24 +7041,24 @@ msgstr ""
 "Montri/kaŝi la linifaldan indikilon, kiu estas vertikala linio ĉe la "
 "linifalda kolumno, kiel difinita en la redaktaj ecoj"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:786
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Montri Kodfaldajn &Markilojn"
 
-#: view/kateview.cpp:779
+#: view/kateview.cpp:788
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr "Se kodfaldo eblas, vi povas elekti montri tiujn markojn."
 
-#: view/kateview.cpp:782
+#: view/kateview.cpp:791
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Montri P&iktogramrandon"
 
-#: view/kateview.cpp:784
+#: view/kateview.cpp:793
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7058,22 +7067,22 @@ msgstr ""
 "Montri/kaŝi la piktogramrandon.<br /><br />Ekz. la piktogramrando montras "
 "legosignajn simbolojn."
 
-#: view/kateview.cpp:787
+#: view/kateview.cpp:796
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Montri &Lininombrojn"
 
-#: view/kateview.cpp:789
+#: view/kateview.cpp:798
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Montri/kaŝi la lininombrojn ĉe la maldekstra flanko de la rigardo."
 
-#: view/kateview.cpp:792
+#: view/kateview.cpp:801
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Montri Rulumskalajn &Indikilojn"
 
-#: view/kateview.cpp:794
+#: view/kateview.cpp:803
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7082,12 +7091,12 @@ msgstr ""
 "Montri/kaŝi la markojn sur la vertikala rulumskalo.<br /><br />La markoj "
 "montras, ekzemple, legosignojn."
 
-#: view/kateview.cpp:797
+#: view/kateview.cpp:806
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Montri Srollbar Mini-Mapon"
 
-#: view/kateview.cpp:799
+#: view/kateview.cpp:808
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7101,70 +7110,70 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:811
+#: view/kateview.cpp:820
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Montri Ne-Preseblajn Spacojn"
 
-#: view/kateview.cpp:813
+#: view/kateview.cpp:822
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Montri/kaŝi limkeston ĉirkaŭ nepreseblaj spacoj"
 
-#: view/kateview.cpp:817
+#: view/kateview.cpp:826
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Ŝalti al Komandlinio"
 
-#: view/kateview.cpp:819
+#: view/kateview.cpp:828
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Montri/kaŝi la komandlinion malsupre de la rigardo."
 
-#: view/kateview.cpp:822
+#: view/kateview.cpp:831
 #, kde-format
 msgid "Input Modes"
 msgstr "Enigo-Reĝimoj"
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:840
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Aktivigi/malaktivigi %1"
 
-#: view/kateview.cpp:841
+#: view/kateview.cpp:850
 #, kde-format
 msgid "&End of Line"
 msgstr "&Linifino"
 
-#: view/kateview.cpp:843
+#: view/kateview.cpp:852
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "Elekti la linifinojn, dum konservo de la dokumento"
 
-#: view/kateview.cpp:844
+#: view/kateview.cpp:853
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIKSO"
 
-#: view/kateview.cpp:845
+#: view/kateview.cpp:854
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Vindozo/DOS"
 
-#: view/kateview.cpp:846
+#: view/kateview.cpp:855
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:860
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Aldoni &Bajtan Ordomarkon (BOM)"
 
-#: view/kateview.cpp:854
+#: view/kateview.cpp:863
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7173,78 +7182,78 @@ msgstr ""
 "Ebligi/malŝalti aldonon de bajtaj ordomarkoj por UTF-8/UTF-16 koditaj "
 "dosieroj dum konservado"
 
-#: view/kateview.cpp:858
+#: view/kateview.cpp:867
 #, kde-format
 msgid "E&ncoding"
 msgstr "Kodopreze&nto"
 
-#: view/kateview.cpp:862
+#: view/kateview.cpp:871
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Serĉi la unuan okazon de tekstero aŭ regula esprimo"
 
-#: view/kateview.cpp:866
+#: view/kateview.cpp:875
 #, kde-format
 msgid "Find Selected"
 msgstr "Trovi elektitan"
 
-#: view/kateview.cpp:868
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Trovas la sekvantan okazon de elektita teksto."
 
-#: view/kateview.cpp:872
+#: view/kateview.cpp:881
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Trovi elektitan retroire"
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:883
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Trovas la antaŭan okazon de la elektita teksto."
 
-#: view/kateview.cpp:878
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Trovi kaj Elekti Sekvan Okazon"
 
-#: view/kateview.cpp:880
+#: view/kateview.cpp:889
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
 "Trovas sekvan aperon de la vorto sub kursoro kaj aldonas ĝin al elekto."
 
-#: view/kateview.cpp:884
+#: view/kateview.cpp:893
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Marki Nuntempe Elektitan Okazon kiel Preterpasita"
 
-#: view/kateview.cpp:886
+#: view/kateview.cpp:895
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Markas la nun elektitan vorton kiel preterlasita."
 
-#: view/kateview.cpp:890
+#: view/kateview.cpp:899
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Trovi kaj Elekti Ĉiujn Okazojn"
 
-#: view/kateview.cpp:892
+#: view/kateview.cpp:901
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "Trovas ĉiujn aperon de la vorto sub kursoro kaj elektas ilin."
 
-#: view/kateview.cpp:896
+#: view/kateview.cpp:905
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Serĉi la sekvantan okazon de la serĉofrazo."
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:909
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Serĉi la antaŭan okazon de la serĉofrazo."
 
-#: view/kateview.cpp:904
+#: view/kateview.cpp:913
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7252,82 +7261,82 @@ msgid ""
 msgstr ""
 "Serĉi teksteron aŭ regulan esprimon kaj anstataŭigi ĝin per iu donata teksto."
 
-#: view/kateview.cpp:907
+#: view/kateview.cpp:916
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Aldoni Kursorojn al Liniaj Finoj"
 
-#: view/kateview.cpp:909
+#: view/kateview.cpp:918
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Kreas kursoron ĉe la fino de ĉiu linio en elekto."
 
-#: view/kateview.cpp:913
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "Aldoni Caret sub Kursoro"
 
-#: view/kateview.cpp:915
+#: view/kateview.cpp:924
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Aldonas signon en la linion sub la nuna signo."
 
-#: view/kateview.cpp:919
+#: view/kateview.cpp:928
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "Aldoni Caret super Kursoro"
 
-#: view/kateview.cpp:921
+#: view/kateview.cpp:930
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "Aldonas signon en la linion super la nuna signo."
 
-#: view/kateview.cpp:925
+#: view/kateview.cpp:934
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Baskuligi Kursormovadon Miksusklan"
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:935
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "Ŝanĝi inter normala vortmovo kaj miksuskla kursormovo."
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:939
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Forigi Kursorojn de Malplenaj Linioj"
 
-#: view/kateview.cpp:931
+#: view/kateview.cpp:940
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Forigi kursorojn de malplenaj linioj"
 
-#: view/kateview.cpp:935
+#: view/kateview.cpp:944
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Aŭtomata Literuma Kontrolo"
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Ebligu/malŝalti aŭtomatan literumkontrolon"
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Change Dictionary..."
 msgstr "Ŝanĝi vortaron..."
 
-#: view/kateview.cpp:943
+#: view/kateview.cpp:952
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Ŝanĝi la vortaron uzatan por literuma kontrolo."
 
-#: view/kateview.cpp:947
+#: view/kateview.cpp:956
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Klara Vortaraj Gamoj"
 
-#: view/kateview.cpp:949
+#: view/kateview.cpp:958
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7335,12 +7344,12 @@ msgstr ""
 "Forigi ĉiujn apartajn vortarajn gamojn, kiuj estis fiksitaj por literuma "
 "kontrolo."
 
-#: view/kateview.cpp:955
+#: view/kateview.cpp:964
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Kopii kiel &HTML"
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:965
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
@@ -7349,12 +7358,12 @@ msgstr ""
 "Uzu ĉi tiun komandon por kopii la elektitan tekston kiel HTMLon al la "
 "sistema poŝo."
 
-#: view/kateview.cpp:960
+#: view/kateview.cpp:969
 #, kde-format
 msgid "E&xport as HTML..."
 msgstr "E&ksporti kiel HTML..."
 
-#: view/kateview.cpp:962
+#: view/kateview.cpp:971
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7363,212 +7372,212 @@ msgstr ""
 "Ĉi tiu komando permesas la eksporton de la nuna dokumento kune kun ĉiu "
 "emfazado en HTML-dokumenton."
 
-#: view/kateview.cpp:1000
+#: view/kateview.cpp:1009
 #, kde-format
 msgid "Move Word Left"
 msgstr "Unu vorton maldekstren"
 
-#: view/kateview.cpp:1006
+#: view/kateview.cpp:1015
 #, kde-format
 msgid "Select Character Left"
 msgstr "Elekti signon maldekstre"
 
-#: view/kateview.cpp:1012
+#: view/kateview.cpp:1021
 #, kde-format
 msgid "Select Word Left"
 msgstr "Elekti vorton maldekstre"
 
-#: view/kateview.cpp:1018
+#: view/kateview.cpp:1027
 #, kde-format
 msgid "Move Word Right"
 msgstr "Unu vorton dekstren"
 
-#: view/kateview.cpp:1024
+#: view/kateview.cpp:1033
 #, kde-format
 msgid "Select Character Right"
 msgstr "Elekti signon dekstre"
 
-#: view/kateview.cpp:1030
+#: view/kateview.cpp:1039
 #, kde-format
 msgid "Select Word Right"
 msgstr "Unu vorton dekstre"
 
-#: view/kateview.cpp:1036
+#: view/kateview.cpp:1045
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Moviĝi al komenco de linio"
 
-#: view/kateview.cpp:1042
+#: view/kateview.cpp:1051
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Moviĝi al komenco de dokumento"
 
-#: view/kateview.cpp:1048
+#: view/kateview.cpp:1057
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Selekti ĝis antaŭa linio"
 
-#: view/kateview.cpp:1054
+#: view/kateview.cpp:1063
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Selekti ĝis komenco de la dokumento"
 
-#: view/kateview.cpp:1060
+#: view/kateview.cpp:1069
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Moviĝi al linifino"
 
-#: view/kateview.cpp:1066
+#: view/kateview.cpp:1075
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Moviĝi al fino de dokumento"
 
-#: view/kateview.cpp:1072
+#: view/kateview.cpp:1081
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Selekti ĝis linifino"
 
-#: view/kateview.cpp:1078
+#: view/kateview.cpp:1087
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Selekti ĝis fino de dokumento"
 
-#: view/kateview.cpp:1084
+#: view/kateview.cpp:1093
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Selekti ĝis "
 
-#: view/kateview.cpp:1090
+#: view/kateview.cpp:1099
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Ruli je unu linio supren"
 
-#: view/kateview.cpp:1096
+#: view/kateview.cpp:1105
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Al sekva linio"
 
-#: view/kateview.cpp:1102
+#: view/kateview.cpp:1111
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Al antaŭa linio"
 
-#: view/kateview.cpp:1108
+#: view/kateview.cpp:1117
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Movi Kurseron Dekstren"
 
-#: view/kateview.cpp:1114
+#: view/kateview.cpp:1123
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Movi Kurseron Maldekstren"
 
-#: view/kateview.cpp:1120
+#: view/kateview.cpp:1129
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Selekti ĝis sekva linio"
 
-#: view/kateview.cpp:1126
+#: view/kateview.cpp:1135
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Ruli je unu linio malsupren"
 
-#: view/kateview.cpp:1132
+#: view/kateview.cpp:1141
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Ruli je unu paĝo supren"
 
-#: view/kateview.cpp:1138
+#: view/kateview.cpp:1147
 #, kde-format
 msgid "Select Page Up"
 msgstr "Selekti paĝon supren"
 
-#: view/kateview.cpp:1144
+#: view/kateview.cpp:1153
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Moviĝi al komenco de rigardo"
 
-#: view/kateview.cpp:1150
+#: view/kateview.cpp:1159
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Elekti ĝis komenco de rigardo"
 
-#: view/kateview.cpp:1156
+#: view/kateview.cpp:1165
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Ruli je unu linio malsupren"
 
-#: view/kateview.cpp:1162
+#: view/kateview.cpp:1171
 #, kde-format
 msgid "Select Page Down"
 msgstr "Selekti paĝon malsupren"
 
-#: view/kateview.cpp:1168
+#: view/kateview.cpp:1177
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Moviĝi al fino de rigardo"
 
-#: view/kateview.cpp:1174
+#: view/kateview.cpp:1183
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Selekti ĝis fino de rigardo"
 
-#: view/kateview.cpp:1180
+#: view/kateview.cpp:1189
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "Iri al Kongrua Krampo"
 
-#: view/kateview.cpp:1186
+#: view/kateview.cpp:1195
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Selekti ĝis koresponda krampo"
 
-#: view/kateview.cpp:1194
+#: view/kateview.cpp:1203
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Interŝanĝi signojn"
 
-#: view/kateview.cpp:1199
+#: view/kateview.cpp:1208
 #, kde-format
 msgid "Transpose Words"
 msgstr "Transponi Vortojn"
 
-#: view/kateview.cpp:1204
+#: view/kateview.cpp:1213
 #, kde-format
 msgid "Delete Line"
 msgstr "Forigi linion"
 
-#: view/kateview.cpp:1210
+#: view/kateview.cpp:1219
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Forigi vorton maldekstre"
 
-#: view/kateview.cpp:1216
+#: view/kateview.cpp:1225
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Forigi vorton dekstre"
 
-#: view/kateview.cpp:1222
+#: view/kateview.cpp:1231
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Forigi sekvan signon"
 
-#: view/kateview.cpp:1228
+#: view/kateview.cpp:1237
 #, kde-format
 msgid "Backspace"
 msgstr "Retropaŝo"
 
-#: view/kateview.cpp:1236
+#: view/kateview.cpp:1245
 #, kde-format
 msgid "Insert Tab Character"
 msgstr "Enigi Tabulon"
 
-#: view/kateview.cpp:1241
+#: view/kateview.cpp:1250
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Enmeti Smart Newline"
 
-#: view/kateview.cpp:1242
+#: view/kateview.cpp:1251
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7577,45 +7586,45 @@ msgstr ""
 "Enigi novlinion inkluzive de gvidaj signoj de la nuna linio, kiuj ne estas "
 "literoj aŭ ciferoj."
 
-#: view/kateview.cpp:1250
+#: view/kateview.cpp:1259
 #, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Enigi Ne-indentitan Novlinion"
 
-#: view/kateview.cpp:1251
+#: view/kateview.cpp:1260
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr "Enmeti novan linion sen indentaĵo, sendepende de indentagordoj."
 
-#: view/kateview.cpp:1259
+#: view/kateview.cpp:1268
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "Enmeti Novlinion Super Aktuala Linio"
 
-#: view/kateview.cpp:1260
+#: view/kateview.cpp:1269
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr "Enigi novan linion super la nuna linio sen modifi la nunan linion."
 
-#: view/kateview.cpp:1268
+#: view/kateview.cpp:1277
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "Enigi Novlinion Sub Nuna Linio"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1278
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr "Enigi novan linion sub la nuna linio sen modifi la nunan linion."
 
-#: view/kateview.cpp:1278
+#: view/kateview.cpp:1287
 #, kde-format
 msgid "&Indent"
 msgstr "Deŝov&i"
 
-#: view/kateview.cpp:1280
+#: view/kateview.cpp:1289
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7626,67 +7635,67 @@ msgstr ""
 "dialogo vi povas agordi ĉu uzi ekzistantajn tabojn aŭ anstataŭigi tabojn per "
 "spacetoj."
 
-#: view/kateview.cpp:1287
+#: view/kateview.cpp:1296
 #, kde-format
 msgid "&Unindent"
 msgstr "&Maldeŝovo"
 
-#: view/kateview.cpp:1288
+#: view/kateview.cpp:1297
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Uzu tion por malfari la deŝovon de elektita korpo de teksto."
 
-#: view/kateview.cpp:1306
+#: view/kateview.cpp:1315
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Faldi Supran Nivelajn Nodojn"
 
-#: view/kateview.cpp:1311
+#: view/kateview.cpp:1320
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "Malfaldi Supran Nivelajn Nodojn"
 
-#: view/kateview.cpp:1324
+#: view/kateview.cpp:1333
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "Baskuligi Nunan Nodon"
 
-#: view/kateview.cpp:1328
+#: view/kateview.cpp:1337
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "Baskuligi Enhavitajn Nodojn"
 
-#: view/kateview.cpp:1485
+#: view/kateview.cpp:1494
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1673
+#: view/kateview.cpp:1682
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Movado de kamelujo malebligita"
 
-#: view/kateview.cpp:1675
+#: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Movado de kamelujo ebligita"
 
-#: view/kateview.cpp:2157
+#: view/kateview.cpp:2176
 #, kde-format
 msgid "Search wrapped"
 msgstr "Serĉo faldiĝis"
 
-#: view/kateview.cpp:3678
+#: view/kateview.cpp:3697
 #, kde-format
 msgid "Align On"
 msgstr "Vicigi Sur"
 
-#: view/kateview.cpp:3678
+#: view/kateview.cpp:3697
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Alineado ŝablono:"
 
-#: view/kateview.cpp:4772
+#: view/kateview.cpp:4791
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksporti dosieron kiel HTML"
@@ -7860,13 +7869,13 @@ msgid ""
 "no file name is associated with the document and it should be written to "
 "disk, a file dialog will be shown.</p>"
 msgstr ""
-"<p><b>q/qa/wq/wqa — [skribi kaj] ĉesi</b></p><p>Uzo: <tt><b>[w]q[a]</b>< /"
+"<p><b>q/qa/wq/wqa — [skribi kaj] ĉesi</b></p><p>Uzo: <tt><b>[w]q[a]</b></"
 "tt></p><p>Forlasas la aplikaĵon. Se <tt>w</tt> estas antaŭmetita, ĝi ankaŭ "
 "skribas la dokumenton(j)n al disko. Tiu ĉi komando povas esti vokita en "
 "pluraj manieroj:<br /> <tt>q</tt> — fermas la nunan rigardon.<br /> <tt>qa</"
-"tt> — fermas ĉiujn vidojn, efike forlasante la aplikaĵon.< br /> <tt>wq</tt> "
+"tt> — fermas ĉiujn vidojn, efike forlasante la aplikaĵon.<br /> <tt>wq</tt> "
 "— skribas la nunan dokumenton al disko kaj fermas ĝian vidon.<br /> <tt>wqa</"
-"tt> — skribas ĉiujn dokumentojn al disko kaj ĉesas.</p><p >En ĉiuj kazoj, se "
+"tt> — skribas ĉiujn dokumentojn al disko kaj ĉesas.</p><p>En ĉiuj kazoj, se "
 "la vido estanta fermita estas la lasta vido, la aplikaĵo ĉesas. Se neniu "
 "dosiernomo estas asociita kun la dokumento kaj ĝi devus esti skribita al "
 "disko, dosierdialogo estos montrita.</p>"
@@ -7886,12 +7895,11 @@ msgstr ""
 "<p><b>x/xa — skribi kaj ĉesi</b></p><p>Uzado: <tt><b>x[a]</b></tt></p><p "
 ">Konservas dokumenton(j)n kaj forlasas (e<b>x</b>iajn). Ĉi tiu komando povas "
 "esti vokita en du manieroj:<br /> <tt>x</tt> — fermas la nunan rigardon.<br /"
-"> <tt>xa</tt> — fermas ĉiujn vidojn, efike forlasante la aplikaĵon.< /"
-"p><p>En ĉiuj kazoj, se la vido estanta fermita estas la lasta vido, la "
-"aplikaĵo ĉesas. Se neniu dosiernomo estas asociita kun la dokumento kaj ĝi "
-"devus esti skribita al disko, dosiera dialogo estos montrata.</p><p>Malkiel "
-"la 'w'-komandoj, ĉi tiu komando nur skribas la dokumenton se ĝi estas "
-"modifita.< /p>"
+"> <tt>xa</tt> — fermas ĉiujn vidojn, efike forlasante la aplikaĵon.</p><p>En "
+"ĉiuj kazoj, se la vido estanta fermita estas la lasta vido, la aplikaĵo "
+"ĉesas. Se neniu dosiernomo estas asociita kun la dokumento kaj ĝi devus esti "
+"skribita al disko, dosiera dialogo estos montrata.</p><p>Malkiel la 'w'-"
+"komandoj, ĉi tiu komando nur skribas la dokumenton se ĝi estas modifita.</p>"
 
 #: vimode/appcommands.cpp:242
 #, kde-format
@@ -7959,7 +7967,7 @@ msgid ""
 "p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 msgstr ""
 "<p><b>b,buffer — Redakti dokumenton N el la dokumenta listo</b></p><p>Uzo: "
-"<tt><b>b[ofer] [N]</b></tt ></p>"
+"<tt><b>b[ofer] [N]</b></tt></p>"
 
 #: vimode/appcommands.cpp:517
 #, kde-format
