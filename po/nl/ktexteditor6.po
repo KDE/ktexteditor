@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-02 16:49+0200\n"
+"PO-Revision-Date: 2023-04-07 09:44+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -6798,13 +6798,12 @@ msgstr "Document vergrendelen/ontgrendelen voor schrijven"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "Regelrichting RTL a&fdwingen"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Tekstdecoraties"
+msgstr "Tekstrichting RTL afdwingen"
 
 #: view/kateview.cpp:579
 #, kde-format
