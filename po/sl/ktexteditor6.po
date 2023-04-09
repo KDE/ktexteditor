@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-07 08:34+0200\n"
+"PO-Revision-Date: 2023-04-08 07:42+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6734,10 +6734,9 @@ msgid "&Force RTL Direction"
 msgstr "Prisili smer z desne v levo"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Okraski besedila"
+msgstr "Prisili smer besedila iz desne v levo"
 
 #: view/kateview.cpp:579
 #, kde-format

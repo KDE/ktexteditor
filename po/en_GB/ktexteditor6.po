@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-01 17:46+0100\n"
+"PO-Revision-Date: 2023-04-08 11:01+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -6702,13 +6702,12 @@ msgstr "Lock/unlock the document for writing"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Force RTL Direction"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Text Decorations"
+msgstr "Force RTL Text Direction"
 
 #: view/kateview.cpp:579
 #, kde-format
@@ -6772,9 +6771,7 @@ msgstr ""
 "this action."
 
 #: view/kateview.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Remove Trailing Spaces"
 

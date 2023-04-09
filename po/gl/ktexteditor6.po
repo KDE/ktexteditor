@@ -6,14 +6,14 @@
 # Marce Villarino <mvillarino@kde-espana.es>, 2009, 2010, 2011, 2012, 2013, 2014.
 # Xosé <xosecalvo@gmail.com>, 2010.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2013, 2015, 2016, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2020-01-12 11:00+0100\n"
+"PO-Revision-Date: 2023-04-08 18:24+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -68,7 +68,7 @@ msgstr "&Ficheiro"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Imprimir ou exportar"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -84,17 +84,15 @@ msgstr "Atopar variantes"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Selection"
-msgstr "&Sección:"
+msgstr "Selección"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Pór en maiúsculas"
+msgstr "Maiúsculas"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -122,10 +120,9 @@ msgstr "&Pregado do código"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:105
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Ir"
+msgstr "&Ir"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:120
@@ -160,10 +157,9 @@ msgstr "Barra de ferramentas principal"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
-#, fuzzy, kde-format
-#| msgid "Code Folding"
+#, kde-format
 msgid "Code block folding:"
-msgstr "Pregado do código"
+msgstr "Pregado de bloque de código:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -178,7 +174,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Mostrar frechas para pregar bloques de código"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -192,16 +188,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Mostrar unha previsualización do código pregado."
+msgstr "Mostrar unha vista previa dos bloques pregados ao cubrilos"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
 #, kde-format
 msgid "Left side:"
-msgstr ""
+msgstr "Lado esquerdo:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -218,10 +213,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:78
 #: dialogs/bordersappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Show marks"
-msgstr "Mostrar marcas na &barra de desprazamento"
+msgstr "Mostrar as marcas"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:85
@@ -251,17 +245,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
-#, fuzzy, kde-format
-#| msgid "Highlight range between selected brackets"
+#, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr "Realzar o contido entre os corchetes escollidos"
+msgstr "Realzar as liñas cambiadas e sen gardar"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
-#, fuzzy, kde-format
-#| msgid "Show &scrollbar marks"
+#, kde-format
 msgid "Scrollbars"
-msgstr "Mostrar marcas na &barra de desprazamento"
+msgstr "Barras de desprazamento"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -286,17 +278,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
-#, fuzzy, kde-format
-#| msgid "Show text &preview on scrollbar"
+#, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Mostrar unha &previsualización do texto na barra de desprazamento."
+msgstr "Mostrar a vista previa ao cubrir a barra de desprazamento"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
-#, fuzzy, kde-format
-#| msgid "Minim&ap width:"
+#, kde-format
 msgid "Minimap:"
-msgstr "&Anchura do minimapa:"
+msgstr "Minimapa:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -310,10 +300,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Show scrollbar mini-map"
+#, kde-format
 msgid "Show minimap"
-msgstr "Mostrar o minimapa da barra de desprazamento"
+msgstr "Mostrar o minimapa"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -375,7 +364,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "Por data de creación"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -385,50 +374,43 @@ msgstr "Os marcadores ordénanse segundo o número da liña na que estean postos
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:265
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "By line number"
-msgstr "Mostrar os &números de liña"
+msgstr "Por número de liña"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Ordenar o menú de marcadores"
+msgstr "Ordenar o menú de marcadores:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
-#, fuzzy, kde-format
-#| msgid "Scro&llbars visibility:"
+#, kde-format
 msgid "Folding arrows visibility:"
-msgstr "Visibi&lidade das barras de desprazamento:"
+msgstr "Visibilidade das frechas de pregar:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "Mostrar o &bordo das iconas"
+msgstr "Mostrar ao cubrir"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Show Always"
-msgstr "Sempre"
+msgstr "Mostrar sempre"
 
 #: dialogs/clipboardhistorydialog.cpp:261
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Escoller o seguinte punto de edición"
+msgstr "Selecciona o texto para pegar."
 
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Non hai entradas no historial do portapapeis"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -449,18 +431,17 @@ msgstr "Activar o completado &automático"
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr ""
+msgstr "Seleccionar automaticamente a primeira entrada de completamento"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Navegar pola lista de completamentos con Tab e Maiús+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "Completar as palabras a&utomaticamente"
 
@@ -486,15 +467,12 @@ msgstr "Retirar os espazos ao completar"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"A completación de palabras clave fornece suxestións con base nas palabras "
-"clave que haxa no idioma do documento."
+"O completamento de palabras fornece suxestións con base nas palabras "
+"atopadas no documento."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -514,10 +492,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Auto Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Completación automática"
+msgstr "Documentación con completamento"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -526,13 +503,14 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Mostrar documentación canda a caixa de completamento. Se se desactiva, a "
+"documentación pode mostrarse coa tecla Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Axuste de palabras"
+msgstr "Axuste de palabras:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -557,7 +535,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "A&xustar as palabras nunha columna fixa"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -571,11 +549,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the word wrap column."
+#, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "Escoller a columna de división das liñas."
+msgstr "&Debuxar unha liña vertical na columna de axuste de palabras"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -601,16 +577,15 @@ msgstr "Modo predeterminado de entrada:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:117
-#, fuzzy, kde-format
-#| msgid "Auto Brackets"
+#, kde-format
 msgid "Brackets:"
-msgstr "Parénteses automáticos"
+msgstr "Signos delimitadores:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Pechar automaticamente os signos delimitadores ao abrilos"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:137
@@ -620,55 +595,50 @@ msgid ""
 "way \"Auto Bracket\" do"
 msgstr ""
 "Ao seleccionar un texto estes caracteres engadiranse a ambos lados del de "
-"xeito similar a como funcionan os parénteses automáticos"
+"xeito similar á funcionalidade de signos delimitadores automáticos"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
-#, fuzzy, kde-format
-#| msgctxt "suffix for spinbox >1"
-#| msgid " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " caracteres"
+msgstr "Caracteres ao redor:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
-#, fuzzy, kde-format
-#| msgid "Copy and Paste"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Copiar e pegar"
+msgstr "Copiar e pegar:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "Move selected text by drag and drop"
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Mover o texto seleccionado arrastrando e soltando"
+msgstr "Mover o texto seleccionado ao arrastralo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Copy/Cut the current line if no selection"
+#, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Copiar ou cortar a liña actual se non hai nada escollido"
+msgstr "Copiar ou cortar a liña actual se se invoca sen texto seleccionado"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:181
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Non mover o cursor de texto ao pegar co rato"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "&Historial do portapapeis"
+msgstr "Entradas máximas no historial do portapapeis:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
+"Isto determina o número de entradas para manter no historial do portapapeis"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -677,6 +647,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Cando escribe estes caracteres mentres ten texto seleccionado, arrodearán o "
+"texto seleccionado en vez de substituílo."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -911,10 +883,9 @@ msgstr "T&abuladores e espazos"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "Detección &automática da fin de liña"
+msgstr "Detectar automaticamente o sangrado do ficheiro"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -980,16 +951,7 @@ msgstr "A tecla de &retroceso no espazo en branco inicial quita o sangrado"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -1005,9 +967,9 @@ msgstr ""
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Acción da tecla tabulador (se non hai ren escollido) <a href=\"Se quere "
-"que <b>Tab</b> aliñe a liña actual no bloque de código actual como en emacs, "
-"faga a <b>Tab</b> un atallo para a acción <b>Aliñar</b>.\"><span>Máis …</"
-"span></a></p></body></html>"
+"que <b>Tab</b> aliñe a liña actual no bloque de código actual como en Emacs, "
+"faga a <b>Tab</b> un atallo para a acción <b>Formatar o sangrado</b>."
+"\"><span>Máis …</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1101,52 +1063,49 @@ msgid "Spellcheck"
 msgstr "Corrección ortográfica"
 
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "Alerta"
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "Orde"
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -1180,7 +1139,8 @@ msgstr "Pode ser útil con Markdown"
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
-"Replicar os caracteres, similar pero non idéntico aos parénteses automáticos"
+"Replicar os caracteres, similar pero non idéntico á funcionalidade de signos "
+"delimitadores automáticos"
 
 #: dialogs/katedialogs.cpp:585
 #, kde-format
@@ -1198,11 +1158,9 @@ msgid "Editing Options"
 msgstr "Opcións de edición"
 
 #: dialogs/katedialogs.cpp:736
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Barra de estado"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1226,6 +1184,10 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 fai unha copia de seguridade de ficheiros non gardados en «ficheiros de "
+"intercambio». Os ficheiros de intercambio permiten a %1 recuperar o seu "
+"traballo se o sistema quebra. Desactivar os ficheiros de intercambio podería "
+"causar perda de datos en caso de quebra do sistema."
 
 #: dialogs/katedialogs.cpp:1008
 #, kde-format
@@ -1291,6 +1253,9 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Carga de novo e pasa a cargar de novo automaticamente cada vez que haxa "
+"cambios en disco, sen avisar, desde agora ata que peche o separador ou "
+"xanela."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1298,8 +1263,7 @@ msgid "View &Difference"
 msgstr "Ver as &diferenzas"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Mostra un diff dos cambios."
 
@@ -1309,11 +1273,10 @@ msgid "&Reload"
 msgstr "&Cargar de novo"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Cargar de novo o ficheiro desde o disco. Perderanse os cambios sen gardar."
+"Carga de novo o ficheiro desde o disco. Perderanse os cambios sen gardar."
 
 #: dialogs/katedialogs.cpp:1458
 #, kde-format
@@ -1322,10 +1285,9 @@ msgid "&Close File"
 msgstr "Pe&char o ficheiro"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Pechar o ficheiro descartando o seu contido."
+msgstr "Pecha o ficheiro descartando o seu contido."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -1418,12 +1380,14 @@ msgstr "&Av Páx e Re Páx moven o cursor"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
+"Selecciona se o cursor salta palabras completas ou para nas maiúsculas de "
+"camelo."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "Activar o movemento de cursor de maiúsculas de camelo"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1507,28 +1471,27 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
-#, fuzzy, kde-format
-#| msgid "Wrap c&ursor"
+#, kde-format
 msgid "Multicursor"
-msgstr "Axustar o c&ursor"
+msgstr "Multi-cursor"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Modificadores de múltiples cursores"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Cargar de novo automaticamente os ficheiros en control de versións"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Escribir un ficheiro de copia de seguridade ao gardar para:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1566,7 +1529,7 @@ msgstr "Ficheiros &remotos"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Prefixo para os ficheiros de copia de seguridade:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1579,7 +1542,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Sufixo para os ficheiros de copia de seguridade:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -1589,36 +1552,33 @@ msgstr "Insira o sufixo a engadirlle aos nomes dos ficheiros de seguranza."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Ficheiro de intercambio:"
+msgstr "Modo de ficheiro de intercambio:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Activado, gardar no cartafol predeterminado"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Activado, gardar nun cartafol personalizado"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Ficheiro de intercambio:"
+msgstr "Almacenar os ficheiros de intercambio en:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
-#, fuzzy, kde-format
-#| msgid "Disable swap files syncing"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Desactivar a sincronización dos ficheiros de intercambio"
+msgstr "Gardar os ficheiros de intercambio cada:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1631,7 +1591,7 @@ msgstr "s"
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
-msgstr ""
+msgstr "Esta cadea está en katedialogs.cpp no construtor de KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1837,98 +1797,87 @@ msgstr "Engadir unha liña ao final do ficheiro ao gardar"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Enable Auto Reload"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Activar cargar de novo automaticamente"
+msgstr "Activar gardar automaticamente (só ficheiros locais)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "Gardar automaticamente o documento cando o foco saia do editor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Intervalo para gardar automaticamente:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
 #, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " segundos"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Realce da sintaxe"
+msgstr "Mostrar o modo de realce"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Empregar o modo de entrada Vi"
+msgstr "Mostrar o modo de entrada"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Cambiar de dicionario"
+msgstr "Mostrar o dicionario activo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Mostrar os marcadores de modificación de liña"
+msgstr "Mostrar a opción de tabulación"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Mostrar o número de liñas"
+msgstr "Mostrar a columna da liña"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Codificación estragada"
+msgstr "Mostrar a codificación do ficheiro"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Mostrar o tipo de fin de liña"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
-#, fuzzy, kde-format
-#| msgid "Editor Plugins"
+#, kde-format
 msgid "Editor font:"
-msgstr "Engadidos do editor"
+msgstr "Tipo de letra do editor:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
-#, fuzzy, kde-format
-#| msgid "Ignore white space changes"
+#, kde-format
 msgid "Show whitespace indicators:"
-msgstr "Ignorar as modificacións de espazos en branco"
+msgstr "Mostrar indicadores de espazo en branco:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Sets the end of line mode."
+#, kde-format
 msgid "At the end of a line"
-msgstr "Escolle o modo do final da liña."
+msgstr "Ao final da liña"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
@@ -1938,10 +1887,9 @@ msgstr "Sempre"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:90
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator size:"
-msgstr "&Realzado do espazo en branco"
+msgstr "Tamaño dos indicadores de espazo en branco:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:103
@@ -1951,10 +1899,9 @@ msgstr "Tamaño do marcador de realce visíbel."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show tab indicators:"
-msgstr "Mostrar os marcadores de modificación de liña"
+msgstr "Mostrar indicadores de tabulacións:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1969,14 +1916,13 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Mostrar o marco de foco arredor do editor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
-#, fuzzy, kde-format
-#| msgid "Animate bracket matching"
+#, kde-format
 msgid "Bracket matching:"
-msgstr "Animar as parellas dos parénteses"
+msgstr "Emparellamento de signos delimitadores:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:185
@@ -1985,20 +1931,22 @@ msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
 msgstr ""
-"Se activa esta opción reálzase o intervalo entre o par de corchetes "
-"escollido."
+"Se activa esta opción reálzase o intervalo entre a parella seleccionada de "
+"signos delimitadores."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:188
 #, kde-format
 msgid "Highlight range between selected brackets"
-msgstr "Realzar o contido entre os corchetes escollidos"
+msgstr "Realzar o contido entre os signos delimitadores seleccionados"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:195
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
+"Mostrar o signo delimitador de apertura correspondente e as liñas adxacentes "
+"para dar contexto"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:198
@@ -2009,19 +1957,23 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"Se activa isto, mostrarase unha vista previa das liñas preto do signo "
+"delimitador de apertura correspondente. Isto pode axudar a determinar "
+"rapidamente o contexto dun signo delimitador de peche, especialmente en "
+"declaracións longas de funcións ou clases e en bloques profundamente aniñados"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Mostrar unha previsualización do código pregado."
+msgstr ""
+"Mostrar unha vista previa do signo delimitador de apertura correspondente"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:208
 #, kde-format
 msgid "Flash matching brackets"
-msgstr "Escintilar as parella dos parénteses"
+msgstr "Escintilar os signos delimitadores correspondentes"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:211
@@ -2029,14 +1981,14 @@ msgstr "Escintilar as parella dos parénteses"
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
-"Se activa esta opción as parellas dos parénteses anímanse para facelos máis "
-"visíbeis."
+"Se activa esta opción as parellas de signos delimitadores animaranse para "
+"facelos máis visíbeis."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:214
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "Escintilar un signo delimitador cando o cursor se mova á súa parella"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -4897,7 +4849,7 @@ msgstr "<p>Axusta a cor das liñas de sangrado vertical.</p>"
 #: syntax/katethemeconfig.cpp:311
 #, kde-format
 msgid "Bracket Highlight"
-msgstr "Realzado de parénteses"
+msgstr "Realzado de signos delimitadores"
 
 #: syntax/katethemeconfig.cpp:314
 #, kde-format
@@ -4905,9 +4857,9 @@ msgid ""
 "<p>Sets the bracket matching color. This means, if you place the cursor e.g. "
 "at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>"
 msgstr ""
-"<p>Axusta a cor dos pares de parénteses. Isto significa que, de pór o "
-"cursor, por exemplo nun <b>(</b>, o seu par <b>)</b> realzarase con esta cor."
-"</p>"
+"<p>Define a cor das parellas de signos delimitadores. Isto significa que, ao "
+"poñer o cursor, por exemplo, nun <b>(</b>, o seu <b>)</b> correspondente "
+"realzarase con esta cor.</p>"
 
 #: syntax/katethemeconfig.cpp:322
 #, kde-format
@@ -4984,13 +4936,7 @@ msgid "Not Editable Placeholder"
 msgstr "Marca non editábel de substitución"
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -4998,11 +4944,11 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Esta lista mostra os estilos predeterminados do esquema actual e ofrece "
-"os medios para editalos. O nome do estilo reflicte os axustes do estilo "
-"actual.</p><p>Para editar as cores, prema os cadros coloridos ou escolla a "
-"cor para editar no menú contextual.</p><p>Pode anular as cores do fondo e "
-"ofondo do escollido no menú contextual cando sexa axeitado.</p>"
+"<p>Esta lista mostra os estilos predeterminados do esquema de cores actual e "
+"ofrece os medios para editalos. O nome do estilo reflicte os axustes do "
+"estilo actual.</p><p>Para editar as cores, prema os cadros coloridos ou "
+"escolla a cor para editar no menú contextual.</p><p>Pode anular as cores do "
+"fondo e o fondo do escollido no menú contextual cando sexa axeitado.</p>"
 
 #: syntax/katethemeconfig.cpp:568
 #, kde-format
@@ -6291,7 +6237,7 @@ msgstr "Mostra a lista de variábeis correctas."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Activar a inserción automática de parénteses."
+msgstr "Activar a inserción automática de signos delimitadores."
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
@@ -6327,7 +6273,7 @@ msgstr "Activar a marca da orde dos bytes (BOM) ao gardar ficheiros Unicode."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
-msgstr "Escoller a cor do realzado de parénteses."
+msgstr "Escoller a cor de realzado de signos delimitadores."
 
 #: variableeditor/variablelineedit.cpp:154
 #, kde-format
@@ -7734,15 +7680,14 @@ msgid "Select to Bottom of View"
 msgstr "Escoller ata o fondo da vista"
 
 #: view/kateview.cpp:1189
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Desprazarse ata a parella deste paréntese"
+msgstr "Ir á parella deste signo delimitador"
 
 #: view/kateview.cpp:1195
 #, kde-format
 msgid "Select to Matching Bracket"
-msgstr "Escoller ata a parella deste paréntese"
+msgstr "Seleccionar ata a parella deste signo delimitador"
 
 #: view/kateview.cpp:1203
 #, kde-format

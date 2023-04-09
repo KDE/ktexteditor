@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-03 06:35+0200\n"
+"PO-Revision-Date: 2023-04-08 06:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6269,10 +6269,9 @@ msgid "&Force RTL Direction"
 msgstr ""
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "ტექსტის დეკორაციები"
+msgstr "ნაძალადევი RTL ტექსტის მიმართულება"
 
 #: view/kateview.cpp:579
 #, kde-format
