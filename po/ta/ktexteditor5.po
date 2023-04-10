@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-01-12 21:24+0530\n"
+"PO-Revision-Date: 2023-04-09 12:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 23.03.90\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -412,7 +412,7 @@ msgstr "ஒட்டவேண்டியதைத் தேர்ந்தெ�
 #: dialogs/clipboardhistorydialog.cpp:299
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "பிடிப்புப்பலகை வரலாற்றில் பதிவேதும் இல்லை"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -911,7 +911,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr ""
+msgstr "பிடிப்புப்பலகையிலிருந்து ஒட்டப்படும் உரையின் முன்னிடைவெளியை சரிசெய்"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -930,10 +930,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
-#, fuzzy, kde-format
-#| msgid "&Backspace key indents"
+#, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr "பின்நகர்வு விசை உள்ளடக்கம் அமைத்தல்"
+msgstr "&வரிமுதல் காலியிடத்தில் Backspace-ஐ தட்டுவது முன்னிடைவெளியை குறைக்கும்"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
