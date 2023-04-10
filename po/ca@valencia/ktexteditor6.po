@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-02 10:14+0200\n"
+"PO-Revision-Date: 2023-04-07 08:46+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -5044,7 +5044,7 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
-"La importació sobreescriurà el fitxer existent de tema «%1». Açò no es pot "
+"La importació sobreescriurà el fitxer existent de tema «%1». Açò no es podrà "
 "desfer."
 
 #: syntax/katethemeconfig.cpp:1206
@@ -5060,7 +5060,7 @@ msgstr "Seguix l'esquema de color del sistema"
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr "Segur que voleu suprimir el tema «%1»? Açò no es pot desfer."
+msgstr "Segur que voleu suprimir el tema «%1»? Açò no es podrà desfer."
 
 #: syntax/katethemeconfig.cpp:1356
 #, kde-format
@@ -6808,13 +6808,12 @@ msgstr "Bloqueja/desbloqueja el document per a escriptura"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Força la direcció RTL"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Decoracions de text"
+msgstr "Força la direcció de text RTL (dreta a esquerra)"
 
 #: view/kateview.cpp:579
 #, kde-format

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-02 16:18+0530\n"
+"PO-Revision-Date: 2023-04-09 13:49+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -1686,6 +1686,8 @@ msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
 msgstr ""
+"ஓர் ஆவணத்தை சேமிக்கும்போது, மாற்றியுள்ள வரிகளிலோ அனைத்து வரிகளிலுமோ கடைசியிலுள்ள "
+"காலியிடத்தை நீக்குமாறு அமைக்கலாம்."
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
@@ -1915,12 +1917,13 @@ msgstr "ஜோடி அடைப்புக்குறிக்கு இட�
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
 msgstr ""
-"இது செயல்படுத்தப்பட்டால், தொகுப்பானாது நிலைகாட்டி விட்ட வரிகளில் உள்ள வெற்றிடத்தை நீக்கும்"
+"இது இயக்கப்பட்டிருந்தால், முன்னிடைவெளி மட்டங்களை அடையாளங்காண உதவும் வகையில் உரைதிருத்தி "
+"நெடுக்கான கோடுகளைக் காட்டும்."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:224

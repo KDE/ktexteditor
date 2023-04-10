@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-04 16:39+0200\n"
+"PO-Revision-Date: 2023-04-08 10:18+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -7084,14 +7084,13 @@ msgstr "Verrouiller / Déverrouiller le document pour l'écriture"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Forcer une redirection « RTL »"
 
 # | msgid "Selection Mode"
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Décorations du texte"
+msgstr "Forcer une redirection de texte « RTL »"
 
 #: view/kateview.cpp:579
 #, kde-format
