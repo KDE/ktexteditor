@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-03-27 11:59\n"
+"PO-Revision-Date: 2023-04-10 14:10\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -2477,7 +2477,7 @@ msgstr "打印标志(&L)"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "不打印折叠的代码"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -6380,6 +6380,12 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"此命令将把选中的块或者整个文档中的行对齐到由一条正则表达式指定的列上，程序会"
+"提示您输入该正则表达式。<br /><br />如果您给出一个空模式，程序将在默认情况下"
+"把行对齐到第一个非空字符的位置。<br />如果给出的模式有匹配项，程序将在匹配项"
+"的位置上缩进。<br /><br /><i>例如</i>：<br />“-”将在每行的第一个“-”前面插入空"
+"格来将每行对齐到同一列。<br />“:\\s+(.)”将在半角冒号之后出现的第一个非空白字"
+"符前面插入空格来将每行对齐到同一列。"
 
 #: view/kateview.cpp:525
 #, kde-format

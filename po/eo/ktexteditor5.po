@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-04-07 10:09+0100\n"
+"PO-Revision-Date: 2023-04-10 12:21+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -262,8 +262,8 @@ msgid ""
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
 "<p>Se vi elektas ĉi tiun opcion, ĉiu nova rigardo montros markojn ĉe la "
-"vertikala rulumskalo.</p></p>Ĉi tiuj markoj, montros, ekzemple, legosignojn."
-"</p>"
+"vertikala rulumskalo.</p><p>Ĉi tiuj markoj, montros, ekzemple, legosignojn.</"
+"p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:138
@@ -2585,7 +2585,7 @@ msgstr "Presi &legendon"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Ne presi falditan kodon"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -4761,7 +4761,7 @@ msgid ""
 "color is displayed lightly because of transparency.</p>"
 msgstr ""
 "<p>Metas la fonkoloron por la elekto.</p><p><b>Noto</b>: La markilkoloro "
-"estas montrata malforte pro la travideblo."
+"estas montrata malforte pro la travideblo.</p>"
 
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
@@ -5237,7 +5237,7 @@ msgid ""
 "values: 0 off false</p>"
 msgstr ""
 "<p>set-word-wrap <b>enable</b></p><p>Ebligas dinamikan linifaldon laŭ "
-"<b><b>enable</b></p><p> eblaj veraj valoroj: 1 on true<br/>eblaj malveraj "
+"<b>enable</b></p><p> eblaj veraj valoroj: 1 on true<br/>eblaj malveraj "
 "valoroj: 0 off false</p>"
 
 #: utils/katecmds.cpp:170
