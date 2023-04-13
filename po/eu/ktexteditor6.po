@@ -1,4 +1,4 @@
-# Translation for ktexteditor5.po to Euskara/Basque (eu).
+# Translation for ktexteditor6.po to Euskara/Basque (eu).
 # Copyright (C) 2002-2023 This file is copyright:
 # This file is distributed under the same license as the ktexteditor package.
 # KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>.
@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-03-05 16:26+0100\n"
+"PO-Revision-Date: 2023-04-12 22:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
-"Language-Team: Basque\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -470,15 +470,12 @@ msgstr "Kendu atzekoa osatzean"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"Gako-hitzak osatzeak iradokizunak hornitzen ditu dokumentuaren hizkuntzan "
-"dauden gako-hitzetan oinarrituta."
+"Hitzak osatzeak, dokumentuan aurkitutako hitzetan oinarritutako iradokizunak "
+"ematen ditu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -498,10 +495,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Auto Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Osatze automatikoa"
+msgstr "Dokumentazioa osatzeko aukerarekin"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -513,10 +509,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
-#, fuzzy, kde-format
-#| msgid "Word Wrap"
+#, kde-format
 msgid "Word wrap:"
-msgstr "Itzulbiratu"
+msgstr "Itzulbiratzea:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:29
@@ -540,7 +535,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "Itzul&biratu zutabe finko batean"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -555,11 +550,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the word wrap column."
+#, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "Ezarri itzulbiratzeko zutabea."
+msgstr "&Marraztu lerro bertikal bat itzulbiratzeko zutabean"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -585,16 +578,15 @@ msgstr "Sarrera modu lehenetsia:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:117
-#, fuzzy, kde-format
-#| msgid "Auto Brackets"
+#, kde-format
 msgid "Brackets:"
-msgstr "Parentesi automatikoak"
+msgstr "Parentesiak:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Parentesiak automatikoki itxi irekierako parentesia tekleatzean"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:137
@@ -616,43 +608,40 @@ msgstr " karakterea"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
-#, fuzzy, kde-format
-#| msgid "Copy and Paste"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Kopiatu eta itsatsi"
+msgstr "Kopiatu eta itsatsi:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "Move selected text by drag and drop"
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Mugitu hautatutako testua arrastatu eta jareginez"
+msgstr "Mugitu hautatutako testua hura arrastatzean"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Copy/Cut the current line if no selection"
+#, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Kopiatu/ebaki uneko lerroa hautapenik ez badago"
+msgstr "Kopiatu/ebaki uneko lerroa hautatutako testurik gabe deitzean"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:181
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Ez mugitu testuaren kurtsorea sagu bidez itsastean"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "Arbelaren &historia"
+msgstr "Arbeleko gehieneko historia-sarrera:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
+"Horrek zehazten du arbelaren historian mantendu beharreko sarrera kopurua"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -661,6 +650,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Testua hautatuta dagoen bitartean karaktere horiek tekleatzen badituzu, "
+"hautatutako testua ordeztu beharrean hura inguratuko dute."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -890,10 +881,9 @@ msgstr "Tabulazioak &eta zuriuneak"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "Lerro-amaieraren detekzio &automatikoa"
+msgstr "Automatikoki atzeman fitxategiaren koskatzea"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -1079,52 +1069,49 @@ msgid "Spellcheck"
 msgstr "Ortografia-egiaztapena"
 
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "Alerta"
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ktrl"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ktrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "Komandoa"
+msgstr "Kmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Kmd + Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Kmd + Ktrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -1176,11 +1163,9 @@ msgid "Editing Options"
 msgstr "Edizioko aukerak"
 
 #: dialogs/katedialogs.cpp:736
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Egoera-barra"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1276,10 +1261,9 @@ msgid "View &Difference"
 msgstr "Ikusi &desberdintasunak"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Aldaketek eragindako desberdintasunak erakusten ditu"
+msgstr "Aldaketek eragindako desberdintasunak erakusten ditu."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1287,12 +1271,10 @@ msgid "&Reload"
 msgstr "Bi&rkargatu"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"Kargatu berriro fitxategia diskotik. Gorde gabeko aldaketak galdu egingo "
-"dira."
+"Fitxategia diskotik birzamatzen du. Gorde gabeko aldaketak galdu egingo dira."
 
 #: dialogs/katedialogs.cpp:1458
 #, kde-format
@@ -1301,10 +1283,9 @@ msgid "&Close File"
 msgstr "&Itxi fitxategia"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Itxi fitxategia, bere edukia baztertuz."
+msgstr "Fitxategia ixten du, edukia baztertuz."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -1396,12 +1377,13 @@ msgstr "&Orri-gora/Orri-behera kurtsorea mugitzen du"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
+"Kurtsoreak hitz osoak jauzi edo gamelu-konkorretan eteten duen hautatzen du."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "Gaitu gamelu-kaxa kurtsore mugimendua"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1485,22 +1467,21 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
-#, fuzzy, kde-format
-#| msgid "Wrap c&ursor"
+#, kde-format
 msgid "Multicursor"
-msgstr "Itzulbiratu k&urtsorea"
+msgstr "Kurtsore anizkoitza"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Kurtsore aldarazle anizkoitzak"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Automatikoki birzamatu bertsio-kontrolpeko fitxategiak"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
@@ -1564,36 +1545,33 @@ msgstr "Sartu atzikia babeskopien izenei atzetik eransteko."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Trukaketa fitxategia:"
+msgstr "Trukatu fitxategi-modua:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Gaituta, gorde lehenetsitako direktorioan"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Gaituta, gorde neurrira ipinitako direktorioan"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Trukaketa fitxategia:"
+msgstr "Gorde trukaketa fitxategia hemen:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
-#, fuzzy, kde-format
-#| msgid "Disable swap files syncing"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Desgaitu trukatzeko fitxategiak sinkronizatzea."
+msgstr "Gorde trukaketa fitxategiak hainbestero:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1930,14 +1908,13 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Erakutsi fokuaren markoa editorearen inguruan"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
-#, fuzzy, kde-format
-#| msgid "Animate bracket matching"
+#, kde-format
 msgid "Bracket matching:"
-msgstr "Animatu parentesien bat etortzea"
+msgstr "Parentesiak parekatzea:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:185
@@ -2635,7 +2612,7 @@ msgstr "Inprimatu &legenda"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Ez inprimatu tolestutako kodea"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2845,10 +2822,9 @@ msgid "Co&lor:"
 msgstr "&Kolorea:"
 
 #: printing/printconfigwidgets.cpp:547
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "Hautatu kolore-eskema inprimatzean erabiltzeko."
+msgstr "Hautatu inprimatzean erabili beharreko kolore-gaia."
 
 #: printing/printconfigwidgets.cpp:549
 #, fuzzy, kde-format
@@ -2935,9 +2911,7 @@ msgid "Wrap with Tag"
 msgstr "bildu etiketa batekin"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Eraman kurtsorea bat datorren etiketara"
@@ -3741,10 +3715,9 @@ msgid "Whitespace (excluding line breaks)"
 msgstr "Zuriunea (lerro-jauzia ezik)"
 
 #: search/katesearchbar.cpp:1208
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "Zuriuneak"
+msgstr "Ez-zuriunea"
 
 #: search/katesearchbar.cpp:1209
 #, kde-format
@@ -4209,10 +4182,9 @@ msgid "I&gnore All"
 msgstr "Ez ikusi e&gin denei"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Ortografia egiaztatzen (kurtsoretik...)"
+msgstr "Ortografia egiaztatzen (kurtsoretik)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4230,10 +4202,9 @@ msgid "Add to Dictionary"
 msgstr "Gehitu hiztegiari"
 
 #: spellcheck/spellingmenu.cpp:169
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Ortografia"
+msgstr "'%1'(r)(e)n ortografia"
 
 #: swapfile/kateswapdiffcreator.cpp:86
 #, fuzzy, kde-format
@@ -5043,6 +5014,8 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"Inportatzeak aurretik dagoen \"%1\" gai fitxategia gainidatziko du. Hori "
+"ezin da desegin."
 
 #: syntax/katethemeconfig.cpp:1206
 #, kde-format
@@ -6610,10 +6583,9 @@ msgid ""
 msgstr "Erabili komando hau unean hautatutako testua arbelean kopiatzeko."
 
 #: view/kateview.cpp:464
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "Arbelaren &historia"
+msgstr "Arbelaren &historia itsastea"
 
 #: view/kateview.cpp:469
 #, kde-format
@@ -6621,10 +6593,9 @@ msgid "Paste Selection"
 msgstr "Itsatsi hautapena"
 
 #: view/kateview.cpp:471
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Itsatsi lehen kopiatu edo ebakitako arbeleko edukia"
+msgstr "Itsatsi aldez aurretik saguarekin hautatutako edukia"
 
 #: view/kateview.cpp:475
 #, kde-format
@@ -6637,10 +6608,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Trukatu hautatutako testua arbeleko edukiarekin"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Itsatsi hautapena"
+msgstr "Hartu hautapenaren pantaila-argazkia"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -6696,21 +6666,18 @@ msgstr ""
 "ordeztuko dituzten ezar dezakezu konfigurazioaren elkarrizketa-koadroan."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Koska"
+msgstr "Koskaren &formatua"
 
 #: view/kateview.cpp:513
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Erabili uneko lerro edo testua bere koska maila egokiarekin lerrokatzeko."
+"Hau erabili uneko lerroa edo testu blokea bere koska maila egokian "
+"automatikoki koskatzeko."
 
 #: view/kateview.cpp:517
 #, kde-format
@@ -6791,13 +6758,12 @@ msgstr "Blokeatu/Desblokeatu dokumentua idazteko"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Behartu RTL noranzkoa"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Testuaren apaingarriak"
+msgstr "Behartu eskuinetik ezkerrera (RTL) noranzkoa"
 
 #: view/kateview.cpp:579
 #, kde-format
@@ -6861,9 +6827,7 @@ msgstr ""
 "tekla erabiliz."
 
 #: view/kateview.cpp:616
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Kendu amaierako zuriuneak"
 
@@ -7354,43 +7318,43 @@ msgid "Add Cursors to Line Ends"
 msgstr "Gehitu kurtsoreak lerroen bukaeran"
 
 #: view/kateview.cpp:918
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Wrap the text cursor at the end of a line."
+#, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr "Itzulbiratu testuaren kurtsorea lerro baten amaieran."
+msgstr "Kurtsore bat sortzen du hautapeneko lerro bakoitzaren amaieran."
 
 #: view/kateview.cpp:922
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Gehitu testu-kurtsorea kurtsorearen azpian"
 
 #: view/kateview.cpp:924
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Hautatu uneko dokumentuko testu osoa."
+msgstr ""
+"Testu-kurtsore bat gehitzen du uneko testu-kurtsorearen azpiko lerroan."
 
 #: view/kateview.cpp:928
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Gehitu testu-kurtsorea kurtsorearen gainean"
 
 #: view/kateview.cpp:930
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
+"Testu-kurtsore bat gehitzen du uneko testu-kurtsorearen gaineko lerroan."
 
 #: view/kateview.cpp:934
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "Testuko kurtsorearen mugimendua"
+msgstr "Txandakatu gamelu-kaxa kurtsore mugimendua"
 
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
+"Txandakatu hitzen mugimendu arrunta eta gamelu-kaxa kurtsore mugimenduaren "
+"artean."
 
 #: view/kateview.cpp:939
 #, kde-format
@@ -7629,10 +7593,9 @@ msgid "Transpose Characters"
 msgstr "Aldatu karaktereak lekuz"
 
 #: view/kateview.cpp:1208
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "Aldatu karaktereak lekuz"
+msgstr "Hitzen transposizioa"
 
 #: view/kateview.cpp:1213
 #, kde-format
@@ -7767,12 +7730,12 @@ msgstr "(S/I) %1"
 #: view/kateview.cpp:1682
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "Gamelu-kaxa mugimendua ezgaituta"
 
 #: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "Gamelu-kaxa mugimendua gaituta"
 
 # xalba 2018-07-23 al:
 #
@@ -7787,7 +7750,7 @@ msgstr "Bilaketa zirkularra"
 #: view/kateview.cpp:3697
 #, kde-format
 msgid "Align On"
-msgstr ""
+msgstr "Lerrokatu hemen"
 
 #: view/kateview.cpp:3697
 #, kde-format
@@ -7880,63 +7843,54 @@ msgid "Disable Annotation Bar"
 msgstr "Desgaitu oharpen-barra"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Ireki/Gorde"
+msgstr "Gorde"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "&Kopiatu..."
+msgstr "Kopiatu"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "A&tzeko planoaren kolorea..."
+msgstr "Hondoko kolorea..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Testuaren apaingarriak"
+msgstr "Erakutsi leiho-apaingarri gehigarriak"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Erakutsi &koska-lerroak"
+msgstr "Erakutsi leiho-apaingarriak"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Pantaila-argazkia..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Erakutsi &lerro-zenbakiak"
+msgstr "Ez erakutsi lerro-zenbakiak"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Erakutsi &lerro-zenbakiak"
+msgstr "Erakutsi lerro-zenbakiak 1etik"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Erakutsi &lerro-zenbakiak"
+msgstr "Erakutsi benetako lerro-zenbakiak"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "&Gorde honela..."
+msgstr "Gorde..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8061,12 +8015,7 @@ msgstr ""
 "bat irekitzen du.<br /></p>"
 
 #: vimode/appcommands.cpp:270
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
-#| "<tt><b>e[dit]</b></tt></p><p>Starts <b>e</b>diting the current document "
-#| "again. This is useful to re-edit the current file, when it has been "
-#| "changed by another program.</p>"
+#, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
@@ -8074,8 +8023,8 @@ msgid ""
 msgstr ""
 "<p><b>e[dit] &mdash; birzamatu uneko dokumentua</b></p><p>Erabilera: "
 "<tt><b>e[dit]</b></tt></p><p>Uneko dokumentua berriz <b>e</b>ditatzen hasten "
-"da. Hau erabilgarria da uneko dokumentua berriz editatzeko, beste programa "
-"batek aldatua izan denean.</p>"
+"da. Erabilgarria da, diskoan aldatu denean, uneko dokumentua berriz "
+"editatzeko.</p>"
 
 #: vimode/appcommands.cpp:512
 #, kde-format
