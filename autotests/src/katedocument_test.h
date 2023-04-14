@@ -97,6 +97,7 @@ private Q_SLOTS:
     void testKeepUndoOverReload();
     void testToggleComment();
     void testInsertTextTooLargeColumn();
+    void testBug468495();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

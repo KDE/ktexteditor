@@ -249,7 +249,7 @@ void KateAutoIndent::keepIndent(int line)
 
     int indentDepth = textLine->indentDepth(tabWidth);
     int extraSpaces = indentDepth % indentWidth;
-    doc->editRemoveText(line, 0, indentDepth);
+    doc->editRemoveText(line, 0, textLine->leadingWhitespace().size());
     if (keepExtra && extraSpaces > 0)
         doc->editInsertText(line, 0, QString(extraSpaces, QLatin1Char(' ')));
 

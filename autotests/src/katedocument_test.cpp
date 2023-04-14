@@ -899,3 +899,29 @@ void KateDocumentTest::testInsertTextTooLargeColumn()
     doc.insertText(KTextEditor::Cursor(0, 10), QStringLiteral("\nxxxx"));
     QCOMPARE(doc.text(), QStringLiteral("01234567  \nxxxx\n01234567"));
 }
+
+void KateDocumentTest::testBug468495()
+{
+    // original
+    const char o[] = R"(				0123456789abcdefghijkl
+				0123456789abcdefghijkl
+				012345678901234567890123456789)";
+    // expected
+    const char e[] = R"(				0123456789abcdefghijkl
+
+				0123456789abcdefghijkl
+				012345678901234567890123456789)";
+
+    QString original = QString::fromLatin1(o);
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(original);
+    doc.config()->setIndentationMode(QStringLiteral("cstyle"));
+    KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    v->setCursorPosition({1, 0});
+    v->keyReturn();
+
+    QString afterIndent = doc.text();
+    QCOMPARE(QString::fromLatin1(e), afterIndent);
+}
+
+#include "katedocument_test.moc"
