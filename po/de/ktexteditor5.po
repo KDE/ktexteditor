@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-03-21 20:06+0100\n"
+"PO-Revision-Date: 2023-04-11 23:05+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -2635,7 +2635,7 @@ msgstr "&Legende drucken"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Eingeklappten Code nicht drucken"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
