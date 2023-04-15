@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-03 16:40+0200\n"
+"PO-Revision-Date: 2023-04-11 23:05+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -2636,7 +2636,7 @@ msgstr "&Legende drucken"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Eingeklappten Code nicht drucken"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -6829,13 +6829,12 @@ msgstr "Sperren/Entsperren des Dokuments für Schreibvorgänge"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&RTL-Zeilenrichtung erzwingen"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Textdekoration"
+msgstr "RTL-Zeilenrichtung erzwingen"
 
 #: view/kateview.cpp:579
 #, kde-format
