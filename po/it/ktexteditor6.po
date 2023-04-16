@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-02 20:06+0200\n"
+"PO-Revision-Date: 2023-04-12 03:15+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -6800,13 +6800,12 @@ msgstr "Blocca o sblocca il documento per la scrittura"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Forza direzione RTL"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Decorazioni del testo"
+msgstr "Forza la direzione del testo RTL"
 
 #: view/kateview.cpp:579
 #, kde-format
