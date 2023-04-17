@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-14 12:17+0200\n"
+"PO-Revision-Date: 2023-04-16 16:36+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -948,16 +948,7 @@ msgstr "&Atzera teklak hasierako zuriunetan koska kentzen du"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -972,10 +963,10 @@ msgstr ""
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
-"<p>Tab teklaren ekintza (hautapenik ez badago) <a href=\"<b>Tab</b>ek uneko "
-"lerroa uneko kode blokean lerrokatzea nahi baduzu, emacs-en egiten den "
-"bezala, egin ezazu <b>Tab</b> <b>Lerrokatu</b> ekintzaren lasterbide.\"> "
-"<span>Gehiago ...</span></a></p></body></html>"
+"<p>Tab teklaren ekintza (hautapenik ez badago) <a href=\"<b>Tab</b>ek, "
+"«Emacs»en antzera,  uneko lerroa uneko kode blokean lerrokatzea nahi baduzu, "
+"«Emacs»en antzera, egin <b>Tab</b> -> <b>Koskaren formatua</b> ekintzaren "
+"lasterbide izan dadin.<span>Gehiago ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -3320,6 +3311,16 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Komando horrek, hautatutako blokeko edo dokumentu osoko lerroak argumentu "
+"gisa emandako adierazpen erregular batek adierazitako zutabean lerrokatzen "
+"ditu.<br><br>Eredua hutsik ematen baduzu, era lehenetsian, zuriunea ez den "
+"aurreneko karakterean lerrokatuko da.<br>Ereduak kaptura bat badu, koska, "
+"kapturarekin bat etortzen den horretan ipiniko du.<br><br><i>Adibidez:</i>:"
+"<br>'<code>alignon -</code> ipiniz gero, zuriuneak txertatuko ditu lerro "
+"bakoitzeko lehenengo '-' aurretik, guztiak zutabe berean lerrokatu daitezen."
+"<br>'<code>alignon :\\s+(.)</code>' ipiniz gero, zuriuneak txertatuko ditu, "
+"bi puntuen ondoren, zuriunea ez den lehenengo karakterearen aurretik, "
+"guztiak zutabe berean lerrokatu daitezen."
 
 #: script/data/commands/utils.js:466
 #, kde-format
@@ -3385,8 +3386,8 @@ msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr ""
-"Kodetu karaktere bereziak lerro bakarreko hautapenean, emaitza testua URI "
-"gisa erabili ahal izan dadin."
+"Kodetu karaktere bereziak lerro bakarreko hautapen batean, emaitza testua "
+"URI gisa erabili ahal izan dadin."
 
 #: script/data/commands/utils.js:478
 #, kde-format
@@ -3399,6 +3400,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Aukeratu testua aurreraka, kurtsorearen uneko kokapenetik, haren ondoren, "
+"emandako argumentuaren aurreneko agerpena arte (edo era lehenetsian, uneko "
+"lerroaren bukaera arte)."
 
 #: script/data/commands/utils.js:482
 #, kde-format
@@ -3407,6 +3411,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Aukeratu testua atzeraka, kurtsorearen uneko kokapenetik haren aurretik, "
+"emandako argumentuaren azken agerpena arte (edo era lehenetsian, uneko "
+"lerroaren hasiera arte)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3615,10 +3622,10 @@ msgid "End of line"
 msgstr "Lerroaren amaiera"
 
 #: search/katesearchbar.cpp:1162
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "Edozein karaktere bakun (lerro-jauziak ezik)"
+msgstr ""
+"Bat etorri edozein karaktererekin, lerro berriarekin izan ezik (lehenetsia)"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
@@ -3741,10 +3748,9 @@ msgid "Group, non-capturing"
 msgstr "Taldea, ez-kapturatzea"
 
 #: search/katesearchbar.cpp:1220
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "Aurrerantz begiratze negatiboa"
+msgstr "Aurrerantz begiratze positiboa"
 
 #: search/katesearchbar.cpp:1221
 #, kde-format
@@ -3754,12 +3760,12 @@ msgstr "Aurrerantz begiratze negatiboa"
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "Luzera finkoko aurrerantz begiratze positiboa"
 
 #: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "Luzera finkoko atzerantz begiratze positiboa"
 
 #: search/katesearchbar.cpp:1231
 #, kde-format
@@ -4198,16 +4204,13 @@ msgid "Spelling '%1'"
 msgstr "'%1'(r)(e)n ortografia"
 
 #: swapfile/kateswapdiffcreator.cpp:86
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command could not be started. Please make sure that diff(1) is "
-#| "installed and in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"Ezin izan da diff komando abiarazi. Ziurtatu diff(1) instalatuta eta "
-"inguruneko PATH aldagaian dagoela."
+"Ezin izan du «diff» komando aurkitu. Ziurtatu «diff(1)» instalatuta eta zure "
+"inguruneko «PATH» aldagaian dagoela."
 
 #: swapfile/kateswapdiffcreator.cpp:96
 #, kde-format
@@ -4853,13 +4856,7 @@ msgid "Not Editable Placeholder"
 msgstr "Leku-marka ez editagarria"
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -4867,12 +4864,12 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Zerrenda honek uneko eskemaren estilo lehenetsiak bistaratzen ditu eta "
-"hauek editatzeko aukera eskaintzen du. Estiloaren izenak uneko estiloaren "
+"<p>Zerrenda honek uneko kolore-gaiaren estilo lehenetsiak azaltzen ditu eta "
+"haiek editatzeko aukera eskaintzen du. Estiloaren izenak uneko estiloaren "
 "ezarpenak islatzen ditu.</p><p>Koloreak editatzeko, egin klik koloredun "
 "laukitxoetan, edo hautatu editatu beharreko kolorea laster-menutik.</"
-"p><p>Bai atzeko planoa bai hautatutako atzeko planoaren koloreak ere desgai "
-"ditzakezu laster-menutik hala behar denean.</p>"
+"p><p>Egokia denean, laster-menutik, atzeko planoa eta atzeko planorako "
+"hautatutako koloreak ezgai ditzakezu.</p>"
 
 #: syntax/katethemeconfig.cpp:568
 #, kde-format
@@ -6690,6 +6687,16 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Komando horrek, hautatutako blokeko edo dokumentu osoko lerroak eskatzen "
+"zaizun adierazpen erregular batek adierazitako zutabean lerrokatzen ditu."
+"<br />Eredua hutsik ematen baduzu, era lehenetsian, zuriunea ez den "
+"aurreneko karakterean lerrokatuko da.<br />Ereduak kaptura bat badu, koska, "
+"kapturarekin bat etortzen den horretan ipiniko du.<br /><br /><i>Adibidez:</"
+"i>:<br' />alignon - ipiniz gero, zuriuneak txertatuko ditu lerro bakoitzeko "
+"lehenengo '-' aurretik, guztiak zutabe berean lerrokatu daitezen.<br' /"
+">alignon :\\s+(.)' ipiniz gero, zuriuneak txertatuko ditu, bi puntuen "
+"ondoren, zuriunea ez den lehenengo karakterearen aurretik, guztiak zutabe "
+"berean lerrokatu daitezen."
 
 #: view/kateview.cpp:530
 #, kde-format

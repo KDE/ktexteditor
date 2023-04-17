@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-09 23:00+0100\n"
+"PO-Revision-Date: 2023-04-16 12:22+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -548,13 +548,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:42
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "&Desegnu vertikalan linion ĉe la vortvolva kolumno"
+msgstr "&Desegni vertikalan linion ĉe la vortvolva kolumno"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
 #, kde-format
 msgid "Wra&p words at:"
-msgstr "Envolvi vortojn ĉe:"
+msgstr "V&olvi vortojn ĉe:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -915,7 +915,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr "Alĝustigi deŝovon de kodo algluita el la tondujo"
+msgstr "Alĝustigi deŝovon de kodo &algluita el la tondujo"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -1174,7 +1174,7 @@ msgid ""
 msgstr ""
 "%1 rezervas nekonservitajn dosierojn al \"interŝanĝaj dosieroj.\" "
 "Interŝanĝaj dosieroj permesas al %1 reakiri vian laboron en kazo de sistema "
-"kraŝo. Malŝalti interŝanĝajn dosierojn povas kaŭzi perdon de datumoj en kazo "
+"paneo. Malŝalti interŝanĝajn dosierojn povas kaŭzi perdon de datumoj en kazo "
 "de sistema paneo."
 
 #: dialogs/katedialogs.cpp:1008
@@ -1680,7 +1680,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:125
 #, kde-format
 msgid "A&utomatic end of line detection"
-msgstr "Aŭtomata ekkono de linifino"
+msgstr "Aŭt&omata ekkono de linifino"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:132
@@ -2590,7 +2590,7 @@ msgstr "Presi &legendon"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Ne presi falditan kodon"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -4145,7 +4145,7 @@ msgstr ""
 #: spellcheck/spellcheckbar.ui:212
 #, kde-format
 msgid "R&eplace All"
-msgstr "Anstataŭigi Ĉion"
+msgstr "&Anstataŭigi Ĉion"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipAllBtn)
 #: spellcheck/spellcheckbar.ui:225
@@ -6713,7 +6713,7 @@ msgstr "Ŝlosi/malŝlosi la dokumenton por skribado"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr "Devigi Dekstra-al-Maldekstra Direkto"
+msgstr "De&vigi Dekstra-al-Maldekstra Direkto"
 
 #: view/kateview.cpp:569
 #, kde-format
