@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-08 18:24+0200\n"
+"PO-Revision-Date: 2023-04-17 07:16+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -46,7 +46,7 @@ msgstr "Completar as palabras automaticamente"
 #: completion/katewordcompletion.cpp:276
 #, kde-format
 msgid "Shell Completion"
-msgstr "Completamento do intérprete de ordes"
+msgstr "Completación do intérprete de ordes"
 
 #: completion/katewordcompletion.cpp:282
 #, kde-format
@@ -318,7 +318,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:187
 #, kde-format
 msgid "Map the whole document"
-msgstr "Mapear todo o documento"
+msgstr "Cartografar todo o documento"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:213
@@ -431,13 +431,13 @@ msgstr "Activar o completado &automático"
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr "Seleccionar automaticamente a primeira entrada de completamento"
+msgstr "Seleccionar automaticamente a primeira entrada de completación"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr "Navegar pola lista de completamentos con Tab e Maiús+Tab"
+msgstr "Navegar pola lista de completacións con Tab e Maiús+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -471,8 +471,8 @@ msgstr "Retirar os espazos ao completar"
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"O completamento de palabras fornece suxestións con base nas palabras "
-"atopadas no documento."
+"A completación de palabras fornece suxestións con base nas palabras atopadas "
+"no documento."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -494,7 +494,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid "Documentation with completion"
-msgstr "Documentación con completamento"
+msgstr "Documentación con completación"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -503,7 +503,7 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
-"Mostrar documentación canda a caixa de completamento. Se se desactiva, a "
+"Mostrar documentación canda a caixa de completación. Se se desactiva, a "
 "documentación pode mostrarse coa tecla Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -1308,7 +1308,7 @@ msgstr "&Ignorar"
 #: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "Ignores the changes on disk without any action."
-msgstr "Ignora os cambios no disco sen faer nada."
+msgstr "Ignora os cambios no disco sen facer nada."
 
 # skip-rule: kde_path
 #: dialogs/katedialogs.cpp:1538 swapfile/kateswapdiffcreator.cpp:128
@@ -1473,7 +1473,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr "Multi-cursor"
+msgstr "Cursor múltiplo"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
@@ -2010,7 +2010,7 @@ msgstr "Mostrar liñas de &sangrado"
 #: dialogs/textareaappearanceconfigwidget.ui:247
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "Contadores:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:254
@@ -2058,15 +2058,13 @@ msgstr "Pregar a primeira liña."
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:316
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "División &visual das liñas"
+msgstr "División visual das liñas:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
-#, fuzzy, kde-format
-#| msgid "Wrap dynamic at static word wrap marker"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Axustar dinamicamente no marcador de axuste estático de palabras"
 
@@ -2074,14 +2072,13 @@ msgstr "Axustar dinamicamente no marcador de axuste estático de palabras"
 #: dialogs/textareaappearanceconfigwidget.ui:330
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
-msgstr ""
+msgstr "Ignorar os limiares de palabras para a división visual de liñas"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:337
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Indicadores de división visual de liñas"
+msgstr "Indicadores de división &visual de liñas:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:347
@@ -2092,16 +2089,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Indent wrapped lines:"
-msgstr "Propiedades do sangrado"
+msgstr "Sangrar as liñas con división visual:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:384
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "Non sangrar as liñas de máis de:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
@@ -2137,13 +2133,14 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Este valor multiplicarase pola altura predeterminada do tipo de letra. Un "
+"valor de 1,0 significa que se usará a altura predeterminada."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
-#, fuzzy, kde-format
-#| msgid "Line length limit:"
+#, kde-format
 msgid "Line Height Multiplier:"
-msgstr "Lonxitude máxima das liñas:"
+msgstr "Multiplicador da altura de liña:"
 
 #: document/katebuffer.cpp:141
 #, kde-format
@@ -2187,8 +2184,7 @@ msgid "&Close"
 msgstr "&Pechar"
 
 #: document/katedocument.cpp:2295 document/katedocument.cpp:6559
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Pechar a mensaxe"
@@ -2400,12 +2396,7 @@ msgstr ""
 
 # skip-rule: normalization-ble
 #: document/katedocument.cpp:5290
-#, fuzzy, kde-format
-#| msgid ""
-#| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
-#| "'remove-trailing-spaces modified;', see https://docs.kde.org/stable5/en/"
-#| "applications/katepart/config-variables.html#variable-remove-trailing-"
-#| "spaces"
+#, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
 "'remove-trailing-spaces modified;', see https://docs.kde.org/?"
@@ -2413,46 +2404,39 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 "Está a usarse o modo obsoleto «retirar os espazos finais». Substitúao por "
-"«retirar os espazos finais modificado»», consulte https://docs.kde.org/"
-"stable5/en/applications/katepart/config-variables.html#variable-remove-"
-"trailing-spaces"
+"«retirar os espazos finais modificado»», consulte https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 # skip-rule: normalization-ble
 #: document/katedocument.cpp:5296
-#, fuzzy, kde-format
-#| msgid ""
-#| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
-#| "with 'remove-trailing-spaces all;', see https://docs.kde.org/stable5/en/"
-#| "applications/katepart/config-variables.html#variable-remove-trailing-"
-#| "spaces"
+#, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
 "'remove-trailing-spaces all;', see https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Está a usarse o modo obsoleto «retirar os espazos finais e gardar» "
-"Substitúao por «retirar os espazos finais todos», consulte https://docs.kde."
-"org/stable5/en/applications/katepart/config-variables.html#variable-remove-"
-"trailing-spaces"
+"Está a usarse o «modeline» (modo de liña) «replace-trailing-space-"
+"save» (substituír os espazos finais e gardar), que está obsoleto. Substitúao "
+"por «remove-trailing-spaces all;» (retirar todos os espazos finais), "
+"consulte https://docs.kde.org/stable5/en/applications/katepart/config-"
+"variables.html#variable-remove-trailing-spaces"
 
 #: document/katedocument.cpp:5605
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "O ficheiro «%1» modificouno outro programa."
+msgstr "O ficheiro «%1» modificouse no disco."
 
 #: document/katedocument.cpp:5608
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "O ficheiro «%1» creouno outro programa."
+msgstr "O ficheiro «%1» creouse no disco."
 
 #: document/katedocument.cpp:5611
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "O ficheiro «%1» eliminouno outro programa."
+msgstr "O ficheiro «%1» eliminouse do disco."
 
 #: document/katedocument.cpp:5948
 #, kde-format
@@ -2638,7 +2622,7 @@ msgstr "Imprimir a &lenda"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Non imprimir o código pregado"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2807,16 +2791,14 @@ msgid "L&ayout"
 msgstr "D&isposición"
 
 #: printing/printconfigwidgets.cpp:484
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Color theme:"
-msgstr "Cores"
+msgstr "Tema de &cores:"
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Fonte"
+msgstr "Tipo de letra:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2849,23 +2831,18 @@ msgid "Co&lor:"
 msgstr "Co&r:"
 
 #: printing/printconfigwidgets.cpp:547
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "Escoller o esquema de cores a usar para imprimir."
+msgstr "Escoller o tema de cores a usar para imprimir."
 
 #: printing/printconfigwidgets.cpp:549
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If enabled, the background color of the editor will be used.</"
-#| "p><p>This may be useful if your color scheme is designed for a dark "
-#| "background.</p>"
+#, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
 "<p>Se activa esta opción usarase a cor de fondo do editor.</p><p>Isto pode "
-"ser útil se o seu esquema de cores é para fondo escuro.</p>"
+"ser útil se o seu tema de cores é para fondo escuro.</p>"
 
 #: printing/printconfigwidgets.cpp:552
 #, kde-format
@@ -2930,144 +2907,109 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr "Embrullar nunha etiqueta"
+msgstr "Delimitar cunha etiqueta"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Desprazar o cursor ata a parella desta etiqueta"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "Escoller o contido da etiqueta HTML/XML cara dentro"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "Escoller o contido da etiqueta HTML/XML cara fóra"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "Conmutar o comentario"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Ir ao seguinte punto de edición"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Ir ao anterior punto de edición"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Escoller o seguinte punto de edición"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Escoller o anterior punto de edición"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Eliminar a etiqueta baixo o cursor"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Dividir ou xuntar unha etiqueta"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Avaliar unha expresión matemática simple"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Diminuír 1 un número"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Diminuír 10 un número"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Diminuír 0,1 un número"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Aumentar 1 un número"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Aumentar 10 un número"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Aumentar 0,1 un número"
@@ -3093,7 +3035,7 @@ msgstr ""
 #: script/data/commands/emmet.js:98
 #, kde-format
 msgid "Moves the caret to the current tag's pair"
-msgstr "Move o «caret» para a parella da etiqueta actual"
+msgstr "Move o cursor de escritura á parella da etiqueta actual"
 
 #: script/data/commands/emmet.js:99
 #, kde-format
@@ -3182,9 +3124,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Aumentar en 0,1 o número baixo o cursor"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Desprazar o cursor ata o anterior sangrado igual"
@@ -3197,9 +3137,7 @@ msgid "Navigation"
 msgstr "Navegación"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Desprazar o cursor ata o seguinte sangrado igual"
@@ -3215,12 +3153,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Desprazar o cursor ata o seguinte sangrado igual"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Ordenar o texto escollido"
+msgstr "Ordenar o texto escollido alfabeticamente"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3235,45 +3171,38 @@ msgid "Editing"
 msgstr "Edición"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr ""
-"Retirar as liñas duplicadas do texto escollido ou do documento completo."
+"Retirar as liñas duplicadas e ordenar o texto escollido alfabeticamente."
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplicar as liñas escollidas arriba"
+msgstr "Retirar as liñas duplicadas"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Re&tirar os espazos ao final:"
+msgstr "Retirar os espazos finais"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Re&tirar os espazos ao final:"
+msgstr "Retirar os espazos iniciais"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Re&tirar os espazos ao final:"
+msgstr "Retirar os espazos iniciais e finais"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Unir as liñas"
@@ -3315,11 +3244,10 @@ msgid "URI-decode Selected Text"
 msgstr "Descodificar como URI o texto escollido"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Desprazar o cursor ata o seguinte sangrado igual"
+msgstr "Retirar as liñas baleiras"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3401,6 +3329,15 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Esta orde aliña as liñas do bloque seleccionado ou de todo o documento na "
+"columna indicada por unha expresión regular fornecida como argumento."
+"<br><br>Se fornece un padrón baleiro aliñarase no primeiro carácter non "
+"baleiro de maneira predeterminada.<br>Se o padrón ten unha captura "
+"sangrarase na coincidencia capturada.<br><br><i>Exemplos</i>:"
+"<br>«<code>alignon -</code>» inserirá espazos antes do primeiro «-» de cada "
+"liña para aliñalos todos na mesma columna.<br>«<code>alignon :\\s+(.)</"
+"code>» inserirá espazos antes do primeiro carácter non baleiro que haxa tras "
+"un símbolo de dous puntos (:) para aliñalos todos na mesma columna."
 
 #: script/data/commands/utils.js:466
 #, kde-format
@@ -3479,6 +3416,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Seleccionar texto cara adiante desde a posición actual do cursor ata a "
+"primeira aparición do argumento fornecido despois dela (ou ata o final da "
+"liña actual de maneira predeterminada)."
 
 #: script/data/commands/utils.js:482
 #, kde-format
@@ -3487,12 +3427,15 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Seleccionar texto cara atrás desde a posición actual do cursor ata a última "
+"aparición do argumento fornecido antes dela (ou ata o comezo da liña actual "
+"de maneira predeterminada)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "ada"
-msgstr "Ada"
+msgstr "ada"
 
 #: script/data/indentation/cmake.js:2
 #, kde-format
@@ -3519,9 +3462,7 @@ msgid "Haskell"
 msgstr "Haskell"
 
 #: script/data/indentation/julia.js:2
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Julia"
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Julia"
 msgstr "Julia"
@@ -3697,10 +3638,9 @@ msgid "End of line"
 msgstr "Final da liña"
 
 #: search/katesearchbar.cpp:1162
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "Calquera carácter só (excluíndo os saltos de liña)"
+msgstr "Calquera carácter menos salto de liña (predeterminado)"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
@@ -3788,10 +3728,9 @@ msgid "Whitespace (excluding line breaks)"
 msgstr "Espazo en branco (excluíndo os saltos de liña)"
 
 #: search/katesearchbar.cpp:1208
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "Espazos"
+msgstr "Non espazo en branco"
 
 #: search/katesearchbar.cpp:1209
 #, kde-format
@@ -3824,10 +3763,9 @@ msgid "Group, non-capturing"
 msgstr "Agrupamento, non capturando"
 
 #: search/katesearchbar.cpp:1220
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "Comprobación de continuación negativa"
+msgstr "Comprobación de continuación positiva"
 
 #: search/katesearchbar.cpp:1221
 #, kde-format
@@ -3837,12 +3775,12 @@ msgstr "Comprobación de continuación negativa"
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "Comprobación de precedencia positiva de lonxitude fixa"
 
 #: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "Comprobación de precedencia negativa de lonxitude fixa"
 
 #: search/katesearchbar.cpp:1231
 #, kde-format
@@ -4255,8 +4193,7 @@ msgid "I&gnore All"
 msgstr "I&gnoralas todas"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
 msgstr "Corrección ortográfica (desde o cursor)…"
 
@@ -4276,28 +4213,24 @@ msgid "Add to Dictionary"
 msgstr "Engadir ao dicionario"
 
 #: spellcheck/spellingmenu.cpp:169
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Ortografía"
+msgstr "Ortografía de «%1»"
 
 # skip-rule: kde_path
 #: swapfile/kateswapdiffcreator.cpp:86
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command could not be started. Please make sure that diff(1) is "
-#| "installed and in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"Non se puido iniciar a orde diff. Asegúrese de que diff(1) está instalado e "
-"na súa PATH."
+"Non se atopou a orde diff. Asegúrese de que diff(1) está instalado e na súa "
+"PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:96
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr ""
+msgstr "Non se puido iniciar a orde «%1»."
 
 #: swapfile/kateswapfile.cpp:631
 #, kde-format
@@ -4320,10 +4253,9 @@ msgid "Discard"
 msgstr "Descartar"
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
-#, fuzzy, kde-format
-#| msgid "Use default color from the KDE color scheme"
+#, kde-format
 msgid "Use default color from the color theme"
-msgstr "Usar a cor predeterminada do esquema de cores de KDE"
+msgstr "Usar a cor predeterminada do tema de cores"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4532,13 +4464,13 @@ msgstr "Cadea"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Verbatim String"
-msgstr "Cadena literal"
+msgstr "Cadea literal"
 
 #: syntax/katethemeconfig.cpp:76
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special String"
-msgstr "Cadena especial"
+msgstr "Cadea especial"
 
 #: syntax/katethemeconfig.cpp:78
 #, kde-format
@@ -4637,10 +4569,9 @@ msgid "Error"
 msgstr "Erro"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "Empregar o predeterminado"
+msgstr "Usar as cores predeterminadas"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -5005,34 +4936,29 @@ msgstr ""
 "da selección no menú contextual cando sexa axeitado.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Estilos predeterminados de texto"
+msgstr "Tema predeterminado"
 
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Theme Editor"
-msgstr ""
+msgstr "Editor de temas"
 
 #: syntax/katethemeconfig.cpp:1039
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Select theme:"
-msgstr "Texto escollido:"
+msgstr "Escolla un tema:"
 
 #: syntax/katethemeconfig.cpp:1108
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Scheme"
+#, kde-format
 msgid "&Theme:"
-msgstr "Scheme"
+msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1117
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "&Copy..."
-msgstr "Gardar unha &copia como…"
+msgstr "&Copiar…"
 
 #: syntax/katethemeconfig.cpp:1125
 #, kde-format
@@ -5047,7 +4973,7 @@ msgstr "Importar…"
 #: syntax/katethemeconfig.cpp:1136
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
-msgstr ""
+msgstr "Tema da colección, de só lectura. Para modificar o tema cópieo."
 
 #: syntax/katethemeconfig.cpp:1147
 #, kde-format
@@ -5065,87 +4991,75 @@ msgid "Highlighting Text Styles"
 msgstr "Estilos de realzado de texto"
 
 #: syntax/katethemeconfig.cpp:1167
-#, fuzzy, kde-format
-#| msgid "Exporting color schema: %1"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "Estase a exportar o esquema de cores: %1"
+msgstr "Exportando o tema de cores: %1"
 
 #: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color theme"
-msgstr "Cores"
+msgstr "Tema de cores"
 
 #: syntax/katethemeconfig.cpp:1190
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "Estase a importar o esquema de cores"
+msgstr "Importando un tema de cores"
 
 #: syntax/katethemeconfig.cpp:1204
-#, fuzzy, kde-format
-#| msgid "Do you really want to delete the snippet \"%1\"?"
+#, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
-msgstr "Desexa realmente eliminar o fragmento «%1»?"
+msgstr ""
+"A importación substituirá o ficheiro de tema existente «%1». Isto non pode "
+"desfacerse."
 
 #: syntax/katethemeconfig.cpp:1206
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "Pechar aínda así"
+msgstr "Importar aínda así"
 
 #: syntax/katethemeconfig.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Usar o esquema de cores de KDE"
+msgstr "Seguir o esquema de cores do sistema"
 
 #: syntax/katethemeconfig.cpp:1354
-#, fuzzy, kde-format
-#| msgid "Do you really want to delete the snippet \"%1\"?"
+#, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr "Desexa realmente eliminar o fragmento «%1»?"
+msgstr "Seguro que quere eliminar o tema «%1»? Isto non pode desfacerse."
 
 #: syntax/katethemeconfig.cpp:1356
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "Pechar aínda así"
+msgstr "Eliminar aínda así"
 
 #: syntax/katethemeconfig.cpp:1398
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy theme"
-msgstr "Cores"
+msgstr "Copiar o tema"
 
 #: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "Nome da copia do tema de cores «%1»:"
 
 #: syntax/katethemeconfig.cpp:1411
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
-#| "name.</p>"
+#, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
-msgstr "<p>Xa existe o esquema %1.</p><p>Escolla outro nome.</p>"
+msgstr "<p>O tema «%1» xa existe.</p><p>Escolla outro nome.</p>"
 
 #: syntax/katethemeconfig.cpp:1412
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy Theme"
-msgstr "Cores"
+msgstr "Copiar o tema"
 
 #: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "Cores"
+msgstr "Temas de cores"
 
 #: utils/kateautoindent.cpp:89
 #, kde-format
@@ -5313,8 +5227,8 @@ msgid ""
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
 "<p>set-show-tabs <b>activado</b></p><p>Se escolle esta opción os caracteres "
-"de tabulación e os espazos en branco finais hanse ver como un puntiño.</p> "
-"<p>Os valores posíbeis para activar son: 1 on true<br/>os valores para "
+"de tabulación e os espazos en branco finais hanse ver como un punto pequeno."
+"</p> <p>Os valores posíbeis para activar son: 1 on true<br/>os valores para "
 "desactivar son: 0 off false</p>"
 
 #: utils/katecmds.cpp:114
@@ -5560,8 +5474,8 @@ msgid ""
 msgstr ""
 "<p>date ou date <b>formato</b></p><p>Insire un texto coa data/hora segundo "
 "se defina no formato, ou co formato yyyy-MM-dd hh:mm:ss se non se especifica "
-"ningún.</p><p>Os especificadores de formato son:<table><tr><td>d</td><td>O "
-"día en numero sen cero inicial (1-31).</td></tr><tr><td>dd</td><td>O día en "
+"ningún.</p><p>Os indicadores de formato son:<table><tr><td>d</td><td>O día "
+"en numero sen cero inicial (1-31).</td></tr><tr><td>dd</td><td>O día en "
 "número cun cero inicial (01-31).</td></tr><tr><td>ddd</td><td>A abreviatura "
 "do nome do día (p.ex. «dom», «mar»).</td></tr><tr><td>dddd</td><td>O nome "
 "completo do día (p.ex. «domingo»).</td></tr><tr><td>M</td><td>The month as "
@@ -5593,10 +5507,9 @@ msgid "Embeddable editor component"
 msgstr "Compoñente integrábel de edición de textos"
 
 #: utils/kateglobal.cpp:77
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2019 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "© 2000-2019 Autores de Kate"
+msgstr "© 2000-2022 Persoas autoras de Kate"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -5682,7 +5595,7 @@ msgstr "Waldo Bastian"
 #: utils/kateglobal.cpp:113
 #, kde-format
 msgid "The cool buffersystem"
-msgstr "O sistema de buffer"
+msgstr "O sistema de búfer"
 
 #: utils/kateglobal.cpp:114
 #, kde-format
@@ -6139,11 +6052,9 @@ msgid "Number of rows of the current document."
 msgstr "O número de filas do documento actual."
 
 #: utils/katevariableexpansionmanager.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "Variábel de comentario"
+msgstr "Ler unha variábel do documento."
 
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
@@ -6188,7 +6099,7 @@ msgstr "Avaliar expresións de JavaScript sinxelas."
 #: utils/katevariableexpansionmanager.cpp:236
 #, kde-format
 msgid "Encode text to make it URL compatible."
-msgstr ""
+msgstr "Codificar texto para facelo compatíbel cun URL."
 
 #: utils/katevariableexpansionmanager.cpp:244
 #, kde-format
@@ -6243,7 +6154,7 @@ msgstr "Activar a inserción automática de signos delimitadores."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
-msgstr "Define o número de liñas autocentradas."
+msgstr "Define o número de liñas centradas automaticamente."
 
 #: variableeditor/variablelineedit.cpp:126
 #, kde-format
@@ -6363,7 +6274,7 @@ msgstr "Define a distancia de sangrado de cada nivel."
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
-msgstr "Permitir niveis estraños de sangrado (non multiplos do sangrado)."
+msgstr "Permitir niveis estraños de sangrado (non múltiplos do sangrado)."
 
 #: variableeditor/variablelineedit.cpp:245
 #, kde-format
@@ -6533,10 +6444,9 @@ msgid "Encoding"
 msgstr "Codificación"
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Final da liña"
+msgstr "Tipo de fin de liña"
 
 #: view/katestatusbar.cpp:207
 #, kde-format
@@ -6560,7 +6470,7 @@ msgstr "Realce da sintaxe"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Modo compacto de liña e columna"
 
 #: view/katestatusbar.cpp:307
 #, kde-format
@@ -6570,12 +6480,12 @@ msgstr "[BLOQUE] %1"
 #: view/katestatusbar.cpp:323
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:325
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:329
 #, kde-format
@@ -6638,20 +6548,15 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Palabras: %1/%2, caracteres: %3/%4"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Palabras: %1/%2, caracteres: %3/%4"
+msgstr "%1 palabras, %2 caracteres"
 
 #: view/katestatusbar.cpp:589
-#, fuzzy, kde-format
-#| msgid "Zoom"
+#, kde-format
 msgid "Zoom: %1%"
-msgstr "Ampliar"
+msgstr "Ampliación: %1%"
 
 #: view/kateview.cpp:452
 #, kde-format
@@ -6670,40 +6575,34 @@ msgid ""
 msgstr "Use esta orde para copiar o texto escollido ao portapapeis."
 
 #: view/kateview.cpp:464
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "&Historial do portapapeis"
+msgstr "Pegar o &historial do portapapeis"
 
 #: view/kateview.cpp:469
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Paste Selection"
-msgstr "Selección de idioma"
+msgstr "Pegar a selección"
 
 #: view/kateview.cpp:471
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "Pegar os contidos copiados ou cortados ao portapapeis"
+msgstr "Pegar o contido da selección do rato"
 
 #: view/kateview.cpp:475
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr "Pegar os contidos copiados ou cortados ao portapapeis"
+msgstr "Intercambiar co contido do portapapeis"
 
 #: view/kateview.cpp:476
-#, fuzzy, kde-format
-#| msgid "Cut the selected text and move it to the clipboard"
+#, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr "Cortar o texto escollido e movelo para o portapapeis"
+msgstr "Intercambiar o texto seleccionado co contido do portapapeis"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Selección de idioma"
+msgstr "Facer unha captura de pantalla da selección"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -6759,28 +6658,23 @@ msgstr ""
 "se desexa usar tabuladores ou substituílos con espazos."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Sangrado"
+msgstr "&Formatar o sangrado"
 
 #: view/kateview.cpp:513
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Use isto para aliñar a liña ou bloque de texto actual co seu sangrado "
-"axeitado."
+"Use isto para sangrar automaticamente a liña ou bloque de texto actual co "
+"seu sangrado axeitado."
 
 #: view/kateview.cpp:517
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Aliñar"
+msgstr "&Aliñar en…"
 
 #: view/kateview.cpp:519
 #, kde-format
@@ -6795,6 +6689,15 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Esta orde aliña as liñas do bloque seleccionado ou de todo o documento na "
+"columna indicada por unha expresión regular que se lle pedirá.<br /><br />Se "
+"fornece un padrón baleiro aliñarase no primeiro carácter non baleiro de "
+"maneira predeterminada.<br />Se o padrón ten unha captura sangrarase na "
+"coincidencia capturada.<br /><br /><i>Exemplos</i>:<br />Con «-» inserirá "
+"espazos antes do primeiro «-» de cada liña para aliñalos todos na mesma "
+"columna.<br />Con «:\\s+(.)» inserirá espazos antes do primeiro carácter non "
+"baleiro que haxa tras un símbolo de dous puntos (:) para aliñalos todos na "
+"mesma columna."
 
 #: view/kateview.cpp:530
 #, kde-format
@@ -6813,16 +6716,14 @@ msgstr ""
 "realzado sintáctico da linguaxe que se use."
 
 #: view/kateview.cpp:538
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Ir á liña de edición anterior"
+msgstr "Ir á localización de edición anterior"
 
 #: view/kateview.cpp:544
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Ir á seguinte liña de edición"
+msgstr "Ir á seguinte localización de edición"
 
 #: view/kateview.cpp:550
 #, kde-format
@@ -6858,13 +6759,12 @@ msgstr "Bloquea ou desbloquea a escritura no documento"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Forzar de dereita a esquerda"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Decoracións do texto"
+msgstr "Forzar a dirección do texto de dereita a esquerda"
 
 #: view/kateview.cpp:579
 #, kde-format
@@ -6928,10 +6828,9 @@ msgstr ""
 "asociado a esta acción."
 
 #: view/kateview.cpp:616
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "Re&tirar os espazos ao final:"
+msgstr "Retirar os espazos finais"
 
 #: view/kateview.cpp:634
 #, kde-format
@@ -6982,10 +6881,9 @@ msgstr ""
 "Esta orde abre un diálogo e permite escoller unha liña á que mover o cursor."
 
 #: view/kateview.cpp:664
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Desprazarse ata a liña modificada anterior"
+msgstr "Ir á liña modificada anterior"
 
 #: view/kateview.cpp:665
 #, kde-format
@@ -6993,10 +6891,9 @@ msgid "Move upwards to the previous modified line."
 msgstr "Desprazarse ata a liña modificada anterior."
 
 #: view/kateview.cpp:670
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Desprazarse ata a seguinte liña modificada"
+msgstr "Ir á seguinte liña modificada"
 
 #: view/kateview.cpp:671
 #, kde-format
@@ -7029,10 +6926,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Aquí pode escoller o realzado que se lle aplique ao documento."
 
 #: view/kateview.cpp:691
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Cores"
+msgstr "Tema de cores do &editor"
 
 #: view/kateview.cpp:697
 #, kde-format
@@ -7096,8 +6992,7 @@ msgstr ""
 "liñas) e o modo de selección por bloques."
 
 #: view/kateview.cpp:742
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Cambiar ao seguinte modo de entrada"
 
@@ -7367,34 +7262,33 @@ msgstr "Atopa a aparición anterior do texto escollido."
 #: view/kateview.cpp:887
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Atopar e seleccionar a seguinte aparición"
 
 #: view/kateview.cpp:889
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "Atopa a aparición seguinte do texto escollido."
+msgstr ""
+"Atopa a seguinte aparición da palabra baixo o cursor e engádea á selección."
 
 #: view/kateview.cpp:893
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Marcar a aparición seleccionada actualmente como omitida"
 
 #: view/kateview.cpp:895
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Marca a palabra seleccionada actualmente como omitida."
 
 #: view/kateview.cpp:899
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "Atopar e seleccionar todas as aparicións"
 
 #: view/kateview.cpp:901
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
-msgstr "Atopa a aparición seguinte do texto escollido."
+msgstr "Atopa todas as aparicións da palabra baixo o cursor e seleccionalas."
 
 #: view/kateview.cpp:905
 #, kde-format
@@ -7418,56 +7312,56 @@ msgstr ""
 #: view/kateview.cpp:916
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "Engadir cursores ao final das liñas"
 
 #: view/kateview.cpp:918
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr ""
+msgstr "Crea un cursor ao final de cada liña da selección."
 
 #: view/kateview.cpp:922
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Engadir un cursor de escritura baixo o cursor"
 
 #: view/kateview.cpp:924
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Escolle todo o texto deste documento."
+msgstr ""
+"Engade un cursor de escritura na liña baixo o cursor de escritura actual."
 
 #: view/kateview.cpp:928
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Engadir un cursor de escritura sobre o cursor"
 
 #: view/kateview.cpp:930
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
+"Engade un cursor de escritura na liña sobre o cursor de escritura actual."
 
 #: view/kateview.cpp:934
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "Movemento do cursor polo texto"
+msgstr "Conmutar o movemento de cursor de maiúsculas de camelo"
 
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
+"Conmutar entre o movemento normal entre palabras e o movemento de cursor de "
+"maiúsculas de camelo."
 
 #: view/kateview.cpp:939
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Desprazar o cursor ata o seguinte sangrado igual"
+msgstr "Retirar os cursores das liñas baleiras"
 
 #: view/kateview.cpp:940
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Desprazar o cursor ata o seguinte sangrado igual"
+msgstr "Retirar os cursores das liñas baleiras"
 
 #: view/kateview.cpp:944
 #, kde-format
@@ -7695,10 +7589,9 @@ msgid "Transpose Characters"
 msgstr "Traspor os caracteres"
 
 #: view/kateview.cpp:1208
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "Traspor os caracteres"
+msgstr "Traspor as palabras"
 
 #: view/kateview.cpp:1213
 #, kde-format
@@ -7726,10 +7619,9 @@ msgid "Backspace"
 msgstr "Retroceso"
 
 #: view/kateview.cpp:1245
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Inserir un tabulador"
+msgstr "Inserir un carácter de tabulación"
 
 #: view/kateview.cpp:1250
 #, kde-format
@@ -7746,8 +7638,7 @@ msgstr ""
 "letras nin números."
 
 #: view/kateview.cpp:1259
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Inserir unha nova liña sen sangrado"
 
@@ -7761,24 +7652,26 @@ msgstr ""
 #: view/kateview.cpp:1268
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "Inserir unha nova liña sobre a actual"
 
 #: view/kateview.cpp:1269
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
+"Inserir unha nova liña sobre a liña actual sen modificar a liña actual."
 
 #: view/kateview.cpp:1277
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "Inserir unha nova liña baixo a actual"
 
 #: view/kateview.cpp:1278
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
+"Inserir unha nova liña baixo a liña actual sen modificar a liña actual."
 
 #: view/kateview.cpp:1287
 #, kde-format
@@ -7834,12 +7727,12 @@ msgstr "(S/L) %1"
 #: view/kateview.cpp:1682
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "Desactivouse o movemento de cursor de maiúsculas de camelo"
 
 #: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "Activouse o movemento de cursor de maiúsculas de camelo"
 
 #: view/kateview.cpp:2176
 #, kde-format
@@ -7847,15 +7740,14 @@ msgid "Search wrapped"
 msgstr "Buscar ignorando saltos de liña"
 
 #: view/kateview.cpp:3697
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Aliñar"
+msgstr "Aliñar en"
 
 #: view/kateview.cpp:3697
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Padrón de aliñamento:"
 
 #: view/kateview.cpp:4791
 #, kde-format
@@ -7942,63 +7834,54 @@ msgid "Disable Annotation Bar"
 msgstr "Desactivar a barra de anotacións"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Abrir/Gardar"
+msgstr "Gardar"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "Copy"
-msgstr "Gardar unha &copia como…"
+msgstr "Copiar"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "Cor do &fondo…"
+msgstr "Cor de fondo…"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Decoracións do texto"
+msgstr "Mostrar decoracións adicionais"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Mostrar liñas de &sangrado"
+msgstr "Mostrar as decoracións da xanela"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Captura de pantalla…"
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Mostrar os números de &liña"
+msgstr "Non mostrar os números de liña"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Mostrar os números de &liña"
+msgstr "Mostrar os números de liña empezando en 1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Mostrar os números de &liña"
+msgstr "Mostrar os números de liña reais"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "Gardar &como…"
+msgstr "Gardar…"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8117,12 +8000,7 @@ msgstr ""
 "divide a vista en vertical e abre un documento novo.<br /></p>"
 
 #: vimode/appcommands.cpp:270
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
-#| "<tt><b>e[dit]</b></tt></p><p>Starts <b>e</b>diting the current document "
-#| "again. This is useful to re-edit the current file, when it has been "
-#| "changed by another program.</p>"
+#, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
@@ -8130,7 +8008,7 @@ msgid ""
 msgstr ""
 "<p><b>e[dit]: carga de novo o documento actual</b></p><p>Uso: <tt><b>e[dit]</"
 "b></tt></p><p>Comeza de novo a <b>e</b>ditar o documento actual. Isto é útil "
-"para editar de novo o ficheiro se o cambiou outro programa.</p>"
+"para editar de novo o ficheiro se se modificou no disco.</p>"
 
 # skip-rule: PT-2011_buffer
 #: vimode/appcommands.cpp:512
@@ -8142,6 +8020,7 @@ msgstr ""
 "<p><b>b,buffer: Editar o enésimo documento da lista</b></p><p>Uso: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
+# well-spelled: ésimo, revio, úfer
 #: vimode/appcommands.cpp:517
 #, kde-format
 msgid ""
@@ -8155,6 +8034,7 @@ msgstr ""
 "de documentos. </p><p> <b>[N]</b> vale un de maneira predeterminada. </"
 "p><p>Volve comezar polo fin se sobrepasa o comezo da lista.</p>"
 
+# well-spelled: úfer
 #: vimode/appcommands.cpp:525
 #, kde-format
 msgid ""
@@ -8168,6 +8048,7 @@ msgstr ""
 "lista de documentos.<b>[N]</b> vale un de maneira predeterminada.</p> "
 "<p>Continúa polo fin da lista de documentos.</p>"
 
+# well-spelled: úfer
 #: vimode/appcommands.cpp:533
 #, kde-format
 msgid ""
@@ -8179,6 +8060,7 @@ msgstr ""
 "p><p>Vai ao primeiro (<b>f</b>irst) documento («<b>b</b>úfer») da lista de "
 "documentos.</p>"
 
+# well-spelled: úfer
 #: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
