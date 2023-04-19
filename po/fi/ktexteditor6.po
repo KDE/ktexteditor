@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-03-29 23:27+0300\n"
+"PO-Revision-Date: 2023-04-11 16:04+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:21:58+0000\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -2607,7 +2607,7 @@ msgstr "Tulosta &selite"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Älä tulosta laskostettua koodia"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -6796,10 +6796,9 @@ msgstr ""
 "pikanäppäimellä."
 
 #: view/kateview.cpp:616
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "&Poista rivinloppuiset välilyönnit:"
+msgstr "Poista rivinloppuiset välilyönnit"
 
 #: view/kateview.cpp:634
 #, kde-format
