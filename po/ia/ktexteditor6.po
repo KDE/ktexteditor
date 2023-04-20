@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-07 10:09+0200\n"
+"PO-Revision-Date: 2023-04-19 22:39+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.03.90\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -183,7 +183,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:45
 #, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Monstra le vista preliminari del blocos plicate quando on passa supra"
+msgstr "Monstra le vista preliminar del blocos plicate quando on passa supra"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
@@ -268,7 +268,7 @@ msgid ""
 "a preview of the text.</p>"
 msgstr ""
 "<p>Si iste option es marcate, passar sur  le barra de rolo vertical "
-"monstrara un vista preliminari de texto. </p>"
+"monstrara un vista preliminar de texto. </p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
@@ -1965,7 +1965,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:201
 #, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Monstra le vista preliminari del parenthesis aperite correspondente"
+msgstr "Monstra le vista preliminar del parenthesis aperite correspondente"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:208
@@ -6243,7 +6243,7 @@ msgstr "Habilita marcatores plicante in le bordo de editor"
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
-msgstr "Habilita vista preliminari plicante in le bordo de editor."
+msgstr "Habilita vista preliminar plicante in le bordo de editor."
 
 #: variableeditor/variablelineedit.cpp:188
 #, kde-format
@@ -6355,7 +6355,7 @@ msgstr "Monstra minimap de barra de rolar."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "Monstra vista preliminari de barra de rolar."
+msgstr "Monstra vista preliminar de barra de rolar."
 
 #: variableeditor/variablelineedit.cpp:296
 #, kde-format
@@ -6873,7 +6873,7 @@ msgstr "Imprime le documento currente."
 #: view/kateview.cpp:637
 #, kde-format
 msgid "Show print preview of current document"
-msgstr "Monstra levista preliminari del documento currente"
+msgstr "Monstra le vista preliminar del documento currente"
 
 #: view/kateview.cpp:641
 #, kde-format
@@ -7187,7 +7187,7 @@ msgid ""
 "shows an overview of the whole document."
 msgstr ""
 "Monstra/cela le mini-map sur le barra de rolar vertical.<br /><br /> Le mini-"
-"mapmonstra un vista preliminari del documento integre."
+"mapmonstra un vista preliminar del documento integre."
 
 #. i18n("Show the whole document in the Mini-Map"), this);
 #. ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
