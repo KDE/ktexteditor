@@ -3368,7 +3368,7 @@ msgstr "Modification"
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr ""
-"Supprimer les  doublons et trier le texte sélectionné par ordre alphabétique"
+"Supprimer les doublons et trier le texte sélectionné par ordre alphabétique"
 
 #: script/data/commands/utils.js:17
 #, kde-format
