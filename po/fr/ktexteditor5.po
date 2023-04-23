@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 00:44+0000\n"
-"PO-Revision-Date: 2023-04-04 16:39+0200\n"
+"PO-Revision-Date: 2023-04-08 10:18+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -3361,7 +3361,7 @@ msgstr "Modification"
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr ""
-"Supprimer les  doublons et trier le texte sélectionné par ordre alphabétique"
+"Supprimer les doublons et trier le texte sélectionné par ordre alphabétique"
 
 #: script/data/commands/utils.js:17
 #, kde-format
