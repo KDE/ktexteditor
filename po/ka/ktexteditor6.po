@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2023-04-09 10:58+0200\n"
+"PO-Revision-Date: 2023-04-24 05:46+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -176,6 +176,8 @@ msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
+"თუ ჩართულია, გაკეცილ ადგილას თაგუნას გადატარება გაკეცილ ტექსტს მხტუნარაში "
+"გაჩვენებთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
@@ -213,6 +215,8 @@ msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
 msgstr ""
+"თუ ეს პარამეტრი ჩართულია,ყოველი ახალი ხედი მარცხენა მხარეს ხაზის ნომრებს "
+"აჩვენებს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:88
@@ -3535,7 +3539,7 @@ msgstr "რეგისტრზე-დამოკიდებული და�
 #: search/searchbarincremental.ui:161
 #, kde-format
 msgid "Switch to power search and replace bar"
-msgstr ""
+msgstr "ძლიერი ძებნისა და ჩანაცვლების პანელზე გადართვა"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarpower.ui:50
@@ -3589,7 +3593,7 @@ msgstr "რეგულარულ გამოსახულება"
 #: search/searchbarpower.ui:153
 #, kde-format
 msgid "Search in the selection only"
-msgstr ""
+msgstr "მხოლოდ მონიშნულში ძებნა"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceNext)
 #: search/searchbarpower.ui:211
@@ -3632,7 +3636,7 @@ msgstr "გაუქმენა"
 #: search/searchbarpower.ui:284
 #, kde-format
 msgid "Switch to incremental search bar"
-msgstr ""
+msgstr "ინკრემენტული ძებნის პანელზე გადართვა"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
 #: search/searchbarpower.ui:334
