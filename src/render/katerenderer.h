@@ -352,17 +352,13 @@ public:
      *
      * @param paint           painter to use
      * @param range           layout to use in painting this line
+     * @param textClipRect    clip rect for text to not paint lines outside the visible area.
      * @param xStart          starting width in pixels.
      * @param xEnd            ending width in pixels.
      * @param cursor          position of the caret, if placed on the current line.
      * @param flags           flags for customizing the drawing of the line
      */
-    void paintTextLine(QPainter &paint,
-                       KateLineLayout *range,
-                       int xStart,
-                       int xEnd,
-                       const KTextEditor::Cursor *cursor = nullptr,
-                       PaintTextLineFlags flags = PaintTextLineFlags());
+    void paintTextLine(QPainter &paint, KateLineLayout *range, int xStart, int xEnd, const QRectF &textClipRect = QRectF(), const KTextEditor::Cursor *cursor = nullptr, PaintTextLineFlags flags = PaintTextLineFlags());
 
     /**
      * Paint the background of a line

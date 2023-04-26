@@ -353,7 +353,7 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
     flags.setFlag(KateRenderer::SkipDrawLineSelection);
     int lineNo = m_absoluteLineNumbers ? 1 : startLine + 1;
     for (auto &lineLayout : lineLayouts) {
-        renderer.paintTextLine(paint, lineLayout.get(), xStart, xEnd, nullptr, flags);
+        renderer.paintTextLine(paint, lineLayout.get(), xStart, xEnd, QRectF{}, nullptr, flags);
         // draw line number
         if (lineNoAreaWidth != 0) {
             paint.drawText(QRect(leftMargin - lnNoAreaSpacing, 0, lineNoAreaWidth, renderer.lineHeight()), Qt::AlignRight, QString::number(lineNo++));

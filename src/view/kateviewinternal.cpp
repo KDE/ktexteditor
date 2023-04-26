@@ -3933,7 +3933,8 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 // paint our line
                 // set clipping region to only paint the relevant parts
                 paint.save();
-                paint.translate(QPoint(0, h * -thisLine.viewLine()));
+                const int thisLineTop = h * thisLine.viewLine();
+                paint.translate(QPoint(0, -thisLineTop));
 
                 // compute rect for line, fill the stuff
                 // important: as we allow some ARGB colors for other stuff, it is REALLY important to fill the full range once!
@@ -3944,7 +3945,13 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 // SEE BUG https://bugreports.qt.io/browse/QTBUG-66036
                 // => using a QRectF solves the cut of 1 pixel, the same call with QRect does create artifacts!
                 paint.setClipRect(lineRect);
-                renderer()->paintTextLine(paint, thisLine.kateLineLayout(), xStart, xEnd, &pos);
+
+                // QTextLayout::draw does not take into account QPainter's viewport, so it will try to render
+                // lines outside visible bounds. This causes a significant slowdown when a very long line
+                // dynamically broken into multiple lines. To avoid this, an explicit text clip rect is set.
+                const QRect textClipRect{xStart, thisLineTop, xEnd - xStart, height()};
+
+                renderer()->paintTextLine(paint, thisLine.kateLineLayout(), xStart, xEnd, textClipRect.toRectF(), &pos);
                 paint.restore();
 
                 // line painted, reset and state + mark line as non-dirty
