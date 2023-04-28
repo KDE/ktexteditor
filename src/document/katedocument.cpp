@@ -5032,7 +5032,7 @@ void KTextEditor::DocumentPrivate::documentSaveCopyAs()
         return;
     }
 
-    std::unique_ptr<QTemporaryFile> file = std::make_unique<QTemporaryFile>();
+    QTemporaryFile *file = new QTemporaryFile();
     if (!file->open()) {
         return;
     }
@@ -5049,11 +5049,12 @@ void KTextEditor::DocumentPrivate::documentSaveCopyAs()
     KIO::StatJob *statJob = KIO::statDetails(url(), KIO::StatJob::SourceSide, KIO::StatBasic);
     KJobWidgets::setWindow(statJob, QApplication::activeWindow());
     const auto url = this->url();
-    connect(statJob, &KIO::StatJob::result, this, [url, file = std::move(file), saveUrl](KJob *j) {
+    connect(statJob, &KIO::StatJob::result, this, [url, file, saveUrl](KJob *j) {
         if (auto sj = qobject_cast<KIO::StatJob *>(j)) {
             const int permissions = KFileItem(sj->statResult(), url).permissions();
             KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file->fileName()), saveUrl, permissions, KIO::Overwrite);
             KJobWidgets::setWindow(job, QApplication::activeWindow());
+            connect(job, &KIO::FileCopyJob::finished, file, &QTemporaryFile::deleteLater);
             job->start();
         }
     });
