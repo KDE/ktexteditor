@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:03+0000\n"
+"POT-Creation-Date: 2023-04-29 02:19+0000\n"
 "PO-Revision-Date: 2023-03-11 18:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -2183,12 +2183,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Skúsiť znova"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr "&Zavrieť"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2366,8 +2366,8 @@ msgid "Untitled"
 msgstr "Bez názvu"
 
 #: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Uložiť súbor"
@@ -2395,7 +2395,7 @@ msgstr ""
 "Overte, že máte dostatočné práva pre zápis tohto súboru a že je\n"
 "k dispozíci dosť miesta na disku."
 
-#: document/katedocument.cpp:5290
+#: document/katedocument.cpp:5291
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2413,7 +2413,7 @@ msgstr ""
 "org/stable5/en/applications/katepart/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5296
+#: document/katedocument.cpp:5297
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2431,25 +2431,25 @@ msgstr ""
 "stable5/en/applications/katepart/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Súbor '%1' bol zmenený na disku iným programom."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Súbor '%1' bol vytvorený na disku iným programom."
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Súbor '%1' bol odstránený z disku iným programom."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2458,17 +2458,17 @@ msgstr ""
 "Dokument \"%1\" bol upravený.\n"
 "Chcete uložiť alebo zahodiť zmeny?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "Zatvoriť dokument"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Súbor <a href=\"%1\">%2</a> sa stále načítava."
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Prerušiť načítanie"

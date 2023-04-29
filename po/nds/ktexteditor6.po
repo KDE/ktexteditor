@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:03+0000\n"
+"POT-Creation-Date: 2023-04-29 02:19+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2254,12 +2254,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Nochmaal versöken"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr "&Tomaken"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2447,8 +2447,8 @@ msgid "Untitled"
 msgstr "Ahn Titel"
 
 #: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Datei sekern"
@@ -2476,7 +2476,7 @@ msgstr ""
 "Bitte prööv, wat Du Schriefverlöven för de Datei hest un wat dat noog fre'en "
 "Platz op de Fastplaat gifft."
 
-#: document/katedocument.cpp:5290
+#: document/katedocument.cpp:5291
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2493,7 +2493,7 @@ msgstr ""
 "kde.org/stable/en/applications/kate/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5296
+#: document/katedocument.cpp:5297
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2510,25 +2510,25 @@ msgstr ""
 "org/stable/en/applications/kate/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "En anner Programm hett de Datei \"%1\" ännert."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "En anner Programm hett de Datei \"%1\" nieg opstellt."
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "En anner Programm hett de Datei \"%1\" wegdaan."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2537,17 +2537,17 @@ msgstr ""
 "Dat Dokment \"%1\" wöör ännert.\n"
 "Wullt Du de Ännern sekern oder wegsmieten?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "Dokment tomaken"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "De Datei <a href=\"%1\">%2</a> warrt noch laadt."
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Laden &afbreken"

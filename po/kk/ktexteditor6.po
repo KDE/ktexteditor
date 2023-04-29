@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:03+0000\n"
+"POT-Creation-Date: 2023-04-29 02:19+0000\n"
 "PO-Revision-Date: 2013-11-17 02:59+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2236,12 +2236,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Қайталап көру"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr "&Жабу"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2443,8 +2443,8 @@ msgid "Untitled"
 msgstr "Аталмаған"
 
 #: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Файл сақталсын"
@@ -2473,7 +2473,7 @@ msgstr ""
 "Бұл файлға жазу рұқсатыңыз немесе дискіде жеткілікті бос орын бар екенін "
 "тексеріңіз."
 
-#: document/katedocument.cpp:5290
+#: document/katedocument.cpp:5291
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2490,7 +2490,7 @@ msgstr ""
 "org/stable/en/kde-baseapps/kate/config-variables.html#variable-remove-"
 "trailing-spaces дегенді қараңыз"
 
-#: document/katedocument.cpp:5296
+#: document/katedocument.cpp:5297
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2507,25 +2507,25 @@ msgstr ""
 "stable/en/kde-baseapps/kate/config-variables.html#variable-remove-trailing-"
 "spaces дегенді қараңыз"
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' деген файлды басқа бағдарлама өзгертіп қойды."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "'%1' деген файлды басқа бағдарлама құрып қойды."
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "'%1'деген файлды басқа бағдарлама өшіріп қойды."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2534,17 +2534,17 @@ msgstr ""
 "\"%1\" құжаты өзгертілген.\n"
 "Сақтамақсыз ба, әлде ысырып тастамақсыз ба?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "Құжатты жабу"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> файлы әлі жүктеліп жатыр."
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Жүктеу туралы"

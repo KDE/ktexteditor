@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:03+0000\n"
+"POT-Creation-Date: 2023-04-29 02:19+0000\n"
 "PO-Revision-Date: 2023-04-19 22:39+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -2184,12 +2184,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Essaya de nove"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr "&Claude"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2375,8 +2375,8 @@ msgid "Untitled"
 msgstr "Sin titulo"
 
 #: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Salveguarda file"
@@ -2405,7 +2405,7 @@ msgstr ""
 "Tu verifica que tu ha le permission de scriptura a iste file o que assatis "
 "spatio sur le disco es disponibile."
 
-#: document/katedocument.cpp:5290
+#: document/katedocument.cpp:5291
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2419,7 +2419,7 @@ msgstr ""
 "kate&branch=stable5&path=/config-variables.html#variable-remove-trailing-"
 "spaces"
 
-#: document/katedocument.cpp:5296
+#: document/katedocument.cpp:5297
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2432,22 +2432,22 @@ msgstr ""
 "http://docs.kde.org/?applications=katepart&branch=stable5&path=config-"
 "variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Le file '%1' esseva modificate  sur disco."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Le file '%1' esseva create sur disco."
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Le file '%1' esseva cancellate sur disco."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2456,17 +2456,17 @@ msgstr ""
 "Le documento \"%1\" ha essite modificate.\n"
 "Tu vole salvar vostre cambios o abandonar los?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "Claude documento"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Le file  <a href=\"%1\">%2</a>  es ancora cargante."
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Interrumpe le cargamento"
