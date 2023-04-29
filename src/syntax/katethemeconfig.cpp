@@ -936,31 +936,32 @@ void KateThemeConfigHighlightTab::apply()
             const QString definitionName = highlightingIt.first;
             QJsonObject styles = overrides[definitionName].toObject();
             for (const auto &attributeIt : highlightingIt.second) {
+                // we need to store even if we have nothing set as long as the value differs from the default, see bug 459093
                 QJsonObject style;
                 KTextEditor::Attribute::Ptr p = attributeIt.second.first;
                 KTextEditor::Attribute::Ptr pDefault = attributeIt.second.second;
-                if (p->hasProperty(QTextFormat::ForegroundBrush) && p->foreground().color() != pDefault->foreground().color()) {
+                if (p->foreground().color() != pDefault->foreground().color()) {
                     style[QLatin1String("text-color")] = hexName(p->foreground().color());
                 }
-                if (p->hasProperty(QTextFormat::BackgroundBrush) && p->background().color() != pDefault->background().color()) {
+                if (p->background().color() != pDefault->background().color()) {
                     style[QLatin1String("background-color")] = hexName(p->background().color());
                 }
-                if (p->hasProperty(SelectedForeground) && p->selectedForeground().color() != pDefault->selectedForeground().color()) {
+                if (p->selectedForeground().color() != pDefault->selectedForeground().color()) {
                     style[QLatin1String("selected-text-color")] = hexName(p->selectedForeground().color());
                 }
-                if (p->hasProperty(SelectedBackground) && p->selectedBackground().color() != pDefault->selectedBackground().color()) {
+                if (p->selectedBackground().color() != pDefault->selectedBackground().color()) {
                     style[QLatin1String("selected-background-color")] = hexName(p->selectedBackground().color());
                 }
-                if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold() != pDefault->fontBold()) {
+                if (p->fontBold() != pDefault->fontBold()) {
                     style[QLatin1String("bold")] = p->fontBold();
                 }
-                if (p->hasProperty(QTextFormat::FontItalic) && p->fontItalic() != pDefault->fontItalic()) {
+                if (p->fontItalic() != pDefault->fontItalic()) {
                     style[QLatin1String("italic")] = p->fontItalic();
                 }
-                if (p->hasProperty(QTextFormat::TextUnderlineStyle) && p->fontUnderline() != pDefault->fontUnderline()) {
+                if (p->fontUnderline() != pDefault->fontUnderline()) {
                     style[QLatin1String("underline")] = p->fontUnderline();
                 }
-                if (p->hasProperty(QTextFormat::FontStrikeOut) && p->fontStrikeOut() != pDefault->fontStrikeOut()) {
+                if (p->fontStrikeOut() != pDefault->fontStrikeOut()) {
                     style[QLatin1String("strike-through")] = p->fontStrikeOut();
                 }
 
@@ -1261,6 +1262,12 @@ void KateThemeConfigPage::apply()
     // schema indexes change. Thus, repopulate the schema list...
     refillCombos(schemaCombo->itemData(schemaCombo->currentIndex()).toString(), defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString());
     schemaChanged(schemaName);
+
+    // all tabs need to reload to discard all the cached data, as the index
+    // mapping may have changed
+    m_colorTab->reload();
+    m_defaultStylesTab->reload();
+    m_highlightTab->reload();
 }
 
 void KateThemeConfigPage::reload()
