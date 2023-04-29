@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 00:44+0000\n"
+"POT-Creation-Date: 2023-04-29 00:45+0000\n"
 "PO-Revision-Date: 2016-11-04 17:36+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2275,12 +2275,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Προσπαθήστε ξανά"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6549
 #, kde-format
 msgid "&Close"
 msgstr "&Κλείσιμο"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6550
 #, kde-format
 msgid "Close message"
 msgstr "Κλείσιμο μηνύματος"
@@ -2473,8 +2473,8 @@ msgid "Untitled"
 msgstr "Χωρίς τίτλο"
 
 #: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5761
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5953
 #, kde-format
 msgid "Save File"
 msgstr "Αποθήκευση αρχείου"
@@ -2503,7 +2503,7 @@ msgstr ""
 "Ελέγξτε ότι έχετε πρόσβαση εγγραφής σε αυτό το αρχείο ή ότι υπάρχει αρκετός "
 "διαθέσιμος χώρος στον δίσκο."
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5294
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2519,7 +2519,7 @@ msgstr ""
 "'remove-trailing-spaces modified;', δείτε http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5299
+#: document/katedocument.cpp:5300
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2535,25 +2535,25 @@ msgstr ""
 "με 'remove-trailing-spaces all;', δείτε http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Το αρχείο %1 τροποποιήθηκε από κάποιο άλλο πρόγραμμα."
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Το αρχείο %1 δημιουργήθηκε από κάποιο άλλο πρόγραμμα."
 
-#: document/katedocument.cpp:5614
+#: document/katedocument.cpp:5615
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Το αρχείο %1 διαγράφηκε από κάποιο άλλο πρόγραμμα."
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5938
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2562,17 +2562,17 @@ msgstr ""
 "Το έγγραφο \"%1\" τροποποιήθηκε.\n"
 "Επιθυμείτε την αποθήκευση των αλλαγών ή την απόρριψή τους;"
 
-#: document/katedocument.cpp:5940
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid "Close Document"
 msgstr "Κλείσιμο εγγράφου"
 
-#: document/katedocument.cpp:6051
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Το αρχείο <a href=\"%1\">%2</a> ακόμη φορτώνεται."
 
-#: document/katedocument.cpp:6056
+#: document/katedocument.cpp:6057
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Εγκ&ατάλειψη φόρτωσης"

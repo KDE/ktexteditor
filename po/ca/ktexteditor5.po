@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 00:44+0000\n"
+"POT-Creation-Date: 2023-04-29 00:45+0000\n"
 "PO-Revision-Date: 2023-04-05 09:20+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2192,12 +2192,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6549
 #, kde-format
 msgid "&Close"
 msgstr "Tan&ca"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6550
 #, kde-format
 msgid "Close message"
 msgstr "Tanca el missatge"
@@ -2378,8 +2378,8 @@ msgid "Untitled"
 msgstr "Sense títol"
 
 #: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5761
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5953
 #, kde-format
 msgid "Save File"
 msgstr "Desa el fitxer"
@@ -2407,7 +2407,7 @@ msgstr ""
 "Comproveu que teniu accés d'escriptura a aquest fitxer o que hi ha prou "
 "espai disponible."
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2420,7 +2420,7 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5299
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2433,22 +2433,22 @@ msgstr ""
 "application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "El fitxer «%1» s'ha modificat en el disc."
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "El fitxer «%1» s'ha creat en el disc."
 
-#: document/katedocument.cpp:5614
+#: document/katedocument.cpp:5615
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "El fitxer «%1» s'ha suprimit en el disc."
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5938
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2457,17 +2457,17 @@ msgstr ""
 "El document «%1» ha estat modificat.\n"
 "Voleu desar els canvis o descartar-los?"
 
-#: document/katedocument.cpp:5940
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid "Close Document"
 msgstr "Tanca el document"
 
-#: document/katedocument.cpp:6051
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "El fitxer <a href=\"%1\">%2</a> encara s'està carregant."
 
-#: document/katedocument.cpp:6056
+#: document/katedocument.cpp:6057
 #, kde-format
 msgid "&Abort Loading"
 msgstr "In&terromp la càrrega"
