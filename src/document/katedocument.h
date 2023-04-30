@@ -14,9 +14,7 @@
 #include <QStack>
 #include <QTimer>
 
-#include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/document.h>
-#include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/movingrangefeedback.h>
 
@@ -64,12 +62,9 @@ class KToggleAction;
  * @warning This file is @e private API and not part of the public
  *          KTextEditor interfaces.
  */
-class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor::Document,
-                                                              public KTextEditor::AnnotationInterface,
-                                                              private KTextEditor::MovingRangeFeedback
+class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor::Document, private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
-    Q_INTERFACES(KTextEditor::AnnotationInterface)
 
     friend class KTextEditor::Document;
     friend class ::KateDocumentTest;

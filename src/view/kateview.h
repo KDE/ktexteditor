@@ -10,7 +10,6 @@
 #ifndef kate_view_h
 #define kate_view_h
 
-#include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/linerange.h>
@@ -78,14 +77,12 @@ namespace KTextEditor
 class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View,
                                              public KTextEditor::TextHintInterface,
                                              public KTextEditor::CodeCompletionInterfaceV2,
-                                             public KTextEditor::InlineNoteInterface,
-                                             public KTextEditor::AnnotationViewInterface
+                                             public KTextEditor::InlineNoteInterface
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterfaceV2)
-    Q_INTERFACES(KTextEditor::AnnotationViewInterface)
     Q_INTERFACES(KTextEditor::InlineNoteInterface)
 
     friend class KTextEditor::View;
@@ -494,11 +491,6 @@ public:
     bool uniformAnnotationItemSizes() const override;
 
 Q_SIGNALS:
-    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) override;
-    void annotationActivated(KTextEditor::View *view, int line) override;
-    // KF6: fix View -> KTextEditor::View
-    void annotationBorderVisibilityChanged(View *view, bool visible) override;
-
     void navigateLeft();
     void navigateRight();
     void navigateUp();

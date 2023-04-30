@@ -50,6 +50,7 @@
 #include "spellcheck/spellingmenu.h"
 
 #include <KTextEditor/Message>
+#include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/inlinenoteprovider.h>
 
 #include <KActionCollection>

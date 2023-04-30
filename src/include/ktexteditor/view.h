@@ -38,6 +38,8 @@ class Attribute;
 class AttributeBlock;
 class Range;
 class Cursor;
+class AnnotationModel;
+class AbstractAnnotationItemDelegate;
 
 /**
  * \class View view.h <KTextEditor/View>
@@ -52,6 +54,7 @@ class Cursor;
  *  - \ref view_mouse_tracking
  *  - \ref view_modes
  *  - \ref view_config
+ *  - \ref view_annoview
  *  - \ref view_extensions
  *
  * \section view_intro Introduction
@@ -166,6 +169,19 @@ class Cursor;
  *
  * You can retrieve the value of a config key using configValue() and set the value
  * for a config key using setConfigValue().
+ *
+ * \section view_annoview Annotation Interface
+ *
+ * The Annotation Interface allows to do these things:
+ * - (1) show/hide the annotation border along with the possibility to add actions
+ *       into its context menu.
+ * - (2) set a separate AnnotationModel for the View: Note that this interface
+ *       inherits the AnnotationInterface.
+ * - (3) set a custom AbstractAnnotationItemDelegate for the View.
+ *
+ * For a more detailed explanation about whether you want to set a custom
+ * delegate for rendering the annotations, read the detailed documentation about the
+ * AbstractAnnotationItemDelegate.
  *
  * \section view_extensions View Extension Interfaces
  *
@@ -914,6 +930,110 @@ public:
      * Set a the \p key's value to \p value.
      */
     virtual void setConfigValue(const QString &key, const QVariant &value) = 0;
+
+    /**
+     * View Annotation Interface
+     */
+public:
+    /**
+     * Sets a new \ref AnnotationModel for this document to provide
+     * annotation information for each line.
+     *
+     * \param model the new AnnotationModel
+     */
+    virtual void setAnnotationModel(AnnotationModel *model) = 0;
+
+    /**
+     * returns the currently set \ref AnnotationModel or 0 if there's none
+     * set
+     * @returns the current \ref AnnotationModel
+     */
+    virtual AnnotationModel *annotationModel() const = 0;
+
+    /**
+     * This function can be used to show or hide the annotation border
+     * The annotation border is hidden by default.
+     *
+     * @param visible if \e true the annotation border is shown, otherwise hidden
+     */
+    virtual void setAnnotationBorderVisible(bool visible) = 0;
+
+    /**
+     * Checks whether the View's annotation border is visible.
+     */
+    virtual bool isAnnotationBorderVisible() const = 0;
+
+    /**
+     * Sets the AbstractAnnotationItemDelegate for this view and the model
+     * to provide custom rendering of annotation information for each line.
+     * Ownership is not transferred.
+     *
+     * \param delegate the new AbstractAnnotationItemDelegate, or \c nullptr to reset to the default delegate
+     *
+     * @since 6.0
+     */
+    virtual void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate) = 0;
+
+    /**
+     * Returns the currently used AbstractAnnotationItemDelegate
+     *
+     * @returns the current AbstractAnnotationItemDelegate
+     *
+     * @since 6.0
+     */
+    virtual KTextEditor::AbstractAnnotationItemDelegate *annotationItemDelegate() const = 0;
+
+    /**
+     * This function can be used to declare whether it is known that the annotation items
+     * rendered by the set delegate all have the same size.
+     * This enables the view to do some optimizations for performance purposes.
+     *
+     * By default the value of this property is \c false .
+     *
+     * @param uniformItemSizes if \c true the annotation items are considered to all have the same size
+     *
+     * @since 6.0
+     */
+    virtual void setAnnotationUniformItemSizes(bool uniformItemSizes) = 0;
+
+    /**
+     * Checks whether the annotation items all have the same size.
+     *
+     * @since 6.0
+     */
+    virtual bool uniformAnnotationItemSizes() const = 0;
+
+Q_SIGNALS:
+    /**
+     * This signal is emitted before a context menu is shown on the annotation
+     * border for the given line and view.
+     *
+     * \note Kate Part implementation detail: In Kate Part, the menu has an
+     *       entry to hide the annotation border.
+     *
+     * \param view the view that the annotation border belongs to
+     * \param menu the context menu that will be shown
+     * \param line the annotated line for which the context menu is shown
+     */
+    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line);
+
+    /**
+     * This signal is emitted when an entry on the annotation border was activated,
+     * for example by clicking or double-clicking it. This follows the KDE wide
+     * setting for activation via click or double-clcik
+     *
+     * \param view the view to which the activated border belongs to
+     * \param line the document line that the activated position belongs to
+     */
+    void annotationActivated(KTextEditor::View *view, int line);
+
+    /**
+     * This signal is emitted when the annotation border is shown or hidden.
+     *
+     * \param view the view to which the border belongs to
+     * \param visible the current visibility state
+     */
+    void annotationBorderVisibilityChanged(KTextEditor::View *view, bool visible);
 
 public:
     /**

@@ -453,3 +453,5 @@ AbstractAnnotationItemDelegate::AbstractAnnotationItemDelegate(QObject *parent)
 }
 
 AbstractAnnotationItemDelegate::~AbstractAnnotationItemDelegate() = default;
+
+AnnotationModel::~AnnotationModel() = default;

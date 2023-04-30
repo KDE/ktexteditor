@@ -32,6 +32,7 @@ class EditingTransactionPrivate;
 class MainWindow;
 class Message;
 class View;
+class AnnotationModel;
 
 /**
  * \brief Search flags for use with searchText.
@@ -95,7 +96,7 @@ public:
  *  - \ref doc_config
  *  - \ref doc_modiface
  *  - \ref doc_marktext
- *  - \ref doc_extensions
+ *  - \ref doc_annoiface
  *
  * \section doc_intro Introduction
  *
@@ -252,13 +253,26 @@ public:
  * mask via setEditableMarks(). To set a description and pixmap of a mark type
  * call setMarkDescription() and setMarkPixmap().
  *
- * \section doc_extensions Document Extension Interfaces
+ * \section doc_annoiface Annotation Interface
  *
- * A simple document represents text and provides text manipulation methods.
- * However, a real text editor should support advanced concepts like session
- * support, textsearch support, bookmark/general mark support etc. That is why
- * the KTextEditor library provides several additional interfaces to extend
- * a document's capabilities via multiple inheritance.
+ * The Annotation Interface is designed to provide line annotation information
+ * for a document. This interface provides means to associate a document with a
+ * annotation model, which provides some annotation information for each line
+ * in the document.
+ *
+ * Setting a model for a Document makes the model data available for all views.
+ * If you only want to provide annotations in exactly one view, you can use
+ * the AnnotationViewInterface directly. See the AnnotationViewInterface for
+ * further details. To summarize, the two use cases are
+ * - (1) show annotations in all views. This means you set an AnnotationModel
+ *       with this interface, and then call setAnnotationBorderVisible() for
+ *       each view.
+ * - (2) show annotations only in one view. This means to \e not use this
+ *       interface. Instead, use the AnnotationViewInterface, which inherits
+ *       this interface. This means you set a model for the specific View.
+ *
+ * If you set a model to the Document \e and the View, the View's model has
+ * higher priority.
  *
  * More information about interfaces for the document can be found in
  * \ref kte_group_doc_extensions.
@@ -1710,6 +1724,28 @@ Q_SIGNALS:
      * \param handled set this to 'true' if this event was handled externally, and kate should not do own handling of the left click.
      */
     void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);
+    //!\}
+
+    /**
+     * \name Annotation Interface
+     *
+     * \{
+     */
+public:
+    /**
+     * Sets a new \ref AnnotationModel for this document to provide
+     * annotation information for each line.
+     *
+     * \param model the new AnnotationModel
+     */
+    virtual void setAnnotationModel(AnnotationModel *model) = 0;
+
+    /**
+     * returns the currently set \ref AnnotationModel or 0 if there's none
+     * set
+     * @returns the current \ref AnnotationModel
+     */
+    virtual AnnotationModel *annotationModel() const = 0;
     //!\}
 
 private:

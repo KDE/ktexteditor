@@ -7,6 +7,7 @@
 #include "katedocument.h"
 #include "katepartdebug.h"
 #include "kateswapfile.h"
+#include <ktexteditor/view.h>
 
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenUrlJob>
