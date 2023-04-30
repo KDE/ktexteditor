@@ -968,7 +968,10 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     QWidget *newWidget2 = new QWidget(tabWidget);
     uiadv = new Ui::OpenSaveConfigAdvWidget();
     uiadv->setupUi(newWidget2);
-    uiadv->lblExplanatory->setText(i18n("%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover your work in the case of a system crash. Disabling swap files may cause data loss in case of a system crash.", QCoreApplication::applicationName()));
+    uiadv->lblExplanatory->setText(
+        i18n("%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover your work in the case of a system crash. Disabling swap files may "
+             "cause data loss in case of a system crash.",
+             QCoreApplication::applicationName()));
     uiadv->lblExplanatory->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
 
     // "What's This?" help can be found in the ui file
@@ -1419,7 +1422,7 @@ void KateDictionaryBar::dictionaryChanged(const QString &dictionary)
 // END KateGotoBar
 
 // BEGIN KateModOnHdPrompt
-KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype, const QString &reason)
+KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::Document::ModifiedOnDiskReason modtype, const QString &reason)
     : QObject(doc)
     , m_doc(doc)
     , m_message(new KTextEditor::Message(reason, KTextEditor::Message::Information))
@@ -1433,11 +1436,12 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
     m_message->setWordWrap(true);
 
     // If the file isn't deleted, present a diff button
-    const bool onDiskDeleted = modtype == KTextEditor::ModificationInterface::OnDiskDeleted;
+    const bool onDiskDeleted = modtype == KTextEditor::Document::OnDiskDeleted;
     if (!onDiskDeleted) {
         QAction *aAutoReload = new QAction(i18n("Enable Auto Reload"), this);
         aAutoReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
-        aAutoReload->setToolTip(i18n("Reloads and will automatically reload without warning about disk changes from now until you close either the tab or window."));
+        aAutoReload->setToolTip(
+            i18n("Reloads and will automatically reload without warning about disk changes from now until you close either the tab or window."));
         m_message->addAction(aAutoReload, false);
         connect(aAutoReload, &QAction::triggered, this, &KateModOnHdPrompt::autoReloadTriggered);
 

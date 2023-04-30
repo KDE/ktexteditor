@@ -6,7 +6,6 @@
 */
 #include <KTextEditor/Document>
 #include <KTextEditor/Editor>
-#include <KTextEditor/ModificationInterface>
 #include <KTextEditor/View>
 
 #include <QApplication>
@@ -26,8 +25,7 @@ int main(int argc, char *argv[])
         doc->openUrl(QUrl::fromLocalFile(app.arguments()[1]));
     }
 
-    auto mf = qobject_cast<KTextEditor::ModificationInterface *>(doc);
-    mf->setModifiedOnDiskWarning(true);
+    doc->setModifiedOnDiskWarning(true);
 
     //     auto docConfig = qobject_cast<KTextEditor::ConfigInterface*>(doc);
     //     docConfig->setConfigValue(QStringLiteral("replace-tabs"), false);

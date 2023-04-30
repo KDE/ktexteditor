@@ -19,7 +19,6 @@
 #include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/markinterface.h>
-#include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/movingrangefeedback.h>
 
 #include "katetextline.h"
@@ -68,14 +67,12 @@ class KToggleAction;
  */
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor::Document,
                                                               public KTextEditor::MarkInterfaceV2,
-                                                              public KTextEditor::ModificationInterface,
                                                               public KTextEditor::AnnotationInterface,
                                                               private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::MarkInterface)
     Q_INTERFACES(KTextEditor::MarkInterfaceV2)
-    Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
 
     friend class KTextEditor::Document;
@@ -1055,7 +1052,7 @@ Q_SIGNALS:
      * @param isModified indicates the file was modified rather than created or deleted
      * @param reason the reason we are emitting the signal.
      */
-    void modifiedOnDisk(KTextEditor::Document *doc, bool isModified, KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) override;
+    void modifiedOnDisk(KTextEditor::Document *doc, bool isModified, KTextEditor::Document::ModifiedOnDiskReason reason);
 
 private:
     // helper to handle the embedded notification for externally modified files

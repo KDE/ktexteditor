@@ -79,6 +79,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  *  - \ref doc_recovery
  *  - \ref doc_movinginterface
  *  - \ref doc_config
+ *  - \ref doc_modiface
  *  - \ref doc_extensions
  *
  * \section doc_intro Introduction
@@ -197,6 +198,17 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  *  - indent-width [int], read/set the indentation width
  *  - on-the-fly-spellcheck [bool], enable/disable on the fly spellcheck
  *
+ * \section doc_modiface  External modification extension interface for the Document.
+ *
+ * The class ModificationInterface provides methods to handle modifications
+ * of all opened files caused by external programs. Whenever the
+ * modified-on-disk state changes the signal modifiedOnDisk() is emitted
+ * along with a ModifiedOnDiskReason. Set the state by calling
+ * setModifiedOnDisk(). Whether the Editor should show warning dialogs to
+ * inform the user about external modified files can be controlled with
+ * setModifiedOnDiskWarning(). The slot modifiedOnDisk() is called to ask
+ * the user what to do whenever a file was modified.
+ *
  * \section doc_extensions Document Extension Interfaces
  *
  * A simple document represents text and provides text manipulation methods.
@@ -209,8 +221,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  * \ref kte_group_doc_extensions.
  *
  * \see KParts::ReadWritePart, KTextEditor::Editor, KTextEditor::View,
- *      KTextEditor::MarkInterface, KTextEditor::ModificationInterface,
- *      KTextEditor::MovingInterface
+ *      KTextEditor::MarkInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
@@ -1330,6 +1341,54 @@ public:
      */
     virtual void setConfigValue(const QString &key, const QVariant &value) = 0;
     //!\}
+
+    /**
+     * \name Modification Interface
+     *
+     * \{
+     */
+public:
+    /**
+     * Reasons why a document is modified on disk.
+     */
+    enum ModifiedOnDiskReason {
+        OnDiskUnmodified = 0, ///< Not modified
+        OnDiskModified = 1, ///< The file was modified on disk
+        OnDiskCreated = 2, ///< The file was created on disk
+        OnDiskDeleted = 3 ///< The file was deleted on disk
+    };
+
+    /**
+     * Set the document's modified-on-disk state to \p reason.
+     * KTextEditor implementations should emit the signal modifiedOnDisk()
+     * along with the reason. When the document is in a clean state again the
+     * reason should be ModifiedOnDiskReason::OnDiskUnmodified.
+     *
+     * \param reason the modified-on-disk reason.
+     * \see ModifiedOnDiskReason, modifiedOnDisk()
+     */
+    virtual void setModifiedOnDisk(ModifiedOnDiskReason reason) = 0;
+
+    /**
+     * Control, whether the editor should show a warning dialog whenever a file
+     * was modified on disk. If \p on is \e true the editor will show warning
+     * dialogs.
+     * \param on controls, whether the editor should show a warning dialog for
+     *        files modified on disk
+     */
+    virtual void setModifiedOnDiskWarning(bool on) = 0;
+
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the \p document changed its
+     * modified-on-disk state.
+     * \param document the Document object that represents the file on disk
+     * \param isModified if \e true, the file was modified rather than created
+     *        or deleted
+     * \param reason the reason why the signal was emitted
+     * \see setModifiedOnDisk()
+     */
+    void modifiedOnDisk(KTextEditor::Document *document, bool isModified, KTextEditor::Document::ModifiedOnDiskReason reason);
 
 private:
     /**

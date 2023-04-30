@@ -19,7 +19,6 @@
 
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/document.h>
-#include <ktexteditor/modificationinterface.h>
 
 #include <sonnet/configwidget.h>
 #include <sonnet/dictionarycombobox.h>
@@ -336,7 +335,7 @@ public:
         Ignore,
         Close
     };
-    KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype, const QString &reason);
+    KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::Document::ModifiedOnDiskReason modtype, const QString &reason);
     ~KateModOnHdPrompt() override;
 
 Q_SIGNALS:
@@ -359,7 +358,7 @@ private Q_SLOTS:
 private:
     KTextEditor::DocumentPrivate *m_doc;
     QPointer<KTextEditor::Message> m_message;
-    KTextEditor::ModificationInterface::ModifiedOnDiskReason m_modtype;
+    KTextEditor::Document::ModifiedOnDiskReason m_modtype;
     QString m_fullDiffPath;
     KProcess *m_proc;
     QTemporaryFile *m_diffFile;

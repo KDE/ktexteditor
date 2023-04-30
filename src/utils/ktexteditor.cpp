@@ -26,7 +26,6 @@
 #include "katerenderer.h"
 #include "katevariableexpansionmanager.h"
 #include "markinterface.h"
-#include "modificationinterface.h"
 #include "sessionconfiginterface.h"
 #include "texthintinterface.h"
 #include "variable.h"
@@ -262,10 +261,6 @@ ConfigPage *Plugin::configPage(int, QWidget *)
 MarkInterface::MarkInterface() = default;
 
 MarkInterface::~MarkInterface() = default;
-
-ModificationInterface::ModificationInterface() = default;
-
-ModificationInterface::~ModificationInterface() = default;
 
 SessionConfigInterface::SessionConfigInterface() = default;
 
