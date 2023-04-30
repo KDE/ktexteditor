@@ -15,6 +15,7 @@
 // gui merging
 #include <KSyntaxHighlighting/Theme>
 #include <KXMLGUIClient>
+#include <ktexteditor/codecompletionmodel.h>
 
 // widget
 #include <QSet>
@@ -42,6 +43,7 @@ class AnnotationModel;
 class AbstractAnnotationItemDelegate;
 class InlineNoteProvider;
 class TextHintProvider;
+class CodeCompletionModel;
 
 /**
  * \class View view.h <KTextEditor/View>
@@ -59,7 +61,7 @@ class TextHintProvider;
  *  - \ref view_annoview
  *  - \ref view_inlinenote
  *  - \ref view_texthint
- *  - \ref view_extensions
+ *  - \ref view_compiface
  *
  * \section view_intro Introduction
  *
@@ -218,20 +220,22 @@ class TextHintProvider;
  * textHintDelay() milliseconds over the same word. To change the delay, call
  * setTextHintDelay().
  *
- * \section view_extensions View Extension Interfaces
+ * \section view_compiface Completion Interface
  *
- * A simple view represents the text of a Document and provides a text cursor,
- * text selection, edit modes etc.
- * Advanced concepts like code completion and text hints are defined in the
- * extension interfaces. An KTextEditor implementation does not need to
- * support all the extensions. To implement the interfaces multiple
- * inheritance is used.
+ * The Completion Interface is designed to provide code completion
+ * functionality for a KTextEditor::View. This interface provides the basic
+ * mechanisms to display a list of completions, update this list according
+ * to user input, and allow the user to select a completion.
+ *
+ * Essentially, this provides an item view for the available completions. In
+ * order to use this interface, you will need to implement a
+ * CodeCompletionModel that generates the relevant completions given the
+ * current input.
  *
  * More information about interfaces for the view can be found in
  * \ref kte_group_view_extensions.
  *
- * \see KTextEditor::Document, KTextEditor::CodeCompletionInterface,
- *      KXMLGUIClient
+ * \see KTextEditor::Document, KXMLGUIClient
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT View : public QWidget, public KXMLGUIClient
@@ -1139,6 +1143,73 @@ public:
      * It can be changed by calling \p setTextHintDelay().
      */
     virtual int textHintDelay() const = 0;
+
+    /**
+     * Completion
+     */
+public:
+    /**
+     * Query whether the code completion box is currently displayed.
+     */
+    virtual bool isCompletionActive() const = 0;
+
+    /**
+     * Invoke code completion over a given range, with a specific \a model.
+     */
+    virtual void startCompletion(Range word, CodeCompletionModel *model) = 0;
+
+    /**
+     * Abort the currently displayed code completion without executing any currently
+     * selected completion. This is safe, even when the completion box is not currently
+     * active.
+     * \see isCompletionActive()
+     */
+    virtual void abortCompletion() = 0;
+
+    /**
+     * Force execution of the currently selected completion, and hide the code completion
+     * box.
+     */
+    virtual void forceCompletion() = 0;
+
+    /**
+     * Register a new code completion \p model.
+     * \param model new completion model
+     * \see unregisterCompletionModel()
+     */
+    virtual void registerCompletionModel(CodeCompletionModel *model) = 0;
+
+    /**
+     * Unregister a code completion \p model.
+     * \param model the model that should be unregistered
+     * \see registerCompletionModel()
+     */
+    virtual void unregisterCompletionModel(CodeCompletionModel *model) = 0;
+
+    /**
+     * Determine the status of automatic code completion invocation.
+     */
+    virtual bool isAutomaticInvocationEnabled() const = 0;
+
+    /**
+     * Enable or disable automatic code completion invocation.
+     */
+    virtual void setAutomaticInvocationEnabled(bool enabled = true) = 0;
+
+    /**
+     * Invoke code completion over a given range, with specific models and invocation type.
+     * \param models list of models to start. If this is an empty list, all registered models are started.
+     */
+    virtual void startCompletion(const Range &word,
+                                 const QList<CodeCompletionModel *> &models = QList<CodeCompletionModel *>(),
+                                 KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation) = 0;
+
+    /**
+     * Obtain the list of registered code completion models.
+     * \returns a list of a models that are currently registered
+     * \see registerCompletionModel(CodeCompletionModel*)
+     */
+    virtual QList<CodeCompletionModel *> codeCompletionModels() const = 0;
 
 public:
     /**

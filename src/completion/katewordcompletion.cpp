@@ -286,12 +286,10 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
 
     QAction *action;
 
-    if (qobject_cast<KTextEditor::CodeCompletionInterface *>(view)) {
-        action = new QAction(i18n("Shell Completion"), this);
-        ac->addAction(QStringLiteral("doccomplete_sh"), action);
-        action->setShortcutContext(Qt::WidgetWithChildrenShortcut);
-        connect(action, &QAction::triggered, this, &KateWordCompletionView::shellComplete);
-    }
+    action = new QAction(i18n("Shell Completion"), this);
+    ac->addAction(QStringLiteral("doccomplete_sh"), action);
+    action->setShortcutContext(Qt::WidgetWithChildrenShortcut);
+    connect(action, &QAction::triggered, this, &KateWordCompletionView::shellComplete);
 
     action = new QAction(i18n("Reuse Word Above"), this);
     ac->addAction(QStringLiteral("doccomplete_bw"), action);
@@ -327,8 +325,7 @@ void KateWordCompletionView::popupCompletionList()
     qCDebug(LOG_KTE) << "entered ...";
     KTextEditor::Range r = range();
 
-    KTextEditor::CodeCompletionInterface *cci = qobject_cast<KTextEditor::CodeCompletionInterface *>(m_view);
-    if (!cci || cci->isCompletionActive()) {
+    if (m_view->isCompletionActive()) {
         return;
     }
 
@@ -340,7 +337,7 @@ void KateWordCompletionView::popupCompletionList()
         return;
     }
 
-    cci->startCompletion(r, m_dWCompletionModel);
+    m_view->startCompletion(r, m_dWCompletionModel);
 }
 
 // Contributed by <brain@hdsnet.hu>

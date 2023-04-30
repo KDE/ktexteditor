@@ -15,7 +15,6 @@
 #include <QtWidgets/qwidget.h>
 #include <ktexteditor_export.h>
 
-#include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/codecompletionmodel.h>
 #include <ktexteditor/movingrange.h>
 

@@ -12,7 +12,6 @@
 
 namespace KTextEditor
 {
-class CodeCompletionInterface;
 class ViewPrivate;
 }
 
@@ -69,7 +68,6 @@ public:
     void doNotForceInvocation();
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     void executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
-    KTextEditor::CodeCompletionInterface *cc() const;
 
 private:
     void failTest() const;

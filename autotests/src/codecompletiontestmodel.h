@@ -14,7 +14,6 @@
 namespace KTextEditor
 {
 class View;
-class CodeCompletionInterface;
 }
 
 class CodeCompletionTestModel : public KTextEditor::CodeCompletionModel
@@ -25,7 +24,6 @@ public:
     explicit CodeCompletionTestModel(KTextEditor::View *parent = nullptr, const QString &startText = QString());
 
     KTextEditor::View *view() const;
-    KTextEditor::CodeCompletionInterface *cc() const;
 
     void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType) override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

@@ -27,7 +27,7 @@ class View;
  *
  * The CodeCompletionModel is the actual workhorse to provide code completions
  * in a KTextEditor::View. It is meant to be used in conjunction with the
- * CodeCompletionInterface. The CodeCompletionModel is not meant to be used as
+ * View. The CodeCompletionModel is not meant to be used as
  * is. Rather you need to implement a subclass of CodeCompletionModel to actually
  * generate completions appropriate for your type of Document.
  *
@@ -50,18 +50,18 @@ class View;
  * \section compmodel_roles_columns Columns and roles
  *
  * \todo document the meaning and usage of the columns and roles used by the
- * CodeCompletionInterface
+ * Completion Interface
  *
  * \section compmodel_usage Using the new CodeCompletionModel
  *
- * To start using your CodeCompletionModel, refer to CodeCompletionInterface.
+ * To start using your KTextEditor::View Completion Interface.
  *
  * \section compmodel_controller ControllerInterface to get more control
  *
  * To have more control over code completion implement
  * CodeCompletionModelControllerInterface in your CodeCompletionModel.
  *
- * \see CodeCompletionInterface, CodeCompletionModelControllerInterface
+ * \see CodeCompletionModelControllerInterface
  * @author Hamish Rodda <rodda@kde.org>
  */
 class KTEXTEDITOR_EXPORT CodeCompletionModel : public QAbstractItemModel

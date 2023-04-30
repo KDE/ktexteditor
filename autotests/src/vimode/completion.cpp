@@ -30,10 +30,10 @@ VimCodeCompletionTestModel::VimCodeCompletionTestModel(KTextEditor::View *parent
     : KTextEditor::CodeCompletionModel(parent)
 {
     setRowCount(3);
-    cc()->setAutomaticInvocationEnabled(true);
+    parent->setAutomaticInvocationEnabled(true);
     // It would add additional items and we don't want that in tests
-    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
-    cc()->registerCompletionModel(this);
+    parent->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
+    parent->registerCompletionModel(this);
 }
 
 QVariant VimCodeCompletionTestModel::data(const QModelIndex &index, int role) const
@@ -48,11 +48,6 @@ QVariant VimCodeCompletionTestModel::data(const QModelIndex &index, int role) co
     return QVariant();
 }
 
-CodeCompletionInterface *VimCodeCompletionTestModel::cc() const
-{
-    return dynamic_cast<CodeCompletionInterface *>(const_cast<QObject *>(QObject::parent()));
-}
-
 // END: VimCodeCompletionTestModel
 
 // BEGIN: CodeCompletionInterface
@@ -61,10 +56,10 @@ FailTestOnInvocationModel::FailTestOnInvocationModel(KTextEditor::View *parent)
     : KTextEditor::CodeCompletionModel(parent)
 {
     setRowCount(3);
-    cc()->setAutomaticInvocationEnabled(true);
+    parent->setAutomaticInvocationEnabled(true);
     // It would add additional items and we don't want that in tests.
-    cc()->unregisterCompletionModel(EditorPrivate::self()->wordCompletionModel());
-    cc()->registerCompletionModel(this);
+    parent->unregisterCompletionModel(EditorPrivate::self()->wordCompletionModel());
+    parent->registerCompletionModel(this);
 }
 
 QVariant FailTestOnInvocationModel::data(const QModelIndex &index, int role) const
@@ -79,11 +74,6 @@ QVariant FailTestOnInvocationModel::data(const QModelIndex &index, int role) con
 void FailTestOnInvocationModel::failTest() const
 {
     QFAIL("Shouldn't be invoking me!");
-}
-
-CodeCompletionInterface *FailTestOnInvocationModel::cc() const
-{
-    return dynamic_cast<CodeCompletionInterface *>(const_cast<QObject *>(QObject::parent()));
 }
 
 // END: CodeCompletionInterface

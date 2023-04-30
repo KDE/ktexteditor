@@ -8,7 +8,6 @@
 #ifndef _KateWordCompletion_h_
 #define _KateWordCompletion_h_
 
-#include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/codecompletionmodel.h>
 #include <ktexteditor/codecompletionmodelcontrollerinterface.h>
 #include <ktexteditor/view.h>

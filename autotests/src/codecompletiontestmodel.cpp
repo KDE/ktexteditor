@@ -9,7 +9,6 @@
 
 #include <kateglobal.h>
 #include <katewordcompletion.h>
-#include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
@@ -20,11 +19,9 @@ CodeCompletionTestModel::CodeCompletionTestModel(KTextEditor::View *parent, cons
 {
     setRowCount(40);
 
-    Q_ASSERT(cc());
-
-    cc()->setAutomaticInvocationEnabled(true);
-    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
-    cc()->registerCompletionModel(this);
+    parent->setAutomaticInvocationEnabled(true);
+    parent->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
+    parent->registerCompletionModel(this);
 }
 
 // Fake a series of completions
@@ -151,11 +148,6 @@ QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
 KTextEditor::View *CodeCompletionTestModel::view() const
 {
     return static_cast<KTextEditor::View *>(const_cast<QObject *>(QObject::parent()));
-}
-
-KTextEditor::CodeCompletionInterface *CodeCompletionTestModel::cc() const
-{
-    return dynamic_cast<KTextEditor::CodeCompletionInterface *>(const_cast<QObject *>(QObject::parent()));
 }
 
 void CodeCompletionTestModel::completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType)

@@ -10,7 +10,6 @@
 #ifndef kate_view_h
 #define kate_view_h
 
-#include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/linerange.h>
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/view.h>
@@ -72,11 +71,9 @@ namespace KTextEditor
 //
 // Kate KTextEditor::View class ;)
 //
-class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View, public KTextEditor::CodeCompletionInterfaceV2
+class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View
 {
     Q_OBJECT
-    Q_INTERFACES(KTextEditor::CodeCompletionInterface)
-    Q_INTERFACES(KTextEditor::CodeCompletionInterfaceV2)
 
     friend class KTextEditor::View;
     friend class ::KateViewInternal;
@@ -318,9 +315,7 @@ public:
      */
     bool toggleFoldingsInRange(int line);
 
-    //
-    // KTextEditor::CodeCompletionInterfaceV2
-    //
+    // Code Completion Interface
 public:
     bool isCompletionActive() const override;
     void startCompletion(KTextEditor::Range word, KTextEditor::CodeCompletionModel *model) override;

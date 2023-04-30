@@ -174,7 +174,6 @@ utils/document.cpp
 utils/range.cpp
 utils/documentcursor.cpp
 utils/attribute.cpp
-utils/codecompletioninterface.cpp
 utils/codecompletionmodel.cpp
 utils/codecompletionmodelcontrollerinterface.cpp
 utils/movingcursor.cpp

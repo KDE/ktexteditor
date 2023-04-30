@@ -11,11 +11,6 @@
 #include "base.h"
 #include "fakecodecompletiontestmodel.h"
 
-namespace KTextEditor
-{
-class CodeCompletionInterface;
-}
-
 /**
  * This class handles implements a completion model for the completion
  * tests defined in the CompletionTest class.
@@ -25,7 +20,6 @@ class VimCodeCompletionTestModel : public KTextEditor::CodeCompletionModel
 public:
     explicit VimCodeCompletionTestModel(KTextEditor::View *parent);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    KTextEditor::CodeCompletionInterface *cc() const;
 };
 
 /**
@@ -38,7 +32,6 @@ public:
     explicit FailTestOnInvocationModel(KTextEditor::View *parent);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     void failTest() const;
-    KTextEditor::CodeCompletionInterface *cc() const;
 };
 
 class CompletionTest : public BaseTest

@@ -6,7 +6,7 @@ ecm_generate_headers(KTextEditor_CamelCase_HEADERS
   AbstractAnnotationItemDelegate
   Document  MovingRange View
   Attribute Command DocumentCursor Message MovingRangeFeedback SessionConfigInterface
-  CodeCompletionInterface Editor
+  Editor
   CodeCompletionModel ConfigPage
   Application MainWindow Plugin
   PREFIX KTextEditor RELATIVE ktexteditor REQUIRED_HEADERS KTEXTEDITOR_PUBLIC_HEADERS)

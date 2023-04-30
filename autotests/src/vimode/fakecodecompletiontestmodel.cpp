@@ -28,8 +28,8 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
 {
     Q_ASSERT(m_kateView);
     setRowCount(3);
-    cc()->setAutomaticInvocationEnabled(false);
-    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
+    parent->setAutomaticInvocationEnabled(false);
+    parent->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
     connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()),
             &KTextEditor::DocumentPrivate::textInsertedRange,
             this,
@@ -147,11 +147,6 @@ void FakeCodeCompletionTestModel::executeCompletionItem(KTextEditor::View *view,
         const Cursor tailEnd = Cursor(tailStart.line(), tailStart.column() + tailLength);
         view->document()->removeText(Range(tailStart, tailEnd));
     }
-}
-
-KTextEditor::CodeCompletionInterface *FakeCodeCompletionTestModel::cc() const
-{
-    return dynamic_cast<KTextEditor::CodeCompletionInterface *>(const_cast<QObject *>(QObject::parent()));
 }
 
 void FakeCodeCompletionTestModel::failTest() const
