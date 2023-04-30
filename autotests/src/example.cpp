@@ -4,7 +4,6 @@
     SPDX-FileCopyrightText: 2021 Waqar Ahmed <waqar.17a@gmail.com>
     SPDX-License-Identifier: MIT
 */
-#include <KTextEditor/ConfigInterface>
 #include <KTextEditor/Document>
 #include <KTextEditor/Editor>
 #include <KTextEditor/ModificationInterface>

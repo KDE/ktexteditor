@@ -77,6 +77,8 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  *  - \ref doc_readwrite
  *  - \ref doc_notifications
  *  - \ref doc_recovery
+ *  - \ref doc_movinginterface
+ *  - \ref doc_config
  *  - \ref doc_extensions
  *
  * \section doc_intro Introduction
@@ -167,6 +169,33 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  * editor component to handle the data recovery process automatically, you can
  * either trigger the data recovery by calling recoverData() or discard it
  * through discardDataRecovery().
+ *
+ * \section doc_movinginterface Document Moving Interface
+ *
+ * Document Moving Interface allows you to create MovingRange and MovingCursor. A
+ * Moving Range or Cursor is a special type of range/cursor because it automatically
+ * moves on text insertion or removal. Additionally, one can use the moving ranges to
+ * change the color of a particular word or give it a different attribute such as bold.
+ * Use newMovingCursor() to create a new moving cursor and newMovingRange() to create
+ * a new moving range.
+ *
+ * Upon destruction or reload, a document will remove all its moving ranges. You can
+ * connect to aboutToDeleteMovingInterfaceContent() and aboutToInvalidateMovingInterfaceContent()
+ * signals to know when that is going to happen and update the cached ranges accordingly.
+ *
+ * \section doc_config Document Config
+ * Config provides methods to access and modify the low level config information for a given
+ * Document.
+ * KTextEditor::Document has support for the following config keys:
+ *  - backup-on-save-local [bool], enable/disable backup when saving local files
+ *  - backup-on-save-remote [bool], enable/disable backup when saving remote files
+ *  - backup-on-save-suffix [string], set the suffix for file backups, e.g. "~"
+ *  - backup-on-save-prefix [string], set the prefix for file backups, e.g. "."
+ *  - replace-tabs [bool], whether to replace tabs
+ *  - indent-pasted-text [bool], whether to indent pasted text
+ *  - tab-width [int], read/set the width for tabs
+ *  - indent-width [int], read/set the indentation width
+ *  - on-the-fly-spellcheck [bool], enable/disable on the fly spellcheck
  *
  * \section doc_extensions Document Extension Interfaces
  *
@@ -1280,6 +1309,26 @@ Q_SIGNALS:
      */
     void aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *document);
 
+    //!\}
+
+    /**
+     * \name Config
+     *
+     * \{
+     */
+public:
+    /**
+     * \brief Get a list of all available keys.
+     */
+    virtual QStringList configKeys() const = 0;
+    /**
+     * \brief Get a value for the \p key.
+     */
+    virtual QVariant configValue(const QString &key) = 0;
+    /**
+     * \brief Set a the \p key's value to \p value.
+     */
+    virtual void setConfigValue(const QString &key, const QVariant &value) = 0;
     //!\}
 
 private:

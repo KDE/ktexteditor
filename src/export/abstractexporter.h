@@ -10,7 +10,6 @@
 #include <QTextStream>
 
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/configinterface.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/range.h>
 #include <ktexteditor/view.h>
@@ -27,11 +26,9 @@ public:
         , m_defaultAttribute(nullptr)
     {
         QColor defaultBackground;
-        if (KTextEditor::ConfigInterface *ciface = qobject_cast<KTextEditor::ConfigInterface *>(m_view)) {
-            QVariant variant = ciface->configValue(QStringLiteral("background-color"));
-            if (variant.canConvert<QColor>()) {
-                defaultBackground = variant.value<QColor>();
-            }
+        QVariant variant = m_view->configValue(QStringLiteral("background-color"));
+        if (variant.canConvert<QColor>()) {
+            defaultBackground = variant.value<QColor>();
         }
 
         m_defaultAttribute = view->defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle::Normal);

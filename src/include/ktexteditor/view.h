@@ -51,6 +51,7 @@ class Cursor;
  *  - \ref view_cursors
  *  - \ref view_mouse_tracking
  *  - \ref view_modes
+ *  - \ref view_config
  *  - \ref view_extensions
  *
  * \section view_intro Introduction
@@ -131,6 +132,40 @@ class Cursor;
  *
  * Whenever the input/view mode changes the signals
  * viewInputModeChanged()/viewModeChanged() are emitted.
+ *
+ * \section view_config View Config
+ * Config provides methods to access and modify the low level config information for a given
+ * View
+ * KTextEditor::View has support for the following keys:
+ *  - line-numbers [bool], show/hide line numbers
+ *  - icon-bar [bool], show/hide icon bar
+ *  - folding-bar [bool], show/hide the folding bar
+ *  - folding-preview [bool], enable/disable folding preview when mouse hovers
+ *    on folded region
+ *  - dynamic-word-wrap [bool], enable/disable dynamic word wrap
+ *  - background-color [QColor], read/set the default background color
+ *  - selection-color [QColor], read/set the default color for selections
+ *  - search-highlight-color [QColor], read/set the background color for search
+ *  - replace-highlight-color [QColor], read/set the background color for replaces
+ *  - default-mark-type [uint], read/set the default mark type
+ *  - allow-mark-menu [bool], enable/disable the menu shown when right clicking
+ *    on the left gutter. When disabled, click on the gutter will always set
+ *    or clear the mark of default type.
+ *  - icon-border-color [QColor] read/set the icon border color (on the left,
+ *    with the line numbers)
+ *  - folding-marker-color [QColor] read/set folding marker colors (in the icon border)
+ *  - line-number-color [QColor] read/set line number colors (in the icon border)
+ *  - current-line-number-color [QColor] read/set current line number color (in the icon border)
+ *  - modification-markers [bool] read/set whether the modification markers are shown
+ *  - word-count [bool] enable/disable the counting of words and characters in the statusbar
+ *  - line-count [bool] show/hide the total number of lines in the status bar (@since 5.66)
+ *  - scrollbar-minimap [bool] enable/disable scrollbar minimap
+ *  - scrollbar-preview [bool] enable/disable scrollbar text preview on hover
+ *  - font [QFont] change the font
+ *  - theme [QString] change the theme.
+ *
+ * You can retrieve the value of a config key using configValue() and set the value
+ * for a config key using setConfigValue().
  *
  * \section view_extensions View Extension Interfaces
  *
@@ -862,6 +897,23 @@ Q_SIGNALS:
      * \since 5.79
      */
     void configChanged(KTextEditor::View *view);
+
+    /**
+     * View Config
+     */
+public:
+    /**
+     * Get a list of all available keys.
+     */
+    virtual QStringList configKeys() const = 0;
+    /**
+     * Get a value for the \p key.
+     */
+    virtual QVariant configValue(const QString &key) = 0;
+    /**
+     * Set a the \p key's value to \p value.
+     */
+    virtual void setConfigValue(const QString &key, const QVariant &value) = 0;
 
 public:
     /**
