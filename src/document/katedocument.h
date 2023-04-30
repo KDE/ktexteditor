@@ -18,7 +18,6 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/mainwindow.h>
-#include <ktexteditor/markinterface.h>
 #include <ktexteditor/movingrangefeedback.h>
 
 #include "katetextline.h"
@@ -66,13 +65,10 @@ class KToggleAction;
  *          KTextEditor interfaces.
  */
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor::Document,
-                                                              public KTextEditor::MarkInterfaceV2,
                                                               public KTextEditor::AnnotationInterface,
                                                               private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
-    Q_INTERFACES(KTextEditor::MarkInterface)
-    Q_INTERFACES(KTextEditor::MarkInterfaceV2)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
 
     friend class KTextEditor::Document;
@@ -551,18 +547,18 @@ public Q_SLOTS:
     /// Returns true if the context-menu event should not further be processed
     bool handleMarkContextMenu(int line, QPoint position);
 
-    void setMarkPixmap(MarkInterface::MarkTypes, const QPixmap &) override;
+    void setMarkPixmap(Document::MarkTypes, const QPixmap &) override;
 
-    void setMarkDescription(MarkInterface::MarkTypes, const QString &) override;
+    void setMarkDescription(Document::MarkTypes, const QString &) override;
 
     void setEditableMarks(uint markMask) override;
 
 public:
     uint mark(int line) override;
     const QHash<int, KTextEditor::Mark *> &marks() override;
-    QPixmap markPixmap(MarkInterface::MarkTypes) const override;
-    QString markDescription(MarkInterface::MarkTypes) const override;
-    virtual QColor markColor(MarkInterface::MarkTypes) const;
+    QPixmap markPixmap(Document::MarkTypes) const override;
+    QString markDescription(Document::MarkTypes) const override;
+    virtual QColor markColor(Document::MarkTypes) const;
     uint editableMarks() const override;
 
 Q_SIGNALS:
@@ -571,9 +567,6 @@ Q_SIGNALS:
     void markContextMenuRequested(KTextEditor::Document *document, KTextEditor::Mark mark, QPoint pos, bool &handled);
 
     void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);
-
-    void marksChanged(KTextEditor::Document *) override;
-    void markChanged(KTextEditor::Document *, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction) override;
 
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
@@ -585,10 +578,10 @@ private:
     // KTextEditor::MarkInterfaceV2
     //
 public Q_SLOTS:
-    void setMarkIcon(MarkInterface::MarkTypes markType, const QIcon &icon) override;
+    void setMarkIcon(Document::MarkTypes markType, const QIcon &icon) override;
 
 public:
-    QIcon markIcon(MarkInterface::MarkTypes markType) const override;
+    QIcon markIcon(Document::MarkTypes markType) const override;
 
     // KTextEditor::PrintInterface
     //
@@ -1044,15 +1037,6 @@ public Q_SLOTS:
 
 public:
     bool saveAs(const QUrl &url) override;
-
-Q_SIGNALS:
-    /**
-     * Indicate this file is modified on disk
-     * @param doc the KTextEditor::Document object that represents the file on disk
-     * @param isModified indicates the file was modified rather than created or deleted
-     * @param reason the reason we are emitting the signal.
-     */
-    void modifiedOnDisk(KTextEditor::Document *doc, bool isModified, KTextEditor::Document::ModifiedOnDiskReason reason);
 
 private:
     // helper to handle the embedded notification for externally modified files

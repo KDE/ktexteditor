@@ -636,8 +636,10 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
         selectRange2(match.range());
     }
 
-    const MatchResult matchResult =
-        !match.isValid() ? MatchMismatch : !wrap ? MatchFound : searchDirection == SearchForward ? MatchWrappedForward : MatchWrappedBackward;
+    const MatchResult matchResult = !match.isValid() ? MatchMismatch
+        : !wrap                                      ? MatchFound
+        : searchDirection == SearchForward           ? MatchWrappedForward
+                                                     : MatchWrappedBackward;
     indicateMatch(matchResult);
 
     // highlight replacements if applicable
@@ -674,8 +676,8 @@ bool KateSearchBar::isPatternValid() const
     }
 
     return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern()
-                                                : searchOptions().testFlag(Regex)
-                                                ? QRegularExpression(searchPattern(), QRegularExpression::UseUnicodePropertiesOption).isValid() : true;
+        : searchOptions().testFlag(Regex)       ? QRegularExpression(searchPattern(), QRegularExpression::UseUnicodePropertiesOption).isValid()
+                                                : true;
 }
 
 void KateSearchBar::givePatternFeedback()
@@ -915,13 +917,10 @@ void KateSearchBar::endFindOrReplaceAll()
 
     // Add ScrollBarMarks
     if (!m_highlightRanges.empty()) {
-        KTextEditor::MarkInterfaceV2 *iface = qobject_cast<KTextEditor::MarkInterfaceV2 *>(m_view->document());
-        if (iface) {
-            iface->setMarkDescription(KTextEditor::MarkInterface::SearchMatch, i18n("SearchHighLight"));
-            iface->setMarkIcon(KTextEditor::MarkInterface::SearchMatch, QIcon());
-            for (const Range &r : m_highlightRanges) {
-                iface->addMark(r.start().line(), KTextEditor::MarkInterface::SearchMatch);
-            }
+        m_view->document()->setMarkDescription(KTextEditor::Document::SearchMatch, i18n("SearchHighLight"));
+        m_view->document()->setMarkIcon(KTextEditor::Document::SearchMatch, QIcon());
+        for (const Range &r : m_highlightRanges) {
+            m_view->document()->addMark(r.start().line(), KTextEditor::Document::SearchMatch);
         }
     }
 
@@ -1618,15 +1617,12 @@ void KateSearchBar::enterIncrementalMode()
 bool KateSearchBar::clearHighlights()
 {
     // Remove ScrollBarMarks
-    KTextEditor::MarkInterface *iface = qobject_cast<KTextEditor::MarkInterface *>(m_view->document());
-    if (iface) {
-        const QHash<int, KTextEditor::Mark *> marks = iface->marks();
-        QHashIterator<int, KTextEditor::Mark *> i(marks);
-        while (i.hasNext()) {
-            i.next();
-            if (i.value()->type & KTextEditor::MarkInterface::SearchMatch) {
-                iface->removeMark(i.value()->line, KTextEditor::MarkInterface::SearchMatch);
-            }
+    const QHash<int, KTextEditor::Mark *> &marks = m_view->document()->marks();
+    QHashIterator<int, KTextEditor::Mark *> i(marks);
+    while (i.hasNext()) {
+        i.next();
+        if (i.value()->type & KTextEditor::Document::SearchMatch) {
+            m_view->document()->removeMark(i.value()->line, KTextEditor::Document::SearchMatch);
         }
     }
 

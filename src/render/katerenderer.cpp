@@ -202,7 +202,7 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayout *layo
     uint mrk = m_doc->mark(layout->line());
     if (mrk) {
         for (uint bit = 0; bit < 32; bit++) {
-            KTextEditor::MarkInterface::MarkTypes markType = (KTextEditor::MarkInterface::MarkTypes)(1U << bit);
+            KTextEditor::Document::MarkTypes markType = (KTextEditor::Document::MarkTypes)(1U << bit);
             if (mrk & markType) {
                 QColor markColor = config()->lineMarkerColor(markType);
 

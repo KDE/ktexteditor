@@ -7,9 +7,8 @@
 #ifndef KATE_VIMODE_MARKS_H
 #define KATE_VIMODE_MARKS_H
 
-#include "KTextEditor/MarkInterface"
-
 #include <KConfigGroup>
+#include <KTextEditor/Document>
 
 #include <QMap>
 
@@ -58,7 +57,7 @@ private:
     void setMark(const QChar &mark, const KTextEditor::Cursor pos);
 
 private:
-    void markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action);
+    void markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::Document::MarkChangeAction action);
 
 private:
     InputModeManager *m_inputModeManager;

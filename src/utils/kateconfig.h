@@ -9,7 +9,7 @@
 
 #include <ktexteditor_export.h>
 
-#include <ktexteditor/markinterface.h>
+#include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
 #include <KEncodingProber>
@@ -1444,7 +1444,7 @@ public:
     const QColor &highlightedLineColor() const;
     void setHighlightedLineColor(const QColor &col);
 
-    const QColor &lineMarkerColor(KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01) const; // markType01 == Bookmark
+    const QColor &lineMarkerColor(KTextEditor::Document::MarkTypes type = KTextEditor::Document::markType01) const; // markType01 == Bookmark
 
     const QColor &highlightedBracketColor() const;
     void setHighlightedBracketColor(const QColor &col);

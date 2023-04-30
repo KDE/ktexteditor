@@ -1031,7 +1031,7 @@ void KateScrollBar::recomputeMarksPositions()
         KTextEditor::Mark *mark = i.value();
         const int line = m_view->textFolding().lineToVisibleLine(mark->line);
         const double ratio = static_cast<double>(line) / visibleLines;
-        m_lines.insert(top + (int)(h * ratio), KateRendererConfig::global()->lineMarkerColor((KTextEditor::MarkInterface::MarkTypes)mark->type));
+        m_lines.insert(top + (int)(h * ratio), KateRendererConfig::global()->lineMarkerColor((KTextEditor::Document::MarkTypes)mark->type));
     }
 }
 
@@ -1476,8 +1476,8 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
 
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     setMouseTracking(true);
-    m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
-    m_doc->setMarkIcon(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")));
+    m_doc->setMarkDescription(Document::markType01, i18n("Bookmark"));
+    m_doc->setMarkIcon(Document::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")));
 
     connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged, this, &KateIconBorder::updateAnnotationBorderWidth);
 
@@ -2022,7 +2022,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 const uint mrk(m_doc->mark(realLine)); // call only once
                 if (mrk && lineLayout.startCol() == 0) {
                     for (uint bit = 0; bit < 32; bit++) {
-                        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1U << bit);
+                        Document::MarkTypes markType = (Document::MarkTypes)(1U << bit);
                         if (mrk & markType) {
                             const QIcon markIcon = m_doc->markIcon(markType);
 
@@ -2554,7 +2554,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     int i = 1;
 
     for (uint bit = 0; bit < 32; bit++) {
-        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1U << bit);
+        KTextEditor::Document::MarkTypes markType = (KTextEditor::Document::MarkTypes)(1U << bit);
         if (!(m_doc->editableMarks() & markType)) {
             continue;
         }
@@ -2601,7 +2601,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     if (result > 100) {
         KateViewConfig::global()->setValue(KateViewConfig::DefaultMarkType, vec[result - 100]);
     } else {
-        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)vec[result];
+        KTextEditor::Document::MarkTypes markType = (KTextEditor::Document::MarkTypes)vec[result];
         if (m_doc->mark(line) & markType) {
             m_doc->removeMark(line, markType);
         } else {

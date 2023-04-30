@@ -471,13 +471,10 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ClipboardHistoryEntries, "Max Clipboard History Entries", QString(), 20, [](const QVariant &value) {
         return inBounds(1, value, 999);
     }));
-    addConfigEntry(ConfigEntry(DefaultMarkType,
-                               "Default Mark Type",
-                               QStringLiteral("default-mark-type"),
-                               KTextEditor::MarkInterface::markType01,
-                               [](const QVariant &value) {
-                                   return isPositive(value);
-                               }));
+    addConfigEntry(
+        ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::Document::markType01, [](const QVariant &value) {
+            return isPositive(value);
+        }));
     addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) {
         return inBounds(0, value, 100);
     }));
@@ -601,7 +598,7 @@ void KateViewConfig::updateConfig()
 
 // BEGIN KateRendererConfig
 KateRendererConfig::KateRendererConfig()
-    : m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount())
+    : m_lineMarkerColor(KTextEditor::Document::reservedMarkersCount())
     , m_schemaSet(false)
     , m_fontSet(false)
     , m_wordWrapMarkerSet(false)
@@ -646,7 +643,7 @@ KateRendererConfig::KateRendererConfig()
 
 KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
     : KateConfig(s_global)
-    , m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount())
+    , m_lineMarkerColor(KTextEditor::Document::reservedMarkersCount())
     , m_schemaSet(false)
     , m_fontSet(false)
     , m_wordWrapMarkerSet(false)
@@ -1006,7 +1003,7 @@ void KateRendererConfig::setHighlightedLineColor(const QColor &col)
     configEnd();
 }
 
-const QColor &KateRendererConfig::lineMarkerColor(KTextEditor::MarkInterface::MarkTypes type) const
+const QColor &KateRendererConfig::lineMarkerColor(KTextEditor::Document::MarkTypes type) const
 {
     int index = 0;
     if (type > 0) {
@@ -1014,7 +1011,7 @@ const QColor &KateRendererConfig::lineMarkerColor(KTextEditor::MarkInterface::Ma
     }
     index -= 1;
 
-    if (index < 0 || index >= KTextEditor::MarkInterface::reservedMarkersCount()) {
+    if (index < 0 || index >= KTextEditor::Document::reservedMarkersCount()) {
         static QColor dummy;
         return dummy;
     }

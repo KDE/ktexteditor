@@ -86,7 +86,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
                 }
             }
             if (number_of_marks == 1) {
-                m_doc->removeMark(oldCursor->line(), KTextEditor::MarkInterface::markType01);
+                m_doc->removeMark(oldCursor->line(), KTextEditor::Document::markType01);
             }
         }
 
@@ -101,8 +101,8 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor pos)
 
     // Showing what mark we set, can be skipped if we did not change the line
     if (isShowable(mark)) {
-        if (needToAdjustVisibleMark && !(m_doc->mark(pos.line()) & KTextEditor::MarkInterface::markType01)) {
-            m_doc->addMark(pos.line(), KTextEditor::MarkInterface::markType01);
+        if (needToAdjustVisibleMark && !(m_doc->mark(pos.line()) & KTextEditor::Document::markType01)) {
+            m_doc->addMark(pos.line(), KTextEditor::Document::markType01);
         }
 
         // only show message for active view
@@ -126,22 +126,22 @@ KTextEditor::Cursor Marks::getMarkPosition(const QChar &mark) const
     return KTextEditor::Cursor::invalid();
 }
 
-void Marks::markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action)
+void Marks::markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::Document::MarkChangeAction action)
 {
     Q_UNUSED(doc)
 
-    if (mark.type != KTextEditor::MarkInterface::Bookmark || m_settingMark) {
+    if (mark.type != KTextEditor::Document::Bookmark || m_settingMark) {
         return;
     }
 
-    if (action == KTextEditor::MarkInterface::MarkRemoved) {
+    if (action == KTextEditor::Document::MarkRemoved) {
         const auto keys = m_marks.keys();
         for (QChar markerChar : keys) {
             if (m_marks.value(markerChar)->line() == mark.line) {
                 m_marks.remove(markerChar);
             }
         }
-    } else if (action == KTextEditor::MarkInterface::MarkAdded) {
+    } else if (action == KTextEditor::Document::MarkAdded) {
         bool freeMarkerCharFound = false;
 
         for (const QChar &markerChar : UserMarks) {
@@ -165,7 +165,7 @@ void Marks::syncViMarksAndBookmarks()
 
     //  Each bookmark should have a vi mark on the same line.
     for (auto mark : marks) {
-        if (!(mark->type & KTextEditor::MarkInterface::markType01)) {
+        if (!(mark->type & KTextEditor::Document::markType01)) {
             continue;
         }
 
@@ -198,7 +198,7 @@ void Marks::syncViMarksAndBookmarks()
 
         bool thereIsKateMarkForThisLine = false;
         for (auto mark : marks) {
-            if (!(mark->type & KTextEditor::MarkInterface::markType01)) {
+            if (!(mark->type & KTextEditor::Document::markType01)) {
                 continue;
             }
 
@@ -209,7 +209,7 @@ void Marks::syncViMarksAndBookmarks()
         }
 
         if (!thereIsKateMarkForThisLine) {
-            m_doc->addMark(m_marks.value(markChar)->line(), KTextEditor::MarkInterface::markType01);
+            m_doc->addMark(m_marks.value(markChar)->line(), KTextEditor::Document::markType01);
         }
     }
 }

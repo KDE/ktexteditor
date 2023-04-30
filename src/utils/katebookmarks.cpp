@@ -95,10 +95,10 @@ void KateBookmarks::createActions(KActionCollection *ac)
 void KateBookmarks::toggleBookmark()
 {
     uint mark = m_view->doc()->mark(m_view->cursorPosition().line());
-    if (mark & KTextEditor::MarkInterface::markType01) {
-        m_view->doc()->removeMark(m_view->cursorPosition().line(), KTextEditor::MarkInterface::markType01);
+    if (mark & KTextEditor::Document::markType01) {
+        m_view->doc()->removeMark(m_view->cursorPosition().line(), KTextEditor::Document::markType01);
     } else {
-        m_view->doc()->addMark(m_view->cursorPosition().line(), KTextEditor::MarkInterface::markType01);
+        m_view->doc()->addMark(m_view->cursorPosition().line(), KTextEditor::Document::markType01);
     }
 }
 
@@ -107,7 +107,7 @@ void KateBookmarks::clearBookmarks()
     // work on a COPY of the hash, the removing will modify it otherwise!
     const auto hash = m_view->doc()->marks();
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
-        m_view->doc()->removeMark(it.value()->line, KTextEditor::MarkInterface::markType01);
+        m_view->doc()->removeMark(it.value()->line, KTextEditor::Document::markType01);
     }
 }
 
@@ -128,7 +128,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
 
     // Find line numbers where bookmarks are set & store those line numbers in bookmarkLineArray
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
-        if (it.value()->type & KTextEditor::MarkInterface::markType01) {
+        if (it.value()->type & KTextEditor::Document::markType01) {
             bookmarkLineArray.append(it.value()->line);
         }
     }
@@ -213,7 +213,7 @@ void KateBookmarks::gotoLine(int line)
 void KateBookmarks::bookmarkMenuAboutToShow()
 {
     m_bookmarksMenu->clear();
-    m_bookmarkToggle->setChecked(m_view->doc()->mark(m_view->cursorPosition().line()) & KTextEditor::MarkInterface::markType01);
+    m_bookmarkToggle->setChecked(m_view->doc()->mark(m_view->cursorPosition().line()) & KTextEditor::Document::markType01);
     m_bookmarksMenu->addAction(m_bookmarkToggle);
     m_bookmarksMenu->addAction(m_bookmarkClear);
 
