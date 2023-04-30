@@ -21,7 +21,6 @@
 #include "command.h"
 #include "inlinenote.h"
 #include "inlinenotedata.h"
-#include "inlinenoteinterface.h"
 #include "inlinenoteprovider.h"
 #include "katerenderer.h"
 #include "katevariableexpansionmanager.h"
@@ -268,10 +267,6 @@ TextHintInterface::~TextHintInterface() = default;
 TextHintProvider::TextHintProvider() = default;
 
 TextHintProvider::~TextHintProvider() = default;
-
-InlineNoteInterface::InlineNoteInterface() = default;
-
-InlineNoteInterface::~InlineNoteInterface() = default;
 
 InlineNoteProvider::InlineNoteProvider() = default;
 

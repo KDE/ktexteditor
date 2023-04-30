@@ -12,7 +12,6 @@
 #include <kateglobal.h>
 #include <kateview.h>
 #include <ktexteditor/inlinenote.h>
-#include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/inlinenoteprovider.h>
 
 #include <QPainter>
@@ -147,14 +146,11 @@ void InlineNoteTest::testInlineNote()
 
     const auto xWidth = coordCol05.x() - coordCol04.x();
 
-    auto iface = qobject_cast<KTextEditor::InlineNoteInterface *>(&view);
-    QVERIFY(iface != nullptr);
-
     NoteProvider noteProvider;
     const QVector<int> expectedColumns = {5, 10};
     QCOMPARE(noteProvider.inlineNotes(0), expectedColumns);
     QCOMPARE(noteProvider.inlineNotes(1), QVector<int>());
-    iface->registerInlineNoteProvider(&noteProvider);
+    view.registerInlineNoteProvider(&noteProvider);
 
     const auto newCoordCol04 = view.cursorToCoordinate({0, 4});
     const auto newCoordCol05 = view.cursorToCoordinate({0, 5});
@@ -176,7 +172,7 @@ void InlineNoteTest::testInlineNote()
 
     // mouse move only on X11
     if (!KWindowSystem::isPlatformX11()) {
-        iface->unregisterInlineNoteProvider(&noteProvider);
+        view.unregisterInlineNoteProvider(&noteProvider);
         QSKIP("mouse moving only on X11");
     }
 
@@ -222,7 +218,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.noteActivatedCount, 1);
     QVERIFY(noteProvider.lastUnderMouse == false);
 
-    iface->unregisterInlineNoteProvider(&noteProvider);
+    view.unregisterInlineNoteProvider(&noteProvider);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

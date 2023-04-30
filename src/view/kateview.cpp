@@ -4911,7 +4911,7 @@ void KTextEditor::ViewPrivate::printPreview()
 
 // END
 
-// BEGIN KTextEditor::InlineNoteInterface
+// BEGIN Inline Note Interface
 void KTextEditor::ViewPrivate::registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider)
 {
     if (std::find(m_inlineNoteProviders.cbegin(), m_inlineNoteProviders.cend(), provider) == m_inlineNoteProviders.cend()) {
@@ -4971,7 +4971,7 @@ void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
     tagLines({line, line}, true);
 }
 
-// END KTextEditor::InlineNoteInterface
+// END Inline Note Interface
 
 KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KSyntaxHighlighting::Theme::TextStyle defaultStyle) const
 {

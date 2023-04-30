@@ -40,6 +40,7 @@ class Range;
 class Cursor;
 class AnnotationModel;
 class AbstractAnnotationItemDelegate;
+class InlineNoteProvider;
 
 /**
  * \class View view.h <KTextEditor/View>
@@ -55,6 +56,7 @@ class AbstractAnnotationItemDelegate;
  *  - \ref view_modes
  *  - \ref view_config
  *  - \ref view_annoview
+ *  - \ref view_inlinenote
  *  - \ref view_extensions
  *
  * \section view_intro Introduction
@@ -182,6 +184,20 @@ class AbstractAnnotationItemDelegate;
  * For a more detailed explanation about whether you want to set a custom
  * delegate for rendering the annotations, read the detailed documentation about the
  * AbstractAnnotationItemDelegate.
+ *
+ * \section view_inlinenote Inline Notes
+ *
+ * The inline notes interface provides a way to render arbitrary things in
+ * the text. The text layout of the line is adapted to create space for the
+ * note. Possible applications include showing a name of a function parameter
+ * in a function call or rendering a square with a color preview next to CSS
+ * color property.
+ *
+ * \image html inlinenote.png "Inline note showing a CSS color preview"
+ *
+ * To register as inline note provider, call registerInlineNoteProvider() with
+ * an instance that inherits InlineNoteProvider. Finally, make sure you remove
+ * your inline note provider by calling unregisterInlineNoteProvider().
  *
  * \section view_extensions View Extension Interfaces
  *
@@ -1034,6 +1050,31 @@ Q_SIGNALS:
      * \param visible the current visibility state
      */
     void annotationBorderVisibilityChanged(KTextEditor::View *view, bool visible);
+
+    /**
+     * Inline Note
+     */
+public:
+    /**
+     * Register the inline note provider @p provider.
+     *
+     * Whenever a line is painted, the @p provider will be queried for notes
+     * that should be painted in it. When the provider is about to be
+     * destroyed, make sure to call unregisterInlineNoteProvider() to avoid a
+     * dangling pointer.
+     *
+     * @param provider inline note provider
+     * @see unregisterInlineNoteProvider(), InlineNoteProvider
+     */
+    virtual void registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) = 0;
+
+    /**
+     * Unregister the inline note provider @p provider.
+     *
+     * @param provider inline note provider to unregister
+     * @see registerInlineNoteProvider(), InlineNoteProvider
+     */
+    virtual void unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) = 0;
 
 public:
     /**

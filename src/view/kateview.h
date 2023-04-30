@@ -11,7 +11,6 @@
 #define kate_view_h
 
 #include <ktexteditor/codecompletioninterface.h>
-#include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/linerange.h>
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/texthintinterface.h>
@@ -74,16 +73,12 @@ namespace KTextEditor
 //
 // Kate KTextEditor::View class ;)
 //
-class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View,
-                                             public KTextEditor::TextHintInterface,
-                                             public KTextEditor::CodeCompletionInterfaceV2,
-                                             public KTextEditor::InlineNoteInterface
+class KTEXTEDITOR_EXPORT ViewPrivate final : public KTextEditor::View, public KTextEditor::TextHintInterface, public KTextEditor::CodeCompletionInterfaceV2
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterfaceV2)
-    Q_INTERFACES(KTextEditor::InlineNoteInterface)
 
     friend class KTextEditor::View;
     friend class ::KateViewInternal;

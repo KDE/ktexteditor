@@ -22,7 +22,7 @@ namespace KTextEditor
  * InlineNoteProvider is a object that can be queried for inline notes in the
  * view. It emits signals when the notes change and should be queried again.
  *
- * @see InlineNoteInterface
+ * @see KTextEditor::View
  * @since 5.50
  */
 class KTEXTEDITOR_EXPORT InlineNoteProvider : public QObject
