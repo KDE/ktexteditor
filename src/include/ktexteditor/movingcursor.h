@@ -11,7 +11,6 @@
 #define KTEXTEDITOR_MOVINGCURSOR_H
 
 #include <ktexteditor/cursor.h>
-#include <ktexteditor/document.h>
 #include <ktexteditor_export.h>
 
 #include <QDebug>
@@ -19,6 +18,7 @@
 namespace KTextEditor
 {
 class MovingRange;
+class Document;
 
 /**
  * \class MovingCursor movingcursor.h <KTextEditor/MovingCursor>
@@ -174,10 +174,7 @@ public:
      *
      * \see Document::isValidTextPosition()
      */
-    inline bool isValidTextPosition() const
-    {
-        return document()->isValidTextPosition(toCursor());
-    }
+    bool isValidTextPosition() const;
 
     /**
      * \overload

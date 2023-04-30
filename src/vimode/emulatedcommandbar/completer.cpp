@@ -12,6 +12,7 @@ using namespace KateVi;
 #include "activemode.h"
 #include "kateview.h"
 #include "vimode/definitions.h"
+#include <ktexteditor/document.h>
 
 #include <QAbstractItemView>
 #include <QCompleter>

@@ -178,7 +178,6 @@ utils/codecompletioninterface.cpp
 utils/codecompletionmodel.cpp
 utils/codecompletionmodelcontrollerinterface.cpp
 utils/configinterface.cpp
-utils/movinginterface.cpp
 utils/movingcursor.cpp
 utils/movingrange.cpp
 utils/movingrangefeedback.cpp

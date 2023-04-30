@@ -14,6 +14,7 @@
 #define _KATE_VIEW_INTERNAL_
 
 #include <ktexteditor/attribute.h>
+#include <ktexteditor/range.h>
 #include <ktexteditor/view.h>
 
 #include "inlinenotedata.h"

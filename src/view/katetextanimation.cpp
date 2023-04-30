@@ -9,6 +9,7 @@
 #include "katerenderer.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
+#include <ktexteditor/document.h>
 
 #include <QPainter>
 #include <QPointF>

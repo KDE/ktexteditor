@@ -96,3 +96,8 @@ bool MovingCursor::move(int chars, WrapBehavior wrapBehavior)
 
     return success;
 }
+
+bool MovingCursor::isValidTextPosition() const
+{
+    return document()->isValidTextPosition(toCursor());
+}

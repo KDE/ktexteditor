@@ -21,7 +21,7 @@
 #include <ktexteditor/mainwindow.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/modificationinterface.h>
-#include <ktexteditor/movinginterface.h>
+#include <ktexteditor/movingrangefeedback.h>
 
 #include "katetextline.h"
 #include <ktexteditor_export.h>
@@ -72,7 +72,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor
                                                               public KTextEditor::ModificationInterface,
                                                               public KTextEditor::ConfigInterface,
                                                               public KTextEditor::AnnotationInterface,
-                                                              public KTextEditor::MovingInterface,
                                                               private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
@@ -81,7 +80,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate final : public KTextEditor
     Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
     Q_INTERFACES(KTextEditor::ConfigInterface)
-    Q_INTERFACES(KTextEditor::MovingInterface)
 
     friend class KTextEditor::Document;
     friend class ::KateDocumentTest;
