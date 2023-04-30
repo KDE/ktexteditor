@@ -52,6 +52,7 @@
 #include <KTextEditor/Message>
 #include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/inlinenoteprovider.h>
+#include <ktexteditor/texthintinterface.h>
 
 #include <KActionCollection>
 #include <KConfig>

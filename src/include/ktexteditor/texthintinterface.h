@@ -20,102 +20,6 @@ class TextHintProvider;
 class View;
 
 /**
- * \class TextHintInterface texthininterface.h <KTextEditor/TextHintInterface>
- *
- * \brief Text hint interface showing tool tips under the mouse for the View.
- *
- * \ingroup kte_group_view_extensions
- *
- * \section texthint_introduction Introduction
- *
- * The text hint interface provides a way to show tool tips for text located
- * under the mouse. Possible applications include showing a value of a variable
- * when debugging an application, or showing a complete path of an include
- * directive.
- *
- * \image html texthint.png "Text hint showing the contents of a variable"
- *
- * To register as text hint provider, call registerTextHintProvider() with an
- * instance that inherits TextHintProvider. Finally, make sure you remove your
- * text hint provider by calling unregisterTextHintProvider().
- *
- * Text hints are shown after the user hovers with the mouse for a delay of
- * textHintDelay() milliseconds over the same word. To change the delay, call
- * setTextHintDelay().
- *
- * \section texthint_access Accessing the TextHintInterface
- *
- * The TextHintInterface is an extension interface for a
- * View, i.e. the View inherits the interface. Use qobject_cast to access the
- * interface:
- * \code
- * // view is of type KTextEditor::View*
- * auto iface = qobject_cast<KTextEditor::TextHintInterface*>(view);
- *
- * if (iface) {
- *     // the implementation supports the interface
- *     // myProvider inherits KTextEditor::TextHintProvider
- *     iface->registerTextHintProvider(myProvider);
- * } else {
- *     // the implementation does not support the interface
- * }
- * \endcode
- *
- * \see TextHintProvider
- * \since 4.11
- */
-class KTEXTEDITOR_EXPORT TextHintInterface
-{
-public:
-    TextHintInterface();
-    virtual ~TextHintInterface();
-
-    /**
-     * Register the text hint provider \p provider.
-     *
-     * Whenever the user hovers over text, \p provider will be asked for
-     * a text hint. When the provider is about to be destroyed, make
-     * sure to call unregisterTextHintProvider() to avoid a dangling pointer.
-     *
-     * @param provider text hint provider
-     * @see unregisterTextHintProvider(), TextHintProvider
-     */
-    virtual void registerTextHintProvider(KTextEditor::TextHintProvider *provider) = 0;
-
-    /**
-     * Unregister the text hint provider \p provider.
-     *
-     * @param provider text hint provider to unregister
-     * @see registerTextHintProvider(), TextHintProvider
-     */
-    virtual void unregisterTextHintProvider(KTextEditor::TextHintProvider *provider) = 0;
-
-    /**
-     * Set the text hint delay to \p delay milliseconds.
-     *
-     * The delay specifies the time the user needs to hover over the text
-     * before the tool tip is shown. Therefore, \p delay should not be
-     * too large, a value of 500 milliseconds is recommended and set by
-     * default.
-     *
-     * If \p delay is <= 0, the default delay will be set.
-     *
-     * \param delay tool tip delay in milliseconds
-     */
-    virtual void setTextHintDelay(int delay) = 0;
-
-    /**
-     * Get the text hint delay in milliseconds.
-     * By default, the text hint delay is set to 500 milliseconds.
-     * It can be changed by calling \p setTextHintDelay().
-     */
-    virtual int textHintDelay() const = 0;
-
-private:
-    class TextHintInterfacePrivate *const d = nullptr;
-};
-
-/**
  * \brief Class to provide text hints for a View.
  *
  * The class TextHintProvider is used in combination with TextHintInterface.
@@ -167,7 +71,5 @@ private:
 };
 
 }
-
-Q_DECLARE_INTERFACE(KTextEditor::TextHintInterface, "org.kde.KTextEditor.TextHintInterface")
 
 #endif

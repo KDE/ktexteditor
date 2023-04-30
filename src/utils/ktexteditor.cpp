@@ -260,10 +260,6 @@ SessionConfigInterface::SessionConfigInterface() = default;
 
 SessionConfigInterface::~SessionConfigInterface() = default;
 
-TextHintInterface::TextHintInterface() = default;
-
-TextHintInterface::~TextHintInterface() = default;
-
 TextHintProvider::TextHintProvider() = default;
 
 TextHintProvider::~TextHintProvider() = default;
