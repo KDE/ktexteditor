@@ -1,4 +1,5 @@
 find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
+add_definitions(-DQT_FORCE_ASSERTS=1)
 
 include(ECMMarkAsTest)
 include(ECMAddTests)
@@ -53,7 +54,6 @@ if(ENABLE_PCH)
     add_library(kte_test_pch STATIC ${CMAKE_CURRENT_BINARY_DIR}/pch.cpp)
     target_link_libraries(kte_test_pch ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
     target_precompile_headers(kte_test_pch PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/pch.h)
-    target_compile_definitions(kte_test_pch PRIVATE QT_FORCE_ASSERTS=1)
 endif()
 
 include(ECMMarkAsTest)
