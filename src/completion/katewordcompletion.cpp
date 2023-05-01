@@ -25,6 +25,8 @@
 #include <KParts/Part>
 #include <KToggleAction>
 
+#include <Sonnet/Speller>
+
 #include <QAction>
 #include <QCheckBox>
 #include <QLabel>
@@ -223,6 +225,20 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
             offset += 1;
         }
     }
+
+    // ensure words that are ok spell check wise always end up in the completion, see bug 468705
+    const auto language = static_cast<KTextEditor::DocumentPrivate *>(document)->defaultDictionary();
+    const auto word = view->document()->text(range);
+    Sonnet::Speller speller;
+    speller.setLanguage(language);
+    if (speller.isCorrect(word)) {
+        result.insert(word);
+    } else {
+        for (const auto &alternative : speller.suggest(word)) {
+            result.insert(alternative);
+        }
+    }
+
     return result.values();
 }
 
