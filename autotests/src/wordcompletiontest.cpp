@@ -6,6 +6,7 @@
 
 #include "wordcompletiontest.h"
 
+#include <katedocument.h>
 #include <kateglobal.h>
 #include <katewordcompletion.h>
 #include <ktexteditor/editor.h>
@@ -28,6 +29,9 @@ void WordCompletionTest::initTestCase()
 
     m_doc = editor->createDocument(this);
     QVERIFY(m_doc);
+
+    // ensure the spellchecking doesn't mess with the expected results
+    static_cast<KTextEditor::DocumentPrivate *>(m_doc)->setDefaultDictionary(QStringLiteral("notexistinglanguage"));
 }
 
 void WordCompletionTest::cleanupTestCase()

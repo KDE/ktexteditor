@@ -231,11 +231,13 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     const auto word = view->document()->text(range);
     Sonnet::Speller speller;
     speller.setLanguage(language);
-    if (speller.isCorrect(word)) {
-        result.insert(word);
-    } else {
-        for (const auto &alternative : speller.suggest(word)) {
-            result.insert(alternative);
+    if (speller.isValid()) {
+        if (speller.isCorrect(word)) {
+            result.insert(word);
+        } else {
+            for (const auto &alternative : speller.suggest(word)) {
+                result.insert(alternative);
+            }
         }
     }
 
