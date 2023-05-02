@@ -1,19 +1,20 @@
 # translation of ktexteditor5.po to Slovak
 # Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2016, 2023.
 # Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020, 2021, 2022.
+# Ferdinand Galko <galko.ferdinand@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-29 02:19+0000\n"
-"PO-Revision-Date: 2023-03-11 18:23+0100\n"
-"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
-"Language-Team: Slovak <kde-sk@linux.sk>\n"
+"PO-Revision-Date: 2023-05-01 14:23+0200\n"
+"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
+"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -61,7 +62,7 @@ msgstr "&Súbor"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Tlačiť/Exportovať"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -83,10 +84,9 @@ msgstr "Výber"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Prvé veľké písmená:"
+msgstr "Prvé veľké písmená"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -114,10 +114,9 @@ msgstr "Za&baľovanie kódu"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:105
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Pre&jsť"
+msgstr "Prejsť"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:120
@@ -152,10 +151,9 @@ msgstr "Hlavný panel nástrojov"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/bordersappearanceconfigwidget.ui:25
-#, fuzzy, kde-format
-#| msgid "Code Folding"
+#, kde-format
 msgid "Code block folding:"
-msgstr "Zabaľovanie kódu"
+msgstr "Zloženie bloku kódu:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:32
@@ -170,7 +168,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr ""
+msgstr "Zobraziť šípky na zbalenie blokov kódu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -184,16 +182,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of folded blocks on hover"
-msgstr "Zobraziť náhľad zloženého kódu"
+msgstr "Zobraziť náhľad zložených blokov pri prejdení myšou"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/bordersappearanceconfigwidget.ui:68
-#, fuzzy, kde-format
+#, kde-format
 msgid "Left side:"
-msgstr "Ľavá strana"
+msgstr "Ľavá strana:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
 #: dialogs/bordersappearanceconfigwidget.ui:75
@@ -242,10 +239,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
-#, fuzzy, kde-format
-#| msgid "Highlight range between selected brackets"
+#, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr "Vysvietiť vzdialenosť medzi blokmi"
+msgstr "Zvýrazniť zmenené a neuložené riadky"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
@@ -275,17 +271,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
-#, fuzzy, kde-format
-#| msgid "Show text &preview on scrollbar"
+#, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Zobraziť náhľad textu na scrollbare"
+msgstr "Zobraziť náhľad pri prejdení myšou nad posuvníkom"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
-#, fuzzy, kde-format
-#| msgid "Minim&ap width:"
+#, kde-format
 msgid "Minimap:"
-msgstr "Šírka mini-mapy:"
+msgstr "Minimapa:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -299,10 +293,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Show scrollbar mini-map"
+#, kde-format
 msgid "Show minimap"
-msgstr "Zobraziť značky posuvníka"
+msgstr "Zobraziť minimapu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -364,60 +357,53 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr ""
+msgstr "Podľa dátumu vytvorenia"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
 #, kde-format
 msgid "The bookmarks will be ordered by the line numbers they are placed at."
-msgstr "Záložky budú usporiadané podľa čisla riadku kde sú umiestnené."
+msgstr "Záložky budú usporiadané podľa čísla riadku kde sú umiestnené."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:265
-#, fuzzy, kde-format
-#| msgid "Show &line numbers"
+#, kde-format
 msgid "By line number"
-msgstr "Zobraziť čís&la riadkov"
+msgstr "Podľa čísla riadku"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/bordersappearanceconfigwidget.ui:272
-#, fuzzy, kde-format
-#| msgid "Sort Bookmarks Menu"
+#, kde-format
 msgid "Sort bookmarks menu:"
-msgstr "Zoradiť menu záložiek"
+msgstr "Usporiadať menu záložiek:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
-#, fuzzy, kde-format
-#| msgid "Scro&llbars visibility:"
+#, kde-format
 msgid "Folding arrows visibility:"
-msgstr "Viditeľnosť rolovacích pruhov:"
+msgstr "Viditeľnosť skladacích šípok:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:303
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "Zobraziť okraje &ikony"
+msgstr "Zobraziť pri prejdení myšou"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:308
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Show Always"
-msgstr "Vždy zobraziť"
+msgstr "Zobraziť vždy"
 
 #: dialogs/clipboardhistorydialog.cpp:261
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "Vybrať ďalší editačný bod"
+msgstr "Vybrať text, ktorý sa má vložiť"
 
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Žiadne záznamy v histórii schránky"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -438,20 +424,19 @@ msgstr "Povoliť automatické dopĺňanie"
 #: dialogs/completionconfigtab.ui:42
 #, kde-format
 msgid "Auto select &first completion entry"
-msgstr ""
+msgstr "Automaticky vybrať prvú položku dokončovania"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTabCompletion)
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Cyklicky prechádzať zoznamom dokončení pomocou Tab / Shift+Tab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
-msgstr "Automatické ukončovanie slov"
+msgstr "A&utomatické dokončovanie slov"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
@@ -474,15 +459,11 @@ msgstr "Odstrániť chvost pri ukončení"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"Dopĺňanie kľúčových slov poskytuje návrhy založené na kľúčových slovách, "
-"ktoré existujú v jazyku dokumentu."
+"Dokončovanie slov poskytuje návrhy na základe slov nájdených v dokumente"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -502,10 +483,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Auto Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Automatické dopĺňanie slov"
+msgstr "Dokumentácia s doplnením"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:152
@@ -514,6 +494,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Zobraziť dokumentáciu vedľa poľa doplnenia. Ak je to zakázané, dokumentáciu "
+"možno zobraziť stlačením klávesu Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -543,7 +525,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "Zalomiť slová v pevnom stĺpci"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -558,11 +540,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Set the word wrap column."
+#, kde-format
 msgid "&Draw vertical line at the word wrap column"
-msgstr "Nastaviť stĺpec zalomenia slov."
+msgstr "Nakresliť zvislú čiaru v stĺpci zalomenia slov"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
@@ -588,16 +568,15 @@ msgstr "Predvolený vstupný režim:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/editconfigwidget.ui:117
-#, fuzzy, kde-format
-#| msgid "Auto Brackets"
+#, kde-format
 msgid "Brackets:"
-msgstr "Zátvorky"
+msgstr "Zátvorky:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
 #: dialogs/editconfigwidget.ui:124
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "Automaticky zatvoriť zátvorky po napísaní otváracej zátvorky"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:137
@@ -611,51 +590,46 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:140
-#, fuzzy, kde-format
-#| msgctxt "suffix for spinbox >1"
-#| msgid " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " znakov"
+msgstr "Uzatváracie znaky:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:160
-#, fuzzy, kde-format
-#| msgid "Copy and Paste"
+#, kde-format
 msgid "Copy and paste:"
-msgstr "Kopírovať a vložiť"
+msgstr "Kopírovať a vložiť:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
 #: dialogs/editconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "Move selected text by drag and drop"
+#, kde-format
 msgid "Move selected text when dragged"
-msgstr "Presuňte vybratý text pretiahnutím myšou"
+msgstr "Presunúť vybraný text pri ťahaní"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:174
-#, fuzzy, kde-format
-#| msgid "Copy/Cut the current line if no selection"
+#, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Kopírovať/vystrihnúť aktuálny riadok, ak nie je výber"
+msgstr "Kopírovať/vystrihnúť aktuálny riadok, ak sa vyvolá bez vybratého textu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:181
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "Nepresúvať textový kurzor pri vkladaní myšou"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "História schránky"
+msgstr "Maximum záznamov histórie schránky:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
+"Toto určuje počet záznamov, ktoré sa majú uchovávať v histórii schránky"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -664,6 +638,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"Keď napíšete tieto znaky, keď je text vybraný, obklopia vybraný text "
+"namiesto toho, aby ho nahradili."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -892,10 +868,9 @@ msgstr "Tabulátory a medzery"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "&Automatické zistenie konca riadku"
+msgstr "Automaticky zistiť odsadenie súboru"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -960,16 +935,7 @@ msgstr "Kláves Backspace po prázdnom mieste ruší odsadenie"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -984,10 +950,10 @@ msgstr ""
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
-"<p>Akcia klávesu tabulátora (ak nie je žiadny výber) <a href=\"Ak chcete aby "
-"<b>Tab</b> zarovnal aktuálny riadok v aktuálnom bloku kódu ako v emacse, "
-"vytvorte pre <b>Tab</b> skratku na akciu <b>Zarovnať</b>.\"><span>Viac ...</"
-"span></a></p></body></html>"
+"<p>Akcia klávesu Tab (ak neexistuje žiadny výber) <a href=\"Ak chcete, aby "
+"<b>Tab</b> zarovnal aktuálny riadok v aktuálnom bloku kódu ako v aplikácii "
+"Emacs, vytvorte <b>Tab</b> ako skratku pre akciu <b>Formátovať odsadenie</b>."
+"\"><span>More ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1111,10 +1077,9 @@ msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "Príkaz"
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
@@ -1202,6 +1167,9 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 zálohuje neuložené súbory do \" odkladacích súborov\". Odkladacie súbory "
+"umožňujú %1 obnoviť vašu prácu v prípade zlyhania systému. Zakázanie "
+"odkladacích súborov môže spôsobiť stratu dát v prípade zlyhania systému."
 
 #: dialogs/katedialogs.cpp:1008
 #, kde-format
@@ -1267,6 +1235,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Znovu sa načíta a bude sa automaticky znovu načítavať bez upozornenia na "
+"zmeny na disku odteraz až do zatvorenia karty alebo okna."
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1274,10 +1244,9 @@ msgid "View &Difference"
 msgstr "&Ukázať rozdiel"
 
 #: dialogs/katedialogs.cpp:1447
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Zobrazí rozdiel zmien"
+msgstr "Zobrazí rozdiel zmien."
 
 #: dialogs/katedialogs.cpp:1452
 #, kde-format
@@ -1285,10 +1254,9 @@ msgid "&Reload"
 msgstr "&Obnoviť"
 
 #: dialogs/katedialogs.cpp:1454
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
-msgstr "Znovu načítať súbor z disku. Neuložené zmeny budú stratené."
+msgstr "Znovu načíta súbor z disku. Neuložené zmeny budú stratené."
 
 #: dialogs/katedialogs.cpp:1458
 #, kde-format
@@ -1297,10 +1265,9 @@ msgid "&Close File"
 msgstr "&Zavrieť súbor"
 
 #: dialogs/katedialogs.cpp:1460
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Zatvorte súbor, to zahodí jeho obsah."
+msgstr "Zatvorí súbor a zahodí jeho obsah."
 
 #: dialogs/katedialogs.cpp:1464
 #, kde-format
@@ -1393,12 +1360,14 @@ msgstr "&PageUp/PageDown presúva kurzor"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
+"Vyberá, či kurzor preskakuje celé slová alebo sa prerušuje pri hrboľoch s "
+"veľkým písmenom."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "Povoliť presun kurzora veľkými písmenami"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1482,25 +1451,25 @@ msgstr "Tlačidlo Backspace odstraňuje základ znaku aj s diakritikou"
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "Viacnásobný kurzor"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Modifikátory viacnásobného kurzora"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Automatické opätovné načítanie súborov v správe verzií"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "Zapísať záložný súbor pri ukladaní pre:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1514,7 +1483,7 @@ msgstr "Zaškrtnite tu ak chcete zálohy vašich lokálnych súborov pri ukladan
 #: dialogs/opensaveconfigadvwidget.ui:51
 #, kde-format
 msgid "&Local files"
-msgstr "Lokálne súbory"
+msgstr "&Lokálne súbory"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:58
@@ -1535,7 +1504,7 @@ msgstr "Vzdialené súbo&ry"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "Predpona pre záložné súbory:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1547,7 +1516,7 @@ msgstr "Zadajte predonu pre názvy záložnych súborov."
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "Prípona pre záložné súbory:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -1557,36 +1526,33 @@ msgstr "Zadajte príponu pre názvy záložnych súborov."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Swap file mode:"
-msgstr "Výmenný súbor:"
+msgstr "Režim odkladacích súborov:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "Povolené, uložiť do predvoleného adresára"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "Povolené, uložiť do vlastného adresára"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Store swap files in:"
-msgstr "Výmenný súbor:"
+msgstr "Odkladacie súbory uložiť do:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
-#, fuzzy, kde-format
-#| msgid "Swap file:"
+#, kde-format
 msgid "Save swap files every:"
-msgstr "Výmenný súbor:"
+msgstr "Uložiť odkladacie súbory každé:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1600,6 +1566,8 @@ msgstr "s"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
+"Tento reťazec sa nachádza v súbore katedialogs.cpp v konštruktore "
+"KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1799,76 +1767,69 @@ msgstr "Pridať nový riadok na koniec súboru pri uložení"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Enable Auto Reload"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Povoliť automatické obnovenie"
+msgstr "Povoliť automatické ukladanie (iba lokálne súbory)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr ""
+msgstr "Automaticky uložiť dokument, keď už editor nie je aktívny"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Interval automatického ukladania"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
-#, fuzzy, kde-format
+#, kde-format
 msgid " seconds"
 msgstr " sekundy"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Zvýrazňovanie syntaxe"
+msgstr "Zobraziť režim zvýraznenia"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "Použiť VI vkladací mód"
+msgstr "Zobraziť vstupný režim"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Zmeniť slovník"
+msgstr "Zobraziť aktívny slovník"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Tabs As"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Zobraziť taby ako"
+msgstr "Zobraziť nastavenie tabulátora"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Zobraziť čí&sla riadkov"
+msgstr "Zobraziť stĺpec riadka"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Zobraziť čí&sla riadkov"
+msgstr "Zobraziť kódovanie súborov"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Zobraziť typ ukončenia riadku"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1878,18 +1839,15 @@ msgstr "Pismo editora:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:64
-#, fuzzy, kde-format
-#| msgid "Ignore white space changes"
+#, kde-format
 msgid "Show whitespace indicators:"
-msgstr "Ignorovať zmeny bieleho miesta"
+msgstr "Zobraziť značky medzier:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:77
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Sets the end of line mode."
+#, kde-format
 msgid "At the end of a line"
-msgstr "Nastaví režim konca riadka."
+msgstr "Na konci riadku"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:82
@@ -1899,10 +1857,9 @@ msgstr "Vždy"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:90
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator size:"
-msgstr "Zvýrazňovanie bieleho miesta"
+msgstr "Veľkosť značky medzery:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:103
@@ -1912,10 +1869,9 @@ msgstr "Veľkosť viditeľného zvýrazňovača."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:131
-#, fuzzy, kde-format
-#| msgid "Show line modification markers"
+#, kde-format
 msgid "Show tab indicators:"
-msgstr "Zobraziť označníky modifikácií riadku"
+msgstr "Zobraziť značky tabulátorov:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1930,14 +1886,13 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Zobraziť rám aktivácie okolo editora"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
-#, fuzzy, kde-format
-#| msgid "Animate bracket matching"
+#, kde-format
 msgid "Bracket matching:"
-msgstr "Animovať zhodu zátvoriek"
+msgstr "Párovanie zátvoriek:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:185
@@ -1945,7 +1900,7 @@ msgstr "Animovať zhodu zátvoriek"
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
-msgstr "Ak je povoelné, vzdialenosť medzi vybranými blkokmi bude vysvietená."
+msgstr "Ak je povolené, vzdialenosť medzi vybranými blokmi bude vysvietená."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:188
@@ -1958,6 +1913,8 @@ msgstr "Vysvietiť vzdialenosť medzi blokmi"
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
+"Zobraziť zodpovedajúcu otvorenú zátvorku a riadky, ktoré s ňou susedia, "
+"kvôli kontextu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:198
@@ -1968,13 +1925,16 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"Ak je toto povolené, zobrazí sa náhľad riadkov v blízkosti zodpovedajúcej "
+"otvorenej zátvorky. To môže pomôcť rýchlo určiť kontext uzatváracej "
+"zátvorky, najmä v dlhých deklaráciách funkcií/tried a hlboko vnorených "
+"blokoch if"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
-#, fuzzy, kde-format
-#| msgid "Show preview of folded code"
+#, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "Zobraziť náhľad zloženého kódu"
+msgstr "Zobraziť náhľad zodpovedajúcej otvorenej zátvorky"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:208
@@ -1995,6 +1955,8 @@ msgstr ""
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
+"Vysvietiť zodpovedajúcu zátvorku, keď sa kurzor presunie na druhú zátvorku v "
+"páre"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -2016,7 +1978,7 @@ msgstr "Ukázať odsadzovacie čiary"
 #: dialogs/textareaappearanceconfigwidget.ui:247
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "Počty:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:254
@@ -2070,10 +2032,9 @@ msgstr "Dynamické zalamovanie slov:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:323
-#, fuzzy, kde-format
-#| msgid "Wrap dynamic at static word wrap marker"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "Zalamovať dynamicky pri značke statického zalamovania"
+msgstr "Dynamicky zalomiť pri statickej značke zalomenia slova"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
@@ -2083,10 +2044,9 @@ msgstr "Nebrať ohľad na hranice slov pre dynamické zalamovanie"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:337
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Značky dynamického zalamovania slov"
+msgstr "Značky d&ynamického zalomenia slov:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:347
@@ -2096,16 +2056,15 @@ msgstr "Vyberte, kde sa majú zobraziť značky dynamického zalamovania."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Indent wrapped lines:"
-msgstr "Nastavenie odsadzovania"
+msgstr "Odsadiť zalomené riadky:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:384
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "Neodsadzovať riadky širšie ako:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
@@ -2139,13 +2098,14 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Táto hodnota sa vynásobí predvolenou výškou riadku písma. Hodnota 1.0 "
+"znamená, že sa použije predvolená výška."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
-#, fuzzy, kde-format
-#| msgid "Line length limit:"
+#, kde-format
 msgid "Line Height Multiplier:"
-msgstr "Obmedzenie dĺžky riadku:"
+msgstr "Násobiteľ výšky riadkov:"
 
 #: document/katebuffer.cpp:141
 #, kde-format
@@ -2396,58 +2356,45 @@ msgstr ""
 "k dispozíci dosť miesta na disku."
 
 #: document/katedocument.cpp:5291
-#, fuzzy, kde-format
-#| msgid ""
-#| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
-#| "'remove-trailing-spaces modified;', see https://docs.kde.org/stable5/en/"
-#| "applications/katepart/config-variables.html#variable-remove-trailing-"
-#| "spaces"
+#, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
 "'remove-trailing-spaces modified;', see https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Používa sa zastaralé modeline 'remove-trailing-space'. Prosím použite "
+"Používa sa zastaraný riadok režimov 'remove-trailing-space'. Prosím, použite "
 "namiesto toho 'remove-trailing-spaces modified;', pozrite https://docs.kde."
-"org/stable5/en/applications/katepart/config-variables.html#variable-remove-"
-"trailing-spaces"
+"org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5297
-#, fuzzy, kde-format
-#| msgid ""
-#| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
-#| "with 'remove-trailing-spaces all;', see https://docs.kde.org/stable5/en/"
-#| "applications/katepart/config-variables.html#variable-remove-trailing-"
-#| "spaces"
+#, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
 "'remove-trailing-spaces all;', see https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Používa sa zastaralé modeline 'replace-trailing-space-save'. Prosím použite "
-"namiesto toto  'remove-trailing-spaces all;', pozrite https://docs.kde.org/"
-"stable5/en/applications/katepart/config-variables.html#variable-remove-"
-"trailing-spaces"
+"Používa sa zastaraný riadok režimov 'replace-trailing-space-save'. Prosím "
+"použite namiesto toto  'remove-trailing-spaces all;', pozrite https://docs."
+"kde.org/?application=katepart&branch=stable5&path=config-variables."
+"html#variable-remove-trailing-spaces"
 
 #: document/katedocument.cpp:5606
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "Súbor '%1' bol zmenený na disku iným programom."
+msgstr "Súbor '%1' bol zmenený na disku."
 
 #: document/katedocument.cpp:5609
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "Súbor '%1' bol vytvorený na disku iným programom."
+msgstr "Súbor '%1' bol vytvorený na disku."
 
 #: document/katedocument.cpp:5612
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "Súbor '%1' bol odstránený z disku iným programom."
+msgstr "Súbor '%1' bol vymazaný na disku."
 
 #: document/katedocument.cpp:5949
 #, kde-format
@@ -2632,7 +2579,7 @@ msgstr "Zobraziť &legendu"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Netlačiť zložený kód"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2840,23 +2787,18 @@ msgid "Co&lor:"
 msgstr "Farba:"
 
 #: printing/printconfigwidgets.cpp:547
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "Vyberte farebnú schému pre tlač."
+msgstr "Vybrať farebnú tému, ktorá sa použije pre tlač."
 
 #: printing/printconfigwidgets.cpp:549
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If enabled, the background color of the editor will be used.</"
-#| "p><p>This may be useful if your color scheme is designed for a dark "
-#| "background.</p>"
+#, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
 "<p>Ak je povolené, bude použitá farba pozadia editora.</p><p>To môže byť "
-"užitočné ak vaša farebná schéma je narhnutá pre tmavé pozadie.</p>"
+"užitočné, ak vaša farebná téma je navrhnutá pre tmavé pozadie.</p>"
 
 #: printing/printconfigwidgets.cpp:552
 #, kde-format
@@ -2921,36 +2863,28 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Zalomiť so značkou"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Presunúť kurzor na zodpovedajúcu značku"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr "Vybrať obsah HTML/XML značku dovnútra"
+msgstr "Vybrať obsah značky HTML/XML dovnútra"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr "Vybrať obsah HTML/XML značku von"
+msgstr "Vybrať obsah značky HTML/XML von"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
@@ -2959,108 +2893,82 @@ msgid "Toggle Comment"
 msgstr "Prepnúť komentár"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Prejsť na ďalší editačný bod"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Prejsť na predošlý editačný bod"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "Vybrať ďalší editačný bod"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Vybrať predošlý editačný bod"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "Vymazať značku pod kurzorom"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Rozdeliť alebo spojiť značku"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Vyhodnotiť jednoduchý matematický výraz"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr "Znížiť číslo o 10"
+msgstr "Znížiť číslo o 1"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Znížiť číslo o 10"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr "Znížiť číslo o 10"
+msgstr "Znížiť číslo o 0.1"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr "Zvýšiť číslo o 10"
+msgstr "Zvýšiť číslo o 1"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Zvýšiť číslo o 10"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr "Zvýšiť číslo o 10"
+msgstr "Zvýšiť číslo o 0.1"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -3168,9 +3076,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "Zvýšiť číslo pod kurzorom o 0,1"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Presunúť kurzor na predošlé zodpovedajúce odsadenie"
@@ -3183,9 +3089,7 @@ msgid "Navigation"
 msgstr "Navigácia"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
@@ -3201,12 +3105,10 @@ msgid "Move cursor to next matching indent"
 msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Zoradiť vybraný text"
+msgstr "Zoradiť vybraný text podľa abecedy"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3221,41 +3123,34 @@ msgid "Editing"
 msgstr "Editovanie"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Odstrániť duplicitné riadky z vybraného textu alebo z celého dokumentu."
+msgstr "Odstrániť duplikáty a abecedne zoradiť vybraný text"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplikovať vybrané riadky hore"
+msgstr "Odstrániť duplicitné riadky"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "&Odstrániť prebytočné medzery:"
+msgstr "Odstránenie koncových medzier"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "&Odstrániť prebytočné medzery:"
+msgstr "Odstránenie úvodných medzier"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "&Odstrániť prebytočné medzery:"
+msgstr "Odstránenie úvodných a koncových medzier"
 
 #: script/data/commands/utils.js:33
 #, kde-format
@@ -3300,11 +3195,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI dekódovať vybraný text"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
+msgstr "Odstránenie prázdnych riadkov"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3382,6 +3276,14 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"Tento príkaz zarovná riadky vo vybranom bloku alebo celom dokumente na "
+"stĺpec zadaný regulárnym výrazom uvedeným ako argument.<br><br>Ak zadáte "
+"prázdny vzor, zarovná sa v predvolenom nastavení na prvý neprázdny znak."
+"<br>Ak má vzor zachytenie, bude odsadený na zachytenú zhodu."
+"<br><br><i>Príklady</i>:<br>'<code>alignon -</code>' vloží medzery pred prvé "
+"'-' jednotlivých riadkov, aby sa všetky zarovnali do rovnakého stĺpca."
+"<br>'<code>alignon :\\s+(.)</code>' vloží medzery pred prvý neprázdny znak, "
+"ktorý sa vyskytne za dvojbodkou, aby sa všetky zarovnali do rovnakého stĺpca."
 
 #: script/data/commands/utils.js:466
 #, kde-format
@@ -3459,6 +3361,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"Vybrať text smerom dopredu od aktuálnej pozície kurzora po prvý výskyt "
+"daného argumentu za ním (alebo koniec aktuálneho riadku v predvolenom "
+"nastavení)."
 
 #: script/data/commands/utils.js:482
 #, kde-format
@@ -3467,6 +3372,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"Vybrať text smerom dozadu od aktuálnej pozície kurzora po posledný výskyt "
+"daného argumentu pred ním (alebo začiatok aktuálneho riadku v predvolenom "
+"nastavení)."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3677,10 +3585,10 @@ msgid "End of line"
 msgstr "Koniec riadku"
 
 #: search/katesearchbar.cpp:1162
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "Akýkoľvek samostatný znak (mimo ukončenia riadku)"
+msgstr ""
+"Zodpovedať ľubovoľnému znaku okrem nového riadku ( v predvolenom nastavení)"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
@@ -3803,10 +3711,9 @@ msgid "Group, non-capturing"
 msgstr "Skupina, nezachytávať"
 
 #: search/katesearchbar.cpp:1220
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "Negatívny prenos"
+msgstr "Pozitívne dopredné hľadanie"
 
 #: search/katesearchbar.cpp:1221
 #, kde-format
@@ -3816,12 +3723,12 @@ msgstr "Negatívny prenos"
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "Pozitívne spätné hľadanie s pevnou dĺžkou"
 
 #: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "Negatívne spätné hľadanie s pevnou dĺžkou"
 
 #: search/katesearchbar.cpp:1231
 #, kde-format
@@ -4231,10 +4138,9 @@ msgid "I&gnore All"
 msgstr "I&gnorovať všetky"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Kontrola pravopisu (od kurzora)..."
+msgstr "Pravopis (od kurzora)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4252,27 +4158,23 @@ msgid "Add to Dictionary"
 msgstr "Pridať do slovníka"
 
 #: spellcheck/spellingmenu.cpp:169
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "Pravopis"
+msgstr "Pravopis '%1'"
 
 #: swapfile/kateswapdiffcreator.cpp:86
-#, fuzzy, kde-format
-#| msgid ""
-#| "The diff command could not be started. Please make sure that diff(1) is "
-#| "installed and in your PATH."
+#, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"Príkaz diff zlyhal. Prosím presvedčte sa, že diff(1) je nainštalovaný a je v "
-"PATH."
+"Príkaz diff sa nepodarilo nájsť. Prosím, presvedčte sa, že diff(1) je "
+"nainštalovaný a je v PATH."
 
 #: swapfile/kateswapdiffcreator.cpp:96
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr ""
+msgstr "Príkaz diff '%1' sa nepodarilo spustiť."
 
 #: swapfile/kateswapfile.cpp:631
 #, kde-format
@@ -4905,13 +4807,7 @@ msgid "Not Editable Placeholder"
 msgstr "Needitovateľný zástupný znak"
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -4919,9 +4815,9 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Tento zoznam zobrazí štandardné štýly pre aktuálnu schému a ponúkne ich "
-"editáciu. Meno štýlu odráža nastavenia aktuálneho štýlu. </p><p>Pre "
-"editovanie farieb, kliknite farebné štvorčeky alebo svolte editovanie farby "
+"<p>Tento zoznam zobrazí štandardné štýly pre aktuálnu farebnú tému a ponúkne "
+"ich úpravu. Názov štýlu odráža nastavenia aktuálneho štýlu. </p><p>Pre "
+"editovanie farieb, kliknite farebné štvorčeky alebo vyberte editovanie farby "
 "z menu. </p><p>Môžte nastaviť farby pozadia a zvoleného pozadia v príslušnom "
 "menu.</p>"
 
@@ -4986,14 +4882,12 @@ msgstr "Štandardná téma"
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Theme Editor"
-msgstr ""
+msgstr "Editor tém"
 
 #: syntax/katethemeconfig.cpp:1039
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Select theme:"
-msgstr "Vybrať tému"
+msgstr "Vybrať tému:"
 
 #: syntax/katethemeconfig.cpp:1108
 #, kde-format
@@ -5019,6 +4913,7 @@ msgstr "Importovať..."
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
+"Priložená téma len na čítanie. Ak chcete tému upraviť, prosím, skopírujte ju."
 
 #: syntax/katethemeconfig.cpp:1147
 #, kde-format
@@ -5056,6 +4951,7 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"Importom sa prepíše existujúci súbor témy \"%1\". To sa už nedá vrátiť späť."
 
 #: syntax/katethemeconfig.cpp:1206
 #, kde-format
@@ -5063,15 +4959,14 @@ msgid "Import Nevertheless"
 msgstr "Napriek tomu importovať"
 
 #: syntax/katethemeconfig.cpp:1288
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Schémy farieb a písiem"
+msgstr "Dodržiavať farebnú schému systému"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "Naozaj chcete vymazať tému \"%1\"? To sa už nedá vrátiť späť."
 
 #: syntax/katethemeconfig.cpp:1356
 #, kde-format
@@ -5086,17 +4981,14 @@ msgstr "Kopírovať tému"
 #: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "Názov pre kópiu farebnej témy \"%1\":"
 
 #: syntax/katethemeconfig.cpp:1411
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
-#| "name.</p>"
+#, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
-msgstr "<p>Schéma %1 už existuje.</p><p>Prosím vyberte iný názov schémy.</p>"
+msgstr "<p>Téma %1 už existuje.</p><p>Prosím vyberte iný názov témy.</p>"
 
 #: syntax/katethemeconfig.cpp:1412
 #, kde-format
@@ -6090,11 +5982,9 @@ msgid "Number of rows of the current document."
 msgstr "Počet riadkov aktuálneho dokumentu."
 
 #: utils/katevariableexpansionmanager.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "Komentovať premennú"
+msgstr "Čítať premennú dokumentu."
 
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
@@ -6482,10 +6372,9 @@ msgid "Encoding"
 msgstr "Kódovanie"
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "Koniec riadku"
+msgstr "Typ konca riadku"
 
 #: view/katestatusbar.cpp:207
 #, kde-format
@@ -6509,7 +6398,7 @@ msgstr "Zvýrazňovanie syntaxe"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "Kompaktný režim riadok/stĺpec"
 
 #: view/katestatusbar.cpp:307
 #, kde-format
@@ -6519,12 +6408,12 @@ msgstr "[BLOCK] %1"
 #: view/katestatusbar.cpp:323
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:325
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:329
 #, kde-format
@@ -6588,14 +6477,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Slová %1/%2, Znaky %3/%4"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Slová %1/%2, Znaky %3/%4"
+msgstr "Slová %1, Znaky %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
@@ -6620,10 +6505,9 @@ msgstr ""
 "Použite tento príkaz pre kopírovanie vybraného textu do systémovej schránky."
 
 #: view/kateview.cpp:464
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "História schránky"
+msgstr "Vloženie &histórie schránky"
 
 #: view/kateview.cpp:469
 #, kde-format
@@ -6636,8 +6520,7 @@ msgid "Paste previously mouse selection contents"
 msgstr "Vložiť predtým vybratý obsah schránky"
 
 #: view/kateview.cpp:475
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Vymeniť za obsah schránky"
 
@@ -6647,10 +6530,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Vymeniť vybraný text s obsahom schránky"
 
 #: view/kateview.cpp:479
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Vložiť výber"
+msgstr "Urobiť snímku obrazovky výberu"
 
 #: view/kateview.cpp:483
 #, kde-format
@@ -6706,28 +6588,23 @@ msgstr ""
 "budú nahradené medzerami, v dialógu nastavení."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "&Odsadenie"
+msgstr "&Formátovať odsadenie"
 
 #: view/kateview.cpp:513
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"Toto použite pre zarovnanie aktuálneho riadku alebo bloku textu na správnu "
-"úroveň odsadenia."
+"Toto použite na automatické odsadenie aktuálneho riadku alebo bloku textu na "
+"správnu úroveň odsadenia."
 
 #: view/kateview.cpp:517
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Zarovnanie"
+msgstr "Z&arovnať na..."
 
 #: view/kateview.cpp:519
 #, kde-format
@@ -6742,6 +6619,14 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Tento príkaz zarovná riadky vo vybranom bloku alebo celom dokumente na "
+"stĺpec zadaný regulárnym výrazom, ktorý vám bude ponúknutý.<br /><br />Ak "
+"zadáte prázdny vzor, zarovná sa v predvolenom nastavení na prvý neprázdny "
+"znak.<br />Ak má vzor zachytenie, bude odsadený na zachytenú zhodu.<br /"
+"><br /><i>Príklady</i>:<br />S '-' sa vložia medzery pred prvé '-' "
+"jednotlivých riadkov, aby sa všetky zarovnali do rovnakého stĺpca.<br />S ':"
+"\\s+(.)' sa vložia medzery pred prvý neprázdny znak, ktorý sa vyskytne za "
+"dvojbodkou, aby sa všetky zarovnali do rovnakého stĺpca."
 
 #: view/kateview.cpp:530
 #, kde-format
@@ -6760,16 +6645,14 @@ msgstr ""
 "jazykov."
 
 #: view/kateview.cpp:538
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Prejsť na predošlý editačný riadok"
+msgstr "Prejsť na predošlé miesto úprav"
 
 #: view/kateview.cpp:544
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Prejsť na ďalší editačný riadok"
+msgstr "Prejsť na ďalšie miesto úprav"
 
 #: view/kateview.cpp:550
 #, kde-format
@@ -6805,13 +6688,12 @@ msgstr "Zamknúť/Odomknúť dokument pre zápis"
 #: view/kateview.cpp:568
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "Vynútiť smer sprava doľava"
 
 #: view/kateview.cpp:569
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Dekorácie textu"
+msgstr "Vynútiť smer textu sprava doľava"
 
 #: view/kateview.cpp:579
 #, kde-format
@@ -6871,14 +6753,13 @@ msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
 "this action."
 msgstr ""
-"Manuálne odovlanie príkazu, zvyčajne sa na túto funkciu používa klávesová "
-"skratka."
+"Ručné vyvolanie dokončenia príkazu, zvyčajne sa na túto funkciu používa "
+"klávesová skratka."
 
 #: view/kateview.cpp:616
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "&Odstrániť prebytočné medzery:"
+msgstr "Odstrániť koncové medzery"
 
 #: view/kateview.cpp:634
 #, kde-format
@@ -6930,10 +6811,9 @@ msgstr ""
 "kurzor."
 
 #: view/kateview.cpp:664
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Presunúť na predošlý zmenený riadok"
+msgstr "Prejsť na predošlý zmenený riadok"
 
 #: view/kateview.cpp:665
 #, kde-format
@@ -6941,10 +6821,9 @@ msgid "Move upwards to the previous modified line."
 msgstr "Presunúť hore na predošlý zmenený riadok."
 
 #: view/kateview.cpp:670
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Presunúť na ďalší zmenený riadok"
+msgstr "Prejsť na ďalší zmenený riadok"
 
 #: view/kateview.cpp:671
 #, kde-format
@@ -6977,10 +6856,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "Tu si môžete vybrať ako bude aktuálny dokument zvýrazňovaný."
 
 #: view/kateview.cpp:691
-#, fuzzy, kde-format
-#| msgid "&Color Theme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "Farebná téma"
+msgstr "Farebná téma &editora"
 
 #: view/kateview.cpp:697
 #, kde-format
@@ -7045,8 +6923,7 @@ msgstr ""
 "blokového výberu."
 
 #: view/kateview.cpp:742
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Prepnúť na ďalší režim vstupu"
 
@@ -7247,7 +7124,7 @@ msgstr "&Koniec riadku"
 #: view/kateview.cpp:852
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
-msgstr "Zvoľte ktoré ukončovanie riadkov sa má použiť pri ukladaní dokumentu"
+msgstr "Zvoľte, ktoré ukončovanie riadkov sa má použiť pri ukladaní dokumentu"
 
 #: view/kateview.cpp:853
 #, kde-format
@@ -7314,34 +7191,32 @@ msgstr "Nájsť predchádzajúci výskyt hľadanej frázy."
 #: view/kateview.cpp:887
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Nájsť a vybrať ďalší výskyt"
 
 #: view/kateview.cpp:889
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "Nájsť ďaľšie výskyty v označenom texte."
+msgstr "Vyhľadá ďalší výskyt slova pod kurzorom a pridá ho do výberu."
 
 #: view/kateview.cpp:893
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Označiť aktuálne vybraný výskyt ako preskočený"
 
 #: view/kateview.cpp:895
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Označí aktuálne vybrané slovo ako preskočené."
 
 #: view/kateview.cpp:899
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "Nájsť a vybrať všetky výskyty"
 
 #: view/kateview.cpp:901
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
-msgstr "Nájsť ďaľšie výskyty v označenom texte."
+msgstr "Vyhľadá všetky výskyty slova pod kurzorom a vyberie ich."
 
 #: view/kateview.cpp:905
 #, kde-format
@@ -7365,56 +7240,54 @@ msgstr ""
 #: view/kateview.cpp:916
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "Pridať kurzory na konce riadkov"
 
 #: view/kateview.cpp:918
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr ""
+msgstr "Vytvorí kurzor na konci každého riadku vo výbere."
 
 #: view/kateview.cpp:922
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Pridať vsuvku pod kurzor"
 
 #: view/kateview.cpp:924
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Vybrať celý text aktuálneho dokumentu."
+msgstr "Pridá vsuvku do riadku pod aktuálnu vsuvku."
 
 #: view/kateview.cpp:928
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Pridať vsuvku nad kurzor"
 
 #: view/kateview.cpp:930
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "Pridá vsuvku do riadku nad aktuálnu vsuvku."
 
 #: view/kateview.cpp:934
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "Presun textového kurzora"
+msgstr "Prepnúť presun kurzora veľkými písmenami"
 
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
+"Prepnúť medzi normálnym presunom slovami a presunom kurzora veľkými "
+"písmenami."
 
 #: view/kateview.cpp:939
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
+msgstr "Odstrániť kurzory z prázdnych riadkov"
 
 #: view/kateview.cpp:940
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Presunúť kurzor na ďalšie zodpovedajúce odsadenie"
+msgstr "Odstrániť kurzory z prázdnych riadkov"
 
 #: view/kateview.cpp:944
 #, kde-format
@@ -7628,10 +7501,9 @@ msgid "Select to Bottom of View"
 msgstr "Presun na dolný pohľad"
 
 #: view/kateview.cpp:1189
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Presun na zodpovedajúcu zátvorku"
+msgstr "Prejsť na zodpovedajúcu zátvorku"
 
 #: view/kateview.cpp:1195
 #, kde-format
@@ -7641,13 +7513,12 @@ msgstr "Výber po zodpovedajúcu zátvorku"
 #: view/kateview.cpp:1203
 #, kde-format
 msgid "Transpose Characters"
-msgstr "Prevod znakov"
+msgstr "Transponovať znaky"
 
 #: view/kateview.cpp:1208
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "Prevod znakov"
+msgstr "Transponovať slová"
 
 #: view/kateview.cpp:1213
 #, kde-format
@@ -7675,15 +7546,14 @@ msgid "Backspace"
 msgstr "Backspace"
 
 #: view/kateview.cpp:1245
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Vložiť kartu"
+msgstr "Vložiť znak tabulátora"
 
 #: view/kateview.cpp:1250
 #, kde-format
 msgid "Insert Smart Newline"
-msgstr "Odsadiť &aktuálny riadok"
+msgstr "Vložiť inteligentný nový riadok"
 
 #: view/kateview.cpp:1251
 #, kde-format
@@ -7695,8 +7565,7 @@ msgstr ""
 "číslami alebo písmenami."
 
 #: view/kateview.cpp:1259
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "Vložiť nový riadok bez odsadenia"
 
@@ -7709,24 +7578,24 @@ msgstr "Vložte nový riadok bez odsadenia bez ohľadu na nastavenie odsadenia."
 #: view/kateview.cpp:1268
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "Vložiť nový riadok nad aktuálny riadok"
 
 #: view/kateview.cpp:1269
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
-msgstr ""
+msgstr "Vložiť nový riadok nad aktuálny riadok bez zmeny aktuálneho riadku."
 
 #: view/kateview.cpp:1277
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "Vložiť nový riadok nad pod riadok"
 
 #: view/kateview.cpp:1278
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
-msgstr ""
+msgstr "Vložiť nový riadok pod aktuálny riadok bez zmeny aktuálneho riadku."
 
 #: view/kateview.cpp:1287
 #, kde-format
@@ -7782,12 +7651,12 @@ msgstr "(R/O) %1"
 #: view/kateview.cpp:1682
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "Presun kurzora veľkými písmenami zakázaný"
 
 #: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "Presun kurzora veľkými písmenami povolený"
 
 #: view/kateview.cpp:2176
 #, kde-format
@@ -7795,15 +7664,14 @@ msgid "Search wrapped"
 msgstr "Hľadanie pokračuje od začiatku"
 
 #: view/kateview.cpp:3697
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Zarovnanie"
+msgstr "Zarovnať na"
 
 #: view/kateview.cpp:3697
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Vzor zarovnania:"
 
 #: view/kateview.cpp:4791
 #, kde-format
@@ -7890,63 +7758,54 @@ msgid "Disable Annotation Bar"
 msgstr "Zakázať panel anotácie"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Otvoriť/Uložiť"
+msgstr "Uložiť"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "Kopírovať..."
+msgstr "Kopírovať"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "Farba &pozadia..."
+msgstr "Farba pozadia..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Dekorácie textu"
+msgstr "Zobraziť dodatočné dekorácie"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Ukázať odsadzovacie čiary"
+msgstr "Zobraziť dekorácie okien"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Snímka obrazovky..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "Zobraziť čí&sla riadkov"
+msgstr "Nezobraziť čísla riadkov"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Zobraziť čí&sla riadkov"
+msgstr "Zobraziť čísla riadkov od 1"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "Zobraziť čí&sla riadkov"
+msgstr "Zobraziť skutočné čísla riadkov"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "Uložiť &ako..."
+msgstr "Uložiť..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8070,12 +7929,7 @@ msgstr ""
 "dokument.<br /></p>"
 
 #: vimode/appcommands.cpp:270
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
-#| "<tt><b>e[dit]</b></tt></p><p>Starts <b>e</b>diting the current document "
-#| "again. This is useful to re-edit the current file, when it has been "
-#| "changed by another program.</p>"
+#, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
@@ -8084,7 +7938,7 @@ msgstr ""
 "<p><b>e[dit] &mdash; znova načítať dokument</b></p><p>Použitie: "
 "<tt><b>e[dit]</b></tt></p><p>Spustí <b>e</b>ditovanie aktuálneho dokumentu "
 "znova. Toto je užitočné pri novom editovaní aktuálneho súboru, ak bol "
-"zmenený iným programom.</p>"
+"zmenený na disku.</p>"
 
 #: vimode/appcommands.cpp:512
 #, kde-format
