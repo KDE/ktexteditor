@@ -38,8 +38,8 @@
 
 // END
 
-/// Amount of characters the document may have to enable automatic invocation (1MB)
-static const int autoInvocationMaxFilesize = 1000000;
+/// amount of lines to scan backwards and forwards
+static const int maxLinesToScan = 10000;
 
 // BEGIN KateWordCompletionModel
 KateWordCompletionModel::KateWordCompletionModel(QObject *parent)
@@ -144,11 +144,6 @@ bool KateWordCompletionModel::shouldStartCompletion(KTextEditor::View *view,
 
     KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *>(view);
 
-    if (view->document()->totalCharacters() > autoInvocationMaxFilesize) {
-        // Disable automatic invocation for files larger than 1MB (see benchmarks)
-        return false;
-    }
-
     const QString &text = view->document()->line(position.line()).left(position.column());
     const uint check = v->config()->wordCompletionMinimalWordLength();
     // Start completion immediately if min. word size is zero
@@ -199,9 +194,10 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     QSet<QString> result;
     const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
     const auto cursorPosition = view->cursorPosition();
-    const int lines = view->document()->lines();
     const auto document = view->document();
-    for (int line = 0; line < lines; line++) {
+    const int startLine = std::max(0, cursorPosition.line() - maxLinesToScan);
+    const int endLine = std::min(cursorPosition.line() + maxLinesToScan, view->document()->lines());
+    for (int line = startLine; line < endLine; line++) {
         const QString &text = document->line(line);
         int wordBegin = 0;
         int offset = 0;
