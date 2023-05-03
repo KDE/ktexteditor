@@ -5006,7 +5006,7 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
-"La importació sobreescriurà el fitxer existent de tema «%1». Açò no es pot "
+"La importació sobreescriurà el fitxer existent de tema «%1». Açò no es podrà "
 "desfer."
 
 #: syntax/katethemeconfig.cpp:1206
@@ -5022,7 +5022,7 @@ msgstr "Seguix l'esquema de color del sistema"
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr "Segur que voleu suprimir el tema «%1»? Açò no es pot desfer."
+msgstr "Segur que voleu suprimir el tema «%1»? Açò no es podrà desfer."
 
 #: syntax/katethemeconfig.cpp:1356
 #, kde-format
