@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 02:19+0000\n"
+"POT-Creation-Date: 2023-05-03 02:19+0000\n"
 "PO-Revision-Date: 2022-10-02 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -38,22 +38,22 @@ msgstr "Bästa matchningar"
 msgid "Language keywords"
 msgstr "Språknyckelord"
 
-#: completion/katewordcompletion.cpp:73
+#: completion/katewordcompletion.cpp:75
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Automatisk ordkomplettering"
 
-#: completion/katewordcompletion.cpp:276
+#: completion/katewordcompletion.cpp:294
 #, kde-format
 msgid "Shell Completion"
 msgstr "Skalkomplettering"
 
-#: completion/katewordcompletion.cpp:282
+#: completion/katewordcompletion.cpp:300
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Återanvänd ord ovanför"
 
-#: completion/katewordcompletion.cpp:288
+#: completion/katewordcompletion.cpp:306
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Återanvänd ord nedanför"

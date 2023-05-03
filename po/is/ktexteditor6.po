@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 02:19+0000\n"
+"POT-Creation-Date: 2023-05-03 02:19+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -40,22 +40,22 @@ msgstr "Bestu samsvaranir"
 msgid "Language keywords"
 msgstr ""
 
-#: completion/katewordcompletion.cpp:73
+#: completion/katewordcompletion.cpp:75
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Sjálfvirk orðaklárun"
 
-#: completion/katewordcompletion.cpp:276
+#: completion/katewordcompletion.cpp:294
 #, kde-format
 msgid "Shell Completion"
 msgstr "Skeljarklárun"
 
-#: completion/katewordcompletion.cpp:282
+#: completion/katewordcompletion.cpp:300
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Endurnota orðið á undan"
 
-#: completion/katewordcompletion.cpp:288
+#: completion/katewordcompletion.cpp:306
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Endurnota orðið á eftir"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 02:19+0000\n"
+"POT-Creation-Date: 2023-05-03 02:19+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -44,22 +44,22 @@ msgstr "Beste treff"
 msgid "Language keywords"
 msgstr "Språk nøkkelord"
 
-#: completion/katewordcompletion.cpp:73
+#: completion/katewordcompletion.cpp:75
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Autofullføring av ord"
 
-#: completion/katewordcompletion.cpp:276
+#: completion/katewordcompletion.cpp:294
 #, kde-format
 msgid "Shell Completion"
 msgstr "Skallfullføring"
 
-#: completion/katewordcompletion.cpp:282
+#: completion/katewordcompletion.cpp:300
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Bruk ordet over om igjen"
 
-#: completion/katewordcompletion.cpp:288
+#: completion/katewordcompletion.cpp:306
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Bruk ordet nedenfor om igjen"

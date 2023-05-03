@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 02:19+0000\n"
+"POT-Creation-Date: 2023-05-03 02:19+0000\n"
 "PO-Revision-Date: 2023-04-07 21:59+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -38,22 +38,22 @@ msgstr "Найкращі відповідники"
 msgid "Language keywords"
 msgstr "Ключові слова мови"
 
-#: completion/katewordcompletion.cpp:73
+#: completion/katewordcompletion.cpp:75
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Автозавершення слів"
 
-#: completion/katewordcompletion.cpp:276
+#: completion/katewordcompletion.cpp:294
 #, kde-format
 msgid "Shell Completion"
 msgstr "Завершення, як в оболонці"
 
-#: completion/katewordcompletion.cpp:282
+#: completion/katewordcompletion.cpp:300
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Повторно використати слово вище"
 
-#: completion/katewordcompletion.cpp:288
+#: completion/katewordcompletion.cpp:306
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Повторно використати слово нижче"
