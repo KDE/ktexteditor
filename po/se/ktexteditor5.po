@@ -1,11 +1,11 @@
-# Translation of ktexteditor5 to Northern Sami
+# Translation of ktexteditor6 to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:43+0000\n"
+"POT-Creation-Date: 2023-04-29 00:45+0000\n"
 "PO-Revision-Date: 2010-08-28 22:06+0200\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -2043,12 +2043,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6548
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6549
 #, kde-format
 msgid "&Close"
 msgstr "&Gidde"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6550
 #, kde-format
 msgid "Close message"
 msgstr ""
@@ -2201,8 +2201,8 @@ msgid "Untitled"
 msgstr "Namaheapmi"
 
 #: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5761
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5019 document/katedocument.cpp:5762
+#: document/katedocument.cpp:5953
 #, kde-format
 msgid "Save File"
 msgstr "Vurke fiilla"
@@ -2229,7 +2229,7 @@ msgstr ""
 "\n"
 "Dárkkis ahte dus leat čállinvuoigatvuođat ja ahte fiila čáhká garraskerrui."
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2238,7 +2238,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5299
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2247,22 +2247,22 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5611
+#: document/katedocument.cpp:5612
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5614
+#: document/katedocument.cpp:5615
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5937
+#: document/katedocument.cpp:5938
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2271,17 +2271,17 @@ msgstr ""
 "Dokumeanta «%1» lea rievdaduvvon.\n"
 "Háliidatgo vurket rievdadusaid vai bálkestit daid?"
 
-#: document/katedocument.cpp:5940
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid "Close Document"
 msgstr "Gidde dokumeantta"
 
-#: document/katedocument.cpp:6051
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6056
+#: document/katedocument.cpp:6057
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -2440,14 +2440,19 @@ msgstr "Čálit &linnjánummiriid"
 msgid "Print &legend"
 msgstr "Čálit &typográfalaš dieđuid"
 
-#: printing/printconfigwidgets.cpp:51
+#: printing/printconfigwidgets.cpp:46
+#, kde-format
+msgid "Don't print folded code"
+msgstr ""
+
+#: printing/printconfigwidgets.cpp:54
 #, kde-format
 msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr "<p>Jos alde, linnjánummirat čálihuvvot siiddu gurutbealde.</p>"
 
-#: printing/printconfigwidgets.cpp:53
+#: printing/printconfigwidgets.cpp:56
 #, kde-format
 msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
@@ -2456,72 +2461,72 @@ msgstr ""
 "<p>Čálit bovssa mii čájeha dokumeantašlája typográfalaš njuolggadusaid, nugo "
 "lea meroštuvvon dálá syntáksamerkemis.</p>"
 
-#: printing/printconfigwidgets.cpp:105
+#: printing/printconfigwidgets.cpp:116
 #, kde-format
 msgid "Hea&der && Footer"
 msgstr "Oaive- &ja juolgeteaksta"
 
-#: printing/printconfigwidgets.cpp:112
+#: printing/printconfigwidgets.cpp:123
 #, kde-format
 msgid "Pr&int header"
 msgstr "Čál&it oaiveteavstta"
 
-#: printing/printconfigwidgets.cpp:114
+#: printing/printconfigwidgets.cpp:125
 #, kde-format
 msgid "Pri&nt footer"
 msgstr "Čá&lit juolgeteavstta"
 
-#: printing/printconfigwidgets.cpp:120
+#: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
 msgstr "Oaive-/juolgeteavstta fonta:"
 
-#: printing/printconfigwidgets.cpp:126
+#: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
 msgstr "Oaiveteavstta iešvuođat"
 
-#: printing/printconfigwidgets.cpp:130
+#: printing/printconfigwidgets.cpp:141
 #, kde-format
 msgid "&Format:"
 msgstr "&Formáhtta:"
 
-#: printing/printconfigwidgets.cpp:152 printing/printconfigwidgets.cpp:198
+#: printing/printconfigwidgets.cpp:163 printing/printconfigwidgets.cpp:209
 #, kde-format
 msgid "Colors:"
 msgstr "Ivnnit:"
 
-#: printing/printconfigwidgets.cpp:159 printing/printconfigwidgets.cpp:205
+#: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
 msgstr "Ovdabealivdni:"
 
-#: printing/printconfigwidgets.cpp:164
+#: printing/printconfigwidgets.cpp:175
 #, kde-format
 msgid "Bac&kground"
 msgstr "D&uogášivdni"
 
-#: printing/printconfigwidgets.cpp:170
+#: printing/printconfigwidgets.cpp:181
 #, kde-format
 msgid "Footer Properties"
 msgstr "Juolgeteavstta iešvuođat"
 
-#: printing/printconfigwidgets.cpp:175
+#: printing/printconfigwidgets.cpp:186
 #, kde-format
 msgid "For&mat:"
 msgstr "Fo&rmáhtta:"
 
-#: printing/printconfigwidgets.cpp:210
+#: printing/printconfigwidgets.cpp:221
 #, kde-format
 msgid "&Background"
 msgstr "D&uogášivdni"
 
-#: printing/printconfigwidgets.cpp:239
+#: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
 msgstr "<p>Siidooaivvi hápmi. Čuovvovaš sárggit dorjojuvvojit:</p>"
 
-#: printing/printconfigwidgets.cpp:241
+#: printing/printconfigwidgets.cpp:252
 #, kde-format
 msgid ""
 "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
@@ -2532,124 +2537,124 @@ msgid ""
 "page number</li><li><tt>%P</tt>: total amount of pages</li></ul><br />"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:255
+#: printing/printconfigwidgets.cpp:266
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr "<p>Siidojuolggi hápmi. Čuovvovaš šárggit dorjojuvvojit:</p>"
 
-#: printing/printconfigwidgets.cpp:341
+#: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:343
+#: printing/printconfigwidgets.cpp:354
 #, kde-format
 msgid "Current User Name"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:345
+#: printing/printconfigwidgets.cpp:356
 #, kde-format
 msgid "Complete Date/Time (short format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:347
+#: printing/printconfigwidgets.cpp:358
 #, kde-format
 msgid "Complete Date/Time (long format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:349
+#: printing/printconfigwidgets.cpp:360
 #, kde-format
 msgid "Current Time"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:351
+#: printing/printconfigwidgets.cpp:362
 #, kde-format
 msgid "Current Date (short format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:353
+#: printing/printconfigwidgets.cpp:364
 #, kde-format
 msgid "Current Date (long format)"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:355
+#: printing/printconfigwidgets.cpp:366
 #, kde-format
 msgid "File Name"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:357
+#: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:359
+#: printing/printconfigwidgets.cpp:370
 #, kde-format
 msgid "Page Number"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:361
+#: printing/printconfigwidgets.cpp:372
 #, kde-format
 msgid "Total Amount of Pages"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:467
+#: printing/printconfigwidgets.cpp:478
 #, kde-format
 msgid "L&ayout"
 msgstr "S&iidoheivehus"
 
-#: printing/printconfigwidgets.cpp:473
+#: printing/printconfigwidgets.cpp:484
 #, kde-format
 msgid "&Color theme:"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:483
+#: printing/printconfigwidgets.cpp:494
 #, kde-format
 msgid "Font:"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:487
+#: printing/printconfigwidgets.cpp:498
 #, kde-format
 msgid "Draw bac&kground color"
 msgstr "Čálit &duogášivnni"
 
-#: printing/printconfigwidgets.cpp:490
+#: printing/printconfigwidgets.cpp:501
 #, kde-format
 msgid "Draw &boxes"
 msgstr "Sárggo &bovssaid"
 
-#: printing/printconfigwidgets.cpp:494
+#: printing/printconfigwidgets.cpp:505
 #, kde-format
 msgid "Box Properties"
 msgstr "Boksaiešvuođat"
 
-#: printing/printconfigwidgets.cpp:498
+#: printing/printconfigwidgets.cpp:509
 #, kde-format
 msgid "W&idth:"
 msgstr "G&ovdodat"
 
-#: printing/printconfigwidgets.cpp:506
+#: printing/printconfigwidgets.cpp:517
 #, kde-format
 msgid "&Margin:"
 msgstr "&Siidoravda"
 
-#: printing/printconfigwidgets.cpp:514
+#: printing/printconfigwidgets.cpp:525
 #, kde-format
 msgid "Co&lor:"
 msgstr "Iv&dni"
 
-#: printing/printconfigwidgets.cpp:536
+#: printing/printconfigwidgets.cpp:547
 #, kde-format
 msgid "Select the color theme to use for the print."
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:538
+#: printing/printconfigwidgets.cpp:549
 #, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
 
-#: printing/printconfigwidgets.cpp:541
+#: printing/printconfigwidgets.cpp:552
 #, kde-format
 msgid ""
 "<p>If enabled, a box as defined in the properties below will be drawn around "
@@ -2659,32 +2664,32 @@ msgstr ""
 "<p> Vállje jos rámma galgá čálihuvvot juohke siiddu sisdoalu birra. Oaive- "
 "ja juolgeteaksta earáhuvvo sisdoalus linnjáin.</p>"
 
-#: printing/printconfigwidgets.cpp:544
+#: printing/printconfigwidgets.cpp:555
 #, kde-format
 msgid "The width of the box outline"
 msgstr "Bovssarámma govdodat"
 
-#: printing/printconfigwidgets.cpp:545
+#: printing/printconfigwidgets.cpp:556
 #, kde-format
 msgid "The margin inside boxes, in pixels"
 msgstr "Siidoravda bovssaid siskkobealde, mihtiduvvon govvačuoggáin"
 
-#: printing/printconfigwidgets.cpp:546
+#: printing/printconfigwidgets.cpp:557
 #, kde-format
 msgid "The line color to use for boxes"
 msgstr "Rámmalinnjáid ivdni"
 
-#: printing/printpainter.cpp:266
+#: printing/printpainter.cpp:269
 #, kde-format
 msgid "(Selection of) "
 msgstr "(Merkejuvvon)"
 
-#: printing/printpainter.cpp:519
+#: printing/printpainter.cpp:522
 #, kde-format
 msgid "Typographical Conventions for %1"
 msgstr "Typográfalaš vugiid %1 várás"
 
-#: printing/printpainter.cpp:552
+#: printing/printpainter.cpp:555
 #, kde-format
 msgid "text"
 msgstr "teaksta"
@@ -3264,12 +3269,12 @@ msgstr "Meattáhus gohčodettiin  «veahkki %1»"
 msgid "No help specified for command '%1' in script %2"
 msgstr "Ii gávdno veahkki «%1»-gohččuma várás %2-skriptas"
 
-#: script/katescript.cpp:209
+#: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1\n"
 msgstr "Meattáhus vieččadettiin skripta %1\n"
 
-#: script/katescript.cpp:210
+#: script/katescript.cpp:215
 #, kde-format
 msgid "Error loading script %1"
 msgstr "Meattáhus vieččadettiin skripta %1"
