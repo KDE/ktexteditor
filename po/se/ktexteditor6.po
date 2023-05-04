@@ -1,11 +1,11 @@
-# Translation of ktexteditor5 to Northern Sami
+# Translation of ktexteditor6 to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-03 02:19+0000\n"
+"POT-Creation-Date: 2023-05-04 02:20+0000\n"
 "PO-Revision-Date: 2010-08-28 22:06+0200\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -39,17 +39,17 @@ msgstr ""
 msgid "Auto Word Completion"
 msgstr "Automáhtalaš sátneollašuhttin"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:290
 #, kde-format
 msgid "Shell Completion"
 msgstr "Skálžoollašuhttin"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:296
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Geavat sáni bajábealde ođđasit"
 
-#: completion/katewordcompletion.cpp:306
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Geavat sáni vuolábealde ođđasit"

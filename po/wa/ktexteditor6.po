@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-03 02:19+0000\n"
+"POT-Creation-Date: 2023-05-04 02:20+0000\n"
 "PO-Revision-Date: 2011-07-06 18:12+0200\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux@walon.org>\n"
@@ -41,17 +41,17 @@ msgstr ""
 msgid "Auto Word Completion"
 msgstr "Oto-completaedje des mots"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:290
 #, kde-format
 msgid "Shell Completion"
 msgstr "Completaedje do shell"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:296
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Reployî l' mot pa dzeu"
 
-#: completion/katewordcompletion.cpp:306
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Reployî l' mot pa dzo"

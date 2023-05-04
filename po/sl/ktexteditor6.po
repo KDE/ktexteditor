@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-03 02:19+0000\n"
+"POT-Creation-Date: 2023-05-04 02:20+0000\n"
 "PO-Revision-Date: 2023-04-08 07:42+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -49,17 +49,17 @@ msgstr "Ključne besede jezika"
 msgid "Auto Word Completion"
 msgstr "Samodejno dopolnjevanje besed"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:290
 #, kde-format
 msgid "Shell Completion"
 msgstr "Dopolnjevanje v lupini"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:296
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Znova uporabi besedo zgoraj"
 
-#: completion/katewordcompletion.cpp:306
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Znova uporabi besedo spodaj"

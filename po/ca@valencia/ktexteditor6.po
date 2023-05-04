@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-03 02:19+0000\n"
+"POT-Creation-Date: 2023-05-04 02:20+0000\n"
 "PO-Revision-Date: 2023-04-07 08:46+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -45,17 +45,17 @@ msgstr "Paraules clau del llenguatge"
 msgid "Auto Word Completion"
 msgstr "Compleció automàtica de les paraules"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:290
 #, kde-format
 msgid "Shell Completion"
 msgstr "Compleció de codi"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:296
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Reutilitza la paraula de més amunt"
 
-#: completion/katewordcompletion.cpp:306
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Reutilitza la paraula de més avall"
