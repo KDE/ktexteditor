@@ -183,14 +183,6 @@ public:
     void ensureHighlighted(int line, int lookAhead = 64);
 
     /**
-     * Return the total number of lines in the buffer.
-     */
-    inline int count() const
-    {
-        return lines();
-    }
-
-    /**
      * Unwrap given line.
      * @param line line to unwrap
      */

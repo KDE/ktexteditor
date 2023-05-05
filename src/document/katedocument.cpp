@@ -468,7 +468,7 @@ QString KTextEditor::DocumentPrivate::text(KTextEditor::Range range, bool blockw
 
         return textLine->string(range.start().column(), range.end().column() - range.start().column());
     } else {
-        for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->count()); ++i) {
+        for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->lines()); ++i) {
             Kate::TextLine textLine = m_buffer->plainLine(i);
 
             if (!blockwise) {
@@ -583,7 +583,7 @@ QStringList KTextEditor::DocumentPrivate::textLines(KTextEditor::Range range, bo
 
         ret << textLine->string(range.start().column(), range.end().column() - range.start().column());
     } else {
-        for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->count()); ++i) {
+        for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->lines()); ++i) {
             Kate::TextLine textLine = m_buffer->plainLine(i);
 
             if (!blockwise) {
@@ -904,7 +904,7 @@ int KTextEditor::DocumentPrivate::totalCharacters() const
 {
     int l = 0;
 
-    for (int i = 0; i < m_buffer->count(); ++i) {
+    for (int i = 0; i < m_buffer->lines(); ++i) {
         l += m_buffer->lineLength(i);
     }
 
@@ -913,7 +913,7 @@ int KTextEditor::DocumentPrivate::totalCharacters() const
 
 int KTextEditor::DocumentPrivate::lines() const
 {
-    return m_buffer->count();
+    return m_buffer->lines();
 }
 
 int KTextEditor::DocumentPrivate::lineLength(int line) const
@@ -4045,7 +4045,7 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::R
 
 bool KTextEditor::DocumentPrivate::nextNonSpaceCharPos(int &line, int &col)
 {
-    for (; line < (int)m_buffer->count(); line++) {
+    for (; line < (int)m_buffer->lines(); line++) {
         Kate::TextLine textLine = m_buffer->plainLine(line);
 
         if (!textLine) {
