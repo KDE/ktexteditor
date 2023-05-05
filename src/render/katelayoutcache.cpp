@@ -7,7 +7,6 @@
 
 #include "katelayoutcache.h"
 
-#include "katebuffer.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
@@ -99,10 +98,10 @@ KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
     Q_ASSERT(m_renderer);
 
     // connect to all possible editing primitives
-    connect(&m_renderer->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateLayoutCache::wrapLine);
-    connect(&m_renderer->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateLayoutCache::unwrapLine);
-    connect(&m_renderer->doc()->buffer(), &KateBuffer::textInserted, this, &KateLayoutCache::insertText);
-    connect(&m_renderer->doc()->buffer(), &KateBuffer::textRemoved, this, &KateLayoutCache::removeText);
+    connect(m_renderer->doc(), &KTextEditor::Document::lineWrapped, this, &KateLayoutCache::wrapLine);
+    connect(m_renderer->doc(), &KTextEditor::Document::lineUnwrapped, this, &KateLayoutCache::unwrapLine);
+    connect(m_renderer->doc(), &KTextEditor::Document::textInserted, this, &KateLayoutCache::insertText);
+    connect(m_renderer->doc(), &KTextEditor::Document::textRemoved, this, &KateLayoutCache::removeText);
 }
 
 void KateLayoutCache::updateViewCache(const KTextEditor::Cursor startPos, int newViewLineCount, int viewLinesScrolled)
@@ -218,7 +217,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     if (auto l = m_lineLayouts.find(realLine)) {
         // ensure line is OK
         Q_ASSERT(l->line() == realLine);
-        Q_ASSERT(realLine < m_renderer->doc()->buffer().lines());
+        Q_ASSERT(realLine < m_renderer->doc()->lines());
 
         if (virtualLine != -1) {
             l->setVirtualLine(virtualLine);
@@ -436,22 +435,22 @@ void KateLayoutCache::viewCacheDebugOutput() const
     }
 }
 
-void KateLayoutCache::wrapLine(const KTextEditor::Cursor position)
+void KateLayoutCache::wrapLine(KTextEditor::Document *, const KTextEditor::Cursor position)
 {
     m_lineLayouts.slotEditDone(position.line(), position.line() + 1, 1, m_textLayouts);
 }
 
-void KateLayoutCache::unwrapLine(int line)
+void KateLayoutCache::unwrapLine(KTextEditor::Document *, int line)
 {
     m_lineLayouts.slotEditDone(line - 1, line, -1, m_textLayouts);
 }
 
-void KateLayoutCache::insertText(const KTextEditor::Cursor position, const QString &)
+void KateLayoutCache::insertText(KTextEditor::Document *, const KTextEditor::Cursor position, const QString &)
 {
     m_lineLayouts.slotEditDone(position.line(), position.line(), 0, m_textLayouts);
 }
 
-void KateLayoutCache::removeText(KTextEditor::Range range)
+void KateLayoutCache::removeText(KTextEditor::Document *, KTextEditor::Range range, const QString &)
 {
     m_lineLayouts.slotEditDone(range.start().line(), range.start().line(), 0, m_textLayouts);
 }

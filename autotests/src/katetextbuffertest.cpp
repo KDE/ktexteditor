@@ -7,7 +7,8 @@
 */
 
 #include "katetextbuffertest.h"
-#include "katetextbuffer.h"
+#include "katebuffer.h"
+#include "katedocument.h"
 #include "katetextcursor.h"
 #include "katetextfolding.h"
 #include <kateglobal.h>
@@ -27,7 +28,8 @@ KateTextBufferTest::~KateTextBufferTest()
 void KateTextBufferTest::basicBufferTest()
 {
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer &buffer = doc.buffer();
 
     // one line per default
     QVERIFY(buffer.lines() == 1);
@@ -44,7 +46,8 @@ void KateTextBufferTest::basicBufferTest()
 void KateTextBufferTest::wrapLineTest()
 {
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer &buffer = doc.buffer();
 
     // wrap first empty line -> we should have two empty lines
     buffer.startEditing();
@@ -66,7 +69,8 @@ void KateTextBufferTest::wrapLineTest()
 void KateTextBufferTest::insertRemoveTextTest()
 {
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer &buffer = doc.buffer();
 
     // wrap first line
     buffer.startEditing();
@@ -124,7 +128,8 @@ void KateTextBufferTest::cursorTest()
     QString lastBufferContent;
 
     // construct an empty text buffer
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer &buffer = doc.buffer();
 
     // wrap first line
     buffer.startEditing();
@@ -194,7 +199,8 @@ void KateTextBufferTest::cursorTest()
 void KateTextBufferTest::foldingTest()
 {
     // construct an empty text buffer & folding info
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    KateBuffer &buffer = doc.buffer();
     Kate::TextFolding folding(buffer);
 
     // insert some text
@@ -380,13 +386,14 @@ void KateTextBufferTest::foldingTest()
 
     // restore state
     folding.importFoldingRanges(folds);
-    QVERIFY(folding.debugDump() == textDump);
+    QCOMPARE(folding.debugDump(), textDump);
 }
 
 void KateTextBufferTest::nestedFoldingTest()
 {
     // construct an empty text buffer & folding info
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer &buffer = doc.buffer();
     Kate::TextFolding folding(buffer);
 
     // insert two nested folds in 5 lines
@@ -425,7 +432,8 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
 
     QFile::setPermissions(folder_name, QFile::ExeOwner);
 
-    Kate::TextBuffer buffer(nullptr);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer &buffer = doc.buffer();
     buffer.setTextCodec(QStringLiteral("UTF-8"));
     buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
     bool a;
@@ -436,7 +444,6 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     buffer.startEditing();
     buffer.insertText(KTextEditor::Cursor(0, 0), QStringLiteral("ABC"));
     buffer.finishEditing();
-    qDebug() << buffer.text();
     buffer.save(file_path);
 
     f.open(QIODevice::ReadOnly);
@@ -462,7 +469,8 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     QVERIFY(f.flush());
     f.close();
 
-    Kate::TextBuffer buffer(nullptr, true);
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer buffer(&doc, true);
     buffer.setTextCodec(QStringLiteral("UTF-8"));
     buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
     bool a;

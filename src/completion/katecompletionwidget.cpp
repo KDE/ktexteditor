@@ -9,7 +9,6 @@
 
 #include <ktexteditor/codecompletionmodelcontrollerinterface.h>
 
-#include "katebuffer.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "katerenderer.h"
@@ -148,10 +147,10 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     });
 
     // connect to all possible editing primitives
-    connect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
-    connect(&view()->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
-    connect(&view()->doc()->buffer(), &KateBuffer::textInserted, this, &KateCompletionWidget::insertText);
-    connect(&view()->doc()->buffer(), &KateBuffer::textRemoved, this, &KateCompletionWidget::removeText);
+    connect(view()->doc(), &KTextEditor::Document::lineWrapped, this, &KateCompletionWidget::wrapLine);
+    connect(view()->doc(), &KTextEditor::Document::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
+    connect(view()->doc(), &KTextEditor::Document::textInserted, this, &KateCompletionWidget::insertText);
+    connect(view()->doc(), &KTextEditor::Document::textRemoved, this, &KateCompletionWidget::removeText);
 
     // This is a non-focus widget, it is passed keyboard input from the view
 
@@ -1370,15 +1369,15 @@ int KateCompletionWidget::automaticInvocationDelay() const
 void KateCompletionWidget::setIgnoreBufferSignals(bool ignore) const
 {
     if (ignore) {
-        disconnect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
-        disconnect(&view()->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
-        disconnect(&view()->doc()->buffer(), &KateBuffer::textInserted, this, &KateCompletionWidget::insertText);
-        disconnect(&view()->doc()->buffer(), &KateBuffer::textRemoved, this, &KateCompletionWidget::removeText);
+        disconnect(view()->doc(), &KTextEditor::Document::lineWrapped, this, &KateCompletionWidget::wrapLine);
+        disconnect(view()->doc(), &KTextEditor::Document::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
+        disconnect(view()->doc(), &KTextEditor::Document::textInserted, this, &KateCompletionWidget::insertText);
+        disconnect(view()->doc(), &KTextEditor::Document::textRemoved, this, &KateCompletionWidget::removeText);
     } else {
-        connect(&view()->doc()->buffer(), &KateBuffer::lineWrapped, this, &KateCompletionWidget::wrapLine);
-        connect(&view()->doc()->buffer(), &KateBuffer::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
-        connect(&view()->doc()->buffer(), &KateBuffer::textInserted, this, &KateCompletionWidget::insertText);
-        connect(&view()->doc()->buffer(), &KateBuffer::textRemoved, this, &KateCompletionWidget::removeText);
+        connect(view()->doc(), &KTextEditor::Document::lineWrapped, this, &KateCompletionWidget::wrapLine);
+        connect(view()->doc(), &KTextEditor::Document::lineUnwrapped, this, &KateCompletionWidget::unwrapLine);
+        connect(view()->doc(), &KTextEditor::Document::textInserted, this, &KateCompletionWidget::insertText);
+        connect(view()->doc(), &KTextEditor::Document::textRemoved, this, &KateCompletionWidget::removeText);
     }
 }
 
@@ -1387,7 +1386,7 @@ void KateCompletionWidget::setAutomaticInvocationDelay(int delay)
     m_automaticInvocationDelay = delay;
 }
 
-void KateCompletionWidget::wrapLine(KTextEditor::Cursor)
+void KateCompletionWidget::wrapLine(KTextEditor::Document *, KTextEditor::Cursor)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 
@@ -1396,7 +1395,7 @@ void KateCompletionWidget::wrapLine(KTextEditor::Cursor)
     m_automaticInvocationTimer->stop();
 }
 
-void KateCompletionWidget::unwrapLine(int)
+void KateCompletionWidget::unwrapLine(KTextEditor::Document *, int)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 
@@ -1405,7 +1404,7 @@ void KateCompletionWidget::unwrapLine(int)
     m_automaticInvocationTimer->stop();
 }
 
-void KateCompletionWidget::insertText(KTextEditor::Cursor position, const QString &text)
+void KateCompletionWidget::insertText(KTextEditor::Document *, KTextEditor::Cursor position, const QString &text)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 
@@ -1433,7 +1432,7 @@ void KateCompletionWidget::insertText(KTextEditor::Cursor position, const QStrin
     m_automaticInvocationTimer->start(m_automaticInvocationDelay);
 }
 
-void KateCompletionWidget::removeText(KTextEditor::Range)
+void KateCompletionWidget::removeText(KTextEditor::Document *, KTextEditor::Range, const QString &)
 {
     m_lastInsertionByUser = !m_completionEditRunning;
 

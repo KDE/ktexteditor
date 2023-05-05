@@ -21,6 +21,7 @@ class DocumentPrivate;
 class Message;
 class Range;
 class Cursor;
+class Document;
 }
 
 namespace Kate
@@ -60,10 +61,10 @@ protected:
     void startEditing();
     void finishEditing();
 
-    void wrapLine(const KTextEditor::Cursor position);
-    void unwrapLine(int line);
-    void insertText(const KTextEditor::Cursor position, const QString &text);
-    void removeText(KTextEditor::Range range);
+    void wrapLine(KTextEditor::Document *, const KTextEditor::Cursor position);
+    void unwrapLine(KTextEditor::Document *, int line);
+    void insertText(KTextEditor::Document *, const KTextEditor::Cursor position, const QString &text);
+    void removeText(KTextEditor::Document *, KTextEditor::Range range, const QString &);
 
 public:
     void discard();

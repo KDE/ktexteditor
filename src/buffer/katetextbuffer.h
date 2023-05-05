@@ -388,42 +388,6 @@ Q_SIGNALS:
      */
     void saved(const QString &filename);
 
-    /**
-     * Editing transaction has started.
-     */
-    void editingStarted();
-
-    /**
-     * Editing transaction has finished.
-     */
-    void editingFinished();
-
-    /**
-     * A line got wrapped.
-     * @param position position where the wrap occurred
-     */
-    void lineWrapped(const KTextEditor::Cursor position);
-
-    /**
-     * A line got unwrapped.
-     * @param line line where the unwrap occurred
-     */
-    void lineUnwrapped(int line);
-
-    /**
-     * Text got inserted.
-     * @param position position where the insertion occurred
-     * @param text inserted text
-     */
-    void textInserted(const KTextEditor::Cursor position, const QString &text);
-
-    /**
-     * Text got removed.
-     * @param range range where the removal occurred
-     * @param text removed text
-     */
-    void textRemoved(KTextEditor::Range range, const QString &text);
-
 private:
     /**
      * Save result which indicates an abstract reason why the operation has

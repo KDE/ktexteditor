@@ -5,7 +5,6 @@
 */
 
 #include "katetextfolding.h"
-#include "documentcursor.h"
 #include "katedocument.h"
 #include "katetextbuffer.h"
 #include "katetextrange.h"
@@ -772,10 +771,8 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
         const KTextEditor::Cursor end(rangeMap[QStringLiteral("endLine")].toInt(), rangeMap[QStringLiteral("endColumn")].toInt());
 
         // check validity (required when loading a possibly broken folding state from disk)
-        if (start >= end
-            || (m_buffer.document() && // <-- unit test katetextbuffertest does not have a KTE::Document assigned
-                (!KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition()
-                 || !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition()))) {
+        auto doc = m_buffer.document();
+        if (start >= end || !doc->isValidTextPosition(start) || !doc->isValidTextPosition(end)) {
             continue;
         }
 

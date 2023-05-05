@@ -170,10 +170,10 @@ private Q_SLOTS:
     void rowsInserted(const QModelIndex &parent, int row, int rowEnd);
     void viewFocusOut();
 
-    void wrapLine(KTextEditor::Cursor position);
-    void unwrapLine(int line);
-    void insertText(KTextEditor::Cursor position, const QString &text);
-    void removeText(KTextEditor::Range range);
+    void wrapLine(KTextEditor::Document *document, KTextEditor::Cursor position);
+    void unwrapLine(KTextEditor::Document *, int line);
+    void insertText(KTextEditor::Document *, KTextEditor::Cursor position, const QString &text);
+    void removeText(KTextEditor::Document *, KTextEditor::Range range, const QString &);
 
 private:
     KTEXTEDITOR_NO_EXPORT

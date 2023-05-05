@@ -87,26 +87,24 @@ void SwapFile::setTrackingEnabled(bool enable)
 
     m_trackingEnabled = enable;
 
-    TextBuffer &buffer = m_document->buffer();
-
     if (m_trackingEnabled) {
-        connect(&buffer, &Kate::TextBuffer::editingStarted, this, &Kate::SwapFile::startEditing);
-        connect(&buffer, &Kate::TextBuffer::editingFinished, this, &Kate::SwapFile::finishEditing);
+        connect(m_document, &KTextEditor::Document::editingStarted, this, &Kate::SwapFile::startEditing);
+        connect(m_document, &KTextEditor::Document::editingFinished, this, &Kate::SwapFile::finishEditing);
         connect(m_document, &KTextEditor::DocumentPrivate::modifiedChanged, this, &SwapFile::modifiedChanged);
 
-        connect(&buffer, &Kate::TextBuffer::lineWrapped, this, &Kate::SwapFile::wrapLine);
-        connect(&buffer, &Kate::TextBuffer::lineUnwrapped, this, &Kate::SwapFile::unwrapLine);
-        connect(&buffer, &Kate::TextBuffer::textInserted, this, &Kate::SwapFile::insertText);
-        connect(&buffer, &Kate::TextBuffer::textRemoved, this, &Kate::SwapFile::removeText);
+        connect(m_document, &KTextEditor::Document::lineWrapped, this, &Kate::SwapFile::wrapLine);
+        connect(m_document, &KTextEditor::Document::lineUnwrapped, this, &Kate::SwapFile::unwrapLine);
+        connect(m_document, &KTextEditor::Document::textInserted, this, &Kate::SwapFile::insertText);
+        connect(m_document, &KTextEditor::Document::textRemoved, this, &Kate::SwapFile::removeText);
     } else {
-        disconnect(&buffer, &Kate::TextBuffer::editingStarted, this, &Kate::SwapFile::startEditing);
-        disconnect(&buffer, &Kate::TextBuffer::editingFinished, this, &Kate::SwapFile::finishEditing);
+        disconnect(m_document, &KTextEditor::Document::editingStarted, this, &Kate::SwapFile::startEditing);
+        disconnect(m_document, &KTextEditor::Document::editingFinished, this, &Kate::SwapFile::finishEditing);
         disconnect(m_document, &KTextEditor::DocumentPrivate::modifiedChanged, this, &SwapFile::modifiedChanged);
 
-        disconnect(&buffer, &Kate::TextBuffer::lineWrapped, this, &Kate::SwapFile::wrapLine);
-        disconnect(&buffer, &Kate::TextBuffer::lineUnwrapped, this, &Kate::SwapFile::unwrapLine);
-        disconnect(&buffer, &Kate::TextBuffer::textInserted, this, &Kate::SwapFile::insertText);
-        disconnect(&buffer, &Kate::TextBuffer::textRemoved, this, &Kate::SwapFile::removeText);
+        disconnect(m_document, &KTextEditor::Document::lineWrapped, this, &Kate::SwapFile::wrapLine);
+        disconnect(m_document, &KTextEditor::Document::lineUnwrapped, this, &Kate::SwapFile::unwrapLine);
+        disconnect(m_document, &KTextEditor::Document::textInserted, this, &Kate::SwapFile::insertText);
+        disconnect(m_document, &KTextEditor::Document::textRemoved, this, &Kate::SwapFile::removeText);
     }
 }
 
@@ -472,7 +470,7 @@ void SwapFile::finishEditing()
     m_swapfile.flush();
 }
 
-void SwapFile::wrapLine(const KTextEditor::Cursor position)
+void SwapFile::wrapLine(KTextEditor::Document *, const KTextEditor::Cursor position)
 {
     // skip if not open
     if (!m_swapfile.isOpen()) {
@@ -485,7 +483,7 @@ void SwapFile::wrapLine(const KTextEditor::Cursor position)
     m_needSync = true;
 }
 
-void SwapFile::unwrapLine(int line)
+void SwapFile::unwrapLine(KTextEditor::Document *, int line)
 {
     // skip if not open
     if (!m_swapfile.isOpen()) {
@@ -498,7 +496,7 @@ void SwapFile::unwrapLine(int line)
     m_needSync = true;
 }
 
-void SwapFile::insertText(const KTextEditor::Cursor position, const QString &text)
+void SwapFile::insertText(KTextEditor::Document *, const KTextEditor::Cursor position, const QString &text)
 {
     // skip if not open
     if (!m_swapfile.isOpen()) {
@@ -511,7 +509,7 @@ void SwapFile::insertText(const KTextEditor::Cursor position, const QString &tex
     m_needSync = true;
 }
 
-void SwapFile::removeText(KTextEditor::Range range)
+void SwapFile::removeText(KTextEditor::Document *, KTextEditor::Range range, const QString &)
 {
     // skip if not open
     if (!m_swapfile.isOpen()) {

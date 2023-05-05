@@ -211,10 +211,7 @@ bool TextBuffer::startEditing()
     m_editingMaximalLineChanged = -1;
 
     // transaction has started
-    Q_EMIT editingStarted();
-    if (m_document) {
-        Q_EMIT m_document->KTextEditor::Document::editingStarted(m_document);
-    }
+    Q_EMIT m_document->KTextEditor::Document::editingStarted(m_document);
 
     // first transaction started
     return true;
@@ -240,10 +237,7 @@ bool TextBuffer::finishEditing()
     Q_ASSERT(!editingChangedBuffer() || (m_editingMaximalLineChanged >= 0 && m_editingMaximalLineChanged < m_lines));
 
     // transaction has finished
-    Q_EMIT editingFinished();
-    if (m_document) {
-        Q_EMIT m_document->KTextEditor::Document::editingFinished(m_document);
-    }
+    Q_EMIT m_document->KTextEditor::Document::editingFinished(m_document);
 
     // last transaction finished
     return true;
@@ -285,10 +279,7 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor position)
     balanceBlock(blockIndex);
 
     // emit signal about done change
-    Q_EMIT lineWrapped(position);
-    if (m_document) {
-        Q_EMIT m_document->KTextEditor::Document::lineWrapped(m_document, position);
-    }
+    Q_EMIT m_document->KTextEditor::Document::lineWrapped(m_document, position);
 }
 
 void TextBuffer::unwrapLine(int line)
@@ -338,10 +329,7 @@ void TextBuffer::unwrapLine(int line)
     balanceBlock(blockIndex);
 
     // emit signal about done change
-    Q_EMIT lineUnwrapped(line);
-    if (m_document) {
-        Q_EMIT m_document->KTextEditor::Document::lineUnwrapped(m_document, line);
-    }
+    Q_EMIT m_document->KTextEditor::Document::lineUnwrapped(m_document, line);
 }
 
 void TextBuffer::insertText(const KTextEditor::Cursor position, const QString &text)
@@ -376,10 +364,7 @@ void TextBuffer::insertText(const KTextEditor::Cursor position, const QString &t
     }
 
     // emit signal about done change
-    Q_EMIT textInserted(position, text);
-    if (m_document) {
-        Q_EMIT m_document->KTextEditor::Document::textInserted(m_document, position, text);
-    }
+    Q_EMIT m_document->KTextEditor::Document::textInserted(m_document, position, text);
 }
 
 void TextBuffer::removeText(KTextEditor::Range range)
@@ -422,10 +407,7 @@ void TextBuffer::removeText(KTextEditor::Range range)
     }
 
     // emit signal about done change
-    Q_EMIT textRemoved(range, text);
-    if (m_document) {
-        Q_EMIT m_document->KTextEditor::Document::textRemoved(m_document, range, text);
-    }
+    Q_EMIT m_document->KTextEditor::Document::textRemoved(m_document, range, text);
 }
 
 int TextBuffer::blockForLine(int line) const
