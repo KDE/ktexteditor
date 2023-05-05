@@ -671,8 +671,8 @@ void KeysTest::ParsingTests()
     const QChar char_o_diaeresis(246);
 
     // Test that we can correctly translate finnish key ö
-    QKeyEvent *k = new QKeyEvent(QEvent::KeyPress, 214, Qt::NoModifier, 47, 246, 16400, char_o_diaeresis);
-    QCOMPARE(KeyParser::self()->KeyEventToQChar(*k), QChar(246));
+    QKeyEvent k(QEvent::KeyPress, 214, Qt::NoModifier, 47, 246, 16400, char_o_diaeresis);
+    QCOMPARE(KeyParser::self()->KeyEventToQChar(k), QChar(246));
 
     // Test that it can be used in mappings
     clearAllMappings();
