@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-04 02:20+0000\n"
-"PO-Revision-Date: 2023-04-22 17:13+0200\n"
+"PO-Revision-Date: 2023-05-05 19:48+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -7937,10 +7937,9 @@ msgid "Background Color..."
 msgstr "Hintergrundfarbe ..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Textdekoration"
+msgstr "Zusätzliche Dekoration anzeigen"
 
 #: view/screenshotdialog.cpp:141
 #, kde-format
