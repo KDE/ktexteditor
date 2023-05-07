@@ -110,13 +110,13 @@ LineRange LineRange::fromString(QStringView str) noexcept
     return {start, end};
 }
 
-QDebug KTextEditor::operator<<(QDebug s, Range range)
+QDebug operator<<(QDebug s, KTextEditor::Range range)
 {
     s << "[" << range.start() << " -> " << range.end() << "]";
     return s;
 }
 
-QDebug KTextEditor::operator<<(QDebug s, LineRange range)
+QDebug operator<<(QDebug s, KTextEditor::LineRange range)
 {
     s << "[" << range.start() << " -> " << range.end() << "]";
     return s;

@@ -352,11 +352,6 @@ public:
         return !(c1 > c2);
     }
 
-    /**
-     * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
-     */
-    friend QDebug operator<<(QDebug s, Cursor cursor);
-
 private:
     /**
      * \internal
@@ -376,6 +371,11 @@ private:
 } // namespace KTextEditor
 
 Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_PRIMITIVE_TYPE);
+
+/**
+ * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::Cursor cursor);
 
 /**
  * QHash function for KTextEditor::Cursor.

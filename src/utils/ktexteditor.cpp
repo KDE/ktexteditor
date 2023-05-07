@@ -70,7 +70,7 @@ QString Cursor::toString() const
     return QStringLiteral("(%1, %2)").arg(m_line).arg(m_column);
 }
 
-QDebug KTextEditor::operator<<(QDebug s, Cursor cursor)
+QDebug operator<<(QDebug s, KTextEditor::Cursor cursor)
 {
     s.nospace() << "(" << cursor.line() << ", " << cursor.column() << ")";
     return s.space();

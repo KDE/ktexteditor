@@ -475,11 +475,6 @@ public:
         return r1.end() < r2.start();
     }
 
-    /**
-     * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
-     */
-    friend QDebug operator<<(QDebug s, LineRange range);
-
 private:
     /**
      * This range's start line.
@@ -499,6 +494,11 @@ private:
 }
 
 Q_DECLARE_TYPEINFO(KTextEditor::LineRange, Q_PRIMITIVE_TYPE);
+
+/**
+ * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::LineRange range);
 
 /**
  * QHash function for KTextEditor::LineRange.

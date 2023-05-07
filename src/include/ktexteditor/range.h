@@ -573,11 +573,6 @@ public:
         return r1.end() < r2.start();
     }
 
-    /**
-     * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
-     */
-    friend QDebug operator<<(QDebug s, Range range);
-
 private:
     /**
      * This range's start cursor pointer.
@@ -597,6 +592,11 @@ private:
 }
 
 Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_MOVABLE_TYPE);
+
+/**
+ * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::Range range);
 
 /**
  * QHash function for KTextEditor::Range.
