@@ -176,6 +176,7 @@ void InlineNoteTest::testInlineNote()
 
     // mouse move only on X11
     if (!KWindowSystem::isPlatformX11()) {
+        iface->unregisterInlineNoteProvider(&noteProvider);
         QSKIP("mouse moving only on X11");
     }
 
