@@ -8,8 +8,10 @@
 #ifndef BASE_TEST_H
 #define BASE_TEST_H
 
+#include <QMap>
 #include <QObject>
-#include <ktexteditor/range.h>
+
+#include <KTextEditor/Range>
 
 namespace KTextEditor
 {
