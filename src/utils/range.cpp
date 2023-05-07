@@ -14,7 +14,7 @@
 
 using namespace KTextEditor;
 
-Range Range::fromString(QStringView str) Q_DECL_NOEXCEPT
+Range Range::fromString(QStringView str) noexcept
 {
     const int startIndex = str.indexOf(QLatin1Char('['));
     const int endIndex = str.indexOf(QLatin1Char(']'));
@@ -27,13 +27,13 @@ Range Range::fromString(QStringView str) Q_DECL_NOEXCEPT
     return Range(Cursor::fromString(str.mid(startIndex + 1, closeIndex - startIndex)), Cursor::fromString(str.mid(closeIndex + 2, endIndex - closeIndex - 2)));
 }
 
-void Range::setRange(Range range) Q_DECL_NOEXCEPT
+void Range::setRange(Range range) noexcept
 {
     m_start = range.start();
     m_end = range.end();
 }
 
-void Range::setRange(Cursor start, Cursor end) Q_DECL_NOEXCEPT
+void Range::setRange(Cursor start, Cursor end) noexcept
 {
     if (start > end) {
         setRange(Range(end, start));
@@ -42,7 +42,7 @@ void Range::setRange(Cursor start, Cursor end) Q_DECL_NOEXCEPT
     }
 }
 
-bool Range::confineToRange(Range range) Q_DECL_NOEXCEPT
+bool Range::confineToRange(Range range) noexcept
 {
     if (start() < range.start()) {
         if (end() > range.end()) {
@@ -59,7 +59,7 @@ bool Range::confineToRange(Range range) Q_DECL_NOEXCEPT
     return true;
 }
 
-bool Range::expandToRange(Range range) Q_DECL_NOEXCEPT
+bool Range::expandToRange(Range range) noexcept
 {
     if (start() > range.start()) {
         if (end() < range.end()) {
@@ -76,17 +76,17 @@ bool Range::expandToRange(Range range) Q_DECL_NOEXCEPT
     return true;
 }
 
-void Range::setBothLines(int line) Q_DECL_NOEXCEPT
+void Range::setBothLines(int line) noexcept
 {
     setRange(Range(line, start().column(), line, end().column()));
 }
 
-void KTextEditor::Range::setBothColumns(int column) Q_DECL_NOEXCEPT
+void KTextEditor::Range::setBothColumns(int column) noexcept
 {
     setRange(Range(start().line(), column, end().line(), column));
 }
 
-LineRange LineRange::fromString(QStringView str) Q_DECL_NOEXCEPT
+LineRange LineRange::fromString(QStringView str) noexcept
 {
     // parse format "[start, end]"
     const int startIndex = str.indexOf(QLatin1Char('['));
@@ -100,14 +100,36 @@ LineRange LineRange::fromString(QStringView str) Q_DECL_NOEXCEPT
     bool ok1 = false;
     bool ok2 = false;
 
-    const int start = str.mid(startIndex + 1, commaIndex - startIndex - 1).toString().toInt(&ok1); // FIXME KF6: Qt 5.15.2 and higher: remove .toString()
-    const int end = str.mid(commaIndex + 1, endIndex - commaIndex - 1).toString().toInt(&ok2); // FIXME KF6: Qt 5.15.2 and higher: remove .toString()
+    const int start = str.mid(startIndex + 1, commaIndex - startIndex - 1).toInt(&ok1);
+    const int end = str.mid(commaIndex + 1, endIndex - commaIndex - 1).toInt(&ok2);
 
     if (!ok1 || !ok2) {
         return invalid();
     }
 
     return {start, end};
+}
+
+QDebug KTextEditor::operator<<(QDebug s, Range range)
+{
+    s << "[" << range.start() << " -> " << range.end() << "]";
+    return s;
+}
+
+QDebug KTextEditor::operator<<(QDebug s, LineRange range)
+{
+    s << "[" << range.start() << " -> " << range.end() << "]";
+    return s;
+}
+
+QString Range::toString() const
+{
+    return QStringLiteral("[%1, %2]").arg(m_start.toString()).arg(m_end.toString());
+}
+
+QString LineRange::toString() const
+{
+    return QStringLiteral("[%1, %2]").arg(m_start).arg(m_end);
 }
 
 namespace QTest

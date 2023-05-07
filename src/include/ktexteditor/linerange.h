@@ -10,9 +10,6 @@
 
 #include <ktexteditor_export.h>
 
-#include <QDebug>
-#include <QtGlobal>
-
 namespace KTextEditor
 {
 /**
@@ -41,9 +38,7 @@ public:
      * Default constructor. Creates a valid line range with both start and end
      * line set to 0.
      */
-    Q_DECL_CONSTEXPR LineRange() Q_DECL_NOEXCEPT
-    {
-    }
+    constexpr LineRange() noexcept = default;
 
     /**
      * Constructor which creates a range from \e start to \e end.
@@ -52,14 +47,16 @@ public:
      * @param start start line
      * @param end end line
      */
-    Q_DECL_CONSTEXPR LineRange(int start, int end) Q_DECL_NOEXCEPT : m_start(qMin(start, end)), m_end(qMax(start, end))
+    constexpr LineRange(int start, int end) noexcept
+        : m_start(qMin(start, end))
+        , m_end(qMax(start, end))
     {
     }
 
     /**
      * Validity check. In the base class, returns true unless the line range starts before (0,0).
      */
-    Q_DECL_CONSTEXPR inline bool isValid() const Q_DECL_NOEXCEPT
+    constexpr bool isValid() const noexcept
     {
         return m_start >= 0 && m_end >= 0;
     }
@@ -67,7 +64,7 @@ public:
     /**
      * Returns an invalid line range.
      */
-    Q_DECL_CONSTEXPR static LineRange invalid() Q_DECL_NOEXCEPT
+    constexpr static LineRange invalid() noexcept
     {
         return LineRange(-1, -1);
     }
@@ -77,10 +74,7 @@ public:
      * "[start line, end line]".
      * @see fromString()
      */
-    QString toString() const
-    {
-        return QStringLiteral("[%1, %2]").arg(m_start).arg(m_end);
-    }
+    QString toString() const;
 
     /**
      * Returns a LineRange created from the string \p str containing the format
@@ -88,7 +82,7 @@ public:
      * In case the string cannot be parsed, an LineRange::invalid() is returned.
      * @see toString()
      */
-    static LineRange fromString(QStringView str) Q_DECL_NOEXCEPT;
+    static LineRange fromString(QStringView str) noexcept;
 
     /**
      * @name Position
@@ -102,7 +96,7 @@ public:
      *
      * @returns the start line of this line range.
      */
-    Q_DECL_CONSTEXPR inline int start() const Q_DECL_NOEXCEPT
+    constexpr int start() const noexcept
     {
         return m_start;
     }
@@ -112,7 +106,7 @@ public:
      *
      * @returns the end line of this line range.
      */
-    Q_DECL_CONSTEXPR inline int end() const Q_DECL_NOEXCEPT
+    constexpr int end() const noexcept
     {
         return m_end;
     }
@@ -125,7 +119,7 @@ public:
      * \param start start line
      * \param end end line
      */
-    void setRange(LineRange range) Q_DECL_NOEXCEPT
+    void setRange(LineRange range) noexcept
     {
         setRange(range.start(), range.end());
     }
@@ -138,7 +132,7 @@ public:
      * \param start start line
      * \param end end line
      */
-    void setRange(int start, int end) Q_DECL_NOEXCEPT
+    void setRange(int start, int end) noexcept
     {
         m_start = qMin(start, end);
         m_end = qMax(start, end);
@@ -149,7 +143,7 @@ public:
      *
      * @param line the line number to assign to start() and end()
      */
-    void setBothLines(int line) Q_DECL_NOEXCEPT
+    void setBothLines(int line) noexcept
     {
         m_start = line;
         m_end = line;
@@ -162,7 +156,7 @@ public:
      *
      * @param start new start line
      */
-    inline void setStart(int start) Q_DECL_NOEXCEPT
+    void setStart(int start) noexcept
     {
         if (start > end()) {
             setRange(start, start);
@@ -178,7 +172,7 @@ public:
      *
      * @param end new end line
      */
-    inline void setEnd(int end) Q_DECL_NOEXCEPT
+    void setEnd(int end) noexcept
     {
         if (end < start()) {
             setRange(end, end);
@@ -194,7 +188,7 @@ public:
      *
      * @return \e true if expansion occurred, \e false otherwise
      */
-    bool expandToRange(LineRange range) Q_DECL_NOEXCEPT
+    bool expandToRange(LineRange range) noexcept
     {
         if (start() > range.start())
             if (end() < range.end()) {
@@ -218,7 +212,7 @@ public:
      *
      * @return \e true if confinement occurred, \e false otherwise
      */
-    bool confineToRange(LineRange range) Q_DECL_NOEXCEPT
+    bool confineToRange(LineRange range) noexcept
     {
         if (start() < range.start())
             if (end() > range.end()) {
@@ -240,7 +234,7 @@ public:
      *
      * @return \e true if both the start and end line are equal, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool onSingleLine() const Q_DECL_NOEXCEPT
+    constexpr bool onSingleLine() const noexcept
     {
         return start() == end();
     }
@@ -251,7 +245,7 @@ public:
      * @return the number of lines separating the start() and end() line;
      *         0 if the start and end lines are the same.
      */
-    Q_DECL_CONSTEXPR inline int numberOfLines() const Q_DECL_NOEXCEPT
+    constexpr int numberOfLines() const noexcept
     {
         return end() - start();
     }
@@ -273,7 +267,7 @@ public:
      *
      * @return \e true, if this range contains \e range, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool contains(LineRange range) const Q_DECL_NOEXCEPT
+    constexpr bool contains(LineRange range) const noexcept
     {
         return range.start() >= start() && range.end() <= end();
     }
@@ -285,7 +279,7 @@ public:
      *
      * @return \e true if the line is wholly encompassed by this range, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool containsLine(int line) const Q_DECL_NOEXCEPT
+    constexpr bool containsLine(int line) const noexcept
     {
         return line >= start() && line < end();
     }
@@ -297,7 +291,7 @@ public:
      *
      * @return \e true, if this range overlaps with \e range, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool overlaps(LineRange range) const Q_DECL_NOEXCEPT
+    constexpr bool overlaps(LineRange range) const noexcept
     {
         return (range.start() <= start()) ? (range.end() > start()) : (range.end() >= end()) ? (range.start() < end()) : contains(range);
     }
@@ -309,7 +303,7 @@ public:
      *
      * @return \e true, if the range overlaps at least part of \e line, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool overlapsLine(int line) const Q_DECL_NOEXCEPT
+    constexpr bool overlapsLine(int line) const noexcept
     {
         return line >= start() && line <= end();
     }
@@ -324,7 +318,7 @@ public:
      *
      * @return the intersection of this range and the supplied \a range.
      */
-    Q_DECL_CONSTEXPR inline LineRange intersect(LineRange range) const Q_DECL_NOEXCEPT
+    constexpr LineRange intersect(LineRange range) const noexcept
     {
         return ((!isValid() || !range.isValid() || *this > range || *this < range)) ? invalid()
                                                                                     : LineRange(qMax(start(), range.start()), qMin(end(), range.end()));
@@ -338,7 +332,7 @@ public:
      *
      * @return the smallest range which contains this range and the supplied \a range.
      */
-    Q_DECL_CONSTEXPR inline LineRange encompass(LineRange range) const Q_DECL_NOEXCEPT
+    constexpr LineRange encompass(LineRange range) const noexcept
     {
         return (!isValid())      ? (range.isValid() ? range : invalid())
             : (!range.isValid()) ? (*this)
@@ -353,7 +347,7 @@ public:
      *
      * @return a the summation of the two input ranges
      */
-    Q_DECL_CONSTEXPR inline friend LineRange operator+(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend LineRange operator+(LineRange r1, LineRange r2) noexcept
     {
         return LineRange(r1.start() + r2.start(), r1.end() + r2.end());
     }
@@ -366,7 +360,7 @@ public:
      *
      * @return a reference to the line range which has just been added to
      */
-    inline friend LineRange &operator+=(LineRange &r1, LineRange r2) Q_DECL_NOEXCEPT
+    friend LineRange &operator+=(LineRange &r1, LineRange r2) noexcept
     {
         r1.setRange(r1.start() + r2.start(), r1.end() + r2.end());
         return r1;
@@ -381,7 +375,7 @@ public:
      *
      * @return a range representing the subtraction of \p r2 from \p r1
      */
-    Q_DECL_CONSTEXPR inline friend LineRange operator-(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend LineRange operator-(LineRange r1, LineRange r2) noexcept
     {
         return LineRange(r1.start() - r2.start(), r1.end() - r2.end());
     }
@@ -394,7 +388,7 @@ public:
      *
      * @return a reference to the range which has just been subtracted from
      */
-    inline friend LineRange &operator-=(LineRange &r1, LineRange r2) Q_DECL_NOEXCEPT
+    friend LineRange &operator-=(LineRange &r1, LineRange r2) noexcept
     {
         r1.setRange(r1.start() - r2.start(), r1.end() - r2.end());
         return r1;
@@ -408,7 +402,7 @@ public:
      *
      * @return the intersected range, invalid() if there is no overlap
      */
-    Q_DECL_CONSTEXPR inline friend LineRange operator&(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend LineRange operator&(LineRange r1, LineRange r2) noexcept
     {
         return r1.intersect(r2);
     }
@@ -421,7 +415,7 @@ public:
      *
      * @return a reference to this range, after the intersection has taken place
      */
-    inline friend LineRange &operator&=(LineRange &r1, LineRange r2) Q_DECL_NOEXCEPT
+    friend LineRange &operator&=(LineRange &r1, LineRange r2) noexcept
     {
         r1.setRange(r1.intersect(r2));
         return r1;
@@ -435,7 +429,7 @@ public:
      *
      * @return \e true if \e r1 and \e r2 equal, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator==(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend bool operator==(LineRange r1, LineRange r2) noexcept
     {
         return r1.start() == r2.start() && r1.end() == r2.end();
     }
@@ -448,7 +442,7 @@ public:
      *
      * @return \e true if \e r1 and \e r2 do \e not equal, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator!=(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend bool operator!=(LineRange r1, LineRange r2) noexcept
     {
         return r1.start() != r2.start() || r1.end() != r2.end();
     }
@@ -462,7 +456,7 @@ public:
      *
      * @return \e true if \e r1 starts after where \e r2 ends, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator>(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend bool operator>(LineRange r1, LineRange r2) noexcept
     {
         return r1.start() > r2.end();
     }
@@ -476,7 +470,7 @@ public:
      *
      * @return \e true if \e r1 ends before \e r2 begins, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator<(LineRange r1, LineRange r2) Q_DECL_NOEXCEPT
+    constexpr friend bool operator<(LineRange r1, LineRange r2) noexcept
     {
         return r1.end() < r2.start();
     }
@@ -484,11 +478,7 @@ public:
     /**
      * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<<(QDebug s, LineRange range)
-    {
-        s << "[" << range.start() << " -> " << range.end() << "]";
-        return s;
-    }
+    friend QDebug operator<<(QDebug s, LineRange range);
 
 private:
     /**
@@ -508,14 +498,13 @@ private:
 
 }
 
-Q_DECLARE_TYPEINFO(KTextEditor::LineRange, Q_MOVABLE_TYPE);
-Q_DECLARE_METATYPE(KTextEditor::LineRange)
+Q_DECLARE_TYPEINFO(KTextEditor::LineRange, Q_PRIMITIVE_TYPE);
 
 /**
  * QHash function for KTextEditor::LineRange.
  * Returns the hash value for @p range.
  */
-inline size_t qHash(const KTextEditor::LineRange &range, size_t seed = 0) Q_DECL_NOTHROW
+inline size_t qHash(const KTextEditor::LineRange &range, size_t seed = 0) noexcept
 {
     return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
 }
