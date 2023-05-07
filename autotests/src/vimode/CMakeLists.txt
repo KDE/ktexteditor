@@ -26,9 +26,6 @@ macro(vimode_unit_test)
     target_link_libraries("vimode_${ARGV0}" ${VIMODE_TEST_LINK_LIBS}
         Qt6::Test)
     ecm_mark_as_test("vimode_${ARGV0}")
-    if(ENABLE_PCH)
-        target_precompile_headers("vimode_${ARGV0}" REUSE_FROM kte_test_pch)
-    endif()
     ADD_TEST (NAME "vimode_${ARGV0}" COMMAND "vimode_${ARGV0}" -platform offscreen)
 endmacro()
 
