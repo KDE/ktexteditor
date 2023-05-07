@@ -177,14 +177,9 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.mouseMoveCount, 0);
     QVERIFY(noteProvider.lastUnderMouse == false);
 
-    // ATM fails on Windows, mark as such to be able to enforce test success in CI
-#ifdef Q_OS_WIN
-    QSKIP("Fails ATM, please fix");
-#endif
-
-    // no way to move mouse on wayland ATM
-    if (KWindowSystem::isPlatformWayland()) {
-        QSKIP("No mouse moving on Wayland");
+    // mouse move only on X11
+    if (!KWindowSystem::isPlatformX11()) {
+        QSKIP("mouse moving only on X11");
     }
 
     // move mouse onto first note

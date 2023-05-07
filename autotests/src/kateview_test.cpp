@@ -416,14 +416,9 @@ void KateViewTest::testFoldFirstLine()
 // test for bug https://bugs.kde.org/374163
 void KateViewTest::testDragAndDrop()
 {
-    // ATM fails on Windows, mark as such to be able to enforce test success in CI
-#ifdef Q_OS_WIN
-    QSKIP("Fails ATM, please fix");
-#endif
-
-    // no way to move mouse on wayland ATM
-    if (KWindowSystem::isPlatformWayland()) {
-        QSKIP("No mouse moving on Wayland");
+    // mouse move only on X11
+    if (!KWindowSystem::isPlatformX11()) {
+        QSKIP("mouse moving only on X11");
     }
 
     KTextEditor::DocumentPrivate doc(false, false);
