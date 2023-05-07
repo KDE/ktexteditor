@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-04 02:20+0000\n"
+"POT-Creation-Date: 2023-05-07 02:15+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -4322,22 +4322,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:631
+#: swapfile/kateswapfile.cpp:629
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "Datne netika pareizi aizvērta."
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:632
 #, kde-format
 msgid "View Changes"
 msgstr "Skatīt izmaiņas"
 
-#: swapfile/kateswapfile.cpp:635
+#: swapfile/kateswapfile.cpp:633
 #, kde-format
 msgid "Recover Data"
 msgstr "Atjaunot datus"
 
-#: swapfile/kateswapfile.cpp:636
+#: swapfile/kateswapfile.cpp:634
 #, kde-format
 msgid "Discard"
 msgstr "Izmest"

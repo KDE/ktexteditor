@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-04 02:20+0000\n"
+"POT-Creation-Date: 2023-05-07 02:15+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -3925,22 +3925,22 @@ msgstr ""
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:631
+#: swapfile/kateswapfile.cpp:629
 #, kde-format
 msgid "The file was not closed properly."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:632
 #, kde-format
 msgid "View Changes"
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:635
+#: swapfile/kateswapfile.cpp:633
 #, kde-format
 msgid "Recover Data"
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:636
+#: swapfile/kateswapfile.cpp:634
 #, fuzzy, kde-format
 #| msgid "Disabled"
 msgid "Discard"

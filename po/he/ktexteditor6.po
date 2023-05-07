@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-04 02:20+0000\n"
+"POT-Creation-Date: 2023-05-07 02:15+0000\n"
 "PO-Revision-Date: 2017-05-24 08:19-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -4048,22 +4048,22 @@ msgstr "הפקודה diff נכשלה. ודא ש־diff(1)‎ מותקנת ונמ�
 msgid "The diff command '%1' could not be started."
 msgstr ""
 
-#: swapfile/kateswapfile.cpp:631
+#: swapfile/kateswapfile.cpp:629
 #, kde-format
 msgid "The file was not closed properly."
 msgstr "הקובץ לא נסגר כהלכה"
 
-#: swapfile/kateswapfile.cpp:634
+#: swapfile/kateswapfile.cpp:632
 #, kde-format
 msgid "View Changes"
 msgstr "הצג שינויים"
 
-#: swapfile/kateswapfile.cpp:635
+#: swapfile/kateswapfile.cpp:633
 #, kde-format
 msgid "Recover Data"
 msgstr "שחזר מידע"
 
-#: swapfile/kateswapfile.cpp:636
+#: swapfile/kateswapfile.cpp:634
 #, kde-format
 msgid "Discard"
 msgstr "שכח"
