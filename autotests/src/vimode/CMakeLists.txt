@@ -22,10 +22,15 @@ set (VIMODE_TEST_LINK_LIBS KF6TextEditor
 )
 
 macro(vimode_unit_test)
-  ecm_add_test(${ARGN} TEST_NAME "vimode_${ARGV0}"
-               LINK_LIBRARIES ${VIMODE_TEST_LINK_LIBS})
+    add_executable("vimode_${ARGV0}" ${ARGN})
+    target_link_libraries("vimode_${ARGV0}" ${VIMODE_TEST_LINK_LIBS}
+        Qt6::Test)
+    ecm_mark_as_test("vimode_${ARGV0}")
+    if(ENABLE_PCH)
+        target_precompile_headers("vimode_${ARGV0}" REUSE_FROM kte_test_pch)
+    endif()
+    ADD_TEST (NAME "vimode_${ARGV0}" COMMAND "vimode_${ARGV0}" -platform offscreen)
 endmacro()
-
 
 vimode_unit_test(modes modes.cpp)
 vimode_unit_test(view view.cpp)
