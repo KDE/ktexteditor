@@ -183,8 +183,8 @@ ktexteditor_unit_test_offscreen(commands_test src/script_test_base.cpp src/testu
 ktexteditor_unit_test_offscreen(scripting_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test_offscreen(katemodemanager_test src/katemodemanager_test_base.cpp)
 ktexteditor_unit_test_offscreen(kateview_test)
+ktexteditor_unit_test_offscreen(inlinenote_test)
 
-ktexteditor_unit_test(inlinenote_test)
 ktexteditor_unit_test(katefoldingtest)
 ktexteditor_unit_test(bug286887)
 ktexteditor_unit_test(bug313769)
