@@ -134,8 +134,7 @@ void InlineNoteTest::testInlineNote()
 
     KTextEditor::ViewPrivate view(&doc, nullptr);
     view.show();
-
-    QTest::qWait(100);
+    view.resize(400, 300);
 
     view.setCursorPosition({0, 5});
     QCOMPARE(view.cursorPosition(), Cursor(0, 5));
@@ -156,8 +155,6 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.inlineNotes(0), expectedColumns);
     QCOMPARE(noteProvider.inlineNotes(1), QVector<int>());
     iface->registerInlineNoteProvider(&noteProvider);
-
-    QTest::qWait(100);
 
     const auto newCoordCol04 = view.cursorToCoordinate({0, 4});
     const auto newCoordCol05 = view.cursorToCoordinate({0, 5});
