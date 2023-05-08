@@ -616,7 +616,7 @@ function tryComment(line, newLine)
     }
 
     if( startComment.isValid() ) {
-        indent = document.toVirtualColumn(startComment);
+        var indent = document.toVirtualColumn(startComment);
         if (indent != -1) { 
             dbg("tryComment: aligned to start of comment at line", startComment.line);
             return indent+adjust;

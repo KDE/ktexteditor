@@ -351,7 +351,7 @@ function indent(line, indentWidth, ch) {
         if (lastChar == matchOpen) {
             return alignBrackets(line, lastChar, newChar, indentWidth)
         } else {
-            mismatch = calcMismatchIndent(line - 1, ch);
+            var mismatch = calcMismatchIndent(line - 1, ch);
             return document.firstVirtualColumn(mismatch.line);
         }
     }
