@@ -10,6 +10,12 @@
 
 #include <ktexteditor_export.h>
 
+#include <QtGlobal>
+
+class QDebug;
+class QString;
+class QStringView;
+
 namespace KTextEditor
 {
 /**
@@ -504,10 +510,7 @@ KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::LineRange range);
  * QHash function for KTextEditor::LineRange.
  * Returns the hash value for @p range.
  */
-inline size_t qHash(const KTextEditor::LineRange &range, size_t seed = 0) noexcept
-{
-    return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
-}
+size_t qHash(const KTextEditor::LineRange &range, size_t seed = 0) noexcept;
 
 namespace QTest
 {

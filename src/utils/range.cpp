@@ -122,6 +122,16 @@ QDebug operator<<(QDebug s, KTextEditor::LineRange range)
     return s;
 }
 
+size_t qHash(const KTextEditor::LineRange &range, size_t seed) noexcept
+{
+    return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
+}
+
+size_t qHash(const KTextEditor::Range &range, size_t seed) noexcept
+{
+    return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
+}
+
 QString Range::toString() const
 {
     return QStringLiteral("[%1, %2]").arg(m_start.toString()).arg(m_end.toString());

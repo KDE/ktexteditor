@@ -14,8 +14,11 @@
 
 #include <ktexteditor_export.h>
 
-class QString;
+#include <QtGlobal>
+
 class QDebug;
+class QString;
+class QStringView;
 
 namespace KTextEditor
 {
@@ -381,10 +384,7 @@ KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::Cursor cursor);
  * QHash function for KTextEditor::Cursor.
  * Returns the hash value for @p cursor.
  */
-inline size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept
-{
-    return qHash(qMakePair(cursor.line(), cursor.column()), seed);
-}
+size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept;
 
 namespace QTest
 {
