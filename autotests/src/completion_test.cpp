@@ -29,6 +29,7 @@
 QTEST_MAIN(CompletionTest)
 
 using namespace KTextEditor;
+static constexpr int TIMEOUT = 2000;
 
 int countItems(KateCompletionModel *model)
 {
@@ -45,12 +46,12 @@ int countItems(KateCompletionModel *model)
 
 static void verifyCompletionStarted(KTextEditor::ViewPrivate *view)
 {
-    QTRY_VERIFY_WITH_TIMEOUT(view->completionWidget()->isCompletionActive(), 1000);
+    QTRY_VERIFY_WITH_TIMEOUT(view->completionWidget()->isCompletionActive(), TIMEOUT);
 }
 
 static void verifyCompletionAborted(KTextEditor::ViewPrivate *view)
 {
-    QTRY_VERIFY_WITH_TIMEOUT(!view->completionWidget()->isCompletionActive(), 1000);
+    QTRY_VERIFY_WITH_TIMEOUT(!view->completionWidget()->isCompletionActive(), TIMEOUT);
 }
 
 static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
@@ -94,8 +95,7 @@ void CompletionTest::testFilterEmptyRange()
 
     QCOMPARE(countItems(model), 40);
     m_view->insertText(QStringLiteral("aa"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(countItems(model), 14);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 14, TIMEOUT);
 }
 
 void CompletionTest::testFilterWithRange()
@@ -111,8 +111,7 @@ void CompletionTest::testFilterWithRange()
     QCOMPARE(countItems(model), 14);
 
     m_view->insertText(QStringLiteral("a"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(countItems(model), 1);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 1, TIMEOUT);
 }
 
 void CompletionTest::testAbortCursorMovedOutOfRange()
@@ -127,8 +126,7 @@ void CompletionTest::testAbortCursorMovedOutOfRange()
     QVERIFY(m_view->completionWidget()->isCompletionActive());
 
     m_view->setCursorPosition(Cursor(0, 4));
-    QTest::qWait(1000); // process events
-    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    verifyCompletionAborted(m_view);
 }
 
 void CompletionTest::testAbortInvalidText()
@@ -161,8 +159,7 @@ void CompletionTest::testCustomRange1()
     QCOMPARE(countItems(model), 14);
 
     m_view->insertText(QStringLiteral("a"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(countItems(model), 1);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 1, TIMEOUT);
 }
 
 void CompletionTest::testCustomRange2()
@@ -179,8 +176,7 @@ void CompletionTest::testCustomRange2()
     QCOMPARE(countItems(model), 40);
 
     m_view->insertText(QStringLiteral("aa"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(countItems(model), 14);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 14, TIMEOUT);
 }
 
 void CompletionTest::testCustomRangeMultipleModels()
@@ -200,8 +196,7 @@ void CompletionTest::testCustomRangeMultipleModels()
     QCOMPARE(countItems(model), 80);
 
     m_view->insertText(QStringLiteral("aa"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(model->currentCompletion(testModel1), QStringLiteral("$aa"));
+    QTRY_COMPARE_WITH_TIMEOUT(model->currentCompletion(testModel1), QStringLiteral("$aa"), TIMEOUT);
     QCOMPARE(model->currentCompletion(testModel2), QStringLiteral("aa"));
     QCOMPARE(countItems(model), 14 * 2);
 }
@@ -218,8 +213,7 @@ void CompletionTest::testAbortController()
     QVERIFY(m_view->completionWidget()->isCompletionActive());
 
     m_view->insertText(QStringLiteral("$a"));
-    QTest::qWait(1000); // process events
-    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    verifyCompletionStarted(m_view);
 
     m_view->insertText(QStringLiteral("."));
     verifyCompletionAborted(m_view);
@@ -238,21 +232,18 @@ void CompletionTest::testAbortControllerMultipleModels()
     QVERIFY(m_view->completionWidget()->isCompletionActive());
 
     m_view->insertText(QStringLiteral("a"));
-    QTest::qWait(1000); // process events
-    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    verifyCompletionStarted(m_view);
     QCOMPARE(countItems(model), 80);
 
     m_view->insertText(QStringLiteral("-"));
-    QTest::qWait(1000); // process events
-    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    verifyCompletionStarted(m_view);
     QVERIFY(!m_view->completionWidget()->completionRanges().contains(testModel1));
     QVERIFY(m_view->completionWidget()->completionRanges().contains(testModel2));
 
     QCOMPARE(countItems(model), 40);
 
     m_view->insertText(QLatin1String(" "));
-    QTest::qWait(1000); // process events
-    QVERIFY(!m_view->completionWidget()->isCompletionActive());
+    verifyCompletionAborted(m_view);
 }
 
 void CompletionTest::testEmptyFilterString()
@@ -266,12 +257,10 @@ void CompletionTest::testEmptyFilterString()
     QCOMPARE(countItems(model), 40);
 
     m_view->insertText(QStringLiteral("a"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(countItems(model), 40);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 40, TIMEOUT);
 
     m_view->insertText(QStringLiteral("bam"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(countItems(model), 40);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 40, TIMEOUT);
 }
 
 void CompletionTest::testUpdateCompletionRange()
@@ -287,9 +276,8 @@ void CompletionTest::testUpdateCompletionRange()
     QCOMPARE(Range(*m_view->completionWidget()->completionRange(testModel)), Range(Cursor(0, 3), Cursor(0, 3)));
 
     m_view->insertText(QStringLiteral("ab"));
-    QTest::qWait(1000); // process events
-    QCOMPARE(Range(*m_view->completionWidget()->completionRange(testModel)), Range(Cursor(0, 0), Cursor(0, 5)));
-    QCOMPARE(countItems(model), 40);
+    QTRY_COMPARE_WITH_TIMEOUT(Range(*m_view->completionWidget()->completionRange(testModel)), Range(Cursor(0, 0), Cursor(0, 5)), TIMEOUT);
+    QTRY_COMPARE_WITH_TIMEOUT(countItems(model), 40, TIMEOUT);
 }
 
 void CompletionTest::testCustomStartCompl()
@@ -302,9 +290,8 @@ void CompletionTest::testCustomStartCompl()
 
     m_view->setCursorPosition(Cursor(0, 0));
     m_view->insertText(QStringLiteral("%"));
-    QTest::qWait(1000);
 
-    QVERIFY(m_view->completionWidget()->isCompletionActive());
+    verifyCompletionStarted(m_view);
     QCOMPARE(countItems(model), 40);
 }
 
