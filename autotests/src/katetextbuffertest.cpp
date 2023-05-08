@@ -141,7 +141,7 @@ void KateTextBufferTest::cursorTest()
     buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
     // construct cursor
-    Kate::TextCursor *cursor1 = new Kate::TextCursor(buffer, KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
+    KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
     QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 0));
     // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
 

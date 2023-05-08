@@ -26,7 +26,7 @@ class TextRange;
  * It will automagically move if the text inside the buffer it belongs to is modified.
  * By intention no subclass of KTextEditor::Cursor, must be converted manually.
  */
-class KTEXTEDITOR_EXPORT TextCursor final : public KTextEditor::MovingCursor
+class TextCursor final : public KTextEditor::MovingCursor
 {
     // range wants direct access to some internals
     friend class TextRange;
@@ -34,6 +34,7 @@ class KTEXTEDITOR_EXPORT TextCursor final : public KTextEditor::MovingCursor
     // this is a friend, because this is needed to efficiently transfer cursors from on to an other block
     friend class TextBlock;
 
+    Q_DISABLE_COPY(TextCursor)
 private:
     /**
      * Construct a text cursor with given range as parent, private, used by TextRange constructor only.
@@ -55,19 +56,9 @@ public:
     TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
     /**
-     * No copy constructor, don't allow this to be copied.
-     */
-    TextCursor(const TextCursor &) = delete;
-
-    /**
      * Destruct the text cursor
      */
     ~TextCursor() override;
-
-    /**
-     * No assignment operator, no copying around.
-     */
-    TextCursor &operator=(const TextCursor &) = delete;
 
     /**
      * Set insert behavior.
@@ -105,7 +96,10 @@ public:
      *
      * \param position new cursor position
      */
-    void setPosition(KTextEditor::Cursor position) override;
+    void setPosition(KTextEditor::Cursor position) override
+    {
+        setPosition(position, false);
+    }
 
     /**
      * \overload
@@ -117,29 +111,29 @@ public:
      */
     void setPosition(int line, int column)
     {
-        KTextEditor::MovingCursor::setPosition(line, column);
+        setPosition(KTextEditor::Cursor(line, column), false);
     }
 
     /**
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    int line() const override;
+    int line() const override
+    {
+        return lineInternal();
+    }
 
     /**
      * Non-virtual version of line(), which is faster.
      * Inlined for fast access (especially in KateTextBuffer::rangesForLine
-     * \return line number, where 0 is the first line.
+     * \return line number, where 0 is the first line or -1 if invalid.
      */
     int lineInternal() const
     {
-        // invalid cursor have no block
-        if (!m_block) {
-            return -1;
+        if (m_block) {
+            return m_block->startLine() + m_line;
         }
-
-        // else, calculate real line
-        return m_block->startLine() + m_line;
+        return -1;
     }
 
     /**
@@ -176,15 +170,6 @@ public:
     }
 
     /**
-     * Get block this cursor belongs to, if any
-     * @return block this pointer is part of, else 0
-     */
-    TextBlock *block() const
-    {
-        return m_block;
-    }
-
-    /**
      * Get offset into block this cursor belongs to, if any
      * @return offset into block this pointer is part of, else -1
      */
@@ -205,7 +190,6 @@ private:
      * @param position new cursor position
      * @param init is this the initial setup of the position in the constructor?
      */
-    KTEXTEDITOR_NO_EXPORT
     void setPosition(KTextEditor::Cursor position, bool init);
 
 private:
@@ -220,22 +204,22 @@ private:
      * may be null, then no range owns this cursor
      * can not change after initial assignment
      */
-    TextRange *const m_range;
+    TextRange *const m_range = nullptr;
 
     /**
      * parent text block, valid cursors always belong to a block, else they are invalid.
      */
-    TextBlock *m_block;
+    TextBlock *m_block = nullptr;
 
     /**
      * line, offset in block, or -1
      */
-    int m_line;
+    int m_line = -1;
 
     /**
      * column
      */
-    int m_column;
+    int m_column = -1;
 
     /**
      * should this cursor move on insert

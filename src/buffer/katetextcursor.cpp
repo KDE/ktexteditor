@@ -17,10 +17,6 @@ namespace Kate
 {
 TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
-    , m_range(nullptr)
-    , m_block(nullptr)
-    , m_line(-1)
-    , m_column(-1)
     , m_moveOnInsert(insertBehavior == MoveOnInsert)
 {
     // init position
@@ -30,9 +26,6 @@ TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor position, I
 TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, KTextEditor::Cursor position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
     , m_range(range)
-    , m_block(nullptr)
-    , m_line(-1)
-    , m_column(-1)
     , m_moveOnInsert(insertBehavior == MoveOnInsert)
 {
     // init position
@@ -85,52 +78,41 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
         // else: we need to handle the change in a more complex way, new or old column are not valid!
     }
 
-    // remove cursor from old block in any case
-    if (m_block) {
-        m_block->removeCursor(this);
-    }
-
     // first: validate the line and column, else invalid
-    if (position.column() < 0 || position.line() < 0 || position.line() >= m_buffer.lines()) {
+    if (!position.isValid() || position.line() >= m_buffer.lines()) {
         if (!m_range) {
             m_buffer.m_invalidCursors.insert(this);
+        }
+        if (m_block) {
+            m_block->removeCursor(this);
         }
         m_block = nullptr;
         m_line = m_column = -1;
         return;
     }
 
-    // else, find block
-    TextBlock *block = m_buffer.blockForIndex(m_buffer.blockForLine(position.line()));
-    Q_ASSERT(block);
+    // find new block if m_block doesn't contain the line or if the block is null
+    TextBlock *oldBlock = m_block;
+    int startLine = oldBlock ? oldBlock->startLine() : -1;
+    if (!oldBlock || position.line() < startLine || position.line() >= startLine + oldBlock->lines()) {
+        if (oldBlock) {
+            oldBlock->removeCursor(this);
+        }
+        m_block = m_buffer.blockForIndex(m_buffer.blockForLine(position.line()));
+        Q_ASSERT(m_block);
+        m_block->insertCursor(this);
+        startLine = m_block->startLine();
+    }
 
     // if cursor was invalid before, remove it from invalid cursor list
-    if (!m_range && !m_block && !init) {
+    if (!m_range && !oldBlock && !init) {
         Q_ASSERT(m_buffer.m_invalidCursors.contains(this));
         m_buffer.m_invalidCursors.remove(this);
     }
 
     // else: valid cursor
-    m_block = block;
-    m_line = position.line() - m_block->startLine();
+    m_line = position.line() - startLine;
     m_column = position.column();
-    m_block->insertCursor(this);
-}
-
-void TextCursor::setPosition(KTextEditor::Cursor position)
-{
-    setPosition(position, false);
-}
-
-int TextCursor::line() const
-{
-    // invalid cursor have no block
-    if (!m_block) {
-        return -1;
-    }
-
-    // else, calculate real line
-    return m_block->startLine() + m_line;
 }
 
 KTextEditor::Document *Kate::TextCursor::document() const
