@@ -384,7 +384,7 @@ KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::Cursor cursor);
  * QHash function for KTextEditor::Cursor.
  * Returns the hash value for @p cursor.
  */
-size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept;
+KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept;
 
 namespace QTest
 {
