@@ -1482,11 +1482,6 @@ private:
      */
     bool m_openingError = false;
 
-    /**
-     * Last open file error message
-     */
-    QString m_openingErrorMessage;
-
 public:
     /**
      * reads the line length limit from config, if it is not overridden

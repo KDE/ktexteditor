@@ -2303,8 +2303,6 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 
     // remember error
     m_openingError = true;
-    m_openingErrorMessage = i18n("The file %1 could not be loaded, as it was not possible to read from it.\n\nCheck if you have read access to this file.",
-                                 this->url().toDisplayString(QUrl::PreferLocalFile));
 }
 // END: error
 
@@ -2342,7 +2340,6 @@ bool KTextEditor::DocumentPrivate::openFile()
 
     // no open errors until now...
     m_openingError = false;
-    m_openingErrorMessage.clear();
 
     // add new m_file to dirwatch
     activateDirWatch();
@@ -2438,12 +2435,6 @@ bool KTextEditor::DocumentPrivate::openFile()
 
         // remember error
         m_openingError = true;
-        m_openingErrorMessage = i18n(
-            "The file %1 was opened with %2 encoding but contained invalid characters."
-            " It is set to read-only mode, as saving might destroy its content."
-            " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.",
-            this->url().toDisplayString(QUrl::PreferLocalFile),
-            m_buffer->textCodec());
     }
 
     // warn: too long lines
@@ -2468,13 +2459,6 @@ bool KTextEditor::DocumentPrivate::openFile()
 
         // remember error
         m_openingError = true;
-        m_openingErrorMessage = i18n(
-            "The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br/>"
-            "The longest of those lines was %3 characters long<br/>"
-            "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
-            this->url().toDisplayString(QUrl::PreferLocalFile),
-            config()->lineLengthLimit(),
-            m_buffer->longestLineLoaded());
     }
 
     //

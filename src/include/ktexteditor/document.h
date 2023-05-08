@@ -382,14 +382,6 @@ public:
      */
     bool openingError() const;
 
-    /**
-     * Error message if any problem occurred on last load.
-     * @return error message what went wrong on loading
-     */
-    // TODO KF6: Not needed anymore since we show load trouble as KTextEditor::Message.
-    //      Remove all code which set m_openingErrorMessage
-    QString openingErrorMessage() const;
-
     /*
      * SIGNALS
      * Following signals should be emitted by the document if the text content

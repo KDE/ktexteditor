@@ -82,11 +82,6 @@ bool Document::openingError() const
     return d->m_openingError;
 }
 
-QString Document::openingErrorMessage() const
-{
-    return d->m_openingErrorMessage;
-}
-
 bool KTextEditor::Document::replaceText(Range range, const QString &text, bool block)
 {
     bool success = true;
