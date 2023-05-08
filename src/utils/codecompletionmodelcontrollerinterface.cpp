@@ -42,8 +42,8 @@ Range CodeCompletionModelControllerInterface::completionRange(View *view, const 
     Cursor end = position;
     const int line = end.line();
 
-    // TODO KF6 make this a QStringView
-    const QString text = view->document()->line(line);
+    const QString lineText = view->document()->line(line);
+    QStringView text = lineText;
 
     static constexpr auto options = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::DontCaptureOption;
     static const QRegularExpression findWordStart(QStringLiteral("\\b[_\\w]+$"), options);
