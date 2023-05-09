@@ -9,9 +9,9 @@
 #include "katetextbuffertest.h"
 #include "katebuffer.h"
 #include "katedocument.h"
-#include "katetextcursor.h"
 #include "katetextfolding.h"
 #include <kateglobal.h>
+#include <ktexteditor/movingcursor.h>
 
 QTEST_MAIN(KateTextBufferTest)
 
@@ -141,18 +141,9 @@ void KateTextBufferTest::cursorTest()
     buffer.debugPrint(QStringLiteral("Cursor buffer"));
 
     // construct cursor
-    KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
+    KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(0, 0), KTextEditor::MovingCursor::MoveOnInsert);
     QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 0));
     // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
-
-    // Kate::TextCursor *cursor2 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1, 8), Kate::TextCursor::MoveOnInsert);
-    // printf ("cursor %d, %d\n", cursor2->line(), cursor2->column());
-
-    // Kate::TextCursor *cursor3 = new Kate::TextCursor (buffer, KTextEditor::Cursor (0, 123), Kate::TextCursor::MoveOnInsert);
-    // printf ("cursor %d, %d\n", cursor3->line(), cursor3->column());
-
-    // Kate::TextCursor *cursor4 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1323, 1), Kate::TextCursor::MoveOnInsert);
-    // printf ("cursor %d, %d\n", cursor4->line(), cursor4->column());
 
     // insert text
     buffer.startEditing();
