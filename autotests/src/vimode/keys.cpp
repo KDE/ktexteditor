@@ -32,9 +32,8 @@ QTEST_MAIN(KeysTest)
 
 void KeysTest::MappingTests()
 {
-    //     QVERIFY(false);
     const int mappingTimeoutMSOverride = QString::fromLocal8Bit(qgetenv("KATE_VIMODE_TEST_MAPPINGTIMEOUTMS")).toInt();
-    const int mappingTimeoutMS = (mappingTimeoutMSOverride > 0) ? mappingTimeoutMSOverride : 2000;
+    const int mappingTimeoutMS = (mappingTimeoutMSOverride > 0) ? mappingTimeoutMSOverride : 5;
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For tests involving e.g. <c-a>
     {
         // Check storage and retrieval of mapping recursion.
@@ -62,7 +61,7 @@ void KeysTest::MappingTests()
         clearAllMappings();
         BeginTest(QString());
         vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
-        ;
+
         QString consectiveDigits;
         for (int i = 1; i < 9; i++) {
             consectiveDigits += QString::number(i);
@@ -73,7 +72,7 @@ void KeysTest::MappingTests()
         }
         TestPressKey(QStringLiteral("'123"));
         QCOMPARE(kate_document->text(), QString()); // Shouldn't add anything until after the timeout!
-        QTest::qWait(2 * mappingTimeoutMS);
+        QTRY_COMPARE_WITH_TIMEOUT(kate_document->text(), QLatin1String("Mapped from 123"), 2 * mappingTimeoutMS);
         FinishTest("Mapped from 123");
     }
 
@@ -101,9 +100,9 @@ void KeysTest::MappingTests()
     vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("'testmappingdummy"), QStringLiteral("dummy"), Mappings::Recursive);
     BeginTest(QStringLiteral("XXXX\nXXXX\nXXXX\nXXXX"));
     vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
-    ;
+
     TestPressKey(QStringLiteral("3'testmapping"));
-    QTest::qWait(2 * mappingTimeoutMS);
+    QTRY_COMPARE_WITH_TIMEOUT(kate_document->text(), QLatin1String("XXXX\nXXXO\nXXXX\nXXXX"), 2 * mappingTimeoutMS);
     FinishTest("XXXX\nXXXO\nXXXX\nXXXX");
 
     // Test that telescoping mappings don't interfere with built-in commands. Assumes that gp
@@ -126,7 +125,7 @@ void KeysTest::MappingTests()
     vi_global->mappings()->add(Mappings::NormalModeMapping, QStringLiteral("gpa"), QStringLiteral("idummy"), Mappings::Recursive);
     BeginTest(QStringLiteral("hello"));
     vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
-    ;
+
     TestPressKey(QStringLiteral("yiwgp"));
     QTest::qWait(2 * mappingTimeoutMS);
     TestPressKey(QStringLiteral("x"));
