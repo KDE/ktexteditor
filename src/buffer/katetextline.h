@@ -23,7 +23,7 @@ namespace Kate
  * For efficiency reasons, not only pure text is stored here, but also additional data.
  * Will be only accessed over shared pointers.
  */
-class KTEXTEDITOR_EXPORT TextLineData
+class TextLineData
 {
     /**
      * TexBlock is a friend class, only one allowed to touch the text content.
