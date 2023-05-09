@@ -37,7 +37,7 @@ typedef std::shared_ptr<TextLineData> TextLine;
  * This is used to build up a Kate::TextBuffer.
  * This class should only be used by TextBuffer/Cursor/Range.
  */
-class KTEXTEDITOR_EXPORT TextBlock
+class TextBlock
 {
 public:
     /**
@@ -181,7 +181,7 @@ public:
      * @param rangesWithAttributeOnly       ranges with attributes only?
      * @return list of possible candidate ranges
      */
-    QVector<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
+    KTEXTEDITOR_EXPORT QVector<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
 
     /**
      * Is the given range contained in this block?
