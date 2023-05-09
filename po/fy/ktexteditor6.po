@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-07 02:15+0000\n"
+"POT-Creation-Date: 2023-05-09 02:10+0000\n"
 "PO-Revision-Date: 2009-05-22 10:03+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -2359,11 +2359,6 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Nij triemtype"
 
-#: document/katebuffer.cpp:148
-#, kde-format
-msgid "The file %1 does not exist."
-msgstr ""
-
 #: document/katedocument.cpp:223
 #, fuzzy, kde-format
 #| msgid "Close Document"
@@ -2395,29 +2390,18 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6543
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6544
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr ""
 
-#: document/katedocument.cpp:2306
-#, kde-format
-msgid ""
-"The file %1 could not be loaded, as it was not possible to read from it.\n"
-"\n"
-"Check if you have read access to this file."
-msgstr ""
-"De triem %1 koe net laden wurde. it is namlik net mooglik om it te lêzen.\n"
-"\n"
-"Kontrolearje of jo lêstagong ta dy triem hawwe."
-
-#: document/katedocument.cpp:2430
+#: document/katedocument.cpp:2427
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with UTF-8 encoding but contained invalid "
@@ -2435,25 +2419,7 @@ msgstr ""
 "ferneatigje kin. Of iepenje de triem op 'e nij mei de juste kodearring of "
 "set de lês-skriuw modus wer oan yn it menu om it bewurkje te kinnen."
 
-#: document/katedocument.cpp:2442
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 was opened with UTF-8 encoding but contained invalid "
-#| "characters. It is set to read-only mode, as saving might destroy its "
-#| "content. Either reopen the file with the correct encoding chosen or "
-#| "enable the read-write mode again in the menu to be able to edit it."
-msgid ""
-"The file %1 was opened with %2 encoding but contained invalid characters. It "
-"is set to read-only mode, as saving might destroy its content. Either reopen "
-"the file with the correct encoding chosen or enable the read-write mode "
-"again in the tools menu to be able to edit it."
-msgstr ""
-"De triem %1 wie iepene mei de UTF-8 kodearring mar befette ûnjildige "
-"karkaters. It is setten nei de allinne-lêze modus , omdat bewarjen de ynhâld "
-"ferneatigje kin. Of iepenje de triem op 'e nij mei de juste kodearring of "
-"set de lês-skriuw modus wer oan yn it menu om it bewurkje te kinnen."
-
-#: document/katedocument.cpp:2455
+#: document/katedocument.cpp:2446
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2462,26 +2428,17 @@ msgid ""
 "only mode, as saving will modify its content."
 msgstr ""
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2453
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2465
+#: document/katedocument.cpp:2456
 #, kde-format
 msgid "Close"
 msgstr ""
 
-#: document/katedocument.cpp:2472
-#, kde-format
-msgid ""
-"The file %1 was opened and contained lines longer than the configured Line "
-"Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-"characters long<br/>Those lines were wrapped and the document is set to read-"
-"only mode, as saving will modify its content."
-msgstr ""
-
-#: document/katedocument.cpp:2499
+#: document/katedocument.cpp:2483
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2490,18 +2447,18 @@ msgstr ""
 "Wolle jo dizze net bewurke triem bewarje> Hjirtroch oerskriuwe jo de wizige "
 "data yn de triem op de skiif."
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2484
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Besiket in net wizige triem te bewarjen"
 
-#: document/katedocument.cpp:2501 document/katedocument.cpp:2512
-#: document/katedocument.cpp:2528
+#: document/katedocument.cpp:2485 document/katedocument.cpp:2496
+#: document/katedocument.cpp:2512
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Dochs bewarje"
 
-#: document/katedocument.cpp:2510
+#: document/katedocument.cpp:2494
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2510,14 +2467,14 @@ msgstr ""
 "Wolle jo dizze triem bewarje? Sawol de iepensteande ferzje as de ferzje op "
 "skiif binne wizige. Hjirtroch kin der data ferlern gean. "
 
-#: document/katedocument.cpp:2511 document/katedocument.cpp:2527
-#: document/katedocument.cpp:2819 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2495 document/katedocument.cpp:2511
+#: document/katedocument.cpp:2803 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Mooglik dataferlies"
 
-#: document/katedocument.cpp:2525
+#: document/katedocument.cpp:2509
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2529,7 +2486,7 @@ msgstr ""
 "De keazen kodearring kin net elts unykoade-teken yn dit dokumint kodearje. "
 "Wolle jo it bewarje? It kin barre dat der data ferlern giet."
 
-#: document/katedocument.cpp:2570
+#: document/katedocument.cpp:2554
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2549,7 +2506,7 @@ msgstr ""
 "Kontrolearje of jo skriuwtagong ha ta dizze triem en of der genôch "
 "skiifromte oanwêzich is."
 
-#: document/katedocument.cpp:2691
+#: document/katedocument.cpp:2675
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2562,52 +2519,52 @@ msgstr ""
 "reden kin wêze dat de media wêrnei jo skriuwe fol is of de triemtafel of "
 "triem stiet foar jo op allinne-lêzen."
 
-#: document/katedocument.cpp:2695
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "It meitsjen fan in reservekopy mislearre."
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2680
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Dochs bewarje"
 
-#: document/katedocument.cpp:2818
+#: document/katedocument.cpp:2802
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Wolle jo fierdergean mei it sluten fan dizze triem? Hjirtroch kin der data "
 "ferlern gean."
 
-#: document/katedocument.cpp:2820
+#: document/katedocument.cpp:2804
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Dochs slute"
 
-#: document/katedocument.cpp:4630
+#: document/katedocument.cpp:4614
 #, kde-format
 msgid "Untitled"
 msgstr "Nammeleas"
 
-#: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
-#: document/katedocument.cpp:5964
+#: document/katedocument.cpp:4737 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Triem bewarje"
 
-#: document/katedocument.cpp:4756
+#: document/katedocument.cpp:4740
 #, kde-format
 msgid "Save failed"
 msgstr "Bewarjen mislearre"
 
-#: document/katedocument.cpp:5002
+#: document/katedocument.cpp:4986
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Triem bewarje"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2621,7 +2578,7 @@ msgstr ""
 "Kontrolearje of jo skriuwtagong ha ta dizze triem en of der genôch "
 "skiifromte oanwêzich is."
 
-#: document/katedocument.cpp:5291
+#: document/katedocument.cpp:5275
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2630,7 +2587,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5297
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2639,25 +2596,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5590
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "De triem '%1' is feroare troch in oar programma."
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5593
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "De triem '%1' is oanmakke troch in oar programma."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "De triem '%1' is wiske troch in oar programma."
 
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2666,17 +2623,17 @@ msgstr ""
 "It dokumint \"%1\" is oanpast.\n"
 "Wolle jo de feroarings bewarje of negearje?"
 
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Dokumint slúte"
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6068
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -4217,20 +4174,20 @@ msgstr "Tekst om mij te ferfangen"
 msgid "Spell check canceled."
 msgstr "Seleksje op tsvering hifkje..."
 
-#: spellcheck/spellcheckbar.cpp:246
+#: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
 msgctxt "progress label"
 msgid "Spell checking in progress..."
 msgstr "Seleksje op tsvering hifkje..."
 
-#: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Spelling"
 msgstr ""
 
-#: spellcheck/spellcheckbar.cpp:433 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
 msgid "Spell check complete."
@@ -8579,6 +8536,34 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Type %1 markearje"
+
+#~ msgid ""
+#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
+#~ "\n"
+#~ "Check if you have read access to this file."
+#~ msgstr ""
+#~ "De triem %1 koe net laden wurde. it is namlik net mooglik om it te "
+#~ "lêzen.\n"
+#~ "\n"
+#~ "Kontrolearje of jo lêstagong ta dy triem hawwe."
+
+#, fuzzy
+#~| msgid ""
+#~| "The file %1 was opened with UTF-8 encoding but contained invalid "
+#~| "characters. It is set to read-only mode, as saving might destroy its "
+#~| "content. Either reopen the file with the correct encoding chosen or "
+#~| "enable the read-write mode again in the menu to be able to edit it."
+#~ msgid ""
+#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
+#~ "It is set to read-only mode, as saving might destroy its content. Either "
+#~ "reopen the file with the correct encoding chosen or enable the read-write "
+#~ "mode again in the tools menu to be able to edit it."
+#~ msgstr ""
+#~ "De triem %1 wie iepene mei de UTF-8 kodearring mar befette ûnjildige "
+#~ "karkaters. It is setten nei de allinne-lêze modus , omdat bewarjen de "
+#~ "ynhâld ferneatigje kin. Of iepenje de triem op 'e nij mei de juste "
+#~ "kodearring of set de lês-skriuw modus wer oan yn it menu om it bewurkje "
+#~ "te kinnen."
 
 #, fuzzy
 #~| msgid "Error loading script %1"

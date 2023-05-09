@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-07 02:15+0000\n"
+"POT-Creation-Date: 2023-05-09 02:10+0000\n"
 "PO-Revision-Date: 2023-05-06 20:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2128,11 +2128,6 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Yeni dosya"
 
-#: document/katebuffer.cpp:148
-#, kde-format
-msgid "The file %1 does not exist."
-msgstr "%1 dosyası bulunamadı."
-
 #: document/katedocument.cpp:223
 #, kde-format
 msgid "Auto Reload Document"
@@ -2158,29 +2153,18 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Yeniden Dene"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6543
 #, kde-format
 msgid "&Close"
 msgstr "&Kapat"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6544
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "İletiyi Kapat"
 
-#: document/katedocument.cpp:2306
-#, kde-format
-msgid ""
-"The file %1 could not be loaded, as it was not possible to read from it.\n"
-"\n"
-"Check if you have read access to this file."
-msgstr ""
-"%1 dosyası yüklenemedi. Dosyadan okuma yapılamıyor.\n"
-"\n"
-"Dosyaya erişim izniniz olduğunu denetleyin."
-
-#: document/katedocument.cpp:2430
+#: document/katedocument.cpp:2427
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2193,20 +2177,7 @@ msgstr ""
 "geçiliyor.<br />Dosyayı doğru kodlama ile yeniden açabilirsiniz veya menüden "
 "okunur-yazılır kipe geçebilirsiniz."
 
-#: document/katedocument.cpp:2442
-#, kde-format
-msgid ""
-"The file %1 was opened with %2 encoding but contained invalid characters. It "
-"is set to read-only mode, as saving might destroy its content. Either reopen "
-"the file with the correct encoding chosen or enable the read-write mode "
-"again in the tools menu to be able to edit it."
-msgstr ""
-"%1 dosyası %2 kodlaması ile açıldı; ancak geçersiz karakterler içeriyor. Bir "
-"kaydetme eylemi ile içerik kaybedilebileceğinden salt okunur kipe geçiliyor. "
-"Dosyayı doğru kodlama ile yeniden açabilirsiniz veya menüden okunur-yazılır "
-"kipe geçebilirsiniz."
-
-#: document/katedocument.cpp:2455
+#: document/katedocument.cpp:2446
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2219,30 +2190,17 @@ msgstr ""
 "uzunluğunda<br/>Bu satırlar kaydırıldı ve belgeyi kaydetmek içeriğini "
 "değiştireceğinden salt okunur kipine dönüştürüldü."
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2453
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Geçici olarak sınırı yükselt ve dosyayı yeniden yükle"
 
-#: document/katedocument.cpp:2465
+#: document/katedocument.cpp:2456
 #, kde-format
 msgid "Close"
 msgstr "Kapat"
 
-#: document/katedocument.cpp:2472
-#, kde-format
-msgid ""
-"The file %1 was opened and contained lines longer than the configured Line "
-"Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-"characters long<br/>Those lines were wrapped and the document is set to read-"
-"only mode, as saving will modify its content."
-msgstr ""
-"%1 dosyası açıldı ve Satır Uzunluğu Sınırı (%2 karakter) yapılandırmasından "
-"daha uzun satırlara sahip.<br/>Bu satırların en uzunu %3 karakter "
-"uzunluğunda<br/>Bu satırlar kaydırıldı ve belgeyi kaydetmek içeriğini "
-"değiştireceğinden salt okunur kipine dönüştürüldü."
-
-#: document/katedocument.cpp:2499
+#: document/katedocument.cpp:2483
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2251,18 +2209,18 @@ msgstr ""
 "Düzenlenmemiş bu dosyayı kaydetmeyi gerçekten istiyor musunuz? Diskinizdeki "
 "değiştirilmiş dosyanın üzerine yazacaksınız."
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2484
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Düzenlenmemiş Dosyayı Kaydetmeye çalışıyor"
 
-#: document/katedocument.cpp:2501 document/katedocument.cpp:2512
-#: document/katedocument.cpp:2528
+#: document/katedocument.cpp:2485 document/katedocument.cpp:2496
+#: document/katedocument.cpp:2512
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Yine de Kaydet"
 
-#: document/katedocument.cpp:2510
+#: document/katedocument.cpp:2494
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2271,14 +2229,14 @@ msgstr ""
 "Bu dosyayı kaydetmeyi gerçekten istiyor musunuz? Hem açık olan dosya hem de "
 "diskinizdeki dosya değiştirilmiş durumda. Veri kaybı olmuş olabilir."
 
-#: document/katedocument.cpp:2511 document/katedocument.cpp:2527
-#: document/katedocument.cpp:2819 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2495 document/katedocument.cpp:2511
+#: document/katedocument.cpp:2803 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Olası Veri Kaybı"
 
-#: document/katedocument.cpp:2525
+#: document/katedocument.cpp:2509
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2288,7 +2246,7 @@ msgstr ""
 "kodlayamayacak. Kaydetmeyi gerçekten istiyor musunuz? Bazı verileri "
 "kaybedebilirsiniz."
 
-#: document/katedocument.cpp:2570
+#: document/katedocument.cpp:2554
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2303,7 +2261,7 @@ msgstr ""
 "Özgün dosya kaybolmuş veya hasar görmüş olabilir. Dosya başarıyla yazılana  "
 "dek uygulamadan çıkmayın."
 
-#: document/katedocument.cpp:2691
+#: document/katedocument.cpp:2675
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2316,51 +2274,51 @@ msgstr ""
 "Bunun nedeni yazdığınız medyanın dolu olması veya dosyanın bulunduğu dizinin "
 "sizin için salt okunur olması olabilir."
 
-#: document/katedocument.cpp:2695
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Yedek kopya oluşturulamadı."
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2680
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Yine de Kaydetmeyi Dene"
 
-#: document/katedocument.cpp:2818
+#: document/katedocument.cpp:2802
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Gerçekten bu dosyayı kapatmayı sürdürmek istiyor musunuz? Veri kaybı "
 "olabilir."
 
-#: document/katedocument.cpp:2820
+#: document/katedocument.cpp:2804
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Yine de Kapat"
 
-#: document/katedocument.cpp:4630
+#: document/katedocument.cpp:4614
 #, kde-format
 msgid "Untitled"
 msgstr "Adsız"
 
-#: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
-#: document/katedocument.cpp:5964
+#: document/katedocument.cpp:4737 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Dosyayı Kaydet"
 
-#: document/katedocument.cpp:4756
+#: document/katedocument.cpp:4740
 #, kde-format
 msgid "Save failed"
 msgstr "Kaydetme işlemi başarısız oldu"
 
-#: document/katedocument.cpp:5002
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Dosyanın Kopyasını Kaydet"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2372,7 +2330,7 @@ msgstr ""
 "\n"
 "Bu dosyaya yazma izniniz veya yeterli disk alanı olduğundan emin olun."
 
-#: document/katedocument.cpp:5291
+#: document/katedocument.cpp:5275
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2385,7 +2343,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5297
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2398,22 +2356,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5590
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' dosyası diskte değiştirildi."
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "'%1' dosyası diskte oluşturuldu."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "'%1' dosyası diskte silindi."
 
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2422,17 +2380,17 @@ msgstr ""
 "\"%1\" belgesi değiştirildi.\n"
 "Değişiklikleri kaydetmek mi yok saymak mı istiyorsunuz?"
 
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Belgeyi Kapat"
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> dosyası hala yükleniyor."
 
-#: document/katedocument.cpp:6068
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Yüklemeyi İptal Et"
@@ -3923,19 +3881,19 @@ msgstr "Değiştirilecek metin"
 msgid "Spell check canceled."
 msgstr "Yazım denetimi iptal edildi."
 
-#: spellcheck/spellcheckbar.cpp:246
+#: spellcheck/spellcheckbar.cpp:245
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
 msgstr "Yazım denetimi sürüyor..."
 
-#: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Spelling"
 msgstr "Yazım Denetimi Yap"
 
-#: spellcheck/spellcheckbar.cpp:433 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgid "Spell check complete."
 msgstr "Yazım denetimi tamamlandı."
@@ -8231,6 +8189,40 @@ msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
+
+#~ msgid "The file %1 does not exist."
+#~ msgstr "%1 dosyası bulunamadı."
+
+#~ msgid ""
+#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
+#~ "\n"
+#~ "Check if you have read access to this file."
+#~ msgstr ""
+#~ "%1 dosyası yüklenemedi. Dosyadan okuma yapılamıyor.\n"
+#~ "\n"
+#~ "Dosyaya erişim izniniz olduğunu denetleyin."
+
+#~ msgid ""
+#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
+#~ "It is set to read-only mode, as saving might destroy its content. Either "
+#~ "reopen the file with the correct encoding chosen or enable the read-write "
+#~ "mode again in the tools menu to be able to edit it."
+#~ msgstr ""
+#~ "%1 dosyası %2 kodlaması ile açıldı; ancak geçersiz karakterler içeriyor. "
+#~ "Bir kaydetme eylemi ile içerik kaybedilebileceğinden salt okunur kipe "
+#~ "geçiliyor. Dosyayı doğru kodlama ile yeniden açabilirsiniz veya menüden "
+#~ "okunur-yazılır kipe geçebilirsiniz."
+
+#~ msgid ""
+#~ "The file %1 was opened and contained lines longer than the configured "
+#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
+#~ "characters long<br/>Those lines were wrapped and the document is set to "
+#~ "read-only mode, as saving will modify its content."
+#~ msgstr ""
+#~ "%1 dosyası açıldı ve Satır Uzunluğu Sınırı (%2 karakter) "
+#~ "yapılandırmasından daha uzun satırlara sahip.<br/>Bu satırların en uzunu "
+#~ "%3 karakter uzunluğunda<br/>Bu satırlar kaydırıldı ve belgeyi kaydetmek "
+#~ "içeriğini değiştireceğinden salt okunur kipine dönüştürüldü."
 
 #~ msgid "Will never again warn about on disk changes but always reload."
 #~ msgstr ""

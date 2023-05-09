@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-07 02:15+0000\n"
+"POT-Creation-Date: 2023-05-09 02:10+0000\n"
 "PO-Revision-Date: 2014-01-31 20:37+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: bosanski <bs@li.org>\n"
@@ -2216,11 +2216,6 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Nova datoteka"
 
-#: document/katebuffer.cpp:148
-#, kde-format
-msgid "The file %1 does not exist."
-msgstr "Datoteka %1 ne postoji."
-
 # >> @title:window
 #: document/katedocument.cpp:223
 #, fuzzy, kde-format
@@ -2248,31 +2243,19 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Pokušaj ponovo"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6543
 #, kde-format
 msgid "&Close"
 msgstr "&Zatvori"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6544
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Zatvori poruku"
 
-#: document/katedocument.cpp:2306
-#, kde-format
-msgid ""
-"The file %1 could not be loaded, as it was not possible to read from it.\n"
-"\n"
-"Check if you have read access to this file."
-msgstr ""
-"Datoteka <filename>%1</filename> nije mogla biti učitana, pošto se ne može "
-"čitati.\n"
-"\n"
-"Provjerite da li imate dozvolu čitanja za ovu datoteku."
-
-#: document/katedocument.cpp:2430
+#: document/katedocument.cpp:2427
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2290,25 +2273,7 @@ msgstr ""
 "upisivanjem.<br /> Ili ponovo otvorite datoteku sa tačnim kodiranjem, ili "
 "ručno uključite režim čitanja-pisanja ako ipak želite da ga uređujete."
 
-#: document/katedocument.cpp:2442
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 was opened with %2 encoding but contained invalid characters. "
-#| "It is set to read-only mode, as saving might destroy its content. Either "
-#| "reopen the file with the correct encoding chosen or enable the read-write "
-#| "mode again in the menu to be able to edit it."
-msgid ""
-"The file %1 was opened with %2 encoding but contained invalid characters. It "
-"is set to read-only mode, as saving might destroy its content. Either reopen "
-"the file with the correct encoding chosen or enable the read-write mode "
-"again in the tools menu to be able to edit it."
-msgstr ""
-"Datoteka <filename>%1</filename> otvorena je sa kodiranjem %2, ali sadrži "
-"neispravne znake. Postavljen je režim samo‑za‑čitanje, jer bi sadržaj mogao "
-"biti oštećen upisivanjem. Ili ponovo otvorite datoteku sa tačnim kodiranjem, "
-"ili ručno uključite režim čitanja-pisanja ako ipak želite da ga uređujete."
-
-#: document/katedocument.cpp:2455
+#: document/katedocument.cpp:2446
 #, fuzzy, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2320,29 +2285,17 @@ msgstr ""
 "dužine reda(%2 znaka). <br />Ti redovi su prelomljeni i dokument je "
 "postavljen u režim za čitanje, kao ušteda će se izmijeniti njegov sadržaj."
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2453
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2465
+#: document/katedocument.cpp:2456
 #, kde-format
 msgid "Close"
 msgstr "Zatvori"
 
-#: document/katedocument.cpp:2472
-#, fuzzy, kde-format
-msgid ""
-"The file %1 was opened and contained lines longer than the configured Line "
-"Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-"characters long<br/>Those lines were wrapped and the document is set to read-"
-"only mode, as saving will modify its content."
-msgstr ""
-"Datoteka %1 je otvorena i sadržava linije duže od konfigurisanog limita "
-"dužine reda(%2 znaka). <br />Ti redovi su prelomljeni i dokument je "
-"postavljen u režim za čitanje, kao ušteda će se izmijeniti njegov sadržaj."
-
-#: document/katedocument.cpp:2499
+#: document/katedocument.cpp:2483
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2351,18 +2304,18 @@ msgstr ""
 "Želite li stvarno snimiti ovu neizmijenjenu datoteku? Mogli biste prepisati "
 "preko izmijenjenih podataka na disku."
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2484
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Pokušaj da se snimi neizmijenjena datoteka"
 
-#: document/katedocument.cpp:2501 document/katedocument.cpp:2512
-#: document/katedocument.cpp:2528
+#: document/katedocument.cpp:2485 document/katedocument.cpp:2496
+#: document/katedocument.cpp:2512
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Ipak snimi"
 
-#: document/katedocument.cpp:2510
+#: document/katedocument.cpp:2494
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2371,14 +2324,14 @@ msgstr ""
 "Želite li stvarno snimiti ovu neizmijenjenu datoteku? Izmijenjena je i vaša "
 "otvorena datoteka i datoteka na disku. Moglo bi doći do gubitka podataka."
 
-#: document/katedocument.cpp:2511 document/katedocument.cpp:2527
-#: document/katedocument.cpp:2819 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2495 document/katedocument.cpp:2511
+#: document/katedocument.cpp:2803 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Moguć gubitak podataka"
 
-#: document/katedocument.cpp:2525
+#: document/katedocument.cpp:2509
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2391,7 +2344,7 @@ msgstr ""
 "korišteni u ovom dokumentu. Da li ga zaista želite snimiti? Može doći do "
 "gubitka podataka."
 
-#: document/katedocument.cpp:2570
+#: document/katedocument.cpp:2554
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2410,7 +2363,7 @@ msgstr ""
 "Provjerite da li imate dozvolu za pisanje u ovu datoteku i da li ima "
 "dovoljno prostora na disku."
 
-#: document/katedocument.cpp:2691
+#: document/katedocument.cpp:2675
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2423,50 +2376,50 @@ msgstr ""
 "datoteke. Razlog bi mogao biti pun medijum na koji upisujete, ili nedostatak "
 "dozvole pisanja u direktorij u kome je datoteka."
 
-#: document/katedocument.cpp:2695
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Ne mogu da napravim rezervu."
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2680
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Ipak pokušaj da snimiš"
 
-#: document/katedocument.cpp:2818
+#: document/katedocument.cpp:2802
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Želite li zaista da zatvorite ovu datoteku? Može doći do gubitka podataka."
 
-#: document/katedocument.cpp:2820
+#: document/katedocument.cpp:2804
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Ipak zatvori"
 
-#: document/katedocument.cpp:4630
+#: document/katedocument.cpp:4614
 #, kde-format
 msgid "Untitled"
 msgstr "Neimenovano"
 
-#: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
-#: document/katedocument.cpp:5964
+#: document/katedocument.cpp:4737 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Snimi datoteku"
 
-#: document/katedocument.cpp:4756
+#: document/katedocument.cpp:4740
 #, kde-format
 msgid "Save failed"
 msgstr "Snimanje nije uspjelo"
 
-#: document/katedocument.cpp:5002
+#: document/katedocument.cpp:4986
 #, fuzzy, kde-format
 msgid "Save Copy of File"
 msgstr "Snimi datoteku"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2479,7 +2432,7 @@ msgstr ""
 "Provjerite da li imate dozvolu za pisanje u ovu datoteku i da li ima "
 "dovoljno prostora na disku."
 
-#: document/katedocument.cpp:5291
+#: document/katedocument.cpp:5275
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2495,7 +2448,7 @@ msgstr ""
 "'remove-trailing-spaces modified;', vidi http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5297
+#: document/katedocument.cpp:5281
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2511,25 +2464,25 @@ msgstr ""
 "sa 'remove-trailing-spaces all;', vidi http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5590
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Neki drugi program je izmijenio datoteku <filename>%1</filename>."
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5593
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Neki drugi program je napravio datoteku <filename>%1</filename>."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Neki drugi program je obrisao datoteku <filename>%1</filename>."
 
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2539,17 +2492,17 @@ msgstr ""
 "Želite li snimiti vaše izmjene ili ih poništiti?"
 
 # >> @title:window
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Zatvaranje dokumenta"
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datoteka <a href=\"%1\">%2</a> se još učitava."
 
-#: document/katedocument.cpp:6068
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Prekini učitavanje"
@@ -4105,7 +4058,7 @@ msgstr "Tekst kojim se zamjenjuje"
 msgid "Spell check canceled."
 msgstr "Provjeri pravopis izbora..."
 
-#: spellcheck/spellcheckbar.cpp:246
+#: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
 msgctxt "progress label"
@@ -4113,14 +4066,14 @@ msgid "Spell checking in progress..."
 msgstr "Provjeri pravopis izbora..."
 
 # >> @title:mijenu
-#: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, fuzzy, kde-format
 #| msgid "Spelling"
 msgctxt "@title:window"
 msgid "Check Spelling"
 msgstr "Pravopis"
 
-#: spellcheck/spellcheckbar.cpp:433 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
 msgid "Spell check complete."
@@ -8489,6 +8442,48 @@ msgstr "'%1' %2,  heks %3, okt %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Obilježje nije postavljeno: %1"
+
+#~ msgid "The file %1 does not exist."
+#~ msgstr "Datoteka %1 ne postoji."
+
+#~ msgid ""
+#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
+#~ "\n"
+#~ "Check if you have read access to this file."
+#~ msgstr ""
+#~ "Datoteka <filename>%1</filename> nije mogla biti učitana, pošto se ne "
+#~ "može čitati.\n"
+#~ "\n"
+#~ "Provjerite da li imate dozvolu čitanja za ovu datoteku."
+
+#, fuzzy
+#~| msgid ""
+#~| "The file %1 was opened with %2 encoding but contained invalid "
+#~| "characters. It is set to read-only mode, as saving might destroy its "
+#~| "content. Either reopen the file with the correct encoding chosen or "
+#~| "enable the read-write mode again in the menu to be able to edit it."
+#~ msgid ""
+#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
+#~ "It is set to read-only mode, as saving might destroy its content. Either "
+#~ "reopen the file with the correct encoding chosen or enable the read-write "
+#~ "mode again in the tools menu to be able to edit it."
+#~ msgstr ""
+#~ "Datoteka <filename>%1</filename> otvorena je sa kodiranjem %2, ali sadrži "
+#~ "neispravne znake. Postavljen je režim samo‑za‑čitanje, jer bi sadržaj "
+#~ "mogao biti oštećen upisivanjem. Ili ponovo otvorite datoteku sa tačnim "
+#~ "kodiranjem, ili ručno uključite režim čitanja-pisanja ako ipak želite da "
+#~ "ga uređujete."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file %1 was opened and contained lines longer than the configured "
+#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
+#~ "characters long<br/>Those lines were wrapped and the document is set to "
+#~ "read-only mode, as saving will modify its content."
+#~ msgstr ""
+#~ "Datoteka %1 je otvorena i sadržava linije duže od konfigurisanog limita "
+#~ "dužine reda(%2 znaka). <br />Ti redovi su prelomljeni i dokument je "
+#~ "postavljen u režim za čitanje, kao ušteda će se izmijeniti njegov sadržaj."
 
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Greška pri učitavanju skripte <filename>%1</filename>\n"

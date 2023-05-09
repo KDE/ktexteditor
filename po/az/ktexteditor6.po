@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-07 02:15+0000\n"
+"POT-Creation-Date: 2023-05-09 02:10+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2124,11 +2124,6 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Yeni fayl"
 
-#: document/katebuffer.cpp:148
-#, kde-format
-msgid "The file %1 does not exist."
-msgstr "%1 faylı mövcud deyil."
-
 #: document/katedocument.cpp:223
 #, kde-format
 msgid "Auto Reload Document"
@@ -2154,30 +2149,19 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Yenidən cəhd edin"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2294 document/katedocument.cpp:6543
 #, kde-format
 msgid "&Close"
 msgstr "&Bağlayın"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6560
+#: document/katedocument.cpp:2295 document/katedocument.cpp:6544
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Meajı bağlayın"
 
-#: document/katedocument.cpp:2306
-#, kde-format
-msgid ""
-"The file %1 could not be loaded, as it was not possible to read from it.\n"
-"\n"
-"Check if you have read access to this file."
-msgstr ""
-"%1 faylını yükləmək mümkün olmadı.\n"
-"\n"
-"Bu faylı oxumağa icazənizin olduğunu yoxlayın."
-
-#: document/katedocument.cpp:2430
+#: document/katedocument.cpp:2427
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2191,21 +2175,7 @@ msgstr ""
 "fayla düzəliş. etmək imkanı əldə etmək üçün alətlər menyusundan oxumaq-"
 "yazmaq rejimini aktiv edin."
 
-#: document/katedocument.cpp:2442
-#, kde-format
-msgid ""
-"The file %1 was opened with %2 encoding but contained invalid characters. It "
-"is set to read-only mode, as saving might destroy its content. Either reopen "
-"the file with the correct encoding chosen or enable the read-write mode "
-"again in the tools menu to be able to edit it."
-msgstr ""
-"%1 faylı %2 kodlaşması ilə açıldı, lakin tərkibində səhv simvollar var.Bu "
-"\"ancaq oxumaq\" rejimində qurulub. Saxlanılması onun bütün tərkibini məhv "
-"edə bilər. Həmin faylı ya düzgün seçilmiş kodlaşma ilə açın, ya da fayla "
-"düzəliş. etmək imkanı əldə etmək üçün, alətlər menyusundan oxumaq-yazmaq "
-"rejimini aktiv edin."
-
-#: document/katedocument.cpp:2455
+#: document/katedocument.cpp:2446
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2218,30 +2188,17 @@ msgstr ""
 "idi <br/>Bu sətirlər daha qısa olaraq bölündü və \"ancaq oxu\" rejimi təyin "
 "olundu, belə ki, saxlanılma faylı korlaya bilərdi."
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2453
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Limiti müvəqqəti aradan qaldırın və faylı yenidən yükləyin"
 
-#: document/katedocument.cpp:2465
+#: document/katedocument.cpp:2456
 #, kde-format
 msgid "Close"
 msgstr "Bağla"
 
-#: document/katedocument.cpp:2472
-#, kde-format
-msgid ""
-"The file %1 was opened and contained lines longer than the configured Line "
-"Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-"characters long<br/>Those lines were wrapped and the document is set to read-"
-"only mode, as saving will modify its content."
-msgstr ""
-"%1 faylı açıldı və tərkibində təyin edilmiş Sətir Uzunluğu Limitindən (%2 "
-"simvol) daha uzun sətirlər var. <br/>Ən uzun sətirlər %3 simvoldan ibarət "
-"idi. <br/>Bu sətirlər daha qısa olaraq bölündü və \"ancaq oxu\" rejimi təyin "
-"olundu, belə ki, saxlanılma faylı korlaya bilərdi."
-
-#: document/katedocument.cpp:2499
+#: document/katedocument.cpp:2483
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2250,18 +2207,18 @@ msgstr ""
 "Siz doğrudanmı dəyişsirilməmiş faylı saxlamaq istəyirsiniz? Faylda başqa bir "
 "pqoqram tərəfindən edilmiş dəyişiklikləri itirə bilərsiniz."
 
-#: document/katedocument.cpp:2500
+#: document/katedocument.cpp:2484
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Dəyişiklik edilməmiş faylı saxlamağa cəhd edin"
 
-#: document/katedocument.cpp:2501 document/katedocument.cpp:2512
-#: document/katedocument.cpp:2528
+#: document/katedocument.cpp:2485 document/katedocument.cpp:2496
+#: document/katedocument.cpp:2512
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Hər halda saxlayın"
 
-#: document/katedocument.cpp:2510
+#: document/katedocument.cpp:2494
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2270,14 +2227,14 @@ msgstr ""
 "Siz doğrudanmı bu faylı saxlamaq istəyirsiniz? Həm açıq faylınız, həm də "
 "diskdəki fayl dəyişdirildi. Bəzi məlumatlar itirilə bilər."
 
-#: document/katedocument.cpp:2511 document/katedocument.cpp:2527
-#: document/katedocument.cpp:2819 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2495 document/katedocument.cpp:2511
+#: document/katedocument.cpp:2803 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Məlumatlar itirilə bilər"
 
-#: document/katedocument.cpp:2525
+#: document/katedocument.cpp:2509
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2288,7 +2245,7 @@ msgstr ""
 "kodlaşmdan istifadə etməli olduğunuza əmin deyilsinizsə UTF-8 və ya UTF-16 "
 "istifadə edin."
 
-#: document/katedocument.cpp:2570
+#: document/katedocument.cpp:2554
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2303,7 +2260,7 @@ msgstr ""
 "Bu orijinal fayl itirilə və ya zədələnə bilər. Fayl müvəffəqiyyətlə yazəlana "
 "qədər proqramı bağlamayın."
 
-#: document/katedocument.cpp:2691
+#: document/katedocument.cpp:2675
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2316,49 +2273,49 @@ msgstr ""
 "diskinizin dolması və ya fayl yerləşən qovluğun \"ancaq oxumaq\" rejimində "
 "olması səbəb ola bilər."
 
-#: document/katedocument.cpp:2695
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Yedək nüsxənin yaradıla bilmir."
 
-#: document/katedocument.cpp:2696
+#: document/katedocument.cpp:2680
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "İstənilən halda saxlamağa cəhd edin"
 
-#: document/katedocument.cpp:2818
+#: document/katedocument.cpp:2802
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Siz doğrudan bu faylı bağlamaq istəyirsiniz? Verilənlər itirilə bilər."
 
-#: document/katedocument.cpp:2820
+#: document/katedocument.cpp:2804
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "İstənilən halda bağlayın"
 
-#: document/katedocument.cpp:4630
+#: document/katedocument.cpp:4614
 #, kde-format
 msgid "Untitled"
 msgstr "Adsız"
 
-#: document/katedocument.cpp:4753 document/katedocument.cpp:4981
-#: document/katedocument.cpp:4991 document/katedocument.cpp:5774
-#: document/katedocument.cpp:5964
+#: document/katedocument.cpp:4737 document/katedocument.cpp:4965
+#: document/katedocument.cpp:4975 document/katedocument.cpp:5758
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid "Save File"
 msgstr "Faylı Saxla"
 
-#: document/katedocument.cpp:4756
+#: document/katedocument.cpp:4740
 #, kde-format
 msgid "Save failed"
 msgstr "Uğursuz Saxlama"
 
-#: document/katedocument.cpp:5002
+#: document/katedocument.cpp:4986
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Faylın Nüsxəsini Saxlayın"
 
-#: document/katedocument.cpp:5014
+#: document/katedocument.cpp:4998
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2371,7 +2328,7 @@ msgstr ""
 "Faylı yazmağa icazənizin və ya diskdə kifayət qədər boş yerin olduğunu "
 "yoxlayın."
 
-#: document/katedocument.cpp:5291
+#: document/katedocument.cpp:5275
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2384,7 +2341,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5297
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2397,22 +2354,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5590
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Diskdə \"%1\" faylı dəyişdirildi."
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Diskdə \"%1\" faylı yaradıldı."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Diskdən \"%1\" faylı silindi."
 
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2421,17 +2378,17 @@ msgstr ""
 "\"%1\" sənədinə dəyişiklik edildi.\n"
 "Siz bu dəyişikiyi saxlamaq yoxsa ləğv etmək istəyirsiniz?"
 
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5936
 #, kde-format
 msgid "Close Document"
 msgstr "Sənədi Bağlayın"
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6047
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> faylının yüklənməsi davam edir."
 
-#: document/katedocument.cpp:6068
+#: document/katedocument.cpp:6052
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Yüklənməni d&ayandırmaq"
@@ -3934,19 +3891,19 @@ msgstr "Dəyişmək üçün mətn"
 msgid "Spell check canceled."
 msgstr "Orfoqrafiya yoxlaması ləğv edildi"
 
-#: spellcheck/spellcheckbar.cpp:246
+#: spellcheck/spellcheckbar.cpp:245
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
 msgstr "Orfoqrafiya yoxlanılır..."
 
-#: spellcheck/spellcheckbar.cpp:247 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Spelling"
 msgstr "Orfoqrafiya yoxlaması"
 
-#: spellcheck/spellcheckbar.cpp:433 spellcheck/spellcheckbar.cpp:436
+#: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgid "Spell check complete."
 msgstr "Orfoqrafiya yoxlaması başa çatdı."
@@ -8239,6 +8196,41 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İşarələnməyib: %1"
+
+#~ msgid "The file %1 does not exist."
+#~ msgstr "%1 faylı mövcud deyil."
+
+#~ msgid ""
+#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
+#~ "\n"
+#~ "Check if you have read access to this file."
+#~ msgstr ""
+#~ "%1 faylını yükləmək mümkün olmadı.\n"
+#~ "\n"
+#~ "Bu faylı oxumağa icazənizin olduğunu yoxlayın."
+
+#~ msgid ""
+#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
+#~ "It is set to read-only mode, as saving might destroy its content. Either "
+#~ "reopen the file with the correct encoding chosen or enable the read-write "
+#~ "mode again in the tools menu to be able to edit it."
+#~ msgstr ""
+#~ "%1 faylı %2 kodlaşması ilə açıldı, lakin tərkibində səhv simvollar var.Bu "
+#~ "\"ancaq oxumaq\" rejimində qurulub. Saxlanılması onun bütün tərkibini "
+#~ "məhv edə bilər. Həmin faylı ya düzgün seçilmiş kodlaşma ilə açın, ya da "
+#~ "fayla düzəliş. etmək imkanı əldə etmək üçün, alətlər menyusundan oxumaq-"
+#~ "yazmaq rejimini aktiv edin."
+
+#~ msgid ""
+#~ "The file %1 was opened and contained lines longer than the configured "
+#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
+#~ "characters long<br/>Those lines were wrapped and the document is set to "
+#~ "read-only mode, as saving will modify its content."
+#~ msgstr ""
+#~ "%1 faylı açıldı və tərkibində təyin edilmiş Sətir Uzunluğu Limitindən (%2 "
+#~ "simvol) daha uzun sətirlər var. <br/>Ən uzun sətirlər %3 simvoldan ibarət "
+#~ "idi. <br/>Bu sətirlər daha qısa olaraq bölündü və \"ancaq oxu\" rejimi "
+#~ "təyin olundu, belə ki, saxlanılma faylı korlaya bilərdi."
 
 #~ msgid "Will never again warn about on disk changes but always reload."
 #~ msgstr "Təkrar təsdiqləmədən dəyişdirilmiş fayllar həmişə yenilənsin."
