@@ -33,7 +33,7 @@ class TextBuffer;
  * a TextRange will become automatically invalid as soon as start() == end()
  * position holds.
  */
-class KTEXTEDITOR_EXPORT TextRange final : public KTextEditor::MovingRange
+class TextRange final : public KTextEditor::MovingRange
 {
     // this is a friend, block changes might invalidate ranges...
     friend class TextBlock;
@@ -300,7 +300,6 @@ private:
      * @param oldLineRange line range of this range before changing of cursors, needed to add/remove range from m_ranges in blocks, required!
      * @param notifyAboutChange should feedback be emitted or not?
      */
-    KTEXTEDITOR_NO_EXPORT
     void checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAboutChange = true);
 
     /**
@@ -308,7 +307,6 @@ private:
      * @param oldLineRange old line range before changing of cursors, needed to add/remove range from m_ranges in blocks
      * @param lineRange line range to start looking for the range to remove
      */
-    KTEXTEDITOR_NO_EXPORT
     void fixLookup(KTextEditor::LineRange oldLineRange, KTextEditor::LineRange lineRange);
 
     /**
