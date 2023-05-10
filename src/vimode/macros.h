@@ -17,7 +17,7 @@ class KConfigGroup;
 
 namespace KateVi
 {
-class KTEXTEDITOR_EXPORT Macros
+class Macros
 {
 public:
     explicit Macros();
@@ -28,17 +28,14 @@ public:
 
     void store(const QChar &reg, const QList<KeyEvent> &macroKeyEventLog, const CompletionList &completions);
     void remove(const QChar &reg);
-    void clear();
+    KTEXTEDITOR_EXPORT void clear();
 
     QString get(const QChar &reg) const;
     CompletionList getCompletions(const QChar &reg) const;
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     int readMacroCompletions(const QChar &reg, const QStringList &encodedMacroCompletions, int macroCompletionIndex);
-    KTEXTEDITOR_NO_EXPORT
     static QString encodeMacroCompletionForConfig(const Completion &completionForMacro);
-    KTEXTEDITOR_NO_EXPORT
     static Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
 
 private:

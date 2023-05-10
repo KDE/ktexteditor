@@ -7,8 +7,6 @@
 #ifndef _KATE_CMD_H
 #define _KATE_CMD_H
 
-#include <ktexteditor_export.h>
-
 #include <KCompletion>
 
 #include <QHash>
@@ -19,7 +17,7 @@ namespace KTextEditor
 class Command;
 }
 
-class KTEXTEDITOR_EXPORT KateCmd
+class KateCmd
 {
 public:
     KateCmd();

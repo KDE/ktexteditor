@@ -57,7 +57,7 @@ class QScroller;
 class QScrollEvent;
 class QScrollPrepareEvent;
 
-class KTEXTEDITOR_EXPORT KateViewInternal final : public QWidget
+class KateViewInternal final : public QWidget
 {
     Q_OBJECT
 
@@ -120,7 +120,6 @@ private Q_SLOTS:
     void updateView(bool changed = false, int viewLinesScrolled = 0);
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void makeVisible(const KTextEditor::Cursor c, int endCol, bool force = false, bool center = false, bool calledExternally = false);
 
 public:
@@ -186,10 +185,8 @@ public:
 
 private:
     // Takes as input @p c and applies the home command on it
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor moveCursorToLineStart(KTextEditor::Cursor c);
     // Takes as input @p c and applies the end command on it
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor moveCursorToLineEnd(KTextEditor::Cursor c);
 
 public:
@@ -219,8 +216,9 @@ public:
     QPoint cursorCoordinates(bool includeBorder = true) const;
     KTextEditor::Cursor findMatchingBracket();
 
-    KTextEditor::Range findMatchingFoldingMarker(const KTextEditor::Cursor current_cursor_pos, const int value, const int maxLines);
-    void updateFoldingMarkersHighlighting();
+    // exported for unit tests
+    KTEXTEDITOR_EXPORT KTextEditor::Range findMatchingFoldingMarker(const KTextEditor::Cursor current_cursor_pos, const int value, const int maxLines);
+    KTEXTEDITOR_EXPORT void updateFoldingMarkersHighlighting();
 
     inline int getStartOffset(int direction, int offset, int length) const
     {
@@ -239,10 +237,8 @@ public:
 
     // EVENT HANDLING STUFF - IMPORTANT
 private:
-    KTEXTEDITOR_NO_EXPORT
     void fixDropEvent(QDropEvent *event);
 
-    KTEXTEDITOR_NO_EXPORT
     static bool isAcceptableInput(const QKeyEvent *e);
 
 protected:
@@ -283,38 +279,23 @@ private Q_SLOTS:
     void slotRegionBeginEndAddedRemoved(unsigned int);
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void moveChar(Bias bias, bool sel);
-    KTEXTEDITOR_NO_EXPORT
     void moveEdge(Bias bias, bool sel);
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor maxStartPos(bool changed = false);
-    KTEXTEDITOR_NO_EXPORT
     void scrollPos(KTextEditor::Cursor &c, bool force = false, bool calledExternally = false, bool emitSignals = true);
-    KTEXTEDITOR_NO_EXPORT
     void scrollLines(int lines, bool sel);
 
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor position) const;
-    KTEXTEDITOR_NO_EXPORT
     int linesDisplayed() const;
 
-    KTEXTEDITOR_NO_EXPORT
     int lineToY(int viewLine) const;
 
-    KTEXTEDITOR_NO_EXPORT
     void updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos);
-    KTEXTEDITOR_NO_EXPORT
     void updateSelection(const KTextEditor::Cursor, bool keepSel);
-    KTEXTEDITOR_NO_EXPORT
     void setSelection(KTextEditor::Range);
-    KTEXTEDITOR_NO_EXPORT
     void moveCursorToSelectionEdge(bool scroll = true);
-    KTEXTEDITOR_NO_EXPORT
     void updateCursor(const KTextEditor::Cursor newCursor, bool force = false, bool center = false, bool calledExternally = false, bool scroll = true);
-    KTEXTEDITOR_NO_EXPORT
     void updateBracketMarks();
-    KTEXTEDITOR_NO_EXPORT
     void beginSelectLine(const QPoint &pos);
 
     struct CursorPair {
@@ -323,30 +304,20 @@ private:
     };
     // @brief updates the secondary cursor, schedules repaint
     // MUST setPosition of the corresponding moving cursors before calling this
-    KTEXTEDITOR_NO_EXPORT
     void updateSecondaryCursors(const QVarLengthArray<CursorPair, 16> &cursors, bool sel);
-    KTEXTEDITOR_NO_EXPORT
     void mergeSelections();
 
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor cursorForPoint(QPoint p);
-    KTEXTEDITOR_NO_EXPORT
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
-    KTEXTEDITOR_NO_EXPORT
     bool isTargetSelected(const QPoint &p);
     // Returns whether the given range affects the area currently visible in the view
-    KTEXTEDITOR_NO_EXPORT
     bool rangeAffectsView(KTextEditor::Range range, bool realCursors) const;
 
-    KTEXTEDITOR_NO_EXPORT
     void doDrag();
 
-    KTEXTEDITOR_NO_EXPORT
     KateRenderer *renderer() const;
 
-    KTEXTEDITOR_NO_EXPORT
     bool sendMouseEventToInputContext(QMouseEvent *e);
-    KTEXTEDITOR_NO_EXPORT
     void commitPreedit();
 
     KTextEditor::ViewPrivate *m_view;
@@ -404,7 +375,6 @@ private:
     bool m_shiftKeyPressed;
 
     // How many lines to should be kept visible above/below the cursor when possible
-    KTEXTEDITOR_NO_EXPORT
     void setAutoCenterLines(int viewLines, bool updateView = true);
     int m_autoCenterLines;
     int m_minLinesVisible;
@@ -428,48 +398,36 @@ private:
     KTextEditor::Range m_selectionCached;
 
     // maximal length of textlines visible from given startLine
-    KTEXTEDITOR_NO_EXPORT
     int maxLen(int startLine);
 
     // are we allowed to scroll columns?
-    KTEXTEDITOR_NO_EXPORT
     bool columnScrollingPossible();
 
     // the same for lines
-    KTEXTEDITOR_NO_EXPORT
     bool lineScrollingPossible();
 
     // returns the maximum X value / col value a cursor can take for a specific line range
-    KTEXTEDITOR_NO_EXPORT
     int lineMaxCursorX(const KateTextLayout &line);
-    KTEXTEDITOR_NO_EXPORT
     static int lineMaxCol(const KateTextLayout &line);
 
-    KTEXTEDITOR_NO_EXPORT
     class KateLayoutCache *cache() const;
     KateLayoutCache *m_layoutCache;
 
     // convenience methods
 
     /// returns layout for the line c.line()
-    KTEXTEDITOR_NO_EXPORT
     KateTextLayout currentLayout(KTextEditor::Cursor c) const;
     // returns layout for the line previous to @p c
-    KTEXTEDITOR_NO_EXPORT
     KateTextLayout previousLayout(KTextEditor::Cursor c) const;
     // returns layout for the line next to @p c
-    KTEXTEDITOR_NO_EXPORT
     KateTextLayout nextLayout(KTextEditor::Cursor c) const;
 
     // find the cursor offset by (offset) view lines from a cursor.
     // when keepX is true, the column position will be calculated based on the x
     // position of the specified cursor.
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor viewLineOffset(const KTextEditor::Cursor virtualCursor, int offset, bool keepX = false);
 
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor toRealCursor(const KTextEditor::Cursor virtualCursor) const;
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::Cursor toVirtualCursor(const KTextEditor::Cursor realCursor) const;
 
     // These variable holds the most recent maximum real & visible column number
@@ -538,15 +496,11 @@ private:
     std::vector<std::unique_ptr<KTextEditor::MovingRange>> m_imPreeditRangeChildren;
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void mouseMoved();
-    KTEXTEDITOR_NO_EXPORT
     void cursorMoved();
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::DocumentPrivate *doc();
-    KTEXTEDITOR_NO_EXPORT
     KTextEditor::DocumentPrivate *doc() const;
 
     // input modes
@@ -555,9 +509,7 @@ private:
     KateAbstractInputMode *m_currentInputMode;
 
     KateInlineNoteData m_activeInlineNote;
-    KTEXTEDITOR_NO_EXPORT
     KateInlineNoteData inlineNoteAt(const QPoint &globalPos) const;
-    KTEXTEDITOR_NO_EXPORT
     QRect inlineNoteRect(const KateInlineNoteData &note) const;
 };
 

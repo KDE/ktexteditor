@@ -28,54 +28,53 @@ UndoManagerTest::UndoManagerTest()
 void UndoManagerTest::testUndoRedoCount()
 {
     KTextEditor::DocumentPrivate doc;
-    KateUndoManager *undoManager = doc.undoManager();
 
     // no undo/redo items at the beginning
-    QCOMPARE(undoManager->undoCount(), 0u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 0u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.insertText(Cursor(0, 0), QStringLiteral("a"));
 
     // create one insert-group
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.undo();
 
     // move insert-group to redo items
-    QCOMPARE(undoManager->undoCount(), 0u);
-    QCOMPARE(undoManager->redoCount(), 1u);
+    QCOMPARE(doc.undoCount(), 0u);
+    QCOMPARE(doc.redoCount(), 1u);
 
     doc.redo();
 
     // move insert-group back to undo items
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // merge "b" into insert-group
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.removeText(Range(0, 1, 0, 2));
 
     // create an additional remove-group
-    QCOMPARE(undoManager->undoCount(), 2u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 2u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.undo();
 
     // move remove-group to redo items
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 1u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 1u);
 
     doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // merge "b" into insert-group
     // and remove remove-group
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 0u);
 }
 
 void UndoManagerTest::testSafePoint()
@@ -86,26 +85,26 @@ void UndoManagerTest::testSafePoint()
     doc.insertText(Cursor(0, 0), QStringLiteral("a"));
 
     // create one undo group
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     undoManager->undoSafePoint();
     doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // create a second undo group (don't merge)
-    QCOMPARE(undoManager->undoCount(), 2u);
+    QCOMPARE(doc.undoCount(), 2u);
 
     doc.undo();
 
     // move second undo group to redo items
-    QCOMPARE(undoManager->undoCount(), 1u);
-    QCOMPARE(undoManager->redoCount(), 1u);
+    QCOMPARE(doc.undoCount(), 1u);
+    QCOMPARE(doc.redoCount(), 1u);
 
     doc.insertText(Cursor(0, 1), QStringLiteral("b"));
 
     // create a second undo group again, (don't merge)
-    QCOMPARE(undoManager->undoCount(), 2u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 2u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.editStart();
     doc.insertText(Cursor(0, 2), QStringLiteral("c"));
@@ -114,14 +113,14 @@ void UndoManagerTest::testSafePoint()
     doc.editEnd();
 
     // merge both edits into second undo group
-    QCOMPARE(undoManager->undoCount(), 2u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 2u);
+    QCOMPARE(doc.redoCount(), 0u);
 
     doc.insertText(Cursor(0, 4), QStringLiteral("e"));
 
     // create a third undo group (don't merge)
-    QCOMPARE(undoManager->undoCount(), 3u);
-    QCOMPARE(undoManager->redoCount(), 0u);
+    QCOMPARE(doc.undoCount(), 3u);
+    QCOMPARE(doc.redoCount(), 0u);
 }
 
 void UndoManagerTest::testCursorPosition()

@@ -9,7 +9,6 @@
 #ifndef KATEVI_INSERT_VI_MODE_H
 #define KATEVI_INSERT_VI_MODE_H
 
-#include <ktexteditor_export.h>
 #include <vimode/modes/modebase.h>
 
 namespace KTextEditor
@@ -29,7 +28,7 @@ class Motion;
  */
 enum BlockInsert { None, Prepend, Append, AppendEOL };
 
-class KTEXTEDITOR_EXPORT InsertViMode : public ModeBase
+class InsertViMode : public ModeBase
 {
 public:
     explicit InsertViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);

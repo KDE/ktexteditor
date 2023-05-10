@@ -7,7 +7,6 @@
 #ifndef KATEVI_MOTION_H
 #define KATEVI_MOTION_H
 
-#include <ktexteditor_export.h>
 #include <vimode/command.h>
 #include <vimode/range.h>
 
@@ -20,7 +19,7 @@ class NormalViMode;
  * indicate this) for text objects a range (startx, starty), (endx, endy) is
  * returned
  */
-class KTEXTEDITOR_EXPORT Motion : public Command
+class Motion : public Command
 {
 public:
     Motion(const QString &pattern, Range (NormalViMode::*commandMethod)(), unsigned int flags = 0);

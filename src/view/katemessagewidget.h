@@ -26,7 +26,7 @@ class KateAnimation;
  * This class implements a message widget based on KMessageWidget.
  * It is used to show messages through the KTextEditior::MessageInterface.
  */
-class KTEXTEDITOR_EXPORT KateMessageWidget : public QWidget
+class KateMessageWidget : public QWidget
 {
     Q_OBJECT
 
@@ -42,7 +42,7 @@ public:
     void postMessage(KTextEditor::Message *message, QList<std::shared_ptr<QAction>> actions);
 
     // for unit test
-    QString text() const;
+    KTEXTEDITOR_EXPORT QString text() const;
 
 protected Q_SLOTS:
     /**

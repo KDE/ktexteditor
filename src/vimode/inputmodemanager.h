@@ -50,7 +50,7 @@ class ReplaceViMode;
 class KeyParser;
 class KeyMapper;
 
-class KTEXTEDITOR_EXPORT InputModeManager
+class InputModeManager
 {
     friend KateViInputMode;
 
@@ -80,7 +80,7 @@ public:
     /**
      * @return The current vi mode
      */
-    ViMode getCurrentViMode() const;
+    KTEXTEDITOR_EXPORT ViMode getCurrentViMode() const;
 
     /**
      * @return The current vi mode string representation
@@ -112,7 +112,7 @@ public:
     /**
      * set normal mode to be the active vi mode and perform the needed setup work
      */
-    void viEnterNormalMode();
+    KTEXTEDITOR_EXPORT void viEnterNormalMode();
 
     /**
      * set insert mode to be the active vi mode and perform the needed setup work
@@ -215,7 +215,7 @@ public:
     void readSessionConfig(const KConfigGroup &config);
     void writeSessionConfig(KConfigGroup &config);
 
-    KeyMapper *keyMapper();
+    KTEXTEDITOR_EXPORT KeyMapper *keyMapper();
     GlobalState *globalState() const;
     KTextEditor::ViewPrivate *view() const;
 

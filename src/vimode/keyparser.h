@@ -24,14 +24,13 @@ class KeyEvent;
  * for encoding keypresses w/ modifiers into an internal QChar representation and back again to a
  * descriptive text string
  */
-class KTEXTEDITOR_EXPORT KeyParser
+class KeyParser
 {
 private:
-    KTEXTEDITOR_NO_EXPORT
     KeyParser();
 
 public:
-    static KeyParser *self();
+    KTEXTEDITOR_EXPORT static KeyParser *self();
     ~KeyParser()
     {
         m_instance = nullptr;
@@ -39,18 +38,16 @@ public:
     KeyParser(const KeyParser &) = delete;
     KeyParser &operator=(const KeyParser &) = delete;
 
-    const QString encodeKeySequence(const QString &keys) const;
-    const QString decodeKeySequence(const QString &keys) const;
+    KTEXTEDITOR_EXPORT const QString encodeKeySequence(const QString &keys) const;
+    KTEXTEDITOR_EXPORT const QString decodeKeySequence(const QString &keys) const;
     QString qt2vi(int key) const;
-    int vi2qt(const QString &keypress) const;
+    KTEXTEDITOR_EXPORT int vi2qt(const QString &keypress) const;
     int encoded2qt(const QString &keypress) const;
-    const QChar KeyEventToQChar(const QKeyEvent &keyEvent);
+    KTEXTEDITOR_EXPORT const QChar KeyEventToQChar(const QKeyEvent &keyEvent);
     const QChar KeyEventToQChar(const KeyEvent &keyEvent);
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void initKeyTables();
-    KTEXTEDITOR_NO_EXPORT
     const QChar KeyEventToQChar(int keyCode, const QString &text, Qt::KeyboardModifiers mods) const;
 
     QHash<int, QString> m_qt2katevi;

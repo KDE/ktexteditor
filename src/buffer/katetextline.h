@@ -10,8 +10,6 @@
 #include <QString>
 #include <QVector>
 
-#include <ktexteditor_export.h>
-
 #include <KSyntaxHighlighting/State>
 
 #include <memory>

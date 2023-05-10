@@ -13,7 +13,6 @@
 #include <ktexteditor/movingrange.h>
 
 #include "katetextcursor.h"
-#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

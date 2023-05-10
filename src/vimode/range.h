@@ -8,7 +8,6 @@
 #define KATEVI_RANGE_H
 
 #include <QDebug>
-#include <ktexteditor_export.h>
 #include <vimode/definitions.h>
 
 namespace KTextEditor
@@ -21,7 +20,7 @@ namespace KateVi
 {
 enum MotionType { ExclusiveMotion = 0, InclusiveMotion };
 
-class KTEXTEDITOR_EXPORT Range
+class Range
 {
 public:
     Range();

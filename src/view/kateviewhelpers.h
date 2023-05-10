@@ -27,7 +27,6 @@
 #include "katetextline.h"
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/message.h>
-#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {
@@ -551,7 +550,7 @@ private:
     QVBoxLayout *m_layout;
 };
 
-class KTEXTEDITOR_EXPORT KateCommandLineBar : public KateViewBarWidget
+class KateCommandLineBar : public KateViewBarWidget
 {
 public:
     explicit KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent = nullptr);

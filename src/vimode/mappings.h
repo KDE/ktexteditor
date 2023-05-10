@@ -15,7 +15,7 @@ class KateViInputMode;
 
 namespace KateVi
 {
-class KTEXTEDITOR_EXPORT Mappings
+class Mappings
 {
 public:
     enum MappingRecursion { Recursive, NonRecursive };
@@ -26,15 +26,15 @@ public:
     void writeConfig(KConfigGroup &config) const;
     void readConfig(const KConfigGroup &config);
 
-    void add(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion);
+    KTEXTEDITOR_EXPORT void add(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion);
     void remove(MappingMode mode, const QString &from);
-    void clear(MappingMode mode);
+    KTEXTEDITOR_EXPORT void clear(MappingMode mode);
 
     QString get(MappingMode mode, const QString &from, bool decode = false, bool includeTemporary = false) const;
     QStringList getAll(MappingMode mode, bool decode = false, bool includeTemporary = false) const;
-    bool isRecursive(MappingMode mode, const QString &from) const;
+    KTEXTEDITOR_EXPORT bool isRecursive(MappingMode mode, const QString &from) const;
 
-    void setLeader(const QChar &leader);
+    KTEXTEDITOR_EXPORT void setLeader(const QChar &leader);
 
 public:
     /**
@@ -44,9 +44,7 @@ public:
     static MappingMode mappingModeForCurrentViMode(KateViInputMode *viInputMode);
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void writeMappings(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const;
-    KTEXTEDITOR_NO_EXPORT
     void readMappings(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode);
 
 private:

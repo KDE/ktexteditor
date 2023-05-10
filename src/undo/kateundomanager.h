@@ -38,7 +38,7 @@ class Cursor;
  *
  * The state of the KateUndomanager can be switched using editStart() and editEnd().
  */
-class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
+class KateUndoManager : public QObject
 {
     Q_OBJECT
 
@@ -74,7 +74,7 @@ public:
     /**
      * Prevent latest KateUndoGroup from being merged with the next one.
      */
-    void undoSafePoint();
+    KTEXTEDITOR_EXPORT void undoSafePoint();
 
     /**
      * Allows or disallows merging of "complex" undo groups.
@@ -93,7 +93,7 @@ public:
 
     void setModified(bool modified);
     void updateConfig();
-    void updateLineModifications();
+    KTEXTEDITOR_EXPORT void updateLineModifications();
 
     /**
      * Used by the swap file recovery, this function afterwards manipulates
@@ -125,8 +125,8 @@ public Q_SLOTS:
      */
     void redo();
 
-    void clearUndo();
-    void clearRedo();
+    KTEXTEDITOR_EXPORT void clearUndo();
+    KTEXTEDITOR_EXPORT void clearRedo();
 
     /**
      * Notify KateUndoManager about the beginning of an edit.

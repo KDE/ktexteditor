@@ -23,12 +23,12 @@ namespace KateVi
 {
 class InputModeManager;
 
-class KTEXTEDITOR_EXPORT KeyMapper : public QObject
+class KeyMapper : public QObject
 {
 public:
     KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc);
     bool handleKeypress(QChar key);
-    void setMappingTimeout(int timeoutMS);
+    KTEXTEDITOR_EXPORT void setMappingTimeout(int timeoutMS);
     void setDoNotMapNextKeypress();
     bool isExecutingMapping() const;
     bool isPlayingBackRejectedKeys() const;
@@ -55,9 +55,7 @@ private:
     bool m_isPlayingBackRejectedKeys;
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void executeMapping();
-    KTEXTEDITOR_NO_EXPORT
     void playBackRejectedKeys();
 };
 }

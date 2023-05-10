@@ -36,7 +36,7 @@ class HierarchicalModelHandler;
  *
  * @author Hamish Rodda <rodda@kde.org>
  */
-class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
+class KateCompletionModel : public ExpandingWidgetModel
 {
     Q_OBJECT
 
@@ -50,15 +50,15 @@ public:
 
     QList<KTextEditor::CodeCompletionModel *> completionModels() const;
     void clearCompletionModels();
-    void addCompletionModel(KTextEditor::CodeCompletionModel *model);
-    void setCompletionModel(KTextEditor::CodeCompletionModel *model);
+    KTEXTEDITOR_EXPORT void addCompletionModel(KTextEditor::CodeCompletionModel *model);
+    KTEXTEDITOR_EXPORT void setCompletionModel(KTextEditor::CodeCompletionModel *model);
     void setCompletionModels(const QList<KTextEditor::CodeCompletionModel *> &models);
-    void removeCompletionModel(KTextEditor::CodeCompletionModel *model);
+    KTEXTEDITOR_EXPORT void removeCompletionModel(KTextEditor::CodeCompletionModel *model);
 
     KTextEditor::ViewPrivate *view() const;
     KateCompletionWidget *widget() const;
 
-    QString currentCompletion(KTextEditor::CodeCompletionModel *model) const;
+    KTEXTEDITOR_EXPORT QString currentCompletion(KTextEditor::CodeCompletionModel *model) const;
     void setCurrentCompletion(QMap<KTextEditor::CodeCompletionModel *, QString> currentMatch);
 
     int translateColumn(int sourceColumn) const;
@@ -106,7 +106,7 @@ public:
     /// Returns whether one of the filtered items exactly matches its completion string
     bool shouldMatchHideCompletionList() const;
 
-    uint filteredItemCount() const;
+    KTEXTEDITOR_EXPORT uint filteredItemCount() const;
 
 protected:
     int contextMatchQuality(const QModelIndex &index) const override;
@@ -134,11 +134,10 @@ private:
     QTreeView *treeView() const override;
 
     friend class KateArgumentHintModel;
-    KTEXTEDITOR_NO_EXPORT
     static ModelRow modelRowPair(const QModelIndex &index);
 
     // Represents a source row; provides sorting method
-    class KTEXTEDITOR_NO_EXPORT Item
+    class Item
     {
     public:
         Item(bool doInitialMatch, KateCompletionModel *model, const HierarchicalModelHandler &handler, ModelRow sourceRow);
@@ -226,64 +225,47 @@ public:
 
     typedef std::set<Group *> GroupSet;
 
-    bool hasGroups() const;
+    KTEXTEDITOR_EXPORT bool hasGroups() const;
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     QString commonPrefixInternal(const QString &forcePrefix) const;
     /// @note performs model reset
-    KTEXTEDITOR_NO_EXPORT
     void createGroups();
     /// Creates all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     /// i must be an index in the source model
-    KTEXTEDITOR_NO_EXPORT
     GroupSet createItems(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// Deletes all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     /// i must be an index in the source model
-    KTEXTEDITOR_NO_EXPORT
     GroupSet deleteItems(const QModelIndex &i);
-    KTEXTEDITOR_NO_EXPORT
     Group *createItem(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// @note Make sure you're in a {begin,end}ResetModel block when calling this!
-    KTEXTEDITOR_NO_EXPORT
     void clearGroups();
-    KTEXTEDITOR_NO_EXPORT
     void hideOrShowGroup(Group *g, bool notifyModel = false);
     /// When forceGrouping is enabled, all given attributes will be used for grouping, regardless of the completion settings.
-    KTEXTEDITOR_NO_EXPORT
     Group *fetchGroup(int attribute, bool forceGrouping = false);
     // If this returns nonzero on an index, the index is the header of the returned group
-    KTEXTEDITOR_NO_EXPORT
     Group *groupForIndex(const QModelIndex &index) const;
-    KTEXTEDITOR_NO_EXPORT
     inline Group *groupOfParent(const QModelIndex &child) const
     {
         return static_cast<Group *>(child.internalPointer());
     }
-    KTEXTEDITOR_NO_EXPORT
     QModelIndex indexForRow(Group *g, int row) const;
-    KTEXTEDITOR_NO_EXPORT
     QModelIndex indexForGroup(Group *g) const;
 
     enum changeTypes { Broaden, Narrow, Change };
 
     // Returns whether the model needs to be reset
-    KTEXTEDITOR_NO_EXPORT
     void changeCompletions(Group *g);
 
-    KTEXTEDITOR_NO_EXPORT
     bool hasCompletionModel() const;
 
     /// Removes attributes not used in grouping from the input \a attribute
-    KTEXTEDITOR_NO_EXPORT
     int groupingAttributes(int attribute) const;
-    KTEXTEDITOR_NO_EXPORT
     static int countBits(int value);
 
-    KTEXTEDITOR_NO_EXPORT
     void resort();
 
-    static bool matchesAbbreviation(const QString &word, const QString &typed, int &score);
+    KTEXTEDITOR_EXPORT static bool matchesAbbreviation(const QString &word, const QString &typed, int &score);
     // exported for completion_test
 
     bool m_hasGroups = false;

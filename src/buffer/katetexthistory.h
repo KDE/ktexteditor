@@ -13,8 +13,6 @@
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/range.h>
 
-#include <ktexteditor_export.h>
-
 namespace Kate
 {
 class TextBuffer;

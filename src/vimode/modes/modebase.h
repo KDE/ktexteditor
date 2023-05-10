@@ -11,7 +11,6 @@
 #define KATEVI_MODE_BASE_H
 
 #include <ktexteditor/range.h>
-#include <ktexteditor_export.h>
 
 #include "kateview.h"
 #include <vimode/definitions.h>
@@ -34,7 +33,7 @@ class InputModeManager;
 
 enum Direction { Up, Down, Left, Right, Next, Prev };
 
-class KTEXTEDITOR_EXPORT ModeBase : public QObject
+class ModeBase : public QObject
 {
 public:
     ModeBase() = default;

@@ -23,7 +23,6 @@
 #include <vector>
 
 #include <ktexteditor/range.h>
-#include <ktexteditor_export.h>
 
 class QKeyEvent;
 class KateViInputMode;
@@ -36,7 +35,7 @@ class InputModeManager;
 /**
  * Commands for the vi normal mode
  */
-class KTEXTEDITOR_EXPORT NormalViMode : public ModeBase
+class NormalViMode : public ModeBase
 {
     friend KateViInputMode;
 
@@ -378,20 +377,13 @@ protected:
     KTextEditor::Cursor m_positionWhenIncrementalSearchBegan;
 
 private:
-    KTEXTEDITOR_NO_EXPORT
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
-    KTEXTEDITOR_NO_EXPORT
     void textRemoved(KTextEditor::Document *, KTextEditor::Range);
-    KTEXTEDITOR_NO_EXPORT
     void undoBeginning();
-    KTEXTEDITOR_NO_EXPORT
     void undoEnded();
 
-    KTEXTEDITOR_NO_EXPORT
     void updateYankHighlightAttrib();
-    KTEXTEDITOR_NO_EXPORT
     void clearYankHighlight();
-    KTEXTEDITOR_NO_EXPORT
     void aboutToDeleteMovingInterfaceContent();
 };
 }

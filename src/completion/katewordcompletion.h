@@ -20,13 +20,13 @@
 #include "katepartdebug.h"
 #include <ktexteditor_export.h>
 
-class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompletionModel, public KTextEditor::CodeCompletionModelControllerInterface
+class KateWordCompletionModel : public KTextEditor::CodeCompletionModel, public KTextEditor::CodeCompletionModelControllerInterface
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    explicit KateWordCompletionModel(QObject *parent);
-    ~KateWordCompletionModel() override;
+    KTEXTEDITOR_EXPORT explicit KateWordCompletionModel(QObject *parent);
+    KTEXTEDITOR_EXPORT ~KateWordCompletionModel() override;
 
     /**
      * This function is responsible to generating / updating the list of current
@@ -54,7 +54,7 @@ public:
 
     bool shouldHideItemsWithEqualNames() const override;
 
-    static QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range);
+    KTEXTEDITOR_EXPORT static QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range);
 
     void executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
 

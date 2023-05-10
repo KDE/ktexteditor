@@ -11,7 +11,6 @@ class KateLayoutCache;
 class KateViewInternal;
 
 #include "ktexteditor/view.h"
-#include "ktexteditor_export.h" // for tests
 
 #include <QKeyEvent>
 
@@ -25,7 +24,7 @@ enum class caretStyles;
 class Cursor;
 }
 
-class KTEXTEDITOR_EXPORT KateAbstractInputMode
+class KateAbstractInputMode
 {
 protected:
     KateAbstractInputMode(KateViewInternal *);

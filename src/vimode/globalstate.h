@@ -19,7 +19,7 @@ class Macros;
 class Mappings;
 class Registers;
 
-class KTEXTEDITOR_EXPORT GlobalState
+class GlobalState
 {
 public:
     explicit GlobalState();
@@ -27,8 +27,8 @@ public:
     GlobalState(const GlobalState &) = delete;
     GlobalState &operator=(const GlobalState &) = delete;
 
-    void writeConfig(KConfig *config) const;
-    void readConfig(const KConfig *config);
+    KTEXTEDITOR_EXPORT void writeConfig(KConfig *config) const;
+    KTEXTEDITOR_EXPORT void readConfig(const KConfig *config);
 
     inline Macros *macros() const
     {
