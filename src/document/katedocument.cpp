@@ -6577,3 +6577,5 @@ void KTextEditor::DocumentPrivate::messageDestroyed(KTextEditor::Message *messag
     m_messageHash.remove(message);
 }
 // END KTextEditor::MessageInterface
+
+#include "moc_katedocument.cpp"

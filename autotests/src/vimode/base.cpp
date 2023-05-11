@@ -100,6 +100,7 @@ void BaseTest::init()
     kate_document->config()->setShowSpaces(KateDocumentConfig::Trailing); // Flush out some issues in the KateRenderer when rendering spaces.
     kate_view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, false);
     kate_view->config()->setValue(KateViewConfig::ShowScrollBarPreview, false);
+    kate_view->setStatusBarEnabled(false);
 
     connect(kate_document, &KTextEditor::DocumentPrivate::textInsertedRange, this, &BaseTest::textInserted);
     connect(kate_document, &KTextEditor::DocumentPrivate::textRemoved, this, &BaseTest::textRemoved);

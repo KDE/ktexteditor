@@ -1646,7 +1646,12 @@ void KateIconBorder::updateFont()
 
     m_updatePositionToArea = true;
 
-    QTimer::singleShot(0, this, SLOT(update()));
+    QMetaObject::invokeMethod(
+        this,
+        [this] {
+            update();
+        },
+        Qt::QueuedConnection);
 }
 
 int KateIconBorder::lineNumberWidth() const
@@ -3142,3 +3147,5 @@ void KateViewSchemaAction::setSchema()
     }
 }
 // END SCHEMA ACTION
+
+#include "moc_kateviewhelpers.cpp"
