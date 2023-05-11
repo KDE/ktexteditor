@@ -34,6 +34,7 @@ class TextCursor final : public KTextEditor::MovingCursor
     friend class TextBlock;
 
     Q_DISABLE_COPY(TextCursor)
+
 private:
     /**
      * Construct a text cursor with given range as parent, private, used by TextRange constructor only.
@@ -42,7 +43,6 @@ private:
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    KTEXTEDITOR_NO_EXPORT
     TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor position, InsertBehavior insertBehavior);
 
 public:
@@ -95,10 +95,7 @@ public:
      *
      * \param position new cursor position
      */
-    void setPosition(KTextEditor::Cursor position) override
-    {
-        setPosition(position, false);
-    }
+    void setPosition(KTextEditor::Cursor position) override;
 
     /**
      * \overload
@@ -108,10 +105,7 @@ public:
      * \param line new cursor line
      * \param column new cursor column
      */
-    void setPosition(int line, int column)
-    {
-        setPosition(KTextEditor::Cursor(line, column), false);
-    }
+    void setPosition(int line, int column);
 
     /**
      * Retrieve the line on which this cursor is situated.

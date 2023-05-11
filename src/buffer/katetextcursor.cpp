@@ -125,4 +125,13 @@ KTextEditor::MovingRange *Kate::TextCursor::range() const
     return m_range;
 }
 
+void Kate::TextCursor::setPosition(KTextEditor::Cursor position)
+{
+    setPosition(position, false);
+}
+
+void Kate::TextCursor::setPosition(int line, int column)
+{
+    setPosition(KTextEditor::Cursor(line, column), false);
+}
 }
