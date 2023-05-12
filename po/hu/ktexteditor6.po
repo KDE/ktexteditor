@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-09 02:10+0000\n"
+"POT-Creation-Date: 2023-05-12 02:08+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -7865,17 +7865,17 @@ msgstr "Siker: "
 msgid "Command \"%1\" failed."
 msgstr "A(z) \"%1\" parancs nem sikerült."
 
-#: view/kateviewhelpers.cpp:2564 view/kateviewhelpers.cpp:2565
+#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Jelölési típus: %1"
 
-#: view/kateviewhelpers.cpp:2588
+#: view/kateviewhelpers.cpp:2593
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Az alapértelmezett jeltípus beállítása"
 
-#: view/kateviewhelpers.cpp:2729
+#: view/kateviewhelpers.cpp:2734
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "A megjegyzéssáv letiltása"

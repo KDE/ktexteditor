@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-09 02:10+0000\n"
+"POT-Creation-Date: 2023-05-12 02:08+0000\n"
 "PO-Revision-Date: 2023-04-09 13:49+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -7765,17 +7765,17 @@ msgstr "வெற்றி:"
 msgid "Command \"%1\" failed."
 msgstr "ஆணை\"%1\" தோல்வி அடைந்தது."
 
-#: view/kateviewhelpers.cpp:2564 view/kateviewhelpers.cpp:2565
+#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
 #, kde-format
 msgid "Mark Type %1"
 msgstr "குறி வகை%1"
 
-#: view/kateviewhelpers.cpp:2588
+#: view/kateviewhelpers.cpp:2593
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "முன்னிருப்பு குறி வகையை அமை"
 
-#: view/kateviewhelpers.cpp:2729
+#: view/kateviewhelpers.cpp:2734
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

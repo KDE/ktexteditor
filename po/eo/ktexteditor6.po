@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-09 02:10+0000\n"
+"POT-Creation-Date: 2023-05-12 02:08+0000\n"
 "PO-Revision-Date: 2023-04-16 12:22+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -7720,17 +7720,17 @@ msgstr "Sukceso: "
 msgid "Command \"%1\" failed."
 msgstr "Komando  \"%1\" malsukcesis."
 
-#: view/kateviewhelpers.cpp:2564 view/kateviewhelpers.cpp:2565
+#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Marka tipo %1"
 
-#: view/kateviewhelpers.cpp:2588
+#: view/kateviewhelpers.cpp:2593
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Fiksi defaŭltan markotipon"
 
-#: view/kateviewhelpers.cpp:2729
+#: view/kateviewhelpers.cpp:2734
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Malebligi Komentarion"
