@@ -72,7 +72,7 @@ class MainWindow;
  * \endcode
  *
  * \see KTextEditor::SessionConfigInterface, KTextEditor::ConfigPage,
- *      KTextEditor::MainWindow
+ *      KTextEditor::MainWindow, \ref kte_plugin_hosting
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Plugin : public QObject

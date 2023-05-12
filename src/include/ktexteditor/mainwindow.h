@@ -39,6 +39,8 @@ class View;
  *
  * It must not reimplement this class but construct an instance and pass a pointer to a QObject that
  * has the required slots to receive the requests.
+ *
+ * @ref kte_plugin_hosting
  */
 class KTEXTEDITOR_EXPORT MainWindow : public QObject
 {

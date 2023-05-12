@@ -37,6 +37,8 @@ class MainWindow;
  * The same holds for activeMainWindow(), even if no main window is around, you will get a non-nullptr
  * interface object that allows to call the functions of the MainWindow without needs for a nullptr
  * check around it in the client code.
+ *
+ * @ref kte_plugin_hosting
  */
 class KTEXTEDITOR_EXPORT Application : public QObject
 {
