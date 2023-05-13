@@ -90,7 +90,6 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_argumentHintTree(new KateArgumentHintTree(this))
     , m_docTip(new DocTip(this))
     , m_automaticInvocationDelay(100)
-    , m_filterInstalled(false)
     , m_lastInsertionByUser(false)
     , m_inCompletionList(false)
     , m_isSuspended(false)
@@ -361,14 +360,15 @@ void KateCompletionWidget::startCompletion(KTextEditor::Range word,
         }
     }
 
-    if (!m_filterInstalled) {
-        if (!QApplication::activeWindow()) {
-            qCWarning(LOG_KTE) << "No active window to install event filter on!!";
-            return;
+    // Enable the cc box to move when the editor window is moved
+    if (auto viewWindow = view()->window(); m_windowToMoveWith != viewWindow) {
+        if (m_windowToMoveWith) {
+            m_windowToMoveWith->removeEventFilter(this);
         }
-        // Enable the cc box to move when the editor window is moved
-        QApplication::activeWindow()->installEventFilter(this);
-        m_filterInstalled = true;
+        m_windowToMoveWith = viewWindow;
+        if (m_windowToMoveWith) {
+            m_windowToMoveWith->installEventFilter(this);
+        }
     }
 
     m_presentationModel->clearCompletionModels();

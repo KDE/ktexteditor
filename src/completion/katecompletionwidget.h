@@ -10,7 +10,9 @@
 
 #include <QFrame>
 #include <QObject>
+#include <QPointer>
 
+#include <QtWidgets/qwidget.h>
 #include <ktexteditor_export.h>
 
 #include <ktexteditor/codecompletioninterface.h>
@@ -216,7 +218,8 @@ private:
     KTextEditor::Cursor m_automaticInvocationAt;
     QString m_automaticInvocationLine;
     int m_automaticInvocationDelay;
-    bool m_filterInstalled;
+
+    QPointer<QWidget> m_windowToMoveWith;
 
     bool m_lastInsertionByUser;
     bool m_inCompletionList; // Are we in the completion-list? If not, we're in the argument-hint list
