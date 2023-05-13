@@ -87,6 +87,9 @@ void BaseTest::init()
     kate_document->config()->setIndentationWidth(2);
     kate_document->config()->setReplaceTabsDyn(false);
 
+    // ensure the spellchecking doesn't mess with the expected results
+    static_cast<KTextEditor::DocumentPrivate *>(kate_document)->setDefaultDictionary(QStringLiteral("notexistinglanguage"));
+
     kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
     kate_view->config()->setValue(KateViewConfig::AutoBrackets, false);
