@@ -282,6 +282,10 @@ void CompletionTest::testUpdateCompletionRange()
 
 void CompletionTest::testCustomStartCompl()
 {
+#ifdef __SANITIZE_ADDRESS__
+    QSKIP("issues with Qt 6.5 and sanitizer");
+#endif
+
     KateCompletionModel *model = m_view->completionWidget()->model();
 
     m_view->completionWidget()->setAutomaticInvocationDelay(1);
