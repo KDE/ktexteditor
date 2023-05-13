@@ -38,6 +38,6 @@ vimode_unit_test(hlsearch hlsearch.cpp)
 macro(vimode_unit_test_onscreen)
     ecm_add_test(${ARGN} TEST_NAME "vimode_${ARGV0}" LINK_LIBRARIES ${VIMODE_TEST_LINK_LIBS})
 endmacro()
-vimode_unit_test_onscreen(keys keys.cpp)
+vimode_unit_test(keys keys.cpp)
 
 add_custom_target(vimode_tests ${CMAKE_CTEST_COMMAND} --force-new-ctest-process -R "^vimode_")
