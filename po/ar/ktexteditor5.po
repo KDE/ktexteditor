@@ -12,7 +12,7 @@
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # zayed <zayed.alsaidi@gmail.com>, 2008.
 # Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2009, 2022.
-# Safa Alfulaij <safa1996alfulaij@gmail.com>, ٢٠١٦, 2017.
+# Safa Alfulaij <safa1996alfulaij@gmail.com>, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
@@ -2898,37 +2898,37 @@ msgstr "احسب تعبيرًا رياضيًّا بسيطًا"
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr "أنقص العدد بمقدار ١"
+msgstr "أنقص العدد بمقدار 1"
 
 #: script/data/commands/emmet.js:66
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr "أنقص العدد بمقدار ١٠"
+msgstr "أنقص العدد بمقدار 10"
 
 #: script/data/commands/emmet.js:70
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr "أنقص العدد بمقدار ٠٫١"
+msgstr "أنقص العدد بمقدار 0٫1"
 
 #: script/data/commands/emmet.js:74
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr "زِد العدد بمقدار ١"
+msgstr "زِد العدد بمقدار 1"
 
 #: script/data/commands/emmet.js:78
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr "زِد العدد بمقدار ١٠"
+msgstr "زِد العدد بمقدار 10"
 
 #: script/data/commands/emmet.js:82
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr "زِد العدد بمقدار ٠٫١"
+msgstr "زِد العدد بمقدار 0٫1"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
