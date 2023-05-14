@@ -556,13 +556,6 @@ public:
     virtual QColor markColor(Document::MarkTypes) const;
     uint editableMarks() const override;
 
-Q_SIGNALS:
-    void markToolTipRequested(KTextEditor::Document *document, KTextEditor::Mark mark, QPoint position, bool &handled);
-
-    void markContextMenuRequested(KTextEditor::Document *document, KTextEditor::Mark mark, QPoint pos, bool &handled);
-
-    void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);
-
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
     QHash<int, QVariant> m_markIcons; // QPixmap or QIcon, KF6: remove QPixmap support
@@ -714,23 +707,6 @@ public:
                         KTextEditor::MovingRange::EmptyBehavior emptyBehavior,
                         qint64 fromRevision,
                         qint64 toRevision = -1) override;
-
-    //
-    // MovingInterface Signals
-    //
-Q_SIGNALS:
-    /**
-     * This signal is emitted before the cursors/ranges/revisions of a document are destroyed as the document is deleted.
-     * @param document the document which the interface belongs too which is in the process of being deleted
-     */
-    void aboutToDeleteMovingInterfaceContent(KTextEditor::Document *document);
-
-    /**
-     * This signal is emitted before the ranges of a document are invalidated and the revisions are deleted as the document is cleared (for example on
-     * load/reload). While this signal is emitted, still the old document content is around before the clear.
-     * @param document the document which the interface belongs too which will invalidate its data
-     */
-    void aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *document);
 
     //
     // Annotation Interface
