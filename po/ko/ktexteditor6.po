@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-12 02:08+0000\n"
+"POT-Creation-Date: 2023-05-15 02:02+0000\n"
 "PO-Revision-Date: 2022-08-09 13:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -40,17 +40,17 @@ msgstr "언어 키워드"
 msgid "Auto Word Completion"
 msgstr "자동 단어 완성"
 
-#: completion/katewordcompletion.cpp:290
+#: completion/katewordcompletion.cpp:289
 #, kde-format
 msgid "Shell Completion"
 msgstr "셸 완성"
 
-#: completion/katewordcompletion.cpp:296
+#: completion/katewordcompletion.cpp:294
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "위에 있는 단어 다시 사용하기"
 
-#: completion/katewordcompletion.cpp:302
+#: completion/katewordcompletion.cpp:300
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "아래에 있는 단어 다시 사용하기"
@@ -403,7 +403,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
-#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1007
+#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1010
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1157,7 +1157,7 @@ msgstr "줄 번호 따라가기"
 msgid "Appearance"
 msgstr "모양"
 
-#: dialogs/katedialogs.cpp:971
+#: dialogs/katedialogs.cpp:972
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1168,125 +1168,125 @@ msgstr ""
 "면 시스템이 충돌했을 때 %1에서 작업 중인 내용을 복원할 수 있습니다. 스왑 파일"
 "을 비활성화하면 시스템 충돌 시 데이터 손실이 발생할 수 있습니다."
 
-#: dialogs/katedialogs.cpp:1008
+#: dialogs/katedialogs.cpp:1011
 #, kde-format
 msgid "Advanced"
 msgstr "고급"
 
-#: dialogs/katedialogs.cpp:1073
+#: dialogs/katedialogs.cpp:1076
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "백업 파일의 접두사나 접미사가 없습니다. 기본 접미사 '~'를 사용합니다."
 
-#: dialogs/katedialogs.cpp:1073
+#: dialogs/katedialogs.cpp:1076
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "백업 파일 접두사나 접미사 없음"
 
-#: dialogs/katedialogs.cpp:1201
+#: dialogs/katedialogs.cpp:1204
 #, kde-format
 msgid "Open/Save"
 msgstr "열기/저장"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1209
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "파일 열기 및 저장"
 
-#: dialogs/katedialogs.cpp:1229
+#: dialogs/katedialogs.cpp:1232
 #, kde-format
 msgid "&Line:"
 msgstr "줄(&L):"
 
-#: dialogs/katedialogs.cpp:1230
+#: dialogs/katedialogs.cpp:1233
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "클립보드의 줄 번호로 이동"
 
-#: dialogs/katedialogs.cpp:1241
+#: dialogs/katedialogs.cpp:1244
 #, kde-format
 msgid "Go to"
 msgstr "이동"
 
-#: dialogs/katedialogs.cpp:1321
+#: dialogs/katedialogs.cpp:1324
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "클립보드에 줄 번호 없음"
 
-#: dialogs/katedialogs.cpp:1385
+#: dialogs/katedialogs.cpp:1388
 #, kde-format
 msgid "Dictionary:"
 msgstr "사전:"
 
-#: dialogs/katedialogs.cpp:1438
+#: dialogs/katedialogs.cpp:1441
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "자동 새로 고침 사용하기"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1444
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1449
 #, kde-format
 msgid "View &Difference"
 msgstr "차이 보기(&D)"
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1451
 #, fuzzy, kde-format
 #| msgid "Shows a diff of the changes"
 msgid "Shows a diff of the changes."
 msgstr "변경 사항의 차이점 보기"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1456
 #, kde-format
 msgid "&Reload"
 msgstr "새로 고침(&R)"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1458
 #, fuzzy, kde-format
 #| msgid "Reload the file from disk. Unsaved changes will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "파일을 디스크에서 새로 고칩니다. 저장되지 않은 변경 사항은 무시됩니다."
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "파일 닫기(&C)"
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1464
 #, fuzzy, kde-format
 #| msgid "Close the file, discarding its content."
 msgid "Closes the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "&Save As..."
 msgstr "다른 이름으로 저장(&S)..."
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1470
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "파일의 위치를 선택하고 다시 저장하도록 합니다."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1471 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "무시(&I)"
 
-#: dialogs/katedialogs.cpp:1472
+#: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "추가 변경 없이 디스크의 변경 사항을 무시합니다."
 
-#: dialogs/katedialogs.cpp:1538 swapfile/kateswapdiffcreator.cpp:128
+#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1295,18 +1295,18 @@ msgstr ""
 "diff 명령이 실패했습니다. diff(1)가 설치되어 있고 PATH에 포함되어 있는지 확인"
 "하십시오."
 
-#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:88
-#: swapfile/kateswapdiffcreator.cpp:96 swapfile/kateswapdiffcreator.cpp:130
+#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "diff 생성 실패"
 
-#: dialogs/katedialogs.cpp:1547 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "파일이 같습니다."
 
-#: dialogs/katedialogs.cpp:1547 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 출력"
@@ -3544,187 +3544,187 @@ msgstr "계속 검색하시겠습니까?"
 msgid "SearchHighLight"
 msgstr "검색 항목 강조"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1158
 #, kde-format
 msgid "Beginning of line"
 msgstr "줄 시작"
 
-#: search/katesearchbar.cpp:1160
+#: search/katesearchbar.cpp:1159
 #, kde-format
 msgid "End of line"
 msgstr "줄 끝"
 
-#: search/katesearchbar.cpp:1162
+#: search/katesearchbar.cpp:1161
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "줄 바꿈을 제외한 임의의 단일 문자(기본값)"
 
-#: search/katesearchbar.cpp:1163
+#: search/katesearchbar.cpp:1162
 #, kde-format
 msgid "One or more occurrences"
 msgstr "하나 이상의 일치"
 
-#: search/katesearchbar.cpp:1164
+#: search/katesearchbar.cpp:1163
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "0번 이상의 일치"
 
-#: search/katesearchbar.cpp:1165
+#: search/katesearchbar.cpp:1164
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "0번 또는 한 번 일치"
 
-#: search/katesearchbar.cpp:1168
+#: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "<a>회에서 <b>회 일치"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1173
 #, kde-format
 msgid "Group, capturing"
 msgstr "그룹, 캡처"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Or"
 msgstr "또는"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "Set of characters"
 msgstr "글자의 집합"
 
-#: search/katesearchbar.cpp:1177
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Negative set of characters"
 msgstr "글자의 여집합"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "Whole match reference"
 msgstr "전체 일치 참조"
 
-#: search/katesearchbar.cpp:1192
+#: search/katesearchbar.cpp:1191
 #, kde-format
 msgid "Reference"
 msgstr "참조"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1198
 #, kde-format
 msgid "Line break"
 msgstr "줄 바꿈"
 
-#: search/katesearchbar.cpp:1200
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Tab"
 msgstr "탭"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1202
 #, kde-format
 msgid "Word boundary"
 msgstr "단어 경계"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1203
 #, kde-format
 msgid "Not word boundary"
 msgstr "단어 경계가 아님"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Digit"
 msgstr "숫자"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1205
 #, kde-format
 msgid "Non-digit"
 msgstr "숫자가 아닌 것"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "공백 (줄 바꿈 제외)"
 
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Non-whitespace"
 msgstr "공백 문자 아님"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1208
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "단어 글자 (알파벳과 숫자와 '_')"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1209
 #, kde-format
 msgid "Non-word character"
 msgstr "단어를 이루지 않는 글자"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "000에서 377까지 8진수 참조 (2^8-1)"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "0000에서 FFFF까지 16진수 참조 (2^16-1)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Backslash"
 msgstr "백슬래시"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "그룹, 캡처하지 않음"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "긍정 룩어헤드"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Negative lookahead"
 msgstr "부정 룩어헤드"
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1224
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "고정 길이 긍정 룩비하인드"
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "고정 길이 부정 룩비하인드"
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1230
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "소문자 변환 시작"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "대문자 변환 시작"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "End case conversion"
 msgstr "대소문자 변환 끝"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "첫 글자를 소문자로 변환"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1234
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "첫 글자를 대문자로 변환"
 
-#: search/katesearchbar.cpp:1236
+#: search/katesearchbar.cpp:1235
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "대체 카운터 (모두 바꾸기)"
@@ -4129,7 +4129,7 @@ msgstr "사전에 추가"
 msgid "Spelling '%1'"
 msgstr "'%1' 맞춤법 검사"
 
-#: swapfile/kateswapdiffcreator.cpp:86
+#: swapfile/kateswapdiffcreator.cpp:87
 #, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
@@ -4138,7 +4138,7 @@ msgstr ""
 "diff 명령을 찾을 수 없습니다. diff(1)가 설치되어 있으면 PATH 환경 변수 안에 "
 "속해 있는지 확인하십시오."
 
-#: swapfile/kateswapdiffcreator.cpp:96
+#: swapfile/kateswapdiffcreator.cpp:97
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr "diff 명령 '%1'을(를) 시작할 수 없습니다."
@@ -6322,7 +6322,7 @@ msgstr "줄 끝"
 msgid "Mode"
 msgstr "모드"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:683
+#: view/katestatusbar.cpp:209 view/kateview.cpp:685
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6430,82 +6430,82 @@ msgstr "%1/%2 단어, %3/%4 글자"
 msgid "Zoom: %1%"
 msgstr "크기 조정: %1%"
 
-#: view/kateview.cpp:452
+#: view/kateview.cpp:454
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "선택한 문자열을 잘라내고 클립보드로 이동"
 
-#: view/kateview.cpp:455
+#: view/kateview.cpp:457
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "이전에 복사하거나 잘라낸 클립보드 내용 붙여넣기"
 
-#: view/kateview.cpp:458
+#: view/kateview.cpp:460
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
 "현재 선택한 문자열을 시스템 클립보드에 복사하려면 이 명령을 사용하십시오."
 
-#: view/kateview.cpp:464
+#: view/kateview.cpp:466
 #, fuzzy, kde-format
 #| msgid "Clipboard &History"
 msgid "Clipboard &History Paste"
 msgstr "클립보드 기록(&H)"
 
-#: view/kateview.cpp:469
+#: view/kateview.cpp:471
 #, kde-format
 msgid "Paste Selection"
 msgstr "선택 붙여넣기"
 
-#: view/kateview.cpp:471
+#: view/kateview.cpp:473
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "이전에 복사하거나 잘라낸 선택 내용 붙여넣기"
 
-#: view/kateview.cpp:475
+#: view/kateview.cpp:477
 #, fuzzy, kde-format
 #| msgid "Swap with clipboard contents"
 msgid "Swap with Clipboard Contents"
 msgstr "클립보드 내용과 전환"
 
-#: view/kateview.cpp:476
+#: view/kateview.cpp:478
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "선택한 텍스트와 클립보드 내용 전환"
 
-#: view/kateview.cpp:479
+#: view/kateview.cpp:481
 #, fuzzy, kde-format
 #| msgid "Paste Selection"
 msgid "Take Screenshot of Selection"
 msgstr "선택 붙여넣기"
 
-#: view/kateview.cpp:483
+#: view/kateview.cpp:485
 #, kde-format
 msgid "Save the current document"
 msgstr "현재 문서 저장"
 
-#: view/kateview.cpp:486
+#: view/kateview.cpp:488
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "최근의 편집 되돌리기"
 
-#: view/kateview.cpp:489
+#: view/kateview.cpp:491
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "최근의 실행 취소 작업 되돌리기"
 
-#: view/kateview.cpp:493
+#: view/kateview.cpp:495
 #, kde-format
 msgid "&Scripts"
 msgstr "스크립트(&S)"
 
-#: view/kateview.cpp:497
+#: view/kateview.cpp:499
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "자동 줄 바꿈 적용하기(&W)"
 
-#: view/kateview.cpp:499
+#: view/kateview.cpp:501
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6516,12 +6516,12 @@ msgstr ""
 "꿀 지점'에 맞추어서 형식을 다시 지정하려면 선택하십시오.<br /><br />이 옵션"
 "은 정적 줄 바꿈이며, 문서 내용을 변경합니다."
 
-#: view/kateview.cpp:505
+#: view/kateview.cpp:507
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "들여쓰기 지움(&C)"
 
-#: view/kateview.cpp:507
+#: view/kateview.cpp:509
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6532,13 +6532,13 @@ msgstr ""
 "만)<br /><br />탭이나 공백 중 무엇을 사용할지 같은 설정은 설정 대화 상자에서 "
 "가능합니다."
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:514
 #, fuzzy, kde-format
 #| msgid "&Indentation"
 msgid "&Format Indentation"
 msgstr "들여쓰기(&I)"
 
-#: view/kateview.cpp:513
+#: view/kateview.cpp:515
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this to align the current line or block of text to its proper indent "
@@ -6548,13 +6548,13 @@ msgid ""
 "indent level."
 msgstr "문자열의 현재 줄이나 블럭을 알맞은 단계만큼 들여쓰려면 선택하십시오."
 
-#: view/kateview.cpp:517
+#: view/kateview.cpp:519
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "&Align On..."
 msgstr "정렬(&A)"
 
-#: view/kateview.cpp:519
+#: view/kateview.cpp:521
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6568,12 +6568,12 @@ msgid ""
 "column."
 msgstr ""
 
-#: view/kateview.cpp:530
+#: view/kateview.cpp:532
 #, kde-format
 msgid "C&omment"
 msgstr "주석(&O)"
 
-#: view/kateview.cpp:533
+#: view/kateview.cpp:535
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6583,22 +6583,22 @@ msgstr ""
 "문자열의 현재 줄이나 선택한 블록을 주석 처리합니다.<br /><br />단일/다중 줄 "
 "주석 문자는 언어의 설정에 따라 달라집니다."
 
-#: view/kateview.cpp:538
+#: view/kateview.cpp:540
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "이전 편집 위치로 이동"
 
-#: view/kateview.cpp:544
+#: view/kateview.cpp:546
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "다음 편집 위치로 이동"
 
-#: view/kateview.cpp:550
+#: view/kateview.cpp:552
 #, kde-format
 msgid "Unco&mment"
 msgstr "주석 해제(&M)"
 
-#: view/kateview.cpp:553
+#: view/kateview.cpp:555
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6608,38 +6608,38 @@ msgstr ""
 "문자열의 현재 줄이나 선택한 블록의 주석 처리를 해제합니다.<br /><br />단일/다"
 "중 줄 주석 문자는 언어의 설정에 따라 달라집니다."
 
-#: view/kateview.cpp:558
+#: view/kateview.cpp:560
 #, kde-format
 msgid "Toggle Comment"
 msgstr "주석 전환하기"
 
-#: view/kateview.cpp:562
+#: view/kateview.cpp:564
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "읽기 전용 모드(&R)"
 
-#: view/kateview.cpp:563
+#: view/kateview.cpp:565
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "문서의 쓰기를 잠그거나 해제합니다"
 
-#: view/kateview.cpp:568
+#: view/kateview.cpp:570
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr ""
 
-#: view/kateview.cpp:569
+#: view/kateview.cpp:571
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Force RTL Text Direction"
 msgstr "문자열 장식"
 
-#: view/kateview.cpp:579
+#: view/kateview.cpp:581
 #, kde-format
 msgid "Uppercase"
 msgstr "대문자화"
 
-#: view/kateview.cpp:582
+#: view/kateview.cpp:584
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6648,12 +6648,12 @@ msgstr ""
 "선택한 문자열이나 선택 영역이 없을 경우 현재 커서의 오른쪽에 있는 글자를 대문"
 "자로 변경합니다."
 
-#: view/kateview.cpp:588
+#: view/kateview.cpp:590
 #, kde-format
 msgid "Lowercase"
 msgstr "소문자화"
 
-#: view/kateview.cpp:591
+#: view/kateview.cpp:593
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6662,12 +6662,12 @@ msgstr ""
 "선택한 문자열이나 선택 영역이 없을 경우 현재 커서의 오른쪽에 있는 글자를 소문"
 "자로 변경합니다."
 
-#: view/kateview.cpp:597
+#: view/kateview.cpp:599
 #, kde-format
 msgid "Capitalize"
 msgstr "대소문자 조정"
 
-#: view/kateview.cpp:600
+#: view/kateview.cpp:602
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6676,179 +6676,179 @@ msgstr ""
 "선택한 문자열이나 선택 영역이 없을 경우 현재 커서의 오른쪽에 있는 단어의 대소"
 "문자를 조정합니다."
 
-#: view/kateview.cpp:605
+#: view/kateview.cpp:607
 #, kde-format
 msgid "Join Lines"
 msgstr "줄 합치기"
 
-#: view/kateview.cpp:610
+#: view/kateview.cpp:612
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "코드 완성 호출"
 
-#: view/kateview.cpp:611
+#: view/kateview.cpp:613
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
 "this action."
 msgstr "코드 완성 단축키를 통해서 수동으로 코드 완성을 호출합니다."
 
-#: view/kateview.cpp:616
+#: view/kateview.cpp:618
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgid "Remove Trailing Spaces"
 msgstr "뒤에 붙는 공백 지우기(&M):"
 
-#: view/kateview.cpp:634
+#: view/kateview.cpp:636
 #, kde-format
 msgid "Print the current document."
 msgstr "현재 문서를 인쇄합니다."
 
-#: view/kateview.cpp:637
+#: view/kateview.cpp:639
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "현재 문서의 인쇄 모양 미리 보기"
 
-#: view/kateview.cpp:641
+#: view/kateview.cpp:643
 #, kde-format
 msgid "Reloa&d"
 msgstr "새로 고침(&D)"
 
-#: view/kateview.cpp:643
+#: view/kateview.cpp:645
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "현재 문서를 디스크에서 새로 읽어옵니다."
 
-#: view/kateview.cpp:647
+#: view/kateview.cpp:649
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "현재 문서를 다른 이름으로 디스크에 저장합니다."
 
-#: view/kateview.cpp:649
+#: view/kateview.cpp:651
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr "다른 인코딩과 이름으로 저장..."
 
-#: view/kateview.cpp:655
+#: view/kateview.cpp:657
 #, kde-format
 msgid "Save &Copy As..."
 msgstr "다른 이름으로 저장(&C)..."
 
-#: view/kateview.cpp:656
+#: view/kateview.cpp:658
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "현재 문서의 복사본을 디스크에 저장합니다."
 
-#: view/kateview.cpp:660
+#: view/kateview.cpp:662
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
 "cursor to move to."
 msgstr "이 명령은 커서를 이동시킬 줄을 선택할 수 있는 대화 상자를 엽니다."
 
-#: view/kateview.cpp:664
+#: view/kateview.cpp:666
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "이전 수정된 줄로 이동"
 
-#: view/kateview.cpp:665
+#: view/kateview.cpp:667
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "이전 수정된 줄로 이동합니다."
 
-#: view/kateview.cpp:670
+#: view/kateview.cpp:672
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "다음 수정된 줄로 이동"
 
-#: view/kateview.cpp:671
+#: view/kateview.cpp:673
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "다음 수정된 줄로 이동합니다."
 
-#: view/kateview.cpp:675
+#: view/kateview.cpp:677
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "편집기 설정(&C)..."
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:679
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "이 편집기의 다양한 면을 설정합니다."
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:682
 #, kde-format
 msgid "&Mode"
 msgstr "모드(&M)"
 
-#: view/kateview.cpp:686
+#: view/kateview.cpp:688
 #, kde-format
 msgid "&Highlighting"
 msgstr "하이라이팅(&H)"
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:690
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "현재 문서의 하이라이팅 설정을 조정할 수 있습니다."
 
-#: view/kateview.cpp:691
+#: view/kateview.cpp:693
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "편집기 색 테마(&C)"
 
-#: view/kateview.cpp:697
+#: view/kateview.cpp:699
 #, kde-format
 msgid "&Indentation"
 msgstr "들여쓰기(&I)"
 
-#: view/kateview.cpp:705
+#: view/kateview.cpp:707
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "현재 문서의 모든 문자열을 선택합니다."
 
-#: view/kateview.cpp:708
+#: view/kateview.cpp:710
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
 msgstr "만약 문서의 어떤 부분을 선택했다면 그 부분은 선택되지 않습니다."
 
-#: view/kateview.cpp:712
+#: view/kateview.cpp:714
 #, kde-format
 msgid "Enlarge Font"
 msgstr "글꼴 크기 확대"
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:716
 #, kde-format
 msgid "This increases the display font size."
 msgstr "디스플레이 글꼴 크기를 확대합니다."
 
-#: view/kateview.cpp:721
+#: view/kateview.cpp:723
 #, kde-format
 msgid "Shrink Font"
 msgstr "글꼴 크기 축소"
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:725
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "디스플레이 글꼴 크기를 축소합니다."
 
-#: view/kateview.cpp:730
+#: view/kateview.cpp:732
 #, kde-format
 msgid "Reset Font Size"
 msgstr "글꼴 크기 초기화"
 
-#: view/kateview.cpp:732
+#: view/kateview.cpp:734
 #, kde-format
 msgid "This resets the display font size."
 msgstr "디스플레이 글꼴 크기를 초기화합니다."
 
-#: view/kateview.cpp:735
+#: view/kateview.cpp:737
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "블록 선택 모드(&O)"
 
-#: view/kateview.cpp:738
+#: view/kateview.cpp:740
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -6856,35 +6856,35 @@ msgid ""
 msgstr ""
 "이 명령은 줄 기반과 블록 기반 선택 모드 사이에서 선택 모드를 결정합니다."
 
-#: view/kateview.cpp:742
+#: view/kateview.cpp:744
 #, fuzzy, kde-format
 #| msgid "Switch to next Input Mode"
 msgid "Switch to Next Input Mode"
 msgstr "다음 입력 모드로 전환"
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:746
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "다음 입력 모드로 전환합니다."
 
-#: view/kateview.cpp:747
+#: view/kateview.cpp:749
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "덮어쓰기 모드(&I)"
 
-#: view/kateview.cpp:750
+#: view/kateview.cpp:752
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr "입력한 문자열을 삽입할지, 아니면 기존 문자열에 덮어씌울지 선택합니다."
 
-#: view/kateview.cpp:754
+#: view/kateview.cpp:756
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "동적 줄 바꿈(&D)"
 
-#: view/kateview.cpp:758
+#: view/kateview.cpp:760
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -6894,37 +6894,37 @@ msgstr ""
 "이 옵션이 선택되면 문자열 줄은 화면 경계에 맞게 둘러싸여집니다.<br /><br />"
 "이 옵션은 보기에만 영향을 주며 파일 내용은 변경되지 않습니다."
 
-#: view/kateview.cpp:762
+#: view/kateview.cpp:764
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "동적 줄 바꿈 표시자"
 
-#: view/kateview.cpp:764
+#: view/kateview.cpp:766
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "동적 줄 바꿈 표시자를 표시할지 선택합니다"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:768
 #, kde-format
 msgid "&Off"
 msgstr "끔(&O)"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:768
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "줄 번호 설정 따라가기(&L)"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:768
 #, kde-format
 msgid "&Always On"
 msgstr "항상 켬(&A)"
 
-#: view/kateview.cpp:770
+#: view/kateview.cpp:772
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "정적 줄 바꿈"
 
-#: view/kateview.cpp:772
+#: view/kateview.cpp:774
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -6933,36 +6933,36 @@ msgstr ""
 "이 옵션이 선택되면 문자열 줄은 편집 속성에서 설정한 칸 수에 따라 둘러싸여집니"
 "다."
 
-#: view/kateview.cpp:779
+#: view/kateview.cpp:781
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "정적 줄 바꿈 표시자 표시(&W)"
 
-#: view/kateview.cpp:782
+#: view/kateview.cpp:784
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
 "column as defined in the editing properties"
 msgstr "편집 속성에 정의된 자동 줄 바꿈 표시자를 표시하거나 숨깁니다."
 
-#: view/kateview.cpp:786
+#: view/kateview.cpp:788
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "접기 마커 표시(&M)"
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:790
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
 msgstr "코드를 접을 수 있을 때 접기 마커를 표시할지 선택합니다."
 
-#: view/kateview.cpp:791
+#: view/kateview.cpp:793
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "아이콘 경계 표시(&I)"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:795
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -6971,22 +6971,22 @@ msgstr ""
 "아이콘 경계를 표시하거나 숨깁니다.<br /><br />아이콘 경계는 책갈피 기호 등을 "
 "표시합니다."
 
-#: view/kateview.cpp:796
+#: view/kateview.cpp:798
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "줄 번호 표시(&L)"
 
-#: view/kateview.cpp:798
+#: view/kateview.cpp:800
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "문서의 왼쪽에 줄 번호를 표시하거나 숨깁니다."
 
-#: view/kateview.cpp:801
+#: view/kateview.cpp:803
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "스크롤바 마커 표시(&B)"
 
-#: view/kateview.cpp:803
+#: view/kateview.cpp:805
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -6995,12 +6995,12 @@ msgstr ""
 "수직 스크롤바의 마커를 표시하거나 숨깁니다.<br /><br />마커는 책갈피 등을 표"
 "시합니다."
 
-#: view/kateview.cpp:806
+#: view/kateview.cpp:808
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "스크롤 바 미니맵 표시"
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:810
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7014,70 +7014,70 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:820
+#: view/kateview.cpp:822
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "인쇄할 수 없는 공백 문자 보기"
 
-#: view/kateview.cpp:822
+#: view/kateview.cpp:824
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "인쇄할 수 없는 공백 문자 주위를 둘러싸는 상자 보기/숨기기"
 
-#: view/kateview.cpp:826
+#: view/kateview.cpp:828
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "명령행으로 전환"
 
-#: view/kateview.cpp:828
+#: view/kateview.cpp:830
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "보기의 아래쪽에 명령행을 표시하거나 숨깁니다."
 
-#: view/kateview.cpp:831
+#: view/kateview.cpp:833
 #, kde-format
 msgid "Input Modes"
 msgstr "입력 모드"
 
-#: view/kateview.cpp:840
+#: view/kateview.cpp:842
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "%1 활성화/비활성화"
 
-#: view/kateview.cpp:850
+#: view/kateview.cpp:852
 #, kde-format
 msgid "&End of Line"
 msgstr "줄 끝(&E)"
 
-#: view/kateview.cpp:852
+#: view/kateview.cpp:854
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "문서를 주장할 때 사용할 줄 끝을 설정합니다"
 
-#: view/kateview.cpp:853
+#: view/kateview.cpp:855
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "유닉스(&U)"
 
-#: view/kateview.cpp:854
+#: view/kateview.cpp:856
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "Windows/DOS(&W)"
 
-#: view/kateview.cpp:855
+#: view/kateview.cpp:857
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "매킨토시(&M)"
 
-#: view/kateview.cpp:860
+#: view/kateview.cpp:862
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "바이트 순서 마커 추가하기(&B)"
 
-#: view/kateview.cpp:863
+#: view/kateview.cpp:865
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7085,172 +7085,172 @@ msgid ""
 msgstr ""
 "저장할 때 UTF-8/UTF-16 바이트 순서 표시자(BOM)를 추가하거나 추가하지 않습니다"
 
-#: view/kateview.cpp:867
+#: view/kateview.cpp:869
 #, kde-format
 msgid "E&ncoding"
 msgstr "인코딩(&N):"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:873
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "문자열이나 정규 표현식의 첫 번째 일치를 찾습니다."
 
-#: view/kateview.cpp:875
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Find Selected"
 msgstr "선택한 것 찾기"
 
-#: view/kateview.cpp:877
+#: view/kateview.cpp:879
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "선택한 문자열이 다음에 나오는 곳을 찾습니다."
 
-#: view/kateview.cpp:881
+#: view/kateview.cpp:883
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "선택한 것 이전 찾기"
 
-#: view/kateview.cpp:883
+#: view/kateview.cpp:885
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "선택한 문자열이 이전에 나오는 곳을 찾습니다."
 
-#: view/kateview.cpp:887
+#: view/kateview.cpp:889
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "다음 일치를 찾아서 선택"
 
-#: view/kateview.cpp:889
+#: view/kateview.cpp:891
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "커서 아래 단어가 다음에 나오는 곳까지 선택 영역에 추가합니다."
 
-#: view/kateview.cpp:893
+#: view/kateview.cpp:895
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:897
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:899
+#: view/kateview.cpp:901
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "모든 일치를 찾아서 선택"
 
-#: view/kateview.cpp:901
+#: view/kateview.cpp:903
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "커서 아래 단어를 모두 찾아서 선택합니다."
 
-#: view/kateview.cpp:905
+#: view/kateview.cpp:907
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "검색할 어구가 다음에 나오는 곳을 찾습니다."
 
-#: view/kateview.cpp:909
+#: view/kateview.cpp:911
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "검색할 어구가 이전에 나오는 곳을 찾습니다."
 
-#: view/kateview.cpp:913
+#: view/kateview.cpp:915
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
 "some given text."
 msgstr "문자열이나 정규 표현식을 찾은 다음 주어진 문자열과 바꿉니다."
 
-#: view/kateview.cpp:916
+#: view/kateview.cpp:918
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "줄 끝에 커서 추가"
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:920
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "선택 영역의 매 줄 끝마다 커서를 생성합니다."
 
-#: view/kateview.cpp:922
+#: view/kateview.cpp:924
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "현재 커서 아래에 캐럿 추가"
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:926
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "현재 캐럿이 위치한 줄 아래에 새 캐럿을 추가합니다."
 
-#: view/kateview.cpp:928
+#: view/kateview.cpp:930
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "현재 커서 위에 캐럿 추가"
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:932
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "현재 캐럿이 위치한 줄 위에 새 캐럿을 추가합니다."
 
-#: view/kateview.cpp:934
+#: view/kateview.cpp:936
 #, fuzzy, kde-format
 #| msgid "Toggle camel case cursor movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "캐멀케이스 커서 이동 전환"
 
-#: view/kateview.cpp:935
+#: view/kateview.cpp:937
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "일반 단어 단위 이동과 캐멀케이스 커서 이동을 전환합니다."
 
-#: view/kateview.cpp:939
+#: view/kateview.cpp:941
 #, fuzzy, kde-format
 #| msgid "Remove cursors from empty lines"
 msgid "Remove Cursors from Empty Lines"
 msgstr "빈 줄에서 커서 삭제"
 
-#: view/kateview.cpp:940
+#: view/kateview.cpp:942
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "빈 줄에서 커서 삭제"
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:946
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "자동 맞춤법 검사"
 
-#: view/kateview.cpp:945
+#: view/kateview.cpp:947
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "자동 맞춤법 검사 켬/끔"
 
-#: view/kateview.cpp:951
+#: view/kateview.cpp:953
 #, kde-format
 msgid "Change Dictionary..."
 msgstr "사전 바꾸기..."
 
-#: view/kateview.cpp:952
+#: view/kateview.cpp:954
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "맞춤법 검사에 사용할 사전을 바꿉니다."
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:958
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "사전 범위 지우기"
 
-#: view/kateview.cpp:958
+#: view/kateview.cpp:960
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr "맞춤법 검사에 사용할 모든 별개의 사전 정의를 삭제합니다."
 
-#: view/kateview.cpp:964
+#: view/kateview.cpp:966
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "HTML로 복사(&H)"
 
-#: view/kateview.cpp:965
+#: view/kateview.cpp:967
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
@@ -7259,12 +7259,12 @@ msgstr ""
 "현재 선택한 문자열을 HTML로 시스템 클립보드에 복사하려면 이 명령을 사용하십시"
 "오."
 
-#: view/kateview.cpp:969
+#: view/kateview.cpp:971
 #, kde-format
 msgid "E&xport as HTML..."
 msgstr "HTML로 내보내기(&X)..."
 
-#: view/kateview.cpp:971
+#: view/kateview.cpp:973
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7272,259 +7272,259 @@ msgid ""
 msgstr ""
 "이 명령을 사용하면 현재 문서의 강조 정보와 같이 HTML 문서로 내보냅니다."
 
-#: view/kateview.cpp:1009
+#: view/kateview.cpp:1011
 #, kde-format
 msgid "Move Word Left"
 msgstr "단어 왼쪽으로 이동"
 
-#: view/kateview.cpp:1015
+#: view/kateview.cpp:1017
 #, kde-format
 msgid "Select Character Left"
 msgstr "왼쪽 문자 선택"
 
-#: view/kateview.cpp:1021
+#: view/kateview.cpp:1023
 #, kde-format
 msgid "Select Word Left"
 msgstr "왼쪽 단어 선택"
 
-#: view/kateview.cpp:1027
+#: view/kateview.cpp:1029
 #, kde-format
 msgid "Move Word Right"
 msgstr "단어 오른쪽으로 이동"
 
-#: view/kateview.cpp:1033
+#: view/kateview.cpp:1035
 #, kde-format
 msgid "Select Character Right"
 msgstr "오른쪽 문자 선택"
 
-#: view/kateview.cpp:1039
+#: view/kateview.cpp:1041
 #, kde-format
 msgid "Select Word Right"
 msgstr "오른쪽 단어 선택"
 
-#: view/kateview.cpp:1045
+#: view/kateview.cpp:1047
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "줄 시작으로 이동"
 
-#: view/kateview.cpp:1051
+#: view/kateview.cpp:1053
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "문서 시작으로 이동"
 
-#: view/kateview.cpp:1057
+#: view/kateview.cpp:1059
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "줄 시작까지 선택"
 
-#: view/kateview.cpp:1063
+#: view/kateview.cpp:1065
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "문서 처음까지 선택"
 
-#: view/kateview.cpp:1069
+#: view/kateview.cpp:1071
 #, kde-format
 msgid "Move to End of Line"
 msgstr "줄 끝으로 이동"
 
-#: view/kateview.cpp:1075
+#: view/kateview.cpp:1077
 #, kde-format
 msgid "Move to End of Document"
 msgstr "문서 끝으로 이동"
 
-#: view/kateview.cpp:1081
+#: view/kateview.cpp:1083
 #, kde-format
 msgid "Select to End of Line"
 msgstr "줄 끝까지 선택"
 
-#: view/kateview.cpp:1087
+#: view/kateview.cpp:1089
 #, kde-format
 msgid "Select to End of Document"
 msgstr "문서 끝까지 선택"
 
-#: view/kateview.cpp:1093
+#: view/kateview.cpp:1095
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "이전 줄까지 선택"
 
-#: view/kateview.cpp:1099
+#: view/kateview.cpp:1101
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "한 줄 위로 스크롤"
 
-#: view/kateview.cpp:1105
+#: view/kateview.cpp:1107
 #, kde-format
 msgid "Move to Next Line"
 msgstr "다음 줄로 이동"
 
-#: view/kateview.cpp:1111
+#: view/kateview.cpp:1113
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "이전 줄로 이동"
 
-#: view/kateview.cpp:1117
+#: view/kateview.cpp:1119
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "커서 오른쪽으로 이동"
 
-#: view/kateview.cpp:1123
+#: view/kateview.cpp:1125
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "커서 왼쪽으로 이동"
 
-#: view/kateview.cpp:1129
+#: view/kateview.cpp:1131
 #, kde-format
 msgid "Select to Next Line"
 msgstr "다음 줄까지 선택"
 
-#: view/kateview.cpp:1135
+#: view/kateview.cpp:1137
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "한 줄 아래로 스크롤"
 
-#: view/kateview.cpp:1141
+#: view/kateview.cpp:1143
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "한 페이지 위로 스크롤"
 
-#: view/kateview.cpp:1147
+#: view/kateview.cpp:1149
 #, kde-format
 msgid "Select Page Up"
 msgstr "한 페이지 위까지 선택"
 
-#: view/kateview.cpp:1153
+#: view/kateview.cpp:1155
 #, kde-format
 msgid "Move to Top of View"
 msgstr "보기의 맨 위로 이동"
 
-#: view/kateview.cpp:1159
+#: view/kateview.cpp:1161
 #, kde-format
 msgid "Select to Top of View"
 msgstr "보기의 맨 위까지 선택"
 
-#: view/kateview.cpp:1165
+#: view/kateview.cpp:1167
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "한 페이지 아래로 스크롤"
 
-#: view/kateview.cpp:1171
+#: view/kateview.cpp:1173
 #, kde-format
 msgid "Select Page Down"
 msgstr "한 페이지 아래까지 선택"
 
-#: view/kateview.cpp:1177
+#: view/kateview.cpp:1179
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "보기의 맨 아래로 이동"
 
-#: view/kateview.cpp:1183
+#: view/kateview.cpp:1185
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "보기의 맨 아래까지 선택"
 
-#: view/kateview.cpp:1189
+#: view/kateview.cpp:1191
 #, kde-format
 msgid "Go to Matching Bracket"
 msgstr "일치하는 괄호로 이동"
 
-#: view/kateview.cpp:1195
+#: view/kateview.cpp:1197
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "일치하는 괄호까지 선택"
 
-#: view/kateview.cpp:1203
+#: view/kateview.cpp:1205
 #, kde-format
 msgid "Transpose Characters"
 msgstr "글자 바꾸기"
 
-#: view/kateview.cpp:1208
+#: view/kateview.cpp:1210
 #, kde-format
 msgid "Transpose Words"
 msgstr "단어 바꾸기"
 
-#: view/kateview.cpp:1213
+#: view/kateview.cpp:1215
 #, kde-format
 msgid "Delete Line"
 msgstr "줄 삭제"
 
-#: view/kateview.cpp:1219
+#: view/kateview.cpp:1221
 #, kde-format
 msgid "Delete Word Left"
 msgstr "왼쪽 단어 삭제"
 
-#: view/kateview.cpp:1225
+#: view/kateview.cpp:1227
 #, kde-format
 msgid "Delete Word Right"
 msgstr "오른쪽 단어 삭제"
 
-#: view/kateview.cpp:1231
+#: view/kateview.cpp:1233
 #, kde-format
 msgid "Delete Next Character"
 msgstr "오른쪽 글자 삭제"
 
-#: view/kateview.cpp:1237
+#: view/kateview.cpp:1239
 #, kde-format
 msgid "Backspace"
 msgstr "백스페이스"
 
-#: view/kateview.cpp:1245
+#: view/kateview.cpp:1247
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "탭 넣기"
 
-#: view/kateview.cpp:1250
+#: view/kateview.cpp:1252
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "똑똑한 새 줄 삽입하기"
 
-#: view/kateview.cpp:1251
+#: view/kateview.cpp:1253
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
 msgstr "현재 줄에 있는 공백 문자와 같이 새 줄을 삽입합니다."
 
-#: view/kateview.cpp:1259
+#: view/kateview.cpp:1261
 #, fuzzy, kde-format
 #| msgid "Insert a non-indented Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "들여쓰지 않은 새 줄 삽입"
 
-#: view/kateview.cpp:1260
+#: view/kateview.cpp:1262
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr "들여쓰기 설정과 관계 없이 들여쓰지 않은 새 줄을 삽입합니다."
 
-#: view/kateview.cpp:1268
+#: view/kateview.cpp:1270
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr "현재 줄 위에 새 줄 삽입"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1271
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr "현재 줄을 수정하지 않고 줄 위에 새 줄을 삽입합니다."
 
-#: view/kateview.cpp:1277
+#: view/kateview.cpp:1279
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr "현재 줄 아래에 새 줄 삽입"
 
-#: view/kateview.cpp:1278
+#: view/kateview.cpp:1280
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr "현재 줄을 수정하지 않고 줄 아래에 새 줄을 삽입합니다."
 
-#: view/kateview.cpp:1287
+#: view/kateview.cpp:1289
 #, kde-format
 msgid "&Indent"
 msgstr "들여쓰기(&I)"
 
-#: view/kateview.cpp:1289
+#: view/kateview.cpp:1291
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7534,68 +7534,68 @@ msgstr ""
 "선택한 문자열 블록을 들여쓰려면 선택하십시오.<br /><br />탭이나 공백 중 무엇"
 "을 사용할지 같은 설정은 설정 대화 상자에서 가능합니다."
 
-#: view/kateview.cpp:1296
+#: view/kateview.cpp:1298
 #, kde-format
 msgid "&Unindent"
 msgstr "내어쓰기(&U)"
 
-#: view/kateview.cpp:1297
+#: view/kateview.cpp:1299
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "선택한 문자열 블록의 들여쓰기를 취소하려면 선택하십시오."
 
-#: view/kateview.cpp:1315
+#: view/kateview.cpp:1317
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "꼭대기 단계 접기"
 
-#: view/kateview.cpp:1320
+#: view/kateview.cpp:1322
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "꼭대기 단계 펴기"
 
-#: view/kateview.cpp:1333
+#: view/kateview.cpp:1335
 #, kde-format
 msgid "Toggle Current Node"
 msgstr "현재 노드 전환"
 
-#: view/kateview.cpp:1337
+#: view/kateview.cpp:1339
 #, kde-format
 msgid "Toggle Contained Nodes"
 msgstr "포함된 노드 전환"
 
-#: view/kateview.cpp:1494
+#: view/kateview.cpp:1496
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(읽기 전용) %1"
 
-#: view/kateview.cpp:1682
+#: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "캐멀케이스 커서 이동 비활성화됨"
 
-#: view/kateview.cpp:1684
+#: view/kateview.cpp:1686
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "캐멀케이스 커서 이동 활성화됨"
 
-#: view/kateview.cpp:2176
+#: view/kateview.cpp:2178
 #, kde-format
 msgid "Search wrapped"
 msgstr "끝까지 검색되어 돌아옴"
 
-#: view/kateview.cpp:3697
+#: view/kateview.cpp:3699
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "정렬(&A)"
 
-#: view/kateview.cpp:3697
+#: view/kateview.cpp:3699
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4791
+#: view/kateview.cpp:4793
 #, kde-format
 msgid "Export File as HTML"
 msgstr "파일 HTML로 내보내기"
