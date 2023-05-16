@@ -7747,14 +7747,3 @@ msgstr "«%1» %2, Hex %3, Oktála %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mearka ii meroštuvvon: %1"
-
-#~ msgid "The file %1 does not exist."
-#~ msgstr "%1-fiila ii gávdno."
-
-#~ msgid ""
-#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#~ "\n"
-#~ "Check if you have read access to this file."
-#~ msgstr ""
-#~ "Ii sáhttán viežžat fiilla %1, danne go ii lean vejolaš dan lohkat.\n"
-#~ "Dárkkis ahte dus lea lohkanvuoigatvuohta fiilii."
