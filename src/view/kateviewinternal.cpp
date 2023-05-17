@@ -4164,7 +4164,7 @@ void KateViewInternal::doDrag()
     const QFontMetricsF &fm = renderer()->currentFontMetrics();
     for (int l = startLine; l <= endLine; ++l) {
         w = std::max((int)fm.horizontalAdvance(doc()->line(l)), w);
-        h += fm.height();
+        h += renderer()->lineHeight();
     }
     qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
 
