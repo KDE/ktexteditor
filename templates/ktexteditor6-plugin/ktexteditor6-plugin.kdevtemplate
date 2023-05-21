@@ -2,10 +2,13 @@
 [General]
 Name=C++ (KF6)
 Name[ca]=C++ (KF6)
+Name[ca@valencia]=C++ (KF6)
 Name[eo]=C++ (KF6)
 Name[es]=C++ (KF6)
+Name[gl]=C++ (KF6)
 Name[ia]=C++ (KF6)
 Name[nl]=C++ (KF6)
+Name[pl]=C++ (KF6)
 Name[tr]=C++ (KF6)
 Name[uk]=C++ (KF6)
 Name[x-test]=xxC++ (KF6)xx
