@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-15 02:02+0000\n"
-"PO-Revision-Date: 2023-02-24 12:43\n"
+"PO-Revision-Date: 2023-05-22 13:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/ktexteditor/ktexteditor5.pot\n"
-"X-Crowdin-File-ID: 5542\n"
+"X-Crowdin-File: /kf6-trunk/messages/ktexteditor/ktexteditor6.pot\n"
+"X-Crowdin-File-ID: 43235\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -62,7 +62,7 @@ msgstr "文件(&F)"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "打印/导出"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -897,7 +897,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:215
 #, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr "在前导空白处按退格取消缩进(&B)"
+msgstr "在行首空白处按下退格键取消缩进(&B)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
@@ -1188,6 +1188,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"从现在开始直到您关闭标签页或者窗口，文档将在不提示磁盘更改的情况下自动进行重"
+"新加载。"
 
 #: dialogs/katedialogs.cpp:1449
 #, kde-format
@@ -1195,10 +1197,9 @@ msgid "View &Difference"
 msgstr "查看差异(&D)"
 
 #: dialogs/katedialogs.cpp:1451
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "显示更改的差别"
+msgstr "显示更改的差异。"
 
 #: dialogs/katedialogs.cpp:1456
 #, kde-format
@@ -1206,8 +1207,7 @@ msgid "&Reload"
 msgstr "重新加载(&R)"
 
 #: dialogs/katedialogs.cpp:1458
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "重新从磁盘加载文件。未保存的更改将丢失。"
 
@@ -1218,10 +1218,9 @@ msgid "&Close File"
 msgstr "关闭文件(&C)"
 
 #: dialogs/katedialogs.cpp:1464
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "关闭文件，舍弃内容。"
+msgstr "关闭文件，丢弃内容。"
 
 #: dialogs/katedialogs.cpp:1468
 #, kde-format
@@ -1656,13 +1655,13 @@ msgstr "保存时自动清理"
 msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
-msgstr "在保存文档时根据选择移除整个文档或者修改过的行的末尾空格。"
+msgstr "根据用户选项，在保存文档时移除整个文档或者修改过的行的行末空格。"
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
 #, kde-format
 msgid "Re&move trailing spaces:"
-msgstr "删除尾随空格(&M)："
+msgstr "移除行末空格(&M)："
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
@@ -1677,13 +1676,13 @@ msgstr "从不"
 #: dialogs/opensaveconfigwidget.ui:198
 #, kde-format
 msgid "On Modified Lines"
-msgstr "对已修改的行"
+msgstr "仅已修改的行"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:203
 #, kde-format
 msgid "In Entire Document"
-msgstr "对整个文档"
+msgstr "整个文档"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:226
@@ -2062,8 +2061,7 @@ msgid "&Close"
 msgstr "关闭(&C)"
 
 #: document/katedocument.cpp:2295 document/katedocument.cpp:6544
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "关闭消息"
@@ -2445,7 +2443,7 @@ msgstr "打印标志(&L)"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "不打印折叠的代码"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2988,37 +2986,31 @@ msgid "Remove Duplicates and Sort Selected Text Alphabetically"
 msgstr "移除重复项并按字母顺序排序选定的文本"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "向上复制选中的行"
+msgstr "删除重复行"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "删除尾随空格(&M)："
+msgstr "移除行末空格"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "删除尾随空格(&M)："
+msgstr "移除行首空格"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "删除尾随空格(&M)："
+msgstr "移除行末和行首空格"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "连接行"
@@ -3060,11 +3052,10 @@ msgid "URI-decode Selected Text"
 msgstr "URI 解码选中的文本"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "移除空行的光标"
+msgstr "移除空行"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -3099,17 +3090,17 @@ msgstr ""
 #: script/data/commands/utils.js:452
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
-msgstr "剔除选中的文本或整个文档中的起始空白。"
+msgstr "移除选中的文本或者整个文档中的行末空白。"
 
 #: script/data/commands/utils.js:454
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
-msgstr "剔除选中的文本或整个文档中的末尾空白。"
+msgstr "移除选中的文本或者整个文档中的行首空白。"
 
 #: script/data/commands/utils.js:456
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
-msgstr "剔除选中的文本或整个文档中的起始和末尾空白。"
+msgstr "移除选中的文本或者整个文档中的行首和行末空白。"
 
 #: script/data/commands/utils.js:458
 #, kde-format
@@ -4975,8 +4966,8 @@ msgid ""
 "whitespace will be visualized by a small dot.</p><p>Possible true values: 1 "
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-show-tabs <b>enable</b></p><p>如果启用，Tab 字符和末尾空格将被用小点标"
-"示。</p><p>可选真值：1 on true。<br/>可选假值：0 off false</p>"
+"<p>set-show-tabs <b>enable</b></p><p>如果启用，Tab 字符和行末空格将用小点进行"
+"标识。</p><p>可选真值：1 on true。<br/>可选假值：0 off false</p>"
 
 #: utils/katecmds.cpp:114
 #, kde-format
@@ -4987,10 +4978,10 @@ msgid ""
 "remove trailing spaces only of modified lines.</li><li><b>all</b>: remove "
 "trailing spaces in the entire document.</li></ul></p>"
 msgstr ""
-"<p>set-remove-trailing-spaces <b>mode</b></p><p>根据<b>mode</b>移除文档中的末"
-"尾空格。</p><p>可选值：<ul><li><b>none</b>：从不移除末尾空格。</"
-"li><li><b>modified</b>：仅移除修改过的行的末尾空格。</li><li><b>all</b>：移除"
-"文档中的全部末尾空格。</li></ul></p>"
+"<p>set-remove-trailing-spaces <b>mode</b></p><p>根据<b>mode</b>移除文档中的行"
+"末空格。</p><p>可选值：<ul><li><b>none</b>：从不移除行末空格。</"
+"li><li><b>modified</b>：仅移除修改过的行的行末空格。</li><li><b>all</b>：移除"
+"文档中的全部行末空格。</li></ul></p>"
 
 #: utils/katecmds.cpp:125
 #, kde-format
@@ -5880,7 +5871,7 @@ msgstr "设置文档背景颜色。"
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
-msgstr "前导空白处按退格取消缩进"
+msgstr "在行首空白处按下退格键取消缩进。"
 
 #: variableeditor/variablelineedit.cpp:139
 #, kde-format
@@ -6030,7 +6021,7 @@ msgstr "用空格替换 Tab。"
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
-msgstr "保存时删除尾随空格。"
+msgstr "保存文档时移除行末空格。"
 
 #: variableeditor/variablelineedit.cpp:280
 #, kde-format
@@ -6060,7 +6051,7 @@ msgstr "设置选中文本颜色。"
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
-msgstr "尾随空格加亮。"
+msgstr "标识行末空格。"
 
 #: variableeditor/variablelineedit.cpp:311
 #, kde-format
@@ -6310,10 +6301,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "将选中的文本与剪贴板内容互相交换"
 
 #: view/kateview.cpp:481
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "粘贴选中内容"
+msgstr "截图选中的区域"
 
 #: view/kateview.cpp:485
 #, kde-format
@@ -6395,6 +6385,12 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"此命令将把选中的块或者整个文档中的行对齐到由一条正则表达式指定的列上，程序会"
+"提示您输入该正则表达式。<br /><br />如果您给出一个空模式，程序将在默认情况下"
+"把行对齐到第一个非空字符的位置。<br />如果给出的模式有匹配项，程序将在匹配项"
+"的位置上缩进。<br /><br /><i>例如</i>：<br />“-”将在每行的第一个“-”前面插入空"
+"格来将每行对齐到同一列。<br />“:\\s+(.)”将在半角冒号之后出现的第一个非空白字"
+"符前面插入空格来将每行对齐到同一列。"
 
 #: view/kateview.cpp:532
 #, kde-format
@@ -6454,13 +6450,12 @@ msgstr "锁定/解锁该文档进行写入"
 #: view/kateview.cpp:570
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "强制从右向左 (RTL) 方向(&F)"
 
 #: view/kateview.cpp:571
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "文本修饰"
+msgstr "强制从右向左 (RTL) 文本方向"
 
 #: view/kateview.cpp:581
 #, kde-format
@@ -6518,10 +6513,9 @@ msgid ""
 msgstr "手动调用代码补全，通常通过绑定到此操作的快捷键执行。"
 
 #: view/kateview.cpp:618
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "删除尾随空格(&M)："
+msgstr "移除行末空格"
 
 #: view/kateview.cpp:636
 #, kde-format
@@ -7292,7 +7286,7 @@ msgstr "智能插入新行"
 msgid ""
 "Insert newline including leading characters of the current line which are "
 "not letters or numbers."
-msgstr "插入新行，并自动加入当前行中开头的非字母或数字文字。"
+msgstr "插入新行，并自动加入位于当前行行首的非字母或者数字字符。"
 
 #: view/kateview.cpp:1261
 #, kde-format
@@ -7485,63 +7479,54 @@ msgid "Disable Annotation Bar"
 msgstr "禁用批注栏"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "打开/保存"
+msgstr "保存"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "复制(&C)..."
+msgstr "复制"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "背景颜色(&B)..."
+msgstr "背景颜色..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "文本修饰"
+msgstr "显示额外装饰"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "显示缩进行(&N)"
+msgstr "显示窗口装饰"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "截图..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "显示行号(&L)"
+msgstr "不显示行号"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "显示行号(&L)"
+msgstr "显示从 1 开始的行号"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "显示行号(&L)"
+msgstr "显示实际行号"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "另存为(&S)..."
+msgstr "保存..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -7912,43 +7897,3 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
-
-#~ msgid "The file %1 does not exist."
-#~ msgstr "文件 %1 不存在。"
-
-#~ msgid ""
-#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#~ "\n"
-#~ "Check if you have read access to this file."
-#~ msgstr ""
-#~ "无法加载文件 %1，原因是无法读取该文件。\n"
-#~ "\n"
-#~ "请检查您是否有该文件的读取权限。"
-
-#~ msgid ""
-#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
-#~ "It is set to read-only mode, as saving might destroy its content. Either "
-#~ "reopen the file with the correct encoding chosen or enable the read-write "
-#~ "mode again in the tools menu to be able to edit it."
-#~ msgstr ""
-#~ "已经按 %2 字符编码打开文件 %1，但是文件里包含无效字符，因此被设为只读模"
-#~ "式，因为保存也许会破坏它的内容。选用正确的编码方式重新打开这个文件，或者在"
-#~ "工具菜单中重新启用读写模式，都可以对它进行编辑。"
-
-#~ msgid ""
-#~ "The file %1 was opened and contained lines longer than the configured "
-#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-#~ "characters long<br/>Those lines were wrapped and the document is set to "
-#~ "read-only mode, as saving will modify its content."
-#~ msgstr ""
-#~ "文件 %1 已打开，并且包含了过长的行(%2 个字符)。<br/>最长的行为 %3 个字符"
-#~ "<br/>过长的行已折行并且文档设置为只读模式，保存时将会修改它的内容。"
-
-#~ msgid "Will never again warn about on disk changes but always reload."
-#~ msgstr "总是重新加载，而不会警告磁盘更改。"
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "加载脚本 %1 时出错\n"
-
-#~ msgid "Export/Print"
-#~ msgstr "导出/打印"
