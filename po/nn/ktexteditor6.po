@@ -1230,7 +1230,6 @@ msgstr "Vis &forskjellar"
 
 #: dialogs/katedialogs.cpp:1451
 #, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
 msgid "Shows a diff of the changes."
 msgstr "Viser ei diff-vising av alle forskjellane"
 
@@ -1241,7 +1240,6 @@ msgstr "&Last om att"
 
 #: dialogs/katedialogs.cpp:1458
 #, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Last fila på nytt frå disken. Viss du har ulagra endringar, går dei tapt."
@@ -1254,7 +1252,6 @@ msgstr "&Lukk fil"
 
 #: dialogs/katedialogs.cpp:1464
 #, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
 msgid "Closes the file, discarding its content."
 msgstr "Lukk fila og forkast innhaldet."
 
@@ -2134,7 +2131,6 @@ msgstr "Lu&kk"
 
 #: document/katedocument.cpp:2295 document/katedocument.cpp:6544
 #, fuzzy, kde-format
-#| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Lukk melding"
@@ -3088,36 +3084,30 @@ msgstr ""
 
 #: script/data/commands/utils.js:17
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
 msgstr "Lag kopi av merkte linjer oppover"
 
 #: script/data/commands/utils.js:21
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
 msgstr "F&jern mellomrom sist på linja:"
 
 #: script/data/commands/utils.js:25
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "F&jern mellomrom sist på linja:"
 
 #: script/data/commands/utils.js:29
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "F&jern mellomrom sist på linja:"
 
 #: script/data/commands/utils.js:33
 #, fuzzy, kde-format
-#| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Slå saman linjer"
@@ -6465,7 +6455,6 @@ msgstr "Byt merkt tekst med innhaldet på utklippstavla"
 
 #: view/kateview.cpp:481
 #, fuzzy, kde-format
-#| msgid "Paste Selection"
 msgid "Take Screenshot of Selection"
 msgstr "Lim inn utval"
 
@@ -6617,7 +6606,6 @@ msgstr ""
 
 #: view/kateview.cpp:571
 #, fuzzy, kde-format
-#| msgid "Text Decorations"
 msgid "Force RTL Text Direction"
 msgstr "Teksteffektar"
 
@@ -6684,7 +6672,6 @@ msgstr ""
 
 #: view/kateview.cpp:618
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgid "Remove Trailing Spaces"
 msgstr "F&jern mellomrom sist på linja:"
 
@@ -7675,31 +7662,26 @@ msgstr "Fjern merknadslinja"
 
 #: view/screenshotdialog.cpp:136
 #, fuzzy, kde-format
-#| msgid "Open/Save"
 msgid "Save"
 msgstr "Opna/lagra"
 
 #: view/screenshotdialog.cpp:137
 #, fuzzy, kde-format
-#| msgid "&Copy..."
 msgid "Copy"
 msgstr "&Kopier …"
 
 #: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
-#| msgid "&Background Color..."
 msgid "Background Color..."
 msgstr "&Bakgrunnsfarge …"
 
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
-#| msgid "Text Decorations"
 msgid "Show Extra Decorations"
 msgstr "Teksteffektar"
 
 #: view/screenshotdialog.cpp:141
 #, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "Vis &innrykkslinjer"
 
@@ -7710,25 +7692,21 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:218
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "Vis &linjenummer"
 
 #: view/screenshotdialog.cpp:219
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "Vis &linjenummer"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Vis &linjenummer"
 
 #: view/screenshotdialog.cpp:370
 #, fuzzy, kde-format
-#| msgid "&Save As..."
 msgid "Save..."
 msgstr "Lagra &som …"
 

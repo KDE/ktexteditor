@@ -2095,7 +2095,6 @@ msgstr "Lu&kk"
 
 #: document/katedocument.cpp:2295 document/katedocument.cpp:6544
 #, fuzzy, kde-format
-#| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Lukk melding"
@@ -3022,36 +3021,30 @@ msgstr ""
 
 #: script/data/commands/utils.js:17
 #, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
 msgstr "Dupliser valgte linjer opp"
 
 #: script/data/commands/utils.js:21
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
 msgstr "Fjern &mellomrom på slutten av linja:"
 
 #: script/data/commands/utils.js:25
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
 msgstr "Fjern &mellomrom på slutten av linja:"
 
 #: script/data/commands/utils.js:29
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
 msgstr "Fjern &mellomrom på slutten av linja:"
 
 #: script/data/commands/utils.js:33
 #, fuzzy, kde-format
-#| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Slå sammen linjer"
@@ -6554,7 +6547,6 @@ msgstr ""
 
 #: view/kateview.cpp:571
 #, fuzzy, kde-format
-#| msgid "Text Decorations"
 msgid "Force RTL Text Direction"
 msgstr "Tekstdekorasjoner"
 
@@ -6621,7 +6613,6 @@ msgstr ""
 
 #: view/kateview.cpp:618
 #, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
 msgid "Remove Trailing Spaces"
 msgstr "Fjern &mellomrom på slutten av linja:"
 
@@ -7612,7 +7603,6 @@ msgstr "Slå av merknadslinja"
 
 #: view/screenshotdialog.cpp:136
 #, fuzzy, kde-format
-#| msgid "Open/Save"
 msgid "Save"
 msgstr "Åpne/lagre"
 
@@ -7623,19 +7613,16 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
-#| msgid "&Background Color..."
 msgid "Background Color..."
 msgstr "&Bakgrunnsfarge …"
 
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
-#| msgid "Text Decorations"
 msgid "Show Extra Decorations"
 msgstr "Tekstdekorasjoner"
 
 #: view/screenshotdialog.cpp:141
 #, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "Vis i&nnrykkslinjer"
 
@@ -7646,25 +7633,21 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:218
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "Vis &linjenummer"
 
 #: view/screenshotdialog.cpp:219
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "Vis &linjenummer"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Vis &linjenummer"
 
 #: view/screenshotdialog.cpp:370
 #, fuzzy, kde-format
-#| msgid "&Save As..."
 msgid "Save..."
 msgstr "&Lagre som …"
 

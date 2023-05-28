@@ -2973,7 +2973,6 @@ msgstr ""
 
 #: script/data/commands/utils.js:33
 #, fuzzy, kde-format
-#| msgid "Join Lines"
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Ovttastahte linnjáid"
@@ -7374,7 +7373,6 @@ msgstr "Ale čájet notáhtaholgga"
 
 #: view/screenshotdialog.cpp:136
 #, fuzzy, kde-format
-#| msgid "Open/Save"
 msgid "Save"
 msgstr "Raba/vurke"
 
@@ -7385,7 +7383,6 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
-#| msgid "&Background Color..."
 msgid "Background Color..."
 msgstr "D&uogášivdni …"
 
@@ -7396,7 +7393,6 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:141
 #, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "Čájet &siskkildanlinnjáid"
 
@@ -7407,19 +7403,16 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:218
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "Čájet &linnjánummiriid"
 
 #: view/screenshotdialog.cpp:219
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "Čájet &linnjánummiriid"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Čájet &linnjánummiriid"
 
