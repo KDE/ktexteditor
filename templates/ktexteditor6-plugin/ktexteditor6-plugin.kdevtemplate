@@ -18,6 +18,7 @@ Name[tr]=C++ (KF6)
 Name[uk]=C++ (KF6)
 Name[x-test]=xxC++ (KF6)xx
 Name[zh_CN]=C++ (KF6)
+Name[zh_TW]=C++ (KF6)
 Comment=Generates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.
 Comment[ar]=يُولّد ملحقة «محرّر نصوصك» بلغة سي++ لإجراء عمليات خاصة على النصوص في «كاتبك» و«كيت» و«مطوّرك» وغيرها.
 Comment[az]=KWrite, Kate, KDevelop və s. proqramlarında mətnlər üzərində iş üçün C++ proqram dilində yazılmış KTextEditor əlavəsi modulu.
