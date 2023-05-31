@@ -9,6 +9,8 @@
 
 #include <KXMLGUIFactory>
 #include <QIcon>
+#include <QUrl>
+#include <QVariant>
 
 // clang-format off
 
