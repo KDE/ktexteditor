@@ -1,6 +1,7 @@
 # KDE Config File
 [General]
 Name=C++ (KF6)
+Name[bg]=C++ (KF6)
 Name[ca]=C++ (KF6)
 Name[ca@valencia]=C++ (KF6)
 Name[de]=C++ (KF6)
