@@ -179,6 +179,7 @@ public:
     int totalCharacters() const override;
     int lineLength(int line) const override;
     int cursorToOffset(KTextEditor::Cursor c) const;
+    void setAccessibilityNotificationsEnabled(bool enable);
 
 Q_SIGNALS:
     void charactersSemiInteractivelyInserted(KTextEditor::Cursor position, const QString &text);

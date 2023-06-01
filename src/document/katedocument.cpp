@@ -1265,19 +1265,19 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
         return false;
     }
 
+    // nothing to do, do nothing!
+    if (s.isEmpty()) {
+        return true;
+    }
+
     if (!isReadWrite()) {
         return false;
     }
 
-    int length = lineLength(line);
-
+    auto l = plainKateTextLine(line);
+    int length = l->length();
     if (length < 0) {
         return false;
-    }
-
-    // nothing to do, do nothing!
-    if (s.isEmpty()) {
-        return true;
     }
 
     editStart();
@@ -1289,7 +1289,7 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
         col2 = length;
     }
 
-    m_undoManager->slotTextInserted(line, col2, s2);
+    m_undoManager->slotTextInserted(line, col2, s2, l);
 
     // remember last change cursor
     m_editLastChangeStartCursor = KTextEditor::Cursor(line, col2);
@@ -1300,7 +1300,6 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
     Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
 
     editEnd();
-
     return true;
 }
 
@@ -1340,7 +1339,7 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
 
     QString oldText = l->string(col, len);
 
-    m_undoManager->slotTextRemoved(line, col, oldText);
+    m_undoManager->slotTextRemoved(line, col, oldText, l);
 
     // remember last change cursor
     m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
@@ -1398,9 +1397,8 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         return false;
     }
 
-    int length = lineLength(line);
-
-    if (length < 0) {
+    const Kate::TextLine &tl = plainKateTextLine(line);
+    if (!tl) {
         return false;
     }
 
@@ -1408,7 +1406,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
 
     const bool nextLineValid = lineLength(line + 1) >= 0;
 
-    m_undoManager->slotLineWrapped(line, col, length - col, (!nextLineValid || newLine));
+    m_undoManager->slotLineWrapped(line, col, tl->length() - col, (!nextLineValid || newLine), tl);
 
     if (!nextLineValid || newLine) {
         m_buffer->wrapLine(KTextEditor::Cursor(line, col));
@@ -1472,17 +1470,16 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         return false;
     }
 
-    int col = lineLength(line);
-    bool lineValid = col >= 0;
-    bool nextLineValid = lineLength(line + 1) >= 0;
-
-    if (!lineValid || !nextLineValid) {
+    const Kate::TextLine tl = plainKateTextLine(line);
+    const Kate::TextLine nextLine = plainKateTextLine(line + 1);
+    if (!tl || !nextLine) {
         return false;
     }
 
     editStart();
 
-    m_undoManager->slotLineUnWrapped(line, col, length, removeLine);
+    int col = tl->length();
+    m_undoManager->slotLineUnWrapped(line, col, length, removeLine, tl, nextLine);
 
     if (removeLine) {
         m_buffer->unwrapLine(line + 1);
@@ -1627,11 +1624,11 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
 
     // first remove text
     for (int line = to; line >= from; --line) {
-        const QString l = this->line(line);
-        oldText.prepend(l);
-        m_undoManager->slotLineRemoved(line, l);
+        const Kate::TextLine l = this->plainKateTextLine(line);
+        oldText.prepend(l->text());
+        m_undoManager->slotLineRemoved(line, l->text(), l);
 
-        m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, l.size())));
+        m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, l->length())));
     }
 
     // then collapse lines

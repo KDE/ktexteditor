@@ -147,12 +147,12 @@ public Q_SLOTS:
     /**
      * Notify KateUndoManager that text was inserted.
      */
-    void slotTextInserted(int line, int col, const QString &s);
+    void slotTextInserted(int line, int col, const QString &s, const Kate::TextLine &tl);
 
     /**
      * Notify KateUndoManager that text was removed.
      */
-    void slotTextRemoved(int line, int col, const QString &s);
+    void slotTextRemoved(int line, int col, const QString &s, const Kate::TextLine &tl);
 
     /**
      * Notify KateUndoManager that a line was marked as autowrapped.
@@ -162,12 +162,12 @@ public Q_SLOTS:
     /**
      * Notify KateUndoManager that a line was wrapped.
      */
-    void slotLineWrapped(int line, int col, int length, bool newLine);
+    void slotLineWrapped(int line, int col, int length, bool newLine, const Kate::TextLine &tl);
 
     /**
      * Notify KateUndoManager that a line was un-wrapped.
      */
-    void slotLineUnWrapped(int line, int col, int length, bool lineRemoved);
+    void slotLineUnWrapped(int line, int col, int length, bool lineRemoved, const Kate::TextLine &tl, const Kate::TextLine &nextLine);
 
     /**
      * Notify KateUndoManager that a line was inserted.
@@ -177,7 +177,7 @@ public Q_SLOTS:
     /**
      * Notify KateUndoManager that a line was removed.
      */
-    void slotLineRemoved(int line, const QString &s);
+    void slotLineRemoved(int line, const QString &s, const Kate::TextLine &tl);
 
 Q_SIGNALS:
     void undoChanged();

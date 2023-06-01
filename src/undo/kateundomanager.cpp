@@ -135,7 +135,7 @@ void KateUndoManager::endUndo()
     setActive(true);
 }
 
-void KateUndoManager::slotTextInserted(int line, int col, const QString &s)
+void KateUndoManager::slotTextInserted(int line, int col, const QString &s, const Kate::TextLine &tl)
 {
     if (!m_editCurrentUndo.has_value() || s.isEmpty()) { // do we care about notifications?
         return;
@@ -148,7 +148,6 @@ void KateUndoManager::slotTextInserted(int line, int col, const QString &s)
     item.text = s;
     item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-    Kate::TextLine tl = m_document->plainKateTextLine(line);
     Q_ASSERT(tl);
     if (tl && tl->markedAsModified()) {
         item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
@@ -158,7 +157,7 @@ void KateUndoManager::slotTextInserted(int line, int col, const QString &s)
     addUndoItem(std::move(item));
 }
 
-void KateUndoManager::slotTextRemoved(int line, int col, const QString &s)
+void KateUndoManager::slotTextRemoved(int line, int col, const QString &s, const Kate::TextLine &tl)
 {
     if (!m_editCurrentUndo.has_value() || s.isEmpty()) { // do we care about notifications?
         return;
@@ -171,7 +170,6 @@ void KateUndoManager::slotTextRemoved(int line, int col, const QString &s)
     item.text = s;
     item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-    Kate::TextLine tl = m_document->plainKateTextLine(line);
     Q_ASSERT(tl);
     if (tl && tl->markedAsModified()) {
         item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
@@ -192,7 +190,7 @@ void KateUndoManager::slotMarkLineAutoWrapped(int line, bool autowrapped)
     }
 }
 
-void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLine)
+void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLine, const Kate::TextLine &tl)
 {
     if (!m_editCurrentUndo.has_value()) { // do we care about notifications?
         return;
@@ -205,7 +203,6 @@ void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLin
     item.len = length;
     item.newLine = newLine;
 
-    Kate::TextLine tl = m_document->plainKateTextLine(line);
     Q_ASSERT(tl);
     if (tl) {
         if (length > 0 || tl->markedAsModified()) {
@@ -229,7 +226,7 @@ void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLin
     addUndoItem(std::move(item));
 }
 
-void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool lineRemoved)
+void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool lineRemoved, const Kate::TextLine &tl, const Kate::TextLine &nextLine)
 {
     if (!m_editCurrentUndo.has_value()) { // do we care about notifications?
         return;
@@ -242,8 +239,6 @@ void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool line
     item.len = length;
     item.removeLine = lineRemoved;
 
-    Kate::TextLine tl = m_document->plainKateTextLine(line);
-    Kate::TextLine nextLine = m_document->plainKateTextLine(line + 1);
     Q_ASSERT(tl);
     Q_ASSERT(nextLine);
 
@@ -318,7 +313,7 @@ void KateUndoManager::slotLineInserted(int line, const QString &s)
     }
 }
 
-void KateUndoManager::slotLineRemoved(int line, const QString &s)
+void KateUndoManager::slotLineRemoved(int line, const QString &s, const Kate::TextLine &tl)
 {
     if (m_editCurrentUndo.has_value()) { // do we care about notifications?
         UndoItem item;
@@ -327,7 +322,6 @@ void KateUndoManager::slotLineRemoved(int line, const QString &s)
         item.text = s;
         item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-        Kate::TextLine tl = m_document->plainKateTextLine(line);
         Q_ASSERT(tl);
         if (tl) {
             if (tl->markedAsModified()) {
