@@ -98,7 +98,7 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
         if (oldBlock) {
             oldBlock->removeCursor(this);
         }
-        m_block = m_buffer.blockForIndex(m_buffer.blockForLine(position.line()));
+        m_block = m_buffer.m_blocks[m_buffer.blockForLine(position.line())];
         Q_ASSERT(m_block);
         m_block->insertCursor(this);
         startLine = m_block->startLine();

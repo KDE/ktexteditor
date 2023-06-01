@@ -418,16 +418,6 @@ private:
     void balanceBlock(int index);
 
     /**
-     * Block for given index in block list.
-     * @param index block index
-     * @return block matching this index
-     */
-    TextBlock *blockForIndex(int index)
-    {
-        return m_blocks[index];
-    }
-
-    /**
      * A range changed, notify the views, in case of attributes or feedback.
      * @param view which view is affected? nullptr for all views
      * @param lineRange line range that the change spans
