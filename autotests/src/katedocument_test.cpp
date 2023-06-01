@@ -927,16 +927,49 @@ void KateDocumentTest::testBug468495()
 void KateDocumentTest::testCursorToOffset()
 {
     KTextEditor::DocumentPrivate doc;
-    const QString original = QStringLiteral("123\n456");
-    doc.setText(original);
-    QCOMPARE(doc.lines(), 2);
-    QCOMPARE(doc.cursorToOffset({0, 0}), 0);
-    QCOMPARE(doc.cursorToOffset({0, 1}), 1);
-    QCOMPARE(doc.cursorToOffset({0, 2}), 2);
-    QCOMPARE(doc.cursorToOffset(doc.documentEnd()), 7);
-    // out of range column snaps to the last column in line
-    QCOMPARE(doc.cursorToOffset({0, 7}), 3);
-    // invalid / out of range cursor returns -1
-    QCOMPARE(doc.cursorToOffset({2, 4}), -1);
-    QCOMPARE(doc.cursorToOffset(KTextEditor::Cursor::invalid()), -1);
+    doc.setText(QStringLiteral("123\n456"));
+
+    // Simple
+    {
+        QCOMPARE(doc.lines(), 2);
+        QCOMPARE(doc.cursorToOffset({0, 0}), 0);
+        QCOMPARE(doc.offsetToCursor(0), Cursor(0, 0));
+
+        QCOMPARE(doc.cursorToOffset({0, 1}), 1);
+        QCOMPARE(doc.offsetToCursor(1), Cursor(0, 1));
+
+        QCOMPARE(doc.cursorToOffset({0, 2}), 2);
+        QCOMPARE(doc.offsetToCursor(2), Cursor(0, 2));
+
+        QCOMPARE(doc.cursorToOffset(doc.documentEnd()), 7);
+        QCOMPARE(doc.offsetToCursor(7), doc.documentEnd());
+
+        // out of range column snaps to the last column in line
+        QCOMPARE(doc.cursorToOffset({0, 7}), 3);
+
+        // invalid / out of range cursor returns -1
+        QCOMPARE(doc.cursorToOffset({2, 4}), -1);
+        QCOMPARE(doc.offsetToCursor(99), KTextEditor::Cursor::invalid());
+        QCOMPARE(doc.cursorToOffset(KTextEditor::Cursor::invalid()), -1);
+        QCOMPARE(doc.offsetToCursor(-1), KTextEditor::Cursor::invalid());
+    }
+
+    // After insert/remove
+    doc.insertText(doc.documentEnd(), QStringLiteral("\n123"));
+    {
+        QCOMPARE(doc.lines(), 3);
+        QCOMPARE(doc.cursorToOffset(doc.documentEnd()), 11);
+        QCOMPARE(doc.offsetToCursor(11), doc.documentEnd());
+
+        doc.removeLine(0);
+        QCOMPARE(doc.lines(), 2);
+        QCOMPARE(doc.cursorToOffset(doc.documentEnd()), 7);
+        QCOMPARE(doc.offsetToCursor(7), doc.documentEnd());
+
+        QString s(128, QLatin1Char('\n'));
+        doc.insertText(doc.documentEnd(), s);
+        QCOMPARE(doc.lines(), 128 + 2);
+        QCOMPARE(doc.cursorToOffset(doc.documentEnd()), 7 + 128);
+        QCOMPARE(doc.offsetToCursor(7 + 128), doc.documentEnd());
+    }
 }

@@ -926,6 +926,11 @@ int KTextEditor::DocumentPrivate::cursorToOffset(KTextEditor::Cursor c) const
     return m_buffer->cursorToOffset(c);
 }
 
+KTextEditor::Cursor KTextEditor::DocumentPrivate::offsetToCursor(int offset) const
+{
+    return m_buffer->offsetToCursor(offset);
+}
+
 bool KTextEditor::DocumentPrivate::isLineModified(int line) const
 {
     if (line < 0 || line >= lines()) {

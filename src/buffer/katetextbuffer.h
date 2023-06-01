@@ -244,6 +244,11 @@ public:
     int cursorToOffset(KTextEditor::Cursor c) const;
 
     /**
+     * Retrieve cursor in text for the given offset
+     */
+    KTextEditor::Cursor offsetToCursor(int offset) const;
+
+    /**
      * Retrieve text of complete buffer.
      * @return text for this buffer, lines separated by '\n'
      */

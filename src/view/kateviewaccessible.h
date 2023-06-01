@@ -331,18 +331,7 @@ private:
 
     KTextEditor::Cursor cursorFromInt(int position) const
     {
-        int line = 0;
-        for (;;) {
-            const QString lineString = view()->view()->document()->line(line);
-            if (position > lineString.length()) {
-                // one is the newline
-                position -= lineString.length() + 1;
-                ++line;
-            } else {
-                break;
-            }
-        }
-        return KTextEditor::Cursor(line, position);
+        return view()->view()->doc()->offsetToCursor(position);
     }
 
     QString textLine(int shiftLines, int offset, int *startOffset, int *endOffset) const

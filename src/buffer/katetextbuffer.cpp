@@ -186,6 +186,30 @@ int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
     return -1;
 }
 
+KTextEditor::Cursor TextBuffer::offsetToCursor(int offset) const
+{
+    if (offset >= 0) {
+        int off = 0;
+        for (auto block : m_blocks) {
+            if (off + block->blockSize() < offset) {
+                off += block->blockSize();
+            } else {
+                const int lines = block->lines();
+                int start = block->startLine();
+                int end = start + lines;
+                for (int line = start; line < end; ++line) {
+                    const int len = block->lineLength(line);
+                    if (off + len >= offset) {
+                        return KTextEditor::Cursor(line, offset - off);
+                    }
+                    off += len + 1;
+                }
+            }
+        }
+    }
+    return KTextEditor::Cursor::invalid();
+}
+
 QString TextBuffer::text() const
 {
     QString text;
@@ -935,5 +959,4 @@ void TextBuffer::markModifiedLinesAsSaved()
         block->markModifiedLinesAsSaved();
     }
 }
-
 }

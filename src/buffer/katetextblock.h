@@ -245,9 +245,13 @@ public:
         }
     }
 
+    /**
+     * Returns the size of this block i.e.,
+     * the count of QChars it has + number of new lines
+     */
     int blockSize() const
     {
-        return m_blockSize;
+        return m_blockSize + m_lines.size();
     }
 
 private:

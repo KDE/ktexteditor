@@ -22,6 +22,7 @@ TextBlock::TextBlock(TextBuffer *buffer, int startLine)
 TextBlock::~TextBlock()
 {
     // blocks should be empty before they are deleted!
+    Q_ASSERT(m_blockSize == 0);
     Q_ASSERT(m_lines.empty());
     Q_ASSERT(m_cursors.empty());
 
@@ -49,7 +50,7 @@ TextLine TextBlock::line(int line) const
 void TextBlock::appendLine(const QString &textOfLine)
 {
     m_lines.push_back(std::make_shared<Kate::TextLineData>(textOfLine));
-    m_blockSize += textOfLine.size() + 1;
+    m_blockSize += textOfLine.size();
 }
 
 void TextBlock::clearLines()
@@ -85,8 +86,6 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
 
     // create new line and insert it
     m_lines.insert(m_lines.begin() + line + 1, TextLine(new TextLineData()));
-
-    m_blockSize += 1;
 
     // cases for modification:
     // 1. line is wrapped in the middle
@@ -184,8 +183,6 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 {
     // calc internal line
     line = line - startLine();
-
-    m_blockSize -= 1;
 
     // two possiblities: either first line of this block or later line
     if (line == 0) {
@@ -518,13 +515,11 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     // move lines
     newBlock->m_lines.reserve(linesOfNewBlock);
     for (size_t i = fromLine; i < m_lines.size(); ++i) {
-        newBlock->m_lines.push_back(m_lines.at(i));
-        m_blockSize -= m_lines[i]->length();
-        newBlock->m_blockSize += m_lines[i]->length();
+        auto line = std::move(m_lines[i]);
+        m_blockSize -= line->length();
+        newBlock->m_blockSize += line->length();
+        newBlock->m_lines.push_back(std::move(line));
     }
-    // each newline == +1
-    m_blockSize -= linesOfNewBlock;
-    newBlock->m_blockSize += linesOfNewBlock;
 
     m_lines.resize(fromLine);
 
