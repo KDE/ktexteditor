@@ -3729,7 +3729,7 @@ void KTextEditor::DocumentPrivate::alignOn(KTextEditor::Range range, const QStri
     // find which column we'll align with
     int maxColumn = *std::max_element(patternStartColumns.cbegin(), patternStartColumns.cend());
     // align!
-    editBegin();
+    editStart();
     for (int i = 0; i < lines.size(); ++i) {
         if (patternStartColumns[i] != -1) {
             insertText(KTextEditor::Cursor(range.start().line() + i, patternStartColumns[i]), QString(maxColumn - patternStartColumns[i], QChar::Space));
@@ -4271,7 +4271,7 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
         setWordWrap(false);
     }
 
-    editBegin();
+    editStart();
 
     if (v->selection()) {
         const auto &cursors = v->secondaryCursors();
@@ -4399,7 +4399,7 @@ void KTextEditor::DocumentPrivate::transformCursorOrRange(KTextEditor::ViewPriva
 
 void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor c, KTextEditor::DocumentPrivate::TextTransform t)
 {
-    editBegin();
+    editStart();
 
     if (v->selection()) {
         const auto &cursors = v->secondaryCursors();

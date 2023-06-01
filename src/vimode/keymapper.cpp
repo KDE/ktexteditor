@@ -45,7 +45,7 @@ void KeyMapper::executeMapping()
                                                                       m_fullMappingMatch)) {
         m_doNotExpandFurtherMappings = true;
     }
-    m_doc->editBegin();
+    m_doc->editStart();
     m_viInputModeManager->feedKeyPresses(mappedKeypresses);
     m_doNotExpandFurtherMappings = false;
     m_doc->editEnd();

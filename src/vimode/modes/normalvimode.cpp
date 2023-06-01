@@ -1445,7 +1445,7 @@ bool NormalViMode::commandUndo()
         }
         doc()->undo();
         if (mapped) {
-            doc()->editBegin();
+            doc()->editStart();
         }
         if (m_viInputModeManager->isAnyVisualMode()) {
             m_viInputModeManager->getViVisualMode()->setStart(KTextEditor::Cursor(-1, -1));
@@ -1467,7 +1467,7 @@ bool NormalViMode::commandRedo()
         }
         doc()->redo();
         if (mapped) {
-            doc()->editBegin();
+            doc()->editStart();
         }
         if (m_viInputModeManager->isAnyVisualMode()) {
             m_viInputModeManager->getViVisualMode()->setStart(KTextEditor::Cursor(-1, -1));
@@ -1900,7 +1900,7 @@ bool NormalViMode::commandReplayMacro()
     const QChar reg = m_keys[m_keys.size() - 1];
     const unsigned int count = getCount();
     resetParser();
-    doc()->editBegin();
+    doc()->editStart();
     for (unsigned int i = 0; i < count; i++) {
         m_viInputModeManager->macroRecorder()->replay(reg);
     }
@@ -3612,7 +3612,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
         }
     }
 
-    doc()->editBegin();
+    doc()->editStart();
     if (m_view->selection()) {
         pasteAt = m_view->selectionRange().start();
         doc()->removeText(m_view->selectionRange());

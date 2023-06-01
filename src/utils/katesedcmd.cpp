@@ -153,7 +153,8 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString,
     qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
     QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\") + d
-                                + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"), QRegularExpression::UseUnicodePropertiesOption);
+                                    + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"),
+                                QRegularExpression::UseUnicodePropertiesOption);
     match = splitter.match(sedReplaceString);
     if (!match.hasMatch()) {
         return false;
@@ -222,7 +223,7 @@ void KateCommands::SedReplace::InteractiveSedReplacer::replaceCurrentMatch()
     const QString currentMatchText = m_doc->text(currentMatch);
     const QString replacementText = replacementTextForCurrentMatch();
 
-    m_doc->editBegin();
+    m_doc->editStart();
     m_doc->removeText(currentMatch);
     m_doc->insertText(currentMatch.start(), replacementText);
     m_doc->editEnd();
@@ -256,7 +257,7 @@ void KateCommands::SedReplace::InteractiveSedReplacer::replaceCurrentMatch()
 
 void KateCommands::SedReplace::InteractiveSedReplacer::replaceAllRemaining()
 {
-    m_doc->editBegin();
+    m_doc->editStart();
     while (currentMatch().isValid()) {
         replaceCurrentMatch();
     }

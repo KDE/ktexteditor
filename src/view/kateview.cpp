@@ -3894,7 +3894,7 @@ void KTextEditor::ViewPrivate::deleteWordRight()
 
 void KTextEditor::ViewPrivate::transpose()
 {
-    doc()->editBegin();
+    doc()->editStart();
     for (const auto &c : m_secondaryCursors) {
         doc()->transpose(c.cursor());
     }

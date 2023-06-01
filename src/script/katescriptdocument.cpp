@@ -623,7 +623,7 @@ int KateScriptDocument::lineLength(int line)
 
 void KateScriptDocument::editBegin()
 {
-    m_document->editBegin();
+    m_document->editStart();
 }
 
 void KateScriptDocument::editEnd()

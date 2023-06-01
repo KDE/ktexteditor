@@ -56,7 +56,7 @@ void BugTest::tryCrash()
     view->setSelection(Range(2, 0, 74, 0));
     view->setCursorPosition(Cursor(74, 0));
 
-    doc.editBegin();
+    doc.editStart();
     QString text = doc.line(1);
     doc.insertLine(74, text);
     doc.removeLine(1);

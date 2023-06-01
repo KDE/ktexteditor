@@ -213,14 +213,6 @@ public:
     bool editStart();
 
     /**
-     * Alias for @p editStart()
-     */
-    void editBegin()
-    {
-        editStart();
-    }
-
-    /**
      * End a editor operation.
      * @see editStart()
      */

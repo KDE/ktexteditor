@@ -3274,7 +3274,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
             if (tabHandling == KateDocumentConfig::tabInsertsTab) {
                 doc()->typeChars(m_view, QStringLiteral("\t"));
             } else {
-                doc()->editBegin();
+                doc()->editStart();
                 for (const auto &c : std::as_const(m_view->m_secondaryCursors)) {
                     auto cursor = c.cursor();
                     doc()->indent(KTextEditor::Range(cursor.line(), 0, cursor.line(), 0), 1);
