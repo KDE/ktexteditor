@@ -98,6 +98,7 @@ private Q_SLOTS:
     void testToggleComment();
     void testInsertTextTooLargeColumn();
     void testBug468495();
+    void testCursorToOffset();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

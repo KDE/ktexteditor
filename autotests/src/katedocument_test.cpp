@@ -924,4 +924,19 @@ void KateDocumentTest::testBug468495()
     QCOMPARE(QString::fromLatin1(e), afterIndent);
 }
 
-#include "katedocument_test.moc"
+void KateDocumentTest::testCursorToOffset()
+{
+    KTextEditor::DocumentPrivate doc;
+    const QString original = QStringLiteral("123\n456");
+    doc.setText(original);
+    QCOMPARE(doc.lines(), 2);
+    QCOMPARE(doc.cursorToOffset({0, 0}), 0);
+    QCOMPARE(doc.cursorToOffset({0, 1}), 1);
+    QCOMPARE(doc.cursorToOffset({0, 2}), 2);
+    QCOMPARE(doc.cursorToOffset(doc.documentEnd()), 7);
+    // out of range column snaps to the last column in line
+    QCOMPARE(doc.cursorToOffset({0, 7}), 3);
+    // invalid / out of range cursor returns -1
+    QCOMPARE(doc.cursorToOffset({2, 4}), -1);
+    QCOMPARE(doc.cursorToOffset(KTextEditor::Cursor::invalid()), -1);
+}

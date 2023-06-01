@@ -245,6 +245,11 @@ public:
         }
     }
 
+    int blockSize() const
+    {
+        return m_blockSize;
+    }
+
 private:
     /**
      * parent text buffer
@@ -261,6 +266,11 @@ private:
      * Startline of this block
      */
     int m_startLine;
+
+    /**
+     * size of block i.e., number of QChars
+     */
+    int m_blockSize = 0;
 
     /**
      * Set of cursors for this block.

@@ -49,11 +49,13 @@ TextLine TextBlock::line(int line) const
 void TextBlock::appendLine(const QString &textOfLine)
 {
     m_lines.push_back(std::make_shared<Kate::TextLineData>(textOfLine));
+    m_blockSize += textOfLine.size() + 1;
 }
 
 void TextBlock::clearLines()
 {
     m_lines.clear();
+    m_blockSize = 0;
 }
 
 void TextBlock::text(QString &text) const
@@ -83,6 +85,8 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
 
     // create new line and insert it
     m_lines.insert(m_lines.begin() + line + 1, TextLine(new TextLineData()));
+
+    m_blockSize += 1;
 
     // cases for modification:
     // 1. line is wrapped in the middle
@@ -180,6 +184,8 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 {
     // calc internal line
     line = line - startLine();
+
+    m_blockSize -= 1;
 
     // two possiblities: either first line of this block or later line
     if (line == 0) {
@@ -367,6 +373,8 @@ void TextBlock::insertText(const KTextEditor::Cursor position, const QString &te
     // notify the text history
     m_buffer->history().insertText(position, text.size(), oldLength);
 
+    m_blockSize += text.size();
+
     // cursor and range handling below
 
     // no cursors in this block, no work to do..
@@ -441,6 +449,8 @@ void TextBlock::removeText(KTextEditor::Range range, QString &removedText)
     // notify the text history
     m_buffer->history().removeText(range, oldLength);
 
+    m_blockSize -= removedText.size();
+
     // cursor and range handling below
 
     // no cursors in this block, no work to do..
@@ -509,7 +519,13 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     newBlock->m_lines.reserve(linesOfNewBlock);
     for (size_t i = fromLine; i < m_lines.size(); ++i) {
         newBlock->m_lines.push_back(m_lines.at(i));
+        m_blockSize -= m_lines[i]->length();
+        newBlock->m_blockSize += m_lines[i]->length();
     }
+    // each newline == +1
+    m_blockSize -= linesOfNewBlock;
+    newBlock->m_blockSize += linesOfNewBlock;
+
     m_lines.resize(fromLine);
 
     // move cursors
@@ -561,7 +577,8 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     for (size_t i = 0; i < m_lines.size(); ++i) {
         targetBlock->m_lines.push_back(m_lines.at(i));
     }
-    m_lines.clear();
+    targetBlock->m_blockSize += m_blockSize;
+    clearLines();
 
     // fix ALL ranges!
     // copy is necessary as update range may modify the uncached ranges
@@ -599,7 +616,7 @@ void TextBlock::deleteBlockContent()
     }
 
     // kill lines
-    m_lines.clear();
+    clearLines();
 }
 
 void TextBlock::clearBlockContent(TextBlock *targetBlock)
@@ -623,7 +640,7 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
     }
 
     // kill lines
-    m_lines.clear();
+    clearLines();
 }
 
 QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const

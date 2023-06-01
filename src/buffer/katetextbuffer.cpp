@@ -159,21 +159,26 @@ TextLine TextBuffer::line(int line) const
 
 int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
 {
-    if (!c.isValid()) {
+    if (!c.isValid() || c > document()->documentEnd()) {
         return -1;
     }
 
     int off = 0;
     int line = 0;
     for (auto block : m_blocks) {
-        const int lines = block->lines();
-        for (int i = 0; i < lines; ++i) {
-            if (line >= c.line()) {
-                off += c.column();
-                return off;
+        if (block->startLine() + block->lines() < c.line()) {
+            off += block->blockSize();
+            line += block->lines();
+        } else {
+            const int lines = block->lines();
+            for (int i = 0; i < lines; ++i) {
+                if (line >= c.line()) {
+                    off += qMin(c.column(), block->lineLength(line));
+                    return off;
+                }
+                off += block->lineLength(line) + 1;
+                line++;
             }
-            off += block->lineLength(line) + 1;
-            line++;
         }
     }
 
