@@ -221,15 +221,6 @@ public:
     void pushEditState();
     void popEditState();
 
-    virtual bool startEditing()
-    {
-        return editStart();
-    }
-    virtual bool finishEditing()
-    {
-        return editEnd();
-    }
-
     // END editStart/editEnd
 
     void inputMethodStart();

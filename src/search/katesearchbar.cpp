@@ -841,7 +841,7 @@ void KateSearchBar::findOrReplaceAll()
             Range lastRange;
             if (m_replaceMode) {
                 if (m_matchCounter == 0) {
-                    static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->startEditing();
+                    static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->editStart();
                 }
 
                 // Replace
@@ -911,7 +911,7 @@ void KateSearchBar::endFindOrReplaceAll()
     // After last match
     if (m_matchCounter > 0) {
         if (m_replaceMode) {
-            static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->finishEditing();
+            static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->editEnd();
         }
     }
 

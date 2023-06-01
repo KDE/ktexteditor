@@ -55,7 +55,7 @@ Document::EditingTransaction::EditingTransaction(Document *document)
 void Document::EditingTransaction::start()
 {
     if (d->document && !d->transactionRunning) {
-        d->document->startEditing();
+        d->document->editStart();
         d->transactionRunning = true;
     }
 }
@@ -63,7 +63,7 @@ void Document::EditingTransaction::start()
 void Document::EditingTransaction::finish()
 {
     if (d->document && d->transactionRunning) {
-        d->document->finishEditing();
+        d->document->editEnd();
         d->transactionRunning = false;
     }
 }
