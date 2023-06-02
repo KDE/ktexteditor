@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-06-02 02:04+0000\n"
 "PO-Revision-Date: 2023-04-13 23:20+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -2140,7 +2140,7 @@ msgstr "Автоматично презареждане на документ"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Автоматично презареждане на документа, когато е бил променен на диска"
 
-#: document/katedocument.cpp:2285
+#: document/katedocument.cpp:2282
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2149,24 +2149,24 @@ msgstr ""
 "Файлът %1 не можа да бъде зареден, тъй като не беше възможно да се прочете "
 "от него. <br/> Проверете дали имате достъп за четене до този файл."
 
-#: document/katedocument.cpp:2290
+#: document/katedocument.cpp:2287
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторно опитване"
 
-#: document/katedocument.cpp:2294 document/katedocument.cpp:6543
+#: document/katedocument.cpp:2291 document/katedocument.cpp:6540
 #, kde-format
 msgid "&Close"
 msgstr "&Затваряне"
 
-#: document/katedocument.cpp:2295 document/katedocument.cpp:6544
+#: document/katedocument.cpp:2292 document/katedocument.cpp:6541
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Затваряне на съобщението"
 
-#: document/katedocument.cpp:2427
+#: document/katedocument.cpp:2424
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2180,7 +2180,7 @@ msgstr ""
 "кодиране, или активирайте режима четене-запис в менюто с инструменти, за да "
 "можете да го редактирате."
 
-#: document/katedocument.cpp:2446
+#: document/katedocument.cpp:2443
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2194,17 +2194,17 @@ msgstr ""
 "настроен на режим само за четене, тъй като запазването ще промени "
 "съдържанието му."
 
-#: document/katedocument.cpp:2453
+#: document/katedocument.cpp:2450
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Временно увеличаване на лимита и презареждане на файла"
 
-#: document/katedocument.cpp:2456
+#: document/katedocument.cpp:2453
 #, kde-format
 msgid "Close"
 msgstr "Затваряне"
 
-#: document/katedocument.cpp:2483
+#: document/katedocument.cpp:2480
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2213,18 +2213,18 @@ msgstr ""
 "Сигурни ли сте, че искате файлът да бъде записан, въпреки че има променена "
 "версия на диска? При тази операция може да загубите данни."
 
-#: document/katedocument.cpp:2484
+#: document/katedocument.cpp:2481
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Запис на непроменен файл"
 
-#: document/katedocument.cpp:2485 document/katedocument.cpp:2496
-#: document/katedocument.cpp:2512
+#: document/katedocument.cpp:2482 document/katedocument.cpp:2493
+#: document/katedocument.cpp:2509
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Запис"
 
-#: document/katedocument.cpp:2494
+#: document/katedocument.cpp:2491
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2234,14 +2234,14 @@ msgstr ""
 "версия на диска и копието отворено в редактора също е променено? При тази "
 "операция може да загубите данни."
 
-#: document/katedocument.cpp:2495 document/katedocument.cpp:2511
-#: document/katedocument.cpp:2803 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2492 document/katedocument.cpp:2508
+#: document/katedocument.cpp:2800 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Възможна е загуба на данни"
 
-#: document/katedocument.cpp:2509
+#: document/katedocument.cpp:2506
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2250,7 +2250,7 @@ msgstr ""
 "Избраното кодиране не може да кодира всеки Unicode символ в този документ. "
 "Наистина ли искате да го запазите? Може да има загуба на данни."
 
-#: document/katedocument.cpp:2554
+#: document/katedocument.cpp:2551
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2266,7 +2266,7 @@ msgstr ""
 "Оригиналният файл може да бъде загубен или повреден. Не излизайте от "
 "приложението, докато файлът не е успешно записан."
 
-#: document/katedocument.cpp:2675
+#: document/katedocument.cpp:2672
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2279,51 +2279,51 @@ msgstr ""
 "Причината може да бъде, че носителят, на който пишете, е пълен или "
 "директорията на файла е само за четене."
 
-#: document/katedocument.cpp:2679
+#: document/katedocument.cpp:2676
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Създаването на резервно копие е неуспешно."
 
-#: document/katedocument.cpp:2680
+#: document/katedocument.cpp:2677
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Запис въпреки това"
 
-#: document/katedocument.cpp:2802
+#: document/katedocument.cpp:2799
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Сигурни ли сте, че искате файлът да бъде затворен? При тази операция може да "
 "загубите данни."
 
-#: document/katedocument.cpp:2804
+#: document/katedocument.cpp:2801
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Затваряне"
 
-#: document/katedocument.cpp:4614
+#: document/katedocument.cpp:4611
 #, kde-format
 msgid "Untitled"
 msgstr "Неозаглавено"
 
-#: document/katedocument.cpp:4737 document/katedocument.cpp:4965
-#: document/katedocument.cpp:4975 document/katedocument.cpp:5758
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:4734 document/katedocument.cpp:4962
+#: document/katedocument.cpp:4972 document/katedocument.cpp:5755
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Save File"
 msgstr "Запис на файл"
 
-#: document/katedocument.cpp:4740
+#: document/katedocument.cpp:4737
 #, kde-format
 msgid "Save failed"
 msgstr "Грешка при запис"
 
-#: document/katedocument.cpp:4986
+#: document/katedocument.cpp:4983
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Запазване на копие на файл"
 
-#: document/katedocument.cpp:4998
+#: document/katedocument.cpp:4995
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2336,7 +2336,7 @@ msgstr ""
 "Моля, проверете дали имате права за запис във файла и дали има достатъчно "
 "свободно място на диска."
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5272
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2349,7 +2349,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5281
+#: document/katedocument.cpp:5278
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2362,22 +2362,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5587
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файлът \"%1\" е модифициран на диска."
 
-#: document/katedocument.cpp:5593
+#: document/katedocument.cpp:5590
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Файлът \"%1\" е създаден на диска."
 
-#: document/katedocument.cpp:5596
+#: document/katedocument.cpp:5593
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Файлът \"%1\" беше изтрит от диска."
 
-#: document/katedocument.cpp:5933
+#: document/katedocument.cpp:5930
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2388,17 +2388,17 @@ msgstr ""
 "бе променен.\n"
 "Искате ли да запазите промените си или да ги отхвърлите?"
 
-#: document/katedocument.cpp:5936
+#: document/katedocument.cpp:5933
 #, kde-format
 msgid "Close Document"
 msgstr "Затваряне на документа"
 
-#: document/katedocument.cpp:6047
+#: document/katedocument.cpp:6044
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Файлът <a href=\"%1\"> %2 </a> все още се зарежда."
 
-#: document/katedocument.cpp:6052
+#: document/katedocument.cpp:6049
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Прекъсване на зареждането"
@@ -5830,12 +5830,12 @@ msgstr "yasen@lindeas.com,zlatkopopov@fsa-bg.org"
 msgid "Configure"
 msgstr "Настройване"
 
-#: utils/katesedcmd.cpp:268
+#: utils/katesedcmd.cpp:269
 #, kde-format
 msgid "replace with %1?"
 msgstr "заместване с %1?"
 
-#: utils/katesedcmd.cpp:274
+#: utils/katesedcmd.cpp:275
 #, kde-format
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
@@ -5843,7 +5843,7 @@ msgid_plural "%1 replacements done on %2"
 msgstr[0] "1 смяна извършена на %2"
 msgstr[1] "%1 замени, извършени на %2"
 
-#: utils/katesedcmd.cpp:277
+#: utils/katesedcmd.cpp:278
 #, kde-format
 msgctxt "substituted into the previous message"
 msgid "1 line"
