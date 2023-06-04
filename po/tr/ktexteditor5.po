@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-29 00:45+0000\n"
-"PO-Revision-Date: 2023-05-29 12:56+0300\n"
+"PO-Revision-Date: 2023-06-04 02:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -443,7 +443,8 @@ msgstr "İ&lk tamamlama girdisini otomatik seç"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr "Tamamlama listesi ögeleri arasında Sekme/Shift+Sekme kullanarak gezin"
+msgstr ""
+"Tamamlama listesi ögeleri arasında Sekme/Üst Karakter+Sekme kullanarak gezin"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -1065,12 +1066,12 @@ msgstr "Yazım Denetimi"
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
-msgstr "Alt"
+msgstr "Seçenek"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr "Ctrl"
+msgstr "Kontrol"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
@@ -1080,32 +1081,32 @@ msgstr "Meta"
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr "Ctrl + Alt"
+msgstr "Kontrol + Seçenek"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr "Meta + Alt"
+msgstr "Meta + Seçenek"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr "Ctrl + Meta"
+msgstr "Kontrol + Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
-msgstr "Cmd"
+msgstr "Komut"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd + Alt"
+msgstr "Komut + Seçenek"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd + Ctrl"
+msgstr "Komut + Kontrol"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -7976,7 +7977,7 @@ msgid ""
 "search and replace dialog)."
 msgstr ""
 "Seçiliyken vi komutları Kate'in kendi komutlarının üzerine yazar. Örneğin: "
-"Ctrl+R yinele işlemini yapar ve standart eylemin (ara ve değiştir "
+"Kontrol+R yinele işlemini yapar ve standart eylemin (ara ve değiştir "
 "penceresini gösterme) üzerine yazar."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViCommandsOverride)

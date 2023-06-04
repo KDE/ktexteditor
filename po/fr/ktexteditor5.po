@@ -27,7 +27,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-29 00:45+0000\n"
 "PO-Revision-Date: 2023-04-08 10:18+0200\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -701,7 +701,7 @@ msgstr "Nombre maximal d'entrées pour l'historique du presse-papier :"
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
-"Ceci détermine le nombre d’entrées à conserver dans l’historique du presse-"
+"Ceci détermine le nombre d'entrées à conserver dans l'historique du presse-"
 "papier"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
@@ -8043,7 +8043,7 @@ msgstr "Aligner sur"
 #: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
-msgstr "Modèle d’alignement :"
+msgstr "Modèle d'alignement :"
 
 #: view/kateview.cpp:4750
 #, kde-format
