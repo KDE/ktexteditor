@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-04-17 07:16+0200\n"
+"PO-Revision-Date: 2023-06-05 15:07+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -594,7 +594,7 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
-"Ao seleccionar un texto estes caracteres engadiranse a ambos lados del de "
+"Ao seleccionar un texto estes caracteres engadiranse aos dous lados del de "
 "xeito similar á funcionalidade de signos delimitadores automáticos"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
