@@ -588,7 +588,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     clearSearchHistory();
     BeginTest(QStringLiteral("foo \\Cba\\Cr"));
     TestPressKey(QStringLiteral("/\\\\\\\\Cb\\\\Ca\\\\\\\\C\\\\C\\\\Cr\\enterrX"));
-    QCOMPARE(searchHistory().first(), QStringLiteral("\\\\Cb\\Ca\\\\C\\C\\Cr"));
+    QCOMPARE(searchHistory().constFirst(), QStringLiteral("\\\\Cb\\Ca\\\\C\\C\\Cr"));
     FinishTest("foo XCba\\Cr");
     // If there is an escaped C, assume case sensitivity.
     DoTest("foo bAr BAr bar", "/ba\\\\Cr\\enterrX", "foo bAr BAr Xar");
@@ -791,11 +791,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral("foo bar xyz"));
     TestPressKey(QStringLiteral("/b"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->attribute()->background().color(), searchHighlightColour);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 4);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 5);
+    QCOMPARE(rangesOnFirstLine().constFirst()->attribute()->background().color(), searchHighlightColour);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 4);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 5);
     TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
@@ -803,10 +803,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral("foo bar xyz"));
     TestPressKey(QStringLiteral("/ba"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 4);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 6);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 4);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 6);
     TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
@@ -821,10 +821,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral(" foo bar xyz"));
     TestPressKey(QStringLiteral("ww/foo"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 1);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 4);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 1);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 4);
     TestPressKey(QStringLiteral("\\enter"));
     FinishTest(" foo bar xyz");
 
@@ -832,10 +832,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral("foo bar xyz"));
     TestPressKey(QStringLiteral("$?ba"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 4);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 6);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 4);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 6);
     TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
@@ -850,10 +850,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral("foo bar xyz"));
     TestPressKey(QStringLiteral("w?xyz"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 8);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 11);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 8);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 11);
     TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
@@ -875,7 +875,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     const QColor newSearchHighlightColour = QColor(255, 0, 0);
     kate_view->renderer()->config()->setSearchHighlightColor(newSearchHighlightColour);
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->attribute()->background().color(), newSearchHighlightColour);
+    QCOMPARE(rangesOnFirstLine().constFirst()->attribute()->background().color(), newSearchHighlightColour);
     TestPressKey(QStringLiteral("\\enter"));
     FinishTest("foo bar xyz");
 
@@ -1142,11 +1142,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         vi_global->searchHistory()->append(QStringLiteral("searchhistoryitem %1").arg(i));
     }
     QCOMPARE(searchHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(searchHistory().first(), QStringLiteral("searchhistoryitem 1"));
+    QCOMPARE(searchHistory().constFirst(), QStringLiteral("searchhistoryitem 1"));
     QCOMPARE(searchHistory().last(), QStringLiteral("searchhistoryitem 100"));
     vi_global->searchHistory()->append(QStringLiteral("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(searchHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(searchHistory().first(), QStringLiteral("searchhistoryitem 2"));
+    QCOMPARE(searchHistory().constFirst(), QStringLiteral("searchhistoryitem 2"));
     QCOMPARE(searchHistory().last(), QStringLiteral("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty searches to the history.
@@ -1776,11 +1776,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         vi_global->commandHistory()->append(QStringLiteral("commandhistoryitem %1").arg(i));
     }
     QCOMPARE(commandHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(commandHistory().first(), QStringLiteral("commandhistoryitem 1"));
+    QCOMPARE(commandHistory().constFirst(), QStringLiteral("commandhistoryitem 1"));
     QCOMPARE(commandHistory().last(), QStringLiteral("commandhistoryitem 100"));
     vi_global->commandHistory()->append(QStringLiteral("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(commandHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(commandHistory().first(), QStringLiteral("commandhistoryitem 2"));
+    QCOMPARE(commandHistory().constFirst(), QStringLiteral("commandhistoryitem 2"));
     QCOMPARE(commandHistory().last(), QStringLiteral("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty commands to the history.
@@ -1899,11 +1899,11 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
         vi_global->replaceHistory()->append(QStringLiteral("replacehistoryitem %1").arg(i));
     }
     QCOMPARE(replaceHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(replaceHistory().first(), QStringLiteral("replacehistoryitem 1"));
+    QCOMPARE(replaceHistory().constFirst(), QStringLiteral("replacehistoryitem 1"));
     QCOMPARE(replaceHistory().last(), QStringLiteral("replacehistoryitem 100"));
     vi_global->replaceHistory()->append(QStringLiteral("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(replaceHistory().size(), HISTORY_SIZE_LIMIT);
-    QCOMPARE(replaceHistory().first(), QStringLiteral("replacehistoryitem 2"));
+    QCOMPARE(replaceHistory().constFirst(), QStringLiteral("replacehistoryitem 2"));
     QCOMPARE(replaceHistory().last(), QStringLiteral("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty replaces to the history.
@@ -2712,10 +2712,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     BeginTest(QStringLiteral(" xyz  123 foo bar"));
     TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 10);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 13);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 10);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 13);
     TestPressKey(QStringLiteral("n"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
     FinishTest(" xyz  123 foo bar");
@@ -2726,10 +2726,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral(":s/foo/bar/gc\\enter"));
     TestPressKey(QStringLiteral("n"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 14);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 17);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 14);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 17);
     TestPressKey(QStringLiteral("n"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size());
     FinishTest(" xyz  123 foo foo bar");
@@ -2753,10 +2753,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral(":s/foo/bar/cg\\enter"));
     TestPressKey(QStringLiteral("y"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 14);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 17);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 14);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 17);
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest(" xyz  bar 123 foo bar");
 
@@ -2773,10 +2773,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     TestPressKey(QStringLiteral(":s/foo/barfoo/cg\\enter"));
     TestPressKey(QStringLiteral("y"));
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
-    QCOMPARE(rangesOnFirstLine().first()->start().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->start().column(), 6);
-    QCOMPARE(rangesOnFirstLine().first()->end().line(), 0);
-    QCOMPARE(rangesOnFirstLine().first()->end().column(), 9);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->start().column(), 6);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().line(), 0);
+    QCOMPARE(rangesOnFirstLine().constFirst()->end().column(), 9);
     TestPressKey(QStringLiteral("\\ctrl-c"));
     FinishTest("barfoofoo");
     BeginTest(QStringLiteral("xffy"));
