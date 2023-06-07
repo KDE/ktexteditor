@@ -12,7 +12,6 @@
 #include <QObject>
 #include <QPointer>
 
-#include <QtWidgets/qwidget.h>
 #include <ktexteditor_export.h>
 
 #include <ktexteditor/codecompletionmodel.h>
