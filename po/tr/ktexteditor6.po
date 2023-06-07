@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-05-06 20:11+0300\n"
+"PO-Revision-Date: 2023-06-06 05:32+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -4750,7 +4750,7 @@ msgstr "Etkisiz Kesme"
 #: syntax/katethemeconfig.cpp:328
 #, kde-format
 msgid "Execution"
-msgstr "Çalıştırma"
+msgstr "Yürütme"
 
 #: syntax/katethemeconfig.cpp:329
 #, kde-format
@@ -7903,7 +7903,7 @@ msgid ""
 "b></tt></p><p>After executing it, the current view will be closed.</p>"
 msgstr ""
 "<p><b>clo[se]&mdash; Mevcut görünümü kapat</b></p><p>Kullanım: "
-"<tt><b>clo[se]</b></tt></p><p>Çalıştırıldığında mevcut görünüm "
+"<tt><b>clo[se]</b></tt></p><p>Yürütüldükten sonra geçerli görünüm "
 "kapatılacaktır.</p>"
 
 #: vimode/appcommands.cpp:260
