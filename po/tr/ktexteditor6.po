@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-06-06 05:32+0300\n"
+"PO-Revision-Date: 2023-06-16 11:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -528,7 +528,7 @@ msgid ""
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
 "<p>Geçerli satır, <b>Sözcükleri kaydır:</b>seçeneğinde belirtilen sınırı "
-"aştığında otomatik olarak yeni bir satır başlat.</p><p>Bu seçenek var olan "
+"aştığında kendiliğinden yeni bir satır başlat.</p><p>Bu seçenek var olan "
 "satırları kaydırmayacaktır, bunun için <b>Araçlar</b> menüsünden <b>Statik "
 "Sözcük Kaydırmayı Uygula</b> seçeneğini seçin.</p><p>Eğer istediğiniz "
 "<i>görsel olarak kaydırılması</i> ise görünüm genişliğine bağlı olarak, "
@@ -571,9 +571,8 @@ msgid ""
 "If the Word Wrap option is selected this entry determines the length (in "
 "characters) at which the editor will automatically start a new line."
 msgstr ""
-"Eğer Sözcük Kaydır seçeneği seçiliyse bu girdi, düzenleyicinin otomatik "
-"olarak yeni bir bir satır başlatacağı uzunluğu (sütun sayısını) "
-"belirleyecektir."
+"Eğer Sözcük Kaydır seçeneği seçiliyse bu girdi, düzenleyicinin kendiliğinden "
+"yeni bir bir satır başlatacağı uzunluğu (sütun sayısını) belirleyecektir."
 
 #. i18n: ectx: property (text), widget (QLabel, lblInputMode)
 #: dialogs/editconfigwidget.ui:91
@@ -889,7 +888,7 @@ msgstr "Sekmeler ve &Boşluklar"
 #: dialogs/indentationconfigwidget.ui:167
 #, kde-format
 msgid "Automatically detect file indentation"
-msgstr "Dosya girintilemesini otomatik algıla"
+msgstr "Kendiliğinden dosya girintilemesini algıla"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -1681,7 +1680,7 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
-"Bu seçenek imlenirse düzenleyici satır sonu türünü otomatik olarak algılar. "
+"Bu seçenek imlenirse düzenleyici, satır sonu türünü kendiliğinden algılar. "
 "İlk bulunan satır sonu türü dosyanın tümü için kullanılır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
@@ -2026,7 +2025,7 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
-"Bu seçenek etkin ise düzenleyici görünümü otomatik olarak belgenin\n"
+"Bu seçenek etkin ise düzenleyici görünümü kendiliğinden belgenin\n"
 "ilk satırından başlayan açıklama bloklarını gizler. Bu genelde dosyanın\n"
 "baş tarafını dolduran lisans başlığını saklamaya yardımcı olur."
 
@@ -4873,7 +4872,7 @@ msgstr "Öntanımlı Tema"
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Theme Editor"
-msgstr "Tema Düzenleyici"
+msgstr "Tema Düzenleyicisi"
 
 #: syntax/katethemeconfig.cpp:1039
 #, kde-format
