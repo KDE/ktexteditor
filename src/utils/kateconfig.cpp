@@ -678,7 +678,7 @@ KateRendererConfig::~KateRendererConfig() = default;
 
 namespace
 {
-const char KEY_FONT[] = "Font";
+const char KEY_FONT[] = "Text Font";
 const char KEY_COLOR_THEME[] = "Color Theme";
 const char KEY_WORD_WRAP_MARKER[] = "Word Wrap Marker";
 const char KEY_SHOW_INDENTATION_LINES[] = "Show Indentation Lines";
