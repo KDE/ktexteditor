@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-06-05 15:07+0200\n"
+"PO-Revision-Date: 2023-06-17 16:12+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -184,7 +184,7 @@ msgid ""
 "in a popup."
 msgstr ""
 "Se marca esta opción, deixar o cursor sobre unha rexión pregada mostra unha "
-"previsualización do texto pregado nunha xanela emerxente."
+"previsualización do texto pregado nun diálogo emerxente."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
@@ -1591,7 +1591,8 @@ msgstr "s"
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
-msgstr "Esta cadea está en katedialogs.cpp no construtor de KateSaveConfigTab."
+msgstr ""
+"Esta cadea atópase en katedialogs.cpp no construtor de KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -5043,7 +5044,7 @@ msgstr "Se unha liña non ten marcador, engádello; se o ten, retírallo."
 #: utils/katebookmarks.cpp:56
 #, kde-format
 msgid "Clear &All Bookmarks"
-msgstr "Eliminar &todos os marcadores"
+msgstr "Eliminar os marcadores"
 
 #: utils/katebookmarks.cpp:59
 #, kde-format
@@ -5147,8 +5148,8 @@ msgid ""
 msgstr ""
 "<p>set-indent-pasted-text <b>activación</b></p><p>Se escolle esta opción o "
 "sangrado do texto pegado desde o portapapeis axústase co sangrado actual.</"
-"p><p>Os valores para activalo son: 1 on true<br/>Os valores para desactivalo "
-"son: 0 off false</p>"
+"p><p>Valores para activalo: 1 on true<br/>Valores para desactivalo: 0 off "
+"false</p>"
 
 #: utils/katecmds.cpp:91
 #, kde-format
@@ -5185,8 +5186,8 @@ msgid ""
 msgstr ""
 "<p>set-show-tabs <b>activado</b></p><p>Se escolle esta opción os caracteres "
 "de tabulación e os espazos en branco finais hanse ver como un punto pequeno."
-"</p> <p>Os valores posíbeis para activar son: 1 on true<br/>os valores para "
-"desactivar son: 0 off false</p>"
+"</p> <p>Valores para activalo: 1 on true<br/>Valores para desactivalo: 0 off "
+"false</p>"
 
 #: utils/katecmds.cpp:114
 #, kde-format
@@ -5198,7 +5199,7 @@ msgid ""
 "trailing spaces in the entire document.</li></ul></p>"
 msgstr ""
 "<p>set-remove-trailing-spaces <b>modo</b></p><p>Retira os espazos en branco "
-"ao final do documento segundo o <b>modo</b>.</p><p>Os valores posíbeis son: "
+"ao final do documento segundo o <b>modo</b>.</p><p>Valores posíbeis:"
 "<ul><li><b>ningún</b>: non retira nunca os espazos finais.</"
 "li><li><b>modificado</b>: retira os espazos finais só das liñas modificadas."
 "</li><li><b>todos</b>: retira os espazos finais de todo o documento.</li></"
@@ -5230,8 +5231,8 @@ msgid ""
 "p>"
 msgstr ""
 "<p>set-auto-indent <b>activar</b></p><p>Conmuta o sangrado automático.</"
-"p><p>Os valores para activalo son: 1 on true<br/>os valores para desactivar "
-"son: 0 off false</p>"
+"p><p>Valores para activalo: 1 on true<br/>Valores para desactivalo: 0 off "
+"false</p>"
 
 #: utils/katecmds.cpp:142
 #, kde-format
@@ -5241,8 +5242,8 @@ msgid ""
 "values: 0 off false</p>"
 msgstr ""
 "<p>set-line-numbers <b>activar</b></p><p>Estabelece a visibilidade do panel "
-"cos números de liña.</p><p>Os valores para activalo son: 1 on true<br/>Os "
-"valores para desactivalo son: 0 off false</p>"
+"cos números de liña.</p><p>Valores para activalo: 1 on true<br/>Valores para "
+"desactivalo: 0 off false</p>"
 
 #: utils/katecmds.cpp:149
 #, kde-format
@@ -5252,8 +5253,8 @@ msgid ""
 "false values: 0 off false</p>"
 msgstr ""
 "<p>set-folding-markers <b>activar</b></p><p>Estabelece a visibilidade do "
-"panel cos marcadores de pregado.</p><p>Os valores para activalo son: 1 on "
-"true<br/>Os valores para desactivalo son: 0 off false</p>"
+"panel cos marcadores de pregado.</p><p>Valores para activalo: 1 on true<br/"
+">Valores para desactivalo: 0 off false</p>"
 
 #: utils/katecmds.cpp:156
 #, kde-format
@@ -5263,8 +5264,8 @@ msgid ""
 "off false</p>"
 msgstr ""
 "<p>set-icon-border <b>activar</b></p><p>Estabelece a visibilidade do bordo "
-"de iconas.</p><p>Os valores para activalo son: 1 on true<br/>Os valores para "
-"desactivalo son: 0 off false</p>"
+"de iconas.</p><p>Valores para activalo: 1 on true<br/>Valores para "
+"desactivalo: 0 off false</p>"
 
 #: utils/katecmds.cpp:163
 #, kde-format
@@ -5274,8 +5275,8 @@ msgid ""
 "values: 0 off false</p>"
 msgstr ""
 "<p>set-word-wrap <b>activar</b></p><p>Activa a división visual das liñas "
-"segundo o valor de <b>activar</b></p><p>Os valores para activalo son: 1 on "
-"true<br/>Os valores para desactivalo son: 0 off false</p>"
+"segundo o valor de <b>activar</b></p><p>Valores para activalo: 1 on true<br/"
+">Valores para desactivalo: 0 off false</p>"
 
 #: utils/katecmds.cpp:170
 #, kde-format
@@ -5297,8 +5298,8 @@ msgid ""
 msgstr ""
 "<p>set-replace-tabs-save <b>activación</b></p><p>Se escolle esta opción as "
 "tabulacións hanse substituír por espazos en branco cando se garde o "
-"documento.</p><p>Os valores para activalo son: 1 on true<br/>Os valores para "
-"desactivalo son: 0 off false</p>"
+"documento.</p><p>Valores para activalo: 1 on true<br/>Valores para "
+"desactivalo: 0 off false</p>"
 
 #: utils/katecmds.cpp:182
 #, kde-format
@@ -5328,8 +5329,8 @@ msgid ""
 "true<br/>possible false values: 0 off false</p>"
 msgstr ""
 "<p>set-show-indent <b>activación</b></p><p>Se escolle esta opción o sangrado "
-"hase visualizar cunha liña vertical a puntos.</p><p>Os valores para activalo "
-"son: 1 on true<br/>Os valores para desactivalo son: 0 off false</p>"
+"hase visualizar cunha liña vertical a puntos.</p><p>Valores para activalo: 1 "
+"on true<br/>Valores para desactivalo: 0 off false</p>"
 
 #: utils/katecmds.cpp:199
 #, kde-format
@@ -5461,7 +5462,7 @@ msgstr "Compoñente Kate"
 #: utils/kateglobal.cpp:75
 #, kde-format
 msgid "Embeddable editor component"
-msgstr "Compoñente integrábel de edición de textos"
+msgstr "Compoñente integrábel de editor de textos"
 
 #: utils/kateglobal.cpp:77
 #, kde-format
