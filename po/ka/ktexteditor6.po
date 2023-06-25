@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-06-22 12:33+0200\n"
+"PO-Revision-Date: 2023-06-24 17:12+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2770,27 +2770,27 @@ msgstr ""
 #: script/data/commands/emmet.js:101
 #, kde-format
 msgid "Move to the next edit point (tag or empty attribute)."
-msgstr ""
+msgstr "შემდეგ ჩასწორების წერტილზე (ჭდეზე ან ცარიელ ატრიბუტზე) გადასვლა."
 
 #: script/data/commands/emmet.js:102
 #, kde-format
 msgid "Move to the previous edit point (tag or empty attribute)."
-msgstr ""
+msgstr "წინა ჩასწორების წერტილზე (ჭდეზე ან ცარიელ ატრიბუტზე) გადასვლა."
 
 #: script/data/commands/emmet.js:103
 #, kde-format
 msgid "Select next edit point (tag or empty attribute)."
-msgstr ""
+msgstr "შემდეგი ჩასწორების წერტილის (ჭდის ან ცარიელი ატრიბუტის) არჩევა."
 
 #: script/data/commands/emmet.js:104
 #, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr ""
+msgstr "წინა ჩასწორების წერტილის (ჭდის ან ცარიელი ატრიბუტის) არჩევა."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
 msgid "Toggle comment of current tag or CSS selector"
-msgstr ""
+msgstr "მიმდინარე ჭდის ან CSS სელექტორის გადართვა"
 
 #: script/data/commands/emmet.js:106
 #, kde-format
@@ -2805,7 +2805,7 @@ msgstr "გაყოფს ან შეაერთებს ჭდეს"
 #: script/data/commands/emmet.js:108
 #, kde-format
 msgid "Evaluates a simple math expression"
-msgstr ""
+msgstr "მარტივი მათემატიკური გამოსახულების შეფასება"
 
 #: script/data/commands/emmet.js:109
 #, kde-format
@@ -3072,7 +3072,7 @@ msgstr "მონიშნული ხაზების მაღლა კო
 #: script/data/commands/utils.js:474
 #, kde-format
 msgid "Duplicates the selected lines down."
-msgstr ""
+msgstr "მონიშნული ხაზების დაბლა დუბლირება."
 
 #: script/data/commands/utils.js:476
 #, kde-format
@@ -3194,7 +3194,7 @@ msgstr "XML სტილი"
 #: script/katecommandlinescript.cpp:37
 #, kde-format
 msgid "Function '%1' not found in script: %2"
-msgstr ""
+msgstr "ფუნქცია '%1' სკრიპტში %2 აღმოჩენილი არაა"
 
 #: script/katecommandlinescript.cpp:51
 #, kde-format
@@ -3220,7 +3220,7 @@ msgstr "'help %1'-ის გამოძახების შეცდომა
 #: script/katecommandlinescript.cpp:123
 #, kde-format
 msgid "No help specified for command '%1' in script %2"
-msgstr ""
+msgstr "დახმარება ბრძანებისთვის '%1' სკრიპტში %2 მითითებული არაა"
 
 #: script/katescript.cpp:214
 #, kde-format
@@ -3461,17 +3461,17 @@ msgstr ""
 #: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "End case conversion"
-msgstr ""
+msgstr "რეგისტრის გადაყვანის დასასრული"
 
 #: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Lowercase first character conversion"
-msgstr ""
+msgstr "დაბალი რეგისტრის მქონე პირველი სიმბოლოს გადაყვანა"
 
 #: search/katesearchbar.cpp:1234
 #, kde-format
 msgid "Uppercase first character conversion"
-msgstr ""
+msgstr "მაღალი რეგისტრის მქონე პირველი სიმბოლოს გადაყვანა"
 
 #: search/katesearchbar.cpp:1235
 #, kde-format
