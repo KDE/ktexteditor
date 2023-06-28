@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-06-24 17:12+0200\n"
+"PO-Revision-Date: 2023-06-27 09:16+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -348,7 +348,7 @@ msgstr "შექმნის თარიღით"
 #: dialogs/bordersappearanceconfigwidget.ui:262
 #, kde-format
 msgid "The bookmarks will be ordered by the line numbers they are placed at."
-msgstr ""
+msgstr "სანიშნები მათი ხაზის ნომრის მიხედვით დალაგდება."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:265
@@ -544,7 +544,7 @@ msgstr "ბრჭყალები:"
 #: dialogs/editconfigwidget.ui:124
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
-msgstr ""
+msgstr "ფრთჩხილების ავტომატური დახურვა, როცა გამხსნელ ფრჩხილს აკრეფთ"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:137
@@ -734,6 +734,7 @@ msgstr ""
 #, kde-format
 msgid "Displays a wizard that helps you easily select mimetypes."
 msgstr ""
+"გაჩვენებთ ოსტატს, რომელიც MIME ტიპების ადვილად ამორჩევის საშუალებას მოგცემთ."
 
 #. i18n: ectx: property (text), widget (QLabel, lblPriority)
 #: dialogs/filetypeconfigwidget.ui:197
@@ -2439,7 +2440,7 @@ msgstr "&ფონი"
 #: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
-msgstr ""
+msgstr "<p>გვერდის თავსართის ფორმატი. მხარდაჭერილია შემდეგი ჭდეები:</p>"
 
 #: printing/printconfigwidgets.cpp:252
 #, kde-format
