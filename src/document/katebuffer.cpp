@@ -590,3 +590,5 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     // if we arrive here, the opened range spans to the end of the document!
     return KTextEditor::Range(KTextEditor::Cursor(startLine, openedRegionOffset), KTextEditor::Cursor(lines() - 1, plainLine(lines() - 1)->length()));
 }
+
+#include "moc_katebuffer.cpp"

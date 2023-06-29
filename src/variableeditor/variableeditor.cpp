@@ -318,3 +318,5 @@ void VariableRemoveSpacesEditor::setItemValue(int enabled)
     static_cast<VariableRemoveSpacesItem *>(item())->setValue(enabled == 0);
 }
 // END VariableRemoveSpacesEditor
+
+#include "moc_variableeditor.cpp"

@@ -130,3 +130,5 @@ void KateModeManagerTestBase::mimeTypesFindTestData()
     QTest::addColumn<QString>("fileTypeName");
     addFileTypeDataRows(fileTypesForMimeTypeNames);
 }
+
+#include "moc_katemodemanager_test_base.cpp"

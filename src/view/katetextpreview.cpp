@@ -139,3 +139,5 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
         paint.translate(0, lineHeight);
     }
 }
+
+#include "moc_katetextpreview.cpp"

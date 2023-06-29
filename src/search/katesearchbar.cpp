@@ -1771,3 +1771,5 @@ void KateSearchBar::slotReadWriteChanged()
     m_powerUi->replaceNext->setEnabled(m_view->doc()->isReadWrite() && isPatternValid());
     m_powerUi->replaceAll->setEnabled(m_view->doc()->isReadWrite() && isPatternValid());
 }
+
+#include "moc_katesearchbar.cpp"

@@ -75,3 +75,5 @@ void BugTest::tryCrash()
 
     qDebug() << "PASS (no crash)";
 }
+
+#include "moc_bug317111.cpp"

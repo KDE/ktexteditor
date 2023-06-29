@@ -1566,3 +1566,5 @@ void KateModOnHdPrompt::slotPDone()
 }
 
 // END KateModOnHdPrompt
+
+#include "moc_katedialogs.cpp"

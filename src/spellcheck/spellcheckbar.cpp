@@ -436,3 +436,5 @@ void SpellCheckBar::slotDone()
         }
     }
 }
+
+#include "moc_spellcheckbar.cpp"

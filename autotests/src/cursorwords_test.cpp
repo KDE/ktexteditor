@@ -158,3 +158,5 @@ void CursorWordsTest::testMoveToWordsMultipleLines()
     view->wordLeft();
     COMPARE_CHAR_AND_CURSOR(view, Cursor(0, 12), '.');
 }
+
+#include "moc_cursorwords_test.cpp"

@@ -32,3 +32,5 @@ void CommandsTest::utils()
 {
     runTest(ExpectedFailures());
 }
+
+#include "moc_commands_test.cpp"

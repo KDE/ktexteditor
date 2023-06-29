@@ -169,3 +169,5 @@ void WordCounter::recalculateLines()
     m_charsInDocument = charsCount;
     Q_EMIT changed(m_wordsInDocument, m_wordsInSelection, m_charsInDocument, m_charsInSelection);
 }
+
+#include "moc_wordcounter.cpp"

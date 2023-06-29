@@ -746,3 +746,5 @@ void KateStyleTreeWidget::setReadOnly(bool readOnly)
     m_readOnly = readOnly;
 }
 // END
+
+#include "moc_katestyletreewidget.cpp"

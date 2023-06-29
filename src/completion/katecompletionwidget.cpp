@@ -1498,3 +1498,5 @@ void KateCompletionWidget::tabCompletion(Direction direction)
         }
     }
 }
+
+#include "moc_katecompletionwidget.cpp"

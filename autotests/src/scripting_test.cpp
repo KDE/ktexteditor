@@ -30,3 +30,5 @@ void ScriptingTest::bugs()
 {
     runTest(ExpectedFailures());
 }
+
+#include "moc_scripting_test.cpp"

@@ -792,3 +792,5 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 }
 
 }
+
+#include "moc_katetextfolding.cpp"

@@ -823,3 +823,5 @@ void KateScriptDocument::indent(const QJSValue &jsrange, int change)
     const auto range = rangeFromScriptValue(jsrange);
     m_document->indent(range, change);
 }
+
+#include "moc_katescriptdocument.cpp"

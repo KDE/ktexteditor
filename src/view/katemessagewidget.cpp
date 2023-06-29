@@ -269,3 +269,5 @@ QString KateMessageWidget::text() const
 {
     return m_messageWidget->text();
 }
+
+#include "moc_katemessagewidget.cpp"

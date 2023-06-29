@@ -157,3 +157,5 @@ QString ScriptHelper::_i18ncp(const QString &trContext, const QString &trSingula
 // END code adapted from kdelibs/kross/modules/translation.cpp
 
 } // namespace kate
+
+#include "moc_katescripthelpers.cpp"

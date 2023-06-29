@@ -66,3 +66,5 @@ void IndentDetectTest::bench()
         d.detect(doc.config()->indentationWidth(), doc.config()->replaceTabsDyn());
     }
 }
+
+#include "moc_indentdetect_test.cpp"

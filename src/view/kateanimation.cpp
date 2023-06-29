@@ -81,3 +81,5 @@ void KateAnimation::hide()
         Q_EMIT widgetHidden();
     }
 }
+
+#include "moc_kateanimation.cpp"

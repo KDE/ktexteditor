@@ -282,3 +282,5 @@ void KateSpellingMenu::ignoreCurrentWord()
     m_view->doc()->clearMisspellingForWord(misspelledWord); // WARNING: 'm_currentMisspelledRange' is deleted here!
     m_view->clearSelection();
 }
+
+#include "moc_spellingmenu.cpp"

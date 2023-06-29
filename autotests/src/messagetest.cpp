@@ -388,3 +388,5 @@ void MessageTest::testHideViewAfterUserInteraction()
     QTest::qWait(600);
     QVERIFY(!view->messageWidget()->isVisible());
 }
+
+#include "moc_messagetest.cpp"

@@ -73,3 +73,5 @@ EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
 }
 
 // END: EmulatedCommandBarSetUpAndTearDown
+
+#include "moc_emulatedcommandbarsetupandteardown.cpp"

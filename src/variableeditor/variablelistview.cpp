@@ -119,3 +119,5 @@ QString VariableListView::variableLine()
 
     return line;
 }
+
+#include "moc_variablelistview.cpp"

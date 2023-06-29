@@ -38,3 +38,5 @@ void KateModeManagerTest::testMimeTypesFind()
 }
 
 QTEST_MAIN(KateModeManagerTest)
+
+#include "moc_katemodemanager_test.cpp"

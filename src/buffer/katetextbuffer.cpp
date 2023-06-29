@@ -960,3 +960,5 @@ void TextBuffer::markModifiedLinesAsSaved()
     }
 }
 }
+
+#include "moc_katetextbuffer.cpp"

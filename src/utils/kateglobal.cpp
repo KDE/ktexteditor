@@ -583,3 +583,5 @@ QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
 {
     return m_multicursorClipboard;
 }
+
+#include "moc_kateglobal.cpp"

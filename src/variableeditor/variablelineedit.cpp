@@ -359,3 +359,5 @@ QString VariableLineEdit::text()
 {
     return m_lineedit->text();
 }
+
+#include "moc_variablelineedit.cpp"

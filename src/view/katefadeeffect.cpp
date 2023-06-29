@@ -96,3 +96,5 @@ void KateFadeEffect::animationFinished()
         Q_EMIT showAnimationFinished();
     }
 }
+
+#include "moc_katefadeeffect.cpp"

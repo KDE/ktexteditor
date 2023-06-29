@@ -180,3 +180,5 @@ void KateFoldingTest::testUnfoldingInImportFoldingRanges()
     // - both top-level and nested -  before importing new ones.
     QCOMPARE(textFolding.debugDump(), QLatin1String("tree  - folded "));
 }
+
+#include "moc_katefoldingtest.cpp"

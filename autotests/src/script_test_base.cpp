@@ -174,3 +174,5 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     // compare files, expected fail will invert this verify
     QVERIFY(filesEqual(fileExpected, fileActual));
 }
+
+#include "moc_script_test_base.cpp"
