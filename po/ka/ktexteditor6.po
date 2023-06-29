@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-06-27 09:16+0200\n"
+"PO-Revision-Date: 2023-06-28 05:27+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2996,16 +2996,20 @@ msgstr ""
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
+"მონიშნულიდან ან მთელი დოკუმენტიდან ბოლოში მიწერილი გამოტოვებების მოცილება."
 
 #: script/data/commands/utils.js:454
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
+"მონიშნულიდან ან მთლიანი დოკუმენტიდან თავში მიწერილი გამოტოვებების მოცილება."
 
 #: script/data/commands/utils.js:456
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
+"მონიშნულიდან ან მთლიანი დოკუმენტიდან თავში და ბოლოში მიწერილი გამოტოვებების "
+"მოცილება."
 
 #: script/data/commands/utils.js:458
 #, kde-format
@@ -3018,7 +3022,7 @@ msgstr ""
 #: script/data/commands/utils.js:460
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
-msgstr ""
+msgstr "ცარიელი ხაზების წაშლა მონიშნულიდან ან მთელი დოკუმენტიდან."
 
 #: script/data/commands/utils.js:462
 #, kde-format
