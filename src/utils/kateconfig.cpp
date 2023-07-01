@@ -521,9 +521,13 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ViInputModeStealKeys, "Vi Input Mode Steal Keys", QString(), false));
     addConfigEntry(ConfigEntry(ViRelativeLineNumbers, "Vi Relative Line Numbers", QString(), false));
     addConfigEntry(ConfigEntry(WordCompletion, "Word Completion", QString(), true));
-    addConfigEntry(ConfigEntry(WordCompletionMinimalWordLength, "Word Completion Minimal Word Length", QString(), 3, [](const QVariant &value) {
-        return inBounds(0, value, 99);
-    }));
+    addConfigEntry(ConfigEntry(WordCompletionMinimalWordLength,
+                               "Word Completion Minimal Word Length",
+                               QStringLiteral("word-completion-minimal-word-length"),
+                               3,
+                               [](const QVariant &value) {
+                                   return inBounds(0, value, 99);
+                               }));
     addConfigEntry(ConfigEntry(WordCompletionRemoveTail, "Word Completion Remove Tail", QString(), true));
     addConfigEntry(ConfigEntry(ShowFocusFrame, "Show Focus Frame Around Editor", QString(), true));
     addConfigEntry(ConfigEntry(ShowDocWithCompletion, "Show Documentation With Completion", QString(), true));

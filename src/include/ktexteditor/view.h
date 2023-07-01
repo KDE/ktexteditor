@@ -171,7 +171,8 @@ class CodeCompletionModel;
  *  - scrollbar-minimap [bool] enable/disable scrollbar minimap
  *  - scrollbar-preview [bool] enable/disable scrollbar text preview on hover
  *  - font [QFont] change the font
- *  - theme [QString] change the theme.
+ *  - theme [QString] change the theme
+ *  - word-completion-minimal-word-length [int] minimal word length to trigger word completion
  *
  * You can retrieve the value of a config key using configValue() and set the value
  * for a config key using setConfigValue().
