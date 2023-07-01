@@ -583,3 +583,5 @@ void InsertViMode::textInserted(KTextEditor::Document *document, KTextEditor::Ra
         m_textInsertedByCompletionEndPos = range.end();
     }
 }
+
+#include "moc_insertvimode.cpp"

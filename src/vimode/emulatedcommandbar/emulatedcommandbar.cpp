@@ -429,3 +429,5 @@ void EmulatedCommandBar::createAndAddWaitingForRegisterIndicator(QLayout *layout
     m_waitingForRegisterIndicator->setText(QStringLiteral("\""));
     layout->addWidget(m_waitingForRegisterIndicator);
 }
+
+#include "moc_emulatedcommandbar.cpp"

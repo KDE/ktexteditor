@@ -147,3 +147,5 @@ QSize KateAnnotationItemDelegate::sizeHint(const KTextEditor::StyleOptionAnnotat
     const QString annotationText = model->data(line, Qt::DisplayRole).toString();
     return QSize(annotationText.length() * m_maxCharWidth + 8, option.contentFontMetrics.height());
 }
+
+#include "moc_kateannotationitemdelegate.cpp"

@@ -384,3 +384,5 @@ const std::vector<Motion> &VisualViMode::motions()
     };
     return global;
 }
+
+#include "moc_visualvimode.cpp"

@@ -468,3 +468,5 @@ KTextEditor::ViewPrivate *KateUndoManager::activeView()
 {
     return static_cast<KTextEditor::ViewPrivate *>(m_document->activeView());
 }
+
+#include "moc_kateundomanager.cpp"

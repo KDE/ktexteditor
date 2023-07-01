@@ -85,3 +85,5 @@ void KateConfigPage::somethingHasChanged()
 {
     m_changed = true;
 }
+
+#include "moc_kateconfigpage.cpp"

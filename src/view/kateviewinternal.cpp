@@ -4995,3 +4995,5 @@ void KateViewInternal::commitPreedit()
 
     QGuiApplication::inputMethod()->commit();
 }
+
+#include "moc_kateviewinternal.cpp"

@@ -350,3 +350,5 @@ void KateArgumentHintTree::bottom()
         }
     }
 }
+
+#include "moc_kateargumenthinttree.cpp"

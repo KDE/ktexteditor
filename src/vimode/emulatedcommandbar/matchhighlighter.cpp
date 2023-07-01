@@ -49,3 +49,5 @@ void MatchHighlighter::updateMatchHighlightAttrib()
     m_highlightMatchAttribute->setDynamicAttribute(KTextEditor::Attribute::ActivateMouseIn, mouseInAttribute);
     m_highlightMatchAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(matchColour);
 }
+
+#include "moc_matchhighlighter.cpp"

@@ -192,3 +192,5 @@ void IndentTest::testR()
 {
     runTest(ExpectedFailures());
 }
+
+#include "moc_indenttest.cpp"

@@ -291,3 +291,5 @@ void KateSpellCheckDialog::languageChanged(const QString &language)
 }
 
 // END
+
+#include "moc_spellcheckdialog.cpp"

@@ -159,3 +159,5 @@ void SwapDiffCreator::slotDiffFinished()
 }
 
 // END SwapDiffCreator
+
+#include "moc_kateswapdiffcreator.cpp"

@@ -689,3 +689,5 @@ void HlSearchTest::TestHighlight_(int line, const char *file, const Kate::TextRa
     QTest::qCompare(r.end().line(), end[0], "end_line", "end_line", file, line);
     QTest::qCompare(r.end().column(), end[1], "end_column", "end_column", file, line);
 }
+
+#include "moc_hlsearch.cpp"

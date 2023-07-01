@@ -323,3 +323,5 @@ void BaseTest::textRemoved(Document *document, KTextEditor::Range range)
 }
 
 // END: BaseTest
+
+#include "moc_base.cpp"

@@ -25,3 +25,5 @@
 %{APPNAME}View::~%{APPNAME}View()
 {
 }
+
+#include "moc_%{APPNAMELC}view.cpp"

@@ -232,3 +232,5 @@ QString ConfigTab::name() const
 {
     return i18n("Vi Input Mode");
 }
+
+#include "moc_configtab.cpp"

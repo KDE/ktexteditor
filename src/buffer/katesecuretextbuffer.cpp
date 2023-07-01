@@ -134,3 +134,5 @@ bool SecureTextBuffer::moveFile(const QString &sourceFile, const QString &target
     return QFile::rename(sourceFile, targetFile);
 #endif
 }
+
+#include "moc_katesecuretextbuffer_p.cpp"

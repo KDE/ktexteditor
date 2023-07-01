@@ -4966,3 +4966,5 @@ QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int 
 
     return attribs;
 }
+
+#include "moc_kateview.cpp"

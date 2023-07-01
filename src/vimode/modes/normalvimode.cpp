@@ -4183,3 +4183,5 @@ const std::vector<Motion> &NormalViMode::motions()
     };
     return global;
 }
+
+#include "moc_normalvimode.cpp"

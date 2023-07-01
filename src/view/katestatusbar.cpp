@@ -647,3 +647,5 @@ KateModeMenuList *KateStatusBar::modeMenu() const
 {
     return m_modeMenuList;
 }
+
+#include "moc_katestatusbar.cpp"

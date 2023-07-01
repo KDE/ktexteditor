@@ -264,3 +264,5 @@ void CamelCursorTest::testSelectionLeft()
     QCOMPARE(view->selectionText(), QStringLiteral("Hello\n"));
     QCOMPARE(view->selectionRange(), KTextEditor::Range(0, 0, 1, 0));
 }
+
+#include "moc_camelcursortest.cpp"

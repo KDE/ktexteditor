@@ -1616,3 +1616,5 @@ void KeysTest::MarkTests()
 }
 
 // END: KeysTest
+
+#include "moc_keys.cpp"

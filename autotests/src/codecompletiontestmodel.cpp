@@ -222,3 +222,5 @@ void AsyncCodeCompletionTestModel::completionInvoked(KTextEditor::View *view, co
     Q_EMIT waitForReset();
     CodeCompletionTestModel::completionInvoked(view, range, invocationType);
 }
+
+#include "moc_codecompletiontestmodel.cpp"

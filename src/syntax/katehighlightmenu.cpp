@@ -96,3 +96,5 @@ void KateHighlightingMenu::setHl()
     // use change, honor this
     m_doc->setDontChangeHlOnSave();
 }
+
+#include "moc_katehighlightmenu.cpp"

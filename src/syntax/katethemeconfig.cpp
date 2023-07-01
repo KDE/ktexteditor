@@ -1476,3 +1476,5 @@ QIcon KateThemeConfigPage::icon() const
 }
 
 // END KateThemeConfigPage
+
+#include "moc_katethemeconfig.cpp"

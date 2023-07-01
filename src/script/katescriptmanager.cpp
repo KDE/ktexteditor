@@ -318,3 +318,5 @@ bool KateScriptManager::help(KTextEditor::View *view, const QString &cmd, QStrin
 
     return false;
 }
+
+#include "moc_katescriptmanager.cpp"

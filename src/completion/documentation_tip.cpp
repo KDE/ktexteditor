@@ -115,3 +115,5 @@ void DocTip::updatePosition()
         }
     }
 }
+
+#include "moc_documentation_tip.cpp"

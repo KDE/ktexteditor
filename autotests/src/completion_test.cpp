@@ -567,3 +567,5 @@ void CompletionTest::benchCompletionModel()
         }
     }
 }
+
+#include "moc_completion_test.cpp"

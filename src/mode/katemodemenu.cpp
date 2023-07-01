@@ -128,3 +128,5 @@ void KateModeMenu::setType(QAction *action)
         doc->updateFileType(action->data().toString(), true);
     }
 }
+
+#include "moc_katemodemenu.cpp"

@@ -383,3 +383,5 @@ void KateColorTreeWidget::setReadOnly(bool readOnly)
 {
     m_readOnly = readOnly;
 }
+
+#include "moc_katecolortreewidget.cpp"

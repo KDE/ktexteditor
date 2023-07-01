@@ -104,3 +104,5 @@ void KateTextAnimation::nextFrame(qreal value)
     // request repaint
     m_view->update(updateRect);
 }
+
+#include "moc_katetextanimation.cpp"

@@ -156,3 +156,5 @@ bool KeyMapper::isPlayingBackRejectedKeys() const
 {
     return m_isPlayingBackRejectedKeys;
 }
+
+#include "moc_keymapper.cpp"

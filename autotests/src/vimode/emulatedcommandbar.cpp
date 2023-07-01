@@ -3393,3 +3393,5 @@ void FailsIfSlotCalled::slot()
 {
     QFAIL(qPrintable(m_failureMessage.toLatin1()));
 }
+
+#include "moc_emulatedcommandbar.cpp"

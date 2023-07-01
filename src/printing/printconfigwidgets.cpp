@@ -650,3 +650,5 @@ void KatePrintLayout::writeSettings()
 }
 
 // END KatePrintLayout
+
+#include "moc_printconfigwidgets.cpp"

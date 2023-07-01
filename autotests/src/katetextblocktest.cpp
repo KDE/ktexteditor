@@ -154,3 +154,5 @@ void KateTextBlockTest::testTextRanges()
 
     block.clearLines();
 }
+
+#include "moc_katetextblocktest.cpp"

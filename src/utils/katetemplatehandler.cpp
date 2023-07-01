@@ -516,3 +516,5 @@ KTextEditor::ViewPrivate *KateTemplateHandler::view() const
 {
     return m_view;
 }
+
+#include "moc_katetemplatehandler.cpp"

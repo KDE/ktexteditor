@@ -6,3 +6,5 @@
 */
 
 #include "codecompletiontestmodels.h"
+
+#include "moc_codecompletiontestmodels.cpp"

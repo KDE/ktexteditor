@@ -530,3 +530,5 @@ void KateLayoutCache::setAcceptDirtyLayouts(bool accept)
 {
     m_acceptDirtyLayouts = accept;
 }
+
+#include "moc_katelayoutcache.cpp"

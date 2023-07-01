@@ -490,3 +490,5 @@ void KateViewIndentationAction::setMode(QAction *action)
     doc->rememberUserDidSetIndentationMode();
 }
 // END KateViewIndentationAction
+
+#include "moc_kateautoindent.cpp"

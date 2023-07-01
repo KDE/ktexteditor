@@ -305,3 +305,5 @@ QString ModeConfigPage::name() const
 {
     return i18n("Modes && Filetypes");
 }
+
+#include "moc_katemodeconfigpage.cpp"

@@ -422,3 +422,5 @@ QVector<Kate::TextRange *> ViewTest::rangesOnFirstLine()
 {
     return kate_document->buffer().rangesForLine(0, kate_view, true);
 }
+
+#include "moc_view.cpp"

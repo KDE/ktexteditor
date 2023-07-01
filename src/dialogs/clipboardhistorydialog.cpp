@@ -385,3 +385,4 @@ void ClipboardHistoryDialog::clearLineEdit()
 // --------------------------------------------------
 
 #include "clipboardhistorydialog.moc"
+#include "moc_clipboardhistorydialog.cpp"

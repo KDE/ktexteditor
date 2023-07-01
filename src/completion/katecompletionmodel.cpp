@@ -1797,3 +1797,5 @@ void KateCompletionModel::clearCompletionModels()
     clearGroups();
     endResetModel();
 }
+
+#include "moc_katecompletionmodel.cpp"

@@ -274,3 +274,5 @@ void KateBookmarks::marksChanged()
         m_bookmarkClear->setEnabled(!m_view->doc()->marks().isEmpty());
     }
 }
+
+#include "moc_katebookmarks.cpp"

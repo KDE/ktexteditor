@@ -41,3 +41,5 @@ void KateScriptEditor::setClipboardText(const QString &text)
 {
     KTextEditor::EditorPrivate::self()->copyToClipboard(text, QStringLiteral());
 }
+
+#include "moc_katescripteditor.cpp"

@@ -181,3 +181,5 @@ void FakeCodeCompletionTestModel::checkIfShouldForceInvocation()
         BaseTest::waitForCompletionWidgetToActivate(m_kateView);
     }
 }
+
+#include "moc_fakecodecompletiontestmodel.cpp"

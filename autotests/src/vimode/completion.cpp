@@ -582,3 +582,5 @@ void CompletionTest::clearTrackedDocumentChanges()
 }
 
 // END: CompletionTest
+
+#include "moc_completion.cpp"

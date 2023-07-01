@@ -549,3 +549,5 @@ bool BufferCommands::help(KTextEditor::View * /*view*/, const QString &cmd, QStr
     return false;
 }
 // END KateViBufferCommand
+
+#include "moc_appcommands.cpp"

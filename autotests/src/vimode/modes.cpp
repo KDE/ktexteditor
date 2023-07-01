@@ -1637,3 +1637,5 @@ void ModesTest::ReplaceInsertFromLineTests()
 }
 
 // END: Replace mode.
+
+#include "moc_modes.cpp"

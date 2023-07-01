@@ -134,3 +134,5 @@ void KateScriptActionMenu::repopulate()
 }
 
 // END KateScriptActionMenu
+
+#include "moc_katescriptaction.cpp"

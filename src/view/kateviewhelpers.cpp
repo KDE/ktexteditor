@@ -3207,3 +3207,5 @@ void KateViewSchemaAction::setSchema()
     }
 }
 // END SCHEMA ACTION
+
+#include "moc_kateviewhelpers.cpp"

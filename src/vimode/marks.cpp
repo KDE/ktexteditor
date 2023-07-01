@@ -297,3 +297,5 @@ KTextEditor::Cursor Marks::getInsertStopped() const
 {
     return getMarkPosition(InsertStopped);
 }
+
+#include "moc_marks.cpp"

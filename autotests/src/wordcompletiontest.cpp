@@ -97,3 +97,5 @@ void WordCompletionTest::benchWordRetrievalDistinct()
         QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count);
     }
 }
+
+#include "moc_wordcompletiontest.cpp"

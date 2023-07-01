@@ -84,3 +84,5 @@ void BugTest::tryCrash()
     doc->editEnd();
     qDebug() << "PASS (no crash)";
 }
+
+#include "moc_bug313759.cpp"

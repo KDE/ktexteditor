@@ -654,3 +654,5 @@ void SwapFile::showDiff()
 }
 
 }
+
+#include "moc_kateswapfile.cpp"

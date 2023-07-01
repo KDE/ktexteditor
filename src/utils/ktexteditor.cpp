@@ -454,3 +454,17 @@ AbstractAnnotationItemDelegate::AbstractAnnotationItemDelegate(QObject *parent)
 }
 
 AbstractAnnotationItemDelegate::~AbstractAnnotationItemDelegate() = default;
+
+#include "moc_abstractannotationitemdelegate.cpp"
+#include "moc_annotationinterface.cpp"
+#include "moc_application.cpp"
+#include "moc_codecompletionmodel.cpp"
+#include "moc_command.cpp"
+#include "moc_configpage.cpp"
+#include "moc_document.cpp"
+#include "moc_editor.cpp"
+#include "moc_inlinenoteprovider.cpp"
+#include "moc_mainwindow.cpp"
+#include "moc_message.cpp"
+#include "moc_plugin.cpp"
+#include "moc_view.cpp"

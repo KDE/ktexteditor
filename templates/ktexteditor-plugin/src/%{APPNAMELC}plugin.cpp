@@ -34,3 +34,5 @@ QObject* %{APPNAME}Plugin::createView(KTextEditor::MainWindow* mainwindow)
 
 // needed for K_PLUGIN_CLASS_WITH_JSON
 #include <%{APPNAMELC}plugin.moc>
+
+#include "moc_%{APPNAMELC}plugin.cpp"

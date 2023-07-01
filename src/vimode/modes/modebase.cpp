@@ -1367,3 +1367,5 @@ int ModeBase::getCount() const
     }
     return (m_count > 0) ? m_count : 1;
 }
+
+#include "moc_modebase.cpp"

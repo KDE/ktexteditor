@@ -217,3 +217,5 @@ QJSValue KateScriptView::executeCommand(const QString &command, const QString &a
     object.setProperty(QStringLiteral("status"), message);
     return object;
 }
+
+#include "moc_katescriptview.cpp"

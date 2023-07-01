@@ -1204,3 +1204,5 @@ void KateModeMenuList::updateMenu(KTextEditor::Document *doc)
 {
     m_doc = static_cast<KTextEditor::DocumentPrivate *>(doc);
 }
+
+#include "moc_katemodemenulist.cpp"

@@ -48,3 +48,5 @@ void KateModeManagerBenchmark::benchmarkMimeTypesFind()
 }
 
 QTEST_MAIN(KateModeManagerBenchmark)
+
+#include "moc_katemodemanager_benchmark.cpp"

@@ -318,3 +318,5 @@ void OutputObject::posLn()
     output(true, true);
 }
 // END OutputObject
+
+#include "moc_testutils.cpp"

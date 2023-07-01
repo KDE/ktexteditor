@@ -490,3 +490,5 @@ void KateTextBufferTest::saveFileWithElevatedPrivileges()
     QVERIFY(dir.remove());
 }
 #endif
+
+#include "moc_katetextbuffertest.cpp"

@@ -111,3 +111,5 @@ void KateEncodingTest::nonUtfNoBomTest()
     prefixText = buffer.text().left(3);
     QCOMPARE(prefixText, QStringLiteral("ï»¿"));
 }
+
+#include "moc_encodingtest.cpp"
