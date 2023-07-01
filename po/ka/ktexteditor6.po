@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-03 02:03+0000\n"
-"PO-Revision-Date: 2023-06-28 05:27+0200\n"
+"PO-Revision-Date: 2023-06-30 06:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3356,7 +3356,7 @@ msgstr "სიმბოლოების უარყოფითი ნაკ�
 #: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "Whole match reference"
-msgstr ""
+msgstr "სრულ დამთხვევაზე მიმართვა"
 
 #: search/katesearchbar.cpp:1191
 #, kde-format
@@ -3381,7 +3381,7 @@ msgstr "სიტყვის საზღვარი"
 #: search/katesearchbar.cpp:1203
 #, kde-format
 msgid "Not word boundary"
-msgstr ""
+msgstr "სიტყვის საზღვრის გარეშე"
 
 #: search/katesearchbar.cpp:1204
 #, kde-format
@@ -3436,12 +3436,12 @@ msgstr "ჯგუფი, ჩაჭერის გარეშე"
 #: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Positive Lookahead"
-msgstr ""
+msgstr "დადებითი წინმჭვრეტელი"
 
 #: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Negative lookahead"
-msgstr ""
+msgstr "უარყოფითი წინმჭვრეტელი"
 
 #: search/katesearchbar.cpp:1224
 #, kde-format
@@ -4415,7 +4415,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:299
 #, kde-format
 msgid "<p>Sets the color of the tabulator marks.</p>"
-msgstr ""
+msgstr "<p>ტაბულატორის ნიშნის ფერის დაყენება.</p>"
 
 #: syntax/katethemeconfig.cpp:304
 #, kde-format
@@ -4425,7 +4425,7 @@ msgstr "შეწევის ხაზი"
 #: syntax/katethemeconfig.cpp:306
 #, kde-format
 msgid "<p>Sets the color of the vertical indentation lines.</p>"
-msgstr ""
+msgstr "<p>ვერტიკალური სწორების ხაზებს ფერის დაყენება.</p>"
 
 #: syntax/katethemeconfig.cpp:311
 #, kde-format
@@ -4673,14 +4673,14 @@ msgstr "თემის კოპირება"
 #: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr ""
+msgstr "სახელი ფერის თემის \"%1\" ასლისთვის:"
 
 #: syntax/katethemeconfig.cpp:1411
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
-msgstr ""
+msgstr "<p>თემა \"%1\" უკვე არსებობს.</p><p>აირჩიეთ სხვა თემის სახელი.</p>"
 
 #: syntax/katethemeconfig.cpp:1412
 #, kde-format
@@ -4722,7 +4722,7 @@ msgstr "ყველა სანიშნის &წაშლა"
 #: utils/katebookmarks.cpp:59
 #, kde-format
 msgid "Remove all bookmarks of the current document."
-msgstr ""
+msgstr "ამ დოკუმენტისთვის ყველა სანიშნის წაშლა."
 
 #: utils/katebookmarks.cpp:62 utils/katebookmarks.cpp:220
 #, kde-format
@@ -4961,7 +4961,7 @@ msgstr "მხარდაუჭერელი რეჟიმი '%1'"
 #: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr ""
+msgstr "არგუმენტის '%1' მთელ რიცხვში გადაყვანის შეცდომა"
 
 #: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
@@ -5251,7 +5251,7 @@ msgstr "Sebastian Pipping"
 #: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Search bar back- and front-end"
-msgstr ""
+msgstr "ძებნის პანელის წინა და უკანაბოლო"
 
 #: utils/kateglobal.cpp:131
 #, kde-format
@@ -5401,7 +5401,7 @@ msgstr "გამოკვეთა Lua-სთვის"
 #: utils/kateglobal.cpp:151
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
-msgstr ""
+msgstr "ყველა, ვინც მოხალისე იყო და დამავიწყდა, მომეხსენიენებინა"
 
 #: utils/kateglobal.cpp:153
 #, kde-format
@@ -5505,7 +5505,7 @@ msgstr "მიმდინარე დოკუმენტის შემც�
 #: utils/katevariableexpansionmanager.cpp:72
 #, kde-format
 msgid "Full path of the current document excluding the file name."
-msgstr ""
+msgstr "მიმდინარე დოკუმენტის სრული ბილიკი ფაილის სახელის გარეშე."
 
 #: utils/katevariableexpansionmanager.cpp:80
 #, kde-format
@@ -5537,37 +5537,37 @@ msgstr ""
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
-msgstr ""
+msgstr "კურსორის პოზიციის X კომპონენტი გლობალური ეკრანის კოორდინატებში."
 
 #: utils/katevariableexpansionmanager.cpp:117
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
-msgstr ""
+msgstr "კურსორის პოზიციის Y კომპონენტი გლობალური ეკრანის კოორდინატებში."
 
 #: utils/katevariableexpansionmanager.cpp:124
 #, kde-format
 msgid "Text selection of the current document."
-msgstr ""
+msgstr "მონიშნული ტექსტი მიმდინარე დოკუმენტში."
 
 #: utils/katevariableexpansionmanager.cpp:131
 #, kde-format
 msgid "Start line of selected text of the current document."
-msgstr ""
+msgstr "მონიშნული ტექსტის საწყისი ხაზი მიმდინარე დოკუმენტში."
 
 #: utils/katevariableexpansionmanager.cpp:138
 #, kde-format
 msgid "Start column of selected text of the current document."
-msgstr ""
+msgstr "მონიშნული ტექსტის საწყისი სვეტი მიმდინარე დოკუმენტში."
 
 #: utils/katevariableexpansionmanager.cpp:145
 #, kde-format
 msgid "End line of selected text of the current document."
-msgstr ""
+msgstr "მონიშნული ტექსტის ბოლო ხაზი მიმდინარე დოკუმენტში."
 
 #: utils/katevariableexpansionmanager.cpp:152
 #, kde-format
 msgid "End column of selected text of the current document."
-msgstr ""
+msgstr "მონიშნული ტექსტის ბოლო სვეტი მიმდინარე დოკუმენტში."
 
 #: utils/katevariableexpansionmanager.cpp:159
 #, kde-format
@@ -5617,12 +5617,12 @@ msgstr "წვდომა გარემოს ცვლადებზე."
 #: utils/katevariableexpansionmanager.cpp:226
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
-msgstr ""
+msgstr "მარტივი JavaScrpt გამოსახულების შემოწმება."
 
 #: utils/katevariableexpansionmanager.cpp:236
 #, kde-format
 msgid "Encode text to make it URL compatible."
-msgstr ""
+msgstr "ტექსტის კოდირება მისი URL-ში გამოყენებისთვის."
 
 #: utils/katevariableexpansionmanager.cpp:244
 #, kde-format
