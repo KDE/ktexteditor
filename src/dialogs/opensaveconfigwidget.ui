@@ -251,7 +251,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Auto save document when focus leaves the editor</string>
+         <string>Auto save document when the active document is losing focus</string>
         </property>
        </widget>
       </item>
