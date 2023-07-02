@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-03 02:03+0000\n"
+"POT-Creation-Date: 2023-07-02 02:35+0000\n"
 "PO-Revision-Date: 2023-06-17 04:09\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1707,8 +1707,9 @@ msgstr "启用自动保存 (仅本地文件)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, kde-format
-msgid "Auto save document when focus leaves the editor"
+#, fuzzy, kde-format
+#| msgid "Auto save document when focus leaves the editor"
+msgid "Auto save document when the active document is losing focus"
 msgstr "焦点离开编辑器时自动保存文档"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)

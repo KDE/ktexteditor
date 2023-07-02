@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-03 02:03+0000\n"
+"POT-Creation-Date: 2023-07-02 02:35+0000\n"
 "PO-Revision-Date: 2023-04-09 13:49+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1738,8 +1738,9 @@ msgstr "தானாக சேமி (உள்ளக கோப்புகள�
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, kde-format
-msgid "Auto save document when focus leaves the editor"
+#, fuzzy, kde-format
+#| msgid "Auto save document when focus leaves the editor"
+msgid "Auto save document when the active document is losing focus"
 msgstr "உரைத்திருத்தி குவியத்தை இழக்கும்போது ஆவணத்தை தானாக சேமி"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-03 02:03+0000\n"
+"POT-Creation-Date: 2023-07-02 02:35+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1787,8 +1787,9 @@ msgstr "Avtomatik saxlamanı aktiv etmək (yalnız yerli fayllar)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, kde-format
-msgid "Auto save document when focus leaves the editor"
+#, fuzzy, kde-format
+#| msgid "Auto save document when focus leaves the editor"
+msgid "Auto save document when the active document is losing focus"
 msgstr "Fokus redaktoru tərk etdikdə sənəd avtomatik saxlanılsın"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)

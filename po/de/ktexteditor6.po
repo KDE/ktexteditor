@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-03 02:03+0000\n"
+"POT-Creation-Date: 2023-07-02 02:35+0000\n"
 "PO-Revision-Date: 2023-05-05 19:48+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1821,8 +1821,9 @@ msgstr "Automatisches Speichern aktivieren (nur lokale Dateien)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, kde-format
-msgid "Auto save document when focus leaves the editor"
+#, fuzzy, kde-format
+#| msgid "Auto save document when focus leaves the editor"
+msgid "Auto save document when the active document is losing focus"
 msgstr "Dokument automatisch speichern, wenn der Fokus vom Editor weg geht"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
