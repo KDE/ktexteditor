@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-02 02:35+0000\n"
-"PO-Revision-Date: 2023-04-09 13:49+0530\n"
+"PO-Revision-Date: 2023-07-02 16:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -947,6 +947,14 @@ msgid ""
 "<b>Tab</b> a shortcut to the action <b>Format Indentation</b>."
 "\"><span>More ...</span></a></p></body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body>\n"
+"<p>த‍த்தல் விசைக்கான செயல் (உரையேதும் தேர்ந்தெடுக்கப்படாத பட்சத்தில்) <a href=\"<b>த‍த்தல்</"
+"b> விசை, தற்போதைய வரியை நடப்பு நிரல்தொடர் பாளத்துடன் சீரமைக்க வேண்டுமென்றால் (Emacs-ஐப் "
+"போல), <b>த‍த்தல்</b> விசையை <b>உள்தள்ளலை அமை</b> என்பதற்கான சுருக்குவழியாக அமைக்கவும்."
+"\"><span>மேலும் ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -957,6 +965,10 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
+"இத்தேர்வு இயக்கப்பட்டிருந்தால், <b>த‍த்தல்</b> விசை அடுத்த த‍த்தல் குறியை அடைய தேவையான "
+"இடைவெளியை நுழைக்கும். <b>திருத்துவது</b> பகுதியிலுள்ள <b>த‍த்தலுக்கு பதிலாக "
+"இடைவெளியை நுழை</b> என்ற தேர்வு இயக்கப்பட்டிருந்தால், இடைவெளிகள் நுழைக்கப்படும்; "
+"இல்லையேல், த‍த்தல் நுழைக்கப்படும்."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:279
@@ -1738,10 +1750,9 @@ msgstr "தானாக சேமி (உள்ளக கோப்புகள�
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "உரைத்திருத்தி குவியத்தை இழக்கும்போது ஆவணத்தை தானாக சேமி"
+msgstr "செயலிலுள்ள ஆவணம் குவியத்தை இழக்கும்போது அதைத் தானாக சேமி"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -1880,6 +1891,8 @@ msgstr "தேர்ந்தெடுத்துள்ள அடைப்ப�
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
+"சூழலை உணர்த்தும் வகையில் பொருந்தும் திறப்பு அடைப்புக்குறியையும் அதன் பக்கத்திலுள்ள "
+"வரிகளையும் காட்டு"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:198
@@ -1989,7 +2002,7 @@ msgstr "மாறுநிலை வரிமடிப்பு:"
 #, fuzzy, kde-format
 #| msgid "Enable static &word wrap"
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "நிலையான வார்த்தை மடிப்பை செயல்படுத்து"
+msgstr "நிலையான வரிமடிப்பு கோட்டில் மாறுநிலையாக வரியை மடி"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:330
@@ -2024,16 +2037,7 @@ msgstr "இவ்வகலத்துக்கு மேலான வரிக�
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:400
-#, fuzzy, no-c-format, kde-format
-#| msgid ""
-#| "<p>Enables the start of dynamically wrapped lines to be aligned "
-#| "vertically to the indentation level of the first line.  This can help to "
-#| "make code and markup more readable.</p><p>Additionally, this allows you "
-#| "to set a maximum width of the screen, as a percentage, after which "
-#| "dynamically wrapped lines will no longer be vertically aligned.  For "
-#| "example, at 50%, lines whose indentation levels are deeper than 50% of "
-#| "the width of the screen will not have vertical alignment applied to "
-#| "subsequent wrapped lines.</p>"
+#, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
 "to the indentation level of the first line. This can help to make code and "
@@ -2043,13 +2047,6 @@ msgid ""
 "indentation levels are deeper than 50% of the width of the screen will not "
 "have vertical alignment applied to subsequent wrapped lines.</p>"
 msgstr ""
-"<p>Enables the start of dynamically wrapped lines to be aligned vertically "
-"to the indentation level of the first line.  This can help to make code and "
-"markup more readable.</p><p>Additionally, this allows you to set a maximum "
-"width of the screen, as a percentage, after which dynamically wrapped lines "
-"will no longer be vertically aligned.  For example, at 50%, lines whose "
-"indentation levels are deeper than 50% of the width of the screen will not "
-"have vertical alignment applied to subsequent wrapped lines.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:403
@@ -2132,6 +2129,10 @@ msgid ""
 "characters long<br/>Those lines were wrapped and the document is set to read-"
 "only mode, as saving will modify its content."
 msgstr ""
+"%1 எனும் கோப்பு, அமைக்கப்பட்டுள்ள வரம்பைவிட (%2 எழுத்துகளைவிட) நீளமான வரிகளைக் "
+"கொண்டுள்ளது.<br />அவற்றில் மிகநீளமானது, %3 எழுத்துகளைக் கொண்டுள்ளது.<br/>அப்படிப்பட்ட "
+"வரிகள் மடிக்கப்பட்டு, ஆவணம் படிக்க-மட்டும் கூடியதாக மாற்றப்பட்டுள்ளது. அதை சேமித்தல், "
+"அக்கோப்பின் உள்ளடக்கத்தை மாற்றும்."
 
 #: document/katedocument.cpp:2455
 #, kde-format
@@ -2211,6 +2212,9 @@ msgid ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 msgstr ""
+"%1 எனும் கோப்பை சேமிக்குமுன் காப்புநகல் எடுக்க முடியவில்லை. சேமிக்கும்போது சிக்கலேதும் "
+"நேர்ந்தால், இக்கோப்பின் உள்ளடக்கத்தை இழக்க நேரிடலாம். சேமிப்பகம் நிரம்பியிருந்தாலோ, "
+"அக்கோப்பின் அடைவு படிக்க மட்டும் கூடியதாக இருந்தாலோ, காப்புநகல் எடுக்க முடியாமல் போகலாம்."
 
 #: document/katedocument.cpp:2681
 #, kde-format
@@ -3052,11 +3056,10 @@ msgstr "தேர்வு  செய்யபட்ட உரை"
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
-#, fuzzy, kde-format
-#| msgid "Editing"
+#, kde-format
 msgctxt "Script command category"
 msgid "Editing"
-msgstr "தொகுத்தல்"
+msgstr "திருத்துவது"
 
 #: script/data/commands/utils.js:13
 #, kde-format

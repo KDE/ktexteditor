@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-02 02:35+0000\n"
-"PO-Revision-Date: 2023-04-07 08:46+0100\n"
+"PO-Revision-Date: 2023-07-02 10:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -1818,10 +1818,9 @@ msgstr "Activa el desament automàtic (només fitxers locals)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "Desa automàticament el document quan el focus surt de l'editor"
+msgstr "Desa automàticament el document quan el document actiu perd el focus"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -8291,39 +8290,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no definida: %1"
-
-#~ msgid "The file %1 does not exist."
-#~ msgstr "El fitxer %1 no existeix."
-
-#~ msgid ""
-#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#~ "\n"
-#~ "Check if you have read access to this file."
-#~ msgstr ""
-#~ "No s'ha pogut carregar el fitxer %1, perquè no s'ha pogut llegir.\n"
-#~ "\n"
-#~ "Comproveu si teniu accés de lectura a aquest fitxer."
-
-#~ msgid ""
-#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
-#~ "It is set to read-only mode, as saving might destroy its content. Either "
-#~ "reopen the file with the correct encoding chosen or enable the read-write "
-#~ "mode again in the tools menu to be able to edit it."
-#~ msgstr ""
-#~ "El fitxer %1 s'ha obert amb la codificació %2, però conté caràcters no "
-#~ "vàlids. S'ha determinat el mode de només lectura, ja que en desar es "
-#~ "podria destruir el seu contingut. Podeu tornar a obrir el fitxer amb la "
-#~ "codificació correcta o podeu tornar a activar el mode de lectura i "
-#~ "escriptura en el menú d'eines per a poder-lo editar."
-
-#~ msgid ""
-#~ "The file %1 was opened and contained lines longer than the configured "
-#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-#~ "characters long<br/>Those lines were wrapped and the document is set to "
-#~ "read-only mode, as saving will modify its content."
-#~ msgstr ""
-#~ "El fitxer %1 s'ha obert, però conté línies més llargues que el límit per "
-#~ "a la longitud de la línia (%2 caràcters).<br />La més llarga d'aquestes "
-#~ "línies té %3 caràcters.<br />Aquestes línies s'ajustaran i el document "
-#~ "s'establirà al mode de només lectura, ja que en desar-lo es modificaria "
-#~ "el seu contingut."

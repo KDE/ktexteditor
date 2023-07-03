@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-02 02:35+0000\n"
-"PO-Revision-Date: 2023-06-15 20:56+0100\n"
+"PO-Revision-Date: 2023-07-02 22:16+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1781,10 +1781,9 @@ msgstr "Ebligi Aŭtomatan Konservadon (nur lokaj dosieroj)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "Aŭtomate konservi dokumenton kiam fokuso forlasas la redaktilon"
+msgstr "Aŭtomate konservi dokumenton kiam la aktiva dokumento perdas fokuson"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -8173,38 +8172,3 @@ msgstr "'%1' %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marko ne agordita: %1"
-
-#~ msgid "The file %1 does not exist."
-#~ msgstr "La dosiero %1 ne ekzistas."
-
-#~ msgid ""
-#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#~ "\n"
-#~ "Check if you have read access to this file."
-#~ msgstr ""
-#~ "La dosiero %1 ne povis esti ŝargita, ĉar ne eblis legi el ĝi.\n"
-#~ "\n"
-#~ "\n"
-#~ "Kontrolu ĉu vi havas legopermeson al tiu ĉi dosiero."
-
-#~ msgid ""
-#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
-#~ "It is set to read-only mode, as saving might destroy its content. Either "
-#~ "reopen the file with the correct encoding chosen or enable the read-write "
-#~ "mode again in the tools menu to be able to edit it."
-#~ msgstr ""
-#~ "Malfermis dosieron %1 kun kodigo de %2, sed ĝi enhavas nevalidajn "
-#~ "signojn. Estas en nurlega reĝimo, ĉar konservo de ŝanĝoj povus detrui la "
-#~ "enhavon. Aŭ denove malfermu la dosieron en la ĝusta kodoprezento, aŭ "
-#~ "ebligu redakteblan reĝimon el la menuo por modifi ĝin."
-
-#~ msgid ""
-#~ "The file %1 was opened and contained lines longer than the configured "
-#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-#~ "characters long<br/>Those lines were wrapped and the document is set to "
-#~ "read-only mode, as saving will modify its content."
-#~ msgstr ""
-#~ "La dosiero %1 estis malfermita kaj enhavis liniojn pli longajn ol la "
-#~ "agordita Linio-longo (%2 signoj).<br/>La plej longa el tiuj linioj estis "
-#~ "%3 signoj<br/>Tiuj linioj estis falditaj kaj la dokumento estas agordita "
-#~ "al nurlegebla reĝimo, ĉar konservado modifos ĝian enhavon."

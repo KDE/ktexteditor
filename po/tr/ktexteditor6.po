@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-02 02:35+0000\n"
-"PO-Revision-Date: 2023-06-16 11:58+0300\n"
+"PO-Revision-Date: 2023-07-02 10:00+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -229,8 +229,8 @@ msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
 msgstr ""
-"Bu seçenek işaretlendiğinde, her yeni görünümde, sol yan tarafta satır "
-"numaraları görüntülenecektir."
+"Bu seçenek işaretliyse her yeni görünümde, sol yan tarafta satır numaraları "
+"görüntülenecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:88
@@ -245,8 +245,8 @@ msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
 msgstr ""
-"Bu seçenek imlendiğinde, sol tarafta değiştirilen ve kaydedilen satırlar "
-"için küçük bir bildirici gösterilecektir."
+"Bu seçenek işaretliyse sol tarafta değiştirilen ve kaydedilen satırlar için "
+"küçük bir bildirici gösterilecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
@@ -277,7 +277,7 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>Bu seçenek imlendiğinde, dikey sarma çubuğunun üzerine gelmek, metnin bir "
+"<p>Bu seçenek işaretliyse dikey sarma çubuğunun üzerine gelmek, metnin bir "
 "önizlemesini gösterir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
@@ -299,7 +299,7 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Bu seçenek imlendiğinde, her yeni görünüm dikey sarma çubuğunda küçük bir "
+"Bu seçenek işaretliyse her yeni görünüm dikey sarma çubuğunda küçük bir "
 "harita gösterecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
@@ -315,7 +315,7 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
-"Bu seçenek imlendiğinde, her yeni görünüm dikey sarma çubuğunda tüm belgenin "
+"Bu seçenek işaretliyse her yeni görünüm dikey sarma çubuğunda tüm belgenin "
 "küçük bir haritasını gösterecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
@@ -548,7 +548,7 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>Bu seçenek imlendiyse <strong>Düzenleme</strong> özelliklerinde "
+"<p>Bu seçenek işaretliyse <strong>Düzenleme</strong> özelliklerinde "
 "belirtildiği üzere sözcük kaydırma sütununda dikey bir çizgi çizilecektir..</"
 "p>"
 
@@ -903,7 +903,7 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
-"Eğer bu seçenek kapalıysa girinti düzeyini değiştirmek bir satırı "
+"Bu seçenek devre dışıysa girinti düzeyini değiştirmek bir satırı "
 "<b>Girintileme genişliği</b> seçeneğinde belirtilen genişlik çarpanı kadar "
 "kaydırır."
 
@@ -1491,7 +1491,7 @@ msgstr "Kaydetmek için bir yedek dosyası yaz:"
 msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
-msgstr "Eğer bu seçenek imlenirse yerel dosyalar kaydedilirken yedeği alınır."
+msgstr "Bu seçenek etkinse yerel dosyalar kaydedilirken yedeği alınır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
@@ -1505,8 +1505,7 @@ msgstr "&Yerel dosyalar"
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
-msgstr ""
-"Eğer bu seçenek işaretlenirse uzak dosyalar kaydedilirken yedeği alınır."
+msgstr "Bu seçenek etkinse uzak dosyalar kaydedilirken yedeği alınır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
@@ -1680,8 +1679,8 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
-"Bu seçenek imlenirse düzenleyici, satır sonu türünü kendiliğinden algılar. "
-"İlk bulunan satır sonu türü dosyanın tümü için kullanılır."
+"Bu seçenek etkinse düzenleyici, satır sonu türünü kendiliğinden algılar. İlk "
+"bulunan satır sonu türü dosyanın tümü için kullanılır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -1788,10 +1787,9 @@ msgstr "Otomatik Kaydetmeyi Etkinleştir (yalnızca yerel dosyalar)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "Odak, düzenleyiciden ayrıldığında dosyayı kendiğinden kaydet"
+msgstr "Etkin belge odağı kaybederken onu kendiliğinden kaydet"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -2131,7 +2129,7 @@ msgstr "Yeni dosya"
 #: document/katedocument.cpp:223
 #, kde-format
 msgid "Auto Reload Document"
-msgstr "Belgeyi Kendilliğinden Yeniden Yükle"
+msgstr "Belgeyi Kendiliğinden Yeniden Yükle"
 
 #: document/katedocument.cpp:224
 #, kde-format
@@ -6951,7 +6949,7 @@ msgid ""
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not changed."
 msgstr ""
-"Bu seçenek imliyse metin satırları ekran kenarında kaydırılacak.<br /><br /"
+"Bu seçenek işaretliyse metin satırları ekran kenarında kaydırılır.<br /><br /"
 ">Bu yalnızca bir görüntüleme seçeneğidir, belge değiştirilmez."
 
 #: view/kateview.cpp:764
@@ -6991,7 +6989,7 @@ msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
 msgstr ""
-"Bu seçenek imliyse metin satırları düzenleme özelliklerinde belirtilen "
+"Bu seçenek işaretliyse metin satırları düzenleme özelliklerinde belirtilen "
 "sütunda kaydırılacak."
 
 #: view/kateview.cpp:781
@@ -8189,45 +8187,3 @@ msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
-
-#~ msgid "The file %1 does not exist."
-#~ msgstr "%1 dosyası bulunamadı."
-
-#~ msgid ""
-#~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
-#~ "\n"
-#~ "Check if you have read access to this file."
-#~ msgstr ""
-#~ "%1 dosyası yüklenemedi. Dosyadan okuma yapılamıyor.\n"
-#~ "\n"
-#~ "Dosyaya erişim izniniz olduğunu denetleyin."
-
-#~ msgid ""
-#~ "The file %1 was opened with %2 encoding but contained invalid characters. "
-#~ "It is set to read-only mode, as saving might destroy its content. Either "
-#~ "reopen the file with the correct encoding chosen or enable the read-write "
-#~ "mode again in the tools menu to be able to edit it."
-#~ msgstr ""
-#~ "%1 dosyası %2 kodlaması ile açıldı; ancak geçersiz karakterler içeriyor. "
-#~ "Bir kaydetme eylemi ile içerik kaybedilebileceğinden salt okunur kipe "
-#~ "geçiliyor. Dosyayı doğru kodlama ile yeniden açabilirsiniz veya menüden "
-#~ "okunur-yazılır kipe geçebilirsiniz."
-
-#~ msgid ""
-#~ "The file %1 was opened and contained lines longer than the configured "
-#~ "Line Length Limit (%2 characters).<br/>The longest of those lines was %3 "
-#~ "characters long<br/>Those lines were wrapped and the document is set to "
-#~ "read-only mode, as saving will modify its content."
-#~ msgstr ""
-#~ "%1 dosyası açıldı ve Satır Uzunluğu Sınırı (%2 karakter) "
-#~ "yapılandırmasından daha uzun satırlara sahip.<br/>Bu satırların en uzunu "
-#~ "%3 karakter uzunluğunda<br/>Bu satırlar kaydırıldı ve belgeyi kaydetmek "
-#~ "içeriğini değiştireceğinden salt okunur kipine dönüştürüldü."
-
-#~ msgid "Will never again warn about on disk changes but always reload."
-#~ msgstr ""
-#~ "Disk değişikliklerinde hiçbir zaman yeniden uyarma; ancak her zaman "
-#~ "yeniden yükle."
-
-#~ msgid "Error loading script %1\n"
-#~ msgstr "%1 betiği yüklenirken hata oluştu\n"
