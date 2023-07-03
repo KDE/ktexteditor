@@ -249,16 +249,6 @@ private:
     const KateConfig *const m_parent = nullptr;
 
     /**
-     * recursion depth
-     */
-    uint configSessionNumber = 0;
-
-    /**
-     * is a config session running
-     */
-    bool configIsRunning = false;
-
-    /**
      * two cases:
      *   - we have m_parent == nullptr => this contains all known config entries
      *   - we have m_parent != nullptr => this contains all set config entries for this level of configuration
@@ -276,6 +266,12 @@ private:
      * Hash of config keys => config entry, filled only for the object with m_parent == nullptr
      */
     std::unique_ptr<QHash<QString, const ConfigEntry *>> m_configKeyToEntry;
+
+protected:
+    /**
+     * recursion depth
+     */
+    int configSessionNumber = 0;
 };
 
 class KTEXTEDITOR_EXPORT KateGlobalConfig : public KateConfig

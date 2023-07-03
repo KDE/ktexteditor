@@ -97,8 +97,6 @@ void KateConfig::configStart()
     if (configSessionNumber > 1) {
         return;
     }
-
-    configIsRunning = true;
 }
 
 void KateConfig::configEnd()
@@ -112,8 +110,6 @@ void KateConfig::configEnd()
     if (configSessionNumber > 0) {
         return;
     }
-
-    configIsRunning = false;
 
     updateConfig();
 }
@@ -242,6 +238,10 @@ KateGlobalConfig::KateGlobalConfig()
     Q_ASSERT(isGlobal());
     s_global = this;
 
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 0);
+    ++configSessionNumber;
+
     // init all known config entries
     addConfigEntry(ConfigEntry(EncodingProberType, "Encoding Prober Type", QString(), KEncodingProber::Universal));
     addConfigEntry(ConfigEntry(FallbackEncoding,
@@ -258,6 +258,10 @@ KateGlobalConfig::KateGlobalConfig()
     // init with defaults from config or really hardcoded ones
     KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
     readConfig(cg);
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 1);
+    --configSessionNumber;
 }
 
 void KateGlobalConfig::readConfig(const KConfigGroup &config)
@@ -296,6 +300,10 @@ KateDocumentConfig::KateDocumentConfig()
     // register this as our global instance
     Q_ASSERT(isGlobal());
     s_global = this;
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 0);
+    ++configSessionNumber;
 
     // init all known config entries
     addConfigEntry(ConfigEntry(TabWidth, "Tab Width", QStringLiteral("tab-width"), 4, [](const QVariant &value) {
@@ -358,6 +366,10 @@ KateDocumentConfig::KateDocumentConfig()
     // init with defaults from config or really hardcoded ones
     KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
     readConfig(cg);
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 1);
+    --configSessionNumber;
 }
 
 KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
@@ -455,7 +467,13 @@ QString KateDocumentConfig::eolString() const
 // BEGIN KateViewConfig
 KateViewConfig::KateViewConfig()
 {
+    // register this as our global instance
+    Q_ASSERT(isGlobal());
     s_global = this;
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 0);
+    ++configSessionNumber;
 
     // Init all known config entries
     // NOTE: Ensure to keep the same order as listed in enum ConfigEntryTypes or it will later assert!
@@ -550,6 +568,10 @@ KateViewConfig::KateViewConfig()
     // init with defaults from config or really hardcoded ones
     KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor View");
     readConfig(config);
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 1);
+    --configSessionNumber;
 }
 
 KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
@@ -632,7 +654,13 @@ KateRendererConfig::KateRendererConfig()
     // init bitarray
     m_lineMarkerColorSet.fill(true);
 
+    // register this as our global instance
+    Q_ASSERT(isGlobal());
     s_global = this;
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 0);
+    ++configSessionNumber;
 
     // Init all known config entries
     addConfigEntry(ConfigEntry(AutoColorThemeSelection, "Auto Color Theme Selection", QString(), true));
@@ -643,6 +671,10 @@ KateRendererConfig::KateRendererConfig()
     // init with defaults from config or really hardcoded ones
     KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
     readConfig(config);
+
+    // avoid updateConfig effects like config write in constructor, see bug 377067
+    Q_ASSERT(configSessionNumber == 1);
+    --configSessionNumber;
 }
 
 KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
