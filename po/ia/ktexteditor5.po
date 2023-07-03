@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-29 00:45+0000\n"
-"PO-Revision-Date: 2023-06-21 21:39+0200\n"
+"PO-Revision-Date: 2023-07-02 21:32+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1801,7 +1801,8 @@ msgstr "Habilita salveguardar automatic (solmentefiles local)"
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when focus leaves the editor"
-msgstr "Salveguardar automatic de documento quqndo ilfoco lassa le editor"
+msgstr ""
+"Salveguardar automaticamente le documento quando il foco lassa le editor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
