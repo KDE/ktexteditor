@@ -3604,6 +3604,16 @@ bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor
     return setCursorPositionInternal(position, doc()->config()->tabWidth(), true);
 }
 
+QScrollBar *KTextEditor::ViewPrivate::verticalScrollBar() const
+{
+    return m_viewInternal->m_lineScroll;
+}
+
+QScrollBar *KTextEditor::ViewPrivate::horizontalScrollBar() const
+{
+    return m_viewInternal->m_columnScroll;
+}
+
 bool KTextEditor::ViewPrivate::isLineRTL(int line) const
 {
     const QString s = doc()->line(line);

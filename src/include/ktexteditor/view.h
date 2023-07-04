@@ -22,7 +22,7 @@
 #include <QWidget>
 
 class QMenu;
-
+class QScrollBar;
 class KConfigGroup;
 
 namespace KSyntaxHighlighting
@@ -868,6 +868,18 @@ public:
      * \since 5.33
      */
     QRect textAreaRect() const;
+
+    /**
+     * \return The vertical scrollbar of this view
+     * \since 6.0
+     */
+    virtual QScrollBar *verticalScrollBar() const = 0;
+
+    /**
+     * \return The horizontal scrollbar of this view
+     * \since 6.0
+     */
+    virtual QScrollBar *horizontalScrollBar() const = 0;
 
 public:
     /**

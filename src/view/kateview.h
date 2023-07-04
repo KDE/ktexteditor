@@ -174,6 +174,9 @@ public:
 
     bool setCursorPositionVisual(const KTextEditor::Cursor position);
 
+    QScrollBar *verticalScrollBar() const override;
+    QScrollBar *horizontalScrollBar() const override;
+
     /**
      * Return the virtual cursor column, each tab is expanded into the
      * document's tabWidth characters. If word wrap is off, the cursor may be
