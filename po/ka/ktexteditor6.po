@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-02 02:35+0000\n"
-"PO-Revision-Date: 2023-06-30 06:13+0200\n"
+"PO-Revision-Date: 2023-07-03 05:48+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -669,7 +669,7 @@ msgstr "&სექცია:"
 #: dialogs/filetypeconfigwidget.ui:99
 #, kde-format
 msgid "The section name is used to organize the file types in menus."
-msgstr ""
+msgstr "სექციის სახელი მენიუებში ფაილის ტიპების დასალაგებლად გამოიყენება."
 
 #. i18n: ectx: property (text), widget (QLabel, lblVariables)
 #: dialogs/filetypeconfigwidget.ui:106
@@ -1659,10 +1659,9 @@ msgstr "ავტომატური შენახვის ჩართვ�
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "დოკუმენტის ავტომატური შენახვა რედაქტორიდან კურსორის გატანისას"
+msgstr "დოკუმენტის ავტომატური შენახვა აქტიური დოკუმენტიდან კურსორის გატანისას"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -3457,12 +3456,12 @@ msgstr ""
 #: search/katesearchbar.cpp:1230
 #, kde-format
 msgid "Begin lowercase conversion"
-msgstr ""
+msgstr "ქვედა რეგისტრში გადაყვანის დაწყება"
 
 #: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Begin uppercase conversion"
-msgstr ""
+msgstr "ზედა რეგისტრში გადაყვანის დაწყება"
 
 #: search/katesearchbar.cpp:1232
 #, kde-format
@@ -4962,7 +4961,7 @@ msgstr "მხარდაუჭერელი რეჟიმი '%1'"
 #: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "არგუმენტის '%1' მთელ რიცხვში გადაყვანის შეცდომა"
+msgstr "არგუმენტის '%1' მთელ რიცხვში გადაყვანის შეცდომა."
 
 #: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
@@ -6106,12 +6105,12 @@ msgstr "მონიშნულის ჩასმა"
 #: view/kateview.cpp:473
 #, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr ""
+msgstr "თაგუნათი ადრე არჩეული შემცველობის ჩასმა"
 
 #: view/kateview.cpp:477
 #, kde-format
 msgid "Swap with Clipboard Contents"
-msgstr ""
+msgstr "გაცვლის ბუფერთან მიმოცვლა"
 
 #: view/kateview.cpp:478
 #, kde-format
@@ -7155,12 +7154,12 @@ msgstr ""
 #: view/kateview.cpp:1335
 #, kde-format
 msgid "Toggle Current Node"
-msgstr ""
+msgstr "მიმდინარე კვანძის გადართვა"
 
 #: view/kateview.cpp:1339
 #, kde-format
 msgid "Toggle Contained Nodes"
-msgstr ""
+msgstr "შეზღუდული კვანძების გადართვა"
 
 #: view/kateview.cpp:1496
 #, kde-format
@@ -7614,12 +7613,12 @@ msgstr "შემოტანა vimrc ფაილიდან"
 #: vimode/marks.cpp:111
 #, kde-format
 msgid "Mark set: %1"
-msgstr ""
+msgstr "ნიშანი დასმულია: %1"
 
 #: vimode/marks.cpp:157
 #, kde-format
 msgid "There are no more chars for the next bookmark."
-msgstr ""
+msgstr "შემდეგი დანიშნისთვის მეტი სიმბოლო არაა."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
 #: vimode/modes/normalvimode.cpp:3559
@@ -7635,7 +7634,7 @@ msgstr "'%1' %2,  თექვსმ %3,  რვაობითი %4"
 #: vimode/modes/normalvimode.cpp:2525
 #, kde-format
 msgid "Mark not set: %1"
-msgstr ""
+msgstr "ნიშანი დასმული არაა: %1"
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "ფაილი არ არსებობს: %1."
