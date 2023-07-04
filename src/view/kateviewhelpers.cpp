@@ -184,7 +184,6 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     , m_needsUpdateOnShow(false)
     , m_miniMapWidth(40)
     , m_grooveHeight(height())
-    , m_linesModified(0)
 {
     connect(this, &KateScrollBar::valueChanged, this, &KateScrollBar::sliderMaybeMoved);
     connect(m_doc, &KTextEditor::DocumentPrivate::marksChanged, this, &KateScrollBar::marksChanged);

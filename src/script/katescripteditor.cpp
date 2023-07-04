@@ -12,12 +12,6 @@
 #include <QClipboard>
 #include <QJSEngine>
 
-KateScriptEditor::KateScriptEditor(QJSEngine *engine, QObject *parent)
-    : QObject(parent)
-    , m_engine(engine)
-{
-}
-
 QString KateScriptEditor::clipboardText() const
 {
     return QApplication::clipboard()->text();

@@ -358,7 +358,6 @@ private Q_SLOTS:
 private:
     KTextEditor::DocumentPrivate *m_doc;
     QPointer<KTextEditor::Message> m_message;
-    KTextEditor::Document::ModifiedOnDiskReason m_modtype;
     QString m_fullDiffPath;
     KProcess *m_proc;
     QTemporaryFile *m_diffFile;

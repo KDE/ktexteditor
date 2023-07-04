@@ -27,14 +27,11 @@ class KTEXTEDITOR_EXPORT KateScriptEditor : public QObject
     Q_OBJECT
 
 public:
-    explicit KateScriptEditor(QJSEngine *engine, QObject *parent = nullptr);
+    using QObject::QObject;
 
     Q_INVOKABLE QString clipboardText() const;
     Q_INVOKABLE QStringList clipboardHistory() const;
     Q_INVOKABLE void setClipboardText(const QString &text);
-
-private:
-    QJSEngine *m_engine = nullptr;
 };
 
 #endif

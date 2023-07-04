@@ -226,7 +226,6 @@ private:
 
     // lists of lines added/removed recently to avoid scrollbar flickering
     QHash<int, int> m_linesAdded;
-    int m_linesModified;
 
     static const unsigned char characterOpacity[256];
 };

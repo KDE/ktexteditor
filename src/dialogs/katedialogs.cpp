@@ -1426,7 +1426,6 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
     : QObject(doc)
     , m_doc(doc)
     , m_message(new KTextEditor::Message(reason, KTextEditor::Message::Information))
-    , m_modtype(modtype)
     , m_fullDiffPath(QStandardPaths::findExecutable(QStringLiteral("diff")))
     , m_proc(nullptr)
     , m_diffFile(nullptr)
