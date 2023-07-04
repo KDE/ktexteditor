@@ -41,18 +41,18 @@ void VariableTest::testReturnValues()
     };
 
     // exact matches
-    QVERIFY(!editor->unregisterVariableMatch(name));
+    QVERIFY(!editor->unregisterVariable(name));
     QVERIFY(editor->registerVariableMatch(name, QStringLiteral("Document Text"), func));
     QVERIFY(!editor->registerVariableMatch(name, QStringLiteral("Document Text"), func));
-    QVERIFY(editor->unregisterVariableMatch(name));
-    QVERIFY(!editor->unregisterVariableMatch(name));
+    QVERIFY(editor->unregisterVariable(name));
+    QVERIFY(!editor->unregisterVariable(name));
 
     // prefix matches
-    QVERIFY(!editor->unregisterVariablePrefix(name));
+    QVERIFY(!editor->unregisterVariable(name));
     QVERIFY(editor->registerVariablePrefix(name, QStringLiteral("Document Text"), func));
     QVERIFY(!editor->registerVariablePrefix(name, QStringLiteral("Document Text"), func));
-    QVERIFY(editor->unregisterVariablePrefix(name));
-    QVERIFY(!editor->unregisterVariablePrefix(name));
+    QVERIFY(editor->unregisterVariable(name));
+    QVERIFY(!editor->unregisterVariable(name));
 }
 
 void VariableTest::testExactMatch_data()
@@ -95,7 +95,7 @@ void VariableTest::testExactMatch()
     output = editor->expandText(QStringLiteral("Hello %{Doc:Text} %{Doc:Text}!"), view);
     QCOMPARE(output, QStringLiteral("Hello ") + expectedText + QLatin1Char(' ') + expectedText + QLatin1Char('!'));
 
-    QVERIFY(editor->unregisterVariableMatch(QStringLiteral("Doc:Text")));
+    QVERIFY(editor->unregisterVariable(QStringLiteral("Doc:Text")));
 
     delete doc;
 }
@@ -127,7 +127,7 @@ void VariableTest::testPrefixMatch()
     output = editor->expandText(QStringLiteral("Countup: %{Mirror:%{Mirror:12345}}"), nullptr);
     QCOMPARE(output, QStringLiteral("Countup: 12345"));
 
-    QVERIFY(editor->unregisterVariablePrefix(prefix));
+    QVERIFY(editor->unregisterVariable(prefix));
 }
 
 void VariableTest::testRecursiveMatch()
@@ -148,7 +148,7 @@ void VariableTest::testRecursiveMatch()
     QString output = editor->expandText(QStringLiteral("Hello %{Doc:%{Doc:Text}}!"), view);
     QCOMPARE(output, QStringLiteral("Hello Text!"));
 
-    QVERIFY(editor->unregisterVariableMatch(name));
+    QVERIFY(editor->unregisterVariable(name));
     delete doc;
 }
 

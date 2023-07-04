@@ -17,6 +17,7 @@
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 
+#include <QScrollBar>
 #include <QTemporaryFile>
 #include <QtTestWidgets>
 

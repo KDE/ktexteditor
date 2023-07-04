@@ -338,27 +338,14 @@ public:
 
     /**
      * Unregisters a variable that was previously registered with
-     * registerVariableMatch().
+     * registerVariableMatch() or registerVariablePrefix().
      *
      * @return true if the variable was successfully unregistered, and
      *         false if the variable did not exist.
      *
-     * @since 5.57
+     * @since 6.0
      */
-    bool unregisterVariableMatch(const QString &variable);
-
-    // TODO KF6: merge "unregisterVariableMatch()" and "unregisterVariablePrefix()" into
-    //           a single function "unregisterVariable(const QString& name)".
-    /**
-     * Unregisters a prefix of variable that was previously registered with
-     * registerVariableMatch().
-     *
-     * @return true if the variable was successfully unregistered, and
-     *         false if the variable did not exist.
-     *
-     * @since 5.57
-     */
-    bool unregisterVariablePrefix(const QString &variable);
+    bool unregisterVariable(const QString &variableName);
 
     /**
      * Expands a single @p variable, writing the expanded value to @p output.

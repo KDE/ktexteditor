@@ -110,12 +110,7 @@ bool Editor::registerVariablePrefix(const QString &prefix, const QString &descri
     return d->variableExpansionManager()->addVariable(var);
 }
 
-bool Editor::unregisterVariableMatch(const QString &variable)
-{
-    return d->variableExpansionManager()->removeVariable(variable);
-}
-
-bool Editor::unregisterVariablePrefix(const QString &variable)
+bool Editor::unregisterVariable(const QString &variable)
 {
     return d->variableExpansionManager()->removeVariable(variable);
 }
