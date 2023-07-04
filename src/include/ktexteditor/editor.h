@@ -373,7 +373,7 @@ public:
      * Expands arbitrary @p text that may contain arbitrary many variables.
      * On success, the expanded text is written to @p output.
      *
-     * @since 5.57
+     * @since 6.0
      */
     QString expandText(const QString &text, KTextEditor::View *view) const;
 
