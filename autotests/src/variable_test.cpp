@@ -89,10 +89,10 @@ void VariableTest::testExactMatch()
     QCOMPARE(output, expected);
 
     // expandText
-    editor->expandText(QStringLiteral("Hello %{Doc:Text}!"), view, output);
+    output = editor->expandText(QStringLiteral("Hello %{Doc:Text}!"), view);
     QCOMPARE(output, QStringLiteral("Hello ") + expectedText + QLatin1Char('!'));
 
-    editor->expandText(QStringLiteral("Hello %{Doc:Text} %{Doc:Text}!"), view, output);
+    output = editor->expandText(QStringLiteral("Hello %{Doc:Text} %{Doc:Text}!"), view);
     QCOMPARE(output, QStringLiteral("Hello ") + expectedText + QLatin1Char(' ') + expectedText + QLatin1Char('!'));
 
     QVERIFY(editor->unregisterVariableMatch(QStringLiteral("Doc:Text")));
@@ -120,11 +120,11 @@ void VariableTest::testPrefixMatch()
     QVERIFY(editor->expandVariable(QStringLiteral("Mirror:12345"), nullptr, output));
     QCOMPARE(output, QStringLiteral("54321"));
 
-    editor->expandText(QStringLiteral("Countdown: %{Mirror:12345}"), nullptr, output);
+    output = editor->expandText(QStringLiteral("Countdown: %{Mirror:12345}"), nullptr);
     QCOMPARE(output, QStringLiteral("Countdown: 54321"));
 
     // Test recursive expansion
-    editor->expandText(QStringLiteral("Countup: %{Mirror:%{Mirror:12345}}"), nullptr, output);
+    output = editor->expandText(QStringLiteral("Countup: %{Mirror:%{Mirror:12345}}"), nullptr);
     QCOMPARE(output, QStringLiteral("Countup: 12345"));
 
     QVERIFY(editor->unregisterVariablePrefix(prefix));
@@ -145,8 +145,7 @@ void VariableTest::testRecursiveMatch()
 
     // Test recursive expansion
     doc->setText(QStringLiteral("Text"));
-    QString output;
-    editor->expandText(QStringLiteral("Hello %{Doc:%{Doc:Text}}!"), view, output);
+    QString output = editor->expandText(QStringLiteral("Hello %{Doc:%{Doc:Text}}!"), view);
     QCOMPARE(output, QStringLiteral("Hello Text!"));
 
     QVERIFY(editor->unregisterVariableMatch(name));
@@ -166,136 +165,136 @@ void VariableTest::testBuiltins()
     QString out;
 
     // Test invalid ones:
-    editor->expandText(QStringLiteral("%{}"), view, out);
+    out = editor->expandText(QStringLiteral("%{}"), view);
     QCOMPARE(out, QStringLiteral("%{}"));
-    editor->expandText(QStringLiteral("%{"), view, out);
+    out = editor->expandText(QStringLiteral("%{"), view);
     QCOMPARE(out, QStringLiteral("%{"));
-    editor->expandText(QStringLiteral("%{{}"), view, out);
+    out = editor->expandText(QStringLiteral("%{{}"), view);
     QCOMPARE(out, QStringLiteral("%{{}"));
-    editor->expandText(QStringLiteral("%{{}}"), view, out);
+    out = editor->expandText(QStringLiteral("%{{}}"), view);
     QCOMPARE(out, QStringLiteral("%{{}}"));
 
     // Document:FileBaseName
-    editor->expandText(QStringLiteral("%{Document:FileBaseName}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:FileBaseName}"), view);
     QCOMPARE(out, QStringLiteral("kate-v5"));
 
     // Document:FileExtension
-    editor->expandText(QStringLiteral("%{Document:FileExtension}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:FileExtension}"), view);
     QCOMPARE(out, QStringLiteral("tar.gz"));
 
     // Document:FileName
-    editor->expandText(QStringLiteral("%{Document:FileName}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:FileName}"), view);
     QCOMPARE(out, QStringLiteral("kate-v5.tar.gz"));
 
     // Document:FilePath
-    editor->expandText(QStringLiteral("%{Document:FilePath}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:FilePath}"), view);
     QCOMPARE(out, QFileInfo(view->document()->url().toLocalFile()).absoluteFilePath());
 
     // Document:Text
-    editor->expandText(QStringLiteral("%{Document:Text}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Text}"), view);
     QCOMPARE(out, QStringLiteral("get an edge in editing\n:-)"));
 
     // Document:Path
-    editor->expandText(QStringLiteral("%{Document:Path}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Path}"), view);
     QCOMPARE(out, QFileInfo(doc->url().toLocalFile()).absolutePath());
 
     // Document:NativeFilePath
-    editor->expandText(QStringLiteral("%{Document:NativeFilePath}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:NativeFilePath}"), view);
     QCOMPARE(out, QDir::toNativeSeparators(QFileInfo(doc->url().toLocalFile()).absoluteFilePath()));
 
     // Document:NativePath
-    editor->expandText(QStringLiteral("%{Document:NativePath}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:NativePath}"), view);
     QCOMPARE(out, QDir::toNativeSeparators(QFileInfo(doc->url().toLocalFile()).absolutePath()));
 
     // Document:NativePath
-    editor->expandText(QStringLiteral("%{Document:NativePath}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:NativePath}"), view);
     QCOMPARE(out, QDir::toNativeSeparators(QFileInfo(doc->url().toLocalFile()).absolutePath()));
 
     // Document:Cursor:Line
-    editor->expandText(QStringLiteral("%{Document:Cursor:Line}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Cursor:Line}"), view);
     QCOMPARE(out, QStringLiteral("1"));
 
     // Document:Cursor:Column
-    editor->expandText(QStringLiteral("%{Document:Cursor:Column}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Cursor:Column}"), view);
     QCOMPARE(out, QStringLiteral("2"));
 
     // Document:Cursor:XPos
-    editor->expandText(QStringLiteral("%{Document:Cursor:XPos}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Cursor:XPos}"), view);
     QVERIFY(out.toInt() > 0);
 
     // Document:Cursor:YPos
-    editor->expandText(QStringLiteral("%{Document:Cursor:YPos}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Cursor:YPos}"), view);
     QVERIFY(out.toInt() > 0);
 
     view->setSelection(KTextEditor::Range(1, 0, 1, 3));
     // Document:Selection:Text
-    editor->expandText(QStringLiteral("%{Document:Selection:Text}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Selection:Text}"), view);
     QCOMPARE(out, QStringLiteral(":-)"));
 
     // Document:Selection:StartLine
-    editor->expandText(QStringLiteral("%{Document:Selection:StartLine}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Selection:StartLine}"), view);
     QCOMPARE(out, QStringLiteral("1"));
 
     // Document:Selection:StartColumn
-    editor->expandText(QStringLiteral("%{Document:Selection:StartColumn}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Selection:StartColumn}"), view);
     QCOMPARE(out, QStringLiteral("0"));
 
     // Document:Selection:EndLine
-    editor->expandText(QStringLiteral("%{Document:Selection:EndLine}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Selection:EndLine}"), view);
     QCOMPARE(out, QStringLiteral("1"));
 
     // Document:Selection:EndColumn
-    editor->expandText(QStringLiteral("%{Document:Selection:EndColumn}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Selection:EndColumn}"), view);
     QCOMPARE(out, QStringLiteral("3"));
 
     // Document:RowCount
-    editor->expandText(QStringLiteral("%{Document:RowCount}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:RowCount}"), view);
     QCOMPARE(out, QStringLiteral("2"));
 
     // Document:Variable:<variable>, since KF 5.78
     qobject_cast<KTextEditor::DocumentPrivate *>(doc)->setVariable(QStringLiteral("cow-sound"), QStringLiteral("moo"));
-    editor->expandText(QStringLiteral("%{Document:Variable:cow-sound}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Document:Variable:cow-sound}"), view);
     QCOMPARE(out, QStringLiteral("moo"));
 
     // Date:Locale
-    editor->expandText(QStringLiteral("%{Date:Locale}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Date:Locale}"), view);
     QVERIFY(!out.isEmpty());
 
     // Date:ISO
-    editor->expandText(QStringLiteral("%{Date:ISO}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Date:ISO}"), view);
     QVERIFY(!out.isEmpty());
 
     // Date:yyyy-MM-dd
-    editor->expandText(QStringLiteral("%{Date:yyyy-MM-dd}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Date:yyyy-MM-dd}"), view);
     QVERIFY(QDate::fromString(out, QStringLiteral("yyyy-MM-dd")).isValid());
 
     // Time:Locale
-    editor->expandText(QStringLiteral("%{Time:Locale}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Time:Locale}"), view);
     QVERIFY(!out.isEmpty());
 
     // Time:ISO
-    editor->expandText(QStringLiteral("%{Time:ISO}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Time:ISO}"), view);
     QVERIFY(!out.isEmpty());
 
     // Time:hh-mm-ss
-    editor->expandText(QStringLiteral("%{Time:hh-mm-ss}"), view, out);
+    out = editor->expandText(QStringLiteral("%{Time:hh-mm-ss}"), view);
     QVERIFY(QTime::fromString(out, QStringLiteral("hh-mm-ss")).isValid());
 
     // ENV:KTE_ENV_VAR_TEST
     qputenv("KTE_ENV_VAR_TEST", "KTE_ENV_VAR_TEST_VALUE");
-    editor->expandText(QStringLiteral("%{ENV:KTE_ENV_VAR_TEST}"), view, out);
+    out = editor->expandText(QStringLiteral("%{ENV:KTE_ENV_VAR_TEST}"), view);
     QCOMPARE(out, QStringLiteral("KTE_ENV_VAR_TEST_VALUE"));
 
     // JS:<code>
-    editor->expandText(QStringLiteral("%{JS:3 + %{JS:2 + 1}}"), view, out);
+    out = editor->expandText(QStringLiteral("%{JS:3 + %{JS:2 + 1}}"), view);
     QCOMPARE(out, QStringLiteral("6"));
 
     // PercentEncoded: since 5.67
-    editor->expandText(QStringLiteral("%{PercentEncoded:{a&b+c=d} \"}"), view, out);
+    out = editor->expandText(QStringLiteral("%{PercentEncoded:{a&b+c=d} \"}"), view);
     QCOMPARE(out, QStringLiteral("%7Ba%26b%2Bc%3Dd%7D%20%22"));
 
     // UUID
-    editor->expandText(QStringLiteral("%{UUID}"), view, out);
+    out = editor->expandText(QStringLiteral("%{UUID}"), view);
     QCOMPARE(out.count(QLatin1Char('-')), 4);
 }
 

@@ -369,14 +369,13 @@ public:
      */
     bool expandVariable(const QString &variable, KTextEditor::View *view, QString &output) const;
 
-    // TODO KF6: turn expandText into: QString expandText(text, view) to avoid output argument
     /**
      * Expands arbitrary @p text that may contain arbitrary many variables.
      * On success, the expanded text is written to @p output.
      *
      * @since 5.57
      */
-    void expandText(const QString &text, KTextEditor::View *view, QString &output) const;
+    QString expandText(const QString &text, KTextEditor::View *view) const;
 
     /**
      * Adds a QAction to the widget in @p widgets that whenever focus is

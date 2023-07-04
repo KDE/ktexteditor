@@ -378,7 +378,7 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
         QString toolTip;
         if (!inputText.isEmpty()) {
             auto activeView = KTextEditor::Editor::instance()->application()->activeMainWindow()->activeView();
-            KTextEditor::Editor::instance()->expandText(inputText, activeView, toolTip);
+            toolTip = KTextEditor::Editor::instance()->expandText(inputText, activeView);
         }
 
         if (!toolTip.isEmpty()) {
