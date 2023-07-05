@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1122,6 +1122,7 @@ msgstr "افزایش سطح تورفتگی در صورت منجرشدن به ف�
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " نویسه"
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:209
 #, kde-format
@@ -1200,6 +1201,7 @@ msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " نویسه"
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:577
 #, kde-format
@@ -3617,6 +3619,7 @@ msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
 msgstr[0] "%1 جایگزینی انجام شد"
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:300
 #, fuzzy, kde-format
@@ -3625,6 +3628,7 @@ msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
 msgstr[0] "یافت نشد"
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:374
 #, fuzzy, kde-format
@@ -5926,6 +5930,7 @@ msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
 msgstr[0] "%1 جایگزینی انجام شد"
+msgstr[1] ""
 
 #: utils/katesedcmd.cpp:277
 #, fuzzy, kde-format
@@ -5934,6 +5939,7 @@ msgctxt "substituted into the previous message"
 msgid "1 line"
 msgid_plural "%1 lines"
 msgstr[0] "درون‌خط"
+msgstr[1] ""
 
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
@@ -6601,6 +6607,7 @@ msgstr "غیره"
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "غیره"
+msgstr[1] ""
 
 #: view/katestatusbar.cpp:488
 #, kde-format
