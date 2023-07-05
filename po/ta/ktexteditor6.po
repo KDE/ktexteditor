@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-02 02:35+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2023-07-02 16:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1212,12 +1212,12 @@ msgstr "முறையான வரியெண் பிடிப்புப�
 msgid "Dictionary:"
 msgstr "அகரமுதலி:"
 
-#: dialogs/katedialogs.cpp:1441
+#: dialogs/katedialogs.cpp:1440
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "தானாக மீளேற்று"
 
-#: dialogs/katedialogs.cpp:1444
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1226,59 +1226,59 @@ msgstr ""
 "இக்கீற்றையோ சாளரத்தையோ அடுத்த‍து மூடும்வரை வட்டில் மாற்றங்கள் ஏற்பட்டால் கேட்காமலேயே தானாக "
 "மீளேற்றும்."
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid "View &Difference"
 msgstr "&வித்தியாசங்களை காட்டு"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "மாற்றங்களை காட்டும் (diff முறையில்)."
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "&Reload"
 msgstr "&மீளேற்று"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "வட்டிலிருந்து கோப்பை மீளேற்றும். சேமிக்கப்படா மாற்றங்களை இழப்பீர்கள்."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&கோப்பை மூடு"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "கோப்பின் உள்ளடக்கத்தை சேமிக்காமல் அதை மூடும்."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "&Save As..."
 msgstr "வேறு &பெயரில் சேமி..."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "வேறொரு இடத்தில் கோப்பை நீங்கள் மறுபடியும் சேமிக்க உதவும்."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&பொருட்படுத்தாதே"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "எதுவும் செய்யாது, வட்டிலுள்ள மாற்றங்களை பொருட்படுத்தாது."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1287,18 +1287,18 @@ msgstr ""
 "diff கட்டளை தோல்வியடைந்த‍து. diff(1) நிறுவப்பட்டுள்ளதா எனவும் உங்கள் PATH-இல் உள்ளதா "
 "எனவும் சரிபாருங்கள்."
 
-#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "வித்தியாசங்களை கண்டுபிடிப்பதில் சிக்கல்"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "கோப்புகளுக்கு இடையில் எந்த வித்தியாசமும் இல்லை."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff வெளியீடு"
@@ -4725,7 +4725,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "நிறங்கள்"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1479
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "புத்தகக்குறிகள்"
@@ -7706,19 +7706,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "கோப்பினை மீஉஅமொ யாாக ஏற்றுமதி செயய"
 
-#: view/kateviewhelpers.cpp:304 view/kateviewhelpers.cpp:349
-#: view/kateviewhelpers.cpp:986
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "இருக்கும் கட்டளைகள்"
 
-#: view/kateviewhelpers.cpp:1156
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7726,17 +7726,17 @@ msgid ""
 msgstr ""
 "<p>தனி கட்டளைகளில் உதவிக்கு, <code>'help &lt;command&gt;' உள்ளிடவும்</code></p>"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1'க்கு உதவி இல்லை"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "கட்டளை எதுவும் இல்லை <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1172
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7749,37 +7749,37 @@ msgstr ""
 "code>இடவும்<br />தனித்தனியளா ஆணைகளின் உதவிக்கு,  <code><b>help &lt;command&gt;</"
 "b></code>இடவும்</p>"
 
-#: view/kateviewhelpers.cpp:1260 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "இதுபோல் எந்த ஆணையும் இல்லை: \"%1\""
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1273 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "வெற்றி:"
 
-#: view/kateviewhelpers.cpp:1287 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ஆணை\"%1\" தோல்வி அடைந்தது."
 
-#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
+#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
 msgstr "குறி வகை%1"
 
-#: view/kateviewhelpers.cpp:2593
+#: view/kateviewhelpers.cpp:2592
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "முன்னிருப்பு குறி வகையை அமை"
 
-#: view/kateviewhelpers.cpp:2734
+#: view/kateviewhelpers.cpp:2733
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

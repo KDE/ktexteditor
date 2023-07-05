@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-02 02:35+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2023-06-26 22:01+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -1211,72 +1211,72 @@ msgstr "Fann ikkje noko gyldig linjenummer på utklippstavla"
 msgid "Dictionary:"
 msgstr "Ordliste:"
 
-#: dialogs/katedialogs.cpp:1441
+#: dialogs/katedialogs.cpp:1440
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Slå på automatisk filoppfrisking"
 
-#: dialogs/katedialogs.cpp:1444
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid "View &Difference"
 msgstr "Vis &forskjellar"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1450
 #, fuzzy, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Viser ei diff-vising av alle forskjellane"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "&Reload"
 msgstr "&Last om att"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Last fila på nytt frå disken. Viss du har ulagra endringar, går dei tapt."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Lukk fil"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1463
 #, fuzzy, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Lukk fila og forkast innhaldet."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "&Save As..."
 msgstr "Lagra &som …"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Lèt deg velja ei plassering og lagra fila på nytt."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignorer"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignorer endringane på disken og ikkje gjer noko meir."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1285,18 +1285,18 @@ msgstr ""
 "Det oppstod ein feil ved diff-kommandoen. Sjå etter at diff(1) er installert "
 "og er i søkjestien din («PATH»)."
 
-#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Feil ved laging av forskjellsoversikt"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "Filene er like."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Resultat av diff-køyring"
@@ -4660,7 +4660,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Markørfargar"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1479
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "Bokmerke"
@@ -7581,19 +7581,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "Eksporter fil som HTML"
 
-#: view/kateviewhelpers.cpp:304 view/kateviewhelpers.cpp:349
-#: view/kateviewhelpers.cpp:986
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2013;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "Tilgjengelege kommandoar"
 
-#: view/kateviewhelpers.cpp:1156
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7602,17 +7602,17 @@ msgstr ""
 "<p>Skriv <code>help &lt;kommando&gt;</code> for hjelp om ulike kommandoar.</"
 "p>"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Ingen hjelp for «%1»"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Kommandoen <b>%1</b> finst ikkje"
 
-#: view/kateviewhelpers.cpp:1172
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7625,37 +7625,37 @@ msgstr ""
 "oversikt over tilgjengelege kommandoar.<br />Skriv <code><b>help &lt;"
 "kommando&gt;</b></code> for hjelp om ulike kommandoar.</p>"
 
-#: view/kateviewhelpers.cpp:1260 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Kommandoen finst ikkje: «%1»"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Feil: Kommandoen «%1» tek ingen område."
 
-#: view/kateviewhelpers.cpp:1273 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Vellukka: "
 
-#: view/kateviewhelpers.cpp:1287 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Feil med kommandoen «%1»."
 
-#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
+#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Merketype %1"
 
-#: view/kateviewhelpers.cpp:2593
+#: view/kateviewhelpers.cpp:2592
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Vel standard merketype"
 
-#: view/kateviewhelpers.cpp:2734
+#: view/kateviewhelpers.cpp:2733
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Fjern merknadslinja"

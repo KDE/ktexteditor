@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-02 02:35+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1298,79 +1298,79 @@ msgstr ""
 msgid "Dictionary:"
 msgstr "辞書:"
 
-#: dialogs/katedialogs.cpp:1441
+#: dialogs/katedialogs.cpp:1440
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Enable Auto Reload"
 msgstr "自動補完"
 
-#: dialogs/katedialogs.cpp:1444
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1448
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "差分を表示(&V)"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1455
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "再読み込み(&D)"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "ファイルをディスクから再度読み込みます。未保存の変更は失われます。"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1461
 #, fuzzy, kde-format
 #| msgid "&File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "ファイル(&F)"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1467
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "別名で保存(&S)..."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "場所を選択してファイルを再度保存できるようにします。"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "無視(&I)"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1475
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "変更を無視します。再度質問されることはありません。"
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1379,18 +1379,18 @@ msgstr ""
 "diff コマンドの起動に失敗しました。diff(1) がインストールされていて、あなた"
 "の PATH に存在することを確認してください。"
 
-#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "差分計算中にエラー"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "diff 出力"
@@ -4862,7 +4862,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "色"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1479
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "ブックマーク"
@@ -7825,19 +7825,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "HTML としてエクスポート"
 
-#: view/kateviewhelpers.cpp:304 view/kateviewhelpers.cpp:349
-#: view/kateviewhelpers.cpp:986
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "利用可能なコマンド"
 
-#: view/kateviewhelpers.cpp:1156
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7846,17 +7846,17 @@ msgstr ""
 "<qt><p>個々のコマンドのヘルプは <tt>help &lt;command&gt;</tt> で見られます</"
 "p></qt>"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "<qt><tt>%1</tt> についてはヘルプがありません</qt>"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "<qt><tt>%1</tt> というコマンドはありません</qt>"
 
-#: view/kateviewhelpers.cpp:1172
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7869,37 +7869,37 @@ msgstr ""
 "示します。<br/><tt>help &lt;command&gt;</tt> で個々のコマンドのヘルプを表示し"
 "ます。</p></qt>"
 
-#: view/kateviewhelpers.cpp:1260 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "%1 というコマンドはありません"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "エラー: コマンド %1 は範囲を受け付けません。"
 
-#: view/kateviewhelpers.cpp:1273 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "成功: "
 
-#: view/kateviewhelpers.cpp:1287 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "コマンド %1 が失敗しました。"
 
-#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
+#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
 msgstr "マークのタイプ %1"
 
-#: view/kateviewhelpers.cpp:2593
+#: view/kateviewhelpers.cpp:2592
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "デフォルトのマークのタイプを設定"
 
-#: view/kateviewhelpers.cpp:2734
+#: view/kateviewhelpers.cpp:2733
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "注釈バーを無効にする"

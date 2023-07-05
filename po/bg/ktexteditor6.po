@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-02 02:35+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2023-04-13 23:20+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1231,12 +1231,12 @@ msgstr "Не е намерен валиден номер на ред в клип
 msgid "Dictionary:"
 msgstr "Речник:"
 
-#: dialogs/katedialogs.cpp:1441
+#: dialogs/katedialogs.cpp:1440
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Активиране на автоматичното презареждане"
 
-#: dialogs/katedialogs.cpp:1444
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1245,60 +1245,60 @@ msgstr ""
 "От сега нататък презареждането и автоматично презареждане ще се извършва без "
 "предупреждение за промени в диска, докато не затворите раздела или прозореца."
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid "View &Difference"
 msgstr "&Преглед на разликите"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Показва разликата на промените."
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "&Reload"
 msgstr "&Презареждане"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Презареждане на файла от диска. Незапазените промени ще бъдат загубени."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1461
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Затваряне на файла"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Затваряне на файла, отхвърляйки съдържанието му."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "&Save As..."
 msgstr "&Запазване като..."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Запис на файла под друго име или на друго място."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Пренебрегване"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1475
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Игнорира промените на диска без никакво действие."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1307,18 +1307,18 @@ msgstr ""
 "Командата diff не върна резултат. Моля, убедете се, че пакетът thatdiff(1) е "
 "инсталиран и програмата е включена в пътя за изпълними файлове PATH."
 
-#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Грешка при изчисляване на разликите"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "Файловете са идентични."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff резултат"
@@ -4736,7 +4736,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Цветове на маркери"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1479
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "Отметка"
@@ -7683,19 +7683,19 @@ msgstr "Шаблон на подравняване:"
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"
 
-#: view/kateviewhelpers.cpp:304 view/kateviewhelpers.cpp:349
-#: view/kateviewhelpers.cpp:986
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center> %1 <br/> &# x2014; <br/> %2 </center>"
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "Налични команди"
 
-#: view/kateviewhelpers.cpp:1156
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7704,17 +7704,17 @@ msgstr ""
 "<p>За да получите помощ за дадена команда, напишете <code>help &lt;"
 "команда&gt;</code>.</p>"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Няма помощ за \"%1\"."
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Няма такава команда \"%1\"."
 
-#: view/kateviewhelpers.cpp:1172
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7727,37 +7727,37 @@ msgstr ""
 "въведете<code><b>help list</b></code> <br /> За помощ за отделни команди "
 "въведете<code><b>help &lt; команда &gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1260 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Няма такава команда: \"%1\""
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Грешка: Не е разрешен диапазон за команда\"%1\"."
 
-#: view/kateviewhelpers.cpp:1273 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "Успех: "
 
-#: view/kateviewhelpers.cpp:1287 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Неуспешна команда \"%1\"."
 
-#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
+#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Маркиране на тип %1"
 
-#: view/kateviewhelpers.cpp:2593
+#: view/kateviewhelpers.cpp:2592
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Стил по подразбиране"
 
-#: view/kateviewhelpers.cpp:2734
+#: view/kateviewhelpers.cpp:2733
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Деактивиране на лентата с пояснения"

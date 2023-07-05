@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-02 02:35+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2011-12-15 14:55+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@linuxshop.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1122,6 +1122,7 @@ msgstr "افزایش سطح تورفتگی در صورت منجرشدن به ف�
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " نویسه"
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:209
 #, kde-format
@@ -1200,6 +1201,7 @@ msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " نویسه"
+msgstr[1] ""
 
 #: dialogs/katedialogs.cpp:577
 #, kde-format
@@ -1320,36 +1322,36 @@ msgstr ""
 msgid "Dictionary:"
 msgstr "&بخش‌:"
 
-#: dialogs/katedialogs.cpp:1441
+#: dialogs/katedialogs.cpp:1440
 #, fuzzy, kde-format
 msgid "Enable Auto Reload"
 msgstr "تکمیل واژه"
 
-#: dialogs/katedialogs.cpp:1444
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1448
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "تفاوت &نما‌"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1455
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "&بارگذاری مجدد‌"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
@@ -1357,42 +1359,42 @@ msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "بار‌گذاری مجدد پرونده از دیسک. اگر تغییرهای ذخیره‌نشده دارید، از دست می‌روند."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1461
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&بارگذاری مجدد پرونده‌"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1467
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "&ذخیره پرونده به عنوان...‌"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "به شما اجازه می‌دهد محلی را برگزینید، و پرونده را دوباره ذخیره کنید."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&چشم‌پوشی‌"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1475
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "چشم‌پوشی از تغییرها. دوباره به شما اعلان می‌شود."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1400,18 +1402,18 @@ msgid ""
 msgstr ""
 "خرابی در فرمان diff. لطفاً، مطمئن شوید که diff (۱) نصب می‌شود و در مسیرتان است."
 
-#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "خطای ایجاد Diff"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "خروجی Diff"
@@ -3621,6 +3623,7 @@ msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
 msgstr[0] "%1 جایگزینی انجام شد"
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:301
 #, fuzzy, kde-format
@@ -3629,6 +3632,7 @@ msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
 msgstr[0] "یافت نشد"
+msgstr[1] ""
 
 #: search/katesearchbar.cpp:375
 #, fuzzy, kde-format
@@ -4883,7 +4887,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "رنگها"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1479
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "چوب الف"
@@ -5930,6 +5934,7 @@ msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
 msgstr[0] "%1 جایگزینی انجام شد"
+msgstr[1] ""
 
 #: utils/katesedcmd.cpp:278
 #, fuzzy, kde-format
@@ -5938,6 +5943,7 @@ msgctxt "substituted into the previous message"
 msgid "1 line"
 msgid_plural "%1 lines"
 msgstr[0] "درون‌خط"
+msgstr[1] ""
 
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
@@ -6605,6 +6611,7 @@ msgstr "غیره"
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "غیره"
+msgstr[1] ""
 
 #: view/katestatusbar.cpp:489
 #, kde-format
@@ -7860,19 +7867,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "صادرات پرونده به عنوان زنگام"
 
-#: view/kateviewhelpers.cpp:304 view/kateviewhelpers.cpp:349
-#: view/kateviewhelpers.cpp:986
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "فرمانهای موجود"
 
-#: view/kateviewhelpers.cpp:1156
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7881,17 +7888,17 @@ msgstr ""
 "<p>برای کمک در مورد فرمانهای شخصی، <code>'help &lt;command&gt;'</code> را "
 "اجرا کنید</p>"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "بدون کمک برای «%1»"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "چنین فرمانی وجود ندارد <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1172
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7904,37 +7911,37 @@ msgstr ""
 "کمک</b></code><br /> را وارد کنید. برای کمک در مورد فرمانهای شخصی،<code><b> "
 "help &lt;command&gt;</b></code> را وارد کنید </p>"
 
-#: view/kateviewhelpers.cpp:1260 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "بدون چنین فرمانی: »%1«"
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1273 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "موفقیت: "
 
-#: view/kateviewhelpers.cpp:1287 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "خرابی در فرمان »%1«."
 
-#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
+#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
 msgstr "نشان‌دار کردن نوع  %1"
 
-#: view/kateviewhelpers.cpp:2593
+#: view/kateviewhelpers.cpp:2592
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "تنظیم نوع نشان پیش‌فرض"
 
-#: view/kateviewhelpers.cpp:2734
+#: view/kateviewhelpers.cpp:2733
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

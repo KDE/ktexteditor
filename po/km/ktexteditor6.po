@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-02 02:35+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -1273,80 +1273,80 @@ msgstr ""
 msgid "Dictionary:"
 msgstr "វចនានុក្រម  ៖"
 
-#: dialogs/katedialogs.cpp:1441
+#: dialogs/katedialogs.cpp:1440
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "បើក​ការ​បំពេញ​ស្វ័យប្រវត្តិ"
 
-#: dialogs/katedialogs.cpp:1444
+#: dialogs/katedialogs.cpp:1443
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1448
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "មើល​ភាព​ខុស​គ្នា"
 
-#: dialogs/katedialogs.cpp:1451
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1455
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "ផ្ទុក​ឡើង​វិញ"
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1457
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "ផ្ទុក​ឯកសារ​ពី​ថាស​ឡើងវិញ ។ ប្រសិន​បើ​មិនបាន​រក្សាទុក​ការ​ផ្លាស់​ប្ដូរ នោះ​ពួក​វា​នឹង​ត្រូវ​បាត់​បង់ ។"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1461
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "បិទ"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1467
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "អនុញ្ញាត​ឲ្យ​អ្នក​ជ្រើស​ទីតាំង និង​រក្សា​ទុក​ឯកសារ​ម្ដង​ទៀត ។"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1475 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
 #, fuzzy, kde-format
 #| msgid "Ignore Word"
 msgid "&Ignore"
 msgstr "មិន​អើពើ​ពាក្យ​"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1475
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "មិន​អើពើ​នឹង​ការ​ផ្លាស់​ប្ដូរ ។ អ្នក​នឹង​មិន​ត្រូវ​បាន​អនុញ្ញាត​ឲ្យ​ផ្លាស់ប្ដូរ​ម្ដងទៀត​ឡើយ ។"
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1355,18 +1355,18 @@ msgstr ""
 "ពាក្យ​បញ្ជា diff បាន​បរាជ័យ ។ សូម​ប្រាកដ​ថា diff(1) ត្រូវ​បាន​ដំឡើង ហើយ​ស្ថិតនៅ​ក្នុង PATH របស់​"
 "អ្នក ។"
 
-#: dialogs/katedialogs.cpp:1544 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "កំហុស​ក្នុង​ការ​បង្កើត Diff"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "ឯកសារ​ដូច​គ្នា ។"
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "លទ្ធផល Diff"
@@ -4856,7 +4856,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "ពណ៌​ឧបករណ៍​សម្គាល់"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1479
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
 #, kde-format
 msgid "Bookmark"
 msgstr "ចំណាំ"
@@ -7824,8 +7824,8 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:304 view/kateviewhelpers.cpp:349
-#: view/kateviewhelpers.cpp:986
+#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
+#: view/kateviewhelpers.cpp:985
 #, fuzzy, kde-format
 #| msgctxt "from line - to line"
 #| msgid "<center>%1<br>&mdash;<br/>%2</center>"
@@ -7833,12 +7833,12 @@ msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br>&mdash;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1154
 #, kde-format
 msgid "Available Commands"
 msgstr "ពាក្យ​បញ្ជា​ដែល​អាច​ប្រើ​បាន"
 
-#: view/kateviewhelpers.cpp:1156
+#: view/kateviewhelpers.cpp:1155
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7846,17 +7846,17 @@ msgid ""
 msgstr ""
 "<p>សម្រាប់​ជំនួយ​អំពី​ពាក្យ​បញ្ជា​នីមួយៗ សូម​ធ្វើ <code>'help &lt;command&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1163
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid "No help for '%1'"
 msgstr "គ្មាន​ជំនួយ​សម្រាប់ '%1' ឡើយ"
 
-#: view/kateviewhelpers.cpp:1166
+#: view/kateviewhelpers.cpp:1165
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "គ្មាន​ពាក្យ​បញ្ជា <b>%1</b> ​បែប​នេះទេ"
 
-#: view/kateviewhelpers.cpp:1172
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7869,37 +7869,37 @@ msgstr ""
 "<code><b>help list</b></code><br />ចំពោះ​ជំនួយ​អំពី​ពាក្យ​បញ្ជី​នីមួយៗ សូម​បញ្ចូល <code><b>help "
 "&lt;ពាក្យ​បញ្ជា&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1260 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "គ្មាន​ពាក្យ​បញ្ជា​បែប​នេះទេ ៖ \"%1\""
 
-#: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "កំហុស ៖ គ្មាន​ជួរ​បាន​អនុញ្ញាត​សម្រាប់​ពាក្យ​បញ្ជា \"%1\" ។"
 
-#: view/kateviewhelpers.cpp:1273 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "ជោគជ័យ ៖ "
 
-#: view/kateviewhelpers.cpp:1287 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ពាក្យ​បញ្ជា \"%1\" បាន​បរាជ័យ ។"
 
-#: view/kateviewhelpers.cpp:2569 view/kateviewhelpers.cpp:2570
+#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
 msgstr "សម្គាល់​ប្រភេទ %1"
 
-#: view/kateviewhelpers.cpp:2593
+#: view/kateviewhelpers.cpp:2592
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "កំណត់​ប្រភេទ​សម្គាល់​លំនាំដើម"
 
-#: view/kateviewhelpers.cpp:2734
+#: view/kateviewhelpers.cpp:2733
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "បិទ​របារ​ចំណារ"
