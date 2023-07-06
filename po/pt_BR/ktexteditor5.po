@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-29 00:45+0000\n"
-"PO-Revision-Date: 2023-07-04 15:32-0300\n"
+"PO-Revision-Date: 2023-07-05 17:39-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -6572,10 +6572,9 @@ msgstr ""
 "transferência."
 
 #: view/kateview.cpp:462
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "&Histórico da área de transferência"
+msgstr "Colar &histórico da área de transferência"
 
 #: view/kateview.cpp:467
 #, kde-format
@@ -6669,10 +6668,9 @@ msgstr ""
 "recuo correto."
 
 #: view/kateview.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Alinhar"
+msgstr "&Alinhar..."
 
 #: view/kateview.cpp:514
 #, kde-format
@@ -7721,15 +7719,14 @@ msgid "Search wrapped"
 msgstr "Pesquisa voltou ao início"
 
 #: view/kateview.cpp:3658
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "&Alinhar"
+msgstr "Alinhar"
 
 #: view/kateview.cpp:3658
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "Padrão de alinhamento:"
 
 #: view/kateview.cpp:4750
 #, kde-format
