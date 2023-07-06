@@ -3455,6 +3455,10 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
             }
             if (pos < 0 || pos >= (int)colX) {
                 // only spaces on left side of cursor
+                if ((int)col > textLine->length()) {
+                    // beyond the end of the line, move cursor only
+                    return KTextEditor::Cursor(line, col - 1);
+                }
                 indent(KTextEditor::Range(line, 0, line, 0), -1);
             } else {
                 useNextBlock = true;
