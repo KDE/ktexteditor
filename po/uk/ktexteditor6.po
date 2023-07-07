@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-07-07 02:07+0000\n"
 "PO-Revision-Date: 2023-07-02 22:52+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2174,12 +2174,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Повторити спробу"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6545
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6549
 #, kde-format
 msgid "&Close"
 msgstr "&Закрити"
 
-#: document/katedocument.cpp:2297 document/katedocument.cpp:6546
+#: document/katedocument.cpp:2297 document/katedocument.cpp:6550
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2317,29 +2317,29 @@ msgstr "Ви дійсно хочете закрити цей файл? Можл�
 msgid "Close Nevertheless"
 msgstr "Закрити незважаючи на це"
 
-#: document/katedocument.cpp:4616
+#: document/katedocument.cpp:4620
 #, kde-format
 msgid "Untitled"
 msgstr "Без назви"
 
-#: document/katedocument.cpp:4739 document/katedocument.cpp:4967
-#: document/katedocument.cpp:4977 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5950
+#: document/katedocument.cpp:4743 document/katedocument.cpp:4971
+#: document/katedocument.cpp:4981 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5954
 #, kde-format
 msgid "Save File"
 msgstr "Зберегти файл"
 
-#: document/katedocument.cpp:4742
+#: document/katedocument.cpp:4746
 #, kde-format
 msgid "Save failed"
 msgstr "Помилка збереження"
 
-#: document/katedocument.cpp:4988
+#: document/katedocument.cpp:4992
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Зберегти копію файла"
 
-#: document/katedocument.cpp:5000
+#: document/katedocument.cpp:5004
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2352,7 +2352,7 @@ msgstr ""
 "Перевірте, що у вас є право запису до цього файла, та наявність достатнього "
 "вільного місця."
 
-#: document/katedocument.cpp:5277
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2365,7 +2365,7 @@ msgstr ""
 "org/?application=katepart&branch=stable5&language=uk&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2378,22 +2378,22 @@ msgstr ""
 "org/?application=katepart&branch=stable5&language=uk&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5592
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Файл «%1» було змінено на диску."
 
-#: document/katedocument.cpp:5595
+#: document/katedocument.cpp:5599
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Файл «%1» було створено на диску."
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Файл «%1» було вилучено на диску."
 
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2402,17 +2402,17 @@ msgstr ""
 "Документ «%1» було змінено.\n"
 "Що ви бажаєте зробити зі змінами: зберегти чи відкинути їх?"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid "Close Document"
 msgstr "Закрити документ"
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Завантаження файла <a href=\"%1\">%2</a> ще не завершено."
 
-#: document/katedocument.cpp:6054
+#: document/katedocument.cpp:6058
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Перервати завантаження"

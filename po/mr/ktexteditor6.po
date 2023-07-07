@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-07-07 02:07+0000\n"
 "PO-Revision-Date: 2014-10-28 14:28+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2060,12 +2060,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6545
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6549
 #, kde-format
 msgid "&Close"
 msgstr "बंद करा (&C)"
 
-#: document/katedocument.cpp:2297 document/katedocument.cpp:6546
+#: document/katedocument.cpp:2297 document/katedocument.cpp:6550
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2178,29 +2178,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr ""
 
-#: document/katedocument.cpp:4616
+#: document/katedocument.cpp:4620
 #, kde-format
 msgid "Untitled"
 msgstr "शिर्षकहीन"
 
-#: document/katedocument.cpp:4739 document/katedocument.cpp:4967
-#: document/katedocument.cpp:4977 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5950
+#: document/katedocument.cpp:4743 document/katedocument.cpp:4971
+#: document/katedocument.cpp:4981 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5954
 #, kde-format
 msgid "Save File"
 msgstr "फाईल साठवा"
 
-#: document/katedocument.cpp:4742
+#: document/katedocument.cpp:4746
 #, kde-format
 msgid "Save failed"
 msgstr "साठवणे अपयशी"
 
-#: document/katedocument.cpp:4988
+#: document/katedocument.cpp:4992
 #, kde-format
 msgid "Save Copy of File"
 msgstr "फाईलची प्रत साठवा"
 
-#: document/katedocument.cpp:5000
+#: document/katedocument.cpp:5004
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2209,7 +2209,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5277
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2218,7 +2218,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2227,22 +2227,22 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5592
+#: document/katedocument.cpp:5596
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5595
+#: document/katedocument.cpp:5599
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2251,17 +2251,17 @@ msgstr ""
 "दस्तऐवज \"%1\" संपादित केले गेले आहे.\n"
 "तुम्हाला बदल साठवायचे किंवा वगळायचे?"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तऐवज बंद करा"
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6054
+#: document/katedocument.cpp:6058
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""

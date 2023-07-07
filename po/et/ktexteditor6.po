@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-07-07 02:07+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2194,12 +2194,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Proovi uuesti"
 
-#: document/katedocument.cpp:2296 document/katedocument.cpp:6545
+#: document/katedocument.cpp:2296 document/katedocument.cpp:6549
 #, kde-format
 msgid "&Close"
 msgstr "&Sulge"
 
-#: document/katedocument.cpp:2297 document/katedocument.cpp:6546
+#: document/katedocument.cpp:2297 document/katedocument.cpp:6550
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2336,29 +2336,29 @@ msgstr "Kas tõesti sulgeda see fail? Andmed võivad kaotsi minna."
 msgid "Close Nevertheless"
 msgstr "Sulge igal juhul"
 
-#: document/katedocument.cpp:4616
+#: document/katedocument.cpp:4620
 #, kde-format
 msgid "Untitled"
 msgstr "Pealkirjata"
 
-#: document/katedocument.cpp:4739 document/katedocument.cpp:4967
-#: document/katedocument.cpp:4977 document/katedocument.cpp:5760
-#: document/katedocument.cpp:5950
+#: document/katedocument.cpp:4743 document/katedocument.cpp:4971
+#: document/katedocument.cpp:4981 document/katedocument.cpp:5764
+#: document/katedocument.cpp:5954
 #, kde-format
 msgid "Save File"
 msgstr "Faili salvestamine"
 
-#: document/katedocument.cpp:4742
+#: document/katedocument.cpp:4746
 #, kde-format
 msgid "Save failed"
 msgstr "Salvestamine nurjus"
 
-#: document/katedocument.cpp:4988
+#: document/katedocument.cpp:4992
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Faili koopia salvestamine"
 
-#: document/katedocument.cpp:5000
+#: document/katedocument.cpp:5004
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2371,7 +2371,7 @@ msgstr ""
 "Palun kontrolli, et sul oleks selle faili kirjutamisõigus ja et kettal "
 "jaguks ruumi."
 
-#: document/katedocument.cpp:5277
+#: document/katedocument.cpp:5281
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2384,7 +2384,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2397,25 +2397,25 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5592
+#: document/katedocument.cpp:5596
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Faili '%1' on muutnud mingi muud rakendus."
 
-#: document/katedocument.cpp:5595
+#: document/katedocument.cpp:5599
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Faili '%1' on loonud mingi muu rakendus."
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Faili '%1' kustutanud mingi muu rakendus."
 
-#: document/katedocument.cpp:5935
+#: document/katedocument.cpp:5939
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2424,17 +2424,17 @@ msgstr ""
 "Dokumenti \"%1\" on muudetud.\n"
 "Kas soovid muudatused salvestada või need unustada?"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid "Close Document"
 msgstr "Sulge dokument"
 
-#: document/katedocument.cpp:6049
+#: document/katedocument.cpp:6053
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Faili <a href=\"%1\">%2</a> veel laaditakse."
 
-#: document/katedocument.cpp:6054
+#: document/katedocument.cpp:6058
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Loo&bu laadimisest"
