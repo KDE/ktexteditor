@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 00:45+0000\n"
+"POT-Creation-Date: 2023-07-07 00:47+0000\n"
 "PO-Revision-Date: 2023-04-09 12:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2107,12 +2107,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "மீண்டும் முயற்சி செய்"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6553
 #, kde-format
 msgid "&Close"
 msgstr "&மூடு"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6554
 #, kde-format
 msgid "Close message"
 msgstr "தகவலை மூடு"
@@ -2264,29 +2264,29 @@ msgstr "கண்டிப்பாக இந்த கோப்பினை ம
 msgid "Close Nevertheless"
 msgstr "இருப்பினும் மூடு"
 
-#: document/katedocument.cpp:4658
+#: document/katedocument.cpp:4662
 #, kde-format
 msgid "Untitled"
 msgstr "தலைப்பில்லாதது"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5953
+#: document/katedocument.cpp:4785 document/katedocument.cpp:5013
+#: document/katedocument.cpp:5023 document/katedocument.cpp:5766
+#: document/katedocument.cpp:5957
 #, kde-format
 msgid "Save File"
 msgstr "கோப்பினைச் சேமி..."
 
-#: document/katedocument.cpp:4784
+#: document/katedocument.cpp:4788
 #, kde-format
 msgid "Save failed"
 msgstr "சேமிக்க முடியவில்லை"
 
-#: document/katedocument.cpp:5030
+#: document/katedocument.cpp:5034
 #, kde-format
 msgid "Save Copy of File"
 msgstr "கோப்பை நகலெடுத்து சேமி"
 
-#: document/katedocument.cpp:5042
+#: document/katedocument.cpp:5046
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2299,7 +2299,7 @@ msgstr ""
 "இக்கோப்புக்கு எழுதும் அனுமதி உங்களிடம் உள்ளதையும், வட்டில் போதுமான இடம் உள்ளதையும் "
 "சரிபாருங்கள்."
 
-#: document/katedocument.cpp:5294
+#: document/katedocument.cpp:5298
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2308,7 +2308,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5300
+#: document/katedocument.cpp:5304
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2317,22 +2317,22 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5613
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' எனும் கோப்பு வட்டில் மாற்றப்பட்டுள்ளது."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5616
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "'%1' எனும் கோப்பு வட்டில் உருவாக்கப்பட்டுள்ளது."
 
-#: document/katedocument.cpp:5615
+#: document/katedocument.cpp:5619
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "'%1' எனும் கோப்பு வட்டிலிருந்து நீக்கப்பட்டுள்ளது."
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2341,17 +2341,17 @@ msgstr ""
 "\"%1\" எனும் ஆவணம் மாற்றப்பட்டுள்ளது.\n"
 "உங்கள் மாற்றங்களை கைவிடலாமா, அல்லது அவற்றைச் சேமிக்க வேண்டுமா?"
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Close Document"
 msgstr "ஆவணத்தை மூடு"
 
-#: document/katedocument.cpp:6052
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> எனும் கோப்பு ஏற்றப்படுகிறது."
 
-#: document/katedocument.cpp:6057
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ஏற்றுவதை கைவிடு"

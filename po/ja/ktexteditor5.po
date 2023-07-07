@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 00:45+0000\n"
+"POT-Creation-Date: 2023-07-07 00:47+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2234,12 +2234,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6553
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6554
 #, kde-format
 msgid "Close message"
 msgstr ""
@@ -2420,30 +2420,30 @@ msgstr "本当にこのファイルを閉じますか？データが消失する
 msgid "Close Nevertheless"
 msgstr "それでも閉じる"
 
-#: document/katedocument.cpp:4658
+#: document/katedocument.cpp:4662
 #, kde-format
 msgid "Untitled"
 msgstr "タイトルなし"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5953
+#: document/katedocument.cpp:4785 document/katedocument.cpp:5013
+#: document/katedocument.cpp:5023 document/katedocument.cpp:5766
+#: document/katedocument.cpp:5957
 #, kde-format
 msgid "Save File"
 msgstr "ファイルを保存"
 
-#: document/katedocument.cpp:4784
+#: document/katedocument.cpp:4788
 #, kde-format
 msgid "Save failed"
 msgstr "保存に失敗"
 
-#: document/katedocument.cpp:5030
+#: document/katedocument.cpp:5034
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ファイルを保存"
 
-#: document/katedocument.cpp:5042
+#: document/katedocument.cpp:5046
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2456,7 +2456,7 @@ msgstr ""
 "このファイルへの書き込みアクセス権限があり、ディスクに十分な空き領域があるこ"
 "とを確認してください。"
 
-#: document/katedocument.cpp:5294
+#: document/katedocument.cpp:5298
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2465,7 +2465,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5300
+#: document/katedocument.cpp:5304
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2474,25 +2474,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって変更されました。"
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5616
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって作成されました。"
 
-#: document/katedocument.cpp:5615
+#: document/katedocument.cpp:5619
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって削除されました。"
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2501,17 +2501,17 @@ msgstr ""
 "文書 “%1” は変更されています。\n"
 "変更を保存しますか？それとも破棄しますか？"
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Close Document"
 msgstr "文書を閉じる"
 
-#: document/katedocument.cpp:6052
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6057
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""

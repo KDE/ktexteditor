@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 00:45+0000\n"
+"POT-Creation-Date: 2023-07-07 00:47+0000\n"
 "PO-Revision-Date: 2016-11-04 17:36+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2275,12 +2275,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Προσπαθήστε ξανά"
 
-#: document/katedocument.cpp:2322 document/katedocument.cpp:6549
+#: document/katedocument.cpp:2322 document/katedocument.cpp:6553
 #, kde-format
 msgid "&Close"
 msgstr "&Κλείσιμο"
 
-#: document/katedocument.cpp:2323 document/katedocument.cpp:6550
+#: document/katedocument.cpp:2323 document/katedocument.cpp:6554
 #, kde-format
 msgid "Close message"
 msgstr "Κλείσιμο μηνύματος"
@@ -2467,29 +2467,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Κλείσιμο όπως και να 'χει"
 
-#: document/katedocument.cpp:4658
+#: document/katedocument.cpp:4662
 #, kde-format
 msgid "Untitled"
 msgstr "Χωρίς τίτλο"
 
-#: document/katedocument.cpp:4781 document/katedocument.cpp:5009
-#: document/katedocument.cpp:5019 document/katedocument.cpp:5762
-#: document/katedocument.cpp:5953
+#: document/katedocument.cpp:4785 document/katedocument.cpp:5013
+#: document/katedocument.cpp:5023 document/katedocument.cpp:5766
+#: document/katedocument.cpp:5957
 #, kde-format
 msgid "Save File"
 msgstr "Αποθήκευση αρχείου"
 
-#: document/katedocument.cpp:4784
+#: document/katedocument.cpp:4788
 #, kde-format
 msgid "Save failed"
 msgstr "Η αποθήκευση απέτυχε"
 
-#: document/katedocument.cpp:5030
+#: document/katedocument.cpp:5034
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Αποθήκευση αντιγράφου αρχείου"
 
-#: document/katedocument.cpp:5042
+#: document/katedocument.cpp:5046
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2503,7 +2503,7 @@ msgstr ""
 "Ελέγξτε ότι έχετε πρόσβαση εγγραφής σε αυτό το αρχείο ή ότι υπάρχει αρκετός "
 "διαθέσιμος χώρος στον δίσκο."
 
-#: document/katedocument.cpp:5294
+#: document/katedocument.cpp:5298
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2519,7 +2519,7 @@ msgstr ""
 "'remove-trailing-spaces modified;', δείτε http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5300
+#: document/katedocument.cpp:5304
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2535,25 +2535,25 @@ msgstr ""
 "με 'remove-trailing-spaces all;', δείτε http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5613
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Το αρχείο %1 τροποποιήθηκε από κάποιο άλλο πρόγραμμα."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5616
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Το αρχείο %1 δημιουργήθηκε από κάποιο άλλο πρόγραμμα."
 
-#: document/katedocument.cpp:5615
+#: document/katedocument.cpp:5619
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Το αρχείο %1 διαγράφηκε από κάποιο άλλο πρόγραμμα."
 
-#: document/katedocument.cpp:5938
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2562,17 +2562,17 @@ msgstr ""
 "Το έγγραφο \"%1\" τροποποιήθηκε.\n"
 "Επιθυμείτε την αποθήκευση των αλλαγών ή την απόρριψή τους;"
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Close Document"
 msgstr "Κλείσιμο εγγράφου"
 
-#: document/katedocument.cpp:6052
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Το αρχείο <a href=\"%1\">%2</a> ακόμη φορτώνεται."
 
-#: document/katedocument.cpp:6057
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Εγκ&ατάλειψη φόρτωσης"
