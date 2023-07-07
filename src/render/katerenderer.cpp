@@ -1465,7 +1465,7 @@ KTextEditor::Cursor KateRenderer::xToCursor(const KateTextLayout &range, int x, 
     }
     // TODO wrong for RTL lines?
     if (returnPastLine && range.endCol(true) == -1 && x > range.width() + range.xOffset()) {
-        ret.setColumn(ret.column() + ((x - (range.width() + range.xOffset())) / spaceWidth()));
+        ret.setColumn(ret.column() + round((x - (range.width() + range.xOffset())) / spaceWidth()));
     }
 
     return ret;
