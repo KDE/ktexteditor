@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-07 02:07+0000\n"
-"PO-Revision-Date: 2023-04-12 03:15+0200\n"
+"PO-Revision-Date: 2023-07-02 20:34+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1810,10 +1810,10 @@ msgstr "Abilita il salvataggio automatico (solo file locali)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "Salva automaticamente il documento quando il fuoco lascia l'editor"
+msgstr ""
+"Salva automaticamente il documento quando il documento attivo perde il fuoco"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263

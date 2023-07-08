@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-07 02:07+0000\n"
-"PO-Revision-Date: 2023-07-06 07:12+0200\n"
+"PO-Revision-Date: 2023-07-07 06:27+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2459,6 +2459,7 @@ msgstr ""
 #, kde-format
 msgid "<p>Format of the page footer. The following tags are supported:</p>"
 msgstr ""
+"<p>გვერდის ქვედა კოლონტიტულის ფორმატი. მხარდაჭერილია შემდეგი ჭდეები:</p>"
 
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
@@ -3238,6 +3239,8 @@ msgstr "სკრიპტის (%1) ჩატვირთვის შეც�
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
+"ყველა JavaScript-ის ფაილის თავიდან ჩატვირთვა (მსწორებლები, ბრძანების "
+"სტრიქონის სკრიპტები და ა.შ.)."
 
 #: script/katescriptview.cpp:207
 #, kde-format
@@ -4412,7 +4415,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:297
 #, kde-format
 msgid "Tab and Space Markers"
-msgstr ""
+msgstr "ტაბულაციის და ადგილის გამოტოვების მარკერები"
 
 #: syntax/katethemeconfig.cpp:299
 #, kde-format
@@ -4943,7 +4946,7 @@ msgstr ""
 #: utils/katecmds.cpp:199
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
-msgstr ""
+msgstr "<p>მიმდინარე დოკუმენტის დაბეჭდვის ფანჯრის გახსნა.</p>"
 
 #: utils/katecmds.cpp:314 utils/katecmds.cpp:341
 #, kde-format
@@ -5919,6 +5922,7 @@ msgstr "სიტყვის გადატანის ჩართვა ტ
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
 msgstr ""
+"მიმდინარე კურსორის მდებარეობა. მითითებულ ხაზზე გადასასვლელად დააწკაპუნეთ."
 
 #: view/katestatusbar.cpp:127
 #, kde-format
@@ -6813,12 +6817,12 @@ msgstr ""
 #: view/kateview.cpp:941
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr ""
+msgstr "ცარიელი ხაზებიდან კურსორების წაშლა"
 
 #: view/kateview.cpp:942
 #, kde-format
 msgid "Remove cursors from empty lines"
-msgstr ""
+msgstr "ცარიელი ხაზებიდან კურსორების წაშლა"
 
 #: view/kateview.cpp:946
 #, kde-format
@@ -6828,7 +6832,7 @@ msgstr "მართლწერის ავტომატური შემ�
 #: view/kateview.cpp:947
 #, kde-format
 msgid "Enable/disable automatic spell checking"
-msgstr ""
+msgstr "ავტომატური მართლწერის შემოწმების ჩართვა/გამორთვა"
 
 #: view/kateview.cpp:953
 #, kde-format
@@ -7259,7 +7263,7 @@ msgstr "ბრძანება \"%1\" ავარიულად დასრ
 #: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
 #, kde-format
 msgid "Mark Type %1"
-msgstr ""
+msgstr "ნიშნის ტიპი %1"
 
 #: view/kateviewhelpers.cpp:2592
 #, kde-format
@@ -7505,7 +7509,7 @@ msgstr ""
 #: vimode/config/configwidget.ui:38
 #, kde-format
 msgid "Let Vi commands override Kate shortcuts"
-msgstr ""
+msgstr "Vi-ის ბრძანებებისთვის Kate-ის მალსახმობების გადაფარვის ნების დართვა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:45
