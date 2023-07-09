@@ -339,9 +339,8 @@ public:
      * \param inputMode new InputMode value
      * \see viewInputMode()
      * @since 5.54
-     * KF6: make virtual
      */
-    void setViewInputMode(InputMode inputMode);
+    virtual void setViewInputMode(InputMode inputMode) = 0;
 
     /**
      * Get the view's current input mode.

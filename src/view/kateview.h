@@ -101,6 +101,11 @@ public:
     InputMode viewInputMode() const override;
     QString viewInputModeHuman() const override;
 
+    void setViewInputMode(InputMode mode) override
+    {
+        setInputMode(mode);
+    }
+
     void setInputMode(InputMode mode, const bool rememberInConfig = true);
 
 public:

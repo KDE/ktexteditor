@@ -176,11 +176,6 @@ bool View::insertTemplate(KTextEditor::Cursor insertPosition, const QString &tem
     return d->insertTemplateInternal(insertPosition, templateString, script);
 }
 
-void View::setViewInputMode(InputMode inputMode)
-{
-    d->setInputMode(inputMode);
-}
-
 KSyntaxHighlighting::Theme View::theme() const
 {
     return KateHlManager::self()->repository().theme(d->renderer()->config()->schema());
