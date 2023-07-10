@@ -635,7 +635,6 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
 
 void KateCompletionModel::slotRowsInserted(const QModelIndex &parent, int start, int end)
 {
-
     HierarchicalModelHandler handler(static_cast<CodeCompletionModel *>(sender()));
     if (parent.isValid()) {
         handler.collectRoles(parent);
@@ -1474,6 +1473,12 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
         // an underscore or a capital. So Foo matches BarFoo and Bar_Foo, but not barfoo.
         // Starting at 1 saves looking at the beginning of the word, that was already checked above.
         if (containsAtWordBeginning(m_nameColumn, match)) {
+            matchCompletion = ContainsMatch;
+        }
+    }
+
+    if (matchCompletion == NoMatch) {
+        if (m_nameColumn.contains(match, Qt::CaseInsensitive)) {
             matchCompletion = ContainsMatch;
         }
     }

@@ -7,7 +7,7 @@
 
 #include "completion_test.h"
 #include "codecompletiontestmodels.h"
-//#include "codecompletiontestmodels.moc"
+// #include "codecompletiontestmodels.moc"
 
 #include <ksycoca.h>
 
@@ -509,7 +509,7 @@ void CompletionTest::testAbbrevAndContainsMatching()
 
     m_view->document()->setText(QStringLiteral("SC"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint)6);
+    QCOMPARE(model->filteredItemCount(), (uint)9);
 
     m_view->document()->setText(QStringLiteral("sca"));
     invokeCompletionBox(m_view);
@@ -517,20 +517,20 @@ void CompletionTest::testAbbrevAndContainsMatching()
 
     m_view->document()->setText(QStringLiteral("contains"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint)2);
+    QCOMPARE(model->filteredItemCount(), (uint)3);
 
     m_view->document()->setText(QStringLiteral("CONTAINS"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint)2);
+    QCOMPARE(model->filteredItemCount(), (uint)3);
 
     m_view->document()->setText(QStringLiteral("containssome"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint)1);
+    QCOMPARE(model->filteredItemCount(), (uint)2);
 
     m_view->document()->setText(QStringLiteral("matched"));
     m_view->userInvokedCompletion();
     QApplication::processEvents();
-    QCOMPARE(model->filteredItemCount(), (uint)0);
+    QCOMPARE(model->filteredItemCount(), (uint)1);
 }
 
 void CompletionTest::testAsyncMatching()
