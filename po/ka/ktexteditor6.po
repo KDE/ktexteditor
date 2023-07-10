@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-07 02:07+0000\n"
-"PO-Revision-Date: 2023-07-07 06:27+0200\n"
+"PO-Revision-Date: 2023-07-09 07:24+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -199,6 +199,9 @@ msgid ""
 "the left hand side.</p><p>The icon border shows bookmark signs, for instance."
 "</p>"
 msgstr ""
+"<p>თუ ეს პარამეტრი ჩართულია, ყოველი ახალი ხედი მარცხენა მხარეს ხატულის "
+"საზღვარს დახატავს.</p><p>ხატულების საზღვარს, მაგალითად, სანიშნების ნიშნების "
+"ჩვენება შეუძლიათ.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
@@ -231,6 +234,8 @@ msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
 msgstr ""
+"თუ ეს პარამეტრი ჩართულია, მარცხენა მხარეს შეცვლილი და შენახული ხაზებისთვის "
+"პატარა ნიშანი იქნება ნაჩვენები."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
@@ -251,6 +256,8 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
+"<p>თუ ეს პარამეტრი ჩართულია, ყოველ ახალ ხედს ვერტიკალურ ჩოჩიაზე ნიშნები "
+"ექნება.</p><p>ამ ნიშნებს, მაგალითად, სანიშნების ჩვენება შეუძლიათ.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:138
@@ -259,6 +266,8 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
+"<p>თუ ეს პარამეტრი ჩართულია, ვერტიკალურ ჩოჩიაზე თაგუნას გადატარება ტექსტის "
+"მინიატურას გაჩვენებთ.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
@@ -295,6 +304,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
+"თუ ეს პარამეტრი ჩართულია, ყოველი ახალი ხედი ვერტიკალურ ჩოჩიაზე სრული "
+"დოკუმენტის მინი-რუკას გაჩვენებთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:187
@@ -339,6 +350,8 @@ msgid ""
 "Each new bookmark will be added to the bottom, independently from where it "
 "is placed in the document."
 msgstr ""
+"ყველა ახალი სანიშნი ქვემოთ დაემატება იმის მიუხედავად, ის დოკუმენტში რომელი "
+"ნაწილიდან მოთავსდა."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByCreation)
 #: dialogs/bordersappearanceconfigwidget.ui:255
@@ -477,6 +490,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"დასრულების ჩამოსაშლელის გვერდით დოკუმენტაციის ჩვენება. თუ გამორთულია, "
+"დოკუმენტაციის ჩვენება Alt ღილაკზე დაწოლით შეგიძლიათ."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -605,6 +620,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"თუ მაშინ, როცა ტექსტი მონიშნულია, ამ სიმბოლოებს აკრეფთ, ისინი, მონიშნული "
+"ტექსტის ჩანაცვლების მაგიერ მის გარშემო დაიხატება."
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
