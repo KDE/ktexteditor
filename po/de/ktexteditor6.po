@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-07 02:07+0000\n"
+"POT-Creation-Date: 2023-07-11 02:02+0000\n"
 "PO-Revision-Date: 2023-05-05 19:48+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -7787,17 +7787,17 @@ msgstr "Camel-Case-Cursorbewegung aktiviert"
 msgid "Search wrapped"
 msgstr "Suche hat das Ende erreicht"
 
-#: view/kateview.cpp:3699
+#: view/kateview.cpp:3709
 #, kde-format
 msgid "Align On"
 msgstr "Ausrichten an"
 
-#: view/kateview.cpp:3699
+#: view/kateview.cpp:3709
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Ausrichtungsmuster:"
 
-#: view/kateview.cpp:4793
+#: view/kateview.cpp:4803
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Datei als HTML exportieren"

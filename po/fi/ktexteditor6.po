@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-07 02:07+0000\n"
+"POT-Creation-Date: 2023-07-11 02:02+0000\n"
 "PO-Revision-Date: 2023-04-27 12:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -7657,17 +7657,17 @@ msgstr "Aakkostasosiirtymä käytössä"
 msgid "Search wrapped"
 msgstr "Reuna saavutettiin. Jatketaan toisesta päästä."
 
-#: view/kateview.cpp:3699
+#: view/kateview.cpp:3709
 #, kde-format
 msgid "Align On"
 msgstr "Tasaa"
 
-#: view/kateview.cpp:3699
+#: view/kateview.cpp:3709
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Tasauskuvio:"
 
-#: view/kateview.cpp:4793
+#: view/kateview.cpp:4803
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Vie tiedosto HTML:ksi"

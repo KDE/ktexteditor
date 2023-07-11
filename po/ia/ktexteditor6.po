@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-07 02:07+0000\n"
+"POT-Creation-Date: 2023-07-11 02:02+0000\n"
 "PO-Revision-Date: 2023-07-02 21:24+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -7735,17 +7735,17 @@ msgstr "Movimento de cursor de typo \"camel case\" (camelo) habilitate"
 msgid "Search wrapped"
 msgstr "Modo excisite (wrapped)"
 
-#: view/kateview.cpp:3699
+#: view/kateview.cpp:3709
 #, kde-format
 msgid "Align On"
 msgstr "Alinea Sur"
 
-#: view/kateview.cpp:3699
+#: view/kateview.cpp:3709
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Patrono de alineamento:"
 
-#: view/kateview.cpp:4793
+#: view/kateview.cpp:4803
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exporta file como HTML"
