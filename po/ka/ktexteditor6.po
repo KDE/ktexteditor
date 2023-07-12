@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-11 02:02+0000\n"
-"PO-Revision-Date: 2023-07-09 07:24+0200\n"
+"PO-Revision-Date: 2023-07-11 06:30+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -4666,6 +4666,7 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
+"შემოტანა არსებულ თემის ფაილს \"%1\" თავზე გადააწერს. ეს ქმედება შეუქცევადია."
 
 #: syntax/katethemeconfig.cpp:1206
 #, kde-format
@@ -4680,7 +4681,7 @@ msgstr "სისტემური ფერის სქემის მიყ
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr ""
+msgstr "მართლა გნებავთ თემის \"%1\" წაშლა? ეს ქმედება შეუქცევადია."
 
 #: syntax/katethemeconfig.cpp:1356
 #, kde-format
@@ -4734,7 +4735,7 @@ msgstr "&სანიშნის დასმა"
 #: utils/katebookmarks.cpp:53
 #, kde-format
 msgid "If a line has no bookmark then add one, otherwise remove it."
-msgstr ""
+msgstr "თუ ხაზი სანიშნს არ შეიცავს, მაშინ მისი დამატება, არადა წაშლა."
 
 #: utils/katebookmarks.cpp:56
 #, kde-format
@@ -4784,12 +4785,14 @@ msgstr "&წინა: %1 - \"%2\""
 #: utils/katecmds.cpp:53
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
-msgstr ""
+msgstr "<p>სწორება</p><p>მონიშნული ან მიმდინარე ხაზის სწორება</p>"
 
 #: utils/katecmds.cpp:58
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
+"<p>სწორების გაუქმება</p><p>მონიშნული ან მიმდინარე ხაზის სწორების გაუქმება.</"
+"p>"
 
 #: utils/katecmds.cpp:63
 #, kde-format
@@ -5283,7 +5286,7 @@ msgstr "Jochen Wilhelmy"
 #: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Original KWrite Author"
-msgstr ""
+msgstr "KWrite-ის საწყისი ავტორი"
 
 #: utils/kateglobal.cpp:132
 #, kde-format
@@ -5535,6 +5538,8 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"სრული დოკუმენტის ბილიკი სახელის ჩათვლით, სისტემის ბილიკის გამყოფით ('\\' "
+"Windows-ზე)."
 
 #: utils/katevariableexpansionmanager.cpp:88
 #, kde-format
@@ -5542,19 +5547,21 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"სრული დოკუმენტის ბილიკი სახელის არჩათვლით, სისტემის ბილიკის გამყოფით ('\\' "
+"Windows-ზე)."
 
 #: utils/katevariableexpansionmanager.cpp:96
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
-msgstr ""
+msgstr "მიმდინარე დოკუმენტში ტექსტის კურსორის ხაზის ნომერი (იწყება 0-დან)."
 
 #: utils/katevariableexpansionmanager.cpp:103
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
 "0)."
-msgstr ""
+msgstr "მიმდინარე დოკუმენტში ტექსტის კურსორის სვეტის ნომერი (იწყება 0-დან)."
 
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
