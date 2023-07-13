@@ -178,8 +178,8 @@ public:
     KTextEditor::Cursor documentEnd() const override;
     int totalCharacters() const override;
     int lineLength(int line) const override;
-    int cursorToOffset(KTextEditor::Cursor c) const;
-    KTextEditor::Cursor offsetToCursor(int offset) const;
+    qsizetype cursorToOffset(KTextEditor::Cursor c) const override;
+    KTextEditor::Cursor offsetToCursor(qsizetype offset) const override;
 
 Q_SIGNALS:
     void charactersSemiInteractivelyInserted(KTextEditor::Cursor position, const QString &text);

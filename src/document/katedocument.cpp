@@ -921,12 +921,12 @@ int KTextEditor::DocumentPrivate::lineLength(int line) const
     return m_buffer->lineLength(line);
 }
 
-int KTextEditor::DocumentPrivate::cursorToOffset(KTextEditor::Cursor c) const
+qsizetype KTextEditor::DocumentPrivate::cursorToOffset(KTextEditor::Cursor c) const
 {
     return m_buffer->cursorToOffset(c);
 }
 
-KTextEditor::Cursor KTextEditor::DocumentPrivate::offsetToCursor(int offset) const
+KTextEditor::Cursor KTextEditor::DocumentPrivate::offsetToCursor(qsizetype offset) const
 {
     return m_buffer->offsetToCursor(offset);
 }

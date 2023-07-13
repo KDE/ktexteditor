@@ -951,6 +951,17 @@ public:
      */
     QVector<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options = Default) const;
 
+    /**
+     * \brief Retrives the offset for the given cursor position
+     * \since 6.0
+     */
+    virtual qsizetype cursorToOffset(KTextEditor::Cursor c) const = 0;
+
+    /**
+     * \brief Retrives the cursor position for given offset
+     * \since 6.0
+     */
+    virtual KTextEditor::Cursor offsetToCursor(qsizetype offset) const = 0;
     /*
      * SIGNALS
      * Following signals should be emitted by the document if the text content
