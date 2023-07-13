@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-11 02:02+0000\n"
-"PO-Revision-Date: 2023-07-11 06:30+0200\n"
+"PO-Revision-Date: 2023-07-12 06:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -890,7 +890,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:215
 #, kde-format
 msgid "&Backspace key in leading blank space unindents"
-msgstr ""
+msgstr "&ღილაკი Backspace ხაზის თავში გამოტოვებაზე სწორებას მოხსნის"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
@@ -965,7 +965,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:299
 #, kde-format
 msgid "Increase indentation level if in l&eading blank space"
-msgstr ""
+msgstr "შეწევის გაზრდა, თუ წინა &ცარიელ ადგილშია"
 
 #: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
 #, kde-format
@@ -1120,6 +1120,8 @@ msgstr "დამატებითი"
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
+"მარქაფის პრეფიქსი ან სუფიქსი არ მიგითითებიათ. გამოყენებული იქნება "
+"ნაგულისხმები '~'"
 
 #: dialogs/katedialogs.cpp:1076
 #, kde-format
@@ -1231,6 +1233,8 @@ msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
 "your PATH."
 msgstr ""
+"ბრძანება diff-ის შეცდომა. დარწმუნდით, რომ diff (1) დაყენებულია და თქვენს "
+"PATH-შია."
 
 #: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
@@ -1287,7 +1291,7 @@ msgstr "&PageUp/PageDown კურსორს ამოძრავებს"
 #: dialogs/navigationconfigwidget.ui:55
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
-msgstr ""
+msgstr "ირჩევს, კურსორი ახტება მთელ რიცხვებს თუ ჩერდება camelCase-ის კუზებზე."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
