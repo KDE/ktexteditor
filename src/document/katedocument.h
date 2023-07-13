@@ -526,35 +526,26 @@ public Q_SLOTS:
     /// Returns true if the context-menu event should not further be processed
     bool handleMarkContextMenu(int line, QPoint position);
 
-    void setMarkPixmap(Document::MarkTypes, const QPixmap &) override;
-
     void setMarkDescription(Document::MarkTypes, const QString &) override;
 
     void setEditableMarks(uint markMask) override;
+    void setMarkIcon(Document::MarkTypes markType, const QIcon &icon) override;
 
 public:
     uint mark(int line) override;
     const QHash<int, KTextEditor::Mark *> &marks() override;
-    QPixmap markPixmap(Document::MarkTypes) const override;
     QString markDescription(Document::MarkTypes) const override;
     virtual QColor markColor(Document::MarkTypes) const;
     uint editableMarks() const override;
+    QIcon markIcon(Document::MarkTypes markType) const override;
 
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
-    QHash<int, QVariant> m_markIcons; // QPixmap or QIcon, KF6: remove QPixmap support
+    QHash<int, QIcon> m_markIcons; // QPixmap or QIcon, KF6: remove QPixmap support
     QHash<int, QString> m_markDescriptions;
     uint m_editableMarks = markType01;
 
     //
-    // KTextEditor::MarkInterfaceV2
-    //
-public Q_SLOTS:
-    void setMarkIcon(Document::MarkTypes markType, const QIcon &icon) override;
-
-public:
-    QIcon markIcon(Document::MarkTypes markType) const override;
-
     // KTextEditor::PrintInterface
     //
 public Q_SLOTS:

@@ -1593,22 +1593,6 @@ public:
      */
 public:
     /**
-     * Set the \p mark's pixmap to \p pixmap.
-     * \param mark mark to which the pixmap will be attached
-     * \param pixmap new pixmap
-     * \see setMarkDescription()
-     */
-    virtual void setMarkPixmap(MarkTypes mark, const QPixmap &pixmap) = 0;
-
-    /**
-     * Get the \p mark's pixmap.
-     * \param mark mark type. If the pixmap does not exist the resulting is null
-     *        (check with QPixmap::isNull()).
-     * \see setMarkDescription()
-     */
-    virtual QPixmap markPixmap(MarkTypes mark) const = 0;
-
-    /**
      * Set the \p mark's description to \p text.
      * \param mark mark to set the description
      * \param text new descriptive text
