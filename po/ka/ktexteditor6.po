@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-14 02:17+0000\n"
-"PO-Revision-Date: 2023-07-14 06:07+0200\n"
+"PO-Revision-Date: 2023-07-15 06:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -476,6 +476,8 @@ msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
 "the document's language."
 msgstr ""
+"საკვანძო სიტყვის დასრულება მითითებებს დოკუმენტი ენაში არსებულ საკვანძო "
+"სიტყვებზეა დაფუძნებული."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
@@ -869,7 +871,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr ""
+msgstr "ბუფერიდან ჩასმული კოდის &ავტომატური შეწევა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -1789,6 +1791,8 @@ msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
 "text."
 msgstr ""
+"რედაქტორი ტექსტში ტაბულაციის სიმბოლოს არსებობის მაჩვენებელ სიმბოლოს "
+"გაჩვენებთ."
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: dialogs/textareaappearanceconfigwidget.ui:148
