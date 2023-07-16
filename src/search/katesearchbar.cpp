@@ -1447,7 +1447,7 @@ void KateSearchBar::enterPowerMode()
         connect(m_powerUi->findPrev, &QToolButton::clicked, this, &KateSearchBar::findPrevious);
         connect(m_powerUi->replaceNext, &QPushButton::clicked, this, &KateSearchBar::replaceNext);
         connect(m_powerUi->replaceAll, &QPushButton::clicked, this, &KateSearchBar::replaceAll);
-        connect(m_powerUi->searchMode, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateSearchBar::onPowerModeChanged);
+        connect(m_powerUi->searchMode, &QComboBox::currentIndexChanged, this, &KateSearchBar::onPowerModeChanged);
         connect(m_powerUi->matchCase, &QToolButton::toggled, this, &KateSearchBar::onMatchCaseToggled);
         connect(m_powerUi->findAll, &QPushButton::clicked, this, &KateSearchBar::findAll);
         connect(m_powerUi->cancel, &QPushButton::clicked, this, &KateSearchBar::onPowerCancelFindOrReplace);

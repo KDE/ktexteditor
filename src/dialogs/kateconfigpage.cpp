@@ -58,7 +58,7 @@ void KateConfigPage::observeChanges(QDoubleSpinBox *spinBox) const
 
 void KateConfigPage::observeChanges(QComboBox *comboBox) const
 {
-    connect(comboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateConfigPage::slotChanged);
+    connect(comboBox, &QComboBox::currentIndexChanged, this, &KateConfigPage::slotChanged);
 }
 
 void KateConfigPage::observeChanges(QGroupBox *groupBox) const

@@ -996,7 +996,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(uiadv->chkBackupLocalFiles);
     observeChanges(uiadv->chkBackupRemoteFiles);
     observeChanges(uiadv->cmbSwapFileMode);
-    connect(uiadv->cmbSwapFileMode, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateSaveConfigTab::swapFileModeChanged);
+    connect(uiadv->cmbSwapFileMode, &QComboBox::currentIndexChanged, this, &KateSaveConfigTab::swapFileModeChanged);
 
     observeChanges(uiadv->edtBackupPrefix);
     observeChanges(uiadv->edtBackupSuffix);

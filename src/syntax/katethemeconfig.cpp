@@ -709,7 +709,7 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
     headerLayout->addWidget(hlCombo);
 
     lHl->setBuddy(hlCombo);
-    connect(hlCombo, qOverload<int>(&QComboBox::activated), this, &KateThemeConfigHighlightTab::hlChanged);
+    connect(hlCombo, &QComboBox::activated, this, &KateThemeConfigHighlightTab::hlChanged);
 
     headerLayout->addStretch();
 
@@ -1043,7 +1043,7 @@ void KateThemeConfigPage::layoutThemeChooserTab(QWidget *tab)
     comboLayout->addWidget(defaultSchemaCombo);
     defaultSchemaCombo->setEditable(false);
     lHl->setBuddy(defaultSchemaCombo);
-    connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::slotChanged);
+    connect(defaultSchemaCombo, &QComboBox::currentIndexChanged, this, &KateThemeConfigPage::slotChanged);
     comboLayout->addStretch();
 
     layout->addLayout(comboLayout);
@@ -1085,7 +1085,7 @@ int main(uint64_t magicArgument)
 
     layout->addWidget(m_themePreview);
 
-    connect(defaultSchemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, [this](int idx) {
+    connect(defaultSchemaCombo, &QComboBox::currentIndexChanged, this, [this](int idx) {
         const QString schema = defaultSchemaCombo->itemData(idx).toString();
         m_themePreview->renderer()->config()->setSchema(schema);
         if (schema.isEmpty()) {
@@ -1112,7 +1112,7 @@ void KateThemeConfigPage::layoutThemeEditorTab(QWidget *tab)
     schemaCombo->setEditable(false);
     lHl->setBuddy(schemaCombo);
     headerLayout->addWidget(schemaCombo);
-    connect(schemaCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &KateThemeConfigPage::comboBoxIndexChanged);
+    connect(schemaCombo, &QComboBox::currentIndexChanged, this, &KateThemeConfigPage::comboBoxIndexChanged);
 
     QPushButton *copyButton = new QPushButton(i18n("&Copy..."), this);
     headerLayout->addWidget(copyButton);
