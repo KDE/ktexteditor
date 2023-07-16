@@ -2646,7 +2646,7 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
         }
     } else { // remote file mode, kio
         // get the right permissions, start with safe default
-        KIO::StatJob *statJob = KIO::statDetails(url(), KIO::StatJob::SourceSide, KIO::StatBasic);
+        KIO::StatJob *statJob = KIO::stat(url(), KIO::StatJob::SourceSide, KIO::StatBasic);
         KJobWidgets::setWindow(statJob, QApplication::activeWindow());
         if (statJob->exec()) {
             // do a evil copy which will overwrite target if possible
@@ -4996,7 +4996,7 @@ void KTextEditor::DocumentPrivate::documentSaveCopyAs()
     }
 
     // get the right permissions, start with safe default
-    KIO::StatJob *statJob = KIO::statDetails(url(), KIO::StatJob::SourceSide, KIO::StatBasic);
+    KIO::StatJob *statJob = KIO::stat(url(), KIO::StatJob::SourceSide, KIO::StatBasic);
     KJobWidgets::setWindow(statJob, QApplication::activeWindow());
     const auto url = this->url();
     connect(statJob, &KIO::StatJob::result, this, [url, file, saveUrl](KJob *j) {
