@@ -213,13 +213,19 @@ KTextEditor::Cursor TextBuffer::offsetToCursor(int offset) const
 QString TextBuffer::text() const
 {
     QString text;
+    qsizetype size = 0;
+    for (auto b : m_blocks) {
+        size += b->blockSize();
+    }
+    size -= 1; // remove -1, last newline
+    text.reserve(size);
 
     // combine all blocks
     for (TextBlock *block : std::as_const(m_blocks)) {
         block->text(text);
     }
 
-    // return generated string
+    Q_ASSERT(size == text.size());
     return text;
 }
 
