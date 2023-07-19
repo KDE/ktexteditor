@@ -90,11 +90,6 @@
        <property name="toolTip">
         <string>Jump to next match</string>
        </property>
-       <property name="icon">
-        <iconset>
-         <normaloff/>
-        </iconset>
-       </property>
        <property name="autoRaise">
         <bool>true</bool>
        </property>
@@ -105,11 +100,6 @@
        <property name="toolTip">
         <string>Jump to previous match</string>
        </property>
-       <property name="icon">
-        <iconset>
-         <normaloff/>
-        </iconset>
-       </property>
        <property name="autoRaise">
         <bool>true</bool>
        </property>
@@ -119,11 +109,6 @@
       <widget class="QToolButton" name="matchCase">
        <property name="toolTip">
         <string>Match case sensitive</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff/>
-        </iconset>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -162,11 +147,6 @@
        </property>
        <property name="text">
         <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff/>
-        </iconset>
        </property>
        <property name="autoRaise">
         <bool>true</bool>
