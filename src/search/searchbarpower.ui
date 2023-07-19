@@ -135,10 +135,6 @@
          <property name="toolTip">
           <string>Match case sensitive</string>
          </property>
-         <property name="icon">
-          <iconset theme="format-text-superscript">
-           <normaloff>.</normaloff>.</iconset>
-         </property>
          <property name="checkable">
           <bool>true</bool>
          </property>
@@ -151,10 +147,6 @@
         <widget class="QToolButton" name="selectionOnly">
          <property name="toolTip">
           <string>Search in the selection only</string>
-         </property>
-         <property name="icon">
-          <iconset theme="edit-select-all">
-           <normaloff>.</normaloff>.</iconset>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -182,10 +174,6 @@
          <property name="toolTip">
           <string>Jump to next match</string>
          </property>
-         <property name="icon">
-          <iconset theme="go-down-search">
-           <normaloff>.</normaloff>.</iconset>
-         </property>
          <property name="autoRaise">
           <bool>true</bool>
          </property>
@@ -195,10 +183,6 @@
         <widget class="QToolButton" name="findPrev">
          <property name="toolTip">
           <string>Jump to previous match</string>
-         </property>
-         <property name="icon">
-          <iconset theme="go-up-search">
-           <normaloff>.</normaloff>.</iconset>
          </property>
          <property name="autoRaise">
           <bool>true</bool>
@@ -285,10 +269,6 @@
          </property>
          <property name="text">
           <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="games-config-options">
-           <normaloff>.</normaloff>.</iconset>
          </property>
          <property name="checkable">
           <bool>true</bool>
