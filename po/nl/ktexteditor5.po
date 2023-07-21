@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-07 00:47+0000\n"
+"POT-Creation-Date: 2023-07-21 00:45+0000\n"
 "PO-Revision-Date: 2023-04-05 10:14+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -3794,33 +3794,33 @@ msgid "F&ind:"
 msgstr "Zo&eken:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
-#: search/searchbarincremental.ui:78 search/searchbarpower.ui:315
+#: search/searchbarincremental.ui:78 search/searchbarpower.ui:295
 #, kde-format
 msgid "Text to search for"
 msgstr "Te zoeken tekst"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findNext)
 #. i18n: ectx: property (toolTip), widget (QToolButton, next)
-#: search/searchbarincremental.ui:91 search/searchbarpower.ui:183
+#: search/searchbarincremental.ui:91 search/searchbarpower.ui:175
 #, kde-format
 msgid "Jump to next match"
 msgstr "Ga naar volgende overeenkomst"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
-#: search/searchbarincremental.ui:106 search/searchbarpower.ui:197
+#: search/searchbarincremental.ui:101 search/searchbarpower.ui:185
 #, kde-format
 msgid "Jump to previous match"
 msgstr "Ga naar vorige overeenkomst"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
-#: search/searchbarincremental.ui:121 search/searchbarpower.ui:136
+#: search/searchbarincremental.ui:111 search/searchbarpower.ui:136
 #, kde-format
 msgid "Match case sensitive"
 msgstr "Hoofdlettergevoelig overeenkomend"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
-#: search/searchbarincremental.ui:161
+#: search/searchbarincremental.ui:146
 #, kde-format
 msgid "Switch to power search and replace bar"
 msgstr "Ga naar de geavanceerde zoek-en-vervang-balk"
@@ -3874,56 +3874,56 @@ msgid "Regular expression"
 msgstr "Reguliere expressie"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, selectionOnly)
-#: search/searchbarpower.ui:153
+#: search/searchbarpower.ui:149
 #, kde-format
 msgid "Search in the selection only"
 msgstr "Alleen in de selectie zoeken"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceNext)
-#: search/searchbarpower.ui:211
+#: search/searchbarpower.ui:195
 #, kde-format
 msgid "Replace next match"
 msgstr "Volgende overeenkomst vervangen"
 
 #. i18n: ectx: property (text), widget (QPushButton, replaceNext)
 #. i18n: ectx: property (text), widget (QPushButton, m_replaceBtn)
-#: search/searchbarpower.ui:214 spellcheck/spellcheckbar.ui:130
+#: search/searchbarpower.ui:198 spellcheck/spellcheckbar.ui:130
 #, kde-format
 msgid "&Replace"
 msgstr "Ve&rvangen"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceAll)
-#: search/searchbarpower.ui:240
+#: search/searchbarpower.ui:224
 #, kde-format
 msgid "Replace all matches"
 msgstr "Alle overeenkomsten vervangen"
 
 #. i18n: ectx: property (text), widget (QPushButton, replaceAll)
-#: search/searchbarpower.ui:243
+#: search/searchbarpower.ui:227
 #, kde-format
 msgid "Replace &All"
 msgstr "&Alles vervangen"
 
 #. i18n: ectx: property (text), widget (QPushButton, findAll)
-#: search/searchbarpower.ui:250
+#: search/searchbarpower.ui:234
 #, kde-format
 msgid "&Find All"
 msgstr "Allen &zoeken"
 
 #. i18n: ectx: property (text), widget (QPushButton, cancel)
-#: search/searchbarpower.ui:273
+#: search/searchbarpower.ui:257
 #, kde-format
 msgid "Cancel"
 msgstr "Annuleren"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
-#: search/searchbarpower.ui:284
+#: search/searchbarpower.ui:268
 #, kde-format
 msgid "Switch to incremental search bar"
 msgstr "Ga naar incrementele zoekbalk"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
-#: search/searchbarpower.ui:334
+#: search/searchbarpower.ui:314
 #, kde-format
 msgid "Text to replace with"
 msgstr "Tekst om mee te vervangen"
