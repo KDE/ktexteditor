@@ -3,14 +3,14 @@
 # Sae-keun Kim <segni@susekorea.net>, 2001.
 # Louis JANG <louis@mizi.com>, 2001.
 # KIM KyungHeon <tody@teoal.net>, 2001, 2002, 2003, 2004.
-# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # JungHee Lee <daemul72@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2022-08-09 13:46+0200\n"
+"PO-Revision-Date: 2023-07-23 21:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -65,7 +65,7 @@ msgstr "파일(&F)"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "인쇄/내보내기"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -389,16 +389,14 @@ msgid "Show Always"
 msgstr "항상 표시"
 
 #: dialogs/clipboardhistorydialog.cpp:261
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "다음 편집 지점 선택"
+msgstr "붙여 넣을 텍스트를 선택하십시오."
 
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "클립보드 과거 기록에 항목 없음"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -425,12 +423,11 @@ msgstr "자동으로 첫 번째 자동 완성 항목 선택(&F)"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Tab/Shift+Tab 키를 사용하여 자동 완성 목록 전환"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "자동 단어 완성(&U)"
 
@@ -454,13 +451,10 @@ msgstr "완료 시 뒷부분 삭제"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
-msgstr "키워드 완성은 문서에 존재하는 키워드를 기반으로 단어를 제안합니다."
+msgstr "단어 완성은 문서에서 찾은 단어를 기반으로 단어를 제안합니다"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:121
@@ -478,8 +472,7 @@ msgstr "키워드 완성은 문서에 존재하는 키워드를 기반으로 단
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:143
-#, fuzzy, kde-format
-#| msgid "Documentation with Completion"
+#, kde-format
 msgid "Documentation with completion"
 msgstr "자동 완성과 문서 같이 표시"
 
@@ -614,16 +607,15 @@ msgstr "마우스로 붙여넣을 때 텍스트 커서 이동하지 않음"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:188
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "클립보드 기록(&H)"
+msgstr "최대 클립보드 기록 항목 개수:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:198
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "클립보드 과거 기록에 저장할 항목 개수를 설정합니다"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:220
@@ -929,16 +921,7 @@ msgstr "줄 처음 빈 공간에서 Backspace 키를 눌렀을 때 들여쓰기(
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -954,8 +937,8 @@ msgstr ""
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Tab 키 동작(선택이 없을 때) <a href=\"만약 <b>Tab</b> 키를 눌렀을 때 이맥"
-"스처럼 코드의 현재 줄을 정렬하고 싶다면,<b>Tab</b> 키를 <b>정렬</b> 동작의 단"
-"축키로 지정하십시오.\"><span>더 보기...</span></a></p></body></html>"
+"스처럼 코드의 현재 줄을 정렬하고 싶다면,<b>Tab</b> 키를 <b>들여쓰기 지정</b> "
+"동작의 단축키로 지정하십시오.\"><span>더 보기...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1136,11 +1119,9 @@ msgid "Editing Options"
 msgstr "편집 옵션"
 
 #: dialogs/katedialogs.cpp:736
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "상태 표시줄"
 
 #: dialogs/katedialogs.cpp:738
 #, kde-format
@@ -1230,6 +1211,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"지금부터 탭이나 창을 닫을 때까지 디스크에서의 변경 사항에 대해서 경고하지 않"
+"고 새로 고칩니다."
 
 #: dialogs/katedialogs.cpp:1448
 #, kde-format
@@ -1237,10 +1220,9 @@ msgid "View &Difference"
 msgstr "차이 보기(&D)"
 
 #: dialogs/katedialogs.cpp:1450
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "변경 사항의 차이점 보기"
+msgstr "변경 사항의 차이점을 표시합니다."
 
 #: dialogs/katedialogs.cpp:1455
 #, kde-format
@@ -1248,8 +1230,7 @@ msgid "&Reload"
 msgstr "새로 고침(&R)"
 
 #: dialogs/katedialogs.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "파일을 디스크에서 새로 고칩니다. 저장되지 않은 변경 사항은 무시됩니다."
 
@@ -1260,8 +1241,7 @@ msgid "&Close File"
 msgstr "파일 닫기(&C)"
 
 #: dialogs/katedialogs.cpp:1463
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
@@ -1763,10 +1743,9 @@ msgstr "자동 저장 사용(로컬 파일만)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "편집기에서 초점이 벗어났을 때 자동으로 문서 저장"
+msgstr "활성 문서에서 포커스가 벗어났을 때 자동으로 문서 저장"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -1782,51 +1761,45 @@ msgstr "초"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "구문 강조"
+msgstr "구문 강조 모드 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Show &icon border"
+#, kde-format
 msgid "Show input mode"
-msgstr "아이콘 경계 표시(&I)"
+msgstr "입력 모드 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "사전 바꾸기"
+msgstr "활성 사전 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show tab setting"
-msgstr "탭 표시기 표시:"
+msgstr "탭 설정 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "줄 수 표시"
+msgstr "줄과 칸 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "줄 수 표시"
+msgstr "파일 인코딩 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "줄 끝 스타일 표시"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1882,7 +1855,7 @@ msgstr "문자열 중 탭 기호가 있는 부분에 기호를 표시합니다."
 #: dialogs/textareaappearanceconfigwidget.ui:148
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr "편집기 주변에 초점 프레임 표시"
+msgstr "편집기 주변에 포커스 프레임 표시"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:178
@@ -2131,8 +2104,7 @@ msgid "&Close"
 msgstr "닫기(&C)"
 
 #: document/katedocument.cpp:2285 document/katedocument.cpp:6538
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "메시지 닫기"
@@ -2229,8 +2201,8 @@ msgstr ""
 "%1에 쓸 수 없기 때문에 문서를 저장할 수 없습니다.\n"
 "\n"
 "이 파일에 쓸 수 있는 권한이 있거나 디스크 공간이 충분한지 확인하십시오.\n"
-"원본 파일이 손상되었거나 삭제되었을 수도 있습니다. 파일을 기록하기 전에 프로"
-"그램을 닫지 마십시오."
+"원본 파일이 손상되었거나 삭제되었을 수도 있습니다. 파일을 기록하기 전에 앱을 "
+"닫지 마십시오."
 
 #: document/katedocument.cpp:2665
 #, kde-format
@@ -2524,7 +2496,7 @@ msgstr "범례 인쇄(&L)"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "접힌 코드 인쇄하지 않기"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2694,10 +2666,9 @@ msgid "&Color theme:"
 msgstr "색 테마(&C):"
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "글꼴"
+msgstr "글꼴:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2805,144 +2776,109 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "태그로 둘러싸기"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "일치하는 태그로 이동"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "내용 안쪽으로 HTML/XML 태그 선택"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "내용 바깥쪽으로 HTML/XML 태그 선택"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
 msgstr "주석 전환하기"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "다음 편집 지점으로 이동"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "이전 편집 지점으로 이동"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "다음 편집 지점 선택"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "이전 편집 지점 선택"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "커서 아래 태그 삭제"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "태그 분할 및 합병"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "간단한 수식 계산"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "숫자를 1 감소"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "숫자를 10 감소"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "숫자를 0.1 감소"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "숫자를 1 증가"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "숫자를 10 증가"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "숫자를 0.1 증가"
@@ -3053,9 +2989,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "커서 아래 숫자를 0.1 증가"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "이전 일치하는 들여쓰기로 커서 이동"
@@ -3068,9 +3002,7 @@ msgid "Navigation"
 msgstr "탐색"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "다음 일치하는 들여쓰기로 커서 이동"
@@ -3086,12 +3018,10 @@ msgid "Move cursor to next matching indent"
 msgstr "다음 일치하는 들여쓰기로 커서 이동"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "선택한 문자열 정렬하기"
+msgstr "선택한 문자열 가나다순으로 정렬"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3106,44 +3036,37 @@ msgid "Editing"
 msgstr "편집"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "선택한 문자열이나 전체 문서의 중복된 줄을 삭제합니다."
+msgstr "선택한 문자열의 중복된 줄을 삭제하고 가나다순으로 정렬"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "선택한 줄을 위로 복제"
+msgstr "중복된 줄 삭제"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "뒤에 붙는 공백 지우기(&M):"
+msgstr "뒤에 붙는 공백 지우기"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "뒤에 붙는 공백 지우기(&M):"
+msgstr "앞에 붙는 공백 지우기"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "뒤에 붙는 공백 지우기(&M):"
+msgstr "앞과 뒤에 붙는 공백 지우기"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "줄 합치기"
@@ -3185,11 +3108,10 @@ msgid "URI-decode Selected Text"
 msgstr "선택한 문자열 URI 디코드"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Remove cursors from empty lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "빈 줄에서 커서 삭제"
+msgstr "빈 줄 지우기"
 
 #: script/data/commands/utils.js:442
 #, kde-format
@@ -4105,10 +4027,9 @@ msgid "I&gnore All"
 msgstr "모두 무시(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "맞춤법 검사 (커서에서부터)..."
+msgstr "맞춤법 검사(커서에서부터)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4761,7 +4682,7 @@ msgstr "편집 가능한 자리 표시자"
 #: syntax/katethemeconfig.cpp:361
 #, kde-format
 msgid "Focused Editable Placeholder"
-msgstr "편집 가능한 초점이 맞은 자리 표시자"
+msgstr "편집 가능한 포커스가 맞은 자리 표시자"
 
 #: syntax/katethemeconfig.cpp:367
 #, kde-format
@@ -6313,10 +6234,9 @@ msgid "Encoding"
 msgstr "인코딩"
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "줄 끝"
+msgstr "줄 끝 형식"
 
 #: view/katestatusbar.cpp:207
 #, kde-format
@@ -6340,7 +6260,7 @@ msgstr "구문 강조"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "줄/칸 축소 모드"
 
 #: view/katestatusbar.cpp:307
 #, kde-format
@@ -6350,12 +6270,12 @@ msgstr "[블록] %1"
 #: view/katestatusbar.cpp:323
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:325
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:329
 #, kde-format
@@ -6417,14 +6337,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "%1/%2 단어, %3/%4 글자"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "%1/%2 단어, %3/%4 글자"
+msgstr "단어 %1개, %2자"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
@@ -6449,10 +6365,9 @@ msgstr ""
 "현재 선택한 문자열을 시스템 클립보드에 복사하려면 이 명령을 사용하십시오."
 
 #: view/kateview.cpp:466
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "클립보드 기록(&H)"
+msgstr "클립보드 기록 붙여넣기(&H)"
 
 #: view/kateview.cpp:471
 #, kde-format
@@ -6465,8 +6380,7 @@ msgid "Paste previously mouse selection contents"
 msgstr "이전에 복사하거나 잘라낸 선택 내용 붙여넣기"
 
 #: view/kateview.cpp:477
-#, fuzzy, kde-format
-#| msgid "Swap with clipboard contents"
+#, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "클립보드 내용과 전환"
 
@@ -6476,10 +6390,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "선택한 텍스트와 클립보드 내용 전환"
 
 #: view/kateview.cpp:481
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "선택 붙여넣기"
+msgstr "선택 영역의 스크린샷 찍기"
 
 #: view/kateview.cpp:485
 #, kde-format
@@ -6534,26 +6447,21 @@ msgstr ""
 "가능합니다."
 
 #: view/kateview.cpp:514
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "들여쓰기(&I)"
+msgstr "들여쓰기 지정(&F)"
 
 #: view/kateview.cpp:515
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
-msgstr "문자열의 현재 줄이나 블럭을 알맞은 단계만큼 들여쓰려면 선택하십시오."
+msgstr "텍스트의 현재 줄이나 블록을 올바른 들여쓰기 단계로 자동 정렬합니다."
 
 #: view/kateview.cpp:519
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "정렬(&A)"
+msgstr "정렬 기준(&A)..."
 
 #: view/kateview.cpp:521
 #, kde-format
@@ -6627,13 +6535,12 @@ msgstr "문서의 쓰기를 잠그거나 해제합니다"
 #: view/kateview.cpp:570
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "오른쪽에서 왼쪽 방향 강제(&F)"
 
 #: view/kateview.cpp:571
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "문자열 장식"
+msgstr "RTL 텍스트 방향 강제"
 
 #: view/kateview.cpp:581
 #, kde-format
@@ -6695,10 +6602,9 @@ msgid ""
 msgstr "코드 완성 단축키를 통해서 수동으로 코드 완성을 호출합니다."
 
 #: view/kateview.cpp:618
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "뒤에 붙는 공백 지우기(&M):"
+msgstr "뒤에 붙는 공백 지우기"
 
 #: view/kateview.cpp:636
 #, kde-format
@@ -6858,8 +6764,7 @@ msgstr ""
 "이 명령은 줄 기반과 블록 기반 선택 모드 사이에서 선택 모드를 결정합니다."
 
 #: view/kateview.cpp:744
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "다음 입력 모드로 전환"
 
@@ -7129,12 +7034,12 @@ msgstr "커서 아래 단어가 다음에 나오는 곳까지 선택 영역에 �
 #: view/kateview.cpp:895
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "현재 선택한 일치를 건너뛴 것으로 표시"
 
 #: view/kateview.cpp:897
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "현재 선택된 단어를 건너뛴 것으로 표시합니다."
 
 #: view/kateview.cpp:901
 #, kde-format
@@ -7194,8 +7099,7 @@ msgid "Adds a caret in the line above the current caret."
 msgstr "현재 캐럿이 위치한 줄 위에 새 캐럿을 추가합니다."
 
 #: view/kateview.cpp:936
-#, fuzzy, kde-format
-#| msgid "Toggle camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "캐멀케이스 커서 이동 전환"
 
@@ -7205,8 +7109,7 @@ msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr "일반 단어 단위 이동과 캐멀케이스 커서 이동을 전환합니다."
 
 #: view/kateview.cpp:941
-#, fuzzy, kde-format
-#| msgid "Remove cursors from empty lines"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "빈 줄에서 커서 삭제"
 
@@ -7469,10 +7372,9 @@ msgid "Backspace"
 msgstr "백스페이스"
 
 #: view/kateview.cpp:1247
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "탭 넣기"
+msgstr "탭 문자 입력"
 
 #: view/kateview.cpp:1252
 #, kde-format
@@ -7487,8 +7389,7 @@ msgid ""
 msgstr "현재 줄에 있는 공백 문자와 같이 새 줄을 삽입합니다."
 
 #: view/kateview.cpp:1261
-#, fuzzy, kde-format
-#| msgid "Insert a non-indented Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
 msgstr "들여쓰지 않은 새 줄 삽입"
 
@@ -7586,15 +7487,14 @@ msgid "Search wrapped"
 msgstr "끝까지 검색되어 돌아옴"
 
 #: view/kateview.cpp:3709
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "정렬(&A)"
+msgstr "정렬 기준"
 
 #: view/kateview.cpp:3709
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "정렬 패턴:"
 
 #: view/kateview.cpp:4803
 #, kde-format
@@ -7681,63 +7581,54 @@ msgid "Disable Annotation Bar"
 msgstr "주석 표시줄 끄기"
 
 #: view/screenshotdialog.cpp:136
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "열기/저장"
+msgstr "저장"
 
 #: view/screenshotdialog.cpp:137
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "복사(&C)..."
+msgstr "복사"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "배경 색상(&B)..."
+msgstr "배경색..."
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "문자열 장식"
+msgstr "추가 장식 표시"
 
 #: view/screenshotdialog.cpp:141
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "들여쓰기 줄 표시(&N)"
+msgstr "창 장식 표시"
 
 #: view/screenshotdialog.cpp:146
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "스크린샷..."
 
 #: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "줄 번호 표시(&L)"
+msgstr "줄 번호 표시하지 않기"
 
 #: view/screenshotdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "줄 번호 표시(&L)"
+msgstr "1부터 줄 번호 표시"
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "줄 번호 표시(&L)"
+msgstr "실제 줄 번호 표시"
 
 #: view/screenshotdialog.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "다른 이름으로 저장(&S)..."
+msgstr "저장..."
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -7779,14 +7670,13 @@ msgid ""
 "disk, a file dialog will be shown.</p>"
 msgstr ""
 "<p><b>q/qa/wq/wqa &mdash; [저장하고] 끝내기</b></p> <p>사용 방법: "
-"<tt><b>[w]q[a]</b></tt></p> <p>프로그램을 끝냅니다. 앞에 <tt>w</tt>를 붙이면 "
-"문서를 디스크에 저장합니다. 다음과 같이 호출할 수 있습니다: <br /> <tt>q</"
-"tt> &mdash; 현재 보기를 닫습니다.<br /> <tt>qa</tt> &mdash; 모든 보기를 닫으"
-"며, 프로그램을 끝냅니다.<br /> <tt>wq</tt> &mdash; 현재 문서를 디스크에 저장"
-"하고 보기를 닫습니다.<br /> <tt>wqa</tt> &mdash; 모든 문서를 디스크에 저장하"
-"고 프로그램을 끝냅니다.</p> <p>모든 명령에서 닫히는 보기가 마지막 보기라면 프"
-"로그램을 끝냅니다. 저장할 파일 이름이 지정되어 있지 않으면 파일 대화 상자를 "
-"표시합니다.</p>"
+"<tt><b>[w]q[a]</b></tt></p> <p>앱을 끝냅니다. 앞에 <tt>w</tt>를 붙이면 문서"
+"를 디스크에 저장합니다. 다음과 같이 호출할 수 있습니다: <br /> <tt>q</tt> "
+"&mdash; 현재 보기를 닫습니다.<br /> <tt>qa</tt> &mdash; 모든 보기를 닫으며, "
+"앱을 끝냅니다.<br /> <tt>wq</tt> &mdash; 현재 문서를 디스크에 저장하고 보기"
+"를 닫습니다.<br /> <tt>wqa</tt> &mdash; 모든 문서를 디스크에 저장하고 앱을 끝"
+"냅니다.</p> <p>모든 명령에서 닫히는 보기가 마지막 보기라면 앱을 끝냅니다. 저"
+"장할 파일 이름이 지정되어 있지 않으면 파일 대화 상자를 표시합니다.</p>"
 
 #: vimode/appcommands.cpp:228
 #, kde-format
@@ -7803,10 +7693,10 @@ msgstr ""
 "<p><b>x/xa &mdash; 저장하고 끝내기</b></p> <p>사용 방법: <tt><b>x[a]</b></"
 "tt></p> <p>문서를 저장하고 끝냅니다(e<b>x</b>it). 두 명령의 차이는 다음과 같"
 "습니다:<br /> <tt>x</tt> &mdash; 현재 보기를 닫습니다.<br /> <tt>xa</tt> "
-"&mdash; 모든 보기를 닫으며, 프로그램을 끝냅니다.</p> <p>모든 경우에서 마지막 "
-"보기가 닫히면 프로그램이 종료됩니다. 문서 파일 이름이 입력되어 있지 않았으며 "
-"디스크에 저장할 경우에는 파일 대화 상자를 표시합니다.</p> <p>'w' 명령과는 다"
-"르게 수정된 경우에만 문서를 저장합니다.</p>"
+"&mdash; 모든 보기를 닫으며, 앱을 끝냅니다.</p> <p>모든 경우에서 마지막 보기"
+"가 닫히면 앱이 종료됩니다. 문서 파일 이름이 입력되어 있지 않았으며 디스크에 "
+"저장할 경우에는 파일 대화 상자를 표시합니다.</p> <p>'w' 명령과는 다르게 수정"
+"된 경우에만 문서를 저장합니다.</p>"
 
 #: vimode/appcommands.cpp:242
 #, kde-format
