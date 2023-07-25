@@ -21,7 +21,6 @@
 
 // the list of views
 #include <QList>
-#include <QMetaType>
 
 class KConfigGroup;
 
@@ -1751,7 +1750,5 @@ private:
 };
 
 }
-
-Q_DECLARE_METATYPE(KTextEditor::Document *)
 
 #endif
