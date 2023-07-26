@@ -423,6 +423,6 @@ private:
 
 }
 
-Q_DECLARE_TYPEINFO(KTextEditor::DocumentCursor, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextEditor::DocumentCursor, Q_RELOCATABLE_TYPE);
 
 #endif

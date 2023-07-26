@@ -598,7 +598,7 @@ private:
 
 }
 
-Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_RELOCATABLE_TYPE);
 
 /**
  * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.

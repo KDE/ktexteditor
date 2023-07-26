@@ -334,6 +334,6 @@ public:
 
 }
 
-Q_DECLARE_TYPEINFO(KTextEditor::AttributeBlock, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextEditor::AttributeBlock, Q_RELOCATABLE_TYPE);
 
 #endif
