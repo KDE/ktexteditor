@@ -9,10 +9,10 @@
 #include <QApplication>
 #include <QBrush>
 #include <QModelIndex>
+#include <QTextEdit>
 #include <QTreeView>
 
 #include <KColorUtils>
-#include <KTextEdit>
 #include <ktexteditor/codecompletionmodel.h>
 
 #include "katecompletiondelegate.h"

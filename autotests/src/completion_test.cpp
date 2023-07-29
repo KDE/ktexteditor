@@ -9,8 +9,6 @@
 #include "codecompletiontestmodels.h"
 // #include "codecompletiontestmodels.moc"
 
-#include <ksycoca.h>
-
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
 
