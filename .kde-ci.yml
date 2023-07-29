@@ -13,6 +13,7 @@ Dependencies:
     'frameworks/sonnet' : '@same'
     'frameworks/kxmlgui' : '@same'
     'frameworks/kwindowsystem' : '@same'
+    'frameworks/ktextwidgets' : '@same'
     'frameworks/syntax-highlighting' : '@same'
 
 - 'on': ['Linux', 'FreeBSD', 'macOS']

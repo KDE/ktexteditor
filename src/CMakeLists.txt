@@ -321,6 +321,7 @@ PRIVATE
   KF6::SonnetUi
   KF6::Codecs
   KF6::KIOWidgets
+  KF6::TextWidgets
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 
