@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2023-07-20 05:51+0200\n"
+"PO-Revision-Date: 2023-07-29 10:55+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1068,6 +1068,8 @@ msgstr "შეიძლება მოსახერხებელი იყ�
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
+"სიმბოლოების ნაკრები, რომლებიც წააგავს, მაგრამ არ წარმოადგენს ფრჩხილების "
+"ავტომატურ დახურვას"
 
 #: dialogs/katedialogs.cpp:585
 #, kde-format
@@ -3347,7 +3349,7 @@ msgstr "სტრიქონის დასასრული"
 #: search/katesearchbar.cpp:1161
 #, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr ""
+msgstr "დაემთხვეს ყველა სიმბოლოს ახალი ხაზის ჩათვლით (ნაგულისხმევი)"
 
 #: search/katesearchbar.cpp:1162
 #, kde-format
@@ -3367,7 +3369,7 @@ msgstr "ნული ან ერთი გამოვლენა"
 #: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "<a> through <b> occurrences"
-msgstr ""
+msgstr "<a> ამდენჯერ <b> მეორდება"
 
 #: search/katesearchbar.cpp:1173
 #, kde-format
@@ -3432,7 +3434,7 @@ msgstr "არა-ციფრი"
 #: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
-msgstr ""
+msgstr "ჰარეს სიმბოლო"
 
 #: search/katesearchbar.cpp:1207
 #, kde-format
@@ -3482,12 +3484,12 @@ msgstr "უარყოფითი წინმჭვრეტელი"
 #: search/katesearchbar.cpp:1224
 #, kde-format
 msgid "Fixed-length positive lookbehind"
-msgstr ""
+msgstr "წინ-წინასწარ-წაკითხვის ფიქსირებული რაოდენობა"
 
 #: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length negative lookbehind"
-msgstr ""
+msgstr "უკან-წინასწარ-წაკითხვის ფიქსირებული რაოდენობა"
 
 #: search/katesearchbar.cpp:1230
 #, kde-format
@@ -3517,7 +3519,7 @@ msgstr "მაღალი რეგისტრის მქონე პირ
 #: search/katesearchbar.cpp:1235
 #, kde-format
 msgid "Replacement counter (for Replace All)"
-msgstr ""
+msgstr "ჩანაცვლებების რაოდენობა (ყველაფრის ჩანაცვლებისთვის)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarincremental.ui:50
@@ -3905,7 +3907,7 @@ msgstr "მართლწერა (კურსორიდან)..."
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
 msgid "Check the document's spelling from the cursor and forward"
-msgstr ""
+msgstr "დოკუმენტის მართლწერის შემოწმება კურსორიდან და ბოლომდე"
 
 #: spellcheck/spellingmenu.cpp:76
 #, kde-format
@@ -3928,6 +3930,8 @@ msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
+"ბრძანება diff-ის შეცდომა. დარწმუნდით, რომ diff (1) დაყენებულია და თქვენს "
+"PATH-შია."
 
 #: swapfile/kateswapdiffcreator.cpp:97
 #, kde-format
@@ -4017,7 +4021,7 @@ msgstr "&ხაზგასმა"
 #: syntax/katestyletreewidget.cpp:246
 #, kde-format
 msgid "S&trikeout"
-msgstr ""
+msgstr "&ხაზგადასმული"
 
 #: syntax/katestyletreewidget.cpp:253
 #, kde-format
@@ -4525,7 +4529,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
 msgid "Text Templates & Snippets"
-msgstr ""
+msgstr "ტექსტის ნიმუშები და ნაწყვეტები"
 
 #: syntax/katethemeconfig.cpp:349
 #, kde-format
@@ -5734,7 +5738,7 @@ msgstr "დოკუმენტის ფონის ფერის დაყ
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
-msgstr ""
+msgstr "ღილაკი Backspace ხაზის თავში გამოტოვებაზე სწორებას მოხსნის."
 
 #: variableeditor/variablelineedit.cpp:139
 #, kde-format
@@ -5752,25 +5756,25 @@ msgstr ""
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
-msgstr ""
+msgstr "ფრჩხილების გამოკვეთის ფერის დაყენება."
 
 #: variableeditor/variablelineedit.cpp:154
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
-msgstr ""
+msgstr "მიმდინარე ხაზის ფონის ფერის დაყენება."
 
 #: variableeditor/variablelineedit.cpp:160
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr ""
+msgstr "მართლწერისთვის გამოყენებული ნაგულისხმევი ლექსიკონი."
 
 #: variableeditor/variablelineedit.cpp:165
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
-msgstr ""
+msgstr "გრძელი ხაზების დინამიკური გადატანის ჩართვა."
 
 #: variableeditor/variablelineedit.cpp:172
 #, kde-format
@@ -5830,13 +5834,13 @@ msgstr "ავტომატური სწორების სტილი�
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr ""
+msgstr "ბაფერიდან ჩასმული კოდის ავტომატური შეწევა."
 
 #: variableeditor/variablelineedit.cpp:235
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
-msgstr ""
+msgstr "ყოველი შეწევის დონის შეწევის სიღრმის დაყენება."
 
 #: variableeditor/variablelineedit.cpp:240
 #, kde-format
@@ -5872,7 +5876,7 @@ msgstr "მუდმივი ტექსტის მონიშვნის 
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
-msgstr ""
+msgstr "დოკუმენტის შენახვისას ტაბულაციის ჰარეთი ჩანაცვლება."
 
 #: variableeditor/variablelineedit.cpp:270
 #, kde-format
@@ -5884,7 +5888,7 @@ msgstr "ტაბულაციის მაგიერ გამოტოვ�
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
-msgstr ""
+msgstr "დოკუმენტი შენახვისას არასაჭირო ჰარეების მოცილება."
 
 #: variableeditor/variablelineedit.cpp:280
 #, kde-format
@@ -5938,7 +5942,7 @@ msgstr "ტაბულაციის ჩვენების სიგან�
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
-msgstr ""
+msgstr "დოკუმენტის დამახსოვრებული გაუქმების ბიჯების რაოდენობა (0 უსასრულობა)."
 
 #: variableeditor/variablelineedit.cpp:334
 #, kde-format
@@ -6141,7 +6145,7 @@ msgstr ""
 #: view/kateview.cpp:466
 #, kde-format
 msgid "Clipboard &History Paste"
-msgstr ""
+msgstr "ჩასმა ბუფერის &ისტორიიდან"
 
 #: view/kateview.cpp:471
 #, kde-format
@@ -6161,7 +6165,7 @@ msgstr "გაცვლის ბუფერთან მიმოცვლა"
 #: view/kateview.cpp:478
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
-msgstr ""
+msgstr "მონიშნული ტექსტის ჩანაცვლება ბუფერის შემცვლობით"
 
 #: view/kateview.cpp:481
 #, kde-format
@@ -6176,12 +6180,12 @@ msgstr "მიმდინარე დოკუმენტის შენა�
 #: view/kateview.cpp:488
 #, kde-format
 msgid "Revert the most recent editing actions"
-msgstr ""
+msgstr "უკანასკნელი ჩასწორების ქმედებების დაბრუნება"
 
 #: view/kateview.cpp:491
 #, kde-format
 msgid "Revert the most recent undo operation"
-msgstr ""
+msgstr "ბოლო ქმედების გაუქმების დაბრუნება"
 
 #: view/kateview.cpp:495
 #, kde-format
@@ -6229,7 +6233,7 @@ msgstr ""
 #: view/kateview.cpp:519
 #, kde-format
 msgid "&Align On..."
-msgstr ""
+msgstr "&რაზე სწორება..."
 
 #: view/kateview.cpp:521
 #, kde-format
@@ -6294,7 +6298,7 @@ msgstr "&მხოლოდ-წაკითხვის რეჟიმი"
 #: view/kateview.cpp:565
 #, kde-format
 msgid "Lock/unlock the document for writing"
-msgstr ""
+msgstr "დოკუმენტის დაბლოკვა/განბლოკვა ჩაწერისთვის"
 
 #: view/kateview.cpp:570
 #, kde-format
@@ -6419,7 +6423,7 @@ msgstr "წინა შეცვლილ ხაზზე გადასვლ
 #: view/kateview.cpp:667
 #, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr ""
+msgstr "ზემოთ წინა შეცვლილ ხაზზე გადასვლა."
 
 #: view/kateview.cpp:672
 #, kde-format
@@ -6429,7 +6433,7 @@ msgstr "შემდეგ შეცვლილ ხაზზე გადას
 #: view/kateview.cpp:673
 #, kde-format
 msgid "Move downwards to the next modified line."
-msgstr ""
+msgstr "ქვემოთ შემდეგ შეცვლილ ხაზზე გადასვლა."
 
 #: view/kateview.cpp:677
 #, kde-format
@@ -6545,7 +6549,7 @@ msgstr ""
 #: view/kateview.cpp:756
 #, kde-format
 msgid "&Dynamic Word Wrap"
-msgstr ""
+msgstr "სიტყვების &დინამიკური გადატანა"
 
 #: view/kateview.cpp:760
 #, kde-format
@@ -6558,12 +6562,13 @@ msgstr ""
 #: view/kateview.cpp:764
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
-msgstr ""
+msgstr "სიტყვების დინამიკური გადატანის ინდიკატორები"
 
 #: view/kateview.cpp:766
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
+"აირჩიეთ, როდის იქნება ნაჩვენები დინამიკური სიტყვის გადატანის ინდიკატორები"
 
 #: view/kateview.cpp:768
 #, kde-format
@@ -6583,7 +6588,7 @@ msgstr "&ყოველთვის ჩართული"
 #: view/kateview.cpp:772
 #, kde-format
 msgid "Static Word Wrap"
-msgstr ""
+msgstr "სტატიკური სიტყვის გადატანა"
 
 #: view/kateview.cpp:774
 #, kde-format
@@ -6595,7 +6600,7 @@ msgstr ""
 #: view/kateview.cpp:781
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
-msgstr ""
+msgstr "სტატიკური &სიტყვის გადატანის ნიშნს ჩვენება"
 
 #: view/kateview.cpp:784
 #, kde-format
@@ -6607,7 +6612,7 @@ msgstr ""
 #: view/kateview.cpp:788
 #, kde-format
 msgid "Show Folding &Markers"
-msgstr ""
+msgstr "გაკეცვის &მარკერების ჩვენება"
 
 #: view/kateview.cpp:790
 #, kde-format
@@ -6636,12 +6641,12 @@ msgstr "&ხაზის ნომრების ჩვენება"
 #: view/kateview.cpp:800
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
-msgstr ""
+msgstr "ხედის მარცხენა მხარეს ხაზის ნომრების ჩვენების ჩართვა/გამორთვა."
 
 #: view/kateview.cpp:803
 #, kde-format
 msgid "Show Scroll&bar Marks"
-msgstr ""
+msgstr "&ჩოჩიის ნიშნების ჩვენება"
 
 #: view/kateview.cpp:805
 #, kde-format
@@ -6728,7 +6733,7 @@ msgstr "&Macintosh"
 #: view/kateview.cpp:862
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
-msgstr ""
+msgstr "&ბაიტების მიმდევრობის ნიშნის (BOM) დამატება"
 
 #: view/kateview.cpp:865
 #, kde-format
@@ -6755,7 +6760,7 @@ msgstr "მონიშნულის ძებნა"
 #: view/kateview.cpp:879
 #, kde-format
 msgid "Finds next occurrence of selected text."
-msgstr ""
+msgstr "მონიშნული ტექსტის შემდეგი გამოჩენის მოძებნა."
 
 #: view/kateview.cpp:883
 #, kde-format
@@ -6765,7 +6770,7 @@ msgstr "მონიშნულის უკანა მიმართულ�
 #: view/kateview.cpp:885
 #, kde-format
 msgid "Finds previous occurrence of selected text."
-msgstr ""
+msgstr "მონიშნული ტექსტის შემდეგი წინა მოძებნა."
 
 #: view/kateview.cpp:889
 #, kde-format
@@ -6780,12 +6785,12 @@ msgstr ""
 #: view/kateview.cpp:895
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "ამჟამად მონიშნული გამოჩენის გამოსატოვებლად მონიშვნა"
 
 #: view/kateview.cpp:897
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "ამჟამად მონიშნული სიტყვის გამოსატოვებლად მონიშვნა."
 
 #: view/kateview.cpp:901
 #, kde-format
@@ -6795,17 +6800,17 @@ msgstr "ყველა დამთხვევის პოვნა და �
 #: view/kateview.cpp:903
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
-msgstr ""
+msgstr "კურსორის ქვეშ მყოფი სიტყვის ყველა გამოჩენის ძებნა და მათი მონიშვნა."
 
 #: view/kateview.cpp:907
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
-msgstr ""
+msgstr "მოსაძებნი ფრაზის შემდეგი გამოჩენის მოძებნა."
 
 #: view/kateview.cpp:911
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
-msgstr ""
+msgstr "მოსაძებნი ფრაზის წინა გამოჩენის მოძებნა."
 
 #: view/kateview.cpp:915
 #, kde-format
@@ -6847,12 +6852,12 @@ msgstr ""
 #: view/kateview.cpp:936
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr ""
+msgstr "კურსორის camelCase-ით გადაადგილების გადართვა"
 
 #: view/kateview.cpp:937
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
-msgstr ""
+msgstr "კურსორის camelCase-სა და ნორმალურ სიტყვებს შორის მოძრაობის გადართვა."
 
 #: view/kateview.cpp:941
 #, kde-format
@@ -7134,7 +7139,7 @@ msgstr ""
 #: view/kateview.cpp:1261
 #, kde-format
 msgid "Insert a Non-Indented Newline"
-msgstr ""
+msgstr "გაუსწორებელი ახალი ხაზის ჩასმა"
 
 #: view/kateview.cpp:1262
 #, kde-format
@@ -7145,7 +7150,7 @@ msgstr ""
 #: view/kateview.cpp:1270
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "ახალი ხაზის სიმბოლოს ჩასმა მიმდინარე ხაზის ზემოთ"
 
 #: view/kateview.cpp:1271
 #, kde-format
@@ -7156,7 +7161,7 @@ msgstr ""
 #: view/kateview.cpp:1279
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "ახალი ხაზის სიმბოლოს ჩასმა მიმდინარე ხაზის ქვემოთ"
 
 #: view/kateview.cpp:1280
 #, kde-format
@@ -7190,12 +7195,12 @@ msgstr ""
 #: view/kateview.cpp:1317
 #, kde-format
 msgid "Fold Toplevel Nodes"
-msgstr ""
+msgstr "ზედა დონის კვანძების გაკეცვა"
 
 #: view/kateview.cpp:1322
 #, kde-format
 msgid "Unfold Toplevel Nodes"
-msgstr ""
+msgstr "ზედა დონის კვანძების გაკეცვის გაუქმება"
 
 #: view/kateview.cpp:1335
 #, kde-format
@@ -7215,12 +7220,12 @@ msgstr "(R/O) %1"
 #: view/kateview.cpp:1684
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "Camelcase-ით გადაადგილება გამორთულია"
 
 #: view/kateview.cpp:1686
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "Camelcase-ით გადაადგილება ჩართულია"
 
 #: view/kateview.cpp:2178
 #, kde-format
@@ -7670,7 +7675,7 @@ msgstr "შემდეგი დანიშნისთვის მეტი 
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"
-msgstr ""
+msgstr "დასარეგისტრირებელი არაფერია %1"
 
 #: vimode/modes/normalvimode.cpp:1685
 #, kde-format
