@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2023-07-29 10:55+0200\n"
+"PO-Revision-Date: 2023-07-30 05:56+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6827,7 +6827,7 @@ msgstr "ხაზის ბოლოებში კურსორების 
 #: view/kateview.cpp:920
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr ""
+msgstr "მონიშნულში ყოველი ხაზის ბოლოში კურსორის შექმნა."
 
 #: view/kateview.cpp:924
 #, kde-format
@@ -6837,7 +6837,7 @@ msgstr "კარეტის დამატება კურსორის 
 #: view/kateview.cpp:926
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr ""
+msgstr "მიმდინარე კარეტის ქვემო ხაზში კარეტის დამატება."
 
 #: view/kateview.cpp:930
 #, kde-format
@@ -6847,7 +6847,7 @@ msgstr "კარეტს დამატება კურსორის ზ
 #: view/kateview.cpp:932
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "მიმდინარე კარეტის ქედა ხაზში კარეტის დამატება."
 
 #: view/kateview.cpp:936
 #, kde-format
@@ -6887,7 +6887,7 @@ msgstr "ლექსიკონის შეცვლა..."
 #: view/kateview.cpp:954
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
-msgstr ""
+msgstr "მართლწერისთვის გამოყენებული ლექსიკონის შეცვლა."
 
 #: view/kateview.cpp:958
 #, kde-format
@@ -7157,6 +7157,7 @@ msgstr "ახალი ხაზის სიმბოლოს ჩასმა
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
+"მიმდინარე ხაზის ზემოთ ახალი ხაზის ჩასმა მიმდინარე ხაზის ცვლილების გარეშე."
 
 #: view/kateview.cpp:1279
 #, kde-format
@@ -7168,6 +7169,7 @@ msgstr "ახალი ხაზის სიმბოლოს ჩასმა
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
+"მიმდინარე ხაზის ქვემოთ ახალი ხაზის ჩასმა მიმდინარე ხაზის ცვლილების გარეშე."
 
 #: view/kateview.cpp:1289
 #, kde-format
@@ -7504,7 +7506,7 @@ msgstr ""
 #: vimode/appcommands.cpp:545
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
-msgstr ""
+msgstr "<p><b>ls</b></p><p>მიმდინარე ბუფერების სია<p>"
 
 #: vimode/cmds.cpp:52
 #, kde-format
