@@ -2524,7 +2524,31 @@ bool KTextEditor::DocumentPrivate::saveFile()
     }
 
     // read our vars
-    readVariables();
+    const bool variablesWereRead = readVariables();
+
+    // If variables were read, that means we must have updated view and render config
+    // which would update the full view and we don't need to do any repainting. Otherwise
+    // loop over all views and update the views if the view has modified lines in the visible
+    // range, this should mark the line 'green' in the icon border
+    if (!variablesWereRead) {
+        for (auto *v : std::as_const(m_views)) {
+            if (v->isVisible()) {
+                const auto range = v->visibleRange();
+
+                bool repaint = false;
+                for (int i = range.start().line(); i <= range.end().line(); ++i) {
+                    if (isLineModified(i)) {
+                        repaint = true;
+                        v->tagLine({i, 0});
+                    }
+                }
+
+                if (repaint) {
+                    v->updateView(true);
+                }
+            }
+        }
+    }
 
     // remove file from dirwatch
     deactivateDirWatch();
@@ -5095,7 +5119,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
       add interface for plugins/apps to set/get variables
       add view stuff
 */
-void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
+bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 {
     const bool hasVariableline = [this] {
         const QLatin1String s("kate");
@@ -5114,7 +5138,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
         return false;
     }();
     if (!hasVariableline) {
-        return;
+        return false;
     }
 
     if (!onlyViewAndRenderer) {
@@ -5144,6 +5168,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
         v->config()->configEnd();
         v->renderer()->config()->configEnd();
     }
+    return true;
 }
 
 void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyViewAndRenderer)

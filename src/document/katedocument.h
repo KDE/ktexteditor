@@ -1180,8 +1180,9 @@ private:
     /**
       Reads all the variables in the document.
       Called when opening/saving a document
+      Returns true if variables were read
     */
-    void readVariables(bool onlyViewAndRenderer = false);
+    bool readVariables(bool onlyViewAndRenderer = false);
     // exported for katedocument_test
 
     /**
