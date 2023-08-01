@@ -50,11 +50,7 @@ private Q_SLOTS:
 protected:
     void currentChanged(const QModelIndex &current, const QModelIndex &previous) override; /// Not available as a signal in this way
     void scrollContentsBy(int dx, int dy) override;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-    void initViewItemOption(QStyleOptionViewItem *option) const override;
-#else
     QStyleOptionViewItem viewOptions() const override;
-#endif
 
 private:
     bool m_scrollingEnabled;

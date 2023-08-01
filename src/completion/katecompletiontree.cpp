@@ -294,20 +294,12 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     preventRecursion = false;
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-void KateCompletionTree::initViewItemOption(QStyleOptionViewItem *option) const
-{
-    QTreeView::initViewItemOption(option);
-    option->font = widget()->view()->renderer()->currentFont();
-}
-#else
 QStyleOptionViewItem KateCompletionTree::viewOptions() const
 {
     QStyleOptionViewItem opt = QTreeView::viewOptions();
     opt.font = widget()->view()->renderer()->currentFont();
     return opt;
 }
-#endif
 
 KateCompletionModel *KateCompletionTree::kateModel() const
 {

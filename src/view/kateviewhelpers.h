@@ -330,11 +330,7 @@ private:
     void leaveEvent(QEvent *event) override;
     void wheelEvent(QWheelEvent *e) override;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-    void enterEvent(QEnterEvent *e) override;
-#else
     void enterEvent(QEvent *e) override;
-#endif
 
     void showMarkMenu(uint line, const QPoint &pos);
 

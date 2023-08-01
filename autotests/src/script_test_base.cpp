@@ -153,9 +153,7 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     }
 
     QTextStream stream(&sourceFile);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     stream.setCodec("UTF8");
-#endif
     QString code = stream.readAll();
     sourceFile.close();
 

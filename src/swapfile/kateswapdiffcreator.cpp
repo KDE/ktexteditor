@@ -59,9 +59,7 @@ void SwapDiffCreator::viewDiff()
     // store original text in a file as utf-8 and close it
     {
         QTextStream stream(&m_originalFile);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         stream.setCodec(QTextCodec::codecForName("UTF-8"));
-#endif
         stream << recoverDoc.text();
     }
     m_originalFile.close();
@@ -73,9 +71,7 @@ void SwapDiffCreator::viewDiff()
     // store recovered text in a file as utf-8 and close it
     {
         QTextStream stream(&m_recoveredFile);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         stream.setCodec(QTextCodec::codecForName("UTF-8"));
-#endif
         stream << recoverDoc.text();
     }
     m_recoveredFile.close();
