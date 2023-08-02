@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-08-02 02:08+0000\n"
 "PO-Revision-Date: 2023-07-02 10:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2190,12 +2190,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: document/katedocument.cpp:2284 document/katedocument.cpp:6537
+#: document/katedocument.cpp:2284 document/katedocument.cpp:6562
 #, kde-format
 msgid "&Close"
 msgstr "Tan&ca"
 
-#: document/katedocument.cpp:2285 document/katedocument.cpp:6538
+#: document/katedocument.cpp:2285 document/katedocument.cpp:6563
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2268,7 +2268,7 @@ msgstr ""
 "el disc han rebut canvis. Amb això es podrien perdre algunes dades."
 
 #: document/katedocument.cpp:2485 document/katedocument.cpp:2501
-#: document/katedocument.cpp:2793 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2817 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2283,7 +2283,7 @@ msgstr ""
 "La codificació seleccionada no pot codificar cadascun dels caràcters Unicode "
 "d'aquest document. De veres voleu desar-lo? Podrien perdre's algunes dades."
 
-#: document/katedocument.cpp:2544
+#: document/katedocument.cpp:2568
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2298,7 +2298,7 @@ msgstr ""
 "El fitxer original es pot perdre o malmetre. No sortiu de l'aplicació fins "
 "que el fitxer s'hagi escrit amb èxit."
 
-#: document/katedocument.cpp:2665
+#: document/katedocument.cpp:2689
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2311,51 +2311,51 @@ msgstr ""
 "fitxer. Una raó pot ser que el suport d'escriptura sigui ple o el directori "
 "del fitxer sigui de només lectura."
 
-#: document/katedocument.cpp:2669
+#: document/katedocument.cpp:2693
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Ha fallat en crear la còpia de seguretat."
 
-#: document/katedocument.cpp:2670
+#: document/katedocument.cpp:2694
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Desa tanmateix"
 
-#: document/katedocument.cpp:2792
+#: document/katedocument.cpp:2816
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Desitgeu realment continuar i tancar aquest fitxer? Es podrien perdre les "
 "dades."
 
-#: document/katedocument.cpp:2794
+#: document/katedocument.cpp:2818
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Tanca tanmateix"
 
-#: document/katedocument.cpp:4608
+#: document/katedocument.cpp:4632
 #, kde-format
 msgid "Untitled"
 msgstr "Sense títol"
 
-#: document/katedocument.cpp:4731 document/katedocument.cpp:4959
-#: document/katedocument.cpp:4969 document/katedocument.cpp:5752
-#: document/katedocument.cpp:5942
+#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5777
+#: document/katedocument.cpp:5967
 #, kde-format
 msgid "Save File"
 msgstr "Desa el fitxer"
 
-#: document/katedocument.cpp:4734
+#: document/katedocument.cpp:4758
 #, kde-format
 msgid "Save failed"
 msgstr "Ha fallat el desament"
 
-#: document/katedocument.cpp:4980
+#: document/katedocument.cpp:5004
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Desa una còpia del fitxer"
 
-#: document/katedocument.cpp:4992
+#: document/katedocument.cpp:5016
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2368,7 +2368,7 @@ msgstr ""
 "Comproveu que teniu accés d'escriptura a aquest fitxer o que hi ha prou "
 "espai disponible."
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2381,7 +2381,7 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2394,22 +2394,22 @@ msgstr ""
 "application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5584
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "El fitxer «%1» s'ha modificat en el disc."
 
-#: document/katedocument.cpp:5587
+#: document/katedocument.cpp:5612
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "El fitxer «%1» s'ha creat en el disc."
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5615
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "El fitxer «%1» s'ha suprimit en el disc."
 
-#: document/katedocument.cpp:5927
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2418,17 +2418,17 @@ msgstr ""
 "El document «%1» ha estat modificat.\n"
 "Voleu desar els canvis o descartar-los?"
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5955
 #, kde-format
 msgid "Close Document"
 msgstr "Tanca el document"
 
-#: document/katedocument.cpp:6041
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "El fitxer <a href=\"%1\">%2</a> encara s'està carregant."
 
-#: document/katedocument.cpp:6046
+#: document/katedocument.cpp:6071
 #, kde-format
 msgid "&Abort Loading"
 msgstr "In&terromp la càrrega"

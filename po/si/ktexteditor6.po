@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-08-02 02:08+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -2230,12 +2230,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2284 document/katedocument.cpp:6537
+#: document/katedocument.cpp:2284 document/katedocument.cpp:6562
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2285 document/katedocument.cpp:6538
+#: document/katedocument.cpp:2285 document/katedocument.cpp:6563
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2314,7 +2314,7 @@ msgstr ""
 "වෙනස් කර ඇත. දත්ත සමහරක් නැතිවීම සිදුවිය හැක."
 
 #: document/katedocument.cpp:2485 document/katedocument.cpp:2501
-#: document/katedocument.cpp:2793 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2817 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2332,7 +2332,7 @@ msgstr ""
 "තේරූ කේතීකරණයට මෙම ලිපියේ අති සෑම යුනිකේත අනු ලකුණක්ම කේතීකරණය කිරීමට නොහැක. ඔබට ඇත්තටම එය "
 "සුරැකීමට අවශ්‍යද? දත්ත සමහරක් නැතිවීමට හැක."
 
-#: document/katedocument.cpp:2544
+#: document/katedocument.cpp:2568
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2350,7 +2350,7 @@ msgstr ""
 "\n"
 "ඔබට මෙම ගොනුවට ලිවීමේ අවසර තිබේද හෝ ප්‍රමාණවත් තැටි ඉඩ තිබේද යන්න පරීක්ෂා කරන්න."
 
-#: document/katedocument.cpp:2665
+#: document/katedocument.cpp:2689
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2362,50 +2362,50 @@ msgstr ""
 "වුවහොත් මෙම ගොනුවේ දත්ත ඔබට නැති විය හැක. හේතුවක් විය හැක්කේ ඔබ ලියන මාධ්‍යය පිරී ඇත හෝ "
 "ගොනුවේ නාමාවලිය ඔබ සඳහා කියවීමට පමණක් වීමයි."
 
-#: document/katedocument.cpp:2669
+#: document/katedocument.cpp:2693
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "උපස්ථ පිටපත සෑදීම අසාර්ථක විය."
 
-#: document/katedocument.cpp:2670
+#: document/katedocument.cpp:2694
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "කෙසේනමුත් සුරැකීමට උත්සහ කරන්න"
 
-#: document/katedocument.cpp:2792
+#: document/katedocument.cpp:2816
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "ඔබට ඇත්තටම මෙම ගොනුව වැසීමට අවශ්‍යද? දත්ත හානි ඇතිවිය හැක."
 
-#: document/katedocument.cpp:2794
+#: document/katedocument.cpp:2818
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "කෙසේවුවත් වහන්න"
 
-#: document/katedocument.cpp:4608
+#: document/katedocument.cpp:4632
 #, kde-format
 msgid "Untitled"
 msgstr "තේමා රහිත"
 
-#: document/katedocument.cpp:4731 document/katedocument.cpp:4959
-#: document/katedocument.cpp:4969 document/katedocument.cpp:5752
-#: document/katedocument.cpp:5942
+#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
+#: document/katedocument.cpp:4993 document/katedocument.cpp:5777
+#: document/katedocument.cpp:5967
 #, kde-format
 msgid "Save File"
 msgstr "ගොනුව සුරකින්න"
 
-#: document/katedocument.cpp:4734
+#: document/katedocument.cpp:4758
 #, kde-format
 msgid "Save failed"
 msgstr "සුරැකීම අසාර්ථක විය"
 
-#: document/katedocument.cpp:4980
+#: document/katedocument.cpp:5004
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "ගොනුව සුරකින්න"
 
-#: document/katedocument.cpp:4992
+#: document/katedocument.cpp:5016
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2417,7 +2417,7 @@ msgstr ""
 "\n"
 "ඔබට මෙම ගොනුවට ලිවීමේ අවසර තිබේද හෝ ප්‍රමාණවත් තැටි ඉඩ තිබේද යන්න පරීක්ෂා කරන්න."
 
-#: document/katedocument.cpp:5269
+#: document/katedocument.cpp:5294
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2426,7 +2426,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5275
+#: document/katedocument.cpp:5300
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2435,25 +2435,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5584
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව වෙනස් කරන ලදි."
 
-#: document/katedocument.cpp:5587
+#: document/katedocument.cpp:5612
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව තනන කරන ලදි."
 
-#: document/katedocument.cpp:5590
+#: document/katedocument.cpp:5615
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "වෙනත් වැඩසටහනක් විසින් '%1' ගොනුව මකන ලදි."
 
-#: document/katedocument.cpp:5927
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2462,17 +2462,17 @@ msgstr ""
 "\"%1\" ලිපිය වෙනස්කර ඇත.\n"
 "ඔබට ඔබගේ වෙනස්කම් සුරැකීමට හෝ ඉවත දැමීමට අවශ්‍යද?"
 
-#: document/katedocument.cpp:5930
+#: document/katedocument.cpp:5955
 #, kde-format
 msgid "Close Document"
 msgstr "ලිපිය වහන්න"
 
-#: document/katedocument.cpp:6041
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6046
+#: document/katedocument.cpp:6071
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
