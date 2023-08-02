@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 00:45+0000\n"
+"POT-Creation-Date: 2023-08-02 00:43+0000\n"
 "PO-Revision-Date: 2014-01-31 20:37+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: bosanski <bs@li.org>\n"
@@ -1363,7 +1363,7 @@ msgstr "Ignoriši riječ"
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignoriši izmjene. Nećete biti ponovo upitani."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1372,18 +1372,18 @@ msgstr ""
 "Naredba <command>diff</command> nije uspjela. Uvjerite se da je <command "
 "section='1'>diff</command> instalirana i da se nalazi u putanji."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Greška pri razlikovanju"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Datoteke su identične."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Izlaz razlike"
@@ -3647,7 +3647,7 @@ msgid "Error loading script %1"
 msgstr "Greška pri učitavanju skripte <filename>%1</filename>"
 
 # >> @info
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
@@ -4286,7 +4286,7 @@ msgstr "Dodaj u rječnik"
 msgid "Spelling '%1'"
 msgstr "Pravopis"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:89
 #, fuzzy, kde-format
 #| msgid ""
 #| "The diff command failed. Please make sure that diff(1) is installed and "
@@ -4298,7 +4298,7 @@ msgstr ""
 "Naredba <command>diff</command> nije uspjela. Uvjerite se da je <command "
 "section='1'>diff</command> instalirana i da se nalazi u putanji."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:99
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
@@ -6238,29 +6238,29 @@ msgstr ""
 msgid "Kate Handbook."
 msgstr "Kate priručnik."
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "tačno"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "netačno"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "nikakvo"
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "promijenjeno"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, fuzzy, kde-format
 #| msgctxt "value for variale remove-trailing-spaces"
 #| msgid "all"
@@ -7964,17 +7964,17 @@ msgstr "Uspjeh: "
 msgid "Command \"%1\" failed."
 msgstr "Naredba <command>%1</command> nije uspjela."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2558 view/kateviewhelpers.cpp:2559
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Obilježje tipa %1"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2582
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Postavi podrazumijevani tip obilježja"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2723
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Isključi traku tumačenja"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 00:45+0000\n"
+"POT-Creation-Date: 2023-08-02 00:43+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -1345,7 +1345,7 @@ msgstr "නොතකන්න (~I)"
 msgid "Ignores the changes on disk without any action."
 msgstr "වෙනස්කම් නොතකන්න. ඔබෙන් නැවත ඒ පිළිබඳ නොවිමසනු ඇත."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1354,18 +1354,18 @@ msgstr ""
 "diff විධානය අසාර්ථක විය. කරුණාකර diff(1) ස්ථාපනය කර ඇති සහ එය ඔබගේ PATH එකෙහි බව "
 "තහවුරු වෙන්න."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff තැනීමේදී දෝෂය"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "ගොනු සර්වසම වෙයි."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff ප්‍රතිදානය"
@@ -3622,7 +3622,7 @@ msgstr "%1 ස්ක්‍රිප්ටය ප්‍රවේශ කිරී�
 msgid "Error loading script %1"
 msgstr "%1 සක්‍රිප්ටය ප්‍රවේශ කිරීමේදී දෝෂය"
 
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "සියළු JavaScript ගොනු නැවත ප්‍රවේශ කරන්න (අනුච්ඡේදක, විධාන රේඛා සක්‍රිප්ට් ආදිය)."
@@ -4258,7 +4258,7 @@ msgstr "ශබ්දකෝෂයට එක් කරන්න"
 msgid "Spelling '%1'"
 msgstr "අක්ෂර වින්‍යාසය"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:89
 #, fuzzy, kde-format
 #| msgid ""
 #| "The diff command failed. Please make sure that diff(1) is installed and "
@@ -4270,7 +4270,7 @@ msgstr ""
 "diff විධානය අසාර්ථක විය. කරුණාකර diff(1) ස්ථාපනය කර ඇති සහ එය ඔබගේ PATH එකෙහි බව "
 "තහවුරු වෙන්න."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:99
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
@@ -6155,30 +6155,30 @@ msgstr ""
 msgid "Kate Handbook."
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "සත්‍ය"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "අසත්‍ය"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr ""
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, fuzzy, kde-format
 #| msgid "Move Lines Up"
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "පේළි ඉහළට ගෙන යන්න"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
@@ -7868,17 +7868,17 @@ msgstr "සාර්ථක: "
 msgid "Command \"%1\" failed."
 msgstr "විධානය \"%1\" අසමත් විය."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2558 view/kateviewhelpers.cpp:2559
 #, kde-format
 msgid "Mark Type %1"
 msgstr "ලකුණුකරණ වර්ගය %1"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2582
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "පෙරනිමි ලකුණුකරණ වර්ගය සකසන්න"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2723
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "සජීවන තීරුව අක්‍රිය කරන්න"

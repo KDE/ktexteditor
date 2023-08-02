@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 00:45+0000\n"
+"POT-Creation-Date: 2023-08-02 00:43+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1326,7 +1326,7 @@ msgstr "&Figyelmen kívül hagyás"
 msgid "Ignores the changes on disk without any action."
 msgstr "Mellőzi a lemezen történt változtatásokat."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1335,18 +1335,18 @@ msgstr ""
 "A diff parancs végrehajtása nem sikerült. Ellenőrizze, hogy a diff(1) "
 "parancs telepítve van-e és szerepel-e az elérési útban."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Hiba történt a diff-fájl létrehozásakor"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "A fájlok teljesen egyformák."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff kimenet"
@@ -3568,7 +3568,7 @@ msgstr "Nem sikerült betölteni ezt a szkriptet: %1\n"
 msgid "Error loading script %1"
 msgstr "Nem sikerült betölteni egy szkriptet: %1"
 
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
@@ -4229,7 +4229,7 @@ msgstr "Felvétel a szótárba"
 msgid "Spelling '%1'"
 msgstr "Helyesírás"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:89
 #, fuzzy, kde-format
 #| msgid ""
 #| "The diff command could not be started. Please make sure that diff(1) is "
@@ -4241,7 +4241,7 @@ msgstr ""
 "A diff parancs nem indítható el. Ellenőrizze, hogy a diff(1) parancs "
 "telepítve van-e és szerepel-e az elérési útban (PATH)."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:99
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
@@ -6132,29 +6132,29 @@ msgstr "Új UUID generálása."
 msgid "Kate Handbook."
 msgstr "Kate kézikönyv."
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "igaz"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "hamis"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "nincs"
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "módosítva"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
@@ -7838,17 +7838,17 @@ msgstr "Siker: "
 msgid "Command \"%1\" failed."
 msgstr "A(z) \"%1\" parancs nem sikerült."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2558 view/kateviewhelpers.cpp:2559
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Jelölési típus: %1"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2582
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Az alapértelmezett jeltípus beállítása"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2723
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "A megjegyzéssáv letiltása"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 00:45+0000\n"
+"POT-Creation-Date: 2023-08-02 00:43+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1358,7 +1358,7 @@ msgstr "&Ignorēt"
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignorēt izmaiņas. Jums vairs netiks uzdots šis jautājums."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1367,18 +1367,18 @@ msgstr ""
 "Neizdevās palaist diff komandu. Lūdzu, pārliecinieties ka diff(1) ir "
 "instalēts un atrodas mainīgajā PATH."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Kļūda, iegūstot atšķirības"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Datnes ir identiskas."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff izvade"
@@ -3640,7 +3640,7 @@ msgstr "Kļūda, ielādējot skriptu %1\n"
 msgid "Error loading script %1"
 msgstr "Kļūda, ielādējot skriptu %1"
 
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
@@ -4259,7 +4259,7 @@ msgstr "Pievienot vārdnīcai"
 msgid "Spelling '%1'"
 msgstr "Pareizrakstība"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:89
 #, fuzzy, kde-format
 #| msgid ""
 #| "The diff command failed. Please make sure that diff(1) is installed and "
@@ -4271,7 +4271,7 @@ msgstr ""
 "Neizdevās palaist diff komandu. Lūdzu, pārliecinieties ka diff(1) ir "
 "instalēts un atrodas mainīgajā PATH."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:99
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
@@ -6191,29 +6191,29 @@ msgstr ""
 msgid "Kate Handbook."
 msgstr "Kate rokasgrāmata."
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "patiess"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "aplams"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "nav"
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "mainīts"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, fuzzy, kde-format
 #| msgctxt "value for variale remove-trailing-spaces"
 #| msgid "all"
@@ -7909,17 +7909,17 @@ msgstr "Izdevies: "
 msgid "Command \"%1\" failed."
 msgstr "Komanda “%1” cieta neveiksmi."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2558 view/kateviewhelpers.cpp:2559
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Marķējuma tips %1"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2582
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Iestatīt noklusēto marķējuma tipu"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2723
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Deaktivēt anotāciju joslu"

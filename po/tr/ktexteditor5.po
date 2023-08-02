@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 00:45+0000\n"
-"PO-Revision-Date: 2023-06-04 02:02+0300\n"
+"POT-Creation-Date: 2023-08-02 00:43+0000\n"
+"PO-Revision-Date: 2023-08-02 00:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1306,7 +1306,7 @@ msgstr "&Yok Say"
 msgid "Ignores the changes on disk without any action."
 msgstr "Diskteki değişiklikleri hiçbir işlem yapmadan yok sayar."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:135
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1315,18 +1315,18 @@ msgstr ""
 "diff komutu başarısız oldu. Lütfen şunlardan emin olun: diff(1) sisteminizde "
 "kurulu ve PATH içinde olduğundan emin olun."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:95
-#: swapfile/kateswapdiffcreator.cpp:103 swapfile/kateswapdiffcreator.cpp:137
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr ".diff dosyası oluşturmada hata"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Dosyalar birbiri ile aynı."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:144
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff Çıktısı"
@@ -3489,7 +3489,7 @@ msgstr "%1 betiği yüklenirken hata oluştu\n"
 msgid "Error loading script %1"
 msgstr "%1 betiği yüklenirken hata oluştu"
 
-#: script/katescriptmanager.cpp:315
+#: script/katescriptmanager.cpp:311
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
@@ -4150,7 +4150,7 @@ msgstr "Sözlüğe Ekle"
 msgid "Spelling '%1'"
 msgstr "Yazım '%1'"
 
-#: swapfile/kateswapdiffcreator.cpp:93
+#: swapfile/kateswapdiffcreator.cpp:89
 #, kde-format
 msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
@@ -4159,7 +4159,7 @@ msgstr ""
 "diff komutu bulunamadı. Lütfen diff(1)'in kurulu olduğundan ve PATH'inizde "
 "olduğundan emin olun."
 
-#: swapfile/kateswapdiffcreator.cpp:103
+#: swapfile/kateswapdiffcreator.cpp:99
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr "'%1' diff komutu başlatılamadı."
@@ -4880,7 +4880,7 @@ msgstr "Öntanımlı Tema"
 #: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Theme Editor"
-msgstr "Tema Düzenleyici"
+msgstr "Tema Düzenleyicisi"
 
 #: syntax/katethemeconfig.cpp:1039
 #, kde-format
@@ -6041,29 +6041,29 @@ msgstr "Yeni bir UUID oluşturun."
 msgid "Kate Handbook."
 msgstr "Kate El Kitabı."
 
-#: variableeditor/variableeditor.cpp:172
+#: variableeditor/variableeditor.cpp:168
 #, kde-format
 msgid "true"
 msgstr "doğru"
 
-#: variableeditor/variableeditor.cpp:173
+#: variableeditor/variableeditor.cpp:169
 #, kde-format
 msgid "false"
 msgstr "yanlış"
 
-#: variableeditor/variableeditor.cpp:309
+#: variableeditor/variableeditor.cpp:305
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "hiçbiri"
 
-#: variableeditor/variableeditor.cpp:310
+#: variableeditor/variableeditor.cpp:306
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "değiştirildi"
 
-#: variableeditor/variableeditor.cpp:311
+#: variableeditor/variableeditor.cpp:307
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
@@ -7725,17 +7725,17 @@ msgstr "Başarılı: "
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" komutunun işletilmesinde hata."
 
-#: view/kateviewhelpers.cpp:2562 view/kateviewhelpers.cpp:2563
+#: view/kateviewhelpers.cpp:2558 view/kateviewhelpers.cpp:2559
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 İm Türü"
 
-#: view/kateviewhelpers.cpp:2586
+#: view/kateviewhelpers.cpp:2582
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Öntanımlı İm Türünü Ayarla"
 
-#: view/kateviewhelpers.cpp:2727
+#: view/kateviewhelpers.cpp:2723
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Açıklama Çubuğunu Gösterme"
