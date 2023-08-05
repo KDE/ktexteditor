@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-07-30 05:56+0200\n"
+"PO-Revision-Date: 2023-08-04 19:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -4408,7 +4408,7 @@ msgstr "კოდის გადატანა"
 #: syntax/katethemeconfig.cpp:266
 #, kde-format
 msgid "<p>Sets the color of the code folding bar.</p>"
-msgstr ""
+msgstr "<p>კოდის გადატანის ზოლის ფერი.</p>"
 
 #: syntax/katethemeconfig.cpp:271
 #, kde-format
@@ -4419,7 +4419,7 @@ msgstr "შეცვლილი ხაზები"
 #, kde-format
 msgid ""
 "<p>Sets the color of the line modification marker for modified lines.</p>"
-msgstr ""
+msgstr "<p>შეცვლილი ხაზების ცვლილების აღმნიშვნელი ნიშნის ფერი.</p>"
 
 #: syntax/katethemeconfig.cpp:278
 #, kde-format
@@ -4429,7 +4429,7 @@ msgstr "შენახული ხაზები"
 #: syntax/katethemeconfig.cpp:280
 #, kde-format
 msgid "<p>Sets the color of the line modification marker for saved lines.</p>"
-msgstr ""
+msgstr "<p>შენახული ხაზების ცვლილების აღმნიშვნელი ფერი.</p>"
 
 #: syntax/katethemeconfig.cpp:287
 #, kde-format
@@ -4445,7 +4445,7 @@ msgstr "მართლწერის შეცდომის მქონე 
 #, kde-format
 msgid ""
 "<p>Sets the color of the line that is used to indicate spelling mistakes.</p>"
-msgstr ""
+msgstr "<p>მართლწერის შეცდომის შემცველი ხაზის მაჩვენებელი ფერი.</p>"
 
 #: syntax/katethemeconfig.cpp:297
 #, kde-format
@@ -5750,7 +5750,7 @@ msgstr "ბლოკის მონიშვნის რეჟიმის ჩ
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
-msgstr ""
+msgstr "უნიკოდის ფაილების შენახვისას ბაიტების მიმდევრობის ბიტის (BOM) ჩართვა."
 
 #: variableeditor/variablelineedit.cpp:149
 #, kde-format
@@ -5972,6 +5972,8 @@ msgstr ""
 #, kde-format
 msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
+"ჩასმის რეჟიმისა და VI-ის შეყვანის რეჟიმის ინდიკატორი. რეჟიმის შესაცვლელად "
+"დააწკაპუნეთ."
 
 #: view/katestatusbar.cpp:135
 #, kde-format
@@ -6029,6 +6031,9 @@ msgid ""
 "Here you can choose which mode should be used for the current document. This "
 "will influence the highlighting and folding being used, for example."
 msgstr ""
+"აქ შეგიძლიათ აირჩიოთ, რომელი რეჟიმის გამოყენება გსურთ მიმდინარე "
+"დოკუმენტისთვის. ეს გავლენას ახდენს, მაგალითად გამოკვეთისა და გადატანის "
+"პარამეტრებზე."
 
 #: view/katestatusbar.cpp:216
 #, kde-format
@@ -6141,6 +6146,8 @@ msgstr "ადრე ამოჭრილი ან კოპირებულ
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
+"გამოიყენეთ ეს ბრძანება ამჟამად მონიშნული ტექსტის სისტემის ბუფერში "
+"დასაკოპირებლად."
 
 #: view/kateview.cpp:466
 #, kde-format
@@ -6345,6 +6352,8 @@ msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
 "selected."
 msgstr ""
+"მონიშნულის, ან, თუ ტექსტი მონიშნული არაა, კურსორის ქვეშ მყოფი სიტყვის ზედა "
+"რეგისტრში გადატანა."
 
 #: view/kateview.cpp:607
 #, kde-format
@@ -6690,7 +6699,7 @@ msgstr "ბრძანების ხაზზე გადართვა"
 #: view/kateview.cpp:830
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
-msgstr ""
+msgstr "ხედის ქვედა ნაწილში მდებარე ბრძანების სტრიქონის ჩვენება/დამალვა."
 
 #: view/kateview.cpp:833
 #, kde-format
@@ -6711,6 +6720,7 @@ msgstr "&ხაზის დასასრული"
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr ""
+"აირჩიეთ, დოკუმენტის შენახვისას რომელი ხაზის ბოლოები იქნება გამოყენებული"
 
 #: view/kateview.cpp:855
 #, kde-format
@@ -6751,6 +6761,7 @@ msgstr "&კოდირება"
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr ""
+"მითითებული ტექსტის ან რეგულარული გამოსახულების პირველი გამოჩენის მოძებნა."
 
 #: view/kateview.cpp:877
 #, kde-format
@@ -6781,6 +6792,8 @@ msgstr "შემდეგი დამთხვევის პოვნა დ
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
+"კურსორის ქვეშ მდებარე სიტყვის შემდეგი გამოჩენის მოძებნა და მისი მონიშნულში "
+"ჩამატება."
 
 #: view/kateview.cpp:895
 #, kde-format
@@ -6818,6 +6831,8 @@ msgid ""
 "Look up a piece of text or regular expression and replace the result with "
 "some given text."
 msgstr ""
+"მითითებული ტექსტის ან რეგულარული გამოსახულების მოძებნა და მისი ჩანაცვლება "
+"მითითებული ტექსტით."
 
 #: view/kateview.cpp:918
 #, kde-format
@@ -7192,7 +7207,7 @@ msgstr "&შეწევის გაუქმება"
 #: view/kateview.cpp:1299
 #, kde-format
 msgid "Use this to unindent a selected block of text."
-msgstr ""
+msgstr "გამოიყენეთ მონიშნული ტექსტის ბლოკის შეწევის გაუქმებისთვის."
 
 #: view/kateview.cpp:1317
 #, kde-format
@@ -7267,6 +7282,8 @@ msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
 "p>"
 msgstr ""
+"<p>ინდივიდუალური ბრძანების დახმარებებისათვის გამოიყენეთ <code>'help &lt;"
+"ბრძანება&gt;'</code></p>"
 
 #: view/kateviewhelpers.cpp:1162
 #, kde-format
