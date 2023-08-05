@@ -233,16 +233,22 @@ void KateBookmarks::goNext()
 
     int line = m_view->cursorPosition().line();
     int found = -1;
-
+    int firstBookmarkLine = -1;
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
         const int markLine = it.value()->line;
         if (markLine > line && (found == -1 || found > markLine)) {
             found = markLine;
         }
+        if (markLine < firstBookmarkLine || firstBookmarkLine == -1) {
+            firstBookmarkLine = markLine;
+        }
     }
 
+    // either go to next bookmark or the first in the document, bug 472354
     if (found != -1) {
         gotoLine(found);
+    } else {
+        gotoLine(firstBookmarkLine);
     }
 }
 
@@ -256,22 +262,35 @@ void KateBookmarks::goPrevious()
 
     int line = m_view->cursorPosition().line();
     int found = -1;
-
+    int lastBookmarkLine = -1;
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
         const int markLine = it.value()->line;
         if (markLine < line && (found == -1 || found < markLine)) {
             found = markLine;
         }
+        if (markLine > lastBookmarkLine) {
+            lastBookmarkLine = markLine;
+        }
     }
 
+    // either go to previous bookmark or the last in the document, bug 472354
     if (found != -1) {
         gotoLine(found);
+    } else {
+        gotoLine(lastBookmarkLine);
     }
 }
 
 void KateBookmarks::marksChanged()
 {
+    const bool bookmarks = !m_view->doc()->marks().isEmpty();
     if (m_bookmarkClear) {
-        m_bookmarkClear->setEnabled(!m_view->doc()->marks().isEmpty());
+        m_bookmarkClear->setEnabled(bookmarks);
+    }
+    if (m_goNext) {
+        m_goNext->setEnabled(bookmarks);
+    }
+    if (m_goPrevious) {
+        m_goPrevious->setEnabled(bookmarks);
     }
 }
