@@ -4762,7 +4762,9 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
 
         // if the input method event is text that should be inserted, call KTextEditor::DocumentPrivate::typeChars()
         // with the text. that method will handle the input and take care of overwrite mode, etc.
-        doc()->typeChars(m_view, e->commitString());
+        // we call this via keyPressEvent, as that handles our input methods, see bug 357062
+        QKeyEvent ke(QEvent::KeyPress, 0, Qt::NoModifier, e->commitString());
+        keyPressEvent(&ke);
 
         doc()->editEnd();
 
