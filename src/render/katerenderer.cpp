@@ -997,9 +997,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
 
 static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &pos, int cursorPosition, int width, const int height)
 {
-    if (!layout.isValidCursorPosition(cursorPosition)) {
-        cursorPosition = 0;
-    }
+    cursorPosition = qBound(0, cursorPosition, layout.text().length());
     const QTextLine l = layout.lineForTextPosition(cursorPosition);
     Q_ASSERT(l.isValid());
     if (!l.isValid()) {
