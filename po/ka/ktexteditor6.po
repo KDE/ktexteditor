@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-08-04 19:08+0200\n"
+"PO-Revision-Date: 2023-08-11 06:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1814,7 +1814,7 @@ msgstr "ბრჭყალების დამთხვევა:"
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
-msgstr ""
+msgstr "თუ ჩართულია, შესაბამის ფრთხილებს შორის დიაპაზონი გამოკვეთილი იქნება."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:188
@@ -1954,6 +1954,7 @@ msgstr "სიტყვების დინამიკური გადა�
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
+"აირჩიეთ, როდის იქნება ნაჩვენები დინამიკური სიტყვის გადატანის ინდიკატორები."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:370
@@ -4361,6 +4362,7 @@ msgstr "ხაზის ნომრები"
 #, kde-format
 msgid "<p>This color will be used to draw the line numbers (if enabled).</p>"
 msgstr ""
+"<p>ეს ფერი გამოყენებული იქნება ხაზის ნომრების დასახატად (თუ ჩართულია).</p>"
 
 #: syntax/katethemeconfig.cpp:240
 #, kde-format
@@ -4373,6 +4375,8 @@ msgid ""
 "<p>This color will be used to draw the number of the current line (if "
 "enabled).</p>"
 msgstr ""
+"<p>ეს ფერი გამოყენებული იქნება მიმდინარე ხაზის ნომრის დასახატად (თუ "
+"ჩართულია).</p>"
 
 #: syntax/katethemeconfig.cpp:247
 #, kde-format
