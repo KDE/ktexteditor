@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-08-19 05:32+0200\n"
+"PO-Revision-Date: 2023-08-22 05:23+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1863,7 +1863,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:214
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "სხვა წყვილ ბრჭყალზე გადასვლისას შესაბამისი ბრჭყალების გაციმციმება"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -7502,6 +7502,8 @@ msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
 "p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 msgstr ""
+"<p><b>b,buffer &mdash; დოკუმენტების სიიდან N-ე დოკუმენტის ჩასწორება</b></"
+"p><p>გამოყენება: <tt><b>b[ბაფერი] [N]</b></tt></p>"
 
 #: vimode/appcommands.cpp:517
 #, kde-format
@@ -7528,6 +7530,9 @@ msgid ""
 "tt></p><p>Goes to the <b>f</b>irst document (\"<b>b</b>uffer\") in document "
 "list.</p>"
 msgstr ""
+"<p><b>bf,bfirst &mdash; პირველი დოკუმენტი</b></p><p>გამოყენება: "
+"<tt><b>bf[პირველი]</b></tt></p><p>გადავა <b>პ</b>პირველ დოკუმენტზე (\"<b>ბ</"
+"b>უფერზე\") დოკუმენტების სიაში.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format
@@ -7536,6 +7541,9 @@ msgid ""
 "tt></p><p>Goes to the <b>l</b>ast document (\"<b>b</b>uffer\") in document "
 "list.</p>"
 msgstr ""
+"<p><b>bl,blast &mdash; ბოლო დოკუმენტი</b></p><p>გამოყენება: <tt><b>bl[ბოლო]</"
+"b></tt></p><p>გადავა <b>ბ</b>ბოლო დოკუმენტზე (\"<b>ბ</b>უფერზე\") "
+"დოკუმენტების სიაში.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format
