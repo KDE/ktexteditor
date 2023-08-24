@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-08-22 05:23+0200\n"
+"PO-Revision-Date: 2023-08-23 06:51+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2111,6 +2111,8 @@ msgid ""
 "The selected encoding cannot encode every Unicode character in this "
 "document. Do you really want to save it? There could be some data lost."
 msgstr ""
+"არჩეულ კოდირებას ამ დოკუმენტში არსებული ყველა უნიკოდის სიმბოლოს კოდირება არ "
+"შეუძლია. მაინც გნებავთ, შეინახოთ ის? მონაცემები შეიძლება, დაიკარგოს."
 
 #: document/katedocument.cpp:2568
 #, kde-format
@@ -2182,6 +2184,10 @@ msgid ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 msgstr ""
+"დოკუმენტის შენახვა შეუძლებელია, რადგან '%1'-ში ჩაწერა აკრძალულია.\n"
+"\n"
+"შეამოწმეთ, გაქვთ თუ არა ამ ფაილში ჩაწერის უფლება და დისკზე ადგილი საკმარისი "
+"თუა."
 
 #: document/katedocument.cpp:5294
 #, kde-format
@@ -3247,6 +3253,8 @@ msgstr "%1-ის გამოძახების შეცდომა"
 #, kde-format
 msgid "Bad quoting in call: %1. Please escape single quotes with a backslash."
 msgstr ""
+"არასწორი ციტირება გამოძახებაში: %1. ერთმაგი ბრჭყალების წინ უკუღმა დახრილი "
+"ხაზი '\\' დაუსვით."
 
 #: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
 #: vimode/cmds.cpp:37
