@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-08-23 06:51+0200\n"
+"PO-Revision-Date: 2023-08-24 05:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1872,6 +1872,8 @@ msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
 msgstr ""
+"თუ ეს ჩართულია, რედაქტორი შეწევის ხაზების იდენტიფიკაციისთვის ვერტიკალურ "
+"ხაზებს გაჩვენებთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:224
@@ -2123,6 +2125,11 @@ msgid ""
 "The original file may be lost or damaged. Don't quit the application until "
 "the file is successfully written."
 msgstr ""
+"დოკუმენტი არ შენახულა, რადგან %1-ში ჩაწერა შეუძლებელია.\n"
+"შეამოწმეთ, გაქვთ ფაილში ჩაწერის უფლება, თუ არა და არის თუ არა დისკზე "
+"საკმარისი თავისუფალი ადგილი.\n"
+"ორიგინალი ფაილი შეიძლება დაკარგული ან დაზიანებულია. ნუ გახვალთ აპლიკაციიდან "
+"მანამდე, სანამ ფაილს არ ჩაწერთ."
 
 #: document/katedocument.cpp:2689
 #, kde-format
@@ -2411,6 +2418,8 @@ msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr ""
+"<p>თუ ჩართულია, გვერდების მარცხენა მხარეს გვერდის ნომრები იქნება ნაჩვენები.</"
+"p>"
 
 #: printing/printconfigwidgets.cpp:56
 #, kde-format
@@ -4313,6 +4322,9 @@ msgid ""
 "for selected text, use the &quot;<b>Configure Highlighting</b>&quot; dialog."
 "</p>"
 msgstr ""
+"<p>მონიშნულის ფონის ფერის დაყენება.</p><p>მონიშნული ტექსტის ფერის "
+"დასაყენებლად &quot;<b>გამოკვეთის მორგების</b>&quot; ფანჯარა შეგიძლიათ, "
+"გამოიყენოთ.</p>"
 
 #: syntax/katethemeconfig.cpp:200
 #, kde-format
@@ -4325,6 +4337,8 @@ msgid ""
 "<p>Sets the background color of the currently active line, which means the "
 "line where your cursor is positioned.</p>"
 msgstr ""
+"<p>ამჟამად აქტიური ხაზის ფონის ფერის დაყენება. მიმდინარე ხაზად ის ითვლება, "
+"სადაც თქვენი კურსორია მოთავსებული.</p>"
 
 #: syntax/katethemeconfig.cpp:207
 #, kde-format
@@ -4397,6 +4411,8 @@ msgid ""
 "<p>This color will be used to draw the line between line numbers and the "
 "icon borders, if both are enabled.</p>"
 msgstr ""
+"<p>ეს ფერი გამოყენებული იქნება ხაზის ნომრებსა და ხატულის საზღვრებს შორის "
+"ხაზის დასახატად, თუ ორივე ჩართულია.</p>"
 
 #: syntax/katethemeconfig.cpp:254
 #, kde-format
