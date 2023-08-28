@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-08-25 22:59+0200\n"
+"PO-Revision-Date: 2023-08-28 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -3677,14 +3677,14 @@ msgstr "검색할 문자열"
 #: search/searchbarincremental.ui:91 search/searchbarpower.ui:175
 #, kde-format
 msgid "Jump to next match"
-msgstr "다음 일치하는 곳으로 이동"
+msgstr "다음 일치로 이동"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
 #: search/searchbarincremental.ui:101 search/searchbarpower.ui:185
 #, kde-format
 msgid "Jump to previous match"
-msgstr "이전 일치하는 곳으로 이동"
+msgstr "이전 일치로 이동"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
 #: search/searchbarincremental.ui:111 search/searchbarpower.ui:136

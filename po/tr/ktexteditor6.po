@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-08-01 12:50+0300\n"
+"PO-Revision-Date: 2023-08-26 12:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -6135,13 +6135,13 @@ msgstr "Satır sonu kipini ayarlar."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
-msgstr "Düzenleyici kenarlığında katlama işaretlerini etkinleştir."
+msgstr "Düzenleyici kenarlığında katlama imlerini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:182
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
-msgstr "Düzenleyici kenarlığında katlama önizlemeyi etkinleştir."
+msgstr "Düzenleyici kenarlığında katlama önizlemesini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:188
 #, kde-format
@@ -6171,7 +6171,7 @@ msgstr "Simge çubuğu rengini ayarla."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
-msgstr "Düzenleyici görünümünde simge kenarlığını etkinleştir."
+msgstr "Düzenleyicide simge kenarlığını etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:224
 #, kde-format
@@ -6213,13 +6213,13 @@ msgstr "Kaydedilirken dosyanın sonuna yeni bir satır ekle."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
-msgstr "Belgede üzerine yazma kipini etkinleştir."
+msgstr "Belgede üzerine yazma kipini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:260
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
-msgstr "Kalıcı metin seçmeyi etkinleştir."
+msgstr "Kalıcı metin seçmeyi etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:265
 #, kde-format
@@ -6273,7 +6273,7 @@ msgstr "Sekmeleri ve sondaki boşlukları görselleştirin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
-msgstr "Akıllı ev gezintisini etkinleştir."
+msgstr "Akıllı ev gezintisini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:316
 #, kde-format
@@ -6309,7 +6309,7 @@ msgstr "Sözcük kaydırmayı gösterecek rengi seçin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
-msgstr "Metin yazarken sözcük kaydırmayı etkinleştir."
+msgstr "Yazarken sözcük kaydırmayı etkinleştirin."
 
 #: view/katestatusbar.cpp:114
 #, kde-format
