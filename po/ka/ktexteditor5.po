@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 00:43+0000\n"
-"PO-Revision-Date: 2023-08-26 06:11+0200\n"
+"PO-Revision-Date: 2023-08-27 11:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -526,6 +526,9 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
+"<p>თუ ეს პარამეტრი ჩართულია, სიტყვის გადატანის სვეტთან, რომელსაც "
+"<strong>ჩასწორების</string> პარამეტრები აღწერს, ვერტიკალური ხაზი დაიხატება.</"
+"p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -915,6 +918,8 @@ msgid ""
 "indentation level if the cursor is located in the leading blank space of a "
 "line."
 msgstr ""
+"თუ ეს პარამეტრი ჩართულია, ღილაკი <b>Backspace</p> შეწევის დონეს დაწევს, თუ "
+"კურსორი ხაზის დასაწყისში მდებარე ცარიელ ადგილასაა."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
@@ -968,6 +973,8 @@ msgid ""
 "line by the number of character positions specified in <b>Indentation width</"
 "b>."
 msgstr ""
+"თუ ეს პარამეტრი ჩართულია, ღილაკი <b>Tab</b> მიმდინარე ხაზს <b>შეწევის "
+"სიგანეში</b> მითითებული რაოდენობის სიმბოლოებით შესწევს."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:289
@@ -1889,6 +1896,10 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"თუ ჩართულია, ნაჩვენები იქნება ღია ბრჭყალთან ახლოს მყოფი ხაზების მინიატურა. "
+"ამან შეიძლება დამხურავი ბრჭყალის კონტექსტის სწრაფად დადგენის საშუალება "
+"მოგცეთ, განსაკუთრებით, გრძელი ფუნქციების/კლასის აღწერებში და ღრმად ჩადგმულ "
+"if ბლოკებში"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:201
@@ -1971,6 +1982,10 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
+"როცა ეს პარამეტრი ჩართულია, რედაქტორი დოკუმენტის პირველ ხაზზე\n"
+"არსებული კომენტარის ბლოკებს ავტომატურად გადაიტანს. ეს დაგეხმარებათ,\n"
+"დამალოთ ლიცენზიის თავსართები, რომლებიც, ჩვეულებრივ,\n"
+"ფაილის დასაწყისშია ხოლმე მოთავსებული."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:296
@@ -2047,6 +2062,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"ეს მნიშვნელობა ფონტის ნაგულისხმევი ხაზის სიმაღლეზე გამრავლდება. მნიშვნელობა "
+"1.0 ნიშნავს, რომ გამოყენებული იქნება ნაგულისხმევი სიმაღლე."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:438
@@ -2081,6 +2098,8 @@ msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
 ">Check if you have read access to this file."
 msgstr ""
+"ფაილი %1 ვერ ჩავტვირთე, რადგან მისი წაკითხვა შეუძლებელია. <br /> "
+"გადაამოწმეთ, გაქვთ ფაილთან წვდომა, თუ არა."
 
 #: document/katedocument.cpp:2318
 #, kde-format
@@ -2114,6 +2133,11 @@ msgid ""
 ">Either reopen the file with the correct encoding chosen or enable the read-"
 "write mode again in the tools menu to be able to edit it."
 msgstr ""
+"ფაილი %1 გაიხსნა კოდირებით %2, მაგრამ არასწორ სიმბოლოებს შიცავდა.<br />ის "
+"გადართულია მხოლოდ-წაკითხვის რეჟიმში, რადგან შენახვამ შეიძლება მისი "
+"შემცველობა გაანადგუროს.<br />ან ფაილი თავიდან გახსენით, ოღონდ სწორი "
+"კოდირებით, ან, ფაილის ჩასასწორებლად, გადართეთ ის ჩაწერა-წაკითხვის რეჟიმში "
+"ხელსაწყოების მენიუდან."
 
 #: document/katedocument.cpp:2470
 #, kde-format
@@ -2132,6 +2156,10 @@ msgid ""
 "characters long<br/>Those lines were wrapped and the document is set to read-"
 "only mode, as saving will modify its content."
 msgstr ""
+"ფაილი %1 გაიხსნა და შეიცავდა იმაზე გრძელ ხაზებს, ვიდრე ეს ზღვარშია აღწერილი "
+"(%2 სიმბოლო). <br /> ხაზებიდან ყველაზე გრძელი %3 სიმბოლოს შეიცავდა<br/> ეს "
+"ხაზები გადატანილია და დოკუმენტი გადაირთო მხოლოდ-კითხვის რეჟიმში, რადგან მისი "
+"შენახვა შემცველობის შეცვლას გამოიწვევს."
 
 #: document/katedocument.cpp:2490
 #, kde-format
@@ -2220,6 +2248,10 @@ msgid ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 msgstr ""
+"ფაილისთვის %1 შენახვამდე სამარქაფე ასლი არ შექმნილა. თუ შენახვისას შეცდომა "
+"აღმოჩნდება, შეიძლება ფაილში არსებული მონაცემები დაკარგოთ. ამის მიზეზი "
+"შეიძლება იყოს ის, რომ მედია, რომელზედაც წერთ, სავსეა, ან საქაღალდე ან ფაილი "
+"თქვენთვის მხოლოდ-კითხვადია."
 
 #: document/katedocument.cpp:2723
 #, kde-format
@@ -2281,6 +2313,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"იყენებთ მოძველებულ რეჟიმის ხაზს 'remove-training-space'. ჩაანაცვლეთ ეს "
+"'remove-trailing-spaces modifiled'-ით. მეტი ინფორმაციისთვის იხილეთ: https://"
+"docs.kde.org/?application=katepart&branch=stable5&path=config-variables."
+"html#variable-remove-trailing-spaces"
 
 #: document/katedocument.cpp:5304
 #, kde-format
@@ -2290,6 +2326,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"იყენებთ მოძველებულ რეჟიმის ხაზს 'replace-trailing-space-save'. ჩაანაცვლეთ ეს "
+"'remove-trailing-spaces all;'-ით. მეტი ინფორმაციისთვის იხილეთ: https://docs."
+"kde.org/?application=katepart&branch=stable5&path=config-variables."
+"html#variable-remove-trailing-spaces"
 
 #: document/katedocument.cpp:5613
 #, kde-format
@@ -2418,6 +2458,8 @@ msgid ""
 "Please note that this will automatically edit the associated file extensions "
 "as well."
 msgstr ""
+"აირჩიეთ ამ ფაილის ტიპის სასურველი MimeType-ები\n"
+"დაიმახსოვრეთ, რომ ეს ასოცირებული ფაილის გაფართოებასაც შეცვლის."
 
 #: mode/katemodeconfigpage.cpp:295
 #, kde-format
@@ -2504,6 +2546,8 @@ msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
 "as defined by the syntax highlighting being used.</p>"
 msgstr ""
+"<p>დაიბეჭდება ფანჯარა, რომელიც ამ დოკუმენტის ტიპისთვის ტიპოგრაფიულ წესებს "
+"გამოიტანს, როგორც ამას გამოყენებული სინტაქსის გამოკვეთა განსაზღვრავს.</p>"
 
 #: printing/printconfigwidgets.cpp:116
 #, kde-format
@@ -2698,6 +2742,8 @@ msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
+"<p>თუ ჩართულია გამოყენებული იქნება რედაქტორის ფონის ფერი.</p><p>ეს შეიძლება "
+"გამოგადგეთ ფერის თემებისთვის, რომელიც მუქი ფონისთვისაა შექმნილი.</p>"
 
 #: printing/printconfigwidgets.cpp:552
 #, kde-format
@@ -2706,6 +2752,8 @@ msgid ""
 "the contents of each page. The Header and Footer will be separated from the "
 "contents with a line as well.</p>"
 msgstr ""
+"<p>თუ ჩართულია, ქვემოთ თვისებებში აღწერილი ყუთი თითოეული გვერდის შემცველობის "
+"გარშემო დაიხატება. თავსართი და ქვედა კოლონტიტულიც ხაზით გამოიყოფა.</p>"
 
 #: printing/printconfigwidgets.cpp:555
 #, kde-format
@@ -2872,6 +2920,8 @@ msgid ""
 "Expands the abbreviation using Emmet expressions; see http://code.google.com/"
 "p/zen-coding/wiki/ZenHTMLSelectorsEn"
 msgstr ""
+"აბრევიატურის გაშლა Emmet გამოსახულებით. იხილეთ: http://code.google.com/p/zen-"
+"coding/wiki/ZenHTMLSelectorsEn"
 
 #: script/data/commands/emmet.js:97
 #, kde-format
@@ -2879,6 +2929,8 @@ msgid ""
 "Wraps the selected text in XML tags constructed from the provided Emmet "
 "expression (defaults to div)."
 msgstr ""
+"მონიშნული ტექსტის გადატანა XML ჭდეებში, რომლებიც მითითებული Emmet-ის "
+"გამოსახულებით აიგო (ნაგულისხმევია: div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
@@ -3083,6 +3135,9 @@ msgid ""
 "example to show the difference to the normal sort method:<br>sort(a10, a1, "
 "a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgstr ""
+"მონიშნული ტექსტის ან მთელი დოკუმენტის ბუნებრივად დალაგება.<br>მაგალითი, "
+"როგორია დალაგება ნორმალურთან შედარებით:<br>sort(a10, a1, a2) => a1, a10, "
+"a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: script/data/commands/utils.js:428
 #, kde-format
@@ -4911,6 +4966,9 @@ msgid ""
 "lines or current line according to the text format as defined by the syntax "
 "highlight definition for the document.</p>"
 msgstr ""
+"<p>uncomment</p><p>წაუშლის კომენტარის ნიშნულებს მონიშნულს, ან მონიშნულ "
+"ხაზებს ან მიმდინარე ხაზს, ტექსტის ფორმატზე დამოკიდებულებით, როგორც ეს "
+"დოკუმენტის სინტაქსის გამოკვეთაშია მითითებული.</p>"
 
 #: utils/katecmds.cpp:80
 #, kde-format
@@ -4918,6 +4976,8 @@ msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
 "line number.</p>"
 msgstr ""
+"<p>goto <b>ხაზის ნომერი</b></p><p>ეს ბრძანება მითითებულ ხაზის ნომერზე "
+"გადადის.</p>"
 
 #: utils/katecmds.cpp:85
 #, kde-format
@@ -4939,6 +4999,8 @@ msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
 "<b>width</b></p>"
 msgstr ""
+"<p>set-tab-width <b>სიგანე</b></p><p>ტაბულაციის სიგანის მითითებულ "
+"<b>სიგანეზე</b> დაყენება</p>"
 
 #: utils/katecmds.cpp:100
 #, kde-format
@@ -4979,6 +5041,8 @@ msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
 "in the Tools - Indentation menu</p>"
 msgstr ""
+"<p>set-indent-mode <b>რეჟიმი</b></p>რეჟიმის პარამეტრი მნიშვნელობაა, რომელიც "
+"ხელსაწყოები - შეწევის მენიუში შეგიძლიათ, იხილოთ<p></p>"
 
 #: utils/katecmds.cpp:135
 #, kde-format
@@ -7494,6 +7558,9 @@ msgid ""
 "p><p>Usage: <tt><b>sp[lit]</b></tt></p><p>The result is two views on the "
 "same document.</p>"
 msgstr ""
+"<p><b>sp,split&mdash; მიმდინარე ხედის თარაზულად, ორად გაყოფა</b></"
+"p><p>გამოყენება: <tt><b>sp[lit]</b></tt></p><p>შედეგად იგივე დოკუმენტის ორ "
+"ხედს მიიღებთ.</p>"
 
 #: vimode/appcommands.cpp:248
 #, kde-format
@@ -7502,6 +7569,9 @@ msgid ""
 "p><p>Usage: <tt><b>vs[plit]</b></tt></p><p>The result is two views on the "
 "same document.</p>"
 msgstr ""
+"<p><b>vs,vsplit&mdash; მიმდინარე ხედის ორად გაყოფა, ვერტიკალურად</b></"
+"p><p>გამოყენება: <tt><b>vs[plit]</b></tt></p><p>შედეგად იგივე დოკუმენტის ორ "
+"ხედს მიიღებთ.</p>"
 
 #: vimode/appcommands.cpp:254
 #, kde-format
@@ -7509,6 +7579,9 @@ msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
 "b></tt></p><p>After executing it, the current view will be closed.</p>"
 msgstr ""
+"<p><b>clo[se]&mdash; მიმდინარე ხედის დახურვა</b></p><p>გამოყენება: "
+"<tt><b>clo[se]</b></tt></p><p>მისი შესრულების შემდეგ მიმდინარე ხედი "
+"დაიხურება.</p>"
 
 #: vimode/appcommands.cpp:260
 #, kde-format
@@ -7735,6 +7808,8 @@ msgid ""
 "Read a vimrc file and attempt to import mappings specified with the "
 "\"[n]noremap\" command."
 msgstr ""
+"წაიკითხავს vimrc ფაილს და \"[n]noremap\" ბრძანებით მითითებული ასახვების "
+"შემოტანას სცდის."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnImportNormal)
 #: vimode/config/configwidget.ui:212
