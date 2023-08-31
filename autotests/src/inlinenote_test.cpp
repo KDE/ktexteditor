@@ -61,7 +61,7 @@ public:
         return QSize();
     }
 
-    void paintInlineNote(const InlineNote &note, QPainter &painter) const override
+    void paintInlineNote(const InlineNote &note, QPainter &painter, Qt::LayoutDirection) const override
     {
         if (note.position().column() == 5) {
             painter.setPen(Qt::darkGreen);

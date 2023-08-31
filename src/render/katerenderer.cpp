@@ -967,7 +967,9 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
         for (const auto &inlineNoteData : inlineNotes) {
             KTextEditor::InlineNote inlineNote(inlineNoteData);
             const int column = inlineNote.position().column();
-            int viewLine = range->viewLineForColumn(column);
+            const int viewLine = range->viewLineForColumn(column);
+            const auto dir = range->layout()->textOption().textDirection();
+            const bool isRTL = dir == Qt::RightToLeft;
 
             // Determine the position where to paint the note.
             // We start by getting the x coordinate of cursor placed to the column.
@@ -981,7 +983,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
             } else {
                 // If the note is outside the text, then the X coordinate is located at the end of the line.
                 // Add appropriate amount of spaces to reach the required column.
-                x += spaceWidth() * (column - textLength);
+                const auto spaceToAdd = spaceWidth() * (column - textLength);
+                x += isRTL ? -spaceToAdd : spaceToAdd;
             }
 
             qreal y = lineHeight() * viewLine;
@@ -989,7 +992,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
             // Paint the note
             paint.save();
             paint.translate(x, y);
-            inlineNote.provider()->paintInlineNote(inlineNote, paint);
+            inlineNote.provider()->paintInlineNote(inlineNote, paint, dir);
             paint.restore();
         }
     }

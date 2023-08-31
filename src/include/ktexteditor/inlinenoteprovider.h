@@ -92,8 +92,9 @@ public:
      *
      * @param note note to paint, containing location and index
      * @param painter painter prepared for rendering the note
+     * @param direction direction of the line i.e., right to left/left to right
      */
-    virtual void paintInlineNote(const InlineNote &note, QPainter &painter) const = 0;
+    virtual void paintInlineNote(const InlineNote &note, QPainter &painter, Qt::LayoutDirection direction) const = 0;
 
     /**
      * Invoked when a note is activated by the user.

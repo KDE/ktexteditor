@@ -4952,6 +4952,11 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData &noteData) const
         noteCursor.setColumn(lineLength);
     }
     auto noteStartPos = mapToGlobal(cursorToCoordinate(noteCursor, true, false));
+    const bool rtl = cache()->line(noteCursor.line())->layout()->textOption().textDirection() == Qt::RightToLeft;
+    if (rtl) {
+        noteStartPos.rx() -= note.width();
+        extraOffset = -extraOffset;
+    }
 
     // compute the note's rect
     auto globalNoteRect = QRect(noteStartPos + QPoint{extraOffset, 0}, QSize(noteWidth, renderer()->lineHeight()));
