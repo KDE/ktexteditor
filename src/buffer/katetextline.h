@@ -41,7 +41,7 @@ public:
          * @param _length length
          * @param _attributeValue attribute value
          */
-        explicit Attribute(int _offset = 0, int _length = 0, short _attributeValue = 0)
+        explicit Attribute(int _offset = 0, int _length = 0, int _attributeValue = 0)
             : offset(_offset)
             , length(_length)
             , attributeValue(_attributeValue)
@@ -61,7 +61,7 @@ public:
         /**
          * attribute value (to encode type of this range)
          */
-        short attributeValue;
+        int attributeValue;
     };
 
     /**
@@ -373,7 +373,7 @@ public:
      * @param pos position of attribute requested
      * @return value of attribute
      */
-    short attribute(int pos) const;
+    int attribute(int pos) const;
 
     /**
      * set auto-wrapped property

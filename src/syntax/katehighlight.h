@@ -313,7 +313,7 @@ public:
     /**
      * mapping of format id => index into m_formats
      */
-    std::unordered_map<quint16, short> m_formatsIdToIndex;
+    std::unordered_map<int, int> m_formatsIdToIndex;
 
     /**
      * textline to do updates on during doHighlight
