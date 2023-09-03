@@ -218,7 +218,8 @@ public:
     KTextEditor::Cursor findMatchingBracket();
 
     // exported for unit tests
-    KTEXTEDITOR_EXPORT KTextEditor::Range findMatchingFoldingMarker(const KTextEditor::Cursor current_cursor_pos, const int value, const int maxLines);
+    KTEXTEDITOR_EXPORT KTextEditor::Range
+    findMatchingFoldingMarker(const KTextEditor::Cursor current_cursor_pos, const KSyntaxHighlighting::FoldingRegion foldingRegion, const int maxLines);
     KTEXTEDITOR_EXPORT void updateFoldingMarkersHighlighting();
 
     inline int getStartOffset(int direction, int offset, int length) const

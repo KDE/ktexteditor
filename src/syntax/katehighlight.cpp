@@ -178,12 +178,11 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
     // WE ATM assume ascending offset order, we add the length to the offset for the folding ends to have ranges spanning the full folding region
     Q_ASSERT(m_textLineToHighlight);
     Q_ASSERT(region.isValid());
-    const int foldingValue = (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id());
-    m_textLineToHighlight->addFolding(offset + ((region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length), length, foldingValue);
+    m_textLineToHighlight->addFolding(offset + ((region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length), length, region);
 
     // for each end region, decrement counter for that type, erase if count reaches 0!
-    if (foldingValue < 0) {
-        QHash<int, int>::iterator end = m_foldingStartToCount.find(-foldingValue);
+    if (region.type() == KSyntaxHighlighting::FoldingRegion::End) {
+        QHash<int, int>::iterator end = m_foldingStartToCount.find(region.id());
         if (end != m_foldingStartToCount.end()) {
             if (end.value() > 1) {
                 --(end.value());
@@ -194,8 +193,8 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
     }
 
     // increment counter for each begin region!
-    if (foldingValue > 0) {
-        ++m_foldingStartToCount[foldingValue];
+    else {
+        ++m_foldingStartToCount[region.id()];
     }
 }
 

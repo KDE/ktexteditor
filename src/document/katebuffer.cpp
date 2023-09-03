@@ -503,19 +503,19 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     // 'normal' attribute based folding, aka token based like '{' BLUB '}'
 
     // first step: search the first region type, that stays open for the start line
-    short openedRegionType = 0;
+    int openedRegionType = 0;
     int openedRegionOffset = -1;
     {
         // mapping of type to "first" offset of it and current number of not matched openings
-        QHash<short, QPair<int, int>> foldingStartToOffsetAndCount;
+        QHash<int, QPair<int, int>> foldingStartToOffsetAndCount;
 
         // walk over all attributes of the line and compute the matchings
         const auto &startLineAttributes = startTextLine->foldings();
         for (size_t i = 0; i < startLineAttributes.size(); ++i) {
             // folding close?
-            if (startLineAttributes[i].foldingValue < 0) {
+            if (startLineAttributes[i].foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::End) {
                 // search for this type, try to decrement counter, perhaps erase element!
-                QHash<short, QPair<int, int>>::iterator end = foldingStartToOffsetAndCount.find(-startLineAttributes[i].foldingValue);
+                auto end = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingRegion.id());
                 if (end != foldingStartToOffsetAndCount.end()) {
                     if (end.value().second > 1) {
                         --(end.value().second);
@@ -526,19 +526,19 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
             }
 
             // folding open?
-            if (startLineAttributes[i].foldingValue > 0) {
+            if (startLineAttributes[i].foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::Begin) {
                 // search for this type, either insert it, with current offset or increment counter!
-                QHash<short, QPair<int, int>>::iterator start = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingValue);
+                auto start = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingRegion.id());
                 if (start != foldingStartToOffsetAndCount.end()) {
                     ++(start.value().second);
                 } else {
-                    foldingStartToOffsetAndCount.insert(startLineAttributes[i].foldingValue, qMakePair(startLineAttributes[i].offset, 1));
+                    foldingStartToOffsetAndCount.insert(startLineAttributes[i].foldingRegion.id(), qMakePair(startLineAttributes[i].offset, 1));
                 }
             }
         }
 
         // compute first type with offset
-        QHashIterator<short, QPair<int, int>> hashIt(foldingStartToOffsetAndCount);
+        QHashIterator<int, QPair<int, int>> hashIt(foldingStartToOffsetAndCount);
         while (hashIt.hasNext()) {
             hashIt.next();
             if (openedRegionOffset == -1 || hashIt.value().first < openedRegionOffset) {
@@ -564,7 +564,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         const auto &lineAttributes = textLine->foldings();
         for (size_t i = 0; i < lineAttributes.size(); ++i) {
             // matching folding close?
-            if (lineAttributes[i].foldingValue == -openedRegionType) {
+            if (lineAttributes[i].foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::End && lineAttributes[i].foldingRegion.id() == openedRegionType) {
                 --countOfOpenRegions;
 
                 // end reached?
@@ -581,7 +581,8 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
             }
 
             // matching folding open?
-            if (lineAttributes[i].foldingValue == openedRegionType) {
+            if (lineAttributes[i].foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::Begin
+                && lineAttributes[i].foldingRegion.id() == openedRegionType) {
                 ++countOfOpenRegions;
             }
         }

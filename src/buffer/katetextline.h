@@ -7,9 +7,11 @@
 #ifndef KATE_TEXTLINE_H
 #define KATE_TEXTLINE_H
 
+#include <KSyntaxHighlighting/foldingregion.h>
 #include <QString>
 #include <QVector>
 
+#include <KSyntaxHighlighting/FoldingRegion>
 #include <KSyntaxHighlighting/State>
 
 #include <memory>
@@ -74,12 +76,12 @@ public:
          * Construct folding.
          * @param _offset offset of the folding start
          * @param _length length of the folding
-         * @param _foldingValue positive ones start foldings, negative ones end them
+         * @param _foldingRegion folding region, includes if we start or end a region and the id
          */
-        Folding(int _offset, int _length, int _foldingValue)
+        Folding(int _offset, int _length, KSyntaxHighlighting::FoldingRegion _foldingRegion)
             : offset(_offset)
             , length(_length)
-            , foldingValue(_foldingValue)
+            , foldingRegion(_foldingRegion)
         {
         }
 
@@ -94,9 +96,9 @@ public:
         int length = 0;
 
         /**
-         * positive ones start foldings, negative ones end them
+         * folding region, includes if we start or end a region and the id
          */
-        int foldingValue = 0;
+        KSyntaxHighlighting::FoldingRegion foldingRegion;
     };
 
     /**
@@ -359,11 +361,11 @@ public:
      * Add new folding at end of foldings stored in this line
      * @param offset offset of folding start
      * @param length length of the string that represents the folding
-     * @param folding folding to add, positive to open, negative to close
+     * @param foldingRegion folding region, includes if we start or end a region and the id
      */
-    void addFolding(int offset, int length, int folding)
+    void addFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion foldingRegion)
     {
-        m_foldings.emplace_back(offset, length, folding);
+        m_foldings.emplace_back(offset, length, foldingRegion);
     }
 
     /**
