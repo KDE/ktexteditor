@@ -503,7 +503,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     // 'normal' attribute based folding, aka token based like '{' BLUB '}'
 
     // first step: search the first region type, that stays open for the start line
-    int openedRegionType = 0;
+    int openedRegionType = -1;
     int openedRegionOffset = -1;
     {
         // mapping of type to "first" offset of it and current number of not matched openings
@@ -549,7 +549,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     }
 
     // no opening region found, bad, nothing to do
-    if (openedRegionType == 0) {
+    if (openedRegionType == -1) {
         return KTextEditor::Range::invalid();
     }
 
