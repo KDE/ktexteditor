@@ -662,12 +662,12 @@ void KateViewTest::testFindMatchingFoldingMarker()
     QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDo.start(), dovalue, 2), KTextEditor::Range::invalid());
 
     // it must work from end folding to start folding too.
-    // FIXME needs constructor   QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), -dovalue, 2000), firstDo);
-    // FIXME needs constructor   QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), -dovalue, 2), KTextEditor::Range::invalid());
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), dovalue.sibling(), 2000), firstDo);
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstDoMatching.start(), dovalue.sibling(), 2), KTextEditor::Range::invalid());
 
     // folding in the same line
     QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIf.start(), ifvalue, 2000), firstIfMatching);
-    // FIXME needs constructor      QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIfMatching.start(), -ifvalue, 2000), firstIf);
+    QCOMPARE(viewInternal->findMatchingFoldingMarker(firstIfMatching.start(), ifvalue.sibling(), 2000), firstIf);
 }
 
 void KateViewTest::testUpdateFoldingMarkersHighlighting()
