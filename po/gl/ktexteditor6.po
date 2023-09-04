@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 02:08+0000\n"
-"PO-Revision-Date: 2023-07-02 18:30+0200\n"
+"PO-Revision-Date: 2023-09-03 14:10+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -4639,7 +4639,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:247
 #, kde-format
 msgid "Separator"
-msgstr "Divisoria"
+msgstr "Separador"
 
 # skip-rule: expression_when/if enabled
 #: syntax/katethemeconfig.cpp:249
@@ -5938,8 +5938,8 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
-"Ruta completa do documento incluíndo o nome de ficheiro, coa divisoria de "
-"rutas nativa (barra invertida en Windows)."
+"Ruta completa do documento incluíndo o nome de ficheiro, co separador de "
+"rutas nativo (barra invertida en Windows)."
 
 #: utils/katevariableexpansionmanager.cpp:88
 #, kde-format
@@ -5947,8 +5947,8 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
-"Ruta completa do documento excluíndo o nome de ficheiro, coa divisoria de "
-"rutas nativa (barra invertida en Windows)."
+"Ruta completa do documento excluíndo o nome de ficheiro, co separador de "
+"rutas nativo (barra invertida en Windows)."
 
 #: utils/katevariableexpansionmanager.cpp:96
 #, kde-format
