@@ -188,7 +188,9 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
 
     const QRegularExpression startOfWord(startOfWordPattern, QRegularExpression::UseUnicodePropertiesOption); // start of a word
     static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space right after space
-    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W"), QRegularExpression::UseUnicodePropertiesOption); // word-boundary followed by a non-word which is not a space
+    static const QRegularExpression nonWordAfterWord(
+        QStringLiteral("\\b(?!\\s)\\W"),
+        QRegularExpression::UseUnicodePropertiesOption); // word-boundary followed by a non-word which is not a space
 
     int l = fromLine;
     int c = fromColumn;
@@ -368,7 +370,9 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
 
     const QRegularExpression startOfWord(startOfWordPattern, QRegularExpression::UseUnicodePropertiesOption); // start of a word
     static const QRegularExpression nonSpaceAfterSpace(QStringLiteral("\\s\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space right after space
-    static const QRegularExpression nonWordAfterWord(QStringLiteral("\\b(?!\\s)\\W"), QRegularExpression::UseUnicodePropertiesOption); // word-boundary followed by a non-word which is not a space
+    static const QRegularExpression nonWordAfterWord(
+        QStringLiteral("\\b(?!\\s)\\W"),
+        QRegularExpression::UseUnicodePropertiesOption); // word-boundary followed by a non-word which is not a space
     static const QRegularExpression startOfLine(QStringLiteral("^\\S"), QRegularExpression::UseUnicodePropertiesOption); // non-space at start of line
 
     int l = fromLine;

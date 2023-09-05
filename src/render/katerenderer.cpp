@@ -705,7 +705,13 @@ void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, 
     }
 }
 
-void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xStart, int xEnd, const QRectF &textClipRect, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
+void KateRenderer::paintTextLine(QPainter &paint,
+                                 KateLineLayout *range,
+                                 int xStart,
+                                 int xEnd,
+                                 const QRectF &textClipRect,
+                                 const KTextEditor::Cursor *cursor,
+                                 PaintTextLineFlags flags)
 {
     Q_ASSERT(range->isValid());
 
@@ -791,7 +797,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayout *range, int xSt
                 range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats, textClipRect);
 
             } else {
-                range->layout()->draw(&paint, QPoint(-xStart, 0), QVector<QTextLayout::FormatRange> {}, textClipRect);
+                range->layout()->draw(&paint, QPoint(-xStart, 0), QVector<QTextLayout::FormatRange>{}, textClipRect);
             }
         }
 
@@ -1513,7 +1519,7 @@ void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, in
         KateRenderer::PaintTextLineFlags flags;
         flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
         flags.setFlag(KateRenderer::SkipDrawLineSelection);
-        paintTextLine(paint, &lineLayout, 0, 0, QRectF {}, nullptr, flags);
+        paintTextLine(paint, &lineLayout, 0, 0, QRectF{}, nullptr, flags);
 
         // translate for next line
         paint.translate(0, lineHeight);

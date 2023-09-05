@@ -5,11 +5,11 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include "definitions.h"
 #include <QKeyEvent>
 #include <QStringList>
 #include <vimode/keyevent.h>
 #include <vimode/keyparser.h>
-#include "definitions.h"
 
 using namespace KateVi;
 

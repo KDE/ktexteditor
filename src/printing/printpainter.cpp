@@ -692,7 +692,7 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
         flags.setFlag(KateRenderer::PaintTextLineFlag::SkipDrawFirstInvisibleLineUnderlined);
     }
 
-    m_renderer->paintTextLine(painter, &rangeptr, 0, (int)pl.maxWidth, QRectF {}, nullptr, flags);
+    m_renderer->paintTextLine(painter, &rangeptr, 0, (int)pl.maxWidth, QRectF{}, nullptr, flags);
 
     painter.setClipping(false);
     painter.translate(_xadjust, (m_fontHeight * (_lines - remainder)));

@@ -635,7 +635,6 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
 
 void KateCompletionModel::slotRowsInserted(const QModelIndex &parent, int start, int end)
 {
-
     HierarchicalModelHandler handler(static_cast<CodeCompletionModel *>(sender()));
     if (parent.isValid()) {
         handler.collectRoles(parent);

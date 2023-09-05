@@ -366,7 +366,7 @@ void SpellCheckBar::slotSkipAll()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    //### do we want that or should we have a d->ignoreAll list?
+    // ### do we want that or should we have a d->ignoreAll list?
     Sonnet::Speller speller = d->checker->speller();
     speller.addToPersonal(d->currentWord.word);
     d->checker->setSpeller(speller);

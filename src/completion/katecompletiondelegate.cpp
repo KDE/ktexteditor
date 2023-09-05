@@ -9,8 +9,8 @@
 
 #include <ktexteditor/codecompletionmodel.h>
 
-#include "katepartdebug.h"
 #include "katecompletionmodel.h"
+#include "katepartdebug.h"
 
 #include <QApplication>
 #include <QPainter>

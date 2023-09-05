@@ -32,7 +32,6 @@ public:
     QSize sizeHint(const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) const override;
 
 private:
-
     mutable qreal m_maxCharWidth = 0.0;
     mutable QFontMetricsF m_cachedDataContentFontMetrics;
 };
