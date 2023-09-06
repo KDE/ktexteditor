@@ -974,12 +974,22 @@ void KateRenderer::paintTextLine(QPainter &paint,
             KTextEditor::InlineNote inlineNote(inlineNoteData);
             const int column = inlineNote.position().column();
             const int viewLine = range->viewLineForColumn(column);
+            // We only consider a line "rtl" if dynamic wrap is enabled. If it is disabled, our
+            // text is always on the left side of the view
             const auto dir = range->layout()->textOption().textDirection();
-            const bool isRTL = dir == Qt::RightToLeft;
+            const bool isRTL = dir == Qt::RightToLeft && m_view->dynWordWrap();
 
             // Determine the position where to paint the note.
             // We start by getting the x coordinate of cursor placed to the column.
-            qreal x = range->viewLine(viewLine).lineLayout().cursorToX(column) - xStart;
+            // If the text is ltr or rtl + dyn wrap, get the X from column
+            qreal x;
+            if (dir == Qt::LeftToRight || (dir == Qt::RightToLeft && m_view->dynWordWrap())) {
+                x = range->viewLine(viewLine).lineLayout().cursorToX(column) - xStart;
+            } else /* rtl + dynWordWrap == false */ {
+                // if text is rtl and dynamic wrap is false, the x offsets are in the opposite
+                // direction i.e., [0] == biggest offset, [1] = next
+                x = range->viewLine(viewLine).lineLayout().cursorToX(range->length() - column) - xStart;
+            }
             int textLength = range->length();
             if (column == 0 || column < textLength) {
                 // If the note is inside text or at the beginning, then there is a hole in the text where the
@@ -998,7 +1008,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             // Paint the note
             paint.save();
             paint.translate(x, y);
-            inlineNote.provider()->paintInlineNote(inlineNote, paint, dir);
+            inlineNote.provider()->paintInlineNote(inlineNote, paint, isRTL ? Qt::RightToLeft : Qt::LeftToRight);
             paint.restore();
         }
     }

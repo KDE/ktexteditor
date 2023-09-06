@@ -834,7 +834,8 @@ QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor cursor, bo
 
     KateTextLayout layout = cache()->viewLine(viewLine);
 
-    if (cursor.column() > doc()->lineLength(cursor.line())) {
+    const auto textLength = doc()->lineLength(cursor.line());
+    if (cursor.column() > textLength) {
         return QPoint(-1, -1);
     }
 
@@ -842,7 +843,13 @@ QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor cursor, bo
 
     // only set x value if we have a valid layout (bug #171027)
     if (layout.isValid()) {
-        x = (int)layout.lineLayout().cursorToX(cursor.column());
+        if (!layout.isRightToLeft() || (layout.isRightToLeft() && view()->dynWordWrap())) {
+            x = (int)layout.lineLayout().cursorToX(cursor.column());
+        } else /* rtl + dynWordWrap == false */ {
+            // if text is rtl and dynamic wrap is false, the x offsets are in the opposite
+            // direction i.e., [0] == biggest offset, [1] = next
+            x = (int)layout.lineLayout().cursorToX(textLength - cursor.column());
+        }
     }
     //  else
     //    qCDebug(LOG_KTE) << "Invalid Layout";
@@ -4956,7 +4963,7 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData &noteData) const
         noteCursor.setColumn(lineLength);
     }
     auto noteStartPos = mapToGlobal(cursorToCoordinate(noteCursor, true, false));
-    const bool rtl = cache()->line(noteCursor.line())->layout()->textOption().textDirection() == Qt::RightToLeft;
+    const bool rtl = view()->dynWordWrap() && cache()->line(noteCursor.line())->layout()->textOption().textDirection() == Qt::RightToLeft;
     if (rtl) {
         noteStartPos.rx() -= note.width();
         extraOffset = -extraOffset;
