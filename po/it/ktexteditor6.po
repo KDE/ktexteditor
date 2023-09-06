@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 02:08+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-07-02 20:34+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -8265,7 +8265,7 @@ msgstr "Segno impostato: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Non ci sono più caratteri per il segnalibro successivo."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:796
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

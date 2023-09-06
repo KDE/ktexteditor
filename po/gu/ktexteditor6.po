@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 02:08+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2009-05-13 15:41+0530\n"
 "Last-Translator: Kartik Mistry <kartik.mistry@gmail.com>\n"
 "Language-Team: Gujarati <kde-i18n-doc@kde.org>\n"
@@ -7937,7 +7937,7 @@ msgstr "પ્રકાર %1 નિશાની કરો"
 msgid "There are no more chars for the next bookmark."
 msgstr "આગળનાં બુકમાર્ક પર જાવ"
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:792
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:796
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"
