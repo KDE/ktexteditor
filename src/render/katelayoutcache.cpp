@@ -223,7 +223,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
             l->setVirtualLine(virtualLine);
         }
 
-        if (!l->isValid()) {
+        if (!l->layout()) {
             l->usePlainTextLine = acceptDirtyLayouts();
             l->textLine(!acceptDirtyLayouts());
             m_renderer->layoutLine(l, wrap() ? m_viewWidth : -1, enableLayoutCache);
@@ -234,7 +234,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
             m_renderer->layoutLine(l, wrap() ? m_viewWidth : -1, enableLayoutCache);
         }
 
-        Q_ASSERT(l->isValid() && (!l->layoutDirty || acceptDirtyLayouts()));
+        Q_ASSERT(l->layout() && (!l->layoutDirty || acceptDirtyLayouts()));
 
         return l;
     }
