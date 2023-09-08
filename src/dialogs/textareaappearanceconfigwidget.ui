@@ -63,6 +63,9 @@
        <property name="text">
         <string>Show whitespace indicators:</string>
        </property>
+       <property name="buddy">
+        <cstring>spacesComboBox</cstring>
+       </property>
       </widget>
      </item>
      <item row="4" column="1">
@@ -88,6 +91,9 @@
       <widget class="QLabel" name="lbMarkerDescription">
        <property name="text">
         <string>Whitespace indicator size:</string>
+       </property>
+       <property name="buddy">
+        <cstring>sliSetMarkerSize</cstring>
        </property>
       </widget>
      </item>
@@ -130,6 +136,9 @@
        <property name="text">
         <string>Show tab indicators:</string>
        </property>
+       <property name="buddy">
+        <cstring>chkShowTabs</cstring>
+       </property>
       </widget>
      </item>
      <item row="7" column="1">
@@ -146,6 +155,9 @@
       <widget class="QLabel" name="label_7">
        <property name="text">
         <string>Show focus frame around editor</string>
+       </property>
+       <property name="buddy">
+        <cstring>chkFocusFrame</cstring>
        </property>
       </widget>
      </item>
@@ -368,6 +380,9 @@ beginning of a file.</string>
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Indent wrapped lines:</string>
+       </property>
+       <property name="buddy">
+        <cstring>cbxIndentWrappedLines</cstring>
        </property>
       </widget>
      </item>
