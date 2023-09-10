@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-09-10 01:56+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1746,7 +1746,7 @@ msgstr "Lazı&msız boşluqları sil:"
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
-#: dialogs/textareaappearanceconfigwidget.ui:72
+#: dialogs/textareaappearanceconfigwidget.ui:75
 #, kde-format
 msgid "Never"
 msgstr "Heç vaxt"
@@ -1859,37 +1859,37 @@ msgid "Show whitespace indicators:"
 msgstr "Ara boşluğu göstəricisini göstərmək:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:77
+#: dialogs/textareaappearanceconfigwidget.ui:80
 #, kde-format
 msgid "At the end of a line"
 msgstr "Sətirin sonunda"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:82
+#: dialogs/textareaappearanceconfigwidget.ui:85
 #, kde-format
 msgid "Always"
 msgstr "Həmişə"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
-#: dialogs/textareaappearanceconfigwidget.ui:90
+#: dialogs/textareaappearanceconfigwidget.ui:93
 #, kde-format
 msgid "Whitespace indicator size:"
 msgstr "Boşluq göstəricisinin ölçüsü:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
-#: dialogs/textareaappearanceconfigwidget.ui:103
+#: dialogs/textareaappearanceconfigwidget.ui:109
 #, kde-format
 msgid "Size of the visible highlight marker."
 msgstr "Görünən işıqlanma markerinin ölçüsü."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/textareaappearanceconfigwidget.ui:131
+#: dialogs/textareaappearanceconfigwidget.ui:137
 #, kde-format
 msgid "Show tab indicators:"
 msgstr "Vərəq göstəricisini gösərmək:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
-#: dialogs/textareaappearanceconfigwidget.ui:138
+#: dialogs/textareaappearanceconfigwidget.ui:147
 #, kde-format
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
@@ -1897,19 +1897,19 @@ msgid ""
 msgstr "Tab simvollarının mətndə görünüşü."
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:148
+#: dialogs/textareaappearanceconfigwidget.ui:157
 #, kde-format
 msgid "Show focus frame around editor"
 msgstr "Redaktorun ətrafında fokus çərçivəsini göstərmək"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:178
+#: dialogs/textareaappearanceconfigwidget.ui:190
 #, kde-format
 msgid "Bracket matching:"
 msgstr "Mötərizə uyğunluğu:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:185
+#: dialogs/textareaappearanceconfigwidget.ui:197
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1918,19 +1918,19 @@ msgstr ""
 "Əgər bu seçim aktiv edilibsə mötərizələr arasında boşluqlar işıqlanacaq."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:188
+#: dialogs/textareaappearanceconfigwidget.ui:200
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Mötərizələr arasında boşluqları işıqlandır"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:195
+#: dialogs/textareaappearanceconfigwidget.ui:207
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr "Kontekst üçün uyğun açıq mötərizəni və ona bitişik xətləri göstərin"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:198
+#: dialogs/textareaappearanceconfigwidget.ui:210
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -1944,33 +1944,33 @@ msgstr ""
 "kontekstini cəld təyin etməyə imkan verir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:201
+#: dialogs/textareaappearanceconfigwidget.ui:213
 #, kde-format
 msgid "Show preview of matching open bracket"
 msgstr "Uyğun açıq mötərizənin necə görünəcəyini göstərir"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:208
+#: dialogs/textareaappearanceconfigwidget.ui:220
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Qoşa boşluqların sayrışması"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:211
+#: dialogs/textareaappearanceconfigwidget.ui:223
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr "Bu seçimdə qoşa mötərizələr daha gözəçarpan olması üçün sayrışacaq."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:214
+#: dialogs/textareaappearanceconfigwidget.ui:226
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 "Kursor başqa cütdəki mötərizəyə kecdiyi zaman oxşar mötərizələrin işıqlanması"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:221
+#: dialogs/textareaappearanceconfigwidget.ui:233
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -1980,43 +1980,43 @@ msgstr ""
 "xətlər görünəcək."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:224
+#: dialogs/textareaappearanceconfigwidget.ui:236
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Abzas sətirləri&ni göstər"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:247
+#: dialogs/textareaappearanceconfigwidget.ui:259
 #, kde-format
 msgid "Counts:"
 msgstr "Sayları:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:254
+#: dialogs/textareaappearanceconfigwidget.ui:266
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Vəziyyət çubuğunda sözlərin sayını göstər/gizlət"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:269 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Sözlərin sayını göstər"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:264
+#: dialogs/textareaappearanceconfigwidget.ui:276
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Vəziyyət çubuğunda sətirlərin sayını göstər/gizlət"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:267 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:279 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Sətirlərin sayını göstər"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:293
+#: dialogs/textareaappearanceconfigwidget.ui:305
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2030,55 +2030,55 @@ msgstr ""
 "gizlətmək faydalıdır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:296
+#: dialogs/textareaappearanceconfigwidget.ui:308
 #, kde-format
 msgid "Fold first line"
 msgstr "Birinci sətri qatlayın"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:316
+#: dialogs/textareaappearanceconfigwidget.ui:328
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Dinamik sətirə keçilmə:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:323
+#: dialogs/textareaappearanceconfigwidget.ui:335
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Sabit sətrə keçmə nişanına görə dinamik sətrə keçmə"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:330
+#: dialogs/textareaappearanceconfigwidget.ui:342
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Dinamik sətrə keçmək üçün sözlərin kənarlarını nəzərə almamaq"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:337
+#: dialogs/textareaappearanceconfigwidget.ui:349
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "D&inamik sətirə keçid göstəriciləri:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:359
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "Dinamik sətirə keçmə nişanlarının nə vaxt göstəriləcəyini seçin."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:370
+#: dialogs/textareaappearanceconfigwidget.ui:382
 #, kde-format
 msgid "Indent wrapped lines:"
 msgstr "Abzası keçirilmiş sətirlər:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:384
+#: dialogs/textareaappearanceconfigwidget.ui:399
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr "Sətr arasını göstəriləndən geniş etməyin:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:400
+#: dialogs/textareaappearanceconfigwidget.ui:415
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2098,13 +2098,13 @@ msgstr ""
 "olduqda şaquli olaraq nizamlanmayacaqdır</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:403
+#: dialogs/textareaappearanceconfigwidget.ui:418
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% görmə genişliyi"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
-#: dialogs/textareaappearanceconfigwidget.ui:419
+#: dialogs/textareaappearanceconfigwidget.ui:434
 #, kde-format
 msgid ""
 "This value will be multiplied with the font's default line height. A value "
@@ -2114,7 +2114,7 @@ msgstr ""
 "deməkdir ki, standart hündürlük istifadə oluncaq."
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
-#: dialogs/textareaappearanceconfigwidget.ui:438
+#: dialogs/textareaappearanceconfigwidget.ui:453
 #, kde-format
 msgid "Line Height Multiplier:"
 msgstr "Sətir hündürlüyü çoxaldıcısı:"

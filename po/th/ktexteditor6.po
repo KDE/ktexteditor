@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-09-10 01:56+0000\n"
 "PO-Revision-Date: 2010-12-31 22:34+0700\n"
 "Last-Translator: Phuwanat Sakornsakolpat <narachai@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -1773,7 +1773,7 @@ msgstr "ล&บช่องว่างด้านท้ายบรรทั�
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
-#: dialogs/textareaappearanceconfigwidget.ui:72
+#: dialogs/textareaappearanceconfigwidget.ui:75
 #, fuzzy, kde-format
 #| msgid "Reverse"
 msgid "Never"
@@ -1895,40 +1895,40 @@ msgid "Show whitespace indicators:"
 msgstr "ไม่สนใจความเปลี่ยนแปลงของช่องว่าง"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:77
+#: dialogs/textareaappearanceconfigwidget.ui:80
 #, fuzzy, kde-format
 #| msgid "Select to End of Line"
 msgid "At the end of a line"
 msgstr "เลือกจนถึงท้ายบรรทัด"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:82
+#: dialogs/textareaappearanceconfigwidget.ui:85
 #, kde-format
 msgid "Always"
 msgstr "เปิดใช้เสมอ"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
-#: dialogs/textareaappearanceconfigwidget.ui:90
+#: dialogs/textareaappearanceconfigwidget.ui:93
 #, fuzzy, kde-format
 #| msgid "Whitespace Highlighting"
 msgid "Whitespace indicator size:"
 msgstr "การทำตัวเ&น้นส่วนที่เป็นช่องว่าง"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
-#: dialogs/textareaappearanceconfigwidget.ui:103
+#: dialogs/textareaappearanceconfigwidget.ui:109
 #, kde-format
 msgid "Size of the visible highlight marker."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/textareaappearanceconfigwidget.ui:131
+#: dialogs/textareaappearanceconfigwidget.ui:137
 #, fuzzy, kde-format
 #| msgid "Show Folding &Markers"
 msgid "Show tab indicators:"
 msgstr "แสดงการเ&น้นส่วนพับเก็บได้"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
-#: dialogs/textareaappearanceconfigwidget.ui:138
+#: dialogs/textareaappearanceconfigwidget.ui:147
 #, kde-format
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
@@ -1936,20 +1936,20 @@ msgid ""
 msgstr "เครื่องมือแก้ไขจะแสดงสัญลักษณ์เพื่อบ่งชี้ให้ทราบว่าเป็นอักขระแท็บในข้อความ"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:148
+#: dialogs/textareaappearanceconfigwidget.ui:157
 #, kde-format
 msgid "Show focus frame around editor"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:178
+#: dialogs/textareaappearanceconfigwidget.ui:190
 #, fuzzy, kde-format
 #| msgid "Bracket highlight:"
 msgid "Bracket matching:"
 msgstr "ทำตัวเน้นวงเล็บ:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:185
+#: dialogs/textareaappearanceconfigwidget.ui:197
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1957,19 +1957,19 @@ msgid ""
 msgstr "หากเปิดใช้ตัวเลือกนี้ จะมีการเน้นขอบเขตที่อยู่ระหว่างช่วงของวงเล็บที่เลือกไว้"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:188
+#: dialogs/textareaappearanceconfigwidget.ui:200
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "เน้นสีในช่วงระหว่างวงเล็บเปิดและปิดที่เลือก"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:195
+#: dialogs/textareaappearanceconfigwidget.ui:207
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:198
+#: dialogs/textareaappearanceconfigwidget.ui:210
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -1979,34 +1979,34 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:201
+#: dialogs/textareaappearanceconfigwidget.ui:213
 #, fuzzy, kde-format
 #| msgid "Print the current document."
 msgid "Show preview of matching open bracket"
 msgstr "พิมพ์เอกสารปัจจุบัน"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:208
+#: dialogs/textareaappearanceconfigwidget.ui:220
 #, fuzzy, kde-format
 #| msgid "Select to Matching Bracket"
 msgid "Flash matching brackets"
 msgstr "เลือกจนถึงวงเล็บที่เข้าคู่กัน"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:211
+#: dialogs/textareaappearanceconfigwidget.ui:223
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:214
+#: dialogs/textareaappearanceconfigwidget.ui:226
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:221
+#: dialogs/textareaappearanceconfigwidget.ui:233
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -2016,45 +2016,45 @@ msgstr ""
 "เพื่อให้ง่ายต่อการจัดระยะเยื้อง"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:224
+#: dialogs/textareaappearanceconfigwidget.ui:236
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "แสดงเส้นบ่งชี้ระยะเ&ยื้อง"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:247
+#: dialogs/textareaappearanceconfigwidget.ui:259
 #, kde-format
 msgid "Counts:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:254
+#: dialogs/textareaappearanceconfigwidget.ui:266
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:257 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:269 view/katestatusbar.cpp:258
 #, fuzzy, kde-format
 #| msgid "Not word boundary"
 msgid "Show word count"
 msgstr "ไม่ใช่ขอบเขตคำ"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:264
+#: dialogs/textareaappearanceconfigwidget.ui:276
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:267 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:279 view/katestatusbar.cpp:255
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show line count"
 msgstr "แสดงหมายเ&ลขบรรทัด"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:293
+#: dialogs/textareaappearanceconfigwidget.ui:305
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2064,60 +2064,60 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:296
+#: dialogs/textareaappearanceconfigwidget.ui:308
 #, fuzzy, kde-format
 #| msgid "End of line"
 msgid "Fold first line"
 msgstr "รูปแบบการจบบรรทัด"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:316
+#: dialogs/textareaappearanceconfigwidget.ui:328
 #, fuzzy, kde-format
 #| msgid "&Dynamic Word Wrap"
 msgid "Dynamic Word Wrap:"
 msgstr "ตัดคำแบบไ&ม่ตายตัว"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:323
+#: dialogs/textareaappearanceconfigwidget.ui:335
 #, fuzzy, kde-format
 #| msgid "Enable static &word wrap"
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "เปิดใช้การตัดคำแบบ&ตายตัว"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:330
+#: dialogs/textareaappearanceconfigwidget.ui:342
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:337
+#: dialogs/textareaappearanceconfigwidget.ui:349
 #, fuzzy, kde-format
 #| msgid "Dynamic Word Wrap Indicators"
 msgid "D&ynamic word wrap indicators:"
 msgstr "ตัวชี้ตำแหน่งตัดคำแบบไม่ตายตัว"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:359
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "เลือกเมื่อตัวชี้ตำแหน่งตำแหน่งตัดคำแบบไม่ตายตัวควรจะถูกแสดง"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:370
+#: dialogs/textareaappearanceconfigwidget.ui:382
 #, fuzzy, kde-format
 #| msgid "Indentation Properties"
 msgid "Indent wrapped lines:"
 msgstr "คุณสมบัติการเยื้องระยะ"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:384
+#: dialogs/textareaappearanceconfigwidget.ui:399
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:400
+#: dialogs/textareaappearanceconfigwidget.ui:415
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2136,13 +2136,13 @@ msgstr ""
 "จะไม่ถูกปรับใช้การจัดวางทางแนวตั้งกับบรรทัดที่โดนตัดคำลงมา</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:403
+#: dialogs/textareaappearanceconfigwidget.ui:418
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% ของมุมมอง"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
-#: dialogs/textareaappearanceconfigwidget.ui:419
+#: dialogs/textareaappearanceconfigwidget.ui:434
 #, kde-format
 msgid ""
 "This value will be multiplied with the font's default line height. A value "
@@ -2150,7 +2150,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
-#: dialogs/textareaappearanceconfigwidget.ui:438
+#: dialogs/textareaappearanceconfigwidget.ui:453
 #, kde-format
 msgid "Line Height Multiplier:"
 msgstr ""
