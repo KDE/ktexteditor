@@ -19,14 +19,14 @@
 # Maxime Corteel <mcorteel@gmail.com>, 2014, 2021.
 # Simon Depiets <sdepiets@gmail.com>, 2017, 2018, 2019.
 # Vincent Pinon <vpinon@kde.org>, 2017.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
 # Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-10 01:56+0000\n"
-"PO-Revision-Date: 2023-04-08 10:18+0200\n"
+"PO-Revision-Date: 2023-09-09 14:20+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1942,12 +1942,11 @@ msgstr "Activer l'enregistrement automatique (Fichiers locaux uniquement)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
 msgstr ""
-"Enregistrer automatiquement le document lorsque le focus est en dehors de "
-"l'éditeur."
+"Enregistrer automatiquement un document lorsque le document actif perd le "
+"focus."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
