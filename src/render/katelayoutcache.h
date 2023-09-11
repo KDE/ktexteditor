@@ -76,13 +76,13 @@ public:
      * cache is full or until they are invalidated by other means (eg. the text
      * changes).
      *
+     * This function shall never return null
+     *
      * \param realLine real line number of the layout to retrieve.
      * \param virtualLine virtual line number. only needed if you think it may have changed
      *                    (ie. basically internal to KateLayoutCache)
      */
     KateLineLayout *line(int realLine, int virtualLine = -1);
-    /// \overload
-    KateLineLayout *line(const KTextEditor::Cursor realCursor);
 
     /// Returns the layout describing the text line which is occupied by \p realCursor.
     KateTextLayout textLayout(const KTextEditor::Cursor realCursor);

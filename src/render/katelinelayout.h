@@ -28,8 +28,6 @@ class KateLineLayout
 public:
     explicit KateLineLayout(KateRenderer &renderer);
 
-    static KateLineLayout *invalid(KateRenderer &renderer);
-
     void debugOutput() const;
 
     void clear();

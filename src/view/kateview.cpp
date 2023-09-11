@@ -3644,17 +3644,10 @@ bool KTextEditor::ViewPrivate::isLineRTL(int line) const
     }
 }
 
-QTextLayout *KTextEditor::ViewPrivate::textLayout(int line) const
-{
-    KateLineLayout *thisLine = m_viewInternal->cache()->line(line);
-
-    return thisLine->isValid() ? thisLine->layout() : nullptr;
-}
-
 QTextLayout *KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor pos) const
 {
-    KateLineLayout *thisLine = m_viewInternal->cache()->line(pos);
-    return thisLine->isValid() ? thisLine->layout() : nullptr;
+    KateLineLayout *thisLine = m_viewInternal->cache()->line(pos.line());
+    return thisLine && thisLine->isValid() ? thisLine->layout() : nullptr;
 }
 
 void KTextEditor::ViewPrivate::indent()

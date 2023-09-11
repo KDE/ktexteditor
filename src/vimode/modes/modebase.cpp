@@ -910,7 +910,8 @@ Range ModeBase::goVisualLineUpDown(int lines)
         // Find the beginning of the visual line "lines" visual lines down.
         while (count > 0) {
             finishVisualLine++;
-            if (finishVisualLine >= cache->line(finishRealLine)->viewLineCount()) {
+            const KateLineLayout *lineLayout = cache->line(finishRealLine);
+            if (lineLayout && finishVisualLine >= lineLayout->viewLineCount()) {
                 finishRealLine++;
                 finishVisualLine = 0;
             }
@@ -930,7 +931,12 @@ Range ModeBase::goVisualLineUpDown(int lines)
                     invalidPos = true;
                     break;
                 }
-                finishVisualLine = cache->line(finishRealLine)->viewLineCount() - 1;
+                const auto lineLayout = cache->line(finishRealLine);
+                if (!lineLayout) {
+                    finishVisualLine = 0;
+                    continue;
+                }
+                finishVisualLine = lineLayout->viewLineCount() - 1;
             }
             count--;
         }
@@ -953,8 +959,14 @@ Range ModeBase::goVisualLineUpDown(int lines)
         // Adjust for the fact that if the portion of the line before wrapping is indented,
         // the continuations are also "invisibly" (i.e. without any spaces in the text itself) indented.
         const bool isWrappedContinuation = (cache->textLayout(startRealLine, startVisualLine).lineLayout().lineNumber() != 0);
-        const int numInvisibleIndentChars =
-            isWrappedContinuation ? startLine->toVirtualColumn(cache->line(startRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
+        const int numInvisibleIndentChars = [&] {
+            if (isWrappedContinuation) {
+                if (auto l = doc()->plainKateTextLine(startRealLine)) {
+                    return startLine->toVirtualColumn(l->nextNonSpaceChar(0), tabstop);
+                }
+            }
+            return 0;
+        }();
 
         const int realLineStartColumn = cache->textLayout(startRealLine, startVisualLine).startCol();
         const int lineStartVirtualColumn = startLine->toVirtualColumn(realLineStartColumn, tabstop);
@@ -970,8 +982,14 @@ Range ModeBase::goVisualLineUpDown(int lines)
     // Adjust for the fact that if the portion of the line before wrapping is indented,
     // the continuations are also "invisibly" (i.e. without any spaces in the text itself) indented.
     const bool isWrappedContinuation = (cache->textLayout(finishRealLine, finishVisualLine).lineLayout().lineNumber() != 0);
-    const int numInvisibleIndentChars =
-        isWrappedContinuation ? endLine->toVirtualColumn(cache->line(finishRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
+    const int numInvisibleIndentChars = [&] {
+        if (isWrappedContinuation) {
+            if (auto l = doc()->plainKateTextLine(finishRealLine)) {
+                return endLine->toVirtualColumn(l->nextNonSpaceChar(0), tabstop);
+            }
+        }
+        return 0;
+    }();
     if (m_stickyColumn == (unsigned int)KateVi::EOL) {
         const int visualEndColumn = cache->textLayout(finishRealLine, finishVisualLine).lineLayout().textLength() - 1;
         r.endColumn = endLine->fromVirtualColumn(visualEndColumn + realLineStartColumn - numInvisibleIndentChars, tabstop);

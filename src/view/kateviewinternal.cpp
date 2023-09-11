@@ -1040,7 +1040,7 @@ public:
     CalculatingCursor &operator+=(int n) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
-        if (!thisLine->isValid()) {
+        if (!thisLine || !thisLine->isValid()) {
             qCWarning(LOG_KTE) << "Did not retrieve valid layout for line " << line();
             return *this;
         }
@@ -1114,7 +1114,7 @@ public:
     CalculatingCursor &operator+=(int n) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
-        if (!thisLine->isValid()) {
+        if (!thisLine || !thisLine->isValid()) {
             qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
             return *this;
         }
@@ -1135,7 +1135,7 @@ public:
 
                     // Retrieve the next text range
                     thisLine = m_vi->cache()->line(line());
-                    if (!thisLine->isValid()) {
+                    if (!thisLine || !thisLine->isValid()) {
                         qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
                         return *this;
                     }
@@ -1159,7 +1159,7 @@ public:
 
                     // Retrieve the next text range
                     thisLine = m_vi->cache()->line(line());
-                    if (!thisLine->isValid()) {
+                    if (!thisLine || !thisLine->isValid()) {
                         qCWarning(LOG_KTE) << "Did not retrieve a valid layout for line " << line();
                         return *this;
                     }
@@ -1281,7 +1281,7 @@ public:
     CalculatingCursor &operator+=(int n) override
     {
         KateLineLayout *thisLine = m_vi->cache()->line(line());
-        if (!thisLine->isValid()) {
+        if (!thisLine || !thisLine->isValid()) {
             qCWarning(LOG_KTE) << "Did not retrieve valid layout for line " << line();
             return *this;
         }
@@ -1759,7 +1759,8 @@ KateTextLayout KateViewInternal::nextLayout(KTextEditor::Cursor c) const
 {
     int currentViewLine = cache()->viewLine(c) + 1;
 
-    if (currentViewLine >= cache()->line(c.line())->viewLineCount()) {
+    const KateLineLayout *thisLine = cache()->line(c.line());
+    if (thisLine && currentViewLine >= thisLine->viewLineCount()) {
         currentViewLine = 0;
         return cache()->textLayout(view()->textFolding().visibleLineToLine(toVirtualCursor(c).line() + 1), currentViewLine);
     } else {
@@ -2244,7 +2245,12 @@ int KateViewInternal::maxLen(int startLine)
             break;
         }
 
-        maxLen = qMax(maxLen, cache()->line(view()->textFolding().visibleLineToLine(virtualLine))->width());
+        const KateLineLayout *line = cache()->line(view()->textFolding().visibleLineToLine(virtualLine));
+        if (!line) {
+            continue;
+        }
+
+        maxLen = qMax(maxLen, line->width());
     }
 
     return maxLen;
@@ -4963,7 +4969,11 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData &noteData) const
         noteCursor.setColumn(lineLength);
     }
     auto noteStartPos = mapToGlobal(cursorToCoordinate(noteCursor, true, false));
-    const bool rtl = view()->dynWordWrap() && cache()->line(noteCursor.line())->layout()->textOption().textDirection() == Qt::RightToLeft;
+    bool rtl = false;
+    if (view()->dynWordWrap()) {
+        const KateLineLayout *lineLayout = cache()->line(noteCursor.line());
+        rtl = lineLayout && lineLayout->layout()->textOption().textDirection() == Qt::RightToLeft;
+    }
     if (rtl) {
         noteStartPos.rx() -= note.width();
         extraOffset = -extraOffset;

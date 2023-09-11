@@ -240,7 +240,7 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     }
 
     if (realLine < 0 || realLine >= m_renderer->doc()->lines()) {
-        return KateLineLayout::invalid(*m_renderer);
+        return nullptr;
     }
 
     KateLineLayout *l = new KateLineLayout(*m_renderer);
@@ -264,11 +264,6 @@ KateLineLayout *KateLayoutCache::line(int realLine, int virtualLine)
     return l;
 }
 
-KateLineLayout *KateLayoutCache::line(const KTextEditor::Cursor realCursor)
-{
-    return line(realCursor.line());
-}
-
 KateTextLayout KateLayoutCache::textLayout(const KTextEditor::Cursor realCursor)
 {
     return textLayout(realCursor.line(), viewLine(realCursor));
@@ -277,7 +272,7 @@ KateTextLayout KateLayoutCache::textLayout(const KTextEditor::Cursor realCursor)
 KateTextLayout KateLayoutCache::textLayout(uint realLine, int _viewLine)
 {
     auto l = line(realLine);
-    if (l->isValid()) {
+    if (l && l->isValid()) {
         return l->viewLine(_viewLine);
     }
     return KateTextLayout::invalid();
@@ -324,6 +319,9 @@ int KateLayoutCache::viewLine(const KTextEditor::Cursor realCursor)
     }
 
     KateLineLayout *thisLine = line(realCursor.line());
+    if (!thisLine) {
+        return 0;
+    }
 
     for (int i = 0; i < thisLine->viewLineCount(); ++i) {
         const KateTextLayout &l = thisLine->viewLine(i);
@@ -413,9 +411,10 @@ int KateLayoutCache::lastViewLine(int realLine)
         return 0;
     }
 
-    KateLineLayout *l = line(realLine);
-    Q_ASSERT(l);
-    return l->viewLineCount() - 1;
+    if (KateLineLayout *l = line(realLine)) {
+        return l->viewLineCount() - 1;
+    }
+    return 0;
 }
 
 int KateLayoutCache::viewLineCount(int realLine)
