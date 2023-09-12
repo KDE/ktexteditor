@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 00:43+0000\n"
-"PO-Revision-Date: 2023-08-02 00:40+0300\n"
+"PO-Revision-Date: 2023-09-12 01:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -7182,12 +7182,12 @@ msgstr ""
 #: view/kateview.cpp:873
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr "Şu Anda Seçili Olayı Atlanmış Olarak İmle"
+msgstr "Şu Anda Seçili Olayı Atlandı Olarak İmle"
 
 #: view/kateview.cpp:875
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr "Şu anda seçili sözcüğü atlanmış olarak imler."
+msgstr "Şu anda seçili sözcüğü atlandı olarak imler."
 
 #: view/kateview.cpp:879
 #, kde-format
