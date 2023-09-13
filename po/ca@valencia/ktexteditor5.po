@@ -3282,7 +3282,7 @@ msgid ""
 msgstr ""
 "Unix les línies seleccionades o tot el document. De forma opcional, es pot "
 "passar un separador per a situar-lo entre les línies:<br><code>join ', '</"
-"code> p. ex. unirà les línies separant-les amb una coma."
+"code> p. ex., unirà les línies separant-les amb una coma."
 
 #: script/data/commands/utils.js:436
 #, kde-format
@@ -3811,14 +3811,14 @@ msgstr "Text que s'ha de buscar"
 #: search/searchbarincremental.ui:91 search/searchbarpower.ui:175
 #, kde-format
 msgid "Jump to next match"
-msgstr "Salta a la coincidència següent"
+msgstr "Salta fins a la coincidència següent"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
 #: search/searchbarincremental.ui:101 search/searchbarpower.ui:185
 #, kde-format
 msgid "Jump to previous match"
-msgstr "Salta a la coincidència anterior"
+msgstr "Salta fins a la coincidència anterior"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
 #: search/searchbarincremental.ui:111 search/searchbarpower.ui:136
@@ -4782,7 +4782,7 @@ msgid ""
 "at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>"
 msgstr ""
 "<p>Establix el color dels parèntesis emparellats. Açò vol dir que si poseu "
-"el cursor, p. ex. a un <b>(</b>, el corresponent <b>)</b> es ressaltarà amb "
+"el cursor, p. ex., a un <b>(</b>, el corresponent <b>)</b> es ressaltarà amb "
 "este color.</p>"
 
 #: syntax/katethemeconfig.cpp:322
@@ -5478,12 +5478,12 @@ msgstr ""
 "se n'introduïx cap.</p><p>Les especificacions de format possibles són:"
 "<table><tr><td>d</td><td>El dia com a nombre sense cap zero inicial (1-31).</"
 "td></tr><tr><td>dd</td><td>El dia com a nombre amb un zero inicial (01-31).</"
-"td></tr><tr><td>ddd</td><td>El nom abreviat de dia traduït (p. ex. "
+"td></tr><tr><td>ddd</td><td>El nom abreviat de dia traduït (p. ex., "
 "«Dl»..«Dm»).</td></tr><tr><td>dddd</td><td>El nom llarg de dia traduït (p. "
-"ex. «Dilluns»..«Diumenge»).</td></tr><tr><td>M</td><td>El mes com a nombre "
+"ex., «Dilluns»..«Diumenge»).</td></tr><tr><td>M</td><td>El mes com a nombre "
 "sense cap zero inicial (1-12).</td></tr><tr><td>MM</td><td>El mes com a "
 "nombre amb un zero inicial (01-12).</td></tr><tr><td>MMM</td><td>El nom "
-"abreviat de mes traduït (p. ex. «Gen»..«Des»).</td></tr><tr><td>yy</"
+"abreviat de mes traduït (p. ex., «Gen»..«Des»).</td></tr><tr><td>yy</"
 "td><td>L'any com a nombre de dos dígits (00-99).</td></tr><tr><td>yyyy</"
 "td><td>L'any com a nombre de quatre dígits (1752-8000).</td></tr><tr><td>h</"
 "td><td>L'hora sense cap zero inicial (0..23 o 1..12 si es mostra AM/PM).</"
