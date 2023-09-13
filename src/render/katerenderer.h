@@ -452,9 +452,8 @@ private:
     float m_fontAscent;
 
     // if we are at bracket, this will have the X for the opener
-    int m_currentOpenBracketX = -1;
-    // if we are at bracket, this will have the X for the closer
-    int m_currentCloseBracketX = -1;
+    int m_currentBracketX = -1;
+
     // The bracket range, if we are at a bracket
     KTextEditor::Range m_currentBracketRange = KTextEditor::Range::invalid();
 

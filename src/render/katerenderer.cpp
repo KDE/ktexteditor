@@ -128,8 +128,7 @@ void KateRenderer::setShowIndentLines(bool showIndentLines)
 {
     // invalidate our "active indent line" cached stuff
     m_currentBracketRange = KTextEditor::Range::invalid();
-    m_currentOpenBracketX = -1;
-    m_currentCloseBracketX = -1;
+    m_currentBracketX = -1;
 
     m_config->setShowIndentationLines(showIndentLines);
 }
@@ -336,77 +335,49 @@ void KateRenderer::paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, co
  * then use this data to color the indentation line differently.
  * @p view is current view
  * @p range is the current range from @ref paintTextLine
+ * @p spaceWidth width of space char
  * @p c is the position of cursor
- * @p openX will be X position of open bracket or -1 if not found
- * @p closeX will be X position of close bracket or -1 if not found
+ * @p bracketXPos will be X position of close bracket or -1 if not found
  */
-static KTextEditor::Range cursorAtBracket(KTextEditor::ViewPrivate *view, const KateLineLayout *range, KTextEditor::Cursor c, int &openX, int &closeX)
+static KTextEditor::Range cursorAtBracket(KTextEditor::ViewPrivate *view, const KateLineLayout *range, int spaceWidth, KTextEditor::Cursor c, int &bracketXPos)
 {
+    bracketXPos = -1;
     if (range->line() != c.line()) {
-        openX = closeX = -1;
         return KTextEditor::Range::invalid();
     }
 
     auto *doc = view->doc();
     // Avoid work if we are below tabwidth
     if (c.column() < doc->config()->tabWidth()) {
-        openX = closeX = -1;
         return KTextEditor::Range::invalid();
     }
 
     // We match these brackets only
-    static constexpr QChar brackets[] = {QLatin1Char('{'), QLatin1Char('}')};
+    static constexpr QChar brackets[] = {QLatin1Char('{'), QLatin1Char('}'), QLatin1Char('('), QLatin1Char(')')};
     // look for character in front
     QChar right = doc->characterAt(c);
     auto it = std::find(std::begin(brackets), std::end(brackets), right);
 
     KTextEditor::Range ret = KTextEditor::Range::invalid();
-    bool inFront = false;
     bool found = false;
     if (it != std::end(brackets)) {
         found = true;
-        inFront = true;
     } else {
         // look at previous character
         QChar left = doc->characterAt({c.line(), c.column() - 1});
         it = std::find(std::begin(brackets), std::end(brackets), left);
         if (it != std::end(brackets)) {
             found = true;
-            inFront = false;
         }
     }
 
     // We have a bracket
     if (found) {
-        ret = doc->findMatchingBracket(c, 150);
+        ret = doc->findMatchingBracket(c, 500);
         if (!ret.isValid()) {
-            openX = closeX = -1;
             return ret;
         }
-        // line for current pos
-        QTextLine line = range->layout()->lineForTextPosition(qMin(c.column(), range->length()));
-
-        if (ret.start().line() == c.line()) {
-            // Our cursor is at opening bracket
-            openX = line.cursorToX(c.column() + (inFront ? 0 : -1)) + 1;
-            if (auto l = view->textLayout(ret.end())) {
-                QTextLine closeLine = l->lineForTextPosition(ret.end().column());
-                closeX = closeLine.cursorToX(ret.end().column()) + 1;
-            } else {
-                openX = closeX = -1;
-            }
-        } else {
-            // Our cursor is at closing bracket
-            closeX = line.cursorToX(c.column() + (inFront ? 0 : -1)) + 1;
-            if (const auto l = view->textLayout(ret.start())) {
-                QTextLine closeLine = l->lineForTextPosition(ret.start().column());
-                openX = closeLine.cursorToX(ret.start().column()) + 1;
-            } else {
-                openX = closeX = -1;
-            }
-        }
-    } else {
-        openX = closeX = -1;
+        bracketXPos = (ret.end().column() * spaceWidth) + 1;
     }
 
     return ret;
@@ -418,7 +389,7 @@ void KateRenderer::paintIndentMarker(QPainter &paint, uint x, int line)
     static const QVector<qreal> dashPattern = QVector<qreal>() << 1 << 1;
     QPen myPen;
 
-    const bool onBracket = m_currentOpenBracketX == (int)x || m_currentCloseBracketX == (int)x;
+    const bool onBracket = m_currentBracketX == (int)x;
     if (onBracket && m_currentBracketRange.containsLine(line)) {
         QColor c = view()->theme().textColor(KSyntaxHighlighting::Theme::Normal);
         c.setAlphaF(0.7);
@@ -808,7 +779,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             auto cur = *cursor;
             cur.setColumn(cur.column() - 1);
             if (!m_currentBracketRange.boundaryAtCursor(*cursor) && m_currentBracketRange.end() != cur && m_currentBracketRange.start() != cur) {
-                m_currentBracketRange = cursorAtBracket(view(), range, *cursor, m_currentOpenBracketX, m_currentCloseBracketX);
+                m_currentBracketRange = cursorAtBracket(view(), range, spaceWidth(), *cursor, m_currentBracketX);
             }
         }
 
