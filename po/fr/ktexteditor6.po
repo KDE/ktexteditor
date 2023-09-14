@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-10 01:56+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2023-09-09 14:20+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -8049,17 +8049,17 @@ msgstr "Déplacement en bosses de chameaux activé"
 msgid "Search wrapped"
 msgstr "Recherche depuis l'autre extrémité du document"
 
-#: view/kateview.cpp:3709
+#: view/kateview.cpp:3702
 #, kde-format
 msgid "Align On"
 msgstr "Aligner sur"
 
-#: view/kateview.cpp:3709
+#: view/kateview.cpp:3702
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Modèle d'alignement :"
 
-#: view/kateview.cpp:4803
+#: view/kateview.cpp:4796
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exporter le fichier en HTML"

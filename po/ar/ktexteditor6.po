@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-10 01:56+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2023-03-16 12:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -7513,18 +7513,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "وضع البحث"
 
-#: view/kateview.cpp:3709
+#: view/kateview.cpp:3702
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "حا&ذِ"
 
-#: view/kateview.cpp:3709
+#: view/kateview.cpp:3702
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4803
+#: view/kateview.cpp:4796
 #, kde-format
 msgid "Export File as HTML"
 msgstr "صدّر الملفّ ك‍HTML"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-10 01:56+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -7659,18 +7659,18 @@ msgstr ""
 msgid "Search wrapped"
 msgstr "सर्च मोड"
 
-#: view/kateview.cpp:3709
+#: view/kateview.cpp:3702
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "पंक्तिबद्ध (&A)"
 
-#: view/kateview.cpp:3709
+#: view/kateview.cpp:3702
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4803
+#: view/kateview.cpp:4796
 #, kde-format
 msgid "Export File as HTML"
 msgstr "फ़ाइल को एचटीएमएल के रूप में निर्यात करें"
