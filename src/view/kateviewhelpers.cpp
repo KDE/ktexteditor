@@ -3112,7 +3112,7 @@ void KateViewSchemaAction::slotAboutToShow()
 
         if (!names.contains(hlName)) {
             names << hlName;
-            QAction *a = menu()->addAction(hlName, this, SLOT(setSchema()));
+            QAction *a = menu()->addAction(hlName, this, &KateViewSchemaAction::setSchema);
             a->setData(themes[z].name());
             a->setCheckable(true);
             a->setActionGroup(m_group);
