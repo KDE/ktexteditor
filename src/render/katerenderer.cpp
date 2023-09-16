@@ -891,12 +891,29 @@ void KateRenderer::paintTextLine(QPainter &paint,
                     // reverse because we want to look at the spaces at the beginning of line first
                     for (auto rit = spacePositions.rbegin(); rit != spacePositions.rend(); ++rit) {
                         const int spaceIdx = *rit;
-                        qreal x;
+                        qreal x = line.lineLayout().cursorToX(spaceIdx) - xStart;
+                        int dir = 1; // 1 == ltr, -1 == rtl
                         if (range->layout()->textOption().alignment() == Qt::AlignRight) {
-                            x = line.lineLayout().cursorToX(spaceIdx) - xStart - spaceWidth / 2.0;
+                            dir = -1;
+                            if (spaceIdx > 0) {
+                                QChar c = text.at(spaceIdx - 1);
+                                // line is LTR aligned, but is the char ltr or rtl?
+                                if (!isLineRightToLeft(QStringView(&c, 1))) {
+                                    dir = 1;
+                                }
+                            }
                         } else {
-                            x = (line.lineLayout().cursorToX(spaceIdx) - xStart) + (spaceWidth / 2.0);
+                            if (spaceIdx > 0) {
+                                // line is LTR aligned, but is the char ltr or rtl?
+                                QChar c = text.at(spaceIdx - 1);
+                                if (isLineRightToLeft(QStringView(&c, 1))) {
+                                    dir = -1;
+                                }
+                            }
                         }
+
+                        x += dir * (spaceWidth / 2.0);
+
                         const QPointF currentPoint(x, y);
                         if (!prev.isNull() && currentPoint == prev) {
                             break;
@@ -1286,7 +1303,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     // Only force RTL direction if dynWordWrap is on. Otherwise the view has infinite width
     // and the lines will never be forced RTL no matter what direction we set. The layout
     // can't force a line to the right if it doesn't know where the "right" is
-    if (isLineRightToLeft(lineLayout) || (view()->dynWordWrap() && view()->forceRTLDirection())) {
+    if (isLineRightToLeft(textLine->text()) || (view()->dynWordWrap() && view()->forceRTLDirection())) {
         opt.setAlignment(Qt::AlignRight);
         opt.setTextDirection(Qt::RightToLeft);
         // Must turn off this flag otherwise cursor placement
@@ -1414,15 +1431,10 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
 // 3) QString::isRightToLeft() does not seem to work on my setup
 // 4) isStringRightToLeft() should behave much better than QString::isRightToLeft() therefore:
 // 5) isStringRightToLeft() kicks ass
-bool KateRenderer::isLineRightToLeft(KateLineLayout *lineLayout)
+bool KateRenderer::isLineRightToLeft(QStringView str)
 {
-    QString s = lineLayout->textLine()->text();
-    int i = 0;
-
     // borrowed from QString::updateProperties()
-    while (i != s.length()) {
-        QChar c = s.at(i);
-
+    for (auto c : str) {
         switch (c.direction()) {
         case QChar::DirL:
         case QChar::DirLRO:
@@ -1438,7 +1450,6 @@ bool KateRenderer::isLineRightToLeft(KateLineLayout *lineLayout)
         default:
             break;
         }
-        i++;
     }
 
     return false;

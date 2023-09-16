@@ -290,7 +290,7 @@ public:
      * (see https://bugs.kde.org/show_bug.cgi?id=178594). As this function is internal
      * the way it work will probably change between releases. Be warned!
      */
-    static bool isLineRightToLeft(KateLineLayout *lineLayout);
+    static bool isLineRightToLeft(QStringView str);
 
     /**
      * The ultimate decoration creation function.
