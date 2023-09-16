@@ -860,8 +860,13 @@ void KateRenderer::paintTextLine(QPainter &paint,
                 if (spaceIndex >= trailingPos) {
                     QVarLengthArray<int, 32> spacePositions;
                     // Adjust to visible contents
-                    spaceIndex = std::min(line.lineLayout().xToCursor(xEnd), spaceIndex);
-                    int visibleStart = line.lineLayout().xToCursor(xStart);
+                    const auto dir = range->layout()->textOption().textDirection();
+                    const bool isRTL = dir == Qt::RightToLeft && m_view->dynWordWrap();
+                    int start = isRTL ? xEnd : xStart;
+                    int end = isRTL ? xStart : xEnd;
+
+                    spaceIndex = std::min(line.lineLayout().xToCursor(end), spaceIndex);
+                    int visibleStart = line.lineLayout().xToCursor(start);
 
                     for (; spaceIndex >= line.startCol(); --spaceIndex) {
                         if (!text.at(spaceIndex).isSpace()) {
