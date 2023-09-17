@@ -1211,7 +1211,7 @@ private:
     KTEXTEDITOR_NO_EXPORT
     static bool checkIntValue(const QString &value, int *result);
     /**
-      Feeds value into @p col using QColor::setNamedColor() and returns
+      Feeds value into @p col using QColor::fromString() and returns
       whether the color is valid
     */
     KTEXTEDITOR_NO_EXPORT
