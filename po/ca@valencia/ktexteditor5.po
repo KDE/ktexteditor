@@ -442,7 +442,7 @@ msgstr "Selecciona automàticament la &primera entrada de compleció"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr "Circula entre la llista de complecions utilitzant Tab / Maj+Tab"
+msgstr "Circula entre la llista de complecions utilitzant «Tab» / «Maj+Tab»"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -509,7 +509,7 @@ msgid ""
 "shown by pressing Alt key."
 msgstr ""
 "Mostra la documentació al costat del quadro de compleció. Si està "
-"desactivada, la documentació es pot mostrar prement la tecla Alt."
+"desactivada, la documentació es pot mostrar prement la tecla «Alt»."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -981,7 +981,7 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Acció de la tecla de tabulació (si no existix cap selecció) <a href=\"Si "
 "voleu que el <b>tabulador</b> alinee la línia actual al bloc de codi actual "
-"com en l'Emacs, convertiu el <b>tabulador</b> en una drecera a l'acció "
+"com en Emacs, convertiu el <b>tabulador</b> en una drecera a l'acció "
 "<b>Format del sagnat</b>.\"><span>Més...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1094,17 +1094,17 @@ msgstr "Meta"
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr "Ctrl + Alt"
+msgstr "Ctrl+Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr "Meta + Alt"
+msgstr "Meta+Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr "Ctrl + Meta"
+msgstr "Ctrl+Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
@@ -1385,7 +1385,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:48
 #, kde-format
 msgid "&PageUp/PageDown moves cursor"
-msgstr "&Av Pàg/Re Pàg mouen el cursor"
+msgstr "«&Av Pàg»/«Re Pàg» mouen el cursor"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
@@ -1479,7 +1479,7 @@ msgstr ""
 #, kde-format
 msgid "Backspace key removes character’s base with its diacritics"
 msgstr ""
-"La tecla Retrocés elimina la base dels caràcters amb els seus diacrítics"
+"La tecla «Retrocés» elimina la base dels caràcters amb els seus diacrítics"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
@@ -6363,7 +6363,7 @@ msgstr "Activa l'ús de la navegació intel·ligent."
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
-msgstr "Prement la tecla Tab, se sagna."
+msgstr "Prement la tecla «Tab», se sagna."
 
 #: variableeditor/variablelineedit.cpp:322
 #, kde-format
@@ -8079,8 +8079,8 @@ msgid ""
 "search and replace dialog)."
 msgstr ""
 "Quan està seleccionada, les ordres de vi substituïxen les ordres integrades "
-"de Kate. Per exemple: Ctrl+R refarà i substituirà l'acció estàndard (mostra "
-"el diàleg de busca i substitució)."
+"de Kate. Per exemple: «Ctrl+R» refarà i substituirà l'acció estàndard "
+"(mostra el diàleg de busca i substitució)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViCommandsOverride)
 #: vimode/config/configwidget.ui:38
