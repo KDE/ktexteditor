@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 01:54+0000\n"
-"PO-Revision-Date: 2023-09-09 14:20+0200\n"
+"PO-Revision-Date: 2023-09-16 19:21+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -608,7 +608,7 @@ msgstr ""
 #, kde-format
 msgid "&Draw vertical line at the word wrap column"
 msgstr ""
-"&Dessiner une ligne verticale pour la colonne de retour à la ligne de mots."
+"&Dessiner une ligne verticale pour la colonne de retour à la ligne de mots"
 
 # | msgid "Wrap words at:"
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
@@ -1494,7 +1494,7 @@ msgstr ""
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
-"Définit su le curseur saute sur des mots complets ou s'arrête sur les creux "
+"Définit si le curseur saute sur des mots complets ou s'arrête sur les creux "
 "façon bosses de chameaux."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
@@ -1502,7 +1502,7 @@ msgstr ""
 #, kde-format
 msgid "Enable camel case cursor movement"
 msgstr ""
-"Activer le déplacement du curseur sur les creux façon bosses de chameaux."
+"Activer le déplacement du curseur sur les creux façon bosses de chameaux"
 
 # | msgid "Autocenter cursor (lines):"
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
@@ -1600,7 +1600,7 @@ msgstr "Curseur multiple"
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr "Modificateurs multiples de curseur"
+msgstr "Modificateurs de curseur multiple"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
@@ -2133,7 +2133,7 @@ msgstr ""
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 "Clignotement de l'accolade correspondante lorsque le curseur se déplace vers "
-"l'autre accolade."
+"l'autre accolade"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:233
@@ -2216,7 +2216,7 @@ msgstr "Retour à la ligne automatique par mot :"
 msgid "Wrap dynamically at static word wrap marker"
 msgstr ""
 "Retour à la ligne automatique au niveau du marqueur statique de mise en "
-"forme du mot."
+"forme du mot"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:342
@@ -5186,7 +5186,7 @@ msgstr "Importer..."
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
-"Thème regroupé en lecture seule. Pour modifier ce thème, veuillez le copier."
+"Thème intégré, en lecture seule. Pour modifier ce thème, veuillez le copier."
 
 #: syntax/katethemeconfig.cpp:1147
 #, kde-format
@@ -5235,7 +5235,7 @@ msgstr "Importer malgré tout"
 #: syntax/katethemeconfig.cpp:1288
 #, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Suivre un thème de couleurs du système"
+msgstr "Suivre le thème de couleurs du système"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
