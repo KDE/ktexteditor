@@ -1922,45 +1922,30 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         // restore the filetype
         // NOTE: if the session config file contains an invalid Mode
         // (for example, one that was deleted or renamed), do not apply it
-        if (kconfig.hasKey("Mode")) {
+        if (kconfig.hasKey("Mode Set By User")) {
             // restore if set by user, too!
-            m_fileTypeSetByUser = kconfig.readEntry("Mode Set By User", false);
-            if (m_fileTypeSetByUser) {
-                updateFileType(kconfig.readEntry("Mode"));
-            } else {
-                // Not set by user:
-                // - if it's not the default ("Normal") use the mode from the config file
-                // - if it's "Normal", use m_fileType which was detected by the code in openFile()
-                const QString modeFromCfg = kconfig.readEntry("Mode");
-                updateFileType(modeFromCfg != QLatin1String("Normal") ? modeFromCfg : m_fileType);
-            }
+            m_fileTypeSetByUser = true;
+            updateFileType(kconfig.readEntry("Mode"));
         }
     }
 
     if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // restore the hl stuff
-        if (kconfig.hasKey("Highlighting")) {
+        if (kconfig.hasKey("Highlighting Set By User")) {
             const int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
+            m_hlSetByUser = true;
             if (mode >= 0) {
                 // restore if set by user, too! see bug 332605, otherwise we loose the hl later again on save
-                m_hlSetByUser = kconfig.readEntry("Highlighting Set By User", false);
-
-                if (m_hlSetByUser) {
-                    m_buffer->setHighlight(mode);
-                } else {
-                    // Not set by user, only set highlighting if it's not 0, the default,
-                    // otherwise leave it the same as the highlighting set by updateFileType()
-                    // which has already been called by openFile()
-                    if (mode > 0) {
-                        m_buffer->setHighlight(mode);
-                    }
-                }
+                m_buffer->setHighlight(mode);
             }
         }
     }
 
     // indent mode
-    config()->setIndentationMode(kconfig.readEntry("Indentation Mode", config()->indentationMode()));
+    const QString userSetIndentMode = kconfig.readEntry("Indentation Mode");
+    if (!userSetIndentMode.isEmpty()) {
+        config()->setIndentationMode(userSetIndentMode);
+    }
 
     // Restore Bookmarks
     const QList<int> marks = kconfig.readEntry("Bookmarks", QList<int>());
@@ -1983,19 +1968,20 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
         kconfig.writeEntry("URL", this->url().toString());
     }
 
-    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
+    // only save encoding if it's something other than utf-8
+    if (encoding() != QLatin1String("UTF-8") && !flags.contains(QStringLiteral("SkipEncoding"))) {
         // save encoding
         kconfig.writeEntry("Encoding", encoding());
     }
 
-    if (!flags.contains(QStringLiteral("SkipMode"))) {
+    if (m_fileTypeSetByUser && !flags.contains(QStringLiteral("SkipMode"))) {
         // save file type
         kconfig.writeEntry("Mode", m_fileType);
         // save if set by user, too!
         kconfig.writeEntry("Mode Set By User", m_fileTypeSetByUser);
     }
 
-    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
+    if (m_hlSetByUser && !flags.contains(QStringLiteral("SkipHighlighting"))) {
         // save hl
         kconfig.writeEntry("Highlighting", highlight()->name());
 
@@ -2004,7 +1990,9 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
     }
 
     // indent mode
-    kconfig.writeEntry("Indentation Mode", config()->indentationMode());
+    if (m_indenterSetByUser) {
+        kconfig.writeEntry("Indentation Mode", config()->indentationMode());
+    }
 
     // Save Bookmarks
     QList<int> marks;
@@ -2014,7 +2002,9 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
         }
     }
 
-    kconfig.writeEntry("Bookmarks", marks);
+    if (!marks.isEmpty()) {
+        kconfig.writeEntry("Bookmarks", marks);
+    }
 }
 
 // END KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
