@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-14 01:54+0000\n"
+"POT-Creation-Date: 2023-09-19 01:55+0000\n"
 "PO-Revision-Date: 2023-08-27 15:35+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2128,7 +2128,7 @@ msgstr "დოკუმენტის თავიდან ჩატვირ�
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "დისკზე ცვლილების შემთხვევაში ფაილის თავიდან ავტომატური ჩატვირთვა"
 
-#: document/katedocument.cpp:2275
+#: document/katedocument.cpp:2265
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2137,24 +2137,24 @@ msgstr ""
 "ფაილი %1 ვერ ჩავტვირთე, რადგან მისი წაკითხვა შეუძლებელია. <br /> "
 "გადაამოწმეთ, გაქვთ ფაილთან წვდომა, თუ არა."
 
-#: document/katedocument.cpp:2280
+#: document/katedocument.cpp:2270
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "კიდევ სცადეთ"
 
-#: document/katedocument.cpp:2284 document/katedocument.cpp:6562
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
 #, kde-format
 msgid "&Close"
 msgstr "დაკე&ტვა"
 
-#: document/katedocument.cpp:2285 document/katedocument.cpp:6563
+#: document/katedocument.cpp:2275 document/katedocument.cpp:6553
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "შეტყობინების დახურვა"
 
-#: document/katedocument.cpp:2417
+#: document/katedocument.cpp:2407
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2168,7 +2168,7 @@ msgstr ""
 "კოდირებით, ან, ფაილის ჩასასწორებლად, გადართეთ ის ჩაწერა-წაკითხვის რეჟიმში "
 "ხელსაწყოების მენიუდან."
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2426
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2181,17 +2181,17 @@ msgstr ""
 "ხაზები გადატანილია და დოკუმენტი გადაირთო მხოლოდ-კითხვის რეჟიმში, რადგან მისი "
 "შენახვა შემცველობის შეცვლას გამოიწვევს."
 
-#: document/katedocument.cpp:2443
+#: document/katedocument.cpp:2433
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "ლიმიტების დროებითი გაზრდა და ფაილის თავიდან ჩატვირთვა"
 
-#: document/katedocument.cpp:2446
+#: document/katedocument.cpp:2436
 #, kde-format
 msgid "Close"
 msgstr "დახურვა"
 
-#: document/katedocument.cpp:2473
+#: document/katedocument.cpp:2463
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2200,18 +2200,18 @@ msgstr ""
 "მართლა გნებავთ ამ შეუცვლელი ფაილის შენახვა? ის დისკზე არსებულ ფაილს თავზე "
 "გადააწერს."
 
-#: document/katedocument.cpp:2474
+#: document/katedocument.cpp:2464
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "უცვლელი ფაილის შენახვის მცდელობა"
 
-#: document/katedocument.cpp:2475 document/katedocument.cpp:2486
-#: document/katedocument.cpp:2502
+#: document/katedocument.cpp:2465 document/katedocument.cpp:2476
+#: document/katedocument.cpp:2492
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "მაინც შენახვა"
 
-#: document/katedocument.cpp:2484
+#: document/katedocument.cpp:2474
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2220,14 +2220,14 @@ msgstr ""
 "მართლა გნებავთ ამ ფაილის შენახვა? ორივე - ღია ფაილი და ფაილი დისკზე "
 "შეიცვალა. შეიძლება, მონაცემები დაგეკარგოთ."
 
-#: document/katedocument.cpp:2485 document/katedocument.cpp:2501
-#: document/katedocument.cpp:2817 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2475 document/katedocument.cpp:2491
+#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "შესაძლებელია მონაცემების დაკარგვა"
 
-#: document/katedocument.cpp:2499
+#: document/katedocument.cpp:2489
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2236,7 +2236,7 @@ msgstr ""
 "არჩეულ კოდირებას ამ დოკუმენტში არსებული ყველა უნიკოდის სიმბოლოს კოდირება არ "
 "შეუძლია. მაინც გნებავთ, შეინახოთ ის? მონაცემები შეიძლება, დაიკარგოს."
 
-#: document/katedocument.cpp:2568
+#: document/katedocument.cpp:2558
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2251,7 +2251,7 @@ msgstr ""
 "ორიგინალი ფაილი შეიძლება დაკარგული ან დაზიანებულია. ნუ გახვალთ აპლიკაციიდან "
 "მანამდე, სანამ ფაილს არ ჩაწერთ."
 
-#: document/katedocument.cpp:2689
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2264,50 +2264,50 @@ msgstr ""
 "შეიძლება იყოს ის, რომ მედია, რომელზედაც წერთ, სავსეა, ან საქაღალდე ან ფაილი "
 "თქვენთვის მხოლოდ-კითხვადია."
 
-#: document/katedocument.cpp:2693
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "მარქაფის ასლის შექმნის შეცდომა."
 
-#: document/katedocument.cpp:2694
+#: document/katedocument.cpp:2684
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "მაინც შენახვა, მიუხედავად ყველაფრისა"
 
-#: document/katedocument.cpp:2816
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "მართლა გნებავთ ამ ფაილის დახურვის გაგრძელება? შეიძლება მონაცემები დაკარგოთ."
 
-#: document/katedocument.cpp:2818
+#: document/katedocument.cpp:2808
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "მაინც დახურვა"
 
-#: document/katedocument.cpp:4632
+#: document/katedocument.cpp:4622
 #, kde-format
 msgid "Untitled"
 msgstr "უსახელო"
 
-#: document/katedocument.cpp:4755 document/katedocument.cpp:4983
-#: document/katedocument.cpp:4993 document/katedocument.cpp:5777
-#: document/katedocument.cpp:5967
+#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983 document/katedocument.cpp:5767
+#: document/katedocument.cpp:5957
 #, kde-format
 msgid "Save File"
 msgstr "ფაილის შენახვა"
 
-#: document/katedocument.cpp:4758
+#: document/katedocument.cpp:4748
 #, kde-format
 msgid "Save failed"
 msgstr "შენახვის შეცდომა"
 
-#: document/katedocument.cpp:5004
+#: document/katedocument.cpp:4994
 #, kde-format
 msgid "Save Copy of File"
 msgstr "ფაილის ასელის შენახვა"
 
-#: document/katedocument.cpp:5016
+#: document/katedocument.cpp:5006
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2320,7 +2320,7 @@ msgstr ""
 "შეამოწმეთ, გაქვთ თუ არა ამ ფაილში ჩაწერის უფლება და დისკზე ადგილი საკმარისი "
 "თუა."
 
-#: document/katedocument.cpp:5294
+#: document/katedocument.cpp:5284
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2333,7 +2333,7 @@ msgstr ""
 "docs.kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5300
+#: document/katedocument.cpp:5290
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2346,22 +2346,22 @@ msgstr ""
 "kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5599
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "ფაილი '%1' დისკზე შეიცვალა."
 
-#: document/katedocument.cpp:5612
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "ფაილი '%1' დისკზე შეიქმნა."
 
-#: document/katedocument.cpp:5615
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "ფაილი '%1' დისკიდან წაიშალა."
 
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5942
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2370,17 +2370,17 @@ msgstr ""
 "დოკუმენტი %1 შეიცვალა\n"
 "გნებავთ ცვლილებების შენახვა თუ უბრალოდ გამოვიდე?"
 
-#: document/katedocument.cpp:5955
+#: document/katedocument.cpp:5945
 #, kde-format
 msgid "Close Document"
 msgstr "დოკუმენტის დახურვა"
 
-#: document/katedocument.cpp:6066
+#: document/katedocument.cpp:6056
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ფაილი <a href=\"%1\">%2</a> ჯერ კიდევ იტვირთება."
 
-#: document/katedocument.cpp:6071
+#: document/katedocument.cpp:6061
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ჩატვირთვის გაუქმება"
