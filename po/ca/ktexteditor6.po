@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-19 01:55+0000\n"
-"PO-Revision-Date: 2023-09-14 18:51+0200\n"
+"PO-Revision-Date: 2023-09-20 21:13+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -176,7 +176,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:35
 #, kde-format
 msgid "Show arrows to collapse code blocks"
-msgstr "Mostra les fletxes per reduir els blocs de codi"
+msgstr "Mostra les fletxes per a reduir els blocs de codi"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -6949,8 +6949,8 @@ msgid ""
 "If you have selected something within the current document, this will no "
 "longer be selected."
 msgstr ""
-"Si heu seleccionat quelcom dins del document actual, ja no se seleccionarà "
-"novament."
+"Si heu seleccionat alguna cosa dins del document actual, ja no se "
+"seleccionarà novament."
 
 #: view/kateview.cpp:714
 #, kde-format
@@ -8030,7 +8030,7 @@ msgid ""
 msgstr ""
 "<p><b>e[dit] &mdash; recarrega el document actual</b></p><p>Sintaxi: "
 "<tt><b>e[dit]</b></tt></p><p>Inicia l'<b>e</b>dició del document actual de "
-"nou. Això és útil per tornar a editar el fitxer actual, quan ha estat "
+"nou. Això és útil per a tornar a editar el fitxer actual, quan ha estat "
 "modificat en el disc.</p>"
 
 #: vimode/appcommands.cpp:512
