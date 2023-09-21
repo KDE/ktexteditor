@@ -2149,6 +2149,12 @@ void KateViewInternal::pageUp(bool sel, bool half)
     }
     view()->clearSecondaryCursors();
 
+    // jump back to where the cursor is, otherwise it is super
+    // slow to call cache()->displayViewLine
+    if (!view()->visibleRange().contains(m_displayCursor)) {
+        scrollLines(m_displayCursor.line());
+    }
+
     // remember the view line and x pos
     int viewLine = cache()->displayViewLine(m_displayCursor);
     bool atTop = startPos().atStartOfDocument();
@@ -2193,6 +2199,12 @@ void KateViewInternal::pageDown(bool sel, bool half)
     }
 
     view()->clearSecondaryCursors();
+
+    // jump back to where the cursor is, otherwise it is super
+    // slow to call cache()->displayViewLine
+    if (!view()->visibleRange().contains(m_displayCursor)) {
+        scrollLines(m_displayCursor.line());
+    }
 
     // remember the view line
     int viewLine = cache()->displayViewLine(m_displayCursor);
