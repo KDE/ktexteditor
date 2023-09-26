@@ -192,6 +192,9 @@
         <property name="text">
          <string>Multiple Cursor Modifiers</string>
         </property>
+        <property name="buddy">
+         <cstring>cmbMultiCursorModifier</cstring>
+        </property>
        </widget>
       </item>
       <item row="0" column="1">

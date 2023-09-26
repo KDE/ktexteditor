@@ -294,6 +294,9 @@
        <property name="text">
         <string>Folding arrows visibility:</string>
        </property>
+       <property name="buddy">
+        <cstring>cmbFoldingArrowVisiblity</cstring>
+       </property>
       </widget>
      </item>
      <item row="2" column="1">

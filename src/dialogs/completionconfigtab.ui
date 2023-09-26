@@ -72,6 +72,9 @@
           <property name="text">
            <string>Minimal word length to complete:</string>
           </property>
+          <property name="buddy">
+           <cstring>minimalWordLength</cstring>
+          </property>
          </widget>
         </item>
         <item>
