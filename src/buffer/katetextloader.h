@@ -289,16 +289,34 @@ public:
                     continue;
                 }
             }
+            for (; m_position < m_text.length(); m_position++) {
+                QChar current_char = m_text.at(m_position);
+                if (current_char == lf) {
+                    m_lastWasEndOfLine = true;
 
-            QChar current_char = m_text.at(m_position);
-            if (current_char == lf) {
-                m_lastWasEndOfLine = true;
+                    if (m_lastWasR) {
+                        m_lastLineStart++;
+                        m_lastWasR = false;
+                        m_eol = TextBuffer::eolDos;
+                    } else {
+                        // line data
+                        offset = m_lastLineStart;
+                        length = m_position - m_lastLineStart;
 
-                if (m_lastWasR) {
-                    m_lastLineStart++;
-                    m_lastWasR = false;
-                    m_eol = TextBuffer::eolDos;
-                } else {
+                        m_lastLineStart = m_position + 1;
+                        m_position++;
+
+                        // only win, if not dos!
+                        if (m_eol != TextBuffer::eolDos) {
+                            m_eol = TextBuffer::eolUnix;
+                        }
+
+                        return !encodingError;
+                    }
+                } else if (current_char == cr) {
+                    m_lastWasEndOfLine = true;
+                    m_lastWasR = true;
+
                     // line data
                     offset = m_lastLineStart;
                     length = m_position - m_lastLineStart;
@@ -306,47 +324,28 @@ public:
                     m_lastLineStart = m_position + 1;
                     m_position++;
 
-                    // only win, if not dos!
-                    if (m_eol != TextBuffer::eolDos) {
-                        m_eol = TextBuffer::eolUnix;
+                    // should only win of first time!
+                    if (m_eol == TextBuffer::eolUnknown) {
+                        m_eol = TextBuffer::eolMac;
                     }
 
                     return !encodingError;
+                } else if (current_char == QChar::LineSeparator) {
+                    m_lastWasEndOfLine = true;
+
+                    // line data
+                    offset = m_lastLineStart;
+                    length = m_position - m_lastLineStart;
+
+                    m_lastLineStart = m_position + 1;
+                    m_position++;
+
+                    return !encodingError;
+                } else {
+                    m_lastWasEndOfLine = false;
+                    m_lastWasR = false;
                 }
-            } else if (current_char == cr) {
-                m_lastWasEndOfLine = true;
-                m_lastWasR = true;
-
-                // line data
-                offset = m_lastLineStart;
-                length = m_position - m_lastLineStart;
-
-                m_lastLineStart = m_position + 1;
-                m_position++;
-
-                // should only win of first time!
-                if (m_eol == TextBuffer::eolUnknown) {
-                    m_eol = TextBuffer::eolMac;
-                }
-
-                return !encodingError;
-            } else if (current_char == QChar::LineSeparator) {
-                m_lastWasEndOfLine = true;
-
-                // line data
-                offset = m_lastLineStart;
-                length = m_position - m_lastLineStart;
-
-                m_lastLineStart = m_position + 1;
-                m_position++;
-
-                return !encodingError;
-            } else {
-                m_lastWasEndOfLine = false;
-                m_lastWasR = false;
             }
-
-            m_position++;
         }
 
         return !encodingError;
