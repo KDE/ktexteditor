@@ -42,6 +42,32 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="lblLineHeight">
+       <property name="text">
+        <string>Line Height Multiplier:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDoubleSpinBox" name="spbLineHeightMultiplier">
+       <property name="toolTip">
+        <string>This value will be multiplied with the font's default line height. A value of 1.0 means that the default height will be used.</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>2.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.125000000000000</double>
+       </property>
+      </widget>
+     </item>
      <item row="3" column="0">
       <spacer name="verticalSpacer_5">
        <property name="orientation">
@@ -428,32 +454,6 @@ beginning of a file.</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QDoubleSpinBox" name="spbLineHeightMultiplier">
-       <property name="toolTip">
-        <string>This value will be multiplied with the font's default line height. A value of 1.0 means that the default height will be used.</string>
-       </property>
-       <property name="decimals">
-        <number>1</number>
-       </property>
-       <property name="minimum">
-        <double>1.000000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>2.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.125000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="lblLineHeight">
-       <property name="text">
-        <string>Line Height Multiplier:</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
@@ -478,10 +478,6 @@ beginning of a file.</string>
    <header>kfontrequester.h</header>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>spacesComboBox</tabstop>
-  <tabstop>chkShowTabs</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
