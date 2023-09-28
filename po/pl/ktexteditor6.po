@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-19 01:55+0000\n"
+"POT-Creation-Date: 2023-09-28 01:38+0000\n"
 "PO-Revision-Date: 2023-07-08 07:36+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -397,13 +397,13 @@ msgid "Folding arrows visibility:"
 msgstr "Widoczność strzałek zwijających:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:303
+#: dialogs/bordersappearanceconfigwidget.ui:306
 #, kde-format
 msgid "Show on Hover"
 msgstr "Widoczne po najechaniu"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:308
+#: dialogs/bordersappearanceconfigwidget.ui:311
 #, kde-format
 msgid "Show Always"
 msgstr "Zawsze widoczne"
@@ -458,20 +458,20 @@ msgid "Minimal word length to complete:"
 msgstr "Uzupełniaj słowa nie krótsze niż:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:98
+#: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
 "Usuń końcówkę poprzedniego słowa, gdy wybrano element uzupełniający z listy"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:104
 #, kde-format
 msgid "Remove tail on complete"
 msgstr "Usuń końcówkę po uzupełnieniu"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:108
+#: dialogs/completionconfigtab.ui:111
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
@@ -479,13 +479,13 @@ msgstr ""
 "Uzupełnianie słów podpowiada je na podstawie słów znalezionych w dokumencie."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:121
+#: dialogs/completionconfigtab.ui:124
 #, kde-format
 msgid "&Keyword completion"
 msgstr "Uzupełnianie słów &kluczowych"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:130
+#: dialogs/completionconfigtab.ui:133
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -495,13 +495,13 @@ msgstr ""
 "kluczowych, które znajdują się w języku dokumentu."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:143
+#: dialogs/completionconfigtab.ui:146
 #, kde-format
 msgid "Documentation with completion"
 msgstr "Dokumentacja z uzupełnianiem"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:152
+#: dialogs/completionconfigtab.ui:155
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -581,19 +581,19 @@ msgid "Default input mode:"
 msgstr "Domyślny tryb wprowadzania:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/editconfigwidget.ui:117
+#: dialogs/editconfigwidget.ui:120
 #, kde-format
 msgid "Brackets:"
 msgstr "Nawiasy:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
-#: dialogs/editconfigwidget.ui:124
+#: dialogs/editconfigwidget.ui:130
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
 msgstr "Wstaw nawias zamykający po wpisaniu nawiasu otwierającego"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
-#: dialogs/editconfigwidget.ui:137
+#: dialogs/editconfigwidget.ui:143
 #, kde-format
 msgid ""
 "When some text is selected these chars will be added on both its sides in a "
@@ -603,25 +603,25 @@ msgstr ""
 "zrobił by to \"Auto nawiasy\""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
-#: dialogs/editconfigwidget.ui:140
+#: dialogs/editconfigwidget.ui:146
 #, kde-format
 msgid "Enclosing characters:"
 msgstr "Znaki otaczające (np. nawias):"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/editconfigwidget.ui:160
+#: dialogs/editconfigwidget.ui:169
 #, kde-format
 msgid "Copy and paste:"
 msgstr "Kopiowanie i wklejanie:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
-#: dialogs/editconfigwidget.ui:167
+#: dialogs/editconfigwidget.ui:176
 #, kde-format
 msgid "Move selected text when dragged"
 msgstr "Przeciąganie przesuwa zaznaczony tekst"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
-#: dialogs/editconfigwidget.ui:174
+#: dialogs/editconfigwidget.ui:183
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
 msgstr ""
@@ -629,25 +629,25 @@ msgstr ""
 "tekstu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
-#: dialogs/editconfigwidget.ui:181
+#: dialogs/editconfigwidget.ui:190
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
 msgstr "Nie przemieszczaj wskaźnika myszy przy wklejaniu myszą"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
-#: dialogs/editconfigwidget.ui:188
+#: dialogs/editconfigwidget.ui:197
 #, kde-format
 msgid "Max Clipboard History Entries:"
 msgstr "Graniczna liczba wpisów historia schowka:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
-#: dialogs/editconfigwidget.ui:198
+#: dialogs/editconfigwidget.ui:207
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr "Określa to liczbę wpisów przechowywanych w historii schowka"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
-#: dialogs/editconfigwidget.ui:220
+#: dialogs/editconfigwidget.ui:229
 #, kde-format
 msgid ""
 "When you type these characters while text is selected, they will surround "
@@ -1757,7 +1757,7 @@ msgstr "Usuń znaki odstępów &na końcach wierszy:"
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
-#: dialogs/textareaappearanceconfigwidget.ui:75
+#: dialogs/textareaappearanceconfigwidget.ui:101
 #, kde-format
 msgid "Never"
 msgstr "Nigdy"
@@ -1862,44 +1862,60 @@ msgstr "Pokaż rodzaj zakończenia wierszy"
 msgid "Editor font:"
 msgstr "Czcionka edytora:"
 
+#. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
+#: dialogs/textareaappearanceconfigwidget.ui:48
+#, kde-format
+msgid "Line Height Multiplier:"
+msgstr "Mnożnik wysokości wiersza:"
+
+#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
+#: dialogs/textareaappearanceconfigwidget.ui:55
+#, kde-format
+msgid ""
+"This value will be multiplied with the font's default line height. A value "
+"of 1.0 means that the default height will be used."
+msgstr ""
+"Ta wartość zostanie pomnożona przez domyślną wysokość wiersza. Wartość 1,0 "
+"oznacza, że zostanie użyta domyślna wysokość wiersza."
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/textareaappearanceconfigwidget.ui:64
+#: dialogs/textareaappearanceconfigwidget.ui:90
 #, kde-format
 msgid "Show whitespace indicators:"
 msgstr "Pomijaj wskaźniki białych znaków:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:80
+#: dialogs/textareaappearanceconfigwidget.ui:106
 #, kde-format
 msgid "At the end of a line"
 msgstr "Na końcach wierszy"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:85
+#: dialogs/textareaappearanceconfigwidget.ui:111
 #, kde-format
 msgid "Always"
 msgstr "Zawsze"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
-#: dialogs/textareaappearanceconfigwidget.ui:93
+#: dialogs/textareaappearanceconfigwidget.ui:119
 #, kde-format
 msgid "Whitespace indicator size:"
 msgstr "Rozmiar wskaźnika białych znaków:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
-#: dialogs/textareaappearanceconfigwidget.ui:109
+#: dialogs/textareaappearanceconfigwidget.ui:135
 #, kde-format
 msgid "Size of the visible highlight marker."
 msgstr "Rozmiar widocznego znacznika podświetlenia."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/textareaappearanceconfigwidget.ui:137
+#: dialogs/textareaappearanceconfigwidget.ui:163
 #, kde-format
 msgid "Show tab indicators:"
 msgstr "Pokaż wskaźniki tabulatorów:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
-#: dialogs/textareaappearanceconfigwidget.ui:147
+#: dialogs/textareaappearanceconfigwidget.ui:173
 #, kde-format
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
@@ -1909,19 +1925,19 @@ msgstr ""
 "tekście."
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:157
+#: dialogs/textareaappearanceconfigwidget.ui:183
 #, kde-format
 msgid "Show focus frame around editor"
 msgstr "Pokaż ramkę skupienia wokół edytora"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:190
+#: dialogs/textareaappearanceconfigwidget.ui:216
 #, kde-format
 msgid "Bracket matching:"
 msgstr "Podświetlanie naprzeciwległych nawiasów:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:197
+#: dialogs/textareaappearanceconfigwidget.ui:223
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1931,19 +1947,19 @@ msgstr ""
 "zostanie podświetlony."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:200
+#: dialogs/textareaappearanceconfigwidget.ui:226
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Podświetl zakres między wybranymi nawiasami"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:207
+#: dialogs/textareaappearanceconfigwidget.ui:233
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr "Pokaż naprzeciwległy, otwarty nawias i wiersze przyległe do niego"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:210
+#: dialogs/textareaappearanceconfigwidget.ui:236
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -1957,19 +1973,19 @@ msgstr ""
 "blokach"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:213
+#: dialogs/textareaappearanceconfigwidget.ui:239
 #, kde-format
 msgid "Show preview of matching open bracket"
 msgstr "Pokaż podgląd naprzeciwległego, otwartego nawiasu"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:220
+#: dialogs/textareaappearanceconfigwidget.ui:246
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Błyskaj naprzeciwległymi nawiasami"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:223
+#: dialogs/textareaappearanceconfigwidget.ui:249
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
@@ -1978,7 +1994,7 @@ msgstr ""
 "lepszej widoczności."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:226
+#: dialogs/textareaappearanceconfigwidget.ui:252
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
@@ -1986,7 +2002,7 @@ msgstr ""
 "nawiasów w parze"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:233
+#: dialogs/textareaappearanceconfigwidget.ui:259
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -1996,43 +2012,43 @@ msgstr ""
 "identyfikacji wierszy z wcięciami."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:236
+#: dialogs/textareaappearanceconfigwidget.ui:262
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Pokaż li&nie wcięć"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:259
+#: dialogs/textareaappearanceconfigwidget.ui:285
 #, kde-format
 msgid "Counts:"
 msgstr "Liczniki:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:266
+#: dialogs/textareaappearanceconfigwidget.ui:292
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Pokaż/ukryj licznik słów na pasku adresu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:269 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:295 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Pokaż licznik słów"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:276
+#: dialogs/textareaappearanceconfigwidget.ui:302
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Pokaż/ukryj licznik wierszy na pasku stanu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:279 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:305 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Pokaż licznik wierszy"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:305
+#: dialogs/textareaappearanceconfigwidget.ui:331
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2046,37 +2062,37 @@ msgstr ""
 "umieszczane są na początku pliku."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:308
+#: dialogs/textareaappearanceconfigwidget.ui:334
 #, kde-format
 msgid "Fold first line"
 msgstr "Zwiń pierwszy wiersz"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:328
+#: dialogs/textareaappearanceconfigwidget.ui:354
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Dynamiczne zawijanie wierszy:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:335
+#: dialogs/textareaappearanceconfigwidget.ui:361
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Zawiń dynamicznie na statycznym znaczniku zawijania wierszy"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:342
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Nie zważaj na granice słów przy dynamicznym zawijaniu"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:349
+#: dialogs/textareaappearanceconfigwidget.ui:375
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Wskaźniki d&ynamicznego zawijania wierszy:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:359
+#: dialogs/textareaappearanceconfigwidget.ui:385
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
@@ -2084,19 +2100,19 @@ msgstr ""
 "wyświetlone."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:382
+#: dialogs/textareaappearanceconfigwidget.ui:408
 #, kde-format
 msgid "Indent wrapped lines:"
 msgstr "Wetnij zawinięte wiersze:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:399
+#: dialogs/textareaappearanceconfigwidget.ui:425
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr "Nie wcinaj wierszy szerszych niż:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:415
+#: dialogs/textareaappearanceconfigwidget.ui:441
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2115,26 +2131,10 @@ msgstr ""
 "wyrównane pionowo do następnych zawiniętych linii.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:418
+#: dialogs/textareaappearanceconfigwidget.ui:444
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% szerokości widoku"
-
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
-#: dialogs/textareaappearanceconfigwidget.ui:434
-#, kde-format
-msgid ""
-"This value will be multiplied with the font's default line height. A value "
-"of 1.0 means that the default height will be used."
-msgstr ""
-"Ta wartość zostanie pomnożona przez domyślną wysokość wiersza. Wartość 1,0 "
-"oznacza, że zostanie użyta domyślna wysokość wiersza."
-
-#. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
-#: dialogs/textareaappearanceconfigwidget.ui:453
-#, kde-format
-msgid "Line Height Multiplier:"
-msgstr "Mnożnik wysokości wiersza:"
 
 #: document/katebuffer.cpp:141
 #, kde-format

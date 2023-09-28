@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-19 01:55+0000\n"
+"POT-Creation-Date: 2023-09-28 01:38+0000\n"
 "PO-Revision-Date: 2023-07-03 16:09+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -386,13 +386,13 @@ msgid "Folding arrows visibility:"
 msgstr "Viditelnost skládacích šipek:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:303
+#: dialogs/bordersappearanceconfigwidget.ui:306
 #, kde-format
 msgid "Show on Hover"
 msgstr "Zobrazit při přejetí myší"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:308
+#: dialogs/bordersappearanceconfigwidget.ui:311
 #, kde-format
 msgid "Show Always"
 msgstr "Vždy zobrazit"
@@ -447,19 +447,19 @@ msgid "Minimal word length to complete:"
 msgstr "Minimální délka doplňovaného slova:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:98
+#: dialogs/completionconfigtab.ui:101
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:104
 #, kde-format
 msgid "Remove tail on complete"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:108
+#: dialogs/completionconfigtab.ui:111
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
@@ -467,13 +467,13 @@ msgstr ""
 "Doplňování slov poskytuje návrhy slov podle slov nalezených v dokumentu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:121
+#: dialogs/completionconfigtab.ui:124
 #, kde-format
 msgid "&Keyword completion"
 msgstr "Doplňování &klíčových slov"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:130
+#: dialogs/completionconfigtab.ui:133
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -483,13 +483,13 @@ msgstr ""
 "jazyce dokumentu."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:143
+#: dialogs/completionconfigtab.ui:146
 #, kde-format
 msgid "Documentation with completion"
 msgstr "Dokumentace s doplněním"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:152
+#: dialogs/completionconfigtab.ui:155
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -565,19 +565,19 @@ msgid "Default input mode:"
 msgstr "Výchozí vstupní režim:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/editconfigwidget.ui:117
+#: dialogs/editconfigwidget.ui:120
 #, kde-format
 msgid "Brackets:"
 msgstr "Závorky:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
-#: dialogs/editconfigwidget.ui:124
+#: dialogs/editconfigwidget.ui:130
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
 msgstr "Automaticky zavírat závorky pokud je napsána otevírací závorka"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
-#: dialogs/editconfigwidget.ui:137
+#: dialogs/editconfigwidget.ui:143
 #, kde-format
 msgid ""
 "When some text is selected these chars will be added on both its sides in a "
@@ -585,25 +585,25 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
-#: dialogs/editconfigwidget.ui:140
+#: dialogs/editconfigwidget.ui:146
 #, kde-format
 msgid "Enclosing characters:"
 msgstr "Uzavírací znaky:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/editconfigwidget.ui:160
+#: dialogs/editconfigwidget.ui:169
 #, kde-format
 msgid "Copy and paste:"
 msgstr "Kopírovat a vložit:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
-#: dialogs/editconfigwidget.ui:167
+#: dialogs/editconfigwidget.ui:176
 #, kde-format
 msgid "Move selected text when dragged"
 msgstr "Přesunout vybraný text při přetažení"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
-#: dialogs/editconfigwidget.ui:174
+#: dialogs/editconfigwidget.ui:183
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
 msgstr ""
@@ -611,25 +611,25 @@ msgstr ""
 "nějaký text"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
-#: dialogs/editconfigwidget.ui:181
+#: dialogs/editconfigwidget.ui:190
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
 msgstr "Nehýbat kurzorem při vkládání myší"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
-#: dialogs/editconfigwidget.ui:188
+#: dialogs/editconfigwidget.ui:197
 #, kde-format
 msgid "Max Clipboard History Entries:"
 msgstr "Max záznamů v historii schránky:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
-#: dialogs/editconfigwidget.ui:198
+#: dialogs/editconfigwidget.ui:207
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
-#: dialogs/editconfigwidget.ui:220
+#: dialogs/editconfigwidget.ui:229
 #, kde-format
 msgid ""
 "When you type these characters while text is selected, they will surround "
@@ -1714,7 +1714,7 @@ msgstr "Odstranit &mezery na konci řádku:"
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
-#: dialogs/textareaappearanceconfigwidget.ui:75
+#: dialogs/textareaappearanceconfigwidget.ui:101
 #, kde-format
 msgid "Never"
 msgstr "Nikdy"
@@ -1820,44 +1820,60 @@ msgstr "Zobrazit typ ukončení řádku"
 msgid "Editor font:"
 msgstr "Písmo pro editor:"
 
+#. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
+#: dialogs/textareaappearanceconfigwidget.ui:48
+#, kde-format
+msgid "Line Height Multiplier:"
+msgstr "Násobič výšky řádků:"
+
+#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
+#: dialogs/textareaappearanceconfigwidget.ui:55
+#, kde-format
+msgid ""
+"This value will be multiplied with the font's default line height. A value "
+"of 1.0 means that the default height will be used."
+msgstr ""
+"Tato hodnota bude vynásobena výchozí velikostí písma. Hodnota 1.0 znamená, "
+"že bude použita výchozí výška."
+
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/textareaappearanceconfigwidget.ui:64
+#: dialogs/textareaappearanceconfigwidget.ui:90
 #, kde-format
 msgid "Show whitespace indicators:"
 msgstr "Zobrazit ukazatele mezer"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:80
+#: dialogs/textareaappearanceconfigwidget.ui:106
 #, kde-format
 msgid "At the end of a line"
 msgstr "Na konci řádku"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:85
+#: dialogs/textareaappearanceconfigwidget.ui:111
 #, kde-format
 msgid "Always"
 msgstr "Vždy"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
-#: dialogs/textareaappearanceconfigwidget.ui:93
+#: dialogs/textareaappearanceconfigwidget.ui:119
 #, kde-format
 msgid "Whitespace indicator size:"
 msgstr "Velikost ukazatele mezer:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
-#: dialogs/textareaappearanceconfigwidget.ui:109
+#: dialogs/textareaappearanceconfigwidget.ui:135
 #, kde-format
 msgid "Size of the visible highlight marker."
 msgstr "Velikost viditelného značkovače zvýraznění."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/textareaappearanceconfigwidget.ui:137
+#: dialogs/textareaappearanceconfigwidget.ui:163
 #, kde-format
 msgid "Show tab indicators:"
 msgstr "Zobrazit ukazatele tabulátoru:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
-#: dialogs/textareaappearanceconfigwidget.ui:147
+#: dialogs/textareaappearanceconfigwidget.ui:173
 #, kde-format
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
@@ -1865,19 +1881,19 @@ msgid ""
 msgstr "Editor bude zobrazovat symbol pro zviditelnění tabulátorů v textu."
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:157
+#: dialogs/textareaappearanceconfigwidget.ui:183
 #, kde-format
 msgid "Show focus frame around editor"
 msgstr "Zobrazit rámec zaměření okolo editoru"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:190
+#: dialogs/textareaappearanceconfigwidget.ui:216
 #, kde-format
 msgid "Bracket matching:"
 msgstr "Párování závorek:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:197
+#: dialogs/textareaappearanceconfigwidget.ui:223
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1885,19 +1901,19 @@ msgid ""
 msgstr "Pokud je povoleno, bude obsah mezi odpovídajícími závorkami zvýrazněn."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:200
+#: dialogs/textareaappearanceconfigwidget.ui:226
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Zvýraznit rozsah mezi zvolenými závorkami"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:207
+#: dialogs/textareaappearanceconfigwidget.ui:233
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:210
+#: dialogs/textareaappearanceconfigwidget.ui:236
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -1907,33 +1923,33 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:213
+#: dialogs/textareaappearanceconfigwidget.ui:239
 #, kde-format
 msgid "Show preview of matching open bracket"
 msgstr "Zobrazit náhled odpovídající otevřené závorky"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:220
+#: dialogs/textareaappearanceconfigwidget.ui:246
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Zvýraznit odpovídající závorky"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:223
+#: dialogs/textareaappearanceconfigwidget.ui:249
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:226
+#: dialogs/textareaappearanceconfigwidget.ui:252
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 "Zvýraznit odpovídající závorku pokud kurzor přejede k její párové závorce"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:233
+#: dialogs/textareaappearanceconfigwidget.ui:259
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -1943,43 +1959,43 @@ msgstr ""
 "odsazených řádků."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:236
+#: dialogs/textareaappearanceconfigwidget.ui:262
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Zobrazit čáry odsaze&ní"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:259
+#: dialogs/textareaappearanceconfigwidget.ui:285
 #, kde-format
 msgid "Counts:"
 msgstr "Počet:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:266
+#: dialogs/textareaappearanceconfigwidget.ui:292
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Zobrazit/skrýt počet slov ve stavové liště"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:269 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:295 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Zobrazit počet slov"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:276
+#: dialogs/textareaappearanceconfigwidget.ui:302
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Zobrazit/skrýt počet řádek ve stavové liště"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:279 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:305 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Zobrazit počet řádek"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:305
+#: dialogs/textareaappearanceconfigwidget.ui:331
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -1989,55 +2005,55 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:308
+#: dialogs/textareaappearanceconfigwidget.ui:334
 #, kde-format
 msgid "Fold first line"
 msgstr "Skládat první řádek"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:328
+#: dialogs/textareaappearanceconfigwidget.ui:354
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Dynamické zalamování slov:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:335
+#: dialogs/textareaappearanceconfigwidget.ui:361
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Dynamicky zalamovat na statické značce pro zalomení textu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:342
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Při dynamickém zalamování slov nehledět na okraje slov"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:349
+#: dialogs/textareaappearanceconfigwidget.ui:375
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Ukazatele d&ynamického zalamování slov:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:359
+#: dialogs/textareaappearanceconfigwidget.ui:385
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "Vyberte, kdy budou značky pohyblivého zalomení řádků zobrazeny."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:382
+#: dialogs/textareaappearanceconfigwidget.ui:408
 #, kde-format
 msgid "Indent wrapped lines:"
 msgstr "Odsadit zalomené řádky:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:399
+#: dialogs/textareaappearanceconfigwidget.ui:425
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr "Neodsazovat řádky delší než:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:415
+#: dialogs/textareaappearanceconfigwidget.ui:441
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2057,26 +2073,10 @@ msgstr ""
 "svisle zarovnány.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:418
+#: dialogs/textareaappearanceconfigwidget.ui:444
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% šířky pohledu"
-
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
-#: dialogs/textareaappearanceconfigwidget.ui:434
-#, kde-format
-msgid ""
-"This value will be multiplied with the font's default line height. A value "
-"of 1.0 means that the default height will be used."
-msgstr ""
-"Tato hodnota bude vynásobena výchozí velikostí písma. Hodnota 1.0 znamená, "
-"že bude použita výchozí výška."
-
-#. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
-#: dialogs/textareaappearanceconfigwidget.ui:453
-#, kde-format
-msgid "Line Height Multiplier:"
-msgstr "Násobič výšky řádků:"
 
 #: document/katebuffer.cpp:141
 #, kde-format
