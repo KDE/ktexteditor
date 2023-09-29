@@ -792,7 +792,10 @@ void KateRenderer::paintTextLine(QPainter &paint,
                 const qreal w = spaceWidth();
                 const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
                 for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
-                    paintIndentMarker(paint, x * w + 1 - xStart, range->line());
+                    auto xPos = x * w + 1 - xStart;
+                    if (xPos >= 0) {
+                        paintIndentMarker(paint, xPos, range->line());
+                    }
                 }
             }
 
