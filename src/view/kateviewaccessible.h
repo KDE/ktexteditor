@@ -25,7 +25,7 @@
  * This is the root class for the kateview. The \a KateCursorAccessible class
  * represents the cursor in the kateview and is a child of this class.
  */
-class KateViewAccessible : public QAccessibleWidget, public QAccessibleTextInterface // FIXME maybe:, public QAccessibleEditableTextInterface
+class KateViewAccessible : public QAccessibleWidget, public QAccessibleTextInterface, public QAccessibleEditableTextInterface
 {
 public:
     explicit KateViewAccessible(KateViewInternal *view)
@@ -40,6 +40,8 @@ public:
 
     void *interface_cast(QAccessible::InterfaceType t) override
     {
+        if (t == QAccessible::EditableTextInterface)
+            return static_cast<QAccessibleEditableTextInterface *>(this);
         if (t == QAccessible::TextInterface)
             return static_cast<QAccessibleTextInterface *>(this);
         return nullptr;
@@ -282,6 +284,27 @@ public:
         *startOffset = -1;
         *endOffset = -1;
         return {};
+    }
+
+    void deleteText(int startOffset, int endOffset) override
+    {
+        KTextEditor::Document *document = view()->view()->document();
+        KTextEditor::Range range(document->offsetToCursor(startOffset), document->offsetToCursor(endOffset));
+        document->removeText(range);
+    }
+
+    void insertText(int offset, const QString &text) override
+    {
+        KTextEditor::Document *document = view()->view()->document();
+        KTextEditor::Cursor cursor = document->offsetToCursor(offset);
+        document->insertText(cursor, text);
+    }
+
+    void replaceText(int startOffset, int endOffset, const QString &text) override
+    {
+        KTextEditor::Document *document = view()->view()->document();
+        KTextEditor::Range range(document->offsetToCursor(startOffset), document->offsetToCursor(endOffset));
+        document->replaceText(range, text);
     }
 
     /**
