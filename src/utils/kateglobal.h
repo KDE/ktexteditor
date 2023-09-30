@@ -434,6 +434,13 @@ public:
 
     QStringList multicursorClipboard() const;
 
+#ifdef HAVE_SPEECH
+    /**
+     * text to speech engine to be use by the view actions, constructed on demand
+     */
+    class QTextToSpeech *speechEngine();
+#endif
+
 private Q_SLOTS:
     /**
      * Emit configChanged if needed.
@@ -586,6 +593,13 @@ private:
      * slot.
      */
     bool m_configWasChanged = false;
+
+#ifdef HAVE_SPEECH
+    /**
+     * text to speech engine to be use by the view actions, constructed on demand
+     */
+    class QTextToSpeech *m_speechEngine = nullptr;
+#endif
 };
 
 }

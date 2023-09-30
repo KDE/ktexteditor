@@ -53,6 +53,10 @@
 #include <QStringListModel>
 #include <QTimer>
 
+#ifdef HAVE_SPEECH
+#include <QTextToSpeech>
+#endif
+
 // BEGIN unit test mode
 static bool kateUnitTestMode = false;
 
@@ -583,5 +587,15 @@ QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
 {
     return m_multicursorClipboard;
 }
+
+#ifdef HAVE_SPEECH
+QTextToSpeech *KTextEditor::EditorPrivate::speechEngine()
+{
+    if (!m_speechEngine) {
+        m_speechEngine = QTextToSpeech(this);
+    }
+    return m_speechEngine;
+}
+#endif
 
 #include "moc_kateglobal.cpp"

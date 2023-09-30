@@ -329,6 +329,10 @@ if(HAVE_KAUTH)
   target_link_libraries(KF6TextEditor PRIVATE KF6::AuthCore)
 endif()
 
+if(WITH_TEXT_TO_SPEECH)
+  target_link_libraries(KF6TextEditor PRIVATE Qt6::TextToSpeech)
+endif()
+
 set_target_properties(KF6TextEditor
    PROPERTIES
    VERSION ${KTEXTEDITOR_VERSION}
