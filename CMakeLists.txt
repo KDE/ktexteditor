@@ -56,8 +56,15 @@ ecm_setup_version(
 set(REQUIRED_QT_VERSION 6.5.0)
 
 # Required Qt components to build this framework
-find_package(Qt6 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
-  PrintSupport Xml)
+find_package(Qt6 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml PrintSupport Xml)
+
+# speech support
+option(WITH_TEXT_TO_SPEECH "Build text-to-speech support" ON)
+add_feature_info(SPEECH ${WITH_TEXT_TO_SPEECH} "Enable speech synthesis support via Qt TextToSpeech")
+if (WITH_TEXT_TO_SPEECH)
+    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED TextToSpeech)
+    add_definitions(-DHAVE_SPEECH)
+endif()
 
 find_package(KF6Archive ${KF_DEP_VERSION} REQUIRED)
 find_package(KF6Config ${KF_DEP_VERSION} REQUIRED)
