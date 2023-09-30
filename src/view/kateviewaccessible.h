@@ -225,13 +225,7 @@ public:
             *endOffset = offset + t.size();
             return t;
         } break;
-        case QAccessible::TextBoundaryType::LineBoundary: {
-            QString t = doc->wordAt(c);
-            *startOffset = offset;
-            *endOffset = offset + t.size();
-            return t;
-            break;
-        }
+        case QAccessible::TextBoundaryType::LineBoundary:
         case QAccessible::TextBoundaryType::ParagraphBoundary: {
             const QString line = doc->line(c.line());
             if (line.isEmpty()) {
