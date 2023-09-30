@@ -843,6 +843,8 @@ private:
     void setupEditActions();
     KTEXTEDITOR_NO_EXPORT
     void setupCodeFolding();
+    KTEXTEDITOR_NO_EXPORT
+    void setupSpeechActions();
 
     std::vector<QAction *> m_editActions;
     QAction *m_editUndo;

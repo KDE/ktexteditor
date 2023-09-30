@@ -592,7 +592,7 @@ QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
 QTextToSpeech *KTextEditor::EditorPrivate::speechEngine()
 {
     if (!m_speechEngine) {
-        m_speechEngine = QTextToSpeech(this);
+        m_speechEngine = new QTextToSpeech(this);
     }
     return m_speechEngine;
 }

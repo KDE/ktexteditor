@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="104" translationDomain="ktexteditor6">
+<gui name="KatePartView" version="105" translationDomain="ktexteditor6">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -144,6 +144,13 @@
       <Action name="tools_spelling_selection" group="tools_spelling" />
       <Action name="tools_change_dictionary" group="tools_spelling" />
       <Action name="tools_clear_dictionary_ranges" group="tools_spelling" />
+    </Menu>
+    <Separator group="tools_operations2" />
+    <Menu name="speech" group="tools_speech"><text>Text to Speech</text>
+      <Action name="tools_speech_say" group="tools_speech" />
+      <Action name="tools_speech_stop" group="tools_speech" />
+      <Action name="tools_speech_pause" group="tools_speech" />
+      <Action name="tools_speech_resume" group="tools_speech" />
     </Menu>
   </Menu>
 

@@ -79,7 +79,10 @@
 #include <QRegularExpression>
 #include <QToolTip>
 #include <qgraphicseffect.h>
-#include <qnamespace.h>
+
+#ifdef HAVE_SPEECH
+#include <QTextToSpeech>
+#endif
 
 // #define VIEW_RANGE_DEBUG
 
@@ -983,6 +986,7 @@ void KTextEditor::ViewPrivate::setupActions()
     // widget and setting the shortcut context
     setupEditActions();
     setupCodeFolding();
+    setupSpeechActions();
 
     ac->addAssociatedWidget(m_viewInternal);
 
@@ -1338,6 +1342,42 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
     a = ac->addAction(QStringLiteral("folding_toggle_in_current"));
     a->setText(i18n("Toggle Contained Nodes"));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotToggleFoldingsInRange);
+}
+
+void KTextEditor::ViewPrivate::setupSpeechActions()
+{
+#ifdef HAVE_SPEECH
+    KActionCollection *ac = this->actionCollection();
+    QAction *a;
+
+    a = ac->addAction(QStringLiteral("tools_speech_say"));
+    a->setText(i18n("Say current selection or document"));
+    connect(a, &QAction::triggered, this, [this]() {
+        if (selection()) {
+            KTextEditor::EditorPrivate::self()->speechEngine()->say(selectionText());
+        } else {
+            KTextEditor::EditorPrivate::self()->speechEngine()->say(document()->text());
+        }
+    });
+
+    a = ac->addAction(QStringLiteral("tools_speech_stop"));
+    a->setText(i18n("Stop current output"));
+    connect(a, &QAction::triggered, this, []() {
+        KTextEditor::EditorPrivate::self()->speechEngine()->stop();
+    });
+
+    a = ac->addAction(QStringLiteral("tools_speech_pause"));
+    a->setText(i18n("Pause current output"));
+    connect(a, &QAction::triggered, this, []() {
+        KTextEditor::EditorPrivate::self()->speechEngine()->pause();
+    });
+
+    a = ac->addAction(QStringLiteral("tools_speech_resume"));
+    a->setText(i18n("Resume current output"));
+    connect(a, &QAction::triggered, this, []() {
+        KTextEditor::EditorPrivate::self()->speechEngine()->resume();
+    });
+#endif
 }
 
 void KTextEditor::ViewPrivate::slotFoldToplevelNodes()

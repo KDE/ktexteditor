@@ -27,6 +27,10 @@
 
 class QStringListModel;
 
+#ifdef HAVE_SPEECH
+class QTextToSpeech;
+#endif
+
 class KateCmd;
 class KateModeManager;
 class KateGlobalConfig;
@@ -438,7 +442,7 @@ public:
     /**
      * text to speech engine to be use by the view actions, constructed on demand
      */
-    class QTextToSpeech *speechEngine();
+    QTextToSpeech *speechEngine();
 #endif
 
 private Q_SLOTS:
@@ -598,7 +602,7 @@ private:
     /**
      * text to speech engine to be use by the view actions, constructed on demand
      */
-    class QTextToSpeech *m_speechEngine = nullptr;
+    QTextToSpeech *m_speechEngine = nullptr;
 #endif
 };
 
