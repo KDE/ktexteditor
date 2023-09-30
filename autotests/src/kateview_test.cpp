@@ -336,6 +336,39 @@ void KateViewTest::testKillline()
     QCOMPARE(doc.text(), QLatin1String("foo\nxxx\n"));
 }
 
+void KateViewTest::testKeyDeleteBlockSelection()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.insertLines(0, {QStringLiteral("foo"), QStringLiteral("12345"), QStringLiteral("bar"), QStringLiteral("baz")});
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+
+    view->setBlockSelection(true);
+    view->setSelection(Range(0, 1, 2, 1));
+    QCOMPARE(view->selectionRange(), Range(0, 1, 2, 1));
+
+    view->keyDelete();
+    QCOMPARE(doc.text(), QLatin1String("fo\n1345\nbr\nbaz\n"));
+    view->keyDelete();
+    QCOMPARE(doc.text(), QLatin1String("f\n145\nb\nbaz\n"));
+    view->keyDelete();
+    QCOMPARE(doc.text(), QLatin1String("f\n15\nb\nbaz\n"));
+    view->keyDelete();
+    QCOMPARE(doc.text(), QLatin1String("f\n1\nb\nbaz\n"));
+    view->keyDelete();
+    QCOMPARE(doc.text(), QLatin1String("f\n1\nb\nbaz\n"));
+
+    doc.clear();
+    QVERIFY(doc.isEmpty());
+
+    doc.insertLines(0, {QStringLiteral("foo"), QStringLiteral("12345"), QStringLiteral("bar"), QStringLiteral("baz")});
+
+    view->setSelection(Range(0, 1, 2, 3));
+
+    view->keyDelete();
+    QCOMPARE(doc.text(), QLatin1String("f\n145\nb\nbaz\n"));
+}
+
 void KateViewTest::testScrollPastEndOfDocument()
 {
     // bug 306745

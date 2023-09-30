@@ -3861,6 +3861,17 @@ void KTextEditor::ViewPrivate::deleteWordLeft()
 void KTextEditor::ViewPrivate::keyDelete()
 {
     KTextEditor::Document::EditingTransaction t(doc());
+
+    if (blockSelect) {
+        KTextEditor::Range selection = m_selection;
+        if (selection.isValid() && selection.start().column() == selection.end().column()) {
+            KTextEditor::Cursor end = {selection.end().line(), selection.end().column() + 1};
+            selection = {selection.start(), end};
+            doc()->removeText(selection, blockSelect);
+            return;
+        }
+    }
+
     // multi cursor
 
     if (removeSelectedText()) {

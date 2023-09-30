@@ -28,6 +28,7 @@ private Q_SLOTS:
     void testDeselectByArrowKeys_data();
     void testDeselectByArrowKeys();
     void testKillline();
+    void testKeyDeleteBlockSelection();
     void testScrollPastEndOfDocument();
     void testFoldFirstLine();
     void testDragAndDrop();
