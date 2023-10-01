@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:38+0000\n"
+"POT-Creation-Date: 2023-10-01 01:53+0000\n"
 "PO-Revision-Date: 2023-05-01 14:23+0200\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -7632,7 +7632,7 @@ msgstr "Zarovnať na"
 msgid "Alignment pattern:"
 msgstr "Vzor zarovnania:"
 
-#: view/kateview.cpp:4796
+#: view/kateview.cpp:4807
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportovať súbor ako HTML"

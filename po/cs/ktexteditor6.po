@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:38+0000\n"
+"POT-Creation-Date: 2023-10-01 01:53+0000\n"
 "PO-Revision-Date: 2023-07-03 16:09+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -7454,7 +7454,7 @@ msgstr ""
 msgid "Alignment pattern:"
 msgstr "Vzorec zarovnání:"
 
-#: view/kateview.cpp:4796
+#: view/kateview.cpp:4807
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportovat soubor do HTML"

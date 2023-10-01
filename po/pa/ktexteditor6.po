@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:38+0000\n"
+"POT-Creation-Date: 2023-10-01 01:53+0000\n"
 "PO-Revision-Date: 2019-02-09 14:04-0800\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -7563,7 +7563,7 @@ msgstr "ਇਕਸਾਰ(&A)"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4796
+#: view/kateview.cpp:4807
 #, kde-format
 msgid "Export File as HTML"
 msgstr "HTML ਵਾਂਗ ਫਾਈਲ ਨਿਰਯਾਤ"
