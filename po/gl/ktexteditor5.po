@@ -1183,7 +1183,7 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
-"%1 fai unha copia de seguridade de ficheiros non gardados en «ficheiros de "
+"%1 fai unha salvagarda de ficheiros non gardados en «ficheiros de "
 "intercambio». Os ficheiros de intercambio permiten a %1 recuperar o seu "
 "traballo se o sistema quebra. Desactivar os ficheiros de intercambio podería "
 "causar perda de datos en caso de quebra do sistema."
@@ -1198,13 +1198,13 @@ msgstr "Avanzado"
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
-"Non forneceu nin un prefixo nin un sufixo para as copias de seguridade. "
-"Usarase o sufixo predeterminado «~»"
+"Non forneceu nin un prefixo nin un sufixo para as salvagardas. Usarase o "
+"sufixo predeterminado «~»"
 
 #: dialogs/katedialogs.cpp:1073
 #, kde-format
 msgid "No Backup Suffix or Prefix"
-msgstr "Non hai prefixo nin sufixo para as copias de seguridade"
+msgstr "Non hai prefixo nin sufixo para as salvagardas"
 
 #: dialogs/katedialogs.cpp:1206
 #, kde-format
@@ -1486,7 +1486,7 @@ msgstr "Cargar de novo automaticamente os ficheiros en control de versións."
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr "Escribir un ficheiro de copia de seguridade ao gardar para:"
+msgstr "Escribir un ficheiro de salvagarda ao gardar para:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1495,8 +1495,7 @@ msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
 msgstr ""
-"Se activa esta opción, crearanse copias de seguridade dos ficheiros locais "
-"ao gardar."
+"Se activa esta opción, crearanse salvagardas dos ficheiros locais ao gardar."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
@@ -1511,8 +1510,7 @@ msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
 msgstr ""
-"Se activa esta opción, crearanse copias de seguridade dos ficheiros remotos "
-"ao gardar."
+"Se activa esta opción, crearanse salvagardas dos ficheiros remotos ao gardar."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
@@ -1524,7 +1522,7 @@ msgstr "Ficheiros &remotos."
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr "Prefixo para os ficheiros de copia de seguridade:"
+msgstr "Prefixo para os ficheiros de salvagarda:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1537,7 +1535,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr "Sufixo para os ficheiros de copia de seguridade:"
+msgstr "Sufixo para os ficheiros de salvagarda:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -2166,7 +2164,7 @@ msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
 ">Check if you have read access to this file."
 msgstr ""
-"Non se puido cargar o ficheiro %1, debido a que non foi posíbel lelo.<br /"
+"Non foi posíbel cargar o ficheiro %1, debido a que non foi posíbel lelo.<br /"
 ">Comprobe que ten permiso de lectura deste ficheiro."
 
 #: document/katedocument.cpp:2318
@@ -2192,7 +2190,7 @@ msgid ""
 "\n"
 "Check if you have read access to this file."
 msgstr ""
-"Non se puido cargar o ficheiro %1, debido a que non foi posíbel lelo.\n"
+"Non foi posíbel cargar o ficheiro %1, debido a que non foi posíbel lelo.\n"
 "\n"
 "Comprobe que ten permiso de lectura deste ficheiro."
 
@@ -2314,7 +2312,7 @@ msgid ""
 "The original file may be lost or damaged. Don't quit the application until "
 "the file is successfully written."
 msgstr ""
-"Non se puido gardar o documento porque non foi posíbel escribir en %1.\n"
+"Non foi posíbel gardar o documento porque non foi posíbel escribir en %1.\n"
 "Comprobe que ten permiso de escritura neste ficheiro ou que hai espazo "
 "abondo no disco.\n"
 "Pode que se perdese ou danase o ficheiro orixinal. Non saia da aplicación "
@@ -2328,15 +2326,15 @@ msgid ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 msgstr ""
-"Non foi posíbel crear unha copia de seguridade do ficheiro %1 antes de "
-"gardalo. Se ocorre un erro ao gardar, poderá perder os datos deste ficheiro. "
-"O motivo pode ser que o medio onde estea a escribir estea completo ou que só "
-"poida ler no cartafol no que estea o ficheiro."
+"Non foi posíbel crear unha salvagarda do ficheiro %1 antes de gardalo. Se "
+"ocorre un erro ao gardar, poderá perder os datos deste ficheiro. O motivo "
+"pode ser que o medio onde estea a escribir estea completo ou que só poida "
+"ler no cartafol no que estea o ficheiro."
 
 #: document/katedocument.cpp:2723
 #, kde-format
 msgid "Failed to create backup copy."
-msgstr "Non se puido crear a copia de seguridade."
+msgstr "Non foi posíbel crear a salvagarda."
 
 #: document/katedocument.cpp:2724
 #, kde-format
@@ -2385,7 +2383,7 @@ msgid ""
 "Check that you have write access to this file or that enough disk space is "
 "available."
 msgstr ""
-"Non se puido gardar o documento porque non foi posíbel escribir en %1.\n"
+"Non foi posíbel gardar o documento porque non foi posíbel escribir en %1.\n"
 "\n"
 "Comprobe que ten permiso de escritura neste ficheiro ou que hai espazo "
 "abondo no disco."
@@ -3499,7 +3497,7 @@ msgstr ""
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
-msgstr "Non se puido acceder á vista"
+msgstr "Non foi posíbel acceder á vista"
 
 #: script/katecommandlinescript.cpp:118
 #, kde-format
@@ -4192,7 +4190,7 @@ msgstr ""
 #: swapfile/kateswapdiffcreator.cpp:99
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr "Non se puido iniciar a orde «%1»."
+msgstr "Non foi posíbel iniciar a orde «%1»."
 
 #: swapfile/kateswapfile.cpp:631
 #, kde-format
@@ -5359,7 +5357,7 @@ msgstr "Non hai o modo «%1»"
 #: utils/katecmds.cpp:346
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "Non se puido converter o argumento «%1» en enteiro."
+msgstr "Non foi posíbel converter o argumento «%1» en enteiro."
 
 #: utils/katecmds.cpp:350 utils/katecmds.cpp:355
 #, kde-format
@@ -7996,12 +7994,12 @@ msgstr "Argumentos incorrectos"
 #: vimode/config/configtab.cpp:201
 #, kde-format
 msgid "Unable to open the config file for reading."
-msgstr "Non se pode abrir o ficheiro de configuración para lelo."
+msgstr "Non é posíbel abrir o ficheiro de configuración para lelo."
 
 #: vimode/config/configtab.cpp:201
 #, kde-format
 msgid "Unable to open file"
-msgstr "Non se pode abrir o ficheiro"
+msgstr "Non é posíbel abrir o ficheiro"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViCommandsOverride)
 #: vimode/config/configwidget.ui:35
