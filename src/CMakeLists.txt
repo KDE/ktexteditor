@@ -394,10 +394,6 @@ if(BUILD_QCH)
     )
 endif()
 
-include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF6TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
-install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
-
 if(HAVE_KAUTH)
     add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
     target_link_libraries(kauth_ktexteditor_helper KF6::AuthCore)
