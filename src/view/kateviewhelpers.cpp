@@ -153,23 +153,6 @@ static const int s_lineWidth = 100;
 static const int s_pixelMargin = 8;
 static const int s_linePixelIncLimit = 6;
 
-const unsigned char KateScrollBar::characterOpacity[256] = {0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, // <- 15
-                                                            0,   0,   0,   0,   0,   0,   0,   0,   255, 0,   255, 0,   0,   0,   0,   0, // <- 31
-                                                            0,   125, 41,  221, 138, 195, 218, 21,  142, 142, 137, 137, 97,  87,  87,  140, // <- 47
-                                                            223, 164, 183, 190, 191, 193, 214, 158, 227, 216, 103, 113, 146, 140, 146, 149, // <- 63
-                                                            248, 204, 240, 174, 217, 197, 178, 205, 209, 176, 168, 211, 160, 246, 238, 218, // <- 79
-                                                            195, 229, 227, 196, 167, 212, 188, 238, 197, 169, 189, 158, 21,  151, 115, 90, // <- 95
-                                                            15,  192, 209, 153, 208, 187, 162, 221, 183, 149, 161, 191, 146, 203, 167, 182, // <- 111
-                                                            208, 203, 139, 166, 158, 167, 157, 189, 164, 179, 156, 167, 145, 166, 109, 0, // <- 127
-                                                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, // <- 143
-                                                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, // <- 159
-                                                            0,   125, 184, 187, 146, 201, 127, 203, 89,  194, 156, 141, 117, 87,  202, 88, // <- 175
-                                                            115, 165, 118, 121, 85,  190, 236, 87,  88,  111, 151, 140, 194, 191, 203, 148, // <- 191
-                                                            215, 215, 222, 224, 223, 234, 230, 192, 208, 208, 216, 217, 187, 187, 194, 195, // <- 207
-                                                            228, 255, 228, 228, 235, 239, 237, 150, 255, 222, 222, 229, 232, 180, 197, 225, // <- 223
-                                                            208, 208, 216, 217, 212, 230, 218, 170, 202, 202, 211, 204, 156, 156, 165, 159, // <- 239
-                                                            214, 194, 197, 197, 206, 206, 201, 132, 214, 183, 183, 192, 187, 195, 227, 198};
-
 KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *parent)
     : QScrollBar(orientation, parent->m_view)
     , m_middleMouseDown(false)
@@ -470,68 +453,74 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-KateScrollBar::ColumnRangeWithColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes,
-                                                             int &attributeIndex,
-                                                             const QVector<Kate::TextRange *> &decorations,
-                                                             const QBrush &defaultColor,
-                                                             int x,
-                                                             QChar ch,
-                                                             QHash<QRgb, QPen> &penCache)
+void KateScrollBar::getCharColorRanges(const QVector<Kate::TextLineData::Attribute> &attributes,
+                                       const QVector<Kate::TextRange *> &decorations,
+                                       const QString &text,
+                                       QVector<KateScrollBar::ColumnRangeWithColor> &ranges,
+                                       QVarLengthArray<std::pair<QRgb, QPen>, 20> &penCache)
 {
-    QBrush color = defaultColor;
-    bool styleFound = false;
-    std::pair<int, int> columnRange = {x, x + 1};
+    int attributeIndex = 0;
+    ranges.clear();
 
-    // Query the decorations, that is, things like search highlighting, or the
-    // KDevelop DUChain highlighting, for a color to use
-    for (auto range : decorations) {
-        if (range->containsColumn(x)) {
-            color = range->attribute()->foreground();
-            styleFound = true;
-            columnRange.first = range->start().column();
-            columnRange.second = range->end().column();
-            break;
+    auto getPen = [&](const QBrush &color) -> int {
+        uint rgb = color.color().rgb();
+        auto it = std::find_if(penCache.begin(), penCache.end(), [rgb](const std::pair<QRgb, QPen> &rgbToPen) {
+            return rgb == rgbToPen.first;
+        });
+        if (it != penCache.end()) {
+            return it - penCache.begin();
         }
-    }
+        penCache.push_back({rgb, QPen(color, 1)});
+        return (int)penCache.size() - 1;
+    };
 
-    // If there's no decoration set for the current character (this will mostly be the case for
-    // plain Kate), query the styles, that is, the default kate syntax highlighting.
-    if (!styleFound) {
+    constexpr QChar space = QLatin1Char(' ');
+    constexpr QChar tab = QLatin1Char('\t');
+
+    for (int i = 0; i < text.size() && i < s_lineWidth; ++i) {
+        if (text[i] == space || text[i] == tab) {
+            continue;
+        }
+
+        bool styleFound = false;
+        for (auto range : decorations) {
+            if (range->containsColumn(i)) {
+                QBrush color = range->attribute()->foreground();
+                styleFound = true;
+                int startCol = range->start().column();
+                int endCol = range->end().column();
+                ranges << ColumnRangeWithColor{getPen(color), startCol, endCol};
+                i = endCol;
+                break;
+            }
+        }
+
+        if (styleFound) {
+            continue;
+        }
+
+        // If there's no decoration set for the current character (this will mostly be the case for
+        // plain Kate), query the styles, that is, the default kate syntax highlighting.
         // go to the block containing x
-        while ((attributeIndex < attributes.size()) && ((attributes[attributeIndex].offset + attributes[attributeIndex].length) < x)) {
+        while ((attributeIndex < attributes.size()) && ((attributes[attributeIndex].offset + attributes[attributeIndex].length) < i)) {
             ++attributeIndex;
         }
-        if ((attributeIndex < attributes.size()) && (x < attributes[attributeIndex].offset + attributes[attributeIndex].length)) {
-            color = m_view->renderer()->attribute(attributes[attributeIndex].attributeValue)->foreground();
-            columnRange.first = attributes[attributeIndex].offset;
-            columnRange.second = attributes[attributeIndex].offset + attributes[attributeIndex].length;
+        if (attributeIndex < attributes.size()) {
+            const Kate::TextLineData::Attribute attr = attributes[attributeIndex];
+            if ((i < attr.offset + attr.length)) {
+                QBrush color = m_view->renderer()->attribute(attr.attributeValue)->foreground();
+                int startCol = attr.offset;
+                int endCol = attr.offset + attr.length;
+                ranges << ColumnRangeWithColor{getPen(color), startCol, endCol};
+                i = endCol;
+            }
         }
     }
-
-    // query cache first
-    auto it = penCache.find(color.color().rgb());
-    if (it != penCache.end()) {
-        return ColumnRangeWithColor{it.value(), columnRange};
-    }
-
-    auto &pen = penCache[color.color().rgb()];
-    // Query how much "blackness" the character has.
-    // This causes for example a dot or a dash to appear less intense
-    // than an A or similar.
-    // This gives the pixels created a bit of structure, which makes it look more
-    // like real text.
-    QColor c = color.color();
-    c.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
-    color.setColor(c);
-
-    pen = QPen(color, 1);
-
-    return ColumnRangeWithColor{pen, columnRange};
 }
 
 void KateScrollBar::updatePixmap()
 {
-    // QTime time;
+    // QElapsedTimer time;
     // time.start();
 
     if (!m_showMiniMap) {
@@ -584,8 +573,8 @@ void KateScrollBar::updatePixmap()
     modifiedLineColor.setHsv(modifiedLineColor.hue(), 255, 255 - backgroundColor.color().value() / 3);
     savedLineColor.setHsv(savedLineColor.hue(), 100, 255 - backgroundColor.color().value() / 3);
 
-    QBrush modifiedLineBrush = modifiedLineColor;
-    QBrush savedLineBrush = savedLineColor;
+    const QBrush modifiedLineBrush = modifiedLineColor;
+    const QBrush savedLineBrush = savedLineColor;
 
     // increase dimensions by ratio
     m_pixmap = QPixmap(pixmapLineWidth * m_view->devicePixelRatioF(), pixmapLineCount * m_view->devicePixelRatioF());
@@ -594,6 +583,11 @@ void KateScrollBar::updatePixmap()
     // The text currently selected in the document, to be drawn later.
     const KTextEditor::Range selection = m_view->selectionRange();
     const bool hasSelection = !selection.isEmpty();
+    // reusable buffer for color->range
+    QVector<KateScrollBar::ColumnRangeWithColor> colorRangesForLine;
+    const QPen defaultTextPen = QPen(defaultTextColor, 1);
+    // resusable buffer for line ranges;
+    QVector<Kate::TextRange *> decorations;
 
     QPainter painter;
     if (painter.begin(&m_pixmap)) {
@@ -601,13 +595,13 @@ void KateScrollBar::updatePixmap()
         painter.setPen(QPen(selectionBgColor, 1));
 
         // Do not force updates of the highlighting if the document is very large
-        bool simpleMode = m_doc->lines() > 7500;
+        const bool simpleMode = m_doc->lines() > 7500;
 
         int pixelY = 0;
         int drawnLines = 0;
 
         // pen cache to avoid a lot of allocations from pen creation
-        QHash<QRgb, QPen> penCache;
+        QVarLengthArray<std::pair<QRgb, QPen>, 20> penCache;
 
         // Iterate over all visible lines, drawing them.
         for (int virtualLine = 0; virtualLine < docLineCount; virtualLine += lineIncrement) {
@@ -625,9 +619,7 @@ void KateScrollBar::updatePixmap()
             // get normal highlighting stuff
             const QVector<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
             // get moving ranges with attribs (semantic highlighting and co.)
-            const QVector<Kate::TextRange *> decorations = m_view->doc()->buffer().rangesForLine(realLineNumber, m_view, true);
-
-            int attributeIndex = 0;
+            m_view->doc()->buffer().rangesForLine(realLineNumber, m_view, true, decorations);
 
             // Draw selection if it is on an empty line
 
@@ -674,6 +666,7 @@ void KateScrollBar::updatePixmap()
             }
 
             // Iterate over all the characters in the current line
+            getCharColorRanges(attributes, decorations, lineText, colorRangesForLine, penCache);
             pixelX = s_pixelMargin;
             for (int x = 0; (x < lineText.size() && x < s_lineWidth); x += charIncrement) {
                 if (pixelX >= s_lineWidth + s_pixelMargin) {
@@ -686,20 +679,32 @@ void KateScrollBar::updatePixmap()
                 } else if (lineText[x] == QLatin1Char('\t')) {
                     pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
                 } else {
-                    // get the column range and color in which this 'x' lies
-                    const auto colRangeWithColor = charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x], penCache);
-                    const QPen &newPen = colRangeWithColor.first;
-                    painter.setPen(newPen);
+                    const QPen *pen = nullptr;
+                    int rangeEnd = x + 1;
+                    for (const auto &cr : colorRangesForLine) {
+                        if (cr.startColumn <= x && x <= cr.endColumn) {
+                            rangeEnd = cr.endColumn;
+                            if (cr.penIndex != -1) {
+                                pen = &penCache[cr.penIndex].second;
+                            }
+                        }
+                    }
 
-                    const int rangeEnd = colRangeWithColor.second.second;
+                    if (!pen) {
+                        pen = &defaultTextPen;
+                    }
+                    // get the column range and color in which this 'x' lies
+                    painter.setPen(*pen);
+
                     // Actually draw the pixels with the color queried from the renderer.
+                    QVarLengthArray<QPoint, 100> points;
                     for (; x < rangeEnd; x += charIncrement) {
                         if (pixelX >= s_lineWidth + s_pixelMargin) {
                             break;
                         }
-                        painter.drawPoint(pixelX, pixelY);
-                        pixelX++;
+                        points.append({pixelX++, pixelY});
                     }
+                    painter.drawPoints(points.data(), points.size());
                 }
             }
             drawnLines++;

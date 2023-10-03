@@ -183,6 +183,8 @@ public:
      */
     KTEXTEDITOR_EXPORT QVector<TextRange *> rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const;
 
+    KTEXTEDITOR_NO_EXPORT void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QVector<TextRange *> &outRanges) const;
+
     /**
      * Is the given range contained in this block?
      * @param range range to check for

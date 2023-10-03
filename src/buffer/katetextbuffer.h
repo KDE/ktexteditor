@@ -490,6 +490,13 @@ public:
         return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly);
     }
 
+    void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QVector<TextRange *> &outRanges) const
+    {
+        // get block, this will assert on invalid line
+        const int blockIndex = blockForLine(line);
+        return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
+    }
+
     /**
      * Check if the given range pointer is still valid.
      * @return range pointer still belongs to range for this buffer

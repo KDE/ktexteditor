@@ -244,7 +244,7 @@ public:
      *
      * \return a pointer to the active attribute
      */
-    virtual Attribute::Ptr attribute() const = 0;
+    virtual const Attribute::Ptr &attribute() const = 0;
 
     /**
      * Sets the currently active attribute for this range.

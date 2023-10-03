@@ -391,7 +391,7 @@ public:
      *
      *   attribute(myktextline->attribute(position));
      */
-    AttributePtr attribute(uint pos) const;
+    const AttributePtr &attribute(uint pos) const;
     AttributePtr specificAttribute(int context) const;
 
     /**

@@ -207,7 +207,7 @@ public:
      *
      * \return a pointer to the active attribute
      */
-    KTextEditor::Attribute::Ptr attribute() const override
+    const KTextEditor::Attribute::Ptr &attribute() const override
     {
         return m_attribute;
     }

@@ -643,6 +643,14 @@ QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view,
     const auto cachedRanges = cachedRangesForLine(line);
     QVector<TextRange *> ranges;
     ranges.reserve(m_uncachedRanges.size() + cachedRanges.size());
+    rangesForLine(line, view, rangesWithAttributeOnly, ranges);
+    return ranges;
+}
+
+void TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QVector<TextRange *> &outRanges) const
+{
+    const auto cachedRanges = cachedRangesForLine(line);
+    outRanges.clear();
 
     auto predicate = [line, view, rangesWithAttributeOnly](TextRange *range) {
         if (rangesWithAttributeOnly && !range->hasAttribute()) {
@@ -666,9 +674,8 @@ QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view,
         return false;
     };
 
-    std::copy_if(cachedRanges.begin(), cachedRanges.end(), std::back_inserter(ranges), predicate);
-    std::copy_if(m_uncachedRanges.begin(), m_uncachedRanges.end(), std::back_inserter(ranges), predicate);
-    return ranges;
+    std::copy_if(cachedRanges.begin(), cachedRanges.end(), std::back_inserter(outRanges), predicate);
+    std::copy_if(m_uncachedRanges.begin(), m_uncachedRanges.end(), std::back_inserter(outRanges), predicate);
 }
 
 void TextBlock::markModifiedLinesAsSaved()

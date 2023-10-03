@@ -71,7 +71,7 @@ void KateRenderer::updateAttributes()
     m_attributes = m_doc->highlight()->attributes(config()->schema());
 }
 
-KTextEditor::Attribute::Ptr KateRenderer::attribute(uint pos) const
+const KTextEditor::Attribute::Ptr &KateRenderer::attribute(uint pos) const
 {
     if (pos < (uint)m_attributes.count()) {
         return m_attributes[pos];
