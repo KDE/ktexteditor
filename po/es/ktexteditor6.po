@@ -8,7 +8,7 @@
 # Pablo de Vicente <pablo.devicente@gmail.com>, 2004, 2005, 2007.
 # Jaime Robles <jaime@kde.org>, 2006, 2007.
 # Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>, 2006, 2007.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
 # Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>, 2011, 2012, 2013.
 # arklad, 2011.
 # Rocio Gallego <traducciones@rociogallego.com>, 2013, 2014.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-01 01:53+0000\n"
-"PO-Revision-Date: 2023-07-05 19:32+0200\n"
+"PO-Revision-Date: 2023-10-02 21:58+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -987,8 +987,8 @@ msgstr ""
 "<p>Acción de la tecla «Tabulador» (si no existe una selección) <a href=\"Si "
 "quiere que la tecla <b>Tabulador</b> alinee la línea actual dentro del "
 "bloque de código actual como en Emacs, haga que el <b>Tabulador</b> sea un "
-"acceso rápido de teclado para la acción <b>Formatear sangrado</b>."
-"\"><span>Más...</span></a></p></body></html>"
+"atajo de teclado para la acción <b>Formatear sangrado</b>.\"><span>Más...</"
+"span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -6848,8 +6848,8 @@ msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
 "this action."
 msgstr ""
-"Invocar manualmente la terminación de órdenes, normalmente usando un acceso "
-"rápido asociado a dicha acción."
+"Invocar manualmente la terminación de órdenes, normalmente usando un atajo "
+"de teclado asociado a dicha acción."
 
 #: view/kateview.cpp:618
 #, kde-format
@@ -8163,7 +8163,7 @@ msgstr ""
 #, kde-format
 msgid "Let Vi commands override Kate shortcuts"
 msgstr ""
-"Dejar que las órdenes «Vi» tengan preferencia sobre los accesos rápidos de "
+"Dejar que las órdenes «Vi» tengan preferencia sobre los atajos de teclado de "
 "Kate"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViRelLineNumbers)
