@@ -51,11 +51,8 @@
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QStringListModel>
-#include <QTimer>
-
-#ifdef HAVE_SPEECH
 #include <QTextToSpeech>
-#endif
+#include <QTimer>
 
 // BEGIN unit test mode
 static bool kateUnitTestMode = false;
@@ -588,7 +585,6 @@ QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
     return m_multicursorClipboard;
 }
 
-#ifdef HAVE_SPEECH
 QTextToSpeech *KTextEditor::EditorPrivate::speechEngine()
 {
     if (!m_speechEngine) {
@@ -596,6 +592,5 @@ QTextToSpeech *KTextEditor::EditorPrivate::speechEngine()
     }
     return m_speechEngine;
 }
-#endif
 
 #include "moc_kateglobal.cpp"

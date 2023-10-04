@@ -312,6 +312,7 @@ PUBLIC
 PRIVATE
   Qt6::Qml
   Qt6::PrintSupport
+  Qt6::TextToSpeech
   KF6::I18n
   KF6::Archive
   KF6::GuiAddons
@@ -327,10 +328,6 @@ PRIVATE
 
 if(HAVE_KAUTH)
   target_link_libraries(KF6TextEditor PRIVATE KF6::AuthCore)
-endif()
-
-if(WITH_TEXT_TO_SPEECH)
-  target_link_libraries(KF6TextEditor PRIVATE Qt6::TextToSpeech)
 endif()
 
 set_target_properties(KF6TextEditor

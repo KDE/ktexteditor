@@ -26,10 +26,7 @@
 #include <memory>
 
 class QStringListModel;
-
-#ifdef HAVE_SPEECH
 class QTextToSpeech;
-#endif
 
 class KateCmd;
 class KateModeManager;
@@ -438,12 +435,10 @@ public:
 
     QStringList multicursorClipboard() const;
 
-#ifdef HAVE_SPEECH
     /**
      * text to speech engine to be use by the view actions, constructed on demand
      */
     QTextToSpeech *speechEngine();
-#endif
 
 private Q_SLOTS:
     /**
@@ -598,12 +593,10 @@ private:
      */
     bool m_configWasChanged = false;
 
-#ifdef HAVE_SPEECH
     /**
      * text to speech engine to be use by the view actions, constructed on demand
      */
     QTextToSpeech *m_speechEngine = nullptr;
-#endif
 };
 
 }

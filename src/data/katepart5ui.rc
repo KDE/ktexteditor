@@ -146,7 +146,12 @@
       <Action name="tools_clear_dictionary_ranges" group="tools_spelling" />
     </Menu>
     <Separator group="tools_operations2" />
-    <Action name="tools_speech" group="tools_operations2" />
+    <Menu name="speech" group="tools_speech"><text>Text to Speech</text>
+      <Action name="tools_speech_say" group="tools_speech" />
+      <Action name="tools_speech_stop" group="tools_speech" />
+      <Action name="tools_speech_pause" group="tools_speech" />
+      <Action name="tools_speech_resume" group="tools_speech" />
+    </Menu>
   </Menu>
 
   <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
