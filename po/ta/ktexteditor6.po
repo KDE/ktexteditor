@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-01 01:53+0000\n"
+"POT-Creation-Date: 2023-10-04 01:38+0000\n"
 "PO-Revision-Date: 2023-07-02 16:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -4725,7 +4725,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "நிறங்கள்"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1478
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1483
 #, kde-format
 msgid "Bookmark"
 msgstr "புத்தகக்குறிகள்"
@@ -7706,19 +7706,19 @@ msgstr ""
 msgid "Export File as HTML"
 msgstr "கோப்பினை மீஉஅமொ யாாக ஏற்றுமதி செயய"
 
-#: view/kateviewhelpers.cpp:303 view/kateviewhelpers.cpp:348
-#: view/kateviewhelpers.cpp:985
+#: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
+#: view/kateviewhelpers.cpp:990
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1154
+#: view/kateviewhelpers.cpp:1159
 #, kde-format
 msgid "Available Commands"
 msgstr "இருக்கும் கட்டளைகள்"
 
-#: view/kateviewhelpers.cpp:1155
+#: view/kateviewhelpers.cpp:1160
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7726,17 +7726,17 @@ msgid ""
 msgstr ""
 "<p>தனி கட்டளைகளில் உதவிக்கு, <code>'help &lt;command&gt;' உள்ளிடவும்</code></p>"
 
-#: view/kateviewhelpers.cpp:1162
+#: view/kateviewhelpers.cpp:1167
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1'க்கு உதவி இல்லை"
 
-#: view/kateviewhelpers.cpp:1165
+#: view/kateviewhelpers.cpp:1170
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "கட்டளை எதுவும் இல்லை <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1171
+#: view/kateviewhelpers.cpp:1176
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7749,37 +7749,37 @@ msgstr ""
 "code>இடவும்<br />தனித்தனியளா ஆணைகளின் உதவிக்கு,  <code><b>help &lt;command&gt;</"
 "b></code>இடவும்</p>"
 
-#: view/kateviewhelpers.cpp:1259 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:210
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "இதுபோல் எந்த ஆணையும் இல்லை: \"%1\""
 
-#: view/kateviewhelpers.cpp:1262 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:192
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1272 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:196
 #, kde-format
 msgid "Success: "
 msgstr "வெற்றி:"
 
-#: view/kateviewhelpers.cpp:1286 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:205
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "ஆணை\"%1\" தோல்வி அடைந்தது."
 
-#: view/kateviewhelpers.cpp:2568 view/kateviewhelpers.cpp:2569
+#: view/kateviewhelpers.cpp:2573 view/kateviewhelpers.cpp:2574
 #, kde-format
 msgid "Mark Type %1"
 msgstr "குறி வகை%1"
 
-#: view/kateviewhelpers.cpp:2592
+#: view/kateviewhelpers.cpp:2597
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "முன்னிருப்பு குறி வகையை அமை"
 
-#: view/kateviewhelpers.cpp:2733
+#: view/kateviewhelpers.cpp:2738
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""
