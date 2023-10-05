@@ -53,7 +53,7 @@ public:
 
     bool shouldHideItemsWithEqualNames() const override;
 
-    KTEXTEDITOR_EXPORT static QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range);
+    KTEXTEDITOR_EXPORT QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range);
 
     void executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
 

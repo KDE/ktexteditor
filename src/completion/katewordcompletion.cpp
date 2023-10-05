@@ -191,26 +191,32 @@ void KateWordCompletionModel::completionInvoked(KTextEditor::View *view, const K
  */
 QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const KTextEditor::Range &range)
 {
-    QSet<QString> result;
+    QSet<QStringView> result;
     const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
     const auto cursorPosition = view->cursorPosition();
     const auto document = view->document();
     const int startLine = std::max(0, cursorPosition.line() - maxLinesToScan);
     const int endLine = std::min(cursorPosition.line() + maxLinesToScan, view->document()->lines());
     for (int line = startLine; line < endLine; line++) {
-        const QString &text = document->line(line);
+        const QString text = document->line(line);
+        if (text.isEmpty() || text.isNull()) {
+            continue;
+        }
+        QStringView textView = text;
         int wordBegin = 0;
         int offset = 0;
         const int end = text.size();
         const bool cursorLine = cursorPosition.line() == line;
+        const bool isNotLastLine = line != range.end().line();
+        const QChar *d = text.data();
         while (offset < end) {
-            const QChar c = text.at(offset);
+            const QChar c = d[offset];
             // increment offset when at line end, so we take the last character too
-            if ((!c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
-                if (offset - wordBegin >= minWordSize && (line != range.end().line() || offset != range.end().column())) {
+            if ((!c.isLetterOrNumber() && c != QChar(u'_')) || (offset == end - 1 && offset++)) {
+                if (offset - wordBegin >= minWordSize && (isNotLastLine || offset != range.end().column())) {
                     // don't add the word we are inside with cursor!
                     if (!cursorLine || (cursorPosition.column() < wordBegin || cursorPosition.column() > offset)) {
-                        result.insert(text.mid(wordBegin, offset - wordBegin));
+                        result.insert(textView.mid(wordBegin, offset - wordBegin));
                     }
                 }
                 wordBegin = offset + 1;
@@ -226,18 +232,26 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     const auto language = static_cast<KTextEditor::DocumentPrivate *>(document)->defaultDictionary();
     const auto word = view->document()->text(range);
     Sonnet::Speller speller;
+    QStringList spellerSuggestions;
     speller.setLanguage(language);
     if (speller.isValid()) {
         if (speller.isCorrect(word)) {
             result.insert(word);
         } else {
-            for (const auto &alternative : speller.suggest(word)) {
+            spellerSuggestions = speller.suggest(word);
+            for (const auto &alternative : std::as_const(spellerSuggestions)) {
                 result.insert(alternative);
             }
         }
     }
 
-    return result.values();
+    m_matches.clear();
+    m_matches.reserve(result.size());
+    for (auto v : std::as_const(result)) {
+        m_matches << v.toString();
+    }
+
+    return m_matches;
 }
 
 void KateWordCompletionModel::executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
@@ -345,7 +359,7 @@ void KateWordCompletionView::shellComplete()
 {
     KTextEditor::Range r = range();
 
-    QStringList matches = m_dWCompletionModel->allMatches(m_view, r);
+    const QStringList matches = m_dWCompletionModel->allMatches(m_view, r);
 
     if (matches.size() == 0) {
         return;
