@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 01:38+0000\n"
+"POT-Creation-Date: 2023-10-06 01:40+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -44,17 +44,17 @@ msgstr "Keele võtmesõnad"
 msgid "Auto Word Completion"
 msgstr "Automaatne sõnalõpetus"
 
-#: completion/katewordcompletion.cpp:289
+#: completion/katewordcompletion.cpp:303
 #, kde-format
 msgid "Shell Completion"
 msgstr "Shelli lõpetamine"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:308
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Kasutatakse eespool olevaid sõnu"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:314
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Kasutatakse tagapool olevaid sõnu"

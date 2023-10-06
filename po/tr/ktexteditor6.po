@@ -12,13 +12,13 @@
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2015, 2017, 2019.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 01:38+0000\n"
-"PO-Revision-Date: 2023-08-26 12:43+0300\n"
+"POT-Creation-Date: 2023-10-06 01:40+0000\n"
+"PO-Revision-Date: 2023-10-05 12:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -48,17 +48,17 @@ msgstr "Dil anahtar sözcükleri"
 msgid "Auto Word Completion"
 msgstr "Otomatik Sözcük Tamamlama"
 
-#: completion/katewordcompletion.cpp:289
+#: completion/katewordcompletion.cpp:303
 #, kde-format
 msgid "Shell Completion"
 msgstr "Kabuk Tamamlama"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:308
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Yukarıdaki Sözcüğü Yeniden Kullan"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:314
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Aşağıdaki Sözcüğü Yeniden Kullan"
@@ -3986,10 +3986,10 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Eğer bilinmeyen sözcük hatalı olarak hecelenmişse aşağıdaki listede "
+"<p>Eğer bilinmeyen sözcük hatalı olarak yazılmışsa aşağıdaki listede "
 "doğrusunun olup olmadığını denetlemeli ve eğer yoksa yazmalısınız.</p>\n"
 "<p>Sözcüğün yalnızca bu eşleşmesini düzeltmek istiyorsanız <b>Değiştir</b> "
-"veya tüm tekrarlarını düzeltmek için <b>Tümünü Değiştir</b> düğmesine "
+"veya tüm yinelemelerini düzeltmek için <b>Tümünü Değiştir</b> düğmesine "
 "tıklayın.</p>\n"
 "</qt>"
 

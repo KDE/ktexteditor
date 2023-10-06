@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 01:38+0000\n"
+"POT-Creation-Date: 2023-10-06 01:40+0000\n"
 "PO-Revision-Date: 2023-03-19 08:57+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -47,17 +47,17 @@ msgstr "語言關鍵字"
 msgid "Auto Word Completion"
 msgstr "自動文字補完"
 
-#: completion/katewordcompletion.cpp:289
+#: completion/katewordcompletion.cpp:303
 #, kde-format
 msgid "Shell Completion"
 msgstr "Shell 補完"
 
-#: completion/katewordcompletion.cpp:294
+#: completion/katewordcompletion.cpp:308
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "重新使用上方的單字"
 
-#: completion/katewordcompletion.cpp:300
+#: completion/katewordcompletion.cpp:314
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "重新使用下方的單字"
