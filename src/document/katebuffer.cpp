@@ -196,7 +196,12 @@ bool KateBuffer::canEncode()
 
     QStringEncoder encoder(m_doc->config()->encoding().toUtf8().constData());
     for (int i = 0; i < lines(); i++) {
-        encoder.encode(line(i)->text());
+        {
+            // actual encoding happens not during the call to encode() but
+            // during the conversion to QByteArray, so we need to force it
+            QByteArray result = encoder.encode(line(i)->text());
+            Q_UNUSED(result);
+        }
         if (encoder.hasError()) {
             qCDebug(LOG_KTE) << QLatin1String("ENC NAME: ") << m_doc->config()->encoding();
             qCDebug(LOG_KTE) << QLatin1String("STRING LINE: ") << line(i)->text();
