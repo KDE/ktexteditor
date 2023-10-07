@@ -585,12 +585,39 @@ QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
     return m_multicursorClipboard;
 }
 
-QTextToSpeech *KTextEditor::EditorPrivate::speechEngine()
+QTextToSpeech *KTextEditor::EditorPrivate::speechEngine(KTextEditor::ViewPrivate *view)
 {
     if (!m_speechEngine) {
         m_speechEngine = new QTextToSpeech(this);
+
+        // output errors to the current active view
+        connect(m_speechEngine, &QTextToSpeech::errorOccurred, this, [this](QTextToSpeech::ErrorReason, const QString &errorString) {
+            if (m_speechEngineLastUser) {
+                auto message = new KTextEditor::Message(errorString, Message::Error);
+                message->setPosition(KTextEditor::Message::TopInView);
+                message->setView(m_speechEngineLastUser);
+                m_speechEngineLastUser->document()->postMessage(message);
+            }
+        });
     }
+
+    // register current view, handle error output and stopping of the speaking
+    Q_ASSERT(view);
+    if (view != m_speechEngineLastUser) {
+        if (m_speechEngineLastUser) {
+            disconnect(m_speechEngineLastUser, &QObject::destroyed, this, &KTextEditor::EditorPrivate::speechEngineUserDestoyed);
+        }
+        m_speechEngineLastUser = view;
+        connect(m_speechEngineLastUser, &QObject::destroyed, this, &KTextEditor::EditorPrivate::speechEngineUserDestoyed);
+    }
+
     return m_speechEngine;
+}
+
+void KTextEditor::EditorPrivate::speechEngineUserDestoyed()
+{
+    Q_ASSERT(m_speechEngine);
+    m_speechEngine->stop();
 }
 
 #include "moc_kateglobal.cpp"

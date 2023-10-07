@@ -436,9 +436,10 @@ public:
     QStringList multicursorClipboard() const;
 
     /**
-     * text to speech engine to be use by the view actions, constructed on demand
+     * text to speech engine to be use by the view actions, constructed on demand.
+     * @param view the view that want to use it
      */
-    QTextToSpeech *speechEngine();
+    QTextToSpeech *speechEngine(KTextEditor::ViewPrivate *view);
 
 private Q_SLOTS:
     /**
@@ -446,6 +447,11 @@ private Q_SLOTS:
      * Used to bundle emissions.
      */
     void emitConfigChanged();
+
+    /**
+     * Was the view that started the current speak output destroyed?
+     */
+    void speechEngineUserDestoyed();
 
 Q_SIGNALS:
     /**
@@ -597,6 +603,12 @@ private:
      * text to speech engine to be use by the view actions, constructed on demand
      */
     QTextToSpeech *m_speechEngine = nullptr;
+
+    /**
+     * view that triggered last speech action
+     * used to show error messages and to stop output on view destruction
+     */
+    QPointer<KTextEditor::ViewPrivate> m_speechEngineLastUser;
 };
 
 }

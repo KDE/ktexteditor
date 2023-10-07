@@ -1348,28 +1348,28 @@ void KTextEditor::ViewPrivate::setupSpeechActions()
     a->setText(i18n("Say current selection or document"));
     connect(a, &QAction::triggered, this, [this]() {
         if (selection()) {
-            KTextEditor::EditorPrivate::self()->speechEngine()->say(selectionText());
+            KTextEditor::EditorPrivate::self()->speechEngine(this)->say(selectionText());
         } else {
-            KTextEditor::EditorPrivate::self()->speechEngine()->say(document()->text());
+            KTextEditor::EditorPrivate::self()->speechEngine(this)->say(document()->text());
         }
     });
 
     a = ac->addAction(QStringLiteral("tools_speech_stop"));
     a->setText(i18n("Stop current output"));
-    connect(a, &QAction::triggered, this, []() {
-        KTextEditor::EditorPrivate::self()->speechEngine()->stop();
+    connect(a, &QAction::triggered, this, [this]() {
+        KTextEditor::EditorPrivate::self()->speechEngine(this)->stop();
     });
 
     a = ac->addAction(QStringLiteral("tools_speech_pause"));
     a->setText(i18n("Pause current output"));
-    connect(a, &QAction::triggered, this, []() {
-        KTextEditor::EditorPrivate::self()->speechEngine()->pause();
+    connect(a, &QAction::triggered, this, [this]() {
+        KTextEditor::EditorPrivate::self()->speechEngine(this)->pause();
     });
 
     a = ac->addAction(QStringLiteral("tools_speech_resume"));
     a->setText(i18n("Resume current output"));
-    connect(a, &QAction::triggered, this, []() {
-        KTextEditor::EditorPrivate::self()->speechEngine()->resume();
+    connect(a, &QAction::triggered, this, [this]() {
+        KTextEditor::EditorPrivate::self()->speechEngine(this)->resume();
     });
 }
 
