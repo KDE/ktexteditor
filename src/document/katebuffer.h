@@ -289,11 +289,6 @@ private:
      * last line with valid highlighting
      */
     int m_lineHighlighted;
-
-    /**
-     * number of dynamic contexts causing a full invalidation
-     */
-    int m_maxDynamicContexts;
 };
 
 #endif

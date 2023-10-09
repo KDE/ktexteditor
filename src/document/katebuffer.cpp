@@ -23,12 +23,6 @@
 #include <QFileInfo>
 #include <QStringEncoder>
 #include <QTextStream>
-#include <QTimer>
-
-/**
- * Initial value for m_maxDynamicContexts
- */
-static const int KATE_MAX_DYNAMIC_CONTEXTS = 512;
 
 /**
  * Create an empty buffer. (with one block with one empty line)
@@ -42,7 +36,6 @@ KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
     , m_highlight(nullptr)
     , m_tabWidth(8)
     , m_lineHighlighted(0)
-    , m_maxDynamicContexts(KATE_MAX_DYNAMIC_CONTEXTS)
 {
 }
 

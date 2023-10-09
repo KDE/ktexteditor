@@ -215,7 +215,7 @@ QString CommandMode::executeCommand(const QString &commandToExecute)
     static const QRegularExpression reCmds(
         QStringLiteral("^(?:buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst"
                        "|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew)$"));
-    if (!reCmds.match(QStringView(cmd).left(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
+    if (!reCmds.matchView(QStringView(cmd).left(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
         view()->setFocus();
     }
 
