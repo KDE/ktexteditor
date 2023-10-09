@@ -587,22 +587,24 @@ QStringList KTextEditor::EditorPrivate::multicursorClipboard() const
 
 QTextToSpeech *KTextEditor::EditorPrivate::speechEngine(KTextEditor::ViewPrivate *view)
 {
+    Q_ASSERT(view);
     if (!m_speechEngine) {
         m_speechEngine = new QTextToSpeech(this);
 
-        // output errors to the current active view
+        // error handler for errors happening during speech output
         connect(m_speechEngine, &QTextToSpeech::errorOccurred, this, [this](QTextToSpeech::ErrorReason, const QString &errorString) {
             if (m_speechEngineLastUser) {
-                auto message = new KTextEditor::Message(errorString, Message::Error);
-                message->setPosition(KTextEditor::Message::TopInView);
-                message->setView(m_speechEngineLastUser);
-                m_speechEngineLastUser->document()->postMessage(message);
+                speechError(m_speechEngineLastUser, errorString);
             }
         });
+
+        // handle init errors, that will not emit errorOccurred later
+        if (m_speechEngine->errorReason() != QTextToSpeech::ErrorReason::NoError) {
+            speechError(view, m_speechEngine->errorString());
+        }
     }
 
     // register current view, handle error output and stopping of the speaking
-    Q_ASSERT(view);
     if (view != m_speechEngineLastUser) {
         if (m_speechEngineLastUser) {
             disconnect(m_speechEngineLastUser, &QObject::destroyed, this, &KTextEditor::EditorPrivate::speechEngineUserDestoyed);
@@ -618,6 +620,15 @@ void KTextEditor::EditorPrivate::speechEngineUserDestoyed()
 {
     Q_ASSERT(m_speechEngine);
     m_speechEngine->stop();
+}
+
+void KTextEditor::EditorPrivate::speechError(KTextEditor::ViewPrivate *view, const QString &errorString)
+{
+    Q_ASSERT(view);
+    auto message = new KTextEditor::Message(errorString, Message::Error);
+    message->setPosition(KTextEditor::Message::TopInView);
+    message->setView(view);
+    view->document()->postMessage(message);
 }
 
 #include "moc_kateglobal.cpp"

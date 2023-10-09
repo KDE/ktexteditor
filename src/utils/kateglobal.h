@@ -453,6 +453,13 @@ private Q_SLOTS:
      */
     void speechEngineUserDestoyed();
 
+    /**
+     * Speech error occured.
+     * @param view view to signal error to
+     * @param errorString error to show
+     */
+    void speechError(KTextEditor::ViewPrivate *view, const QString &errorString);
+
 Q_SIGNALS:
     /**
      * Emitted if the history of clipboard changes via copyToClipboard
