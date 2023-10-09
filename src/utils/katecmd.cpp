@@ -194,11 +194,8 @@ void KateCmdShellCompletion::splitText(const QString &text, QString &text_start,
     bool escaped = false;
     QChar p_last_quote_char;
     int last_unquoted_space = -1;
-    int end_space_len = 0;
 
     for (int pos = 0; pos < text.length(); pos++) {
-        end_space_len = 0;
-
         if (escaped) {
             escaped = false;
         } else if (in_quote && text[pos] == p_last_quote_char) {
@@ -212,10 +209,7 @@ void KateCmdShellCompletion::splitText(const QString &text, QString &text_start,
         } else if (text[pos] == m_escape_char) {
             escaped = true;
         } else if (!in_quote && text[pos] == m_word_break_char) {
-            end_space_len = 1;
-
             while (pos + 1 < text.length() && text[pos + 1] == m_word_break_char) {
-                end_space_len++;
                 pos++;
             }
 
