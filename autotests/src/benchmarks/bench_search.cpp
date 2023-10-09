@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     int iters = p.value(iterOpt).toInt(&ok);
 
     KMainWindow *w = new KMainWindow;
-    app.setActiveWindow(w);
+    w->activateWindow();
 
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, nullptr);
