@@ -1114,12 +1114,12 @@ msgstr "Cmd"
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd + Alt"
+msgstr "Cmd+Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd + Ctrl"
+msgstr "Cmd+Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -3983,7 +3983,7 @@ msgstr ""
 "voleu deixar-la sense canviar, cliqueu <b>Ignora</b> o <b>Ignora-ho tot</b>."
 "</p>\n"
 "<p>En canvi, si la paraula està mal escrita, podeu intentar de trobar la "
-"substitució correcta en la llista de davall. Si no hi trobeu una "
+"substitució correcta en la llista a continuació. Si no hi trobeu una "
 "substitució, podeu escriure al quadro de text a continuació i clicar "
 "<b>Substituïx</b> o <b>Substituïx-ho tot</b>.</p>\n"
 "</qt>"
@@ -8124,7 +8124,7 @@ msgstr ""
 "Exemple:\n"
 "«<F2>» → «I-- <esc>»\n"
 "\n"
-"Açò afegirà «-- » al començament d'una línia en prémer F2."
+"Açò afegirà «-- » al començament d'una línia en prémer «F2»."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:66
