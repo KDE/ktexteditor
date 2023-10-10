@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 01:40+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -2226,7 +2226,7 @@ msgstr ""
 msgid "% of View Width"
 msgstr "% दृश्य चौडाइ"
 
-#: document/katebuffer.cpp:141
+#: document/katebuffer.cpp:134
 #, fuzzy, kde-format
 #| msgid "New Filetype"
 msgctxt "short translation, user created new file"

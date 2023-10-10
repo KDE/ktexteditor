@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 01:40+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2023-09-20 21:13+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1114,12 +1114,12 @@ msgstr "Cmd"
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd + Alt"
+msgstr "Cmd+Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd + Ctrl"
+msgstr "Cmd+Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -2162,7 +2162,7 @@ msgstr ""
 msgid "% of View Width"
 msgstr "% de l'amplària de la vista"
 
-#: document/katebuffer.cpp:141
+#: document/katebuffer.cpp:134
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
@@ -3978,7 +3978,7 @@ msgstr ""
 "voleu deixar-la sense canviar, cliqueu <b>Ignora</b> o <b>Ignora-ho tot</b>."
 "</p>\n"
 "<p>En canvi, si la paraula està mal escrita, podeu intentar de trobar la "
-"substitució correcta en la llista de davall. Si no hi trobeu una "
+"substitució correcta en la llista a continuació. Si no hi trobeu una "
 "substitució, podeu escriure al quadro de text a continuació i clicar "
 "<b>Substituïx</b> o <b>Substituïx-ho tot</b>.</p>\n"
 "</qt>"
@@ -8189,7 +8189,7 @@ msgstr ""
 "Exemple:\n"
 "«<F2>» → «I-- <esc>»\n"
 "\n"
-"Açò afegirà «-- » al començament d'una línia en prémer F2."
+"Açò afegirà «-- » al començament d'una línia en prémer «F2»."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:66
