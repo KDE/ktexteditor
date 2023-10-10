@@ -153,11 +153,7 @@ macro(ktexteditor_unit_test_offscreen testname)
     if(ENABLE_PCH)
         target_precompile_headers(${testname} REUSE_FROM kte_test_pch)
     endif()
-if(WIN32)
-    ADD_TEST (NAME ${testname} COMMAND ${testname}) # windows has issues with offscreen tests in the CI
-else()
-    ADD_TEST (NAME ${testname} COMMAND ${testname} -platform offscreen)
-endif()
+    ADD_TEST (NAME ${testname} COMMAND ${testname} ${OFFSCREEN_QPA})
 endmacro()
 
 ktexteditor_unit_test_offscreen(katetextbuffertest)

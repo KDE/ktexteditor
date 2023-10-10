@@ -23,7 +23,7 @@ macro(vimode_unit_test)
         Qt6::Qml
         Qt6::Test)
     ecm_mark_as_test("vimode_${ARGV0}")
-    add_test(NAME "vimode_${ARGV0}" COMMAND "vimode_${ARGV0}" -platform offscreen)
+    add_test(NAME "vimode_${ARGV0}" COMMAND "vimode_${ARGV0}" ${OFFSCREEN_QPA})
 endmacro()
 
 vimode_unit_test(modes modes.cpp)

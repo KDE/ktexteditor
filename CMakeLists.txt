@@ -86,6 +86,13 @@ ecm_set_disabled_deprecation_versions(
     QT 6.3
 )
 
+# define which offscreen platform plugin to use for tests
+# windows has issues with offscreen tests in the CI
+set(OFFSCREEN_QPA "")
+if(NOT WIN32)
+    set(OFFSCREEN_QPA "-platform offscreen")
+endif()
+
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor6\")
 ki18n_install(po)
