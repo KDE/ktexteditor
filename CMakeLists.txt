@@ -88,9 +88,9 @@ ecm_set_disabled_deprecation_versions(
 
 # define which offscreen platform plugin to use for tests
 # windows has issues with offscreen tests in the CI
-set(OFFSCREEN_QPA "")
+set(OFFSCREEN_QPA)
 if(NOT WIN32)
-    set(OFFSCREEN_QPA "-platform offscreen")
+    set(OFFSCREEN_QPA "-platform" "offscreen")
 endif()
 
 # Subdirectories
