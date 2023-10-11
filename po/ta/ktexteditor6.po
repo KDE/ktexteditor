@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2023-07-02 16:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -144,14 +144,20 @@ msgstr "சொல் நிறைவு"
 msgid "Spelling"
 msgstr "எழுத்தாக்கம்"
 
+#. i18n: ectx: Menu (speech)
+#: data/katepart5ui.rc:149
+#, kde-format
+msgid "Text to Speech"
+msgstr ""
+
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:150
+#: data/katepart5ui.rc:157
 #, kde-format
 msgid "&Settings"
 msgstr "&அமைப்புகள்"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:174
+#: data/katepart5ui.rc:181
 #, kde-format
 msgid "Main Toolbar"
 msgstr "பிரதான கருவிப்பெட்டி"
@@ -2383,7 +2389,7 @@ msgstr ""
 msgid "recording"
 msgstr "பதிவு செய்கிறது"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:105
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -5358,395 +5364,395 @@ msgid ""
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
 
-#: utils/kateglobal.cpp:73
+#: utils/kateglobal.cpp:74
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate பகுதி"
 
-#: utils/kateglobal.cpp:75
+#: utils/kateglobal.cpp:76
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "உட்பொதிந்த தொகுப்பான் பொருள்"
 
-#: utils/kateglobal.cpp:77
+#: utils/kateglobal.cpp:78
 #, fuzzy, kde-format
 #| msgid "(c) 2000-2005 The Kate Authors"
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000-2005 கேட் இயற்றியோர்"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "கிரிஸ்டோப் கல்மன்"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Maintainer"
 msgstr "நிர்வகிப்பவர்"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Dominik Haumann"
 msgstr ""
 
-#: utils/kateglobal.cpp:98 utils/kateglobal.cpp:99 utils/kateglobal.cpp:101
-#: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:99 utils/kateglobal.cpp:100 utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:110 utils/kateglobal.cpp:113 utils/kateglobal.cpp:118
 #, kde-format
 msgid "Core Developer"
 msgstr "மூலம் உருவாக்குவோர்"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Milian Wolff"
 msgstr ""
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "ஜோசப் வெனிங்னர்"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr ""
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr ""
 
-#: utils/kateglobal.cpp:106 utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:107 utils/kateglobal.cpp:125
 #, kde-format
 msgid "Developer"
 msgstr "உ உருவாக்குவோர்"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Anders Lund"
 msgstr "ஆன்டர்ஸ் லன்ட்"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Michel Ludwig"
 msgstr ""
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, fuzzy, kde-format
 #| msgid "Spellcheck"
 msgid "On-the-fly spell checking"
 msgstr "சொல் திருத்தி"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr ""
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr ""
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "ஹமீஷ் ரொட்டா"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "வாலடோ பாஸ்டியான்"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "இடையகச் கணிப்பொறி"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Charles Samuels"
 msgstr "சார்லஸ் சாமுவல்ஸ்"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "The Editing Commands"
 msgstr "தொகுக்கும் கட்டளை"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Matt Newell"
 msgstr "மாட் நேவெல்"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Testing, ..."
 msgstr "சோதித்தல், ..."
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Michael Bartl"
 msgstr ""
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Former Core Developer"
 msgstr "மூலம் உருவாக்குவோர்"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Michael McCallum"
 msgstr ""
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Michael Koch"
 msgstr ""
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "KParts இற்கு மாற்றிய KWrite"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "Christian Gebauer"
 msgstr ""
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:121
 #, kde-format
 msgid "Simon Hausmann"
 msgstr ""
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "Glen Parker"
 msgstr "கலென் பார்க்கர்"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "KWrite செயல்நீக்க வரலாறு, Kspell ஒருங்கிணைப்பு"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Scott Manson"
 msgstr ""
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "KWrite இன் XML தொடர்களை முன்னிலைப்படுத்தி காட்டுவதற்கான ஆதரவு"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "John Firebaugh"
 msgstr ""
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Patches and more"
 msgstr "ஒட்டுதல் மற்றும் மேலாக"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Andreas Kling"
 msgstr ""
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Mirko Stocker"
 msgstr ""
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Various bugfixes"
 msgstr ""
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr ""
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr ""
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr ""
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr ""
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr ""
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, fuzzy, kde-format
 #| msgid "KWrite Author"
 msgid "Original KWrite Author"
 msgstr "KWrite ஆசிரியர்"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr ""
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, fuzzy, kde-format
 msgid "QA and Scripting"
 msgstr ""
 "_: Language\n"
 "க்வாக் சிறுநிரல்"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "Matteo Merli"
 msgstr ""
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "RPM சிறப்புகோப்பு, பெர்ல், டீப்பை முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr ""
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "VHDLக்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgid "Yury Lebedev"
 msgstr ""
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "SQLக்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:141
 #, kde-format
 msgid "Chris Ross"
 msgstr ""
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:141
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Ferite க்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:142
 #, kde-format
 msgid "Nick Roux"
 msgstr ""
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:142
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "ILERPGக்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr ""
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "LaTeX க்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Per Wigren"
 msgstr ""
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "கோப்பு உருவாக்குதல், பைத்தானுக்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:145
 #, kde-format
 msgid "Jan Fritz"
 msgstr ""
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:145
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "பைத்தனுக்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:146
 #, kde-format
 msgid "Daniel Naber"
 msgstr ""
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:147
 #, kde-format
 msgid "Roland Pabel"
 msgstr ""
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:147
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "திட்டமுறைக்கு முன்னிலைப்படுத்தல்"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:148
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr ""
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:148
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "PHP  முக்கியசொல்/தரவுவகை பட்டியல்"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:149
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr ""
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:149
 #, kde-format
 msgid "Very nice help"
 msgstr "மிக நேர்த்தியான உதவி"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:150
 #, kde-format
 msgid "Bruno Massa"
 msgstr ""
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:150
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "லுவாவினை வெளிச்சிட"
 
-#: utils/kateglobal.cpp:151
+#: utils/kateglobal.cpp:152
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "அனைவரும் பங்கெடுக்க ஆனால், நான் குறிப்பிட மறந்தேன்"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:154
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "உங்கள் பெயர்கள்."
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:154
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "amachu@amachu.com"
 
-#: utils/kateglobal.cpp:272
+#: utils/kateglobal.cpp:273
 #, kde-format
 msgid "Configure"
 msgstr "வடிவமைக்க"
@@ -6354,7 +6360,7 @@ msgstr "வரியின் முடிவு"
 msgid "Mode"
 msgstr "&முறை"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:685
+#: view/katestatusbar.cpp:209 view/kateview.cpp:684
 #, fuzzy, kde-format
 #| msgid ""
 #| "Here you can choose which mode should be used for the current document. "
@@ -6468,17 +6474,17 @@ msgstr ""
 msgid "Zoom: %1%"
 msgstr ""
 
-#: view/kateview.cpp:454
+#: view/kateview.cpp:453
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "தேர்வு செய்த உரையை வெட்டி கிளிப் போர்டுக்கு நகர்த்தவும்."
 
-#: view/kateview.cpp:457
+#: view/kateview.cpp:456
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "முன்னால் சேமித்த அல்லது வெட்டிய கிளிப்போர்டு உள்ளடக்கங்களை ஒட்டு"
 
-#: view/kateview.cpp:460
+#: view/kateview.cpp:459
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
@@ -6486,67 +6492,67 @@ msgstr ""
 "தற்போது தேர்வு செய்யப்பட்ட உரையை அமைப்பின் கிளிப் போர்டுக்குப் நகலெடுக்க இந்த கட்டளையை "
 "பயன்படுத்தவும்."
 
-#: view/kateview.cpp:466
+#: view/kateview.cpp:465
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr ""
 
-#: view/kateview.cpp:471
+#: view/kateview.cpp:470
 #, fuzzy, kde-format
 msgid "Paste Selection"
 msgstr "தன்னியக்க  உள்தள்"
 
-#: view/kateview.cpp:473
+#: view/kateview.cpp:472
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Paste previously mouse selection contents"
 msgstr "முன்னால் சேமித்த அல்லது வெட்டிய கிளிப்போர்டு உள்ளடக்கங்களை ஒட்டு"
 
-#: view/kateview.cpp:477
+#: view/kateview.cpp:476
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Swap with Clipboard Contents"
 msgstr "முன்னால் சேமித்த அல்லது வெட்டிய கிளிப்போர்டு உள்ளடக்கங்களை ஒட்டு"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:477
 #, fuzzy, kde-format
 #| msgid "Cut the selected text and move it to the clipboard"
 msgid "Swap the selected text with the clipboard contents"
 msgstr "தேர்வு செய்த உரையை வெட்டி கிளிப் போர்டுக்கு நகர்த்தவும்."
 
-#: view/kateview.cpp:481
+#: view/kateview.cpp:480
 #, fuzzy, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "தன்னியக்க  உள்தள்"
 
-#: view/kateview.cpp:485
+#: view/kateview.cpp:484
 #, kde-format
 msgid "Save the current document"
 msgstr "தற்போதுள்ள ஆவணத்தை சேமி "
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:487
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "சமீபத்தில் தொகுத்த செயல்களை முன் நிலைக்கு மாற்ற"
 
-#: view/kateview.cpp:491
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "சமீபத்தில் ரத்து செய்ததை செயல்பாடுகளை முன் நிலைக்கு மாற்ற "
 
-#: view/kateview.cpp:495
+#: view/kateview.cpp:494
 #, fuzzy, kde-format
 #| msgid "Scripts"
 msgid "&Scripts"
 msgstr "நேர்நிரல்கள்"
 
-#: view/kateview.cpp:499
+#: view/kateview.cpp:498
 #, fuzzy, kde-format
 #| msgid "Word Wrap"
 msgid "Apply &Word Wrap"
 msgstr "வார்த்தை மடிப்பு"
 
-#: view/kateview.cpp:501
+#: view/kateview.cpp:500
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6554,12 +6560,12 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 
-#: view/kateview.cpp:507
+#: view/kateview.cpp:506
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "உள்ளமைவை துடை"
 
-#: view/kateview.cpp:509
+#: view/kateview.cpp:508
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6574,13 +6580,13 @@ msgstr ""
 "வெற்றிடங்கள் மட்டும்]<br><br>கட்டமைப்பு உரையாடல் பெட்டியில் தத்தல்கள் மதிப்பளிக்கப்பட்டு "
 "பயன்படுத்த வேண்டுமா அல்லது வெற்றிடங்கள் மாற்றபட வேண்டுமா என கட்டமைக்கலாம்."
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:513
 #, fuzzy, kde-format
 #| msgid "&Indentation"
 msgid "&Format Indentation"
 msgstr "&உள்தள்ளுதல்"
 
-#: view/kateview.cpp:515
+#: view/kateview.cpp:514
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this to align the current line or block of text to its proper indent "
@@ -6591,13 +6597,13 @@ msgid ""
 msgstr ""
 "நடப்பு வரி அல்லது உரை தொகுதியின் முறையான சீரமைப்பு நிலையை சீரமைக்க இதை பயன்படுத்து."
 
-#: view/kateview.cpp:519
+#: view/kateview.cpp:518
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "&Align On..."
 msgstr "சீரமை"
 
-#: view/kateview.cpp:521
+#: view/kateview.cpp:520
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6611,12 +6617,12 @@ msgid ""
 "column."
 msgstr ""
 
-#: view/kateview.cpp:532
+#: view/kateview.cpp:531
 #, kde-format
 msgid "C&omment"
 msgstr "குறிப்புரை"
 
-#: view/kateview.cpp:535
+#: view/kateview.cpp:534
 #, fuzzy, kde-format
 #| msgid ""
 #| "This command comments out the current line or a selected block of text."
@@ -6631,24 +6637,24 @@ msgstr ""
 "மாற்றிவிடும். <BR><BR> ஒற்றை/பல வரி குறிப்பு எழுத்துக்கள் எல்லாம் மொழிகளின் "
 "முன்னிலைப்படுத்துதலில் குறிப்பிடப்பட்டிருக்கும்."
 
-#: view/kateview.cpp:540
+#: view/kateview.cpp:539
 #, fuzzy, kde-format
 #| msgid "Move to Previous Line"
 msgid "Go to Previous Editing Location"
 msgstr "முந்தைய வரிக்கு நகரவும்"
 
-#: view/kateview.cpp:546
+#: view/kateview.cpp:545
 #, fuzzy, kde-format
 #| msgid "Select to Next Line"
 msgid "Go to Next Editing Location"
 msgstr "அடுத்த வரிக்கு தேர்ந்தெடு"
 
-#: view/kateview.cpp:552
+#: view/kateview.cpp:551
 #, kde-format
 msgid "Unco&mment"
 msgstr "குறிப்புரை செய்யாதே"
 
-#: view/kateview.cpp:555
+#: view/kateview.cpp:554
 #, fuzzy, kde-format
 #| msgid ""
 #| "This command removes comments from the current line or a selected block "
@@ -6663,39 +6669,39 @@ msgstr ""
 "<BR><BR> ஒற்றை/பல வரி குறிப்பு எழுத்துக்கள் எல்லாம் மொழிகளின் முன்னிலைப்படுத்தலில் "
 "குறிப்பிடப்பட்டிருக்கும். "
 
-#: view/kateview.cpp:560
+#: view/kateview.cpp:559
 #, fuzzy, kde-format
 #| msgid "Comment"
 msgid "Toggle Comment"
 msgstr "குறிப்புரை"
 
-#: view/kateview.cpp:564
+#: view/kateview.cpp:563
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "&படித்தல் மட்டும் பயன்முறை"
 
-#: view/kateview.cpp:565
+#: view/kateview.cpp:564
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "எழுதுவதற்கு உண்டான ஆவணங்களை பூட்டு/திற"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:569
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr ""
 
-#: view/kateview.cpp:571
+#: view/kateview.cpp:570
 #, fuzzy, kde-format
 #| msgid "Selection Mode"
 msgid "Force RTL Text Direction"
 msgstr "தேர்ந்தெடுப்பு வகை"
 
-#: view/kateview.cpp:581
+#: view/kateview.cpp:580
 #, kde-format
 msgid "Uppercase"
 msgstr "பெரிய எழுத்து"
 
-#: view/kateview.cpp:584
+#: view/kateview.cpp:583
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6704,12 +6710,12 @@ msgstr ""
 "தேர்ந்தெடுத்ததை பெரிய எழுத்தாக்கு அல்லது உரை எதுவும் தேர்வு செய்யவில்லையெனில் "
 "நிலைகாட்டியின் வலதுபக்க எழுத்தை பெரிய எழுத்தாக்கு"
 
-#: view/kateview.cpp:590
+#: view/kateview.cpp:589
 #, kde-format
 msgid "Lowercase"
 msgstr "சின்ன எழுத்து"
 
-#: view/kateview.cpp:593
+#: view/kateview.cpp:592
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6718,12 +6724,12 @@ msgstr ""
 "தேர்ந்தெடுத்ததை சிறிய எழுத்தாக்கு அல்லது உரை எதுவும் தேர்வு செய்யவில்லையெனில் "
 "நிலைகாட்டியின் வலது பக்க எழுத்தை சிறிய எழுத்தாக்கு"
 
-#: view/kateview.cpp:599
+#: view/kateview.cpp:598
 #, kde-format
 msgid "Capitalize"
 msgstr "பெரிய எழுதாக்கு"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:601
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6732,17 +6738,17 @@ msgstr ""
 "தேர்ந்தெடுத்ததைப் பெரிய எழுத்தாக்கு அல்லது உரை எதுவும் தேர்வு செய்யவில்லையெனில் "
 "நிலைகாட்டியின் கீழ் உள்ள எழுத்தை பெரிய எழுத்தாக்கு."
 
-#: view/kateview.cpp:607
+#: view/kateview.cpp:606
 #, kde-format
 msgid "Join Lines"
 msgstr "கோடுகளை இணை"
 
-#: view/kateview.cpp:612
+#: view/kateview.cpp:611
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "நிரல் பூர்தியைத் தூண்டுக"
 
-#: view/kateview.cpp:613
+#: view/kateview.cpp:612
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6751,56 +6757,56 @@ msgstr ""
 "ஆணை நிறைவேற்றத்தை கைமு்முறை தூண்டுகயாபெரும்பாலும் இதற்கான சுருக்கு வழியொன்றைப்ப் "
 "பயன்படுத்தி்திion."
 
-#: view/kateview.cpp:618
+#: view/kateview.cpp:617
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgid "Remove Trailing Spaces"
 msgstr "வ&ரிமுடிவிலுள்ள காலியிடங்களை நீக்குவது:"
 
-#: view/kateview.cpp:636
+#: view/kateview.cpp:635
 #, kde-format
 msgid "Print the current document."
 msgstr "தற்போதுள்ள ஆவணத்தை அச்சடிக்கவும்"
 
-#: view/kateview.cpp:639
+#: view/kateview.cpp:638
 #, fuzzy, kde-format
 #| msgid "Print the current document."
 msgid "Show print preview of current document"
 msgstr "தற்போதுள்ள ஆவணத்தை அச்சடிக்கவும்"
 
-#: view/kateview.cpp:643
+#: view/kateview.cpp:642
 #, kde-format
 msgid "Reloa&d"
 msgstr "மீளேற்று"
 
-#: view/kateview.cpp:645
+#: view/kateview.cpp:644
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "நடப்பு ஆவணத்தை வட்டிலிருந்து மீளேற்று."
 
-#: view/kateview.cpp:649
+#: view/kateview.cpp:648
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "நடப்பு ஆவணத்தை வட்டில் ஏதாவது ஒரு பெயரில் சேமி."
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:650
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr ""
 
-#: view/kateview.cpp:657
+#: view/kateview.cpp:656
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Save &Copy As..."
 msgstr "கோப்பினைச் சேமி..."
 
-#: view/kateview.cpp:658
+#: view/kateview.cpp:657
 #, fuzzy, kde-format
 #| msgid "Reload the current document from disk."
 msgid "Save a copy of the current document to disk."
 msgstr "நடப்பு ஆவணத்தை வட்டிலிருந்து மீளேற்று."
 
-#: view/kateview.cpp:662
+#: view/kateview.cpp:661
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6809,72 +6815,72 @@ msgstr ""
 "இந்த கட்டளை ஒரு உரையாடல் பெட்டியை திறந்து நிலைகாட்டி செல்ல வேண்டிய ஒரு வரியை தேர்வு "
 "செய்ய உங்களை அனுமதிக்கும்."
 
-#: view/kateview.cpp:666
+#: view/kateview.cpp:665
 #, fuzzy, kde-format
 #| msgid "Move to Previous Line"
 msgid "Go to Previous Modified Line"
 msgstr "முந்தைய வரிக்கு நகரவும்"
 
-#: view/kateview.cpp:667
+#: view/kateview.cpp:666
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Move upwards to the previous modified line."
 msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
 
-#: view/kateview.cpp:672
+#: view/kateview.cpp:671
 #, fuzzy, kde-format
 #| msgid "Move to Next Line"
 msgid "Go to Next Modified Line"
 msgstr "அடுத்த வரிக்கு நகரவும்"
 
-#: view/kateview.cpp:673
+#: view/kateview.cpp:672
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr ""
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:676
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "தொகுப்பானை வடிவமை..."
 
-#: view/kateview.cpp:679
+#: view/kateview.cpp:678
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "இந்த தொகுப்பானின் பல்வேறு அம்சங்களை வடிவமை"
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:681
 #, kde-format
 msgid "&Mode"
 msgstr "&முறை"
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:687
 #, kde-format
 msgid "&Highlighting"
 msgstr "&முன்னிலைபடுத்தல்"
 
-#: view/kateview.cpp:690
+#: view/kateview.cpp:689
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr ""
 "நடைமுறை ஆவணம் எப்படி முன்னிலைப்படுத்திக் காட்டப்பட வேண்டும் என்பதை நீங்கள் தேர்வு செய்யலாம்."
 
-#: view/kateview.cpp:693
+#: view/kateview.cpp:692
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "&Editor Color Theme"
 msgstr "நிறங்கள்"
 
-#: view/kateview.cpp:699
+#: view/kateview.cpp:698
 #, kde-format
 msgid "&Indentation"
 msgstr "&உள்தள்ளுதல்"
 
-#: view/kateview.cpp:707
+#: view/kateview.cpp:706
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "தற்போதுள்ள ஆவணத்தின் முழு உரையை தேர்தெடு"
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:709
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -6882,43 +6888,43 @@ msgid ""
 msgstr ""
 "நடப்பு ஆவணத்தில் நீங்கள் ஏதேனும் தேர்வு செய்திருந்தால், அது இனி தேர்வு செய்யப்படமாட்டாது."
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:713
 #, kde-format
 msgid "Enlarge Font"
 msgstr "மின்னெழுத்தை பெரிதாக்குக"
 
-#: view/kateview.cpp:716
+#: view/kateview.cpp:715
 #, kde-format
 msgid "This increases the display font size."
 msgstr "இது தெரியும் எழுத்துரு அளவை பெரியதாக்கும்"
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:722
 #, kde-format
 msgid "Shrink Font"
 msgstr "மின்னெழுத்தை சுருக்குக"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:724
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "இது தெரியும் எழுத்துரு அளவை குறைக்கும்."
 
-#: view/kateview.cpp:732
+#: view/kateview.cpp:731
 #, kde-format
 msgid "Reset Font Size"
 msgstr ""
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:733
 #, fuzzy, kde-format
 #| msgid "This increases the display font size."
 msgid "This resets the display font size."
 msgstr "இது தெரியும் எழுத்துரு அளவை பெரியதாக்கும்"
 
-#: view/kateview.cpp:737
+#: view/kateview.cpp:736
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "பாளம் பாளமாக தேர்ந்தெடு"
 
-#: view/kateview.cpp:740
+#: view/kateview.cpp:739
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -6927,24 +6933,24 @@ msgstr ""
 "இந்த கட்டளை சாதாரண (வரி சார்ந்த) தேர்வு செய்யும் வகைக்கும், பகுதி சார்ந்த தேர்வு செய்யும் "
 "வகைக்கும் இடையே மாறிக் கொள்ள அனுமதிக்கிறது."
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:743
 #, fuzzy, kde-format
 #| msgid "Select to End of Line"
 msgid "Switch to Next Input Mode"
 msgstr "வரியின் முடிவு வரை தேர்ந்தெடு"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:745
 #, fuzzy, kde-format
 #| msgid "Select to End of Line"
 msgid "Switch to the next input mode."
 msgstr "வரியின் முடிவு வரை தேர்ந்தெடு"
 
-#: view/kateview.cpp:749
+#: view/kateview.cpp:748
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "மேலெழுதும் முறை"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:751
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -6953,12 +6959,12 @@ msgstr ""
 "நீங்கள் டைப் செய்த உரையை நுழைக்க வேண்டுமா அல்லது இருக்கும் உரையின் மேல் எழுத வேண்டுமா "
 "என்று தேர்வு செய்க."
 
-#: view/kateview.cpp:756
+#: view/kateview.cpp:755
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "மாறும் வார்த்தை மடிப்பு"
 
-#: view/kateview.cpp:760
+#: view/kateview.cpp:759
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -6969,37 +6975,37 @@ msgid ""
 "will not changed."
 msgstr "இந்த தேர்வினை செயல்படுத்தினால் திரையின் காட்சி விளிம்பில் உரை வரிகள் போர்த்தப்படும்"
 
-#: view/kateview.cpp:764
+#: view/kateview.cpp:763
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "மாறும் வார்த்தை மடிப்பு சுட்டிகள்"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:765
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "மாறும் வார்த்தை மடிப்பு சுட்டிகள் எப்பொழுது காட்சியளிக்க வேண்டும் என தேர்வு செய்: "
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:767
 #, kde-format
 msgid "&Off"
 msgstr "&நீக்கு"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:767
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "&வரி எண்களை பின்பற்று."
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:767
 #, kde-format
 msgid "&Always On"
 msgstr "&எப்போதும் இயக்கு"
 
-#: view/kateview.cpp:772
+#: view/kateview.cpp:771
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "நிலையான வார்த்தை மடிப்பு"
 
-#: view/kateview.cpp:774
+#: view/kateview.cpp:773
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7009,12 +7015,12 @@ msgid ""
 "defined in the editing properties."
 msgstr "இந்த தேர்வினை செயல்படுத்தினால் திரையின் காட்சி விளிம்பில் உரை வரிகள் போர்த்தப்படும்"
 
-#: view/kateview.cpp:781
+#: view/kateview.cpp:780
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "நிலையான வார்த்தை மடிப்புக் குறிகளை காட்டு"
 
-#: view/kateview.cpp:784
+#: view/kateview.cpp:783
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7023,12 +7029,12 @@ msgstr ""
 "வார்த்தை மடிப்பு குறிப்பானை காட்டு/மறை, தொகுக்கும் பண்பிற்கேற்ப வார்த்தை மடிப்பு இடத்தில் "
 "ஒரு செங்குத்து கோடு வரையப்படும்."
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:787
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "மடிப்புக்குறிகளைக் காட்டு"
 
-#: view/kateview.cpp:790
+#: view/kateview.cpp:789
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7037,12 +7043,12 @@ msgstr ""
 "குறிமுறை மடிப்பினால் முடியுமானால், குறிமுறை மடிப்பு குறிப்புகள் தோன்ற வேண்டுமா என "
 "நீங்கள் தேர்வு செய்யலாம்"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:792
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "சின்னங்களைக்கொண்ட விளிம்பைக் காட்டு"
 
-#: view/kateview.cpp:795
+#: view/kateview.cpp:794
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7051,22 +7057,22 @@ msgstr ""
 "முகவுரு விளிம்பினைக் காட்டுக/மறைக்க.<br /><br />உதாரணத்திற்கு முகவுரு விளிம்பு "
 "நினைவுக் குறி குறியீடுகளைக் காட்டும்."
 
-#: view/kateview.cpp:798
+#: view/kateview.cpp:797
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "வரி எண்ணைக் காட்டு"
 
-#: view/kateview.cpp:800
+#: view/kateview.cpp:799
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "காட்சியின் இடது பக்கத்தில் வரி எண்களை காட்டு/மறை"
 
-#: view/kateview.cpp:803
+#: view/kateview.cpp:802
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "உருள்பட்டி குறிகளை காட்டு"
 
-#: view/kateview.cpp:805
+#: view/kateview.cpp:804
 #, fuzzy, kde-format
 #| msgid ""
 #| "Show/hide the marks on the vertical scrollbar.<br /><br />The marks, for "
@@ -7078,13 +7084,13 @@ msgstr ""
 "செங்குத்து உலாப்பட்டியில் உள்ள குறிகளை காட்டுக/மறைக்க.<br /><br />அதாவது நினைவுக் "
 "குறிகள் போன்றவை."
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:807
 #, fuzzy, kde-format
 #| msgid "Show Scroll&bar Marks"
 msgid "Show Scrollbar Mini-Map"
 msgstr "உருள்பட்டி குறிகளை காட்டு"
 
-#: view/kateview.cpp:810
+#: view/kateview.cpp:809
 #, fuzzy, kde-format
 #| msgid ""
 #| "Show/hide the marks on the vertical scrollbar.<br /><br />The marks, for "
@@ -7101,152 +7107,152 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:822
+#: view/kateview.cpp:821
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr ""
 
-#: view/kateview.cpp:824
+#: view/kateview.cpp:823
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr ""
 
-#: view/kateview.cpp:828
+#: view/kateview.cpp:827
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "கட்டளை வரிக்கு நகர்த்து"
 
-#: view/kateview.cpp:830
+#: view/kateview.cpp:829
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "கட்டளை வரிகளை காட்சியின் அடிப்பக்கத்தில் காட்டு/மறை"
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:832
 #, kde-format
 msgid "Input Modes"
 msgstr ""
 
-#: view/kateview.cpp:842
+#: view/kateview.cpp:841
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr ""
 
-#: view/kateview.cpp:852
+#: view/kateview.cpp:851
 #, kde-format
 msgid "&End of Line"
 msgstr "வரி முடிவு"
 
-#: view/kateview.cpp:854
+#: view/kateview.cpp:853
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "ஆவணங்களை சேமிக்கும் போது எந்த வரி முடிவினை பயன்படுத்த வேண்டும் என்று தேர்ந்தெடு"
 
-#: view/kateview.cpp:855
+#: view/kateview.cpp:854
 #, fuzzy, kde-format
 #| msgid "UNIX"
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "யுனிக்ஸ்"
 
-#: view/kateview.cpp:856
+#: view/kateview.cpp:855
 #, fuzzy, kde-format
 #| msgid "DOS/Windows"
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "டாஸ்/வின்டோஸ்"
 
-#: view/kateview.cpp:857
+#: view/kateview.cpp:856
 #, fuzzy, kde-format
 #| msgid "Macintosh"
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "மேக்இன்டாஷ்"
 
-#: view/kateview.cpp:862
+#: view/kateview.cpp:861
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr ""
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:864
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
 msgstr ""
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:868
 #, kde-format
 msgid "E&ncoding"
 msgstr "குறிமுறையாக்கு"
 
-#: view/kateview.cpp:873
+#: view/kateview.cpp:872
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "முதல் முறை நிகழும் ஒரு உரை அல்லது வழக்கமான கூற்றை எதிர்பாருங்கள். "
 
-#: view/kateview.cpp:877
+#: view/kateview.cpp:876
 #, kde-format
 msgid "Find Selected"
 msgstr "தேர்வினைத் தேடுக"
 
-#: view/kateview.cpp:879
+#: view/kateview.cpp:878
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "தேரவு செய்யப்பட்ட உரையின் அடுத்த இருப்பைத் தேடுகிறது."
 
-#: view/kateview.cpp:883
+#: view/kateview.cpp:882
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "தேர்வினைப் பின்புறமாக தேடுக"
 
-#: view/kateview.cpp:885
+#: view/kateview.cpp:884
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "தேர்வுச் செய்யப்பட்ட உரையின் முந்தைய நிகழ்வினைக் கண்டுபிடிக்கின்றது."
 
-#: view/kateview.cpp:889
+#: view/kateview.cpp:888
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr ""
 
-#: view/kateview.cpp:891
+#: view/kateview.cpp:890
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "தேரவு செய்யப்பட்ட உரையின் அடுத்த இருப்பைத் தேடுகிறது."
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:894
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:896
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:901
+#: view/kateview.cpp:900
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr ""
 
-#: view/kateview.cpp:903
+#: view/kateview.cpp:902
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "தேரவு செய்யப்பட்ட உரையின் அடுத்த இருப்பைத் தேடுகிறது."
 
-#: view/kateview.cpp:907
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr " தேடும் சொற்றொடரின் அடுத்த  நிகழ்வை எதிர்பாருங்கள்."
 
-#: view/kateview.cpp:911
+#: view/kateview.cpp:910
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "தேடும் சொற்றொடரின் முந்தைய நிகழ்வை நோக்குங்கள்."
 
-#: view/kateview.cpp:915
+#: view/kateview.cpp:914
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7255,98 +7261,98 @@ msgstr ""
 "உரையையோ அல்லது ஒரு வழ்க்கமான கூற்றையோ தேடி அதை கொடுக்கப்பட்ட  ஏதாவது உரையின் விளைவால் "
 "மாற்றுங்கள்."
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr ""
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:919
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr ""
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr ""
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:925
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Adds a caret in the line below the current caret."
 msgstr "தற்போதுள்ள ஆவணத்தின் முழு உரையை தேர்தெடு"
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr ""
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:931
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:935
 #, fuzzy, kde-format
 #| msgid "Text Cursor Movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "உரை நிலைகாட்டி அசைவு"
 
-#: view/kateview.cpp:937
+#: view/kateview.cpp:936
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
-#: view/kateview.cpp:941
+#: view/kateview.cpp:940
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Remove Cursors from Empty Lines"
 msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:941
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Remove cursors from empty lines"
 msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
 
-#: view/kateview.cpp:946
+#: view/kateview.cpp:945
 #, fuzzy, kde-format
 msgid "Automatic Spell Checking"
 msgstr "தன்னியக்க  உள்தள்"
 
-#: view/kateview.cpp:947
+#: view/kateview.cpp:946
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr ""
 
-#: view/kateview.cpp:953
+#: view/kateview.cpp:952
 #, fuzzy, kde-format
 #| msgid "Choose Editor..."
 msgid "Change Dictionary..."
 msgstr "தொகுப்பானைத் தேர்வுச் செய்க.."
 
-#: view/kateview.cpp:954
+#: view/kateview.cpp:953
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr ""
 
-#: view/kateview.cpp:958
+#: view/kateview.cpp:957
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr ""
 
-#: view/kateview.cpp:960
+#: view/kateview.cpp:959
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
 
-#: view/kateview.cpp:966
+#: view/kateview.cpp:965
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "&HTML ஆக நகலெடுக்க"
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:966
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
@@ -7355,13 +7361,13 @@ msgstr ""
 "தற்சமயம் தேர்வு செய்யப்பட்டிருக்கும் உரையினை ஹச்டிஎம்எல் ஆக பிடிப்பிடத்துக்கு நகலெடுக்க "
 "இவ்வாணையைப் பயன்படுத்துக.்க "
 
-#: view/kateview.cpp:971
+#: view/kateview.cpp:970
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
 msgid "E&xport as HTML..."
 msgstr "கோப்பினை மீஉஅமொ யாாக ஏற்றுமதி செயய"
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:972
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7669,39 +7675,63 @@ msgstr "நடைமுறை வரி:"
 msgid "Toggle Contained Nodes"
 msgstr "குறிப்புரை"
 
-#: view/kateview.cpp:1496
+#: view/kateview.cpp:1348
+#, fuzzy, kde-format
+#| msgid "Select the entire text of the current document."
+msgid "Say current selection or document"
+msgstr "தற்போதுள்ள ஆவணத்தின் முழு உரையை தேர்தெடு"
+
+#: view/kateview.cpp:1358
+#, fuzzy, kde-format
+#| msgid "Save the current document"
+msgid "Stop current output"
+msgstr "தற்போதுள்ள ஆவணத்தை சேமி "
+
+#: view/kateview.cpp:1364
+#, fuzzy, kde-format
+#| msgid "Save the current document"
+msgid "Pause current output"
+msgstr "தற்போதுள்ள ஆவணத்தை சேமி "
+
+#: view/kateview.cpp:1370
+#, fuzzy, kde-format
+#| msgid "Save the current document"
+msgid "Resume current output"
+msgstr "தற்போதுள்ள ஆவணத்தை சேமி "
+
+#: view/kateview.cpp:1529
 #, kde-format
 msgid "(R/O) %1"
 msgstr ""
 
-#: view/kateview.cpp:1684
+#: view/kateview.cpp:1717
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1686
+#: view/kateview.cpp:1719
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2178
+#: view/kateview.cpp:2211
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search wrapped"
 msgstr "தேடு"
 
-#: view/kateview.cpp:3702
+#: view/kateview.cpp:3735
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "சீரமை"
 
-#: view/kateview.cpp:3702
+#: view/kateview.cpp:3735
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4807
+#: view/kateview.cpp:4840
 #, kde-format
 msgid "Export File as HTML"
 msgstr "கோப்பினை மீஉஅமொ யாாக ஏற்றுமதி செயய"

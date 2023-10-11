@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2023-05-01 14:23+0200\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -137,14 +137,21 @@ msgstr "Dopĺňanie slov"
 msgid "Spelling"
 msgstr "Pravopis"
 
+#. i18n: ectx: Menu (speech)
+#: data/katepart5ui.rc:149
+#, fuzzy, kde-format
+#| msgid "Text to search for"
+msgid "Text to Speech"
+msgstr "Text na hľadanie"
+
 #. i18n: ectx: Menu (settings)
-#: data/katepart5ui.rc:150
+#: data/katepart5ui.rc:157
 #, kde-format
 msgid "&Settings"
 msgstr "&Nastavenia"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: data/katepart5ui.rc:174
+#: data/katepart5ui.rc:181
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Hlavný panel nástrojov"
@@ -2434,7 +2441,7 @@ msgstr "vi režim"
 msgid "recording"
 msgstr "nahrávanie"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:105
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -5390,390 +5397,390 @@ msgstr ""
 "td></tr><tr><td>ap</td><td>Použije zobrazenie am/pm. ap sa  nahradí pomocou "
 "\"am\" alebo \"pm\".</td></tr></table></p>"
 
-#: utils/kateglobal.cpp:73
+#: utils/kateglobal.cpp:74
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate Part"
 
-#: utils/kateglobal.cpp:75
+#: utils/kateglobal.cpp:76
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "Komponent vkladateľného editora"
 
-#: utils/kateglobal.cpp:77
+#: utils/kateglobal.cpp:78
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000-2022 Autori Kate"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Maintainer"
 msgstr "Správca"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: utils/kateglobal.cpp:98 utils/kateglobal.cpp:99 utils/kateglobal.cpp:101
-#: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:99 utils/kateglobal.cpp:100 utils/kateglobal.cpp:102
+#: utils/kateglobal.cpp:110 utils/kateglobal.cpp:113 utils/kateglobal.cpp:118
 #, kde-format
 msgid "Core Developer"
 msgstr "Hlavný vývojár"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Milian Wolff"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:106 utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:107 utils/kateglobal.cpp:125
 #, kde-format
 msgid "Developer"
 msgstr "Vývojár"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "Kontrola pravopisu za behu"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "Veľké opravy chýb"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Perfektný buffer systém"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Príkazy pre úpravu"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Testing, ..."
 msgstr "Testovanie, ..."
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Bývalý hlavný vývojár"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "Port KWrite do KParts"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:121
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "KWrite história krokov späť, integrácia KSpell"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "KWrite podpora zvýrazňovania syntaxu XML"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Patches and more"
 msgstr "Záplaty a iné"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Various bugfixes"
 msgstr "Rôzdne opravy chýb"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "Výber, KColorScheme integrácia"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "Vyhľadávacie pole back a frontendu."
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "Pôvodný autor KWrite"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "QA and Scripting"
 msgstr "QA a skriptovanie"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Zvýrazňovanie pre Spec súbory RPM, Perl, Diff a iné"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "Zvýrazňovanie pre VHDL"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "Zvýrazňovanie pre SQL"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:141
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:141
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Zvýrazňovanie pre Ferite"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:142
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:142
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "Zvýrazňovanie pre ILERPG"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Zvýrazňovanie pre LaTeX"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Zvýrazňovanie pre Makefile, Python"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:145
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:145
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Zvýrazňovanie pre Python"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:146
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:147
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:147
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Zvýrazňovanie pre Scheme"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:148
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:148
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "Kľúčové slová PHP/zoznam datatype"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:149
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:149
 #, kde-format
 msgid "Very nice help"
 msgstr "Veľmi pekný pomocník"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:150
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:150
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Zvýrazňovanie pre Lua"
 
-#: utils/kateglobal.cpp:151
+#: utils/kateglobal.cpp:152
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Všetci ostatní, ktorí prispeli a zabudol som sa o nich zmieniť"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:154
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Roman Paholík"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:154
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wizzardsk@gmail.com"
 
-#: utils/kateglobal.cpp:272
+#: utils/kateglobal.cpp:273
 #, kde-format
 msgid "Configure"
 msgstr "Nastaviť"
@@ -6340,7 +6347,7 @@ msgstr "Typ konca riadku"
 msgid "Mode"
 msgstr "Režim"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:685
+#: view/katestatusbar.cpp:209 view/kateview.cpp:684
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6446,79 +6453,79 @@ msgstr "Slová %1, Znaky %2"
 msgid "Zoom: %1%"
 msgstr "Priblíženie: %1%"
 
-#: view/kateview.cpp:454
+#: view/kateview.cpp:453
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Vystrihni vybraný text a presuň ho do schránky"
 
-#: view/kateview.cpp:457
+#: view/kateview.cpp:456
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "Vlož skopírovaný alebo vystrihnutý obsah schránky"
 
-#: view/kateview.cpp:460
+#: view/kateview.cpp:459
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
 "Použite tento príkaz pre kopírovanie vybraného textu do systémovej schránky."
 
-#: view/kateview.cpp:466
+#: view/kateview.cpp:465
 #, kde-format
 msgid "Clipboard &History Paste"
 msgstr "Vloženie &histórie schránky"
 
-#: view/kateview.cpp:471
+#: view/kateview.cpp:470
 #, kde-format
 msgid "Paste Selection"
 msgstr "Vložiť výber"
 
-#: view/kateview.cpp:473
+#: view/kateview.cpp:472
 #, kde-format
 msgid "Paste previously mouse selection contents"
 msgstr "Vložiť predtým vybratý obsah schránky"
 
-#: view/kateview.cpp:477
+#: view/kateview.cpp:476
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr "Vymeniť za obsah schránky"
 
-#: view/kateview.cpp:478
+#: view/kateview.cpp:477
 #, kde-format
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Vymeniť vybraný text s obsahom schránky"
 
-#: view/kateview.cpp:481
+#: view/kateview.cpp:480
 #, kde-format
 msgid "Take Screenshot of Selection"
 msgstr "Urobiť snímku obrazovky výberu"
 
-#: view/kateview.cpp:485
+#: view/kateview.cpp:484
 #, kde-format
 msgid "Save the current document"
 msgstr "Uložiť aktuálny dokument"
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:487
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "Vrátiť späť posledné zmeny editácie"
 
-#: view/kateview.cpp:491
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "Vrátiť späť poslednú operáciu pre zrušenie zmien"
 
-#: view/kateview.cpp:495
+#: view/kateview.cpp:494
 #, kde-format
 msgid "&Scripts"
 msgstr "Skripty"
 
-#: view/kateview.cpp:499
+#: view/kateview.cpp:498
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "Použiť zalomenie slov"
 
-#: view/kateview.cpp:501
+#: view/kateview.cpp:500
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6530,12 +6537,12 @@ msgstr ""
 "„Zalomiť slová pri“.<br /><br /> Toto je statické zalamovanie slov, čo "
 "znamená, že dokument sa zmenil."
 
-#: view/kateview.cpp:507
+#: view/kateview.cpp:506
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Vymazať odsadenie"
 
-#: view/kateview.cpp:509
+#: view/kateview.cpp:508
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6546,12 +6553,12 @@ msgstr ""
 "medzery)<br /><br />Môžete nastaviť, či majú byť použité tabulátory alebo "
 "budú nahradené medzerami, v dialógu nastavení."
 
-#: view/kateview.cpp:514
+#: view/kateview.cpp:513
 #, kde-format
 msgid "&Format Indentation"
 msgstr "&Formátovať odsadenie"
 
-#: view/kateview.cpp:515
+#: view/kateview.cpp:514
 #, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
@@ -6560,12 +6567,12 @@ msgstr ""
 "Toto použite na automatické odsadenie aktuálneho riadku alebo bloku textu na "
 "správnu úroveň odsadenia."
 
-#: view/kateview.cpp:519
+#: view/kateview.cpp:518
 #, kde-format
 msgid "&Align On..."
 msgstr "Z&arovnať na..."
 
-#: view/kateview.cpp:521
+#: view/kateview.cpp:520
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6587,12 +6594,12 @@ msgstr ""
 "\\s+(.)' sa vložia medzery pred prvý neprázdny znak, ktorý sa vyskytne za "
 "dvojbodkou, aby sa všetky zarovnali do rovnakého stĺpca."
 
-#: view/kateview.cpp:532
+#: view/kateview.cpp:531
 #, kde-format
 msgid "C&omment"
 msgstr "&Zakomentovať"
 
-#: view/kateview.cpp:535
+#: view/kateview.cpp:534
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -6603,22 +6610,22 @@ msgstr ""
 "> Znaky pre jedno/viac riadkové komentáre sú definované vo zvýrazňovaní "
 "jazykov."
 
-#: view/kateview.cpp:540
+#: view/kateview.cpp:539
 #, kde-format
 msgid "Go to Previous Editing Location"
 msgstr "Prejsť na predošlé miesto úprav"
 
-#: view/kateview.cpp:546
+#: view/kateview.cpp:545
 #, kde-format
 msgid "Go to Next Editing Location"
 msgstr "Prejsť na ďalšie miesto úprav"
 
-#: view/kateview.cpp:552
+#: view/kateview.cpp:551
 #, kde-format
 msgid "Unco&mment"
 msgstr "&Odkomentovať"
 
-#: view/kateview.cpp:555
+#: view/kateview.cpp:554
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -6629,37 +6636,37 @@ msgstr ""
 "<br /><br />Znaky pre jedno/viac riadkové komentáre sú definované vo "
 "zvýrazňovaní jazykov."
 
-#: view/kateview.cpp:560
+#: view/kateview.cpp:559
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Prepnúť komentár"
 
-#: view/kateview.cpp:564
+#: view/kateview.cpp:563
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "Režim i&ba pre čítanie"
 
-#: view/kateview.cpp:565
+#: view/kateview.cpp:564
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Zamknúť/Odomknúť dokument pre zápis"
 
-#: view/kateview.cpp:570
+#: view/kateview.cpp:569
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr "Vynútiť smer sprava doľava"
 
-#: view/kateview.cpp:571
+#: view/kateview.cpp:570
 #, kde-format
 msgid "Force RTL Text Direction"
 msgstr "Vynútiť smer textu sprava doľava"
 
-#: view/kateview.cpp:581
+#: view/kateview.cpp:580
 #, kde-format
 msgid "Uppercase"
 msgstr "Veľké písmená"
 
-#: view/kateview.cpp:584
+#: view/kateview.cpp:583
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -6668,12 +6675,12 @@ msgstr ""
 "Previesť na veľké písmená označený text alebo text vpravo od kurzoru (ak nie "
 "je žiadny text označený)."
 
-#: view/kateview.cpp:590
+#: view/kateview.cpp:589
 #, kde-format
 msgid "Lowercase"
 msgstr "Malé písmená"
 
-#: view/kateview.cpp:593
+#: view/kateview.cpp:592
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -6682,12 +6689,12 @@ msgstr ""
 "Previesť na malé písmená označený text alebo text vpravo od kurzoru (ak nie "
 "je žiadny text označený)."
 
-#: view/kateview.cpp:599
+#: view/kateview.cpp:598
 #, kde-format
 msgid "Capitalize"
 msgstr "Veľké prvé písmená"
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:601
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -6696,17 +6703,17 @@ msgstr ""
 "Previesť na veľké prvé písmená označený text alebo text vpravo od kurzoru "
 "(ak nie je žiadny text označený)."
 
-#: view/kateview.cpp:607
+#: view/kateview.cpp:606
 #, kde-format
 msgid "Join Lines"
 msgstr "Spojiť riadky"
 
-#: view/kateview.cpp:612
+#: view/kateview.cpp:611
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Dopĺnanie Shell"
 
-#: view/kateview.cpp:613
+#: view/kateview.cpp:612
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -6715,52 +6722,52 @@ msgstr ""
 "Ručné vyvolanie dokončenia príkazu, zvyčajne sa na túto funkciu používa "
 "klávesová skratka."
 
-#: view/kateview.cpp:618
+#: view/kateview.cpp:617
 #, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "Odstrániť koncové medzery"
 
-#: view/kateview.cpp:636
+#: view/kateview.cpp:635
 #, kde-format
 msgid "Print the current document."
 msgstr "Vytlačiť aktuálny dokument."
 
-#: view/kateview.cpp:639
+#: view/kateview.cpp:638
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Zobraziť náhľad tlače aktuálneho dokumentu"
 
-#: view/kateview.cpp:643
+#: view/kateview.cpp:642
 #, kde-format
 msgid "Reloa&d"
 msgstr "Znovu na&hrať"
 
-#: view/kateview.cpp:645
+#: view/kateview.cpp:644
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Znovu nahrať aktuálny dokument z disku."
 
-#: view/kateview.cpp:649
+#: view/kateview.cpp:648
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Uložiť aktuálny dokument na disk, s menom podľa vášho výberu."
 
-#: view/kateview.cpp:651
+#: view/kateview.cpp:650
 #, kde-format
 msgid "Save As with Encoding..."
 msgstr "Uložiť ako s kódovaním..."
 
-#: view/kateview.cpp:657
+#: view/kateview.cpp:656
 #, kde-format
 msgid "Save &Copy As..."
 msgstr "Uložiť &kópiu ako..."
 
-#: view/kateview.cpp:658
+#: view/kateview.cpp:657
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Uložiť kópiu aktuálneho dokumentu na disk."
 
-#: view/kateview.cpp:662
+#: view/kateview.cpp:661
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -6769,67 +6776,67 @@ msgstr ""
 "Tento príkaz otvorí dialóg a umožní vám vybrať riadok kam chcete presunúť "
 "kurzor."
 
-#: view/kateview.cpp:666
+#: view/kateview.cpp:665
 #, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Prejsť na predošlý zmenený riadok"
 
-#: view/kateview.cpp:667
+#: view/kateview.cpp:666
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Presunúť hore na predošlý zmenený riadok."
 
-#: view/kateview.cpp:672
+#: view/kateview.cpp:671
 #, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Prejsť na ďalší zmenený riadok"
 
-#: view/kateview.cpp:673
+#: view/kateview.cpp:672
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Presunúť nižšie na ďalší zmenený riadok."
 
-#: view/kateview.cpp:677
+#: view/kateview.cpp:676
 #, kde-format
 msgid "&Configure Editor..."
 msgstr "&Nastaviť editor..."
 
-#: view/kateview.cpp:679
+#: view/kateview.cpp:678
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Nastaviť rôzne aspekty tohoto editora."
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:681
 #, kde-format
 msgid "&Mode"
 msgstr "Režim"
 
-#: view/kateview.cpp:688
+#: view/kateview.cpp:687
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Zvýraznenie"
 
-#: view/kateview.cpp:690
+#: view/kateview.cpp:689
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Tu si môžete vybrať ako bude aktuálny dokument zvýrazňovaný."
 
-#: view/kateview.cpp:693
+#: view/kateview.cpp:692
 #, kde-format
 msgid "&Editor Color Theme"
 msgstr "Farebná téma &editora"
 
-#: view/kateview.cpp:699
+#: view/kateview.cpp:698
 #, kde-format
 msgid "&Indentation"
 msgstr "&Odsadenie"
 
-#: view/kateview.cpp:707
+#: view/kateview.cpp:706
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Vybrať celý text aktuálneho dokumentu."
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:709
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -6837,42 +6844,42 @@ msgid ""
 msgstr ""
 "Ak ste niečo vybrali v rámci aktuálneho dokumentu, už to nebude viac vybrané."
 
-#: view/kateview.cpp:714
+#: view/kateview.cpp:713
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Zväčšiť písmo"
 
-#: view/kateview.cpp:716
+#: view/kateview.cpp:715
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Zväčšiť veľkosť zobrazovaného písma."
 
-#: view/kateview.cpp:723
+#: view/kateview.cpp:722
 #, kde-format
 msgid "Shrink Font"
 msgstr "Zmenšiť písmo"
 
-#: view/kateview.cpp:725
+#: view/kateview.cpp:724
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Zmenšiť veľkosť zobrazovaného písma."
 
-#: view/kateview.cpp:732
+#: view/kateview.cpp:731
 #, kde-format
 msgid "Reset Font Size"
 msgstr "Obnoviť veľkosť písma"
 
-#: view/kateview.cpp:734
+#: view/kateview.cpp:733
 #, kde-format
 msgid "This resets the display font size."
 msgstr "Týmto sa vynuluje veľkosť zobrazovaného písma."
 
-#: view/kateview.cpp:737
+#: view/kateview.cpp:736
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "Režim &výberu bloku"
 
-#: view/kateview.cpp:740
+#: view/kateview.cpp:739
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -6881,22 +6888,22 @@ msgstr ""
 "Tento príkaz dovolí prepínanie medzi normálnym módom výberu a módom "
 "blokového výberu."
 
-#: view/kateview.cpp:744
+#: view/kateview.cpp:743
 #, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Prepnúť na ďalší režim vstupu"
 
-#: view/kateview.cpp:746
+#: view/kateview.cpp:745
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Prepnúť na ďalší vkladací režim."
 
-#: view/kateview.cpp:749
+#: view/kateview.cpp:748
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "Režim &prepisovania"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:751
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -6905,12 +6912,12 @@ msgstr ""
 "Vyberte si či text ktorý zadávate má byť vkladaný alebo ma prepisovať už "
 "existujúci text."
 
-#: view/kateview.cpp:756
+#: view/kateview.cpp:755
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Dynamické zalamovanie slov"
 
-#: view/kateview.cpp:760
+#: view/kateview.cpp:759
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
@@ -6921,37 +6928,37 @@ msgstr ""
 "zobrazenia. <br /><br />Toto je iba možnosť zobrazenia, čo znamená, že "
 "dokument sa nezmení."
 
-#: view/kateview.cpp:764
+#: view/kateview.cpp:763
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Značky dynamického zalamovania slov"
 
-#: view/kateview.cpp:766
+#: view/kateview.cpp:765
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "Vyberte, kde sa majú zobraziť značky dynamického zalamovania"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:767
 #, kde-format
 msgid "&Off"
 msgstr "&Vypnúť"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:767
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "&Sledovať čísla riadkov"
 
-#: view/kateview.cpp:768
+#: view/kateview.cpp:767
 #, kde-format
 msgid "&Always On"
 msgstr "&Vždy zobrazené"
 
-#: view/kateview.cpp:772
+#: view/kateview.cpp:771
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Statické zalamovanie slov"
 
-#: view/kateview.cpp:774
+#: view/kateview.cpp:773
 #, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
@@ -6960,12 +6967,12 @@ msgstr ""
 "Ak je táto voľba zaškrtnutá, textové riadky sa zalomia do stĺpcadefinované "
 "vo vlastnostiach úprav."
 
-#: view/kateview.cpp:781
+#: view/kateview.cpp:780
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Zobraziť statické značky &zalomenia"
 
-#: view/kateview.cpp:784
+#: view/kateview.cpp:783
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -6974,12 +6981,12 @@ msgstr ""
 "Ukáže/skryje značky zalomenia slov, vertikálnu čiaru v stĺpci zalamovania "
 "tak, ako je definované v nastavení"
 
-#: view/kateview.cpp:788
+#: view/kateview.cpp:787
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "Zobraziť za&baľovacie značky"
 
-#: view/kateview.cpp:790
+#: view/kateview.cpp:789
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -6988,12 +6995,12 @@ msgstr ""
 "Môžete si vybrať či sa majú značky skladania kódu zobrazovať, ak je "
 "skladanie kódu dostupné."
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:792
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Zobraziť okraje &ikony"
 
-#: view/kateview.cpp:795
+#: view/kateview.cpp:794
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7002,22 +7009,22 @@ msgstr ""
 "Ukáže/skryje okraj ikon.<br /><br /> Okraj ikon ukazuje napríklad symboly "
 "záložiek."
 
-#: view/kateview.cpp:798
+#: view/kateview.cpp:797
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Zobraziť čí&sla riadkov"
 
-#: view/kateview.cpp:800
+#: view/kateview.cpp:799
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Ukáže/skryje čísla riadkov po ľavej strane zobrazenia."
 
-#: view/kateview.cpp:803
+#: view/kateview.cpp:802
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "Zobraziť značky &posuvníka"
 
-#: view/kateview.cpp:805
+#: view/kateview.cpp:804
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7026,12 +7033,12 @@ msgstr ""
 "Zobraziť/skryť značky na vertikálnom posuvníku.<br /><br />Značky sú "
 "napríklad pre záložky."
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:807
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Zobraziť mini mapu posuvníka"
 
-#: view/kateview.cpp:810
+#: view/kateview.cpp:809
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7045,70 +7052,70 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:822
+#: view/kateview.cpp:821
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Zobraziť netlačiteľné medzery"
 
-#: view/kateview.cpp:824
+#: view/kateview.cpp:823
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Zobraziť/skryť ohraničenie okolo netlačiteľných medzier"
 
-#: view/kateview.cpp:828
+#: view/kateview.cpp:827
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Prepnúť do príkazového riadku"
 
-#: view/kateview.cpp:830
+#: view/kateview.cpp:829
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Ukáže/skryje príkazový riadok v dolnej časti pohľadu."
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:832
 #, kde-format
 msgid "Input Modes"
 msgstr "Vstupné režimy"
 
-#: view/kateview.cpp:842
+#: view/kateview.cpp:841
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Aktivovať/deaktivovať %1"
 
-#: view/kateview.cpp:852
+#: view/kateview.cpp:851
 #, kde-format
 msgid "&End of Line"
 msgstr "&Koniec riadku"
 
-#: view/kateview.cpp:854
+#: view/kateview.cpp:853
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "Zvoľte, ktoré ukončovanie riadkov sa má použiť pri ukladaní dokumentu"
 
-#: view/kateview.cpp:855
+#: view/kateview.cpp:854
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:856
+#: view/kateview.cpp:855
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:857
+#: view/kateview.cpp:856
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:862
+#: view/kateview.cpp:861
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Pridať &Značku poradia bajtu (BOM)"
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:864
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7117,77 +7124,77 @@ msgstr ""
 "Povoliť/zakázať pridanie značky poradia bajtu pre UTF-8/UTF-16 kódované "
 "súbory počas ukladania"
 
-#: view/kateview.cpp:869
+#: view/kateview.cpp:868
 #, kde-format
 msgid "E&ncoding"
 msgstr "Kódova&nie"
 
-#: view/kateview.cpp:873
+#: view/kateview.cpp:872
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Nájsť prvý výskyt časti textu alebo regulárneho výrazu."
 
-#: view/kateview.cpp:877
+#: view/kateview.cpp:876
 #, kde-format
 msgid "Find Selected"
 msgstr "Nájsť označené"
 
-#: view/kateview.cpp:879
+#: view/kateview.cpp:878
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Nájsť ďaľšie výskyty v označenom texte."
 
-#: view/kateview.cpp:883
+#: view/kateview.cpp:882
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Nájsť označené dozadu"
 
-#: view/kateview.cpp:885
+#: view/kateview.cpp:884
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Nájsť predchádzajúci výskyt hľadanej frázy."
 
-#: view/kateview.cpp:889
+#: view/kateview.cpp:888
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr "Nájsť a vybrať ďalší výskyt"
 
-#: view/kateview.cpp:891
+#: view/kateview.cpp:890
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "Vyhľadá ďalší výskyt slova pod kurzorom a pridá ho do výberu."
 
-#: view/kateview.cpp:895
+#: view/kateview.cpp:894
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr "Označiť aktuálne vybraný výskyt ako preskočený"
 
-#: view/kateview.cpp:897
+#: view/kateview.cpp:896
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr "Označí aktuálne vybrané slovo ako preskočené."
 
-#: view/kateview.cpp:901
+#: view/kateview.cpp:900
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr "Nájsť a vybrať všetky výskyty"
 
-#: view/kateview.cpp:903
+#: view/kateview.cpp:902
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
 msgstr "Vyhľadá všetky výskyty slova pod kurzorom a vyberie ich."
 
-#: view/kateview.cpp:907
+#: view/kateview.cpp:906
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Nájsť ďalší výskyt hľadanej frázy."
 
-#: view/kateview.cpp:911
+#: view/kateview.cpp:910
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Nájsť predchádzajúci výskyt hľadanej frázy."
 
-#: view/kateview.cpp:915
+#: view/kateview.cpp:914
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7196,84 +7203,84 @@ msgstr ""
 "Nájsť výskyt časti textu alebo regulárneho výrazu a nahradiť výsledok za "
 "zadaný text."
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr "Pridať kurzory na konce riadkov"
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:919
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr "Vytvorí kurzor na konci každého riadku vo výbere."
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr "Pridať vsuvku pod kurzor"
 
-#: view/kateview.cpp:926
+#: view/kateview.cpp:925
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
 msgstr "Pridá vsuvku do riadku pod aktuálnu vsuvku."
 
-#: view/kateview.cpp:930
+#: view/kateview.cpp:929
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr "Pridať vsuvku nad kurzor"
 
-#: view/kateview.cpp:932
+#: view/kateview.cpp:931
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr "Pridá vsuvku do riadku nad aktuálnu vsuvku."
 
-#: view/kateview.cpp:936
+#: view/kateview.cpp:935
 #, kde-format
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Prepnúť presun kurzora veľkými písmenami"
 
-#: view/kateview.cpp:937
+#: view/kateview.cpp:936
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 "Prepnúť medzi normálnym presunom slovami a presunom kurzora veľkými "
 "písmenami."
 
-#: view/kateview.cpp:941
+#: view/kateview.cpp:940
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr "Odstrániť kurzory z prázdnych riadkov"
 
-#: view/kateview.cpp:942
+#: view/kateview.cpp:941
 #, kde-format
 msgid "Remove cursors from empty lines"
 msgstr "Odstrániť kurzory z prázdnych riadkov"
 
-#: view/kateview.cpp:946
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Automatická kontrola pravopisu"
 
-#: view/kateview.cpp:947
+#: view/kateview.cpp:946
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Povoliť/zakázať automatickú kontrolu pravopisu"
 
-#: view/kateview.cpp:953
+#: view/kateview.cpp:952
 #, kde-format
 msgid "Change Dictionary..."
 msgstr "Zmeniť slovník..."
 
-#: view/kateview.cpp:954
+#: view/kateview.cpp:953
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Zmeniť slovník použitý na kontrolu pravopisu."
 
-#: view/kateview.cpp:958
+#: view/kateview.cpp:957
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Vyčistiť rozsahy slovníka"
 
-#: view/kateview.cpp:960
+#: view/kateview.cpp:959
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7281,12 +7288,12 @@ msgstr ""
 "Odstrániť všetky oddelené rozsahy slovníka, ktoré boli nastavené na kontrolu "
 "pravopisu."
 
-#: view/kateview.cpp:966
+#: view/kateview.cpp:965
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Kopírovať ako &HTML"
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:966
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
@@ -7295,12 +7302,12 @@ msgstr ""
 "Použite tento príkaz pre kopírovanie vybraného textu ako HTML do systémovej "
 "schránky."
 
-#: view/kateview.cpp:971
+#: view/kateview.cpp:970
 #, kde-format
 msgid "E&xport as HTML..."
 msgstr "E&xportovať ako HTML..."
 
-#: view/kateview.cpp:973
+#: view/kateview.cpp:972
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7602,37 +7609,61 @@ msgstr "Zvinúť aktuálny uzol"
 msgid "Toggle Contained Nodes"
 msgstr "Prepnúť obsiahnuté uzly"
 
-#: view/kateview.cpp:1496
+#: view/kateview.cpp:1348
+#, fuzzy, kde-format
+#| msgid "Text selection of the current document."
+msgid "Say current selection or document"
+msgstr "Výber textu aktuálneho dokumentu."
+
+#: view/kateview.cpp:1358
+#, fuzzy, kde-format
+#| msgid "Save the current document"
+msgid "Stop current output"
+msgstr "Uložiť aktuálny dokument"
+
+#: view/kateview.cpp:1364
+#, fuzzy, kde-format
+#| msgid "Save the current document"
+msgid "Pause current output"
+msgstr "Uložiť aktuálny dokument"
+
+#: view/kateview.cpp:1370
+#, fuzzy, kde-format
+#| msgid "Save the current document"
+msgid "Resume current output"
+msgstr "Uložiť aktuálny dokument"
+
+#: view/kateview.cpp:1529
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1684
+#: view/kateview.cpp:1717
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Presun kurzora veľkými písmenami zakázaný"
 
-#: view/kateview.cpp:1686
+#: view/kateview.cpp:1719
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Presun kurzora veľkými písmenami povolený"
 
-#: view/kateview.cpp:2178
+#: view/kateview.cpp:2211
 #, kde-format
 msgid "Search wrapped"
 msgstr "Hľadanie pokračuje od začiatku"
 
-#: view/kateview.cpp:3702
+#: view/kateview.cpp:3735
 #, kde-format
 msgid "Align On"
 msgstr "Zarovnať na"
 
-#: view/kateview.cpp:3702
+#: view/kateview.cpp:3735
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Vzor zarovnania:"
 
-#: view/kateview.cpp:4807
+#: view/kateview.cpp:4840
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportovať súbor ako HTML"
