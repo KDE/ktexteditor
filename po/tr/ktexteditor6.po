@@ -2,6 +2,7 @@
 # translation of katepart4.po to
 # Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 #
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 # Ömer Fadıl USTA <omer_fad@hotmail.com>, 2002.
 # Görkem Çetin <gorkem@kde.org>, 2002,2003, 2004.
 # Görkem Çetin <gorkem@kde.org.tr>, 2005.
@@ -12,13 +13,13 @@
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2015, 2017, 2019.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-10-05 12:54+0300\n"
+"PO-Revision-Date: 2023-10-11 13:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -150,10 +151,9 @@ msgstr "Yazım Denetimi"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Arama yapılacak metin"
+msgstr "Konuşma"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7645,28 +7645,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Kapsanılan Düğümleri Aç/Kapat"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Geçerli belgedeki metin seçimi."
+msgstr "Geçerli seçimi veya belgeyi seslendir"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Çalışılan belgeyi kaydet"
+msgstr "Geçerli çıktıyı durdur"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Çalışılan belgeyi kaydet"
+msgstr "Geçerli çıktıyı duraklat"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Çalışılan belgeyi kaydet"
+msgstr "Geçerli çıktıyı sürdür"
 
 #: view/kateview.cpp:1529
 #, kde-format

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-09-20 21:13+0200\n"
+"PO-Revision-Date: 2023-10-11 09:42+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -147,10 +147,9 @@ msgstr "Ortografia"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Text a cercar"
+msgstr "Text a veu"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7743,28 +7742,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Canvia els nodes continguts"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Selecció de text del document actual."
+msgstr "Pronuncia la selecció o el document actual"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Desa el document actual"
+msgstr "Atura la sortida actual"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Desa el document actual"
+msgstr "Posa en pausa la sortida actual"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Desa el document actual"
+msgstr "Reprèn la sortida actual"
 
 #: view/kateview.cpp:1529
 #, kde-format

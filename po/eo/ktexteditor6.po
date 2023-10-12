@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-07-02 22:16+0100\n"
+"PO-Revision-Date: 2023-10-11 20:29+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -144,10 +144,9 @@ msgstr "Literumo"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Trovenda teksto"
+msgstr "Teksto al Parolo"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7629,28 +7628,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Baskuligi Enhavitajn Nodojn"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Elekto de teksto de la nuna dokumento."
+msgstr "Paroli la nunan elekton aŭ dokumenton."
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Konservi la nunan dokumenton"
+msgstr "Halti aktualan eligon"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Konservi la nunan dokumenton"
+msgstr "Paŭzi aktualan eligon"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Konservi la nunan dokumenton"
+msgstr "Daŭrigi aktualan eligon"
 
 #: view/kateview.cpp:1529
 #, kde-format
@@ -7660,12 +7655,12 @@ msgstr "(R/O) %1"
 #: view/kateview.cpp:1717
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr "Movado de kamelujo malebligita"
+msgstr "Moviĝo de kamel-uskleco malebligita"
 
 #: view/kateview.cpp:1719
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr "Movado de kamelujo ebligita"
+msgstr "Moviĝo de kamel-uskleco ebligita"
 
 #: view/kateview.cpp:2211
 #, kde-format
