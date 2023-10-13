@@ -142,10 +142,9 @@ msgstr "Kontrola pravopisu"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Hledat text"
+msgstr "Hlasová syntéza"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7432,28 +7431,24 @@ msgid "Toggle Contained Nodes"
 msgstr ""
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Uložit současný dokument"
+msgstr ""
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Uložit současný dokument"
+msgstr ""
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Uložit současný dokument"
+msgstr ""
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Uložit současný dokument"
+msgstr ""
 
 #: view/kateview.cpp:1529
 #, kde-format

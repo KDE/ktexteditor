@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-08-27 15:35+0200\n"
+"PO-Revision-Date: 2023-10-12 06:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -140,10 +140,9 @@ msgstr "მართლწერა"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "მოსაძებნი ეტქსტი"
+msgstr "ტექსტის-ხმამაღლა-წაკითხვა"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7636,28 +7635,24 @@ msgid "Toggle Contained Nodes"
 msgstr "შეზღუდული კვანძების გადართვა"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "მონიშნული ტექსტი მიმდინარე დოკუმენტში."
+msgstr "მიმდინარე მონიშნულის ან დოკუმენტის წარმოქმნა"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "მიმდინარე დოკუმენტის შენახვა"
+msgstr "მიმდინარე გამოტანის გაჩერება"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "მიმდინარე დოკუმენტის შენახვა"
+msgstr "მიმდინარე გამოტანის შეჩერება"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "მიმდინარე დოკუმენტის შენახვა"
+msgstr "მიმდინარე გამოტანის გაგრძელება"
 
 #: view/kateview.cpp:1529
 #, kde-format
