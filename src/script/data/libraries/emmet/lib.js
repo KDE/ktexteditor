@@ -10441,12 +10441,6 @@ emmet.define('cssResolver', function(require, _) {
 		prefix: 'o'
 	});
 	
-	// I think nobody uses it
-//	addPrefix('k', {
-//		prefix: 'khtml',
-//		obsolete: true
-//	});
-	
 	/**
 	 * XXX register resolver
 	 * @param {TreeNode} node
