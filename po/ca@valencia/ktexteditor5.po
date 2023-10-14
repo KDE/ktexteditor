@@ -981,7 +981,7 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Acció de la tecla de tabulació (si no existix cap selecció) <a href=\"Si "
 "voleu que el <b>tabulador</b> alinee la línia actual al bloc de codi actual "
-"com en Emacs, convertiu el <b>tabulador</b> en una drecera a l'acció "
+"com en Emacs, convertiu el <b>tabulador</b> en una drecera cap a l'acció "
 "<b>Format del sagnat</b>.\"><span>Més...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
@@ -1244,7 +1244,7 @@ msgstr "Va al número de línia del porta-retalls"
 #: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
-msgstr "Ves a"
+msgstr "Ves fins a"
 
 #: dialogs/katedialogs.cpp:1326
 #, kde-format
@@ -2004,7 +2004,8 @@ msgstr ""
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
-"Flaix del parèntesi concordant quan el cursor es mou al parèntesi emparellat"
+"Flaix del parèntesi concordant quan el cursor es mou fins al parèntesi "
+"emparellat"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:221
@@ -2954,13 +2955,13 @@ msgstr "Canvia els comentaris"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "Ves al punt d'edició següent"
+msgstr "Ves fins al punt d'edició següent"
 
 #: script/data/commands/emmet.js:38
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "Ves al punt d'edició anterior"
+msgstr "Ves fins al punt d'edició anterior"
 
 #: script/data/commands/emmet.js:42
 #, kde-format
@@ -6724,12 +6725,12 @@ msgstr ""
 #: view/kateview.cpp:533
 #, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "Ves a la ubicació d'edició anterior"
+msgstr "Ves fins a la ubicació d'edició anterior"
 
 #: view/kateview.cpp:539
 #, kde-format
 msgid "Go to Next Editing Location"
-msgstr "Ves a la ubicació d'edició següent"
+msgstr "Ves fins a la ubicació d'edició següent"
 
 #: view/kateview.cpp:545
 #, kde-format
@@ -6875,7 +6876,7 @@ msgstr ""
 #: view/kateview.cpp:644
 #, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Ves a la línia modificada anterior"
+msgstr "Ves fins a la línia modificada anterior"
 
 #: view/kateview.cpp:645
 #, kde-format
@@ -6885,7 +6886,7 @@ msgstr "Mou cap amunt fins a la línia modificada anterior."
 #: view/kateview.cpp:650
 #, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Ves a la línia modificada següent"
+msgstr "Ves fins a la línia modificada següent"
 
 #: view/kateview.cpp:651
 #, kde-format
@@ -7456,12 +7457,12 @@ msgstr "Selecciona una paraula a la dreta"
 #: view/kateview.cpp:1025
 #, kde-format
 msgid "Move to Beginning of Line"
-msgstr "Mou al començament de la línia"
+msgstr "Mou cap al començament de la línia"
 
 #: view/kateview.cpp:1031
 #, kde-format
 msgid "Move to Beginning of Document"
-msgstr "Mou al començament del document"
+msgstr "Mou cap al començament del document"
 
 #: view/kateview.cpp:1037
 #, kde-format
@@ -7476,12 +7477,12 @@ msgstr "Selecciona des del començament del document"
 #: view/kateview.cpp:1049
 #, kde-format
 msgid "Move to End of Line"
-msgstr "Mou al final de la línia"
+msgstr "Mou cap al final de la línia"
 
 #: view/kateview.cpp:1055
 #, kde-format
 msgid "Move to End of Document"
-msgstr "Mou al final del document"
+msgstr "Mou cap al final del document"
 
 #: view/kateview.cpp:1061
 #, kde-format
@@ -7506,12 +7507,12 @@ msgstr "Desplaça una línia amunt"
 #: view/kateview.cpp:1085
 #, kde-format
 msgid "Move to Next Line"
-msgstr "Mou a la línia següent"
+msgstr "Mou cap a la línia següent"
 
 #: view/kateview.cpp:1091
 #, kde-format
 msgid "Move to Previous Line"
-msgstr "Mou a la línia prèvia"
+msgstr "Mou cap a la línia prèvia"
 
 #: view/kateview.cpp:1097
 #, kde-format
@@ -7548,7 +7549,7 @@ msgstr "Selecciona una pàgina amunt"
 #: view/kateview.cpp:1133
 #, kde-format
 msgid "Move to Top of View"
-msgstr "Mou al començament de la vista"
+msgstr "Mou cap al començament de la vista"
 
 #: view/kateview.cpp:1139
 #, kde-format
@@ -7570,7 +7571,7 @@ msgstr "Selecciona una pàgina avall"
 #: view/kateview.cpp:1157
 #, kde-format
 msgid "Move to Bottom of View"
-msgstr "Mou a baix de la vista"
+msgstr "Mou cap a baix de la vista"
 
 #: view/kateview.cpp:1163
 #, kde-format
@@ -7580,7 +7581,7 @@ msgstr "Selecciona fins a baix de la vista"
 #: view/kateview.cpp:1169
 #, kde-format
 msgid "Go to Matching Bracket"
-msgstr "Ves al parèntesi concordant"
+msgstr "Ves fins al parèntesi concordant"
 
 #: view/kateview.cpp:1175
 #, kde-format
@@ -8118,8 +8119,8 @@ msgid ""
 "This will prepend \"-- \" to a line when pressing F2."
 msgstr ""
 "El mapatge de tecles s'utilitza per a canviar el significat de les tecles "
-"premudes. Açò us permet moure les ordres a altres tecles o crear pulsacions "
-"especials de tecles per a fer sèries d'ordres.\n"
+"premudes. Açò us permet moure les ordres cap a altres tecles o crear "
+"pulsacions especials de tecles per a fer sèries d'ordres.\n"
 "\n"
 "Exemple:\n"
 "«<F2>» → «I-- <esc>»\n"
