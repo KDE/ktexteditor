@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-07-08 07:36+0200\n"
+"PO-Revision-Date: 2023-10-14 11:01+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 ">\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
@@ -151,10 +151,9 @@ msgstr "Sprawdź pisownię"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Wyszukaj tekst"
+msgstr "Tekst-na-mowę"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7678,28 +7677,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Przełącz węzły podległe"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Zaznaczenie tekstu w bieżącym dokumencie."
+msgstr "Wypowiedz bieżące zaznaczenie lub dokument"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Zapisz bieżący dokument"
+msgstr "Zatrzymaj bieżące wyjście"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Zapisz bieżący dokument"
+msgstr "Wstrzymaj bieżące wyjście"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Zapisz bieżący dokument"
+msgstr "Wznów bieżące wyjście"
 
 #: view/kateview.cpp:1529
 #, kde-format
