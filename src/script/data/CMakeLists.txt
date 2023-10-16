@@ -22,6 +22,3 @@ string(APPEND INDEXFILE "</RCC>\n")
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/script-tmp.qrc ${INDEXFILE})
 configure_file(${CMAKE_CURRENT_BINARY_DIR}/script-tmp.qrc
                ${CMAKE_CURRENT_BINARY_DIR}/script.qrc COPYONLY)
-
-# install only README
-install(FILES README.md DESTINATION ${KDE_INSTALL_DATADIR}/katepart5/script)
