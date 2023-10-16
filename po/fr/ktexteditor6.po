@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-09-16 19:21+0200\n"
+"PO-Revision-Date: 2023-10-14 18:15+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -165,10 +165,9 @@ msgstr "Orthographe"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Texte à chercher"
+msgstr "Synthèse vocale"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -8037,28 +8036,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Basculer les nœuds contenus"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Sélection de texte pour le document actuel."
+msgstr "Énoncer la sélection ou document courant"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Enregistrer le document actuel"
+msgstr "Arrêter la sortie courante"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Enregistrer le document actuel"
+msgstr "Mettre la sortie courante en pause"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Enregistrer le document actuel"
+msgstr "Reprendre la sortie courante"
 
 #: view/kateview.cpp:1529
 #, kde-format

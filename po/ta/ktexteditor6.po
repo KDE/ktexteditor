@@ -8,13 +8,13 @@
 # ஸ்ரீராமதாஸ் <shriramadhas@gmail.com>, 2007.
 # ஆமாச்சு <amachu@ubuntu.com>, 2007.
 # amachu <amachu@amachu.com>, 2010.
-# Kishore G <kishore96@gmail.com>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-07-02 16:33+0530\n"
+"PO-Revision-Date: 2023-10-15 12:35+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -148,7 +148,7 @@ msgstr "எழுத்தாக்கம்"
 #: data/katepart5ui.rc:149
 #, kde-format
 msgid "Text to Speech"
-msgstr ""
+msgstr "உரையை பேச்சாக்குவது"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -1044,47 +1044,47 @@ msgstr "சொல் திருத்தி"
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
-msgstr ""
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -1741,6 +1741,8 @@ msgid ""
 "On save, a line break is appended to the document if not already present. "
 "The line break is visible after reloading the file."
 msgstr ""
+"ஆவணத்தின் கடைசியில் காலி வரி இல்லாத பட்சத்தில், சேமிக்கும்போது சேர்க்கப்படும். கோப்பை "
+"மீளேற்றிய பின் அந்த வரியை காணலாம்."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:229
@@ -2021,10 +2023,9 @@ msgstr "மாறுநிலை வரிமடிப்பு:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:361
-#, fuzzy, kde-format
-#| msgid "Enable static &word wrap"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "நிலையான வரிமடிப்பு கோட்டில் மாறுநிலையாக வரியை மடி"
+msgstr "நிலையான வரிமடிப்பு கோட்டில் வரியை மடி (காட்சிக்கு மட்டும்; கோப்பு மாற்றப்படாது)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2495,7 +2496,7 @@ msgstr "வரி எண்களை அச்சடி"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "மடித்துள்ள நிரல்தொடரை அச்சிட வேண்டாம்"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2507,14 +2508,11 @@ msgstr ""
 "p>"
 
 #: printing/printconfigwidgets.cpp:56
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Print a box displaying typographical conventions for the document "
-#| "type, as defined by the syntax highlighting being used."
+#, kde-format
 msgid ""
 "<p>Print a box displaying typographical conventions for the document type, "
 "as defined by the syntax highlighting being used.</p>"
-msgstr "<p>"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:116
 #, kde-format
@@ -2714,10 +2712,9 @@ msgid "Co&lor:"
 msgstr "நிறம்:"
 
 #: printing/printconfigwidgets.cpp:547
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "அச்சுக்குப் பயன்படுத்த உகந்த வண்ண மாதிரியைத் தேர்வு செய்க."
+msgstr "அச்சிடும்போது பயன்படுத்த வேண்டிய நிறத்திட்டத்தைத் தேர்ந்தெடுக்கவும்."
 
 #: printing/printconfigwidgets.cpp:549
 #, fuzzy, kde-format
@@ -2777,7 +2774,7 @@ msgstr "உரை"
 #, kde-format
 msgctxt "Script command name"
 msgid "Expand Abbreviation"
-msgstr ""
+msgstr "சுருக்கத்தை விரிவுபடுத்து"
 
 #: script/data/commands/emmet.js:10 script/data/commands/emmet.js:14
 #: script/data/commands/emmet.js:19 script/data/commands/emmet.js:23
@@ -3496,17 +3493,17 @@ msgstr "கண்டுபிடிக்கவில்லை"
 #: search/katesearchbar.cpp:616
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
-msgstr ""
+msgstr "கோப்பின் கடைசி அடையப்பட்டது. துவக்கத்திலிருந்து தொடரலாமா?"
 
 #: search/katesearchbar.cpp:616
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
-msgstr ""
+msgstr "கோப்பின் துவக்கம் அடையப்பட்டது. கடைசியிலிருந்து தொடரலாமா?"
 
 #: search/katesearchbar.cpp:619
-#, fuzzy, kde-format
+#, kde-format
 msgid "Continue search?"
-msgstr "வகையுணர்வுள்ள"
+msgstr "தேடலைத் தொடரலாமா?"
 
 #: search/katesearchbar.cpp:920
 #, fuzzy, kde-format
