@@ -642,7 +642,7 @@ QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view,
 {
     const auto cachedRanges = cachedRangesForLine(line);
     QVector<TextRange *> ranges;
-    ranges.reserve(m_uncachedRanges.size() + cachedRanges.size());
+    ranges.reserve(m_uncachedRanges.size() + (cachedRanges ? cachedRanges->size() : 0));
     rangesForLine(line, view, rangesWithAttributeOnly, ranges);
     return ranges;
 }
@@ -674,7 +674,9 @@ void TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWith
         return false;
     };
 
-    std::copy_if(cachedRanges.begin(), cachedRanges.end(), std::back_inserter(outRanges), predicate);
+    if (cachedRanges) {
+        std::copy_if(cachedRanges->begin(), cachedRanges->end(), std::back_inserter(outRanges), predicate);
+    }
     std::copy_if(m_uncachedRanges.begin(), m_uncachedRanges.end(), std::back_inserter(outRanges), predicate);
 }
 
@@ -733,7 +735,9 @@ void TextBlock::updateRange(TextRange *range)
     }
 
     // insert into mapping
-    m_cachedRangesForLine[lineOffset].insert(range);
+    if (!m_cachedRangesForLine[lineOffset].contains(range)) {
+        m_cachedRangesForLine[lineOffset].push_back(range);
+    }
     m_cachedLineForRanges[range] = lineOffset;
 }
 
@@ -757,10 +761,11 @@ void TextBlock::removeRange(TextRange *range)
         int line = it->second;
 
         // query the range from cache, must be there
-        Q_ASSERT(m_cachedRangesForLine.at(line).contains(range));
+        int idx = m_cachedRangesForLine[line].indexOf(range);
+        Q_ASSERT(idx != -1);
 
         // remove it and be done
-        m_cachedRangesForLine[line].remove(range);
+        m_cachedRangesForLine[line].remove(idx);
         m_cachedLineForRanges.erase(it);
         return;
     }

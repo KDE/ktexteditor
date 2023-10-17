@@ -237,13 +237,13 @@ public:
      * @param line line to check intersection
      * @return set of ranges
      */
-    QSet<TextRange *> cachedRangesForLine(int line) const
+    const QVarLengthArray<TextRange *, 6> *cachedRangesForLine(int line) const
     {
         line -= m_startLine;
         if (line >= 0 && (size_t)line < m_cachedRangesForLine.size()) {
-            return m_cachedRangesForLine[line];
+            return &m_cachedRangesForLine[line];
         } else {
-            return QSet<TextRange *>();
+            return nullptr;
         }
     }
 
@@ -288,7 +288,7 @@ private:
      * Contains for each line-offset the ranges that were cached into it.
      * These ranges are fully contained by the line.
      */
-    std::vector<QSet<TextRange *>> m_cachedRangesForLine;
+    std::vector<QVarLengthArray<TextRange *, 6>> m_cachedRangesForLine;
 
     /**
      * Maps for each cached range the line into which the range was cached.
