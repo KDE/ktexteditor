@@ -215,7 +215,7 @@ public:
      */
     void removeCursor(Kate::TextCursor *cursor)
     {
-        m_cursors.erase(cursor);
+        m_cursors.remove(cursor);
     }
 
     /**
@@ -283,7 +283,7 @@ private:
      * Set of cursors for this block.
      * We need no sharing, use STL.
      */
-    std::unordered_set<TextCursor *> m_cursors;
+    QSet<TextCursor *> m_cursors;
 
     /**
      * Contains for each line-offset the ranges that were cached into it.
