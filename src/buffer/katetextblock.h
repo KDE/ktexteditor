@@ -232,6 +232,16 @@ public:
     void removeRange(TextRange *range);
 
     /**
+     * Returns the size of this block i.e.,
+     * the count of QChars it has + number of new lines
+     */
+    int blockSize() const
+    {
+        return m_blockSize + m_lines.size();
+    }
+
+private:
+    /**
      * Return all ranges in this block which might intersect the given line and only span one line.
      * For them an internal fast lookup cache is hold.
      * @param line line to check intersection
@@ -245,15 +255,6 @@ public:
         } else {
             return nullptr;
         }
-    }
-
-    /**
-     * Returns the size of this block i.e.,
-     * the count of QChars it has + number of new lines
-     */
-    int blockSize() const
-    {
-        return m_blockSize + m_lines.size();
     }
 
 private:
