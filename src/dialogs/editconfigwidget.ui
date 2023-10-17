@@ -119,9 +119,6 @@
        <property name="text">
         <string>Brackets:</string>
        </property>
-       <property name="buddy">
-        <cstring></cstring>
-       </property>
       </widget>
      </item>
      <item row="6" column="1">
