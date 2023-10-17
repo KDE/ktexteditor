@@ -543,8 +543,8 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     // copy is necessary as update range may modify the uncached ranges
     std::vector<TextRange *> allRanges;
     allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange *, int> &pair) {
-        allRanges.push_back(pair.first);
+    std::for_each(m_cachedLineForRanges.keyBegin(), m_cachedLineForRanges.keyEnd(), [&allRanges](TextRange *range) {
+        allRanges.push_back(range);
     });
     allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
     for (TextRange *range : allRanges) {
@@ -579,8 +579,8 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     // copy is necessary as update range may modify the uncached ranges
     std::vector<TextRange *> allRanges;
     allRanges.reserve(m_uncachedRanges.size() + m_cachedLineForRanges.size());
-    std::for_each(m_cachedLineForRanges.begin(), m_cachedLineForRanges.end(), [&allRanges](const std::pair<TextRange *, int> &pair) {
-        allRanges.push_back(pair.first);
+    std::for_each(m_cachedLineForRanges.keyBegin(), m_cachedLineForRanges.keyEnd(), [&allRanges](TextRange *range) {
+        allRanges.push_back(range);
     });
     allRanges.insert(allRanges.end(), m_uncachedRanges.begin(), m_uncachedRanges.end());
     for (TextRange *range : allRanges) {
@@ -706,7 +706,7 @@ void TextBlock::updateRange(TextRange *range)
     // The range is still a single-line range, and is still cached to the correct line.
     if (isSingleLine) {
         auto it = m_cachedLineForRanges.find(range);
-        if (it != m_cachedLineForRanges.end() && it->second == startLine - m_startLine) {
+        if (it != m_cachedLineForRanges.end() && it.value() == startLine - m_startLine) {
             return;
         }
     }
@@ -758,7 +758,7 @@ void TextBlock::removeRange(TextRange *range)
         // must be only cached!
         Q_ASSERT(!m_uncachedRanges.contains(range));
 
-        int line = it->second;
+        int line = it.value();
 
         // query the range from cache, must be there
         int idx = m_cachedRangesForLine[line].indexOf(range);

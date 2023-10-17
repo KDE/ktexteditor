@@ -9,9 +9,6 @@
 
 #include "katetextline.h"
 
-#include <unordered_map>
-#include <unordered_set>
-
 #include <QSet>
 #include <QVarLengthArray>
 #include <QVector>
@@ -294,7 +291,7 @@ private:
     /**
      * Maps for each cached range the line into which the range was cached.
      */
-    std::unordered_map<TextRange *, int> m_cachedLineForRanges;
+    QHash<TextRange *, int> m_cachedLineForRanges;
 
     /**
      * This contains all the ranges that are not cached.
