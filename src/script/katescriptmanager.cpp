@@ -19,7 +19,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
-#include <QMap>
 #include <QRegularExpression>
 #include <QStringList>
 #include <QUuid>

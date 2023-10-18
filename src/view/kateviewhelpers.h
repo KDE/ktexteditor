@@ -18,7 +18,6 @@
 #include <QColor>
 #include <QHash>
 #include <QLayout>
-#include <QMap>
 #include <QPixmap>
 #include <QPointer>
 #include <QScrollBar>

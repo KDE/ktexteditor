@@ -71,7 +71,6 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QLocale>
-#include <QMap>
 #include <QMimeDatabase>
 #include <QProcess>
 #include <QRegularExpression>

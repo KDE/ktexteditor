@@ -66,7 +66,6 @@
 #include <QKeyEvent>
 #include <QLabel>
 #include <QLayout>
-#include <QMap>
 #include <QPainter>
 #include <QRadioButton>
 #include <QSettings>

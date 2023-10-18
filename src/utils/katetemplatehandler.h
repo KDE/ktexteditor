@@ -9,7 +9,6 @@
 #ifndef _KATE_TEMPLATE_HANDLER_H_
 #define _KATE_TEMPLATE_HANDLER_H_
 
-#include <QMap>
 #include <QObject>
 #include <QPointer>
 #include <QString>
