@@ -278,7 +278,7 @@ private:
 
     /**
      * Set of cursors for this block.
-     * We need no sharing, use STL.
+     * using QSet is better than unordered_set for perf reasons
      */
     QSet<TextCursor *> m_cursors;
 
