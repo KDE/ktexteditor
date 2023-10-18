@@ -305,7 +305,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     setAutoDeletePart(false);
 
     // clean up remaining views
-    qDeleteAll(m_views.keys());
+    qDeleteAll(m_views);
     m_views.clear();
 
     // clean up marks
@@ -679,8 +679,8 @@ bool KTextEditor::DocumentPrivate::clear()
     }
 
     for (auto view : std::as_const(m_views)) {
-        view->clear();
-        view->tagAll();
+        static_cast<ViewPrivate *>(view)->clear();
+        static_cast<ViewPrivate *>(view)->tagAll();
         view->update();
     }
 
@@ -987,7 +987,7 @@ bool KTextEditor::DocumentPrivate::editStart()
     m_undoManager->editStart();
 
     for (auto view : std::as_const(m_views)) {
-        view->editStart();
+        static_cast<ViewPrivate *>(view)->editStart();
     }
 
     m_buffer->editStart();
@@ -1025,7 +1025,7 @@ bool KTextEditor::DocumentPrivate::editEnd()
 
     // edit end for all views !!!!!!!!!
     for (auto view : std::as_const(m_views)) {
-        view->editEnd(m_buffer->editTagStart(), m_buffer->editTagEnd(), m_buffer->editTagFrom());
+        static_cast<ViewPrivate *>(view)->editEnd(m_buffer->editTagStart(), m_buffer->editTagEnd(), m_buffer->editTagFrom());
     }
 
     if (m_buffer->editChanged()) {
@@ -2363,7 +2363,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     for (auto view : std::as_const(m_views)) {
         // This is needed here because inserting the text moves the view's start position (it is a MovingCursor)
         view->setCursorPosition(KTextEditor::Cursor());
-        view->updateView(true);
+        static_cast<ViewPrivate *>(view)->updateView(true);
     }
 
     // Inform that the text has changed (required as we're not inside the usual editStart/End stuff)
@@ -2520,7 +2520,8 @@ bool KTextEditor::DocumentPrivate::saveFile()
     // loop over all views and update the views if the view has modified lines in the visible
     // range, this should mark the line 'green' in the icon border
     if (!variablesWereRead) {
-        for (auto *v : std::as_const(m_views)) {
+        for (auto *view : std::as_const(m_views)) {
+            auto v = static_cast<ViewPrivate *>(view);
             if (v->isVisible()) {
                 const auto range = v->visibleRange();
 
@@ -2875,8 +2876,8 @@ bool KTextEditor::DocumentPrivate::closeUrl()
 
     // update all our views
     for (auto view : std::as_const(m_views)) {
-        view->clearSelection(); // fix bug #118588
-        view->clear();
+        static_cast<ViewPrivate *>(view)->clearSelection(); // fix bug #118588
+        static_cast<ViewPrivate *>(view)->clear();
     }
 
     // purge swap file
@@ -2915,7 +2916,8 @@ void KTextEditor::DocumentPrivate::setReadWrite(bool rw)
 
     KParts::ReadWritePart::setReadWrite(rw);
 
-    for (auto view : std::as_const(m_views)) {
+    for (auto v : std::as_const(m_views)) {
+        auto view = static_cast<ViewPrivate *>(v);
         view->slotUpdateUndo();
         view->slotReadWriteChanged();
     }
@@ -2929,7 +2931,7 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
         KParts::ReadWritePart::setModified(m);
 
         for (auto view : std::as_const(m_views)) {
-            view->slotUpdateUndo();
+            static_cast<ViewPrivate *>(view)->slotUpdateUndo();
         }
 
         Q_EMIT modifiedChanged(this);
@@ -2944,14 +2946,15 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
 void KTextEditor::DocumentPrivate::makeAttribs(bool needInvalidate)
 {
     for (auto view : std::as_const(m_views)) {
-        view->renderer()->updateAttributes();
+        static_cast<ViewPrivate *>(view)->renderer()->updateAttributes();
     }
 
     if (needInvalidate) {
         m_buffer->invalidateHighlighting();
     }
 
-    for (auto view : std::as_const(m_views)) {
+    for (auto v : std::as_const(m_views)) {
+        auto view = static_cast<ViewPrivate *>(v);
         view->tagAll();
         view->updateView(true);
     }
@@ -2966,8 +2969,7 @@ void KTextEditor::DocumentPrivate::internalHlChanged()
 void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 {
     Q_ASSERT(!m_views.contains(view));
-    m_views.insert(view, static_cast<KTextEditor::ViewPrivate *>(view));
-    m_viewsCache.append(view);
+    m_views.append(view);
 
     // apply the view & renderer vars from the file type
     if (!m_fileType.isEmpty()) {
@@ -2983,8 +2985,7 @@ void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 void KTextEditor::DocumentPrivate::removeView(KTextEditor::View *view)
 {
     Q_ASSERT(m_views.contains(view));
-    m_views.remove(view);
-    m_viewsCache.removeAll(view);
+    m_views.removeAll(view);
 
     if (activeView() == view) {
         setActiveView(nullptr);
@@ -4478,7 +4479,7 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
 void KTextEditor::DocumentPrivate::tagLines(KTextEditor::LineRange lineRange)
 {
     for (auto view : std::as_const(m_views)) {
-        view->tagLines(lineRange, true);
+        static_cast<ViewPrivate *>(view)->tagLines(lineRange, true);
     }
 }
 
@@ -4490,7 +4491,7 @@ void KTextEditor::DocumentPrivate::tagLine(int line)
 void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
 {
     for (auto view : std::as_const(m_views)) {
-        view->repaintText(paintOnlyDirty);
+        static_cast<ViewPrivate *>(view)->repaintText(paintOnlyDirty);
     }
 }
 
@@ -4902,17 +4903,17 @@ bool KTextEditor::DocumentPrivate::documentReload()
 
     // save cursor positions for all views
     QVarLengthArray<std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>, 4> cursorPositions;
-    std::transform(m_views.cbegin(), m_views.cend(), std::back_inserter(cursorPositions), [](KTextEditor::ViewPrivate *v) {
-        return std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>(v, v->cursorPosition());
+    std::transform(m_views.cbegin(), m_views.cend(), std::back_inserter(cursorPositions), [](KTextEditor::View *v) {
+        return std::pair<KTextEditor::ViewPrivate *, KTextEditor::Cursor>(static_cast<ViewPrivate *>(v), v->cursorPosition());
     });
 
     // clear multicursors
     // FIXME: Restore multicursors, at least for the case where doc is unmodified
     for (auto *view : m_views) {
-        view->clearSecondaryCursors();
+        static_cast<ViewPrivate *>(view)->clearSecondaryCursors();
         // Clear folding state if we are modified on hd
         if (m_modOnHd) {
-            view->clearFoldingState();
+            static_cast<ViewPrivate *>(view)->clearFoldingState();
         }
     }
 
@@ -5078,7 +5079,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
 
     // update all views, does tagAll and updateView...
     for (auto view : std::as_const(m_views)) {
-        view->updateDocumentConfig();
+        static_cast<ViewPrivate *>(view)->updateDocumentConfig();
     }
 
     // update on-the-fly spell checking as spell checking defaults might have changes
@@ -5135,7 +5136,8 @@ bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
     }
 
     // views!
-    for (auto v : std::as_const(m_views)) {
+    for (auto view : std::as_const(m_views)) {
+        auto v = static_cast<ViewPrivate *>(view);
         v->config()->configStart();
         v->renderer()->config()->configStart();
     }
@@ -5153,7 +5155,8 @@ bool KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
         m_config->configEnd();
     }
 
-    for (auto v : std::as_const(m_views)) {
+    for (auto view : std::as_const(m_views)) {
+        auto v = static_cast<ViewPrivate *>(view);
         v->config()->configEnd();
         v->renderer()->config()->configEnd();
     }
@@ -5380,7 +5383,8 @@ void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QSt
     bool state = false;
     int n = 0;
     QColor c;
-    for (auto v : std::as_const(m_views)) {
+    for (auto view : std::as_const(m_views)) {
+        auto v = static_cast<ViewPrivate *>(view);
         // First, try the new config interface
         QVariant help(val); // Special treatment to catch "on"/"off"
         if (checkBoolValue(val, &state)) {
@@ -5656,7 +5660,8 @@ void KTextEditor::DocumentPrivate::removeTrailingSpacesAndAddNewLineAtEof()
             // see bug 453252
             const auto oldEndOfDocumentCursor = documentEnd();
             std::vector<KTextEditor::ViewPrivate *> viewsToRestoreCursors;
-            for (auto v : std::as_const(m_views)) {
+            for (auto view : std::as_const(m_views)) {
+                auto v = static_cast<ViewPrivate *>(view);
                 if (v->cursorPosition() == oldEndOfDocumentCursor) {
                     viewsToRestoreCursors.push_back(v);
                 }
@@ -5733,7 +5738,8 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
         }
 
         // views!
-        for (auto v : std::as_const(m_views)) {
+        for (auto view : std::as_const(m_views)) {
+            auto v = static_cast<ViewPrivate *>(view);
             v->config()->configStart();
             v->renderer()->config()->configStart();
         }
@@ -5747,7 +5753,8 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
             m_config->setBom(bom_settings);
         }
         m_config->configEnd();
-        for (auto v : std::as_const(m_views)) {
+        for (auto view : std::as_const(m_views)) {
+            auto v = static_cast<ViewPrivate *>(view);
             v->config()->configEnd();
             v->renderer()->config()->configEnd();
         }
@@ -6264,7 +6271,7 @@ void KTextEditor::DocumentPrivate::onTheFlySpellCheckingEnabled(bool enable)
     }
 
     for (auto view : std::as_const(m_views)) {
-        view->reflectOnTheFlySpellCheckStatus(enable);
+        static_cast<ViewPrivate *>(view)->reflectOnTheFlySpellCheckStatus(enable);
     }
 }
 
@@ -6568,7 +6575,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
         view->postMessage(message, managedMessageActions);
     } else {
         for (auto view : std::as_const(m_views)) {
-            view->postMessage(message, managedMessageActions);
+            static_cast<ViewPrivate *>(view)->postMessage(message, managedMessageActions);
         }
     }
 

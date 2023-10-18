@@ -124,16 +124,15 @@ public:
 
     QList<KTextEditor::View *> views() const override
     {
-        return m_viewsCache;
+        return m_views;
     }
 
-    virtual KTextEditor::View *activeView() const
+    KTextEditor::View *activeView() const
     {
         return m_activeView;
     }
 
 private:
-    QHash<KTextEditor::View *, KTextEditor::ViewPrivate *> m_views;
     KTextEditor::View *m_activeView = nullptr;
 
     //
@@ -1446,10 +1445,7 @@ Q_SIGNALS:
     void loaded(KTextEditor::DocumentPrivate *document);
 
 private:
-    // To calculate a QHash.keys() is quite expensive,
-    // better keep a copy of that list updated when a view is added or removed.
-    QList<KTextEditor::View *> m_viewsCache;
-
+    QList<KTextEditor::View *> m_views;
     QTimer m_autoSaveTimer;
 };
 
