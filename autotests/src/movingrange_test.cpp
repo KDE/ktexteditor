@@ -482,9 +482,9 @@ void MovingRangeTest::testLineWrapOrUnwrapUpdateRangeForLineCache()
 
     // add range to line 2, it shall be in rangeForLine for the right lines after each update!
     // must be single line range to be in the cache!
-    auto range = static_cast<Kate::TextRange *>(doc.newMovingRange({2, 1, 2, 3},
-                                                                   KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                                                   KTextEditor::MovingRange::InvalidateIfEmpty));
+    auto range = doc.newMovingRange({2, 1, 2, 3},
+                                    KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                    KTextEditor::MovingRange::InvalidateIfEmpty);
 
     // range shall be in the lookup cache for line 2
     QVERIFY(doc.buffer().rangesForLine(0, nullptr, false).isEmpty());
@@ -514,9 +514,9 @@ void MovingRangeTest::testMultiline()
                        "hijk\n"));
 
     // add range to line 1-2
-    auto range = static_cast<Kate::TextRange *>(doc.newMovingRange({1, 0, 2, 3},
-                                                                   KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
-                                                                   KTextEditor::MovingRange::InvalidateIfEmpty));
+    auto range = doc.newMovingRange({1, 0, 2, 3},
+                                    KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight,
+                                    KTextEditor::MovingRange::InvalidateIfEmpty);
     QVERIFY(doc.buffer().rangesForLine(1, nullptr, false).contains(range));
     QVERIFY(doc.buffer().rangesForLine(2, nullptr, false).contains(range));
 }
