@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2023-10-18 01:41+0000\n"
 "PO-Revision-Date: 2023-02-08 10:51+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -597,13 +597,13 @@ msgid "Brackets:"
 msgstr "Скобки:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoBrackets)
-#: dialogs/editconfigwidget.ui:130
+#: dialogs/editconfigwidget.ui:127
 #, kde-format
 msgid "Automatically close brackets when opening bracket is typed"
 msgstr "Автоматически закрывать скобки при печати открытой скобки"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lbEncloseSelection)
-#: dialogs/editconfigwidget.ui:143
+#: dialogs/editconfigwidget.ui:140
 #, kde-format
 msgid ""
 "When some text is selected these chars will be added on both its sides in a "
@@ -614,49 +614,49 @@ msgstr ""
 
 # BUGME: needs proper plural handling with i18np(). --aspotashev
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
-#: dialogs/editconfigwidget.ui:146
+#: dialogs/editconfigwidget.ui:143
 #, kde-format
 msgid "Enclosing characters:"
 msgstr "Заключающие символы:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/editconfigwidget.ui:169
+#: dialogs/editconfigwidget.ui:166
 #, kde-format
 msgid "Copy and paste:"
 msgstr "Буфер обмена:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkTextDragAndDrop)
-#: dialogs/editconfigwidget.ui:176
+#: dialogs/editconfigwidget.ui:173
 #, kde-format
 msgid "Move selected text when dragged"
 msgstr "Перемещать выделенный текст при перетаскивании"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
-#: dialogs/editconfigwidget.ui:183
+#: dialogs/editconfigwidget.ui:180
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
 msgstr "Выреза́ть или копировать текущую строку, если текст не выделен"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
-#: dialogs/editconfigwidget.ui:190
+#: dialogs/editconfigwidget.ui:187
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
 msgstr "Не перемещать текстовый указатель при вставке мышью"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
-#: dialogs/editconfigwidget.ui:197
+#: dialogs/editconfigwidget.ui:194
 #, kde-format
 msgid "Max Clipboard History Entries:"
 msgstr "Макс. кол-во записей в журнале буфера обмена:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
-#: dialogs/editconfigwidget.ui:207
+#: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
 msgstr "Определяет количество записей для хранения в журнале буфера обмена"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
-#: dialogs/editconfigwidget.ui:229
+#: dialogs/editconfigwidget.ui:226
 #, kde-format
 msgid ""
 "When you type these characters while text is selected, they will surround "
