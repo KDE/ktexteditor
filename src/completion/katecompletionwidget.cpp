@@ -40,7 +40,7 @@ const bool hideAutomaticCompletionOnExactMatch = true;
 #define CALLCI(WHAT, WHATELSE, WHAT2, model, FUNC)                                                                                                             \
     {                                                                                                                                                          \
         static KTextEditor::CodeCompletionModelControllerInterface defaultIf;                                                                                  \
-        KTextEditor::CodeCompletionModelControllerInterface *ret = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);                 \
+        KTextEditor::CodeCompletionModelControllerInterface *ret = qobject_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);                 \
         if (!ret) {                                                                                                                                            \
             WHAT2 defaultIf.FUNC;                                                                                                                              \
         } else                                                                                                                                                 \
