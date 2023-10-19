@@ -266,7 +266,7 @@ void RegExpSearchTest::testSearchForward()
     doc.setText(QStringLiteral("  \\piinfercong"));
 
     KateRegExpSearch searcher(&doc);
-    QVector<KTextEditor::Range> result = searcher.search(QStringLiteral("\\\\piinfer(\\w)"), Range(0, 2, 0, 15), false);
+    QList<KTextEditor::Range> result = searcher.search(QStringLiteral("\\\\piinfer(\\w)"), Range(0, 2, 0, 15), false);
 
     QCOMPARE(result.at(0), Range(0, 2, 0, 11));
     QCOMPARE(doc.text(result.at(1)), QLatin1Char('c'));
@@ -296,7 +296,7 @@ void RegExpSearchTest::test()
     doc.setText(QStringLiteral("\\newcommand{\\piReductionOut}"));
 
     KateRegExpSearch searcher(&doc);
-    const QVector<Range> result = searcher.search(QStringLiteral("\\\\piReduction(\\S)"), Range(0, 10, 0, 28), true);
+    const QList<Range> result = searcher.search(QStringLiteral("\\\\piReduction(\\S)"), Range(0, 10, 0, 28), true);
 
     QCOMPARE(result.size(), 2);
     QCOMPARE(result[0], Range(0, 12, 0, 25));
@@ -311,7 +311,7 @@ void RegExpSearchTest::testUnicode()
     doc.setText(QStringLiteral("\\newcommand{\\piReductionOÓut}"));
 
     KateRegExpSearch searcher(&doc);
-    const QVector<Range> result = searcher.search(QStringLiteral("\\\\piReduction(\\w)(\\w)"), Range(0, 10, 0, 28), true);
+    const QList<Range> result = searcher.search(QStringLiteral("\\\\piReduction(\\w)(\\w)"), Range(0, 10, 0, 28), true);
 
     QCOMPARE(result.size(), 3);
     QCOMPARE(result.at(0), Range(0, 12, 0, 26));

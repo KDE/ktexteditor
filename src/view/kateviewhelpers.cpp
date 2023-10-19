@@ -453,10 +453,10 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-void KateScrollBar::getCharColorRanges(const QVector<Kate::TextLineData::Attribute> &attributes,
-                                       const QVector<Kate::TextRange *> &decorations,
+void KateScrollBar::getCharColorRanges(const QList<Kate::TextLineData::Attribute> &attributes,
+                                       const QList<Kate::TextRange *> &decorations,
                                        const QString &text,
-                                       QVector<KateScrollBar::ColumnRangeWithColor> &ranges,
+                                       QList<KateScrollBar::ColumnRangeWithColor> &ranges,
                                        QVarLengthArray<std::pair<QRgb, QPen>, 20> &penCache)
 {
     int attributeIndex = 0;
@@ -584,10 +584,10 @@ void KateScrollBar::updatePixmap()
     const KTextEditor::Range selection = m_view->selectionRange();
     const bool hasSelection = !selection.isEmpty();
     // reusable buffer for color->range
-    QVector<KateScrollBar::ColumnRangeWithColor> colorRangesForLine;
+    QList<KateScrollBar::ColumnRangeWithColor> colorRangesForLine;
     const QPen defaultTextPen = QPen(defaultTextColor, 1);
     // resusable buffer for line ranges;
-    QVector<Kate::TextRange *> decorations;
+    QList<Kate::TextRange *> decorations;
 
     QPainter painter;
     if (painter.begin(&m_pixmap)) {
@@ -617,7 +617,7 @@ void KateScrollBar::updatePixmap()
             }
 
             // get normal highlighting stuff
-            const QVector<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
+            const QList<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
             // get moving ranges with attribs (semantic highlighting and co.)
             m_view->doc()->buffer().rangesForLine(realLineNumber, m_view, true, decorations);
 
@@ -2153,7 +2153,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 }
 
                 if (lineLayout.startCol() == 0) {
-                    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
+                    QList<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
                     bool anyFolded = false;
                     for (int i = 0; i < startingRanges.size(); ++i) {
                         if (startingRanges[i].second & Kate::TextFolding::Folded) {

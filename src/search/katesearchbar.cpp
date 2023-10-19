@@ -57,16 +57,16 @@ namespace
 class AddMenuManager
 {
 private:
-    QVector<QString> m_insertBefore;
-    QVector<QString> m_insertAfter;
+    QList<QString> m_insertBefore;
+    QList<QString> m_insertAfter;
     QSet<QAction *> m_actionPointers;
     uint m_indexWalker;
     QMenu *m_menu;
 
 public:
     AddMenuManager(QMenu *parent, int expectedItemCount)
-        : m_insertBefore(QVector<QString>(expectedItemCount))
-        , m_insertAfter(QVector<QString>(expectedItemCount))
+        : m_insertBefore(QList<QString>(expectedItemCount))
+        , m_insertAfter(QList<QString>(expectedItemCount))
         , m_indexWalker(0)
         , m_menu(nullptr)
     {
@@ -1053,9 +1053,9 @@ struct ParInfo {
     int captureNumber; // 1..9
 };
 
-QVector<QString> KateSearchBar::getCapturePatterns(const QString &pattern) const
+QList<QString> KateSearchBar::getCapturePatterns(const QString &pattern) const
 {
-    QVector<QString> capturePatterns;
+    QList<QString> capturePatterns;
     capturePatterns.reserve(9);
     QStack<ParInfo> parInfos;
 
@@ -1181,7 +1181,7 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
             addMenuManager.addSeparator();
             if (regexMode) {
                 const QString pattern = m_powerUi->pattern->currentText();
-                const QVector<QString> capturePatterns = getCapturePatterns(pattern);
+                const QList<QString> capturePatterns = getCapturePatterns(pattern);
 
                 const int captureCount = capturePatterns.count();
                 for (int i = 1; i <= 9; i++) {

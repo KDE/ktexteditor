@@ -163,7 +163,7 @@ struct IndexPair {
     int closeIndex;
 };
 
-QVector<KTextEditor::Range>
+QList<KTextEditor::Range>
 KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, bool backwards, QRegularExpression::PatternOptions options)
 {
     // Save regexes to avoid reconstructing regexes all the time
@@ -171,7 +171,7 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
     static QRegularExpression repairedRegex;
 
     // Returned if no matches are found
-    QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
+    QList<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
 
     // Note that some methods in vimode (e.g. Searcher::findPatternWorker) rely on the
     // this method returning here if 'pattern' is empty.
@@ -234,7 +234,7 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
             return noResult;
         }
 
-        QVector<int> lineLens(rangeLineCount);
+        QList<int> lineLens(rangeLineCount);
         int maxMatchOffset = 0;
 
         // all lines in the input range
@@ -299,7 +299,7 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
         // the correct values will be written into it later
         QMap<int, TwoViewCursor *> indicesToCursors;
         const int numCaptures = repairedRegex.captureCount();
-        QVector<IndexPair> indexPairs(numCaptures + 1);
+        QList<IndexPair> indexPairs(numCaptures + 1);
         for (int c = 0; c <= numCaptures; ++c) {
             const int openIndex = match.capturedStart(c);
             IndexPair &pair = indexPairs[c];
@@ -387,7 +387,7 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
         }
 
         // build result array
-        QVector<KTextEditor::Range> result(numCaptures + 1, KTextEditor::Range::invalid());
+        QList<KTextEditor::Range> result(numCaptures + 1, KTextEditor::Range::invalid());
         for (int y = 0; y <= numCaptures; y++) {
             IndexPair &pair = indexPairs[y];
             if (!(pair.openIndex == -1 || pair.closeIndex == -1)) {
@@ -456,7 +456,7 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
 
                 // build result array
                 const int numCaptures = repairedRegex.captureCount();
-                QVector<KTextEditor::Range> result(numCaptures + 1);
+                QList<KTextEditor::Range> result(numCaptures + 1);
                 result[0] = KTextEditor::Range(j, match.capturedStart(), j, match.capturedEnd());
 
                 FAST_DEBUG("result range " << 0 << ": (" << j << ", " << match.capturedStart << ")..(" << j << ", " << match.capturedEnd() << ")");

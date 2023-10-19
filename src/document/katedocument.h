@@ -383,7 +383,7 @@ Q_SIGNALS:
     void undoChanged();
 
 public:
-    QVector<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const KTextEditor::SearchOptions options) const;
+    QList<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const KTextEditor::SearchOptions options) const;
 
 private:
     /**

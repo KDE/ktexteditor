@@ -26,11 +26,11 @@ void ViewTest::yankHighlightingTests()
     const QColor yankHighlightColour = kate_view->renderer()->config()->savedLineColor();
 
     BeginTest(QStringLiteral("foo bar xyz"));
-    const QVector<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
+    const QList<Kate::TextRange *> rangesInitial = rangesOnFirstLine();
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
     TestPressKey(QStringLiteral("wyiw"));
     {
-        const QVector<Kate::TextRange *> rangesAfterYank = rangesOnFirstLine();
+        const QList<Kate::TextRange *> rangesAfterYank = rangesOnFirstLine();
         QCOMPARE(rangesAfterYank.size(), rangesInitial.size() + 1);
         QCOMPARE(rangesAfterYank.first()->attribute()->background().color(), yankHighlightColour);
         QCOMPARE(rangesAfterYank.first()->start().line(), 0);
@@ -43,7 +43,7 @@ void ViewTest::yankHighlightingTests()
     BeginTest(QStringLiteral("foom bar xyz"));
     TestPressKey(QStringLiteral("wY"));
     {
-        const QVector<Kate::TextRange *> rangesAfterYank = rangesOnFirstLine();
+        const QList<Kate::TextRange *> rangesAfterYank = rangesOnFirstLine();
         QCOMPARE(rangesAfterYank.size(), rangesInitial.size() + 1);
         QCOMPARE(rangesAfterYank.first()->attribute()->background().color(), yankHighlightColour);
         QCOMPARE(rangesAfterYank.first()->start().line(), 0);
@@ -437,7 +437,7 @@ void ViewTest::clipboardTests()
     QCOMPARE(QApplication::clipboard()->text(), clipboard);
 }
 
-QVector<Kate::TextRange *> ViewTest::rangesOnFirstLine()
+QList<Kate::TextRange *> ViewTest::rangesOnFirstLine()
 {
     return kate_document->buffer().rangesForLine(0, kate_view, true);
 }

@@ -89,7 +89,7 @@ public:
      * @param line line to query starting folding ranges
      * @return vector of id's + flags
      */
-    virtual QVector<QPair<qint64, FoldingRangeFlags>> foldingRangesStartingOnLine(int line) const = 0;
+    virtual QList<QPair<qint64, FoldingRangeFlags>> foldingRangesStartingOnLine(int line) const = 0;
 
     /**
      * Check whether on this line starts a folding range

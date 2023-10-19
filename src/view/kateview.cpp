@@ -1439,7 +1439,7 @@ bool KTextEditor::ViewPrivate::unfoldLine(int line)
     const KTextEditor::Cursor currentCursor = cursorPosition();
 
     // ask the folding info for this line, if any folds are around!
-    // auto = QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>>
+    // auto = QList<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>>
     auto startingRanges = textFolding().foldingRangesStartingOnLine(line);
     for (int i = 0; i < startingRanges.size() && !actionDone; ++i) {
         // Avoid jumping view in case of a big unfold and ensure nice highlight of folding marker
@@ -2097,7 +2097,7 @@ void KTextEditor::ViewPrivate::findNextOccurunceAndSelect()
     const auto lastSelectionRange = selectionRange();
 
     KTextEditor::Range searchRange(lastSelectionRange.end(), doc()->documentRange().end());
-    QVector<KTextEditor::Range> matches = doc()->searchText(searchRange, text, KTextEditor::Default);
+    QList<KTextEditor::Range> matches = doc()->searchText(searchRange, text, KTextEditor::Default);
     if (!matches.isEmpty() && !matches.constFirst().isValid()) {
         searchRange.setRange(doc()->documentRange().start(), lastSelectionRange.end());
         matches = doc()->searchText(searchRange, text, KTextEditor::Default);
@@ -2160,8 +2160,8 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
     }
 
     KTextEditor::Range searchRange(doc()->documentRange());
-    QVector<KTextEditor::Range> matches;
-    QVector<PlainSecondaryCursor> resultRanges;
+    QList<KTextEditor::Range> matches;
+    QList<PlainSecondaryCursor> resultRanges;
     do {
         matches = doc()->searchText(searchRange, text, KTextEditor::Default);
 
@@ -2228,7 +2228,7 @@ void KTextEditor::ViewPrivate::createMultiCursorsFromSelection()
     clearSecondaryCursors();
 
     const auto range = selectionRange();
-    QVector<KTextEditor::Cursor> cursorsToAdd;
+    QList<KTextEditor::Cursor> cursorsToAdd;
     const auto start = range.start().line() < 0 ? 0 : range.start().line();
     const auto end = range.end().line() > doc()->lines() ? doc()->lines() : range.end().line();
     const auto currentLine = cursorPosition().line();
@@ -3081,7 +3081,7 @@ void KTextEditor::ViewPrivate::addSecondaryCursor(KTextEditor::Cursor pos)
     addSecondaryCursorsWithSelection({p});
 }
 
-void KTextEditor::ViewPrivate::setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions)
+void KTextEditor::ViewPrivate::setSecondaryCursors(const QList<KTextEditor::Cursor> &positions)
 {
     clearSecondaryCursors();
 
@@ -3127,9 +3127,9 @@ const std::vector<KTextEditor::ViewPrivate::SecondaryCursor> &KTextEditor::ViewP
     return m_secondaryCursors;
 }
 
-QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> KTextEditor::ViewPrivate::plainSecondaryCursors() const
+QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> KTextEditor::ViewPrivate::plainSecondaryCursors() const
 {
-    QVector<PlainSecondaryCursor> cursors;
+    QList<PlainSecondaryCursor> cursors;
     cursors.reserve(m_secondaryCursors.size());
     std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(cursors), [](const SecondaryCursor &c) {
         if (c.range) {
@@ -3241,7 +3241,7 @@ void KTextEditor::ViewPrivate::ensureUniqueCursors(bool matchLine)
     }
 }
 
-void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QVector<PlainSecondaryCursor> &cursorsWithSelection)
+void KTextEditor::ViewPrivate::addSecondaryCursorsWithSelection(const QList<PlainSecondaryCursor> &cursorsWithSelection)
 {
     if (isMulticursorNotAllowed() || cursorsWithSelection.isEmpty()) {
         return;
@@ -3340,9 +3340,9 @@ void KTextEditor::ViewPrivate::addSecondaryCursorUp()
     addSecondaryCursor(next);
 }
 
-QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::cursors() const
+QList<KTextEditor::Cursor> KTextEditor::ViewPrivate::cursors() const
 {
-    QVector<KTextEditor::Cursor> ret;
+    QList<KTextEditor::Cursor> ret;
     ret.reserve(m_secondaryCursors.size() + 1);
     ret << cursorPosition();
     std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(ret), [](const SecondaryCursor &c) {
@@ -3351,13 +3351,13 @@ QVector<KTextEditor::Cursor> KTextEditor::ViewPrivate::cursors() const
     return ret;
 }
 
-QVector<KTextEditor::Range> KTextEditor::ViewPrivate::selectionRanges() const
+QList<KTextEditor::Range> KTextEditor::ViewPrivate::selectionRanges() const
 {
     if (!selection()) {
         return {};
     }
 
-    QVector<KTextEditor::Range> ret;
+    QList<KTextEditor::Range> ret;
     ret.reserve(m_secondaryCursors.size() + 1);
     ret << selectionRange();
     std::transform(m_secondaryCursors.begin(), m_secondaryCursors.end(), std::back_inserter(ret), [](const SecondaryCursor &c) {
@@ -3370,7 +3370,7 @@ QVector<KTextEditor::Range> KTextEditor::ViewPrivate::selectionRanges() const
     return ret;
 }
 
-void KTextEditor::ViewPrivate::setCursors(const QVector<KTextEditor::Cursor> &cursorPositions)
+void KTextEditor::ViewPrivate::setCursors(const QList<KTextEditor::Cursor> &cursorPositions)
 {
     if (isMulticursorNotAllowed()) {
         qWarning() << "setCursors failed: Multicursors not allowed because one of the following is true"
@@ -3393,7 +3393,7 @@ void KTextEditor::ViewPrivate::setCursors(const QVector<KTextEditor::Cursor> &cu
     setSecondaryCursors(cursorPositions);
 }
 
-void KTextEditor::ViewPrivate::setSelections(const QVector<KTextEditor::Range> &selectionRanges)
+void KTextEditor::ViewPrivate::setSelections(const QList<KTextEditor::Range> &selectionRanges)
 {
     if (isMulticursorNotAllowed()) {
         qWarning() << "setSelections failed: Multicursors not allowed because one of the following is true"
@@ -4715,7 +4715,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     // cursor valid? else no new ranges can be found
     if (currentCursor.isValid() && currentCursor.line() < doc()->buffer().lines()) {
         // now: get current ranges for the line of cursor with an attribute
-        const QVector<Kate::TextRange *> rangesForCurrentCursor = doc()->buffer().rangesForLine(currentCursor.line(), this, false);
+        const QList<Kate::TextRange *> rangesForCurrentCursor = doc()->buffer().rangesForLine(currentCursor.line(), this, false);
 
         // match which ranges really fit the given cursor
         for (Kate::TextRange *range : rangesForCurrentCursor) {
@@ -4909,7 +4909,7 @@ void KTextEditor::ViewPrivate::createHighlights()
         pattern += QLatin1String("\\b");
     }
 
-    QVector<KTextEditor::Range> matches;
+    QList<KTextEditor::Range> matches;
     do {
         searchRange.setRange(start, visibleRange().end());
 
@@ -5049,7 +5049,7 @@ QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int 
         return attribs;
     }
 
-    const QVector<Kate::TextLineData::Attribute> &intAttrs = kateLine->attributesList();
+    const QList<Kate::TextLineData::Attribute> &intAttrs = kateLine->attributesList();
     for (int i = 0; i < intAttrs.size(); ++i) {
         if (intAttrs[i].length > 0 && intAttrs[i].attributeValue > 0) {
             attribs << KTextEditor::AttributeBlock(intAttrs.at(i).offset, intAttrs.at(i).length, renderer()->attribute(intAttrs.at(i).attributeValue));

@@ -21,9 +21,9 @@
 #include <KXMLGUIFactory>
 
 #include <QEvent>
+#include <QList>
 #include <QMenu>
 #include <QRegularExpression>
-#include <QVector>
 
 namespace KTextEditor
 {
@@ -124,7 +124,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         return;
     }
 
-    QVector<int> bookmarkLineArray; // Array of line numbers which have bookmarks
+    QList<int> bookmarkLineArray; // Array of line numbers which have bookmarks
 
     // Find line numbers where bookmarks are set & store those line numbers in bookmarkLineArray
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {

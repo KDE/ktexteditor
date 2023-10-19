@@ -9,10 +9,10 @@
 #ifndef _KATE_TEMPLATE_HANDLER_H_
 #define _KATE_TEMPLATE_HANDLER_H_
 
+#include <QList>
 #include <QObject>
 #include <QPointer>
 #include <QString>
-#include <QVector>
 
 #include <katescript.h>
 #include <ktexteditor/cursor.h>
@@ -217,7 +217,7 @@ private:
         }
     };
     // List of all template fields in the inserted snippet. @see sortFields()
-    QVector<TemplateField> m_fields;
+    QList<TemplateField> m_fields;
 
     // Get the template field which contains @p range.
     const TemplateField fieldForRange(KTextEditor::Range range) const;

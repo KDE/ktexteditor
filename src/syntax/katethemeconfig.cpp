@@ -171,9 +171,9 @@ KateThemeConfigColorTab::KateThemeConfigColorTab()
     connect(ui, &KateColorTreeWidget::changed, this, &KateThemeConfigColorTab::changed);
 }
 
-static QVector<KateColorItem> colorItemList(const KSyntaxHighlighting::Theme &theme)
+static QList<KateColorItem> colorItemList(const KSyntaxHighlighting::Theme &theme)
 {
-    QVector<KateColorItem> items;
+    QList<KateColorItem> items;
 
     //
     // editor background colors
@@ -401,7 +401,7 @@ void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
 
     // If we havent this schema, read in from config file
     if (m_schemas.find(newSchema) == m_schemas.end()) {
-        QVector<KateColorItem> items = colorItemList(theme);
+        QList<KateColorItem> items = colorItemList(theme);
         for (auto &item : items) {
             item.color = QColor::fromRgba(theme.editorColor(item.role));
         }
@@ -821,7 +821,7 @@ void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
 
     auto it = m_hlDict.find(m_schema);
     if (it == m_hlDict.end()) {
-        it = m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr>>());
+        it = m_hlDict.insert(schema, QHash<int, QList<KTextEditor::Attribute::Ptr>>());
     }
 
     // Set listview colors

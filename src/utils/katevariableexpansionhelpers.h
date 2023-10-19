@@ -9,9 +9,9 @@
 
 #include <QDialog>
 #include <QHash>
+#include <QList>
 #include <QPointer>
 #include <QString>
-#include <QVector>
 
 class QListView;
 class QLineEdit;
@@ -81,8 +81,8 @@ protected:
 private:
     QAction *m_showAction;
     QHash<QWidget *, QPointer<TextEditButton>> m_textEditButtons;
-    QVector<QObject *> m_widgets;
-    QVector<KTextEditor::Variable> m_variables;
+    QList<QObject *> m_widgets;
+    QList<KTextEditor::Variable> m_variables;
     VariableItemModel *m_variableModel;
     QSortFilterProxyModel *m_filterModel;
     QListView *m_listView;

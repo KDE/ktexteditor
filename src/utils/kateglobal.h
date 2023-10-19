@@ -375,7 +375,7 @@ public:
      * Clipboard history, filled with text we ever copied
      * to clipboard via copyToClipboard.
      */
-    const QVector<ClipboardEntry> &clipboardHistory() const
+    const QList<ClipboardEntry> &clipboardHistory() const
     {
         return m_clipboardHistory;
     }
@@ -561,7 +561,7 @@ private:
     /**
      * clipboard history
      */
-    QVector<ClipboardEntry> m_clipboardHistory;
+    QList<ClipboardEntry> m_clipboardHistory;
 
     /**
      * Dummy application object to be null safe

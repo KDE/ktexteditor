@@ -50,12 +50,12 @@ public:
      * placed behind the text as if there were additional spaces.
      *
      * @note When returning multiple InlineNote%s, use InlineNote::index() to
-     *       map the InlineNote to this QVector's index.
+     *       map the InlineNote to this QList's index.
      *
      * @param line Line number
      * @returns vector of columns where inline notes appear in this line
      */
-    virtual QVector<int> inlineNotes(int line) const = 0;
+    virtual QList<int> inlineNotes(int line) const = 0;
 
     /**
      * Width to be reserved for the note in the text.

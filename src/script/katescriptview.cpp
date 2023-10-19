@@ -81,7 +81,7 @@ void KateScriptView::setCursorPosition(const QJSValue &jscursor)
 void KateScriptView::setCursorPositions(const QJSValue &cursors)
 {
     // unpack the array of cursors
-    QVector<KTextEditor::Cursor> unboxedCursors;
+    QList<KTextEditor::Cursor> unboxedCursors;
     const int length = cursors.property(QStringLiteral("length")).toInt();
     for (int i = 0; i < length; ++i) {
         unboxedCursors.append(cursorFromScriptValue(cursors.property(i)));
@@ -140,7 +140,7 @@ void KateScriptView::setSelection(const QJSValue &jsrange)
 void KateScriptView::setSelections(const QJSValue &ranges)
 {
     // unpack the array of ranges
-    QVector<KTextEditor::Range> unboxedRanges;
+    QList<KTextEditor::Range> unboxedRanges;
     const int length = ranges.property(QStringLiteral("length")).toInt();
     for (int i = 0; i < length; ++i) {
         unboxedRanges.append(rangeFromScriptValue(ranges.property(i)));

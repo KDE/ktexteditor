@@ -174,7 +174,7 @@ void KateDocumentTest::testSetTextPerformance()
             &MovingRangeInvalidator::aboutToInvalidateMovingInterfaceContent);
 
     QString text;
-    QVector<Range> ranges;
+    QList<Range> ranges;
     ranges.reserve(lines * columns / (rangeLength + rangeGap));
     const QString line = QString().fill(QLatin1Char('a'), columns);
     for (int l = 0; l < lines; ++l) {

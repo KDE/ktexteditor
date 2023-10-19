@@ -297,7 +297,7 @@ public:
      *
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QVector<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false) const;
+    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
@@ -382,7 +382,7 @@ public:
      */
     void paintTextLineBackground(QPainter &paint, KateLineLayout *layout, int currentViewLine, int xStart, int xEnd);
 
-    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &br) const;
+    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, const QBrush &br) const;
 
     /**
      * This takes an in index, and returns all the attributes for it.
@@ -468,7 +468,7 @@ private:
     bool m_printerFriendly;
     QColor m_caretOverrideColor;
 
-    QVector<AttributePtr> m_attributes;
+    QList<AttributePtr> m_attributes;
 
     /**
      * Configuration

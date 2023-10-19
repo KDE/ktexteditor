@@ -90,7 +90,7 @@ private:
         KTextEditor::Message::MessagePosition position = KTextEditor::Message::AboveView;
     };
 
-    QVector<ItemWrapper> m_items;
+    QList<ItemWrapper> m_items;
 };
 
 /**
@@ -194,10 +194,10 @@ private:
         int startColumn;
         int endColumn;
     };
-    void getCharColorRanges(const QVector<Kate::TextLineData::Attribute> &attributes,
-                            const QVector<Kate::TextRange *> &decorations,
+    void getCharColorRanges(const QList<Kate::TextLineData::Attribute> &attributes,
+                            const QList<Kate::TextRange *> &decorations,
                             const QString &text,
-                            QVector<KateScrollBar::ColumnRangeWithColor> &ranges,
+                            QList<KateScrollBar::ColumnRangeWithColor> &ranges,
                             QVarLengthArray<std::pair<QRgb, QPen>, 20> &penCache);
 
     bool m_middleMouseDown;

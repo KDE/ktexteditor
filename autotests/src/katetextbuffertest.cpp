@@ -246,7 +246,7 @@ void KateTextBufferTest::foldingTest()
     }
 
     // there shall be one range starting at 5
-    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> forLine = folding.foldingRangesStartingOnLine(5);
+    QList<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> forLine = folding.foldingRangesStartingOnLine(5);
     QVERIFY(forLine.size() == 1);
     QVERIFY(forLine[0].first == 0);
     QVERIFY(forLine[0].second & Kate::TextFolding::Folded);

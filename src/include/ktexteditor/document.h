@@ -948,7 +948,7 @@ public:
      *
      * \since 5.11
      */
-    QVector<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options = Default) const;
+    QList<KTextEditor::Range> searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options = Default) const;
 
     /**
      * \brief Retrives the offset for the given cursor position

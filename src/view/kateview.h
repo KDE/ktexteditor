@@ -237,11 +237,11 @@ public:
 
     // Adds a secondary cursor
     void addSecondaryCursor(KTextEditor::Cursor cursor);
-    void setSecondaryCursors(const QVector<KTextEditor::Cursor> &positions);
+    void setSecondaryCursors(const QList<KTextEditor::Cursor> &positions);
 
     const std::vector<SecondaryCursor> &secondaryCursors() const;
-    QVector<PlainSecondaryCursor> plainSecondaryCursors() const;
-    void addSecondaryCursorsWithSelection(const QVector<PlainSecondaryCursor> &cursorsWithSelection);
+    QList<PlainSecondaryCursor> plainSecondaryCursors() const;
+    void addSecondaryCursorsWithSelection(const QList<PlainSecondaryCursor> &cursorsWithSelection);
 
     void clearSecondaryCursors();
     void clearSecondarySelections();
@@ -251,11 +251,11 @@ public:
     void ensureUniqueCursors(bool matchLine = false);
 
     // For multicursor external api
-    QVector<KTextEditor::Cursor> cursors() const;
-    QVector<KTextEditor::Range> selectionRanges() const;
+    QList<KTextEditor::Cursor> cursors() const;
+    QList<KTextEditor::Range> selectionRanges() const;
 
-    void setCursors(const QVector<KTextEditor::Cursor> &cursorPositions);
-    void setSelections(const QVector<KTextEditor::Range> &selectionRanges);
+    void setCursors(const QList<KTextEditor::Cursor> &cursorPositions);
+    void setSelections(const QList<KTextEditor::Range> &selectionRanges);
 
     // Returns true if primary or secondary cursors have selection
     bool hasSelections() const;

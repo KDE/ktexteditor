@@ -25,7 +25,7 @@ private Q_SLOTS:
     void highlightModeTests();
 
 private:
-    QVector<Kate::TextRange *> rangesOnLine(int line);
+    QList<Kate::TextRange *> rangesOnLine(int line);
     void setWindowSize();
 
     void TestHighlight_(int line, const char *file, const Kate::TextRange &r, std::array<int, 2> start, std::array<int, 2> end, const QColor &bg);

@@ -7,8 +7,8 @@
 #ifndef KTEXTEDITOR_VARIABLE_MANAGER
 #define KTEXTEDITOR_VARIABLE_MANAGER
 
+#include <QList>
 #include <QString>
-#include <QVector>
 #include <QWidget>
 
 #include "variable.h"
@@ -47,16 +47,16 @@ public:
     /**
      * Returns all registered variables.
      */
-    const QVector<KTextEditor::Variable> &variables() const;
+    const QList<KTextEditor::Variable> &variables() const;
 
     bool expandVariable(const QString &variable, KTextEditor::View *view, QString &output) const;
 
     static QString expandText(const QString &text, KTextEditor::View *view);
 
-    void showDialog(const QVector<QWidget *> &widgets, const QStringList &names) const;
+    void showDialog(const QList<QWidget *> &widgets, const QStringList &names) const;
 
 private:
-    QVector<KTextEditor::Variable> m_variables;
+    QList<KTextEditor::Variable> m_variables;
 };
 
 #endif // KTEXTEDITOR_VARIABLE_MANAGER

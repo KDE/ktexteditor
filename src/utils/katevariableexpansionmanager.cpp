@@ -301,7 +301,7 @@ KTextEditor::Variable KateVariableExpansionManager::variable(const QString &name
     return {};
 }
 
-const QVector<KTextEditor::Variable> &KateVariableExpansionManager::variables() const
+const QList<KTextEditor::Variable> &KateVariableExpansionManager::variables() const
 {
     return m_variables;
 }
@@ -333,7 +333,7 @@ QString KateVariableExpansionManager::expandText(const QString &text, KTextEdito
     return KateMacroExpander::expandMacro(text, view);
 }
 
-void KateVariableExpansionManager::showDialog(const QVector<QWidget *> &widgets, const QStringList &names) const
+void KateVariableExpansionManager::showDialog(const QList<QWidget *> &widgets, const QStringList &names) const
 {
     // avoid any work in case no widgets or only nullptrs were provided
     if (widgets.isEmpty() || std::all_of(widgets.cbegin(), widgets.cend(), [](const QWidget *w) {
@@ -343,7 +343,7 @@ void KateVariableExpansionManager::showDialog(const QVector<QWidget *> &widgets,
     }
 
     // collect variables
-    QVector<KTextEditor::Variable> vars;
+    QList<KTextEditor::Variable> vars;
     if (!names.isEmpty()) {
         for (const auto &name : names) {
             const auto var = variable(name);

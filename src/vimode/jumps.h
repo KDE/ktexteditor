@@ -11,7 +11,7 @@
 
 #include <KConfigGroup>
 
-#include <QVector>
+#include <QList>
 
 namespace KateVi
 {
@@ -32,8 +32,8 @@ public:
     void readSessionConfig(const KConfigGroup &config);
 
 private:
-    QVector<KTextEditor::Cursor> m_jumps;
-    QVector<KTextEditor::Cursor>::iterator m_current = m_jumps.begin();
+    QList<KTextEditor::Cursor> m_jumps;
+    QList<KTextEditor::Cursor>::iterator m_current = m_jumps.begin();
 };
 
 }

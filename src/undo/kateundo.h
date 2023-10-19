@@ -64,7 +64,7 @@ public:
      */
     explicit KateUndoGroup(const KTextEditor::Cursor cursorPosition,
                            KTextEditor::Range selection,
-                           const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &);
+                           const QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> &);
 
     KateUndoGroup(const KateUndoGroup &) = delete;
     KateUndoGroup &operator=(const KateUndoGroup &) = delete;
@@ -85,7 +85,7 @@ public:
 
     void editEnd(const KTextEditor::Cursor cursorPosition,
                  KTextEditor::Range selectionRange,
-                 const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondaryCursors);
+                 const QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondaryCursors);
 
     /**
      * merge this group with an other
@@ -184,7 +184,7 @@ private:
     /**
      * the cursor positions of the active view before the edit step
      */
-    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> m_undoSecondaryCursors;
+    QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> m_undoSecondaryCursors;
 
     /**
      * the cursor position of the active view after the edit step
@@ -193,7 +193,7 @@ private:
     /**
      * the cursor positions of the active view before the edit step
      */
-    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> m_redoSecondaryCursors;
+    QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> m_redoSecondaryCursors;
 };
 
 #endif

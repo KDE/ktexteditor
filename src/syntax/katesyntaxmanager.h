@@ -45,7 +45,7 @@ public:
      * Get the mode list
      * @return mode list
      */
-    QVector<KSyntaxHighlighting::Definition> modeList() const
+    QList<KSyntaxHighlighting::Definition> modeList() const
     {
         return m_repository.definitions();
     }
@@ -72,7 +72,7 @@ public:
      * Sorted list of KSyntaxHighlighting themes.
      * @return list sorted by translated names for e.g. menus/...
      */
-    QVector<KSyntaxHighlighting::Theme> sortedThemes() const;
+    QList<KSyntaxHighlighting::Theme> sortedThemes() const;
 
 private:
     /**

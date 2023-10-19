@@ -20,7 +20,7 @@
 #include "spellcheck/prefixstore.h"
 
 #include <QHash>
-#include <QVector>
+#include <QList>
 
 #include <QRegularExpression>
 #include <QStringList>
@@ -120,7 +120,7 @@ public:
     /**
      *
      */
-    const QVector<QRegularExpression> &emptyLines(int attribute = 0) const;
+    const QList<QRegularExpression> &emptyLines(int attribute = 0) const;
 
     bool isEmptyLine(const Kate::TextLineData *textline) const;
 
@@ -200,7 +200,7 @@ public:
 
     void clearAttributeArrays();
 
-    QVector<KTextEditor::Attribute::Ptr> attributes(const QString &schema);
+    QList<KTextEditor::Attribute::Ptr> attributes(const QString &schema);
 
     inline bool noHighlighting() const
     {
@@ -230,7 +230,7 @@ public:
      * @param schema The id of the chosen schema
      * @return attributes list with attributes as defined in syntax file
      */
-    QVector<KTextEditor::Attribute::Ptr> attributesForDefinition(const QString &schema) const;
+    QList<KTextEditor::Attribute::Ptr> attributesForDefinition(const QString &schema) const;
 
     /**
      * Retrieve all formats for this highlighting.
@@ -264,7 +264,7 @@ private:
     bool m_foldingIndentationSensitive = false;
 
     // map schema name to attributes...
-    QHash<QString, QVector<KTextEditor::Attribute::Ptr>> m_attributeArrays;
+    QHash<QString, QList<KTextEditor::Attribute::Ptr>> m_attributeArrays;
 
     /**
      * This class holds the additional properties for one highlight
@@ -278,7 +278,7 @@ private:
         QString multiLineCommentStart;
         QString multiLineCommentEnd;
         KSyntaxHighlighting::CommentPosition singleLineCommentPosition;
-        QVector<QRegularExpression> emptyLines;
+        QList<QRegularExpression> emptyLines;
         QHash<QString, QChar> characterEncodings;
         KatePrefixStore characterEncodingsPrefixStore;
         QHash<QChar, QString> reverseCharacterEncodings;

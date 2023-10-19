@@ -12,7 +12,6 @@
 #include <QPair>
 #include <QSet>
 #include <QString>
-#include <QVector>
 
 #include "katetextline.h"
 

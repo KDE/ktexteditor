@@ -126,7 +126,7 @@ public:
         int m_lastChangedLineNum;
 
         KTextEditor::Cursor m_currentSearchPos;
-        const QVector<KTextEditor::Range> fullCurrentMatch();
+        const QList<KTextEditor::Range> fullCurrentMatch();
         QString replacementTextForCurrentMatch();
     };
 

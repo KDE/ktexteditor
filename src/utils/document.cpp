@@ -105,7 +105,7 @@ bool Document::isEmpty() const
     return documentEnd() == Cursor::start();
 }
 
-QVector<KTextEditor::Range> Document::searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options) const
+QList<KTextEditor::Range> Document::searchText(KTextEditor::Range range, const QString &pattern, const SearchOptions options) const
 {
     return d->searchText(range, pattern, options);
 }

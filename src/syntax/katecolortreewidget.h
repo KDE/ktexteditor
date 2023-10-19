@@ -40,9 +40,9 @@ public:
 
 public:
     void addColorItem(const KateColorItem &colorItem);
-    void addColorItems(const QVector<KateColorItem> &colorItems);
+    void addColorItems(const QList<KateColorItem> &colorItems);
 
-    QVector<KateColorItem> colorItems() const;
+    QList<KateColorItem> colorItems() const;
 
     QColor findColor(const QString &key) const;
 

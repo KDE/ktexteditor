@@ -16,9 +16,9 @@
 #include <vimode/range.h>
 
 #include <QHash>
+#include <QList>
 #include <QRegularExpression>
 #include <QStack>
-#include <QVector>
 
 #include <vector>
 
@@ -346,8 +346,8 @@ protected:
     int m_motionOperatorIndex;
     int m_scroll_count_limit;
 
-    QVector<int> m_matchingCommands;
-    QVector<int> m_matchingMotions;
+    QList<int> m_matchingCommands;
+    QList<int> m_matchingMotions;
     QStack<int> m_awaitingMotionOrTextObject;
 
     bool m_findWaitingForChar;

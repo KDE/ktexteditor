@@ -42,7 +42,7 @@ CommandMode::CommandMode(EmulatedCommandBar *emulatedCommandBar,
     , m_interactiveSedReplaceMode(interactiveSedReplaceMode)
     , m_completer(completer)
 {
-    QVector<KTextEditor::Command *> cmds;
+    QList<KTextEditor::Command *> cmds;
     cmds.push_back(KateCommands::CoreCommands::self());
     cmds.push_back(Commands::self());
     cmds.push_back(AppCommands::self());

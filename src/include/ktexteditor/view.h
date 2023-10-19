@@ -509,7 +509,7 @@ public:
      *
      * @since 5.95
      */
-    void setCursorPositions(const QVector<KTextEditor::Cursor> &positions);
+    void setCursorPositions(const QList<KTextEditor::Cursor> &positions);
 
     /**
      * Get the view's current cursor position. A \e TAB character is
@@ -529,7 +529,7 @@ public:
      *
      * \return all currently existing cursors
      */
-    QVector<KTextEditor::Cursor> cursorPositions() const;
+    QList<KTextEditor::Cursor> cursorPositions() const;
 
     /**
      * Get the current \e virtual cursor position, \e virtual means the
@@ -682,7 +682,7 @@ public:
      *
      * @since 5.95
      */
-    void setSelections(const QVector<KTextEditor::Range> &ranges);
+    void setSelections(const QList<KTextEditor::Range> &ranges);
 
     /**
      * Query the view whether it has selected text, i.e. whether a selection
@@ -706,7 +706,7 @@ public:
      *
      * @since 5.95
      */
-    QVector<KTextEditor::Range> selectionRanges() const;
+    QList<KTextEditor::Range> selectionRanges() const;
 
     /**
      * Get the view's selected text.

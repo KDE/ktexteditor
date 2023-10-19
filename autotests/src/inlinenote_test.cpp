@@ -40,7 +40,7 @@ QWidget *findViewInternal(KTextEditor::View *view)
 class NoteProvider : public InlineNoteProvider
 {
 public:
-    QVector<int> inlineNotes(int line) const override
+    QList<int> inlineNotes(int line) const override
     {
         if (line == 0) {
             return {5, 10};
@@ -147,9 +147,9 @@ void InlineNoteTest::testInlineNote()
     const auto xWidth = coordCol05.x() - coordCol04.x();
 
     NoteProvider noteProvider;
-    const QVector<int> expectedColumns = {5, 10};
+    const QList<int> expectedColumns = {5, 10};
     QCOMPARE(noteProvider.inlineNotes(0), expectedColumns);
-    QCOMPARE(noteProvider.inlineNotes(1), QVector<int>());
+    QCOMPARE(noteProvider.inlineNotes(1), QList<int>());
     view.registerInlineNoteProvider(&noteProvider);
 
     const auto newCoordCol04 = view.cursorToCoordinate({0, 4});

@@ -10,8 +10,8 @@
 
 #include <ktexteditor_export.h>
 
+#include <QList>
 #include <QObject>
-#include <QVector>
 
 // theme support
 #include <KSyntaxHighlighting/Theme>
@@ -376,7 +376,7 @@ public:
      *
      * @since 5.63
      */
-    void addVariableExpansion(const QVector<QWidget *> &widgets, const QStringList &variables = QStringList()) const;
+    void addVariableExpansion(const QList<QWidget *> &widgets, const QStringList &variables = QStringList()) const;
 
 private:
     /**

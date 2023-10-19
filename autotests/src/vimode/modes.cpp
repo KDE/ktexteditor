@@ -1366,7 +1366,7 @@ void ModesTest::VisualCommandsTests()
         BeginTest(QStringLiteral("aaaa\nbbbb\ncccc\ndddd"));
         TestPressKey(QStringLiteral("lj\\ctrl-vljy"));
         KateBuffer &buffer = kate_document->buffer();
-        QVector<Kate::TextRange *> ranges = buffer.rangesForLine(1, kate_view, true);
+        QList<Kate::TextRange *> ranges = buffer.rangesForLine(1, kate_view, true);
         QCOMPARE(ranges.size(), 1);
         KTextEditor::Range range = ranges[0]->toRange();
         QCOMPARE(range.start().column(), 1);

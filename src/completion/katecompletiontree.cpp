@@ -9,10 +9,10 @@
 
 #include <QApplication>
 #include <QHeaderView>
+#include <QList>
 #include <QScreen>
 #include <QScrollBar>
 #include <QTimer>
-#include <QVector>
 
 #include "kateconfig.h"
 #include "katepartdebug.h"

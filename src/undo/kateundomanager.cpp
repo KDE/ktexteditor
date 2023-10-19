@@ -61,7 +61,7 @@ void KateUndoManager::editStart()
 
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range primarySelectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
-    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> secondaryCursors;
+    QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> secondaryCursors;
     if (activeView()) {
         secondaryCursors = activeView()->plainSecondaryCursors();
     }
@@ -84,7 +84,7 @@ void KateUndoManager::editEnd()
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range selectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
 
-    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> secondaryCursors;
+    QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> secondaryCursors;
     if (activeView()) {
         secondaryCursors = activeView()->plainSecondaryCursors();
     }

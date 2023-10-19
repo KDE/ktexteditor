@@ -46,7 +46,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, KTextEditor:
     }
 
     // split multi-line needle into single lines
-    const QVector<QStringView> needleLines = QStringView(text).split(QLatin1Char('\n'));
+    const QList<QStringView> needleLines = QStringView(text).split(QLatin1Char('\n'));
 
     if (needleLines.count() > 1) {
         // multi-line plaintext search (both forwards or backwards)

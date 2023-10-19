@@ -20,7 +20,7 @@
 
 KateUndoGroup::KateUndoGroup(const KTextEditor::Cursor cursorPosition,
                              KTextEditor::Range selection,
-                             const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondary)
+                             const QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondary)
     : m_undoSelection(selection)
     , m_redoSelection(-1, -1, -1, -1)
     , m_undoCursor(cursorPosition)
@@ -179,7 +179,7 @@ void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
 
 void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
                             KTextEditor::Range selectionRange,
-                            const QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondaryCursors)
+                            const QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> &secondaryCursors)
 {
     m_redoCursor = cursorPosition;
     m_redoSecondaryCursors = secondaryCursors;

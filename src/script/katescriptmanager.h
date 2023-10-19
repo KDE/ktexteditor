@@ -12,7 +12,7 @@
 #include <KTextEditor/Command>
 #include <ktexteditor/cursor.h>
 
-#include <QVector>
+#include <QList>
 
 class QString;
 class KateIndentScript;
@@ -33,7 +33,7 @@ public:
     ~KateScriptManager() override;
 
     /** Get all scripts available in the command line */
-    const QVector<KateCommandLineScript *> &commandLineScripts()
+    const QList<KateCommandLineScript *> &commandLineScripts()
     {
         return m_commandLineScripts;
     }
@@ -110,7 +110,7 @@ Q_SIGNALS:
 
 private:
     /** List of all command line scripts */
-    QVector<KateCommandLineScript *> m_commandLineScripts;
+    QList<KateCommandLineScript *> m_commandLineScripts;
 
     /** list of all indentation scripts */
     QList<KateIndentScript *> m_indentationScripts;
@@ -119,7 +119,7 @@ private:
     QHash<QString, KateIndentScript *> m_indentationScriptMap;
 
     /** Map of language to indent scripts */
-    QHash<QString, QVector<KateIndentScript *>> m_languageToIndenters;
+    QHash<QString, QList<KateIndentScript *>> m_languageToIndenters;
 };
 
 #endif

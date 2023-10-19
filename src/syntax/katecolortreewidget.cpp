@@ -335,16 +335,16 @@ void KateColorTreeWidget::addColorItem(const KateColorItem &colorItem)
     resizeColumnToContents(0);
 }
 
-void KateColorTreeWidget::addColorItems(const QVector<KateColorItem> &colorItems)
+void KateColorTreeWidget::addColorItems(const QList<KateColorItem> &colorItems)
 {
     for (const KateColorItem &item : colorItems) {
         addColorItem(item);
     }
 }
 
-QVector<KateColorItem> KateColorTreeWidget::colorItems() const
+QList<KateColorItem> KateColorTreeWidget::colorItems() const
 {
-    QVector<KateColorItem> items;
+    QList<KateColorItem> items;
     for (int a = 0; a < topLevelItemCount(); ++a) {
         QTreeWidgetItem *top = topLevelItem(a);
         for (int b = 0; b < top->childCount(); ++b) {

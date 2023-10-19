@@ -55,10 +55,10 @@ public:
      *         contain one element, an invalid range (see Range::isValid()).
      * \see KTextEditor::Range, QRegularExpression
      */
-    QVector<KTextEditor::Range> search(const QString &pattern,
-                                       KTextEditor::Range inputRange,
-                                       bool backwards = false,
-                                       QRegularExpression::PatternOptions options = QRegularExpression::NoPatternOption);
+    QList<KTextEditor::Range> search(const QString &pattern,
+                                     KTextEditor::Range inputRange,
+                                     bool backwards = false,
+                                     QRegularExpression::PatternOptions options = QRegularExpression::NoPatternOption);
 
     /**
      * Returns a modified version of text where escape sequences are resolved, e.g. "\\n" to "\n".

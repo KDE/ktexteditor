@@ -136,7 +136,7 @@ public:
         return {};
     }
 
-    void setVariables(const QVector<KTextEditor::Variable> &variables)
+    void setVariables(const QList<KTextEditor::Variable> &variables)
     {
         beginResetModel();
         m_variables = variables;
@@ -144,7 +144,7 @@ public:
     }
 
 private:
-    QVector<KTextEditor::Variable> m_variables;
+    QList<KTextEditor::Variable> m_variables;
 };
 
 class TextEditButton : public QToolButton

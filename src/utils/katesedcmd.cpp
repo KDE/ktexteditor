@@ -194,7 +194,7 @@ KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEd
 
 KTextEditor::Range KateCommands::SedReplace::InteractiveSedReplacer::currentMatch()
 {
-    QVector<KTextEditor::Range> matches = fullCurrentMatch();
+    QList<KTextEditor::Range> matches = fullCurrentMatch();
 
     if (matches.isEmpty()) {
         return KTextEditor::Range::invalid();
@@ -277,10 +277,10 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::finalStatusReportMessa
                   i18ncp("substituted into the previous message", "1 line", "%1 lines", m_numLinesTouched));
 }
 
-const QVector<KTextEditor::Range> KateCommands::SedReplace::InteractiveSedReplacer::fullCurrentMatch()
+const QList<KTextEditor::Range> KateCommands::SedReplace::InteractiveSedReplacer::fullCurrentMatch()
 {
     if (m_currentSearchPos > m_doc->documentEnd()) {
-        return QVector<KTextEditor::Range>();
+        return QList<KTextEditor::Range>();
     }
 
     QRegularExpression::PatternOptions options;
@@ -292,7 +292,7 @@ const QVector<KTextEditor::Range> KateCommands::SedReplace::InteractiveSedReplac
 
 QString KateCommands::SedReplace::InteractiveSedReplacer::replacementTextForCurrentMatch()
 {
-    const QVector<KTextEditor::Range> captureRanges = fullCurrentMatch();
+    const QList<KTextEditor::Range> captureRanges = fullCurrentMatch();
     QStringList captureTexts;
     captureTexts.reserve(captureRanges.size());
     for (KTextEditor::Range captureRange : captureRanges) {

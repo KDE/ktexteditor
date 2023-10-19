@@ -37,7 +37,7 @@ private:
 private:
     KTextEditor::DocumentPrivate *const m_document;
     const KTextEditor::SearchOptions m_options;
-    QVector<KTextEditor::Range> m_resultRanges;
+    QList<KTextEditor::Range> m_resultRanges;
 
     /**
      * moving range to track replace changes

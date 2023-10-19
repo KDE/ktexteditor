@@ -251,7 +251,7 @@ bool KateHighlighting::canBreakAt(QChar c, int attrib) const
     return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.isWordWrapDelimiter(c) && c != QLatin1Char('"') && c != QLatin1Char('\'');
 }
 
-const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
+const QList<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
 {
     return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->emptyLines;
 }
@@ -296,10 +296,10 @@ void KateHighlighting::clearAttributeArrays()
     m_attributeArrays.clear();
 }
 
-QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema) const
+QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema) const
 {
     // create list of known attributes based on highlighting format & wanted theme
-    QVector<KTextEditor::Attribute::Ptr> array;
+    QList<KTextEditor::Attribute::Ptr> array;
     array.reserve(m_formats.size());
     const auto currentTheme = KateHlManager::self()->repository().theme(schema);
     for (const auto &format : m_formats) {
@@ -347,7 +347,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
     return array;
 }
 
-QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
+QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
 {
     // query cache first
     if (m_attributeArrays.contains(schema)) {

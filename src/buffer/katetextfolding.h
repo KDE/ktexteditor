@@ -144,7 +144,7 @@ public:
      * @param line line to query starting folding ranges
      * @return vector of id's + flags
      */
-    QVector<QPair<qint64, FoldingRangeFlags>> foldingRangesStartingOnLine(int line) const;
+    QList<QPair<qint64, FoldingRangeFlags>> foldingRangesStartingOnLine(int line) const;
 
     /**
      * Query child folding ranges for given range id. To query the toplevel
@@ -152,7 +152,7 @@ public:
      * @param parentRangeId id of parent range, pass -1 to query top level ranges
      * @return vector of id's + flags for child ranges
      */
-    QVector<QPair<qint64, FoldingRangeFlags>> foldingRangesForParentRange(qint64 parentRangeId = -1) const;
+    QList<QPair<qint64, FoldingRangeFlags>> foldingRangesForParentRange(qint64 parentRangeId = -1) const;
 
     /**
      * Return the current known folding ranges a QJsonDocument to store in configs.
@@ -219,7 +219,7 @@ private:
         /**
          * Vector of range pointers
          */
-        typedef QVector<FoldingRange *> Vector;
+        typedef QList<FoldingRange *> Vector;
 
         /**
          * start moving cursor
@@ -357,7 +357,7 @@ private:
      * @param line line to query starting folding ranges
      */
     KTEXTEDITOR_NO_EXPORT
-    void foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const;
+    void foldingRangesStartingOnLine(QList<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const;
 
 private:
     /**

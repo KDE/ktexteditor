@@ -1718,7 +1718,7 @@ void KTextEditor::DocumentPrivate::redo()
 // END
 
 // BEGIN KTextEditor::SearchInterface stuff
-QVector<KTextEditor::Range>
+QList<KTextEditor::Range>
 KTextEditor::DocumentPrivate::searchText(KTextEditor::Range range, const QString &pattern, const KTextEditor::SearchOptions options) const
 {
     const bool escapeSequences = options.testFlag(KTextEditor::EscapeSequences);
@@ -1743,7 +1743,7 @@ KTextEditor::DocumentPrivate::searchText(KTextEditor::Range range, const QString
         KatePlainTextSearch searcher(this, caseSensitivity, wholeWords);
         KTextEditor::Range match = searcher.search(KateRegExpSearch::escapePlaintext(pattern), range, backwards);
 
-        QVector<KTextEditor::Range> result;
+        QList<KTextEditor::Range> result;
         result.append(match);
         return result;
     }
@@ -1752,7 +1752,7 @@ KTextEditor::DocumentPrivate::searchText(KTextEditor::Range range, const QString
     KatePlainTextSearch searcher(this, caseSensitivity, wholeWords);
     KTextEditor::Range match = searcher.search(pattern, range, backwards);
 
-    QVector<KTextEditor::Range> result;
+    QList<KTextEditor::Range> result;
     result.append(match);
     return result;
 }

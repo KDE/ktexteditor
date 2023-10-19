@@ -1577,7 +1577,7 @@ void KateCompletionModel::removeCompletionModel(CodeCompletionModel *model)
 void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 {
     struct FilterItems {
-        FilterItems(KateCompletionModel &model, const QVector<KTextEditor::CodeCompletionModel *> &needShadowing)
+        FilterItems(KateCompletionModel &model, const QList<KTextEditor::CodeCompletionModel *> &needShadowing)
             : m_model(model)
             , m_needShadowing(needShadowing)
         {
@@ -1585,7 +1585,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 
         QHash<QString, CodeCompletionModel *> had;
         KateCompletionModel &m_model;
-        const QVector<KTextEditor::CodeCompletionModel *> &m_needShadowing;
+        const QList<KTextEditor::CodeCompletionModel *> &m_needShadowing;
 
         void filter(std::vector<Item> &items)
         {
@@ -1625,7 +1625,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
         }
     };
 
-    QVector<KTextEditor::CodeCompletionModel *> needShadowing;
+    QList<KTextEditor::CodeCompletionModel *> needShadowing;
     for (KTextEditor::CodeCompletionModel *model : std::as_const(m_completionModels)) {
         KTextEditor::CodeCompletionModelControllerInterface *v4 = qobject_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);
         if (v4 && v4->shouldHideItemsWithEqualNames()) {

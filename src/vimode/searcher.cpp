@@ -323,7 +323,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
             KTextEditor::Cursor newSearchBegin = KTextEditor::Cursor(searchBegin.line(), m_view->doc()->lineLength(searchBegin.line()));
             KTextEditor::Range bestMatch = KTextEditor::Range::invalid();
             while (true) {
-                QVector<KTextEditor::Range> matchesUnfiltered =
+                QList<KTextEditor::Range> matchesUnfiltered =
                     m_view->doc()->searchText(KTextEditor::Range(newSearchBegin, m_view->doc()->documentRange().start()), pattern, flags);
 
                 if (matchesUnfiltered.size() == 1 && !matchesUnfiltered.first().isValid()) {
@@ -333,7 +333,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams,
                 // After sorting, the last element in matchesUnfiltered is the last match position.
                 std::sort(matchesUnfiltered.begin(), matchesUnfiltered.end());
 
-                QVector<KTextEditor::Range> filteredMatches;
+                QList<KTextEditor::Range> filteredMatches;
                 for (KTextEditor::Range unfilteredMatch : std::as_const(matchesUnfiltered)) {
                     if (unfilteredMatch.start() < searchBegin) {
                         filteredMatches.append(unfilteredMatch);

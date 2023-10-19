@@ -48,7 +48,7 @@ Q_SIGNALS:
 
 private:
     // multiple shemas may be edited. Hence, we need one ColorList for each schema
-    std::map<QString, QVector<KateColorItem>> m_schemas;
+    std::map<QString, QList<KateColorItem>> m_schemas;
     QString m_currentSchema;
     KateColorTreeWidget *ui;
 };
@@ -112,7 +112,7 @@ private:
     QString m_schema;
     int m_hl;
 
-    QHash<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> m_hlDict;
+    QHash<QString, QHash<int, QList<KTextEditor::Attribute::Ptr>>> m_hlDict;
 
     /**
      * store attribute we modify

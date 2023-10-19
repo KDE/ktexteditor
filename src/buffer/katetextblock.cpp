@@ -638,16 +638,16 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
     clearLines();
 }
 
-QVector<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
+QList<TextRange *> TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly) const
 {
     const auto cachedRanges = cachedRangesForLine(line);
-    QVector<TextRange *> ranges;
+    QList<TextRange *> ranges;
     ranges.reserve(m_uncachedRanges.size() + (cachedRanges ? cachedRanges->size() : 0));
     rangesForLine(line, view, rangesWithAttributeOnly, ranges);
     return ranges;
 }
 
-void TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QVector<TextRange *> &outRanges) const
+void TextBlock::rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
 {
     const auto cachedRanges = cachedRangesForLine(line);
     outRanges.clear();

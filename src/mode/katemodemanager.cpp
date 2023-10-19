@@ -26,7 +26,7 @@
 #include <limits>
 // END Includes
 
-static QStringList vectorToList(const QVector<QString> &v)
+static QStringList vectorToList(const QList<QString> &v)
 {
     QStringList l;
     l.reserve(v.size());

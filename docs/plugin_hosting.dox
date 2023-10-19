@@ -13,7 +13,7 @@ The steps needed to find and load basic KTextEditor plugins are roughly as follo
 
 \code
   QStringList plugins_to_load = QStringList() << "openlinkplugin" << "rainbowparens";
-  QVector<KPluginMetaData> plugins = KPluginMetaData::findPlugins(QStringLiteral("ktexteditor"));
+  QList<KPluginMetaData> plugins = KPluginMetaData::findPlugins(QStringLiteral("ktexteditor"));
   for (const auto &plugin_meta_data : plugins) {
     QString identifier = plugin_meta_data.filename().basename();
     if (!plugins_to_load.contains(identifier)) {

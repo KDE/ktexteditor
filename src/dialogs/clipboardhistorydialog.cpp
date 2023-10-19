@@ -70,9 +70,9 @@ public:
         return {};
     }
 
-    void refresh(const QVector<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardEntry)
+    void refresh(const QList<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardEntry)
     {
-        QVector<ClipboardEntry> temp;
+        QList<ClipboardEntry> temp;
 
         for (int i = 0; i < clipboardEntry.size(); ++i) {
             const auto entry = clipboardEntry.at(i);
@@ -93,7 +93,7 @@ public:
     void clear()
     {
         beginResetModel();
-        QVector<ClipboardEntry>().swap(m_modelEntries);
+        QList<ClipboardEntry>().swap(m_modelEntries);
         endResetModel();
     }
 
@@ -105,7 +105,7 @@ private:
         int dateSort;
     };
 
-    QVector<ClipboardEntry> m_modelEntries;
+    QList<ClipboardEntry> m_modelEntries;
 };
 
 class ClipboardHistoryFilterModel : public QSortFilterProxyModel
@@ -261,7 +261,7 @@ void ClipboardHistoryDialog::resetValues()
     m_lineEdit.setPlaceholderText(i18n("Select text to paste."));
 }
 
-void ClipboardHistoryDialog::openDialog(const QVector<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory)
+void ClipboardHistoryDialog::openDialog(const QList<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory)
 {
     m_model->refresh(clipboardHistory);
     resetValues();

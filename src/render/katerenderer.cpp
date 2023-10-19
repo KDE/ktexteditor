@@ -385,7 +385,7 @@ static KTextEditor::Range cursorAtBracket(KTextEditor::ViewPrivate *view, const 
 void KateRenderer::paintIndentMarker(QPainter &paint, uint x, int line)
 {
     const QPen penBackup(paint.pen());
-    static const QVector<qreal> dashPattern = QVector<qreal>() << 1 << 1;
+    static const QList<qreal> dashPattern = QList<qreal>() << 1 << 1;
     QPen myPen;
 
     const bool onBracket = m_currentBracketX == (int)x;
@@ -433,7 +433,7 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return false;
 }
 
-QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly) const
+QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly) const
 {
     // limit number of attributes we can highlight in reasonable time
     const int limitOfRanges = 1024;
@@ -445,7 +445,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
     // Don't compute the highlighting if there isn't going to be any highlighting
     const auto &al = textLine->attributesList();
     if (!(selectionsOnly || !al.isEmpty() || !rangesWithAttributes.isEmpty())) {
-        return QVector<QTextLayout::FormatRange>();
+        return QList<QTextLayout::FormatRange>();
     }
 
     // Add the inbuilt highlighting to the list, limit with limitOfRanges
@@ -521,7 +521,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
 
     // no render ranges, nothing to do, else we loop below endless!
     if (renderRanges.isEmpty()) {
-        return QVector<QTextLayout::FormatRange>();
+        return QList<QTextLayout::FormatRange>();
     }
 
     // Calculate the range which we need to iterate in order to get the highlighting for just this line
@@ -549,7 +549,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
 
     // Main iterative loop.  This walks through each set of highlighting ranges, and stops each
     // time the highlighting changes.  It then creates the corresponding QTextLayout::FormatRanges.
-    QVector<QTextLayout::FormatRange> newHighlight;
+    QList<QTextLayout::FormatRange> newHighlight;
     while (currentPosition < endPosition) {
         renderRanges.advanceTo(currentPosition);
 
@@ -613,7 +613,7 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
     }
 }
 
-void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, const QVector<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
+void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
 {
     const bool rtl = layout->isRightToLeft();
 
@@ -734,7 +734,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             }
         }
 
-        QVector<QTextLayout::FormatRange> additionalFormats;
+        QList<QTextLayout::FormatRange> additionalFormats;
         if (range->length() > 0) {
             // We may have changed the pen, be absolutely sure it gets set back to
             // normal foreground color before drawing text for text that does not
@@ -767,7 +767,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
                 range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats, textClipRect);
 
             } else {
-                range->layout()->draw(&paint, QPoint(-xStart, 0), QVector<QTextLayout::FormatRange>{}, textClipRect);
+                range->layout()->draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
             }
         }
 
@@ -1294,7 +1294,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     l->setTextOption(opt);
 
     // Syntax highlighting, inbuilt and arbitrary
-    QVector<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line());
+    QList<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line());
 
     // Qt works badly if you have RTL text and formats set on that text.
     // It will shape the text according to the given format ranges which

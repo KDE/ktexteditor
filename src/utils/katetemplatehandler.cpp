@@ -280,7 +280,7 @@ void KateTemplateHandler::parseFields(const QString &templateText)
     };
 
     // list of escape backslashes to remove after parsing
-    QVector<KTextEditor::Cursor> stripBackslashes;
+    QList<KTextEditor::Cursor> stripBackslashes;
     auto fieldMatch = field.globalMatch(templateText);
     while (fieldMatch.hasNext()) {
         const auto match = fieldMatch.next();

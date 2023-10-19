@@ -8,8 +8,8 @@
 #define KATE_TEXTLINE_H
 
 #include <KSyntaxHighlighting/foldingregion.h>
+#include <QList>
 #include <QString>
-#include <QVector>
 
 #include <KSyntaxHighlighting/FoldingRegion>
 #include <KSyntaxHighlighting/State>
@@ -343,7 +343,7 @@ public:
      * Accessor to attributes
      * @return attributes of this line
      */
-    const QVector<Attribute> &attributesList() const
+    const QList<Attribute> &attributesList() const
     {
         return m_attributesList;
     }
@@ -410,7 +410,7 @@ private:
     /**
      * attributes of this line
      */
-    QVector<Attribute> m_attributesList;
+    QList<Attribute> m_attributesList;
 
     /**
      * foldings of this line

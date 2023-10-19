@@ -27,7 +27,7 @@ private Q_SLOTS:
     void clipboardTests();
 
 private:
-    QVector<Kate::TextRange *> rangesOnFirstLine();
+    QList<Kate::TextRange *> rangesOnFirstLine();
 };
 
 #endif /* VIEW_TEST_H */

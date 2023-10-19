@@ -354,7 +354,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
         qCDebug(LOG_KTE) << "current line to hl: " << current_line;
         qCDebug(LOG_KTE) << "text length: " << textLine->length() << " attribute list size: " << textLine->attributesList().size();
 
-        const QVector<int> &ml(textLine->attributesList());
+        const QList<int> &ml(textLine->attributesList());
         for (int i = 2; i < ml.size(); i += 3) {
             qCDebug(LOG_KTE) << "start: " << ml.at(i - 2) << " len: " << ml.at(i - 1) << " at: " << ml.at(i) << " ";
         }

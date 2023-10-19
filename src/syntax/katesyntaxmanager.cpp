@@ -20,7 +20,7 @@ KateHlManager *KateHlManager::self()
     return KTextEditor::EditorPrivate::self()->hlManager();
 }
 
-QVector<KSyntaxHighlighting::Theme> KateHlManager::sortedThemes() const
+QList<KSyntaxHighlighting::Theme> KateHlManager::sortedThemes() const
 {
     // get KSyntaxHighlighting themes
     auto themes = repository().themes();

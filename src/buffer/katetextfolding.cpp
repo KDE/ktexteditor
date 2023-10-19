@@ -360,10 +360,10 @@ int TextFolding::visibleLineToLine(int visibleLine) const
     return line;
 }
 
-QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesStartingOnLine(int line) const
+QList<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesStartingOnLine(int line) const
 {
     // results vector
-    QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> results;
+    QList<QPair<qint64, TextFolding::FoldingRangeFlags>> results;
 
     // recursively do binary search
     foldingRangesStartingOnLine(results, m_foldingRanges, line);
@@ -372,9 +372,7 @@ QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRange
     return results;
 }
 
-void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags>> &results,
-                                              const TextFolding::FoldingRange::Vector &ranges,
-                                              int line) const
+void TextFolding::foldingRangesStartingOnLine(QList<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const
 {
     // early out for no folds
     if (ranges.isEmpty()) {
@@ -404,7 +402,7 @@ void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRange
     }
 }
 
-QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
+QList<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
 {
     // toplevel ranges requested or real parent?
     const FoldingRange::Vector *ranges = nullptr;
@@ -415,7 +413,7 @@ QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRange
     }
 
     // no ranges => nothing to do
-    QVector<QPair<qint64, FoldingRangeFlags>> results;
+    QList<QPair<qint64, FoldingRangeFlags>> results;
     if (!ranges) {
         return results;
     }

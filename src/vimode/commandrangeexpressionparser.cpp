@@ -214,7 +214,7 @@ bool CommandRangeExpressionParser::matchForwardSearch(const QString &line, QList
 
     QString pattern = match.captured(1);
     KTextEditor::Range range(m_viInputModeManager->view()->cursorPosition(), m_viInputModeManager->view()->doc()->documentEnd());
-    QVector<KTextEditor::Range> matchingLines = m_viInputModeManager->view()->doc()->searchText(range, pattern, KTextEditor::Regex);
+    QList<KTextEditor::Range> matchingLines = m_viInputModeManager->view()->doc()->searchText(range, pattern, KTextEditor::Regex);
 
     if (matchingLines.isEmpty()) {
         return true;
@@ -236,7 +236,7 @@ bool CommandRangeExpressionParser::matchBackwardSearch(const QString &line, QLis
 
     QString pattern = match.captured(1);
     KTextEditor::Range range(KTextEditor::Cursor(0, 0), m_viInputModeManager->view()->cursorPosition());
-    QVector<KTextEditor::Range> matchingLines = m_viInputModeManager->view()->doc()->searchText(range, pattern, KTextEditor::Regex);
+    QList<KTextEditor::Range> matchingLines = m_viInputModeManager->view()->doc()->searchText(range, pattern, KTextEditor::Regex);
 
     if (matchingLines.isEmpty()) {
         return true;

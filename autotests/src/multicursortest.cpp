@@ -158,7 +158,7 @@ void MulticursorTest::insertRemoveText()
 void MulticursorTest::backspace()
 {
     auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nbaz"), 0, 3);
-    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
+    QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
 
     {
         // Mixed cursors, one doesn't have selection
@@ -194,7 +194,7 @@ void MulticursorTest::backspace()
 void MulticursorTest::keyDelete()
 {
     auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nbaz"), 0, 0);
-    QVector<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
+    QList<KTextEditor::ViewPrivate::PlainSecondaryCursor> cursors;
 
     {
         // Mixed cursors, one doesn't have selection
@@ -854,7 +854,7 @@ void MulticursorTest::testViewClear()
 
 void MulticursorTest::testSetGetCursors()
 {
-    using Cursors = QVector<Cursor>;
+    using Cursors = QList<Cursor>;
     // Simple check
     {
         auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo\nfoo"), 0, 0);
@@ -869,7 +869,7 @@ void MulticursorTest::testSetGetCursors()
         QCOMPARE(view->cursorPosition(), Cursor(0, 1));
         // We have no selection
         QVERIFY(!view->selection());
-        QCOMPARE(view->selectionRanges(), QVector<Range>{});
+        QCOMPARE(view->selectionRanges(), QList<Range>{});
     }
 
     // Test duplicate cursor positions
@@ -895,8 +895,8 @@ void MulticursorTest::testSetGetSelections()
     // Set cursors => press shift+right
     {
         auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar\nfoo"), 0, 0);
-        QCOMPARE(view->cursors(), QVector<Cursor>{Cursor(0, 0)});
-        QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
+        QCOMPARE(view->cursors(), QList<Cursor>{Cursor(0, 0)});
+        QList<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
         view->setCursors(cursors);
         QCOMPARE(view->cursors(), cursors);
         QVERIFY(isSorted(view->cursors()));
@@ -904,7 +904,7 @@ void MulticursorTest::testSetGetSelections()
         QVERIFY(view->selection());
         cursors = {{0, 2}, {1, 2}, {2, 2}};
         QCOMPARE(view->cursors(), cursors);
-        QVector<Range> selections = {Range(0, 1, 0, 2), Range(1, 1, 1, 2), Range(2, 1, 2, 2)};
+        QList<Range> selections = {Range(0, 1, 0, 2), Range(1, 1, 1, 2), Range(2, 1, 2, 2)};
         QCOMPARE(view->selectionRanges(), selections);
         QVERIFY(isSorted(view->selectionRanges()));
         QCOMPARE(view->selectionRange(), selections.front());
@@ -919,10 +919,10 @@ void MulticursorTest::testSetGetSelections()
         QVERIFY(view->selection());
         QCOMPARE(view->selectionRange(), Range(0, 0, 0, 3));
 
-        QVector<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
+        QList<Cursor> cursors = {{0, 1}, {1, 1}, {2, 1}};
         view->setCursors(cursors);
         QVERIFY(!view->selection()); // selection is lost
-        auto expectedCursors = QVector<Cursor>{Cursor(0, 1), Cursor(1, 1)};
+        auto expectedCursors = QList<Cursor>{Cursor(0, 1), Cursor(1, 1)};
         QCOMPARE(view->cursors(), expectedCursors);
     }
 
@@ -931,7 +931,7 @@ void MulticursorTest::testSetGetSelections()
         auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QVERIFY(!view->selection());
-        QVector<Range> selections = {Range(0, 0, 0, 1), Range(1, 0, 1, 1)};
+        QList<Range> selections = {Range(0, 0, 0, 1), Range(1, 0, 1, 1)};
         view->setSelections(selections);
         QVERIFY(view->selection());
         QCOMPARE(view->selectionRanges(), selections);
@@ -942,10 +942,10 @@ void MulticursorTest::testSetGetSelections()
         auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QVERIFY(!view->selection());
-        QVector<Range> selections = {Range(0, 0, 0, 3), Range(0, 1, 0, 2), Range(0, 0, 0, 1)};
+        QList<Range> selections = {Range(0, 0, 0, 3), Range(0, 1, 0, 2), Range(0, 0, 0, 1)};
         view->setSelections(selections);
         QVERIFY(view->selection());
-        QVector<Range> expectedSelections = {Range(0, 0, 0, 3)};
+        QList<Range> expectedSelections = {Range(0, 0, 0, 3)};
         QCOMPARE(view->selectionRanges(), expectedSelections);
 
         view->setSelections({});
@@ -957,10 +957,10 @@ void MulticursorTest::testSetGetSelections()
         auto [doc, view] = createDocAndView(QStringLiteral("foo\nbar"), 0, 0);
 
         QVERIFY(!view->selection());
-        QVector<Range> selections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1), Range(2, 0, 2, 1)};
+        QList<Range> selections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1), Range(2, 0, 2, 1)};
         view->setSelections(selections);
         QVERIFY(view->selection());
-        QVector<Range> expectedSelections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1)};
+        QList<Range> expectedSelections = {Range(0, 0, 0, 3), Range(1, 0, 1, 1)};
         QCOMPARE(view->selectionRanges(), expectedSelections);
     }
 }

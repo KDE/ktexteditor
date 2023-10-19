@@ -50,7 +50,7 @@ void BugTest::deleteSurrogates()
 
     // test delete
     // get UTF-32 representation of original line (before any deletes)
-    QVector<uint> line = doc.line(0).toUcs4();
+    QList<uint> line = doc.line(0).toUcs4();
     QVERIFY(line.size() == 23);
     // delete from start of line
     view->setCursorPosition(Cursor(0, 0));
@@ -58,7 +58,7 @@ void BugTest::deleteSurrogates()
     for (int i = 0; i < line.size(); i++) {
         // get the current line, after `i` delete presses, and convert it to utf32
         // then ensure it's the expected substring of the original line
-        QVector<uint> current = doc.line(0).toUcs4();
+        QList<uint> current = doc.line(0).toUcs4();
         QCOMPARE(current, line.mid(i));
 
         // press the delete key and verify that the new text position isn't invalid
@@ -79,7 +79,7 @@ void BugTest::backspaceSurrogates()
 
     // test backspace
     // get UTF-32 representation of original line (before any backspaces)
-    QVector<uint> line = doc.line(0).toUcs4();
+    QList<uint> line = doc.line(0).toUcs4();
     QVERIFY(line.size() == 23);
     // backspace from end of line
     view->setCursorPosition(Cursor(0, doc.line(0).size()));
@@ -87,7 +87,7 @@ void BugTest::backspaceSurrogates()
     for (int i = 0; i < line.size(); i++) {
         // get the current line, after `i` delete presses, and convert it to utf32
         // then ensure it's the expected substring of the original line
-        QVector<uint> current = doc.line(0).toUcs4();
+        QList<uint> current = doc.line(0).toUcs4();
         QCOMPARE(current, line.mid(0, line.size() - i));
 
         // press the backspace key and verify that the new text position isn't invalid

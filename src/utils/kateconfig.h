@@ -20,8 +20,8 @@
 
 #include <QBitArray>
 #include <QColor>
+#include <QList>
 #include <QObject>
-#include <QVector>
 
 class KConfigGroup;
 namespace KTextEditor
@@ -1530,7 +1530,7 @@ private:
     QColor m_currentLineNumberColor;
     QColor m_separatorColor;
     QColor m_spellingMistakeLineColor;
-    QVector<QColor> m_lineMarkerColor;
+    QList<QColor> m_lineMarkerColor;
 
     QColor m_templateBackgroundColor;
     QColor m_templateEditablePlaceholderColor;

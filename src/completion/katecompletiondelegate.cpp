@@ -20,7 +20,7 @@ KateCompletionDelegate::KateCompletionDelegate(QObject *parent)
 {
 }
 
-static void paintItemViewText(QPainter *p, const QString &text, const QStyleOptionViewItem &options, QVector<QTextLayout::FormatRange> formats)
+static void paintItemViewText(QPainter *p, const QString &text, const QStyleOptionViewItem &options, QList<QTextLayout::FormatRange> formats)
 {
     // set formats
     QTextLayout textLayout(text, options.font, p->device());
@@ -111,9 +111,9 @@ QSize KateCompletionDelegate::sizeHint(const QStyleOptionViewItem &option, const
     return size;
 }
 
-static QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList<QVariant> &customHighlights)
+static QList<QTextLayout::FormatRange> highlightingFromVariantList(const QList<QVariant> &customHighlights)
 {
-    QVector<QTextLayout::FormatRange> ret;
+    QList<QTextLayout::FormatRange> ret;
 
     for (int i = 0; i + 2 < customHighlights.count(); i += 3) {
         if (!customHighlights[i].canConvert<int>() || !customHighlights[i + 1].canConvert<int>() || !customHighlights[i + 2].canConvert<QTextFormat>()) {
@@ -135,7 +135,7 @@ static QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList
     return ret;
 }
 
-QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index)
+QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index)
 {
     QVariant highlight = index.data(KTextEditor::CodeCompletionModel::HighlightingMethod);
 

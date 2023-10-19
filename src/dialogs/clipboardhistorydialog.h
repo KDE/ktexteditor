@@ -31,7 +31,7 @@ public:
     ClipboardHistoryDialog(QWidget *mainwindow, KTextEditor::ViewPrivate *mainWindow);
 
     void resetValues();
-    void openDialog(const QVector<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory);
+    void openDialog(const QList<KTextEditor::EditorPrivate::ClipboardEntry> &clipboardHistory);
 
 private:
     void slotReturnPressed();

@@ -185,7 +185,7 @@ private:
     void selectRange2(KTextEditor::Range range);
 
     KTEXTEDITOR_NO_EXPORT
-    QVector<QString> getCapturePatterns(const QString &pattern) const;
+    QList<QString> getCapturePatterns(const QString &pattern) const;
     KTEXTEDITOR_NO_EXPORT
     void showExtendedContextMenu(bool forPattern, const QPoint &pos);
 

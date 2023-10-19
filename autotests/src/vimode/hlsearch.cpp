@@ -30,7 +30,7 @@ void HlSearchTest::highlightModeTests()
 
     setWindowSize();
 
-    const QVector<Kate::TextRange *> rangesInitial = rangesOnLine(0);
+    const QList<Kate::TextRange *> rangesInitial = rangesOnLine(0);
     Q_ASSERT(rangesInitial.isEmpty() && "Assumptions about ranges are wrong - this test is invalid and may need updating!");
 
     const QColor searchHighlightColor = kate_view->renderer()->config()->searchHighlightColor();
@@ -53,7 +53,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("w*"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 2);
 
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
@@ -70,7 +70,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("w#"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 2);
 
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
@@ -87,7 +87,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 2);
 
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
@@ -104,7 +104,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("?bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 2);
 
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
@@ -121,7 +121,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 2);
 
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
@@ -129,7 +129,7 @@ void HlSearchTest::highlightModeTests()
         }
         TestPressKey(QStringLiteral("\\esc"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -143,7 +143,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/\\\\<\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 6);
 
             TestHighlight(*ranges[0], {0, 0}, {0, 1}, searchHighlightColor);
@@ -161,7 +161,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
             ranges = rangesOnLine(5);
@@ -170,7 +170,7 @@ void HlSearchTest::highlightModeTests()
 
         kate_view->bottom();
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
             ranges = rangesOnLine(5);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
@@ -188,7 +188,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/barx"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
             ranges = rangesOnLine(5);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
@@ -205,7 +205,7 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -222,20 +222,20 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":noh\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         // changing view range should not activate highlighting again
         kate_view->bottom();
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(5);
+            QList<Kate::TextRange *> ranges = rangesOnLine(5);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -250,20 +250,20 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":nohlsearch\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         // changing view range should not activate highlighting again
         kate_view->bottom();
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(5);
+            QList<Kate::TextRange *> ranges = rangesOnLine(5);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -275,19 +275,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":noh\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -300,19 +300,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":noh\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("*"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -325,19 +325,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":noh\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("n"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -350,19 +350,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":noh\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("N"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -378,20 +378,20 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":set-nohls\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         // changing view range should not activate highlighting again
         kate_view->bottom();
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(5);
+            QList<Kate::TextRange *> ranges = rangesOnLine(5);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -406,20 +406,20 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":set-nohlsearch\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         // changing view range should not activate highlighting again
         kate_view->bottom();
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(5);
+            QList<Kate::TextRange *> ranges = rangesOnLine(5);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -431,19 +431,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":set-nohls\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -455,19 +455,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":set-nohls\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("*"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         FinishTest(text.toUtf8().constData());
@@ -479,19 +479,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":set-nohls\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral(":set-hls\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -504,19 +504,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         TestPressKey(QStringLiteral(":set-nohls\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral(":set-hlsearch\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
@@ -529,14 +529,14 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 7}, searchHighlightColor);
         }
 
         kate_view->setInputMode(KTextEditor::View::InputMode::NormalInputMode);
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         kate_view->setInputMode(KTextEditor::View::InputMode::ViInputMode);
@@ -550,31 +550,31 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("/"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("/"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("\\esc"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
@@ -588,13 +588,13 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("\\backspace\\backspace\\backspace"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size());
         }
         TestPressKey(QStringLiteral("\\esc"));
@@ -608,19 +608,19 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/bar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("/rx"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 11}, {0, 13}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("\\esc"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 3);
             TestHighlight(*ranges[0], {0, 5}, {0, 8}, searchHighlightColor);
         }
@@ -632,13 +632,13 @@ void HlSearchTest::highlightModeTests()
 
         TestPressKey(QStringLiteral("/xbar\\enter"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 1);
             TestHighlight(*ranges[0], {0, 4}, {0, 8}, searchHighlightColor);
         }
         TestPressKey(QStringLiteral("wwix\\esc"));
         {
-            QVector<Kate::TextRange *> ranges = rangesOnLine(0);
+            QList<Kate::TextRange *> ranges = rangesOnLine(0);
             QCOMPARE(ranges.size(), rangesInitial.size() + 2);
             TestHighlight(*ranges[0], {0, 4}, {0, 8}, searchHighlightColor);
             TestHighlight(*ranges[1], {0, 14}, {0, 18}, searchHighlightColor);
@@ -661,9 +661,9 @@ void HlSearchTest::highlightModeTests()
     }
 }
 
-QVector<Kate::TextRange *> HlSearchTest::rangesOnLine(int line)
+QList<Kate::TextRange *> HlSearchTest::rangesOnLine(int line)
 {
-    QVector<Kate::TextRange *> arr = kate_document->buffer().rangesForLine(line, kate_view, true);
+    QList<Kate::TextRange *> arr = kate_document->buffer().rangesForLine(line, kate_view, true);
     std::sort(arr.begin(), arr.end(), [](const Kate::TextRange *l, const Kate::TextRange *r) {
         return l->toRange().start() < r->toRange().start();
     });
