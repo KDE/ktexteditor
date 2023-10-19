@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-18 01:41+0000\n"
+"POT-Creation-Date: 2023-10-19 01:40+0000\n"
 "PO-Revision-Date: 2023-08-28 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -104,7 +104,7 @@ msgid "Word Wrap"
 msgstr "자동 줄 바꿈"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:731
 #, kde-format
 msgid "Borders"
 msgstr "경계선"
@@ -322,7 +322,7 @@ msgid "Minim&ap width:"
 msgstr "미니맵 너비(&A):"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Always On"
 msgstr "항상 켬"
@@ -407,8 +407,8 @@ msgstr "클립보드 과거 기록에 항목 없음"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
-#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1010
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:597
+#: dialogs/katedialogs.cpp:727 dialogs/katedialogs.cpp:1009
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1012,140 +1012,140 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr "줄 처음의 빈 공간에 있을 때 들여쓰기 단계 증가시키기(&E)"
 
-#: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
+#: dialogs/katedialogs.cpp:182 dialogs/katedialogs.cpp:184
 #, kde-format
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " 글자"
 
-#: dialogs/katedialogs.cpp:209
+#: dialogs/katedialogs.cpp:208
 #, kde-format
 msgid "Indentation"
 msgstr "들여쓰기"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:289
 #, kde-format
 msgid "Auto Completion"
 msgstr "자동 완성"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:356
 #, kde-format
 msgid "Spellcheck"
 msgstr "맞춤법 검사"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:403 dialogs/katedialogs.cpp:410
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:405
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:406 dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:407
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:471
 #, kde-format
 msgid "Text Navigation"
 msgstr "텍스트 탐색"
 
-#: dialogs/katedialogs.cpp:572
+#: dialogs/katedialogs.cpp:571
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
 msgstr[0] "글자"
 
-#: dialogs/katedialogs.cpp:577
+#: dialogs/katedialogs.cpp:576
 #, kde-format
 msgid "Feature is not active"
 msgstr "기능이 활성화되지 않았음"
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:578
 #, kde-format
 msgid "Disable Feature"
 msgstr "기능 비활성화"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:580
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Markdown 형식을 편집할 때 편리할 수 있습니다"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr "글자 대칭, 자동 괄호와 비슷하게 작동함"
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:584
 #, kde-format
 msgid "Non letter character"
 msgstr "글자가 아닌 문자"
 
-#: dialogs/katedialogs.cpp:699
+#: dialogs/katedialogs.cpp:698
 #, kde-format
 msgid "Editing"
 msgstr "편집"
 
-#: dialogs/katedialogs.cpp:704
+#: dialogs/katedialogs.cpp:703
 #, kde-format
 msgid "Editing Options"
 msgstr "편집 옵션"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:735
 #, kde-format
 msgid "Statusbar"
 msgstr "상태 표시줄"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:737
 #, kde-format
 msgid "Off"
 msgstr "끔"
 
-#: dialogs/katedialogs.cpp:739
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "줄 번호 따라가기"
 
-#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
+#: dialogs/katedialogs.cpp:932 dialogs/katedialogs.cpp:937
 #, kde-format
 msgid "Appearance"
 msgstr "모양"
 
-#: dialogs/katedialogs.cpp:972
+#: dialogs/katedialogs.cpp:971
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1156,63 +1156,63 @@ msgstr ""
 "면 시스템이 충돌했을 때 %1에서 작업 중인 내용을 복원할 수 있습니다. 스왑 파일"
 "을 비활성화하면 시스템 충돌 시 데이터 손실이 발생할 수 있습니다."
 
-#: dialogs/katedialogs.cpp:1011
+#: dialogs/katedialogs.cpp:1010
 #, kde-format
 msgid "Advanced"
 msgstr "고급"
 
-#: dialogs/katedialogs.cpp:1076
+#: dialogs/katedialogs.cpp:1075
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "백업 파일의 접두사나 접미사가 없습니다. 기본 접미사 '~'를 사용합니다."
 
-#: dialogs/katedialogs.cpp:1076
+#: dialogs/katedialogs.cpp:1075
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "백업 파일 접두사나 접미사 없음"
 
-#: dialogs/katedialogs.cpp:1204
+#: dialogs/katedialogs.cpp:1203
 #, kde-format
 msgid "Open/Save"
 msgstr "열기/저장"
 
-#: dialogs/katedialogs.cpp:1209
+#: dialogs/katedialogs.cpp:1208
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "파일 열기 및 저장"
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1231
 #, kde-format
 msgid "&Line:"
 msgstr "줄(&L):"
 
-#: dialogs/katedialogs.cpp:1233
+#: dialogs/katedialogs.cpp:1232
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "클립보드의 줄 번호로 이동"
 
-#: dialogs/katedialogs.cpp:1244
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "Go to"
 msgstr "이동"
 
-#: dialogs/katedialogs.cpp:1324
+#: dialogs/katedialogs.cpp:1323
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "클립보드에 줄 번호 없음"
 
-#: dialogs/katedialogs.cpp:1388
+#: dialogs/katedialogs.cpp:1387
 #, kde-format
 msgid "Dictionary:"
 msgstr "사전:"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1439
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "자동 새로 고침 사용하기"
 
-#: dialogs/katedialogs.cpp:1443
+#: dialogs/katedialogs.cpp:1442
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1221,59 +1221,59 @@ msgstr ""
 "지금부터 탭이나 창을 닫을 때까지 디스크에서의 변경 사항에 대해서 경고하지 않"
 "고 새로 고칩니다."
 
-#: dialogs/katedialogs.cpp:1448
+#: dialogs/katedialogs.cpp:1447
 #, kde-format
 msgid "View &Difference"
 msgstr "차이 보기(&D)"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1449
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "변경 사항의 차이점을 표시합니다."
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "&Reload"
 msgstr "새로 고침(&R)"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1456
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "파일을 디스크에서 새로 고칩니다. 저장되지 않은 변경 사항은 무시됩니다."
 
-#: dialogs/katedialogs.cpp:1461
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "파일 닫기(&C)"
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "&Save As..."
 msgstr "다른 이름으로 저장(&S)..."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "파일의 위치를 선택하고 다시 저장하도록 합니다."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "무시(&I)"
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "추가 변경 없이 디스크의 변경 사항을 무시합니다."
 
-#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1282,18 +1282,18 @@ msgstr ""
 "diff 명령이 실패했습니다. diff(1)가 설치되어 있고 PATH에 포함되어 있는지 확인"
 "하십시오."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "diff 생성 실패"
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "파일이 같습니다."
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 출력"
@@ -2080,17 +2080,17 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "새 파일"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:222
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "문서 자동 새로 고침"
 
-#: document/katedocument.cpp:224
+#: document/katedocument.cpp:223
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "디스크에서 문서가 변경되었을 때 자동으로 새로 고침"
 
-#: document/katedocument.cpp:2265
+#: document/katedocument.cpp:2264
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2099,24 +2099,24 @@ msgstr ""
 "파일 %1을(를) 읽을 수 없으므로 불러올 수 없습니다.<br />읽기 권한이 있는지 확"
 "인하십시오."
 
-#: document/katedocument.cpp:2270
+#: document/katedocument.cpp:2269
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "다시 시도"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
 #, kde-format
 msgid "&Close"
 msgstr "닫기(&C)"
 
-#: document/katedocument.cpp:2275 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "메시지 닫기"
 
-#: document/katedocument.cpp:2407
+#: document/katedocument.cpp:2406
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2129,7 +2129,7 @@ msgstr ""
 "<br />파일을 올바른 인코딩으로 다시 열거나 도구 메뉴에서 읽기/쓰기 모드를 활"
 "성화시키면 편집할 수 있습니다."
 
-#: document/katedocument.cpp:2426
+#: document/katedocument.cpp:2425
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2141,17 +2141,17 @@ msgstr ""
 "가장 긴 줄에는 %3자가 들어 있습니다.<br/>매우 긴 줄은 자동으로 둘러 싸여졌으"
 "며, 이를 저장하면 내용을 수정하기 때문에 문서를 읽기 전용으로 열었습니다."
 
-#: document/katedocument.cpp:2433
+#: document/katedocument.cpp:2432
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "임시로 한계를 올리고 파일 새로 고침"
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2435
 #, kde-format
 msgid "Close"
 msgstr "닫기"
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2462
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2160,18 +2160,18 @@ msgstr ""
 "이 수정하지 않은 파일을 저장하시겠습니까? 디스크에 있는 파일의 변경 사항을 덮"
 "어쓸 수 있습니다."
 
-#: document/katedocument.cpp:2464
+#: document/katedocument.cpp:2463
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "수정하지 않은 파일 저장하기"
 
-#: document/katedocument.cpp:2465 document/katedocument.cpp:2476
-#: document/katedocument.cpp:2492
+#: document/katedocument.cpp:2464 document/katedocument.cpp:2475
+#: document/katedocument.cpp:2491
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "그래도 저장하기"
 
-#: document/katedocument.cpp:2474
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2180,14 +2180,14 @@ msgstr ""
 "이 파일을 정말로 저장하시겠습니까? 열린 파일과 디스크에 있는 파일이 둘 다 변"
 "경되었습니다. 데이터 손실이 발생할 수 있습니다."
 
-#: document/katedocument.cpp:2475 document/katedocument.cpp:2491
-#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2474 document/katedocument.cpp:2490
+#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "데이터 손실 가능성"
 
-#: document/katedocument.cpp:2489
+#: document/katedocument.cpp:2488
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2196,7 +2196,7 @@ msgstr ""
 "선택한 인코딩으로는 이 문서에 사용된 모든 유니코드 문자를 저장할 수 없습니"
 "다. 그래도 저장하시겠습니까? 데이터 손실이 발생할 수 있습니다."
 
-#: document/katedocument.cpp:2558
+#: document/katedocument.cpp:2557
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2211,7 +2211,7 @@ msgstr ""
 "원본 파일이 손상되었거나 삭제되었을 수도 있습니다. 파일을 기록하기 전에 앱을 "
 "닫지 마십시오."
 
-#: document/katedocument.cpp:2679
+#: document/katedocument.cpp:2678
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2224,49 +2224,49 @@ msgstr ""
 "는 쓰려고 하는 미디어가 가득 찼거나 파일이 있는 디렉터리를 읽을 수만 있는 경"
 "우입니다."
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2682
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "백업 복사본을 만들 수 없습니다."
 
-#: document/katedocument.cpp:2684
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "그래도 저장 시도하기"
 
-#: document/katedocument.cpp:2806
+#: document/katedocument.cpp:2805
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "그래도 이 파일을 닫으시겠습니까? 데이터 손실이 있을 수 있습니다."
 
-#: document/katedocument.cpp:2808
+#: document/katedocument.cpp:2807
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "그래도 닫기"
 
-#: document/katedocument.cpp:4622
+#: document/katedocument.cpp:4621
 #, kde-format
 msgid "Untitled"
 msgstr "제목 없음"
 
-#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
-#: document/katedocument.cpp:4983 document/katedocument.cpp:5767
-#: document/katedocument.cpp:5957
+#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
+#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
+#: document/katedocument.cpp:5956
 #, kde-format
 msgid "Save File"
 msgstr "파일 저장"
 
-#: document/katedocument.cpp:4748
+#: document/katedocument.cpp:4747
 #, kde-format
 msgid "Save failed"
 msgstr "저장 실패"
 
-#: document/katedocument.cpp:4994
+#: document/katedocument.cpp:4993
 #, kde-format
 msgid "Save Copy of File"
 msgstr "파일 복사본 저장"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5005
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2278,7 +2278,7 @@ msgstr ""
 "\n"
 "이 파일에 쓸 수 있는 권한이 있거나 디스크 공간이 충분한지 확인하십시오."
 
-#: document/katedocument.cpp:5284
+#: document/katedocument.cpp:5283
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2291,7 +2291,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5290
+#: document/katedocument.cpp:5289
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2304,22 +2304,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5599
+#: document/katedocument.cpp:5598
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "파일 '%1'이(가) 디스크에서 수정되었습니다."
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5601
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "파일 '%1'을(를) 디스크에 만들었습니다."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5604
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "파일 '%1'이(가) 디스크에서 삭제되었습니다."
 
-#: document/katedocument.cpp:5942
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2330,17 +2330,17 @@ msgstr ""
 "다.\n"
 "변경 사항을 저장하거나 무시하시겠습니까?"
 
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:5944
 #, kde-format
 msgid "Close Document"
 msgstr "문서 닫기"
 
-#: document/katedocument.cpp:6056
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "파일 <a href=\"%1\">%2</a>을(를) 불러오고 있습니다."
 
-#: document/katedocument.cpp:6061
+#: document/katedocument.cpp:6060
 #, kde-format
 msgid "&Abort Loading"
 msgstr "불러오기 중단(&A)"
@@ -3418,7 +3418,7 @@ msgstr "스크립트 %2의 명령 '%1'에 대한 도움말 없음"
 msgid "Error loading script %1"
 msgstr "스크립트 %1 불러오는 중 오류 발생"
 
-#: script/katescriptmanager.cpp:311
+#: script/katescriptmanager.cpp:310
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr "모든 자바스크립트 파일 새로 고침 (인덴터, 명령행 스크립트, 기타)."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-18 01:41+0000\n"
+"POT-Creation-Date: 2023-10-19 01:40+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -104,7 +104,7 @@ msgid "Word Wrap"
 msgstr "Bọc từ"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:732
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:731
 #, kde-format
 msgid "Borders"
 msgstr "Viền"
@@ -330,7 +330,7 @@ msgid "Minim&ap width:"
 msgstr "Độ &rộng bản đồ:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:740
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:739
 #, kde-format
 msgid "Always On"
 msgstr "Luôn hiện"
@@ -417,8 +417,8 @@ msgstr "Không có gì trong lịch sử bảng nháp"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:598
-#: dialogs/katedialogs.cpp:728 dialogs/katedialogs.cpp:1010
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:597
+#: dialogs/katedialogs.cpp:727 dialogs/katedialogs.cpp:1009
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1034,140 +1034,140 @@ msgstr ""
 msgid "Increase indentation level if in l&eading blank space"
 msgstr "Tăng mức thụt lề khi ở khoảng trống ở đầ&u"
 
-#: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
+#: dialogs/katedialogs.cpp:182 dialogs/katedialogs.cpp:184
 #, kde-format
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " kí tự"
 
-#: dialogs/katedialogs.cpp:209
+#: dialogs/katedialogs.cpp:208
 #, kde-format
 msgid "Indentation"
 msgstr "Thụt lề"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:289
 #, kde-format
 msgid "Auto Completion"
 msgstr "Hoàn tất tự động"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:356
 #, kde-format
 msgid "Spellcheck"
 msgstr "Kiểm tra đánh vần"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:403 dialogs/katedialogs.cpp:410
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:405
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:406 dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:407
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:471
 #, kde-format
 msgid "Text Navigation"
 msgstr "Điều hướng văn bản"
 
-#: dialogs/katedialogs.cpp:572
+#: dialogs/katedialogs.cpp:571
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " kí tự"
 
-#: dialogs/katedialogs.cpp:577
+#: dialogs/katedialogs.cpp:576
 #, kde-format
 msgid "Feature is not active"
 msgstr "Tính năng đang không hoạt động"
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:578
 #, kde-format
 msgid "Disable Feature"
 msgstr "Tắt tính năng"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:580
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Có thể có ích với Markdown"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr "Kí tự đối xứng, tương tự nhưng không hoàn toàn giống ngoặc tự động"
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:584
 #, kde-format
 msgid "Non letter character"
 msgstr "Kí tự không phải chữ cái"
 
-#: dialogs/katedialogs.cpp:699
+#: dialogs/katedialogs.cpp:698
 #, kde-format
 msgid "Editing"
 msgstr "Sửa"
 
-#: dialogs/katedialogs.cpp:704
+#: dialogs/katedialogs.cpp:703
 #, kde-format
 msgid "Editing Options"
 msgstr "Các lựa chọn sửa"
 
-#: dialogs/katedialogs.cpp:736
+#: dialogs/katedialogs.cpp:735
 #, kde-format
 msgid "Statusbar"
 msgstr "Thanh trạng thái"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:737
 #, kde-format
 msgid "Off"
 msgstr "Tắt"
 
-#: dialogs/katedialogs.cpp:739
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Theo số thứ tự dòng"
 
-#: dialogs/katedialogs.cpp:933 dialogs/katedialogs.cpp:938
+#: dialogs/katedialogs.cpp:932 dialogs/katedialogs.cpp:937
 #, kde-format
 msgid "Appearance"
 msgstr "Diện mạo"
 
-#: dialogs/katedialogs.cpp:972
+#: dialogs/katedialogs.cpp:971
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1179,12 +1179,12 @@ msgstr ""
 "thống. Tắt các tệp hoán đổi có thể sẽ gây mất dữ liệu nếu xảy ra sự cố hệ "
 "thống."
 
-#: dialogs/katedialogs.cpp:1011
+#: dialogs/katedialogs.cpp:1010
 #, kde-format
 msgid "Advanced"
 msgstr "Nâng cao"
 
-#: dialogs/katedialogs.cpp:1076
+#: dialogs/katedialogs.cpp:1075
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1192,114 +1192,114 @@ msgstr ""
 "Bạn chưa cung cấp hậu tố hoặc tiền tố bản dự phòng. Đang dùng hậu tố mặc "
 "định: '~'"
 
-#: dialogs/katedialogs.cpp:1076
+#: dialogs/katedialogs.cpp:1075
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Không có hậu tố hoặc tiền tố bản dự phòng"
 
-#: dialogs/katedialogs.cpp:1204
+#: dialogs/katedialogs.cpp:1203
 #, kde-format
 msgid "Open/Save"
 msgstr "Mở/Lưu"
 
-#: dialogs/katedialogs.cpp:1209
+#: dialogs/katedialogs.cpp:1208
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Mở & lưu tệp"
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1231
 #, kde-format
 msgid "&Line:"
 msgstr "&Dòng:"
 
-#: dialogs/katedialogs.cpp:1233
+#: dialogs/katedialogs.cpp:1232
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Đi đến dòng thứ ... trong bảng nháp"
 
-#: dialogs/katedialogs.cpp:1244
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "Go to"
 msgstr "Đi đến"
 
-#: dialogs/katedialogs.cpp:1324
+#: dialogs/katedialogs.cpp:1323
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Không tìm thấy số thứ tự dòng hợp lệ trong bảng nháp"
 
-#: dialogs/katedialogs.cpp:1388
+#: dialogs/katedialogs.cpp:1387
 #, kde-format
 msgid "Dictionary:"
 msgstr "Từ điển:"
 
-#: dialogs/katedialogs.cpp:1440
+#: dialogs/katedialogs.cpp:1439
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Bật tải lại tự động"
 
-#: dialogs/katedialogs.cpp:1443
+#: dialogs/katedialogs.cpp:1442
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1448
+#: dialogs/katedialogs.cpp:1447
 #, kde-format
 msgid "View &Difference"
 msgstr "&Xem sự khác nhau"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1449
 #, fuzzy, kde-format
 #| msgid "Shows a diff of the changes"
 msgid "Shows a diff of the changes."
 msgstr "Hiện phần chênh của các thay đổi"
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1454
 #, kde-format
 msgid "&Reload"
 msgstr "&Tải lại"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1456
 #, fuzzy, kde-format
 #| msgid "Reload the file from disk. Unsaved changes will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Tải lại tệp từ đĩa. Các thay đổi chưa lưu sẽ bị mất."
 
-#: dialogs/katedialogs.cpp:1461
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Đón&g tệp"
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1462
 #, fuzzy, kde-format
 #| msgid "Close the file, discarding its content."
 msgid "Closes the file, discarding its content."
 msgstr "Đóng tệp, loại bỏ nội dung."
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgid "&Save As..."
 msgstr "&Lưu thành..."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Cho bạn chọn một địa điểm rồi lưu tệp lại lần nữa."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1474 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Bỏ qua"
 
-#: dialogs/katedialogs.cpp:1475
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Bỏ qua các thay đổi trên đĩa, không có hành động nào."
 
-#: dialogs/katedialogs.cpp:1541 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1308,18 +1308,18 @@ msgstr ""
 "Lệnh diff thất bại. Vui lòng kiểm tra rằng diff(1) được cài đặt và nằm trong "
 "biến PATH."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Lỗi tạo phần chênh"
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "Các tệp giống nhau."
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Đầu ra diff"
@@ -2125,17 +2125,17 @@ msgctxt "short translation, user created new file"
 msgid "New file"
 msgstr "Tệp mới"
 
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:222
 #, kde-format
 msgid "Auto Reload Document"
 msgstr "Tự động tải lại tài liệu"
 
-#: document/katedocument.cpp:224
+#: document/katedocument.cpp:223
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Tự động tải lại tài liệu khi nó bị thay đổi trên đĩa"
 
-#: document/katedocument.cpp:2265
+#: document/katedocument.cpp:2264
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2144,25 +2144,25 @@ msgstr ""
 "Không tải được tệp %1, vì không thể đọc được.<br />Hãy kiểm tra rằng bạn có "
 "quyền đọc tệp này."
 
-#: document/katedocument.cpp:2270
+#: document/katedocument.cpp:2269
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Tải lại"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
 #, kde-format
 msgid "&Close"
 msgstr "Đón&g"
 
-#: document/katedocument.cpp:2275 document/katedocument.cpp:6553
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Đóng thông điệp"
 
-#: document/katedocument.cpp:2407
+#: document/katedocument.cpp:2406
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2175,7 +2175,7 @@ msgstr ""
 "dung của nó.<br />Hoặc mở lại tệp này với bộ mã hoá đúng, hoặc bật lại chế "
 "độ đọc-ghi trong trình đơn 'Công cụ' để có thể chỉnh sửa nó."
 
-#: document/katedocument.cpp:2426
+#: document/katedocument.cpp:2425
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2188,17 +2188,17 @@ msgstr ""
 "và tài liệu đã được đặt sang chế độ chỉ đọc, vì việc lưu lại sẽ thay đổi nội "
 "dung của nó."
 
-#: document/katedocument.cpp:2433
+#: document/katedocument.cpp:2432
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Tạm thời tăng giới hạn và tải lại tệp"
 
-#: document/katedocument.cpp:2436
+#: document/katedocument.cpp:2435
 #, kde-format
 msgid "Close"
 msgstr "Đóng"
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2462
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2207,18 +2207,18 @@ msgstr ""
 "Bạn có thật sự muốn lưu tệp chưa chỉnh sửa này? Việc này có thể ghi đè lên "
 "dữ liệu đã thay đổi trong tệp trên đĩa."
 
-#: document/katedocument.cpp:2464
+#: document/katedocument.cpp:2463
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Đang thử lưu tệp chưa chỉnh sửa"
 
-#: document/katedocument.cpp:2465 document/katedocument.cpp:2476
-#: document/katedocument.cpp:2492
+#: document/katedocument.cpp:2464 document/katedocument.cpp:2475
+#: document/katedocument.cpp:2491
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Vẫn lưu"
 
-#: document/katedocument.cpp:2474
+#: document/katedocument.cpp:2473
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2227,14 +2227,14 @@ msgstr ""
 "Bạn có thật sự muốn lưu tệp này? Cả tệp đang mở của bạn lẫn tệp trên đĩa đều "
 "đã bị thay đổi. Một phần dữ liệu có thể bị mất."
 
-#: document/katedocument.cpp:2475 document/katedocument.cpp:2491
-#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2474 document/katedocument.cpp:2490
+#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Có thể mất dữ liệu"
 
-#: document/katedocument.cpp:2489
+#: document/katedocument.cpp:2488
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2243,7 +2243,7 @@ msgstr ""
 "Bộ mã hoá đã chọn không thể mã hoá mọi kí tự Unicode trong tài liệu này. Bạn "
 "có thật sự muốn lưu nó không? Một phần dữ liệu có thể bị mất."
 
-#: document/katedocument.cpp:2558
+#: document/katedocument.cpp:2557
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2258,7 +2258,7 @@ msgstr ""
 "Tệp ban đầu có thể đã bị mất hoặc bị hỏng. Đừng thoát ứng dụng cho đến khi "
 "tệp đó được ghi thành công."
 
-#: document/katedocument.cpp:2679
+#: document/katedocument.cpp:2678
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2270,50 +2270,50 @@ msgstr ""
 "khi lưu, bạn có thể mất dữ liệu của tệp này. Một lí do có thể là phương tiện "
 "mà bạn ghi vào thì đã đầy, hoặc bạn chỉ có quyền đọc thư mục của tệp đó."
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2682
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Tạo bản sao dự phòng thất bại."
 
-#: document/katedocument.cpp:2684
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Vẫn thử lưu"
 
-#: document/katedocument.cpp:2806
+#: document/katedocument.cpp:2805
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Bạn có thật sự muốn tiếp tục đóng tệp này? Có thể xảy ra mất mát dữ liệu."
 
-#: document/katedocument.cpp:2808
+#: document/katedocument.cpp:2807
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Vẫn đóng"
 
-#: document/katedocument.cpp:4622
+#: document/katedocument.cpp:4621
 #, kde-format
 msgid "Untitled"
 msgstr "Không tên"
 
-#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
-#: document/katedocument.cpp:4983 document/katedocument.cpp:5767
-#: document/katedocument.cpp:5957
+#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
+#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
+#: document/katedocument.cpp:5956
 #, kde-format
 msgid "Save File"
 msgstr "Lưu tệp"
 
-#: document/katedocument.cpp:4748
+#: document/katedocument.cpp:4747
 #, kde-format
 msgid "Save failed"
 msgstr "Lưu thất bại"
 
-#: document/katedocument.cpp:4994
+#: document/katedocument.cpp:4993
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Lưu bản sao của tệp"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5005
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2326,7 +2326,7 @@ msgstr ""
 "Hãy kiểm tra rằng bạn có quyền ghi vào tệp này hoặc vẫn còn đủ chỗ trống "
 "trên đĩa."
 
-#: document/katedocument.cpp:5284
+#: document/katedocument.cpp:5283
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2339,7 +2339,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5290
+#: document/katedocument.cpp:5289
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2352,22 +2352,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5599
+#: document/katedocument.cpp:5598
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Tệp '%1' đã bị chỉnh sửa trên đĩa."
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5601
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Tệp '%1' đã được tạo trên đĩa."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5604
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Tệp '%1' đã bị xoá trên đĩa."
 
-#: document/katedocument.cpp:5942
+#: document/katedocument.cpp:5941
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2376,17 +2376,17 @@ msgstr ""
 "Tài liệu \"%1\" đã bị chỉnh sửa.\n"
 "Bạn muốn lưu các thay đổi hay loại bỏ chúng?"
 
-#: document/katedocument.cpp:5945
+#: document/katedocument.cpp:5944
 #, kde-format
 msgid "Close Document"
 msgstr "Đóng tài liệu"
 
-#: document/katedocument.cpp:6056
+#: document/katedocument.cpp:6055
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Tệp <a href=\"%1\">%2</a> vẫn đang tải."
 
-#: document/katedocument.cpp:6061
+#: document/katedocument.cpp:6060
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Huỷ bỏ &việc tải"
@@ -3484,7 +3484,7 @@ msgstr "Không có trợ giúp nào được xác định cho lệnh '%1' trong 
 msgid "Error loading script %1"
 msgstr "Lỗi tải kịch bản %1"
 
-#: script/katescriptmanager.cpp:311
+#: script/katescriptmanager.cpp:310
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
 msgstr ""
