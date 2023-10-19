@@ -4669,7 +4669,7 @@ void KateViewInternal::cursorMoved()
     view()->updateRangesIn(KTextEditor::Attribute::ActivateCaretIn);
 
 #ifndef QT_NO_ACCESSIBILITY
-    if (QAccessible::isActive()) {
+    if (view()->m_accessibilityEnabled && QAccessible::isActive()) {
         QAccessibleTextCursorEvent ev(this, static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, m_cursor));
         QAccessible::updateAccessibility(&ev);
     }
@@ -4942,7 +4942,7 @@ void KateViewInternal::hideBracketMatchPreview()
 void KateViewInternal::documentTextInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
 #ifndef QT_NO_ACCESSIBILITY
-    if (QAccessible::isActive()) {
+    if (view()->m_accessibilityEnabled && QAccessible::isActive()) {
         QAccessibleTextInsertEvent ev(this,
                                       static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, range.start()),
                                       document->text(range));
@@ -4954,7 +4954,7 @@ void KateViewInternal::documentTextInserted(KTextEditor::Document *document, KTe
 void KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/, KTextEditor::Range range, const QString &oldText)
 {
 #ifndef QT_NO_ACCESSIBILITY
-    if (QAccessible::isActive()) {
+    if (view()->m_accessibilityEnabled && QAccessible::isActive()) {
         QAccessibleTextRemoveEvent ev(this,
                                       static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, range.start()),
                                       oldText);

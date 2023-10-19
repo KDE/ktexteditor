@@ -2368,6 +2368,8 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_cut->setEnabled(doc()->isReadWrite() && (selection() || m_config->smartCopyCut()));
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
 
+    m_accessibilityEnabled = m_config->value(KateViewConfig::EnableAccessibility).toBool();
+
     // if not disabled, update status bar
     if (m_statusBar) {
         m_statusBar->updateStatus();

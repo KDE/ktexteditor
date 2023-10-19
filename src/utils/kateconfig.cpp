@@ -561,6 +561,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowStatusbarFileEncoding, "Show File Encoding", QString(), true));
     addConfigEntry(ConfigEntry(StatusbarLineColumnCompact, "Statusbar Line Column Compact Mode", QString(), true));
     addConfigEntry(ConfigEntry(ShowStatusbarEOL, "Shoe Line Ending Type in Statusbar", QString(), false));
+    addConfigEntry(ConfigEntry(EnableAccessibility, "Enable Accessibility", QString(), true));
 
     // Never forget to finalize or the <CommandName> becomes not available
     finalizeConfigEntries();

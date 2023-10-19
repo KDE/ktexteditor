@@ -888,6 +888,7 @@ private:
 
     bool m_hasWrap;
     bool m_forceRTL = false;
+    bool m_accessibilityEnabled = false;
 
     KTextEditor::DocumentPrivate *const m_doc;
     Kate::TextFolding m_textFolding;

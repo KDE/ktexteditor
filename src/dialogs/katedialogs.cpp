@@ -516,6 +516,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     });
     observeChanges(ui->cmbInputMode);
     observeChanges(ui->sbWordWrap);
+    observeChanges(ui->chkAccessibility);
 
     layout->addWidget(newWidget);
 }
@@ -553,6 +554,7 @@ void KateEditGeneralConfigTab::apply()
     KateViewConfig::global()->setValue(KateViewConfig::TextDragAndDrop, ui->chkTextDragAndDrop->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::SmartCopyCut, ui->chkSmartCopyCut->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ClipboardHistoryEntries, ui->sbClipboardHistoryEntries->value());
+    KateViewConfig::global()->setValue(KateViewConfig::EnableAccessibility, ui->chkAccessibility->isChecked());
 
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -590,6 +592,7 @@ void KateEditGeneralConfigTab::reload()
 
     const int id = static_cast<int>(KateViewConfig::global()->inputMode());
     ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
+    ui->chkAccessibility->setChecked(KateViewConfig::global()->value(KateViewConfig::EnableAccessibility).toBool());
 }
 
 QString KateEditGeneralConfigTab::name() const

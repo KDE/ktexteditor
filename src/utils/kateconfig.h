@@ -1047,6 +1047,7 @@ public:
         ShowStatusbarFileEncoding,
         StatusbarLineColumnCompact,
         ShowStatusbarEOL,
+        EnableAccessibility,
     };
 
 public:
