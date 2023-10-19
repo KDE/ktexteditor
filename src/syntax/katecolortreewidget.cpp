@@ -176,7 +176,7 @@ public:
         }
 
         painter->setClipRect(option.rect);
-        KateColorTreeItem *item = dynamic_cast<KateColorTreeItem *>(m_tree->itemFromIndex(index));
+        KateColorTreeItem *item = static_cast<KateColorTreeItem *>(m_tree->itemFromIndex(index));
 
         // BEGIN: draw color button
         if (index.column() == 1) {
@@ -260,7 +260,7 @@ bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
     }
 
     if (accept) {
-        KateColorTreeItem *item = dynamic_cast<KateColorTreeItem *>(itemFromIndex(index));
+        KateColorTreeItem *item = static_cast<KateColorTreeItem *>(itemFromIndex(index));
         const QColor color = item->useDefaultColor() ? item->defaultColor() : item->color();
 
         if (index.column() == 1) {
@@ -298,7 +298,7 @@ void KateColorTreeWidget::selectDefaults()
     for (int a = 0; a < topLevelItemCount(); ++a) {
         QTreeWidgetItem *top = topLevelItem(a);
         for (int b = 0; b < top->childCount(); ++b) {
-            KateColorTreeItem *it = dynamic_cast<KateColorTreeItem *>(top->child(b));
+            KateColorTreeItem *it = static_cast<KateColorTreeItem *>(top->child(b));
             Q_ASSERT(it);
             if (!it->useDefaultColor()) {
                 it->setUseDefaultColor(true);
@@ -348,7 +348,7 @@ QVector<KateColorItem> KateColorTreeWidget::colorItems() const
     for (int a = 0; a < topLevelItemCount(); ++a) {
         QTreeWidgetItem *top = topLevelItem(a);
         for (int b = 0; b < top->childCount(); ++b) {
-            KateColorTreeItem *item = dynamic_cast<KateColorTreeItem *>(top->child(b));
+            KateColorTreeItem *item = static_cast<KateColorTreeItem *>(top->child(b));
             Q_ASSERT(item);
             items.append(item->colorItem());
         }
@@ -361,7 +361,7 @@ QColor KateColorTreeWidget::findColor(const QString &key) const
     for (int a = 0; a < topLevelItemCount(); ++a) {
         QTreeWidgetItem *top = topLevelItem(a);
         for (int b = 0; b < top->childCount(); ++b) {
-            KateColorTreeItem *item = dynamic_cast<KateColorTreeItem *>(top->child(b));
+            KateColorTreeItem *item = static_cast<KateColorTreeItem *>(top->child(b));
             if (item->key() == key) {
                 if (item->useDefaultColor()) {
                     return item->defaultColor();

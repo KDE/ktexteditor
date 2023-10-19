@@ -14,6 +14,7 @@
 #include "katehighlight.h"
 
 #include "katedocument.h"
+#include "kateextendedattribute.h"
 #include "katesyntaxmanager.h"
 // END
 

@@ -14,7 +14,6 @@
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "katesyntaxmanager.h"
-#include "katetextline.h"
 #include "kateview.h"
 
 #include <KLocalizedString>

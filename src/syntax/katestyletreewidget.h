@@ -12,7 +12,7 @@
 
 #include <QTreeWidget>
 
-#include "kateextendedattribute.h"
+#include "attribute.h"
 
 /**
  * QTreeWidget that automatically adds columns for KateStyleListItems and provides a

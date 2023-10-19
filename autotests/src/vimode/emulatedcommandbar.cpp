@@ -1194,7 +1194,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     // Check that we can find multiple words on one line.
     BeginTest(QStringLiteral("bar (foo) [xyz]"));
     TestPressKey(QStringLiteral("/\\ctrl- "));
-    QStringListModel *completerStringListModel = dynamic_cast<QStringListModel *>(emulatedCommandBarCompleter()->model());
+    QStringListModel *completerStringListModel = static_cast<QStringListModel *>(emulatedCommandBarCompleter()->model());
     Q_ASSERT(completerStringListModel);
     QCOMPARE(completerStringListModel->stringList(), QStringList() << QStringLiteral("bar") << QStringLiteral("foo") << QStringLiteral("xyz"));
     TestPressKey(QStringLiteral("\\enter\\enter")); // Dismiss completion, then bar.

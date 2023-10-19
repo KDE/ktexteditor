@@ -16,6 +16,8 @@
 #include <KCompressionDevice>
 #include <KEncodingProber>
 
+#include "katetextbuffer.h"
+
 namespace Kate
 {
 /**

@@ -10,7 +10,6 @@
 #include "kateglobal.h"
 #include "katemodemanager.h"
 #include "katepartdebug.h"
-#include "katesyntaxmanager.h"
 
 #include <QAbstractItemView>
 #include <QApplication>

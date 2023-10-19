@@ -13,8 +13,8 @@
 
 #include "kateautoindent.h"
 
+#include "attribute.h"
 #include "katedocument.h"
-#include "kateextendedattribute.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
 #include "kateindentscript.h"
@@ -25,8 +25,6 @@
 
 #include <QActionGroup>
 #include <QMenu>
-
-#include <cctype>
 
 namespace
 {

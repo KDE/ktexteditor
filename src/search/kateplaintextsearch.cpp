@@ -8,11 +8,9 @@
 // BEGIN includes
 #include "kateplaintextsearch.h"
 
-#include "kateregexpsearch.h"
-
-#include <ktexteditor/document.h>
-
 #include "katepartdebug.h"
+#include "kateregexpsearch.h"
+#include <ktexteditor/document.h>
 
 #include <QRegularExpression>
 // END  includes

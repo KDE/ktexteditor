@@ -8,7 +8,6 @@
 
 #include "katesedcmd.h"
 
-#include "katecmd.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"

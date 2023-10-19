@@ -20,16 +20,12 @@
 #include <vimode/keyparser.h>
 #include <vimode/modes/normalvimode.h>
 
-#include "../history.h"
-
 #include "../registers.h"
 
 #include <QApplication>
 #include <QLabel>
 #include <QLineEdit>
 #include <QVBoxLayout>
-
-#include <algorithm>
 
 using namespace KateVi;
 

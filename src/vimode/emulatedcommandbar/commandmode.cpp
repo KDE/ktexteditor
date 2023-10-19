@@ -49,7 +49,7 @@ CommandMode::CommandMode(EmulatedCommandBar *emulatedCommandBar,
     cmds.push_back(SedReplace::self());
     cmds.push_back(BufferCommands::self());
 
-    for (KTextEditor::Command *cmd : KateScriptManager::self()->commandLineScripts()) {
+    for (KateCommandLineScript *cmd : KateScriptManager::self()->commandLineScripts()) {
         cmds.push_back(cmd);
     }
 

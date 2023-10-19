@@ -1432,7 +1432,7 @@ void ModesTest::VisualExternalTests()
     kate_view->setInputMode(View::ViInputMode);
     qDebug() << "selected: " << kate_document->text(kate_view->selectionRange());
     QVERIFY(kate_view->currentInputMode()->viewInputMode() == View::ViInputMode);
-    vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
+    vi_input_mode = static_cast<KateViInputMode *>(kate_view->currentInputMode());
     vi_input_mode_manager = vi_input_mode->viInputModeManager();
     QVERIFY(vi_input_mode_manager->getCurrentViMode() == KateVi::VisualMode);
     TestPressKey(QStringLiteral("l"));

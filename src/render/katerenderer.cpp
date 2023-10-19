@@ -15,6 +15,7 @@
 #include "inlinenotedata.h"
 #include "katebuffer.h"
 #include "katedocument.h"
+#include "kateextendedattribute.h"
 #include "katehighlight.h"
 #include "katerenderrange.h"
 #include "katetextlayout.h"
@@ -33,8 +34,6 @@
 #include <QRegularExpression>
 #include <QStack>
 #include <QtMath> // qCeil
-
-#include <optional>
 
 static const QChar tabChar(QLatin1Char('\t'));
 static const QChar spaceChar(QLatin1Char(' '));

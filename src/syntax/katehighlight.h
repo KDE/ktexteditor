@@ -15,7 +15,7 @@
 #include <KSyntaxHighlighting/Format>
 #include <KSyntaxHighlighting/Theme>
 
-#include "kateextendedattribute.h"
+#include "attribute.h"
 #include "range.h"
 #include "spellcheck/prefixstore.h"
 

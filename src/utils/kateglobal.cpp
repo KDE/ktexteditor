@@ -12,7 +12,6 @@
 */
 
 #include "kateglobal.h"
-#include "config.h"
 
 #include <ktexteditor_version.h>
 
