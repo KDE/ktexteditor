@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-19 01:40+0000\n"
+"POT-Creation-Date: 2023-10-20 01:37+0000\n"
 "PO-Revision-Date: 2023-10-11 09:22+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
@@ -101,7 +101,7 @@ msgid "Word Wrap"
 msgstr "Torno de parola"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:731
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:734
 #, kde-format
 msgid "Borders"
 msgstr "Limites"
@@ -327,7 +327,7 @@ msgid "Minim&ap width:"
 msgstr "Largessa de Minim&ap:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:739
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:742
 #, kde-format
 msgid "Always On"
 msgstr "Sempre On"
@@ -416,8 +416,8 @@ msgstr "Nulle entratas in chronologia de area de transferentia"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:597
-#: dialogs/katedialogs.cpp:727 dialogs/katedialogs.cpp:1009
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:600
+#: dialogs/katedialogs.cpp:730 dialogs/katedialogs.cpp:1012
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -654,6 +654,18 @@ msgid ""
 msgstr ""
 "Quando tu typa iste characteres durante que le texto es seligite, illos "
 "circumferera le texto seligite in loco de reimplaciar lo."
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkAccessibility)
+#: dialogs/editconfigwidget.ui:252
+#, kde-format
+msgid "Enable accessibility notifications"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: dialogs/editconfigwidget.ui:259
+#, kde-format
+msgid "Accessibility:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -1118,7 +1130,7 @@ msgstr "Cmd + Ctrl"
 msgid "Text Navigation"
 msgstr "Navigation de texto"
 
-#: dialogs/katedialogs.cpp:571
+#: dialogs/katedialogs.cpp:573
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
@@ -1126,62 +1138,62 @@ msgid_plural " characters"
 msgstr[0] " character"
 msgstr[1] "characteres"
 
-#: dialogs/katedialogs.cpp:576
+#: dialogs/katedialogs.cpp:578
 #, kde-format
 msgid "Feature is not active"
 msgstr "Characteristica  es non active"
 
-#: dialogs/katedialogs.cpp:578
+#: dialogs/katedialogs.cpp:580
 #, kde-format
 msgid "Disable Feature"
 msgstr "Dishabilita characteristica"
 
-#: dialogs/katedialogs.cpp:580
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Pote esser commode con Markdown"
 
-#: dialogs/katedialogs.cpp:582
+#: dialogs/katedialogs.cpp:584
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr "Characteres speculo, simile ma non exactemente como auto parentheses"
 
-#: dialogs/katedialogs.cpp:584
+#: dialogs/katedialogs.cpp:586
 #, kde-format
 msgid "Non letter character"
 msgstr "Character de non littera"
 
-#: dialogs/katedialogs.cpp:698
+#: dialogs/katedialogs.cpp:701
 #, kde-format
 msgid "Editing"
 msgstr "Editar"
 
-#: dialogs/katedialogs.cpp:703
+#: dialogs/katedialogs.cpp:706
 #, kde-format
 msgid "Editing Options"
 msgstr "Optiones per editar"
 
-#: dialogs/katedialogs.cpp:735
+#: dialogs/katedialogs.cpp:738
 #, kde-format
 msgid "Statusbar"
 msgstr "Barra de Stato"
 
-#: dialogs/katedialogs.cpp:737
+#: dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Off"
 msgstr "Off"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:741
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Seque Numeros de Linea"
 
-#: dialogs/katedialogs.cpp:932 dialogs/katedialogs.cpp:937
+#: dialogs/katedialogs.cpp:935 dialogs/katedialogs.cpp:940
 #, kde-format
 msgid "Appearance"
 msgstr "Apparentia"
 
-#: dialogs/katedialogs.cpp:971
+#: dialogs/katedialogs.cpp:974
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1193,12 +1205,12 @@ msgstr ""
 "Dishabilitar files de swap pote causar perdita de datos in caso de un  "
 "fracasso de systema."
 
-#: dialogs/katedialogs.cpp:1010
+#: dialogs/katedialogs.cpp:1013
 #, kde-format
 msgid "Advanced"
 msgstr "Avantiate"
 
-#: dialogs/katedialogs.cpp:1075
+#: dialogs/katedialogs.cpp:1078
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1206,52 +1218,52 @@ msgstr ""
 "Tu non forniva un suffixo o prefixo pro retrocopia. On usa le suffixo "
 "predefinite: '~'"
 
-#: dialogs/katedialogs.cpp:1075
+#: dialogs/katedialogs.cpp:1078
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Necun prefixo o suffixo de retrocopia"
 
-#: dialogs/katedialogs.cpp:1203
+#: dialogs/katedialogs.cpp:1206
 #, kde-format
 msgid "Open/Save"
 msgstr "Aperi/Salveguarda"
 
-#: dialogs/katedialogs.cpp:1208
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Aperir & Salveguardar File"
 
-#: dialogs/katedialogs.cpp:1231
+#: dialogs/katedialogs.cpp:1234
 #, kde-format
 msgid "&Line:"
 msgstr "&Linea:"
 
-#: dialogs/katedialogs.cpp:1232
+#: dialogs/katedialogs.cpp:1235
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Vade a numero de rango ex  area de transferentia"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1246
 #, kde-format
 msgid "Go to"
 msgstr "Vade a"
 
-#: dialogs/katedialogs.cpp:1323
+#: dialogs/katedialogs.cpp:1326
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Necun valide numero de rango trovate in area de transferentia"
 
-#: dialogs/katedialogs.cpp:1387
+#: dialogs/katedialogs.cpp:1390
 #, kde-format
 msgid "Dictionary:"
 msgstr "Dictionario:"
 
-#: dialogs/katedialogs.cpp:1439
+#: dialogs/katedialogs.cpp:1442
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Habilita recarga automatic"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1260,60 +1272,60 @@ msgstr ""
 "Recarga e recargara automaticamente sin aviso re modificationes de disco ab "
 "nunc usque tu claude o le scheda o le fenestra."
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "View &Difference"
 msgstr "&Vide differentia"
 
-#: dialogs/katedialogs.cpp:1449
+#: dialogs/katedialogs.cpp:1452
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Monstra un diff del modificationes"
 
-#: dialogs/katedialogs.cpp:1454
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "&Reload"
 msgstr "&Recarga"
 
-#: dialogs/katedialogs.cpp:1456
+#: dialogs/katedialogs.cpp:1459
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Recarga le file ex disco. Modificationes non salveguardate,essera perdite."
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1463
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Claude file"
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Claude le file, abandonante su contento."
 
-#: dialogs/katedialogs.cpp:1466
+#: dialogs/katedialogs.cpp:1469
 #, kde-format
 msgid "&Save As..."
 msgstr "&Salveguarda como..."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Il permitte te de seliger un location e salveguardar de nove le file."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1473 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Ignora"
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignora le modificationes sur disco sin alcun action."
 
-#: dialogs/katedialogs.cpp:1540 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1322,18 +1334,18 @@ msgstr ""
 "Le commando diff falleva. Si tu place, tu controla que diff(1) es installate "
 "e es in tu PATH."
 
-#: dialogs/katedialogs.cpp:1542 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Error durante que creava Diff"
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "Le files es identic."
 
-#: dialogs/katedialogs.cpp:1549 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Resultato de Diff"
@@ -2489,7 +2501,7 @@ msgstr "vi-mode"
 msgid "recording"
 msgstr "registrante"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:105
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -2536,13 +2548,13 @@ msgstr "Selige le Typos Mime"
 msgid "Modes && Filetypes"
 msgstr "Modos && Typos de File"
 
-#: mode/katemodemenulist.cpp:140
+#: mode/katemodemenulist.cpp:139
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
 msgstr "Il cerca ..."
 
-#: mode/katemodemenulist.cpp:142
+#: mode/katemodemenulist.cpp:141
 #, kde-format
 msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
@@ -2552,13 +2564,13 @@ msgstr ""
 "Cerca modos de evidentiae de synthaxe per nomine de linguage o extension de "
 "file (pro exemplo, C++ o .cpp)"
 
-#: mode/katemodemenulist.cpp:565
+#: mode/katemodemenulist.cpp:564
 #, kde-format
 msgctxt "A search yielded no results"
 msgid "No items matching your search"
 msgstr "Necun elemento incontra tu cerca"
 
-#: mode/katemodemenulist.cpp:1092
+#: mode/katemodemenulist.cpp:1091
 #, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
@@ -2567,7 +2579,7 @@ msgctxt ""
 msgid "Best Search Match"
 msgstr "Le melior coincidentia"
 
-#: mode/katemodemenulist.cpp:1097
+#: mode/katemodemenulist.cpp:1096
 #, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
@@ -3507,7 +3519,7 @@ msgstr ""
 "Mal citation in appello: %1. Pro favor tu escappa citationes singule con un "
 "retrobarra (backlash)"
 
-#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:217
+#: script/katecommandlinescript.cpp:76 utils/katecmds.cpp:216
 #: vimode/cmds.cpp:37
 #, kde-format
 msgid "Could not access view"
@@ -4232,113 +4244,113 @@ msgstr "Usa color predefinite ab le schema de color "
 msgid "None"
 msgstr "Necun"
 
-#: syntax/katestyletreewidget.cpp:130
+#: syntax/katestyletreewidget.cpp:131
 #, kde-format
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
 msgstr "Contexto"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:132
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Normal"
 msgstr "Normal"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:132
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Selected"
 msgstr "Selectionate"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:132
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background"
 msgstr "Fundo"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:133
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background Selected"
 msgstr "Fundo selectionate"
 
-#: syntax/katestyletreewidget.cpp:134
+#: syntax/katestyletreewidget.cpp:135
 #, kde-format
 msgid "Use Default Style"
 msgstr "Usa le stilo predefinite"
 
-#: syntax/katestyletreewidget.cpp:231
+#: syntax/katestyletreewidget.cpp:232
 #, kde-format
 msgid "&Bold"
 msgstr "&Bold"
 
-#: syntax/katestyletreewidget.cpp:236
+#: syntax/katestyletreewidget.cpp:237
 #, kde-format
 msgid "&Italic"
 msgstr "&Italic"
 
-#: syntax/katestyletreewidget.cpp:241
+#: syntax/katestyletreewidget.cpp:242
 #, kde-format
 msgid "&Underline"
 msgstr "S&ublinea"
 
-#: syntax/katestyletreewidget.cpp:246
+#: syntax/katestyletreewidget.cpp:247
 #, kde-format
 msgid "S&trikeout"
 msgstr "S&trikeout"
 
-#: syntax/katestyletreewidget.cpp:253
+#: syntax/katestyletreewidget.cpp:254
 #, kde-format
 msgid "Normal &Color..."
 msgstr "&Color normal..."
 
-#: syntax/katestyletreewidget.cpp:256
+#: syntax/katestyletreewidget.cpp:257
 #, kde-format
 msgid "&Selected Color..."
 msgstr "Color &selectionate ..."
 
-#: syntax/katestyletreewidget.cpp:259
+#: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "&Background Color..."
 msgstr "Color de &fundo ..."
 
-#: syntax/katestyletreewidget.cpp:262
+#: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "S&elected Background Color..."
 msgstr "Color de fundo s&electionate ..."
 
-#: syntax/katestyletreewidget.cpp:268
+#: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "Unset Normal Color"
 msgstr "Leva fixation de Color normal..."
 
-#: syntax/katestyletreewidget.cpp:271
+#: syntax/katestyletreewidget.cpp:272
 #, kde-format
 msgid "Unset Selected Color"
 msgstr "Leva fixation de  color selectionate"
 
-#: syntax/katestyletreewidget.cpp:277
+#: syntax/katestyletreewidget.cpp:278
 #, kde-format
 msgid "Unset Background Color"
 msgstr "De-Fixa color de fundo"
 
-#: syntax/katestyletreewidget.cpp:282
+#: syntax/katestyletreewidget.cpp:283
 #, kde-format
 msgid "Unset Selected Background Color"
 msgstr "De-fixa color de fundo selectionate"
 
-#: syntax/katestyletreewidget.cpp:288
+#: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Use &Default Style"
 msgstr "Usa stilo pre&definite"
 
-#: syntax/katestyletreewidget.cpp:401
+#: syntax/katestyletreewidget.cpp:402
 #, kde-format
 msgctxt "No text or background color set"
 msgid "None set"
 msgstr "Nihil fixate"
 
-#: syntax/katestyletreewidget.cpp:635
+#: syntax/katestyletreewidget.cpp:636
 #, kde-format
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
@@ -4347,7 +4359,7 @@ msgstr ""
 "\"Usa stilo predefinite\" essera automaticamente de-fixate quando tu cambia "
 "omne proprietates de stilo."
 
-#: syntax/katestyletreewidget.cpp:636
+#: syntax/katestyletreewidget.cpp:637
 #, kde-format
 msgid "Kate Styles"
 msgstr "Stilos de Kate"
@@ -5045,13 +5057,13 @@ msgstr "Copia thema"
 msgid "Color Themes"
 msgstr "Themas de Color"
 
-#: utils/kateautoindent.cpp:89
+#: utils/kateautoindent.cpp:87
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "None"
 msgstr "Necun"
 
-#: utils/kateautoindent.cpp:93
+#: utils/kateautoindent.cpp:91
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
@@ -5113,19 +5125,19 @@ msgstr "Seque&nte: %1 - \"%2\""
 msgid "&Previous: %1 - \"%2\""
 msgstr "&Precedente: %1 - \"%2\""
 
-#: utils/katecmds.cpp:53
+#: utils/katecmds.cpp:52
 #, kde-format
 msgid "<p>indent</p><p>Indents the selected lines or the current line</p>"
 msgstr "<p>indent</p><p>Indenta le rangos seligite o le rango currente</p>"
 
-#: utils/katecmds.cpp:58
+#: utils/katecmds.cpp:57
 #, kde-format
 msgid "<p>unindent</p><p>Unindents the selected lines or current line.</p>"
 msgstr ""
 "<p>unindent</p><p>leva indentationes ab le rangos seligite o ab le rango "
 "currente.</p>"
 
-#: utils/katecmds.cpp:63
+#: utils/katecmds.cpp:62
 #, kde-format
 msgid ""
 "<p>cleanindent</p><p>Cleans up the indentation of the selected lines or "
@@ -5134,7 +5146,7 @@ msgstr ""
 "<p>cleanindent</p><p>Netta le indentation del rangos seligite o del rango "
 "currente secundo le preferentias de indentation in le documento. </p>"
 
-#: utils/katecmds.cpp:68
+#: utils/katecmds.cpp:67
 #, kde-format
 msgid ""
 "<p>comment</p><p>Inserts comment markers to make the selection or selected "
@@ -5146,7 +5158,7 @@ msgstr ""
 "texto como definite per le definition de evidentia de syntaxe per le "
 "documento.</p>"
 
-#: utils/katecmds.cpp:74
+#: utils/katecmds.cpp:73
 #, kde-format
 msgid ""
 "<p>uncomment</p><p>Removes comment markers from the selection or selected "
@@ -5157,7 +5169,7 @@ msgstr ""
 "rangos seligite o le rango currente secundo le formato de texto como "
 "definite per le definition de evidentia de syntaxe per le documento.</p>"
 
-#: utils/katecmds.cpp:80
+#: utils/katecmds.cpp:79
 #, kde-format
 msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
@@ -5166,7 +5178,7 @@ msgstr ""
 "<p>goto <b> numero de linea</b></p><p>Iste commando vade al specificate "
 "numero de linea o rango.</p>"
 
-#: utils/katecmds.cpp:85
+#: utils/katecmds.cpp:84
 #, kde-format
 msgid ""
 "<p>set-indent-pasted-text <b>enable</b></p><p>If enabled, indentation of "
@@ -5179,12 +5191,12 @@ msgstr ""
 "currente.</p><p> Possibile valores de ver: 1 on true<br/>possibile valores "
 "de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:91
+#: utils/katecmds.cpp:90
 #, kde-format
 msgid "Deletes the current line."
 msgstr "Dele le rango currente."
 
-#: utils/katecmds.cpp:95
+#: utils/katecmds.cpp:94
 #, kde-format
 msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
@@ -5193,7 +5205,7 @@ msgstr ""
 "<p>set-tab-width <b>largessa</b></p><p>Fixa le largessa de tabulation al "
 "numero indicate con <b>largessa</b></p>"
 
-#: utils/katecmds.cpp:100
+#: utils/katecmds.cpp:99
 #, kde-format
 msgid ""
 "<p>set-replace-tab <b>enable</b></p><p>If enabled, tabs are replaced with "
@@ -5204,7 +5216,7 @@ msgstr ""
 "reimplaciate con spatios quando tu typa.</p><p>Possibile valore de ver: 1 on "
 "truer<br /> possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:107
+#: utils/katecmds.cpp:106
 #, kde-format
 msgid ""
 "<p>set-show-tabs <b>enable</b></p><p>If enabled, TAB characters and trailing "
@@ -5215,7 +5227,7 @@ msgstr ""
 "spatios avante essera visualizate per un parve puncto.</p><p>Possibile "
 "valores de ver: 1 on true<br/>possibile  valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:114
+#: utils/katecmds.cpp:113
 #, kde-format
 msgid ""
 "<p>set-remove-trailing-spaces <b>mode</b></p><p>Removes the trailing spaces "
@@ -5230,7 +5242,7 @@ msgstr ""
 "remove spatios avante solmente per lineas modificate.</li><li><b>all</b>: "
 "remove spatios avante in le integre documento.</li></ul></p> "
 
-#: utils/katecmds.cpp:125
+#: utils/katecmds.cpp:124
 #, kde-format
 msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
@@ -5239,7 +5251,7 @@ msgstr ""
 "<p>set-indent-width <b>width</b></p><p>Fixa le extension de indentation al "
 "numero <b>width</b>. Usate solmente si tu es indentante con spatios.</p>"
 
-#: utils/katecmds.cpp:130
+#: utils/katecmds.cpp:129
 #, kde-format
 msgid ""
 "<p>set-indent-mode <b>mode</b></p><p>The mode parameter is a value as seen "
@@ -5248,7 +5260,7 @@ msgstr ""
 "<p>set-indent-mode <b>mode</b></p><p>Le parametro mode parameter es un valor "
 "como vidite in le menu Instrumentos - Indentation</p>"
 
-#: utils/katecmds.cpp:135
+#: utils/katecmds.cpp:134
 #, kde-format
 msgid ""
 "<p>set-auto-indent <b>enable</b></p><p>Enable or disable autoindentation.</"
@@ -5259,7 +5271,7 @@ msgstr ""
 "autoindentation.</p><p>possibile valores de ver: 1 on true<br/>possibile "
 "valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:142
+#: utils/katecmds.cpp:141
 #, kde-format
 msgid ""
 "<p>set-line-numbers <b>enable</b></p><p>Sets the visibility of the line "
@@ -5270,7 +5282,7 @@ msgstr ""
 "numbers pane.</p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 
-#: utils/katecmds.cpp:149
+#: utils/katecmds.cpp:148
 #, kde-format
 msgid ""
 "<p>set-folding-markers <b>enable</b></p><p>Sets the visibility of the "
@@ -5281,7 +5293,7 @@ msgstr ""
 "vitro(pane) de marcatores plicabile.</p><p>possibile valores de ver: 1 on "
 "true<br/>possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:156
+#: utils/katecmds.cpp:155
 #, kde-format
 msgid ""
 "<p>set-icon-border <b>enable</b></p><p>Sets the visibility of the icon "
@@ -5292,7 +5304,7 @@ msgstr ""
 "icone.</p><p>possibile valores de ver: 1 on true <br/>possibile valores de "
 "false: 0 off false</p>"
 
-#: utils/katecmds.cpp:163
+#: utils/katecmds.cpp:162
 #, kde-format
 msgid ""
 "<p>set-word-wrap <b>enable</b></p><p>Enables dynamic word wrap according to "
@@ -5303,7 +5315,7 @@ msgstr ""
 "secundo <b>enable</b></p><p>possibile valores de ver: 1 on true <br/"
 ">possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:170
+#: utils/katecmds.cpp:169
 #, kde-format
 msgid ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sets the line width for hard "
@@ -5314,7 +5326,7 @@ msgstr ""
 "dur excision a <b>width</b>. Isto es usate si tu ha tu texto excidite de "
 "modo automatic.</p>"
 
-#: utils/katecmds.cpp:175
+#: utils/katecmds.cpp:174
 #, kde-format
 msgid ""
 "<p>set-replace-tabs-save <b>enable</b></p><p>When enabled, tabs will be "
@@ -5326,7 +5338,7 @@ msgstr ""
 "p><p>possibile valores de ver: 1 on true <br/>possibile valores de false: 0 "
 "off false</p>"
 
-#: utils/katecmds.cpp:182
+#: utils/katecmds.cpp:181
 #, kde-format
 msgid ""
 "<p>set-highlight <b>highlight</b></p><p>Sets the syntax highlighting system "
@@ -5339,14 +5351,14 @@ msgstr ""
 "evidentiar, como il es vidite in le menu Instrumentos → Evidentiar menu. "
 "Iste commando furni un lista deautocompletion pro su argumentos.</p>"
 
-#: utils/katecmds.cpp:188
+#: utils/katecmds.cpp:187
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
 "<p>set-mode <b>mode</b></p><p>Fixa le modo como vidite in Instrumentos - "
 "Modo</p>"
 
-#: utils/katecmds.cpp:193
+#: utils/katecmds.cpp:192
 #, kde-format
 msgid ""
 "<p>set-show-indent <b>enable</b></p><p>If enabled, indentation will be "
@@ -5357,65 +5369,65 @@ msgstr ""
 "visualisate per un linea punctuate vertical.</p><p> possibile valores de "
 "ver: 1 on true<br/>possibile valores de false: 0 off false</p>"
 
-#: utils/katecmds.cpp:199
+#: utils/katecmds.cpp:198
 #, kde-format
 msgid "<p>Open the Print dialog to print the current document.</p>"
 msgstr ""
 "<p>Aperi le dialogo de imprimer pro pro imprimer le documento currente.</p>"
 
-#: utils/katecmds.cpp:314 utils/katecmds.cpp:341
+#: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
 msgstr "Argumento mancante. Uso: %1 <value>"
 
-#: utils/katecmds.cpp:327
+#: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
 msgstr "Necun tal evidentia '%1' "
 
-#: utils/katecmds.cpp:333
+#: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
 msgstr "Necun tal modo '%1'"
 
-#: utils/katecmds.cpp:346
+#: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
 msgstr "Il falleva in converter argumento '%1' a integre."
 
-#: utils/katecmds.cpp:350 utils/katecmds.cpp:355
+#: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
 msgid "Width must be at least 1."
 msgstr "Largessa debe esser al minus 1."
 
-#: utils/katecmds.cpp:360
+#: utils/katecmds.cpp:359
 #, kde-format
 msgid "Column must be at least 1."
 msgstr "Columna debe esser al minus 1."
 
-#: utils/katecmds.cpp:390
+#: utils/katecmds.cpp:389
 #, kde-format
 msgid "Usage: %1 on|off|1|0|true|false"
 msgstr "Uso: %1 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:417
+#: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
 msgstr "Mal argumento '%1'. Uso:%2 on|off|1|0|true|false"
 
-#: utils/katecmds.cpp:421
+#: utils/katecmds.cpp:420
 #, kde-format
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
 "Usage: set-remove-trailing-spaces 0|-|none o 1|+|mod|modified o 2|*|all"
 
-#: utils/katecmds.cpp:435 vimode/cmds.cpp:168
+#: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
 msgstr "Commando incognite '%1'"
 
-#: utils/katecmds.cpp:493
+#: utils/katecmds.cpp:492
 #, kde-format
 msgid ""
 "<p> char <b>identifier</b> </p><p>This command allows you to insert literal "
@@ -5428,7 +5440,7 @@ msgstr ""
 "octal o hexadecimal.</p><p>Examples:<ul><li>char <b>234</b></li><li>char "
 "<b>0x1234</b></li></ul></p>"
 
-#: utils/katecmds.cpp:560
+#: utils/katecmds.cpp:559
 #, kde-format
 msgid ""
 "<p>date or date <b>format</b></p><p>Inserts a date/time string as defined by "
@@ -5482,400 +5494,400 @@ msgstr ""
 "monstrar am/pm. ap essera reimplaciate o con \"am\" o \"pm\".</td></tr></"
 "table></p>"
 
-#: utils/kateglobal.cpp:74
+#: utils/kateglobal.cpp:73
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate Part"
 
-#: utils/kateglobal.cpp:76
+#: utils/kateglobal.cpp:75
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "Componente insertabile de editor"
 
-#: utils/kateglobal.cpp:78
+#: utils/kateglobal.cpp:77
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000–2022 Le Autores de Kate"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Maintainer"
 msgstr "Mantenitor"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: utils/kateglobal.cpp:99 utils/kateglobal.cpp:100 utils/kateglobal.cpp:102
-#: utils/kateglobal.cpp:110 utils/kateglobal.cpp:113 utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:98 utils/kateglobal.cpp:99 utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
 #, kde-format
 msgid "Core Developer"
 msgstr "Corde Developpator"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Milian Wolff"
 
-#: utils/kateglobal.cpp:101
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:106
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:107 utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:106 utils/kateglobal.cpp:124
 #, kde-format
 msgid "Developer"
 msgstr "Developpator"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "Controlo Orthographic al volo"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "Fixar faltas (bug) de grande scala"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Le fresc systema de buffer"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Le commandos per editar"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Testing, ..."
 msgstr "Provante, ..."
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Former Core Developer"
 msgstr "ex Corde Developpator"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "Le porto de Kwrite a KParts"
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:120
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:121
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:121
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "Historia de annullar de Kwrite, integration de Kspell"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:122
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "Le supporto de KWrite pro coloration syntactic de XML"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Patches and more"
 msgstr "Patches e altere"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Various bugfixes"
 msgstr "Varie correctiones de faltas"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "Selection, integration de KColorScheme"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:129
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "Fronte e retro de barra de cerca"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "Autor original de KWrite"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:134
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "QA and Scripting"
 msgstr "QA e Scripting"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:137
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:137
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Evidentias pro Files RPM-Spec, Perl, Diff e altere"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:138
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "Evidentias per VHDL"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "Evidentias pro SQL"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:140
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Evidentias pro Ferite"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:141
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:141
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "Evidentias pro ILERPG"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:142
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:142
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Evidentias pro LaTex"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:143
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Evidentias pro Makefiles, Python"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:144
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Evidentias pro Python"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:145
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:146
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:146
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Evidentias pro Scheme"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:147
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:147
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "PHP lista Parolas-clave/Classes-Datos"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:148
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:148
 #, kde-format
 msgid "Very nice help"
 msgstr "Adjuta multo car"
 
-#: utils/kateglobal.cpp:150
+#: utils/kateglobal.cpp:149
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:150
+#: utils/kateglobal.cpp:149
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Evidentias pro Lua"
 
-#: utils/kateglobal.cpp:152
+#: utils/kateglobal.cpp:151
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Omnes le personas qui collaborava e que io me oblidava de mentionar"
 
-#: utils/kateglobal.cpp:154
+#: utils/kateglobal.cpp:153
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Giovanni Sora"
 
-#: utils/kateglobal.cpp:154
+#: utils/kateglobal.cpp:153
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
-#: utils/kateglobal.cpp:273
+#: utils/kateglobal.cpp:272
 #, kde-format
 msgid "Configure"
 msgstr "Configura"
 
-#: utils/katesedcmd.cpp:269
+#: utils/katesedcmd.cpp:268
 #, kde-format
 msgid "replace with %1?"
 msgstr "reimplacia con %1?"
 
-#: utils/katesedcmd.cpp:275
+#: utils/katesedcmd.cpp:274
 #, kde-format
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
@@ -5883,7 +5895,7 @@ msgid_plural "%1 replacements done on %2"
 msgstr[0] "1 reimplaciamento facite super %2"
 msgstr[1] "%1 reimplaciamentos facite super %2"
 
-#: utils/katesedcmd.cpp:278
+#: utils/katesedcmd.cpp:277
 #, kde-format
 msgctxt "substituted into the previous message"
 msgid "1 line"
@@ -7761,17 +7773,17 @@ msgstr "Movimento de cursor de typo \"camel case\" (camelo) habilitate"
 msgid "Search wrapped"
 msgstr "Modo excisite (wrapped)"
 
-#: view/kateview.cpp:3735
+#: view/kateview.cpp:3737
 #, kde-format
 msgid "Align On"
 msgstr "Alinea Sur"
 
-#: view/kateview.cpp:3735
+#: view/kateview.cpp:3737
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Patrono de alineamento:"
 
-#: view/kateview.cpp:4840
+#: view/kateview.cpp:4842
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exporta file como HTML"
