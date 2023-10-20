@@ -46,7 +46,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
     if (mappingCommands().contains(cmd)) {
         if (cmd.endsWith(QLatin1String("unmap"))) {
             if (args.count() == 1) {
-                m_viGlobal->mappings()->remove(modeForMapCommand(cmd), args.at(0));
+                m_viInputModeManager->globalState()->mappings()->remove(modeForMapCommand(cmd), args.at(0));
                 return true;
             } else {
                 msg = i18n("Missing argument. Usage: %1 <from>", cmd);
@@ -63,7 +63,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
             return true;
         }
         if (args.count() == 1) {
-            msg = m_viGlobal->mappings()->get(modeForMapCommand(cmd), args.at(0), true);
+            msg = m_viInputModeManager->globalState()->mappings()->get(modeForMapCommand(cmd), args.at(0), true);
             if (msg.isEmpty()) {
                 msg = i18n("No mapping found for \"%1\"", args.at(0));
                 return false;
@@ -72,7 +72,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
             }
         } else if (args.count() == 2) {
             Mappings::MappingRecursion mappingRecursion = (isMapCommandRecursive(cmd)) ? Mappings::Recursive : Mappings::NonRecursive;
-            m_viGlobal->mappings()->add(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
+            m_viInputModeManager->globalState()->mappings()->add(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
         } else {
             msg = i18n("Missing argument(s). Usage: %1 <from> [<to>]", cmd);
             return false;
@@ -188,7 +188,7 @@ KCompletion *Commands::completionObject(KTextEditor::View *view, const QString &
     KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     if (v && (cmd == QLatin1String("nn") || cmd == QLatin1String("nnoremap"))) {
-        QStringList l = m_viGlobal->mappings()->getAll(Mappings::NormalModeMapping);
+        QStringList l = m_viInputModeManager->globalState()->mappings()->getAll(Mappings::NormalModeMapping);
 
         KateCmdShellCompletion *co = new KateCmdShellCompletion();
         co->setItems(l);

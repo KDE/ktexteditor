@@ -179,10 +179,9 @@ QString CommandMode::executeCommand(const QString &commandToExecute)
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
         if (p) {
-            KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface *>(p);
-            if (ci) {
-                ci->setViInputModeManager(viInputModeManager());
-                ci->setViGlobal(viInputModeManager()->globalState());
+            if (p == Commands::self() || p == SedReplace::self()) {
+                Commands::self()->setViInputModeManager(viInputModeManager());
+                SedReplace::self()->setViInputModeManager(viInputModeManager());
             }
 
             // The following commands changes the focus themselves, so bar should be hidden before execution.

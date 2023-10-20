@@ -12,7 +12,6 @@
 #include "mappings.h"
 #include <KTextEditor/Command>
 #include <katesedcmd.h>
-#include <vimode/commandinterface.h>
 
 #include <QStringList>
 
@@ -24,10 +23,11 @@ class KCompletion;
 
 namespace KateVi
 {
+class InputModeManager;
 /**
  * This KTextEditor::Command provides vi 'ex' commands
  */
-class Commands : public KTextEditor::Command, public KateViCommandInterface
+class Commands : public KTextEditor::Command
 {
     Commands()
         : KTextEditor::Command(QStringList() << mappingCommands() << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j")
@@ -37,6 +37,7 @@ class Commands : public KTextEditor::Command, public KateViCommandInterface
     {
     }
     static Commands *m_instance;
+    InputModeManager *m_viInputModeManager;
 
 public:
     ~Commands() override
@@ -75,6 +76,11 @@ public:
         return m_instance;
     }
 
+    void setViInputModeManager(InputModeManager *m)
+    {
+        m_viInputModeManager = m;
+    }
+
 private:
     static const QStringList &mappingCommands();
     static Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
@@ -85,12 +91,13 @@ private:
  * Support vim/sed style search and replace
  * @author Charles Samuels <charles@kde.org>
  **/
-class SedReplace : public KateCommands::SedReplace, public KateViCommandInterface
+class SedReplace : public KateCommands::SedReplace
 {
     SedReplace()
     {
     }
     static SedReplace *m_instance;
+    InputModeManager *m_viInputModeManager;
 
 public:
     ~SedReplace() override
@@ -104,6 +111,11 @@ public:
             m_instance = new SedReplace();
         }
         return m_instance;
+    }
+
+    void setViInputModeManager(InputModeManager *m)
+    {
+        m_viInputModeManager = m;
     }
 
 protected:

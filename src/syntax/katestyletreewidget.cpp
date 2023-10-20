@@ -77,6 +77,10 @@ public:
         NumColumns
     };
 
+    enum {
+        Type = ItemType::UserType + 1,
+    };
+
     /* initializes the style from the default and the hldata */
     void initStyle();
     /* updates the hldata's style */
@@ -171,10 +175,11 @@ bool KateStyleTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
         return false;
     }
 
-    KateStyleTreeWidgetItem *i = dynamic_cast<KateStyleTreeWidgetItem *>(itemFromIndex(index));
-    if (!i) {
+    auto item = itemFromIndex(index);
+    if (item->type() != KateStyleTreeWidgetItem::Type) {
         return QTreeWidget::edit(index, trigger, event);
     }
+    KateStyleTreeWidgetItem *i = static_cast<KateStyleTreeWidgetItem *>(item);
 
     switch (trigger) {
     case QAbstractItemView::DoubleClicked:
@@ -209,10 +214,11 @@ void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
         return;
     }
 
-    KateStyleTreeWidgetItem *i = dynamic_cast<KateStyleTreeWidgetItem *>(itemAt(event->pos()));
-    if (!i) {
+    auto item = itemAt(event->pos());
+    if (item->type() != KateStyleTreeWidgetItem::Type) {
         return;
     }
+    KateStyleTreeWidgetItem *i = static_cast<KateStyleTreeWidgetItem *>(item);
 
     QMenu m(this);
     KTextEditor::Attribute::Ptr currentStyle = i->style();
@@ -414,7 +420,7 @@ KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent,
                                                  const QString &stylename,
                                                  KTextEditor::Attribute::Ptr defaultAttribute,
                                                  KTextEditor::Attribute::Ptr actualAttribute)
-    : QTreeWidgetItem(parent)
+    : QTreeWidgetItem(parent, KateStyleTreeWidgetItem::Type)
     , currentStyle(nullptr)
     , defaultStyle(std::move(defaultAttribute))
     , actualStyle(std::move(actualAttribute))
@@ -427,7 +433,7 @@ KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidget *parent,
                                                  const QString &stylename,
                                                  KTextEditor::Attribute::Ptr defaultAttribute,
                                                  KTextEditor::Attribute::Ptr actualAttribute)
-    : QTreeWidgetItem(parent)
+    : QTreeWidgetItem(parent, KateStyleTreeWidgetItem::Type)
     , currentStyle(nullptr)
     , defaultStyle(std::move(defaultAttribute))
     , actualStyle(std::move(actualAttribute))
