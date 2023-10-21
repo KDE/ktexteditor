@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-20 01:37+0000\n"
+"POT-Creation-Date: 2023-10-21 01:38+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -2282,12 +2282,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2359,7 +2359,7 @@ msgstr ""
 "परिवर्तन गरियो । त्यहाँ केही डेटा हराएको हुन सक्दछ ।"
 
 #: document/katedocument.cpp:2474 document/katedocument.cpp:2490
-#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2377,7 +2377,7 @@ msgstr ""
 "चयन गरिएको सङ्केतनले प्रत्येक युनिकोड क्यारेक्टरलाई यो कागजातमा सङ्केतन गर्न सक्दैन । तपाईँ "
 "साच्चिकै यसलाई बचत गर्न चाहनुहुन्छ ? त्यहाँ केही डेटा हराएको हुन सक्दछ ।"
 
-#: document/katedocument.cpp:2557
+#: document/katedocument.cpp:2558
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2395,7 +2395,7 @@ msgstr ""
 "\n"
 "तपाईँसँग यो फाइलमा लेख्ने पहुँच वा पर्याप्त डिस्क खाली स्थान उपलब्ध छ छैन जाँच गर्नुहोस् ।"
 
-#: document/katedocument.cpp:2678
+#: document/katedocument.cpp:2679
 #, fuzzy, kde-format
 #| msgid ""
 #| "For file %1 no backup copy could be created before saving. If the there "
@@ -2412,50 +2412,50 @@ msgstr ""
 "त्यहाँ त्रुटि भएमा, तपाईँले यो फाइलको डेटा हराउन सक्नुहुन्छ । एउटा कारण, तपाईँले लेखेको "
 "मिडिया भरिएको वा फाइलको डाइरेक्टरी पढ्ने मात्र भएको हुनसक्छ ।"
 
-#: document/katedocument.cpp:2682
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "जगेडा प्रतिलिपि सिर्जना गर्न असफल ।"
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2684
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "तथापि बचत गर्ने प्रयास गर्नुहोस्"
 
-#: document/katedocument.cpp:2805
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "तपाईँ साच्चिकै यो फाइल बन्द गर्न जारी राख्न चाहनुहुन्छ ? डेटा हराउन सक्दछ ।"
 
-#: document/katedocument.cpp:2807
+#: document/katedocument.cpp:2808
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "तथापि बन्द गर्नुहोस्"
 
-#: document/katedocument.cpp:4621
+#: document/katedocument.cpp:4622
 #, kde-format
 msgid "Untitled"
 msgstr "शीर्षक नभएको"
 
-#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
-#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
-#: document/katedocument.cpp:5956
+#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
+#: document/katedocument.cpp:5963
 #, kde-format
 msgid "Save File"
 msgstr "फाइल बचत गर्नुहोस्"
 
-#: document/katedocument.cpp:4747
+#: document/katedocument.cpp:4748
 #, kde-format
 msgid "Save failed"
 msgstr "बचत असफल भयो"
 
-#: document/katedocument.cpp:4993
+#: document/katedocument.cpp:4994
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "फाइल बचत गर्नुहोस्"
 
-#: document/katedocument.cpp:5005
+#: document/katedocument.cpp:5006
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2467,7 +2467,7 @@ msgstr ""
 "\n"
 "तपाईँसँग यो फाइलमा लेख्ने पहुँच वा पर्याप्त डिस्क खाली स्थान उपलब्ध छ छैन जाँच गर्नुहोस् ।"
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2476,7 +2476,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5289
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2485,43 +2485,43 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "फाइल '%1' अन्य कार्यक्रमद्वारा परिमार्जित गरियो ।"
 
-#: document/katedocument.cpp:5601
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "फाइल '%1' अन्य कार्यक्रमद्वारा सिर्जना गरिएको थियो ।"
 
-#: document/katedocument.cpp:5604
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "फाइल '%1' अन्य कार्यक्रमद्वारा मेटिएको थियो ।"
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5951
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "शब्द बेर्ने कागजात"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6062
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6060
+#: document/katedocument.cpp:6067
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -4338,114 +4338,114 @@ msgstr ""
 msgid "None"
 msgstr "कुनै पनि होइन"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:135
 #, fuzzy, kde-format
 #| msgid "Context"
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
 msgstr "सन्दर्भ"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, fuzzy, kde-format
 #| msgid "Normal"
 msgctxt "@title:column Text style"
 msgid "Normal"
 msgstr "सामान्य"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, fuzzy, kde-format
 #| msgid "Selected"
 msgctxt "@title:column Text style"
 msgid "Selected"
 msgstr "चयन"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, fuzzy, kde-format
 #| msgid "Background"
 msgctxt "@title:column Text style"
 msgid "Background"
 msgstr "पृष्ठभूमि"
 
-#: syntax/katestyletreewidget.cpp:133
+#: syntax/katestyletreewidget.cpp:137
 #, fuzzy, kde-format
 #| msgid "Background Selected"
 msgctxt "@title:column Text style"
 msgid "Background Selected"
 msgstr "पृष्ठभूमि चयन गरियो"
 
-#: syntax/katestyletreewidget.cpp:135
+#: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
 msgstr "पूर्वनिर्धारित शैली प्रयोग गर्नुहोस्"
 
-#: syntax/katestyletreewidget.cpp:232
+#: syntax/katestyletreewidget.cpp:238
 #, kde-format
 msgid "&Bold"
 msgstr "बाक्लो"
 
-#: syntax/katestyletreewidget.cpp:237
+#: syntax/katestyletreewidget.cpp:243
 #, kde-format
 msgid "&Italic"
 msgstr "छड्के"
 
-#: syntax/katestyletreewidget.cpp:242
+#: syntax/katestyletreewidget.cpp:248
 #, kde-format
 msgid "&Underline"
 msgstr "अधोरेखा"
 
-#: syntax/katestyletreewidget.cpp:247
+#: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "S&trikeout"
 msgstr "स्ट्राइक आउट"
 
-#: syntax/katestyletreewidget.cpp:254
+#: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
 msgstr "सामान्य रङ..."
 
-#: syntax/katestyletreewidget.cpp:257
+#: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
 msgstr "चयन गरिएको रङ..."
 
-#: syntax/katestyletreewidget.cpp:260
+#: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
 msgstr "पृष्ठभूमि रङ..."
 
-#: syntax/katestyletreewidget.cpp:263
+#: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
 msgstr "चयन गरिएको पृष्ठभूमि रङ..."
 
-#: syntax/katestyletreewidget.cpp:269
+#: syntax/katestyletreewidget.cpp:275
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "Unset Normal Color"
 msgstr "सामान्य रङ..."
 
-#: syntax/katestyletreewidget.cpp:272
+#: syntax/katestyletreewidget.cpp:278
 #, fuzzy, kde-format
 #| msgid "Unset Selected Background Color"
 msgid "Unset Selected Color"
 msgstr "चयन गरिएको पृष्ठभूमि रङ अनसेट गर्नुहोस्"
 
-#: syntax/katestyletreewidget.cpp:278
+#: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
 msgstr "पृष्ठभूमि रङ अनसेट गर्नुहोस्"
 
-#: syntax/katestyletreewidget.cpp:283
+#: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
 msgstr "चयन गरिएको पृष्ठभूमि रङ अनसेट गर्नुहोस्"
 
-#: syntax/katestyletreewidget.cpp:289
+#: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
 msgstr "पूर्वनिर्धारित शैली प्रयोग गर्नुहोस्"
 
-#: syntax/katestyletreewidget.cpp:402
+#: syntax/katestyletreewidget.cpp:408
 #, fuzzy, kde-format
 #| msgctxt "No text or background colour set"
 #| msgid "None set"
@@ -4453,7 +4453,7 @@ msgctxt "No text or background color set"
 msgid "None set"
 msgstr "कुनै पनि होइन सेट गर्नुहोस्"
 
-#: syntax/katestyletreewidget.cpp:636
+#: syntax/katestyletreewidget.cpp:642
 #, kde-format
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
@@ -4462,7 +4462,7 @@ msgstr ""
 "तपाईँले कुनै पनि शैली गुण परिवर्तन गर्दा \"पूर्वनिर्धारित शैली प्रयोग गर्नुहोस्\" स्वचालित "
 "तरिकाले अनसेट हुनेछ ।"
 
-#: syntax/katestyletreewidget.cpp:637
+#: syntax/katestyletreewidget.cpp:643
 #, kde-format
 msgid "Kate Styles"
 msgstr "केट शैली"
@@ -8022,22 +8022,22 @@ msgstr ""
 "list</b></code><br>, <code><b>help &lt;command&gt;</b></code></p>प्रविष्ट "
 "गर्नुहोस्"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "त्यस्तो आदेश छैन: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "सफलता:"
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" आदेश असफल भयो ।"

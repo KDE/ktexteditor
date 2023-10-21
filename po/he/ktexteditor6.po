@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-20 01:37+0000\n"
+"POT-Creation-Date: 2023-10-21 01:38+0000\n"
 "PO-Revision-Date: 2017-05-24 08:19-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Zanata 3.9.6\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -1038,6 +1039,8 @@ msgid " character"
 msgid_plural " characters"
 msgstr[0] " תו"
 msgstr[1] " תווים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: dialogs/katedialogs.cpp:208
 #, kde-format
@@ -1114,6 +1117,8 @@ msgid " character"
 msgid_plural " characters"
 msgstr[0] " תו"
 msgstr[1] " תווים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: dialogs/katedialogs.cpp:578
 #, kde-format
@@ -2112,12 +2117,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "נסה שוב"
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "&סגור"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2189,7 +2194,7 @@ msgstr ""
 "השתנו. עלול להיגרם אובדן מסויים של נתונים."
 
 #: document/katedocument.cpp:2474 document/katedocument.cpp:2490
-#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2204,7 +2209,7 @@ msgstr ""
 "אין באפשרות הקידוד הנבחר לקודד כל תו יוניקוד במסמך זה. האם אתה בטוח שברצונך "
 "לשמור אותו? עלול להיגרם אובדן מסויים של נתונים."
 
-#: document/katedocument.cpp:2557
+#: document/katedocument.cpp:2558
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2222,7 +2227,7 @@ msgstr ""
 "\n"
 "בדוק שיש לך הרשאת כתיבה לקובץ זה ושיש מספיק מקום פנוי בדיסק."
 
-#: document/katedocument.cpp:2678
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2234,50 +2239,50 @@ msgstr ""
 "ייתכן כי תאבד מידע של הקובץ הזה. סיבה לכך יכולה להיות כי המדיה שאתה מנסה "
 "לשמור עליה מלאה או הספרייה של הקובץ נמצאת במצב לקריאה בלבד."
 
-#: document/katedocument.cpp:2682
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "יצירת עותק גיבוי נכשלה."
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2684
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "נסה לשמור בכל זאת"
 
-#: document/katedocument.cpp:2805
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "האם אתה בטוח שברצונך להמשיך ולסגור קובץ זה? עלול להיגרם אובדן של נתונים."
 
-#: document/katedocument.cpp:2807
+#: document/katedocument.cpp:2808
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "סגור בכל זאת"
 
-#: document/katedocument.cpp:4621
+#: document/katedocument.cpp:4622
 #, kde-format
 msgid "Untitled"
 msgstr "ללא שם"
 
-#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
-#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
-#: document/katedocument.cpp:5956
+#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
+#: document/katedocument.cpp:5963
 #, kde-format
 msgid "Save File"
 msgstr "שמור קובץ"
 
-#: document/katedocument.cpp:4747
+#: document/katedocument.cpp:4748
 #, kde-format
 msgid "Save failed"
 msgstr "השמירה נכשלה"
 
-#: document/katedocument.cpp:4993
+#: document/katedocument.cpp:4994
 #, fuzzy, kde-format
 msgid "Save Copy of File"
 msgstr "שמור קובץ"
 
-#: document/katedocument.cpp:5005
+#: document/katedocument.cpp:5006
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2289,7 +2294,7 @@ msgstr ""
 "\n"
 "בדוק שיש לך הרשאת כתיבה לקובץ זה ושיש מספיק מקום פנוי בדיסק."
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2298,7 +2303,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5289
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2307,25 +2312,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "הקובץ \"%1\" שונה על ידי תוכנית אחרת."
 
-#: document/katedocument.cpp:5601
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "הקובץ \"%1\" נוצר ידי תוכנית אחרת."
 
-#: document/katedocument.cpp:5604
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "הקובץ \"%1\" נמחק על ידי תוכנית אחרת."
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2334,17 +2339,17 @@ msgstr ""
 "המסמך \"%1\" שונה.\n"
 "האם ברצונך לשמור את השינויים או לשכוח מהם?"
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Close Document"
 msgstr "סגור מסמך"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6062
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "הקובץ <a href=\"%1\">%2</a> עדיין נטען."
 
-#: document/katedocument.cpp:6060
+#: document/katedocument.cpp:6067
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&בטל טעינה"
@@ -3416,20 +3421,24 @@ msgid "Add..."
 msgstr "הוסף..."
 
 #: search/katesearchbar.cpp:299
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
 msgstr[0] "בוצעה החלפה אחת"
 msgstr[1] "בוצעו %1 החלפות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: search/katesearchbar.cpp:301
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
 msgstr[0] "נמצאה התאמה אחת"
 msgstr[1] "נמצאו %1 התאמות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: search/katesearchbar.cpp:375
 #, kde-format
@@ -4059,113 +4068,113 @@ msgstr "השתמש בצבע ברירת מחדל של סכימה הצבעים ש�
 msgid "None"
 msgstr "ללא"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:135
 #, kde-format
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
 msgstr "הקשר"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Normal"
 msgstr "רגיל"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Selected"
 msgstr "נבחר"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background"
 msgstr "רקע"
 
-#: syntax/katestyletreewidget.cpp:133
+#: syntax/katestyletreewidget.cpp:137
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background Selected"
 msgstr "רקע נבחר"
 
-#: syntax/katestyletreewidget.cpp:135
+#: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
 msgstr "השתמש בסגנון ברירת המחדל"
 
-#: syntax/katestyletreewidget.cpp:232
+#: syntax/katestyletreewidget.cpp:238
 #, kde-format
 msgid "&Bold"
 msgstr "&מודגש"
 
-#: syntax/katestyletreewidget.cpp:237
+#: syntax/katestyletreewidget.cpp:243
 #, kde-format
 msgid "&Italic"
 msgstr "&נטוי"
 
-#: syntax/katestyletreewidget.cpp:242
+#: syntax/katestyletreewidget.cpp:248
 #, kde-format
 msgid "&Underline"
 msgstr "קו &תחתון"
 
-#: syntax/katestyletreewidget.cpp:247
+#: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "S&trikeout"
 msgstr "קו &חוצה"
 
-#: syntax/katestyletreewidget.cpp:254
+#: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
 msgstr "&צבע רגיל..."
 
-#: syntax/katestyletreewidget.cpp:257
+#: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
 msgstr "צבע נב&חר..."
 
-#: syntax/katestyletreewidget.cpp:260
+#: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
 msgstr "צבע רק&ע..."
 
-#: syntax/katestyletreewidget.cpp:263
+#: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
 msgstr "צבע רקע &נבחר..."
 
-#: syntax/katestyletreewidget.cpp:269
+#: syntax/katestyletreewidget.cpp:275
 #, fuzzy, kde-format
 msgid "Unset Normal Color"
 msgstr "&צבע רגיל..."
 
-#: syntax/katestyletreewidget.cpp:272
+#: syntax/katestyletreewidget.cpp:278
 #, fuzzy, kde-format
 msgid "Unset Selected Color"
 msgstr "שחזר צבע רקע נבחר"
 
-#: syntax/katestyletreewidget.cpp:278
+#: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
 msgstr "שחזר צבע רקע"
 
-#: syntax/katestyletreewidget.cpp:283
+#: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
 msgstr "שחזר צבע רקע נבחר"
 
-#: syntax/katestyletreewidget.cpp:289
+#: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
 msgstr "&השתמש בסגנון ברירת המחדל"
 
-#: syntax/katestyletreewidget.cpp:402
+#: syntax/katestyletreewidget.cpp:408
 #, kde-format
 msgctxt "No text or background color set"
 msgid "None set"
 msgstr "לא הוגדר"
 
-#: syntax/katestyletreewidget.cpp:636
+#: syntax/katestyletreewidget.cpp:642
 #, kde-format
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
@@ -4174,7 +4183,7 @@ msgstr ""
 "האפשרות \"השתמש בסגנון ברירת המחדל\" תבוטל באופן אוטומטי אם תשנה מאפייני "
 "סגנון כלשהם."
 
-#: syntax/katestyletreewidget.cpp:637
+#: syntax/katestyletreewidget.cpp:643
 #, kde-format
 msgid "Kate Styles"
 msgstr "סגנונות של Kate"
@@ -5603,20 +5612,24 @@ msgid "replace with %1?"
 msgstr "האם להחליף עם %1?"
 
 #: utils/katesedcmd.cpp:274
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
 msgstr[0] "בוצעה החלפה אחת בשורה %2"
 msgstr[1] "בוצעו %1 החלפות ב־%2"
+msgstr[2] ""
+msgstr[3] ""
 
 #: utils/katesedcmd.cpp:277
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "substituted into the previous message"
 msgid "1 line"
 msgid_plural "%1 lines"
 msgstr[0] "שורה אחת"
 msgstr[1] "%1 שורות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
@@ -6247,6 +6260,8 @@ msgid "Other (%1)"
 msgid_plural "Other (%1)"
 msgstr[0] "אחר"
 msgstr[1] "אחר"
+msgstr[2] ""
+msgstr[3] ""
 
 #: view/katestatusbar.cpp:489
 #, kde-format
@@ -7531,22 +7546,22 @@ msgstr ""
 ">כדי לקבל עזרה לגבי פקודה מסויימת, הזן <code><b>help &lt;command&gt;</b></"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "אין פקודה כזאת: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "שגיאה: טווח אסור לפקודה \"%1\""
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "הצלחה: "
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "הפקודה \"%1\" נכשלה."

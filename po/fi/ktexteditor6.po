@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-20 01:37+0000\n"
+"POT-Creation-Date: 2023-10-21 01:38+0000\n"
 "PO-Revision-Date: 2023-07-27 16:03+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2181,12 +2181,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Yritä uudelleen"
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "&Sulje"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2260,7 +2260,7 @@ msgstr ""
 "tiedosto on muuttunut. Tietoa on saattanut kadota."
 
 #: document/katedocument.cpp:2474 document/katedocument.cpp:2490
-#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2275,7 +2275,7 @@ msgstr ""
 "Kaikkia tiedoston Unicode-merkkejä ei voida koodata valitulla koodauksella. "
 "Haluatko varmasti tallentaa tiedoston? Tietoa katoaa."
 
-#: document/katedocument.cpp:2557
+#: document/katedocument.cpp:2558
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2290,7 +2290,7 @@ msgstr ""
 "Alkuperäinen tiedosto saattoi kadota tai vioittua. Älä lopeta sovlelusta, "
 "ennen kuin tiedosto on onnistuttu kirjoittamaan."
 
-#: document/katedocument.cpp:2678
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2303,49 +2303,49 @@ msgstr ""
 "tiedot. Kenties tallennusväline on täynnä tai sinulla on tiedostoon "
 "ainoastaan lukuoikeus."
 
-#: document/katedocument.cpp:2682
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Varmuuskopion luominen epäonnistui."
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2684
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Yritä silti tallentaa"
 
-#: document/katedocument.cpp:2805
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Haluatko varmasti sulkea tämän tiedoston? Tietoa saattaa hävitä."
 
-#: document/katedocument.cpp:2807
+#: document/katedocument.cpp:2808
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Sulje silti"
 
-#: document/katedocument.cpp:4621
+#: document/katedocument.cpp:4622
 #, kde-format
 msgid "Untitled"
 msgstr "Nimetön"
 
-#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
-#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
-#: document/katedocument.cpp:5956
+#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
+#: document/katedocument.cpp:5963
 #, kde-format
 msgid "Save File"
 msgstr "Tallenna tiedosto"
 
-#: document/katedocument.cpp:4747
+#: document/katedocument.cpp:4748
 #, kde-format
 msgid "Save failed"
 msgstr "Tallennus epäonnistui"
 
-#: document/katedocument.cpp:4993
+#: document/katedocument.cpp:4994
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Tallenna tiedoston kopio"
 
-#: document/katedocument.cpp:5005
+#: document/katedocument.cpp:5006
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2358,7 +2358,7 @@ msgstr ""
 "Tarkista, että sinulla on kirjoitusoikeudet tiedostoon, ja että "
 "kiintolevyllä on vapaata levytilaa riittävästi."
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2371,7 +2371,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5289
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2384,22 +2384,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Tiedostoa ”%1” on muutettu levyllä."
 
-#: document/katedocument.cpp:5601
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Tiedosto ”%1” on luotu levylle."
 
-#: document/katedocument.cpp:5604
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Tiedosto ”%1” on poistettu levyltä."
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2408,17 +2408,17 @@ msgstr ""
 "Tiedostoa ”%1” on muutettu.\n"
 "Haluatko tallentaa muutokset vai hylätä ne?"
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Close Document"
 msgstr "Sulje tiedosto"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6062
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Tiedosto <a href=\"%1\">%2</a> latautuu vielä."
 
-#: document/katedocument.cpp:6060
+#: document/katedocument.cpp:6067
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Keskeytä lataus"
@@ -4221,113 +4221,113 @@ msgstr "Käytä väriteeman oletusväriä"
 msgid "None"
 msgstr "Ei korostusta"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:135
 #, kde-format
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
 msgstr "Konteksti"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Normal"
 msgstr "Normaali"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Selected"
 msgstr "Valittu"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background"
 msgstr "Tausta"
 
-#: syntax/katestyletreewidget.cpp:133
+#: syntax/katestyletreewidget.cpp:137
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background Selected"
 msgstr "Valittu tausta"
 
-#: syntax/katestyletreewidget.cpp:135
+#: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
 msgstr "Käytä oletustyyliä"
 
-#: syntax/katestyletreewidget.cpp:232
+#: syntax/katestyletreewidget.cpp:238
 #, kde-format
 msgid "&Bold"
 msgstr "&Lihavoitu"
 
-#: syntax/katestyletreewidget.cpp:237
+#: syntax/katestyletreewidget.cpp:243
 #, kde-format
 msgid "&Italic"
 msgstr "&Kursiivi"
 
-#: syntax/katestyletreewidget.cpp:242
+#: syntax/katestyletreewidget.cpp:248
 #, kde-format
 msgid "&Underline"
 msgstr "&Alleviivaus"
 
-#: syntax/katestyletreewidget.cpp:247
+#: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "S&trikeout"
 msgstr "&Yliviivaus"
 
-#: syntax/katestyletreewidget.cpp:254
+#: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
 msgstr "Tavallinen &väri…"
 
-#: syntax/katestyletreewidget.cpp:257
+#: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
 msgstr "&Valittu väri…"
 
-#: syntax/katestyletreewidget.cpp:260
+#: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
 msgstr "&Taustaväri…"
 
-#: syntax/katestyletreewidget.cpp:263
+#: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
 msgstr "&Valittu taustaväri…"
 
-#: syntax/katestyletreewidget.cpp:269
+#: syntax/katestyletreewidget.cpp:275
 #, kde-format
 msgid "Unset Normal Color"
 msgstr "Poista tavallinen väri"
 
-#: syntax/katestyletreewidget.cpp:272
+#: syntax/katestyletreewidget.cpp:278
 #, kde-format
 msgid "Unset Selected Color"
 msgstr "Poista valittu väri"
 
-#: syntax/katestyletreewidget.cpp:278
+#: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
 msgstr "Poista taustaväri"
 
-#: syntax/katestyletreewidget.cpp:283
+#: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
 msgstr "Poista valittu taustaväri"
 
-#: syntax/katestyletreewidget.cpp:289
+#: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
 msgstr "Käytä &oletustyyliä"
 
-#: syntax/katestyletreewidget.cpp:402
+#: syntax/katestyletreewidget.cpp:408
 #, kde-format
 msgctxt "No text or background color set"
 msgid "None set"
 msgstr "Ei aset."
 
-#: syntax/katestyletreewidget.cpp:636
+#: syntax/katestyletreewidget.cpp:642
 #, kde-format
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
@@ -4336,7 +4336,7 @@ msgstr ""
 "”Käytä oletustyyliä” asetus poistetaan automaattisesti käytöstä, jos muutat "
 "tyylin ominaisuuksia."
 
-#: syntax/katestyletreewidget.cpp:637
+#: syntax/katestyletreewidget.cpp:643
 #, kde-format
 msgid "Kate Styles"
 msgstr "Kate-tyylit"
@@ -7758,22 +7758,22 @@ msgstr ""
 "<code><b>help list</b></code><br />Saat lisätietoja yksittäisistä "
 "komennoista komennolla <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Ei komentoa: ”%1”"
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Virhe: Komennolle ”%1” ei sallita lukualuetta."
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Onnistui: "
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Komento ”%1” epäonnistui."

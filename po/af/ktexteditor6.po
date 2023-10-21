@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-20 01:37+0000\n"
+"POT-Creation-Date: 2023-10-21 01:38+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -2269,12 +2269,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2338,7 +2338,7 @@ msgstr ""
 "skyf was verander. Daar kan sommige data verlies wees."
 
 #: document/katedocument.cpp:2474 document/katedocument.cpp:2490
-#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2356,7 +2356,7 @@ msgstr ""
 "Die verkose enkodering van nie enkodeer elke unikode karakter in hierdie "
 "dokument. Wil jy dit werklik stoor? Daar kan somige data verlies wees."
 
-#: document/katedocument.cpp:2557
+#: document/katedocument.cpp:2558
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2376,7 +2376,7 @@ msgstr ""
 "Kontroleur dat jy skryf toegang het na hierdie lêer of dat daar genoeg skryf "
 "spasie beskikbaar is."
 
-#: document/katedocument.cpp:2678
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2385,51 +2385,51 @@ msgid ""
 "only for you."
 msgstr ""
 
-#: document/katedocument.cpp:2682
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr ""
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2684
 #, fuzzy, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Stoor nogsteeds"
 
-#: document/katedocument.cpp:2805
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Wil jy regtig voortgaan om die lêer te sluit? Data verlies mag voorkom."
 
-#: document/katedocument.cpp:2807
+#: document/katedocument.cpp:2808
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Maak nogsteeds toe"
 
-#: document/katedocument.cpp:4621
+#: document/katedocument.cpp:4622
 #, fuzzy, kde-format
 msgid "Untitled"
 msgstr "Onbeperk"
 
-#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
-#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
-#: document/katedocument.cpp:5956
+#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
+#: document/katedocument.cpp:5963
 #, kde-format
 msgid "Save File"
 msgstr "Stoor Lêer"
 
-#: document/katedocument.cpp:4747
+#: document/katedocument.cpp:4748
 #, kde-format
 msgid "Save failed"
 msgstr "Stoor gevaal"
 
-#: document/katedocument.cpp:4993
+#: document/katedocument.cpp:4994
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Stoor Lêer"
 
-#: document/katedocument.cpp:5005
+#: document/katedocument.cpp:5006
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2443,7 +2443,7 @@ msgstr ""
 "Kontroleur dat jy skryf toegang het na hierdie lêer of dat daar genoeg skryf "
 "spasie beskikbaar is."
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2452,7 +2452,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5289
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2461,43 +2461,43 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Die lêer '%1' was modifiseerd deur 'n ander program."
 
-#: document/katedocument.cpp:5601
+#: document/katedocument.cpp:5605
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Die lêer '%1' is gemaak deur 'n ander program."
 
-#: document/katedocument.cpp:5604
+#: document/katedocument.cpp:5608
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Die lêer '%1' was uitgevee deur 'n ander program."
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5951
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "Woord Oorvloei Dokument"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6062
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6060
+#: document/katedocument.cpp:6067
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -4320,120 +4320,120 @@ msgstr ""
 msgid "None"
 msgstr "Geen"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:135
 #, fuzzy, kde-format
 #| msgid "Context"
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
 msgstr "Konteks"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, fuzzy, kde-format
 #| msgid "Normal"
 msgctxt "@title:column Text style"
 msgid "Normal"
 msgstr "Normale"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, fuzzy, kde-format
 #| msgid "Selected"
 msgctxt "@title:column Text style"
 msgid "Selected"
 msgstr "Gekose"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, fuzzy, kde-format
 #| msgid "Background"
 msgctxt "@title:column Text style"
 msgid "Background"
 msgstr "Agtergrond"
 
-#: syntax/katestyletreewidget.cpp:133
+#: syntax/katestyletreewidget.cpp:137
 #, fuzzy, kde-format
 #| msgid "Background Selected"
 msgctxt "@title:column Text style"
 msgid "Background Selected"
 msgstr "Agtergrond Gekies"
 
-#: syntax/katestyletreewidget.cpp:135
+#: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
 msgstr "Gebruik Verstek Styl"
 
-#: syntax/katestyletreewidget.cpp:232
+#: syntax/katestyletreewidget.cpp:238
 #, kde-format
 msgid "&Bold"
 msgstr "Vetdruk"
 
-#: syntax/katestyletreewidget.cpp:237
+#: syntax/katestyletreewidget.cpp:243
 #, kde-format
 msgid "&Italic"
 msgstr "Kursief"
 
-#: syntax/katestyletreewidget.cpp:242
+#: syntax/katestyletreewidget.cpp:248
 #, kde-format
 msgid "&Underline"
 msgstr "Onderstreep"
 
-#: syntax/katestyletreewidget.cpp:247
+#: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "S&trikeout"
 msgstr "Uitkrap"
 
-#: syntax/katestyletreewidget.cpp:254
+#: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
 msgstr "Normale Kleur..."
 
-#: syntax/katestyletreewidget.cpp:257
+#: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
 msgstr "Gekose Kleur..."
 
-#: syntax/katestyletreewidget.cpp:260
+#: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
 msgstr "Agtergrond Kleur..."
 
-#: syntax/katestyletreewidget.cpp:263
+#: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
 msgstr "Gekose Agtergrond Kleur..."
 
-#: syntax/katestyletreewidget.cpp:269
+#: syntax/katestyletreewidget.cpp:275
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "Unset Normal Color"
 msgstr "Normale Kleur..."
 
-#: syntax/katestyletreewidget.cpp:272
+#: syntax/katestyletreewidget.cpp:278
 #, fuzzy, kde-format
 #| msgid "Unset Selected Background Color"
 msgid "Unset Selected Color"
 msgstr "Wegstel van verkose Agtergrond Kleur"
 
-#: syntax/katestyletreewidget.cpp:278
+#: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
 msgstr "Wegstel van Agtergrond Kleur"
 
-#: syntax/katestyletreewidget.cpp:283
+#: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
 msgstr "Wegstel van verkose Agtergrond Kleur"
 
-#: syntax/katestyletreewidget.cpp:289
+#: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
 msgstr "Gebruik Verstek Styl"
 
-#: syntax/katestyletreewidget.cpp:402
+#: syntax/katestyletreewidget.cpp:408
 #, fuzzy, kde-format
 msgctxt "No text or background color set"
 msgid "None set"
 msgstr "Geen"
 
-#: syntax/katestyletreewidget.cpp:636
+#: syntax/katestyletreewidget.cpp:642
 #, kde-format
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
@@ -4442,7 +4442,7 @@ msgstr ""
 "\"Gebruik Verstek Styl\" sal wees automaties herstel wanneer jy verander "
 "enige Styl eienskappe."
 
-#: syntax/katestyletreewidget.cpp:637
+#: syntax/katestyletreewidget.cpp:643
 #, kde-format
 msgid "Kate Styles"
 msgstr "Kate Style"
@@ -8007,22 +8007,22 @@ msgstr ""
 "<kode><b>hulp lys</b></kode><br>Vir hulp vir individuele opdragte, voortgaan "
 "<kode><b>hulp &lt;opdrag&gt;</b></kode></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Geen so opdrag: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Sukses: "
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Opdrag \"%1\" gevaal."

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-20 01:37+0000\n"
-"PO-Revision-Date: 2023-10-11 20:29+0100\n"
+"POT-Creation-Date: 2023-10-21 01:38+0000\n"
+"PO-Revision-Date: 2023-10-20 19:22+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -657,13 +657,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Ebligi sciigojn pri alireblo"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Alireblo:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -2166,12 +2166,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Provi denove"
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6551
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
 #, kde-format
 msgid "&Close"
 msgstr "&Fermi"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6552
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2243,7 +2243,7 @@ msgstr ""
 "surdiska dosiero ŝanĝiĝis. Povus okazi perdo de datumoj."
 
 #: document/katedocument.cpp:2474 document/katedocument.cpp:2490
-#: document/katedocument.cpp:2806 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
@@ -2258,7 +2258,7 @@ msgstr ""
 "La elektita kodigo ne povas kodi ĉiun Unikodan signon en ĉi tiu dokumento. "
 "Ĉu vi vere volas konservi ĝin? Povus okazi perdo de datumoj."
 
-#: document/katedocument.cpp:2557
+#: document/katedocument.cpp:2558
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2273,7 +2273,7 @@ msgstr ""
 "La originala dosiero eble estos perdita aŭ difektita. Ne forlasu la "
 "aplikaĵon ĝis kiam la dosiero estas sukcese skribita."
 
-#: document/katedocument.cpp:2678
+#: document/katedocument.cpp:2679
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2286,49 +2286,49 @@ msgstr ""
 "datumportilo al kiun vi penas skribi estas plenplena, aŭ la dosierujo estas "
 "nurlega por vi."
 
-#: document/katedocument.cpp:2682
+#: document/katedocument.cpp:2683
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Malsukcesis krei sekurkopion."
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2684
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Tamen, peni konservi"
 
-#: document/katedocument.cpp:2805
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "Ĉu vi vere volas fermi ĉi dosieron? Datumoj povus perdiĝi."
 
-#: document/katedocument.cpp:2807
+#: document/katedocument.cpp:2808
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Tamen fermi"
 
-#: document/katedocument.cpp:4621
+#: document/katedocument.cpp:4622
 #, kde-format
 msgid "Untitled"
 msgstr "Sentitola"
 
-#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
-#: document/katedocument.cpp:4982 document/katedocument.cpp:5766
-#: document/katedocument.cpp:5956
+#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
+#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
+#: document/katedocument.cpp:5963
 #, kde-format
 msgid "Save File"
 msgstr "Konservi Dosieron"
 
-#: document/katedocument.cpp:4747
+#: document/katedocument.cpp:4748
 #, kde-format
 msgid "Save failed"
 msgstr "Konservado malsukcesis"
 
-#: document/katedocument.cpp:4993
+#: document/katedocument.cpp:4994
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Konservi Kopion de Dosiero"
 
-#: document/katedocument.cpp:5005
+#: document/katedocument.cpp:5006
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2341,7 +2341,7 @@ msgstr ""
 "Kontrolu ke vi havas skribpermeson por ĉi tiu dosiero aŭ ke vi havas sufiĉan "
 "diskospacon."
 
-#: document/katedocument.cpp:5283
+#: document/katedocument.cpp:5286
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2354,7 +2354,7 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5289
+#: document/katedocument.cpp:5292
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2367,22 +2367,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5598
+#: document/katedocument.cpp:5602
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "La dosiero '%1' estis modifita sur disko."
 
-#: document/katedocument.cpp:5601
+#: document/katedocument.cpp:5605
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "La dosiero '%1' estis kreita sur disko."
 
-#: document/katedocument.cpp:5604
+#: document/katedocument.cpp:5608
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "La dosiero '%1' estis forigita sur disko."
 
-#: document/katedocument.cpp:5941
+#: document/katedocument.cpp:5948
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2391,17 +2391,17 @@ msgstr ""
 "La dokumento \"%1\" estas modifita.\n"
 "Ĉu vi volas konservi viajn ŝanĝojn aŭ forĵeti ilin?"
 
-#: document/katedocument.cpp:5944
+#: document/katedocument.cpp:5951
 #, kde-format
 msgid "Close Document"
 msgstr "Fermi Dokumenton"
 
-#: document/katedocument.cpp:6055
+#: document/katedocument.cpp:6062
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "La dosiero <a href=\"%1\">%2</a> ankoraŭ ŝargiĝas."
 
-#: document/katedocument.cpp:6060
+#: document/katedocument.cpp:6067
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Ĉesigi Ŝ&argon"
@@ -4197,113 +4197,113 @@ msgstr "Uzi defaŭltan koloron de la kolora etoso"
 msgid "None"
 msgstr "Neniu"
 
-#: syntax/katestyletreewidget.cpp:131
+#: syntax/katestyletreewidget.cpp:135
 #, kde-format
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
 msgstr "Kunteksto"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Normal"
 msgstr "Normala"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Selected"
 msgstr "Elektita"
 
-#: syntax/katestyletreewidget.cpp:132
+#: syntax/katestyletreewidget.cpp:136
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background"
 msgstr "Fono"
 
-#: syntax/katestyletreewidget.cpp:133
+#: syntax/katestyletreewidget.cpp:137
 #, kde-format
 msgctxt "@title:column Text style"
 msgid "Background Selected"
 msgstr "Fono Elektita"
 
-#: syntax/katestyletreewidget.cpp:135
+#: syntax/katestyletreewidget.cpp:139
 #, kde-format
 msgid "Use Default Style"
 msgstr "Uzi Defaŭltan Stilon"
 
-#: syntax/katestyletreewidget.cpp:232
+#: syntax/katestyletreewidget.cpp:238
 #, kde-format
 msgid "&Bold"
 msgstr "&Grase"
 
-#: syntax/katestyletreewidget.cpp:237
+#: syntax/katestyletreewidget.cpp:243
 #, kde-format
 msgid "&Italic"
 msgstr "&Kursive"
 
-#: syntax/katestyletreewidget.cpp:242
+#: syntax/katestyletreewidget.cpp:248
 #, kde-format
 msgid "&Underline"
 msgstr "&Substreki"
 
-#: syntax/katestyletreewidget.cpp:247
+#: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "S&trikeout"
 msgstr "&Trastreki"
 
-#: syntax/katestyletreewidget.cpp:254
+#: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
 msgstr "Normala &Koloro..."
 
-#: syntax/katestyletreewidget.cpp:257
+#: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
 msgstr "&Selektita Koloro..."
 
-#: syntax/katestyletreewidget.cpp:260
+#: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
 msgstr "&Fonkoloro..."
 
-#: syntax/katestyletreewidget.cpp:263
+#: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
 msgstr "S&elektita Fonkoloro..."
 
-#: syntax/katestyletreewidget.cpp:269
+#: syntax/katestyletreewidget.cpp:275
 #, kde-format
 msgid "Unset Normal Color"
 msgstr "Malŝalti Normalan Koloron"
 
-#: syntax/katestyletreewidget.cpp:272
+#: syntax/katestyletreewidget.cpp:278
 #, kde-format
 msgid "Unset Selected Color"
 msgstr "Malŝalti Elektitan Koloron"
 
-#: syntax/katestyletreewidget.cpp:278
+#: syntax/katestyletreewidget.cpp:284
 #, kde-format
 msgid "Unset Background Color"
 msgstr "Malelekti Fonkoloron"
 
-#: syntax/katestyletreewidget.cpp:283
+#: syntax/katestyletreewidget.cpp:289
 #, kde-format
 msgid "Unset Selected Background Color"
 msgstr "Malelekti Koloron de selektita fono"
 
-#: syntax/katestyletreewidget.cpp:289
+#: syntax/katestyletreewidget.cpp:295
 #, kde-format
 msgid "Use &Default Style"
 msgstr "Uzi &Defaŭltan Stilon"
 
-#: syntax/katestyletreewidget.cpp:402
+#: syntax/katestyletreewidget.cpp:408
 #, kde-format
 msgctxt "No text or background color set"
 msgid "None set"
 msgstr "Neniu"
 
-#: syntax/katestyletreewidget.cpp:636
+#: syntax/katestyletreewidget.cpp:642
 #, kde-format
 msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
@@ -4311,7 +4311,7 @@ msgid ""
 msgstr ""
 "\"Uzi Defaŭltan Stilon\" aŭtomate malŝaltiĝas, se vi ŝanĝas iujn stilojn."
 
-#: syntax/katestyletreewidget.cpp:637
+#: syntax/katestyletreewidget.cpp:643
 #, kde-format
 msgid "Kate Styles"
 msgstr "Kate-Stiloj"
@@ -7738,22 +7738,22 @@ msgstr ""
 "<code><b>help list</b></code><br />Por helpo pri unuopaj komandoj, entajpu "
 "<code><b>help &lt;komando&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:210
+#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Ne ekzistas komando: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:192
+#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Eraro: Neniu intervalo permesita por komando \"%1\"."
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:196
+#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Sukceso: "
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:205
+#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Komando  \"%1\" malsukcesis."
