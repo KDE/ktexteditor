@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:38+0000\n"
-"PO-Revision-Date: 2023-10-14 11:01+0200\n"
+"PO-Revision-Date: 2023-10-21 11:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -666,13 +666,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Włącz powiadomienia ułatwień dostępu"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Ułatwienia dostępu:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:38+0000\n"
-"PO-Revision-Date: 2023-10-10 14:24\n"
+"PO-Revision-Date: 2023-10-21 13:51\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -139,10 +139,9 @@ msgstr "拼写"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "搜索的文本"
+msgstr "文字转语音"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -7386,28 +7385,24 @@ msgid "Toggle Contained Nodes"
 msgstr "开关包含的节点"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "当前文档的文本选区。"
+msgstr "朗读当前选中文字或者文档"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "保存当前文档"
+msgstr "停止当前输出"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "保存当前文档"
+msgstr "暂停当前输出"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "保存当前文档"
+msgstr "继续当前输出"
 
 #: view/kateview.cpp:1529
 #, kde-format

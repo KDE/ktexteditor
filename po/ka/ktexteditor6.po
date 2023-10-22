@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:38+0000\n"
-"PO-Revision-Date: 2023-10-12 06:29+0200\n"
+"PO-Revision-Date: 2023-10-21 07:20+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -650,13 +650,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "წვდომადობის გაფრთხილებების ჩართვა"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "წვდომადობა:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
