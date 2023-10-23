@@ -2,12 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022, 2023 g.sora <g.sora@tiscali.it>
+# giovanni <g.sora@tiscali.it>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:38+0000\n"
-"PO-Revision-Date: 2023-10-11 09:22+0200\n"
+"PO-Revision-Date: 2023-10-22 17:30+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -659,13 +660,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Habilita notificationes de accessibilitate"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Accessibilitate:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
