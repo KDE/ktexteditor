@@ -134,11 +134,11 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget(m_dictionary, 0);
     m_dictionary->setWhatsThis(i18n("Change dictionary"));
     m_dictionaryMenu = new KateStatusBarOpenUpMenu(m_dictionary);
-    m_dictionaryMenu->addAction(m_view->action("tools_change_dictionary"));
-    m_dictionaryMenu->addAction(m_view->action("tools_clear_dictionary_ranges"));
-    m_dictionaryMenu->addAction(m_view->action("tools_toggle_automatic_spell_checking"));
-    m_dictionaryMenu->addAction(m_view->action("tools_spelling_from_cursor"));
-    m_dictionaryMenu->addAction(m_view->action("tools_spelling"));
+    m_dictionaryMenu->addAction(m_view->action(QStringLiteral("tools_change_dictionary")));
+    m_dictionaryMenu->addAction(m_view->action(QStringLiteral("tools_clear_dictionary_ranges")));
+    m_dictionaryMenu->addAction(m_view->action(QStringLiteral("tools_toggle_automatic_spell_checking")));
+    m_dictionaryMenu->addAction(m_view->action(QStringLiteral("tools_spelling_from_cursor")));
+    m_dictionaryMenu->addAction(m_view->action(QStringLiteral("tools_spelling")));
     m_dictionaryMenu->addSeparator();
     m_dictionaryGroup = new QActionGroup(m_dictionaryMenu);
     QMapIterator<QString, QString> i(Sonnet::Speller().preferredDictionaries());

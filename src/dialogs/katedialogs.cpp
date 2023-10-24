@@ -1252,7 +1252,7 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     btn = m_modifiedUp = new QToolButton(this);
     btn->setAutoRaise(true);
     btn->setMinimumSize(QSize(1, btn->minimumSizeHint().height()));
-    btn->setDefaultAction(m_view->action("modified_line_up"));
+    btn->setDefaultAction(m_view->action(QStringLiteral("modified_line_up")));
     btn->setIcon(QIcon::fromTheme(QStringLiteral("go-up-search")));
     btn->setText(QString());
     btn->installEventFilter(this);
@@ -1261,7 +1261,7 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     btn = m_modifiedDown = new QToolButton(this);
     btn->setAutoRaise(true);
     btn->setMinimumSize(QSize(1, btn->minimumSizeHint().height()));
-    btn->setDefaultAction(m_view->action("modified_line_down"));
+    btn->setDefaultAction(m_view->action(QStringLiteral("modified_line_down")));
     btn->setIcon(QIcon::fromTheme(QStringLiteral("go-down-search")));
     btn->setText(QString());
     btn->installEventFilter(this);
