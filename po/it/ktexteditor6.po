@@ -1,4 +1,5 @@
 # translation of katepart4.po to Italian
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Vincenzo Reale <smart2128vr@gmail.com>
 # Andrea Rizzi <rizzi@kde.org>, 2003, 2004.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2004, 2007, 2008, 2009, 2010, 2011.
 # Federico Cozzi <federicocozzi@federicocozzi.it>, 2004.
@@ -7,13 +8,12 @@
 # Samuele Kaplun <samuele.kaplun@collegiodimilano.it>, 2006.
 # Nicola Ruggero <nicola@nxnt.org>, 2006, 2007.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2008, 2012, 2013, 2014, 2015.
-# Vincenzo Reale <smart2128vr@gmail.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:38+0000\n"
-"PO-Revision-Date: 2023-07-02 20:34+0200\n"
+"PO-Revision-Date: 2023-10-22 14:14+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -145,10 +145,9 @@ msgstr "Ortografia"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Testo da cercare"
+msgstr "Sintesi vocale"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -667,13 +666,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Abilita le notifiche di accessibilità"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Accessibilità:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -7749,28 +7748,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Commuta nodi contenuti"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Seleziona del testo del documento attuale."
+msgstr "Pronuncia la selezione o il documento attuale"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Salva il documento attuale"
+msgstr "Ferma l'uscita attuale"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Salva il documento attuale"
+msgstr "Sospendi l'uscita attuale"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Salva il documento attuale"
+msgstr "Riprendi l'uscita attuale"
 
 #: view/kateview.cpp:1529
 #, kde-format
