@@ -6415,7 +6415,8 @@ msgstr "Activa l'ajust de les paraules en teclejar text."
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
 msgstr ""
-"Posició actual del cursor. Feu un clic per a anar a una línia específica."
+"Posició actual del cursor. Feu un clic per a anar fins a una línia "
+"específica."
 
 #: view/katestatusbar.cpp:127
 #, kde-format
