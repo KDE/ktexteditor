@@ -1239,7 +1239,7 @@ msgstr "&Línia:"
 #: dialogs/katedialogs.cpp:1235
 #, kde-format
 msgid "Go to line number from clipboard"
-msgstr "Va al número de línia del porta-retalls"
+msgstr "Va fins al número de línia des del porta-retalls"
 
 #: dialogs/katedialogs.cpp:1246
 #, kde-format
@@ -3071,12 +3071,12 @@ msgstr ""
 #: script/data/commands/emmet.js:101
 #, kde-format
 msgid "Move to the next edit point (tag or empty attribute)."
-msgstr "Va al punt d'edició següent (etiqueta o atribut buit)."
+msgstr "Va fins al punt d'edició següent (etiqueta o atribut buit)."
 
 #: script/data/commands/emmet.js:102
 #, kde-format
 msgid "Move to the previous edit point (tag or empty attribute)."
-msgstr "Va al punt d'edició anterior (etiqueta o atribut buit)."
+msgstr "Va fins al punt d'edició anterior (etiqueta o atribut buit)."
 
 #: script/data/commands/emmet.js:103
 #, kde-format
@@ -5179,7 +5179,7 @@ msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
 "line number.</p>"
 msgstr ""
-"<p>goto <b>número de línia</b></p><p> Esta ordre va al número de línia "
+"<p>goto <b>número de línia</b></p><p> Esta ordre va fins al número de línia "
 "especificada.</p>"
 
 #: utils/katecmds.cpp:85
@@ -5643,7 +5643,7 @@ msgstr "Michael Koch"
 #: utils/kateglobal.cpp:118
 #, kde-format
 msgid "KWrite port to KParts"
-msgstr "Port de KWrite a KParts"
+msgstr "Port de KWrite a les KPart"
 
 #: utils/kateglobal.cpp:119
 #, kde-format
@@ -6402,7 +6402,8 @@ msgstr "Activa l'ajust de les paraules en teclejar text."
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
 msgstr ""
-"Posició actual del cursor. Feu un clic per a anar a una línia específica."
+"Posició actual del cursor. Feu un clic per a anar fins a una línia "
+"específica."
 
 #: view/katestatusbar.cpp:126
 #, kde-format
@@ -7538,7 +7539,7 @@ msgstr "Desplaça una línia avall"
 #: view/kateview.cpp:1121
 #, kde-format
 msgid "Scroll Page Up"
-msgstr "Desplaça una pàgina amunt"
+msgstr "Desplaça una pàgina cap amunt"
 
 # skip-rule: k-PageUp-1
 #: view/kateview.cpp:1127
@@ -7560,7 +7561,7 @@ msgstr "Selecciona des del començament de la vista"
 #: view/kateview.cpp:1145
 #, kde-format
 msgid "Scroll Page Down"
-msgstr "Desplaça una pàgina avall"
+msgstr "Desplaça una pàgina cap avall"
 
 # skip-rule: k-PageDown-1
 #: view/kateview.cpp:1151
@@ -7992,9 +7993,9 @@ msgid ""
 "around the start of the document list.</p>"
 msgstr ""
 "<p><b>bp,bprev &mdash; document anterior</b></p><p>Ús: <tt><b>bp[revious] "
-"[N]</b></tt></p><p>Va a l'anterior <b>[N]</b> document («<b>b</b>uffer») en "
-"la llista de documents. </p><p> <b>[N]</b> està predeterminat a u. </p> "
-"<p>Dona la volta a l'inici de la llista de documents.</p>"
+"[N]</b></tt></p><p>Va fins a l'anterior <b>[N]</b> document («<b>b</"
+"b>uffer») en la llista de documents. </p><p> <b>[N]</b> està predeterminat a "
+"u. </p> <p>Dona la volta a l'inici de la llista de documents.</p>"
 
 #: vimode/appcommands.cpp:525
 #, kde-format
@@ -8005,9 +8006,9 @@ msgid ""
 "p><p>Wraps around the end of the document list.</p>"
 msgstr ""
 "<p><b>bn,bnext &mdash; canvia al document següent</b></p><p>Ús: "
-"<tt><b>bn[ext] [N]</b></tt></p><p>Va al següent <b>[N]</b> document («<b>b</"
-"b>uffer») en la llista de documents.<b>[N]</b> està predeterminat a u. </"
-"p><p>Dona la volta al final de la llista de documents.</p>"
+"<tt><b>bn[ext] [N]</b></tt></p><p>Va fins al següent <b>[N]</b> document "
+"(«<b>b</b>uffer») en la llista de documents.<b>[N]</b> està predeterminat a "
+"u. </p><p>Dona la volta al final de la llista de documents.</p>"
 
 #: vimode/appcommands.cpp:533
 #, kde-format
@@ -8017,8 +8018,8 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bf,bfirst &mdash; primer document</b></p><p>Ús: <tt><b>bf[irst]</b></"
-"tt></p><p>Va al «<b>f</b>irst» (primer) document («<b>b</b>uffer») en la "
-"llista de documents.</p>"
+"tt></p><p>Va fins al «<b>f</b>irst» (primer) document («<b>b</b>uffer») en "
+"la llista de documents.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format
@@ -8028,8 +8029,8 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bl,blast &mdash; últim document</b></p><p>Ús: <tt><b>bl[ast]</b></tt></"
-"p><p>Va al «<b>l</b>ast» (últim) document («<b>b</b>uffer») en la llista de "
-"documents.</p>"
+"p><p>Va fins al «<b>l</b>ast» (últim) document («<b>b</b>uffer») en la "
+"llista de documents.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format
