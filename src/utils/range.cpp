@@ -12,6 +12,11 @@
 
 #include "range.h"
 
+#include <QByteArray>
+#include <QDebug>
+#include <QHash>
+#include <QString>
+
 using namespace KTextEditor;
 
 Range Range::fromString(QStringView str) noexcept

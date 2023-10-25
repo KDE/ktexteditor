@@ -12,6 +12,7 @@
 #include <KTextEditor/Command>
 #include <ktexteditor/cursor.h>
 
+#include <QHash>
 #include <QList>
 
 class QString;
