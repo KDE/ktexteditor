@@ -185,10 +185,13 @@ bool KateAutoIndent::doIndent(int line, int indentDepth, int align)
 
     // Modify the document *ONLY* if smth has really changed!
     if (oldIndentation != indentString) {
-        // remove leading whitespace, then insert the leading indentation
+        // insert the required new indentation
+        // before removing the old indentation
+        // to prevent the selection to be shrink by the first removal
+        // (see bug329247)
         doc->editStart();
-        doc->editRemoveText(line, 0, oldIndentation.length());
         doc->editInsertText(line, 0, indentString);
+        doc->editRemoveText(line, indentString.length(), oldIndentation.length());
         doc->editEnd();
     }
 
