@@ -79,6 +79,7 @@
 #include <QRegularExpression>
 #include <QTextToSpeech>
 #include <QToolTip>
+#include <qnamespace.h>
 
 // #define VIEW_RANGE_DEBUG
 
@@ -108,6 +109,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     : KTextEditor::View(this, parent)
     , m_completionWidget(nullptr)
     , m_annotationModel(nullptr)
+    , m_forcedSelection(false)
     , m_hasWrap(false)
     , m_doc(doc)
     , m_textFolding(doc->buffer())
@@ -1041,6 +1043,11 @@ void KTextEditor::ViewPrivate::setupEditActions()
     a->setText(i18n("Select Word Right"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Right));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftWordRight);
+    m_editActions.push_back(a);
+
+    a = ac->addAction(QStringLiteral("force_selection"));
+    a->setText(i18n("Force Selecting"));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::forceSelecting);
     m_editActions.push_back(a);
 
     a = ac->addAction(QStringLiteral("beginning_of_line"));
@@ -2853,7 +2860,7 @@ void KTextEditor::ViewPrivate::cut()
     removeSelectedText();
 }
 
-void KTextEditor::ViewPrivate::copy() const
+void KTextEditor::ViewPrivate::copy()
 {
     QString text;
     KTextEditor::EditorPrivate::self()->copyToMulticursorClipboard({});
@@ -2882,6 +2889,11 @@ void KTextEditor::ViewPrivate::copy() const
                 texts.append(doc()->text(range));
             }
             KTextEditor::EditorPrivate::self()->copyToMulticursorClipboard(texts);
+        }
+
+        if (m_forcedSelection) {
+            setSelection(KTextEditor::Range::invalid());
+            m_forcedSelection = false;
         }
     }
 
@@ -4015,7 +4027,7 @@ void KTextEditor::ViewPrivate::transposeWord()
 
 void KTextEditor::ViewPrivate::cursorLeft()
 {
-    if (selection() && !config()->persistentSelection()) {
+    if (selection() && !config()->persistentSelection() && !m_forcedSelection) {
         if (isLineRTL(cursorPosition().line())) {
             m_viewInternal->updateCursor(selectionRange().end());
             setSelection(KTextEditor::Range::invalid());
@@ -4034,9 +4046,9 @@ void KTextEditor::ViewPrivate::cursorLeft()
         clearSecondarySelections();
     } else {
         if (isLineRTL(cursorPosition().line())) {
-            m_viewInternal->cursorNextChar();
+            m_viewInternal->cursorNextChar(m_forcedSelection);
         } else {
-            m_viewInternal->cursorPrevChar();
+            m_viewInternal->cursorPrevChar(m_forcedSelection);
         }
     }
 }
@@ -4052,7 +4064,7 @@ void KTextEditor::ViewPrivate::shiftCursorLeft()
 
 void KTextEditor::ViewPrivate::cursorRight()
 {
-    if (selection() && !config()->persistentSelection()) {
+    if (selection() && !config()->persistentSelection() && !m_forcedSelection) {
         if (isLineRTL(cursorPosition().line())) {
             m_viewInternal->updateCursor(selectionRange().start());
             setSelection(KTextEditor::Range::invalid());
@@ -4071,9 +4083,9 @@ void KTextEditor::ViewPrivate::cursorRight()
         clearSecondarySelections();
     } else {
         if (isLineRTL(cursorPosition().line())) {
-            m_viewInternal->cursorPrevChar();
+            m_viewInternal->cursorPrevChar(m_forcedSelection);
         } else {
-            m_viewInternal->cursorNextChar();
+            m_viewInternal->cursorNextChar(m_forcedSelection);
         }
     }
 }
@@ -4090,9 +4102,9 @@ void KTextEditor::ViewPrivate::shiftCursorRight()
 void KTextEditor::ViewPrivate::wordLeft()
 {
     if (isLineRTL(cursorPosition().line())) {
-        m_viewInternal->wordNext();
+        m_viewInternal->wordNext(m_forcedSelection);
     } else {
-        m_viewInternal->wordPrev();
+        m_viewInternal->wordPrev(m_forcedSelection);
     }
 }
 
@@ -4108,9 +4120,9 @@ void KTextEditor::ViewPrivate::shiftWordLeft()
 void KTextEditor::ViewPrivate::wordRight()
 {
     if (isLineRTL(cursorPosition().line())) {
-        m_viewInternal->wordPrev();
+        m_viewInternal->wordPrev(m_forcedSelection);
     } else {
-        m_viewInternal->wordNext();
+        m_viewInternal->wordNext(m_forcedSelection);
     }
 }
 
@@ -4123,9 +4135,18 @@ void KTextEditor::ViewPrivate::shiftWordRight()
     }
 }
 
+void KTextEditor::ViewPrivate::forceSelecting()
+{
+    if (m_forcedSelection && selection()) {
+        setSelection(KTextEditor::Range::invalid());
+    } else {
+        m_forcedSelection = !m_forcedSelection;
+    }
+}
+
 void KTextEditor::ViewPrivate::home()
 {
-    m_viewInternal->home();
+    m_viewInternal->home(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftHome()
@@ -4135,7 +4156,7 @@ void KTextEditor::ViewPrivate::shiftHome()
 
 void KTextEditor::ViewPrivate::end()
 {
-    m_viewInternal->end();
+    m_viewInternal->end(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftEnd()
@@ -4145,7 +4166,7 @@ void KTextEditor::ViewPrivate::shiftEnd()
 
 void KTextEditor::ViewPrivate::up()
 {
-    m_viewInternal->cursorUp();
+    m_viewInternal->cursorUp(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftUp()
@@ -4155,7 +4176,7 @@ void KTextEditor::ViewPrivate::shiftUp()
 
 void KTextEditor::ViewPrivate::down()
 {
-    m_viewInternal->cursorDown();
+    m_viewInternal->cursorDown(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftDown()
@@ -4195,7 +4216,7 @@ void KTextEditor::ViewPrivate::shiftBottomOfView()
 
 void KTextEditor::ViewPrivate::pageUp()
 {
-    m_viewInternal->pageUp();
+    m_viewInternal->pageUp(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftPageUp()
@@ -4205,7 +4226,7 @@ void KTextEditor::ViewPrivate::shiftPageUp()
 
 void KTextEditor::ViewPrivate::pageDown()
 {
-    m_viewInternal->pageDown();
+    m_viewInternal->pageDown(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftPageDown()
@@ -4215,7 +4236,7 @@ void KTextEditor::ViewPrivate::shiftPageDown()
 
 void KTextEditor::ViewPrivate::top()
 {
-    m_viewInternal->top_home();
+    m_viewInternal->top_home(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftTop()
@@ -4225,7 +4246,7 @@ void KTextEditor::ViewPrivate::shiftTop()
 
 void KTextEditor::ViewPrivate::bottom()
 {
-    m_viewInternal->bottom_end();
+    m_viewInternal->bottom_end(m_forcedSelection);
 }
 
 void KTextEditor::ViewPrivate::shiftBottom()

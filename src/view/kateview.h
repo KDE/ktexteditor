@@ -121,7 +121,7 @@ public:
 public Q_SLOTS:
     void paste(const QString *textToPaste = nullptr);
     void cut();
-    void copy() const;
+    void copy();
     void screenshot();
 
 private Q_SLOTS:
@@ -656,6 +656,7 @@ public Q_SLOTS:
     void shiftWordLeft();
     void wordRight();
     void shiftWordRight();
+    void forceSelecting();
     void home();
     void shiftHome();
     void end();
@@ -852,6 +853,7 @@ private:
     QAction *m_editUndo;
     QAction *m_editRedo;
     bool m_gotoBottomAfterReload;
+    bool m_forcedSelection;
     KToggleAction *m_toggleFoldingMarkers;
     KToggleAction *m_toggleIconBar;
     KToggleAction *m_toggleLineNumbers;
