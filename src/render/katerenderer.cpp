@@ -444,15 +444,15 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
 
     // Don't compute the highlighting if there isn't going to be any highlighting
     const auto &al = textLine->attributesList();
-    if (!(selectionsOnly || !al.isEmpty() || !rangesWithAttributes.isEmpty())) {
+    if (!(selectionsOnly || !al.empty() || !rangesWithAttributes.empty())) {
         return QList<QTextLayout::FormatRange>();
     }
 
     // Add the inbuilt highlighting to the list, limit with limitOfRanges
     RenderRangeVector renderRanges;
-    if (!al.isEmpty()) {
+    if (!al.empty()) {
         auto &currentRange = renderRanges.pushNewRange();
-        for (int i = 0; i < std::min<int>(al.count(), limitOfRanges); ++i) {
+        for (int i = 0; i < std::min<int>(al.size(), limitOfRanges); ++i) {
             if (al[i].length > 0 && al[i].attributeValue > 0) {
                 currentRange.addRange(KTextEditor::Range(KTextEditor::Cursor(line, al[i].offset), al[i].length), specificAttribute(al[i].attributeValue));
             }

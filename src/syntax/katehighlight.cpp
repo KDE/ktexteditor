@@ -406,7 +406,7 @@ int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate *doc, co
     if (cursor.column() < tl->length()) {
         return sanitizeFormatIndex(tl->attribute(cursor.column()));
     } else if (cursor.column() >= tl->length()) {
-        if (!tl->attributesList().isEmpty()) {
+        if (!tl->attributesList().empty()) {
             return sanitizeFormatIndex(tl->attributesList().back().attributeValue);
         }
     }

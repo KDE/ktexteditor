@@ -169,13 +169,13 @@ int TextLineData::virtualLength(int tabWidth) const
 void TextLineData::addAttribute(const Attribute &attribute)
 {
     // try to append to previous range, if same attribute value
-    if (!m_attributesList.isEmpty() && (m_attributesList.back().attributeValue == attribute.attributeValue)
+    if (!m_attributesList.empty() && (m_attributesList.back().attributeValue == attribute.attributeValue)
         && ((m_attributesList.back().offset + m_attributesList.back().length) == attribute.offset)) {
         m_attributesList.back().length += attribute.length;
         return;
     }
 
-    m_attributesList.append(attribute);
+    m_attributesList.push_back(attribute);
 }
 
 int TextLineData::attribute(int pos) const

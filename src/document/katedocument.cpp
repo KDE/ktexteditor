@@ -4219,7 +4219,7 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
 
     if (selectionCol < ln->length()) {
         startAttrib = ln->attribute(selectionCol);
-    } else if (!ln->attributesList().isEmpty()) {
+    } else if (!ln->attributesList().empty()) {
         startAttrib = ln->attributesList().back().attributeValue;
     }
 
@@ -6497,7 +6497,7 @@ KSyntaxHighlighting::Theme::TextStyle KTextEditor::DocumentPrivate::defStyleNum(
     if (column < tl->length()) {
         attribute = tl->attribute(column);
     } else if (column == tl->length()) {
-        if (!tl->attributesList().isEmpty()) {
+        if (!tl->attributesList().empty()) {
             attribute = tl->attributesList().back().attributeValue;
         } else {
             return KSyntaxHighlighting::Theme::TextStyle::Normal;

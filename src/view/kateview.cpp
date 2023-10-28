@@ -5049,8 +5049,8 @@ QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int 
         return attribs;
     }
 
-    const QList<Kate::TextLineData::Attribute> &intAttrs = kateLine->attributesList();
-    for (int i = 0; i < intAttrs.size(); ++i) {
+    const auto &intAttrs = kateLine->attributesList();
+    for (size_t i = 0; i < intAttrs.size(); ++i) {
         if (intAttrs[i].length > 0 && intAttrs[i].attributeValue > 0) {
             attribs << KTextEditor::AttributeBlock(intAttrs.at(i).offset, intAttrs.at(i).length, renderer()->attribute(intAttrs.at(i).attributeValue));
         }

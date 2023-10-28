@@ -453,13 +453,12 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-void KateScrollBar::getCharColorRanges(const QList<Kate::TextLineData::Attribute> &attributes,
+void KateScrollBar::getCharColorRanges(const std::vector<Kate::TextLineData::Attribute> &attributes,
                                        const QList<Kate::TextRange *> &decorations,
                                        const QString &text,
                                        QList<KateScrollBar::ColumnRangeWithColor> &ranges,
                                        QVarLengthArray<std::pair<QRgb, QPen>, 20> &penCache)
 {
-    int attributeIndex = 0;
     ranges.clear();
 
     auto getPen = [&](const QBrush &color) -> int {
@@ -502,6 +501,7 @@ void KateScrollBar::getCharColorRanges(const QList<Kate::TextLineData::Attribute
         // If there's no decoration set for the current character (this will mostly be the case for
         // plain Kate), query the styles, that is, the default kate syntax highlighting.
         // go to the block containing x
+        size_t attributeIndex = 0;
         while ((attributeIndex < attributes.size()) && ((attributes[attributeIndex].offset + attributes[attributeIndex].length) < i)) {
             ++attributeIndex;
         }
@@ -617,7 +617,8 @@ void KateScrollBar::updatePixmap()
             }
 
             // get normal highlighting stuff
-            const QList<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
+            const auto &attributes = kateline->attributesList();
+
             // get moving ranges with attribs (semantic highlighting and co.)
             m_view->doc()->buffer().rangesForLine(realLineNumber, m_view, true, decorations);
 

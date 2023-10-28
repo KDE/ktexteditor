@@ -343,7 +343,7 @@ public:
      * Accessor to attributes
      * @return attributes of this line
      */
-    const QList<Attribute> &attributesList() const
+    const std::vector<Attribute> &attributesList() const
     {
         return m_attributesList;
     }
@@ -410,7 +410,7 @@ private:
     /**
      * attributes of this line
      */
-    QList<Attribute> m_attributesList;
+    std::vector<Attribute> m_attributesList;
 
     /**
      * foldings of this line

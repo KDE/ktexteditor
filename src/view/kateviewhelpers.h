@@ -194,7 +194,7 @@ private:
         int startColumn;
         int endColumn;
     };
-    void getCharColorRanges(const QList<Kate::TextLineData::Attribute> &attributes,
+    void getCharColorRanges(const std::vector<Kate::TextLineData::Attribute> &attributes,
                             const QList<Kate::TextRange *> &decorations,
                             const QString &text,
                             QList<KateScrollBar::ColumnRangeWithColor> &ranges,
