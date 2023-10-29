@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 01:38+0000\n"
+"POT-Creation-Date: 2023-10-29 01:37+0000\n"
 "PO-Revision-Date: 2008-07-13 01:04+0800\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -4891,7 +4891,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Warna"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1483
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
 #, kde-format
 msgid "Bookmark"
 msgstr "Tanda Buku"
@@ -7904,18 +7904,18 @@ msgid "Export File as HTML"
 msgstr "Fail HTML untuk dibuka"
 
 #: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:990
+#: view/kateviewhelpers.cpp:991
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1160
 #, kde-format
 msgid "Available Commands"
 msgstr "Arahan Yang Boleh Didapatkan"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7924,17 +7924,17 @@ msgstr ""
 "<p>Untuk bantuan bagi arahan individu, buat <code>'help &lt;command&gt;'</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1167
+#: view/kateviewhelpers.cpp:1168
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Tiada bantuan untuk '%1'"
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Tiada arahan <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1176
+#: view/kateviewhelpers.cpp:1177
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>This is the Katepart <b>command line</b>.<br>Syntax: <code><b>command "
@@ -7952,37 +7952,37 @@ msgstr ""
 "masukkan <code><b>senarai bantuan</b></code><br>Untuk bantuan bagi arahan "
 "individu, masukkan <code><b>bantuan &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Tiada arahan: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr ""
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Berjaya:"
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Arahan \"%1\" gagal."
 
-#: view/kateviewhelpers.cpp:2573 view/kateviewhelpers.cpp:2574
+#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Tandakan Jenis %1"
 
-#: view/kateviewhelpers.cpp:2597
+#: view/kateviewhelpers.cpp:2598
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Setkan Jenis Tanda Piawai"
 
-#: view/kateviewhelpers.cpp:2738
+#: view/kateviewhelpers.cpp:2739
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr ""

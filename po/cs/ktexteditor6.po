@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 01:38+0000\n"
+"POT-Creation-Date: 2023-10-29 01:37+0000\n"
 "PO-Revision-Date: 2023-07-03 16:09+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -4653,7 +4653,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Barvy značkovačů"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1483
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
 #, kde-format
 msgid "Bookmark"
 msgstr "Záložka"
@@ -7498,18 +7498,18 @@ msgid "Export File as HTML"
 msgstr "Exportovat soubor do HTML"
 
 #: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:990
+#: view/kateviewhelpers.cpp:991
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1160
 #, kde-format
 msgid "Available Commands"
 msgstr "Dostupné příkazy"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7518,17 +7518,17 @@ msgstr ""
 "<p>Nápovědu k jednotlivým příkazům získáte provedením <code>'help &lt;"
 "příkaz&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1167
+#: view/kateviewhelpers.cpp:1168
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Pro '%1' není nápověda"
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Takový příkaz neexistuje: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1176
+#: view/kateviewhelpers.cpp:1177
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7541,37 +7541,37 @@ msgstr ""
 "<code><b>help list</b></code><br />Pro nápovědu k jednotlivým příkazům "
 "zadejte <code><b>help &lt;příkaz&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Takový příkaz neexistuje: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Chyba: Příkaz \"%1\" nedovoluje zadat žádný rozsah."
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Úspěch: "
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Příkaz \"%1\" selhal."
 
-#: view/kateviewhelpers.cpp:2573 view/kateviewhelpers.cpp:2574
+#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Značka typu %1"
 
-#: view/kateviewhelpers.cpp:2597
+#: view/kateviewhelpers.cpp:2598
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Nastavit výchozí typ značky"
 
-#: view/kateviewhelpers.cpp:2738
+#: view/kateviewhelpers.cpp:2739
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Zakázat panel poznámek"

@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 01:38+0000\n"
-"PO-Revision-Date: 2023-10-20 12:09+0300\n"
+"POT-Creation-Date: 2023-10-29 01:37+0000\n"
+"PO-Revision-Date: 2023-10-28 06:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: completion/katecompletionmodel.cpp:133
 #, kde-format
@@ -939,8 +939,8 @@ msgid ""
 "If this option is selected, pasted code from the clipboard is indented. "
 "Triggering the <b>undo</b>-action removes the indentation."
 msgstr ""
-"Bu seçenek seçiliyse geçici taşıma panosundan kopyalanmış kod girintilidir. "
-"<b>Geri Al</b> eylemini tetikleme girintiyi siler."
+"Bu seçenek seçiliyse panodan kopyalanan kod girintilidir. <b>Geri Al</b> "
+"eylemini tetikleme girintiyi siler."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:196
@@ -1022,7 +1022,7 @@ msgid ""
 "b>."
 msgstr ""
 "Bu seçenek seçiliyse <b>Sekme</b> düğmesi <b>Girintileme genişliği</b> "
-"seçeneğinde belirtilen kadar mevcut satırı girintiler."
+"seçeneğinde belirtilen kadar geçerli satırı girintiler."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:289
@@ -1045,9 +1045,9 @@ msgid ""
 "b> is enabled, spaces are inserted; otherwise, a single tabulator is "
 "inserted."
 msgstr ""
-"Bu seçenek seçiliyse <b>Sekme</b> düğmesi mevcut satırı girintiler veya bir "
+"Bu seçenek seçiliyse <b>Sekme</b> düğmesi geçerli satırı girintiler veya bir "
 "önceki satırın konumuna getirir.<p> Eğer ekleme noktası, satırdaki ilk "
-"boşlukta ya da önce ise veya seçilmiş ise mevcut satır, <b>Girinti uzunluğu</"
+"boşlukta ya da önce ise veya seçilmişse geçerli satır, <b>Girinti uzunluğu</"
 "b> seçeneğinde belirtilen kadar girintilenir.<p> Ekleme noktası ilk "
 "boşluktan sonra ise ve seçilmiş alan yok ise boşluk bir sonraki konuma "
 "gelir. Eğer <b>Düzelt</b> bölümünde <b>Sekme yerine boşluk ekle</b> seçeneği "
@@ -1662,7 +1662,7 @@ msgstr ""
 "kutusunda belirtilen kodlamanın veya komut satırında belirtilen kodlamanın "
 "dosyanın içeriğiyle eşleşmesi durumunda dosyaları açmaya çalışmak için geri "
 "arama kodlamasını tanımlar. Bu kullanılmadan önce, dosya başlangıcında bir "
-"bayt sırası imi arayarak kullanılacak kodlamayı belirleme girişiminde "
+"bayt sırası imi aranarak kullanılacak kodlamayı belirleme girişiminde "
 "bulunulur: Eğer bulunursa doğru Unicode kodlaması seçilecektir; aksi "
 "takdirde kodlama algısı çalışır, ikisi de başarısız olursa geri kodlama "
 "denenir."
@@ -1716,15 +1716,15 @@ msgid ""
 "Unicode encoding. The byte order mark is not visible in the displayed "
 "document."
 msgstr ""
-"Bayt sıra imi, Unicode ile kodlanmış belgelerin başında özel bir dizidir. "
+"Bayt sırası imi, Unicode ile kodlanmış belgelerin başında özel bir dizidir. "
 "Düzenleyicilerin metin belgelerini doğru Unicode kodlamayla açmalarına "
-"yardımcı olur. Gösterilen belgede bayt sıra imi görünmez."
+"yardımcı olur. Gösterilen belgede bayt sırası imi görünmez."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:135
 #, kde-format
 msgid "Enable byte order mark (BOM)"
-msgstr "Bayt sıra imini (BOM) etkinleştir"
+msgstr "Bayt sırası imini (BOM) etkinleştir"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigwidget.ui:142
@@ -4744,7 +4744,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "İmleyici Renkleri"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1483
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
 #, kde-format
 msgid "Bookmark"
 msgstr "Yer İmi"
@@ -4822,7 +4822,7 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>Bu liste, mevcut renk teması için öntanımlı biçemleri gösterir ve "
+"<p>Bu liste, geçerli renk teması için öntanımlı biçemleri gösterir ve "
 "düzenlemeniz için seçenekler sağlar. Biçem adı, güncel biçim ayarlarını "
 "yansıtır.</p><p>Renkleri düzenlemek için, renkli dikdörtgen kutulara "
 "tıklayın veya açılır menüden seçin.</p><p>Açılır menüden, Arka Plan ve "
@@ -4874,7 +4874,7 @@ msgid ""
 "p><p>You can unset the Background and Selected Background colors from the "
 "context menu when appropriate.</p>"
 msgstr ""
-"<p>Bu liste, mevcut sözdizim renklendirme kipinin kapsamını gösterir ve "
+"<p>Bu liste, geçerli sözdizim renklendirme kipinin kapsamını gösterir ve "
 "düzenlemeniz için seçenekler sağlar. Bağlam adı, güncel biçem ayarlarını "
 "yansıtır.</p><p>Düğme takımını kullanarak düzenleme yapmak için <strong>&lt;"
 "BOŞLUK DÜĞMESİ&gt;</strong> 'ne basın ve açılır menüden bir özellik seçin.</"
@@ -4998,7 +4998,7 @@ msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
-"<p>%1 teması halihazırda mevcut.</p><p>Lütfen başka bir tema adı seçin.</p>"
+"<p>%1 teması halihazırda var.</p><p>Lütfen başka bir tema adı seçin.</p>"
 
 #: syntax/katethemeconfig.cpp:1412
 #, kde-format
@@ -5136,10 +5136,9 @@ msgid ""
 "p><p>Possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
-"<p>set-indent-pasted-text <b>enable</b></p><p>Etkin ise geçici taşıma "
-"panosundan yapıltırılmış metinin giritisi mevcut girintileyici tarafından "
-"ayarlanır.</p><p>Olası doğru değerleri: doğru için 1<br/>olası yanlış "
-"değerleri: yanlış için 0</p>"
+"<p>set-indent-pasted-text <b>enable</b></p><p>Etkinse panodan yapıştırılmış "
+"metinin girintisi geçerli girintileyici tarafından ayarlanır.</p><p>Olası "
+"doğru değerleri: doğru için 1<br/>olası yanlış değerleri: yanlış için 0</p>"
 
 #: utils/katecmds.cpp:90
 #, kde-format
@@ -5542,7 +5541,7 @@ msgstr "Waldo Bastian"
 #: utils/kateglobal.cpp:113
 #, kde-format
 msgid "The cool buffersystem"
-msgstr "Mükemmel tampon sistemi"
+msgstr "Mükemmel arabellek sistemi"
 
 #: utils/kateglobal.cpp:114
 #, kde-format
@@ -6088,7 +6087,7 @@ msgstr "Geçerli değişkenlerin listesini göster."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Köşeli ayraçların otomatik olarak eklenmesini etkinleştir."
+msgstr "Köşeli ayraçların otomatik olarak eklenmesini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
@@ -6100,7 +6099,7 @@ msgstr "Otomatik merkez satırlarının numarasını belirtin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
-msgstr "Belgenin arka plan rengini ayarla."
+msgstr "Belgenin arka plan rengini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:131
 #, kde-format
@@ -6112,13 +6111,13 @@ msgstr "Başlangıç boşluğunda geri sil düğmesine basmak girintiyi azaltır
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
-msgstr "Blok seçim kipini ayarla."
+msgstr "Blok seçim kipini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:144
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
-msgstr "Unicode dosyaları kaydederken bayt sıra imini (BOM) etkinleştir."
+msgstr "Unicode dosyaları kaydederken bayt sırası imini (BOM) etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:149
 #, kde-format
@@ -6136,7 +6135,7 @@ msgstr "Geçerli satırın arka plan rengini belirle."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr "Yazım denetimi için kullanılan öntanımlı sözlüğü ayarla."
+msgstr "Yazım denetimi için kullanılan öntanımlı sözlüğü ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:165
 #, kde-format
@@ -6166,13 +6165,13 @@ msgstr "Düzenleyici kenarlığında katlama önizlemesini etkinleştirin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
-msgstr "Belgenin yazıtipi boyutunu nokta türünden ayarla."
+msgstr "Belgenin yazıtipi boyutunu nokta türünden ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:193
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
-msgstr "Belgenin yazıtipini ayarla."
+msgstr "Belgenin yazıtipini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:209
 #, kde-format
@@ -6184,7 +6183,7 @@ msgstr "Sözdizim vurgulamasını ayarla"
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
-msgstr "Simge çubuğu rengini ayarla."
+msgstr "Simge çubuğu rengini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:219
 #, kde-format
@@ -6196,19 +6195,19 @@ msgstr "Düzenleyicide simge kenarlığını etkinleştirin."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
-msgstr "Otomatik girintileme biçemini ayarla."
+msgstr "Kendiliğinden girintileme biçemini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:229
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "Panodan yapıştırılan metnin girintisini ayarla."
+msgstr "Panodan yapıştırılan metnin girintisini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:235
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
-msgstr "Her girinti düzeyi için girinti derinliğini ayarla."
+msgstr "Her girinti düzeyi için girinti derinliğini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:240
 #, kde-format
@@ -6274,13 +6273,13 @@ msgstr "Sarma çubuğu önizlemesini göster."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
-msgstr "Renk şemasını ayarla."
+msgstr "Renk şemasını ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:301
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
-msgstr "Metin seçme rengini ayarla."
+msgstr "Metin seçim rengini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:306
 #, kde-format
@@ -6304,7 +6303,7 @@ msgstr "SEKME düğmesi girintiyi artırır."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
-msgstr "Sekme gösterim genişliğini ayarla."
+msgstr "Sekme gösterim genişliğini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:328
 #, kde-format
@@ -6316,7 +6315,7 @@ msgstr "Anımsanacak geri al adımlarının sayısı (0 sonsuz)."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
-msgstr "Sözcük kaydırma sütununu ayarla."
+msgstr "Sözcük kaydırma sütununu ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:339
 #, kde-format
@@ -6778,7 +6777,7 @@ msgstr "Çalışılan belgeyi yazdır."
 #: view/kateview.cpp:638
 #, kde-format
 msgid "Show print preview of current document"
-msgstr "Mevcut belgenin yazdırma önizlemesini göster"
+msgstr "Geçerli belgenin yazdırma önizlemesini göster"
 
 #: view/kateview.cpp:642
 #, kde-format
@@ -6788,12 +6787,12 @@ msgstr "Yeni&den Yükle"
 #: view/kateview.cpp:644
 #, kde-format
 msgid "Reload the current document from disk."
-msgstr "Çalışılan belgeyi diskten yeniden oku."
+msgstr "Çalışılan belgeyi diskten yeniden okuyun."
 
 #: view/kateview.cpp:648
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
-msgstr "Çalışılan belgeyi seçtiğiniz bir adla diske kaydet."
+msgstr "Çalışılan belgeyi seçtiğiniz bir adla diske kaydedin."
 
 #: view/kateview.cpp:650
 #, kde-format
@@ -6808,7 +6807,7 @@ msgstr "Ko&pyayı Farklı Kaydet..."
 #: view/kateview.cpp:657
 #, kde-format
 msgid "Save a copy of the current document to disk."
-msgstr "Mevcut belgenin bir kopyasını diske kaydet."
+msgstr "Geçerli belgenin bir kopyasını diske kaydedin."
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6827,7 +6826,7 @@ msgstr "Önceki Düzenlenmiş Satıra Git"
 #: view/kateview.cpp:666
 #, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr "İmleci önceki değiştirilmiş satıra taşı."
+msgstr "İmleci önceki değiştirilmiş satıra taşıyın."
 
 #: view/kateview.cpp:671
 #, kde-format
@@ -6837,7 +6836,7 @@ msgstr "Sonraki Değiştirilmiş Satıra Git"
 #: view/kateview.cpp:672
 #, kde-format
 msgid "Move downwards to the next modified line."
-msgstr "Bir sonraki değiştirilmiş satırın altına taşı."
+msgstr "Bir sonraki değiştirilmiş satırın altına taşıyın."
 
 #: view/kateview.cpp:676
 #, kde-format
@@ -6953,8 +6952,8 @@ msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
 "existing text."
 msgstr ""
-"Yazdığınız metnin, mevcut metnin arasına eklenerek mi yoksa üzerine yazarak "
-"mı yazılacağını seçin."
+"Yazdığınız metnin, var olan metnin arasına eklenerek mi yoksa üzerine "
+"yazılarak mı yazılacağını seçin."
 
 #: view/kateview.cpp:755
 #, kde-format
@@ -7157,7 +7156,7 @@ msgstr "&Macintosh"
 #: view/kateview.cpp:861
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
-msgstr "&Bayt Sıralama İmi (BOM) Ekle"
+msgstr "&Bayt Sırası İmi (BOM) Ekle"
 
 #: view/kateview.cpp:864
 #, kde-format
@@ -7165,7 +7164,7 @@ msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
 msgstr ""
-"Kaydederken, UTF-8/UTF-16 ile kodlanmış dosyalar için bayt sıralama imi "
+"Kaydederken, UTF-8/UTF-16 ile kodlanmış dosyalar için bayt sırası imini "
 "eklemeyi etkinleştir/devre dışı bırak"
 
 #: view/kateview.cpp:868
@@ -7712,18 +7711,18 @@ msgid "Export File as HTML"
 msgstr "Dosyayı HTML olarak Aktar"
 
 #: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:990
+#: view/kateviewhelpers.cpp:991
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1159
+#: view/kateviewhelpers.cpp:1160
 #, kde-format
 msgid "Available Commands"
 msgstr "Uygun komutlar"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7732,17 +7731,17 @@ msgstr ""
 "<p>Kişiye özel komutlar hakkında yardım için: <code>'help &lt;command&gt;'</"
 "code></p>"
 
-#: view/kateviewhelpers.cpp:1167
+#: view/kateviewhelpers.cpp:1168
 #, kde-format
 msgid "No help for '%1'"
 msgstr "'%1' için yardım yok"
 
-#: view/kateviewhelpers.cpp:1170
+#: view/kateviewhelpers.cpp:1171
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "<b>%1</b> adlı bir komut yok"
 
-#: view/kateviewhelpers.cpp:1176
+#: view/kateviewhelpers.cpp:1177
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7755,37 +7754,37 @@ msgstr ""
 "<code><b>help list</b>girin</code><br />Kişiye özel komutlar hakkında yardım "
 "için: <code><b>help &lt;komut&gt;</b> girin</code></p>"
 
-#: view/kateviewhelpers.cpp:1264 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Bu adda bir komut yok: \"%1\""
 
-#: view/kateviewhelpers.cpp:1267 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Hata: \"%1\" komutu için izin aralığa izin verilmiyor."
 
-#: view/kateviewhelpers.cpp:1277 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Başarılı: "
 
-#: view/kateviewhelpers.cpp:1291 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" komutunun işletilmesinde hata."
 
-#: view/kateviewhelpers.cpp:2573 view/kateviewhelpers.cpp:2574
+#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 İm Türü"
 
-#: view/kateviewhelpers.cpp:2597
+#: view/kateviewhelpers.cpp:2598
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Öntanımlı İm Türünü Ayarla"
 
-#: view/kateviewhelpers.cpp:2738
+#: view/kateviewhelpers.cpp:2739
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Açıklama Çubuğunu Gösterme"
@@ -7939,7 +7938,7 @@ msgid ""
 "<p><b>clo[se]&mdash; Close the current view</b></p><p>Usage: <tt><b>clo[se]</"
 "b></tt></p><p>After executing it, the current view will be closed.</p>"
 msgstr ""
-"<p><b>clo[se]&mdash; Mevcut görünümü kapat</b></p><p>Kullanım: "
+"<p><b>clo[se]&mdash;Geçerli görünümü kapat</b></p><p>Kullanım: "
 "<tt><b>clo[se]</b></tt></p><p>Yürütüldükten sonra geçerli görünüm "
 "kapatılacaktır.</p>"
 
@@ -7990,7 +7989,7 @@ msgid ""
 msgstr ""
 "<p><b>bp,bprev &mdash; önceki arabellek</b></p><p>Kullanım: "
 "<tt><b>bp[revious] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci "
-"önceki belgeye (\"<b>b</b>uffer\" (tampondaki)) gider. </p><p> <b>[N]</b> "
+"önceki belgeye (\"<b>b</b>uffer\" (arabellek)) gider. </p><p> <b>[N]</b> "
 "öntanımlı olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
 
 #: vimode/appcommands.cpp:525
@@ -8003,7 +8002,7 @@ msgid ""
 msgstr ""
 "<p><b>bp,bprev &mdash; sonraki belgeye geç</b></p><p>Kullanım: "
 "<tt><b>bn[ext] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci sonraki "
-"belgeye (\"<b>b</b>uffer\" (tampondaki)) gider. <b>[N]</b> öntanımlı olarak "
+"belgeye (\"<b>b</b>uffer\" (arabellek)) gider. <b>[N]</b> öntanımlı olarak "
 "birdir. </p><p>Belge listesinin sonundan sürer.</p>"
 
 #: vimode/appcommands.cpp:533
@@ -8015,7 +8014,7 @@ msgid ""
 msgstr ""
 "<p><b>bf,bfirst &mdash; ilk belge</b></p><p>Kullanım: <tt><b>bf[irst]</b></"
 "tt></p><p>Belge listesindeki  (<b>f</b>irst) ilk belgeye (\"<b>b</b>uffer"
-"\" (tampondaki)) gider.</p>"
+"\" (arabellek)) gider.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format
@@ -8026,12 +8025,12 @@ msgid ""
 msgstr ""
 "<p><b>bl,blast &mdash; son belge</b></p><p>Kullanım: <tt><b>bl[ast]</b></"
 "tt></p><p>Belge listesindeki  (<b>l</b>ast) son belgeye (\"<b>b</b>uffer"
-"\" (tampondaki)) gider.</p>"
+"\" (arabellek)) gider.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
-msgstr "<p><b>ls</b></p><p>mevcut tamponları listele<p>"
+msgstr "<p><b>ls</b></p><p>geçerli arabellekleri listele<p>"
 
 #: vimode/cmds.cpp:52
 #, kde-format
