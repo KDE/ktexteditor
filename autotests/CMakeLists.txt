@@ -192,7 +192,6 @@ ktexteditor_unit_test_offscreen(completion_test src/codecompletiontestmodel.cpp 
 ktexteditor_unit_test_offscreen(bug313759 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug317111 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug205447 src/testutils.cpp)
-ktexteditor_unit_test_offscreen(bug329247)
 
 add_subdirectory(src/vimode)
 
