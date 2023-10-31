@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-29 01:37+0000\n"
-"PO-Revision-Date: 2023-10-28 06:03+0300\n"
+"PO-Revision-Date: 2023-10-30 22:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2885,7 +2885,7 @@ msgstr "HTML/XML Etiket İçeriğini Dışa Doğru Seç"
 #, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "Yorumu Aç/Kapat"
+msgstr "Yorum/Yorumları Kaldır"
 
 #: script/data/commands/emmet.js:34
 #, kde-format
@@ -4542,9 +4542,9 @@ msgid ""
 "for selected text, use the &quot;<b>Configure Highlighting</b>&quot; dialog."
 "</p>"
 msgstr ""
-"<p>Seçili alanın arka plan rengini ayarlar.</p><p>Seçili metin için metin "
-"rengini ayarlamak için &quot;<b>Renklendirmeyi Yapılandır</b>&quot; "
-"penceresini kullanın.</p>"
+"<p>Seçimin arka plan rengini ayarlar.</p><p>Seçili metnin metin rengini "
+"ayarlamak için &quot;<b>Vurgulamayı Yapılandır</b>&quot; iletişim kutusunu "
+"kullanın.</p>"
 
 #: syntax/katethemeconfig.cpp:200
 #, kde-format
@@ -4728,7 +4728,7 @@ msgstr "<p>Dikey girintileme satırlarının rengini ayarlar.</p>"
 #: syntax/katethemeconfig.cpp:311
 #, kde-format
 msgid "Bracket Highlight"
-msgstr "Köşeli Ayraç Renklendirmesi"
+msgstr "Köşeli Ayraç Vurgulaması"
 
 #: syntax/katethemeconfig.cpp:314
 #, kde-format
@@ -4737,7 +4737,7 @@ msgid ""
 "at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>"
 msgstr ""
 "<p>Ayraç yakalama rengini ayarlar. Demeli ki, imlecinizi örneğin bir <b>(</"
-"b> üzerine koyarsanız ona uyan <b>)</b> bu renkle aydınlatılacaktır.</p>"
+"b> üzerine koyarsanız ona uyan <b>)</b> bu renkle vurgulanacaktır.</p>"
 
 #: syntax/katethemeconfig.cpp:322
 #, kde-format
@@ -4850,7 +4850,7 @@ msgstr "Karakter Dizileri & Karakterler"
 #, kde-format
 msgctxt "@item:intable"
 msgid "Comments & Documentation"
-msgstr "Yorumlar & Belgelendirme"
+msgstr "Yorumlar ve Belgelendirme"
 
 #: syntax/katethemeconfig.cpp:596
 #, kde-format
@@ -4861,7 +4861,7 @@ msgstr "Çeşitli"
 #: syntax/katethemeconfig.cpp:704
 #, kde-format
 msgid "H&ighlight:"
-msgstr "&Renklendirme:"
+msgstr "&Vurgula:"
 
 #: syntax/katethemeconfig.cpp:746
 #, kde-format
@@ -4879,7 +4879,7 @@ msgstr ""
 "yansıtır.</p><p>Düğme takımını kullanarak düzenleme yapmak için <strong>&lt;"
 "BOŞLUK DÜĞMESİ&gt;</strong> 'ne basın ve açılır menüden bir özellik seçin.</"
 "p><p>Renkleri düzenlemek için, renkli dikdörtgen kutulara tıklayın veya "
-"açılır menü'den seçin.</p><p>Bağlam menüsünden Arka Plan ve Seçili Arka Plan "
+"açılır menüden seçin.</p><p>Bağlam menüsünden Arka Plan ve Seçili Arka Plan "
 "renklerinin ayarlarını kaldırabilirsiniz.</p>"
 
 #: syntax/katethemeconfig.cpp:1024
@@ -6639,7 +6639,7 @@ msgstr ""
 #: view/kateview.cpp:531
 #, kde-format
 msgid "C&omment"
-msgstr "Y&orum Haline getir"
+msgstr "Y&orum"
 
 #: view/kateview.cpp:534
 #, kde-format
@@ -6681,7 +6681,7 @@ msgstr ""
 #: view/kateview.cpp:559
 #, kde-format
 msgid "Toggle Comment"
-msgstr "Yorumu Aç/Kapat"
+msgstr "Yorum/Yorumları Kaldır"
 
 #: view/kateview.cpp:563
 #, kde-format
@@ -6856,7 +6856,7 @@ msgstr "&Kip"
 #: view/kateview.cpp:687
 #, kde-format
 msgid "&Highlighting"
-msgstr "&Renklendirme"
+msgstr "&Vurgulama"
 
 #: view/kateview.cpp:689
 #, kde-format
