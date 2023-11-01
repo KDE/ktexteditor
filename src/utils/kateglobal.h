@@ -61,7 +61,7 @@ namespace KTextEditor
  * or view stay around, here is the place to put things
  * which are needed and shared by all this objects ;)
  */
-class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor
+class KTEXTEDITOR_EXPORT EditorPrivate final : public KTextEditor::Editor
 {
     Q_OBJECT
 
