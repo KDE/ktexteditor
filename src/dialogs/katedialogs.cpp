@@ -632,7 +632,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     for (const auto &factory : KTextEditor::EditorPrivate::self()->inputModeFactories()) {
         KateConfigPage *tab = factory->createConfigPage(this);
         if (tab) {
-            m_inputModeConfigTabs << tab;
+            m_inputModeConfigTabs.push_back(tab);
             tabWidget->insertTab(i, tab, tab->name());
             observeChanges(tab);
             i++;
@@ -655,7 +655,7 @@ void KateEditConfigTab::apply()
     indentConfigTab->apply();
     completionConfigTab->apply();
     spellCheckConfigTab->apply();
-    for (KateConfigPage *tab : std::as_const(m_inputModeConfigTabs)) {
+    for (KateConfigPage *tab : m_inputModeConfigTabs) {
         tab->apply();
     }
 }
@@ -667,7 +667,7 @@ void KateEditConfigTab::reload()
     indentConfigTab->reload();
     completionConfigTab->reload();
     spellCheckConfigTab->reload();
-    for (KateConfigPage *tab : std::as_const(m_inputModeConfigTabs)) {
+    for (KateConfigPage *tab : m_inputModeConfigTabs) {
         tab->reload();
     }
 }
@@ -679,7 +679,7 @@ void KateEditConfigTab::reset()
     indentConfigTab->reset();
     completionConfigTab->reset();
     spellCheckConfigTab->reset();
-    for (KateConfigPage *tab : std::as_const(m_inputModeConfigTabs)) {
+    for (KateConfigPage *tab : m_inputModeConfigTabs) {
         tab->reset();
     }
 }
@@ -691,7 +691,7 @@ void KateEditConfigTab::defaults()
     indentConfigTab->defaults();
     completionConfigTab->defaults();
     spellCheckConfigTab->defaults();
-    for (KateConfigPage *tab : std::as_const(m_inputModeConfigTabs)) {
+    for (KateConfigPage *tab : m_inputModeConfigTabs) {
         tab->defaults();
     }
 }

@@ -264,7 +264,7 @@ private:
     KateIndentConfigTab *indentConfigTab;
     KateCompletionConfigTab *completionConfigTab;
     KateSpellCheckConfigTab *spellCheckConfigTab;
-    QList<KateConfigPage *> m_inputModeConfigTabs;
+    std::vector<KateConfigPage *> m_inputModeConfigTabs;
 };
 
 class KateViewDefaultsConfig : public KateConfigPage
