@@ -79,7 +79,6 @@
 #include <QRegularExpression>
 #include <QTextToSpeech>
 #include <QToolTip>
-#include <qnamespace.h>
 
 // #define VIEW_RANGE_DEBUG
 
@@ -2852,6 +2851,10 @@ void KTextEditor::ViewPrivate::cut()
     if (!selection() && !m_config->smartCopyCut()) {
         return;
     }
+
+    // If forcedSelection is true, copy() invalidates the selection,
+    // which would obviate the removeSelectedText() here below.
+    m_forcedSelection = false;
 
     copy();
     if (!selection()) {
