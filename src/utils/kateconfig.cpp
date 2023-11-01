@@ -435,8 +435,9 @@ void KateDocumentConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        for (int z = 0; z < KTextEditor::EditorPrivate::self()->kateDocuments().size(); ++z) {
-            (KTextEditor::EditorPrivate::self()->kateDocuments())[z]->updateConfig();
+        const auto docs = KTextEditor::EditorPrivate::self()->documents();
+        for (auto doc : docs) {
+            static_cast<KTextEditor::DocumentPrivate *>(doc)->updateConfig();
         }
 
         // write config
@@ -607,8 +608,7 @@ void KateViewConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        const auto allViews = KTextEditor::EditorPrivate::self()->views();
-        for (KTextEditor::ViewPrivate *view : allViews) {
+        for (KTextEditor::ViewPrivate *view : KTextEditor::EditorPrivate::self()->views()) {
             view->updateConfig();
         }
 
@@ -778,8 +778,8 @@ void KateRendererConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
-            (KTextEditor::EditorPrivate::self()->views())[z]->renderer()->updateConfig();
+        for (auto view : KTextEditor::EditorPrivate::self()->views()) {
+            view->renderer()->updateConfig();
         }
 
         // write config
@@ -824,8 +824,7 @@ void KateRendererConfig::reloadSchema()
 {
     if (isGlobal()) {
         setSchemaInternal(m_schema);
-        const auto allViews = KTextEditor::EditorPrivate::self()->views();
-        for (KTextEditor::ViewPrivate *view : allViews) {
+        for (KTextEditor::ViewPrivate *view : KTextEditor::EditorPrivate::self()->views()) {
             view->renderer()->config()->reloadSchema();
         }
     }

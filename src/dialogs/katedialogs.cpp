@@ -340,9 +340,9 @@ void KateSpellCheckConfigTab::apply()
     KateDocumentConfig::global()->setOnTheFlySpellCheck(settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool());
     KateDocumentConfig::global()->configEnd();
 
-    const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
-    for (KTextEditor::DocumentPrivate *doc : docs) {
-        doc->refreshOnTheFlyCheck();
+    const auto docs = KTextEditor::EditorPrivate::self()->documents();
+    for (KTextEditor::Document *doc : docs) {
+        static_cast<KTextEditor::DocumentPrivate *>(doc)->refreshOnTheFlyCheck();
     }
 }
 

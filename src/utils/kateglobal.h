@@ -111,7 +111,7 @@ public:
      */
     QList<KTextEditor::Document *> documents() override
     {
-        return m_documents.keys();
+        return m_documents;
     }
 
     /**
@@ -214,9 +214,9 @@ public:
      * return a list of all registered views
      * @return all known views
      */
-    QList<KTextEditor::ViewPrivate *> views()
+    const std::vector<KTextEditor::ViewPrivate *> &views()
     {
-        return m_views.values();
+        return m_views;
     }
 
     /**
@@ -381,15 +381,6 @@ public:
     }
 
     /**
-     * return a list of all registered docs
-     * @return all known documents
-     */
-    QList<KTextEditor::DocumentPrivate *> kateDocuments()
-    {
-        return m_documents.values();
-    }
-
-    /**
      * Dummy main window to be null safe.
      * @return dummy main window
      */
@@ -481,12 +472,12 @@ private:
     /**
      * registered docs, map from general to specialized pointer
      */
-    QHash<KTextEditor::Document *, KTextEditor::DocumentPrivate *> m_documents;
+    QList<KTextEditor::Document *> m_documents;
 
     /**
      * registered views
      */
-    QSet<KTextEditor::ViewPrivate *> m_views;
+    std::vector<KTextEditor::ViewPrivate *> m_views;
 
     /**
      * global dirwatch object
@@ -521,7 +512,7 @@ private:
     /**
      * internal commands
      */
-    QList<KTextEditor::Command *> m_cmds;
+    std::array<KTextEditor::Command *, 5> m_cmds;
 
     /**
      * script manager

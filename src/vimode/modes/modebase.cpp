@@ -1241,9 +1241,8 @@ void ModeBase::addToNumberUnderCursor(int count)
 
 void ModeBase::switchView(Direction direction)
 {
-    QList<KTextEditor::ViewPrivate *> visible_views;
-    const auto views = KTextEditor::EditorPrivate::self()->views();
-    for (KTextEditor::ViewPrivate *view : views) {
+    std::vector<KTextEditor::ViewPrivate *> visible_views;
+    for (KTextEditor::ViewPrivate *view : KTextEditor::EditorPrivate::self()->views()) {
         if (view->isVisible()) {
             visible_views.push_back(view);
         }
@@ -1267,10 +1266,10 @@ void ModeBase::switchView(Direction direction)
     int best_center_y = -1;
     int best_center_x = -1;
 
-    if (direction == Next && visible_views.count() != 1) {
-        for (int i = 0; i < visible_views.count(); i++) {
+    if (direction == Next && visible_views.size() != 1) {
+        for (size_t i = 0; i < visible_views.size(); i++) {
             if (visible_views.at(i) == m_view) {
-                if (i != visible_views.count() - 1) {
+                if (i != visible_views.size() - 1) {
                     bestview = visible_views.at(i + 1);
                 } else {
                     bestview = visible_views.at(0);
@@ -1278,7 +1277,7 @@ void ModeBase::switchView(Direction direction)
             }
         }
     } else {
-        for (KTextEditor::ViewPrivate *view : std::as_const(visible_views)) {
+        for (KTextEditor::ViewPrivate *view : visible_views) {
             QPoint point = view->mapToGlobal(view->pos());
             int x1 = point.x();
             int x2 = point.x() + view->width();

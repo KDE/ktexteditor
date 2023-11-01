@@ -79,7 +79,7 @@ void KateHlManager::reload()
     // let all documents use the new highlighters
     // will be created on demand
     // if old hl not found, use none
-    const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
+    const auto docs = KTextEditor::EditorPrivate::self()->documents();
     for (auto doc : docs) {
         auto hlMode = doc->highlightingMode();
         if (nameFind(hlMode) < 0) {

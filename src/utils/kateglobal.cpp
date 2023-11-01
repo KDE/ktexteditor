@@ -204,11 +204,13 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // init the cmds
     //
-    m_cmds.push_back(KateCommands::CoreCommands::self());
-    m_cmds.push_back(KateCommands::Character::self());
-    m_cmds.push_back(KateCommands::Date::self());
-    m_cmds.push_back(KateCommands::SedReplace::self());
-    m_cmds.push_back(KateCommands::Highlighting::self());
+    m_cmds = {
+        KateCommands::CoreCommands::self(),
+        KateCommands::Character::self(),
+        KateCommands::Date::self(),
+        KateCommands::SedReplace::self(),
+        KateCommands::Highlighting::self(),
+    };
 
     // global word completion model
     m_wordCompletionModel = new KateWordCompletionModel(this);
@@ -417,25 +419,27 @@ KTextEditor::EditorPrivate *KTextEditor::EditorPrivate::self()
 void KTextEditor::EditorPrivate::registerDocument(KTextEditor::DocumentPrivate *doc)
 {
     Q_ASSERT(!m_documents.contains(doc));
-    m_documents.insert(doc, doc);
+    m_documents.push_back(doc);
 }
 
 void KTextEditor::EditorPrivate::deregisterDocument(KTextEditor::DocumentPrivate *doc)
 {
-    Q_ASSERT(m_documents.contains(doc));
-    m_documents.remove(doc);
+    int i = m_documents.indexOf(doc);
+    Q_ASSERT(i != -1);
+    m_documents.removeAt(i);
 }
 
 void KTextEditor::EditorPrivate::registerView(KTextEditor::ViewPrivate *view)
 {
-    Q_ASSERT(!m_views.contains(view));
-    m_views.insert(view);
+    Q_ASSERT(std::find(m_views.begin(), m_views.end(), view) == m_views.end());
+    m_views.push_back(view);
 }
 
 void KTextEditor::EditorPrivate::deregisterView(KTextEditor::ViewPrivate *view)
 {
-    Q_ASSERT(m_views.contains(view));
-    m_views.remove(view);
+    auto it = std::find(m_views.begin(), m_views.end(), view);
+    Q_ASSERT(it != m_views.end());
+    m_views.erase(it);
 }
 
 KTextEditor::Command *KTextEditor::EditorPrivate::queryCommand(const QString &cmd) const

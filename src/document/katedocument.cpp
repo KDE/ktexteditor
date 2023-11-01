@@ -4595,8 +4595,9 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
     std::vector<KTextEditor::DocumentPrivate *> docsWithSameName;
 
-    const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
-    for (KTextEditor::DocumentPrivate *doc : docs) {
+    const auto docs = KTextEditor::EditorPrivate::self()->documents();
+    for (KTextEditor::Document *d : docs) {
+        auto doc = static_cast<KTextEditor::DocumentPrivate *>(d);
         if ((doc != this) && (doc->url().fileName() == url().fileName())) {
             if (doc->m_docNameNumber > count) {
                 count = doc->m_docNameNumber;
