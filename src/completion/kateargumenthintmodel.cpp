@@ -27,7 +27,7 @@ void KateArgumentHintModel::clear()
 
 QModelIndex KateArgumentHintModel::mapToSource(const QModelIndex &index) const
 {
-    if (index.row() < 0 || index.row() >= m_rows.count()) {
+    if (size_t(index.row()) >= m_rows.size()) {
         return QModelIndex();
     }
 
@@ -57,27 +57,27 @@ void KateArgumentHintModel::buildRows()
     beginResetModel();
 
     m_rows.clear();
-    QMap<int, QList<int>> m_depths; // Map each hint-depth to a list of functions of that depth
+    std::map<int, std::vector<int>> m_depths; // Map each hint-depth to a list of functions of that depth
     for (int a = 0; a < (int)group()->filtered.size(); a++) {
         KateCompletionModel::ModelRow source = group()->filtered[a].sourceRow();
         QModelIndex sourceIndex = source.second.sibling(source.second.row(), 0);
         QVariant v = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth);
         if (v.userType() == QMetaType::Int) {
-            QList<int> &lst(m_depths[v.toInt()]);
-            lst << a;
+            std::vector<int> &lst(m_depths[v.toInt()]);
+            lst.push_back(a);
         }
     }
 
-    for (QMap<int, QList<int>>::const_iterator it = m_depths.constBegin(); it != m_depths.constEnd(); ++it) {
-        for (int row : *it) {
-            m_rows.push_front(row); // Insert filtered in reversed order
+    for (const auto &[key, value] : m_depths) {
+        for (int row : value) {
+            m_rows.insert(m_rows.begin(), row); // Insert filtered in reversed order
         }
-        m_rows.push_front(-it.key());
+        m_rows.insert(m_rows.begin(), -key); // Insert filtered in reversed order
     }
 
     endResetModel();
 
-    Q_EMIT contentStateChanged(!m_rows.isEmpty());
+    Q_EMIT contentStateChanged(!m_rows.empty());
 }
 
 KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent)
@@ -90,7 +90,7 @@ KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent)
 
 QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 {
-    if (index.row() < 0 || index.row() >= m_rows.count()) {
+    if (size_t(index.row()) >= m_rows.size()) {
         // qCDebug(LOG_KTE) << "KateArgumentHintModel::data: index out of bound: " << index.row() << " total filtered: " << m_rows.count();
         return QVariant();
     }
@@ -225,7 +225,7 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 int KateArgumentHintModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        return m_rows.count();
+        return m_rows.size();
     } else {
         return 0;
     }
@@ -271,13 +271,13 @@ void KateArgumentHintModel::emitDataChanged(const QModelIndex &start, const QMod
 
 bool KateArgumentHintModel::indexIsItem(const QModelIndex &index) const
 {
-    return index.row() >= 0 && index.row() < m_rows.count() && m_rows[index.row()] >= 0;
+    return size_t(index.row()) < m_rows.size() && m_rows[index.row()] >= 0;
 }
 
 int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
 {
-    int row = index.row();
-    if (row < 0 || row >= m_rows.count()) {
+    size_t row = index.row();
+    if (row >= m_rows.size()) {
         return -1;
     }
 

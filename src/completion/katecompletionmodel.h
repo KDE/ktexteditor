@@ -276,7 +276,11 @@ private:
     QMap<KTextEditor::CodeCompletionModel *, QString> m_currentMatch;
 
     // Column merging
-    QList<QList<int>> m_columnMerges;
+    const std::array<std::vector<int>, 3> m_columnMerges = {{
+        {0},
+        {1, 2, 3, 4},
+        {5},
+    }};
 
     QTimer *m_updateBestMatchesTimer;
 
@@ -285,8 +289,8 @@ private:
     Group *m_bestMatches; // A temporary group used for holding the best matches of all visible items
 
     // Storing the sorted order
-    QList<Group *> m_rowTable;
-    QList<Group *> m_emptyGroups;
+    std::vector<Group *> m_rowTable;
+    std::vector<Group *> m_emptyGroups;
     // Quick access to each specific group (if it exists)
     QMultiHash<int, Group *> m_groupHash;
     // Maps custom group-names to their specific groups

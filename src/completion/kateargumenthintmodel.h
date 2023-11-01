@@ -52,7 +52,7 @@ private:
     KateCompletionModel::Group *group() const;
     KateCompletionModel *model() const;
 
-    QList<int> m_rows; // Maps rows to either a positive row-number in the source group, or to a negative number which indicates a label
+    std::vector<int> m_rows; // Maps rows to either a positive row-number in the source group, or to a negative number which indicates a label
 
     KateCompletionWidget *m_parent;
 };
