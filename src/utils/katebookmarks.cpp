@@ -124,12 +124,12 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         return;
     }
 
-    QList<int> bookmarkLineArray; // Array of line numbers which have bookmarks
+    std::vector<int> bookmarkLineArray; // Array of line numbers which have bookmarks
 
     // Find line numbers where bookmarks are set & store those line numbers in bookmarkLineArray
     for (auto it = hash.cbegin(); it != hash.cend(); ++it) {
         if (it.value()->type & KTextEditor::Document::markType01) {
-            bookmarkLineArray.append(it.value()->line);
+            bookmarkLineArray.push_back(it.value()->line);
         }
     }
 
@@ -139,7 +139,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
 
     QAction *firstNewAction = menu.addSeparator();
     // Consider each line with a bookmark one at a time
-    for (int i = 0; i < bookmarkLineArray.size(); ++i) {
+    for (size_t i = 0; i < bookmarkLineArray.size(); ++i) {
         const int lineNo = bookmarkLineArray.at(i);
         // Get text in this particular line in a QString
         QFontMetrics fontMetrics(menu.fontMetrics());
@@ -150,7 +150,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         QAction *before = nullptr;
         if (m_sorting == Position) {
             // 3 actions already present
-            if (menu.actions().size() <= i + 3) {
+            if (size_t(menu.actions().size()) <= i + 3) {
                 before = nullptr;
             } else {
                 before = menu.actions().at(i + 3);

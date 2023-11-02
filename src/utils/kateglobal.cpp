@@ -266,7 +266,7 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
 class KTextEditorConfigDialog : public KPageDialog
 {
 public:
-    QList<KTextEditor::ConfigPage *> editorPages;
+    std::vector<KTextEditor::ConfigPage *> editorPages;
 
     KTextEditorConfigDialog(KTextEditor::EditorPrivate *editor, QWidget *parent)
         : KPageDialog(parent)
@@ -284,7 +284,7 @@ public:
             item->setIcon(page->icon());
 
             connect(button(QDialogButtonBox::Apply), &QPushButton::clicked, page, &KTextEditor::ConfigPage::apply);
-            editorPages.append(page);
+            editorPages.push_back(page);
         }
     }
 
@@ -343,8 +343,8 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
         KateViewConfig::global()->configStart();
         KateRendererConfig::global()->configStart();
 
-        for (int i = 0; i < kd->editorPages.count(); ++i) {
-            kd->editorPages.at(i)->apply();
+        for (auto *page : kd->editorPages) {
+            page->apply();
         }
 
         KateGlobalConfig::global()->configEnd();

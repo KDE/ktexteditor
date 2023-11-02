@@ -104,9 +104,9 @@ Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
 int CommandRangeExpressionParser::calculatePosition(const QString &string, KTextEditor::ViewPrivate *view)
 {
     int pos = 0;
-    QList<bool> operators_list;
+    std::vector<bool> operators_list;
     const QStringList split = string.split(QRegularExpression(QStringLiteral("[-+](?!([+-]|$))")));
-    QList<int> values;
+    std::vector<int> values;
 
     for (const QString &line : split) {
         pos += line.size();
@@ -148,12 +148,12 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string, KText
         }
     }
 
-    if (values.isEmpty()) {
+    if (values.empty()) {
         return -1;
     }
 
     int result = values.at(0);
-    for (int i = 0; i < operators_list.size(); ++i) {
+    for (size_t i = 0; i < operators_list.size(); ++i) {
         if (operators_list.at(i) == true) {
             result += values.at(i + 1);
         } else {

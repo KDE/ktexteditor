@@ -1530,7 +1530,7 @@ private:
     QColor m_currentLineNumberColor;
     QColor m_separatorColor;
     QColor m_spellingMistakeLineColor;
-    QList<QColor> m_lineMarkerColor;
+    std::vector<QColor> m_lineMarkerColor;
 
     QColor m_templateBackgroundColor;
     QColor m_templateEditablePlaceholderColor;
