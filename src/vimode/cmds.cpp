@@ -217,44 +217,36 @@ const QStringList &Commands::mappingCommands()
 
 Mappings::MappingMode Commands::modeForMapCommand(const QString &mapCommand)
 {
-    static QMap<QString, Mappings::MappingMode> modeForMapCommand;
-    if (modeForMapCommand.isEmpty()) {
-        // Normal is the default.
-        modeForMapCommand.insert(QStringLiteral("vmap"), Mappings::VisualModeMapping);
-        modeForMapCommand.insert(QStringLiteral("vm"), Mappings::VisualModeMapping);
-        modeForMapCommand.insert(QStringLiteral("vnoremap"), Mappings::VisualModeMapping);
-        modeForMapCommand.insert(QStringLiteral("vn"), Mappings::VisualModeMapping);
-        modeForMapCommand.insert(QStringLiteral("imap"), Mappings::InsertModeMapping);
-        modeForMapCommand.insert(QStringLiteral("im"), Mappings::InsertModeMapping);
-        modeForMapCommand.insert(QStringLiteral("inoremap"), Mappings::InsertModeMapping);
-        modeForMapCommand.insert(QStringLiteral("ino"), Mappings::InsertModeMapping);
-        modeForMapCommand.insert(QStringLiteral("cmap"), Mappings::CommandModeMapping);
-        modeForMapCommand.insert(QStringLiteral("cm"), Mappings::CommandModeMapping);
-        modeForMapCommand.insert(QStringLiteral("cnoremap"), Mappings::CommandModeMapping);
-        modeForMapCommand.insert(QStringLiteral("cno"), Mappings::CommandModeMapping);
-
-        modeForMapCommand.insert(QStringLiteral("nunmap"), Mappings::NormalModeMapping);
-        modeForMapCommand.insert(QStringLiteral("vunmap"), Mappings::VisualModeMapping);
-        modeForMapCommand.insert(QStringLiteral("iunmap"), Mappings::InsertModeMapping);
-        modeForMapCommand.insert(QStringLiteral("cunmap"), Mappings::CommandModeMapping);
+    if (mapCommand.startsWith(u'v')) {
+        if (mapCommand == u"vmap" || mapCommand == u"vm" || mapCommand == u"vn" || mapCommand == u"vnoremap" || mapCommand == u"vunmap") {
+            return Mappings::VisualModeMapping;
+        }
     }
-    return modeForMapCommand.value(mapCommand);
+
+    if (mapCommand.startsWith(u'i')) {
+        if (mapCommand == u"imap" || mapCommand == u"im" || mapCommand == u"ino" || mapCommand == u"inoremap" || mapCommand == u"iunmap") {
+            return Mappings::InsertModeMapping;
+        }
+    }
+
+    if (mapCommand.startsWith(u'c')) {
+        if (mapCommand == u"cmap" || mapCommand == u"cm" || mapCommand == u"cno" || mapCommand == u"cnoremap" || mapCommand == u"cunmap") {
+            return Mappings::CommandModeMapping;
+        }
+    }
+
+    // if (mapCommand == u"nunmap") {
+    //     return Mappings::NormalModeMapping;
+    // }
+    return Mappings::NormalModeMapping;
 }
 
 bool Commands::isMapCommandRecursive(const QString &mapCommand)
 {
-    static QMap<QString, bool> isMapCommandRecursive;
-    if (isMapCommandRecursive.isEmpty()) {
-        isMapCommandRecursive.insert(QStringLiteral("nmap"), true);
-        isMapCommandRecursive.insert(QStringLiteral("nm"), true);
-        isMapCommandRecursive.insert(QStringLiteral("vmap"), true);
-        isMapCommandRecursive.insert(QStringLiteral("vm"), true);
-        isMapCommandRecursive.insert(QStringLiteral("imap"), true);
-        isMapCommandRecursive.insert(QStringLiteral("im"), true);
-        isMapCommandRecursive.insert(QStringLiteral("cmap"), true);
-        isMapCommandRecursive.insert(QStringLiteral("cm"), true);
-    }
-    return isMapCommandRecursive.value(mapCommand);
+    return mapCommand == u"nmap" || mapCommand == u"nm" //
+        || mapCommand == u"vmap" || mapCommand == u"vm" //
+        || mapCommand == u"imap" || mapCommand == u"im" //
+        || mapCommand == u"cmap" || mapCommand == u"cm";
 }
 
 // END ViCommands

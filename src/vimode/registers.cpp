@@ -33,21 +33,20 @@ void Registers::readConfig(const KConfigGroup &config)
 
 void Registers::writeConfig(KConfigGroup &config) const
 {
-    if (m_registers.isEmpty()) {
+    if (m_registers.empty()) {
         return;
     }
 
     QStringList names;
     QStringList contents;
     QList<int> flags;
-    QMap<QChar, Register>::const_iterator i;
-    for (i = m_registers.constBegin(); i != m_registers.constEnd(); ++i) {
-        if (i.value().first.length() <= 1000) {
-            names << i.key();
-            contents << i.value().first;
-            flags << int(i.value().second);
+    for (const auto &[name, reg] : m_registers) {
+        if (reg.first.length() <= 1000) {
+            names << name;
+            contents << reg.first;
+            flags << int(reg.second);
         } else {
-            qCDebug(LOG_KTE) << "Did not save contents of register " << i.key() << ": contents too long (" << i.value().first.length() << " characters)";
+            qCDebug(LOG_KTE) << "Did not save contents of register " << name << ": contents too long (" << reg.first.length() << " characters)";
         }
     }
 
@@ -78,7 +77,7 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         if (reg != lowercase_reg) {
             m_registers[lowercase_reg].first.append(text);
         } else {
-            m_registers.insert(lowercase_reg, Register(text, flag));
+            m_registers.insert_or_assign(lowercase_reg, Register(text, flag));
         }
     }
 
@@ -119,8 +118,9 @@ Registers::Register Registers::getRegister(const QChar &reg) const
         regPair = Register(regContent, CharWise);
     } else {
         const QChar lowercase_reg = _reg.toLower();
-        if (m_registers.contains(lowercase_reg)) {
-            regPair = m_registers.value(lowercase_reg);
+        auto it = m_registers.find(lowercase_reg);
+        if (it != m_registers.end()) {
+            return it->second;
         }
     }
 

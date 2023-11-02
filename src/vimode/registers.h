@@ -50,7 +50,7 @@ private:
 
 private:
     QList<Register> m_numbered;
-    QMap<QChar, Register> m_registers;
+    std::map<QChar, Register> m_registers;
     QChar m_default;
 };
 
