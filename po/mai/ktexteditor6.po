@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-29 01:37+0000\n"
+"POT-Creation-Date: 2023-11-02 01:38+0000\n"
 "PO-Revision-Date: 2009-01-19 13:14+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <maithili.sf.net>\n"
@@ -2160,12 +2160,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6560
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2295,30 +2295,30 @@ msgstr "की अहाँ वास्तव मे एहि फाइल क
 msgid "Close Nevertheless"
 msgstr "कहिनो बन्न करू"
 
-#: document/katedocument.cpp:4622
+#: document/katedocument.cpp:4623
 #, kde-format
 msgid "Untitled"
 msgstr "अनाम"
 
-#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
-#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4746 document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "फाइल सहेजू"
 
-#: document/katedocument.cpp:4748
+#: document/katedocument.cpp:4749
 #, kde-format
 msgid "Save failed"
 msgstr "सहेजनाइ विफल"
 
-#: document/katedocument.cpp:4994
+#: document/katedocument.cpp:4995
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "फाइल सहेजू"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2331,7 +2331,7 @@ msgstr ""
 " जाँचू जे एहि फाइल पर अहाँक पास लिखबा क' अनुमति अछि आओर डिस्क मे पर्याप्त जगह मोजुद "
 "अछि."
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2340,7 +2340,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2349,25 +2349,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5603
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "फाइल '%1' डिस्क मे आन प्रोग्राम द्वारा परिवर्धित कएल गेल अछि."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "फाइल '%1' डिस्क मे आन प्रोग्राम द्वारा बनाएल गेल अछि."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "फाइल '%1' डिस्क मे आन प्रोग्राम द्वारा मेटाएल गेल अछि."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2376,17 +2376,17 @@ msgstr ""
 "दस्ताबेज \"%1\" परिवर्तित कएल गेल अछि.\n"
 "की अहाँ एकरा सहेजना चाहब अथवा परिवर्तनसभ केँ फेंक दिअ'?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "दस्तावेज बन्न करू"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -5770,7 +5770,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sangeeta09@gmail.com"
 
-#: utils/kateglobal.cpp:272
+#: utils/kateglobal.cpp:274
 #, kde-format
 msgid "Configure"
 msgstr "बिन्यस्त करू"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-29 01:37+0000\n"
+"POT-Creation-Date: 2023-11-02 01:38+0000\n"
 "PO-Revision-Date: 2023-10-22 14:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2183,12 +2183,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Berriz saiatu"
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr "&Itxi"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6560
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2324,29 +2324,29 @@ msgstr "Ziur zaude fitxategia ixtea nahi duzula? Baliteke datu batzuk galtzea."
 msgid "Close Nevertheless"
 msgstr "Itxi hala ere"
 
-#: document/katedocument.cpp:4622
+#: document/katedocument.cpp:4623
 #, kde-format
 msgid "Untitled"
 msgstr "Titulu gabea"
 
-#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
-#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4746 document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Gorde fitxategia"
 
-#: document/katedocument.cpp:4748
+#: document/katedocument.cpp:4749
 #, kde-format
 msgid "Save failed"
 msgstr "Gordetzeak huts egin du"
 
-#: document/katedocument.cpp:4994
+#: document/katedocument.cpp:4995
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gorde fitxategiaren kopia"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2359,7 +2359,7 @@ msgstr ""
 "Egiaztatu fitxategian idazteko baimena duzula, edo diskoan nahikoa leku "
 "dagoela."
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2372,7 +2372,7 @@ msgstr ""
 "https://docs.kde.org/?application=katepart&branch=stable5&path=config-"
 "variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2385,22 +2385,22 @@ msgstr ""
 "docs.kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5603
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' fitxategia diskoan aldatu da."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "'%1' fitxategia diskoan sortu da."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "'%1' fitxategia diskotik ezabatu da."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2409,17 +2409,17 @@ msgstr ""
 "«%1» dokumentua aldatu egin da.\n"
 "Aldaketak gorde edo baztertu nahi dituzu?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "Itxi dokumentua"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> fitxategia oraindik zamatzen ari da."
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr "G&alarazi zamatzea"
@@ -5857,7 +5857,7 @@ msgstr ""
 "koldo.np@euskalnet.net, marcos@euskalgnu.org, juanirigoien@yahoo.es, "
 "igaztanaga@gmail.com, dooteo@euskalgnu.org"
 
-#: utils/kateglobal.cpp:272
+#: utils/kateglobal.cpp:274
 #, kde-format
 msgid "Configure"
 msgstr "Konfiguratu"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-29 01:37+0000\n"
+"POT-Creation-Date: 2023-11-02 01:38+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -2269,12 +2269,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6560
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2406,30 +2406,30 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Maak nogsteeds toe"
 
-#: document/katedocument.cpp:4622
+#: document/katedocument.cpp:4623
 #, fuzzy, kde-format
 msgid "Untitled"
 msgstr "Onbeperk"
 
-#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
-#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4746 document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Stoor Lêer"
 
-#: document/katedocument.cpp:4748
+#: document/katedocument.cpp:4749
 #, kde-format
 msgid "Save failed"
 msgstr "Stoor gevaal"
 
-#: document/katedocument.cpp:4994
+#: document/katedocument.cpp:4995
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Stoor Lêer"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2443,7 +2443,7 @@ msgstr ""
 "Kontroleur dat jy skryf toegang het na hierdie lêer of dat daar genoeg skryf "
 "spasie beskikbaar is."
 
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2452,7 +2452,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2461,43 +2461,43 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5603
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Die lêer '%1' was modifiseerd deur 'n ander program."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Die lêer '%1' is gemaak deur 'n ander program."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Die lêer '%1' was uitgevee deur 'n ander program."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "Woord Oorvloei Dokument"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -5960,7 +5960,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "frix@expertron.co.za, juanita.franz@vr-web.de "
 
-#: utils/kateglobal.cpp:272
+#: utils/kateglobal.cpp:274
 #, fuzzy, kde-format
 msgid "Configure"
 msgstr "Konfigureer..."

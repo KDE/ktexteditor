@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-29 01:37+0000\n"
+"POT-Creation-Date: 2023-11-02 01:38+0000\n"
 "PO-Revision-Date: 2023-10-21 09:57+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -2190,12 +2190,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Intentalo de novo"
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6558
+#: document/katedocument.cpp:2273 document/katedocument.cpp:6559
 #, kde-format
 msgid "&Close"
 msgstr "&Pechar"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2274 document/katedocument.cpp:6560
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2333,29 +2333,29 @@ msgstr ""
 msgid "Close Nevertheless"
 msgstr "Pechar aínda así"
 
-#: document/katedocument.cpp:4622
+#: document/katedocument.cpp:4623
 #, kde-format
 msgid "Untitled"
 msgstr "Sen título"
 
-#: document/katedocument.cpp:4745 document/katedocument.cpp:4973
-#: document/katedocument.cpp:4983 document/katedocument.cpp:5773
-#: document/katedocument.cpp:5963
+#: document/katedocument.cpp:4746 document/katedocument.cpp:4974
+#: document/katedocument.cpp:4984 document/katedocument.cpp:5774
+#: document/katedocument.cpp:5964
 #, kde-format
 msgid "Save File"
 msgstr "Gardar o ficheiro"
 
-#: document/katedocument.cpp:4748
+#: document/katedocument.cpp:4749
 #, kde-format
 msgid "Save failed"
 msgstr "Fallou a garda"
 
-#: document/katedocument.cpp:4994
+#: document/katedocument.cpp:4995
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Gardar unha copia do ficheiro"
 
-#: document/katedocument.cpp:5006
+#: document/katedocument.cpp:5007
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2369,7 +2369,7 @@ msgstr ""
 "abondo no disco."
 
 # skip-rule: normalization-ble
-#: document/katedocument.cpp:5286
+#: document/katedocument.cpp:5287
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2383,7 +2383,7 @@ msgstr ""
 "remove-trailing-spaces"
 
 # skip-rule: normalization-ble
-#: document/katedocument.cpp:5292
+#: document/katedocument.cpp:5293
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2397,22 +2397,22 @@ msgstr ""
 "consulte https://docs.kde.org/stable5/en/applications/katepart/config-"
 "variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5602
+#: document/katedocument.cpp:5603
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "O ficheiro «%1» modificouse no disco."
 
-#: document/katedocument.cpp:5605
+#: document/katedocument.cpp:5606
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "O ficheiro «%1» creouse no disco."
 
-#: document/katedocument.cpp:5608
+#: document/katedocument.cpp:5609
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "O ficheiro «%1» eliminouse do disco."
 
-#: document/katedocument.cpp:5948
+#: document/katedocument.cpp:5949
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2421,17 +2421,17 @@ msgstr ""
 "Modificouse o documento «%1».\n"
 "Quere gardar os seus cambios ou descartalos?"
 
-#: document/katedocument.cpp:5951
+#: document/katedocument.cpp:5952
 #, kde-format
 msgid "Close Document"
 msgstr "Pechar o documento"
 
-#: document/katedocument.cpp:6062
+#: document/katedocument.cpp:6063
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "O ficheiro <a href=\"%1\">%2</a> está aínda a cargarse."
 
-#: document/katedocument.cpp:6067
+#: document/katedocument.cpp:6068
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Interromper a carga"
@@ -5858,7 +5858,7 @@ msgstr ""
 "xabigf@gmx.net,\n"
 "mvillarino@users.sourceforge.net, xosecalvo@gmail.com"
 
-#: utils/kateglobal.cpp:272
+#: utils/kateglobal.cpp:274
 #, kde-format
 msgid "Configure"
 msgstr "Configurar"
