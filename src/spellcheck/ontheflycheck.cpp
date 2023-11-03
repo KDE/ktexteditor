@@ -652,13 +652,13 @@ void KateOnTheFlyChecker::viewDestroyed(QObject *obj)
 {
     ON_THE_FLY_DEBUG;
     KTextEditor::View *view = static_cast<KTextEditor::View *>(obj);
-    m_displayRangeMap.remove(view);
+    m_displayRangeMap.erase(view);
 }
 
 void KateOnTheFlyChecker::removeView(KTextEditor::View *view)
 {
     ON_THE_FLY_DEBUG;
-    m_displayRangeMap.remove(view);
+    m_displayRangeMap.erase(view);
 }
 
 void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *view)

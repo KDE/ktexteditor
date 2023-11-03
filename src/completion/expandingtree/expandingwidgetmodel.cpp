@@ -98,8 +98,8 @@ QVariant ExpandingWidgetModel::data(const QModelIndex &index, int role) const
 
 void ExpandingWidgetModel::clearExpanding()
 {
-    QMap<QModelIndex, ExpandingWidgetModel::ExpandingType> oldExpandState = m_expandState;
-    for (auto &widget : std::as_const(m_expandingWidgets)) {
+    auto oldExpandState = std::move(m_expandState);
+    for (auto &[_, widget] : m_expandingWidgets) {
         if (widget) {
             widget->deleteLater(); // By using deleteLater, we prevent crashes when an action within a widget makes the completion cancel
         }
@@ -107,9 +107,9 @@ void ExpandingWidgetModel::clearExpanding()
     m_expandingWidgets.clear();
     m_expandState.clear();
 
-    for (auto it = oldExpandState.constBegin(); it != oldExpandState.constEnd(); ++it) {
-        if (it.value() == Expanded) {
-            Q_EMIT dataChanged(it.key(), it.key());
+    for (const auto &[idx, type] : m_expandState) {
+        if (type == Expanded) {
+            Q_EMIT dataChanged(idx, idx);
         }
     }
 }
@@ -118,8 +118,8 @@ bool ExpandingWidgetModel::isExpandable(const QModelIndex &idx_) const
 {
     QModelIndex idx(firstColumn(idx_));
 
-    if (!m_expandState.contains(idx)) {
-        m_expandState.insert(idx, NotExpandable);
+    if (m_expandState.find(idx) == m_expandState.end()) {
+        m_expandState[idx] = NotExpandable;
         QVariant v = data(idx, CodeCompletionModel::IsExpandable);
         if (v.canConvert<bool>() && v.toBool()) {
             m_expandState[idx] = Expandable;
@@ -132,7 +132,8 @@ bool ExpandingWidgetModel::isExpandable(const QModelIndex &idx_) const
 bool ExpandingWidgetModel::isExpanded(const QModelIndex &idx_) const
 {
     QModelIndex idx(firstColumn(idx_));
-    return m_expandState.contains(idx) && m_expandState[idx] == Expanded;
+    auto it = m_expandState.find(idx);
+    return it != m_expandState.end() && it->second == Expanded;
 }
 
 void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
@@ -145,13 +146,14 @@ void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
     }
 
     if (isExpandable(idx)) {
-        if (!expanded && m_expandingWidgets.contains(idx) && m_expandingWidgets[idx]) {
+        auto it = m_expandingWidgets.find(idx);
+        if (!expanded && it != m_expandingWidgets.end() && it->second) {
             m_expandingWidgets[idx]->hide();
         }
 
         m_expandState[idx] = expanded ? Expanded : Expandable;
 
-        if (expanded && !m_expandingWidgets.contains(idx)) {
+        if (expanded && it == m_expandingWidgets.end()) {
             QVariant v = data(idx, CodeCompletionModel::ExpandingWidget);
 
             if (v.canConvert<QWidget *>()) {
@@ -194,12 +196,13 @@ void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
         return;
     }
 
-    QWidget *w = m_expandingWidgets.value(idx);
-    if (!w) {
+    auto it = m_expandingWidgets.find(idx);
+    if (it == m_expandingWidgets.end() || it->second == nullptr) {
         return;
     }
 
     QRect rect = treeView()->visualRect(idx);
+    auto w = it->second;
 
     if (!rect.isValid() || rect.bottom() < 0 || rect.top() >= treeView()->height()) {
         // The item is currently not visible
@@ -247,8 +250,8 @@ void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
 
 void ExpandingWidgetModel::placeExpandingWidgets()
 {
-    for (QMap<QModelIndex, QPointer<QWidget>>::const_iterator it = m_expandingWidgets.constBegin(); it != m_expandingWidgets.constEnd(); ++it) {
-        placeExpandingWidget(it.key());
+    for (auto it = m_expandingWidgets.begin(); it != m_expandingWidgets.end(); ++it) {
+        placeExpandingWidget(it->first);
     }
 }
 
@@ -256,8 +259,8 @@ QWidget *ExpandingWidgetModel::expandingWidget(const QModelIndex &idx_) const
 {
     QModelIndex idx(firstColumn(idx_));
 
-    if (m_expandingWidgets.contains(idx)) {
-        return m_expandingWidgets[idx];
+    if (auto it = m_expandingWidgets.find(idx); it != m_expandingWidgets.end()) {
+        return it->second;
     } else {
         return nullptr;
     }

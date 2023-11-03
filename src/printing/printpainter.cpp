@@ -253,7 +253,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
         // none of these operations should be expensive,
         // and searching each tag in the format strings is avoided.
         QDateTime dt = QDateTime::currentDateTime();
-        QMap<QString, QString> tags;
+        std::map<QString, QString> tags;
 
         KUser u(KUser::UseRealUserID);
         tags[QStringLiteral("u")] = u.loginName();

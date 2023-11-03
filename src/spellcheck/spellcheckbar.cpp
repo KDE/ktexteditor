@@ -88,7 +88,7 @@ public:
     Sonnet::BackgroundChecker *checker;
 
     Word currentWord;
-    QMap<QString, QString> replaceAllMap;
+    std::map<QString, QString> replaceAllMap;
     bool restart; // used when text is distributed across several qtextedits, eg in KAider
 
     QMap<QString, QString> dictsMap;
@@ -351,7 +351,7 @@ void SpellCheckBar::slotReplaceAll()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    d->replaceAllMap.insert(d->currentWord.word, d->ui.cmbReplacement->lineEdit()->text());
+    d->replaceAllMap.insert_or_assign(d->currentWord.word, d->ui.cmbReplacement->lineEdit()->text());
     slotReplaceWord();
 }
 
@@ -411,7 +411,7 @@ void SpellCheckBar::slotMisspelling(const QString &word, int start)
     }
 
     d->currentWord = Word(word, start);
-    if (d->replaceAllMap.contains(word)) {
+    if (d->replaceAllMap.find(word) != d->replaceAllMap.end()) {
         d->ui.cmbReplacement->lineEdit()->setText(d->replaceAllMap[word]);
         slotReplaceWord();
     } else {

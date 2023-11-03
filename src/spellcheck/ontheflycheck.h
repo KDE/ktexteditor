@@ -9,11 +9,11 @@
 #define ONTHEFLYCHECK_H
 
 #include <QList>
-#include <QMap>
 #include <QObject>
 #include <QPair>
 #include <QSet>
 #include <QString>
+#include <map>
 
 #include <sonnet/speller.h>
 
@@ -64,7 +64,7 @@ protected:
     MisspelledList m_misspelledList;
     ModificationList m_modificationList;
     KTextEditor::DocumentPrivate::OffsetList m_currentDecToEncOffsetList;
-    QMap<KTextEditor::View *, KTextEditor::Range> m_displayRangeMap;
+    std::map<KTextEditor::View *, KTextEditor::Range> m_displayRangeMap;
 
     void freeDocument();
 

@@ -55,7 +55,8 @@ public:
     }
 
 private:
-    typedef QMap<CodeCompletionModel::ExtraItemDataRoles, QVariant> RoleMap;
+    typedef std::pair<CodeCompletionModel::ExtraItemDataRoles, QVariant> RoleAndValue;
+    typedef std::vector<std::pair<CodeCompletionModel::ExtraItemDataRoles, QVariant>> RoleMap;
     RoleMap m_roleValues;
     QString m_customGroup;
     int m_groupSortingKey;
@@ -69,7 +70,7 @@ CodeCompletionModel *HierarchicalModelHandler::model() const
 
 bool HierarchicalModelHandler::hasHierarchicalRoles() const
 {
-    return !m_roleValues.isEmpty();
+    return !m_roleValues.empty();
 }
 
 void HierarchicalModelHandler::collectRoles(const QModelIndex &index)
@@ -99,7 +100,8 @@ void HierarchicalModelHandler::takeRole(const QModelIndex &index)
                 m_groupSortingKey = sortingKey.toInt();
             }
         } else {
-            m_roleValues[(CodeCompletionModel::ExtraItemDataRoles)v.toInt()] = value;
+            auto role = (CodeCompletionModel::ExtraItemDataRoles)v.toInt();
+            addValue(role, value);
         }
     } else {
         qCDebug(LOG_KTE) << "Did not return valid GroupRole in hierarchical completion-model";
@@ -108,9 +110,11 @@ void HierarchicalModelHandler::takeRole(const QModelIndex &index)
 
 QVariant HierarchicalModelHandler::getData(CodeCompletionModel::ExtraItemDataRoles role, const QModelIndex &index) const
 {
-    RoleMap::const_iterator it = m_roleValues.find(role);
+    auto it = std::find_if(m_roleValues.begin(), m_roleValues.end(), [role](const RoleAndValue &v) {
+        return v.first == role;
+    });
     if (it != m_roleValues.end()) {
-        return *it;
+        return it->second;
     } else {
         return index.data(role);
     }
@@ -124,7 +128,14 @@ HierarchicalModelHandler::HierarchicalModelHandler(CodeCompletionModel *model)
 
 void HierarchicalModelHandler::addValue(CodeCompletionModel::ExtraItemDataRoles role, const QVariant &value)
 {
-    m_roleValues[role] = value;
+    auto it = std::find_if(m_roleValues.begin(), m_roleValues.end(), [role](const RoleAndValue &v) {
+        return v.first == role;
+    });
+    if (it != m_roleValues.end()) {
+        it->second = value;
+    } else {
+        m_roleValues.push_back({role, value});
+    }
 }
 
 KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
@@ -884,7 +895,7 @@ QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) co
 
     for (Group *g : std::as_const(groups)) {
         for (const Item &item : std::as_const(g->filtered)) {
-            uint startPos = m_currentMatch[item.sourceRow().first].length();
+            uint startPos = currentCompletion(item.sourceRow().first).length();
             const QString candidate = item.name().mid(startPos);
 
             if (!candidate.startsWith(forcePrefix)) {
@@ -927,7 +938,7 @@ QString KateCompletionModel::commonPrefix(QModelIndex selectedIndex) const
         if (g && selectedIndex.row() < (int)g->filtered.size()) {
             // Follow the path of the selected item, finding the next non-empty common prefix
             Item item = g->filtered[selectedIndex.row()];
-            int matchLength = m_currentMatch[item.sourceRow().first].length();
+            int matchLength = currentCompletion(item.sourceRow().first).length();
             commonPrefix = commonPrefixInternal(item.name().mid(matchLength).left(1));
         }
     }

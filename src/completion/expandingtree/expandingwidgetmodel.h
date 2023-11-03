@@ -74,10 +74,9 @@ protected:
     int basicRowHeight(const QModelIndex &index) const;
 
 private:
-    //     QMap<QModelIndex, ExpansionType> m_partiallyExpanded;
     // Store expanding-widgets and cache whether items can be expanded
-    mutable QMap<QModelIndex, ExpandingType> m_expandState;
-    QMap<QModelIndex, QPointer<QWidget>> m_expandingWidgets; // Map rows to their expanding-widgets
+    mutable std::map<QModelIndex, ExpandingType> m_expandState;
+    std::map<QModelIndex, QPointer<QWidget>> m_expandingWidgets; // Map rows to their expanding-widgets
 };
 
 /**
