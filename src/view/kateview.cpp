@@ -1044,8 +1044,9 @@ void KTextEditor::ViewPrivate::setupEditActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::shiftWordRight);
     m_editActions.push_back(a);
 
-    a = ac->addAction(QStringLiteral("force_selection"));
-    a->setText(i18n("Force Selecting"));
+    a = ac->addAction(QStringLiteral("mark_selection"));
+    a->setText(i18n("Start the Marked Selection"));
+    a->setWhatsThis(i18n("Emulate the Emacs-like selection mode, where the beginning is marked and then the selection is continuously updated."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::markSelection);
     m_editActions.push_back(a);
 
