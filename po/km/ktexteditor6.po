@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 01:37+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -18,12 +18,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "X-Language: km-KH\n"
 
-#: completion/katecompletionmodel.cpp:133
+#: completion/katecompletionmodel.cpp:144
 #, kde-format
 msgid "Argument-hints"
 msgstr "ព័ត៌មាន​ជំនួយ​អាគុយម៉ង់"
 
-#: completion/katecompletionmodel.cpp:134
+#: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
 msgstr "ការ​ផ្គូផ្គង​ល្អ​បំផុត"

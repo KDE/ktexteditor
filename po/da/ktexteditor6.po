@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 01:37+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "X-Generator: Lokalize 20.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: completion/katecompletionmodel.cpp:133
+#: completion/katecompletionmodel.cpp:144
 #, kde-format
 msgid "Argument-hints"
 msgstr "Argument-tips"
 
-#: completion/katecompletionmodel.cpp:134
+#: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
 msgstr "Bedste resultater"

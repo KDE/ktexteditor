@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 01:37+0000\n"
 "PO-Revision-Date: 2009-01-08 12:55+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -25,12 +25,12 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=3; plural=n%10==1 ? 0 : n%10==2 ? 1 : "
 "2;\n"
 
-#: completion/katecompletionmodel.cpp:133
+#: completion/katecompletionmodel.cpp:144
 #, kde-format
 msgid "Argument-hints"
 msgstr ""
 
-#: completion/katecompletionmodel.cpp:134
+#: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
 msgstr "Најдобри совпаѓања"

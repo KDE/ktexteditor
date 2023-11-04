@@ -1,25 +1,22 @@
 # translation of katepart4.po to Turkish
-# translation of katepart4.po to
 # Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 #
 # SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 # Ömer Fadıl USTA <omer_fad@hotmail.com>, 2002.
-# Görkem Çetin <gorkem@kde.org>, 2002,2003, 2004.
-# Görkem Çetin <gorkem@kde.org.tr>, 2005.
+# Görkem Çetin <gorkem@kde.org>, 2002,2003, 2004, 2005.
 # Adem Alp Yıldız <ademalp@kde.org.tr>, 2005.
 # Bekir SONAT <cortexbs@yahoo.com>, 2005.
-# Serdar Soytetir <tulliana@gmail.com>, 2007, 2008, 2009.
+# Serdar Soytetir <tulliana@gmail.com>, 2007, 2008, 2009, 2010, 2012.
 # H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010, 2011.
-# Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2015, 2017, 2019.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 01:38+0000\n"
-"PO-Revision-Date: 2023-10-30 22:35+0300\n"
+"POT-Creation-Date: 2023-11-04 01:37+0000\n"
+"PO-Revision-Date: 2023-11-03 22:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -27,14 +24,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.0\n"
 
-#: completion/katecompletionmodel.cpp:133
+#: completion/katecompletionmodel.cpp:144
 #, kde-format
 msgid "Argument-hints"
 msgstr "Argüman ipuçları"
 
-#: completion/katecompletionmodel.cpp:134
+#: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
 msgstr "En uygun eşleşen"
@@ -179,7 +176,7 @@ msgstr "Kod bloku katlama:"
 msgid ""
 "If this option is checked, every new view will display marks for folding."
 msgstr ""
-"Bu seçenek işaretliyse her yeni görünüm katlama için imler görüntüleyecektir."
+"Bu seçenek işaretlenirse her yeni görünümde katlama imleri görüntülenir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:35
@@ -194,8 +191,8 @@ msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
-"İşaretlenirse katlanmış bir bölgenin üzerine gelmek, açılır pencerede "
-"katlanmış metnin önizlemesini gösterir."
+"İşaretlenirse katlanmış bir bölgenin üzerine gelindiğinde, katlanmış metnin "
+"bir önizlemesi açılır pencerede gösterilir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
@@ -217,9 +214,9 @@ msgid ""
 "the left hand side.</p><p>The icon border shows bookmark signs, for instance."
 "</p>"
 msgstr ""
-"<p>Bu seçenek işaretliyse her yeni görünümde sol yanda bir simge kenarlığı "
-"görüntülenecektir.</p><p>Örneğin simge kenarlığı yer imi işaretlerini "
-"gösterir.</p>"
+"<p>Bu seçenek işaretlenirse her yeni görünümün sol tarafında bir simge "
+"kenarlığı görüntülenecektir.</p><p>Örneğin, simge kenarlığı yer imi "
+"işaretlerini gösterir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
@@ -236,8 +233,8 @@ msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
 msgstr ""
-"Bu seçenek işaretliyse her yeni görünümde, sol yan tarafta satır numaraları "
-"görüntülenecektir."
+"Bu seçenek işaretlenirse her yeni görünümde, sol yan tarafta satır "
+"numaraları görüntülenecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:88
@@ -252,20 +249,20 @@ msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
 msgstr ""
-"Bu seçenek işaretliyse sol tarafta değiştirilen ve kaydedilen satırlar için "
-"küçük bir bildirici gösterilecektir."
+"Bu seçenek işaretlenirse sol tarafta değiştirilen ve kaydedilen satırlar "
+"için küçük bir gösterge gösterilecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:98
 #, kde-format
 msgid "Highlight changed and unsaved lines"
-msgstr "Değiştirilmiş ve kaydedilmemiş satırları vurgula"
+msgstr "Değiştirilen ve kaydedilmeyen satırları vurgula"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:121
 #, kde-format
 msgid "Scrollbars"
-msgstr "Sarma Çubukları"
+msgstr "Sarma çubukları:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -274,8 +271,8 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>Bu seçenek işaretliyse her yeni görünümde dikey sarma çubuğunda imler "
-"görüntülenecektir.</p><p>Örneğin bu imler yer imlerini gösterir.</p>"
+"<p>Bu seçenek işaretlenirse her yeni görünümde dikey sarma çubuğu üzerinde "
+"işaretler gösterilir.</p><p>Örneğin, bu imler yer imlerini gösterir.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:138
@@ -284,20 +281,20 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>Bu seçenek işaretliyse dikey sarma çubuğunun üzerine gelmek, metnin bir "
-"önizlemesini gösterir.</p>"
+"<p>Bu seçenek işaretlenirse dikey sarma çubuğunun üzerine gelindiğinde "
+"metnin önizlemesi gösterilir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
-msgstr "Sarma çubuğu üzerine gelindiğinde önizlemeyi göster"
+msgstr "Sarma çubuğu üzerine gelindiğinde önizleme göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:164
 #, kde-format
 msgid "Minimap:"
-msgstr "Küçük harita:"
+msgstr "Mini harita:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:171
@@ -306,14 +303,14 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Bu seçenek işaretliyse her yeni görünüm dikey sarma çubuğunda küçük bir "
+"Bu seçenek işaretlenirse her yeni görünüm dikey sarma çubuğunda mini bir "
 "harita gösterecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:174
 #, kde-format
 msgid "Show minimap"
-msgstr "Küçük haritayı göster"
+msgstr "Mini haritayı göster"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -322,8 +319,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
-"Bu seçenek işaretliyse her yeni görünüm dikey sarma çubuğunda tüm belgenin "
-"küçük bir haritasını gösterecektir."
+"Bu seçenek işaretlenirse her yeni görünüm dikey sarma çubuğunda tüm belgenin "
+"mini bir haritasını gösterecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:187
@@ -335,25 +332,25 @@ msgstr "Tüm belgeyi eşlemle"
 #: dialogs/bordersappearanceconfigwidget.ui:213
 #, kde-format
 msgid "Minim&ap width:"
-msgstr "Küçük harita &genişliği:"
+msgstr "Mini harita &genişliği:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:742
 #, kde-format
 msgid "Always On"
-msgstr "Her Zaman Açık"
+msgstr "Her zaman açık"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:229
 #, kde-format
 msgid "Show When Needed"
-msgstr "Gerektiğinde Göster"
+msgstr "Gerektiğinde göster"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:234
 #, kde-format
 msgid "Always Off"
-msgstr "Her Zaman Kapalı"
+msgstr "Her zaman kapalı"
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:242
@@ -375,7 +372,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:255
 #, kde-format
 msgid "By date created"
-msgstr "Oluşturma tarihine göre"
+msgstr "Oluşturulma tarihine göre"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
 #: dialogs/bordersappearanceconfigwidget.ui:262
@@ -407,13 +404,13 @@ msgstr "Katlama okları görünürlüğü:"
 #: dialogs/bordersappearanceconfigwidget.ui:306
 #, kde-format
 msgid "Show on Hover"
-msgstr "Üzerine Gelince Göster"
+msgstr "Üzerine gelindiğinde göster"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:311
 #, kde-format
 msgid "Show Always"
-msgstr "Her Zaman Göster"
+msgstr "Her zaman göster"
 
 #: dialogs/clipboardhistorydialog.cpp:261
 #, kde-format
@@ -534,19 +531,19 @@ msgid ""
 "be <i>visually wrapped</i> instead, according to the width of the view, "
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
-"<p>Geçerli satır, <b>Sözcükleri kaydır:</b>seçeneğinde belirtilen sınırı "
-"aştığında kendiliğinden yeni bir satır başlat.</p><p>Bu seçenek var olan "
-"satırları kaydırmayacaktır, bunun için <b>Araçlar</b> menüsünden <b>Statik "
-"Sözcük Kaydırmayı Uygula</b> seçeneğini seçin.</p><p>Eğer istediğiniz "
+"<p>Geçerli satır, <b>Sözcükleri şurada kaydır:</b>seçeneğinde belirtilen "
+"sınırı aştığında kendiliğinden yeni bir satır başlatın.</p><p>Bu seçenek var "
+"olan satırları kaydırmaz, bunun için <b>Araçlar</b> menüsünden <b>Durağan "
+"sözcük kaydırmayı uygula</b> seçeneğini seçin.</p><p>Eğer istediğiniz "
 "<i>görsel olarak kaydırılması</i> ise görünüm genişliğine bağlı olarak, "
-"yapılandırma sayfasında <b>Görünüş</b> altındaki <b>Devingen Sözcük "
-"Kaydırma</b> seçeneğini seçin.</p>"
+"yapılandırma sayfasında <b>Görünüş</b> altındaki <b>Devingen sözcük "
+"kaydırma</b> seçeneğini seçin.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr "Sözcükleri belirli bir sütunda kaydır"
+msgstr "&Sözcükleri belirli bir sütunda kaydır"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -555,8 +552,8 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>Bu seçenek işaretliyse <strong>Düzenleme</strong> özelliklerinde "
-"belirtildiği üzere sözcük kaydırma sütununda dikey bir çizgi çizilecektir..</"
+"<p>Bu seçenek işaretlenirse <strong>Düzenleme</strong> özelliklerinde "
+"tanımlandığı üzere sözcük kaydırma sütununda dikey bir çizgi çizilecektir.</"
 "p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
@@ -613,7 +610,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:143
 #, kde-format
 msgid "Enclosing characters:"
-msgstr "Kapsayan karakterler:"
+msgstr "Kapsanan karakterler:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
@@ -625,25 +622,27 @@ msgstr "Kopyala ve yapıştır:"
 #: dialogs/editconfigwidget.ui:173
 #, kde-format
 msgid "Move selected text when dragged"
-msgstr "Seçili satırı sürüklendiğinde taşı"
+msgstr "Seçili metni sürüklerken taşı"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartCopyCut)
 #: dialogs/editconfigwidget.ui:180
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr "Seçili metin olmadan çağrılmışsa geçerli satırı kopyala/kes"
+msgstr ""
+"Bu seçenek etkinleştirilirse ve metin seçimi boşsa gerçek imleç konumunda "
+"metin satırı için kopyalama ve kesme eylemi gerçekleştirilir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:187
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr "Fare ile yapıştırırken metin imlecini hareket ettirme"
+msgstr "Fareyle yapıştırırken metin imlecini hareket ettirme"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:194
 #, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "En Çok Pano Geçmişi Girdisi:"
+msgstr "En çok pano geçmişi girdisi:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:204
@@ -883,7 +882,7 @@ msgstr "&Boşluklar"
 #: dialogs/indentationconfigwidget.ui:104
 #, kde-format
 msgid "&Indentation width:"
-msgstr "&Girintileme genişliği:"
+msgstr "G&irintileme genişliği:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblTabWidth)
 #: dialogs/indentationconfigwidget.ui:114
@@ -913,7 +912,7 @@ msgstr "Kendiliğinden dosya girintilemesini algıla"
 #: dialogs/indentationconfigwidget.ui:177
 #, kde-format
 msgid "Indentation Properties"
-msgstr "Girinti Özellikleri"
+msgstr "Girintileme Özellikleri"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:183
@@ -930,7 +929,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:186
 #, kde-format
 msgid "&Keep extra spaces"
-msgstr "&Ek boşlukları koru"
+msgstr "&Ek boşlukları tut"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:193
@@ -939,7 +938,7 @@ msgid ""
 "If this option is selected, pasted code from the clipboard is indented. "
 "Triggering the <b>undo</b>-action removes the indentation."
 msgstr ""
-"Bu seçenek seçiliyse panodan kopyalanan kod girintilidir. <b>Geri Al</b> "
+"Bu seçenek seçilirse panodan kopyalanan kod girintilidir. <b>Geri Al</b> "
 "eylemini tetikleme girintiyi siler."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIndentPaste)
@@ -962,7 +961,7 @@ msgid ""
 "indentation level if the cursor is located in the leading blank space of a "
 "line."
 msgstr ""
-"Bu seçenek seçiliyse <b>Geri Sil</b> düğmesi, imleç bir satırın başındaki "
+"Bu seçenek seçilirse <b>Geri Sil</b> düğmesi, imleç bir satırın başındaki "
 "boşluğa konumlandırılmışsa girintiyi azaltır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
@@ -1002,7 +1001,7 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
-"Bu seçenek seçiliyse <b>Sekme</b> düğmesi her zaman bir sonraki sekme "
+"Bu seçenek seçilirse <b>Sekme</b> düğmesi her zaman bir sonraki sekme "
 "konumuna ulaşana kadar boşluk ekler. <b>Sekme yerine boşluk ekle</b> "
 "bölümündeki <b>Düzenleme</b> seçeneği seçiliyse boşluklar eklenir; diğer "
 "türlü, tek bir sekme eklenir."
@@ -1021,7 +1020,7 @@ msgid ""
 "line by the number of character positions specified in <b>Indentation width</"
 "b>."
 msgstr ""
-"Bu seçenek seçiliyse <b>Sekme</b> düğmesi <b>Girintileme genişliği</b> "
+"Bu seçenek seçilirse <b>Sekme</b> düğmesi <b>Girintileme genişliği</b> "
 "seçeneğinde belirtilen kadar geçerli satırı girintiler."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
@@ -1045,7 +1044,7 @@ msgid ""
 "b> is enabled, spaces are inserted; otherwise, a single tabulator is "
 "inserted."
 msgstr ""
-"Bu seçenek seçiliyse <b>Sekme</b> düğmesi geçerli satırı girintiler veya bir "
+"Bu seçenek seçilirse <b>Sekme</b> düğmesi geçerli satırı girintiler veya bir "
 "önceki satırın konumuna getirir.<p> Eğer ekleme noktası, satırdaki ilk "
 "boşlukta ya da önce ise veya seçilmişse geçerli satır, <b>Girinti uzunluğu</"
 "b> seçeneğinde belirtilen kadar girintilenir.<p> Ekleme noktası ilk "
@@ -1187,7 +1186,7 @@ msgstr "Kapalı"
 #: dialogs/katedialogs.cpp:741
 #, kde-format
 msgid "Follow Line Numbers"
-msgstr "Satır Numaralarını Takip Et"
+msgstr "Satır numaralarını izle"
 
 #: dialogs/katedialogs.cpp:935 dialogs/katedialogs.cpp:940
 #, kde-format
@@ -1387,7 +1386,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:48
 #, kde-format
 msgid "&PageUp/PageDown moves cursor"
-msgstr "&Sayfa Yukarı/Sayfa Aşağı düğmeleri imleci hareket ettirir"
+msgstr "&Sayfa Yukarı/Sayfa Aşağı imleci hareket ettirir"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:55
@@ -1407,7 +1406,7 @@ msgstr "Deve biçimi imleç hareketini etkinleştir"
 #: dialogs/navigationconfigwidget.ui:79
 #, kde-format
 msgid "&Autocenter cursor:"
-msgstr "İmleci otoma&tik ortala:"
+msgstr "İmleci &kendiliğinden ortala:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:89
@@ -1425,7 +1424,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:193
 #, kde-format
 msgid "Disabled"
-msgstr "Devre Dışı"
+msgstr "Devre dışı"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:95
@@ -1478,7 +1477,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:177
 #, kde-format
 msgid "Backspace key removes character’s base with its diacritics"
-msgstr "Geri sil düğmesi karakterin tabanını aksanlarıyla birlikte kaldırır"
+msgstr "Geri Sil düğmesi, karakterin tabanını aksanlarıyla birlikte kaldırır"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
@@ -1490,7 +1489,7 @@ msgstr "Çoklu İmleç"
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr "Çoklu İmleç Değiştiricileri"
+msgstr "Çoklu imleç değiştiricileri"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
@@ -1510,7 +1509,8 @@ msgstr "Kaydetmek için bir yedek dosyası yaz:"
 msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
-msgstr "Bu seçenek etkinse yerel dosyalar kaydedilirken yedeği alınır."
+msgstr ""
+"Bu seçenek etkinleştirilirse yerel dosyalar kaydedilirken yedeği alınır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
@@ -1524,7 +1524,8 @@ msgstr "&Yerel dosyalar"
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
-msgstr "Bu seçenek etkinse uzak dosyalar kaydedilirken yedeği alınır."
+msgstr ""
+"Bu seçenek etkinleştirilirse uzak dosyalar kaydedilirken yedeği alınır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
@@ -1698,8 +1699,8 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
-"Bu seçenek etkinse düzenleyici, satır sonu türünü kendiliğinden algılar. İlk "
-"bulunan satır sonu türü dosyanın tümü için kullanılır."
+"Bu seçenek etkinleştirilirse düzenleyici, satır sonu türünü kendiliğinden "
+"algılar. İlk bulunan satır sonu türü dosyanın tümü için kullanılır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -1883,20 +1884,20 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
-"Bu değer, yazıtipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1.0 "
+"Bu değer, yazıtipinin öntanımlı satır yüksekliğiyle çarpılacaktır. 1,0 "
 "değeri, öntanımlı yüksekliğin kullanılacağı anlamına gelir."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:90
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr "Boşluk belirteçlerini göster:"
+msgstr "Boşluk göstergelerini göster:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:106
 #, kde-format
 msgid "At the end of a line"
-msgstr "Satır sonunda"
+msgstr "Bir satırın sonunda"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:111
@@ -1908,7 +1909,7 @@ msgstr "Her zaman"
 #: dialogs/textareaappearanceconfigwidget.ui:119
 #, kde-format
 msgid "Whitespace indicator size:"
-msgstr "Boşluk belirteci boyutu:"
+msgstr "Boşluk göstergesi boyutu:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:135
@@ -1920,7 +1921,7 @@ msgstr "Görünür vurgulama imleyicisinin boyutu."
 #: dialogs/textareaappearanceconfigwidget.ui:163
 #, kde-format
 msgid "Show tab indicators:"
-msgstr "Sekme belirteçlerini göster:"
+msgstr "Sekme göstergelerini göster:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:173
@@ -1936,13 +1937,13 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:183
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr "Düzenleyici etrafında çerçeve odağını göster"
+msgstr "Düzenleyicinin çevresinde odak çerçevesini göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:216
 #, kde-format
 msgid "Bracket matching:"
-msgstr "Ayraç eşleşmesi:"
+msgstr "Ayraç eşleştirme:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:223
@@ -1951,13 +1952,14 @@ msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
 msgstr ""
-"Bu etkin ise seçili eşleşen ayraçlar arasındaki aralık vurgulanacaktır."
+"Bu etkinleştirilirse seçilen eşleşen ayraçlar arasındaki erim "
+"vurgulanacaktır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
 #: dialogs/textareaappearanceconfigwidget.ui:226
 #, kde-format
 msgid "Highlight range between selected brackets"
-msgstr "Seçili ayraçlar arasındaki aralığı vurgula"
+msgstr "Seçili ayraçlar arasındaki erimi vurgula"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:233
@@ -1974,7 +1976,7 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
-"Bu etkinleştirilmişse eşleşen açık bir ayracın yanında satır önizlemesi "
+"Bu etkinleştirilirse eşleşen açık bir ayracın yanında satır önizlemesi "
 "gösterilir. Bu, bir kapatan ayracın bağlamını hızlıca anlamaya yardımcı "
 "olur; özellikle uzun işlev/sınıf beyanlarında ve derince iç içe geçmiş if "
 "bloklarında yararlıdır"
@@ -1996,13 +1998,15 @@ msgstr "Eşleşen ayraçları yakıp söndür"
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
-msgstr "Bu seçenek etkin ise eşleşen ayraçlar daha iyi gösterilirler."
+msgstr "Bu seçenek etkinleştirilirse eşleşen ayraçlar daha iyi gösterilirler."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:252
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr "İmleç diğer ayraç eşine atladığında eşleşen ayracı vurgula"
+msgstr ""
+"İmleç çift halinde başka bir ayraca hareket ettiğinde eşleşen ayraç yanıp "
+"söner"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:259
@@ -2011,14 +2015,14 @@ msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
 msgstr ""
-"Bu etkinleştirildiğinde düzenleyici, girinti satırlarını tanımlamaya yardım "
-"eden dikey bir çizgi görüntüleyecektir."
+"Bu etkinleştirilirse düzenleyici, girintili çizgileri tanımlamaya yardımcı "
+"olmak için dikey çizgiler görüntüleyecektir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:262
 #, kde-format
 msgid "Show i&ndentation lines"
-msgstr "Girinti satırlarını göster"
+msgstr "G&irintileme satırlarını göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/textareaappearanceconfigwidget.ui:285
@@ -2059,9 +2063,10 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
-"Bu seçenek etkin ise düzenleyici görünümü kendiliğinden belgenin\n"
-"ilk satırından başlayan açıklama bloklarını gizler. Bu genelde dosyanın\n"
-"baş tarafını dolduran lisans başlığını saklamaya yardımcı olur."
+"Bu seçenek etkin ise düzenleyici görünümü kendiliğinden\n"
+"belgenin ilk satırından başlayan açıklama bloklarını gizler.\n"
+"Bu genelde dosyanın baş tarafını dolduran lisans başlığını\n"
+"saklamaya yardımcı olur."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:334
@@ -2073,7 +2078,7 @@ msgstr "İlk satırı katla"
 #: dialogs/textareaappearanceconfigwidget.ui:354
 #, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "Devingen Sözcük Kaydırma:"
+msgstr "Devingen sözcük kaydırma:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:361
@@ -2091,13 +2096,14 @@ msgstr "Devingen kaydırma için sözcük sınırlarını dikkate alma"
 #: dialogs/textareaappearanceconfigwidget.ui:375
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "Devingen sözcük kaydırma belirteçleri:"
+msgstr "Devingen sözcük kaydırma göstergeleri:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:385
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
-msgstr "Devingen Sözcük Kaydırma Belirteçleri görüntülenecekse seçin."
+msgstr ""
+"Devingen Sözcük Kaydırma Göstergelerinin ne zaman görüntüleneceğini seçin."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:408
@@ -2123,15 +2129,14 @@ msgid ""
 "indentation levels are deeper than 50% of the width of the screen will not "
 "have vertical alignment applied to subsequent wrapped lines.</p>"
 msgstr ""
-"<p>Devingen olarak kaydırılan satırların başının, dikey olarak, ilk satırın "
-"girinti düzeyine göre yerleştirilmesini etkinleştirir. Bu, kod yazmanızı "
-"kolaylaştırır ve okunabilirliğini artırır.</p><p> Ek olarak, ekranınızın "
-"azami genişliğini, yüzde türünden ayarlamanıza izin verir, böylece devingen "
-"olarak kaydırılan satırlar, bundan sonra dikey olarak "
-"yerleştirilmeyeceklerdir. Örneğin %​50'de; girintileme düzeyleri ekranın %​"
-"50'sinden daha derin olan satırlar; izleyen (kendilerinden sonra gelen) "
-"kaydırılmış satırlara uygulanan dikey yerleştirmeye tabi tutulmayacaklardır."
-"</p>"
+"<p>Devingen olarak kaydırılan satırların başlangıcının, ilk satırın girinti "
+"düzeyine dikey olarak hizalanmasını sağlar. Bu, kodun ve biçimlendirmenin "
+"daha okunabilir olmasına yardımcı olabilir.</p><p>Ek olarak bu, ekranın en "
+"büyük genişliğini yüzde olarak ayarlamanıza olanak tanır; bundan sonra "
+"devingen olarak kaydırılan satırlar artık dikey olarak hizalanmayacaktır. "
+"Örneğin, %​50'de, girinti düzeyleri ekran genişliğinin %​50'sinden daha derin "
+"olan satırlara sonraki sarılmış çizgilere dikey hizalama uygulanmayacaktır.</"
+"p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:444
@@ -2610,12 +2615,12 @@ msgstr "&Altbilgiyi yazdır"
 #: printing/printconfigwidgets.cpp:131
 #, kde-format
 msgid "Header/footer font:"
-msgstr "Başlık/dipnot yaz tipi:"
+msgstr "Üstbilgi/Altbilgi yazıtipi:"
 
 #: printing/printconfigwidgets.cpp:137
 #, kde-format
 msgid "Header Properties"
-msgstr "Başlık Özellikleri"
+msgstr "Üstbilgi Özellikleri"
 
 #: printing/printconfigwidgets.cpp:141
 #, kde-format
@@ -2655,7 +2660,8 @@ msgstr "&Arka Plan"
 #: printing/printconfigwidgets.cpp:250
 #, kde-format
 msgid "<p>Format of the page header. The following tags are supported:</p>"
-msgstr "<p>Sayfa başlığını biçimlendirir. Aşağıdaki etiketler desteklenir:</p>"
+msgstr ""
+"<p>Sayfa üstbilgisini biçimlendirir. Aşağıdaki etiketler desteklenir:</p>"
 
 #: printing/printconfigwidgets.cpp:252
 #, kde-format
@@ -2802,9 +2808,9 @@ msgid ""
 "the contents of each page. The Header and Footer will be separated from the "
 "contents with a line as well.</p>"
 msgstr ""
-"<p>Etkinleştirildiğinde, her sayfanın içeriğinin etrafında, özelliklerini "
-"tanımladığınız bir kutu çizilecek. Başlık ve Dipnot, sayfa içeriğinden ince "
-"birer çizgi ile ayrılacaktır. </p>"
+"<p>Etkinleştirilirse her sayfanın içeriğinin çevresine aşağıdaki "
+"özelliklerde tanımlandığı gibi bir kutu çizilecektir. Üstbilgi ve Altbilgi "
+"de içerikten bir çizgi ile ayrılacaktır.</p>"
 
 #: printing/printconfigwidgets.cpp:555
 #, kde-format
@@ -4968,7 +4974,7 @@ msgstr "Yine de İçe Aktar"
 #: syntax/katethemeconfig.cpp:1288
 #, kde-format
 msgid "Follow System Color Scheme"
-msgstr "Sistem Renk Şemasını İzle"
+msgstr "Sistem renk şemasını izle"
 
 #: syntax/katethemeconfig.cpp:1354
 #, kde-format
@@ -5439,7 +5445,7 @@ msgstr ""
 "td><td>Sıfır ile başlayan bir saniy (00..59).</td></tr><tr><td>z</"
 "td><td>Sıfır ile başlamayan bir milisaniye (0..999).</td></tr><tr><td>zzz</"
 "td><td>Sıfır ile başlayan bir milisaniye (000..999).</td></tr><tr><td>AP</"
-"td><td>AM/PM gösterimini kullan. </td></tr><tr><td>ap</td><td>am/pm "
+"td><td>ÖÖ/ÖS gösterimini kullan. </td></tr><tr><td>ap</td><td>öö/ös "
 "gösterimini kullan.</td></tr></table></p>"
 
 #: utils/kateglobal.cpp:73
@@ -6064,7 +6070,7 @@ msgstr "yanlış"
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
-msgstr "hiçbiri"
+msgstr "yok"
 
 #: variableeditor/variableeditor.cpp:306
 #, kde-format
@@ -6207,7 +6213,7 @@ msgstr "Panodan yapıştırılan metnin girintisini ayarlayın."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
-msgstr "Her girinti düzeyi için girinti derinliğini ayarlayın."
+msgstr "Her girinti düzeyi için girintileme derinliğini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:240
 #, kde-format
@@ -6219,7 +6225,7 @@ msgstr "Tek girinti düzeyine izin ver (çoklu girinti genişliği yok)."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
-msgstr "Satır numaralarını göster"
+msgstr "Satır numaralarını gösterin."
 
 #: variableeditor/variablelineedit.cpp:250
 #, kde-format
@@ -6261,7 +6267,7 @@ msgstr "Belgeyi kaydederken sondaki boşlukları kaldırın."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Sarma çubuğu küçük haritasını göster."
+msgstr "Sarma çubuğu mini haritasını gösterin."
 
 #: variableeditor/variablelineedit.cpp:285
 #, kde-format
@@ -6338,7 +6344,7 @@ msgstr "Geçerli imleç konumu. Belirli bir satıra gitmek için tıklayın."
 #, kde-format
 msgid "Insert mode and VI input mode indicator. Click to change the mode."
 msgstr ""
-"Ekleme kipi ve Vi giriş kipi belirteci. Kipi değiştirmek için tıklayın."
+"Ekleme kipi ve Vi giriş kipi göstergesi. Kipi değiştirmek için tıklayın."
 
 #: view/katestatusbar.cpp:135
 #, kde-format
@@ -6353,7 +6359,7 @@ msgstr "Sekme Genişliği"
 #: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
 #, kde-format
 msgid "Indentation Width"
-msgstr "Girinti Genişliği"
+msgstr "Girintileme Genişliği"
 
 #: view/katestatusbar.cpp:177
 #, kde-format
@@ -6574,14 +6580,15 @@ msgid ""
 "paragraph, to fit the 'Wrap words at' setting in the configuration dialog."
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
-"Yapılandırma iletişim kutusunda \"Sözcükleri şurada kaydır\" ayarına "
-"sığdırmak için, geçerli satırı kaydırmada veya seçili satırları paragraf "
-"olarak biçimlendirmede bunu kullanın."
+"Geçerli satırı kaydırmak veya seçili satırları paragraf olarak yeniden "
+"biçimlendirmek ve yapılandırma iletişim kutusundaki 'Sözcükleri şurada "
+"kaydır' ayarına uyacak şekilde bunu kullanın.<br /><br />Bu, durağan bir "
+"sözcük kaydırmadır; belgenin değiştirildiği anlamına gelir."
 
 #: view/kateview.cpp:506
 #, kde-format
 msgid "&Clean Indentation"
-msgstr "&Girintiyi Temizle"
+msgstr "&Girintilemeyi Temizle"
 
 #: view/kateview.cpp:508
 #, kde-format
@@ -6967,19 +6974,19 @@ msgid ""
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not changed."
 msgstr ""
-"Bu seçenek işaretliyse metin satırları ekran kenarında kaydırılır.<br /><br /"
-">Bu yalnızca bir görüntüleme seçeneğidir, belge değiştirilmez."
+"Bu seçenek işaretlenirse metin satırları ekrandaki görünüm sınırında sarılır."
+"<br /><br />Bu yalnızca bir görüntüleme seçeneğidir, belge değiştirilmez."
 
 #: view/kateview.cpp:763
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
-msgstr "Devingen Sözcük Kaydırma Belirteçleri"
+msgstr "Devingen Sözcük Kaydırma Göstergeleri"
 
 #: view/kateview.cpp:765
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
-"Devingen Sözcük Kaydırma Belirteçleri'nin ne zaman görüntüleneceğini seçin"
+"Devingen Sözcük Kaydırma Göstergelerinin ne zaman görüntüleneceğini seçin"
 
 #: view/kateview.cpp:767
 #, kde-format
@@ -6989,7 +6996,7 @@ msgstr "Ka&palı"
 #: view/kateview.cpp:767
 #, kde-format
 msgid "Follow &Line Numbers"
-msgstr "Satır Numara&larını Takip Et"
+msgstr "Satır Numara&larını İzle"
 
 #: view/kateview.cpp:767
 #, kde-format
@@ -7007,8 +7014,8 @@ msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
 msgstr ""
-"Bu seçenek işaretliyse metin satırları düzenleme özelliklerinde belirtilen "
-"sütunda kaydırılacak."
+"Bu seçenek işaretlenirse metin satırları düzenleme özelliklerinde tanımlanan "
+"sütunda kaydırılır."
 
 #: view/kateview.cpp:780
 #, kde-format
@@ -7079,7 +7086,7 @@ msgstr ""
 #: view/kateview.cpp:807
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
-msgstr "Sarma Çubuğu Küçük Haritasını Göster"
+msgstr "Sarma Çubuğu Mini Haritasını Göster"
 
 #: view/kateview.cpp:809
 #, kde-format
@@ -7087,8 +7094,8 @@ msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
 "shows an overview of the whole document."
 msgstr ""
-"Dikey sarma çubuğunda küçük haritayı göster/gizle.<br /><br />Küçük harita, "
-"tüm belgenin bir özetini gösterir."
+"Dikey sarma çubuğunda mini haritayı gösterin/gizleyin.<br /><br />Küçük "
+"harita, tüm belgenin bir özetini gösterir."
 
 #. i18n("Show the whole document in the Mini-Map"), this);
 #. ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
@@ -7321,14 +7328,14 @@ msgstr "Yazım denetimi için kullanılan sözlüğü değiştir."
 #: view/kateview.cpp:957
 #, kde-format
 msgid "Clear Dictionary Ranges"
-msgstr "Sözlük Alanını Temizle"
+msgstr "Sözlük Erimlerini Temizle"
 
 #: view/kateview.cpp:959
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
-"Yazım denetimi için ayarlanmış olan tüm ayrı sözlük aralıklarını kaldır."
+"Yazım denetimi için ayarlanmış olan tüm ayrı sözlük erimlerini kaldırın."
 
 #: view/kateview.cpp:965
 #, kde-format
@@ -7582,7 +7589,7 @@ msgstr "Girintilenmemiş Bir Yenisatır Ekle"
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
-"Girintileme ayarlarına bakmaksızın, girintilemesiz bir yeni satır ekle."
+"Girintileme ayarlarından bağımsız olarak girintisiz yeni bir satır ekleyin."
 
 #: view/kateview.cpp:1270
 #, kde-format
@@ -7762,7 +7769,7 @@ msgstr "Bu adda bir komut yok: \"%1\""
 #: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
-msgstr "Hata: \"%1\" komutu için izin aralığa izin verilmiyor."
+msgstr "Hata: \"%1\" komutu için erime izin verilmiyor."
 
 #: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
@@ -8040,7 +8047,7 @@ msgstr "Eksik argüman. Kullanım: %1 <from>"
 #: vimode/cmds.cpp:68
 #, kde-format
 msgid "No mapping found for \"%1\""
-msgstr "\"%1\" için haritalama bulunamadı"
+msgstr "\"%1\" için eşlem bulunamadı"
 
 #: vimode/cmds.cpp:71
 #, kde-format

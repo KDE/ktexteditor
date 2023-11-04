@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 01:37+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Generator: Lokalize 21.08.0\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: completion/katecompletionmodel.cpp:133
+#: completion/katecompletionmodel.cpp:144
 #, kde-format
 msgid "Argument-hints"
 msgstr "आर्गुमेंट-हिंट्स"
 
-#: completion/katecompletionmodel.cpp:134
+#: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
 msgstr "सर्वोत्तम मिलान"
