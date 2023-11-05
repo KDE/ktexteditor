@@ -218,7 +218,12 @@ public:
 
     typedef std::set<Group *> GroupSet;
 
-    KTEXTEDITOR_EXPORT bool hasGroups() const;
+    bool hasGroups() const
+    {
+        // qCDebug(LOG_KTE) << "m_groupHash.size()"<<m_groupHash.size();
+        // qCDebug(LOG_KTE) << "m_rowTable.count()"<<m_rowTable.count();
+        return m_hasGroups;
+    }
 
 private:
     QString commonPrefixInternal(const QString &forcePrefix) const;

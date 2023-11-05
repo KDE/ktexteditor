@@ -726,17 +726,6 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, bool 
     return ret;
 }
 
-bool KateCompletionModel::hasGroups() const
-{
-    // qCDebug(LOG_KTE) << "m_groupHash.size()"<<m_groupHash.size();
-    // qCDebug(LOG_KTE) << "m_rowTable.count()"<<m_rowTable.count();
-    // We cannot decide whether there is groups easily. The problem: The code-model can
-    // be populated with a delay from within a background-thread.
-    // Proper solution: Ask all attached code-models(Through a new interface) whether they want to use grouping,
-    // and if at least one wants to, return true, else return false.
-    return m_hasGroups;
-}
-
 KateCompletionModel::Group *KateCompletionModel::groupForIndex(const QModelIndex &index) const
 {
     if (!index.isValid()) {
