@@ -577,7 +577,9 @@ void KateCompletionModel::createGroups()
         // no need to sort prefiltered, it is just the raw dump of everything
         // filtered is what gets displayed
         //         std::sort(g->prefilter.begin(), g->prefilter.end());
-        std::sort(g->filtered.begin(), g->filtered.end());
+        std::sort(g->filtered.begin(), g->filtered.end(), [this](const Item &l, const Item &r) {
+            return l.lessThan(this, r);
+        });
     }
 
     m_hasGroups = has_groups;
@@ -628,7 +630,7 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
     Item item = Item(g != m_argumentHints, this, handler, ModelRow(handler.model(), sourceIndex));
 
     if (g != m_argumentHints) {
-        item.match();
+        item.match(this);
     }
 
     g->addItem(item, notifyModel);
@@ -951,8 +953,8 @@ void KateCompletionModel::changeCompletions(Group *g)
     // This code determines what of the filtered items still fit
     // don't notify the model. The model is notified afterwards through a reset().
     g->filtered.clear();
-    std::remove_copy_if(g->prefilter.begin(), g->prefilter.end(), std::back_inserter(g->filtered), [](Item &item) {
-        return !item.match();
+    std::remove_copy_if(g->prefilter.begin(), g->prefilter.end(), std::back_inserter(g->filtered), [this](Item &item) {
+        return !item.match(this);
     });
 
     hideOrShowGroup(g, /*notifyModel=*/false);
@@ -1163,8 +1165,7 @@ int KateCompletionModel::countBits(int value)
 }
 
 KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, const HierarchicalModelHandler &handler, ModelRow sr)
-    : model(m)
-    , m_sourceRow(sr)
+    : m_sourceRow(sr)
     , matchCompletion(StartsWithMatch)
     , m_haveExactMatch(false)
 {
@@ -1175,11 +1176,11 @@ KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, con
     m_nameColumn = nameSibling.data(Qt::DisplayRole).toString();
 
     if (doInitialMatch) {
-        match();
+        match(m);
     }
 }
 
-bool KateCompletionModel::Item::operator<(const Item &rhs) const
+bool KateCompletionModel::Item::lessThan(KateCompletionModel *model, const Item &rhs) const
 {
     int ret = 0;
 
@@ -1204,8 +1205,8 @@ bool KateCompletionModel::Item::operator<(const Item &rhs) const
     ret = inheritanceDepth - rhs.inheritanceDepth;
 
     if (ret == 0) {
-        auto it = rhs.model->m_currentMatch.constFind(rhs.m_sourceRow.first);
-        if (it != rhs.model->m_currentMatch.cend()) {
+        auto it = model->m_currentMatch.constFind(rhs.m_sourceRow.first);
+        if (it != model->m_currentMatch.cend()) {
             const QString &filter = it.value();
             bool thisStartWithFilter = m_nameColumn.startsWith(filter, Qt::CaseSensitive);
             bool rhsStartsWithFilter = rhs.m_nameColumn.startsWith(filter, Qt::CaseSensitive);
@@ -1244,14 +1245,20 @@ void KateCompletionModel::Group::addItem(const Item &i, bool notifyModel)
     }
 
     if (notifyModel) {
-        prefilter.insert(std::upper_bound(prefilter.begin(), prefilter.end(), i), i);
+        auto comp = [this](const Item &left, const Item &right) {
+            return left.lessThan(model, right);
+        };
+        prefilter.insert(std::upper_bound(prefilter.begin(), prefilter.end(), i, comp), i);
     } else {
         prefilter.push_back(i);
     }
 
     if (i.isVisible()) {
         if (notifyModel) {
-            auto it = std::upper_bound(filtered.begin(), filtered.end(), i);
+            auto comp = [this](const Item &left, const Item &right) {
+                return left.lessThan(model, right);
+            };
+            auto it = std::upper_bound(filtered.begin(), filtered.end(), i, comp);
             const auto rowNumber = it - filtered.begin();
             model->beginInsertRows(groupIndex, rowNumber, rowNumber);
             filtered.insert(it, i);
@@ -1303,7 +1310,10 @@ KateCompletionModel::Group::Group(const QString &title, int attribute, KateCompl
 
 void KateCompletionModel::Group::resort()
 {
-    std::stable_sort(filtered.begin(), filtered.end());
+    auto comp = [this](const Item &left, const Item &right) {
+        return left.lessThan(model, right);
+    };
+    std::stable_sort(filtered.begin(), filtered.end(), comp);
     model->hideOrShowGroup(this);
 }
 
@@ -1319,11 +1329,6 @@ void KateCompletionModel::resort()
 
     // call updateBestMatches here, so they are moved to the top again.
     updateBestMatches();
-}
-
-bool KateCompletionModel::Item::isValid() const
-{
-    return model && m_sourceRow.first && m_sourceRow.second.row() >= 0;
 }
 
 void KateCompletionModel::Group::clear()
@@ -1446,7 +1451,7 @@ static inline bool containsAtWordBeginning(const QString &word, const QString &t
     return false;
 }
 
-KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
+KateCompletionModel::Item::MatchType KateCompletionModel::Item::match(KateCompletionModel *model)
 {
     const QString match = model->currentCompletion(m_sourceRow.first);
 

@@ -142,26 +142,20 @@ private:
     public:
         Item(bool doInitialMatch, KateCompletionModel *model, const HierarchicalModelHandler &handler, ModelRow sourceRow);
 
-        bool isValid() const;
         // Returns true if the item is not filtered and matches the current completion string
         bool isVisible() const;
 
         enum MatchType { NoMatch = 0, PerfectMatch, StartsWithMatch, AbbreviationMatch, ContainsMatch };
-        MatchType match();
+        MatchType match(KateCompletionModel *model);
 
         const ModelRow &sourceRow() const;
 
         // Sorting operator
-        bool operator<(const Item &rhs) const;
+        bool lessThan(KateCompletionModel *model, const Item &rhs) const;
 
         bool haveExactMatch() const
         {
             return m_haveExactMatch;
-        }
-
-        void clearExactMatch()
-        {
-            m_haveExactMatch = false;
         }
 
         QString name() const
@@ -170,7 +164,6 @@ private:
         }
 
     private:
-        KateCompletionModel *model;
         ModelRow m_sourceRow;
 
         QString m_nameColumn;
