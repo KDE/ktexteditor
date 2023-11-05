@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:37+0000\n"
-"PO-Revision-Date: 2023-11-03 22:06+0300\n"
+"PO-Revision-Date: 2023-11-05 01:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -44,7 +44,7 @@ msgstr "Dil anahtar sözcükleri"
 #: completion/katewordcompletion.cpp:75
 #, kde-format
 msgid "Auto Word Completion"
-msgstr "Otomatik Sözcük Tamamlama"
+msgstr "Kendiliğinden Sözcük Tamamlama"
 
 #: completion/katewordcompletion.cpp:303
 #, kde-format
@@ -435,7 +435,7 @@ msgstr "Genel"
 #: dialogs/completionconfigtab.ui:35
 #, kde-format
 msgid "Enable &auto completion"
-msgstr "&Otomatik tamamlamayı etkinleştir"
+msgstr "&Kendiliğinden tamamlamayı etkinleştir"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoSelectFirstEntry)
 #: dialogs/completionconfigtab.ui:42
@@ -454,13 +454,13 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "A&uto word completion"
-msgstr "O&tomatik sözcük tamamlama"
+msgstr "&Kendiliğinden sözcük tamamlama"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/completionconfigtab.ui:73
 #, kde-format
 msgid "Minimal word length to complete:"
-msgstr "Tamamlanacak olan sözcüklerin asgari uzunluğu:"
+msgstr "Tamamlanacak en kısa sözcük uzunluğu:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
 #: dialogs/completionconfigtab.ui:101
@@ -487,7 +487,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:124
 #, kde-format
 msgid "&Keyword completion"
-msgstr "&Sözcük Tamamlama"
+msgstr "&Anahtar Sözcük Tamamlama"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/completionconfigtab.ui:133
@@ -496,7 +496,7 @@ msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
 "the document's language."
 msgstr ""
-"Anahtar sözcük tamamlama belgenin dilindeki sözcüklerden öneriler sunar."
+"Anahtar sözcük tamamlama, belgenin dilindeki sözcüklerden öneriler sunar."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:146
@@ -511,8 +511,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
-"Belgelendirmeyi tamamlama kutusunun yanında göster. Devre dışıysa "
-"belgelendirme Seçenek düğmesine basarak gösterilebilir."
+"Belgelendirmeyi tamamlama kutusunun yanında gösterin. Devre dışıysa "
+"belgelendirme, Seçenek düğmesine basarak gösterilebilir."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -603,8 +603,8 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
-"Seçili metin varsa bu karakterler \"Otomatik Ayraç\" tarzında seçili metnin "
-"her iki yanına eklenecektir"
+"Seçili metin varsa bu karakterler \"Kendiliğinden Ayraç\" tarzında seçili "
+"metnin her iki yanına eklenir"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
@@ -785,16 +785,16 @@ msgid ""
 "an asterisk and the file extension, for example <code>*.txt; *.text</code>. "
 "The string is a semicolon-separated list of masks."
 msgstr ""
-"Genel arama karakterleri maskesi, dosyaları adlarına göre seçmenize izin "
-"verir. Tipik bir maske, yıldız işareti ve dosya uzantısı kullanır, örneğin, "
-"<code>*.txt; *.text</code>. İfade, noktalı-virgül ile ayrılmış bir maske "
-"listesi şeklindedir."
+"Joker maskesi, dosyaları adlarına göre seçmenize izin verir. Tipik bir "
+"maske, yıldız işareti ve dosya uzantısı kullanır; örneğin, <code>*.txt; *."
+"text</code>. İfade, noktalı virgül ile ayrılmış bir maske listesi "
+"şeklindedir."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:166
 #, kde-format
 msgid "MIME &types:"
-msgstr "Mime &türleri:"
+msgstr "MIME &türleri:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:181
@@ -804,8 +804,8 @@ msgid ""
 "semicolon-separated list of mimetypes, for example <code>text/plain; text/"
 "english</code>."
 msgstr ""
-"MIME türü maskesi, dosyaları mime tiplerine göre seçmenize izin verir. İfade "
-"noktalı-virgül ile ayrılmış bir maske listesi şeklindedir, örneğin "
+"MIME türü maskesi, dosyaları MIME türlerine göre seçmenize izin verir. İfade "
+"noktalı virgül ile ayrılmış bir maske listesi şeklindedir; örneğin, "
 "<code>text/plain; text/english</code>."
 
 #. i18n: ectx: property (whatsThis), widget (QToolButton, btnMimeTypes)
@@ -813,7 +813,7 @@ msgstr ""
 #, kde-format
 msgid "Displays a wizard that helps you easily select mimetypes."
 msgstr ""
-"Mime-tip'lerini kolayca seçmenize yardım edecek bir sihirbaz görüntüler."
+"MIME türlerini kolayca seçmenize yardım edecek bir sihirbaz görüntüler."
 
 #. i18n: ectx: property (text), widget (QLabel, lblPriority)
 #: dialogs/filetypeconfigwidget.ui:197
@@ -828,9 +828,8 @@ msgid ""
 "Sets priority for this file type. If more than one file type selects the "
 "same file, the one with the highest priority will be used."
 msgstr ""
-"Bu dosya türü için bir öncelik sırası ayarlar. Eğer bir dosya türünden "
-"fazlası aynı dosyayı seçerse içlerinden en yüksek önceliğe sahip olanı "
-"kullanılacaktır."
+"Bu dosya türü için önceliği belirler. Birden fazla dosya türü aynı dosyayı "
+"seçerse en yüksek önceliğe sahip olan kullanılacaktır."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMode)
 #: dialogs/indentationconfigwidget.ui:43
@@ -847,16 +846,16 @@ msgid ""
 "to set the indentation mode with document variables, modes or a .kateconfig "
 "file."
 msgstr ""
-"Kullanılabilir girintileme kiplerinin listesidir. Belirtilen girintileme "
-"kipi tüm yeni belgeler için kullanılacaktır. Ayrıca belge değişkenleri, "
-"kipleri veya bir .kateconfig dosyası ile de girintileme kipi ayarlamanın "
-"mümkün olduğunu göz önünde bulundurun."
+"Bu, kullanılabilir girintileme kiplerinin bir listesidir. Belirtilen "
+"girintileme kipi tüm yeni belgeler için kullanılır. Girintileme kipini; "
+"belge değişkenleri, kipleri veya bir .kateconfig dosyasıyla ayarlamanın da "
+"olanaklı olduğunu unutmayın."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbIndentationMode)
 #: dialogs/indentationconfigwidget.ui:75
 #, kde-format
 msgid "Indent using"
-msgstr "Kullanılan girintileme"
+msgstr "Şunu kullanarak girintile"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbIndentWidth)
 #: dialogs/indentationconfigwidget.ui:81
@@ -867,10 +866,10 @@ msgid ""
 "section <b>Editing</b> is disabled, a <b>Tab</b> character is inserted if "
 "the indentation is divisible by the tab width."
 msgstr ""
-"Girinti genişliği bir satırı girintilemek için kullanılan boşluk sayısıdır. "
-"Eğer <b>Düzenle</b> alanında <b>Sekme yerine boşluk kullan</b> kapatılmışsa "
-"girinti sekme genişliklerine bölünebildiği durumlarda <b>Sekme</b> karakteri "
-"eklenir."
+"Girintileme genişliği bir satırı girintilemek için kullanılan boşluk "
+"sayısıdır. <b>Düzenleme</b> bölümünde <b>Sekmeler yerine boşluklar ekle</b> "
+"devre dışıysa ve girintileme sekme genişliğine bölünebiliyorsa bir <b>Sekme</"
+"b> karakteri eklenir."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithSpaces)
 #: dialogs/indentationconfigwidget.ui:97
@@ -921,7 +920,7 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
-"Bu seçenek devre dışıysa girinti düzeyini değiştirmek bir satırı "
+"Bu seçenek devre dışıysa girintileme düzeyini değiştirmek bir satırı "
 "<b>Girintileme genişliği</b> seçeneğinde belirtilen genişlik çarpanı kadar "
 "kaydırır."
 
@@ -962,7 +961,7 @@ msgid ""
 "line."
 msgstr ""
 "Bu seçenek seçilirse <b>Geri Sil</b> düğmesi, imleç bir satırın başındaki "
-"boşluğa konumlandırılmışsa girintiyi azaltır."
+"boşluğa konumlandırılmışsa girintilemeyi azaltır."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
@@ -987,10 +986,10 @@ msgstr ""
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
-"<p>Sekme düğmesi eyleme (herhangi bir seçim yoksa) <a href=\"<b>Sekme</b> "
-"düğmesinin, geçerli kod blokundaki geçerli satırın Emacs'teki gibi "
-"hizalamasını istiyorsanız <b>Sekme</b> düğmesini <b>Biçim Girintileme</b> "
-"eylemine kısayol yapın.\"><span>Daha Fazla ...</span></a></p></body></html>"
+"<p>Sekme düğmesi eylemi (seçim yoksa) <a href=\"<b>Sekme</b> düğmesinin "
+"geçerli kod blokundaki geçerli satırı Emacs'teki gibi hizalamasını "
+"istiyorsanız <b>Sekme</b> düğmesini <b>Girintilemeyi Biçimlendir</b> "
+"eyleminin kısayolu yapın.\"><span>Daha Fazla ...</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1001,10 +1000,10 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
-"Bu seçenek seçilirse <b>Sekme</b> düğmesi her zaman bir sonraki sekme "
-"konumuna ulaşana kadar boşluk ekler. <b>Sekme yerine boşluk ekle</b> "
-"bölümündeki <b>Düzenleme</b> seçeneği seçiliyse boşluklar eklenir; diğer "
-"türlü, tek bir sekme eklenir."
+"Bu seçenek seçilirse <b>Sekme</b> düğmesi, sonraki sekme konumuna ulaşana "
+"dek her zaman boşluk ekler. <b>Düzenleme</b> bölümündeki <b>Sekmeler yerine "
+"boşluklar ekle</b> seçeneği etkinleştirilmişse boşluk karakterleri, aksi "
+"takdirde bir adet sekme eklenir."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:279
@@ -1020,14 +1019,15 @@ msgid ""
 "line by the number of character positions specified in <b>Indentation width</"
 "b>."
 msgstr ""
-"Bu seçenek seçilirse <b>Sekme</b> düğmesi <b>Girintileme genişliği</b> "
-"seçeneğinde belirtilen kadar geçerli satırı girintiler."
+"Bu seçenek seçilirse <b>Sekme</b> düğmesi, her zaman geçerli satırı "
+"<b>Girinti genişliği</b> alanında belirtilen karakter konumu sayısına göre "
+"girintiler."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:289
 #, kde-format
 msgid "Always increase indentation &level"
-msgstr "&Girintileme düzeyini her zaman yükselt"
+msgstr "&Girintileme düzeyini her zaman artır"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:296
@@ -1044,19 +1044,21 @@ msgid ""
 "b> is enabled, spaces are inserted; otherwise, a single tabulator is "
 "inserted."
 msgstr ""
-"Bu seçenek seçilirse <b>Sekme</b> düğmesi geçerli satırı girintiler veya bir "
-"önceki satırın konumuna getirir.<p> Eğer ekleme noktası, satırdaki ilk "
-"boşlukta ya da önce ise veya seçilmişse geçerli satır, <b>Girinti uzunluğu</"
-"b> seçeneğinde belirtilen kadar girintilenir.<p> Ekleme noktası ilk "
-"boşluktan sonra ise ve seçilmiş alan yok ise boşluk bir sonraki konuma "
-"gelir. Eğer <b>Düzelt</b> bölümünde <b>Sekme yerine boşluk ekle</b> seçeneği "
-"seçiliyse boşluklar eklenir, diğer türlü, tek bir sekme eklenir."
+"Bu seçenek seçilirse <b>Sekme</b> düğmesi geçerli satırı girintiler veya "
+"sonraki sekme konumuna ilerletir.<p> Ekleme noktası satırdaki ilk boşluk "
+"olmayan karakterde veya öncesindeyse veya bir seçim varsa geçerli satır, "
+"<b>Girintileme genişliği</b> alanında belirtilen karakter konumu sayısına "
+"göre girintilenir.<p> Ekleme noktası, satırdaki ilk boşluk olmayan "
+"karakterden sonra yer alıyorsa ve seçim yoksa bir sonraki sekme konumuna "
+"ulaşılması için boşluk karakterleri eklenir: <b>Düzenleme</b> bölümündeki "
+"<b>Sekmeler yerine boşluklar ekle</b> seçeneği etkinleştirilmişse boşluk "
+"karakterleri, aksi takdirde bir adet sekme eklenir."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:299
 #, kde-format
 msgid "Increase indentation level if in l&eading blank space"
-msgstr "Girinti düzeyini eğer b&aşta boşluk varsa artır"
+msgstr "Baştaki boşluktaysa girinti düzeyini artır"
 
 #: dialogs/katedialogs.cpp:182 dialogs/katedialogs.cpp:184
 #, kde-format
@@ -1073,7 +1075,7 @@ msgstr "Girintileme"
 #: dialogs/katedialogs.cpp:289
 #, kde-format
 msgid "Auto Completion"
-msgstr "Otomatik Tamamlama"
+msgstr "Kendiliğinden Tamamlama"
 
 #: dialogs/katedialogs.cpp:356
 #, kde-format
@@ -1156,7 +1158,8 @@ msgstr "Markdown ile işe yarayabilir"
 #: dialogs/katedialogs.cpp:584
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
-msgstr "Otomatik ayraçlara benzer ama aynı olmayan karakterleri yansıla"
+msgstr ""
+"Kendiliğinden ayraçlara benzer; ancak aynı olmayan karakterleri yansıla"
 
 #: dialogs/katedialogs.cpp:586
 #, kde-format
@@ -1261,7 +1264,7 @@ msgstr "Sözlük:"
 #: dialogs/katedialogs.cpp:1442
 #, kde-format
 msgid "Enable Auto Reload"
-msgstr "Otomatik Yeniden Yüklemeyi Etkinleştir"
+msgstr "Kendiliğinden Yeniden Yüklemeyi Etkinleştir"
 
 #: dialogs/katedialogs.cpp:1445
 #, kde-format
@@ -1537,25 +1540,25 @@ msgstr "&Uzak dosyalar"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr "Yedek dosyası öneki:"
+msgstr "Yedek dosyaları için önek:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
-msgstr "Yedek dosya adlarına eklenecek öneki girin."
+msgstr "Yedek dosyası adlarına iliştirilecek öneki girin."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr "Yedek dosyası soneki:"
+msgstr "Yedek dosyaları için sonek:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
-msgstr "Yedek dosya adlarına eklenecek soneki girin."
+msgstr "Yedek dosyası adlarına iliştirilecek soneki girin."
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
@@ -1620,8 +1623,9 @@ msgid ""
 "This defines the standard encoding to use to open/save files, if not changed "
 "in the open/save dialog or by using a command line option."
 msgstr ""
-"Eğer aç/kaydet penceresinden veya komut satırından değiştirilmemişse bu "
-"dosyaların açılacağı/kaydedileceği standart kodlamayı belirler."
+"Bu, aç/kaydet iletişim kutusunda veya bir komut satırı seçeneği kullanılarak "
+"değiştirilmediği takdirde, dosyaları açmak/kaydetmek için kullanılacak "
+"standart kodlamayı tanımlar."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection)
 #: dialogs/opensaveconfigwidget.ui:57
@@ -1637,9 +1641,9 @@ msgid ""
 "in the open/save dialog, nor the encoding specified on command line match "
 "the content of the file, this detection will be run."
 msgstr ""
-"Yukarıdaki gibi standart bir kodlama seçilmemiş veya aç/kaydet penceresinde "
-"kodlama belirtilmemiş ya da komut satırında belirtilen kodlama dosya "
-"içeriğiyle uyuşmuyorsa bu algılama çalışacaktır."
+"Yukarıda standart olarak seçilen kodlama, aç/kaydet iletişim kutusunda "
+"belirtilen kodlama veya komut satırında belirtilen kodlama dosyanın "
+"içeriğiyle eşleşmiyorsa bu algılama çalıştırılacaktır."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
@@ -1659,14 +1663,14 @@ msgid ""
 "found, the right Unicode encoding will be chosen; otherwise encoding "
 "detection will run, if both fail the fallback encoding will be tried."
 msgstr ""
-"Bu, yukarıda standart olarak seçilen kodlama veya açma/kaydetme iletişim "
+"Bu, yukarıda standart olarak seçilen kodlamanın, aç/kaydet iletişim "
 "kutusunda belirtilen kodlamanın veya komut satırında belirtilen kodlamanın "
-"dosyanın içeriğiyle eşleşmesi durumunda dosyaları açmaya çalışmak için geri "
-"arama kodlamasını tanımlar. Bu kullanılmadan önce, dosya başlangıcında bir "
-"bayt sırası imi aranarak kullanılacak kodlamayı belirleme girişiminde "
-"bulunulur: Eğer bulunursa doğru Unicode kodlaması seçilecektir; aksi "
-"takdirde kodlama algısı çalışır, ikisi de başarısız olursa geri kodlama "
-"denenir."
+"dosyanın içeriğiyle eşleşmemesi durumunda, dosyaları açarken denenecek yedek "
+"kodlamayı tanımlar. Bu kullanılmadan önce, dosyanın başlangıcında bir bayt "
+"sırası işareti aranarak kullanılacak kodlamanın belirlenmesi için bir "
+"girişimde bulunulacaktır: Eğer bir tane bulunursa doğru Unicode kodlama "
+"seçilecektir; aksi takdirde, her iki başarısız geri dönüş kodlaması da "
+"denenecekse kodlama algılaması çalıştırılacaktır."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEOL)
 #: dialogs/opensaveconfigwidget.ui:91
@@ -1706,7 +1710,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:125
 #, kde-format
 msgid "A&utomatic end of line detection"
-msgstr "Otomatik dosya sonu &algılanması"
+msgstr "Kendiliğinden dosya sonu &algılaması"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:132
@@ -1719,7 +1723,7 @@ msgid ""
 msgstr ""
 "Bayt sırası imi, Unicode ile kodlanmış belgelerin başında özel bir dizidir. "
 "Düzenleyicilerin metin belgelerini doğru Unicode kodlamayla açmalarına "
-"yardımcı olur. Gösterilen belgede bayt sırası imi görünmez."
+"yardımcı olur. Bayt sırası imi, görüntülenen belgede görünür değildir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:135
@@ -1743,7 +1747,7 @@ msgstr "Sınırsız"
 #: dialogs/opensaveconfigwidget.ui:168
 #, kde-format
 msgid "Automatic Cleanups on Save"
-msgstr "Kaydederken Otomatik Temizlenme"
+msgstr "Kaydederken Kendiliğinden Temizle"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, lblRemoveTrailingSpaces)
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cbRemoveTrailingSpaces)
@@ -1753,8 +1757,8 @@ msgid ""
 "Depending on the choice, trailing spaces are removed when saving a document, "
 "either in the entire document or only of modified lines."
 msgstr ""
-"Seçime bağlı olarak, bir belgeyi kaydederken tüm belgede veya yalnızca "
-"değiştirilen satırlarda sondaki boşluklar kaldırılır."
+"Seçime bağlı olarak, bir belge kaydedilirken belgenin tamamında veya "
+"yalnızca değiştirilen satırlarda sondaki boşluklar kaldırılır."
 
 #. i18n: ectx: property (text), widget (QLabel, lblRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:179
@@ -1775,13 +1779,13 @@ msgstr "Asla"
 #: dialogs/opensaveconfigwidget.ui:198
 #, kde-format
 msgid "On Modified Lines"
-msgstr "Değiştirilen Satırlarda"
+msgstr "Değiştirilen satırlarda"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cbRemoveTrailingSpaces)
 #: dialogs/opensaveconfigwidget.ui:203
 #, kde-format
 msgid "In Entire Document"
-msgstr "Tüm Belgede"
+msgstr "Tüm belgede"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:226
@@ -1790,20 +1794,20 @@ msgid ""
 "On save, a line break is appended to the document if not already present. "
 "The line break is visible after reloading the file."
 msgstr ""
-"Kaydetme sırasında satır sonu, eğer dökümanın sonunda yok ise eklenir. Satır "
-"sonları dosya yüklendikten sonra görünür olurlar."
+"Kaydetme sırasında, halihazırda yoksa belgeye bir satır sonu eklenir. Dosya "
+"yeniden yüklendikten sonra satır sonu görünür."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:229
 #, kde-format
 msgid "Append newline at end of file on save"
-msgstr "Kaydedilirken dosyanın sonuna yeni bir satır ekle"
+msgstr "Kaydederken dosyanın sonuna yenisatır iliştir"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
 #, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Otomatik Kaydetmeyi Etkinleştir (yalnızca yerel dosyalar)"
+msgstr "Kendiliğinden Kaydetmeyi Etkinleştir (Yalnızca yerel dosyalar)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
@@ -1815,7 +1819,7 @@ msgstr "Etkin belge odağı kaybederken onu kendiliğinden kaydet"
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr "Otomatik kaydetme aralığı:"
+msgstr "Kendiliğinden kaydetme aralığı:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
@@ -2505,8 +2509,8 @@ msgid ""
 "Please note that this will automatically edit the associated file extensions "
 "as well."
 msgstr ""
-"Bu dosya türü için istediğiniz Mime-türünü seçin.\n"
-"Bunun ilişkilendirilmiş dosya uzantılarını otomatik olarak değiştireceğini "
+"Bu dosya türü için istediğiniz MIME türünü seçin.\n"
+"Bunun ilişkilendirilmiş dosya uzantılarını kendiliğinden değiştireceğini "
 "unutmayın."
 
 #: mode/katemodeconfigpage.cpp:295
@@ -4113,7 +4117,7 @@ msgstr ""
 #: spellcheck/spellcheckbar.ui:200
 #, kde-format
 msgid "Autocorrect"
-msgstr "Otomatik düzelt"
+msgstr "Kendiliğinden Düzelt"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:209
@@ -4214,7 +4218,7 @@ msgstr "Yok"
 #, kde-format
 msgctxt "@title:column Meaning of text in editor"
 msgid "Context"
-msgstr "İçerik"
+msgstr "Bağlam"
 
 #: syntax/katestyletreewidget.cpp:136
 #, kde-format
@@ -4263,7 +4267,7 @@ msgstr "&Altı Çizili"
 #: syntax/katestyletreewidget.cpp:253
 #, kde-format
 msgid "S&trikeout"
-msgstr "&Üzerini Çiz"
+msgstr "&Üzeri Çizili"
 
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
@@ -4322,8 +4326,8 @@ msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
 msgstr ""
-"\"Öntanımlı Biçemi Kullan\" seçeneği değiştirmiş olduğunuz biçim "
-"özelliklerini otomatik olarak yürürlükten kaldıracaktır."
+"\"Öntanımlı Biçemi Kullan\" seçeneği değiştirmiş olduğunuz biçem "
+"özelliklerini kendiliğinden yürürlükten kaldıracaktır."
 
 #: syntax/katestyletreewidget.cpp:643
 #, kde-format
@@ -4406,7 +4410,7 @@ msgstr "Özel Karakter"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "String"
-msgstr "İfade"
+msgstr "Dizi"
 
 #: syntax/katethemeconfig.cpp:74
 #, kde-format
@@ -4418,7 +4422,7 @@ msgstr "Gerçek Dizi"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special String"
-msgstr "Özel Karakter Dizisi"
+msgstr "Özel Dizi"
 
 #: syntax/katethemeconfig.cpp:78
 #, kde-format
@@ -4448,7 +4452,7 @@ msgstr "Base-N Tam Sayı"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Floating Point"
-msgstr "Değişken Sayı"
+msgstr "Kayan Noktalı"
 
 #: syntax/katethemeconfig.cpp:89
 #, kde-format
@@ -4980,7 +4984,7 @@ msgstr "Sistem renk şemasını izle"
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
-"\"%1\"  temasını gerçekten silmek istediğinize emin misiniz? Bu geri "
+"\"%1\"  temasını gerçekten silmek istediğinizden emin misiniz? Bu geri "
 "alınamaz."
 
 #: syntax/katethemeconfig.cpp:1356
@@ -5223,9 +5227,9 @@ msgid ""
 "p><p>possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
-"<p>set-auto-indent <b>enable</b></p><p>Otomatik girintiyi etkinleştirir ya "
-"da kapatır.</p><p>muhtemel olumlu değerler: 1 ve true<br/>muhtemel olumsuz "
-"değerler: 0 ve false</p>"
+"<p>set-auto-indent <b>enable</b></p><p>Kendiliğinden girintilemeyi "
+"etkinleştirir veya devre dışı bırakır.</p><p>Olası olumlu değerler: 1 ve "
+"true<br/>Olası olumsuz değerler: 0 ve false</p>"
 
 #: utils/katecmds.cpp:141
 #, kde-format
@@ -5279,7 +5283,7 @@ msgid ""
 "automatically.</p>"
 msgstr ""
 "<p>set-word-wrap-column <b>width</b></p><p>Sözcük kaydırma için satır "
-"<b>genişliğini</b> ayarlar. Eğer metniniz otomatik olarak kaydırılıyorsa bu "
+"<b>genişliğini</b> ayarlar. Eğer metniniz kendiliğinden kaydırılıyorsa bu "
 "kullanılır.</p>"
 
 #: utils/katecmds.cpp:174
@@ -5302,10 +5306,10 @@ msgid ""
 "the Tools → Highlighting menu. This command provides an autocompletion list "
 "for its argument.</p>"
 msgstr ""
-"<p>set-highlight <b>highlight</b></p><p>Bu, belge için sözdizimi vurgulama "
-"sistemini ayarlar. Değer olarak, Araçlar → Vurgulama menusunde göründüğü "
+"<p>set-highlight <b>highlight</b></p><p>Bu, belge için sözdizim vurgulama "
+"sistemini ayarlar. Değer olarak, Araçlar → Vurgulama menüsünde göründüğü "
 "gibi, uygun bir vurgulama adı kullanılır. Bu komut, verilen değer için uygun "
-"bir otomatik tamamlama listesi de getirir.</p>"
+"bir kendiliğinden tamamlama listesi de getirir.</p>"
 
 #: utils/katecmds.cpp:187
 #, kde-format
@@ -5333,7 +5337,7 @@ msgstr "<p>Geçerli belgeyi yazdırmak için Yazdırma penceresini aç.</p>"
 #: utils/katecmds.cpp:313 utils/katecmds.cpp:340
 #, kde-format
 msgid "Missing argument. Usage: %1 <value>"
-msgstr "Kayıp argüman. Kullanım: %1 <value>"
+msgstr "Argüman eksik. Kullanım: %1 <value>"
 
 #: utils/katecmds.cpp:326
 #, kde-format
@@ -6093,13 +6097,13 @@ msgstr "Geçerli değişkenlerin listesini göster."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
-msgstr "Köşeli ayraçların otomatik olarak eklenmesini etkinleştirin."
+msgstr "Ayraçların kendiliğinden eklenmesini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:121
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
-msgstr "Otomatik merkez satırlarının numarasını belirtin."
+msgstr "Kendiliğinden ortala satırı numarasına ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:126
 #, kde-format
@@ -7308,12 +7312,12 @@ msgstr "Boş satırlardan imleçleri kaldır"
 #: view/kateview.cpp:945
 #, kde-format
 msgid "Automatic Spell Checking"
-msgstr "Otomatik Yazım Denetimi"
+msgstr "Kendiliğinden Yazım Denetimi"
 
 #: view/kateview.cpp:946
 #, kde-format
 msgid "Enable/disable automatic spell checking"
-msgstr "Otomatik yazım denetimini etkinleştir/devre dışı bırak"
+msgstr "Kendiliğinden yazım denetimini etkinleştir/devre dışı bırak"
 
 #: view/kateview.cpp:952
 #, kde-format
@@ -8057,17 +8061,17 @@ msgstr "\"%1\", \"%2\" ile eşlendi"
 #: vimode/cmds.cpp:77
 #, kde-format
 msgid "Missing argument(s). Usage: %1 <from> [<to>]"
-msgstr "Kayıp argüman(lar). Kullanım: %1 <from> [<to>]"
+msgstr "Argüman(lar) eksik. Kullanım: %1 <from> [<to>]"
 
 #: vimode/cmds.cpp:145 vimode/cmds.cpp:161
 #, kde-format
 msgid "Wrong arguments"
-msgstr "Yanlış argüman"
+msgstr "Yanlış argümanlar"
 
 #: vimode/config/configtab.cpp:201
 #, kde-format
 msgid "Unable to open the config file for reading."
-msgstr "Yapılandırma dosyası okunmak için açılamadı."
+msgstr "Yapılandırma dosyası okumak için açılamadı."
 
 #: vimode/config/configtab.cpp:201
 #, kde-format
@@ -8082,15 +8086,15 @@ msgid ""
 "example: Ctrl+R will redo, and override the standard action (showing the "
 "search and replace dialog)."
 msgstr ""
-"Seçiliyken vi komutları Kate'in kendi komutlarının üzerine yazar. Örneğin: "
-"Kontrol+R yinele işlemini yapar ve standart eylemin (ara ve değiştir "
-"penceresini gösterme) üzerine yazar."
+"Seçildiklerinde Vi komutları, Kate'in yerleşik komutlarını geçersiz kılar. "
+"Örneğin: Kontrol+R kısayolu Yinele eylemini gerçekleştirir ve standart "
+"eylemi (Bul ve Değiştir penceresini gösterme) geçersiz kılar."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViCommandsOverride)
 #: vimode/config/configwidget.ui:38
 #, kde-format
 msgid "Let Vi commands override Kate shortcuts"
-msgstr "Vi komutlarının Kate kısayollarını devre dışı bırakmasına izin ver"
+msgstr "Vi komutlarının Kate kısayollarını geçersiz kılmasına izin ver"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:45
@@ -8098,7 +8102,9 @@ msgstr "Vi komutlarının Kate kısayollarını devre dışı bırakmasına izin
 msgid ""
 "Show the line number relative to the line with the cursor in front of each "
 "line."
-msgstr "Her satırın başında imlecin bulunduğu satıra olan uzaklığını göster."
+msgstr ""
+"İmleç her satırın önünde olacak biçimde satıra göre satır numarasını "
+"gösterin."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:48
@@ -8119,14 +8125,14 @@ msgid ""
 "\n"
 "This will prepend \"-- \" to a line when pressing F2."
 msgstr ""
-"Tuş eşleme, yazılan düğmelerin anlamını değiştirmek için kullanılır. Bu, "
-"kodları diğer düğmelere veya özel düğme basımlarına taşımanızı ve kod "
-"serileri çalıştırmanıza izin verir.\n"
+"Düğme eşlemleme, girilen düğmelerin anlamını değiştirmek için kullanılır. "
+"Bu, komutları diğer düğmelere taşımanıza veya bir dizi komutu "
+"gerçekleştirmek için özel düğmelere basmanıza olanak tanır.\n"
 "\n"
 "Örnek:\n"
 "\"<F2>\" → \"I-- <esc>\"\n"
 "\n"
-"Bu F2 düğmesine basıldığında bir satırın başına \"-- \" ekleyecektir."
+"Bu, F2 düğmesine basıldığında bir satırın başına \"-- \" ekleyecektir."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:66
@@ -8165,13 +8171,13 @@ msgstr "Değiştirme"
 #: vimode/config/configwidget.ui:181
 #, kde-format
 msgid "Recursive?"
-msgstr "Özyinelemeli?"
+msgstr "Özyineli?"
 
 #. i18n: ectx: attribute (title), widget (QWidget, insertTab)
 #: vimode/config/configwidget.ui:114
 #, kde-format
 msgid "Insert mode"
-msgstr "Ekleme Kipi"
+msgstr "Ekle Kipi"
 
 #. i18n: ectx: attribute (title), widget (QWidget, visualTab)
 #: vimode/config/configwidget.ui:152
