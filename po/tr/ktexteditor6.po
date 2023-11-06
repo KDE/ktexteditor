@@ -1,4 +1,4 @@
-# translation of katepart4.po to Turkish
+#
 # Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 #
 # SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
@@ -13,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: katepart4\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:37+0000\n"
-"PO-Revision-Date: 2023-11-05 01:14+0300\n"
+"PO-Revision-Date: 2023-11-05 22:50+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1570,19 +1570,19 @@ msgstr "Takas dosyası kipi:"
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr "Etkin, Öntanımlı Dizinde Depolanıyor"
+msgstr "Etkin, Öntanımlı Dizinde Depola"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr "Etkin, Özel Dizinde Depolanıyor"
+msgstr "Etkin, Özel Dizinde Depola"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
 #, kde-format
 msgid "Store swap files in:"
-msgstr "Takas dosyaları depolama konumu:"
+msgstr "Takas dosyalarını şurada depola:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
@@ -1594,7 +1594,7 @@ msgstr "Takas dosyası kaydetme aralığı:"
 #: dialogs/opensaveconfigadvwidget.ui:196
 #, kde-format
 msgid "s"
-msgstr "s"
+msgstr "sn"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
 #: dialogs/opensaveconfigadvwidget.ui:221
@@ -2590,7 +2590,7 @@ msgid ""
 "</p>"
 msgstr ""
 "<p>Etkinleştirilmişse sayfaların sol kenarındaki satır numaraları da "
-"yazdırılacak.</p>"
+"yazdırılır.</p>"
 
 #: printing/printconfigwidgets.cpp:56
 #, kde-format
@@ -2639,7 +2639,7 @@ msgstr "Renkler:"
 #: printing/printconfigwidgets.cpp:170 printing/printconfigwidgets.cpp:216
 #, kde-format
 msgid "Foreground:"
-msgstr "Ön Plan:"
+msgstr "Ön plan:"
 
 #: printing/printconfigwidgets.cpp:175
 #, kde-format
@@ -7798,7 +7798,7 @@ msgstr "Öntanımlı İm Türünü Ayarla"
 #: view/kateviewhelpers.cpp:2739
 #, kde-format
 msgid "Disable Annotation Bar"
-msgstr "Açıklama Çubuğunu Gösterme"
+msgstr "Bilgi Notu Çubuğunu Devre Dışı Bırak"
 
 #: view/screenshotdialog.cpp:136
 #, kde-format
