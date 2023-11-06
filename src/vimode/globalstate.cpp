@@ -45,7 +45,7 @@ GlobalState::~GlobalState()
 void GlobalState::writeConfig(KConfig *configFile) const
 {
     // FIXME: use own groups instead of one big group!
-    KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
+    KConfigGroup config(configFile, QStringLiteral("Kate Vi Input Mode Settings"));
     m_macros->writeConfig(config);
     m_mappings->writeConfig(config);
     m_registers->writeConfig(config);
@@ -54,7 +54,7 @@ void GlobalState::writeConfig(KConfig *configFile) const
 void GlobalState::readConfig(const KConfig *configFile)
 {
     // FIXME: use own groups instead of one big group!
-    const KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
+    const KConfigGroup config(configFile, QStringLiteral("Kate Vi Input Mode Settings"));
 
     m_macros->readConfig(config);
     m_mappings->readConfig(config);

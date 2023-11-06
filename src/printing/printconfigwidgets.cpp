@@ -82,9 +82,9 @@ bool KatePrintTextSettings::dontPrintFoldedCode() const
 void KatePrintTextSettings::readSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
-    KConfigGroup printGroup(config, "Printing");
+    KConfigGroup printGroup(config, QStringLiteral("Printing"));
 
-    KConfigGroup textGroup(&printGroup, "Text");
+    KConfigGroup textGroup(&printGroup, QStringLiteral("Text"));
     bool isLineNumbersChecked = textGroup.readEntry("LineNumbers", false);
     cbLineNumbers->setChecked(isLineNumbersChecked);
 
@@ -97,9 +97,9 @@ void KatePrintTextSettings::readSettings()
 void KatePrintTextSettings::writeSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
-    KConfigGroup printGroup(config, "Printing");
+    KConfigGroup printGroup(config, QStringLiteral("Printing"));
 
-    KConfigGroup textGroup(&printGroup, "Text");
+    KConfigGroup textGroup(&printGroup, QStringLiteral("Text"));
     textGroup.writeEntry("LineNumbers", printLineNumbers());
     textGroup.writeEntry("Legend", printGuide());
     textGroup.writeEntry("DontPrintFoldedCode", dontPrintFoldedCode());
@@ -384,10 +384,10 @@ void KatePrintHeaderFooter::showContextMenu(const QPoint &pos)
 void KatePrintHeaderFooter::readSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
-    KConfigGroup printGroup(config, "Printing");
+    KConfigGroup printGroup(config, QStringLiteral("Printing"));
 
     // Header
-    KConfigGroup headerFooterGroup(&printGroup, "HeaderFooter");
+    KConfigGroup headerFooterGroup(&printGroup, QStringLiteral("HeaderFooter"));
     bool isHeaderEnabledChecked = headerFooterGroup.readEntry("HeaderEnabled", true);
     cbEnableHeader->setChecked(isHeaderEnabledChecked);
 
@@ -437,10 +437,10 @@ void KatePrintHeaderFooter::readSettings()
 void KatePrintHeaderFooter::writeSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
-    KConfigGroup printGroup(config, "Printing");
+    KConfigGroup printGroup(config, QStringLiteral("Printing"));
 
     // Header
-    KConfigGroup headerFooterGroup(&printGroup, "HeaderFooter");
+    KConfigGroup headerFooterGroup(&printGroup, QStringLiteral("HeaderFooter"));
     headerFooterGroup.writeEntry("HeaderEnabled", useHeader());
 
     QStringList format = headerFormat();
@@ -602,9 +602,9 @@ QColor KatePrintLayout::boxColor()
 void KatePrintLayout::readSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
-    KConfigGroup printGroup(config, "Printing");
+    KConfigGroup printGroup(config, QStringLiteral("Printing"));
 
-    KConfigGroup layoutGroup(&printGroup, "Layout");
+    KConfigGroup layoutGroup(&printGroup, QStringLiteral("Layout"));
 
     // get color schema back
     QString colorScheme = layoutGroup.readEntry("ColorScheme", "Printing");
@@ -635,9 +635,9 @@ void KatePrintLayout::readSettings()
 void KatePrintLayout::writeSettings()
 {
     KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
-    KConfigGroup printGroup(config, "Printing");
+    KConfigGroup printGroup(config, QStringLiteral("Printing"));
 
-    KConfigGroup layoutGroup(&printGroup, "Layout");
+    KConfigGroup layoutGroup(&printGroup, QStringLiteral("Layout"));
     layoutGroup.writeEntry("ColorScheme", colorScheme());
     layoutGroup.writeEntry("Font", textFont());
     layoutGroup.writeEntry("BackgroundColorEnabled", useBackground());

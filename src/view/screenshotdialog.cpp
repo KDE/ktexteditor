@@ -155,7 +155,7 @@ ScreenshotDialog::ScreenshotDialog(KTextEditor::Range selRange, KTextEditor::Vie
     baseLayout->setContentsMargins(0, 0, 0, 4);
     baseLayout->addWidget(m_scrollArea);
 
-    KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+    KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
     const int color = cg.readEntry("BackgroundColor", EditorPrivate::self()->theme().textColor(KSyntaxHighlighting::Theme::Normal));
     const auto c = QColor::fromRgba(color);
     m_base->setColor(c);
@@ -181,27 +181,27 @@ ScreenshotDialog::ScreenshotDialog(KTextEditor::Range selRange, KTextEditor::Vie
             m_base->setColor(c);
             m_scrollArea->setPalette(m_base->palette());
 
-            KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+            KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
             cg.writeEntry("BackgroundColor", c.rgba());
         }
     });
 
     connect(m_extraDecorations, &QCheckBox::toggled, this, [this] {
         renderScreenshot(static_cast<KTextEditor::ViewPrivate *>(parentWidget())->renderer());
-        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+        KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
         cg.writeEntry<bool>("ShowExtraDecorations", m_extraDecorations->isChecked());
     });
     m_extraDecorations->setChecked(cg.readEntry<bool>("ShowExtraDecorations", true));
 
     connect(m_windowDecorations, &QCheckBox::toggled, this, [this] {
         renderScreenshot(static_cast<KTextEditor::ViewPrivate *>(parentWidget())->renderer());
-        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+        KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
         cg.writeEntry<bool>("ShowWindowDecorations", m_windowDecorations->isChecked());
     });
     m_windowDecorations->setChecked(cg.readEntry<bool>("ShowWindowDecorations", true));
 
     {
-        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+        KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
         int i = cg.readEntry("LineNumbers", (int)ShowAbsoluteLineNums);
 
         auto gp = new QActionGroup(m_lineNumMenu);
@@ -231,7 +231,7 @@ ScreenshotDialog::ScreenshotDialog(KTextEditor::Range selRange, KTextEditor::Vie
     m_resizeTimer->setInterval(500);
     m_resizeTimer->callOnTimeout(this, [this] {
         renderScreenshot(static_cast<KTextEditor::ViewPrivate *>(parentWidget())->renderer());
-        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+        KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
         cg.writeEntry("Geometry", saveGeometry());
     });
 
@@ -395,7 +395,7 @@ void ScreenshotDialog::onLineNumChangedClicked(int i)
     m_showLineNumbers = i != DontShowLineNums;
     m_absoluteLineNumbers = i == ShowAbsoluteLineNums;
 
-    KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Screenshot");
+    KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Screenshot"));
     cg.writeEntry("LineNumbers", i);
 
     renderScreenshot(static_cast<KTextEditor::ViewPrivate *>(parentWidget())->renderer());

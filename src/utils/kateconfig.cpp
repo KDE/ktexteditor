@@ -256,7 +256,7 @@ KateGlobalConfig::KateGlobalConfig()
     finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor Editor"));
     readConfig(cg);
 
     // avoid updateConfig effects like config write in constructor, see bug 377067
@@ -285,7 +285,7 @@ void KateGlobalConfig::writeConfig(KConfigGroup &config)
 void KateGlobalConfig::updateConfig()
 {
     // write config
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor Editor"));
     writeConfig(cg);
     KTextEditor::EditorPrivate::config()->sync();
 
@@ -364,7 +364,7 @@ KateDocumentConfig::KateDocumentConfig()
     finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor Document"));
     readConfig(cg);
 
     // avoid updateConfig effects like config write in constructor, see bug 377067
@@ -441,7 +441,7 @@ void KateDocumentConfig::updateConfig()
         }
 
         // write config
-        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor Document"));
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
 
@@ -568,7 +568,7 @@ KateViewConfig::KateViewConfig()
     finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor View");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor View"));
     readConfig(config);
 
     // avoid updateConfig effects like config write in constructor, see bug 377067
@@ -613,7 +613,7 @@ void KateViewConfig::updateConfig()
         }
 
         // write config
-        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor View");
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor View"));
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
 
@@ -670,7 +670,7 @@ KateRendererConfig::KateRendererConfig()
     finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor Renderer"));
     readConfig(config);
 
     // avoid updateConfig effects like config write in constructor, see bug 377067
@@ -783,7 +783,7 @@ void KateRendererConfig::updateConfig()
         }
 
         // write config
-        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), QStringLiteral("KTextEditor Renderer"));
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
 

@@ -508,7 +508,7 @@ bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
 QStringListModel *KTextEditor::EditorPrivate::searchHistoryModel()
 {
     if (!m_searchHistoryModel) {
-        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Search");
+        KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Search"));
         const QStringList history = cg.readEntry(QStringLiteral("Search History"), QStringList());
         m_searchHistoryModel = new QStringListModel(history, this);
     }
@@ -518,7 +518,7 @@ QStringListModel *KTextEditor::EditorPrivate::searchHistoryModel()
 QStringListModel *KTextEditor::EditorPrivate::replaceHistoryModel()
 {
     if (!m_replaceHistoryModel) {
-        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Search");
+        KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Search"));
         const QStringList history = cg.readEntry(QStringLiteral("Replace History"), QStringList());
         m_replaceHistoryModel = new QStringListModel(history, this);
     }
@@ -527,7 +527,7 @@ QStringListModel *KTextEditor::EditorPrivate::replaceHistoryModel()
 
 void KTextEditor::EditorPrivate::saveSearchReplaceHistoryModels()
 {
-    KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Search");
+    KConfigGroup cg(KSharedConfig::openConfig(), QStringLiteral("KTextEditor::Search"));
     if (m_searchHistoryModel) {
         cg.writeEntry(QStringLiteral("Search History"), m_searchHistoryModel->stringList());
     }
