@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:37+0000\n"
-"PO-Revision-Date: 2023-11-05 22:50+0300\n"
+"PO-Revision-Date: 2023-11-06 22:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -628,9 +628,7 @@ msgstr "Seçili metni sürüklerken taşı"
 #: dialogs/editconfigwidget.ui:180
 #, kde-format
 msgid "Copy/cut the current line if invoked without any text selected"
-msgstr ""
-"Bu seçenek etkinleştirilirse ve metin seçimi boşsa gerçek imleç konumunda "
-"metin satırı için kopyalama ve kesme eylemi gerçekleştirilir."
+msgstr "Metin seçilmeden çağrılırsa geçerli satırı kes/kopyala"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkMousePasteAtCursorPosition)
 #: dialogs/editconfigwidget.ui:187
@@ -3834,7 +3832,7 @@ msgstr "Düz metin"
 #: search/searchbarpower.ui:118
 #, kde-format
 msgid "Whole words"
-msgstr "Tüm sözcükler"
+msgstr "Tam sözcükler"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:123
@@ -3852,7 +3850,7 @@ msgstr "Düzenli ifade"
 #: search/searchbarpower.ui:149
 #, kde-format
 msgid "Search in the selection only"
-msgstr "Yalnızca seçili bölümde ara"
+msgstr "Yalnızca seçimde ara"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceNext)
 #: search/searchbarpower.ui:195
@@ -6121,7 +6119,7 @@ msgstr "Başlangıç boşluğunda geri sil düğmesine basmak girintiyi azaltır
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
-msgstr "Blok seçim kipini ayarlayın."
+msgstr "Blok seçim kipini etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:144
 #, kde-format
@@ -6133,13 +6131,13 @@ msgstr "Unicode dosyaları kaydederken bayt sırası imini (BOM) etkinleştirin.
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
-msgstr "Ayraç vurgulaması için renk belirle."
+msgstr "Ayraç vurgulaması için renk ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:154
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
-msgstr "Geçerli satırın arka plan rengini belirle."
+msgstr "Geçerli satırın arka plan rengini ayarlayın."
 
 #: variableeditor/variablelineedit.cpp:160
 #, kde-format
@@ -6151,7 +6149,7 @@ msgstr "Yazım denetimi için kullanılan öntanımlı sözlüğü ayarlayın."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
-msgstr "Uzun satırlarda devingen sözcük kaydırmayı etkinleştir."
+msgstr "Uzun satırlarda devingen sözcük kaydırmayı etkinleştirin."
 
 #: variableeditor/variablelineedit.cpp:172
 #, kde-format
@@ -6555,7 +6553,7 @@ msgstr "Seçimin Ekran Görüntüsünü Al"
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Save the current document"
-msgstr "Çalışılan belgeyi kaydet"
+msgstr "Geçerli belgeyi kaydet"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -7186,7 +7184,7 @@ msgstr "&Kodlama"
 #: view/kateview.cpp:872
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
-msgstr "Girilen bir sözcük veya düzenli ifadenin ilk geçtiği yeri bul."
+msgstr "Girilen bir sözcük veya düzenli ifadenin ilk geçtiği yeri bulun."
 
 #: view/kateview.cpp:876
 #, kde-format
@@ -7297,7 +7295,7 @@ msgstr "Deve Biçimi İmleç Hareketini Aç/Kapat"
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
-"Normal sözcük hareketi ve deve biçimli sözcük hareketi arasında geçiş yap."
+"Normal sözcük hareketi ve deve biçimli sözcük hareketi arasında geçiş yapın."
 
 #: view/kateview.cpp:940
 #, kde-format
@@ -7327,7 +7325,7 @@ msgstr "Sözlüğü Değiştir..."
 #: view/kateview.cpp:953
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
-msgstr "Yazım denetimi için kullanılan sözlüğü değiştir."
+msgstr "Yazım denetimi için kullanılan sözlüğü değiştirin."
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7605,7 +7603,7 @@ msgstr "Geçerli Satırın Üzerinde Bir Yenisatır Ekle"
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
-"Geçerli satırı değiştirmeden geçerli satırın üzerinde bir yeni satır ekle."
+"Geçerli satırı değiştirmeden geçerli satırın üzerinde bir yeni satır ekleyin."
 
 #: view/kateview.cpp:1279
 #, kde-format
@@ -7617,7 +7615,7 @@ msgstr "Geçerli Satırın Altında Bir Yenisatır Ekle"
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
-"Geçerli satırı değiştirmeden geçerli satırın altında bir yeni satır ekle."
+"Geçerli satırı değiştirmeden geçerli satırın altında bir yeni satır ekleyin."
 
 #: view/kateview.cpp:1289
 #, kde-format
