@@ -1,9 +1,9 @@
 var katescript = {
-    "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>, Pablo Rauzy <r_NOSPAM_@uzy.me>",
+    "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>, Pablo Rauzy <r_NOSPAM_@uzy.me>, Henri Kaustinen <heka1@protonmail.com>",
     "license": "LGPL-2.1+",
-    "revision": 11,
+    "revision": 12,
     "kate-version": "5.1",
-    "functions": ["sort", "sortuniq", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
+    "functions": ["sort", "sortuniq", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "duplicateSelection", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
         {   "function": "sort",
             "name": "Sort Selected Text Alphabetically",
@@ -49,6 +49,11 @@ var katescript = {
         },
         {   "function": "duplicateLinesUp",
             "name": "Duplicate Selected Lines Up",
+            "category": "Editing"
+        },
+        {   "function": "duplicateSelection",
+            "name": "Duplicate selected text",
+            "shortcut": "Alt+Shift+d",
             "category": "Editing"
         },
         {   "function": "encodeURISelection",
@@ -319,6 +324,22 @@ function duplicateLinesUp()
     document.editEnd();
 }
 
+
+// Duplicate selected text at start of selection. Place cursor after selection.
+function duplicateSelection()
+{
+    var selection = view.selectedText();
+
+    if (!selection) {
+        return
+    }
+
+    var range = view.selection();
+    document.insertText(range.start, selection);
+    range = view.selection();
+    view.setCursorPosition(range.end.line, range.end.column);
+}
+
 function rewrap()
 {
     // initialize line span
@@ -472,6 +493,8 @@ function help(cmd)
         return i18n("Duplicates the selected lines up.");
     } else if (cmd == "duplicateLinesDown") {
         return i18n("Duplicates the selected lines down.");
+    } else if (cmd == 'duplicateSelection') {
+        return i18n('Duplicate the selected text. Place cursor after selection.');
     } else if (cmd == "encodeURISelection") {
         return i18n("Encode special chars in a single line selection, so the result text can be used as URI.");
     } else if (cmd == "decodeURISelection") {
