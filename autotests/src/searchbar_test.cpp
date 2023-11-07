@@ -778,6 +778,34 @@ void SearchBarTest::testReplaceInBlockMode()
     QCOMPARE(doc.text(), QStringLiteral("121\n121"));
 }
 
+// Bug 456367 happens when all these conditions are met :
+// - block selection mode is checked
+// - option "search in the selection only" is not checked
+// - some text is selected
+//
+// In this case it should find/replace all occurrences in the whole document.
+void SearchBarTest::testNonEmptyBlockSelectionAndSearchInSelectionOnlyDisabled()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    KateViewConfig config(&view);
+
+    // Last line is required to reproduce the bug :
+    doc.setText(QStringLiteral("111\n111\n"));
+    view.setBlockSelection(true);
+    view.setSelection(KTextEditor::Range(0, 1, 1, 2));
+
+    KateSearchBar bar(true, &view, &config);
+
+    bar.setSearchPattern(QStringLiteral("1"));
+    bar.setReplacementPattern(QStringLiteral("2"));
+    bar.setSelectionOnly(false);
+    bar.replaceAll();
+
+    // Should replace all occurrences in the whole document.
+    QCOMPARE(doc.text(), QStringLiteral("222\n222\n"));
+}
+
 void SearchBarTest::testReplaceManyCapturesBug365124()
 {
     KTextEditor::DocumentPrivate doc;
