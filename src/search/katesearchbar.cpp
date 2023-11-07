@@ -809,7 +809,8 @@ void KateSearchBar::findOrReplaceAll()
     // reuse match object to avoid massive moving range creation
     KateMatch match(m_view->doc(), enabledOptions);
 
-    bool block = m_view->selection() && m_view->blockSelection();
+    // Ignore block mode if selectionOnly option is disabled (see bug 456367)
+    bool block = m_view->selection() && m_view->blockSelection() && selectionOnly();
 
     int line = m_inputRange.start().line();
 
