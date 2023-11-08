@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:37+0000\n"
-"PO-Revision-Date: 2023-11-06 22:43+0300\n"
+"PO-Revision-Date: 2023-11-07 20:41+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -7535,7 +7535,7 @@ msgstr "Harflerin Yerini Değiştir"
 #: view/kateview.cpp:1210
 #, kde-format
 msgid "Transpose Words"
-msgstr "Harfleri Dönüştür"
+msgstr "Sözcüklerin Yerini Değiştir"
 
 #: view/kateview.cpp:1215
 #, kde-format
@@ -7717,7 +7717,7 @@ msgstr "Hizalama dizgisi:"
 #: view/kateview.cpp:4842
 #, kde-format
 msgid "Export File as HTML"
-msgstr "Dosyayı HTML olarak Aktar"
+msgstr "Dosyayı HTML Olarak Dışa Aktar"
 
 #: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
 #: view/kateviewhelpers.cpp:991
@@ -8044,7 +8044,7 @@ msgstr "<p><b>ls</b></p><p>geçerli arabellekleri listele<p>"
 #: vimode/cmds.cpp:52
 #, kde-format
 msgid "Missing argument. Usage: %1 <from>"
-msgstr "Eksik argüman. Kullanım: %1 <from>"
+msgstr "Argüman eksik. Kullanım: %1 <from>"
 
 #: vimode/cmds.cpp:68
 #, kde-format
@@ -8064,7 +8064,7 @@ msgstr "Argüman(lar) eksik. Kullanım: %1 <from> [<to>]"
 #: vimode/cmds.cpp:145 vimode/cmds.cpp:161
 #, kde-format
 msgid "Wrong arguments"
-msgstr "Yanlış argümanlar"
+msgstr "Argümanlar yanlış"
 
 #: vimode/config/configtab.cpp:201
 #, kde-format
