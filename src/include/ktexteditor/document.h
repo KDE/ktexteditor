@@ -793,7 +793,7 @@ public:
      * \return the number of characters in the document
      * \see lines()
      */
-    virtual int totalCharacters() const = 0;
+    virtual qsizetype totalCharacters() const = 0;
 
     /**
      * Returns if the document is empty.

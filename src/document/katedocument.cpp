@@ -899,14 +899,12 @@ bool KTextEditor::DocumentPrivate::removeLine(int line)
     return editRemoveLine(line);
 }
 
-int KTextEditor::DocumentPrivate::totalCharacters() const
+qsizetype KTextEditor::DocumentPrivate::totalCharacters() const
 {
-    int l = 0;
-
+    qsizetype l = 0;
     for (int i = 0; i < m_buffer->lines(); ++i) {
         l += m_buffer->lineLength(i);
     }
-
     return l;
 }
 

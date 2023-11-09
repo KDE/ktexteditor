@@ -175,7 +175,7 @@ public:
     bool isLineSaved(int line) const override;
     bool isLineTouched(int line) const override;
     KTextEditor::Cursor documentEnd() const override;
-    int totalCharacters() const override;
+    qsizetype totalCharacters() const override;
     int lineLength(int line) const override;
     qsizetype cursorToOffset(KTextEditor::Cursor c) const override;
     KTextEditor::Cursor offsetToCursor(qsizetype offset) const override;
