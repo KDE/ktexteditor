@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:37+0000\n"
-"PO-Revision-Date: 2023-11-07 20:41+0300\n"
+"POT-Creation-Date: 2023-11-09 01:37+0000\n"
+"PO-Revision-Date: 2023-11-08 16:59+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -34,7 +34,7 @@ msgstr "Argüman ipuçları"
 #: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
-msgstr "En uygun eşleşen"
+msgstr "En iyi eşleşmeler"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -49,7 +49,7 @@ msgstr "Kendiliğinden Sözcük Tamamlama"
 #: completion/katewordcompletion.cpp:303
 #, kde-format
 msgid "Shell Completion"
-msgstr "Kabuk Tamamlama"
+msgstr "Kabuk Tamamlaması"
 
 #: completion/katewordcompletion.cpp:308
 #, kde-format
@@ -95,7 +95,7 @@ msgstr "Seçim"
 #: data/katepart5ui.rc:51
 #, kde-format
 msgid "Capitalization"
-msgstr "İlk Harfi Büyük"
+msgstr "Büyük Harfe Çevir"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -2230,13 +2230,13 @@ msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
 "data in the file on disk."
 msgstr ""
-"Düzenlenmemiş bu dosyayı kaydetmeyi gerçekten istiyor musunuz? Diskinizdeki "
-"değiştirilmiş dosyanın üzerine yazacaksınız."
+"Bu değiştirilmemiş dosyayı gerçekten kaydetmek istiyor musunuz? Yanlışlıkla "
+"diskteki dosyadaki değiştirilen verinin üzerine yazabilirsiniz."
 
 #: document/katedocument.cpp:2463
 #, kde-format
 msgid "Trying to Save Unmodified File"
-msgstr "Düzenlenmemiş Dosyayı Kaydetmeye çalışıyor"
+msgstr "Değiştirilmemiş Dosya Kaydetmeye Çalışılıyor"
 
 #: document/katedocument.cpp:2464 document/katedocument.cpp:2475
 #: document/katedocument.cpp:2491
@@ -2929,7 +2929,7 @@ msgstr "İmleç Altındaki Etiketi Sil"
 #, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
-msgstr "Bir Etiketi Ayır veya Birleştir"
+msgstr "Bir Etiketi Ayır veya Kat"
 
 #: script/data/commands/emmet.js:58
 #, kde-format
@@ -3043,7 +3043,7 @@ msgstr "İmleç altındaki etiketi siler"
 #: script/data/commands/emmet.js:107
 #, kde-format
 msgid "Splits or joins a tag"
-msgstr "Bir etiketi ayırır veya birleştirir"
+msgstr "Bir etiketi ayırır veya diğerine katar"
 
 #: script/data/commands/emmet.js:108
 #, kde-format
@@ -3161,7 +3161,7 @@ msgstr "Satır Başı ve Sonu Boşluklarını Kaldır"
 #, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
-msgstr "Satırları Birleştir"
+msgstr "Satırları Birbirine Kat"
 
 #: script/data/commands/utils.js:37
 #, kde-format
@@ -3258,9 +3258,9 @@ msgid ""
 "between each line:<br><code>join ', '</code> will e.g. join lines and "
 "separate them by a comma."
 msgstr ""
-"Seçili satırları veya tüm belgeyi birleştirir. İsteğe bağlı olarak satırları "
-"bir birinden ayırmak için ayırıcı kullanın:<br><code>join ', '</code> "
-"satırları birleştirecek ve virgülle ayıracaktır."
+"Seçili satırları veya tüm belgeyi birbirine katar. İsteğe bağlı olarak "
+"satırları birbirinden ayırmak için ayırıcı kullanın:<br><code>join ', '</"
+"code> satırları birleştirecek ve virgülle ayıracaktır."
 
 #: script/data/commands/utils.js:460
 #, kde-format
@@ -3280,13 +3280,13 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
-"Bu komut, argümanı olan düzenli bir ifade tarafından verilen sütundaki "
-"seçili bloktaki veya tüm belgedeki satırları hizalar.<br><br>Boş bir dizgi "
-"verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalayacaktır."
-"<br>Dizgide bir yakalama varsa yakalanan eşleşmeye üzerine girintileyecektir."
-"<br><br><i>Örnekler</i>:<br>'<code>alignon -</code>' hepsini aynı sütuna "
+"Bu komut, seçili bloktaki veya belgenin tamamındaki satırları, argüman "
+"olarak verilen düzenli bir ifadeyle verilen sütunda hizalar.<br><br>Boş bir "
+"dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalanır."
+"<br>Dizginin bir yakalaması varsa yakalanan eşleşmeye girintili olacaktır."
+"<br><br><i>Örnekler</i>:<br>'<code>alignon -</code>', tümünü aynı sütuna "
 "hizalamak için her satırdaki ilk '-' öncesi boşluklar ekleyecektir."
-"<br>'<code>alignon :\\s+(.)</code>' hepsini aynı sütuna hizalamak için bir "
+"<br>'<code>alignon :\\s+(.)</code>', tümünü aynı sütuna hizalamak için bir "
 "iki nokta öncesi oluşan ilk boş olmayan karakter öncesi boşluklar "
 "ekleyecektir."
 
@@ -3366,8 +3366,9 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
-"Geçerli imleç konumundan verilen argümanın kendisinden sonraki ilk geçtiği "
-"yere (veya öntanımlı olarak geçerli satırın sonuna kadar) metni seçin."
+"Geçerli imleç konumundan, verilen argümanın kendisinden sonraki ilk geçtiği "
+"yere (veya öntanımlı olarak geçerli satırın sonuna kadar) ileriye doğru "
+"metni seçin."
 
 #: script/data/commands/utils.js:482
 #, kde-format
@@ -3376,8 +3377,9 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
-"Geçerli imleç konumundan verilen argümanın kendisinden önceki ilk geçtiği "
-"yere (veya öntanımlı olarak geçerli satırın başına kadar) metni seçin."
+"Geçerli imleç konumundan, verilen argümanın kendisinden önceki ilk geçtiği "
+"yere (veya öntanımlı olarak geçerli satırın başına kadar) geriye doğru metni "
+"seçin."
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3570,192 +3572,192 @@ msgstr "Dosyanın başına ulaşıldı. Sondan sürdürülsün mü?"
 msgid "Continue search?"
 msgstr "Arama sürdürülsün mü?"
 
-#: search/katesearchbar.cpp:920
+#: search/katesearchbar.cpp:921
 #, kde-format
 msgid "SearchHighLight"
 msgstr "Arama Vurgulaması"
 
-#: search/katesearchbar.cpp:1158
+#: search/katesearchbar.cpp:1159
 #, kde-format
 msgid "Beginning of line"
 msgstr "Satırın başı"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1160
 #, kde-format
 msgid "End of line"
 msgstr "Satır sonu"
 
-#: search/katesearchbar.cpp:1161
+#: search/katesearchbar.cpp:1162
 #, kde-format
 msgid "Match any character excluding new line (by default)"
 msgstr "Yenisatır hariç tutularak herhangi bir karakterle eşleş (öntanımlı)"
 
-#: search/katesearchbar.cpp:1162
-#, kde-format
-msgid "One or more occurrences"
-msgstr "Bir veya daha fazla eşleşme"
-
 #: search/katesearchbar.cpp:1163
 #, kde-format
-msgid "Zero or more occurrences"
-msgstr "Sıfır veya daha fazla eşleşme"
+msgid "One or more occurrences"
+msgstr "Bir veya daha fazla oluş"
 
 #: search/katesearchbar.cpp:1164
 #, kde-format
-msgid "Zero or one occurrences"
-msgstr "Sıfır veya bir eşleşme"
+msgid "Zero or more occurrences"
+msgstr "Sıfır veya daha fazla oluş"
 
-#: search/katesearchbar.cpp:1167
+#: search/katesearchbar.cpp:1165
+#, kde-format
+msgid "Zero or one occurrences"
+msgstr "Sıfır veya bir oluş"
+
+#: search/katesearchbar.cpp:1168
 #, kde-format
 msgid "<a> through <b> occurrences"
-msgstr "<a> <b> doğrultusunda eşleşmeler"
+msgstr "<a> <b> doğrultusunda oluşlar"
 
-#: search/katesearchbar.cpp:1173
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Group, capturing"
 msgstr "Grup, yakalama"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "Or"
 msgstr "Ya da"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Set of characters"
 msgstr "Karakter kümesi"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1177
 #, kde-format
 msgid "Negative set of characters"
 msgstr "Negatif karakter kümesi"
 
-#: search/katesearchbar.cpp:1180
+#: search/katesearchbar.cpp:1181
 #, kde-format
 msgid "Whole match reference"
 msgstr "Tüm eşleşme referansı"
 
-#: search/katesearchbar.cpp:1191
+#: search/katesearchbar.cpp:1192
 #, kde-format
 msgid "Reference"
 msgstr "Referans"
 
-#: search/katesearchbar.cpp:1198
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Line break"
 msgstr "Satır sonu"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1200
 #, kde-format
 msgid "Tab"
 msgstr "Sekme"
 
-#: search/katesearchbar.cpp:1202
+#: search/katesearchbar.cpp:1203
 #, kde-format
 msgid "Word boundary"
 msgstr "Sözcük sınırı"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Not word boundary"
 msgstr "Sözcük sınırı yok"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1205
 #, kde-format
 msgid "Digit"
 msgstr "Rakam"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Non-digit"
 msgstr "Rakam-olmayan"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "Beyaz alan (satır sonları hariç)"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1208
 #, kde-format
 msgid "Non-whitespace"
 msgstr "Boşluk olmayan karakterler"
 
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1209
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "Sözcük karakteri (harfler sayılar ve '_')"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1210
 #, kde-format
 msgid "Non-word character"
 msgstr "Sözcük olmayan karakter"
 
-#: search/katesearchbar.cpp:1212
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "Sekizlik karakter 000 to 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "Altılık karakter 0000 - FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1215
 #, kde-format
 msgid "Backslash"
 msgstr "Tersine bölme işareti"
 
-#: search/katesearchbar.cpp:1218
+#: search/katesearchbar.cpp:1219
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "Grup, yakalama yok"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Positive Lookahead"
 msgstr "Pozitif Öne Bakış"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1221
 #, kde-format
 msgid "Negative lookahead"
 msgstr "Geriye doğru ara"
 
-#: search/katesearchbar.cpp:1224
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr "Pozitif sabit aralıklı geriye bakış"
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1226
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr "Negatif sabit aralıklı geriye bakış"
 
-#: search/katesearchbar.cpp:1230
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "Küçük harfe dönüştürmeye başla"
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "Begin uppercase conversion"
-msgstr "Büyük harfe dönüştürmeye başla"
+msgstr "BÜYÜK harfe dönüştürmeye başla"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "End case conversion"
 msgstr "Büyük küçük harf dönüşümünü bitir"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1234
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "İlk karakteri küçültme dönüşümü"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1235
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "İlk karakteri büyütme dönüşümü"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1236
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "Değiştirme sayacı (Tümünü değiştir için)"
@@ -3989,8 +3991,8 @@ msgstr ""
 "<p>Bilinmeyen sözcük tespit edildi ve sözlükte bulunamadığı için bilinmeyen "
 "olarak kabul edildi.<br>\n"
 "Eğer bilinmeyen sözcüğün yanlış yazılmadığını düşünüyor ve gelecekte yeniden "
-"yanlışlıkla tespit edilmesini engellemek istiyorsanız buraya tıklayın. Eğer "
-"olduğu gibi bırakıp sözlüğe eklemek istemiyorsanız <b>Yok Say</b> veya "
+"yanlışlıkla tespit edilmesini engellemek istiyorsanız buraya tıklayın. "
+"Olduğu gibi bırakıp sözlüğe eklemek istemiyorsanız <b>Yok Say</b> veya "
 "<b>Tümünü Yok Say</b> düğmesine tıklayın.</p>\n"
 "</qt>"
 
@@ -4015,9 +4017,9 @@ msgstr ""
 "<qt>\n"
 "<p>Eğer bilinmeyen sözcük hatalı olarak yazılmışsa aşağıdaki listede "
 "doğrusunun olup olmadığını denetlemeli ve eğer yoksa yazmalısınız.</p>\n"
-"<p>Sözcüğün yalnızca bu eşleşmesini düzeltmek istiyorsanız <b>Değiştir</b> "
-"veya tüm yinelemelerini düzeltmek için <b>Tümünü Değiştir</b> düğmesine "
-"tıklayın.</p>\n"
+"<p>Sözcüğün yalnızca bu oluşunu düzeltmek istiyorsanız <b>Değiştir</b> veya "
+"tüm yinelemelerini düzeltmek için <b>Tümünü Değiştir</b> düğmesine tıklayın."
+"</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
@@ -4042,8 +4044,8 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Bilinmeyen sözcüğün bu eşleşmesini, yukarıdaki (veya soldaki) düzelt "
-"kutusu içindeki metin ile değiştirmek için buraya tıklayın.</p>\n"
+"<p>Bilinmeyen sözcüğün bu oluşunu, yukarıdaki (veya soldaki) düzelt kutusu "
+"içindeki metin ile değiştirmek için buraya tıklayın.</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_skipBtn)
@@ -4058,10 +4060,9 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Bilinmeyen sözcüğün bu eşleşmesini olduğu gibi korumak için tıklayın.</"
-"p>\n"
+"<p>Bilinmeyen sözcüğün bu oluşunu olduğu gibi korumak için tıklayın.</p>\n"
 "<p>Bu davranış; eğer sözcük, bir ad, kısaltma, yabancı veya başka bir "
-"kendine özel sözcük ise ve bunu kullanmak ama sözlüğünüze eklememek "
+"kendine özel sözcük ise ve bunu kullanmak; ancak sözlüğünüze eklememek "
 "istiyorsanız yararlıdır. </p>\n"
 "</qt>"
 
@@ -4104,10 +4105,10 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Bilinmeyen sözcüğün tüm eşleşmelerini olduğu gibi bırakmak için tıklayın."
-"</p>\n"
+"<p>Bilinmeyen sözcüğün tüm oluşlarını olduğu gibi bırakmak için tıklayın.</"
+"p>\n"
 "<p>Bu davranış; eğer sözcük, bir ad, kısaltma, yabancı veya başka bir "
-"kendine özel sözcük ise ve bunu kullanmak ama sözlüğünüze eklememek "
+"kendine özel sözcük ise ve bunu kullanmak; ancak sözlüğünüze eklememek "
 "istediğinizde yararlıdır.</p>\n"
 "</qt>"
 
@@ -4127,7 +4128,7 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Bilinmeyen sözcüğün metin içindeki tüm eşleşmelerini üst (sol) bölümdeki "
+"<p>Bilinmeyen sözcüğün metin içindeki tüm oluşlarını üst (sol) bölümdeki "
 "metin kutusundaki metin ile değiştirmek için buraya tıklayın.</p>\n"
 "</qt>"
 
@@ -6573,7 +6574,7 @@ msgstr "&Betikler"
 #: view/kateview.cpp:498
 #, kde-format
 msgid "Apply &Word Wrap"
-msgstr "&Sözcük Kaydır"
+msgstr "&Sözcük Kaydırmayı Uygula"
 
 #: view/kateview.cpp:500
 #, kde-format
@@ -6621,7 +6622,7 @@ msgstr ""
 #: view/kateview.cpp:518
 #, kde-format
 msgid "&Align On..."
-msgstr "&Hizalama..."
+msgstr "&Şuna Göre Hizala..."
 
 #: view/kateview.cpp:520
 #, kde-format
@@ -6636,14 +6637,14 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
-"Bu komut, size sorulacak olan düzenli bir ifade tarafından verilen sütundaki "
-"seçili bloktaki veya tüm belgedeki satırları hizalar.<br /><br />Boş bir "
-"dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalayacaktır."
-"<br />Dizgide bir yakalama varsa yakalanan eşleşmeye üzerine "
-"girintileyecektir.<br /><br /><i>Örnekler</i>:<br />'-' ile, hepsini aynı "
-"sütuna hizalamak için her satırdaki ilk '-' öncesi boşluklar ekleyecektir."
-"<br />':\\s+(.)' ile, hepsini aynı sütuna hizalamak için bir iki nokta "
-"öncesi oluşan ilk boş olmayan karakter öncesi boşluklar ekleyecektir."
+"Bu komut, seçili bloktaki veya belgenin tamamındaki satırları, size "
+"sorulacak düzenli bir ifadeyle verilen sütunda hizalar.<br /><br />Boş bir "
+"dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalanır.<br /"
+">Dizginin bir yakalaması varsa yakalanan eşleşmeye girintili olacaktır.<br /"
+"><br /><i>Örnekler</i>:<br />'-', tümünü aynı sütuna hizalamak için her "
+"satırdaki ilk '-' öncesi boşluklar ekleyecektir.<br />':\\s+(.)', tümünü "
+"aynı sütuna hizalamak için bir iki nokta öncesi oluşan ilk boş olmayan "
+"karakter öncesi boşluklar ekleyecektir."
 
 #: view/kateview.cpp:531
 #, kde-format
@@ -6723,8 +6724,8 @@ msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
 "cursor if no text is selected."
 msgstr ""
-"Seçili metin alanını veya hiç metin seçilmemişse imlecin hemen sağındaki "
-"harfi BÜYÜK HARFLER'e çevir."
+"Seçimi veya herhangi bir metin seçili değilse imlecin sağındaki karakteri "
+"BÜYÜK harfe dönüştürün."
 
 #: view/kateview.cpp:589
 #, kde-format
@@ -6743,7 +6744,7 @@ msgstr ""
 #: view/kateview.cpp:598
 #, kde-format
 msgid "Capitalize"
-msgstr "Karakterleri Büyüt"
+msgstr "Büyük Harf Yap"
 
 #: view/kateview.cpp:601
 #, kde-format
@@ -6751,13 +6752,13 @@ msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
 "selected."
 msgstr ""
-"Seçili metin alanını veya hiç metin seçilmemişse imlecin hemen sağındaki "
-"sözcüğü Baş-harf-büyük ( Capitalize ) haline çevir."
+"Hiçbir metin seçili değilse seçimi veya imlecin altındaki sözcüğü BÜYÜK "
+"harfle yazın."
 
 #: view/kateview.cpp:606
 #, kde-format
 msgid "Join Lines"
-msgstr "Satırları Birleştir"
+msgstr "Satırları Birbirine Kat"
 
 #: view/kateview.cpp:611
 #, kde-format
@@ -6830,22 +6831,22 @@ msgstr ""
 #: view/kateview.cpp:665
 #, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "Önceki Düzenlenmiş Satıra Git"
+msgstr "Önceki Değiştirilen Satıra Git"
 
 #: view/kateview.cpp:666
 #, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr "İmleci önceki değiştirilmiş satıra taşıyın."
+msgstr "Önceki değiştirilen satıra yukarı doğru ilerleyin."
 
 #: view/kateview.cpp:671
 #, kde-format
 msgid "Go to Next Modified Line"
-msgstr "Sonraki Değiştirilmiş Satıra Git"
+msgstr "Sonraki Değiştirilen Satıra Git"
 
 #: view/kateview.cpp:672
 #, kde-format
 msgid "Move downwards to the next modified line."
-msgstr "Bir sonraki değiştirilmiş satırın altına taşıyın."
+msgstr "Önceki değiştirilen satıra aşağı doğru ilerleyin."
 
 #: view/kateview.cpp:676
 #, kde-format
@@ -7022,7 +7023,7 @@ msgstr ""
 #: view/kateview.cpp:780
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
-msgstr "Durağan Sö&zcük Kaydırma İşaretçisini Göster"
+msgstr "Durağan Sö&zcük Kaydırma İmleyicisini Göster"
 
 #: view/kateview.cpp:783
 #, kde-format
@@ -7112,7 +7113,7 @@ msgstr "Yazdırılmayacak Boşlukları Göster"
 #: view/kateview.cpp:823
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
-msgstr "Yazdırılamaz boşlukları sınırlayan kutuyu Göster/Gizle"
+msgstr "Yazdırılmayacak boşlukları sınırlayan kutuyu göster/gizle"
 
 #: view/kateview.cpp:827
 #, kde-format
@@ -7194,7 +7195,7 @@ msgstr "Seçiliyi Bul"
 #: view/kateview.cpp:878
 #, kde-format
 msgid "Finds next occurrence of selected text."
-msgstr "Seçili metnin sonraki eşleşmesini bulur."
+msgstr "Seçili metnin sonraki oluşunu bulur."
 
 #: view/kateview.cpp:882
 #, kde-format
@@ -7204,23 +7205,23 @@ msgstr "Seçiliyi Geriye Doğru Bul"
 #: view/kateview.cpp:884
 #, kde-format
 msgid "Finds previous occurrence of selected text."
-msgstr "Aranan metin ile bir sonraki eşleşmeyi bul."
+msgstr "Seçili metnin önceki oluşunu bulur."
 
 #: view/kateview.cpp:888
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr "Bir Sonraki Eşleşmeyi Bul ve Seç"
+msgstr "Sonraki Oluşu Bul ve Seç"
 
 #: view/kateview.cpp:890
 #, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr ""
-"İmlecin altındaki karakterin bir sonraki eşleşmesini  bulur ve seçime ekler."
+"İmlecin altındaki karakterin bir sonraki oluşunu bulur ve seçime ekler."
 
 #: view/kateview.cpp:894
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr "Şu Anda Seçili Olayı Atlanmış Olarak İmle"
+msgstr "Geçerli Seçili Oluşu Atlandı Olarak İmle"
 
 #: view/kateview.cpp:896
 #, kde-format
@@ -7230,22 +7231,22 @@ msgstr "Şu anda seçili sözcüğü atlanmış olarak imler."
 #: view/kateview.cpp:900
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr "Tüm Eşleşmeleri Bul ve Seç"
+msgstr "Tüm Oluşları Bul ve Seç"
 
 #: view/kateview.cpp:902
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and select them."
-msgstr "İmleç altındaki sözcüğün tüm eşleşmelerini bulur ve onları seçer."
+msgstr "İmlecin altındaki sözcüğün tüm oluşlarını bulur ve onları seçer."
 
 #: view/kateview.cpp:906
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
-msgstr "Aranan ifadenin bir sonraki eşleşmesini bulun."
+msgstr "Arama ifadesinin bir sonraki oluşuna bakın."
 
 #: view/kateview.cpp:910
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
-msgstr "Aranan ifadenin bir önceki eşleşmesini bulun."
+msgstr "Arama ifadesinin bir önceki oluşuna bakın."
 
 #: view/kateview.cpp:914
 #, kde-format
@@ -7647,12 +7648,12 @@ msgstr "Seçili metin blokunun girintisini temizlemek için bunu kullanın."
 #: view/kateview.cpp:1317
 #, kde-format
 msgid "Fold Toplevel Nodes"
-msgstr "En Üst Düzey Düğümleri Topla"
+msgstr "En Üst Düzey Düğümleri Katla"
 
 #: view/kateview.cpp:1322
 #, kde-format
 msgid "Unfold Toplevel Nodes"
-msgstr "En Üst Düzey Düğümleri Genişlet"
+msgstr "En Üst Düzey Düğümleri Aç"
 
 #: view/kateview.cpp:1335
 #, kde-format
@@ -7707,7 +7708,7 @@ msgstr "Kaydırılmış ara"
 #: view/kateview.cpp:3737
 #, kde-format
 msgid "Align On"
-msgstr "Hizalama"
+msgstr "Şuna Göre Hizala"
 
 #: view/kateview.cpp:3737
 #, kde-format
