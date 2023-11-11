@@ -614,6 +614,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
+    tabWidget->setDocumentMode(true);
 
     // add all tabs
     tabWidget->insertTab(0, editConfigTab, editConfigTab->name());
@@ -722,6 +723,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
 {
     QLayout *layout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
+    tabWidget->setDocumentMode(true);
     layout->addWidget(tabWidget);
     layout->setContentsMargins(0, 0, 0, 0);
 
@@ -958,6 +960,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
+    tabWidget->setDocumentMode(true);
 
     QWidget *tmpWidget = new QWidget(tabWidget);
     QVBoxLayout *internalLayout = new QVBoxLayout(tmpWidget);

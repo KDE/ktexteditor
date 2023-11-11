@@ -1017,6 +1017,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     layout->setContentsMargins({});
 
     QTabWidget *tabWidget = new QTabWidget(this);
+    tabWidget->setDocumentMode(true);
     layout->addWidget(tabWidget);
 
     auto *themeEditor = new QWidget(this);
