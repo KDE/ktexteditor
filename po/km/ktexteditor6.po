@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-09 01:37+0000\n"
+"POT-Creation-Date: 2023-11-12 01:36+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -2219,7 +2219,7 @@ msgstr "បិទ​ឯកសារ"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2264
+#: document/katedocument.cpp:2262
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2228,25 +2228,25 @@ msgstr ""
 "មិន​អាច​ផ្ទុក​ឯកសារ %1 បាន​ទេ វា​មិន​អាច​អាន​ពី​វា ។<br />ពិនិត្យ​មើល​ ប្រសិនបើ​អ្នក​បាន​អាច​អំពី​ការ​ចូល​"
 "ដំណើរការ​ឯកសារ​នេះ ។"
 
-#: document/katedocument.cpp:2269
+#: document/katedocument.cpp:2267
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2273 document/katedocument.cpp:6559
+#: document/katedocument.cpp:2271 document/katedocument.cpp:6557
 #, kde-format
 msgid "&Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2274 document/katedocument.cpp:6560
+#: document/katedocument.cpp:2272 document/katedocument.cpp:6558
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "បិទ​សារ"
 
-#: document/katedocument.cpp:2406
+#: document/katedocument.cpp:2404
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2263,7 +2263,7 @@ msgstr ""
 "របៀប​បាន​តែ​អាន ការ​រក្សាទុក​អាច​ត្រូវ​បាន​បំផ្លាញ​មាតិកា​របស់​វា ។<br />បើក​ឯកសារ​ឡើង​វិញ​​​ដោយ​ជ្រើស​ការ​"
 "អ៊ិនកូដ​ត្រឹមត្រូវ ឬ​បើក​របៀប​សរសេរ​អាន​ម្ដងទៀត​​ក្នុង​ម៉ឺនុយ​ដែល​អាច​កែសម្រួល​​វា​បាន​ ។"
 
-#: document/katedocument.cpp:2425
+#: document/katedocument.cpp:2423
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 was opened and contained lines longer than the configured "
@@ -2278,18 +2278,18 @@ msgstr ""
 "ឯកសារ %1 ត្រូវ​បាន​បើក​ ហើយ​មាន​ប្រវែង​​តួអក្សរ​វែង​ពេក (ច្រើន​ជាង %2 តួអក្សរ) ។<br />ប្រវែង​"
 "តួអក្សរ​ត្រូវ​បាន​រុំ ហើយ​ឯកសារ​ត្រូវ​បាន​កំណត់​របៀប​បាន​តែ​អាន ការ​រក្សាទុក​នឹង​ត្រូវ​បាន​កែប្រែ​មាតិកា​របស់​វា ។"
 
-#: document/katedocument.cpp:2432
+#: document/katedocument.cpp:2430
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr ""
 
-#: document/katedocument.cpp:2435
+#: document/katedocument.cpp:2433
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgid "Close"
 msgstr "បិទ"
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2460
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2298,18 +2298,18 @@ msgstr ""
 "តើ​អ្នក​ពិត​ជា​ចង់​រក្សា​ទុក​ឯកសារ​ដែល​មិន​បាន​កែប្រែ​នេះ​ឬ ? អ្នក​អាច​សរសេរ​ជាន់​លើ​ទិន្នន័យ​ដែល​បាន​ផ្លាស់ប្ដូរ​"
 "ក្នុង​ឯកសារ​លើ​ថាស ។"
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2461
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "ព្យាយាម​រក្សាទុក​ឯកសារ​ដែល​មិនបាន​កែប្រែ"
 
-#: document/katedocument.cpp:2464 document/katedocument.cpp:2475
-#: document/katedocument.cpp:2491
+#: document/katedocument.cpp:2462 document/katedocument.cpp:2473
+#: document/katedocument.cpp:2489
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "រក្សាទុក ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: document/katedocument.cpp:2473
+#: document/katedocument.cpp:2471
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2318,14 +2318,14 @@ msgstr ""
 "តើ​អ្នក​ពិត​ជា​ចង់​រក្សា​ទុក​ឯកសារ​នេះ​ឬ ? ទាំង​ឯកសារ​ទូទៅ​របស់​អ្នក និង​ឯកសារ​នៅ​លើ​ថាស​ត្រូវ​បាន​ផ្លាស់ប្ដូរ ។ "
 "ទិន្នន័យ​មួយ​ចំនួន​អាច​នឹង​បាត់​បង់ ។"
 
-#: document/katedocument.cpp:2474 document/katedocument.cpp:2490
-#: document/katedocument.cpp:2807 syntax/katethemeconfig.cpp:1205
+#: document/katedocument.cpp:2472 document/katedocument.cpp:2488
+#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1205
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "អាច​បណ្ដាល​ឲ្យ​បាត់​ទិន្នន័យ"
 
-#: document/katedocument.cpp:2488
+#: document/katedocument.cpp:2486
 #, fuzzy, kde-format
 #| msgid ""
 #| "The selected encoding cannot encode every unicode character in this "
@@ -2337,7 +2337,7 @@ msgstr ""
 "ការ​អ៊ិនកូដ​ដែល​បាន​ជ្រើស​មិន​អាច​អ៊ិនកូដ​រាល់​តួអក្សរ​យូនីកូដ​​នៅ​ក្នុង​តួអក្សរ​នេះ​បាន​ទេ ។ តើ​អ្នក​ពិត​ជា​ចង់​រក្សាទុក​"
 "វា​ឬ ? អាច​មាន​​ទិន្នន័យ​មួយ​ចំនួន​ត្រូវ​បាត់បង ។"
 
-#: document/katedocument.cpp:2558
+#: document/katedocument.cpp:2556
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2355,7 +2355,7 @@ msgstr ""
 "\n"
 "ពិនិត្យ​មើល​ថា អ្នក​មាន​សិទ្ធិ​សរសេរ​ទៅ​ឯកសារ​នេះ ឬ​មាន​ទំហំ​ថាស​គ្រប់​គ្រាន់ ។"
 
-#: document/katedocument.cpp:2679
+#: document/katedocument.cpp:2677
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2367,50 +2367,50 @@ msgstr ""
 "ពេល​រក្សាទុក ពេល​នោះ​គឺ​អាច​បង្ក​ឲ្យ​ឲ្យ​បាត់​បង់​ទិន្នន័យ​របស់​ឯកសារ ។ មូលហេតុ​អាច​មកពី ឧបករណ៍​ផ្ទុក​ដែល​អ្នក​"
 "សរសេរ​​គឺ​ពេញ ឬ​អ្នក​មាន​សិទ្ធិ​បាន​តែ​អាន​ចំពោះ​ថត​ឯកសារ ។"
 
-#: document/katedocument.cpp:2683
+#: document/katedocument.cpp:2681
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "បរាជ័យ​ក្នុង​ការ​បង្កើត​ច្បាប់​ចម្លង​បម្រុងទុក ។"
 
-#: document/katedocument.cpp:2684
+#: document/katedocument.cpp:2682
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "ព្យាយាម​រក្សាទុក ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: document/katedocument.cpp:2806
+#: document/katedocument.cpp:2804
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "តើ​អ្នក​ពិត​ជា​ចង់​បន្ត​បិទ​ឯកសារ​នេះ​ឬ ? អាច​មាន​ទិន្នន័យ​បាត់បង់ ។"
 
-#: document/katedocument.cpp:2808
+#: document/katedocument.cpp:2806
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "បិទ ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: document/katedocument.cpp:4623
+#: document/katedocument.cpp:4621
 #, kde-format
 msgid "Untitled"
 msgstr "គ្មាន​ចំណង​ជើង"
 
-#: document/katedocument.cpp:4746 document/katedocument.cpp:4974
-#: document/katedocument.cpp:4984 document/katedocument.cpp:5774
-#: document/katedocument.cpp:5964
+#: document/katedocument.cpp:4744 document/katedocument.cpp:4972
+#: document/katedocument.cpp:4982 document/katedocument.cpp:5772
+#: document/katedocument.cpp:5962
 #, kde-format
 msgid "Save File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: document/katedocument.cpp:4749
+#: document/katedocument.cpp:4747
 #, kde-format
 msgid "Save failed"
 msgstr "បាន​បរាជ័យ​ក្នុង​ការ​រក្សាទុក"
 
-#: document/katedocument.cpp:4995
+#: document/katedocument.cpp:4993
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "រក្សាទុក​ឯកសារ"
 
-#: document/katedocument.cpp:5007
+#: document/katedocument.cpp:5005
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2422,7 +2422,7 @@ msgstr ""
 "\n"
 "ពិនិត្យ​មើល​ថា អ្នក​មាន​សិទ្ធិ​សរសេរ​ទៅ​ឯកសារ​នេះ ឬ​មាន​ទំហំ​ថាស​គ្រប់​គ្រាន់ ។"
 
-#: document/katedocument.cpp:5287
+#: document/katedocument.cpp:5285
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2438,7 +2438,7 @@ msgstr ""
 "នៅ​ខាងក្រោម​​ដែល​បាន​កែប្រែ​ចេញ;', មើល http://docs.kde.org/stable/en/kde-baseapps/"
 "kate/config-variables.html#variable-យក​​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាង​ក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5293
+#: document/katedocument.cpp:5291
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2454,25 +2454,25 @@ msgstr ""
 "ចន្លោះ​​មិន​ឃើញ​នៅ​ខាង​ក្រោយ​ចេញ​ទាំងអស់;', មើល http://docs.kde.org/stable/en/kde-"
 "baseapps/kate/config-variables.html#variable-​យក​ចន្លោះ​មិន​ឃើញ​​នៅ​ខាងក្រោយ​ចេញ"
 
-#: document/katedocument.cpp:5603
+#: document/katedocument.cpp:5601
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​កែប្រែ​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5606
+#: document/katedocument.cpp:5604
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​បង្កើត​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5609
+#: document/katedocument.cpp:5607
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "ឯកសារ '%1' ត្រូវ​បាន​លុប​ដោយ​កម្មវិធី​ផ្សេងទៀត ។"
 
-#: document/katedocument.cpp:5949
+#: document/katedocument.cpp:5947
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2481,18 +2481,18 @@ msgstr ""
 "ឯកសារ \"%1\" ត្រូវ​បាន​កែប្រែ ។\n"
 "តើ​អ្នក​ចង់​រក្សាទុក​ការ​ផ្លាស់ប្ដូរ ឬ​បោះបង់​ពួកវា ?"
 
-#: document/katedocument.cpp:5952
+#: document/katedocument.cpp:5950
 #, kde-format
 msgid "Close Document"
 msgstr "បិទ​ឯកសារ"
 
-#: document/katedocument.cpp:6063
+#: document/katedocument.cpp:6061
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "ឯកសារ %1 នៅ​តែ​កំពុង​ផ្ទុក ។"
 
-#: document/katedocument.cpp:6068
+#: document/katedocument.cpp:6066
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
