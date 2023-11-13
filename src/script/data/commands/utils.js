@@ -53,7 +53,6 @@ var katescript = {
         },
         {   "function": "duplicateSelection",
             "name": "Duplicate selected text",
-            "shortcut": "Alt+Shift+d",
             "category": "Editing"
         },
         {   "function": "encodeURISelection",
