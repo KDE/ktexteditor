@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:36+0000\n"
+"POT-Creation-Date: 2023-11-13 01:37+0000\n"
 "PO-Revision-Date: 2011-07-06 18:12+0200\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux@walon.org>\n"
@@ -106,7 +106,7 @@ msgid "Word Wrap"
 msgstr ""
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:734
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Borders"
 msgstr "Boirdeures"
@@ -322,7 +322,7 @@ msgid "Minim&ap width:"
 msgstr "&Lårdjeu:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:742
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Always On"
 msgstr "Tofer eclitchî"
@@ -412,7 +412,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:600
-#: dialogs/katedialogs.cpp:730 dialogs/katedialogs.cpp:1012
+#: dialogs/katedialogs.cpp:732 dialogs/katedialogs.cpp:1015
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -676,7 +676,7 @@ msgid "Delete the current file type."
 msgstr "Disfacer li sôre di fitchîs do moumint."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1121
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
 #, kde-format
 msgid "&Delete"
 msgstr "&Disfacer"
@@ -1105,39 +1105,39 @@ msgstr ""
 msgid "Non letter character"
 msgstr "Caractere"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:702
 #, kde-format
 msgid "Editing"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:706
+#: dialogs/katedialogs.cpp:707
 #, kde-format
 msgid "Editing Options"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:740
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:740
+#: dialogs/katedialogs.cpp:742
 #, kde-format
 msgid "Off"
 msgstr "Dismetou"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:743
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Shure les limeros des royes"
 
-#: dialogs/katedialogs.cpp:935 dialogs/katedialogs.cpp:940
+#: dialogs/katedialogs.cpp:937 dialogs/katedialogs.cpp:942
 #, kde-format
 msgid "Appearance"
 msgstr "Rivnance"
 
-#: dialogs/katedialogs.cpp:974
+#: dialogs/katedialogs.cpp:977
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1145,12 +1145,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1013
+#: dialogs/katedialogs.cpp:1016
 #, kde-format
 msgid "Advanced"
 msgstr "Sipepieus"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1158,116 +1158,116 @@ msgstr ""
 "Vos n' avoz nén dné d' cawete ou d' betchete po les copeyes di såvrité. Dji "
 "m' sievrè del cawete tchoezeye por vos : « ~ »"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Pont d' cawete ou d' betchete po les copeyes di såvrité"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1209
 #, kde-format
 msgid "Open/Save"
 msgstr "Drovi/Schaper"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "File Opening & Saving"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1234
+#: dialogs/katedialogs.cpp:1237
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1235
+#: dialogs/katedialogs.cpp:1238
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1326
+#: dialogs/katedialogs.cpp:1329
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1390
+#: dialogs/katedialogs.cpp:1393
 #, kde-format
 msgid "Dictionary:"
 msgstr "Motî :"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, fuzzy, kde-format
 #| msgid "Unable to open %1"
 msgid "Enable Auto Reload"
 msgstr "Dji n' sai drovi %1"
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, fuzzy, kde-format
 #| msgid "Reference"
 msgid "View &Difference"
 msgstr "Referince"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "Ritcher&djî"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Ritcherdjî l' fitchî"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "Schaper et r&lomer..."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1479 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Passer"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1276,18 +1276,18 @@ msgstr ""
 "Li cmande diff a fwait berwete. Verifyîz ki diff(1) est astalé et est dins "
 "vosse PATH."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Aroke en ahivant Diff"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Rexhowe di Diff"
@@ -2147,8 +2147,8 @@ msgid ""
 msgstr ""
 
 #: document/katedocument.cpp:2472 document/katedocument.cpp:2488
-#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1205
-#: syntax/katethemeconfig.cpp:1355
+#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1356
 #, kde-format
 msgid "Possible Data Loss"
 msgstr ""
@@ -4761,140 +4761,140 @@ msgid ""
 "context menu when appropriate.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1024
+#: syntax/katethemeconfig.cpp:1025
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Theme"
 msgstr "Stîles pol tecse normå"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, fuzzy, kde-format
 #| msgid "Choose Editor..."
 msgid "Theme Editor"
 msgstr "Tchoezi aspougneu..."
 
-#: syntax/katethemeconfig.cpp:1039
+#: syntax/katethemeconfig.cpp:1040
 #, fuzzy, kde-format
 #| msgid "Selected text:"
 msgid "Select theme:"
 msgstr "Tecse tchoezi:"
 
-#: syntax/katethemeconfig.cpp:1108
+#: syntax/katethemeconfig.cpp:1109
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Scheme"
 msgid "&Theme:"
 msgstr "Scheme"
 
-#: syntax/katethemeconfig.cpp:1117
+#: syntax/katethemeconfig.cpp:1118
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Copy..."
 msgstr "Schaper et r&lomer..."
 
-#: syntax/katethemeconfig.cpp:1125
+#: syntax/katethemeconfig.cpp:1126
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
 msgid "Export..."
 msgstr "&Ebaguer come HTML..."
 
-#: syntax/katethemeconfig.cpp:1129
+#: syntax/katethemeconfig.cpp:1130
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "Import..."
 msgstr "&Coleur normåle..."
 
-#: syntax/katethemeconfig.cpp:1136
+#: syntax/katethemeconfig.cpp:1137
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1147
+#: syntax/katethemeconfig.cpp:1148
 #, kde-format
 msgid "Colors"
 msgstr "Coleurs"
 
-#: syntax/katethemeconfig.cpp:1151
+#: syntax/katethemeconfig.cpp:1152
 #, fuzzy, kde-format
 #| msgid "Normal Text Styles"
 msgid "Default Text Styles"
 msgstr "Stîles pol tecse normå"
 
-#: syntax/katethemeconfig.cpp:1155
+#: syntax/katethemeconfig.cpp:1156
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1167
+#: syntax/katethemeconfig.cpp:1168
 #, fuzzy, kde-format
 msgid "Exporting color theme: %1"
 msgstr "Replaecî tecse"
 
-#: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color theme"
 msgstr "Coleurs"
 
-#: syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1191
 #, fuzzy, kde-format
 msgid "Importing Color Theme"
 msgstr "Replaecî tecse"
 
-#: syntax/katethemeconfig.cpp:1204
+#: syntax/katethemeconfig.cpp:1205
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1207
 #, fuzzy, kde-format
 #| msgid "Save Nevertheless"
 msgid "Import Nevertheless"
 msgstr "Schaper cwand minme"
 
-#: syntax/katethemeconfig.cpp:1288
+#: syntax/katethemeconfig.cpp:1289
 #, fuzzy, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Replaecî tecse"
 
-#: syntax/katethemeconfig.cpp:1354
+#: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1356
+#: syntax/katethemeconfig.cpp:1357
 #, fuzzy, kde-format
 #| msgid "Save Nevertheless"
 msgid "Delete Nevertheless"
 msgstr "Schaper cwand minme"
 
-#: syntax/katethemeconfig.cpp:1398
+#: syntax/katethemeconfig.cpp:1399
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy theme"
 msgstr "Coleurs"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1400
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1411
+#: syntax/katethemeconfig.cpp:1412
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1413
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "Coleurs"
 
-#: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
+#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"

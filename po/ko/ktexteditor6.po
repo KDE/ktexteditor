@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:36+0000\n"
+"POT-Creation-Date: 2023-11-13 01:37+0000\n"
 "PO-Revision-Date: 2023-08-28 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -104,7 +104,7 @@ msgid "Word Wrap"
 msgstr "자동 줄 바꿈"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:734
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Borders"
 msgstr "경계선"
@@ -322,7 +322,7 @@ msgid "Minim&ap width:"
 msgstr "미니맵 너비(&A):"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:742
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Always On"
 msgstr "항상 켬"
@@ -408,7 +408,7 @@ msgstr "클립보드 과거 기록에 항목 없음"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:600
-#: dialogs/katedialogs.cpp:730 dialogs/katedialogs.cpp:1012
+#: dialogs/katedialogs.cpp:732 dialogs/katedialogs.cpp:1015
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -677,7 +677,7 @@ msgid "Delete the current file type."
 msgstr "현재 파일 형식을 삭제합니다."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1121
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
 #, kde-format
 msgid "&Delete"
 msgstr "삭제(&D)"
@@ -1127,37 +1127,37 @@ msgstr "글자 대칭, 자동 괄호와 비슷하게 작동함"
 msgid "Non letter character"
 msgstr "글자가 아닌 문자"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:702
 #, kde-format
 msgid "Editing"
 msgstr "편집"
 
-#: dialogs/katedialogs.cpp:706
+#: dialogs/katedialogs.cpp:707
 #, kde-format
 msgid "Editing Options"
 msgstr "편집 옵션"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Statusbar"
 msgstr "상태 표시줄"
 
-#: dialogs/katedialogs.cpp:740
+#: dialogs/katedialogs.cpp:742
 #, kde-format
 msgid "Off"
 msgstr "끔"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:743
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "줄 번호 따라가기"
 
-#: dialogs/katedialogs.cpp:935 dialogs/katedialogs.cpp:940
+#: dialogs/katedialogs.cpp:937 dialogs/katedialogs.cpp:942
 #, kde-format
 msgid "Appearance"
 msgstr "모양"
 
-#: dialogs/katedialogs.cpp:974
+#: dialogs/katedialogs.cpp:977
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1168,63 +1168,63 @@ msgstr ""
 "면 시스템이 충돌했을 때 %1에서 작업 중인 내용을 복원할 수 있습니다. 스왑 파일"
 "을 비활성화하면 시스템 충돌 시 데이터 손실이 발생할 수 있습니다."
 
-#: dialogs/katedialogs.cpp:1013
+#: dialogs/katedialogs.cpp:1016
 #, kde-format
 msgid "Advanced"
 msgstr "고급"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "백업 파일의 접두사나 접미사가 없습니다. 기본 접미사 '~'를 사용합니다."
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "백업 파일 접두사나 접미사 없음"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1209
 #, kde-format
 msgid "Open/Save"
 msgstr "열기/저장"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "파일 열기 및 저장"
 
-#: dialogs/katedialogs.cpp:1234
+#: dialogs/katedialogs.cpp:1237
 #, kde-format
 msgid "&Line:"
 msgstr "줄(&L):"
 
-#: dialogs/katedialogs.cpp:1235
+#: dialogs/katedialogs.cpp:1238
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "클립보드의 줄 번호로 이동"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "Go to"
 msgstr "이동"
 
-#: dialogs/katedialogs.cpp:1326
+#: dialogs/katedialogs.cpp:1329
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "클립보드에 줄 번호 없음"
 
-#: dialogs/katedialogs.cpp:1390
+#: dialogs/katedialogs.cpp:1393
 #, kde-format
 msgid "Dictionary:"
 msgstr "사전:"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "자동 새로 고침 사용하기"
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1233,59 +1233,59 @@ msgstr ""
 "지금부터 탭이나 창을 닫을 때까지 디스크에서의 변경 사항에 대해서 경고하지 않"
 "고 새로 고칩니다."
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, kde-format
 msgid "View &Difference"
 msgstr "차이 보기(&D)"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "변경 사항의 차이점을 표시합니다."
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "&Reload"
 msgstr "새로 고침(&R)"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "파일을 디스크에서 새로 고칩니다. 저장되지 않은 변경 사항은 무시됩니다."
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "파일 닫기(&C)"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "&Save As..."
 msgstr "다른 이름으로 저장(&S)..."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "파일의 위치를 선택하고 다시 저장하도록 합니다."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1479 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "무시(&I)"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "추가 변경 없이 디스크의 변경 사항을 무시합니다."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1294,18 +1294,18 @@ msgstr ""
 "diff 명령이 실패했습니다. diff(1)가 설치되어 있고 PATH에 포함되어 있는지 확인"
 "하십시오."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "diff 생성 실패"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "파일이 같습니다."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 출력"
@@ -2193,8 +2193,8 @@ msgstr ""
 "경되었습니다. 데이터 손실이 발생할 수 있습니다."
 
 #: document/katedocument.cpp:2472 document/katedocument.cpp:2488
-#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1205
-#: syntax/katethemeconfig.cpp:1355
+#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1356
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "데이터 손실 가능성"
@@ -4784,77 +4784,77 @@ msgstr ""
 "색을 선택하십시오.</p><p>필요한 경우 콘텍스트 메뉴에서 배경색과 선택한 배경색"
 "을 해제할 수 있습니다.</p>"
 
-#: syntax/katethemeconfig.cpp:1024
+#: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Default Theme"
 msgstr "기본 테마"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Theme Editor"
 msgstr "테마 편집기"
 
-#: syntax/katethemeconfig.cpp:1039
+#: syntax/katethemeconfig.cpp:1040
 #, kde-format
 msgid "Select theme:"
 msgstr "테마 선택:"
 
-#: syntax/katethemeconfig.cpp:1108
+#: syntax/katethemeconfig.cpp:1109
 #, kde-format
 msgid "&Theme:"
 msgstr "테마(&T):"
 
-#: syntax/katethemeconfig.cpp:1117
+#: syntax/katethemeconfig.cpp:1118
 #, kde-format
 msgid "&Copy..."
 msgstr "복사(&C)..."
 
-#: syntax/katethemeconfig.cpp:1125
+#: syntax/katethemeconfig.cpp:1126
 #, kde-format
 msgid "Export..."
 msgstr "내보내기..."
 
-#: syntax/katethemeconfig.cpp:1129
+#: syntax/katethemeconfig.cpp:1130
 #, kde-format
 msgid "Import..."
 msgstr "가져오기..."
 
-#: syntax/katethemeconfig.cpp:1136
+#: syntax/katethemeconfig.cpp:1137
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr "내장된 읽기 전용 테마입니다. 수정하려면 복사하십시오."
 
-#: syntax/katethemeconfig.cpp:1147
+#: syntax/katethemeconfig.cpp:1148
 #, kde-format
 msgid "Colors"
 msgstr "색상"
 
-#: syntax/katethemeconfig.cpp:1151
+#: syntax/katethemeconfig.cpp:1152
 #, kde-format
 msgid "Default Text Styles"
 msgstr "기본 문자열 스타일"
 
-#: syntax/katethemeconfig.cpp:1155
+#: syntax/katethemeconfig.cpp:1156
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "강조 문자열 스타일"
 
-#: syntax/katethemeconfig.cpp:1167
+#: syntax/katethemeconfig.cpp:1168
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "색 테마 내보내는 중: %1"
 
-#: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
 #, kde-format
 msgid "Color theme"
 msgstr "색 테마"
 
-#: syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1191
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "색 테마 가져오기"
 
-#: syntax/katethemeconfig.cpp:1204
+#: syntax/katethemeconfig.cpp:1205
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -4863,37 +4863,37 @@ msgstr ""
 "가져오면 기존 테마 파일 \"%1\"을(를) 덮어씁니다. 이 작업은 실행 취소할 수 없"
 "습니다."
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1207
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "그래도 가져오기"
 
-#: syntax/katethemeconfig.cpp:1288
+#: syntax/katethemeconfig.cpp:1289
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "시스템 색 구성표 사용"
 
-#: syntax/katethemeconfig.cpp:1354
+#: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "테마 \"%1\"을(를) 삭제하시겠습니까? 되돌릴 수 없습니다."
 
-#: syntax/katethemeconfig.cpp:1356
+#: syntax/katethemeconfig.cpp:1357
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "그래도 삭제"
 
-#: syntax/katethemeconfig.cpp:1398
+#: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Copy theme"
 msgstr "테마 복사"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1400
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "색 테마 \"%1\"의 복사본 이름:"
 
-#: syntax/katethemeconfig.cpp:1411
+#: syntax/katethemeconfig.cpp:1412
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
@@ -4901,12 +4901,12 @@ msgid ""
 msgstr ""
 "<p>색 테마 %1이(가) 존재합니다.</p><p>다른 색 테마 이름을 입력하십시오.</p>"
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1413
 #, kde-format
 msgid "Copy Theme"
 msgstr "테마 복사"
 
-#: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
+#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
 #, kde-format
 msgid "Color Themes"
 msgstr "색 테마"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:36+0000\n"
+"POT-Creation-Date: 2023-11-13 01:37+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -105,7 +105,7 @@ msgid "Word Wrap"
 msgstr "ការ​រុំ​ពាក្យឋិតិវន្ត"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:734
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Borders"
 msgstr "ស៊ុម"
@@ -354,7 +354,7 @@ msgid "Minim&ap width:"
 msgstr "ទទឹង​ផែន​ទី​តូច"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:742
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Always On"
 msgstr "បើក​ជានិច្ច"
@@ -446,7 +446,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:600
-#: dialogs/katedialogs.cpp:730 dialogs/katedialogs.cpp:1012
+#: dialogs/katedialogs.cpp:732 dialogs/katedialogs.cpp:1015
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -731,7 +731,7 @@ msgid "Delete the current file type."
 msgstr "លុប​ប្រភេទ​ឯកសារ​បច្ចុប្បន្ន ។"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1121
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
 #, kde-format
 msgid "&Delete"
 msgstr "លុប"
@@ -1201,39 +1201,39 @@ msgstr ""
 msgid "Non letter character"
 msgstr "មិនមែន​តួអក្សរ​ពាក្យ"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:702
 #, kde-format
 msgid "Editing"
 msgstr "ការ​​កែសម្រួល"
 
-#: dialogs/katedialogs.cpp:706
+#: dialogs/katedialogs.cpp:707
 #, kde-format
 msgid "Editing Options"
 msgstr "ជម្រើស​ការ​កែសម្រួល"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:740
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "Stata"
 
-#: dialogs/katedialogs.cpp:740
+#: dialogs/katedialogs.cpp:742
 #, kde-format
 msgid "Off"
 msgstr "បិទ"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:743
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "ដាក់​ពី​ក្រោយ​លេខ​បន្ទាត់"
 
-#: dialogs/katedialogs.cpp:935 dialogs/katedialogs.cpp:940
+#: dialogs/katedialogs.cpp:937 dialogs/katedialogs.cpp:942
 #, kde-format
 msgid "Appearance"
 msgstr "រូបរាង"
 
-#: dialogs/katedialogs.cpp:974
+#: dialogs/katedialogs.cpp:977
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1241,131 +1241,131 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1013
+#: dialogs/katedialogs.cpp:1016
 #, kde-format
 msgid "Advanced"
 msgstr "កម្រិត​ខ្ពស់"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr "អ្នក​មិន​បាន​ផ្ដល់​បច្ច័យ ឬ​បុព្វបទ​បម្រុង​ទុក ។ ប្រើ​បច្ច័យ​លំនាំដើម ៖ '~'"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "គ្មាន​បច្ច័យ ឬ​បុព្វបទ​បម្រុង​ឡើយ"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1209
 #, kde-format
 msgid "Open/Save"
 msgstr "បើក​/​រក្សាទុក"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "ការបើក និង​រក្សាទុក​ឯកសារ"
 
-#: dialogs/katedialogs.cpp:1234
+#: dialogs/katedialogs.cpp:1237
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1235
+#: dialogs/katedialogs.cpp:1238
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1326
+#: dialogs/katedialogs.cpp:1329
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1390
+#: dialogs/katedialogs.cpp:1393
 #, kde-format
 msgid "Dictionary:"
 msgstr "វចនានុក្រម  ៖"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "បើក​ការ​បំពេញ​ស្វ័យប្រវត្តិ"
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "មើល​ភាព​ខុស​គ្នា"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "ផ្ទុក​ឡើង​វិញ"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1462
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "ផ្ទុក​ឯកសារ​ពី​ថាស​ឡើងវិញ ។ ប្រសិន​បើ​មិនបាន​រក្សាទុក​ការ​ផ្លាស់​ប្ដូរ នោះ​ពួក​វា​នឹង​ត្រូវ​បាត់​បង់ ។"
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "បិទ"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "អនុញ្ញាត​ឲ្យ​អ្នក​ជ្រើស​ទីតាំង និង​រក្សា​ទុក​ឯកសារ​ម្ដង​ទៀត ។"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1479 spellcheck/spellcheckbar.ui:143
 #, fuzzy, kde-format
 #| msgid "Ignore Word"
 msgid "&Ignore"
 msgstr "មិន​អើពើ​ពាក្យ​"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "មិន​អើពើ​នឹង​ការ​ផ្លាស់​ប្ដូរ ។ អ្នក​នឹង​មិន​ត្រូវ​បាន​អនុញ្ញាត​ឲ្យ​ផ្លាស់ប្ដូរ​ម្ដងទៀត​ឡើយ ។"
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1374,18 +1374,18 @@ msgstr ""
 "ពាក្យ​បញ្ជា diff បាន​បរាជ័យ ។ សូម​ប្រាកដ​ថា diff(1) ត្រូវ​បាន​ដំឡើង ហើយ​ស្ថិតនៅ​ក្នុង PATH របស់​"
 "អ្នក ។"
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "កំហុស​ក្នុង​ការ​បង្កើត Diff"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "ឯកសារ​ដូច​គ្នា ។"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "លទ្ធផល Diff"
@@ -2319,8 +2319,8 @@ msgstr ""
 "ទិន្នន័យ​មួយ​ចំនួន​អាច​នឹង​បាត់​បង់ ។"
 
 #: document/katedocument.cpp:2472 document/katedocument.cpp:2488
-#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1205
-#: syntax/katethemeconfig.cpp:1355
+#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1356
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "អាច​បណ្ដាល​ឲ្យ​បាត់​ទិន្នន័យ"
@@ -5020,85 +5020,85 @@ msgstr ""
 "p><p>អ្នក​អាច​ដោះ​ការ​កំណត់​ពណ៌​ផ្ទៃខាងក្រោយ និង​ពណ៌​ផ្ទៃខាងក្រោយ​ដែល​បាន​ជ្រើស​ពី​ម៉ឺនុយ​បរិបទ នៅ​ពេល​សមរម្យ "
 "។</p>"
 
-#: syntax/katethemeconfig.cpp:1024
+#: syntax/katethemeconfig.cpp:1025
 #, fuzzy, kde-format
 #| msgid "Default Text Styles"
 msgid "Default Theme"
 msgstr "រចនាប័ទ្ម​អត្ថបទ​ធម្មតា"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Theme Editor"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1039
+#: syntax/katethemeconfig.cpp:1040
 #, fuzzy, kde-format
 #| msgid "Selected text:"
 msgid "Select theme:"
 msgstr "អត្ថបទ​ដែល​បាន​ជ្រើស ៖"
 
-#: syntax/katethemeconfig.cpp:1108
+#: syntax/katethemeconfig.cpp:1109
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Scheme"
 msgid "&Theme:"
 msgstr "Scheme"
 
-#: syntax/katethemeconfig.cpp:1117
+#: syntax/katethemeconfig.cpp:1118
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Copy..."
 msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
-#: syntax/katethemeconfig.cpp:1125
+#: syntax/katethemeconfig.cpp:1126
 #, kde-format
 msgid "Export..."
 msgstr "នាំចេញ..."
 
-#: syntax/katethemeconfig.cpp:1129
+#: syntax/katethemeconfig.cpp:1130
 #, kde-format
 msgid "Import..."
 msgstr "នាំចូល..."
 
-#: syntax/katethemeconfig.cpp:1136
+#: syntax/katethemeconfig.cpp:1137
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1147
+#: syntax/katethemeconfig.cpp:1148
 #, kde-format
 msgid "Colors"
 msgstr "ពណ៌"
 
-#: syntax/katethemeconfig.cpp:1151
+#: syntax/katethemeconfig.cpp:1152
 #, kde-format
 msgid "Default Text Styles"
 msgstr "រចនាប័ទ្ម​អត្ថបទ​ធម្មតា"
 
-#: syntax/katethemeconfig.cpp:1155
+#: syntax/katethemeconfig.cpp:1156
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "រចនាប័ទ្ម​​អត្ថបទ​រំលេច"
 
-#: syntax/katethemeconfig.cpp:1167
+#: syntax/katethemeconfig.cpp:1168
 #, fuzzy, kde-format
 #| msgid "Exporting color schema: %1"
 msgid "Exporting color theme: %1"
 msgstr "នាំចេញ​ឌីយ៉ាក្រាម​​ពណ៌ ៖%1"
 
-#: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
 #, fuzzy, kde-format
 #| msgid "Use KDE Color Scheme"
 msgid "Color theme"
 msgstr "ប្រើ​ពណ៌​ចម្រុះ​របស់​ KDE"
 
-#: syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1191
 #, fuzzy, kde-format
 #| msgid "Importing Color Schema"
 msgid "Importing Color Theme"
 msgstr "នាំចូល​​ឌីយ៉ាក្រាម​​ពណ៌"
 
-#: syntax/katethemeconfig.cpp:1204
+#: syntax/katethemeconfig.cpp:1205
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete the snippet \"%1\"?"
 msgid ""
@@ -5106,42 +5106,42 @@ msgid ""
 "undone."
 msgstr "តើ​អ្នក​ប្រាកដ​ជា​ចង់​លុប \"%1\" ឬ ?"
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1207
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Import Nevertheless"
 msgstr "បិទ ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: syntax/katethemeconfig.cpp:1288
+#: syntax/katethemeconfig.cpp:1289
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgid "Follow System Color Scheme"
 msgstr "ឌីយ៉ា​ក្រាម​ពណ៌ និង​​ពុម្ពអក្សរ"
 
-#: syntax/katethemeconfig.cpp:1354
+#: syntax/katethemeconfig.cpp:1355
 #, fuzzy, kde-format
 #| msgid "Do you really want to delete the snippet \"%1\"?"
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "តើ​អ្នក​ប្រាកដ​ជា​ចង់​លុប \"%1\" ឬ ?"
 
-#: syntax/katethemeconfig.cpp:1356
+#: syntax/katethemeconfig.cpp:1357
 #, fuzzy, kde-format
 #| msgid "Close Nevertheless"
 msgid "Delete Nevertheless"
 msgstr "បិទ ទោះ​យ៉ាងណា​ក៏ដោយ"
 
-#: syntax/katethemeconfig.cpp:1398
+#: syntax/katethemeconfig.cpp:1399
 #, fuzzy, kde-format
 #| msgid "Use KDE Color Scheme"
 msgid "Copy theme"
 msgstr "ប្រើ​ពណ៌​ចម្រុះ​របស់​ KDE"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1400
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1411
+#: syntax/katethemeconfig.cpp:1412
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
@@ -5151,13 +5151,13 @@ msgid ""
 "name.</p>"
 msgstr "<p>ឌី​ដ្យាក្រាម %1 មាន​រួច​ហើយ ។</p><p>សូម​ជ្រើស​ឈ្មោះ​ឌី​ដ្យាក្រាម​ផ្សេង​ទៀត ។</p>"
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1413
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "ពណ៌"
 
-#: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
+#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"

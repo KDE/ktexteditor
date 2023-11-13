@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:36+0000\n"
+"POT-Creation-Date: 2023-11-13 01:37+0000\n"
 "PO-Revision-Date: 2023-10-21 11:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -113,7 +113,7 @@ msgid "Word Wrap"
 msgstr "Zawijanie wierszy"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:734
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:736
 #, kde-format
 msgid "Borders"
 msgstr "Obrzeża"
@@ -337,7 +337,7 @@ msgid "Minim&ap width:"
 msgstr "Szerokość minim&apy:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:742
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Always On"
 msgstr "Zawsze widoczne"
@@ -427,7 +427,7 @@ msgstr "Nie ma żadnych wpisów w historii schowka"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:600
-#: dialogs/katedialogs.cpp:730 dialogs/katedialogs.cpp:1012
+#: dialogs/katedialogs.cpp:732 dialogs/katedialogs.cpp:1015
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -705,7 +705,7 @@ msgid "Delete the current file type."
 msgstr "Usuń bieżący rodzaj pliku."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1121
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
 #, kde-format
 msgid "&Delete"
 msgstr "&Usuń"
@@ -1165,37 +1165,37 @@ msgstr "Odbij lustrzanie znaki, podobne lecz nie takie samo jak auto nawiasy"
 msgid "Non letter character"
 msgstr "Znak nie będący literą"
 
-#: dialogs/katedialogs.cpp:701
+#: dialogs/katedialogs.cpp:702
 #, kde-format
 msgid "Editing"
 msgstr "Edycja"
 
-#: dialogs/katedialogs.cpp:706
+#: dialogs/katedialogs.cpp:707
 #, kde-format
 msgid "Editing Options"
 msgstr "Ustawienia edycji"
 
-#: dialogs/katedialogs.cpp:738
+#: dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Statusbar"
 msgstr "Pasek stanu"
 
-#: dialogs/katedialogs.cpp:740
+#: dialogs/katedialogs.cpp:742
 #, kde-format
 msgid "Off"
 msgstr "Wyłącz"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:743
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "Za numerami wierszy"
 
-#: dialogs/katedialogs.cpp:935 dialogs/katedialogs.cpp:940
+#: dialogs/katedialogs.cpp:937 dialogs/katedialogs.cpp:942
 #, kde-format
 msgid "Appearance"
 msgstr "Wygląd"
 
-#: dialogs/katedialogs.cpp:974
+#: dialogs/katedialogs.cpp:977
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1207,12 +1207,12 @@ msgstr ""
 "systemu. Wyłączenie plików wymiany może skutkować utratą danych w przypadku "
 "wysypania się systemu."
 
-#: dialogs/katedialogs.cpp:1013
+#: dialogs/katedialogs.cpp:1016
 #, kde-format
 msgid "Advanced"
 msgstr "Rozszerzone"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1220,52 +1220,52 @@ msgstr ""
 "Nie podano przyrostka lub przedrostka nazwy kopii zapasowej. Użyto "
 "domyślnego przyrostka: '~'"
 
-#: dialogs/katedialogs.cpp:1078
+#: dialogs/katedialogs.cpp:1081
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Brak przyrostka lub przedrostka nazwy kopii zapasowej"
 
-#: dialogs/katedialogs.cpp:1206
+#: dialogs/katedialogs.cpp:1209
 #, kde-format
 msgid "Open/Save"
 msgstr "Otwieranie/Zapisywanie"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Otwieranie i zapisywanie plików"
 
-#: dialogs/katedialogs.cpp:1234
+#: dialogs/katedialogs.cpp:1237
 #, kde-format
 msgid "&Line:"
 msgstr "&Wiersz:"
 
-#: dialogs/katedialogs.cpp:1235
+#: dialogs/katedialogs.cpp:1238
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Przejdź do numeru wiersza ze schowka"
 
-#: dialogs/katedialogs.cpp:1246
+#: dialogs/katedialogs.cpp:1249
 #, kde-format
 msgid "Go to"
 msgstr "Przejdź do"
 
-#: dialogs/katedialogs.cpp:1326
+#: dialogs/katedialogs.cpp:1329
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Nie znaleziono poprawnego numeru wiersza w schowku"
 
-#: dialogs/katedialogs.cpp:1390
+#: dialogs/katedialogs.cpp:1393
 #, kde-format
 msgid "Dictionary:"
 msgstr "Słownik:"
 
-#: dialogs/katedialogs.cpp:1442
+#: dialogs/katedialogs.cpp:1445
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Sam wczytuj ponownie"
 
-#: dialogs/katedialogs.cpp:1445
+#: dialogs/katedialogs.cpp:1448
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1274,59 +1274,59 @@ msgstr ""
 "Wczytuje ponownie i sam będzie to robił bez ostrzeżenia o zmianach na dysku "
 "do chwili zamknięcia tej karty lub okna."
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, kde-format
 msgid "View &Difference"
 msgstr "Pokaż &różnicę"
 
-#: dialogs/katedialogs.cpp:1452
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Pokaż różnicę zmian."
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "&Reload"
 msgstr "Wczytaj &ponownie"
 
-#: dialogs/katedialogs.cpp:1459
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "Wczytuje ponownie plik z dysku. Niezapisane zmiany, zostaną utracone."
 
-#: dialogs/katedialogs.cpp:1463
+#: dialogs/katedialogs.cpp:1466
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Zamknij plik"
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Zamknij plik, porzucając jego treść."
 
-#: dialogs/katedialogs.cpp:1469
+#: dialogs/katedialogs.cpp:1472
 #, kde-format
 msgid "&Save As..."
 msgstr "Zapi&sz jako..."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Umożliwia wybór miejsca i zapisanie pliku na nowo."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1476 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1479 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "Pom&iń"
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1480
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Pomija zmiany na dysku bez żadnego działania."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1546 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1335,18 +1335,18 @@ msgstr ""
 "Uruchomienie polecenia diff się nie powiodło. Upewnij się, że program "
 "diff(1) jest wgrany i że znajduje się w ścieżce określonej zmienną PATH."
 
-#: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Błąd przy obliczaniu różnic"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "Pliki są takie same."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1555 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Wynik porównywania plików"
@@ -2262,8 +2262,8 @@ msgstr ""
 "zostały zmienione. Możesz stracić niektóre dane."
 
 #: document/katedocument.cpp:2472 document/katedocument.cpp:2488
-#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1205
-#: syntax/katethemeconfig.cpp:1355
+#: document/katedocument.cpp:2805 syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1356
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Możliwość utraty danych"
@@ -4895,78 +4895,78 @@ msgstr ""
 "menu kontekstowego.</p><p>Możesz odznaczyć kolory tła i zaznaczonego tła z "
 "menu kontekstowego kiedy to konieczne.</p>"
 
-#: syntax/katethemeconfig.cpp:1024
+#: syntax/katethemeconfig.cpp:1025
 #, kde-format
 msgid "Default Theme"
 msgstr "Wygląd domyślny"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Theme Editor"
 msgstr "Edytor wyglądu"
 
-#: syntax/katethemeconfig.cpp:1039
+#: syntax/katethemeconfig.cpp:1040
 #, kde-format
 msgid "Select theme:"
 msgstr "Wybierz wygląd:"
 
-#: syntax/katethemeconfig.cpp:1108
+#: syntax/katethemeconfig.cpp:1109
 #, kde-format
 msgid "&Theme:"
 msgstr "Zes&taw:"
 
-#: syntax/katethemeconfig.cpp:1117
+#: syntax/katethemeconfig.cpp:1118
 #, kde-format
 msgid "&Copy..."
 msgstr "S&kopiuj..."
 
-#: syntax/katethemeconfig.cpp:1125
+#: syntax/katethemeconfig.cpp:1126
 #, kde-format
 msgid "Export..."
 msgstr "Wyeksportuj..."
 
-#: syntax/katethemeconfig.cpp:1129
+#: syntax/katethemeconfig.cpp:1130
 #, kde-format
 msgid "Import..."
 msgstr "Zaimportuj..."
 
-#: syntax/katethemeconfig.cpp:1136
+#: syntax/katethemeconfig.cpp:1137
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 "Ten zestaw jest tylko-do-odczytu. Aby wprowadzić w nim zmiany, skopiuj go."
 
-#: syntax/katethemeconfig.cpp:1147
+#: syntax/katethemeconfig.cpp:1148
 #, kde-format
 msgid "Colors"
 msgstr "Kolory"
 
-#: syntax/katethemeconfig.cpp:1151
+#: syntax/katethemeconfig.cpp:1152
 #, kde-format
 msgid "Default Text Styles"
 msgstr "Domyślny wygląd tekstu"
 
-#: syntax/katethemeconfig.cpp:1155
+#: syntax/katethemeconfig.cpp:1156
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "Wygląd podświetlonego tekstu"
 
-#: syntax/katethemeconfig.cpp:1167
+#: syntax/katethemeconfig.cpp:1168
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "Eksportowanie zestawu kolorów: %1"
 
-#: syntax/katethemeconfig.cpp:1169 syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
 #, kde-format
 msgid "Color theme"
 msgstr "Zestaw kolorów"
 
-#: syntax/katethemeconfig.cpp:1190
+#: syntax/katethemeconfig.cpp:1191
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "Importowanie zestawu kolorów"
 
-#: syntax/katethemeconfig.cpp:1204
+#: syntax/katethemeconfig.cpp:1205
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -4974,49 +4974,49 @@ msgid ""
 msgstr ""
 "Importowanie usunie obecny plik zestawu \"%1\". Nie będzie można tego cofnąć."
 
-#: syntax/katethemeconfig.cpp:1206
+#: syntax/katethemeconfig.cpp:1207
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "Zaimportuj mimo to"
 
-#: syntax/katethemeconfig.cpp:1288
+#: syntax/katethemeconfig.cpp:1289
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Użyj wyglądu zgodnego z systemem"
 
-#: syntax/katethemeconfig.cpp:1354
+#: syntax/katethemeconfig.cpp:1355
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "Czy na pewno usunąć zestaw \"%1\"? Nie będzie można tego cofnąć."
 
-#: syntax/katethemeconfig.cpp:1356
+#: syntax/katethemeconfig.cpp:1357
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "Usuń mimo to"
 
-#: syntax/katethemeconfig.cpp:1398
+#: syntax/katethemeconfig.cpp:1399
 #, kde-format
 msgid "Copy theme"
 msgstr "Skopuj zestaw"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1400
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "Nazwa dla kopii zestawu kolorów \"%1\":"
 
-#: syntax/katethemeconfig.cpp:1411
+#: syntax/katethemeconfig.cpp:1412
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>Zestaw %1 już istnieje.</p><p>Nadaj zestawowi inną nazwę.</p>"
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1413
 #, kde-format
 msgid "Copy Theme"
 msgstr "Skopiuj zestaw"
 
-#: syntax/katethemeconfig.cpp:1465 syntax/katethemeconfig.cpp:1470
+#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
 #, kde-format
 msgid "Color Themes"
 msgstr "Zestawy kolorów"
