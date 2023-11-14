@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:37+0000\n"
+"POT-Creation-Date: 2023-11-14 01:37+0000\n"
 "PO-Revision-Date: 2023-03-19 08:57+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -2971,6 +2971,7 @@ msgstr "將游標移至前一個對應縮排"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
@@ -2992,6 +2993,20 @@ msgstr "將游標移至前一個對應標籤"
 msgid "Move cursor to next matching indent"
 msgstr "將游標移至下一個對應標籤"
 
+#: script/data/commands/navigation.js:9
+#, kde-format
+msgctxt "Script command name"
+msgid "Go to Next Paragraph"
+msgstr ""
+
+#: script/data/commands/navigation.js:13
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Go to Previous Edit Point"
+msgctxt "Script command name"
+msgid "Go to Previous Paragraph"
+msgstr "跳到前一個編輯點"
+
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
@@ -3005,6 +3020,7 @@ msgstr "依字母排序選取的文字"
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
+#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3071,44 +3087,52 @@ msgid "Duplicate Selected Lines Up"
 msgstr "將選取的行在上方複製一份"
 
 #: script/data/commands/utils.js:55
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Duplicate selected text"
+msgstr "將選取的行在上方複製一份"
+
+#: script/data/commands/utils.js:59
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "將選取的文字做 URI 編碼"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:63
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "將選取的文字做 URI 解碼"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:67
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "移除空白行"
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "排序選取的文字或整份文件。"
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:464
 #, kde-format
 msgid "Move selected lines down."
 msgstr "將選取的行下移。"
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:466
 #, kde-format
 msgid "Move selected lines up."
 msgstr "將選取的行上移。"
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "從選取的文字或整份文件中移除重複行。"
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3119,22 +3143,22 @@ msgstr ""
 "一般排序的不同：<br/>sort(a10, a1, a2) => a1, a10, a2<br/>natsort(a10, a1, "
 "a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "去除選取區文字或整份文件尾端的空白。"
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "去除選取區文字或整份文件開頭的空白。"
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "去除選取區文字或整份文件開頭與尾端的空白。"
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3144,12 +3168,12 @@ msgstr ""
 "將選取的行或整份文件合在一起。可以選擇傳入一個分隔符，放在每一行之間：<br/"
 "><code>join ','</code> 會將兩行合併，中間放個逗號 ','。"
 
-#: script/data/commands/utils.js:460
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "從選取區或整份文件去除空白行。"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3163,7 +3187,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:486
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3177,7 +3201,7 @@ msgstr ""
 "join(\", \");}'</code><br/> 相同的功能，簡單一點的寫法是：<br/> <code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:488
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3191,7 +3215,7 @@ msgstr ""
 "'function(l) {return l.length > 0;}'</code><br/> 相同的功能，簡單一點的寫法"
 "是：<br/> <code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:490
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3206,36 +3230,36 @@ msgstr ""
 "line.replace(/^\\s+/, \"\");}'</code><br/> 相同的功能，簡單一點的寫法是：<br/"
 "> <code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:492
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "將選取的行在上方複製一份。"
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:494
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "將選取的行在下方複製一份。"
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:498
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr "將選取的特殊字元編碼成網址。"
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:500
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "將網址解碼。"
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:502
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:504
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "

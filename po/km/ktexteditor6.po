@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:37+0000\n"
+"POT-Creation-Date: 2023-11-14 01:37+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -3196,6 +3196,7 @@ msgstr "ផ្លាស់ទី​​ទស្សន៍ទ្រនិច​ដ
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, fuzzy, kde-format
 #| msgid "Navigation"
 msgctxt "Script command category"
@@ -3221,6 +3222,19 @@ msgstr "ផ្លាស់ទី​​ទស្សន៍ទ្រនិច​ដ
 msgid "Move cursor to next matching indent"
 msgstr "ផ្លាស់ទី​​ទស្សន៍ទ្រនិច​ដើម្បី​ផ្គូផ្គង​ស្លាក"
 
+#: script/data/commands/navigation.js:9
+#, kde-format
+msgctxt "Script command name"
+msgid "Go to Next Paragraph"
+msgstr ""
+
+#: script/data/commands/navigation.js:13
+#, fuzzy, kde-format
+#| msgid "Go to previous edit point"
+msgctxt "Script command name"
+msgid "Go to Previous Paragraph"
+msgstr "ទៅ​កាន់​ចំណុច​កែសម្រួល​មុន"
+
 #: script/data/commands/utils.js:9
 #, fuzzy, kde-format
 #| msgid "Sort Selected Text"
@@ -3235,6 +3249,7 @@ msgstr "តម្រៀប​អត្ថបទ​ដែល​បាន​ជ្
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
+#: script/data/commands/utils.js:68
 #, fuzzy, kde-format
 #| msgid "Editing"
 msgctxt "Script command category"
@@ -3313,46 +3328,53 @@ msgstr "ស្ទួន​បន្ទាត់​ដែលបាន​ជ្រ
 
 #: script/data/commands/utils.js:55
 #, fuzzy, kde-format
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Duplicate selected text"
+msgstr "ស្ទួន​បន្ទាត់​ដែលបាន​ជ្រើស​ឡើង​លើ"
+
+#: script/data/commands/utils.js:59
+#, fuzzy, kde-format
 #| msgid "Sort Selected Text"
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "តម្រៀប​អត្ថបទ​ដែល​បាន​ជ្រើស"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:63
 #, fuzzy, kde-format
 #| msgid "Sort Selected Text"
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "តម្រៀប​អត្ថបទ​ដែល​បាន​ជ្រើស"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:67
 #, fuzzy, kde-format
 #| msgid "Move cursor to matching tag"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "ផ្លាស់ទី​​ទស្សន៍ទ្រនិច​ដើម្បី​ផ្គូផ្គង​ស្លាក"
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "តម្រៀប​អត្ថបទ​ដែល​បាន​ជ្រើស ឬ​ឯកសារ​ទាំង​មូល ។"
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:464
 #, kde-format
 msgid "Move selected lines down."
 msgstr "ផ្លាស់ទី​បន្ទាត់​ដែលបាន​ជ្រើស​ចុះក្រោម ។"
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:466
 #, kde-format
 msgid "Move selected lines up."
 msgstr "ផ្លាស់ទី​បន្ទាត់​ដែល​បាន​ជ្រើស​ឡើង​លើ ។"
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "យក​បន្ទាត់​ស្ទួន​ចេញ​ពី​អត្ថបទ​ដែល​បាន​ជ្រើស ឬ​ឯកសារ​ទាំង​មូល ។"
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3363,22 +3385,22 @@ msgstr ""
 "នៃ​វិធីសាស្ត្រ​តម្រៀប​ធម្មតា​៖<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, "
 "a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "តម្រឹម​ចន្លោះ​ខាង​ក្រោម​ពី​ជម្រើស ឬ​ឯកសារ​ទាំង​មូល ។"
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "តម្រឹម​ចន្លោះ​ខាង​មុខ​ពី​ការ​ជ្រើស ឬ​ឯកសារ​ទាំង​មូល ។"
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "តម្រឹម​ចន្លោះ​ខាង​មុខ និង​ខាងក្រោយ​ពី​ការ​ជ្រើស ឬ​ឯកសារ​ទាំង​មូល ។"
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3388,12 +3410,12 @@ msgstr ""
 "ភ្ជាប់​បន្ទាត់​ដែល​បាន​ជ្រើស ឬ​ឯកសារ​មូល ។ ជា​ម្រើស​ចម្លង​បន្ទាត់​ខណ្ឌចែក ដើម្បី​ដាក់​ចន្លោះ​បន្ទាត់នីមួយៗ ៖"
 "<br><code>join ', '</code> នឹង​ភ្ជាប់​បន្ទាត់ ហើយ​បំបែក​ពួកវា​ដោយ​សញ្ញា (,) ។"
 
-#: script/data/commands/utils.js:460
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "យក​បន្ទាត់​ទទេ​ចេញ​ពី​ជម្រើស ឬ​ឯកសារ​ទាំង​មូល ។"
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3407,7 +3429,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:486
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3421,7 +3443,7 @@ msgstr ""
 "{return lines.join(\", \");}'</code><br>ដើម្បី​ជួយ​សម្រួល​ក្នុង​ការ​វាយ​ អ្នក​អាច​ធ្វើ​វា​នេះ​"
 "ដើម្បី​សម្រេច​បាន​ដូចគ្នា ៖<br><code>each 'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:488
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3436,7 +3458,7 @@ msgstr ""
 "{return l.length > 0;}'</code><br>To save you some typing, you can also do "
 "this to achieve the same:<br><code>filter 'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:490
 #, fuzzy, kde-format
 #| msgid ""
 #| "Given a JavaScript function as argument, call that for the list of "
@@ -3460,36 +3482,36 @@ msgstr ""
 "you can also do this to achieve the same:<br><code>map 'line.replace(/^\\s"
 "+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:492
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "ស្ទួន​បន្ទាត់​ដែលបាន​ជ្រើស​ឡើង​លើ ។"
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:494
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "ស្ទួន​បន្ទាត់​ដែល​បាន​ជ្រើស​ចុះក្រោម ។"
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:498
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr ""
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:500
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr ""
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:502
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:504
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "

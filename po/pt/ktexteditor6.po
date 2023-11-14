@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:37+0000\n"
+"POT-Creation-Date: 2023-11-14 01:37+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -3173,6 +3173,7 @@ msgstr "Mover o Cursor para a Indentação Correspondente Anterior"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
@@ -3194,6 +3195,20 @@ msgstr "Mover o cursor para a indentação correspondente anterior"
 msgid "Move cursor to next matching indent"
 msgstr "Mover o cursor para a indentação correspondente seguinte"
 
+#: script/data/commands/navigation.js:9
+#, kde-format
+msgctxt "Script command name"
+msgid "Go to Next Paragraph"
+msgstr ""
+
+#: script/data/commands/navigation.js:13
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Go to Previous Edit Point"
+msgctxt "Script command name"
+msgid "Go to Previous Paragraph"
+msgstr "Ir para o Ponto de Edição Anterior"
+
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
@@ -3207,6 +3222,7 @@ msgstr "Ordenar o Texto Seleccionado Alfabeticamente"
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
+#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3279,46 +3295,54 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Duplicar as Linhas Seleccionadas para Cima"
 
 #: script/data/commands/utils.js:55
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Duplicate selected text"
+msgstr "Duplicar as Linhas Seleccionadas para Cima"
+
+#: script/data/commands/utils.js:59
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Codificar em URI o Texto Seleccionado"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:63
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Descodificar o URI do Texto Seleccionado"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:67
 #, fuzzy, kde-format
 #| msgid "Remove Cursors from Empty Lines"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Remover os Cursores das Linhas Vazias"
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Ordena o texto seleccionado ou o documento inteiro."
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:464
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Desce as linhas seleccionadas."
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:466
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Sobe as linhas seleccionadas."
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
 "Remove as linhas duplicadas do texto seleccionado ou do documento inteiro."
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3330,26 +3354,26 @@ msgstr ""
 "normal:<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, "
 "a2, a10"
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
 "Retira os espaços em branco finais da selecção ou do documento inteiro."
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
 "Retira os espaços em branco finais da selecção ou do documento inteiro."
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Retira os espaços em branco iniciais e finais da selecção ou do documento "
 "inteiro."
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3360,12 +3384,12 @@ msgstr ""
 "separador a colocar entre cada linha:<br><code>join ', '</code> irá p.ex. "
 "juntar as linhas, separando-as por uma vírgula."
 
-#: script/data/commands/utils.js:460
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Remove as linhas vazias da selecção ou do documento inteiro."
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3388,7 +3412,7 @@ msgstr ""
 "espaços antes do primeiro carácter não-vazio que ocorra a seguir a um sinal "
 "de dois-pontos para os alinhar todos à mesma coluna."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:486
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3404,7 +3428,7 @@ msgstr ""
 "fazer isto para obter o mesmo resultado:<br><code>each 'linhas.join(\", "
 "\")'</code>"
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:488
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3420,7 +3444,7 @@ msgstr ""
 "alguma escrita, poderá também fazer isto para obter o mesmo resultado:"
 "<br><code>filter 'linha.length > 0'</code>"
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:490
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3437,17 +3461,17 @@ msgstr ""
 "escrita, poderá fazer isto para obter o mesmo resultado:<br/><code>map "
 "'linha.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:492
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Duplica as linhas seleccionadas para cima."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:494
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Duplica as linhas seleccionadas para baixo."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:498
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3456,12 +3480,12 @@ msgstr ""
 "Codifica os caracteres especiais numa selecção de linha única, para que o "
 "texto do resultado possa ser usado como um URI."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:500
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Reverter a acção de codificação do URI."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:502
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3471,7 +3495,7 @@ msgstr ""
 "primeira ocorrência do argumento indicado a seguir (ou até ao fim da linha "
 "actual por omissão)."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:504
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:37+0000\n"
+"POT-Creation-Date: 2023-11-14 01:37+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -3069,6 +3069,7 @@ msgstr "Di chuyển con trỏ đến dòng trước có cùng độ thụt lề"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
@@ -3090,6 +3091,20 @@ msgstr "Di chuyển con trỏ đến dòng trước có cùng độ thụt lề"
 msgid "Move cursor to next matching indent"
 msgstr "Di chuyển con trỏ đến dòng sau có cùng độ thụt lề"
 
+#: script/data/commands/navigation.js:9
+#, kde-format
+msgctxt "Script command name"
+msgid "Go to Next Paragraph"
+msgstr ""
+
+#: script/data/commands/navigation.js:13
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Go to Previous Edit Point"
+msgctxt "Script command name"
+msgid "Go to Previous Paragraph"
+msgstr "Đi đến điểm sửa trước"
+
 #: script/data/commands/utils.js:9
 #, kde-format
 msgctxt "Script command name"
@@ -3103,6 +3118,7 @@ msgstr "Sắp xếp văn bản bôi đen theo bảng chữ cái"
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
+#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3175,45 +3191,53 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Nhân đôi các dòng bôi đen lên"
 
 #: script/data/commands/utils.js:55
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Duplicate selected text"
+msgstr "Nhân đôi các dòng bôi đen lên"
+
+#: script/data/commands/utils.js:59
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "Mã hoá URI văn bản bôi đen"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:63
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "Giải mã hoá URI văn bản bôi đen"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:67
 #, fuzzy, kde-format
 #| msgid "Remove Cursors from Empty Lines"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Bỏ con trỏ khỏi các dòng trống"
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Sắp xếp văn bản bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:464
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Di chuyển các dòng bôi đen xuống."
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:466
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Di chuyển các dòng bôi đen lên."
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Xoá các dòng lặp lại khỏi văn bản bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3224,23 +3248,23 @@ msgstr ""
 "là một ví dụ cho thấy sự khác biệt so với phương pháp sắp xếp thông thường:"
 "<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Cắt bỏ khoảng trắng ở cuối trong phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Cắt bỏ khoảng trắng ở đầu trong phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 "Cắt bỏ khoảng trắng ở đầu và cuối trong phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3251,12 +3275,12 @@ msgstr ""
 "phân cách để đặt giữa các dòng:<br>Vd. <code>join ', '</code> sẽ nối các "
 "dòng và phân cách chúng bằng một dấu phẩy."
 
-#: script/data/commands/utils.js:460
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Xoá bỏ các dòng trống khỏi phần bôi đen hoặc toàn bộ tài liệu."
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3279,7 +3303,7 @@ msgstr ""
 "các dấu cách vào trước kí tự khác trống đầu tiên xuất hiện sau một dấu hai "
 "chấm để căn lề tất cả chúng ở cùng một cột."
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:486
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3294,7 +3318,7 @@ msgstr ""
 "code><br>Để gõ ít hơn một chút, bạn cũng có thể làm như sau:<br><code>each "
 "'lines.join(\", \")'</code>"
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:488
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3309,7 +3333,7 @@ msgstr ""
 "code><br>Để gõ ít hơn một chút, bạn cũng có thể làm như sau:<br><code>filter "
 "'line.length > 0'</code>"
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:490
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3325,17 +3349,17 @@ msgstr ""
 "\\s+/, \"\");}'</code><br>Để gõ ít hơn một chút, bạn cũng có thể làm như sau:"
 "<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:492
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Nhân đôi các dòng bôi đen lên."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:494
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Nhân đôi các dòng bôi đen xuống."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:498
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3344,12 +3368,12 @@ msgstr ""
 "Mã hoá các kí tự đặc biệt trong phần bôi đen một dòng, sao cho văn bản kết "
 "quả có thể dùng làm URI."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:500
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Đảo ngược hành động mã hoá URI."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:502
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
@@ -3358,7 +3382,7 @@ msgstr ""
 "Bôi đen phần văn bản từ vị trí con trỏ hiện tại tiến đến lần xuất hiện đầu "
 "tiên của đối số đã cho (hoặc mặc định là đến cuối dòng hiện tại)."
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:504
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "

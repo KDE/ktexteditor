@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:37+0000\n"
+"POT-Creation-Date: 2023-11-14 01:37+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -3231,6 +3231,7 @@ msgstr "Курсор на претходно једнако увлачење"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
@@ -3254,6 +3255,20 @@ msgstr "Курсор на претходно једнако увлачење"
 msgid "Move cursor to next matching indent"
 msgstr "Курсор на следеће једнако увлачење"
 
+#: script/data/commands/navigation.js:9
+#, kde-format
+msgctxt "Script command name"
+msgid "Go to Next Paragraph"
+msgstr ""
+
+#: script/data/commands/navigation.js:13
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Go to previous edit point"
+msgctxt "Script command name"
+msgid "Go to Previous Paragraph"
+msgstr "Иди на претходну тачку уређивања"
+
 #: script/data/commands/utils.js:9
 #, fuzzy, kde-format
 #| msgctxt "Script command name"
@@ -3269,6 +3284,7 @@ msgstr "Сортирај изабрани текст"
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
+#: script/data/commands/utils.js:68
 #, kde-format
 msgctxt "Script command category"
 msgid "Editing"
@@ -3342,45 +3358,53 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Удвостручи изабране редове горе"
 
 #: script/data/commands/utils.js:55
+#, fuzzy, kde-format
+#| msgctxt "Script command name"
+#| msgid "Duplicate Selected Lines Up"
+msgctxt "Script command name"
+msgid "Duplicate selected text"
+msgstr "Удвостручи изабране редове горе"
+
+#: script/data/commands/utils.js:59
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "УРИ‑кодирај изабрани текст"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:63
 #, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "УРИ‑декодирај изабрани текст"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:67
 #, fuzzy, kde-format
 #| msgid "Remove Entry"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "Уклони ставку"
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:462
 #, kde-format
 msgid "Sort the selected text or whole document."
 msgstr "Сортира изабрани текст или цио документ."
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:464
 #, kde-format
 msgid "Move selected lines down."
 msgstr "Помијера изабране редове надоље."
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:466
 #, kde-format
 msgid "Move selected lines up."
 msgstr "Помијера изабране редове нагоре."
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr "Уклања дуплиране редове из изабраног текста или цијелог документа."
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3392,22 +3416,22 @@ msgstr ""
 "><code>sort(a10, a1, a2) → a1, a10, a2</code><br /><code>natsort(a10, a1, "
 "a2) → a1, a2, a10</code>"
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr "Уклања пратеће празнине из избора или цијелог документа."
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr "Уклања водеће празнине из избора или цијелог документа."
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr "Уклања водеће и пратеће празнине из избора или цијелог документа."
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3418,12 +3442,12 @@ msgstr ""
 "ће бити уметнут између свака два реда:<br />нпр. <code>join ', '</code> ће "
 "спојити редове запетама."
 
-#: script/data/commands/utils.js:460
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr "Уклања празне редове из избора или цијелог документа."
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3439,7 +3463,7 @@ msgstr ""
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:486
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3456,7 +3480,7 @@ msgstr ""
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:488
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3473,7 +3497,7 @@ msgstr ""
 
 # skip-rule: t-save
 # rewrite-msgid: /callback/function/
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:490
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3489,17 +3513,17 @@ msgstr ""
 "replace(/^\\s+/, \"\");}'</code><br />Да бисте уштедили нешто куцања, исто "
 "можете постићи и овако:<br /><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:492
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr "Удвостручава изабране редове горе."
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:494
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr "Удвостручава изабране редове доље."
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:498
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
@@ -3508,19 +3532,19 @@ msgstr ""
 "Кодира не‑аски знаке у једноредном избору, тако да се резултат може "
 "употребити као УРИ."
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:500
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr "Изврће радњу УРИ‑кодирања."
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:502
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:504
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "

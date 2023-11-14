@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:37+0000\n"
+"POT-Creation-Date: 2023-11-14 01:37+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -3056,6 +3056,7 @@ msgstr "मैचिंग ब्रेकेट में जाएँ"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
+#: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
 #, fuzzy, kde-format
 #| msgid "Configuration"
 msgctxt "Script command category"
@@ -3081,6 +3082,19 @@ msgstr "मैचिंग ब्रेकेट में जाएँ"
 msgid "Move cursor to next matching indent"
 msgstr "मैचिंग ब्रेकेट में जाएँ"
 
+#: script/data/commands/navigation.js:9
+#, kde-format
+msgctxt "Script command name"
+msgid "Go to Next Paragraph"
+msgstr ""
+
+#: script/data/commands/navigation.js:13
+#, fuzzy, kde-format
+#| msgid "Move to Previous Line"
+msgctxt "Script command name"
+msgid "Go to Previous Paragraph"
+msgstr "पिछली पंक्ति पर जाएँ"
+
 #: script/data/commands/utils.js:9
 #, fuzzy, kde-format
 #| msgid "Selected text:"
@@ -3095,6 +3109,7 @@ msgstr "चुना गया पाठ:"
 #: script/data/commands/utils.js:44 script/data/commands/utils.js:48
 #: script/data/commands/utils.js:52 script/data/commands/utils.js:56
 #: script/data/commands/utils.js:60 script/data/commands/utils.js:64
+#: script/data/commands/utils.js:68
 #, fuzzy, kde-format
 #| msgid "Editing"
 msgctxt "Script command category"
@@ -3172,49 +3187,56 @@ msgstr "चुना गया"
 
 #: script/data/commands/utils.js:55
 #, fuzzy, kde-format
+#| msgid "Selected"
+msgctxt "Script command name"
+msgid "Duplicate selected text"
+msgstr "चुना गया"
+
+#: script/data/commands/utils.js:59
+#, fuzzy, kde-format
 #| msgid "Selected text:"
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
 msgstr "चुना गया पाठ:"
 
-#: script/data/commands/utils.js:59
+#: script/data/commands/utils.js:63
 #, fuzzy, kde-format
 #| msgid "Selected text:"
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
 msgstr "चुना गया पाठ:"
 
-#: script/data/commands/utils.js:63
+#: script/data/commands/utils.js:67
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
 msgstr "मैचिंग ब्रेकेट में जाएँ"
 
-#: script/data/commands/utils.js:442
+#: script/data/commands/utils.js:462
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Sort the selected text or whole document."
 msgstr "मौज़ूदा दस्तावेज़ का संपूर्ण पाठ चुनें"
 
-#: script/data/commands/utils.js:444
+#: script/data/commands/utils.js:464
 #, fuzzy, kde-format
 #| msgid "Selected"
 msgid "Move selected lines down."
 msgstr "चुना गया"
 
-#: script/data/commands/utils.js:446
+#: script/data/commands/utils.js:466
 #, fuzzy, kde-format
 #| msgid "Selected"
 msgid "Move selected lines up."
 msgstr "चुना गया"
 
-#: script/data/commands/utils.js:448
+#: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
 
-#: script/data/commands/utils.js:450
+#: script/data/commands/utils.js:470
 #, kde-format
 msgid ""
 "Sort the selected text or whole document in natural order.<br>Here is an "
@@ -3222,22 +3244,22 @@ msgid ""
 "a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgstr ""
 
-#: script/data/commands/utils.js:452
+#: script/data/commands/utils.js:472
 #, kde-format
 msgid "Trims trailing whitespace from selection or whole document."
 msgstr ""
 
-#: script/data/commands/utils.js:454
+#: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
 msgstr ""
 
-#: script/data/commands/utils.js:456
+#: script/data/commands/utils.js:476
 #, kde-format
 msgid "Trims leading and trailing whitespace from selection or whole document."
 msgstr ""
 
-#: script/data/commands/utils.js:458
+#: script/data/commands/utils.js:478
 #, kde-format
 msgid ""
 "Joins selected lines or whole document. Optionally pass a separator to put "
@@ -3245,12 +3267,12 @@ msgid ""
 "separate them by a comma."
 msgstr ""
 
-#: script/data/commands/utils.js:460
+#: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
 msgstr ""
 
-#: script/data/commands/utils.js:462
+#: script/data/commands/utils.js:482
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -3264,7 +3286,7 @@ msgid ""
 "same column."
 msgstr ""
 
-#: script/data/commands/utils.js:466
+#: script/data/commands/utils.js:486
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3274,7 +3296,7 @@ msgid ""
 "this to achieve the same:<br><code>each 'lines.join(\", \")'</code>"
 msgstr ""
 
-#: script/data/commands/utils.js:468
+#: script/data/commands/utils.js:488
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3284,7 +3306,7 @@ msgid ""
 "this to achieve the same:<br><code>filter 'line.length > 0'</code>"
 msgstr ""
 
-#: script/data/commands/utils.js:470
+#: script/data/commands/utils.js:490
 #, kde-format
 msgid ""
 "Given a JavaScript function as argument, call that for the list of "
@@ -3295,36 +3317,36 @@ msgid ""
 "+/, \"\")'</code>"
 msgstr ""
 
-#: script/data/commands/utils.js:472
+#: script/data/commands/utils.js:492
 #, kde-format
 msgid "Duplicates the selected lines up."
 msgstr ""
 
-#: script/data/commands/utils.js:474
+#: script/data/commands/utils.js:494
 #, kde-format
 msgid "Duplicates the selected lines down."
 msgstr ""
 
-#: script/data/commands/utils.js:476
+#: script/data/commands/utils.js:498
 #, kde-format
 msgid ""
 "Encode special chars in a single line selection, so the result text can be "
 "used as URI."
 msgstr ""
 
-#: script/data/commands/utils.js:478
+#: script/data/commands/utils.js:500
 #, kde-format
 msgid "Reverse action of URI encode."
 msgstr ""
 
-#: script/data/commands/utils.js:480
+#: script/data/commands/utils.js:502
 #, kde-format
 msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
 
-#: script/data/commands/utils.js:482
+#: script/data/commands/utils.js:504
 #, kde-format
 msgid ""
 "Select text backward from current cursor position to the last occurrence of "
