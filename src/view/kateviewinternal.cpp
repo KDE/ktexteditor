@@ -2326,7 +2326,7 @@ void KateViewInternal::bottom_end(bool sel)
     updateCursor(c);
 }
 
-void KateViewInternal::updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos)
+void KateViewInternal::updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos) const
 {
     if (m_selectionMode != SelectionMode::Default) {
         view()->clearSecondaryCursors();

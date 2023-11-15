@@ -761,7 +761,7 @@ public:
     bool scrollBarMiniMapAll();
     int dynWrapIndicators();
     bool foldingMarkersOn();
-    bool forceRTLDirection();
+    bool forceRTLDirection() const;
 
 private Q_SLOTS:
     /**

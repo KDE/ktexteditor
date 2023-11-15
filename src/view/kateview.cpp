@@ -771,7 +771,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a = toggleAction = new KToggleAction(i18n("Static Word Wrap"), this);
     ac->addAction(QStringLiteral("view_static_word_wrap"), a);
     a->setWhatsThis(i18n("If this option is checked, the text lines will be wrapped at the column defined in the editing properties."));
-    connect(a, &KToggleAction::triggered, [=] {
+    connect(a, &KToggleAction::triggered, [this] {
         if (m_doc) {
             m_doc->setWordWrap(!m_doc->wordWrap());
         }
@@ -2012,7 +2012,7 @@ bool KTextEditor::ViewPrivate::foldingMarkersOn()
     return m_viewInternal->m_leftBorder->foldingMarkersOn();
 }
 
-bool KTextEditor::ViewPrivate::forceRTLDirection()
+bool KTextEditor::ViewPrivate::forceRTLDirection() const
 {
     return m_forceRTL;
 }
@@ -2042,16 +2042,19 @@ int KTextEditor::ViewPrivate::textHintDelay() const
     return m_viewInternal->textHintDelay();
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::find()
 {
     currentInputMode()->find();
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::findSelectedForwards()
 {
     currentInputMode()->findSelectedForwards();
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::findSelectedBackwards()
 {
     currentInputMode()->findSelectedBackwards();
@@ -2186,16 +2189,19 @@ void KTextEditor::ViewPrivate::findAllOccuruncesAndSelect()
     addSecondaryCursorsWithSelection(resultRanges);
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::replace()
 {
     currentInputMode()->findReplace();
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::findNext()
 {
     currentInputMode()->findNext();
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::findPrevious()
 {
     currentInputMode()->findPrevious();
@@ -2275,6 +2281,7 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
     m_screenshotSelection->setEnabled(selection());
 }
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::switchToCmdLine()
 {
     currentInputMode()->activateCommandLine();
@@ -4500,6 +4507,7 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
 
 // END ConfigInterface
 
+// NOLINTNEXTLINE(readability-make-member-function-const)
 void KTextEditor::ViewPrivate::userInvokedCompletion()
 {
     completionWidget()->userInvokedCompletion();

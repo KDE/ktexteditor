@@ -70,6 +70,7 @@
 KateMessageLayout::KateMessageLayout(QWidget *parent)
     : QLayout(parent)
 {
+    qCDebug(LOG_KTE);
 }
 
 KateMessageLayout::~KateMessageLayout()

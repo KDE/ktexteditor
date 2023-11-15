@@ -292,7 +292,7 @@ private:
 
     int lineToY(int viewLine) const;
 
-    void updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos);
+    void updateSecondarySelection(int cursorIdx, KTextEditor::Cursor old, KTextEditor::Cursor newPos) const;
     void updateSelection(const KTextEditor::Cursor, bool keepSel);
     void setSelection(KTextEditor::Range);
     void moveCursorToSelectionEdge(bool scroll = true);
