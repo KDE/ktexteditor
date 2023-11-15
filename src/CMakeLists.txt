@@ -175,9 +175,7 @@ utils/documentcursor.cpp
 utils/attribute.cpp
 utils/codecompletionmodel.cpp
 utils/codecompletionmodelcontrollerinterface.cpp
-utils/movingcursor.cpp
-utils/movingrange.cpp
-utils/movingrangefeedback.cpp
+utils/movingapi.cpp
 utils/messageinterface.cpp
 utils/application.cpp
 utils/mainwindow.cpp
