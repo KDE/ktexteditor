@@ -2,6 +2,7 @@
 # Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 #
 # SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+#
 # Ömer Fadıl USTA <omer_fad@hotmail.com>, 2002.
 # Görkem Çetin <gorkem@kde.org>, 2002,2003, 2004, 2005.
 # Adem Alp Yıldız <ademalp@kde.org.tr>, 2005.
@@ -10,13 +11,13 @@
 # H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010, 2011.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2015, 2017, 2019.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-#
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:37+0000\n"
-"PO-Revision-Date: 2023-11-08 16:59+0300\n"
+"PO-Revision-Date: 2023-11-14 19:50+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -2869,7 +2870,7 @@ msgstr "Emmet"
 #, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr "Etiket ile Sar"
+msgstr "Etiketle Sar"
 
 #: script/data/commands/emmet.js:18
 #, kde-format
@@ -3114,15 +3115,13 @@ msgstr "İmleci sonraki eşleşen girintiye taşı"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Sonraki Paragrafa Git"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Önceki Düzenleme Noktasına Git"
+msgstr "Önceki Paragrafa Git"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3171,7 +3170,7 @@ msgstr "Satır Başı Boşluklarını Kaldır"
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Satır Başı ve Sonu Boşluklarını Kaldır"
+msgstr "Satır Başı/Sonu Boşluklarını Kaldır"
 
 #: script/data/commands/utils.js:33
 #, kde-format
@@ -3183,33 +3182,31 @@ msgstr "Satırları Birbirine Kat"
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Down"
-msgstr "Satırı Aşağı Taşı"
+msgstr "Satırları Aşağı Taşı"
 
 #: script/data/commands/utils.js:42
 #, kde-format
 msgctxt "Script command name"
 msgid "Move Lines Up"
-msgstr "Satırı Yukarı Taşı"
+msgstr "Satırları Yukarı Taşı"
 
 #: script/data/commands/utils.js:47
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
-msgstr "Seçili Satırların Aynısını Aşağı Kopyala"
+msgstr "Seçili Satırları Aşağıya Çoğalt"
 
 #: script/data/commands/utils.js:51
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
-msgstr "Seçili Satırların Aynısını Yukarı Kopyala"
+msgstr "Seçili Satırları Yukarıya Çoğalt"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Seçili Satırların Aynısını Yukarı Kopyala"
+msgstr "Seçili Satırları Çoğalt"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -3232,22 +3229,22 @@ msgstr "Boş Satırları Kaldır"
 #: script/data/commands/utils.js:462
 #, kde-format
 msgid "Sort the selected text or whole document."
-msgstr "Seçili metni veya tüm belgeyi sırala."
+msgstr "Seçili metni veya tüm belgeyi sıralayın."
 
 #: script/data/commands/utils.js:464
 #, kde-format
 msgid "Move selected lines down."
-msgstr "Seçili satırı aşağı taşı."
+msgstr "Seçili satırı aşağı taşıyın."
 
 #: script/data/commands/utils.js:466
 #, kde-format
 msgid "Move selected lines up."
-msgstr "Seçili satırı yukarı taşı."
+msgstr "Seçili satırı yukarı taşıyın."
 
 #: script/data/commands/utils.js:468
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
-msgstr "Seçili metin veya tüm belgeden yinelenmiş satırları kaldır."
+msgstr "Seçili metinden veya tüm belgeden yinelenmiş satırları kaldırın."
 
 #: script/data/commands/utils.js:470
 #, kde-format
@@ -3256,8 +3253,8 @@ msgid ""
 "example to show the difference to the normal sort method:<br>sort(a10, a1, "
 "a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgstr ""
-"Seçili metni veya tüm belgeyi doğal sırasıyla sırala.<br>Burada normal "
-"sıralama yöntemiyle farkını gösteren bir örnek var:<br>sort(a10,a1,a2) => "
+"Seçili metni veya tüm belgeyi doğal sırada sıralayın.<br>Normal sıralama "
+"yöntemiyle olan farkını görmek için bu örneğe bakın:<br>sort(a10, a1, a2) => "
 "a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 
 #: script/data/commands/utils.js:472
@@ -3268,7 +3265,7 @@ msgstr "Seçimden veya tüm belgeden sondaki boşlukları kırpar."
 #: script/data/commands/utils.js:474
 #, kde-format
 msgid "Trims leading whitespace from selection or whole document."
-msgstr "Seçimden veya tüm belgeden gereksiz başlangıç boşluklarını siler."
+msgstr "Seçimden veya tüm belgeden baştaki boşlukları kırpar."
 
 #: script/data/commands/utils.js:476
 #, kde-format
@@ -3289,7 +3286,7 @@ msgstr ""
 #: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
-msgstr "Seçimden veya tüm belgeden gereksiz boş satırları siler."
+msgstr "Seçimden veya tüm belgeden boş satırları kaldırır."
 
 #: script/data/commands/utils.js:482
 #, kde-format
@@ -4171,12 +4168,12 @@ msgstr "Tümünü &Yok Say"
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Yazım Denetimi (İmleçten itibaren)..."
+msgstr "Yazım Denetimi (İmleçten Sonra)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
 msgid "Check the document's spelling from the cursor and forward"
-msgstr "Belgeyi imleçten itibaren yazım denetiminden geçir"
+msgstr "Belgenin yazımını imleçten ve ileri doğru denetle"
 
 #: spellcheck/spellingmenu.cpp:76
 #, kde-format
@@ -6795,8 +6792,8 @@ msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
 "this action."
 msgstr ""
-"Komut tamamlamayı el ile tetikle, genellikle bu eylem için bir kısayol "
-"kullanılır."
+"Genellikle bu eyleme bağlı bir kısayol kullanarak komut tamamlamayı elle "
+"çağırın."
 
 #: view/kateview.cpp:617
 #, kde-format

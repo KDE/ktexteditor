@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:37+0000\n"
-"PO-Revision-Date: 2023-11-02 13:36+0100\n"
+"PO-Revision-Date: 2023-11-14 13:11+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3042,14 +3042,13 @@ msgstr "Přejít na následující odpovídající odsazení"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Přejít na následující odstavec"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Přejít na předchozí řádek"
+msgstr "Přejít na předchozí odstavec"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3131,12 +3130,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Duplikovat vybrané řádky nahoru"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Duplikovat vybrané řádky nahoru"
+msgstr "Duplikovat vybraný text"
 
 #: script/data/commands/utils.js:59
 #, kde-format

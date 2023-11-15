@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:37+0000\n"
-"PO-Revision-Date: 2023-10-20 09:24+0200\n"
+"PO-Revision-Date: 2023-11-14 09:47+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -3148,15 +3148,13 @@ msgstr "Mou el cursor fins al sagnat següent que concordi"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Va al paràgraf següent"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Ves al punt d'edició anterior"
+msgstr "Va al paràgraf anterior"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3238,12 +3236,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Duplica les línies seleccionades cap amunt"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Duplica les línies seleccionades cap amunt"
+msgstr "Duplica el text seleccionat"
 
 #: script/data/commands/utils.js:59
 #, kde-format

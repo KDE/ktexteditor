@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:37+0000\n"
-"PO-Revision-Date: 2023-10-20 08:46+0300\n"
+"PO-Revision-Date: 2023-11-14 07:47+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -3130,15 +3130,13 @@ msgstr "Пересунути курсор до наступного відпов
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Перейти до наступного абзацу"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Перейти до попереднього місця редагування"
+msgstr "Перейти до попереднього абзацу"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3220,12 +3218,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Здублювати позначені рядки вище"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Здублювати позначені рядки вище"
+msgstr "Здублювати позначений текст"
 
 #: script/data/commands/utils.js:59
 #, kde-format

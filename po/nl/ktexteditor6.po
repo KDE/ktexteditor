@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:37+0000\n"
-"PO-Revision-Date: 2023-10-20 10:10+0200\n"
+"PO-Revision-Date: 2023-11-14 10:24+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3142,15 +3142,13 @@ msgstr "Cursor verplaatsen naar volgend overeenkomend inspringen"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Ga naar de volgende paragraaf"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Ga naar vorige bewerkingspunt"
+msgstr "Ga naar de vorige paragraaf"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3232,12 +3230,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Geselecteerde regels naar boven dupliceren"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Geselecteerde regels naar boven dupliceren"
+msgstr "Geselecteerde tekst dupliceren"
 
 #: script/data/commands/utils.js:59
 #, kde-format

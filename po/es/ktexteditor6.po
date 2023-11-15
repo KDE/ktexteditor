@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:37+0000\n"
-"PO-Revision-Date: 2023-10-20 22:16+0200\n"
+"PO-Revision-Date: 2023-11-14 18:03+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -3164,15 +3164,13 @@ msgstr "Mover el cursor al sangrado emparejado siguiente"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Ir al párrafo siguiente"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Ir al punto de edición anterior"
+msgstr "Ir al párrafo anterior"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3254,12 +3252,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Duplicar las líneas seleccionadas arriba"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Duplicar las líneas seleccionadas arriba"
+msgstr "Duplicar el texto seleccionado"
 
 #: script/data/commands/utils.js:59
 #, kde-format
