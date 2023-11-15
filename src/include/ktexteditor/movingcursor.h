@@ -13,7 +13,7 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
 
-#include <QDebug>
+class QDebug;
 
 namespace KTextEditor
 {
@@ -354,35 +354,23 @@ public:
     {
         return !(c1 > c2);
     }
-
-    /**
-     * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
-     * @param s debug stream
-     * @param cursor cursor to print
-     * @return debug stream
-     */
-    inline friend QDebug operator<<(QDebug s, const MovingCursor *cursor)
-    {
-        if (cursor) {
-            s.nospace() << "(" << cursor->line() << ", " << cursor->column() << ")";
-        } else {
-            s.nospace() << "(null cursor)";
-        }
-        return s.space();
-    }
-
-    /**
-     * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
-     * @param s debug stream
-     * @param cursor cursor to print
-     * @return debug stream
-     */
-    inline friend QDebug operator<<(QDebug s, const MovingCursor &cursor)
-    {
-        return s << &cursor;
-    }
 };
 
+/**
+ * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
+ * @param s debug stream
+ * @param cursor cursor to print
+ * @return debug stream
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingCursor *cursor);
+
+/**
+ * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
+ * @param s debug stream
+ * @param cursor cursor to print
+ * @return debug stream
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingCursor &cursor);
 }
 
 #endif

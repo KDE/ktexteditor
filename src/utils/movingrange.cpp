@@ -35,3 +35,24 @@ bool MovingRange::overlaps(const Range &range) const
         return contains(range);
     }
 }
+
+QDebug KTextEditor::operator<<(QDebug s, const MovingRange *range)
+{
+    if (range) {
+        s << "[" << range->start() << " -> " << range->end() << "]";
+    } else {
+        s << "(null range)";
+    }
+    return s.space();
+}
+
+/**
+ * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
+ * @param s debug stream
+ * @param range range to print
+ * @return debug stream
+ */
+QDebug KTextEditor::operator<<(QDebug s, const MovingRange &range)
+{
+    return s << &range;
+}

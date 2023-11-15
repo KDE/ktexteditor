@@ -16,7 +16,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
 
-#include <QDebug>
+class QDebug;
 
 namespace KTextEditor
 {
@@ -378,33 +378,6 @@ public:
     }
 
     /**
-     * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
-     * @param s debug stream
-     * @param range range to print
-     * @return debug stream
-     */
-    inline friend QDebug operator<<(QDebug s, const MovingRange *range)
-    {
-        if (range) {
-            s << "[" << range->start() << " -> " << range->end() << "]";
-        } else {
-            s << "(null range)";
-        }
-        return s.space();
-    }
-
-    /**
-     * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
-     * @param s debug stream
-     * @param range range to print
-     * @return debug stream
-     */
-    inline friend QDebug operator<<(QDebug s, const MovingRange &range)
-    {
-        return s << &range;
-    }
-
-    /**
      * Returns true if this range contains no characters, ie. the start() and
      * end() positions are the same.
      *
@@ -534,6 +507,21 @@ public:
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(MovingRange::InsertBehaviors)
 
+/**
+ * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
+ * @param s debug stream
+ * @param range range to print
+ * @return debug stream
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingRange *range);
+
+/**
+ * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
+ * @param s debug stream
+ * @param range range to print
+ * @return debug stream
+ */
+KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, const MovingRange &range);
 }
 
 #endif

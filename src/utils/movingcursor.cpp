@@ -101,3 +101,18 @@ bool MovingCursor::isValidTextPosition() const
 {
     return document()->isValidTextPosition(toCursor());
 }
+
+QDebug KTextEditor::operator<<(QDebug s, const MovingCursor *cursor)
+{
+    if (cursor) {
+        s.nospace() << "(" << cursor->line() << ", " << cursor->column() << ")";
+    } else {
+        s.nospace() << "(null cursor)";
+    }
+    return s.space();
+}
+
+QDebug KTextEditor::operator<<(QDebug s, const MovingCursor &cursor)
+{
+    return s << &cursor;
+}
