@@ -4376,9 +4376,9 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
     // Note: if detectZoomingEvent() doesn't unset the ControlModifier we'll get accelerated scrolling.
     if (m_zoomEventFilter->detectZoomingEvent(e)) {
         if (e->angleDelta().y() > 0) {
-            slotIncFontSizes(qreal(e->angleDelta().y()) / QWheelEvent::DefaultDeltasPerStep);
+            slotIncFontSizes(qreal(e->angleDelta().y()) / (qreal)QWheelEvent::DefaultDeltasPerStep);
         } else if (e->angleDelta().y() < 0) {
-            slotDecFontSizes(qreal(-e->angleDelta().y()) / QWheelEvent::DefaultDeltasPerStep);
+            slotDecFontSizes(qreal(-e->angleDelta().y()) / (qreal)QWheelEvent::DefaultDeltasPerStep);
         }
 
         // accept always and be done for zooming
