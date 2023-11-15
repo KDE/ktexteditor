@@ -5,7 +5,6 @@
 */
 
 #include "variableeditor.h"
-#include "katehelpbutton.h"
 #include "variableitem.h"
 
 #include <QCheckBox>
@@ -16,11 +15,54 @@
 #include <QLineEdit>
 #include <QPainter>
 #include <QSpinBox>
+#include <QToolButton>
 #include <QVariant>
 
 #include <KColorCombo>
+#include <KHelpClient>
 #include <KLocalizedString>
 #include <sonnet/dictionarycombobox.h>
+
+class KateHelpButton : public QToolButton
+{
+public:
+    enum IconState { IconColored = 0, IconHidden };
+
+public:
+    explicit KateHelpButton(QWidget *parent)
+        : QToolButton(parent)
+    {
+        setAutoRaise(true);
+        setIconState(IconColored);
+        setToolTip(i18n("Kate Handbook."));
+
+        connect(this, &KateHelpButton::clicked, this, &KateHelpButton::invokeHelp);
+    }
+
+public:
+    void setSection(const QString &section)
+    {
+        m_section = section;
+    }
+
+    void setIconState(IconState state)
+    {
+        if (state == IconHidden) {
+            setIcon(QIcon());
+        } else {
+            setIcon(QIcon::fromTheme(QStringLiteral("help-contents")));
+        }
+
+        update();
+    }
+    void invokeHelp()
+    {
+        KHelpClient::invokeHelp(m_section, QStringLiteral("kate"));
+    }
+
+private:
+    QString m_section;
+};
 
 // BEGIN VariableEditor
 VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)

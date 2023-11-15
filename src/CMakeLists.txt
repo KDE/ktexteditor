@@ -103,7 +103,6 @@ variableeditor/variablelineedit.cpp
 variableeditor/variablelistview.cpp
 variableeditor/variableeditor.cpp
 variableeditor/variableitem.cpp
-variableeditor/katehelpbutton.cpp
 
 # printing classes
 printing/kateprinter.cpp
