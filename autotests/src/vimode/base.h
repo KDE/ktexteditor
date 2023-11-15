@@ -8,7 +8,6 @@
 #ifndef BASE_TEST_H
 #define BASE_TEST_H
 
-#include <QMap>
 #include <QObject>
 
 #include <KTextEditor/Range>
@@ -135,8 +134,8 @@ protected:
     QMainWindow *mainWindow;
     QVBoxLayout *mainWindowLayout;
 
-    QMap<QString, Qt::Key> m_codesToSpecialKeys;
-    QMap<QString, Qt::KeyboardModifier> m_codesToModifiers;
+    std::map<QString, Qt::Key> m_codesToSpecialKeys;
+    std::map<QString, Qt::KeyboardModifier> m_codesToModifiers;
 
     QList<DocChange> m_docChanges;
 

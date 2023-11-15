@@ -11,8 +11,8 @@
 
 #include <QChar>
 #include <QList>
-#include <QMap>
 #include <QString>
+#include <map>
 
 class KConfigGroup;
 

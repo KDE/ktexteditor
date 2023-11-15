@@ -37,25 +37,29 @@ BaseTest::BaseTest()
     mainWindow->setCentralWidget(centralWidget);
     mainWindow->resize(640, 480);
 
-    m_codesToModifiers.insert(QStringLiteral("ctrl"), CONTROL_MODIFIER);
-    m_codesToModifiers.insert(QStringLiteral("alt"), Qt::AltModifier);
-    m_codesToModifiers.insert(QStringLiteral("meta"), META_MODIFIER);
-    m_codesToModifiers.insert(QStringLiteral("keypad"), Qt::KeypadModifier);
+    m_codesToModifiers = {
+        {QStringLiteral("ctrl"), CONTROL_MODIFIER},
+        {QStringLiteral("alt"), Qt::AltModifier},
+        {QStringLiteral("meta"), META_MODIFIER},
+        {QStringLiteral("keypad"), Qt::KeypadModifier},
+    };
 
-    m_codesToSpecialKeys.insert(QStringLiteral("backspace"), Qt::Key_Backspace);
-    m_codesToSpecialKeys.insert(QStringLiteral("esc"), Qt::Key_Escape);
-    m_codesToSpecialKeys.insert(QStringLiteral("return"), Qt::Key_Return);
-    m_codesToSpecialKeys.insert(QStringLiteral("enter"), Qt::Key_Enter);
-    m_codesToSpecialKeys.insert(QStringLiteral("left"), Qt::Key_Left);
-    m_codesToSpecialKeys.insert(QStringLiteral("right"), Qt::Key_Right);
-    m_codesToSpecialKeys.insert(QStringLiteral("up"), Qt::Key_Up);
-    m_codesToSpecialKeys.insert(QStringLiteral("down"), Qt::Key_Down);
-    m_codesToSpecialKeys.insert(QStringLiteral("home"), Qt::Key_Home);
-    m_codesToSpecialKeys.insert(QStringLiteral("end"), Qt::Key_End);
-    m_codesToSpecialKeys.insert(QStringLiteral("delete"), Qt::Key_Delete);
-    m_codesToSpecialKeys.insert(QStringLiteral("insert"), Qt::Key_Insert);
-    m_codesToSpecialKeys.insert(QStringLiteral("pageup"), Qt::Key_PageUp);
-    m_codesToSpecialKeys.insert(QStringLiteral("pagedown"), Qt::Key_PageDown);
+    m_codesToSpecialKeys = {
+        {QStringLiteral("backspace"), Qt::Key_Backspace},
+        {QStringLiteral("esc"), Qt::Key_Escape},
+        {QStringLiteral("return"), Qt::Key_Return},
+        {QStringLiteral("enter"), Qt::Key_Enter},
+        {QStringLiteral("left"), Qt::Key_Left},
+        {QStringLiteral("right"), Qt::Key_Right},
+        {QStringLiteral("up"), Qt::Key_Up},
+        {QStringLiteral("down"), Qt::Key_Down},
+        {QStringLiteral("home"), Qt::Key_Home},
+        {QStringLiteral("end"), Qt::Key_End},
+        {QStringLiteral("delete"), Qt::Key_Delete},
+        {QStringLiteral("insert"), Qt::Key_Insert},
+        {QStringLiteral("pageup"), Qt::Key_PageUp},
+        {QStringLiteral("pagedown"), Qt::Key_PageDown},
+    };
 }
 
 BaseTest::~BaseTest()
@@ -261,16 +265,15 @@ void BaseTest::DoTest2(int line,
 
 Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int startPos, int *destEndOfCodedModifier)
 {
-    for (auto it = m_codesToModifiers.constBegin(), end = m_codesToModifiers.constEnd(); it != end; ++it) {
-        const QString &modifierCode = it.key();
+    for (const auto &[code, modifier] : m_codesToModifiers) {
         // The "+2" is from the leading '\' and the trailing '-'
-        if (string.mid(startPos, modifierCode.length() + 2) == QStringLiteral("\\") + modifierCode + QStringLiteral("-")) {
+        if (string.mid(startPos, code.length() + 2) == QStringLiteral("\\") + code + QStringLiteral("-")) {
             if (destEndOfCodedModifier) {
                 // destEndOfCodeModifier lies on the trailing '-'.
-                *destEndOfCodedModifier = startPos + modifierCode.length() + 1;
+                *destEndOfCodedModifier = startPos + code.length() + 1;
                 Q_ASSERT(string[*destEndOfCodedModifier] == QLatin1Char('-'));
             }
-            return it.value();
+            return modifier;
         }
     }
     return Qt::NoModifier;
@@ -278,14 +281,13 @@ Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int sta
 
 Qt::Key BaseTest::parseCodedSpecialKey(const QString &string, int startPos, int *destEndOfCodedKey)
 {
-    for (auto it = m_codesToSpecialKeys.constBegin(), end = m_codesToSpecialKeys.constEnd(); it != end; ++it) {
-        const QString &specialKeyCode = it.key();
+    for (const auto &[specialKeyCode, specialKey] : m_codesToSpecialKeys) {
         // "+1" is for the leading '\'.
         if (string.mid(startPos, specialKeyCode.length() + 1) == QStringLiteral("\\") + specialKeyCode) {
             if (destEndOfCodedKey) {
                 *destEndOfCodedKey = startPos + specialKeyCode.length();
             }
-            return it.value();
+            return specialKey;
         }
     }
     return Qt::Key_unknown;
