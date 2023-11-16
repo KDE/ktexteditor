@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:37+0000\n"
+"POT-Creation-Date: 2023-11-16 01:44+0000\n"
 "PO-Revision-Date: 2023-11-11 15:59+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
@@ -34,22 +34,22 @@ msgstr "Най-добри съвпадения"
 msgid "Language keywords"
 msgstr "Езикови ключови думи"
 
-#: completion/katewordcompletion.cpp:75
+#: completion/katewordcompletion.cpp:74
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Автоматично завършване на думи"
 
-#: completion/katewordcompletion.cpp:303
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Shell Completion"
 msgstr "Автоматично завършване в обвивката"
 
-#: completion/katewordcompletion.cpp:308
+#: completion/katewordcompletion.cpp:307
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Повторно използване на думата по-горе"
 
-#: completion/katewordcompletion.cpp:314
+#: completion/katewordcompletion.cpp:313
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Повторно използване на думата отдолу"
@@ -4778,7 +4778,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Цветове на маркери"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1485
 #, kde-format
 msgid "Bookmark"
 msgstr "Отметка"
@@ -6092,76 +6092,76 @@ msgstr "Кодиране на текста, за съвместимост с URL
 msgid "Generate a new UUID."
 msgstr "Генериране на нов UUID."
 
-#: variableeditor/katehelpbutton.cpp:19
+#: variableeditor/variableeditor.cpp:37
 #, kde-format
 msgid "Kate Handbook."
 msgstr "Наръчник на Kate."
 
-#: variableeditor/variableeditor.cpp:168
+#: variableeditor/variableeditor.cpp:210
 #, kde-format
 msgid "true"
 msgstr "вярно"
 
-#: variableeditor/variableeditor.cpp:169
+#: variableeditor/variableeditor.cpp:211
 #, kde-format
 msgid "false"
 msgstr "невярно"
 
-#: variableeditor/variableeditor.cpp:305
+#: variableeditor/variableeditor.cpp:347
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "без"
 
-#: variableeditor/variableeditor.cpp:306
+#: variableeditor/variableeditor.cpp:348
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "модифицирани"
 
-#: variableeditor/variableeditor.cpp:307
+#: variableeditor/variableeditor.cpp:349
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "всички"
 
-#: variableeditor/variablelineedit.cpp:42
+#: variableeditor/variablelineedit.cpp:41
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "Показване на списък с валидни променливи."
 
-#: variableeditor/variablelineedit.cpp:115
+#: variableeditor/variablelineedit.cpp:114
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "Активиране на автоматичното вмъкване на скоби."
 
-#: variableeditor/variablelineedit.cpp:121
+#: variableeditor/variablelineedit.cpp:120
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "Задаване на броя на редовете за автоматично центриране."
 
-#: variableeditor/variablelineedit.cpp:126
+#: variableeditor/variablelineedit.cpp:125
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "Задаване на цвета на фона на документа."
 
-#: variableeditor/variablelineedit.cpp:131
+#: variableeditor/variablelineedit.cpp:130
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr ""
 "Натискане на backspace във водещи празни места води до премахване на отстъпа."
 
-#: variableeditor/variablelineedit.cpp:139
+#: variableeditor/variablelineedit.cpp:138
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "Активиране на блоково избиране."
 
-#: variableeditor/variablelineedit.cpp:144
+#: variableeditor/variablelineedit.cpp:143
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
@@ -6169,213 +6169,213 @@ msgstr ""
 "Активиране маркер на байтов последователност при записване на Unicode "
 "файлове."
 
-#: variableeditor/variablelineedit.cpp:149
+#: variableeditor/variablelineedit.cpp:148
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "Цвят за осветяване на скобите."
 
-#: variableeditor/variablelineedit.cpp:154
+#: variableeditor/variablelineedit.cpp:153
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "Цвят на фона за текущия ред."
 
-#: variableeditor/variablelineedit.cpp:160
+#: variableeditor/variablelineedit.cpp:159
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr "Речник по подразбиране, използван за проверка на правописа."
 
-#: variableeditor/variablelineedit.cpp:165
+#: variableeditor/variablelineedit.cpp:164
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "Активиране на динамично пренасяне на дълги редове."
 
-#: variableeditor/variablelineedit.cpp:172
+#: variableeditor/variablelineedit.cpp:171
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "Тип край на ред."
 
-#: variableeditor/variablelineedit.cpp:177
+#: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "Активиране на маркерите за свиване."
 
-#: variableeditor/variablelineedit.cpp:182
+#: variableeditor/variablelineedit.cpp:181
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "Активиране на предварителен преглед на свиването."
 
-#: variableeditor/variablelineedit.cpp:188
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "Размера на DPI на шрифта на документа."
 
-#: variableeditor/variablelineedit.cpp:193
+#: variableeditor/variablelineedit.cpp:192
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "Шрифт на документа."
 
-#: variableeditor/variablelineedit.cpp:209
+#: variableeditor/variablelineedit.cpp:208
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "Акцентиране на синтаксиса."
 
-#: variableeditor/variablelineedit.cpp:214
+#: variableeditor/variablelineedit.cpp:213
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "Цвят на лентата с икони."
 
-#: variableeditor/variablelineedit.cpp:219
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "Активиране на границата на икони."
 
-#: variableeditor/variablelineedit.cpp:224
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "Стил на автоматичното отстъпване."
 
-#: variableeditor/variablelineedit.cpp:229
+#: variableeditor/variablelineedit.cpp:228
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "Отстъп на текст, поставен от клипборда."
 
-#: variableeditor/variablelineedit.cpp:235
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "Дълбочината на отстъп за всяко ниво на отстъп."
 
-#: variableeditor/variablelineedit.cpp:240
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
 "Разрешаване на нечетно ниво на отстъп ( некратно на ширината на отстъп)."
 
-#: variableeditor/variablelineedit.cpp:245
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "Номера на редове."
 
-#: variableeditor/variablelineedit.cpp:250
+#: variableeditor/variablelineedit.cpp:249
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "Поставяне нов ред в края на файла при запис."
 
-#: variableeditor/variablelineedit.cpp:255
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "Активиране на презаписване в документа."
 
-#: variableeditor/variablelineedit.cpp:260
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "Активиране на постоянен избор на текст."
 
-#: variableeditor/variablelineedit.cpp:265
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "Заменяне на табулаторите с интервали при записване на документа."
 
-#: variableeditor/variablelineedit.cpp:270
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "Заместване на табулаторите с интервали."
 
-#: variableeditor/variablelineedit.cpp:275
+#: variableeditor/variablelineedit.cpp:274
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "Премахване на крайните интервали при записване документа."
 
-#: variableeditor/variablelineedit.cpp:280
+#: variableeditor/variablelineedit.cpp:279
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "Показване на карта на лентата за превъртане."
 
-#: variableeditor/variablelineedit.cpp:285
+#: variableeditor/variablelineedit.cpp:284
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "Показване на предварителен преглед в лентата за превъртане."
 
-#: variableeditor/variablelineedit.cpp:296
+#: variableeditor/variablelineedit.cpp:295
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "Задаване на цветовата схема."
 
-#: variableeditor/variablelineedit.cpp:301
+#: variableeditor/variablelineedit.cpp:300
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "Задаване на цвета за избор на текст."
 
-#: variableeditor/variablelineedit.cpp:306
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "Визуализиране на табулатори и крайни интервали."
 
-#: variableeditor/variablelineedit.cpp:311
+#: variableeditor/variablelineedit.cpp:310
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "Активиране на интелигентната home навигация."
 
-#: variableeditor/variablelineedit.cpp:316
+#: variableeditor/variablelineedit.cpp:315
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "Клавиш TAB дава отстъп на реда."
 
-#: variableeditor/variablelineedit.cpp:322
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "Ширина на табулатора ."
 
-#: variableeditor/variablelineedit.cpp:328
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
 "Задаване броя стъпки на отмяна за запомняне (0 е равно на безкрайност)."
 
-#: variableeditor/variablelineedit.cpp:334
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "Задаване на колоната за пренасяне."
 
-#: variableeditor/variablelineedit.cpp:339
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "Задаване на цвета на маркера за пренасяне."
 
-#: variableeditor/variablelineedit.cpp:344
+#: variableeditor/variablelineedit.cpp:343
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -7725,39 +7725,39 @@ msgstr "Деактивирано е camel case предвижване на ку�
 msgid "Camel case movement enabled"
 msgstr "Активирано е camel case предвижване на курсора"
 
-#: view/kateview.cpp:2211
+#: view/kateview.cpp:2217
 #, kde-format
 msgid "Search wrapped"
 msgstr "Търсенето завърши"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Align On"
 msgstr "Подравняване"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Шаблон на подравняване:"
 
-#: view/kateview.cpp:4842
+#: view/kateview.cpp:4855
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"
 
-#: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:991
+#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
+#: view/kateviewhelpers.cpp:992
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center> %1 <br/> &# x2014; <br/> %2 </center>"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid "Available Commands"
 msgstr "Налични команди"
 
-#: view/kateviewhelpers.cpp:1161
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7766,17 +7766,17 @@ msgstr ""
 "<p>За да получите помощ за дадена команда, напишете <code>help &lt;"
 "команда&gt;</code>.</p>"
 
-#: view/kateviewhelpers.cpp:1168
+#: view/kateviewhelpers.cpp:1169
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Няма помощ за \"%1\"."
 
-#: view/kateviewhelpers.cpp:1171
+#: view/kateviewhelpers.cpp:1172
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Няма такава команда \"%1\"."
 
-#: view/kateviewhelpers.cpp:1177
+#: view/kateviewhelpers.cpp:1178
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7789,37 +7789,37 @@ msgstr ""
 "въведете<code><b>help list</b></code> <br /> За помощ за отделни команди "
 "въведете<code><b>help &lt; команда &gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Няма такава команда: \"%1\""
 
-#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Грешка: Не е разрешен диапазон за команда\"%1\"."
 
-#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1279 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Успех: "
 
-#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1293 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Неуспешна команда \"%1\"."
 
-#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
+#: view/kateviewhelpers.cpp:2575 view/kateviewhelpers.cpp:2576
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Маркиране на тип %1"
 
-#: view/kateviewhelpers.cpp:2598
+#: view/kateviewhelpers.cpp:2599
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Стил по подразбиране"
 
-#: view/kateviewhelpers.cpp:2739
+#: view/kateviewhelpers.cpp:2740
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Деактивиране на лентата с пояснения"
@@ -8251,7 +8251,7 @@ msgstr "Маркерът е зададен: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Няма повече символи за следващата отметка."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:796
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

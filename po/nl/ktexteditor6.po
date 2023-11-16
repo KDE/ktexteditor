@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:37+0000\n"
+"POT-Creation-Date: 2023-11-16 01:44+0000\n"
 "PO-Revision-Date: 2023-11-14 10:24+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -32,22 +32,22 @@ msgstr "Beste overeenkomsten"
 msgid "Language keywords"
 msgstr "Sleutelwoorden in taal"
 
-#: completion/katewordcompletion.cpp:75
+#: completion/katewordcompletion.cpp:74
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Automatische woordaanvulling"
 
-#: completion/katewordcompletion.cpp:303
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Shell Completion"
 msgstr "Shell-aanvulling"
 
-#: completion/katewordcompletion.cpp:308
+#: completion/katewordcompletion.cpp:307
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Bovenstaand woord hergebruiken"
 
-#: completion/katewordcompletion.cpp:314
+#: completion/katewordcompletion.cpp:313
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Onderstaand woord hergebruiken"
@@ -4808,7 +4808,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Kleuren van markeringen"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1485
 #, kde-format
 msgid "Bookmark"
 msgstr "Bladwijzer"
@@ -6128,75 +6128,75 @@ msgstr "Tekst coderen om het URL-compatibel te maken."
 msgid "Generate a new UUID."
 msgstr "Een nieuwe UUID genereren."
 
-#: variableeditor/katehelpbutton.cpp:19
+#: variableeditor/variableeditor.cpp:37
 #, kde-format
 msgid "Kate Handbook."
 msgstr "Handboek van Kate."
 
-#: variableeditor/variableeditor.cpp:168
+#: variableeditor/variableeditor.cpp:210
 #, kde-format
 msgid "true"
 msgstr "waar"
 
-#: variableeditor/variableeditor.cpp:169
+#: variableeditor/variableeditor.cpp:211
 #, kde-format
 msgid "false"
 msgstr "onwaar"
 
-#: variableeditor/variableeditor.cpp:305
+#: variableeditor/variableeditor.cpp:347
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "geen"
 
-#: variableeditor/variableeditor.cpp:306
+#: variableeditor/variableeditor.cpp:348
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "gewijzigd"
 
-#: variableeditor/variableeditor.cpp:307
+#: variableeditor/variableeditor.cpp:349
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "allen"
 
-#: variableeditor/variablelineedit.cpp:42
+#: variableeditor/variablelineedit.cpp:41
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "Lijst met geldige variabelen tonen."
 
-#: variableeditor/variablelineedit.cpp:115
+#: variableeditor/variablelineedit.cpp:114
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "Automatische vierkante haakjes invoegen inschakelen."
 
-#: variableeditor/variablelineedit.cpp:121
+#: variableeditor/variablelineedit.cpp:120
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "Stelt het aantal autocentreer-regels in."
 
-#: variableeditor/variablelineedit.cpp:126
+#: variableeditor/variablelineedit.cpp:125
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "De achtergrondkleur van het document instellen."
 
-#: variableeditor/variablelineedit.cpp:131
+#: variableeditor/variablelineedit.cpp:130
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "Backspace-toets in eerste witruimte maakt inspringen ongedaan."
 
-#: variableeditor/variablelineedit.cpp:139
+#: variableeditor/variablelineedit.cpp:138
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "Blokselectiemodus inschakelen"
 
-#: variableeditor/variablelineedit.cpp:144
+#: variableeditor/variablelineedit.cpp:143
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
@@ -6204,141 +6204,141 @@ msgstr ""
 "Markering voor bytevolgorde (BOM) inschakelen bij opslaan van Unicode-"
 "bestanden."
 
-#: variableeditor/variablelineedit.cpp:149
+#: variableeditor/variablelineedit.cpp:148
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "Stel de kleur in voor de haakje-accentuering."
 
-#: variableeditor/variablelineedit.cpp:154
+#: variableeditor/variablelineedit.cpp:153
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "De achtergrondkleur instellen van de huidige regel."
 
-#: variableeditor/variablelineedit.cpp:160
+#: variableeditor/variablelineedit.cpp:159
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr ""
 "Het standaard woordenboek instellen dat wordt gebruikt voor spellingcontrole."
 
-#: variableeditor/variablelineedit.cpp:165
+#: variableeditor/variablelineedit.cpp:164
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "Dynamische regelafbreking inschakelen voor lange regels."
 
-#: variableeditor/variablelineedit.cpp:172
+#: variableeditor/variablelineedit.cpp:171
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "Stelt het einde van regelmodus in."
 
-#: variableeditor/variablelineedit.cpp:177
+#: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "Invouwmarkeringen inschakelen aan de rand van de tekstbewerker."
 
-#: variableeditor/variablelineedit.cpp:182
+#: variableeditor/variablelineedit.cpp:181
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "Voorbeeld van invouwen in de rand van bewerker."
 
-#: variableeditor/variablelineedit.cpp:188
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "Stelt de grootte van het lettertype van het document in in punten."
 
-#: variableeditor/variablelineedit.cpp:193
+#: variableeditor/variablelineedit.cpp:192
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "Het lettertype van het document instellen."
 
-#: variableeditor/variablelineedit.cpp:209
+#: variableeditor/variablelineedit.cpp:208
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "Syntaxisaccentuering instellen."
 
-#: variableeditor/variablelineedit.cpp:214
+#: variableeditor/variablelineedit.cpp:213
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "De kleur van de pictogrambalk instellen"
 
-#: variableeditor/variablelineedit.cpp:219
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "De pictogramrand inschakelen in de bewerkingsweergave."
 
-#: variableeditor/variablelineedit.cpp:224
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "De automatische inspringstijl instellen."
 
-#: variableeditor/variablelineedit.cpp:229
+#: variableeditor/variablelineedit.cpp:228
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "Inspringen van geplakte tekst van het klembord aanpassen."
 
-#: variableeditor/variablelineedit.cpp:235
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "De inspringdiepte voor elk inspringniveau instellen."
 
-#: variableeditor/variablelineedit.cpp:240
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
 "Merkwaardig inspringniveau toestaan (geen meervoud van inspringdiepte)."
 
-#: variableeditor/variablelineedit.cpp:245
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "Regelnummers tonen."
 
-#: variableeditor/variablelineedit.cpp:250
+#: variableeditor/variablelineedit.cpp:249
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "Nieuwe-regel aan het eind van het bestand bij opslaan invoegen."
 
-#: variableeditor/variablelineedit.cpp:255
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "Overschrijfmodus in het document inschakelen."
 
-#: variableeditor/variablelineedit.cpp:260
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "Blijvende tekstselectie inschakelen."
 
-#: variableeditor/variablelineedit.cpp:265
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "Tabs vervangen door spaties bij opslaan van het document."
 
-#: variableeditor/variablelineedit.cpp:270
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "Tabs vervangen door spaties."
 
-#: variableeditor/variablelineedit.cpp:275
+#: variableeditor/variablelineedit.cpp:274
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
@@ -6346,55 +6346,55 @@ msgstr ""
 "Spaties aan het einde van de regel bij het opslaan van het document "
 "verwijderen."
 
-#: variableeditor/variablelineedit.cpp:280
+#: variableeditor/variablelineedit.cpp:279
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "Schuifbalk met mini-weergave tonen"
 
-#: variableeditor/variablelineedit.cpp:285
+#: variableeditor/variablelineedit.cpp:284
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "Voorbeeld op schuifbalk tonen"
 
-#: variableeditor/variablelineedit.cpp:296
+#: variableeditor/variablelineedit.cpp:295
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "Kleurenschema instellen"
 
-#: variableeditor/variablelineedit.cpp:301
+#: variableeditor/variablelineedit.cpp:300
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "De kleur van de teskstselectie instellen."
 
-#: variableeditor/variablelineedit.cpp:306
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "Tabs en spaties aan het eind van de regel laten zien."
 
-#: variableeditor/variablelineedit.cpp:311
+#: variableeditor/variablelineedit.cpp:310
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "Intelligent navigeren naar de basismap inschakelen."
 
-#: variableeditor/variablelineedit.cpp:316
+#: variableeditor/variablelineedit.cpp:315
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "Indrukken van de Tab-toets laat inspringen."
 
-#: variableeditor/variablelineedit.cpp:322
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "Stelt de weergavewaarde van de tab in."
 
-#: variableeditor/variablelineedit.cpp:328
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
@@ -6402,19 +6402,19 @@ msgstr ""
 "Stelt het aantal te herinneren stappen voor ongedaan maken in (0 is geen "
 "limiet)."
 
-#: variableeditor/variablelineedit.cpp:334
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "Kolom voor regel afbreken instellen."
 
-#: variableeditor/variablelineedit.cpp:339
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "De kleur van de regelafbreekmarkering instellen."
 
-#: variableeditor/variablelineedit.cpp:344
+#: variableeditor/variablelineedit.cpp:343
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -7801,39 +7801,39 @@ msgstr "Cursorbeweging bij woorden beginnend met hoofdletters uitgeschakeld"
 msgid "Camel case movement enabled"
 msgstr "Cursorbeweging bij woorden beginnend met hoofdletters ingeschakeld"
 
-#: view/kateview.cpp:2211
+#: view/kateview.cpp:2217
 #, kde-format
 msgid "Search wrapped"
 msgstr "Regelafbreking in zoektekst"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Align On"
 msgstr "Uitlijnen op"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Uitlijnpatroon:"
 
-#: view/kateview.cpp:4842
+#: view/kateview.cpp:4855
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Bestand exporteren als HTML"
 
-#: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:991
+#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
+#: view/kateviewhelpers.cpp:992
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid "Available Commands"
 msgstr "Beschikbare commando's"
 
-#: view/kateviewhelpers.cpp:1161
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7842,17 +7842,17 @@ msgstr ""
 "<p>Voor hulp over een individueel commando, doe <code>'help &lt;"
 "commando&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1168
+#: view/kateviewhelpers.cpp:1169
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Geen hulp beschikbaar voor '%1'"
 
-#: view/kateviewhelpers.cpp:1171
+#: view/kateviewhelpers.cpp:1172
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Dit commando bestaat niet: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1177
+#: view/kateviewhelpers.cpp:1178
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7866,37 +7866,37 @@ msgstr ""
 "over individuele commando's, typ <code><b>help &lt;commando&gt;</b></code></"
 "p>"
 
-#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Dit commando bestaat niet: \"%1\""
 
-#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Fout: geen bereik toegestaan voor commando \"%1\""
 
-#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1279 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Succes: "
 
-#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1293 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "Commando \"%1\" is mislukt."
 
-#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
+#: view/kateviewhelpers.cpp:2575 view/kateviewhelpers.cpp:2576
 #, kde-format
 msgid "Mark Type %1"
 msgstr "Type %1 markeren"
 
-#: view/kateviewhelpers.cpp:2598
+#: view/kateviewhelpers.cpp:2599
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Standaard markeerstijl instellen"
 
-#: view/kateviewhelpers.cpp:2739
+#: view/kateviewhelpers.cpp:2740
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Annotatiebalk uitschakelen"
@@ -8330,7 +8330,7 @@ msgstr "Markering ingesteld: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "er zijn geen tekens meer voor de volgende bladwijzer."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:796
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

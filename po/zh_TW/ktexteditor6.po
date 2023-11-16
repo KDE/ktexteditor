@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:37+0000\n"
+"POT-Creation-Date: 2023-11-16 01:44+0000\n"
 "PO-Revision-Date: 2023-03-19 08:57+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -42,22 +42,22 @@ msgstr "最佳符合"
 msgid "Language keywords"
 msgstr "語言關鍵字"
 
-#: completion/katewordcompletion.cpp:75
+#: completion/katewordcompletion.cpp:74
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "自動文字補完"
 
-#: completion/katewordcompletion.cpp:303
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Shell Completion"
 msgstr "Shell 補完"
 
-#: completion/katewordcompletion.cpp:308
+#: completion/katewordcompletion.cpp:307
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "重新使用上方的單字"
 
-#: completion/katewordcompletion.cpp:314
+#: completion/katewordcompletion.cpp:313
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "重新使用下方的單字"
@@ -4608,7 +4608,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "標記顏色"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1485
 #, kde-format
 msgid "Bookmark"
 msgstr "書籤"
@@ -5893,285 +5893,285 @@ msgstr "編碼文字以使其與網址相容。"
 msgid "Generate a new UUID."
 msgstr "產生新 UUID。"
 
-#: variableeditor/katehelpbutton.cpp:19
+#: variableeditor/variableeditor.cpp:37
 #, kde-format
 msgid "Kate Handbook."
 msgstr "Kate 手冊。"
 
-#: variableeditor/variableeditor.cpp:168
+#: variableeditor/variableeditor.cpp:210
 #, kde-format
 msgid "true"
 msgstr "true"
 
-#: variableeditor/variableeditor.cpp:169
+#: variableeditor/variableeditor.cpp:211
 #, kde-format
 msgid "false"
 msgstr "false"
 
-#: variableeditor/variableeditor.cpp:305
+#: variableeditor/variableeditor.cpp:347
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "none"
 
-#: variableeditor/variableeditor.cpp:306
+#: variableeditor/variableeditor.cpp:348
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "modified"
 
-#: variableeditor/variableeditor.cpp:307
+#: variableeditor/variableeditor.cpp:349
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "all"
 
-#: variableeditor/variablelineedit.cpp:42
+#: variableeditor/variablelineedit.cpp:41
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "顯示合法變數清單。"
 
-#: variableeditor/variablelineedit.cpp:115
+#: variableeditor/variablelineedit.cpp:114
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "啟用自動插入括號"
 
-#: variableeditor/variablelineedit.cpp:121
+#: variableeditor/variablelineedit.cpp:120
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "設定自動置中的行數。"
 
-#: variableeditor/variablelineedit.cpp:126
+#: variableeditor/variablelineedit.cpp:125
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "設定文件背景顏色。"
 
-#: variableeditor/variablelineedit.cpp:131
+#: variableeditor/variablelineedit.cpp:130
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "在開頭的空白處按下 Backspace 鍵來減少縮排等級。"
 
-#: variableeditor/variablelineedit.cpp:139
+#: variableeditor/variablelineedit.cpp:138
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "開啟區塊選擇模式。"
 
-#: variableeditor/variablelineedit.cpp:144
+#: variableeditor/variablelineedit.cpp:143
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr "儲存萬國碼檔案時，開啟位元順序標記 (BOM)。"
 
-#: variableeditor/variablelineedit.cpp:149
+#: variableeditor/variablelineedit.cpp:148
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "設定突顯括號所使用的顏色。"
 
-#: variableeditor/variablelineedit.cpp:154
+#: variableeditor/variablelineedit.cpp:153
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "設定目前行使用的背景顏色。"
 
-#: variableeditor/variablelineedit.cpp:160
+#: variableeditor/variablelineedit.cpp:159
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr "設定用於拼字檢查的預設字典。"
 
-#: variableeditor/variablelineedit.cpp:165
+#: variableeditor/variablelineedit.cpp:164
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "開啟動態文字折行。"
 
-#: variableeditor/variablelineedit.cpp:172
+#: variableeditor/variablelineedit.cpp:171
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "設定行結尾模式。"
 
-#: variableeditor/variablelineedit.cpp:177
+#: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "開啟編輯器邊緣的折疊標記。"
 
-#: variableeditor/variablelineedit.cpp:182
+#: variableeditor/variablelineedit.cpp:181
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "啟用編輯器邊緣的折疊預覽。"
 
-#: variableeditor/variablelineedit.cpp:188
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "設定文件字型的大小。"
 
-#: variableeditor/variablelineedit.cpp:193
+#: variableeditor/variablelineedit.cpp:192
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "設定文件字型。"
 
-#: variableeditor/variablelineedit.cpp:209
+#: variableeditor/variablelineedit.cpp:208
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "設定語法突顯。"
 
-#: variableeditor/variablelineedit.cpp:214
+#: variableeditor/variablelineedit.cpp:213
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "設定圖示列顏色。"
 
-#: variableeditor/variablelineedit.cpp:219
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "開啟編輯器檢視中的圖示邊框。"
 
-#: variableeditor/variablelineedit.cpp:224
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "設定自動縮排樣式。"
 
-#: variableeditor/variablelineedit.cpp:229
+#: variableeditor/variablelineedit.cpp:228
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "從剪貼簿貼上文字時自動縮排。"
 
-#: variableeditor/variablelineedit.cpp:235
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "設定每個縮排等級的縮排深度。"
 
-#: variableeditor/variablelineedit.cpp:240
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr "允許單數縮排等級"
 
-#: variableeditor/variablelineedit.cpp:245
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "顯示行號。"
 
-#: variableeditor/variablelineedit.cpp:250
+#: variableeditor/variablelineedit.cpp:249
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "儲存時在檔案結尾加入斷行符號"
 
-#: variableeditor/variablelineedit.cpp:255
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "開啟文件覆寫模式。"
 
-#: variableeditor/variablelineedit.cpp:260
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "開啟文字持續選擇模式。"
 
-#: variableeditor/variablelineedit.cpp:265
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "儲存文件時將 tab 定位點取代為空白。"
 
-#: variableeditor/variablelineedit.cpp:270
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "將 tab 定位點取代為空白。"
 
-#: variableeditor/variablelineedit.cpp:275
+#: variableeditor/variablelineedit.cpp:274
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "儲存文件時去除尾端的空白。"
 
-#: variableeditor/variablelineedit.cpp:280
+#: variableeditor/variablelineedit.cpp:279
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "顯示捲軸列小地圖。"
 
-#: variableeditor/variablelineedit.cpp:285
+#: variableeditor/variablelineedit.cpp:284
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "顯示捲軸列預覽。"
 
-#: variableeditor/variablelineedit.cpp:296
+#: variableeditor/variablelineedit.cpp:295
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "設定配色。"
 
-#: variableeditor/variablelineedit.cpp:301
+#: variableeditor/variablelineedit.cpp:300
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "設定文字選擇顏色。"
 
-#: variableeditor/variablelineedit.cpp:306
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "讓定位點與尾端的空白可見。"
 
-#: variableeditor/variablelineedit.cpp:311
+#: variableeditor/variablelineedit.cpp:310
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "開啟智慧家導覽"
 
-#: variableeditor/variablelineedit.cpp:316
+#: variableeditor/variablelineedit.cpp:315
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "按下 tab 鍵縮排。"
 
-#: variableeditor/variablelineedit.cpp:322
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "設定縮排顯示寬度。"
 
-#: variableeditor/variablelineedit.cpp:328
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr "設定要記住的復原步數（0 表示無限）。"
 
-#: variableeditor/variablelineedit.cpp:334
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "設定自動換行欄位數。"
 
-#: variableeditor/variablelineedit.cpp:339
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "設定折行標記顏色。"
 
-#: variableeditor/variablelineedit.cpp:344
+#: variableeditor/variablelineedit.cpp:343
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -7501,57 +7501,57 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2211
+#: view/kateview.cpp:2217
 #, kde-format
 msgid "Search wrapped"
 msgstr "從另一端重新搜尋"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "對齊(&A)"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4842
+#: view/kateview.cpp:4855
 #, kde-format
 msgid "Export File as HTML"
 msgstr "匯出檔案為 HTML"
 
-#: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:991
+#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
+#: view/kateviewhelpers.cpp:992
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid "Available Commands"
 msgstr "可用的指令"
 
-#: view/kateviewhelpers.cpp:1161
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
 "p>"
 msgstr "<p>需要個別指令的協助，請使用 <code>'help &lt;command&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1168
+#: view/kateviewhelpers.cpp:1169
 #, kde-format
 msgid "No help for '%1'"
 msgstr "沒有「%1」的說明"
 
-#: view/kateviewhelpers.cpp:1171
+#: view/kateviewhelpers.cpp:1172
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "沒有這樣的指令 <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1177
+#: view/kateviewhelpers.cpp:1178
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7563,37 +7563,37 @@ msgstr ""
 "b></code><br />需要可以用指令的清單，輸入 <code><b>help list</b></code><br />"
 "需要個別制定的說明，輸入 <code><b>help &lt;command&gt;</b></code></p>"
 
-#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "沒有這樣的指令：「%1」"
 
-#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "錯誤：命令 %1 不允許有範圍。"
 
-#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1279 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "成功："
 
-#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1293 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "指令「%1」失敗。"
 
-#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
+#: view/kateviewhelpers.cpp:2575 view/kateviewhelpers.cpp:2576
 #, kde-format
 msgid "Mark Type %1"
 msgstr "標記類型 %1"
 
-#: view/kateviewhelpers.cpp:2598
+#: view/kateviewhelpers.cpp:2599
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "設定預設遮罩類型"
 
-#: view/kateviewhelpers.cpp:2739
+#: view/kateviewhelpers.cpp:2740
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "關閉註記列"
@@ -8010,7 +8010,7 @@ msgstr "標記設定：%1"
 msgid "There are no more chars for the next bookmark."
 msgstr "下一個書籤沒有更多字元了。"
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:796
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"

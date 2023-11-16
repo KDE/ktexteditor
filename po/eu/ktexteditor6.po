@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:37+0000\n"
+"POT-Creation-Date: 2023-11-16 01:44+0000\n"
 "PO-Revision-Date: 2023-10-22 14:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -39,22 +39,22 @@ msgstr "Egokien datozenak"
 msgid "Language keywords"
 msgstr "Hizkuntzaren gako-hitzak"
 
-#: completion/katewordcompletion.cpp:75
+#: completion/katewordcompletion.cpp:74
 #, kde-format
 msgid "Auto Word Completion"
 msgstr "Hitz osatze automatikoa"
 
-#: completion/katewordcompletion.cpp:303
+#: completion/katewordcompletion.cpp:302
 #, kde-format
 msgid "Shell Completion"
 msgstr "Shell osatzea"
 
-#: completion/katewordcompletion.cpp:308
+#: completion/katewordcompletion.cpp:307
 #, kde-format
 msgid "Reuse Word Above"
 msgstr "Berrerabili gaineko hitza"
 
-#: completion/katewordcompletion.cpp:314
+#: completion/katewordcompletion.cpp:313
 #, kde-format
 msgid "Reuse Word Below"
 msgstr "Berrerabili azpiko hitza"
@@ -4786,7 +4786,7 @@ msgstr ""
 msgid "Marker Colors"
 msgstr "Marken koloreak"
 
-#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1484
+#: syntax/katethemeconfig.cpp:324 view/kateviewhelpers.cpp:1485
 #, kde-format
 msgid "Bookmark"
 msgstr "Laster-marka"
@@ -6104,286 +6104,286 @@ msgstr "Kodetu testua URL bateragarria izan dadin."
 msgid "Generate a new UUID."
 msgstr "UUID berri bat sortu."
 
-#: variableeditor/katehelpbutton.cpp:19
+#: variableeditor/variableeditor.cpp:37
 #, kde-format
 msgid "Kate Handbook."
 msgstr "Kate-ren eskuliburua."
 
-#: variableeditor/variableeditor.cpp:168
+#: variableeditor/variableeditor.cpp:210
 #, kde-format
 msgid "true"
 msgstr "egia"
 
-#: variableeditor/variableeditor.cpp:169
+#: variableeditor/variableeditor.cpp:211
 #, kde-format
 msgid "false"
 msgstr "gezurra"
 
-#: variableeditor/variableeditor.cpp:305
+#: variableeditor/variableeditor.cpp:347
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "none"
 msgstr "bat ere ez"
 
-#: variableeditor/variableeditor.cpp:306
+#: variableeditor/variableeditor.cpp:348
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "modified"
 msgstr "Aldatua"
 
-#: variableeditor/variableeditor.cpp:307
+#: variableeditor/variableeditor.cpp:349
 #, kde-format
 msgctxt "value for variable remove-trailing-spaces"
 msgid "all"
 msgstr "guztia"
 
-#: variableeditor/variablelineedit.cpp:42
+#: variableeditor/variablelineedit.cpp:41
 #, kde-format
 msgid "Show list of valid variables."
 msgstr "Erakutsi aldagai baliodunen zerrenda."
 
-#: variableeditor/variablelineedit.cpp:115
+#: variableeditor/variablelineedit.cpp:114
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable automatic insertion of brackets."
 msgstr "Gaitu parentesien txertatze automatikoa."
 
-#: variableeditor/variablelineedit.cpp:121
+#: variableeditor/variablelineedit.cpp:120
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of autocenter lines."
 msgstr "Ezarri autoerdiratutako lerro kopurua."
 
-#: variableeditor/variablelineedit.cpp:126
+#: variableeditor/variablelineedit.cpp:125
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the document background color."
 msgstr "Ezarri dokumentuaren atz. planoko kolorea."
 
-#: variableeditor/variablelineedit.cpp:131
+#: variableeditor/variablelineedit.cpp:130
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing backspace in leading whitespace unindents."
 msgstr "Hasierako zuriuneetan Atzera tekla sakatzeak koska kentzen du."
 
-#: variableeditor/variablelineedit.cpp:139
+#: variableeditor/variablelineedit.cpp:138
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable block selection mode."
 msgstr "Gaitu blokeen hautapen modua."
 
-#: variableeditor/variablelineedit.cpp:144
+#: variableeditor/variablelineedit.cpp:143
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
 msgstr "Gaitu byte ordenaren marka (BOM) unicode fitxategiak gordetzean."
 
-#: variableeditor/variablelineedit.cpp:149
+#: variableeditor/variablelineedit.cpp:148
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color for the bracket highlight."
 msgstr "Ezarri parentesiak nabarmentzeko kolorea."
 
-#: variableeditor/variablelineedit.cpp:154
+#: variableeditor/variablelineedit.cpp:153
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the background color for the current line."
 msgstr "Ezarri uneko lerroaren atz. planoaren kolorea."
 
-#: variableeditor/variablelineedit.cpp:160
+#: variableeditor/variablelineedit.cpp:159
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
 msgstr "Ezarri hiztegi lehenetsia ortografia aztertzeko."
 
-#: variableeditor/variablelineedit.cpp:165
+#: variableeditor/variablelineedit.cpp:164
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable dynamic word wrap of long lines."
 msgstr "Gaitu lerro luzeen itzulbiratze dinamikoa."
 
-#: variableeditor/variablelineedit.cpp:172
+#: variableeditor/variablelineedit.cpp:171
 #, kde-format
 msgctxt "short translation please"
 msgid "Sets the end of line mode."
 msgstr "Lerro moduaren amaiera ezartzen du."
 
-#: variableeditor/variablelineedit.cpp:177
+#: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "Gaitu markatzaileak editorearen ertzean tolestea."
 
-#: variableeditor/variablelineedit.cpp:182
+#: variableeditor/variablelineedit.cpp:181
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "Gaitu tolestuen aurreikuspena editorearen ertzean."
 
-#: variableeditor/variablelineedit.cpp:188
+#: variableeditor/variablelineedit.cpp:187
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "Ezarri dokumentuaren letra-tipoaren puntuaren tamaina."
 
-#: variableeditor/variablelineedit.cpp:193
+#: variableeditor/variablelineedit.cpp:192
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "Ezarri dokumentuaren letra-tipoa."
 
-#: variableeditor/variablelineedit.cpp:209
+#: variableeditor/variablelineedit.cpp:208
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "Ezarri sintaxiaren nabarmentzea"
 
-#: variableeditor/variablelineedit.cpp:214
+#: variableeditor/variablelineedit.cpp:213
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "Ezarri ikono-barraren kolorea."
 
-#: variableeditor/variablelineedit.cpp:219
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "Gaitu ikonoaren ertza editorearen ikuspegian."
 
-#: variableeditor/variablelineedit.cpp:224
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "Ezarri koska automatiko estiloa."
 
-#: variableeditor/variablelineedit.cpp:229
+#: variableeditor/variablelineedit.cpp:228
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "Doitu arbeletik itsatsitako testuaren koska ipintzea."
 
-#: variableeditor/variablelineedit.cpp:235
+#: variableeditor/variablelineedit.cpp:234
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "Ezarri koskaren sakonera koskaren maila bakoitzarentzako."
 
-#: variableeditor/variablelineedit.cpp:240
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr "Baimendu koska maila bitxia (koska zabaleraren multiploa ez izatea)"
 
-#: variableeditor/variablelineedit.cpp:245
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "Erakutsi lerro-zenbakiak."
 
-#: variableeditor/variablelineedit.cpp:250
+#: variableeditor/variablelineedit.cpp:249
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "Txertatu lerro-berria fitxategiaren amaieran gordetzerakoan."
 
-#: variableeditor/variablelineedit.cpp:255
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "Gaitu gainidazteko modua dokumentuan."
 
-#: variableeditor/variablelineedit.cpp:260
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "Gaitu testuaren hautapen iraunkorra."
 
-#: variableeditor/variablelineedit.cpp:265
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "Ordeztu tabulazioak zuriuneekin dokumentua gordetzean."
 
-#: variableeditor/variablelineedit.cpp:270
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "Ordeztu tabulazioak zuriuneekin."
 
-#: variableeditor/variablelineedit.cpp:275
+#: variableeditor/variablelineedit.cpp:274
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "Kendu bukaerako zuriuneak dokumentua gordetzean."
 
-#: variableeditor/variablelineedit.cpp:280
+#: variableeditor/variablelineedit.cpp:279
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "Erakutsi labaintze-barrako mapa-txikia"
 
-#: variableeditor/variablelineedit.cpp:285
+#: variableeditor/variablelineedit.cpp:284
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "Erakutsi labaintze-barrako aurreikuspegia"
 
-#: variableeditor/variablelineedit.cpp:296
+#: variableeditor/variablelineedit.cpp:295
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "Ezarri kolore-eskema."
 
-#: variableeditor/variablelineedit.cpp:301
+#: variableeditor/variablelineedit.cpp:300
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "Ezarri testu hautapenaren kolorea."
 
-#: variableeditor/variablelineedit.cpp:306
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "Bistaratu tabulazioak eta bukaerako zuriuneak."
 
-#: variableeditor/variablelineedit.cpp:311
+#: variableeditor/variablelineedit.cpp:310
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "Gaitu etxeko nabigazio azkarra."
 
-#: variableeditor/variablelineedit.cpp:316
+#: variableeditor/variablelineedit.cpp:315
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "TAB tekla sakatzeak koska ipintzen du."
 
-#: variableeditor/variablelineedit.cpp:322
+#: variableeditor/variablelineedit.cpp:321
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "Ezarri tabulazioak erakutsiko duen zabalera."
 
-#: variableeditor/variablelineedit.cpp:328
+#: variableeditor/variablelineedit.cpp:327
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
 "Ezarri gogoratu beharreko desegin urrats kopurua (0 ipinita infinitua)."
 
-#: variableeditor/variablelineedit.cpp:334
+#: variableeditor/variablelineedit.cpp:333
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "Ezarri itzulbiratzeko zutabea."
 
-#: variableeditor/variablelineedit.cpp:339
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "Ezarri itzulbirako markatzailearen kolorea."
 
-#: variableeditor/variablelineedit.cpp:344
+#: variableeditor/variablelineedit.cpp:343
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
@@ -7762,39 +7762,39 @@ msgstr "Gamelu-kaxa mugimendua gaituta"
 # search wrapped: bilaketa zirkularra
 #
 # Dokumentuaren amaierara iritsita bilaketarekin jarraituko du dokumentuaren haseratik eta alderantziz atzeranzko noranzkoan bilatzerakoan, dokumentuaren haserara iritsita bilatzen jarraitzeko dokumentuaren amaieratik jarraituko du.
-#: view/kateview.cpp:2211
+#: view/kateview.cpp:2217
 #, kde-format
 msgid "Search wrapped"
 msgstr "Bilaketa zirkularra"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Align On"
 msgstr "Lerrokatu hemen"
 
-#: view/kateview.cpp:3737
+#: view/kateview.cpp:3749
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Lerrokatze eredua:"
 
-#: view/kateview.cpp:4842
+#: view/kateview.cpp:4855
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Esportatu fitxategia HTML gisa"
 
-#: view/kateviewhelpers.cpp:286 view/kateviewhelpers.cpp:331
-#: view/kateviewhelpers.cpp:991
+#: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
+#: view/kateviewhelpers.cpp:992
 #, kde-format
 msgctxt "from line - to line"
 msgid "<center>%1<br/>&#x2014;<br/>%2</center>"
 msgstr "<center>%1<br/>&#x2014;<br/>%2</center>"
 
-#: view/kateviewhelpers.cpp:1160
+#: view/kateviewhelpers.cpp:1161
 #, kde-format
 msgid "Available Commands"
 msgstr "Komando erabilgarriak"
 
-#: view/kateviewhelpers.cpp:1161
+#: view/kateviewhelpers.cpp:1162
 #, kde-format
 msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
@@ -7803,17 +7803,17 @@ msgstr ""
 "<p>Komando bati buruzko laguntza lortzeko, idatzi <code>'help &lt;"
 "komandoa&gt;'</code></p>"
 
-#: view/kateviewhelpers.cpp:1168
+#: view/kateviewhelpers.cpp:1169
 #, kde-format
 msgid "No help for '%1'"
 msgstr "Ez dago '%1'(r)i buruzko laguntzarik"
 
-#: view/kateviewhelpers.cpp:1171
+#: view/kateviewhelpers.cpp:1172
 #, kde-format
 msgid "No such command <b>%1</b>"
 msgstr "Ez dago halako komandorik: <b>%1</b>"
 
-#: view/kateviewhelpers.cpp:1177
+#: view/kateviewhelpers.cpp:1178
 #, kde-format
 msgid ""
 "<p>This is the Katepart <b>command line</b>.<br />Syntax: <code><b>command "
@@ -7827,37 +7827,37 @@ msgstr ""
 "buruzko laguntza lortzeko, idatzi <code><b>help &lt;komandoa&gt;</b></code></"
 "p>"
 
-#: view/kateviewhelpers.cpp:1265 vimode/emulatedcommandbar/commandmode.cpp:209
+#: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
 msgstr "Ez dago halako komandorik:  \"%1\""
 
-#: view/kateviewhelpers.cpp:1268 vimode/emulatedcommandbar/commandmode.cpp:191
+#: view/kateviewhelpers.cpp:1269 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
 msgstr "Errorea: ez da \"%1\" komandoaren barrutirik onartzen."
 
-#: view/kateviewhelpers.cpp:1278 vimode/emulatedcommandbar/commandmode.cpp:195
+#: view/kateviewhelpers.cpp:1279 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
 msgid "Success: "
 msgstr "Arrakastatsua:"
 
-#: view/kateviewhelpers.cpp:1292 vimode/emulatedcommandbar/commandmode.cpp:204
+#: view/kateviewhelpers.cpp:1293 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
 msgstr "\"%1\" komandoak huts egin du."
 
-#: view/kateviewhelpers.cpp:2574 view/kateviewhelpers.cpp:2575
+#: view/kateviewhelpers.cpp:2575 view/kateviewhelpers.cpp:2576
 #, kde-format
 msgid "Mark Type %1"
 msgstr "%1 motako marka"
 
-#: view/kateviewhelpers.cpp:2598
+#: view/kateviewhelpers.cpp:2599
 #, kde-format
 msgid "Set Default Mark Type"
 msgstr "Ezarri marka mota lehenetsia"
 
-#: view/kateviewhelpers.cpp:2739
+#: view/kateviewhelpers.cpp:2740
 #, kde-format
 msgid "Disable Annotation Bar"
 msgstr "Desgaitu oharpen-barra"
@@ -8289,7 +8289,7 @@ msgstr "Marka ezarri: %1"
 msgid "There are no more chars for the next bookmark."
 msgstr "Ez dago hurrengo laster-markarako karaktere gehiago."
 
-#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:796
+#: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
 #: vimode/modes/normalvimode.cpp:3559
 #, kde-format
 msgid "Nothing in register %1"
