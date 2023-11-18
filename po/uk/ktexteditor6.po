@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-17 01:36+0000\n"
-"PO-Revision-Date: 2023-11-14 07:47+0200\n"
+"PO-Revision-Date: 2023-11-17 08:35+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -7485,10 +7485,9 @@ msgid "Select Word Right"
 msgstr "Вибрати слово праворуч"
 
 #: view/kateview.cpp:1048
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Вставити позначене"
+msgstr "Почати позначення з позначкою"
 
 #: view/kateview.cpp:1049
 #, kde-format
@@ -7496,6 +7495,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Імітувати Emacs-подібний режим позначення, коли позначається початок, а "
+"потім неперервно оновлюється позначений фрагмент тексту."
 
 #: view/kateview.cpp:1054
 #, kde-format

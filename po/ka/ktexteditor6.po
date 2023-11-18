@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-17 01:36+0000\n"
-"PO-Revision-Date: 2023-11-15 05:59+0100\n"
+"PO-Revision-Date: 2023-11-17 09:29+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -7401,10 +7401,9 @@ msgid "Select Word Right"
 msgstr "მარჯვენა სიტყვის მონიშვნა"
 
 #: view/kateview.cpp:1048
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "მონიშნულის ჩასმა"
+msgstr "მონიშნულის დაწყება"
 
 #: view/kateview.cpp:1049
 #, kde-format
@@ -7412,6 +7411,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emacs-ის სტილის მონიშვნის რეჟიმის ემულაცია, სადაც მონიშნავთ მხოლოდ დასაწყისს "
+"და მონიშნული უწყვეტად ნახლდება."
 
 #: view/kateview.cpp:1054
 #, kde-format

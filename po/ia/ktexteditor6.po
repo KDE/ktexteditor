@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-17 01:36+0000\n"
-"PO-Revision-Date: 2023-11-14 08:57+0100\n"
+"PO-Revision-Date: 2023-11-17 10:27+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -7487,10 +7487,9 @@ msgid "Select Word Right"
 msgstr "Selige parola a dextera"
 
 #: view/kateview.cpp:1048
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Colla Selection"
+msgstr "Initia le Selection Marcate"
 
 #: view/kateview.cpp:1049
 #, kde-format
@@ -7498,6 +7497,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emula le modo de selection como-Emacs, ubi le initio es marcate e postea le "
+"selection es continuemente actualisate."
 
 #: view/kateview.cpp:1054
 #, kde-format

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-17 01:36+0000\n"
-"PO-Revision-Date: 2023-11-14 09:47+0100\n"
+"PO-Revision-Date: 2023-11-17 10:02+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -7502,10 +7502,9 @@ msgid "Select Word Right"
 msgstr "Selecciona una paraula a la dreta"
 
 #: view/kateview.cpp:1048
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Enganxa la selecció"
+msgstr "Inicia la selecció marcada"
 
 #: view/kateview.cpp:1049
 #, kde-format
@@ -7513,6 +7512,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emula el mode de selecció similar a l'Emacs, on es marca l'inici i després "
+"la selecció s'actualitza contínuament."
 
 #: view/kateview.cpp:1054
 #, kde-format
