@@ -12,8 +12,6 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
-#include <KEncodingProber>
-
 #include <functional>
 #include <map>
 #include <memory>
@@ -320,16 +318,6 @@ protected:
     void updateConfig() override;
 
 public:
-    KEncodingProber::ProberType proberType() const
-    {
-        return KEncodingProber::ProberType(value(EncodingProberType).toInt());
-    }
-
-    bool setProberType(KEncodingProber::ProberType type)
-    {
-        return setValue(EncodingProberType, type);
-    }
-
     QString fallbackEncoding() const
     {
         return value(FallbackEncoding).toString();

@@ -16,6 +16,7 @@
 
 #include <KConfigGroup>
 
+#include <KEncodingProber>
 #include <QGuiApplication>
 #include <QSettings>
 #include <QStringDecoder>

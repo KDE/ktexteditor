@@ -16,6 +16,7 @@
 #include "katesyntaxmanager.h"
 #include "ktexteditor/message.h"
 
+#include <KEncodingProber>
 #include <KLocalizedString>
 
 #include <QDate>
@@ -105,7 +106,8 @@ void KateBuffer::clear()
 bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
 {
     // first: setup fallback and normal encoding
-    setEncodingProberType(KateGlobalConfig::global()->proberType());
+    const auto proberType = (KEncodingProber::ProberType)KateGlobalConfig::global()->value(KateGlobalConfig::EncodingProberType).toInt();
+    setEncodingProberType(proberType);
     setFallbackTextCodec(KateGlobalConfig::global()->fallbackEncoding());
     setTextCodec(m_doc->config()->encoding());
 
@@ -210,7 +212,8 @@ bool KateBuffer::canEncode()
 bool KateBuffer::saveFile(const QString &m_file)
 {
     // first: setup fallback and normal encoding
-    setEncodingProberType(KateGlobalConfig::global()->proberType());
+    const auto proberType = (KEncodingProber::ProberType)KateGlobalConfig::global()->value(KateGlobalConfig::EncodingProberType).toInt();
+    setEncodingProberType(proberType);
     setFallbackTextCodec(KateGlobalConfig::global()->fallbackEncoding());
     setTextCodec(m_doc->config()->encoding());
 

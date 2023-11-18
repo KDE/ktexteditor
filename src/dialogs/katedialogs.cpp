@@ -50,6 +50,7 @@
 #include <KActionCollection>
 #include <KCharsets>
 #include <KColorCombo>
+#include <KEncodingProber>
 #include <KFontRequester>
 #include <KMessageBox>
 #include <KProcess>
@@ -1098,7 +1099,7 @@ void KateSaveConfigTab::apply()
     // set both standard and fallback encoding
     KateDocumentConfig::global()->setEncoding(KCharsets::charsets()->encodingForName(ui->cmbEncoding->currentText()));
 
-    KateGlobalConfig::global()->setProberType((KEncodingProber::ProberType)ui->cmbEncodingDetection->currentIndex());
+    KateGlobalConfig::global()->setValue(KateGlobalConfig::EncodingProberType, (KEncodingProber::ProberType)ui->cmbEncodingDetection->currentIndex());
     KateGlobalConfig::global()->setFallbackEncoding(KCharsets::charsets()->encodingForName(ui->cmbEncodingFallback->currentText()));
 
     KateDocumentConfig::global()->setEol(ui->cmbEOL->currentIndex());
@@ -1144,9 +1145,10 @@ void KateSaveConfigTab::reload()
     // encoding detection
     ui->cmbEncodingDetection->clear();
     bool found = false;
+    const auto proberType = (KEncodingProber::ProberType)KateGlobalConfig::global()->value(KateGlobalConfig::EncodingProberType).toInt();
     for (int i = 0; !KEncodingProber::nameForProberType((KEncodingProber::ProberType)i).isEmpty(); ++i) {
         ui->cmbEncodingDetection->addItem(KEncodingProber::nameForProberType((KEncodingProber::ProberType)i));
-        if (i == KateGlobalConfig::global()->proberType()) {
+        if (i == proberType) {
             ui->cmbEncodingDetection->setCurrentIndex(ui->cmbEncodingDetection->count() - 1);
             found = true;
         }
