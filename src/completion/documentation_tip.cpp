@@ -16,7 +16,6 @@ DocTip::DocTip(QWidget *parent)
     , m_textView(new QTextBrowser(this))
 {
     setFocusPolicy(Qt::NoFocus);
-    setWindowFlags(Qt::ToolTip | Qt::BypassGraphicsProxyWidget);
 
     m_textView->setFrameStyle(QFrame::Box | QFrame::Raised);
 
@@ -72,7 +71,7 @@ void DocTip::setWidget(QWidget *widget)
     Q_ASSERT(m_stack.count() == 1);
 }
 
-void DocTip::updatePosition()
+void DocTip::updatePosition(QWidget *completionWidget)
 {
     auto parent = parentWidget();
     if (!parent) {
@@ -80,38 +79,18 @@ void DocTip::updatePosition()
         return;
     }
 
-    const auto screen = parent->screen();
-    if (!screen) {
-        // No screen, no tooltips
-        return;
-    }
-
-    const auto screenRight = screen->availableGeometry().right();
-    auto parentRight = parent->geometry().right();
+    const auto parentRight = parent->geometry().right();
+    auto completionWidgetRight = completionWidget->geometry().right();
     constexpr int Margin = 8;
-
-    const bool wayland = KWindowSystem::isPlatformWayland();
 
     int x = 0;
     // is the completion widget too far right?
-    if ((parentRight + this->width()) > screenRight) {
-        // let's hope there is enough available space to the left of parent
-        x = (parent->x() - this->width()) - Margin;
+    if ((completionWidgetRight + this->width()) > parentRight) {
+        // let's hope there is enough available space to the left of completionWidget
+        x = (completionWidget->x() - this->width()) - Margin;
     } else {
         // we have enough space on the right
-        x = parent->x() + parent->width() + Margin;
+        x = completionWidget->x() + completionWidget->width() + Margin;
     }
-
-    if (x != this->x()) {
-        // On way land move() doesn't work, but if hide and then show again
-        // window is positioned correctly. This is a hack, and if there is
-        // a better solution, we can replace it
-        if (wayland) {
-            hide();
-            move(x, parent->y());
-            show();
-        } else {
-            move(x, parent->y());
-        }
-    }
+    move(x, completionWidget->y());
 }

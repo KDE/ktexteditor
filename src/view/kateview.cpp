@@ -251,6 +251,8 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     doc()->removeView(this);
     KTextEditor::EditorPrivate::self()->deregisterView(this);
 
+    delete m_completionWidget;
+
     // remove from xmlgui factory, to be safe
     if (factory()) {
         factory()->removeClient(this);

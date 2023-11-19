@@ -13,7 +13,7 @@ class DocTip final : public QFrame
 {
 public:
     explicit DocTip(QWidget *parent = nullptr);
-    void updatePosition();
+    void updatePosition(QWidget *completionWidget);
 
     QWidget *currentWidget();
 

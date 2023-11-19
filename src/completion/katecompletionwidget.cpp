@@ -11,6 +11,7 @@
 
 #include "kateconfig.h"
 #include "katedocument.h"
+#include "kateglobal.h"
 #include "katerenderer.h"
 #include "kateview.h"
 
@@ -32,8 +33,6 @@
 #include <QSizeGrip>
 #include <QTimer>
 #include <QToolButton>
-
-#include <KWindowSystem>
 
 const bool hideAutomaticCompletionOnExactMatch = true;
 
@@ -83,8 +82,9 @@ static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model,
 }
 
 KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
-    : QFrame(parent, Qt::ToolTip)
+    : QFrame(parent)
     , m_presentationModel(new KateCompletionModel(this))
+    , m_view(parent)
     , m_entryList(new KateCompletionTree(this))
     , m_argumentHintModel(new KateArgumentHintModel(this))
     , m_argumentHintTree(new KateArgumentHintTree(this))
@@ -101,9 +101,17 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_expandedAddedHeightBase(0)
     , m_lastInvocationType(KTextEditor::CodeCompletionModel::AutomaticInvocation)
 {
-    // setup initial config for presentation model
-    // FIXME: this was imported from the config dialog deactivated years ago
-    // without this setup either nothing shows or it segfaults
+    if (parent->mainWindow() != KTextEditor::EditorPrivate::self()->dummyMainWindow() && parent->mainWindow()->window()) {
+        setParent(parent->mainWindow()->window());
+    } else if (auto w = m_view->window()) {
+        setParent(w);
+    } else if (auto w = QApplication::activeWindow()) {
+        setParent(w);
+    } else {
+        setParent(parent);
+    }
+    m_docTip->setParent(this->parentWidget());
+    parentWidget()->installEventFilter(this);
 
     connect(parent, &KTextEditor::ViewPrivate::navigateAccept, this, &KateCompletionWidget::navigateAccept);
     connect(parent, &KTextEditor::ViewPrivate::navigateBack, this, &KateCompletionWidget::navigateBack);
@@ -114,14 +122,13 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     setFrameStyle(QFrame::Box | QFrame::Raised);
     setLineWidth(1);
-    // setWindowOpacity(0.8);
 
     m_entryList->setModel(m_presentationModel);
     m_entryList->setColumnWidth(0, 0); // These will be determined automatically in KateCompletionTree::resizeColumns
     m_entryList->setColumnWidth(1, 0);
     m_entryList->setColumnWidth(2, 0);
 
-    m_argumentHintTree->setParent(nullptr, Qt::ToolTip);
+    m_argumentHintTree->setParent(this->parentWidget());
     m_argumentHintTree->setModel(m_argumentHintModel);
 
     // trigger completion on double click on completion list
@@ -286,7 +293,7 @@ void KateCompletionWidget::rowsInserted(const QModelIndex &parent, int rowFrom, 
 
 KTextEditor::ViewPrivate *KateCompletionWidget::view() const
 {
-    return static_cast<KTextEditor::ViewPrivate *>(const_cast<QObject *>(parent()));
+    return m_view;
 }
 
 void KateCompletionWidget::argumentHintsChanged(bool hasContent)
@@ -357,17 +364,6 @@ void KateCompletionWidget::startCompletion(KTextEditor::Range word,
         KTextEditor::CodeCompletionModel *model = *it;
         if (!models.contains(model)) {
             models << model;
-        }
-    }
-
-    // Enable the cc box to move when the editor window is moved
-    if (auto viewWindow = view()->window(); m_windowToMoveWith != viewWindow) {
-        if (m_windowToMoveWith) {
-            m_windowToMoveWith->removeEventFilter(this);
-        }
-        m_windowToMoveWith = viewWindow;
-        if (m_windowToMoveWith) {
-            m_windowToMoveWith->installEventFilter(this);
         }
     }
 
@@ -531,34 +527,39 @@ void KateCompletionWidget::updatePosition(bool force)
     if (!completionRange()) {
         return;
     }
-    QPoint cursorPosition = view()->cursorToCoordinate(completionRange()->start());
-    if (cursorPosition == QPoint(-1, -1)) {
+    const QPoint localCursorCoord = view()->cursorToCoordinate(completionRange()->start());
+    if (localCursorCoord == QPoint(-1, -1)) {
         // Start of completion range is now off-screen -> abort
         abortCompletion();
         return;
     }
 
-    QPoint p = view()->mapToGlobal(cursorPosition);
+    const QPoint cursorCoordinate = view()->mapToGlobal(localCursorCoord);
+    QPoint p = cursorCoordinate;
     int x = p.x();
     int y = p.y();
 
     y += view()->renderer()->currentFontMetrics().height() + 2;
 
-    if (!KWindowSystem::isPlatformWayland()) {
-        const auto screenGeometry = view()->screen()->availableGeometry();
+    const auto windowGeometry = parentWidget()->geometry();
+    if (x + width() > windowGeometry.right()) {
+        // crossing right edge
+        x = windowGeometry.right() - width();
+    }
+    if (x < windowGeometry.left()) {
+        x = windowGeometry.left();
+    }
 
-        if (x + width() > screenGeometry.right()) {
-            x = screenGeometry.right() - width();
-        }
-
-        if (x < screenGeometry.left()) {
-            x = screenGeometry.left();
+    if (y + height() > windowGeometry.bottom()) {
+        // move above cursor if we are crossing the bottom
+        y -= height();
+        if (y + height() > cursorCoordinate.y()) {
+            y -= (y + height()) - cursorCoordinate.y();
+            y -= 2;
         }
     }
 
-    move(QPoint(x, y));
-
-    //   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry();
+    move(parentWidget()->mapFromGlobal(QPoint(x, y)));
 }
 
 void KateCompletionWidget::updateArgumentHintGeometry()
@@ -668,15 +669,6 @@ void KateCompletionWidget::updateHeight()
         // Reason: Qt seems to apply slightly wrong sizes when the completion-widget is moved out of the screen at the bottom,
         //        which completely breaks this algorithm. Solution: re-use the old base-size if it only slightly differs from the computed one.
         baseHeight = m_expandedAddedHeightBase;
-    }
-
-    int screenBottom = view()->screen()->availableGeometry().bottom();
-
-    // Limit the height to the bottom of the screen
-    int bottomPosition = baseHeight + newExpandingAddedHeight + geometry().top();
-
-    if (bottomPosition > screenBottom) {
-        newExpandingAddedHeight -= bottomPosition - (screenBottom);
     }
 
     int finalHeight = baseHeight + newExpandingAddedHeight;
@@ -821,11 +813,6 @@ void KateCompletionWidget::abortCompletion()
     }
 
     bool wasActive = isCompletionActive();
-
-    if (hasFocus()) {
-        view()->activateWindow();
-        view()->setFocus();
-    }
 
     clear();
 
@@ -1173,21 +1160,18 @@ void KateCompletionWidget::showDocTip(const QModelIndex &idx)
         m_docTip->setText(text);
     }
 
-    m_docTip->updatePosition();
-    m_docTip->show();
+    m_docTip->updatePosition(this);
+    if (!m_docTip->isVisible()) {
+        m_docTip->show();
+    }
 }
 
 bool KateCompletionWidget::eventFilter(QObject *watched, QEvent *event)
 {
-    bool ret = QFrame::eventFilter(watched, event);
-
-    if (watched != this) {
-        if (event->type() == QEvent::Move) {
-            updatePosition();
-        }
+    if (watched != this && event->type() == QEvent::Resize && isCompletionActive()) {
+        abortCompletion();
     }
-
-    return ret;
+    return QFrame::eventFilter(watched, event);
 }
 
 bool KateCompletionWidget::navigateDown()

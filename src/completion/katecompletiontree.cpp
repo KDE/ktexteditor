@@ -94,7 +94,7 @@ void KateCompletionTree::resizeColumnsSlot()
         resizeColumns();
 
         if (!widget()->docTip()->isHidden()) {
-            widget()->docTip()->updatePosition();
+            widget()->docTip()->updatePosition(widget());
         }
     }
 }
@@ -185,7 +185,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     auto totalColumnsWidth = 0;
     auto originalViewportWidth = viewport()->width();
 
-    const int maxWidth = (widget()->view()->screen()->availableGeometry().width()) / 2;
+    const int maxWidth = (widget()->parentWidget()->geometry().width()) / 2;
 
     /// Step 2: Update column-sizes
     // This contains several hacks to reduce the amount of resizing that happens. Generally,

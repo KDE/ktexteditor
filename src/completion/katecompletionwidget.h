@@ -122,7 +122,6 @@ public:
     QWidget *currentEmbeddedWidget();
 
     void updatePosition(bool force = false);
-
     bool eventFilter(QObject *watched, QEvent *event) override;
 
     KateArgumentHintTree *argumentHintTree() const;
@@ -206,6 +205,7 @@ private:
 
     KTextEditor::Cursor m_lastCursorPosition;
 
+    KTextEditor::ViewPrivate *m_view;
     KateCompletionTree *m_entryList;
     KateArgumentHintModel *m_argumentHintModel;
     KateArgumentHintTree *m_argumentHintTree;
@@ -216,8 +216,6 @@ private:
     KTextEditor::Cursor m_automaticInvocationAt;
     QString m_automaticInvocationLine;
     int m_automaticInvocationDelay;
-
-    QPointer<QWidget> m_windowToMoveWith;
 
     bool m_lastInsertionByUser;
     bool m_inCompletionList; // Are we in the completion-list? If not, we're in the argument-hint list
