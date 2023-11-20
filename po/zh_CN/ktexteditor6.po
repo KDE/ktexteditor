@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-19 01:51+0000\n"
-"PO-Revision-Date: 2023-11-11 07:19\n"
+"PO-Revision-Date: 2023-11-19 03:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -2987,12 +2987,10 @@ msgid "Go to Next Paragraph"
 msgstr ""
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "转到上一个编辑位置"
+msgstr ""
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3074,12 +3072,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "向上复制选中的行"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "向上复制选中的行"
+msgstr ""
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -7149,10 +7145,9 @@ msgid "Select Word Right"
 msgstr "选择右边整词"
 
 #: view/kateview.cpp:1048
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "粘贴选中内容"
+msgstr ""
 
 #: view/kateview.cpp:1049
 #, kde-format

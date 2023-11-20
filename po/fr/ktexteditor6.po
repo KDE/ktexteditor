@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-19 01:51+0000\n"
-"PO-Revision-Date: 2023-11-15 12:47+0100\n"
+"PO-Revision-Date: 2023-11-18 10:12+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -7794,10 +7794,9 @@ msgid "Select Word Right"
 msgstr "Sélectionner le mot à droite"
 
 #: view/kateview.cpp:1048
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Coller la sélection"
+msgstr "Démarrer à la sélection marquée"
 
 #: view/kateview.cpp:1049
 #, kde-format
@@ -7805,6 +7804,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Émulez le mode de sélection de type « Emacs », où le début est marqué, puis "
+"la sélection est continuellement mise à jour."
 
 #: view/kateview.cpp:1054
 #, kde-format
