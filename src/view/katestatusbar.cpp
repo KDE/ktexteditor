@@ -117,7 +117,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     // show the zoom level of the text
     m_zoomLevel = new StatusBarButton(this);
     topLayout->addWidget(m_zoomLevel);
-    connect(m_zoomLevel, &StatusBarButton::clicked, [=] {
+    connect(m_zoomLevel, &StatusBarButton::clicked, [this] {
         m_view->renderer()->resetFontSizes();
     });
 
@@ -125,7 +125,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_inputMode = new StatusBarButton(this);
     topLayout->addWidget(m_inputMode);
     m_inputMode->setWhatsThis(i18n("Insert mode and VI input mode indicator. Click to change the mode."));
-    connect(m_inputMode, &StatusBarButton::clicked, [=] {
+    connect(m_inputMode, &StatusBarButton::clicked, [this] {
         m_view->currentInputMode()->toggleInsert();
     });
 

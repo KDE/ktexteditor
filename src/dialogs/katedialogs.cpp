@@ -500,7 +500,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     observeChanges(ui->chkStaticWordWrap);
     observeChanges(ui->cmbEncloseSelection);
     ui->lblBracketHelp->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
-    connect(ui->cmbEncloseSelection->lineEdit(), &QLineEdit::editingFinished, [=] {
+    connect(ui->cmbEncloseSelection->lineEdit(), &QLineEdit::editingFinished, [this] {
         const int index = ui->cmbEncloseSelection->currentIndex();
         const QString text = ui->cmbEncloseSelection->currentText();
         // Text removed? Remove item, but don't remove default data!
