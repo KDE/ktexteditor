@@ -5,8 +5,6 @@
 */
 #include "documentation_tip.h"
 
-#include <KWindowSystem>
-
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QScreen>

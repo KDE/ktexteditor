@@ -19,8 +19,6 @@
 #include <QScreen>
 #include <QScrollBar>
 
-#include <KWindowSystem>
-
 class ArgumentHintDelegate : public KateCompletionDelegate
 {
 public:
@@ -188,10 +186,9 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
     }
 
     bool resized = false;
-    if (!KWindowSystem::isPlatformWayland()) {
-        if (geom.right() > screenGeometry.right()) {
-            geom.moveRight(screenGeometry.right());
-        }
+    if (geom.right() > screenGeometry.right()) {
+        geom.moveRight(screenGeometry.right());
+    }
 
         if (geom.left() < screenGeometry.left()) {
             geom.moveLeft(screenGeometry.left());
@@ -204,7 +201,6 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
             geom.moveTo(geom.left(), screenGeometry.top());
             resized = true;
         }
-    }
 
     if (geom != geometry()) {
         setUpdatesEnabled(false);
