@@ -19,8 +19,10 @@
 #include <QDebug>
 #include <QFileDialog>
 #include <QGraphicsDropShadowEffect>
+#include <QImageWriter>
 #include <QLabel>
 #include <QMenu>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPushButton>
@@ -371,7 +373,12 @@ void ScreenshotDialog::onSaveClicked()
     if (name.isEmpty()) {
         return;
     }
-    m_base->grabPixmap().save(name);
+
+    QImageWriter writer(name);
+    writer.write(m_base->grabPixmap().toImage());
+    if (!writer.errorString().isEmpty()) {
+        QMessageBox::warning(this, i18nc("@title:window", "Screenshot saving failed"), i18n("Screenshot saving failed: %1", writer.errorString()));
+    }
 }
 
 void ScreenshotDialog::onCopyClicked()
