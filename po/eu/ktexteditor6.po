@@ -13,15 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
-"PO-Revision-Date: 2023-10-22 14:27+0200\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
+"PO-Revision-Date: 2023-11-26 01:35+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -3119,15 +3119,13 @@ msgstr "Eraman kurtsorea bat datorren hurrengo koskara"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Joan hurrengo paragrafora"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Joan editatzeko aurreko puntura"
+msgstr "Joan aurreko paragrafora"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3209,12 +3207,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Bikoiztu hautatutako lerroak goian"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Bikoiztu hautatutako lerroak goian"
+msgstr "Bikoiztu hautatutako testua"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -4638,7 +4634,7 @@ msgstr "Hondoko azalera"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Ikono ertzen hondoko kolorea ezartzen du.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr "Lerro-zenbakiak"
@@ -7458,10 +7454,9 @@ msgid "Select Word Right"
 msgstr "Hautatu hitza eskuinera"
 
 #: view/kateview.cpp:1050
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Itsatsi hautapena"
+msgstr "Abiatu markatutako hautapena"
 
 #: view/kateview.cpp:1051
 #, kde-format
@@ -7469,6 +7464,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emulatu «Emacs»en antzeko hautapen modua, non hasiera markatzen den, eta "
+"hondoren, hautapena era jarraian eguneratzen den."
 
 #: view/kateview.cpp:1056
 #, kde-format
@@ -7875,55 +7872,66 @@ msgstr "Ezarri marka mota lehenetsia"
 msgid "Disable Annotation Bar"
 msgstr "Desgaitu oharpen-barra"
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, kde-format
 msgid "Save"
 msgstr "Gorde"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, kde-format
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, kde-format
 msgid "Background Color..."
 msgstr "Hondoko kolorea..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "Erakutsi leiho-apaingarri gehigarriak"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "Erakutsi leiho-apaingarriak"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr "Pantaila-argazkia..."
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "Ez erakutsi lerro-zenbakiak"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "Erakutsi lerro-zenbakiak 1etik"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Erakutsi benetako lerro-zenbakiak"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, kde-format
 msgid "Save..."
 msgstr "Gorde..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format

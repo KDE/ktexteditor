@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
-"PO-Revision-Date: 2023-11-19 03:37\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
+"PO-Revision-Date: 2023-11-25 02:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -622,13 +622,13 @@ msgstr "如果您在输入这些字符时已经选中了文本，它们将环绕
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "启用无障碍辅助通知"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "无障碍辅助："
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -2984,13 +2984,13 @@ msgstr "移动光标至下一个匹配的缩进"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "跳转到下一段落"
 
 #: script/data/commands/navigation.js:13
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr ""
+msgstr "跳转到上一段落"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3075,7 +3075,7 @@ msgstr "向上复制选中的行"
 #, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr ""
+msgstr "复制选中的文本"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -4456,7 +4456,7 @@ msgstr "背景区域"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>设置图标边框的背景色。</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr "行号"
@@ -7147,7 +7147,7 @@ msgstr "选择右边整词"
 #: view/kateview.cpp:1050
 #, kde-format
 msgid "Start the Marked Selection"
-msgstr ""
+msgstr "开始已标记的选择范围"
 
 #: view/kateview.cpp:1051
 #, kde-format
@@ -7155,6 +7155,7 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"模拟类似 Emacs 的选择模式。此模式在标记选区的开始位置后，选区范围将持续更新。"
 
 #: view/kateview.cpp:1056
 #, kde-format
@@ -7548,55 +7549,66 @@ msgstr "设定默认标记类型"
 msgid "Disable Annotation Bar"
 msgstr "禁用批注栏"
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, kde-format
 msgid "Save"
 msgstr "保存"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, kde-format
 msgid "Copy"
 msgstr "复制"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, kde-format
 msgid "Background Color..."
 msgstr "背景颜色..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "显示额外装饰"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "显示窗口装饰"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr "截图..."
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "不显示行号"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "显示从 1 开始的行号"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "显示实际行号"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, kde-format
 msgid "Save..."
 msgstr "保存..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format

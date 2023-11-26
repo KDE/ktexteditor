@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
 "PO-Revision-Date: 2023-03-16 12:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -4533,7 +4533,7 @@ msgstr "منطقة الخلفيّة"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>يضبط لون خلفيّة حدّ الأيقونات.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr "أرقام الأسطر"
@@ -7686,64 +7686,75 @@ msgstr ""
 msgid "Disable Annotation Bar"
 msgstr ""
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
 #| msgid "Open/Save"
 msgid "Save"
 msgstr "الفتح/الحفظ"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, fuzzy, kde-format
 #| msgid "&Copy..."
 msgid "Copy"
 msgstr "ا&نسخ…"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
 msgid "Background Color..."
 msgstr "لون ال&خلفيّة..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Show Extra Decorations"
 msgstr "تزيينات النّصّ"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "أظهر أسطر ال&إزاحة"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr ""
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "أظهر أر&قام الأسطر"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "أظهر أر&قام الأسطر"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "أظهر أر&قام الأسطر"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgid "Save..."
 msgstr "ا&حفظ ك‍..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format

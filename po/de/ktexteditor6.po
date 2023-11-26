@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
 "PO-Revision-Date: 2023-08-14 21:56+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -4689,7 +4689,7 @@ msgstr "Hintergrundbereich"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Legt die Hintergrundfarbe für den Symbolrand fest.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr "Zeilennummern"
@@ -7961,55 +7961,66 @@ msgstr "Standard-Markierungstyp festlegen"
 msgid "Disable Annotation Bar"
 msgstr "Anmerkungsleiste deaktivieren"
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, kde-format
 msgid "Save"
 msgstr "Speichern"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, kde-format
 msgid "Copy"
 msgstr "Kopieren"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, kde-format
 msgid "Background Color..."
 msgstr "Hintergrundfarbe ..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "Zusätzliche Dekoration anzeigen"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "Fensterdekoration anzeigen"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr "Bildschirmfoto ..."
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "Zeilennummern ausblenden"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "Zeilennummern bei 1 beginnen"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Tatsächliche Zeilennummern anzeigen"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, kde-format
 msgid "Save..."
 msgstr "Speichern ..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format

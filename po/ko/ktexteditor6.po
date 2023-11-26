@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
 "PO-Revision-Date: 2023-08-28 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -4534,7 +4534,7 @@ msgstr "배경 영역"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>아이콘 경계의 배경색을 설정합니다.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr "줄 번호"
@@ -7675,55 +7675,66 @@ msgstr "기본 표시 형식 선택"
 msgid "Disable Annotation Bar"
 msgstr "주석 표시줄 끄기"
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, kde-format
 msgid "Save"
 msgstr "저장"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, kde-format
 msgid "Copy"
 msgstr "복사"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, kde-format
 msgid "Background Color..."
 msgstr "배경색..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "추가 장식 표시"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "창 장식 표시"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr "스크린샷..."
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "줄 번호 표시하지 않기"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "1부터 줄 번호 표시"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "실제 줄 번호 표시"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, kde-format
 msgid "Save..."
 msgstr "저장..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format

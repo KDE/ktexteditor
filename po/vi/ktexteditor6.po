@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -4613,7 +4613,7 @@ msgstr "Vùng nền"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Đặt màu nền của viền biểu tượng.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr "Số thứ tự dòng"
@@ -7819,64 +7819,75 @@ msgstr "Đặt kiểu chỉ dấu mặc định"
 msgid "Disable Annotation Bar"
 msgstr "Tắt thanh chú dẫn"
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
 #| msgid "Open/Save"
 msgid "Save"
 msgstr "Mở/Lưu"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, fuzzy, kde-format
 #| msgid "&Copy..."
 msgid "Copy"
 msgstr "&Chép..."
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
 msgid "Background Color..."
 msgstr "Màu &nền..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Show Extra Decorations"
 msgstr "Trang trí văn bản"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "Hiện các &mốc thụt lề"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr ""
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "Hiện &số thứ tự dòng"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "Hiện &số thứ tự dòng"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Hiện &số thứ tự dòng"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgid "Save..."
 msgstr "&Lưu thành..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format

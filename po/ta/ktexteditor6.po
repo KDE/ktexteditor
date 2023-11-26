@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
 "PO-Revision-Date: 2023-10-22 17:14+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -4584,7 +4584,7 @@ msgstr "பின்னணி"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>தொகுக்கும் பரப்பின் பின்னணி வண்ணத்தை அமை</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, fuzzy, kde-format
 #| msgid "Line numbers:"
 msgid "Line Numbers"
@@ -7850,64 +7850,75 @@ msgstr "முன்னிருப்பு குறி வகையை அம
 msgid "Disable Annotation Bar"
 msgstr ""
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
 #| msgid "Open/Save"
 msgid "Save"
 msgstr "திறப்பது/சேமிப்பது"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Copy"
 msgstr "கோப்பினைச் சேமி..."
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
 msgid "Background Color..."
 msgstr "&பின்னணி வண்ணம்..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, fuzzy, kde-format
 #| msgid "Selection Mode"
 msgid "Show Extra Decorations"
 msgstr "தேர்ந்தெடுப்பு வகை"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "&முன்னிடைவெளிக்கான கோடுகளை காட்டு"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
 msgstr ""
 
-#: view/screenshotdialog.cpp:218
+#: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "வரி எண்ணைக் காட்டு"
 
-#: view/screenshotdialog.cpp:219
+#: view/screenshotdialog.cpp:221
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "வரி எண்ணைக் காட்டு"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:222
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "வரி எண்ணைக் காட்டு"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgid "Save..."
 msgstr "வேறு &பெயரில் சேமி..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, fuzzy, kde-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:33+0000\n"
+"POT-Creation-Date: 2023-11-26 01:58+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -4351,7 +4351,7 @@ msgstr "Rûerd"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:226
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
 msgstr ""
@@ -7406,60 +7406,71 @@ msgstr ""
 msgid "Disable Annotation Bar"
 msgstr ""
 
-#: view/screenshotdialog.cpp:136
+#: view/screenshotdialog.cpp:138
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save"
 msgstr "Pelî Tomar Bike"
 
-#: view/screenshotdialog.cpp:137
+#: view/screenshotdialog.cpp:139
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Copy"
 msgstr "Pelî &Tomar bike Wekî..."
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 msgid "Background Color..."
 msgstr "Rûerd"
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:142
 #, fuzzy, kde-format
 msgid "Show Extra Decorations"
 msgstr "Moda Hilbijartinê"
 
-#: view/screenshotdialog.cpp:141
+#: view/screenshotdialog.cpp:143
 #, fuzzy, kde-format
 msgid "Show Window Decorations"
 msgstr "Moda Hilbijartinê"
 
-#: view/screenshotdialog.cpp:146
+#: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
-
-#: view/screenshotdialog.cpp:218
-#, fuzzy, kde-format
-#| msgid "Current line:"
-msgid "Don't Show Line Numbers"
-msgstr "Rêzika aniha:"
-
-#: view/screenshotdialog.cpp:219
-#, kde-format
-msgid "Show Line Numbers From 1"
 msgstr ""
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
 #| msgid "Current line:"
+msgid "Don't Show Line Numbers"
+msgstr "Rêzika aniha:"
+
+#: view/screenshotdialog.cpp:221
+#, kde-format
+msgid "Show Line Numbers From 1"
+msgstr ""
+
+#: view/screenshotdialog.cpp:222
+#, fuzzy, kde-format
+#| msgid "Current line:"
 msgid "Show Actual Line Numbers"
 msgstr "Rêzika aniha:"
 
-#: view/screenshotdialog.cpp:370
+#: view/screenshotdialog.cpp:372
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Save..."
 msgstr "Pelî &Tomar bike Wekî..."
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgctxt "@title:window"
+msgid "Screenshot saving failed"
+msgstr ""
+
+#: view/screenshotdialog.cpp:380
+#, kde-format
+msgid "Screenshot saving failed: %1"
+msgstr ""
 
 #: vimode/appcommands.cpp:67
 #, kde-format
