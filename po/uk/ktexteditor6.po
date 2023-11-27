@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-26 01:58+0000\n"
-"PO-Revision-Date: 2023-11-17 08:35+0200\n"
+"PO-Revision-Date: 2023-11-26 08:58+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -7953,12 +7953,12 @@ msgstr "Зберегти…"
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Не вдалося зберегти знімок"
 
 #: view/screenshotdialog.cpp:380
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Не вдалося зберегти знімок: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format

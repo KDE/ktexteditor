@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-26 01:58+0000\n"
-"PO-Revision-Date: 2023-11-18 01:50+0100\n"
+"PO-Revision-Date: 2023-11-27 00:43+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -7989,12 +7989,12 @@ msgstr "Guardar..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Fallo al guardar la captura de pantalla"
 
 #: view/screenshotdialog.cpp:380
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "No se ha podido guardar la captura de pantalla: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format

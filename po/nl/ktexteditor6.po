@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-26 01:58+0000\n"
-"PO-Revision-Date: 2023-11-17 10:54+0100\n"
+"PO-Revision-Date: 2023-11-26 14:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -7969,12 +7969,12 @@ msgstr "Opslaan..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Schermafdruk opslaan is mislukt"
 
 #: view/screenshotdialog.cpp:380
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Schermafdruk opslaan is mislukt: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format

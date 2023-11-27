@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-26 01:58+0000\n"
-"PO-Revision-Date: 2023-11-17 10:02+0100\n"
+"PO-Revision-Date: 2023-11-26 10:52+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -7983,12 +7983,12 @@ msgstr "Guarda..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "No s'ha pogut guardar la captura de pantalla"
 
 #: view/screenshotdialog.cpp:380
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "No s'ha pogut guardar la captura de pantalla: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
