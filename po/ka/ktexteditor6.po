@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-26 01:58+0000\n"
-"PO-Revision-Date: 2023-11-17 09:29+0100\n"
+"PO-Revision-Date: 2023-11-27 03:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -7868,12 +7868,12 @@ msgstr "შენახვა..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდის შენახვა ჩავარდა"
 
 #: view/screenshotdialog.cpp:380
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდის შენახვა ჩავარდა: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
