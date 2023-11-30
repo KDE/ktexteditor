@@ -354,11 +354,14 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
     flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
     flags.setFlag(KateRenderer::SkipDrawLineSelection);
     int lineNo = m_absoluteLineNumbers ? 1 : startLine + 1;
+    paint.setFont(renderer.currentFont());
     for (auto &lineLayout : lineLayouts) {
         renderer.paintTextLine(paint, lineLayout.get(), xStart, xEnd, QRectF{}, nullptr, flags);
         // draw line number
         if (lineNoAreaWidth != 0) {
-            paint.drawText(QRect(leftMargin - lnNoAreaSpacing, 0, lineNoAreaWidth, renderer.lineHeight()), Qt::AlignRight, QString::number(lineNo++));
+            paint.drawText(QRect(leftMargin - lnNoAreaSpacing, 0, lineNoAreaWidth, renderer.lineHeight()),
+                           Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter,
+                           QString::number(lineNo++));
         }
         // translate for next line
         paint.translate(0, lineLayout->viewLineCount() * renderer.lineHeight());
