@@ -172,6 +172,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     // Position the entry-list so a frame can be drawn around it
     m_entryList->move(frameWidth(), frameWidth());
 
+    hide();
     m_docTip->setVisible(false);
 }
 
