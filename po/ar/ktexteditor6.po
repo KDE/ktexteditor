@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 01:58+0000\n"
+"POT-Creation-Date: 2023-12-01 01:37+0000\n"
 "PO-Revision-Date: 2023-03-16 12:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -7739,19 +7739,19 @@ msgstr "أظهر أر&قام الأسطر"
 msgid "Show Actual Line Numbers"
 msgstr "أظهر أر&قام الأسطر"
 
-#: view/screenshotdialog.cpp:372
+#: view/screenshotdialog.cpp:375
 #, fuzzy, kde-format
 #| msgid "&Save As..."
 msgid "Save..."
 msgstr "ا&حفظ ك‍..."
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

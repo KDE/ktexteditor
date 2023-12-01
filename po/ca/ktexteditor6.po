@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 01:58+0000\n"
+"POT-Creation-Date: 2023-12-01 01:37+0000\n"
 "PO-Revision-Date: 2023-11-26 10:52+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -7967,18 +7967,18 @@ msgstr "Mostra els números de les línies a partir de l'1"
 msgid "Show Actual Line Numbers"
 msgstr "Mostra els números reals de les línies"
 
-#: view/screenshotdialog.cpp:372
+#: view/screenshotdialog.cpp:375
 #, kde-format
 msgid "Save..."
 msgstr "Desa..."
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Ha fallat en desar la captura de pantalla"
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Ha fallat en desar la captura de pantalla: %1"

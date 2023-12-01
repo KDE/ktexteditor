@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 01:58+0000\n"
+"POT-Creation-Date: 2023-12-01 01:37+0000\n"
 "PO-Revision-Date: 2009-05-13 15:41+0530\n"
 "Last-Translator: Kartik Mistry <kartik.mistry@gmail.com>\n"
 "Language-Team: Gujarati <kde-i18n-doc@kde.org>\n"
@@ -7695,19 +7695,19 @@ msgstr "લીટી ક્રમ બતાવો (&L)"
 msgid "Show Actual Line Numbers"
 msgstr "લીટી ક્રમ બતાવો (&L)"
 
-#: view/screenshotdialog.cpp:372
+#: view/screenshotdialog.cpp:375
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Save..."
 msgstr "ફાઇલ આ રીતે સંગ્રહો (&S)..."
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

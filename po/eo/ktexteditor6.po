@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 01:58+0000\n"
-"PO-Revision-Date: 2023-11-17 21:22+0100\n"
+"POT-Creation-Date: 2023-12-01 01:37+0000\n"
+"PO-Revision-Date: 2023-11-30 18:56+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -7852,21 +7852,21 @@ msgstr "Montri Linionumerojn Ekde 1"
 msgid "Show Actual Line Numbers"
 msgstr "Montri Faktajn Linionumerojn"
 
-#: view/screenshotdialog.cpp:372
+#: view/screenshotdialog.cpp:375
 #, kde-format
 msgid "Save..."
 msgstr "Konservi..."
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Konservado de ekrankopio malsukcesis"
 
-#: view/screenshotdialog.cpp:380
+#: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Konservado de ekrankopio malsukcesis: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
