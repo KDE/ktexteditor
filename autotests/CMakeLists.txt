@@ -183,13 +183,13 @@ ktexteditor_unit_test_offscreen(scripting_test src/script_test_base.cpp src/test
 ktexteditor_unit_test_offscreen(katemodemanager_test src/katemodemanager_test_base.cpp)
 ktexteditor_unit_test_offscreen(kateview_test)
 ktexteditor_unit_test_offscreen(inlinenote_test)
-ktexteditor_unit_test_offscreen(bug286887)
 ktexteditor_unit_test_offscreen(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
 ktexteditor_unit_test_offscreen(bug313759 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug317111 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug205447 src/testutils.cpp)
 
 ktexteditor_unit_test(katefoldingtest)
+ktexteditor_unit_test(bug286887)
 ktexteditor_unit_test(bug313769)
 ktexteditor_unit_test(messagetest)
 
