@@ -67,7 +67,6 @@ find_package(KF6KIO ${KF_DEP_VERSION} REQUIRED)
 find_package(KF6Parts ${KF_DEP_VERSION} REQUIRED)
 find_package(KF6Sonnet ${KF_DEP_VERSION} REQUIRED)
 find_package(KF6SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
-find_package(KF6WindowSystem ${KF_DEP_VERSION} REQUIRED)
 find_package(KF6TextWidgets ${KF_DEP_VERSION} REQUIRED)
 
 if (ENABLE_KAUTH)

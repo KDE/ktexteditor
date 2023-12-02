@@ -21,8 +21,6 @@
 #include <QTemporaryFile>
 #include <QtTestWidgets>
 
-#include <KWindowSystem>
-
 #define testNewRow() (QTest::newRow(QStringLiteral("line %1").arg(__LINE__).toLatin1().data()))
 
 using namespace KTextEditor;
@@ -451,7 +449,7 @@ void KateViewTest::testFoldFirstLine()
 void KateViewTest::testDragAndDrop()
 {
     // mouse move only on X11
-    if (!KWindowSystem::isPlatformX11()) {
+    if (!qApp->nativeInterface<QNativeInterface::QX11Application>()) {
         QSKIP("mouse moving only on X11");
     }
 

@@ -19,8 +19,6 @@
 #include <QTest>
 #include <QTestMouseEvent>
 
-#include <KWindowSystem>
-
 using namespace KTextEditor;
 
 QTEST_MAIN(InlineNoteTest)
@@ -171,7 +169,7 @@ void InlineNoteTest::testInlineNote()
     QVERIFY(noteProvider.lastUnderMouse == false);
 
     // mouse move only on X11
-    if (!KWindowSystem::isPlatformX11()) {
+    if (!qApp->nativeInterface<QNativeInterface::QX11Application>()) {
         view.unregisterInlineNoteProvider(&noteProvider);
         QSKIP("mouse moving only on X11");
     }

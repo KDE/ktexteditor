@@ -16,9 +16,6 @@
 #include <ktexteditor/movingrangefeedback.h>
 
 #include <QTest>
-#include <qtestmouse.h>
-
-#include <KWindowSystem>
 
 using namespace KTextEditor;
 
@@ -388,7 +385,7 @@ void MovingRangeTest::testFeedbackCaret()
 void MovingRangeTest::testFeedbackMouse()
 {
     // mouse move only on X11
-    if (!KWindowSystem::isPlatformX11()) {
+    if (!qApp->nativeInterface<QNativeInterface::QX11Application>()) {
         QSKIP("mouse moving only on X11");
     }
 

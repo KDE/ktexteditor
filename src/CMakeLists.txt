@@ -315,7 +315,6 @@ PRIVATE
   KF6::GuiAddons
   KF6::ItemViews
   KF6::SonnetCore
-  KF6::WindowSystem
   KF6::SonnetUi
   KF6::Codecs
   KF6::KIOWidgets
