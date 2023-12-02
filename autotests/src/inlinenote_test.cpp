@@ -169,7 +169,7 @@ void InlineNoteTest::testInlineNote()
     QVERIFY(noteProvider.lastUnderMouse == false);
 
     // mouse move only on X11
-    if (!qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+    if (qApp->platformName() != QLatin1String("xcb")) {
         view.unregisterInlineNoteProvider(&noteProvider);
         QSKIP("mouse moving only on X11");
     }

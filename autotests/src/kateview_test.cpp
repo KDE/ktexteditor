@@ -449,7 +449,7 @@ void KateViewTest::testFoldFirstLine()
 void KateViewTest::testDragAndDrop()
 {
     // mouse move only on X11
-    if (!qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+    if (qApp->platformName() != QLatin1String("xcb")) {
         QSKIP("mouse moving only on X11");
     }
 
