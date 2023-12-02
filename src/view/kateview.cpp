@@ -902,7 +902,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(QStringLiteral("edit_find_multicursor_all_occurrences"));
     a->setText(i18n("Find and Select All Occurrences"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::CTRL | Qt::Key_J));
-    a->setWhatsThis(i18n("Finds all occurrences of the word under cursor and select them."));
+    a->setWhatsThis(i18n("Finds all occurrences of the word under cursor and selects them."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findAllOccuruncesAndSelect);
 
     a = ac->addAction(KStandardAction::FindNext, this, SLOT(findNext()));
