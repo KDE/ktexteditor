@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-01 01:37+0000\n"
+"POT-Creation-Date: 2023-12-03 01:34+0000\n"
 "PO-Revision-Date: 2023-04-08 11:01+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -7232,8 +7232,9 @@ msgid "Find and Select All Occurrences"
 msgstr "Find and Select All Occurrences"
 
 #: view/kateview.cpp:905
-#, kde-format
-msgid "Finds all occurrences of the word under cursor and select them."
+#, fuzzy, kde-format
+#| msgid "Finds all occurrences of the word under cursor and select them."
+msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Finds all occurrences of the word under cursor and select them."
 
 #: view/kateview.cpp:909

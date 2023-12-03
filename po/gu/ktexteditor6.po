@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-01 01:37+0000\n"
+"POT-Creation-Date: 2023-12-03 01:34+0000\n"
 "PO-Revision-Date: 2009-05-13 15:41+0530\n"
 "Last-Translator: Kartik Mistry <kartik.mistry@gmail.com>\n"
 "Language-Team: Gujarati <kde-i18n-doc@kde.org>\n"
@@ -7066,7 +7066,7 @@ msgstr ""
 #: view/kateview.cpp:905
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
-msgid "Finds all occurrences of the word under cursor and select them."
+msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "પસંદ કરેલ લખાણનું આગળની શોધ કરો."
 
 #: view/kateview.cpp:909
