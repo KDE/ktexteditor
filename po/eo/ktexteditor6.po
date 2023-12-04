@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-03 01:34+0000\n"
-"PO-Revision-Date: 2023-11-30 18:56+0100\n"
+"PO-Revision-Date: 2023-12-03 13:50+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -7233,10 +7233,9 @@ msgid "Find and Select All Occurrences"
 msgstr "Trovi kaj Elekti Ĉiujn Okazojn"
 
 #: view/kateview.cpp:905
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "Trovas ĉiujn aperon de la vorto sub kursoro kaj elektas ilin."
+msgstr "Trovas ĉiujn aperojn de la vorto sub kursoro kaj elektas ilin."
 
 #: view/kateview.cpp:909
 #, kde-format
