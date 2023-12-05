@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-03 01:34+0000\n"
-"PO-Revision-Date: 2023-11-27 03:15+0100\n"
+"PO-Revision-Date: 2023-12-04 06:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -7237,8 +7237,7 @@ msgid "Find and Select All Occurrences"
 msgstr "ყველა დამთხვევის პოვნა და მონიშვნა"
 
 #: view/kateview.cpp:905
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "კურსორის ქვეშ მყოფი სიტყვის ყველა გამოჩენის ძებნა და მათი მონიშვნა."
 
