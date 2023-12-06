@@ -48,7 +48,7 @@ Name[zh_CN]=文档操作
 Name[zh_TW]=文件動作
 Policy=auth_admin
 
-[org.kde.ktexteditor.katetextbuffer.savefile]
+[org.kde.ktexteditor6.katetextbuffer.savefile]
 Name=Save Document
 Name[ar]=احفظ المستند
 Name[az]=Sənədi saxla

@@ -21,7 +21,7 @@
 #include <QString>
 #include <QTemporaryFile>
 
-KAUTH_HELPER_MAIN("org.kde.ktexteditor.katetextbuffer", SecureTextBuffer)
+KAUTH_HELPER_MAIN("org.kde.ktexteditor6.katetextbuffer", SecureTextBuffer)
 
 ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
 {

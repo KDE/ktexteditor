@@ -922,8 +922,8 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
             return false;
         }
     } else {
-        KAuth::Action kAuthSaveAction(QStringLiteral("org.kde.ktexteditor.katetextbuffer.savefile"));
-        kAuthSaveAction.setHelperId(QStringLiteral("org.kde.ktexteditor.katetextbuffer"));
+        KAuth::Action kAuthSaveAction(QStringLiteral("org.kde.ktexteditor6.katetextbuffer.savefile"));
+        kAuthSaveAction.setHelperId(QStringLiteral("org.kde.ktexteditor6.katetextbuffer"));
         kAuthSaveAction.setArguments(kAuthActionArgs);
         KAuth::ExecuteJob *job = kAuthSaveAction.execute();
         if (!job->exec()) {

@@ -395,8 +395,8 @@ if(HAVE_KAUTH)
     add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
     target_link_libraries(kauth_ktexteditor_helper KF6::AuthCore)
     install(TARGETS kauth_ktexteditor_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR} )
-    kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor.katetextbuffer root)
-    kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktexteditor.katetextbuffer.actions)
+    kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor6.katetextbuffer root)
+    kauth_install_actions(org.kde.ktexteditor6.katetextbuffer buffer/org.kde.ktexteditor6.katetextbuffer.actions)
 endif()
 
 # add part
