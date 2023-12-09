@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-03 01:34+0000\n"
-"PO-Revision-Date: 2023-10-22 17:14+0530\n"
+"PO-Revision-Date: 2023-12-08 21:25+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -2734,17 +2734,13 @@ msgid "Select the color theme to use for the print."
 msgstr "அச்சிடும்போது பயன்படுத்த வேண்டிய நிறத்திட்டத்தைத் தேர்ந்தெடுக்கவும்."
 
 #: printing/printconfigwidgets.cpp:549
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If enabled, the background color of the editor will be used.</"
-#| "p><p>This may be useful if your color scheme is designed for a dark "
-#| "background.</p>"
+#, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
-"<p>செயல்படுத்தப்பட்டால், தொகுப்பானின் பின்புல நிறம் பயன்படுத்தப்படும்.</p><p>உங்கள் வண்ணத் "
-"திட்டம் இருண்ட பின்புலத்திற்கு வடிவமைக்கப்பட்டிருந்தால் இது பயனாக இருக்கும்.</p>"
+"<p>செயல்படுத்தப்பட்டால், திருத்தியின் பின்புல நிறம் பயன்படுத்தப்படும்.</p><p>உங்கள் "
+"நிறத்திட்டம் இருண்ட பின்புலத்திற்கு வடிவமைக்கப்பட்டிருந்தால் இது பயனுள்ளதாக இருக்கும்.</p>"
 
 #: printing/printconfigwidgets.cpp:552
 #, kde-format
@@ -3459,7 +3455,7 @@ msgstr "தோற்றத்தை அணுக முடியவில்ல�
 #: script/katecommandlinescript.cpp:118
 #, kde-format
 msgid "Error calling 'help %1'"
-msgstr ""
+msgstr "'help %1' என்பதை இயக்குவதில் சிக்கல்"
 
 #: script/katecommandlinescript.cpp:123
 #, kde-format
@@ -3469,7 +3465,7 @@ msgstr ""
 #: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1"
-msgstr ""
+msgstr "சிறுநிரல் %1 தனை ஏற்றுவதில் சிக்கல்"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
@@ -3484,33 +3480,33 @@ msgstr "ஆணை இல்லை: %1"
 #: search/katesearchbar.cpp:74
 #, kde-format
 msgid "Add..."
-msgstr ""
+msgstr "சேர்..."
 
 #: search/katesearchbar.cpp:299
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
-msgstr[0] "_n: 1 replacement done"
-msgstr[1] "_n: 1 replacement done"
+msgstr[0] "1 மாற்றம் செய்யப்பட்டது"
+msgstr[1] "%1 மாற்றங்கள் செய்யப்பட்டன"
 
 #: search/katesearchbar.cpp:301
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 பொருத்தம் உள்ளது"
+msgstr[1] "%1 பொருத்தங்கள் உள்ளன"
 
 #: search/katesearchbar.cpp:375
 #, kde-format
 msgid "Reached top, continued from bottom"
-msgstr ""
+msgstr "துவக்கம் அடையப்பட்டது, முடிவிலிருந்து தொடர்ந்த‍து"
 
 #: search/katesearchbar.cpp:377
 #, kde-format
 msgid "Reached bottom, continued from top"
-msgstr ""
+msgstr "முடிவு அடையப்பட்டது, துவக்கத்திலிருந்து தொடர்ந்த‍து"
 
 #: search/katesearchbar.cpp:382
 #, kde-format
@@ -3551,27 +3547,27 @@ msgstr "வரியின் முடிவு"
 #: search/katesearchbar.cpp:1162
 #, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr ""
+msgstr "வரிமுடிவைத் தவிர எந்த எழுத்திற்கும் பொருந்தும் (இயல்பிருப்பாக)"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
 msgid "One or more occurrences"
-msgstr ""
+msgstr "ஒரு அல்லது மேற்பட்ட நிகழ்வுகள்"
 
 #: search/katesearchbar.cpp:1164
 #, kde-format
 msgid "Zero or more occurrences"
-msgstr ""
+msgstr "சுழிய அல்லது மேற்பட்ட நிகழ்வுகள்"
 
 #: search/katesearchbar.cpp:1165
 #, kde-format
 msgid "Zero or one occurrences"
-msgstr ""
+msgstr "சுழிய அல்லது ஒரு நிகழ்வு"
 
 #: search/katesearchbar.cpp:1168
 #, kde-format
 msgid "<a> through <b> occurrences"
-msgstr ""
+msgstr "<a>-இலிருந்து <b> உட்பட நிகழ்வுகள்"
 
 #: search/katesearchbar.cpp:1174
 #, kde-format
@@ -3606,7 +3602,7 @@ msgstr ""
 #: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Line break"
-msgstr "வரி மாற்றம்"
+msgstr "வரி முடிவு"
 
 #: search/katesearchbar.cpp:1200
 #, kde-format
@@ -3616,32 +3612,32 @@ msgstr "தத்து"
 #: search/katesearchbar.cpp:1203
 #, kde-format
 msgid "Word boundary"
-msgstr ""
+msgstr "வார்த்தை எல்லை"
 
 #: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Not word boundary"
-msgstr ""
+msgstr "வார்த்தை எல்லை இல்லாத‍து"
 
 #: search/katesearchbar.cpp:1205
 #, kde-format
 msgid "Digit"
-msgstr ""
+msgstr "இலக்கம்"
 
 #: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Non-digit"
-msgstr ""
+msgstr "இலக்கம் இல்லாத‍து"
 
 #: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
-msgstr ""
+msgstr "இடைவெளி (வரிமுடிவுகளைத் தவிர)"
 
 #: search/katesearchbar.cpp:1208
-#, fuzzy, kde-format
+#, kde-format
 msgid "Non-whitespace"
-msgstr "மாற்று"
+msgstr "இடைவெளி இல்லாத‍து"
 
 #: search/katesearchbar.cpp:1209
 #, kde-format
