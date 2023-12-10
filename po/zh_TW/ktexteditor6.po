@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-03 01:34+0000\n"
-"PO-Revision-Date: 2023-03-19 08:57+0900\n"
+"PO-Revision-Date: 2023-12-09 18:44+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.01.80\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -149,10 +149,9 @@ msgstr "拼字"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "要搜尋的文字"
+msgstr "文字轉語音"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -518,7 +517,7 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:32
 #, kde-format
 msgid "Wrap &words at a fixed column"
-msgstr ""
+msgstr "在固定欄將單詞折行(&W)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -578,11 +577,9 @@ msgstr "選取一些文字時，將這些字元如「自動補齊字元」一般
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
-#, fuzzy, kde-format
-#| msgid " character"
-#| msgid_plural " characters"
+#, kde-format
 msgid "Enclosing characters:"
-msgstr " 個字元"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
@@ -632,13 +629,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "啟用無障礙通知"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "無障礙輔助："
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -1217,10 +1214,9 @@ msgid "View &Difference"
 msgstr "檢視差異(&D)"
 
 #: dialogs/katedialogs.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "顯示變更間的差異"
+msgstr "顯示變更間的差異。"
 
 #: dialogs/katedialogs.cpp:1462
 #, kde-format
@@ -1228,8 +1224,7 @@ msgid "&Reload"
 msgstr "重新載入(&R)"
 
 #: dialogs/katedialogs.cpp:1464
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "自磁碟重新載入檔案。未儲存的變更將會遺失。"
 
@@ -1240,8 +1235,7 @@ msgid "&Close File"
 msgstr "關閉檔案(&C)"
 
 #: dialogs/katedialogs.cpp:1470
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "關閉檔案，放棄檔案內容。"
 
@@ -1336,7 +1330,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "啟用 CamelCase 游標移動方式"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1417,19 +1411,19 @@ msgstr "Backspace 鍵可以移除字元的元音與變音符號"
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "多游標"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "多游標修飾鍵"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "自動重新載入已進版控的檔案"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
@@ -1469,7 +1463,7 @@ msgstr "遠端檔案(&R)"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "備份檔前綴："
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1481,7 +1475,7 @@ msgstr "請輸入備份檔名的前置字串。"
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "備份檔後綴："
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -1499,13 +1493,13 @@ msgstr "置換檔模式："
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "已啟用，儲存於預設目錄"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "已啟用，儲存於自訂目錄"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
@@ -1727,10 +1721,9 @@ msgstr "啟用自動儲存（僅本機檔案）"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "視窗焦點離開編輯器時自動儲存文件"
+msgstr "作用中文件喪失焦點時自動儲存文件"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -1884,7 +1877,7 @@ msgstr "顯示對應的上括號與它旁邊的行，方便理解前後文"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:236
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
 "shown. This can help in quickly determining the context of a closing "
@@ -1892,7 +1885,7 @@ msgid ""
 "blocks"
 msgstr ""
 "開啟此選項的話，會顯示對應的上括號旁的行的預覽。這可以幫助快速確認下括號的前"
-"後文。"
+"後文，尤其是在很長的函數或 class 定義中或是巢狀 if 區塊"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:239
@@ -1937,7 +1930,7 @@ msgstr "顯示縮排線(&N)"
 #: dialogs/textareaappearanceconfigwidget.ui:285
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "計數："
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:292
@@ -1972,26 +1965,24 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
-"開啟此選項的話，編輯器檢視會自動將文件第一行開始的註解區塊封裝起來。\n"
+"開啟此選項的話，編輯器檢視會自動將文件第一行開始的註解區塊折疊起來。\n"
 "通常是用來隱藏在檔案最前面的授權宣告。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:334
 #, kde-format
 msgid "Fold first line"
-msgstr "封裝第一行"
+msgstr "折疊第一行"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:354
-#, fuzzy, kde-format
-#| msgid "&Dynamic Word Wrap"
+#, kde-format
 msgid "Dynamic Word Wrap:"
-msgstr "動態折行(&D)"
+msgstr "動態折行："
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:361
-#, fuzzy, kde-format
-#| msgid "Wrap dynamic at static word wrap marker"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "於靜態文字折行標記處自動折行"
 
@@ -2003,10 +1994,9 @@ msgstr "忽略動態折行的單字邊界"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:375
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "動態文字折行指示器"
+msgstr "動態文字折行指示器(&Y)："
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:385
@@ -2016,16 +2006,15 @@ msgstr "選擇何時要顯示動態文字折行指示器。"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Indent wrapped lines:"
-msgstr "縮排內容"
+msgstr "縮排折行後的行："
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:425
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "不要縮排超過這個寬度的行："
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:441
@@ -2274,22 +2263,19 @@ msgstr ""
 "remove-trailing-spaces"
 
 #: document/katedocument.cpp:5601
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "檔案「%1」已被另一個程式修改了。"
+msgstr "檔案「%1」已在磁碟上被修改。"
 
 #: document/katedocument.cpp:5604
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "檔案「%1」已被另一個程式建立了。"
+msgstr "檔案「%1」已在磁碟上被建立。"
 
 #: document/katedocument.cpp:5607
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "檔案「%1」已被另一個程式刪除了。"
+msgstr "檔案「%1」已在磁碟上被刪除。"
 
 #: document/katedocument.cpp:5947
 #, kde-format
@@ -2472,7 +2458,7 @@ msgstr "列印圖示(&L)"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "不要列印已折疊的程式碼"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2635,16 +2621,14 @@ msgid "L&ayout"
 msgstr "佈局(&A)"
 
 #: printing/printconfigwidgets.cpp:484
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "&Color theme:"
-msgstr "使用 KDE 配色"
+msgstr "顏色主題(&C)："
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "字型"
+msgstr "字型："
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2997,15 +2981,13 @@ msgstr "將游標移至下一個對應標籤"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "前往下一個段落"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "跳到前一個編輯點"
+msgstr "前往上一個段落"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3087,12 +3069,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "將選取的行在上方複製一份"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "將選取的行在上方複製一份"
+msgstr "建立選取文字複本"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -3468,10 +3448,9 @@ msgid "End of line"
 msgstr "行結尾"
 
 #: search/katesearchbar.cpp:1162
-#, fuzzy, kde-format
-#| msgid "Any single character (excluding line breaks)"
+#, kde-format
 msgid "Match any character excluding new line (by default)"
-msgstr "任何單一字元（不含行中斷）"
+msgstr "符合任何字元，（預設）不含換行"
 
 #: search/katesearchbar.cpp:1163
 #, kde-format
@@ -3559,10 +3538,9 @@ msgid "Whitespace (excluding line breaks)"
 msgstr "空白（不含行中斷）"
 
 #: search/katesearchbar.cpp:1208
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Non-whitespace"
-msgstr "空白"
+msgstr "非空白"
 
 #: search/katesearchbar.cpp:1209
 #, kde-format
@@ -3595,10 +3573,9 @@ msgid "Group, non-capturing"
 msgstr "群組，未抓取"
 
 #: search/katesearchbar.cpp:1220
-#, fuzzy, kde-format
-#| msgid "Negative lookahead"
+#, kde-format
 msgid "Positive Lookahead"
-msgstr "Negative lookahead"
+msgstr ""
 
 #: search/katesearchbar.cpp:1221
 #, kde-format
@@ -4015,8 +3992,7 @@ msgid "I&gnore All"
 msgstr "全部略過(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
 msgstr "拼字檢查（從游標處）..."
 
@@ -4036,10 +4012,9 @@ msgid "Add to Dictionary"
 msgstr "加到字典中"
 
 #: spellcheck/spellingmenu.cpp:169
-#, fuzzy, kde-format
-#| msgid "Spelling"
+#, kde-format
 msgid "Spelling '%1'"
-msgstr "拼字"
+msgstr "拼字檢查 '%1'"
 
 #: swapfile/kateswapdiffcreator.cpp:87
 #, kde-format
@@ -4074,10 +4049,9 @@ msgid "Discard"
 msgstr "丟棄"
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
-#, fuzzy, kde-format
-#| msgid "Use default color from the KDE color scheme"
+#, kde-format
 msgid "Use default color from the color theme"
-msgstr "使用 KDE 配色的預設顏色"
+msgstr "使用顏色主題的預設顏色"
 
 #: syntax/katehighlightmenu.cpp:39
 #, kde-format
@@ -4389,10 +4363,9 @@ msgid "Error"
 msgstr "錯誤"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "使用預設值"
+msgstr "使用預設顏色"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4749,10 +4722,9 @@ msgstr ""
 "</p>"
 
 #: syntax/katethemeconfig.cpp:1025
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "普通文字風格"
+msgstr "預設主題"
 
 #: syntax/katethemeconfig.cpp:1026
 #, kde-format
@@ -4760,11 +4732,9 @@ msgid "Theme Editor"
 msgstr "主題編輯器"
 
 #: syntax/katethemeconfig.cpp:1040
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Select theme:"
-msgstr "已選取"
+msgstr "選取主題："
 
 #: syntax/katethemeconfig.cpp:1109
 #, kde-format
@@ -4772,10 +4742,9 @@ msgid "&Theme:"
 msgstr "主題(&T)："
 
 #: syntax/katethemeconfig.cpp:1118
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "&Copy..."
-msgstr "另存新檔(&C)..."
+msgstr "複製(&C)..."
 
 #: syntax/katethemeconfig.cpp:1126
 #, kde-format
@@ -4808,22 +4777,19 @@ msgid "Highlighting Text Styles"
 msgstr "突顯文字風格"
 
 #: syntax/katethemeconfig.cpp:1168
-#, fuzzy, kde-format
-#| msgid "Exporting color schema: %1"
+#, kde-format
 msgid "Exporting color theme: %1"
-msgstr "匯出配色中：%1"
+msgstr "正在匯出顏色主題：%1"
 
 #: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Color theme"
-msgstr "使用 KDE 配色"
+msgstr "顏色主題"
 
 #: syntax/katethemeconfig.cpp:1191
-#, fuzzy, kde-format
-#| msgid "Importing Color Schema"
+#, kde-format
 msgid "Importing Color Theme"
-msgstr "匯入配色中"
+msgstr "正在匯入顏色主題"
 
 #: syntax/katethemeconfig.cpp:1205
 #, kde-format
@@ -4833,16 +4799,14 @@ msgid ""
 msgstr "匯入會覆寫現有的主題檔案 \"%1\"。此動作無法復原。"
 
 #: syntax/katethemeconfig.cpp:1207
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Import Nevertheless"
-msgstr "關閉"
+msgstr "還是要匯入"
 
 #: syntax/katethemeconfig.cpp:1289
-#, fuzzy, kde-format
-#| msgid "Font & Color Schemas"
+#, kde-format
 msgid "Follow System Color Scheme"
-msgstr "字型與配色"
+msgstr "跟隨系統配色方案"
 
 #: syntax/katethemeconfig.cpp:1355
 #, kde-format
@@ -4850,16 +4814,14 @@ msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "您真的要刪除主題 \"%1\" 嗎？此動作無法復原。"
 
 #: syntax/katethemeconfig.cpp:1357
-#, fuzzy, kde-format
-#| msgid "Close Nevertheless"
+#, kde-format
 msgid "Delete Nevertheless"
-msgstr "關閉"
+msgstr "還是要刪除"
 
 #: syntax/katethemeconfig.cpp:1399
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "Copy theme"
-msgstr "使用 KDE 配色"
+msgstr "複製主題"
 
 #: syntax/katethemeconfig.cpp:1400
 #, kde-format
@@ -4874,16 +4836,14 @@ msgid ""
 msgstr "<p>主題 %1 已存在。</p><p>請選一個不同的主題名稱。</p>"
 
 #: syntax/katethemeconfig.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy Theme"
-msgstr "顏色"
+msgstr "複製主題"
 
 #: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "顏色"
+msgstr "顏色主題"
 
 #: utils/kateautoindent.cpp:87
 #, kde-format
@@ -5305,10 +5265,9 @@ msgid "Embeddable editor component"
 msgstr "可嵌入編輯器元件"
 
 #: utils/kateglobal.cpp:77
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2019 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "(c) 2000-2019 Kate 作者群"
+msgstr "(c) 2000-2022 Kate 作者群"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -5837,11 +5796,9 @@ msgid "Number of rows of the current document."
 msgstr "目前文件的行數。"
 
 #: utils/katevariableexpansionmanager.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Comment Variable"
+#, kde-format
 msgid "Read a document variable."
-msgstr "註解變數"
+msgstr "讀取文件變數。"
 
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
@@ -6357,22 +6314,19 @@ msgid ""
 msgstr "使用這個指令來將目前選擇的文字複製到系統剪貼簿。"
 
 #: view/kateview.cpp:468
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Clipboard &History Paste"
-msgstr "剪貼簿歷史紀錄(&H)"
+msgstr "剪貼簿歷史紀錄貼上(&H)"
 
 #: view/kateview.cpp:473
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Paste Selection"
-msgstr "語言選擇"
+msgstr "貼上選擇區"
 
 #: view/kateview.cpp:475
-#, fuzzy, kde-format
-#| msgid "Paste previously copied or cut clipboard contents"
+#, kde-format
 msgid "Paste previously mouse selection contents"
-msgstr "貼上先前複製或剪下的剪貼簿"
+msgstr "貼上上次滑鼠選擇的內容"
 
 #: view/kateview.cpp:479
 #, kde-format
@@ -6385,10 +6339,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "將已選文字與剪貼簿內容交換"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "語言選擇"
+msgstr "擷取選取區的螢幕截圖"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6456,10 +6409,9 @@ msgid ""
 msgstr "使用這個將目前的行或文字的區塊對齊它的縮排層級。"
 
 #: view/kateview.cpp:521
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "對齊(&A)"
+msgstr "對齊於(&A)"
 
 #: view/kateview.cpp:523
 #, kde-format
@@ -6491,16 +6443,14 @@ msgstr ""
 "在語言的突顯中定義。"
 
 #: view/kateview.cpp:542
-#, fuzzy, kde-format
-#| msgid "Go to previous editing line"
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "跳到前一個編輯行"
+msgstr "前往上一個編輯位置"
 
 #: view/kateview.cpp:548
-#, fuzzy, kde-format
-#| msgid "Go to next editing line"
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "跳到下一個編輯行"
+msgstr "前往下一個編輯位置"
 
 #: view/kateview.cpp:554
 #, kde-format
@@ -6535,13 +6485,12 @@ msgstr "鎖定/取消鎖定此文件的寫入"
 #: view/kateview.cpp:572
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "強制右到左方向(&F)"
 
 #: view/kateview.cpp:573
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "文字裝飾"
+msgstr "強制右到左文字方向"
 
 #: view/kateview.cpp:583
 #, kde-format
@@ -6597,9 +6546,7 @@ msgid ""
 msgstr "手動啟動指令補完，通常使用此動作的捷徑。"
 
 #: view/kateview.cpp:620
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Remove Trailing Spaces"
+#, kde-format
 msgid "Remove Trailing Spaces"
 msgstr "移除結尾的空白"
 
@@ -6651,10 +6598,9 @@ msgid ""
 msgstr "這個指令開啟對話盒並讓您選擇您想要游標移動到哪一行。"
 
 #: view/kateview.cpp:668
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
-msgstr "移至上一個變更過的行"
+msgstr "前往上一個變更過的行"
 
 #: view/kateview.cpp:669
 #, kde-format
@@ -6662,10 +6608,9 @@ msgid "Move upwards to the previous modified line."
 msgstr "向上移至上一個變更過的行。"
 
 #: view/kateview.cpp:674
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
-msgstr "移至下一個變更過的行"
+msgstr "前往下一個變更過的行"
 
 #: view/kateview.cpp:675
 #, kde-format
@@ -6698,10 +6643,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "您可以選擇目前的文件要怎麼突顯。"
 
 #: view/kateview.cpp:695
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "使用 KDE 配色"
+msgstr "編輯器顏色主題(&E)"
 
 #: view/kateview.cpp:701
 #, kde-format
@@ -6763,8 +6707,7 @@ msgid ""
 msgstr "這個指令允許在一般（以行為基礎）選擇模式與區塊選擇模式之間切換。"
 
 #: view/kateview.cpp:746
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "切換到下一個輸入模式"
 
@@ -7064,7 +7007,7 @@ msgstr "尋找文字或正則表達式中的一部份並以所給的文字來取
 #: view/kateview.cpp:920
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "新增游標於各行尾"
 
 #: view/kateview.cpp:922
 #, kde-format
@@ -7093,27 +7036,24 @@ msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
 #: view/kateview.cpp:938
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "文字游標移動"
+msgstr "切換 CamelCase 游標移動方式"
 
 #: view/kateview.cpp:939
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
-msgstr ""
+msgstr "在一般單詞移動和 CamelCase 游標移動方式間切換。"
 
 #: view/kateview.cpp:943
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "將游標移至下一個對應標籤"
+msgstr "移除空行上的游標"
 
 #: view/kateview.cpp:944
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "將游標移至下一個對應標籤"
+msgstr "移除空行上的游標"
 
 #: view/kateview.cpp:948
 #, kde-format
@@ -7201,10 +7141,9 @@ msgid "Select Word Right"
 msgstr "選擇右方文字"
 
 #: view/kateview.cpp:1050
-#, fuzzy, kde-format
-#| msgid "Language Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "語言選擇"
+msgstr ""
 
 #: view/kateview.cpp:1051
 #, kde-format
@@ -7334,10 +7273,9 @@ msgid "Select to Bottom of View"
 msgstr "選擇至檢視底部"
 
 #: view/kateview.cpp:1200
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Go to Matching Bracket"
-msgstr "移至對應括號"
+msgstr "前往對應括號"
 
 #: view/kateview.cpp:1206
 #, kde-format
@@ -7350,10 +7288,9 @@ msgid "Transpose Characters"
 msgstr "調換字元"
 
 #: view/kateview.cpp:1219
-#, fuzzy, kde-format
-#| msgid "Transpose Characters"
+#, kde-format
 msgid "Transpose Words"
-msgstr "調換字元"
+msgstr "調換單詞"
 
 #: view/kateview.cpp:1224
 #, kde-format
@@ -7476,28 +7413,24 @@ msgid "Toggle Contained Nodes"
 msgstr "切換包含節點"
 
 #: view/kateview.cpp:1357
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "目前文件的文字選取區域。"
+msgstr "說出目前選取區域或文件。"
 
 #: view/kateview.cpp:1367
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "儲存目前文件"
+msgstr "停止目前輸出"
 
 #: view/kateview.cpp:1373
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "儲存目前文件"
+msgstr "暫停目前輸出"
 
 #: view/kateview.cpp:1379
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "儲存目前文件"
+msgstr "繼續目前輸出"
 
 #: view/kateview.cpp:1538
 #, kde-format
@@ -7520,10 +7453,9 @@ msgid "Search wrapped"
 msgstr "從另一端重新搜尋"
 
 #: view/kateview.cpp:3767
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "Align On"
-msgstr "對齊(&A)"
+msgstr "對齊於"
 
 #: view/kateview.cpp:3767
 #, kde-format
@@ -7612,74 +7544,65 @@ msgid "Disable Annotation Bar"
 msgstr "關閉註記列"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "開啟/儲存"
+msgstr "儲存"
 
 #: view/screenshotdialog.cpp:139
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgid "Copy"
-msgstr "另存新檔(&C)..."
+msgstr "複製"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "背景顏色(&B)..."
+msgstr "背景顏色..."
 
 #: view/screenshotdialog.cpp:142
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "文字裝飾"
+msgstr "顯示額外裝飾"
 
 #: view/screenshotdialog.cpp:143
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "顯示縮排線(&N)"
+msgstr "顯示視窗裝飾"
 
 #: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "螢幕截圖..."
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "顯示行號(&L)"
+msgstr "不要顯示行號"
 
 #: view/screenshotdialog.cpp:221
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "顯示行號(&L)"
+msgstr "從 1 開始顯示行號"
 
 #: view/screenshotdialog.cpp:222
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "顯示行號(&L)"
+msgstr "顯示實際行號"
 
 #: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "另存新檔(&S)..."
+msgstr "儲存..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "螢幕截圖儲存失敗"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "螢幕截圖儲存失敗：%1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
