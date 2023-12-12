@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-03 01:34+0000\n"
-"PO-Revision-Date: 2023-12-03 13:01+0300\n"
+"PO-Revision-Date: 2023-12-11 11:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -3696,7 +3696,7 @@ msgstr "Rakam-olmayan"
 #: search/katesearchbar.cpp:1207
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
-msgstr "Beyaz alan (satır sonları hariç)"
+msgstr "Boşluk (satır sonu dışında)"
 
 #: search/katesearchbar.cpp:1208
 #, kde-format
@@ -4496,7 +4496,7 @@ msgstr "Belgelendirme"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Annotation"
-msgstr "Açıklama"
+msgstr "Bilgi Notu"
 
 #: syntax/katethemeconfig.cpp:98
 #, kde-format
@@ -4526,7 +4526,7 @@ msgstr "Uyarı"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Alert"
-msgstr "Uyar"
+msgstr "Alarm"
 
 #: syntax/katethemeconfig.cpp:110
 #, kde-format
@@ -4782,17 +4782,17 @@ msgstr "Yer İmi"
 #: syntax/katethemeconfig.cpp:325
 #, kde-format
 msgid "Active Breakpoint"
-msgstr "Etkin Kesme"
+msgstr "Etkin Kesme Noktası"
 
 #: syntax/katethemeconfig.cpp:326
 #, kde-format
 msgid "Reached Breakpoint"
-msgstr "Varılan Kesme"
+msgstr "Ulaşılan Kesme Noktası"
 
 #: syntax/katethemeconfig.cpp:327
 #, kde-format
 msgid "Disabled Breakpoint"
-msgstr "Etkisiz Kesme"
+msgstr "Devre Dışı Kesme Noktası"
 
 #: syntax/katethemeconfig.cpp:328
 #, kde-format
@@ -4862,19 +4862,19 @@ msgstr ""
 #, kde-format
 msgctxt "@item:intable"
 msgid "Normal Text & Source Code"
-msgstr "Normal Metin & Kaykak Kod"
+msgstr "Normal Metin ve Kaynak Kod"
 
 #: syntax/katethemeconfig.cpp:575
 #, kde-format
 msgctxt "@item:intable"
 msgid "Numbers, Types & Constants"
-msgstr "Sayılar, Türler & Sabitler"
+msgstr "Sayılar, Türler ve Sabitler"
 
 #: syntax/katethemeconfig.cpp:582
 #, kde-format
 msgctxt "@item:intable"
 msgid "Strings & Characters"
-msgstr "Karakter Dizileri & Karakterler"
+msgstr "Diziler ve Karakterler"
 
 #: syntax/katethemeconfig.cpp:589
 #, kde-format
