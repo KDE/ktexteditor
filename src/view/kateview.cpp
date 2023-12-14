@@ -1827,7 +1827,14 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     Q_UNUSED(flags)
 
     // cursor position
-    setCursorPositionInternal(KTextEditor::Cursor(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0)));
+    KTextEditor::Cursor savedPosition(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0));
+    setCursorPositionInternal(savedPosition);
+
+    // scroll position
+    const int scroll = config.readEntry("ScrollLine", -1);
+    if (scroll >= 0 && scroll < doc()->lines() && savedPosition.line() < doc()->lines()) {
+        setScrollPositionInternal(KTextEditor::Cursor(scroll, 0));
+    }
 
     m_config->setDynWordWrap(config.readEntry("Dynamic Word Wrap", false));
 
@@ -1850,6 +1857,9 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     // cursor position
     config.writeEntry("CursorLine", cursorPosition().line());
     config.writeEntry("CursorColumn", cursorPosition().column());
+
+    // scroll position
+    config.writeEntry("ScrollLine", firstDisplayedLineInternal(LineType::RealLine));
 
     config.writeEntry("Dynamic Word Wrap", m_config->dynWordWrap());
 
