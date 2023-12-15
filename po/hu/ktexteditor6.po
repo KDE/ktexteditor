@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-03 01:34+0000\n"
+"POT-Creation-Date: 2023-12-15 01:35+0000\n"
 "PO-Revision-Date: 2021-11-15 13:48+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -7859,23 +7859,23 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr "CamelCase kurzormozgatás bekapcsolása"
 
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2236
 #, kde-format
 msgid "Search wrapped"
 msgstr "Körkörös keresés"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3777
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Igazítás"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3777
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4893
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportálás HTML formátumban"

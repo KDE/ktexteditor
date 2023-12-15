@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-03 01:34+0000\n"
+"POT-Creation-Date: 2023-12-15 01:35+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -7879,22 +7879,22 @@ msgstr "Movimento entre capitalizações desactivado"
 msgid "Camel case movement enabled"
 msgstr "Movimento entre capitalizações activado"
 
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2236
 #, kde-format
 msgid "Search wrapped"
 msgstr "A pesquisa deu a volta"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3777
 #, kde-format
 msgid "Align On"
 msgstr "Alinhar a"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3777
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Padrão de alinhamento:"
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4893
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar o Ficheiro como HTML"
