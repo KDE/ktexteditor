@@ -169,10 +169,12 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 
     // add KateMessageWidget for KTE::MessageInterface immediately above view
     m_messageWidgets[KTextEditor::Message::AboveView] = new KateMessageWidget(this);
+    m_messageWidgets[KTextEditor::Message::AboveView]->setPosition(KateMessageWidget::Position::Header);
     m_messageWidgets[KTextEditor::Message::AboveView]->hide();
 
     // add KateMessageWidget for KTE::MessageInterface immediately above view
     m_messageWidgets[KTextEditor::Message::BelowView] = new KateMessageWidget(this);
+    m_messageWidgets[KTextEditor::Message::BelowView]->setPosition(KateMessageWidget::Position::Footer);
     m_messageWidgets[KTextEditor::Message::BelowView]->hide();
 
     // add bottom viewbar...

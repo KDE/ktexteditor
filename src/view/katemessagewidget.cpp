@@ -52,6 +52,21 @@ KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
     connect(m_messageWidget, &KMessageWidget::linkHovered, this, &KateMessageWidget::linkHovered);
 }
 
+void KateMessageWidget::setPosition(KateMessageWidget::Position position)
+{
+    switch (position) {
+    case Position::Inline:
+        m_messageWidget->setPosition(KMessageWidget::Inline);
+        return;
+    case Position::Header:
+        m_messageWidget->setPosition(KMessageWidget::Header);
+        return;
+    case Position::Footer:
+        m_messageWidget->setPosition(KMessageWidget::Footer);
+        return;
+    }
+}
+
 void KateMessageWidget::showNextMessage()
 {
     // at this point, we should not have a currently shown message

@@ -32,6 +32,17 @@ class KateMessageWidget : public QWidget
 
 public:
     /**
+     * The position of the KateMessageWidget
+     *
+     * @see KMessageWidget::Position
+     */
+    enum class Position {
+        Inline, ///< Inline message.
+        Header, ///< Message positioned at the top of the view.
+        Footer, ///< Message positioned at the bottom of the view.
+    };
+
+    /**
      * Constructor. By default, the widget is hidden.
      */
     explicit KateMessageWidget(QWidget *parent, bool applyFadeEffect = false);
@@ -43,6 +54,8 @@ public:
 
     // for unit test
     KTEXTEDITOR_EXPORT QString text() const;
+
+    void setPosition(Position position);
 
 protected Q_SLOTS:
     /**
