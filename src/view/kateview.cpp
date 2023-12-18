@@ -1326,22 +1326,12 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
 
     a = ac->addAction(QStringLiteral("folding_toplevel"));
     a->setText(i18n("Fold Toplevel Nodes"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Minus));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotFoldToplevelNodes);
 
     a = ac->addAction(QStringLiteral("folding_expandtoplevel"));
     a->setText(i18n("Unfold Toplevel Nodes"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Plus));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotExpandToplevelNodes);
 
-    /*a = ac->addAction(QLatin1String("folding_expandall"));
-    a->setText(i18n("Unfold All Nodes"));
-    connect(a, SIGNAL(triggered(bool)), doc()->foldingTree(), SLOT(expandAll()));
-
-    a = ac->addAction(QLatin1String("folding_collapse_dsComment"));
-    a->setText(i18n("Fold Multiline Comments"));
-    connect(a, SIGNAL(triggered(bool)), doc()->foldingTree(), SLOT(collapseAll_dsComments()));
-    */
     a = ac->addAction(QStringLiteral("folding_toggle_current"));
     a->setText(i18n("Toggle Current Node"));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotToggleFolding);
