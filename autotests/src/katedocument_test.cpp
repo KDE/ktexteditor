@@ -799,7 +799,7 @@ void KateDocumentTest::testKeepUndoOverReload()
     QCOMPARE(doc.text(), initialText);
 
     // now: do some editing
-    const QString insertedText = QStringLiteral("newfirstline\n");
+    const QString insertedText = QStringLiteral("newfirstline");
     doc.insertText(KTextEditor::Cursor(0, 0), insertedText);
     QCOMPARE(doc.text(), insertedText + initialText);
 
