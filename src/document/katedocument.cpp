@@ -694,7 +694,7 @@ bool KTextEditor::DocumentPrivate::clear()
     return editRemoveLines(0, lastLine());
 }
 
-bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, const QString &text, bool block)
+bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position, const QString &text, bool block)
 {
     if (!isReadWrite()) {
         return false;
@@ -705,6 +705,9 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
     }
 
     editStart();
+    // Disable emitting textInsertedRange signal in every editInsertText call
+    // we will emit a single signal at the end of this function
+    bool notify = false;
 
     int currentLine = position.line();
     int currentLineStart = 0;
@@ -715,7 +718,7 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
     if (position.line() > lines()) {
         int line = lines();
         while (line <= position.line()) {
-            editInsertLine(line, QString());
+            editInsertLine(line, QString(), false);
             line++;
         }
     }
@@ -729,6 +732,7 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
         }
     }
 
+    int endCol = 0;
     int pos = 0;
     for (; pos < totalLength; pos++) {
         const QChar &ch = text.at(pos);
@@ -736,7 +740,8 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
         if (ch == QLatin1Char('\n')) {
             // Only perform the text insert if there is text to insert
             if (currentLineStart < pos) {
-                editInsertText(currentLine, insertColumn, text.mid(currentLineStart, pos - currentLineStart));
+                editInsertText(currentLine, insertColumn, text.mid(currentLineStart, pos - currentLineStart), notify);
+                endCol = insertColumn + (pos - currentLineStart);
             }
 
             if (!block) {
@@ -744,12 +749,13 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
                 const auto wrapColumn = insertColumn + pos - currentLineStart;
                 const auto currentLineLength = lineLength(currentLine);
                 if (wrapColumn > currentLineLength) {
-                    editInsertText(currentLine, currentLineLength, QString(wrapColumn - currentLineLength, QLatin1Char(' ')));
+                    editInsertText(currentLine, currentLineLength, QString(wrapColumn - currentLineLength, QLatin1Char(' ')), notify);
                 }
 
                 // wrap line call is now save, as wrapColumn is valid for sure!
-                editWrapLine(currentLine, wrapColumn);
+                editWrapLine(currentLine, wrapColumn, /*newLine=*/true, nullptr, notify);
                 insertColumn = 0;
+                endCol = 0;
             }
 
             currentLine++;
@@ -757,7 +763,8 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
             if (block) {
                 auto l = plainKateTextLine(currentLine);
                 if (currentLine == lastLine() + 1) {
-                    editInsertLine(currentLine, QString());
+                    editInsertLine(currentLine, QString(), notify);
+                    endCol = 0;
                 }
                 insertColumn = positionColumnExpanded;
                 if (l) {
@@ -771,8 +778,13 @@ bool KTextEditor::DocumentPrivate::insertText(KTextEditor::Cursor position, cons
 
     // Only perform the text insert if there is text to insert
     if (currentLineStart < pos) {
-        editInsertText(currentLine, insertColumn, text.mid(currentLineStart, pos - currentLineStart));
+        editInsertText(currentLine, insertColumn, text.mid(currentLineStart, pos - currentLineStart), notify);
+        endCol = insertColumn + (pos - currentLineStart);
     }
+
+    // let the world know that we got some new text
+    KTextEditor::Range insertedRange(position, currentLine, endCol);
+    Q_EMIT textInsertedRange(this, insertedRange);
 
     editEnd();
     return true;
@@ -1258,7 +1270,7 @@ bool KTextEditor::DocumentPrivate::wrapParagraph(int first, int last)
     return true;
 }
 
-bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QString &s)
+bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QString &s, bool notify)
 {
     // verbose debug
     EDIT_DEBUG << "editInsertText" << line << col << s;
@@ -1299,7 +1311,9 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
     // insert text into line
     m_buffer->insertText(m_editLastChangeStartCursor, s2);
 
-    Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
+    if (notify) {
+        Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
+    }
 
     editEnd();
     return true;
@@ -1386,7 +1400,7 @@ bool KTextEditor::DocumentPrivate::editMarkLineAutoWrapped(int line, bool autowr
     return true;
 }
 
-bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine, bool *newLineAdded)
+bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine, bool *newLineAdded, bool notify)
 {
     // verbose debug
     EDIT_DEBUG << "editWrapLine" << line << col << newLine;
@@ -1452,7 +1466,9 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
     // remember last change cursor
     m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
 
-    Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col, line + 1, 0));
+    if (notify) {
+        Q_EMIT textInsertedRange(this, KTextEditor::Range(line, col, line + 1, 0));
+    }
 
     editEnd();
 
@@ -1528,7 +1544,7 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
     return true;
 }
 
-bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
+bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s, bool notify)
 {
     // verbose debug
     EDIT_DEBUG << "editInsertLine" << line << s;
@@ -1592,7 +1608,9 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     // remember last change cursor
     m_editLastChangeStartCursor = rangeInserted.start();
 
-    Q_EMIT textInsertedRange(this, rangeInserted);
+    if (notify) {
+        Q_EMIT textInsertedRange(this, rangeInserted);
+    }
 
     editEnd();
 

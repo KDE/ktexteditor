@@ -233,7 +233,7 @@ public:
      * @param s string to be inserted
      * @return true on success
      */
-    bool editInsertText(int line, int col, const QString &s);
+    bool editInsertText(int line, int col, const QString &s, bool notify = true);
 
     /**
      * Remove a string in the given line/column
@@ -264,7 +264,7 @@ public:
      * @param newLineAdded return value is true, if new line was added (may be 0)
      * @return true on success
      */
-    bool editWrapLine(int line, int col, bool newLine = true, bool *newLineAdded = nullptr);
+    bool editWrapLine(int line, int col, bool newLine = true, bool *newLineAdded = nullptr, bool notify = true);
 
     /**
      * Unwrap @p line. If @p removeLine is true, we force to join the lines. If
@@ -281,7 +281,7 @@ public:
      * @param s string to insert
      * @return true on success
      */
-    bool editInsertLine(int line, const QString &s);
+    bool editInsertLine(int line, const QString &s, bool notify = true);
 
     /**
      * Remove a line
