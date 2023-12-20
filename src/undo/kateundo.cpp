@@ -188,11 +188,15 @@ void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
 
 static bool mergeUndoItems(UndoItem &base, const UndoItem &u)
 {
-    if (base.type != u.type) {
-        return false;
+    if (base.type == UndoItem::editInsertText && u.type == UndoItem::editWrapLine) {
+        if (base.line == u.line && base.col + base.text.length() == u.col && u.newLine) {
+            base.type = UndoItem::editInsertLine;
+            base.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+            return true;
+        }
     }
 
-    if (base.type == UndoItem::editRemoveText) {
+    if (base.type == UndoItem::editRemoveText && base.type == u.type) {
         if (base.line == u.line && base.col == (u.col + u.text.size())) {
             base.text.prepend(u.text);
             base.col = u.col;
@@ -200,7 +204,7 @@ static bool mergeUndoItems(UndoItem &base, const UndoItem &u)
         }
     }
 
-    if (base.type == UndoItem::editInsertText) {
+    if (base.type == UndoItem::editInsertText && base.type == u.type) {
         if (base.line == u.line && (base.col + base.text.size()) == u.col) {
             base.text += u.text;
             return true;
@@ -213,7 +217,7 @@ static bool mergeUndoItems(UndoItem &base, const UndoItem &u)
 void KateUndoGroup::addItem(UndoItem u)
 {
     // try to merge, do that only for equal types, inside mergeWith we do hard casts
-    if (!m_items.empty() && m_items.back().type == u.type && mergeUndoItems(m_items.back(), u)) {
+    if (!m_items.empty() && mergeUndoItems(m_items.back(), u)) {
         return;
     }
 
