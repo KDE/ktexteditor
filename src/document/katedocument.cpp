@@ -626,6 +626,10 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
         return *mark;
     });
 
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(true);
+    }
+
     editStart();
 
     // delete the text
@@ -635,6 +639,10 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
     insertText(KTextEditor::Cursor(), s);
 
     editEnd();
+
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(false);
+    }
 
     for (KTextEditor::Mark mark : msave) {
         setMark(mark.line, mark.type);
@@ -655,6 +663,10 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
         return *mark;
     });
 
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(true);
+    }
+
     editStart();
 
     // delete the text
@@ -664,6 +676,10 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
     insertText(KTextEditor::Cursor::start(), text);
 
     editEnd();
+
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(false);
+    }
 
     for (KTextEditor::Mark mark : msave) {
         setMark(mark.line, mark.type);
