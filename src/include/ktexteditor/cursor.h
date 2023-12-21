@@ -371,6 +371,12 @@ private:
     int m_column = 0;
 };
 
+/**
+ * QHash function for KTextEditor::Cursor.
+ * Returns the hash value for @p cursor.
+ */
+KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept;
+
 } // namespace KTextEditor
 
 Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_PRIMITIVE_TYPE);
@@ -379,12 +385,6 @@ Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_PRIMITIVE_TYPE);
  * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::Cursor cursor);
-
-/**
- * QHash function for KTextEditor::Cursor.
- * Returns the hash value for @p cursor.
- */
-KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::Cursor cursor, size_t seed = 0) noexcept;
 
 namespace QTest
 {

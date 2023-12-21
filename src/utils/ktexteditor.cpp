@@ -73,9 +73,9 @@ QDebug operator<<(QDebug s, KTextEditor::Cursor cursor)
     return s.space();
 }
 
-size_t qHash(KTextEditor::Cursor cursor, size_t seed) noexcept
+size_t KTextEditor::qHash(KTextEditor::Cursor cursor, size_t seed) noexcept
 {
-    return qHash(qMakePair(cursor.line(), cursor.column()), seed);
+    return qHashMulti(seed, cursor.line(), cursor.column());
 }
 
 Editor::Editor(EditorPrivate *impl)

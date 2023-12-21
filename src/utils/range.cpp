@@ -127,14 +127,14 @@ QDebug operator<<(QDebug s, KTextEditor::LineRange range)
     return s;
 }
 
-size_t qHash(const KTextEditor::LineRange &range, size_t seed) noexcept
+size_t KTextEditor::qHash(KTextEditor::LineRange range, size_t seed) noexcept
 {
-    return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
+    return qHashMulti(seed, range.start(), range.end());
 }
 
-size_t qHash(const KTextEditor::Range &range, size_t seed) noexcept
+size_t KTextEditor::qHash(KTextEditor::Range range, size_t seed) noexcept
 {
-    return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
+    return qHashMulti(seed, range.start(), range.end());
 }
 
 QString Range::toString() const

@@ -497,6 +497,11 @@ private:
     int m_end = 0;
 };
 
+/**
+ * QHash function for KTextEditor::LineRange.
+ * Returns the hash value for @p range.
+ */
+KTEXTEDITOR_EXPORT size_t qHash(KTextEditor::LineRange range, size_t seed = 0) noexcept;
 }
 
 Q_DECLARE_TYPEINFO(KTextEditor::LineRange, Q_PRIMITIVE_TYPE);
@@ -505,12 +510,6 @@ Q_DECLARE_TYPEINFO(KTextEditor::LineRange, Q_PRIMITIVE_TYPE);
  * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
  */
 KTEXTEDITOR_EXPORT QDebug operator<<(QDebug s, KTextEditor::LineRange range);
-
-/**
- * QHash function for KTextEditor::LineRange.
- * Returns the hash value for @p range.
- */
-KTEXTEDITOR_EXPORT size_t qHash(const KTextEditor::LineRange &range, size_t seed = 0) noexcept;
 
 namespace QTest
 {
