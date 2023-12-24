@@ -11,20 +11,20 @@
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
+# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-21 01:58+0000\n"
-"PO-Revision-Date: 2023-12-09 18:44+0900\n"
+"PO-Revision-Date: 2023-12-24 06:44+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -7143,14 +7143,14 @@ msgstr "選擇右方文字"
 #: view/kateview.cpp:1052
 #, kde-format
 msgid "Start the Marked Selection"
-msgstr ""
+msgstr "開始標記式選取"
 
 #: view/kateview.cpp:1053
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
-msgstr ""
+msgstr "模擬如同 Emacs 的選取模式：標記選取區的開頭，然後選取區會被不斷更新。"
 
 #: view/kateview.cpp:1058
 #, kde-format
@@ -7348,24 +7348,24 @@ msgstr "插入無縮排的換行，忽略縮排設定。"
 #: view/kateview.cpp:1281
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "在目前的行上方插入新行"
 
 #: view/kateview.cpp:1282
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
-msgstr ""
+msgstr "在目前的行上方插入新行，不修改目前的行。"
 
 #: view/kateview.cpp:1290
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "在目前的行下方插入新行"
 
 #: view/kateview.cpp:1291
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
-msgstr ""
+msgstr "在目前的行下方插入新行，不修改目前的行。"
 
 #: view/kateview.cpp:1300
 #, kde-format
@@ -7440,12 +7440,12 @@ msgstr "(唯讀) %1"
 #: view/kateview.cpp:1718
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "已停用 CamelCase 移動"
 
 #: view/kateview.cpp:1720
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "已啟用 CamelCase 移動"
 
 #: view/kateview.cpp:2228
 #, kde-format
@@ -7460,7 +7460,7 @@ msgstr "對齊於"
 #: view/kateview.cpp:3769
 #, kde-format
 msgid "Alignment pattern:"
-msgstr ""
+msgstr "對齊樣式："
 
 #: view/kateview.cpp:4885
 #, kde-format
