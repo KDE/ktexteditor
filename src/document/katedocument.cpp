@@ -53,8 +53,9 @@
 #include <KConfigGroup>
 #include <KDirWatch>
 #include <KFileItem>
-#include <KIO/Job>
+#include <KIO/FileCopyJob>
 #include <KIO/JobUiDelegate>
+#include <KIO/StatJob>
 #include <KJobWidgets>
 #include <KMessageBox>
 #include <KMountPoint>
