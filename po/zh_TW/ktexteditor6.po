@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-27 01:32+0000\n"
-"PO-Revision-Date: 2023-12-24 06:44+0900\n"
+"PO-Revision-Date: 2023-12-28 05:49+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -5453,7 +5453,7 @@ msgstr "Mirko Stocker"
 #: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Various bugfixes"
-msgstr "Various bugfixes"
+msgstr "許多錯誤修正"
 
 #: utils/kateglobal.cpp:126
 #, kde-format
