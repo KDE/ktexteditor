@@ -67,41 +67,6 @@ public:
     };
 
     /**
-     * Folding storage
-     */
-    class Folding
-    {
-    public:
-        /**
-         * Construct folding.
-         * @param _offset offset of the folding start
-         * @param _length length of the folding
-         * @param _foldingRegion folding region, includes if we start or end a region and the id
-         */
-        Folding(int _offset, int _length, KSyntaxHighlighting::FoldingRegion _foldingRegion)
-            : offset(_offset)
-            , length(_length)
-            , foldingRegion(_foldingRegion)
-        {
-        }
-
-        /**
-         * offset
-         */
-        int offset = 0;
-
-        /**
-         * length
-         */
-        int length = 0;
-
-        /**
-         * folding region, includes if we start or end a region and the id
-         */
-        KSyntaxHighlighting::FoldingRegion foldingRegion;
-    };
-
-    /**
      * Flags of TextLineData
      */
     enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagLineModified = 4, flagLineSavedOnDisk = 8 };
@@ -333,10 +298,9 @@ public:
     /**
      * Clear attributes and foldings of this line
      */
-    void clearAttributesAndFoldings()
+    void clearAttributes()
     {
         m_attributesList.clear();
-        m_foldings.clear();
     }
 
     /**
@@ -346,26 +310,6 @@ public:
     const std::vector<Attribute> &attributesList() const
     {
         return m_attributesList;
-    }
-
-    /**
-     * Accessor to foldings
-     * @return foldings of this line
-     */
-    const std::vector<Folding> &foldings() const
-    {
-        return m_foldings;
-    }
-
-    /**
-     * Add new folding at end of foldings stored in this line
-     * @param offset offset of folding start
-     * @param length length of the string that represents the folding
-     * @param foldingRegion folding region, includes if we start or end a region and the id
-     */
-    void addFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion foldingRegion)
-    {
-        m_foldings.emplace_back(offset, length, foldingRegion);
     }
 
     /**
@@ -411,11 +355,6 @@ private:
      * attributes of this line
      */
     std::vector<Attribute> m_attributesList;
-
-    /**
-     * foldings of this line
-     */
-    std::vector<Folding> m_foldings;
 
     /**
      * current highlighting state

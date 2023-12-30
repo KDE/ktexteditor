@@ -2518,7 +2518,7 @@ KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor
     const int direction = (foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 1 : -1;
     int foldCounter = 0;
     int lineCounter = 0;
-    auto &foldMarkers = m_view->doc()->buffer().plainLine(currentCursorPos.line())->foldings();
+    const auto foldMarkers = m_view->doc()->buffer().computeFoldings(currentCursorPos.line());
 
     // searching a end folding marker? go left to right
     // otherwise, go right to left
@@ -2544,7 +2544,7 @@ KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor
     int currentLine = currentCursorPos.line() + direction;
     for (; currentLine >= 0 && currentLine < m_view->doc()->lines() && lineCounter < maxLines; currentLine += direction) {
         // update line attributes
-        auto &foldMarkers = m_view->doc()->buffer().plainLine(currentLine)->foldings();
+        const auto foldMarkers = m_view->doc()->buffer().computeFoldings(currentLine);
         i = direction == 1 ? 0 : (long)foldMarkers.size() - 1;
 
         // iterate through the markers
@@ -2572,8 +2572,7 @@ KTextEditor::Range KateViewInternal::findMatchingFoldingMarker(const KTextEditor
 
 void KateViewInternal::updateFoldingMarkersHighlighting()
 {
-    auto &foldings = m_view->doc()->buffer().plainLine(m_cursor.line())->foldings();
-
+    const auto foldings = m_view->doc()->buffer().computeFoldings(m_cursor.line());
     for (unsigned long i = 0; i < foldings.size(); i++) {
         // 1 -> left to right, the current folding is start type
         // -1 -> right to left, the current folding is end type

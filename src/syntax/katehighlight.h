@@ -15,8 +15,9 @@
 #include <KSyntaxHighlighting/Format>
 #include <KSyntaxHighlighting/Theme>
 
-#include "attribute.h"
-#include "range.h"
+#include <KTextEditor/Attribute>
+#include <KTextEditor/Range>
+
 #include "spellcheck/prefixstore.h"
 
 #include <QHash>
@@ -26,6 +27,7 @@
 #include <QStringList>
 
 #include <unordered_map>
+#include <vector>
 
 namespace KTextEditor
 {
@@ -40,6 +42,46 @@ class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
 {
 public:
     explicit KateHighlighting(const KSyntaxHighlighting::Definition &def);
+
+    /**
+     * Folding storage
+     */
+    class Folding
+    {
+    public:
+        /**
+         * Construct folding.
+         * @param _offset offset of the folding start
+         * @param _length length of the folding
+         * @param _foldingRegion folding region, includes if we start or end a region and the id
+         */
+        Folding(int _offset, int _length, KSyntaxHighlighting::FoldingRegion _foldingRegion)
+            : offset(_offset)
+            , length(_length)
+            , foldingRegion(_foldingRegion)
+        {
+        }
+
+        /**
+         * offset
+         */
+        int offset = 0;
+
+        /**
+         * length
+         */
+        int length = 0;
+
+        /**
+         * folding region, includes if we start or end a region and the id
+         */
+        KSyntaxHighlighting::FoldingRegion foldingRegion;
+    };
+
+    /**
+     * Folding vector used to pass out folding knowledge
+     */
+    typedef std::vector<Folding> Foldings;
 
 protected:
     /**
@@ -82,8 +124,9 @@ public:
      * @param prevLine The previous line, the context array is picked up from that if present.
      * @param textLine The text line to parse
      * @param ctxChanged will be set to reflect if the context changed
+     * @param foldings foldings vector to fill, if that is wanted
      */
-    void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged);
+    void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged, Foldings *foldings = nullptr);
 
     const QString &name() const
     {
@@ -319,6 +362,12 @@ public:
      * textline to do updates on during doHighlight
      */
     Kate::TextLineData *m_textLineToHighlight = nullptr;
+
+    /**
+     * foldings vector to do updates on during doHighlight
+     * might not be set, then we ignor that
+     */
+    Foldings *m_foldings = nullptr;
 
     /**
      * check if the folding begin/ends are balanced!

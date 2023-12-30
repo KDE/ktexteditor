@@ -8,6 +8,7 @@
 #ifndef KATE_BUFFER_H
 #define KATE_BUFFER_H
 
+#include "katehighlight.h"
 #include "katetextbuffer.h"
 
 #include <ktexteditor_export.h>
@@ -19,7 +20,6 @@ namespace KTextEditor
 {
 class DocumentPrivate;
 }
-class KateHighlighting;
 
 /**
  * The KateBuffer class maintains a collections of lines.
@@ -220,6 +220,12 @@ public:
      * Invalidate highlighting of whole buffer.
      */
     void invalidateHighlighting();
+
+    /**
+     * Compute folding vector for the given line, will internally do a re-highlighting.
+     * @param line line to get folding vector for
+     */
+    KateHighlighting::Foldings computeFoldings(int line);
 
     /**
      * For a given line, compute if folding starts here.

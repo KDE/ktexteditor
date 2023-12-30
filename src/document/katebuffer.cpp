@@ -401,6 +401,27 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
 #endif
 }
 
+KateHighlighting::Foldings KateBuffer::computeFoldings(int line)
+{
+    // no hightlighting, no work
+    KateHighlighting::Foldings foldings;
+    if (!m_highlight || m_highlight->noHighlighting()) {
+        return foldings;
+    }
+
+    // ensure we did highlight at least until the previous line
+    if (line > 0) {
+        ensureHighlighted(line - 1, 0);
+    }
+
+    // highlight the given line with passed foldings vector to fill
+    Kate::TextLine prevLine = (line >= 1) ? plainLine(line - 1) : Kate::TextLine();
+    Kate::TextLine textLine = plainLine(line);
+    bool ctxChanged = false;
+    m_highlight->doHighlight(prevLine.get(), textLine.get(), ctxChanged, &foldings);
+    return foldings;
+}
+
 std::pair<bool, bool> KateBuffer::isFoldingStartingOnLine(int startLine)
 {
     // ensure valid input
@@ -453,11 +474,11 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     if (!foldingStart) {
         return KTextEditor::Range::invalid();
     }
-    const auto startTextLine = plainLine(startLine);
 
     // now: decided if indentation based folding or not!
     if (foldingIndentationSensitive) {
         // get our start indentation level
+        const auto startTextLine = plainLine(startLine);
         const int startIndentation = startTextLine->indentDepth(tabWidth());
 
         // search next line with indentation level <= our one
@@ -511,7 +532,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         QHash<int, QPair<int, int>> foldingStartToOffsetAndCount;
 
         // walk over all attributes of the line and compute the matchings
-        const auto &startLineAttributes = startTextLine->foldings();
+        const auto startLineAttributes = computeFoldings(startLine);
         for (size_t i = 0; i < startLineAttributes.size(); ++i) {
             // folding close?
             if (startLineAttributes[i].foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::End) {
@@ -557,12 +578,8 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     // second step: search for matching end region marker!
     int countOfOpenRegions = 1;
     for (int line = startLine + 1; line < lines(); ++line) {
-        // ensure line is highlighted
-        ensureHighlighted(line);
-        Kate::TextLine textLine = plainLine(line);
-
         // search for matching end marker
-        const auto &lineAttributes = textLine->foldings();
+        const auto lineAttributes = computeFoldings(line);
         for (size_t i = 0; i < lineAttributes.size(); ++i) {
             // matching folding close?
             if (lineAttributes[i].foldingRegion.type() == KSyntaxHighlighting::FoldingRegion::End && lineAttributes[i].foldingRegion.id() == openedRegionType) {

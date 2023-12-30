@@ -108,7 +108,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 }
 
-void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged)
+void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged, Foldings *foldings)
 {
     // default: no context change
     ctxChanged = false;
@@ -119,10 +119,13 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::Tex
     }
 
     // in all cases, remove old hl, or we will grow to infinite ;)
-    textLine->clearAttributesAndFoldings();
+    textLine->clearAttributes();
 
     // reset folding start
     textLine->clearMarkedAsFoldingStart();
+    if (foldings) {
+        foldings->clear();
+    }
 
     // no hl set, nothing to do more than the above cleaning ;)
     if (noHl) {
@@ -131,14 +134,17 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::Tex
 
     // ensure we arrive in clean state
     Q_ASSERT(!m_textLineToHighlight);
+    Q_ASSERT(!m_foldings);
     Q_ASSERT(m_foldingStartToCount.isEmpty());
 
     // highlight the given line via the abstract highlighter
     // a bit ugly: we set the line to highlight as member to be able to update its stats in the applyFormat and applyFolding member functions
     m_textLineToHighlight = textLine;
+    m_foldings = foldings;
     const KSyntaxHighlighting::State initialState(!prevLine ? KSyntaxHighlighting::State() : prevLine->highlightingState());
     const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->text(), initialState);
     m_textLineToHighlight = nullptr;
+    m_foldings = nullptr;
 
     // update highlighting state if needed
     if (textLine->highlightingState() != endOfLineState) {
@@ -160,7 +166,6 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::Tex
 
 void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
 {
-    // WE ATM assume ascending offset order
     Q_ASSERT(m_textLineToHighlight);
     if (!format.isValid()) {
         return;
@@ -170,16 +175,19 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
     const auto it = m_formatsIdToIndex.find(format.id());
     Q_ASSERT(it != m_formatsIdToIndex.end());
 
+    // WE ATM assume ascending offset order
     // remember highlighting info in our textline
     m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, it->second));
 }
 
 void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
 {
-    // WE ATM assume ascending offset order, we add the length to the offset for the folding ends to have ranges spanning the full folding region
-    Q_ASSERT(m_textLineToHighlight);
     Q_ASSERT(region.isValid());
-    m_textLineToHighlight->addFolding(offset + ((region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length), length, region);
+
+    // WE ATM assume ascending offset order, we add the length to the offset for the folding ends to have ranges spanning the full folding region
+    if (m_foldings) {
+        m_foldings->emplace_back(offset + ((region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length), length, region);
+    }
 
     // for each end region, decrement counter for that type, erase if count reaches 0!
     if (region.type() == KSyntaxHighlighting::FoldingRegion::End) {
