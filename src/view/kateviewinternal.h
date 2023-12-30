@@ -13,6 +13,8 @@
 #ifndef _KATE_VIEW_INTERNAL_
 #define _KATE_VIEW_INTERNAL_
 
+#include <KSyntaxHighlighting/FoldingRegion>
+
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/range.h>
 #include <ktexteditor/view.h>

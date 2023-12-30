@@ -7,14 +7,12 @@
 #ifndef KATE_TEXTLINE_H
 #define KATE_TEXTLINE_H
 
-#include <KSyntaxHighlighting/foldingregion.h>
-#include <QList>
-#include <QString>
-
-#include <KSyntaxHighlighting/FoldingRegion>
 #include <KSyntaxHighlighting/State>
 
+#include <QString>
+
 #include <memory>
+#include <vector>
 
 namespace Kate
 {
