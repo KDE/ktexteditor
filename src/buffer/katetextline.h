@@ -67,7 +67,7 @@ public:
     /**
      * Flags of TextLineData
      */
-    enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagLineModified = 4, flagLineSavedOnDisk = 8 };
+    enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagFoldingEndAttribute = 4, flagLineModified = 8, flagLineSavedOnDisk = 16 };
 
     /**
      * Construct an empty text line.
@@ -167,11 +167,12 @@ public:
     }
 
     /**
-     * Clear folding start status.
+     * Clear folding start and end status.
      */
-    void clearMarkedAsFoldingStart()
+    void clearMarkedAsFoldingStartAndEnd()
     {
         m_flags &= ~flagFoldingStartAttribute;
+        m_flags &= ~flagFoldingEndAttribute;
     }
 
     /**
@@ -189,6 +190,23 @@ public:
     void markAsFoldingStartAttribute()
     {
         m_flags |= flagFoldingStartAttribute;
+    }
+
+    /**
+     * Is on this line a folding end per attribute?
+     * @return folding end line per attribute? or not?
+     */
+    bool markedAsFoldingEndAttribute() const
+    {
+        return m_flags & flagFoldingEndAttribute;
+    }
+
+    /**
+     * Mark as folding end line of an attribute based folding.
+     */
+    void markAsFoldingEndAttribute()
+    {
+        m_flags |= flagFoldingEndAttribute;
     }
 
     /**

@@ -122,7 +122,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::Tex
     textLine->clearAttributes();
 
     // reset folding start
-    textLine->clearMarkedAsFoldingStart();
+    textLine->clearMarkedAsFoldingStartAndEnd();
     if (foldings) {
         foldings->clear();
     }
@@ -182,6 +182,7 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
 
 void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
 {
+    Q_ASSERT(m_textLineToHighlight);
     Q_ASSERT(region.isValid());
 
     // WE ATM assume ascending offset order, we add the length to the offset for the folding ends to have ranges spanning the full folding region
@@ -198,6 +199,9 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
             } else {
                 m_foldingStartToCount.erase(end);
             }
+        } else {
+            // if we arrive here, we might have some folding end in this line for previous lines
+            m_textLineToHighlight->markAsFoldingEndAttribute();
         }
     }
 
