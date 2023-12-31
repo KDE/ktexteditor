@@ -3985,7 +3985,7 @@ msgstr ""
 "</p>\n"
 "<p>En canvi, si la paraula està mal escrita, podeu intentar de trobar la "
 "substitució correcta en la llista a continuació. Si no hi trobeu una "
-"substitució, podeu escriure al quadro de text a continuació i clicar "
+"substitució, podeu escriure en el quadro de text a continuació i clicar "
 "<b>Substituïx</b> o <b>Substituïx-ho tot</b>.</p>\n"
 "</qt>"
 
@@ -4871,10 +4871,10 @@ msgid ""
 msgstr ""
 "<p>Esta llista mostra els estils predeterminats per al tema actual i oferix "
 "els mitjans per a editar-los. El nom de l'estil indica la configuració de "
-"l'estil actual.</p><p>Per a editar els colors, cliqueu als quadros de color "
-"o trieu el color a editar des del menú emergent.</p><p>Quan siga apropiat, "
-"podreu traure l'assignació dels colors per al fons i el fons seleccionat des "
-"del menú emergent.</p>"
+"l'estil actual.</p><p>Per a editar els colors, cliqueu en els quadros de "
+"color o trieu el color a editar des del menú emergent.</p><p>Quan siga "
+"apropiat, podreu traure l'assignació dels colors per al fons i el fons "
+"seleccionat des del menú emergent.</p>"
 
 #: syntax/katethemeconfig.cpp:568
 #, kde-format
