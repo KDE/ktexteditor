@@ -1793,11 +1793,6 @@ bool KTextEditor::DocumentPrivate::setMode(const QString &name)
 
 KSyntaxHighlighting::Theme::TextStyle KTextEditor::DocumentPrivate::defaultStyleAt(KTextEditor::Cursor position) const
 {
-    // TODO, FIXME KDE5: in surrogate, use 2 bytes before
-    if (!isValidTextPosition(position)) {
-        return KSyntaxHighlighting::Theme::TextStyle::Normal;
-    }
-
     return const_cast<KTextEditor::DocumentPrivate *>(this)->defStyleNum(position.line(), position.column());
 }
 
