@@ -8,6 +8,7 @@
 #include "modificationsystem_test.h"
 #include "moc_modificationsystem_test.cpp"
 
+#include <katebuffer.h>
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateundomanager.h>
@@ -31,8 +32,9 @@ static void clearModificationFlags(KTextEditor::DocumentPrivate *doc)
 {
     for (int i = 0; i < doc->lines(); ++i) {
         Kate::TextLine line = doc->plainKateTextLine(i);
-        line->markAsModified(false);
-        line->markAsSavedOnDisk(false);
+        line.markAsModified(false);
+        line.markAsSavedOnDisk(false);
+        doc->buffer().setLineMetaData(i, line);
     }
 }
 
@@ -40,8 +42,9 @@ static void markModifiedLinesAsSaved(KTextEditor::DocumentPrivate *doc)
 {
     for (int i = 0; i < doc->lines(); ++i) {
         Kate::TextLine textLine = doc->plainKateTextLine(i);
-        if (textLine->markedAsModified()) {
-            textLine->markAsSavedOnDisk(true);
+        if (textLine.markedAsModified()) {
+            textLine.markAsSavedOnDisk(true);
+            doc->buffer().setLineMetaData(i, textLine);
         }
     }
 }

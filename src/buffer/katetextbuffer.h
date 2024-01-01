@@ -30,8 +30,6 @@ namespace Kate
 class TextRange;
 class TextCursor;
 class TextBlock;
-class TextLineData;
-typedef std::shared_ptr<TextLineData> TextLine;
 
 constexpr int BufferBlockSize = 64;
 
@@ -223,6 +221,13 @@ public:
      * @return text line
      */
     TextLine line(int line) const;
+
+    /**
+     * Transfer all non text attributes for the given line from the given text line to the one in the buffer.
+     * @param line line number to set attributes
+     * @param textLine line reference to get attributes from
+     */
+    void setLineMetaData(int line, const TextLine &textLine);
 
     /**
      * Retrieve length for @p line

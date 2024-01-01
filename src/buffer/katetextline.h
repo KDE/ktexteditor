@@ -9,25 +9,17 @@
 
 #include <KSyntaxHighlighting/State>
 
+#include <QList>
 #include <QString>
-
-#include <memory>
-#include <vector>
 
 namespace Kate
 {
 /**
  * Class representing a single text line.
  * For efficiency reasons, not only pure text is stored here, but also additional data.
- * Will be only accessed over shared pointers.
  */
-class TextLineData
+class TextLine
 {
-    /**
-     * TexBlock is a friend class, only one allowed to touch the text content.
-     */
-    friend class TextBlock;
-
 public:
     /**
      * Attribute storage
@@ -65,20 +57,20 @@ public:
     };
 
     /**
-     * Flags of TextLineData
+     * Flags of TextLine
      */
     enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagFoldingEndAttribute = 4, flagLineModified = 8, flagLineSavedOnDisk = 16 };
 
     /**
      * Construct an empty text line.
      */
-    TextLineData() = default;
+    TextLine() = default;
 
     /**
      * Construct an text line with given text.
      * @param text text to use for this line
      */
-    explicit TextLineData(const QString &text)
+    explicit TextLine(const QString &text)
         : m_text(text)
         , m_flags(0)
     {
@@ -89,6 +81,15 @@ public:
      * @return text of this line as constant reference
      */
     const QString &text() const
+    {
+        return m_text;
+    }
+
+    /**
+     * Accessor to the text contained in this line.
+     * @return text of this line as reference
+     */
+    QString &text()
     {
         return m_text;
     }
@@ -323,7 +324,7 @@ public:
      * Accessor to attributes
      * @return attributes of this line
      */
-    const std::vector<Attribute> &attributesList() const
+    const QList<Attribute> &attributesList() const
     {
         return m_attributesList;
     }
@@ -352,17 +353,6 @@ public:
 
 private:
     /**
-     * Accessor to the text contained in this line.
-     * This accessor is private, only the friend class text buffer/block is allowed to access the text read/write.
-     * @return text of this line
-     */
-    QString &textReadWrite()
-    {
-        return m_text;
-    }
-
-private:
-    /**
      * text of this line
      */
     QString m_text;
@@ -370,7 +360,7 @@ private:
     /**
      * attributes of this line
      */
-    std::vector<Attribute> m_attributesList;
+    QList<Attribute> m_attributesList;
 
     /**
      * current highlighting state
@@ -382,11 +372,6 @@ private:
      */
     unsigned int m_flags = 0;
 };
-
-/**
- * The normal world only accesses the text lines with shared pointers.
- */
-typedef std::shared_ptr<TextLineData> TextLine;
 }
 
 #endif

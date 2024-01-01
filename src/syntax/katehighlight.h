@@ -35,7 +35,7 @@ class DocumentPrivate;
 }
 namespace Kate
 {
-class TextLineData;
+class TextLine;
 }
 
 class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
@@ -126,7 +126,7 @@ public:
      * @param ctxChanged will be set to reflect if the context changed
      * @param foldings foldings vector to fill, if that is wanted
      */
-    void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged, Foldings *foldings = nullptr);
+    void doHighlight(const Kate::TextLine *prevLine, Kate::TextLine *textLine, bool &ctxChanged, Foldings *foldings = nullptr);
 
     const QString &name() const
     {
@@ -165,7 +165,7 @@ public:
      */
     const QList<QRegularExpression> &emptyLines(int attribute = 0) const;
 
-    bool isEmptyLine(const Kate::TextLineData *textline) const;
+    bool isEmptyLine(const Kate::TextLine *textline) const;
 
     /**
      * @return true if @p beginAttr and @p endAttr are members of the same
@@ -361,7 +361,7 @@ public:
     /**
      * textline to do updates on during doHighlight
      */
-    Kate::TextLineData *m_textLineToHighlight = nullptr;
+    Kate::TextLine *m_textLineToHighlight = nullptr;
 
     /**
      * foldings vector to do updates on during doHighlight

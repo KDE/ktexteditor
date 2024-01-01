@@ -148,8 +148,7 @@ void KateUndoManager::slotTextInserted(int line, int col, const QString &s, cons
     item.text = s;
     item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-    Q_ASSERT(tl);
-    if (tl && tl->markedAsModified()) {
+    if (tl.markedAsModified()) {
         item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
     } else {
         item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
@@ -170,8 +169,7 @@ void KateUndoManager::slotTextRemoved(int line, int col, const QString &s, const
     item.text = s;
     item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-    Q_ASSERT(tl);
-    if (tl && tl->markedAsModified()) {
+    if (tl.markedAsModified()) {
         item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
     } else {
         item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
@@ -203,26 +201,24 @@ void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLin
     item.len = length;
     item.newLine = newLine;
 
-    Q_ASSERT(tl);
-    if (tl) {
-        if (length > 0 || tl->markedAsModified()) {
-            item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
-        } else if (tl->markedAsSavedOnDisk()) {
-            item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
-        }
-
-        if (col > 0 || length == 0 || tl->markedAsModified()) {
-            item.lineModFlags.setFlag(UndoItem::RedoLine2Modified);
-        } else if (tl->markedAsSavedOnDisk()) {
-            item.lineModFlags.setFlag(UndoItem::RedoLine2Saved);
-        }
-
-        if (tl->markedAsModified()) {
-            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
-        } else if ((length > 0 && col > 0) || tl->markedAsSavedOnDisk()) {
-            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
-        }
+    if (length > 0 || tl.markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+    } else if (tl.markedAsSavedOnDisk()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
     }
+
+    if (col > 0 || length == 0 || tl.markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine2Modified);
+    } else if (tl.markedAsSavedOnDisk()) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine2Saved);
+    }
+
+    if (tl.markedAsModified()) {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+    } else if ((length > 0 && col > 0) || tl.markedAsSavedOnDisk()) {
+        item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+    }
+
     addUndoItem(std::move(item));
 }
 
@@ -239,65 +235,61 @@ void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool line
     item.len = length;
     item.removeLine = lineRemoved;
 
-    Q_ASSERT(tl);
-    Q_ASSERT(nextLine);
+    const int len1 = tl.length();
+    const int len2 = nextLine.length();
 
-    const int len1 = tl->length();
-    const int len2 = nextLine->length();
+    if (len1 > 0 && len2 > 0) {
+        item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-    if (tl && nextLine) {
-        if (len1 > 0 && len2 > 0) {
+        if (tl.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
+
+        if (nextLine.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
+        }
+    } else if (len1 == 0) {
+        if (nextLine.markedAsModified()) {
             item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+        } else if (nextLine.markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
+        }
 
-            if (tl->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
-            } else {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
-            }
+        if (tl.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
 
-            if (nextLine->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
-            } else {
-                item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
-            }
-        } else if (len1 == 0) {
-            if (nextLine->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
-            } else if (nextLine->markedAsSavedOnDisk()) {
-                item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
-            }
+        if (nextLine.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
+        } else if (nextLine.markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
+        }
+    } else { // len2 == 0
+        if (nextLine.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
+        } else if (nextLine.markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
+        }
 
-            if (tl->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
-            } else {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
-            }
+        if (tl.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else if (tl.markedAsSavedOnDisk()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
 
-            if (nextLine->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
-            } else if (nextLine->markedAsSavedOnDisk()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
-            }
-        } else { // len2 == 0
-            if (nextLine->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
-            } else if (nextLine->markedAsSavedOnDisk()) {
-                item.lineModFlags.setFlag(UndoItem::RedoLine1Saved);
-            }
-
-            if (tl->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
-            } else if (tl->markedAsSavedOnDisk()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
-            }
-
-            if (nextLine->markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
-            } else {
-                item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
-            }
+        if (nextLine.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine2Saved);
         }
     }
+
     addUndoItem(std::move(item));
 }
 
@@ -322,14 +314,11 @@ void KateUndoManager::slotLineRemoved(int line, const QString &s, const Kate::Te
         item.text = s;
         item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-        Q_ASSERT(tl);
-        if (tl) {
-            if (tl->markedAsModified()) {
+            if (tl.markedAsModified()) {
                 item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
             } else {
                 item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
             }
-        }
         addUndoItem(std::move(item));
     }
 }

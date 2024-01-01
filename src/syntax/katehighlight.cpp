@@ -108,7 +108,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 }
 
-void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, bool &ctxChanged, Foldings *foldings)
+void KateHighlighting::doHighlight(const Kate::TextLine *prevLine, Kate::TextLine *textLine, bool &ctxChanged, Foldings *foldings)
 {
     // default: no context change
     ctxChanged = false;
@@ -177,7 +177,7 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
 
     // WE ATM assume ascending offset order
     // remember highlighting info in our textline
-    m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, it->second));
+    m_textLineToHighlight->addAttribute(Kate::TextLine::Attribute(offset, length, it->second));
 }
 
 void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
@@ -377,7 +377,7 @@ QStringList KateHighlighting::getEmbeddedHighlightingModes() const
     return embeddedHighlightingModes;
 }
 
-bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
+bool KateHighlighting::isEmptyLine(const Kate::TextLine *textline) const
 {
     const QString &txt = textline->text();
     if (txt.isEmpty()) {
@@ -407,19 +407,14 @@ int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate *doc, co
     }
 
     // get highlighted line
-    Kate::TextLine tl = doc->kateTextLine(cursor.line());
-
-    // make sure the textline is a valid pointer
-    if (!tl) {
-        return 0;
-    }
+    const auto tl = doc->kateTextLine(cursor.line());
 
     // either get char attribute or attribute of context still active at end of line
-    if (cursor.column() < tl->length()) {
-        return sanitizeFormatIndex(tl->attribute(cursor.column()));
-    } else if (cursor.column() >= tl->length()) {
-        if (!tl->attributesList().empty()) {
-            return sanitizeFormatIndex(tl->attributesList().back().attributeValue);
+    if (cursor.column() < tl.length()) {
+        return sanitizeFormatIndex(tl.attribute(cursor.column()));
+    } else if (cursor.column() >= tl.length()) {
+        if (!tl.attributesList().empty()) {
+            return sanitizeFormatIndex(tl.attributesList().back().attributeValue);
         }
     }
     return 0;

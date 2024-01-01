@@ -576,11 +576,11 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
 
     // If cursor on the quote we should choose the best direction.
     if (line.at(cursor.column()) == c) {
-        int attribute = m_view->doc()->kateTextLine(cursor.line())->attribute(cursor.column());
+        int attribute = m_view->doc()->kateTextLine(cursor.line()).attribute(cursor.column());
 
         //  If at the beginning of the line - then we might search the end.
-        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) == attribute
-            && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) != attribute) {
+        if (doc()->kateTextLine(cursor.line()).attribute(cursor.column() + 1) == attribute
+            && doc()->kateTextLine(cursor.line()).attribute(cursor.column() - 1) != attribute) {
             r.startColumn = cursor.column();
             r.endColumn = line.indexOf(c, cursor.column() + 1);
 
@@ -588,8 +588,8 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
         }
 
         //  If at the end of the line - then we might search the beginning.
-        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) != attribute
-            && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) == attribute) {
+        if (doc()->kateTextLine(cursor.line()).attribute(cursor.column() + 1) != attribute
+            && doc()->kateTextLine(cursor.line()).attribute(cursor.column() - 1) == attribute) {
             r.startColumn = line.lastIndexOf(c, cursor.column() - 1);
             r.endColumn = cursor.column();
 
@@ -859,16 +859,16 @@ Range ModeBase::goLineUpDown(int lines)
         endLineLen = 0;
     }
 
-    int endLineLenVirt = endLine->toVirtualColumn(endLineLen, tabstop);
-    int virtColumnStart = startLine->toVirtualColumn(c.column(), tabstop);
+    int endLineLenVirt = endLine.toVirtualColumn(endLineLen, tabstop);
+    int virtColumnStart = startLine.toVirtualColumn(c.column(), tabstop);
 
     // if sticky column isn't set, set end column and set sticky column to its virtual column
     if (m_stickyColumn == -1) {
-        r.endColumn = endLine->fromVirtualColumn(virtColumnStart, tabstop);
+        r.endColumn = endLine.fromVirtualColumn(virtColumnStart, tabstop);
         m_stickyColumn = virtColumnStart;
     } else {
         // sticky is set - set end column to its value
-        r.endColumn = endLine->fromVirtualColumn(m_stickyColumn, tabstop);
+        r.endColumn = endLine.fromVirtualColumn(m_stickyColumn, tabstop);
     }
 
     // make sure end column won't be after the last column of a line
@@ -958,16 +958,15 @@ Range ModeBase::goVisualLineUpDown(int lines)
         const bool isWrappedContinuation = (cache->textLayout(startRealLine, startVisualLine).lineLayout().lineNumber() != 0);
         const int numInvisibleIndentChars = [&] {
             if (isWrappedContinuation) {
-                if (auto l = doc()->plainKateTextLine(startRealLine)) {
-                    return startLine->toVirtualColumn(l->nextNonSpaceChar(0), tabstop);
-                }
+                auto l = doc()->plainKateTextLine(startRealLine);
+                return startLine.toVirtualColumn(l.nextNonSpaceChar(0), tabstop);
             }
             return 0;
         }();
 
         const int realLineStartColumn = cache->textLayout(startRealLine, startVisualLine).startCol();
-        const int lineStartVirtualColumn = startLine->toVirtualColumn(realLineStartColumn, tabstop);
-        const int visualColumnNoInvisibleIndent = startLine->toVirtualColumn(c.column(), tabstop) - lineStartVirtualColumn;
+        const int lineStartVirtualColumn = startLine.toVirtualColumn(realLineStartColumn, tabstop);
+        const int visualColumnNoInvisibleIndent = startLine.toVirtualColumn(c.column(), tabstop) - lineStartVirtualColumn;
         m_stickyColumn = visualColumnNoInvisibleIndent + numInvisibleIndentChars;
         Q_ASSERT(m_stickyColumn >= 0);
     }
@@ -981,23 +980,22 @@ Range ModeBase::goVisualLineUpDown(int lines)
     const bool isWrappedContinuation = (cache->textLayout(finishRealLine, finishVisualLine).lineLayout().lineNumber() != 0);
     const int numInvisibleIndentChars = [&] {
         if (isWrappedContinuation) {
-            if (auto l = doc()->plainKateTextLine(finishRealLine)) {
-                return endLine->toVirtualColumn(l->nextNonSpaceChar(0), tabstop);
-            }
+            auto l = doc()->plainKateTextLine(finishRealLine);
+            return endLine.toVirtualColumn(l.nextNonSpaceChar(0), tabstop);
         }
         return 0;
     }();
     if (m_stickyColumn == (unsigned int)KateVi::EOL) {
         const int visualEndColumn = cache->textLayout(finishRealLine, finishVisualLine).lineLayout().textLength() - 1;
-        r.endColumn = endLine->fromVirtualColumn(visualEndColumn + realLineStartColumn - numInvisibleIndentChars, tabstop);
+        r.endColumn = endLine.fromVirtualColumn(visualEndColumn + realLineStartColumn - numInvisibleIndentChars, tabstop);
     } else {
         // Algorithm: find the "real" column corresponding to the start of the line.  Offset from that
         // until the "visual" column is equal to the "visual" sticky column.
         int realOffsetToVisualStickyColumn = 0;
-        const int lineStartVirtualColumn = endLine->toVirtualColumn(realLineStartColumn, tabstop);
+        const int lineStartVirtualColumn = endLine.toVirtualColumn(realLineStartColumn, tabstop);
         while (true) {
             const int visualColumn =
-                endLine->toVirtualColumn(realLineStartColumn + realOffsetToVisualStickyColumn, tabstop) - lineStartVirtualColumn + numInvisibleIndentChars;
+                endLine.toVirtualColumn(realLineStartColumn + realOffsetToVisualStickyColumn, tabstop) - lineStartVirtualColumn + numInvisibleIndentChars;
             if (visualColumn >= m_stickyColumn) {
                 break;
             }

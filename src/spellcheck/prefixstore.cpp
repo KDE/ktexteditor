@@ -112,8 +112,8 @@ QString KatePrefixStore::findPrefix(const QString &s, int start) const
 QString KatePrefixStore::findPrefix(const Kate::TextLine &line, int start) const
 {
     unsigned long long state = 0;
-    for (int i = start; i < line->length(); ++i) {
-        QChar c = line->at(i);
+    for (int i = start; i < line.length(); ++i) {
+        QChar c = line.at(i);
         const CharToOccurrenceStateHash &hash = m_transitionFunction[state];
         CharToOccurrenceStateHash::const_iterator it = hash.find(c.unicode());
         if (it == hash.end()) {
@@ -122,7 +122,7 @@ QString KatePrefixStore::findPrefix(const Kate::TextLine &line, int start) const
 
         state = (*it).second;
         if (m_acceptingStates.contains(state)) {
-            return line->string(start, i + 1 - start);
+            return line.string(start, i + 1 - start);
         }
     }
     return QString();

@@ -9,17 +9,17 @@
 namespace Kate
 {
 
-int TextLineData::firstChar() const
+int TextLine::firstChar() const
 {
     return nextNonSpaceChar(0);
 }
 
-int TextLineData::lastChar() const
+int TextLine::lastChar() const
 {
     return previousNonSpaceChar(m_text.length() - 1);
 }
 
-int TextLineData::nextNonSpaceChar(int pos) const
+int TextLine::nextNonSpaceChar(int pos) const
 {
     Q_ASSERT(pos >= 0);
 
@@ -32,7 +32,7 @@ int TextLineData::nextNonSpaceChar(int pos) const
     return -1;
 }
 
-int TextLineData::previousNonSpaceChar(int pos) const
+int TextLine::previousNonSpaceChar(int pos) const
 {
     if (pos >= m_text.length()) {
         pos = m_text.length() - 1;
@@ -47,7 +47,7 @@ int TextLineData::previousNonSpaceChar(int pos) const
     return -1;
 }
 
-QString TextLineData::leadingWhitespace() const
+QString TextLine::leadingWhitespace() const
 {
     if (firstChar() < 0) {
         return string(0, length());
@@ -56,7 +56,7 @@ QString TextLineData::leadingWhitespace() const
     return string(0, firstChar());
 }
 
-int TextLineData::indentDepth(int tabWidth) const
+int TextLine::indentDepth(int tabWidth) const
 {
     int d = 0;
     const int len = m_text.length();
@@ -77,7 +77,7 @@ int TextLineData::indentDepth(int tabWidth) const
     return d;
 }
 
-bool TextLineData::matchesAt(int column, const QString &match) const
+bool TextLine::matchesAt(int column, const QString &match) const
 {
     if (column < 0) {
         return false;
@@ -102,7 +102,7 @@ bool TextLineData::matchesAt(int column, const QString &match) const
     return true;
 }
 
-int TextLineData::toVirtualColumn(int column, int tabWidth) const
+int TextLine::toVirtualColumn(int column, int tabWidth) const
 {
     if (column < 0) {
         return 0;
@@ -123,7 +123,7 @@ int TextLineData::toVirtualColumn(int column, int tabWidth) const
     return x + column - zmax;
 }
 
-int TextLineData::fromVirtualColumn(int column, int tabWidth) const
+int TextLine::fromVirtualColumn(int column, int tabWidth) const
 {
     if (column < 0) {
         return 0;
@@ -149,7 +149,7 @@ int TextLineData::fromVirtualColumn(int column, int tabWidth) const
     return z + qMax(column - x, 0);
 }
 
-int TextLineData::virtualLength(int tabWidth) const
+int TextLine::virtualLength(int tabWidth) const
 {
     int x = 0;
     const int len = m_text.length();
@@ -166,7 +166,7 @@ int TextLineData::virtualLength(int tabWidth) const
     return x;
 }
 
-void TextLineData::addAttribute(const Attribute &attribute)
+void TextLine::addAttribute(const Attribute &attribute)
 {
     // try to append to previous range, if same attribute value
     if (!m_attributesList.empty() && (m_attributesList.back().attributeValue == attribute.attributeValue)
@@ -178,7 +178,7 @@ void TextLineData::addAttribute(const Attribute &attribute)
     m_attributesList.push_back(attribute);
 }
 
-int TextLineData::attribute(int pos) const
+int TextLine::attribute(int pos) const
 {
     const auto found = std::upper_bound(m_attributesList.cbegin(), m_attributesList.cend(), pos, [](const int &p, const Attribute &x) {
         return p < x.offset + x.length;

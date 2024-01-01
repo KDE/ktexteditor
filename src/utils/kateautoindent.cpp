@@ -148,17 +148,12 @@ bool KateAutoIndent::doIndent(int line, int indentDepth, int align)
 {
     Kate::TextLine textline = doc->plainKateTextLine(line);
 
-    // textline not found, cu
-    if (!textline) {
-        return false;
-    }
-
     // sanity check
     if (indentDepth < 0) {
         indentDepth = 0;
     }
 
-    const QString oldIndentation = textline->leadingWhitespace();
+    const QString oldIndentation = textline.leadingWhitespace();
 
     // Preserve existing "tabs then spaces" alignment if and only if:
     //  - no alignment was passed to doIndent and
@@ -201,7 +196,7 @@ bool KateAutoIndent::doIndentRelative(int line, int change)
     Kate::TextLine textline = doc->plainKateTextLine(line);
 
     // get indent width of current line
-    int indentDepth = textline->indentDepth(tabWidth);
+    int indentDepth = textline.indentDepth(tabWidth);
     int extraSpaces = indentDepth % indentWidth;
 
     // add change
@@ -235,22 +230,23 @@ void KateAutoIndent::keepIndent(int line)
         }
         --nonEmptyLine;
     }
-    Kate::TextLine prevTextLine = doc->plainKateTextLine(nonEmptyLine);
-    Kate::TextLine textLine = doc->plainKateTextLine(line);
 
-    // textline not found, cu
-    if (!prevTextLine || !textLine) {
+    // no line in front, no work...
+    if (nonEmptyLine < 0) {
         return;
     }
 
-    const QString previousWhitespace = prevTextLine->leadingWhitespace();
+    Kate::TextLine prevTextLine = doc->plainKateTextLine(nonEmptyLine);
+    Kate::TextLine textLine = doc->plainKateTextLine(line);
+
+    const QString previousWhitespace = prevTextLine.leadingWhitespace();
 
     // remove leading whitespace, then insert the leading indentation
     doc->editStart();
 
-    int indentDepth = textLine->indentDepth(tabWidth);
+    int indentDepth = textLine.indentDepth(tabWidth);
     int extraSpaces = indentDepth % indentWidth;
-    doc->editRemoveText(line, 0, textLine->leadingWhitespace().size());
+    doc->editRemoveText(line, 0, textLine.leadingWhitespace().size());
     if (keepExtra && extraSpaces > 0)
         doc->editInsertText(line, 0, QString(extraSpaces, QLatin1Char(' ')));
 

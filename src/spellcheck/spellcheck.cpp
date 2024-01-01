@@ -143,14 +143,11 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHi
         const int endColumn = rangeToSplit.end().column();
         bool inSpellCheckArea = false;
         for (int line = startLine; line <= endLine; ++line) {
-            Kate::TextLine kateTextLine = document->kateTextLine(line);
-            if (!kateTextLine) {
-                continue; // bug #303496
-            }
+            const auto kateTextLine = document->kateTextLine(line);
             const int start = (line == startLine) ? startColumn : 0;
-            const int end = (line == endLine) ? endColumn : kateTextLine->length();
+            const int end = (line == endLine) ? endColumn : kateTextLine.length();
             for (int i = start; i < end;) { // WARNING: 'i' has to be incremented manually!
-                int attr = kateTextLine->attribute(i);
+                int attr = kateTextLine.attribute(i);
                 const KatePrefixStore &prefixStore = highlighting->getCharacterEncodingsPrefixStore(attr);
                 QString prefixFound = prefixStore.findPrefix(kateTextLine, i);
                 if (!document->highlight()->attributeRequiresSpellchecking(static_cast<unsigned int>(attr)) && prefixFound.isEmpty()) {
@@ -210,7 +207,7 @@ QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckRange
 
 void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, KTextEditor::Range replacementRange)
 {
-    const int attr = doc->kateTextLine(replacementRange.start().line())->attribute(replacementRange.start().column());
+    const int attr = doc->kateTextLine(replacementRange.start().line()).attribute(replacementRange.start().column());
     if (!doc->highlight()->getCharacterEncodings(attr).isEmpty() && doc->containsCharacterEncoding(replacementRange)) {
         doc->replaceText(replacementRange, newWord);
         doc->replaceCharactersByEncoding(KTextEditor::Range(replacementRange.start(), replacementRange.start() + KTextEditor::Cursor(0, newWord.length())));

@@ -454,7 +454,7 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-void KateScrollBar::getCharColorRanges(const std::vector<Kate::TextLineData::Attribute> &attributes,
+void KateScrollBar::getCharColorRanges(const QList<Kate::TextLine::Attribute> &attributes,
                                        const QList<Kate::TextRange *> &decorations,
                                        const QString &text,
                                        QList<KateScrollBar::ColumnRangeWithColor> &ranges,
@@ -502,12 +502,12 @@ void KateScrollBar::getCharColorRanges(const std::vector<Kate::TextLineData::Att
         // If there's no decoration set for the current character (this will mostly be the case for
         // plain Kate), query the styles, that is, the default kate syntax highlighting.
         // go to the block containing x
-        size_t attributeIndex = 0;
+        qsizetype attributeIndex = 0;
         while ((attributeIndex < attributes.size()) && ((attributes[attributeIndex].offset + attributes[attributeIndex].length) < i)) {
             ++attributeIndex;
         }
         if (attributeIndex < attributes.size()) {
-            const Kate::TextLineData::Attribute attr = attributes[attributeIndex];
+            const auto attr = attributes[attributeIndex];
             if ((i < attr.offset + attr.length)) {
                 QBrush color = m_view->renderer()->attribute(attr.attributeValue)->foreground();
                 int startCol = attr.offset;
@@ -608,17 +608,14 @@ void KateScrollBar::updatePixmap()
         for (int virtualLine = 0; virtualLine < docLineCount; virtualLine += lineIncrement) {
             int realLineNumber = m_view->textFolding().visibleLineToLine(virtualLine);
             const Kate::TextLine kateline = m_doc->plainKateTextLine(realLineNumber);
-            if (!kateline) {
-                continue;
-            }
-            const QString lineText = kateline->text();
+            const QString lineText = kateline.text();
 
             if (!simpleMode) {
                 m_doc->buffer().ensureHighlighted(realLineNumber);
             }
 
             // get normal highlighting stuff
-            const auto &attributes = kateline->attributesList();
+            const auto &attributes = kateline.attributesList();
 
             // get moving ranges with attribs (semantic highlighting and co.)
             m_view->doc()->buffer().rangesForLine(realLineNumber, m_view, true, decorations);
@@ -721,9 +718,9 @@ void KateScrollBar::updatePixmap()
         if (m_doc->lines() < 50000) {
             for (int lineno = 0; lineno < docLineCount; lineno++) {
                 int realLineNo = m_view->textFolding().visibleLineToLine(lineno);
-                const Kate::TextLine &line = m_doc->plainKateTextLine(realLineNo);
-                const QBrush &col = line->markedAsModified() ? modifiedLineBrush : savedLineBrush;
-                if (line->markedAsModified() || line->markedAsSavedOnDisk()) {
+                const auto line = m_doc->plainKateTextLine(realLineNo);
+                const QBrush &col = line.markedAsModified() ? modifiedLineBrush : savedLineBrush;
+                if (line.markedAsModified() || line.markedAsSavedOnDisk()) {
                     int pos = (lineno * pixmapLineCount) / pixmapLinesUnscaled;
                     painter.fillRect(2, pos, 3, 1, col);
                 }
@@ -2133,10 +2130,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
             // modified line system
             if (m_view->config()->lineModification() && !m_doc->url().isEmpty()) {
-                const Kate::TextLine tl = m_doc->plainKateTextLine(realLine);
-                if (tl->markedAsModified()) {
+                const auto tl = m_doc->plainKateTextLine(realLine);
+                if (tl.markedAsModified()) {
                     p.fillRect(lnX, y, m_modAreaWidth, h, m_view->rendererConfig()->modifiedLineColor());
-                } else if (tl->markedAsSavedOnDisk()) {
+                } else if (tl.markedAsSavedOnDisk()) {
                     p.fillRect(lnX, y, m_modAreaWidth, h, m_view->rendererConfig()->savedLineColor());
                 }
 

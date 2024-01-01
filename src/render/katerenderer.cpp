@@ -443,7 +443,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     }
 
     // Don't compute the highlighting if there isn't going to be any highlighting
-    const auto &al = textLine->attributesList();
+    const auto &al = textLine.attributesList();
     if (!(selectionsOnly || !al.empty() || !rangesWithAttributes.empty())) {
         return QList<QTextLayout::FormatRange>();
     }
@@ -571,7 +571,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
         } else {
             // before we did here +1 to force background drawing at the end of the line when it's warranted
             // we now skip this, we don't draw e.g. full line backgrounds
-            fr.length = textLine->length() - currentPosition.column();
+            fr.length = textLine.length() - currentPosition.column();
         }
 
         KTextEditor::Attribute::Ptr a = renderRanges.generateAttribute();
@@ -789,7 +789,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             // Draw indent lines
             if (!m_printerFriendly && (indentLinesEnabled && i == 0)) {
                 const qreal w = spaceWidth();
-                const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
+                const int lastIndentColumn = range->textLine().indentDepth(m_tabWidth);
                 for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
                     auto xPos = x * w + 1 - xStart;
                     if (xPos >= 0) {
@@ -799,7 +799,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             }
 
             // draw an open box to mark non-breaking spaces
-            const QString &text = range->textLine()->text();
+            const QString &text = range->textLine().text();
             int y = lineHeight() * i + m_fontAscent - fm.strikeOutPos();
             int nbSpaceIndex = text.indexOf(nbSpaceChar, line.lineLayout().xToCursor(xStart));
 
@@ -828,7 +828,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
             // draw trailing spaces
             if (showSpaces() != KateDocumentConfig::None) {
                 int spaceIndex = line.endCol() - 1;
-                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine()->lastChar(), 0);
+                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine().lastChar(), 0);
 
                 if (spaceIndex >= trailingPos) {
                     QVarLengthArray<int, 32> spacePositions;
@@ -1241,13 +1241,12 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     // if maxwidth == -1 we have no wrap
 
     Kate::TextLine textLine = lineLayout->textLine();
-    Q_ASSERT(textLine);
 
     QTextLayout *l = lineLayout->layout();
     if (!l) {
-        l = new QTextLayout(textLine->text(), m_font);
+        l = new QTextLayout(textLine.text(), m_font);
     } else {
-        l->setText(textLine->text());
+        l->setText(textLine.text());
         l->setFont(m_font);
     }
 
@@ -1276,7 +1275,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
     // Only force RTL direction if dynWordWrap is on. Otherwise the view has infinite width
     // and the lines will never be forced RTL no matter what direction we set. The layout
     // can't force a line to the right if it doesn't know where the "right" is
-    if (isLineRightToLeft(textLine->text()) || (view()->dynWordWrap() && view()->forceRTLDirection())) {
+    if (isLineRightToLeft(textLine.text()) || (view()->dynWordWrap() && view()->forceRTLDirection())) {
         opt.setAlignment(Qt::AlignRight);
         opt.setTextDirection(Qt::RightToLeft);
         // Must turn off this flag otherwise cursor placement
@@ -1374,7 +1373,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
         if (needShiftX && line.width() > 0) {
             needShiftX = false;
             // Determine x offset for subsequent-lines-of-paragraph indenting
-            int pos = textLine->nextNonSpaceChar(0);
+            int pos = textLine.nextNonSpaceChar(0);
 
             if (pos > 0) {
                 shiftX = (int)line.cursorToX(pos);

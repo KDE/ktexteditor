@@ -11,6 +11,8 @@
 #include <QExplicitlySharedDataPointer>
 #include <QSharedData>
 
+#include <optional>
+
 #include "katetextline.h"
 
 #include <ktexteditor/cursor.h>
@@ -89,7 +91,7 @@ private:
     KateLineLayout(const KateLineLayout &copy);
 
     KateRenderer &m_renderer;
-    mutable Kate::TextLine m_textLine;
+    mutable std::optional<Kate::TextLine> m_textLine;
     int m_line;
     int m_virtualLine;
 

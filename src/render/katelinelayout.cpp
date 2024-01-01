@@ -18,7 +18,6 @@
 
 KateLineLayout::KateLineLayout(KateRenderer &renderer)
     : m_renderer(renderer)
-    , m_textLine()
     , m_line(-1)
     , m_virtualLine(-1)
     , m_layout(nullptr)
@@ -27,7 +26,7 @@ KateLineLayout::KateLineLayout(KateRenderer &renderer)
 
 void KateLineLayout::clear()
 {
-    m_textLine = Kate::TextLine();
+    m_textLine.reset();
     m_line = -1;
     m_virtualLine = -1;
     shiftX = 0;
@@ -44,12 +43,15 @@ bool KateLineLayout::includesCursor(const KTextEditor::Cursor realCursor) const
 const Kate::TextLine &KateLineLayout::textLine(bool reloadForce) const
 {
     if (reloadForce || !m_textLine) {
-        m_textLine = usePlainTextLine ? m_renderer.doc()->plainKateTextLine(line()) : m_renderer.doc()->kateTextLine(line());
+        m_textLine.reset();
+        if (m_line >= 0 && m_line < m_renderer.doc()->lines()) {
+            m_textLine = usePlainTextLine ? m_renderer.doc()->plainKateTextLine(m_line) : m_renderer.doc()->kateTextLine(m_line);
+        }
     }
 
     Q_ASSERT(m_textLine);
 
-    return m_textLine;
+    return *m_textLine;
 }
 
 int KateLineLayout::line() const
@@ -61,7 +63,7 @@ void KateLineLayout::setLine(int line, int virtualLine)
 {
     m_line = line;
     m_virtualLine = (virtualLine == -1) ? m_renderer.folding().lineToVisibleLine(line) : virtualLine;
-    m_textLine = Kate::TextLine();
+    m_textLine.reset();
 }
 
 int KateLineLayout::virtualLine() const
@@ -85,7 +87,7 @@ bool KateLineLayout::startsInvisibleBlock() const
 
 bool KateLineLayout::isValid() const
 {
-    return line() != -1 && layout() && textLine();
+    return line() != -1 && layout() && (textLine(), m_textLine);
 }
 
 QTextLayout *KateLineLayout::layout() const
@@ -133,7 +135,7 @@ KTextEditor::Cursor KateLineLayout::start() const
 
 int KateLineLayout::length() const
 {
-    return textLine()->length();
+    return textLine().length();
 }
 
 int KateLineLayout::viewLineCount() const

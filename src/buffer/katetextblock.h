@@ -26,8 +26,6 @@ namespace Kate
 class TextBuffer;
 class TextCursor;
 class TextRange;
-class TextLineData;
-typedef std::shared_ptr<TextLineData> TextLine;
 
 /**
  * Class representing a text block.
@@ -72,6 +70,13 @@ public:
     TextLine line(int line) const;
 
     /**
+     * Transfer all non text attributes for the given line from the given text line to the one in the block.
+     * @param line line number to set attributes
+     * @param textLine line reference to get attributes from
+     */
+    void setLineMetaData(int line, const TextLine &textLine);
+
+    /**
      * Retrieve length for @p line.
      * @param line wanted line number
      * @return length of line
@@ -79,7 +84,7 @@ public:
     int lineLength(int line) const
     {
         Q_ASSERT(line >= startLine() && (line - startLine()) < lines());
-        return m_lines[line - startLine()]->length();
+        return m_lines[line - startLine()].length();
     }
 
     /**
@@ -261,7 +266,7 @@ private:
     TextBuffer *m_buffer;
 
     /**
-     * Lines contained in this buffer. These are shared pointers.
+     * Lines contained in this buffer.
      * We need no sharing, use STL.
      */
     std::vector<Kate::TextLine> m_lines;

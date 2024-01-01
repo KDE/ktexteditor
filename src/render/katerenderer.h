@@ -30,8 +30,7 @@ class KateRendererConfig;
 namespace Kate
 {
 class TextFolding;
-class TextLineData;
-typedef std::shared_ptr<TextLineData> TextLine;
+class TextLine;
 }
 
 class KateTextLayout;

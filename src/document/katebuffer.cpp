@@ -194,12 +194,12 @@ bool KateBuffer::canEncode()
         {
             // actual encoding happens not during the call to encode() but
             // during the conversion to QByteArray, so we need to force it
-            QByteArray result = encoder.encode(line(i)->text());
+            QByteArray result = encoder.encode(line(i).text());
             Q_UNUSED(result);
         }
         if (encoder.hasError()) {
             qCDebug(LOG_KTE) << QLatin1String("ENC NAME: ") << m_doc->config()->encoding();
-            qCDebug(LOG_KTE) << QLatin1String("STRING LINE: ") << line(i)->text();
+            qCDebug(LOG_KTE) << QLatin1String("STRING LINE: ") << line(i).text();
             qCDebug(LOG_KTE) << QLatin1String("ENC WORKING: FALSE");
 
             return false;
@@ -349,8 +349,11 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
         // handle one line
         ctxChanged = false;
         Kate::TextLine textLine = plainLine(current_line);
-        m_highlight->doHighlight(prevLine.get(), textLine.get(), ctxChanged);
+        m_highlight->doHighlight((current_line >= 1) ? &prevLine : nullptr, &textLine, ctxChanged);
         prevLine = textLine;
+
+        // write back the computed info to the textline stored in the buffer
+        setLineMetaData(current_line, textLine);
 
 #ifdef BUFFER_DEBUGGING
         // debug stuff
@@ -418,7 +421,7 @@ KateHighlighting::Foldings KateBuffer::computeFoldings(int line)
     Kate::TextLine prevLine = (line >= 1) ? plainLine(line - 1) : Kate::TextLine();
     Kate::TextLine textLine = plainLine(line);
     bool ctxChanged = false;
-    m_highlight->doHighlight(prevLine.get(), textLine.get(), ctxChanged, &foldings);
+    m_highlight->doHighlight((line >= 1) ? &prevLine : nullptr, &textLine, ctxChanged, &foldings);
     return foldings;
 }
 
@@ -439,19 +442,20 @@ std::pair<bool, bool> KateBuffer::isFoldingStartingOnLine(int startLine)
     const auto startTextLine = plainLine(startLine);
 
     // we prefer token based folding
-    if (startTextLine->markedAsFoldingStartAttribute()) {
+    if (startTextLine.markedAsFoldingStartAttribute()) {
         return {true, false};
     }
 
     // check for indentation based folding
-    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0) && startTextLine->highlightingState().indentationBasedFoldingEnabled()
-        && !m_highlight->isEmptyLine(startTextLine.get())) {
+    if (m_highlight->foldingIndentationSensitive() && (tabWidth() > 0) && startTextLine.highlightingState().indentationBasedFoldingEnabled()
+        && !m_highlight->isEmptyLine(&startTextLine)) {
         // do some look ahead if this line might be a folding start
         // we limit this to avoid runtime disaster
         int linesVisited = 0;
-        while (const auto nextLine = plainLine(++startLine)) {
-            if (!m_highlight->isEmptyLine(nextLine.get())) {
-                const bool foldingStart = startTextLine->indentDepth(tabWidth()) < nextLine->indentDepth(tabWidth());
+        while (startLine + 1 < lines()) {
+            const auto nextLine = plainLine(++startLine);
+            if (!m_highlight->isEmptyLine(&nextLine)) {
+                const bool foldingStart = startTextLine.indentDepth(tabWidth()) < nextLine.indentDepth(tabWidth());
                 return {foldingStart, foldingStart};
             }
 
@@ -479,7 +483,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     if (foldingIndentationSensitive) {
         // get our start indentation level
         const auto startTextLine = plainLine(startLine);
-        const int startIndentation = startTextLine->indentDepth(tabWidth());
+        const int startIndentation = startTextLine.indentDepth(tabWidth());
 
         // search next line with indentation level <= our one
         int lastLine = startLine + 1;
@@ -488,12 +492,12 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
             Kate::TextLine textLine = plainLine(lastLine);
 
             // indentation higher than our start line? continue
-            if (startIndentation < textLine->indentDepth(tabWidth())) {
+            if (startIndentation < textLine.indentDepth(tabWidth())) {
                 continue;
             }
 
             // empty line? continue
-            if (m_highlight->isEmptyLine(textLine.get())) {
+            if (m_highlight->isEmptyLine(&textLine)) {
                 continue;
             }
 
@@ -506,7 +510,8 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
 
         // backtrack all empty lines, we don't want to add them to the fold!
         while (lastLine > startLine) {
-            if (m_highlight->isEmptyLine(plainLine(lastLine).get())) {
+            const auto l = plainLine(lastLine);
+            if (m_highlight->isEmptyLine(&l)) {
                 --lastLine;
             } else {
                 break;
@@ -519,7 +524,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         }
 
         // be done now
-        return KTextEditor::Range(KTextEditor::Cursor(startLine, 0), KTextEditor::Cursor(lastLine, plainLine(lastLine)->length()));
+        return KTextEditor::Range(KTextEditor::Cursor(startLine, 0), KTextEditor::Cursor(lastLine, plainLine(lastLine).length()));
     }
 
     // 'normal' attribute based folding, aka token based like '{' BLUB '}'
@@ -607,7 +612,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     }
 
     // if we arrive here, the opened range spans to the end of the document!
-    return KTextEditor::Range(KTextEditor::Cursor(startLine, openedRegionOffset), KTextEditor::Cursor(lines() - 1, plainLine(lines() - 1)->length()));
+    return KTextEditor::Range(KTextEditor::Cursor(startLine, openedRegionOffset), KTextEditor::Cursor(lines() - 1, plainLine(lines() - 1).length()));
 }
 
 #include "moc_katebuffer.cpp"

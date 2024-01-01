@@ -461,27 +461,21 @@ QString KTextEditor::DocumentPrivate::text(KTextEditor::Range range, bool blockw
         }
 
         Kate::TextLine textLine = m_buffer->plainLine(range.start().line());
-
-        if (!textLine) {
-            return QString();
-        }
-
-        return textLine->string(range.start().column(), range.end().column() - range.start().column());
+        return textLine.string(range.start().column(), range.end().column() - range.start().column());
     } else {
         for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->lines()); ++i) {
             Kate::TextLine textLine = m_buffer->plainLine(i);
-
             if (!blockwise) {
                 if (i == range.start().line()) {
-                    s.append(textLine->string(range.start().column(), textLine->length() - range.start().column()));
+                    s.append(textLine.string(range.start().column(), textLine.length() - range.start().column()));
                 } else if (i == range.end().line()) {
-                    s.append(textLine->string(0, range.end().column()));
+                    s.append(textLine.string(0, range.end().column()));
                 } else {
-                    s.append(textLine->text());
+                    s.append(textLine.text());
                 }
             } else {
                 KTextEditor::Range subRange = rangeOnLine(range, i);
-                s.append(textLine->string(subRange.start().column(), subRange.columnWidth()));
+                s.append(textLine.string(subRange.start().column(), subRange.columnWidth()));
             }
 
             if (i < range.end().line()) {
@@ -496,12 +490,7 @@ QString KTextEditor::DocumentPrivate::text(KTextEditor::Range range, bool blockw
 QChar KTextEditor::DocumentPrivate::characterAt(KTextEditor::Cursor position) const
 {
     Kate::TextLine textLine = m_buffer->plainLine(position.line());
-
-    if (!textLine) {
-        return QChar();
-    }
-
-    return textLine->at(position.column());
+    return textLine.at(position.column());
 }
 
 QString KTextEditor::DocumentPrivate::wordAt(KTextEditor::Cursor cursor) const
@@ -514,12 +503,9 @@ KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(KTextEditor::Cursor
     // get text line
     const int line = cursor.line();
     Kate::TextLine textLine = m_buffer->plainLine(line);
-    if (!textLine) {
-        return KTextEditor::Range::invalid();
-    }
 
     // make sure the cursor is
-    const int lineLenth = textLine->length();
+    const int lineLenth = textLine.length();
     if (cursor.column() > lineLenth) {
         return KTextEditor::Range::invalid();
     }
@@ -527,10 +513,10 @@ KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(KTextEditor::Cursor
     int start = cursor.column();
     int end = start;
 
-    while (start > 0 && highlight()->isInWord(textLine->at(start - 1), textLine->attribute(start - 1))) {
+    while (start > 0 && highlight()->isInWord(textLine.at(start - 1), textLine.attribute(start - 1))) {
         start--;
     }
-    while (end < lineLenth && highlight()->isInWord(textLine->at(end), textLine->attribute(end))) {
+    while (end < lineLenth && highlight()->isInWord(textLine.at(end), textLine.attribute(end))) {
         end++;
     }
 
@@ -576,27 +562,21 @@ QStringList KTextEditor::DocumentPrivate::textLines(KTextEditor::Range range, bo
         Q_ASSERT(range.start() <= range.end());
 
         Kate::TextLine textLine = m_buffer->plainLine(range.start().line());
-
-        if (!textLine) {
-            return ret;
-        }
-
-        ret << textLine->string(range.start().column(), range.end().column() - range.start().column());
+        ret << textLine.string(range.start().column(), range.end().column() - range.start().column());
     } else {
         for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->lines()); ++i) {
             Kate::TextLine textLine = m_buffer->plainLine(i);
-
             if (!blockwise) {
                 if (i == range.start().line()) {
-                    ret << textLine->string(range.start().column(), textLine->length() - range.start().column());
+                    ret << textLine.string(range.start().column(), textLine.length() - range.start().column());
                 } else if (i == range.end().line()) {
-                    ret << textLine->string(0, range.end().column());
+                    ret << textLine.string(0, range.end().column());
                 } else {
-                    ret << textLine->text();
+                    ret << textLine.text();
                 }
             } else {
                 KTextEditor::Range subRange = rangeOnLine(range, i);
-                ret << textLine->string(subRange.start().column(), subRange.columnWidth());
+                ret << textLine.string(subRange.start().column(), subRange.columnWidth());
             }
         }
     }
@@ -607,12 +587,7 @@ QStringList KTextEditor::DocumentPrivate::textLines(KTextEditor::Range range, bo
 QString KTextEditor::DocumentPrivate::line(int line) const
 {
     Kate::TextLine l = m_buffer->plainLine(line);
-
-    if (!l) {
-        return QString();
-    }
-
-    return l->text();
+    return l.text();
 }
 
 bool KTextEditor::DocumentPrivate::setText(const QString &s)
@@ -744,8 +719,8 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position
     int positionColumnExpanded = insertColumn;
     const int tabWidth = config()->tabWidth();
     if (block) {
-        if (auto l = plainKateTextLine(currentLine)) {
-            positionColumnExpanded = l->toVirtualColumn(insertColumn, tabWidth);
+        if (currentLine < lines()) {
+            positionColumnExpanded = plainKateTextLine(currentLine).toVirtualColumn(insertColumn, tabWidth);
         }
     }
 
@@ -778,14 +753,14 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position
             currentLine++;
 
             if (block) {
-                auto l = plainKateTextLine(currentLine);
+                auto l = currentLine < lines();
                 if (currentLine == lastLine() + 1) {
                     editInsertLine(currentLine, QString(), notify);
                     endCol = 0;
                 }
                 insertColumn = positionColumnExpanded;
                 if (l) {
-                    insertColumn = l->fromVirtualColumn(insertColumn, tabWidth);
+                    insertColumn = plainKateTextLine(currentLine).fromVirtualColumn(insertColumn, tabWidth);
                 }
             }
 
@@ -864,7 +839,7 @@ bool KTextEditor::DocumentPrivate::removeText(KTextEditor::Range _range, bool bl
 
             // remove first line if not already removed by editRemoveLines()
             if (range.start().column() > 0 || range.start().line() == 0) {
-                editRemoveText(from, range.start().column(), m_buffer->plainLine(from)->length() - range.start().column());
+                editRemoveText(from, range.start().column(), m_buffer->plainLine(from).length() - range.start().column());
                 editUnWrapLine(from);
             }
         }
@@ -964,9 +939,7 @@ bool KTextEditor::DocumentPrivate::isLineModified(int line) const
     }
 
     Kate::TextLine l = m_buffer->plainLine(line);
-    Q_ASSERT(l);
-
-    return l->markedAsModified();
+    return l.markedAsModified();
 }
 
 bool KTextEditor::DocumentPrivate::isLineSaved(int line) const
@@ -976,9 +949,7 @@ bool KTextEditor::DocumentPrivate::isLineSaved(int line) const
     }
 
     Kate::TextLine l = m_buffer->plainLine(line);
-    Q_ASSERT(l);
-
-    return l->markedAsSavedOnDisk();
+    return l.markedAsSavedOnDisk();
 }
 
 bool KTextEditor::DocumentPrivate::isLineTouched(int line) const
@@ -988,9 +959,7 @@ bool KTextEditor::DocumentPrivate::isLineTouched(int line) const
     }
 
     Kate::TextLine l = m_buffer->plainLine(line);
-    Q_ASSERT(l);
-
-    return l->markedAsModified() || l->markedAsSavedOnDisk();
+    return l.markedAsModified() || l.markedAsSavedOnDisk();
 }
 // END
 
@@ -1128,24 +1097,21 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
     for (int line = startLine; (line <= endLine) && (line < lines()); line++) {
         Kate::TextLine l = kateTextLine(line);
 
-        if (!l) {
-            break;
-        }
-
         // qCDebug(LOG_KTE) << "try wrap line: " << line;
 
-        if (l->virtualLength(m_buffer->tabWidth()) > col) {
+        if (l.virtualLength(m_buffer->tabWidth()) > col) {
+            bool nextlValid = line + 1 < lines();
             Kate::TextLine nextl = kateTextLine(line + 1);
 
             // qCDebug(LOG_KTE) << "do wrap line: " << line;
 
-            int eolPosition = l->length() - 1;
+            int eolPosition = l.length() - 1;
 
             // take tabs into account here, too
             int x = 0;
-            const QString &t = l->text();
+            const QString &t = l.text();
             int z2 = 0;
-            for (; z2 < l->length(); z2++) {
+            for (; z2 < l.length(); z2++) {
                 static const QChar tabChar(QLatin1Char('\t'));
                 if (t.at(z2) == tabChar) {
                     x += m_buffer->tabWidth() - (x % m_buffer->tabWidth());
@@ -1158,7 +1124,7 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
                 }
             }
 
-            const int colInChars = qMin(z2, l->length() - 1);
+            const int colInChars = qMin(z2, l.length() - 1);
             int searchStart = colInChars;
 
             // If where we are wrapping is an end of line and is a space we don't
@@ -1179,7 +1145,7 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
                 if (t.at(z).isSpace()) {
                     break;
                 }
-                if ((nw < 0) && highlight()->canBreakAt(t.at(z), l->attribute(z))) {
+                if ((nw < 0) && highlight()->canBreakAt(t.at(z), l.attribute(z))) {
                     nw = z;
                 }
             }
@@ -1201,13 +1167,13 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
                 z = (nw >= 0) ? nw : colInChars;
             }
 
-            if (nextl && !nextl->isAutoWrapped()) {
+            if (nextlValid && !nextl.isAutoWrapped()) {
                 editWrapLine(line, z, true);
                 editMarkLineAutoWrapped(line + 1, true);
 
                 endLine++;
             } else {
-                if (nextl && (nextl->length() > 0) && !nextl->at(0).isSpace() && ((l->length() < 1) || !l->at(l->length() - 1).isSpace())) {
+                if (nextlValid && (nextl.length() > 0) && !nextl.at(0).isSpace() && ((l.length() < 1) || !l.at(l.length() - 1).isSpace())) {
                     editInsertText(line + 1, 0, QStringLiteral(" "));
                 }
 
@@ -1253,7 +1219,7 @@ bool KTextEditor::DocumentPrivate::wrapParagraph(int first, int last)
     // Scan the selected range for paragraphs, whereas each empty line trigger a new paragraph
     for (int line = first; line <= range->end().line(); ++line) {
         // Is our first line a somehow filled line?
-        if (plainKateTextLine(first)->firstChar() < 0) {
+        if (plainKateTextLine(first).firstChar() < 0) {
             // Fast forward to first non empty line
             ++first;
             curr->setPosition(curr->line() + 1, 0);
@@ -1261,7 +1227,7 @@ bool KTextEditor::DocumentPrivate::wrapParagraph(int first, int last)
         }
 
         // Is our current line a somehow filled line? If not, wrap the paragraph
-        if (plainKateTextLine(line)->firstChar() < 0) {
+        if (plainKateTextLine(line).firstChar() < 0) {
             curr->setPosition(line, 0); // Set on empty line
             joinLines(first, line - 1);
             // Don't wrap twice! That may cause a bad result
@@ -1275,7 +1241,7 @@ bool KTextEditor::DocumentPrivate::wrapParagraph(int first, int last)
 
     // If there was no paragraph, we need to wrap now
     bool needWrap = (curr->line() != range->end().line());
-    if (needWrap && plainKateTextLine(first)->firstChar() != -1) {
+    if (needWrap && plainKateTextLine(first).firstChar() != -1) {
         joinLines(first, range->end().line());
         // Don't wrap twice! That may cause a bad result
         if (!wordWrap()) {
@@ -1306,7 +1272,7 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
     }
 
     auto l = plainKateTextLine(line);
-    int length = l->length();
+    int length = l.length();
     if (length < 0) {
         return false;
     }
@@ -1341,7 +1307,7 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
     // verbose debug
     EDIT_DEBUG << "editRemoveText" << line << col << len;
 
-    if (line < 0 || col < 0 || len < 0) {
+    if (line < 0 || line >= lines() || col < 0 || len < 0) {
         return false;
     }
 
@@ -1351,26 +1317,22 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
 
     Kate::TextLine l = plainKateTextLine(line);
 
-    if (!l) {
-        return false;
-    }
-
     // nothing to do, do nothing!
     if (len == 0) {
         return true;
     }
 
     // wrong column
-    if (col >= l->text().size()) {
+    if (col >= l.text().size()) {
         return false;
     }
 
     // don't try to remove what's not there
-    len = qMin(len, l->text().size() - col);
+    len = qMin(len, l.text().size() - col);
 
     editStart();
 
-    QString oldText = l->string(col, len);
+    QString oldText = l.string(col, len);
 
     m_undoManager->slotTextRemoved(line, col, oldText, l);
 
@@ -1392,7 +1354,7 @@ bool KTextEditor::DocumentPrivate::editMarkLineAutoWrapped(int line, bool autowr
     // verbose debug
     EDIT_DEBUG << "editMarkLineAutoWrapped" << line << autowrapped;
 
-    if (line < 0) {
+    if (line < 0 || line >= lines()) {
         return false;
     }
 
@@ -1400,17 +1362,13 @@ bool KTextEditor::DocumentPrivate::editMarkLineAutoWrapped(int line, bool autowr
         return false;
     }
 
-    Kate::TextLine l = kateTextLine(line);
-
-    if (!l) {
-        return false;
-    }
-
     editStart();
 
     m_undoManager->slotMarkLineAutoWrapped(line, autowrapped);
 
-    l->setAutoWrapped(autowrapped);
+    Kate::TextLine l = kateTextLine(line);
+    l.setAutoWrapped(autowrapped);
+    m_buffer->setLineMetaData(line, l);
 
     editEnd();
 
@@ -1422,7 +1380,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
     // verbose debug
     EDIT_DEBUG << "editWrapLine" << line << col << newLine;
 
-    if (line < 0 || col < 0) {
+    if (line < 0 || line >= lines() || col < 0) {
         return false;
     }
 
@@ -1430,16 +1388,13 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         return false;
     }
 
-    const Kate::TextLine &tl = plainKateTextLine(line);
-    if (!tl) {
-        return false;
-    }
+    const auto tl = plainKateTextLine(line);
 
     editStart();
 
     const bool nextLineValid = lineLength(line + 1) >= 0;
 
-    m_undoManager->slotLineWrapped(line, col, tl->length() - col, (!nextLineValid || newLine), tl);
+    m_undoManager->slotLineWrapped(line, col, tl.length() - col, (!nextLineValid || newLine), tl);
 
     if (!nextLineValid || newLine) {
         m_buffer->wrapLine(KTextEditor::Cursor(line, col));
@@ -1497,7 +1452,7 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
     // verbose debug
     EDIT_DEBUG << "editUnWrapLine" << line << removeLine << length;
 
-    if (line < 0 || length < 0) {
+    if (line < 0 || line >= lines() || line + 1 >= lines() || length < 0) {
         return false;
     }
 
@@ -1507,13 +1462,10 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
 
     const Kate::TextLine tl = plainKateTextLine(line);
     const Kate::TextLine nextLine = plainKateTextLine(line + 1);
-    if (!tl || !nextLine) {
-        return false;
-    }
 
     editStart();
 
-    int col = tl->length();
+    int col = tl.length();
     m_undoManager->slotLineUnWrapped(line, col, length, removeLine, tl, nextLine);
 
     if (removeLine) {
@@ -1585,7 +1537,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s, bo
     // wrap line
     if (line > 0) {
         Kate::TextLine previousLine = m_buffer->line(line - 1);
-        m_buffer->wrapLine(KTextEditor::Cursor(line - 1, previousLine->text().size()));
+        m_buffer->wrapLine(KTextEditor::Cursor(line - 1, previousLine.text().size()));
     } else {
         m_buffer->wrapLine(KTextEditor::Cursor(0, 0));
     }
@@ -1661,11 +1613,11 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
 
     // first remove text
     for (int line = to; line >= from; --line) {
-        const Kate::TextLine l = this->plainKateTextLine(line);
-        oldText.prepend(l->text());
-        m_undoManager->slotLineRemoved(line, l->text(), l);
+        const Kate::TextLine l = plainKateTextLine(line);
+        oldText.prepend(l.text());
+        m_undoManager->slotLineRemoved(line, l.text(), l);
 
-        m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, l->length())));
+        m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, l.length())));
     }
 
     // then collapse lines
@@ -3043,12 +2995,7 @@ bool KTextEditor::DocumentPrivate::ownedView(KTextEditor::ViewPrivate *view)
 int KTextEditor::DocumentPrivate::toVirtualColumn(int line, int column) const
 {
     Kate::TextLine textLine = m_buffer->plainLine(line);
-
-    if (textLine) {
-        return textLine->toVirtualColumn(column, config()->tabWidth());
-    } else {
-        return 0;
-    }
+    return textLine.toVirtualColumn(column, config()->tabWidth());
 }
 
 int KTextEditor::DocumentPrivate::toVirtualColumn(const KTextEditor::Cursor cursor) const
@@ -3059,12 +3006,7 @@ int KTextEditor::DocumentPrivate::toVirtualColumn(const KTextEditor::Cursor curs
 int KTextEditor::DocumentPrivate::fromVirtualColumn(int line, int column) const
 {
     Kate::TextLine textLine = m_buffer->plainLine(line);
-
-    if (textLine) {
-        return textLine->fromVirtualColumn(column, config()->tabWidth());
-    } else {
-        return 0;
-    }
+    return textLine.fromVirtualColumn(column, config()->tabWidth());
 }
 
 int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor cursor) const
@@ -3089,14 +3031,14 @@ bool KTextEditor::DocumentPrivate::skipAutoBrace(QChar closingBracket, KTextEdit
         Kate::TextLine textLine = m_buffer->plainLine(pos.line());
         // RegEx match quote, but not escaped quote, thanks to https://stackoverflow.com/a/11819111
         static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'"));
-        const int count = textLine->text().left(pos.column()).count(re);
+        const int count = textLine.text().left(pos.column()).count(re);
         skipAutobrace = (count % 2 == 0) ? true : false;
     }
     if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
         // ...same trick for double quotes
         Kate::TextLine textLine = m_buffer->plainLine(pos.line());
         static const QRegularExpression re(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\""));
-        const int count = textLine->text().left(pos.column()).count(re);
+        const int count = textLine.text().left(pos.column()).count(re);
         skipAutobrace = (count % 2 == 0) ? true : false;
     }
     return skipAutobrace;
@@ -3222,9 +3164,8 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
 
         for (int line = endLine; line >= startLine; --line) {
             Kate::TextLine textLine = m_buffer->plainLine(line);
-            Q_ASSERT(textLine);
             const int column = fromVirtualColumn(line, virtualColumn);
-            KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(), textLine->length() - column));
+            KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(), textLine.length() - column));
 
             // replace mode needs to know what was removed so it can be restored with backspace
             if (oldCur.column() < lineLength(line)) {
@@ -3415,8 +3356,7 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
 void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor cursor)
 {
     Kate::TextLine textLine = m_buffer->plainLine(cursor.line());
-
-    if (!textLine || (textLine->length() < 2)) {
+    if (textLine.length() < 2) {
         return;
     }
 
@@ -3426,7 +3366,7 @@ void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor cursor)
         col--;
     }
 
-    if ((textLine->length() - col) < 2) {
+    if ((textLine.length() - col) < 2) {
         return;
     }
 
@@ -3435,8 +3375,8 @@ void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor cursor)
 
     // clever swap code if first character on the line swap right&left
     // otherwise left & right
-    s.append(textLine->at(col + 1));
-    s.append(textLine->at(col));
+    s.append(textLine.at(col + 1));
+    s.append(textLine.at(col));
     // do the swap
 
     // do it right, never ever manipulate a textline
@@ -3467,30 +3407,29 @@ void KTextEditor::DocumentPrivate::swapTextRanges(KTextEditor::Range firstWord, 
 
 KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor::ViewPrivate *view, KTextEditor::Cursor c)
 {
-    uint col = qMax(c.column(), 0);
-    uint line = qMax(c.line(), 0);
+    int col = qMax(c.column(), 0);
+    int line = qMax(c.line(), 0);
     if ((col == 0) && (line == 0)) {
+        return KTextEditor::Cursor::invalid();
+    }
+    if (line >= lines()) {
         return KTextEditor::Cursor::invalid();
     }
 
     const Kate::TextLine textLine = m_buffer->plainLine(line);
-    // don't forget this check!!!! really!!!!
-    if (!textLine) {
-        return KTextEditor::Cursor::invalid();
-    }
 
     if (col > 0) {
         bool useNextBlock = false;
         if (config()->backspaceIndents()) {
             // backspace indents: erase to next indent position
-            int colX = textLine->toVirtualColumn(col, config()->tabWidth());
-            int pos = textLine->firstChar();
+            int colX = textLine.toVirtualColumn(col, config()->tabWidth());
+            int pos = textLine.firstChar();
             if (pos > 0) {
-                pos = textLine->toVirtualColumn(pos, config()->tabWidth());
+                pos = textLine.toVirtualColumn(pos, config()->tabWidth());
             }
             if (pos < 0 || pos >= (int)colX) {
                 // only spaces on left side of cursor
-                if ((int)col > textLine->length()) {
+                if ((int)col > textLine.length()) {
                     // beyond the end of the line, move cursor only
                     return KTextEditor::Cursor(line, col - 1);
                 }
@@ -3525,14 +3464,14 @@ KTextEditor::Cursor KTextEditor::DocumentPrivate::backspaceAtCursor(KTextEditor:
         const Kate::TextLine textLine = m_buffer->plainLine(line - 1);
         KTextEditor::Cursor ret = KTextEditor::Cursor::invalid();
 
-        if (line > 0 && textLine) {
-            if (config()->wordWrap() && textLine->endsWith(QStringLiteral(" "))) {
+        if (line > 0) {
+            if (config()->wordWrap() && textLine.endsWith(QStringLiteral(" "))) {
                 // gg: in hard wordwrap mode, backspace must also eat the trailing space
-                ret = KTextEditor::Cursor(line - 1, textLine->length() - 1);
-                removeText(KTextEditor::Range(line - 1, textLine->length() - 1, line, 0));
+                ret = KTextEditor::Cursor(line - 1, textLine.length() - 1);
+                removeText(KTextEditor::Range(line - 1, textLine.length() - 1, line, 0));
             } else {
-                ret = KTextEditor::Cursor(line - 1, textLine->length());
-                removeText(KTextEditor::Range(line - 1, textLine->length(), line, 0));
+                ret = KTextEditor::Cursor(line - 1, textLine.length());
+                removeText(KTextEditor::Range(line - 1, textLine.length(), line, 0));
             }
         }
         return ret;
@@ -3819,11 +3758,11 @@ bool KTextEditor::DocumentPrivate::removeStringFromBeginning(int line, const QSt
     Kate::TextLine textline = m_buffer->plainLine(line);
 
     KTextEditor::Cursor cursor(line, 0);
-    bool there = textline->startsWith(str);
+    bool there = textline.startsWith(str);
 
     if (!there) {
-        cursor.setColumn(textline->firstChar());
-        there = textline->matchesAt(cursor.column(), str);
+        cursor.setColumn(textline.firstChar());
+        there = textline.matchesAt(cursor.column(), str);
     }
 
     if (there) {
@@ -3843,13 +3782,13 @@ bool KTextEditor::DocumentPrivate::removeStringFromEnd(int line, const QString &
     Kate::TextLine textline = m_buffer->plainLine(line);
 
     KTextEditor::Cursor cursor(line, 0);
-    bool there = textline->endsWith(str);
+    bool there = textline.endsWith(str);
 
     if (there) {
-        cursor.setColumn(textline->length() - str.length());
+        cursor.setColumn(textline.length() - str.length());
     } else {
-        cursor.setColumn(textline->lastChar() - str.length() + 1);
-        there = textline->matchesAt(cursor.column(), str);
+        cursor.setColumn(textline.lastChar() - str.length() + 1);
+        there = textline.matchesAt(cursor.column(), str);
     }
 
     if (there) {
@@ -3904,10 +3843,7 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSingleLine(int line, int
 
     if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::AfterWhitespace) {
         const Kate::TextLine l = kateTextLine(line);
-        if (!l) {
-            return;
-        }
-        pos = qMax(0, l->firstChar());
+        pos = qMax(0, l.firstChar());
     }
     insertText(KTextEditor::Cursor(line, pos), commentLineMark);
 }
@@ -4023,13 +3959,13 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::R
         el--;
     }
 
+    if (sl < 0 || el < 0 || sl >= lines() || el >= lines()) {
+        return;
+    }
+
     editStart();
 
     const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
-    const auto line = plainKateTextLine(sl);
-    if (!line) {
-        return;
-    }
 
     int col = 0;
     if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::AfterWhitespace) {
@@ -4044,10 +3980,10 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::R
         // For each line in selection, try to find the smallest indent
         for (int l = el; l >= sl; l--) {
             const auto line = plainKateTextLine(l);
-            if (!line || line->length() == 0) {
+            if (line.length() == 0) {
                 continue;
             }
-            col = qMin(col, qMax(0, line->firstChar()));
+            col = qMin(col, qMax(0, line.firstChar()));
             if (col == 0) {
                 // early out: there can't be an indent smaller than 0
                 break;
@@ -4070,14 +4006,9 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::R
 
 bool KTextEditor::DocumentPrivate::nextNonSpaceCharPos(int &line, int &col)
 {
-    for (; line < (int)m_buffer->lines(); line++) {
+    for (; line >= 0 && line < m_buffer->lines(); line++) {
         Kate::TextLine textLine = m_buffer->plainLine(line);
-
-        if (!textLine) {
-            break;
-        }
-
-        col = textLine->nextNonSpaceChar(col);
+        col = textLine.nextNonSpaceChar(col);
         if (col != -1) {
             return true; // Next non-space char found
         }
@@ -4091,14 +4022,9 @@ bool KTextEditor::DocumentPrivate::nextNonSpaceCharPos(int &line, int &col)
 
 bool KTextEditor::DocumentPrivate::previousNonSpaceCharPos(int &line, int &col)
 {
-    while (true) {
+    while (line >= 0 && line < m_buffer->lines()) {
         Kate::TextLine textLine = m_buffer->plainLine(line);
-
-        if (!textLine) {
-            break;
-        }
-
-        col = textLine->previousNonSpaceChar(col);
+        col = textLine.previousNonSpaceChar(col);
         if (col != -1) {
             return true;
         }
@@ -4106,7 +4032,7 @@ bool KTextEditor::DocumentPrivate::previousNonSpaceCharPos(int &line, int &col)
             return false;
         }
         --line;
-        col = textLine->length();
+        col = textLine.length();
     }
     // No non-space char found
     line = -1;
@@ -4141,8 +4067,8 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEdit
 
     // had this been perl or sed: s/^\s*$startComment(.+?)$endComment\s*/$2/
 
-    bool remove = nextNonSpaceCharPos(sl, sc) && m_buffer->plainLine(sl)->matchesAt(sc, startComment) && previousNonSpaceCharPos(el, ec)
-        && ((ec - endCommentLen + 1) >= 0) && m_buffer->plainLine(el)->matchesAt(ec - endCommentLen + 1, endComment);
+    bool remove = nextNonSpaceCharPos(sl, sc) && m_buffer->plainLine(sl).matchesAt(sc, startComment) && previousNonSpaceCharPos(el, ec)
+        && ((ec - endCommentLen + 1) >= 0) && m_buffer->plainLine(el).matchesAt(ec - endCommentLen + 1, endComment);
 
     if (remove) {
         editStart();
@@ -4164,8 +4090,8 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromRegion(const KTextE
     const int startCommentLen = startComment.length();
     const int endCommentLen = endComment.length();
 
-    const bool remove = m_buffer->plainLine(start.line())->matchesAt(start.column(), startComment)
-        && m_buffer->plainLine(end.line())->matchesAt(end.column() - endCommentLen, endComment);
+    const bool remove = m_buffer->plainLine(start.line()).matchesAt(start.column(), startComment)
+        && m_buffer->plainLine(end.line()).matchesAt(end.column() - endCommentLen, endComment);
     if (remove) {
         editStart();
         removeText(KTextEditor::Range(end.line(), end.column() - endCommentLen, end.line(), end.column()));
@@ -4201,7 +4127,7 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
         bool allLinesAreCommented = true;
         for (int line = endLine; line >= startLine; line--) {
             const auto ln = m_buffer->plainLine(line);
-            const QString &text = ln->text();
+            const QString &text = ln.text();
             // Empty lines in between comments is ok
             if (text.isEmpty()) {
                 continue;
@@ -4245,15 +4171,11 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
 
     int startAttrib = 0;
     Kate::TextLine ln = kateTextLine(line);
-    if (!ln) {
-        qWarning() << __FUNCTION__ << __LINE__ << "Unexpected null TextLine for " << line << " lineCount: " << lines();
-        return;
-    }
 
-    if (selectionCol < ln->length()) {
-        startAttrib = ln->attribute(selectionCol);
-    } else if (!ln->attributesList().empty()) {
-        startAttrib = ln->attributesList().back().attributeValue;
+    if (selectionCol < ln.length()) {
+        startAttrib = ln.attribute(selectionCol);
+    } else if (!ln.attributesList().empty()) {
+        startAttrib = ln.attributesList().back().attributeValue;
     }
 
     bool hasStartLineCommentMark = !(highlight()->getCommentSingleLineStart(startAttrib).isEmpty());
@@ -4277,8 +4199,8 @@ void KTextEditor::DocumentPrivate::commentSelection(KTextEditor::Range selection
             const KTextEditor::Range sel = selection;
             if (hasStartStopCommentMark
                 && (!hasStartLineCommentMark
-                    || ((sel.start().column() > m_buffer->plainLine(sel.start().line())->firstChar())
-                        || (sel.end().column() > 0 && sel.end().column() < (m_buffer->plainLine(sel.end().line())->length()))))) {
+                    || ((sel.start().column() > m_buffer->plainLine(sel.start().line()).firstChar())
+                        || (sel.end().column() > 0 && sel.end().column() < (m_buffer->plainLine(sel.end().line()).length()))))) {
                 addStartStopCommentToSelection(selection, blockSelect, startAttrib);
             } else if (hasStartLineCommentMark) {
                 addStartLineCommentToSelection(selection, startAttrib);
@@ -4390,7 +4312,7 @@ void KTextEditor::DocumentPrivate::transformCursorOrRange(KTextEditor::ViewPriva
                     // 3. if p-1 is not in a word, upper.
                     if ((!range.start().column() && !p)
                         || ((range.start().line() == selection.start().line() || v->blockSelection()) && !p
-                            && !highlight()->isInWord(l->at(range.start().column() - 1)))
+                            && !highlight()->isInWord(l.at(range.start().column() - 1)))
                         || (p && !highlight()->isInWord(s.at(p - 1)))) {
                         s[p] = s.at(p).toUpper();
                     }
@@ -4424,7 +4346,7 @@ void KTextEditor::DocumentPrivate::transformCursorOrRange(KTextEditor::ViewPriva
             break;
         case Capitalize: {
             Kate::TextLine l = m_buffer->plainLine(cursor.line());
-            while (cursor.column() > 0 && highlight()->isInWord(l->at(cursor.column() - 1), l->attribute(cursor.column() - 1))) {
+            while (cursor.column() > 0 && highlight()->isInWord(l.at(cursor.column() - 1), l.attribute(cursor.column() - 1))) {
                 cursor.setColumn(cursor.column() - 1);
             }
             old = text(KTextEditor::Range(cursor, 1));
@@ -4477,6 +4399,11 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
     editStart();
     int line(first);
     while (first < last) {
+        if (line >= lines() || line + 1 >= lines()) {
+            editEnd();
+            return;
+        }
+
         // Normalize the whitespace in the joined lines by making sure there's
         // always exactly one space between the joined lines
         // This cannot be done in editUnwrapLine, because we do NOT want this
@@ -4485,22 +4412,17 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
         Kate::TextLine l = kateTextLine(line);
         Kate::TextLine tl = kateTextLine(line + 1);
 
-        if (!l || !tl) {
-            editEnd();
-            return;
-        }
-
-        int pos = tl->firstChar();
+        int pos = tl.firstChar();
         if (pos >= 0) {
             if (pos != 0) {
                 editRemoveText(line + 1, 0, pos);
             }
-            if (!(l->length() == 0 || l->at(l->length() - 1).isSpace())) {
+            if (!(l.length() == 0 || l.at(l.length() - 1).isSpace())) {
                 editInsertText(line + 1, 0, QStringLiteral(" "));
             }
         } else {
             // Just remove the whitespace and let Kate handle the rest
-            editRemoveText(line + 1, 0, tl->length());
+            editRemoveText(line + 1, 0, tl.length());
         }
 
         editUnWrapLine(line);
@@ -4537,18 +4459,14 @@ void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
 */
 KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KTextEditor::Cursor start, int maxLines)
 {
-    if (maxLines < 0) {
+    if (maxLines < 0 || start.line() < 0 || start.line() >= lines()) {
         return KTextEditor::Range::invalid();
     }
 
     Kate::TextLine textLine = m_buffer->plainLine(start.line());
-    if (!textLine) {
-        return KTextEditor::Range::invalid();
-    }
-
     KTextEditor::Range range(start, start);
-    const QChar right = textLine->at(range.start().column());
-    const QChar left = textLine->at(range.start().column() - 1);
+    const QChar right = textLine.at(range.start().column());
+    const QChar left = textLine.at(range.start().column() - 1);
     QChar bracket;
 
     if (config()->ovr()) {
@@ -4580,7 +4498,7 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
     range.setEnd(range.start());
     KTextEditor::DocumentCursor cursor(this);
     cursor.setPosition(range.start());
-    int validAttr = kateTextLine(cursor.line())->attribute(cursor.column());
+    int validAttr = kateTextLine(cursor.line()).attribute(cursor.column());
 
     while (cursor.line() >= minLine && cursor.line() <= maxLine) {
         if (!cursor.move(searchDir)) {
@@ -4588,9 +4506,9 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
         }
 
         Kate::TextLine textLine = kateTextLine(cursor.line());
-        if (textLine->attribute(cursor.column()) == validAttr) {
+        if (textLine.attribute(cursor.column()) == validAttr) {
             // Check for match
-            QChar c = textLine->at(cursor.column());
+            QChar c = textLine.at(cursor.column());
             if (c == opposite) {
                 if (nesting == 0) {
                     if (searchDir > 0) { // forward
@@ -5674,9 +5592,9 @@ void KTextEditor::DocumentPrivate::removeTrailingSpacesAndAddNewLineAtEof()
             // remove trailing spaces in entire document, remove = 2
             // remove trailing spaces of touched lines, remove = 1
             // remove trailing spaces of lines saved on disk, remove = 1
-            if (remove == 2 || textline->markedAsModified() || textline->markedAsSavedOnDisk()) {
-                const int p = textline->lastChar() + 1;
-                const int l = textline->length() - p;
+            if (remove == 2 || textline.markedAsModified() || textline.markedAsSavedOnDisk()) {
+                const int p = textline.lastChar() + 1;
+                const int l = textline.length() - p;
                 if (l > 0) {
                     editRemoveText(line, p, l);
                 }
@@ -5725,8 +5643,8 @@ void KTextEditor::DocumentPrivate::removeAllTrailingSpaces()
     const int lines = this->lines();
     for (int line = 0; line < lines; ++line) {
         const Kate::TextLine textline = plainKateTextLine(line);
-        const int p = textline->lastChar() + 1;
-        const int l = textline->length() - p;
+        const int p = textline.lastChar() + 1;
+        const int l = textline.length() - p;
         if (l > 0) {
             editRemoveText(line, p, l);
         }
@@ -6377,9 +6295,9 @@ bool KTextEditor::DocumentPrivate::containsCharacterEncoding(KTextEditor::Range 
     for (int line = range.start().line(); line <= rangeEndLine; ++line) {
         const Kate::TextLine textLine = kateTextLine(line);
         const int startColumn = (line == rangeStartLine) ? rangeStartColumn : 0;
-        const int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine->length();
+        const int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine.length();
         for (int col = startColumn; col < endColumn; ++col) {
-            int attr = textLine->attribute(col);
+            int attr = textLine.attribute(col);
             const KatePrefixStore &prefixStore = highlighting->getCharacterEncodingsPrefixStore(attr);
             if (!prefixStore.findPrefix(textLine, col).isEmpty()) {
                 return true;
@@ -6424,9 +6342,9 @@ QString KTextEditor::DocumentPrivate::decodeCharacters(KTextEditor::Range range,
     for (int line = range.start().line(); line <= rangeEndLine; ++line) {
         textLine = kateTextLine(line);
         int startColumn = (line == rangeStartLine) ? rangeStartColumn : 0;
-        int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine->length();
+        int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine.length();
         for (int col = startColumn; col < endColumn;) {
-            int attr = textLine->attribute(col);
+            int attr = textLine.attribute(col);
             const KatePrefixStore &prefixStore = highlighting->getCharacterEncodingsPrefixStore(attr);
             const QHash<QString, QChar> &characterEncodingsHash = highlighting->getCharacterEncodings(attr);
             QString matchingPrefix = prefixStore.findPrefix(textLine, col);
@@ -6473,11 +6391,11 @@ void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(KTextEditor::Rang
     for (int line = range.start().line(); line <= rangeEndLine; ++line) {
         textLine = kateTextLine(line);
         int startColumn = (line == rangeStartLine) ? rangeStartColumn : 0;
-        int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine->length();
+        int endColumn = (line == rangeEndLine) ? rangeEndColumn : textLine.length();
         for (int col = startColumn; col < endColumn;) {
-            int attr = textLine->attribute(col);
+            int attr = textLine.attribute(col);
             const QHash<QChar, QString> &reverseCharacterEncodingsHash = highlighting->getReverseCharacterEncodings(attr);
-            auto it = reverseCharacterEncodingsHash.find(textLine->at(col));
+            auto it = reverseCharacterEncodingsHash.find(textLine.at(col));
             if (it != reverseCharacterEncodingsHash.end()) {
                 replaceText(KTextEditor::Range(line, col, line, col + 1), *it);
                 col += (*it).length();
@@ -6521,18 +6439,13 @@ KSyntaxHighlighting::Theme::TextStyle KTextEditor::DocumentPrivate::defStyleNum(
     // get highlighted line
     Kate::TextLine tl = kateTextLine(line);
 
-    // make sure the textline is a valid pointer
-    if (!tl) {
-        return KSyntaxHighlighting::Theme::TextStyle::Normal;
-    }
-
     // either get char attribute or attribute of context still active at end of line
     int attribute = 0;
-    if (column < tl->length()) {
-        attribute = tl->attribute(column);
-    } else if (column == tl->length()) {
-        if (!tl->attributesList().empty()) {
-            attribute = tl->attributesList().back().attributeValue;
+    if (column < tl.length()) {
+        attribute = tl.attribute(column);
+    } else if (column == tl.length()) {
+        if (!tl.attributesList().empty()) {
+            attribute = tl.attributesList().back().attributeValue;
         } else {
             return KSyntaxHighlighting::Theme::TextStyle::Normal;
         }
@@ -6554,7 +6467,7 @@ int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)
     const int lineCount = lines();
     while (startLine >= 0 && startLine < lineCount) {
         Kate::TextLine tl = m_buffer->plainLine(startLine);
-        if (tl && (tl->markedAsModified() || tl->markedAsSavedOnDisk())) {
+        if (tl.markedAsModified() || tl.markedAsSavedOnDisk()) {
             return startLine;
         }
         startLine += offset;

@@ -157,6 +157,15 @@ TextLine TextBuffer::line(int line) const
     return m_blocks.at(blockIndex)->line(line);
 }
 
+void TextBuffer::setLineMetaData(int line, const TextLine &textLine)
+{
+    // get block, this will assert on invalid line
+    int blockIndex = blockForLine(line);
+
+    // get line
+    return m_blocks.at(blockIndex)->setLineMetaData(line, textLine);
+}
+
 int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
 {
     if (!c.isValid() || c > document()->documentEnd()) {
@@ -788,7 +797,7 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
     // just dump the lines out ;)
     for (int i = 0; i < m_lines; ++i) {
         // dump current line
-        saveFile.write(encoder.encode(line(i)->text()));
+        saveFile.write(encoder.encode(line(i).text()));
 
         // append correct end of line string
         if ((i + 1) < m_lines) {
