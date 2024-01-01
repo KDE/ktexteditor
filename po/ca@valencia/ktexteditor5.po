@@ -1249,7 +1249,7 @@ msgstr "Ves fins a"
 #: dialogs/katedialogs.cpp:1326
 #, kde-format
 msgid "No valid line number found in clipboard"
-msgstr "No s'ha trobat cap número vàlid de línia al porta-retalls"
+msgstr "No s'ha trobat cap número vàlid de línia a dins del porta-retalls"
 
 #: dialogs/katedialogs.cpp:1390
 #, kde-format
@@ -6570,7 +6570,7 @@ msgstr "Zoom: %1%"
 #: view/kateview.cpp:450
 #, kde-format
 msgid "Cut the selected text and move it to the clipboard"
-msgstr "Talla el text seleccionat i mou-lo al porta-retalls"
+msgstr "Talla el text seleccionat i mou-lo cap a dins del porta-retalls"
 
 #: view/kateview.cpp:453
 #, kde-format
@@ -6582,8 +6582,8 @@ msgstr "Apega el contingut del porta-retalls prèviament copiat o tallat"
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
-"Utilitzeu esta ordre per a copiar el text actualment seleccionat al porta-"
-"retalls del sistema."
+"Utilitzeu esta ordre per a copiar el text actualment seleccionat a dins del "
+"porta-retalls del sistema."
 
 #: view/kateview.cpp:462
 #, kde-format
