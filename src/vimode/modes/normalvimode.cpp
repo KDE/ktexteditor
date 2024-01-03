@@ -2247,19 +2247,34 @@ Range NormalViMode::motionToEndOfPrevWORD()
     return r;
 }
 
+void NormalViMode::stickStickyColumnToEOL()
+{
+    if (m_keys.size() == 1) {
+        m_stickyColumn = KateVi::EOL;
+    }
+}
+
 Range NormalViMode::motionToEOL()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
-    // set sticky column to a ridiculously high value so that the cursor will stick to EOL,
-    // but only if it's a regular motion
-    if (m_keys.size() == 1) {
-        m_stickyColumn = KateVi::EOL;
-    }
+    stickStickyColumnToEOL();
 
     unsigned int line = c.line() + (getCount() - 1);
     Range r(line, doc()->lineLength(line) - 1, InclusiveMotion);
 
+    return r;
+}
+Range NormalViMode::motionToLastNonBlank()
+{
+    KTextEditor::Cursor c(m_view->cursorPosition());
+
+    stickStickyColumnToEOL();
+
+    unsigned int line = c.line() + (getCount() - 1);
+
+    const auto text_line = doc()->plainKateTextLine(line);
+    Range r(line, text_line.previousNonSpaceChar(text_line.length()), InclusiveMotion);
     return r;
 }
 
@@ -4105,6 +4120,7 @@ const std::vector<Motion> &NormalViMode::motions()
         ADDMOTION("<right>", motionRight, 0),
         ADDMOTION(" ", motionRight, 0),
         ADDMOTION("$", motionToEOL, 0),
+        ADDMOTION("g_", motionToLastNonBlank, 0),
         ADDMOTION("<end>", motionToEOL, 0),
         ADDMOTION("0", motionToColumn0, 0),
         ADDMOTION("<home>", motionToColumn0, 0),

@@ -305,6 +305,7 @@ const std::vector<Motion> &VisualViMode::motions()
         ADDMOTION(" ", motionRight, 0),
         ADDMOTION("$", motionToEOL, 0),
         ADDMOTION("<end>", motionToEOL, 0),
+        ADDMOTION("g_", motionToLastNonBlank, 0),
         ADDMOTION("0", motionToColumn0, 0),
         ADDMOTION("<home>", motionToColumn0, 0),
         ADDMOTION("^", motionToFirstCharacterOfLine, 0),
