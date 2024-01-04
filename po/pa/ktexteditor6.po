@@ -3,22 +3,22 @@
 # Amanpreet Singh Alam <aalam@redhat.com>, 2004, 2005.
 # Amanpreet Singh Brar <aalam@redhat.com>, 2005.
 # Amanpreet Singh Alam <amanpreetalam@yahoo.com>, 2005.
-# A S Alam <aalam@users.sf.net>, 2007, 2009, 2010, 2011, 2019.
+# SPDX-FileCopyrightText: 2007, 2009, 2010, 2011, 2019, 2024 A S Alam <aalam@users.sf.net>
 # ASB <aalam@users.sf.net>, 2007.
 # Amanpreet Singh Alam <aalam@users.sf.net>, 2008, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:30+0000\n"
-"PO-Revision-Date: 2019-02-09 14:04-0800\n"
-"Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
-"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"POT-Creation-Date: 2024-01-04 01:33+0000\n"
+"PO-Revision-Date: 2024-01-03 14:00-0600\n"
+"Last-Translator: A S Alam <aalam@punlinux.org>\n"
+"Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -60,7 +60,7 @@ msgstr ""
 #: data/katepart5ui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "ਫਾਈਲ(&F)"
+msgstr "ਫਾਇਲ(&F)"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
@@ -682,19 +682,19 @@ msgstr ""
 #: dialogs/filetypeconfigwidget.ui:14
 #, kde-format
 msgid "&Filetype:"
-msgstr "ਫਾਈਲ ਕਿਸਮ(&F):"
+msgstr "ਫਾਇਲ ਕਿਸਮ(&F):"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbFiletypes)
 #: dialogs/filetypeconfigwidget.ui:24
 #, kde-format
 msgid "Select the filetype you want to change."
-msgstr "ਫਾਈਲ-ਕਿਸਮ ਚੁਣੋ, ਜਿਸ ਨੂੰ ਤੁਸੀਂ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ।"
+msgstr "ਫਾਇਲ-ਕਿਸਮ ਚੁਣੋ, ਜਿਸ ਨੂੰ ਤੁਸੀਂ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ।"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, btnNew)
 #: dialogs/filetypeconfigwidget.ui:31
 #, kde-format
 msgid "Create a new file type."
-msgstr "ਨਵੀਂ ਫਾਈਲ ਕਿਸਮ ਬਣਾਓ।"
+msgstr "ਨਵੀਂ ਫਾਇਲ ਕਿਸਮ ਬਣਾਓ।"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnNew)
 #: dialogs/filetypeconfigwidget.ui:34
@@ -706,7 +706,7 @@ msgstr "ਨਵਾਂ(&N)"
 #: dialogs/filetypeconfigwidget.ui:41
 #, kde-format
 msgid "Delete the current file type."
-msgstr "ਮੌਜੂਦਾ ਫਾਈਲ ਕਿਸਮ ਹਟਾਓ।"
+msgstr "ਮੌਜੂਦਾ ਫਾਇਲ ਕਿਸਮ ਹਟਾਓ।"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
 #: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
@@ -743,7 +743,7 @@ msgstr "ਸ਼ੈਕਸ਼ਨ(&S):"
 #: dialogs/filetypeconfigwidget.ui:99
 #, kde-format
 msgid "The section name is used to organize the file types in menus."
-msgstr "ਮੇਨੂ ਵਿੱਚ ਫਾਈਲ ਕਿਸਮਾਂ ਨੂੰ ਇੱਕ ਸਾਰ ਕਰਨ ਲਈ ਸ਼ੈਕਸ਼ਨ ਦਾ ਨਾਂ ਹੈ।"
+msgstr "ਮੇਨੂ ਵਿੱਚ ਫਾਇਲ ਕਿਸਮਾਂ ਨੂੰ ਇੱਕ ਸਾਰ ਕਰਨ ਲਈ ਸ਼ੈਕਸ਼ਨ ਦਾ ਨਾਂ ਹੈ।"
 
 #. i18n: ectx: property (text), widget (QLabel, lblVariables)
 #: dialogs/filetypeconfigwidget.ui:106
@@ -778,7 +778,7 @@ msgstr "ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰ(&I):"
 #: dialogs/filetypeconfigwidget.ui:149
 #, kde-format
 msgid "File e&xtensions:"
-msgstr "ਫਾਈਲ ਐਕਸਟੈਂਸ਼ਨ(&x):"
+msgstr "ਫਾਇਲ ਐਕਸਟੈਂਸ਼ਨ(&x):"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtFileExtensions)
 #: dialogs/filetypeconfigwidget.ui:159
@@ -981,7 +981,7 @@ msgstr ""
 "<p><b>ਡਾਟਾ ਰਿਕਵਰੀ</b> <a href=\"Kate stores the things you changed in a swap "
 "file. Using the original file you started from plus the swap file you can "
 "mostly recover your work.\"><span>(ਮੱਦਦ)</span></a></p><p>ਸਭ ਡਾਟਾ ਰਿਕਵਰ ਨਹੀਂ "
-"ਕੀਤਾ ਜਾ ਸਕਿਆ। ਸ਼ਾਇਦ ਸਵੈਪ ਫਾਈਲ ਪੂਰੀ ਨਹੀਂ ਹੈ।</p></body></html>"
+"ਕੀਤਾ ਜਾ ਸਕਿਆ। ਸ਼ਾਇਦ ਸਵੈਪ ਫਾਇਲ ਪੂਰੀ ਨਹੀਂ ਹੈ।</p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1218,7 +1218,7 @@ msgstr "ਖੋਲ੍ਹੋ/ਸੰਭਾਲੋ"
 #: dialogs/katedialogs.cpp:1216
 #, kde-format
 msgid "File Opening & Saving"
-msgstr "ਫਾਈਲ ਖੋਲ੍ਹਣੀ ਅਤੇ ਸੰਭਾਲਣੀ"
+msgstr "ਫਾਇਲ ਖੋਲ੍ਹਣੀ ਅਤੇ ਸੰਭਾਲਣੀ"
 
 #: dialogs/katedialogs.cpp:1239
 #, kde-format
@@ -1281,7 +1281,7 @@ msgstr "ਮੁੜ-ਲੋਡ(&d)"
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
-"ਡਿਸਕ ਤੋਂ ਫਾਈਲ ਮੁੜ ਲੋਡ ਕਰੋ। ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਕੁਝ ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਹੋਈਆਂ ਤਾਂ ਉਹ ਖਤਮ ਹੋ "
+"ਡਿਸਕ ਤੋਂ ਫਾਇਲ ਮੁੜ ਲੋਡ ਕਰੋ। ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਕੁਝ ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਹੋਈਆਂ ਤਾਂ ਉਹ ਖਤਮ ਹੋ "
 "ਜਾਣਗੀਆਂ।"
 
 #: dialogs/katedialogs.cpp:1468
@@ -1300,12 +1300,12 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
-msgstr "ਫਾਈਲ ਇੰਝ ਸੰਭਾਲੋ(&S)..."
+msgstr "ਫਾਇਲ ਇੰਝ ਸੰਭਾਲੋ(&S)..."
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Lets you select a location and save the file again."
-msgstr "ਤੁਸੀਂ ਇੱਕ ਵਾਰ ਫੇਰ ਟਿਕਾਣੇ ਦੀ ਚੋਣ ਕਰੋ ਅਟੇ ਫਾਈਲ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਮੁੜ ਕੋਸ਼ਸ਼ ਕਰੋ।"
+msgstr "ਤੁਸੀਂ ਇੱਕ ਵਾਰ ਫੇਰ ਟਿਕਾਣੇ ਦੀ ਚੋਣ ਕਰੋ ਅਟੇ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਮੁੜ ਕੋਸ਼ਸ਼ ਕਰੋ।"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
 #: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
@@ -1337,7 +1337,7 @@ msgstr "ਅੰਤਰ ਬਣਾਉਣ ਦੌਰਾਨ ਗਲਤੀ"
 #: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
-msgstr "ਫਾਈਲਾਂ ਇੱਕੋ ਜਿਹੀਆਂ ਹਨ।"
+msgstr "ਫਾਇਲਾਂ ਇੱਕੋ ਜਿਹੀਆਂ ਹਨ।"
 
 #: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
@@ -1497,13 +1497,13 @@ msgstr ""
 msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
-msgstr "ਜੇ ਇਹ ਚੋਣ ਕਰਦੇ ਹੋ ਤਾਂ ਲੋਕਲ ਫਾਈਲਾਂ ਨੂੰ ਸੰਭਾਲਣ ਸਮੇਂ ਬੈਕਅੱਪ ਲਿਆ ਜਾਵੇਗਾ।"
+msgstr "ਜੇ ਇਹ ਚੋਣ ਕਰਦੇ ਹੋ ਤਾਂ ਲੋਕਲ ਫਾਇਲਾਂ ਨੂੰ ਸੰਭਾਲਣ ਸਮੇਂ ਬੈਕਅੱਪ ਲਿਆ ਜਾਵੇਗਾ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
 #, kde-format
 msgid "&Local files"
-msgstr "ਲੋਕਲ ਫਾਈਲਾਂ(&L)"
+msgstr "ਲੋਕਲ ਫਾਇਲਾਂ(&L)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:58
@@ -1511,13 +1511,13 @@ msgstr "ਲੋਕਲ ਫਾਈਲਾਂ(&L)"
 msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
-msgstr "ਇਸ ਦੀ ਚੋਣ ਕੀਤੀ ਤਾਂ ਰਿਮੋਟ ਫਾਈਲਾਂ ਨੂੰ ਸੰਭਾਲਣ ਸਮੇਂ ਬੈਕਅੱਪ ਲਿਆ ਜਾਵੇਗਾ।"
+msgstr "ਇਸ ਦੀ ਚੋਣ ਕੀਤੀ ਤਾਂ ਰਿਮੋਟ ਫਾਇਲਾਂ ਨੂੰ ਸੰਭਾਲਣ ਸਮੇਂ ਬੈਕਅੱਪ ਲਿਆ ਜਾਵੇਗਾ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
 #, kde-format
 msgid "&Remote files"
-msgstr "ਰਿਮੋਟ ਫਾਈਲਾਂ(&R)"
+msgstr "ਰਿਮੋਟ ਫਾਇਲਾਂ(&R)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/opensaveconfigadvwidget.ui:84
@@ -1529,7 +1529,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:94
 #, kde-format
 msgid "Enter the prefix to prepend to the backup file names."
-msgstr "ਬੈਕਅੱਪ ਫਾਈਲ ਨਾਂ ਲਈ ਜੋੜਨ ਵਾਸਤੇ ਅਗੇਤਰ ਦਿਓ।"
+msgstr "ਬੈਕਅੱਪ ਫਾਇਲ ਨਾਂ ਲਈ ਜੋੜਨ ਵਾਸਤੇ ਅਗੇਤਰ ਦਿਓ।"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/opensaveconfigadvwidget.ui:101
@@ -1541,14 +1541,14 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:111
 #, kde-format
 msgid "Enter the suffix to append to the backup file names."
-msgstr "ਬੈਕਅੱਪ ਫਾਈਲ ਨਾਂ ਲਈ ਜੋੜਨ ਵਾਸਤੇ ਪਿਛੇਤਰ ਦਿਓ।"
+msgstr "ਬੈਕਅੱਪ ਫਾਇਲ ਨਾਂ ਲਈ ਜੋੜਨ ਵਾਸਤੇ ਪਿਛੇਤਰ ਦਿਓ।"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:134
 #, fuzzy, kde-format
 #| msgid "Swap file:"
 msgid "Swap file mode:"
-msgstr "ਸਵੈਪ ਫਾਈਲ:"
+msgstr "ਸਵੈਪ ਫਾਇਲ:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
@@ -1567,14 +1567,14 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Swap file:"
 msgid "Store swap files in:"
-msgstr "ਸਵੈਪ ਫਾਈਲ:"
+msgstr "ਸਵੈਪ ਫਾਇਲ:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
 #, fuzzy, kde-format
 #| msgid "Disable swap files syncing."
 msgid "Save swap files every:"
-msgstr "ਸਵੈਪ ਫਾਈਲ ਸਿੰਕ ਕਰਨਾ ਬੰਦ ਕਰੋ।"
+msgstr "ਸਵੈਪ ਫਾਇਲ ਸਿੰਕ ਕਰਨਾ ਬੰਦ ਕਰੋ।"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
@@ -1593,7 +1593,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:29
 #, kde-format
 msgid "File Format"
-msgstr "ਫਾਈਲ ਫਾਰਮੈਟ"
+msgstr "ਫਾਇਲ ਫਾਰਮੈਟ"
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncoding)
 #: dialogs/opensaveconfigwidget.ui:40
@@ -1677,7 +1677,7 @@ msgid ""
 "The first found end of line type will be used for the whole file."
 msgstr ""
 "ਇਹ ਚੋਣ ਕਰੋ, ਜੇ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ ਕਿ ਸੰਪਾਦਕ ਆਟੋਮੈਟਿਕ ਹੀ ਲਾਈਨ ਅੰਤ ਕਿਸਮ ਦੀ ਖੋਜ ਕਰੇ। ਪਹਿਲੀਂ ਲੱਭੀ "
-"ਲਾਈਨ ਅੰਤ ਕਿਸਮ ਪੂਰੀ ਫਾਈਲ ਲਈ ਵਰਤੀ ਜਾਵੇਗੀ।"
+"ਲਾਈਨ ਅੰਤ ਕਿਸਮ ਪੂਰੀ ਫਾਇਲ ਲਈ ਵਰਤੀ ਜਾਵੇਗੀ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -2117,7 +2117,7 @@ msgstr "ਝਲਕ ਚੌੜਾਈ ਦਾ %"
 #, kde-format
 msgctxt "short translation, user created new file"
 msgid "New file"
-msgstr "ਨਵੀਂ ਫਾਈਲ"
+msgstr "ਨਵੀਂ ਫਾਇਲ"
 
 #: document/katedocument.cpp:223
 #, fuzzy, kde-format
@@ -2140,9 +2140,9 @@ msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
 ">Check if you have read access to this file."
 msgstr ""
-"ਫਾਈਲ %1 ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਪੜ੍ਹਨਾ ਸੰਭਵ ਨਹੀਂ ਸੀ।\n"
+"ਫਾਇਲ %1 ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਪੜ੍ਹਨਾ ਸੰਭਵ ਨਹੀਂ ਸੀ।\n"
 "\n"
-"ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਇਸ ਫਾਈਲ ਨੂੰ ਪੜ੍ਹਨ ਦਾ ਅਧਿਕਾਰ ਹੈ।"
+"ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਇਸ ਫਾਇਲ ਨੂੰ ਪੜ੍ਹਨ ਦਾ ਅਧਿਕਾਰ ਹੈ।"
 
 #: document/katedocument.cpp:2249
 #, kde-format
@@ -2196,13 +2196,13 @@ msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
 "data in the file on disk."
 msgstr ""
-"ਕੀ ਤੁਸੀਂ ਇਸ ਨਾ-ਸੋਧੀ ਫਾਈਲ ਨੂੰ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਸੀਂ ਡਿਸਕ ਉੱਤੇ ਫਾਈਲ ਵਿੱਚ ਡਾਟਾ ਤਬਦੀਲ ਡਾਟਾ "
+"ਕੀ ਤੁਸੀਂ ਇਸ ਨਾ-ਸੋਧੀ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਸੀਂ ਡਿਸਕ ਉੱਤੇ ਫਾਇਲ ਵਿੱਚ ਡਾਟਾ ਤਬਦੀਲ ਡਾਟਾ "
 "ਲਿਖ ਸਕਦੇ ਸੀ।"
 
 #: document/katedocument.cpp:2443
 #, kde-format
 msgid "Trying to Save Unmodified File"
-msgstr "ਨਾ-ਸੋਧੀ ਫਾਈਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ"
+msgstr "ਨਾ-ਸੋਧੀ ਫਾਇਲ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ"
 
 #: document/katedocument.cpp:2444 document/katedocument.cpp:2455
 #: document/katedocument.cpp:2471
@@ -2216,7 +2216,7 @@ msgid ""
 "Do you really want to save this file? Both your open file and the file on "
 "disk were changed. There could be some data lost."
 msgstr ""
-"ਕੀ ਤੁਸੀਂ ਇਸ ਫਾਈਲ ਨੂੰ ਸੱਚਮੁੱਚ ਹੀ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਖੁੱਲੀ ਫਾਈਲ ਅਤੇ ਡਿਸਕ ਉੱਤੇ ਪਈ ਫਾਈਲ ਬਦਲੀ ਹੋਈ "
+"ਕੀ ਤੁਸੀਂ ਇਸ ਫਾਇਲ ਨੂੰ ਸੱਚਮੁੱਚ ਹੀ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਖੁੱਲੀ ਫਾਇਲ ਅਤੇ ਡਿਸਕ ਉੱਤੇ ਪਈ ਫਾਇਲ ਬਦਲੀ ਹੋਈ "
 "ਹੈ। ਕੁਝ ਡਾਟਾ ਗੁੰਮ ਹੋ ਸਕਦਾ ਹੈ।"
 
 #: document/katedocument.cpp:2454 document/katedocument.cpp:2470
@@ -2254,7 +2254,7 @@ msgid ""
 msgstr ""
 "ਡੌਕੂਮੈਂਟ ਨੂੰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ, ਕਿਉਕਿ %1 ਨੂੰ ਲਿਖਣਾ ਸੰਭਵ ਨਹੀਂ ਹੈ।\n"
 "\n"
-"ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਇਸ ਫਾਈਲ ਨੂੰ ਲਿਖਣ ਅਧਿਕਾਰ ਹਨ ਜਾਂ ਡਿਸਕ ਉੱਤੇ ਲੋੜੀਦੀ ਥਾਂ ਉਪਲੱਬਧ ਹੈ।"
+"ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਇਸ ਫਾਇਲ ਨੂੰ ਲਿਖਣ ਅਧਿਕਾਰ ਹਨ ਜਾਂ ਡਿਸਕ ਉੱਤੇ ਲੋੜੀਦੀ ਥਾਂ ਉਪਲੱਬਧ ਹੈ।"
 
 #: document/katedocument.cpp:2659
 #, kde-format
@@ -2278,7 +2278,7 @@ msgstr "ਕਿੰਝ ਵੀ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕ�
 #: document/katedocument.cpp:2786
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
-msgstr "ਕੀ ਤੁਸੀਂ ਇਸ ਫਾਈਲ ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਸਹਿਮਤ ਹੋ? ਡਾਟਾ ਗੁੰਮ ਹੋ ਸਕਦਾ ਹੈ।"
+msgstr "ਕੀ ਤੁਸੀਂ ਇਸ ਫਾਇਲ ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਸਹਿਮਤ ਹੋ? ਡਾਟਾ ਗੁੰਮ ਹੋ ਸਕਦਾ ਹੈ।"
 
 #: document/katedocument.cpp:2788
 #, kde-format
@@ -2295,7 +2295,7 @@ msgstr "ਬਿਨ-ਟਾਈਟਲ"
 #: document/katedocument.cpp:5907
 #, kde-format
 msgid "Save File"
-msgstr "ਫਾਈਲ ਸੰਭਾਲੋ"
+msgstr "ਫਾਇਲ ਸੰਭਾਲੋ"
 
 #: document/katedocument.cpp:4695
 #, kde-format
@@ -2305,7 +2305,7 @@ msgstr "ਸੰਭਾਲਣਾ ਫੇਲ੍ਹ"
 #: document/katedocument.cpp:4941
 #, kde-format
 msgid "Save Copy of File"
-msgstr "ਫਾਈਲ ਦੀ ਕਾਪੀ ਸੰਭਾਲੋ"
+msgstr "ਫਾਇਲ ਦੀ ਕਾਪੀ ਸੰਭਾਲੋ"
 
 #: document/katedocument.cpp:4953
 #, kde-format
@@ -2317,7 +2317,7 @@ msgid ""
 msgstr ""
 "ਡੌਕੂਮੈਂਟ ਨੂੰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ, ਕਿਉਕਿ %1 ਨੂੰ ਲਿਖਣਾ ਸੰਭਵ ਨਹੀਂ ਹੈ।\n"
 "\n"
-"ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਇਸ ਫਾਈਲ ਨੂੰ ਲਿਖਣ ਅਧਿਕਾਰ ਹਨ ਜਾਂ ਡਿਸਕ ਉੱਤੇ ਲੋੜੀਦੀ ਥਾਂ ਉਪਲੱਬਧ ਹੈ।"
+"ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਇਸ ਫਾਇਲ ਨੂੰ ਲਿਖਣ ਅਧਿਕਾਰ ਹਨ ਜਾਂ ਡਿਸਕ ਉੱਤੇ ਲੋੜੀਦੀ ਥਾਂ ਉਪਲੱਬਧ ਹੈ।"
 
 #: document/katedocument.cpp:5233
 #, kde-format
@@ -2341,19 +2341,19 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
-msgstr "ਫਾਈਲ '%1' ਨੂੰ ਹੋਰ ਪਰੋਗਰਾਮ ਰਾਹੀਂ ਸੋਧਿਆ ਗਿਆ ਸੀ।"
+msgstr "ਫਾਇਲ '%1' ਨੂੰ ਹੋਰ ਪਰੋਗਰਾਮ ਰਾਹੀਂ ਸੋਧਿਆ ਗਿਆ ਸੀ।"
 
 #: document/katedocument.cpp:5552
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
-msgstr "ਫਾਈਲ '%1' ਨੂੰ ਹੋਰ ਪਰੋਗਰਾਮ ਰਾਹੀਂ ਬਣਾਇਆ ਗਿਆ ਸੀ।"
+msgstr "ਫਾਇਲ '%1' ਨੂੰ ਹੋਰ ਪਰੋਗਰਾਮ ਰਾਹੀਂ ਬਣਾਇਆ ਗਿਆ ਸੀ।"
 
 #: document/katedocument.cpp:5555
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
-msgstr "ਫਾਈਲ '%1' ਨੂੰ ਹੋਰ ਪਰੋਗਰਾਮ ਨੇ ਹਟਾ ਦਿੱਤਾ ਹੈ।"
+msgstr "ਫਾਇਲ '%1' ਨੂੰ ਹੋਰ ਪਰੋਗਰਾਮ ਨੇ ਹਟਾ ਦਿੱਤਾ ਹੈ।"
 
 #: document/katedocument.cpp:5892
 #, kde-format
@@ -2372,7 +2372,7 @@ msgstr "ਡੌਕੂਮੈਂਟ ਬੰਦ ਕਰੋ"
 #: document/katedocument.cpp:6006
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr "ਫਾਈਲ <a href=\"%1\">%2</a> ਹਾਲੇ ਲੋਡ ਹੋ ਰਹੀ ਹੈ।"
+msgstr "ਫਾਇਲ <a href=\"%1\">%2</a> ਹਾਲੇ ਲੋਡ ਹੋ ਰਹੀ ਹੈ।"
 
 #: document/katedocument.cpp:6011
 #, kde-format
@@ -2458,7 +2458,7 @@ msgstr "%1 ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ"
 #: mode/katemodeconfigpage.cpp:178
 #, kde-format
 msgid "New Filetype"
-msgstr "ਨਵੀਂ ਫਾਈਲ ਕਿਸਮ"
+msgstr "ਨਵੀਂ ਫਾਇਲ ਕਿਸਮ"
 
 #: mode/katemodeconfigpage.cpp:293
 #, kde-format
@@ -2476,7 +2476,7 @@ msgstr "Mime ਕਿਸਮਾਂ ਚੁਣੋ"
 #: mode/katemodeconfigpage.cpp:306
 #, kde-format
 msgid "Modes && Filetypes"
-msgstr "ਮੋਡ ਅਤੇ ਫਾਈਲ ਕਿਸਮਾਂ"
+msgstr "ਮੋਡ ਅਤੇ ਫਾਇਲ ਕਿਸਮਾਂ"
 
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
@@ -2639,7 +2639,7 @@ msgstr ""
 "<ul><li><tt>%u</tt>: ਮੌਜੂਦਾ ਯੂਜ਼ਰ ਨਾਂ</li><li><tt>%d</tt>: ਛੋਟੇ ਫਾਰਮੈਟ ਵਿੱਚ ਮਿਤੀ/ਸਮਾਂ</"
 "li><li><tt>%D</tt>: ਲੰਮੇ ਫਾਰਮੈਟ ਵਿੱਚ ਮਿਤੀ/ਸਮਾਂ</li><li><tt>%h</tt>: ਮੌਜੂਦਾ ਸਮਾਂ</"
 "li><li><tt>%y</tt>: ਛੋਟੇ ਰੂਪ ਵਿੱਚ ਮੌਜੂਦਾ ਮਿਤੀ</li><li><tt>%Y</tt>: ਲੰਮੇ ਰੂਪ ਵਿੱਚ ਮੌਜੂਦਾ "
-"ਮਿਤੀ</li><li><tt>%f</tt>: ਫਾਈਲ ਨਾਂ</li><li><tt>%U</tt>: ਡੌਕੂਮੈਂਟ ਦਾ URL</"
+"ਮਿਤੀ</li><li><tt>%f</tt>: ਫਾਇਲ ਨਾਂ</li><li><tt>%U</tt>: ਡੌਕੂਮੈਂਟ ਦਾ URL</"
 "li><li><tt>%p</tt>: ਸਫ਼ਾ ਨੰਬਰ</li></ul><br><u>ਸੂਚਨਾ:</u> '|' (ਖਿਤਿਜੀ ਡੰਡਾ) "
 "<b>ਨਾ</b> ਵਰਤੋਂ।"
 
@@ -2686,7 +2686,7 @@ msgstr "ਮੌਜੂਦਾ ਮਿਤੀ (ਵੱਡਾ ਰੂਪ)"
 #: printing/printconfigwidgets.cpp:366
 #, kde-format
 msgid "File Name"
-msgstr "ਫਾਈਲ ਨਾਂ"
+msgstr "ਫਾਇਲ ਨਾਂ"
 
 #: printing/printconfigwidgets.cpp:368
 #, kde-format
@@ -2893,7 +2893,7 @@ msgstr "ਪਿਛਲੀ ਸਤਰ ਚੁਣੋ"
 #| msgid "Delete the current file type."
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr "ਮੌਜੂਦਾ ਫਾਈਲ ਕਿਸਮ ਹਟਾਓ।"
+msgstr "ਮੌਜੂਦਾ ਫਾਇਲ ਕਿਸਮ ਹਟਾਓ।"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
@@ -3005,7 +3005,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Delete the current file type."
 msgid "Deletes tag under cursor"
-msgstr "ਮੌਜੂਦਾ ਫਾਈਲ ਕਿਸਮ ਹਟਾਓ।"
+msgstr "ਮੌਜੂਦਾ ਫਾਇਲ ਕਿਸਮ ਹਟਾਓ।"
 
 #: script/data/commands/emmet.js:107
 #, kde-format
@@ -3496,7 +3496,7 @@ msgstr "ਸਕ੍ਰਿਪਟ %1 ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਗਲਤ�
 #: script/katescriptmanager.cpp:310
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
-msgstr "ਸਭ ਜਾਵਾਸਕ੍ਰਿਪਟ ਫਾਈਲਾਂ ਮੁੜ-ਲੋਡ ਕਰੋ (ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰ, ਕਮਾਂਡ ਲਾਈਨ ਸਕ੍ਰਿਪਟ ਆਦਿ)।"
+msgstr "ਸਭ ਜਾਵਾਸਕ੍ਰਿਪਟ ਫਾਇਲਾਂ ਮੁੜ-ਲੋਡ ਕਰੋ (ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰ, ਕਮਾਂਡ ਲਾਈਨ ਸਕ੍ਰਿਪਟ ਆਦਿ)।"
 
 #: script/katescriptview.cpp:207
 #, kde-format
@@ -3542,12 +3542,12 @@ msgstr "ਨਹੀਂ ਲੱਭਿਆ"
 #: search/katesearchbar.cpp:616
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
-msgstr "ਫਾਈਲ ਦੇ ਹੇਠਾਂ ਤੱਕ ਆ ਗਏ, ਕੀ ਉੱਤੇ ਤੋਂ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"
+msgstr "ਫਾਇਲ ਦੇ ਹੇਠਾਂ ਤੱਕ ਆ ਗਏ, ਕੀ ਉੱਤੇ ਤੋਂ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"
 
 #: search/katesearchbar.cpp:616
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
-msgstr "ਫਾਈਲ ਦੇ ਉੱਤੇ ਤੱਕ ਆ ਗਏ, ਕੀ ਹੇਠਾਂ ਤੋਂ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"
+msgstr "ਫਾਇਲ ਦੇ ਉੱਤੇ ਤੱਕ ਆ ਗਏ, ਕੀ ਹੇਠਾਂ ਤੋਂ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"
 
 #: search/katesearchbar.cpp:619
 #, kde-format
@@ -7644,7 +7644,7 @@ msgstr ""
 #: view/kateview.cpp:4883
 #, kde-format
 msgid "Export File as HTML"
-msgstr "HTML ਵਾਂਗ ਫਾਈਲ ਨਿਰਯਾਤ"
+msgstr "HTML ਵਾਂਗ ਫਾਇਲ ਨਿਰਯਾਤ"
 
 #: view/kateviewhelpers.cpp:287 view/kateviewhelpers.cpp:332
 #: view/kateviewhelpers.cpp:989
@@ -7776,7 +7776,7 @@ msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖੋ(&L)"
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "Save..."
-msgstr "ਫਾਈਲ ਇੰਝ ਸੰਭਾਲੋ(&S)..."
+msgstr "ਫਾਇਲ ਇੰਝ ਸੰਭਾਲੋ(&S)..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -7959,7 +7959,7 @@ msgstr "%1 ਖੋਲ੍ਹਣ ਵਿੱਚ ਅਸਮੱਰਥ"
 #: vimode/config/configtab.cpp:201
 #, kde-format
 msgid "Unable to open file"
-msgstr "ਫਾਈਲ ਖੋਲ੍ਹਣ ਲਈ ਅਸਮਰੱਥ"
+msgstr "ਫਾਇਲ ਖੋਲ੍ਹਣ ਲਈ ਅਸਮਰੱਥ"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViCommandsOverride)
 #: vimode/config/configwidget.ui:35
@@ -8098,7 +8098,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ਅਗਲੇ ਬੁੱਕਮਾਰਕ 'ਤੇ ਜਾਓ"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3559
+#: vimode/modes/normalvimode.cpp:3574
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "ਰਜਿਸਟਰ %1 ਵਿੱਚ ਕੁਝ ਨਹੀਂ ਹੈ"
@@ -8108,7 +8108,7 @@ msgstr "ਰਜਿਸਟਰ %1 ਵਿੱਚ ਕੁਝ ਨਹੀਂ ਹੈ"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:2525
+#: vimode/modes/normalvimode.cpp:2540
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ਨਿਸ਼ਾਨ ਸੈੱਟ ਨਹੀਂ: %1"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:30+0000\n"
+"POT-Creation-Date: 2024-01-04 01:33+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -8399,7 +8399,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Järgmisele järjehoidjale pole enam sümboleid."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3559
+#: vimode/modes/normalvimode.cpp:3574
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Registris %1 pole midagi"
@@ -8409,7 +8409,7 @@ msgstr "Registris %1 pole midagi"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  16nd %3,  8nd %4"
 
-#: vimode/modes/normalvimode.cpp:2525
+#: vimode/modes/normalvimode.cpp:2540
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Märk pole määratud: %1"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:30+0000\n"
+"POT-Creation-Date: 2024-01-04 01:33+0000\n"
 "PO-Revision-Date: 2023-12-03 14:21+0100\n"
 "Last-Translator: Freek de Kruijf <f.de.kruijf@gmail.com>\n"
 "Language-Team: \n"
@@ -8357,7 +8357,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "er zijn geen tekens meer voor de volgende bladwijzer."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3559
+#: vimode/modes/normalvimode.cpp:3574
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Niets in register %1"
@@ -8367,7 +8367,7 @@ msgstr "Niets in register %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hex %3,  Octaal %4"
 
-#: vimode/modes/normalvimode.cpp:2525
+#: vimode/modes/normalvimode.cpp:2540
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Markering niet ingesteld: %1"

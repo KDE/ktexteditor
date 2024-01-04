@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:30+0000\n"
+"POT-Creation-Date: 2024-01-04 01:33+0000\n"
 "PO-Revision-Date: 2023-12-28 05:49+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -7958,7 +7958,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "下一個書籤沒有更多字元了。"
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3559
+#: vimode/modes/normalvimode.cpp:3574
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "暫存器 %1 中沒有東西"
@@ -7968,7 +7968,7 @@ msgstr "暫存器 %1 中沒有東西"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2，十六進位 %3，八進位 %4"
 
-#: vimode/modes/normalvimode.cpp:2525
+#: vimode/modes/normalvimode.cpp:2540
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "標記未設定：%1"

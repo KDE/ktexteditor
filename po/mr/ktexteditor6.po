@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:30+0000\n"
+"POT-Creation-Date: 2024-01-04 01:33+0000\n"
 "PO-Revision-Date: 2014-10-28 14:28+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -7840,7 +7840,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "पुढील ओळखचिन्हाकरिता अक्षरे नाहीत."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3559
+#: vimode/modes/normalvimode.cpp:3574
 #, kde-format
 msgid "Nothing in register %1"
 msgstr ""
@@ -7850,7 +7850,7 @@ msgstr ""
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr ""
 
-#: vimode/modes/normalvimode.cpp:2525
+#: vimode/modes/normalvimode.cpp:2540
 #, kde-format
 msgid "Mark not set: %1"
 msgstr ""

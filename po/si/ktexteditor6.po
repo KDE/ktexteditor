@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-02 01:30+0000\n"
+"POT-Creation-Date: 2024-01-04 01:33+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -8370,7 +8370,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "ඊළඟ පිටු සළකුණට යන්න."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3559
+#: vimode/modes/normalvimode.cpp:3574
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "%1 නාමලේඛනයේ කිසිවක් නැත"
@@ -8380,7 +8380,7 @@ msgstr "%1 නාමලේඛනයේ කිසිවක් නැත"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  16 පාදයේ %3,  8 පාදයේ %4"
 
-#: vimode/modes/normalvimode.cpp:2525
+#: vimode/modes/normalvimode.cpp:2540
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "නොයෙදූ ලකුණ: %1"
