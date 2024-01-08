@@ -190,7 +190,7 @@ void KateWordCompletionModel::completionInvoked(KTextEditor::View *view, const K
  */
 QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const KTextEditor::Range &range)
 {
-    QSet<QString> result;
+    QSet<QStringView> result;
     const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
     const auto cursorPosition = view->cursorPosition();
     const auto document = view->document();
@@ -201,7 +201,7 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
         if (text.isEmpty() || text.isNull()) {
             continue;
         }
-        QString textView = text; // no string view atm, document->line(line) is temporarily allocated TODO
+        QStringView textView = text;
         int wordBegin = 0;
         int offset = 0;
         const int end = text.size();
@@ -247,7 +247,7 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     m_matches.clear();
     m_matches.reserve(result.size());
     for (auto v : std::as_const(result)) {
-        m_matches << v;
+        m_matches << v.toString();
     }
 
     return m_matches;

@@ -31,7 +31,7 @@ class TextRange;
 class TextCursor;
 class TextBlock;
 
-constexpr int BufferBlockSize = 128;
+constexpr int BufferBlockSize = 64;
 
 /**
  * Class representing a text buffer.

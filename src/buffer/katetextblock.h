@@ -84,14 +84,14 @@ public:
     int lineLength(int line) const
     {
         Q_ASSERT(line >= startLine() && (line - startLine()) < lines());
-        return m_lines[line - startLine()].textSize;
+        return m_lines[line - startLine()].length();
     }
 
     /**
      * Append a new line with given text.
      * @param textOfLine text of the line to append
      */
-    void appendLine(QStringView textOfLine);
+    void appendLine(const QString &textOfLine);
 
     /**
      * Clear the lines.
@@ -108,13 +108,10 @@ public:
     }
 
     /**
-     * Reference to the text of the block.
-     * @return text in this block, each line with a trailing '\n'
+     * Retrieve text of block.
+     * @param text for this block, lines separated by '\n'
      */
-    const QString &text() const
-    {
-        return m_text;
-    }
+    void text(QString &text) const;
 
     /**
      * Wrap line at given cursor position.
@@ -240,9 +237,9 @@ public:
      * Returns the size of this block i.e.,
      * the count of QChars it has + number of new lines
      */
-    qsizetype blockSize() const
+    int blockSize() const
     {
-        return m_text.size();
+        return m_blockSize + m_lines.size();
     }
 
 private:
@@ -262,98 +259,7 @@ private:
         }
     }
 
-    /**
-     * Get text index for the given block internal line number.
-     * @param line internal line number
-     * @return index into m_text
-     */
-    qsizetype textIndexForBlockLine(int line) const
-    {
-        // compute start
-        qsizetype lineStart = 0;
-        for (qsizetype i = 0; i < line; ++i)
-            lineStart += m_lines[i].textSize + 1;
-        return lineStart;
-    }
-
-    /**
-     * Get string view for the given block internal line number.
-     * @param line internal line number
-     * @return string view for that line
-     */
-    QStringView textForBlockLine(int line) const
-    {
-        // shortcut for no text stored for this line
-        const qsizetype lineTextSize = m_lines.at(line).textSize;
-        if (lineTextSize == 0)
-            return {};
-
-        // return view to matching part
-        return QStringView(m_text).mid(textIndexForBlockLine(line), lineTextSize);
-    }
-
-    /**
-     * Get attributes index for the given block internal line number.
-     * @param line internal line number
-     * @return index into m_attributesList
-     */
-    qsizetype attributeIndexForBlockLine(int line) const
-    {
-        // compute start
-        qsizetype lineStart = 0;
-        for (qsizetype i = 0; i < line; ++i)
-            lineStart += m_lines[i].attributesSize;
-        return lineStart;
-    }
-
-    /**
-     * Get copy of attributes for the given block internal line number.
-     * @param line internal line number
-     * @return copy of attributes for that line
-     */
-    QList<Kate::TextLine::Attribute> attributesForBlockLine(int line) const
-    {
-        // shortcut for no attributes stored for this line
-        const qsizetype lineAttributesSize = m_lines.at(line).attributesSize;
-        if (lineAttributesSize == 0)
-            return {};
-
-        // return copy of matching part
-        return m_attributesList.mid(attributeIndexForBlockLine(line), lineAttributesSize);
-    }
-
 private:
-    /**
-     * Data holder for one line.
-     * We use this + the string and attribute data in the block to construct the Kate::TextLine.
-     */
-    class Line final
-    {
-    public:
-        /**
-         * current highlighting state
-         */
-        KSyntaxHighlighting::State highlightingState;
-
-        /**
-         * length of the slice in m_text of the block containing this line
-         * IMPORTANT: in m_text each line has after this a trailing '\n'
-         * one line can not span more than 2GB, else the cursor position overflows
-         */
-        int textSize = 0;
-
-        /**
-         * length of the slice in m_attributesList of the block containing this line
-         * one line can not span more than 2GB, else the cursor position overflows
-         */
-        int attributesSize = 0;
-
-        /**
-         * flags of this line
-         */
-        unsigned int flags = 0;
-    };
-
     /**
      * parent text buffer
      */
@@ -361,27 +267,19 @@ private:
 
     /**
      * Lines contained in this buffer.
-     * This is the internal storage, will point for the full data into m_text and m_attributesList.
      * We need no sharing, use STL.
      */
-    std::vector<Line> m_lines;
-
-    /**
-     * text of this buffer
-     * each line is stored here with a trailing '\n'
-     */
-    QString m_text;
-
-    /**
-     * attributes of this buffer
-     * each entry in line is contained here
-     */
-    QList<Kate::TextLine::Attribute> m_attributesList;
+    std::vector<Kate::TextLine> m_lines;
 
     /**
      * Startline of this block
      */
     int m_startLine;
+
+    /**
+     * size of block i.e., number of QChars
+     */
+    int m_blockSize = 0;
 
     /**
      * Set of cursors for this block.

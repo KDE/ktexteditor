@@ -41,8 +41,8 @@ void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
     auto doc = manager->document();
     auto updateDocLine = [doc](const UndoItem &item) {
         Kate::TextLine tl = doc->plainKateTextLine(item.line);
-        Kate::TextLine::markAsModified(tl.flags(), item.lineModFlags.testFlag(UndoItem::UndoLine1Modified));
-        Kate::TextLine::markAsSavedOnDisk(tl.flags(), item.lineModFlags.testFlag(UndoItem::UndoLine1Saved));
+        tl.markAsModified(item.lineModFlags.testFlag(UndoItem::UndoLine1Modified));
+        tl.markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::UndoLine1Saved));
         doc->buffer().setLineMetaData(item.line, tl);
     };
 
@@ -66,8 +66,8 @@ void KateUndoGroup::undo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
             updateDocLine(item);
 
             auto next = doc->plainKateTextLine(item.line + 1);
-            Kate::TextLine::markAsModified(next.flags(), item.lineModFlags.testFlag(UndoItem::UndoLine2Modified));
-            Kate::TextLine::markAsSavedOnDisk(next.flags(), item.lineModFlags.testFlag(UndoItem::UndoLine2Saved));
+            next.markAsModified(item.lineModFlags.testFlag(UndoItem::UndoLine2Modified));
+            next.markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::UndoLine2Saved));
             doc->buffer().setLineMetaData(item.line + 1, next);
         } break;
         case UndoItem::editInsertLine:
@@ -113,8 +113,8 @@ void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
     auto doc = manager->document();
     auto updateDocLine = [doc](const UndoItem &item) {
         Kate::TextLine tl = doc->plainKateTextLine(item.line);
-        Kate::TextLine::markAsModified(tl.flags(), item.lineModFlags.testFlag(UndoItem::RedoLine1Modified));
-        Kate::TextLine::markAsSavedOnDisk(tl.flags(), item.lineModFlags.testFlag(UndoItem::RedoLine1Saved));
+        tl.markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine1Modified));
+        tl.markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine1Saved));
         doc->buffer().setLineMetaData(item.line, tl);
     };
 
@@ -133,8 +133,8 @@ void KateUndoGroup::redo(KateUndoManager *manager, KTextEditor::ViewPrivate *vie
             updateDocLine(item);
 
             Kate::TextLine next = doc->plainKateTextLine(item.line + 1);
-            Kate::TextLine::markAsModified(next.flags(), item.lineModFlags.testFlag(UndoItem::RedoLine2Modified));
-            Kate::TextLine::markAsSavedOnDisk(next.flags(), item.lineModFlags.testFlag(UndoItem::RedoLine2Saved));
+            next.markAsModified(item.lineModFlags.testFlag(UndoItem::RedoLine2Modified));
+            next.markAsSavedOnDisk(item.lineModFlags.testFlag(UndoItem::RedoLine2Saved));
             doc->buffer().setLineMetaData(item.line + 1, next);
         } break;
         case UndoItem::editUnWrapLine:

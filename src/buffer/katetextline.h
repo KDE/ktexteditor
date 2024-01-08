@@ -77,26 +77,19 @@ public:
     }
 
     /**
-     * Construct an text line from the given data.
-     * Used in TextBlock to generate the line from the internal storage.
-     * @param text text to use for this line
-     * @param attributes attributes to use for this line
-     * @param state state to use for this line
-     * @param flags flags to use for this line
-     */
-    TextLine(const QString &text, const QList<Attribute> &attributes, const KSyntaxHighlighting::State &state, const unsigned int flags)
-        : m_text(text)
-        , m_attributesList(attributes)
-        , m_highlightingState(state)
-        , m_flags(flags)
-    {
-    }
-
-    /**
      * Accessor to the text contained in this line.
      * @return text of this line as constant reference
      */
     const QString &text() const
+    {
+        return m_text;
+    }
+
+    /**
+     * Accessor to the text contained in this line.
+     * @return text of this line as reference
+     */
+    QString &text()
     {
         return m_text;
     }
@@ -144,13 +137,13 @@ public:
         return QChar();
     }
 
-    static inline void markAsModified(unsigned int &flags, bool modified)
+    inline void markAsModified(bool modified)
     {
         if (modified) {
-            flags |= flagLineModified;
-            flags &= (~flagLineSavedOnDisk);
+            m_flags |= flagLineModified;
+            m_flags &= (~flagLineSavedOnDisk);
         } else {
-            flags &= (~flagLineModified);
+            m_flags &= (~flagLineModified);
         }
     }
 
@@ -159,13 +152,13 @@ public:
         return m_flags & flagLineModified;
     }
 
-    static inline void markAsSavedOnDisk(unsigned int &flags, bool savedOnDisk)
+    inline void markAsSavedOnDisk(bool savedOnDisk)
     {
         if (savedOnDisk) {
-            flags |= flagLineSavedOnDisk;
-            flags &= (~flagLineModified);
+            m_flags |= flagLineSavedOnDisk;
+            m_flags &= (~flagLineModified);
         } else {
-            flags &= (~flagLineSavedOnDisk);
+            m_flags &= (~flagLineSavedOnDisk);
         }
     }
 
@@ -356,24 +349,6 @@ public:
         } else {
             m_flags = m_flags & ~flagAutoWrapped;
         }
-    }
-
-    /**
-     * Get the raw flags.
-     * @return flags of this line
-     */
-    unsigned int flags() const
-    {
-        return m_flags;
-    }
-
-    /**
-     * Get the raw flags.
-     * @return flags of this line
-     */
-    unsigned int &flags()
-    {
-        return m_flags;
     }
 
 private:

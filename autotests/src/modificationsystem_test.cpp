@@ -32,8 +32,8 @@ static void clearModificationFlags(KTextEditor::DocumentPrivate *doc)
 {
     for (int i = 0; i < doc->lines(); ++i) {
         Kate::TextLine line = doc->plainKateTextLine(i);
-        Kate::TextLine::markAsModified(line.flags(), false);
-        Kate::TextLine::markAsSavedOnDisk(line.flags(), false);
+        line.markAsModified(false);
+        line.markAsSavedOnDisk(false);
         doc->buffer().setLineMetaData(i, line);
     }
 }
@@ -43,7 +43,7 @@ static void markModifiedLinesAsSaved(KTextEditor::DocumentPrivate *doc)
     for (int i = 0; i < doc->lines(); ++i) {
         Kate::TextLine textLine = doc->plainKateTextLine(i);
         if (textLine.markedAsModified()) {
-            Kate::TextLine::markAsSavedOnDisk(textLine.flags(), true);
+            textLine.markAsSavedOnDisk(true);
             doc->buffer().setLineMetaData(i, textLine);
         }
     }
