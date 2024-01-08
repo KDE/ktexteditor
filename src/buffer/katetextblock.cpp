@@ -22,8 +22,9 @@ TextBlock::TextBlock(TextBuffer *buffer, int startLine)
 TextBlock::~TextBlock()
 {
     // blocks should be empty before they are deleted!
-    Q_ASSERT(m_blockSize == 0);
     Q_ASSERT(m_lines.empty());
+    Q_ASSERT(m_text.isEmpty());
+    Q_ASSERT(m_attributesList.empty());
     Q_ASSERT(m_cursors.empty());
 
     // it only is a hint for ranges for this block, not the storage of them
@@ -44,7 +45,8 @@ TextLine TextBlock::line(int line) const
     Q_ASSERT(line >= startLine());
 
     // get text line, at will bail out on out-of-range
-    return m_lines.at(line - startLine());
+    const auto &lineData = m_lines.at(line - startLine());
+    return TextLine(textForBlockLine(line - startLine()).toString(), attributesForBlockLine(line - startLine()), lineData.highlightingState, lineData.flags);
 }
 
 void TextBlock::setLineMetaData(int line, const TextLine &textLine)
@@ -52,35 +54,33 @@ void TextBlock::setLineMetaData(int line, const TextLine &textLine)
     // right input
     Q_ASSERT(line >= startLine());
 
-    // set stuff, at will bail out on out-of-range
-    const QString originalText = m_lines.at(line - startLine()).text();
-    m_lines.at(line - startLine()) = textLine;
-    m_lines.at(line - startLine()).text() = originalText;
+    // set stuff we store inside the line data, at will bail out on out-of-range
+    auto &lineData = m_lines.at(line - startLine());
+    const auto oldAttributesSize = lineData.attributesSize;
+    lineData.attributesSize = textLine.attributesList().size();
+    lineData.highlightingState = textLine.highlightingState();
+    lineData.flags = textLine.flags();
+
+    // replace in block stored attributes stuff, TODO: optimize
+    const auto attributesIndex = attributeIndexForBlockLine(line - startLine());
+    m_attributesList.remove(attributesIndex, oldAttributesSize);
+    for (qsizetype i = 0; i < lineData.attributesSize; ++i)
+        m_attributesList.insert(attributesIndex + i, textLine.attributesList().at(i));
 }
 
-void TextBlock::appendLine(const QString &textOfLine)
+void TextBlock::appendLine(QStringView textOfLine)
 {
-    m_lines.emplace_back(textOfLine);
-    m_blockSize += textOfLine.size();
+    m_lines.emplace_back();
+    m_lines.back().textSize = textOfLine.size();
+    m_text += textOfLine;
+    m_text += QLatin1Char('\n');
 }
 
 void TextBlock::clearLines()
 {
     m_lines.clear();
-    m_blockSize = 0;
-}
-
-void TextBlock::text(QString &text) const
-{
-    // combine all lines
-    for (size_t i = 0; i < m_lines.size(); ++i) {
-        // not first line, insert \n
-        if (i > 0 || startLine() > 0) {
-            text.append(QLatin1Char('\n'));
-        }
-
-        text.append(m_lines.at(i).text());
-    }
+    m_text.clear();
+    m_attributesList.clear();
 }
 
 void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesStartIndex)
@@ -88,36 +88,39 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
     // calc internal line
     int line = position.line() - startLine();
 
-    // get text, copy, we might invalidate the reference
-    const QString text = m_lines.at(line).text();
+    // remember the old line size
+    const qsizetype oldLineTextSize = m_lines.at(line).textSize;
 
     // check if valid column
     Q_ASSERT(position.column() >= 0);
-    Q_ASSERT(position.column() <= text.size());
+    Q_ASSERT(position.column() <= oldLineTextSize);
 
     // create new line and insert it
-    m_lines.insert(m_lines.begin() + line + 1, TextLine());
+    m_lines.insert(m_lines.begin() + line + 1, Line());
+
+    // insert the '\n' at the right location in the buffer's text
+    m_text.insert(textIndexForBlockLine(line) + position.column(), QLatin1Char('\n'));
 
     // cases for modification:
     // 1. line is wrapped in the middle
     // 2. if empty line is wrapped, mark new line as modified
     // 3. line-to-be-wrapped is already modified
-    if (position.column() > 0 || text.size() == 0 || m_lines.at(line).markedAsModified()) {
-        m_lines.at(line + 1).markAsModified(true);
-    } else if (m_lines.at(line).markedAsSavedOnDisk()) {
-        m_lines.at(line + 1).markAsSavedOnDisk(true);
+    if (position.column() > 0 || oldLineTextSize == 0 || m_lines.at(line).flags & Kate::TextLine::flagLineModified) {
+        Kate::TextLine::markAsModified(m_lines.at(line + 1).flags, true);
+    } else if (m_lines.at(line).flags & Kate::TextLine::flagLineSavedOnDisk) {
+        Kate::TextLine::markAsSavedOnDisk(m_lines.at(line + 1).flags, true);
     }
 
     // perhaps remove some text from previous line and append it
-    if (position.column() < text.size()) {
+    if (position.column() < oldLineTextSize) {
         // text from old line moved first to new one
-        m_lines.at(line + 1).text() = text.right(text.size() - position.column());
+        m_lines.at(line + 1).textSize = oldLineTextSize - position.column();
 
         // now remove wrapped text from old line
-        m_lines.at(line).text().chop(text.size() - position.column());
+        m_lines.at(line).textSize -= oldLineTextSize - position.column();
 
         // mark line as modified
-        m_lines.at(line).markAsModified(true);
+        Kate::TextLine::markAsModified(m_lines.at(line).flags, true);
     }
 
     // fix all start lines
@@ -201,19 +204,25 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         Q_ASSERT(previousBlock);
         Q_ASSERT(previousBlock->lines() > 0);
 
+        // move content of m_text and m_attributesList TODO optimize
+        const auto lastLineOfPreviousBlock = previousBlock->lines() - 1;
+        m_text = previousBlock->textForBlockLine(lastLineOfPreviousBlock).toString() + m_text;
+        m_attributesList = previousBlock->attributesForBlockLine(lastLineOfPreviousBlock) + m_attributesList;
+        previousBlock->m_text.resize(previousBlock->textIndexForBlockLine(lastLineOfPreviousBlock));
+        previousBlock->m_attributesList.resize(previousBlock->attributeIndexForBlockLine(lastLineOfPreviousBlock));
+
         // move last line of previous block to this one, might result in empty block
-        const TextLine oldFirst = m_lines.at(0);
-        int lastLineOfPreviousBlock = previousBlock->lines() - 1;
+        const auto oldFirstTextSize = m_lines.at(0).textSize;
+        const auto oldFirstAttributesSize = m_lines.at(0).attributesSize;
         m_lines[0] = previousBlock->m_lines.back();
         previousBlock->m_lines.erase(previousBlock->m_lines.begin() + (previousBlock->lines() - 1));
+        m_lines[0].textSize += oldFirstTextSize;
+        m_lines[0].attributesSize += oldFirstAttributesSize;
 
-        const int oldSizeOfPreviousLine = m_lines[0].text().size();
-        if (oldFirst.length() > 0) {
-            // append text
-            m_lines[0].text().append(oldFirst.text());
-
+        const auto oldSizeOfPreviousLine = m_lines[0].textSize;
+        if (oldFirstTextSize > 0) {
             // mark line as modified, since text was appended
-            m_lines[0].markAsModified(true);
+            Kate::TextLine::markAsModified(m_lines[0].flags, true);
         }
 
         // patch startLine of this block
@@ -291,18 +300,20 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         return;
     }
 
-    // easy: just move text to previous line and remove current one
-    const int oldSizeOfPreviousLine = m_lines.at(line - 1).length();
-    const int sizeOfCurrentLine = m_lines.at(line).length();
-    if (sizeOfCurrentLine > 0) {
-        m_lines.at(line - 1).text().append(m_lines.at(line).text());
-    }
+    // purge the '\n' in m_text
+    m_text.remove(textIndexForBlockLine(line) - 1, 1);
 
-    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1).markedAsModified())
-        || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line).markedAsModified()));
-    m_lines.at(line - 1).markAsModified(lineChanged);
-    if (oldSizeOfPreviousLine == 0 && m_lines.at(line).markedAsSavedOnDisk()) {
-        m_lines.at(line - 1).markAsSavedOnDisk(true);
+    // easy: just move text to previous line and remove current one, same for the attributes
+    const auto oldSizeOfPreviousLine = m_lines.at(line - 1).textSize;
+    const auto sizeOfCurrentLine = m_lines.at(line).textSize;
+    m_lines.at(line - 1).textSize += sizeOfCurrentLine;
+    m_lines.at(line - 1).attributesSize += m_lines.at(line).attributesSize;
+
+    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1).flags & Kate::TextLine::flagLineModified)
+        || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line).flags & Kate::TextLine::flagLineModified));
+    Kate::TextLine::markAsModified(m_lines.at(line - 1).flags |= Kate::TextLine::flagLineModified, lineChanged);
+    if (oldSizeOfPreviousLine == 0 && m_lines.at(line).flags & Kate::TextLine::flagLineSavedOnDisk) {
+        Kate::TextLine::markAsSavedOnDisk(m_lines.at(line - 1).flags, true);
     }
 
     m_lines.erase(m_lines.begin() + line);
@@ -366,21 +377,20 @@ void TextBlock::insertText(const KTextEditor::Cursor position, const QString &te
     int line = position.line() - startLine();
 
     // get text
-    QString &textOfLine = m_lines.at(line).text();
-    int oldLength = textOfLine.size();
-    m_lines.at(line).markAsModified(true);
+    auto &lineData = m_lines.at(line);
+    const auto oldLength = lineData.textSize;
 
     // check if valid column
     Q_ASSERT(position.column() >= 0);
-    Q_ASSERT(position.column() <= textOfLine.size());
+    Q_ASSERT(position.column() <= oldLength);
 
     // insert text
-    textOfLine.insert(position.column(), text);
+    m_text.insert(textIndexForBlockLine(line) + position.column(), text);
+    lineData.textSize += text.size();
+    Kate::TextLine::markAsModified(lineData.flags, true);
 
     // notify the text history
     m_buffer->history().insertText(position, text.size(), oldLength);
-
-    m_blockSize += text.size();
 
     // cursor and range handling below
 
@@ -411,8 +421,8 @@ void TextBlock::insertText(const KTextEditor::Cursor position, const QString &te
         }
 
         // special handling if cursor behind the real line, e.g. non-wrapping cursor in block selection mode
-        else if (cursor->m_column < textOfLine.size()) {
-            cursor->m_column = textOfLine.size();
+        else if (cursor->m_column < lineData.textSize) {
+            cursor->m_column = lineData.textSize;
         }
 
         // remember range, if any, avoid double insert
@@ -437,26 +447,25 @@ void TextBlock::removeText(KTextEditor::Range range, QString &removedText)
     int line = range.start().line() - startLine();
 
     // get text
-    QString &textOfLine = m_lines.at(line).text();
-    int oldLength = textOfLine.size();
+    auto &lineData = m_lines.at(line);
+    const auto oldLength = lineData.textSize;
 
     // check if valid column
     Q_ASSERT(range.start().column() >= 0);
-    Q_ASSERT(range.start().column() <= textOfLine.size());
+    Q_ASSERT(range.start().column() <= oldLength);
     Q_ASSERT(range.end().column() >= 0);
-    Q_ASSERT(range.end().column() <= textOfLine.size());
+    Q_ASSERT(range.end().column() <= oldLength);
 
     // get text which will be removed
-    removedText = textOfLine.mid(range.start().column(), range.end().column() - range.start().column());
+    removedText = m_text.mid(textIndexForBlockLine(line) + range.start().column(), range.end().column() - range.start().column());
 
     // remove text
-    textOfLine.remove(range.start().column(), range.end().column() - range.start().column());
-    m_lines.at(line).markAsModified(true);
+    m_text.remove(textIndexForBlockLine(line) + range.start().column(), range.end().column() - range.start().column());
+    lineData.textSize -= range.end().column() - range.start().column();
+    Kate::TextLine::markAsModified(lineData.flags, true);
 
     // notify the text history
     m_buffer->history().removeText(range, oldLength);
-
-    m_blockSize -= removedText.size();
 
     // cursor and range handling below
 
@@ -509,8 +518,8 @@ void TextBlock::debugPrint(int blockIndex) const
         printf("%4d - %4llu : %4llu : '%s'\n",
                blockIndex,
                (unsigned long long)startLine() + i,
-               (unsigned long long)m_lines.at(i).text().size(),
-               qPrintable(m_lines.at(i).text()));
+               (unsigned long long)m_lines.at(i).textSize,
+               qPrintable(textForBlockLine(i).toString()));
     }
 }
 
@@ -522,15 +531,17 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     // create and insert new block
     TextBlock *newBlock = new TextBlock(m_buffer, startLine() + fromLine);
 
+    // move content of m_text and m_attributesList TODO optimize
+    newBlock->m_text = m_text.mid(textIndexForBlockLine(fromLine));
+    newBlock->m_attributesList = m_attributesList.mid(attributeIndexForBlockLine(fromLine));
+    m_text.resize(textIndexForBlockLine(fromLine));
+    m_attributesList.resize(attributeIndexForBlockLine(fromLine));
+
     // move lines
     newBlock->m_lines.reserve(linesOfNewBlock);
     for (size_t i = fromLine; i < m_lines.size(); ++i) {
-        auto line = std::move(m_lines[i]);
-        m_blockSize -= line.length();
-        newBlock->m_blockSize += line.length();
-        newBlock->m_lines.push_back(std::move(line));
+        newBlock->m_lines.push_back(std::move(m_lines[i]));
     }
-
     m_lines.resize(fromLine);
 
     // move cursors
@@ -577,12 +588,15 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     }
     m_cursors.clear();
 
+    // move content of m_text and m_attributesList
+    targetBlock->m_text += m_text;
+    targetBlock->m_attributesList += m_attributesList;
+
     // move lines
     targetBlock->m_lines.reserve(targetBlock->lines() + lines());
     for (size_t i = 0; i < m_lines.size(); ++i) {
         targetBlock->m_lines.push_back(m_lines.at(i));
     }
-    targetBlock->m_blockSize += m_blockSize;
     clearLines();
 
     // fix ALL ranges!
@@ -694,8 +708,8 @@ void TextBlock::markModifiedLinesAsSaved()
 {
     // mark all modified lines as saved
     for (auto &textLine : m_lines) {
-        if (textLine.markedAsModified()) {
-            textLine.markAsSavedOnDisk(true);
+        if (textLine.flags & Kate::TextLine::flagLineModified) {
+            Kate::TextLine::markAsSavedOnDisk(textLine.flags, true);
         }
     }
 }

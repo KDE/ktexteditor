@@ -221,20 +221,25 @@ KTextEditor::Cursor TextBuffer::offsetToCursor(int offset) const
 
 QString TextBuffer::text() const
 {
-    QString text;
+    // reserve for the full size
     qsizetype size = 0;
     for (auto b : m_blocks) {
         size += b->blockSize();
     }
-    size -= 1; // remove -1, last newline
+    QString text;
     text.reserve(size);
 
     // combine all blocks
     for (TextBlock *block : std::as_const(m_blocks)) {
-        block->text(text);
+        text += block->text();
     }
 
-    Q_ASSERT(size == text.size());
+    // pop the trailing '\n'
+    if (!text.isEmpty()) {
+        Q_ASSERT(text.back() == QLatin1Char('\n'));
+        text.removeLast();
+    }
+
     return text;
 }
 
@@ -667,7 +672,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
 
                 // construct new text line with content from file
                 // move data pointer
-                QString textLine(unicodeData, lineLength);
+                const QStringView textLine(unicodeData, lineLength);
                 unicodeData += lineLength;
 
                 // ensure blocks aren't too large
