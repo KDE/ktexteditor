@@ -3,21 +3,21 @@
 # Arpad Biro <biro_arpad@yahoo.com>, 2004.
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2011, 2012, 2014, 2015.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
-# SPDX-FileCopyrightText: 2018, 2021, 2023 Kristof Kiszel <kiszel.kristof@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2021, 2023, 2024 Kristof Kiszel <kiszel.kristof@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-04 01:33+0000\n"
-"PO-Revision-Date: 2023-12-18 11:17+0100\n"
-"Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
+"PO-Revision-Date: 2024-01-08 13:09+0100\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -64,7 +64,7 @@ msgstr "&Fájl"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Nyomtatás/Exportálás"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -80,17 +80,15 @@ msgstr "Variánsok keresése"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Selection"
-msgstr "Ki&jelölés:"
+msgstr "Kijelölés"
 
 #. i18n: ectx: Menu (capitalization)
 #: data/katepart5ui.rc:51
-#, fuzzy, kde-format
-#| msgid "Capitalize"
+#, kde-format
 msgid "Capitalization"
-msgstr "Nagy kezdőbetűs szavakká"
+msgstr "Nagybetűsítés"
 
 #. i18n: ectx: Menu (view)
 #: data/katepart5ui.rc:69
@@ -118,10 +116,9 @@ msgstr "Kódk&ibontás"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:105
-#, fuzzy, kde-format
-#| msgid "Go"
+#, kde-format
 msgid "&Go"
-msgstr "Ugrás"
+msgstr "U&grás"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:120
@@ -144,10 +141,9 @@ msgstr "Helyesírás"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Keresendő szöveg"
+msgstr "Szövegfelolvasás"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -393,36 +389,31 @@ msgstr "Könyvjelzők menü rendezése:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/bordersappearanceconfigwidget.ui:295
-#, fuzzy, kde-format
-#| msgid "Scro&llbars visibility:"
+#, kde-format
 msgid "Folding arrows visibility:"
-msgstr "Gör&getősávok láthatósága:"
+msgstr "Összecsukható nyilak láthatósága:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:306
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
+#, kde-format
 msgid "Show on Hover"
-msgstr "&Ikonszegély megjelenítése"
+msgstr "Megjelenítés rámutatáskor"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:311
-#, fuzzy, kde-format
-#| msgid "Always"
+#, kde-format
 msgid "Show Always"
-msgstr "Mindig"
+msgstr "Megjelenítés mindig"
 
 #: dialogs/clipboardhistorydialog.cpp:261
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgid "Select text to paste."
-msgstr "A következő szerkesztési pont kijelölése"
+msgstr "A beillesztendő szöveg kijelölése."
 
 #: dialogs/clipboardhistorydialog.cpp:293
 #, kde-format
 msgid "No entries in clipboard history"
-msgstr ""
+msgstr "Nincsenek bejegyzések a vágólapnaplóban"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
@@ -450,11 +441,12 @@ msgstr "&Első kiegészítési bejegyzés automatikus kiválasztása"
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
 msgstr ""
+"A kiegészítések listájának körbejárása a Tab / Shift+Tab "
+"billentyűkombinációkkal"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "A&uto Word Completion"
+#, kde-format
 msgid "A&uto word completion"
 msgstr "A&utomatikus kiegészítés"
 
@@ -480,15 +472,12 @@ msgstr "Vég eltávolítása kiegészítéskor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:111
-#, fuzzy, kde-format
-#| msgid ""
-#| "Keyword completion provides suggestions based on the keywords which exist "
-#| "in the document's language."
+#, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"A kulcsszó-kiegészítés a dokumentum nyelvén létező szavak alapján biztosítja "
-"a javaslatokat."
+"A szókiegészítés a dokumentumban talált szavak alapján biztosítja a "
+"javaslatokat"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:124
@@ -508,10 +497,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:146
-#, fuzzy, kde-format
-#| msgid "Auto Completion"
+#, kde-format
 msgid "Documentation with completion"
-msgstr "Automatikus kiegészítés"
+msgstr "Dokumentáció kiegészítéssel"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/completionconfigtab.ui:155
@@ -520,6 +508,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
+"Dokumentáció megjelenítése a kitöltési mező mellett. Ha ki van kapcsolva, a "
+"dokumentációt az Alt billentyű lenyomásával lehet megjeleníteni."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -646,16 +636,15 @@ msgstr "Ne mozgassa a szövegkurzort, ha egérrel történik a beillesztés"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:194
-#, fuzzy, kde-format
-#| msgid "Clipboard &History"
+#, kde-format
 msgid "Max Clipboard History Entries:"
-msgstr "Vágólap &előzmények"
+msgstr "Vágólapnapló maximális mérete:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "Ez határozza meg a vágólapnaplóban tárolt bejegyzések számát."
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -671,13 +660,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Akadálymentesítési értesítések bekapcsolása"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Akadálymentesítés:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -908,10 +897,9 @@ msgstr "T&abulátorok és szóközök"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoDetectIndent)
 #: dialogs/indentationconfigwidget.ui:167
-#, fuzzy, kde-format
-#| msgid "A&utomatic end of line detection"
+#, kde-format
 msgid "Automatically detect file indentation"
-msgstr "&Automatikus sorvégfelismerés"
+msgstr "Automatikus behúzás-felismerés"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -977,16 +965,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -1003,8 +982,8 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Tabulátorművelet (ha nincs kijelölés) <a href=\"Ha azt szeretné, hogy a "
 "<b>Tab</b> az aktuális kódblokkon belül igazítsa az aktuális sort, mint az "
-"Emacs-ban, rendelje a <b>Tab</b> billentyűt az <b>Igazítás</b> művelethez."
-"\"><span>Folytatás…</span></a></p></body></html>"
+"Emacs-ban, rendelje a <b>Tab</b> billentyűt a <b>Behúzás formázása</b> "
+"művelethez.\"><span>Folytatás…</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1098,52 +1077,49 @@ msgid "Spellcheck"
 msgstr "Helyesírás-ellenőrzés"
 
 #: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Alert"
+#, kde-format
 msgid "Alt"
-msgstr "Figyelmeztetés"
+msgstr "Alt"
 
 #: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
 #, kde-format
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: dialogs/katedialogs.cpp:406
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Ctrl + Alt"
-msgstr ""
+msgstr "Ctrl + Alt"
 
 #: dialogs/katedialogs.cpp:408
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "Meta + Alt"
 
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + Meta"
 
 #: dialogs/katedialogs.cpp:412
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgid "Cmd"
-msgstr "Parancs"
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -1195,11 +1171,9 @@ msgid "Editing Options"
 msgstr "Szerkesztési beállítások"
 
 #: dialogs/katedialogs.cpp:741
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "Stata"
+#, kde-format
 msgid "Statusbar"
-msgstr "Stata"
+msgstr "Állapotsor"
 
 #: dialogs/katedialogs.cpp:743
 #, kde-format
@@ -1292,6 +1266,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Újratölt, és automatikusan újratölt a lemezváltozásokról figyelmezetés "
+"nélkül mostantól a lap vagy az ablak bezárásáig."
 
 #: dialogs/katedialogs.cpp:1455
 #, kde-format
@@ -1299,10 +1275,9 @@ msgid "View &Difference"
 msgstr "Az &eltérések megtekintése"
 
 #: dialogs/katedialogs.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Megjeleníti a változtatások különbségeit"
+msgstr "Megjeleníti a változtatások különbségeit."
 
 #: dialogs/katedialogs.cpp:1462
 #, kde-format
@@ -1310,8 +1285,7 @@ msgid "&Reload"
 msgstr "Újr&atöltés"
 
 #: dialogs/katedialogs.cpp:1464
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "A fájl újratöltése a lemezről. A nem mentett módosítások elvesznek."
 
@@ -1322,8 +1296,7 @@ msgid "&Close File"
 msgstr "Fájl &bezárása"
 
 #: dialogs/katedialogs.cpp:1470
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "A fájl bezárása, a tartalmának eldobásával."
 
@@ -1507,22 +1480,21 @@ msgstr "A Backspace billentyű törli a karakter bázisát a mellékjeleivel egy
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
-#, fuzzy, kde-format
-#| msgid "From &cursor"
+#, kde-format
 msgid "Multicursor"
-msgstr "Kur&zortól"
+msgstr "Többszörös kurzor"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "Több kurzormódosító"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "Verziókezelt fájlok automatikus újratöltése"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
@@ -1831,76 +1803,70 @@ msgstr "Új sor hozzáfűzése a fájl végéhez mentéskor"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
-#, fuzzy, kde-format
-#| msgid "Enable Auto Reload"
+#, kde-format
 msgid "Enable Auto Save (local files only)"
-msgstr "Automatikus újratöltés bekapcsolása"
+msgstr "Automatikus mentés bekapcsolása (csak helyi fájlok)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when the active document is losing focus"
 msgstr ""
+"Dokumentum automatikus mentése, ha az aktív dokumentum elveszíti a fókuszt"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "Automatikus mentés időköze:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
 #, kde-format
 msgid " seconds"
-msgstr ""
+msgstr " másodperc"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowHighlightingMode)
 #: dialogs/statusbarconfigwidget.ui:19
-#, fuzzy, kde-format
-#| msgid "Syntax highlighting"
+#, kde-format
 msgid "Show highlighting mode"
-msgstr "Szintaxiskiemelés"
+msgstr "Kiemelési mód megjelenítése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowInputMode)
 #: dialogs/statusbarconfigwidget.ui:26
-#, fuzzy, kde-format
-#| msgid "Use Vi input mode"
+#, kde-format
 msgid "Show input mode"
-msgstr "VI beviteli mód használata"
+msgstr "Beviteli mód megjelenítése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowActiveDictionary)
 #: dialogs/statusbarconfigwidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgid "Show active dictionary"
-msgstr "Szótárválasztás"
+msgstr "Aktív szótár megjelenítése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowTabSetting)
 #: dialogs/statusbarconfigwidget.ui:40
-#, fuzzy, kde-format
-#| msgid "Show Tabs As"
+#, kde-format
 msgid "Show tab setting"
-msgstr "Tabulátorok megjelenítése:"
+msgstr "Tabulátorbeállítás megjelenítése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowLineColumn)
 #: dialogs/statusbarconfigwidget.ui:47
-#, fuzzy, kde-format
-#| msgid "Show line count"
+#, kde-format
 msgid "Show line column"
-msgstr "Sorszám megjelenítése"
+msgstr "Sor-oszlop megjelenítése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEncoding)
 #: dialogs/statusbarconfigwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Broken Encoding"
+#, kde-format
 msgid "Show File Encoding"
-msgstr "Hibás kódolás"
+msgstr "Fájlkódolás megjelenítése"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbShowEOL)
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "Sorvégtípus megjelenítése"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1910,10 +1876,9 @@ msgstr "Szerkesztő betűtípusa:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line length limit:"
+#, kde-format
 msgid "Line Height Multiplier:"
-msgstr "Sorhosszkorlát:"
+msgstr "Sormagasság szorzója:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:55
@@ -1922,6 +1887,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"Ez az érték megszorozzódik a betűtípus alapértelmezett sormagasságával. Az "
+"1.0-s érték azt jelenti, hogy az alapértelmezett magasságot használja."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:90
@@ -1973,7 +1940,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:183
 #, kde-format
 msgid "Show focus frame around editor"
-msgstr ""
+msgstr "Fókuszkeret megjelenítése a szerkesztő körül"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/textareaappearanceconfigwidget.ui:216
@@ -2214,8 +2181,7 @@ msgid "&Close"
 msgstr "&Bezárás"
 
 #: document/katedocument.cpp:2254 document/katedocument.cpp:6498
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Üzenet bezárása"
@@ -2413,22 +2379,19 @@ msgstr ""
 "remove-trailing-spaces"
 
 #: document/katedocument.cpp:5549
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "A(z) „%1” fájlt megváltoztatta egy másik program a lemezen."
+msgstr "A(z) „%1” fájl módosult a lemezen."
 
 #: document/katedocument.cpp:5552
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "A(z) „%1” fájlt létrehozta egy másik program a lemezen."
+msgstr "A(z) „%1” fájl létrejött a lemezen."
 
 #: document/katedocument.cpp:5555
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "Egy másik program törölte ezt a fájlt: „%1”."
+msgstr "A(z) „%1” fájl törlődött a lemezen."
 
 #: document/katedocument.cpp:5892
 #, kde-format
@@ -2614,7 +2577,7 @@ msgstr "Jelma&gyarázat nyomtatása"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Ne nyomtassa az összecsukott kódot"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -2788,10 +2751,9 @@ msgid "&Color theme:"
 msgstr "S&zíntéma:"
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "Betűtípus"
+msgstr "Betűtípus:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2900,144 +2862,109 @@ msgid "Emmet"
 msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Wrap with tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
 msgstr "Tördelés címkével"
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to matching tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
 msgstr "Kurzor mozgatása az illeszkedő címkéhez"
 
 #: script/data/commands/emmet.js:22
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents inwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
 msgstr "HTML/XML címke tartalmának kijelölése befelé"
 
 #: script/data/commands/emmet.js:26
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select HTML/XML tag contents outwards"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
 msgstr "HTML/XML címke tartalmának kijelölése kifelé"
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Toggle Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "Megjegyzés átváltása"
+msgstr "Megjegyzés be/ki"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
 msgstr "Ugrás a következő szerkesztési ponthoz"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
 msgstr "Ugrás az előző szerkesztési ponthoz"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select next edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
 msgstr "A következő szerkesztési pont kijelölése"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Select previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
 msgstr "Az előző szerkesztési pont kijelölése"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Delete tag under cursor"
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
 msgstr "A kurzor alatti címke törlése"
 
 #: script/data/commands/emmet.js:54
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Split or join a tag"
+#, kde-format
 msgctxt "Script command name"
 msgid "Split or Join a Tag"
 msgstr "Címke felosztása vagy egyesítése"
 
 #: script/data/commands/emmet.js:58
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Evaluate a simple math expression"
+#, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
 msgstr "Egyszerű matematikai kifejezés kiértékelése"
 
 #: script/data/commands/emmet.js:62
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
 msgstr "Szám csökkentése 1-gyel"
 
 #: script/data/commands/emmet.js:66
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
 msgstr "Szám csökkentése 10-zel"
 
 #: script/data/commands/emmet.js:70
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Decrement number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
 msgstr "Szám csökkentése 0,1-del"
 
 #: script/data/commands/emmet.js:74
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
 msgstr "Szám növelése 1-gyel"
 
 #: script/data/commands/emmet.js:78
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 10"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
 msgstr "Szám növelése 10-zel"
 
 #: script/data/commands/emmet.js:82
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Increment number by 0.1"
+#, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
 msgstr "Szám növelése 0,1-del"
@@ -3153,9 +3080,7 @@ msgid "Increment number under cursor by 0.1"
 msgstr "A kurzor alatti szám növelése 0,1-del"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to previous matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
 msgstr "Kurzor mozgatása az előző illeszkedő behúzáshoz"
@@ -3169,9 +3094,7 @@ msgid "Navigation"
 msgstr "Navigáció"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
 msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
@@ -3190,23 +3113,19 @@ msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Ugrás a következő bekezdésre"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to previous edit point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Ugrás az előző szerkesztési ponthoz"
+msgstr "Ugrás az előző bekezdésre"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Kijelölt szöveg rendezése"
+msgstr "Kijelölt szöveg rendezése betűrendben"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3222,46 +3141,37 @@ msgid "Editing"
 msgstr "Szerkesztés"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"A duplikált, azonos sorok eltávolítása a kijelölt szövegből vagy a teéjes "
-"dokumentumból."
+msgstr "Duplikátumok eltávolítása és a kijelölt szöveg rendezése betűrendben"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Kijelölt sorok kettőzése felfelé"
+msgstr "Duplikált sorok eltávolítása"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "A sorvégi szóközök &eltávolítása:"
+msgstr "Sorvégi szóközök levágása"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "A sorvégi szóközök &eltávolítása:"
+msgstr "Vezető szóközök levágása"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "A sorvégi szóközök &eltávolítása:"
+msgstr "Vezető és sorvégi szóközök levágása"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Sorok összevonása"
@@ -3291,12 +3201,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Kijelölt sorok kettőzése felfelé"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Kijelölt sorok kettőzése felfelé"
+msgstr "Kijelölt sorok kettőzése"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -3311,11 +3219,10 @@ msgid "URI-decode Selected Text"
 msgstr "A kijelölt szöveg URI-dekódolása"
 
 #: script/data/commands/utils.js:67
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
+msgstr "Üres sorok eltávolítása"
 
 #: script/data/commands/utils.js:462
 #, kde-format
@@ -4250,8 +4157,7 @@ msgid "I&gnore All"
 msgstr "Mindegyik k&ihagyása"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from cursor)..."
+#, kde-format
 msgid "Spelling (from Cursor)..."
 msgstr "Helyesírás-ellenőrzés (a kurzortól)…"
 
@@ -4997,22 +4903,19 @@ msgstr ""
 "felbukkanó menüből (ha szükség van rá).</p>"
 
 #: syntax/katethemeconfig.cpp:1025
-#, fuzzy, kde-format
-#| msgid "Default Text Styles"
+#, kde-format
 msgid "Default Theme"
-msgstr "Alapértelmezett szövegstílusok"
+msgstr "Alapértelmezett téma"
 
 #: syntax/katethemeconfig.cpp:1026
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgid "Theme Editor"
-msgstr "Szerkesztőválasztás..."
+msgstr "Témaszerkesztő"
 
 #: syntax/katethemeconfig.cpp:1040
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgid "Select theme:"
-msgstr "Kijelölt szöveg:"
+msgstr "Téma kiválasztása:"
 
 #: syntax/katethemeconfig.cpp:1109
 #, kde-format
@@ -5579,10 +5482,9 @@ msgid "Embeddable editor component"
 msgstr "Beágyazható szövegszerkesztő-komponens"
 
 #: utils/kateglobal.cpp:77
-#, fuzzy, kde-format
-#| msgid "(c) 2000-2021 The Kate Authors"
+#, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "(c) A Kate szerzői, 2000-2021."
+msgstr "(c) A Kate szerzői, 2000-2022."
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -6958,8 +6860,7 @@ msgstr ""
 "sornak a számát, amelyre rá szeretne lépni."
 
 #: view/kateview.cpp:669
-#, fuzzy, kde-format
-#| msgid "Move to Previous Modified Line"
+#, kde-format
 msgid "Go to Previous Modified Line"
 msgstr "Ugrás az előző módosított sorra"
 
@@ -6969,8 +6870,7 @@ msgid "Move upwards to the previous modified line."
 msgstr "Ugrás felfelé az előző módosított sorra."
 
 #: view/kateview.cpp:675
-#, fuzzy, kde-format
-#| msgid "Move to Next Modified Line"
+#, kde-format
 msgid "Go to Next Modified Line"
 msgstr "Ugrás a következő módosított sorra"
 
@@ -7076,8 +6976,7 @@ msgstr ""
 "között."
 
 #: view/kateview.cpp:747
-#, fuzzy, kde-format
-#| msgid "Switch to next Input Mode"
+#, kde-format
 msgid "Switch to Next Input Mode"
 msgstr "Váltás a következő beviteli módra"
 
@@ -7427,10 +7326,9 @@ msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
 #: view/kateview.cpp:939
-#, fuzzy, kde-format
-#| msgid "Enable camel case cursor movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "CamelCase kurzormozgatás bekapcsolása"
+msgstr "CamelCase kurzormozgatás be/ki"
 
 #: view/kateview.cpp:940
 #, fuzzy, kde-format
@@ -7961,39 +7859,34 @@ msgid "Disable Annotation Bar"
 msgstr "A megjegyzéssáv letiltása"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Megnyitás/mentés"
+msgstr "Mentés"
 
 #: view/screenshotdialog.cpp:139
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "Más&olás…"
+msgstr "Másolás"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&Háttérszín..."
+msgstr "Háttérszín…"
 
 #: view/screenshotdialog.cpp:142
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Szövegdekorációk"
+msgstr "Extra dekorációk megjelenítése"
 
 #: view/screenshotdialog.cpp:143
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Behúzási &vonalak mutatása"
+msgstr "Ablakdekorációk megjelenítése"
 
 #: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "Képernyőkép…"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8014,21 +7907,20 @@ msgid "Show Actual Line Numbers"
 msgstr "&Sorszámok megjelenítése"
 
 #: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "Men&tés másként…"
+msgstr "Mentés…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "A képernyőkép mentése sikertelen"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "A képernyőkép mentése nem sikerült: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8151,12 +8043,7 @@ msgstr ""
 "felosztja a nézetet és megnyit egy új dokumentumot.<br /></p>"
 
 #: vimode/appcommands.cpp:270
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: "
-#| "<tt><b>e[dit]</b></tt></p><p>Starts <b>e</b>diting the current document "
-#| "again. This is useful to re-edit the current file, when it has been "
-#| "changed by another program.</p>"
+#, kde-format
 msgid ""
 "<p><b>e[dit] &mdash; reload current document</b></p><p>Usage: <tt><b>e[dit]</"
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
@@ -8164,8 +8051,7 @@ msgid ""
 msgstr ""
 "<p><b>e[dit] &mdash; újratölti az aktuális dokumentumot</b></p><p>Használat: "
 "<tt><b>e[dit]</b></tt></p><p>Újrakezdi az aktuális dokumentum sz<b>e</"
-"b>rkesztését. Ez akkor hasznos, ha egy másik program megváltoztatta az "
-"aktuális fájlt.</p>"
+"b>rkesztését. Ez akkor hasznos, ha a fájl módosult a lemezen.</p>"
 
 #: vimode/appcommands.cpp:512
 #, kde-format
