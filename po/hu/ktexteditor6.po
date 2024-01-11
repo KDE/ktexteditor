@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-04 01:33+0000\n"
-"PO-Revision-Date: 2024-01-09 12:00+0100\n"
+"PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -3311,7 +3311,7 @@ msgstr ""
 "Ez a parancs a kijelölt blokk vagy a teljes dokumentum sorait igazítja az "
 "argumentumként megadott reguláris kifejezésben megadott oszlophoz.<br><br>Ha "
 "üres mintát ad meg, alapértelmezés szerint az első nem üres karakterhez "
-"történk az igazítás.<br>Ha a mintára van egyezés, a találatokat fogja "
+"történik az igazítás.<br>Ha a mintára van egyezés, a találatokat fogja "
 "igazítani.<br><br><i>Például</i>:<br>az '<code>alignon -</code> minden sor "
 "első „-” karaktere elé annyi szóközt szúr be, hogy egy oszopba kerüljenek."
 "<br>az '<code>alignon :\\s+(.)</code>' az összes, pont után következő nem "
@@ -5854,13 +5854,13 @@ msgstr "Mindenki, aki segített valamiben, de nincs név szerint megemlítve"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Szántó Tamás"
+msgstr "Kiszel Kristóf"
 
 #: utils/kateglobal.cpp:153
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "tszanto@interware.hu"
+msgstr "ulysses@fsf.hu"
 
 #: utils/kateglobal.cpp:274
 #, kde-format
@@ -6635,28 +6635,23 @@ msgstr ""
 "szóközökkel."
 
 #: view/kateview.cpp:517
-#, fuzzy, kde-format
-#| msgid "&Indentation"
+#, kde-format
 msgid "&Format Indentation"
-msgstr "Be&húzás"
+msgstr "Behúzás &formázása"
 
 #: view/kateview.cpp:518
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
 "Ennek hatására az aktuális sor vagy szövegblokk felveszi a megfelelő "
-"igazítást."
+"behúzást."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&Igazítás"
+msgstr "&Igazítás ehhez…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6671,6 +6666,14 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"Ez a parancs a kijelölt blokk vagy a teljes dokumentum sorait igazítja egy, "
+"az Öntől bekért reguláris kifejezéssel megadott oszlophoz.<br /><br />Ha "
+"üres mintát ad meg, alapértelmezés szerint az első nem üres karakterhez "
+"történik az igazítás.<br /><br />Ha a mintára van egyezés, a találathoz fog "
+"igazítani.<br /><i>Példák</i>:<br /> a „-” használatával szóközöket szúr be "
+"minden az összes sor első „-” jele elé, hogy ugyanabba az oszlopba igazítsa "
+"azokat.<br />A „:\\s+(.)” az összes, pont után következő nem üres karakter "
+"elé szúr be szóközöket, hogy esgy oszlopba kerüljenek."
 
 #: view/kateview.cpp:535
 #, kde-format
@@ -6733,13 +6736,12 @@ msgstr "A dokumentum zárolása írásnál"
 #: view/kateview.cpp:573
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "RTL irány &kényszerítése"
 
 #: view/kateview.cpp:574
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Szövegdekorációk"
+msgstr "Jobbról-balra szövegirány kényszerítése"
 
 #: view/kateview.cpp:584
 #, kde-format
@@ -6904,10 +6906,9 @@ msgstr ""
 "milyen legyen."
 
 #: view/kateview.cpp:696
-#, fuzzy, kde-format
-#| msgid "&Color Theme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "S&zíntéma"
+msgstr "Sz&erkesztő színtémája"
 
 #: view/kateview.cpp:702
 #, kde-format
@@ -7241,34 +7242,35 @@ msgstr "Megkeresi a kijelölt szöveg előző előfordulását."
 #: view/kateview.cpp:892
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "Következő előfordulás keresése és kijelölése"
 
 #: view/kateview.cpp:894
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "Megkeresi a kijelölt szöveg következő előfordulását."
+msgstr ""
+"Megkeresi a kurzor alatti szó következő előfordulását, és hozzáadja a "
+"kijelöléshez."
 
 #: view/kateview.cpp:898
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "Jelenleg kijelölt előfordulás megjelölése Kihagyottként"
 
 #: view/kateview.cpp:900
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "Megjelöli a jelenleg kijelölt szót kihagyottként."
 
 #: view/kateview.cpp:904
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "Összes előfordulás keresése és kijelölése"
 
 #: view/kateview.cpp:906
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "Megkeresi a kijelölt szöveg következő előfordulását."
+msgstr ""
+"Megkeresi a kurzor alatti szó összes előfordulását, és kijelöli azokat."
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -7292,35 +7294,32 @@ msgstr ""
 #: view/kateview.cpp:921
 #, kde-format
 msgid "Add Cursors to Line Ends"
-msgstr ""
+msgstr "Kurzorok hozzáadása a sorvégekhez"
 
 #: view/kateview.cpp:923
-#, fuzzy, kde-format
-#| msgctxt "short translation please"
-#| msgid "Wrap the text cursor at the end of a line."
+#, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr "Szövegkurzor tördelése a sor végén."
+msgstr "Létrehoz egy kurzort a kijelölés minden sorának végén."
 
 #: view/kateview.cpp:927
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "Kurzor hozzáadása a kurzor alatt"
 
 #: view/kateview.cpp:929
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "Az aktuális dokumentum teljes szövegének kijelölése."
+msgstr "Hozzáad egy kurzort a jelenlegi kurzor alatti sorban."
 
 #: view/kateview.cpp:933
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "Kurzor hozzáadása a kurzor fölött"
 
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "Hozzáad egy kurzort a jelenlegi kurzor fölötti sorban."
 
 #: view/kateview.cpp:939
 #, kde-format
@@ -7328,22 +7327,19 @@ msgid "Toggle Camel Case Cursor Movement"
 msgstr "CamelCase kurzormozgatás be/ki"
 
 #: view/kateview.cpp:940
-#, fuzzy, kde-format
-#| msgid "Enable camel case cursor movement"
+#, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
-msgstr "CamelCase kurzormozgatás bekapcsolása"
+msgstr "Váltás a normál szóáthelyezés és a CamelCase kurzormozgatás között."
 
 #: view/kateview.cpp:944
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove Cursors from Empty Lines"
-msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
+msgstr "Kurzorok eltávolítása az üres sorokból"
 
 #: view/kateview.cpp:945
-#, fuzzy, kde-format
-#| msgid "Move cursor to next matching indent"
+#, kde-format
 msgid "Remove cursors from empty lines"
-msgstr "Kurzor mozgatása a következő illeszkedő behúzáshoz"
+msgstr "Kurzorok eltávolítása az üres sorokból"
 
 #: view/kateview.cpp:949
 #, kde-format
@@ -7435,10 +7431,9 @@ msgid "Select Word Right"
 msgstr "A kurzortól jobbra álló karakter kijelölése"
 
 #: view/kateview.cpp:1051
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "A kijelölés beillesztése"
+msgstr "Jelölt kiválasztás indítása"
 
 #: view/kateview.cpp:1052
 #, kde-format
@@ -7446,6 +7441,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Az Emacs kijelölési módjának emulálása, amikor is a kezdet meg van jelölve, "
+"és a kijelölés folyamatosan frissül."
 
 #: view/kateview.cpp:1057
 #, kde-format
@@ -7712,10 +7709,9 @@ msgid "Toggle Contained Nodes"
 msgstr "Tartalmazott bejegyzések be-/kikapcsolása"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Az aktuális dokumentum szövegkijelölése."
+msgstr "Jelenlegi kijelölés vagy dokumentum"
 
 #: view/kateview.cpp:1358
 #, kde-format
