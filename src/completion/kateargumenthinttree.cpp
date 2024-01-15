@@ -1,347 +1,199 @@
 /*
-    SPDX-FileCopyrightText: 2007 David Nolden <david.nolden.kdevelop@art-master.de>
-
+    SPDX-FileCopyrightText: 2024 Waqar Ahmed <waqar.17a@gmail.com>
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #include "kateargumenthinttree.h"
 
-#include "expandingtree/expandingwidgetmodel.h"
 #include "kateargumenthintmodel.h"
-#include "katecompletiondelegate.h"
 #include "katecompletionwidget.h"
-#include "kateview.h"
 
-#include <QApplication>
-#include <QHeaderView>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QModelIndex>
-#include <QPainter>
-#include <QScreen>
-#include <QScrollBar>
+#include <QPlainTextEdit>
+#include <QSyntaxHighlighter>
+#include <QTextBlock>
+#include <QToolButton>
 
-class ArgumentHintDelegate : public KateCompletionDelegate
+class ArgumentHighlighter : public QSyntaxHighlighter
 {
 public:
-    using KateCompletionDelegate::KateCompletionDelegate;
-
-protected:
-    bool editorEvent(QEvent *event, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &index) override
+    ArgumentHighlighter(QTextDocument *doc)
+        : QSyntaxHighlighter(doc)
     {
-        if (event->type() == QEvent::MouseButtonRelease) {
-            event->accept();
-            model()->setExpanded(index, !model()->isExpanded(index));
+    }
 
-            return true;
-        } else {
-            event->ignore();
+    void highlightBlock(const QString &) override
+    {
+        for (const auto &f : std::as_const(formats)) {
+            QTextCharFormat fmt = f.format;
+            if (fmt.fontWeight() == QFont::Bold || fmt.fontItalic()) {
+                // bold doesn't work with some fonts for whatever reason
+                // so we just underline as well for fonts where bold won't work
+                fmt.setFontUnderline(true);
+            }
+            setFormat(f.start, f.length, fmt);
         }
-
-        return false;
     }
 
-    KateArgumentHintTree *tree() const
-    {
-        return static_cast<KateArgumentHintTree *>(parent());
-    }
-
-    KateArgumentHintModel *model() const
-    {
-        auto tree = this->tree();
-        return tree->model();
-    }
-
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
-    {
-        QSize s = QStyledItemDelegate::sizeHint(option, index);
-        if (model()->isExpanded(index) && model()->expandingWidget(index)) {
-            QWidget *widget = model()->expandingWidget(index);
-            QSize widgetSize = widget->size();
-
-            s.setHeight(widgetSize.height() + s.height()
-                        + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidget
-        }
-        return s;
-    }
-
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override
-    {
-        if (index.column() == 0) {
-            model()->placeExpandingWidget(index);
-        }
-        // paint the text at top if there is a widget below
-        m_alignTop = model()->isExpanded(index);
-
-        KateCompletionDelegate::paint(painter, option, index);
-    }
+    QVector<QTextLayout::FormatRange> formats;
 };
 
-KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
-    : QTreeView(parent)
-    , m_parent(parent) // Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
+static QList<QTextLayout::FormatRange> highlightingFromVariantList(const QList<QVariant> &customHighlights)
 {
+    QList<QTextLayout::FormatRange> ret;
+
+    for (int i = 0; i + 2 < customHighlights.count(); i += 3) {
+        if (!customHighlights[i].canConvert<int>() || !customHighlights[i + 1].canConvert<int>() || !customHighlights[i + 2].canConvert<QTextFormat>()) {
+            continue;
+        }
+
+        QTextLayout::FormatRange format;
+        format.start = customHighlights[i].toInt();
+        format.length = customHighlights[i + 1].toInt();
+        format.format = customHighlights[i + 2].value<QTextFormat>().toCharFormat();
+
+        if (!format.format.isValid()) {
+            qWarning() << "Format is not valid";
+            continue;
+        }
+
+        ret << format;
+    }
+    return ret;
+}
+
+ArgumentHintWidget::ArgumentHintWidget(KateArgumentHintModel *model, const QFont &font, KateCompletionWidget *completion, QWidget *parent)
+    : QFrame(parent)
+    , m_completionWidget(completion)
+    , m_view(new QPlainTextEdit(this))
+    , m_currentIndicator(new QLabel(this))
+    , m_model(model)
+    , m_highlighter(new ArgumentHighlighter(m_view->document()))
+    , m_leftSide(new QWidget(this))
+{
+    setAutoFillBackground(true);
+    // we have only 1 top level frame
     setFrameStyle(QFrame::Box | QFrame::Raised);
+    m_view->setFrameStyle(QFrame::NoFrame);
 
-    setUniformRowHeights(false);
-    header()->setMinimumSectionSize(0);
+    auto upButton = new QToolButton(this);
+    upButton->setAutoRaise(true);
+    upButton->setIcon(QIcon::fromTheme(QStringLiteral("arrow-up")));
+    connect(upButton, &QAbstractButton::clicked, this, &ArgumentHintWidget::selectPrevious);
 
-    setFocusPolicy(Qt::NoFocus);
-    setUniformRowHeights(false);
-    setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    header()->hide();
-    setRootIsDecorated(false);
-    setIndentation(0);
-    setAllColumnsShowFocus(true);
-    setAlternatingRowColors(true);
-    setItemDelegate(new ArgumentHintDelegate(this));
+    auto downButton = new QToolButton(this);
+    downButton->setAutoRaise(true);
+    downButton->setIcon(QIcon::fromTheme(QStringLiteral("arrow-down")));
+    connect(downButton, &QAbstractButton::clicked, this, &ArgumentHintWidget::selectNext);
+
+    auto vLayout = new QVBoxLayout(m_leftSide);
+    vLayout->setContentsMargins({});
+    vLayout->setAlignment(Qt::AlignVCenter);
+    vLayout->addWidget(upButton);
+    vLayout->addWidget(m_currentIndicator);
+    vLayout->addWidget(downButton);
+
+    auto layout = new QHBoxLayout(this);
+    layout->setContentsMargins({});
+    layout->addWidget(m_leftSide);
+    layout->addWidget(m_view);
+    setFixedWidth(380);
+    m_view->setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+    m_view->document()->setDefaultFont(font);
+
+    connect(m_model, &QAbstractItemModel::modelReset, this, [this]() {
+        m_current = -1;
+        selectNext();
+    });
+    setVisible(false);
 }
 
-void KateArgumentHintTree::clearCompletion()
+void ArgumentHintWidget::selectNext()
 {
-    setCurrentIndex(QModelIndex());
+    int rowCount = m_model->rowCount();
+    if (rowCount == 0) {
+        clearAndHide();
+        return;
+    }
+    m_current = m_current + 1;
+    if (m_current >= rowCount) {
+        m_current = 0;
+    }
+
+    activateHint(m_current, rowCount);
 }
 
-KateArgumentHintModel *KateArgumentHintTree::model() const
+void ArgumentHintWidget::selectPrevious()
 {
-    return m_parent->argumentHintModel();
+    int rowCount = m_model->rowCount();
+    if (rowCount == 0) {
+        clearAndHide();
+        return;
+    }
+
+    m_current = m_current - 1;
+    if (m_current <= 0) {
+        m_current = rowCount - 1;
+    }
+
+    activateHint(m_current, rowCount);
 }
 
-void KateArgumentHintTree::paintEvent(QPaintEvent *event)
+void ArgumentHintWidget::activateHint(int i, int rowCount)
 {
-    QTreeView::paintEvent(event);
-    updateGeometry(); ///@todo delay this. It is needed here, because visualRect(...) returns an invalid rect in updateGeometry before the content is painted
-}
+    const auto index = m_model->index(i);
+    const auto list = index.data(KTextEditor::CodeCompletionModel::CustomHighlight).toList();
+    const auto highlights = highlightingFromVariantList(list);
+    m_highlighter->formats = highlights;
 
-void KateArgumentHintTree::rowsInserted(const QModelIndex &parent, int start, int end)
-{
-    QTreeView::rowsInserted(parent, start, end);
+    if (rowCount == 1) {
+        m_leftSide->setVisible(false);
+    } else {
+        if (m_leftSide->isHidden()) {
+            m_leftSide->setVisible(true);
+        }
+        m_currentIndicator->setText(QStringLiteral("%1/%2").arg(i + 1).arg(rowCount));
+    }
+
+    m_view->setPlainText(index.data().toString());
     updateGeometry();
 }
 
-int KateArgumentHintTree::sizeHintForColumn(int column) const
+void ArgumentHintWidget::updateGeometry()
 {
-    return QTreeView::sizeHintForColumn(column);
+    int lines = 1;
+    auto block = m_view->document()->begin();
+    QFontMetrics fm(m_view->document()->defaultFont());
+    int maxWidth = 0;
+    while (block.isValid()) {
+        maxWidth = std::max((int)block.layout()->maximumWidth(), maxWidth);
+        lines += block.layout()->lineCount();
+        block = block.next();
+    }
+    setFixedHeight((lines * fm.height()) + 10 + m_view->document()->documentMargin());
+    // limit the width to between 400 - 600
+    int width = std::max(maxWidth, 400);
+    width = std::min(width, 600);
+    setFixedWidth(width);
+
+    QPoint pos = m_completionWidget->pos();
+    pos.ry() -= this->height();
+    pos.ry() -= 4;
+    move(pos);
 }
 
-unsigned int KateArgumentHintTree::rowHeight(const QModelIndex &index) const
+void ArgumentHintWidget::positionAndShow()
 {
-    uint max = sizeHintForIndex(index).height();
-
-    for (int a = 0; a < index.model()->columnCount(index.parent()); ++a) {
-        QModelIndex i = index.sibling(index.row(), a);
-        uint cSize = sizeHintForIndex(i).height();
-        if (cSize > max) {
-            max = cSize;
-        }
-    }
-    return max;
+    updateGeometry();
+    show();
 }
 
-void KateArgumentHintTree::updateGeometry(QRect geom)
+void ArgumentHintWidget::clearAndHide()
 {
-    // Avoid recursive calls of updateGeometry
-    static bool updatingGeometry = false;
-    if (updatingGeometry) {
-        return;
-    }
-    updatingGeometry = true;
-
-    if (model()->rowCount(QModelIndex()) == 0) {
-        /*  qCDebug(LOG_KTE) << "KateArgumentHintTree:: empty model";*/
-        hide();
-        setGeometry(geom);
-        updatingGeometry = false;
-        return;
-    }
-
-    int bottom = geom.bottom();
-    int totalWidth = std::max(geom.width(), resizeColumns());
-    int totalHeight = 0;
-    for (int a = 0; a < model()->rowCount(QModelIndex()); ++a) {
-        QModelIndex index(model()->index(a, 0));
-        totalHeight += rowHeight(index);
-        for (int b = 0; b < model()->rowCount(index); ++b) {
-            QModelIndex childIndex = model()->index(b, 0, index);
-            totalHeight += rowHeight(childIndex);
-        }
-    }
-
-    totalHeight += frameWidth() * 2;
-
-    geom.setHeight(totalHeight);
-
-    geom.moveBottom(bottom);
-    //   if( totalWidth > geom.width() )
-    geom.setWidth(totalWidth);
-
-    bool enableScrollBars = false;
-
-    // Resize and move so it fits the screen horizontally
-    const auto screenGeometry = m_parent->view()->screen()->availableGeometry();
-    const int maxWidth = (screenGeometry.width() * 3) / 4;
-    if (geom.width() > maxWidth) {
-        geom.setWidth(maxWidth);
-        geom.setHeight(geom.height() + horizontalScrollBar()->height() + 2);
-        geom.moveBottom(bottom);
-        enableScrollBars = true;
-    }
-
-    bool resized = false;
-    if (geom.right() > screenGeometry.right()) {
-        geom.moveRight(screenGeometry.right());
-    }
-
-        if (geom.left() < screenGeometry.left()) {
-            geom.moveLeft(screenGeometry.left());
-        }
-
-        // Resize and move so it fits the screen vertically
-        if (geom.top() < screenGeometry.top()) {
-            const int offset = screenGeometry.top() - geom.top();
-            geom.setBottom(geom.bottom() - offset);
-            geom.moveTo(geom.left(), screenGeometry.top());
-            resized = true;
-        }
-
-    if (geom != geometry()) {
-        setUpdatesEnabled(false);
-        setAnimated(false);
-
-        setHorizontalScrollBarPolicy(enableScrollBars ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff);
-
-        /*  qCDebug(LOG_KTE) << "KateArgumentHintTree::updateGeometry: updating geometry to " << geom;*/
-        setGeometry(geom);
-
-        if (resized && currentIndex().isValid()) {
-            scrollTo(currentIndex());
-        }
-
-        setUpdatesEnabled(true);
-    }
-
-    updatingGeometry = false;
-}
-
-int KateArgumentHintTree::resizeColumns()
-{
-    int totalSize = 0;
-    for (int a = 0; a < header()->count(); a++) {
-        int columnSize = sizeHintForColumn(a);
-        setColumnWidth(a, columnSize);
-        totalSize += columnSize;
-    }
-    return totalSize;
-}
-
-void KateArgumentHintTree::updateGeometry()
-{
-    updateGeometry(geometry());
-}
-
-bool KateArgumentHintTree::nextCompletion()
-{
-    QModelIndex current;
-    QModelIndex firstCurrent = currentIndex();
-
-    do {
-        QModelIndex oldCurrent = currentIndex();
-
-        current = moveCursor(MoveDown, Qt::NoModifier);
-
-        if (current != oldCurrent && current.isValid()) {
-            setCurrentIndex(current);
-
-        } else {
-            if (firstCurrent.isValid()) {
-                setCurrentIndex(firstCurrent);
-            }
-            return false;
-        }
-
-    } while (!model()->indexIsItem(current));
-
-    return true;
-}
-
-bool KateArgumentHintTree::previousCompletion()
-{
-    QModelIndex current;
-    QModelIndex firstCurrent = currentIndex();
-
-    do {
-        QModelIndex oldCurrent = currentIndex();
-
-        current = moveCursor(MoveUp, Qt::NoModifier);
-
-        if (current != oldCurrent && current.isValid()) {
-            setCurrentIndex(current);
-
-        } else {
-            if (firstCurrent.isValid()) {
-                setCurrentIndex(firstCurrent);
-            }
-            return false;
-        }
-
-    } while (!model()->indexIsItem(current));
-
-    return true;
-}
-
-bool KateArgumentHintTree::pageDown()
-{
-    QModelIndex old = currentIndex();
-    QModelIndex current = moveCursor(MovePageDown, Qt::NoModifier);
-
-    if (current.isValid()) {
-        setCurrentIndex(current);
-        if (!model()->indexIsItem(current)) {
-            if (!nextCompletion()) {
-                previousCompletion();
-            }
-        }
-    }
-
-    return current != old;
-}
-
-bool KateArgumentHintTree::pageUp()
-{
-    QModelIndex old = currentIndex();
-    QModelIndex current = moveCursor(MovePageUp, Qt::NoModifier);
-
-    if (current.isValid()) {
-        setCurrentIndex(current);
-        if (!model()->indexIsItem(current)) {
-            if (!previousCompletion()) {
-                nextCompletion();
-            }
-        }
-    }
-    return current != old;
-}
-
-void KateArgumentHintTree::top()
-{
-    QModelIndex current = moveCursor(MoveHome, Qt::NoModifier);
-    setCurrentIndex(current);
-
-    if (current.isValid()) {
-        setCurrentIndex(current);
-        if (!model()->indexIsItem(current)) {
-            nextCompletion();
-        }
-    }
-}
-
-void KateArgumentHintTree::bottom()
-{
-    QModelIndex current = moveCursor(MoveEnd, Qt::NoModifier);
-    setCurrentIndex(current);
-
-    if (current.isValid()) {
-        setCurrentIndex(current);
-        if (!model()->indexIsItem(current)) {
-            previousCompletion();
-        }
-    }
+    m_current = -1;
+    m_currentIndicator->clear();
+    m_view->clear();
+    hide();
 }

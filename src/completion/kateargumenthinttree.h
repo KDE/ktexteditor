@@ -1,52 +1,43 @@
 /*
-    SPDX-FileCopyrightText: 2007 David Nolden <david.nolden.kdevelop@art-master.de>
-
+    SPDX-FileCopyrightText: 2024 Waqar Ahmed <waqar.17a@gmail.com>
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #ifndef KATEARGUMENTHINTTREE_H
 #define KATEARGUMENTHINTTREE_H
 
-#include <QTextDocument>
-#include <QTreeView>
+#include <QFrame>
 
 class KateCompletionWidget;
 class KateArgumentHintModel;
-class QRect;
+class QPlainTextEdit;
+class QLabel;
+class QFont;
+class ArgumentHighlighter;
 
-class KateArgumentHintTree : public QTreeView
+class ArgumentHintWidget : public QFrame
 {
 public:
-    explicit KateArgumentHintTree(KateCompletionWidget *parent);
+    explicit ArgumentHintWidget(KateArgumentHintModel *model, const QFont &font, KateCompletionWidget *completion, QWidget *parent);
 
-    // Navigation
-    bool nextCompletion();
-    bool previousCompletion();
-    bool pageDown();
-    bool pageUp();
-    void top();
-    void bottom();
+    void positionAndShow();
+    void clearAndHide();
 
-    // Returns the total size of all columns
-    int resizeColumns();
+    void selectNext();
+    void selectPrevious();
 
-    void clearCompletion();
-
-public:
     void updateGeometry();
-    void updateGeometry(QRect rect);
-
-    KateArgumentHintModel *model() const;
-
-protected:
-    void paintEvent(QPaintEvent *event) override;
-    void rowsInserted(const QModelIndex &parent, int start, int end) override;
 
 private:
-    uint rowHeight(const QModelIndex &index) const;
-    int sizeHintForColumn(int column) const override;
+    void activateHint(int i, int rowCount);
 
-    KateCompletionWidget *m_parent;
+    KateCompletionWidget *const m_completionWidget;
+    QPlainTextEdit *const m_view;
+    QLabel *const m_currentIndicator;
+    int m_current = -1;
+    KateArgumentHintModel *const m_model;
+    ArgumentHighlighter *const m_highlighter;
+    QWidget *const m_leftSide;
 };
 
 #endif

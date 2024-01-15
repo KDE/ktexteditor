@@ -15,7 +15,6 @@
 #include <KColorUtils>
 #include <ktexteditor/codecompletionmodel.h>
 
-#include "katecompletiondelegate.h"
 #include "katepartdebug.h"
 
 using namespace KTextEditor;
@@ -32,7 +31,6 @@ ExpandingWidgetModel::ExpandingWidgetModel(QWidget *parent)
 
 ExpandingWidgetModel::~ExpandingWidgetModel()
 {
-    clearExpanding();
 }
 
 static QColor doAlternate(const QColor &color)
@@ -83,198 +81,9 @@ QVariant ExpandingWidgetModel::data(const QModelIndex &index, int role) const
                 return QBrush(color);
             }
         }
-        // Use a special background-color for expanded items
-        if (isExpanded(index)) {
-            if (index.row() & 1) {
-                return doAlternate(treeView()->palette().toolTipBase().color());
-            } else {
-                return treeView()->palette().toolTipBase();
-            }
-        }
     }
     }
     return QVariant();
-}
-
-void ExpandingWidgetModel::clearExpanding()
-{
-    auto oldExpandState = std::move(m_expandState);
-    for (auto &[_, widget] : m_expandingWidgets) {
-        if (widget) {
-            widget->deleteLater(); // By using deleteLater, we prevent crashes when an action within a widget makes the completion cancel
-        }
-    }
-    m_expandingWidgets.clear();
-    m_expandState.clear();
-
-    for (const auto &[idx, type] : m_expandState) {
-        if (type == Expanded) {
-            Q_EMIT dataChanged(idx, idx);
-        }
-    }
-}
-
-bool ExpandingWidgetModel::isExpandable(const QModelIndex &idx_) const
-{
-    QModelIndex idx(firstColumn(idx_));
-
-    if (m_expandState.find(idx) == m_expandState.end()) {
-        m_expandState[idx] = NotExpandable;
-        QVariant v = data(idx, CodeCompletionModel::IsExpandable);
-        if (v.canConvert<bool>() && v.toBool()) {
-            m_expandState[idx] = Expandable;
-        }
-    }
-
-    return m_expandState[idx] != NotExpandable;
-}
-
-bool ExpandingWidgetModel::isExpanded(const QModelIndex &idx_) const
-{
-    QModelIndex idx(firstColumn(idx_));
-    auto it = m_expandState.find(idx);
-    return it != m_expandState.end() && it->second == Expanded;
-}
-
-void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
-{
-    QModelIndex idx(firstColumn(idx_));
-
-    // qCDebug(LOG_KTE) << "Setting expand-state of row " << idx.row() << " to " << expanded;
-    if (!idx.isValid()) {
-        return;
-    }
-
-    if (isExpandable(idx)) {
-        auto it = m_expandingWidgets.find(idx);
-        if (!expanded && it != m_expandingWidgets.end() && it->second) {
-            m_expandingWidgets[idx]->hide();
-        }
-
-        m_expandState[idx] = expanded ? Expanded : Expandable;
-
-        if (expanded && it == m_expandingWidgets.end()) {
-            QVariant v = data(idx, CodeCompletionModel::ExpandingWidget);
-
-            if (v.canConvert<QWidget *>()) {
-                m_expandingWidgets[idx] = v.value<QWidget *>();
-            } else if (v.canConvert<QString>()) {
-                // Create a html widget that shows the given string
-                QTextEdit *edit = new QTextEdit(v.toString());
-                edit->setReadOnly(true);
-                edit->resize(200, 50); // Make the widget small so it embeds nicely.
-                m_expandingWidgets[idx] = edit;
-            } else {
-                m_expandingWidgets[idx] = nullptr;
-            }
-        }
-
-        Q_EMIT dataChanged(idx, idx);
-
-        if (treeView()) {
-            treeView()->scrollTo(idx);
-        }
-    }
-}
-
-int ExpandingWidgetModel::basicRowHeight(const QModelIndex &idx_) const
-{
-    QModelIndex idx(firstColumn(idx_));
-
-    auto *delegate = (KateCompletionDelegate *)treeView()->itemDelegateForIndex(idx);
-    if (!delegate || !idx.isValid()) {
-        qCDebug(LOG_KTE) << "ExpandingWidgetModel::basicRowHeight: Could not get delegate";
-        return 15;
-    }
-    return delegate->basicSizeHint(idx).height();
-}
-
-void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
-{
-    QModelIndex idx(firstColumn(idx_));
-    if (!idx.isValid() || !isExpanded(idx)) {
-        return;
-    }
-
-    auto it = m_expandingWidgets.find(idx);
-    if (it == m_expandingWidgets.end() || it->second == nullptr) {
-        return;
-    }
-
-    QRect rect = treeView()->visualRect(idx);
-    auto w = it->second;
-
-    if (!rect.isValid() || rect.bottom() < 0 || rect.top() >= treeView()->height()) {
-        // The item is currently not visible
-        w->hide();
-        return;
-    }
-
-    // Find out the basic width of the row
-    const int numColumns = idx.model()->columnCount(idx.parent());
-    int left = 0;
-    for (int i = 0; i < numColumns; ++i) {
-        auto index = idx.sibling(idx.row(), i);
-        auto text = index.data().toString();
-        if (!index.data(Qt::DecorationRole).isNull()) {
-            left += 24;
-        }
-
-        if (!text.isEmpty()) {
-            left += treeView()->visualRect(index).left();
-            break;
-        }
-    }
-    rect.setLeft(rect.left() + left);
-
-    for (int i = 0; i < numColumns; ++i) {
-        QModelIndex rightMostIndex = idx.sibling(idx.row(), i);
-        int right = treeView()->visualRect(rightMostIndex).right();
-        if (right > rect.right()) {
-            rect.setRight(right);
-        }
-    }
-    rect.setRight(rect.right() - 5);
-
-    // These offsets must match exactly those used in KateCompletionDeleage::sizeHint()
-    rect.setTop(rect.top() + basicRowHeight(idx));
-    rect.setHeight(w->height());
-
-    if (w->parent() != treeView()->viewport() || w->geometry() != rect || !w->isVisible()) {
-        w->setParent(treeView()->viewport());
-
-        w->setGeometry(rect);
-        w->show();
-    }
-}
-
-void ExpandingWidgetModel::placeExpandingWidgets()
-{
-    for (auto it = m_expandingWidgets.begin(); it != m_expandingWidgets.end(); ++it) {
-        placeExpandingWidget(it->first);
-    }
-}
-
-QWidget *ExpandingWidgetModel::expandingWidget(const QModelIndex &idx_) const
-{
-    QModelIndex idx(firstColumn(idx_));
-
-    if (auto it = m_expandingWidgets.find(idx); it != m_expandingWidgets.end()) {
-        return it->second;
-    } else {
-        return nullptr;
-    }
-}
-
-void ExpandingWidgetModel::cacheIcons() const
-{
-    if (m_expandedIcon.isNull()) {
-        m_expandedIcon = QIcon::fromTheme(QStringLiteral("arrow-down"));
-    }
-
-    if (m_collapsedIcon.isNull()) {
-        m_collapsedIcon = QIcon::fromTheme(QStringLiteral("arrow-right"));
-    }
 }
 
 QList<QVariant> mergeCustomHighlighting(int leftSize, const QList<QVariant> &left, int rightSize, const QList<QVariant> &right)

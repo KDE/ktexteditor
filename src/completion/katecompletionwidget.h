@@ -1,6 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2005-2006 Hamish Rodda <rodda@kde.org>
     SPDX-FileCopyrightText: 2007-2008 David Nolden <david.nolden.kdevelop@art-master.de>
+    SPDX-FileCopyrightText: 2022-2024 Waqar Ahmed <waqar.17a@gmail.com>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
@@ -31,6 +32,7 @@ class KateCompletionModel;
 class KateCompletionTree;
 class KateArgumentHintTree;
 class KateArgumentHintModel;
+class ArgumentHintWidget;
 
 /**
  * This is the code completion's main widget, and also contains the
@@ -124,8 +126,6 @@ public:
     void updatePosition(bool force = false);
     bool eventFilter(QObject *watched, QEvent *event) override;
 
-    KateArgumentHintTree *argumentHintTree() const;
-
     KateArgumentHintModel *argumentHintModel() const;
 
     /// Called by KateViewInternal, because we need the specific information from the event.
@@ -184,9 +184,7 @@ private:
 
     KTEXTEDITOR_NO_EXPORT
     void clear();
-    // Switch cursor between argument-hint list / completion-list
-    KTEXTEDITOR_NO_EXPORT
-    void switchList();
+
     KTEXTEDITOR_NO_EXPORT
     void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
 
@@ -208,7 +206,8 @@ private:
     KTextEditor::ViewPrivate *m_view;
     KateCompletionTree *m_entryList;
     KateArgumentHintModel *m_argumentHintModel;
-    KateArgumentHintTree *m_argumentHintTree;
+    // KateArgumentHintTree *m_argumentHintTree;
+    ArgumentHintWidget *m_argumentHintWidget;
     DocTip *m_docTip;
 
     QTimer *m_automaticInvocationTimer;
@@ -218,7 +217,6 @@ private:
     int m_automaticInvocationDelay;
 
     bool m_lastInsertionByUser;
-    bool m_inCompletionList; // Are we in the completion-list? If not, we're in the argument-hint list
     bool m_isSuspended;
     bool m_dontShowArgumentHints; // Used temporarily to prevent flashing
     bool m_needShow;
