@@ -11,20 +11,20 @@
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2007, 2008, 2009, 2010.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
-# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-04 01:33+0000\n"
-"PO-Revision-Date: 2023-12-28 05:49+0900\n"
+"PO-Revision-Date: 2024-01-14 21:00+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.01.90\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -579,7 +579,7 @@ msgstr "選取一些文字時，將這些字元如「自動補齊字元」一般
 #: dialogs/editconfigwidget.ui:143
 #, kde-format
 msgid "Enclosing characters:"
-msgstr ""
+msgstr "包覆字元："
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/editconfigwidget.ui:166
@@ -615,7 +615,7 @@ msgstr "剪貼簿歷史紀錄最高項目數："
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "這會決定剪貼簿歷史中要保留幾個項目"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -623,7 +623,7 @@ msgstr ""
 msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
-msgstr ""
+msgstr "當您在有選取文字時輸入這些字元，這些字元會包覆所選文字而不是取代掉它。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAccessibility)
 #: dialogs/editconfigwidget.ui:252
@@ -1206,7 +1206,7 @@ msgstr "開啟自動重新載入"
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
-msgstr ""
+msgstr "重新載入，並且直到分頁或視窗關閉都不會再提出關於磁碟變更的警告。"
 
 #: dialogs/katedialogs.cpp:1455
 #, kde-format
@@ -1524,7 +1524,7 @@ msgstr "秒"
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
-msgstr ""
+msgstr "這個字串位於 katedialogs.cpp，在 KateSaveConfigTab 的建構函式裡。"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -1798,6 +1798,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"這個數值會與字型的預設行高相乘取得實際使用的行高。設為 1.0 則代表使用字型預設"
+"行高。"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:90
@@ -1910,7 +1912,7 @@ msgstr "若開啟此選項，則相對應的括號會閃爍，方便您查看。
 #: dialogs/textareaappearanceconfigwidget.ui:252
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "游標移動到括號時閃爍對應的括號"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:259
@@ -4651,13 +4653,7 @@ msgid "Not Editable Placeholder"
 msgstr "不可編輯取代符"
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -4665,9 +4661,10 @@ msgid ""
 "color to edit from the popup menu.</p><p>You can unset the Background and "
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
-"<p>這個清單顯示目前機制的預設風格，並且提供工具來編輯它們。風格名稱反應目前的"
-"風格設定值。</p> <p>要編輯顏色，單擊顏色方塊，或從彈出選單選擇要編輯的顏色。"
-"</p> <p>您可以在適當的時候從彈出式選單中取消設定背景與選擇的背景顏色。</p>"
+"<p>這個清單顯示目前顏色主題的預設風格，並且提供工具來編輯它們。風格名稱反應目"
+"前的風格設定值。</p> <p>要編輯顏色，單擊顏色方塊，或從彈出選單選擇要編輯的顏"
+"色。</p> <p>您可以在適當的時候從彈出式選單中取消設定背景與選擇的背景顏色。</"
+"p>"
 
 #: syntax/katethemeconfig.cpp:568
 #, kde-format
@@ -6399,14 +6396,11 @@ msgid "&Format Indentation"
 msgstr "格式化縮排(&F)"
 
 #: view/kateview.cpp:518
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
-msgstr "使用這個將目前的行或文字的區塊對齊它的縮排層級。"
+msgstr "使用這個來為目前的行或文字區塊進行自動縮排，縮排到正確的縮排等級。"
 
 #: view/kateview.cpp:522
 #, kde-format
@@ -6958,34 +6952,32 @@ msgstr "尋找上一個出現的選取文字。"
 #: view/kateview.cpp:892
 #, kde-format
 msgid "Find and Select Next Occurrence"
-msgstr ""
+msgstr "尋找並選取下一個相符處"
 
 #: view/kateview.cpp:894
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "找尋選取的文字。"
+msgstr "尋找游標底下的單字，並將下一個相符處加入選取。"
 
 #: view/kateview.cpp:898
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr ""
+msgstr "將目前選取的相符處標記為已忽略"
 
 #: view/kateview.cpp:900
 #, kde-format
 msgid "Marks the currently selected word as skipped."
-msgstr ""
+msgstr "將目前選取的單字標記為已忽略。"
 
 #: view/kateview.cpp:904
 #, kde-format
 msgid "Find and Select All Occurrences"
-msgstr ""
+msgstr "尋找並選取所有相符處"
 
 #: view/kateview.cpp:906
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "找尋選取的文字。"
+msgstr "尋找游標底下的單字，並選取所有相符處。"
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -7012,28 +7004,27 @@ msgstr "新增游標於各行尾"
 #: view/kateview.cpp:923
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
-msgstr ""
+msgstr "在選取範圍每一行的尾端建立新的游標。"
 
 #: view/kateview.cpp:927
 #, kde-format
 msgid "Add Caret below Cursor"
-msgstr ""
+msgstr "在游標下方新增文字游標"
 
 #: view/kateview.cpp:929
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "選擇目前文件的所有文字。"
+msgstr "在目前游標下方的行中加入新的游標。"
 
 #: view/kateview.cpp:933
 #, kde-format
 msgid "Add Caret above Cursor"
-msgstr ""
+msgstr "在游標上方新增文字游標"
 
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "在目前游標上方的行中加入新的游標。"
 
 #: view/kateview.cpp:939
 #, kde-format
