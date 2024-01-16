@@ -90,13 +90,14 @@ ArgumentHintWidget::ArgumentHintWidget(KateArgumentHintModel *model, const QFont
 
     auto vLayout = new QVBoxLayout(m_leftSide);
     vLayout->setContentsMargins({});
-    vLayout->setAlignment(Qt::AlignVCenter);
+    vLayout->setAlignment(Qt::AlignCenter);
     vLayout->addWidget(upButton);
     vLayout->addWidget(m_currentIndicator);
     vLayout->addWidget(downButton);
 
     auto layout = new QHBoxLayout(this);
     layout->setContentsMargins({});
+    layout->setSpacing(0);
     layout->addWidget(m_leftSide);
     layout->addWidget(m_view);
     setFixedWidth(380);
