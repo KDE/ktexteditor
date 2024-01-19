@@ -185,7 +185,8 @@ void KateUndoGroup::editEnd(const KTextEditor::Cursor cursorPosition,
 static bool mergeUndoItems(UndoItem &base, const UndoItem &u)
 {
     if (base.type == UndoItem::editInsertText && u.type == UndoItem::editWrapLine) {
-        if (base.line == u.line && base.col + base.text.length() == u.col && u.newLine) {
+        // merge insert text full line + wrap line
+        if (base.col == 0 && base.line == u.line && base.col + base.text.length() == u.col && u.newLine) {
             base.type = UndoItem::editInsertLine;
             base.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
             return true;

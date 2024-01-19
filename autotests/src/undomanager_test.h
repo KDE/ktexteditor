@@ -25,9 +25,7 @@ private Q_SLOTS:
     void testSelectionUndo();
     void testUndoWordWrapBug301367();
     void testUndoIndentBug373009();
-
-private:
-    class TestDocument;
+    void testUndoAfterPastingWrappingLine();
 };
 
 #endif

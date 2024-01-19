@@ -249,4 +249,33 @@ void UndoManagerTest::testUndoIndentBug373009()
     delete view;
 }
 
+void UndoManagerTest::testUndoAfterPastingWrappingLine()
+{
+    KTextEditor::DocumentPrivate doc;
+    std::unique_ptr<KTextEditor::ViewPrivate> view(static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr)));
+
+    const QString originalText = QStringLiteral("First Line\nSecond Line Four Words");
+    doc.setText(originalText);
+
+    // put cursor in first line and copy the whole line
+    view->setCursorPosition({0, 0});
+    view->copy();
+
+    // select 3rd word in line
+    view->setSelection(KTextEditor::Range(1, 12, 1, 16));
+
+    // paste the copied stuff
+    view->paste();
+
+    view->show();
+
+    // undo the paste
+    while (doc.undoCount() > 1) {
+        doc.undo();
+    }
+
+    // text should be same as original now
+    QCOMPARE(doc.text(), originalText);
+}
+
 #include "moc_undomanager_test.cpp"
