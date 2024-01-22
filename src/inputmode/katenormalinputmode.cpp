@@ -212,7 +212,13 @@ bool KateNormalInputMode::keyPress(QKeyEvent *e)
             }
         }
 
-        if (key == Qt::Key_Enter || key == Qt::Key_Return || key == Qt::Key_Tab) {
+        const bool isEnter = key == Qt::Key_Enter || key == Qt::Key_Return;
+        if (isEnter || key == Qt::Key_Tab) {
+            // Are we allowed to execute a completion on enter press?
+            if (isEnter && !KateViewConfig::global()->value(KateViewConfig::EnterToInsertCompletion).toBool()) {
+                return false;
+            }
+
             if (view()->completionWidget()->execute()) {
                 e->accept();
                 return true;

@@ -992,6 +992,7 @@ public:
         DynWrapAnywhere,
         DynWrapAtStaticMarker,
         DynamicWordWrap,
+        EnterToInsertCompletion,
         FoldFirstLine,
         InputMode,
         KeywordCompletion,

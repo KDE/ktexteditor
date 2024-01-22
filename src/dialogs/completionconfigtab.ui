@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>463</width>
-    <height>416</height>
+    <width>489</width>
+    <height>492</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -47,6 +47,16 @@
        <widget class="QCheckBox" name="chkTabCompletion">
         <property name="text">
          <string>Cycle through the list of completions using Tab / Shift+Tab</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="chkEnterCompletion">
+        <property name="toolTip">
+         <string>Pressing enter will insert the text of selected completion item into the editor</string>
+        </property>
+        <property name="text">
+         <string>Use Enter key to insert selected completion</string>
         </property>
        </widget>
       </item>
