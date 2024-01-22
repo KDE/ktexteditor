@@ -53,7 +53,7 @@
       <item>
        <widget class="QCheckBox" name="chkEnterCompletion">
         <property name="toolTip">
-         <string>Pressing enter will insert the text of selected completion item into the editor</string>
+         <string>Pressing enter will insert the text of selected completion item into the editor. If disabled, Tab key or double-click can still be used to trigger completion.</string>
         </property>
         <property name="text">
          <string>Use Enter key to insert selected completion</string>

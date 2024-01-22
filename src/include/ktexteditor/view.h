@@ -173,6 +173,7 @@ class CodeCompletionModel;
  *  - font [QFont] change the font
  *  - theme [QString] change the theme
  *  - word-completion-minimal-word-length [int] minimal word length to trigger word completion
+ *  - enter-to-insert-completion [bool] enable/disable whether pressing enter inserts completion
  *
  * You can retrieve the value of a config key using configValue() and set the value
  * for a config key using setConfigValue().

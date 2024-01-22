@@ -171,6 +171,11 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     item->setHelpText(i18nc("short translation please", "Sets the end of line mode."));
     listview->addItem(item);
 
+    // Add 'enter-to-insert-completion' to list
+    item = new VariableBoolItem(QStringLiteral("enter-to-insert-completion"), viewConfig->value(KateViewConfig::EnterToInsertCompletion).toBool());
+    item->setHelpText(i18nc("short translation please", "Enable whether pressing enter will insert selected auto completion item."));
+    listview->addItem(item);
+
     // Add 'folding-markers' to list
     item = new VariableBoolItem(QStringLiteral("folding-markers"), viewConfig->foldingBar());
     item->setHelpText(i18nc("short translation please", "Enable folding markers in the editor border."));

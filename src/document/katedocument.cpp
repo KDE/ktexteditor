@@ -5175,27 +5175,30 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
     }
 
     // view variable names
-    static const auto vvl = {QLatin1String("dynamic-word-wrap"),
-                             QLatin1String("dynamic-word-wrap-indicators"),
-                             QLatin1String("line-numbers"),
-                             QLatin1String("icon-border"),
-                             QLatin1String("folding-markers"),
-                             QLatin1String("folding-preview"),
-                             QLatin1String("bookmark-sorting"),
-                             QLatin1String("auto-center-lines"),
-                             QLatin1String("icon-bar-color"),
-                             QLatin1String("scrollbar-minimap"),
-                             QLatin1String("scrollbar-preview")
-                             // renderer
-                             ,
-                             QLatin1String("background-color"),
-                             QLatin1String("selection-color"),
-                             QLatin1String("current-line-color"),
-                             QLatin1String("bracket-highlight-color"),
-                             QLatin1String("word-wrap-marker-color"),
-                             QLatin1String("font"),
-                             QLatin1String("font-size"),
-                             QLatin1String("scheme")};
+    static const auto vvl = {
+        QLatin1String("dynamic-word-wrap"),
+        QLatin1String("dynamic-word-wrap-indicators"),
+        QLatin1String("line-numbers"),
+        QLatin1String("icon-border"),
+        QLatin1String("folding-markers"),
+        QLatin1String("folding-preview"),
+        QLatin1String("bookmark-sorting"),
+        QLatin1String("auto-center-lines"),
+        QLatin1String("icon-bar-color"),
+        QLatin1String("scrollbar-minimap"),
+        QLatin1String("scrollbar-preview"),
+        QLatin1String("enter-to-insert-completion")
+        // renderer
+        ,
+        QLatin1String("background-color"),
+        QLatin1String("selection-color"),
+        QLatin1String("current-line-color"),
+        QLatin1String("bracket-highlight-color"),
+        QLatin1String("word-wrap-marker-color"),
+        QLatin1String("font"),
+        QLatin1String("font-size"),
+        QLatin1String("scheme"),
+    };
     int spaceIndent = -1; // for backward compatibility; see below
     bool replaceTabsSet = false;
     int startPos(0);

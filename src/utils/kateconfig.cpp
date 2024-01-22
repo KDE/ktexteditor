@@ -504,7 +504,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(DynWrapAnywhere, "Dynamic Wrap not at word boundaries", QStringLiteral("dynamic-word-wrap-anywhere"), false));
     addConfigEntry(ConfigEntry(DynWrapAtStaticMarker, "Dynamic Word Wrap At Static Marker", QString(), false));
     addConfigEntry(ConfigEntry(DynamicWordWrap, "Dynamic Word Wrap", QStringLiteral("dynamic-word-wrap"), true));
-    addConfigEntry(ConfigEntry(EnterToInsertCompletion, "Enter To Insert Completion", QString(), true));
+    addConfigEntry(ConfigEntry(EnterToInsertCompletion, "Enter To Insert Completion", QStringLiteral("enter-to-insert-completion"), true));
     addConfigEntry(ConfigEntry(FoldFirstLine, "Fold First Line", QString(), false));
     addConfigEntry(ConfigEntry(InputMode, "Input Mode", QString(), 0, [](const QVariant &value) {
         return isPositive(value);
