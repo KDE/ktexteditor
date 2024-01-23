@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-04 01:33+0000\n"
-"PO-Revision-Date: 2024-01-14 21:00+0900\n"
+"PO-Revision-Date: 2024-01-22 17:31+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.01.90\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -1324,7 +1324,7 @@ msgstr "PageUp PageDown 移動游標(&P)"
 #: dialogs/navigationconfigwidget.ui:55
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
-msgstr ""
+msgstr "選取游標跳動時要將 CamelCase 視為整個單詞還是要理解大小寫分詞。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1429,7 +1429,7 @@ msgstr "自動重新載入已進版控的檔案"
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "為哪些檔案在儲存時寫入備份檔："
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
