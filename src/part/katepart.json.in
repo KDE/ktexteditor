@@ -31,6 +31,7 @@
         "Description[vi]": "Thành phần trình biên tập văn bản có khả năng tái sử dụng",
         "Description[x-test]": "xxReusable text editor componentxx",
         "Description[zh_CN]": "可复用文本编辑器组件",
+        "Description[zh_TW]": "可重複利用的文字編輯器元件",
         "Icon": "accessories-text-editor",
         "InitialPreference": 8,
         "License": "LGPL 2.1+",
@@ -103,6 +104,7 @@
         "Name[vi]": "Trình biên tập văn bản nâng cao có khả năng nhúng",
         "Name[x-test]": "xxEmbedded Advanced Text Editorxx",
         "Name[zh_CN]": "嵌入式多功能文本编辑器",
+        "Name[zh_TW]": "嵌入的進階文字編輯器",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
             "KParts/ReadWritePart"
