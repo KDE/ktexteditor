@@ -11,13 +11,12 @@
 # H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010, 2011.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2015, 2017, 2019.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-04 01:33+0000\n"
-"PO-Revision-Date: 2024-01-09 22:12+0300\n"
+"PO-Revision-Date: 2024-01-23 19:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -25,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -2197,10 +2196,10 @@ msgid ""
 ">Either reopen the file with the correct encoding chosen or enable the read-"
 "write mode again in the tools menu to be able to edit it."
 msgstr ""
-"%1 dosyası %2 kodlaması ile açıldı; ancak geçersiz karakterler içeriyor.<br /"
-">Bir kaydetme eylemi ile içerik kaybedilebileceğinden salt okunur kipe "
-"geçiliyor.<br />Dosyayı doğru kodlama ile yeniden açabilirsiniz veya menüden "
-"okunur-yazılır kipe geçebilirsiniz."
+"%1 dosyası %2 kodlamasıyla açıldı; ancak geçersiz karakterler içeriyordu."
+"<br />Kaydetme, içeriğine zarar verebileceği için saltokunur kipe ayarlandı."
+"<br />Ya dosyayı seçili doğru kodlamayla yeniden açın ya da onu "
+"düzenleyebilmek için Araçlar menüsünden oku-yaz kipini yeniden etkinleştirin."
 
 #: document/katedocument.cpp:2405
 #, kde-format
@@ -2210,15 +2209,15 @@ msgid ""
 "characters long<br/>Those lines were wrapped and the document is set to read-"
 "only mode, as saving will modify its content."
 msgstr ""
-"%1 dosyası açıldı ve yapılandırmadaki Satır Uzunluğu Sınırından (%2 "
-"karakter) daha uzun satırlara sahip.<br />En uzun satır %3 karakter "
-"uzunluğunda<br/>Bu satırlar kaydırıldı ve belgeyi kaydetmek içeriğini "
-"değiştireceğinden salt okunur kipine dönüştürüldü."
+"%1 dosyası açıldı ve yapılandırılan satır uzunluğu sınırından (%2 karakter) "
+"daha uzun satırlar içeriyordu.<br />Bu satırların en uzunu %3 karakter "
+"uzunluğundaydı.<br/>Bu satırlar kaydırıldı ve belge kaydedildiğinde "
+"içeriğini değiştireceğinden saltokunur kipe ayarlandı."
 
 #: document/katedocument.cpp:2412
 #, kde-format
 msgid "Temporarily raise limit and reload file"
-msgstr "Geçici olarak sınırı yükselt ve dosyayı yeniden yükle"
+msgstr "Sınırı Geçici Olarak Yükselt ve Dosyayı Yeniden Yükle"
 
 #: document/katedocument.cpp:2415
 #, kde-format
@@ -2231,7 +2230,7 @@ msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
 "data in the file on disk."
 msgstr ""
-"Bu değiştirilmemiş dosyayı gerçekten kaydetmek istiyor musunuz? Yanlışlıkla "
+"Bu değiştirilmemiş dosyayı kaydetmeyi gerçekten istiyor musunuz? Yanlışlıkla "
 "diskteki dosyadaki değiştirilen verinin üzerine yazabilirsiniz."
 
 #: document/katedocument.cpp:2443
@@ -2294,10 +2293,10 @@ msgid ""
 "that the media you write to is full or the directory of the file is read-"
 "only for you."
 msgstr ""
-"%1 dosyası için kaydetmeden önce bir yedekleme dosyası oluşturulamadı. "
-"Kaydetme sırasında bir hata oluşursa bu dosyanın verisini kaybedebilirsiniz. "
-"Bunun nedeni yazdığınız medyanın dolu olması veya dosyanın bulunduğu dizinin "
-"sizin için salt okunur olması olabilir."
+"%1 dosyası için kaydetmeden önce yedek kopya oluşturulamadı. Kaydetme "
+"sırasında bir hata oluşursa bu dosya verisini kaybedebilirsiniz. Bunun "
+"nedeni, yazdığınız ortamın dolu olması veya dosya dizininin sizin için "
+"saltokunur olması olabilir."
 
 #: document/katedocument.cpp:2663
 #, kde-format
