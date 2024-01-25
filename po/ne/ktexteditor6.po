@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:33+0000\n"
+"POT-Creation-Date: 2024-01-25 00:35+0000\n"
 "PO-Revision-Date: 2007-08-19 14:23+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -115,7 +115,7 @@ msgid "Word Wrap"
 msgstr "स्थिर शब्द बेराइ"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:737
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Borders"
 msgstr "किनारा"
@@ -370,7 +370,7 @@ msgid "Minim&ap width:"
 msgstr "न्यून जोडा"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:745
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Always On"
 msgstr "सधैँ खुला"
@@ -461,8 +461,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:601
-#: dialogs/katedialogs.cpp:733 dialogs/katedialogs.cpp:1016
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
+#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1019
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -488,48 +488,64 @@ msgstr "स्वचालित समाप्ति पप अप"
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
 msgstr ""
 
-#. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkEnterCompletion)
+#: dialogs/completionconfigtab.ui:56
+#, kde-format
+msgid ""
+"Pressing enter will insert the text of selected completion item into the "
+"editor. If disabled, Tab key or double-click can still be used to trigger "
+"completion."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
+#, fuzzy, kde-format
+#| msgid "Use this to unindent a selected block of text."
+msgid "Use Enter key to insert selected completion"
+msgstr "चयन गरिएको पाठको खण्ड अनइन्डेन्ट गर्न यो प्रयोग गर्नुहोस् ।"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
+#: dialogs/completionconfigtab.ui:69
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "A&uto word completion"
 msgstr "शब्द समाप्ति"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:73
+#: dialogs/completionconfigtab.ui:83
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:111
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:104
+#: dialogs/completionconfigtab.ui:114
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces"
 msgid "Remove tail on complete"
 msgstr "ट्रेलिङ खाली स्थान हटाउनुहोस्"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:111
+#: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:124
+#: dialogs/completionconfigtab.ui:134
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "&Keyword completion"
 msgstr "शब्द समाप्ति"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:133
+#: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -537,14 +553,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:146
+#: dialogs/completionconfigtab.ui:156
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "Documentation with completion"
 msgstr "शब्द समाप्ति"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:155
+#: dialogs/completionconfigtab.ui:165
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1162,72 +1178,72 @@ msgstr[1] " क्यारेक्टर"
 msgid "Indentation"
 msgstr "इन्डेन्टेसन"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:293
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "Auto Completion"
 msgstr "शब्द समाप्ति"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:360
 #, kde-format
 msgid "Spellcheck"
 msgstr "हिज्जे परीक्षण"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:414
 #, fuzzy, kde-format
 #| msgid "Alert"
 msgid "Alt"
 msgstr "सावधान"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:415
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "आदेश"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:475
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Configuration"
 msgid "Text Navigation"
 msgstr "कन्फिगरेसन"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, fuzzy, kde-format
 #| msgid " characters"
 msgctxt "Wrap words at (value is at 20 or larger)"
@@ -1236,66 +1252,66 @@ msgid_plural " characters"
 msgstr[0] " क्यारेक्टर"
 msgstr[1] " क्यारेक्टर"
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Feature is not active"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:584
 #, fuzzy, kde-format
 #| msgid "Disabled Breakpoint"
 msgid "Disable Feature"
 msgstr "अक्षम पारिएको विच्छेदबिन्दु"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:586
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:588
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:587
+#: dialogs/katedialogs.cpp:590
 #, fuzzy, kde-format
 #| msgid " characters"
 msgid "Non letter character"
 msgstr " क्यारेक्टर"
 
-#: dialogs/katedialogs.cpp:703
+#: dialogs/katedialogs.cpp:706
 #, kde-format
 msgid "Editing"
 msgstr "सम्पादन"
 
-#: dialogs/katedialogs.cpp:708
+#: dialogs/katedialogs.cpp:711
 #, kde-format
 msgid "Editing Options"
 msgstr "सम्पादन विकल्प"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:744
 #, fuzzy, kde-format
 #| msgctxt "Language"
 #| msgid "Stata"
 msgid "Statusbar"
 msgstr "स्टाटा"
 
-#: dialogs/katedialogs.cpp:743
+#: dialogs/katedialogs.cpp:746
 #, kde-format
 msgid "Off"
 msgstr "बन्द गर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:744
+#: dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "रेखा सङ्ख्या अनुसरण गर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
+#: dialogs/katedialogs.cpp:941 dialogs/katedialogs.cpp:946
 #, kde-format
 msgid "Appearance"
 msgstr "देखावट"
 
-#: dialogs/katedialogs.cpp:978
+#: dialogs/katedialogs.cpp:981
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1303,90 +1319,90 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:1020
 #, kde-format
 msgid "Advanced"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1085
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "तपाईँले जगेडा प्रत्यय र उपसर्ग उपलब्ध गराउनु भएन । पूर्वानिर्धारित प्रत्ययको प्रयोग: '~'"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1085
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "कुनै जगेडा प्रत्यय वा उपसर्ग छैन"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "Open/Save"
 msgstr "खोल्नुहोस्/ बचत गर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:1216
+#: dialogs/katedialogs.cpp:1219
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "फाइल खोल्दै र बचत गर्दै"
 
-#: dialogs/katedialogs.cpp:1239
+#: dialogs/katedialogs.cpp:1242
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1254
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1331
+#: dialogs/katedialogs.cpp:1334
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1395
+#: dialogs/katedialogs.cpp:1398
 #, fuzzy, kde-format
 #| msgid "&Section:"
 msgid "Dictionary:"
 msgstr "खण्ड:"
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "Enable Auto Reload"
 msgstr "शब्द समाप्ति"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1458
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "भिन्नता हेर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "फेरि लोड गर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
@@ -1395,42 +1411,42 @@ msgstr ""
 "डिस्कबाट फाइल फेरि लोड गर्नुहोस् । यदि तपाईँसँग बचत नगरिएका परिवर्तन भएमा, तिनीहरू "
 "हराउनेछन् ।"
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, fuzzy, kde-format
 #| msgid "&Reload File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "फाइल फेरि लोड गर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "यस रूपमा फाइल बचत गर्नुहोस्..."
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "तपाईँलाई स्थान चयन गर्न र फेरि फाइल बचत गर्न अनुमति दिन्छ ।"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1484 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "उपेक्षा गर्नुहोस्"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1485
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "परिवर्तन उपेक्षा गर्नुहोस् । तपाईँलाई फरि प्रोत्साहन गरिने छैन ।"
 
-#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1438,18 +1454,18 @@ msgid ""
 msgstr ""
 "फरक आदेश असफल भयो । कृपया diff(1) तपाईँको मार्गमा स्थापित भयो भन्ने निश्चित गर्नुहोस् ।"
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Diff सिर्जना गर्दा त्रुटि"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff निर्गत"
@@ -2282,12 +2298,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6497
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6500
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6498
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6501
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2438,8 +2454,8 @@ msgid "Untitled"
 msgstr "शीर्षक नभएको"
 
 #: document/katedocument.cpp:4692 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5720
-#: document/katedocument.cpp:5907
+#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
+#: document/katedocument.cpp:5910
 #, kde-format
 msgid "Save File"
 msgstr "फाइल बचत गर्नुहोस्"
@@ -2467,7 +2483,7 @@ msgstr ""
 "\n"
 "तपाईँसँग यो फाइलमा लेख्ने पहुँच वा पर्याप्त डिस्क खाली स्थान उपलब्ध छ छैन जाँच गर्नुहोस् ।"
 
-#: document/katedocument.cpp:5233
+#: document/katedocument.cpp:5236
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2476,7 +2492,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5239
+#: document/katedocument.cpp:5242
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2485,43 +2501,43 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5549
+#: document/katedocument.cpp:5552
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "फाइल '%1' अन्य कार्यक्रमद्वारा परिमार्जित गरियो ।"
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5555
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "फाइल '%1' अन्य कार्यक्रमद्वारा सिर्जना गरिएको थियो ।"
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5558
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "फाइल '%1' अन्य कार्यक्रमद्वारा मेटिएको थियो ।"
 
-#: document/katedocument.cpp:5892
+#: document/katedocument.cpp:5895
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5898
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "शब्द बेर्ने कागजात"
 
-#: document/katedocument.cpp:6006
+#: document/katedocument.cpp:6009
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6011
+#: document/katedocument.cpp:6014
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -6355,172 +6371,179 @@ msgstr "रेखाको अन्त्यमा चयन गर्नुह
 #: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
-msgid "Enable folding markers in the editor border."
+msgid ""
+"Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
 msgctxt "short translation please"
+msgid "Enable folding markers in the editor border."
+msgstr ""
+
+#: variableeditor/variablelineedit.cpp:186
+#, kde-format
+msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:187
+#: variableeditor/variablelineedit.cpp:192
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "हालको कागजातको सम्पूर्ण पाठलाई चयन गर्नुहोस् ।"
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:197
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "हालको कागजातको सम्पूर्ण पाठलाई चयन गर्नुहोस् ।"
 
-#: variableeditor/variablelineedit.cpp:208
+#: variableeditor/variablelineedit.cpp:213
 #, fuzzy, kde-format
 #| msgid "Kate Syntax Highlighting Parser"
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "केट वाक्य संरचना हाइलाइटिङ पद वर्णनकर्ता"
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:228
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "इन्डेन्टेसन रेखा देखाउनुहोस्"
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:233
 #, fuzzy, kde-format
 #| msgid "Adjust indentation of code pasted from the clipboard"
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "क्लिपबोर्डबाट टाँसिएको सङ्केतको इन्डेन्टेसन समायोजन गर्नुहोस्"
 
-#: variableeditor/variablelineedit.cpp:234
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:249
 #, fuzzy, kde-format
 #| msgid "Show &line numbers"
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "रेखा नम्बर देखाउनुहोस्"
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:274
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:279
 #, fuzzy, kde-format
 #| msgid "Remove &trailing spaces while editing"
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "सम्पादन गर्दा ट्रेलिङ खाली स्थान हटाउनुहोस्"
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:284
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "स्क्रोलपट्टी चिनो देखाउनुहोस्"
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:289
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "स्क्रोलपट्टी चिनो देखाउनुहोस्"
 
-#: variableeditor/variablelineedit.cpp:295
+#: variableeditor/variablelineedit.cpp:300
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "फन्ट र रङ स्कीमा"
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:310
 #, fuzzy, kde-format
 #| msgid "Highlight trailing &spaces"
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "ट्रेलिङ खाली स्थान हाइलाइट गर्नुहोस्"
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:315
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "शब्द समाप्ति"
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:320
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:321
+#: variableeditor/variablelineedit.cpp:326
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:327
+#: variableeditor/variablelineedit.cpp:332
 #, fuzzy, kde-format
 #| msgid ""
 #| "Sets the number of undo/redo steps to record. More steps uses more memory."
@@ -6530,20 +6553,20 @@ msgstr ""
 "पूर्वस्थितिमा फर्काउनुहोस्/रिडू गर्नुहोस् चरणको रेकर्ड गर्न सङ्ख्या सेट गर्छ । धेरै चरणले धेरै "
 "स्मृति प्रयोग गर्दछ ।"
 
-#: variableeditor/variablelineedit.cpp:333
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:343
 #, fuzzy, kde-format
 #| msgid "S&elected Background Color..."
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "चयन गरिएको पृष्ठभूमि रङ..."
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:348
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."

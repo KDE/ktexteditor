@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:33+0000\n"
+"POT-Creation-Date: 2024-01-25 00:35+0000\n"
 "PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -103,7 +103,7 @@ msgid "Word Wrap"
 msgstr "Szótördelés"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:737
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Borders"
 msgstr "Szegélyek"
@@ -329,7 +329,7 @@ msgid "Minim&ap width:"
 msgstr "Minitérké&p szélessége:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:745
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Always On"
 msgstr "mindig bekapcsolva"
@@ -417,8 +417,8 @@ msgstr "Nincsenek bejegyzések a vágólapnaplóban"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:601
-#: dialogs/katedialogs.cpp:733 dialogs/katedialogs.cpp:1016
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
+#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1019
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -444,20 +444,36 @@ msgstr ""
 "A kiegészítések listájának körbejárása a Tab / Shift+Tab "
 "billentyűkombinációkkal"
 
-#. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkEnterCompletion)
+#: dialogs/completionconfigtab.ui:56
+#, kde-format
+msgid ""
+"Pressing enter will insert the text of selected completion item into the "
+"editor. If disabled, Tab key or double-click can still be used to trigger "
+"completion."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
+#, fuzzy, kde-format
+#| msgid "Use this to unindent a selected block of text."
+msgid "Use Enter key to insert selected completion"
+msgstr "Ezzel lehet a kijelölt szövegrész behúzását megszüntetni."
+
+#. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
+#: dialogs/completionconfigtab.ui:69
 #, kde-format
 msgid "A&uto word completion"
 msgstr "A&utomatikus kiegészítés"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:73
+#: dialogs/completionconfigtab.ui:83
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr "Minimális szóhossz kiegészítéshez:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:111
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
@@ -465,13 +481,13 @@ msgstr ""
 "kiválasztásara a listából"
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:104
+#: dialogs/completionconfigtab.ui:114
 #, kde-format
 msgid "Remove tail on complete"
 msgstr "Vég eltávolítása kiegészítéskor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:111
+#: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
@@ -480,13 +496,13 @@ msgstr ""
 "javaslatokat"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:124
+#: dialogs/completionconfigtab.ui:134
 #, kde-format
 msgid "&Keyword completion"
 msgstr "&Kulcsszó-kiegészítés"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:133
+#: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -496,13 +512,13 @@ msgstr ""
 "a javaslatokat."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:146
+#: dialogs/completionconfigtab.ui:156
 #, kde-format
 msgid "Documentation with completion"
 msgstr "Dokumentáció kiegészítéssel"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:155
+#: dialogs/completionconfigtab.ui:165
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1066,67 +1082,67 @@ msgstr[1] " karakter"
 msgid "Indentation"
 msgstr "Behúzás"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:293
 #, kde-format
 msgid "Auto Completion"
 msgstr "Automatikus kiegészítés"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:360
 #, kde-format
 msgid "Spellcheck"
 msgstr "Helyesírás-ellenőrzés"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Alt"
 msgstr "Alt"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Meta"
 msgstr "Meta"
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr "Ctrl + Alt"
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Meta + Alt"
 msgstr "Meta + Alt"
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr "Ctrl + Meta"
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd"
 msgstr "Cmd"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Cmd + Alt"
 msgstr "Cmd + Alt"
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr "Cmd + Ctrl"
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:475
 #, kde-format
 msgid "Text Navigation"
 msgstr "Szöveg navigáció"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
@@ -1134,63 +1150,63 @@ msgid_plural " characters"
 msgstr[0] " karakter"
 msgstr[1] " karakter"
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Feature is not active"
 msgstr "A funkció nincs bekapcsolva"
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:584
 #, kde-format
 msgid "Disable Feature"
 msgstr "Funkció kikapcsolása"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:586
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr "Markdownnal praktikus lehet"
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:588
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 "Karakterek tükrözése, hasonló, de nem ugyanaz, mint az automatikus zárójelek"
 
-#: dialogs/katedialogs.cpp:587
+#: dialogs/katedialogs.cpp:590
 #, kde-format
 msgid "Non letter character"
 msgstr "Nem betű karakter"
 
-#: dialogs/katedialogs.cpp:703
+#: dialogs/katedialogs.cpp:706
 #, kde-format
 msgid "Editing"
 msgstr "Szerkesztés"
 
-#: dialogs/katedialogs.cpp:708
+#: dialogs/katedialogs.cpp:711
 #, kde-format
 msgid "Editing Options"
 msgstr "Szerkesztési beállítások"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Statusbar"
 msgstr "Állapotsor"
 
-#: dialogs/katedialogs.cpp:743
+#: dialogs/katedialogs.cpp:746
 #, kde-format
 msgid "Off"
 msgstr "Ki"
 
-#: dialogs/katedialogs.cpp:744
+#: dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "a sorszámok után"
 
-#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
+#: dialogs/katedialogs.cpp:941 dialogs/katedialogs.cpp:946
 #, kde-format
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#: dialogs/katedialogs.cpp:978
+#: dialogs/katedialogs.cpp:981
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1202,12 +1218,12 @@ msgstr ""
 "visszaállítását rendszerösszeomlás esetén. Az ideiglenes fájlok kikapcsolása "
 "adatvesztést okozhat."
 
-#: dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:1020
 #, kde-format
 msgid "Advanced"
 msgstr "Speciális"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1085
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1215,52 +1231,52 @@ msgstr ""
 "Nincs megadva előtag vagy utótag a biztonsági mentéshez, az alapértelmezés "
 "(„~”) lesz érvényes"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1085
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Nincs előtag vagy utótag a biztonsági mentéshez"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "Open/Save"
 msgstr "Megnyitás/mentés"
 
-#: dialogs/katedialogs.cpp:1216
+#: dialogs/katedialogs.cpp:1219
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Fájlok megnyitása, mentése"
 
-#: dialogs/katedialogs.cpp:1239
+#: dialogs/katedialogs.cpp:1242
 #, kde-format
 msgid "&Line:"
 msgstr "&Sor:"
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Ugrás a vágólapon található sorszámra"
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1254
 #, kde-format
 msgid "Go to"
 msgstr "Ugrás"
 
-#: dialogs/katedialogs.cpp:1331
+#: dialogs/katedialogs.cpp:1334
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Nem található érvényes sorszám a vágólapon"
 
-#: dialogs/katedialogs.cpp:1395
+#: dialogs/katedialogs.cpp:1398
 #, kde-format
 msgid "Dictionary:"
 msgstr "Szótár:"
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Automatikus újratöltés bekapcsolása"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1269,59 +1285,59 @@ msgstr ""
 "Újratölt, és automatikusan újratölt a lemezváltozásokról figyelmezetés "
 "nélkül mostantól a lap vagy az ablak bezárásáig."
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1458
 #, kde-format
 msgid "View &Difference"
 msgstr "Az &eltérések megtekintése"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Megjeleníti a változtatások különbségeit."
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, kde-format
 msgid "&Reload"
 msgstr "Újr&atöltés"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "A fájl újratöltése a lemezről. A nem mentett módosítások elvesznek."
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "Fájl &bezárása"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "A fájl bezárása, a tartalmának eldobásával."
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, kde-format
 msgid "&Save As..."
 msgstr "Men&tés másként…"
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Lehetővé teszi a fájl elmentését más helyre."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1484 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Figyelmen kívül hagyás"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1485
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Mellőzi a lemezen történt változtatásokat."
 
-#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1330,18 +1346,18 @@ msgstr ""
 "A diff parancs végrehajtása nem sikerült. Ellenőrizze, hogy a diff(1) "
 "parancs telepítve van-e és szerepel-e az elérési útban."
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Hiba történt a diff-fájl létrehozásakor"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr "A fájlok teljesen egyformák."
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff kimenet"
@@ -2175,12 +2191,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Próbálja újra"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6497
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6500
 #, kde-format
 msgid "&Close"
 msgstr "&Bezárás"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6498
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6501
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2323,8 +2339,8 @@ msgid "Untitled"
 msgstr "Nincs cím"
 
 #: document/katedocument.cpp:4692 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5720
-#: document/katedocument.cpp:5907
+#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
+#: document/katedocument.cpp:5910
 #, kde-format
 msgid "Save File"
 msgstr "A fájl mentése"
@@ -2352,7 +2368,7 @@ msgstr ""
 "Ellenőrizze, hogy rendelkezik-e írási jogosultsággal a fájlhoz és van-e elég "
 "szabad lemezterület."
 
-#: document/katedocument.cpp:5233
+#: document/katedocument.cpp:5236
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2365,7 +2381,7 @@ msgstr ""
 "kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5239
+#: document/katedocument.cpp:5242
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2378,22 +2394,22 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5549
+#: document/katedocument.cpp:5552
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "A(z) „%1” fájl módosult a lemezen."
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5555
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "A(z) „%1” fájl létrejött a lemezen."
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5558
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "A(z) „%1” fájl törlődött a lemezen."
 
-#: document/katedocument.cpp:5892
+#: document/katedocument.cpp:5895
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2402,17 +2418,17 @@ msgstr ""
 "Megváltozott egy dokumentum: \"%1\".\n"
 "El szeretné menteni a módosításokat?"
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5898
 #, kde-format
 msgid "Close Document"
 msgstr "A dokumentum bezárása"
 
-#: document/katedocument.cpp:6006
+#: document/katedocument.cpp:6009
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "A(z) <a href=\"%1\">%2</a> fájl betöltése még folyamatban."
 
-#: document/katedocument.cpp:6011
+#: document/katedocument.cpp:6014
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Betöltés &megszakítása"
@@ -6192,178 +6208,185 @@ msgstr "Beállítja a sorvégmódot."
 #: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
+msgid ""
+"Enable whether pressing enter will insert selected auto completion item."
+msgstr ""
+
+#: variableeditor/variablelineedit.cpp:181
+#, kde-format
+msgctxt "short translation please"
 msgid "Enable folding markers in the editor border."
 msgstr "Bekapcsolja a szegélyjelzőket a szerkesztőben."
 
-#: variableeditor/variablelineedit.cpp:181
+#: variableeditor/variablelineedit.cpp:186
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr "Bekapcsolja a szegélyelőnézetet a szerkesztőben."
 
-#: variableeditor/variablelineedit.cpp:187
+#: variableeditor/variablelineedit.cpp:192
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "Beállítja a dokumentum betűtípusának méretét."
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:197
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "Beállítja a dokumentum betűtípusát."
 
-#: variableeditor/variablelineedit.cpp:208
+#: variableeditor/variablelineedit.cpp:213
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "Beállítja a szintaxiskiemelést."
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr "Az ikonsáv színe."
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr "Ikonszegély bekapcsolása a szerkesztési nézetben."
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:228
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "Beállítja az automatikus behúzás stílusát."
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:233
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "A vágólapról beillesztett szöveg behúzásának igazítása."
 
-#: variableeditor/variablelineedit.cpp:234
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr "Beállítja a behúzás mélységét minden egyes behúzási szintre."
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr "Páros behúzási szintek (nincs többszörös behúzási szélesség)."
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:249
 #, kde-format
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "Sorszámok megjelenítése."
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr "Új sor beszúrása a fájl végén mentéskor."
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr "Felülírási mód bekapcsolása a dokumentumban."
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr "Állandó szövgkijelölés bekapcsolása."
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr "Tabulátorok cseréje szóközökre a dokumentum mentésekor."
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:274
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "Tabulátorok cseréje szóközökre."
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:279
 #, kde-format
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "Sorvégi szóközök eltávolítása a dokumentum mentésekor."
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:284
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "Gördítősáv minitérkép megjelenítése."
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:289
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "Gőrdítősáv előnézetének megjelenítése."
 
-#: variableeditor/variablelineedit.cpp:295
+#: variableeditor/variablelineedit.cpp:300
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "Beállítja a színsémát."
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr "Szövegkijelölő szín beállítása."
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:310
 #, kde-format
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "Tabulátorok és sorvégi szóközök vizualizálása."
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:315
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "Intelligens navigáció bekapcsolása."
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:320
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr "A TAB lenyomása behúzza a sort."
 
-#: variableeditor/variablelineedit.cpp:321
+#: variableeditor/variablelineedit.cpp:326
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr "A tabulátor megjelenítési szélességének beállítása."
 
-#: variableeditor/variablelineedit.cpp:327
+#: variableeditor/variablelineedit.cpp:332
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr "A megjegyzendő visszavonási lépésel száma (0 = végtelen)."
 
-#: variableeditor/variablelineedit.cpp:333
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr "A szótördelés oszlopának beállítása."
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:343
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "A szótördelés-jelölő színének beállítása."
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:348
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."

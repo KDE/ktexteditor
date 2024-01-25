@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-04 01:33+0000\n"
+"POT-Creation-Date: 2024-01-25 00:35+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -114,7 +114,7 @@ msgid "Word Wrap"
 msgstr "固定的な行の折り返し"
 
 #. i18n: ectx: Menu (view_menu_borders)
-#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:737
+#: data/katepart5ui.rc:80 dialogs/katedialogs.cpp:740
 #, kde-format
 msgid "Borders"
 msgstr "境界"
@@ -370,7 +370,7 @@ msgid "Minim&ap width:"
 msgstr "タブ幅(&D):"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:745
+#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Always On"
 msgstr "常に表示"
@@ -461,8 +461,8 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
-#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:601
-#: dialogs/katedialogs.cpp:733 dialogs/katedialogs.cpp:1016
+#: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
+#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1019
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -487,48 +487,64 @@ msgstr ""
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
 msgstr ""
 
-#. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkEnterCompletion)
+#: dialogs/completionconfigtab.ui:56
+#, kde-format
+msgid ""
+"Pressing enter will insert the text of selected completion item into the "
+"editor. If disabled, Tab key or double-click can still be used to trigger "
+"completion."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
+#, fuzzy, kde-format
+#| msgid "Use this to unindent a selected block of text."
+msgid "Use Enter key to insert selected completion"
+msgstr "選択したテキストブロックの字下げの深さを 1 段階減らします。"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
+#: dialogs/completionconfigtab.ui:69
 #, fuzzy, kde-format
 #| msgid "Auto Word Completion"
 msgid "A&uto word completion"
 msgstr "自動単語補完"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/completionconfigtab.ui:73
+#: dialogs/completionconfigtab.ui:83
 #, kde-format
 msgid "Minimal word length to complete:"
 msgstr "補完する単語の最低の長さ:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:101
+#: dialogs/completionconfigtab.ui:111
 #, kde-format
 msgid "Remove tail of a previous word when completion item chosen from a list"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, removeTail)
-#: dialogs/completionconfigtab.ui:104
+#: dialogs/completionconfigtab.ui:114
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces"
 msgid "Remove tail on complete"
 msgstr "末尾のスペースを削除する(&M)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/completionconfigtab.ui:111
+#: dialogs/completionconfigtab.ui:121
 #, kde-format
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
-#: dialogs/completionconfigtab.ui:124
+#: dialogs/completionconfigtab.ui:134
 #, fuzzy, kde-format
 #| msgid "Word Completion"
 msgid "&Keyword completion"
 msgstr "単語補完"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/completionconfigtab.ui:133
+#: dialogs/completionconfigtab.ui:143
 #, kde-format
 msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
@@ -536,14 +552,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
-#: dialogs/completionconfigtab.ui:146
+#: dialogs/completionconfigtab.ui:156
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Documentation with completion"
 msgstr "自動補完"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/completionconfigtab.ui:155
+#: dialogs/completionconfigtab.ui:165
 #, kde-format
 msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
@@ -1124,72 +1140,72 @@ msgstr[0] " 文字"
 msgid "Indentation"
 msgstr "字下げ"
 
-#: dialogs/katedialogs.cpp:290
+#: dialogs/katedialogs.cpp:293
 #, kde-format
 msgid "Auto Completion"
 msgstr "自動補完"
 
-#: dialogs/katedialogs.cpp:357
+#: dialogs/katedialogs.cpp:360
 #, kde-format
 msgid "Spellcheck"
 msgstr "スペルチェック"
 
-#: dialogs/katedialogs.cpp:404 dialogs/katedialogs.cpp:411
+#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:414
 #, fuzzy, kde-format
 #| msgctxt "@item:intable Text context"
 #| msgid "Alert"
 msgid "Alt"
 msgstr "警告"
 
-#: dialogs/katedialogs.cpp:405 dialogs/katedialogs.cpp:413
+#: dialogs/katedialogs.cpp:408 dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:406
+#: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:407 dialogs/katedialogs.cpp:415
+#: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
 #, kde-format
 msgid "Ctrl + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:408
+#: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Meta + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:409
+#: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl + Meta"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:412
+#: dialogs/katedialogs.cpp:415
 #, fuzzy, kde-format
 #| msgid "Command"
 msgid "Cmd"
 msgstr "コマンド"
 
-#: dialogs/katedialogs.cpp:414
+#: dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Cmd + Alt"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:416
+#: dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Cmd + Ctrl"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:472
+#: dialogs/katedialogs.cpp:475
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Configuration"
 msgid "Text Navigation"
 msgstr "設定ファイル"
 
-#: dialogs/katedialogs.cpp:574
+#: dialogs/katedialogs.cpp:577
 #, fuzzy, kde-format
 #| msgid " character"
 #| msgid_plural " characters"
@@ -1198,65 +1214,65 @@ msgid " character"
 msgid_plural " characters"
 msgstr[0] " 文字"
 
-#: dialogs/katedialogs.cpp:579
+#: dialogs/katedialogs.cpp:582
 #, kde-format
 msgid "Feature is not active"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:581
+#: dialogs/katedialogs.cpp:584
 #, fuzzy, kde-format
 #| msgid "Disabled Breakpoint"
 msgid "Disable Feature"
 msgstr "無効にされたブレークポイント"
 
-#: dialogs/katedialogs.cpp:583
+#: dialogs/katedialogs.cpp:586
 #, kde-format
 msgid "May be handy with Markdown"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:585
+#: dialogs/katedialogs.cpp:588
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:587
+#: dialogs/katedialogs.cpp:590
 #, fuzzy, kde-format
 #| msgid "Non-word character"
 msgid "Non letter character"
 msgstr "単語構成文字以外"
 
-#: dialogs/katedialogs.cpp:703
+#: dialogs/katedialogs.cpp:706
 #, kde-format
 msgid "Editing"
 msgstr "編集"
 
-#: dialogs/katedialogs.cpp:708
+#: dialogs/katedialogs.cpp:711
 #, kde-format
 msgid "Editing Options"
 msgstr "編集オプション"
 
-#: dialogs/katedialogs.cpp:741
+#: dialogs/katedialogs.cpp:744
 #, kde-format
 msgid "Statusbar"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:743
+#: dialogs/katedialogs.cpp:746
 #, kde-format
 msgid "Off"
 msgstr "表示しない"
 
-#: dialogs/katedialogs.cpp:744
+#: dialogs/katedialogs.cpp:747
 #, kde-format
 msgid "Follow Line Numbers"
 msgstr "行番号に従う"
 
 # skip-rule: appearance
-#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
+#: dialogs/katedialogs.cpp:941 dialogs/katedialogs.cpp:946
 #, kde-format
 msgid "Appearance"
 msgstr "表示"
 
-#: dialogs/katedialogs.cpp:978
+#: dialogs/katedialogs.cpp:981
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1264,12 +1280,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1017
+#: dialogs/katedialogs.cpp:1020
 #, kde-format
 msgid "Advanced"
 msgstr "詳細"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1085
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1277,119 +1293,119 @@ msgstr ""
 "バックアップのサフィックス/プレフィックスが指定されていません。標準のサフィッ"
 "クス (~) を使用します。"
 
-#: dialogs/katedialogs.cpp:1082
+#: dialogs/katedialogs.cpp:1085
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "バックアップサフィックス/プレフィックスなし"
 
-#: dialogs/katedialogs.cpp:1211
+#: dialogs/katedialogs.cpp:1214
 #, kde-format
 msgid "Open/Save"
 msgstr "開く/保存"
 
-#: dialogs/katedialogs.cpp:1216
+#: dialogs/katedialogs.cpp:1219
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "ファイルを開く/保存"
 
-#: dialogs/katedialogs.cpp:1239
+#: dialogs/katedialogs.cpp:1242
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1240
+#: dialogs/katedialogs.cpp:1243
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1251
+#: dialogs/katedialogs.cpp:1254
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1331
+#: dialogs/katedialogs.cpp:1334
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1395
+#: dialogs/katedialogs.cpp:1398
 #, kde-format
 msgid "Dictionary:"
 msgstr "辞書:"
 
-#: dialogs/katedialogs.cpp:1447
+#: dialogs/katedialogs.cpp:1450
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgid "Enable Auto Reload"
 msgstr "自動補完"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1453
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1455
+#: dialogs/katedialogs.cpp:1458
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "差分を表示(&V)"
 
-#: dialogs/katedialogs.cpp:1457
+#: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1462
+#: dialogs/katedialogs.cpp:1465
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "再読み込み(&D)"
 
-#: dialogs/katedialogs.cpp:1464
+#: dialogs/katedialogs.cpp:1467
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr "ファイルをディスクから再度読み込みます。未保存の変更は失われます。"
 
-#: dialogs/katedialogs.cpp:1468
+#: dialogs/katedialogs.cpp:1471
 #, fuzzy, kde-format
 #| msgid "&File"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "ファイル(&F)"
 
-#: dialogs/katedialogs.cpp:1470
+#: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1474
+#: dialogs/katedialogs.cpp:1477
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "別名で保存(&S)..."
 
-#: dialogs/katedialogs.cpp:1476
+#: dialogs/katedialogs.cpp:1479
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "場所を選択してファイルを再度保存できるようにします。"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1484 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "無視(&I)"
 
-#: dialogs/katedialogs.cpp:1482
+#: dialogs/katedialogs.cpp:1485
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "変更を無視します。再度質問されることはありません。"
 
-#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:129
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1398,18 +1414,18 @@ msgstr ""
 "diff コマンドの起動に失敗しました。diff(1) がインストールされていて、あなた"
 "の PATH に存在することを確認してください。"
 
-#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "差分計算中にエラー"
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "The files are identical."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
 #, kde-format
 msgid "Diff Output"
 msgstr "diff 出力"
@@ -2250,12 +2266,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6497
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6500
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6498
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6501
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2405,8 +2421,8 @@ msgid "Untitled"
 msgstr "タイトルなし"
 
 #: document/katedocument.cpp:4692 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5720
-#: document/katedocument.cpp:5907
+#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
+#: document/katedocument.cpp:5910
 #, kde-format
 msgid "Save File"
 msgstr "ファイルを保存"
@@ -2435,7 +2451,7 @@ msgstr ""
 "このファイルへの書き込みアクセス権限があり、ディスクに十分な空き領域があるこ"
 "とを確認してください。"
 
-#: document/katedocument.cpp:5233
+#: document/katedocument.cpp:5236
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2444,7 +2460,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5239
+#: document/katedocument.cpp:5242
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2453,25 +2469,25 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5549
+#: document/katedocument.cpp:5552
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって変更されました。"
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5555
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって作成されました。"
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5558
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "ディスク上のファイル ‘%1’ は他のプログラムによって削除されました。"
 
-#: document/katedocument.cpp:5892
+#: document/katedocument.cpp:5895
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2480,17 +2496,17 @@ msgstr ""
 "文書 “%1” は変更されています。\n"
 "変更を保存しますか？それとも破棄しますか？"
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5898
 #, kde-format
 msgid "Close Document"
 msgstr "文書を閉じる"
 
-#: document/katedocument.cpp:6006
+#: document/katedocument.cpp:6009
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6011
+#: document/katedocument.cpp:6014
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
@@ -6276,192 +6292,199 @@ msgstr "行末まで選択"
 #: variableeditor/variablelineedit.cpp:176
 #, kde-format
 msgctxt "short translation please"
-msgid "Enable folding markers in the editor border."
+msgid ""
+"Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
 msgctxt "short translation please"
+msgid "Enable folding markers in the editor border."
+msgstr ""
+
+#: variableeditor/variablelineedit.cpp:186
+#, kde-format
+msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:187
+#: variableeditor/variablelineedit.cpp:192
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgctxt "short translation please"
 msgid "Set the point size of the document font."
 msgstr "現在の文書のすべてのテキストを選択します。"
 
-#: variableeditor/variablelineedit.cpp:192
+#: variableeditor/variablelineedit.cpp:197
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgctxt "short translation please"
 msgid "Set the font of the document."
 msgstr "現在の文書のすべてのテキストを選択します。"
 
-#: variableeditor/variablelineedit.cpp:208
+#: variableeditor/variablelineedit.cpp:213
 #, fuzzy, kde-format
 #| msgid "Kate Syntax Highlighting Parser"
 msgctxt "short translation please"
 msgid "Set the syntax highlighting."
 msgstr "Kate 構文強調表示パーサ"
 
-#: variableeditor/variablelineedit.cpp:213
+#: variableeditor/variablelineedit.cpp:218
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:218
+#: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:223
+#: variableeditor/variablelineedit.cpp:228
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgctxt "short translation please"
 msgid "Set the auto indentation style."
 msgstr "字下げを示す線を表示する(&N)"
 
-#: variableeditor/variablelineedit.cpp:228
+#: variableeditor/variablelineedit.cpp:233
 #, fuzzy, kde-format
 #| msgid "Adjust indentation of code &pasted from the clipboard"
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
 msgstr "クリップボードから貼り付けたコードの字下げを調整する(&P)"
 
-#: variableeditor/variablelineedit.cpp:234
+#: variableeditor/variablelineedit.cpp:239
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:239
+#: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:244
+#: variableeditor/variablelineedit.cpp:249
 #, fuzzy, kde-format
 #| msgid "Show &line numbers"
 msgctxt "short translation please"
 msgid "Show line numbers."
 msgstr "行番号を表示する(&L)"
 
-#: variableeditor/variablelineedit.cpp:249
+#: variableeditor/variablelineedit.cpp:254
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:254
+#: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:259
+#: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:264
+#: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:269
+#: variableeditor/variablelineedit.cpp:274
 #, fuzzy, kde-format
 #| msgid "Replace all matches"
 msgctxt "short translation please"
 msgid "Replace tabs with spaces."
 msgstr "すべてのマッチを置換"
 
-#: variableeditor/variablelineedit.cpp:274
+#: variableeditor/variablelineedit.cpp:279
 #, fuzzy, kde-format
 #| msgid "Remove &trailing spaces while editing"
 msgctxt "short translation please"
 msgid "Remove trailing spaces when saving the document."
 msgstr "編集時に末尾のスペースを削除する(&T)"
 
-#: variableeditor/variablelineedit.cpp:279
+#: variableeditor/variablelineedit.cpp:284
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
 msgstr "スクロールバーにマークを表示する(&S)"
 
-#: variableeditor/variablelineedit.cpp:284
+#: variableeditor/variablelineedit.cpp:289
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
 msgstr "スクロールバーにマークを表示する(&S)"
 
-#: variableeditor/variablelineedit.cpp:295
+#: variableeditor/variablelineedit.cpp:300
 #, fuzzy, kde-format
 #| msgid "Font & Color Schemas"
 msgctxt "short translation please"
 msgid "Set the color scheme."
 msgstr "フォントと色のスキーマ"
 
-#: variableeditor/variablelineedit.cpp:300
+#: variableeditor/variablelineedit.cpp:305
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:305
+#: variableeditor/variablelineedit.cpp:310
 #, fuzzy, kde-format
 #| msgid "Highlight trailing &spaces"
 msgctxt "short translation please"
 msgid "Visualize tabs and trailing spaces."
 msgstr "末尾のスペースを強調表示する(&S)"
 
-#: variableeditor/variablelineedit.cpp:310
+#: variableeditor/variablelineedit.cpp:315
 #, fuzzy, kde-format
 #| msgid "Auto Completion"
 msgctxt "short translation please"
 msgid "Enable smart home navigation."
 msgstr "自動補完"
 
-#: variableeditor/variablelineedit.cpp:315
+#: variableeditor/variablelineedit.cpp:320
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:321
+#: variableeditor/variablelineedit.cpp:326
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:327
+#: variableeditor/variablelineedit.cpp:332
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the number of undo steps to remember (0 equals infinity)."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:333
+#: variableeditor/variablelineedit.cpp:338
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
 msgstr ""
 
-#: variableeditor/variablelineedit.cpp:338
+#: variableeditor/variablelineedit.cpp:343
 #, fuzzy, kde-format
 #| msgid "S&elected Background Color..."
 msgctxt "short translation please"
 msgid "Set the word wrap marker color."
 msgstr "選択時の背景色(&E)..."
 
-#: variableeditor/variablelineedit.cpp:343
+#: variableeditor/variablelineedit.cpp:348
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
