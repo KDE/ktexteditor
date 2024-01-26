@@ -17,17 +17,17 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:35+0000\n"
-"PO-Revision-Date: 2023-12-03 09:14+0100\n"
+"PO-Revision-Date: 2024-01-25 07:43+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -457,13 +457,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Če pritisnete tipko enter, boste v urejevalnik vstavili besedilo izbranega "
+"elementa dokončanja. Če je onemogočeno, lahko tipko Tab ali dvojni klik še "
+"vedno uporabite za sprožitev dokončanja."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Uporabite to za zmanjšanje zamika izbranega dela besedila."
+msgstr "Uporabite tipko Enter za vstavljanje izbranega dokončanja"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -6200,6 +6202,7 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Omogoči, ali bo pritisk tipke enter vstavil izbrani element samodokončanja."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format

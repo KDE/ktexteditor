@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:35+0000\n"
-"PO-Revision-Date: 2023-12-04 06:15+0100\n"
+"PO-Revision-Date: 2024-01-25 06:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -446,13 +446,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Enter-ის დაჭერა არჩეული დასრულების ტექსტის ელემენტს რედაქტორში ჩასვამს. თუ "
+"გამორთულია, დასრულებისთვის ტრიგერისთვის ღილაკი Tab ან ზედ ორმაგი წკაპი "
+"შეგიძლიათ, გამოიყენოთ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "გამოიყენეთ მონიშნული ტექსტის ბლოკის შეწევის გაუქმებისთვის."
+msgstr "მონიშნული დასრულების ჩასასმელად Enter ღილაკის გამოყენება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -6176,6 +6178,8 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"ჩართეთ, თუ გნებავთ, Enter-ის დაჭერამ მონიშნული ავტოდასრულების ელემენტი "
+"ჩასვას."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format

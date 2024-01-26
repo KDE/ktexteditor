@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:35+0000\n"
-"PO-Revision-Date: 2024-01-23 19:31+0300\n"
+"PO-Revision-Date: 2024-01-25 16:59+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -458,13 +458,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Giriş'e basmak, seçili tamamlama ögesinin metnini girecektir. Devre dışı "
+"bırakılmışsa Sekme düğmesi veya çift tıklama da hâlâ tamamlamayı tetiklemek "
+"için kullanılabilir."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Seçili metin blokunun girintisini temizlemek için bunu kullanın."
+msgstr "Seçili tamamlamayı girmek için Giriş düğmesini kullan"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -6200,6 +6202,7 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Giriş düğmesine basmanın kendiliğinden tamamlama ögesini girip girmeyeceği."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
