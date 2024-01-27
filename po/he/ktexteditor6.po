@@ -15,13 +15,13 @@
 # Diego Iastrubni <elcuco@kde.org>, 2005, 2006, 2007, 2008, 2012, 2014.
 # Meni Livne <livne@kde.org>, 2007.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:35+0000\n"
-"PO-Revision-Date: 2023-12-15 09:37+0200\n"
+"PO-Revision-Date: 2024-01-26 21:23+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -77,7 +77,7 @@ msgstr "&קובץ"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "הדפסה/ייצוא"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -1051,13 +1051,13 @@ msgid "Increase indentation level if in l&eading blank space"
 msgstr "הגדלת כניסת ההזחה אם השורה מתחילה ב&רווחים"
 
 #: dialogs/katedialogs.cpp:183 dialogs/katedialogs.cpp:185
-#, fuzzy, kde-format
+#, kde-format
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " תו"
 msgstr[1] " תווים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] " תווים"
+msgstr[3] " תווים"
 
 #: dialogs/katedialogs.cpp:209
 #, kde-format
@@ -1125,14 +1125,14 @@ msgid "Text Navigation"
 msgstr "ניווט טקסט"
 
 #: dialogs/katedialogs.cpp:577
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
 msgstr[0] " תו"
 msgstr[1] " תווים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] " תווים"
+msgstr[3] " תווים"
 
 #: dialogs/katedialogs.cpp:582
 #, kde-format
@@ -2626,7 +2626,7 @@ msgstr ""
 "li> <li><tt>%h</tt>: השעה הנוכחית</li> <li><tt>%y</tt>: התאריך הנוכחי בתבנית "
 "קצרה</li> <li><tt>%Y</tt>: התאריך הנוכחי בתבנית ארוכה</li> <li><tt>%f</tt>: "
 "שם הקובץ</li> <li><tt>%U</tt>: הכתובת המלאה של המסמך</li> <li><tt>%p</tt>: "
-"מספר העמוד</li> <li><tt>%P</tt>: כמות הכוללת של העמודים</li> </ul><br /> "
+"מספר העמוד</li> <li><tt>%P</tt>: כמות הכוללת של העמודים</li> </ul><br />"
 
 #: printing/printconfigwidgets.cpp:266
 #, kde-format
@@ -5313,12 +5313,12 @@ msgstr "מפתח"
 #: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Anders Lund"
-msgstr "Anders Lund"
+msgstr "אנדרס לונד"
 
 #: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Michel Ludwig"
-msgstr "Michel Ludwig"
+msgstr "מישל לודוויג"
 
 #: utils/kateglobal.cpp:110
 #, kde-format
@@ -5343,7 +5343,7 @@ msgstr "Hamish Rodda"
 #: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Waldo Bastian"
-msgstr "Waldo Bastian"
+msgstr "ולדו בסטיאן"
 
 #: utils/kateglobal.cpp:113
 #, kde-format
@@ -5353,7 +5353,7 @@ msgstr "מערכת המאגרים המגניבה"
 #: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Charles Samuels"
-msgstr "Charles Samuels"
+msgstr "צ׳ארלס סמואלס"
 
 #: utils/kateglobal.cpp:114
 #, kde-format
@@ -5373,7 +5373,7 @@ msgstr "בדיקות, ..."
 #: utils/kateglobal.cpp:116
 #, kde-format
 msgid "Michael Bartl"
-msgstr "Michael Bartl"
+msgstr "מייקל ברטי"
 
 #: utils/kateglobal.cpp:116
 #, kde-format
@@ -6028,7 +6028,7 @@ msgstr "הגדרת סגנון ההזחה האוטומטית."
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "התאם הזחה של קוד שמודבק מלוח העריכה"
+msgstr "התאמת הזחה של קוד שמודבק מלוח העריכה."
 
 #: variableeditor/variablelineedit.cpp:239
 #, kde-format
@@ -6290,13 +6290,13 @@ msgid "Other..."
 msgstr "אחר"
 
 #: view/katestatusbar.cpp:477
-#, fuzzy, kde-format
+#, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
-msgstr[0] "אחר"
-msgstr[1] "אחר"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "אחר (%1)"
+msgstr[1] "אחרים (%1)"
+msgstr[2] "אחרים (%1)"
+msgstr[3] "אחרים (%1)"
 
 #: view/katestatusbar.cpp:489
 #, kde-format
@@ -7008,7 +7008,7 @@ msgstr "חפש נבחר"
 #: view/kateview.cpp:882
 #, kde-format
 msgid "Finds next occurrence of selected text."
-msgstr "מחפש את ההופעה הבאה של הטקסט הנבחר"
+msgstr "מחפש את המופע הבאה של הטקסט הנבחר."
 
 #: view/kateview.cpp:886
 #, kde-format
@@ -7601,7 +7601,7 @@ msgstr "אין פקודה כזאת: „%1”"
 #: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
-msgstr "שגיאה: אסור טווח לפקודה „%1”"
+msgstr "שגיאה: אסור טווח לפקודה „%1”."
 
 #: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
@@ -7853,7 +7853,7 @@ msgstr "ארגומנטים שגויים"
 #: vimode/config/configtab.cpp:201
 #, kde-format
 msgid "Unable to open the config file for reading."
-msgstr "אין אפשרות לפתוח את קובץ התצורה לקריאה"
+msgstr "אין אפשרות לפתוח את קובץ התצורה לקריאה."
 
 #: vimode/config/configtab.cpp:201
 #, kde-format
@@ -7876,7 +7876,7 @@ msgstr ""
 #: vimode/config/configwidget.ui:38
 #, kde-format
 msgid "Let Vi commands override Kate shortcuts"
-msgstr "אפשר לפקודות של vi לעקוף את הקיצורים של kate."
+msgstr "לאפשר לפקודות של vi לעקוף את הקיצורים של kate"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkViRelLineNumbers)
 #: vimode/config/configwidget.ui:45

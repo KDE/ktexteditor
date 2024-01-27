@@ -8,7 +8,7 @@
 # Pablo de Vicente <pablo.devicente@gmail.com>, 2004, 2005, 2007.
 # Jaime Robles <jaime@kde.org>, 2006, 2007.
 # Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>, 2006, 2007.
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>, 2011, 2012, 2013.
 # arklad, 2011.
 # Rocio Gallego <traducciones@rociogallego.com>, 2013, 2014.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:35+0000\n"
-"PO-Revision-Date: 2023-12-03 21:33+0100\n"
+"PO-Revision-Date: 2024-01-26 02:01+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -465,13 +465,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Al pulsar Intro se insertará el texto del elemento de terminación "
+"seleccionado en el editor. Si está desactivada, se puede seguir usando la "
+"tecla del tabulador o un doble clic para activar la terminación."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Use esto para desangrar un bloque de texto seleccionado."
+msgstr "Usar la tecla Intro para insertar la terminación seleccionada"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -6291,6 +6293,8 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Controla si al pulsar Intro se insertará el elemento de terminación "
+"automática seleccionado."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
