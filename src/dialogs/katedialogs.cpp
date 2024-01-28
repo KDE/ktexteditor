@@ -1539,7 +1539,7 @@ void KateModOnHdPrompt::slotPDone()
     m_proc = nullptr;
 
     if (es != QProcess::NormalExit) {
-        KMessageBox::error(nullptr,
+        KMessageBox::error(m_doc->activeView(),
                            i18n("The diff command failed. Please make sure that "
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
@@ -1549,7 +1549,7 @@ void KateModOnHdPrompt::slotPDone()
     }
 
     if (m_diffFile->size() == 0) {
-        KMessageBox::information(nullptr, i18n("The files are identical."), i18n("Diff Output"));
+        KMessageBox::information(m_doc->activeView(), i18n("The files are identical."), i18n("Diff Output"));
         delete m_diffFile;
         m_diffFile = nullptr;
         return;
