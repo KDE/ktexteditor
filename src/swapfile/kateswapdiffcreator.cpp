@@ -83,7 +83,7 @@ void SwapDiffCreator::viewDiff()
     // use diff from PATH only => inform if not found at all
     const QString fullDiffPath = QStandardPaths::findExecutable(QStringLiteral("diff"));
     if (fullDiffPath.isEmpty()) {
-        KMessageBox::error(nullptr,
+        KMessageBox::error(m_swapFile->document()->activeView(),
                            i18n("The diff command could not be found. Please make sure that "
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
@@ -94,7 +94,9 @@ void SwapDiffCreator::viewDiff()
     // try to start the diff program, might fail, too
     m_proc.start(fullDiffPath, QStringList() << QStringLiteral("-u") << m_originalFile.fileName() << m_recoveredFile.fileName());
     if (!m_proc.waitForStarted()) {
-        KMessageBox::error(nullptr, i18n("The diff command '%1' could not be started.").arg(fullDiffPath), i18n("Error Creating Diff"));
+        KMessageBox::error(m_swapFile->document()->activeView(),
+                           i18n("The diff command '%1' could not be started.").arg(fullDiffPath),
+                           i18n("Error Creating Diff"));
         deleteLater();
         return;
     }
@@ -125,7 +127,7 @@ void SwapDiffCreator::slotDiffFinished()
 
     // check exit status
     if (es != QProcess::NormalExit) {
-        KMessageBox::error(nullptr,
+        KMessageBox::error(m_swapFile->document()->activeView(),
                            i18n("The diff command failed. Please make sure that "
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
@@ -135,7 +137,7 @@ void SwapDiffCreator::slotDiffFinished()
 
     // sanity check: is there any diff content?
     if (m_diffFile.size() == 0) {
-        KMessageBox::information(nullptr, i18n("The files are identical."), i18n("Diff Output"));
+        KMessageBox::information(m_swapFile->document()->activeView(), i18n("The files are identical."), i18n("Diff Output"));
         deleteLater();
         return;
     }
