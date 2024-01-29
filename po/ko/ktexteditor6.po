@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:35+0000\n"
+"POT-Creation-Date: 2024-01-29 00:35+0000\n"
 "PO-Revision-Date: 2023-08-28 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1301,7 +1301,7 @@ msgstr "무시(&I)"
 msgid "Ignores the changes on disk without any action."
 msgstr "추가 변경 없이 디스크의 변경 사항을 무시합니다."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1311,17 +1311,17 @@ msgstr ""
 "하십시오."
 
 #: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
-#: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "diff 생성 실패"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "파일이 같습니다."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff 출력"
@@ -4127,7 +4127,7 @@ msgstr ""
 "diff 명령을 찾을 수 없습니다. diff(1)가 설치되어 있으면 PATH 환경 변수 안에 "
 "속해 있는지 확인하십시오."
 
-#: swapfile/kateswapdiffcreator.cpp:97
+#: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr "diff 명령 '%1'을(를) 시작할 수 없습니다."

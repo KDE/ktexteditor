@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:35+0000\n"
+"POT-Creation-Date: 2024-01-29 00:35+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1394,7 +1394,7 @@ msgstr "&Ignoriši"
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignoriše izmene na disku bez ikakve radnje."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:129
+#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1404,17 +1404,17 @@ msgstr ""
 "nalazi u putanji."
 
 #: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
-#: swapfile/kateswapdiffcreator.cpp:97 swapfile/kateswapdiffcreator.cpp:131
+#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Greška pri razlikovanju"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Fajlovi su istovetni."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:138
+#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Izlaz razlike"
@@ -4366,7 +4366,7 @@ msgstr ""
 "Naredba diff nije uspela. Uverite se da je diff(1) instalirana i da se "
 "nalazi u putanji."
 
-#: swapfile/kateswapdiffcreator.cpp:97
+#: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
