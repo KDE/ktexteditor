@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:25+0000\n"
+"POT-Creation-Date: 2024-01-29 01:34+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -1344,7 +1344,7 @@ msgstr "មិន​អើពើ​ពាក្យ​"
 msgid "Ignores the changes on disk without any action."
 msgstr "មិន​អើពើ​នឹង​ការ​ផ្លាស់​ប្ដូរ ។ អ្នក​នឹង​មិន​ត្រូវ​បាន​អនុញ្ញាត​ឲ្យ​ផ្លាស់ប្ដូរ​ម្ដងទៀត​ឡើយ ។"
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1354,17 +1354,17 @@ msgstr ""
 "អ្នក ។"
 
 #: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
-#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
+#: swapfile/kateswapdiffcreator.cpp:101 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "កំហុស​ក្នុង​ការ​បង្កើត Diff"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "The files are identical."
 msgstr "ឯកសារ​ដូច​គ្នា ។"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "Diff Output"
 msgstr "លទ្ធផល Diff"
@@ -4276,7 +4276,7 @@ msgstr ""
 "ពាក្យ​បញ្ជា diff បាន​បរាជ័យ ។ សូម​ប្រាកដ​ថា diff(1) ត្រូវ​បាន​ដំឡើង ហើយ​ស្ថិតនៅ​ក្នុង PATH របស់​"
 "អ្នក ។"
 
-#: swapfile/kateswapdiffcreator.cpp:99
+#: swapfile/kateswapdiffcreator.cpp:100
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""

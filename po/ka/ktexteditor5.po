@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:25+0000\n"
+"POT-Creation-Date: 2024-01-29 01:34+0000\n"
 "PO-Revision-Date: 2023-08-30 07:58+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1290,7 +1290,7 @@ msgstr "იგნორი"
 msgid "Ignores the changes on disk without any action."
 msgstr "დისკზე ცვლილებების იგნორი ქმედებების გარეშე."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1300,17 +1300,17 @@ msgstr ""
 "PATH-შია."
 
 #: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
-#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
+#: swapfile/kateswapdiffcreator.cpp:101 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "სხვაობის შექმნის შეცდომა"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "The files are identical."
 msgstr "ფაილები ერთნაირია."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff -ის გამოტანა"
@@ -4148,7 +4148,7 @@ msgstr ""
 "ბრძანება diff-ის შეცდომა. დარწმუნდით, რომ diff (1) დაყენებულია და თქვენს "
 "PATH-შია."
 
-#: swapfile/kateswapdiffcreator.cpp:99
+#: swapfile/kateswapdiffcreator.cpp:100
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr "Diff-ის ბრძანების '%1' გაშვება შეუძლებელია."

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:25+0000\n"
+"POT-Creation-Date: 2024-01-29 01:34+0000\n"
 "PO-Revision-Date: 2023-04-12 03:15+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1313,7 +1313,7 @@ msgstr "&Ignora"
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignora le modifiche le modifiche su disco senza alcuna azione."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1323,17 +1323,17 @@ msgstr ""
 "installato e accessibile dal tuo percorso PATH."
 
 #: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
-#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
+#: swapfile/kateswapdiffcreator.cpp:101 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Errore durante la creazione di una differenza"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "The files are identical."
 msgstr "I file sono identici."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "Diff Output"
 msgstr "Risultato di diff"
@@ -4207,7 +4207,7 @@ msgstr ""
 "Impossibile trovare il comando diff. Assicurati che diff(1) sia installato e "
 "che sia presente nel tuo PATH."
 
-#: swapfile/kateswapdiffcreator.cpp:99
+#: swapfile/kateswapdiffcreator.cpp:100
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr "Il comando diff «%1» non può essere avviato."

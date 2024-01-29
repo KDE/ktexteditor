@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:25+0000\n"
+"POT-Creation-Date: 2024-01-29 01:34+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1358,7 +1358,7 @@ msgstr "&Ignorēt"
 msgid "Ignores the changes on disk without any action."
 msgstr "Ignorēt izmaiņas. Jums vairs netiks uzdots šis jautājums."
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1368,17 +1368,17 @@ msgstr ""
 "instalēts un atrodas mainīgajā PATH."
 
 #: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
-#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
+#: swapfile/kateswapdiffcreator.cpp:101 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Kļūda, iegūstot atšķirības"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "The files are identical."
 msgstr "Datnes ir identiskas."
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff izvade"
@@ -4271,7 +4271,7 @@ msgstr ""
 "Neizdevās palaist diff komandu. Lūdzu, pārliecinieties ka diff(1) ir "
 "instalēts un atrodas mainīgajā PATH."
 
-#: swapfile/kateswapdiffcreator.cpp:99
+#: swapfile/kateswapdiffcreator.cpp:100
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""

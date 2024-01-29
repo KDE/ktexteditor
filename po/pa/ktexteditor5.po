@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:25+0000\n"
+"POT-Creation-Date: 2024-01-29 01:34+0000\n"
 "PO-Revision-Date: 2019-02-09 14:04-0800\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -1298,7 +1298,7 @@ msgstr "ਅਣਡਿੱਠਾ(&I)"
 msgid "Ignores the changes on disk without any action."
 msgstr "ਤਬਦੀਲੀਆਂ ਅਣਡਿੱਠੀਆਂ। ਤੁਹਾਨੂੰ ਮੁੜ ਪੁਛਿਆ ਨਹੀਂ ਜਾਵੇਗਾ।"
 
-#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1543 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1308,17 +1308,17 @@ msgstr ""
 "ਤੁਹਾਡੇ ਮਾਰਗ (PATH) 'ਚ ਹੈ।"
 
 #: dialogs/katedialogs.cpp:1545 swapfile/kateswapdiffcreator.cpp:91
-#: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
+#: swapfile/kateswapdiffcreator.cpp:101 swapfile/kateswapdiffcreator.cpp:135
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "ਅੰਤਰ ਬਣਾਉਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "The files are identical."
 msgstr "ਫਾਈਲਾਂ ਇੱਕੋ ਜਿਹੀਆਂ ਹਨ।"
 
-#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1552 swapfile/kateswapdiffcreator.cpp:142
 #, kde-format
 msgid "Diff Output"
 msgstr "ਅੰਤਰ ਆਉਟਪੁੱਟ"
@@ -4117,7 +4117,7 @@ msgstr ""
 "ਅੰਤਰ(diff) ਕਮਾਂਡ ਅਸਫ਼ਲ ਰਹੀ ਹੈ। ਇਹ ਪੁਸ਼ਟੀ ਕਰੋ ਕਿ ਤੁਹਾਡੇ ਸਿਸਟਮ ਉੱਤੇ diff(1) ਇੰਸਟਾਲ ਹੈ ਅਤੇ ਇਹ "
 "ਤੁਹਾਡੇ ਮਾਰਗ (PATH) 'ਚ ਹੈ।"
 
-#: swapfile/kateswapdiffcreator.cpp:99
+#: swapfile/kateswapdiffcreator.cpp:100
 #, kde-format
 msgid "The diff command '%1' could not be started."
 msgstr ""
