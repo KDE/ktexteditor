@@ -1,5 +1,5 @@
 # translation of katepart4.po to Italian
-# SPDX-FileCopyrightText: 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Vincenzo Reale <smart2128vr@gmail.com>
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Vincenzo Reale <smart2128vr@gmail.com>
 # Andrea Rizzi <rizzi@kde.org>, 2003, 2004.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2004, 2007, 2008, 2009, 2010, 2011.
 # Federico Cozzi <federicocozzi@federicocozzi.it>, 2004.
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2023-12-03 20:05+0100\n"
+"PO-Revision-Date: 2024-01-25 14:16+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -454,13 +454,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"La pressione del tasto Invio inserirà nell'editor il testo dell'elemento di "
+"completamento selezionato. Se disabilitato, è comunque possibile utilizzare "
+"il tasto Tab o il doppio clic per attivare il completamento."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Usa questo comando per ridurre il rientro del testo selezionato."
+msgstr "Utilizza il tasto Invio per inserire il completamento selezionato"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -6260,6 +6262,8 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Abilita se premendo Invio sarà inserito l'elemento di completamento "
+"automatico selezionato."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
