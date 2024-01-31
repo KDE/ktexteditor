@@ -10,7 +10,7 @@
 # Teemu Rytilahti <tpr@d5k.net>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
 # Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2008, 2012.
-# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2010, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2022.
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2023-07-27 16:03+0300\n"
+"PO-Revision-Date: 2024-01-11 17:29+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -159,10 +159,9 @@ msgstr "Oikoluku"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Etsittävä teksti"
+msgstr "Puhesynteesi"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -690,13 +689,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Käytä esteettömyysilmoituksia"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Esteettömyys:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -3137,15 +3136,13 @@ msgstr "Siirrä kohdistin seuraavan vastaavaan sisennyksen kohdalle"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Siirry seuraavaan kappaleeseen"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Siirry edelliseen muokkauskohtaan"
+msgstr "Siirry edelliseen kappaleeseen"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3227,12 +3224,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Monista valitut rivit ylle"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Monista valitut rivit ylle"
+msgstr "Monista valittu teksti"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -7277,11 +7272,10 @@ msgid "Find and Select All Occurrences"
 msgstr "Etsi ja valitse kaikki esiintymät"
 
 #: view/kateview.cpp:906
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr ""
-"Etsi kohdistimen kohdalla olevan sanan kaikki esiintymät ja valitse ne."
+"Etsii kohdistimen kohdalla olevan sanan kaikki esiintymät ja valitsee ne."
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -7442,10 +7436,9 @@ msgid "Select Word Right"
 msgstr "Valitse sana oikealta"
 
 #: view/kateview.cpp:1051
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Liitä valinta"
+msgstr "Aloita merkitty valinta"
 
 #: view/kateview.cpp:1052
 #, kde-format
@@ -7453,6 +7446,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Matki Emacsin valintatapaa, jossa merkitään alku, minkä jälkeen valinta "
+"päivittyy jatkuvasti."
 
 #: view/kateview.cpp:1057
 #, kde-format
@@ -7717,28 +7712,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Laajenna tai supista haarat"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Nykyisen tiedoston tekstivalinta."
+msgstr "Puhu nykyinen valinta tai tiedosto"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Tallenna nykyinen tiedosto"
+msgstr "Pysäytä nykyinen tuloste"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Tallenna nykyinen tiedosto"
+msgstr "Keskeytä nykyinen tuloste"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Tallenna nykyinen tiedosto"
+msgstr "Jatka nykyistä tulostetta"
 
 #: view/kateview.cpp:1529
 #, kde-format
@@ -7908,12 +7899,12 @@ msgstr "Tallenna…"
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Ruutukaappauksen tallentaminen epäonnistui"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Ruutukaappauksen tallentaminen epäonnistui: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
