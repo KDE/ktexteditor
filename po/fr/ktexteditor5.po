@@ -19,24 +19,24 @@
 # Maxime Corteel <mcorteel@gmail.com>, 2014, 2021.
 # Simon Depiets <sdepiets@gmail.com>, 2017, 2018, 2019.
 # Vincent Pinon <vpinon@kde.org>, 2017.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2023-10-31 14:40+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"PO-Revision-Date: 2024-01-26 09:42+0100\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.3\n"
-"X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
+"X-Environment: kde\n"
+"X-Generator: Lokalize 23.08.4\n"
 "X-Text-Markup: kde4\n"
 
 #: completion/katecompletionmodel.cpp:133
@@ -197,7 +197,8 @@ msgid "Show arrows to collapse code blocks"
 msgstr "Afficher les flèches pour réduire les blocs de code"
 
 # | msgid ""
-# | "If this option is checked, every new view will show marks on the vertical "
+# | "If this option is checked, every new view will show marks on the vertical
+# "
 # | "scrollbar.<br><br>These marks will, for instance, show bookmarks."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
@@ -222,7 +223,8 @@ msgid "Left side:"
 msgstr "Côté gauche :"
 
 # | msgid ""
-# | "If this option is checked, every new view will display an icon border on "
+# | "If this option is checked, every new view will display an icon border on
+# "
 # | "the left hand side.<br><br>The icon border shows bookmark signs, for "
 # | "instance."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
@@ -284,7 +286,8 @@ msgid "Scrollbars"
 msgstr "Barres de défilement"
 
 # | msgid ""
-# | "If this option is checked, every new view will show marks on the vertical "
+# | "If this option is checked, every new view will show marks on the vertical
+# "
 # | "scrollbar.<br><br>These marks will, for instance, show bookmarks."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:128
@@ -298,7 +301,8 @@ msgstr ""
 "exemple, les signets.</p>"
 
 # | msgid ""
-# | "If this option is checked, every new view will show marks on the vertical "
+# | "If this option is checked, every new view will show marks on the vertical
+# "
 # | "scrollbar.<br><br>These marks will, for instance, show bookmarks."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:138
@@ -556,10 +560,13 @@ msgid "Word wrap:"
 msgstr "Retour à la ligne de mots :"
 
 # | msgid ""
-# | "Automatically start a new line of text when the current line exceeds the "
-# | "length specified by the <b>Wrap words at:</b> option.<p>This option does "
+# | "Automatically start a new line of text when the current line exceeds the
+# "
+# | "length specified by the <b>Wrap words at:</b> option.<p>This option does
+# "
 # | "not wrap existing lines of text - use the <b>Apply Static Word Wrap</b> "
-# | "option in the <b>Tools</b> menu for that purpose.<p>If you want lines to "
+# | "option in the <b>Tools</b> menu for that purpose.<p>If you want lines to
+# "
 # | "be <i>visually wrapped</i> instead, according to the width of the view, "
 # | "enable <b>Dynamic Word Wrap</b> in the <b>View Defaults</b> config page."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkStaticWordWrap)
@@ -590,7 +597,8 @@ msgstr "Replier les &mots dans une colonne de taille fixe"
 
 # | msgid ""
 # | "<p>If this option is checked, a vertical line will be drawn at the word "
-# | "wrap column as defined in the <strong>Editing</strong> properties.<p>Note "
+# | "wrap column as defined in the <strong>Editing</strong> properties.<p>Note
+# "
 # | "that the word wrap marker is only drawn if you use a fixed pitch font."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
@@ -835,8 +843,10 @@ msgid "File e&xtensions:"
 msgstr "E&xtensions de fichiers :"
 
 # | msgid ""
-# | "The wildcards mask allows you to select files by filename. A typical mask "
-# | "uses an asterisk and the file extension, for example <code>*.txt; *.text</"
+# | "The wildcards mask allows you to select files by filename. A typical mask
+# "
+# | "uses an asterisk and the file extension, for example <code>*.txt;
+# *.text</"
 # | "code>. The string is a semicolon-separated list of masks."
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtFileExtensions)
 #: dialogs/filetypeconfigwidget.ui:159
@@ -858,7 +868,8 @@ msgid "MIME &types:"
 msgstr "&Types MIME :"
 
 # | msgid ""
-# | "The mime type mask allows you to select files by mimetype. The string is "
+# | "The mime type mask allows you to select files by mimetype. The string is
+# "
 # | "a semicolon-separated list of mimetypes, for example <code>text/plain; "
 # | "text/english</code>."
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtMimeTypes)
@@ -1816,7 +1827,8 @@ msgid "Macintosh"
 msgstr "Macintosh"
 
 # | msgid ""
-# | "Check this if you want the editor to autodetect the end of line type.The "
+# | "Check this if you want the editor to autodetect the end of line type.The
+# "
 # | "first found end of line type will be used for the whole file."
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:122
@@ -2252,7 +2264,8 @@ msgstr "Ne pas indenter les lignes plus larges que :"
 
 # | msgid ""
 # | "<p>Enables the start of dynamically wrapped lines to be aligned "
-# | "vertically to the indentation level of the first line.  This can help to "
+# | "vertically to the indentation level of the first line.  This can help to
+# "
 # | "make code and markup more readable.</p><p>Additionally, this allows you "
 # | "to set a maximum width of the screen, as a percentage, after which "
 # | "dynamically wrapped lines will no longer be vertically aligned.  For "
@@ -2884,7 +2897,8 @@ msgstr ""
 "<p>Format de l'en-tête. Les balises suivantes sont prises en charge :</p>"
 
 # | msgid ""
-# | "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete date/"
+# | "<ul><li><tt>%u</tt>: current user name</li><li><tt>%d</tt>: complete
+# date/"
 # | "time in short format</li><li><tt>%D</tt>: complete date/time in long "
 # | "format</li><li><tt>%h</tt>: current time</li><li><tt>%y</tt>: current "
 # | "date in short format</li><li><tt>%Y</tt>: current date in long format</"
@@ -5071,7 +5085,8 @@ msgstr "Paramètre fictif non modifiable"
 # | msgid ""
 # | "This list displays the default styles for the current schema and offers "
 # | "the means to edit them. The style name reflects the current style "
-# | "settings.<p>To edit the colors, click the colored squares, or select the "
+# | "settings.<p>To edit the colors, click the colored squares, or select the
+# "
 # | "color to edit from the popup menu.<p>You can unset the Background and "
 # | "Selected Background colors from the popup menu when appropriate."
 #: syntax/katethemeconfig.cpp:501
@@ -5127,12 +5142,15 @@ msgid "H&ighlight:"
 msgstr "Coloration s&yntaxique :"
 
 # | msgid ""
-# | "This list displays the contexts of the current syntax highlight mode and "
+# | "This list displays the contexts of the current syntax highlight mode and
+# "
 # | "offers the means to edit them. The context name reflects the current "
-# | "style settings.<p>To edit using the keyboard, press <strong>&lt;SPACE&gt;"
+# | "style settings.<p>To edit using the keyboard, press
+# <strong>&lt;SPACE&gt;"
 # | "</strong> and choose a property from the popup menu.<p>To edit the "
 # | "colors, click the colored squares, or select the color to edit from the "
-# | "popup menu.<p>You can unset the Background and Selected Background colors "
+# | "popup menu.<p>You can unset the Background and Selected Background colors
+# "
 # | "from the context menu when appropriate."
 #: syntax/katethemeconfig.cpp:746
 #, kde-format
@@ -6914,8 +6932,10 @@ msgid "&Clean Indentation"
 msgstr "&Supprimer l'indentation"
 
 # | msgid ""
-# | "Use this to clean the indentation of a selected block of text (only tabs/"
-# | "only spaces)<br><br>You can configure whether tabs should be honored and "
+# | "Use this to clean the indentation of a selected block of text (only
+# tabs/"
+# | "only spaces)<br><br>You can configure whether tabs should be honored and
+# "
 # | "used or replaced with spaces, in the configuration dialog."
 #: view/kateview.cpp:502
 #, kde-format
@@ -8082,9 +8102,11 @@ msgid "No such command <b>%1</b>"
 msgstr "Aucune commande <b>%1</b> de ce type"
 
 # | msgid ""
-# | "<p>This is the Katepart <b>command line</b>.<br>Syntax: <code><b>command "
+# | "<p>This is the Katepart <b>command line</b>.<br>Syntax: <code><b>command
+# "
 # | "[ arguments ]</b></code><br>For a list of available commands, enter "
-# | "<code><b>help list</b></code><br>For help for individual commands, enter "
+# | "<code><b>help list</b></code><br>For help for individual commands, enter
+# "
 # | "<code><b>help &lt;command&gt;</b></code></p>"
 #: view/kateviewhelpers.cpp:1168
 #, kde-format
