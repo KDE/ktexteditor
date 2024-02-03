@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2024-01-28 11:08+0100\n"
+"PO-Revision-Date: 2024-02-02 22:38+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -453,6 +453,9 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Premante enigklavon enigos la tekston de elektita kompletigo en la "
+"redaktilon. Se malebligita, Tabklavo aŭ duobla klako ankoraŭ povas esti "
+"uzata por ekigi kompletigon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
@@ -6181,7 +6184,7 @@ msgstr "Agordas la finon de linio-reĝimo."
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "Ebligu ĉu premante enigklavon enigos elektitan aŭtomatan kompletigon."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
