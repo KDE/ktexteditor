@@ -580,7 +580,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     clear();
 
     // construct the file loader for the given file, with correct prober type
-    Kate::TextLoader file(filename, m_encodingProberType);
+    Kate::TextLoader file(filename, m_encodingProberType, m_lineLengthLimit);
 
     // triple play, maximal three loading rounds
     // 0) use the given encoding, be done, if no encoding errors happen
@@ -599,6 +599,10 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         // remove lines in first block
         m_blocks.back()->clearLines();
         m_lines = 0;
+
+        // reset error flags
+        tooLongLinesWrapped = false;
+        longestLineLoaded = 0;
 
         // try to open file, with given encoding
         // in round 0 + 3 use the given encoding from user
@@ -624,7 +628,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
             // read line
             int offset = 0;
             int length = 0;
-            bool currentError = !file.readLine(offset, length);
+            bool currentError = !file.readLine(offset, length, tooLongLinesWrapped, longestLineLoaded);
             encodingErrors = encodingErrors || currentError;
 
             // bail out on encoding error, if not last round!
@@ -633,52 +637,14 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 break;
             }
 
-            // get Unicode data for this line
-            const QChar *unicodeData = file.unicode() + offset;
-
-            if (longestLineLoaded < length) {
-                longestLineLoaded = length;
-            }
-
-            // split lines, if too large
-            do {
-                // calculate line length
-                int lineLength = length;
-                if ((m_lineLengthLimit > 0) && (lineLength > m_lineLengthLimit)) {
-                    // search for place to wrap
-                    int spacePosition = m_lineLengthLimit - 1;
-                    for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10)));
-                         --testPosition) {
-                        // wrap place found?
-                        if (unicodeData[testPosition].isSpace() || unicodeData[testPosition].isPunct()) {
-                            spacePosition = testPosition;
-                            break;
-                        }
-                    }
-
-                    // wrap the line
-                    lineLength = spacePosition + 1;
-                    length -= lineLength;
-                    tooLongLinesWrapped = true;
-                } else {
-                    // be done after this round
-                    length = 0;
-                }
-
-                // construct new text line with content from file
-                // move data pointer
-                QString textLine(unicodeData, lineLength);
-                unicodeData += lineLength;
-
                 // ensure blocks aren't too large
                 if (m_blocks.back()->lines() >= BufferBlockSize) {
                     m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
                 }
 
                 // append line to last block
-                m_blocks.back()->appendLine(textLine);
+                m_blocks.back()->appendLine(QString(file.unicode() + offset, length));
                 ++m_lines;
-            } while (length > 0);
         }
 
         // if no encoding error, break out of reading loop

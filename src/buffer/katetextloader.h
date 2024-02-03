@@ -37,8 +37,9 @@ public:
      * Construct file loader for given file.
      * @param filename file to open
      * @param proberType prober type
+     * @param lineLengthLimit limit for lines to load, else we break them up in smaller ones
      */
-    TextLoader(const QString &filename, KEncodingProber::ProberType proberType)
+    TextLoader(const QString &filename, KEncodingProber::ProberType proberType, int lineLengthLimit)
         : m_eof(false) // default to not eof
         , m_lastWasEndOfLine(true) // at start of file, we had a virtual newline
         , m_lastWasR(false) // we have not found a \r as last char
@@ -51,6 +52,7 @@ public:
         , m_firstRead(true)
         , m_proberType(proberType)
         , m_fileSize(0)
+        , m_lineLengthLimit(lineLengthLimit)
     {
         // try to get mimetype for on the fly decompression, don't rely on filename!
         QFile testMime(filename);
@@ -163,9 +165,11 @@ public:
      * read a line, return length + offset in Unicode data
      * @param offset offset into internal Unicode data for read line
      * @param length length of read line
+     * @param tooLongLinesWrapped was a too long line seen?
+     * @param longestLineLoaded length of the longest line that hit the limit
      * @return true if no encoding errors occurred
      */
-    bool readLine(int &offset, int &length)
+    bool readLine(int &offset, int &length, bool &tooLongLinesWrapped, int &longestLineLoaded)
     {
         length = 0;
         offset = 0;
@@ -348,6 +352,35 @@ public:
                     m_lastWasR = false;
                 }
             }
+
+            // handle too long lines
+            if ((m_lineLengthLimit > 0) && ((m_text.length() - m_lastLineStart) > m_lineLengthLimit)) {
+                // remember stick error
+                tooLongLinesWrapped = true;
+                longestLineLoaded = std::max(longestLineLoaded, int(m_text.length() - m_lastLineStart));
+
+                // search for place to wrap
+                int spacePosition = m_lineLengthLimit - 1;
+                for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10)));
+                     --testPosition) {
+                    // wrap place found?
+                    if (m_text[m_lastLineStart + testPosition].isSpace() || m_text[m_lastLineStart + testPosition].isPunct()) {
+                        spacePosition = testPosition;
+                        break;
+                    }
+                }
+
+                m_lastWasEndOfLine = false;
+                m_lastWasR = false;
+
+                // line data
+                offset = m_lastLineStart;
+                length = spacePosition + 1;
+
+                m_lastLineStart = m_position = (m_lastLineStart + length);
+
+                return !encodingError;
+            }
         }
 
         return !encodingError;
@@ -376,6 +409,7 @@ private:
     bool m_firstRead;
     KEncodingProber::ProberType m_proberType;
     quint64 m_fileSize;
+    const int m_lineLengthLimit;
 };
 
 }
