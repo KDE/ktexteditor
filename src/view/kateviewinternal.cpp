@@ -4928,13 +4928,12 @@ void KateViewInternal::hideBracketMatchPreview()
     m_bmPreview.reset();
 }
 
-void KateViewInternal::documentTextInserted(KTextEditor::Document *document, KTextEditor::Range range)
+void KateViewInternal::documentTextInserted(KTextEditor::Document *, KTextEditor::Range range)
 {
 #ifndef QT_NO_ACCESSIBILITY
     if (view()->m_accessibilityEnabled && QAccessible::isActive()) {
-        QAccessibleTextInsertEvent ev(this,
-                                      static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, range.start()),
-                                      document->text(range));
+        auto doc = view()->doc();
+        QAccessibleTextInsertEvent ev(this, doc->cursorToOffset(range.start()), doc->text(range));
         QAccessible::updateAccessibility(&ev);
     }
 #endif
@@ -4944,9 +4943,8 @@ void KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/,
 {
 #ifndef QT_NO_ACCESSIBILITY
     if (view()->m_accessibilityEnabled && QAccessible::isActive()) {
-        QAccessibleTextRemoveEvent ev(this,
-                                      static_cast<KateViewAccessible *>(QAccessible::queryAccessibleInterface(this))->positionFromCursor(this, range.start()),
-                                      oldText);
+        auto doc = view()->doc();
+        QAccessibleTextRemoveEvent ev(this, doc->cursorToOffset(range.start()), oldText);
         QAccessible::updateAccessibility(&ev);
     }
 #endif
