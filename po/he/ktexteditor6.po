@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2024-01-26 21:23+0200\n"
+"PO-Revision-Date: 2024-02-03 14:45+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2122,20 +2122,19 @@ msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
 ">Check if you have read access to this file."
 msgstr ""
-"אין אפשרות לטעון את הקובץ %1 מכיוון שאין אפשרות לקרוא ממנו.\n"
-"\n"
-"בדוק אם יש לך הרשאת קריאה אל הקובץ."
+"אי אפשר לטעון את הקובץ %1 כי אי אפשר לקרוא ממנו.<br />נא לבדוק אם יש לך "
+"הרשאה לקרוא מהקובץ."
 
 #: document/katedocument.cpp:2249
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
-msgstr "נסה שוב"
+msgstr "לנסות שוב"
 
 #: document/katedocument.cpp:2253 document/katedocument.cpp:6500
 #, kde-format
 msgid "&Close"
-msgstr "&סגור"
+msgstr "ל&סגור"
 
 #: document/katedocument.cpp:2254 document/katedocument.cpp:6501
 #, fuzzy, kde-format
@@ -2185,19 +2184,19 @@ msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
 "data in the file on disk."
 msgstr ""
-"האם אתה בטוח שברצונך לשמור קובץ זה שלא מכיל שינויים? אתה עלול לכתוב על "
-"נתונים ששונו בקובץ שעל הדיסק."
+"לשמור קובץ זה שלא מכיל שינויים? פעולה זו עלולה לכתוב על נתונים ששונו בקובץ "
+"בכונן."
 
 #: document/katedocument.cpp:2443
 #, kde-format
 msgid "Trying to Save Unmodified File"
-msgstr "ניסיון לשמור קובץ שלא שונה"
+msgstr "מתבצע ניסיון לשמור קובץ שלא שונה"
 
 #: document/katedocument.cpp:2444 document/katedocument.cpp:2455
 #: document/katedocument.cpp:2471
 #, kde-format
 msgid "Save Nevertheless"
-msgstr "שמור בכל זאת"
+msgstr "לשמור בכל זאת"
 
 #: document/katedocument.cpp:2453
 #, kde-format
@@ -2273,7 +2272,7 @@ msgstr ""
 #: document/katedocument.cpp:2788
 #, kde-format
 msgid "Close Nevertheless"
-msgstr "סגור בכל זאת"
+msgstr "לסגור בכל זאת"
 
 #: document/katedocument.cpp:4569
 #, kde-format
@@ -3936,7 +3935,7 @@ msgstr "האם להחליף עם %1?"
 #: spellcheck/spellcheckbar.ui:118
 #, kde-format
 msgid "S&uggest"
-msgstr ""
+msgstr "ה&צעה"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceBtn)
 #: spellcheck/spellcheckbar.ui:127
@@ -7296,32 +7295,32 @@ msgstr "הזז סמן ימינה"
 #: view/kateview.cpp:1141
 #, kde-format
 msgid "Select to Next Line"
-msgstr "סמן עד לשורה הבאה"
+msgstr "סימון עד לשורה הבאה"
 
 #: view/kateview.cpp:1147
 #, kde-format
 msgid "Scroll Line Down"
-msgstr "גלול שורה אחת למטה"
+msgstr "גלילת שורה אחת למטה"
 
 #: view/kateview.cpp:1153
 #, kde-format
 msgid "Scroll Page Up"
-msgstr "גלול עמוד אחד למעלה"
+msgstr "גלילה עמוד אחד למעלה"
 
 #: view/kateview.cpp:1159
 #, kde-format
 msgid "Select Page Up"
-msgstr "בחר עמוד אחד למעלה"
+msgstr "בחירת עמוד אחד למעלה"
 
 #: view/kateview.cpp:1165
 #, kde-format
 msgid "Move to Top of View"
-msgstr "עבור לתחילת התצוגה"
+msgstr "מעבר לתחילת התצוגה"
 
 #: view/kateview.cpp:1171
 #, kde-format
 msgid "Select to Top of View"
-msgstr "סמן עד לתחילת התצוגה"
+msgstr "סימון עד לתחילת התצוגה"
 
 #: view/kateview.cpp:1177
 #, kde-format
@@ -7967,7 +7966,7 @@ msgstr "להסיר את הנבחר"
 #: vimode/config/configwidget.ui:202
 #, kde-format
 msgid "Add new mapping"
-msgstr "הוסף מיפוי חדש"
+msgstr "הוספת מיפוי חדש"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, btnImportNormal)
 #: vimode/config/configwidget.ui:209
