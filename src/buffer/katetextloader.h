@@ -184,11 +184,44 @@ public:
          * bug 272579
          */
         bool failedToConvertOnce = false;
+
         /**
          * keep track if we have found BOM so that failedToConvertOnce is not erroneously set to true
          * BUG: 440359
          */
         bool bomPreviouslyFound = m_bomFound;
+
+        // honor the line length limit early
+        const auto lineLimitHandler = [this, &offset, &length, &tooLongLinesWrapped, &longestLineLoaded](int lineStart, int textLength) {
+            if ((m_lineLengthLimit <= 0) || (textLength <= m_lineLengthLimit)) {
+                return false;
+            }
+
+            // remember stick error
+            tooLongLinesWrapped = true;
+            longestLineLoaded = std::max(longestLineLoaded, textLength);
+
+            // search for place to wrap
+            int spacePosition = m_lineLengthLimit - 1;
+            for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10)));
+                 --testPosition) {
+                // wrap place found?
+                if (m_text[lineStart + testPosition].isSpace() || m_text[lineStart + testPosition].isPunct()) {
+                    spacePosition = testPosition;
+                    break;
+                }
+            }
+
+            m_lastWasEndOfLine = false;
+            m_lastWasR = false;
+
+            // line data
+            offset = lineStart;
+            length = spacePosition + 1;
+
+            m_lastLineStart = m_position = (lineStart + length);
+            return true;
+        };
 
         /**
          * reading loop
@@ -281,6 +314,7 @@ public:
 
                     m_lastLineStart = m_position;
 
+                    lineLimitHandler(offset, length);
                     return !encodingError && !failedToConvertOnce;
                 }
 
@@ -295,6 +329,7 @@ public:
                     continue;
                 }
             }
+
             for (; m_position < m_text.length(); m_position++) {
                 QChar current_char = m_text.at(m_position);
                 if (current_char == lf) {
@@ -317,6 +352,7 @@ public:
                             m_eol = TextBuffer::eolUnix;
                         }
 
+                        lineLimitHandler(offset, length);
                         return !encodingError;
                     }
                 } else if (current_char == cr) {
@@ -335,6 +371,7 @@ public:
                         m_eol = TextBuffer::eolMac;
                     }
 
+                    lineLimitHandler(offset, length);
                     return !encodingError;
                 } else if (current_char == QChar::LineSeparator) {
                     m_lastWasEndOfLine = true;
@@ -346,6 +383,7 @@ public:
                     m_lastLineStart = m_position + 1;
                     m_position++;
 
+                    lineLimitHandler(offset, length);
                     return !encodingError;
                 } else {
                     m_lastWasEndOfLine = false;
@@ -353,32 +391,8 @@ public:
                 }
             }
 
-            // handle too long lines
-            if ((m_lineLengthLimit > 0) && ((m_text.length() - m_lastLineStart) > m_lineLengthLimit)) {
-                // remember stick error
-                tooLongLinesWrapped = true;
-                longestLineLoaded = std::max(longestLineLoaded, int(m_text.length() - m_lastLineStart));
-
-                // search for place to wrap
-                int spacePosition = m_lineLengthLimit - 1;
-                for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10)));
-                     --testPosition) {
-                    // wrap place found?
-                    if (m_text[m_lastLineStart + testPosition].isSpace() || m_text[m_lastLineStart + testPosition].isPunct()) {
-                        spacePosition = testPosition;
-                        break;
-                    }
-                }
-
-                m_lastWasEndOfLine = false;
-                m_lastWasR = false;
-
-                // line data
-                offset = m_lastLineStart;
-                length = spacePosition + 1;
-
-                m_lastLineStart = m_position = (m_lastLineStart + length);
-
+            // handle too long lines early even if we not yet have seen the end
+            if (lineLimitHandler(m_lastLineStart, m_text.length() - m_lastLineStart)) {
                 return !encodingError;
             }
         }
