@@ -472,6 +472,7 @@ void KateTextBufferTest::lineLengthLimit()
     buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
     QVERIFY(!encodingErrors);
     QVERIFY(tooLongLinesWrapped);
+    QCOMPARE(longestLineLoaded, 11);
     QCOMPARE(buffer.lines(), 6);
     QCOMPARE(buffer.line(0).text(), QLatin1String("01234567"));
     QCOMPARE(buffer.line(1).text(), QLatin1String("89"));
