@@ -446,6 +446,41 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     QVERIFY(dir.remove());
 }
 
+void KateTextBufferTest::lineLengthLimit()
+{
+    // create temp dir and get file name inside
+    QTemporaryDir dir;
+    QVERIFY(dir.isValid());
+    const QString file_path = dir.path() + QLatin1String("/foo");
+
+    // create some 'long' lines
+    QFile f(file_path);
+    QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+    f.write("0123456789\n0123456 789\n01234 56789");
+    QVERIFY(f.flush());
+    f.close();
+
+    // load with long line limit 8 and inspect results
+    KTextEditor::DocumentPrivate doc;
+    Kate::TextBuffer buffer(&doc, true);
+    buffer.setTextCodec(QStringLiteral("UTF-8"));
+    buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
+    buffer.setLineLengthLimit(8);
+    bool encodingErrors = false;
+    bool tooLongLinesWrapped = false;
+    int longestLineLoaded = 0;
+    buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
+    QVERIFY(!encodingErrors);
+    QVERIFY(tooLongLinesWrapped);
+    QCOMPARE(buffer.lines(), 6);
+    QCOMPARE(buffer.line(0).text(), QLatin1String("01234567"));
+    QCOMPARE(buffer.line(1).text(), QLatin1String("89"));
+    QCOMPARE(buffer.line(2).text(), QLatin1String("0123456 "));
+    QCOMPARE(buffer.line(3).text(), QLatin1String("789"));
+    QCOMPARE(buffer.line(4).text(), QLatin1String("01234 56"));
+    QCOMPARE(buffer.line(5).text(), QLatin1String("789"));
+}
+
 #if HAVE_KAUTH
 void KateTextBufferTest::saveFileWithElevatedPrivileges()
 {

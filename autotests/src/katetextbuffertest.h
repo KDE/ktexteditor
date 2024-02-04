@@ -30,6 +30,7 @@ private Q_SLOTS:
     void foldingTest();
     void nestedFoldingTest();
     void saveFileInUnwritableFolder();
+    void lineLengthLimit();
 
 #if HAVE_KAUTH
     void saveFileWithElevatedPrivileges();
