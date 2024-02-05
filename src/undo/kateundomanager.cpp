@@ -314,11 +314,11 @@ void KateUndoManager::slotLineRemoved(int line, const QString &s, const Kate::Te
         item.text = s;
         item.lineModFlags.setFlag(UndoItem::RedoLine1Modified);
 
-            if (tl.markedAsModified()) {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
-            } else {
-                item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
-            }
+        if (tl.markedAsModified()) {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Modified);
+        } else {
+            item.lineModFlags.setFlag(UndoItem::UndoLine1Saved);
+        }
         addUndoItem(std::move(item));
     }
 }
