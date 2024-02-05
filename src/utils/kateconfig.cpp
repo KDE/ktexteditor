@@ -499,7 +499,7 @@ KateViewConfig::KateViewConfig()
         return inBounds(0, value, 100);
     }));
     addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) {
-        return inBounds(1, value, 3);
+        return inBounds(0, value, 2);
     }));
     addConfigEntry(ConfigEntry(DynWrapAnywhere, "Dynamic Wrap not at word boundaries", QStringLiteral("dynamic-word-wrap-anywhere"), false));
     addConfigEntry(ConfigEntry(DynWrapAtStaticMarker, "Dynamic Word Wrap At Static Marker", QString(), false));
