@@ -537,7 +537,8 @@ function each(func)
 
     var cursor = view.cursorPosition();
     var selection = view.selection();
-    if (!selection.isValid()) {
+    var hasSelection = selection.isValid();
+    if (!hasSelection) {
         // use whole range
         selection = document.documentRange();
     } else {
@@ -564,8 +565,12 @@ function each(func)
     view.clearSelection();
 
     document.editBegin();
-    document.removeText(selection);
-    document.insertText(selection.start, text);
+    if (!hasSelection) {
+        document.setText(text);
+    } else {
+        document.removeText(selection);
+        document.insertText(selection.start, text);
+    }
     document.editEnd();
     if (newLineCount == oldLineCount) {
         if (document.lineLength(cursor.line) != oldCurrentLineLength) {
