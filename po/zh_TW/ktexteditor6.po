@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2024-01-28 19:54+0900\n"
+"PO-Revision-Date: 2024-02-05 17:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -440,6 +440,8 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"按下 Enter 會將所選補完項目的文字輸入到編輯器中。停用時，還是可以使用 Tab 鍵"
+"或雙擊來觸發補完。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59

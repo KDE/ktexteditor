@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2024-01-21 14:11\n"
+"PO-Revision-Date: 2024-02-05 11:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -431,13 +431,14 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"按下回车键时，选中的代码补全项目将被插入到编辑器中。如果禁用此功能，依然可以"
+"通过 Tab 键或者双击来触发代码补全。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "使用此命令对选中的一块文字减少缩进。"
+msgstr "使用回车键插入选中的代码补全内容"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -5974,7 +5975,7 @@ msgstr "设置行尾模式。"
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "启用在按下回车键时插入自动代码补全项目的功能。"
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
