@@ -12,4 +12,4 @@ target_link_libraries(%{APPNAMELC}
     KF6::I18n
 )
 
-install(TARGETS %{APPNAMELC} DESTINATION ${KDE_INSTALL_PLUGINDIR}/ktexteditor)
+install(TARGETS %{APPNAMELC} DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/ktexteditor)
