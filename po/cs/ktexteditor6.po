@@ -451,10 +451,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Toto použijte ke zrušení odsazení vybraného bloku textu."
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -7059,10 +7058,9 @@ msgid "Find and Select All Occurrences"
 msgstr ""
 
 #: view/kateview.cpp:906
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "Vyhledat následující výskyt vybraného textu."
+msgstr ""
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -7224,10 +7222,9 @@ msgid "Select Word Right"
 msgstr "Vybrat slovo doprava"
 
 #: view/kateview.cpp:1051
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Vložit výběr"
+msgstr ""
 
 #: view/kateview.cpp:1052
 #, kde-format
