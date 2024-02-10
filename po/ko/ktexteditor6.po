@@ -3,14 +3,14 @@
 # Sae-keun Kim <segni@susekorea.net>, 2001.
 # Louis JANG <louis@mizi.com>, 2001.
 # KIM KyungHeon <tody@teoal.net>, 2001, 2002, 2003, 2004.
-# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 # JungHee Lee <daemul72@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2023-08-28 00:10+0200\n"
+"PO-Revision-Date: 2024-02-10 00:07+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -142,10 +142,9 @@ msgstr "맞춤법 검사"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "검색할 문자열"
+msgstr "텍스트 읽어주기"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -440,13 +439,14 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Enter 키를 누르면 편집기에 선택한 자동 완성 항목을 삽입합니다. 이 설정을 사용"
+"하지 않으면 Tab 키나 두 번 클릭으로 자동 완성을 실행할 수 있습니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "선택한 문자열 블록의 들여쓰기를 취소하려면 선택하십시오."
+msgstr "선택한 자동 완성 항목을 입력하려면 Enter 키 사용"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -654,13 +654,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "접근성 알림 활성화"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "접근성:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -3057,15 +3057,13 @@ msgstr "다음 일치하는 들여쓰기로 커서 이동"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "다음 문단으로 이동"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "이전 편집 지점으로 이동"
+msgstr "이전 문단으로 이동"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3147,12 +3145,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "선택한 줄을 위로 복제"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "선택한 줄을 위로 복제"
+msgstr "선택한 문자열 복제"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -6075,7 +6071,7 @@ msgstr "줄 끝 모드를 설정합니다."
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "Enter 키를 눌렀을 때 선택한 자동 완성 항목을 삽입할지 여부입니다."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -7128,8 +7124,7 @@ msgid "Find and Select All Occurrences"
 msgstr "모든 일치를 찾아서 선택"
 
 #: view/kateview.cpp:906
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "커서 아래 단어를 모두 찾아서 선택합니다."
 
@@ -7289,10 +7284,9 @@ msgid "Select Word Right"
 msgstr "오른쪽 단어 선택"
 
 #: view/kateview.cpp:1051
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "선택 붙여넣기"
+msgstr "표시 선택 시작"
 
 #: view/kateview.cpp:1052
 #, kde-format
@@ -7300,6 +7294,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emacs 선택 모드를 흉내냅니다. 선택의 시작을 표시하고 선택 영역이 계속해서 업"
+"데이트됩니다."
 
 #: view/kateview.cpp:1057
 #, kde-format
@@ -7562,28 +7558,24 @@ msgid "Toggle Contained Nodes"
 msgstr "포함된 노드 전환"
 
 #: view/kateview.cpp:1348
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "현재 문서에서 선택한 문자열입니다."
+msgstr "현재 선택이나 문서 읽어주기"
 
 #: view/kateview.cpp:1358
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "현재 문서 저장"
+msgstr "현재 출력 정지"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "현재 문서 저장"
+msgstr "현재 출력 일시 정지"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "현재 문서 저장"
+msgstr "현재 출력 다시 시작"
 
 #: view/kateview.cpp:1529
 #, kde-format
@@ -7753,12 +7745,12 @@ msgstr "저장..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "스크린샷 저장 실패"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "스크린샷 저장 실패: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
