@@ -613,7 +613,11 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
     }
 }
 
-void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, const QBrush &brush) const
+void KateRenderer::paintTextBackground(QPainter &paint,
+                                       KateLineLayout *layout,
+                                       const QList<QTextLayout::FormatRange> &selRanges,
+                                       const QBrush &brush,
+                                       int xStart) const
 {
     const bool rtl = layout->isRightToLeft();
 
@@ -637,8 +641,11 @@ void KateRenderer::paintTextBackground(QPainter &paint, KateLineLayout *layout, 
         const int endViewLine = layout->viewLineForColumn(e);
         if (startViewLine == endViewLine) {
             KateTextLayout l = layout->viewLine(startViewLine);
-            const int startX = cursorToX(l, s);
-            const int endX = cursorToX(l, e);
+            // subtract xStart so that the selection is shown where it belongs
+            // we don't do it in the else case because this only matters when dynWrap==false
+            // and when dynWrap==false, we always have 1 QTextLine per layout
+            const int startX = cursorToX(l, s) - xStart;
+            const int endX = cursorToX(l, e) - xStart;
             const int y = startViewLine * lineHeight();
             QRect r(startX, y, (endX - startX), lineHeight());
             paint.fillRect(r, br);
@@ -756,13 +763,13 @@ void KateRenderer::paintTextLine(QPainter &paint,
                                                return sr.overlapsLine(line) && sr.overlapsColumn(fr.start) && fr.format.background().color() == c;
                                            }),
                             decos.end());
-                paintTextBackground(paint, range, decos, Qt::NoBrush);
+                paintTextBackground(paint, range, decos, Qt::NoBrush, xStart);
             }
 
             if (drawSelection) {
                 additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
                 if (hasCustomLineHeight()) {
-                    paintTextBackground(paint, range, additionalFormats, config()->selectionColor());
+                    paintTextBackground(paint, range, additionalFormats, config()->selectionColor(), xStart);
                 }
                 range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats, textClipRect);
 

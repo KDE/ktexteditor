@@ -381,7 +381,7 @@ public:
      */
     void paintTextLineBackground(QPainter &paint, KateLineLayout *layout, int currentViewLine, int xStart, int xEnd);
 
-    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, const QBrush &br) const;
+    void paintTextBackground(QPainter &paint, KateLineLayout *layout, const QList<QTextLayout::FormatRange> &selRanges, const QBrush &br, int xStart) const;
 
     /**
      * This takes an in index, and returns all the attributes for it.
