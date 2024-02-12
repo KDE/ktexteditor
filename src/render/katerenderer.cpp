@@ -771,7 +771,8 @@ void KateRenderer::paintTextLine(QPainter &paint,
                 if (hasCustomLineHeight()) {
                     paintTextBackground(paint, range, additionalFormats, config()->selectionColor(), xStart);
                 }
-                range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats, textClipRect);
+                // DONT apply clipping, it breaks rendering when there are selections
+                range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats);
 
             } else {
                 range->layout()->draw(&paint, QPoint(-xStart, 0), QList<QTextLayout::FormatRange>{}, textClipRect);
