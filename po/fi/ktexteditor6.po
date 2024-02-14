@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2024-01-11 17:29+0200\n"
+"PO-Revision-Date: 2024-02-08 10:45+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -468,13 +468,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Enterin painallus lisää valitun täydennyksen muokkaimeen. Ellei ole "
+"käytössä, täydennystä voi yhä käyttää sarkainnäppäimellä tai "
+"kaksoisnapsauttamalla."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Tällä voi vähentää valitun tekstilohkon sisennystä."
+msgstr "Lisää valittu täydennys painamalla Enter"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -6196,7 +6198,7 @@ msgstr "Asettaa rivin lopputilan."
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "Valitsee, lisääkö Enter valitun automaattitäydennyksen."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
