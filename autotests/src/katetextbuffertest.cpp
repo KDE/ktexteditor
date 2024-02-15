@@ -453,33 +453,99 @@ void KateTextBufferTest::lineLengthLimit()
     QVERIFY(dir.isValid());
     const QString file_path = dir.path() + QLatin1String("/foo");
 
-    // create some 'long' lines
-    QFile f(file_path);
-    QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
-    f.write("0123456789\n0123456 789\n01234 56789");
-    QVERIFY(f.flush());
-    f.close();
+    {
+        {
+            // create some 'long' lines
+            QFile f(file_path);
+            QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            f.write("0123456789\n0123456 789\n01234 56789");
+            QVERIFY(f.flush());
+        }
 
-    // load with long line limit 8 and inspect results
-    KTextEditor::DocumentPrivate doc;
-    Kate::TextBuffer buffer(&doc, true);
-    buffer.setTextCodec(QStringLiteral("UTF-8"));
-    buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
-    buffer.setLineLengthLimit(8);
-    bool encodingErrors = false;
-    bool tooLongLinesWrapped = false;
-    int longestLineLoaded = 0;
-    buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
-    QVERIFY(!encodingErrors);
-    QVERIFY(tooLongLinesWrapped);
-    QCOMPARE(longestLineLoaded, 11);
-    QCOMPARE(buffer.lines(), 6);
-    QCOMPARE(buffer.line(0).text(), QLatin1String("01234567"));
-    QCOMPARE(buffer.line(1).text(), QLatin1String("89"));
-    QCOMPARE(buffer.line(2).text(), QLatin1String("0123456 "));
-    QCOMPARE(buffer.line(3).text(), QLatin1String("789"));
-    QCOMPARE(buffer.line(4).text(), QLatin1String("01234 56"));
-    QCOMPARE(buffer.line(5).text(), QLatin1String("789"));
+        // load with long line limit 8 and inspect results
+        KTextEditor::DocumentPrivate doc;
+        Kate::TextBuffer buffer(&doc, true);
+        buffer.setTextCodec(QStringLiteral("UTF-8"));
+        buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
+        buffer.setLineLengthLimit(8);
+        bool encodingErrors = false;
+        bool tooLongLinesWrapped = false;
+        int longestLineLoaded = 0;
+        buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
+        QVERIFY(!encodingErrors);
+        QVERIFY(tooLongLinesWrapped);
+        QCOMPARE(longestLineLoaded, 11);
+        QCOMPARE(buffer.lines(), 6);
+        QCOMPARE(buffer.line(0).text(), QLatin1String("01234567"));
+        QCOMPARE(buffer.line(1).text(), QLatin1String("89"));
+        QCOMPARE(buffer.line(2).text(), QLatin1String("0123456 "));
+        QCOMPARE(buffer.line(3).text(), QLatin1String("789"));
+        QCOMPARE(buffer.line(4).text(), QLatin1String("01234 56"));
+        QCOMPARE(buffer.line(5).text(), QLatin1String("789"));
+    }
+
+    {
+        {
+            // create one 'long' lines that are larger then the KATE_FILE_LOADER_BS size
+            QFile f(file_path);
+            QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            f.write(QByteArray(256 * 1024 * 10, 'C'));
+            f.write("AAA");
+            QVERIFY(f.flush());
+        }
+
+        // load with long line limit 8 and inspect results
+        KTextEditor::DocumentPrivate doc;
+        Kate::TextBuffer buffer(&doc, true);
+        buffer.setTextCodec(QStringLiteral("UTF-8"));
+        buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
+        buffer.setLineLengthLimit(8);
+        bool encodingErrors = false;
+        bool tooLongLinesWrapped = false;
+        int longestLineLoaded = 0;
+        buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
+        QVERIFY(!encodingErrors);
+        QVERIFY(tooLongLinesWrapped);
+        QCOMPARE(buffer.lines(), 327681);
+        for (int i = 0; i < 327680; ++i) {
+            QCOMPARE(buffer.line(i).text(), QLatin1String("CCCCCCCC"));
+        }
+        QCOMPARE(buffer.line(327680).text(), QLatin1String("AAA"));
+    }
+
+    {
+        {
+            // create some 'long' lines that are larger then the KATE_FILE_LOADER_BS size
+            QFile f(file_path);
+            QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            f.write("0123456789\n0123456 789\n");
+            f.write(QByteArray(256 * 1024 * 10, 'C'));
+            f.write("AAA");
+            QVERIFY(f.flush());
+        }
+
+        // load with long line limit 8 and inspect results
+        KTextEditor::DocumentPrivate doc;
+        Kate::TextBuffer buffer(&doc, true);
+        buffer.setTextCodec(QStringLiteral("UTF-8"));
+        buffer.setFallbackTextCodec(QStringLiteral("UTF-8"));
+        buffer.setLineLengthLimit(8);
+        bool encodingErrors = false;
+        bool tooLongLinesWrapped = false;
+        int longestLineLoaded = 0;
+        buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, true);
+        QVERIFY(!encodingErrors);
+        QVERIFY(tooLongLinesWrapped);
+        QCOMPARE(buffer.lines(), 327685);
+        QCOMPARE(buffer.line(0).text(), QLatin1String("01234567"));
+        QCOMPARE(buffer.line(1).text(), QLatin1String("89"));
+        QCOMPARE(buffer.line(2).text(), QLatin1String("0123456 "));
+        QCOMPARE(buffer.line(3).text(), QLatin1String("789"));
+        for (int i = 4; i < 327684; ++i) {
+            QCOMPARE(buffer.line(i).text(), QLatin1String("CCCCCCCC"));
+        }
+        QCOMPARE(buffer.line(327684).text(), QLatin1String("AAA"));
+    }
 }
 
 #if HAVE_KAUTH
