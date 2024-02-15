@@ -227,6 +227,11 @@ public:
          * reading loop
          */
         while (m_position <= m_text.length()) {
+            // handle too long lines early even if we not yet have seen the end
+            if (m_alreadyScanned > m_lastLineStart && lineLimitHandler(m_lastLineStart, m_alreadyScanned - m_lastLineStart)) {
+                return !encodingError;
+            }
+
             if (m_position == m_text.length()) {
                 // try to load more text if something is around
                 if (!m_eof) {
@@ -301,6 +306,7 @@ public:
 
                     // recalc current pos and last pos
                     m_position -= m_lastLineStart;
+                    m_alreadyScanned = m_position - 1;
                     m_lastLineStart = 0;
                 }
 
@@ -331,6 +337,7 @@ public:
             }
 
             for (; m_position < m_text.length(); m_position++) {
+                m_alreadyScanned = m_position;
                 QChar current_char = m_text.at(m_position);
                 if (current_char == lf) {
                     m_lastWasEndOfLine = true;
@@ -390,11 +397,6 @@ public:
                     m_lastWasR = false;
                 }
             }
-
-            // handle too long lines early even if we not yet have seen the end
-            if (lineLimitHandler(m_lastLineStart, m_text.length() - m_lastLineStart)) {
-                return !encodingError;
-            }
         }
 
         return !encodingError;
@@ -412,6 +414,7 @@ private:
     bool m_lastWasR;
     int m_position;
     int m_lastLineStart;
+    int m_alreadyScanned = -1;
     TextBuffer::EndOfLineMode m_eol;
     QString m_mimeType;
     QIODevice *m_file;
