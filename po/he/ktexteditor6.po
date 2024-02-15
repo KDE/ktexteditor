@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2024-02-03 14:45+0200\n"
+"PO-Revision-Date: 2024-02-13 16:35+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -6690,10 +6690,9 @@ msgid "Here you can choose how the current document should be highlighted."
 msgstr "כאן באפשרותך לבחור כיצד יודגש המסמך הנוכחי."
 
 #: view/kateview.cpp:696
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "&Editor Color Theme"
-msgstr "השתמש בסכימת הבצעים של KDE"
+msgstr "ערכת &צבעים של העורך"
 
 #: view/kateview.cpp:702
 #, kde-format
@@ -6738,10 +6737,9 @@ msgid "Reset Font Size"
 msgstr ""
 
 #: view/kateview.cpp:737
-#, fuzzy, kde-format
-#| msgid "This increases the display font size."
+#, kde-format
 msgid "This resets the display font size."
-msgstr "הגדלת גודל גופן התצוגה."
+msgstr "מאפס את גודל גופן התצוגה."
 
 #: view/kateview.cpp:740
 #, kde-format
@@ -6758,14 +6756,14 @@ msgstr ""
 "הבחירות המלבניות."
 
 #: view/kateview.cpp:747
-#, fuzzy, kde-format
+#, kde-format
 msgid "Switch to Next Input Mode"
-msgstr "מצב קלט של VI"
+msgstr "מעבר למצב הקלט הבא"
 
 #: view/kateview.cpp:749
-#, fuzzy, kde-format
+#, kde-format
 msgid "Switch to the next input mode."
-msgstr "בחר עד לסוף השורה"
+msgstr "מעבר למצב הקלט הבא."
 
 #: view/kateview.cpp:752
 #, kde-format
@@ -6939,14 +6937,14 @@ msgid "Show/hide the command line on the bottom of the view."
 msgstr "הצגה או הסתרה של שורת הפקודה בתחתית התצוגה."
 
 #: view/kateview.cpp:836
-#, fuzzy, kde-format
+#, kde-format
 msgid "Input Modes"
-msgstr "מצב קלט של VI"
+msgstr "מצבי קלט"
 
 #: view/kateview.cpp:845
-#, fuzzy, kde-format
+#, kde-format
 msgid "Activate/deactivate %1"
-msgstr "הפעלה או הפסקה של מצב קלט של VI"
+msgstr "הפעלה/השבתה של %1"
 
 #: view/kateview.cpp:855
 #, kde-format
