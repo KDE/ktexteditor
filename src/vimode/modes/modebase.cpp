@@ -289,7 +289,7 @@ KTextEditor::Cursor ModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
     }
 
-    const QRegularExpression endOfWord(endOfWordPattern);
+    const QRegularExpression endOfWord(endOfWordPattern, QRegularExpression::UseUnicodePropertiesOption);
 
     int l = fromLine;
     int c = fromColumn;
@@ -482,7 +482,7 @@ KTextEditor::Cursor ModeBase::findWordEnd(int fromLine, int fromColumn, bool onl
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
     }
 
-    const QRegularExpression endOfWORD(endOfWordPattern);
+    const QRegularExpression endOfWORD(endOfWordPattern, QRegularExpression::UseUnicodePropertiesOption);
 
     int l = fromLine;
     int c = fromColumn;

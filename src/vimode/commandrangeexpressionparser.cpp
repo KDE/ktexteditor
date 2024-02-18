@@ -22,7 +22,7 @@ using namespace KateVi;
 #define RegExp(name, pattern)                                                                                                                                  \
     inline const QRegularExpression &name()                                                                                                                    \
     {                                                                                                                                                          \
-        static const QRegularExpression regex(QStringLiteral(pattern));                                                                                        \
+        static const QRegularExpression regex(QStringLiteral(pattern), QRegularExpression::UseUnicodePropertiesOption);                                        \
         return regex;                                                                                                                                          \
     }
 

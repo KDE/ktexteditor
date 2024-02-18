@@ -245,8 +245,8 @@ void BaseTest::DoTest_(int line,
                        Expectation expectation,
                        const char *failureReason)
 {
-    BeginTest(QLatin1String(original));
-    TestPressKey(QLatin1String(command));
+    BeginTest(QString::fromUtf8(original));
+    TestPressKey(QString::fromUtf8(command));
     FinishTest_(line, file, expected, expectation, failureReason);
 }
 

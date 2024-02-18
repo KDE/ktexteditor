@@ -1620,6 +1620,10 @@ void KeysTest::MarkTests()
     DoTest("foo\nbar\nxyz\n123", "jdju`.r.", "foo\n.ar\nxyz\n123");
     DoTest("foo\nbar\nxyz\n123", "jdju`]r]", "foo\nbar\n]yz\n123");
     DoTest("foo\nbar\nxyz\n123", "jVj~u\\esc`[r[", "foo\n[ar\nxyz\n123", ShouldFail, "Vim is weird.");
+
+    // unicode, bug 462437
+    DoTest("nahrávání", "ean\\escgg`.r.", "nahrávání.");
+    DoTest("nahrávání", "ex", "nahráván");
 }
 
 // END: KeysTest

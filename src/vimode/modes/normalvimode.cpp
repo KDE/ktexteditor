@@ -2603,7 +2603,7 @@ Range NormalViMode::motionToMatchingItem()
         m_view->setCursorPosition(oldCursorPos);
     } else {
         // text item we want to find a matching item for
-        static const QRegularExpression boundaryRegex(QStringLiteral("\\b|\\s|$"));
+        static const QRegularExpression boundaryRegex(QStringLiteral("\\b|\\s|$"), QRegularExpression::UseUnicodePropertiesOption);
         const int n2 = l.indexOf(boundaryRegex, n1);
         QString item = l.mid(n1, n2 - n1);
         QString matchingItem = m_matchingItems[item];
@@ -3527,7 +3527,7 @@ QRegularExpression NormalViMode::generateMatchingItemRegex() const
     // remove extra "|" at the end
     pattern.chop(1);
 
-    return QRegularExpression(pattern);
+    return QRegularExpression(pattern, QRegularExpression::UseUnicodePropertiesOption);
 }
 
 // returns the operation mode that should be used. this is decided by using the following heuristic:
