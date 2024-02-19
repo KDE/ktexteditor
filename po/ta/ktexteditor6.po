@@ -8,13 +8,13 @@
 # ஸ்ரீராமதாஸ் <shriramadhas@gmail.com>, 2007.
 # ஆமாச்சு <amachu@ubuntu.com>, 2007.
 # amachu <amachu@amachu.com>, 2010.
-# SPDX-FileCopyrightText: 2021, 2022, 2023 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 00:35+0000\n"
-"PO-Revision-Date: 2023-12-08 21:25+0530\n"
+"PO-Revision-Date: 2024-02-18 15:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -2069,10 +2069,9 @@ msgstr "மாறுநிலை வரிமடிப்பு காட்ட�
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:385
-#, fuzzy, kde-format
-#| msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
+#, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
-msgstr "மாறும் வார்த்தை மடிப்பு சுட்டிகள் எப்பொழுது காட்சியளிக்க வேண்டும் என தேர்வு செய்: "
+msgstr "மாறுநில் வரிமடிப்புக்குறிகள் எப்போது காட்டப்பட வேண்டும் என தேர்வு செய்யலாம்."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:408
@@ -2846,11 +2845,10 @@ msgid "Select HTML/XML Tag Contents Outwards"
 msgstr ""
 
 #: script/data/commands/emmet.js:30
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr "குறிப்புரை"
+msgstr "குறிப்புரை நிலைமாற்று"
 
 #: script/data/commands/emmet.js:34
 #, fuzzy, kde-format
@@ -3049,51 +3047,44 @@ msgstr "பொருந்தும் அடைப்புக்குறி�
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
 #: script/data/commands/navigation.js:10 script/data/commands/navigation.js:14
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
-msgstr ""
-"_: Language Section\n"
-"வடிவமைத்தல்"
+msgstr "உலாவல்"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
+msgstr "பொருந்தும் அடுத்த உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:44
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Move cursor to previous matching indent"
-msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
+msgstr "பொருந்தும் முந்தைய உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:47
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgid "Move cursor to next matching indent"
-msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
+msgstr "பொருந்தும் அடுத்த உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/navigation.js:9
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "அடுத்த பத்திக்கு செல்"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgid "Move to Previous Line"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "முந்தைய வரிக்கு நகரவும்"
+msgstr "முந்தைய பத்திக்கு செல்"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "தேர்வு  செய்யபட்ட உரை"
+msgstr "தேர்வை அகரவரிசையாக்கு"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3112,7 +3103,7 @@ msgstr "திருத்துவது"
 #, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "தேர்வில் நகலாயுள்ளவற்றை நீக்கி அகரவரிசையாக்கு"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -3169,26 +3160,22 @@ msgid "Duplicate Selected Lines Up"
 msgstr "தேர்ந்தெடுத்துள்ள வரிகளை மேலே நகலிடு"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "தேர்ந்தெடுத்துள்ள வரிகளை மேலே நகலிடு"
+msgstr "தேர்ந்தெடுத்துள்ள வரிகளை நகலிடு"
 
 #: script/data/commands/utils.js:59
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
-msgstr "தேர்வு  செய்யபட்ட உரை"
+msgstr "தேர்வை URI-குறியாக்கு"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
-#| msgid "Selected text:"
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
-msgstr "தேர்வு  செய்யபட்ட உரை"
+msgstr "தேர்வை URI-குறிநீக்கு"
 
 #: script/data/commands/utils.js:67
 #, kde-format
@@ -3197,24 +3184,19 @@ msgid "Remove Empty Lines"
 msgstr "காலியான வரிகளை நீக்கு"
 
 #: script/data/commands/utils.js:462
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Sort the selected text or whole document."
-msgstr "தற்போதுள்ள ஆவணத்தின் முழு உரையை தேர்தெடு"
+msgstr "தேர்ந்தெடுத்துள்ள உரையையோ முழு ஆவணத்தையோ வரிசைப்படுத்தும்."
 
 #: script/data/commands/utils.js:464
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Move selected lines down."
-msgstr "தேர்வுசெய்யப்பட்ட"
+msgstr "தேர்ந்தெடுத்துள்ள வரிகளைக் கீழே நகர்த்தும்."
 
 #: script/data/commands/utils.js:466
-#, fuzzy, kde-format
-#| msgctxt "@title:column Text style"
-#| msgid "Selected"
+#, kde-format
 msgid "Move selected lines up."
-msgstr "தேர்வுசெய்யப்பட்ட"
+msgstr "தேர்ந்தெடுத்துள்ள வரிகளைக் மேலே நகர்த்தும்."
 
 #: script/data/commands/utils.js:468
 #, kde-format
@@ -3449,13 +3431,12 @@ msgstr "கேட்  தோற்றங்கள்"
 #: script/katecommandlinescript.cpp:37
 #, kde-format
 msgid "Function '%1' not found in script: %2"
-msgstr ""
+msgstr "'%1' எனும் கட்டளை சிறுநிரலில் கண்டுபிடிக்கப்படவில்லை: %2"
 
 #: script/katecommandlinescript.cpp:51
-#, fuzzy, kde-format
-#| msgid "Error: %1"
+#, kde-format
 msgid "Error calling %1"
-msgstr "பிழை: %1"
+msgstr "%1 தனை இயக்குவதில் சிக்கல்"
 
 #: script/katecommandlinescript.cpp:68
 #, kde-format
@@ -3476,7 +3457,7 @@ msgstr "'help %1' என்பதை இயக்குவதில் சிக
 #: script/katecommandlinescript.cpp:123
 #, kde-format
 msgid "No help specified for command '%1' in script %2"
-msgstr ""
+msgstr "%2 எனும் சிறுநிரலின் '%1' எனும் கட்டளைக்கு எந்த உதவியுரையும் குறிப்பிடப்படவில்லை"
 
 #: script/katescript.cpp:214
 #, kde-format
@@ -3737,81 +3718,77 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarincremental.ui:50
-#, fuzzy, kde-format
-#| msgid "Find:"
+#, kde-format
 msgid "F&ind:"
-msgstr "தேடுக:"
+msgstr "&தேடு:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, pattern)
 #: search/searchbarincremental.ui:78 search/searchbarpower.ui:295
 #, kde-format
 msgid "Text to search for"
-msgstr ""
+msgstr "கண்டுபிடிக்க வேண்டிய சொற்றொடர்"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findNext)
 #. i18n: ectx: property (toolTip), widget (QToolButton, next)
 #: search/searchbarincremental.ui:91 search/searchbarpower.ui:175
 #, kde-format
 msgid "Jump to next match"
-msgstr ""
+msgstr "அடுத்தப் பொருத்தத்துக்குத் தாவு"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, findPrev)
 #. i18n: ectx: property (toolTip), widget (QToolButton, prev)
 #: search/searchbarincremental.ui:101 search/searchbarpower.ui:185
 #, kde-format
 msgid "Jump to previous match"
-msgstr "முந்தைய பொருத்தத்துக்கு தாவுக"
+msgstr "முந்தைய பொருத்தத்துக்கு தாவு"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, matchCase)
 #: search/searchbarincremental.ui:111 search/searchbarpower.ui:136
-#, fuzzy, kde-format
+#, kde-format
 msgid "Match case sensitive"
-msgstr "வகையுணர்வுள்ள"
+msgstr "எழுத்து வகையை பொருத்து"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarincremental.ui:146
 #, kde-format
 msgid "Switch to power search and replace bar"
-msgstr ""
+msgstr "மேம்பட்டத் தேடல் மற்றும் மாற்றப் பட்டைக்குத் தாவு"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: search/searchbarpower.ui:50
 #, kde-format
 msgid "Fin&d:"
-msgstr ""
+msgstr "தே&டு:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: search/searchbarpower.ui:63
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rep&lace:"
-msgstr "மாற்று"
+msgstr "மா&ற்று:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "&Mode:"
-msgstr "&முறை"
+msgstr "&பயன்முறை:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:103
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "Search mode"
-msgstr "தேடு"
+msgstr "தேடல் முறை"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:113
-#, fuzzy, kde-format
-#| msgid "&Find Next"
+#, kde-format
 msgid "Plain text"
-msgstr "&அடுத்து தேடு"
+msgstr "வெறும் உரை"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:118
 #, kde-format
 msgid "Whole words"
-msgstr ""
+msgstr "முழு சொற்கள்"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:123
@@ -3827,87 +3804,80 @@ msgstr "வழக்கமான கூற்று"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, selectionOnly)
 #: search/searchbarpower.ui:149
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search in the selection only"
-msgstr "தேர்வுகள் மட்டும்"
+msgstr "தேர்வில் மட்டும்"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceNext)
 #: search/searchbarpower.ui:195
-#, fuzzy, kde-format
-#| msgid "Replace Confirmation"
+#, kde-format
 msgid "Replace next match"
-msgstr "மாற்றம் உறுதிபடுத்தல்"
+msgstr "அடுத்த பொருத்தத்தை மாற்று"
 
 #. i18n: ectx: property (text), widget (QPushButton, replaceNext)
 #. i18n: ectx: property (text), widget (QPushButton, m_replaceBtn)
 #: search/searchbarpower.ui:198 spellcheck/spellcheckbar.ui:130
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Replace"
-msgstr "மாற்று"
+msgstr "&மாற்று"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:224
-#, fuzzy, kde-format
-#| msgid "Replace &All"
+#, kde-format
 msgid "Replace all matches"
-msgstr "அனைத்தையும் மாற்று"
+msgstr "அனைத்து பொருத்தங்களையும் மாற்று"
 
 #. i18n: ectx: property (text), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:227
-#, fuzzy, kde-format
-#| msgid "Replace &All"
+#, kde-format
 msgid "Replace &All"
-msgstr "அனைத்தையும் மாற்று"
+msgstr "&அனைத்தையும் மாற்று"
 
 #. i18n: ectx: property (text), widget (QPushButton, findAll)
 #: search/searchbarpower.ui:234
 #, kde-format
 msgid "&Find All"
-msgstr ""
+msgstr "அ&னைத்தையும் கண்டுபிடி"
 
 #. i18n: ectx: property (text), widget (QPushButton, cancel)
 #: search/searchbarpower.ui:257
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "ரத்து செய்"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, mutate)
 #: search/searchbarpower.ui:268
-#, fuzzy, kde-format
-#| msgid "Next Incremental Search Match"
+#, kde-format
 msgid "Switch to incremental search bar"
-msgstr "அடுத்த படிப்படியான தேடல் இணை"
+msgstr "எளிய தேடல் பட்டைக்குத் தாவு"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, replacement)
 #: search/searchbarpower.ui:314
 #, kde-format
 msgid "Text to replace with"
-msgstr ""
+msgstr "மாறாக இட வேண்டிய உரை"
 
 #: spellcheck/spellcheckbar.cpp:148
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgid "Spell check canceled."
-msgstr "சொல் திருத்தி தேர்வு..."
+msgstr "எழுத்தாக்க சரிபார்ப்பு ரத்து செய்யப்பட்டது."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "சொல் திருத்தி தேர்வு..."
+msgstr "எழுத்தாக்க சரிபார்ப்பு நடைபெறுகிறது..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Spelling"
-msgstr ""
+msgstr "எழுத்தாக்கத்தை சரிபார்ப்பது"
 
 #: spellcheck/spellcheckbar.cpp:432 spellcheck/spellcheckbar.cpp:435
-#, fuzzy, kde-format
-#| msgid "Spellcheck Selection..."
+#, kde-format
 msgid "Spell check complete."
-msgstr "சொல் திருத்தி தேர்வு..."
+msgstr "எழுத்தாக்க சரிபார்ப்பு நிறைவடைந்த‍து."
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel2)
 #. i18n: ectx: property (whatsThis), widget (QLabel, m_unknownWord)
@@ -3930,23 +3900,21 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: spellcheck/spellcheckbar.ui:33
-#, fuzzy, kde-format
-#| msgid "Unknown Property"
+#, kde-format
 msgid "Unknown word:"
-msgstr "இனந்தெரியாதப் பண்பு"
+msgstr "தெரியாத சொல்:"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, m_unknownWord)
 #: spellcheck/spellcheckbar.ui:40
-#, fuzzy, kde-format
-#| msgid "Unknown Property"
+#, kde-format
 msgid "Unknown word"
-msgstr "இனந்தெரியாதப் பண்பு"
+msgstr "தெரியாத சொல்"
 
 #. i18n: ectx: property (text), widget (QLabel, m_unknownWord)
 #: spellcheck/spellcheckbar.ui:49
 #, kde-format
 msgid "<b>misspelled</b>"
-msgstr ""
+msgstr "<b>தவறு</b>"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_addBtn)
 #: spellcheck/spellcheckbar.ui:72
@@ -3964,10 +3932,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_addBtn)
 #: spellcheck/spellcheckbar.ui:75
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "<< Add to Dictionary"
-msgstr "&பிரிவு"
+msgstr "<< அகரமுதலியில் சேர்"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:89
@@ -3984,16 +3951,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:92
-#, fuzzy, kde-format
-#| msgid "Replace Confirmation"
+#, kde-format
 msgid "Replace with:"
-msgstr "மாற்றம் உறுதிபடுத்தல்"
+msgstr "இதுவாக மாற்று:"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_suggestBtn)
 #: spellcheck/spellcheckbar.ui:118
 #, kde-format
 msgid "S&uggest"
-msgstr ""
+msgstr "&பரிந்துரை"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceBtn)
 #: spellcheck/spellcheckbar.ui:127
@@ -4029,17 +3995,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
 #: spellcheck/spellcheckbar.ui:159
-#, fuzzy, kde-format
-#| msgctxt "Language"
-#| msgid "E Language"
+#, kde-format
 msgid "&Language:"
-msgstr "E மொழி"
+msgstr "&மொழி"
 
 #. i18n: ectx: property (toolTip), widget (Sonnet::DictionaryComboBox, m_language)
 #: spellcheck/spellcheckbar.ui:169
 #, kde-format
 msgid "Language Selection"
-msgstr ""
+msgstr "மொழித் தேர்வு"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_autoCorrect)
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_skipAllBtn)
@@ -4059,7 +4023,7 @@ msgstr ""
 #: spellcheck/spellcheckbar.ui:200
 #, kde-format
 msgid "Autocorrect"
-msgstr ""
+msgstr "தானாக திருத்து"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:209
@@ -4073,22 +4037,20 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:212
-#, fuzzy, kde-format
-#| msgid "Replace &All"
+#, kde-format
 msgid "R&eplace All"
-msgstr "அனைத்தையும் மாற்று"
+msgstr "&அனைத்தையும் மாற்று"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipAllBtn)
 #: spellcheck/spellcheckbar.ui:225
-#, fuzzy, kde-format
-#| msgid "&Ignore"
+#, kde-format
 msgid "I&gnore All"
-msgstr "&தவிர்க்க"
+msgstr "&அனைத்தையும் பொருட்படுத்தாதே"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr ""
+msgstr "எழுத்தாக்கம் (இடஞ்சுட்டியிலிருந்து)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4096,16 +4058,14 @@ msgid "Check the document's spelling from the cursor and forward"
 msgstr ""
 
 #: spellcheck/spellingmenu.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Ignore"
+#, kde-format
 msgid "Ignore Word"
-msgstr "&தவிர்க்க"
+msgstr "சொல்லை பொருட்படுத்தாதே"
 
 #: spellcheck/spellingmenu.cpp:79
-#, fuzzy, kde-format
-#| msgid "&Section:"
+#, kde-format
 msgid "Add to Dictionary"
-msgstr "&பிரிவு"
+msgstr "அகரமுதலியில் சேர்"
 
 #: spellcheck/spellingmenu.cpp:169
 #, kde-format
@@ -4132,13 +4092,12 @@ msgstr ""
 #: swapfile/kateswapfile.cpp:629
 #, kde-format
 msgid "The file was not closed properly."
-msgstr ""
+msgstr "கோப்பு சரியாக மூடப்படவில்லை."
 
 #: swapfile/kateswapfile.cpp:632
-#, fuzzy, kde-format
-#| msgid "&Ignore Changes"
+#, kde-format
 msgid "View Changes"
-msgstr "&மாற்றங்களை தவிர்"
+msgstr "மாற்றங்களைக் காட்டு"
 
 #: swapfile/kateswapfile.cpp:633
 #, kde-format
@@ -4146,20 +4105,17 @@ msgid "Recover Data"
 msgstr "தரவை மீட்டெடு"
 
 #: swapfile/kateswapfile.cpp:634
-#, fuzzy, kde-format
-#| msgid "Disabled"
+#, kde-format
 msgid "Discard"
-msgstr "முடக்கிய"
+msgstr "கைவிடு"
 
 #: syntax/katecolortreewidget.cpp:34 syntax/katecolortreewidget.cpp:61
 #, kde-format
 msgid "Use default color from the color theme"
-msgstr ""
+msgstr "நிறத்திட்டத்திலிருந்தான இயல்பிருப்பு நிறத்தைப் பயன்படுத்து"
 
 #: syntax/katehighlightmenu.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Autoindent mode"
-#| msgid "None"
+#, kde-format
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
@@ -5047,16 +5003,14 @@ msgid ""
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1413
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Copy Theme"
-msgstr "நிறங்கள்"
+msgstr "திட்டத்தை நகலெடு"
 
 #: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
-#, fuzzy, kde-format
-#| msgid "Colors"
+#, kde-format
 msgid "Color Themes"
-msgstr "நிறங்கள்"
+msgstr "நிறத்திட்டங்கள்"
 
 #: utils/kateautoindent.cpp:87
 #, kde-format
@@ -5068,7 +5022,7 @@ msgstr "எதுவும் இல்லை"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Normal"
-msgstr "இயல்பான"
+msgstr "இயல்பானது"
 
 #: utils/katebookmarks.cpp:49
 #, kde-format
@@ -5175,10 +5129,9 @@ msgid ""
 msgstr ""
 
 #: utils/katecmds.cpp:90
-#, fuzzy, kde-format
-#| msgid "Delete the current file type."
+#, kde-format
 msgid "Deletes the current line."
-msgstr "தற்போதைய கோப்பு வகையை அகற்றுக.சேமி "
+msgstr "தற்போதைய வரியை நீக்கும்."
 
 #: utils/katecmds.cpp:94
 #, kde-format
@@ -7867,89 +7820,78 @@ msgstr "முன்னிருப்பு குறி வகையை அம
 #: view/kateviewhelpers.cpp:2737
 #, kde-format
 msgid "Disable Annotation Bar"
-msgstr ""
+msgstr "குறிப்புப்பட்டையை முடக்கு"
 
 #: view/screenshotdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "திறப்பது/சேமிப்பது"
+msgstr "சேமி"
 
 #: view/screenshotdialog.cpp:139
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgid "Copy"
-msgstr "கோப்பினைச் சேமி..."
+msgstr "நகலெடு"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgid "Background Color..."
-msgstr "&பின்னணி வண்ணம்..."
+msgstr "பின்புல நிறம்..."
 
 #: view/screenshotdialog.cpp:142
-#, fuzzy, kde-format
-#| msgid "Selection Mode"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "தேர்ந்தெடுப்பு வகை"
+msgstr "கூடுதலான அலங்காரங்களைக் காட்டு"
 
 #: view/screenshotdialog.cpp:143
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "&முன்னிடைவெளிக்கான கோடுகளை காட்டு"
+msgstr "சாளர விளிம்புகளைக் காட்டு"
 
 #: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
-msgstr ""
+msgstr "திரைப்பிடிப்பு..."
 
 #: view/screenshotdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "வரி எண்ணைக் காட்டு"
+msgstr "வரி எண்ணைக் காட்டாதே"
 
 #: view/screenshotdialog.cpp:221
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "வரி எண்ணைக் காட்டு"
+msgstr "வரி எண்ணை 1-இலிருந்து துவங்குவதுபோல் காட்டு"
 
 #: view/screenshotdialog.cpp:222
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "வரி எண்ணைக் காட்டு"
+msgstr "உண்மையாக வரி எண்ணைக் காட்டு"
 
 #: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgid "Save..."
-msgstr "வேறு &பெயரில் சேமி..."
+msgstr "சேமி..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "திரைப்பிடிப்பை சேமிப்பது தோல்வியடைந்தது"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "திரைப்பிடிப்பை சேமிப்பது தோல்வியடைந்தது: %1"
 
 #: vimode/appcommands.cpp:67
-#, fuzzy, kde-format
-#| msgid "Document to open"
+#, kde-format
 msgid "All documents written to disk"
-msgstr "திறக்கப் பட வேண்டிய ஆவணம்"
+msgstr "அனைத்து ஆவணங்களும் வட்டில் சேமிக்கப்பட்டுள்ளன"
 
 #: vimode/appcommands.cpp:70
-#, fuzzy, kde-format
-#| msgid "Document to open"
+#, kde-format
 msgid "Document written to disk"
-msgstr "திறக்கப் பட வேண்டிய ஆவணம்"
+msgstr "ஆவணம் வட்டில் சேமிக்கப்பட்டது"
 
 #: vimode/appcommands.cpp:202
 #, kde-format
