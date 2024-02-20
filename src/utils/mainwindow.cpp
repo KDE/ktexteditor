@@ -223,6 +223,36 @@ bool MainWindow::addWidget(QWidget *widget)
     return success;
 }
 
+bool MainWindow::removeWidget(QWidget *widget)
+{
+    // dispatch to parent
+    bool success = false;
+    QMetaObject::invokeMethod(parent(), "removeWidget", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(QWidget*, widget));
+    return success;
+}
+
+QWidgetList MainWindow::widgets() const
+{
+    // dispatch to parent
+    QWidgetList l;
+    QMetaObject::invokeMethod(parent(), "widgets", Qt::DirectConnection, Q_RETURN_ARG(QWidgetList, l));
+    return l;
+}
+
+QWidget *MainWindow::activeWidget()
+{
+    // dispatch to parent
+    QWidget *w = nullptr;
+    QMetaObject::invokeMethod(parent(), "activeWidget", Qt::DirectConnection, Q_RETURN_ARG(QWidget*, w));
+    return w;
+}
+
+void MainWindow::activateWidget(QWidget *widget)
+{
+    // dispatch to parent
+    QMetaObject::invokeMethod(parent(), "activateWidget", Qt::DirectConnection, Q_ARG(QWidget*, widget));
+}
+
 bool MainWindow::showMessage(const QVariantMap &message)
 {
     // dispatch to parent

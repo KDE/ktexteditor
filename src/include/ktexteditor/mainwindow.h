@@ -325,6 +325,34 @@ public:
      */
     bool addWidget(QWidget *widget);
 
+    /**
+     * \brief remove this \p widget from this mainwindow. The widget will be deleted afterwards
+     * \param widget the widget to be removed
+     * \return true on success
+     * \since 6.0
+     */
+    bool removeWidget(QWidget *widget);
+
+    /**
+     * \brief returns the list of non-KTextEditor::View widgets in this main window.
+     * \see addWidget
+     * \since 6.0
+     */
+    QWidgetList widgets() const;
+
+    /**
+     * \brief returns the currently active widget. It can be a non-KTextEditor::View widget or a KTextEditor::View
+     * \since 6.0
+     */
+    QWidget *activeWidget();
+
+    /**
+     * \brief activate @p widget. If the widget is not present in the window, it will be added to the window
+     * \param widget the widget to activate
+     * \since 6.0
+     */
+    void activateWidget(QWidget *widget);
+
     //
     // Message output
     //
