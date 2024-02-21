@@ -147,6 +147,21 @@ void TextRange::setRange(KTextEditor::Range range)
     }
 }
 
+void TextRange::setRange(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute)
+{
+    // FIXME: optimize
+    setRange(range);
+    setAttribute(attribute);
+}
+
+void TextRange::setRange(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, qreal zDepth)
+{
+    // FIXME: optimize
+    setRange(range);
+    setAttribute(attribute);
+    setZDepth(zDepth);
+}
+
 void TextRange::checkValidity(KTextEditor::LineRange oldLineRange, bool notifyAboutChange)
 {
     // in any case: reset the flag, to avoid multiple runs

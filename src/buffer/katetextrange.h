@@ -119,6 +119,35 @@ public:
     }
 
     /**
+     * Set the range of this range and the connected attribute.
+     * Avoids internal overhead of separate setting that.
+     *
+     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
+     * automatically invalid!
+     *
+     * @param range new range for this clever range
+     * @param attribute Attribute to assign to this range. If null, simply removes the previous Attribute.
+     *
+     * @since 6.0
+     */
+    void setRange(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute) override;
+
+    /**
+     * Set the range of this range and the connected attribute and Z-depth.
+     * Avoids internal overhead of separate setting that.
+     *
+     * A TextRange is not allowed to be empty, as soon as start == end position, it will become
+     * automatically invalid!
+     *
+     * @param range new range for this clever range
+     * @param attribute Attribute to assign to this range. If null, simply removes the previous Attribute.
+     * @param zDepth new Z-depth of this range
+     *
+     * @since 6.0
+     */
+    void setRange(KTextEditor::Range range, KTextEditor::Attribute::Ptr attribute, qreal zDepth) override;
+
+    /**
      * Retrieve start cursor of this range, read-only.
      * @return start cursor
      */
