@@ -355,6 +355,24 @@ public:
     void activateWidget(QWidget *widget);
 
     //
+    // Signals related to widgets
+    //
+Q_SIGNALS:
+    /**
+     * \brief The @p widget was added to this window.
+     * \param widget the widget that got added
+     * \since 6.0
+     */
+    void widgetAdded(QWidget *widget);
+
+    /**
+     * \brief The @p widget was removed from this window.
+     * \param widget the widget that got removed
+     * \since 6.0
+     */
+    void widgetRemoved(QWidget *widget);
+
+    //
     // Message output
     //
 public:
