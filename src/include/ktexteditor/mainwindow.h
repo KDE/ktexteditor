@@ -10,6 +10,7 @@
 #include <ktexteditor_export.h>
 
 #include <QObject>
+#include <QWidgetList>
 
 class QEvent;
 class QIcon;
