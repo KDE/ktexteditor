@@ -231,7 +231,7 @@ bool MainWindow::removeWidget(QWidget *widget)
     return success;
 }
 
-QWidgetList MainWindow::widgets() const
+QWidgetList MainWindow::widgets()
 {
     // dispatch to parent
     QWidgetList l;

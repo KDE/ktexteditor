@@ -339,7 +339,7 @@ public:
      * \see addWidget
      * \since 6.0
      */
-    QWidgetList widgets() const;
+    QWidgetList widgets();
 
     /**
      * \brief returns the currently active widget. It can be a non-KTextEditor::View widget or a KTextEditor::View
