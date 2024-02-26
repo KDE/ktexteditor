@@ -4882,15 +4882,13 @@ bool KTextEditor::DocumentPrivate::documentReload()
         }
     }
 
-    int z = 0;
     const int lines = this->lines();
     for (const auto &tmpMark : tmp) {
-        if (z < lines) {
+        if (tmpMark.mark.line < lines) {
             if (tmpMark.line == line(tmpMark.mark.line)) {
                 setMark(tmpMark.mark.line, tmpMark.mark.type);
             }
         }
-        ++z;
     }
 
     // Restore old settings
