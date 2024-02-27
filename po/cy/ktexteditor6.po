@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-29 00:35+0000\n"
+"POT-Creation-Date: 2024-02-27 00:35+0000\n"
 "PO-Revision-Date: 2003-11-12 14:22+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -2077,12 +2077,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6500
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6498
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6501
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6499
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2199,9 +2199,9 @@ msgstr ""
 msgid "Untitled"
 msgstr "Heb derfyn"
 
-#: document/katedocument.cpp:4692 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:4692 document/katedocument.cpp:4918
+#: document/katedocument.cpp:4928 document/katedocument.cpp:5721
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Save File"
 msgstr ""
@@ -2211,13 +2211,13 @@ msgstr ""
 msgid "Save failed"
 msgstr "Methodd y cadw"
 
-#: document/katedocument.cpp:4941
+#: document/katedocument.cpp:4939
 #, fuzzy, kde-format
 #| msgid "Save failed"
 msgid "Save Copy of File"
 msgstr "Methodd y cadw"
 
-#: document/katedocument.cpp:4953
+#: document/katedocument.cpp:4951
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2226,7 +2226,7 @@ msgid ""
 "available."
 msgstr ""
 
-#: document/katedocument.cpp:5236
+#: document/katedocument.cpp:5234
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2235,7 +2235,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5242
+#: document/katedocument.cpp:5240
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2244,39 +2244,39 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5550
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5553
 #, fuzzy, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Mae'r Ffeil wedi Newid ar Dddisg"
 
-#: document/katedocument.cpp:5558
+#: document/katedocument.cpp:5556
 #, fuzzy, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Mae'r Ffeil wedi Newid ar Dddisg"
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5893
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5898
+#: document/katedocument.cpp:5896
 #, kde-format
 msgid "Close Document"
 msgstr ""
 
-#: document/katedocument.cpp:6009
+#: document/katedocument.cpp:6007
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6014
+#: document/katedocument.cpp:6012
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""

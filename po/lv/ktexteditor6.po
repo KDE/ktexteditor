@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-29 00:35+0000\n"
+"POT-Creation-Date: 2024-02-27 00:35+0000\n"
 "PO-Revision-Date: 2016-10-27 20:05+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -2275,12 +2275,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Mēģināt vēlreiz"
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6500
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6498
 #, kde-format
 msgid "&Close"
 msgstr "&Aizvērt"
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6501
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6499
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
@@ -2438,9 +2438,9 @@ msgstr "Tomēr aizvērt"
 msgid "Untitled"
 msgstr "Nenosaukts"
 
-#: document/katedocument.cpp:4692 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:4692 document/katedocument.cpp:4918
+#: document/katedocument.cpp:4928 document/katedocument.cpp:5721
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Save File"
 msgstr "Saglabāt datni"
@@ -2450,12 +2450,12 @@ msgstr "Saglabāt datni"
 msgid "Save failed"
 msgstr "Saglabāšana neizdevās"
 
-#: document/katedocument.cpp:4941
+#: document/katedocument.cpp:4939
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Saglabāt datnes kopiju"
 
-#: document/katedocument.cpp:4953
+#: document/katedocument.cpp:4951
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2468,7 +2468,7 @@ msgstr ""
 "Pārbaudiet, vai jums ir rakstīšanas atļauja šai datnei un vai ir pieejams "
 "pietiekams daudzums brīvās diska vietas."
 
-#: document/katedocument.cpp:5236
+#: document/katedocument.cpp:5234
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2484,7 +2484,7 @@ msgstr ""
 "to ar 'remove-trailing-spaces modified;', skatiet http://docs.kde.org/stable/"
 "en/kde-baseapps/kate/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5242
+#: document/katedocument.cpp:5240
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2501,25 +2501,25 @@ msgstr ""
 "org/stable/en/kde-baseapps/kate/config-variables.html#variable-remove-"
 "trailing-spaces"
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5550
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Datni “%1” izmainīja cita programma."
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5553
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Datni “%1” izveidoja cita programma."
 
-#: document/katedocument.cpp:5558
+#: document/katedocument.cpp:5556
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Datni “%1” izdzēsa cita programma."
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5893
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2528,18 +2528,18 @@ msgstr ""
 "Dokuments “%1” ir mainīts.\n"
 "Vai vēlaties to saglabāt vai izmest?"
 
-#: document/katedocument.cpp:5898
+#: document/katedocument.cpp:5896
 #, kde-format
 msgid "Close Document"
 msgstr "Aizvērt dokumentu"
 
-#: document/katedocument.cpp:6009
+#: document/katedocument.cpp:6007
 #, fuzzy, kde-format
 #| msgid "The file %1 is still loading."
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Datne %1 joprojām tiek ielādēta."
 
-#: document/katedocument.cpp:6014
+#: document/katedocument.cpp:6012
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Pārtr&aukt ielādi"

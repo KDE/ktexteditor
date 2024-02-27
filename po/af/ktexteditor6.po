@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-29 00:35+0000\n"
+"POT-Creation-Date: 2024-02-27 00:35+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -2285,12 +2285,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr ""
 
-#: document/katedocument.cpp:2253 document/katedocument.cpp:6500
+#: document/katedocument.cpp:2253 document/katedocument.cpp:6498
 #, kde-format
 msgid "&Close"
 msgstr ""
 
-#: document/katedocument.cpp:2254 document/katedocument.cpp:6501
+#: document/katedocument.cpp:2254 document/katedocument.cpp:6499
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2427,9 +2427,9 @@ msgstr "Maak nogsteeds toe"
 msgid "Untitled"
 msgstr "Onbeperk"
 
-#: document/katedocument.cpp:4692 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:4692 document/katedocument.cpp:4918
+#: document/katedocument.cpp:4928 document/katedocument.cpp:5721
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Save File"
 msgstr "Stoor Lêer"
@@ -2439,13 +2439,13 @@ msgstr "Stoor Lêer"
 msgid "Save failed"
 msgstr "Stoor gevaal"
 
-#: document/katedocument.cpp:4941
+#: document/katedocument.cpp:4939
 #, fuzzy, kde-format
 #| msgid "Save File"
 msgid "Save Copy of File"
 msgstr "Stoor Lêer"
 
-#: document/katedocument.cpp:4953
+#: document/katedocument.cpp:4951
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2459,7 +2459,7 @@ msgstr ""
 "Kontroleur dat jy skryf toegang het na hierdie lêer of dat daar genoeg skryf "
 "spasie beskikbaar is."
 
-#: document/katedocument.cpp:5236
+#: document/katedocument.cpp:5234
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2468,7 +2468,7 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5242
+#: document/katedocument.cpp:5240
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2477,43 +2477,43 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5550
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Die lêer '%1' was modifiseerd deur 'n ander program."
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5553
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Die lêer '%1' is gemaak deur 'n ander program."
 
-#: document/katedocument.cpp:5558
+#: document/katedocument.cpp:5556
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Die lêer '%1' was uitgevee deur 'n ander program."
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5893
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
 
-#: document/katedocument.cpp:5898
+#: document/katedocument.cpp:5896
 #, fuzzy, kde-format
 #| msgid "&Word Wrap Document"
 msgid "Close Document"
 msgstr "Woord Oorvloei Dokument"
 
-#: document/katedocument.cpp:6009
+#: document/katedocument.cpp:6007
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6014
+#: document/katedocument.cpp:6012
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""
