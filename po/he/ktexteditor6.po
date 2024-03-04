@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:35+0000\n"
-"PO-Revision-Date: 2024-03-02 22:48+0200\n"
+"PO-Revision-Date: 2024-03-03 12:59+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -616,6 +616,7 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
+"כאשר טקסט נבחר, התווים האלו יתווספו בשני הצדדים כמו „סוגריים אוטומטיים”"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
@@ -647,7 +648,7 @@ msgstr "העתק או גזור את השורה הנוכחית אם אין בחי
 #: dialogs/editconfigwidget.ui:187
 #, kde-format
 msgid "Don't move the text cursor when pasting by mouse"
-msgstr ""
+msgstr "לא להזיז את סמן הטקסט בעת הדבקה עם העכבר"
 
 #. i18n: ectx: property (text), widget (QLabel, lblClipboardHistoryEntries)
 #: dialogs/editconfigwidget.ui:194
@@ -660,7 +661,7 @@ msgstr "&היסטוריית לוח עריכה"
 #: dialogs/editconfigwidget.ui:204
 #, kde-format
 msgid "This determines the number of entries to keep in the clipboard history"
-msgstr ""
+msgstr "הגדרה זו קובעת את מספר הרשומות לשמירה בהיסטוריית לוח הגזירים"
 
 #. i18n: ectx: property (text), widget (QLabel, lblBracketHelp)
 #: dialogs/editconfigwidget.ui:226
@@ -674,13 +675,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "הפעלת התראות מונגשות"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "נגישות:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -1259,7 +1260,7 @@ msgstr "הצגת ה&בדלים"
 #: dialogs/katedialogs.cpp:1460
 #, kde-format
 msgid "Shows a diff of the changes."
-msgstr ""
+msgstr "מציג הבדל של השינויים."
 
 #: dialogs/katedialogs.cpp:1465
 #, kde-format
@@ -1281,7 +1282,7 @@ msgstr "&סגירת קובץ"
 #: dialogs/katedialogs.cpp:1473
 #, kde-format
 msgid "Closes the file, discarding its content."
-msgstr ""
+msgstr "סוגר את הקובץ תוך התעלמות מתוכנו."
 
 #: dialogs/katedialogs.cpp:1477
 #, kde-format
@@ -1436,7 +1437,7 @@ msgstr "קבוע"
 #: dialogs/navigationconfigwidget.ui:167
 #, kde-format
 msgid "Allow scrolling past the end of the document"
-msgstr "אפשר גלילה לאחר סוף המסמך"
+msgstr "לאפשר גלילה לאחר סוף המסמך"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:174
@@ -1474,7 +1475,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr ""
+msgstr "לכתוב קובץ גיבוי בכל שמירה עבור:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1508,7 +1509,7 @@ msgstr "קבצים מ&רוחקים"
 #: dialogs/opensaveconfigadvwidget.ui:84
 #, kde-format
 msgid "Prefix for backup files:"
-msgstr ""
+msgstr "קידומת קובצי הגיבוי:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupPrefix)
 #: dialogs/opensaveconfigadvwidget.ui:94
@@ -1520,7 +1521,7 @@ msgstr "הזן את הקידומת שיש להוסיף לשמות קבצים ש�
 #: dialogs/opensaveconfigadvwidget.ui:101
 #, kde-format
 msgid "Suffix for backup files:"
-msgstr ""
+msgstr "סיומת קובצי הגיבוי:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtBackupSuffix)
 #: dialogs/opensaveconfigadvwidget.ui:111
@@ -1538,13 +1539,13 @@ msgstr "מצב קובץ החלפה:"
 #: dialogs/opensaveconfigadvwidget.ui:150
 #, kde-format
 msgid "Enabled, Store In Default Directory"
-msgstr ""
+msgstr "מופעל, לאחסן בתיקיית ברירת המחדל"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:155
 #, kde-format
 msgid "Enabled, Store In Custom Directory"
-msgstr ""
+msgstr "מופעל, לאחסן בתיקייה מוגדרת"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapDirectory)
 #: dialogs/opensaveconfigadvwidget.ui:163
@@ -1569,7 +1570,7 @@ msgstr "בתור"
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
-msgstr ""
+msgstr "המחרוזת הזאת נמצאת ב־katedialogs.cpp בבנאי של KateSaveConfigTab"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
