@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:35+0000\n"
-"PO-Revision-Date: 2024-03-03 12:59+0200\n"
+"PO-Revision-Date: 2024-03-06 23:13+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -191,13 +191,13 @@ msgstr "להציג חיצים לצמצום מקטעי קוד"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:42
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
-"<p>אם אפשרות זו נבחרת, כל תצוגה חדשה תציג סימונים על גבי פס הגלילה האנכי.</"
-"p> <p>סימונים אלה מציגים למשל את מיקומן של סימניות.</p>"
+"אם האפשרות מסומנת, מעבר עם העכבר מעל אזור מקופל מציג תצוגה מקסימה של הטקסט "
+"המקופל בחלונית קופצת."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
@@ -277,13 +277,13 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:138
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>אם אפשרות זו נבחרת, כל תצוגה חדשה תציג סימונים על גבי פס הגלילה האנכי.</"
-"p> <p>סימונים אלה מציגים למשל את מיקומן של סימניות.</p>"
+"<p>אם אפשרות זאת מסומנת, מעבר עם העכבר מעל פס הגלילה תציג תצוגה מקדימה של "
+"הטקסט.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:141
@@ -442,7 +442,7 @@ msgstr "לבחור אוטומטית את רשומת ההשלמה ה&ראשונה
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "מעבר בסבב מעגלי על רשימת ההשלמות באמצעות Tab / Shift+Tab"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:56
@@ -670,6 +670,8 @@ msgid ""
 "When you type these characters while text is selected, they will surround "
 "the selected text instead of replacing it."
 msgstr ""
+"כשמקלידים את התווים האלו כשנבחר טקסט, הם יקיפו את הטקסט הנבחר במקום להחליף "
+"אותו."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAccessibility)
 #: dialogs/editconfigwidget.ui:252
@@ -1686,7 +1688,7 @@ msgstr "הפעלת סימן סדר בתים (BOM)"
 #: dialogs/opensaveconfigwidget.ui:142
 #, kde-format
 msgid "Line length limit:"
-msgstr ""
+msgstr "מגבלת אורך שורה:"
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, lineLengthLimit)
 #: dialogs/opensaveconfigwidget.ui:152
@@ -1762,13 +1764,13 @@ msgstr "הפעלת שמירה אוטומטית (קבצים מקומיים בלב
 #: dialogs/opensaveconfigwidget.ui:254
 #, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr ""
+msgstr "לשמור אוטומטית את המסמך כאשר המסמך הפעילה מאבד מיקוד"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
 #, kde-format
 msgid "Auto save interval:"
-msgstr ""
+msgstr "הפרש בין שמירות אוטומטיות:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbAutoSaveInterval)
 #: dialogs/opensaveconfigwidget.ui:273
@@ -1816,7 +1818,7 @@ msgstr "הצגת קידוד הקובץ"
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr ""
+msgstr "הצגת סוג סוף שורה"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -1828,7 +1830,7 @@ msgstr "גופן העורך:"
 #: dialogs/textareaappearanceconfigwidget.ui:48
 #, kde-format
 msgid "Line Height Multiplier:"
-msgstr ""
+msgstr "מכפיל גובה שורה:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:55
@@ -1842,7 +1844,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:90
 #, kde-format
 msgid "Show whitespace indicators:"
-msgstr ""
+msgstr "הצגת מחווני רווחים:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/textareaappearanceconfigwidget.ui:106
@@ -6861,13 +6863,13 @@ msgid "Show Scrollbar Mini-Map"
 msgstr "הצג מפת מסמך בסרגל גלילה"
 
 #: view/kateview.cpp:813
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
 "shows an overview of the whole document."
 msgstr ""
-"הצגה או הסתרה של הסימונים שעל גבי פס הגלילה האנכי.<br /><br />הסימונים "
-"מציגים למשל את מיקומן של סימניות."
+"הצגת/הסתרת המפה המוקטנת בפס הגלילה האנכי.<br /><br />המפה המוקטנת מציגה "
+"סקירה של כל המסמך."
 
 #. i18n("Show the whole document in the Mini-Map"), this);
 #. ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
