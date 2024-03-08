@@ -18,10 +18,10 @@
 # SPDX-FileCopyrightText: 2023, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: ktexteditor5\n"
+"Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:35+0000\n"
-"PO-Revision-Date: 2024-03-06 23:13+0200\n"
+"PO-Revision-Date: 2024-03-07 15:20+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -484,7 +484,7 @@ msgstr "הסר את כל הסוף של המילה הקודמת בעת בחירת
 #: dialogs/completionconfigtab.ui:114
 #, kde-format
 msgid "Remove tail on complete"
-msgstr "הסר סוף בעת בחירה"
+msgstr "הסרת סוף בעת השלמה"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/completionconfigtab.ui:121
@@ -520,8 +520,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
-"שצהת תיעוד לצד תיבת ההשלמה. אם האפשרות מושבתת, אפשר לצפות בתיעוד על ידי "
-"לחיצה על מקש Alt."
+"הצגת תיעוד לצד תיבת ההשלמה. אם האפשרות מושבתת, אפשר לצפות בתיעוד בלחיצה על "
+"Alt."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -540,12 +540,11 @@ msgid ""
 "be <i>visually wrapped</i> instead, according to the width of the view, "
 "enable <b>Dynamic Word Wrap</b> in the <b>Appearance</b> config page.</p>"
 msgstr ""
-"<p>פתיחת שורה חדשה באופן אוטומטי כאשר השורה הנוכחית גולשת מעבר לגודל שנקבע "
-"באפשרות <b>גלישת שורות בעמודה:</b>.</p><p> אפשרות זאת לא משנה שורות קיימות "
-"בטקסט - יש להשתמש באפשרות<b>החל גלישת שורות סטטית</b> בתפריט <b>כלים</b> כדי "
-"לעשות זאת.</p><p>אם ברצונך ששורות יגלשו <i>באופן ויזואלי</i> בהתאם לגודל "
-"החלון במקום זאת, בחר באפשרות <b>גלישת שורות דינמית</b> בדף ההגדרות של "
-"<b>רכיב העריכה - מראה</b>."
+"<p>לפתוח שורה חדשה של טקסט כשהשורה הנוכחית חורגת מהאורך שהוגדר באפשרות "
+"<b>הורדת שורה לאחר:</b>.</p><p>האפשרות הזאת לא שוברת שורות קיימות של טקסט - "
+"יש להשתמש באפשרות <b>החלת גלישת מילים קבועה</b> בתפריט <b>כלים</b> למטרה "
+"הזאת.</p><p>כדי שהשורות <i>יישברו חזותית</i> במקום, בהתאם לרוחב התצוגה, יש "
+"להפעיל את <b>גלישת מילים דינמית</b> בעמוד ההגדרות <b>מראה</b>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkStaticWordWrap)
 #: dialogs/editconfigwidget.ui:32
@@ -577,9 +576,9 @@ msgstr "&ציור קו אנכי בעמודת גלישת מילים"
 
 #. i18n: ectx: property (text), widget (QLabel, lblWordWrap)
 #: dialogs/editconfigwidget.ui:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "Wra&p words at:"
-msgstr "גלישת שורות ב&עמודה:"
+msgstr "הורדת שורה ל&אחר:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -1572,7 +1571,7 @@ msgstr "בתור"
 #, kde-format
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
-msgstr "המחרוזת הזאת נמצאת ב־katedialogs.cpp בבנאי של KateSaveConfigTab"
+msgstr "המחרוזת הזאת נמצאת ב־katedialogs.cpp בבנאי של KateSaveConfigTab."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -3426,24 +3425,24 @@ msgid "Add..."
 msgstr "הוסף..."
 
 #: search/katesearchbar.cpp:299
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
 msgstr[0] "בוצעה החלפה אחת"
-msgstr[1] "בוצעו %1 החלפות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "בוצעו שתי החלפות"
+msgstr[2] "בוצעו %1 החלפות"
+msgstr[3] "בוצעו %1 החלפות"
 
 #: search/katesearchbar.cpp:301
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
 msgstr[0] "נמצאה התאמה אחת"
-msgstr[1] "נמצאו %1 התאמות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "נמצאו שתי התאמות"
+msgstr[2] "נמצאו %1 התאמות"
+msgstr[3] "נמצאו %1 התאמות"
 
 #: search/katesearchbar.cpp:375
 #, kde-format
@@ -4065,9 +4064,7 @@ msgid "Use default color from the color theme"
 msgstr "השתמש בצבע ברירת מחדל של סכימה הצבעים של KDE"
 
 #: syntax/katehighlightmenu.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "Autoindent mode"
-#| msgid "None"
+#, kde-format
 msgid "None"
 msgstr "ללא"
 
@@ -5603,24 +5600,24 @@ msgid "replace with %1?"
 msgstr "להחליף ב־%1?"
 
 #: utils/katesedcmd.cpp:274
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
 msgstr[0] "בוצעה החלפה אחת בשורה %2"
-msgstr[1] "בוצעו %1 החלפות ב־%2"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "בוצעו שתי החלפות ב־%2"
+msgstr[2] "בוצעו %1 החלפות ב־%2"
+msgstr[3] "בוצעו %1 החלפות ב־%2"
 
 #: utils/katesedcmd.cpp:277
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "substituted into the previous message"
 msgid "1 line"
 msgid_plural "%1 lines"
 msgstr[0] "שורה אחת"
-msgstr[1] "%1 שורות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "שתי שורות"
+msgstr[2] "%1 שורות"
+msgstr[3] "%1 שורות"
 
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
@@ -6053,7 +6050,7 @@ msgstr "הצג מפת מסמך"
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar preview."
-msgstr "הצגת תצוגה מקדימה בפס הגלילה:"
+msgstr "הצגת תצוגה מקדימה בפס הגלילה."
 
 #: variableeditor/variablelineedit.cpp:300
 #, fuzzy, kde-format
