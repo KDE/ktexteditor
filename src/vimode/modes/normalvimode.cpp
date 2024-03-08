@@ -1877,10 +1877,7 @@ bool NormalViMode::commandFormatLines()
 
 bool NormalViMode::commandCollapseToplevelNodes()
 {
-#if 0
-    //FIXME FOLDING
-    doc()->foldingTree()->collapseToplevelNodes();
-#endif
+    m_view->slotFoldToplevelNodes();
     return true;
 }
 
@@ -1920,40 +1917,31 @@ bool NormalViMode::commandCloseWrite()
 
 bool NormalViMode::commandCollapseLocal()
 {
-#if 0
-    //FIXME FOLDING
-    KTextEditor::Cursor c(m_view->cursorPosition());
-    doc()->foldingTree()->collapseOne(c.line(), c.column());
-#endif
+    int line = m_view->cursorPosition().line();
+    bool actionDone = false;
+    while (!actionDone && line > -1) {
+        actionDone = m_view->foldLine(line--).isValid();
+    }
     return true;
 }
 
 bool NormalViMode::commandExpandAll()
 {
-#if 0
-    //FIXME FOLDING
-    doc()->foldingTree()->expandAll();
-#endif
+    // FIXME: is toplevel same as all?
+    m_view->slotExpandToplevelNodes();
     return true;
 }
 
 bool NormalViMode::commandExpandLocal()
 {
-#if 0
-    //FIXME FOLDING
-    KTextEditor::Cursor c(m_view->cursorPosition());
-    doc()->foldingTree()->expandOne(c.line() + 1, c.column());
-#endif
-    return true;
+    int line = m_view->cursorPosition().line();
+    return m_view->unfoldLine(line);
 }
 
 bool NormalViMode::commandToggleRegionVisibility()
 {
-#if 0
-    //FIXME FOLDING
-    KTextEditor::Cursor c(m_view->cursorPosition());
-    doc()->foldingTree()->toggleRegionVisibility(c.line());
-#endif
+    // FIXME: is this equivalent to Vim (or a desired change)?
+    m_view->slotToggleFolding();
     return true;
 }
 
