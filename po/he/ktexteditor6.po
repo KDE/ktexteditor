@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:35+0000\n"
-"PO-Revision-Date: 2024-03-07 15:20+0200\n"
+"PO-Revision-Date: 2024-03-10 00:34+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -60,12 +60,12 @@ msgstr "השלמת מסוף"
 #: completion/katewordcompletion.cpp:307
 #, kde-format
 msgid "Reuse Word Above"
-msgstr "השתמש במילים מלמעלה"
+msgstr "שימוש חוזר במילים שלעיל"
 
 #: completion/katewordcompletion.cpp:313
 #, kde-format
 msgid "Reuse Word Below"
-msgstr "השתמש במילים מלמטה"
+msgstr "שימוש במילים שלהלן"
 
 #. i18n: ectx: Menu (file)
 #: data/katepart5ui.rc:4
@@ -236,13 +236,13 @@ msgstr "הצגת סימונים"
 msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
-msgstr "אם אפשרות זו נבחרת, כל תצוגה חדשה תציג את מספרי השורות בצד שמאל."
+msgstr "אם אפשרות זו מסומנת, כל תצוגה חדשה תציג את מספרי השורות בצד שמאל."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:88
 #, kde-format
 msgid "Show &line numbers"
-msgstr "הצג מספ&רי שורות"
+msgstr "הצגת מספ&רי שורות"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:95
@@ -311,7 +311,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:174
 #, kde-format
 msgid "Show minimap"
-msgstr "להציג מפה מוקטנת"
+msgstr "הצגת מפה מוקטנת"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:184
@@ -325,7 +325,7 @@ msgstr "אם אפשרות זו נבחרת, כל תצוגה חדשה תכיל מ�
 #: dialogs/bordersappearanceconfigwidget.ui:187
 #, kde-format
 msgid "Map the whole document"
-msgstr "הצג מפה של כל המסמך"
+msgstr "מיפוי של המסמך כולו"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:213
@@ -337,19 +337,19 @@ msgstr "רוחב מפה מו&קטנת:"
 #: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Always On"
-msgstr "תמיד מופעל"
+msgstr "תמיד פעילה"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:229
 #, kde-format
 msgid "Show When Needed"
-msgstr "הצג בעת הצורך בלבד"
+msgstr "הצגה בעת הצורך"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:234
 #, kde-format
 msgid "Always Off"
-msgstr "תמיד מכובה"
+msgstr "תמיד כבויה"
 
 #. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:242
@@ -393,7 +393,7 @@ msgstr "מיון תפריט סימניות:"
 #: dialogs/bordersappearanceconfigwidget.ui:295
 #, kde-format
 msgid "Folding arrows visibility:"
-msgstr "חשיפת חיצי קיפול:"
+msgstr "חשיפת חיצי צמצום:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:306
@@ -1401,7 +1401,7 @@ msgstr "הגדרת מספר השורות שיש להשאיר מוצגות מעל
 #: dialogs/opensaveconfigadvwidget.ui:193
 #, kde-format
 msgid "Disabled"
-msgstr "מבוטל"
+msgstr "מושבת"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:95
@@ -1964,7 +1964,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:262
 #, kde-format
 msgid "Show i&ndentation lines"
-msgstr "הצג &קווי הזחה"
+msgstr "הצגת &קווי הזחה"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: dialogs/textareaappearanceconfigwidget.ui:285
@@ -2010,7 +2010,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:334
 #, kde-format
 msgid "Fold first line"
-msgstr "קיפול השורה הראשונה"
+msgstr "צמצום השורה הראשונה"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:354
@@ -2324,13 +2324,13 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
-"המסמך \"%1\" שונה.\n"
-"האם ברצונך לשמור את השינויים או לשכוח מהם?"
+"המסמך „%1” נערך.\n"
+"לשמור את השינויים או להתעלם מהם?"
 
 #: document/katedocument.cpp:5896
 #, kde-format
 msgid "Close Document"
-msgstr "סגור מסמך"
+msgstr "סגירת מסמך"
 
 #: document/katedocument.cpp:6007
 #, kde-format
@@ -2340,7 +2340,7 @@ msgstr "הקובץ <a href=\"%1\">%2</a> עדיין נטען."
 #: document/katedocument.cpp:6012
 #, kde-format
 msgid "&Abort Loading"
-msgstr "&בטל טעינה"
+msgstr "&ביטול טעינה"
 
 #: inputmode/katenormalinputmode.cpp:75
 #, kde-format
@@ -2370,7 +2370,7 @@ msgstr "‏‎VI: מצב רגיל"
 #: inputmode/kateviinputmode.cpp:37
 #, kde-format
 msgid "VI: VISUAL"
-msgstr "VI: מצב ויזואלי"
+msgstr "VI: מצב חזותי"
 
 #: inputmode/kateviinputmode.cpp:40
 #, kde-format
@@ -2380,7 +2380,7 @@ msgstr "VI: מקטע חזותי"
 #: inputmode/kateviinputmode.cpp:43
 #, kde-format
 msgid "VI: VISUAL LINE"
-msgstr "VI: שורה ויזואלית"
+msgstr "VI: שורה חזותית"
 
 #: inputmode/kateviinputmode.cpp:46
 #, kde-format
@@ -2411,7 +2411,7 @@ msgstr "<ללא שינויים>"
 #: mode/katemodeconfigpage.cpp:58
 #, kde-format
 msgid "Use Default"
-msgstr "השתמש בברירת המחדל"
+msgstr "להשתמש בברירת המחדל"
 
 #: mode/katemodeconfigpage.cpp:99 mode/katemodeconfigpage.cpp:241
 #, kde-format
@@ -2430,13 +2430,13 @@ msgid ""
 "Please note that this will automatically edit the associated file extensions "
 "as well."
 msgstr ""
-"בחר את טיפוסי הנתונים שברצונך לשייך לסוג קובץ זה.\n"
-"שים לב כי אפשרות זו תביא גם לעריכה אוטומטית של סיומות הקבצים המשוייכות."
+"נא לבחור את טיפוסי הנתונים לשיוך לסוג קובץ זה.\n"
+"נא לשים לב כי אפשרות זו תביא גם לעריכה אוטומטית של סיומות הקבצים המשוייכות."
 
 #: mode/katemodeconfigpage.cpp:295
 #, kde-format
 msgid "Select Mime Types"
-msgstr "בחר טיפוסי נתונים"
+msgstr "בחירת טיפוסי נתונים"
 
 #: mode/katemodeconfigpage.cpp:306
 #, kde-format
@@ -2491,12 +2491,12 @@ msgstr "הגדרות ט&קסט"
 #: printing/printconfigwidgets.cpp:40
 #, kde-format
 msgid "Print line &numbers"
-msgstr "הד&פס מספרי שורות"
+msgstr "הד&פסת מספרי שורות"
 
 #: printing/printconfigwidgets.cpp:43
 #, kde-format
 msgid "Print &legend"
-msgstr "הדפס &מקרא"
+msgstr "הדפסת &מקרא"
 
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
@@ -4255,10 +4255,10 @@ msgid "Character"
 msgstr "תו"
 
 #: syntax/katethemeconfig.cpp:70
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special Character"
-msgstr "תו"
+msgstr "תו מיוחד"
 
 #: syntax/katethemeconfig.cpp:72
 #, kde-format
@@ -4273,10 +4273,10 @@ msgid "Verbatim String"
 msgstr "מחרוזת מפורשת"
 
 #: syntax/katethemeconfig.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Special String"
-msgstr "סינון"
+msgstr "מחרוזת מיוחדת"
 
 #: syntax/katethemeconfig.cpp:78
 #, kde-format
@@ -4309,7 +4309,7 @@ msgid "Floating Point"
 msgstr "נקודה צפה"
 
 #: syntax/katethemeconfig.cpp:89
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Constant"
 msgstr "קבוע"
@@ -4327,10 +4327,10 @@ msgid "Documentation"
 msgstr "תיעוד"
 
 #: syntax/katethemeconfig.cpp:96
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Annotation"
-msgstr "הזחה"
+msgstr "הסבר"
 
 #: syntax/katethemeconfig.cpp:98
 #, fuzzy, kde-format
@@ -4375,10 +4375,9 @@ msgid "Error"
 msgstr "שגיאה"
 
 #: syntax/katethemeconfig.cpp:162
-#, fuzzy, kde-format
-#| msgid "Use Default"
+#, kde-format
 msgid "Use Default Colors"
-msgstr "השתמש בברירת המחדל"
+msgstr "להשתמש בצבעי ברירת המחדל"
 
 #: syntax/katethemeconfig.cpp:182
 #, kde-format
@@ -4512,12 +4511,12 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:264
 #, kde-format
 msgid "Code Folding"
-msgstr "קיפול קוד"
+msgstr "צמצום קוד"
 
 #: syntax/katethemeconfig.cpp:266
 #, kde-format
 msgid "<p>Sets the color of the code folding bar.</p>"
-msgstr "<p>הגדרת צבע הרקע של איזור קיפול קוד.</p>"
+msgstr "<p>הגדרת צבע הרקע של איזור צמצום קוד.</p>"
 
 #: syntax/katethemeconfig.cpp:271
 #, kde-format
@@ -5635,10 +5634,9 @@ msgid "Variables"
 msgstr "משתנים"
 
 #: utils/katevariableexpansionhelpers.cpp:221
-#, fuzzy, kde-format
-#| msgid "Filtering"
+#, kde-format
 msgid "Filter"
-msgstr "סינון"
+msgstr "מסנן"
 
 #: utils/katevariableexpansionhelpers.cpp:240
 #: utils/katevariableexpansionhelpers.cpp:261
@@ -5647,16 +5645,14 @@ msgid "Please select a variable."
 msgstr "נא לבחור משתנה."
 
 #: utils/katevariableexpansionhelpers.cpp:254
-#, fuzzy, kde-format
-#| msgid "Missing argument. Usage: %1 <value>"
+#, kde-format
 msgid "Current value: %1<value>"
-msgstr "חסר ארגומנט. שימוש: %1 <ערך>"
+msgstr "ערך נוכחי: %1<value>"
 
 #: utils/katevariableexpansionhelpers.cpp:258
-#, fuzzy, kde-format
-#| msgid "Current Time"
+#, kde-format
 msgid "Current value: %1"
-msgstr "זמן נוכחי"
+msgstr "ערך נוכחי: %1"
 
 #: utils/katevariableexpansionmanager.cpp:33
 #, fuzzy, kde-format
@@ -6130,9 +6126,9 @@ msgid "Change dictionary"
 msgstr "החלפת מילון"
 
 #: view/katestatusbar.cpp:161 view/katestatusbar.cpp:489
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tab Width"
-msgstr "רו&חב טאב:"
+msgstr "רוחב טאב"
 
 #: view/katestatusbar.cpp:169 view/katestatusbar.cpp:504
 #, kde-format
@@ -6145,14 +6141,14 @@ msgid "Indentation Mode"
 msgstr "מצב הזחה"
 
 #: view/katestatusbar.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tabulators && Spaces"
-msgstr "טאבים &ורווחים"
+msgstr "טאבים ורווחים"
 
 #: view/katestatusbar.cpp:182
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tabulators"
-msgstr "&טאבים"
+msgstr "טאבים"
 
 #: view/katestatusbar.cpp:185
 #, kde-format
@@ -6165,16 +6161,14 @@ msgid "Encoding"
 msgstr "קידוד"
 
 #: view/katestatusbar.cpp:200 view/katestatusbar.cpp:201
-#, fuzzy, kde-format
-#| msgid "End of line"
+#, kde-format
 msgid "End of line type"
-msgstr "סוף השורה"
+msgstr "סוג סוף השורה"
 
 #: view/katestatusbar.cpp:207
-#, fuzzy, kde-format
-#| msgid "&Mode"
+#, kde-format
 msgid "Mode"
-msgstr "&מצב"
+msgstr "מצב"
 
 #: view/katestatusbar.cpp:209 view/kateview.cpp:688
 #, kde-format
@@ -6182,13 +6176,13 @@ msgid ""
 "Here you can choose which mode should be used for the current document. This "
 "will influence the highlighting and folding being used, for example."
 msgstr ""
-"כאן באפשרותך לבחור את המצבים שישמשו עבור המסמך הנוכחי. הגדרה זו תשפיע למשל "
-"על ההדגשה וקיפול הקוד שייעשה בהם שימוש."
+"כאן אפשר לבחור את המצבים שישמשו עבור המסמך הנוכחי. הגדרה זו תשפיע למשל על "
+"ההדגשה וצמצום הקוד שייעשה בהם שימוש."
 
 #: view/katestatusbar.cpp:216
-#, fuzzy, kde-format
+#, kde-format
 msgid "Syntax highlighting"
-msgstr "קבע את הדגשת התחביר"
+msgstr "הדגשת תחביר"
 
 #: view/katestatusbar.cpp:261
 #, kde-format
@@ -6216,9 +6210,9 @@ msgid "Line %1 of %2, Column %3"
 msgstr " שורה: %1 עמודה: %2 "
 
 #: view/katestatusbar.cpp:331
-#, fuzzy, kde-format
+#, kde-format
 msgid "Line %1, Column %2"
-msgstr " שורה: %1 עמודה: %2 "
+msgstr "שורה %1, עמודה %2"
 
 #: view/katestatusbar.cpp:406
 #, kde-format
@@ -6241,9 +6235,9 @@ msgid "Indent/Tab: %1/%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
+#, kde-format
 msgid "Other..."
-msgstr "אחר"
+msgstr "אחר…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6270,18 +6264,18 @@ msgctxt ""
 "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/"
 "chars count."
 msgid "Words %1/%2, Chars %3/%4"
-msgstr ""
+msgstr "מילים %1/%2, תווים %3/%4"
 
 #: view/katestatusbar.cpp:574
 #, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr ""
+msgstr "מילים %1, תווים %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
-msgstr ""
+msgstr "תקריב: %1%"
 
 #: view/kateview.cpp:457
 #, kde-format
@@ -6306,10 +6300,9 @@ msgid "Clipboard &History Paste"
 msgstr "&היסטוריית לוח עריכה"
 
 #: view/kateview.cpp:474
-#, fuzzy, kde-format
-#| msgid "Automatic Spell Checking"
+#, kde-format
 msgid "Paste Selection"
-msgstr "בדיקת איות אוטומטית"
+msgstr "הדבקת הבחירה"
 
 #: view/kateview.cpp:476
 #, fuzzy, kde-format
@@ -6403,10 +6396,9 @@ msgstr ""
 "ההזחה המתאים."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgid "&Align On..."
-msgstr "&ישר"
+msgstr "יי&שור פעיל…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6439,14 +6431,14 @@ msgstr ""
 "השפה."
 
 #: view/kateview.cpp:543
-#, fuzzy, kde-format
+#, kde-format
 msgid "Go to Previous Editing Location"
-msgstr "עבור לנקודת העריכה הקודמת"
+msgstr "מעבר לנקודת העריכה הקודמת"
 
 #: view/kateview.cpp:549
-#, fuzzy, kde-format
+#, kde-format
 msgid "Go to Next Editing Location"
-msgstr "עבור לנקודת עריכה הבאה"
+msgstr "מעבר לנקודת העריכה הבאה"
 
 #: view/kateview.cpp:555
 #, kde-format
@@ -6464,9 +6456,9 @@ msgstr ""
 "המשמשים עבור הערות של שורה אחת/מספר שורות מוגדרים בהגדרות ההדגשה של השפה."
 
 #: view/kateview.cpp:563
-#, fuzzy, kde-format
+#, kde-format
 msgid "Toggle Comment"
-msgstr "הערה"
+msgstr "החלפת הצגת הערה"
 
 #: view/kateview.cpp:567
 #, kde-format
@@ -6481,13 +6473,12 @@ msgstr "נעל/שחרר נעילה של הקובץ מפני כתיבה"
 #: view/kateview.cpp:573
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&אילוץ כיוון מימין לשמאל"
 
 #: view/kateview.cpp:574
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "קישוטי טקסט"
+msgstr "אילוץ כיוון טקסט מימין לשמאל"
 
 #: view/kateview.cpp:584
 #, kde-format
@@ -6548,10 +6539,9 @@ msgstr ""
 "הפעלה ידנית של השלמת פקודות, בדרך כלל באמצעות קיצור מקשים המקושר לפעולה זו."
 
 #: view/kateview.cpp:621
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "ה&סר רווחים עודפים:"
+msgstr "הסרת רווחים מהסוף"
 
 #: view/kateview.cpp:639
 #, kde-format
@@ -6581,7 +6571,7 @@ msgstr "שמירת המסמך הנוכחי לדיסק, בשם שתבחר."
 #: view/kateview.cpp:654
 #, kde-format
 msgid "Save As with Encoding..."
-msgstr ""
+msgstr "שמירה בשם עם קידוד…"
 
 #: view/kateview.cpp:660
 #, kde-format
@@ -6691,7 +6681,7 @@ msgstr "הקטנת גודל גופן התצוגה."
 #: view/kateview.cpp:735
 #, kde-format
 msgid "Reset Font Size"
-msgstr ""
+msgstr "איפוס גודל הגופן"
 
 #: view/kateview.cpp:737
 #, kde-format
@@ -6807,14 +6797,14 @@ msgstr ""
 #: view/kateview.cpp:791
 #, kde-format
 msgid "Show Folding &Markers"
-msgstr "הצגת סימני &קיפול"
+msgstr "הצגת סימני &צמצום"
 
 #: view/kateview.cpp:793
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
-msgstr "כאן באפשרותך לבחור אם יוצגו סימני קיפול קוד בעת שהדבר אפשרי."
+msgstr "כאן אפשר לבחור אם יוצגו סימני צמצום קוד כשאפשר."
 
 #: view/kateview.cpp:796
 #, kde-format
@@ -7776,7 +7766,7 @@ msgstr "חסר ארגומנט. אופן שימוש: %1 <מתוך>"
 #: vimode/cmds.cpp:68
 #, kde-format
 msgid "No mapping found for \"%1\""
-msgstr ""
+msgstr "לא נמצא מיפוי עבור „%1”"
 
 #: vimode/cmds.cpp:71
 #, kde-format
