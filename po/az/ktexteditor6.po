@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:35+0000\n"
+"POT-Creation-Date: 2024-03-11 00:36+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -703,7 +703,7 @@ msgid "Delete the current file type."
 msgstr "Cari fayl növünü sil."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
 #, kde-format
 msgid "&Delete"
 msgstr "&Sil"
@@ -2264,8 +2264,8 @@ msgstr ""
 "diskdəki fayl dəyişdirildi. Bəzi məlumatlar itirilə bilər."
 
 #: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1206
-#: syntax/katethemeconfig.cpp:1356
+#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Məlumatlar itirilə bilər"
@@ -4923,77 +4923,77 @@ msgstr ""
 "pəncərəsindən rəng xanasını açın və rəngi seçin. </p><p>Mətnin və fonun "
 "standart rəngini açılan kontekst menyudan bərpa etmək olar.</p>"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Default Theme"
 msgstr "Standart mövzu"
 
-#: syntax/katethemeconfig.cpp:1026
+#: syntax/katethemeconfig.cpp:1027
 #, kde-format
 msgid "Theme Editor"
 msgstr "Mövzu redaktoru"
 
-#: syntax/katethemeconfig.cpp:1040
+#: syntax/katethemeconfig.cpp:1041
 #, kde-format
 msgid "Select theme:"
 msgstr "Mövzunu seçin:"
 
-#: syntax/katethemeconfig.cpp:1109
+#: syntax/katethemeconfig.cpp:1110
 #, kde-format
 msgid "&Theme:"
 msgstr "&Mövzu:"
 
-#: syntax/katethemeconfig.cpp:1118
+#: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Copy..."
 msgstr "&Kopyamaq..."
 
-#: syntax/katethemeconfig.cpp:1126
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgid "Export..."
 msgstr "İxrac..."
 
-#: syntax/katethemeconfig.cpp:1130
+#: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "Import..."
 msgstr "İdxal..."
 
-#: syntax/katethemeconfig.cpp:1137
+#: syntax/katethemeconfig.cpp:1138
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr "Paketlənmiş, yalnız oxumaq üçün mövzu. Dəyişmək üçün onu kopyalayın."
 
-#: syntax/katethemeconfig.cpp:1148
+#: syntax/katethemeconfig.cpp:1149
 #, kde-format
 msgid "Colors"
 msgstr "Rənglər"
 
-#: syntax/katethemeconfig.cpp:1152
+#: syntax/katethemeconfig.cpp:1153
 #, kde-format
 msgid "Default Text Styles"
 msgstr "Standart Mətn Tərtibatları"
 
-#: syntax/katethemeconfig.cpp:1156
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "Mətnin işıqlanma rəngi tərzləri"
 
-#: syntax/katethemeconfig.cpp:1168
+#: syntax/katethemeconfig.cpp:1169
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "Rəng Sxeminin İxracı: %1"
 
-#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
 #, kde-format
 msgid "Color theme"
 msgstr "Rəng sxemi"
 
-#: syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1192
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "Rəng Sxeminin İdxalı"
 
-#: syntax/katethemeconfig.cpp:1205
+#: syntax/katethemeconfig.cpp:1206
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
@@ -5002,49 +5002,49 @@ msgstr ""
 "İdxal zamanı \"%1\" movzusu mövcud faylın üzərinə yazılacaq. Bu ləğv edilə "
 "bilməz."
 
-#: syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1208
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "Hər halda idxal edin"
 
-#: syntax/katethemeconfig.cpp:1289
+#: syntax/katethemeconfig.cpp:1296
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Sistemin rəng sxeminə uyğun"
 
-#: syntax/katethemeconfig.cpp:1355
+#: syntax/katethemeconfig.cpp:1362
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "\"%1\" mövzusunu silmək istədiyinizə əminsiniz? Bu ləğv edilə bilməz."
 
-#: syntax/katethemeconfig.cpp:1357
+#: syntax/katethemeconfig.cpp:1364
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "Hər halda silin"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1406
 #, kde-format
 msgid "Copy theme"
 msgstr "Mövzunu kopyalamaq"
 
-#: syntax/katethemeconfig.cpp:1400
+#: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "Kopyalamaq üçün \"%1\" rəng sxeminin adı"
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>%1 mövzusu artıq mövcuddur.</p><p>Lütfən başqa sxem adı seçin.</p>"
 
-#: syntax/katethemeconfig.cpp:1413
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Copy Theme"
 msgstr "Mövzunu Kopyalamaq"
 
-#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
+#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
 #, kde-format
 msgid "Color Themes"
 msgstr "Rəng Sxemləri"

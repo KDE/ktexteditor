@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:35+0000\n"
+"POT-Creation-Date: 2024-03-11 00:36+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -730,7 +730,7 @@ msgid "Delete the current file type."
 msgstr "Gcina uxwebhu langoku"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
 #, fuzzy, kde-format
 msgid "&Delete"
 msgstr "Ikhethiwe"
@@ -2179,8 +2179,8 @@ msgid ""
 msgstr ""
 
 #: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1206
-#: syntax/katethemeconfig.cpp:1356
+#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr ""
@@ -4793,130 +4793,130 @@ msgstr ""
 "<p>Ukuhlela imibala, nqakraza izikweri ezinombala, okanye khetha umbala uku "
 "hlela kwi popup menu."
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, fuzzy, kde-format
 msgid "Default Theme"
 msgstr "Okubhaliweyo okuqhelekileyo"
 
-#: syntax/katethemeconfig.cpp:1026
+#: syntax/katethemeconfig.cpp:1027
 #, fuzzy, kde-format
 msgid "Theme Editor"
 msgstr "&Qwalasela umhleli..."
 
-#: syntax/katethemeconfig.cpp:1040
+#: syntax/katethemeconfig.cpp:1041
 #, fuzzy, kde-format
 msgid "Select theme:"
 msgstr "&Okubhaliweyo okukhethiweyo"
 
-#: syntax/katethemeconfig.cpp:1109
+#: syntax/katethemeconfig.cpp:1110
 #, fuzzy, kde-format
 msgid "&Theme:"
 msgstr "Ulwimi"
 
-#: syntax/katethemeconfig.cpp:1118
+#: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 msgid "&Copy..."
 msgstr "Gcina Ifayile"
 
-#: syntax/katethemeconfig.cpp:1126
+#: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 msgid "Export..."
 msgstr "&Rhweba Ngaphandle"
 
-#: syntax/katethemeconfig.cpp:1130
+#: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
 msgid "Import..."
 msgstr "Oqhelekileyo &umbala..."
 
-#: syntax/katethemeconfig.cpp:1137
+#: syntax/katethemeconfig.cpp:1138
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1148
+#: syntax/katethemeconfig.cpp:1149
 #, kde-format
 msgid "Colors"
 msgstr "Imibala"
 
-#: syntax/katethemeconfig.cpp:1152
+#: syntax/katethemeconfig.cpp:1153
 #, fuzzy, kde-format
 msgid "Default Text Styles"
 msgstr "Okubhaliweyo okuqhelekileyo"
 
-#: syntax/katethemeconfig.cpp:1156
+#: syntax/katethemeconfig.cpp:1157
 #, fuzzy, kde-format
 msgid "Highlighting Text Styles"
 msgstr "Yenza uphawu Ulawulo"
 
-#: syntax/katethemeconfig.cpp:1168
+#: syntax/katethemeconfig.cpp:1169
 #, fuzzy, kde-format
 msgid "Exporting color theme: %1"
 msgstr "Umba Omtsha"
 
-#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color theme"
 msgstr "Imibala"
 
-#: syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1192
 #, fuzzy, kde-format
 msgid "Importing Color Theme"
 msgstr "Umba Omtsha"
 
-#: syntax/katethemeconfig.cpp:1205
+#: syntax/katethemeconfig.cpp:1206
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1208
 #, kde-format
 msgid "Import Nevertheless"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1289
+#: syntax/katethemeconfig.cpp:1296
 #, fuzzy, kde-format
 msgid "Follow System Color Scheme"
 msgstr "Umba Omtsha"
 
-#: syntax/katethemeconfig.cpp:1355
+#: syntax/katethemeconfig.cpp:1362
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1357
+#: syntax/katethemeconfig.cpp:1364
 #, fuzzy, kde-format
 msgid "Delete Nevertheless"
 msgstr "Cima Umsebenzi Ekhohlo"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1406
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy theme"
 msgstr "Imibala"
 
-#: syntax/katethemeconfig.cpp:1400
+#: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1413
+#: syntax/katethemeconfig.cpp:1420
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Copy Theme"
 msgstr "Imibala"
 
-#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
+#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
 #, fuzzy, kde-format
 #| msgid "Colors"
 msgid "Color Themes"

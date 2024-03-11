@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:35+0000\n"
+"POT-Creation-Date: 2024-03-11 00:36+0000\n"
 "PO-Revision-Date: 2024-03-09 04:45\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -678,7 +678,7 @@ msgid "Delete the current file type."
 msgstr "删除当前文件类型。"
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
 #, kde-format
 msgid "&Delete"
 msgstr "删除(&D)"
@@ -2162,8 +2162,8 @@ msgstr ""
 "失。"
 
 #: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1206
-#: syntax/katethemeconfig.cpp:1356
+#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "数据可能丢失"
@@ -4744,126 +4744,126 @@ msgstr ""
 "出窗口选择一个属性。</p><p>要编辑颜色，点击颜色方块，或者从弹出窗口中选择要编"
 "辑的颜色。</p><p>您可以从相应的弹出菜单取消对背景和选中背景颜色的设置。</p>"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Default Theme"
 msgstr "默认主题"
 
-#: syntax/katethemeconfig.cpp:1026
+#: syntax/katethemeconfig.cpp:1027
 #, kde-format
 msgid "Theme Editor"
 msgstr "主题编辑器"
 
-#: syntax/katethemeconfig.cpp:1040
+#: syntax/katethemeconfig.cpp:1041
 #, kde-format
 msgid "Select theme:"
 msgstr "选择主题:"
 
-#: syntax/katethemeconfig.cpp:1109
+#: syntax/katethemeconfig.cpp:1110
 #, kde-format
 msgid "&Theme:"
 msgstr "主题(&T)："
 
-#: syntax/katethemeconfig.cpp:1118
+#: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Copy..."
 msgstr "复制(&C)..."
 
-#: syntax/katethemeconfig.cpp:1126
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgid "Export..."
 msgstr "导出..."
 
-#: syntax/katethemeconfig.cpp:1130
+#: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "Import..."
 msgstr "导入..."
 
-#: syntax/katethemeconfig.cpp:1137
+#: syntax/katethemeconfig.cpp:1138
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr "捆绑的只读主题。如果需要修改主题，请先复制。"
 
-#: syntax/katethemeconfig.cpp:1148
+#: syntax/katethemeconfig.cpp:1149
 #, kde-format
 msgid "Colors"
 msgstr "颜色"
 
-#: syntax/katethemeconfig.cpp:1152
+#: syntax/katethemeconfig.cpp:1153
 #, kde-format
 msgid "Default Text Styles"
 msgstr "默认文本样式"
 
-#: syntax/katethemeconfig.cpp:1156
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "加亮文本样式"
 
-#: syntax/katethemeconfig.cpp:1168
+#: syntax/katethemeconfig.cpp:1169
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "导出颜色主题：%1"
 
-#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
 #, kde-format
 msgid "Color theme"
 msgstr "颜色主题"
 
-#: syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1192
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "导入颜色主题"
 
-#: syntax/katethemeconfig.cpp:1205
+#: syntax/katethemeconfig.cpp:1206
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr "导入将覆盖现有主题文件“%1”。此操作无法撤销。"
 
-#: syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1208
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "仍然导入"
 
-#: syntax/katethemeconfig.cpp:1289
+#: syntax/katethemeconfig.cpp:1296
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "跟随系统颜色方案"
 
-#: syntax/katethemeconfig.cpp:1355
+#: syntax/katethemeconfig.cpp:1362
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "您确定要删除主题“%1”吗？此操作无法撤销。"
 
-#: syntax/katethemeconfig.cpp:1357
+#: syntax/katethemeconfig.cpp:1364
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "仍然删除"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1406
 #, kde-format
 msgid "Copy theme"
 msgstr "复制主题"
 
-#: syntax/katethemeconfig.cpp:1400
+#: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "颜色主题“%1”的副本名称："
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1419
 #, kde-format
 msgid ""
 "<p>The theme \"%1\" already exists.</p><p>Please choose a different theme "
 "name.</p>"
 msgstr "<p>主题“%1”已存在。</p><p>请选择不同的主题名称。</p>"
 
-#: syntax/katethemeconfig.cpp:1413
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Copy Theme"
 msgstr "复制主题"
 
-#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
+#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
 #, kde-format
 msgid "Color Themes"
 msgstr "颜色主题"

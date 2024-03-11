@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:35+0000\n"
-"PO-Revision-Date: 2024-03-10 00:34+0200\n"
+"POT-Creation-Date: 2024-03-11 00:36+0000\n"
+"PO-Revision-Date: 2024-03-10 16:49+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -715,7 +715,7 @@ msgid "Delete the current file type."
 msgstr "מחיקת סוג הקובץ הנוכחי."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnDelete)
-#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1122
+#: dialogs/filetypeconfigwidget.ui:44 syntax/katethemeconfig.cpp:1123
 #, kde-format
 msgid "&Delete"
 msgstr "&מחק"
@@ -2182,8 +2182,8 @@ msgstr ""
 "השתנו. עלול להיגרם אובדן מסויים של נתונים."
 
 #: document/katedocument.cpp:2454 document/katedocument.cpp:2470
-#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1206
-#: syntax/katethemeconfig.cpp:1356
+#: document/katedocument.cpp:2787 syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "אובדן נתונים אפשרי"
@@ -4333,10 +4333,10 @@ msgid "Annotation"
 msgstr "הסבר"
 
 #: syntax/katethemeconfig.cpp:98
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:intable Text context"
 msgid "Comment Variable"
-msgstr "משתנה"
+msgstr "משתנה הערות"
 
 #: syntax/katethemeconfig.cpp:101
 #, kde-format
@@ -4649,9 +4649,9 @@ msgid "Background"
 msgstr "רקע"
 
 #: syntax/katethemeconfig.cpp:355
-#, fuzzy, kde-format
+#, kde-format
 msgid "Editable Placeholder"
-msgstr "ממקם של תבנית ברת עריכה"
+msgstr "ממלא מקום זמין לעריכה"
 
 #: syntax/katethemeconfig.cpp:361
 #, fuzzy, kde-format
@@ -4736,114 +4736,114 @@ msgstr ""
 "strong> ובחר מאפיין מתוך התפריט המוקפץ. </p><p> לשם עריכת הצבעים, לחץ על "
 "המלבנים הצבעוניים או בחר את הצבע לעריכה מתוך התפריט המוקפץ. </p>"
 
-#: syntax/katethemeconfig.cpp:1025
+#: syntax/katethemeconfig.cpp:1026
 #, kde-format
 msgid "Default Theme"
 msgstr "ערכת עיצוב כברירת מחדל"
 
-#: syntax/katethemeconfig.cpp:1026
+#: syntax/katethemeconfig.cpp:1027
 #, kde-format
 msgid "Theme Editor"
 msgstr "עורך ערכות עיצוב"
 
-#: syntax/katethemeconfig.cpp:1040
+#: syntax/katethemeconfig.cpp:1041
 #, kde-format
 msgid "Select theme:"
 msgstr "בחירת ערכת עיצוב:"
 
-#: syntax/katethemeconfig.cpp:1109
+#: syntax/katethemeconfig.cpp:1110
 #, kde-format
 msgid "&Theme:"
 msgstr "&ערכת עיצוב:"
 
-#: syntax/katethemeconfig.cpp:1118
+#: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Copy..."
 msgstr "ה&עתקה…"
 
-#: syntax/katethemeconfig.cpp:1126
+#: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgid "Export..."
 msgstr "ייצא..."
 
-#: syntax/katethemeconfig.cpp:1130
+#: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "Import..."
 msgstr "ייבא..."
 
-#: syntax/katethemeconfig.cpp:1137
+#: syntax/katethemeconfig.cpp:1138
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1148
+#: syntax/katethemeconfig.cpp:1149
 #, kde-format
 msgid "Colors"
 msgstr "צבעים"
 
-#: syntax/katethemeconfig.cpp:1152
+#: syntax/katethemeconfig.cpp:1153
 #, kde-format
 msgid "Default Text Styles"
 msgstr "סגנונות טקסט רגילים"
 
-#: syntax/katethemeconfig.cpp:1156
+#: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Highlighting Text Styles"
 msgstr "סגנונות טקסט מודגשים"
 
-#: syntax/katethemeconfig.cpp:1168
+#: syntax/katethemeconfig.cpp:1169
 #, kde-format
 msgid "Exporting color theme: %1"
 msgstr "ערכת הצבעים מיוצאת: %1"
 
-#: syntax/katethemeconfig.cpp:1170 syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1171 syntax/katethemeconfig.cpp:1192
 #, kde-format
 msgid "Color theme"
 msgstr "ערכת צבעים"
 
-#: syntax/katethemeconfig.cpp:1191
+#: syntax/katethemeconfig.cpp:1192
 #, kde-format
 msgid "Importing Color Theme"
 msgstr "ערכת עיצוב מיובאת"
 
-#: syntax/katethemeconfig.cpp:1205
+#: syntax/katethemeconfig.cpp:1206
 #, kde-format
 msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
 
-#: syntax/katethemeconfig.cpp:1207
+#: syntax/katethemeconfig.cpp:1208
 #, kde-format
 msgid "Import Nevertheless"
 msgstr "לייבא בכל זאת"
 
-#: syntax/katethemeconfig.cpp:1289
+#: syntax/katethemeconfig.cpp:1296
 #, kde-format
 msgid "Follow System Color Scheme"
 msgstr "כמו ערכת הצבע של המערכת"
 
-#: syntax/katethemeconfig.cpp:1355
+#: syntax/katethemeconfig.cpp:1362
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr "למחוק את ערכת העיצוב „%1”? זאת פעולה בלתי הפיכה."
 
-#: syntax/katethemeconfig.cpp:1357
+#: syntax/katethemeconfig.cpp:1364
 #, kde-format
 msgid "Delete Nevertheless"
 msgstr "למחוק בכל זאת"
 
-#: syntax/katethemeconfig.cpp:1399
+#: syntax/katethemeconfig.cpp:1406
 #, kde-format
 msgid "Copy theme"
 msgstr "העתקת ערכת עיצוב"
 
-#: syntax/katethemeconfig.cpp:1400
+#: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
 msgstr "שם עותק ערכת העיצוב „%1”:"
 
-#: syntax/katethemeconfig.cpp:1412
+#: syntax/katethemeconfig.cpp:1419
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The schema %1 already exists.</p><p>Please choose a different schema "
@@ -4853,12 +4853,12 @@ msgid ""
 "name.</p>"
 msgstr "<p>הסכימה %1 כבר קיימת.</p><p> אנא בחר שם אחר עבור הסכימה.</p>"
 
-#: syntax/katethemeconfig.cpp:1413
+#: syntax/katethemeconfig.cpp:1420
 #, kde-format
 msgid "Copy Theme"
 msgstr "העתקת ערכת עיצוב"
 
-#: syntax/katethemeconfig.cpp:1466 syntax/katethemeconfig.cpp:1471
+#: syntax/katethemeconfig.cpp:1473 syntax/katethemeconfig.cpp:1478
 #, kde-format
 msgid "Color Themes"
 msgstr "ערכות צבע"
@@ -7917,9 +7917,9 @@ msgid "Import from vimrc file"
 msgstr "ייבוא מקובץ vimrc"
 
 #: vimode/marks.cpp:111
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mark set: %1"
-msgstr "סוג סימון %1"
+msgstr "הוגדר סמן: %1"
 
 #: vimode/marks.cpp:157
 #, kde-format
