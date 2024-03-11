@@ -946,6 +946,11 @@ void KateRendererConfig::setFont(const QFont &font)
     configStart();
     m_font = font;
     m_fontSet = true;
+
+    // Set full hinting instead to ensure the letters are aligned properly, bug 482659
+    // https://codereview.qt-project.org/c/qt/qtbase/+/546168
+    m_font.setHintingPreference(QFont::PreferFullHinting);
+
     configEnd();
 }
 
