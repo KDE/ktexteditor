@@ -1424,6 +1424,18 @@ KTextEditor::Range KTextEditor::ViewPrivate::foldLine(int line)
         foldingRange.setEnd(KTextEditor::Cursor(adjustedLine, doc()->buffer().plainLine(adjustedLine).length()));
     }
 
+    // Check if the discovered fold is already folded up.
+    // If so, we should not fold the same range again!
+    // This can lead to issues where we need to open the fold multiple times
+    // in order to actually open it.
+    auto folds = textFolding().foldingRangesStartingOnLine(line);
+    for (int i = 0; i < folds.size(); ++i) {
+        KTextEditor::Range fold = textFolding().foldingRange(folds[i].first);
+        if (fold == foldingRange) {
+            return foldingRange;
+        }
+    }
+
     // Don't try to fold a single line, which can happens due to adjustment above
     // FIXME Avoid to offer such a folding marker
     if (!foldingRange.onSingleLine()) {
