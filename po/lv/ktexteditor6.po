@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:36+0000\n"
+"POT-Creation-Date: 2024-03-13 00:36+0000\n"
 "PO-Revision-Date: 2024-03-09 19:29+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -7729,37 +7729,37 @@ msgstr "Pauzēt pašreizējo izvadi"
 msgid "Resume current output"
 msgstr "Turpināt pašreizējo izvadi"
 
-#: view/kateview.cpp:1529
+#: view/kateview.cpp:1541
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(R/O) %1"
 
-#: view/kateview.cpp:1717
+#: view/kateview.cpp:1729
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Izslēgta pārvietošanās starp lielajiem burtiem"
 
-#: view/kateview.cpp:1719
+#: view/kateview.cpp:1731
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Ieslēgta pārvietošanās starp lielajiem burtiem"
 
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2238
 #, kde-format
 msgid "Search wrapped"
 msgstr "Meklēšana sākas no sākuma"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Align On"
 msgstr "Līdzināt pie"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Līdzināšanas šablons:"
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4895
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksportēt datni kā HTML"
@@ -8278,7 +8278,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nākamajai grāmatzīmei vairs nav rakstzīmju."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3574
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Reģistrs „%1“ neko nesatur"
@@ -8288,7 +8288,7 @@ msgstr "Reģistrs „%1“ neko nesatur"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1“ %2,  Heks %3,  Oktāli %4"
 
-#: vimode/modes/normalvimode.cpp:2540
+#: vimode/modes/normalvimode.cpp:2528
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marķējums nav pievienots: %1"

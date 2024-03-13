@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:36+0000\n"
+"POT-Creation-Date: 2024-03-13 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -7778,17 +7778,17 @@ msgstr "Etenaldia oraingo irteeran"
 msgid "Resume current output"
 msgstr "Berrekin oraingo irteera"
 
-#: view/kateview.cpp:1529
+#: view/kateview.cpp:1541
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(I/S) %1"
 
-#: view/kateview.cpp:1717
+#: view/kateview.cpp:1729
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Gamelu-kaxa mugimendua ezgaituta"
 
-#: view/kateview.cpp:1719
+#: view/kateview.cpp:1731
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Gamelu-kaxa mugimendua gaituta"
@@ -7798,22 +7798,22 @@ msgstr "Gamelu-kaxa mugimendua gaituta"
 # search wrapped: bilaketa zirkularra
 #
 # Dokumentuaren amaierara iritsita bilaketarekin jarraituko du dokumentuaren haseratik eta alderantziz atzeranzko noranzkoan bilatzerakoan, dokumentuaren haserara iritsita bilatzen jarraitzeko dokumentuaren amaieratik jarraituko du.
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2238
 #, kde-format
 msgid "Search wrapped"
 msgstr "Bilaketa zirkularra"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Align On"
 msgstr "Lerrokatu hemen"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Lerrokatze eredua:"
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4895
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Esportatu fitxategia HTML gisa"
@@ -8337,7 +8337,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Ez dago hurrengo laster-markarako karaktere gehiago."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3574
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Ezer ez %1 erregistroan"
@@ -8347,7 +8347,7 @@ msgstr "Ezer ez %1 erregistroan"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 
-#: vimode/modes/normalvimode.cpp:2540
+#: vimode/modes/normalvimode.cpp:2528
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"

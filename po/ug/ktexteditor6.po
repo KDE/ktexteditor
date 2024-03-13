@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:36+0000\n"
+"POT-Creation-Date: 2024-03-13 00:36+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -7804,39 +7804,39 @@ msgstr "نۆۋەتتىكى پۈتۈكنى ساقلايدۇ"
 msgid "Resume current output"
 msgstr "نۆۋەتتىكى پۈتۈكنى ساقلايدۇ"
 
-#: view/kateview.cpp:1529
+#: view/kateview.cpp:1541
 #, kde-format
 msgid "(R/O) %1"
 msgstr ""
 
-#: view/kateview.cpp:1717
+#: view/kateview.cpp:1729
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1719
+#: view/kateview.cpp:1731
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2238
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "ئىزدەش ھالىتى"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "توغرىلا(&A)"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4895
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""
@@ -8306,7 +8306,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr ""
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3574
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "%1 غا ھېچنېمە خەتلەنمىدى"
@@ -8316,7 +8316,7 @@ msgstr "%1 غا ھېچنېمە خەتلەنمىدى"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "'%1' %2،  ئون ئالتىلىك %3،  سەككىزلىك %4"
 
-#: vimode/modes/normalvimode.cpp:2540
+#: vimode/modes/normalvimode.cpp:2528
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "بەلگە تەڭشەلمىدى: %1"

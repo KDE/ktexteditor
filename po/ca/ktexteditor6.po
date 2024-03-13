@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:36+0000\n"
+"POT-Creation-Date: 2024-03-13 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 12:37+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -7834,37 +7834,37 @@ msgstr "Posa en pausa la sortida actual"
 msgid "Resume current output"
 msgstr "Reprèn la sortida actual"
 
-#: view/kateview.cpp:1529
+#: view/kateview.cpp:1541
 #, kde-format
 msgid "(R/O) %1"
 msgstr "%1 (R/O)"
 
-#: view/kateview.cpp:1717
+#: view/kateview.cpp:1729
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "Moviment desactivat del cursor a les majúscules per parts"
 
-#: view/kateview.cpp:1719
+#: view/kateview.cpp:1731
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "Moviment activat del cursor a les majúscules per parts"
 
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2238
 #, kde-format
 msgid "Search wrapped"
 msgstr "La cerca continua des del començament"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Align On"
 msgstr "Alinea a"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Patró d'alineació:"
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4895
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exporta el fitxer com a HTML"
@@ -8386,7 +8386,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "No hi ha més caràcters per al punt següent."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3574
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "No hi ha res al registre %1"
@@ -8396,7 +8396,7 @@ msgstr "No hi ha res al registre %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "«%1» %2,  Hex %3,  Octal %4"
 
-#: vimode/modes/normalvimode.cpp:2540
+#: vimode/modes/normalvimode.cpp:2528
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no definida: %1"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 00:36+0000\n"
+"POT-Creation-Date: 2024-03-13 00:36+0000\n"
 "PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -7751,37 +7751,37 @@ msgstr "Jelenlegi kimenet szüneteltetése"
 msgid "Resume current output"
 msgstr "Jelenlegi kimenet folytatása"
 
-#: view/kateview.cpp:1529
+#: view/kateview.cpp:1541
 #, kde-format
 msgid "(R/O) %1"
 msgstr "%1 (Í/O)"
 
-#: view/kateview.cpp:1717
+#: view/kateview.cpp:1729
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr "CamelCase áthelyezés kikapcsolva"
 
-#: view/kateview.cpp:1719
+#: view/kateview.cpp:1731
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr "CamelCase áthelyezés bekapcsolva"
 
-#: view/kateview.cpp:2226
+#: view/kateview.cpp:2238
 #, kde-format
 msgid "Search wrapped"
 msgstr "Körkörös keresés"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Align On"
 msgstr "Igazítás ehhez"
 
-#: view/kateview.cpp:3767
+#: view/kateview.cpp:3779
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Igazítási minta:"
 
-#: view/kateview.cpp:4883
+#: view/kateview.cpp:4895
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportálás HTML formátumban"
@@ -8303,7 +8303,7 @@ msgid "There are no more chars for the next bookmark."
 msgstr "Nincs több karakter a következő könyvjelzőhöz."
 
 #: vimode/modes/insertvimode.cpp:260 vimode/modes/modebase.cpp:793
-#: vimode/modes/normalvimode.cpp:3574
+#: vimode/modes/normalvimode.cpp:3562
 #, kde-format
 msgid "Nothing in register %1"
 msgstr "Semmi sincs ebben a regiszterben: %1"
@@ -8313,7 +8313,7 @@ msgstr "Semmi sincs ebben a regiszterben: %1"
 msgid "'%1' %2,  Hex %3,  Octal %4"
 msgstr "„%1” %2, hexa %3, okta %4"
 
-#: vimode/modes/normalvimode.cpp:2540
+#: vimode/modes/normalvimode.cpp:2528
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Nincs beállítva jelölés: %1"
