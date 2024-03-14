@@ -978,7 +978,6 @@ Q_SIGNALS:
 
 protected:
     bool event(QEvent *e) override;
-    void paintEvent(QPaintEvent *e) override;
 
     KToggleAction *m_toggleOnTheFlySpellCheck;
     KateSpellingMenu *m_spellingMenu;

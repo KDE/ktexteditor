@@ -4645,48 +4645,6 @@ bool KTextEditor::ViewPrivate::event(QEvent *e)
     }
 }
 
-void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
-{
-    // base class
-    KTextEditor::View::paintEvent(e);
-
-    if (!config()->showFocusFrame()) {
-        return;
-    }
-
-    const QRect contentsRect = m_topSpacer->geometry() | m_bottomSpacer->geometry() | m_leftSpacer->geometry() | m_rightSpacer->geometry();
-
-    if (contentsRect.isValid()) {
-        QStyleOptionFrame opt;
-        opt.initFrom(this);
-        opt.frameShape = QFrame::StyledPanel;
-        opt.state |= QStyle::State_Sunken;
-
-        // clear mouseOver and focus state
-        // update from relevant widgets
-        opt.state &= ~(QStyle::State_HasFocus | QStyle::State_MouseOver);
-        const QList<QWidget *> widgets = QList<QWidget *>()
-            << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
-        for (const QWidget *w : widgets) {
-            if (w->hasFocus()) {
-                opt.state |= QStyle::State_HasFocus;
-            }
-            if (w->underMouse()) {
-                opt.state |= QStyle::State_MouseOver;
-            }
-        }
-
-        // update rect
-        opt.rect = contentsRect;
-
-        // render
-        QPainter paint(this);
-        paint.setClipRegion(e->region());
-        paint.setRenderHints(QPainter::Antialiasing);
-        style()->drawControl(QStyle::CE_ShapedFrame, &opt, &paint, this);
-    }
-}
-
 void KTextEditor::ViewPrivate::toggleOnTheFlySpellCheck(bool b)
 {
     doc()->onTheFlySpellCheckingEnabled(b);

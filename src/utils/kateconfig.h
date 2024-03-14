@@ -1024,7 +1024,7 @@ public:
         WordCompletion,
         WordCompletionMinimalWordLength,
         WordCompletionRemoveTail,
-        ShowFocusFrame,
+        ShowFocusFrame, ///< Deprecated, not used anymore
         ShowDocWithCompletion,
         MultiCursorModifier,
         ShowFoldingOnHoverOnly,
@@ -1118,11 +1118,6 @@ public:
     int showScrollbars() const
     {
         return value(ShowScrollbars).toInt();
-    }
-
-    bool showFocusFrame() const
-    {
-        return value(ShowFocusFrame).toBool();
     }
 
     bool showDocWithCompletion() const
