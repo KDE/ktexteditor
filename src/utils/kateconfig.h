@@ -1024,7 +1024,6 @@ public:
         WordCompletion,
         WordCompletionMinimalWordLength,
         WordCompletionRemoveTail,
-        ShowFocusFrame, ///< Deprecated, not used anymore
         ShowDocWithCompletion,
         MultiCursorModifier,
         ShowFoldingOnHoverOnly,

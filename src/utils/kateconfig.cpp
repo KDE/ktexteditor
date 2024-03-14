@@ -550,7 +550,6 @@ KateViewConfig::KateViewConfig()
                                    return inBounds(0, value, 99);
                                }));
     addConfigEntry(ConfigEntry(WordCompletionRemoveTail, "Word Completion Remove Tail", QString(), true));
-    addConfigEntry(ConfigEntry(ShowFocusFrame, "Show Focus Frame Around Editor", QString(), true));
     addConfigEntry(ConfigEntry(ShowDocWithCompletion, "Show Documentation With Completion", QString(), true));
     addConfigEntry(ConfigEntry(MultiCursorModifier, "Multiple Cursor Modifier", QString(), (int)Qt::AltModifier));
     addConfigEntry(ConfigEntry(ShowFoldingOnHoverOnly, "Show Folding Icons On Hover Only", QString(), true));
