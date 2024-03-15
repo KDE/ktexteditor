@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-13 00:36+0000\n"
+"POT-Creation-Date: 2024-03-15 00:36+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -412,7 +412,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
-#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1019
+#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1016
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1160,12 +1160,12 @@ msgstr "As"
 msgid "Follow Line Numbers"
 msgstr "Lean Uimhreacha na Línte"
 
-#: dialogs/katedialogs.cpp:941 dialogs/katedialogs.cpp:946
+#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
 #, kde-format
 msgid "Appearance"
 msgstr "Cuma"
 
-#: dialogs/katedialogs.cpp:981
+#: dialogs/katedialogs.cpp:978
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1173,12 +1173,12 @@ msgid ""
 "loss in case of a system crash."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1020
+#: dialogs/katedialogs.cpp:1017
 #, kde-format
 msgid "Advanced"
 msgstr "Casta"
 
-#: dialogs/katedialogs.cpp:1085
+#: dialogs/katedialogs.cpp:1082
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1186,77 +1186,77 @@ msgstr ""
 "Níor sholáthair tú iarmhír nó réimír chúltaca.  Bainfear úsáid as an iarmhír "
 "réamhshocraithe: '~'"
 
-#: dialogs/katedialogs.cpp:1085
+#: dialogs/katedialogs.cpp:1082
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Gan Iarmhír nó Réimír Chúltaca"
 
-#: dialogs/katedialogs.cpp:1214
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "Open/Save"
 msgstr "Oscail/Sábháil"
 
-#: dialogs/katedialogs.cpp:1219
+#: dialogs/katedialogs.cpp:1216
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Oscailt agus Sábháil Chomhad"
 
-#: dialogs/katedialogs.cpp:1242
+#: dialogs/katedialogs.cpp:1239
 #, kde-format
 msgid "&Line:"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "Go to"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1334
+#: dialogs/katedialogs.cpp:1331
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1398
+#: dialogs/katedialogs.cpp:1395
 #, kde-format
 msgid "Dictionary:"
 msgstr "Foclóir:"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1447
 #, fuzzy, kde-format
 #| msgid "Enable &auto completion"
 msgid "Enable Auto Reload"
 msgstr "Cum&asaigh comhlánú uathoibríoch"
 
-#: dialogs/katedialogs.cpp:1453
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1455
 #, fuzzy, kde-format
 #| msgid "&View Difference"
 msgid "View &Difference"
 msgstr "A&mharc ar Dhifríochtaí"
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1462
 #, fuzzy, kde-format
 #| msgid "Reloa&d"
 msgid "&Reload"
 msgstr "Ath&luchtaigh"
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1464
 #, fuzzy, kde-format
 #| msgid ""
 #| "Reload the file from disk. If you have unsaved changes, they will be lost."
@@ -1265,42 +1265,42 @@ msgstr ""
 "Athluchtaigh an comhad ón diosca. Má tá athruithe gan sábháil agat, "
 "caillfidh tú iad."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1468
 #, fuzzy, kde-format
 #| msgid "&Close"
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Dún"
 
-#: dialogs/katedialogs.cpp:1473
+#: dialogs/katedialogs.cpp:1470
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr ""
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
 msgid "&Save As..."
 msgstr "&Sábháil an Comhad Mar..."
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1484 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "Déan neamha&ird de"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1482
 #, fuzzy, kde-format
 #| msgid "Ignore the changes. You will not be prompted again."
 msgid "Ignores the changes on disk without any action."
 msgstr "Déan neamhshuim ar na hathruithe.  Ní thabharfar leid duit arís."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1309,18 +1309,18 @@ msgstr ""
 "Theip ar an ordú diff. Bí cinnte go bhfuil diff(1) suiteáilte agus go bhfuil "
 "sé i do PATH."
 
-#: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Earráid agus Diff á Chruthú"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Is ionann iad na comhaid seo."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Aschur Diff"
@@ -1890,21 +1890,15 @@ msgid ""
 "text."
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:183
-#, kde-format
-msgid "Show focus frame around editor"
-msgstr ""
-
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:216
+#: dialogs/textareaappearanceconfigwidget.ui:199
 #, fuzzy, kde-format
 #| msgid "Bracket highlight:"
 msgid "Bracket matching:"
 msgstr "Aibhsiú lúibíní:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:223
+#: dialogs/textareaappearanceconfigwidget.ui:206
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1912,19 +1906,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:226
+#: dialogs/textareaappearanceconfigwidget.ui:209
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:233
+#: dialogs/textareaappearanceconfigwidget.ui:216
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:236
+#: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -1934,34 +1928,34 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:239
+#: dialogs/textareaappearanceconfigwidget.ui:222
 #, fuzzy, kde-format
 #| msgid "Print the current document."
 msgid "Show preview of matching open bracket"
 msgstr "Priontáil an cháipéis reatha"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:246
+#: dialogs/textareaappearanceconfigwidget.ui:229
 #, fuzzy, kde-format
 #| msgid "Select to Matching Bracket"
 msgid "Flash matching brackets"
 msgstr "Roghnaigh téacs go dtí an Lúibín Comhoiriúnach"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:249
+#: dialogs/textareaappearanceconfigwidget.ui:232
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:252
+#: dialogs/textareaappearanceconfigwidget.ui:235
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:259
+#: dialogs/textareaappearanceconfigwidget.ui:242
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -1969,45 +1963,45 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:262
+#: dialogs/textareaappearanceconfigwidget.ui:245
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Taispeáin lí&nte eangaithe"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:285
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Counts:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:292
+#: dialogs/textareaappearanceconfigwidget.ui:275
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:295 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:278 view/katestatusbar.cpp:258
 #, fuzzy, kde-format
 #| msgid "Not word boundary"
 msgid "Show word count"
 msgstr "Ní fóir focal é"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:302
+#: dialogs/textareaappearanceconfigwidget.ui:285
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:305 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:288 view/katestatusbar.cpp:255
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show line count"
 msgstr "Taispeáin Uimhreacha na &Línte"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:331
+#: dialogs/textareaappearanceconfigwidget.ui:314
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2017,60 +2011,60 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:334
+#: dialogs/textareaappearanceconfigwidget.ui:317
 #, fuzzy, kde-format
 #| msgid "Go to Line"
 msgid "Fold first line"
 msgstr "Téigh go Líne"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, fuzzy, kde-format
 #| msgid "&Dynamic Word Wrap"
 msgid "Dynamic Word Wrap:"
 msgstr "Timfhilleadh &Dinimiciúil"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, fuzzy, kde-format
 #| msgid "Hide Static &Word Wrap Marker"
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Folaigh Marcóir Thimfhilleadh &Focal Statach"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:368
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:375
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, fuzzy, kde-format
 #| msgid "Dynamic Word Wrap Indicators"
 msgid "D&ynamic word wrap indicators:"
 msgstr "Táscairí Timfhillte Dinimiciúil"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:385
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:408
+#: dialogs/textareaappearanceconfigwidget.ui:391
 #, fuzzy, kde-format
 #| msgid "Indentation Properties"
 msgid "Indent wrapped lines:"
 msgstr "Airíonna an Eangaithe"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:425
+#: dialogs/textareaappearanceconfigwidget.ui:408
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:441
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2083,7 +2077,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:444
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr ""
@@ -7562,7 +7556,7 @@ msgstr "&Ailínigh"
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4895
+#: view/kateview.cpp:4853
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Easpórtáil Comhad mar HTML"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-13 00:36+0000\n"
+"POT-Creation-Date: 2024-03-15 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -424,7 +424,7 @@ msgstr "Arbelaren historian sarrerarik ez"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
-#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1019
+#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1016
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1204,12 +1204,12 @@ msgstr "Desgaituta"
 msgid "Follow Line Numbers"
 msgstr "Jarraitu lerro-zenbakiak"
 
-#: dialogs/katedialogs.cpp:941 dialogs/katedialogs.cpp:946
+#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
 #, kde-format
 msgid "Appearance"
 msgstr "Itxura"
 
-#: dialogs/katedialogs.cpp:981
+#: dialogs/katedialogs.cpp:978
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1221,12 +1221,12 @@ msgstr ""
 "lana berreskuratzen laguntzen diote. Trukatze-fitxategiak ezgaitzea, sistema "
 "kraskatzen den kasuan, datuen galera eragin dezakete."
 
-#: dialogs/katedialogs.cpp:1020
+#: dialogs/katedialogs.cpp:1017
 #, kde-format
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: dialogs/katedialogs.cpp:1085
+#: dialogs/katedialogs.cpp:1082
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1234,52 +1234,52 @@ msgstr ""
 "Ez duzu babeskopiaren aurrizki edo atzizkirik eman. Atzizki lehentsia "
 "erabiltzen: '~'"
 
-#: dialogs/katedialogs.cpp:1085
+#: dialogs/katedialogs.cpp:1082
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Babeskopia atzizki edo aurrizkirik gabe"
 
-#: dialogs/katedialogs.cpp:1214
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "Open/Save"
 msgstr "Ireki/Gorde"
 
-#: dialogs/katedialogs.cpp:1219
+#: dialogs/katedialogs.cpp:1216
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Fitxategia irekitzea eta gordetzea"
 
-#: dialogs/katedialogs.cpp:1242
+#: dialogs/katedialogs.cpp:1239
 #, kde-format
 msgid "&Line:"
 msgstr "&Lerroa:"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Joan arbelean dagoen lerro zenbakira"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "Go to"
 msgstr "Joan hona"
 
-#: dialogs/katedialogs.cpp:1334
+#: dialogs/katedialogs.cpp:1331
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Ez da aurkitu arbelean baliozko lerro zenbakirik"
 
-#: dialogs/katedialogs.cpp:1398
+#: dialogs/katedialogs.cpp:1395
 #, kde-format
 msgid "Dictionary:"
 msgstr "Hiztegia:"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1447
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Gaitu birzamatze automatikoa"
 
-#: dialogs/katedialogs.cpp:1453
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1288,60 +1288,60 @@ msgstr ""
 "Diskoko aldaketen abisurik gabe birzamatzen du eta automatikoki birzamatuko "
 "du orain hasi eta fitxa edo leihoa ixten duzun arte."
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "View &Difference"
 msgstr "Ikusi &desberdintasunak"
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Aldaketek eragindako desberdintasunak erakusten ditu."
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "&Reload"
 msgstr "Bi&rkargatu"
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Fitxategia diskotik birzamatzen du. Gorde gabeko aldaketak galdu egingo dira."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Itxi fitxategia"
 
-#: dialogs/katedialogs.cpp:1473
+#: dialogs/katedialogs.cpp:1470
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Fitxategia ixten du, edukia baztertuz."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Save As..."
 msgstr "&Gorde honela..."
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Kokapena hautatzen uzten dizu, baita fitxategia berriro gordetzen ere."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1484 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "Ez &ikusi egin"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1482
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Diskoko aldaketei ezikusi egin inolako ekintzarik gabe."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1350,18 +1350,18 @@ msgstr ""
 "diff komandoak huts egin du. Egiaztatu diff(1) instalatuta eta inguruneko "
 "PATH aldagaian dagoela."
 
-#: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Errorea Diff sortzean"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Fitxategiak berdin-berdinak dira."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff irteera"
@@ -1956,20 +1956,14 @@ msgid ""
 msgstr ""
 "Editoreak ikur bat erakutsiko du testuan tabulazio bat dagoela adierazteko."
 
-#. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:183
-#, kde-format
-msgid "Show focus frame around editor"
-msgstr "Erakutsi fokuaren markoa editorearen inguruan"
-
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:216
+#: dialogs/textareaappearanceconfigwidget.ui:199
 #, kde-format
 msgid "Bracket matching:"
 msgstr "Parentesiak parekatzea:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:223
+#: dialogs/textareaappearanceconfigwidget.ui:206
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1979,13 +1973,13 @@ msgstr ""
 "nabarmenduko da."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:226
+#: dialogs/textareaappearanceconfigwidget.ui:209
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Nabarmendu hautatutako parentesien barrutia"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:233
+#: dialogs/textareaappearanceconfigwidget.ui:216
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
@@ -1993,7 +1987,7 @@ msgstr ""
 "gisa"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:236
+#: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -2007,19 +2001,19 @@ msgstr ""
 "sakon habiaratutako bandintza blokeetan"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:239
+#: dialogs/textareaappearanceconfigwidget.ui:222
 #, kde-format
 msgid "Show preview of matching open bracket"
 msgstr "Erakutsi dagokion irekiera parentesiaren aurreikuspegia"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:246
+#: dialogs/textareaappearanceconfigwidget.ui:229
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Keinua bat datozen parentesietan"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:249
+#: dialogs/textareaappearanceconfigwidget.ui:232
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
@@ -2028,7 +2022,7 @@ msgstr ""
 "hobetze aldera."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:252
+#: dialogs/textareaappearanceconfigwidget.ui:235
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
@@ -2036,7 +2030,7 @@ msgstr ""
 "mugitzen denean"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:259
+#: dialogs/textareaappearanceconfigwidget.ui:242
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -2046,43 +2040,43 @@ msgstr ""
 "antzematen laguntzeko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:262
+#: dialogs/textareaappearanceconfigwidget.ui:245
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Erakutsi &koska-lerroak"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:285
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Counts:"
 msgstr "Kopurua:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:292
+#: dialogs/textareaappearanceconfigwidget.ui:275
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Erakutsi/ezkutatu hitz kopurua egoera barran"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:295 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:278 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Erakutsi hitz kopurua"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:302
+#: dialogs/textareaappearanceconfigwidget.ui:285
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Erakutsi/ezkutatu lerro kopurua egoera barran"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:305 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:288 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Erakutsi lerro kopurua"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:331
+#: dialogs/textareaappearanceconfigwidget.ui:314
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2096,55 +2090,55 @@ msgstr ""
 "ezkutatzeko."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:334
+#: dialogs/textareaappearanceconfigwidget.ui:317
 #, kde-format
 msgid "Fold first line"
 msgstr "Tolestu lehenengo lerroa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Itzulbira dinamikoa:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Itzulbira dinamikoa hitzen itzulbiratze estatikoaren markatzailean"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:368
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Ez begiratu hitzen mugei itzulbira dinamikorako"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:375
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Itzulbira &dinamikoaren adierazleak:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:385
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "Aukeratu itzulbira dinamikoaren adierazleak bistaratu behar direnean."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:408
+#: dialogs/textareaappearanceconfigwidget.ui:391
 #, kde-format
 msgid "Indent wrapped lines:"
 msgstr "Koskatu itzulbiratutako lerroak:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:425
+#: dialogs/textareaappearanceconfigwidget.ui:408
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr "Ez koskatu hau baino zabalagoak diren lerroak:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:441
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2165,7 +2159,7 @@ msgstr ""
 "bertikalik aplikatuko.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:444
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "ikuspegiaren zabaleraren ehunekoa"
@@ -7813,7 +7807,7 @@ msgstr "Lerrokatu hemen"
 msgid "Alignment pattern:"
 msgstr "Lerrokatze eredua:"
 
-#: view/kateview.cpp:4895
+#: view/kateview.cpp:4853
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Esportatu fitxategia HTML gisa"
@@ -8351,6 +8345,9 @@ msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"
+
+#~ msgid "Show focus frame around editor"
+#~ msgstr "Erakutsi fokuaren markoa editorearen inguruan"
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "%1 fitxategia ez dago."

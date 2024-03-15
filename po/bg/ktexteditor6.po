@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-13 00:36+0000\n"
+"POT-Creation-Date: 2024-03-15 00:36+0000\n"
 "PO-Revision-Date: 2024-02-03 15:34+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -412,7 +412,7 @@ msgstr "Няма записи в историята на клипборда"
 #. i18n: ectx: property (title), widget (QGroupBox, gbGeneral)
 #. i18n: ectx: property (title), widget (QGroupBox, gbViInputMode)
 #: dialogs/completionconfigtab.ui:29 dialogs/katedialogs.cpp:604
-#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1019
+#: dialogs/katedialogs.cpp:736 dialogs/katedialogs.cpp:1016
 #: vimode/config/configwidget.ui:29
 #, kde-format
 msgid "General"
@@ -1197,12 +1197,12 @@ msgstr "Изключено"
 msgid "Follow Line Numbers"
 msgstr "Следване на номерата на редовете"
 
-#: dialogs/katedialogs.cpp:941 dialogs/katedialogs.cpp:946
+#: dialogs/katedialogs.cpp:938 dialogs/katedialogs.cpp:943
 #, kde-format
 msgid "Appearance"
 msgstr "Външен вид"
 
-#: dialogs/katedialogs.cpp:981
+#: dialogs/katedialogs.cpp:978
 #, kde-format
 msgid ""
 "%1 backs up unsaved files to \"swap files.\" Swap files allow %1 to recover "
@@ -1214,12 +1214,12 @@ msgstr ""
 "Деактивирането на Swap файлове може да доведе до загуба на данни в случай на "
 "срив."
 
-#: dialogs/katedialogs.cpp:1020
+#: dialogs/katedialogs.cpp:1017
 #, kde-format
 msgid "Advanced"
 msgstr "Допълнителни"
 
-#: dialogs/katedialogs.cpp:1085
+#: dialogs/katedialogs.cpp:1082
 #, kde-format
 msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
@@ -1227,52 +1227,52 @@ msgstr ""
 "Няма зададена наставка и представка за резервно копие и затова ще се "
 "използва стандартната представка\"~\"."
 
-#: dialogs/katedialogs.cpp:1085
+#: dialogs/katedialogs.cpp:1082
 #, kde-format
 msgid "No Backup Suffix or Prefix"
 msgstr "Няма наставка и представка"
 
-#: dialogs/katedialogs.cpp:1214
+#: dialogs/katedialogs.cpp:1211
 #, kde-format
 msgid "Open/Save"
 msgstr "Отваряне/запис"
 
-#: dialogs/katedialogs.cpp:1219
+#: dialogs/katedialogs.cpp:1216
 #, kde-format
 msgid "File Opening & Saving"
 msgstr "Настройки на отварянето и записа на файлове"
 
-#: dialogs/katedialogs.cpp:1242
+#: dialogs/katedialogs.cpp:1239
 #, kde-format
 msgid "&Line:"
 msgstr "&Ред:"
 
-#: dialogs/katedialogs.cpp:1243
+#: dialogs/katedialogs.cpp:1240
 #, kde-format
 msgid "Go to line number from clipboard"
 msgstr "Отиване до номера на реда от клипборда"
 
-#: dialogs/katedialogs.cpp:1254
+#: dialogs/katedialogs.cpp:1251
 #, kde-format
 msgid "Go to"
 msgstr "Отиване на"
 
-#: dialogs/katedialogs.cpp:1334
+#: dialogs/katedialogs.cpp:1331
 #, kde-format
 msgid "No valid line number found in clipboard"
 msgstr "Не е намерен валиден номер на ред в клипборда"
 
-#: dialogs/katedialogs.cpp:1398
+#: dialogs/katedialogs.cpp:1395
 #, kde-format
 msgid "Dictionary:"
 msgstr "Речник:"
 
-#: dialogs/katedialogs.cpp:1450
+#: dialogs/katedialogs.cpp:1447
 #, kde-format
 msgid "Enable Auto Reload"
 msgstr "Активиране на автоматичното презареждане"
 
-#: dialogs/katedialogs.cpp:1453
+#: dialogs/katedialogs.cpp:1450
 #, kde-format
 msgid ""
 "Reloads and will automatically reload without warning about disk changes "
@@ -1281,60 +1281,60 @@ msgstr ""
 "От сега нататък презареждането и автоматично презареждане ще се извършва без "
 "предупреждение за промени в диска, докато не затворите раздела или прозореца."
 
-#: dialogs/katedialogs.cpp:1458
+#: dialogs/katedialogs.cpp:1455
 #, kde-format
 msgid "View &Difference"
 msgstr "&Преглед на разликите"
 
-#: dialogs/katedialogs.cpp:1460
+#: dialogs/katedialogs.cpp:1457
 #, kde-format
 msgid "Shows a diff of the changes."
 msgstr "Показва разликата на промените."
 
-#: dialogs/katedialogs.cpp:1465
+#: dialogs/katedialogs.cpp:1462
 #, kde-format
 msgid "&Reload"
 msgstr "&Презареждане"
 
-#: dialogs/katedialogs.cpp:1467
+#: dialogs/katedialogs.cpp:1464
 #, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
 msgstr ""
 "Презареждане на файла от диска. Незапазените промени ще бъдат загубени."
 
-#: dialogs/katedialogs.cpp:1471
+#: dialogs/katedialogs.cpp:1468
 #, kde-format
 msgctxt "@action:button closes the opened file"
 msgid "&Close File"
 msgstr "&Затваряне на файла"
 
-#: dialogs/katedialogs.cpp:1473
+#: dialogs/katedialogs.cpp:1470
 #, kde-format
 msgid "Closes the file, discarding its content."
 msgstr "Затваряне на файла, отхвърляйки съдържанието му."
 
-#: dialogs/katedialogs.cpp:1477
+#: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Save As..."
 msgstr "&Запазване като..."
 
-#: dialogs/katedialogs.cpp:1479
+#: dialogs/katedialogs.cpp:1476
 #, kde-format
 msgid "Lets you select a location and save the file again."
 msgstr "Запис на файла под друго име или на друго място."
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipBtn)
-#: dialogs/katedialogs.cpp:1484 spellcheck/spellcheckbar.ui:143
+#: dialogs/katedialogs.cpp:1481 spellcheck/spellcheckbar.ui:143
 #, kde-format
 msgid "&Ignore"
 msgstr "&Пренебрегване"
 
-#: dialogs/katedialogs.cpp:1485
+#: dialogs/katedialogs.cpp:1482
 #, kde-format
 msgid "Ignores the changes on disk without any action."
 msgstr "Игнорира промените на диска без никакво действие."
 
-#: dialogs/katedialogs.cpp:1551 swapfile/kateswapdiffcreator.cpp:131
+#: dialogs/katedialogs.cpp:1548 swapfile/kateswapdiffcreator.cpp:131
 #, kde-format
 msgid ""
 "The diff command failed. Please make sure that diff(1) is installed and in "
@@ -1343,18 +1343,18 @@ msgstr ""
 "Командата diff не върна резултат. Моля, убедете се, че пакетът thatdiff(1) е "
 "инсталиран и програмата е включена в пътя за изпълними файлове PATH."
 
-#: dialogs/katedialogs.cpp:1553 swapfile/kateswapdiffcreator.cpp:89
+#: dialogs/katedialogs.cpp:1550 swapfile/kateswapdiffcreator.cpp:89
 #: swapfile/kateswapdiffcreator.cpp:99 swapfile/kateswapdiffcreator.cpp:133
 #, kde-format
 msgid "Error Creating Diff"
 msgstr "Грешка при изчисляване на разликите"
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "The files are identical."
 msgstr "Файловете са идентични."
 
-#: dialogs/katedialogs.cpp:1560 swapfile/kateswapdiffcreator.cpp:140
+#: dialogs/katedialogs.cpp:1557 swapfile/kateswapdiffcreator.cpp:140
 #, kde-format
 msgid "Diff Output"
 msgstr "Diff резултат"
@@ -1948,20 +1948,14 @@ msgid ""
 "text."
 msgstr "Показване на знак на мястото на табулациите."
 
-#. i18n: ectx: property (text), widget (QLabel, label_7)
-#: dialogs/textareaappearanceconfigwidget.ui:183
-#, kde-format
-msgid "Show focus frame around editor"
-msgstr "Показване на рамка на фокуса около редактора"
-
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:216
+#: dialogs/textareaappearanceconfigwidget.ui:199
 #, kde-format
 msgid "Bracket matching:"
 msgstr "Съвпадащите скоби:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:223
+#: dialogs/textareaappearanceconfigwidget.ui:206
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1971,13 +1965,13 @@ msgstr ""
 "осветен."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:226
+#: dialogs/textareaappearanceconfigwidget.ui:209
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Акцентиране на обхвата между избраните скоби"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:233
+#: dialogs/textareaappearanceconfigwidget.ui:216
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
@@ -1985,7 +1979,7 @@ msgstr ""
 "контекст"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:236
+#: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -1999,19 +1993,19 @@ msgstr ""
 "функции/клас и дълбоко вложени if блокове"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:239
+#: dialogs/textareaappearanceconfigwidget.ui:222
 #, kde-format
 msgid "Show preview of matching open bracket"
 msgstr "Предварителен преглед на съвпадаща отворена скоба"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:246
+#: dialogs/textareaappearanceconfigwidget.ui:229
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Оцветяване на съвпадащите скоби"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:249
+#: dialogs/textareaappearanceconfigwidget.ui:232
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
@@ -2020,7 +2014,7 @@ msgstr ""
 "видимост."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:252
+#: dialogs/textareaappearanceconfigwidget.ui:235
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
@@ -2028,7 +2022,7 @@ msgstr ""
 "скобите"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:259
+#: dialogs/textareaappearanceconfigwidget.ui:242
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -2036,43 +2030,43 @@ msgid ""
 msgstr "Показване на помощна вертикална линия за определяне на отстъпа."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:262
+#: dialogs/textareaappearanceconfigwidget.ui:245
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Показване на линия за о&тстъпа"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:285
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Counts:"
 msgstr "Изброяване:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:292
+#: dialogs/textareaappearanceconfigwidget.ui:275
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Показване/скриване на броя на думите в лентата на състоянието"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:295 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:278 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Показване на броя на думите"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:302
+#: dialogs/textareaappearanceconfigwidget.ui:285
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Показване/скриване на броя на редовете в лентата на състоянието"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:305 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:288 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Показване на броя на редовете"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:331
+#: dialogs/textareaappearanceconfigwidget.ui:314
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2087,55 +2081,55 @@ msgstr ""
 "начало на файл."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:334
+#: dialogs/textareaappearanceconfigwidget.ui:317
 #, kde-format
 msgid "Fold first line"
 msgstr "Сгъване на първия ред"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Динамично пренасяне на думи:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Пренасяне на думи динамично при статичен маркер за пренасяне"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:368
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Пренебрегване на границите на думи за динамично пренасяне"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:375
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Индикатори за &динамично пренасяне на думи:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:385
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "Избиране, кога да се показват индикатори за динамично пренасяне."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:408
+#: dialogs/textareaappearanceconfigwidget.ui:391
 #, kde-format
 msgid "Indent wrapped lines:"
 msgstr "Отстъп на пренесени редове:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:425
+#: dialogs/textareaappearanceconfigwidget.ui:408
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr "Без отстъп за редове по-широки от:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:441
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2156,7 +2150,7 @@ msgstr ""
 "следващите прехвърлени редове.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:444
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% от видимата част"
@@ -7777,7 +7771,7 @@ msgstr "Подравняване"
 msgid "Alignment pattern:"
 msgstr "Шаблон на подравняване:"
 
-#: view/kateview.cpp:4895
+#: view/kateview.cpp:4853
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Експортиране на файл като HTML"
@@ -8314,3 +8308,6 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Маркирането не е зададено: %1"
+
+#~ msgid "Show focus frame around editor"
+#~ msgstr "Показване на рамка на фокуса около редактора"
