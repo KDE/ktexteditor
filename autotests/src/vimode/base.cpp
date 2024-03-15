@@ -12,6 +12,7 @@
 #include <inputmode/kateviinputmode.h>
 #include <kateconfig.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateundomanager.h>
 #include <kateview.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
@@ -28,6 +29,9 @@ using namespace KTextEditor;
 
 BaseTest::BaseTest()
 {
+    // test mode with e.g. own temporary config files
+    KTextEditor::EditorPrivate::enableUnitTestMode();
+
     kate_view = nullptr;
     kate_document = nullptr;
 
