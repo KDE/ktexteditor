@@ -570,7 +570,7 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                                     endOfBlock = keys.length() - 1;
                                 }
                                 encodedSequence.clear();
-                                encodedSequence.append(QChar(m_nameToKeyCode.value(QStringLiteral("invalid"))));
+                                encodedSequence.append(QChar::fromUcs4(m_nameToKeyCode.value(QStringLiteral("invalid"))));
                                 break;
                             }
                         }
@@ -653,7 +653,7 @@ const QString KeyParser::decodeKeySequence(const QString &keys) const
             if ((keycode & 0xE000) == 0xE000) {
                 ret.append(m_keyCodeToName.value((keycode - 0xE000) / 0x10));
             } else {
-                ret.append(QChar(keycode));
+                ret.append(QChar::fromUcs4(keycode));
             }
             ret.append(QLatin1Char('>'));
         }
