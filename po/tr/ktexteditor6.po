@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-03-08 19:43+0300\n"
+"PO-Revision-Date: 2024-03-15 13:55+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -6940,22 +6940,22 @@ msgstr ""
 #: view/kateview.cpp:717
 #, kde-format
 msgid "Enlarge Font"
-msgstr "Yazıtipini Büyüt"
+msgstr "Yazıtipi Boyutunu Büyüt"
 
 #: view/kateview.cpp:719
 #, kde-format
 msgid "This increases the display font size."
-msgstr "Yazıtipi görünüm büyüklüğünü artırır."
+msgstr "Görüntü yazıtipi büyüklüğünü artırır."
 
 #: view/kateview.cpp:726
 #, kde-format
 msgid "Shrink Font"
-msgstr "Yazıtipini Küçült"
+msgstr "Yazıtipi Boyutunu Küçült"
 
 #: view/kateview.cpp:728
 #, kde-format
 msgid "This decreases the display font size."
-msgstr "Yazıtipi görünüm büyüklüğünü azaltır."
+msgstr "Görüntü yazıtipi büyüklüğünü azaltır."
 
 #: view/kateview.cpp:735
 #, kde-format
@@ -6965,7 +6965,7 @@ msgstr "Yazıtipi Boyutunu Sıfırla"
 #: view/kateview.cpp:737
 #, kde-format
 msgid "This resets the display font size."
-msgstr "Bu, yazıtipi boyutunu artırır."
+msgstr "Bu, yazıtipi boyutunu öntanımlı değerine sıfırlar."
 
 #: view/kateview.cpp:740
 #, kde-format
