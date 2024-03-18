@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-01-27 10:53+0100\n"
+"PO-Revision-Date: 2024-03-17 11:56+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -37,7 +37,7 @@ msgstr "Podpowiadanie argumentów"
 #: completion/katecompletionmodel.cpp:145
 #, kde-format
 msgid "Best matches"
-msgstr "Najlepiej odpowiadające"
+msgstr "Najlepiej pasujące"
 
 #: completion/katekeywordcompletion.cpp:143
 #, kde-format
@@ -3845,19 +3845,19 @@ msgstr "Przełącz na rozbudowany pasek szukania i zastępowania"
 #: search/searchbarpower.ui:50
 #, kde-format
 msgid "Fin&d:"
-msgstr "Znaj&dź:"
+msgstr "&Do znalezienia:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: search/searchbarpower.ui:63
 #, kde-format
 msgid "Rep&lace:"
-msgstr "Z&astąp:"
+msgstr "Do z&astąpienia:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
 #, kde-format
 msgid "&Mode:"
-msgstr "&Tryb:"
+msgstr "Try&b:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, searchMode)
 #: search/searchbarpower.ui:103
@@ -3906,7 +3906,7 @@ msgstr "Zastąp następne pasujące wyrażenie"
 #: search/searchbarpower.ui:198 spellcheck/spellcheckbar.ui:130
 #, kde-format
 msgid "&Replace"
-msgstr "Z&astąp"
+msgstr "Zas&tąp"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:224
@@ -3918,13 +3918,13 @@ msgstr "Zastąp wszystkie pasujące wyrażenia"
 #: search/searchbarpower.ui:227
 #, kde-format
 msgid "Replace &All"
-msgstr "Zastąp &wszystko"
+msgstr "Z&astąp wszystko"
 
 #. i18n: ectx: property (text), widget (QPushButton, findAll)
 #: search/searchbarpower.ui:234
 #, kde-format
 msgid "&Find All"
-msgstr "&Znajdź wszystko"
+msgstr "Zna&jdź wszystko"
 
 #. i18n: ectx: property (text), widget (QPushButton, cancel)
 #: search/searchbarpower.ui:257
@@ -4156,7 +4156,7 @@ msgstr ""
 #: spellcheck/spellcheckbar.ui:200
 #, kde-format
 msgid "Autocorrect"
-msgstr "Samoczynne poprawianie"
+msgstr "Samopoprawianie"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:209
