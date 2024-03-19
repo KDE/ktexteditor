@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-03-13 09:39+0200\n"
+"PO-Revision-Date: 2024-03-18 10:48+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1859,10 +1859,9 @@ msgstr "תמיד"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:119
-#, fuzzy, kde-format
-#| msgid "Whitespace Highlighting"
+#, kde-format
 msgid "Whitespace indicator size:"
-msgstr "הדגשת רווחים"
+msgstr "גודל מחוון רווחים:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:135
@@ -1922,9 +1921,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:222
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show preview of matching open bracket"
-msgstr "הדפסת המסמך הנוכחי."
+msgstr "הצגת תצוגה מקדימה של הסוגר המרובע הפותח התואם"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
 #: dialogs/textareaappearanceconfigwidget.ui:229
@@ -2014,10 +2013,9 @@ msgstr "גלישת שורות דינמית:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
 #: dialogs/textareaappearanceconfigwidget.ui:344
-#, fuzzy, kde-format
-#| msgid "Enable static &word wrap"
+#, kde-format
 msgid "Wrap dynamically at static word wrap marker"
-msgstr "אפשר &גלישת שורות סטטית"
+msgstr "גלישה דינמית בסמן גלישת שורות קבוע"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
 #: dialogs/textareaappearanceconfigwidget.ui:351
@@ -2027,10 +2025,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:358
-#, fuzzy, kde-format
-#| msgid "Dynamic Word Wrap Indicators"
+#, kde-format
 msgid "D&ynamic word wrap indicators:"
-msgstr "סמני גלישת שורות דינמית"
+msgstr "מחווני גלישת שורות &דינמיים:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
 #: dialogs/textareaappearanceconfigwidget.ui:368
@@ -2183,13 +2180,13 @@ msgid "Possible Data Loss"
 msgstr "אובדן נתונים אפשרי"
 
 #: document/katedocument.cpp:2468
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
 "document. Do you really want to save it? There could be some data lost."
 msgstr ""
-"אין באפשרות הקידוד הנבחר לקודד כל תו יוניקוד במסמך זה. האם אתה בטוח שברצונך "
-"לשמור אותו? עלול להיגרם אובדן מסויים של נתונים."
+"הקידוד הנבחר לא יכול לקודד כל תו יוניקוד במסמך הזה. לשמור אותו? יכול להיות "
+"שחלק מהנתונים ילכו לאיבוד."
 
 #: document/katedocument.cpp:2538
 #, fuzzy, kde-format
@@ -2295,22 +2292,19 @@ msgid ""
 msgstr ""
 
 #: document/katedocument.cpp:5550
-#, fuzzy, kde-format
-#| msgid "The file '%1' was modified by another program."
+#, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "הקובץ \"%1\" שונה על ידי תוכנית אחרת."
+msgstr "הקובץ ‚%1’ נערך בכונן."
 
 #: document/katedocument.cpp:5553
-#, fuzzy, kde-format
-#| msgid "The file '%1' was created by another program."
+#, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "הקובץ \"%1\" נוצר ידי תוכנית אחרת."
+msgstr "הקובץ ‚%1’ נוצר בכונן."
 
 #: document/katedocument.cpp:5556
-#, fuzzy, kde-format
-#| msgid "The file '%1' was deleted by another program."
+#, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "הקובץ \"%1\" נמחק על ידי תוכנית אחרת."
+msgstr "הקובץ ‚%1’ נמחק מהכונן."
 
 #: document/katedocument.cpp:5893
 #, kde-format
@@ -2458,24 +2452,22 @@ msgid "No items matching your search"
 msgstr "אין פריטים שעונים לחיפוש שלך"
 
 #: mode/katemodemenulist.cpp:1091
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in singular) of the best result in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Match"
-msgstr "ההתאמות הטובות ביותר"
+msgstr "תוצאות החיפוש הטובה ביותר"
 
 #: mode/katemodemenulist.cpp:1096
-#, fuzzy, kde-format
-#| msgid "Best matches"
+#, kde-format
 msgctxt ""
 "Title (in plural) of the best results in an item search. Please, that the "
 "translation doesn't have more than 34 characters, since the menu where it's "
 "displayed is small and fixed."
 msgid "Best Search Matches"
-msgstr "ההתאמות הטובות ביותר"
+msgstr "תוצאות החיפוש הטובות ביותר"
 
 #: printing/printconfigwidgets.cpp:36
 #, kde-format
@@ -2661,16 +2653,14 @@ msgid "L&ayout"
 msgstr "סי&דור"
 
 #: printing/printconfigwidgets.cpp:484
-#, fuzzy, kde-format
-#| msgid "Use KDE Color Scheme"
+#, kde-format
 msgid "&Color theme:"
-msgstr "השתמש בסכימת הבצעים של KDE"
+msgstr "&ערכת צבעים:"
 
 #: printing/printconfigwidgets.cpp:494
-#, fuzzy, kde-format
-#| msgid "Font"
+#, kde-format
 msgid "Font:"
-msgstr "גופן"
+msgstr "גופן:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2813,34 +2803,34 @@ msgid "Toggle Comment"
 msgstr "הערה"
 
 #: script/data/commands/emmet.js:34
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Edit Point"
-msgstr "עבור לנקודת עריכה הבאה"
+msgstr "מעבר לנקודת העריכה הבאה"
 
 #: script/data/commands/emmet.js:38
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Edit Point"
-msgstr "עבור לנקודת העריכה הקודמת"
+msgstr "מעבר לנקודת העריכה הקודמת"
 
 #: script/data/commands/emmet.js:42
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Next Edit Point"
-msgstr "בחר את נקודת העריכה הבאה"
+msgstr "בחירת נקודת העריכה הבאה"
 
 #: script/data/commands/emmet.js:46
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Select Previous Edit Point"
-msgstr "בחר את נקודת העריכה הקודמת"
+msgstr "בחירתת נקודת העריכה הקודמת"
 
 #: script/data/commands/emmet.js:50
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Delete Tag Under Cursor"
-msgstr "מחק את התג מתחת לסמן"
+msgstr "מחיקת התגית מתחת לסמן העכבר"
 
 #: script/data/commands/emmet.js:54
 #, kde-format
@@ -2937,9 +2927,9 @@ msgid "Select next edit point (tag or empty attribute)."
 msgstr ""
 
 #: script/data/commands/emmet.js:104
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select previous edit point (tag or empty attribute)."
-msgstr "בחר עד לשורה הקודמת"
+msgstr "בחירת נקודת העריכה האחרונה (תגית או מאפיין ריק)."
 
 #: script/data/commands/emmet.js:105
 #, kde-format
@@ -2947,9 +2937,9 @@ msgid "Toggle comment of current tag or CSS selector"
 msgstr ""
 
 #: script/data/commands/emmet.js:106
-#, fuzzy, kde-format
+#, kde-format
 msgid "Deletes tag under cursor"
-msgstr "מחיקת סוג הקובץ הנוכחי."
+msgstr "מחיקת תגית מתחת לסמן העכבר"
 
 #: script/data/commands/emmet.js:107
 #, kde-format
@@ -2992,10 +2982,10 @@ msgid "Increment number under cursor by 0.1"
 msgstr "הגדל את המספר מתחת לסמן ב־0.01"
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr "הזז את הסמן אל התאמת ההזחה הקודמת"
+msgstr "העברת הסמן להזחה התואמת הקודמת"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
@@ -3006,10 +2996,10 @@ msgid "Navigation"
 msgstr "ניווט"
 
 #: script/data/commands/jumpMatchingIndent.js:14
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Next Matching Indent"
-msgstr "הזז את הסמן אל התאמת ההזחה הבאה"
+msgstr "העברת הסמן להזחה התואמת הבאה"
 
 #: script/data/commands/jumpMatchingIndent.js:44
 #, kde-format
@@ -3034,10 +3024,10 @@ msgid "Go to Previous Paragraph"
 msgstr "מעבר לפסקה הקודמת"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "מיין טקסט נבחר"
+msgstr "מיון הטקסט הנבחר לפי האלפבית"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3053,11 +3043,10 @@ msgid "Editing"
 msgstr "עריכה"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr "הסר שורות כפולות מהטקסט הנבחר או כל המסמך."
+msgstr "הסרת כפילויות ומיון הטקסט הנבחר לפי האלפבית"
 
 #: script/data/commands/utils.js:17
 #, kde-format
@@ -3066,18 +3055,16 @@ msgid "Remove Duplicate Lines"
 msgstr "הסרת שורות כפולות"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "ה&סר רווחים עודפים:"
+msgstr "הסרת רווחים מהסוף"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "ה&סר רווחים עודפים:"
+msgstr "הסרת רווחים מההתחלה"
 
 #: script/data/commands/utils.js:29
 #, kde-format
@@ -3104,34 +3091,34 @@ msgid "Move Lines Up"
 msgstr "העלאת שורות למטה"
 
 #: script/data/commands/utils.js:47
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Down"
-msgstr "שכפל שורות נבחרות למטה"
+msgstr "שכפול השורות הנבחרות למטה"
 
 #: script/data/commands/utils.js:51
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate Selected Lines Up"
-msgstr "שכפל שורות נבחרות למעלה"
+msgstr "שכפול השורות הנבחרות למעלה"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "שכפל שורות נבחרות למעלה"
+msgstr "שכפול הטקסט הנבחר"
 
 #: script/data/commands/utils.js:59
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-encode Selected Text"
-msgstr "טקסט נבחר:"
+msgstr "קידוד הטקסט הנבחר לכתובות מלאות (URI)"
 
 #: script/data/commands/utils.js:63
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Script command name"
 msgid "URI-decode Selected Text"
-msgstr "טקסט נבחר:"
+msgstr "פענוח הטקסט הנבחר מכתובות מלאות (URI)"
 
 #: script/data/commands/utils.js:67
 #, kde-format
@@ -6345,7 +6332,7 @@ msgstr "&תסריטים"
 #: view/kateview.cpp:502
 #, kde-format
 msgid "Apply &Word Wrap"
-msgstr "החל &גלישת שורות"
+msgstr "החלת &גלישת שורות"
 
 #: view/kateview.cpp:504
 #, kde-format
@@ -6555,7 +6542,7 @@ msgstr "&רענון"
 #: view/kateview.cpp:648
 #, kde-format
 msgid "Reload the current document from disk."
-msgstr "טעינה מחדש של המסמך הנוכחי מתוך הדיסק."
+msgstr "טעינה מחדש של המסמך הנוכחי מתוך הכונן."
 
 #: view/kateview.cpp:652
 #, kde-format
@@ -6613,7 +6600,7 @@ msgstr "&הגדרות העורך..."
 #: view/kateview.cpp:682
 #, kde-format
 msgid "Configure various aspects of this editor."
-msgstr "קביעת הגדרות של היבטים שונים של עורך זה."
+msgstr "שינוי הגדרות של היבטים שונים של עורך זה."
 
 #: view/kateview.cpp:685
 #, kde-format

@@ -1,4 +1,4 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the ktexteditor package.
 #
 #
@@ -6,7 +6,7 @@
 # Primož Peterlin, <primoz.peterlin@biofiz.mf.uni-lj.si>, 2000.
 # Marko Samastur <markos@elite.org>, 2000.
 # Gregor Rakar <gregor.rakar@kiss.si>, 2003, 2004, 2005.
-# Jure Repinc <jlp@holodeck1.com>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
+# SPDX-FileCopyrightText: 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2024 Jure Repinc <jlp@holodeck1.com>
 # Andrej Vernekar <andrej.vernekar@moj.net>, 2007, 2008, 2009.
 # Andrej Vernekar <andrej.vernerkar@moj.net>, 2008.
 # Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-01-25 07:43+0100\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2024-03-17 15:24+0100\n"
+"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -68,7 +68,7 @@ msgstr "Znova uporabi besedo spodaj"
 #: data/katepart5ui.rc:4
 #, kde-format
 msgid "&File"
-msgstr "Datoteka"
+msgstr "&Datoteka"
 
 #. i18n: ectx: Menu (file_export)
 #: data/katepart5ui.rc:10
@@ -104,7 +104,7 @@ msgstr "Prve črke v velike"
 #: data/katepart5ui.rc:69
 #, kde-format
 msgid "&View"
-msgstr "Pogled"
+msgstr "&Pogled"
 
 #. i18n: ectx: Menu (view_menu_word_wrap)
 #: data/katepart5ui.rc:74
@@ -122,19 +122,19 @@ msgstr "Obrobe"
 #: data/katepart5ui.rc:88
 #, kde-format
 msgid "&Code Folding"
-msgstr "Zvijanje kode"
+msgstr "&Zvijanje kode"
 
 #. i18n: ectx: Menu (go)
 #: data/katepart5ui.rc:105
 #, kde-format
 msgid "&Go"
-msgstr "Pojdi"
+msgstr "P&ojdi"
 
 #. i18n: ectx: Menu (tools)
 #: data/katepart5ui.rc:120
 #, kde-format
 msgid "&Tools"
-msgstr "Orodja"
+msgstr "O&rodja"
 
 #. i18n: ectx: Menu (wordcompletion)
 #: data/katepart5ui.rc:134
@@ -159,7 +159,7 @@ msgstr "Besedilo v govor"
 #: data/katepart5ui.rc:157
 #, kde-format
 msgid "&Settings"
-msgstr "Nastavitve"
+msgstr "&Nastavitve"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: data/katepart5ui.rc:181
@@ -551,7 +551,7 @@ msgid ""
 msgstr ""
 "<p>Samodejno začne novo vrstico z besedilom, ko trenutna vrstica preseže "
 "dolžino, navedeno v možnosti <b>Prelomi vrstico pri:</b>.</p><p>Ta možnost "
-"ne prelamlja obstoječih vrstic - za to uporabite možnost <b>Uveljavi "
+"ne prelamlja obstoječih vrstic – za to uporabite možnost <b>Uveljavi "
 "statični prelom vrstice</b> v meniju <b>Orodja</b>.</p><p>Če bi radi, da so "
 "vrstice <i>vidno prelomljene</i> glede na širino pogleda, potem omogočite "
 "<b>Dinamičen prelom vrstic pri besedah</b> v nastavitveni strani <b>Videz</"
@@ -622,7 +622,7 @@ msgid ""
 "way \"Auto Bracket\" do"
 msgstr ""
 "Kadar bo izbranega nekaj besedila, bodo ti znaki dodani na obe strani "
-"izbranega kot \"Samodejni oklepaji\""
+"izbranega kot »Samodejni oklepaji«"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
 #: dialogs/editconfigwidget.ui:143
@@ -1000,8 +1000,8 @@ msgstr ""
 "</style></head><body>\n"
 "<p>Dejanje tipke Tab (če ni izbora) <a href=\"Če želte, da <b>Tab</b> "
 "poravna trenutno vrstico v trenutnem bloku kode kot Emacs, nastavite <b>Tab</"
-"b> kot bližnjico za dejanje <b>Oblikuj zamikanje</b>.\"><span>Več ...</"
-"span></a></p></body></html>"
+"b> kot bližnjico za dejanje <b>Oblikuj zamikanje</b>.\"><span>Več …</span></"
+"a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1075,10 +1075,10 @@ msgstr "Povečaj zamik, če je kazalka v praznini na začetku"
 #, kde-format
 msgid " character"
 msgid_plural " characters"
-msgstr[0] " znaku"
-msgstr[1] " znakih"
-msgstr[2] " znakih"
-msgstr[3] " znakih"
+msgstr[0] " znakov"
+msgstr[1] " znak"
+msgstr[2] " znaka"
+msgstr[3] " znaki"
 
 #: dialogs/katedialogs.cpp:209
 #, kde-format
@@ -1150,8 +1150,8 @@ msgstr "Krmarjenje po besedilu"
 msgctxt "Wrap words at (value is at 20 or larger)"
 msgid " character"
 msgid_plural " characters"
-msgstr[0] " znaku"
-msgstr[1] " znakih"
+msgstr[0] " znakih"
+msgstr[1] " znaku"
 msgstr[2] " znakih"
 msgstr[3] " znakih"
 
@@ -1217,10 +1217,10 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
-"%1 izdela varovalno kopijo neshranjenih datotek na \"izmenljive datoteke\". "
-"Izmenljive datoteke omogočajo %1, da obnovite vaše delo v primeru izpada "
+"%1 izdela varnostno kopijo neshranjenih datotek v »izmenljive datoteke«. "
+"Izmenljive datoteke omogočajo %1, da obnovi vaše delo v primeru sesutja "
 "sistema. Onemogočanje izmenljivih datotek lahko povzroči izgubo podatkov v "
-"primeru izpada sistema."
+"primeru sesutja sistema."
 
 #: dialogs/katedialogs.cpp:1017
 #, kde-format
@@ -1233,7 +1233,7 @@ msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "Niste podali predpone ali pripone za varnostne kopije. Uporabljena bo "
-"privzeta '~'"
+"privzeta »~«"
 
 #: dialogs/katedialogs.cpp:1082
 #, kde-format
@@ -1323,7 +1323,7 @@ msgstr "Zapre datoteko, zavrže njeno vsebino."
 #: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Save As..."
-msgstr "&Shrani kot ..."
+msgstr "&Shrani kot …"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2378,8 +2378,8 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Uporablja opuščeno nastavitev 'remove-trailing-space'. Prosim zamenjajte jo "
-"z 'remove-trailing-spaces modified;' Oglejte si https://docs.kde.org/?"
+"Uporablja opuščeno nastavitev »remove-trailing-space«. Zamenjajte jo z "
+"»remove-trailing-spaces modified;« Oglejte si https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
@@ -2391,25 +2391,25 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Uporablja opuščeno nastavitev 'replace-trailing-space-save'. Zamenjajte jo z "
-"'remove-trailing-spaces all;'. Oglejte si https://docs.kde.org/?"
+"Uporablja opuščeno nastavitev »replace-trailing-space-save«. Zamenjajte jo z "
+"»remove-trailing-spaces all;«. Oglejte si https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
 #: document/katedocument.cpp:5550
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "Datoteka '%1' je bila spremenjena na disku."
+msgstr "Datoteka »%1« je bila spremenjena na disku."
 
 #: document/katedocument.cpp:5553
 #, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "Datoteka '%1' je bila ustvarjena na disku."
+msgstr "Datoteka »%1« je bila ustvarjena na disku."
 
 #: document/katedocument.cpp:5556
 #, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "Datoteka '%1' je bila izbrisana na disku."
+msgstr "Datoteka »%1« je bila izbrisana z diska."
 
 #: document/katedocument.cpp:5893
 #, kde-format
@@ -2417,7 +2417,7 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
-"Dokument \"%1\" je bil spremenjen.\n"
+"Dokument »%1« je bil spremenjen.\n"
 "Ali želite shraniti spremembe ali jih zavreči?"
 
 #: document/katedocument.cpp:5896
@@ -2540,7 +2540,7 @@ msgstr "Načini in vrste datotek"
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr "Išči..."
+msgstr "Poišči …"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -2704,7 +2704,7 @@ msgstr "<p>Oblika noge strani. Podprte so naslednje oznake:</p>"
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Dodaj vsebnik ..."
+msgstr "Dodaj vsebnik …"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -3294,7 +3294,7 @@ msgid ""
 "between each line:<br><code>join ', '</code> will e.g. join lines and "
 "separate them by a comma."
 msgstr ""
-"Združi izbrane vrstice ali celoten dokument. Če želite lahko podate "
+"Združi izbrane vrstice ali celoten dokument. Če želite, lahko podate "
 "ločilnik, ki bo postavljen med vrsticami:<br><code>join ', '</code> bo na "
 "primer združil vrstice in jih ločil z vejico in presledkom."
 
@@ -3320,9 +3320,9 @@ msgstr ""
 "regularnem izrazu, ki je bil dan kot argument.<br><br>Če bi dali prazen "
 "vzorec, ga bo privzeto poravnal na prvi nepresledni znak.<br>Če ima vzorec "
 "besedilo ujemanja, ga bo zamaknil na to besedilo.<br><br><i>Primeri</i>:"
-"<br>'<code>alignon -</code>' bo vstavil toliko presledkov pred prvim '-' v "
-"vsaki vrstici, da bodo vse poravnane na isti stolpec.<br> '<code>alignon :\\s"
-"+(.)</code>' bo vstavil presledke pred prvi nepresledni znak, ki se pojavlja "
+"<br>»<code>alignon -</code>« bo vstavil toliko presledkov pred prvim »-« v "
+"vsaki vrstici, da bodo vse poravnane na isti stolpec.<br>»<code>alignon :\\s"
+"+(.)</code>« bo vstavil presledke pred prvi nepresledni znak, ki se pojavlja "
 "po dvopičju, da vse vrstice poravna na isti stolpec."
 
 #: script/data/commands/utils.js:486
@@ -3507,7 +3507,7 @@ msgstr "Slog XML"
 #: script/katecommandlinescript.cpp:37
 #, kde-format
 msgid "Function '%1' not found in script: %2"
-msgstr "Funkcije '%1' ni bilo mogoče najti v skriptu: %2"
+msgstr "Funkcije »%1« ni bilo mogoče najti v skriptu: %2"
 
 #: script/katecommandlinescript.cpp:51
 #, kde-format
@@ -3530,12 +3530,12 @@ msgstr "Ni bilo mogoče dostopati do pogleda"
 #: script/katecommandlinescript.cpp:118
 #, kde-format
 msgid "Error calling 'help %1'"
-msgstr "Napaka med klicanjem 'help %1'"
+msgstr "Napaka med klicanjem »help %1«"
 
 #: script/katecommandlinescript.cpp:123
 #, kde-format
 msgid "No help specified for command '%1' in script %2"
-msgstr "Za ukaz '%1' v skriptu %2 ni določene nobene pomoči"
+msgstr "Za ukaz »%1« v skriptu %2 ni določene nobene pomoči"
 
 #: script/katescript.cpp:214
 #, kde-format
@@ -3557,27 +3557,27 @@ msgstr "Ni bilo mogoče najti ukaza: %1"
 #: search/katesearchbar.cpp:74
 #, kde-format
 msgid "Add..."
-msgstr "Dodaj ..."
+msgstr "Dodaj …"
 
 #: search/katesearchbar.cpp:299
 #, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
 msgid_plural "%1 replacements made"
-msgstr[0] "Opravljena %1 zamenjava"
-msgstr[1] "Opravljeni %1 zamenjavi"
-msgstr[2] "Opravljene %1 zamenjave"
-msgstr[3] "Opravljeno %1 zamenjav"
+msgstr[0] "Opravljeno %1 zamenjav"
+msgstr[1] "Opravljena %1 zamenjava"
+msgstr[2] "Opravljeni %1 zamenjavi"
+msgstr[3] "Opravljene %1 zamenjave"
 
 #: search/katesearchbar.cpp:301
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
 msgid_plural "%1 matches found"
-msgstr[0] "Najdeno %1 ujemanje"
-msgstr[1] "Najdeni %1 ujemanji"
-msgstr[2] "Najdena %1 ujemanja"
-msgstr[3] "Najdeno %1 ujemanj"
+msgstr[0] "Najdenih %1 ujemanj"
+msgstr[1] "Najdeno %1 ujemanje"
+msgstr[2] "Najdeni %1 ujemanji"
+msgstr[3] "Najdena %1 ujemanja"
 
 #: search/katesearchbar.cpp:375
 #, kde-format
@@ -3722,7 +3722,7 @@ msgstr "Ne-presledni znaki"
 #: search/katesearchbar.cpp:1209
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
-msgstr "Besedni znak (alfanumerični plus '_')"
+msgstr "Besedni znak (alfanumerični in »_«)"
 
 #: search/katesearchbar.cpp:1210
 #, kde-format
@@ -3949,7 +3949,7 @@ msgstr "Preverjanje črkovanja preklicano."
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "Preverjanje črkovanja poteka ..."
+msgstr "Preverjanje črkovanja poteka …"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -3980,9 +3980,9 @@ msgid ""
 "All</b>.</p>\n"
 "</qt>"
 msgstr ""
-"<qt><p>Ta beseda je bila prepoznana kot \"neznana beseda\", ker se ne ujema "
-"z nobenim vnosom v trenutno uporabljenem slovarju. Lahko gre tudi za besedo "
-"v tujem jeziku.</p>\n"
+"<qt><p>Ta beseda je bila prepoznana kot »neznana beseda«, ker se ne ujema z "
+"nobenim vnosom v trenutno uporabljenem slovarju. Lahko gre tudi za besedo v "
+"tujem jeziku.</p>\n"
 "<p>Če beseda ni bila napačno črkovana, jo lahko dodate v slovar s klikom na "
 "<b>Dodaj v slovar</b>. Če neznane besede ne želite dodati v slovar, jo pa "
 "želite ohraniti nespremenjeno, kliknite na <b>Prezri</b> ali <b>Prezri vse</"
@@ -4035,7 +4035,7 @@ msgstr ""
 #: spellcheck/spellcheckbar.ui:75
 #, kde-format
 msgid "<< Add to Dictionary"
-msgstr "<< Dodaj v slovar"
+msgstr "« Dodaj v slovar"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:89
@@ -4181,7 +4181,7 @@ msgstr "Prezri vse"
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Črkovanje (od kazalke)..."
+msgstr "Črkovanje (od kazalke) …"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4201,7 +4201,7 @@ msgstr "Dodaj v slovar"
 #: spellcheck/spellingmenu.cpp:169
 #, kde-format
 msgid "Spelling '%1'"
-msgstr "Črkovanje '%1'"
+msgstr "Črkovanje »%1«"
 
 #: swapfile/kateswapdiffcreator.cpp:87
 #, kde-format
@@ -4215,7 +4215,7 @@ msgstr ""
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr "Ukaza dif '%1' ni bilo mogoče zagnati."
+msgstr "Ukaza za primerjanje razlik »%1« ni bilo mogoče zagnati."
 
 #: swapfile/kateswapfile.cpp:629
 #, kde-format
@@ -4305,22 +4305,22 @@ msgstr "Prečrtaj"
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
-msgstr "Običajna barva..."
+msgstr "Običajna &barva …"
 
 #: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
-msgstr "Izbrana barva ..."
+msgstr "&Izbrana barva …"
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
-msgstr "&Barva ozadja ..."
+msgstr "Barva &ozadja …"
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
-msgstr "Izbrana barva ozadja ..."
+msgstr "Barva ozadja i&zbora …"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4359,7 +4359,7 @@ msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
 msgstr ""
-"\"Uporabi privzeti slog\" bo samodejno odnastavljeno, če spremenite "
+"»Uporabi privzeti slog« bo samodejno od-nastavljeno, če spremenite "
 "katerokoli lastnost sloga."
 
 #: syntax/katestyletreewidget.cpp:643
@@ -4943,17 +4943,17 @@ msgstr "&Tema:"
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Copy..."
-msgstr "Kopiraj..."
+msgstr "&Kopiraj …"
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgid "Export..."
-msgstr "Izvozi ..."
+msgstr "Izvozi …"
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "Import..."
-msgstr "Uvozi ..."
+msgstr "Uvozi …"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -4997,7 +4997,7 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
-"Uvoz bo prepisal obstoječo datoteko teme \"%1\". To ne more biti "
+"Uvoz bo prepisal obstoječo datoteko teme »%1«. To ne more biti "
 "razveljavljeno."
 
 #: syntax/katethemeconfig.cpp:1208
@@ -5013,7 +5013,7 @@ msgstr "Sledi sistemsko barvno shemo"
 #: syntax/katethemeconfig.cpp:1362
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
-msgstr "Ali res želite izbrisati temo \"%1\"? Tega ni mogoče razveljaviti."
+msgstr "Ali res želite izbrisati temo »%1«? Tega ni mogoče razveljaviti."
 
 #: syntax/katethemeconfig.cpp:1364
 #, kde-format
@@ -5028,7 +5028,7 @@ msgstr "Kopiraj temo"
 #: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr "Ime kopije barvne teme \"%1\":"
+msgstr "Ime kopije barvne teme »%1«:"
 
 #: syntax/katethemeconfig.cpp:1419
 #, kde-format
@@ -5107,12 +5107,12 @@ msgstr "Zaznamki"
 #: utils/katebookmarks.cpp:192
 #, kde-format
 msgid "&Next: %1 - \"%2\""
-msgstr "&Naslednji: %1 - \"%2\""
+msgstr "&Naslednji: %1 – »%2«"
 
 #: utils/katebookmarks.cpp:198
 #, kde-format
 msgid "&Previous: %1 - \"%2\""
-msgstr "&Prejšnji: %1 - \"%2\""
+msgstr "&Predhodni: %1 – »%2«"
 
 #: utils/katecmds.cpp:52
 #, kde-format
@@ -5367,17 +5367,17 @@ msgstr "Manjkajoč argument. Uporaba: %1 <value>"
 #: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
-msgstr "Ni takega poudarjanja '%1'"
+msgstr "Ni takega poudarjanja »%1«"
 
 #: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
-msgstr "Ni takega načina '%1'"
+msgstr "Ni takega načina »%1«"
 
 #: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "Ni uspelo pretvoriti argumenta '%1' v celo število."
+msgstr "Ni uspelo pretvoriti argumenta »%1« v celo število."
 
 #: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
@@ -5397,7 +5397,7 @@ msgstr "Uporaba: %1 on|off|1|0|true|false"
 #: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
-msgstr "Slab argument '%1'. Uporaba: %2 on|off|1|0|true|false"
+msgstr "Slab argument »%1«. Uporaba: %2 on|off|1|0|true|false"
 
 #: utils/katecmds.cpp:420
 #, kde-format
@@ -5409,7 +5409,7 @@ msgstr ""
 #: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
-msgstr "Neznan ukaz '%1'"
+msgstr "Neznan ukaz »%1«"
 
 #: utils/katecmds.cpp:492
 #, kde-format
@@ -5451,28 +5451,28 @@ msgid ""
 "\"AM\" or \"PM\".</td></tr><tr><td>ap</td><td>Use am/pm display. ap will be "
 "replaced by either \"am\" or \"pm\".</td></tr></table></p>"
 msgstr ""
-"<p>date ali date <b>oblika</b></p><p>Vstavi niz datuma in časa, kot določa "
+"<p>datum ali <b>oblika</b> datuma</p><p>Vstavi niz datuma/časa, kot določa "
 "podana oblika. Če oblika ni podana se uporabi yyyy-MM-dd hh:mm:ss</"
 "p><p>Možni določilniki oblike so:<table><tr><td>d</td><td>Dan kot število "
 "brez vodilne ničle (1–31).</td></tr><tr><td>dd</td><td>Dan kot število z "
 "vodilno ničlo (01–31).</td></tr><tr><td>ddd</td><td>Okrajšano ime dneva "
-"(npr. 'pon'...'ned').</td></tr><tr><td>dddd</td><td>Dolgo ime dneva (npr. "
-"'ponedeljek'...'nedelja').</td></tr><tr><td>M</td><td>Mesec kot število brez "
+"(npr. »pon«…»ned«).</td></tr><tr><td>dddd</td><td>Dolgo ime dneva (npr. "
+"»ponedeljek«…»nedelja«).</td></tr><tr><td>M</td><td>Mesec kot število brez "
 "vodilne ničle (1–12).</td></tr><tr><td>MM</td><td>Mesec kot število z "
 "vodilno ničlo (01–12).</td></tr><tr><td>MMM</td><td>Okrajšano ime meseca "
-"(npr. 'jan'...'dec').</td></tr><tr><td>yy</td><td>Leto kot število z dvema "
+"(npr. »jan«…»dec«).</td></tr><tr><td>yy</td><td>Leto kot število z dvema "
 "števkama (00–99).</td></tr><tr><td>yyyy</td><td>Leto kot število s štirimi "
 "števkami (1752–8000).</td></tr><tr><td>h</td><td>Ura brez vodilne ničle (0–"
-"23 ali 1–12).</td></tr><tr><td>hh</td><td>TUra z vodilno ničlo (00–23 ali 01–"
+"23 ali 1–12).</td></tr><tr><td>hh</td><td>Ura z vodilno ničlo (00–23 ali 01–"
 "12).</td></tr><tr><td>m</td><td>Minute brez vodilne ničle (0–59).</td></"
 "tr><tr><td>mm</td><td>Minute z vodilno ničlo (00–59).</td></tr><tr><td>s</"
 "td><td>Sekunde brez vodilne ničle (0–59).</td></tr><tr><td>ss</"
 "td><td>Sekunde z vodilno ničlo (00–59).</td></tr><tr><td>z</"
 "td><td>Milisekunde brez vodilne ničle (0–999).</td></tr><tr><td>zzz</"
 "td><td>Milisekunde z vodilnimi ničlami (000–999).</td></tr><tr><td>AP</"
-"td><td>Uporabi prikaz dop./pop., kjer bo AP zamenjan z \"dop.\" ali \"pop.\"."
-"</td></tr><tr><td>ap</td><td>Uporabi prikaz dop./pop., kjer bo AP zamenjan z "
-"\"dop.\" ali \"pop.\"</td></tr></table></p>"
+"td><td>Uporabi prikaz dop./pop., kjer bo AP zamenjan z »dop.« ali »pop.«.</"
+"td></tr><tr><td>ap</td><td>Uporabi prikaz dop./pop., kjer bo ap zamenjan z "
+"»dop.« ali »pop.«</td></tr></table></p>"
 
 #: utils/kateglobal.cpp:73
 #, kde-format
@@ -5487,7 +5487,7 @@ msgstr "Sestavni del urejevalnika, ki se lahko vključi"
 #: utils/kateglobal.cpp:77
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "(c) 2000-2022 Avtorji Kate"
+msgstr "© 2000–2022 Avtorji Kate"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -5593,7 +5593,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Testing, ..."
-msgstr "Preizkušanje, ..."
+msgstr "Preizkušanje, …"
 
 #: utils/kateglobal.cpp:116
 #, kde-format
@@ -5874,18 +5874,18 @@ msgstr "zamenjam z %1?"
 msgctxt "%2 is the translation of the next message"
 msgid "1 replacement done on %2"
 msgid_plural "%1 replacements done on %2"
-msgstr[0] "Opravljena %1 zamenjava v %2"
-msgstr[1] "Opravljeni %1 zamenjavi v %2"
-msgstr[2] "Opravljene %1 zamenjave v %2"
-msgstr[3] "Opravljeno %1 zamenjav v %2"
+msgstr[0] "Opravljenih %1 zamenjav v %2"
+msgstr[1] "Opravljena %1 zamenjava v %2"
+msgstr[2] "Opravljeni %1 zamenjavi v %2"
+msgstr[3] "Opravljene %1 zamenjave v %2"
 
 #: utils/katesedcmd.cpp:277
 #, kde-format
 msgctxt "substituted into the previous message"
 msgid "1 line"
 msgid_plural "%1 lines"
-msgstr[0] "%1 vrstici"
-msgstr[1] "%1 vrsticah"
+msgstr[0] "%1 vrsticah"
+msgstr[1] "%1 vrstici"
 msgstr[2] "%1 vrsticah"
 msgstr[3] "%1 vrsticah"
 
@@ -6506,16 +6506,16 @@ msgstr "Zamik/tabulator: %1/%2"
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, kde-format
 msgid "Other..."
-msgstr "Drugo ..."
+msgstr "Druga …"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
 msgid "Other (%1)"
 msgid_plural "Other (%1)"
-msgstr[0] "Drugo (%1)"
-msgstr[1] "Drugo (%1)"
-msgstr[2] "Drugo (%1)"
-msgstr[3] "Drugo (%1)"
+msgstr[0] "Druga (%1)"
+msgstr[1] "Druga (%1)"
+msgstr[2] "Druga (%1)"
+msgstr[3] "Druga (%1)"
 
 #: view/katestatusbar.cpp:489
 #, kde-format
@@ -6544,7 +6544,7 @@ msgstr "Besed %1, znakov %2"
 #: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
-msgstr "Zoom: %1%"
+msgstr "Približanje: %1 %"
 
 #: view/kateview.cpp:457
 #, kde-format
@@ -6626,9 +6626,9 @@ msgid ""
 "paragraph, to fit the 'Wrap words at' setting in the configuration dialog."
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
-"To uporabite za ovijanje trenutne vrstice ali za preoblikovanje izbranih "
-"vrstic kotodstavek, da se prilega nastavitvi \"Ovijanje besed pri\" v "
-"nastavitvenem pogovornem oknu.<br /><br />To je statični ovoj besed, kar "
+"To uporabite za prelom trenutne vrstice ali za preoblikovanje izbranih "
+"vrstic kot odstavek, da se prilega nastavitvi »Prelomi vrstico pri« v "
+"nastavitvenem pogovornem oknu.<br /><br />To je statični prelom vrstic, kar "
 "pomeni, da je dokument spremenjen."
 
 #: view/kateview.cpp:510
@@ -6664,7 +6664,7 @@ msgstr ""
 #: view/kateview.cpp:522
 #, kde-format
 msgid "&Align On..."
-msgstr "Por&avnaj na..."
+msgstr "Por&avnaj na …"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6683,8 +6683,8 @@ msgstr ""
 "regularnem izrazu za katerega boste povprašani.<br /><br />Če boste dali "
 "prazen vzorec, ga bo privzeto poravnal na prvi nepresledni znak.<br />Če ima "
 "vzorec besedilo ujemanja, ga bo zamaknil na to besedilo.<br /><br /"
-"><i>Primeri</i>:<br />Z '-' bo vstavil toliko presledkov pred prvim '-' v "
-"vsaki vrstici, da bodo vse poravnane na isti stolpec.<br />z ':\\s+(.)' bo "
+"><i>Primeri</i>:<br />Z »-« bo vstavil toliko presledkov pred prvim »-« v "
+"vsaki vrstici, da bodo vse poravnane na isti stolpec.<br />z »:\\s+(.)« bo "
 "vstavil presledke pred prvi nepresledni znak, ki se pojavlja po dvopičju, da "
 "vse vrstice poravna na isti stolpec."
 
@@ -6847,12 +6847,12 @@ msgstr "Shrani trenuten dokument na disk z imenom po izbiri."
 #: view/kateview.cpp:654
 #, kde-format
 msgid "Save As with Encoding..."
-msgstr "Shrani kot (s kodiranjem) ..."
+msgstr "Shrani kot (s kodiranjem) …"
 
 #: view/kateview.cpp:660
 #, kde-format
 msgid "Save &Copy As..."
-msgstr "Shrani kopijo kot ..."
+msgstr "Shrani &kopijo kot …"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6891,7 +6891,7 @@ msgstr "Premakni se dol do naslednje spremenjene vrstice."
 #: view/kateview.cpp:680
 #, kde-format
 msgid "&Configure Editor..."
-msgstr "Nastavi urejevalnik ..."
+msgstr "&Nastavi urejevalnik …"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7360,7 +7360,7 @@ msgstr "Omogoči/onemogoči samodejno preverjanje črkovanja"
 #: view/kateview.cpp:956
 #, kde-format
 msgid "Change Dictionary..."
-msgstr "Zamenjaj slovar ..."
+msgstr "Zamenjaj slovar …"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7397,7 +7397,7 @@ msgstr ""
 #: view/kateview.cpp:974
 #, kde-format
 msgid "E&xport as HTML..."
-msgstr "Izvozi kot HTML..."
+msgstr "&Izvozi kot HTML …"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7793,7 +7793,7 @@ msgstr ""
 #: view/kateviewhelpers.cpp:1166
 #, kde-format
 msgid "No help for '%1'"
-msgstr "Ni pomoči za '%1'"
+msgstr "Ni pomoči za »%1«"
 
 #: view/kateviewhelpers.cpp:1169
 #, kde-format
@@ -7816,12 +7816,12 @@ msgstr ""
 #: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
-msgstr "Ni takega ukaza: \"%1\""
+msgstr "Ni takega ukaza: »%1«"
 
 #: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
-msgstr "Napaka: za ukaz \"%1\" ni dovoljen noben obseg."
+msgstr "Napaka: za ukaz »%1« ni dovoljen noben obseg."
 
 #: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
@@ -7831,7 +7831,7 @@ msgstr "Uspeh: "
 #: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
-msgstr "Ukaz \"%1\" ni uspel."
+msgstr "Ukaz »%1« ni uspel."
 
 #: view/kateviewhelpers.cpp:2572 view/kateviewhelpers.cpp:2573
 #, kde-format
@@ -7861,7 +7861,7 @@ msgstr "Kopiraj"
 #: view/screenshotdialog.cpp:140
 #, kde-format
 msgid "Background Color..."
-msgstr "Barva ozadja ..."
+msgstr "Barva ozadja …"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7876,7 +7876,7 @@ msgstr "Pokaži okraske okna"
 #: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
-msgstr "Posnetek zaslona..."
+msgstr "Zaslonska slika …"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7896,7 +7896,7 @@ msgstr "Pokaži dejanske številke vrstic"
 #: view/screenshotdialog.cpp:375
 #, kde-format
 msgid "Save..."
-msgstr "Shrani..."
+msgstr "Shrani …"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -7977,7 +7977,7 @@ msgstr ""
 "&mdash; zapre vse poglede in tako konča program.</p><p>V obeh primerih se "
 "program konča, če je zaprti prikaz zadnji. Če z dokumentom ni povezana "
 "nobena datoteka, bo prikazano pogovorno okno za shranjevanje.</p><p>Za "
-"razliko od ukazov 'w' ta ukaz zapiše dokument, samo če je bil spremenjen.</p>"
+"razliko od ukazov »w« ta ukaz zapiše dokument, samo če je bil spremenjen.</p>"
 
 #: vimode/appcommands.cpp:242
 #, kde-format
@@ -8056,9 +8056,9 @@ msgid ""
 "around the start of the document list.</p>"
 msgstr ""
 "<p><b>bp,bprev &mdash; preklopi na prejšnji dokument</b></p><p>Uporaba: "
-"<tt><b>bp[rev] [N]</b></tt></p><p>Gre na <b>[N]</b>-ti prejšnji dokument "
-"(\"<b>b</b> - medpomnilnik\") v seznamu dokumentov.<b>[N]</b> je privzeto "
-"ena. </p><p>Ovije se okrog začetka seznama dokumentov.</p>"
+"<tt><b>bp[rev] [N]</b></tt></p><p>Gre na <b>[N]</b>-ti predhodni dokument "
+"(»<b>b</b> – medpomnilnik«) v seznamu dokumentov.<b>[N]</b> je privzeto ena. "
+"</p><p>Ovije se okrog začetka seznama dokumentov.</p>"
 
 #: vimode/appcommands.cpp:525
 #, kde-format
@@ -8070,8 +8070,8 @@ msgid ""
 msgstr ""
 "<p><b>bn,bnext &mdash; preklopi na naslednji dokument</b></p><p>Uporaba: "
 "<tt><b>bn[ext] [N]</b></tt></p><p>Gre na <b>[N]</b>-ti naslednji dokument "
-"(\"<b>b</b> - medpomnilnik\") v seznamu dokumentov.<b>[N]</b> je privzeto "
-"ena. </p><p>Ovije se okrog konca seznama dokumentov.</p>"
+"(»<b>b</b> – medpomnilnik«) v seznamu dokumentov.<b>[N]</b> je privzeto ena. "
+"</p><p>Ovije se okrog konca seznama dokumentov.</p>"
 
 #: vimode/appcommands.cpp:533
 #, kde-format
@@ -8081,8 +8081,8 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bf,bfirst &mdash; prvi dokument</b></p><p>Uporaba: <tt><b>bf[irst]</"
-"b></tt></p><p>Gre na <b>f</b> - prvi dokument (\"<b>b</b> - medpomnilnik\") "
-"v seznamu dokumentov.</p>"
+"b></tt></p><p>Gre na <b>f</b> – prvi dokument (»<b>b</b> – medpomnilnik«) v "
+"seznamu dokumentov.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format
@@ -8092,8 +8092,8 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bl,blast &mdash; zadnji dokument</b></p><p>Uporaba: <tt><b>bl[ast]</"
-"b></tt></p><p>Gre na <b>f</b> - zadnji dokument (\"<b>b</b> - medpomnilnik"
-"\") v seznamu dokumentov.</p>"
+"b></tt></p><p>Gre na <b>f</b> – zadnji dokument (»<b>b</b> – medpomnilnik«) "
+"v seznamu dokumentov.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format
@@ -8108,12 +8108,12 @@ msgstr "Manjkajoč argument. Uporaba: %1 <od>"
 #: vimode/cmds.cpp:68
 #, kde-format
 msgid "No mapping found for \"%1\""
-msgstr "Preslikave za \"%1\" ni bilo najdene"
+msgstr "Preslikave za »%1« ni bilo najdene"
 
 #: vimode/cmds.cpp:71
 #, kde-format
 msgid "\"%1\" is mapped to \"%2\""
-msgstr "\"%1\" je preslikan v \"%2\""
+msgstr "»%1« je preslikana v »%2«"
 
 #: vimode/cmds.cpp:77
 #, kde-format
@@ -8187,7 +8187,7 @@ msgstr ""
 "pritiske, ki izvedejo zaporedje ukazov.\n"
 "\n"
 "Primer:\n"
-"\"<F2>\" → \"I-- <esc>\"\n"
+"»<F2>« → »I-- <esc>«\n"
 "\n"
 "Ob pritisku na F2 na začetek vrstice doda \"-- \"."
 
@@ -8262,7 +8262,7 @@ msgid ""
 "\"[n]noremap\" command."
 msgstr ""
 "Prebere datoteko vimrc in poskuša uvoziti preslikave, ki so določene z "
-"ukazom \"[n] noremap\"."
+"ukazom »[n] noremap«."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnImportNormal)
 #: vimode/config/configwidget.ui:212
@@ -8289,7 +8289,7 @@ msgstr "V registru %1 ni nič"
 #: vimode/modes/normalvimode.cpp:1685
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
-msgstr "'%1' %2,  Šest. %3,  Osm. %4"
+msgstr "»%1« %2,  Šestn. %3,  Osm. %4"
 
 #: vimode/modes/normalvimode.cpp:2528
 #, kde-format
