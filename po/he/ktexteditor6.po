@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-03-18 10:48+0200\n"
+"PO-Revision-Date: 2024-03-19 15:00+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3388,12 +3388,12 @@ msgstr "אין עזרה זמינה עבור הפקודה \"%1\" בתסריט %2"
 #: script/katescript.cpp:214
 #, kde-format
 msgid "Error loading script %1"
-msgstr "ארעה שגיאה בעת טעינת תסריט %1"
+msgstr "ארעה שגיאה בעת טעינת הסקריפט %1"
 
 #: script/katescriptmanager.cpp:310
 #, kde-format
 msgid "Reload all JavaScript files (indenters, command line scripts, etc)."
-msgstr "טען מחדש את כל קבצי ה־JavaScript (הזחות, תסריטי שורת פקודה וכו')."
+msgstr "טעינת כל קובצי ה־JavaScript (מזיחים, סקריפטים בשורת הפקודה וכו׳) מחדש."
 
 #: script/katescriptview.cpp:207
 #, kde-format
@@ -3403,7 +3403,7 @@ msgstr "הפקודה לא נמצאה: %1"
 #: search/katesearchbar.cpp:74
 #, kde-format
 msgid "Add..."
-msgstr "הוסף..."
+msgstr "הוספה…"
 
 #: search/katesearchbar.cpp:299
 #, kde-format
@@ -3996,7 +3996,7 @@ msgstr "התעלם ממילה"
 #: spellcheck/spellingmenu.cpp:79
 #, kde-format
 msgid "Add to Dictionary"
-msgstr "הוסף למילון"
+msgstr "הוספה למילון"
 
 #: spellcheck/spellingmenu.cpp:169
 #, kde-format
@@ -4864,7 +4864,7 @@ msgstr "הגדרת &סימנייה"
 #: utils/katebookmarks.cpp:53
 #, kde-format
 msgid "If a line has no bookmark then add one, otherwise remove it."
-msgstr "אם לשורה אין סימנייה, הוסף אותה, אחרת הסר אותה."
+msgstr "אם לשורה אין סימנייה, להוסיף אותה, אחרת להסיר אותה."
 
 #: utils/katebookmarks.cpp:56
 #, kde-format
@@ -4904,12 +4904,12 @@ msgstr "&סימניות"
 #: utils/katebookmarks.cpp:192
 #, kde-format
 msgid "&Next: %1 - \"%2\""
-msgstr "ה&באה: %1 - \"%2\""
+msgstr "ה&באה: %1 - „%2”"
 
 #: utils/katebookmarks.cpp:198
 #, kde-format
 msgid "&Previous: %1 - \"%2\""
-msgstr "ה&קודמת: %1 - \"%2\""
+msgstr "ה&קודמת: %1 - „%2”"
 
 #: utils/katecmds.cpp:52
 #, kde-format
@@ -5105,12 +5105,12 @@ msgstr "חסר ארגומנט. שימוש: %1 <ערך>"
 #: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
-msgstr "אין הדגשת תחביר כזו \"%1\""
+msgstr "אין הדגשת תחביר כזו ‚%1’"
 
 #: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
-msgstr "אין מצב כזה \"%1\""
+msgstr "אין מצב כזה ‚%1’"
 
 #: utils/katecmds.cpp:345
 #, kde-format
@@ -5135,7 +5135,7 @@ msgstr "שימוש: %1 on|off|1|0|true|false"
 #: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
-msgstr "ארגומנט שגוי: \"%1\". שימוש: %2 on|off|1|0|true|false"
+msgstr "ארגומנט שגוי: ‚%1’. שימוש: %2 on|off|1|0|true|false"
 
 #: utils/katecmds.cpp:420
 #, kde-format
