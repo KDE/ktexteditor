@@ -3369,8 +3369,15 @@ bool KateViewInternal::isAcceptableInput(const QKeyEvent *e)
         return false;
     }
 
-    // printable or private use is good, see e.g. bug 366424 (typing "private use" unicode characters)
-    return c.isPrint() || (c.category() == QChar::Other_PrivateUse);
+    if (c.isPrint() || (c.category() == QChar::Other_PrivateUse)) {
+        return true;
+    };
+
+    if (c.isHighSurrogate() && text.size() > 1 && text.at(1).isLowSurrogate()) {
+        return true;
+    }
+
+    return false;
 }
 
 void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
