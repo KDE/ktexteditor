@@ -68,6 +68,9 @@ void Jumps::readSessionConfig(const KConfigGroup &config)
 
 void Jumps::writeSessionConfig(KConfigGroup &config) const
 {
+    if (m_jumps.isEmpty()) {
+        return;
+    }
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
     QStringList l;
     for (const auto &jump : m_jumps) {

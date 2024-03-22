@@ -1857,20 +1857,33 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     Q_UNUSED(flags)
 
     // cursor position
-    config.writeEntry("CursorLine", cursorPosition().line());
-    config.writeEntry("CursorColumn", cursorPosition().column());
+    const auto cursor = cursorPosition();
+    if (cursor.isValid() && cursor != KTextEditor::Cursor(0, 0)) {
+        config.writeEntry("CursorLine", cursor.line());
+        config.writeEntry("CursorColumn", cursor.column());
+    }
 
-    // scroll position
-    config.writeEntry("ScrollLine", firstDisplayedLineInternal(LineType::RealLine));
+    // save scroll position if its different from cursorPosition
+    const int scrollLine = firstDisplayedLineInternal(LineType::RealLine);
+    if (scrollLine > 0 && scrollLine != cursor.line()) {
+        config.writeEntry("ScrollLine", scrollLine);
+    }
 
-    config.writeEntry("Dynamic Word Wrap", m_config->dynWordWrap());
+    // only write if its false because its enabled by default
+    if (m_config->dynWordWrap() == false) {
+        config.writeEntry("Dynamic Word Wrap", false);
+    }
 
     // save text folding state
     saveFoldingState();
-    config.writeEntry("TextFolding", m_savedFoldingState.toJson(QJsonDocument::Compact));
-    m_savedFoldingState = QJsonDocument();
+    if (!m_savedFoldingState.object().value(QLatin1String("ranges")).toArray().isEmpty()) {
+        config.writeEntry("TextFolding", m_savedFoldingState.toJson(QJsonDocument::Compact));
+        m_savedFoldingState = QJsonDocument();
+    }
 
-    config.writeEntry("Force RTL Direction", m_forceRTL);
+    if (m_forceRTL) {
+        config.writeEntry("Force RTL Direction", m_forceRTL);
+    }
 
     for (const auto &mode : m_viewInternal->m_inputModes) {
         mode->writeSessionConfig(config);

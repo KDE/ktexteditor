@@ -53,10 +53,14 @@ void Marks::readSessionConfig(const KConfigGroup &config)
 
 void Marks::writeSessionConfig(KConfigGroup &config) const
 {
+    if (m_marks.isEmpty()) {
+        return;
+    }
+
     QStringList l;
-    const auto keys = m_marks.keys();
-    for (QChar key : keys) {
-        l << key << QString::number(m_marks.value(key)->line()) << QString::number(m_marks.value(key)->column());
+    l.reserve(m_marks.size());
+    for (const auto &[key, value] : m_marks.asKeyValueRange()) {
+        l << key << QString::number(value->line()) << QString::number(value->column());
     }
     config.writeEntry("ViMarks", l);
 }
