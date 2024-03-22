@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-03-15 13:55+0300\n"
+"PO-Revision-Date: 2024-03-21 20:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -458,7 +458,7 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
-"Giriş'e basmak, seçili tamamlama ögesinin metnini girecektir. Devre dışı "
+"Giriş’e basmak, seçili tamamlama ögesinin metnini girecektir. Devre dışı "
 "bırakılmışsa Sekme düğmesi veya çift tıklama da hâlâ tamamlamayı tetiklemek "
 "için kullanılabilir."
 
@@ -621,7 +621,7 @@ msgid ""
 "When some text is selected these chars will be added on both its sides in a "
 "way \"Auto Bracket\" do"
 msgstr ""
-"Seçili metin varsa bu karakterler \"Kendiliğinden Ayraç\" tarzında seçili "
+"Seçili metin varsa bu karakterler “Kendiliğinden Ayraç” tarzında seçili "
 "metnin her iki yanına eklenir"
 
 #. i18n: ectx: property (text), widget (QLabel, lbEncloseSelection)
@@ -770,10 +770,10 @@ msgid ""
 "set, such as highlight, indent-mode, encoding, etc.</p><p>For a full list of "
 "known variables, see the manual.</p>"
 msgstr ""
-"<p>Bu dizi, bu mime türünü kullanarak seçilmiş dosyalar için Kate'in "
+"<p>Bu dizi, bu mime türünü kullanarak seçilmiş dosyalar için Kate’in "
 "ayarlarını yapılandırmanıza izin verir. Metin renklendirme, girintileme, "
 "kodlama vs. gibi birçok yapılandırma seçeneklerini ayarlayabilirsiniz.</"
-"p><p>Bilinen değişkenlerin tümünü listelemek için el kitabına bakınız.</p>"
+"p><p>Bilinen değişkenlerin tümünü listelemek için el kitabına bakın.</p>"
 
 #. i18n: ectx: property (text), widget (QLabel, lblHl)
 #: dialogs/filetypeconfigwidget.ui:123
@@ -1003,9 +1003,9 @@ msgstr ""
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Sekme düğmesi eylemi (seçim yoksa) <a href=\"<b>Sekme</b> düğmesinin "
-"geçerli kod blokundaki geçerli satırı Emacs'teki gibi hizalamasını "
+"geçerli kod blokundaki geçerli satırı Emacs’teki gibi hizalamasını "
 "istiyorsanız <b>Sekme</b> düğmesini <b>Girintilemeyi Biçimlendir</b> "
-"eyleminin kısayolu yapın.\"><span>Daha Fazla ...</span></a></p></body></html>"
+"eyleminin kısayolu yapın.<span>Daha Fazla…</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1219,7 +1219,7 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
-"%1, kaydedilmemiş dosyaları \"takas dosyaları\"na yedekler. Takas dosyaları, "
+"%1, kaydedilmemiş dosyaları “takas dosyaları”na yedekler. Takas dosyaları, "
 "%1 yazılımının bir sistem çökmesi sonrası kurtarmanıza olanak sağlar. Takas "
 "dosyalarını devre dışı bırakmak sistem çökmelerinde veri kaybetmenize neden "
 "olabilir."
@@ -1235,7 +1235,7 @@ msgid ""
 "You did not provide a backup suffix or prefix. Using default suffix: '~'"
 msgstr ""
 "Dosya yedekleme için bir sonek belirlemediniz. Öntanımlı sonek kullanılıyor: "
-"'~'"
+"‘~’"
 
 #: dialogs/katedialogs.cpp:1082
 #, kde-format
@@ -1325,7 +1325,7 @@ msgstr "Dosyayı kapatır ve içeriğini atar."
 #: dialogs/katedialogs.cpp:1474
 #, kde-format
 msgid "&Save As..."
-msgstr "Fa&rklı Kaydet..."
+msgstr "Fa&rklı Kaydet…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1618,7 +1618,7 @@ msgstr "sn"
 msgid ""
 "This string is located in katedialogs.cpp in KateSaveConfigTab's constructor."
 msgstr ""
-"Bu dizi, katedialog.cpp içinde KateSaveConfigTab'ın yapıcısında bulunur."
+"Bu dizi, katedialog.cpp içinde KateSaveConfigTab’ın yapıcısında bulunur."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbFileFormat)
 #: dialogs/opensaveconfigwidget.ui:29
@@ -2148,7 +2148,7 @@ msgstr ""
 "daha okunabilir olmasına yardımcı olabilir.</p><p>Ek olarak bu, ekranın en "
 "büyük genişliğini yüzde olarak ayarlamanıza olanak tanır; bundan sonra "
 "devingen olarak kaydırılan satırlar artık dikey olarak hizalanmayacaktır. "
-"Örneğin, %​50'de, girinti düzeyleri ekran genişliğinin %​50'sinden daha derin "
+"Örneğin, %​50’de, girinti düzeyleri ekran genişliğinin %​50’sinden daha derin "
 "olan satırlara sonraki sarılmış çizgilere dikey hizalama uygulanmayacaktır.</"
 "p>"
 
@@ -2374,8 +2374,8 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"Kullanım dışı 'remove-trailing-space' kip satırı kullanılıyor. Lütfen "
-"'remove-trailing-spaces-modified' ile değiştirin; bkz. https://docs.kde.org/?"
+"Kullanım dışı ‘remove-trailing-space’ kip satırı kullanılıyor. Lütfen "
+"‘remove-trailing-spaces-modified’ ile değiştirin; bkz. https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
@@ -2387,25 +2387,25 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
-"'remove-trailing-space-save' artık kullanım dışı. Lütfen 'remove-trailing-"
-"spaces all;' ile değiştirin; bkz: https://docs.kde.org/?"
+"‘remove-trailing-space-save’ artık kullanım dışı. Lütfen ‘remove-trailing-"
+"spaces all;’ ile değiştirin; bkz: https://docs.kde.org/?"
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
 #: document/katedocument.cpp:5550
 #, kde-format
 msgid "The file '%1' was modified on disk."
-msgstr "'%1' dosyası diskte değiştirildi."
+msgstr "“%1” dosyası diskte değiştirildi."
 
 #: document/katedocument.cpp:5553
 #, kde-format
 msgid "The file '%1' was created on disk."
-msgstr "'%1' dosyası diskte oluşturuldu."
+msgstr "“%1” dosyası diskte oluşturuldu."
 
 #: document/katedocument.cpp:5556
 #, kde-format
 msgid "The file '%1' was deleted on disk."
-msgstr "'%1' dosyası diskte silindi."
+msgstr "“%1” dosyası diskte silindi."
 
 #: document/katedocument.cpp:5893
 #, kde-format
@@ -2413,7 +2413,7 @@ msgid ""
 "The document \"%1\" has been modified.\n"
 "Do you want to save your changes or discard them?"
 msgstr ""
-"\"%1\" belgesi değiştirildi.\n"
+"“%1” belgesi değiştirildi.\n"
 "Değişiklikleri kaydetmek mi yok saymak mı istiyorsunuz?"
 
 #: document/katedocument.cpp:5896
@@ -2424,7 +2424,7 @@ msgstr "Belgeyi Kapat"
 #: document/katedocument.cpp:6007
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
-msgstr "<a href=\"%1\">%2</a> dosyası hala yükleniyor."
+msgstr "<a href=\"%1\">%2</a> dosyası hâlâ yükleniyor."
 
 #: document/katedocument.cpp:6012
 #, kde-format
@@ -2537,7 +2537,7 @@ msgstr "Kipler ve Dosya Türleri"
 #, kde-format
 msgctxt "Placeholder in search bar"
 msgid "Search..."
-msgstr "Ara..."
+msgstr "Ara…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -2691,7 +2691,7 @@ msgstr ""
 "kısa saat biçimi</li><li><tt>%D</tt>: tam tarih/uzun saat biçimi</li><li><tt>"
 "%h</tt>: geçerli saat</li><li><tt>%y</tt>: kısa biçimde geçerli gün</"
 "li><li><tt>%Y</tt>: uzun biçimde geçerli gün</li><li><tt>%f</tt>dosya adı</"
-"li><li><tt>%U</tt>: belgenin tam URL'si</li><li><tt>%p</tt>: sayfa numarası</"
+"li><li><tt>%U</tt>: belgenin tam URL’si</li><li><tt>%p</tt>: sayfa numarası</"
 "li><li><tt>%P</tt>: toplam sayfa miktarı</li></ul><br />"
 
 #: printing/printconfigwidgets.cpp:266
@@ -2703,7 +2703,7 @@ msgstr ""
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Yer Tutucu Ekle..."
+msgstr "Yer Tutucu Ekle…"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -2743,7 +2743,7 @@ msgstr "Dosya Adı"
 #: printing/printconfigwidgets.cpp:368
 #, kde-format
 msgid "Full document URL"
-msgstr "Belgenin tam URL'si"
+msgstr "Belgenin tam URL’si"
 
 #: printing/printconfigwidgets.cpp:370
 #, kde-format
@@ -2793,7 +2793,7 @@ msgstr "&Genişlik:"
 #: printing/printconfigwidgets.cpp:517
 #, kde-format
 msgid "&Margin:"
-msgstr "&Kenar Boşluğu:"
+msgstr "&Kenar boşluğu:"
 
 #: printing/printconfigwidgets.cpp:525
 #, kde-format
@@ -3316,9 +3316,9 @@ msgstr ""
 "olarak verilen düzenli bir ifadeyle verilen sütunda hizalar.<br><br>Boş bir "
 "dizgi verirseniz öntanımlı olarak ilk boş olmayan karaktere hizalanır."
 "<br>Dizginin bir yakalaması varsa yakalanan eşleşmeye girintili olacaktır."
-"<br><br><i>Örnekler</i>:<br>'<code>alignon -</code>', tümünü aynı sütuna "
-"hizalamak için her satırdaki ilk '-' öncesi boşluklar ekleyecektir."
-"<br>'<code>alignon :\\s+(.)</code>', tümünü aynı sütuna hizalamak için bir "
+"<br><br><i>Örnekler</i>:<br>‘<code>alignon -</code>’, tümünü aynı sütuna "
+"hizalamak için her satırdaki ilk ‘-’ öncesi boşluklar ekleyecektir."
+"<br>‘<code>alignon :\\s+(.)</code>’, tümünü aynı sütuna hizalamak için bir "
 "iki nokta öncesi oluşan ilk boş olmayan karakter öncesi boşluklar "
 "ekleyecektir."
 
@@ -3506,7 +3506,7 @@ msgstr "XML Tarzı"
 #: script/katecommandlinescript.cpp:37
 #, kde-format
 msgid "Function '%1' not found in script: %2"
-msgstr "Bu betik içinde '%1' işlevi bulunamadı: %2"
+msgstr "Bu betik içinde “%1” işlevi bulunamadı: %2"
 
 #: script/katecommandlinescript.cpp:51
 #, kde-format
@@ -3529,12 +3529,12 @@ msgstr "Görünüme ulaşılamadı"
 #: script/katecommandlinescript.cpp:118
 #, kde-format
 msgid "Error calling 'help %1'"
-msgstr "'help %1' çağrılırken bir hata oluştu"
+msgstr "“help %1” çağrılırken bir hata oluştu"
 
 #: script/katecommandlinescript.cpp:123
 #, kde-format
 msgid "No help specified for command '%1' in script %2"
-msgstr "%2 betiğinin içinde '%1' komutu için yardım bulunamadı"
+msgstr "%2 betiğinin içinde “%1” komutu için yardım bulunamadı"
 
 #: script/katescript.cpp:214
 #, kde-format
@@ -3556,7 +3556,7 @@ msgstr "Komut bulunamadı: %1"
 #: search/katesearchbar.cpp:74
 #, kde-format
 msgid "Add..."
-msgstr "Ekle..."
+msgstr "Ekle…"
 
 #: search/katesearchbar.cpp:299
 #, kde-format
@@ -3702,7 +3702,7 @@ msgstr "Rakam"
 #: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Non-digit"
-msgstr "Rakam-olmayan"
+msgstr "Rakam olmayan"
 
 #: search/katesearchbar.cpp:1207
 #, kde-format
@@ -3717,7 +3717,7 @@ msgstr "Boşluk olmayan karakterler"
 #: search/katesearchbar.cpp:1209
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
-msgstr "Sözcük karakteri (harfler sayılar ve '_')"
+msgstr "Sözcük karakteri (harfler sayılar ve ‘_’)"
 
 #: search/katesearchbar.cpp:1210
 #, kde-format
@@ -3727,12 +3727,12 @@ msgstr "Sözcük olmayan karakter"
 #: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
-msgstr "Sekizlik karakter 000 to 377 (2^8-1)"
+msgstr "Sekizlik karakter 000–377 (2^8-1)"
 
 #: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
-msgstr "Altılık karakter 0000 - FFFF (2^16-1)"
+msgstr "Altılık karakter 0000–FFFF (2^16-1)"
 
 #: search/katesearchbar.cpp:1215
 #, kde-format
@@ -3944,7 +3944,7 @@ msgstr "Yazım denetimi iptal edildi."
 #, kde-format
 msgctxt "progress label"
 msgid "Spell checking in progress..."
-msgstr "Yazım denetimi sürüyor..."
+msgstr "Yazım denetimi sürüyor…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -3975,17 +3975,17 @@ msgid ""
 "All</b>.</p>\n"
 "</qt>"
 msgstr ""
-"<qt><p>Bu sözcük \"bilinmeyen sözcük\" olarak değerlendirildi; çünkü güncel "
+"<qt><p>Bu sözcük “bilinmeyen sözcük” olarak değerlendirildi; çünkü güncel "
 "sözlük içinde hiçbir girdiyle eşleştirilemedi. Başka bir dilde bir sözcük de "
 "olabilir.</p>\n"
 "<p>Eğer hatalı hecelenmiş bir sözcük değilse <b>Sözlüğe Eklemek</b> için "
 "tıklayın. Bilinmeyen bir sözcüğü sözlüğe eklemek istemiyorsanız fakat olduğu "
-"gibi bırakılmasını istiyorsanız  <b>Yok Say</b> veya <b>Tümünü Yok Say</b>'ı "
+"gibi bırakılmasını istiyorsanız  <b>Yok Say</b> veya <b>Tümünü Yok Say</b>’ı "
 "tıklayın.</p>\n"
 "<p>Bununla birlikte, eğer sözcük hatalı hecelenmişse aşağıdaki listeden "
 "doğrusunu bularak değiştirebilirsiniz. Değiştirilecek doğru bir seçenek "
 "yoksa kutucuğa doğrusunu yazarak <b>Değiştir</b> veya <b>Tümünü Değiştir</b> "
-"ögesini tıklayın.</p>\n"
+"ögesine tıklayın.</p>\n"
 "</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
@@ -4179,7 +4179,7 @@ msgstr "Tümünü &Yok Say"
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
 msgid "Spelling (from Cursor)..."
-msgstr "Yazım Denetimi (İmleçten Sonra)..."
+msgstr "Yazım Denetimi (İmleçten Sonra)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4199,7 +4199,7 @@ msgstr "Sözlüğe Ekle"
 #: spellcheck/spellingmenu.cpp:169
 #, kde-format
 msgid "Spelling '%1'"
-msgstr "Yazım '%1'"
+msgstr "Yazım “%1”"
 
 #: swapfile/kateswapdiffcreator.cpp:87
 #, kde-format
@@ -4207,13 +4207,13 @@ msgid ""
 "The diff command could not be found. Please make sure that diff(1) is "
 "installed and in your PATH."
 msgstr ""
-"diff komutu bulunamadı. Lütfen diff(1)'in kurulu olduğundan ve PATH'inizde "
-"olduğundan emin olun."
+"diff komutu bulunamadı. Lütfen diff(1)’in kurulu olduğundan ve PATH’inizde "
+"bulunduğundan emin olun."
 
 #: swapfile/kateswapdiffcreator.cpp:98
 #, kde-format
 msgid "The diff command '%1' could not be started."
-msgstr "'%1' diff komutu başlatılamadı."
+msgstr "“%1” diff komutu başlatılamadı."
 
 #: swapfile/kateswapfile.cpp:629
 #, kde-format
@@ -4303,22 +4303,22 @@ msgstr "&Üzeri Çizili"
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
 msgid "Normal &Color..."
-msgstr "Normal &Renk..."
+msgstr "Normal &Renk…"
 
 #: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgid "&Selected Color..."
-msgstr "&Seçili Renk..."
+msgstr "&Seçili Renk…"
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgid "&Background Color..."
-msgstr "&Arka Plan Rengi..."
+msgstr "&Arka Plan Rengi…"
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgid "S&elected Background Color..."
-msgstr "&Seçili Arka Plan Rengi..."
+msgstr "&Seçili Arka Plan Rengi…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4357,7 +4357,7 @@ msgid ""
 "\"Use Default Style\" will be automatically unset when you change any style "
 "properties."
 msgstr ""
-"\"Öntanımlı Biçemi Kullan\" seçeneği değiştirmiş olduğunuz biçem "
+"‘Öntanımlı Biçemi Kullan’ seçeneği, değiştirmiş olduğunuz biçem "
 "özelliklerini kendiliğinden yürürlükten kaldıracaktır."
 
 #: syntax/katestyletreewidget.cpp:643
@@ -4477,7 +4477,7 @@ msgstr "Ondalık/Değer"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Base-N Integer"
-msgstr "Base-N Tam Sayı"
+msgstr "N Tabanlı Tamsayı"
 
 #: syntax/katethemeconfig.cpp:87
 #, kde-format
@@ -4918,8 +4918,8 @@ msgstr ""
 "<p>Bu liste, geçerli sözdizim renklendirme kipinin kapsamını gösterir ve "
 "düzenlemeniz için seçenekler sağlar. Bağlam adı, güncel biçem ayarlarını "
 "yansıtır.</p><p>Düğme takımını kullanarak düzenleme yapmak için <strong>&lt;"
-"BOŞLUK DÜĞMESİ&gt;</strong> 'ne basın ve açılır menüden bir özellik seçin.</"
-"p><p>Renkleri düzenlemek için, renkli dikdörtgen kutulara tıklayın veya "
+"BOŞLUK DÜĞMESİ&gt;</strong>’ne basın ve açılır menüden bir özellik seçin.</"
+"p><p>Renkleri düzenlemek için renkli dikdörtgen kutulara tıklayın veya "
 "açılır menüden seçin.</p><p>Bağlam menüsünden Arka Plan ve Seçili Arka Plan "
 "renklerinin ayarlarını kaldırabilirsiniz.</p>"
 
@@ -4946,17 +4946,17 @@ msgstr "&Tema:"
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
 msgid "&Copy..."
-msgstr "Ko&pyala..."
+msgstr "Ko&pyala…"
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgid "Export..."
-msgstr "Dışa Aktar..."
+msgstr "Dışa Aktar…"
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgid "Import..."
-msgstr "İçe Aktar..."
+msgstr "İçe Aktar…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -4999,7 +4999,7 @@ msgid ""
 "Importing will overwrite the existing theme file \"%1\". This can not be "
 "undone."
 msgstr ""
-"İçe aktarma, \"%1\" geçerli temasının üzerine yazacaktır. Bu geri alınamaz."
+"İçe aktarma, “%1” geçerli temasının üzerine yazacaktır. Bu geri alınamaz."
 
 #: syntax/katethemeconfig.cpp:1208
 #, kde-format
@@ -5015,7 +5015,7 @@ msgstr "Sistem renk şemasını izle"
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
-"\"%1\"  temasını gerçekten silmek istediğinizden emin misiniz? Bu geri "
+"“%1”  temasını gerçekten silmek istediğinizden emin misiniz? Bu geri "
 "alınamaz."
 
 #: syntax/katethemeconfig.cpp:1364
@@ -5031,7 +5031,7 @@ msgstr "Temayı kopyala"
 #: syntax/katethemeconfig.cpp:1407
 #, kde-format
 msgid "Name for copy of color theme \"%1\":"
-msgstr "'%1' renk teması kopyası adı:"
+msgstr "“%1” renk teması kopyası adı:"
 
 #: syntax/katethemeconfig.cpp:1419
 #, kde-format
@@ -5111,12 +5111,12 @@ msgstr "Y&er İmleri"
 #: utils/katebookmarks.cpp:192
 #, kde-format
 msgid "&Next: %1 - \"%2\""
-msgstr "&Önceki: %1 - \"%2\""
+msgstr "&Önceki: %1 — “%2”"
 
 #: utils/katebookmarks.cpp:198
 #, kde-format
 msgid "&Previous: %1 - \"%2\""
-msgstr "&Sonraki: %1 - \"%2\""
+msgstr "&Sonraki: %1 — “%2”"
 
 #: utils/katecmds.cpp:52
 #, kde-format
@@ -5373,17 +5373,17 @@ msgstr "Argüman eksik. Kullanım: %1 <value>"
 #: utils/katecmds.cpp:326
 #, kde-format
 msgid "No such highlighting '%1'"
-msgstr "'%1' adlı bir renklendirme yok"
+msgstr "“%1” adlı bir renklendirme yok"
 
 #: utils/katecmds.cpp:332
 #, kde-format
 msgid "No such mode '%1'"
-msgstr "'%1' adlı bir kip yok"
+msgstr "“%1” adlı bir kip yok"
 
 #: utils/katecmds.cpp:345
 #, kde-format
 msgid "Failed to convert argument '%1' to integer."
-msgstr "Argüman '%1', tam sayıya dönüştürülürken hata oluştu."
+msgstr "Argüman “%1”, tam sayıya dönüştürülürken hata oluştu."
 
 #: utils/katecmds.cpp:349 utils/katecmds.cpp:354
 #, kde-format
@@ -5403,7 +5403,7 @@ msgstr "Kullanım: %1 on|off|1|0|true|false"
 #: utils/katecmds.cpp:416
 #, kde-format
 msgid "Bad argument '%1'. Usage: %2 on|off|1|0|true|false"
-msgstr "Bozuk argüman '%1'. Kullanım: %2 on|off|1|0|true|false"
+msgstr "Bozuk argüman “%1”. Kullanım: %2 on|off|1|0|true|false"
 
 #: utils/katecmds.cpp:420
 #, kde-format
@@ -5416,7 +5416,7 @@ msgstr ""
 #: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
 msgid "Unknown command '%1'"
-msgstr "Bilinmeyen komut: '%1'"
+msgstr "Bilinmeyen komut: “%1”"
 
 #: utils/katecmds.cpp:492
 #, kde-format
@@ -5461,27 +5461,27 @@ msgstr ""
 "<p>date or date <b>format</b></p><p>Belirtilen biçime bakarak gün/zaman "
 "dizisini ekler veya hiçbir biçim belirlenmediyse yyyy-MM-dd hh:mm:ss "
 "biçimini kullanır.</p><p>Olası biçim belirticileri:<table><tr><td>d</"
-"td><td>Sıfır kullanılmadan bir sayı olarak gün (1-31).</td></tr><tr><td>dd</"
-"td><td>Başında sıfır kullanılarak belirtilmiş bir gün (01-31).</td></"
-"tr><tr><td>ddd</td><td>Kısaltılmış ve yerelleştirilmiş edilmiş gün adı (e.g. "
-"'Paz'..'Cts').</td></tr><tr><td>dddd</td><td>Uzun biçimde yerelleştirilmiş "
-"gün (e.g. 'Pazar'..'Cumartesi').</td></tr><tr><td>M</td><td>Sıfır ile "
-"başlamayan şekilde numara ile belirtilmiş ay (1-12)</td></tr><tr><td>MM</"
-"td><td>Sıfır ile başlayan numara ile belirtilmiş ay (01-12).</td></"
-"tr><tr><td>MMM</td><td>Kısaltılmış ve yerelleştirilmiş ay ismi (e.g. "
-"'Jan'..'Dec').</td></tr><tr><td>yy</td><td>İki rakam kullanılmış yıl (00-99)."
-"</td></tr><tr><td>yyyy</td><td>Dört rakam kullanılmış yıl (1752-8000).</td></"
-"tr><tr><td>h</td><td>Sıfır ile başlamayan bir saat (0..23 ve ya 1..12 AM/PM "
+"td><td>Sıfır kullanılmadan bir sayı olarak gün (1–31).</td></tr><tr><td>dd</"
+"td><td>Başında sıfır kullanılarak belirtilmiş bir gün (01–31).</td></"
+"tr><tr><td>ddd</td><td>Kısaltılmış ve yerelleştirilmiş edilmiş gün adı (örn. "
+"‘Paz’…‘Cts’).</td></tr><tr><td>dddd</td><td>Uzun biçimde yerelleştirilmiş "
+"gün (örn. ‘Pazar’…‘Cumartesi’).</td></tr><tr><td>M</td><td>Sıfır ile "
+"başlamayan şekilde numara ile belirtilmiş ay (1–12)</td></tr><tr><td>MM</"
+"td><td>Sıfır ile başlayan numara ile belirtilmiş ay (01–12).</td></"
+"tr><tr><td>MMM</td><td>Kısaltılmış ve yerelleştirilmiş ay adı (örn. "
+"‘Oca’…‘Şub’).</td></tr><tr><td>yy</td><td>İki rakam kullanılmış yıl (00–99)."
+"</td></tr><tr><td>yyyy</td><td>Dört rakam kullanılmış yıl (1752–8000).</td></"
+"tr><tr><td>h</td><td>Sıfır ile başlamayan bir saat (0…23 ve ya 1…12 ÖÖ/ÖS "
 "gösterimi varsa).</td></tr><tr><td>hh</td><td>Sıfırla başlayan şekilde "
-"gösterilmiş bir saat (00..23 or 01..12 AM/PM varsa).</td></tr><tr><td>m</"
-"td><td>Sıfır ile başlamayan bir dakika (0..59).</td></tr><tr><td>mm</"
-"td><td>Sıfır ile başlayan bir dakika (00..59).</td></tr><tr><td>s</"
-"td><td>Sıfır ile başlamayan bir saniye (0..59).</td></tr><tr><td>ss</"
-"td><td>Sıfır ile başlayan bir saniy (00..59).</td></tr><tr><td>z</"
-"td><td>Sıfır ile başlamayan bir milisaniye (0..999).</td></tr><tr><td>zzz</"
-"td><td>Sıfır ile başlayan bir milisaniye (000..999).</td></tr><tr><td>AP</"
-"td><td>ÖÖ/ÖS gösterimini kullan. </td></tr><tr><td>ap</td><td>öö/ös "
-"gösterimini kullan.</td></tr></table></p>"
+"gösterilmiş bir saat (00…23 or 01…12 ÖÖ/ÖS varsa).</td></tr><tr><td>m</"
+"td><td>Sıfır ile başlamayan bir dakika (0…59).</td></tr><tr><td>mm</"
+"td><td>Sıfır ile başlayan bir dakika (00…59).</td></tr><tr><td>s</"
+"td><td>Sıfır ile başlamayan bir saniye (0…59).</td></tr><tr><td>ss</"
+"td><td>Sıfır ile başlayan bir saniy (00…59).</td></tr><tr><td>z</"
+"td><td>Sıfır ile başlamayan bir milisaniye (0…999).</td></tr><tr><td>zzz</"
+"td><td>Sıfır ile başlayan bir milisaniye (000…999).</td></tr><tr><td>AP</"
+"td><td>ÖÖ/ÖS gösterimini kullanın. </td></tr><tr><td>ap</td><td>öö/ös "
+"gösterimini kullanın.</td></tr></table></p>"
 
 #: utils/kateglobal.cpp:73
 #, kde-format
@@ -5496,7 +5496,7 @@ msgstr "Gömülebilir düzenleyici bileşeni"
 #: utils/kateglobal.cpp:77
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
-msgstr "(c) 2000-2022 Kate Yazarları"
+msgstr "(c) 2000–2022 Kate Yazarları"
 
 #: utils/kateglobal.cpp:97
 #, kde-format
@@ -5602,7 +5602,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Testing, ..."
-msgstr "Testler, ..."
+msgstr "Testler, …"
 
 #: utils/kateglobal.cpp:116
 #, kde-format
@@ -5966,7 +5966,7 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
-"Dosya adı ve yerel yol ayırıcısı içeren tam dosya yolu (Windows'ta ters eğik "
+"Dosya adı ve yerel yol ayırıcısı içeren tam dosya yolu (Windows’ta ters eğik "
 "çizgi)."
 
 #: utils/katevariableexpansionmanager.cpp:88
@@ -5975,21 +5975,21 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
-"Dosya adı hariç, yerel yol ayırıcısı içeren tam dosya yolu (Windows'ta ters "
+"Dosya adı hariç, yerel yol ayırıcısı içeren tam dosya yolu (Windows’ta ters "
 "eğik çizgi)."
 
 #: utils/katevariableexpansionmanager.cpp:96
 #, kde-format
 msgid ""
 "Line number of the text cursor position in current document (starts with 0)."
-msgstr "Geçerli belgede metin imleç konumunun satır numarası (0'la başlar)."
+msgstr "Geçerli belgede metin imleç konumunun satır numarası (0 ile başlar)."
 
 #: utils/katevariableexpansionmanager.cpp:103
 #, kde-format
 msgid ""
 "Column number of the text cursor position in current document (starts with "
 "0)."
-msgstr "Geçerli belgede metin imleç konumunun sütun numarası (0'la başlar)."
+msgstr "Geçerli belgede metin imleç konumunun sütun numarası (0 ile başlar)."
 
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
@@ -6497,7 +6497,7 @@ msgstr "Sekmeler: %1 (%2)"
 #: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Tab Size: %1"
-msgstr "Sekme Boyutu: %1"
+msgstr "Sekme boyutu: %1"
 
 #: view/katestatusbar.cpp:409
 #, kde-format
@@ -6507,7 +6507,7 @@ msgstr "Girinti/Sekme: %1/%2"
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, kde-format
 msgid "Other..."
-msgstr "Diğer..."
+msgstr "Diğer…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6543,7 +6543,7 @@ msgstr "%1 sözcük, %2 karakter"
 #: view/katestatusbar.cpp:589
 #, kde-format
 msgid "Zoom: %1%"
-msgstr "Yakınlıştarma: %​%1"
+msgstr "Yakınlaştırma: %​%1"
 
 #: view/kateview.cpp:457
 #, kde-format
@@ -6553,7 +6553,7 @@ msgstr "Seçilen metni kes ve panoya taşı"
 #: view/kateview.cpp:460
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
-msgstr "Önceden kesilip-kopyalanmış pano içeriğini yapıştır"
+msgstr "Önceden kesilip kopyalanmış pano içeriğini yapıştır"
 
 #: view/kateview.cpp:463
 #, kde-format
@@ -6604,7 +6604,7 @@ msgstr "En son yapılan düzenleme eylemlerini geri alır"
 #: view/kateview.cpp:494
 #, kde-format
 msgid "Revert the most recent undo operation"
-msgstr "En son yapılan Geri-Al işlemlerini geri al"
+msgstr "En son yapılan Geri Al işlemlerini geri al"
 
 #: view/kateview.cpp:498
 #, kde-format
@@ -6624,8 +6624,8 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 "Geçerli satırı kaydırmak veya seçili satırları paragraf olarak yeniden "
-"biçimlendirmek ve yapılandırma iletişim kutusundaki 'Sözcükleri şurada "
-"kaydır' ayarına uyacak şekilde bunu kullanın.<br /><br />Bu, durağan bir "
+"biçimlendirmek ve yapılandırma iletişim kutusundaki ‘Sözcükleri şurada "
+"kaydır’ ayarına uyacak şekilde bunu kullanın.<br /><br />Bu, durağan bir "
 "sözcük kaydırmadır; belgenin değiştirildiği anlamına gelir."
 
 #: view/kateview.cpp:510
@@ -6662,7 +6662,7 @@ msgstr ""
 #: view/kateview.cpp:522
 #, kde-format
 msgid "&Align On..."
-msgstr "&Şuna Göre Hizala..."
+msgstr "&Şuna Göre Hizala…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6847,12 +6847,12 @@ msgstr "Çalışılan belgeyi seçtiğiniz bir adla diske kaydedin."
 #: view/kateview.cpp:654
 #, kde-format
 msgid "Save As with Encoding..."
-msgstr "Kodlamayla Farklı Kaydet..."
+msgstr "Kodlamayla Farklı Kaydet…"
 
 #: view/kateview.cpp:660
 #, kde-format
 msgid "Save &Copy As..."
-msgstr "Ko&pyayı Farklı Kaydet..."
+msgstr "Ko&pyayı Farklı Kaydet…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6891,7 +6891,7 @@ msgstr "Önceki değiştirilen satıra aşağı doğru ilerleyin."
 #: view/kateview.cpp:680
 #, kde-format
 msgid "&Configure Editor..."
-msgstr "Düzenleyi&ciyi Yapılandır..."
+msgstr "Düzenleyi&ciyi Yapılandır…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7361,7 +7361,7 @@ msgstr "Kendiliğinden yazım denetimini etkinleştir/devre dışı bırak"
 #: view/kateview.cpp:956
 #, kde-format
 msgid "Change Dictionary..."
-msgstr "Sözlüğü Değiştir..."
+msgstr "Sözlüğü Değiştir…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7397,7 +7397,7 @@ msgstr ""
 #: view/kateview.cpp:974
 #, kde-format
 msgid "E&xport as HTML..."
-msgstr "HTML Olarak Dışa A&ktar..."
+msgstr "HTML Olarak Dışa A&ktar…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7792,13 +7792,13 @@ msgid ""
 "<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></"
 "p>"
 msgstr ""
-"<p>Kişiye özel komutlar hakkında yardım için: <code>'help &lt;command&gt;'</"
-"code></p>"
+"<p>Kişiye özel komutlar hakkında yardım için: “<code>help &lt;command&gt;</"
+"code>”</p>"
 
 #: view/kateviewhelpers.cpp:1166
 #, kde-format
 msgid "No help for '%1'"
-msgstr "'%1' için yardım yok"
+msgstr "“%1” için yardım yok"
 
 #: view/kateviewhelpers.cpp:1169
 #, kde-format
@@ -7821,12 +7821,12 @@ msgstr ""
 #: view/kateviewhelpers.cpp:1263 vimode/emulatedcommandbar/commandmode.cpp:209
 #, kde-format
 msgid "No such command: \"%1\""
-msgstr "Bu adda bir komut yok: \"%1\""
+msgstr "Bu adda bir komut yok: “%1”"
 
 #: view/kateviewhelpers.cpp:1266 vimode/emulatedcommandbar/commandmode.cpp:191
 #, kde-format
 msgid "Error: No range allowed for command \"%1\"."
-msgstr "Hata: \"%1\" komutu için erime izin verilmiyor."
+msgstr "Hata: “%1” komutu için bir erime izin verilmiyor."
 
 #: view/kateviewhelpers.cpp:1276 vimode/emulatedcommandbar/commandmode.cpp:195
 #, kde-format
@@ -7836,7 +7836,7 @@ msgstr "Başarılı: "
 #: view/kateviewhelpers.cpp:1290 vimode/emulatedcommandbar/commandmode.cpp:204
 #, kde-format
 msgid "Command \"%1\" failed."
-msgstr "\"%1\" komutunun işletilmesinde hata."
+msgstr "“%1” komutu başarısız oldu"
 
 #: view/kateviewhelpers.cpp:2572 view/kateviewhelpers.cpp:2573
 #, kde-format
@@ -7866,7 +7866,7 @@ msgstr "Kopyala"
 #: view/screenshotdialog.cpp:140
 #, kde-format
 msgid "Background Color..."
-msgstr "Arka Plan Rengi..."
+msgstr "Arka Plan Rengi…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7881,7 +7881,7 @@ msgstr "Pencere Dekorasyonlarını Göster"
 #: view/screenshotdialog.cpp:148
 #, kde-format
 msgid "Screenshot..."
-msgstr "Ekran Görüntüsü..."
+msgstr "Ekran Görüntüsü…"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7891,7 +7891,7 @@ msgstr "Satır Numaralarını Gösterme"
 #: view/screenshotdialog.cpp:221
 #, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "Satır Numaralarını 1'den Başlayarak Göster"
+msgstr "Satır Numaralarını 1’den Başlayarak Göster"
 
 #: view/screenshotdialog.cpp:222
 #, kde-format
@@ -7901,7 +7901,7 @@ msgstr "Gerçek Satır Numaralarını Göster"
 #: view/screenshotdialog.cpp:375
 #, kde-format
 msgid "Save..."
-msgstr "Kaydet..."
+msgstr "Kaydet…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -7982,7 +7982,7 @@ msgstr ""
 "<tt>xa</tt> &mdash; tüm görünümleri kapatır ve uygulamayı da derhal kapatır."
 "</p><p>Her durumda, eğer kapatılan görünüm sonuncuysa uygulama kapanır. Eğer "
 "belge ile ilişkilendirilmiş bir dosya adı yoksa ve diske yazılması "
-"gerekiyorsa bir dosya iletişim penceresi gösterilir.</p><p>'w' komutlarından "
+"gerekiyorsa bir dosya iletişim penceresi gösterilir.</p><p>‘w’ komutlarından "
 "farklı olarak, bu komut belgeyi yalnızca değiştirilmişse kaydeder.</p>"
 
 #: vimode/appcommands.cpp:242
@@ -8051,7 +8051,7 @@ msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
 "p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 msgstr ""
-"<p><b>b,buffer &mdash; Belge listesindeki belge N'i düzenle</b></"
+"<p><b>b,buffer &mdash; Belge listesindeki belge N’i düzenle</b></"
 "p><p>Kullanım: <tt><b>b[uffer] [N]</b></tt></p>"
 
 #: vimode/appcommands.cpp:517
@@ -8063,8 +8063,8 @@ msgid ""
 "around the start of the document list.</p>"
 msgstr ""
 "<p><b>bp,bprev &mdash; önceki arabellek</b></p><p>Kullanım: "
-"<tt><b>bp[revious] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci "
-"önceki belgeye (\"<b>b</b>uffer\" (arabellek)) gider. </p><p> <b>[N]</b> "
+"<tt><b>bp[revious] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>’inci "
+"önceki belgeye (“<b>b</b>uffer” (arabellek)) gider. </p><p> <b>[N]</b> "
 "öntanımlı olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
 
 #: vimode/appcommands.cpp:525
@@ -8076,8 +8076,8 @@ msgid ""
 "p><p>Wraps around the end of the document list.</p>"
 msgstr ""
 "<p><b>bp,bprev &mdash; sonraki belgeye geç</b></p><p>Kullanım: "
-"<tt><b>bn[ext] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>'inci sonraki "
-"belgeye (\"<b>b</b>uffer\" (arabellek)) gider. <b>[N]</b> öntanımlı olarak "
+"<tt><b>bn[ext] [N]</b></tt></p><p>Belge listesindeki <b>[N]</b>’inci sonraki "
+"belgeye (“<b>b</b>uffer” (arabellek)) gider. <b>[N]</b> öntanımlı olarak "
 "birdir. </p><p>Belge listesinin sonundan sürer.</p>"
 
 #: vimode/appcommands.cpp:533
@@ -8088,8 +8088,8 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bf,bfirst &mdash; ilk belge</b></p><p>Kullanım: <tt><b>bf[irst]</b></"
-"tt></p><p>Belge listesindeki  (<b>f</b>irst) ilk belgeye (\"<b>b</b>uffer"
-"\" (arabellek)) gider.</p>"
+"tt></p><p>Belge listesindeki (<b>f</b>irst) ilk belgeye (“<b>b</"
+"b>uffer” (arabellek)) gider.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format
@@ -8099,8 +8099,8 @@ msgid ""
 "list.</p>"
 msgstr ""
 "<p><b>bl,blast &mdash; son belge</b></p><p>Kullanım: <tt><b>bl[ast]</b></"
-"tt></p><p>Belge listesindeki  (<b>l</b>ast) son belgeye (\"<b>b</b>uffer"
-"\" (arabellek)) gider.</p>"
+"tt></p><p>Belge listesindeki (<b>l</b>ast) son belgeye (“<b>b</"
+"b>uffer” (arabellek)) gider.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format
@@ -8115,12 +8115,12 @@ msgstr "Argüman eksik. Kullanım: %1 <from>"
 #: vimode/cmds.cpp:68
 #, kde-format
 msgid "No mapping found for \"%1\""
-msgstr "\"%1\" için eşlem bulunamadı"
+msgstr "“%1” için eşlem bulunamadı"
 
 #: vimode/cmds.cpp:71
 #, kde-format
 msgid "\"%1\" is mapped to \"%2\""
-msgstr "\"%1\", \"%2\" ile eşlendi"
+msgstr "“%1”, “%2” ile eşlendi"
 
 #: vimode/cmds.cpp:77
 #, kde-format
@@ -8150,7 +8150,7 @@ msgid ""
 "example: Ctrl+R will redo, and override the standard action (showing the "
 "search and replace dialog)."
 msgstr ""
-"Seçildiklerinde Vi komutları, Kate'in yerleşik komutlarını geçersiz kılar. "
+"Seçildiklerinde Vi komutları, Kate’in yerleşik komutlarını geçersiz kılar. "
 "Örneğin: Kontrol+R kısayolu Yinele eylemini gerçekleştirir ve standart "
 "eylemi (Bul ve Değiştir penceresini gösterme) geçersiz kılar."
 
@@ -8194,9 +8194,9 @@ msgstr ""
 "gerçekleştirmek için özel düğmelere basmanıza olanak tanır.\n"
 "\n"
 "Örnek:\n"
-"\"<F2>\" → \"I-- <esc>\"\n"
+"“<F2>” → “I-- <Esc>”\n"
 "\n"
-"Bu, F2 düğmesine basıldığında bir satırın başına \"-- \" ekleyecektir."
+"Bu, F2 düğmesine basıldığında bir satırın başına “-- ” ekleyecektir."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: vimode/config/configwidget.ui:66
@@ -8268,14 +8268,14 @@ msgid ""
 "Read a vimrc file and attempt to import mappings specified with the "
 "\"[n]noremap\" command."
 msgstr ""
-"\"[n]noremap\" komutu ile belirtilen değeri içe aktarmak için, vimrc "
-"dosyasını okunur."
+"“[n]noremap” komutu ile belirtilen değeri içe aktarmak için, vimrc dosyasını "
+"okuyun."
 
 #. i18n: ectx: property (text), widget (QPushButton, btnImportNormal)
 #: vimode/config/configwidget.ui:212
 #, kde-format
 msgid "Import from vimrc file"
-msgstr "vimrc'den İçe Aktar"
+msgstr "vimrc’den İçe Aktar"
 
 #: vimode/marks.cpp:111
 #, kde-format
@@ -8296,7 +8296,7 @@ msgstr "%1 yazmacında bir şey yok"
 #: vimode/modes/normalvimode.cpp:1685
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
-msgstr "'%1' %2,  Altılık %3,  Sekizlik %4"
+msgstr "“%1” %2,  Altılık %3,  Sekizlik %4"
 
 #: vimode/modes/normalvimode.cpp:2528
 #, kde-format
