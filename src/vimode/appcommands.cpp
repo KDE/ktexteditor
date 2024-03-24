@@ -280,7 +280,7 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
 KTextEditor::View *AppCommands::findViewInDifferentSplitView(KTextEditor::MainWindow *window, KTextEditor::View *view)
 {
     const auto views = window->views();
-    for (KTextEditor::View *it : views) {
+    for (auto it : views) {
         if (!window->viewsInSameSplitView(it, view)) {
             return it;
         }
@@ -290,7 +290,7 @@ KTextEditor::View *AppCommands::findViewInDifferentSplitView(KTextEditor::MainWi
 
 void AppCommands::closeDocuments(const QList<KTextEditor::Document *> &documents)
 {
-    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
+    auto app = KTextEditor::Editor::instance()->application();
     QTimer::singleShot(0, app, [app, documents]() {
         app->closeDocuments(documents);
     });
@@ -298,36 +298,42 @@ void AppCommands::closeDocuments(const QList<KTextEditor::Document *> &documents
 
 void AppCommands::closeCurrentDocument()
 {
-    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
-    KTextEditor::Document *doc = app->activeMainWindow()->activeView()->document();
-    QTimer::singleShot(0, doc, [app, doc]() {
-        app->closeDocument(doc);
-    });
+    auto app = KTextEditor::Editor::instance()->application();
+    auto mw = app->activeMainWindow();
+    if (auto view = mw->activeView()) {
+        auto doc = view->document();
+        QTimer::singleShot(0, doc, [app, doc]() {
+            app->closeDocument(doc);
+        });
+    }
 }
 
 void AppCommands::closeCurrentView()
 {
-    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
-    KTextEditor::MainWindow *mw = app->activeMainWindow();
-    mw->closeView(mw->activeView());
+    auto app = KTextEditor::Editor::instance()->application();
+    auto mw = app->activeMainWindow();
+    if (auto view = mw->activeView()) {
+        mw->closeView(view);
+    }
 }
 
 void AppCommands::closeCurrentSplitView()
 {
-    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
-    KTextEditor::MainWindow *mw = app->activeMainWindow();
-    mw->closeSplitView(mw->activeView());
+    auto app = KTextEditor::Editor::instance()->application();
+    auto mw = app->activeMainWindow();
+    if (auto view = mw->activeView()) {
+        mw->closeSplitView(view);
+    }
 }
 
 void AppCommands::closeOtherSplitViews()
 {
-    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
-    KTextEditor::MainWindow *mw = app->activeMainWindow();
-    KTextEditor::View *view = mw->activeView();
-    KTextEditor::View *viewToRemove = nullptr;
-
-    while ((viewToRemove = findViewInDifferentSplitView(mw, view))) {
-        mw->closeSplitView(viewToRemove);
+    auto app = KTextEditor::Editor::instance()->application();
+    auto mw = app->activeMainWindow();
+    if (auto view = mw->activeView()) {
+        while (KTextEditor::View *viewToRemove = findViewInDifferentSplitView(mw, view)) {
+            mw->closeSplitView(viewToRemove);
+        }
     }
 }
 
