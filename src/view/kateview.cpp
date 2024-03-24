@@ -1852,9 +1852,10 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     }
 }
 
-void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags)
+void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QSet<QString> &)
 {
-    Q_UNUSED(flags)
+    // ensure we don't amass stuff
+    config.deleteGroup();
 
     // cursor position
     const auto cursor = cursorPosition();
@@ -1869,9 +1870,9 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
         config.writeEntry("ScrollLine", scrollLine);
     }
 
-    // only write if its false because its enabled by default
-    if (m_config->dynWordWrap() == false) {
-        config.writeEntry("Dynamic Word Wrap", false);
+    // only write if set in this view
+    if (m_config->isSet(KateViewConfig::DynamicWordWrap)) {
+        config.writeEntry("Dynamic Word Wrap", m_config->dynWordWrap());
     }
 
     // save text folding state
