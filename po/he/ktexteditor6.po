@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-03-19 15:00+0200\n"
+"PO-Revision-Date: 2024-03-23 14:21+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4125,14 +4125,14 @@ msgid "S&elected Background Color..."
 msgstr "צבע רקע &נבחר..."
 
 #: syntax/katestyletreewidget.cpp:275
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unset Normal Color"
-msgstr "&צבע רגיל..."
+msgstr "ביטול הגדרת צבעים רגילים"
 
 #: syntax/katestyletreewidget.cpp:278
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unset Selected Color"
-msgstr "שחזר צבע רקע נבחר"
+msgstr "ביטול הגדרת הצבע הנבחר"
 
 #: syntax/katestyletreewidget.cpp:284
 #, kde-format
@@ -6168,22 +6168,22 @@ msgstr "הדגשת תחביר"
 #: view/katestatusbar.cpp:261
 #, kde-format
 msgid "Line/Column compact mode"
-msgstr ""
+msgstr "מצב חסכוני של שורה/עמודה"
 
 #: view/katestatusbar.cpp:307
 #, kde-format
 msgid "[BLOCK] %1"
-msgstr ""
+msgstr "[מקטע] %1"
 
 #: view/katestatusbar.cpp:323
 #, kde-format
 msgid "%1/%2:%3"
-msgstr ""
+msgstr "%1/%2:%3"
 
 #: view/katestatusbar.cpp:325
 #, kde-format
 msgid "%1:%2"
-msgstr ""
+msgstr "%1:%2"
 
 #: view/katestatusbar.cpp:329
 #, fuzzy, kde-format
@@ -6198,22 +6198,22 @@ msgstr "שורה %1, עמודה %2"
 #: view/katestatusbar.cpp:406
 #, kde-format
 msgid "Soft Tabs: %1"
-msgstr ""
+msgstr "טאבים רכים: %1"
 
 #: view/katestatusbar.cpp:407
 #, kde-format
 msgid "Soft Tabs: %1 (%2)"
-msgstr ""
+msgstr "טאבים רכים: %1 (%2)"
 
 #: view/katestatusbar.cpp:408
 #, kde-format
 msgid "Tab Size: %1"
-msgstr ""
+msgstr "גודל טאב: %1"
 
 #: view/katestatusbar.cpp:409
 #, kde-format
 msgid "Indent/Tab: %1/%2"
-msgstr ""
+msgstr "הזחה/טאב: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, kde-format
@@ -7026,10 +7026,9 @@ msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
 #: view/kateview.cpp:939
-#, fuzzy, kde-format
-#| msgid "Text Cursor Movement"
+#, kde-format
 msgid "Toggle Camel Case Cursor Movement"
-msgstr "תנועת סמן הטקסט"
+msgstr "החלפת מצב תנועת סמן לפי הגדלת אותיות ראשונות (קאמל קייס)"
 
 #: view/kateview.cpp:940
 #, kde-format
@@ -7329,10 +7328,9 @@ msgstr ""
 "הוספת שורה חדשה, כולל תווים מובילים מהשורה הנוכחית שאינם אותיות או מספרים."
 
 #: view/kateview.cpp:1271
-#, fuzzy, kde-format
-#| msgid "Insert Smart Newline"
+#, kde-format
 msgid "Insert a Non-Indented Newline"
-msgstr "הכנס שורה חדשה חכמה"
+msgstr "הוספת שורה חדשה ללא הזחה"
 
 #: view/kateview.cpp:1272
 #, kde-format
@@ -7388,24 +7386,24 @@ msgid "Use this to unindent a selected block of text."
 msgstr "ביטול הזחה של קטע טקסט נבחר."
 
 #: view/kateview.cpp:1327
-#, fuzzy, kde-format
+#, kde-format
 msgid "Fold Toplevel Nodes"
-msgstr "קפל רמה ראשית"
+msgstr "קיפול מפרקים תחתונים"
 
 #: view/kateview.cpp:1331
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unfold Toplevel Nodes"
-msgstr "הרחב רמה ראשית"
+msgstr "פריסת מפרקים עליונים"
 
 #: view/kateview.cpp:1335
-#, fuzzy, kde-format
+#, kde-format
 msgid "Toggle Current Node"
-msgstr "שורה נוכחית:"
+msgstr "החלפת מצב המפרק הנוכחי"
 
 #: view/kateview.cpp:1339
-#, fuzzy, kde-format
+#, kde-format
 msgid "Toggle Contained Nodes"
-msgstr "הערה"
+msgstr "החלפת מצב המפרקים המוכלים"
 
 #: view/kateview.cpp:1348
 #, kde-format
@@ -7540,7 +7538,7 @@ msgstr "הגדר את סימון ברירת המחדל"
 #: view/kateviewhelpers.cpp:2737
 #, kde-format
 msgid "Disable Annotation Bar"
-msgstr ""
+msgstr "השבתת סרגל הסברים"
 
 #: view/screenshotdialog.cpp:138
 #, kde-format
@@ -7596,12 +7594,12 @@ msgstr "שמירה…"
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "שמירת צילום המסך נכשלה"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "שמירת צילום המסך נכשלה: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
