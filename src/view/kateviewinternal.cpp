@@ -291,12 +291,16 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 
 KateViewInternal::~KateViewInternal()
 {
-    // delete text animation object here, otherwise it updates the view in its destructor
-    delete m_textAnimation;
-
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::removeFactory(accessibleInterfaceFactory);
 #endif
+
+    // delete text animation object here, otherwise it updates the view in its destructor
+    delete m_textAnimation;
+
+    // delete border here to not trigger crash later due to access to stuff in painting
+    delete m_leftBorder;
+    m_leftBorder = nullptr;
 }
 
 void KateViewInternal::dynWrapChanged()
