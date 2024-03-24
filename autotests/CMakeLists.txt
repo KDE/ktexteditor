@@ -135,15 +135,6 @@ KTEXTEDITOR_INDENT_TEST ("testXml")
 KTEXTEDITOR_INDENT_TEST ("testNormal")
 KTEXTEDITOR_INDENT_TEST ("testReplicode")
 
-macro(ktexteditor_unit_test testname)
-  ecm_add_test(src/${testname}.cpp ${ARGN}
-               TEST_NAME ${testname}
-               LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
-  if(ENABLE_PCH)
-    target_precompile_headers(${testname} REUSE_FROM kte_test_pch)
-  endif()
-endmacro()
-
 macro(ktexteditor_unit_test_offscreen testname)
     add_executable(${testname} src/${testname}.cpp ${ARGN})
     target_link_libraries(${testname} ${KTEXTEDITOR_TEST_LINK_LIBS}
@@ -186,7 +177,6 @@ ktexteditor_unit_test_offscreen(completion_test src/codecompletiontestmodel.cpp 
 ktexteditor_unit_test_offscreen(bug313759 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug317111 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug205447 src/testutils.cpp)
-
 ktexteditor_unit_test_offscreen(katefoldingtest)
 ktexteditor_unit_test_offscreen(bug286887)
 ktexteditor_unit_test_offscreen(bug313769)
