@@ -187,10 +187,10 @@ ktexteditor_unit_test_offscreen(bug313759 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug317111 src/testutils.cpp)
 ktexteditor_unit_test_offscreen(bug205447 src/testutils.cpp)
 
-ktexteditor_unit_test(katefoldingtest)
-ktexteditor_unit_test(bug286887)
-ktexteditor_unit_test(bug313769)
-ktexteditor_unit_test(messagetest)
+ktexteditor_unit_test_offscreen(katefoldingtest)
+ktexteditor_unit_test_offscreen(bug286887)
+ktexteditor_unit_test_offscreen(bug313769)
+ktexteditor_unit_test_offscreen(messagetest)
 
 add_subdirectory(src/vimode)
 
