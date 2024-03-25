@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2006-10-01 21:04+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -7776,14 +7776,14 @@ msgid ""
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
 "p><p>Usage: <tt><b>b[uffer] [N]</b></tt></p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -7792,7 +7792,7 @@ msgid ""
 "around the start of the document list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -7801,7 +7801,7 @@ msgid ""
 "p><p>Wraps around the end of the document list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -7809,7 +7809,7 @@ msgid ""
 "list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -7817,7 +7817,7 @@ msgid ""
 "list.</p>"
 msgstr ""
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr ""

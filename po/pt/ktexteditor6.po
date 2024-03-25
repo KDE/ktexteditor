@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -8200,7 +8200,7 @@ msgstr ""
 "documento actual de novo. Isto é útil para voltar a editar o ficheiro "
 "actual, quando foi modificado no disco.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8209,7 +8209,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Edita o documento N da lista de documentos</b></"
 "p><p>Utilização: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8222,7 +8222,7 @@ msgstr ""
 "anterior (\"<b>b</b>uffer\") na lista de documentos.<b>[N]</b> corresponde "
 "por omissão a um. </p><p>Dá à volta no início da lista de documentos.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8235,7 +8235,7 @@ msgstr ""
 "seguinte (\"<b>b</b>uffer\") na lista de documentos.<b>[N]</b> corresponde "
 "por omissão a um. </p><p>Dá à volta no fim da lista de documentos.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8246,7 +8246,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Vai para o <b>p</b>rimeiro documento (\"<b>b</"
 "b>uffer\") da lista de documentos.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8257,7 +8257,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Vai para o <b>ú</b>ltimo documento (\"<b>b</"
 "b>uffer\") da lista de documentos.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>apresenta os documentos actuais</p>"

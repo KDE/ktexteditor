@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-02-02 22:38+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -8018,7 +8018,7 @@ msgstr ""
 "tt></p><p> p>Komencas <b>e</b>redakti la nunan dokumenton denove. Ĉi tio "
 "utilas por reredakti la nunan dosieron, kiam ĝi estis modifita sur disko.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8027,7 +8027,7 @@ msgstr ""
 "<p><b>b,buffer — Redakti dokumenton N el la dokumenta listo</b></p><p>Uzo: "
 "<tt><b>b[ofer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8040,7 +8040,7 @@ msgstr ""
 "dokumenta listo. </p><p> <b>[N]</b> defaŭlte estas unu. </p><p>Envolvas "
 "ĉirkaŭ la komenco de la dokumenta listo.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8053,7 +8053,7 @@ msgstr ""
 "b>ofero\") en dokumenta listo.<b>[N]</b> defaŭlte al unu. </p><p>Envolvas "
 "ĉirkaŭ la fino de la dokumenta listo.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8064,7 +8064,7 @@ msgstr ""
 "p><p> Iras al la <b>unua</b> dokumenta (\"<b>b</b>ufro\") en dokumentlisto.</"
 "p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8075,7 +8075,7 @@ msgstr ""
 "p><p>Iras al la <b>l</b>ast-dokumenta (\"<b>b</b>ufro\") en dokumenta listo."
 "</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>listigi aktualajn bufrojn<p>"

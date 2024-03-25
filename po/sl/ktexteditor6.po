@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-03-17 15:24+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -8038,7 +8038,7 @@ msgstr ""
 "To je uporabno za ponovno urejanje datoteke, če je bila spremenjena na disku."
 "</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8047,7 +8047,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Uredi dokument N iz seznama dokumentov</b></"
 "p><p>Uporaba: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8060,7 +8060,7 @@ msgstr ""
 "(»<b>b</b> – medpomnilnik«) v seznamu dokumentov.<b>[N]</b> je privzeto ena. "
 "</p><p>Ovije se okrog začetka seznama dokumentov.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8073,7 +8073,7 @@ msgstr ""
 "(»<b>b</b> – medpomnilnik«) v seznamu dokumentov.<b>[N]</b> je privzeto ena. "
 "</p><p>Ovije se okrog konca seznama dokumentov.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8084,7 +8084,7 @@ msgstr ""
 "b></tt></p><p>Gre na <b>f</b> – prvi dokument (»<b>b</b> – medpomnilnik«) v "
 "seznamu dokumentov.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8095,7 +8095,7 @@ msgstr ""
 "b></tt></p><p>Gre na <b>f</b> – zadnji dokument (»<b>b</b> – medpomnilnik«) "
 "v seznamu dokumentov.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>seznam trenutnih medpomnilnikov<p>"

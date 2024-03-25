@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
-"PO-Revision-Date: 2024-03-17 20:42\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"PO-Revision-Date: 2024-03-24 18:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -7748,7 +7748,7 @@ msgstr ""
 "p><p>重新开始编辑当前文档。当文件在存储设备中被其他程序修改时，您可以使用此功"
 "能重新编辑当前文件。</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -7757,7 +7757,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; 编辑文档列表中的文档 N</b></p><p>用法："
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -7769,7 +7769,7 @@ msgstr ""
 "[N]</b></tt></p><p>切换到文档列表中上面第<b>[N]</b>个文档(\"<b>b</b>uffer"
 "\") 。<b>[N]</b> 默认为1。</p><p>如遇到文档列表头部则循环计数。</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -7781,7 +7781,7 @@ msgstr ""
 "b></tt></p><p>切换到文档列表中下面第<b>[N]</b>个文档(\"<b>b</b>uffer\") 。"
 "<b>[N]</b> 默认为1。</p><p>如遇到文档列表尾部则循环计数。</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -7792,7 +7792,7 @@ msgstr ""
 "b></tt></p><p>切换到文档列表中第一个(<b>f</b>irst)文档(\"<b>b</b>uffer\")。</"
 "p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -7803,7 +7803,7 @@ msgstr ""
 "b></tt></p><p>切换到文档列表中最后一个(<b>l</b>ast)文档(\"<b>b</b>uffer\")。"
 "</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>列出当前缓冲区<p>"

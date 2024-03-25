@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -8375,7 +8375,7 @@ msgstr ""
 "p><p>Употреба: <tt><b>e[dit]</b></tt></p><p>Поново започиње уређивање "
 "документа. Корисно у случају где други програм измени фајл.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8384,7 +8384,7 @@ msgstr ""
 "<p><b><tt>b,buffer</tt> — уређивање n‑тог документа са списка</b></"
 "p><p>Употреба: <tt><b>b[uffer] [n]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8397,7 +8397,7 @@ msgstr ""
 "(„бафер“) у списку докумената. <b>[n]</b> је подразумевано 1.</p><p>Омотава "
 "око почетка списка докумената.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8410,7 +8410,7 @@ msgstr ""
 "документ („бафер“) у списку докумената. <b>[n]</b> је подразумевано 1.</"
 "p><p>Омотава око краја списка докумената.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8421,7 +8421,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Прелази на први документ („бафер“) у списку "
 "докумената.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8432,7 +8432,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Прелази на последњи документ („бафер“) у "
 "списку докумената.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b><tt>ls</tt> — набрајање докумената</b></p>"

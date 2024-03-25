@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -8248,7 +8248,7 @@ msgstr ""
 "lagi. Ini berguna untuk mengedit ulang file saat ini, ketika ia sedang "
 "diubah oleh program lainnya.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8257,7 +8257,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Edit dokumen N dari daftar dokumen</b></"
 "p><p>Penggunaan: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8270,7 +8270,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") sebelumnya di daftar dokumen. </p><p> <b>[N]</b> men-"
 "baku ke salahsatu. </p><p>Mengemaskan di sekitar awal daftar dokumen.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8284,7 +8284,7 @@ msgstr ""
 "baku ke salahsatu. </p><p>Mengemaskan di sekitar akhir dari daftar dokumen.</"
 "p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8295,7 +8295,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Menuju ke dokumen (\"<b>b</b>uffer\") pertama "
 "(<b>f</b>irst) dalam daftar dokumen.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8306,7 +8306,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Menuju ke dokumen (\"<b>b</b>uffer\") terakhir "
 "(<b>l</b>ast) dalam daftar dokumen.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>daftar (list) buffer saat ini<p>"

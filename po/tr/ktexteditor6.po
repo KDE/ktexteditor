@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-03-21 20:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -8045,7 +8045,7 @@ msgstr ""
 "başlatır. Bu, geçerli dosyayı diskte değiştirilmişse yeniden düzenlerken "
 "yararlıdır.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8054,7 +8054,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Belge listesindeki belge N’i düzenle</b></"
 "p><p>Kullanım: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8067,7 +8067,7 @@ msgstr ""
 "önceki belgeye (“<b>b</b>uffer” (arabellek)) gider. </p><p> <b>[N]</b> "
 "öntanımlı olarak birdir. </p><p>Belge listesinin başından sürer.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8080,7 +8080,7 @@ msgstr ""
 "belgeye (“<b>b</b>uffer” (arabellek)) gider. <b>[N]</b> öntanımlı olarak "
 "birdir. </p><p>Belge listesinin sonundan sürer.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8091,7 +8091,7 @@ msgstr ""
 "tt></p><p>Belge listesindeki (<b>f</b>irst) ilk belgeye (“<b>b</"
 "b>uffer” (arabellek)) gider.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8102,7 +8102,7 @@ msgstr ""
 "tt></p><p>Belge listesindeki (<b>l</b>ast) son belgeye (“<b>b</"
 "b>uffer” (arabellek)) gider.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>geçerli arabellekleri listele<p>"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-03-09 19:29+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -8030,7 +8030,7 @@ msgstr ""
 "dokumenti. Noderīgi, lai pārrediģētu pašreizējo datni, ja tā ir mainīta "
 "diskā.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8039,7 +8039,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; rediģē dokumentu N no dokumentu saraksta</b></"
 "p><p>Lietošana: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8052,7 +8052,7 @@ msgstr ""
 "dokumentu („<b>b</b>uferis“) dokumentu sarakstā. </p><p> <b>[N]</b> "
 "noklusējums ir viens. </p><p>Sāk dokumentu sarakstu no sākuma.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8065,7 +8065,7 @@ msgstr ""
 "(„<b>b</b>uferi“) dokumentu sarakstā.<b>[N]</b> noklusējums ir viens. </"
 "p><p>Sāk dokumentu sarakstu no sākuma.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8076,7 +8076,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Iet uz pirmo („<b>f</b>irst“) dokumentu "
 "(„<b>b</b>uferi“) dokumentu sarakstā.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8087,7 +8087,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Iet uz pēdējo („<b>l</b>ast“) dokumentu "
 "(„<b>b</b>uferis“) dokumentu sarakstā.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>uzskaita buferus<p>"

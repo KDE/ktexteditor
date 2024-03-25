@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -8051,7 +8051,7 @@ msgstr ""
 "açır. Bu cari fayla diskdə dəyişiklik edildikdə ona təkrar düzəliş etmək "
 "üçün lazım olur.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8060,7 +8060,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Sənəd siyahısından sənəd № -ə düzəliş edin</b></"
 "p><p>İstifadəsi: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8073,7 +8073,7 @@ msgstr ""
 "(\"<b>b</b>uffer\"). </p><p> <b>[N]</b>Standart olaraq təkdir. </p><p>Sənəd "
 "siyahısının başlanğıcından davam edir</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8086,7 +8086,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") sənədə keçir.<b>[N]</b>Standart olaraq təkdir. </p>Sənəd "
 "siyahısının sonundan davam edir.<p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8097,7 +8097,7 @@ msgstr ""
 "tt></p><p>Sənəd siyahısında (<b>f</b>irst) ilk sənədə (\"<b>b</b>uffer\") "
 "keçir.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8108,7 +8108,7 @@ msgstr ""
 "p><p>Sənəd siyahısında (<b>l</b>ast) sonuncu sənədə (\"<b>b</b>uffer\") "
 "keçir.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>cari buferin siyahısı<p>"

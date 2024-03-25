@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-01-26 02:01+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -8151,7 +8151,7 @@ msgstr ""
 "documento actual. Esto resulta útil para volver a editar el archivo actual "
 "si ha sido modificado en el disco.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8160,7 +8160,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Editar el documento N de la lista de documentos</b></"
 "p><p>Uso: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8173,7 +8173,7 @@ msgstr ""
 "la lista de documentos. </p><p> <b>[N]</b> vale 1 por omisión.</p><p>Si se "
 "alcanza el primer documento de la lista, se continúa por el último.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8187,7 +8187,7 @@ msgstr ""
 "p><p>Si se alcanza el último documento de la lista, se continúa por el "
 "primero.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8198,7 +8198,7 @@ msgstr ""
 "tt></p><p>Va al primer documento («<b>b</b>uffer») de la lista de documentos."
 "</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8209,7 +8209,7 @@ msgstr ""
 "tt></p><p>Va al ú<b>l</b>timo documento («<b>b</b>uffer») de la lista de "
 "documentos.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>lista las memorias temporales actuales<p>"

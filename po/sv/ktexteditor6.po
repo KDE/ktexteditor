@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2022-10-02 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -8089,7 +8089,7 @@ msgstr ""
 "igen. Det är användbart för att redigera aktuell fil igen, när den har "
 "ändrats på disken.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8098,7 +8098,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Redigera dokument N i dokumentlistan</b></"
 "p><p>Användning: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8111,7 +8111,7 @@ msgstr ""
 "dokument (\"<b>b</b>uffer\") i dokumentlistan.<b>[N]</b> är 1 om det inte "
 "anges. </p><p>Börjar om från slutet i början av dokumentlistan.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8124,7 +8124,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") i dokumentlistan.<b>[N]</b> är 1 om det inte anges. </"
 "p><p>Börjar om från början i slutet av dokumentlistan.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8135,7 +8135,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Går till det <b>f</b>örsta dokumentet "
 "(\"<b>b</b>uffern\") i dokumentlistan.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8146,7 +8146,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Går till det sista dokumentet (\"<b>b</b>uffern"
 "\") i dokumentlistan.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>lista aktuella buffrar<p>"

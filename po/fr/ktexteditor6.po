@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-01-26 09:42+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -8465,7 +8465,7 @@ msgstr ""
 "nouveau. Cette commande est utile pour modifier à nouveau le fichier actuel "
 "lorsqu'il a été modifié sur le disque.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8474,7 +8474,7 @@ msgstr ""
 "<p><b>b, buffer &mdash; Modifie le document N de la liste des documents</b></"
 "p><p>Utilisation : <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8488,7 +8488,7 @@ msgstr ""
 "documents. </p><p> <b>[N]</b> se limite par défaut à un seul. </"
 "p><p>Retourne au début de la liste des documents.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8502,7 +8502,7 @@ msgstr ""
 "<b>[N]</b> se limite par défaut à un seul. </p><p>Retourne à la fin de la "
 "liste des documents.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8513,7 +8513,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Se place au premier document en mémoire "
 "tampon (ou « <b>tampon</b> ») dans la liste des documents.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8524,7 +8524,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Se place au dernier document en mémoire tampon "
 "(ou « <b>tampon</b> ») dans la liste des documents.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>Lister les tampons actuels<p>"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-02-10 00:07+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -7873,7 +7873,7 @@ msgstr ""
 "<tt><b>e[dit]</b></tt></p><p>현재 문서를 다시 편집(<b>e</b>dit)하기 시작합니"
 "다. 디스크에서 파일을 수정된 등 현재 문서를 다시 불러올 때 유용합니다.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -7882,7 +7882,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; 문서 목록의 N번째 문서를 편집합니다</b></p><p>사용 방"
 "법: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -7895,7 +7895,7 @@ msgstr ""
 "(\"<b>b</b>uffer\")로 갑니다. <b>[N]</b>의 기본값은 1입니다.</p><p>문서 목록"
 "의 처음으로 가면 끝부터 다시 시작합니다.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -7908,7 +7908,7 @@ msgstr ""
 "다. <b>[N]</b>의 기본값은 1입니다.</p><p>문서 목록의 끝으로 가면 처음부터 다"
 "시 시작합니다.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -7918,7 +7918,7 @@ msgstr ""
 "<p><b>bf,bfirst &mdash; 첫 문서</b></p><p>사용 방법: <tt><b>bf[irst]</b></"
 "tt></p> <p>맨 첫 번째 (<b>f</b>irst) 문서(\"<b>b</b>uffer\")로 갑니다.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -7928,7 +7928,7 @@ msgstr ""
 "<p><b>bl,blast &mdash; 마지막 문서</b></p><p>사용 방법: <tt><b>bl[ast]</b></"
 "tt></p> <p>맨 마지막 (<b>l</b>ast) 문서(\"<b>b</b>uffer\")로 갑니다.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>현재 버퍼를 표시합니다<p>"

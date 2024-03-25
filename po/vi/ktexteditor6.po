@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -8037,7 +8037,7 @@ msgstr ""
 "hiện tại. Việc này có ích khi muốn sửa lại tệp hiện tại mà nó đã bị chỉnh "
 "sửa trên đĩa.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8046,7 +8046,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Sửa tài liệu N trong danh sách tài liệu</b></"
 "p><p>Cách dùng: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8059,7 +8059,7 @@ msgstr ""
 "thứ <b>[N]</b> ở trước trong danh sách tài liệu. </p><p> <b>[N]</b> mặc định "
 "là 1.</p><p>Xoay vòng ở đầu danh sách tài liệu.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8072,7 +8072,7 @@ msgstr ""
 "danh sách tài liệu. </p><p> <b>[N]</b> mặc định là 1. </p><p>Xoay vòng ở "
 "cuối danh sách tài liệu.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8083,7 +8083,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Đi đến tài liệu (\"<b>b</b>uffer\") đầu tiên "
 "(<b>f</b>irst) trong danh sách tài liệu.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8094,7 +8094,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Đi đến tài liệu (\"<b>b</b>uffer\") cuối cùng "
 "(<b>l</b>ast) trong danh sách tài liệu.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>liệt kê các tài liệu hiện tại<p>"

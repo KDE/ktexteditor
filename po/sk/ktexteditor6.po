@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -8007,7 +8007,7 @@ msgstr ""
 "znova. Toto je užitočné pri novom editovaní aktuálneho súboru, ak bol "
 "zmenený na disku.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8016,7 +8016,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Upraviť dokument N zo zoznamu dokumentov</b></"
 "p><p>Použitie: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8029,7 +8029,7 @@ msgstr ""
 "dokument (\"<b>b</b>uffer\") v zozname dokumentov. </p><p> <b>[N]</b> je "
 "predvolene 1. </p><p>Obaľuje okolo začiatku zoznamu dokumentov.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8042,7 +8042,7 @@ msgstr ""
 "(\"<b>b</b>uffer\") v zozname dokumentov.<b>[N]</b> je predvolene 1. </"
 "p><p>Obaľuje okolo konca zoznamu dokumentov.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8053,7 +8053,7 @@ msgstr ""
 "b></tt></p><p>Prejde na prvý dokument (\"<b>b</b>uffer\") v zozname "
 "dokumentov.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8064,7 +8064,7 @@ msgstr ""
 "b></tt></p><p>Prejde na pos<b>l</b>edný dokument (\"<b>b</b>uffer\") v "
 "zozname dokumentov.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>vypísať aktuálne zásobníky<p>"

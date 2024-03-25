@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-02-03 15:34+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -8051,7 +8051,7 @@ msgstr ""
 "документ отново. Това е полезно за повторно редактиране на текущия файл, "
 "когато той е бил променен от друга програма.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8060,7 +8060,7 @@ msgstr ""
 "<p> <b>b,buffer &mdash; Редактиране на документ N от списъка с документи</b> "
 "</p> <p> Употреба: <tt> <b>b [uffer] [N]</b> </tt> </p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8074,7 +8074,7 @@ msgstr ""
 "подразбиране е едно. </p> <p> Прехвърля се в началото на списъка с "
 "документи. </p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8088,7 +8088,7 @@ msgstr ""
 "подразбиране е едно. </p> <p> Прехвърля се в края на списъка с документи. </"
 "p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8099,7 +8099,7 @@ msgstr ""
 "[irst]</b> </tt> </p> <p> Отива към <b>f</b> irst - първия документ (\"<b>b</"
 "b> uffer\") в списъка с документи.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8110,7 +8110,7 @@ msgstr ""
 "[ast]</b> </tt> </p> <p> Отива към <b>l</b> ast - последния документ "
 "(\"<b>b</b> uffer\") в списъка с документи.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p> <p>списък на текущите буфери <p>"

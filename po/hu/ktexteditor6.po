@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -8052,7 +8052,7 @@ msgstr ""
 "<tt><b>e[dit]</b></tt></p><p>Újrakezdi az aktuális dokumentum sz<b>e</"
 "b>rkesztését. Ez akkor hasznos, ha a fájl módosult a lemezen.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8061,7 +8061,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; N-edik dokumentum szerkesztése</b></p><p>Használat: "
 "<tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8075,7 +8075,7 @@ msgstr ""
 "<b>[N]</b> alapértelmezés szerint egy.</p><p>Körbejár a dokumentumlista vége "
 "körül.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8089,7 +8089,7 @@ msgstr ""
 "<b>[N]</b> alapértelmezés szerint egy.</p><p>Körbejár a dokumentumlista vége "
 "körül.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8100,7 +8100,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Az első dokumentumra („<b>b</b>uffer”) ugrik "
 "a dokumentumlistában.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8111,7 +8111,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Az uto<b>ls<b>ó dokumentumra („<b>b</b>uffer”) "
 "ugrik a dokumentumlistában.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>jelenlegi pufferek listázása<p>"

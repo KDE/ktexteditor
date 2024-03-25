@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:36+0000\n"
+"POT-Creation-Date: 2024-03-25 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -8087,7 +8087,7 @@ msgstr ""
 "da. Erabilgarria da, diskoan aldatu denean, uneko dokumentua berriz "
 "editatzeko.</p>"
 
-#: vimode/appcommands.cpp:512
+#: vimode/appcommands.cpp:518
 #, kde-format
 msgid ""
 "<p><b>b,buffer &mdash; Edit document N from the document list</b></"
@@ -8096,7 +8096,7 @@ msgstr ""
 "<p><b>b,buffer &mdash; Editatu dokumentu zerrendako N dokumentua</b></"
 "p><p>Erabilera: <tt><b>b[uffer] [N]</b></tt></p>"
 
-#: vimode/appcommands.cpp:517
+#: vimode/appcommands.cpp:523
 #, kde-format
 msgid ""
 "<p><b>bp,bprev &mdash; previous buffer</b></p><p>Usage: <tt><b>bp[revious] "
@@ -8110,7 +8110,7 @@ msgstr ""
 "lehenetsia 1 da.</p><p>Zerrendaren hasieratik atzera joanda, amaierara "
 "joango da.</p>"
 
-#: vimode/appcommands.cpp:525
+#: vimode/appcommands.cpp:531
 #, kde-format
 msgid ""
 "<p><b>bn,bnext &mdash; switch to next document</b></p><p>Usage: "
@@ -8123,7 +8123,7 @@ msgstr ""
 "dokumentura joango da.<b>[N]</b>ren balio lehenetsia bat da.</"
 "p><p>Zerrendaren amaieratik aurrera joanda, hasierara joango da.</p>"
 
-#: vimode/appcommands.cpp:533
+#: vimode/appcommands.cpp:539
 #, kde-format
 msgid ""
 "<p><b>bf,bfirst &mdash; first document</b></p><p>Usage: <tt><b>bf[irst]</b></"
@@ -8134,7 +8134,7 @@ msgstr ""
 "<tt><b>bf[irst]</b></tt></p><p>Dokumentu zerrendan lehenengo (<b>f</b>irst) "
 "dokumentura (\"<b>b</b>uffer\") joango da.</p>"
 
-#: vimode/appcommands.cpp:539
+#: vimode/appcommands.cpp:545
 #, kde-format
 msgid ""
 "<p><b>bl,blast &mdash; last document</b></p><p>Usage: <tt><b>bl[ast]</b></"
@@ -8145,7 +8145,7 @@ msgstr ""
 "<tt><b>bl[ast]</b></tt></p><p>Dokumentu zerrendan azken (<b>l</b>ast) "
 "dokumentura (\"<b>b</b>uffer\") joango da.</p>"
 
-#: vimode/appcommands.cpp:545
+#: vimode/appcommands.cpp:551
 #, kde-format
 msgid "<p><b>ls</b></p><p>list current buffers<p>"
 msgstr "<p><b>ls</b></p><p>zerrendatu uneko bufferrak<p>"
