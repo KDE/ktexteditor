@@ -1748,10 +1748,12 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
     QWidget *w = widget();
 
     if (!w) {
-        w = activeView();
-
+        w = QApplication::activeWindow();
         if (!w) {
-            w = QApplication::activeWindow();
+            w = KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->window();
+        }
+        if (!w) {
+            w = activeView();
         }
     }
 
