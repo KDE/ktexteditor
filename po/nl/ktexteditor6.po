@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 14:28+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -7837,22 +7837,22 @@ msgstr "Cursorbeweging bij woorden beginnend met hoofdletters uitgeschakeld"
 msgid "Camel case movement enabled"
 msgstr "Cursorbeweging bij woorden beginnend met hoofdletters ingeschakeld"
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, kde-format
 msgid "Search wrapped"
 msgstr "Regelafbreking in zoektekst"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Align On"
 msgstr "Uitlijnen op"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Uitlijnpatroon:"
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Bestand exporteren als HTML"
@@ -8367,12 +8367,12 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Importeren uit vimrc-bestand mislukt"
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Markering ingesteld: %1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "er zijn geen tekens meer voor de volgende bladwijzer."

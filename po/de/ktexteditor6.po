@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2023-08-14 21:56+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -7882,22 +7882,22 @@ msgstr "Camel-Case-Cursorbewegung deaktiviert"
 msgid "Camel case movement enabled"
 msgstr "Camel-Case-Cursorbewegung aktiviert"
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, kde-format
 msgid "Search wrapped"
 msgstr "Suche hat das Ende erreicht"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Align On"
 msgstr "Ausrichten an"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Ausrichtungsmuster:"
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Datei als HTML exportieren"
@@ -8415,12 +8415,12 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Aus vimrc-Datei importieren"
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Markierung gesetzt: %1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "Es gibt keine weiteren Zeichen für das nächste Lesezeichen."

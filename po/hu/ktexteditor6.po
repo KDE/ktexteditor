@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -7760,22 +7760,22 @@ msgstr "CamelCase áthelyezés kikapcsolva"
 msgid "Camel case movement enabled"
 msgstr "CamelCase áthelyezés bekapcsolva"
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, kde-format
 msgid "Search wrapped"
 msgstr "Körkörös keresés"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Align On"
 msgstr "Igazítás ehhez"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Igazítási minta:"
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportálás HTML formátumban"
@@ -8286,12 +8286,12 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Importálás vimrc fájlból"
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Jelölés beállítva: %1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "Nincs több karakter a következő könyvjelzőhöz."

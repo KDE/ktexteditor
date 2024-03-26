@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
-"PO-Revision-Date: 2024-03-24 18:59\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
+"PO-Revision-Date: 2024-03-25 19:39\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -7470,22 +7470,22 @@ msgstr "驼峰式大小写移动已禁用"
 msgid "Camel case movement enabled"
 msgstr "驼峰式大小写移动已启用"
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, kde-format
 msgid "Search wrapped"
 msgstr "已从头搜索"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Align On"
 msgstr "对齐于"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "对齐模式："
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr "文件导出为 HTML"
@@ -7972,12 +7972,12 @@ msgstr "读取一个 vimrc 文件并尝试导入其中用\"[n]noremap\"命令指
 msgid "Import from vimrc file"
 msgstr "从 vimrc 文件中导入"
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr "标记设置：%1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "下个书签没有字符。"

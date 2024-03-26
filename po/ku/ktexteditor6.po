@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -7328,23 +7328,23 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, fuzzy, kde-format
 msgid "Search wrapped"
 msgstr "Lêgerîn"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Bike texmek"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr ""
@@ -7783,12 +7783,12 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr ""
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr ""
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr ""

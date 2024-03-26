@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2010-06-06 14:00+0200\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -7787,24 +7787,24 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search wrapped"
 msgstr "&Traži"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Poravnaj"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "Izvezi datoteku kao "
@@ -8259,13 +8259,13 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr ""
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, fuzzy, kde-format
 #| msgid "Mark not set: %1"
 msgid "Mark set: %1"
 msgstr "Oznaka nije postavljena: %1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, fuzzy, kde-format
 #| msgid "Go to the next bookmark."
 msgid "There are no more chars for the next bookmark."

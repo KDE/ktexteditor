@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2024-03-17 15:24+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -7750,22 +7750,22 @@ msgstr "Onemogoči pomikanje kazalca po velikih začetnicah sestavljenih besed"
 msgid "Camel case movement enabled"
 msgstr "Omogoči pomikanje kazalca po velikih začetnicah sestavljenih besed"
 
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, kde-format
 msgid "Search wrapped"
 msgstr "Iskanje v ciklu"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Align On"
 msgstr "Poravnaj na"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Vzorec poravnave:"
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Izvozi datoteko kot HTML"
@@ -8270,12 +8270,12 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Uvozi iz datoteke vimrc"
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Oznaka nastavljena: %1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "Za naslednji zaznamek ni več znakov."

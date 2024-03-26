@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:36+0000\n"
+"POT-Creation-Date: 2024-03-26 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -7792,22 +7792,22 @@ msgstr "Gamelu-kaxa mugimendua gaituta"
 # search wrapped: bilaketa zirkularra
 #
 # Dokumentuaren amaierara iritsita bilaketarekin jarraituko du dokumentuaren haseratik eta alderantziz atzeranzko noranzkoan bilatzerakoan, dokumentuaren haserara iritsita bilatzen jarraitzeko dokumentuaren amaieratik jarraituko du.
-#: view/kateview.cpp:2238
+#: view/kateview.cpp:2252
 #, kde-format
 msgid "Search wrapped"
 msgstr "Bilaketa zirkularra"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Align On"
 msgstr "Lerrokatu hemen"
 
-#: view/kateview.cpp:3779
+#: view/kateview.cpp:3793
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Lerrokatze eredua:"
 
-#: view/kateview.cpp:4853
+#: view/kateview.cpp:4867
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Esportatu fitxategia HTML gisa"
@@ -8320,12 +8320,12 @@ msgstr ""
 msgid "Import from vimrc file"
 msgstr "Inportatu vimrc fitxategitik"
 
-#: vimode/marks.cpp:111
+#: vimode/marks.cpp:115
 #, kde-format
 msgid "Mark set: %1"
 msgstr "Marka ezarri: %1"
 
-#: vimode/marks.cpp:157
+#: vimode/marks.cpp:161
 #, kde-format
 msgid "There are no more chars for the next bookmark."
 msgstr "Ez dago hurrengo laster-markarako karaktere gehiago."
