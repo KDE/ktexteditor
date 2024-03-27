@@ -3041,7 +3041,7 @@ msgstr ""
 #: script/data/commands/emmet.js:98
 #, kde-format
 msgid "Moves the caret to the current tag's pair"
-msgstr "Mou el cursor cap al parell actual d'etiquetes"
+msgstr "Mou el cursor fins el parell actual d'etiquetes"
 
 #: script/data/commands/emmet.js:99
 #, kde-format
@@ -8401,6 +8401,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
-
-#~ msgid "Show focus frame around editor"
-#~ msgstr "Mostra el marc del focus al voltant de l'editor"
