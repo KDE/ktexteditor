@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-28 00:36+0000\n"
-"PO-Revision-Date: 2024-03-24 22:10+0200\n"
+"PO-Revision-Date: 2024-03-30 12:10+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -6343,16 +6343,13 @@ msgid "&Format Indentation"
 msgstr "&הזחה"
 
 #: view/kateview.cpp:518
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this to align the current line or block of text to its proper indent "
-#| "level."
+#, kde-format
 msgid ""
 "Use this to auto indent the current line or block of text to its proper "
 "indent level."
 msgstr ""
-"השתמש באפשרות זו כדי ליישר את השורה או קטע הטקסט הנוכחיים כך שיהיו במיקום "
-"ההזחה המתאים."
+"אפשר להשתמש בזה כדי להזיח אוטומטית את שורת או מקטע הטקסט הנוכחיים לרמת ההזחה "
+"המתאימה."
 
 #: view/kateview.cpp:522
 #, kde-format
@@ -6556,9 +6553,9 @@ msgid "Go to Previous Modified Line"
 msgstr "מעבר לשורה הקודמת שנערכה"
 
 #: view/kateview.cpp:670
-#, fuzzy, kde-format
+#, kde-format
 msgid "Move upwards to the previous modified line."
-msgstr "הזז את הסמן אל התאמת ההזחה הקודמת"
+msgstr "דילוג מעלה לשורה הקודמת שנערכה."
 
 #: view/kateview.cpp:675
 #, kde-format
@@ -6689,15 +6686,14 @@ msgid "&Dynamic Word Wrap"
 msgstr "גלישת שורות &דינמית"
 
 #: view/kateview.cpp:763
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not changed."
-msgstr "אם אפשרות זו נבחרת, שורות הטקסט יגלשו לפני גבול התצוגה שעל המסך."
+msgstr ""
+"אם האפשרות הזאת מסומנת, שורות הטקסט תגלושנה בגבול התצוגה של המסך הזה.<br /"
+"><br />זאת אפשרות שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."
 
 #: view/kateview.cpp:767
 #, kde-format
@@ -6730,14 +6726,13 @@ msgid "Static Word Wrap"
 msgstr "גלישת שורות סטטית"
 
 #: view/kateview.cpp:777
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
-msgstr "אם אפשרות זו נבחרת, שורות הטקסט יגלשו לפני גבול התצוגה שעל המסך."
+msgstr ""
+"אם האפשרות הזאת מסומנת, שורות הטקסט תגלושנה בעמודה כמו שמוגדר במאפייני "
+"העריכה."
 
 #: view/kateview.cpp:784
 #, kde-format
@@ -6886,12 +6881,11 @@ msgid "Add &Byte Order Mark (BOM)"
 msgstr "הוספת סימן &סדר בתים  (BOM)"
 
 #: view/kateview.cpp:868
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
 "while saving"
-msgstr ""
-"אפשר או בטל את ההוספה של סימן סדר־סיביות עבור קבצי UTF8-UTF16 בעת שמירת קבצים"
+msgstr "הפעלת/השבתת סימני סדר בתים לקבצים בקידוד UTF-8/UTF-16 בזמן השמירה"
 
 #: view/kateview.cpp:872
 #, kde-format
@@ -6929,10 +6923,9 @@ msgid "Find and Select Next Occurrence"
 msgstr ""
 
 #: view/kateview.cpp:894
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds next occurrence of the word under cursor and add it to selection."
-msgstr "מחפש את ההופעה הבאה של הטקסט הנבחר"
+msgstr "איתור המופע הבא של המילה תחת הסמן והוספתו לבחירה."
 
 #: view/kateview.cpp:898
 #, kde-format
@@ -6950,10 +6943,9 @@ msgid "Find and Select All Occurrences"
 msgstr ""
 
 #: view/kateview.cpp:906
-#, fuzzy, kde-format
-#| msgid "Finds next occurrence of selected text."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "מחפש את ההופעה הבאה של הטקסט הנבחר"
+msgstr "איתור כל המופעים של המילה תחת הסמן ובחירתם."
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -6988,10 +6980,9 @@ msgid "Add Caret below Cursor"
 msgstr ""
 
 #: view/kateview.cpp:929
-#, fuzzy, kde-format
-#| msgid "Select the entire text of the current document."
+#, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "בחירת כל הטקסט של המסמך הנוכחי."
+msgstr "הוספת סמן טקסט בשורה שמתחת לסמן הטקסט."
 
 #: view/kateview.cpp:933
 #, kde-format
