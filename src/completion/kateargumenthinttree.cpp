@@ -164,8 +164,8 @@ void ArgumentHintWidget::activateHint(int i, int rowCount)
 
 void ArgumentHintWidget::updateGeometry()
 {
-    int lines = 1;
     auto block = m_view->document()->begin();
+    int lines = 0;
     QFontMetrics fm(m_view->document()->defaultFont());
     int maxWidth = 0;
     while (block.isValid()) {
@@ -173,7 +173,7 @@ void ArgumentHintWidget::updateGeometry()
         lines += block.layout()->lineCount();
         block = block.next();
     }
-    setFixedHeight((lines * fm.height()) + 10 + m_view->document()->documentMargin());
+    setFixedHeight((std::max(lines,1) * fm.height()) + 10 + m_view->document()->documentMargin());
     // limit the width to between 400 - 600
     int width = std::max(maxWidth, 400);
     width = std::min(width, 600);
@@ -181,6 +181,7 @@ void ArgumentHintWidget::updateGeometry()
 
     QPoint pos = m_completionWidget->pos();
     pos.ry() -= this->height();
+    pos.ry() -= fm.height();
     pos.ry() -= 4;
     move(pos);
 }
