@@ -697,10 +697,12 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position
     }
 
     editStart();
+
     // Disable emitting textInsertedRange signal in every editInsertText call
     // we will emit a single signal at the end of this function
     bool notify = false;
 
+    auto insertStart = position;
     int currentLine = position.line();
     int currentLineStart = 0;
     const int totalLength = text.length();
@@ -711,6 +713,12 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position
         int line = lines();
         while (line <= position.line()) {
             editInsertLine(line, QString(), false);
+
+            // remember the first insert position
+            if (insertStart == position) {
+                insertStart = m_editLastChangeStartCursor;
+            }
+
             line++;
         }
     }
@@ -775,7 +783,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor position
     }
 
     // let the world know that we got some new text
-    KTextEditor::Range insertedRange(position, currentLine, endCol);
+    KTextEditor::Range insertedRange(insertStart, currentLine, endCol);
     Q_EMIT textInsertedRange(this, insertedRange);
 
     editEnd();

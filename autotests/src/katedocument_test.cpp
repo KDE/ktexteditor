@@ -1033,3 +1033,22 @@ void KateDocumentTest::testBug329247()
         QCOMPARE(doc.text(), expected_document_after_2_indent);
     }
 }
+
+void KateDocumentTest::testBugTextInsertedRange()
+{
+    KTextEditor::DocumentPrivate doc;
+    const QString original = QStringLiteral("01234567\n01234567");
+    doc.setText(original);
+    QVERIFY(doc.lines() == 2);
+    QCOMPARE(doc.text(), original);
+
+    // validate the textInsertedRange signal
+    connect(&doc, &KTextEditor::DocumentPrivate::textInsertedRange, [](KTextEditor::Document *, KTextEditor::Range range) {
+        QCOMPARE(range, KTextEditor::Range(1, 8, 7, 4));
+    });
+
+    // insert text after existing lines
+    doc.insertText(KTextEditor::Cursor(6, 10), QStringLiteral("x\nxxxx"));
+    QCOMPARE(doc.text(), QStringLiteral("01234567\n01234567\n\n\n\n\n          x\nxxxx"));
+    QVERIFY(doc.lines() == 8);
+}
