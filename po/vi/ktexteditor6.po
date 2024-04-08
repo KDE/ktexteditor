@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-28 00:36+0000\n"
+"POT-Creation-Date: 2024-04-08 00:36+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -2157,7 +2157,7 @@ msgstr "Tự động tải lại tài liệu"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Tự động tải lại tài liệu khi nó bị thay đổi trên đĩa"
 
-#: document/katedocument.cpp:2246
+#: document/katedocument.cpp:2254
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2166,25 +2166,25 @@ msgstr ""
 "Không tải được tệp %1, vì không thể đọc được.<br />Hãy kiểm tra rằng bạn có "
 "quyền đọc tệp này."
 
-#: document/katedocument.cpp:2251
+#: document/katedocument.cpp:2259
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Tải lại"
 
-#: document/katedocument.cpp:2255 document/katedocument.cpp:6500
+#: document/katedocument.cpp:2263 document/katedocument.cpp:6508
 #, kde-format
 msgid "&Close"
 msgstr "Đón&g"
 
-#: document/katedocument.cpp:2256 document/katedocument.cpp:6501
+#: document/katedocument.cpp:2264 document/katedocument.cpp:6509
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Đóng thông điệp"
 
-#: document/katedocument.cpp:2388
+#: document/katedocument.cpp:2396
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2197,7 +2197,7 @@ msgstr ""
 "dung của nó.<br />Hoặc mở lại tệp này với bộ mã hoá đúng, hoặc bật lại chế "
 "độ đọc-ghi trong trình đơn 'Công cụ' để có thể chỉnh sửa nó."
 
-#: document/katedocument.cpp:2407
+#: document/katedocument.cpp:2415
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2210,17 +2210,17 @@ msgstr ""
 "và tài liệu đã được đặt sang chế độ chỉ đọc, vì việc lưu lại sẽ thay đổi nội "
 "dung của nó."
 
-#: document/katedocument.cpp:2414
+#: document/katedocument.cpp:2422
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Tạm thời tăng giới hạn và tải lại tệp"
 
-#: document/katedocument.cpp:2417
+#: document/katedocument.cpp:2425
 #, kde-format
 msgid "Close"
 msgstr "Đóng"
 
-#: document/katedocument.cpp:2444
+#: document/katedocument.cpp:2452
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2229,18 +2229,18 @@ msgstr ""
 "Bạn có thật sự muốn lưu tệp chưa chỉnh sửa này? Việc này có thể ghi đè lên "
 "dữ liệu đã thay đổi trong tệp trên đĩa."
 
-#: document/katedocument.cpp:2445
+#: document/katedocument.cpp:2453
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Đang thử lưu tệp chưa chỉnh sửa"
 
-#: document/katedocument.cpp:2446 document/katedocument.cpp:2457
-#: document/katedocument.cpp:2473
+#: document/katedocument.cpp:2454 document/katedocument.cpp:2465
+#: document/katedocument.cpp:2481
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Vẫn lưu"
 
-#: document/katedocument.cpp:2455
+#: document/katedocument.cpp:2463
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2249,14 +2249,14 @@ msgstr ""
 "Bạn có thật sự muốn lưu tệp này? Cả tệp đang mở của bạn lẫn tệp trên đĩa đều "
 "đã bị thay đổi. Một phần dữ liệu có thể bị mất."
 
-#: document/katedocument.cpp:2456 document/katedocument.cpp:2472
-#: document/katedocument.cpp:2789 syntax/katethemeconfig.cpp:1207
+#: document/katedocument.cpp:2464 document/katedocument.cpp:2480
+#: document/katedocument.cpp:2797 syntax/katethemeconfig.cpp:1207
 #: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Có thể mất dữ liệu"
 
-#: document/katedocument.cpp:2470
+#: document/katedocument.cpp:2478
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2265,7 +2265,7 @@ msgstr ""
 "Bộ mã hoá đã chọn không thể mã hoá mọi kí tự Unicode trong tài liệu này. Bạn "
 "có thật sự muốn lưu nó không? Một phần dữ liệu có thể bị mất."
 
-#: document/katedocument.cpp:2540
+#: document/katedocument.cpp:2548
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2280,7 +2280,7 @@ msgstr ""
 "Tệp ban đầu có thể đã bị mất hoặc bị hỏng. Đừng thoát ứng dụng cho đến khi "
 "tệp đó được ghi thành công."
 
-#: document/katedocument.cpp:2661
+#: document/katedocument.cpp:2669
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2292,50 +2292,50 @@ msgstr ""
 "khi lưu, bạn có thể mất dữ liệu của tệp này. Một lí do có thể là phương tiện "
 "mà bạn ghi vào thì đã đầy, hoặc bạn chỉ có quyền đọc thư mục của tệp đó."
 
-#: document/katedocument.cpp:2665
+#: document/katedocument.cpp:2673
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Tạo bản sao dự phòng thất bại."
 
-#: document/katedocument.cpp:2666
+#: document/katedocument.cpp:2674
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Vẫn thử lưu"
 
-#: document/katedocument.cpp:2788
+#: document/katedocument.cpp:2796
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Bạn có thật sự muốn tiếp tục đóng tệp này? Có thể xảy ra mất mát dữ liệu."
 
-#: document/katedocument.cpp:2790
+#: document/katedocument.cpp:2798
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Vẫn đóng"
 
-#: document/katedocument.cpp:4571
+#: document/katedocument.cpp:4579
 #, kde-format
 msgid "Untitled"
 msgstr "Không tên"
 
-#: document/katedocument.cpp:4694 document/katedocument.cpp:4920
-#: document/katedocument.cpp:4930 document/katedocument.cpp:5723
-#: document/katedocument.cpp:5910
+#: document/katedocument.cpp:4702 document/katedocument.cpp:4928
+#: document/katedocument.cpp:4938 document/katedocument.cpp:5731
+#: document/katedocument.cpp:5918
 #, kde-format
 msgid "Save File"
 msgstr "Lưu tệp"
 
-#: document/katedocument.cpp:4697
+#: document/katedocument.cpp:4705
 #, kde-format
 msgid "Save failed"
 msgstr "Lưu thất bại"
 
-#: document/katedocument.cpp:4941
+#: document/katedocument.cpp:4949
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Lưu bản sao của tệp"
 
-#: document/katedocument.cpp:4953
+#: document/katedocument.cpp:4961
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2348,7 +2348,7 @@ msgstr ""
 "Hãy kiểm tra rằng bạn có quyền ghi vào tệp này hoặc vẫn còn đủ chỗ trống "
 "trên đĩa."
 
-#: document/katedocument.cpp:5236
+#: document/katedocument.cpp:5244
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2361,7 +2361,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5242
+#: document/katedocument.cpp:5250
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2374,22 +2374,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5552
+#: document/katedocument.cpp:5560
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Tệp '%1' đã bị chỉnh sửa trên đĩa."
 
-#: document/katedocument.cpp:5555
+#: document/katedocument.cpp:5563
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Tệp '%1' đã được tạo trên đĩa."
 
-#: document/katedocument.cpp:5558
+#: document/katedocument.cpp:5566
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Tệp '%1' đã bị xoá trên đĩa."
 
-#: document/katedocument.cpp:5895
+#: document/katedocument.cpp:5903
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2398,17 +2398,17 @@ msgstr ""
 "Tài liệu \"%1\" đã bị chỉnh sửa.\n"
 "Bạn muốn lưu các thay đổi hay loại bỏ chúng?"
 
-#: document/katedocument.cpp:5898
+#: document/katedocument.cpp:5906
 #, kde-format
 msgid "Close Document"
 msgstr "Đóng tài liệu"
 
-#: document/katedocument.cpp:6009
+#: document/katedocument.cpp:6017
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Tệp <a href=\"%1\">%2</a> vẫn đang tải."
 
-#: document/katedocument.cpp:6014
+#: document/katedocument.cpp:6022
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Huỷ bỏ &việc tải"
