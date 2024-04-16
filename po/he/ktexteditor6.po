@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-08 00:36+0000\n"
-"PO-Revision-Date: 2024-03-30 12:10+0300\n"
+"PO-Revision-Date: 2024-04-15 16:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -89,7 +89,7 @@ msgstr "&עריכה"
 #: data/katepart5ui.rc:34
 #, kde-format
 msgid "Find Variants"
-msgstr "חיפושים שונים"
+msgstr "חיפוש הגוונים"
 
 #. i18n: ectx: Menu (selection)
 #: data/katepart5ui.rc:44
