@@ -177,7 +177,7 @@ KateCompletionWidget::~KateCompletionWidget()
 
 void KateCompletionWidget::viewFocusOut()
 {
-    QWidget *toplevels[3] = {m_entryList, m_docTip, m_argumentHintWidget};
+    QWidget *toplevels[4] = {this, m_entryList, m_docTip, m_argumentHintWidget};
     if (!std::any_of(std::begin(toplevels), std::end(toplevels), [](QWidget *w) {
             auto fw = QApplication::focusWidget();
             return fw == w || w->isAncestorOf(fw);
