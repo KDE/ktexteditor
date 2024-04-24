@@ -3135,6 +3135,13 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
             }
         }
 
+        if (k->modifiers() == Qt::AltModifier && view()->isCompletionActive()) {
+            if (view()->completionWidget()->handleShortcutOverride(k)) {
+                k->accept();
+                return true;
+            }
+        }
+
         if (m_currentInputMode->stealKey(k)) {
             k->accept();
             return true;

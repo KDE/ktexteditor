@@ -111,6 +111,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
         setParent(parent);
     }
     m_docTip->setParent(this->parentWidget());
+
     parentWidget()->installEventFilter(this);
 
     setFrameStyle(QFrame::Box | QFrame::Raised);
@@ -1136,42 +1137,32 @@ void KateCompletionWidget::showDocTip(const QModelIndex &idx)
     }
 }
 
+bool KateCompletionWidget::handleShortcutOverride(QKeyEvent *e)
+{
+    if (!isCompletionActive() || e->modifiers() != Qt::AltModifier) {
+        return false;
+    }
+    switch (e->key()) {
+    case Qt::Key_Left:
+        return navigateLeft();
+    case Qt::Key_Right:
+        return navigateRight();
+    case Qt::Key_Up:
+        return navigateUp();
+    case Qt::Key_Down:
+        return navigateDown();
+    case Qt::Key_Return:
+        return navigateAccept();
+    case Qt::Key_Backspace:
+        return navigateBack();
+    }
+    return false;
+}
+
 bool KateCompletionWidget::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched != this && event->type() == QEvent::Resize && isCompletionActive()) {
         abortCompletion();
-    } else if (event->type() == QEvent::KeyRelease && isCompletionActive()) {
-        auto e = static_cast<QKeyEvent *>(event);
-        if (e->key() == Qt::Key_Left && e->modifiers() == Qt::AltModifier) {
-            if (navigateLeft()) {
-                return true;
-            }
-        }
-        if (e->key() == Qt::Key_Right && e->modifiers() == Qt::AltModifier) {
-            if (navigateRight()) {
-                return true;
-            }
-        }
-        if (e->key() == Qt::Key_Up && e->modifiers() == Qt::AltModifier) {
-            if (navigateUp()) {
-                return true;
-            }
-        }
-        if (e->key() == Qt::Key_Down && e->modifiers() == Qt::AltModifier) {
-            if (navigateDown()) {
-                return true;
-            }
-        }
-        if (e->key() == Qt::Key_Return && e->modifiers() == Qt::AltModifier) {
-            if (navigateAccept()) {
-                return true;
-            }
-        }
-        if (e->key() == Qt::Key_Backspace && e->modifiers() == Qt::AltModifier) {
-            if (navigateBack()) {
-                return true;
-            }
-        }
     }
     return QFrame::eventFilter(watched, event);
 }

@@ -138,6 +138,8 @@ public:
         return m_docTip;
     }
 
+    bool handleShortcutOverride(QKeyEvent *e);
+
 public Q_SLOTS:
     void waitForModelReset();
 
