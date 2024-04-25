@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-08 00:36+0000\n"
-"PO-Revision-Date: 2024-04-23 21:18+0300\n"
+"PO-Revision-Date: 2024-04-24 08:37+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -5584,7 +5584,7 @@ msgstr[3] "%1 שורות"
 #: utils/katevariableexpansionhelpers.cpp:129
 #, kde-format
 msgid "<value>"
-msgstr ""
+msgstr "<ערך>"
 
 #: utils/katevariableexpansionhelpers.cpp:213
 #, kde-format
@@ -5653,6 +5653,7 @@ msgid ""
 "Full document path including file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"נתיב המסמך המלא כולל שם הקובץ, עם מפריד טבעי לנתיבים (לוכסן הפוך ב־Windows)"
 
 #: utils/katevariableexpansionmanager.cpp:88
 #, kde-format
@@ -5660,6 +5661,7 @@ msgid ""
 "Full document path excluding file name, with native path separator "
 "(backslash on Windows)."
 msgstr ""
+"נתיב המסמך המלא למעט שם הקובץ, עם מפריד טבעי לנתיבים (לוכסן הפוך ב־Windows)"
 
 #: utils/katevariableexpansionmanager.cpp:96
 #, kde-format
