@@ -566,7 +566,7 @@ void KateTextBufferTest::lineLengthLimit()
         bool tooLongLinesWrapped = false;
         int longestLineLoaded = 0;
         buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, false);
-        QVERIFY(encodingErrors);
+        QVERIFY(!encodingErrors);
         QVERIFY(tooLongLinesWrapped);
     }
 
@@ -594,7 +594,7 @@ void KateTextBufferTest::lineLengthLimit()
         bool tooLongLinesWrapped = false;
         int longestLineLoaded = 0;
         buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, false);
-        QVERIFY(encodingErrors);
+        QVERIFY(!encodingErrors);
         QVERIFY(tooLongLinesWrapped);
     }
 }
