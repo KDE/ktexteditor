@@ -87,6 +87,7 @@ public:
         m_lastWasR = false;
         m_position = 0;
         m_lastLineStart = 0;
+        m_alreadyScanned = -1;
         m_eol = TextBuffer::eolUnknown;
         m_text.clear();
         m_converterState = m_codec.isEmpty() ? QStringDecoder() : QStringDecoder(m_codec.toUtf8().constData());

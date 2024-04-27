@@ -546,6 +546,57 @@ void KateTextBufferTest::lineLengthLimit()
         }
         QCOMPARE(buffer.line(327684).text(), QLatin1String("AAA"));
     }
+
+    {
+        {
+            // create file that did trigger hang of bug 486195
+            QFile f(file_path);
+            QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            f.write(QByteArray(256 * 1000, (char)-1));
+            QVERIFY(f.flush());
+        }
+
+        // load with long line limit and inspect results
+        KTextEditor::DocumentPrivate doc;
+        Kate::TextBuffer buffer(&doc, true);
+        buffer.setTextCodec(QStringLiteral("UTF-8"));
+        buffer.setFallbackTextCodec(QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Latin1)));
+        buffer.setLineLengthLimit(10000);
+        bool encodingErrors = false;
+        bool tooLongLinesWrapped = false;
+        int longestLineLoaded = 0;
+        buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, false);
+        QVERIFY(encodingErrors);
+        QVERIFY(tooLongLinesWrapped);
+    }
+
+    {
+        {
+            // create file that did trigger hang of bug 486134
+            QFile f(file_path);
+            QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            for (int i = 0; i < 10000; ++i) {
+                f.putChar(0x00);
+                f.putChar(0x02);
+                f.putChar(0x3b);
+                f.putChar(0xae);
+            }
+            QVERIFY(f.flush());
+        }
+
+        // load with long line limit and inspect results
+        KTextEditor::DocumentPrivate doc;
+        Kate::TextBuffer buffer(&doc, true);
+        buffer.setTextCodec(QStringLiteral("UTF-8"));
+        buffer.setFallbackTextCodec(QString::fromUtf8(QStringConverter::nameForEncoding(QStringConverter::Latin1)));
+        buffer.setLineLengthLimit(10000);
+        bool encodingErrors = false;
+        bool tooLongLinesWrapped = false;
+        int longestLineLoaded = 0;
+        buffer.load(file_path, encodingErrors, tooLongLinesWrapped, longestLineLoaded, false);
+        QVERIFY(encodingErrors);
+        QVERIFY(tooLongLinesWrapped);
+    }
 }
 
 #if HAVE_KAUTH
