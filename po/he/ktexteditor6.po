@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-08 00:36+0000\n"
-"PO-Revision-Date: 2024-04-24 08:37+0300\n"
+"PO-Revision-Date: 2024-04-25 15:12+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4596,13 +4596,13 @@ msgid "Error"
 msgstr "שגיאה"
 
 #: syntax/katethemeconfig.cpp:332
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker "
 "color is displayed lightly because of transparency.</p>"
 msgstr ""
-"<p> הגדרת צבע הרקע של סוג הסימון הנבחר.</p> <p> <b>הערה</b>: צבע הסימון מוצג "
-"בצבע בהיר יותר, בגלל שקיפות. </p>"
+"<p>הגדרת צבע רקע לסוג סימון.</p><p><b>לתשומת ליבך</b>: צבע הסימון מופיע חלש "
+"עקב שקיפות.</p>"
 
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
