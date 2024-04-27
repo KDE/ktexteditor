@@ -2996,20 +2996,24 @@ void KateViewInternal::tagAll()
 
 void KateViewInternal::paintCursor()
 {
+    QVarLengthArray<int, 64> updatedLines;
     if (tagLine(m_displayCursor)) {
-        updateDirty(); // paintText (0,0,width(), height(), true);
+        updatedLines.push_back(m_displayCursor.line());
     }
 
     const int s = view()->firstDisplayedLine();
     const int e = view()->lastDisplayedLine();
     for (const auto &c : view()->m_secondaryCursors) {
         auto p = c.cursor();
-        if (p.line() >= s - 1 && p.line() <= e + 1) {
+        if (p.line() >= s - 1 && p.line() <= e + 1 && !updatedLines.contains(p.line())) {
+            updatedLines.push_back(p.line());
             tagLines(p, p, true);
         }
     }
 
-    updateDirty(); // paintText (0,0,width(), height(), true);
+    if (!updatedLines.isEmpty()) {
+        updateDirty(); // paintText (0,0,width(), height(), true);
+    }
 }
 
 KTextEditor::Cursor KateViewInternal::cursorForPoint(QPoint p)
