@@ -108,8 +108,7 @@ KTEXTEDITOR_ENCODING_TEST ("ISO 8859-15" "latin15-with-utf8-bom.txt")
 
 # test executable for indentation
 add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/testutils.cpp)
-target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
-    Qt6::Test)
+target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
 ecm_mark_as_test(kateindenttest)
 if(ENABLE_PCH)
     target_precompile_headers(kateindenttest REUSE_FROM kte_test_pch)
@@ -117,7 +116,7 @@ endif()
 
 # test macro for indentation tests
 MACRO(KTEXTEDITOR_INDENT_TEST _testname)
-  ADD_TEST (NAME kateindenttest_${_testname} COMMAND kateindenttest ${_testname})
+  ADD_TEST (NAME kateindenttest_${_testname} COMMAND kateindenttest ${OFFSCREEN_QPA} ${_testname})
 ENDMACRO(KTEXTEDITOR_INDENT_TEST)
 
 # test different indenters sepearately to have smaller test chunks, that takes LONG
@@ -137,8 +136,7 @@ KTEXTEDITOR_INDENT_TEST ("testReplicode")
 
 macro(ktexteditor_unit_test_offscreen testname)
     add_executable(${testname} src/${testname}.cpp ${ARGN})
-    target_link_libraries(${testname} ${KTEXTEDITOR_TEST_LINK_LIBS}
-        Qt6::Test)
+    target_link_libraries(${testname} ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
     ecm_mark_as_test(${testname})
     if(ENABLE_PCH)
         target_precompile_headers(${testname} REUSE_FROM kte_test_pch)
