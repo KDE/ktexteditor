@@ -560,10 +560,11 @@ void KateCompletionWidget::updateArgumentHintGeometry()
 }
 
 // Checks whether the given model has at least "rows" rows, also searching the second level of the tree.
-bool hasAtLeastNRows(int rows, QAbstractItemModel *model)
+static bool hasAtLeastNRows(int rows, QAbstractItemModel *model)
 {
     int count = 0;
-    for (int row = 0; row < model->rowCount(); ++row) {
+    const auto rowCount = model->rowCount();
+    for (int row = 0; row < rowCount; ++row) {
         ++count;
 
         QModelIndex index(model->index(row, 0));
