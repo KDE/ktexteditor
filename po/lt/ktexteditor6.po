@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-08 00:36+0000\n"
+"POT-Creation-Date: 2024-04-28 00:36+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -207,14 +207,34 @@ msgstr ""
 msgid "Show preview of folded blocks on hover"
 msgstr "Rodyti dabartinio dokumento spausdinimo peržiūrą"
 
-#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: dialogs/bordersappearanceconfigwidget.ui:52
+#, kde-format
+msgid "Folding arrows visibility:"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
+#: dialogs/bordersappearanceconfigwidget.ui:63
+#, fuzzy, kde-format
+#| msgid "Show &Icon Border"
+msgid "Show on Hover"
+msgstr "Rodyti &ženkliukų rėmelį"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:68
+#, fuzzy, kde-format
+#| msgid "Always"
+msgid "Show Always"
+msgstr "Visada"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: dialogs/bordersappearanceconfigwidget.ui:92
 #, kde-format
 msgid "Left side:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
-#: dialogs/bordersappearanceconfigwidget.ui:75
+#: dialogs/bordersappearanceconfigwidget.ui:99
 #, kde-format
 msgid ""
 "<p>If this option is checked, every new view will display an icon border on "
@@ -226,15 +246,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
-#: dialogs/bordersappearanceconfigwidget.ui:78
-#: dialogs/bordersappearanceconfigwidget.ui:131
+#: dialogs/bordersappearanceconfigwidget.ui:102
+#: dialogs/bordersappearanceconfigwidget.ui:155
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgid "Show marks"
 msgstr "Rodyti &slinkties juostos žymes"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
-#: dialogs/bordersappearanceconfigwidget.ui:85
+#: dialogs/bordersappearanceconfigwidget.ui:109
 #, kde-format
 msgid ""
 "If this option is checked, every new view will display line numbers on the "
@@ -244,13 +264,13 @@ msgstr ""
 "kairėje pusėje."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
-#: dialogs/bordersappearanceconfigwidget.ui:88
+#: dialogs/bordersappearanceconfigwidget.ui:112
 #, kde-format
 msgid "Show &line numbers"
 msgstr "Rodyti ei&lučių numerius"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowLineModification)
-#: dialogs/bordersappearanceconfigwidget.ui:95
+#: dialogs/bordersappearanceconfigwidget.ui:119
 #, kde-format
 msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
@@ -260,21 +280,21 @@ msgstr ""
 "rodomas kairėje pusėje."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
-#: dialogs/bordersappearanceconfigwidget.ui:98
+#: dialogs/bordersappearanceconfigwidget.ui:122
 #, fuzzy, kde-format
 #| msgid "Highlight range between selected brackets"
 msgid "Highlight changed and unsaved lines"
 msgstr "Paryškinti plotą tarp parinktų skliaustelių"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/bordersappearanceconfigwidget.ui:121
+#: dialogs/bordersappearanceconfigwidget.ui:145
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
 msgid "Scrollbars"
 msgstr "Rodyti &slinkties juostos žymes"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
-#: dialogs/bordersappearanceconfigwidget.ui:128
+#: dialogs/bordersappearanceconfigwidget.ui:152
 #, kde-format
 msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
@@ -284,7 +304,7 @@ msgstr ""
 "vertikalioje slinkties juostoje.</p><p>Šios žymės rodo, pvz., žymeles.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
-#: dialogs/bordersappearanceconfigwidget.ui:138
+#: dialogs/bordersappearanceconfigwidget.ui:162
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>If this option is checked, every new view will show marks on the "
@@ -298,21 +318,45 @@ msgstr ""
 "vertikalioje slinkties juostoje.</p><p>Šios žymės rodo, pvz., žymeles.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
-#: dialogs/bordersappearanceconfigwidget.ui:141
+#: dialogs/bordersappearanceconfigwidget.ui:165
 #, fuzzy, kde-format
 #| msgid "Show print preview of current document"
 msgid "Show preview when hovering over scrollbar"
 msgstr "Rodyti dabartinio dokumento spausdinimo peržiūrą"
 
+#. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:172
+#, kde-format
+msgid "Scro&llbars visibility:"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:748
+#, kde-format
+msgid "Always On"
+msgstr "Visada įjungta"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:188
+#, kde-format
+msgid "Show When Needed"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:193
+#, kde-format
+msgid "Always Off"
+msgstr "Visada išjungta"
+
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/bordersappearanceconfigwidget.ui:164
+#: dialogs/bordersappearanceconfigwidget.ui:217
 #, fuzzy, kde-format
 #| msgid "Minimap Width"
 msgid "Minimap:"
 msgstr "Mini žemėlapio plotis"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
-#: dialogs/bordersappearanceconfigwidget.ui:171
+#: dialogs/bordersappearanceconfigwidget.ui:224
 #, kde-format
 msgid ""
 "If this option is checked, every new view will show a mini map on the "
@@ -322,14 +366,21 @@ msgstr ""
 "kairėje pusėje."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
-#: dialogs/bordersappearanceconfigwidget.ui:174
+#: dialogs/bordersappearanceconfigwidget.ui:227
 #, fuzzy, kde-format
 #| msgid "Show scrollbar mini-map"
 msgid "Show minimap"
 msgstr "Rodyti &slinkties juostos žymes"
 
+#. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
+#: dialogs/bordersappearanceconfigwidget.ui:250
+#, fuzzy, kde-format
+#| msgid "Minimap Width"
+msgid "Minim&ap width:"
+msgstr "Mini žemėlapio plotis"
+
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
-#: dialogs/bordersappearanceconfigwidget.ui:184
+#: dialogs/bordersappearanceconfigwidget.ui:263
 #, kde-format
 msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
@@ -339,44 +390,13 @@ msgstr ""
 "kairėje pusėje."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
-#: dialogs/bordersappearanceconfigwidget.ui:187
+#: dialogs/bordersappearanceconfigwidget.ui:266
 #, kde-format
 msgid "Map the whole document"
 msgstr "Įrašyti esamą dokumentą"
 
-#. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
-#: dialogs/bordersappearanceconfigwidget.ui:213
-#, fuzzy, kde-format
-#| msgid "Minimap Width"
-msgid "Minim&ap width:"
-msgstr "Mini žemėlapio plotis"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:748
-#, kde-format
-msgid "Always On"
-msgstr "Visada įjungta"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:229
-#, kde-format
-msgid "Show When Needed"
-msgstr ""
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:234
-#, kde-format
-msgid "Always Off"
-msgstr "Visada išjungta"
-
-#. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:242
-#, kde-format
-msgid "Scro&llbars visibility:"
-msgstr ""
-
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByCreation)
-#: dialogs/bordersappearanceconfigwidget.ui:252
+#: dialogs/bordersappearanceconfigwidget.ui:276
 #, kde-format
 msgid ""
 "Each new bookmark will be added to the bottom, independently from where it "
@@ -386,50 +406,30 @@ msgstr ""
 "dokumento vietoje ji yra."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByCreation)
-#: dialogs/bordersappearanceconfigwidget.ui:255
+#: dialogs/bordersappearanceconfigwidget.ui:279
 #, kde-format
 msgid "By date created"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
-#: dialogs/bordersappearanceconfigwidget.ui:262
+#: dialogs/bordersappearanceconfigwidget.ui:286
 #, kde-format
 msgid "The bookmarks will be ordered by the line numbers they are placed at."
 msgstr "Žymelės bus rūšiuojamos pagal eilučių, kuriose jos yra, numerius."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
-#: dialogs/bordersappearanceconfigwidget.ui:265
+#: dialogs/bordersappearanceconfigwidget.ui:289
 #, fuzzy, kde-format
 #| msgid "Show &line numbers"
 msgid "By line number"
 msgstr "Rodyti ei&lučių numerius"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/bordersappearanceconfigwidget.ui:272
+#: dialogs/bordersappearanceconfigwidget.ui:296
 #, fuzzy, kde-format
 #| msgid "Sort Bookmarks Menu"
 msgid "Sort bookmarks menu:"
 msgstr "Rūšiuoti žymelių meniu"
-
-#. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/bordersappearanceconfigwidget.ui:295
-#, kde-format
-msgid "Folding arrows visibility:"
-msgstr ""
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:306
-#, fuzzy, kde-format
-#| msgid "Show &Icon Border"
-msgid "Show on Hover"
-msgstr "Rodyti &ženkliukų rėmelį"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:311
-#, fuzzy, kde-format
-#| msgid "Always"
-msgid "Show Always"
-msgstr "Visada"
 
 #: dialogs/clipboardhistorydialog.cpp:261
 #, fuzzy, kde-format
@@ -1855,7 +1855,7 @@ msgstr "Pa&šalinti tarpus eilučių pabaigose"
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
-#: dialogs/textareaappearanceconfigwidget.ui:101
+#: dialogs/textareaappearanceconfigwidget.ui:104
 #, kde-format
 msgid "Never"
 msgstr "Niekada"
@@ -1973,7 +1973,7 @@ msgid "Line Height Multiplier:"
 msgstr "Eilutės ilgio riba:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
-#: dialogs/textareaappearanceconfigwidget.ui:55
+#: dialogs/textareaappearanceconfigwidget.ui:58
 #, kde-format
 msgid ""
 "This value will be multiplied with the font's default line height. A value "
@@ -1981,14 +1981,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/textareaappearanceconfigwidget.ui:90
+#: dialogs/textareaappearanceconfigwidget.ui:93
 #, fuzzy, kde-format
 #| msgid "Ignore white space changes"
 msgid "Show whitespace indicators:"
 msgstr "Ignoruoti tarpų skaičiaus pakeitimus"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:106
+#: dialogs/textareaappearanceconfigwidget.ui:109
 #, fuzzy, kde-format
 #| msgctxt "short translation please"
 #| msgid "Sets the end of line mode."
@@ -1996,33 +1996,33 @@ msgid "At the end of a line"
 msgstr "Nustato eilutės pabaigos veikseną."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:111
+#: dialogs/textareaappearanceconfigwidget.ui:114
 #, kde-format
 msgid "Always"
 msgstr "Visada"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
-#: dialogs/textareaappearanceconfigwidget.ui:119
+#: dialogs/textareaappearanceconfigwidget.ui:122
 #, fuzzy, kde-format
 #| msgid "Whitespace Highlighting"
 msgid "Whitespace indicator size:"
 msgstr "Tarpų paryškinimas"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
-#: dialogs/textareaappearanceconfigwidget.ui:135
+#: dialogs/textareaappearanceconfigwidget.ui:138
 #, kde-format
 msgid "Size of the visible highlight marker."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/textareaappearanceconfigwidget.ui:163
+#: dialogs/textareaappearanceconfigwidget.ui:166
 #, fuzzy, kde-format
 #| msgid "Show line modification markers"
 msgid "Show tab indicators:"
 msgstr "Rodyti eilutės keitimo žymeklius"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
-#: dialogs/textareaappearanceconfigwidget.ui:173
+#: dialogs/textareaappearanceconfigwidget.ui:176
 #, kde-format
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
@@ -2031,14 +2031,14 @@ msgstr ""
 "Redaktorius gali parodyti ženklą, rodantį tabuliatoriaus buvimą tekste."
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:199
+#: dialogs/textareaappearanceconfigwidget.ui:202
 #, fuzzy, kde-format
 #| msgid "Bracket Highlight"
 msgid "Bracket matching:"
 msgstr "Skliaustelių paryškinimas"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:206
+#: dialogs/textareaappearanceconfigwidget.ui:209
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -2048,19 +2048,19 @@ msgstr ""
 "pažymėtų skliaustelių."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:209
+#: dialogs/textareaappearanceconfigwidget.ui:212
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Paryškinti plotą tarp parinktų skliaustelių"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:216
+#: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:219
+#: dialogs/textareaappearanceconfigwidget.ui:222
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -2070,33 +2070,33 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:222
+#: dialogs/textareaappearanceconfigwidget.ui:225
 #, fuzzy, kde-format
 #| msgid "Show print preview of current document"
 msgid "Show preview of matching open bracket"
 msgstr "Rodyti dabartinio dokumento spausdinimo peržiūrą"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:229
+#: dialogs/textareaappearanceconfigwidget.ui:232
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Mirksintys atitinkantys skliausteliai"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:232
+#: dialogs/textareaappearanceconfigwidget.ui:235
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:235
+#: dialogs/textareaappearanceconfigwidget.ui:238
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:242
+#: dialogs/textareaappearanceconfigwidget.ui:245
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -2106,45 +2106,45 @@ msgstr ""
 "nustatyti įtrauktas eilutes."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
+#: dialogs/textareaappearanceconfigwidget.ui:248
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "&Rodyti įtraukos linijas"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:268
+#: dialogs/textareaappearanceconfigwidget.ui:271
 #, kde-format
 msgid "Counts:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:275
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
 #, fuzzy, kde-format
 #| msgid "Not word boundary"
 msgid "Show word count"
 msgstr "Ne žodžio riba"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:285
+#: dialogs/textareaappearanceconfigwidget.ui:288
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show line count"
 msgstr "Rodyti ei&lučių numerius"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:314
+#: dialogs/textareaappearanceconfigwidget.ui:317
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2154,60 +2154,60 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:317
+#: dialogs/textareaappearanceconfigwidget.ui:320
 #, kde-format
 msgid "Fold first line"
 msgstr "Suskleisti pirmą eilutę"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:337
+#: dialogs/textareaappearanceconfigwidget.ui:340
 #, fuzzy, kde-format
 #| msgid "&Dynamic Word Wrap"
 msgid "Dynamic Word Wrap:"
 msgstr "&Dinaminis žodžių kėlimas"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:344
+#: dialogs/textareaappearanceconfigwidget.ui:347
 #, fuzzy, kde-format
 #| msgid "Enable static &word wrap"
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Įjungti statinį &žodžių kėlimą"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:351
+#: dialogs/textareaappearanceconfigwidget.ui:354
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:358
+#: dialogs/textareaappearanceconfigwidget.ui:361
 #, fuzzy, kde-format
 #| msgid "Dynamic Word Wrap Indicators"
 msgid "D&ynamic word wrap indicators:"
 msgstr "Dinaminio žodžių kėlimo indikatoriai"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:368
+#: dialogs/textareaappearanceconfigwidget.ui:371
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
 "Parinkite, kada turėtų būti rodomi dinaminio žodžių perkėlimo žymekliai"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:391
+#: dialogs/textareaappearanceconfigwidget.ui:394
 #, fuzzy, kde-format
 #| msgid "Indentation Properties"
 msgid "Indent wrapped lines:"
 msgstr "Įtraukos taisyklės"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:408
+#: dialogs/textareaappearanceconfigwidget.ui:411
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:424
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2227,7 +2227,7 @@ msgstr ""
 "p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:430
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% vaizdo pločio"

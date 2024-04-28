@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-08 00:36+0000\n"
+"POT-Creation-Date: 2024-04-28 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 14:16+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -198,14 +198,32 @@ msgstr ""
 msgid "Show preview of folded blocks on hover"
 msgstr "Mostra un'anteprima del codice raggruppato al passaggio del puntatore"
 
-#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: dialogs/bordersappearanceconfigwidget.ui:52
+#, kde-format
+msgid "Folding arrows visibility:"
+msgstr "Visibilità delle frecce di espansione"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
+#: dialogs/bordersappearanceconfigwidget.ui:63
+#, kde-format
+msgid "Show on Hover"
+msgstr "Mostra al passaggio del puntatore"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
 #: dialogs/bordersappearanceconfigwidget.ui:68
+#, kde-format
+msgid "Show Always"
+msgstr "Mostra sempre"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: dialogs/bordersappearanceconfigwidget.ui:92
 #, kde-format
 msgid "Left side:"
 msgstr "Lato sinistro:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkIconBorder)
-#: dialogs/bordersappearanceconfigwidget.ui:75
+#: dialogs/bordersappearanceconfigwidget.ui:99
 #, kde-format
 msgid ""
 "<p>If this option is checked, every new view will display an icon border on "
@@ -218,14 +236,14 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
-#: dialogs/bordersappearanceconfigwidget.ui:78
-#: dialogs/bordersappearanceconfigwidget.ui:131
+#: dialogs/bordersappearanceconfigwidget.ui:102
+#: dialogs/bordersappearanceconfigwidget.ui:155
 #, kde-format
 msgid "Show marks"
 msgstr "Mostra i marcatori"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkLineNumbers)
-#: dialogs/bordersappearanceconfigwidget.ui:85
+#: dialogs/bordersappearanceconfigwidget.ui:109
 #, kde-format
 msgid ""
 "If this option is checked, every new view will display line numbers on the "
@@ -235,13 +253,13 @@ msgstr ""
 "sul lato sinistro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
-#: dialogs/bordersappearanceconfigwidget.ui:88
+#: dialogs/bordersappearanceconfigwidget.ui:112
 #, kde-format
 msgid "Show &line numbers"
 msgstr "Mostra numeri di &riga"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowLineModification)
-#: dialogs/bordersappearanceconfigwidget.ui:95
+#: dialogs/bordersappearanceconfigwidget.ui:119
 #, kde-format
 msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
@@ -251,19 +269,19 @@ msgstr ""
 "righe modificate e salvate sul lato sinistro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
-#: dialogs/bordersappearanceconfigwidget.ui:98
+#: dialogs/bordersappearanceconfigwidget.ui:122
 #, kde-format
 msgid "Highlight changed and unsaved lines"
 msgstr "Evidenzia le righe modificate e non salvate"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: dialogs/bordersappearanceconfigwidget.ui:121
+#: dialogs/bordersappearanceconfigwidget.ui:145
 #, kde-format
 msgid "Scrollbars"
 msgstr "Barre di scorrimento"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
-#: dialogs/bordersappearanceconfigwidget.ui:128
+#: dialogs/bordersappearanceconfigwidget.ui:152
 #, kde-format
 msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
@@ -274,7 +292,7 @@ msgstr ""
 "esempio, i segnalibri.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
-#: dialogs/bordersappearanceconfigwidget.ui:138
+#: dialogs/bordersappearanceconfigwidget.ui:162
 #, kde-format
 msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
@@ -284,19 +302,43 @@ msgstr ""
 "barra di scorrimento verticale mostra un'anteprima del testo.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
-#: dialogs/bordersappearanceconfigwidget.ui:141
+#: dialogs/bordersappearanceconfigwidget.ui:165
 #, kde-format
 msgid "Show preview when hovering over scrollbar"
 msgstr "Mostra un'anteprima passando sulla barra di scorrimento"
 
+#. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:172
+#, kde-format
+msgid "Scro&llbars visibility:"
+msgstr "Visibi&lità delle barre di scorrimento:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:748
+#, kde-format
+msgid "Always On"
+msgstr "Sempre presenti"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:188
+#, kde-format
+msgid "Show When Needed"
+msgstr "Mostra quando necessarie"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
+#: dialogs/bordersappearanceconfigwidget.ui:193
+#, kde-format
+msgid "Always Off"
+msgstr "Sempre assenti"
+
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/bordersappearanceconfigwidget.ui:164
+#: dialogs/bordersappearanceconfigwidget.ui:217
 #, kde-format
 msgid "Minimap:"
 msgstr "Minimappa:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMap)
-#: dialogs/bordersappearanceconfigwidget.ui:171
+#: dialogs/bordersappearanceconfigwidget.ui:224
 #, kde-format
 msgid ""
 "If this option is checked, every new view will show a mini map on the "
@@ -306,13 +348,19 @@ msgstr ""
 "sulla barra di scorrimento verticale."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
-#: dialogs/bordersappearanceconfigwidget.ui:174
+#: dialogs/bordersappearanceconfigwidget.ui:227
 #, kde-format
 msgid "Show minimap"
 msgstr "Mostra la minimappa"
 
+#. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
+#: dialogs/bordersappearanceconfigwidget.ui:250
+#, kde-format
+msgid "Minim&ap width:"
+msgstr "L&arghezza della minimappa:"
+
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMiniMapAll)
-#: dialogs/bordersappearanceconfigwidget.ui:184
+#: dialogs/bordersappearanceconfigwidget.ui:263
 #, kde-format
 msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
@@ -322,43 +370,13 @@ msgstr ""
 "tutto il documento sulla barra di scorrimento verticale."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
-#: dialogs/bordersappearanceconfigwidget.ui:187
+#: dialogs/bordersappearanceconfigwidget.ui:266
 #, kde-format
 msgid "Map the whole document"
 msgstr "Mappa tutto il documento"
 
-#. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
-#: dialogs/bordersappearanceconfigwidget.ui:213
-#, kde-format
-msgid "Minim&ap width:"
-msgstr "L&arghezza della minimappa:"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:224 dialogs/katedialogs.cpp:748
-#, kde-format
-msgid "Always On"
-msgstr "Sempre presenti"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:229
-#, kde-format
-msgid "Show When Needed"
-msgstr "Mostra quando necessarie"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:234
-#, kde-format
-msgid "Always Off"
-msgstr "Sempre assenti"
-
-#. i18n: ectx: property (text), widget (QLabel, lblShowScrollbars)
-#: dialogs/bordersappearanceconfigwidget.ui:242
-#, kde-format
-msgid "Scro&llbars visibility:"
-msgstr "Visibi&lità delle barre di scorrimento:"
-
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByCreation)
-#: dialogs/bordersappearanceconfigwidget.ui:252
+#: dialogs/bordersappearanceconfigwidget.ui:276
 #, kde-format
 msgid ""
 "Each new bookmark will be added to the bottom, independently from where it "
@@ -368,46 +386,28 @@ msgstr ""
 "documento."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByCreation)
-#: dialogs/bordersappearanceconfigwidget.ui:255
+#: dialogs/bordersappearanceconfigwidget.ui:279
 #, kde-format
 msgid "By date created"
 msgstr "Per data di creazione"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbSortBookmarksByPosition)
-#: dialogs/bordersappearanceconfigwidget.ui:262
+#: dialogs/bordersappearanceconfigwidget.ui:286
 #, kde-format
 msgid "The bookmarks will be ordered by the line numbers they are placed at."
 msgstr "I segnalibri saranno ordinati per il numero della riga dove sono."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbSortBookmarksByPosition)
-#: dialogs/bordersappearanceconfigwidget.ui:265
+#: dialogs/bordersappearanceconfigwidget.ui:289
 #, kde-format
 msgid "By line number"
 msgstr "Per numero di riga"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/bordersappearanceconfigwidget.ui:272
+#: dialogs/bordersappearanceconfigwidget.ui:296
 #, kde-format
 msgid "Sort bookmarks menu:"
 msgstr "Ordina il menu dei segnalibri:"
-
-#. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/bordersappearanceconfigwidget.ui:295
-#, kde-format
-msgid "Folding arrows visibility:"
-msgstr "Visibilità delle frecce di espansione"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:306
-#, kde-format
-msgid "Show on Hover"
-msgstr "Mostra al passaggio del puntatore"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, cmbFoldingArrowVisiblity)
-#: dialogs/bordersappearanceconfigwidget.ui:311
-#, kde-format
-msgid "Show Always"
-msgstr "Mostra sempre"
 
 #: dialogs/clipboardhistorydialog.cpp:261
 #, kde-format
@@ -1805,7 +1805,7 @@ msgstr "Ri&muovi gli spazi finali:"
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, spbAutoSaveInterval)
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
 #: dialogs/opensaveconfigwidget.ui:193 dialogs/opensaveconfigwidget.ui:270
-#: dialogs/textareaappearanceconfigwidget.ui:101
+#: dialogs/textareaappearanceconfigwidget.ui:104
 #, kde-format
 msgid "Never"
 msgstr "Mai"
@@ -1918,7 +1918,7 @@ msgid "Line Height Multiplier:"
 msgstr "Moltiplicatore dell'altezza della linea:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
-#: dialogs/textareaappearanceconfigwidget.ui:55
+#: dialogs/textareaappearanceconfigwidget.ui:58
 #, kde-format
 msgid ""
 "This value will be multiplied with the font's default line height. A value "
@@ -1929,43 +1929,43 @@ msgstr ""
 "predefinita."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: dialogs/textareaappearanceconfigwidget.ui:90
+#: dialogs/textareaappearanceconfigwidget.ui:93
 #, kde-format
 msgid "Show whitespace indicators:"
 msgstr "Mostra gli indicatori degli spazi:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:106
+#: dialogs/textareaappearanceconfigwidget.ui:109
 #, kde-format
 msgid "At the end of a line"
 msgstr "Alla fine di una riga"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, spacesComboBox)
-#: dialogs/textareaappearanceconfigwidget.ui:111
+#: dialogs/textareaappearanceconfigwidget.ui:114
 #, kde-format
 msgid "Always"
 msgstr "Sempre"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
-#: dialogs/textareaappearanceconfigwidget.ui:119
+#: dialogs/textareaappearanceconfigwidget.ui:122
 #, kde-format
 msgid "Whitespace indicator size:"
 msgstr "Dimensioni indicatore degli spazi:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
-#: dialogs/textareaappearanceconfigwidget.ui:135
+#: dialogs/textareaappearanceconfigwidget.ui:138
 #, kde-format
 msgid "Size of the visible highlight marker."
 msgstr "Dimensione marcatore di evidenziazione visibile."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: dialogs/textareaappearanceconfigwidget.ui:163
+#: dialogs/textareaappearanceconfigwidget.ui:166
 #, kde-format
 msgid "Show tab indicators:"
 msgstr "Mostra indicatori delle schede:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
-#: dialogs/textareaappearanceconfigwidget.ui:173
+#: dialogs/textareaappearanceconfigwidget.ui:176
 #, kde-format
 msgid ""
 "The editor will display a symbol to indicate the presence of a tab in the "
@@ -1975,13 +1975,13 @@ msgstr ""
 "testo."
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: dialogs/textareaappearanceconfigwidget.ui:199
+#: dialogs/textareaappearanceconfigwidget.ui:202
 #, kde-format
 msgid "Bracket matching:"
 msgstr "Corrispondenza delle parentesi:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:206
+#: dialogs/textareaappearanceconfigwidget.ui:209
 #, kde-format
 msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
@@ -1991,13 +1991,13 @@ msgstr ""
 "sarà evidenziato."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
-#: dialogs/textareaappearanceconfigwidget.ui:209
+#: dialogs/textareaappearanceconfigwidget.ui:212
 #, kde-format
 msgid "Highlight range between selected brackets"
 msgstr "Evidenzia intervallo tra parentesi selezionate"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:216
+#: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
 msgstr ""
@@ -2005,7 +2005,7 @@ msgstr ""
 "contesto"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:219
+#: dialogs/textareaappearanceconfigwidget.ui:222
 #, kde-format
 msgid ""
 "If this is enabled, a preview of the lines near a matching open bracket is "
@@ -2019,19 +2019,19 @@ msgstr ""
 "funzioni/classi lunghe e profondamente nidificate se a blocchi"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
-#: dialogs/textareaappearanceconfigwidget.ui:222
+#: dialogs/textareaappearanceconfigwidget.ui:225
 #, kde-format
 msgid "Show preview of matching open bracket"
 msgstr "Mostra un'anteprima della parentesi aperta corrispondente"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:229
+#: dialogs/textareaappearanceconfigwidget.ui:232
 #, kde-format
 msgid "Flash matching brackets"
 msgstr "Fai lampeggiare le parentesi corrispondenti"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:232
+#: dialogs/textareaappearanceconfigwidget.ui:235
 #, kde-format
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
@@ -2040,7 +2040,7 @@ msgstr ""
 "visibili."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
-#: dialogs/textareaappearanceconfigwidget.ui:235
+#: dialogs/textareaappearanceconfigwidget.ui:238
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
@@ -2048,7 +2048,7 @@ msgstr ""
 "sull'altra parentesi della coppia"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:242
+#: dialogs/textareaappearanceconfigwidget.ui:245
 #, kde-format
 msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
@@ -2058,43 +2058,43 @@ msgstr ""
 "identificare le righe di rientro."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
+#: dialogs/textareaappearanceconfigwidget.ui:248
 #, kde-format
 msgid "Show i&ndentation lines"
 msgstr "Mostra righe di rie&ntro"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:268
+#: dialogs/textareaappearanceconfigwidget.ui:271
 #, kde-format
 msgid "Counts:"
 msgstr "Conteggi:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:275
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Mostra/Nascondi il conteggio delle parole nella barra di stato"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Mostra il conteggio delle parole"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:285
+#: dialogs/textareaappearanceconfigwidget.ui:288
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Mostra/Nascondi il numero delle righe nella barra di stato"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Mostra il numero delle righe"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:314
+#: dialogs/textareaappearanceconfigwidget.ui:317
 #, kde-format
 msgid ""
 "When this setting is enabled, the editor view automatically folds\n"
@@ -2108,37 +2108,37 @@ msgstr ""
 "spesso messe all'inizio di un file."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:317
+#: dialogs/textareaappearanceconfigwidget.ui:320
 #, kde-format
 msgid "Fold first line"
 msgstr "Contrai la prima riga"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:337
+#: dialogs/textareaappearanceconfigwidget.ui:340
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Ritorno a capo dinamico:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:344
+#: dialogs/textareaappearanceconfigwidget.ui:347
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Ritorno a capo dinamico al marcatore di ritorno a capo statico"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:351
+#: dialogs/textareaappearanceconfigwidget.ui:354
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Ignora i limiti delle parole per il ritorno a capo dinamico"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:358
+#: dialogs/textareaappearanceconfigwidget.ui:361
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Indicatori dinamici di ritorno a ca&po:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:368
+#: dialogs/textareaappearanceconfigwidget.ui:371
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
@@ -2146,19 +2146,19 @@ msgstr ""
 "dinamico."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:391
+#: dialogs/textareaappearanceconfigwidget.ui:394
 #, kde-format
 msgid "Indent wrapped lines:"
 msgstr "Rientra righe a capo:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:408
+#: dialogs/textareaappearanceconfigwidget.ui:411
 #, kde-format
 msgid "Don't indent lines wider than:"
 msgstr "Non rientrare le righe più larghe di:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:424
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2179,7 +2179,7 @@ msgstr ""
 "andranno a capo.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:430
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% della vista"
