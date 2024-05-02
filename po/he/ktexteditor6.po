@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-28 00:36+0000\n"
-"PO-Revision-Date: 2024-04-25 15:12+0300\n"
+"PO-Revision-Date: 2024-05-01 09:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -909,6 +909,8 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
+"אם האפשרות הזאת מושבתת, שינוי רמת ההזחה יישר את השורה לכפולה של הרוחב שמצוין "
+"תחת <b>רוחב הזחה</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
@@ -957,16 +959,7 @@ msgstr "&מקש ה־Backspace בין רווחים בתחילת השורה מבט
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/indentationconfigwidget.ui:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body>\n"
-#| "<p>Tab key action (if no selection exists) <a href=\"If you want <b>Tab</"
-#| "b> to align the current line in the current code block like in emacs, "
-#| "make <b>Tab</b> a shortcut to the action <b>Align</b>.\"><span>More ...</"
-#| "span></a></p></body></html>"
+#, kde-format
 msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
@@ -982,8 +975,9 @@ msgstr ""
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p dir=\"rtl\">פעולת מקש טאב (אם טקסט לא מסומן) <a href=\"אם ברצונך שמקש<b> "
-"טאב</b> יישר את השורה הנוכחית בבלוק הנוכחי כמו emacs, הפוך את <b>טאב</b> "
-"להיות קיצור לפעולה <b>יישור</b>.\"><span>עוד ...</span></a></p></body></html>"
+"טאב</b> יישר את השורה הנוכחית במקטע הנוכחי כמו Emacs, אפשר להפוך את <b>טאב</"
+"b> להיות קיצור לפעולה <b>עיצוב הזחה</b>-><span>עוד…</span></a></p></body></"
+"html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -2103,17 +2097,17 @@ msgid "Close message"
 msgstr "סגירת הודעה"
 
 #: document/katedocument.cpp:2396
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
 "<br />It is set to read-only mode, as saving might destroy its content.<br /"
 ">Either reopen the file with the correct encoding chosen or enable the read-"
 "write mode again in the tools menu to be able to edit it."
 msgstr ""
-"הקובץ %1 נפתח באמצעות קידוד %2 אבל הוא מכיל תווים לא חוקיים. <br />הוא נקבע "
-"למצב קריאה בלבד, כיוון ששמירה שלנו כנראה תהרוס את התוכן שלו. <br />עליך "
-"לפתוח את הקובץ מחדש עם הקידוד הנכון, או לאפשר מחדש את אפשרות הכתיבה מתוך "
-"התפריט בכדי לאפשר לך לערוך אותו."
+"הקובץ %1 נפתח עם הקידוד %2 אבל הוא מכיל תווים לא חוקיים. <br />הוא הוגדר "
+"למצב קריאה בלבד, כיוון ששמירה שלנו כנראה תהרוס את התוכן שלו. <br />יש לפתוח "
+"את הקובץ מחדש עם הקידוד הנכון, או לאפשר מחדש את אפשרות הכתיבה מתוך תפריט "
+"הכלים כדי לאפשר לך לערוך אותו."
 
 #: document/katedocument.cpp:2415
 #, fuzzy, kde-format
@@ -3833,7 +3827,7 @@ msgstr "מילה לא מוכרת"
 #: spellcheck/spellcheckbar.ui:49
 #, kde-format
 msgid "<b>misspelled</b>"
-msgstr ""
+msgstr "<b>תקלדה</b>"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_addBtn)
 #: spellcheck/spellcheckbar.ui:72
@@ -5724,12 +5718,12 @@ msgstr "קריאת משתנה מסמך."
 #: utils/katevariableexpansionmanager.cpp:174
 #, kde-format
 msgid "The current date in current locale format."
-msgstr ""
+msgstr "התאריך הנוכחי בתבנית של האזור הנוכחי."
 
 #: utils/katevariableexpansionmanager.cpp:181
 #, kde-format
 msgid "The current date (ISO)."
-msgstr ""
+msgstr "התאריך הנוכחי (ISO)"
 
 #: utils/katevariableexpansionmanager.cpp:188
 #, kde-format
@@ -5739,42 +5733,42 @@ msgstr "התאריך הנוכחי (מחרוזת תבנית QDate)."
 #: utils/katevariableexpansionmanager.cpp:196
 #, kde-format
 msgid "The current time in current locale format."
-msgstr ""
+msgstr "השעה הנוכחית בתבנית של האזור הנוכחי."
 
 #: utils/katevariableexpansionmanager.cpp:203
 #, kde-format
 msgid "The current time (ISO)."
-msgstr ""
+msgstr "השעה הנוכחית (ISO)."
 
 #: utils/katevariableexpansionmanager.cpp:210
 #, kde-format
 msgid "The current time (QTime formatstring)."
-msgstr ""
+msgstr "השעה הנוכחית (QTime formatstring)."
 
 #: utils/katevariableexpansionmanager.cpp:218
 #, kde-format
 msgid "Access to environment variables."
-msgstr ""
+msgstr "גישה למשתני סביבה."
 
 #: utils/katevariableexpansionmanager.cpp:226
 #, kde-format
 msgid "Evaluate simple JavaScript statements."
-msgstr ""
+msgstr "שערוך ביטויים בסיסיים של JavaScript."
 
 #: utils/katevariableexpansionmanager.cpp:236
 #, kde-format
 msgid "Encode text to make it URL compatible."
-msgstr ""
+msgstr "קידוד טקסט כך שיהיה תואם כתובת אתרי אינטרנט."
 
 #: utils/katevariableexpansionmanager.cpp:244
 #, kde-format
 msgid "Generate a new UUID."
-msgstr ""
+msgstr "יצירת מזהה ייחודי חדש."
 
 #: variableeditor/variableeditor.cpp:37
 #, kde-format
 msgid "Kate Handbook."
-msgstr ""
+msgstr "ספרון ההדרכה של Kate."
 
 #: variableeditor/variableeditor.cpp:210
 #, kde-format
