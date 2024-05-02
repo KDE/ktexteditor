@@ -1108,11 +1108,13 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
                 xStart += caretWidth;
             }
             qreal width = 0;
-            const auto inlineNotes = m_view->inlineNotes(range->line());
-            for (const auto &inlineNoteData : inlineNotes) {
-                KTextEditor::InlineNote inlineNote(inlineNoteData);
-                if (inlineNote.position().column() == cursor.column()) {
-                    width = inlineNote.width() + (caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0);
+            if (cursor.column() < range->length()) {
+                const auto inlineNotes = m_view->inlineNotes(range->line());
+                for (const auto &inlineNoteData : inlineNotes) {
+                    KTextEditor::InlineNote inlineNote(inlineNoteData);
+                    if (inlineNote.position().column() == cursor.column()) {
+                        width = inlineNote.width() + (caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0);
+                    }
                 }
             }
             drawCursor(*range->layout(), &paint, QPoint(-xStart - width, 0), cursor.column(), caretWidth, lineHeight());
