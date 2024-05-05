@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-28 00:36+0000\n"
-"PO-Revision-Date: 2024-05-01 09:16+0300\n"
+"PO-Revision-Date: 2024-05-04 06:48+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3671,7 +3671,7 @@ msgstr "החלפה לסרגל חיפוש והחלפה מתקדם"
 #: search/searchbarpower.ui:50
 #, kde-format
 msgid "Fin&d:"
-msgstr ""
+msgstr "&איתור:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: search/searchbarpower.ui:63
@@ -5886,7 +5886,7 @@ msgstr ""
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable folding preview in the editor border."
-msgstr ""
+msgstr "הפעלת תצוגה מקדימה מקופלת במסגרת העורך."
 
 #: variableeditor/variablelineedit.cpp:192
 #, kde-format
@@ -5910,13 +5910,13 @@ msgstr "הגדרת הדגשת התחביר."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the icon bar color."
-msgstr ""
+msgstr "הגדרת צבע פס הסמל."
 
 #: variableeditor/variablelineedit.cpp:223
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
-msgstr ""
+msgstr "הפעלת מסגרת סמל בתצוגת העורך."
 
 #: variableeditor/variablelineedit.cpp:228
 #, kde-format
@@ -5934,13 +5934,13 @@ msgstr "התאמת הזחה של קוד שמודבק מלוח הגזירים."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the indentation depth for each indent level."
-msgstr ""
+msgstr "הגדרת עומק ההזחה לכל רמת הזחה."
 
 #: variableeditor/variablelineedit.cpp:244
 #, kde-format
 msgctxt "short translation please"
 msgid "Allow odd indentation level (no multiple of indent width)."
-msgstr ""
+msgstr "לאפשר רמת הזחה אי־זוגית (לא בכפולות של רוחב ההזחה)."
 
 #: variableeditor/variablelineedit.cpp:249
 #, kde-format
@@ -5952,25 +5952,25 @@ msgstr "הצגת מספרי שורות."
 #, kde-format
 msgctxt "short translation please"
 msgid "Insert newline at end of file on save."
-msgstr ""
+msgstr "הוספת שורה חדשה בסוף הקובץ עם השמירה."
 
 #: variableeditor/variablelineedit.cpp:259
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable overwrite mode in the document."
-msgstr ""
+msgstr "הפעלת מצב דריסה במסמך."
 
 #: variableeditor/variablelineedit.cpp:264
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable persistent text selection."
-msgstr ""
+msgstr "הפעלת בחירת טקסט דביקה."
 
 #: variableeditor/variablelineedit.cpp:269
 #, kde-format
 msgctxt "short translation please"
 msgid "Replace tabs with spaces when saving the document."
-msgstr ""
+msgstr "להחליף טאבים ברווחים בעת שמירת המסמך."
 
 #: variableeditor/variablelineedit.cpp:274
 #, kde-format
@@ -6006,7 +6006,7 @@ msgstr "הגדרת ערכת הצבע."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the text selection color."
-msgstr ""
+msgstr "הגדרת צבע בחירת טקסט."
 
 #: variableeditor/variablelineedit.cpp:310
 #, kde-format
@@ -6024,13 +6024,13 @@ msgstr "הפעלת ניווט חכם לבית."
 #, kde-format
 msgctxt "short translation please"
 msgid "Pressing TAB key indents."
-msgstr ""
+msgstr "לחיצה על מקש TAB מזיחה."
 
 #: variableeditor/variablelineedit.cpp:326
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
-msgstr ""
+msgstr "הגדרת רוחב תצוגת טאב."
 
 #: variableeditor/variablelineedit.cpp:332
 #, kde-format
@@ -6042,7 +6042,7 @@ msgstr "הגדרת מספר צעדי ההסגה לשמירה (0 זה אינסו�
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the word wrap column."
-msgstr ""
+msgstr "הגדרת עמודת גלישת טקסט."
 
 #: variableeditor/variablelineedit.cpp:343
 #, kde-format
@@ -6054,12 +6054,12 @@ msgstr "הגדרת צבע סמן גלישת שורות."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable word wrap while typing text."
-msgstr ""
+msgstr "הפעלת גלישת שורות תוך הקלדת טקסט."
 
 #: view/katestatusbar.cpp:114
 #, kde-format
 msgid "Current cursor position. Click to go to a specific line."
-msgstr ""
+msgstr "מקום הסמן הנוכחי. יש ללחוץ כדי לגשת לשורה מסוימת."
 
 #: view/katestatusbar.cpp:127
 #, kde-format
@@ -6197,12 +6197,12 @@ msgstr[3] "אחרים (%1)"
 #: view/katestatusbar.cpp:489
 #, kde-format
 msgid "Please specify the wanted tab width:"
-msgstr ""
+msgstr "נא לציין את רוחב הטאב הרצוי:"
 
 #: view/katestatusbar.cpp:505
 #, kde-format
 msgid "Please specify the wanted indentation width:"
-msgstr ""
+msgstr "נא לציין את רוחב ההזחה הרצוי:"
 
 #: view/katestatusbar.cpp:568
 #, kde-format
@@ -6238,6 +6238,7 @@ msgstr "הדבקת תוכן לוח הגזירים שהועתק או נגזר מ�
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr ""
+"אפשר להשתמש בפקודה זו כדי להעתיק את הטקסט הנבחר אל לוח הגזירים של המערכת."
 
 #: view/kateview.cpp:469
 #, kde-format
@@ -6962,7 +6963,7 @@ msgstr "הוספת סימן ניווט מעל הסמן"
 #: view/kateview.cpp:929
 #, kde-format
 msgid "Adds a caret in the line below the current caret."
-msgstr "הוספת סמן טקסט בשורה שמתחת לסמן הנוכחי."
+msgstr "הוספת סמן טקסט בשורה שמתחת לסמן הטקסט הנוכחי."
 
 #: view/kateview.cpp:933
 #, kde-format
@@ -6972,7 +6973,7 @@ msgstr "הוספת סימן ניווט מתחת לסמן"
 #: view/kateview.cpp:935
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
-msgstr ""
+msgstr "הוספת סמן טקסט בשורה שמעל לסמן הטקסט הנוכחי."
 
 #: view/kateview.cpp:939
 #, kde-format
@@ -6982,7 +6983,7 @@ msgstr "החלפת מצב תנועת סמן לפי הגדלת/הקטנת אות�
 #: view/kateview.cpp:940
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
-msgstr ""
+msgstr "החלפה בין מעבר רגיל בין מילים לבין תנועת סמן לפי רישיות פותחות."
 
 #: view/kateview.cpp:944
 #, kde-format
@@ -7093,6 +7094,7 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"הדמיית מצב בחירה דמוי Emacs, בו ההתחלה מסומנת ואז הבחירה ממשיכה להתעדכן."
 
 #: view/kateview.cpp:1057
 #, kde-format
@@ -7286,29 +7288,29 @@ msgstr "הוספת שורה חדשה ללא הזחה"
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
-msgstr ""
+msgstr "הוספת שורה חדשה בלי הזחה, ללא תלות בהגדרות ההזחה."
 
 #: view/kateview.cpp:1280
 #, kde-format
 msgid "Insert a Newline Above Current Line"
-msgstr ""
+msgstr "הוספת שורה חדשה מעל לשורה הנוכחית"
 
 #: view/kateview.cpp:1281
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
-msgstr ""
+msgstr "הוספת שורה חדשה מעל לשורה הנוכחית מבלי לשנות את השורה הנוכחית."
 
 #: view/kateview.cpp:1289
 #, kde-format
 msgid "Insert a Newline Below Current Line"
-msgstr ""
+msgstr "הוספת שורה חדשה מתחת לשורה הנוכחית"
 
 #: view/kateview.cpp:1290
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
-msgstr ""
+msgstr "הוספת שורה חדשה מתחת לשורה הנוכחית מבלי לשנות את השורה הנוכחית."
 
 #: view/kateview.cpp:1299
 #, kde-format
@@ -7383,12 +7385,12 @@ msgstr "(קריאה בלבד) %1"
 #: view/kateview.cpp:1729
 #, kde-format
 msgid "Camel case movement disabled"
-msgstr ""
+msgstr "תנועת סמן לפי רישיות פותחות מושבתת"
 
 #: view/kateview.cpp:1731
 #, kde-format
 msgid "Camel case movement enabled"
-msgstr ""
+msgstr "תנועת סמן לפי רישיות פותחות פעילה"
 
 #: view/kateview.cpp:2252
 #, kde-format
