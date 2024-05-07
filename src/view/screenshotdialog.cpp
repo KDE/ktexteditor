@@ -145,7 +145,7 @@ ScreenshotDialog::ScreenshotDialog(KTextEditor::Range selRange, KTextEditor::Vie
     , m_resizeTimer(new QTimer(this))
 {
     setModal(true);
-    setWindowTitle(i18n("Screenshot..."));
+    setWindowTitle(i18nc("@title:window", "Take Screenshot of Selection"));
 
     m_scrollArea->setWidget(m_base);
     m_scrollArea->setWidgetResizable(true);
