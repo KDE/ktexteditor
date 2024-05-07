@@ -136,7 +136,7 @@ void KateModeMenuList::onAboutToShowMenu()
     /*
      * Search bar widget.
      */
-    m_searchBar->setPlaceholderText(i18nc("Placeholder in search bar", "Search..."));
+    m_searchBar->setPlaceholderText(i18nc("@info:placeholder", "Search…"));
     m_searchBar->setToolTip(i18nc("ToolTip of the search bar of modes of syntax highlighting",
                                   "Search for syntax highlighting modes by language name or file extension (for example, C++ or .cpp)"));
     m_searchBar->setMaxLength(200);

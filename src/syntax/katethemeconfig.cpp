@@ -1116,7 +1116,7 @@ void KateThemeConfigPage::layoutThemeEditorTab(QWidget *tab)
     headerLayout->addWidget(schemaCombo);
     connect(schemaCombo, &QComboBox::currentIndexChanged, this, &KateThemeConfigPage::comboBoxIndexChanged);
 
-    QPushButton *copyButton = new QPushButton(i18n("&Copy..."), this);
+    auto *copyButton = new QPushButton(i18nc("@action:button", "&Copy…"), this);
     headerLayout->addWidget(copyButton);
     connect(copyButton, &QPushButton::clicked, this, &KateThemeConfigPage::copyTheme);
 
@@ -1124,11 +1124,11 @@ void KateThemeConfigPage::layoutThemeEditorTab(QWidget *tab)
     headerLayout->addWidget(btndel);
     connect(btndel, &QPushButton::clicked, this, &KateThemeConfigPage::deleteSchema);
 
-    QPushButton *btnexport = new QPushButton(i18n("Export..."), this);
+    auto *btnexport = new QPushButton(i18nc("@action:button", "Export…"), this);
     headerLayout->addWidget(btnexport);
     connect(btnexport, &QPushButton::clicked, this, &KateThemeConfigPage::exportFullSchema);
 
-    QPushButton *btnimport = new QPushButton(i18n("Import..."), this);
+    auto *btnimport = new QPushButton(i18nc("@action:button", "Import…"), this);
     headerLayout->addWidget(btnimport);
     connect(btnimport, &QPushButton::clicked, this, &KateThemeConfigPage::importFullSchema);
 

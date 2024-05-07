@@ -137,7 +137,7 @@ ScreenshotDialog::ScreenshotDialog(KTextEditor::Range selRange, KTextEditor::Vie
     , m_scrollArea(new ScrollArea(m_base, this))
     , m_saveButton(new QPushButton(QIcon::fromTheme(QStringLiteral("document-save")), i18n("Save")))
     , m_copyButton(new QPushButton(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy")))
-    , m_changeBGColor(new QPushButton(QIcon::fromTheme(QStringLiteral("color-fill")), i18n("Background Color...")))
+    , m_changeBGColor(new QPushButton(QIcon::fromTheme(QStringLiteral("color-fill")), i18nc("@action:button", "Background Color…")))
     , m_lineNumButton(new QToolButton(this))
     , m_extraDecorations(new QCheckBox(i18n("Show Extra Decorations"), this))
     , m_windowDecorations(new QCheckBox(i18n("Show Window Decorations"), this))

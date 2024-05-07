@@ -1471,7 +1471,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
         m_message->addAction(closeFile, false);
         connect(closeFile, &QAction::triggered, this, &KateModOnHdPrompt::closeTriggered);
 
-        QAction *aSaveAs = new QAction(i18n("&Save As..."), this);
+        auto *aSaveAs = new QAction(i18nc("@action", "&Save As…"), this);
         aSaveAs->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
         aSaveAs->setToolTip(i18n("Lets you select a location and save the file again."));
         m_message->addAction(aSaveAs, false);

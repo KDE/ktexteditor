@@ -446,7 +446,7 @@ void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu, int data)
     if (data != -1) {
         a = menu->addAction(QStringLiteral("%1").arg(data));
     } else {
-        a = menu->addAction(i18n("Other..."));
+        a = menu->addAction(i18nc("@item:inmenu", "Other…"));
     }
     a->setData(data);
     a->setCheckable(true);
@@ -472,7 +472,7 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w)
 
     if (m1) {
         if (found) {
-            m1->setText(i18n("Other..."));
+            m1->setText(i18nc("@item:inmenu", "Other…"));
         } else {
             m1->setText(i18np("Other (%1)", "Other (%1)", w));
             m1->setChecked(true);

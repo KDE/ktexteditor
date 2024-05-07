@@ -519,7 +519,7 @@ void KTextEditor::ViewPrivate::setupActions()
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::formatIndent);
 
         a = ac->addAction(QStringLiteral("tools_alignOn"));
-        a->setText(i18n("&Align On..."));
+        a->setText(i18nc("@action", "&Align On…"));
         a->setWhatsThis(
             i18n("This command aligns lines in the selected block or whole document on the column given by a regular expression "
                  "that you will be prompted for.<br /><br />"
@@ -651,13 +651,13 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(KStandardAction::SaveAs, m_doc, SLOT(documentSaveAs()));
     a->setWhatsThis(i18n("Save the current document to disk, with a name of your choice."));
 
-    a = new KateViewEncodingAction(m_doc, this, i18n("Save As with Encoding..."), this, true /* special mode for save as */);
+    a = new KateViewEncodingAction(m_doc, this, i18nc("@action", "Save As with Encoding…"), this, true /* special mode for save as */);
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
     ac->addAction(QStringLiteral("file_save_as_with_encoding"), a);
 
     a = ac->addAction(QStringLiteral("file_save_copy_as"));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
-    a->setText(i18n("Save &Copy As..."));
+    a->setText(i18nc("@action", "Save &Copy As…"));
     a->setWhatsThis(i18n("Save a copy of the current document to disk."));
     connect(a, &QAction::triggered, m_doc, &KTextEditor::DocumentPrivate::documentSaveCopyAs);
 
@@ -677,7 +677,7 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toNextModifiedLine);
 
     a = ac->addAction(QStringLiteral("set_confdlg"));
-    a->setText(i18n("&Configure Editor..."));
+    a->setText(i18nc("@action", "&Configure Editor…"));
     a->setIcon(QIcon::fromTheme(QStringLiteral("preferences-other")));
     a->setWhatsThis(i18n("Configure various aspects of this editor."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotConfigDialog);
@@ -953,7 +953,7 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->setDefaultShortcut(m_toggleOnTheFlySpellCheck, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_O));
 
     a = ac->addAction(QStringLiteral("tools_change_dictionary"));
-    a->setText(i18n("Change Dictionary..."));
+    a->setText(i18nc("@action", "Change Dictionary…"));
     a->setWhatsThis(i18n("Change the dictionary that is used for spell checking."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::changeDictionary);
 
@@ -971,7 +971,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = ac->addAction(QStringLiteral("file_export_html"), this, SLOT(exportHtmlToFile()));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-export")));
-    a->setText(i18n("E&xport as HTML..."));
+    a->setText(i18nc("@action", "E&xport as HTML…"));
     a->setWhatsThis(
         i18n("This command allows you to export the current document"
              " with all highlighting information into a HTML document."));

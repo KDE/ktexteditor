@@ -257,16 +257,16 @@ void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
 
     m.addSeparator();
 
-    a = m.addAction(cl, i18n("Normal &Color..."), this, SLOT(changeProperty()));
+    a = m.addAction(cl, i18nc("@action:inmenu", "Normal &Color…"), this, SLOT(changeProperty()));
     a->setData(KateStyleTreeWidgetItem::Foreground);
 
-    a = m.addAction(scl, i18n("&Selected Color..."), this, SLOT(changeProperty()));
+    a = m.addAction(scl, i18nc("@action:inmenu", "&Selected Color…"), this, SLOT(changeProperty()));
     a->setData(KateStyleTreeWidgetItem::SelectedForeground);
 
-    a = m.addAction(bgcl, i18n("&Background Color..."), this, SLOT(changeProperty()));
+    a = m.addAction(bgcl, i18nc("@action:inmenu", "&Background Color…"), this, SLOT(changeProperty()));
     a->setData(KateStyleTreeWidgetItem::Background);
 
-    a = m.addAction(sbgcl, i18n("S&elected Background Color..."), this, SLOT(changeProperty()));
+    a = m.addAction(sbgcl, i18nc("@action:inmenu", "S&elected Background Color…"), this, SLOT(changeProperty()));
     a->setData(KateStyleTreeWidgetItem::SelectedBackground);
 
     // defaulters
