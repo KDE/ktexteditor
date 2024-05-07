@@ -372,7 +372,7 @@ void ScreenshotDialog::renderScreenshot(KateRenderer *r)
 
 void ScreenshotDialog::onSaveClicked()
 {
-    const auto name = QFileDialog::getSaveFileName(this, i18n("Save..."));
+    const auto name = QFileDialog::getSaveFileName(this);
     if (name.isEmpty()) {
         return;
     }
