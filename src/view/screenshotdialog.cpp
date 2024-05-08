@@ -17,12 +17,15 @@
 #include <QClipboard>
 #include <QColorDialog>
 #include <QDebug>
+#include <QDrag>
 #include <QFileDialog>
 #include <QGraphicsDropShadowEffect>
 #include <QImageWriter>
 #include <QLabel>
 #include <QMenu>
 #include <QMessageBox>
+#include <QMimeData>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPushButton>
@@ -37,6 +40,8 @@
 #include <KSyntaxHighlighting/Theme>
 
 using namespace KTextEditor;
+
+static constexpr QPoint noDragStartCandidatePos = {-1, -1};
 
 class BaseWidget : public QWidget
 {
@@ -85,6 +90,40 @@ public:
         return grab(r);
     }
 
+    void mousePressEvent(QMouseEvent *event) override
+    {
+        QWidget *childAtEvent = childAt(event->pos());
+        if ((childAtEvent != m_screenshot) || (event->buttons() != Qt::LeftButton)) {
+            m_dragStartCandidatePos = noDragStartCandidatePos;
+            QWidget::mousePressEvent(event);
+            return;
+        }
+
+        m_dragStartCandidatePos = event->pos();
+    }
+
+    void mouseMoveEvent(QMouseEvent *event) override
+    {
+        if ((m_dragStartCandidatePos == noDragStartCandidatePos) || (event->buttons() != Qt::LeftButton)
+            || ((event->pos() - m_dragStartCandidatePos).manhattanLength() < QApplication::startDragDistance())) {
+            QWidget::mouseMoveEvent(event);
+            return;
+        }
+
+        const QPixmap pixmap = grabPixmap();
+
+        auto *mimeData = new QMimeData;
+        mimeData->setImageData(pixmap);
+
+        auto *drag = new QDrag(this);
+        drag->setMimeData(mimeData);
+
+        // 256x256, following size used by spectacle 24.05
+        drag->setPixmap(pixmap.scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+
+        drag->exec(Qt::CopyAction);
+    }
+
     void temporarilyDisableDropShadow()
     {
         // Disable drop shadow because on large pixmaps
@@ -106,6 +145,7 @@ private:
     QLabel *const m_screenshot;
     QSize m_screenshotSize;
     QTimer m_renableEffects;
+    QPoint m_dragStartCandidatePos;
 
     friend class ScrollArea;
 };
