@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2024-02-10 00:07+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1281,8 +1281,10 @@ msgid "Closes the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "다른 이름으로 저장(&S)..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2469,9 +2471,11 @@ msgid "Modes && Filetypes"
 msgstr "모드와 파일 형식"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "검색..."
 
 #: mode/katemodemenulist.cpp:141
@@ -3856,9 +3860,11 @@ msgid "Spell check canceled."
 msgstr "맞춤법 검사가 취소되었습니다."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "맞춤법 검사 중..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4084,8 +4090,10 @@ msgid "I&gnore All"
 msgstr "모두 무시(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "맞춤법 검사(커서에서부터)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4208,23 +4216,31 @@ msgid "S&trikeout"
 msgstr "취소선(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "일반 색상(&C)..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "선택한 색상(&S)..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "배경 색상(&B)..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "선택한 배경 색상(&E)..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4835,18 +4851,24 @@ msgid "&Theme:"
 msgstr "테마(&T):"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
-msgstr "복사(&C)..."
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:button"
+msgid "&Copy…"
+msgstr "복사"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "내보내기..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "가져오기..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6372,9 +6394,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "들여쓰기/탭: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "기타..."
+#, fuzzy, kde-format
+#| msgctxt "Language Section"
+#| msgid "Other"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "기타"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6523,9 +6548,11 @@ msgid ""
 msgstr "텍스트의 현재 줄이나 블록을 올바른 들여쓰기 단계로 자동 정렬합니다."
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
-msgstr "정렬 기준(&A)..."
+#, fuzzy, kde-format
+#| msgid "Align On"
+msgctxt "@action"
+msgid "&Align On…"
+msgstr "정렬 기준"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6703,13 +6730,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "현재 문서를 다른 이름으로 디스크에 저장합니다."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "다른 인코딩과 이름으로 저장..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "다른 이름으로 저장(&C)..."
 
 #: view/kateview.cpp:661
@@ -6745,8 +6776,10 @@ msgid "Move downwards to the next modified line."
 msgstr "다음 수정된 줄로 이동합니다."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "편집기 설정(&C)..."
 
 #: view/kateview.cpp:682
@@ -7200,9 +7233,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "자동 맞춤법 검사 켬/끔"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "사전 바꾸기..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "사전 바꾸기"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7235,8 +7270,10 @@ msgstr ""
 "오."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "HTML로 내보내기(&X)..."
 
 #: view/kateview.cpp:976
@@ -7696,8 +7733,10 @@ msgid "Copy"
 msgstr "복사"
 
 #: view/screenshotdialog.cpp:140
-#, kde-format
-msgid "Background Color..."
+#, fuzzy, kde-format
+#| msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "배경색..."
 
 #: view/screenshotdialog.cpp:142
@@ -8123,6 +8162,18 @@ msgstr "'%1' %2,  16진수 %3,  8진수 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "표시가 설정되지 않음: %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "복사(&C)..."
+
+#~ msgid "Other..."
+#~ msgstr "기타..."
+
+#~ msgid "&Align On..."
+#~ msgstr "정렬 기준(&A)..."
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "사전 바꾸기..."
 
 #~ msgid "Show focus frame around editor"
 #~ msgstr "편집기 주변에 포커스 프레임 표시"
@@ -8813,10 +8864,6 @@ msgstr "표시가 설정되지 않음: %1"
 #~ msgctxt "Language"
 #~ msgid "ABC"
 #~ msgstr "ABC"
-
-#~ msgctxt "Language Section"
-#~ msgid "Other"
-#~ msgstr "기타"
 
 #~ msgctxt "Language"
 #~ msgid "ActionScript 2.0"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1373,8 +1373,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Сачувај као..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2623,8 +2625,8 @@ msgstr "Режими и типови фајлова"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Режим тражења"
 
 #: mode/katemodemenulist.cpp:141
@@ -4103,9 +4105,11 @@ msgid "Spell check canceled."
 msgstr "Провјера правописа отказана."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Провјера правописа у току..."
 
 # >> @title:menu
@@ -4322,7 +4326,8 @@ msgstr "И&гнориши све"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Правопис (од курсора)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4453,23 +4458,31 @@ msgid "S&trikeout"
 msgstr "Пре&цртан"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Боја &обичног..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Боја &изабраног..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Боја &позадине..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Боја по&задине изабраног..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5138,17 +5151,22 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Сачувај &копију као..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Извези..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Увези..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6792,9 +6810,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Увлачење/табулатор: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "други..."
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "друго"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6957,7 +6978,8 @@ msgstr "Поравнајте текући ред или блок текста н
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Поравнај"
 
 #: view/kateview.cpp:524
@@ -7137,13 +7159,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Сачувај текући документ на диск, под изабраним именом"
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Сачувај са кодирањем..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Сачувај &копију као..."
 
 #: view/kateview.cpp:661
@@ -7182,8 +7208,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Кретање надоле на претходни измењени ред."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "Подеси &уређивач..."
 
 #: view/kateview.cpp:682
@@ -7669,8 +7697,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Да ли аутоматски провјеравати правопис."
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Промијени рјечник..."
 
 #: view/kateview.cpp:957
@@ -7704,8 +7734,10 @@ msgid ""
 msgstr "Копирајте тренутно изабрани текст као ХТМЛ у системски клипборд."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "И&звези као ХТМЛ..."
 
 #: view/kateview.cpp:976
@@ -8186,7 +8218,8 @@ msgstr "Сачувај &копију као..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Боја &позадине..."
 
 # >> @item color scheme item category
@@ -8636,6 +8669,22 @@ msgstr "'%1' %2,  хекс %3, окт %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Обиљежје није постављено: %1"
+
+#, fuzzy
+#~| msgid "Save &Copy As..."
+#~ msgid "&Copy..."
+#~ msgstr "Сачувај &копију као..."
+
+#~ msgid "Other..."
+#~ msgstr "други..."
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Поравнај"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Промијени рјечник..."
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "Фајл ‘%1’ не постоји."

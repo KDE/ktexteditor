@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -1360,7 +1360,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2613,8 +2614,8 @@ msgstr "របៀប និង​ប្រភេទ​ឯកសារ"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "របៀប​ស្វែងរក"
 
 #: mode/katemodemenulist.cpp:141
@@ -4090,8 +4091,8 @@ msgstr "ជម្រើស​ការ​ពិនិត្យអក្ខរា
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "ជម្រើស​ការ​ពិនិត្យអក្ខរាវិរុទ្ធ...​"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4286,7 +4287,8 @@ msgstr "មិន​អើពើ​ពាក្យ​"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "អក្ខរាវិរុទ្ធ (ពី​ទស្សន៍​ទ្រនិច)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4416,23 +4418,31 @@ msgid "S&trikeout"
 msgstr "ឆូត"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "ពណ៌​ធម្មតា..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "ពណ៌​ដែល​បាន​ជ្រើស..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "ពណ៌​ផ្ទៃ​ខាង​ក្រោយ..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "ពណ៌​ផ្ទៃ​ខាង​ក្រោយ​ដែលបាន​ជ្រើស..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5079,17 +5089,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "នាំចេញ..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "នាំចូល..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6648,7 +6663,8 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "ផ្សេងៗ"
 
 #: view/katestatusbar.cpp:477
@@ -6807,7 +6823,8 @@ msgstr "ប្រើ​វា​ដើម្បី​តម្រឹម​បន
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "តម្រឹម"
 
 #: view/kateview.cpp:524
@@ -6981,13 +6998,15 @@ msgstr "រក្សា​ទុក​ឯកសារ​បច្ចុប្ប
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
 #: view/kateview.cpp:661
@@ -7027,8 +7046,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "កំណត់​រចនាសម្ព័ន្ធ​កម្មវិធី​​កែសម្រួល..."
 
 #: view/kateview.cpp:682
@@ -7501,8 +7522,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "បិទ/បើក​ការ​ពិនិត្យ​អក្ខរាវិរុទ្ធ​ដោយ​ស្វ័យ​ប្រវត្តិ"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "ផ្លាស់ប្ដូរ​វចនានុក្រម..."
 
 #: view/kateview.cpp:957
@@ -7539,7 +7562,8 @@ msgstr "ប្រើ​ពាក្យ​បញ្ជា​នេះ​ដើម
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export..."
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "នាំចេញ..."
 
 #: view/kateview.cpp:976
@@ -8014,7 +8038,8 @@ msgstr "រក្សាទុក​ឯកសារ​ជា..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "ពណ៌​ផ្ទៃ​ខាង​ក្រោយ..."
 
 #: view/screenshotdialog.cpp:142
@@ -8451,6 +8476,25 @@ msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "រក្សាទុក​ឯកសារ​ជា..."
+
+#, fuzzy
+#~| msgctxt "Language Section"
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "ផ្សេងៗ"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "តម្រឹម"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "ផ្លាស់ប្ដូរ​វចនានុក្រម..."
 
 #, fuzzy
 #~| msgid "The files are identical."
@@ -10223,12 +10267,6 @@ msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណ
 #~ msgstr ""
 #~ "នៅ​ពេល​បាន​ជ្រើស របៀប​បញ្ចូល vi នឹង​ត្រូវ​បាន​បើក​នៅពេល​បើកទិដ្ឋភាព​ថ្មី ។អ្នក​អាច​បិទ/បើក​​របៀប​"
 #~ "បញ្ចូល vi សម្រាប់​ទិដ្ឋភាព​ជាក់លាក់​នៅ​ក្នុង​ម៉ឺនុយ​កែសម្រួល ។"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "ផ្សេងៗ"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

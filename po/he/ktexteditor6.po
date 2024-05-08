@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
-"PO-Revision-Date: 2024-05-05 12:52+0300\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"PO-Revision-Date: 2024-05-07 14:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -554,19 +554,13 @@ msgstr "&גלישת מילים בעמודה קבועה"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If this option is checked, a vertical line will be drawn at the word "
-#| "wrap column as defined in the <strong>Editing</strong> properties.</"
-#| "p><p>Note that the word wrap marker is only drawn if you use a fixed "
-#| "pitch font.</p>"
+#, kde-format
 msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p> אם אפשרות זאת מופעלת, יוצג קו אנכי בעמודה בה תתבצע גלישת שורות, כמוגדר "
-"במאפייני ה<strong>עריכה</strong>. </p><p> שים לב שסימון גלישת השורות יוצג רק "
-"אם נבחר גופן בעל רוחב קבוע. </p>"
+"<p>אם האפשרות הזאת מסומנת, יצויר קו אנכי בעמודת גלישת השורות כפי שמוגדר "
+"במאפייני ה<strong>עריכה</strong>.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -1275,8 +1269,10 @@ msgid "Closes the file, discarding its content."
 msgstr "סגירת הקובץ תוך התעלמות מתוכנו."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&שמירה בשם…"
 
 #: dialogs/katedialogs.cpp:1476
@@ -2110,16 +2106,16 @@ msgstr ""
 "הכלים כדי לאפשר לך לערוך אותו."
 
 #: document/katedocument.cpp:2415
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
 "Length Limit (%2 characters).<br />The longest of those lines was %3 "
 "characters long<br/>Those lines were wrapped and the document is set to read-"
 "only mode, as saving will modify its content."
 msgstr ""
-"הקובץ %1 נפתח ומכיל שורות ארוכות מהגדרת מגבלת אורך השורה (%2 תווים).<br /> "
-"השורות הללו נשברו, והמסמך הקבע לקריאה בלבד כיוון ששמירה שלו כנראה תהרוס את "
-"התוכן שלו."
+"הקובץ %1 נפתח ומכיל שורות ארוכות מהגדרת מגבלת אורך השורה (%2 תווים).<br /"
+">הארוכה מבין השורות האלו הייתה באורך %3<br />השורות הללו גלשו, והמסמך הוגדר "
+"לקריאה בלבד כיוון ששמירה שלו כנראה תשנה את התוכן שלו."
 
 #: document/katedocument.cpp:2422
 #, kde-format
@@ -2415,9 +2411,11 @@ msgid "Modes && Filetypes"
 msgstr "מצבים וסוגי קבצים"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "חיפוש…"
 
 #: mode/katemodemenulist.cpp:141
@@ -2676,23 +2674,18 @@ msgid "Co&lor:"
 msgstr "צב&ע:"
 
 #: printing/printconfigwidgets.cpp:547
-#, fuzzy, kde-format
-#| msgid "Select the color scheme to use for the print."
+#, kde-format
 msgid "Select the color theme to use for the print."
-msgstr "בחר את צבע הסכמה לשימוש בעת הדפסה."
+msgstr "נא לבחור את ערכת הצבע לשימוש בהדפסה."
 
 #: printing/printconfigwidgets.cpp:549
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>If enabled, the background color of the editor will be used.</"
-#| "p><p>This may be useful if your color scheme is designed for a dark "
-#| "background.</p>"
+#, kde-format
 msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
-"<p>אם אפשרות זו נבחרת, ייעשה שימוש בצבע הרקע של העורך.</p><p>דבר זה עשוי "
-"להיות שימושי אם ערכת הצבעים שלך מיועדת לרקע כהה.</p>"
+"<p>אם האפשרות פעילה, ייעשה שימוש בצבע הרקע של העורך.</p><p>יכול להיות שימושי "
+"אם ערכת הצבע שלך תוכננה לרקע כהה.</p>"
 
 #: printing/printconfigwidgets.cpp:552
 #, fuzzy, kde-format
@@ -3322,10 +3315,10 @@ msgid "R"
 msgstr ""
 
 #: script/data/indentation/replicode.js:2
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Autoindent mode"
 msgid "Replicode"
-msgstr "ה&חלף"
+msgstr "Replicode"
 
 #: script/data/indentation/ruby.js:2
 #, kde-format
@@ -3778,9 +3771,11 @@ msgid "Spell check canceled."
 msgstr "בדיקת האיות בוטלה."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "האיות נבדק…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3963,8 +3958,10 @@ msgid "I&gnore All"
 msgstr "ה&תעלמות מהכול"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "איות (ממיקום הסמן)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4086,23 +4083,31 @@ msgid "S&trikeout"
 msgstr "קו &חוצה"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "&צבע רגיל…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "צבע נב&חר…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "צבע רק&ע…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "צבע רקע &נבחר…"
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4626,13 +4631,7 @@ msgid "Not Editable Placeholder"
 msgstr "ממלא מקום שלא ניתן לערוך"
 
 #: syntax/katethemeconfig.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>This list displays the default styles for the current schema and "
-#| "offers the means to edit them. The style name reflects the current style "
-#| "settings.</p><p>To edit the colors, click the colored squares, or select "
-#| "the color to edit from the popup menu.</p><p>You can unset the Background "
-#| "and Selected Background colors from the popup menu when appropriate.</p>"
+#, kde-format
 msgid ""
 "<p>This list displays the default styles for the current color theme and "
 "offers the means to edit them. The style name reflects the current style "
@@ -4641,10 +4640,9 @@ msgid ""
 "Selected Background colors from the popup menu when appropriate.</p>"
 msgstr ""
 "<p>רשימה זו מציגה את סגנונות ברירת המחדל עבור הסכמה הנוכחית, ומספקת אמצעים "
-"לערוך אותם. שם הסגנון משקף את הגדרות הסגנון הנוכחיות. </p><p>לשם עריכת "
-"הצבעים, לחץ על הריבועים הצבועים או בחר צבע לעריכה מתוך התפריט המוקפץ. </"
-"p><p> בעת הצורך ניתן גם לשחזר את צבע הרקע וצבע הרקע הנבחר מתוך התפריט "
-"המוקפץ. </p>"
+"לערוך אותם. שם הסגנון משקף את הגדרות הסגנון הנוכחיות. </p><p>לעריכת הצבעים, "
+"יש ללחוץ על הריבועים הצבועים או לבחור צבע לעריכה מתוך התפריט הצץ.</p><p>בעת "
+"הצורך ניתן גם לשחזר את צבע הרקע וצבע הרקע הנבחר מתוך התפריט הצץ. </p>"
 
 #: syntax/katethemeconfig.cpp:568
 #, kde-format
@@ -4719,18 +4717,24 @@ msgid "&Theme:"
 msgstr "&ערכת עיצוב:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
-msgstr "ה&עתקה…"
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:button"
+msgid "&Copy…"
+msgstr "העתקה"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "ייצוא…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "ייבוא…"
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6183,9 +6187,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "הזחה/טאב: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "אחר…"
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "אחרים"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6336,9 +6343,11 @@ msgstr ""
 "המתאימה."
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
-msgstr "יי&שור פעיל…"
+#, fuzzy, kde-format
+#| msgid "Align On"
+msgctxt "@action"
+msgid "&Align On…"
+msgstr "יישור פעיל"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6510,13 +6519,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "שמירת המסמך הנוכחי לכונן, בשם הנבחר."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "שמירה בשם עם קידוד…"
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "שמירת עותק &בשם…"
 
 #: view/kateview.cpp:661
@@ -6552,8 +6565,10 @@ msgid "Move downwards to the next modified line."
 msgstr "קפיצה מטה לשורה הבאה שנערכה."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&הגדרות העורך…"
 
 #: view/kateview.cpp:682
@@ -7008,9 +7023,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "הפעלת/השבתת בדיקת איות אוטומטית"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "החלפת מילון…"
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "החלפת מילון"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7043,8 +7060,10 @@ msgstr ""
 "בתור HTML."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "ייצוא &כ־HTML…"
 
 #: view/kateview.cpp:976
@@ -7505,8 +7524,10 @@ msgid "Copy"
 msgstr "העתקה"
 
 #: view/screenshotdialog.cpp:140
-#, kde-format
-msgid "Background Color..."
+#, fuzzy, kde-format
+#| msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "צבע רקע…"
 
 #: view/screenshotdialog.cpp:142
@@ -7880,6 +7901,18 @@ msgstr "‚%1’ %2,  הקס %3,  אוקטאלי %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "הסימון לא נקבע: %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "ה&עתקה…"
+
+#~ msgid "Other..."
+#~ msgstr "אחר…"
+
+#~ msgid "&Align On..."
+#~ msgstr "יי&שור פעיל…"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "החלפת מילון…"
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "הקובץ %1 לא קיים"

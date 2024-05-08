@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2010-08-28 22:06+0200\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@lister.huftis.org>\n"
@@ -1253,7 +1253,8 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
 #, kde-format
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1476
@@ -2388,10 +2389,11 @@ msgid "Modes && Filetypes"
 msgstr "Modusat ja fiilašlájat"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Search mode"
+msgctxt "@info:placeholder"
+msgid "Search…"
+msgstr "Ohcanmodus"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3734,9 +3736,11 @@ msgid "Spell check canceled."
 msgstr "Čállindárkkisteapmi gaskkalduhttui."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Čállindárkkisteapmi lea jođus …"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3954,7 +3958,8 @@ msgstr "Badjelgeahča visot"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4075,23 +4080,31 @@ msgid "S&trikeout"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Dábálaš &ivdni …"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "&Merkejuvvon ivdni …"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "D&uogášivdni …"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "&Merkejuvvon duogášivdni …"
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4696,17 +4709,22 @@ msgstr ""
 
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Olggosfievrrit …"
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Sisafievrrit …"
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6152,8 +6170,11 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-msgid "Other..."
-msgstr "Eará"
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Earát"
 
 #: view/katestatusbar.cpp:477
 #, fuzzy, kde-format
@@ -6301,7 +6322,8 @@ msgstr ""
 
 #: view/kateview.cpp:522
 #, kde-format
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr ""
 
 #: view/kateview.cpp:524
@@ -6477,12 +6499,14 @@ msgstr "Vurke dokumeantta skerrui, nama bijat ieš."
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "&Vurke fiilla nugo …"
 
 #: view/kateview.cpp:661
@@ -6520,8 +6544,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Heivet čállinprográmma …"
 
 #: view/kateview.cpp:682
@@ -6976,8 +7002,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Geavat dahje ale geavat automáhtalaš čállindárkkisteami"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Molsso sátnelisttu …"
 
 #: view/kateview.cpp:957
@@ -7012,7 +7040,8 @@ msgstr ""
 
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Olggosfievrrit …"
 
 #: view/kateview.cpp:976
@@ -7478,7 +7507,8 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "D&uogášivdni …"
 
 #: view/screenshotdialog.cpp:142
@@ -7846,3 +7876,7 @@ msgstr "«%1» %2, Hex %3, Oktála %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mearka ii meroštuvvon: %1"
+
+#, fuzzy
+#~ msgid "Other..."
+#~ msgstr "Eará"

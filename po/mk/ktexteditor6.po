@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2009-01-08 12:55+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -1341,7 +1341,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Зачувај датотека како..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2560,8 +2561,8 @@ msgstr "Режими и типови на датотеки"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Режим на пребарување"
 
 #: mode/katemodemenulist.cpp:141
@@ -4020,8 +4021,8 @@ msgstr "Избор за проверка на правопис..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Избор за проверка на правопис..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4215,7 +4216,8 @@ msgstr "&Игнорирај"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Правопис (од покажувачот)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4348,23 +4350,31 @@ msgid "S&trikeout"
 msgstr "Прецр&тано"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Нормална &боја..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Боја на &избрано..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Боја на &подлога..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Боја на подлога на &избрано..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5064,19 +5074,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&Зачувај датотека како..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "&Изнеси како HTML..."
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Нормална &боја..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6592,7 +6605,8 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "Други"
 
 #: view/katestatusbar.cpp:477
@@ -6760,7 +6774,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Порамни"
 
 #: view/kateview.cpp:524
@@ -6942,13 +6957,15 @@ msgstr "Го зачувува активниот документ на диск,
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "&Зачувај датотека како..."
 
 #: view/kateview.cpp:661
@@ -6990,8 +7007,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Конфигурирај уредувач..."
 
 #: view/kateview.cpp:682
@@ -7486,7 +7505,8 @@ msgstr ""
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
 #| msgid "Choose Editor..."
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Избери уредувач..."
 
 #: view/kateview.cpp:957
@@ -7522,7 +7542,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Изнеси датотека како HTML"
 
 #: view/kateview.cpp:976
@@ -8001,7 +8022,8 @@ msgstr "&Зачувај датотека како..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Боја на &подлога..."
 
 #: view/screenshotdialog.cpp:142
@@ -8390,6 +8412,27 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "&Зачувај датотека како..."
+
+#, fuzzy
+#~| msgctxt "Language Section"
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "Други"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Порамни"
+
+#, fuzzy
+#~| msgid "Choose Editor..."
+#~ msgid "Change Dictionary..."
+#~ msgstr "Избери уредувач..."
 
 #~ msgid ""
 #~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -9768,12 +9811,6 @@ msgstr "%1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Оди до заградата што одговара"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "Други"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -1307,7 +1307,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 
 #: dialogs/katedialogs.cpp:1476
@@ -2495,10 +2496,10 @@ msgstr "मोड व फ़ाइल-क़िस्में"
 
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
-#| msgid "Search"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
-msgstr "ढूंढें"
+#| msgid "I-Search:"
+msgctxt "@info:placeholder"
+msgid "Search…"
+msgstr "आई-ढूंढें:"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3926,8 +3927,8 @@ msgstr "वर्तनी जाँच चयन..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "वर्तनी जाँच चयन..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4123,7 +4124,8 @@ msgstr " नज़र अंदाज़ करें (&I)"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "संकेतक स्थिति से जाँचें... (&h)"
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4259,23 +4261,31 @@ msgid "S&trikeout"
 msgstr "लिखकर-काटें (&t)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "सामान्य रंग (&C)"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "चुने गए रंग (&S)"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "पृष्ठभूमि रंग... (&B)"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "चयनित पृष्ठभूमि का रंग... (&e)"
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4943,19 +4953,22 @@ msgstr "योजना"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "एचटीएमएल रूप में निर्यात करें... (&x)"
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "सामान्य रंग (&C)"
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6483,7 +6496,8 @@ msgstr ""
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
 #| msgid "Other"
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "अन्य"
 
 #: view/katestatusbar.cpp:477
@@ -6642,7 +6656,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "पंक्तिबद्ध (&A)"
 
 #: view/kateview.cpp:524
@@ -6814,13 +6829,15 @@ msgstr "मौज़ूदा दस्तावेज़ डिस्क मे
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 
 #: view/kateview.cpp:661
@@ -6862,8 +6879,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "संपादक कॉन्फ़िगर करें... (&C)"
 
 #: view/kateview.cpp:682
@@ -7349,7 +7368,8 @@ msgstr ""
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
 #| msgid "Choose Editor..."
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "संपादक चुने..."
 
 #: view/kateview.cpp:957
@@ -7385,7 +7405,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "फ़ाइल को एचटीएमएल के रूप में निर्यात करें"
 
 #: view/kateview.cpp:976
@@ -7862,7 +7883,8 @@ msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "पृष्ठभूमि रंग... (&B)"
 
 #: view/screenshotdialog.cpp:142
@@ -8248,6 +8270,32 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "मार्क टाइप %1"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "Placeholder in search bar"
+#~ msgid "Search..."
+#~ msgstr "ढूंढें"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "फ़ाइल ऐसे सहेजें... (&S)"
+
+#, fuzzy
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "अन्य"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "पंक्तिबद्ध (&A)"
+
+#, fuzzy
+#~| msgid "Choose Editor..."
+#~ msgid "Change Dictionary..."
+#~ msgstr "संपादक चुने..."
 
 #~ msgid ""
 #~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -10028,9 +10076,6 @@ msgstr "मार्क टाइप %1"
 #~ msgid "Matching Bracket"
 #~ msgstr "मैचिंग ब्रेकेट में जाएँ"
 
-#~ msgid "Other"
-#~ msgstr "अन्य"
-
 #, fuzzy
 #~| msgid "C++"
 #~ msgctxt "Language"
@@ -11802,9 +11847,6 @@ msgstr "मार्क टाइप %1"
 
 #~ msgid "Search Incrementally Backwards"
 #~ msgstr "पीछे की ओर से बढ़ते क्रम में ढूंढें"
-
-#~ msgid "I-Search:"
-#~ msgstr "आई-ढूंढें:"
 
 #~ msgid "From Beginning"
 #~ msgstr "प्रारंभ से जारी रखें?"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -1307,8 +1307,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Đóng tệp, loại bỏ nội dung."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Lưu thành..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2516,9 +2518,11 @@ msgid "Modes && Filetypes"
 msgstr "Chế độ && kiểu tệp"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Tìm kiếm..."
 
 #: mode/katemodemenulist.cpp:141
@@ -3928,9 +3932,11 @@ msgid "Spell check canceled."
 msgstr "Đã huỷ kiểm tra đánh vần."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Đang kiểm tra đánh vần..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4162,8 +4168,10 @@ msgid "I&gnore All"
 msgstr "Bỏ &qua tất cả"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Đánh vần (từ con trỏ)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4286,23 +4294,31 @@ msgid "S&trikeout"
 msgstr "Gạch &xuyên"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Mà&u thường..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Màu bôi đ&en..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Màu &nền..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "&Màu nền bôi đen..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4922,18 +4938,24 @@ msgid "&Theme:"
 msgstr "&Chủ đề:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
+#, fuzzy, kde-format
+#| msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&Chép..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Xuất khẩu..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Nhập khẩu..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6483,9 +6505,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Thụt lề/lập bảng: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Khác..."
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Khác"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6637,9 +6662,11 @@ msgstr ""
 "thụt lề phù hợp."
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
-msgstr "&Căn lề ở..."
+#, fuzzy, kde-format
+#| msgid "Align On"
+msgctxt "@action"
+msgid "&Align On…"
+msgstr "Căn lề ở"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6825,13 +6852,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Lưu tài liệu hiện tại vào đĩa, với tên do bạn chọn."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Lưu thành với mã hoá..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Lưu bản &sao thành..."
 
 #: view/kateview.cpp:661
@@ -6869,8 +6900,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Di chuyển xuống dưới đến dòng bị chỉnh sửa ở đằng sau."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Cấu hình trình biên tập..."
 
 #: view/kateview.cpp:682
@@ -7342,9 +7375,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Bật/tắt kiểm tra đánh vần tự động"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "Đổi từ điển..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Đổi từ điển"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7378,8 +7413,10 @@ msgstr ""
 "thống."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "&Xuất khẩu thành HTML..."
 
 #: view/kateview.cpp:976
@@ -7852,7 +7889,8 @@ msgstr "&Chép..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Màu &nền..."
 
 #: view/screenshotdialog.cpp:142
@@ -8294,6 +8332,18 @@ msgstr "'%1' %2,  thập lục phân %3,  bát phân %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Chỉ dấu không được đặt: %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "&Chép..."
+
+#~ msgid "Other..."
+#~ msgstr "Khác..."
+
+#~ msgid "&Align On..."
+#~ msgstr "&Căn lề ở..."
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Đổi từ điển..."
 
 #~ msgid "Show focus frame around editor"
 #~ msgstr "Hiện khung nhắm ở quanh trình biên tập"

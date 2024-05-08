@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2003-11-12 14:22+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -1252,7 +1252,8 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Mewnosod Ffeil ..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2380,8 +2381,8 @@ msgstr "Fformat Ffeil"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "I-Search:"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Chwilio Cynyddol:"
 
 #: mode/katemodemenulist.cpp:141
@@ -3769,8 +3770,8 @@ msgstr "Gwirio Sillafu"
 
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Gwirio Sillafu"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3958,7 +3959,8 @@ msgstr "&Anwybyddu"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4088,24 +4090,29 @@ msgid "S&trikeout"
 msgstr "T&rwylinellu"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
+msgstr "Llunio lliw y ce&fndir"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
+msgstr "Llunio lliw y ce&fndir"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "&Lliw Cefndir ..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
+msgstr "Llunio lliw y ce&fndir"
 
 #: syntax/katestyletreewidget.cpp:275
 #, fuzzy, kde-format
@@ -4723,17 +4730,20 @@ msgstr "Cynllun"
 
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Mewnosod Ffeil ..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "A&llforio"
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6224,7 +6234,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "Arall"
 
 #: view/katestatusbar.cpp:477
@@ -6376,7 +6387,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Alinio"
 
 #: view/kateview.cpp:524
@@ -6543,12 +6555,14 @@ msgstr "Cadw i ddisg y ddogfen gyfredol gyda enw o'ch dewis chi."
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Mewnosod Ffeil ..."
 
 #: view/kateview.cpp:661
@@ -6587,9 +6601,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action"
+msgid "&Configure Editor…"
+msgstr "Ffurfweddu %1"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7040,7 +7055,8 @@ msgstr ""
 
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Dewi&s Ffont..."
 
 #: view/kateview.cpp:957
@@ -7073,7 +7089,8 @@ msgstr "Defnyddiwch y gorchymyn yma i gopïo'r testun dewisiedig i'r gludfwrdd."
 
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Allforio Ffeil Fel"
 
 #: view/kateview.cpp:976
@@ -7537,7 +7554,8 @@ msgstr "Mewnosod Ffeil ..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "&Lliw Cefndir ..."
 
 #: view/screenshotdialog.cpp:142
@@ -7912,6 +7930,23 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "Llinell: %1 "
+
+#, fuzzy
+#~ msgid "&Copy..."
+#~ msgstr "Mewnosod Ffeil ..."
+
+#, fuzzy
+#~ msgid "Other..."
+#~ msgstr "Arall"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Alinio"
+
+#, fuzzy
+#~ msgid "Change Dictionary..."
+#~ msgstr "Dewi&s Ffont..."
 
 #, fuzzy
 #~| msgid "Error: %1"
@@ -8542,10 +8577,6 @@ msgstr "Llinell: %1 "
 #~ msgstr "Methu agor %1"
 
 #, fuzzy
-#~ msgid "Other"
-#~ msgstr "Arall"
-
-#, fuzzy
 #~ msgid "Text Area Background"
 #~ msgstr "Cefndir Ardal Testun"
 
@@ -8963,10 +8994,6 @@ msgstr "Llinell: %1 "
 
 #~ msgid "N&ame:"
 #~ msgstr "E&nw:"
-
-#, fuzzy
-#~ msgid "Configure Indenter"
-#~ msgstr "Ffurfweddu %1"
 
 #~ msgid "Memory Usage"
 #~ msgstr "Defnydd Cof"

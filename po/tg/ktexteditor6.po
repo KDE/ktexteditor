@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2019-09-29 12:28+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -1345,8 +1345,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Нигоҳ доштан ҳамчун..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2559,8 +2561,8 @@ msgstr "&Намуди файл"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "I-Search:"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "I-Ҷустуҷӯ:"
 
 #: mode/katemodemenulist.cpp:141
@@ -4018,8 +4020,8 @@ msgstr "Интихоби санҷиши имло..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Интихоби санҷиши имло..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4211,7 +4213,8 @@ msgstr "&Эътино накардан"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Санҷиши имло (аз рӯйи курсор)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4344,23 +4347,31 @@ msgid "S&trikeout"
 msgstr "&Хат кашида"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "&Ранги матн..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Ранги &матни ҷудошуда..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Ранги &замина..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Ранги заминаи м&атни ҷудошуда..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5068,19 +5079,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&Нигоҳ доштани файл ҳамчун..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "С&дирот ҳамчун HTML..."
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "&Ранги матн..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6604,7 +6618,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "Дигар"
 
 #: view/katestatusbar.cpp:477
@@ -6770,7 +6785,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Саф кашидан"
 
 #: view/kateview.cpp:524
@@ -6958,13 +6974,15 @@ msgstr "Ҳуҷҷати ровонро бо номи дилхоҳ дар диск
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "&Нигоҳ доштани файл ҳамчун..."
 
 #: view/kateview.cpp:661
@@ -7004,8 +7022,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Танзими Муҳаррир..."
 
 #: view/kateview.cpp:682
@@ -7504,7 +7524,8 @@ msgstr ""
 
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "&Танзими Муҳаррир..."
 
 #: view/kateview.cpp:957
@@ -7540,7 +7561,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Содир кардани файл ҳамчун HTML"
 
 #: view/kateview.cpp:976
@@ -8020,7 +8042,8 @@ msgstr "&Нигоҳ доштани файл ҳамчун..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Ранги &замина..."
 
 #: view/screenshotdialog.cpp:142
@@ -8404,6 +8427,24 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Ҷудокунии Намуди %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "&Нигоҳ доштани файл ҳамчун..."
+
+#, fuzzy
+#~ msgid "Other..."
+#~ msgstr "Дигар"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Саф кашидан"
+
+#, fuzzy
+#~ msgid "Change Dictionary..."
+#~ msgstr "&Танзими Муҳаррир..."
 
 #~ msgid ""
 #~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -9775,10 +9816,6 @@ msgstr "Ҷудокунии Намуди %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Ба қавси кушода/пӯшида"
-
-#, fuzzy
-#~ msgid "Other"
-#~ msgstr "Дигар"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

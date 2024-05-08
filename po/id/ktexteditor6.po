@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1355,8 +1355,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Tutup file, membuang kontennya."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Simpan Sebagai..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2599,9 +2601,11 @@ msgid "Modes && Filetypes"
 msgstr "Mode && Tipefile"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Cari..."
 
 #: mode/katemodemenulist.cpp:141
@@ -4056,9 +4060,11 @@ msgid "Spell check canceled."
 msgstr "Periksa ejaan dibatalkan."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Pemeriksaan ejaan sedang berlangsung..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4296,7 +4302,8 @@ msgstr "A&baikan Semua"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Mengeja (dari kursor)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4424,23 +4431,31 @@ msgid "S&trikeout"
 msgstr "Garistenga&h"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "&Warna Normal..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Warna Terpilih..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Warna Latar&Belakang..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Warna LatarBelakang Ter&pilih..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5079,17 +5094,22 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Simpan &Salin Sebagai..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Ekspor..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Impor..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6656,9 +6676,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Lekuk/Tab: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Lainnya..."
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Lainnya"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6830,7 +6853,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Sejajar"
 
 #: view/kateview.cpp:524
@@ -7010,13 +7034,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Simpan dokumen saat ini ke disk, dengan sebuah nama yang kamu pilih."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Simpan Sebagai dengan Pengenkodean..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Simpan &Salin Sebagai..."
 
 #: view/kateview.cpp:661
@@ -7056,8 +7084,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Pindah turun ke baris yang dimodifikasi selanjutnya."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Konfigurasikan Editor..."
 
 #: view/kateview.cpp:682
@@ -7536,9 +7566,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Fungsikan/nonfungsikan pemeriksaan ejaan otomatis."
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "Ubah Kamus..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Ubah kamus"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7573,8 +7605,10 @@ msgstr ""
 "HTML ke papan-klip sistem."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "E&kspor sebagai HTML..."
 
 #: view/kateview.cpp:976
@@ -8052,7 +8086,8 @@ msgstr "Simpan &Salin Sebagai..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Warna Latar&Belakang..."
 
 #: view/screenshotdialog.cpp:142
@@ -8506,6 +8541,22 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Tanda tidak diset: %1"
+
+#, fuzzy
+#~| msgid "Save &Copy As..."
+#~ msgid "&Copy..."
+#~ msgstr "Simpan &Salin Sebagai..."
+
+#~ msgid "Other..."
+#~ msgstr "Lainnya..."
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Sejajar"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Ubah Kamus..."
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "File %1 tidak ada."

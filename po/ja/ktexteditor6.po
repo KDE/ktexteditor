@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1385,7 +1385,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "別名で保存(&S)..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2612,8 +2613,8 @@ msgstr "モードとファイルタイプ"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "検索モード"
 
 #: mode/katemodemenulist.cpp:141
@@ -4052,8 +4053,8 @@ msgstr "選択範囲をスペルチェック(&K)..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "選択範囲をスペルチェック(&K)..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4250,7 +4251,8 @@ msgstr "無視(&I)"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "カーソル位置からスペルチェック(&G)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4380,23 +4382,31 @@ msgid "S&trikeout"
 msgstr "取り消し線(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "通常の色(&C)..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "選択時の色(&S)..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "背景色(&B)..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "選択時の背景色(&E)..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5092,19 +5102,22 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "別名で保存(&S)..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "通常の色(&C)..."
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "通常の色(&C)..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6620,9 +6633,10 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
-msgid "Other..."
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "その他"
 
 #: view/katestatusbar.cpp:477
@@ -6783,7 +6797,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "整列(&A)"
 
 #: view/kateview.cpp:524
@@ -6966,13 +6981,15 @@ msgstr "選択した名前で、現在の文書をディスクに保存します
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "別名で保存(&S)..."
 
 #: view/kateview.cpp:661
@@ -7012,8 +7029,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "エディタを設定(&C)..."
 
 #: view/kateview.cpp:682
@@ -7498,8 +7517,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "自動スペルチェックを有効/無効にします"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "辞書を変更..."
 
 #: view/kateview.cpp:957
@@ -7534,7 +7555,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "通常の色(&C)..."
 
 #: view/kateview.cpp:976
@@ -8014,7 +8036,8 @@ msgstr "別名で保存(&S)..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "背景色(&B)..."
 
 #: view/screenshotdialog.cpp:142
@@ -8400,3 +8423,22 @@ msgstr "'%1' %2,  十六進 %3,  八進 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "マークが未セット: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "別名で保存(&S)..."
+
+#, fuzzy
+#~| msgctxt "Language Section"
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "その他"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "整列(&A)"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "辞書を変更..."

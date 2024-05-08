@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -1383,7 +1383,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Stoor Lêer as..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2621,8 +2622,8 @@ msgstr "Lêertipe"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "I-Search:"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "I-Search:"
 
 #: mode/katemodemenulist.cpp:141
@@ -4084,8 +4085,8 @@ msgstr "Spellkontroleur Kiesing..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Spellkontroleur Kiesing..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4277,7 +4278,8 @@ msgstr "Ignoreer"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Spelling (van plekwyser)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4413,23 +4415,31 @@ msgid "S&trikeout"
 msgstr "Uitkrap"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Normale Kleur..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Gekose Kleur..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Agtergrond Kleur..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Gekose Agtergrond Kleur..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5143,19 +5153,22 @@ msgstr "Skema"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Stoor Lêer as..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Uitvoer as Html..."
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Normale Kleur..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6676,7 +6689,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "Ander"
 
 #: view/katestatusbar.cpp:477
@@ -6844,7 +6858,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "In lyn"
 
 #: view/kateview.cpp:524
@@ -7033,13 +7048,15 @@ msgstr "Stoor die huidige dokument na disket, met 'n naam van jou keuse."
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Stoor Lêer as..."
 
 #: view/kateview.cpp:661
@@ -7081,8 +7098,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "Konfigureer Redigeerder..."
 
 #: view/kateview.cpp:682
@@ -7582,7 +7601,8 @@ msgstr ""
 
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Konfigureer Redigeerder..."
 
 #: view/kateview.cpp:957
@@ -7618,7 +7638,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Voer uit Lêer as HTML"
 
 #: view/kateview.cpp:976
@@ -8109,7 +8130,8 @@ msgstr "Stoor Lêer as..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Agtergrond Kleur..."
 
 #: view/screenshotdialog.cpp:142
@@ -8494,6 +8516,24 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Merk Tipe %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "Stoor Lêer as..."
+
+#, fuzzy
+#~ msgid "Other..."
+#~ msgstr "Ander"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "In lyn"
+
+#, fuzzy
+#~ msgid "Change Dictionary..."
+#~ msgstr "Konfigureer Redigeerder..."
 
 #~ msgid ""
 #~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -9938,10 +9978,6 @@ msgstr "Merk Tipe %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Beweeg na Ooreenstemmende Hakkie"
-
-#, fuzzy
-#~ msgid "Other"
-#~ msgstr "Ander"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

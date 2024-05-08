@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1258,8 +1258,10 @@ msgid "Closes the file, discarding its content."
 msgstr "关闭文件，丢弃内容。"
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "另存为(&S)..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2417,9 +2419,11 @@ msgid "Modes && Filetypes"
 msgstr "模式和文件类型"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "搜索..."
 
 #: mode/katemodemenulist.cpp:141
@@ -3788,9 +3792,11 @@ msgid "Spell check canceled."
 msgstr "拼写检查已取消。"
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "正在进行拼写检查..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4013,8 +4019,10 @@ msgid "I&gnore All"
 msgstr "全部忽略(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "拼写 (从光标处)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4137,23 +4145,31 @@ msgid "S&trikeout"
 msgstr "删除线(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "正常颜色(&C)..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "选中内容的颜色(&S)..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "背景颜色(&B)..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "选中内容的背景颜色(&E)..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4759,18 +4775,24 @@ msgid "&Theme:"
 msgstr "主题(&T)："
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
-msgstr "复制(&C)..."
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:button"
+msgid "&Copy…"
+msgstr "复制"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "导出..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "导入..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6276,9 +6298,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "缩进/制表符：%1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "其他..."
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "其他"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6424,9 +6449,11 @@ msgid ""
 msgstr "使用此功能可自动缩进当前行，或者将一块文本对齐到适当的缩进级别。"
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
-msgstr "对齐于(A)..."
+#, fuzzy, kde-format
+#| msgid "Align On"
+msgctxt "@action"
+msgid "&Align On…"
+msgstr "对齐于"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6599,13 +6626,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "用您指定的名字将当前文档保存到磁盘。"
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "另存为指定编码..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "副本另存为(&C)..."
 
 #: view/kateview.cpp:661
@@ -6641,8 +6672,10 @@ msgid "Move downwards to the next modified line."
 msgstr "移动到下一个改动的行。"
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "配置编辑器(&C)..."
 
 #: view/kateview.cpp:682
@@ -7088,9 +7121,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "启用/禁用自动拼写检查"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "更改词典..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "更改词典"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7121,8 +7156,10 @@ msgid ""
 msgstr "使用此命令可将当前所选文字作为 HTML 内容复制到系统剪贴板。"
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "导出为 HTML(&X)..."
 
 #: view/kateview.cpp:976
@@ -7578,8 +7615,10 @@ msgid "Copy"
 msgstr "复制"
 
 #: view/screenshotdialog.cpp:140
-#, kde-format
-msgid "Background Color..."
+#, fuzzy, kde-format
+#| msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "背景颜色..."
 
 #: view/screenshotdialog.cpp:142
@@ -7997,3 +8036,15 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
+
+#~ msgid "&Copy..."
+#~ msgstr "复制(&C)..."
+
+#~ msgid "Other..."
+#~ msgstr "其他..."
+
+#~ msgid "&Align On..."
+#~ msgstr "对齐于(A)..."
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "更改词典..."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -1348,8 +1348,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Aktiivse faili sulgemine selle sisu hüljates."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Salvesta kui..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2571,9 +2573,11 @@ msgid "Modes && Filetypes"
 msgstr "Režiimid ja failitüübid"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Otsing ..."
 
 #: mode/katemodemenulist.cpp:141
@@ -4019,9 +4023,11 @@ msgid "Spell check canceled."
 msgstr "Õigekirja kontroll katkestatud."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Käib õigekirja kontroll..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4258,7 +4264,8 @@ msgstr "&Ignoreeri kõiki"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Õigekirja kontroll (alates kursorist)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4385,23 +4392,31 @@ msgid "S&trikeout"
 msgstr "Lä&bikriipsutus"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Tavaline v&ärv..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "&Valitud teksti värv..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "&Tausta värv..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Val&itud tausta värv..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5028,17 +5043,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Salvesta &koopia..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Ekspordi..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Impordi..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6600,9 +6620,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Taane/tabeldusmärk: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Muu..."
+#, fuzzy, kde-format
+#| msgctxt "Language Section"
+#| msgid "Other"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Muu"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6769,7 +6792,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Joonda"
 
 #: view/kateview.cpp:524
@@ -6949,13 +6973,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Aktiivse dokumendi salvestamine kõvakettale suvalise nimega."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Salvesta kodeeringuga ..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Salvesta &koopia..."
 
 #: view/kateview.cpp:661
@@ -6995,8 +7023,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Liikumine allapoole järgmisele muudetud reale."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Redaktori seadistamine..."
 
 #: view/kateview.cpp:682
@@ -7470,9 +7500,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Automaatse õigekirja kontrolli lubamine või keelamine"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "Muuda sõnaraamatut..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Sõnaraamatu muutmine"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7506,8 +7538,10 @@ msgstr ""
 "lõikepuhvrisse."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "E&kspordi HTML-ina..."
 
 #: view/kateview.cpp:976
@@ -7982,7 +8016,8 @@ msgstr "Salvesta &koopia..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "&Tausta värv..."
 
 #: view/screenshotdialog.cpp:142
@@ -8430,6 +8465,22 @@ msgstr "'%1' %2,  16nd %3,  8nd %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Märk pole määratud: %1"
+
+#, fuzzy
+#~| msgid "Save &Copy As..."
+#~ msgid "&Copy..."
+#~ msgstr "Salvesta &koopia..."
+
+#~ msgid "Other..."
+#~ msgstr "Muu..."
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Joonda"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Muuda sõnaraamatut..."
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "Faili %1 ei ole olemas."
@@ -10321,12 +10372,6 @@ msgstr "Märk pole määratud: %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Liigu sobiva suluni"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "Muu"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

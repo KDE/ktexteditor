@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2023-11-07 21:27+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -1206,7 +1206,8 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
 #, kde-format
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1476
@@ -2309,8 +2310,8 @@ msgstr ""
 
 #: mode/katemodemenulist.cpp:139
 #, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr ""
 
 #: mode/katemodemenulist.cpp:141
@@ -3648,8 +3649,8 @@ msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:245
 #, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3833,7 +3834,8 @@ msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -3955,22 +3957,26 @@ msgstr ""
 
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
-msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:263
 #, kde-format
-msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
-msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
-msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4560,17 +4566,20 @@ msgstr ""
 
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6014,7 +6023,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr ""
 
 #: view/katestatusbar.cpp:477
@@ -6159,7 +6169,8 @@ msgstr ""
 
 #: view/kateview.cpp:522
 #, kde-format
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr ""
 
 #: view/kateview.cpp:524
@@ -6322,12 +6333,14 @@ msgstr ""
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, kde-format
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr ""
 
 #: view/kateview.cpp:661
@@ -6364,7 +6377,8 @@ msgstr ""
 
 #: view/kateview.cpp:680
 #, kde-format
-msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr ""
 
 #: view/kateview.cpp:682
@@ -6807,7 +6821,8 @@ msgstr ""
 
 #: view/kateview.cpp:956
 #, kde-format
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr ""
 
 #: view/kateview.cpp:957
@@ -6840,7 +6855,8 @@ msgstr ""
 
 #: view/kateview.cpp:974
 #, kde-format
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr ""
 
 #: view/kateview.cpp:976
@@ -7290,7 +7306,8 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:140
 #, kde-format
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr ""
 
 #: view/screenshotdialog.cpp:142

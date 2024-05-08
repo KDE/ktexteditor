@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2024-02-05 17:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1257,8 +1257,10 @@ msgid "Closes the file, discarding its content."
 msgstr "關閉檔案，放棄檔案內容。"
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "另存新檔(&S)..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2416,9 +2418,11 @@ msgid "Modes && Filetypes"
 msgstr "模式與檔案類型"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "搜尋…"
 
 #: mode/katemodemenulist.cpp:141
@@ -3782,9 +3786,11 @@ msgid "Spell check canceled."
 msgstr "拼字檢查已取消。"
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "拼字檢查進行中..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4005,8 +4011,10 @@ msgid "I&gnore All"
 msgstr "全部略過(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "拼字檢查（從游標處）..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4127,23 +4135,31 @@ msgid "S&trikeout"
 msgstr "刪除線(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "一般色彩(&C)..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "已選取的顏色(&S)..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "背景顏色(&B)..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "選擇背景顏色(&E)..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4750,18 +4766,24 @@ msgid "&Theme:"
 msgstr "主題(&T)："
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
-msgstr "複製(&C)..."
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:button"
+msgid "&Copy…"
+msgstr "複製"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "匯出..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "匯入..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6273,9 +6295,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "縮排/定位：%1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "其他..."
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "其他"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6421,9 +6446,11 @@ msgid ""
 msgstr "使用這個來為目前的行或文字區塊進行自動縮排，縮排到正確的縮排等級。"
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
-msgstr "對齊於(&A)"
+#, fuzzy, kde-format
+#| msgid "Align On"
+msgctxt "@action"
+msgid "&Align On…"
+msgstr "對齊於"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6588,13 +6615,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "儲存目前檔案到磁碟內，請指定檔案名稱。"
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "以此編碼另存新檔..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "另存新檔(&C)..."
 
 #: view/kateview.cpp:661
@@ -6630,8 +6661,10 @@ msgid "Move downwards to the next modified line."
 msgstr "向下移至下一個變更過的行。"
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "編輯器設定(&C)..."
 
 #: view/kateview.cpp:682
@@ -7075,9 +7108,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "開啟/關閉自動拼字檢查"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "變更目錄..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "變更字典"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7108,8 +7143,10 @@ msgid ""
 msgstr "使用這個指令來將目前選擇的文字以 HTML 形式複製到系統剪貼簿。"
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "匯出為 HTML(&X)"
 
 #: view/kateview.cpp:976
@@ -7563,8 +7600,10 @@ msgid "Copy"
 msgstr "複製"
 
 #: view/screenshotdialog.cpp:140
-#, kde-format
-msgid "Background Color..."
+#, fuzzy, kde-format
+#| msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "背景顏色..."
 
 #: view/screenshotdialog.cpp:142
@@ -7981,6 +8020,18 @@ msgstr "'%1' %2，十六進位 %3，八進位 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "標記未設定：%1"
+
+#~ msgid "&Copy..."
+#~ msgstr "複製(&C)..."
+
+#~ msgid "Other..."
+#~ msgstr "其他..."
+
+#~ msgid "&Align On..."
+#~ msgstr "對齊於(&A)"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "變更目錄..."
 
 #~ msgid "Show focus frame around editor"
 #~ msgstr "在編輯器周圍顯示突顯框架"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -1215,7 +1215,8 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2327,8 +2328,8 @@ msgstr "പുതിയ തരത്തിലുള്ള ഫയല്‍"
 
 #: mode/katemodemenulist.cpp:139
 #, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr ""
 
 #: mode/katemodemenulist.cpp:141
@@ -3668,8 +3669,8 @@ msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:245
 #, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3853,7 +3854,8 @@ msgstr "&വേണ്ടെന്നു് വയ്ക്കുക"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -3980,23 +3982,30 @@ msgstr ""
 
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
-msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "&തിരഞ്ഞെടുത്ത നിറം..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "&പശ്ചാത്തലത്തിലുള്ള നിറം..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
+msgstr "&പശ്ചാത്തലത്തിലുള്ള നിറം..."
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4588,17 +4597,20 @@ msgstr ""
 
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "HTML ആയി &ലഭ്യമാക്കുക..."
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6047,7 +6059,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "മറ്റുള്ളവ "
 
 #: view/katestatusbar.cpp:477
@@ -6194,7 +6207,8 @@ msgstr ""
 
 #: view/kateview.cpp:522
 #, kde-format
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr ""
 
 #: view/kateview.cpp:524
@@ -6357,12 +6371,14 @@ msgstr "നിങ്ങള്‍ക്കു് ഇഷ്ടമുള്ള ഒ�
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
 
 #: view/kateview.cpp:661
@@ -6398,9 +6414,11 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Configure"
+msgctxt "@action"
+msgid "&Configure Editor…"
+msgstr "ക്രമികരിക്കുക"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -6843,7 +6861,8 @@ msgstr ""
 
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "എഡിറ്റര്‍ തിരഞ്ഞെടുക്കുക..."
 
 #: view/kateview.cpp:957
@@ -6876,7 +6895,8 @@ msgstr ""
 
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "ഫയല്‍ HTML ആയി ലഭ്യമാക്കുക"
 
 #: view/kateview.cpp:976
@@ -7333,7 +7353,8 @@ msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക�
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "&പശ്ചാത്തലത്തിലുള്ള നിറം..."
 
 #: view/screenshotdialog.cpp:142
@@ -7701,6 +7722,18 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ചേര്‍ക്കുക: %1"
+
+#, fuzzy
+#~ msgid "&Copy..."
+#~ msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
+
+#, fuzzy
+#~ msgid "Other..."
+#~ msgstr "മറ്റുള്ളവ "
+
+#, fuzzy
+#~ msgid "Change Dictionary..."
+#~ msgstr "എഡിറ്റര്‍ തിരഞ്ഞെടുക്കുക..."
 
 #, fuzzy
 #~ msgid "Error loading script %1\n"
@@ -8333,10 +8366,6 @@ msgstr "ചേര്‍ക്കുക: %1"
 #, fuzzy
 #~ msgid "Unable to find '%1'"
 #~ msgstr "%1 തുറക്കുവാന്‍ സാധ്യമല്ല"
-
-#, fuzzy
-#~ msgid "Other"
-#~ msgstr "മറ്റുള്ളവ "
 
 #~ msgctxt "Language"
 #~ msgid "C++"

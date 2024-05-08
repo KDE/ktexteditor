@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1363,7 +1363,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "ھۆججەتنى باشقا ئاتتا ساقلا(&S)…"
 
 #: dialogs/katedialogs.cpp:1476
@@ -2603,8 +2604,8 @@ msgstr "ھالەت ۋە ھۆججەت تىپى"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "ئىزدەش ھالىتى"
 
 #: mode/katemodemenulist.cpp:141
@@ -4025,8 +4026,8 @@ msgstr "تاللانغاننىڭ ئىملاسىنى تەكشۈر…"
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "تاللانغاننىڭ ئىملاسىنى تەكشۈر…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4221,7 +4222,8 @@ msgstr "پەرۋا قىلما(&I)"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "ئىملا تەكشۈرۈش(نۇربەلگىسىدىن باشلاپ)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4350,23 +4352,31 @@ msgid "S&trikeout"
 msgstr "ئۆچۈرۈش سىزىقى(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "ئادەتتىكى رەڭ(&C)"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "تاللانغان رەڭ(&S)…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "تەگلىك رەڭگى(&B)…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "تەگلىك رەڭگىنى تاللا(&E)…"
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5017,17 +5027,22 @@ msgstr "نۇسخا"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "ھۆججەتنى باشقا ئاتتا ساقلا(&S)…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "چىقار…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "ئەكىر…"
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6521,7 +6536,8 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "باشقا"
 
 #: view/katestatusbar.cpp:477
@@ -6684,7 +6700,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "توغرىلا(&A)"
 
 #: view/kateview.cpp:524
@@ -6866,13 +6883,15 @@ msgstr "سىز تاللىغان ئاتتا نۆۋەتتىكى پۈتۈكنى د�
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "ھۆججەتنى باشقا ئاتتا ساقلا(&S)…"
 
 #: view/kateview.cpp:661
@@ -6913,8 +6932,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "تەھرىرلىگۈچنى سەپلە(&C)…"
 
 #: view/kateview.cpp:682
@@ -7409,8 +7430,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "ئاپتوماتىك ئىملا تەكشۈرۈشنى قوزغات/چەكلە"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "لۇغەتنى ئۆزگەر…"
 
 #: view/kateview.cpp:957
@@ -7451,7 +7474,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export..."
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "چىقار…"
 
 #: view/kateview.cpp:976
@@ -7929,7 +7953,8 @@ msgstr "ھۆججەتنى باشقا ئاتتا ساقلا(&S)…"
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "تەگلىك رەڭگى(&B)…"
 
 #: view/screenshotdialog.cpp:142
@@ -8314,6 +8339,25 @@ msgstr "'%1' %2،  ئون ئالتىلىك %3،  سەككىزلىك %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "بەلگە تەڭشەلمىدى: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "ھۆججەتنى باشقا ئاتتا ساقلا(&S)…"
+
+#, fuzzy
+#~| msgctxt "Language Section"
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "باشقا"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "توغرىلا(&A)"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "لۇغەتنى ئۆزگەر…"
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "ھۆججەت %1 مەۋجۇت ئەمەس."
@@ -9881,12 +9925,6 @@ msgstr "بەلگە تەڭشەلمىدى: %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "ماس كېلىدىغان تىرناققىچە يۆتكە"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "باشقا"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

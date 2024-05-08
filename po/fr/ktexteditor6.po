@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2024-01-26 09:42+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -1451,8 +1451,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Ferme le fichier sans l'enregistrer."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Enregistrer le fichier &sous..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2741,9 +2743,11 @@ msgid "Modes && Filetypes"
 msgstr "Modes et types de fichiers"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Chercher…"
 
 #: mode/katemodemenulist.cpp:141
@@ -4199,9 +4203,11 @@ msgid "Spell check canceled."
 msgstr "Vérification orthographique annulée."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Vérification orthographique en cours..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4438,8 +4444,10 @@ msgid "I&gnore All"
 msgstr "Tout i&gnorer"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Vérification de l'orthographe (Depuis le curseur)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4563,23 +4571,31 @@ msgid "S&trikeout"
 msgstr "&Barré"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "&Couleur normale..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Couleur choi&sie..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Couleur du fon&d..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Coul&eur de fond du texte sélectionné..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5238,18 +5254,24 @@ msgid "&Theme:"
 msgstr "&Thème :"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
-msgstr "&Copier..."
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:button"
+msgid "&Copy…"
+msgstr "Copier"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Exporter..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Importer..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6860,9 +6882,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Indentation/Tabulations : %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Autre..."
+#, fuzzy, kde-format
+#| msgctxt "Language Section"
+#| msgid "Other"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Autre"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -7024,9 +7049,11 @@ msgstr ""
 "bloc de texte actuel à son niveau correct d'indentation."
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
-msgstr "&Aligner sur..."
+#, fuzzy, kde-format
+#| msgid "Align On"
+msgctxt "@action"
+msgid "&Align On…"
+msgstr "Aligner sur"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -7221,13 +7248,17 @@ msgstr ""
 "Enregistre le document actuel sur le disque, sous le nom de votre choix."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Enregistrer sous avec l'encodage..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Enregistrer une &copie du fichier sous..."
 
 #: view/kateview.cpp:661
@@ -7265,8 +7296,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Déplacer vers le bas jusqu'à la ligne modifiée suivante"
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Configurer l'éditeur..."
 
 #: view/kateview.cpp:682
@@ -7756,9 +7789,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Active/Désactive la vérification automatique de l'orthographe"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "Changer de dictionnaire..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Changer de dictionnaire"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7793,8 +7828,10 @@ msgstr ""
 "HTML dans le presse-papier système."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "E&xporter en HTML..."
 
 #: view/kateview.cpp:976
@@ -8277,8 +8314,10 @@ msgid "Copy"
 msgstr "Copier"
 
 #: view/screenshotdialog.cpp:140
-#, kde-format
-msgid "Background Color..."
+#, fuzzy, kde-format
+#| msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Couleur de l'arrière-plan..."
 
 # | msgid "Selection Mode"
@@ -8727,6 +8766,18 @@ msgstr "« %1 » %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marqueur non défini : %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "&Copier..."
+
+#~ msgid "Other..."
+#~ msgstr "Autre..."
+
+#~ msgid "&Align On..."
+#~ msgstr "&Aligner sur..."
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Changer de dictionnaire..."
 
 #~ msgid "Show focus frame around editor"
 #~ msgstr "Afficher le cadre du focus autour de l'éditeur"
@@ -10691,12 +10742,6 @@ msgstr "Marqueur non défini : %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Se déplacer à l'accolade correspondante"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "Autre"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

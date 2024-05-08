@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -1228,7 +1228,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Pelî &Tomar bike Wekî..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2353,8 +2354,8 @@ msgstr "Mod &Cureyên Pel:"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "I-Search:"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "A-Lêgerîn"
 
 #: mode/katemodemenulist.cpp:141
@@ -3716,8 +3717,8 @@ msgstr "Kontrola rastnivîsê"
 
 #: spellcheck/spellcheckbar.cpp:245
 #, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3906,7 +3907,8 @@ msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4030,23 +4032,27 @@ msgstr ""
 
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
-msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
+msgstr "&Ya Piştre Bibîne"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
+msgstr "Rûerd"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
+msgstr "Rûerd"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4647,17 +4653,20 @@ msgstr "Dirb"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Pelî &Tomar bike Wekî..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6129,7 +6138,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "Wekî Din"
 
 #: view/katestatusbar.cpp:477
@@ -6278,7 +6288,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Bike texmek"
 
 #: view/kateview.cpp:524
@@ -6444,13 +6455,15 @@ msgstr "Pelgeya çalak bi navekî te hilbijartiye li dîskê tomar bike"
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Pelî &Tomar bike Wekî..."
 
 #: view/kateview.cpp:661
@@ -6489,8 +6502,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Pêvekan bipergalîne..."
 
 #: view/kateview.cpp:682
@@ -6942,7 +6957,8 @@ msgstr ""
 #: view/kateview.cpp:956
 #, fuzzy, kde-format
 #| msgid "Choose Editor..."
-msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Edîtorê hilbijêre..."
 
 #: view/kateview.cpp:957
@@ -6975,7 +6991,8 @@ msgstr ""
 
 #: view/kateview.cpp:974
 #, kde-format
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr ""
 
 #: view/kateview.cpp:976
@@ -7436,7 +7453,8 @@ msgstr "Pelî &Tomar bike Wekî..."
 
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Rûerd"
 
 #: view/screenshotdialog.cpp:142
@@ -7810,6 +7828,25 @@ msgid "Mark not set: %1"
 msgstr ""
 
 #, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "Pelî &Tomar bike Wekî..."
+
+#, fuzzy
+#~ msgid "Other..."
+#~ msgstr "Wekî Din"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Bike texmek"
+
+#, fuzzy
+#~| msgid "Choose Editor..."
+#~ msgid "Change Dictionary..."
+#~ msgstr "Edîtorê hilbijêre..."
+
+#, fuzzy
 #~| msgid "Error: %1"
 #~ msgid "Error loading script %1\n"
 #~ msgstr "Çewtî: %1"
@@ -8173,10 +8210,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "A&uto Word Completion HI"
 #~ msgstr "Pêşeka Veker a Temamkirina Bixweber"
-
-#, fuzzy
-#~ msgid "Other"
-#~ msgstr "Wekî Din"
 
 #, fuzzy
 #~ msgid "Na&mespace:"

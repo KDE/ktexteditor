@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2016-11-04 17:36+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1394,8 +1394,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Αποθήκευση ως..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2675,8 +2677,8 @@ msgstr "Λειτουργίες && τύποι αρχείων"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Λειτουργία αναζήτησης"
 
 #: mode/katemodemenulist.cpp:141
@@ -4149,9 +4151,11 @@ msgid "Spell check canceled."
 msgstr "Ο ορθογραφικός έλεγχος ακυρώθηκε."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Ορθογραφικός έλεγχος σε εξέλιξη..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4391,7 +4395,8 @@ msgstr "&Παράβλεψη όλων"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Ορθογραφία (από το δρομέα)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4521,23 +4526,31 @@ msgid "S&trikeout"
 msgstr "&Μεσογράμμιση"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Κανονικό &χρώμα..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "&Επιλεγμένο χρώμα..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Χρώμα &φόντου..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "&Επιλεγμένο χρώμα φόντου..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5184,17 +5197,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Αποθήκευση αντι&γράφου ως..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Εξαγωγή..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Εισαγωγή..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6792,9 +6810,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Εσοχή/Στηλοθέτης: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Άλλο..."
+#, fuzzy, kde-format
+#| msgctxt "Language Section"
+#| msgid "Other"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Άλλο"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6962,7 +6983,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Στοίχιση"
 
 #: view/kateview.cpp:524
@@ -7143,13 +7165,17 @@ msgstr ""
 "Αποθήκευση του τρέχοντος εγγράφου στον δίσκο με ένα όνομα της επιλογής σας."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Αποθήκευση ως με κωδικοποίηση..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Αποθήκευση αντι&γράφου ως..."
 
 #: view/kateview.cpp:661
@@ -7189,8 +7215,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Μετακίνηση προς τα κάτω στην επόμενη τροποποιημένη γραμμή."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "Διαμόρφωσ&η επεξεργαστή..."
 
 #: view/kateview.cpp:682
@@ -7683,8 +7711,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Ενεργοποίηση/απενεργοποίηση αυτόματου ορθογραφικού ελέγχου"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Αλλαγή λεξικού..."
 
 #: view/kateview.cpp:957
@@ -7720,8 +7750,10 @@ msgstr ""
 "κείμενο σαν HTML στο πρόχειρο συστήματος."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Εξα&γωγή ως HTML..."
 
 #: view/kateview.cpp:976
@@ -8202,7 +8234,8 @@ msgstr "Αποθήκευση αντι&γράφου ως..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Χρώμα &φόντου..."
 
 #: view/screenshotdialog.cpp:142
@@ -8658,6 +8691,22 @@ msgstr "'%1' %2,  Δεκαεξαδικό %3,  Οκταδικό %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Μη καθορισμένος δείκτης: %1 "
+
+#, fuzzy
+#~| msgid "Save &Copy As..."
+#~ msgid "&Copy..."
+#~ msgstr "Αποθήκευση αντι&γράφου ως..."
+
+#~ msgid "Other..."
+#~ msgstr "Άλλο..."
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Στοίχιση"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Αλλαγή λεξικού..."
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "Το αρχείο %1 δεν υπάρχει."
@@ -10584,12 +10633,6 @@ msgstr "Μη καθορισμένος δείκτης: %1 "
 
 #~ msgid "Matching Bracket"
 #~ msgstr "Ισοδύναμη παρένθεση"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "Άλλο"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

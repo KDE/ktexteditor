@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2011-12-15 14:55+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@linuxshop.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -1409,7 +1409,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&ذخیره پرونده به عنوان...‌"
 
 #: dialogs/katedialogs.cpp:1476
@@ -2619,8 +2620,8 @@ msgstr "حالتها و انواع پرونده‌"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "سبک جستجو"
 
 #: mode/katemodemenulist.cpp:141
@@ -4077,8 +4078,8 @@ msgstr "گزینش غلط‌یاب..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "گزینش غلط‌یاب..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4271,7 +4272,8 @@ msgstr "&چشم‌پوشی‌"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "در حال هجی کردن )از مکان‌نما(..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4403,23 +4405,31 @@ msgid "S&trikeout"
 msgstr "&حذف کردن‌"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "&رنگ عادی...‌"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "رنگ &برگزیده...‌"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "رنگ &زمینه...‌"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "رنگ &برگزیده زمینه...‌"
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5122,19 +5132,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&ذخیره پرونده به عنوان...‌"
 
 #: syntax/katethemeconfig.cpp:1127
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "&صادرات به عنوان زنگام...‌ "
 
 #: syntax/katethemeconfig.cpp:1131
 #, fuzzy, kde-format
 #| msgid "Normal &Color..."
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "&رنگ عادی...‌"
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6661,7 +6674,8 @@ msgstr ""
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, fuzzy, kde-format
 #| msgid "Other"
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "غیره"
 
 #: view/katestatusbar.cpp:477
@@ -6826,7 +6840,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&همتراز کردن‌"
 
 #: view/kateview.cpp:524
@@ -7008,13 +7023,15 @@ msgstr "سند جاری را با نام دلخواه خود در دیسک ذخ�
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "&ذخیره پرونده به عنوان...‌"
 
 #: view/kateview.cpp:661
@@ -7056,8 +7073,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&پیکربندی ویرایشگر...‌"
 
 #: view/kateview.cpp:682
@@ -7539,8 +7558,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr ""
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "تغییر واژه‌نامه‌..."
 
 #: view/kateview.cpp:957
@@ -7576,7 +7597,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "صادرات پرونده به عنوان زنگام"
 
 #: view/kateview.cpp:976
@@ -8057,7 +8079,8 @@ msgstr "&ذخیره پرونده به عنوان...‌"
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "رنگ &زمینه...‌"
 
 #: view/screenshotdialog.cpp:142
@@ -8446,6 +8469,24 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "نشان‌دار کردن نوع  %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "&ذخیره پرونده به عنوان...‌"
+
+#, fuzzy
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "غیره"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&همتراز کردن‌"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "تغییر واژه‌نامه‌..."
 
 #~ msgid ""
 #~ "The file %1 could not be loaded, as it was not possible to read from it.\n"
@@ -10016,9 +10057,6 @@ msgstr "نشان‌دار کردن نوع  %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "حرکت به کروشه مطابق"
-
-#~ msgid "Other"
-#~ msgstr "غیره"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

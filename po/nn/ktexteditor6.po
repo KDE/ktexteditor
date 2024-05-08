@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2023-06-26 22:01+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -1291,8 +1291,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Lukk fila og forkast innhaldet."
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Lagra &som …"
 
 #: dialogs/katedialogs.cpp:1476
@@ -2503,9 +2505,11 @@ msgid "Modes && Filetypes"
 msgstr "Modus og filtypar"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Søk …"
 
 #: mode/katemodemenulist.cpp:141
@@ -3899,9 +3903,11 @@ msgid "Spell check canceled."
 msgstr "Stavekontroll stoppa."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Stavekontroll vert utført …"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4115,8 +4121,10 @@ msgid "I&gnore All"
 msgstr "I&gnorer alle"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, kde-format
-msgid "Spelling (from Cursor)..."
+#, fuzzy, kde-format
+#| msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Stavekontroll (frå skrivemerket) …"
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4237,23 +4245,31 @@ msgid "S&trikeout"
 msgstr "&Overstreking"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Farge &vanleg …"
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Farge &merkt …"
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "&Bakgrunnsfarge …"
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Ba&kgrunnsfarge merkt …"
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4872,18 +4888,23 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&Kopier …"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Eksporter …"
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Importer …"
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6432,9 +6453,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Inntrykk/tabulator: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Anna …"
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Anna"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6584,8 +6608,10 @@ msgid ""
 msgstr ""
 
 #: view/kateview.cpp:522
-#, kde-format
-msgid "&Align On..."
+#, fuzzy, kde-format
+#| msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Juster på …"
 
 #: view/kateview.cpp:524
@@ -6761,13 +6787,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Lagra dokumentet på disken, med eit namn du vel."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Lagra som (ny &teiknkoding) …"
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Lagra &kopi som …"
 
 #: view/kateview.cpp:661
@@ -6805,8 +6835,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Gå nedover til den sist endra linja."
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Set opp skriveprogram …"
 
 #: view/kateview.cpp:682
@@ -7270,9 +7302,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Slå på/av automatisk stavekontroll"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "Byt ordliste …"
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Byt ordliste"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7303,8 +7337,10 @@ msgid ""
 msgstr "Kopier den merkte teksten som HTML til utklippstavla."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Eksporter som &HTML …"
 
 #: view/kateview.cpp:976
@@ -7770,7 +7806,8 @@ msgstr "&Kopier …"
 
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "&Bakgrunnsfarge …"
 
 #: view/screenshotdialog.cpp:142
@@ -8202,3 +8239,12 @@ msgstr "«%1» %2, heks %3, oktal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merke ikkje definert: %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "&Kopier …"
+
+#~ msgid "Other..."
+#~ msgstr "Anna …"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Byt ordliste …"

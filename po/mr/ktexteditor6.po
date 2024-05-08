@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2014-10-28 14:28+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1262,7 +1262,8 @@ msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
 #, kde-format
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1476
@@ -2397,8 +2398,8 @@ msgstr "पद्धती व फाईल प्रकार"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "शोध पद्धत"
 
 #: mode/katemodemenulist.cpp:141
@@ -3769,8 +3770,8 @@ msgstr "वर्णलेखन तपासणी निवड..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "वर्णलेखन तपासणी निवड..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3959,7 +3960,8 @@ msgstr "सर्व शोधा (&F):"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "वर्णलेखन (कर्सर पासून)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4084,23 +4086,31 @@ msgid "S&trikeout"
 msgstr "काटलेले (&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "सामान्य रंग (&C)..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "निवडलेला रंग (&S)..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "पार्श्वभूमीचा रंग (&B)..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "निवडलेल्या पार्श्वभूमीचा रंग (&E)..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4702,17 +4712,22 @@ msgstr "सुत्रयोजना"
 
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "निर्यात..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "आयात..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6191,9 +6206,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "इतर..."
+#, fuzzy, kde-format
+#| msgctxt "Language Section"
+#| msgid "Other"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "इतर"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6344,7 +6362,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "जुळवा (&A)"
 
 #: view/kateview.cpp:524
@@ -6512,13 +6531,16 @@ msgstr ""
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Save Copy of File"
+msgctxt "@action"
+msgid "Save &Copy As…"
+msgstr "फाईलची प्रत साठवा"
 
 #: view/kateview.cpp:661
 #, fuzzy, kde-format
@@ -6556,8 +6578,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "संपादक संयोजीत करा (&C)..."
 
 #: view/kateview.cpp:682
@@ -7004,8 +7028,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "स्वयंचलित वर्णलेखन तपासणी कार्यान्वित/अकार्यान्वित करा"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "शब्दकोश बदला..."
 
 #: view/kateview.cpp:957
@@ -7039,7 +7065,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export..."
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "निर्यात..."
 
 #: view/kateview.cpp:976
@@ -7499,7 +7526,8 @@ msgstr ""
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "पार्श्वभूमीचा रंग (&B)..."
 
 #: view/screenshotdialog.cpp:142
@@ -7870,6 +7898,17 @@ msgstr ""
 #, kde-format
 msgid "Mark not set: %1"
 msgstr ""
+
+#~ msgid "Other..."
+#~ msgstr "इतर..."
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "जुळवा (&A)"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "शब्दकोश बदला..."
 
 #~ msgid "Namespaces"
 #~ msgstr "नेम-स्पेसेस"
@@ -8564,12 +8603,6 @@ msgstr ""
 
 #~ msgid "&VI Input Mode"
 #~ msgstr "&VI इनपुट पद्धत"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "इतर"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

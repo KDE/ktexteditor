@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -1393,8 +1393,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Salvează ca..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2655,8 +2657,8 @@ msgstr "Regimuri și tipuri de fișier"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Regim căutare"
 
 #: mode/katemodemenulist.cpp:141
@@ -4138,9 +4140,11 @@ msgid "Spell check canceled."
 msgstr "Verificare ortografică anulată."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Verificare ortografică în curs..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4377,7 +4381,8 @@ msgstr "I&gnoră tot"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Verifică ortografia (de la cursor)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4506,23 +4511,31 @@ msgid "S&trikeout"
 msgstr "&Tăiat"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Culoare &normal..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Culoare &selectat..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "Culoare de &fundal..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Culoare de fundal &selecție..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5195,18 +5208,24 @@ msgid "&Theme:"
 msgstr "&Tematică:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
+#, fuzzy, kde-format
+#| msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&Copiază..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Exportă..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Importă..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6698,9 +6717,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Altul..."
+#, fuzzy, kde-format
+#| msgctxt "Language Section"
+#| msgid "Other"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Altul"
 
 #: view/katestatusbar.cpp:477
 #, fuzzy, kde-format
@@ -6865,7 +6887,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Aliniază"
 
 #: view/kateview.cpp:524
@@ -7048,13 +7071,15 @@ msgstr ""
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "&Salvează fișierul ca..."
 
 #: view/kateview.cpp:661
@@ -7096,8 +7121,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Configurează editor..."
 
 #: view/kateview.cpp:682
@@ -7593,8 +7620,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Activează/dezactivează verificarea ortografică automată"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Schimbare dicționar..."
 
 #: view/kateview.cpp:957
@@ -7635,7 +7664,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export schema ..."
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "Exportă schema ..."
 
 #: view/kateview.cpp:976
@@ -8115,7 +8145,8 @@ msgstr "&Copiază..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Culoare de &fundal..."
 
 #: view/screenshotdialog.cpp:142
@@ -8507,6 +8538,20 @@ msgstr "'%1' %2,  Hexazecimal %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marcaj nestabilit: %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "&Copiază..."
+
+#~ msgid "Other..."
+#~ msgstr "Altul..."
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Aliniază"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Schimbare dicționar..."
 
 #, fuzzy
 #~| msgid "The files are identical."
@@ -10196,12 +10241,6 @@ msgstr "Marcaj nestabilit: %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Mută la paranteza pereche"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "Altul"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

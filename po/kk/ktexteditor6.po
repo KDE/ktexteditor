@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2013-11-17 02:59+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -1370,7 +1370,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Файлды былай &сақтау..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2634,8 +2635,8 @@ msgstr "Режім && Файл түрлері"
 #: mode/katemodemenulist.cpp:139
 #, fuzzy, kde-format
 #| msgid "Search mode"
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Іздеу режімі"
 
 #: mode/katemodemenulist.cpp:141
@@ -4109,8 +4110,8 @@ msgstr "Таңдалғанның емлесін тексеру..."
 #: spellcheck/spellcheckbar.cpp:245
 #, fuzzy, kde-format
 #| msgid "Spellcheck Selection..."
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Таңдалғанның емлесін тексеру..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4307,7 +4308,8 @@ msgstr "&Елемеу"
 #: spellcheck/spellcheckdialog.cpp:51
 #, fuzzy, kde-format
 #| msgid "Spelling (from cursor)..."
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr "Емлесін тексеру (меңзерден бастап)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4437,23 +4439,31 @@ msgid "S&trikeout"
 msgstr "С&ызылған"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "Кәдімгінің &түсі..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "&Таңдалғанның түсі..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "&Аясының түсі..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Т&аңдалғанның аясының түсі..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -5103,17 +5113,22 @@ msgstr "Scheme"
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "Файлды былай &сақтау..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Экспорт..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Импорт..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6705,7 +6720,8 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Language Section"
 #| msgid "Other"
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr "Басқа"
 
 #: view/katestatusbar.cpp:477
@@ -6868,7 +6884,8 @@ msgstr ""
 #: view/kateview.cpp:522
 #, fuzzy, kde-format
 #| msgid "&Align"
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr "&Туралау"
 
 #: view/kateview.cpp:524
@@ -7050,13 +7067,15 @@ msgstr "Назардағы құжатқа атау таңдап, дискіге 
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Файлды былай &сақтау..."
 
 #: view/kateview.cpp:661
@@ -7096,8 +7115,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "&Редакторды баптау..."
 
 #: view/kateview.cpp:682
@@ -7584,8 +7605,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Емлесін автотексеруін рұқсат ету/етпеу"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
+#, fuzzy, kde-format
+#| msgid "Change Dictionary..."
+msgctxt "@action"
+msgid "Change Dictionary…"
 msgstr "Сөздігін таңдау..."
 
 #: view/kateview.cpp:957
@@ -7621,7 +7644,8 @@ msgstr ""
 #: view/kateview.cpp:974
 #, fuzzy, kde-format
 #| msgid "Export File as HTML"
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "HTML түрінде экспорттау"
 
 #: view/kateview.cpp:976
@@ -8101,7 +8125,8 @@ msgstr "Файлды былай &сақтау..."
 #: view/screenshotdialog.cpp:140
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "&Аясының түсі..."
 
 #: view/screenshotdialog.cpp:142
@@ -8538,6 +8563,25 @@ msgstr "'%1' %2,  Оналт %3,  Сегізд %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Белгі орнатылмаған: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "Файлды былай &сақтау..."
+
+#, fuzzy
+#~| msgctxt "Language Section"
+#~| msgid "Other"
+#~ msgid "Other..."
+#~ msgstr "Басқа"
+
+#, fuzzy
+#~| msgid "&Align"
+#~ msgid "&Align On..."
+#~ msgstr "&Туралау"
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Сөздігін таңдау..."
 
 #~ msgid "The file %1 does not exist."
 #~ msgstr "%1 деген файл жоқ."
@@ -10383,12 +10427,6 @@ msgstr "Белгі орнатылмаған: %1"
 #~| msgid "Move to Matching Bracket"
 #~ msgid "Matching Bracket"
 #~ msgstr "Сыңары жақшаға дейін жылжу"
-
-#, fuzzy
-#~| msgctxt "Language Section"
-#~| msgid "Other"
-#~ msgid "Other"
-#~ msgstr "Басқа"
 
 #~ msgctxt "Language"
 #~ msgid "C++"

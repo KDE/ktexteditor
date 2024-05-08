@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
 "PO-Revision-Date: 2008-11-10 22:45+0100\n"
 "Last-Translator: Eduard Werner <edi.werner@gmx.de>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
@@ -1246,7 +1246,8 @@ msgstr ""
 #: dialogs/katedialogs.cpp:1474
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "&Składuj rjadowak jako..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2379,8 +2380,8 @@ msgstr "Nowy datajowy typ"
 
 #: mode/katemodemenulist.cpp:139
 #, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr ""
 
 #: mode/katemodemenulist.cpp:141
@@ -3766,8 +3767,8 @@ msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:245
 #, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr ""
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -3956,7 +3957,8 @@ msgstr "&Ignorować"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4083,22 +4085,27 @@ msgstr ""
 
 #: syntax/katestyletreewidget.cpp:260
 #, kde-format
-msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Print &selected text only"
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
+msgstr "Jenož &wubrany tekst ćišćeć"
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
-msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
-msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr ""
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4710,17 +4717,20 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:1119
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "&Copy..."
+msgctxt "@action:button"
+msgid "&Copy…"
 msgstr "&Składuj rjadowak jako..."
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
-msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
-msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr ""
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6201,7 +6211,8 @@ msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
 #, kde-format
-msgid "Other..."
+msgctxt "@item:inmenu"
+msgid "Other…"
 msgstr ""
 
 #: view/katestatusbar.cpp:477
@@ -6356,7 +6367,8 @@ msgstr ""
 
 #: view/kateview.cpp:522
 #, kde-format
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr ""
 
 #: view/kateview.cpp:524
@@ -6531,13 +6543,15 @@ msgstr "Składuj tuchwilny dokument na diskeće. Wupytaj sej mjeno."
 
 #: view/kateview.cpp:654
 #, kde-format
-msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr ""
 
 #: view/kateview.cpp:660
 #, fuzzy, kde-format
 #| msgid "&Save File As..."
-msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "&Składuj rjadowak jako..."
 
 #: view/kateview.cpp:661
@@ -6580,7 +6594,8 @@ msgstr ""
 
 #: view/kateview.cpp:680
 #, kde-format
-msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr ""
 
 #: view/kateview.cpp:682
@@ -7032,9 +7047,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr ""
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Show &Line Numbers"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Pokaž &čisło linkow"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7068,7 +7085,8 @@ msgstr ""
 
 #: view/kateview.cpp:974
 #, kde-format
-msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr ""
 
 #: view/kateview.cpp:976
@@ -7539,7 +7557,8 @@ msgstr "&Składuj rjadowak jako..."
 
 #: view/screenshotdialog.cpp:140
 #, kde-format
-msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr ""
 
 #: view/screenshotdialog.cpp:142
@@ -7915,6 +7934,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Marka družiny %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "&Copy..."
+#~ msgstr "&Składuj rjadowak jako..."
 
 #, fuzzy
 #~| msgid "C&omment"

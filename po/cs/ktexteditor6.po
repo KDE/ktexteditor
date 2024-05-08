@@ -3,22 +3,22 @@
 # SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2023 Vít Pelčák <vit@pelcak.org>
 # Lukáš Tinkl <ltinkl@redhat.com>, 2011.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# Vit Pelcak <vit@pelcak.org>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-28 00:36+0000\n"
-"PO-Revision-Date: 2023-11-14 13:11+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"PO-Revision-Date: 2024-04-30 15:54+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -453,7 +453,7 @@ msgstr ""
 #: dialogs/completionconfigtab.ui:59
 #, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr ""
+msgstr "Použijte klávesu Enter pro vložení vybraného dokončení"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -1295,8 +1295,10 @@ msgid "Closes the file, discarding its content."
 msgstr ""
 
 #: dialogs/katedialogs.cpp:1474
-#, kde-format
-msgid "&Save As..."
+#, fuzzy, kde-format
+#| msgid "&Save As..."
+msgctxt "@action"
+msgid "&Save As…"
 msgstr "Uložit &jako..."
 
 #: dialogs/katedialogs.cpp:1476
@@ -2469,9 +2471,11 @@ msgid "Modes && Filetypes"
 msgstr "Režimy a typy souborů"
 
 #: mode/katemodemenulist.cpp:139
-#, kde-format
-msgctxt "Placeholder in search bar"
-msgid "Search..."
+#, fuzzy, kde-format
+#| msgctxt "Placeholder in search bar"
+#| msgid "Search..."
+msgctxt "@info:placeholder"
+msgid "Search…"
 msgstr "Hledat..."
 
 #: mode/katemodemenulist.cpp:141
@@ -3851,9 +3855,11 @@ msgid "Spell check canceled."
 msgstr "Zrušena kontrola pravopisu."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, kde-format
-msgctxt "progress label"
-msgid "Spell checking in progress..."
+#, fuzzy, kde-format
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Probíhá kontrola pravopisu..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
@@ -4083,7 +4089,8 @@ msgstr "I&gnorovat vše"
 
 #: spellcheck/spellcheckdialog.cpp:51
 #, kde-format
-msgid "Spelling (from Cursor)..."
+msgctxt "@action"
+msgid "Spelling (from Cursor)…"
 msgstr ""
 
 #: spellcheck/spellcheckdialog.cpp:54
@@ -4205,23 +4212,31 @@ msgid "S&trikeout"
 msgstr "Přeškr&tnuté"
 
 #: syntax/katestyletreewidget.cpp:260
-#, kde-format
-msgid "Normal &Color..."
+#, fuzzy, kde-format
+#| msgid "Normal &Color..."
+msgctxt "@action:inmenu"
+msgid "Normal &Color…"
 msgstr "&Normální barva..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, kde-format
-msgid "&Selected Color..."
+#, fuzzy, kde-format
+#| msgid "&Selected Color..."
+msgctxt "@action:inmenu"
+msgid "&Selected Color…"
 msgstr "Barva &výběru..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, kde-format
-msgid "&Background Color..."
+#, fuzzy, kde-format
+#| msgid "&Background Color..."
+msgctxt "@action:inmenu"
+msgid "&Background Color…"
 msgstr "&Barva pozadí..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, kde-format
-msgid "S&elected Background Color..."
+#, fuzzy, kde-format
+#| msgid "S&elected Background Color..."
+msgctxt "@action:inmenu"
+msgid "S&elected Background Color…"
 msgstr "Barva &pozadí výběru..."
 
 #: syntax/katestyletreewidget.cpp:275
@@ -4542,7 +4557,7 @@ msgstr "<p>Nastaví barvu pozadí proužku ikon.</p>"
 #: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
 #, kde-format
 msgid "Line Numbers"
-msgstr "Čísla řádek"
+msgstr "Čísla řádků"
 
 #: syntax/katethemeconfig.cpp:235
 #, kde-format
@@ -4840,18 +4855,24 @@ msgid "&Theme:"
 msgstr "&Motiv:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, kde-format
-msgid "&Copy..."
-msgstr "&Kopírovat..."
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:button"
+msgid "&Copy…"
+msgstr "Kopírovat"
 
 #: syntax/katethemeconfig.cpp:1127
-#, kde-format
-msgid "Export..."
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "@action:button"
+msgid "Export…"
 msgstr "Exportovat..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, kde-format
-msgid "Import..."
+#, fuzzy, kde-format
+#| msgid "Import..."
+msgctxt "@action:button"
+msgid "Import…"
 msgstr "Importovat..."
 
 #: syntax/katethemeconfig.cpp:1138
@@ -6302,9 +6323,12 @@ msgid "Indent/Tab: %1/%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, kde-format
-msgid "Other..."
-msgstr "Jiné..."
+#, fuzzy, kde-format
+#| msgctxt "@item:intable Text context"
+#| msgid "Others"
+msgctxt "@item:inmenu"
+msgid "Other…"
+msgstr "Jiné"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6455,7 +6479,8 @@ msgstr ""
 
 #: view/kateview.cpp:522
 #, kde-format
-msgid "&Align On..."
+msgctxt "@action"
+msgid "&Align On…"
 msgstr ""
 
 #: view/kateview.cpp:524
@@ -6630,13 +6655,17 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Uložit současný dokument na disk a pojmenovat dle volby uživatele."
 
 #: view/kateview.cpp:654
-#, kde-format
-msgid "Save As with Encoding..."
+#, fuzzy, kde-format
+#| msgid "Save As with Encoding..."
+msgctxt "@action"
+msgid "Save As with Encoding…"
 msgstr "Uložit jako (s kódováním)..."
 
 #: view/kateview.cpp:660
-#, kde-format
-msgid "Save &Copy As..."
+#, fuzzy, kde-format
+#| msgid "Save &Copy As..."
+msgctxt "@action"
+msgid "Save &Copy As…"
 msgstr "Uložit kop&ii jako..."
 
 #: view/kateview.cpp:661
@@ -6674,8 +6703,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, kde-format
-msgid "&Configure Editor..."
+#, fuzzy, kde-format
+#| msgid "&Configure Editor..."
+msgctxt "@action"
+msgid "&Configure Editor…"
 msgstr "Nastavit e&ditor..."
 
 #: view/kateview.cpp:682
@@ -7054,7 +7085,7 @@ msgstr ""
 #: view/kateview.cpp:906
 #, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr ""
+msgstr "Najde všechny výskyty slova pod kurzorem a vybere je."
 
 #: view/kateview.cpp:910
 #, kde-format
@@ -7135,9 +7166,11 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Povolit/zakázat automatickou kontrolu pravopisu"
 
 #: view/kateview.cpp:956
-#, kde-format
-msgid "Change Dictionary..."
-msgstr "Změnit slovník..."
+#, fuzzy, kde-format
+#| msgid "Change dictionary"
+msgctxt "@action"
+msgid "Change Dictionary…"
+msgstr "Změnit slovník"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7172,8 +7205,10 @@ msgstr ""
 "schránky systému."
 
 #: view/kateview.cpp:974
-#, kde-format
-msgid "E&xport as HTML..."
+#, fuzzy, kde-format
+#| msgid "E&xport as HTML..."
+msgctxt "@action"
+msgid "E&xport as HTML…"
 msgstr "E&xportovat do HTML..."
 
 #: view/kateview.cpp:976
@@ -7218,7 +7253,7 @@ msgstr "Vybrat slovo doprava"
 #: view/kateview.cpp:1051
 #, kde-format
 msgid "Start the Marked Selection"
-msgstr ""
+msgstr "Spustit Označený výběr"
 
 #: view/kateview.cpp:1052
 #, kde-format
@@ -7635,8 +7670,10 @@ msgid "Copy"
 msgstr "Kopírovat"
 
 #: view/screenshotdialog.cpp:140
-#, kde-format
-msgid "Background Color..."
+#, fuzzy, kde-format
+#| msgid "Background Color..."
+msgctxt "@action:button"
+msgid "Background Color…"
 msgstr "Barva pozadí..."
 
 #: view/screenshotdialog.cpp:142
@@ -7678,12 +7715,12 @@ msgstr "Uložit..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Uložení snímku obrazovky selhalo"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Uložení snímku obrazovky selhalo: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
@@ -8046,3 +8083,12 @@ msgstr "'%1' %2,  šestnáctkově %3,  osmičkově %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavena: %1"
+
+#~ msgid "&Copy..."
+#~ msgstr "&Kopírovat..."
+
+#~ msgid "Other..."
+#~ msgstr "Jiné..."
+
+#~ msgid "Change Dictionary..."
+#~ msgstr "Změnit slovník..."
