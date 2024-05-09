@@ -2,7 +2,7 @@ var katescript = {
     "name": "C Style",
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>",
     "license": "LGPL",
-    "revision": 6,
+    "revision": 7,
     "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
@@ -754,17 +754,10 @@ function tryMatchedAnchor(line, alignOnly)
     return indentation + gIndentWidth;
 }
 
-function escapeForRegex(string) {
-    if (string !== null && string != undefined) {
-        return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-    }
-    return string;
-}
-
 /**
  * Don't indent on multiline string literals of form R"[optional delimiter text]()[optional delimiter text]"
  */
-function tryMultiLineStringLiteral(line) {
+function tryMultiLineStringLiteral(line, alignOnly) {
     // The algorithm in this function is only valid for C++, don't waste time for other languages
     if (!gMode.contains("C++")) {
         return -1;
@@ -782,7 +775,7 @@ function tryMultiLineStringLiteral(line) {
         var startMatch = currentString.match(multiLineStringLiteralStartRegex);
         if (startMatch !== null) {
             found = true;
-            delim = startMatch[1] != undefined ? startMatch[1] : "";
+            delim = startMatch[1] || "";
             currentLine--;
             break;
         }
@@ -797,21 +790,31 @@ function tryMultiLineStringLiteral(line) {
         return -1;
     }
 
+    const delimStartLine = currentLine;
+
     // iterate through all lines and toggle bool insideString for every quote
-    var endReached = false;
-    const multiLineStringLiteralEndRegex = delim.length != 0 ? new RegExp('\\)' + escapeForRegex(delim) + '"') : new RegExp("\)\"");
+    const multiLineStringLiteralEnd = `)${delim}"`;
     while (currentLine < line) {
         currentString = document.line(currentLine);
-        var endMatch = currentString.match(multiLineStringLiteralEndRegex);
-        if (endMatch !== null) {
+        var endMatch = currentString.indexOf(multiLineStringLiteralEnd);
+        if (endMatch !== -1) {
             dbg("End reached: " + currentString);
-            endReached = true;
-            break;
+            return -1;
         }
         ++currentLine;
     }
 
-    return endReached ? -1 : document.firstVirtualColumn(line);
+    // when aligning only, do nothing
+    if (alignOnly) {
+        const indent = document.firstVirtualColumn(line);
+        return indent === -1 ? 0 : indent;
+    }
+
+    const prevNonEmpty = document.prevNonEmptyLine(line - 1);
+    if (delimStartLine === prevNonEmpty) {
+        return 0;
+    }
+    return document.firstVirtualColumn(prevNonEmpty);
 }
 
 /**
@@ -832,7 +835,7 @@ function indentLine(line, alignOnly)
     if (filler == -1 && !alignOnly)
         filler = tryCppComment(line);
     if (filler == -1)
-        filler = tryMultiLineStringLiteral(line);
+        filler = tryMultiLineStringLiteral(line, alignOnly);
     if (filler == -1)
         filler = tryString(line);
     if (filler == -1)
