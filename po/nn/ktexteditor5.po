@@ -2,7 +2,6 @@
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 1999, 2000, 2002, 2003, 2004, 2005, 2006.
 # Håvard Korsvoll <korsvoll@skulelinux.no>, 2003, 2005.
-# Karl Ove Hufthammer <karl@huftis.org>, 2004, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Jørgen Grønlund <jorgenhg@broadpark.no>, 2005.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008, 2009, 2010.
 # Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018, 2019.
@@ -11,14 +10,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2023-06-26 22:01+0200\n"
+"PO-Revision-Date: 2024-05-08 19:30+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -870,7 +869,7 @@ msgstr "Tabulatorar o&g mellomrom"
 #: dialogs/indentationconfigwidget.ui:167
 #, kde-format
 msgid "Automatically detect file indentation"
-msgstr ""
+msgstr "Oppdag automatisk innrykksnivå"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbProperties)
 #: dialogs/indentationconfigwidget.ui:177
@@ -946,6 +945,14 @@ msgid ""
 "<b>Tab</b> a shortcut to the action <b>Format Indentation</b>."
 "\"><span>More ...</span></a></p></body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+"css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body>\n"
+"<p>Tabulatortast (viss det ikkje finst noko utval) <a href=\"Viss du vil at "
+"<b>Tab</b> skal justera den gjeldande linja i kode­blokka, som i Emacs, la "
+"<b>Tab</b> vera ein snarveg til handlinga <b>Formater med innrykk</b>."
+"\"><span>Meir …</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1070,17 +1077,17 @@ msgstr "Ctrl + Meta"
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Cmd"
-msgstr ""
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:414
 #, kde-format
 msgid "Cmd + Alt"
-msgstr ""
+msgstr "Cmd + Alt"
 
 #: dialogs/katedialogs.cpp:416
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr ""
+msgstr "Cmd + Ctrl"
 
 #: dialogs/katedialogs.cpp:472
 #, kde-format
@@ -1518,7 +1525,7 @@ msgstr "Skriv inn suffikset du vil bruka på reservekopifilene."
 #: dialogs/opensaveconfigadvwidget.ui:134
 #, kde-format
 msgid "Swap file mode:"
-msgstr ""
+msgstr "Vekslefil-modus:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbSwapFileMode)
 #: dialogs/opensaveconfigadvwidget.ui:150
@@ -1536,7 +1543,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:163
 #, kde-format
 msgid "Store swap files in:"
-msgstr ""
+msgstr "Lagra vekslefiler her:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:183
@@ -2748,7 +2755,7 @@ msgstr "&Fargetema:"
 #: printing/printconfigwidgets.cpp:494
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "Skrift:"
 
 #: printing/printconfigwidgets.cpp:498
 #, kde-format
@@ -2873,19 +2880,19 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr ""
+msgstr "Vel HTML/XML-innhald innover"
 
 #: script/data/commands/emmet.js:26
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr ""
+msgstr "Vel HTML/XML-innhald utover"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
 msgctxt "Script command name"
 msgid "Toggle Comment"
-msgstr ""
+msgstr "Slå på/av kommentar"
 
 #: script/data/commands/emmet.js:34
 #, kde-format
@@ -3103,7 +3110,7 @@ msgstr "Flytt skrivemerket til neste linje med same innrykk"
 #, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr ""
+msgstr "Sorter merkt tekst alfabetisk"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:19 script/data/commands/utils.js:24
@@ -3355,7 +3362,7 @@ msgstr "Haskell"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Julia"
-msgstr ""
+msgstr "Julia"
 
 #: script/data/indentation/latex.js:2
 #, kde-format
@@ -4091,7 +4098,7 @@ msgstr "Legg til ordlista"
 #: spellcheck/spellingmenu.cpp:168
 #, kde-format
 msgid "Spelling '%1'"
-msgstr ""
+msgstr "Stavekontroll av «%1»"
 
 #: swapfile/kateswapdiffcreator.cpp:89
 #, kde-format
