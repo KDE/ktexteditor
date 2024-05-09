@@ -12,11 +12,11 @@
 
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(RangeTest)
@@ -26,7 +26,7 @@ QTEST_MAIN(RangeTest)
 RangeTest::RangeTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 RangeTest::~RangeTest()

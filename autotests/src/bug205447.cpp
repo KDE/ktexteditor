@@ -8,11 +8,11 @@
 #include "bug205447.h"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 #include <kmainwindow.h>
 #include <ktexteditor/documentcursor.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 #include "testutils.h"
@@ -32,7 +32,7 @@ BugTest::~BugTest()
 
 void BugTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void BugTest::cleanupTestCase()

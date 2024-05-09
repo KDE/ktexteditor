@@ -16,12 +16,12 @@
 #include <katecompletiontree.h>
 #include <katecompletionwidget.h>
 #include <kateconfig.h>
-#include <kateglobal.h>
 #include <katerenderer.h>
 #include <kateview.h>
 
 #include <QApplication>
 #include <QKeyEvent>
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(CompletionTest)
@@ -60,7 +60,7 @@ static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
 
 void CompletionTest::init()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
     Editor *editor = KTextEditor::Editor::instance();
     QVERIFY(editor);
 

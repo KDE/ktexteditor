@@ -10,10 +10,10 @@
 #include <KTextEditor/Cursor>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <katetemplatehandler.h>
 #include <kateview.h>
 
+#include <QStandardPaths>
 #include <QString>
 #include <QTest>
 #include <QTestKeyEvent>
@@ -25,7 +25,7 @@ using namespace KTextEditor;
 TemplateHandlerTest::TemplateHandlerTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void TemplateHandlerTest::testUndo()

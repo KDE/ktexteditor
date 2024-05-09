@@ -10,11 +10,11 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <katetextfolding.h>
 #include <kateview.h>
 
 #include <QJsonDocument>
+#include <QStandardPaths>
 #include <QTest>
 
 #include <memory>
@@ -25,7 +25,7 @@ QTEST_MAIN(KateFoldingTest)
 
 void KateFoldingTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void KateFoldingTest::cleanupTestCase()

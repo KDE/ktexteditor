@@ -11,7 +11,6 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateundomanager.h>
 #include <kateview.h>
 #include <kateviewinternal.h>
@@ -21,6 +20,7 @@
 #include <QApplication>
 #include <QKeyEvent>
 #include <QMouseEvent>
+#include <QStandardPaths>
 #include <QTest>
 
 using namespace KTextEditor;
@@ -56,7 +56,7 @@ bool isSorted(const Cont &c)
 MulticursorTest::MulticursorTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 MulticursorTest::~MulticursorTest()

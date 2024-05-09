@@ -10,11 +10,11 @@
 
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 
 #include <QRegularExpression>
 #include <QSignalSpy>
+#include <QStandardPaths>
 #include <QTemporaryFile>
 
 #include <stdio.h>
@@ -46,7 +46,7 @@ KateDocumentTest::~KateDocumentTest()
 
 void KateDocumentTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 // tests:

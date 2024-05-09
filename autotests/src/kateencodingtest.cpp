@@ -7,9 +7,9 @@
 */
 
 #include "katetextbuffer.h"
-#include <kateglobal.h>
 
 #include <QCoreApplication>
+#include <QStandardPaths>
 #include <qchar.h>
 
 int main(int argc, char *argv[])
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
 
     // test mode
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 
     // get arguments
     QString encoding = app.arguments().at(1);

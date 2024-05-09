@@ -9,9 +9,9 @@
 #include "moc_movingcursor_test.cpp"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <ktexteditor/movingcursor.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 using namespace KTextEditor;
@@ -21,7 +21,7 @@ QTEST_MAIN(MovingCursorTest)
 MovingCursorTest::MovingCursorTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 MovingCursorTest::~MovingCursorTest()

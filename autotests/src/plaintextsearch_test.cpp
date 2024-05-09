@@ -9,9 +9,9 @@
 #include "moc_plaintextsearch_test.cpp"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateplaintextsearch.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(PlainTextSearchTest)
@@ -31,7 +31,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 
 void PlainTextSearchTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
     s_msgHandler = qInstallMessageHandler(myMessageOutput);
 }
 

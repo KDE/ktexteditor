@@ -10,11 +10,11 @@
 
 #include <katebuffer.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/movingrangefeedback.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 using namespace KTextEditor;
@@ -121,7 +121,7 @@ private:
 MovingRangeTest::MovingRangeTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 MovingRangeTest::~MovingRangeTest()

@@ -7,11 +7,11 @@
 #include "wordcompletiontest.h"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <katewordcompletion.h>
 #include <ktexteditor/editor.h>
 #include <ktexteditor/view.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(WordCompletionTest)
@@ -23,7 +23,7 @@ using namespace KTextEditor;
 
 void WordCompletionTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
     Editor *editor = KTextEditor::Editor::instance();
     QVERIFY(editor);
 

@@ -9,12 +9,12 @@
 #include "moc_inlinenote_test.cpp"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 #include <ktexteditor/inlinenote.h>
 #include <ktexteditor/inlinenoteprovider.h>
 
 #include <QPainter>
+#include <QStandardPaths>
 #include <QTemporaryFile>
 #include <QTest>
 #include <QTestMouseEvent>
@@ -117,7 +117,7 @@ public:
 InlineNoteTest::InlineNoteTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 InlineNoteTest::~InlineNoteTest()

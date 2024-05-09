@@ -8,7 +8,6 @@
 
 #include "globalstate.h"
 #include "history.h"
-#include "kateglobal.h"
 #include "macros.h"
 #include "mappings.h"
 #include "registers.h"
@@ -64,7 +63,7 @@ void GlobalState::readConfig(const KConfig *configFile)
 KSharedConfigPtr GlobalState::config()
 {
     // use dummy config for unit tests!
-    return KTextEditor::EditorPrivate::unitTestMode()
+    return QStandardPaths::isTestModeEnabled()
         ? KSharedConfig::openConfig(QStringLiteral("katevirc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation)
         : KSharedConfig::openConfig(QStringLiteral("katevirc"));
 }

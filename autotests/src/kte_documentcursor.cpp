@@ -8,10 +8,10 @@
 #include "kte_documentcursor.h"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <ktexteditor/documentcursor.h>
 #include <ktexteditor/view.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(DocumentCursorTest)
@@ -29,7 +29,7 @@ DocumentCursorTest::~DocumentCursorTest()
 
 void DocumentCursorTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void DocumentCursorTest::cleanupTestCase()

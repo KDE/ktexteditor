@@ -11,13 +11,13 @@
 #include <katebuffer.h>
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 #include <kateviewinternal.h>
 #include <ktexteditor/message.h>
 #include <ktexteditor/movingcursor.h>
 
 #include <QScrollBar>
+#include <QStandardPaths>
 #include <QTemporaryFile>
 #include <QtTestWidgets>
 
@@ -30,7 +30,7 @@ QTEST_MAIN(KateViewTest)
 KateViewTest::KateViewTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 KateViewTest::~KateViewTest()

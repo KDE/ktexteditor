@@ -10,9 +10,9 @@
 
 #include <katebuffer.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateundomanager.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(ModificationSystemTest)
@@ -21,7 +21,7 @@ using namespace KTextEditor;
 
 void ModificationSystemTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void ModificationSystemTest::cleanupTestCase()

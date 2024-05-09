@@ -9,11 +9,11 @@
 
 #include "ktexteditor/cursor.h"
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <katescriptdocument.h>
 #include <ktexteditor/view.h>
 
 #include <QJSEngine>
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(ScriptDocumentTest)
@@ -33,7 +33,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 
 void ScriptDocumentTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
     s_msgHandler = qInstallMessageHandler(myMessageOutput);
 }
 

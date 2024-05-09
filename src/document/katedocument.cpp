@@ -226,7 +226,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(const KPluginMetaData &data, bool 
     // Prepare some reload amok protector...
     m_autoReloadThrottle.setSingleShot(true);
     //...but keep the value small in unit tests
-    m_autoReloadThrottle.setInterval(KTextEditor::EditorPrivate::self()->unitTestMode() ? 50 : 3000);
+    m_autoReloadThrottle.setInterval(QStandardPaths::isTestModeEnabled() ? 50 : 3000);
     connect(&m_autoReloadThrottle, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
 
     // load handling

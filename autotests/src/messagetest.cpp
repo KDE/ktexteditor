@@ -8,11 +8,11 @@
 #include "messagetest.h"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <katemessagewidget.h>
 #include <kateview.h>
 #include <ktexteditor/message.h>
 
+#include <QStandardPaths>
 #include <QtTestWidgets>
 
 using namespace KTextEditor;
@@ -21,7 +21,7 @@ QTEST_MAIN(MessageTest)
 
 void MessageTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void MessageTest::cleanupTestCase()

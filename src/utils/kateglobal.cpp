@@ -53,20 +53,6 @@
 #include <QTextToSpeech>
 #include <QTimer>
 
-// BEGIN unit test mode
-static bool kateUnitTestMode = false;
-
-void KTextEditor::EditorPrivate::enableUnitTestMode()
-{
-    kateUnitTestMode = true;
-}
-
-bool KTextEditor::EditorPrivate::unitTestMode()
-{
-    return kateUnitTestMode;
-}
-// END unit test mode
-
 KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &staticInstance)
     : KTextEditor::Editor(this)
     , m_aboutData(QStringLiteral("katepart"),
@@ -539,7 +525,7 @@ void KTextEditor::EditorPrivate::saveSearchReplaceHistoryModels()
 KSharedConfigPtr KTextEditor::EditorPrivate::config()
 {
     // use dummy config for unit tests!
-    if (KTextEditor::EditorPrivate::unitTestMode()) {
+    if (QStandardPaths::isTestModeEnabled()) {
         return KSharedConfig::openConfig(QStringLiteral("katepartrc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation);
     }
 

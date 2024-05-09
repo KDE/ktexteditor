@@ -25,7 +25,7 @@ QTEST_MAIN(KateConfigInterfaceTest)
 KateConfigInterfaceTest::KateConfigInterfaceTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 KateConfigInterfaceTest::~KateConfigInterfaceTest()

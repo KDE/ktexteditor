@@ -7,10 +7,10 @@
 #include "kateanimation.h"
 
 #include "katefadeeffect.h"
-#include "kateglobal.h"
 
 #include <KMessageWidget>
 
+#include <QStandardPaths>
 #include <QStyle>
 #include <QTimer>
 
@@ -68,7 +68,7 @@ void KateAnimation::hide()
 
     // hide according to effects config
     if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget)
-        || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
+        || QStandardPaths::isTestModeEnabled() // due to timing issues in the unit test
     ) {
         // hide depending on effect
         if (m_fadeEffect) {

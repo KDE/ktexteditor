@@ -10,10 +10,10 @@
 
 #include <katebuffer.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 using namespace KTextEditor;
@@ -23,7 +23,7 @@ QTEST_MAIN(RevisionTest)
 RevisionTest::RevisionTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 RevisionTest::~RevisionTest()

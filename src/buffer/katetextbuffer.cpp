@@ -4,7 +4,6 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 #include "config.h"
-#include "kateglobal.h"
 
 #include "katetextbuffer.h"
 #include "katetextloader.h"
@@ -28,6 +27,7 @@
 #include <QCryptographicHash>
 #include <QFile>
 #include <QFileInfo>
+#include <QStandardPaths>
 #include <QStringEncoder>
 #include <QTemporaryFile>
 
@@ -891,7 +891,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
     kAuthActionArgs.insert(QStringLiteral("groupId"), groupId);
 
     // call save with elevated privileges
-    if (KTextEditor::EditorPrivate::unitTestMode()) {
+    if (QStandardPaths::isTestModeEnabled()) {
         // unit testing purposes only
         if (!SecureTextBuffer::savefile(kAuthActionArgs).succeeded()) {
             return false;

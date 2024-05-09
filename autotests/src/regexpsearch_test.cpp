@@ -9,11 +9,11 @@
 #include "moc_regexpsearch_test.cpp"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateregexpsearch.h>
 
 #include <QRegularExpression>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(RegExpSearchTest)
@@ -25,7 +25,7 @@ using namespace KTextEditor;
 RegExpSearchTest::RegExpSearchTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 RegExpSearchTest::~RegExpSearchTest()

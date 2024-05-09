@@ -9,11 +9,11 @@
 #include "moc_variable_test.cpp"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
 #include <ktexteditor/view.h>
 
+#include <QStandardPaths>
 #include <QTest>
 #include <QUuid>
 
@@ -24,7 +24,7 @@ QTEST_MAIN(VariableTest)
 VariableTest::VariableTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 VariableTest::~VariableTest()

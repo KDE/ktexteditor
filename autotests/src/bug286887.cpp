@@ -9,9 +9,9 @@
 
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(BugTest)
@@ -29,7 +29,7 @@ BugTest::~BugTest()
 
 void BugTest::initTestCase()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void BugTest::cleanupTestCase()

@@ -8,9 +8,9 @@
 
 #include <kateconfig.h>
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateview.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(CursorWordsTest)
@@ -41,7 +41,7 @@ DocAndView createDocAndView(const QString &text, int line, int column)
 CursorWordsTest::CursorWordsTest(QObject *parent)
     : QObject(parent)
 {
-    EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 CursorWordsTest::~CursorWordsTest()

@@ -10,15 +10,16 @@
 #include "katebuffer.h"
 #include "katedocument.h"
 #include "katetextfolding.h"
-#include <kateglobal.h>
 #include <ktexteditor/movingcursor.h>
+
+#include <QStandardPaths>
 
 QTEST_MAIN(KateTextBufferTest)
 
 KateTextBufferTest::KateTextBufferTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 KateTextBufferTest::~KateTextBufferTest()

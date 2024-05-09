@@ -9,10 +9,10 @@
 #include "undomanager_test.h"
 
 #include <katedocument.h>
-#include <kateglobal.h>
 #include <kateundomanager.h>
 #include <kateview.h>
 
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(UndoManagerTest)
@@ -22,7 +22,7 @@ using namespace KTextEditor;
 UndoManagerTest::UndoManagerTest()
     : QObject()
 {
-    KTextEditor::EditorPrivate::enableUnitTestMode();
+    QStandardPaths::setTestModeEnabled(true);
 }
 
 void UndoManagerTest::testUndoRedoCount()
