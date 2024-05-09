@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate_part\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-02-20 10:52+0100\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -7906,9 +7906,11 @@ msgid "Show Window Decorations"
 msgstr "Hiện các &mốc thụt lề"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Paste Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Dán phần bôi đen"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7927,12 +7929,6 @@ msgstr "Hiện &số thứ tự dòng"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Hiện &số thứ tự dòng"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Lưu thành..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8332,6 +8328,11 @@ msgstr "'%1' %2,  thập lục phân %3,  bát phân %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Chỉ dấu không được đặt: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Lưu thành..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Chép..."

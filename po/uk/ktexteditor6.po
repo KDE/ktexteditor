@@ -11,15 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
-"PO-Revision-Date: 2024-01-25 16:42+0200\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"PO-Revision-Date: 2024-05-08 09:32+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
@@ -1333,8 +1333,7 @@ msgid "Closes the file, discarding its content."
 msgstr "Закриває файл і відкидає зміни у його вмісті."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Зберегти &як…"
@@ -2552,9 +2551,7 @@ msgid "Modes && Filetypes"
 msgstr "Режими і типи файлів"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Шукати…"
@@ -3971,9 +3968,7 @@ msgid "Spell check canceled."
 msgstr "Перевірку правопису скасовано."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Виконуємо перевірку правопису…"
@@ -4208,8 +4203,7 @@ msgid "I&gnore All"
 msgstr "І&гнорувати всі"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
 msgstr "Перевірка правопису (від курсора)…"
@@ -4335,29 +4329,25 @@ msgid "S&trikeout"
 msgstr "Пере&креслений"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "Звичайний &колір…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
 msgstr "&Колір вибраного…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "&Колір тла…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "&Колір тла вибраного…"
@@ -4988,22 +4978,19 @@ msgid "&Theme:"
 msgstr "&Тема:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Копіювати"
+msgstr "&Копіювати…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Експортувати…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Імпортувати…"
@@ -6586,12 +6573,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Відступ/Табуляція: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Інші"
+msgstr "Інше…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6747,11 +6732,10 @@ msgstr ""
 "поточного рядка чи блоку тексту до належних позицій."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Вирівняти до"
+msgstr "&Вирівняти до…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6936,15 +6920,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Зберегти поточний документ на диск, з новою назвою."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Зберегти з іншим кодуванням…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "Зберегти &копію як…"
@@ -6984,8 +6966,7 @@ msgid "Move downwards to the next modified line."
 msgstr "Перейти нижче до наступного зміненого рядка."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Налаштувати редактор…"
@@ -7456,11 +7437,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Увімкнути/Вимкнути автоматичну перевірку правопису"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Змінити словник"
+msgstr "Змінити словник…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7495,8 +7475,7 @@ msgstr ""
 "до кишені."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "Е&кспортувати як HTML…"
@@ -7966,8 +7945,7 @@ msgid "Copy"
 msgstr "Копіювати"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Колір тла…"
@@ -7983,9 +7961,11 @@ msgid "Show Window Decorations"
 msgstr "Показувати обрамлення вікна"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Знімок вікна…"
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Зробити знімок позначеного"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -8001,11 +7981,6 @@ msgstr "Показати номери рядків з 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Показати справжні номери рядків"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Зберегти…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8414,6 +8389,12 @@ msgstr "«%1» %2,  Шістн. %3,  Вісімк. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Позначку не встановлено: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Знімок вікна…"
+
+#~ msgid "Save..."
+#~ msgstr "Зберегти…"
 
 #~ msgid "&Copy..."
 #~ msgstr "&Копіювати…"

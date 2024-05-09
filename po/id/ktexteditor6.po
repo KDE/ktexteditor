@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -8103,9 +8103,11 @@ msgid "Show Window Decorations"
 msgstr "Tampilkan baris lekukan"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Language Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Pemilihan Bahasa"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8124,12 +8126,6 @@ msgstr "Tampilkan &Baris Nomor"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Tampilkan &Baris Nomor"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Simpan Sebagai..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8541,6 +8537,11 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Tanda tidak diset: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Simpan Sebagai..."
 
 #, fuzzy
 #~| msgid "Save &Copy As..."

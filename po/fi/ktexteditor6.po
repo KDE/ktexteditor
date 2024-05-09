@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-02-08 10:45+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -7906,9 +7906,11 @@ msgid "Show Window Decorations"
 msgstr "Näytä ikkunakoristeet"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Ruutukaappaus…"
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Ota valinnasta ruutukaappaus"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7924,11 +7926,6 @@ msgstr "Näytä rivinumerot 1:stä alkaen"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Näytä todelliset rivinumerot"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Tallenna…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8329,6 +8326,12 @@ msgstr "”%1” %2, heksa %3, oktaali %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Merkkiä ei asetettu: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Ruutukaappaus…"
+
+#~ msgid "Save..."
+#~ msgstr "Tallenna…"
 
 #~ msgid "&Copy..."
 #~ msgstr "K&opioi…"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2006-05-02 17:35+0200\n"
 "Last-Translator: Michel Ludwig <michel.ludwig@kdemail.net>\n"
 "Language-Team: Luxembourgish <kde-i18n-lb@kde.org>\n"
@@ -7712,9 +7712,11 @@ msgid "Show Window Decorations"
 msgstr "A&réckungsmodus:"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "&Automatic end of line detection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "&Automatesch Erkennung vum Zeilenenn"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7733,12 +7735,6 @@ msgstr "Zei&lennummere weisen"
 #| msgid "Show &line numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Zei&lennummere weisen"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "Datei &späicheren als..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8077,6 +8073,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Markéierungstyp %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "Datei &späicheren als..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2019-09-29 12:28+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -8059,9 +8059,11 @@ msgid "Show Window Decorations"
 msgstr "Намоиши хатҳои баробар"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "&Automatic end of line detection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "&Фосилоти худкорӣ"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8080,12 +8082,6 @@ msgstr "&Намоиши миқдори хатҳо"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "&Намоиши миқдори хатҳо"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Нигоҳ доштан ҳамчун..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8427,6 +8423,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Ҷудокунии Намуди %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Нигоҳ доштан ҳамчун..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

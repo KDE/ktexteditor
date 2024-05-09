@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2013-11-17 02:59+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -8142,9 +8142,11 @@ msgid "Show Window Decorations"
 msgstr "Ше&гініс сызықшалары көрсетілсін"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Емлесін автотексеру"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8163,12 +8165,6 @@ msgstr "&Жолдар нөмірлерін көрсету"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "&Жолдар нөмірлерін көрсету"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "Файлды былай &сақтау..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8563,6 +8559,11 @@ msgstr "'%1' %2,  Оналт %3,  Сегізд %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Белгі орнатылмаған: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "Файлды былай &сақтау..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

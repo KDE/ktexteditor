@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-01-13 01:21+0000\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -8064,9 +8064,11 @@ msgid "Show Window Decorations"
 msgstr "Mostrar as li&nhas de indentação"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Paste Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Colar a Localização"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8085,12 +8087,6 @@ msgstr "Mostrar os Números de &Linha"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Mostrar os Números de &Linha"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Gravar Como..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8495,6 +8491,11 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marcação não definida: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Gravar Como..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Copiar..."

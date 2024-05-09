@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2007-10-28 14:02+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -7897,9 +7897,11 @@ msgid "Show Window Decorations"
 msgstr "Рэжым вылучэння"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "&Automatic end of line detection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "&Аўтаматычнае вызначэнне канца радка"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7918,12 +7920,6 @@ msgstr "Паказаць нумары &радкоў"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Паказаць нумары &радкоў"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "&Запісаць файл як..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8264,6 +8260,11 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr " Радок: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "&Запісаць файл як..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

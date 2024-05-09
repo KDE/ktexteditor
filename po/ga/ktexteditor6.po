@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -7692,9 +7692,11 @@ msgid "Show Window Decorations"
 msgstr "Taispeáin lí&nte eangaithe"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Seiceáil Litrithe Uathoibríoch"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7713,12 +7715,6 @@ msgstr "Taispeáin Uimhreacha na &Línte"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Taispeáin Uimhreacha na &Línte"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "&Sábháil an Comhad Mar..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8057,6 +8053,11 @@ msgstr "'%1' %2,  Heics %3,  Ocht %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marc gan socrú: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "&Sábháil an Comhad Mar..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

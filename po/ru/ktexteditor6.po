@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-12-26 16:38+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -7944,9 +7944,11 @@ msgid "Show Window Decorations"
 msgstr "Показывать оформление окна"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Снимок экрана…"
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Создать снимок экрана выделенного текста"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7962,11 +7964,6 @@ msgstr "Начать нумерацию строк с 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Показывать исходные номера строк"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Сохранить…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8373,6 +8370,12 @@ msgstr "«%1» %2,  шестн. %3,  восм. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Отметка не установлена: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Снимок экрана…"
+
+#~ msgid "Save..."
+#~ msgstr "Сохранить…"
 
 #~ msgid "&Copy..."
 #~ msgstr "&Копировать..."

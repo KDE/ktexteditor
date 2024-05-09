@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -8242,9 +8242,11 @@ msgid "Show Window Decorations"
 msgstr "Prikaži linije &uvlačenja"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Language Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Izbor jezika"
 
 # >> @action:inmenu
 #: view/screenshotdialog.cpp:220
@@ -8266,12 +8268,6 @@ msgstr "&Brojevi redova"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "&Brojevi redova"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Sačuvaj kao..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8674,6 +8670,11 @@ msgstr "'%1' %2,  heks %3, okt %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Obilježje nije postavljeno: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Sačuvaj kao..."
 
 #, fuzzy
 #~| msgid "Save &Copy As..."

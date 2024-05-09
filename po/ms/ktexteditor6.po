@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2008-07-13 01:04+0800\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -8091,9 +8091,10 @@ msgid "Show Window Decorations"
 msgstr "Papar baris indentasi"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "`%s' hilang pada penghujung baris"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8112,12 +8113,6 @@ msgstr "Papar Nombor &Baris"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Papar Nombor &Baris"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "&Simpan Fail Sebagai..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8459,6 +8454,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Tandakan Jenis %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "&Simpan Fail Sebagai..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

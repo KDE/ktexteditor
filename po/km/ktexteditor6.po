@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2012-06-13 09:26+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -8055,9 +8055,11 @@ msgid "Show Window Decorations"
 msgstr "បង្ហាញ​បន្ទាត់​ចូល"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "ពិនិត្យអក្ខរាវិរុទ្ធ​ដោយ​ស្វ័យ​ប្រវត្តិ"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8076,12 +8078,6 @@ msgstr "បង្ហាញ​លេខ​បន្ទាត់"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "បង្ហាញ​លេខ​បន្ទាត់"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8476,6 +8472,11 @@ msgstr "'%1' %2,  គោល​ដប់​ប្រាំមួយ %3  គោល
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "សញ្ញា​សម្គាល់​មិន​បានកំណត់ ៖ %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "រក្សាទុក​ឯកសារ​ជា..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

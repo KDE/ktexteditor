@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2005-01-04 11:33-0600\n"
 "Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
 "Language-Team: Bengali <kde-translation@bengalinux.org>\n"
@@ -7542,9 +7542,10 @@ msgid "Show Window Decorations"
 msgstr "নিয়মাবলী"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "স্বয়ংক্রিয়"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7563,11 +7564,6 @@ msgstr "লাইন &নম্বর দেখাও"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "লাইন &নম্বর দেখাও"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-msgid "Save..."
-msgstr "ফাইল সংরক্ষণ করো "
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -7901,6 +7897,10 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ধরন ১"
+
+#, fuzzy
+#~ msgid "Save..."
+#~ msgstr "ফাইল সংরক্ষণ করো "
 
 #, fuzzy
 #~ msgid "&Copy..."

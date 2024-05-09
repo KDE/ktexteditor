@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 12:37+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -8015,9 +8015,11 @@ msgid "Show Window Decorations"
 msgstr "Mostra la decoració de les finestres"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Captura de pantalla..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Pren una captura de pantalla de la selecció"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -8033,11 +8035,6 @@ msgstr "Mostra els números de les línies a partir de l'1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Mostra els números reals de les línies"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Guarda..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8440,6 +8437,12 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Captura de pantalla..."
+
+#~ msgid "Save..."
+#~ msgstr "Guarda..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Copia..."

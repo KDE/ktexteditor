@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2011-12-15 14:55+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@linuxshop.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -8096,9 +8096,11 @@ msgid "Show Window Decorations"
 msgstr "نمایش &تو‌رفتگی خطوط‌"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "بررسی خودکار هجی"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8117,12 +8119,6 @@ msgstr "نمایش شماره &خطوط‌"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "نمایش شماره &خطوط‌"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "&ذخیره پرونده به عنوان...‌"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8469,6 +8465,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "نشان‌دار کردن نوع  %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "&ذخیره پرونده به عنوان...‌"
 
 #, fuzzy
 #~| msgid "&Save File As..."

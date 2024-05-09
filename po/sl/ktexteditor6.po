@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
-"PO-Revision-Date: 2024-03-17 15:24+0100\n"
-"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"PO-Revision-Date: 2024-05-08 07:42+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1321,11 +1321,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Zapre datoteko, zavrže njeno vsebino."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Shrani kot …"
+msgstr "&Shrani kot…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2539,12 +2538,10 @@ msgid "Modes && Filetypes"
 msgstr "Načini in vrste datotek"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Poišči …"
+msgstr "Poišči…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3950,12 +3947,10 @@ msgid "Spell check canceled."
 msgstr "Preverjanje črkovanja preklicano."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Preverjanje črkovanja poteka …"
+msgstr "Preverjanje črkovanja poteka…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4185,11 +4180,10 @@ msgid "I&gnore All"
 msgstr "Prezri vse"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Črkovanje (od kazalke) …"
+msgstr "Črkovanje (od kazalke)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4311,32 +4305,28 @@ msgid "S&trikeout"
 msgstr "Prečrtaj"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Običajna &barva …"
+msgstr "Običajna barva…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Izbrana barva …"
+msgstr "Izbrana barva…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Barva &ozadja …"
+msgstr "&Barva ozadja…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Barva ozadja i&zbora …"
+msgstr "Barva ozadja izbora…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4957,25 +4947,22 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopiraj"
+msgstr "Kopiraj…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Izvozi …"
+msgstr "Izvozi…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Uvozi …"
+msgstr "Uvozi…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -5884,7 +5871,7 @@ msgstr ""
 #: utils/kateglobal.cpp:274
 #, kde-format
 msgid "Configure"
-msgstr "Nastavi"
+msgstr "Konfiguriraj"
 
 #: utils/katesedcmd.cpp:268
 #, kde-format
@@ -6526,12 +6513,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Zamik/tabulator: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Drugo"
+msgstr "Drugo…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6687,11 +6672,10 @@ msgstr ""
 "njegovo pravilno raven zamikanja."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Poravnaj na"
+msgstr "Poravnaj na…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6872,18 +6856,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Shrani trenuten dokument na disk z imenom po izbiri."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Shrani kot (s kodiranjem) …"
+msgstr "Shrani kot s kodiranjem…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Shrani &kopijo kot …"
+msgstr "Shrani kopijo kot…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6920,11 +6902,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Premakni se dol do naslednje spremenjene vrstice."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Nastavi urejevalnik …"
+msgstr "Konfiguriraj urejevalnik…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7391,11 +7372,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Omogoči/onemogoči samodejno preverjanje črkovanja"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Zamenjaj slovar"
+msgstr "Zamenjaj slovar…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7430,11 +7410,10 @@ msgstr ""
 "odložišče v obliki HTML."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "&Izvozi kot HTML …"
+msgstr "Izvozi kot HTML…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7896,11 +7875,10 @@ msgid "Copy"
 msgstr "Kopiraj"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Barva ozadja …"
+msgstr "Barva ozadja…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7913,9 +7891,11 @@ msgid "Show Window Decorations"
 msgstr "Pokaži okraske okna"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Zaslonska slika …"
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Napravi posnetek zaslona izbire"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7931,11 +7911,6 @@ msgstr "Pokaži številke vrstic od 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Pokaži dejanske številke vrstic"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Shrani …"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8334,6 +8309,12 @@ msgstr "»%1« %2,  Šestn. %3,  Osm. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Oznaka ni nastavljena: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Zaslonska slika …"
+
+#~ msgid "Save..."
+#~ msgstr "Shrani …"
 
 #~ msgid "&Copy..."
 #~ msgstr "&Kopiraj …"

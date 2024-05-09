@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-02-10 00:07+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -7750,9 +7750,11 @@ msgid "Show Window Decorations"
 msgstr "창 장식 표시"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "스크린샷..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "선택 영역의 스크린샷 찍기"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7768,11 +7770,6 @@ msgstr "1부터 줄 번호 표시"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "실제 줄 번호 표시"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "저장..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8162,6 +8159,12 @@ msgstr "'%1' %2,  16진수 %3,  8진수 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "표시가 설정되지 않음: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "스크린샷..."
+
+#~ msgid "Save..."
+#~ msgstr "저장..."
 
 #~ msgid "&Copy..."
 #~ msgstr "복사(&C)..."

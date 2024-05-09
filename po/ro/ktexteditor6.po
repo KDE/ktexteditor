@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2021-05-15 16:59+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -8162,9 +8162,11 @@ msgid "Show Window Decorations"
 msgstr "Afișează liniile de i&ndentare"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Paste Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Lipește selecția"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8183,12 +8185,6 @@ msgstr "Afișează &numerele de linie"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Afișează &numerele de linie"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Salvează ca..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8538,6 +8534,11 @@ msgstr "'%1' %2,  Hexazecimal %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marcaj nestabilit: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Salvează ca..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Copiază..."

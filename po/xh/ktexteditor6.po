@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2002-11-14 16:59SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -7715,9 +7715,10 @@ msgid "Show Window Decorations"
 msgstr "Imithetho Yolwenziwo lwamathanda"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "&Yenza amathanda ngokuzenzekelayo"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7736,11 +7737,6 @@ msgstr "Bonisa &Amanani Elayini"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Bonisa &Amanani Elayini"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-msgid "Save..."
-msgstr "Gcina Ifayile"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8078,6 +8074,10 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Phawula Uhlobo %1"
+
+#, fuzzy
+#~ msgid "Save..."
+#~ msgstr "Gcina Ifayile"
 
 #, fuzzy
 #~ msgid "&Copy..."

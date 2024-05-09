@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2006-10-01 21:04+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -7670,9 +7670,11 @@ msgid "Show Window Decorations"
 msgstr "Tanlash usuli"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Selection Only"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Faqat belgilanganda"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7691,11 +7693,6 @@ msgstr "Satr &tartib raqamlarini koʻrsatish"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Satr &tartib raqamlarini koʻrsatish"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-msgid "Save..."
-msgstr "Faylni saqlash"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8034,6 +8031,10 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr " Satr: %1"
+
+#, fuzzy
+#~ msgid "Save..."
+#~ msgstr "Faylni saqlash"
 
 #, fuzzy
 #~ msgid "&Copy..."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -7899,9 +7899,13 @@ msgid "Show Window Decorations"
 msgstr "स्नेप लकीरें दिखाएँ"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid ""
+#| "_: Language Section\n"
+#| "Other"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "अन्य"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7920,12 +7924,6 @@ msgstr "पंक्ति क्रमांक दिखाएँ (&L)"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "पंक्ति क्रमांक दिखाएँ (&L)"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8270,6 +8268,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "मार्क टाइप %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "फ़ाइल ऐसे सहेजें... (&S)"
 
 #, fuzzy
 #~| msgid "Search"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -7957,9 +7957,11 @@ msgid "Show Window Decorations"
 msgstr "Erakutsi leiho-apaingarriak"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Pantaila-argazkia..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Hartu hautapenaren pantaila-argazkia"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7975,11 +7977,6 @@ msgstr "Erakutsi lerro-zenbakiak 1etik"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Erakutsi benetako lerro-zenbakiak"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Gorde..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8384,6 +8381,12 @@ msgstr "'%1' %2,  Hamas. %3,  Zortz. %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marka ezarri gabe: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Pantaila-argazkia..."
+
+#~ msgid "Save..."
+#~ msgstr "Gorde..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Kopiatu..."

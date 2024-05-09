@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-12-12 19:23+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -7877,9 +7877,11 @@ msgid "Show Window Decorations"
 msgstr "Zobraziť dekorácie okien"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Snímka obrazovky..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Urobiť snímku obrazovky výberu"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7895,11 +7897,6 @@ msgstr "Zobraziť čísla riadkov od 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Zobraziť skutočné čísla riadkov"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Uložiť..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8301,6 +8298,12 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Značka nenastavená: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Snímka obrazovky..."
+
+#~ msgid "Save..."
+#~ msgstr "Uložiť..."
 
 #~ msgid "&Copy..."
 #~ msgstr "Kopírovať..."

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-02-05 17:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -7617,9 +7617,11 @@ msgid "Show Window Decorations"
 msgstr "顯示視窗裝飾"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "螢幕截圖..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "擷取選取區的螢幕截圖"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7635,11 +7637,6 @@ msgstr "從 1 開始顯示行號"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "顯示實際行號"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "儲存..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8020,6 +8017,12 @@ msgstr "'%1' %2，十六進位 %3，八進位 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "標記未設定：%1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "螢幕截圖..."
+
+#~ msgid "Save..."
+#~ msgstr "儲存..."
 
 #~ msgid "&Copy..."
 #~ msgstr "複製(&C)..."

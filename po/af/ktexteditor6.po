@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2005-11-25 11:24+0200\n"
 "Last-Translator: Juanita Franz <juanita.franz@vr-web.de>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -8147,9 +8147,11 @@ msgid "Show Window Decorations"
 msgstr "Vertoon inkeping Reëls"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "&Automatic end of line detection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Automaties einde van lyn opsporing"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8168,12 +8170,6 @@ msgstr "Vertoon Lyn Nommers"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Vertoon Lyn Nommers"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "Stoor Lêer as..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8516,6 +8512,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Merk Tipe %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "Stoor Lêer as..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

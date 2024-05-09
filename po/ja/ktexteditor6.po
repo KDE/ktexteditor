@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2011-04-24 13:17-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -8053,9 +8053,11 @@ msgid "Show Window Decorations"
 msgstr "字下げを示す線を表示する(&N)"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "自動スペルチェック"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8074,12 +8076,6 @@ msgstr "行番号を表示(&L)"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "行番号を表示(&L)"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "別名で保存(&S)..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8423,6 +8419,11 @@ msgstr "'%1' %2,  十六進 %3,  八進 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "マークが未セット: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "別名で保存(&S)..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

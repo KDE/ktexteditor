@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-03-21 20:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -7918,9 +7918,11 @@ msgid "Show Window Decorations"
 msgstr "Pencere Dekorasyonlarını Göster"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Ekran Görüntüsü…"
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Seçimin Ekran Görüntüsünü Al"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7936,11 +7938,6 @@ msgstr "Satır Numaralarını 1’den Başlayarak Göster"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Gerçek Satır Numaralarını Göster"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Kaydet…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8341,6 +8338,12 @@ msgstr "“%1” %2,  Altılık %3,  Sekizlik %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İm ayarlanmadı: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Ekran Görüntüsü…"
+
+#~ msgid "Save..."
+#~ msgstr "Kaydet…"
 
 #~ msgid "&Copy..."
 #~ msgstr "Ko&pyala…"

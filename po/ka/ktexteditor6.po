@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
-"PO-Revision-Date: 2024-01-25 06:02+0100\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"PO-Revision-Date: 2024-05-08 05:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1309,11 +1309,10 @@ msgid "Closes the file, discarding its content."
 msgstr "ფაილის დახურვა და შინაარსის უგულებელყოფა."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&შენახვა, როგორც..."
+msgstr "&შენახვა, როგორც…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2519,12 +2518,10 @@ msgid "Modes && Filetypes"
 msgstr "რეჟიმები და ფაილის ტიპები"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "ძებნა..."
+msgstr "ძებნა…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3932,12 +3929,10 @@ msgid "Spell check canceled."
 msgstr "მართლწერის შემოწმება გაუქმდა."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "მიმდინარეობს მართლწერის შემოწმება..."
+msgstr "მიმდინარეობს მართლწერის შემოწმება…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4166,11 +4161,10 @@ msgid "I&gnore All"
 msgstr "&ყველას იგნორირება"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "მართლწერა (კურსორიდან)..."
+msgstr "მართლწერა (კურსორიდან)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4292,32 +4286,28 @@ msgid "S&trikeout"
 msgstr "&ხაზგადასმული"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "ნორმალური &ფერი..."
+msgstr "ნორმალური &ფერი…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "არჩეული &ფერი..."
+msgstr "არჩეული &ფერი…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "ფონის &ფერი..."
+msgstr "ფონის &ფერი…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "&არჩეული ფერის ფონი..."
+msgstr "&არჩეული ფერის ფონი…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4938,25 +4928,22 @@ msgid "&Theme:"
 msgstr "&თემა:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "კოპირება"
+msgstr "&კოპირება…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "გატანა..."
+msgstr "გატანა…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "შემოტანა..."
+msgstr "შემოტანა…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6506,12 +6493,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "შეწევა/ტაბი : %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "სხვები"
+msgstr "სხვა…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6666,11 +6651,10 @@ msgstr ""
 "შესაწევად."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "სწორება"
+msgstr "სწორებ&ა…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6853,18 +6837,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "მიმდინარე დოკუმენტის დისკზე შენახვა, სახელის არჩევით."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "შენახვა როგორც, კოდირებით..."
+msgstr "შენახვა როგორც, კოდირებით…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "&ასლის შენახვა, როგორც..."
+msgstr "&ასლის შენახვა, როგორც…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6901,11 +6883,10 @@ msgid "Move downwards to the next modified line."
 msgstr "ქვემოთ შემდეგ შეცვლილ ხაზზე გადასვლა."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&რედაქტორის მორგება..."
+msgstr "&რედაქტორის მორგება…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7375,11 +7356,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "ავტომატური მართლწერის შემოწმების ჩართვა/გამორთვა"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "ლექსიკონის შეცვლა"
+msgstr "ლექსიკონის შეცვლა…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7413,8 +7393,7 @@ msgstr ""
 "დასაკოპირებლად HTML-ის სახით."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "&HTML-ში გატანა…"
@@ -7883,11 +7862,10 @@ msgid "Copy"
 msgstr "კოპირება"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "ფონის ფერი..."
+msgstr "ფონის ფერი…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7900,9 +7878,11 @@ msgid "Show Window Decorations"
 msgstr "ფანჯრის დეკორაციების ჩვენება"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "ეკრანის ანაბეჭდი..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "მონიშნულის ანაბეჭდის გადაღება"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7918,11 +7898,6 @@ msgstr "&ხაზის ნომრების ჩვენება 1-და
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "ნამდვილი ხაზის ნომრების ჩვენება"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "შენახვა..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8324,6 +8299,12 @@ msgstr "'%1' %2,  თექვსმ %3,  რვაობითი %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ნიშანი დასმული არაა: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "ეკრანის ანაბეჭდი..."
+
+#~ msgid "Save..."
+#~ msgstr "შენახვა..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&კოპირება..."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 14:28+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -8001,9 +8001,11 @@ msgid "Show Window Decorations"
 msgstr "Vensterdecoraties tonen"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Schermafdruk..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Schermafdruk maken van selectie"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -8019,11 +8021,6 @@ msgstr "Regelnummering vanaf 1 tonen"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Actuele regelnummering tonen"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Opslaan..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8430,6 +8427,12 @@ msgstr "'%1' %2,  Hex %3,  Octaal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Markering niet ingesteld: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Schermafdruk..."
+
+#~ msgid "Save..."
+#~ msgstr "Opslaan..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Kopiëren..."

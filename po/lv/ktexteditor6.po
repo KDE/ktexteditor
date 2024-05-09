@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-03-09 19:29+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -7902,9 +7902,11 @@ msgid "Show Window Decorations"
 msgstr "Rādīt logu noformējumu"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Ekrānattēls..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Uzņemt atlases ekrānattēlu"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7920,11 +7922,6 @@ msgstr "Rādīt &rindu numurus no 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Rādīt faktiskos rindu numurus"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Saglabāt..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8325,6 +8322,12 @@ msgstr "„%1“ %2,  Heks %3,  Oktāli %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marķējums nav pievienots: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Ekrānattēls..."
+
+#~ msgid "Save..."
+#~ msgstr "Saglabāt..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Kopēt..."

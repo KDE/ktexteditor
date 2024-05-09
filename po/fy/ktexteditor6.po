@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2009-05-22 10:03+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -8291,10 +8291,13 @@ msgstr "Seleksjemodus"
 msgid "Show Window Decorations"
 msgstr "Ynspringrigels sjen litte"
 
+# msgid "&Automatic end of line detection"
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "A&utomatic end of line detection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "A&utomatysk rigelein ûntdekke"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8313,12 +8316,6 @@ msgstr "Rige&lnûmering sjen litte"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Rige&lnûmering sjen litte"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "TRiem bewarje a&s..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8666,6 +8663,11 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "Type %1 markearje"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "TRiem bewarje a&s..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

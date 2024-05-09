@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2011-07-24 15:43+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -8048,9 +8048,11 @@ msgid "Show Window Decorations"
 msgstr "අනුච්ඡේදන පේළි පෙන්වන්න (~n)"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "ස්වයං අක්ෂර වින්‍යාස පිරික්සුම"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8069,12 +8071,6 @@ msgstr "පේළි අංක පෙන්වන්න (~L)"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "පේළි අංක පෙන්වන්න (~L)"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "ගොනුව මේ ලෙස සුරකින්න... (~S)"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8424,6 +8420,11 @@ msgstr "'%1' %2,  16 පාදයේ %3,  8 පාදයේ %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "නොයෙදූ ලකුණ: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "ගොනුව මේ ලෙස සුරකින්න... (~S)"
 
 #, fuzzy
 #~| msgid "&Save File As..."

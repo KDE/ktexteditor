@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
-"PO-Revision-Date: 2024-01-26 02:01+0100\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"PO-Revision-Date: 2024-05-08 12:45+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -1349,11 +1349,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Cierra el archivo descartando su contenido."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Guardar como ..."
+msgstr "&Guardar como..."
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2581,9 +2580,7 @@ msgid "Modes && Filetypes"
 msgstr "Modos y tipos de archivo"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Buscar..."
@@ -4008,9 +4005,7 @@ msgid "Spell check canceled."
 msgstr "Comprobación ortográfica cancelada."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Comprobación ortográfica en progreso..."
@@ -4247,8 +4242,7 @@ msgid "I&gnore All"
 msgstr "I&gnorar todo"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
 msgstr "Comprobar ortografía (desde el cursor)..."
@@ -4373,29 +4367,25 @@ msgid "S&trikeout"
 msgstr "&Tachado"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "Color &normal..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
 msgstr "Color &seleccionado..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "&Color de fondo..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "Color de fondo &seleccionado..."
@@ -5029,22 +5019,19 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Copiar"
+msgstr "&Copiar..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Exportar..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Importar..."
@@ -6620,12 +6607,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Sangrado/tabulador: %1%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Otros"
+msgstr "Otros..."
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6780,11 +6765,10 @@ msgstr ""
 "texto con su nivel de sangrado adecuado."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Alinear en"
+msgstr "&Alinear en..."
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6968,15 +6952,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Guardar el documento actual en el disco con un nombre de su elección."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Guardar como con codificación..."
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "Guardar &copia como..."
@@ -7016,8 +6998,7 @@ msgid "Move downwards to the next modified line."
 msgstr "Mover hacia abajo hasta la siguiente línea modificada."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Configurar editor..."
@@ -7494,11 +7475,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Activar/desactivar la corrección ortográfica automática"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Cambiar diccionario"
+msgstr "Cambiar diccionario..."
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7533,8 +7513,7 @@ msgstr ""
 "portapapeles del sistema."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&xportar como HTML..."
@@ -8004,8 +7983,7 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Color del fondo..."
@@ -8021,9 +7999,11 @@ msgid "Show Window Decorations"
 msgstr "Mostrar decoraciones de las ventanas"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Captura de pantalla..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Hacer una captura de pantalla de la selección"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -8039,11 +8019,6 @@ msgstr "Mostrar números de líneas desde el 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Mostrar números de líneas reales"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Guardar..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8449,6 +8424,12 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no fijada: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Captura de pantalla..."
+
+#~ msgid "Save..."
+#~ msgstr "Guardar..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Copiar..."

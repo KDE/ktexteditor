@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -8033,9 +8033,11 @@ msgid "Show Window Decorations"
 msgstr "Treppimisjoonte &näitamine"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Paste Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Aseta valik"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -8054,12 +8056,6 @@ msgstr "Reanum&brite näitamine"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Reanum&brite näitamine"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "&Salvesta kui..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8465,6 +8461,11 @@ msgstr "'%1' %2,  16nd %3,  8nd %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Märk pole määratud: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "&Salvesta kui..."
 
 #, fuzzy
 #~| msgid "Save &Copy As..."

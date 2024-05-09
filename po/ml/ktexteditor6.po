@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2019-12-12 21:03+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -7368,9 +7368,10 @@ msgid "Show Window Decorations"
 msgstr "&വരിയുടെ അക്കം കാണിക്കുക"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "സൂക്ഷിക്കുമ്പോള്‍ ബാക്കപ്പെടുക്കുക"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7389,11 +7390,6 @@ msgstr "&വരിയുടെ അക്കം കാണിക്കുക"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "&വരിയുടെ അക്കം കാണിക്കുക"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-msgid "Save..."
-msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -7722,6 +7718,10 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr "ചേര്‍ക്കുക: %1"
+
+#, fuzzy
+#~ msgid "Save..."
+#~ msgstr "ഫയലിന്റെ പേരു് മാറ്റി &സൂക്ഷിക്കുക..."
 
 #, fuzzy
 #~ msgid "&Copy..."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-01-03 14:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -7795,9 +7795,11 @@ msgid "Show Window Decorations"
 msgstr "ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰ ਲਾਈਨਾਂ ਵੇਖੋ(&n)"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Language Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "ਭਾਸ਼ਾ ਚੋਣ"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7816,12 +7818,6 @@ msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖੋ(&L)"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖੋ(&L)"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "ਫਾਇਲ ਇੰਝ ਸੰਭਾਲੋ(&S)..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8157,6 +8153,11 @@ msgstr ""
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "ਨਿਸ਼ਾਨ ਸੈੱਟ ਨਹੀਂ: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "ਫਾਇਲ ਇੰਝ ਸੰਭਾਲੋ(&S)..."
 
 #, fuzzy
 #~| msgid "Save &Copy As..."

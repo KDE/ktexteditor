@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-04-08 11:01+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -7894,9 +7894,11 @@ msgid "Show Window Decorations"
 msgstr "Show Window Decorations"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Screenshot..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Take Screenshot of Selection"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7912,11 +7914,6 @@ msgstr "Show Line Numbers From 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Show Actual Line Numbers"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Save..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8316,6 +8313,12 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Mark not set: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Screenshot..."
+
+#~ msgid "Save..."
+#~ msgstr "Save..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Copy..."

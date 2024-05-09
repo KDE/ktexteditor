@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2015-05-31 21:21+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -7759,7 +7759,8 @@ msgstr "Vis i&nnrykkslinjer"
 
 #: view/screenshotdialog.cpp:148
 #, kde-format
-msgid "Screenshot..."
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
 msgstr ""
 
 #: view/screenshotdialog.cpp:220
@@ -7776,11 +7777,6 @@ msgstr "Vis &linjenummer"
 #, fuzzy, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Vis &linjenummer"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-msgid "Save..."
-msgstr "&Lagre som …"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8176,5 +8172,6 @@ msgstr "'%1' %2,  Hex %3,  Oktal %4"
 msgid "Mark not set: %1"
 msgstr "Merke ikke satt: %1"
 
-#~ msgid "Other..."
-#~ msgstr "Annet …"
+#, fuzzy
+#~ msgid "Save..."
+#~ msgstr "&Lagre som …"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-03-10 10:00+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -7871,9 +7871,10 @@ msgid "Show Window Decorations"
 msgstr "சாளர விளிம்புகளைக் காட்டு"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "திரைப்பிடிப்பு..."
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "தன்னியக்க  உள்தள்"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7889,11 +7890,6 @@ msgstr "வரி எண்ணை 1-இலிருந்து துவங்�
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "உண்மையாக வரி எண்ணைக் காட்டு"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "சேமி..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8235,6 +8231,12 @@ msgstr ""
 #| msgid "Mark Type %1"
 msgid "Mark not set: %1"
 msgstr "குறி வகை%1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "திரைப்பிடிப்பு..."
+
+#~ msgid "Save..."
+#~ msgstr "சேமி..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

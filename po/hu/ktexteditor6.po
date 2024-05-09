@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -7924,9 +7924,11 @@ msgid "Show Window Decorations"
 msgstr "Ablakdekorációk megjelenítése"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Képernyőkép…"
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Képernyőkép készítése a kijelölésről"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -7942,11 +7944,6 @@ msgstr "Sorszámok megjelenítése 1-től"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Tényleges sorszámok megjelenítése"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Mentés…"
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8349,6 +8346,12 @@ msgstr "„%1” %2, hexa %3, okta %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Nincs beállítva jelölés: %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Képernyőkép…"
+
+#~ msgid "Save..."
+#~ msgstr "Mentés…"
 
 #~ msgid "&Copy..."
 #~ msgstr "Más&olás…"

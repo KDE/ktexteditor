@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2014-10-28 14:28+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -7543,9 +7543,11 @@ msgid "Show Window Decorations"
 msgstr "समास ओळी दर्शवा (&N)"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Automatic Spell Checking"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "स्वयंचलित वर्णलेखन तपासणी"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7564,11 +7566,6 @@ msgstr "ओळ क्रमांक दर्शवा (&L)"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "ओळ क्रमांक दर्शवा (&L)"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr ""
 
 #: view/screenshotdialog.cpp:383
 #, kde-format

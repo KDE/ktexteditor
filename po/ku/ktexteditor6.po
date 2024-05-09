@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2008-09-22 02:29+0300\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -7468,9 +7468,10 @@ msgid "Show Window Decorations"
 msgstr "Moda Hilbijartinê"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Pêşeka Veker a Temamkirina Bixweber"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7488,12 +7489,6 @@ msgstr ""
 #| msgid "Current line:"
 msgid "Show Actual Line Numbers"
 msgstr "Rêzika aniha:"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "Pelî &Tomar bike Wekî..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -7826,6 +7821,11 @@ msgstr ""
 #, kde-format
 msgid "Mark not set: %1"
 msgstr ""
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "Pelî &Tomar bike Wekî..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

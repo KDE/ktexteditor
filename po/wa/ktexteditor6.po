@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2011-07-06 18:12+0200\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux@walon.org>\n"
@@ -7709,9 +7709,11 @@ msgid "Show Window Decorations"
 msgstr "&Seccion:"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "A&utomatic end of line detection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Deteccion &otomatike del fén d' roye"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7730,12 +7732,6 @@ msgstr "Mostrer les &limeros des royes"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Mostrer les &limeros des royes"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
-msgid "Save..."
-msgstr "Schaper et r&lomer..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8075,6 +8071,11 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Mark not set: %1"
 msgstr " Roye: %1"
+
+#, fuzzy
+#~| msgid "&Save File As..."
+#~ msgid "Save..."
+#~ msgstr "Schaper et r&lomer..."
 
 #, fuzzy
 #~| msgid "&Save File As..."

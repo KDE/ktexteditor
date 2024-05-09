@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-02-18 21:30+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -7919,9 +7919,11 @@ msgid "Show Window Decorations"
 msgstr "Abzas sətirləri&ni göstər"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Paste Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Seçiləni Yerləşdirmək"
 
 #: view/screenshotdialog.cpp:220
 #, fuzzy, kde-format
@@ -7940,12 +7942,6 @@ msgstr "Sətir nömrə&lərini gostər"
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "Sətir nömrə&lərini gostər"
-
-#: view/screenshotdialog.cpp:375
-#, fuzzy, kde-format
-#| msgid "&Save As..."
-msgid "Save..."
-msgstr "Belə &saxla..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8344,6 +8340,11 @@ msgstr "'%1' %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "İşarələnməyib: %1"
+
+#, fuzzy
+#~| msgid "&Save As..."
+#~ msgid "Save..."
+#~ msgstr "Belə &saxla..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Kopyamaq..."

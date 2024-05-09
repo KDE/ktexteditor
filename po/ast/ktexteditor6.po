@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
 "PO-Revision-Date: 2023-11-07 21:27+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -7322,7 +7322,8 @@ msgstr ""
 
 #: view/screenshotdialog.cpp:148
 #, kde-format
-msgid "Screenshot..."
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
 msgstr ""
 
 #: view/screenshotdialog.cpp:220
@@ -7338,11 +7339,6 @@ msgstr ""
 #: view/screenshotdialog.cpp:222
 #, kde-format
 msgid "Show Actual Line Numbers"
-msgstr ""
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
 msgstr ""
 
 #: view/screenshotdialog.cpp:383

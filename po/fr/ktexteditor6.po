@@ -25,10 +25,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 00:36+0000\n"
-"PO-Revision-Date: 2024-01-26 09:42+0100\n"
+"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"PO-Revision-Date: 2024-05-03 09:12+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Text-Markup: kde4\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -3701,7 +3701,7 @@ msgstr "LaTeX"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "LilyPond"
-msgstr "LilyPond"
+msgstr "Lilypond"
 
 #: script/data/indentation/lisp.js:2
 #, kde-format
@@ -8333,9 +8333,11 @@ msgid "Show Window Decorations"
 msgstr "Afficher les décorations de fenêtres"
 
 #: view/screenshotdialog.cpp:148
-#, kde-format
-msgid "Screenshot..."
-msgstr "Copie d'écran..."
+#, fuzzy, kde-format
+#| msgid "Take Screenshot of Selection"
+msgctxt "@title:window"
+msgid "Take Screenshot of Selection"
+msgstr "Prendre une copie d'écran de la sélection"
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -8351,11 +8353,6 @@ msgstr "Afficher les numéros de lignes à partir de 1"
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Afficher les numéros de la ligne actuelle"
-
-#: view/screenshotdialog.cpp:375
-#, kde-format
-msgid "Save..."
-msgstr "Enregistrer..."
 
 #: view/screenshotdialog.cpp:383
 #, kde-format
@@ -8766,6 +8763,12 @@ msgstr "« %1 » %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marqueur non défini : %1"
+
+#~ msgid "Screenshot..."
+#~ msgstr "Copie d'écran..."
+
+#~ msgid "Save..."
+#~ msgstr "Enregistrer..."
 
 #~ msgid "&Copy..."
 #~ msgstr "&Copier..."
