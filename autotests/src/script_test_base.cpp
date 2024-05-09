@@ -89,7 +89,7 @@ void ScriptTestBase::getTestData(const QString &script)
  * @param refFile reference file
  * @param outFile output file
  */
-inline bool filesEqual(const QString &refFile, const QString &outFile)
+inline QByteArray filesDiff(const QString &refFile, const QString &outFile)
 {
     /**
      * quick compare, all fine, if no diffs!
@@ -105,7 +105,7 @@ inline bool filesEqual(const QString &refFile, const QString &outFile)
     const QString outContent = outIn.readAll();
     const bool equalResults = refContent == outContent;
     if (equalResults) {
-        return true;
+        return QByteArray();
     }
 
     /**
@@ -114,9 +114,18 @@ inline bool filesEqual(const QString &refFile, const QString &outFile)
     static const QString diffExecutable = QStandardPaths::findExecutable(QStringLiteral("diff"));
     if (!diffExecutable.isEmpty()) {
         QProcess proc;
-        proc.setProcessChannelMode(QProcess::ForwardedChannels);
+        proc.setProcessChannelMode(QProcess::ForwardedErrorChannel);
         proc.start(diffExecutable, {QStringLiteral("-u"), refFile, outFile});
         proc.waitForFinished();
+        auto diffMsg = proc.readAll();
+        /**
+         * subprocess could have an error and return nothing
+         */
+        if (!diffMsg.isEmpty()) {
+            // so that QVERIFY2 displays the diff on a new line
+            diffMsg.prepend('\n');
+            return diffMsg;
+        }
     }
 
     /**
@@ -127,7 +136,16 @@ inline bool filesEqual(const QString &refFile, const QString &outFile)
     }
 
     // there were diffs
-    return false;
+    QByteArray diffMsg;
+    diffMsg.append("readAll(");
+    diffMsg.append(refFile.toUtf8());
+    diffMsg.append(") != readAll(");
+    diffMsg.append(outFile.toUtf8());
+    diffMsg.append(")\n");
+    diffMsg.append(refContent.toUtf8());
+    diffMsg.append("\n != \n\n");
+    diffMsg.append(outContent.toUtf8());
+    return diffMsg;
 }
 
 void ScriptTestBase::runTest(const ExpectedFailures &failures)
@@ -172,7 +190,8 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     }
 
     // compare files, expected fail will invert this verify
-    QVERIFY(filesEqual(fileExpected, fileActual));
+    const auto diffMsg = filesDiff(fileExpected, fileActual);
+    QVERIFY2(diffMsg.isEmpty(), diffMsg.constData());
 }
 
 #include "moc_script_test_base.cpp"
