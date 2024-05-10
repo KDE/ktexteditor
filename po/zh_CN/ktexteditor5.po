@@ -4684,7 +4684,7 @@ msgid ""
 "p><p>You can unset the Background and Selected Background colors from the "
 "context menu when appropriate.</p>"
 msgstr ""
-"<p>这个列表将显示当前语法加亮模式的上下文，并且提供编辑的方法。上下文名称反映"
+"<p>这个列表将显示当前语法高亮模式的上下文，并且提供编辑的方法。上下文名称反映"
 "当前样式设置。</p><p>要使用键盘编辑，按<strong>&lt;空格键&gt;</strong>，从弹"
 "出窗口选择一个属性。</p><p>要编辑颜色，点击颜色方块，或者从弹出窗口中选择要编"
 "辑的颜色。</p><p>您可以从相应的弹出菜单取消对背景和选中背景颜色的设置。</p>"
@@ -4742,7 +4742,7 @@ msgstr "默认文本样式"
 #: syntax/katethemeconfig.cpp:1155
 #, kde-format
 msgid "Highlighting Text Styles"
-msgstr "加亮文本样式"
+msgstr "高亮文本样式"
 
 #: syntax/katethemeconfig.cpp:1167
 #, kde-format
@@ -6400,7 +6400,7 @@ msgid ""
 "the language's highlighting."
 msgstr ""
 "使用此命令注释掉当前行或者选定的一块文字。<br /><br />单行/多行注释的标记字符"
-"在语法加亮设置中定义。"
+"在语法高亮设置中定义。"
 
 #: view/kateview.cpp:533
 #, kde-format
@@ -6425,7 +6425,7 @@ msgid ""
 "defined within the language's highlighting."
 msgstr ""
 "使用此命令去掉当前行或者选定文字的注释。<br /><br />单行/多行注释的标记字符在"
-"语法加亮设置中定义。"
+"语法高亮设置中定义。"
 
 #: view/kateview.cpp:553
 #, kde-format
