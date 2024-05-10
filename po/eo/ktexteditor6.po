@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-02-02 22:38+0100\n"
+"PO-Revision-Date: 2024-05-09 22:01+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1311,11 +1311,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Fermi la dosieron, forĵetante ĝian enhavon."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "Kon&servi kiel..."
+msgstr "Kon&servi Kiel…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2522,12 +2521,10 @@ msgid "Modes && Filetypes"
 msgstr "Reĝimoj && Dosiertipoj"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Serĉi..."
+msgstr "Serĉi…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3929,12 +3926,10 @@ msgid "Spell check canceled."
 msgstr "Literumkontrolo nuligita."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Literuma kontrolo en progreso..."
+msgstr "Literuma kontrolo en progreso…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4167,11 +4162,10 @@ msgid "I&gnore All"
 msgstr "I&gnori Ĉion"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Literumo (ekde Kursoro)..."
+msgstr "Literumo (ekde Kursoro)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4293,32 +4287,28 @@ msgid "S&trikeout"
 msgstr "&Trastreki"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Normala &Koloro..."
+msgstr "Normala &Koloro…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Selektita Koloro..."
+msgstr "&Selektita Koloro…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Fonkoloro..."
+msgstr "&Fonkoloro…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "S&elektita Fonkoloro..."
+msgstr "&Elektita Fonkoloro…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4939,25 +4929,22 @@ msgid "&Theme:"
 msgstr "E&toso:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopii"
+msgstr "&Kopii…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Eksporti..."
+msgstr "Elporti…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importi..."
+msgstr "Enporti…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -5467,10 +5454,10 @@ msgstr ""
 "tr><tr><td>dd</td><td>La tago kiel nombro kun unua nulo (01-31).</td></"
 "tr><tr><td>ddd</td><td>La mallongigita lokalizita tagnomo (ekz. "
 "'Lun'..'Dim').</td></tr><tr><td>dddd</td><td>La longa lokalizita tagnomo "
-"(ekz. 'Lundo'...'Dimanĉo').</td></tr><tr><td>M</td><td>La monato kiel nombro "
+"(ekz. 'Lundo'..'Dimanĉo').</td></tr><tr><td>M</td><td>La monato kiel nombro "
 "sen unua nulo (1-12).</td></tr><tr><td>MM</td><td>La monato kiel nombro kun "
 "unua nulo (01-12).</td></tr><tr><td>MMM</td><td>La mallongigita lokalizita "
-"monata nomo (ekz. 'Jan'...'Dec').</td></tr><tr><td>jj</td><td>La jaro kiel "
+"monata nomo (ekz. 'Jan'..'Dec').</td></tr><tr><td>jj</td><td>La jaro kiel "
 "ducifera nombro (00 -99).</td></tr><tr><td>jjyy</td><td>La jaro kiel "
 "kvarcifera nombro (1752-8000).</td></tr><tr><td>h</td><td>La horo sen unua "
 "nulo (0..23 aŭ 1..12 se montriĝas AM/PM).</td></tr><tr><td>hh</td><td>La "
@@ -6508,12 +6495,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Indent/Labo: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Aliaj"
+msgstr "Aliaj…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6666,11 +6651,10 @@ msgstr ""
 "ĝia ĝusta deŝovnivelo."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Vicigi Sur"
+msgstr "Vicigi &Al…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6853,18 +6837,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Konservi la aktualan dokumenton al disko kun nomo de via elekto."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Konservi kiel kun kodado..."
+msgstr "Konservi Kiel kun Kodado…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Konservi &Kopion kiel..."
+msgstr "Konservi &Kopion Kiel…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6901,11 +6883,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Movi malsupren al la sekva modifita linio."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Agordi Redaktilon..."
+msgstr "&Agordi Redaktilon…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7368,11 +7349,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Ebligu/malŝalti aŭtomatan literumkontrolon"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Ŝanĝi vortaron"
+msgstr "Ŝanĝi Vortaron…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7407,11 +7387,10 @@ msgstr ""
 "sistema poŝo."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "E&ksporti kiel HTML..."
+msgstr "E&ksporti kiel HTML…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7874,11 +7853,10 @@ msgid "Copy"
 msgstr "Kopii"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Fonkoloro..."
+msgstr "Fonkoloro…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7891,8 +7869,7 @@ msgid "Show Window Decorations"
 msgstr "Montri Fenestrajn Dekoraĵojn"
 
 #: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Preni Ekrankopion de Elekto"
@@ -8310,24 +8287,3 @@ msgstr "'%1' %2, Hex %3, Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marko ne agordita: %1"
-
-#~ msgid "Screenshot..."
-#~ msgstr "Ekrankopio..."
-
-#~ msgid "Save..."
-#~ msgstr "Konservi..."
-
-#~ msgid "&Copy..."
-#~ msgstr "&Kopii..."
-
-#~ msgid "Other..."
-#~ msgstr "Alia..."
-
-#~ msgid "&Align On..."
-#~ msgstr "&Alliniigi..."
-
-#~ msgid "Change Dictionary..."
-#~ msgstr "Ŝanĝi vortaron..."
-
-#~ msgid "Show focus frame around editor"
-#~ msgstr "Montri fokusan kadron ĉirkaŭ redaktilo"

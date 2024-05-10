@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-05-08 14:57+0300\n"
+"PO-Revision-Date: 2024-05-09 08:26+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1946,13 +1946,13 @@ msgstr "הצגת &קווי הזחה"
 #: dialogs/textareaappearanceconfigwidget.ui:271
 #, kde-format
 msgid "Counts:"
-msgstr ""
+msgstr "ספירות:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide word count in status bar"
-msgstr ""
+msgstr "הצגת/הסתרת מספר מילים בסרגל המצב"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
 #: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
@@ -1964,7 +1964,7 @@ msgstr "הצגת כמות מילים"
 #: dialogs/textareaappearanceconfigwidget.ui:288
 #, kde-format
 msgid "Show/hide line count in status bar"
-msgstr ""
+msgstr "הצגת/הסתרת מספר שורות בסרגל המצב"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
 #: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
@@ -2004,7 +2004,7 @@ msgstr "גלישה דינמית בסימון גלישת שורות קבוע"
 #: dialogs/textareaappearanceconfigwidget.ui:354
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
-msgstr ""
+msgstr "להתעלם מגבולות מילה בגלישה דינמית"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
 #: dialogs/textareaappearanceconfigwidget.ui:361
@@ -2028,7 +2028,7 @@ msgstr "הזחת קווים גולשים:"
 #: dialogs/textareaappearanceconfigwidget.ui:411
 #, kde-format
 msgid "Don't indent lines wider than:"
-msgstr ""
+msgstr "לא להוסיף הזחה לשורות שאורכן מעל:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:427
@@ -2063,7 +2063,7 @@ msgstr "רענון המסמך אוטומטית"
 #: document/katedocument.cpp:224
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
-msgstr ""
+msgstr "לרענן את המסמך אוטומטית כשהוא נערך בכונן"
 
 #: document/katedocument.cpp:2254
 #, kde-format
@@ -2119,7 +2119,7 @@ msgstr ""
 #: document/katedocument.cpp:2422
 #, kde-format
 msgid "Temporarily raise limit and reload file"
-msgstr ""
+msgstr "להגדיל את המגבלה זמנית ולרענן את הקובץ"
 
 #: document/katedocument.cpp:2425
 #, kde-format
@@ -2311,12 +2311,12 @@ msgstr "&ביטול טעינה"
 #: inputmode/katenormalinputmode.cpp:75
 #, kde-format
 msgid "OVERWRITE"
-msgstr ""
+msgstr "שכתוב"
 
 #: inputmode/katenormalinputmode.cpp:75
 #, kde-format
 msgid "INSERT"
-msgstr ""
+msgstr "כתיבה"
 
 #: inputmode/katenormalinputmodefactory.cpp:29
 #, kde-format
@@ -2351,12 +2351,12 @@ msgstr "VI: שורה חזותית"
 #: inputmode/kateviinputmode.cpp:46
 #, kde-format
 msgid "VI: REPLACE"
-msgstr ""
+msgstr "VI: החלפה"
 
 #: inputmode/kateviinputmode.cpp:146
 #, kde-format
 msgid "vi-mode"
-msgstr ""
+msgstr "מצב vi"
 
 #: inputmode/kateviinputmode.cpp:159
 #, kde-format
@@ -2421,7 +2421,7 @@ msgctxt "ToolTip of the search bar of modes of syntax highlighting"
 msgid ""
 "Search for syntax highlighting modes by language name or file extension (for "
 "example, C++ or .cpp)"
-msgstr ""
+msgstr "חיפוש מצבי הדגשת תחביר לפי שם השפה או סיומת קובץ (למשל: C++‎ או ‎.cpp)"
 
 #: mode/katemodemenulist.cpp:564
 #, kde-format
@@ -2761,13 +2761,13 @@ msgstr "העברת הסמן לתגית תואמת"
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Inwards"
-msgstr ""
+msgstr "בחירת תוכן תגית HTML/XML כלפי פנים"
 
 #: script/data/commands/emmet.js:26
 #, kde-format
 msgctxt "Script command name"
 msgid "Select HTML/XML Tag Contents Outwards"
-msgstr ""
+msgstr "בחירת תוכן תגית HTML/XML כלפי חוץ"
 
 #: script/data/commands/emmet.js:30
 #, kde-format
@@ -2815,7 +2815,7 @@ msgstr "פיצול או צירוף תגית"
 #, kde-format
 msgctxt "Script command name"
 msgid "Evaluate a Simple Math Expression"
-msgstr ""
+msgstr "חישוב ביטוי מתמטי פשוט"
 
 #: script/data/commands/emmet.js:62
 #, kde-format
@@ -6915,7 +6915,7 @@ msgstr "איתור המופע הבא של המילה תחת הסמן והוספ�
 #: view/kateview.cpp:898
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
-msgstr "סימון המופע הנבחר כמדולג."
+msgstr "סימון המופע הנבחר כמדולג"
 
 #: view/kateview.cpp:900
 #, kde-format

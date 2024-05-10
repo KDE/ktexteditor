@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-05-08 12:45+0200\n"
+"PO-Revision-Date: 2024-05-10 00:01+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -7999,8 +7999,7 @@ msgid "Show Window Decorations"
 msgstr "Mostrar decoraciones de las ventanas"
 
 #: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Hacer una captura de pantalla de la selección"

@@ -1261,7 +1261,7 @@ msgstr "关闭文件，丢弃内容。"
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr ""
+msgstr "另存为(&S)…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2421,7 +2421,7 @@ msgstr "模式和文件类型"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr ""
+msgstr "搜索…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3792,7 +3792,7 @@ msgstr "拼写检查已取消。"
 #, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr ""
+msgstr "正在进行拼写检查…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4017,7 +4017,7 @@ msgstr "全部忽略(&G)"
 #, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr ""
+msgstr "拼写检查 (从光标位置开始)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4142,25 +4142,25 @@ msgstr "删除线(&T)"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr ""
+msgstr "正常颜色(&C)…"
 
 #: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr ""
+msgstr "选中内容的颜色(&S)…"
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr ""
+msgstr "背景颜色(&B)…"
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr ""
+msgstr "选中内容的背景颜色(&E)…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4739,7 +4739,7 @@ msgid ""
 "p><p>You can unset the Background and Selected Background colors from the "
 "context menu when appropriate.</p>"
 msgstr ""
-"<p>这个列表将显示当前语法加亮模式的上下文，并且提供编辑的方法。上下文名称反映"
+"<p>这个列表将显示当前语法高亮模式的上下文，并且提供编辑的方法。上下文名称反映"
 "当前样式设置。</p><p>要使用键盘编辑，按<strong>&lt;空格键&gt;</strong>，从弹"
 "出窗口选择一个属性。</p><p>要编辑颜色，点击颜色方块，或者从弹出窗口中选择要编"
 "辑的颜色。</p><p>您可以从相应的弹出菜单取消对背景和选中背景颜色的设置。</p>"
@@ -4768,19 +4768,19 @@ msgstr "主题(&T)："
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr ""
+msgstr "复制(&C)…"
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr ""
+msgstr "导出…"
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr ""
+msgstr "导入…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -4800,7 +4800,7 @@ msgstr "默认文本样式"
 #: syntax/katethemeconfig.cpp:1157
 #, kde-format
 msgid "Highlighting Text Styles"
-msgstr "加亮文本样式"
+msgstr "高亮文本样式"
 
 #: syntax/katethemeconfig.cpp:1169
 #, kde-format
@@ -6288,7 +6288,7 @@ msgstr "缩进/制表符：%1/%2"
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr ""
+msgstr "其他…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6437,7 +6437,7 @@ msgstr "使用此功能可自动缩进当前行，或者将一块文本对齐到
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr ""
+msgstr "对齐于(A)…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6472,7 +6472,7 @@ msgid ""
 "the language's highlighting."
 msgstr ""
 "使用此命令注释掉当前行或者选定的一块文字。<br /><br />单行/多行注释的标记字符"
-"在语法加亮设置中定义。"
+"在语法高亮设置中定义。"
 
 #: view/kateview.cpp:543
 #, kde-format
@@ -6497,7 +6497,7 @@ msgid ""
 "defined within the language's highlighting."
 msgstr ""
 "使用此命令去掉当前行或者选定文字的注释。<br /><br />单行/多行注释的标记字符在"
-"语法加亮设置中定义。"
+"语法高亮设置中定义。"
 
 #: view/kateview.cpp:563
 #, kde-format
@@ -6613,13 +6613,13 @@ msgstr "用您指定的名字将当前文档保存到磁盘。"
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr ""
+msgstr "另存为 (指定编码)…"
 
 #: view/kateview.cpp:660
 #, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr ""
+msgstr "另存为副本(&C)…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6657,7 +6657,7 @@ msgstr "移动到下一个改动的行。"
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr ""
+msgstr "配置编辑器(&C)…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7105,7 +7105,7 @@ msgstr "启用/禁用自动拼写检查"
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr ""
+msgstr "更改词典…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7139,7 +7139,7 @@ msgstr "使用此命令可将当前所选文字作为 HTML 内容复制到系统
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr ""
+msgstr "导出为 HTML(&X)…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7597,7 +7597,7 @@ msgstr "复制"
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr ""
+msgstr "背景颜色…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7610,11 +7610,10 @@ msgid "Show Window Decorations"
 msgstr "显示窗口装饰"
 
 #: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
-msgstr "截图选中的区域"
+msgstr ""
 
 #: view/screenshotdialog.cpp:220
 #, kde-format
@@ -8011,9 +8010,3 @@ msgstr "“%1” %2，十六进制 %3，八进制 %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "标记未设置：%1"
-
-#~ msgid "Screenshot..."
-#~ msgstr "截图..."
-
-#~ msgid "Save..."
-#~ msgstr "保存..."

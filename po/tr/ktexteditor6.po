@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-03-21 20:36+0300\n"
+"PO-Revision-Date: 2024-05-09 19:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1323,11 +1323,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Dosyayı kapatır ve içeriğini atar."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "Fa&rklı Kaydet…"
+msgstr "&Farklı Kaydet…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2536,9 +2535,7 @@ msgid "Modes && Filetypes"
 msgstr "Kipler ve Dosya Türleri"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Ara…"
@@ -3945,9 +3942,7 @@ msgid "Spell check canceled."
 msgstr "Yazım denetimi iptal edildi."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Yazım denetimi sürüyor…"
@@ -4183,8 +4178,7 @@ msgid "I&gnore All"
 msgstr "Tümünü &Yok Say"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
 msgstr "Yazım Denetimi (İmleçten Sonra)…"
@@ -4309,29 +4303,25 @@ msgid "S&trikeout"
 msgstr "&Üzeri Çizili"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "Normal &Renk…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
 msgstr "&Seçili Renk…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "&Arka Plan Rengi…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "&Seçili Arka Plan Rengi…"
@@ -4960,22 +4950,19 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopyala"
+msgstr "Ko&pyala…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Dışa Aktar…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "İçe Aktar…"
@@ -6527,12 +6514,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Girinti/Sekme: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Diğerleri"
+msgstr "Diğer…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6685,11 +6670,10 @@ msgstr ""
 "kendiliğinden girintilemek için bunu kullanın."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Şuna Göre Hizala"
+msgstr "Şuna Göre &Hizala…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6872,15 +6856,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Çalışılan belgeyi seçtiğiniz bir adla diske kaydedin."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Kodlamayla Farklı Kaydet…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "Ko&pyayı Farklı Kaydet…"
@@ -6920,8 +6902,7 @@ msgid "Move downwards to the next modified line."
 msgstr "Önceki değiştirilen satıra aşağı doğru ilerleyin."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "Düzenleyi&ciyi Yapılandır…"
@@ -7392,11 +7373,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Kendiliğinden yazım denetimini etkinleştir/devre dışı bırak"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Sözlüğü değiştir"
+msgstr "Sözlüğü Değiştir…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7430,8 +7410,7 @@ msgstr ""
 "kullanın."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "HTML Olarak Dışa A&ktar…"
@@ -7901,8 +7880,7 @@ msgid "Copy"
 msgstr "Kopyala"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Arka Plan Rengi…"
@@ -7918,8 +7896,7 @@ msgid "Show Window Decorations"
 msgstr "Pencere Dekorasyonlarını Göster"
 
 #: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Seçimin Ekran Görüntüsünü Al"

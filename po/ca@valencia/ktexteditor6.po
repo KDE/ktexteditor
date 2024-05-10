@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-01-25 12:37+0100\n"
+"PO-Revision-Date: 2024-05-09 12:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -175,8 +175,7 @@ msgstr "Plegat de bloc de codi:"
 msgid ""
 "If this option is checked, every new view will display marks for folding."
 msgstr ""
-"Si se selecciona esta opció, cada vista nova mostrarà les marques de plegat "
-"de codi."
+"Si està marcada, cada vista nova mostrarà les marques de plegat de codi."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:35
@@ -191,8 +190,8 @@ msgid ""
 "If checked, hovering over a folded region shows a preview of the folded text "
 "in a popup."
 msgstr ""
-"Si se selecciona esta opció, en passar per damunt d'una regió plegada es "
-"mostrarà una vista prèvia del text plegat en una finestra emergent."
+"Si està marcada, en passar per damunt d'una regió plegada es mostrarà una "
+"vista prèvia del text plegat en una finestra emergent."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:45
@@ -232,9 +231,9 @@ msgid ""
 "the left hand side.</p><p>The icon border shows bookmark signs, for instance."
 "</p>"
 msgstr ""
-"<p>Si se selecciona esta opció, cada vista nova mostrarà una vora per a les "
-"icones en el costat esquerre.</p><p>Per exemple, la vora per a les icones "
-"mostra els punts.</p>"
+"<p>Si està marcada, cada vista nova mostrarà una vora per a les icones en el "
+"costat esquerre.</p><p>Per exemple, la vora per a les icones mostra els "
+"punts.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
@@ -251,8 +250,8 @@ msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
 msgstr ""
-"Si se selecciona esta opció, cada vista nova mostrarà els números de les "
-"línies en el costat esquerre."
+"Si està marcada, cada vista nova mostrarà els números de les línies en el "
+"costat esquerre."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:112
@@ -267,8 +266,8 @@ msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
 msgstr ""
-"Si se selecciona esta opció, es mostrarà un indicador xicotet per a les "
-"línies modificades i les línies guardades en el costat esquerre."
+"Si està marcada, es mostrarà un indicador xicotet per a les línies "
+"modificades i les línies guardades en el costat esquerre."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:122
@@ -289,9 +288,9 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>Si se selecciona esta opció, cada vista nova mostrarà marques en la barra "
-"de desplaçament vertical.</p><p>Per exemple, estes marques mostren els punts."
-"</p>"
+"<p>Si està marcada, cada vista nova mostrarà marques en la barra de "
+"desplaçament vertical.</p><p>Per exemple, estes marques mostren els punts.</"
+"p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:162
@@ -300,8 +299,8 @@ msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
 msgstr ""
-"<p>Si se selecciona esta opció, en passar per damunt la barra de "
-"desplaçament es mostrarà una vista prèvia del text.</p>"
+"<p>Si està marcada, en passar per damunt la barra de desplaçament es "
+"mostrarà una vista prèvia del text.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
@@ -347,8 +346,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
 msgstr ""
-"Si se selecciona esta opció, cada vista nova mostrarà un mapa en miniatura "
-"en la barra de desplaçament vertical."
+"Si està marcada, cada vista nova mostrarà un mapa en miniatura en la barra "
+"de desplaçament vertical."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:227
@@ -369,8 +368,8 @@ msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
 msgstr ""
-"Si se selecciona esta opció, cada vista nova mostrarà un mapa en miniatura "
-"de tot el document en la barra de desplaçament vertical."
+"Si està marcada, cada vista nova mostrarà un mapa en miniatura de tot el "
+"document en la barra de desplaçament vertical."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:266
@@ -459,7 +458,7 @@ msgid ""
 "completion."
 msgstr ""
 "En prémer «Retorn» s'inserirà el text de l'element de compleció seleccionat "
-"en l'editor. Si està desactivada, encara es poden utilitzar la tecla de "
+"en l'editor. Si està marcada, encara es poden utilitzar la tecla de "
 "tabulació o el doble clic per a activar la compleció."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
@@ -532,8 +531,8 @@ msgid ""
 "Show documentation beside completion box. If disabled, documentation can be "
 "shown by pressing Alt key."
 msgstr ""
-"Mostra la documentació al costat del quadro de compleció. Si està "
-"desactivada, la documentació es pot mostrar prement la tecla «Alt»."
+"Mostra la documentació al costat del quadro de compleció. Si està marcada, "
+"la documentació es pot mostrar prement la tecla «Alt»."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/editconfigwidget.ui:22
@@ -574,9 +573,9 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>Si se selecciona esta opció, es dibuixarà una línia vertical a la columna "
-"d'ajust de les paraules, com s'ha definit a les propietats d'<strong>Edició</"
-"strong>.</p>"
+"<p>Si està marcada, es dibuixarà una línia vertical a la columna d'ajust de "
+"les paraules, com s'ha definit a les propietats d'<strong>Edició</strong>.</"
+"p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -895,8 +894,8 @@ msgid ""
 msgstr ""
 "L'amplària del sagnat és el nombre d'espais que s'utilitzen per a sagnar una "
 "línia. Si l'opció <b>Inserix espais en lloc de tabuladors</b> en la secció "
-"<b>Edició</b> està desseleccionada, s'inserirà un caràcter de <b>tabulació</"
-"b> si el sagnat és divisible per l'amplària de la tabulació."
+"<b>Edició</b> està desactivada, s'inserirà un caràcter de <b>tabulació</b> "
+"si el sagnat és divisible per l'amplària de la tabulació."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithSpaces)
 #: dialogs/indentationconfigwidget.ui:97
@@ -947,9 +946,9 @@ msgid ""
 "If this option is disabled, changing the indentation level aligns a line to "
 "a multiple of the width specified in <b>Indentation width</b>."
 msgstr ""
-"Si esta opció està desseleccionada, en canviar el nivell de sagnat, les "
-"línies s'alinearan a un múltiple de l'amplària especificada a <b>Amplària "
-"del sagnat</b>."
+"Si es desmarca esta opció, en canviar el nivell de sagnat, les línies "
+"s'alinearan a un múltiple de l'amplària especificada a <b>Amplària del "
+"sagnat</b>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkKeepExtraSpaces)
 #: dialogs/indentationconfigwidget.ui:186
@@ -964,8 +963,8 @@ msgid ""
 "If this option is selected, pasted code from the clipboard is indented. "
 "Triggering the <b>undo</b>-action removes the indentation."
 msgstr ""
-"Si se selecciona esta opció, se sagnarà el codi apegat des del porta-"
-"retalls. En activar l'acció de <b>desfer</b> s'eliminarà el sagnat."
+"Si es marca esta opció, se sagnarà el codi apegat des del porta-retalls. En "
+"activar l'acció de <b>desfer</b> s'eliminarà el sagnat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIndentPaste)
 #: dialogs/indentationconfigwidget.ui:196
@@ -987,9 +986,8 @@ msgid ""
 "indentation level if the cursor is located in the leading blank space of a "
 "line."
 msgstr ""
-"Si se selecciona esta opció, la tecla de <b>Retrocés</b> disminuirà el "
-"nivell de sagnat si el cursor està ubicat en l'espai en blanc inicial d'una "
-"línia."
+"Si es marca esta opció, la tecla de <b>Retrocés</b> disminuirà el nivell de "
+"sagnat si el cursor està ubicat en l'espai en blanc inicial d'una línia."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceUnindents)
 #: dialogs/indentationconfigwidget.ui:215
@@ -1018,7 +1016,7 @@ msgstr ""
 "<p>Acció de la tecla de tabulació (si no existix cap selecció) <a href=\"Si "
 "voleu que el <b>tabulador</b> alinee la línia actual al bloc de codi actual "
 "com en Emacs, convertiu el <b>tabulador</b> en una drecera cap a l'acció "
-"<b>Format del sagnat</b>.\"><span>Més...</span></a></p></body></html>"
+"<b>Format del sagnat</b>.\"><span>Més…</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1029,10 +1027,10 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
-"Si se selecciona esta opció, la tecla de <b>tabulació</b> sempre inserirà "
-"espais en blanc fins a la posició següent de tabulació. Si l'opció "
-"<b>Inserix espais en lloc de tabuladors</b> de la secció <b>Edició</b> està "
-"seleccionada, s'inseriran espais, altrament s'inserirà una única tabulació."
+"Si es marca esta opció, la tecla de <b>tabulació</b> sempre inserirà espais "
+"en blanc fins a la posició següent de tabulació. Si l'opció <b>Inserix "
+"espais en lloc de tabuladors</b> de la secció <b>Edició</b> està activada, "
+"s'inseriran espais, altrament s'inserirà una única tabulació."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:279
@@ -1048,9 +1046,8 @@ msgid ""
 "line by the number of character positions specified in <b>Indentation width</"
 "b>."
 msgstr ""
-"Si se selecciona esta opció, la tecla de <b>tabulació</b> sempre sagnarà la "
-"línia actual amb el nombre de posicions indicades a <b>Amplària del sagnat</"
-"b>."
+"Si es marca esta opció, la tecla de <b>tabulació</b> sempre sagnarà la línia "
+"actual amb el nombre de posicions indicades a <b>Amplària del sagnat</b>."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:289
@@ -1073,16 +1070,16 @@ msgid ""
 "b> is enabled, spaces are inserted; otherwise, a single tabulator is "
 "inserted."
 msgstr ""
-"Si se selecciona esta opció, la tecla de <b>tabulació</b> sagnarà la línia "
-"actual o avançarà fins a la posició de tabulació següent.<p> Si el punt "
-"d'inserció està en el primer caràcter no en blanc o abans de la línia, o hi "
-"ha una selecció, la línia actual se sagnarà en el nombre de posicions "
-"indicades a <b>Amplària del sagnat</b>.<p> Si el punt d'inserció està "
-"després del primer caràcter no en blanc de la línia i no hi ha cap selecció, "
-"s'inserirà un espai en blanc de manera que s'arribe a la posició de la "
-"tabulació següent: si l'opció <b>Inserix espais en lloc de tabuladors</b> de "
-"la secció <b>Edició</b> està seleccionada, s'inseriran espais. Altrament, "
-"s'inserirà una única tabulació."
+"Si es marca esta opció, la tecla de <b>tabulació</b> sagnarà la línia actual "
+"o avançarà fins a la posició de tabulació següent.<p> Si el punt d'inserció "
+"està en el primer caràcter no en blanc o abans de la línia, o hi ha una "
+"selecció, la línia actual se sagnarà en el nombre de posicions indicades a "
+"<b>Amplària del sagnat</b>.<p> Si el punt d'inserció està després del primer "
+"caràcter no en blanc de la línia i no hi ha cap selecció, s'inserirà un "
+"espai en blanc de manera que s'arribe a la posició de la tabulació següent: "
+"si l'opció <b>Inserix espais en lloc de tabuladors</b> de la secció "
+"<b>Edició</b> està activada, s'inseriran espais. Altrament, s'inserirà una "
+"única tabulació."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:299
@@ -1160,7 +1157,7 @@ msgstr "Cmd+Ctrl"
 #: dialogs/katedialogs.cpp:475
 #, kde-format
 msgid "Text Navigation"
-msgstr "Navegació pel text"
+msgstr "Navegueu pel text"
 
 #: dialogs/katedialogs.cpp:577
 #, kde-format
@@ -1340,11 +1337,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Tanca el fitxer i descarta el seu contingut."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "Guar&da com a..."
+msgstr "Guar&da com a…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1401,9 +1397,9 @@ msgid ""
 "whitespace and go to the start of a line's text. The same applies for the "
 "end key."
 msgstr ""
-"Quan se selecciona, en prémer la tecla d'inici el cursor ignorarà els espais "
-"en blanc i anirà fins al començament d'una línia de text. El mateix s'aplica "
-"a la tecla de final."
+"Quan es marca, en prémer la tecla d'inici el cursor ignorarà els espais en "
+"blanc i anirà fins al començament d'una línia de text. El mateix s'aplica a "
+"la tecla de final."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkSmartHome)
 #: dialogs/navigationconfigwidget.ui:38
@@ -1553,8 +1549,8 @@ msgid ""
 "If this option is enabled, backups for local files will be created when "
 "saving."
 msgstr ""
-"Si se selecciona esta opció, en guardar es crearan còpies de seguretat dels "
-"fitxers locals."
+"Si està marcada, en guardar es crearan còpies de seguretat dels fitxers "
+"locals."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:51
@@ -1569,8 +1565,8 @@ msgid ""
 "If this option is enabled, backups for remote files will be created when "
 "saving."
 msgstr ""
-"Si se selecciona esta opció, en guardar es crearan còpies de seguretat dels "
-"fitxers remots."
+"Si està marcada, en guardar es crearan còpies de seguretat dels fitxers "
+"remots."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:61
@@ -1749,9 +1745,9 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
-"Si se selecciona esta opció, l'editor detectarà automàticament el tipus del "
-"final de línia. El primer tipus per al final de línia que es trobe "
-"s'utilitzarà en tot el fitxer."
+"Si està marcada, l'editor detectarà automàticament el tipus del final de "
+"línia. El primer tipus per al final de línia que es trobe s'utilitzarà en "
+"tot el fitxer."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -1998,7 +1994,7 @@ msgid ""
 "If this is enabled, the range between the selected matching brackets will be "
 "highlighted."
 msgstr ""
-"Si se selecciona, es ressaltarà l'interval entre els parèntesis emparellats "
+"Si està marcada, es ressaltarà l'interval entre els parèntesis emparellats "
 "seleccionats."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWholeBracketExpression)
@@ -2047,7 +2043,7 @@ msgstr "Flaix dels parèntesis emparellats"
 msgid ""
 "If this is enabled, matching brackets are animated for better visibility."
 msgstr ""
-"Si se selecciona, els parèntesis emparellats s'animaran per a una millor "
+"Si està marcada, els parèntesis emparellats s'animaran per a una millor "
 "visibilitat."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAnimateBracketMatching)
@@ -2065,7 +2061,7 @@ msgid ""
 "If this is enabled, the editor will display vertical lines to help identify "
 "indent lines."
 msgstr ""
-"Si se selecciona, l'editor mostrarà línies verticals per a ajudar a "
+"Si està marcada, l'editor mostrarà línies verticals per a ajudar a "
 "identificar el sagnat de les línies."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
@@ -2113,7 +2109,7 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
-"Quan se selecciona esta opció, la vista de l'editor plegarà\n"
+"Quan es marca esta opció, la vista de l'editor plegarà\n"
 "automàticament els blocs de comentaris que comencen a la primera\n"
 "línia del document. Açò és útil per a ocultar les capçaleres de la\n"
 "llicència que normalment es col·loquen al començament d'un fitxer."
@@ -2571,12 +2567,10 @@ msgid "Modes && Filetypes"
 msgstr "Modes i tipus de fitxer"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Busca..."
+msgstr "Busca…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -2638,7 +2632,7 @@ msgid ""
 "<p>If enabled, line numbers will be printed on the left side of the page(s)."
 "</p>"
 msgstr ""
-"<p>Si se selecciona, els números de línia s'imprimiran sobre el costat "
+"<p>Si està marcada, els números de línia s'imprimiran sobre el costat "
 "esquerre de les pàgines.</p>"
 
 #: printing/printconfigwidgets.cpp:56
@@ -2743,7 +2737,7 @@ msgstr "<p>Format del peu de la pàgina. S'accepten les etiquetes següents:</p>
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "Afig un text variable..."
+msgstr "Afig un text variable…"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -2851,7 +2845,7 @@ msgid ""
 "<p>If enabled, the background color of the editor will be used.</p><p>This "
 "may be useful if your color theme is designed for a dark background.</p>"
 msgstr ""
-"<p>Si se selecciona, s'emprarà el color de fons de l'editor.</p><p>Açò pot "
+"<p>Si està marcada, s'emprarà el color de fons de l'editor.</p><p>Açò pot "
 "ser-vos útil si el tema de color està dissenyat per a un fons fosc.</p>"
 
 #: printing/printconfigwidgets.cpp:552
@@ -2861,7 +2855,7 @@ msgid ""
 "the contents of each page. The Header and Footer will be separated from the "
 "contents with a line as well.</p>"
 msgstr ""
-"<p>Si se selecciona, es dibuixarà un quadro al voltant del contingut de cada "
+"<p>Si està marcada, es dibuixarà un quadro al voltant del contingut de cada "
 "pàgina amb les propietats a continuació. La capçalera i el peu seran "
 "separats del contingut amb una línia.</p>"
 
@@ -3145,7 +3139,7 @@ msgstr "Mou el cursor fins al sagnat anterior que coincidisca"
 #, kde-format
 msgctxt "Script command category"
 msgid "Navigation"
-msgstr "Navegació"
+msgstr "Navegueu"
 
 #: script/data/commands/jumpMatchingIndent.js:14
 #, kde-format
@@ -3605,7 +3599,7 @@ msgstr "No s'ha trobat l'ordre: %1"
 #: search/katesearchbar.cpp:74
 #, kde-format
 msgid "Add..."
-msgstr "Afig..."
+msgstr "Afig…"
 
 #: search/katesearchbar.cpp:299
 #, kde-format
@@ -3991,12 +3985,10 @@ msgid "Spell check canceled."
 msgstr "S'ha cancel·lat la verificació ortogràfica."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Verificació ortogràfica en curs..."
+msgstr "Verificació ortogràfica en curs…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4231,11 +4223,10 @@ msgid "I&gnore All"
 msgstr "I&gnora-ho tot"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Ortografia (des del cursor)..."
+msgstr "Ortografia (des del cursor)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4357,32 +4348,28 @@ msgid "S&trikeout"
 msgstr "Ra&tllat"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Color &normal..."
+msgstr "Color &normal…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Color &seleccionat..."
+msgstr "Color &seleccionat…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Color de fons..."
+msgstr "&Color de fons…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Color de fons s&eleccionat..."
+msgstr "Color de fons s&eleccionat…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -5013,25 +5000,22 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Copia"
+msgstr "&Copia…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Exporta..."
+msgstr "Exporta…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importa..."
+msgstr "Importa…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -5257,8 +5241,8 @@ msgid ""
 "p><p>Possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
-"<p>set-indent-pasted-text <b>enable</b></p><p>Si se selecciona, el sagnat "
-"del text apegat del porta-retalls s'ajustarà utilitzant el sagnat actual.</"
+"<p>set-indent-pasted-text <b>enable</b></p><p>Si està marcada, el sagnat del "
+"text apegat del porta-retalls s'ajustarà utilitzant el sagnat actual.</"
 "p><p>Els valors possibles de cert: 1, on, true<br/>Valors possibles de fals: "
 "0, off, false</p>"
 
@@ -5283,7 +5267,7 @@ msgid ""
 "spaces as you type.</p><p>Possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
-"<p>set-replace-tab <b>enable</b></p><p>Si se selecciona, les tabulacions se "
+"<p>set-replace-tab <b>enable</b></p><p>Si està marcada, les tabulacions se "
 "substituïxen per espais com si es teclejaren.</p><p>Els valors possibles de "
 "cert: 1 on true<br/>Valors possibles de fals: 0 off false</p>"
 
@@ -5295,7 +5279,7 @@ msgid ""
 "whitespace will be visualized by a small dot.</p><p>Possible true values: 1 "
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-show-tabs <b>enable</b></p><p>Si se selecciona, els caràcters TAB i "
+"<p>set-show-tabs <b>enable</b></p><p>Si està marcada, els caràcters TAB i "
 "els espais en blanc del final es visualitzaran com un punt xicotet.</"
 "p><p>Els valors possibles de cert: 1 on true<br/>Valors possibles de fals: 0 "
 "off false</p>"
@@ -5407,10 +5391,10 @@ msgid ""
 "replaced with whitespace whenever the document is saved.</p><p> possible "
 "true values: 1 on true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-replace-tabs-save <b>enable</b></p><p>Quan se selecciona, els "
-"tabuladors se substituiran per espais en blanc sempre que el document es "
-"guarde.</p><p>Els valors possibles de cert: 1 on true<br/>Valors possibles "
-"de fals: 0 off false</p>"
+"<p>set-replace-tabs-save <b>enable</b></p><p>Quan es marca, els tabuladors "
+"se substituiran per espais en blanc sempre que el document es guarde.</"
+"p><p>Els valors possibles de cert: 1 on true<br/>Valors possibles de fals: 0 "
+"off false</p>"
 
 #: utils/katecmds.cpp:181
 #, kde-format
@@ -5439,7 +5423,7 @@ msgid ""
 "visualized by a vertical dotted line.</p><p> possible true values: 1 on "
 "true<br/>possible false values: 0 off false</p>"
 msgstr ""
-"<p>set-show-indent <b>enable</b></p><p>Si se selecciona, el sagnat es veurà "
+"<p>set-show-indent <b>enable</b></p><p>Si està marcada, el sagnat es veurà "
 "com una línia puntejada vertical.</p><p>Els valors possibles de cert: 1 on "
 "true<br/>Valors possibles de fals: 0 off false</p>"
 
@@ -5685,7 +5669,7 @@ msgstr "Matt Newell"
 #: utils/kateglobal.cpp:115
 #, kde-format
 msgid "Testing, ..."
-msgstr "Proves..."
+msgstr "Proves…"
 
 #: utils/kateglobal.cpp:116
 #, kde-format
@@ -5765,7 +5749,7 @@ msgstr "Mirko Stocker"
 #: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Various bugfixes"
-msgstr "Diverses correccions d'errors"
+msgstr "Diverses esmenes d'errors"
 
 #: utils/kateglobal.cpp:126
 #, kde-format
@@ -6287,8 +6271,8 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
-"Activeu si en prémer «Retorn» s'inserirà l'element seleccionat de compleció "
-"automàtica."
+"Marqueu-la si en prémer «Retorn» s'inserirà l'element seleccionat de "
+"compleció automàtica."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -6603,12 +6587,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Sagnat/Tabulació: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Altres"
+msgstr "Altres…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6763,11 +6745,10 @@ msgstr ""
 "al nivell de sagnat adequat."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Alinea a"
+msgstr "&Alinea a…"
 
 # skip-rule: t-2p_sp,t-pu_desp
 #: view/kateview.cpp:524
@@ -6952,18 +6933,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Guarda el document actual al disc, amb un nom de la vostra elecció."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Anomena i guarda amb la codificació..."
+msgstr "Anomena i guarda amb la codificació…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Anomena i guarda la &còpia..."
+msgstr "Anomena i guarda la &còpia…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -7000,11 +6979,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Mou cap avall fins a la línia modificada següent."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Configura l'editor..."
+msgstr "&Configura l'editor…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7130,9 +7108,9 @@ msgid ""
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not changed."
 msgstr ""
-"Si se selecciona esta opció, les línies de text s'ajustaran a la vora de la "
-"vista en la pantalla.<br /><br />Açò només és una opció de visualització, i "
-"vol dir que el document no canviarà."
+"Si està marcada, les línies de text s'ajustaran a la vora de la vista en la "
+"pantalla.<br /><br />Açò només és una opció de visualització, i vol dir que "
+"el document no canviarà."
 
 #: view/kateview.cpp:767
 #, kde-format
@@ -7171,8 +7149,8 @@ msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
 msgstr ""
-"Si se selecciona esta opció, les línies de text s'ajustaran a la columna "
-"definida en les propietats d'edició."
+"Si està marcada, les línies de text s'ajustaran a la columna definida en les "
+"propietats d'edició."
 
 #: view/kateview.cpp:784
 #, kde-format
@@ -7482,11 +7460,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Activa o desactiva la verificació automàtica de l'ortografia"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Canvia el diccionari"
+msgstr "Canvia el diccionari…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7521,11 +7498,10 @@ msgstr ""
 "en el porta-retalls del sistema."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "E&xporta com a HTML..."
+msgstr "E&xporta com a HTML…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7998,11 +7974,10 @@ msgid "Copy"
 msgstr "Copia"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Color de fons..."
+msgstr "Color de fons…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -8015,8 +7990,7 @@ msgid "Show Window Decorations"
 msgstr "Mostra la decoració de les finestres"
 
 #: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Pren una captura de pantalla de la selecció"
@@ -8285,9 +8259,9 @@ msgid ""
 "example: Ctrl+R will redo, and override the standard action (showing the "
 "search and replace dialog)."
 msgstr ""
-"Quan se selecciona, les ordres de vi substituiran les ordres integrades de "
-"Kate. Per exemple: «Ctrl+R» refarà i substituirà l'acció estàndard (mostra "
-"el diàleg de busca i substitució)."
+"Quan es marca, les ordres de vi substituïxen les ordres integrades de Kate. "
+"Per exemple: «Ctrl+R» refarà i substituirà l'acció estàndard (mostra el "
+"diàleg de busca i substitució)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkViCommandsOverride)
 #: vimode/config/configwidget.ui:38
@@ -8437,21 +8411,3 @@ msgstr "«%1» %2,  Hex %3,  Octal %4"
 #, kde-format
 msgid "Mark not set: %1"
 msgstr "Marca no establida: %1"
-
-#~ msgid "Screenshot..."
-#~ msgstr "Captura de pantalla..."
-
-#~ msgid "Save..."
-#~ msgstr "Guarda..."
-
-#~ msgid "&Copy..."
-#~ msgstr "&Copia..."
-
-#~ msgid "Other..."
-#~ msgstr "Altres..."
-
-#~ msgid "&Align On..."
-#~ msgstr "&Alinea a..."
-
-#~ msgid "Change Dictionary..."
-#~ msgstr "Canvia el diccionari..."

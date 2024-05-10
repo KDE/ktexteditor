@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-01-25 18:44+0100\n"
+"PO-Revision-Date: 2024-05-09 11:29+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1324,11 +1324,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Claude le file, abandonante su contento."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Salveguarda como..."
+msgstr "&Salveguarda como…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2564,12 +2563,10 @@ msgid "Modes && Filetypes"
 msgstr "Modos && Typos de File"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Il cerca ..."
+msgstr "Cerca..."
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3977,9 +3974,7 @@ msgid "Spell check canceled."
 msgstr "Controlo Orthographic cancellate."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Controlo Orthographic in progresso ..."
@@ -4215,11 +4210,10 @@ msgid "I&gnore All"
 msgstr "I&gnora omnes"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Orthographia (ex Cursor)..."
+msgstr "Orthographia (ex cursor)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4341,29 +4335,25 @@ msgid "S&trikeout"
 msgstr "S&trikeout"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "&Color normal..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Color &selectionate ..."
+msgstr "Color &Selectionate  ..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Color de &fundo ..."
+msgstr "Color de &Fundo..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "Color de fundo s&electionate ..."
@@ -4997,25 +4987,22 @@ msgid "&Theme:"
 msgstr "&Thema"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Copia"
+msgstr "&Copia…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Exporta ..."
+msgstr "Exporta…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importa..."
+msgstr "Importa…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6584,12 +6571,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Indenta/Tab: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Altere"
+msgstr "Altere…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6746,11 +6731,10 @@ msgstr ""
 "nivello de indentation"
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Alinea Sur"
+msgstr "&Alinea sur …"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6935,18 +6919,16 @@ msgstr ""
 "Salveguarda le documento currente al disco, con un nomine que tu selige."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Salveguarda como con codifica..."
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Salveguarda &Copia como..."
+msgstr "Salveguarda &Copia como…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6983,11 +6965,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Move a basso al proxime rango modificate."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Configura Editor..."
+msgstr "&Configura Editor…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7459,11 +7440,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Habilita/Dishabilita le controlo orthographic automatic "
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Cambia dictionario"
+msgstr "Cambia Dictionario..."
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7498,8 +7478,7 @@ msgstr ""
 "le area de transferentia."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&xporta como HTML..."
@@ -7970,11 +7949,10 @@ msgid "Copy"
 msgstr "Copia"
 
 #: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Color de fundo..."
+msgstr "Color de fundo…"
 
 #: view/screenshotdialog.cpp:142
 #, kde-format
@@ -7987,8 +7965,7 @@ msgid "Show Window Decorations"
 msgstr "Monstra Dcorationes de Fenestra"
 
 #: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Prende instantanee de schermo de selection"
