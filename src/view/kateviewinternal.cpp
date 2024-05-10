@@ -1451,7 +1451,7 @@ void KateViewInternal::moveChar(KateViewInternal::Bias bias, bool sel)
             c.pos->setPosition(BoundedCursor(this, oldPos) += bias);
         }
         const auto newPos = c.pos->toCursor();
-        multiCursors.push_back({oldPos, newPos});
+        multiCursors.push_back({.oldPos=oldPos, .newPos=newPos});
         // We only need to do this if cursors were in first or last line
         if (!shouldEnsureUniqueCursors) {
             shouldEnsureUniqueCursors = newPos.line() == 0 || newPos.line() == lastLine;
@@ -1534,7 +1534,7 @@ void KateViewInternal::wordPrev(bool sel)
         auto oldPos = cursor.cursor();
         auto newCursorPos = wordPrevious(cursor.cursor());
         cursor.pos->setPosition(newCursorPos);
-        cursorsToUpdate.push_back({oldPos, newCursorPos});
+        cursorsToUpdate.push_back({.oldPos=oldPos, .newPos=newCursorPos});
     }
 
     // update primary cursor
@@ -1597,7 +1597,7 @@ void KateViewInternal::wordNext(bool sel)
         auto oldPos = cursor.cursor();
         auto newCursorPos = nextWord(cursor.cursor());
         cursor.pos->setPosition(newCursorPos);
-        cursorsToUpdate.push_back({oldPos, newCursorPos});
+        cursorsToUpdate.push_back({.oldPos=oldPos, .newPos=newCursorPos});
     }
 
     // update primary cursor
@@ -1664,7 +1664,7 @@ void KateViewInternal::home(bool sel)
         // These will end up in same place so just remove
         auto newPos = moveCursorToLineStart(oldPos);
         c.pos->setPosition(newPos);
-        cursorsToUpdate.push_back({oldPos, newPos});
+        cursorsToUpdate.push_back({.oldPos=oldPos, .newPos=newPos});
     }
 
     // Primary cursor
@@ -1724,7 +1724,7 @@ void KateViewInternal::end(bool sel)
         // These will end up in same place so just remove
         auto newPos = moveCursorToLineEnd(oldPos);
         c.pos->setPosition(newPos);
-        cursorsToUpdate.push_back({oldPos, newPos});
+        cursorsToUpdate.push_back({.oldPos=oldPos, .newPos=newPos});
     }
 
     auto newPos = moveCursorToLineEnd(m_cursor);

@@ -208,5 +208,5 @@ KateIndentDetecter::Result KateIndentDetecter::detect(int defaultTabSize, bool d
         }
     }
 
-    return {tabSize, insertSpaces};
+    return {.indentWidth=tabSize, .indentUsingSpaces=insertSpaces};
 }

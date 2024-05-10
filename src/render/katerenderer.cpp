@@ -1349,7 +1349,7 @@ void KateRenderer::layoutLine(KateLineLayout *lineLayout, int maxwidth, bool cac
                 const qreal caretWidth = caretStyle() == KTextEditor::caretStyles::Line ? 2.0 : 0.0;
                 text_char_format.setFontLetterSpacing(width + caretWidth);
                 text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
-                decorations.append(QTextLayout::FormatRange{column - 1, 1, text_char_format});
+                decorations.append(QTextLayout::FormatRange{.start=column - 1, .length=1, .format=text_char_format});
             }
         }
     }

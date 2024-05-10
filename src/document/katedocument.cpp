@@ -2128,7 +2128,7 @@ bool KTextEditor::DocumentPrivate::handleMarkClick(int line)
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        Q_EMIT markClicked(this, KTextEditor::Mark{line, 0}, handled);
+        Q_EMIT markClicked(this, KTextEditor::Mark{.line=line, .type=0}, handled);
     } else {
         Q_EMIT markClicked(this, *mark, handled);
     }
@@ -2141,7 +2141,7 @@ bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint positi
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        Q_EMIT markContextMenuRequested(this, KTextEditor::Mark{line, 0}, position, handled);
+        Q_EMIT markContextMenuRequested(this, KTextEditor::Mark{.line=line, .type=0}, position, handled);
     } else {
         Q_EMIT markContextMenuRequested(this, *mark, position, handled);
     }
@@ -4847,7 +4847,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     QVarLengthArray<KateDocumentTmpMark> tmp;
     tmp.reserve(m_marks.size());
     std::transform(m_marks.cbegin(), m_marks.cend(), std::back_inserter(tmp), [this](KTextEditor::Mark *mark) {
-        return KateDocumentTmpMark{line(mark->line), *mark};
+        return KateDocumentTmpMark{.line=line(mark->line), .mark=*mark};
     });
 
     // Remember some settings which may changed at reload

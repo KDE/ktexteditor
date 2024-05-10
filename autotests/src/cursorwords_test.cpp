@@ -35,7 +35,7 @@ DocAndView createDocAndView(const QString &text, int line, int column)
     auto view = new ViewPrivate(doc, nullptr);
     doc->setText(text);
     view->setCursorPosition({line, column});
-    return {doc, view};
+    return {.doc=doc, .view=view};
 }
 
 CursorWordsTest::CursorWordsTest(QObject *parent)

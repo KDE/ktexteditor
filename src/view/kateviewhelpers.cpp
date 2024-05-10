@@ -489,7 +489,7 @@ void KateScrollBar::getCharColorRanges(const QList<Kate::TextLine::Attribute> &a
                 styleFound = true;
                 int startCol = range->start().column();
                 int endCol = range->end().column();
-                ranges << ColumnRangeWithColor{getPen(color), startCol, endCol};
+                ranges << ColumnRangeWithColor{.penIndex=getPen(color), .startColumn=startCol, .endColumn=endCol};
                 i = endCol;
                 break;
             }
@@ -512,7 +512,7 @@ void KateScrollBar::getCharColorRanges(const QList<Kate::TextLine::Attribute> &a
                 QBrush color = m_view->renderer()->attribute(attr.attributeValue)->foreground();
                 int startCol = attr.offset;
                 int endCol = attr.offset + attr.length;
-                ranges << ColumnRangeWithColor{getPen(color), startCol, endCol};
+                ranges << ColumnRangeWithColor{.penIndex=getPen(color), .startColumn=startCol, .endColumn=endCol};
                 i = endCol;
             }
         }

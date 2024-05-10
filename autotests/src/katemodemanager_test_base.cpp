@@ -37,70 +37,70 @@ struct FileTypeDataRow {
 //  2) used the second, not first, definition/fileType name in the qrpg*.tt row because
 //     "ILERPG" < "TT2" in KSyntaxHighlighting but "Sources/ILERPG" > "Markup/TT2" in KTextEditor.
 constexpr FileTypeDataRow fileTypesForFileNames[] = {
-    {"empty", "", ""},
+    {.dataTag="empty", .m_inputString="", .m_fileTypeName=""},
 
-    {"*.tar.gz", "noMatch.tar.gz", ""},
-    {"No match", "a_random#filename", ""},
-    {"Long path, no match", "/this/is/a/moderately/long/path/to/no-match", ""},
-    {"Prefix in dir name", "Kconfig/no_match", ""},
+    {.dataTag="*.tar.gz", .m_inputString="noMatch.tar.gz", .m_fileTypeName=""},
+    {.dataTag="No match", .m_inputString="a_random#filename", .m_fileTypeName=""},
+    {.dataTag="Long path, no match", .m_inputString="/this/is/a/moderately/long/path/to/no-match", .m_fileTypeName=""},
+    {.dataTag="Prefix in dir name", .m_inputString="Kconfig/no_match", .m_fileTypeName=""},
 
-    {"*.qml", "/bla/foo.qml", "QML"},
-    {"*.frag", "flat.frag", "GLSL"},
-    {"*.md", "highPriority.md", "Markdown"},
-    {"*.octave", "lowPriority.octave", "Octave"},
-    {"*.hats", "sameLastLetterPattern.hats", "ATS"},
+    {.dataTag="*.qml", .m_inputString="/bla/foo.qml", .m_fileTypeName="QML"},
+    {.dataTag="*.frag", .m_inputString="flat.frag", .m_fileTypeName="GLSL"},
+    {.dataTag="*.md", .m_inputString="highPriority.md", .m_fileTypeName="Markdown"},
+    {.dataTag="*.octave", .m_inputString="lowPriority.octave", .m_fileTypeName="Octave"},
+    {.dataTag="*.hats", .m_inputString="sameLastLetterPattern.hats", .m_fileTypeName="ATS"},
 
-    {"*.c", "test.c", "C"},
-    {"*.fs", "test.fs", "FSharp"},
-    {"*.m", "/bla/foo.m", "Objective-C"},
+    {.dataTag="*.c", .m_inputString="test.c", .m_fileTypeName="C"},
+    {.dataTag="*.fs", .m_inputString="test.fs", .m_fileTypeName="FSharp"},
+    {.dataTag="*.m", .m_inputString="/bla/foo.m", .m_fileTypeName="Objective-C"},
 
-    {"Makefile", "Makefile", "Makefile"},
-    {"Path to Makefile", "/some/path/to/Makefile", "Makefile"},
-    {"Makefile.*", "Makefile.am", "Makefile"},
+    {.dataTag="Makefile", .m_inputString="Makefile", .m_fileTypeName="Makefile"},
+    {.dataTag="Path to Makefile", .m_inputString="/some/path/to/Makefile", .m_fileTypeName="Makefile"},
+    {.dataTag="Makefile.*", .m_inputString="Makefile.am", .m_fileTypeName="Makefile"},
 
-    {"not-Makefile.dic", "not-Makefile.dic", "Hunspell Dictionary File"},
-    {"*qmakefile.cpp", "test_qmakefile.cpp", "C++"},
-    {"*_makefile.mm", "bench_makefile.mm", "Objective-C++"},
+    {.dataTag="not-Makefile.dic", .m_inputString="not-Makefile.dic", .m_fileTypeName="Hunspell Dictionary File"},
+    {.dataTag="*qmakefile.cpp", .m_inputString="test_qmakefile.cpp", .m_fileTypeName="C++"},
+    {.dataTag="*_makefile.mm", .m_inputString="bench_makefile.mm", .m_fileTypeName="Objective-C++"},
 
-    {"xorg.conf", "/etc/literal-pattern/xorg.conf", "x.org Configuration"},
-    {".profile", "2-literal-patterns/.profile", "Bash"},
+    {.dataTag="xorg.conf", .m_inputString="/etc/literal-pattern/xorg.conf", .m_fileTypeName="x.org Configuration"},
+    {.dataTag=".profile", .m_inputString="2-literal-patterns/.profile", .m_fileTypeName="Bash"},
 
-    {"Config.*", "Config.beginning", "Kconfig"},
-    {"usr.libexec.*", "usr.libexec.", "AppArmor Security Profile"},
-    {"Jam*", "Jam-beginning-no-dot", "Jam"},
-    {"usr.li-*.ch", "usr.li-many-partial-prefix-matches.ch", "xHarbour"},
-    {"QRPG*.*", "QRPG1u4[+.unusual", "ILERPG"},
+    {.dataTag="Config.*", .m_inputString="Config.beginning", .m_fileTypeName="Kconfig"},
+    {.dataTag="usr.libexec.*", .m_inputString="usr.libexec.", .m_fileTypeName="AppArmor Security Profile"},
+    {.dataTag="Jam*", .m_inputString="Jam-beginning-no-dot", .m_fileTypeName="Jam"},
+    {.dataTag="usr.li-*.ch", .m_inputString="usr.li-many-partial-prefix-matches.ch", .m_fileTypeName="xHarbour"},
+    {.dataTag="QRPG*.*", .m_inputString="QRPG1u4[+.unusual", .m_fileTypeName="ILERPG"},
 
-    {"*patch", "no-dot-before-ending~patch", "Diff"},
-    {"*.cmake.in", "two-dots-after-asterisk.cmake.in", "CMake"},
-    {"*.html.mst", "two-dots-priority!=0.html.mst", "Mustache/Handlebars (HTML)"},
+    {.dataTag="*patch", .m_inputString="no-dot-before-ending~patch", .m_fileTypeName="Diff"},
+    {.dataTag="*.cmake.in", .m_inputString="two-dots-after-asterisk.cmake.in", .m_fileTypeName="CMake"},
+    {.dataTag="*.html.mst", .m_inputString="two-dots-priority!=0.html.mst", .m_fileTypeName="Mustache/Handlebars (HTML)"},
 
-    {"*.desktop.cmake", "2_suffixes.desktop.cmake", ".desktop"},
-    {"*.per.err", "2_suffixes-but-one-a-better-match.per.err", "4GL"},
-    {"*.xml.eex", "2_suffixes-one-lang.xml.eex", "Elixir"},
-    {"fishd.*.fish", "fishd.prefix,suffix=one-lang.fish", "Fish"},
+    {.dataTag="*.desktop.cmake", .m_inputString="2_suffixes.desktop.cmake", .m_fileTypeName=".desktop"},
+    {.dataTag="*.per.err", .m_inputString="2_suffixes-but-one-a-better-match.per.err", .m_fileTypeName="4GL"},
+    {.dataTag="*.xml.eex", .m_inputString="2_suffixes-one-lang.xml.eex", .m_fileTypeName="Elixir"},
+    {.dataTag="fishd.*.fish", .m_inputString="fishd.prefix,suffix=one-lang.fish", .m_fileTypeName="Fish"},
 
-    {"usr.bin.*.ftl", "usr.bin.heterogenousPatternMatch.ftl", "AppArmor Security Profile"},
-    {"Doxyfile.*.pro", "Doxyfile.heterogenous.Pattern-Match.pro", "QMake"},
-    {"Kconfig*.ml", "KconfigHeterogenous_pattern_match.ml", "Objective Caml"},
-    {"snap-confine.*.html.rac", "snap-confine.2.-higher-priority.html.rac", "Mustache/Handlebars (HTML)"},
-    {"file_contexts_*.fq.gz", "file_contexts_prefix-higher-priority.fq.gz", "SELinux File Contexts"},
-    {"QRPG*.ninja", "QRPG.ninja", "Ninja"},
-    {"qrpg*.tt", "qrpgTwoUnusualPatterns.tt", "TT2"},
-    {"qrpg*.cl", "qrpg$heterogenous~pattern&match.cl", "OpenCL"},
-    {".gitignore*.tt*.textile", ".gitignoreHeterogenous3.tt.textile", "Textile"},
+    {.dataTag="usr.bin.*.ftl", .m_inputString="usr.bin.heterogenousPatternMatch.ftl", .m_fileTypeName="AppArmor Security Profile"},
+    {.dataTag="Doxyfile.*.pro", .m_inputString="Doxyfile.heterogenous.Pattern-Match.pro", .m_fileTypeName="QMake"},
+    {.dataTag="Kconfig*.ml", .m_inputString="KconfigHeterogenous_pattern_match.ml", .m_fileTypeName="Objective Caml"},
+    {.dataTag="snap-confine.*.html.rac", .m_inputString="snap-confine.2.-higher-priority.html.rac", .m_fileTypeName="Mustache/Handlebars (HTML)"},
+    {.dataTag="file_contexts_*.fq.gz", .m_inputString="file_contexts_prefix-higher-priority.fq.gz", .m_fileTypeName="SELinux File Contexts"},
+    {.dataTag="QRPG*.ninja", .m_inputString="QRPG.ninja", .m_fileTypeName="Ninja"},
+    {.dataTag="qrpg*.tt", .m_inputString="qrpgTwoUnusualPatterns.tt", .m_fileTypeName="TT2"},
+    {.dataTag="qrpg*.cl", .m_inputString="qrpg$heterogenous~pattern&match.cl", .m_fileTypeName="OpenCL"},
+    {.dataTag=".gitignore*.tt*.textile", .m_inputString=".gitignoreHeterogenous3.tt.textile", .m_fileTypeName="Textile"},
 };
 
 constexpr FileTypeDataRow fileTypesForMimeTypeNames[] = {
-    {"empty", "", ""},
+    {.dataTag="empty", .m_inputString="", .m_fileTypeName=""},
 
-    {"Nonexistent MIME type", "text/nonexistent-mt", ""},
-    {"No match", "application/x-bzip-compressed-tar", ""},
+    {.dataTag="Nonexistent MIME type", .m_inputString="text/nonexistent-mt", .m_fileTypeName=""},
+    {.dataTag="No match", .m_inputString="application/x-bzip-compressed-tar", .m_fileTypeName=""},
 
-    {"High priority", "text/rust", "Rust"},
-    {"Negative priority", "text/octave", "Octave"},
+    {.dataTag="High priority", .m_inputString="text/rust", .m_fileTypeName="Rust"},
+    {.dataTag="Negative priority", .m_inputString="text/octave", .m_fileTypeName="Octave"},
 
-    {"Multiple types match", "text/x-chdr", "C++"},
+    {.dataTag="Multiple types match", .m_inputString="text/x-chdr", .m_fileTypeName="C++"},
 };
 
 template<std::size_t size>

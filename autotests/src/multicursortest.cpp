@@ -44,7 +44,7 @@ DocAndView createDocAndView(const QString &text, int line, int column)
     doc->setText(text);
     auto view = new ViewPrivate(doc, nullptr);
     view->setCursorPosition({line, column});
-    return {doc, view};
+    return {.doc=doc, .view=view};
 }
 
 template<typename Cont>
@@ -163,8 +163,8 @@ void MulticursorTest::backspace()
     {
         // Mixed cursors, one doesn't have selection
         // the two below have selection
-        cursors.append({Cursor(1, 3), Range(1, 0, 1, 3)});
-        cursors.append({Cursor(2, 3), Range(2, 0, 2, 3)});
+        cursors.append({.pos=Cursor(1, 3), .range=Range(1, 0, 1, 3)});
+        cursors.append({.pos=Cursor(2, 3), .range=Range(2, 0, 2, 3)});
         view->addSecondaryCursorsWithSelection(cursors);
 
         // Pressing backspace should only remove selected text
@@ -199,8 +199,8 @@ void MulticursorTest::keyDelete()
     {
         // Mixed cursors, one doesn't have selection
         // the two below have selection
-        cursors.append({Cursor(1, 0), Range(1, 0, 1, 3)});
-        cursors.append({Cursor(2, 0), Range(2, 0, 2, 3)});
+        cursors.append({.pos=Cursor(1, 0), .range=Range(1, 0, 1, 3)});
+        cursors.append({.pos=Cursor(2, 0), .range=Range(2, 0, 2, 3)});
         view->addSecondaryCursorsWithSelection(cursors);
 
         // Pressing del should only remove selected text

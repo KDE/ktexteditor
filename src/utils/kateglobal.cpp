@@ -484,7 +484,7 @@ void KTextEditor::EditorPrivate::copyToClipboard(const QString &text, const QStr
 
     // LRU, kill potential duplicated, move new entry to top
     // cut after X entries
-    auto entry = ClipboardEntry{text, fileName};
+    auto entry = ClipboardEntry{.text=text, .fileName=fileName};
     m_clipboardHistory.removeOne(entry);
     m_clipboardHistory.prepend(entry);
     if (m_clipboardHistory.size() > m_viewConfig->clipboardHistoryEntries()) {
