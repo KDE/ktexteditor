@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"POT-Creation-Date: 2024-05-12 00:36+0000\n"
 "PO-Revision-Date: 2024-03-17 11:56+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2495,7 +2495,7 @@ msgstr "tryb-vi"
 msgid "recording"
 msgstr "nagrywanie"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:90
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -4660,7 +4660,7 @@ msgstr "Obszar tła"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Ustawia kolor tła obramowania ikony.</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
 #, kde-format
 msgid "Line Numbers"
 msgstr "Numery wierszy"
@@ -5511,379 +5511,379 @@ msgstr ""
 "przez \"AM\" albo \"PM\".</td></tr><tr><td>ap</td><td>Użyj wyświetlacza am/"
 "pm. ap zostanie zastąpione przez \"am\" albo \"pm\".</td></tr></table></p>"
 
-#: utils/kateglobal.cpp:73
+#: utils/kateglobal.cpp:59
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate Part"
 
-#: utils/kateglobal.cpp:75
+#: utils/kateglobal.cpp:61
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "Składnik edytora do osadzania"
 
-#: utils/kateglobal.cpp:77
+#: utils/kateglobal.cpp:63
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000-2022 Autorzy Kate"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullman"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Maintainer"
 msgstr "Opiekun"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Hausman"
 
-#: utils/kateglobal.cpp:98 utils/kateglobal.cpp:99 utils/kateglobal.cpp:101
-#: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:84 utils/kateglobal.cpp:85 utils/kateglobal.cpp:87
+#: utils/kateglobal.cpp:95 utils/kateglobal.cpp:98 utils/kateglobal.cpp:103
 #, kde-format
 msgid "Core Developer"
 msgstr "Główny programista"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:85
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Milian Wolff"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:86
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:90
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:106 utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:92 utils/kateglobal.cpp:110
 #, kde-format
 msgid "Developer"
 msgstr "Programista"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:95
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "Sprawdzanie pisowni na bieżąco"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "Naprawianie błędów na dużą skalę"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Świetny system buforowania"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Polecenia edycji"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Testing, ..."
 msgstr "Testowanie, ..."
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Poprzedni główny programista"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "Przystosowanie KWrite do KParts"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "Wielopoziomowe cofanie w KWrite, integracja KSpella"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "Wsparcie podświetlania składni XML w KWrite"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Patches and more"
 msgstr "Łaty i więcej"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Various bugfixes"
 msgstr "Różne poprawki"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "Zaznaczanie, integracja z KColorScheme"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "Silnik i interfejs paska wyszukiwania"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "Oryginalny autor KWrite"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "QA and Scripting"
 msgstr "Zapewnienie jakości i skrypty"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Podświetlanie plików RPM Spec, Perla, Diff i innych"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "Podświetlanie VHDL"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Jurij Lebiediew"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "Podświetlanie SQL"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Podświetlanie Ferite"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "Podświetlanie ILERPG"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Podświetlanie LaTex"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Podświetlenia Makefile, Python"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Podświetlanie Pythona"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Podświetlanie Scheme"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "Lista słów kluczowych i typów danych PHP"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Very nice help"
 msgstr "Przyjemna pomoc"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Podświetlanie Lua"
 
-#: utils/kateglobal.cpp:151
+#: utils/kateglobal.cpp:137
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr ""
 "Wszyscy ludzie, którzy byli zaangażowani, a których zapomniałem wymienić"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
@@ -5891,7 +5891,7 @@ msgstr ""
 "Jacek Stolarczyk, Jerzy Skalski, Marcin Giedz, Mikołaj Machowski, Artur "
 "Chłond, Łukasz Wojniłowicz"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -5899,7 +5899,7 @@ msgstr ""
 "jacek@mer.chemia.polsl.gliwice.pl, skarzy@elmer.net.pl, mgiedz@elka.pw.edu."
 "pl, mikmach@wp.pl, eugenewolfe@o2.pl, lukasz.wojnilowicz@gmail.com"
 
-#: utils/kateglobal.cpp:274
+#: utils/kateglobal.cpp:260
 #, kde-format
 msgid "Configure"
 msgstr "Ustawienia"
@@ -7914,62 +7914,62 @@ msgstr "Użyj domyślnego stylu znaczników"
 msgid "Disable Annotation Bar"
 msgstr "Wyłącz pasek notatek"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:178
 #, kde-format
 msgid "Save"
 msgstr "Zapisz"
 
-#: view/screenshotdialog.cpp:139
+#: view/screenshotdialog.cpp:179
 #, kde-format
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:180
 #, fuzzy, kde-format
 #| msgid "Background Color..."
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Barwa tła..."
 
-#: view/screenshotdialog.cpp:142
+#: view/screenshotdialog.cpp:182
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "Pokaż dodatkowe ozdobniki"
 
-#: view/screenshotdialog.cpp:143
+#: view/screenshotdialog.cpp:183
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "Pokaż ozdoby okienne"
 
-#: view/screenshotdialog.cpp:148
+#: view/screenshotdialog.cpp:188
 #, fuzzy, kde-format
 #| msgid "Take Screenshot of Selection"
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Zrzuć zaznaczenie"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:260
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "Pokaż numery wierszy"
 
-#: view/screenshotdialog.cpp:221
+#: view/screenshotdialog.cpp:261
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "Pokaż numery wierszy od 1"
 
-#: view/screenshotdialog.cpp:222
+#: view/screenshotdialog.cpp:262
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "Pokaż rzeczywiste numery wierszy"
 
-#: view/screenshotdialog.cpp:383
+#: view/screenshotdialog.cpp:423
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "Nie udało się zapisać zrzutu ekranu"
 
-#: view/screenshotdialog.cpp:383
+#: view/screenshotdialog.cpp:423
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "Nie udało się zapisać zrzutu ekranu: %1"

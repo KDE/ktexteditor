@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 00:36+0000\n"
+"POT-Creation-Date: 2024-05-12 00:36+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2574,7 +2574,7 @@ msgstr "Вијев режим"
 msgid "recording"
 msgstr "снимање"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:90
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -4811,7 +4811,7 @@ msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>Поставља боју позадине појаса иконица.</p>"
 
 # >> @item color scheme item name
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
 #, kde-format
 msgid "Line Numbers"
 msgstr "бројеви редова"
@@ -5711,391 +5711,391 @@ msgstr ""
 "td><td>Дванаесточасовни приказ. <tt>AP</tt> ће бити замењено или са am или "
 "са pm.</td></tr></table></p>"
 
-#: utils/kateglobal.cpp:73
+#: utils/kateglobal.cpp:59
 #, kde-format
 msgid "Kate Part"
 msgstr "Кејт део"
 
-#: utils/kateglobal.cpp:75
+#: utils/kateglobal.cpp:61
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "Угнездива уређивачка компонента"
 
-#: utils/kateglobal.cpp:77
+#: utils/kateglobal.cpp:63
 #, fuzzy, kde-format
 #| msgid "(c) 2000-2017 The Kate Authors"
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "© 2000–2017, аутори Кејт"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Кристоф Кулман"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Maintainer"
 msgstr "одржавалац"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Доминик Хауман"
 
-#: utils/kateglobal.cpp:98 utils/kateglobal.cpp:99 utils/kateglobal.cpp:101
-#: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:84 utils/kateglobal.cpp:85 utils/kateglobal.cpp:87
+#: utils/kateglobal.cpp:95 utils/kateglobal.cpp:98 utils/kateglobal.cpp:103
 #, kde-format
 msgid "Core Developer"
 msgstr "програмер језгра"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:85
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Милијан Волф"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:86
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Јозеф Венингер"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:90
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Ерленд Хамберг"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Бернхард Бешов"
 
-#: utils/kateglobal.cpp:106 utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:92 utils/kateglobal.cpp:110
 #, kde-format
 msgid "Developer"
 msgstr "програмер"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:95
 #, kde-format
 msgid "Anders Lund"
 msgstr "Андерс Лунд"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Михел Лудвиг"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "провера правописа у лету"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Паскал Летурнo"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "многобројне поправке грешака"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Хамиш Рода"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Валдо Бастијан"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "жешћи баферски систем"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Чарлс Семјуелс"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "The Editing Commands"
 msgstr "уређивачке наредбе"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Matt Newell"
 msgstr "Мет Њуел"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Testing, ..."
 msgstr "испробавање..."
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Михаел Бартл"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Former Core Developer"
 msgstr "бивши програмер језгра"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Мајкл Мекалум"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Michael Koch"
 msgstr "Михаел Кох"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "пребацивање К‑писања на К‑делове"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Кристијан Гебауер"
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Симон Хаусман"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Glen Parker"
 msgstr "Глен Паркер"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "историјат опозива за К‑писање, интеграција Кспела"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Scott Manson"
 msgstr "Скот Менсон"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "истицање синтаксе ИксМЛ‑а у К‑писању"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "John Firebaugh"
 msgstr "Џон Фајербо"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Patches and more"
 msgstr "закрпе и још тога"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Андреас Клинг"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Мирко Стокер"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Various bugfixes"
 msgstr "разне исправке"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Метју Велке"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "бирање, интеграција шема боја"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Себастијан Пипинг"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "позадина и прочеље за траку претраге"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Јохен Вилхелми"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "првобитни аутор К‑писања"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Жерал Санарклан де Гранси"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "QA and Scripting"
 msgstr "обезбеђивање квалитета и скриптовање"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Матео Мерли"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "истицање РПМ одредница, перла, разлика и још тога"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Роки Скалета"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "истицање ВХДЛ‑а"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Јуриј Лебедев"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "истицање СКуЛ‑а"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Chris Ross"
 msgstr "Крис Рос"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "истицање ферита"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Nick Roux"
 msgstr "Ник Роукс"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "истицање ИЛЕРПГ‑а"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Карстен Нихаус"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "истицање латеха"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Per Wigren"
 msgstr "Пер Вигрен"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "истицање справифајлова, питона"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Јан Фриц"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "истицање питона"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Данијел Набер"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Роланд Пабел"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "истицање шеме"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Кристи Думитреску"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "списак кључних речи и типова за ПХП"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Карстен Пфајфер"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Very nice help"
 msgstr "симпатична помоћ"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Бруно Маса"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "истицање луе"
 
-#: utils/kateglobal.cpp:151
+#: utils/kateglobal.cpp:137
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "сви који су допринели, а ја заборавих да их споменем"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Топлица Танасковић,Часлав Илић"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "toptan@kde.org.yu,caslav.ilic@gmx.net"
 
-#: utils/kateglobal.cpp:274
+#: utils/kateglobal.cpp:260
 #, kde-format
 msgid "Configure"
 msgstr "Подеси"
@@ -8199,19 +8199,19 @@ msgid "Disable Annotation Bar"
 msgstr "Искључи траку тумачења"
 
 # rewrite-msgid: |Open/Save|File actions|
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:178
 #, fuzzy, kde-format
 #| msgid "Open/Save"
 msgid "Save"
 msgstr "Радње с фајлом"
 
-#: view/screenshotdialog.cpp:139
+#: view/screenshotdialog.cpp:179
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
 msgid "Copy"
 msgstr "Сачувај &копију као..."
 
-#: view/screenshotdialog.cpp:140
+#: view/screenshotdialog.cpp:180
 #, fuzzy, kde-format
 #| msgid "&Background Color..."
 msgctxt "@action:button"
@@ -8219,20 +8219,20 @@ msgid "Background Color…"
 msgstr "Боја &позадине..."
 
 # >> @item color scheme item category
-#: view/screenshotdialog.cpp:142
+#: view/screenshotdialog.cpp:182
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Show Extra Decorations"
 msgstr "декорације текста"
 
 # skip-rule: t-line
-#: view/screenshotdialog.cpp:143
+#: view/screenshotdialog.cpp:183
 #, fuzzy, kde-format
 #| msgid "Show i&ndentation lines"
 msgid "Show Window Decorations"
 msgstr "Прикажи линије &увлачења"
 
-#: view/screenshotdialog.cpp:148
+#: view/screenshotdialog.cpp:188
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgctxt "@title:window"
@@ -8240,33 +8240,33 @@ msgid "Take Screenshot of Selection"
 msgstr "Избор језика"
 
 # >> @action:inmenu
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:260
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Don't Show Line Numbers"
 msgstr "&Бројеви редова"
 
 # >> @action:inmenu
-#: view/screenshotdialog.cpp:221
+#: view/screenshotdialog.cpp:261
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Line Numbers From 1"
 msgstr "&Бројеви редова"
 
 # >> @action:inmenu
-#: view/screenshotdialog.cpp:222
+#: view/screenshotdialog.cpp:262
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show Actual Line Numbers"
 msgstr "&Бројеви редова"
 
-#: view/screenshotdialog.cpp:383
+#: view/screenshotdialog.cpp:423
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr ""
 
-#: view/screenshotdialog.cpp:383
+#: view/screenshotdialog.cpp:423
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr ""

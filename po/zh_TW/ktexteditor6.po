@@ -16,15 +16,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 00:36+0000\n"
-"PO-Revision-Date: 2024-02-05 17:25+0900\n"
+"POT-Creation-Date: 2024-05-12 00:36+0000\n"
+"PO-Revision-Date: 2024-05-10 17:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.04.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -956,8 +956,8 @@ msgstr ""
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body>\n"
 "<p>Tab 鍵動作（沒有選取文字時） <a href=\"若是您希望 Tab 鍵像 Emacs 一樣縮排"
-"目前區塊的目前行，則請將 Tab 設成<b>格式化縮排</b>動作的捷徑。\"><span>詳"
-"情...</span></a></p></body></html>"
+"目前區塊的目前行，則請將 Tab 設成<b>格式化縮排</b>動作的捷徑。\"><span>詳情…"
+"</span></a></p></body></html>"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:276
@@ -1257,11 +1257,10 @@ msgid "Closes the file, discarding its content."
 msgstr "關閉檔案，放棄檔案內容。"
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "另存新檔(&S)..."
+msgstr "另存新檔(&S)…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2371,7 +2370,7 @@ msgstr "vi 模式"
 msgid "recording"
 msgstr "紀錄中"
 
-#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:104
+#: inputmode/kateviinputmodefactory.cpp:38 utils/kateglobal.cpp:90
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
@@ -2418,9 +2417,7 @@ msgid "Modes && Filetypes"
 msgstr "模式與檔案類型"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "搜尋…"
@@ -2580,7 +2577,7 @@ msgstr "<p>頁尾的格式。下面是支援的標籤：</p>"
 #: printing/printconfigwidgets.cpp:352
 #, kde-format
 msgid "Add Placeholder..."
-msgstr "新增取代符..."
+msgstr "新增取代符…"
 
 #: printing/printconfigwidgets.cpp:354
 #, kde-format
@@ -3403,7 +3400,7 @@ msgstr "找不到指令：%1"
 #: search/katesearchbar.cpp:74
 #, kde-format
 msgid "Add..."
-msgstr "新增..."
+msgstr "新增…"
 
 #: search/katesearchbar.cpp:299
 #, kde-format
@@ -3786,12 +3783,10 @@ msgid "Spell check canceled."
 msgstr "拼字檢查已取消。"
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "拼字檢查進行中..."
+msgstr "拼字檢查進行中…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4011,11 +4006,10 @@ msgid "I&gnore All"
 msgstr "全部略過(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "拼字檢查（從游標處）..."
+msgstr "拼字檢查（從游標處）…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4135,32 +4129,28 @@ msgid "S&trikeout"
 msgstr "刪除線(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "一般色彩(&C)..."
+msgstr "一般顏色(&C)…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "已選取的顏色(&S)..."
+msgstr "已選項目顏色(&S)…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "背景顏色(&B)..."
+msgstr "背景顏色(&B)…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "選擇背景顏色(&E)..."
+msgstr "已選項目背景顏色(&E)…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4473,7 +4463,7 @@ msgstr "背景區域"
 msgid "<p>Sets the background color of the icon border.</p>"
 msgstr "<p>設定圖示邊框的背景顏色。</p>"
 
-#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:228
+#: syntax/katethemeconfig.cpp:233 view/screenshotdialog.cpp:268
 #, kde-format
 msgid "Line Numbers"
 msgstr "行號"
@@ -4766,25 +4756,22 @@ msgid "&Theme:"
 msgstr "主題(&T)："
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "複製"
+msgstr "複製(&C)…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "匯出..."
+msgstr "匯出…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "匯入..."
+msgstr "匯入…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -5284,391 +5271,391 @@ msgstr ""
 "td></tr><tr><td>ap</td><td>12 時制，AP 會被取代為 am 或是 pm。</td></tr></"
 "table></p>"
 
-#: utils/kateglobal.cpp:73
+#: utils/kateglobal.cpp:59
 #, kde-format
 msgid "Kate Part"
 msgstr "Kate Part"
 
-#: utils/kateglobal.cpp:75
+#: utils/kateglobal.cpp:61
 #, kde-format
 msgid "Embeddable editor component"
 msgstr "可嵌入編輯器元件"
 
-#: utils/kateglobal.cpp:77
+#: utils/kateglobal.cpp:63
 #, kde-format
 msgid "(c) 2000-2022 The Kate Authors"
 msgstr "(c) 2000-2022 Kate 作者群"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: utils/kateglobal.cpp:97
+#: utils/kateglobal.cpp:83
 #, kde-format
 msgid "Maintainer"
 msgstr "維護者"
 
-#: utils/kateglobal.cpp:98
+#: utils/kateglobal.cpp:84
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: utils/kateglobal.cpp:98 utils/kateglobal.cpp:99 utils/kateglobal.cpp:101
-#: utils/kateglobal.cpp:109 utils/kateglobal.cpp:112 utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:84 utils/kateglobal.cpp:85 utils/kateglobal.cpp:87
+#: utils/kateglobal.cpp:95 utils/kateglobal.cpp:98 utils/kateglobal.cpp:103
 #, kde-format
 msgid "Core Developer"
 msgstr "核心發展者"
 
-#: utils/kateglobal.cpp:99
+#: utils/kateglobal.cpp:85
 #, kde-format
 msgid "Milian Wolff"
 msgstr "Milian Wolff"
 
-#: utils/kateglobal.cpp:100
+#: utils/kateglobal.cpp:86
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: utils/kateglobal.cpp:104
+#: utils/kateglobal.cpp:90
 #, kde-format
 msgid "Erlend Hamberg"
 msgstr "Erlend Hamberg"
 
-#: utils/kateglobal.cpp:105
+#: utils/kateglobal.cpp:91
 #, kde-format
 msgid "Bernhard Beschow"
 msgstr "Bernhard Beschow"
 
-#: utils/kateglobal.cpp:106 utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:92 utils/kateglobal.cpp:110
 #, kde-format
 msgid "Developer"
 msgstr "開發者"
 
-#: utils/kateglobal.cpp:109
+#: utils/kateglobal.cpp:95
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "Michel Ludwig"
 msgstr "Michel Ludwig"
 
-#: utils/kateglobal.cpp:110
+#: utils/kateglobal.cpp:96
 #, kde-format
 msgid "On-the-fly spell checking"
 msgstr "即時拼字檢查"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Pascal Létourneau"
 msgstr "Pascal Létourneau"
 
-#: utils/kateglobal.cpp:111
+#: utils/kateglobal.cpp:97
 #, kde-format
 msgid "Large scale bug fixing"
 msgstr "大幅度的錯誤修正"
 
-#: utils/kateglobal.cpp:112
+#: utils/kateglobal.cpp:98
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: utils/kateglobal.cpp:113
+#: utils/kateglobal.cpp:99
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "很棒的緩衝區系統"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: utils/kateglobal.cpp:114
+#: utils/kateglobal.cpp:100
 #, kde-format
 msgid "The Editing Commands"
 msgstr "編輯命令"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: utils/kateglobal.cpp:115
+#: utils/kateglobal.cpp:101
 #, kde-format
 msgid "Testing, ..."
-msgstr "測試中，..."
+msgstr "測試中，…"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: utils/kateglobal.cpp:116
+#: utils/kateglobal.cpp:102
 #, kde-format
 msgid "Former Core Developer"
 msgstr "早期核心發展者"
 
-#: utils/kateglobal.cpp:117
+#: utils/kateglobal.cpp:103
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: utils/kateglobal.cpp:118
+#: utils/kateglobal.cpp:104
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "KWrite 移植到 KParts"
 
-#: utils/kateglobal.cpp:119
+#: utils/kateglobal.cpp:105
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: utils/kateglobal.cpp:120
+#: utils/kateglobal.cpp:106
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: utils/kateglobal.cpp:121
+#: utils/kateglobal.cpp:107
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "KWrite 復原的歷史紀錄，Kspell 整合"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: utils/kateglobal.cpp:122
+#: utils/kateglobal.cpp:108
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "KWrite XML 語法突顯支援"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: utils/kateglobal.cpp:123
+#: utils/kateglobal.cpp:109
 #, kde-format
 msgid "Patches and more"
 msgstr "修正檔以及其他"
 
-#: utils/kateglobal.cpp:124
+#: utils/kateglobal.cpp:110
 #, kde-format
 msgid "Andreas Kling"
 msgstr "Andreas Kling"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Mirko Stocker"
 msgstr "Mirko Stocker"
 
-#: utils/kateglobal.cpp:125
+#: utils/kateglobal.cpp:111
 #, kde-format
 msgid "Various bugfixes"
 msgstr "許多錯誤修正"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: utils/kateglobal.cpp:126
+#: utils/kateglobal.cpp:112
 #, kde-format
 msgid "Selection, KColorScheme integration"
 msgstr "選取與 KColorScheme 整合"
 
-#: utils/kateglobal.cpp:127
+#: utils/kateglobal.cpp:113
 #, kde-format
 msgid "Sebastian Pipping"
 msgstr "Sebastian Pipping"
 
-#: utils/kateglobal.cpp:128
+#: utils/kateglobal.cpp:114
 #, kde-format
 msgid "Search bar back- and front-end"
 msgstr "搜尋列的後端與前端介面"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Jochen Wilhelmy"
 msgstr "Jochen Wilhelmy"
 
-#: utils/kateglobal.cpp:131
+#: utils/kateglobal.cpp:117
 #, kde-format
 msgid "Original KWrite Author"
 msgstr "KWrite 原始作者"
 
-#: utils/kateglobal.cpp:132
+#: utils/kateglobal.cpp:118
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: utils/kateglobal.cpp:133
+#: utils/kateglobal.cpp:119
 #, kde-format
 msgid "QA and Scripting"
 msgstr "問答與文稿"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: utils/kateglobal.cpp:137
+#: utils/kateglobal.cpp:123
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "RPM Spec-Files，Perl，Diff 和其他語法的突顯支援"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: utils/kateglobal.cpp:138
+#: utils/kateglobal.cpp:124
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "VHDL 突顯支援"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: utils/kateglobal.cpp:139
+#: utils/kateglobal.cpp:125
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "SQL 突顯支援"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: utils/kateglobal.cpp:140
+#: utils/kateglobal.cpp:126
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Ferite 突顯支援"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: utils/kateglobal.cpp:141
+#: utils/kateglobal.cpp:127
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "ILERPG 突顯支援"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: utils/kateglobal.cpp:142
+#: utils/kateglobal.cpp:128
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Latex 突顯支援"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: utils/kateglobal.cpp:143
+#: utils/kateglobal.cpp:129
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Makefile 與 Python 顏色醒目設定"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: utils/kateglobal.cpp:144
+#: utils/kateglobal.cpp:130
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Python 突顯支援"
 
-#: utils/kateglobal.cpp:145
+#: utils/kateglobal.cpp:131
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: utils/kateglobal.cpp:146
+#: utils/kateglobal.cpp:132
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Scheme 突顯支援"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: utils/kateglobal.cpp:147
+#: utils/kateglobal.cpp:133
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "PHP 關鍵字/資料類型 清單"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: utils/kateglobal.cpp:148
+#: utils/kateglobal.cpp:134
 #, kde-format
 msgid "Very nice help"
 msgstr "很棒的說明"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Bruno Massa"
 msgstr "Bruno Massa"
 
-#: utils/kateglobal.cpp:149
+#: utils/kateglobal.cpp:135
 #, kde-format
 msgid "Highlighting for Lua"
 msgstr "Lua 突顯支援"
 
-#: utils/kateglobal.cpp:151
+#: utils/kateglobal.cpp:137
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "所有曾經貢獻而我忘了提到的人們"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "AceLan,Kenduest Lee,Chao-Hsiung Liao"
 
-#: utils/kateglobal.cpp:153
+#: utils/kateglobal.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "acelan@kde.linux.org.tw,kenduest@i18n.linux.org.tw,pesder.liao@msa.hinet.net"
 
-#: utils/kateglobal.cpp:274
+#: utils/kateglobal.cpp:260
 #, kde-format
 msgid "Configure"
 msgstr "設定"
@@ -6295,12 +6282,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "縮排/定位：%1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "其他"
+msgstr "其他…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6446,11 +6431,10 @@ msgid ""
 msgstr "使用這個來為目前的行或文字區塊進行自動縮排，縮排到正確的縮排等級。"
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "對齊於"
+msgstr "對齊於(&A)…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6615,18 +6599,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "儲存目前檔案到磁碟內，請指定檔案名稱。"
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "以此編碼另存新檔..."
+msgstr "以編碼另存新檔…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "另存新檔(&C)..."
+msgstr "儲存副本為(&C)…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6661,11 +6643,10 @@ msgid "Move downwards to the next modified line."
 msgstr "向下移至下一個變更過的行。"
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "編輯器設定(&C)..."
+msgstr "設定編輯器(&C)…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7108,11 +7089,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "開啟/關閉自動拼字檢查"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "變更字典"
+msgstr "變更字典…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7143,11 +7123,10 @@ msgid ""
 msgstr "使用這個指令來將目前選擇的文字以 HTML 形式複製到系統剪貼簿。"
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "匯出為 HTML(&X)"
+msgstr "匯出為 HTML(&X)…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7589,62 +7568,60 @@ msgstr "設定預設遮罩類型"
 msgid "Disable Annotation Bar"
 msgstr "關閉註記列"
 
-#: view/screenshotdialog.cpp:138
+#: view/screenshotdialog.cpp:178
 #, kde-format
 msgid "Save"
 msgstr "儲存"
 
-#: view/screenshotdialog.cpp:139
+#: view/screenshotdialog.cpp:179
 #, kde-format
 msgid "Copy"
 msgstr "複製"
 
-#: view/screenshotdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#: view/screenshotdialog.cpp:180
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "背景顏色..."
+msgstr "背景顏色…"
 
-#: view/screenshotdialog.cpp:142
+#: view/screenshotdialog.cpp:182
 #, kde-format
 msgid "Show Extra Decorations"
 msgstr "顯示額外裝飾"
 
-#: view/screenshotdialog.cpp:143
+#: view/screenshotdialog.cpp:183
 #, kde-format
 msgid "Show Window Decorations"
 msgstr "顯示視窗裝飾"
 
-#: view/screenshotdialog.cpp:148
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#: view/screenshotdialog.cpp:188
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "擷取選取區的螢幕截圖"
 
-#: view/screenshotdialog.cpp:220
+#: view/screenshotdialog.cpp:260
 #, kde-format
 msgid "Don't Show Line Numbers"
 msgstr "不要顯示行號"
 
-#: view/screenshotdialog.cpp:221
+#: view/screenshotdialog.cpp:261
 #, kde-format
 msgid "Show Line Numbers From 1"
 msgstr "從 1 開始顯示行號"
 
-#: view/screenshotdialog.cpp:222
+#: view/screenshotdialog.cpp:262
 #, kde-format
 msgid "Show Actual Line Numbers"
 msgstr "顯示實際行號"
 
-#: view/screenshotdialog.cpp:383
+#: view/screenshotdialog.cpp:423
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
 msgstr "螢幕截圖儲存失敗"
 
-#: view/screenshotdialog.cpp:383
+#: view/screenshotdialog.cpp:423
 #, kde-format
 msgid "Screenshot saving failed: %1"
 msgstr "螢幕截圖儲存失敗：%1"
