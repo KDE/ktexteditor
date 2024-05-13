@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-03-10 10:00+0530\n"
+"PO-Revision-Date: 2024-05-12 14:21+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -455,13 +455,14 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Enter விசையை அழுத்துவது, தேர்ந்தெடுத்துள்ள நிறைவை உரைத்திருத்தியில் உள்ளிடும். இது "
+"முடக்கப்பட்டிருந்தாலும், தத்தல் விசையையோ இரட்டை கிளிக்கையோ பயன்படுத்தலாம்."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "தேர்வு செய்யப்பட்ட உரைப்பகுதியை உள்ளமைக்காமல் இருக்க இதை பயன்படுத்தவும்."
+msgstr "தேர்ந்தெடுத்துள்ள நிறைவை உள்ளிட enter விசையை பயன்படுத்து"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -1292,11 +1293,10 @@ msgid "Closes the file, discarding its content."
 msgstr "கோப்பின் உள்ளடக்கத்தை சேமிக்காமல் அதை மூடும்."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "வேறு &பெயரில் சேமி..."
+msgstr "வேறு &பெயரில் சேமி…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1634,10 +1634,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
-#, fuzzy, kde-format
-#| msgid "&Encoding:"
+#, kde-format
 msgid "&Fallback encoding:"
-msgstr "குறிமுறையாக்கு:"
+msgstr "பழுதுகாப்பு குறியாக்கம்:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbEncodingFallback)
 #: dialogs/opensaveconfigwidget.ui:84
@@ -2466,12 +2465,10 @@ msgid "Modes && Filetypes"
 msgstr "பயன்முறைகளும் கோப்பு வகைகளும்"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "தேடு..."
+msgstr "தேடு…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -2518,10 +2515,9 @@ msgid "Print line &numbers"
 msgstr "வரி &எண்களை அச்சிடு"
 
 #: printing/printconfigwidgets.cpp:43
-#, fuzzy, kde-format
-#| msgid "Print &line numbers"
+#, kde-format
 msgid "Print &legend"
-msgstr "வரி எண்களை அச்சடி"
+msgstr ""
 
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
@@ -2824,11 +2820,10 @@ msgid "Wrap with Tag"
 msgstr ""
 
 #: script/data/commands/emmet.js:18
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Matching Tag"
-msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
+msgstr "பொருந்தும் அடைப்புக்குறிக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/emmet.js:22
 #, kde-format
@@ -2899,37 +2894,37 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 1"
-msgstr ""
+msgstr "எண்ணிலிருந்து 1-ஐ கழி"
 
 #: script/data/commands/emmet.js:66
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 10"
-msgstr ""
+msgstr "எண்ணிலிருந்து 10-ஐ கழி"
 
 #: script/data/commands/emmet.js:70
 #, kde-format
 msgctxt "Script command name"
 msgid "Decrement Number by 0.1"
-msgstr ""
+msgstr "எண்ணிலிருந்து 0.1-ஐ கழி"
 
 #: script/data/commands/emmet.js:74
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 1"
-msgstr ""
+msgstr "எண்ணுடன் 1-ஐ கூட்டு"
 
 #: script/data/commands/emmet.js:78
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 10"
-msgstr ""
+msgstr "எண்ணுடன் 10-ஐ கூட்டு"
 
 #: script/data/commands/emmet.js:82
 #, kde-format
 msgctxt "Script command name"
 msgid "Increment Number by 0.1"
-msgstr ""
+msgstr "எண்ணுடன் 0.1-ஐ கூட்டு"
 
 #: script/data/commands/emmet.js:96
 #, kde-format
@@ -3036,11 +3031,10 @@ msgid "Increment number under cursor by 0.1"
 msgstr ""
 
 #: script/data/commands/jumpMatchingIndent.js:9
-#, fuzzy, kde-format
-#| msgid "Move to Matching Bracket"
+#, kde-format
 msgctxt "Script command name"
 msgid "Move Cursor to Previous Matching Indent"
-msgstr "பொருந்தும் அடைப்புக்குறிக்கு நகர்த்து"
+msgstr "பொருந்தும் முந்தைய உள்தள்ளலுக்கு இடஞ்சுட்டியை நகர்த்து"
 
 #: script/data/commands/jumpMatchingIndent.js:11
 #: script/data/commands/jumpMatchingIndent.js:16
@@ -3200,6 +3194,8 @@ msgstr "தேர்ந்தெடுத்துள்ள வரிகளை�
 #, kde-format
 msgid "Remove duplicate lines from the selected text or whole document."
 msgstr ""
+"தேர்ந்தெடுத்துள்ள உரையிலோ முழு ஆவணத்திலோ பலமுறை உள்ள வரிகளை ஒருமுறை மட்டும் உள்ளவாறு "
+"மாற்றும்."
 
 #: script/data/commands/utils.js:470
 #, kde-format
@@ -3861,12 +3857,10 @@ msgid "Spell check canceled."
 msgstr "எழுத்தாக்க சரிபார்ப்பு ரத்து செய்யப்பட்டது."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "எழுத்தாக்க சரிபார்ப்பு நடைபெறுகிறது..."
+msgstr "எழுத்தாக்க சரிபார்ப்பு நடைபெறுகிறது…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4048,11 +4042,10 @@ msgid "I&gnore All"
 msgstr "&அனைத்தையும் பொருட்படுத்தாதே"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "எழுத்தாக்கம் (இடஞ்சுட்டியிலிருந்து)..."
+msgstr "எழுத்தாக்கம் (இடஞ்சுட்டியிலிருந்து)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4159,12 +4152,12 @@ msgstr "முன்னிருப்பு தோற்றத்தை பய�
 #: syntax/katestyletreewidget.cpp:238
 #, kde-format
 msgid "&Bold"
-msgstr "&தடித்த"
+msgstr "&தடித்தது"
 
 #: syntax/katestyletreewidget.cpp:243
 #, kde-format
 msgid "&Italic"
-msgstr "சாய்வெழுத்து"
+msgstr "&சாய்வெழுத்து"
 
 #: syntax/katestyletreewidget.cpp:248
 #, kde-format
@@ -4177,32 +4170,28 @@ msgid "S&trikeout"
 msgstr "குறுக்காக அ&டித்தல்"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "இயல்பான நிறம்..."
+msgstr "&இயல்பான நிறம்…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "தேர்ந்தெடுத்த நிறம்..."
+msgstr "தே&ர்ந்தெடுத்ததன் நிறம்…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&பின்னணி வண்ணம்..."
+msgstr "&பின்புல நிறம்…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "தேர்ந்தெடுத்த பின்னணி நிறம்..."
+msgstr "தேர்ந்தெடுத்ததன் பி&ன்புல நிறம்…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, fuzzy, kde-format
@@ -4910,25 +4899,22 @@ msgid "&Theme:"
 msgstr "திட்டமுறை"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "நகலெடு"
+msgstr "&நகலெடு…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "HTML ஆக &ஏற்றுக.."
+msgstr "ஏற்றுமதி செய்…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "இயல்பான & நிறம்..."
+msgstr "இறக்குமதி செய்…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6441,11 +6427,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr ""
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "அடுத்த"
+msgstr "வேறு…"
 
 #: view/katestatusbar.cpp:477
 #, fuzzy, kde-format
@@ -6608,11 +6593,10 @@ msgstr ""
 "நடப்பு வரி அல்லது உரை தொகுதியின் முறையான சீரமைப்பு நிலையை சீரமைக்க இதை பயன்படுத்து."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "&Align"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "சீரமை"
+msgstr "&இதில் சீரமை…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6804,14 +6788,13 @@ msgstr "நடப்பு ஆவணத்தை வட்டில் ஏதா
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr ""
+msgstr "வேறு குறியாக்கத்துடன் வேறு பெயரில் சேமி…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "&Save File As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "கோப்பினைச் சேமி..."
+msgstr "&நகலை வேறு பெயரில் சேமி…"
 
 #: view/kateview.cpp:661
 #, fuzzy, kde-format
@@ -6852,11 +6835,10 @@ msgid "Move downwards to the next modified line."
 msgstr ""
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "தொகுப்பானை வடிவமை..."
+msgstr "&உரைத்திருத்தியை அமை…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7341,11 +7323,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr ""
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Choose Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "தொகுப்பானைத் தேர்வுச் செய்க.."
+msgstr "அகரமுதலியை மாற்று…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7378,11 +7359,10 @@ msgstr ""
 "இவ்வாணையைப் பயன்படுத்துக.்க "
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "Export File as HTML"
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "கோப்பினை மீஉஅமொ யாாக ஏற்றுமதி செயய"
+msgstr "HTML&ஆக ஏற்றுமதி செய்…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7854,11 +7834,10 @@ msgid "Copy"
 msgstr "நகலெடு"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "பின்புல நிறம்..."
+msgstr "பின்புல நிறம்…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format

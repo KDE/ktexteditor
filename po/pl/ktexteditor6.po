@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-03-17 11:56+0100\n"
+"PO-Revision-Date: 2024-05-12 09:40+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 ">\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
@@ -320,7 +320,7 @@ msgstr "Widoczność pasków &przewijania:"
 #: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Always On"
-msgstr "Zawsze widoczne"
+msgstr "Zawsze widoczny"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:188
@@ -332,7 +332,7 @@ msgstr "Widoczne gdy potrzebne"
 #: dialogs/bordersappearanceconfigwidget.ui:193
 #, kde-format
 msgid "Always Off"
-msgstr "Zawsze niewidoczne"
+msgstr "Zawsze ukryte"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:217
@@ -354,7 +354,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:227
 #, kde-format
 msgid "Show minimap"
-msgstr "Pokaż mini-mapę"
+msgstr "Pokaż minimapę"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
@@ -500,7 +500,8 @@ msgstr "Usuń końcówkę po uzupełnieniu"
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"Uzupełnianie słów podpowiada je na podstawie słów znalezionych w dokumencie."
+"Słowa podpowiadane do uzupełnienia biorą się ze słów znalezionych w już tym "
+"samym dokumencie."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:134
@@ -515,8 +516,8 @@ msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
 "the document's language."
 msgstr ""
-"Uzupełnianie słów kluczowych dostarcza sugestii na podstawie słów "
-"kluczowych, które znajdują się w języku dokumentu."
+"Słowa kluczowe podpowiadane do uzupełnienia biorą się ze słów kluczowych dla "
+"języka programowania w jakim napisany jest dokument."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:156
@@ -751,7 +752,7 @@ msgstr "Nazwą rodzaju pliku będzie tekst odpowiedniego wpisu w menu."
 #: dialogs/filetypeconfigwidget.ui:89
 #, kde-format
 msgid "&Section:"
-msgstr "&Sekcja:"
+msgstr "&Rodzaj:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtSection)
 #: dialogs/filetypeconfigwidget.ui:99
@@ -795,7 +796,7 @@ msgstr "Tryb wc&ięć:"
 #: dialogs/filetypeconfigwidget.ui:149
 #, kde-format
 msgid "File e&xtensions:"
-msgstr "&Rozszerzenia nazw pliku:"
+msgstr "&Rozszerzenia plików:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtFileExtensions)
 #: dialogs/filetypeconfigwidget.ui:159
@@ -961,7 +962,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr "Do&pasuj wcięcie kodu wklejonego ze schowka"
+msgstr "Do&stosuj wcięcie kodu wklejonego ze schowka"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -1220,10 +1221,9 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
-"%1 tworzy kopie zapasowe niezapisanych plików jako \"pliki wymiany\". Pliki "
-"wymiany umożliwiają %1 przywrócenie twojej pracy w przypadku wysypania się "
-"systemu. Wyłączenie plików wymiany może skutkować utratą danych w przypadku "
-"wysypania się systemu."
+"%1 tworzy kopie zapasowe niezapisanych plików jako \"pliki wymiany\". %1 "
+"może z nich przywrócić twoją niezapisaną pracę po wysypaniu się systemu. W "
+"przeciwnym przypadku praca ta jest nie do odzyskania."
 
 #: dialogs/katedialogs.cpp:1017
 #, kde-format
@@ -1324,11 +1324,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Zamknij plik, porzucając jego treść."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "Zapi&sz jako..."
+msgstr "Zapi&sz jako…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1428,7 +1427,7 @@ msgstr "Włącz ruchy kursora camelCase"
 #: dialogs/navigationconfigwidget.ui:79
 #, kde-format
 msgid "&Autocenter cursor:"
-msgstr "S&amoczynnie wyśrodkuj kursor:"
+msgstr "S&am wyśrodkuj kursor:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:89
@@ -1482,7 +1481,7 @@ msgstr "Trwały"
 #: dialogs/navigationconfigwidget.ui:167
 #, kde-format
 msgid "Allow scrolling past the end of the document"
-msgstr "Pozwól na przewijanie poza granicę dolną dokumentu"
+msgstr "Zezwól na przewijanie poza granicę dolną dokumentu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:174
@@ -1518,13 +1517,13 @@ msgstr "Modyfikatory wielu kursorów"
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr "Sam wczytaj pliki ponownie przy zarządzaniu wersjami"
+msgstr "Sam wczytaj pliki ponownie, gdy ich wersje są zarządzane"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr "Zapisz plik kopii zapasowej przy zapisywaniu dla:"
+msgstr "Zapisując, zapisz także plik kopii zapasowej dla:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1540,7 +1539,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:51
 #, kde-format
 msgid "&Local files"
-msgstr "Miejscowych p&lików"
+msgstr "&Lokalnych plików"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:58
@@ -1892,7 +1891,7 @@ msgstr "Pokaż kodowanie pliku"
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr "Pokaż rodzaj zakończenia wierszy"
+msgstr "Pokaż rodzaj zakończeń wierszy"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -2499,7 +2498,7 @@ msgstr "nagrywanie"
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
-msgstr "Tryb wprowadzania Vi"
+msgstr "Tryb Vi"
 
 #: mode/katemodeconfigpage.cpp:46
 #, kde-format
@@ -2542,12 +2541,10 @@ msgid "Modes && Filetypes"
 msgstr "Tryby i rodzaje plików"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Szukaj..."
+msgstr "Poszukaj…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3954,12 +3951,10 @@ msgid "Spell check canceled."
 msgstr "Anulowano sprawdzanie pisowni."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Sprawdzanie pisowni w trakcie..."
+msgstr "Sprawdzanie pisowni w trakcie…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4191,11 +4186,10 @@ msgid "I&gnore All"
 msgstr "Po&miń wszystkie"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Sprawdź pisownię teraz (od kursora)..."
+msgstr "Sprawdź pisownię teraz (od kursora)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4317,32 +4311,28 @@ msgid "S&trikeout"
 msgstr "P&rzekreślenie"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "&Kolor liter..."
+msgstr "&Kolor liter…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Kolor liter po zaznac&zeniu..."
+msgstr "Ko&lor zaznaczenia…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Kolor tła..."
+msgstr "Kolor &tła…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Kolor tła po zaznacz&eniu..."
+msgstr "Kolor tła po zaznacz&eniu…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4961,34 +4951,31 @@ msgstr "Wybierz wygląd:"
 #: syntax/katethemeconfig.cpp:1110
 #, kde-format
 msgid "&Theme:"
-msgstr "Zes&taw:"
+msgstr "&Wygląd:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Skopiuj"
+msgstr "&Skopiuj…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Wyeksportuj..."
+msgstr "Wyeksportuj…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Zaimportuj..."
+msgstr "Zaimportuj…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
-"Ten zestaw jest tylko-do-odczytu. Aby wprowadzić w nim zmiany, skopiuj go."
+"Ten wygląd jest tylko-do-odczytu. Aby wprowadzić w nim zmiany, skopiuj go."
 
 #: syntax/katethemeconfig.cpp:1149
 #, kde-format
@@ -6288,7 +6275,7 @@ msgstr "Ustaw styl auto-wcinania."
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "Dopasuj wcięcie tekstu wklejonego ze schowka."
+msgstr "Dostosuj wcięcie tekstu wklejonego ze schowka."
 
 #: variableeditor/variablelineedit.cpp:239
 #, kde-format
@@ -6349,7 +6336,7 @@ msgstr "Usuwaj spacje na końcu wiersza przy zapisywaniu dokumentu."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Pokaż mini-mapę przewijania."
+msgstr "Pokaż minimapę przewijania."
 
 #: variableeditor/variablelineedit.cpp:289
 #, kde-format
@@ -6545,12 +6532,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Wcięcie/Tabulacja: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Inne"
+msgstr "Inne…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6563,12 +6548,12 @@ msgstr[2] "Inne (%1)"
 #: view/katestatusbar.cpp:489
 #, kde-format
 msgid "Please specify the wanted tab width:"
-msgstr "Proszę podać żądaną szerokość tabulatora:"
+msgstr "Proszę podać żądaną szerokość tabulatora:"
 
 #: view/katestatusbar.cpp:505
 #, kde-format
 msgid "Please specify the wanted indentation width:"
-msgstr "Proszę podać żądaną szerokość wcięcia:"
+msgstr "Proszę podać żądaną szerokość wcięcia:"
 
 #: view/katestatusbar.cpp:568
 #, kde-format
@@ -6705,11 +6690,10 @@ msgstr ""
 "poprawnego poziomu wcięcia."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Wyrównaj na"
+msgstr "Wyrówn&aj na…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6893,18 +6877,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Zapisz bieżący dokument na dysk z nazwą odpowiednią dla Ciebie."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Zapisz jako z kodowaniem..."
+msgstr "Zapisz jako z kodowaniem…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Zapisz &kopię jako..."
+msgstr "Zapisz &kopię jako…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6941,11 +6923,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Przejdź w dół do następnego zmienionego wiersza."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Ustawienia edytora..."
+msgstr "&Ustawienia edytora…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7187,7 +7168,7 @@ msgstr ""
 #: view/kateview.cpp:811
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
-msgstr "Pokaż przewijaną mini-mapę"
+msgstr "Pokaż przewijaną minimapę"
 
 #: view/kateview.cpp:813
 #, kde-format
@@ -7421,11 +7402,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Włącz/wyłącz sprawdzanie pisowni podczas pisania"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Zmień słownik"
+msgstr "Zmień słownik…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7435,14 +7415,15 @@ msgstr "Zmień słownik używany przy sprawdzaniu pisowni."
 #: view/kateview.cpp:961
 #, kde-format
 msgid "Clear Dictionary Ranges"
-msgstr "Wyczyść zakresy słownika"
+msgstr "Wyczyść wyjątki przy sprawdzaniu"
 
 #: view/kateview.cpp:963
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
-"Usuń wszystkie zakresy słownika, których używano przy sprawdzaniu pisowni."
+"Usuń wszystkie wyjątkowo sprawdzane obszary tekstu, które wskazano przy "
+"sprawdzaniu pisowni."
 
 #: view/kateview.cpp:969
 #, kde-format
@@ -7459,11 +7440,10 @@ msgstr ""
 "systemowego."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "Wy&eksportuj jako HTML..."
+msgstr "Wy&eksportuj jako HTML…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7925,11 +7905,10 @@ msgid "Copy"
 msgstr "Skopiuj"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Barwa tła..."
+msgstr "Kolor tła…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -7942,8 +7921,7 @@ msgid "Show Window Decorations"
 msgstr "Pokaż ozdoby okienne"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Zrzuć zaznaczenie"
