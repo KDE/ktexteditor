@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-02-03 15:34+0100\n"
+"PO-Revision-Date: 2024-05-13 22:48+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -1314,11 +1314,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Затваряне на файла, отхвърляйки съдържанието му."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Запазване като..."
+msgstr "&Запазване като…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2539,12 +2538,10 @@ msgid "Modes && Filetypes"
 msgstr "Режими и видове файлове"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Търсене..."
+msgstr "Търсене…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3951,12 +3948,10 @@ msgid "Spell check canceled."
 msgstr "Проверката на правописа е анулирана."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Извършва се проверка на правописа..."
+msgstr "Извършва се проверка на правописа…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4187,11 +4182,10 @@ msgid "I&gnore All"
 msgstr "И&гнориране всички"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Проверка на правописа (от курсора)..."
+msgstr "Проверка на правописа (от курсора)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4313,32 +4307,28 @@ msgid "S&trikeout"
 msgstr "&Зачертан"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Цвят на &текста..."
+msgstr "Нормален &цвят…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Цвят на &маркираното..."
+msgstr "&Цвят на селекцията…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Цвят на &фона..."
+msgstr "Цвят на &фона…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Цвят на фо&на на маркираното..."
+msgstr "Цвят на фо&на на селекцията…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4963,25 +4953,22 @@ msgid "&Theme:"
 msgstr "&Тема:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Копиране"
+msgstr "&Копиране…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Експортиране..."
+msgstr "Експортиране…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Импортиране..."
+msgstr "Импортиране…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6547,12 +6534,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Отстъп/табулатор: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "@item:intable Text context"
-#| msgid "Others"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Други"
+msgstr "Други…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6705,11 +6690,10 @@ msgstr ""
 "или блок от текст към тяхното правилно ниво на отстъп."
 
 #: view/kateview.cpp:522
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Подравняване"
+msgstr "&Подравняване…"
 
 #: view/kateview.cpp:524
 #, kde-format
@@ -6886,18 +6870,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Запис на текущия документ под друго име или тип."
 
 #: view/kateview.cpp:654
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Запазване с кодирането като..."
+msgstr "Запазване с кодирането като…"
 
 #: view/kateview.cpp:660
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Запазване на копие като..."
+msgstr "&Запазване на копие като…"
 
 #: view/kateview.cpp:661
 #, kde-format
@@ -6932,11 +6914,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Придвижване надолу към следващия модифициран ред."
 
 #: view/kateview.cpp:680
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Настройване на редактора..."
+msgstr "&Настройване на редактора…"
 
 #: view/kateview.cpp:682
 #, kde-format
@@ -7397,11 +7378,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Активиране/Деактивиране на автоматичната проверка на правописа"
 
 #: view/kateview.cpp:956
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Промяна на речника"
+msgstr "Промяна на речника…"
 
 #: view/kateview.cpp:957
 #, kde-format
@@ -7436,11 +7416,10 @@ msgstr ""
 "в системния клипборд."
 
 #: view/kateview.cpp:974
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "Ек&спортиране като HTML..."
+msgstr "Ек&спортиране като HTML…"
 
 #: view/kateview.cpp:976
 #, kde-format
@@ -7903,11 +7882,10 @@ msgid "Copy"
 msgstr "Копиране"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Цвят на фона..."
+msgstr "Цвят на фона…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -7920,8 +7898,7 @@ msgid "Show Window Decorations"
 msgstr "Декорации на прозорци"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Екранна снимка на селекцията"

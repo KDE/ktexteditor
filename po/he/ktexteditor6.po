@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-05-09 08:26+0300\n"
+"PO-Revision-Date: 2024-05-13 16:14+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1063,7 +1063,7 @@ msgstr "Ctrl"
 #: dialogs/katedialogs.cpp:409
 #, kde-format
 msgid "Meta"
-msgstr ""
+msgstr "מטא"
 
 #: dialogs/katedialogs.cpp:410 dialogs/katedialogs.cpp:418
 #, kde-format
@@ -1073,12 +1073,12 @@ msgstr "Ctrl + Alt"
 #: dialogs/katedialogs.cpp:411
 #, kde-format
 msgid "Meta + Alt"
-msgstr ""
+msgstr "מטא + Alt"
 
 #: dialogs/katedialogs.cpp:412
 #, kde-format
 msgid "Ctrl + Meta"
-msgstr ""
+msgstr "Ctrl + מטא"
 
 #: dialogs/katedialogs.cpp:415
 #, kde-format
@@ -1128,7 +1128,7 @@ msgstr "יכול להיות שימושי עם Markdown"
 #: dialogs/katedialogs.cpp:588
 #, kde-format
 msgid "Mirror characters, similar but not exactly like auto brackets"
-msgstr ""
+msgstr "שיקוף תווים, דומה אך לא בדיוק כמו סוגריים אוטומטיים"
 
 #: dialogs/katedialogs.cpp:590
 #, kde-format
@@ -1236,6 +1236,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"טוען מחדש וטוען אוטומטית בלי אזהרה על שינויים בכונן מעתה ועד סגירת הלשונית "
+"או החלון."
 
 #: dialogs/katedialogs.cpp:1455
 #, kde-format
@@ -1357,6 +1359,7 @@ msgstr "PageUp/PageDown מ&זיזים את הסמן"
 #, kde-format
 msgid "Selects whether cursor jumps full words or breaks at camel case humps."
 msgstr ""
+"בחירה האם סמן יקפוץ מילים שלמות או ייקטע בדבשות של הגדלת אותיות פותחות."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkCamelCursor)
 #: dialogs/navigationconfigwidget.ui:58
@@ -1442,19 +1445,19 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:187
 #, kde-format
 msgid "Multicursor"
-msgstr ""
+msgstr "רב־סמן"
 
 #. i18n: ectx: property (text), widget (QLabel, lblMulticursormodifiers)
 #: dialogs/navigationconfigwidget.ui:193
 #, kde-format
 msgid "Multiple Cursor Modifiers"
-msgstr ""
+msgstr "מספר משני סמנים"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkAutoReloadVersionControl)
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr ""
+msgstr "רענון אוטומטית קבצים בבקרת הגרסאות"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
@@ -2749,7 +2752,7 @@ msgstr ""
 #, kde-format
 msgctxt "Script command name"
 msgid "Wrap with Tag"
-msgstr ""
+msgstr "גלישה עם תגית"
 
 #: script/data/commands/emmet.js:18
 #, kde-format
@@ -6295,12 +6298,15 @@ msgid "Apply &Word Wrap"
 msgstr "החלת &גלישת שורות"
 
 #: view/kateview.cpp:504
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
 "paragraph, to fit the 'Wrap words at' setting in the configuration dialog."
 "<br /><br />This is a static word wrap, meaning the document is changed."
-msgstr "להשתמש בזה כדי לגלוש "
+msgstr ""
+"יש להשתמש בזה כדי לשבור את השורה הזאת כך שתגלוש לשורה הבאה או לעצב את השורה "
+"הנבחרת כפסקה כדי שתתאים להגדרת ‚גלישת שורות לאחר’ בחלונית ההגדרה<br /><br /"
+">זאת גלישת שורות קבועה, כלומר שהמסמך משתנה."
 
 #: view/kateview.cpp:510
 #, kde-format
@@ -7525,8 +7531,7 @@ msgid "Show Window Decorations"
 msgstr "להציג עיטורי חלונות"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "צילום הבחירה"
