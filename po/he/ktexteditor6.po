@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-05-14 19:07+0300\n"
+"PO-Revision-Date: 2024-05-16 07:35+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -856,6 +856,9 @@ msgid ""
 "section <b>Editing</b> is disabled, a <b>Tab</b> character is inserted if "
 "the indentation is divisible by the tab width."
 msgstr ""
+"רוחב ההזחה הוא מספר הרווחים להזחת השורה. אם האפשרות <b>הוספתרווחים במקום "
+"טאבים</b> בסעיף <b>עריכה</b> מושבתת, יתווסף תו <b>Tab</b>  במקום אם ההזחה "
+"מתחלקת ברוחב טאב."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbIndentWithSpaces)
 #: dialogs/indentationconfigwidget.ui:97
@@ -1437,12 +1440,14 @@ msgid ""
 "When selected, composed characters are removed with their diacritics instead "
 "of only removing the base character. This is useful for Indic locales."
 msgstr ""
+"אם האפשרות נבחרה, אותיות מורכבות (עם ניקוד למשל) יוסרו עם הסימנים המבחינים "
+"במקום הסרת תו הבסיס בלבד. שימושי לשפות הודיות."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:177
 #, kde-format
 msgid "Backspace key removes character’s base with its diacritics"
-msgstr ""
+msgstr "מקש Backspace מסיר את בסיס התו עם הסימנים המבחינים"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbMulticursor)
 #: dialogs/navigationconfigwidget.ui:187
@@ -1650,6 +1655,8 @@ msgid ""
 "If this option is enabled the editor will autodetect the end of line type. "
 "The first found end of line type will be used for the whole file."
 msgstr ""
+"אם האפשרות הזאת פעילה, העורך יזהה את סוג סיומת השורה אוטומטית. סוג סיומת "
+"השורה הראשון שנמצא יחול על כלל הקובץ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDetectEOL)
 #: dialogs/opensaveconfigwidget.ui:125
@@ -1735,12 +1742,14 @@ msgid ""
 "On save, a line break is appended to the document if not already present. "
 "The line break is visible after reloading the file."
 msgstr ""
+"עם השמירה, ירידת שורה תתווסף לסוף המסמך אם עוד אין אחת כזאת. ירידת השורה "
+"תהיה גלויה לאחר רענון הקובץ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkNewLineAtEof)
 #: dialogs/opensaveconfigwidget.ui:229
 #, kde-format
 msgid "Append newline at end of file on save"
-msgstr ""
+msgstr "הוספת שורה חדשה בסוף הקובץ עם השמירה"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbAutoSave)
 #: dialogs/opensaveconfigwidget.ui:239
@@ -1827,6 +1836,8 @@ msgid ""
 "This value will be multiplied with the font's default line height. A value "
 "of 1.0 means that the default height will be used."
 msgstr ""
+"הערך הזה יוכפל בגובה ברירת המחדל של שורת הגופן. ערך של 1.0 אומר שהגובה בפועל "
+"יהיה גובה ברירת המחדל."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/textareaappearanceconfigwidget.ui:93
@@ -1856,7 +1867,7 @@ msgstr "גודל מחוון רווחים:"
 #: dialogs/textareaappearanceconfigwidget.ui:138
 #, kde-format
 msgid "Size of the visible highlight marker."
-msgstr ""
+msgstr "גודל סמן ההדגשה הגלוי."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
@@ -1896,7 +1907,7 @@ msgstr "הדגשת התווך בין הסוגריים הנבחרים"
 #: dialogs/textareaappearanceconfigwidget.ui:219
 #, kde-format
 msgid "Show the matching open bracket and lines adjacent to it for context"
-msgstr ""
+msgstr "הצגת הסוגריים הפתוחים התואמים ושורות סמוכות לקבל הקשר."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:222
@@ -1931,7 +1942,7 @@ msgstr "אם מופעל, ההתאמה של סוגריים תונפש על המס
 #: dialogs/textareaappearanceconfigwidget.ui:238
 #, kde-format
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
-msgstr ""
+msgstr "הבהוב הסוגריים התואמים עם הזזת הסמן לסוגר השני בצמד"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:245
@@ -2265,6 +2276,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"שימוש במצב השורות שיצא משימוש ‚remove-trailing-space’. נא להחליף ב־‚remove-"
+"trailing-spaces modified;’, לפרטים: https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5250
 #, kde-format
@@ -2274,6 +2289,10 @@ msgid ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 msgstr ""
+"שימוש במצב השורות שיצא משימוש ‚replace-trailing-space-save’. נא להחליף ב־"
+"‚remove-trailing-spaces all;’, לפרטים https://docs.kde.org/?"
+"application=katepart&branch=stable5&path=config-variables.html#variable-"
+"remove-trailing-spaces"
 
 #: document/katedocument.cpp:5560
 #, kde-format
@@ -2749,7 +2768,7 @@ msgstr "הרחבת קיצור"
 #, kde-format
 msgctxt "Script command category"
 msgid "Emmet"
-msgstr ""
+msgstr "Emmet"
 
 #: script/data/commands/emmet.js:13
 #, kde-format
@@ -2865,6 +2884,8 @@ msgid ""
 "Expands the abbreviation using Emmet expressions; see http://code.google.com/"
 "p/zen-coding/wiki/ZenHTMLSelectorsEn"
 msgstr ""
+"הרחבת ראשי התיבות באמצעות ביטויי Emmet, לפרטים: http://code.google.com/p/zen-"
+"coding/wiki/ZenHTMLSelectorsEn"
 
 #: script/data/commands/emmet.js:97
 #, kde-format
@@ -2872,6 +2893,8 @@ msgid ""
 "Wraps the selected text in XML tags constructed from the provided Emmet "
 "expression (defaults to div)."
 msgstr ""
+"עוטף את הטקסט הנבחר בתגיות XML שהורכבו מביטוי ה־Emmet שסופק (ברירת המחדל היא "
+"div)."
 
 #: script/data/commands/emmet.js:98
 #, kde-format
@@ -3132,6 +3155,9 @@ msgid ""
 "example to show the difference to the normal sort method:<br>sort(a10, a1, "
 "a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10"
 msgstr ""
+"סידור הטקסט הנבחר או את כל המסמך בצורה טבעית.<br>להלן דוגמה שמציגה את ההבדל "
+"מול השיטה הרגילה:<br>sort(a10,a1,a2) => a1,a10,a2<br>natsort(a10, a1, a2) => "
+"a1, a2, a10"
 
 #: script/data/commands/utils.js:472
 #, kde-format
@@ -3155,11 +3181,13 @@ msgid ""
 "between each line:<br><code>join ', '</code> will e.g. join lines and "
 "separate them by a comma."
 msgstr ""
+"צירוף השורות הנבחרות או המסמך כולו. אפשר להעביר מפריד כרשות בין השורות: "
+"<br><code>join ', '</code> למשל, יצרף שורות ויפריד ביניהן בפסיקים."
 
 #: script/data/commands/utils.js:480
 #, kde-format
 msgid "Removes empty lines from selection or whole document."
-msgstr ""
+msgstr "הסרת שורות ריקות מהבחירה או מהמסמך כולו."
 
 #: script/data/commands/utils.js:482
 #, kde-format
@@ -3283,7 +3311,7 @@ msgstr "Haskell"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "Julia"
-msgstr ""
+msgstr "Julia"
 
 #: script/data/indentation/latex.js:2
 #, kde-format
@@ -3319,7 +3347,7 @@ msgstr "Python"
 #, kde-format
 msgctxt "Autoindent mode"
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: script/data/indentation/replicode.js:2
 #, kde-format
