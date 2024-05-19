@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-05-16 07:35+0300\n"
+"PO-Revision-Date: 2024-05-18 15:44+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1918,6 +1918,9 @@ msgid ""
 "bracket, especially in long function/class declarations and deeply nested if "
 "blocks"
 msgstr ""
+"אם האפשרות פעילה, תצוגה מקדימה של השורות ליד סוגר פותח תואם מופיעה.\n"
+"יכול לסייע לקבוע את הקשר הסוגר הסוגר, במיוחד בפונקציות/הצהרות על מחלקות "
+"ארוכות ומקוננות מאוד אם במקטעים"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowBracketMatchPreview)
 #: dialogs/textareaappearanceconfigwidget.ui:225
@@ -1998,6 +2001,9 @@ msgid ""
 "helpful to hide license headers which are commonly placed at the\n"
 "beginning of a file."
 msgstr ""
+"כשהאפשרות הזאת פעילה, תצוגת העורך מקפלת מקטעי הערות שמתחילים\n"
+"בשורה הראשונה של המסמך. חיוני להסתרת כותרות רישוי שבדרך כלל מוצבות\n"
+"בראשי הקבצים."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:320
@@ -5091,6 +5097,7 @@ msgstr ""
 #, kde-format
 msgid "<p>set-mode <b>mode</b></p><p>Sets the mode as seen in Tools - Mode</p>"
 msgstr ""
+"<p>set-mode <b>mode</b></p><p>מגדיר את המצב כפי שמופיע תחת כלים - מצב</p>"
 
 #: utils/katecmds.cpp:192
 #, kde-format
@@ -5150,6 +5157,8 @@ msgstr "ארגומנט שגוי: ‚%1’. שימוש: ‎%2 on|off|1|0|true|fal
 msgid ""
 "Usage: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|all"
 msgstr ""
+"אופן שימוש: set-remove-trailing-spaces 0|-|none or 1|+|mod|modified or 2|*|"
+"all"
 
 #: utils/katecmds.cpp:434 vimode/cmds.cpp:168
 #, kde-format
