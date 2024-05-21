@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-12 00:36+0000\n"
-"PO-Revision-Date: 2024-05-18 15:44+0300\n"
+"PO-Revision-Date: 2024-05-19 21:50+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4951,6 +4951,8 @@ msgid ""
 "lines or current line a comment according to the text format as defined by "
 "the syntax highlight definition for the document.</p>"
 msgstr ""
+"<p>comment</p><p>הוספת סמני הערות כדי להפוך את הבחירה או את השורות הנבחרות "
+"להערה לפי תצורת הטקסט שמוגדרת בהגדרות הדגשת התחביר למסמך.</p>"
 
 #: utils/katecmds.cpp:73
 #, kde-format
@@ -4966,6 +4968,7 @@ msgid ""
 "<p>goto <b>line number</b></p><p>This command navigates to the specified "
 "line number.</p>"
 msgstr ""
+"<p>goto <b>מספר שורה</b></p><p>הפקודה הזאת מנווטת למספר שורה מסוים.</p>"
 
 #: utils/katecmds.cpp:84
 #, kde-format
@@ -4987,6 +4990,7 @@ msgid ""
 "<p>set-tab-width <b>width</b></p><p>Sets the tab width to the number "
 "<b>width</b></p>"
 msgstr ""
+"<p>set-tab-width <b>רוחב</b></p><p>הגדרת רוחב הטאב למספר <b>רוחב</b></p>"
 
 #: utils/katecmds.cpp:99
 #, kde-format
@@ -5035,6 +5039,8 @@ msgid ""
 "p><p>possible true values: 1 on true<br/>possible false values: 0 off false</"
 "p>"
 msgstr ""
+"<p>set-auto-indent <b>enable</b></p><p>הפעלת או השבתת הזחה אוטומטית.</"
+"p><p>ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
 #: utils/katecmds.cpp:141
 #, kde-format
@@ -5043,6 +5049,8 @@ msgid ""
 "numbers pane.</p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
+"<p>set-line-numbers <b>enable</b></p><p>הגדרת חשיפת לוח מספרי השורות.</p><p> "
+"ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
 #: utils/katecmds.cpp:148
 #, kde-format
@@ -5051,6 +5059,8 @@ msgid ""
 "folding markers pane.</p><p> possible true values: 1 on true<br/>possible "
 "false values: 0 off false</p>"
 msgstr ""
+"<p>set-folding-markers <b>enable</b></p><p>הגדרת חשיפת לוח סמני הקיפול.</"
+"p><p>ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
 #: utils/katecmds.cpp:155
 #, kde-format
@@ -5059,6 +5069,8 @@ msgid ""
 "border.</p><p> possible true values: 1 on true<br/>possible false values: 0 "
 "off false</p>"
 msgstr ""
+"<p>set-icon-border <b>enable</b></p><p>הגדרת חשיפת מסגרות הסמלים.</p><p> "
+"ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 off false</p>"
 
 #: utils/katecmds.cpp:162
 #, kde-format
@@ -5067,6 +5079,9 @@ msgid ""
 "<b>enable</b></p><p> possible true values: 1 on true<br/>possible false "
 "values: 0 off false</p>"
 msgstr ""
+"<p>set-word-wrap <b>enable</b></p><p>הפעלת גלישת שורות דינמית בהתאם ל־"
+"<b>enable</b></p><p> ערכי חיוב אפשריים: 1 on true<br/>ערכי שלילה אפשריים: 0 "
+"off false</p>"
 
 #: utils/katecmds.cpp:169
 #, kde-format
@@ -5878,7 +5893,7 @@ msgstr "הפעלת מצב בחירת מקטעים."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the byte order mark (BOM) when saving Unicode files."
-msgstr ""
+msgstr "להפעיל את סמן סדר הבתים (BOM) בעת שמירת קובצי יוניקוד."
 
 #: variableeditor/variablelineedit.cpp:148
 #, kde-format
@@ -5896,7 +5911,7 @@ msgstr "הגדרת צבע הרקע של השורה הנוכחית."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the default dictionary used for spell checking."
-msgstr ""
+msgstr "הגדרת מילון ברירת המחדל שמשמש לבדיקת איות."
 
 #: variableeditor/variablelineedit.cpp:164
 #, kde-format
@@ -5915,7 +5930,7 @@ msgstr "הגדרת מצב סוף השורה."
 msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
-msgstr ""
+msgstr "להפעיל האם לחיצה על Enter תוסיף את הפריט הנבחר מההשלמה האוטומטית."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -7621,6 +7636,11 @@ msgid ""
 "<tt>wa</tt> &mdash; writes all documents to disk.</p><p>If no file name is "
 "associated with the document, a file dialog will be shown.</p>"
 msgstr ""
+"<p><b>w/wa &mdash; כתיבת מסמכים לכונן</b></p><p>אופן שימוש: <tt><b>w[a]</b></"
+"tt></p><p>כותב את המסמכים הנוכחיים לכונן. אפשר לקרוא לפקודה בשתי דרכים:<br /"
+"> <tt>w</tt> &mdash; לכתוב את המסמך הנוכחי לכונן<br /> <tt>wa</tt> &mdash; "
+"לכתוב את כל המסמכים לכונן.</p><p>אם לא משויך למסמך שם קובץ, תיפתח חלונית "
+"קבצים.</p>"
 
 #: vimode/appcommands.cpp:213
 #, kde-format
