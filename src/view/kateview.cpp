@@ -60,7 +60,7 @@
 #include <KCursor>
 #include <KMessageBox>
 #include <KSelectAction>
-#include <KStandardAction>
+#include <KStandardActions>
 #include <KStandardShortcut>
 #include <KToggleAction>
 #include <KXMLGUIFactory>
@@ -453,13 +453,15 @@ void KTextEditor::ViewPrivate::setupActions()
 
     m_toggleWriteLock = nullptr;
 
-    m_cut = a = ac->addAction(KStandardAction::Cut, this, SLOT(cut()));
+    m_cut = a = ac->addAction(KStandardActions::Cut, this, &KTextEditor::ViewPrivate::cut);
     a->setWhatsThis(i18n("Cut the selected text and move it to the clipboard"));
 
-    m_paste = a = ac->addAction(KStandardAction::Paste, this, SLOT(paste()));
+    m_paste = a = ac->addAction(KStandardActions::Paste, this, [this] {
+        paste();
+    });
     a->setWhatsThis(i18n("Paste previously copied or cut clipboard contents"));
 
-    m_copy = a = ac->addAction(KStandardAction::Copy, this, SLOT(copy()));
+    m_copy = a = ac->addAction(KStandardActions::Copy, this, &KTextEditor::ViewPrivate::copy);
     a->setWhatsThis(i18n("Use this command to copy the currently selected text to the system clipboard."));
 
     m_clipboardHistory = a = ac->addAction(QStringLiteral("clipboard_history_paste"), this, [this] {
@@ -470,13 +472,13 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::ALT | Qt::Key_V));
 
     if (QApplication::clipboard()->supportsSelection()) {
-        m_pasteSelection = a = ac->addAction(QStringLiteral("edit_paste_selection"), this, SLOT(pasteSelection()));
+        m_pasteSelection = a = ac->addAction(QStringLiteral("edit_paste_selection"), this, &KTextEditor::ViewPrivate::pasteSelection);
         a->setText(i18n("Paste Selection"));
         ac->setDefaultShortcuts(a, KStandardShortcut::pasteSelection());
         a->setWhatsThis(i18n("Paste previously mouse selection contents"));
     }
 
-    m_swapWithClipboard = a = ac->addAction(QStringLiteral("edit_swap_with_clipboard"), this, SLOT(swapWithClipboard()));
+    m_swapWithClipboard = a = ac->addAction(QStringLiteral("edit_swap_with_clipboard"), this, &KTextEditor::ViewPrivate::swapWithClipboard);
     a->setText(i18n("Swap with Clipboard Contents"));
     a->setWhatsThis(i18n("Swap the selected text with the clipboard contents"));
 
@@ -484,13 +486,13 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setText(i18n("Take Screenshot of Selection"));
 
     if (!doc()->readOnly()) {
-        a = ac->addAction(KStandardAction::Save, m_doc, SLOT(documentSave()));
+        a = ac->addAction(KStandardActions::Save, m_doc, &KTextEditor::DocumentPrivate::documentSave);
         a->setWhatsThis(i18n("Save the current document"));
 
-        a = m_editUndo = ac->addAction(KStandardAction::Undo, m_doc, SLOT(undo()));
+        a = m_editUndo = ac->addAction(KStandardActions::Undo, m_doc, &KTextEditor::DocumentPrivate::undo);
         a->setWhatsThis(i18n("Revert the most recent editing actions"));
 
-        a = m_editRedo = ac->addAction(KStandardAction::Redo, m_doc, SLOT(redo()));
+        a = m_editRedo = ac->addAction(KStandardActions::Redo, m_doc, &KTextEditor::DocumentPrivate::redo);
         a->setWhatsThis(i18n("Revert the most recent undo operation"));
 
         // Tools > Scripts
@@ -635,10 +637,10 @@ void KTextEditor::ViewPrivate::setupActions()
         m_editRedo = nullptr;
     }
 
-    a = ac->addAction(KStandardAction::Print, this, SLOT(print()));
+    a = ac->addAction(KStandardActions::Print, this, &KTextEditor::ViewPrivate::print);
     a->setWhatsThis(i18n("Print the current document."));
 
-    a = ac->addAction(KStandardAction::PrintPreview, this, SLOT(printPreview()));
+    a = ac->addAction(KStandardActions::PrintPreview, this, &KTextEditor::ViewPrivate::printPreview);
     a->setWhatsThis(i18n("Show print preview of current document"));
 
     a = ac->addAction(QStringLiteral("file_reload"));
@@ -648,7 +650,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Reload the current document from disk."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::reloadFile);
 
-    a = ac->addAction(KStandardAction::SaveAs, m_doc, SLOT(documentSaveAs()));
+    a = ac->addAction(KStandardActions::SaveAs, m_doc, &KTextEditor::DocumentPrivate::documentSaveAs);
     a->setWhatsThis(i18n("Save the current document to disk, with a name of your choice."));
 
     a = new KateViewEncodingAction(m_doc, this, i18nc("@action", "Save As with Encoding…"), this, true /* special mode for save as */);
@@ -661,7 +663,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Save a copy of the current document to disk."));
     connect(a, &QAction::triggered, m_doc, &KTextEditor::DocumentPrivate::documentSaveCopyAs);
 
-    a = ac->addAction(KStandardAction::GotoLine, this, SLOT(gotoLine()));
+    a = ac->addAction(KStandardActions::GotoLine, this, &KTextEditor::ViewPrivate::gotoLine);
     a->setWhatsThis(i18n("This command opens a dialog and lets you choose a line that you want the cursor to move to."));
 
     a = ac->addAction(QStringLiteral("modified_line_up"));
@@ -702,14 +704,13 @@ void KTextEditor::ViewPrivate::setupActions()
     KateViewIndentationAction *indentMenu = new KateViewIndentationAction(m_doc, i18n("&Indentation"), this);
     ac->addAction(QStringLiteral("tools_indentation"), indentMenu);
 
-    m_selectAll = ac->addAction(KStandardAction::SelectAll);
-    connect(m_selectAll, &QAction::triggered, this, [this] {
+    m_selectAll = ac->addAction(KStandardActions::SelectAll, this, [this] {
         selectAll();
         qApp->clipboard()->setText(selectionText(), QClipboard::Selection);
     });
     a->setWhatsThis(i18n("Select the entire text of the current document."));
 
-    m_deSelect = a = ac->addAction(KStandardAction::Deselect, this, SLOT(clearSelection()));
+    m_deSelect = a = ac->addAction(KStandardActions::Deselect, this, qOverload<>(&KTextEditor::ViewPrivate::clearSelection));
     a->setWhatsThis(i18n("If you have selected something within the current document, this will no longer be selected."));
 
     a = ac->addAction(QStringLiteral("view_inc_font_sizes"));
@@ -819,7 +820,7 @@ void KTextEditor::ViewPrivate::setupActions()
     //   a = m_toggleScrollBarMiniMapAll = toggleAction = new KToggleAction(i18n("Show the whole document in the Mini-Map"), this);
     //   ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
     //   a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
-    //   mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
+    //   mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
     //   m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
 
     a = m_toggleNPSpaces = new KToggleAction(i18n("Show Non-Printable Spaces"), this);
@@ -872,7 +873,7 @@ void KTextEditor::ViewPrivate::setupActions()
     m_encodingAction = new KateViewEncodingAction(m_doc, this, i18n("E&ncoding"), this);
     ac->addAction(QStringLiteral("set_encoding"), m_encodingAction);
 
-    a = ac->addAction(KStandardAction::Find, this, SLOT(find()));
+    a = ac->addAction(KStandardActions::Find, this, &KTextEditor::ViewPrivate::find);
     a->setWhatsThis(i18n("Look up the first occurrence of a piece of text or regular expression."));
     addAction(a);
 
@@ -906,15 +907,15 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Finds all occurrences of the word under cursor and selects them."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::findAllOccuruncesAndSelect);
 
-    a = ac->addAction(KStandardAction::FindNext, this, SLOT(findNext()));
+    a = ac->addAction(KStandardActions::FindNext, this, &KTextEditor::ViewPrivate::findNext);
     a->setWhatsThis(i18n("Look up the next occurrence of the search phrase."));
     addAction(a);
 
-    a = ac->addAction(KStandardAction::FindPrev, QStringLiteral("edit_find_prev"), this, SLOT(findPrevious()));
+    a = ac->addAction(KStandardActions::FindPrev, QStringLiteral("edit_find_prev"), this, &KTextEditor::ViewPrivate::findPrevious);
     a->setWhatsThis(i18n("Look up the previous occurrence of the search phrase."));
     addAction(a);
 
-    a = ac->addAction(KStandardAction::Replace, this, SLOT(replace()));
+    a = ac->addAction(KStandardActions::Replace, this, &KTextEditor::ViewPrivate::replace);
     a->setWhatsThis(i18n("Look up a piece of text or regular expression and replace the result with some given text."));
 
     a = ac->addAction(QStringLiteral("edit_create_multi_cursor_from_sel"));

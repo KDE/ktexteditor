@@ -26,7 +26,6 @@
 #include <KColorScheme>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KStandardAction>
 
 #include <QCheckBox>
 #include <QComboBox>

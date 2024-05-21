@@ -20,7 +20,7 @@
 
 #include <KActionCollection>
 #include <KLocalizedString>
-#include <KStandardAction>
+#include <KStandardActions>
 
 #include <sonnet/backgroundchecker.h>
 #include <sonnet/speller.h>
@@ -46,7 +46,7 @@ KateSpellCheckDialog::~KateSpellCheckDialog()
 
 void KateSpellCheckDialog::createActions(KActionCollection *ac)
 {
-    ac->addAction(KStandardAction::Spelling, this, SLOT(spellcheck()));
+    ac->addAction(KStandardActions::Spelling, this, qOverload<>(&KateSpellCheckDialog::spellcheck));
 
     auto *a = new QAction(i18nc("@action", "Spelling (from Cursor)…"), this);
     ac->addAction(QStringLiteral("tools_spelling_from_cursor"), a);
