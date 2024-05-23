@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-12 00:36+0000\n"
+"POT-Creation-Date: 2024-05-23 00:36+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2227,18 +2227,18 @@ msgid "New file"
 msgstr "Novi fajl"
 
 # >> @title:window
-#: document/katedocument.cpp:223
+#: document/katedocument.cpp:222
 #, fuzzy, kde-format
 #| msgid "Close Document"
 msgid "Auto Reload Document"
 msgstr "Zatvaranje dokumenta"
 
-#: document/katedocument.cpp:224
+#: document/katedocument.cpp:223
 #, kde-format
 msgid "Automatic reload the document when it was changed on disk"
 msgstr ""
 
-#: document/katedocument.cpp:2254
+#: document/katedocument.cpp:2253
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2247,25 +2247,25 @@ msgstr ""
 "Fajl <tt>%1</tt> nije mogao biti učitan, pošto se ne može čitati. Proverite "
 "da li imate dozvolu čitanja za ovaj fajl."
 
-#: document/katedocument.cpp:2259
+#: document/katedocument.cpp:2258
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Pokušaj ponovo"
 
-#: document/katedocument.cpp:2263 document/katedocument.cpp:6508
+#: document/katedocument.cpp:2262 document/katedocument.cpp:6507
 #, kde-format
 msgid "&Close"
 msgstr "&Zatvori"
 
-#: document/katedocument.cpp:2264 document/katedocument.cpp:6509
+#: document/katedocument.cpp:2263 document/katedocument.cpp:6508
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Zatvori poruku"
 
-#: document/katedocument.cpp:2396
+#: document/katedocument.cpp:2395
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2279,7 +2279,7 @@ msgstr ""
 "uključite režim čitanja-pisanja u meniju alatki ako ipak želite da ga "
 "uređujete."
 
-#: document/katedocument.cpp:2415
+#: document/katedocument.cpp:2414
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2295,17 +2295,17 @@ msgstr ""
 "ima %3 $[množ ^3 znak znaka znakova]. Takvi redovi su prelomljeni i dokument "
 "je postavljen na samo‑za‑čitanje, pošto bi upisivanje izmenilo sadržaj fajla."
 
-#: document/katedocument.cpp:2422
+#: document/katedocument.cpp:2421
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Privremeno podigni ograničenje i ponovo učitaj fajl"
 
-#: document/katedocument.cpp:2425
+#: document/katedocument.cpp:2424
 #, kde-format
 msgid "Close"
 msgstr "Zatvori"
 
-#: document/katedocument.cpp:2452
+#: document/katedocument.cpp:2451
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2314,18 +2314,18 @@ msgstr ""
 "Želite li zaista da sačuvate ovaj neizmenjen fajl? Možete prebrisati "
 "izmenjene podatke trenutno na disku."
 
-#: document/katedocument.cpp:2453
+#: document/katedocument.cpp:2452
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Pokušaj da se sačuva neizmenjeni fajl"
 
-#: document/katedocument.cpp:2454 document/katedocument.cpp:2465
-#: document/katedocument.cpp:2481
+#: document/katedocument.cpp:2453 document/katedocument.cpp:2464
+#: document/katedocument.cpp:2480
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Svejedno sačuvaj"
 
-#: document/katedocument.cpp:2463
+#: document/katedocument.cpp:2462
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2334,14 +2334,14 @@ msgstr ""
 "Želite li zaista da sačuvate ovaj fajl? I sadržaj u uređivaču i na disku je "
 "izmenjen, te može doći do gubitka podataka."
 
-#: document/katedocument.cpp:2464 document/katedocument.cpp:2480
-#: document/katedocument.cpp:2797 syntax/katethemeconfig.cpp:1207
+#: document/katedocument.cpp:2463 document/katedocument.cpp:2479
+#: document/katedocument.cpp:2796 syntax/katethemeconfig.cpp:1207
 #: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Moguć gubitak podataka"
 
-#: document/katedocument.cpp:2478
+#: document/katedocument.cpp:2477
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2350,7 +2350,7 @@ msgstr ""
 "Izabrano kodiranje ne može da kodira svaki Unicode znak u ovom dokumentu. "
 "Želite li zaista da ga sačuvate? Može doći do gubitka podataka."
 
-#: document/katedocument.cpp:2548
+#: document/katedocument.cpp:2547
 #, fuzzy, kde-format
 #| msgid ""
 #| "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2369,7 +2369,7 @@ msgstr ""
 "Proverite da li imate dozvolu upisa za ovaj fajl, ili da li ima dovoljno "
 "slobodnog prostora na disku."
 
-#: document/katedocument.cpp:2669
+#: document/katedocument.cpp:2668
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2382,52 +2382,52 @@ msgstr ""
 "medijum na koji upisujete, ili nedostatak dozvole pisanja u fasciklu u kojoj "
 "je fajl."
 
-#: document/katedocument.cpp:2673
+#: document/katedocument.cpp:2672
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Ne mogu da napravim rezervu."
 
-#: document/katedocument.cpp:2674
+#: document/katedocument.cpp:2673
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Ipak pokušaj da sačuvaš"
 
-#: document/katedocument.cpp:2796
+#: document/katedocument.cpp:2795
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Želite li zaista da zatvorite ovaj fajl? Može doći do gubitka podataka."
 
-#: document/katedocument.cpp:2798
+#: document/katedocument.cpp:2797
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Ipak zatvori"
 
-#: document/katedocument.cpp:4579
+#: document/katedocument.cpp:4578
 #, kde-format
 msgid "Untitled"
 msgstr "Neimenovano"
 
 # >> @title:window
-#: document/katedocument.cpp:4702 document/katedocument.cpp:4928
-#: document/katedocument.cpp:4938 document/katedocument.cpp:5731
-#: document/katedocument.cpp:5918
+#: document/katedocument.cpp:4701 document/katedocument.cpp:4927
+#: document/katedocument.cpp:4937 document/katedocument.cpp:5730
+#: document/katedocument.cpp:5917
 #, kde-format
 msgid "Save File"
 msgstr "Upisivanje fajla"
 
-#: document/katedocument.cpp:4705
+#: document/katedocument.cpp:4704
 #, kde-format
 msgid "Save failed"
 msgstr "Upisivanje nije uspelo"
 
 # >> @title:window
-#: document/katedocument.cpp:4949
+#: document/katedocument.cpp:4948
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Upisivanje kopije fajla"
 
-#: document/katedocument.cpp:4961
+#: document/katedocument.cpp:4960
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2442,7 +2442,7 @@ msgstr ""
 
 # literal-segment: remove-trailing-space
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5244
+#: document/katedocument.cpp:5243
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2460,7 +2460,7 @@ msgstr ""
 
 # literal-segment: replace-trailing-space-save
 # literal-segment: remove-trailing-spaces
-#: document/katedocument.cpp:5250
+#: document/katedocument.cpp:5249
 #, fuzzy, kde-format
 #| msgid ""
 #| "Using deprecated modeline 'replace-trailing-space-save'. Please replace "
@@ -2477,25 +2477,25 @@ msgstr ""
 "stable/en/applications/kate/config-variables.html#variable-remove-trailing-"
 "spaces."
 
-#: document/katedocument.cpp:5560
+#: document/katedocument.cpp:5559
 #, fuzzy, kde-format
 #| msgid "The file '%1' was modified by another program."
 msgid "The file '%1' was modified on disk."
 msgstr "Neki drugi program je izmenio fajl ‘%1’."
 
-#: document/katedocument.cpp:5563
+#: document/katedocument.cpp:5562
 #, fuzzy, kde-format
 #| msgid "The file '%1' was created by another program."
 msgid "The file '%1' was created on disk."
 msgstr "Neki drugi program je napravio fajl ‘%1’."
 
-#: document/katedocument.cpp:5566
+#: document/katedocument.cpp:5565
 #, fuzzy, kde-format
 #| msgid "The file '%1' was deleted by another program."
 msgid "The file '%1' was deleted on disk."
 msgstr "Neki drugi program je obrisao fajl ‘%1’."
 
-#: document/katedocument.cpp:5903
+#: document/katedocument.cpp:5902
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2505,17 +2505,17 @@ msgstr ""
 "Želite li da izmene sačuvate ili odbacite?"
 
 # >> @title:window
-#: document/katedocument.cpp:5906
+#: document/katedocument.cpp:5905
 #, kde-format
 msgid "Close Document"
 msgstr "Zatvaranje dokumenta"
 
-#: document/katedocument.cpp:6017
+#: document/katedocument.cpp:6016
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Fajl <a href=\"%1\">%2</a> još se učitava."
 
-#: document/katedocument.cpp:6022
+#: document/katedocument.cpp:6021
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Obustavi učitavanje"
@@ -3705,12 +3705,12 @@ msgstr ""
 msgid "Command not found: %1"
 msgstr "Naredba nije nađena: %1"
 
-#: search/katesearchbar.cpp:74
+#: search/katesearchbar.cpp:73
 #, kde-format
 msgid "Add..."
 msgstr "Dodaj..."
 
-#: search/katesearchbar.cpp:299
+#: search/katesearchbar.cpp:298
 #, kde-format
 msgctxt "short translation"
 msgid "1 replacement made"
@@ -3720,7 +3720,7 @@ msgstr[1] "izvršene %1 zamene"
 msgstr[2] "izvršeno %1 zamena"
 msgstr[3] "izvršena %1 zamena"
 
-#: search/katesearchbar.cpp:301
+#: search/katesearchbar.cpp:300
 #, kde-format
 msgctxt "short translation"
 msgid "1 match found"
@@ -3730,226 +3730,226 @@ msgstr[1] "nađena %1 poklapanja"
 msgstr[2] "nađeno %1 poklapanja"
 msgstr[3] "nađeno 1 poklapanje"
 
-#: search/katesearchbar.cpp:375
+#: search/katesearchbar.cpp:374
 #, kde-format
 msgid "Reached top, continued from bottom"
 msgstr "Dosegnut vrh, nastavljam s dna."
 
-#: search/katesearchbar.cpp:377
+#: search/katesearchbar.cpp:376
 #, kde-format
 msgid "Reached bottom, continued from top"
 msgstr "Dosegnuto dno, nastavljam s vrha."
 
-#: search/katesearchbar.cpp:382
+#: search/katesearchbar.cpp:381
 #, kde-format
 msgid "Not found"
 msgstr "Nije nađeno"
 
-#: search/katesearchbar.cpp:616
+#: search/katesearchbar.cpp:615
 #, kde-format
 msgid "Bottom of file reached. Continue from top?"
 msgstr "Dosegnut kraj fajla, nastaviti s vrha?"
 
-#: search/katesearchbar.cpp:616
+#: search/katesearchbar.cpp:615
 #, kde-format
 msgid "Top of file reached. Continue from bottom?"
 msgstr "Dosegnut vrh fajla, nastaviti s dna?"
 
-#: search/katesearchbar.cpp:619
+#: search/katesearchbar.cpp:618
 #, kde-format
 msgid "Continue search?"
 msgstr "Nastaviti pretragu?"
 
-#: search/katesearchbar.cpp:921
+#: search/katesearchbar.cpp:920
 #, kde-format
 msgid "SearchHighLight"
 msgstr "Isticanje pretrage"
 
-#: search/katesearchbar.cpp:1159
+#: search/katesearchbar.cpp:1158
 #, kde-format
 msgid "Beginning of line"
 msgstr "početak reda"
 
-#: search/katesearchbar.cpp:1160
+#: search/katesearchbar.cpp:1159
 #, kde-format
 msgid "End of line"
 msgstr "kraj reda"
 
-#: search/katesearchbar.cpp:1162
+#: search/katesearchbar.cpp:1161
 #, fuzzy, kde-format
 #| msgid "Any single character (excluding line breaks)"
 msgid "Match any character excluding new line (by default)"
 msgstr "bilo koji znak (osim preloma reda)"
 
-#: search/katesearchbar.cpp:1163
+#: search/katesearchbar.cpp:1162
 #, kde-format
 msgid "One or more occurrences"
 msgstr "jedno ili više javljanja"
 
-#: search/katesearchbar.cpp:1164
+#: search/katesearchbar.cpp:1163
 #, kde-format
 msgid "Zero or more occurrences"
 msgstr "nula ili više javljanja"
 
-#: search/katesearchbar.cpp:1165
+#: search/katesearchbar.cpp:1164
 #, kde-format
 msgid "Zero or one occurrences"
 msgstr "nula ili jedno javljanje"
 
-#: search/katesearchbar.cpp:1168
+#: search/katesearchbar.cpp:1167
 #, kde-format
 msgid "<a> through <b> occurrences"
 msgstr "od a do b javljanja"
 
-#: search/katesearchbar.cpp:1174
+#: search/katesearchbar.cpp:1173
 #, kde-format
 msgid "Group, capturing"
 msgstr "grupa, zahvatna"
 
-#: search/katesearchbar.cpp:1175
+#: search/katesearchbar.cpp:1174
 #, kde-format
 msgid "Or"
 msgstr "ili"
 
-#: search/katesearchbar.cpp:1176
+#: search/katesearchbar.cpp:1175
 #, kde-format
 msgid "Set of characters"
 msgstr "skup znakova"
 
-#: search/katesearchbar.cpp:1177
+#: search/katesearchbar.cpp:1176
 #, kde-format
 msgid "Negative set of characters"
 msgstr "negativni skup znakova"
 
-#: search/katesearchbar.cpp:1181
+#: search/katesearchbar.cpp:1180
 #, kde-format
 msgid "Whole match reference"
 msgstr "upućivač celog poklapanja"
 
-#: search/katesearchbar.cpp:1192
+#: search/katesearchbar.cpp:1191
 #, kde-format
 msgid "Reference"
 msgstr "upućivač"
 
-#: search/katesearchbar.cpp:1199
+#: search/katesearchbar.cpp:1198
 #, kde-format
 msgid "Line break"
 msgstr "prelom reda"
 
-#: search/katesearchbar.cpp:1200
+#: search/katesearchbar.cpp:1199
 #, kde-format
 msgid "Tab"
 msgstr "tabulator"
 
-#: search/katesearchbar.cpp:1203
+#: search/katesearchbar.cpp:1202
 #, kde-format
 msgid "Word boundary"
 msgstr "granica reči"
 
-#: search/katesearchbar.cpp:1204
+#: search/katesearchbar.cpp:1203
 #, kde-format
 msgid "Not word boundary"
 msgstr "nije granica reči"
 
-#: search/katesearchbar.cpp:1205
+#: search/katesearchbar.cpp:1204
 #, kde-format
 msgid "Digit"
 msgstr "cifra"
 
-#: search/katesearchbar.cpp:1206
+#: search/katesearchbar.cpp:1205
 #, kde-format
 msgid "Non-digit"
 msgstr "nije cifra"
 
-#: search/katesearchbar.cpp:1207
+#: search/katesearchbar.cpp:1206
 #, kde-format
 msgid "Whitespace (excluding line breaks)"
 msgstr "praznina (osim preloma reda)"
 
 # >> @item:inmenu Indentation Mode
-#: search/katesearchbar.cpp:1208
+#: search/katesearchbar.cpp:1207
 #, fuzzy, kde-format
 #| msgid "Spaces"
 msgid "Non-whitespace"
 msgstr "razmaci"
 
-#: search/katesearchbar.cpp:1209
+#: search/katesearchbar.cpp:1208
 #, kde-format
 msgid "Word character (alphanumerics plus '_')"
 msgstr "znak reči (alfanumerički i podvlaka)"
 
-#: search/katesearchbar.cpp:1210
+#: search/katesearchbar.cpp:1209
 #, kde-format
 msgid "Non-word character"
 msgstr "nije znak reči"
 
-#: search/katesearchbar.cpp:1213
+#: search/katesearchbar.cpp:1212
 #, kde-format
 msgid "Octal character 000 to 377 (2^8-1)"
 msgstr "oktalni znak 000 do 377 (2^8-1)"
 
-#: search/katesearchbar.cpp:1214
+#: search/katesearchbar.cpp:1213
 #, kde-format
 msgid "Hex character 0000 to FFFF (2^16-1)"
 msgstr "heksadekadni znak 0000 do FFFF (2^16-1)"
 
-#: search/katesearchbar.cpp:1215
+#: search/katesearchbar.cpp:1214
 #, kde-format
 msgid "Backslash"
 msgstr "kontrakroz"
 
-#: search/katesearchbar.cpp:1219
+#: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Group, non-capturing"
 msgstr "grupa, nezahvatna"
 
-#: search/katesearchbar.cpp:1220
+#: search/katesearchbar.cpp:1219
 #, fuzzy, kde-format
 #| msgid "Negative lookahead"
 msgid "Positive Lookahead"
 msgstr "negativni preduvid"
 
-#: search/katesearchbar.cpp:1221
+#: search/katesearchbar.cpp:1220
 #, kde-format
 msgid "Negative lookahead"
 msgstr "negativni preduvid"
 
-#: search/katesearchbar.cpp:1225
+#: search/katesearchbar.cpp:1224
 #, kde-format
 msgid "Fixed-length positive lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1226
+#: search/katesearchbar.cpp:1225
 #, kde-format
 msgid "Fixed-length negative lookbehind"
 msgstr ""
 
-#: search/katesearchbar.cpp:1231
+#: search/katesearchbar.cpp:1230
 #, kde-format
 msgid "Begin lowercase conversion"
 msgstr "početak pretvaranja u mala"
 
-#: search/katesearchbar.cpp:1232
+#: search/katesearchbar.cpp:1231
 #, kde-format
 msgid "Begin uppercase conversion"
 msgstr "početak pretvaranja u velika"
 
-#: search/katesearchbar.cpp:1233
+#: search/katesearchbar.cpp:1232
 #, kde-format
 msgid "End case conversion"
 msgstr "kraj pretvaranja slova"
 
-#: search/katesearchbar.cpp:1234
+#: search/katesearchbar.cpp:1233
 #, kde-format
 msgid "Lowercase first character conversion"
 msgstr "pretvaranje prvog slova u malo"
 
-#: search/katesearchbar.cpp:1235
+#: search/katesearchbar.cpp:1234
 #, kde-format
 msgid "Uppercase first character conversion"
 msgstr "pretvaranje prvog slova u veliko"
 
-#: search/katesearchbar.cpp:1236
+#: search/katesearchbar.cpp:1235
 #, kde-format
 msgid "Replacement counter (for Replace All)"
 msgstr "brojač zamena (pri zameni svega)"
@@ -6744,7 +6744,7 @@ msgstr "kraj reda"
 msgid "Mode"
 msgstr "&Režim"
 
-#: view/katestatusbar.cpp:209 view/kateview.cpp:688
+#: view/katestatusbar.cpp:209 view/kateview.cpp:690
 #, kde-format
 msgid ""
 "Here you can choose which mode should be used for the current document. This "
@@ -6865,78 +6865,78 @@ msgstr ""
 msgid "Cut the selected text and move it to the clipboard"
 msgstr "Iseci izabrani tekst i smesti ga u klipbord"
 
-#: view/kateview.cpp:460
+#: view/kateview.cpp:462
 #, kde-format
 msgid "Paste previously copied or cut clipboard contents"
 msgstr "Nalepi prethodno kopirani ili isečeni sadržaj klipborda"
 
-#: view/kateview.cpp:463
+#: view/kateview.cpp:465
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text to the system clipboard."
 msgstr "Kopirajte trenutno izabrani tekst u sistemski klipbord."
 
-#: view/kateview.cpp:469
+#: view/kateview.cpp:471
 #, fuzzy, kde-format
 #| msgid "Clipboard &History"
 msgid "Clipboard &History Paste"
 msgstr "&Istorijat klipborda"
 
-#: view/kateview.cpp:474
+#: view/kateview.cpp:476
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Paste Selection"
 msgstr "Izbor jezika"
 
-#: view/kateview.cpp:476
+#: view/kateview.cpp:478
 #, fuzzy, kde-format
 #| msgid "Paste previously copied or cut clipboard contents"
 msgid "Paste previously mouse selection contents"
 msgstr "Nalepi prethodno kopirani ili isečeni sadržaj klipborda"
 
-#: view/kateview.cpp:480
+#: view/kateview.cpp:482
 #, kde-format
 msgid "Swap with Clipboard Contents"
 msgstr ""
 
-#: view/kateview.cpp:481
+#: view/kateview.cpp:483
 #, fuzzy, kde-format
 #| msgid "Cut the selected text and move it to the clipboard"
 msgid "Swap the selected text with the clipboard contents"
 msgstr "Iseci izabrani tekst i smesti ga u klipbord"
 
-#: view/kateview.cpp:484
+#: view/kateview.cpp:486
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Take Screenshot of Selection"
 msgstr "Izbor jezika"
 
-#: view/kateview.cpp:488
+#: view/kateview.cpp:490
 #, kde-format
 msgid "Save the current document"
 msgstr "Sačuvaj tekući dokument"
 
-#: view/kateview.cpp:491
+#: view/kateview.cpp:493
 #, kde-format
 msgid "Revert the most recent editing actions"
 msgstr "Opozovi poslednje uređivačke radnje"
 
-#: view/kateview.cpp:494
+#: view/kateview.cpp:496
 #, kde-format
 msgid "Revert the most recent undo operation"
 msgstr "Opozovi poslednji opoziv"
 
-#: view/kateview.cpp:498
+#: view/kateview.cpp:500
 #, kde-format
 msgid "&Scripts"
 msgstr "&Skripte"
 
-#: view/kateview.cpp:502
+#: view/kateview.cpp:504
 #, kde-format
 msgid "Apply &Word Wrap"
 msgstr "&Prelomi redove"
 
-#: view/kateview.cpp:504
+#: view/kateview.cpp:506
 #, kde-format
 msgid ""
 "Use this to wrap the current line, or to reformat the selected lines as "
@@ -6944,12 +6944,12 @@ msgid ""
 "<br /><br />This is a static word wrap, meaning the document is changed."
 msgstr ""
 
-#: view/kateview.cpp:510
+#: view/kateview.cpp:512
 #, kde-format
 msgid "&Clean Indentation"
 msgstr "&Očisti uvlačanje"
 
-#: view/kateview.cpp:512
+#: view/kateview.cpp:514
 #, kde-format
 msgid ""
 "Use this to clean the indentation of a selected block of text (only tabs/"
@@ -6960,13 +6960,13 @@ msgstr ""
 "razmaci).<br /><br />U dijalogu za podešavanje možete odrediti da li treba "
 "poštovati i koristiti tabulatore, ili ih smenjivati razmacima.</html>"
 
-#: view/kateview.cpp:517
+#: view/kateview.cpp:519
 #, fuzzy, kde-format
 #| msgid "&Indentation"
 msgid "&Format Indentation"
 msgstr "&Uvlačenje"
 
-#: view/kateview.cpp:518
+#: view/kateview.cpp:520
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use this to align the current line or block of text to its proper indent "
@@ -6976,14 +6976,14 @@ msgid ""
 "indent level."
 msgstr "Poravnajte tekući red ili blok teksta na odgovarajući nivo uvlačenja."
 
-#: view/kateview.cpp:522
+#: view/kateview.cpp:524
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgctxt "@action"
 msgid "&Align On…"
 msgstr "&Poravnaj"
 
-#: view/kateview.cpp:524
+#: view/kateview.cpp:526
 #, kde-format
 msgid ""
 "This command aligns lines in the selected block or whole document on the "
@@ -6997,12 +6997,12 @@ msgid ""
 "column."
 msgstr ""
 
-#: view/kateview.cpp:535
+#: view/kateview.cpp:537
 #, kde-format
 msgid "C&omment"
 msgstr "Za&komentariši"
 
-#: view/kateview.cpp:538
+#: view/kateview.cpp:540
 #, kde-format
 msgid ""
 "This command comments out the current line or a selected block of text.<br /"
@@ -7013,24 +7013,24 @@ msgstr ""
 "<br /><br />Znakovi za komentarisanje jednog ili više redova definisani su u "
 "pravilima za isticanje jezika.</html>"
 
-#: view/kateview.cpp:543
+#: view/kateview.cpp:545
 #, fuzzy, kde-format
 #| msgid "Go to previous editing line"
 msgid "Go to Previous Editing Location"
 msgstr "Idi na prethodni red uređivanja"
 
-#: view/kateview.cpp:549
+#: view/kateview.cpp:551
 #, fuzzy, kde-format
 #| msgid "Go to next editing line"
 msgid "Go to Next Editing Location"
 msgstr "Idi na sledeći red uređivanja"
 
-#: view/kateview.cpp:555
+#: view/kateview.cpp:557
 #, kde-format
 msgid "Unco&mment"
 msgstr "&Otkomentariši"
 
-#: view/kateview.cpp:558
+#: view/kateview.cpp:560
 #, kde-format
 msgid ""
 "This command removes comments from the current line or a selected block of "
@@ -7041,39 +7041,39 @@ msgstr ""
 "<br /><br />Znakovi za komentarisanje jednog ili više redova definisani su u "
 "pravilima za isticanje jezika.</html>"
 
-#: view/kateview.cpp:563
+#: view/kateview.cpp:565
 #, kde-format
 msgid "Toggle Comment"
 msgstr "Zakomentariši/otkomentariši"
 
-#: view/kateview.cpp:567
+#: view/kateview.cpp:569
 #, kde-format
 msgid "&Read Only Mode"
 msgstr "&Samo za čitanje"
 
-#: view/kateview.cpp:568
+#: view/kateview.cpp:570
 #, kde-format
 msgid "Lock/unlock the document for writing"
 msgstr "Zaključaj/otključaj upisivanje u dokument"
 
-#: view/kateview.cpp:573
+#: view/kateview.cpp:575
 #, kde-format
 msgid "&Force RTL Direction"
 msgstr ""
 
 # >> @item color scheme item category
-#: view/kateview.cpp:574
+#: view/kateview.cpp:576
 #, fuzzy, kde-format
 #| msgid "Text Decorations"
 msgid "Force RTL Text Direction"
 msgstr "dekoracije teksta"
 
-#: view/kateview.cpp:584
+#: view/kateview.cpp:586
 #, kde-format
 msgid "Uppercase"
 msgstr "U velika slova"
 
-#: view/kateview.cpp:587
+#: view/kateview.cpp:589
 #, kde-format
 msgid ""
 "Convert the selection to uppercase, or the character to the right of the "
@@ -7082,12 +7082,12 @@ msgstr ""
 "Pretvori izabrani tekst u sva velika slova, ili slovo desno od kursora ako "
 "ništa nije izabrano."
 
-#: view/kateview.cpp:593
+#: view/kateview.cpp:595
 #, kde-format
 msgid "Lowercase"
 msgstr "U mala slova"
 
-#: view/kateview.cpp:596
+#: view/kateview.cpp:598
 #, kde-format
 msgid ""
 "Convert the selection to lowercase, or the character to the right of the "
@@ -7096,12 +7096,12 @@ msgstr ""
 "Pretvori izabrani tekst u sva mala slova, ili slovo desno od kursora ako "
 "ništa nije izabrano."
 
-#: view/kateview.cpp:602
+#: view/kateview.cpp:604
 #, kde-format
 msgid "Capitalize"
 msgstr "Veliko prvo slovo"
 
-#: view/kateview.cpp:605
+#: view/kateview.cpp:607
 #, kde-format
 msgid ""
 "Capitalize the selection, or the word under the cursor if no text is "
@@ -7110,17 +7110,17 @@ msgstr ""
 "Uvećava se početno slovo rečima u izabranom tekstu, ili reči pod kursorom "
 "ako ništa nije izabrano."
 
-#: view/kateview.cpp:610
+#: view/kateview.cpp:612
 #, kde-format
 msgid "Join Lines"
 msgstr "Spoji redove"
 
-#: view/kateview.cpp:615
+#: view/kateview.cpp:617
 #, kde-format
 msgid "Invoke Code Completion"
 msgstr "Pozovi dopunjavanje kôda"
 
-#: view/kateview.cpp:616
+#: view/kateview.cpp:618
 #, kde-format
 msgid ""
 "Manually invoke command completion, usually by using a shortcut bound to "
@@ -7129,57 +7129,57 @@ msgstr ""
 "Ručno pozovite dopunjavanje naredbi, obično putem prečice vezane uz ovu "
 "radnju."
 
-#: view/kateview.cpp:621
+#: view/kateview.cpp:623
 #, fuzzy, kde-format
 #| msgid "Re&move trailing spaces:"
 msgid "Remove Trailing Spaces"
 msgstr "Ukloni &prateće razmake:"
 
-#: view/kateview.cpp:639
+#: view/kateview.cpp:641
 #, kde-format
 msgid "Print the current document."
 msgstr "Štampaj tekući dokument"
 
-#: view/kateview.cpp:642
+#: view/kateview.cpp:644
 #, kde-format
 msgid "Show print preview of current document"
 msgstr "Prikaži pregled pred štampanje tekućeg dokumenta"
 
-#: view/kateview.cpp:646
+#: view/kateview.cpp:648
 #, kde-format
 msgid "Reloa&d"
 msgstr "&Učitaj ponovo"
 
-#: view/kateview.cpp:648
+#: view/kateview.cpp:650
 #, kde-format
 msgid "Reload the current document from disk."
 msgstr "Ponovo učitaj tekući dokument sa diska"
 
-#: view/kateview.cpp:652
+#: view/kateview.cpp:654
 #, kde-format
 msgid "Save the current document to disk, with a name of your choice."
 msgstr "Sačuvaj tekući dokument na disk, pod izabranim imenom"
 
-#: view/kateview.cpp:654
+#: view/kateview.cpp:656
 #, fuzzy, kde-format
 #| msgid "Save As with Encoding..."
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Sačuvaj sa kodiranjem..."
 
-#: view/kateview.cpp:660
+#: view/kateview.cpp:662
 #, fuzzy, kde-format
 #| msgid "Save &Copy As..."
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "Sačuvaj &kopiju kao..."
 
-#: view/kateview.cpp:661
+#: view/kateview.cpp:663
 #, kde-format
 msgid "Save a copy of the current document to disk."
 msgstr "Sačuvaj kopiju tekućeg dokumenta na disk"
 
-#: view/kateview.cpp:665
+#: view/kateview.cpp:667
 #, kde-format
 msgid ""
 "This command opens a dialog and lets you choose a line that you want the "
@@ -7187,72 +7187,72 @@ msgid ""
 msgstr ""
 "Otvara dijalog u kome možete izabrati red u koji želite da kursor pređe."
 
-#: view/kateview.cpp:669
+#: view/kateview.cpp:671
 #, fuzzy, kde-format
 #| msgid "Move to Previous Modified Line"
 msgid "Go to Previous Modified Line"
 msgstr "Pomeri na prethodni izmenjeni red"
 
-#: view/kateview.cpp:670
+#: view/kateview.cpp:672
 #, kde-format
 msgid "Move upwards to the previous modified line."
 msgstr "Kretanje nagore na prethodni izmenjeni red."
 
-#: view/kateview.cpp:675
+#: view/kateview.cpp:677
 #, fuzzy, kde-format
 #| msgid "Move to Next Modified Line"
 msgid "Go to Next Modified Line"
 msgstr "Pomeri na sledeći izmenjeni red"
 
-#: view/kateview.cpp:676
+#: view/kateview.cpp:678
 #, kde-format
 msgid "Move downwards to the next modified line."
 msgstr "Kretanje nadole na prethodni izmenjeni red."
 
-#: view/kateview.cpp:680
+#: view/kateview.cpp:682
 #, fuzzy, kde-format
 #| msgid "&Configure Editor..."
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "Podesi &uređivač..."
 
-#: view/kateview.cpp:682
+#: view/kateview.cpp:684
 #, kde-format
 msgid "Configure various aspects of this editor."
 msgstr "Podesite razne aspekte ovog uređivača."
 
-#: view/kateview.cpp:685
+#: view/kateview.cpp:687
 #, kde-format
 msgid "&Mode"
 msgstr "&Režim"
 
-#: view/kateview.cpp:691
+#: view/kateview.cpp:693
 #, kde-format
 msgid "&Highlighting"
 msgstr "&Isticanje"
 
-#: view/kateview.cpp:693
+#: view/kateview.cpp:695
 #, kde-format
 msgid "Here you can choose how the current document should be highlighted."
 msgstr "Ovde možete izabrati kako će isticati tekst u tekućem dokumentu."
 
-#: view/kateview.cpp:696
+#: view/kateview.cpp:698
 #, fuzzy, kde-format
 #| msgid "Use KDE Color Scheme"
 msgid "&Editor Color Theme"
 msgstr "KDE‑ova šema boja"
 
-#: view/kateview.cpp:702
+#: view/kateview.cpp:704
 #, kde-format
 msgid "&Indentation"
 msgstr "&Uvlačenje"
 
-#: view/kateview.cpp:710
+#: view/kateview.cpp:711
 #, kde-format
 msgid "Select the entire text of the current document."
 msgstr "Izaberi celokupan tekst u dokumentu."
 
-#: view/kateview.cpp:713
+#: view/kateview.cpp:714
 #, kde-format
 msgid ""
 "If you have selected something within the current document, this will no "
@@ -7260,43 +7260,43 @@ msgid ""
 msgstr ""
 "Ako ste izabrali nešto u okviru dokumenta, ovim ćete poništiti taj izbor."
 
-#: view/kateview.cpp:717
+#: view/kateview.cpp:718
 #, kde-format
 msgid "Enlarge Font"
 msgstr "Povećaj font"
 
-#: view/kateview.cpp:719
+#: view/kateview.cpp:720
 #, kde-format
 msgid "This increases the display font size."
 msgstr "Ovo povećava veličinu fonta na ekranu."
 
-#: view/kateview.cpp:726
+#: view/kateview.cpp:727
 #, kde-format
 msgid "Shrink Font"
 msgstr "Smanji font"
 
-#: view/kateview.cpp:728
+#: view/kateview.cpp:729
 #, kde-format
 msgid "This decreases the display font size."
 msgstr "Ovo smanjuje veličinu fonta na ekranu."
 
-#: view/kateview.cpp:735
+#: view/kateview.cpp:736
 #, kde-format
 msgid "Reset Font Size"
 msgstr ""
 
-#: view/kateview.cpp:737
+#: view/kateview.cpp:738
 #, fuzzy, kde-format
 #| msgid "This increases the display font size."
 msgid "This resets the display font size."
 msgstr "Ovo povećava veličinu fonta na ekranu."
 
-#: view/kateview.cpp:740
+#: view/kateview.cpp:741
 #, kde-format
 msgid "Bl&ock Selection Mode"
 msgstr "&Blokovski izbor"
 
-#: view/kateview.cpp:743
+#: view/kateview.cpp:744
 #, kde-format
 msgid ""
 "This command allows switching between the normal (line based) selection mode "
@@ -7304,23 +7304,23 @@ msgid ""
 msgstr ""
 "Prebacujte između normalnog (na osnovu redova) i blokovskog izbora teksta."
 
-#: view/kateview.cpp:747
+#: view/kateview.cpp:748
 #, fuzzy, kde-format
 #| msgid "Switch to Next Input Mode"
 msgid "Switch to Next Input Mode"
 msgstr "Prebaci na sledeći režim unosa"
 
-#: view/kateview.cpp:749
+#: view/kateview.cpp:750
 #, kde-format
 msgid "Switch to the next input mode."
 msgstr "Prebaci na sledeći režim unosa"
 
-#: view/kateview.cpp:752
+#: view/kateview.cpp:753
 #, kde-format
 msgid "Overwr&ite Mode"
 msgstr "&Prebrisavanje"
 
-#: view/kateview.cpp:755
+#: view/kateview.cpp:756
 #, kde-format
 msgid ""
 "Choose whether you want the text you type to be inserted or to overwrite "
@@ -7329,12 +7329,12 @@ msgstr ""
 "Izaberite da li tekst koji unosite treba da se umeće u postojeći tekst ili "
 "ga prebrisuje."
 
-#: view/kateview.cpp:759
+#: view/kateview.cpp:760
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Dinamički prelom"
 
-#: view/kateview.cpp:763
+#: view/kateview.cpp:764
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7347,37 +7347,37 @@ msgstr ""
 "Ako je ova opcija uključena, redovi teksta će biti prelamani na ivici "
 "prikaza na ekranu."
 
-#: view/kateview.cpp:767
+#: view/kateview.cpp:768
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Pokazatelji dinamičkog preloma"
 
-#: view/kateview.cpp:769
+#: view/kateview.cpp:770
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr "Treba li prikazivati pokazatelje dinamičkog preloma teksta"
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:772
 #, kde-format
 msgid "&Off"
 msgstr "&isključeni"
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:772
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "prate &brojeve redova"
 
-#: view/kateview.cpp:771
+#: view/kateview.cpp:772
 #, kde-format
 msgid "&Always On"
 msgstr "&uvek uključeni"
 
-#: view/kateview.cpp:775
+#: view/kateview.cpp:776
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Statičko prelamanje teksta"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:778
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7390,13 +7390,13 @@ msgstr ""
 "prikaza na ekranu."
 
 # >> @action:inmenu
-#: view/kateview.cpp:784
+#: view/kateview.cpp:785
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "&Graničnik statičkog preloma"
 
 # skip-rule: t-line
-#: view/kateview.cpp:787
+#: view/kateview.cpp:788
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7406,12 +7406,12 @@ msgstr ""
 "iscrtava u koloni preloma zadatoj u podešavanjima."
 
 # >> @action:inmenu
-#: view/kateview.cpp:791
+#: view/kateview.cpp:792
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "&Ručke za sažimanje"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:794
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7420,12 +7420,12 @@ msgstr ""
 "Izaberite da li prikazivati ručke za sažimanje kôda, ako je ono moguće."
 
 # >> @action:inmenu
-#: view/kateview.cpp:796
+#: view/kateview.cpp:797
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "&Pojas ikonica"
 
-#: view/kateview.cpp:798
+#: view/kateview.cpp:799
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7435,23 +7435,23 @@ msgstr ""
 "primer, simbole obeleživača.</html>"
 
 # >> @action:inmenu
-#: view/kateview.cpp:801
+#: view/kateview.cpp:802
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "&Brojevi redova"
 
-#: view/kateview.cpp:803
+#: view/kateview.cpp:804
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Prikaži/sakrij brojeve redova na levoj strani prikaza"
 
 # >> @action:inmenu
-#: view/kateview.cpp:806
+#: view/kateview.cpp:807
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "&Zarezi u klizačkoj traci"
 
-#: view/kateview.cpp:808
+#: view/kateview.cpp:809
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7460,12 +7460,12 @@ msgstr ""
 "<html>Prikaži/sakrij zareze u uspravnoj klizačkoj traci.<br /><br />Zarezima "
 "se, na primer, označavaju obeleživači.</html>"
 
-#: view/kateview.cpp:811
+#: view/kateview.cpp:812
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "Mini‑mapa u klizačkoj traci"
 
-#: view/kateview.cpp:813
+#: view/kateview.cpp:814
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7478,74 +7478,74 @@ msgstr ""
 #. i18n("Show the whole document in the Mini-Map"), this);
 #. ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
-#. mini-map.")); connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
+#. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:825
+#: view/kateview.cpp:826
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr "Neispisivi razmaci"
 
-#: view/kateview.cpp:827
+#: view/kateview.cpp:828
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr "Prikaži/sakrij granični okvir oko neispisivih razmaka"
 
 # >> @action:inmenu
-#: view/kateview.cpp:831
+#: view/kateview.cpp:832
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Na komandnu liniju"
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:834
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Da li prikazati komandnu liniju u dnu prikaza."
 
-#: view/kateview.cpp:836
+#: view/kateview.cpp:837
 #, kde-format
 msgid "Input Modes"
 msgstr "Režimi unosa"
 
 # >> @info:whatsthis
-#: view/kateview.cpp:845
+#: view/kateview.cpp:846
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Aktivira i deaktivira %1.|/|Aktivira i deaktivira $[aku %1]."
 
-#: view/kateview.cpp:855
+#: view/kateview.cpp:856
 #, kde-format
 msgid "&End of Line"
 msgstr "&Kraj reda"
 
-#: view/kateview.cpp:857
+#: view/kateview.cpp:858
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr "Izaberite kakvi se krajevi redova koriste pri upisivanju dokumenta"
 
-#: view/kateview.cpp:858
+#: view/kateview.cpp:859
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "Unix"
 
-#: view/kateview.cpp:859
+#: view/kateview.cpp:860
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "DOS/Windows"
 
-#: view/kateview.cpp:860
+#: view/kateview.cpp:861
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "Macintosh"
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:866
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Dodaj marker &redosleda bajtova (BOM)"
 
-#: view/kateview.cpp:868
+#: view/kateview.cpp:869
 #, kde-format
 msgid ""
 "Enable/disable adding of byte order marks for UTF-8/UTF-16 encoded files "
@@ -7554,79 +7554,79 @@ msgstr ""
 "Da li dodavati markere redosleda bajtova u UTF‑8/UTF‑16 kodirane fajlove pri "
 "upisivanju."
 
-#: view/kateview.cpp:872
+#: view/kateview.cpp:873
 #, kde-format
 msgid "E&ncoding"
 msgstr "&Kodiranje"
 
-#: view/kateview.cpp:876
+#: view/kateview.cpp:877
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Traži prvu pojavu dela teksta ili regularnog izraza."
 
-#: view/kateview.cpp:880
+#: view/kateview.cpp:881
 #, kde-format
 msgid "Find Selected"
 msgstr "Nađi izabrano"
 
-#: view/kateview.cpp:882
+#: view/kateview.cpp:883
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Nalazi sledeću pojavu izabranog teksta."
 
-#: view/kateview.cpp:886
+#: view/kateview.cpp:887
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Nađi izabrano unazad"
 
-#: view/kateview.cpp:888
+#: view/kateview.cpp:889
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Nalazi prethodnu pojavu izabranog teksta."
 
-#: view/kateview.cpp:892
+#: view/kateview.cpp:893
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr ""
 
-#: view/kateview.cpp:894
+#: view/kateview.cpp:895
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "Nalazi sledeću pojavu izabranog teksta."
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:899
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:901
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:904
+#: view/kateview.cpp:905
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr ""
 
-#: view/kateview.cpp:906
+#: view/kateview.cpp:907
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Nalazi sledeću pojavu izabranog teksta."
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:911
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Potraži sledeću pojavu izraza."
 
-#: view/kateview.cpp:914
+#: view/kateview.cpp:915
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Potraži prethodnu pojavu izraza."
 
-#: view/kateview.cpp:918
+#: view/kateview.cpp:919
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7635,88 +7635,88 @@ msgstr ""
 "Potraži deo teksta ili regularni izraza i zameni rezultat drugim datim "
 "tekstom."
 
-#: view/kateview.cpp:921
+#: view/kateview.cpp:922
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr ""
 
-#: view/kateview.cpp:923
+#: view/kateview.cpp:924
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr ""
 
-#: view/kateview.cpp:927
+#: view/kateview.cpp:928
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr ""
 
-#: view/kateview.cpp:929
+#: view/kateview.cpp:930
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Adds a caret in the line below the current caret."
 msgstr "Izaberi celokupan tekst u dokumentu."
 
-#: view/kateview.cpp:933
+#: view/kateview.cpp:934
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr ""
 
-#: view/kateview.cpp:935
+#: view/kateview.cpp:936
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
-#: view/kateview.cpp:939
+#: view/kateview.cpp:940
 #, fuzzy, kde-format
 #| msgid "Text Cursor Movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Pomeranje kursora"
 
-#: view/kateview.cpp:940
+#: view/kateview.cpp:941
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
-#: view/kateview.cpp:944
+#: view/kateview.cpp:945
 #, kde-format
 msgid "Remove Cursors from Empty Lines"
 msgstr ""
 
-#: view/kateview.cpp:945
+#: view/kateview.cpp:946
 #, fuzzy, kde-format
 #| msgid "Move cursor to next matching indent"
 msgid "Remove cursors from empty lines"
 msgstr "Kursor na sledeće jednako uvlačenje"
 
-#: view/kateview.cpp:949
+#: view/kateview.cpp:950
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Automatska provera pravopisa"
 
 # >> @info:whatsthis
-#: view/kateview.cpp:950
+#: view/kateview.cpp:951
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Da li automatski proveravati pravopis."
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:957
 #, fuzzy, kde-format
 #| msgid "Change Dictionary..."
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Promeni rečnik..."
 
-#: view/kateview.cpp:957
+#: view/kateview.cpp:958
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Promenite rečnik za proveru pravopisa."
 
-#: view/kateview.cpp:961
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Očisti rečničke opsege"
 
-#: view/kateview.cpp:963
+#: view/kateview.cpp:964
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7724,26 +7724,26 @@ msgstr ""
 "Očistite sve zasebne rečničke opsege koji su postavljeni za proveru "
 "pravopisa."
 
-#: view/kateview.cpp:969
+#: view/kateview.cpp:970
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Kopiraj kao &HTML"
 
-#: view/kateview.cpp:970
+#: view/kateview.cpp:971
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
 "clipboard."
 msgstr "Kopirajte trenutno izabrani tekst kao HTML u sistemski klipbord."
 
-#: view/kateview.cpp:974
+#: view/kateview.cpp:975
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "I&zvezi kao HTML..."
 
-#: view/kateview.cpp:976
+#: view/kateview.cpp:977
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7752,228 +7752,228 @@ msgstr ""
 "Ovom naredbom možete izvesti tekući dokument u HTML, tako da zadrži "
 "isticanje."
 
-#: view/kateview.cpp:1015
+#: view/kateview.cpp:1016
 #, kde-format
 msgid "Move Word Left"
 msgstr "Pomeri reč levo"
 
-#: view/kateview.cpp:1021
+#: view/kateview.cpp:1022
 #, kde-format
 msgid "Select Character Left"
 msgstr "Izaberi znak levo"
 
-#: view/kateview.cpp:1027
+#: view/kateview.cpp:1028
 #, kde-format
 msgid "Select Word Left"
 msgstr "Izaberi reč levo"
 
-#: view/kateview.cpp:1033
+#: view/kateview.cpp:1034
 #, kde-format
 msgid "Move Word Right"
 msgstr "Pomeri reč desno"
 
-#: view/kateview.cpp:1039
+#: view/kateview.cpp:1040
 #, kde-format
 msgid "Select Character Right"
 msgstr "Izaberi znak desno"
 
-#: view/kateview.cpp:1045
+#: view/kateview.cpp:1046
 #, kde-format
 msgid "Select Word Right"
 msgstr "Izaberi reč desno"
 
-#: view/kateview.cpp:1051
+#: view/kateview.cpp:1052
 #, fuzzy, kde-format
 #| msgid "Language Selection"
 msgid "Start the Marked Selection"
 msgstr "Izbor jezika"
 
-#: view/kateview.cpp:1052
+#: view/kateview.cpp:1053
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
 
-#: view/kateview.cpp:1057
+#: view/kateview.cpp:1058
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Idi na početak reda"
 
-#: view/kateview.cpp:1063
+#: view/kateview.cpp:1064
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Idi na početak dokumenta"
 
-#: view/kateview.cpp:1069
+#: view/kateview.cpp:1070
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Izaberi do početka reda"
 
-#: view/kateview.cpp:1075
+#: view/kateview.cpp:1076
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Izaberi do početka dokumenta"
 
-#: view/kateview.cpp:1081
+#: view/kateview.cpp:1082
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Idi na kraj reda"
 
-#: view/kateview.cpp:1087
+#: view/kateview.cpp:1088
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Idi na kraj dokumenta"
 
-#: view/kateview.cpp:1093
+#: view/kateview.cpp:1094
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Izaberi do kraja reda"
 
-#: view/kateview.cpp:1099
+#: view/kateview.cpp:1100
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Izaberi do kraja dokumenta"
 
-#: view/kateview.cpp:1105
+#: view/kateview.cpp:1106
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Izaberi do prethodnog reda"
 
-#: view/kateview.cpp:1111
+#: view/kateview.cpp:1112
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Sklizni red nagore"
 
-#: view/kateview.cpp:1117
+#: view/kateview.cpp:1118
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Pomeri na sledeći red"
 
-#: view/kateview.cpp:1123
+#: view/kateview.cpp:1124
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Pomeri na prethodni red"
 
-#: view/kateview.cpp:1129
+#: view/kateview.cpp:1130
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Pomeri kursor desno"
 
-#: view/kateview.cpp:1135
+#: view/kateview.cpp:1136
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Pomeri kursor levo"
 
-#: view/kateview.cpp:1141
+#: view/kateview.cpp:1142
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Izaberi do sledećeg reda"
 
-#: view/kateview.cpp:1147
+#: view/kateview.cpp:1148
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Sklizni red nadole"
 
-#: view/kateview.cpp:1153
+#: view/kateview.cpp:1154
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Sklizni stranicu nagore"
 
-#: view/kateview.cpp:1159
+#: view/kateview.cpp:1160
 #, kde-format
 msgid "Select Page Up"
 msgstr "Izaberi stranicu nagore"
 
-#: view/kateview.cpp:1165
+#: view/kateview.cpp:1166
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Idi na vrh prikaza"
 
-#: view/kateview.cpp:1171
+#: view/kateview.cpp:1172
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Izaberi do vrha prikaza"
 
-#: view/kateview.cpp:1177
+#: view/kateview.cpp:1178
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Sklizni stranicu nadole"
 
-#: view/kateview.cpp:1183
+#: view/kateview.cpp:1184
 #, kde-format
 msgid "Select Page Down"
 msgstr "Izaberi stranicu nadole"
 
-#: view/kateview.cpp:1189
+#: view/kateview.cpp:1190
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Idi na dno prikaza"
 
-#: view/kateview.cpp:1195
+#: view/kateview.cpp:1196
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Izaberi do dna prikaza"
 
-#: view/kateview.cpp:1201
+#: view/kateview.cpp:1202
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Go to Matching Bracket"
 msgstr "Idi na parnjačku zagradu"
 
-#: view/kateview.cpp:1207
+#: view/kateview.cpp:1208
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Izaberi do parnjačke zagrade"
 
-#: view/kateview.cpp:1215
+#: view/kateview.cpp:1216
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Premetni znakove"
 
-#: view/kateview.cpp:1220
+#: view/kateview.cpp:1221
 #, fuzzy, kde-format
 #| msgid "Transpose Characters"
 msgid "Transpose Words"
 msgstr "Premetni znakove"
 
-#: view/kateview.cpp:1225
+#: view/kateview.cpp:1226
 #, kde-format
 msgid "Delete Line"
 msgstr "Obriši red"
 
-#: view/kateview.cpp:1231
+#: view/kateview.cpp:1232
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Obriši reč levo"
 
-#: view/kateview.cpp:1237
+#: view/kateview.cpp:1238
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Obriši reč desno"
 
-#: view/kateview.cpp:1243
+#: view/kateview.cpp:1244
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Obriši sledeći znak"
 
-#: view/kateview.cpp:1249
+#: view/kateview.cpp:1250
 #, kde-format
 msgid "Backspace"
 msgstr "Nazad"
 
-#: view/kateview.cpp:1257
+#: view/kateview.cpp:1258
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "Umetni tabulator"
 
-#: view/kateview.cpp:1262
+#: view/kateview.cpp:1263
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Umetni pametno novi red"
 
-#: view/kateview.cpp:1263
+#: view/kateview.cpp:1264
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7982,46 +7982,46 @@ msgstr ""
 "Umetnite novi red uključujući i vodeće znakove tekućeg koji nisu ni slova ni "
 "brojevi."
 
-#: view/kateview.cpp:1271
+#: view/kateview.cpp:1272
 #, fuzzy, kde-format
 #| msgid "Insert Smart Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "Umetni pametno novi red"
 
-#: view/kateview.cpp:1272
+#: view/kateview.cpp:1273
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 
-#: view/kateview.cpp:1280
+#: view/kateview.cpp:1281
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1281
+#: view/kateview.cpp:1282
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1289
+#: view/kateview.cpp:1290
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1290
+#: view/kateview.cpp:1291
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1299
+#: view/kateview.cpp:1300
 #, kde-format
 msgid "&Indent"
 msgstr "&Uvuci"
 
-#: view/kateview.cpp:1301
+#: view/kateview.cpp:1302
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -8032,97 +8032,97 @@ msgstr ""
 "možete odrediti da li treba poštovati i koristiti tabulatore, ili ih "
 "smenjivati razmacima.</html>"
 
-#: view/kateview.cpp:1308
+#: view/kateview.cpp:1309
 #, kde-format
 msgid "&Unindent"
 msgstr "&Izvuci"
 
-#: view/kateview.cpp:1309
+#: view/kateview.cpp:1310
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Izvucite izabrani blok teksta."
 
-#: view/kateview.cpp:1327
+#: view/kateview.cpp:1328
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Sažmi čvorove na vrhu"
 
-#: view/kateview.cpp:1331
+#: view/kateview.cpp:1332
 #, kde-format
 msgid "Unfold Toplevel Nodes"
 msgstr "Razvij čvorove na vrhu"
 
-#: view/kateview.cpp:1335
+#: view/kateview.cpp:1336
 #, fuzzy, kde-format
 #| msgid "Fold Current Node"
 msgid "Toggle Current Node"
 msgstr "Sažmi tekući čvor"
 
-#: view/kateview.cpp:1339
+#: view/kateview.cpp:1340
 #, fuzzy, kde-format
 #| msgid "Toggle Comment"
 msgid "Toggle Contained Nodes"
 msgstr "Zakomentariši/otkomentariši"
 
-#: view/kateview.cpp:1348
+#: view/kateview.cpp:1349
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Say current selection or document"
 msgstr "Izaberi celokupan tekst u dokumentu."
 
-#: view/kateview.cpp:1358
+#: view/kateview.cpp:1359
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Stop current output"
 msgstr "Sačuvaj tekući dokument"
 
-#: view/kateview.cpp:1364
+#: view/kateview.cpp:1365
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Pause current output"
 msgstr "Sačuvaj tekući dokument"
 
-#: view/kateview.cpp:1370
+#: view/kateview.cpp:1371
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Resume current output"
 msgstr "Sačuvaj tekući dokument"
 
 # well-spelled: СЗЧ
-#: view/kateview.cpp:1541
+#: view/kateview.cpp:1542
 #, kde-format
 msgid "(R/O) %1"
 msgstr "(SZČ) %1"
 
-#: view/kateview.cpp:1729
+#: view/kateview.cpp:1730
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1731
+#: view/kateview.cpp:1732
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2252
+#: view/kateview.cpp:2253
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "Režim traženja"
 
-#: view/kateview.cpp:3793
+#: view/kateview.cpp:3794
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Poravnaj"
 
-#: view/kateview.cpp:3793
+#: view/kateview.cpp:3794
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
 # >> @title:window
-#: view/kateview.cpp:4867
+#: view/kateview.cpp:4868
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Izvoz fajla u vidu HTML‑a"
