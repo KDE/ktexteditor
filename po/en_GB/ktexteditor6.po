@@ -5,13 +5,13 @@
 # Andrew Coles <andrew_coles@yahoo.co.uk>, 2004, 2005, 2009, 2010, 2011.
 # Peter Murdoch <pete@pmurdoch.com>, 2007.
 # Brendan Osborne <danborne.kde@gmail.com>, 2007.
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:36+0000\n"
-"PO-Revision-Date: 2023-04-08 11:01+0100\n"
+"PO-Revision-Date: 2024-05-23 20:00+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -143,10 +143,9 @@ msgstr "Spelling"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:149
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Text to search for"
+msgstr "Text to Speech"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:157
@@ -451,13 +450,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Pressing enter will insert the text of selected completion item into the "
+"editor. If disabled, Tab key or double-click can still be used to trigger "
+"completion."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Use this to unindent a selected block of text."
+msgstr "Use Enter key to insert selected completion"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -669,13 +670,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Enable accessibility notifications"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Accessibility:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -1309,11 +1310,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Closes the file, discarding its content."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Save As..."
+msgstr "&Save As…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1816,10 +1816,9 @@ msgstr "Enable Auto Save (local files only)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "Auto save document when focus leaves the editor"
+msgstr "Auto save document when the active document is losing focus"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -2520,12 +2519,10 @@ msgid "Modes && Filetypes"
 msgstr "Modes && Filetypes"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Search..."
+msgstr "Search…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3111,15 +3108,13 @@ msgstr "Move cursor to next matching indent"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Go to Next Paragraph"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Go to Previous Edit Point"
+msgstr "Go to Previous Paragraph"
 
 #: script/data/commands/utils.js:9
 #, kde-format
@@ -3201,12 +3196,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Duplicate Selected Lines Up"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Duplicate Selected Lines Up"
+msgstr "Duplicate selected text"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -3927,12 +3920,10 @@ msgid "Spell check canceled."
 msgstr "Spell check cancelled."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Spell checking in progress..."
+msgstr "Spell checking in progress…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4165,11 +4156,10 @@ msgid "I&gnore All"
 msgstr "I&gnore All"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Spelling (from Cursor)..."
+msgstr "Spelling (from Cursor)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4291,32 +4281,28 @@ msgid "S&trikeout"
 msgstr "S&trikeout"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Normal &Colour..."
+msgstr "Normal &Colour…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Selected Colour..."
+msgstr "&Selected Colour…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Background Colour..."
+msgstr "&Background Colour…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "S&elected Background Colour..."
+msgstr "S&elected Background Colour…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4940,25 +4926,22 @@ msgid "&Theme:"
 msgstr "&Theme:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Copy"
+msgstr "&Copy…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Export..."
+msgstr "Export…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Import..."
+msgstr "Import…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6196,6 +6179,7 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Enable whether pressing enter will insert selected auto completion item."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -6502,11 +6486,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Indent/Tab: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Other"
+msgstr "Other…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6658,11 +6641,10 @@ msgstr ""
 "indent level."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Align On"
+msgstr "&Align On…"
 
 #: view/kateview.cpp:526
 #, kde-format
@@ -6846,18 +6828,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Save the current document to disk, with a name of your choice."
 
 #: view/kateview.cpp:656
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Save As with Encoding..."
+msgstr "Save As with Encoding…"
 
 #: view/kateview.cpp:662
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Save &Copy As..."
+msgstr "Save &Copy As…"
 
 #: view/kateview.cpp:663
 #, kde-format
@@ -6894,11 +6874,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Move downwards to the next modified line."
 
 #: view/kateview.cpp:682
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Configure Editor..."
+msgstr "&Configure Editor…"
 
 #: view/kateview.cpp:684
 #, kde-format
@@ -7281,10 +7260,9 @@ msgid "Find and Select All Occurrences"
 msgstr "Find and Select All Occurrences"
 
 #: view/kateview.cpp:907
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "Finds all occurrences of the word under cursor and select them."
+msgstr "Finds all occurrences of the word under cursor and selects them."
 
 #: view/kateview.cpp:911
 #, kde-format
@@ -7366,11 +7344,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Enable/disable automatic spell checking"
 
 #: view/kateview.cpp:957
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Change dictionary"
+msgstr "Change Dictionary…"
 
 #: view/kateview.cpp:958
 #, kde-format
@@ -7404,11 +7381,10 @@ msgstr ""
 "clipboard."
 
 #: view/kateview.cpp:975
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "E&xport as HTML..."
+msgstr "E&xport as HTML…"
 
 #: view/kateview.cpp:977
 #, kde-format
@@ -7450,10 +7426,9 @@ msgid "Select Word Right"
 msgstr "Select Word Right"
 
 #: view/kateview.cpp:1052
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Paste Selection"
+msgstr "Start the Marked Selection"
 
 #: view/kateview.cpp:1053
 #, kde-format
@@ -7461,6 +7436,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emulate the Emacs-like selection mode, where the beginning is marked and "
+"then the selection is continuously updated."
 
 #: view/kateview.cpp:1058
 #, kde-format
@@ -7729,28 +7706,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Toggle Contained Nodes"
 
 #: view/kateview.cpp:1349
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Text selection of the current document."
+msgstr "Say current selection or document"
 
 #: view/kateview.cpp:1359
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Save the current document"
+msgstr "Stop current output"
 
 #: view/kateview.cpp:1365
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Save the current document"
+msgstr "Pause current output"
 
 #: view/kateview.cpp:1371
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Save the current document"
+msgstr "Resume current output"
 
 #: view/kateview.cpp:1542
 #, kde-format
@@ -7877,11 +7850,10 @@ msgid "Copy"
 msgstr "Copy"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Background Colour..."
+msgstr "Background Colour…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -7894,8 +7866,7 @@ msgid "Show Window Decorations"
 msgstr "Show Window Decorations"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Take Screenshot of Selection"
@@ -7919,12 +7890,12 @@ msgstr "Show Actual Line Numbers"
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Screenshot saving failed"
 
 #: view/screenshotdialog.cpp:423
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Screenshot saving failed: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format
