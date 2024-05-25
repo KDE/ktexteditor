@@ -1839,7 +1839,11 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
         setScrollPositionInternal(KTextEditor::Cursor(scroll, 0));
     }
 
-    m_config->setDynWordWrap(config.readEntry("Dynamic Word Wrap", false));
+    // only touch that if we did write it out in writeSessionConfig, bug 487216
+    if (config.hasKey("Dynamic Word Wrap")) {
+        // in any case, use the current global setting as default
+        m_config->setDynWordWrap(config.readEntry("Dynamic Word Wrap", m_config->global()->dynWordWrap()));
+    }
 
     // restore text folding
     m_savedFoldingState = QJsonDocument::fromJson(config.readEntry("TextFolding", QByteArray()));
