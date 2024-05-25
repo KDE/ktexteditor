@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-23 00:36+0000\n"
-"PO-Revision-Date: 2024-05-19 21:50+0300\n"
+"PO-Revision-Date: 2024-05-24 11:44+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -782,6 +782,9 @@ msgid ""
 "an asterisk and the file extension, for example <code>*.txt; *.text</code>. "
 "The string is a semicolon-separated list of masks."
 msgstr ""
+"תו ההכללה הזאת מאפשר לבחור קבצים לפי שם קובץ. מסכה טיפוסית משתמשת בכוכבית "
+"ובסיומת הקובץ, למשל <code>‎*.txt; *.text</code>. המחרוזת היא רשימה של מסכות "
+"מופרדות בפסיקים."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:166
@@ -1371,7 +1374,7 @@ msgstr ""
 #: dialogs/navigationconfigwidget.ui:58
 #, kde-format
 msgid "Enable camel case cursor movement"
-msgstr ""
+msgstr "הפעלת תזוזת סמן לפי אותיות רישיות פותחות"
 
 #. i18n: ectx: property (text), widget (QLabel, lblAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:79
@@ -1604,6 +1607,8 @@ msgid ""
 "in the open/save dialog, nor the encoding specified on command line match "
 "the content of the file, this detection will be run."
 msgstr ""
+"אם אף אחת מהקידודים שלהלן או מהקידודים בחלונית פתיחה/שמירה או הקידודים "
+"שצוינו דרך שורת הפקודה לא תואמים לתוכן הקובץ, הזיהוי יופעל."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEncodingDetection2)
 #: dialogs/opensaveconfigwidget.ui:74
