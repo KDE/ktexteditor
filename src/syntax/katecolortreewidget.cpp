@@ -169,17 +169,11 @@ public:
         }
         // END: draw background of category for all other items
 
-        // paint the text
-        QStyledItemDelegate::paint(painter, option, index);
-        if (index.column() == 0) {
-            return;
-        }
-
         painter->setClipRect(option.rect);
-        KateColorTreeItem *item = static_cast<KateColorTreeItem *>(m_tree->itemFromIndex(index));
 
         // BEGIN: draw color button
         if (index.column() == 1) {
+            KateColorTreeItem *item = static_cast<KateColorTreeItem *>(m_tree->itemFromIndex(index));
             QColor color = item->useDefaultColor() ? item->defaultColor() : item->color();
 
             QStyleOptionButton opt;
@@ -196,7 +190,7 @@ public:
         // END: draw color button
 
         // BEGIN: draw reset icon
-        if (index.column() == 2 && !item->useDefaultColor()) {
+        if (index.column() == 2 && !static_cast<KateColorTreeItem *>(m_tree->itemFromIndex(index))->useDefaultColor()) {
             // get right pixmap
             const bool enabled = (option.state & QStyle::State_MouseOver || option.state & QStyle::State_HasFocus);
             const QPixmap p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(16, 16, enabled ? QIcon::Normal : QIcon::Disabled);
@@ -209,6 +203,9 @@ public:
             painter->drawPixmap(rect, p);
         }
         // END: draw reset icon
+
+        // paint the text
+        QStyledItemDelegate::paint(painter, option, index);
     }
 
 private:
@@ -230,6 +227,7 @@ KateColorTreeWidget::KateColorTreeWidget(QWidget *parent)
     setHeaderHidden(true);
     setRootIsDecorated(false);
     setIndentation(25);
+    setSelectionMode(QAbstractItemView::NoSelection);
 }
 
 bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QEvent *event)
