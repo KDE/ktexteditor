@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -8100,25 +8100,25 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "Режим тражења"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Поравнај"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
 # >> @title:window
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Извоз фајла у виду ХТМЛ‑а"

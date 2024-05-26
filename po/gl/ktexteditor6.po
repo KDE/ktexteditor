@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2024-05-09 19:39+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -7801,22 +7801,22 @@ msgstr "Desactivouse o movemento de maiúsculas de camelo"
 msgid "Camel case movement enabled"
 msgstr "Activouse o movemento de maiúsculas de camelo"
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, kde-format
 msgid "Search wrapped"
 msgstr "Buscar ignorando saltos de liña"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Align On"
 msgstr "Aliñar en"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Padrón de aliñamento:"
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar o ficheiro como HTML"

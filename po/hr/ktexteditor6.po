@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2010-06-06 14:00+0200\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -7809,24 +7809,24 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search wrapped"
 msgstr "&Traži"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Poravnaj"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, fuzzy, kde-format
 msgid "Export File as HTML"
 msgstr "Izvezi datoteku kao "

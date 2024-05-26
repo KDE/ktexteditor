@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
-"PO-Revision-Date: 2024-05-24 11:44+0300\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
+"PO-Revision-Date: 2024-05-25 07:00+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -782,9 +782,9 @@ msgid ""
 "an asterisk and the file extension, for example <code>*.txt; *.text</code>. "
 "The string is a semicolon-separated list of masks."
 msgstr ""
-"תו ההכללה הזאת מאפשר לבחור קבצים לפי שם קובץ. מסכה טיפוסית משתמשת בכוכבית "
-"ובסיומת הקובץ, למשל <code>‎*.txt; *.text</code>. המחרוזת היא רשימה של מסכות "
-"מופרדות בפסיקים."
+"מסכת תוו ההכללה הזאת מאפשר לבחור קבצים לפי שם קובץ. מסכה טיפוסית משתמשת "
+"בכוכבית ובסיומת הקובץ, למשל <code>‎*.txt; *.text</code>. המחרוזת היא רשימה של "
+"מסכות מופרדות בפסיקים."
 
 #. i18n: ectx: property (text), widget (QLabel, lblMimeTypes)
 #: dialogs/filetypeconfigwidget.ui:166
@@ -1006,6 +1006,8 @@ msgid ""
 "line by the number of character positions specified in <b>Indentation width</"
 "b>."
 msgstr ""
+"אם האפשרות הזאת מסומנת, מקש ה־<b>Tab</b> תמיד יזיח את השורה הנוכחית במספר "
+"מקומות התווים שצוין ב<b>רוחב ההזחה</b>."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabIndents)
 #: dialogs/indentationconfigwidget.ui:289
@@ -1181,6 +1183,9 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
+"%1 מגבה קבצים שלא נשמרו ל„קובצי ההחלפה”. קובצי החלפה מאפשרים ל־%1 לשחזר את "
+"העבודה שלך במקרה של קריסת המערכת. השבתת קובצי ההחלפה יכולה לגרום לאובדן "
+"נתונים במקרה של קריסת מערכת."
 
 #: dialogs/katedialogs.cpp:1017
 #, kde-format
@@ -7464,22 +7469,22 @@ msgstr "תנועת סמן לפי רישיות פותחות מושבתת"
 msgid "Camel case movement enabled"
 msgstr "תנועת סמן לפי רישיות פותחות פעילה"
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, kde-format
 msgid "Search wrapped"
 msgstr "החיפוש גלש"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Align On"
 msgstr "יישור פעיל"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "תבנית יישור:"
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "ייצוא קובץ בתור HTML"

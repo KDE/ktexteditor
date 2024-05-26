@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2024-02-10 00:07+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -7623,22 +7623,22 @@ msgstr "캐멀케이스 커서 이동 비활성화됨"
 msgid "Camel case movement enabled"
 msgstr "캐멀케이스 커서 이동 활성화됨"
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, kde-format
 msgid "Search wrapped"
 msgstr "끝까지 검색되어 돌아옴"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Align On"
 msgstr "정렬 기준"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "정렬 패턴:"
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "파일 HTML로 내보내기"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2022-05-03 13:57-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -7944,23 +7944,23 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr "Ativar movimento de cursor em Camel Case"
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, kde-format
 msgid "Search wrapped"
 msgstr "Pesquisa voltou ao início"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Alinhar"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Exportar arquivo como HTML"

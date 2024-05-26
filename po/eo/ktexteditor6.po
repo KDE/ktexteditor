@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2024-05-09 22:01+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -7743,22 +7743,22 @@ msgstr "Moviĝo de kamel-uskleco malebligita"
 msgid "Camel case movement enabled"
 msgstr "Moviĝo de kamel-uskleco ebligita"
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, kde-format
 msgid "Search wrapped"
 msgstr "Serĉo faldiĝis"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Align On"
 msgstr "Vicigi Sur"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr "Alineado ŝablono:"
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksporti dosieron kiel HTML"

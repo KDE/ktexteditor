@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-23 00:36+0000\n"
+"POT-Creation-Date: 2024-05-26 00:36+0000\n"
 "PO-Revision-Date: 2006-10-01 21:04+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -7544,24 +7544,24 @@ msgstr ""
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2253
+#: view/kateview.cpp:2257
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search wrapped"
 msgstr "Қидириш"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Текислаш"
 
-#: view/kateview.cpp:3794
+#: view/kateview.cpp:3798
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4868
+#: view/kateview.cpp:4872
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Файлни HTML сифатида экспорт қилиш"
