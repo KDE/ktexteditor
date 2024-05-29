@@ -24,10 +24,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-">\n"
-"X-Generator: Lokalize 23.08.5\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
-" || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -320,7 +318,7 @@ msgstr "Widoczność pasków &przewijania:"
 #: dialogs/bordersappearanceconfigwidget.ui:183 dialogs/katedialogs.cpp:748
 #, kde-format
 msgid "Always On"
-msgstr "Zawsze widoczny"
+msgstr "Zawsze widoczne"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, cmbShowScrollbars)
 #: dialogs/bordersappearanceconfigwidget.ui:188
@@ -332,7 +330,7 @@ msgstr "Widoczne gdy potrzebne"
 #: dialogs/bordersappearanceconfigwidget.ui:193
 #, kde-format
 msgid "Always Off"
-msgstr "Zawsze ukryte"
+msgstr "Zawsze niewidoczne"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: dialogs/bordersappearanceconfigwidget.ui:217
@@ -354,7 +352,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:227
 #, kde-format
 msgid "Show minimap"
-msgstr "Pokaż minimapę"
+msgstr "Pokaż mini-mapę"
 
 #. i18n: ectx: property (text), widget (QLabel, labelMiniMapWidth)
 #: dialogs/bordersappearanceconfigwidget.ui:250
@@ -500,8 +498,7 @@ msgstr "Usuń końcówkę po uzupełnieniu"
 msgid ""
 "Word completion provides suggestions based on the words found in the document"
 msgstr ""
-"Słowa podpowiadane do uzupełnienia biorą się ze słów znalezionych w już tym "
-"samym dokumencie."
+"Uzupełnianie słów podpowiada je na podstawie słów znalezionych w dokumencie."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeywordCompletion)
 #: dialogs/completionconfigtab.ui:134
@@ -516,8 +513,8 @@ msgid ""
 "Keyword completion provides suggestions based on the keywords which exist in "
 "the document's language."
 msgstr ""
-"Słowa kluczowe podpowiadane do uzupełnienia biorą się ze słów kluczowych dla "
-"języka programowania w jakim napisany jest dokument."
+"Uzupełnianie słów kluczowych dostarcza sugestii na podstawie słów "
+"kluczowych, które znajdują się w języku dokumentu."
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbShowDoc)
 #: dialogs/completionconfigtab.ui:156
@@ -752,7 +749,7 @@ msgstr "Nazwą rodzaju pliku będzie tekst odpowiedniego wpisu w menu."
 #: dialogs/filetypeconfigwidget.ui:89
 #, kde-format
 msgid "&Section:"
-msgstr "&Rodzaj:"
+msgstr "&Sekcja:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtSection)
 #: dialogs/filetypeconfigwidget.ui:99
@@ -796,7 +793,7 @@ msgstr "Tryb wc&ięć:"
 #: dialogs/filetypeconfigwidget.ui:149
 #, kde-format
 msgid "File e&xtensions:"
-msgstr "&Rozszerzenia plików:"
+msgstr "&Rozszerzenia nazw pliku:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, edtFileExtensions)
 #: dialogs/filetypeconfigwidget.ui:159
@@ -962,7 +959,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr "Do&stosuj wcięcie kodu wklejonego ze schowka"
+msgstr "Do&pasuj wcięcie kodu wklejonego ze schowka"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -1221,9 +1218,10 @@ msgid ""
 "your work in the case of a system crash. Disabling swap files may cause data "
 "loss in case of a system crash."
 msgstr ""
-"%1 tworzy kopie zapasowe niezapisanych plików jako \"pliki wymiany\". %1 "
-"może z nich przywrócić twoją niezapisaną pracę po wysypaniu się systemu. W "
-"przeciwnym przypadku praca ta jest nie do odzyskania."
+"%1 tworzy kopie zapasowe niezapisanych plików jako \"pliki wymiany\". Pliki "
+"wymiany umożliwiają %1 przywrócenie twojej pracy w przypadku wysypania się "
+"systemu. Wyłączenie plików wymiany może skutkować utratą danych w przypadku "
+"wysypania się systemu."
 
 #: dialogs/katedialogs.cpp:1017
 #, kde-format
@@ -1427,7 +1425,7 @@ msgstr "Włącz ruchy kursora camelCase"
 #: dialogs/navigationconfigwidget.ui:79
 #, kde-format
 msgid "&Autocenter cursor:"
-msgstr "S&am wyśrodkuj kursor:"
+msgstr "S&amoczynnie wyśrodkuj kursor:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbAutoCenterCursor)
 #: dialogs/navigationconfigwidget.ui:89
@@ -1481,7 +1479,7 @@ msgstr "Trwały"
 #: dialogs/navigationconfigwidget.ui:167
 #, kde-format
 msgid "Allow scrolling past the end of the document"
-msgstr "Zezwól na przewijanie poza granicę dolną dokumentu"
+msgstr "Pozwól na przewijanie poza granicę dolną dokumentu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackspaceRemoveComposed)
 #: dialogs/navigationconfigwidget.ui:174
@@ -1517,13 +1515,13 @@ msgstr "Modyfikatory wielu kursorów"
 #: dialogs/opensaveconfigadvwidget.ui:34
 #, kde-format
 msgid "Auto reload files in version control"
-msgstr "Sam wczytaj pliki ponownie, gdy ich wersje są zarządzane"
+msgstr "Sam wczytaj pliki ponownie przy zarządzaniu wersjami"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: dialogs/opensaveconfigadvwidget.ui:41
 #, kde-format
 msgid "Write a backup file on save for:"
-msgstr "Zapisując, zapisz także plik kopii zapasowej dla:"
+msgstr "Zapisz plik kopii zapasowej przy zapisywaniu dla:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupLocalFiles)
 #: dialogs/opensaveconfigadvwidget.ui:48
@@ -1539,7 +1537,7 @@ msgstr ""
 #: dialogs/opensaveconfigadvwidget.ui:51
 #, kde-format
 msgid "&Local files"
-msgstr "&Lokalnych plików"
+msgstr "Miejscowych p&lików"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkBackupRemoteFiles)
 #: dialogs/opensaveconfigadvwidget.ui:58
@@ -1891,7 +1889,7 @@ msgstr "Pokaż kodowanie pliku"
 #: dialogs/statusbarconfigwidget.ui:61
 #, kde-format
 msgid "Show Line Ending Type"
-msgstr "Pokaż rodzaj zakończeń wierszy"
+msgstr "Pokaż rodzaj zakończenia wierszy"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/textareaappearanceconfigwidget.ui:28
@@ -2498,7 +2496,7 @@ msgstr "nagrywanie"
 #: vimode/config/configtab.cpp:233
 #, kde-format
 msgid "Vi Input Mode"
-msgstr "Tryb Vi"
+msgstr "Tryb wprowadzania Vi"
 
 #: mode/katemodeconfigpage.cpp:46
 #, kde-format
@@ -3852,7 +3850,7 @@ msgstr "&Do znalezienia:"
 #: search/searchbarpower.ui:63
 #, kde-format
 msgid "Rep&lace:"
-msgstr "&Do zastąpienia:"
+msgstr "Do z&astąpienia:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: search/searchbarpower.ui:76
@@ -3907,7 +3905,7 @@ msgstr "Zastąp następne pasujące wyrażenie"
 #: search/searchbarpower.ui:198 spellcheck/spellcheckbar.ui:130
 #, kde-format
 msgid "&Replace"
-msgstr "Z&astąp"
+msgstr "Zas&tąp"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, replaceAll)
 #: search/searchbarpower.ui:224
@@ -3919,7 +3917,7 @@ msgstr "Zastąp wszystkie pasujące wyrażenia"
 #: search/searchbarpower.ui:227
 #, kde-format
 msgid "Replace &All"
-msgstr "Zastąp wsz&ystko"
+msgstr "Z&astąp wszystko"
 
 #. i18n: ectx: property (text), widget (QPushButton, findAll)
 #: search/searchbarpower.ui:234
@@ -4951,7 +4949,7 @@ msgstr "Wybierz wygląd:"
 #: syntax/katethemeconfig.cpp:1110
 #, kde-format
 msgid "&Theme:"
-msgstr "&Wygląd:"
+msgstr "Zes&taw:"
 
 #: syntax/katethemeconfig.cpp:1119
 #, kde-format
@@ -4975,7 +4973,7 @@ msgstr "Zaimportuj…"
 #, kde-format
 msgid "Bundled read-only theme. To modify the theme, please copy it."
 msgstr ""
-"Ten wygląd jest tylko-do-odczytu. Aby wprowadzić w nim zmiany, skopiuj go."
+"Ten zestaw jest tylko-do-odczytu. Aby wprowadzić w nim zmiany, skopiuj go."
 
 #: syntax/katethemeconfig.cpp:1149
 #, kde-format
@@ -6275,7 +6273,7 @@ msgstr "Ustaw styl auto-wcinania."
 #, kde-format
 msgctxt "short translation please"
 msgid "Adjust indentation of text pasted from the clipboard."
-msgstr "Dostosuj wcięcie tekstu wklejonego ze schowka."
+msgstr "Dopasuj wcięcie tekstu wklejonego ze schowka."
 
 #: variableeditor/variablelineedit.cpp:239
 #, kde-format
@@ -6336,7 +6334,7 @@ msgstr "Usuwaj spacje na końcu wiersza przy zapisywaniu dokumentu."
 #, kde-format
 msgctxt "short translation please"
 msgid "Show scrollbar minimap."
-msgstr "Pokaż minimapę przewijania."
+msgstr "Pokaż mini-mapę przewijania."
 
 #: variableeditor/variablelineedit.cpp:289
 #, kde-format
@@ -6548,12 +6546,12 @@ msgstr[2] "Inne (%1)"
 #: view/katestatusbar.cpp:489
 #, kde-format
 msgid "Please specify the wanted tab width:"
-msgstr "Proszę podać żądaną szerokość tabulatora:"
+msgstr "Proszę podać żądaną szerokość tabulatora:"
 
 #: view/katestatusbar.cpp:505
 #, kde-format
 msgid "Please specify the wanted indentation width:"
-msgstr "Proszę podać żądaną szerokość wcięcia:"
+msgstr "Proszę podać żądaną szerokość wcięcia:"
 
 #: view/katestatusbar.cpp:568
 #, kde-format
@@ -7168,7 +7166,7 @@ msgstr ""
 #: view/kateview.cpp:812
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
-msgstr "Pokaż przewijaną minimapę"
+msgstr "Pokaż przewijaną mini-mapę"
 
 #: view/kateview.cpp:814
 #, kde-format
@@ -7415,15 +7413,14 @@ msgstr "Zmień słownik używany przy sprawdzaniu pisowni."
 #: view/kateview.cpp:962
 #, kde-format
 msgid "Clear Dictionary Ranges"
-msgstr "Wyczyść wyjątki przy sprawdzaniu"
+msgstr "Wyczyść zakresy słownika"
 
 #: view/kateview.cpp:964
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
 msgstr ""
-"Usuń wszystkie wyjątkowo sprawdzane obszary tekstu, które wskazano przy "
-"sprawdzaniu pisowni."
+"Usuń wszystkie zakresy słownika, których używano przy sprawdzaniu pisowni."
 
 #: view/kateview.cpp:970
 #, kde-format
@@ -11346,4 +11343,3 @@ msgstr "Nie ustawiono znacznika: %1"
 
 #~ msgid "No encoding header"
 #~ msgstr "Brak nagłówka kodowania"
-
