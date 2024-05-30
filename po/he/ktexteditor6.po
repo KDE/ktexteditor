@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-05-28 14:18+0300\n"
+"PO-Revision-Date: 2024-05-29 09:21+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3232,6 +3232,10 @@ msgid ""
 "lines.join(\", \");}'</code><br>To save you some typing, you can also do "
 "this to achieve the same:<br><code>each 'lines.join(\", \")'</code>"
 msgstr ""
+"אם סופקה פונקציית JavaScript כארגומנט, לקרוא לה לנגד רשימת השורות (הנבחרות) "
+"ולהחליף אותן בערך שמוחזר בקריאה החוזרת שלה.<br>דוגמה (צירוף השורות הנבחרות):"
+"<br><code>‎each 'function(lines){return lines.join(\", \");}‎'</code><br>כדי "
+"לחסוך הקלדה אפשר גם לכתוב ככה:<br><code>‎each 'lines.join(\", \")'‎</code>"
 
 #: script/data/commands/utils.js:488
 #, kde-format
@@ -3242,6 +3246,11 @@ msgid ""
 "{return l.length > 0;}'</code><br>To save you some typing, you can also do "
 "this to achieve the same:<br><code>filter 'line.length > 0'</code>"
 msgstr ""
+"אם סופקה פונקציית JavaScript כארגומנט, לקרוא לה לנגד רשימת השורות (הנבחרות) "
+"ולהסיר את אלו שעבורן הקריאה החוזרת היא שלילית/false.<br>לדוגמה (אפשר גם "
+"לקרוא את <code>rmblank</code>):‏<br><code>‎filter 'function(l){return l.length "
+"> 0;}'‎</code><br>כדי לחסוך הקלדה אפשר גם לכתוב ככה:<br><code>‎filter 'line."
+"length > 0'‎</code>"
 
 #: script/data/commands/utils.js:490
 #, kde-format
@@ -3253,6 +3262,11 @@ msgid ""
 "you can also do this to achieve the same:<br><code>map 'line.replace(/^\\s"
 "+/, \"\")'</code>"
 msgstr ""
+"אם סופקה פונקציית JavaScript כארגומנט, לקרוא לה לנגד רשימת השורות (הנבחרות) "
+"ולהסיר את אלו שעבורן הקריאה החוזרת היא שלילית/false.<br>לדוגמה (אפשר גם "
+"לקרוא את <code>ltrim</code>):‏<br><code>map 'function(line){return line."
+"replace(/^\\s+/, \"\");}'</code><br>כדי לחסוך הקלדה אפשר גם לכתוב ככה:"
+"<br><code>map 'line.replace(/^\\s+/, \"\")'</code>"
 
 #: script/data/commands/utils.js:492
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-04-30 15:54+0200\n"
+"PO-Revision-Date: 2024-05-29 11:29+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1298,7 +1298,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr ""
+msgstr "Uložit &jako…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2473,7 +2473,7 @@ msgstr "Režimy a typy souborů"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr ""
+msgstr "Hledat…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3855,7 +3855,7 @@ msgstr "Zrušena kontrola pravopisu."
 #, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr ""
+msgstr "Probíhá kontrola pravopisu…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4086,7 +4086,7 @@ msgstr "I&gnorovat vše"
 #, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr ""
+msgstr "Kontrola pravopisu (od kurzoru)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4210,25 +4210,25 @@ msgstr "Přeškr&tnuté"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr ""
+msgstr "&Normální barva…"
 
 #: syntax/katestyletreewidget.cpp:263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr ""
+msgstr "Barva &výběru…"
 
 #: syntax/katestyletreewidget.cpp:266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr ""
+msgstr "&Barva pozadí…"
 
 #: syntax/katestyletreewidget.cpp:269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr ""
+msgstr "Barva &pozadí výběru…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4849,19 +4849,19 @@ msgstr "&Motiv:"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr ""
+msgstr "&Kopírovat…"
 
 #: syntax/katethemeconfig.cpp:1127
 #, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr ""
+msgstr "Exportovat…"
 
 #: syntax/katethemeconfig.cpp:1131
 #, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr ""
+msgstr "Importovat…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6314,7 +6314,7 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr ""
+msgstr "Jiné…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6467,7 +6467,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr ""
+msgstr "&Zarovnat na…"
 
 #: view/kateview.cpp:526
 #, kde-format
@@ -6644,13 +6644,13 @@ msgstr "Uložit současný dokument na disk a pojmenovat dle volby uživatele."
 #, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr ""
+msgstr "Uložit jako (s kódováním)…"
 
 #: view/kateview.cpp:662
 #, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr ""
+msgstr "Uložit kop&ii jako…"
 
 #: view/kateview.cpp:663
 #, kde-format
@@ -6690,7 +6690,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr ""
+msgstr "Nastavit e&ditor…"
 
 #: view/kateview.cpp:684
 #, kde-format
@@ -7152,7 +7152,7 @@ msgstr "Povolit/zakázat automatickou kontrolu pravopisu"
 #, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr ""
+msgstr "Změnit slovník…"
 
 #: view/kateview.cpp:958
 #, kde-format
@@ -7190,7 +7190,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr ""
+msgstr "E&xportovat do HTML…"
 
 #: view/kateview.cpp:977
 #, kde-format
@@ -7654,7 +7654,7 @@ msgstr "Kopírovat"
 #, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr ""
+msgstr "Barva pozadí…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -7670,7 +7670,7 @@ msgstr "Zobrazit dekorace oken"
 #, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
-msgstr ""
+msgstr "Zachytit snímek výběru"
 
 #: view/screenshotdialog.cpp:260
 #, kde-format
