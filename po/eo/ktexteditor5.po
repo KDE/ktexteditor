@@ -2,7 +2,7 @@
 # Copyright (C) 2003, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the ktexteditor package.
 # Heiko Evermann <heiko@evermann.de>, 2003.
-# Oliver M. Kellogg <okellogg@users.sourceforge.net>, 2007.
+# Oliver M. Kellogg <olivermkellogg@gmail.com>, 2007.
 # Cindy McKee <cfmckee@gmail.com>, 2007, 2008.
 #
 # Minuskloj: ĉ ĝ ĵ ĥ ŝ ŭ   Majuskloj: Ĉ Ĝ Ĵ Ĥ Ŝ Ŭ
@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-29 01:34+0000\n"
-"PO-Revision-Date: 2024-03-27 19:34+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-30 22:41+0200\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -554,7 +554,7 @@ msgstr "&Desegnu vertikalan linion ĉe la vortvolva kolumno"
 #: dialogs/editconfigwidget.ui:49
 #, kde-format
 msgid "Wra&p words at:"
-msgstr "Envolvi vortojn ĉe:"
+msgstr "Volvi &vortojn ĉe:"
 
 #. i18n: ectx: property (whatsThis), widget (KPluralHandlingSpinBox, sbWordWrap)
 #: dialogs/editconfigwidget.ui:59
@@ -915,7 +915,7 @@ msgstr ""
 #: dialogs/indentationconfigwidget.ui:196
 #, kde-format
 msgid "Adjust indentation of code &pasted from the clipboard"
-msgstr "Alĝustigi deŝovon de kodo algluita el la tondujo"
+msgstr "Alĝustigi deŝovon de kodo algluita el la &poŝo"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbKeys)
 #: dialogs/indentationconfigwidget.ui:206
@@ -1174,7 +1174,7 @@ msgid ""
 msgstr ""
 "%1 rezervas nekonservitajn dosierojn al \"interŝanĝaj dosieroj.\" "
 "Interŝanĝaj dosieroj permesas al %1 reakiri vian laboron en kazo de sistema "
-"kraŝo. Malŝalti interŝanĝajn dosierojn povas kaŭzi perdon de datumoj en kazo "
+"paneo. Malŝalti interŝanĝajn dosierojn povas kaŭzi perdon de datumoj en kazo "
 "de sistema paneo."
 
 #: dialogs/katedialogs.cpp:1008
@@ -1676,7 +1676,7 @@ msgstr ""
 #: dialogs/opensaveconfigwidget.ui:125
 #, kde-format
 msgid "A&utomatic end of line detection"
-msgstr "Aŭtomata ekkono de linifino"
+msgstr "A&ŭtomata ekkono de linifino"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:132
@@ -4106,7 +4106,7 @@ msgstr ""
 #: spellcheck/spellcheckbar.ui:212
 #, kde-format
 msgid "R&eplace All"
-msgstr "Anstataŭigi Ĉion"
+msgstr "A&nstataŭigi Ĉion"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_skipAllBtn)
 #: spellcheck/spellcheckbar.ui:225
@@ -5931,12 +5931,12 @@ msgstr ""
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
-msgstr "X-komponento en tutmondaj ekrankoordinatoj de la kursora pozicio."
+msgstr "X-komponento en ĉieaj ekrankoordinatoj de la kursora pozicio."
 
 #: utils/katevariableexpansionmanager.cpp:117
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
-msgstr "Y-komponento en tutmondaj ekrankoordinatoj de la kursora pozicio."
+msgstr "Y-komponento en ĉieaj ekrankoordinatoj de la kursora pozicio."
 
 #: utils/katevariableexpansionmanager.cpp:124
 #, kde-format
@@ -6167,7 +6167,7 @@ msgstr "Agordi la koloron de la piktogramo."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
-msgstr "Ebligi la ikonan randon en la redaktora vido."
+msgstr "Ebligi la piktograman randon en la redaktora vido."
 
 #: variableeditor/variablelineedit.cpp:224
 #, kde-format
