@@ -32,6 +32,7 @@ include_directories(
 
 add_definitions(-DTEST_DATA_DIR=\"${CMAKE_SOURCE_DIR}/autotests/input/\")
 add_definitions(-DJS_DATA_DIR=\"${CMAKE_SOURCE_DIR}/src/script/data/\")
+add_definitions(-DJS_SCRIPTTESTER_DATA_DIR=\"${CMAKE_SOURCE_DIR}/src/scripttester/\")
 
 set (KTEXTEDITOR_TEST_LINK_LIBS KF6TextEditor
   KF6::I18n
@@ -151,6 +152,7 @@ ktexteditor_unit_test_offscreen(undomanager_test)
 ktexteditor_unit_test_offscreen(plaintextsearch_test)
 ktexteditor_unit_test_offscreen(regexpsearch_test)
 ktexteditor_unit_test_offscreen(scriptdocument_test)
+ktexteditor_unit_test_offscreen(scripttester_test ../src/scripttester/scripttester.cpp)
 ktexteditor_unit_test_offscreen(wordcompletiontest)
 ktexteditor_unit_test_offscreen(searchbar_test)
 ktexteditor_unit_test_offscreen(movingcursor_test)

@@ -333,6 +333,18 @@ set_target_properties(KF6TextEditor
    EXPORT_NAME "TextEditor"
 )
 
+add_executable(ktexteditor_script_tester
+    scripttester/ktexteditorscripttester.cpp
+    scripttester/scripttester.cpp
+    scripttester/ktexteditorscripttester.qrc
+)
+target_link_libraries(ktexteditor_script_tester
+    Qt6::Qml
+    KF6TextEditor
+)
+set_property(TARGET ktexteditor_script_tester PROPERTY OUTPUT_NAME ktexteditor-script-tester6)
+install(TARGETS ktexteditor_script_tester ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+
 # precompiled headers support
 if(ENABLE_PCH)
     target_precompile_headers(KF6TextEditor
