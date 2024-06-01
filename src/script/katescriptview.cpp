@@ -210,7 +210,7 @@ QJSValue KateScriptView::executeCommand(const QString &command, const QString &a
         ok = cmd->exec(m_view, cmdLine, message, range);
     }
 
-    QJSValue object;
+    QJSValue object = m_engine->newObject();
     object.setProperty(QStringLiteral("ok"), ok);
     object.setProperty(QStringLiteral("status"), message);
     return object;
