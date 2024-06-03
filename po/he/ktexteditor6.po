@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-05-30 08:21+0300\n"
+"PO-Revision-Date: 2024-06-02 07:58+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1569,9 +1569,9 @@ msgstr "שמירת קובץ החלפה כל:"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spbSwapFileSync)
 #: dialogs/opensaveconfigadvwidget.ui:196
-#, fuzzy, kde-format
+#, kde-format
 msgid "s"
-msgstr "בתור"
+msgstr "שנ׳"
 
 #. i18n: ectx: property (text), widget (QLabel, lblExplanatory)
 #: dialogs/opensaveconfigadvwidget.ui:221
@@ -3906,6 +3906,13 @@ msgid ""
 "or <b>Ignore All</b> instead.</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>המילה הבלתי מוכרת נמצאה וסומנה כבלתי מוכרת כיוון שאינה מופיעה במילון."
+"<br>\n"
+"יש ללחוץ כאן אם להערכתך איות המילה תקין וברצונך להימנע מסימונה כשגויה בעתיד. "
+"כדי להשאיר את המצב כפי שהוא, אך לא להוסיף את המילה למילון, יש ללחוץ במקום "
+"זאת על <b>התעלמות</b> או על <b>התעלמות מהכול</b>. </p>\n"
+"</qt>"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_addBtn)
 #: spellcheck/spellcheckbar.ui:75
@@ -3925,6 +3932,12 @@ msgid ""
 "occurrences.</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>אם איות המילה הבלתי מוכרת שגוי, אפשר להקליד כאן את התיקון למילה או לבחור "
+"אותו מהרשימה להלן.</p>\n"
+"<p>אחר כך אפשר ללחוץ על <b>החלפה</b> כדי לתקן מופע זה בלבד, או <b>החלפה של "
+"הכול</b> כדי לתקן את כל המופעים.</p>\n"
+"</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: spellcheck/spellcheckbar.ui:92
@@ -3947,6 +3960,10 @@ msgid ""
 "in the edit box above (to the left).</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>לחיצה כאן תחליף מופע זה של הטקסט הבלתי מוכר בטקסט שבתיבת העריכה לעיל (בצד "
+"ימין).</p>\n"
+"</qt>"
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, m_skipBtn)
 #: spellcheck/spellcheckbar.ui:140
@@ -3959,6 +3976,12 @@ msgid ""
 "</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>לחיצה כאן תשאיר את המופע הזה של המילה הבלתי מוכרת כפי שהוא ולא תשנה אותו."
+"</p>\n"
+"<p>פעולה זו שימושית כאשר המילה היא שם, ראשי תיבות, מילה זרה או כל מילה לא "
+"מוכרת אחרת שברצונך להשתמש בה אך לא להוסיפה למילון.</p>\n"
+"</qt>"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, textLabel5)
 #. i18n: ectx: property (whatsThis), widget (Sonnet::DictionaryComboBox, m_language)
@@ -3969,6 +3992,9 @@ msgid ""
 "<p>Select the language of the document you are proofing here.</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>נא לבחור את שפת המסמך שנתון להגהתך.</p>\n"
+"</qt>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
 #: spellcheck/spellcheckbar.ui:159
@@ -3995,6 +4021,12 @@ msgid ""
 "</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>לחיצה כאן תשאיר את כל המופעים של המילה הבלתי מוכרת כפי שהם ולא תשנה אותם."
+"</p>\n"
+"<p>פעולה זו שימושית כאשר המילה היא שם, ראשי תיבות, מילה זרה או כל מילה לא "
+"מוכרת אחרת שברצונך להשתמש בה אך לא להוסיפה למילון.</p>\n"
+"</qt>"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_autoCorrect)
 #: spellcheck/spellcheckbar.ui:200
@@ -4011,6 +4043,10 @@ msgid ""
 "in the edit box above (to the left).</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>לחיצה כאן תחליף את כל המופעים של הטקסט הבלתי מוכר בטקסט שבתיבת העריכה "
+"שלעיל (בצד ימין).</p>\n"
+"</qt>"
 
 #. i18n: ectx: property (text), widget (QPushButton, m_replaceAllBtn)
 #: spellcheck/spellcheckbar.ui:212
@@ -5060,6 +5096,8 @@ msgid ""
 "<p>set-indent-width <b>width</b></p><p>Sets the indentation width to the "
 "number <b>width</b>. Used only if you are indenting with spaces.</p>"
 msgstr ""
+"<p>set-indent-width <b>רוחב</b></p>‏<p>הגדרת רוחב ההזחה למספר <b>רוחב</b>. "
+"ייעשה בזה שימוש רק בעת הזחה עם רווחים.</p>"
 
 #: utils/katecmds.cpp:129
 #, kde-format
@@ -7820,6 +7858,9 @@ msgid ""
 "tt></p><p>Goes to the <b>l</b>ast document (\"<b>b</b>uffer\") in document "
 "list.</p>"
 msgstr ""
+"<p><b>bl,blast &mdash; המסמך האחרון</b></p><p>אופן שימוש: <tt><b>bl[ast]</"
+"b></tt></p><p>עובר למסמך <b>l</b> (last) האחרון („<b>b</b> (buffer) חוצץ”) "
+"ברשימת המסמכים.</p>"
 
 #: vimode/appcommands.cpp:551
 #, kde-format
