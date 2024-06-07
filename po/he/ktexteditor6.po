@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-06-02 07:58+0300\n"
+"PO-Revision-Date: 2024-06-05 22:35+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1637,6 +1637,12 @@ msgid ""
 "found, the right Unicode encoding will be chosen; otherwise encoding "
 "detection will run, if both fail the fallback encoding will be tried."
 msgstr ""
+"מגדיר את קידוד הגיבוי שיש לנסות לפתיחת הקבצים אם לא נבחרו אף אחד מתקני "
+"הקידוד לעיל, או שלא צוין קידוד בחלונית פתיחה/שמירה או שהקידוד שצוין בשורת "
+"הפקודה לא תואם את תוכן הקובץ. לפני שמשתמשים בזה, יתבצע ניסיון לאתר את הקידוד "
+"לשימוש על ידי חיפוש סימן סדר בתים בתחילת הקובץ: אם נמצא אחד כזה, קידוד "
+"היוניקוד הנכון ייבחר, אחרת זיהוי קידוד יופעל, אם שניהם נכשלו יתבצע ניסיון "
+"להגדיר את קידוד הגיבוי."
 
 #. i18n: ectx: property (text), widget (QLabel, lblEOL)
 #: dialogs/opensaveconfigwidget.ui:91
@@ -1687,6 +1693,9 @@ msgid ""
 "Unicode encoding. The byte order mark is not visible in the displayed "
 "document."
 msgstr ""
+"סימן סדר בתים הוא רצף מיוחד בתחילתם של מסמכים בקידוד יוניקוד. הוא מסייע "
+"לעורכים לפתוח מסמכים טקסט עם הקידוד הנכון ביוניקוד. סימן סדר הבתים לא מוצג "
+"על המסך כחלק מהצגת המסמך."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnableBOM)
 #: dialogs/opensaveconfigwidget.ui:135
@@ -3222,6 +3231,13 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"הפקודה מיישרת את המקטע הנבחר או את המסמך כולו לפי העמודה שסופקה דרך ביטוי "
+"רגולרי שסופק כארגומנט.<br><br>אספקת תבנית ריקה תיישר לפי התו הראשון שאינו "
+"ריק כברירת מחדל.<br>אם בתבנית יש לכידה ההתאמה שנלכדה תוזח."
+"<br><br><i>דוגמאות</i>:<br>‚‎<code>alignon -</code>‎’ יוסיף רווחים לפני ה־"
+"‚-’ (מינוס) הראשון בכל אחת מהשורות כדי ליישר אותן לאותה העמודה."
+"<br>‚‎<code>alignon :\\s+(.)</code>‎’ יוסיף רווחים לפני התו הראשון שאינו ריק "
+"שמופיע מיד אחרי נקודתיים כדי ליישר את כולם לאותה העמודה."
 
 #: script/data/commands/utils.js:486
 #, kde-format
@@ -7803,6 +7819,11 @@ msgid ""
 "<br /> <tt>vnew</tt> &mdash; splits the view vertically and opens a new "
 "document.<br /></p>"
 msgstr ""
+"<p><b>[v]new &mdash; פיצול התצוגה ויצירת מסמך חדש</b></p><p>אופן שימוש: "
+"<tt><b>[v]new</b></tt></p><p>פיצול התצוגה הנוכחית ופתיחת מסמך חדש בתצוגה "
+"החדשה. אפשר לקרוא לפקודה הזאת בשתי דרכים:<br /> <tt>new</tt> &mdash; פיצול "
+"התצוגה אופקית ופתיחת מסמך חדשה.<br /> <tt>vnew</tt> &mdash; פיצול התצוגה "
+"אנכית ופתיחת מסמך חדש.<br /></p>"
 
 #: vimode/appcommands.cpp:270
 #, kde-format
@@ -7811,6 +7832,9 @@ msgid ""
 "b></tt></p><p>Starts <b>e</b>diting the current document again. This is "
 "useful to re-edit the current file, when it was modified on disk.</p>"
 msgstr ""
+"<p><b>e[dit] &mdash; רענון המסמך הנוכחי</b></p><p>אופן השימוש: "
+"<tt><b>e[dit]</b></tt></p><p>התחלת עריכת (<b>e</b>diting) המסמך הנוכחי שוב. "
+"שימושי לעריכת הקובץ הנוכחי מחדש, כשהוא משתנה בכונן.</p>"
 
 #: vimode/appcommands.cpp:518
 #, kde-format
