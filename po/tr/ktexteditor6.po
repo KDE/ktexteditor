@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-05-09 19:06+0300\n"
+"PO-Revision-Date: 2024-06-08 13:30+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2293,9 +2293,8 @@ msgid ""
 "the file is successfully written."
 msgstr ""
 "%1 dosyasına yazılamadığından belge kaydedilemedi.\n"
-"Bu belgeye yazma izninizin olduğundan emin olun veya disk alanını "
-"denetleyin.\n"
-"Özgün dosya kaybolmuş veya hasar görmüş olabilir. Dosya başarıyla yazılana  "
+"Bu belgeye yazma izniniz veya yeterli disk alanınız olduğundan emin olun.\n"
+"Özgün dosya kaybolmuş veya hasar görmüş olabilir. Dosya başarıyla yazılana "
 "dek uygulamadan çıkmayın."
 
 #: document/katedocument.cpp:2668
@@ -3979,11 +3978,11 @@ msgstr ""
 "<qt><p>Bu sözcük “bilinmeyen sözcük” olarak değerlendirildi; çünkü güncel "
 "sözlük içinde hiçbir girdiyle eşleştirilemedi. Başka bir dilde bir sözcük de "
 "olabilir.</p>\n"
-"<p>Eğer hatalı hecelenmiş bir sözcük değilse <b>Sözlüğe Eklemek</b> için "
-"tıklayın. Bilinmeyen bir sözcüğü sözlüğe eklemek istemiyorsanız fakat olduğu "
-"gibi bırakılmasını istiyorsanız  <b>Yok Say</b> veya <b>Tümünü Yok Say</b>’ı "
-"tıklayın.</p>\n"
-"<p>Bununla birlikte, eğer sözcük hatalı hecelenmişse aşağıdaki listeden "
+"<p>Eğer hatalı yazılmış bir sözcük değilse <b>sözlüğe eklemek</b> için "
+"tıklayın. Bilinmeyen bir sözcüğü sözlüğe eklemek istemiyor; ancak olduğu "
+"gibi bırakılmasını istiyorsanız <b>Yok Say</b>’a veya <b>Tümünü Yok Say</"
+"b>’a tıklayın.</p>\n"
+"<p>Bununla birlikte, eğer sözcük hatalı yazılmışsa aşağıdaki listeden "
 "doğrusunu bularak değiştirebilirsiniz. Değiştirilecek doğru bir seçenek "
 "yoksa kutucuğa doğrusunu yazarak <b>Değiştir</b> veya <b>Tümünü Değiştir</b> "
 "ögesine tıklayın.</p>\n"
@@ -4625,7 +4624,7 @@ msgstr "Değiştirme Vurgulaması"
 #: syntax/katethemeconfig.cpp:216
 #, kde-format
 msgid "<p>Sets the background color of replaced text.</p>"
-msgstr "<p>Değiştirilen metnin arka  plan rengini ayarlar.</p>"
+msgstr "<p>Değiştirilen metnin arka plan rengini ayarlar.</p>"
 
 #: syntax/katethemeconfig.cpp:223
 #, kde-format
@@ -4838,7 +4837,7 @@ msgstr ""
 #: syntax/katethemeconfig.cpp:344
 #, kde-format
 msgid "Text Templates & Snippets"
-msgstr "Metin Şablonları & Parçacıkları"
+msgstr "Metin Şablonları ve Parçacıkları"
 
 #: syntax/katethemeconfig.cpp:349
 #, kde-format
@@ -5024,7 +5023,7 @@ msgstr "Sistem renk şemasını izle"
 #, kde-format
 msgid "Do you really want to delete the theme \"%1\"? This can not be undone."
 msgstr ""
-"“%1”  temasını gerçekten silmek istediğinizden emin misiniz? Bu geri "
+"“%1” temasını silmeyi gerçekten istediğinizden emin misiniz? Bu geri "
 "alınamaz."
 
 #: syntax/katethemeconfig.cpp:1364
@@ -8309,7 +8308,7 @@ msgstr "%1 yazmacında bir şey yok"
 #: vimode/modes/normalvimode.cpp:1685
 #, kde-format
 msgid "'%1' %2,  Hex %3,  Octal %4"
-msgstr "“%1” %2,  Altılık %3,  Sekizlik %4"
+msgstr "“%1” %2, Altılık %3, Sekizlik %4"
 
 #: vimode/modes/normalvimode.cpp:2528
 #, kde-format
