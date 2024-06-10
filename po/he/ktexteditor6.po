@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-06-05 22:35+0300\n"
+"PO-Revision-Date: 2024-06-09 06:45+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -995,6 +995,9 @@ msgid ""
 "instead of tabulators</b> in the section <b>Editing</b> is enabled, spaces "
 "are inserted; otherwise, a single tabulator is inserted."
 msgstr ""
+"אם האפשרות הזאת נבחרת, מקש ה<b>טאב</b> תמיד מוסיף רווח להגעה אל מקום הטאב "
+"הבא. אם האפשרות <b>הוספת רווחים במקום טאבים</b> שבסעיף <b>עריכה</b> פעילה, "
+"נוספים רווחים, אחרת, נוסף סימן טאב בודד."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabAdvances)
 #: dialogs/indentationconfigwidget.ui:279
@@ -6497,11 +6500,10 @@ msgstr ""
 "המתאימה."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "יישור פעיל"
+msgstr "יישור &לפי…"
 
 #: view/kateview.cpp:526
 #, kde-format
