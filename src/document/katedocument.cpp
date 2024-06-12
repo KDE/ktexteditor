@@ -1944,6 +1944,9 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
 
 void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, const QSet<QString> &flags)
 {
+    // ensure we don't amass stuff
+    kconfig.deleteGroup();
+
     if (this->url().isLocalFile()) {
         const QString path = this->url().toLocalFile();
         if (path.startsWith(QDir::tempPath())) {
