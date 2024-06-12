@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-06-09 06:45+0300\n"
+"PO-Revision-Date: 2024-06-11 16:00+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4366,7 +4366,7 @@ msgstr "מחרוזת מיוחדת"
 #, kde-format
 msgctxt "@item:intable Text context"
 msgid "Imports, Modules, Includes"
-msgstr ""
+msgstr "Imports, Modules, Includes - ייבוא, מודולים, הכללה"
 
 #: syntax/katethemeconfig.cpp:81
 #, kde-format
@@ -5098,6 +5098,9 @@ msgid ""
 "whitespace will be visualized by a small dot.</p><p>Possible true values: 1 "
 "on true<br/>possible false values: 0 off false</p>"
 msgstr ""
+"<p>set-show-tabs <b>enable</b></p><p>אם פעיל, תווי TAB ורווחים פותחים ייוצגו "
+"על ידי נקודה קטנה.</p><p>ערכים חיוביים אפשריים: 1 on true<br/>ערכים שליליים "
+"אפשריים: 0 off false</p>"
 
 #: utils/katecmds.cpp:113
 #, kde-format
@@ -7876,6 +7879,9 @@ msgid ""
 "tt></p><p>Goes to the <b>f</b>irst document (\"<b>b</b>uffer\") in document "
 "list.</p>"
 msgstr ""
+"<p><b>bf,bfirst &mdash; המסמך הראשון</b></p><p>אופן שימוש: <tt><b>bf[irst]</"
+"b></tt></p><p>עובר למסמך הראשון (<b>f</b>irst) „חוצץ” (<b>b</b>uffer) ברשימת "
+"המסמכים.</p>"
 
 #: vimode/appcommands.cpp:545
 #, kde-format

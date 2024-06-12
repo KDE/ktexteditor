@@ -13,13 +13,13 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Julia Dronova <juliette.tux@gmail.com>, 2013.
 # Мария Шикунова <translation-team@basealt.ru>, 2022, 2023.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2023.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2023-12-26 16:38+0300\n"
+"PO-Revision-Date: 2024-06-11 14:29+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -1334,11 +1334,10 @@ msgid "Closes the file, discarding its content."
 msgstr "Закрыть текущий файл без сохранения изменений."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "Сохранить &как..."
+msgstr "Сохранить &как…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -2555,12 +2554,10 @@ msgid "Modes && Filetypes"
 msgstr "Типы файлов"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Введите текст для поиска..."
+msgstr "Введите текст для поиска…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -6941,11 +6938,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Опуститься вниз к следующей изменённой строке."
 
 #: view/kateview.cpp:682
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "&Настроить редактор..."
+msgstr "&Настроить редактор…"
 
 #: view/kateview.cpp:684
 #, kde-format
@@ -7413,11 +7409,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Включение/выключение автоматической проверки орфографии"
 
 #: view/kateview.cpp:957
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Выбрать словарь"
+msgstr "Выбрать словарь…"
 
 #: view/kateview.cpp:958
 #, kde-format
@@ -7777,13 +7772,12 @@ msgstr "Свернуть или развернуть текущий блок к�
 #: view/kateview.cpp:1340
 #, kde-format
 msgid "Toggle Contained Nodes"
-msgstr "Свернуть или вложенные блоки кода"
+msgstr "Свернуть или развернуть вложенные блоки кода"
 
 #: view/kateview.cpp:1349
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Выделенный текст в текущем документе."
+msgstr "Проговорить выделенный фрагмент или текущий документ"
 
 #: view/kateview.cpp:1359
 #, kde-format
