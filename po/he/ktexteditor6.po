@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-26 00:36+0000\n"
-"PO-Revision-Date: 2024-06-11 16:00+0300\n"
+"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"PO-Revision-Date: 2024-06-12 06:18+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1037,6 +1037,13 @@ msgid ""
 "b> is enabled, spaces are inserted; otherwise, a single tabulator is "
 "inserted."
 msgstr ""
+"אם האפשרות הזאת מסומנת, מקש <b>טאב</b> יזיח את השורה הנוכחית או יקדם למיקום "
+"הטאב הבא.<p> אם הכניסה היא על או לפני התו הראשון שאינו רווח בשורה, או אם "
+"מתקיימת בחירה, השורה הנוכחית מוזחת במספר מקומות התווים כפי שצוינות תחת   "
+"<b>רוחב הזחה</b>.<p> אם נקודת הכניסה ממוקמת אחרי התו הראשון שאינו רווח בשורה "
+"ולא מתקיימת בחירה, נוסף רווח עד להגעה למיקום הטאב הבא: אם האפשרות<b>הוספת "
+"רווחים במקום טאבים</b> בסעיף <b>עריכה</b> פעילה, יתווספו רווחים במקום, אחרת, "
+"יתווסף תו טאב יחיד."
 
 #. i18n: ectx: property (text), widget (QRadioButton, rbTabSmart)
 #: dialogs/indentationconfigwidget.ui:299
@@ -2091,6 +2098,11 @@ msgid ""
 "indentation levels are deeper than 50% of the width of the screen will not "
 "have vertical alignment applied to subsequent wrapped lines.</p>"
 msgstr ""
+"<p>הפעלת התחלת תווים בעטיפה דינמית ליישור אנכי לרמת ההזחה של השורה הראשונה. "
+"יכול לסייע בשיפור יכולת הקריאה של קוד וקבצים מסומנים.</p><p>בנוסף, כך ניתן "
+"להגדיר את רוחב המסך המרבי, באחוזים, לאחריו שורות בעטיפה דינמית לא ייושרו עוד "
+"אנכית. למשל, ב־50%, שורות שרמות ההזחה שלהן עולות על 50% מרוחב המסך לא יחול "
+"על השורות שאחריהן יישור אנכי.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:430
@@ -2114,7 +2126,7 @@ msgstr "רענון המסמך אוטומטית"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "לרענן את המסמך אוטומטית כשהוא נערך בכונן"
 
-#: document/katedocument.cpp:2253
+#: document/katedocument.cpp:2256
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2123,24 +2135,24 @@ msgstr ""
 "אי אפשר לטעון את הקובץ %1 כי אי אפשר לקרוא ממנו.<br />נא לבדוק אם יש לך "
 "הרשאה לקרוא מהקובץ."
 
-#: document/katedocument.cpp:2258
+#: document/katedocument.cpp:2261
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "לנסות שוב"
 
-#: document/katedocument.cpp:2262 document/katedocument.cpp:6507
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
 #, kde-format
 msgid "&Close"
 msgstr "ל&סגור"
 
-#: document/katedocument.cpp:2263 document/katedocument.cpp:6508
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "סגירת הודעה"
 
-#: document/katedocument.cpp:2395
+#: document/katedocument.cpp:2398
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2153,7 +2165,7 @@ msgstr ""
 "את הקובץ מחדש עם הקידוד הנכון, או לאפשר מחדש את אפשרות הכתיבה מתוך תפריט "
 "הכלים כדי לאפשר לך לערוך אותו."
 
-#: document/katedocument.cpp:2414
+#: document/katedocument.cpp:2417
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2165,17 +2177,17 @@ msgstr ""
 ">הארוכה מבין השורות האלו הייתה באורך %3<br />השורות הללו גלשו, והמסמך הוגדר "
 "לקריאה בלבד כיוון ששמירה שלו כנראה תשנה את התוכן שלו."
 
-#: document/katedocument.cpp:2421
+#: document/katedocument.cpp:2424
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "להגדיל את המגבלה זמנית ולרענן את הקובץ"
 
-#: document/katedocument.cpp:2424
+#: document/katedocument.cpp:2427
 #, kde-format
 msgid "Close"
 msgstr "סגירה"
 
-#: document/katedocument.cpp:2451
+#: document/katedocument.cpp:2454
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2184,18 +2196,18 @@ msgstr ""
 "לשמור קובץ זה שלא מכיל שינויים? פעולה זו עלולה לכתוב על נתונים ששונו בקובץ "
 "בכונן."
 
-#: document/katedocument.cpp:2452
+#: document/katedocument.cpp:2455
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "מתבצע ניסיון לשמור קובץ שלא שונה"
 
-#: document/katedocument.cpp:2453 document/katedocument.cpp:2464
-#: document/katedocument.cpp:2480
+#: document/katedocument.cpp:2456 document/katedocument.cpp:2467
+#: document/katedocument.cpp:2483
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "לשמור בכל זאת"
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2465
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2204,14 +2216,14 @@ msgstr ""
 "לשמור קובץ זה? הן הקובץ הפתוח שלך והן הקובץ שבכונן נערכו. חלק מהנתונים "
 "עלולים ללכת לאיבוד."
 
-#: document/katedocument.cpp:2463 document/katedocument.cpp:2479
-#: document/katedocument.cpp:2796 syntax/katethemeconfig.cpp:1207
+#: document/katedocument.cpp:2466 document/katedocument.cpp:2482
+#: document/katedocument.cpp:2799 syntax/katethemeconfig.cpp:1207
 #: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "אובדן נתונים אפשרי"
 
-#: document/katedocument.cpp:2477
+#: document/katedocument.cpp:2480
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2220,7 +2232,7 @@ msgstr ""
 "הקידוד הנבחר לא יכול לקודד כל תו יוניקוד במסמך הזה. לשמור אותו? יכול להיות "
 "שחלק מהנתונים ילכו לאיבוד."
 
-#: document/katedocument.cpp:2547
+#: document/katedocument.cpp:2550
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2234,7 +2246,7 @@ msgstr ""
 "הקובץ המקורי כנראה אבד או נפגם. לא לצאת מהיישום עד שכתיבת הקובץ הושלמה "
 "בהצלחה."
 
-#: document/katedocument.cpp:2668
+#: document/katedocument.cpp:2671
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2246,49 +2258,49 @@ msgstr ""
 "המידע של הקובץ הזה עלול ללכת לאיבוד. הסיבה לכך יכולה להיות שהמדיה המיועדת "
 "לשמירה עליה מלאה או שהתיקייה של הקובץ נמצאת במצב לקריאה בלבד."
 
-#: document/katedocument.cpp:2672
+#: document/katedocument.cpp:2675
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "יצירת עותק גיבוי נכשלה."
 
-#: document/katedocument.cpp:2673
+#: document/katedocument.cpp:2676
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "לנסות לשמור בכל זאת"
 
-#: document/katedocument.cpp:2795
+#: document/katedocument.cpp:2798
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr "להמשיך ולסגור קובץ זה? עלול להוביל לאובדן של נתונים."
 
-#: document/katedocument.cpp:2797
+#: document/katedocument.cpp:2800
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "לסגור בכל זאת"
 
-#: document/katedocument.cpp:4578
+#: document/katedocument.cpp:4581
 #, kde-format
 msgid "Untitled"
 msgstr "ללא שם"
 
-#: document/katedocument.cpp:4701 document/katedocument.cpp:4927
-#: document/katedocument.cpp:4937 document/katedocument.cpp:5730
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:4704 document/katedocument.cpp:4930
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
+#: document/katedocument.cpp:5920
 #, kde-format
 msgid "Save File"
 msgstr "שמירת קובץ"
 
-#: document/katedocument.cpp:4704
+#: document/katedocument.cpp:4707
 #, kde-format
 msgid "Save failed"
 msgstr "השמירה נכשלה"
 
-#: document/katedocument.cpp:4948
+#: document/katedocument.cpp:4951
 #, kde-format
 msgid "Save Copy of File"
 msgstr "שמירת עותק של קובץ"
 
-#: document/katedocument.cpp:4960
+#: document/katedocument.cpp:4963
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2300,7 +2312,7 @@ msgstr ""
 "\n"
 "נא לבדוק שיש לך הרשאת כתיבה לקובץ זה ושיש מספיק מקום פנוי בכונן."
 
-#: document/katedocument.cpp:5243
+#: document/katedocument.cpp:5246
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2313,7 +2325,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5249
+#: document/katedocument.cpp:5252
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2326,22 +2338,22 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5559
+#: document/katedocument.cpp:5562
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "הקובץ ‚%1’ נערך בכונן."
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5565
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "הקובץ ‚%1’ נוצר בכונן."
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5568
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "הקובץ ‚%1’ נמחק מהכונן."
 
-#: document/katedocument.cpp:5902
+#: document/katedocument.cpp:5905
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2350,17 +2362,17 @@ msgstr ""
 "המסמך „%1” נערך.\n"
 "לשמור את השינויים או להתעלם מהם?"
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Close Document"
 msgstr "סגירת מסמך"
 
-#: document/katedocument.cpp:6016
+#: document/katedocument.cpp:6019
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "הקובץ <a href=\"%1\">%2</a> עדיין נטען."
 
-#: document/katedocument.cpp:6021
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&ביטול טעינה"

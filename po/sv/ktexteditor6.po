@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-26 00:36+0000\n"
+"POT-Creation-Date: 2024-06-13 00:36+0000\n"
 "PO-Revision-Date: 2022-10-02 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2173,7 +2173,7 @@ msgstr "Läs in dokument igen automatiskt"
 msgid "Automatic reload the document when it was changed on disk"
 msgstr "Läs automatisk in dokumentet om det har ändrats på disk"
 
-#: document/katedocument.cpp:2253
+#: document/katedocument.cpp:2256
 #, kde-format
 msgid ""
 "The file %1 could not be loaded, as it was not possible to read from it.<br /"
@@ -2182,25 +2182,25 @@ msgstr ""
 "Filen %1 kunde inte laddas, eftersom det var omöjligt att läsa från den.<br /"
 ">Kontrollera att du har läsbehörighet till filen."
 
-#: document/katedocument.cpp:2258
+#: document/katedocument.cpp:2261
 #, kde-format
 msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Försök igen"
 
-#: document/katedocument.cpp:2262 document/katedocument.cpp:6507
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
 #, kde-format
 msgid "&Close"
 msgstr "Stän&g"
 
-#: document/katedocument.cpp:2263 document/katedocument.cpp:6508
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
 #, fuzzy, kde-format
 #| msgid "Close message"
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Stäng meddelande"
 
-#: document/katedocument.cpp:2395
+#: document/katedocument.cpp:2398
 #, kde-format
 msgid ""
 "The file %1 was opened with %2 encoding but contained invalid characters."
@@ -2213,7 +2213,7 @@ msgstr ""
 "<br />Öppna antingen filen igen med rätt kodning vald, eller stäng av "
 "skrivskyddet i menyn för att kunna redigera den."
 
-#: document/katedocument.cpp:2414
+#: document/katedocument.cpp:2417
 #, kde-format
 msgid ""
 "The file %1 was opened and contained lines longer than the configured Line "
@@ -2226,17 +2226,17 @@ msgstr ""
 "lång.<br/>Dessa rader har radbrutits och dokumentet är skrivskyddat, "
 "eftersom dess innehåll skulle ändras om det sparades. "
 
-#: document/katedocument.cpp:2421
+#: document/katedocument.cpp:2424
 #, kde-format
 msgid "Temporarily raise limit and reload file"
 msgstr "Höj gränsen tillfälligt och läs in filen igen"
 
-#: document/katedocument.cpp:2424
+#: document/katedocument.cpp:2427
 #, kde-format
 msgid "Close"
 msgstr "Stäng"
 
-#: document/katedocument.cpp:2451
+#: document/katedocument.cpp:2454
 #, kde-format
 msgid ""
 "Do you really want to save this unmodified file? You could overwrite changed "
@@ -2245,18 +2245,18 @@ msgstr ""
 "Vill du verkligen spara den här oförändrade filen? Du kan skriva över ändrad "
 "data i filen på disk."
 
-#: document/katedocument.cpp:2452
+#: document/katedocument.cpp:2455
 #, kde-format
 msgid "Trying to Save Unmodified File"
 msgstr "Försöker spara oförändrad fil"
 
-#: document/katedocument.cpp:2453 document/katedocument.cpp:2464
-#: document/katedocument.cpp:2480
+#: document/katedocument.cpp:2456 document/katedocument.cpp:2467
+#: document/katedocument.cpp:2483
 #, kde-format
 msgid "Save Nevertheless"
 msgstr "Spara ändå"
 
-#: document/katedocument.cpp:2462
+#: document/katedocument.cpp:2465
 #, kde-format
 msgid ""
 "Do you really want to save this file? Both your open file and the file on "
@@ -2265,14 +2265,14 @@ msgstr ""
 "Vill du verkligen spara den här filen? Både den öppna filen och filen på "
 "disk har ändrats. En del data kan gå förlorad."
 
-#: document/katedocument.cpp:2463 document/katedocument.cpp:2479
-#: document/katedocument.cpp:2796 syntax/katethemeconfig.cpp:1207
+#: document/katedocument.cpp:2466 document/katedocument.cpp:2482
+#: document/katedocument.cpp:2799 syntax/katethemeconfig.cpp:1207
 #: syntax/katethemeconfig.cpp:1363
 #, kde-format
 msgid "Possible Data Loss"
 msgstr "Möjlig förlust av data"
 
-#: document/katedocument.cpp:2477
+#: document/katedocument.cpp:2480
 #, kde-format
 msgid ""
 "The selected encoding cannot encode every Unicode character in this "
@@ -2281,7 +2281,7 @@ msgstr ""
 "Den valda kodningen kan inte koda alla Unicode-tecken i dokumentet. Vill du "
 "verkligen spara det? En del data kan gå förlorad."
 
-#: document/katedocument.cpp:2547
+#: document/katedocument.cpp:2550
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2297,7 +2297,7 @@ msgstr ""
 "Originalfilen kan ha gått förlorad eller vara skadad. Avsluta inte "
 "programmet innan filen har skrivits med lyckat resultat."
 
-#: document/katedocument.cpp:2668
+#: document/katedocument.cpp:2671
 #, kde-format
 msgid ""
 "For file %1 no backup copy could be created before saving. If an error "
@@ -2310,51 +2310,51 @@ msgstr ""
 "att media du skriver till är fullt, eller att katalogen där filen finns är "
 "skrivskyddad för dig."
 
-#: document/katedocument.cpp:2672
+#: document/katedocument.cpp:2675
 #, kde-format
 msgid "Failed to create backup copy."
 msgstr "Misslyckades skapa säkerhetskopia"
 
-#: document/katedocument.cpp:2673
+#: document/katedocument.cpp:2676
 #, kde-format
 msgid "Try to Save Nevertheless"
 msgstr "Försök att spara ändå"
 
-#: document/katedocument.cpp:2795
+#: document/katedocument.cpp:2798
 #, kde-format
 msgid "Do you really want to continue to close this file? Data loss may occur."
 msgstr ""
 "Vill du verkligen fortsätta stänga den här filen? Detta kan orsaka förlust "
 "av data."
 
-#: document/katedocument.cpp:2797
+#: document/katedocument.cpp:2800
 #, kde-format
 msgid "Close Nevertheless"
 msgstr "Stäng ändå"
 
-#: document/katedocument.cpp:4578
+#: document/katedocument.cpp:4581
 #, kde-format
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: document/katedocument.cpp:4701 document/katedocument.cpp:4927
-#: document/katedocument.cpp:4937 document/katedocument.cpp:5730
-#: document/katedocument.cpp:5917
+#: document/katedocument.cpp:4704 document/katedocument.cpp:4930
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
+#: document/katedocument.cpp:5920
 #, kde-format
 msgid "Save File"
 msgstr "Spara fil"
 
-#: document/katedocument.cpp:4704
+#: document/katedocument.cpp:4707
 #, kde-format
 msgid "Save failed"
 msgstr "Misslyckades spara"
 
-#: document/katedocument.cpp:4948
+#: document/katedocument.cpp:4951
 #, kde-format
 msgid "Save Copy of File"
 msgstr "Spara kopia av fil"
 
-#: document/katedocument.cpp:4960
+#: document/katedocument.cpp:4963
 #, kde-format
 msgid ""
 "The document could not be saved, as it was not possible to write to %1.\n"
@@ -2368,7 +2368,7 @@ msgstr ""
 "Kontrollera att du har skrivbehörighet till filen, och att tillräckligt "
 "diskutrymme finns tillgängligt."
 
-#: document/katedocument.cpp:5243
+#: document/katedocument.cpp:5246
 #, kde-format
 msgid ""
 "Using deprecated modeline 'remove-trailing-space'. Please replace with "
@@ -2381,7 +2381,7 @@ msgstr ""
 "application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5249
+#: document/katedocument.cpp:5252
 #, kde-format
 msgid ""
 "Using deprecated modeline 'replace-trailing-space-save'. Please replace with "
@@ -2393,22 +2393,22 @@ msgstr ""
 "'remove-trailing-spaces all;', se https://docs.kde.org/stable5/en/"
 "applications/katepart/config-variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5559
+#: document/katedocument.cpp:5562
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Filen \"%1\" ändrades på disken."
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5565
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Filen \"%1\" skapades på disken."
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5568
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Filen \"%1\" togs bort på disken."
 
-#: document/katedocument.cpp:5902
+#: document/katedocument.cpp:5905
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2417,17 +2417,17 @@ msgstr ""
 "Dokumentet \"%1\" har ändrats.\n"
 "Vill du spara dina ändringar eller kasta dem?"
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5908
 #, kde-format
 msgid "Close Document"
 msgstr "Stäng dokument"
 
-#: document/katedocument.cpp:6016
+#: document/katedocument.cpp:6019
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Filen <a href=\"%1\">%2</a> håller fortfarande på att läsas in."
 
-#: document/katedocument.cpp:6021
+#: document/katedocument.cpp:6024
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Avbryt inläsning"
