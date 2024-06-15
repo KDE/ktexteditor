@@ -1959,8 +1959,8 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
         kconfig.writeEntry("URL", this->url().toString());
     }
 
-    // only save encoding if it's something other than utf-8
-    if (encoding() != QLatin1String("UTF-8") && !flags.contains(QStringLiteral("SkipEncoding"))) {
+    // only save encoding if it's something other than utf-8 and we didn't detect it was wrong, bug 445015
+    if (encoding() != QLatin1String("UTF-8") && !m_buffer->brokenEncoding() && !flags.contains(QStringLiteral("SkipEncoding"))) {
         // save encoding
         kconfig.writeEntry("Encoding", encoding());
     }
