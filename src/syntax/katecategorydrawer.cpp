@@ -29,50 +29,6 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index, int sortRole, co
     const int height = categoryHeight(index, option);
     const bool leftToRight = painter->layoutDirection() == Qt::LeftToRight;
 
-    // BEGIN: decoration gradient
-    {
-        QPainterPath path(optRect.bottomLeft());
-
-        path.lineTo(QPoint(optRect.topLeft().x(), optRect.topLeft().y() - 3));
-        const QPointF topLeft(optRect.topLeft());
-        QRectF arc(topLeft, QSizeF(4, 4));
-        path.arcTo(arc, 180, -90);
-        path.lineTo(optRect.topRight());
-        path.lineTo(optRect.bottomRight());
-        path.lineTo(optRect.bottomLeft());
-
-        QColor window(option.palette.window().color());
-        const QColor base(option.palette.base().color());
-
-        window.setAlphaF(0.4);
-
-        QLinearGradient decoGradient1;
-        if (leftToRight) {
-            decoGradient1.setStart(optRect.topLeft());
-            decoGradient1.setFinalStop(optRect.bottomLeft());
-        } else {
-            decoGradient1.setStart(optRect.topRight());
-            decoGradient1.setFinalStop(optRect.bottomRight());
-        }
-        decoGradient1.setColorAt(0, window);
-        decoGradient1.setColorAt(1, Qt::transparent);
-
-        QLinearGradient decoGradient2;
-        if (leftToRight) {
-            decoGradient2.setStart(optRect.topLeft());
-            decoGradient2.setFinalStop(optRect.topRight());
-        } else {
-            decoGradient2.setStart(optRect.topRight());
-            decoGradient2.setFinalStop(optRect.topLeft());
-        }
-        decoGradient2.setColorAt(0, Qt::transparent);
-        decoGradient2.setColorAt(1, base);
-
-        painter->fillPath(path, decoGradient1);
-        painter->fillPath(path, decoGradient2);
-    }
-    // END: decoration gradient
-
     {
         QRect newOptRect(optRect);
 
