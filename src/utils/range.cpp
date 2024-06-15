@@ -146,35 +146,3 @@ QString LineRange::toString() const
 {
     return QStringLiteral("[%1, %2]").arg(m_start).arg(m_end);
 }
-
-namespace QTest
-{
-// Cursor: template specialization for QTest::toString()
-template<>
-char *toString(const KTextEditor::Cursor &cursor)
-{
-    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line()) + ", " + QByteArray::number(cursor.column()) + ']';
-    return qstrdup(ba.data());
-}
-
-// Range: template specialization for QTest::toString()
-template<>
-char *toString(const KTextEditor::Range &range)
-{
-    QByteArray ba = "Range[";
-    ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + " - ";
-    ba += QByteArray::number(range.end().line()) + ", " + QByteArray::number(range.end().column());
-    ba += ']';
-    return qstrdup(ba.data());
-}
-
-// LineRange: template specialization for QTest::toString()
-template<>
-char *toString(const KTextEditor::LineRange &range)
-{
-    QByteArray ba = "LineRange[";
-    ba += QByteArray::number(range.start()) + ", " + QByteArray::number(range.end());
-    ba += ']';
-    return qstrdup(ba.data());
-}
-}
