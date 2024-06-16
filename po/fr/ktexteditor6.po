@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2024-05-12 18:19+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -305,8 +305,9 @@ msgstr "Mettre en valeur les lignes modifiées et non enregistrées"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, kde-format
-msgid "Scrollbars"
+#, fuzzy, kde-format
+#| msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "Barres de défilement"
 
 # | msgid ""

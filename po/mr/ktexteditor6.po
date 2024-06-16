@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2014-10-28 14:28+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -271,7 +271,7 @@ msgstr "निवडलेल्या समासचिन्हांच्�
 #: dialogs/bordersappearanceconfigwidget.ui:145
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
-msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "स्क्रॉल पट्टी चिन्ह दर्शवा (&S)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)

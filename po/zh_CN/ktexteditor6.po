@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -261,8 +261,9 @@ msgstr "高亮显示已更改和未保存的行"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, kde-format
-msgid "Scrollbars"
+#, fuzzy, kde-format
+#| msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "滚动条"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)

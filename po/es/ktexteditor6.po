@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2024-05-10 00:01+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -286,8 +286,9 @@ msgstr "Resaltar las líneas modificadas y sin guardar"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, kde-format
-msgid "Scrollbars"
+#, fuzzy, kde-format
+#| msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "Barras de desplazamiento"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)

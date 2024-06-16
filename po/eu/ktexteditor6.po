@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -277,8 +277,9 @@ msgstr "Nabarmendu aldatutako eta gorde gabeko lerroak"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, kde-format
-msgid "Scrollbars"
+#, fuzzy, kde-format
+#| msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "Kiribiltzeko-barrak"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)

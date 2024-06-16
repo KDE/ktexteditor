@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2021-09-09 21:34+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -286,7 +286,7 @@ msgstr "Fremhæv område mellem markerede klammer"
 #: dialogs/bordersappearanceconfigwidget.ui:145
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
-msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "Vis mærker på &rullebjælken"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)

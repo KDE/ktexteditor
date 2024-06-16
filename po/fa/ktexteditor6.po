@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2011-12-15 14:55+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@linuxshop.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -291,7 +291,7 @@ msgstr ""
 #: dialogs/bordersappearanceconfigwidget.ui:145
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
-msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "نمایش نشانهای &میله‌ لغزش‌"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)

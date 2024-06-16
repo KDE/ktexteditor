@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:36+0000\n"
+"POT-Creation-Date: 2024-06-16 00:36+0000\n"
 "PO-Revision-Date: 2020-09-28 03:02+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -285,7 +285,7 @@ msgstr "Valitud sulgude vahemiku esiletõstmine"
 #: dialogs/bordersappearanceconfigwidget.ui:145
 #, fuzzy, kde-format
 #| msgid "Show &scrollbar marks"
-msgid "Scrollbars"
+msgid "Scrollbars:"
 msgstr "&Kerimisriba märkide näitamine"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
