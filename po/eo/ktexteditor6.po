@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-16 00:36+0000\n"
-"PO-Revision-Date: 2024-05-09 22:01+0100\n"
+"PO-Revision-Date: 2024-06-16 06:33+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -274,10 +274,9 @@ msgstr "Emfazi ŝanĝitajn kaj nekonservitajn liniojn"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Rulumbretoj"
+msgstr "Rulumbretoj:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -5855,8 +5854,7 @@ msgstr "Wolfram Diestel, Steffen Pietsch, Oliver Kellogg"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"wolfram@steloj.de, Steffen.Pietsch@BerlinOnline.de, okellogg@users."
-"sourceforge.net"
+"wolfram@steloj.de, Steffen.Pietsch@BerlinOnline.de, olivermkellogg@gmail.com"
 
 #: utils/kateglobal.cpp:260
 #, kde-format
@@ -5987,12 +5985,12 @@ msgstr ""
 #: utils/katevariableexpansionmanager.cpp:110
 #, kde-format
 msgid "X component in global screen coordinates of the cursor position."
-msgstr "X-komponento en tutmondaj ekrankoordinatoj de la kursora pozicio."
+msgstr "X-komponento en ĉieaj ekrankoordinatoj de la kursora pozicio."
 
 #: utils/katevariableexpansionmanager.cpp:117
 #, kde-format
 msgid "Y component in global screen coordinates of the cursor position."
-msgstr "Y-komponento en tutmondaj ekrankoordinatoj de la kursora pozicio."
+msgstr "Y-komponento en ĉieaj ekrankoordinatoj de la kursora pozicio."
 
 #: utils/katevariableexpansionmanager.cpp:124
 #, kde-format
@@ -6230,7 +6228,7 @@ msgstr "Agordi la koloron de la piktogramo."
 #, kde-format
 msgctxt "short translation please"
 msgid "Enable the icon border in the editor view."
-msgstr "Ebligi la ikonan randon en la redaktora vido."
+msgstr "Ebligi la piktograman randon en la redaktora vido."
 
 #: variableeditor/variablelineedit.cpp:228
 #, kde-format

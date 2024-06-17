@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-16 00:36+0000\n"
-"PO-Revision-Date: 2024-05-09 12:16+0200\n"
+"PO-Revision-Date: 2024-06-16 08:52+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -277,10 +277,9 @@ msgstr "Ressalta les línies canviades i sense guardar"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Barres de desplaçament"
+msgstr "Barres de desplaçament:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -1143,17 +1142,17 @@ msgstr "Ctrl+Meta"
 #: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd"
-msgstr "Cmd"
+msgstr "Ordre"
 
 #: dialogs/katedialogs.cpp:417
 #, kde-format
 msgid "Cmd + Alt"
-msgstr "Cmd+Alt"
+msgstr "Ordre+Alt"
 
 #: dialogs/katedialogs.cpp:419
 #, kde-format
 msgid "Cmd + Ctrl"
-msgstr "Cmd+Ctrl"
+msgstr "Ordre+Ctrl"
 
 #: dialogs/katedialogs.cpp:475
 #, kde-format
