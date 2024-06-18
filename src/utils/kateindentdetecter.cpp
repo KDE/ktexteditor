@@ -106,10 +106,10 @@ KateIndentDetecter::Result KateIndentDetecter::detect(int defaultTabSize, bool d
     QString previousLineText; // content of latest line that contained non-whitespace chars
     int previousLineIndentation = 0; // index at which latest line contained the first non-whitespace char
 
-    constexpr int ALLOWED_TAB_SIZE_GUESSES[7] = {2, 4, 6, 8, 3, 5, 7}; // prefer even guesses for `tabSize`, limit to [2, 8].
+    constexpr int ALLOWED_TAB_SIZE_GUESSES[] = {2, 4, 6, 8, 3, 5, 7}; // prefer even guesses for `tabSize`, limit to [2, 8].
     constexpr int MAX_ALLOWED_TAB_SIZE_GUESS = 8; // max(ALLOWED_TAB_SIZE_GUESSES) = 8
 
-    int spacesDiffCount[] = {0, 0, 0, 0, 0, 0, 0, 0, 0}; // `tabSize` scores
+    int spacesDiffCount[MAX_ALLOWED_TAB_SIZE_GUESS + 1] = {0, 0, 0, 0, 0, 0, 0, 0, 0}; // `tabSize` scores
     SpacesDiffResult tmp;
 
     for (int lineNumber = 0; lineNumber < linesCount; lineNumber++) {
@@ -183,10 +183,10 @@ KateIndentDetecter::Result KateIndentDetecter::detect(int defaultTabSize, bool d
     // Guess tabSize only if inserting spaces...
     if (insertSpaces) {
         int tabSizeScore = 0;
-        for (int i = 0; i < 7; ++i) {
-            int possibleTabSize = ALLOWED_TAB_SIZE_GUESSES[i];
+        for (const int possibleTabSize : ALLOWED_TAB_SIZE_GUESSES) {
+            // prefer multiples of two, if ever found one, see bug 474505 and autotests/input/indent_detect/bogus7spaces.md
             const int possibleTabSizeScore = spacesDiffCount[possibleTabSize];
-            if (possibleTabSizeScore > tabSizeScore) {
+            if (possibleTabSizeScore > tabSizeScore && (possibleTabSize % 2 == 0 || tabSizeScore == 0)) {
                 tabSizeScore = possibleTabSizeScore;
                 tabSize = possibleTabSize;
             }
