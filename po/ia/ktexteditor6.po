@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022, 2023 g.sora <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024 g.sora <g.sora@tiscali.it>
 # giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-16 00:36+0000\n"
-"PO-Revision-Date: 2024-05-09 11:29+0200\n"
+"POT-Creation-Date: 2024-06-18 00:37+0000\n"
+"PO-Revision-Date: 2024-06-17 14:34+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -270,10 +270,9 @@ msgstr "Evidentia lineas cambiate e non salveguardate"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Barras de rolar"
+msgstr "Barras de rolar:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -2214,12 +2213,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Essaya de nove"
 
-#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6506
 #, kde-format
 msgid "&Close"
 msgstr "&Claude"
 
-#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6507
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2365,8 +2364,8 @@ msgid "Untitled"
 msgstr "Sin titulo"
 
 #: document/katedocument.cpp:4704 document/katedocument.cpp:4930
-#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5916
 #, kde-format
 msgid "Save File"
 msgstr "Salveguarda file"
@@ -2422,22 +2421,22 @@ msgstr ""
 "http://docs.kde.org/?applications=katepart&branch=stable5&path=config-"
 "variables.html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5558
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "Le file '%1' esseva modificate  sur disco."
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5561
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "Le file '%1' esseva create sur disco."
 
-#: document/katedocument.cpp:5568
+#: document/katedocument.cpp:5564
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "Le file '%1' esseva cancellate sur disco."
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5901
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2446,17 +2445,17 @@ msgstr ""
 "Le documento \"%1\" ha essite modificate.\n"
 "Tu vole salvar vostre cambios o abandonar los?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid "Close Document"
 msgstr "Claude documento"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6015
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "Le file  <a href=\"%1\">%2</a>  es ancora cargante."
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6020
 #, kde-format
 msgid "&Abort Loading"
 msgstr "&Interrumpe le cargamento"

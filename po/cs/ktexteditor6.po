@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-16 00:36+0000\n"
-"PO-Revision-Date: 2024-05-29 11:29+0200\n"
+"POT-Creation-Date: 2024-06-18 00:37+0000\n"
+"PO-Revision-Date: 2024-06-17 15:02+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -273,10 +273,9 @@ msgstr "Zvýraznit změněné a neuložené řádky"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Posuvníky"
+msgstr "Posuvníky:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -2138,12 +2137,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Zkusit znovu"
 
-#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6506
 #, kde-format
 msgid "&Close"
 msgstr "&Zavřít"
 
-#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6507
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2284,8 +2283,8 @@ msgid "Untitled"
 msgstr "Nepojmenovaný"
 
 #: document/katedocument.cpp:4704 document/katedocument.cpp:4930
-#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5916
 #, kde-format
 msgid "Save File"
 msgstr "Uložit soubor"
@@ -2330,22 +2329,22 @@ msgid ""
 "remove-trailing-spaces"
 msgstr ""
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5558
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5561
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5568
+#: document/katedocument.cpp:5564
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr ""
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5901
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2354,17 +2353,17 @@ msgstr ""
 "Dokument \"%1\" byl změněn.\n"
 "Přejete si uložit změny nebo je zapomenout?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid "Close Document"
 msgstr "Uzavřít dokument"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6015
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr ""
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6020
 #, kde-format
 msgid "&Abort Loading"
 msgstr ""

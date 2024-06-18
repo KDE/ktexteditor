@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-16 00:36+0000\n"
+"POT-Creation-Date: 2024-06-18 00:37+0000\n"
 "PO-Revision-Date: 2024-01-25 17:50+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2198,12 +2198,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Berriz saiatu"
 
-#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6506
 #, kde-format
 msgid "&Close"
 msgstr "&Itxi"
 
-#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6507
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2345,8 +2345,8 @@ msgid "Untitled"
 msgstr "Titulu gabea"
 
 #: document/katedocument.cpp:4704 document/katedocument.cpp:4930
-#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5916
 #, kde-format
 msgid "Save File"
 msgstr "Gorde fitxategia"
@@ -2400,22 +2400,22 @@ msgstr ""
 "docs.kde.org/?application=katepart&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5558
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "'%1' fitxategia diskoan aldatu da."
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5561
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "'%1' fitxategia diskoan sortu da."
 
-#: document/katedocument.cpp:5568
+#: document/katedocument.cpp:5564
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "'%1' fitxategia diskotik ezabatu da."
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5901
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2424,17 +2424,17 @@ msgstr ""
 "«%1» dokumentua aldatu egin da.\n"
 "Aldaketak gorde edo baztertu nahi dituzu?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid "Close Document"
 msgstr "Itxi dokumentua"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6015
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "<a href=\"%1\">%2</a> fitxategia oraindik zamatzen ari da."
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6020
 #, kde-format
 msgid "&Abort Loading"
 msgstr "G&alarazi zamatzea"

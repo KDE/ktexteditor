@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-16 00:36+0000\n"
+"POT-Creation-Date: 2024-06-18 00:37+0000\n"
 "PO-Revision-Date: 2024-06-16 08:52+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2222,12 +2222,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6506
 #, kde-format
 msgid "&Close"
 msgstr "Tan&ca"
 
-#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6507
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2370,8 +2370,8 @@ msgid "Untitled"
 msgstr "Sense títol"
 
 #: document/katedocument.cpp:4704 document/katedocument.cpp:4930
-#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5916
 #, kde-format
 msgid "Save File"
 msgstr "Guarda el fitxer"
@@ -2425,22 +2425,22 @@ msgstr ""
 "org/?application=katepart&language=ca&branch=stable5&path=config-variables."
 "html#variable-remove-trailing-spaces"
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5558
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "El fitxer «%1» s'ha modificat en el disc."
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5561
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "El fitxer «%1» s'ha creat en el disc."
 
-#: document/katedocument.cpp:5568
+#: document/katedocument.cpp:5564
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "El fitxer «%1» s'ha suprimit en el disc."
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5901
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2449,17 +2449,17 @@ msgstr ""
 "El document «%1» ha sigut modificat.\n"
 "Voleu guardar els canvis o descartar-los?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid "Close Document"
 msgstr "Tanca el document"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6015
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "El fitxer <a href=\"%1\">%2</a> encara s'està carregant."
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6020
 #, kde-format
 msgid "&Abort Loading"
 msgstr "In&terromp la càrrega"

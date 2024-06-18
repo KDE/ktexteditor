@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-16 00:36+0000\n"
+"POT-Creation-Date: 2024-06-18 00:37+0000\n"
 "PO-Revision-Date: 2024-01-10 22:27+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2188,12 +2188,12 @@ msgctxt "translators: you can also translate 'Try Again' with 'Reload'"
 msgid "Try Again"
 msgstr "Próbálja újra"
 
-#: document/katedocument.cpp:2265 document/katedocument.cpp:6510
+#: document/katedocument.cpp:2265 document/katedocument.cpp:6506
 #, kde-format
 msgid "&Close"
 msgstr "&Bezárás"
 
-#: document/katedocument.cpp:2266 document/katedocument.cpp:6511
+#: document/katedocument.cpp:2266 document/katedocument.cpp:6507
 #, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
@@ -2336,8 +2336,8 @@ msgid "Untitled"
 msgstr "Nincs cím"
 
 #: document/katedocument.cpp:4704 document/katedocument.cpp:4930
-#: document/katedocument.cpp:4940 document/katedocument.cpp:5733
-#: document/katedocument.cpp:5920
+#: document/katedocument.cpp:4940 document/katedocument.cpp:5729
+#: document/katedocument.cpp:5916
 #, kde-format
 msgid "Save File"
 msgstr "A fájl mentése"
@@ -2391,22 +2391,22 @@ msgstr ""
 "org/?application=katepart&branch=stable5&path=config-variables.html#variable-"
 "remove-trailing-spaces"
 
-#: document/katedocument.cpp:5562
+#: document/katedocument.cpp:5558
 #, kde-format
 msgid "The file '%1' was modified on disk."
 msgstr "A(z) „%1” fájl módosult a lemezen."
 
-#: document/katedocument.cpp:5565
+#: document/katedocument.cpp:5561
 #, kde-format
 msgid "The file '%1' was created on disk."
 msgstr "A(z) „%1” fájl létrejött a lemezen."
 
-#: document/katedocument.cpp:5568
+#: document/katedocument.cpp:5564
 #, kde-format
 msgid "The file '%1' was deleted on disk."
 msgstr "A(z) „%1” fájl törlődött a lemezen."
 
-#: document/katedocument.cpp:5905
+#: document/katedocument.cpp:5901
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified.\n"
@@ -2415,17 +2415,17 @@ msgstr ""
 "Megváltozott egy dokumentum: \"%1\".\n"
 "El szeretné menteni a módosításokat?"
 
-#: document/katedocument.cpp:5908
+#: document/katedocument.cpp:5904
 #, kde-format
 msgid "Close Document"
 msgstr "A dokumentum bezárása"
 
-#: document/katedocument.cpp:6019
+#: document/katedocument.cpp:6015
 #, kde-format
 msgid "The file <a href=\"%1\">%2</a> is still loading."
 msgstr "A(z) <a href=\"%1\">%2</a> fájl betöltése még folyamatban."
 
-#: document/katedocument.cpp:6024
+#: document/katedocument.cpp:6020
 #, kde-format
 msgid "&Abort Loading"
 msgstr "Betöltés &megszakítása"
