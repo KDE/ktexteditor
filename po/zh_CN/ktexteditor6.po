@@ -263,7 +263,7 @@ msgstr "高亮显示已更改和未保存的行"
 #: dialogs/bordersappearanceconfigwidget.ui:145
 #, kde-format
 msgid "Scrollbars:"
-msgstr ""
+msgstr "滚动条："
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
