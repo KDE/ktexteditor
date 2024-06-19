@@ -142,6 +142,11 @@ private Q_SLOTS:
      */
     void applyWordWrap();
 
+    /**
+     * Copy the current file name and line number
+     */
+    void copyFileLocation() const;
+
     //
     // KTextEditor::PopupMenuInterface
     //

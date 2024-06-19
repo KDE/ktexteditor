@@ -478,6 +478,11 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("Paste previously mouse selection contents"));
     }
 
+    a = ac->addAction(QStringLiteral("edit_copy_file_location"), this, &KTextEditor::ViewPrivate::copyFileLocation);
+    a->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
+    a->setText(i18n("Copy File Location"));
+    a->setWhatsThis(i18n("Copy the current file name and line number"));
+
     m_swapWithClipboard = a = ac->addAction(QStringLiteral("edit_swap_with_clipboard"), this, &KTextEditor::ViewPrivate::swapWithClipboard);
     a->setText(i18n("Swap with Clipboard Contents"));
     a->setWhatsThis(i18n("Swap the selected text with the clipboard contents"));
@@ -5083,6 +5088,12 @@ QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int 
     }
 
     return attribs;
+}
+
+void KTextEditor::ViewPrivate::copyFileLocation() const
+{
+    QGuiApplication::clipboard()->setText(m_doc->url().toString(QUrl::PreferLocalFile | QUrl::RemovePassword) + QStringLiteral(":")
+                                          + QString::number(cursorPosition().line() + 1));
 }
 
 #include "moc_kateview.cpp"

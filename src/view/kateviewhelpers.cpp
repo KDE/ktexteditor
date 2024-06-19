@@ -2517,6 +2517,12 @@ void KateIconBorder::contextMenuEvent(QContextMenuEvent *e)
 
     menu.addSeparator();
 
+    if (auto a = ac->action(QStringLiteral("edit_copy_file_location"))) {
+        menu.addAction(a);
+    }
+
+    menu.addSeparator();
+
     if (QAction *toggleDynWrap = ac->action(QStringLiteral("view_dynamic_word_wrap"))) {
         menu.addAction(toggleDynWrap);
     }
