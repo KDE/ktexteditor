@@ -751,6 +751,7 @@ public Q_SLOTS:
     void toggleScrollBarMarks();
     void toggleScrollBarMiniMap();
     void toggleScrollBarMiniMapAll();
+    void toggleShowSpaces();
     void toggleDynWordWrap();
     void setDynWrapIndicators(int mode);
 
@@ -865,6 +866,7 @@ private:
     KToggleAction *m_toggleScrollBarMarks;
     KToggleAction *m_toggleScrollBarMiniMap;
     KToggleAction *m_toggleScrollBarMiniMapAll;
+    KToggleAction *m_toggleShowSpace;
     KToggleAction *m_toggleDynWrap;
     KSelectAction *m_setDynWrapIndicators;
     KToggleAction *m_toggleWWMarker;

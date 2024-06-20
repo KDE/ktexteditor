@@ -762,6 +762,13 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleInsert);
 
     KToggleAction *toggleAction;
+    a = m_toggleShowSpace = toggleAction = new KToggleAction(i18n("Show Whitespace"), this);
+    ac->addAction(QStringLiteral("view_show_whitespaces"), a);
+    a->setWhatsThis(
+        i18n("If this option is checked, whitespaces in this document will be visible.<br /><br />"
+             "This is only a view option, meaning the document will not changed."));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleShowSpaces);
+
     a = m_toggleDynWrap = toggleAction = new KToggleAction(i18n("&Dynamic Word Wrap"), this);
     a->setIcon(QIcon::fromTheme(QStringLiteral("text-wrap")));
     ac->addAction(QStringLiteral("view_dynamic_word_wrap"), a);
@@ -1996,6 +2003,16 @@ void KTextEditor::ViewPrivate::setScrollBarMiniMapWidth(int width)
     config()->setValue(KateViewConfig::ScrollBarMiniMapWidth, width);
 }
 
+void KTextEditor::ViewPrivate::toggleShowSpaces()
+{
+    if (m_updatingDocumentConfig) {
+        return;
+    }
+
+    using WhitespaceRendering = KateDocumentConfig::WhitespaceRendering;
+    doc()->config()->setShowSpaces(doc()->config()->showSpaces() != WhitespaceRendering::None ? WhitespaceRendering::None : WhitespaceRendering::All);
+}
+
 void KTextEditor::ViewPrivate::toggleDynWordWrap()
 {
     config()->setDynWordWrap(!config()->dynWordWrap());
@@ -2347,6 +2364,8 @@ void KTextEditor::ViewPrivate::updateConfig()
     if (m_startingUp) {
         return;
     }
+
+    m_toggleShowSpace->setChecked(doc()->config()->showSpaces() != KateDocumentConfig::WhitespaceRendering::None);
 
     // dyn. word wrap & markers
     if (m_hasWrap != config()->dynWordWrap()) {
