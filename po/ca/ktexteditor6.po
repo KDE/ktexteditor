@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-16 08:52+0200\n"
+"PO-Revision-Date: 2024-06-20 12:38+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -6661,12 +6661,12 @@ msgstr "Enganxa el contingut de la selecció prèvia del ratolí"
 #: view/kateview.cpp:483
 #, kde-format
 msgid "Copy File Location"
-msgstr ""
+msgstr "Copia la ubicació del fitxer"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Copia el nom del fitxer actual i el número de la línia"
 
 #: view/kateview.cpp:487
 #, kde-format

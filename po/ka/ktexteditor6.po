@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-16 05:45+0200\n"
+"PO-Revision-Date: 2024-06-20 05:19+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6570,12 +6570,12 @@ msgstr "თაგუნათი ადრე არჩეული შემც
 #: view/kateview.cpp:483
 #, kde-format
 msgid "Copy File Location"
-msgstr ""
+msgstr "ფაილის მდებარეობის კოპირება"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "მიმდინარე ფაილის სახელისა და ხაზის ნომრის კოპირება"
 
 #: view/kateview.cpp:487
 #, kde-format

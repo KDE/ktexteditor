@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-01-10 22:27+0100\n"
+"PO-Revision-Date: 2024-06-20 22:15+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -271,10 +271,9 @@ msgstr "Módosított és nem mentett sorok kiemelése"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Görgetősávok"
+msgstr "Görgetősávok:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -453,13 +452,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Az Enter megnyomásával a kiválasztott kiegészítési elem szövege "
+"beillesztésre kerül a szerkesztőbe. Ha ki van kapcsolva, a Tab billentyű "
+"vagy a dupla kattintás továbbra is aktiválja a kiegészítést."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Ezzel lehet a kijelölt szövegrész behúzását megszüntetni."
+msgstr "Nyomja meg az Entert a kiválasztott kiegészítés beszúrásához"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -1318,8 +1319,7 @@ msgid "Closes the file, discarding its content."
 msgstr "A fájl bezárása, a tartalmának eldobásával."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "Men&tés másként…"
@@ -2533,9 +2533,7 @@ msgid "Modes && Filetypes"
 msgstr "Módok és fájltípusok"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Keresés…"
@@ -3949,9 +3947,7 @@ msgid "Spell check canceled."
 msgstr "Helyesírás-ellenőrzés megszakítva."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
 msgstr "Helyesírás-ellenőrzés folyamatban…"
@@ -4187,8 +4183,7 @@ msgid "I&gnore All"
 msgstr "Mindegyik k&ihagyása"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
 msgstr "Helyesírás-ellenőrzés (a kurzortól)…"
@@ -4313,32 +4308,28 @@ msgid "S&trikeout"
 msgstr "át&húzott"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "N&ormál szín..."
+msgstr "N&ormál szín…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "A ki&jelölt szöveg színe..."
+msgstr "Ki&jelölt szöveg színe…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Háttérszín..."
+msgstr "&Háttérszín…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "A k&ijelölési háttérszín..."
+msgstr "K&ijelölési háttérszín…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4959,22 +4950,19 @@ msgid "&Theme:"
 msgstr "&Téma:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Másolás"
+msgstr "&Másolás…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Exportálás…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Importálás…"
@@ -6228,6 +6216,8 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Bekapcsolja, hogy az Enter megnyomása beillessze az automatikus kiegészítés "
+"elemét."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -6534,11 +6524,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Behúzás/tabulátor: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Egyéb"
+msgstr "Egyéb…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6608,15 +6597,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Az egérrel korábban kijelölt tartalom beillesztése"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Lapozófájl beállítások"
+msgstr "Fájl helyének másolása"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Jelenlegi fájlnév és sorszám másolása"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6702,11 +6690,10 @@ msgstr ""
 "behúzást."
 
 #: view/kateview.cpp:529
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Igazítás ehhez"
+msgstr "Ig&azítás ehhez…"
 
 #: view/kateview.cpp:531
 #, kde-format
@@ -6890,15 +6877,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Az aktuális dokumentum mentése a lemezre, a fájlnév bekérésével."
 
 #: view/kateview.cpp:661
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Mentés másként kódolással…"
 
 #: view/kateview.cpp:667
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "&Másolat mentése másként…"
@@ -6938,11 +6923,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Ugrás lefelé a következő módosított sorra."
 
 #: view/kateview.cpp:687
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "A szerkesztő beá&llításai..."
+msgstr "A szerkesztő beá&llításai…"
 
 #: view/kateview.cpp:689
 #, kde-format
@@ -7413,11 +7397,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Ki-be kapcsolja az automatikus helyesírás-ellenőrzést"
 
 #: view/kateview.cpp:962
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Szótárválasztás"
+msgstr "Szótárválasztás…"
 
 #: view/kateview.cpp:963
 #, kde-format
@@ -7450,8 +7433,7 @@ msgstr ""
 "rendszer vágólapjára."
 
 #: view/kateview.cpp:980
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&xportálás HTML formátumban…"
@@ -7919,8 +7901,7 @@ msgid "Copy"
 msgstr "Másolás"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Háttérszín…"
@@ -7936,8 +7917,7 @@ msgid "Show Window Decorations"
 msgstr "Ablakdekorációk megjelenítése"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Képernyőkép készítése a kijelölésről"

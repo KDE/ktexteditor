@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-17 14:34+0200\n"
+"PO-Revision-Date: 2024-06-20 11:10+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -6647,15 +6647,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Colla previe contentos de selection de mus"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Optiones de file de swap"
+msgstr "Copia location de file"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Copia le nomine de file currente e numero currente de rango"
 
 #: view/kateview.cpp:487
 #, kde-format

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-16 08:35+0200\n"
+"PO-Revision-Date: 2024-06-20 06:21+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6592,12 +6592,12 @@ msgstr "Prilepi predhodno z miško izbrano vsebino"
 #: view/kateview.cpp:483
 #, kde-format
 msgid "Copy File Location"
-msgstr ""
+msgstr "Kopiraj lokacijo datoteke"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Kopiraj ime trenutne datoteke in številko vrstice"
 
 #: view/kateview.cpp:487
 #, kde-format
