@@ -5,7 +5,7 @@
 # Anders Widell <d95-awi@nada.kth.se>, 1998.
 # Mattias Newzella <newzella@linux.nu>, 2000, 2001, 2002,2003, 2004, 2005.
 # Daniel Karlsson <chaotica@home.se>, 2001.
-# Stefan Asserhäll <stefan.asserhall@gmail.com>, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
+# SPDX-FileCopyrightText: 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 # Arve Eriksson <031299870@telia.com>, 2011.
 msgid ""
@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2022-10-02 17:01+0200\n"
+"PO-Revision-Date: 2024-06-21 13:56+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -68,7 +68,7 @@ msgstr "&Arkiv"
 #: data/katepart5ui.rc:10
 #, kde-format
 msgid "Print/Export"
-msgstr ""
+msgstr "Skriv ut eller exportera"
 
 #. i18n: ectx: Menu (edit)
 #: data/katepart5ui.rc:17
@@ -145,10 +145,9 @@ msgstr "Stavning"
 
 #. i18n: ectx: Menu (speech)
 #: data/katepart5ui.rc:150
-#, fuzzy, kde-format
-#| msgid "Text to search for"
+#, kde-format
 msgid "Text to Speech"
-msgstr "Text att söka efter"
+msgstr "Text till tal"
 
 #. i18n: ectx: Menu (settings)
 #: data/katepart5ui.rc:158
@@ -274,10 +273,9 @@ msgstr "Markera ändrade och osparade rader"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Rullningslister"
+msgstr "Rullningslister:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -443,7 +441,7 @@ msgstr "Välj &första kompletteringspost automatiskt"
 #: dialogs/completionconfigtab.ui:49
 #, kde-format
 msgid "Cycle through the list of completions using Tab / Shift+Tab"
-msgstr ""
+msgstr "Gå igenom listan av kompletteringar tabulator och skift-tabulator"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:56
@@ -453,13 +451,15 @@ msgid ""
 "editor. If disabled, Tab key or double-click can still be used to trigger "
 "completion."
 msgstr ""
+"Genom att trycka på returtangenten infogas texten för den valda "
+"kompletteringen i editorn. Om den är inaktiverad kan tabulator-tangenten "
+"eller dubbelklick fortfarande användas för att införa kompletteringen."
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkEnterCompletion)
 #: dialogs/completionconfigtab.ui:59
-#, fuzzy, kde-format
-#| msgid "Use this to unindent a selected block of text."
+#, kde-format
 msgid "Use Enter key to insert selected completion"
-msgstr "Använd det här för att avindentera ett markerat textblock."
+msgstr "Använd returtangenten för att infoga vald komplettering"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gbWordCompletion)
 #: dialogs/completionconfigtab.ui:69
@@ -675,13 +675,13 @@ msgstr ""
 #: dialogs/editconfigwidget.ui:252
 #, kde-format
 msgid "Enable accessibility notifications"
-msgstr ""
+msgstr "Aktivera tillgänglighetsunderrättelser"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/editconfigwidget.ui:259
 #, kde-format
 msgid "Accessibility:"
-msgstr ""
+msgstr "Tillgänglighet"
 
 #. i18n: ectx: property (text), widget (QLabel, lblFiletype)
 #: dialogs/filetypeconfigwidget.ui:14
@@ -1281,6 +1281,8 @@ msgid ""
 "Reloads and will automatically reload without warning about disk changes "
 "from now until you close either the tab or window."
 msgstr ""
+"Läser in igen och läser automatiskt in igen utan förvarning om diskändringar "
+"från och med nu tills antingen fliken eller fönstret stängs antingen."
 
 #: dialogs/katedialogs.cpp:1455
 #, kde-format
@@ -1288,10 +1290,9 @@ msgid "View &Difference"
 msgstr "Visa skillna&d"
 
 #: dialogs/katedialogs.cpp:1457
-#, fuzzy, kde-format
-#| msgid "Shows a diff of the changes"
+#, kde-format
 msgid "Shows a diff of the changes."
-msgstr "Visar en jämförelse av ändringarna"
+msgstr "Visar en jämförelse av ändringarna."
 
 #: dialogs/katedialogs.cpp:1462
 #, kde-format
@@ -1299,10 +1300,9 @@ msgid "&Reload"
 msgstr "Åte&rställ"
 
 #: dialogs/katedialogs.cpp:1464
-#, fuzzy, kde-format
-#| msgid "Reload the file from disk. Unsaved changes will be lost."
+#, kde-format
 msgid "Reloads the file from disk. Unsaved changes will be lost."
-msgstr "Laddar om filen från disk. Osparade ändringar går förlorade."
+msgstr "Läser in filen igen från disk. Osparade ändringar går förlorade."
 
 #: dialogs/katedialogs.cpp:1468
 #, kde-format
@@ -1311,17 +1311,15 @@ msgid "&Close File"
 msgstr "Stän&g fil"
 
 #: dialogs/katedialogs.cpp:1470
-#, fuzzy, kde-format
-#| msgid "Close the file, discarding its content."
+#, kde-format
 msgid "Closes the file, discarding its content."
-msgstr "Stäng filen, och kasta dess innehåll."
+msgstr "Stänger filen, och kastar dess innehåll."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "&Spara som..."
+msgstr "&Spara som…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1826,10 +1824,9 @@ msgstr "Aktivera spara automatisk (bara för lokala filer)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbAutoSaveOnFocus)
 #: dialogs/opensaveconfigwidget.ui:254
-#, fuzzy, kde-format
-#| msgid "Auto save document when focus leaves the editor"
+#, kde-format
 msgid "Auto save document when the active document is losing focus"
-msgstr "Spara dokument automatiskt när fokus lämnar editorn"
+msgstr "Spara dokument automatiskt när det aktiva dokumentet förlorar fokus"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/opensaveconfigwidget.ui:263
@@ -2088,7 +2085,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:320
 #, kde-format
 msgid "Fold first line"
-msgstr "Fäll ihop första raden"
+msgstr "Vik första raden"
 
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
 #: dialogs/textareaappearanceconfigwidget.ui:340
@@ -2195,8 +2192,7 @@ msgid "&Close"
 msgstr "Stän&g"
 
 #: document/katedocument.cpp:2266 document/katedocument.cpp:6507
-#, fuzzy, kde-format
-#| msgid "Close message"
+#, kde-format
 msgctxt "Close the message being displayed"
 msgid "Close message"
 msgstr "Stäng meddelande"
@@ -2535,12 +2531,10 @@ msgid "Modes && Filetypes"
 msgstr "Lägen och filtyper"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "Sök..."
+msgstr "Sök…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -2594,7 +2588,7 @@ msgstr "Skriv ut &förklaring"
 #: printing/printconfigwidgets.cpp:46
 #, kde-format
 msgid "Don't print folded code"
-msgstr ""
+msgstr "Skriv inte ut vikt kod"
 
 #: printing/printconfigwidgets.cpp:54
 #, kde-format
@@ -3125,23 +3119,19 @@ msgstr "Flytta markören till nästa motsvarande indentering"
 #, kde-format
 msgctxt "Script command name"
 msgid "Go to Next Paragraph"
-msgstr ""
+msgstr "Gå till nästa stycke"
 
 #: script/data/commands/navigation.js:13
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Go to Previous Edit Point"
+#, kde-format
 msgctxt "Script command name"
 msgid "Go to Previous Paragraph"
-msgstr "Gå till föregående redigeringsställe"
+msgstr "Gå till föregående stycke"
 
 #: script/data/commands/utils.js:9
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Sort Selected Text"
+#, kde-format
 msgctxt "Script command name"
 msgid "Sort Selected Text Alphabetically"
-msgstr "Sortera markerad text"
+msgstr "Sortera markerad text alfabetiskt"
 
 #: script/data/commands/utils.js:10 script/data/commands/utils.js:14
 #: script/data/commands/utils.js:18 script/data/commands/utils.js:22
@@ -3157,45 +3147,37 @@ msgid "Editing"
 msgstr "Redigering"
 
 #: script/data/commands/utils.js:13
-#, fuzzy, kde-format
-#| msgid "Remove duplicate lines from the selected text or whole document."
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicates and Sort Selected Text Alphabetically"
-msgstr ""
-"Ta bort duplicerade rader från markerad text eller från hela dokumentet."
+msgstr "Ta bort dubbletter och sortera markerad text alfabetiskt"
 
 #: script/data/commands/utils.js:17
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Duplicate Lines"
-msgstr "Duplicera markerade rader uppåt"
+msgstr "Ta bort duplicerade rader"
 
 #: script/data/commands/utils.js:21
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing Spaces"
-msgstr "Ta bort &mellanslag i slutet av en rad:"
+msgstr "Ta bort mellanslag i slutet av rader"
 
 #: script/data/commands/utils.js:25
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Leading Spaces"
-msgstr "Ta bort &mellanslag i slutet av en rad:"
+msgstr "Ta bort mellanslag i början av rader"
 
 #: script/data/commands/utils.js:29
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Trailing and Leading Spaces"
-msgstr "Ta bort &mellanslag i slutet av en rad:"
+msgstr "Ta bort mellanslag i början och slutet av rader"
 
 #: script/data/commands/utils.js:33
-#, fuzzy, kde-format
-#| msgid "Join Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Join Lines"
 msgstr "Kombinera rader"
@@ -3225,12 +3207,10 @@ msgid "Duplicate Selected Lines Up"
 msgstr "Duplicera markerade rader uppåt"
 
 #: script/data/commands/utils.js:55
-#, fuzzy, kde-format
-#| msgctxt "Script command name"
-#| msgid "Duplicate Selected Lines Up"
+#, kde-format
 msgctxt "Script command name"
 msgid "Duplicate selected text"
-msgstr "Duplicera markerade rader uppåt"
+msgstr "Duplicera markerad text"
 
 #: script/data/commands/utils.js:59
 #, kde-format
@@ -3245,11 +3225,10 @@ msgid "URI-decode Selected Text"
 msgstr "Avkoda markerad text från webbadress"
 
 #: script/data/commands/utils.js:67
-#, fuzzy, kde-format
-#| msgid "Remove Cursors from Empty Lines"
+#, kde-format
 msgctxt "Script command name"
 msgid "Remove Empty Lines"
-msgstr "Ta bort markörer från tomma rader"
+msgstr "Ta bort tomma rader"
 
 #: script/data/commands/utils.js:462
 #, kde-format
@@ -3962,12 +3941,10 @@ msgid "Spell check canceled."
 msgstr "Stavningskontroll avbruten."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Stavningskontroll pågår..."
+msgstr "Stavningskontroll pågår…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4201,11 +4178,10 @@ msgid "I&gnore All"
 msgstr "I&gnorera alla"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Stavning (från markör)..."
+msgstr "Stavning (från markör)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4327,32 +4303,28 @@ msgid "S&trikeout"
 msgstr "Str&yk över"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "Normal fär&g..."
+msgstr "Normal fär&g…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "&Markerad färg..."
+msgstr "&Markerad färg…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "&Bakgrundsfärg..."
+msgstr "&Bakgrundsfärg…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "&Markerad bakgrundsfärg..."
+msgstr "&Markerad bakgrundsfärg…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4976,25 +4948,22 @@ msgid "&Theme:"
 msgstr "&Tema:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "K&opiera..."
+msgstr "K&opiera…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Exportera..."
+msgstr "Exportera…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Importera..."
+msgstr "Importera…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6237,6 +6206,7 @@ msgctxt "short translation please"
 msgid ""
 "Enable whether pressing enter will insert selected auto completion item."
 msgstr ""
+"Aktivera om returtangenten infogar valt automatisk kompletteringsalternativ."
 
 #: variableeditor/variablelineedit.cpp:181
 #, kde-format
@@ -6545,11 +6515,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Indentering/tabulator: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Annat"
+msgstr "Annat…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6577,14 +6546,10 @@ msgid "Words %1/%2, Chars %3/%4"
 msgstr "Ord %1/%2, Tecken %3/%4"
 
 #: view/katestatusbar.cpp:574
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%1 and %3 are the selected words/chars count, %2 and %4 are the total "
-#| "words/chars count."
-#| msgid "Words %1/%2, Chars %3/%4"
+#, kde-format
 msgctxt "%1 and %2 are the total words/chars count."
 msgid "Words %1, Chars %2"
-msgstr "Ord %1/%2, Tecken %3/%4"
+msgstr "Ord %1, Tecken %2"
 
 #: view/katestatusbar.cpp:589
 #, kde-format
@@ -6625,15 +6590,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Klistra in tidigare innehåll markerat med musen"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Alternativ för växlingsfil"
+msgstr "Kopiera filplats"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Kopiera nuvarande filnamn och radnummer"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6646,10 +6610,9 @@ msgid "Swap the selected text with the clipboard contents"
 msgstr "Byt markerad text mot klippbordets innehåll"
 
 #: view/kateview.cpp:491
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Take Screenshot of Selection"
-msgstr "Klistra in markering"
+msgstr "Ta skärmbild av markering"
 
 #: view/kateview.cpp:495
 #, kde-format
@@ -6720,11 +6683,10 @@ msgstr ""
 "riktiga indenteringsnivå."
 
 #: view/kateview.cpp:529
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Justera till"
+msgstr "&Justera till…"
 
 #: view/kateview.cpp:531
 #, kde-format
@@ -6809,13 +6771,12 @@ msgstr "Lås eller lås upp dokumentet för skrivning"
 #: view/kateview.cpp:580
 #, kde-format
 msgid "&Force RTL Direction"
-msgstr ""
+msgstr "&Tvinga höger-till-vänster riktning"
 
 #: view/kateview.cpp:581
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Force RTL Text Direction"
-msgstr "Textdekorationer"
+msgstr "Tvinga höger-till-vänster textriktning"
 
 #: view/kateview.cpp:591
 #, kde-format
@@ -6879,10 +6840,9 @@ msgstr ""
 "som tilldelats åtgärden."
 
 #: view/kateview.cpp:628
-#, fuzzy, kde-format
-#| msgid "Re&move trailing spaces:"
+#, kde-format
 msgid "Remove Trailing Spaces"
-msgstr "Ta bort &mellanslag i slutet av en rad:"
+msgstr "Ta bort mellanslag i slutet av rader"
 
 #: view/kateview.cpp:646
 #, kde-format
@@ -6910,18 +6870,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Spara det aktuella dokumentet till disk med ett namn som du väljer."
 
 #: view/kateview.cpp:661
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Spara som med kodning..."
+msgstr "Spara som med kodning…"
 
 #: view/kateview.cpp:667
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Spara &kopia som..."
+msgstr "Spara &kopia som…"
 
 #: view/kateview.cpp:668
 #, kde-format
@@ -6958,11 +6916,10 @@ msgid "Move downwards to the next modified line."
 msgstr "Flytta neråt till nästa ändrade rad."
 
 #: view/kateview.cpp:687
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "A&npassa editor..."
+msgstr "A&npassa editor…"
 
 #: view/kateview.cpp:689
 #, kde-format
@@ -7345,10 +7302,9 @@ msgid "Find and Select All Occurrences"
 msgstr "Sök och markera alla förekomster"
 
 #: view/kateview.cpp:912
-#, fuzzy, kde-format
-#| msgid "Finds all occurrences of the word under cursor and select them."
+#, kde-format
 msgid "Finds all occurrences of the word under cursor and selects them."
-msgstr "Slår upp alla förekomster av ordet under markören och markerar dem."
+msgstr "Hitta alla förekomster av ordet under markören och markerar dem."
 
 #: view/kateview.cpp:916
 #, kde-format
@@ -7436,11 +7392,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Aktivera eller inaktivera automatisk stavningskontroll"
 
 #: view/kateview.cpp:962
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Byt ordlista"
+msgstr "Byt ordlista…"
 
 #: view/kateview.cpp:963
 #, kde-format
@@ -7474,11 +7429,10 @@ msgstr ""
 "systemets klippbord."
 
 #: view/kateview.cpp:980
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "E&xportera som HTML..."
+msgstr "E&xportera som HTML…"
 
 #: view/kateview.cpp:982
 #, kde-format
@@ -7520,10 +7474,9 @@ msgid "Select Word Right"
 msgstr "Markera ett ord åt höger"
 
 #: view/kateview.cpp:1057
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgid "Start the Marked Selection"
-msgstr "Klistra in markering"
+msgstr "Starta markering"
 
 #: view/kateview.cpp:1058
 #, kde-format
@@ -7531,6 +7484,8 @@ msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
+"Emulera Emacs-liknande markeringsläge, där början markeras och markeringen "
+"sedan uppdateras kontinuerligt."
 
 #: view/kateview.cpp:1063
 #, kde-format
@@ -7698,10 +7653,9 @@ msgid "Backspace"
 msgstr "Backsteg"
 
 #: view/kateview.cpp:1263
-#, fuzzy, kde-format
-#| msgid "Insert Tab"
+#, kde-format
 msgid "Insert Tab Character"
-msgstr "Infoga flik"
+msgstr "Infoga tabulatortecken"
 
 #: view/kateview.cpp:1268
 #, kde-format
@@ -7799,28 +7753,24 @@ msgid "Toggle Contained Nodes"
 msgstr "Byt underliggande noder"
 
 #: view/kateview.cpp:1354
-#, fuzzy, kde-format
-#| msgid "Text selection of the current document."
+#, kde-format
 msgid "Say current selection or document"
-msgstr "Det aktuella dokumentets textmarkering."
+msgstr "Läs upp nuvarande markering eller dokument"
 
 #: view/kateview.cpp:1364
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Stop current output"
-msgstr "Spara aktuellt dokument"
+msgstr "Stoppa nuvarande utmatning"
 
 #: view/kateview.cpp:1370
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Pause current output"
-msgstr "Spara aktuellt dokument"
+msgstr "Pausa nuvarande utmatning"
 
 #: view/kateview.cpp:1376
-#, fuzzy, kde-format
-#| msgid "Save the current document"
+#, kde-format
 msgid "Resume current output"
-msgstr "Spara aktuellt dokument"
+msgstr "Återuppta nuvarande utmatning"
 
 #: view/kateview.cpp:1547
 #, kde-format
@@ -7937,71 +7887,62 @@ msgid "Disable Annotation Bar"
 msgstr "Inaktivera kommentarrad"
 
 #: view/screenshotdialog.cpp:178
-#, fuzzy, kde-format
-#| msgid "Open/Save"
+#, kde-format
 msgid "Save"
-msgstr "Öppna/spara"
+msgstr "Spara"
 
 #: view/screenshotdialog.cpp:179
-#, fuzzy, kde-format
-#| msgid "&Copy..."
+#, kde-format
 msgid "Copy"
-msgstr "K&opiera..."
+msgstr "Kopiera"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "&Bakgrundsfärg..."
+msgstr "Bakgrundsfärg…"
 
 #: view/screenshotdialog.cpp:182
-#, fuzzy, kde-format
-#| msgid "Text Decorations"
+#, kde-format
 msgid "Show Extra Decorations"
-msgstr "Textdekorationer"
+msgstr "Visa extra dekorationer"
 
 #: view/screenshotdialog.cpp:183
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show Window Decorations"
-msgstr "Visa i&ndenteringslinjer"
+msgstr "Visa fönsterdekorationer"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Paste Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
-msgstr "Klistra in markering"
+msgstr "Ta skärmbild av markering"
 
 #: view/screenshotdialog.cpp:260
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Don't Show Line Numbers"
-msgstr "&Visa radnummer"
+msgstr "Visa inte radnummer"
 
 #: view/screenshotdialog.cpp:261
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Line Numbers From 1"
-msgstr "&Visa radnummer"
+msgstr "Visa radnummer från 1"
 
 #: view/screenshotdialog.cpp:262
-#, fuzzy, kde-format
-#| msgid "Show &Line Numbers"
+#, kde-format
 msgid "Show Actual Line Numbers"
-msgstr "&Visa radnummer"
+msgstr "Visa verkligt radnummer"
 
 #: view/screenshotdialog.cpp:423
 #, kde-format
 msgctxt "@title:window"
 msgid "Screenshot saving failed"
-msgstr ""
+msgstr "Misslyckades spara skärmbild"
 
 #: view/screenshotdialog.cpp:423
 #, kde-format
 msgid "Screenshot saving failed: %1"
-msgstr ""
+msgstr "Misslyckades spara skärmbild: %1"
 
 #: vimode/appcommands.cpp:67
 #, kde-format

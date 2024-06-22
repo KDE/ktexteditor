@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-17 21:32+0200\n"
+"PO-Revision-Date: 2024-06-21 22:07+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -6617,15 +6617,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Pegar o contido da selección do rato"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Opcións do ficheiro de intercambio"
+msgstr "Copiar a localización do ficheiro"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Copiar o nome do ficheiro actual e o número de liña."
 
 #: view/kateview.cpp:487
 #, kde-format

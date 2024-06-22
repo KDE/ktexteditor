@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-19 22:32+0300\n"
+"PO-Revision-Date: 2024-06-21 08:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -280,10 +280,9 @@ msgstr "הדגשת שורות שנערכו וטרם נשמרו"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "פסי גלילה"
+msgstr "פסי גלילה:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -4820,7 +4819,7 @@ msgid "H&ighlight:"
 msgstr "ה&דגשה:"
 
 #: syntax/katethemeconfig.cpp:746
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<p>This list displays the contexts of the current syntax highlight mode and "
 "offers the means to edit them. The context name reflects the current style "
@@ -4830,11 +4829,12 @@ msgid ""
 "p><p>You can unset the Background and Selected Background colors from the "
 "context menu when appropriate.</p>"
 msgstr ""
-"<p>רשימה זו מציגה את ההקשרים של מצב הדגשת התחביר הנוכחי, ומספקת אמצעים לערוך "
-"אותם. שם ההקשר משקף את הגדרות הסגנון הנוכחיות. שם ההקשר משקף את הגדרות "
-"הסגנון הנוכחי.</p><p> לשם עריכה באמצעות המקלדת, הקש על <strong>&lt;רווח&gt;</"
-"strong> ובחר מאפיין מתוך התפריט המוקפץ. </p><p> לשם עריכת הצבעים, לחץ על "
-"המלבנים הצבעוניים או בחר את הצבע לעריכה מתוך התפריט המוקפץ. </p>"
+"<p>הרשימה הזאת מציגה את הקשרי מצב הדגשת התחביר הנוכחי ומציעה דרכים לערוך "
+"אותם. שם ההקשר משקף את הגדרות הסגנון הנוכחי.</p><p>כדי לערוך עם המקלדת, יש "
+"ללחוץ על <strong>&lt;רווח&gt;</strong> לבחור במאפיין מהתפריט הקופץ.</"
+"p><p>כדי לערוך את הצבעים, יש ללחוץ על הריבועים הצבעוניים או לבחור את הצבע "
+"לעריכה מהתפריט הקופץ.</p><p>אפשר לאפס את צבעי הרקע והרקע הנבחר מתפריט ההקשר "
+"כשיש בזה טעם.</p>"
 
 #: syntax/katethemeconfig.cpp:1026
 #, kde-format
@@ -5320,6 +5320,9 @@ msgid ""
 "form.</p><p>Examples:<ul><li>char <b>234</b></li><li>char <b>0x1234</b></"
 "li></ul></p>"
 msgstr ""
+"<p> char <b>זיהוי</b> </p>&lrm;<p>הפקודה הזאת מאפשרת להוסיף תווים לפי הזיהוי "
+"המספרי שלהם בצורה העשרונית, האוקטלית או ההקסדצימלית. </p><p>למשל:"
+"<ul><li>char <b>234</b></li><li>char <b>0x1234</b></li></ul></p>"
 
 #: utils/katecmds.cpp:559
 #, kde-format
@@ -6447,12 +6450,12 @@ msgstr "הדבקת תוכן שנבחר קודם עם העכבר"
 #: view/kateview.cpp:483
 #, kde-format
 msgid "Copy File Location"
-msgstr ""
+msgstr "העתקת מקום הקובץ"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "העתקת שם הקובץ ומספר השורה הנוכחיים"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -7804,6 +7807,14 @@ msgid ""
 "no file name is associated with the document and it should be written to "
 "disk, a file dialog will be shown.</p>"
 msgstr ""
+"<p><b>q/qa/wq/wqa &mdash; [כתיבה וגם] יציאה</b></p><p>אופן שימוש: "
+"<tt><b>[w]q[a]</b></tt></p><p>יציאה מהיישום. אם יש בסוף <tt>w</tt>, המסמכים "
+"גם נכתבים לכונן. אפשר לקרוא לפקודה הזאת במגוון אופנים:<br /> <tt>q</tt> "
+"&mdash; לסגירת התצוגה הנוכחית.<br /> <tt>qa</tt> &mdash; לסגירת כל התצוגות, "
+"ולמעשה סגירת היישום לגמרי.<br /> <tt>wq</tt> &mdash; לכתיבת המסמך הנוכחי "
+"לכונן וסגירת התצוגה שלו.<br /> <tt>wqa</tt> &mdash; לכתיבת כל המסמכים לכונן "
+"ולצאת לאחר מכן.</p><p>בכל המקרים, אם התצוגה שנסגרת היא האחרונה, היישום "
+"ייסגר. אם לא נבחר שם קובץ למסמך ויש לכתוב אותו לכונן, תופיע חלונית קבצים.</p>"
 
 #: vimode/appcommands.cpp:228
 #, kde-format
@@ -7817,6 +7828,13 @@ msgid ""
 "disk, a file dialog will be shown.</p><p>Unlike the 'w' commands, this "
 "command only writes the document if it is modified.</p>"
 msgstr ""
+"<p><b>x/xa &mdash; כתיבה ויציאה</b></p><p>אופן שימוש: <tt><b>x[a]</b></tt></"
+"p><p>שמירת המסמכים ויציאה (e<b>x</b>its - יציאה). אפשר לקרוא לפקודה הזאת "
+"בשתי צורות:<br /> <tt>x</tt> &mdash; לסגירת התצוגה הנוכחית.<br /> <tt>xa</"
+"tt> &mdash; לסגירת כל התצוגות, כלומר לסגור את היישום לגמרי.</p><p>בכל "
+"המצבים, אם התצוגה שנסגרת היא התצוגה האחרונה, היישום ייסגר לגמרי. אם לא נבחר "
+"שם לקובץ ועליו להיכתב לכונן, תופיע חלונית. </p><p>שלא כמו בפקודות ‚w’, "
+"הפקודה הזאת כותבת את המסמך רק אם הוא השתנה.</p>"
 
 #: vimode/appcommands.cpp:242
 #, kde-format
@@ -7904,6 +7922,10 @@ msgid ""
 "(\"<b>b</b>uffer\") in document list.<b>[N]</b> defaults to one. </"
 "p><p>Wraps around the end of the document list.</p>"
 msgstr ""
+"<p><b>bn,bnext &mdash; מעבר למסמך הבא</b></p><p>אופן שימוש: <tt><b>bn[ext] "
+"[N]</b></tt></p><p>מעבר למסמך במקום <b>[N]</b> („<b>b</b>uffer” - חוצץ) "
+"ברשימת המסמכים.<b>[N]</b> מתורגם לאחד אוטומטית. </p><p>גולש מעבר לסוף רשימת "
+"המסמכים.</p>"
 
 #: vimode/appcommands.cpp:539
 #, kde-format

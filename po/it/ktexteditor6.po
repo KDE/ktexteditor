@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-16 17:59+0200\n"
+"PO-Revision-Date: 2024-06-20 14:46+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -6655,15 +6655,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Incolla il contenuto precedentemente selezionato con il mouse"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Opzioni dei file di swap"
+msgstr "Copia posizione del file"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Copia il nome del file e il numero della riga attuale"
 
 #: view/kateview.cpp:487
 #, kde-format
