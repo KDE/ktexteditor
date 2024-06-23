@@ -27,7 +27,7 @@ The hierarchy can be illustrated as follows:
 
 \section kte_design_user Notes for KTextEditor Users
 To use the KTextEditor framework you first have to get the KTextEditor::Editor
-singleton through KTextEditor::Editor::instance(). Using this obejct, documents
+singleton through KTextEditor::Editor::instance(). Using this object, documents
 can be created and deleted.
 
 \section kte_design_part Using KTextEditor as KPart
