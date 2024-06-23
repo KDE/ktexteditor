@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-05-23 20:00+0100\n"
+"PO-Revision-Date: 2024-06-22 13:04+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -273,10 +273,9 @@ msgstr "Highlight changed and unsaved lines"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Scrollbars"
+msgstr "Scrollbars:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -6561,15 +6560,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Paste previously mouse selection contents"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Swap File Options"
+msgstr "Copy File Location"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Copy the current file name and line number"
 
 #: view/kateview.cpp:487
 #, kde-format
