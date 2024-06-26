@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 18:30+0200\n"
+"PO-Revision-Date: 2024-06-24 17:30+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -6944,15 +6944,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Coller le contenu précédemment sélectionné avec la souris"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Options du fichier d'échange"
+msgstr "Copier l'emplacement du fichier"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Copier le nom du fichier courant et le numéro de ligne"
 
 #: view/kateview.cpp:487
 #, kde-format

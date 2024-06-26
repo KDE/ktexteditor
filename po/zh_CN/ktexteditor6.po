@@ -6359,12 +6359,12 @@ msgstr "粘贴先前鼠标选择内容"
 #: view/kateview.cpp:483
 #, kde-format
 msgid "Copy File Location"
-msgstr ""
+msgstr "复制文件位置"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "复制当前文件名和行号"
 
 #: view/kateview.cpp:487
 #, kde-format
