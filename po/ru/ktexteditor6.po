@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 00:37+0000\n"
-"PO-Revision-Date: 2024-06-11 14:29+0300\n"
+"PO-Revision-Date: 2024-06-26 09:51+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -282,10 +282,9 @@ msgstr "Выделять изменённые и несохранённые ст
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Полосы прокрутки"
+msgstr "Полосы прокрутки:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -3975,12 +3974,10 @@ msgid "Spell check canceled."
 msgstr "Проверка орфографии отменена."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Идёт проверка орфографии..."
+msgstr "Выполняется проверка орфографии…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4205,11 +4202,10 @@ msgid "I&gnore All"
 msgstr "Игнорировать вез&де"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Проверка орфографии от курсора..."
+msgstr "Проверка орфографии от курсора…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4331,32 +4327,28 @@ msgid "S&trikeout"
 msgstr "&Зачёркнутый"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "&Цвет текста..."
+msgstr "&Цвет текста…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "Цвет &выделенного текста..."
+msgstr "Цвет &выделенного текста…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "Цвет &фона..."
+msgstr "Цвет &фона…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "Цвет фона в&ыделенного текста..."
+msgstr "Цвет фона в&ыделенного текста…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4972,25 +4964,22 @@ msgid "&Theme:"
 msgstr "&Тема:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Копировать"
+msgstr "&Копировать…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "Экспорт..."
+msgstr "Экспорт…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "Импорт..."
+msgstr "Импорт…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6545,12 +6534,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Отступ/табуляция: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Разное"
+msgstr "Другое…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6622,10 +6609,9 @@ msgid "Paste previously mouse selection contents"
 msgstr "Вставить текст, ранее выделенный мышью"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Параметры временного файла (swp)"
+msgstr "Копировать путь к файлу"
 
 #: view/kateview.cpp:484
 #, kde-format
@@ -6715,11 +6701,10 @@ msgstr ""
 "надлежащее расстояние."
 
 #: view/kateview.cpp:529
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "В&ыровнять по"
+msgstr "В&ыровнять по…"
 
 #: view/kateview.cpp:531
 #, kde-format
@@ -6904,18 +6889,16 @@ msgstr ""
 
 # BUGME: remove ellipsis because it this opens a submenu? --aspotashev
 #: view/kateview.cpp:661
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "Сохранить в другой кодировке..."
+msgstr "Сохранить в другой кодировке…"
 
 #: view/kateview.cpp:667
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "Сохранить ко&пию как..."
+msgstr "Сохранить ко&пию как…"
 
 #: view/kateview.cpp:668
 #, kde-format
@@ -7458,11 +7441,10 @@ msgid ""
 msgstr "Копировать текст с подсветкой в формате HTML в буфер обмена."
 
 #: view/kateview.cpp:980
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "&Экспорт в HTML..."
+msgstr "&Экспорт в HTML…"
 
 #: view/kateview.cpp:982
 #, kde-format
@@ -7932,8 +7914,7 @@ msgid "Copy"
 msgstr "Копировать"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
 msgstr "Цвет фона…"
@@ -7950,11 +7931,10 @@ msgid "Show Window Decorations"
 msgstr "Показывать оформление окна"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
-msgstr "Создать снимок экрана выделенного текста"
+msgstr "Создание снимка экрана выделенного текста"
 
 #: view/screenshotdialog.cpp:260
 #, kde-format
