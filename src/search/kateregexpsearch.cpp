@@ -8,6 +8,8 @@
 // BEGIN includes
 #include "kateregexpsearch.h"
 
+#include "katepartdebug.h" // for LOG_KTE
+
 #include <ktexteditor/document.h>
 // END  includes
 
@@ -459,7 +461,7 @@ KateRegExpSearch::search(const QString &pattern, KTextEditor::Range inputRange, 
                 QList<KTextEditor::Range> result(numCaptures + 1);
                 result[0] = KTextEditor::Range(j, match.capturedStart(), j, match.capturedEnd());
 
-                FAST_DEBUG("result range " << 0 << ": (" << j << ", " << match.capturedStart << ")..(" << j << ", " << match.capturedEnd() << ")");
+                FAST_DEBUG("result range " << 0 << ": (" << j << ", " << match.capturedStart() << ")..(" << j << ", " << match.capturedEnd() << ")");
 
                 for (int y = 1; y <= numCaptures; ++y) {
                     const int openIndex = match.capturedStart(y);
