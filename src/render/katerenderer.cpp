@@ -912,7 +912,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
                 const int y = lineHeight() * i + m_fontAscent;
 
                 static const QRegularExpression nonPrintableSpacesRegExp(
-                    QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
+                    QStringLiteral("[\\x{0000}-\\x{0008}\\x{000A}-\\x{001F}\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
                 QRegularExpressionMatchIterator i = nonPrintableSpacesRegExp.globalMatch(text, line.lineLayout().xToCursor(xStart));
 
                 while (i.hasNext()) {
