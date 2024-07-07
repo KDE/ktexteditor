@@ -577,10 +577,10 @@ void KateTextBufferTest::lineLengthLimit()
             QFile f(file_path);
             QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
             for (int i = 0; i < 10000; ++i) {
-                f.putChar(0x00);
-                f.putChar(0x02);
-                f.putChar(0x3b);
-                f.putChar(0xae);
+                f.putChar('\x00');
+                f.putChar('\x02');
+                f.putChar('\x3b');
+                f.putChar('\xae');
             }
             QVERIFY(f.flush());
         }
