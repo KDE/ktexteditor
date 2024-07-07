@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-20 00:37+0000\n"
+"POT-Creation-Date: 2024-07-07 00:37+0000\n"
 "PO-Revision-Date: 2017-07-30 15:55+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -7188,11 +7188,29 @@ msgstr ""
 "pakeistų jau esantį tekstą."
 
 #: view/kateview.cpp:765
+#, fuzzy, kde-format
+#| msgid "&Spaces"
+msgid "Show Whitespace"
+msgstr "&Tarpus"
+
+#: view/kateview.cpp:768
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen."
+msgid ""
+"If this option is checked, whitespaces in this document will be visible.<br /"
+"><br />This is only a view option, meaning the document will not changed."
+msgstr ""
+"Pažymėjus šią parinktį, teksto eilutės bus perkeliamos į kitą ties lango "
+"kraštu, tačiau tiktai ekrane."
+
+#: view/kateview.cpp:772
 #, kde-format
 msgid "&Dynamic Word Wrap"
 msgstr "&Dinaminis žodžių kėlimas"
 
-#: view/kateview.cpp:769
+#: view/kateview.cpp:776
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7205,38 +7223,38 @@ msgstr ""
 "Pažymėjus šią parinktį, teksto eilutės bus perkeliamos į kitą ties lango "
 "kraštu, tačiau tiktai ekrane."
 
-#: view/kateview.cpp:773
+#: view/kateview.cpp:780
 #, kde-format
 msgid "Dynamic Word Wrap Indicators"
 msgstr "Dinaminio žodžių kėlimo indikatoriai"
 
-#: view/kateview.cpp:775
+#: view/kateview.cpp:782
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgstr ""
 "Pasirinkite, kada turėtų būti rodomi dinaminio žodžių perkėlimo indikatoriai"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:784
 #, kde-format
 msgid "&Off"
 msgstr "&išjungta"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:784
 #, kde-format
 msgid "Follow &Line Numbers"
 msgstr "Sekti ei&lučių numerius"
 
-#: view/kateview.cpp:777
+#: view/kateview.cpp:784
 #, kde-format
 msgid "&Always On"
 msgstr "Vis&ada įjungta"
 
-#: view/kateview.cpp:781
+#: view/kateview.cpp:788
 #, kde-format
 msgid "Static Word Wrap"
 msgstr "Statinis žodžių kėlimas"
 
-#: view/kateview.cpp:783
+#: view/kateview.cpp:790
 #, fuzzy, kde-format
 #| msgid ""
 #| "If this option is checked, the text lines will be wrapped at the view "
@@ -7248,12 +7266,12 @@ msgstr ""
 "Pažymėjus šią parinktį, teksto eilutės bus perkeliamos į kitą ties lango "
 "kraštu, tačiau tiktai ekrane."
 
-#: view/kateview.cpp:790
+#: view/kateview.cpp:797
 #, kde-format
 msgid "Show Static &Word Wrap Marker"
 msgstr "Rodyti statinio &žodžių perkėlimo žymę"
 
-#: view/kateview.cpp:793
+#: view/kateview.cpp:800
 #, kde-format
 msgid ""
 "Show/hide the Word Wrap Marker, a vertical line drawn at the word wrap "
@@ -7262,12 +7280,12 @@ msgstr ""
 "Rodyti-slėpti žodžių perkėlimo žymę, vertikalią liniją, piešiamą ties žodžių "
 "perkėlimo stulpeliu, apibrėžtu redagavimo savybėse"
 
-#: view/kateview.cpp:797
+#: view/kateview.cpp:804
 #, kde-format
 msgid "Show Folding &Markers"
 msgstr "&Rodyti sulankstymo žymes"
 
-#: view/kateview.cpp:799
+#: view/kateview.cpp:806
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
@@ -7276,12 +7294,12 @@ msgstr ""
 "Jūs galite pasirinkti, ar rodyti kodo sulankstymo žymes, jei toks "
 "sulankstymas yra įmanomas."
 
-#: view/kateview.cpp:802
+#: view/kateview.cpp:809
 #, kde-format
 msgid "Show &Icon Border"
 msgstr "Rodyti &ženkliukų rėmelį"
 
-#: view/kateview.cpp:804
+#: view/kateview.cpp:811
 #, kde-format
 msgid ""
 "Show/hide the icon border.<br /><br />The icon border shows bookmark "
@@ -7290,22 +7308,22 @@ msgstr ""
 "Rodyti-slėpti ženkliukų rėmelį.<br /><br />Ženkliukų rėmelis rodo pvz. "
 "padėtas žymeles."
 
-#: view/kateview.cpp:807
+#: view/kateview.cpp:814
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Rodyti ei&lučių numerius"
 
-#: view/kateview.cpp:809
+#: view/kateview.cpp:816
 #, kde-format
 msgid "Show/hide the line numbers on the left hand side of the view."
 msgstr "Rodyti-slėpti eilučių numerius vaizdo kairėje."
 
-#: view/kateview.cpp:812
+#: view/kateview.cpp:819
 #, kde-format
 msgid "Show Scroll&bar Marks"
 msgstr "&Rodyti slinkties juostos žymes"
 
-#: view/kateview.cpp:814
+#: view/kateview.cpp:821
 #, kde-format
 msgid ""
 "Show/hide the marks on the vertical scrollbar.<br /><br />The marks show "
@@ -7314,12 +7332,12 @@ msgstr ""
 "Rodyti/slėpti žymes ant vertikaliosios slinkties juostos.<br /><br />Žymės, "
 "pvz., rodo padėtas žymeles."
 
-#: view/kateview.cpp:817
+#: view/kateview.cpp:824
 #, kde-format
 msgid "Show Scrollbar Mini-Map"
 msgstr "&Rodyti slinkties juostos žymes"
 
-#: view/kateview.cpp:819
+#: view/kateview.cpp:826
 #, kde-format
 msgid ""
 "Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map "
@@ -7333,71 +7351,71 @@ msgstr ""
 #. a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the
 #. mini-map.")); connect(a, SIGNAL(triggered(bool)), SlOT(toggleScrollBarMiniMapAll())); connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)),
 #. m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-#: view/kateview.cpp:831
+#: view/kateview.cpp:838
 #, kde-format
 msgid "Show Non-Printable Spaces"
 msgstr ""
 
-#: view/kateview.cpp:833
+#: view/kateview.cpp:840
 #, kde-format
 msgid "Show/hide bounding box around non-printable spaces"
 msgstr ""
 
-#: view/kateview.cpp:837
+#: view/kateview.cpp:844
 #, kde-format
 msgid "Switch to Command Line"
 msgstr "Persijungti į komandų eilutę"
 
-#: view/kateview.cpp:839
+#: view/kateview.cpp:846
 #, kde-format
 msgid "Show/hide the command line on the bottom of the view."
 msgstr "Rodyti-slėpti komandų eilutę vaizdo apačioje."
 
-#: view/kateview.cpp:842
+#: view/kateview.cpp:849
 #, kde-format
 msgid "Input Modes"
 msgstr "Įvesties veiksenos"
 
-#: view/kateview.cpp:851
+#: view/kateview.cpp:858
 #, kde-format
 msgid "Activate/deactivate %1"
 msgstr "Įjungti arba išjungti %1"
 
-#: view/kateview.cpp:861
+#: view/kateview.cpp:868
 #, kde-format
 msgid "&End of Line"
 msgstr "&Eilutės galas"
 
-#: view/kateview.cpp:863
+#: view/kateview.cpp:870
 #, kde-format
 msgid "Choose which line endings should be used, when you save the document"
 msgstr ""
 "Pasirinkite, kokie eilučių galai turėtų būti naudojami išsaugant dokumentą"
 
-#: view/kateview.cpp:864
+#: view/kateview.cpp:871
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&UNIX"
 msgstr "&UNIX"
 
-#: view/kateview.cpp:865
+#: view/kateview.cpp:872
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Windows/DOS"
 msgstr "&Windows/DOS"
 
-#: view/kateview.cpp:866
+#: view/kateview.cpp:873
 #, kde-format
 msgctxt "@item:inmenu End of Line"
 msgid "&Macintosh"
 msgstr "&Macintosh"
 
-#: view/kateview.cpp:871
+#: view/kateview.cpp:878
 #, kde-format
 msgid "Add &Byte Order Mark (BOM)"
 msgstr "Įdėti &baitų tvarkos žymeklį (BOM)"
 
-#: view/kateview.cpp:874
+#: view/kateview.cpp:881
 #, fuzzy, kde-format
 #| msgid ""
 #| "Enable/disable adding of byte order markers for UTF-8/UTF-16 encoded "
@@ -7409,79 +7427,79 @@ msgstr ""
 "Įjungti arba išjungti baitų tvarkos žymeklio pridėjimą įrašant UTF-8 bei "
 "UTF-16 koduotės failus"
 
-#: view/kateview.cpp:878
+#: view/kateview.cpp:885
 #, kde-format
 msgid "E&ncoding"
 msgstr "&Koduotė"
 
-#: view/kateview.cpp:882
+#: view/kateview.cpp:889
 #, kde-format
 msgid "Look up the first occurrence of a piece of text or regular expression."
 msgstr "Ieškoti pirmo teksto ar įprastos išraiškos atitikmens."
 
-#: view/kateview.cpp:886
+#: view/kateview.cpp:893
 #, kde-format
 msgid "Find Selected"
 msgstr "Rasti pažymėtą"
 
-#: view/kateview.cpp:888
+#: view/kateview.cpp:895
 #, kde-format
 msgid "Finds next occurrence of selected text."
 msgstr "Randa kitą pažymėto teksto pasikartojimą."
 
-#: view/kateview.cpp:892
+#: view/kateview.cpp:899
 #, kde-format
 msgid "Find Selected Backwards"
 msgstr "Rasti ankstesnį pažymėtą"
 
-#: view/kateview.cpp:894
+#: view/kateview.cpp:901
 #, kde-format
 msgid "Finds previous occurrence of selected text."
 msgstr "Randa ankstesnį pažymėto teksto pasikartojimą."
 
-#: view/kateview.cpp:898
+#: view/kateview.cpp:905
 #, kde-format
 msgid "Find and Select Next Occurrence"
 msgstr ""
 
-#: view/kateview.cpp:900
+#: view/kateview.cpp:907
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds next occurrence of the word under cursor and add it to selection."
 msgstr "Randa kitą pažymėto teksto pasikartojimą."
 
-#: view/kateview.cpp:904
+#: view/kateview.cpp:911
 #, kde-format
 msgid "Mark Currently Selected Occurrence as Skipped"
 msgstr ""
 
-#: view/kateview.cpp:906
+#: view/kateview.cpp:913
 #, kde-format
 msgid "Marks the currently selected word as skipped."
 msgstr ""
 
-#: view/kateview.cpp:910
+#: view/kateview.cpp:917
 #, kde-format
 msgid "Find and Select All Occurrences"
 msgstr ""
 
-#: view/kateview.cpp:912
+#: view/kateview.cpp:919
 #, fuzzy, kde-format
 #| msgid "Finds next occurrence of selected text."
 msgid "Finds all occurrences of the word under cursor and selects them."
 msgstr "Randa kitą pažymėto teksto pasikartojimą."
 
-#: view/kateview.cpp:916
+#: view/kateview.cpp:923
 #, kde-format
 msgid "Look up the next occurrence of the search phrase."
 msgstr "Ieškoti kito paieškos frazės atitikmens."
 
-#: view/kateview.cpp:920
+#: view/kateview.cpp:927
 #, kde-format
 msgid "Look up the previous occurrence of the search phrase."
 msgstr "Ieškoti ankstesnio paieškos frazės atitikmens."
 
-#: view/kateview.cpp:924
+#: view/kateview.cpp:931
 #, kde-format
 msgid ""
 "Look up a piece of text or regular expression and replace the result with "
@@ -7490,88 +7508,88 @@ msgstr ""
 "Ieškoti teksto elemento ar įprastos išraiškos ir pakeisti rezultatą kokiu "
 "nors duotu tekstu."
 
-#: view/kateview.cpp:927
+#: view/kateview.cpp:934
 #, kde-format
 msgid "Add Cursors to Line Ends"
 msgstr ""
 
-#: view/kateview.cpp:929
+#: view/kateview.cpp:936
 #, kde-format
 msgid "Creates a cursor at the end of every line in selection."
 msgstr ""
 
-#: view/kateview.cpp:933
+#: view/kateview.cpp:940
 #, kde-format
 msgid "Add Caret below Cursor"
 msgstr ""
 
-#: view/kateview.cpp:935
+#: view/kateview.cpp:942
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Adds a caret in the line below the current caret."
 msgstr "Pažymėkite visą esamo dokumento tekstą."
 
-#: view/kateview.cpp:939
+#: view/kateview.cpp:946
 #, kde-format
 msgid "Add Caret above Cursor"
 msgstr ""
 
-#: view/kateview.cpp:941
+#: view/kateview.cpp:948
 #, kde-format
 msgid "Adds a caret in the line above the current caret."
 msgstr ""
 
-#: view/kateview.cpp:945
+#: view/kateview.cpp:952
 #, fuzzy, kde-format
 #| msgid "Text Cursor Movement"
 msgid "Toggle Camel Case Cursor Movement"
 msgstr "Teksto žymeklio judėjimas"
 
-#: view/kateview.cpp:946
+#: view/kateview.cpp:953
 #, kde-format
 msgid "Toggle between normal word movement and camel case cursor movement."
 msgstr ""
 
-#: view/kateview.cpp:950
+#: view/kateview.cpp:957
 #, fuzzy, kde-format
 #| msgid "Move cursor to next matching indent"
 msgid "Remove Cursors from Empty Lines"
 msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
-#: view/kateview.cpp:951
+#: view/kateview.cpp:958
 #, fuzzy, kde-format
 #| msgid "Move cursor to next matching indent"
 msgid "Remove cursors from empty lines"
 msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
-#: view/kateview.cpp:955
+#: view/kateview.cpp:962
 #, kde-format
 msgid "Automatic Spell Checking"
 msgstr "Automatinis rašybos tikrinimas"
 
-#: view/kateview.cpp:956
+#: view/kateview.cpp:963
 #, kde-format
 msgid "Enable/disable automatic spell checking"
 msgstr "Įjungti ar išjungti automatinį rašybos tikrinimą"
 
-#: view/kateview.cpp:962
+#: view/kateview.cpp:969
 #, fuzzy, kde-format
 #| msgid "Change Dictionary..."
 msgctxt "@action"
 msgid "Change Dictionary…"
 msgstr "Keisti žodyną..."
 
-#: view/kateview.cpp:963
+#: view/kateview.cpp:970
 #, kde-format
 msgid "Change the dictionary that is used for spell checking."
 msgstr "Keisti žodyną, naudojamą rašybos tikrinimui."
 
-#: view/kateview.cpp:967
+#: view/kateview.cpp:974
 #, kde-format
 msgid "Clear Dictionary Ranges"
 msgstr "Valyti žodyno sritis"
 
-#: view/kateview.cpp:969
+#: view/kateview.cpp:976
 #, kde-format
 msgid ""
 "Remove all the separate dictionary ranges that were set for spell checking."
@@ -7579,12 +7597,12 @@ msgstr ""
 "Pašalinti visas atskiras žodyno sritis, kurios buvo nustatytos rašybos "
 "tikrinimui."
 
-#: view/kateview.cpp:975
+#: view/kateview.cpp:982
 #, kde-format
 msgid "Copy as &HTML"
 msgstr "Kopijuoti kaip &HTML"
 
-#: view/kateview.cpp:976
+#: view/kateview.cpp:983
 #, kde-format
 msgid ""
 "Use this command to copy the currently selected text as HTML to the system "
@@ -7593,14 +7611,14 @@ msgstr ""
 "Naudokite šią komandą, kad nukopijuoti šiuo metu pažymėtą tekstą kaip HTML į "
 "iškarpinę."
 
-#: view/kateview.cpp:980
+#: view/kateview.cpp:987
 #, fuzzy, kde-format
 #| msgid "E&xport as HTML..."
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&kportuoti į HTML..."
 
-#: view/kateview.cpp:982
+#: view/kateview.cpp:989
 #, kde-format
 msgid ""
 "This command allows you to export the current document with all highlighting "
@@ -7609,227 +7627,227 @@ msgstr ""
 "Komanda leidžia eksportuoti dabartinį dokumentą su visa pažymėjimo "
 "informacija į HTML dokumentą."
 
-#: view/kateview.cpp:1021
+#: view/kateview.cpp:1028
 #, kde-format
 msgid "Move Word Left"
 msgstr "Vieną žodį kairėn"
 
-#: view/kateview.cpp:1027
+#: view/kateview.cpp:1034
 #, kde-format
 msgid "Select Character Left"
 msgstr "Pažymėti simbolį kairėj"
 
-#: view/kateview.cpp:1033
+#: view/kateview.cpp:1040
 #, kde-format
 msgid "Select Word Left"
 msgstr "Pažymėti žodį kairėn"
 
-#: view/kateview.cpp:1039
+#: view/kateview.cpp:1046
 #, kde-format
 msgid "Move Word Right"
 msgstr "Vienas žodis dešinėn"
 
-#: view/kateview.cpp:1045
+#: view/kateview.cpp:1052
 #, kde-format
 msgid "Select Character Right"
 msgstr "Pažymėti simbolį dešinėje"
 
-#: view/kateview.cpp:1051
+#: view/kateview.cpp:1058
 #, kde-format
 msgid "Select Word Right"
 msgstr "Pažymėti žodį dešinėje"
 
-#: view/kateview.cpp:1057
+#: view/kateview.cpp:1064
 #, fuzzy, kde-format
 msgid "Start the Marked Selection"
 msgstr "Kalbos atranka"
 
-#: view/kateview.cpp:1058
+#: view/kateview.cpp:1065
 #, kde-format
 msgid ""
 "Emulate the Emacs-like selection mode, where the beginning is marked and "
 "then the selection is continuously updated."
 msgstr ""
 
-#: view/kateview.cpp:1063
+#: view/kateview.cpp:1070
 #, kde-format
 msgid "Move to Beginning of Line"
 msgstr "Pereiti į eilutės pradžią"
 
-#: view/kateview.cpp:1069
+#: view/kateview.cpp:1076
 #, kde-format
 msgid "Move to Beginning of Document"
 msgstr "Pereiti į dokumento pradžią"
 
-#: view/kateview.cpp:1075
+#: view/kateview.cpp:1082
 #, kde-format
 msgid "Select to Beginning of Line"
 msgstr "Pažymėti iki eilutės pradžios"
 
-#: view/kateview.cpp:1081
+#: view/kateview.cpp:1088
 #, kde-format
 msgid "Select to Beginning of Document"
 msgstr "Pažymėti iki dokumento pradžios"
 
-#: view/kateview.cpp:1087
+#: view/kateview.cpp:1094
 #, kde-format
 msgid "Move to End of Line"
 msgstr "Pereiti į eilutės galą"
 
-#: view/kateview.cpp:1093
+#: view/kateview.cpp:1100
 #, kde-format
 msgid "Move to End of Document"
 msgstr "Pereiti į dokumento galą"
 
-#: view/kateview.cpp:1099
+#: view/kateview.cpp:1106
 #, kde-format
 msgid "Select to End of Line"
 msgstr "Pažymėti iki eilutės galo"
 
-#: view/kateview.cpp:1105
+#: view/kateview.cpp:1112
 #, kde-format
 msgid "Select to End of Document"
 msgstr "Pažymėti iki dokumento galo"
 
-#: view/kateview.cpp:1111
+#: view/kateview.cpp:1118
 #, kde-format
 msgid "Select to Previous Line"
 msgstr "Pažymėti ankstesnę eilutę"
 
-#: view/kateview.cpp:1117
+#: view/kateview.cpp:1124
 #, kde-format
 msgid "Scroll Line Up"
 msgstr "Paslinkti eilute aukštyn"
 
-#: view/kateview.cpp:1123
+#: view/kateview.cpp:1130
 #, kde-format
 msgid "Move to Next Line"
 msgstr "Pereiti prie kitos eilutės"
 
-#: view/kateview.cpp:1129
+#: view/kateview.cpp:1136
 #, kde-format
 msgid "Move to Previous Line"
 msgstr "Eiti prie ankstesnės eilutės"
 
-#: view/kateview.cpp:1135
+#: view/kateview.cpp:1142
 #, kde-format
 msgid "Move Cursor Right"
 msgstr "Perkelti žymeklį vienu simboliu dešinėn"
 
-#: view/kateview.cpp:1141
+#: view/kateview.cpp:1148
 #, kde-format
 msgid "Move Cursor Left"
 msgstr "Perkelti žymeklį vienu simboliu kairėn"
 
-#: view/kateview.cpp:1147
+#: view/kateview.cpp:1154
 #, kde-format
 msgid "Select to Next Line"
 msgstr "Pažymėti iki kitos eilutės"
 
-#: view/kateview.cpp:1153
+#: view/kateview.cpp:1160
 #, kde-format
 msgid "Scroll Line Down"
 msgstr "Paslinkti eilute žemyn"
 
-#: view/kateview.cpp:1159
+#: view/kateview.cpp:1166
 #, kde-format
 msgid "Scroll Page Up"
 msgstr "Paslinkti puslapiu atgal"
 
-#: view/kateview.cpp:1165
+#: view/kateview.cpp:1172
 #, kde-format
 msgid "Select Page Up"
 msgstr "Pažymėti puslapį į priekį"
 
-#: view/kateview.cpp:1171
+#: view/kateview.cpp:1178
 #, kde-format
 msgid "Move to Top of View"
 msgstr "Pereiti į vaizdo viršų"
 
-#: view/kateview.cpp:1177
+#: view/kateview.cpp:1184
 #, kde-format
 msgid "Select to Top of View"
 msgstr "Pažymėti iki vaizdo viršaus"
 
-#: view/kateview.cpp:1183
+#: view/kateview.cpp:1190
 #, kde-format
 msgid "Scroll Page Down"
 msgstr "Paslinkti puslapiu toliau"
 
-#: view/kateview.cpp:1189
+#: view/kateview.cpp:1196
 #, kde-format
 msgid "Select Page Down"
 msgstr "Pažymėti puslapį pirmyn"
 
-#: view/kateview.cpp:1195
+#: view/kateview.cpp:1202
 #, kde-format
 msgid "Move to Bottom of View"
 msgstr "Pereiti į vaizdo apačią"
 
-#: view/kateview.cpp:1201
+#: view/kateview.cpp:1208
 #, kde-format
 msgid "Select to Bottom of View"
 msgstr "Pažymėti iki vaizdo apačios"
 
-#: view/kateview.cpp:1207
+#: view/kateview.cpp:1214
 #, fuzzy, kde-format
 #| msgid "Move to Matching Bracket"
 msgid "Go to Matching Bracket"
 msgstr "Peršokti prie uždarančio ar atidarančio skliaustelio"
 
-#: view/kateview.cpp:1213
+#: view/kateview.cpp:1220
 #, kde-format
 msgid "Select to Matching Bracket"
 msgstr "Pažymėti iki atitinkančio skliaustelio"
 
-#: view/kateview.cpp:1221
+#: view/kateview.cpp:1228
 #, kde-format
 msgid "Transpose Characters"
 msgstr "Sukeisti simbolius"
 
-#: view/kateview.cpp:1226
+#: view/kateview.cpp:1233
 #, fuzzy, kde-format
 #| msgid "Transpose Characters"
 msgid "Transpose Words"
 msgstr "Sukeisti simbolius"
 
-#: view/kateview.cpp:1231
+#: view/kateview.cpp:1238
 #, kde-format
 msgid "Delete Line"
 msgstr "Trinti eilutę"
 
-#: view/kateview.cpp:1237
+#: view/kateview.cpp:1244
 #, kde-format
 msgid "Delete Word Left"
 msgstr "Trinti žodį kairėje"
 
-#: view/kateview.cpp:1243
+#: view/kateview.cpp:1250
 #, kde-format
 msgid "Delete Word Right"
 msgstr "Trinti žodį dešinėje"
 
-#: view/kateview.cpp:1249
+#: view/kateview.cpp:1256
 #, kde-format
 msgid "Delete Next Character"
 msgstr "Trinti kitą simbolį"
 
-#: view/kateview.cpp:1255
+#: view/kateview.cpp:1262
 #, kde-format
 msgid "Backspace"
 msgstr "Trinti atgal"
 
-#: view/kateview.cpp:1263
+#: view/kateview.cpp:1270
 #, fuzzy, kde-format
 #| msgid "Insert Tab"
 msgid "Insert Tab Character"
 msgstr "Įterpti tabuliatorių"
 
-#: view/kateview.cpp:1268
+#: view/kateview.cpp:1275
 #, kde-format
 msgid "Insert Smart Newline"
 msgstr "Įterpti protingą naują eilutę"
 
-#: view/kateview.cpp:1269
+#: view/kateview.cpp:1276
 #, kde-format
 msgid ""
 "Insert newline including leading characters of the current line which are "
@@ -7838,46 +7856,46 @@ msgstr ""
 "Įterpti naują eilutę įskaitant pradžioje esančius simbolius (ne raides ir ne "
 "skaičius), tokius pačius, kaip ir dabartinėje eilutėje."
 
-#: view/kateview.cpp:1277
+#: view/kateview.cpp:1284
 #, fuzzy, kde-format
 #| msgid "Insert Smart Newline"
 msgid "Insert a Non-Indented Newline"
 msgstr "Įterpti protingą naują eilutę"
 
-#: view/kateview.cpp:1278
+#: view/kateview.cpp:1285
 #, kde-format
 msgid ""
 "Insert a new line without indentation, regardless of indentation settings."
 msgstr ""
 
-#: view/kateview.cpp:1286
+#: view/kateview.cpp:1293
 #, kde-format
 msgid "Insert a Newline Above Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1287
+#: view/kateview.cpp:1294
 #, kde-format
 msgid ""
 "Insert a new line above current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1295
+#: view/kateview.cpp:1302
 #, kde-format
 msgid "Insert a Newline Below Current Line"
 msgstr ""
 
-#: view/kateview.cpp:1296
+#: view/kateview.cpp:1303
 #, kde-format
 msgid ""
 "Insert a new line below current line without modifying the current line."
 msgstr ""
 
-#: view/kateview.cpp:1305
+#: view/kateview.cpp:1312
 #, kde-format
 msgid "&Indent"
 msgstr "&Įtrauka"
 
-#: view/kateview.cpp:1307
+#: view/kateview.cpp:1314
 #, kde-format
 msgid ""
 "Use this to indent a selected block of text.<br /><br />You can configure "
@@ -7888,97 +7906,97 @@ msgstr ""
 ">Konfigūracijos dialoge Jūs galite nustatyti, ar tabuliacijos simboliai turi "
 "būti paliekami, ar pakeičiami tarpais."
 
-#: view/kateview.cpp:1314
+#: view/kateview.cpp:1321
 #, kde-format
 msgid "&Unindent"
 msgstr "Panaikinti &įtrauką"
 
-#: view/kateview.cpp:1315
+#: view/kateview.cpp:1322
 #, kde-format
 msgid "Use this to unindent a selected block of text."
 msgstr "Naudokite tai pažymėto teksto ruožo įtraukai pašalinti."
 
-#: view/kateview.cpp:1333
+#: view/kateview.cpp:1340
 #, kde-format
 msgid "Fold Toplevel Nodes"
 msgstr "Suskleisti aukščiausio lygmens mazgus"
 
-#: view/kateview.cpp:1337
+#: view/kateview.cpp:1344
 #, fuzzy, kde-format
 #| msgid "Fold Toplevel Nodes"
 msgid "Unfold Toplevel Nodes"
 msgstr "Suskleisti aukščiausio lygmens mazgus"
 
-#: view/kateview.cpp:1341
+#: view/kateview.cpp:1348
 #, fuzzy, kde-format
 #| msgid "Fold Current Node"
 msgid "Toggle Current Node"
 msgstr "Suskleisti dabartinį mazgą"
 
-#: view/kateview.cpp:1345
+#: view/kateview.cpp:1352
 #, fuzzy, kde-format
 #| msgid "Toggle Comment"
 msgid "Toggle Contained Nodes"
 msgstr "Perjungti komentarą"
 
-#: view/kateview.cpp:1354
+#: view/kateview.cpp:1361
 #, fuzzy, kde-format
 #| msgid "Select the entire text of the current document."
 msgid "Say current selection or document"
 msgstr "Pažymėkite visą esamo dokumento tekstą."
 
-#: view/kateview.cpp:1364
+#: view/kateview.cpp:1371
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Stop current output"
 msgstr "Įrašyti esamą dokumentą"
 
-#: view/kateview.cpp:1370
+#: view/kateview.cpp:1377
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Pause current output"
 msgstr "Įrašyti esamą dokumentą"
 
-#: view/kateview.cpp:1376
+#: view/kateview.cpp:1383
 #, fuzzy, kde-format
 #| msgid "Save the current document"
 msgid "Resume current output"
 msgstr "Įrašyti esamą dokumentą"
 
-#: view/kateview.cpp:1547
+#: view/kateview.cpp:1554
 #, fuzzy, kde-format
 #| msgid "%1 (R/O)"
 msgid "(R/O) %1"
 msgstr "%1 (R/O)"
 
-#: view/kateview.cpp:1735
+#: view/kateview.cpp:1742
 #, kde-format
 msgid "Camel case movement disabled"
 msgstr ""
 
-#: view/kateview.cpp:1737
+#: view/kateview.cpp:1744
 #, kde-format
 msgid "Camel case movement enabled"
 msgstr ""
 
-#: view/kateview.cpp:2262
+#: view/kateview.cpp:2279
 #, fuzzy, kde-format
 #| msgid "Search mode"
 msgid "Search wrapped"
 msgstr "Paieškos veiksena"
 
-#: view/kateview.cpp:3803
+#: view/kateview.cpp:3822
 #, fuzzy, kde-format
 #| msgid "&Align"
 msgid "Align On"
 msgstr "&Lygiuoti"
 
-#: view/kateview.cpp:3803
+#: view/kateview.cpp:3822
 #, kde-format
 msgid "Alignment pattern:"
 msgstr ""
 
-#: view/kateview.cpp:4877
+#: view/kateview.cpp:4896
 #, kde-format
 msgid "Export File as HTML"
 msgstr "Eksportuoti failą kaip HTML"
@@ -8735,11 +8753,6 @@ msgstr "Žymė nenustatyta: %1"
 #~| msgid "Highlighting for Ferite"
 #~ msgid "Highlight marker size:"
 #~ msgstr "Ferite paryškinimas"
-
-#, fuzzy
-#~| msgid "&Spaces"
-#~ msgid "Whitespaces"
-#~ msgstr "&Tarpus"
 
 #, fuzzy
 #~| msgid "&Highlight tabulators"
