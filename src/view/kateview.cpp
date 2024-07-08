@@ -766,7 +766,7 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->addAction(QStringLiteral("view_show_whitespaces"), a);
     a->setWhatsThis(
         i18n("If this option is checked, whitespaces in this document will be visible.<br /><br />"
-             "This is only a view option, meaning the document will not changed."));
+             "This is only a view option, meaning the document will not be changed."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleShowSpaces);
 
     a = m_toggleDynWrap = toggleAction = new KToggleAction(i18n("&Dynamic Word Wrap"), this);
@@ -774,7 +774,7 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->addAction(QStringLiteral("view_dynamic_word_wrap"), a);
     a->setWhatsThis(
         i18n("If this option is checked, the text lines will be wrapped at the view border on the screen.<br /><br />"
-             "This is only a view option, meaning the document will not changed."));
+             "This is only a view option, meaning the document will not be changed."));
     connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::toggleDynWordWrap);
 
     a = m_setDynWrapIndicators = new KSelectAction(i18n("Dynamic Word Wrap Indicators"), this);
