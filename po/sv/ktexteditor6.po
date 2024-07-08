@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:37+0000\n"
-"PO-Revision-Date: 2024-06-21 13:56+0200\n"
+"PO-Revision-Date: 2024-07-07 08:44+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -7034,24 +7034,19 @@ msgstr ""
 "befintlig text."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Blanktecken"
+msgstr "Visa blanktecken"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not changed."
 msgstr ""
-"Om det här alternativet markeras, bryts textrader vid fönstrets kant på "
-"skärmen.<br /><br />Det är bara ett visningsalternativ, vilket betyder att "
-"dokumentet inte ändras."
+"Om det här alternativet markeras, blir mellanslag i dokumentet synliga.<br /"
+"><br />Det är bara ett visningsalternativ, vilket betyder att dokumentet "
+"inte ändras."
 
 #: view/kateview.cpp:772
 #, kde-format

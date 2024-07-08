@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 13:43+0200\n"
+"PO-Revision-Date: 2024-07-07 16:03+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -7101,24 +7101,19 @@ msgstr ""
 "ingevoegd, of dat deze wordt overschreven."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Witruimten"
+msgstr "Witruimte tonen"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not changed."
 msgstr ""
-"Als u deze optie selecteert zullen de tekstregels worden afgebroken bij de "
-"weergaverand op het scherm.<br /><br />Dit is alleen een bekijkoptie, wat "
-"betekent dat het document niet zal wijzigen."
+"Als deze optie is geactiveerd zullen de witruimten zichtbaar zijn.<br /><br /"
+">Dit is alleen een bekijkoptie, wat betekent dat het document niet zal "
+"wijzigen."
 
 #: view/kateview.cpp:772
 #, kde-format

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 06:21+0200\n"
+"PO-Revision-Date: 2024-07-07 06:05+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -7029,24 +7029,19 @@ msgstr ""
 "obstoječega."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Non-whitespace"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Ne-presledni znaki"
+msgstr "Prikaži presledne znake"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not changed."
 msgstr ""
-"Če je omogočena ta možnost, se vrstice besedila prelomijo ob meji pogleda na "
-"zaslonu.<br /><br />To je možnost, ki vpliva samo na videz, vsebina "
-"dokumenta se ne bo spremenila."
+"Če je ta možnost potrjena, bodo v tem dokumentu vidni presledni znaki.<br /"
+"><br />To je samo možnost pogleda, kar pomeni, da sam dokument ne bo "
+"spremenjen."
 
 #: view/kateview.cpp:772
 #, kde-format

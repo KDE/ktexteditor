@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:37+0000\n"
-"PO-Revision-Date: 2024-07-02 18:32+0300\n"
+"PO-Revision-Date: 2024-07-07 07:48+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -6904,22 +6904,18 @@ msgid ""
 msgstr "נא לבחר אם הטקסט המוקלד יתווסף לטקסט הקיים או ייכתב עליו."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Whitespace"
-msgstr "&רווחים"
+msgstr "הצגת רווח"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not changed."
 msgstr ""
-"אם האפשרות הזאת מסומנת, שורות הטקסט תגלושנה בגבול התצוגה של המסך הזה.<br /"
-"><br />זאת אפשרות שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."
+"אם האפשרות הזאת מסומנת, רווחים במסמך הזה יהיו גלויים.<br /><br />זאת אפשרות "
+"שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."
 
 #: view/kateview.cpp:772
 #, kde-format

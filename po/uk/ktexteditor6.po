@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 09:13+0300\n"
+"PO-Revision-Date: 2024-07-07 08:40+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -7092,24 +7092,18 @@ msgstr ""
 "існуючий текст."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Пробіли"
+msgstr "Показувати пробіли"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not changed."
 msgstr ""
-"Якщо цей пункт буде позначено, рядки тексту будуть перенесені на межі "
-"перегляду на екрані.<br /><br />Це стосується лише перегляду, змін до самого "
-"документа внесено не буде."
+"Якщо цей пункт буде позначено, пробіли у документі буде показано.<br /><br /"
+">Це стосується лише перегляду, змін до самого документа внесено не буде."
 
 #: view/kateview.cpp:772
 #, kde-format

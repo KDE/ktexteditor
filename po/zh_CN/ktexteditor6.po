@@ -6776,21 +6776,16 @@ msgid ""
 msgstr "让您选择新输入的文字是插入到文档还是覆盖已有文字。"
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Non-whitespace"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "非空白"
+msgstr ""
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not changed."
-msgstr "如果选中此项，文本行将自动在屏幕视图边界处折到新的一行。"
+msgstr ""
 
 #: view/kateview.cpp:772
 #, kde-format
