@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2024-07-07 06:05+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -7034,10 +7034,14 @@ msgid "Show Whitespace"
 msgstr "Prikaži presledne znake"
 
 #: view/kateview.cpp:768
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "Če je ta možnost potrjena, bodo v tem dokumentu vidni presledni znaki.<br /"
 "><br />To je samo možnost pogleda, kar pomeni, da sam dokument ne bo "
@@ -7049,11 +7053,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dinamičen prelom vrstice"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "Če je omogočena ta možnost, se vrstice besedila prelomijo ob meji pogleda na "
 "zaslonu.<br /><br />To je možnost, ki vpliva samo na videz, vsebina "

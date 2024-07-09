@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde4libs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2009-04-25 21:46+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -6635,7 +6635,7 @@ msgstr "Emri hapësirës"
 #, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 
 #: view/kateview.cpp:772
@@ -6648,7 +6648,7 @@ msgstr ""
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 
 #: view/kateview.cpp:780

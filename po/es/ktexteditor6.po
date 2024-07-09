@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2024-07-07 12:11+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -7131,10 +7131,14 @@ msgid "Show Whitespace"
 msgstr "Mostrar espacios en blanco"
 
 #: view/kateview.cpp:768
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "Si marca esta opción, los espacios en blanco de este documento serán "
 "visibles.<br /><br />Se trata solo de una opción de visualización, lo que "
@@ -7146,11 +7150,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "Ajuste de línea &dinámico"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "Si selecciona esta opción, las líneas de texto se ajustarán al borde de la "
 "vista en la pantalla.<br /><br />Se trata solo de una opción de "

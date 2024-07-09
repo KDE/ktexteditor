@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2024-07-07 06:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -7013,10 +7013,14 @@ msgid "Show Whitespace"
 msgstr "ჰარეების ჩვენება"
 
 #: view/kateview.cpp:768
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "თუ ეს პარამეტრი ჩართულია, ამ დოკუმენტში თეთრი ჰარეები ხილული იქნება.<br /"
 "><br />ეს მხოლოდ დათვალიერების პარამეტრია, რაც ნიშნავს, რომ დოკუმენტი არ "
@@ -7028,11 +7032,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "სიტყვების &დინამიკური გადატანა"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "თუ ეს პარამეტრი ჩართულია, ეკრანის საზღვართან ტექსტური ხაზების გადატანა "
 "მოხდება.<br /><br />ეს მხოლოდ დათვალიერების პარამეტრია, რაც ნიშნავს, რომ "

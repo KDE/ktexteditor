@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2024-07-07 08:44+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -7039,10 +7039,14 @@ msgid "Show Whitespace"
 msgstr "Visa blanktecken"
 
 #: view/kateview.cpp:768
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "Om det här alternativet markeras, blir mellanslag i dokumentet synliga.<br /"
 "><br />Det är bara ett visningsalternativ, vilket betyder att dokumentet "
@@ -7054,11 +7058,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dynamisk radbrytning"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "Om det här alternativet markeras, bryts textrader vid fönstrets kant på "
 "skärmen.<br /><br />Det är bara ett visningsalternativ, vilket betyder att "

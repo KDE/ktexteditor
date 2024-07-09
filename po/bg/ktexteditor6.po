@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2024-07-07 22:31+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -7045,10 +7045,14 @@ msgid "Show Whitespace"
 msgstr "Показване на празни полета"
 
 #: view/kateview.cpp:768
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "Ако тази опция е избрана, белите полета в този документ ще бъдат видими <br /"
 "><br /> Това е само опция за изглед, което означава, че документът няма да "
@@ -7060,11 +7064,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Динамичен пренос на думи"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "Ако тази опция е избрана, текстовите редове ще бъдат пренесени на границата "
 "на изгледа. <br /><br /> Това е само опция за изглед, което означава, че "

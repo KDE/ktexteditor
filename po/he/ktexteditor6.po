@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor6\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
 "PO-Revision-Date: 2024-07-07 07:48+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -6909,10 +6909,14 @@ msgid "Show Whitespace"
 msgstr "הצגת רווח"
 
 #: view/kateview.cpp:768
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "אם האפשרות הזאת מסומנת, רווחים במסמך הזה יהיו גלויים.<br /><br />זאת אפשרות "
 "שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."
@@ -6923,11 +6927,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "גלישת שורות &דינמית"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "אם האפשרות הזאת מסומנת, שורות הטקסט תגלושנה בגבול התצוגה של המסך הזה.<br /"
 "><br />זאת אפשרות שקשורה בתצוגה בלבד, כלומר שהמסמך לא ישתנה."

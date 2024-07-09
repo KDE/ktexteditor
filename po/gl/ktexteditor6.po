@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:37+0000\n"
-"PO-Revision-Date: 2024-06-21 22:07+0200\n"
+"POT-Creation-Date: 2024-07-09 00:37+0000\n"
+"PO-Revision-Date: 2024-07-08 18:18+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7057,24 +7057,22 @@ msgstr ""
 "que o substitúa."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Espazos"
+msgstr "Amosar os espazos"
 
 #: view/kateview.cpp:768
 #, fuzzy, kde-format
 #| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#| "If this option is checked, whitespaces in this document will be visible."
+#| "<br /><br />This is only a view option, meaning the document will not "
+#| "changed."
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
-"><br />This is only a view option, meaning the document will not changed."
+"><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Se marca esta opción, as liñas de texto dividiranse na pantalla, á altura do "
-"bordo da vista.<br /><br />Isto é só unha opción de vista, o documento non "
-"se cambiará."
+"Se marca esta opción, os espazos do documento serán visíbeis.<br /><br /"
+">Isto é só unha opción de vista, o documento non se cambiará."
 
 #: view/kateview.cpp:772
 #, kde-format
@@ -7082,11 +7080,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "División &visual das liñas"
 
 #: view/kateview.cpp:776
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If this option is checked, the text lines will be wrapped at the view "
+#| "border on the screen.<br /><br />This is only a view option, meaning the "
+#| "document will not changed."
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 msgstr ""
 "Se marca esta opción, as liñas de texto dividiranse na pantalla, á altura do "
 "bordo da vista.<br /><br />Isto é só unha opción de vista, o documento non "
