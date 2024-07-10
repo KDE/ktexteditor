@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-07-07 16:03+0200\n"
+"PO-Revision-Date: 2024-07-09 12:38+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7106,18 +7106,14 @@ msgid "Show Whitespace"
 msgstr "Witruimte tonen"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, whitespaces in this document will be visible."
-#| "<br /><br />This is only a view option, meaning the document will not "
-#| "changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
 "Als deze optie is geactiveerd zullen de witruimten zichtbaar zijn.<br /><br /"
 ">Dit is alleen een bekijkoptie, wat betekent dat het document niet zal "
-"wijzigen."
+"worden gewijzigd."
 
 #: view/kateview.cpp:772
 #, kde-format
@@ -7125,11 +7121,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dynamische regelafbreking"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
@@ -7137,7 +7129,7 @@ msgid ""
 msgstr ""
 "Als u deze optie selecteert zullen de tekstregels worden afgebroken bij de "
 "weergaverand op het scherm.<br /><br />Dit is alleen een bekijkoptie, wat "
-"betekent dat het document niet zal wijzigen."
+"betekent dat het document niet zal worden gewijzigd."
 
 #: view/kateview.cpp:780
 #, kde-format

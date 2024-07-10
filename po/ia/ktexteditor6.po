@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 11:10+0200\n"
+"PO-Revision-Date: 2024-07-09 11:10+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -7094,24 +7094,19 @@ msgstr ""
 "super scriber le texto existente."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Spatios Blanc"
+msgstr "Monstra Spatios Blanc"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Si iste option es marcate, le linea de texto essera taliate al fin del vista "
-"sur le schermo<br/><br />Isto es solmente un option de vista, significante "
-"que le documento non essera modificate."
+"Si iste option es marcate, le spatios blanc in iste documento essera "
+"visibile<br/><br />Isto es solmente un option de vista, significante que le "
+"documento non essera modificate."
 
 #: view/kateview.cpp:772
 #, kde-format
@@ -7119,19 +7114,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "Excision &dynamic de parola"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"Si iste option es marcate, le linea de texto essera taliate al fin del vista "
-"sur le schermo<br/><br />Isto es solmente un option de vista, significante "
-"que le documento non essera modificate."
+"Si iste option es marcate, le linea de texto essera taliate al bordo del "
+"vista sur le schermo<br/><br />Isto es solmente un option de vista, "
+"significante que le documento non essera modificate."
 
 #: view/kateview.cpp:780
 #, kde-format

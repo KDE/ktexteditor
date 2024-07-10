@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-07-07 08:40+0300\n"
+"PO-Revision-Date: 2024-07-09 07:33+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -7097,11 +7097,7 @@ msgid "Show Whitespace"
 msgstr "Показувати пробіли"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, whitespaces in this document will be visible."
-#| "<br /><br />This is only a view option, meaning the document will not "
-#| "changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
@@ -7115,11 +7111,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Динамічне перенесення слів"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "

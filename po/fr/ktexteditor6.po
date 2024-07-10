@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-06-24 17:30+0200\n"
+"PO-Revision-Date: 2024-07-08 11:39+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -7408,10 +7408,9 @@ msgstr ""
 "écrase le texte existant."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Espaces"
+msgstr "Afficher les espaces"
 
 #: view/kateview.cpp:768
 #, fuzzy, kde-format

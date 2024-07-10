@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 16:29+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"PO-Revision-Date: 2024-07-09 16:18+0200\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -1109,7 +1109,7 @@ msgstr "Ctrl + Meta"
 #: dialogs/katedialogs.cpp:415
 #, kde-format
 msgid "Cmd"
-msgstr ""
+msgstr "Cmd"
 
 #: dialogs/katedialogs.cpp:417
 #, kde-format
@@ -6815,10 +6815,9 @@ msgstr ""
 "stávající text."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Show whitespace indicators:"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Zobrazit ukazatele mezer"
+msgstr ""
 
 #: view/kateview.cpp:768
 #, kde-format
@@ -6839,6 +6838,8 @@ msgid ""
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
+"Je-li zvolena tato volba, pak budou řádky textu zalamovány na hranici "
+"pohledu.<br /><br />Tato volba je pouze o prohlížení. Dokument nebude změněn."
 
 #: view/kateview.cpp:780
 #, kde-format
