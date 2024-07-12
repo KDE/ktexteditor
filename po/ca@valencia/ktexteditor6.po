@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 12:38+0200\n"
+"PO-Revision-Date: 2024-07-09 11:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -7107,24 +7107,19 @@ msgstr ""
 "text existent."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Non-whitespace"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "No espai en blanc"
+msgstr "Mostra els espais en blanc"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Si està marcada, les línies de text s'ajustaran a la vora de la vista en la "
-"pantalla.<br /><br />Açò només és una opció de visualització, i vol dir que "
-"el document no canviarà."
+"Si està marcada, els espais en blanc en este document seran visibles.<br /"
+"><br />Açò només és una opció de visualització, i vol dir que el document no "
+"es canviarà."
 
 #: view/kateview.cpp:772
 #, kde-format
@@ -7132,11 +7127,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "Ajust &dinàmic de les paraules"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
@@ -7144,7 +7135,7 @@ msgid ""
 msgstr ""
 "Si està marcada, les línies de text s'ajustaran a la vora de la vista en la "
 "pantalla.<br /><br />Açò només és una opció de visualització, i vol dir que "
-"el document no canviarà."
+"el document no es canviarà."
 
 #: view/kateview.cpp:780
 #, kde-format

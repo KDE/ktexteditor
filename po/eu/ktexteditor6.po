@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-01-25 17:50+0100\n"
+"PO-Revision-Date: 2024-07-11 12:46+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: completion/katecompletionmodel.cpp:144
@@ -277,10 +277,9 @@ msgstr "Nabarmendu aldatutako eta gorde gabeko lerroak"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "Kiribiltzeko-barrak"
+msgstr "Kiribiltzeko-barrak:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -1322,8 +1321,7 @@ msgid "Closes the file, discarding its content."
 msgstr "Fitxategia ixten du, edukia baztertuz."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
 msgstr "&Gorde honela..."
@@ -2542,9 +2540,7 @@ msgid "Modes && Filetypes"
 msgstr "Moduak eta fitxategi motak"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
 msgstr "Bilatu..."
@@ -3957,12 +3953,10 @@ msgid "Spell check canceled."
 msgstr "Ortografia-egiaztatzea utzi da."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Ortografia-egiaztatzea martxan da..."
+msgstr "Ortografia-azterketa egiten..."
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4194,11 +4188,10 @@ msgid "I&gnore All"
 msgstr "Ez ikusi e&gin denei"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "Ortografia egiaztatzen (kurtsoretik)..."
+msgstr "Ortografia (kurtsoretik)..."
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4320,29 +4313,25 @@ msgid "S&trikeout"
 msgstr "&Marratua"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
 msgstr "&Kolore arrunta..."
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
 msgstr "&Hautatutako kolorea..."
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
 msgstr "A&tzeko planoaren kolorea..."
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
 msgstr "&Hautatutako atzeko planoaren kolorea..."
@@ -4972,22 +4961,19 @@ msgid "&Theme:"
 msgstr "&Gaia:"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "Kopiatu"
+msgstr "&Kopiatu..."
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
 msgstr "Esportatu..."
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
 msgstr "Inportatu..."
@@ -6555,12 +6541,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "Koska/Tab: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "Bestelakoa"
+msgstr "Bestelakoa..."
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6630,15 +6614,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "Itsatsi aldez aurretik saguarekin hautatutako edukia"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "Trukaketa fitxategien aukerak"
+msgstr "Kopiatu fitxategien kokalekua"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "Kopiatu uneko fitxategiaren izena eta lerro-zenbakia"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6723,11 +6706,10 @@ msgstr ""
 "automatikoki koskatzeko."
 
 #: view/kateview.cpp:529
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "Lerrokatu hemen"
+msgstr "&Lerrokatu hemen..."
 
 #: view/kateview.cpp:531
 #, kde-format
@@ -6912,15 +6894,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Gorde uneko dokumentua diskoan, aukeratzen duzun izenarekin."
 
 #: view/kateview.cpp:661
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Gorde honela kodeketa honekin..."
 
 #: view/kateview.cpp:667
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "Gorde &kopia honela..."
@@ -6960,8 +6940,7 @@ msgid "Move downwards to the next modified line."
 msgstr "Mugitu beherantz aldatutako hurrengo lerrora."
 
 #: view/kateview.cpp:687
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
 msgstr "&Konfiguratu editorea..."
@@ -7079,23 +7058,18 @@ msgstr ""
 "testua gainidatzi dezan nahi duzun."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Zuriuneak"
+msgstr "Erakutsi zuriunea"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Markatua badago, testu-lerroak pantailako ikuspegiaren mugan itzulbiratuko "
-"dira.<br /><br />Hau ikus aukera bat baino ez da, beraz dokumentua ez da "
+"Aukera hau markatua badago, dokumentu honetako zuriuneak ikusgai egongo dira."
+"<br /><br />Hau ikus aukera bat baino ez da, beraz, dokumentua ez da "
 "aldatuko."
 
 #: view/kateview.cpp:772
@@ -7104,19 +7078,15 @@ msgid "&Dynamic Word Wrap"
 msgstr "Itzulbiratze &dinamikoa"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"Markatua badago, testu-lerroak pantailako ikuspegiaren mugan itzulbiratuko "
-"dira.<br /><br />Hau ikus aukera bat baino ez da, beraz dokumentua ez da "
-"aldatuko."
+"Aukera hau markatua badago, testu-lerroak pantailako ikuspegiaren mugan "
+"itzulbiratuko dira.<br /><br />Hau ikus aukera bat baino ez da, beraz, "
+"dokumentua ez da aldatuko."
 
 #: view/kateview.cpp:780
 #, kde-format
@@ -7462,11 +7432,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "Gaitu/desgaitu ortografiaren egiaztapen automatikoa"
 
 #: view/kateview.cpp:969
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "Aldatu hiztegia"
+msgstr "Aldatu hiztegia..."
 
 #: view/kateview.cpp:970
 #, kde-format
@@ -7501,8 +7470,7 @@ msgstr ""
 "kopiatzeko."
 
 #: view/kateview.cpp:987
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
 msgstr "E&sportatu HTML gisa..."
@@ -7976,11 +7944,10 @@ msgid "Copy"
 msgstr "Kopiatu"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "Hondoko kolorea..."
+msgstr "Atzeko planoaren kolorea..."
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -7993,8 +7960,7 @@ msgid "Show Window Decorations"
 msgstr "Erakutsi leiho-apaingarriak"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "Hartu hautapenaren pantaila-argazkia"
