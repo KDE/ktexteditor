@@ -17,10 +17,13 @@
 #include <QApplication>
 #include <QCommandLineOption>
 #include <QCommandLineParser>
+#include <QDirIterator>
 #include <QFile>
+#include <QFileInfo>
 #include <QJSEngine>
 #include <QStandardPaths>
 #include <QVarLengthArray>
+#include <QtEnvironmentVariables>
 #include <QtLogging>
 
 using namespace Qt::Literals::StringLiterals;
@@ -102,24 +105,37 @@ struct ScriptTesterQuery {
                                     .resultReplacement = u"\x1b[40;36m"_s,
                                 }};
 
-    ScriptTester::JSPaths paths{
+    ScriptTester::Paths paths{
         .scripts = {},
         .libraries = {u":/ktexteditor/script/libraries"_s},
         .files = {},
         .modules = {},
+        .indentBaseDir = {},
     };
 
     ScriptTester::TestExecutionConfig executionConfig;
 
+    ScriptTester::DiffCommand diff;
+
     QString preamble;
     QStringList argv;
 
+    struct Variable {
+        QString key;
+        QString value;
+    };
+
+    QList<Variable> variables;
+
     QStringList fileNames;
+
+    QByteArray xdgDataDirs;
 
     DualMode dualMode = DualMode::Dual;
 
     bool showPreamble = false;
     bool extendedDebug = false;
+    bool restoreXdgDataDirs = false;
     bool asText = false;
 };
 
@@ -221,6 +237,10 @@ QString toANSIColor(QStringView str, const QString &defaultColor, bool *ok)
             return result;
         }
 
+        /*
+         * Parse colors.
+         * TrueColor are replaced by empty QStringViews and pushed to the trueColors array.
+         */
         for (auto &color : colors) {
             // ansi code
             if (color[0] <= u'9' && color[0] >= u'0') {
@@ -309,6 +329,9 @@ QString toANSIColor(QStringView str, const QString &defaultColor, bool *ok)
             result.back() = u';';
         }
 
+        /*
+         * Concat colors to result
+         */
         auto const *trueColorIt = trueColors.constData();
         for (const auto &color : std::as_const(colors)) {
             if (!color.isEmpty()) {
@@ -320,6 +343,7 @@ QString toANSIColor(QStringView str, const QString &defaultColor, bool *ok)
             }
             result += u';';
         }
+
         result.back() = u'm';
     } else {
         result = defaultColor;
@@ -341,7 +365,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
     const auto translatedColors = tr("colors");
 
     parser.setApplicationDescription(tr("Command line utility for testing Kate's command scripts."));
-    parser.addPositionalArgument(tr("file.js"), tr("Test files to run"), tr("file.js..."));
+    parser.addPositionalArgument(tr("file.js"), tr("Test files to run. If file.js represents a folder, this is equivalent to `path/*.js`."), tr("file.js..."));
 
     parser.addOptions({
         // input
@@ -353,6 +377,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
         // @{
         {{u"e"_s, u"max-error"_s}, tr("Maximum number of tests that can fail before stopping.")},
         {u"q"_s, tr("Alias of --max-error=1.")},
+        {{u"E"_s, u"expected-failure-as-failure"_s}, tr("functions xcmd() and xtest() will always fail.")},
         // @}
 
         // paths
@@ -364,24 +389,31 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
         {{u"l"_s, u"library"_s}, tr("Adds a search folder for require() (KTextEditor JS API)."), translatedFolder},
         {{u"r"_s, u"file"_s}, tr("Adds a search folder for read() (KTextEditor JS API)."), translatedFolder},
         {{u"m"_s, u"module"_s}, tr("Adds a search folder for loadModule()."), translatedFolder},
+        {{u"I"_s, u"indent-data-test"_s}, tr("Set indentation base directory for indentFiles()."), translatedFolder},
         // @}
+
+        // diff command
+        //@{
+        {{u"D"_s, u"diff-path"_s}, tr("Path of diff command."), tr("path")},
+        {{u"A"_s, u"diff-arg"_s}, tr("Argument for diff command. Call this option several times to set multiple parameters."), translatedOption},
+        //@}
 
         // output format
         //@{
         {{u"d"_s, u"debug"_s},
          tr("Concerning the display of the debug() function. Can be used multiple times to change multiple options.\n"
-            "- location: displays the file and line number of the call (enabled by default).\n"
-            "- function: displays the name of the function that uses debug() (enabled by default).\n"
-            "- stacktrace: show the call stack after the debug message.\n"
-            "- flush: debug messages are normally buffered and only displayed in case of error. This option removes buffering., all and none.\n"
+            "- location: displays the file and line number of the call (enabled by default)\n"
+            "- function: displays the name of the function that uses debug() (enabled by default)\n"
+            "- stacktrace: show the call stack after the debug message\n"
+            "- flush: debug messages are normally buffered and only displayed in case of error. This option removes buffering\n"
             "- extended: debug() can take several parameters of various types such as Array or Object. This behavior is specific and should not be exploited "
-            "in final code.\n"
-            "- no-location: inverse of location.\n"
-            "- no-function: inverse of function.\n"
-            "- no-stacktrace: inverse of stacktrace.\n"
-            "- no-flush: inverse of flush.\n"
-            "- all: enable all.\n"
-            "- none: disable all."),
+            "in final code\n"
+            "- no-location: inverse of location\n"
+            "- no-function: inverse of function\n"
+            "- no-stacktrace: inverse of stacktrace\n"
+            "- no-flush: inverse of flush\n"
+            "- all: enable all\n"
+            "- none: disable all"),
          translatedOption},
         {{u"H"_s, u"hidden-name"_s}, tr("Do not display test names.")},
         {{u"p"_s, u"parade"_s}, tr("Displays all tests run or skipped. By default, only error tests are displayed.")},
@@ -394,13 +426,13 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
             "- placeholder: replaces new lines and tabs with placeholders specified by --newline and --tab\n"
             "- placeholder2: replaces tabs with the placeholder specified by --tab\n"),
          translatedOption},
-        {{u"F"_s, u"block-format"_s}, tr("same as --format, but with block selection text"), translatedOption},
+        {{u"F"_s, u"block-format"_s}, tr("Same as --format, but with block selection text."), translatedOption},
         //@}
 
         // filter
         //@{
-        {{u"k"_s, u"filter"_s}, tr("Only runs tests whose name matches a regular expression"), translatedPattern},
-        {u"K"_s, tr("Only runs tests whose name does not matches a regular expression"), translatedPattern},
+        {{u"k"_s, u"filter"_s}, tr("Only runs tests whose name matches a regular expression."), translatedPattern},
+        {u"K"_s, tr("Only runs tests whose name does not matches a regular expression."), translatedPattern},
         //@}
 
         // placeholders
@@ -410,7 +442,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
             "character replaced. --tab='->' with tabWith=4 gives '--->'."),
          translatedPlaceholder},
         {{u"N"_s, u"nl"_s, u"newline"_s}, tr("Character used to replace a new line in the test display with --format=placeholder."), translatedPlaceholder},
-        {{u"S"_s, u"symbols"_s},
+        {{u"P"_s, u"placeholders"_s},
          tr("Characters used to represent cursors or selections when the test does not specify any, or when the same character represents more than one thing. "
             "In order:\n"
             "- cursor\n"
@@ -420,7 +452,7 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
             "- secondary selection start\n"
             "- secondary selection end\n"
             "- virtual text"),
-         tr("placeholders")},
+         tr("symbols")},
         //@}
 
         // setup
@@ -445,6 +477,19 @@ void initCommandLineParser(QCoreApplication &app, QCommandLineParser &parser)
          tr("js-source")},
 
         {u"print-preamble"_s, tr("Show preamble.")},
+
+        {u"x"_s,
+         tr("To ensure that tests are not disrupted by system files, the XDG_DATA_DIRS environment variable is replaced by a non-existent folder.\n"
+            "Unfortunately, indentation files are not accessible with indentFiles(), nor are syntax files, according to the KSyntaxHighlighting compilation "
+            "method.\n"
+            "This option cancels the value replacement.")},
+
+        {u"X"_s, tr("force a value for XDG_DATA_DIRS and ignore -x."), tr("path")},
+
+        {{u"S"_s, u"set-variable"_s},
+         tr("Set document variables before running a test file. This is equivalent to `document.setVariable(key, value)` at the start of the file. Call this "
+            "option several times to set multiple parameters."),
+         tr("key=var")},
         //@}
 
         // color parameters
@@ -521,6 +566,7 @@ CommandLineParseResult parseCommandLine(QCommandLineParser &parser, ScriptTester
             return {Status::Error, u"--max-error: invalid number"_s};
         }
     }
+    query->executionConfig.xCheckAsFailure = parser.isSet(u"E"_s);
 
     if (parser.isSet(u"s"_s)) {
         auto addPath = [](QStringList &l, QString path) {
@@ -550,6 +596,7 @@ CommandLineParseResult parseCommandLine(QCommandLineParser &parser, ScriptTester
     setPaths(query->paths.libraries, u"l"_s);
     setPaths(query->paths.files, u"r"_s);
     setPaths(query->paths.modules, u"m"_s);
+    query->paths.indentBaseDir = parser.value(u"I"_s);
 
     if (parser.isSet(u"d"_s)) {
         const auto value = parser.value(u"d"_s);
@@ -659,8 +706,8 @@ CommandLineParseResult parseCommandLine(QCommandLineParser &parser, ScriptTester
         query->format.textReplacement.newLine = getChar(nl, 0, query->format.textReplacement.newLine);
     }
 
-    if (parser.isSet(u"S"_s)) {
-        const auto symbols = parser.value(u"S"_s);
+    if (parser.isSet(u"P"_s)) {
+        const auto symbols = parser.value(u"P"_s);
         auto &ph = query->format.fallbackPlaceholders;
         ph.cursor = getChar(symbols, 0, defaultFallbackPlaceholders.cursor);
         ph.selectionStart = getChar(symbols, 1, defaultFallbackPlaceholders.selectionStart);
@@ -701,7 +748,43 @@ CommandLineParseResult parseCommandLine(QCommandLineParser &parser, ScriptTester
 
     query->showPreamble = parser.isSet(u"print-preamble"_s);
 
-    if (parser.isSet(u"no-color"_s)) {
+    if (parser.isSet(u"X"_s)) {
+        query->xdgDataDirs = parser.value(u"X"_s).toUtf8();
+        query->restoreXdgDataDirs = true;
+    } else {
+        query->restoreXdgDataDirs = parser.isSet(u"x"_s);
+    }
+
+    if (parser.isSet(u"S"_s)) {
+        const auto variables = parser.values(u"S"_s);
+        query->variables.resize(variables.size());
+        auto it = query->variables.begin();
+        for (const auto &kv : variables) {
+            auto pos = QStringView(kv).indexOf(u'=');
+            if (pos >= 0) {
+                it->key = kv.sliced(0, pos);
+                it->value = kv.sliced(pos + 1);
+            } else {
+                it->key = kv;
+            }
+            ++it;
+        }
+    }
+
+    query->diff.path = parser.isSet(u"D"_s) ? parser.value(u"D"_s) : u"diff"_s;
+
+    const bool noColor = parser.isSet(u"no-color"_s);
+
+    if (parser.isSet(u"A"_s)) {
+        query->diff.args = parser.values(u"A"_s);
+    } else {
+        query->diff.args.push_back(u"-u"_s);
+        if (!noColor) {
+            query->diff.args.push_back(u"--color"_s);
+        }
+    }
+
+    if (noColor) {
         query->format.colors.reset.clear();
         query->format.colors.success.clear();
         query->format.colors.error.clear();
@@ -852,6 +935,15 @@ static void filterMessageOutput(QtMsgType type, const QMessageLogContext &contex
 
 int main(int ac, char **av)
 {
+    ScriptTesterQuery query;
+    query.xdgDataDirs = qgetenv("XDG_DATA_DIRS");
+
+    qputenv("QT_QPA_PLATFORM", "offscreen"); // equivalent to `-platform offscreen` in cli
+    // Set an unknown folder for XDG_DATA_DIRS so that KateScriptManager::collect()
+    // does not retrieve system scripts.
+    // If the variable is empty, QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation)
+    // returns /usr/local/share and /usr/share
+    qputenv("XDG_DATA_DIRS", "/XDG_DATA_DIRS_unknown_folder");
     QStandardPaths::setTestModeEnabled(true);
     originalHandler = qInstallMessageHandler(filterMessageOutput);
 
@@ -873,7 +965,6 @@ int main(int ac, char **av)
     initCommandLineParser(app, parser);
 
     using Status = CommandLineParseResult::Status;
-    ScriptTesterQuery query;
     CommandLineParseResult parseResult = parseCommandLine(parser, &query);
     switch (parseResult.statusCode) {
     case Status::Ok:
@@ -913,45 +1004,45 @@ Colors:
     auto jsInjectionStart1 =
         u"(function(env, argv){"
         u"const TestFramework = this.loadModule(':/ktexteditor/scripttester/testframework.js');"
-        u"var testFramework = new TestFramework.TestFramework(this, env);"_sv;
-    auto debugSetup = query.extendedDebug ? u"debug = testFramework.debug.bind(testFramework);"_sv : u""_sv;
+        u"const {REUSE_LAST_INPUT, REUSE_LAST_EXPECTED_OUTPUT} = TestFramework;"
+        u"const AS_INPUT = TestFramework.EXPECTED_OUTPUT_AS_INPUT;"
+        u"var {calleeWrapper, config, print, printSep, testCase, sequence, withInput, keys,"
+        u"     indentFiles, test, xtest, eqvTrue, eqvFalse, eqTrue, eqFalse, error, errorMsg,"
+        u"     errorType, hasError, eqv, is, eq, ne, lt, gt, le, ge, cmd, xcmd, type, xtype"
+        u"    } = TestFramework;"
+        u"var c = TestFramework.sanitizeTag;"
+        u"var lazyfn = (fn, ...args) => new TestFramework.LazyFunc(fn, ...args);"
+        u"var fn = lazyfn;"
+        u"var lazyarg = (arg) => new TestFramework.LazyArg(arg);"
+        u"var arg = lazyarg;"
+        u"var loadScript = this.loadScript;"
+        u"var loadModule = this.loadModule;"
+        u"var paste = (str) => this.paste(str);"
+        u"env.editor = TestFramework.editor;" // init editor
+        u"var document = calleeWrapper('document', env.document);"
+        u"var editor = calleeWrapper('editor', env.editor);"
+        u"var view = calleeWrapper('view', env.view);"
+        u""_sv;
+    auto debugSetup = query.extendedDebug ? u"debug = testFramework.debug;"_sv : u""_sv;
     // clang-format off
     auto dualModeSetup = query.dualMode == DualMode::Dual
             ? u"const DUAL_MODE = TestFramework.DUAL_MODE;"
               u"const ALWAYS_DUAL_MODE = TestFramework.ALWAYS_DUAL_MODE;"_sv
         : query.dualMode == DualMode::NoBlockSelection
             ? u"const DUAL_MODE = 0;"
-              u"const ALWAYS_DUAL_MODE = 0;"
-              u"testFramework.config({blockSelection: DUAL_MODE});"_sv
+              u"const ALWAYS_DUAL_MODE = 0;"_sv
         : query.dualMode == DualMode::BlockSelection
             ? u"const DUAL_MODE = 1;"
-              u"const ALWAYS_DUAL_MODE = 1;"
-              u"testFramework.config({blockSelection: DUAL_MODE});"_sv
+              u"const ALWAYS_DUAL_MODE = 1;"_sv
         : query.dualMode == DualMode::DualIsAlwaysDual
             ? u"const DUAL_MODE = TestFramework.ALWAYS_DUAL_MODE;"
-              u"const ALWAYS_DUAL_MODE = TestFramework.ALWAYS_DUAL_MODE;"
-              u"testFramework.config({blockSelection: DUAL_MODE});"_sv
+              u"const ALWAYS_DUAL_MODE = TestFramework.ALWAYS_DUAL_MODE;"_sv
         // : query.dualMode == DualMode::AlwaysDualIsDual
             : u"const DUAL_MODE = TestFramework.DUAL_MODE;"
-              u"const ALWAYS_DUAL_MODE = TestFramework.DUAL_MODE;"
-              u"testFramework.config({blockSelection: DUAL_MODE});"_sv;
+              u"const ALWAYS_DUAL_MODE = TestFramework.DUAL_MODE;"_sv;
     // clang-format on
     auto jsInjectionStart2 =
-        u""
-        u"const AS_INPUT = TestFramework.EXPECTED_OUTPUT_AS_INPUT;"
-        u"var loadScript = this.loadScript;"
-        u"var loadModule = this.loadModule;"
-        u"var calleeWrapper = TestFramework.calleeWrapper;"
-        u"var print = testFramework.print.bind(testFramework);"
-        u"var printSep = testFramework.printSep.bind(testFramework);"
-        u"var testCase = testFramework.testCase.bind(testFramework);"
-        u"var testCaseChain = testFramework.testCaseChain.bind(testFramework);"
-        u"var testCaseWithInput = testFramework.testCaseWithInput.bind(testFramework);"
-
-        u"env.editor = TestFramework.editor;"
-        u"var document = calleeWrapper('document', env.document);"
-        u"var editor = calleeWrapper('editor', env.editor);"
-        u"var view = calleeWrapper('view', env.view);"
+        u"var kbd = TestFramework.init(this, env, DUAL_MODE);"
         u"try { void function(){"_sv;
     auto jsInjectionEnd =
         u"\n}() }"
@@ -987,6 +1078,10 @@ Colors:
         return 0;
     }
 
+    if (query.restoreXdgDataDirs) {
+        qputenv("XDG_DATA_DIRS", query.xdgDataDirs);
+    }
+
     /*
      * KTextEditor objects
      */
@@ -1008,7 +1103,7 @@ Colors:
 
     QFile output;
     output.open(stderr, QIODevice::WriteOnly);
-    ScriptTester scriptTester(&output, query.format, query.paths, query.executionConfig, defaultPlaceholder, &engine, &doc, &view);
+    ScriptTester scriptTester(&output, query.format, query.paths, query.executionConfig, query.diff, defaultPlaceholder, &engine, &doc, &view);
 
     /*
      * JS API
@@ -1049,12 +1144,22 @@ Colors:
         jsArgv.setProperty(i, QJSValue(query.argv.constData()[i]));
     }
 
-    qsizetype delayInMs = 0;
     const auto &colors = query.format.colors;
 
-    auto run = [&](const QString &fileName, const QString &source) {
+    qsizetype delayInMs = 0;
+    bool resetConfig = false;
+    auto runProgram = [&](const QString &fileName, const QString &source) {
         auto result = engine.evaluate(makeProgram(source), fileName, 0);
         if (!result.isError()) {
+            if (resetConfig) {
+                scriptTester.resetConfig();
+            }
+            resetConfig = true;
+
+            for (const auto &variable : std::as_const(query.variables)) {
+                doc.setVariable(variable.key, variable.value);
+            }
+
             const auto start = timeNowInMs();
             result = result.callWithInstance(functions, {globalObject, jsArgv});
             delayInMs += timeNowInMs() - start;
@@ -1069,34 +1174,39 @@ Colors:
         scriptTester.stream().flush();
     };
 
+    QFile file;
+    auto runJsFile = [&](const QString &fileName) {
+        file.setFileName(fileName);
+        bool ok = file.open(QIODevice::ReadOnly | QIODevice::Text);
+        const QString content = ok ? QTextStream(&file).readAll() : QString();
+        ok = (ok && file.error() == QFileDevice::NoError);
+        if (!ok) {
+            scriptTester.incrementError();
+            scriptTester.stream() << colors.fileName << fileName << colors.reset << ": "_L1 << colors.error << file.errorString() << colors.reset << u'\n';
+            scriptTester.stream().flush();
+        }
+        file.close();
+        file.unsetError();
+        if (ok) {
+            runProgram(fileName, content);
+        }
+    };
+
     /*
      * Read file and run
      */
 
-    QFile file;
     const auto &fileNames = query.fileNames;
     for (const auto &fileName : fileNames) {
         if (query.asText) {
-            run(u"file%1.js"_s.arg(&fileName - fileNames.data() + 1), fileName);
+            runProgram(u"file%1.js"_s.arg(&fileName - fileNames.data() + 1), fileName);
+        } else if (!QFileInfo(fileName).isDir()) {
+            runJsFile(fileName);
         } else {
-            file.setFileName(fileName);
-            bool ok = file.open(QIODevice::ReadOnly | QIODevice::Text);
-            const QString content = ok ? QTextStream(&file).readAll() : QString();
-            ok = (ok && file.error() == QFileDevice::NoError);
-            if (!ok) {
-                scriptTester.incrementError();
-                scriptTester.stream() << colors.fileName << fileName << colors.reset << ": "_L1 << colors.error << file.errorString() << colors.reset << u'\n';
-                scriptTester.stream().flush();
+            QDirIterator it(fileName, {u"*.js"_s}, QDir::Files);
+            while (it.hasNext() && !scriptTester.hasTooManyErrors()) {
+                runJsFile(it.next());
             }
-            file.close();
-            file.unsetError();
-            if (ok) {
-                run(fileName, content);
-            }
-        }
-
-        if (&fileName != fileNames.constData() + fileNames.size() - 1) {
-            scriptTester.resetConfig();
         }
 
         if (scriptTester.hasTooManyErrors()) {
@@ -1112,7 +1222,7 @@ Colors:
         scriptTester.stream() << colors.error << "Too many error"_L1 << colors.reset << u'\n';
     }
 
-    scriptTester.writeAndResetCounters();
+    scriptTester.writeSummary();
     scriptTester.stream() << "  Duration: "_L1 << delayInMs << "ms\n"_L1;
     scriptTester.stream().flush();
 

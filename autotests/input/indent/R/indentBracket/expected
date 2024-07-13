@@ -1,3 +1,0 @@
-plot(y ~ x,
-     data = data)
-somevariable

@@ -12,10 +12,13 @@
 
 #include <algorithm>
 
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QJSEngine>
 #include <QLatin1StringView>
+#include <QProcess>
+#include <QStandardPaths>
 #include <QVarLengthArray>
 
 namespace KTextEditor
@@ -232,6 +235,8 @@ static qsizetype filePrefixLen(QStringView str)
         return 7;
     } else if (str.startsWith("file:"_L1)) {
         return 5;
+    } else if (str.startsWith("qrc:"_L1)) {
+        return 3;
     }
     return 0;
 }
@@ -363,7 +368,9 @@ static inline bool selectionSameAsSecondary(const ScriptTester::Placeholders &pl
     return selectionStartSameAsSecondary(placeholders) || selectionEndSameAsSecondary(placeholders);
 }
 
-static ScriptTester::EditorConfig makeEditorConfig()
+} // anonymous namespace
+
+ScriptTester::EditorConfig ScriptTester::makeEditorConfig()
 {
     return {
         .syntax = u"None"_s,
@@ -371,12 +378,11 @@ static ScriptTester::EditorConfig makeEditorConfig()
         .indentationWidth = 4,
         .tabWidth = 4,
         .replaceTabs = false,
-        .overrideMode = false,
-        .indentPastedTest = false,
+        .autoBrackets = false,
+        .updated = false,
+        .inherited = false,
     };
 }
-
-} // anonymous namespace
 
 /**
  * Represents a textual (new line, etc.) or non-textual (cursor, etc.) element
@@ -435,9 +441,17 @@ struct ScriptTester::TextItem {
         SecondarySelectionEnd,
         VirtualBlockSelectionEnd,
         BlockSelectionEnd,
+
+        EmptySelectionStart,
+        EmptySecondarySelectionStart,
+
         Cursor,
         VirtualBlockCursor,
         SecondaryCursor,
+
+        EmptySelectionEnd,
+        EmptySecondarySelectionEnd,
+
         SelectionStart,
         SecondarySelectionStart,
         VirtualBlockSelectionStart,
@@ -467,6 +481,11 @@ struct ScriptTester::TextItem {
         return kind >= StartCharacterElement;
     }
 
+    bool isCursor() const
+    {
+        return kind == Cursor || kind == SecondaryCursor;
+    }
+
     bool isSelectionStart() const
     {
         return kind == SelectionStart || kind == SecondarySelectionStart;
@@ -490,6 +509,33 @@ struct ScriptTester::TextItem {
         case VirtualBlockSelectionStart:
         case BlockSelectionStart:
             return hasVirtualBlockSelection;
+        default:
+            return false;
+        }
+    }
+
+    bool isBlockSelectionOrVirtual() const
+    {
+        switch (kind) {
+        case VirtualBlockSelectionEnd:
+        case BlockSelectionEnd:
+        case VirtualBlockCursor:
+        case VirtualBlockSelectionStart:
+        case BlockSelectionStart:
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    bool isEmptySelection() const
+    {
+        switch (kind) {
+        case EmptySelectionEnd:
+        case EmptySecondarySelectionEnd:
+        case EmptySelectionStart:
+        case EmptySecondarySelectionStart:
+            return true;
         default:
             return false;
         }
@@ -541,11 +587,19 @@ std::size_t ScriptTester::DocumentText::addSelectionItems(QStringView str, int k
             break;
         }
 
-        items.push_back({pos, TextItem::Kind(kind)});
-        constexpr int offset = -7;
-        static_assert(TextItem::SelectionStart + offset == TextItem::SelectionEnd);
-        static_assert(TextItem::SecondarySelectionStart + offset == TextItem::SecondarySelectionEnd);
-        items.push_back({pos2, TextItem::Kind(kind + offset)});
+        constexpr int offsetEnd = TextItem::SelectionEnd - TextItem::SelectionStart;
+        static_assert(TextItem::SecondarySelectionStart + offsetEnd == TextItem::SecondarySelectionEnd);
+
+        constexpr int offsetEmptyStart = TextItem::EmptySelectionStart - TextItem::SelectionStart;
+        static_assert(TextItem::SecondarySelectionStart + offsetEmptyStart == TextItem::EmptySecondarySelectionStart);
+
+        constexpr int offsetEmptyEnd = TextItem::EmptySelectionEnd - TextItem::SelectionStart;
+        static_assert(TextItem::SecondarySelectionStart + offsetEmptyEnd == TextItem::EmptySecondarySelectionEnd);
+
+        int offset1 = (pos + 1 == pos2) ? offsetEmptyStart : 0;
+        int offset2 = (pos + 1 == pos2) ? offsetEmptyEnd : offsetEnd;
+        items.push_back({pos, TextItem::Kind(kind + offset1)});
+        items.push_back({pos2, TextItem::Kind(kind + offset2)});
 
         pos = pos2 + 1;
     }
@@ -700,30 +754,32 @@ void ScriptTester::DocumentText::computeBlockSelectionItems()
  */
 void ScriptTester::DocumentText::insertFormattingItems(DocumentTextFormat format)
 {
-    if (hasFormattingItems) {
-        return;
-    }
-    hasFormattingItems = true;
-
     const auto nbItem = items.size();
 
-    computeBlockSelectionItems();
+    if (!hasFormattingItems) {
+        hasFormattingItems = true;
 
-    /*
-     * Insert text replacement items
-     */
-    switch (format) {
-    case DocumentTextFormat::Raw:
-        break;
-    case DocumentTextFormat::EscapeForDoubleQuote:
-        addItems(text, TextItem::Backslash, u'\\');
-        addItems(text, TextItem::DoubleQuote, u'"');
-        [[fallthrough]];
-    case DocumentTextFormat::ReplaceNewLineAndTabWithLiteral:
-    case DocumentTextFormat::ReplaceNewLineAndTabWithPlaceholder:
-    case DocumentTextFormat::ReplaceTabWithPlaceholder:
-        addItems(text, TextItem::Tab, u'\t');
-        break;
+        /*
+         * Insert text replacement items
+         */
+        switch (format) {
+        case DocumentTextFormat::Raw:
+            break;
+        case DocumentTextFormat::EscapeForDoubleQuote:
+            addItems(text, TextItem::Backslash, u'\\');
+            addItems(text, TextItem::DoubleQuote, u'"');
+            [[fallthrough]];
+        case DocumentTextFormat::ReplaceNewLineAndTabWithLiteral:
+        case DocumentTextFormat::ReplaceNewLineAndTabWithPlaceholder:
+        case DocumentTextFormat::ReplaceTabWithPlaceholder:
+            addItems(text, TextItem::Tab, u'\t');
+            break;
+        }
+    }
+
+    if (blockSelection && !hasBlockSelectionItems) {
+        hasBlockSelectionItems = true;
+        computeBlockSelectionItems();
     }
 
     if (nbItem != items.size()) {
@@ -767,6 +823,7 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
     secondaryCursors.clear();
     secondaryCursorsWithSelection.clear();
     hasFormattingItems = false;
+    hasBlockSelectionItems = false;
     totalCursor = 0;
     totalSelection = 0;
 
@@ -819,8 +876,11 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
             if (placeholders.hasSelection() && (!selectionStartSameAsSecondary(placeholders) || !selectionEndSameAsSecondary(placeholders))) {
                 return u"primary selection placeholder conflicts with secondary selection placeholder"_s;
             }
-            items[items.size() - totalSelection * 2 + 0].kind = TextItem::SelectionStart;
-            items[items.size() - totalSelection * 2 + 1].kind = TextItem::SelectionEnd;
+            auto &kind1 = items[items.size() - totalSelection * 2 + 0].kind;
+            auto &kind2 = items[items.size() - totalSelection * 2 + 1].kind;
+            bool isEmptySelection = kind1 == TextItem::EmptySecondarySelectionStart;
+            kind1 = isEmptySelection ? TextItem::EmptySelectionStart : TextItem::SelectionStart;
+            kind2 = isEmptySelection ? TextItem::EmptySelectionEnd : TextItem::SelectionEnd;
         }
     }
 
@@ -926,9 +986,11 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
             cursor = cursorFromCurrentItem();
             break;
         case TextItem::SelectionStart:
+        case TextItem::EmptySelectionStart:
             selectionStart = cursorFromCurrentItem();
             break;
         case TextItem::SelectionEnd:
+        case TextItem::EmptySelectionEnd:
             selectionEndItem = &item;
             selectionEnd = cursorFromCurrentItem();
             break;
@@ -936,9 +998,11 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
             secondaryCursors.push_back({cursorFromCurrentItem(), Range::invalid()});
             break;
         case TextItem::SecondarySelectionStart:
+        case TextItem::EmptySecondarySelectionStart:
             secondarySelectionStart = cursorFromCurrentItem();
             break;
         case TextItem::SecondarySelectionEnd:
+        case TextItem::EmptySecondarySelectionEnd:
             secondaryCursorsWithSelection.push_back({Cursor::invalid(), {secondarySelectionStart, cursorFromCurrentItem()}});
             break;
         // case TextItem::NewLine:
@@ -1000,7 +1064,7 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
                 lastSelectionPos = item.pos;
                 continue;
             }
-        } else if (item.kind == TextItem::Cursor) {
+        } else if (item.isCursor()) {
             if (countSelection & 1) {
                 return u"cursor inside a selection"_s;
             }
@@ -1009,10 +1073,14 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
             }
             lastCursorPos = item.pos;
             continue;
+        } else if (item.isEmptySelection()) {
+            if (!(countSelection & 1)) {
+                continue;
+            }
         } else {
             continue;
         }
-        return u"selection %1 is empty or overlaps"_s.arg(countSelection / 2 + 1);
+        return u"selection %1 is overlapped"_s.arg(countSelection / 2 + 1);
     }
 
     /*
@@ -1099,8 +1167,9 @@ QString ScriptTester::DocumentText::setText(QStringView input, const Placeholder
 
 ScriptTester::ScriptTester(QIODevice *output,
                            const Format &format,
-                           const JSPaths &paths,
+                           const Paths &paths,
                            const TestExecutionConfig &executionConfig,
+                           const DiffCommand &diffCmd,
                            Placeholders placeholders,
                            QJSEngine *engine,
                            DocumentPrivate *doc,
@@ -1118,13 +1187,12 @@ ScriptTester::ScriptTester(QIODevice *output,
     , m_format(format)
     , m_paths(paths)
     , m_executionConfig(executionConfig)
+    , m_diffCmd(diffCmd)
 {
     // starts a config without ever finishing it: no need to update anything
-    doc->config()->configStart();
-    view->config()->configStart();
-
-    view->config()->setValue(KateViewConfig::AutoBrackets, false);
-    // doc->config()->setIndentPastedText(false);
+    auto *docConfig = m_doc->config();
+    docConfig->configStart();
+    docConfig->setIndentPastedText(true);
 }
 
 QString ScriptTester::read(const QString &name)
@@ -1177,8 +1245,9 @@ void ScriptTester::require(const QString &name)
 
 void ScriptTester::debug(const QString &message)
 {
+    const auto requireStack = m_format.debugOptions.testAnyFlags(DebugOption::WriteStackTrace | DebugOption::WriteFunction);
     const auto err = m_format.debugOptions ? generateStack(m_engine) : QJSValue();
-    const auto stack = m_format.debugOptions.testAnyFlags(DebugOption::WriteStackTrace | DebugOption::WriteFunction) ? err.toString() : QString();
+    const auto stack = requireStack ? err.toString() : QString();
 
     /*
      * Display format:
@@ -1191,10 +1260,19 @@ void ScriptTester::debug(const QString &message)
 
     // add {fileName}:{lineNumber}:
     if (m_format.debugOptions.testAnyFlag(DebugOption::WriteLocation)) {
-        const auto fileName = err.property(u"fileName"_s).toString();
-        const auto lineNumber = err.property(u"lineNumber"_s).toString();
-        m_debugMsg += m_format.colors.fileName % skipFilePrefix(fileName) % m_format.colors.reset % u':' % m_format.colors.lineNumber % lineNumber
-            % m_format.colors.reset % m_format.colors.debugMsg % u": "_sv % m_format.colors.reset;
+        auto pushLocation = [this](QStringView fileName, QStringView lineNumber) {
+            m_debugMsg += m_format.colors.fileName % skipFilePrefix(fileName) % m_format.colors.reset % u':' % m_format.colors.lineNumber % lineNumber
+                % m_format.colors.reset % m_format.colors.debugMsg % u": "_sv % m_format.colors.reset;
+        };
+        const auto fileName = err.property(u"fileName"_s);
+        // qrc file has no fileName
+        if (fileName.isUndefined()) {
+            auto stack2 = requireStack ? stack : m_format.debugOptions ? err.toString() : generateStack(m_engine).toString();
+            auto stackLine = parseStackLine(stack);
+            pushLocation(stackLine.fileName, stackLine.lineNumber);
+        } else {
+            pushLocation(fileName.toString(), err.property(u"lineNumber"_s).toString());
+        }
     }
 
     // add {funcName}:
@@ -1310,8 +1388,8 @@ bool ScriptTester::startTestCase(const QString &name, int nthStack)
 
     const bool hasMatch = m_executionConfig.pattern.matchView(name).hasMatch();
     const bool exclude = m_executionConfig.patternType == PatternType::Exclude;
-    if (exclude == hasMatch) {
-        return false;
+    if (exclude != hasMatch) {
+        return true;
     }
 
     ++m_skipedCounter;
@@ -1335,18 +1413,25 @@ bool ScriptTester::startTestCase(const QString &name, int nthStack)
 
 void ScriptTester::setConfig(const QJSValue &config)
 {
+    bool updateConf = false;
+
 #define READ_CONFIG(fn, name)                                                                                                                                  \
     fn(config, u"" #name ""_s, [&](auto value) {                                                                                                               \
         m_editorConfig.name = std::move(value);                                                                                                                \
+        updateConf = true;                                                                                                                                     \
     })
     READ_CONFIG(readString, syntax);
     READ_CONFIG(readString, indentationMode);
     READ_CONFIG(readInt, indentationWidth);
     READ_CONFIG(readInt, tabWidth);
     READ_CONFIG(readBool, replaceTabs);
-    READ_CONFIG(readBool, overrideMode);
-    READ_CONFIG(readBool, indentPastedTest);
+    READ_CONFIG(readBool, autoBrackets);
 #undef READ_CONFIG
+
+    if (updateConf) {
+        m_editorConfig.updated = false;
+        m_editorConfig.inherited = m_configStack.empty();
+    }
 
 #define READ_PLACEHOLDER(name)                                                                                                                                 \
     readString(config, u"" #name ""_s, [&](QString s) {                                                                                                        \
@@ -1364,7 +1449,7 @@ void ScriptTester::setConfig(const QJSValue &config)
         readString(config, name, [&](QString s) {
             switch (s.size()) {
             case 0:
-                m_placeholders.*startMem = m_placeholders.*endMem = u'0';
+                m_placeholders.*startMem = m_placeholders.*endMem = u'\0';
                 break;
             case 1:
                 m_placeholders.*startMem = m_placeholders.*endMem = s[0];
@@ -1400,20 +1485,27 @@ void ScriptTester::resetConfig()
     m_fallbackPlaceholders = m_format.fallbackPlaceholders;
     m_placeholders = m_defaultPlaceholders;
     m_editorConfig = makeEditorConfig();
+    m_configStack.clear();
 }
 
-void ScriptTester::saveConfig()
+void ScriptTester::pushConfig()
 {
-    m_savedFallbackPlaceholders = m_fallbackPlaceholders;
-    m_savedPlaceholders = m_placeholders;
-    m_savedEditorConfig = m_editorConfig;
+    m_configStack.emplace_back(Config{m_fallbackPlaceholders, m_placeholders, m_editorConfig});
+    m_editorConfig.inherited = true;
 }
 
-void ScriptTester::restoreConfig()
+void ScriptTester::popConfig()
 {
-    m_fallbackPlaceholders = m_savedFallbackPlaceholders;
-    m_placeholders = m_savedPlaceholders;
-    m_editorConfig = m_savedEditorConfig;
+    if (m_configStack.empty()) {
+        return;
+    }
+    auto const &config = m_configStack.back();
+    m_fallbackPlaceholders = config.fallbackPlaceholders;
+    m_placeholders = config.placeholders;
+    const bool updated = m_editorConfig.updated && m_editorConfig.inherited;
+    m_editorConfig = config.editorConfig;
+    m_editorConfig.updated = updated;
+    m_configStack.pop_back();
 }
 
 QJSValue ScriptTester::evaluate(const QString &program)
@@ -1484,20 +1576,44 @@ bool ScriptTester::checkMultiCursorCompatibility(const DocumentText &doc, bool b
     return true;
 }
 
-void ScriptTester::initInputDoc()
+void ScriptTester::initDocConfig()
 {
-    auto *docConfig = m_doc->config();
-    docConfig->setIndentationMode(m_editorConfig.indentationMode);
-    docConfig->setIndentationWidth(m_editorConfig.indentationWidth);
-    docConfig->setTabWidth(m_editorConfig.tabWidth);
-    docConfig->setReplaceTabsDyn(m_editorConfig.replaceTabs);
-    docConfig->setOvr(m_editorConfig.overrideMode);
+    if (m_editorConfig.updated) {
+        return;
+    }
 
-    m_view->clearSecondaryCursors();
+    m_editorConfig.updated = true;
 
-    m_doc->setText(m_input.text);
+    m_view->config()->setValue(KateViewConfig::AutoBrackets, m_editorConfig.autoBrackets);
+
     m_doc->setHighlightingMode(m_editorConfig.syntax);
 
+    auto *docConfig = m_doc->config();
+    // docConfig->configStart();
+    docConfig->setIndentationMode(m_editorConfig.indentationMode);
+    docConfig->setIndentationWidth(m_editorConfig.indentationWidth);
+    docConfig->setReplaceTabsDyn(m_editorConfig.replaceTabs);
+    docConfig->setTabWidth(m_editorConfig.tabWidth);
+    // docConfig->configEnd();
+
+    syncIndenter();
+}
+
+void ScriptTester::syncIndenter()
+{
+    // faster to remove then put the view
+    m_doc->removeView(m_view);
+    m_doc->updateConfig(); // synchronize indenter
+    m_doc->addView(m_view);
+}
+
+void ScriptTester::initInputDoc()
+{
+    initDocConfig();
+
+    m_doc->setText(m_input.text);
+
+    m_view->clearSecondaryCursors();
     m_view->setBlockSelection(m_input.blockSelection);
     m_view->setSelection(m_input.selection);
     m_view->setCursorPosition(m_input.cursor);
@@ -1620,14 +1736,20 @@ bool ScriptTester::checkOutput()
         *it++ = {m_output.cursor, TextItem::Cursor};
     }
     if (m_output.selection.isValid()) {
-        *it++ = {m_output.selection.start(), TextItem::SelectionStart};
-        *it++ = {m_output.selection.end(), TextItem::SelectionEnd};
+        const bool isEmptySelection = m_output.selection.isEmpty();
+        const auto start = isEmptySelection ? TextItem::EmptySelectionStart : TextItem::SelectionStart;
+        const auto end = isEmptySelection ? TextItem::EmptySelectionEnd : TextItem::SelectionEnd;
+        *it++ = {m_output.selection.start(), start};
+        *it++ = {m_output.selection.end(), end};
     }
     for (const auto &c : m_output.secondaryCursors) {
         *it++ = {c.pos, TextItem::SecondaryCursor};
         if (c.range.start().line() != -1) {
-            *it++ = {c.range.start(), TextItem::SecondarySelectionStart};
-            *it++ = {c.range.end(), TextItem::SecondarySelectionEnd};
+            const bool isEmptySelection = c.range.isEmpty();
+            const auto start = isEmptySelection ? TextItem::EmptySecondarySelectionStart : TextItem::SecondarySelectionStart;
+            const auto end = isEmptySelection ? TextItem::EmptySecondarySelectionEnd : TextItem::SecondarySelectionEnd;
+            *it++ = {c.range.start(), start};
+            *it++ = {c.range.end(), end};
         }
     }
 
@@ -1650,6 +1772,7 @@ bool ScriptTester::checkOutput()
     QStringView output = m_output.text;
     m_output.items.clear();
     m_output.hasFormattingItems = false;
+    m_output.hasBlockSelectionItems = false;
 
     qsizetype line = 0;
     qsizetype pos = 0;
@@ -1675,11 +1798,20 @@ bool ScriptTester::checkOutput()
     return false;
 }
 
-bool ScriptTester::incrementCounter(bool isSuccessNotAFailure)
+bool ScriptTester::incrementCounter(bool isSuccessNotAFailure, bool xcheck)
 {
-    m_successCounter += isSuccessNotAFailure;
-    m_failureCounter += !isSuccessNotAFailure;
-    return isSuccessNotAFailure;
+    if (!xcheck) {
+        m_successCounter += isSuccessNotAFailure;
+        m_failureCounter += !isSuccessNotAFailure;
+        return isSuccessNotAFailure;
+    } else if (m_executionConfig.xCheckAsFailure) {
+        m_failureCounter++;
+        return false;
+    } else {
+        m_xSuccessCounter += !isSuccessNotAFailure;
+        m_xFailureCounter += isSuccessNotAFailure;
+        return !isSuccessNotAFailure;
+    }
 }
 
 void ScriptTester::incrementError()
@@ -1694,12 +1826,12 @@ void ScriptTester::incrementBreakOnError()
 
 int ScriptTester::countError() const
 {
-    return m_errorCounter + m_failureCounter;
+    return m_errorCounter + m_failureCounter + m_xFailureCounter;
 }
 
 bool ScriptTester::hasTooManyErrors() const
 {
-    return m_executionConfig.maxError > 0 && m_executionConfig.maxError >= countError();
+    return m_executionConfig.maxError > 0 && countError() >= m_executionConfig.maxError;
 }
 
 int ScriptTester::startTest()
@@ -1724,10 +1856,10 @@ void ScriptTester::endTest(bool ok, bool showBlockSelection)
     }
 
     if (showBlockSelection) {
-        m_stream << m_format.colors.reset << m_format.colors.blockSelectionInfo
-                 << (m_input.blockSelection ? " [blockSelection=1]"_L1 : " [blockSelection=0]"_L1);
+        m_stream << m_format.colors.blockSelectionInfo << (m_input.blockSelection ? " [blockSelection=1]"_L1 : " [blockSelection=0]"_L1)
+                 << m_format.colors.reset;
     }
-    m_stream << m_format.colors.reset << m_format.colors.success << " Ok\n"_L1 << m_format.colors.reset;
+    m_stream << m_format.colors.success << " Ok\n"_L1 << m_format.colors.reset;
 }
 
 void ScriptTester::writeTestExpression(const QString &name, const QString &type, int nthStack, const QString &program)
@@ -1743,6 +1875,8 @@ void ScriptTester::writeTestExpression(const QString &name, const QString &type,
     writeTestName(name);
     // ${type} `${program}`
     writeTypeAndProgram(type, program);
+
+    m_stream << m_format.colors.reset;
 
     if (m_format.debugOptions.testAnyFlag(DebugOption::ForceFlush)) {
         m_stream.flush();
@@ -1768,7 +1902,7 @@ void ScriptTester::writeTestName(const QString &name)
 void ScriptTester::writeTypeAndProgram(const QString &type, const QString &program)
 {
     m_stream << m_format.colors.error << type << " `"_L1 << m_format.colors.reset << m_format.colors.program << program << m_format.colors.reset
-             << m_format.colors.error << '`';
+             << m_format.colors.error << '`' << m_format.colors.reset;
 }
 
 void ScriptTester::writeTestResult(const QString &name,
@@ -1793,7 +1927,7 @@ void ScriptTester::writeTestResult(const QString &name,
     const bool alwaysWriteInputOutput = m_format.testFormatOptions.testAnyFlag(TestFormatOption::AlwaysWriteInputOutput);
 
     const bool outputDiffer = !(options & (outputIsOk | ignoreInputOutput));
-    const bool resultDiffer = options & (containsResultOrError | expectedNoErrorButError);
+    const bool resultDiffer = (options & expectedNoErrorButError) || ((options & containsResultOrError) && !(options & sameResultOrError));
 
     /*
      * format with optional testName and msg
@@ -1834,10 +1968,15 @@ void ScriptTester::writeTestResult(const QString &name,
     }
     // -- ${msg}
     if (!msg.isEmpty()) {
-        m_stream << " -- "_L1 << msg;
+        if (!alwaysWriteTest) {
+            m_stream << m_format.colors.error;
+        }
+        m_stream << " -- "_L1 << msg << m_format.colors.reset;
+    } else if (alwaysWriteTest) {
+        m_stream << m_format.colors.reset;
     }
     // ${blockSelectionMode}:
-    m_stream << m_format.colors.reset << m_format.colors.blockSelectionInfo;
+    m_stream << m_format.colors.blockSelectionInfo;
     if (m_output.blockSelection == m_expected.blockSelection && m_expected.blockSelection == m_input.blockSelection) {
         m_stream << (m_input.blockSelection ? " [blockSelection=1]"_L1 : " [blockSelection=0]"_L1);
     } else {
@@ -1943,10 +2082,8 @@ void ScriptTester::writeLocation(int nthStack)
  * Builds the map to convert \c TextItem::Kind to \c QStringView.
  */
 struct ScriptTester::Replacements {
-    const QStringView selectionStartPlaceholder;
-    const QStringView selectionEndPlaceholder;
-    const QStringView secondarySelectionStartPlaceholder;
-    const QStringView secondarySelectionEndPlaceholder;
+    const QChar selectionPlaceholders[2];
+    const QChar secondarySelectionPlaceholders[2];
     const QChar virtualTextPlaceholder;
 
     // index 0 = color; index 1 = replacement text
@@ -1956,31 +2093,36 @@ struct ScriptTester::Replacements {
     static constexpr int tabBufferLen = 16;
     QChar tabBuffer[tabBufferLen];
 
-#define GET_PLACEHOLDER(name, b) QStringView(placeholders.name != u'\0' && placeholders.name != u'\n' && b ? &placeholders.name : &fallbackPlaceholders.name, 1)
+#define GET_CH_PLACEHOLDER(name, b) (placeholders.name != u'\0' && placeholders.name != u'\n' && b ? placeholders.name : fallbackPlaceholders.name)
+#define GET_PLACEHOLDER(name, b) QStringView(&GET_CH_PLACEHOLDER(name, b), 1)
 
     Replacements(const Colors &colors, const Placeholders &placeholders, const Placeholders &fallbackPlaceholders)
-        : selectionStartPlaceholder(GET_PLACEHOLDER(selectionStart, true))
-        , selectionEndPlaceholder(GET_PLACEHOLDER(selectionEnd, true))
-        , secondarySelectionStartPlaceholder(GET_PLACEHOLDER(secondarySelectionStart, true))
-        , secondarySelectionEndPlaceholder(GET_PLACEHOLDER(secondarySelectionEnd, true))
+        : selectionPlaceholders{GET_CH_PLACEHOLDER(selectionStart, true), GET_CH_PLACEHOLDER(selectionEnd, true)}
+        , secondarySelectionPlaceholders{GET_CH_PLACEHOLDER(secondarySelectionStart, true), GET_CH_PLACEHOLDER(secondarySelectionEnd, true)}
         , virtualTextPlaceholder(GET_PLACEHOLDER(virtualText,
                                                  placeholders.virtualText != placeholders.cursor && placeholders.virtualText != placeholders.selectionStart
                                                      && placeholders.virtualText != placeholders.selectionEnd)[0])
     {
+        replacements[TextItem::EmptySelectionStart][0] = colors.selection;
+        replacements[TextItem::EmptySelectionStart][1] = selectionPlaceholders;
+        replacements[TextItem::EmptySecondarySelectionStart][0] = colors.secondarySelection;
+        replacements[TextItem::EmptySecondarySelectionStart][1] = secondarySelectionPlaceholders;
+        // ignore Empty(Secondary)SelectionEnd
+
         replacements[TextItem::SecondarySelectionStart][0] = colors.secondarySelection;
-        replacements[TextItem::SecondarySelectionStart][1] = secondarySelectionStartPlaceholder;
+        replacements[TextItem::SecondarySelectionStart][1] = {&secondarySelectionPlaceholders[0], 1};
         replacements[TextItem::SecondarySelectionEnd][0] = colors.secondarySelection;
-        replacements[TextItem::SecondarySelectionEnd][1] = secondarySelectionEndPlaceholder;
+        replacements[TextItem::SecondarySelectionEnd][1] = {&secondarySelectionPlaceholders[1], 1};
 
         replacements[TextItem::Cursor][0] = colors.cursor;
         replacements[TextItem::Cursor][1] =
-            GET_PLACEHOLDER(cursor, selectionStartPlaceholder != placeholders.cursor && selectionEndPlaceholder != placeholders.cursor);
+            GET_PLACEHOLDER(cursor, selectionPlaceholders[0] != placeholders.cursor && selectionPlaceholders[1] != placeholders.cursor);
 
         replacements[TextItem::SecondaryCursor][0] = colors.secondaryCursor;
         replacements[TextItem::SecondaryCursor][1] = GET_PLACEHOLDER(
             secondaryCursor,
-            selectionStartPlaceholder != placeholders.secondaryCursor && selectionEndPlaceholder != placeholders.secondaryCursor
-                && secondarySelectionStartPlaceholder != placeholders.secondaryCursor && secondarySelectionEndPlaceholder != placeholders.secondaryCursor);
+            selectionPlaceholders[0] != placeholders.secondaryCursor && selectionPlaceholders[1] != placeholders.secondaryCursor
+                && secondarySelectionPlaceholders[0] != placeholders.secondaryCursor && secondarySelectionPlaceholders[1] != placeholders.secondaryCursor);
 
         replacements[TextItem::SelectionStart][0] = colors.selection;
         replacements[TextItem::SelectionEnd][0] = colors.selection;
@@ -1992,6 +2134,7 @@ struct ScriptTester::Replacements {
         replacements[TextItem::VirtualBlockSelectionEnd][0] = colors.blockSelection;
     }
 
+#undef GET_CH_PLACEHOLDER
 #undef GET_PLACEHOLDER
 
     void initEscapeForDoubleQuote(const Colors &colors)
@@ -2038,24 +2181,24 @@ struct ScriptTester::Replacements {
     void initSelections(bool hasVirtualBlockSelection, bool reverseSelection)
     {
         if (hasVirtualBlockSelection && reverseSelection) {
-            replacements[TextItem::SelectionStart][1] = selectionEndPlaceholder;
-            replacements[TextItem::SelectionEnd][1] = selectionStartPlaceholder;
+            replacements[TextItem::SelectionStart][1] = {&selectionPlaceholders[1], 1};
+            replacements[TextItem::SelectionEnd][1] = {&selectionPlaceholders[0], 1};
 
-            replacements[TextItem::BlockSelectionStart][1] = selectionStartPlaceholder;
-            replacements[TextItem::BlockSelectionEnd][1] = selectionEndPlaceholder;
+            replacements[TextItem::BlockSelectionStart][1] = {&selectionPlaceholders[0], 1};
+            replacements[TextItem::BlockSelectionEnd][1] = {&selectionPlaceholders[1], 1};
         } else {
-            replacements[TextItem::SelectionStart][1] = selectionStartPlaceholder;
-            replacements[TextItem::SelectionEnd][1] = selectionEndPlaceholder;
+            replacements[TextItem::SelectionStart][1] = {&selectionPlaceholders[0], 1};
+            replacements[TextItem::SelectionEnd][1] = {&selectionPlaceholders[1], 1};
             if (hasVirtualBlockSelection) {
-                replacements[TextItem::BlockSelectionStart][1] = selectionEndPlaceholder;
-                replacements[TextItem::BlockSelectionEnd][1] = selectionStartPlaceholder;
+                replacements[TextItem::BlockSelectionStart][1] = {&selectionPlaceholders[1], 1};
+                replacements[TextItem::BlockSelectionEnd][1] = {&selectionPlaceholders[0], 1};
             }
         }
 
         if (hasVirtualBlockSelection) {
             replacements[TextItem::VirtualBlockCursor][1] = replacements[TextItem::Cursor][1];
-            replacements[TextItem::VirtualBlockSelectionStart][1] = selectionStartPlaceholder;
-            replacements[TextItem::VirtualBlockSelectionEnd][1] = selectionEndPlaceholder;
+            replacements[TextItem::VirtualBlockSelectionStart][1] = {&selectionPlaceholders[0], 1};
+            replacements[TextItem::VirtualBlockSelectionEnd][1] = {&selectionPlaceholders[1], 1};
         } else {
             replacements[TextItem::BlockSelectionStart][1] = QStringView();
             replacements[TextItem::BlockSelectionEnd][1] = QStringView();
@@ -2117,7 +2260,7 @@ void ScriptTester::writeDataTest(bool outputIsOk)
         for (const TextItem &item : docText.items) {
             // displays the text between 2 items
             if (textPos != item.pos) {
-                auto textFragment = docText.text.sliced(textPos, item.pos - textPos);
+                auto textFragment = QStringView(docText.text).sliced(textPos, item.pos - textPos);
                 m_stream << m_format.colors.result << inSelection << textFragment << m_format.colors.reset;
             }
 
@@ -2189,7 +2332,7 @@ void ScriptTester::writeDataTest(bool outputIsOk)
 
         // display the remaining text
         if (textPos != docText.text.size()) {
-            m_stream << m_format.colors.result << docText.text.sliced(textPos) << m_format.colors.reset;
+            m_stream << m_format.colors.result << QStringView(docText.text).sliced(textPos) << m_format.colors.reset;
         }
 
         m_stream << '\n';
@@ -2221,15 +2364,30 @@ void ScriptTester::writeDataTest(bool outputIsOk)
         auto differPos = computeOffsetDifference(m_output.text, m_expected.text);
         auto it1 = m_output.items.begin();
         auto it2 = m_expected.items.begin();
-        for (; it1 != m_output.items.end() && it2 != m_expected.items.end() && it1->pos == it2->pos && it1->kind == it2->kind
-             && it1->virtualTextLen == (m_expected.blockSelection ? it2->virtualTextLen : 0) && differPos > it1->pos;
-             ++it1, ++it2) {
+        while (it1 != m_output.items.end() && it2 != m_expected.items.end()) {
+            if (!m_output.blockSelection && it1->isBlockSelectionOrVirtual()) {
+                ++it1;
+                continue;
+            }
+            if (!m_expected.blockSelection && it2->isBlockSelectionOrVirtual()) {
+                ++it2;
+                continue;
+            }
+
+            if (differPos <= it1->pos || it1->pos != it2->pos || it1->kind != it2->kind
+                || it1->virtualTextLen != (m_expected.blockSelection ? it2->virtualTextLen : 0)) {
+                break;
+            };
+
             carretColumn += it1->virtualTextLen + replacements[it1->kind][1].size() - it1->isCharacter();
             if (alignNL && it1->kind == TextItem::NewLine) {
                 ++carretLine;
                 carretColumn = 0;
                 ignoredLen = it1->pos + 1;
             }
+
+            ++it1;
+            ++it2;
         }
         if (it1 != m_output.items.end() && it1->pos < differPos) {
             differPos = it1->pos;
@@ -2250,7 +2408,7 @@ void ScriptTester::writeDataTest(bool outputIsOk)
     }
 }
 
-void ScriptTester::writeAndResetCounters()
+void ScriptTester::writeSummary()
 {
     auto &colors = m_format.colors;
 
@@ -2273,11 +2431,310 @@ void ScriptTester::writeAndResetCounters()
         m_stream << "  Error: "_L1 << colors.error << m_errorCounter << colors.reset;
     }
 
+    if (m_xSuccessCounter || m_xFailureCounter) {
+        m_stream << "  Expected failure: "_L1 << m_xSuccessCounter;
+        if (m_xFailureCounter) {
+            m_stream << "  Unexpected success: "_L1 << colors.error << m_xFailureCounter << colors.reset;
+        }
+    }
+}
+
+void ScriptTester::resetCounters()
+{
     m_successCounter = 0;
     m_failureCounter = 0;
+    m_xSuccessCounter = 0;
+    m_xFailureCounter = 0;
     m_skipedCounter = 0;
     m_errorCounter = 0;
     m_breakOnErrorCounter = 0;
+}
+
+void ScriptTester::type(const QString &str)
+{
+    m_doc->typeChars(m_view, str);
+}
+
+void ScriptTester::enter()
+{
+    m_doc->newLine(m_view);
+}
+
+void ScriptTester::paste(const QString &str)
+{
+    m_doc->paste(m_view, str);
+}
+
+bool ScriptTester::testIndentFiles(const QString &name, const QString &dataDir, int nthStack, bool exitOnError)
+{
+    struct File {
+        QString path;
+        QString text;
+        bool ok = true;
+
+        File(const QString &path)
+            : path(path)
+        {
+            QFile file(path);
+            if (file.open(QFile::ReadOnly | QFile::Text)) {
+                text = QTextStream(&file).readAll();
+            } else {
+                ok = false;
+                text = file.errorString();
+            }
+        }
+    };
+
+    auto openError = [this](const QString &msg) {
+        incrementError();
+        m_engine->throwError(QJSValue::URIError, msg);
+        return false;
+    };
+
+    /*
+     * Check directory
+     */
+
+    const QString dirPath = QFileInfo(dataDir).isRelative() ? m_paths.indentBaseDir + u'/' + dataDir : dataDir;
+    const QDir testDir(dirPath);
+    if (!testDir.exists()) {
+        return openError(testDir.path() + u" does not exist"_sv);
+    }
+
+    /*
+     * Read variable from .kateconfig
+     */
+
+    QString variables;
+    if (QFile kateConfig(dirPath + u"/.kateconfig"_sv); kateConfig.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream stream(&kateConfig);
+        QString line;
+        while (stream.readLineInto(&line)) {
+            if (line.startsWith(u"kate:"_s) && line.size() > 7) {
+                variables += QStringView(line).sliced(5) + u';';
+            }
+        }
+    }
+    const auto variablesLen = variables.size();
+    bool hasVariable = variablesLen;
+
+    /*
+     * Indent each file in the folder
+     */
+
+    initDocConfig();
+
+    const auto type = u"indent"_s;
+    const auto program = u"view.align(document.documentRange())"_s;
+    bool result = true;
+    bool hasEntry = false;
+
+    const auto testList = testDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name);
+    for (const auto &info : testList) {
+        hasEntry = true;
+        m_debugMsg.clear();
+        m_hasDebugMessage = false;
+
+        const auto baseName = info.baseName();
+        const QString name2 = name + u':' + baseName;
+
+        if (!startTestCase(name2, nthStack)) {
+            continue;
+        }
+
+        auto writeTestName = [&] {
+            if (!m_format.testFormatOptions.testAnyFlag(TestFormatOption::HiddenTestName)) {
+                m_stream << m_format.colors.testName << name << m_format.colors.reset << ':' << m_format.colors.testName << baseName << m_format.colors.reset
+                         << ": "_L1;
+            }
+        };
+
+        const bool alwaysWriteTest = m_format.testFormatOptions.testAnyFlag(TestFormatOption::AlwaysWriteLocation);
+        if (alwaysWriteTest) {
+            writeLocation(nthStack);
+            writeTestName();
+            writeTypeAndProgram(type, program);
+
+            m_stream << m_format.colors.reset << ' ';
+
+            if (m_format.debugOptions.testAnyFlag(DebugOption::ForceFlush)) {
+                m_stream.flush();
+            }
+        }
+
+        /*
+         * Read input and expected output
+         */
+
+        const auto dir = info.absoluteFilePath();
+        const File inputFile(dir + u"/origin"_sv);
+        const File expectedFile(dir + u"/expected"_sv);
+        if (!inputFile.ok) {
+            return openError(inputFile.path + u": " + inputFile.text);
+        }
+        if (!expectedFile.ok) {
+            return openError(expectedFile.path + u": " + expectedFile.text);
+        }
+
+        /*
+         * Set input
+         */
+
+        // openUrl() blocks the program with the message, why ?
+        // This plugin does not support propagateSizeHints()
+        m_doc->setText(inputFile.text);
+
+        /*
+         * Read local variables
+         */
+        auto appendVars = [&](int i) {
+            const auto line = m_doc->line(i);
+            if (line.contains("kate"_L1)) {
+                variables += line + u';';
+            }
+        };
+        const auto lines = m_doc->lines();
+        for (int i = 0; i < qMin(9, lines); ++i) {
+            appendVars(i);
+        }
+        if (lines > 10) {
+            for (int i = qMax(10, lines - 10); i < lines; ++i) {
+                appendVars(i);
+            }
+        }
+
+        /*
+         * Set variables
+         */
+
+        if (!variables.isEmpty()) {
+            // setVariable() has no protection against multiple variable insertions
+            m_doc->setVariable(u""_s, variables);
+            syncIndenter();
+            variables.resize(variablesLen);
+            hasVariable = true;
+        }
+
+        /*
+         * Indent
+         */
+
+        const auto selection = m_doc->documentRange();
+        // TODO certain indenter like pascal requires that the lines be selection: this is probably an error
+        m_view->setSelection(selection);
+        m_doc->align(m_view, selection);
+
+        /*
+         * Compare and show result
+         */
+
+        const auto output = m_doc->text();
+        const bool ok = output == expectedFile.text;
+        const bool alwaysWriteInputOutput = m_format.testFormatOptions.testAnyFlag(TestFormatOption::AlwaysWriteInputOutput);
+
+        if (!alwaysWriteTest && (alwaysWriteInputOutput || !ok)) {
+            writeLocation(nthStack);
+            writeTestName();
+        }
+        if (!ok || alwaysWriteTest || alwaysWriteInputOutput) {
+            if (ok) {
+                m_stream << m_format.colors.success << "OK\n"_L1 << m_format.colors.reset;
+            } else {
+                m_stream << m_format.colors.error << "Output differs\n"_L1 << m_format.colors.reset;
+            }
+        }
+        if (!alwaysWriteTest && (alwaysWriteInputOutput || !ok)) {
+            writeTypeAndProgram(type, program);
+            m_stream << ": \n"_L1;
+        }
+        if (!ok || alwaysWriteInputOutput) {
+            m_stream << m_debugMsg;
+        }
+
+        if (ok) {
+            ++m_successCounter;
+        } else {
+            ++m_failureCounter;
+
+            const QString resultPath = dir + u"/actual"_sv;
+
+            /*
+             * Write result file
+             */
+            {
+                QFile outFile(resultPath);
+                if (!outFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    return openError(resultPath + u": "_sv + outFile.errorString());
+                }
+                QTextStream(&outFile) << output;
+            }
+
+            /*
+             * Elaborate diff output, if possible
+             */
+            if (!m_diffCmdLoaded) {
+                m_diffCmd.path = QStandardPaths::findExecutable(m_diffCmd.path);
+                m_diffCmdLoaded = true;
+            }
+            if (!m_diffCmd.path.isEmpty()) {
+                m_stream.flush();
+                QProcess proc;
+                proc.setProcessChannelMode(QProcess::ForwardedChannels);
+                m_diffCmd.args.push_back(expectedFile.path);
+                m_diffCmd.args.push_back(resultPath);
+                proc.start(m_diffCmd.path, m_diffCmd.args);
+                m_diffCmd.args.resize(m_diffCmd.args.size() - 2);
+                // disable timeout in case of diff with pager (as `delta` or `wdiff`)
+                if (!proc.waitForFinished(-1) || !proc.exitCode()) {
+                    incrementError();
+                    m_engine->throwError(u"diff command error"_s);
+                    return false;
+                }
+            }
+            /*
+             * else: trivial output of mismatching characters, e.g. for windows testing without diff
+             */
+            else {
+                qDebug() << "Trivial differences output as the 'diff' executable is not in the PATH";
+                m_stream << "--- "_L1 << expectedFile.path << "\n+++ " << resultPath << '\n';
+                const auto expectedLines = QStringView(expectedFile.text).split(u'\n');
+                const auto outputLines = QStringView(output).split(u'\n');
+                const auto minLine = qMin(expectedLines.size(), outputLines.size());
+                qsizetype i = 0;
+                for (; i < minLine; ++i) {
+                    if (expectedLines[i] == outputLines[i]) {
+                        m_stream << "  "_L1 << expectedLines[i] << '\n';
+                    } else {
+                        m_stream << "- "_L1 << expectedLines[i] << "\n+ "_L1 << outputLines[i] << '\n';
+                    }
+                }
+                if (expectedLines.size() != outputLines.size()) {
+                    const auto &lines = expectedLines.size() < outputLines.size() ? outputLines : expectedLines;
+                    const auto &prefix = expectedLines.size() < outputLines.size() ? "+ "_L1 : "- "_L1;
+                    const auto maxLine = lines.size();
+                    for (; i < maxLine; ++i) {
+                        m_stream << prefix << lines[i] << '\n';
+                    }
+                }
+            }
+
+            if (exitOnError || hasTooManyErrors()) {
+                return false;
+            }
+
+            result = false;
+        }
+    }
+
+    if (!hasEntry) {
+        incrementError();
+        m_engine->throwError(testDir.path() + u" is empty"_sv);
+        return false;
+    }
+
+    m_editorConfig.updated = !hasVariable;
+
+    return result;
 }
 
 } // namespace KTextEditor

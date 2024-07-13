@@ -1,6 +1,0 @@
-int main() {
-  puts("Hello!");
-  if (true) {
-    puts("World!");
-  }
-}

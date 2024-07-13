@@ -1,3 +1,0 @@
-if(true)
-  fork();
-printf("PID: %d\n", getpid());

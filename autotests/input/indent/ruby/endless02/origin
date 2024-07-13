@@ -1,5 +1,0 @@
-# endless02
-
-class Base
-  extend Dry::Initializer
-end

@@ -15,15 +15,19 @@ export const ALWAYS_DUAL_MODE = 3;
 /// the expected output is the same as the input value.
 export const EXPECTED_OUTPUT_AS_INPUT = Symbol('EXPECTED_OUTPUT_AS_INPUT');
 
+/// with \c TestCaseSequence.chain() and \c TestCaseSequence.withInput(),
+/// reuse the previous input.
+export const REUSE_LAST_INPUT = Symbol('REUSE_LAST_INPUT');
+
+/// with \c TestCaseSequence.chain() and \c TestCaseSequence.withInput(),
+/// use the previous expected output as input.
+export const REUSE_LAST_EXPECTED_OUTPUT = Symbol('REUSE_LAST_EXPECTED_OUTPUT');
+
 
 let clipboardHistory = [];
 
 function setClipboardHistory(newHistory) {
     clipboardHistory = newHistory.slice(0, 10);
-}
-
-function clearClipboardHistory(newHistory) {
-    clipboardHistory = [];
 }
 
 // editor object of KTextEditor
@@ -43,6 +47,71 @@ export const editor = {
         clipboardHistory.unshift(text);
     },
 };
+
+export class LazyBase {};
+
+/**
+ * Lazy evaluation for \c cmd() function parameters.
+ */
+export class LazyFunc extends LazyBase {
+    constructor(fn, ...args) {
+        super();
+        this.fn = fn;
+        this.args = args;
+    }
+
+    toString() {
+        return functionCallToString(this.fn, this.args);
+    }
+}
+
+/**
+ * Lazy evaluation for function parameter with \c cmd().
+ */
+export class LazyArg extends LazyBase {
+    constructor(arg) {
+        super();
+        this.arg = arg;
+    }
+
+    toString() {
+        return toComparableString(this.arg);
+    }
+}
+
+function evaluateArg(value) {
+    if (!(value instanceof LazyBase)) {
+        return value;
+    }
+
+    if (value instanceof LazyFunc) {
+        return executeFunc(value.fn, value.args);
+    }
+
+    value = value.arg;
+
+    if (Array.isArray(value)) {
+        const args = [];
+        for (const arg of value) {
+            args.push(evaluateArg(arg))
+        }
+        return args;
+    }
+
+    const o = {};
+    for (const k in value) {
+        o[k] = evaluateArg(value[k]);
+    }
+    return o;
+}
+
+function executeFunc(fn, args) {
+    const evaluatedArgs = [];
+    for (const arg of args) {
+        evaluatedArgs.push(evaluateArg(arg));
+    }
+    return fn.apply(fn, evaluatedArgs);
+}
 
 /**
  * Convert a value to a String
@@ -113,6 +182,14 @@ export const addStringCodeFragments = (function(){
         // circular call
         else if (ancestors.includes(value))
             codeFragments.push("[Circular]");
+        // LazyFunc / LazyBase
+        else if (value instanceof LazyBase) {
+            if (value instanceof LazyArg)
+                addStringCodeFragments(value.arg, codeFragments, ancestors, mustBeStable);
+            else
+                addFunctionCallExprFragments(value.fn, value.args,
+                                             codeFragments, ancestors, mustBeStable);
+        }
         else {
             // convert object if registered
             const name = value.constructor?.name;
@@ -258,6 +335,26 @@ export function toComparableString(value) {
     return codeFragments.join('');
 }
 
+function addFunctionCallExprFragments(fn, args, codeFragments, ancestors, mustBeStable) {
+    // the Fonction object has a name, but may be empty
+    const name = (typeof fn === 'function') ? (fn.name || '/*Unamed Function*/')
+        : (fn === undefined) ? 'undefined'
+        : (fn === null) ? 'null'
+        : fn.toString();
+    codeFragments.push(name);
+
+    if (args.length === 0) {
+        codeFragments.push('()');
+    } else {
+        codeFragments.push('(');
+        for (const arg of args) {
+            addStringCodeFragments(arg, codeFragments, ancestors, mustBeStable);
+            codeFragments.push(', ');
+        }
+        codeFragments[codeFragments.length - 1] = ')';
+    }
+}
+
 /**
  * Convert a function and its arguments to a String.
  * @param fn Function
@@ -265,22 +362,8 @@ export function toComparableString(value) {
  * @return String
  */
 export function functionCallToString(fn, args) {
-    // the Fonction object has a name, but may be empty
-    const name = (typeof fn === 'function') ? (fn.name || '/*Unamed Function*/')
-        : (fn === undefined) ? 'undefined'
-        : (fn === null) ? 'null'
-        : fn.toString();
-
-    if (args.length === 0) {
-        return name + '()';
-    }
-
-    const codeFragments = [name, '('];
-    for (const arg of args) {
-        addStringCodeFragments(arg, codeFragments, []);
-        codeFragments.push(', ');
-    }
-    codeFragments[codeFragments.length - 1] = ')';
+    const codeFragments = [];
+    addFunctionCallExprFragments(fn, args, codeFragments, []);
     return codeFragments.join('');
 }
 
@@ -295,8 +378,8 @@ function sameValueZero(x, y) {
 }
 
 /**
- * Operators available for \c TestExpression.test.
- * The key corresponds to the name used for the variable \c op of \c TestExpression.test.
+ * Operators available for \c test.
+ * The key corresponds to the name used for the variable \c op of \c test.
  * The value is a comparison function of the form:
  * (expected: Any) -> {
  *          \c error: Boolean: indicates that the operator is expecting an exception.
@@ -461,14 +544,18 @@ export const operators = {
 export const BREAK_CASE_ERROR = Symbol('BREAK_CASE_ERROR');
 export const STOP_CASE_ERROR = Symbol('STOP_CASE_ERROR');
 
+let internal;
+let env;
+let ctx;
+let contexts = [];
+
 /**
- * @param internal KTextEditorTester::TestFramework
  * @param op Function | String: key of \c operators or \c Function with
  *                              optional \p opname property. See the description
  *                              of \c comp of \c operators for the function signature.
  * @return Object: see \c operators
  */
-function getComparatorInfo(internal, op, expected) {
+function getComparatorInfo(op, expected) {
     if (typeof op === 'function') {
         return {comp: op, opname: op.name};
     }
@@ -485,11 +572,10 @@ function getComparatorInfo(internal, op, expected) {
 /**
  * transforms \p command into 2 functions: the first to execute the program,
  * the second to retrieve it as a string.
- * @param internal KTextEditorTester::TestFramework
- * @param command Function | String | Array[Function | String, ...arguments]
+ * @param command Function | String | Array[Function | String, ...arguments] | LazyFunc
  * @return Array[program: () -> Any, programToString: () -> String]
  */
-function toProgram(internal, command) {
+function toProgram(command) {
     if (typeof command === 'function') {
         return [
             command,
@@ -508,7 +594,7 @@ function toProgram(internal, command) {
         const args = command.slice(1);
         let fn = command[0];
 
-        /**
+        /*
          * Transform string to function.
          * Useful with the form `obj.func` which requires that the parameter
          * be `obj.func.bind(obj)` or `(...arg) => obj.func(...arg)` so as not
@@ -518,6 +604,21 @@ function toProgram(internal, command) {
         if (typeof fn === 'string') {
             fn = internal.evaluate(`(function(){ return ${fn}(...arguments); })`)
         }
+        else if (fn instanceof LazyFunc) {
+            return [
+                () => executeFunc(command.fn, executeFunc.args)(args),
+                () => functionCallToString(fn, args),
+            ];
+        }
+
+        for (const arg of args) {
+            if (arg instanceof LazyBase) {
+                return [
+                    () => executeFunc(fn, args),
+                    () => functionCallToString(command[0], args),
+                ];
+            }
+        }
 
         return [
             () => fn.apply(undefined, args),
@@ -525,8 +626,15 @@ function toProgram(internal, command) {
         ];
     }
 
+    if (command instanceof LazyFunc) {
+        return [
+            () => executeFunc(command.fn, command.args),
+            () => functionCallToString(command.fn, command.args),
+        ];
+    }
+
     internal.incrementError();
-    throw new TypeError("Invalid command type. Expected Function, String or Array");
+    throw new TypeError("Invalid command type. Expected Function, String, Array or LazyFunc");
 }
 
 /**
@@ -617,7 +725,6 @@ function comparatorResultToPrintableInfo(cmpRes, result, expected, exception) {
 
 /**
  * Check \p command result and display the result if it fails.
- * @param internal KTextEditorTester::TestFramework
  * @param name String: test name
  * @param program value for \c executeProgram()
  * @param getProgram Function() -> String
@@ -625,13 +732,14 @@ function comparatorResultToPrintableInfo(cmpRes, result, expected, exception) {
  * @param op undefined | String: value for \c getInputExpression()
  * @param expectedResult: Any
  * @param msgOrInfo value for \c getInputExpression() and \c getMessage()
+ * @param xcheck Boolean: true for an expected failure
  * @return Boolean: \c true when no errors, otherwise \c false
  */
-function checkCommand(internal, name, program, getProgram, compInfo, op, expectedResult, msgOrInfo) {
+function checkCommand(name, program, getProgram, compInfo, op, expectedResult, msgOrInfo, xcheck) {
     const displayMode = internal.startTest();
     if (displayMode & 2) {
         internal.writeTestExpression(
-            name, 'cmd', 3, compInfo
+            name, xcheck ? 'xcmd' : 'cmd', 4, compInfo
                 ? getInputExpression(msgOrInfo, compInfo, op, getProgram, true)
                 : (msgOrInfo?.program || getProgram())
         );
@@ -647,7 +755,7 @@ function checkCommand(internal, name, program, getProgram, compInfo, op, expecte
     /*
      * Displays a message if there is an error
      */
-    const ok = internal.incrementCounter(isSame && expectedResultIsOk);
+    const ok = internal.incrementCounter(isSame && expectedResultIsOk, xcheck);
     if (!ok || displayMode & 1) {
         const inputExpr = program || getProgram();
         const printableInfo = compInfo
@@ -662,7 +770,7 @@ function checkCommand(internal, name, program, getProgram, compInfo, op, expecte
                 : (exception ? EXPECTED_NO_ERROR_BUT_ERROR : 0)
             );
         internal.writeTestResult(
-            name, 'cmd', 3, compInfo
+            name, xcheck ? 'xcmd' : 'cmd', 4, compInfo
                 ? getInputExpression(msgOrInfo, compInfo, op, getProgram, true)
                 : (msgOrInfo?.program || getProgram()),
             getMessage(msgOrInfo), exception,
@@ -679,7 +787,6 @@ function checkCommand(internal, name, program, getProgram, compInfo, op, expecte
 /**
  * Set the expected output then execute and check \p command.
  * The command can be executed 2 times if the \c blockSelection configuration contains a \c *DUAL_MODE value.
- * @param test TestCase | TestCaseWithInput
  * @param command value for \c toProgram()
  * @param expectedOutput String | EXPECTED_OUTPUT_AS_INPUT
  * @param msgOrExpectedResultInfo undefined | String | {
@@ -696,8 +803,9 @@ function checkCommand(internal, name, program, getProgram, compInfo, op, expecte
  *                  Overwrite property op
  *          \c blockSelection: Boolean
  *      }
+ * @param xcheck Boolean:
  */
-function testCommand(test, command, expectedOutput, msgOrExpectedResultInfo) {
+function testCommand(command, expectedOutput, msgOrExpectedResultInfo, xcheck) {
     let op;
     let compInfo;
     let expectedResult;
@@ -710,7 +818,7 @@ function testCommand(test, command, expectedOutput, msgOrExpectedResultInfo) {
         const hasError = ('error' in msgOrExpectedResultInfo);
         if (hasExpected || hasError) {
             if (hasExpected && hasError) {
-                test.internal.incrementError();
+                internal.incrementError();
                 throw Error('expected and error property are both defined');
             }
 
@@ -728,13 +836,13 @@ function testCommand(test, command, expectedOutput, msgOrExpectedResultInfo) {
                        : 'error';
                 }
             }
-            compInfo = getComparatorInfo(test.internal, op, expectedResult);
+            compInfo = getComparatorInfo(op, expectedResult);
         }
 
         hasBlockSelectionConfig = 'blockSelection' in msgOrExpectedResultInfo;
     }
 
-    const blockSelection = test.blockSelection;
+    const blockSelection = ctx.blockSelection;
     const blockSelectionOutput = hasBlockSelectionConfig
         ? msgOrExpectedResultInfo.blockSelection
         : (blockSelection == 1);
@@ -743,278 +851,131 @@ function testCommand(test, command, expectedOutput, msgOrExpectedResultInfo) {
      * Init exepected output
      */
     if (expectedOutput === EXPECTED_OUTPUT_AS_INPUT) {
-        test.internal.copyInputToExpectedOutput(blockSelectionOutput);
+        internal.copyInputToExpectedOutput(blockSelectionOutput);
+    }
+    else if (expectedOutput === REUSE_LAST_EXPECTED_OUTPUT) {
+        internal.reuseExpectedOutput(blockSelectionOutput);
     }
     else {
-        test.internal.setExpectedOutput(expectedOutput, blockSelectionOutput);
+        internal.setExpectedOutput(expectedOutput, blockSelectionOutput);
     }
 
     /*
      * Run and check command
      */
-    const [program, getProgram] = toProgram(test.internal, command);
+    const [program, getProgram] = toProgram(command);
 
     let ok = true;
     // when dual mode
     if (blockSelection === DUAL_MODE || blockSelection === ALWAYS_DUAL_MODE) {
-        ok = checkCommand(test.internal, test.name, program, getProgram, compInfo, op, expectedResult, msgOrExpectedResultInfo);
+        ok = checkCommand(ctx.name, program, getProgram, compInfo, op, expectedResult, msgOrExpectedResultInfo, xcheck);
         if (!ok && blockSelection === DUAL_MODE) {
-            test._checkBreakOnError();
-            test.internal.writeDualModeAborted(test.name, 2);
+            checkBreakOnError();
+            internal.writeDualModeAborted(ctx.name, 2);
             return;
         }
-        if (!test.internal.reuseInputWithBlockSelection()) {
+        if (!internal.reuseInputWithBlockSelection()) {
             return;
         }
         if (!hasBlockSelectionConfig) {
-            test.internal.reuseExpectedOutput(true);
+            internal.reuseExpectedOutput(true);
         }
     }
-    if (!(checkCommand(test.internal, test.name, program, getProgram, compInfo, op, expectedResult, msgOrExpectedResultInfo) && ok)) {
-        test._checkBreakOnError();
+    if (!(checkCommand(ctx.name, program, getProgram, compInfo, op, expectedResult, msgOrExpectedResultInfo, xcheck) && ok)) {
+        checkBreakOnError();
     }
 }
 
-
-const defaultConfig = {
-    syntax: "None",
-    indentationMode: "none",
-    blockSelection: DUAL_MODE,
-    indentationWidth: 4,
-    tabWidth: 4,
-    replaceTabs: false,
-    overrideMode: false,
-};
-
-// apply framework config (placeholder) and kate config
-function setConfig(test, config) {
-    test.internal.setConfig(config);
-    if ('blockSelection' in config) {
-        test.blockSelection = config.blockSelection;
-    }
-    if (config.clipboardHistory) {
-        setClipboardHistory(config.clipboardHistory);
-    }
-}
-
+const tagPrefix = /(^|\n)[^>]*> ?/g;
 
 /**
- * Class to test function results.
- * Tests are performed on the current state of the document and view.
+ * Remove `.*> ` in a tagged template.
+ * That
+ * \code
+ *  t.cmd(enter, 'void foo(){|}', sanitizeTag`> void foo(){
+ *                                           ->   |
+ *                                            > }`)
+ * \endcode
+ * is equivalent to
+ * \code
+ *  t.cmd(enter, 'void foo(){|}', 'void foo(){\n  |\n  }')
+ * \endcode
  */
-class TestExpression {
-    constructor(name, breakOnError, internal, blockSelection) {
-        this.name = name;
-        this.internal = internal;
-        this.breakOnError = breakOnError;
-        this.blockSelection = blockSelection;
+export function sanitizeTag(strings, ...values) {
+    if (strings.length === 1) {
+        return strings[0].replace(tagPrefix, '$1');
     }
 
-    /**
-     * @param config Object: {
-     *          // kate config
-     *          \c syntax: String,
-     *          \c indentationMode: String,
-     *          \c blockSelection: Boolean | DUAL_MODE | ALWAYS_DUAL_MODE,
-     *          \c indentationWidth: Number,
-     *          \c tabWidth: Number,
-     *          \c replaceTabs: Boolean,
-     *          \c overrideMode: Boolean,
-     *          \c indentPastedTest: Boolean,
-     *
-     *          // editor state
-     *          \c clipboardHistory: Array[String],
-     *
-     *          // Placeholders in input, output and expected output.
-     *          // Only the first letter is used.
-     *          // If the string is empty, the placeholder is deactivated.
-     *          \c cursor: String,
-     *          \c secondaryCursor: String,
-     *          \c virtualText: String,
-     *
-     *          // Placeholders in input, output and expected output.
-     *          // The first letter corresponds to selection opening, the second to closing.
-     *          // If there is only one letter, opening and closing will have the same value.
-     *          // If the string is empty, the placeholder is deactivated.
-     *          \c selection: String,
-     *          \c secondarySelection: String,
-     *
-     *          // Placeholders used only in display when normal versions are
-     *          // disabled or there is a display conflict (same value to
-     *          // represent the same thing)
-     *          // Empty strings are replaced by the default value.
-     *          \c cursor2: String,
-     *          \c secondaryCursor2: String,
-     *          \c virtualText2: String,
-     *          \c selection2: String,
-     *          \c secondarySelection2: String,
-     *      }
-     * @return Self
-     */
-    config(config) {
-        setConfig(this, config);
-        return this;
+    const a = [strings[0]];
+    for (let i = 0; i < values.length; ++i) {
+        a.push(values[i], strings[i+1]);
     }
-
-    /**
-     * Executes \p command and uses the \p op operator to compare it to \p expected.
-     * @param command value for \c toProgram()
-     * @param op String | Function: key of \c operators or \c Function with
-     *                              optional \p opname property. See the description
-     *                              of \c operators for the function signature.
-     * @param msgOrInfo undefined | String | {
-     *          \c msg: Optional[String]
-     *          \c expr: Optional[String]
-     *          \c program: Optional[String]
-     *      }
-     */
-    test(command, op, expected, msgOrInfo) { return this._test(command, op, expected, msgOrInfo); }
-
-    /// Shortcut for test() function.
-    /// @{
-    eqvTrue(command, msgOrInfo) { return this._test(command, '!!', true, msgOrInfo); }
-    eqvFalse(command, msgOrInfo) { return this._test(command, '!!', false, msgOrInfo); }
-    eqTrue(command, msgOrInfo) { return this._test(command, '===', true, msgOrInfo); }
-    eqFalse(command, msgOrInfo) { return this._test(command, '===', false, msgOrInfo); }
-
-    error(command, expected, msgOrInfo) { return this._test(command, 'error', expected, msgOrInfo); }
-    errorMsg(command, expected, msgOrInfo) { return this._test(command, 'errorMsg', expected, msgOrInfo); }
-    errorType(command, expected, msgOrInfo) { return this._test(command, 'errorType', expected, msgOrInfo); }
-    hasError(command, msgOrInfo) { return this._test(command, 'hasError', true, msgOrInfo); }
-
-    eqv(command, expected, msgOrInfo) { return this._test(command, 'eqv', expected, msgOrInfo); }
-    is(command, expected, msgOrInfo) { return this._test(command, 'is', expected, msgOrInfo); }
-    eq(command, expected, msgOrInfo) { return this._test(command, '===', expected, msgOrInfo); }
-    ne(command, expected, msgOrInfo) { return this._test(command, '!=', expected, msgOrInfo); }
-    lt(command, expected, msgOrInfo) { return this._test(command, '<', expected, msgOrInfo); }
-    gt(command, expected, msgOrInfo) { return this._test(command, '>', expected, msgOrInfo); }
-    le(command, expected, msgOrInfo) { return this._test(command, '<=', expected, msgOrInfo); }
-    ge(command, expected, msgOrInfo) { return this._test(command, '>=', expected, msgOrInfo); }
-    /// @}
-
-    _test(command, op, expected, msgOrInfo) {
-        const compInfo = getComparatorInfo(this.internal, op, expected);
-        const [program, getProgram] = toProgram(this.internal, command);
-        const displayMode = this.internal.startTest();
-        if (displayMode & 2) {
-            this.internal.writeTestExpression(
-                this.name, 'test', 2, getInputExpression(msgOrInfo, compInfo, op, getProgram)
-            );
-        }
-
-        const [result, exception] = executeProgram(program);
-        const res = compInfo.comp(result, expected, exception);
-        const ok = this.internal.incrementCounter(res === true || res?.ok);
-        if (!ok || displayMode & 1) {
-            const printableInfo = comparatorResultToPrintableInfo(res, result, expected, exception);
-            this.internal.writeTestResult(
-                this.name, 'test', 2,
-                getInputExpression(msgOrInfo, compInfo, op, getProgram),
-                getMessage(msgOrInfo), exception,
-                printableInfo.displayableResult,
-                printableInfo.displableExpected,
-                IGNORE_INPUT_OUTPUT | (ok ? RESULT_OK : CONTAINS_RESULT_OR_ERROR | printableInfo.opt),
-            );
-        }
-
-        this.internal.endTest(ok);
-
-        if (!ok) {
-            this._checkBreakOnError();
-        }
-
-        return this;
-    }
-
-    _checkBreakOnError() {
-        if (this.internal.hasTooManyErrors()) {
-            throw STOP_CASE_ERROR;
-        }
-        if (this.breakOnError) {
-            this.internal.incrementBreakOnError();
-            throw BREAK_CASE_ERROR;
-        }
-    }
+    return a.join('').replace(tagPrefix, '$1');
 }
-
 
 /**
  * Class to test document text and function results.
  */
-class TestCase extends TestExpression {
-    constructor(name, breakOnError, internal, env, blockSelection) {
-        super(name, breakOnError, internal, blockSelection);
-        this.env = env;
+class TestCase {
+    constructor(name, breakOnError, blockSelection) {
+        this.name = name;
+        this.breakOnError = breakOnError;
+        this.blockSelection = blockSelection;
     }
 
-    /**
-     * @param command Function | String | Array[Function | String, ...args]
-     * @param input String
-     * @param expectedOutput String | EXPECTED_OUTPUT_AS_INPUT
-     * @param msgOrExpectedResultInfo undefined | String | {
-     *          \c msg: undefined | String: a message displayed in case of error
-     *          \c program undefined | String: string representing the command to be displayed
-     *                                         rather than the one automatically calculated
-     *          \c op String | Function: see \c getComparatorInfo(). Default is '==='
-     *          \c expected: Any
-     *          \c error: Boolean: check if an exception is thrown
-     *                  | String: check exception message
-     *                  | Any: check exception message and class name
-     *                  Overwrite property op
-     *          \c blockSelection: Boolean
-     *      }
-     * @return Self
-     */
-    cmd(command, input, expectedOutput, msgOrExpectedResultInfo) {
-        this.internal.setInput(input, this.blockSelection == 1);
-        testCommand(this, command, expectedOutput, msgOrExpectedResultInfo);
-        return this;
+    cmd(command, input, expectedOutput, msgOrExpectedResultInfo, xcheck) {
+        internal.setInput(input, this.blockSelection == 1);
+        testCommand(command, expectedOutput, msgOrExpectedResultInfo, xcheck);
+    }
+
+    resume() {
     }
 }
+
+const invalidState = Symbol();
 
 /**
  * Class to test document text and function results.
  * The \c input is reused each time \c cmd() is called.
  */
-class TestCaseWithInput extends TestExpression {
-    constructor(name, breakOnError, input, internal, env, blockSelection) {
-        super(name, breakOnError, internal);
-        this.env = env;
-        this.input = input;
-        this.reuseInput = false;
+class TestCaseWithInput {
+    constructor(name, breakOnError, blockSelection, input) {
+        this.name = name;
+        this.breakOnError = breakOnError;
         this.blockSelection = blockSelection;
-    }
-
-    /**
-     * @param input String
-     * @return Self
-     */
-    setInput(input) {
+        this.state = input;
         this.input = input;
-        this.reuseInput = false;
-        return this;
     }
 
-    /**
-     * @param command: Function | String | Array[Function | String, ...args]
-     * @param expectedOutput String | EXPECTED_OUTPUT_AS_INPUT
-     * @param msgOrExpectedResultInfo: see \c TestCase.cmd()
-     * @return Self
-     */
-    cmd(command, expectedOutput, msgOrExpectedResultInfo) {
-        this._initInput();
-        testCommand(this, command, expectedOutput, msgOrExpectedResultInfo);
-        return this;
+    cmd(command, expectedOutput, msgOrExpectedResultInfo, _, xcheck) {
+        this._initInput(expectedOutput);
+        testCommand(command, expectedOutput, msgOrExpectedResultInfo, xcheck);
     }
 
-    _initInput() {
-        if (this.reuseInput) {
-            this.internal.reuseInput(this.blockSelection == 1);
+    resume() {
+        this.state = (typeof this.input === 'string') ? this.input : invalidState;
+    }
+
+    _initInput(expectedOutput) {
+        if (this.state === REUSE_LAST_INPUT) {
+            internal.reuseInput(this.blockSelection == 1);
+        }
+        else if (this.state === REUSE_LAST_EXPECTED_OUTPUT) {
+            internal.moveExpectedOutputToInput(this.blockSelection == 1);
+            this.state = REUSE_LAST_INPUT;
+        }
+        else if (this.state === invalidState) {
+            this._invalidStateError();
         }
         else {
-            this.internal.setInput(this.input, this.blockSelection == 1);
-            this.reuseInput = true;
+            internal.setInput(this.input, this.blockSelection == 1);
+            this.state = REUSE_LAST_INPUT;
         }
+    }
+
+    _invalidStateError() {
+        internal.incrementError();
+        throw Error(this.constructor.name + ' is not initialized with a string, which will prevent restoring the input');
     }
 }
 
@@ -1022,156 +983,368 @@ class TestCaseWithInput extends TestExpression {
  * Class to test document text and function results.
  * The \c expectedOutput text will be used as \c input the next time \c cmd() is called.
  */
-class TestCaseChain extends TestCaseWithInput {
-    _initInput() {
-        if (this.input !== undefined) {
-            this.internal.setInput(this.input, this.blockSelection == 1);
-            this.input = undefined;
-        } else {
-            this.internal.moveExpectedOutputToInput(this.blockSelection == 1);
+class TestCaseSequence extends TestCaseWithInput {
+    _initInput(expectedOutput) {
+        if (this.state === REUSE_LAST_EXPECTED_OUTPUT) {
+            internal.moveExpectedOutputToInput(this.blockSelection == 1);
         }
-    }
-}
-
-
-export class TestFramework {
-    constructor(internal, env) {
-        this.internal = internal;
-        this.env = env;
-        this._breakOnError = false;
-        this.blockSelection = DUAL_MODE;
-    }
-
-    /**
-     * See \c TestExpression.config()
-     * @return Self
-     */
-    config(config) {
-        setConfig(this, config);
-        return this;
-    }
-
-    /**
-     * @param on Boolean
-     * @return Self
-     */
-    breakOnError(on) {
-        this._breakOnError = on;
-        return this;
-    }
-
-    /**
-     * Starts a test set of type TestCase
-     * @param name String | {name: String, breakOnError: Boolean}:
-     *      name is used for filter test.
-     * @param fn Function(TestCase, globalThis) with this as TestCase
-     * @return Self
-     */
-    testCase(name, fn) {
-        this._execTestCase(name, fn, TestCase);
-        return this;
-    }
-
-    /**
-     * Starts a test set of type TestCaseWithInput
-     * @param name String | {name: String, breakOnError: Boolean}:
-     *      name is used for filter test.
-     * @param input String
-     * @param fn Function(TestCaseWithInput, globalThis) with this as TestCaseWithInput
-     * @return Self
-     */
-    testCaseWithInput(name, input, fn) {
-        this._execTestCase(name, fn, TestCaseWithInput, input);
-        return this;
-    }
-
-    /**
-     * Starts a test set of type TestCaseChain
-     * @param name String | {name: String, breakOnError: Boolean}:
-     *      name is used for filter test.
-     * @param input String
-     * @param fn Function(TestCaseChain, globalThis) with this as TestCaseChain
-     * @return Self
-     */
-    testCaseChain(name, input, fn) {
-        this._execTestCase(name, fn, TestCaseChain, input);
-        return this;
-    }
-
-    /**
-     * Uses \c formatArgs(args, ' ') and displays with global \c debug() function.
-     */
-    debug(...args) {
-        this.internal.debug(formatArgs(args, ' '));
-    }
-
-    /**
-     * Uses \c formatArgs(args, ' ') and displays.
-     */
-    print(...args) {
-        this.internal.print(formatArgs(args, ' '));
-    }
-
-    /**
-     * Uses \c formatArgs(args, sep) and displays.
-     */
-    printSep(sep, ...args) {
-        this.internal.print(formatArgs(args, sep));
-    }
-
-    /**
-     * @param nameOrConfig String | {name: String, breakOnError: Boolean}
-     * @param fn Function(TestCaseChain, globalThis) with \p Class
-     * @param Class class object
-     */
-    _execTestCase(nameOrConfig, fn, Class, ...args) {
-        let name, breakOnError;
-        if (typeof nameOrConfig === 'string') {
-            name = nameOrConfig;
-            breakOnError = this._breakOnError;
+        else if (this.state === REUSE_LAST_INPUT) {
+            internal.reuseInput(this.blockSelection == 1);
+            this.state = REUSE_LAST_EXPECTED_OUTPUT;
+        }
+        else if (this.state === invalidState) {
+            this._invalidStateError();
         }
         else {
-            name = nameOrConfig.name;
-            breakOnError = ('breakOnError' in nameOrConfig)
-                ? nameOrConfig.breakOnError
-                : this._breakOnError;
+            internal.setInput(this.input, this.blockSelection == 1);
+            this.state = REUSE_LAST_EXPECTED_OUTPUT;
         }
 
-        if (!this.internal.startTestCase(name, 2)) {
-            return;
+        if (expectedOutput !== EXPECTED_OUTPUT_AS_INPUT) {
+            this.input = expectedOutput;
         }
-
-        this.internal.saveConfig();
-        const testCase = new Class(name, breakOnError, ...args,
-                                   this.internal, this.env, this.blockSelection);
-        try {
-            fn.call(testCase, testCase, this.env);
-        }
-        catch (e) {
-            if (e !== BREAK_CASE_ERROR) {
-                throw e;
-            }
-        }
-        this.internal.restoreConfig();
     }
 }
+
+const ProxyAccess = function(target, prop) {
+    const o = target[prop];
+    if (typeof o === 'function') {
+        const funcName = `${this.name ? this.name : toComparableString(obj)}.${prop.toString()}`;
+        // create a function with function.name = funcName and this preservation
+        return {[funcName]: (...args) => o.apply(target, args)}[funcName];
+    }
+    return o;
+};
 
 /**
  * Ensures that each method has `${name}.${funcName}` as its name property value.
- * @param name String: name of \p obj
+ * @param name String | falsy: name of \p obj. When falsy, uses a string representation of \p obj.
  * @param obj Object: wrapped object
  * @return Object
  */
 export function calleeWrapper(name, obj) {
-    return new Proxy(obj, {
-        get(target, prop) {
-            const o = target[prop];
-            if (typeof o === 'function') {
-                const funcName = `${name}.${prop.toString()}`;
-                // create a function with function.name = funcName and this preservation
-                return {[funcName]: (...args) => target[prop](...args)}[funcName];
-            }
-            return target[propertyName];
+    return new Proxy(obj, {name, get: ProxyAccess});
+}
+
+/**
+ * @param config Object: {
+ *          // kate config
+ *          \c syntax: String,
+ *          \c blockSelection: Boolean | DUAL_MODE | ALWAYS_DUAL_MODE,
+ *          \c indentationWidth: Number,
+ *          \c tabWidth: Number,
+ *          \c replaceTabs: Boolean,
+ *          \c autoBrackets: Boolean,
+ *
+ *          // editor state
+ *          \c clipboardHistory: Array[String],
+ *
+ *          // Placeholders in input, output and expected output.
+ *          // Only the first letter is used.
+ *          // If the string is empty, the placeholder is deactivated.
+ *          \c cursor: String,
+ *          \c secondaryCursor: String,
+ *          \c virtualText: String,
+ *
+ *          // Placeholders in input, output and expected output.
+ *          // The first letter corresponds to selection opening, the second to closing.
+ *          // If there is only one letter, opening and closing will have the same value.
+ *          // If the string is empty, the placeholder is deactivated.
+ *          \c selection: String,
+ *          \c secondarySelection: String,
+ *
+ *          // Placeholders used only in display when normal versions are
+ *          // disabled or there is a display conflict (same value to
+ *          // represent the same thing)
+ *          // Empty strings are replaced by the default value.
+ *          \c cursor2: String,
+ *          \c secondaryCursor2: String,
+ *          \c virtualText2: String,
+ *          \c selection2: String,
+ *          \c secondarySelection2: String,
+ *
+ *          \c breakOnError: Boolean
+ *      }
+ * @return Self
+ */
+export function config(config) {
+    internal.setConfig(config);
+    if ('blockSelection' in config) {
+        ctx.blockSelection = config.blockSelection;
+    }
+    if ('breakOnError' in config) {
+        ctx.breakOnError = config.breakOnError;
+    }
+    if (config.clipboardHistory) {
+        setClipboardHistory(config.clipboardHistory);
+    }
+};
+
+/**
+ * Uses \c formatArgs(args, ' ') and displays with global \c debug() function.
+ */
+export function debug(...args) {
+    internal.debug(formatArgs(args, ' '));
+}
+
+/**
+ * Uses \c formatArgs(args, ' ') and displays.
+ */
+export function print(...args) {
+    internal.print(formatArgs(args, ' '));
+}
+
+/**
+ * Uses \c formatArgs(args, sep) and displays.
+ */
+export function printSep(sep, ...args) {
+    internal.print(formatArgs(args, sep));
+}
+
+function subCase(name, fn, Class, input) {
+    let newConfig;
+    if (name && typeof name === 'object') {
+        newConfig = name;
+        name = newConfig.name;
+    }
+
+    if (name) {
+        if (ctx.name) {
+            name = `${ctx.name}:${name}`;
         }
-    });
+        if (!internal.startTestCase(name, 2)) {
+            return;
+        }
+    }
+    else {
+        name = ctx.name;
+    }
+
+    internal.pushConfig();
+    const cbHist = clipboardHistory.slice();
+
+    const breakOnError = ctx.breakOnError;
+    const newCtx = new Class(name, breakOnError, ctx.blockSelection, input);
+    contexts.push(ctx);
+    ctx = newCtx;
+    if (newConfig) {
+        config(newConfig);
+    }
+    try {
+        fn.call(ctx, env);
+    }
+    catch (e) {
+        if (e !== BREAK_CASE_ERROR || breakOnError) {
+            throw e;
+        }
+    }
+    finally {
+        ctx = contexts.pop();
+        ctx.resume();
+        clipboardHistory = cbHist;
+        internal.popConfig();
+    }
+}
+
+/**
+ * Starts a test of type TestCase.
+ * @param nameOrConfig Optional[String|Object]: name is used for filter test.
+ *      If it is an object, it is passed to \c config(). An object can contain the name property.
+ * @param fn Function(globalThis) with this as TestCase
+ */
+export function testCase(nameOrConfig, fn) {
+    if (!fn) {
+        fn = nameOrConfig;
+        nameOrConfig = null;
+    }
+    subCase(nameOrConfig, fn, TestCase);
+};
+
+/**
+ * Starts a test of type TestCaseSequence.
+ * @param nameOrConfig Optional[String|Object]: see \c testCase
+ * @param input String
+ * @param fn Function(globalThis) with this as TestCaseSequence
+ */
+export function sequence(nameOrConfig, input, fn) {
+    if (!fn) {
+        fn = input;
+        input = nameOrConfig;
+        nameOrConfig = null;
+    }
+    subCase(nameOrConfig, fn, TestCaseSequence, input);
+};
+
+/**
+ * Starts a test of type TestCaseWithInput.
+ * @param nameOrConfig Optional[String|Object]: see \c testCase
+ * @param input String
+ * @param fn Function(globalThis) with this as TestCaseWithInput
+ */
+export function withInput(nameOrConfig, input, fn) {
+    if (!fn) {
+        fn = input;
+        input = nameOrConfig;
+        nameOrConfig = null;
+    }
+    subCase(nameOrConfig, fn, TestCaseWithInput, input);
+};
+
+function checkBreakOnError() {
+    if (internal.hasTooManyErrors()) {
+        throw STOP_CASE_ERROR;
+    }
+    if (ctx.breakOnError) {
+        internal.incrementBreakOnError();
+        throw BREAK_CASE_ERROR;
+    }
+}
+
+/**
+ * Test the indentation of all files in the \p dataDir folder.
+ * This folder must contain subfolders with \c origin and \c expected files.
+ * If the result is different, a file named \c actual will be written and
+ * the difference will be displayed.
+ * @param nameOrDataDir String: name used for filter test and \p dataDir when this parameter is absent
+ * @param dataDir String: path of directory
+ */
+export function indentFiles(nameOrDataDir, dataDir) {
+    dataDir = dataDir || nameOrDataDir;
+    if (nameOrDataDir) {
+        if (ctx.name) {
+            nameOrDataDir = `${ctx.name}:${nameOrDataDir}`;
+        }
+    }
+    if (!internal.testIndentFiles(nameOrDataDir, dataDir, 1, ctx.breakOnError)) {
+        checkBreakOnError();
+    }
+}
+
+function _test(command, op, expected, msgOrInfo, xcheck) {
+    const compInfo = getComparatorInfo(op, expected);
+    const [program, getProgram] = toProgram(command);
+    const displayMode = internal.startTest();
+    if (displayMode & 2) {
+        internal.writeTestExpression(
+            ctx.name, xcheck ? 'xtest' : 'test', 2,
+            getInputExpression(msgOrInfo, compInfo, op, getProgram)
+        );
+    }
+
+    const [result, exception] = executeProgram(program);
+    const res = compInfo.comp(result, expected, exception);
+    const ok = internal.incrementCounter(res === true || res?.ok, xcheck);
+    if (!ok || displayMode & 1) {
+        const printableInfo = comparatorResultToPrintableInfo(res, result, expected, exception);
+        internal.writeTestResult(
+            ctx.name, xcheck ? 'xtest' : 'test', 2,
+            getInputExpression(msgOrInfo, compInfo, op, getProgram),
+            getMessage(msgOrInfo), exception,
+            printableInfo.displayableResult,
+            printableInfo.displableExpected,
+            IGNORE_INPUT_OUTPUT | (ok ? RESULT_OK : CONTAINS_RESULT_OR_ERROR | printableInfo.opt),
+        );
+    }
+
+    internal.endTest(ok);
+
+    if (!ok) {
+        checkBreakOnError();
+    }
+}
+
+/**
+ * Executes \p command and uses the \p op operator to compare it to \p expected.
+ * @param command value for \c toProgram()
+ * @param op String | Function: key of \c operators or \c Function with
+ *                              optional \p opname property. See the description
+ *                              of \c operators for the function signature.
+ * @param msgOrInfo undefined | String | {
+ *          \c msg: Optional[String]
+ *          \c expr: Optional[String]
+ *          \c program: Optional[String]
+ *      }
+ * @return Self
+ */
+export function test(command, op, expected, msgOrInfo) { _test(command, op, expected, msgOrInfo); }
+
+/**
+ * Same as \c test(), but for an expected failure.
+ */
+export function xtest(command, op, expected, msgOrInfo) { _test(command, op, expected, msgOrInfo, true); }
+
+/// Shortcut for test() function.
+/// @{
+export function eqvTrue(command, msgOrInfo) { _test(command, '!!', true, msgOrInfo); }
+export function eqvFalse(command, msgOrInfo) { _test(command, '!!', false, msgOrInfo); }
+export function eqTrue(command, msgOrInfo) { _test(command, '===', true, msgOrInfo); }
+export function eqFalse(command, msgOrInfo) { _test(command, '===', false, msgOrInfo); }
+
+export function error(command, expected, msgOrInfo) { _test(command, 'error', expected, msgOrInfo); }
+export function errorMsg(command, expected, msgOrInfo) { _test(command, 'errorMsg', expected, msgOrInfo); }
+export function errorType(command, expected, msgOrInfo) { _test(command, 'errorType', expected, msgOrInfo); }
+export function hasError(command, msgOrInfo) { _test(command, 'hasError', true, msgOrInfo); }
+
+export function eqv(command, expected, msgOrInfo) { _test(command, 'eqv', expected, msgOrInfo); }
+export function is(command, expected, msgOrInfo) { _test(command, 'is', expected, msgOrInfo); }
+export function eq(command, expected, msgOrInfo) { _test(command, '===', expected, msgOrInfo); }
+export function ne(command, expected, msgOrInfo) { _test(command, '!=', expected, msgOrInfo); }
+export function lt(command, expected, msgOrInfo) { _test(command, '<', expected, msgOrInfo); }
+export function gt(command, expected, msgOrInfo) { _test(command, '>', expected, msgOrInfo); }
+export function le(command, expected, msgOrInfo) { _test(command, '<=', expected, msgOrInfo); }
+export function ge(command, expected, msgOrInfo) { _test(command, '>=', expected, msgOrInfo); }
+/// @}
+
+/**
+ * @param command Function | String | Array[Function | String, ...args] | LazyFunc
+ * @param input String: this parameter does not exist for context sequence() and withInput()
+ * @param expectedOutput String | EXPECTED_OUTPUT_AS_INPUT
+ * @param msgOrExpectedResultInfo undefined | String | {
+ *          \c msg: undefined | String: a message displayed in case of error
+ *          \c program undefined | String: string representing the command to be displayed
+ *                                         rather than the one automatically calculated
+ *          \c op String | Function: see \c getComparatorInfo(). Default is '==='
+ *          \c expected: Any
+ *          \c error: Boolean: check if an exception is thrown
+ *                  | String: check exception message
+ *                  | Any: check exception message and class name
+ *                  Overwrite property op
+ *          \c blockSelection: Boolean
+ *      }
+ * @return Self
+ */
+export function cmd(command, input, expectedOutput, msgOrExpectedResultInfo) {
+    ctx.cmd(command, input, expectedOutput, msgOrExpectedResultInfo);
+}
+
+/**
+ * Same as \c cmd(), but for an expected failure.
+ */
+export function xcmd(command, input, expectedOutput, msgOrExpectedResultInfo) {
+    ctx.cmd(command, input, expectedOutput, msgOrExpectedResultInfo, true);
+}
+
+let kbd_enter;
+let kbd_type;
+
+export function keys(str) {
+    return str === '\n' ? kbd_enter : [kbd_type, str];
+}
+
+export function type(str, input, expectedOutput, msgOrExpectedResultInfo) {
+    ctx.cmd(keys(str), input, expectedOutput, msgOrExpectedResultInfo);
+}
+
+export function xtype(str, input, expectedOutput, msgOrExpectedResultInfo) {
+    ctx.cmd(keys(str), input, expectedOutput, msgOrExpectedResultInfo, true);
+}
+
+export function init(internal_, env_, blockSelection) {
+    internal = internal_;
+    env = env_;
+    ctx = new TestCase('', false, blockSelection);
+    const kbd = calleeWrapper('kbd', internal);
+    kbd_enter = kbd.enter;
+    kbd_type = kbd.type;
+    return kbd;
 }

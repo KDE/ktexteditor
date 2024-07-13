@@ -1,6 +1,0 @@
-def hello
-  puts "Hello!"
-  if true
-    puts "World!"
-  end
-end

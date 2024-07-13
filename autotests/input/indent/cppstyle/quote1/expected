@@ -1,2 +1,0 @@
-auto a = "R"
-auto a = R"~(ok)~"

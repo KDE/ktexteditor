@@ -1,4 +1,0 @@
-ggplot(data = data) +
-    geom_line(aes(x = something, y = otherstuff)) +
-    coord_flip()
-

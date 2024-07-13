@@ -17,32 +17,32 @@ In particular, it contains the `moveLinesDown` function, which will be used in w
 Next, we need to write a test case using one of the 3 available functions:
 
 - `testCase`
-- `testCaseChain`
-- `testCaseWithInput`
+- `sequence`
+- `withInput`
 
-Each of these functions takes a name as first parameter and a function as last parameter.
+Each of these functions takes a optional name as first parameter and a function as last parameter.
 The name is displayed in case of failure, and cli options allow you to filter what will or won't be executed.
 The last parameter function contains our tests on `moveLinesDown`.
 
 ```js
-testCase("moveLinesDown test", (t) => {
-    //       command           input           expected
-    t.cmd(moveLinesDown, "[1]\n2\n3\n4\n", "2\n[1]\n3\n4\n");
-    t.cmd(moveLinesDown, "2\n[1]\n3\n4\n", "2\n3\n[1]\n4\n");
-    t.cmd(moveLinesDown, "2\n3\n[1]\n4\n", "2\n3\n4\n[1]\n");
+testCase("moveLinesDown test", () => {
+    //     command           input           expected
+    cmd(moveLinesDown, "[1]\n2\n3\n4\n", "2\n[1]\n3\n4\n");
+    cmd(moveLinesDown, "2\n[1]\n3\n4\n", "2\n3\n[1]\n4\n");
+    cmd(moveLinesDown, "2\n3\n[1]\n4\n", "2\n3\n4\n[1]\n");
 });
 ```
 
-`t.cmd()` executes a *command* on a document whose state is represented by *input* and checks that the final document is in the state of *expected*.
+`cmd()` executes a *command* on a document whose state is represented by *input* and checks that the final document is in the state of *expected*.
 
 The document state is the text and the position of cursors and selections represented by characters called *placeholder*. By default, `|` represents a cursor and `[...]` a selection.
 
 If no cursor position is given, it will automatically be set after the selection or at the end of the document.
 
 ```js
-t.cmd(moveLinesDown, "[1]\n2\n3\n4\n", "2\n[1]\n3\n4\n");
+cmd(moveLinesDown, "[1]\n2\n3\n4\n", "2\n[1]\n3\n4\n");
 // equivalent to
-t.cmd(moveLinesDown, "[1]|\n2\n3\n4\n", "2\n[1]|\n3\n4\n");
+cmd(moveLinesDown, "[1]|\n2\n3\n4\n", "2\n[1]|\n3\n4\n");
 ```
 
 Running the test gives us:
@@ -71,41 +71,42 @@ It can also be disabled directly in the test file via `config()`:
 
 ```js
 // disable for all tests
-testFramework.config({blockSelection: false});
+config({blockSelection: false});
 
-testCase("moveLinesDown test", (t) => {
+testCase("moveLinesDown test", () => {
     // disable for current test case
-    t.config({blockSelection: false});
+    config({blockSelection: false});
     // ...
 });
 ```
 
-If we look closely at our test, the expected result corresponds to the next test input. The whole thing can be simplified using `testCaseChain`:
+If we look closely at our test, the expected result corresponds to the next test input. The whole thing can be simplified using `sequence()`:
 
 ```js
-//                                     first input
-testCaseChain("moveLinesDown test", "[1]\n2\n3\n4\n", (t) => {
-    //       command     expected then next input
-    t.cmd(moveLinesDown, "2\n[1]\n3\n4\n");
-    t.cmd(moveLinesDown, "2\n3\n[1]\n4\n");
-    t.cmd(moveLinesDown, "2\n3\n4\n[1]\n");
+sequence("moveLinesDown test"
+    //                 first input
+                     , "[1]\n2\n3\n4\n", () => {
+    //     command     expected then next input
+    cmd(moveLinesDown, "2\n[1]\n3\n4\n");
+    cmd(moveLinesDown, "2\n3\n[1]\n4\n");
+    cmd(moveLinesDown, "2\n3\n4\n[1]\n");
 });
 ```
 
 By activating verbose mode (`ktexteditor-script-tester6 -B -V test.js`), we can see that the input to a test takes the expected value from the previous test:
 
 ```
-test.js:4: moveLinesDown test: OK
+test.js:5: moveLinesDown test: OK
 cmd `moveLinesDown()` [blockSelection=0]:
   input:    [1]|\n2\n3\n4\n
   output:   2\n[1]|\n3\n4\n
 
-test.js:5: moveLinesDown test: OK
+test.js:6: moveLinesDown test: OK
 cmd `moveLinesDown()` [blockSelection=0]:
   input:    2\n[1]|\n3\n4\n
   output:   2\n3\n[1]|\n4\n
 
-test.js:6: moveLinesDown test: OK
+test.js:7: moveLinesDown test: OK
 cmd `moveLinesDown()` [blockSelection=0]:
   input:    2\n3\n[1]|\n4\n
   output:   2\n3\n4\n[1]|\n
@@ -118,7 +119,7 @@ Note that a cursor is automatically added to the input.
 The default display for block selection is different (controlled by `-F`), here's an extract:
 
 ```
-file1.js:4: moveLinesDown test: OK
+file1.js:5: moveLinesDown test: OK
 cmd `moveLinesDown()` [blockSelection=1]:
   input:    [1]|↵
             2↵
@@ -133,24 +134,26 @@ cmd `moveLinesDown()` [blockSelection=1]:
 
 ```
 
-Finally, `testCaseWithInput` has an identical interface to `testCaseChain`, but input doesn't change each time `cmd()` is called.
+Finally, `withInput()` has an identical interface to `sequence()`, but input doesn't change each time `cmd()` is called.
+
+Note that these functions can be called nested and that the script is started in a `testCase` with an empty name.
 
 
 ## Checking return values
 
 There are 2 ways to check the result of a function:
 
-- either `t.test(command, op, expected, msgOrInfo)`
+- either `test(command, op, expected, msgOrInfo)`
 
 ```js
 function foo() { return 42; }
-t.test(foo, '===', 42);
+test(foo, '===', 42);
 ```
 
-- or `t.cmd(command, input, expectedOutput, msgOrExpectedResultInfo)` (parameter `input` does not exist with `testCaseChain` and `testCaseWithInput`)
+- or `cmd(command, input, expectedOutput, msgOrExpectedResultInfo)` (parameter `input` does not exist with `sequence()` and `withInput()`)
 
 ```js
-t.cmd(foo, 'input', 'expected output', {
+cmd(foo, 'input', 'expected output', {
     expected: 42, // if specified, the value will be checked
     op: '===', // is default
 
@@ -176,7 +179,7 @@ All operators are stored in the `TestFramework.operators` array, which a script 
     - `key` for `expected in result`.
 - error operators: `error`, `errorMsg`, `errorType`, `hasError`.
 
-`t.test()` has different aliases:
+`test()` has different aliases:
 
 - test on Boolean:
     - `eqvTrue(command, msgOrInfo)` = `test(command, '!!', true, msgOrInfo)`
@@ -210,38 +213,62 @@ See sources in `testframework.js` for details.
 
 ## Command parameter
 
-the `command` parameter of `t.cmd()` and `t.test()` can be either
+the `command` parameter of `cmd()` and `test()` can be either
 
 - a function
 - a string to be executed in the global context (not recommended)
 - an array with a function or string as the first parameter and arguments for the following parameters
 
 ```js
-t.eq(String, ""); // for String()
-t.eq("String()", ""); // equivalent to eval("String()")
-t.eq([String, 2e33], "2e+33"); // for String(2e33)
-t.eq(["String", 2e33], "2e+33"); // equivalent to eval("String(2e33)")
+eq(String, ""); // for String()
+eq("String()", ""); // equivalent to eval("String()")
+eq([String, 2e33], "2e+33"); // for String(2e33)
+eq(["String", 2e33], "2e+33"); // equivalent to eval("String(2e33)")
 ```
 
 Unfortunately, this doesn't work well with methods because the `this` is lost:
 
 ```js
 const obj = [1,2,3];
-t.eq(obj.join, "[1,2,3]"); // error: Value is undefined
+eq(obj.join, "[1,2,3]"); // error: Value is undefined
 ```
 
 To get around this problem, we can use `calleeWrapper()`, which retains the `this` and adds an object name to the function name display:
 
 ```js
 const obj = calleeWrapper("myArray", [1,2,3]);
-t.eq(obj.join, "[1,2,3]"); // obj.join()
-t.eq([obj.join, ", "], "1, 2, 3"); // oobj.join(", ")
+eq(obj.join, "1,2,3"); // obj.join() ; display: myArray.join()
+eq([obj.join, ", "], "1, 2, 3"); // obj.join(", ") ; display: myArray.join(", ")
+```
+
+If the first parameter of `calleeWrapper` is falsy, then a string representation of the object will be used.
+
+```js
+const obj = calleeWrapper("", [1,2,3]);
+eq(obj.join, "1,2,3"); // display: [1, 2, 3].join()
+eq([obj.join, ", "], "1, 2, 3"); // display: [1, 2, 3].join(", ")
+```
+
+Note that `calleeWrapper` is not required with `view`, `document` and `editor`.
+
+For lazy evaluation of function calls as parameters, we can use `lazyfn(fn, ...args)` or `fn(fn, ...args)`:
+
+```js
+function getSep() { return "|"; }
+eq([obj.join, fn(getSep)], "1|2|3"); // obj.join("|") ; display: myArray.join(getSep())
+```
+
+To use a lazy function call in an array or object, we can use `lazyarg(Array|Object)` or `arg(Array|Object)`:
+
+```js
+function foo(a, b) { return `{${a};${b}}`; }
+eq([foo, arg([fn(foo, "0", 1), 2]), 3], "{{0;1},2;3}"); // foo([foo("0", 1), 2], 3)
 ```
 
 
 ## Placeholders
 
-Placeholders are used with `t.cmd()` to insert cursors or selections in the input and expected output. They are configured via `t.config()` or globally via `testFramework.config()`.
+Placeholders are used with `cmd()` to insert cursors or selections in the input and expected output. They are configured via `config()`.
 
 There are a total of 7 placeholders distributed in 5 configuration variables:
 
@@ -268,42 +295,130 @@ These variables are also used when a placeholder has a display conflict with ano
 Unlike the first 5, setting an empty value reset to default value.
 
 
+## Multi-line string parameter
+
+When parameters contain several line breaks, the text may be difficult to read. For example:
+
+```js
+type('{', 'class X\n{\n  void foo()\n  {|}\n};\n'
+        , 'class X\n{\n  void foo()\n  {\n    |\n  }\n};\n');
+});
+```
+
+This can be rewritten with concatenations in this form:
+
+```js
+type('{', 'class X\n'
+        + '{\n'
+        + '  void foo()\n'
+        + '  {|}\n'
+        + '};'
+
+        , 'class X\n'
+        + '{\n'
+        + '  void foo()\n'
+        + '  {\n'
+        + '    |\n'
+        + '  }\n'
+        + '};');
+});
+```
+
+But the use of `'\n` makes reading a little confusing. To overcome this problem, a tagged template named `c` exists:
+
+```js
+type('{', c`> class X
+            > {
+            >   void foo()
+           ->   {|}
+            > }`
+
+        , c`> class X
+            > {
+ the text   >   void foo()
+ here is   ->   {
+ ignored   ->     |
+           ->   }
+            > }`);
+});
+```
+
+Characters at the beginning of a line up to `> ` will be ignored.
+
+
 ## Constants
 
-There are 3 special constants:
+There are 5 special constants:
 
-- `DUAL_MODE`: used with the `blockSelection` configuration variable so that `t.cmd()` runs the test first with block selection disabled, then, if the test does not fail, with block selection enabled.
+- `DUAL_MODE`: used with the `blockSelection` configuration variable so that `cmd()` runs the test first with block selection disabled, then, if the test does not fail, with block selection enabled.
 - `ALWAYS_DUAL_MODE`: Same as `DUAL_MODE`, but the 2 modes are always executed.
-- `AS_INPUT`: Special value for `expectedOutput` from `t.cmd()` which indicates that the expected output is the same as the input value.
+- `AS_INPUT`: Special value for `expectedOutput` from `cmd()` which indicates that the expected output is the same as the input value.
+- `REUSE_LAST_INPUT`: in parameter of `sequence()` and `withInput()`, reuse the previous input.
+- `REUSE_LAST_EXPECTED_OUTPUT`: in parameter of `sequence()` and `withInput()`, use the previous expected output as input.
 
 
 ## Interface
 
-- `loadScript`: load a javascript file in the context of the global object.
-- `loadModule`: load a javascript file as a module.
+- `loadScript(path)`: load a javascript file in the context of the global object.
+- `loadModule(path)`: load a javascript file as a module.
+- `paste(str)`: paste `str` to the current position.
 
-### TestFramework
+- `kdb.type(str)`: insert `str` into current documment. To be used as a command: `cmd([kbd.type, str], ...)`
+- `kdb.enter()`: insert a new line into current documment. To be used as a command: `cmd(enter, ...)`
+- `keys(str) -> kdb.enter | [kbd.type, str]`: To be used as a command: `cmd(keys(str), ...)`
 
 For full documentation, see the functions and classes exported from `testframework.js` (those prefixed with `export`).
 
-- `TestFramework.DUAL_MODE` ; alias: `DUAL_MODE`
-- `TestFramework.ALWAYS_DUAL_MODE` ; alias: `ALWAYS_DUAL_MODE`
-- `TestFramework.EXPECTED_OUTPUT_AS_INPUT` ; alias: `AS_INPUT`
 - `TestFramework.operators`
 - `TestFramework.formatArgs(args, sep)`
 - `TestFramework.toComparableString(value)`
 - `TestFramework.functionCallToString(fn, args)`
-- `TestFramework.calleeWrapper(name, obj, newObj)`
 - `TestFramework.addStringCodeFragments(value, codeFragments, ancestors, mustBeStable)`
 - `TestFramework.addStringCodeFragments.registerClassName(name, addString)`
 - `TestFramework.addStringCodeFragments.registerClass(type, addString)`
 - `TestFramework.addStringCodeFragments.registerSymbol(symbol, addString)`
 - `TestFramework.addStringCodeFragments.register(addString)`
 
-- `testFramework.config(object)`
-- `testFramework.breakOnError(bool)`
-- `testFramework.testCase(nameOrConfig, fn)` ; alias: `testCase`
-- `testFramework.testCaseChain(nameOrConfig, input, fn)` ; alias: `testCaseChain`
-- `testFramework.testCaseWithInput(nameOrConfig, input, fn)` ; alias: `testCaseWithInput`
-- `testFramework.print(...args)` = `testFramework.printSep(' ', ...args)` ; alias: `print`
-- `testFramework.printSep(sep, ...args)` ; alias: `printSep`
+Unless otherwise indicated, these following functions are also found in `TestFramework` under the same name:
+
+- `DUAL_MODE`
+- `ALWAYS_DUAL_MODE`
+- `AS_INPUT` = `TestFramework.EXPECTED_OUTPUT_AS_INPUT`
+- `REUSE_LAST_INPUT`
+- `REUSE_LAST_EXPECTED_OUTPUT`
+- `calleeWrapper(name, obj, newObj)`
+- `LazyFunc(fn, ...args)` ; alias: `fn`, `lazyfn`
+- `LazyArg(Array|Object)` ; alias: `arg`, `lazyarg`
+- `c(strings, ...values)` (= `TestFramework.sanitizeTag`): tagged templates prefix sanitizer
+
+- `config(object)`
+- `testCase(nameOrConfig: Optional[String|Object], fn)`: name is used for filter test. If it is an object, it is passed to `config()`. An object can contain the `name` property.
+- `sequence(nameOrConfig: Optional[String|Object], input, fn)`
+- `withInput(nameOrConfig: Optional[String|Object], input, fn)`
+- `print(...args)`: equivalent to `printSep(' ', ...args)`
+- `printSep(sep, ...args)`
+
+- `cmd(command, input, expectedOutput: String | AS_INPUT, msgOrExpectedResultInfo: undefined | String | Object)`: inside `sequence()` and `withInput()`, the `input` parameter does not exist
+- `xcmd(...)`: Same as `cmd()`, but for an expected failure.
+- `type(str, input, expectedOutput, msgOrExpectedResultInfo)`: alias for `cmd(keys(str), input, expectedOutput, msgOrExpectedResultInfo)`.
+- `xtype(...)`: Same as `type()`, but for an expected failure.
+- `indentFiles(dataDir)`: execute indentation on `${dataDir}/*/origin`, compare with `${dataDir}/*/expected` and write failure results in `${dataDir}/*/actual`. If the `${dataDir}/.kateconfig` file exists, it will be used for each test. Config variables (`kate: ...`) can also be specified at the beginning and end of each test file.
+
+- `test(command, op: String, expected, msgOrInfo)`
+- `xtest(...)`: Same as `test()`, but for an expected failure.
+- `eqvTrue(command, msgOrInfo)`
+- `eqvFalse(command, msgOrInfo)`
+- `eqTrue(command, msgOrInfo)`
+- `eqFalse(command, msgOrInfo)`
+- `error(command, expected, msgOrInfo)`
+- `errorMsg(command, expected, msgOrInfo)`
+- `errorType(command, expected, msgOrInfo)`
+- `hasError(command, msgOrInfo)`
+- `eqv(command, expected, msgOrInfo)`
+- `is(command, expected, msgOrInfo)`
+- `eq(command, expected, msgOrInfo)`
+- `ne(command, expected, msgOrInfo)`
+- `lt(command, expected, msgOrInfo)`
+- `gt(command, expected, msgOrInfo)`
+- `le(command, expected, msgOrInfo)`
+- `ge(command, expected, msgOrInfo)`

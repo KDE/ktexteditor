@@ -1,6 +1,0 @@
-if(1) {
-    mult <- function(a,b) {
-        a*b
-        
-    }
-}

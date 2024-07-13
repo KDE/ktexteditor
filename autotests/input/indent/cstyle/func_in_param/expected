@@ -1,4 +1,0 @@
-console.log("hello", function(){
-  if (true) do_x();
-  return;
-});

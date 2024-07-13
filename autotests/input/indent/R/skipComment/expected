@@ -1,6 +1,0 @@
-data %>%
-    select(-Column) %>%
-    #filter(ID == "id2") %>%
-    gather() %>%
-    drop_na()
-

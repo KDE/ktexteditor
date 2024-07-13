@@ -1,4 +1,0 @@
-# endless01
-def current_time = Time.now
-
-puts "It's #{current_time}!"

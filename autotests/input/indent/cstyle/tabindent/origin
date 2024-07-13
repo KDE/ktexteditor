@@ -1,7 +1,0 @@
-int main()
-{
-	if (true)
-	{
-		while(true)
-	}
-}
