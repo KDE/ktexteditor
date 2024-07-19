@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-06-30 11:21+0900\n"
+"PO-Revision-Date: 2024-07-18 17:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -176,7 +176,7 @@ msgstr "程式碼區塊折疊："
 #, kde-format
 msgid ""
 "If this option is checked, every new view will display marks for folding."
-msgstr "開啟此選項的話，每個新檢視都會顯示程式折疊標記。"
+msgstr "勾選此選項時，每個新檢視都會顯示折疊用的標記。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowFoldingMarkers)
 #: dialogs/bordersappearanceconfigwidget.ui:35
@@ -230,8 +230,8 @@ msgid ""
 "the left hand side.</p><p>The icon border shows bookmark signs, for instance."
 "</p>"
 msgstr ""
-"<p>開啟此選項的話，每個新檢視都會在左手邊顯示圖示邊框。</p> <p>圖示邊框會顯示"
-"如標記等等的符號。</p>"
+"<p>勾選此選項時，每個新檢視都會在左手邊顯示圖示邊框。</p> <p>圖示邊框會顯示如"
+"書籤標記等等的符號。</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkIconBorder)
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMarks)
@@ -247,7 +247,7 @@ msgstr "顯示標記"
 msgid ""
 "If this option is checked, every new view will display line numbers on the "
 "left hand side."
-msgstr "如果勾選此選項，每個新檢視都會在左手邊顯示行號。"
+msgstr "勾選此選項時，每個新檢視都會在左手邊顯示行號。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkLineNumbers)
 #: dialogs/bordersappearanceconfigwidget.ui:112
@@ -261,7 +261,7 @@ msgstr "顯示行號(&L)"
 msgid ""
 "If this option is checked, a small indicator for modified and saved lines is "
 "shown on the left hand side."
-msgstr "如果勾選此選項，每個變更與已儲存的行都會在左手邊顯示一個小圖示。"
+msgstr "勾選此選項時，每個變更與已儲存的行都會在左手邊顯示一個小圖示。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineModification)
 #: dialogs/bordersappearanceconfigwidget.ui:122
@@ -282,8 +282,8 @@ msgid ""
 "<p>If this option is checked, every new view will show marks on the vertical "
 "scrollbar.</p><p>These marks will show bookmarks, for instance.</p>"
 msgstr ""
-"<p>如果勾選此選項，每個新檢視都會顯示垂直捲軸列標記。</p> <p>這些標記可用於，"
-"比方說，顯示書籤。</p>"
+"<p>勾選此選項時，每個新檢視都會顯示垂直捲軸列標記。</p> <p>這些標記可用於，比"
+"方說，顯示書籤。</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:162
@@ -291,7 +291,7 @@ msgstr ""
 msgid ""
 "<p>If this option is checked, hovering over the vertical scrollbar will show "
 "a preview of the text.</p>"
-msgstr "<p>若此選項被勾選，游標在垂直捲軸列上停留將會顯示文字預覽。</p>"
+msgstr "<p>勾選此選項時，游標在垂直捲軸列上停留將會顯示文字預覽。</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarPreview)
 #: dialogs/bordersappearanceconfigwidget.ui:165
@@ -335,7 +335,7 @@ msgstr "小地圖："
 msgid ""
 "If this option is checked, every new view will show a mini map on the "
 "vertical scrollbar."
-msgstr "如果勾選此選項，每個新檢視都會在垂直捲軸列顯示小地圖。"
+msgstr "勾選此選項時，每個新檢視都會在垂直捲軸列顯示小地圖。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMap)
 #: dialogs/bordersappearanceconfigwidget.ui:227
@@ -355,7 +355,7 @@ msgstr "小地圖寬度(&A)："
 msgid ""
 "If this option is checked, every new view will show a mini map of the whole "
 "document on the vertical scrollbar."
-msgstr "如果勾選此選項，每個新檢視都會在垂直捲軸列顯示整份文件的小地圖。"
+msgstr "勾選此選項時，每個新檢視都會在垂直捲軸列顯示整份文件的小地圖。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkScrollbarMiniMapAll)
 #: dialogs/bordersappearanceconfigwidget.ui:266
@@ -543,8 +543,8 @@ msgid ""
 "<p>If this option is checked, a vertical line will be drawn at the word wrap "
 "column as defined in the <strong>Editing</strong> properties.</p>"
 msgstr ""
-"<p>如果核取此選項，將會在單字折行處劃上定義在 <strong>編輯</strong> 屬性的垂"
-"直線段。</p>"
+"<p>勾選此選項時，將會在單字折行處劃上定義在 <strong>編輯</strong> 屬性的垂直"
+"線段。</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowStaticWordWrapMarker)
 #: dialogs/editconfigwidget.ui:42
@@ -3180,6 +3180,12 @@ msgid ""
 "first non-blank character that occurs after a colon to align them all on the "
 "same column."
 msgstr ""
+"這個指令會將所選文字區塊或是整個文件中的行數對齊在引數所指定的正則表達式的欄"
+"位上。<br><br>如果正則表達式引數是空的，它預設會對齊在第一個非空白的字元。"
+"<br>如果正則表達式中有擷取群組，則會縮排到擷取的相符項目上。<br><br><i>範例</"
+"i>:<br>'<code>alignon -</code>' 會在每一行的第一個「-」之前插入空格來讓它們對"
+"齊在同一個欄位上。<br>'<code>alignon :\\s+(.)</code>' 會在第一個位於冒號後方"
+"的非空白字元之前插入空格來讓它們對齊在同一個欄位上。"
 
 #: script/data/commands/utils.js:486
 #, kde-format
@@ -3252,6 +3258,8 @@ msgid ""
 "Select text forward from current cursor position to the first occurrence of "
 "the given argument after it (or the end of the current line by default)."
 msgstr ""
+"從目前游標位置往下方選取文字，直到指定引數第一次出現（或是未指定引數時到目前"
+"行數的結尾）。"
 
 #: script/data/commands/utils.js:504
 #, kde-format
@@ -3260,6 +3268,8 @@ msgid ""
 "the given argument before it (or the beginning of the current line by "
 "default)."
 msgstr ""
+"從目前游標位置往上方選取文字，直到指定引數第一次出現（或是未指定引數時到目前"
+"行數的開頭）。"
 
 #: script/data/indentation/ada.js:2
 #, kde-format
@@ -3489,7 +3499,7 @@ msgstr "<a> 次到 <b> 次之間"
 #: search/katesearchbar.cpp:1173
 #, kde-format
 msgid "Group, capturing"
-msgstr "群組，抓取中"
+msgstr "群組，有擷取"
 
 #: search/katesearchbar.cpp:1174
 #, kde-format
@@ -3584,7 +3594,7 @@ msgstr "反斜線"
 #: search/katesearchbar.cpp:1218
 #, kde-format
 msgid "Group, non-capturing"
-msgstr "群組，未抓取"
+msgstr "群組，不擷取"
 
 #: search/katesearchbar.cpp:1219
 #, kde-format
@@ -4564,7 +4574,7 @@ msgstr "<p>設定指出拼字錯誤行的顏色。</p>"
 #: syntax/katethemeconfig.cpp:297
 #, kde-format
 msgid "Tab and Space Markers"
-msgstr "定位點與空白標記"
+msgstr "Tab 字元與空白標記"
 
 #: syntax/katethemeconfig.cpp:299
 #, kde-format
@@ -6459,6 +6469,12 @@ msgid ""
 "blank character that occurs after a colon to align them all on the same "
 "column."
 msgstr ""
+"這個指令會將所選文字區塊或是整個文件中的行數對齊在一個正則表達式的欄位上，會"
+"請您提供該正則表達式。<br /><br />如果您提供空的正則表達式，它預設會對齊在第"
+"一個非空白的字元。<br />如果您提供的正則表達式中有擷取群組，則會縮排到擷取的"
+"相符項目上。<br /><br /><i>範例</i>:<br />指定「-」時會在每一行的第一個「-」"
+"之前插入空格來讓它們對齊在同一個欄位上。<br />指定「:\\s+(.)」時會在第一個位"
+"於冒號後方的非空白字元之前插入空格來讓它們對齊在同一個欄位上。"
 
 #: view/kateview.cpp:542
 #, kde-format
@@ -6765,23 +6781,18 @@ msgid ""
 msgstr "選擇您希望您輸入的文字插入或覆蓋既存的文字。"
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "空白"
+msgstr "顯示空白字元"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"如果核取此選項，文字會根據螢幕上視窗寬度來折行。<br /><br />由於這只是個檢視"
-"選項，因此不會變更文件內容。"
+"勾選此選項時，文件中的空白字元會以可見方式繪製。<br /><br />這個選項只會改變"
+"顯示方式，不會變更文件內容。"
 
 #: view/kateview.cpp:772
 #, kde-format
@@ -6789,18 +6800,14 @@ msgid "&Dynamic Word Wrap"
 msgstr "動態折行(&D)"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"如果核取此選項，文字會根據螢幕上視窗寬度來折行。<br /><br />由於這只是個檢視"
-"選項，因此不會變更文件內容。"
+"勾選此選項時，文字會根據螢幕上視窗寬度來折行。<br /><br />這個選項只會改變顯"
+"示方式，不會變更文件內容。"
 
 #: view/kateview.cpp:780
 #, kde-format
@@ -6837,7 +6844,7 @@ msgstr "靜態文字折行"
 msgid ""
 "If this option is checked, the text lines will be wrapped at the column "
 "defined in the editing properties."
-msgstr "如果核取此選項，文字會根據定義在「編輯」屬性的欄數來折行。"
+msgstr "勾選此選項時，文字會根據定義在「編輯」屬性的欄數來折行。"
 
 #: view/kateview.cpp:797
 #, kde-format
@@ -6854,14 +6861,14 @@ msgstr "顯示/隱藏文字折行標記，一條在編輯屬性中定義繪製�
 #: view/kateview.cpp:804
 #, kde-format
 msgid "Show Folding &Markers"
-msgstr "顯示折疊記號(&M)"
+msgstr "顯示折疊標記(&M)"
 
 #: view/kateview.cpp:806
 #, kde-format
 msgid ""
 "You can choose if the codefolding marks should be shown, if codefolding is "
 "possible."
-msgstr "如果能使用折疊，您可以選擇是否要顯示折疊記號。"
+msgstr "如果能使用折疊，您可以選擇是否要顯示折疊標記。"
 
 #: view/kateview.cpp:809
 #, kde-format
