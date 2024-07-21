@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-09 00:37+0000\n"
-"PO-Revision-Date: 2024-06-20 22:15+0200\n"
+"PO-Revision-Date: 2024-07-20 15:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -7043,24 +7043,19 @@ msgstr ""
 "felülírja."
 
 #: view/kateview.cpp:765
-#, fuzzy, kde-format
-#| msgid "Spaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Szóközök"
+msgstr "Üres helyek megjelenítése"
 
 #: view/kateview.cpp:768
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"Ha ez az opció be van jelölve, akkor a szöveg a nézet széléhez érve "
-"automatikusan új sorban folytatódik.<br /><br />Ez csak egy nézetopció, a "
-"dokumentum nem változik meg."
+"Ha ez az opció be van jelölve, az üreshelyek láthatóak lesznek ebben a "
+"dokumentumban.<br /><br />Ez csak egy nézetopció, a dokumentum nem változik "
+"meg."
 
 #: view/kateview.cpp:772
 #, kde-format
@@ -7068,11 +7063,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dinamikus sortördelés"
 
 #: view/kateview.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
