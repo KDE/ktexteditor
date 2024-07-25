@@ -1,6 +1,6 @@
 # KDE Config File
 [General]
-Name=C++ (KF6)
+Name=C++ Plugin (KF6)
 Name[ar]=سي++ (KF6)
 Name[bg]=C++ (KF6)
 Name[ca]=C++ (KF6)
@@ -79,6 +79,6 @@ Comment[vi]=Tạo một phần cài cắm C++ KTextEditor để thực hiện c�
 Comment[x-test]=xxGenerates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.xx
 Comment[zh_CN]=生成一个 KTextEditor C++ 插件，用于在 KWrite、Kate、KDevelop 等程序中对文本执行特殊操作。
 Comment[zh_TW]=生成一個 KTextEditor C++ 外掛程式來對 KWrite、Kate 與 KDevelop 中的文字做出特殊操作
-Category=KTextEditor/Plugin
+Category=KTextEditor
 Icon=ktexteditor6-plugin.png
 ShowFilesAfterGeneration=%{dest}/README.md
