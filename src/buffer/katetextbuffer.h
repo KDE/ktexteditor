@@ -240,7 +240,7 @@ public:
         int blockIndex = blockForLine(line);
 
         // get line length
-        return m_blocks.at(blockIndex)->lineLength(line);
+        return m_blocks.at(blockIndex).lineLength(line);
     }
 
     /**
@@ -492,14 +492,14 @@ public:
     {
         // get block, this will assert on invalid line
         const int blockIndex = blockForLine(line);
-        return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly);
+        return m_blocks.at(blockIndex).rangesForLine(line, view, rangesWithAttributeOnly);
     }
 
     void rangesForLine(int line, KTextEditor::View *view, bool rangesWithAttributeOnly, QList<TextRange *> &outRanges) const
     {
         // get block, this will assert on invalid line
         const int blockIndex = blockForLine(line);
-        return m_blocks.at(blockIndex)->rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
+        return m_blocks.at(blockIndex).rangesForLine(line, view, rangesWithAttributeOnly, outRanges);
     }
 
     /**
@@ -551,7 +551,7 @@ private:
     /**
      * List of blocks which contain the lines of this buffer
      */
-    std::vector<TextBlock *> m_blocks;
+    std::vector<TextBlock> m_blocks;
 
     /**
      * Number of lines in buffer

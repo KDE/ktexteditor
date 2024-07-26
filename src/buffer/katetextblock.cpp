@@ -21,8 +21,8 @@ TextBlock::TextBlock(TextBuffer *buffer, int startLine)
 
 TextBlock::~TextBlock()
 {
-    // blocks should be empty before they are deleted!
-    Q_ASSERT(m_blockSize == 0);
+    // Q_ASSERT(m_blockSize == 0); // blocksize might not be empty because of default move ctor
+    // blocks should be empty before they are destroyed!
     Q_ASSERT(m_lines.empty());
     Q_ASSERT(m_cursors.empty());
 
@@ -190,7 +190,7 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
     }
 }
 
-void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex)
+void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex, int thisBlockIdx)
 {
     // calc internal line
     line = line - startLine();
@@ -257,7 +257,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
             auto cursor = *it;
             if (cursor->lineInBlock() == lastLineOfPreviousBlock) {
                 cursor->m_line = 0;
-                cursor->m_block = this;
+                cursor->m_blockIdx = thisBlockIdx;
                 m_cursors.insert(cursor);
 
                 // remember range, if any, avoid double insert
@@ -514,13 +514,10 @@ void TextBlock::debugPrint(int blockIndex) const
     }
 }
 
-TextBlock *TextBlock::splitBlock(int fromLine)
+void TextBlock::splitBlock(int fromLine, TextBlock *newBlock, int newBlockIdx)
 {
     // half the block
     int linesOfNewBlock = lines() - fromLine;
-
-    // create and insert new block
-    TextBlock *newBlock = new TextBlock(m_buffer, startLine() + fromLine);
 
     // move lines
     newBlock->m_lines.reserve(linesOfNewBlock);
@@ -538,7 +535,7 @@ TextBlock *TextBlock::splitBlock(int fromLine)
         auto cursor = *it;
         if (cursor->lineInBlock() >= fromLine) {
             cursor->m_line = cursor->lineInBlock() - fromLine;
-            cursor->m_block = newBlock;
+            cursor->m_blockIdx = newBlockIdx;
 
             // add to new, remove from current
             newBlock->m_cursors.insert(cursor);
@@ -562,17 +559,14 @@ TextBlock *TextBlock::splitBlock(int fromLine)
         updateRange(range);
         newBlock->updateRange(range);
     }
-
-    // return the new generated block
-    return newBlock;
 }
 
-void TextBlock::mergeBlock(TextBlock *targetBlock)
+void TextBlock::mergeBlock(TextBlock *targetBlock, int targetBlockIdx)
 {
     // move cursors, do this first, now still lines() count is correct for target
     for (TextCursor *cursor : m_cursors) {
         cursor->m_line = cursor->lineInBlock() + targetBlock->lines();
-        cursor->m_block = targetBlock;
+        cursor->m_blockIdx = targetBlockIdx;
         targetBlock->m_cursors.insert(cursor);
     }
     m_cursors.clear();
@@ -624,7 +618,7 @@ void TextBlock::deleteBlockContent()
     clearLines();
 }
 
-void TextBlock::clearBlockContent(TextBlock *targetBlock)
+void TextBlock::clearBlockContent(TextBlock *targetBlock, int targetBlockIdx)
 {
     // move cursors, if not belonging to a range
     // we can do in-place editing of the current set of cursors
@@ -633,7 +627,7 @@ void TextBlock::clearBlockContent(TextBlock *targetBlock)
         if (!cursor->kateRange()) {
             cursor->m_column = 0;
             cursor->m_line = 0;
-            cursor->m_block = targetBlock;
+            cursor->m_blockIdx = targetBlockIdx;
             targetBlock->m_cursors.insert(cursor);
 
             // remove it and advance to next element

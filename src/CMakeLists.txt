@@ -341,6 +341,7 @@ add_executable(ktexteditor_script_tester
 target_link_libraries(ktexteditor_script_tester
     Qt6::Qml
     KF6TextEditor
+    KF6::Codecs
 )
 set_property(TARGET ktexteditor_script_tester PROPERTY OUTPUT_NAME ktexteditor-script-tester6)
 install(TARGETS ktexteditor_script_tester ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

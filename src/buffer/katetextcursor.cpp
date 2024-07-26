@@ -35,8 +35,8 @@ TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, KTextEditor::Cursor
 TextCursor::~TextCursor()
 {
     // remove cursor from block or buffer
-    if (m_block) {
-        m_block->removeCursor(this);
+    if (m_blockIdx != -1) {
+        m_buffer.m_blocks[m_blockIdx].removeCursor(this);
     }
 
     // only cursors without range are here!
@@ -47,16 +47,16 @@ TextCursor::~TextCursor()
 
 void TextCursor::setPosition(const TextCursor &position)
 {
-    if (m_block && m_block != position.m_block) {
-        m_block->removeCursor(this);
+    if (m_blockIdx != -1 && m_blockIdx != position.m_blockIdx) {
+        m_buffer.m_blocks[m_blockIdx].removeCursor(this);
     }
 
     m_line = position.m_line;
     m_column = position.m_column;
 
-    m_block = position.m_block;
-    if (m_block) {
-        m_block->insertCursor(this);
+    m_blockIdx = position.m_blockIdx;
+    if (m_blockIdx != -1) {
+        m_buffer.m_blocks[m_blockIdx].insertCursor(this);
     }
 }
 
@@ -83,25 +83,25 @@ void TextCursor::setPosition(KTextEditor::Cursor position, bool init)
         if (!m_range) {
             m_buffer.m_invalidCursors.insert(this);
         }
-        if (m_block) {
-            m_block->removeCursor(this);
+        if (m_blockIdx != -1) {
+            m_buffer.m_blocks[m_blockIdx].removeCursor(this);
         }
-        m_block = nullptr;
+        m_blockIdx = -1;
         m_line = m_column = -1;
         return;
     }
 
     // find new block if m_block doesn't contain the line or if the block is null
-    TextBlock *oldBlock = m_block;
+    TextBlock *oldBlock = m_blockIdx != -1 ? &m_buffer.m_blocks[m_blockIdx] : nullptr;
     int startLine = oldBlock ? oldBlock->startLine() : -1;
     if (!oldBlock || position.line() < startLine || position.line() >= startLine + oldBlock->lines()) {
         if (oldBlock) {
             oldBlock->removeCursor(this);
         }
-        m_block = m_buffer.m_blocks[m_buffer.blockForLine(position.line())];
-        Q_ASSERT(m_block);
-        m_block->insertCursor(this);
-        startLine = m_block->startLine();
+        m_blockIdx = m_buffer.blockForLine(position.line());
+        TextBlock &block = m_buffer.m_blocks[m_blockIdx];
+        block.insertCursor(this);
+        startLine = block.startLine();
     }
 
     // if cursor was invalid before, remove it from invalid cursor list

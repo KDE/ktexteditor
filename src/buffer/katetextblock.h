@@ -35,6 +35,12 @@ class TextRange;
 class TextBlock
 {
 public:
+    Q_DISABLE_COPY(TextBlock)
+
+    TextBlock() = default;
+    TextBlock(TextBlock &&) = default;
+    TextBlock &operator=(TextBlock &&) = default;
+
     /**
      * Construct an empty text block.
      * @param buffer parent text buffer
@@ -126,7 +132,7 @@ public:
      * @param previousBlock previous block, if any, if we unwrap first line in block, we need to have this
      * @param fixStartLinesStartIndex start index to fix start lines, normally this is this block or the previous one
      */
-    void unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex);
+    void unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex, int thisBlockIdx);
 
     /**
      * Insert text at given cursor position.
@@ -154,13 +160,13 @@ public:
      * @param fromLine line from which to split
      * @return new block containing the lines + cursors removed from this one
      */
-    TextBlock *splitBlock(int fromLine);
+    void splitBlock(int fromLine, TextBlock *newBlock, int newBlockIdx);
 
     /**
      * Merge this block with given one, the given one must be a direct predecessor.
      * @param targetBlock block to merge with
      */
-    void mergeBlock(TextBlock *targetBlock);
+    void mergeBlock(TextBlock *targetBlock, int targetBlockIdx);
 
     /**
      * Delete the block content, delete all lines and delete all cursors not bound to ranges.
@@ -174,7 +180,7 @@ public:
      * This is used by clear() of TextBuffer.
      * @param targetBlock empty target block for cursors
      */
-    void clearBlockContent(TextBlock *targetBlock);
+    void clearBlockContent(TextBlock *targetBlock, int targetBlockIdx);
 
     /**
      * Return all ranges in this block which might intersect the given line.
@@ -274,7 +280,7 @@ private:
     /**
      * Startline of this block
      */
-    int m_startLine;
+    int m_startLine = -1;
 
     /**
      * size of block i.e., number of QChars

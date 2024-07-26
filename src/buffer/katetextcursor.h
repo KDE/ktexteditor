@@ -13,6 +13,7 @@
 #include <ktexteditor/movingcursor.h>
 
 #include "katetextblock.h"
+#include "katetextbuffer.h"
 
 namespace Kate
 {
@@ -123,8 +124,8 @@ public:
      */
     int lineInternal() const
     {
-        if (m_block) {
-            return m_block->startLine() + m_line;
+        if (m_blockIdx != -1) {
+            return m_buffer.m_blocks[m_blockIdx].startLine() + m_line;
         }
         return -1;
     }
@@ -168,7 +169,7 @@ public:
      */
     int lineInBlock() const
     {
-        if (m_block) {
+        if (m_blockIdx != -1) {
             return m_line;
         }
         return -1;
@@ -202,7 +203,7 @@ private:
     /**
      * parent text block, valid cursors always belong to a block, else they are invalid.
      */
-    TextBlock *m_block = nullptr;
+    int m_blockIdx = -1;
 
     /**
      * line, offset in block, or -1
