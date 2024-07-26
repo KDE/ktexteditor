@@ -173,20 +173,18 @@ int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
     }
 
     int off = 0;
-    int line = 0;
     for (auto block : m_blocks) {
         if (block->startLine() + block->lines() < c.line()) {
             off += block->blockSize();
-            line += block->lines();
         } else {
-            const int lines = block->lines();
-            for (int i = 0; i < lines; ++i) {
+            int start = block->startLine();
+            int end = start + block->lines();
+            for (int line = start; line < end; ++line) {
                 if (line >= c.line()) {
                     off += qMin(c.column(), block->lineLength(line));
                     return off;
                 }
                 off += block->lineLength(line) + 1;
-                line++;
             }
         }
     }
