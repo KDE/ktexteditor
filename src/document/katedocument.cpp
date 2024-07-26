@@ -1700,12 +1700,28 @@ uint KTextEditor::DocumentPrivate::redoCount() const
 
 void KTextEditor::DocumentPrivate::undo()
 {
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(true);
+    }
+
     m_undoManager->undo();
+
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(false);
+    }
 }
 
 void KTextEditor::DocumentPrivate::redo()
 {
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(true);
+    }
+
     m_undoManager->redo();
+
+    for (auto v : std::as_const(m_views)) {
+        static_cast<KTextEditor::ViewPrivate *>(v)->completionWidget()->setIgnoreBufferSignals(false);
+    }
 }
 // END
 
