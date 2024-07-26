@@ -637,14 +637,14 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 break;
             }
 
-                // ensure blocks aren't too large
-                if (m_blocks.back()->lines() >= BufferBlockSize) {
-                    m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
-                }
+            // ensure blocks aren't too large
+            if (m_blocks.back()->lines() >= BufferBlockSize) {
+                m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
+            }
 
-                // append line to last block
-                m_blocks.back()->appendLine(QString(file.unicode() + offset, length));
-                ++m_lines;
+            // append line to last block
+            m_blocks.back()->appendLine(QString(file.unicode() + offset, length));
+            ++m_lines;
         }
 
         // if no encoding error, break out of reading loop
