@@ -1,6 +1,17 @@
 # KDE Config File
 [General]
 Name=C++ Plugin (KF6)
+Name[ca]=Connector C++ (KF6)
+Name[ca@valencia]=Connector C++ (KF6)
+Name[es]=Complemento de C++ (KF6)
+Name[ka]=C++ დამატება (KF6)
+Name[nl]=C++ plug-in (KF6)
+Name[pl]=Wtyczka C++ (KF6)
+Name[sl]=C++ Vtičnik (KF6)
+Name[sv]=C++ Insticksprogram (KF6)
+Name[tr]=C++ Eklentisi (KF6)
+Name[uk]=Додаток мовою C++ (KF6)
+Name[x-test]=xxC++ Plugin (KF6)xx
 Comment=Generates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.
 Comment[ar]=يُولّد ملحقة «محرّر نصوصك» بلغة سي++ لإجراء عمليات خاصة على النصوص في «كاتبك» و«كيت» و«مطوّرك» وغيرها.
 Comment[az]=KWrite, Kate, KDevelop və s. proqramlarında mətnlər üzərində iş üçün C++ proqram dilində yazılmış KTextEditor əlavəsi modulu.
@@ -41,7 +52,7 @@ Comment[sr@ijekavianlatin]=Generiše C++ priključak za KTextEditor, za posebne 
 Comment[sr@latin]=Generiše C++ priključak za KTextEditor, za posebne postupke nad tekstom u K‑pisanju, Kate, KDevelopu itd.
 Comment[sv]=Skapar en Ktexteditor C++ insticksmodul för att utföra särskilda åtgärder med text i Kwrite, Kate, KDevlop, etc.
 Comment[tg]=Васлкунаки "KTextEditor C++"-ро барои иҷрокунии амалиётҳои махсус бо матнҳо дар KWrite, Kate, KDevelop ва ғ. эҷод мекунад.
-Comment[tr]=K Yaz, Kate, K Geliştir vb. içindeki metin üzerinde özel işlemler yapmak için bir KTextEditor C++ eklentisi üretir.
+Comment[tr]=K Yaz, Kate, K Geliştir vb. içindeki metin üzerinde özel işlemler yapmak üzere bir KTextEditor C++ eklentisi üretir.
 Comment[uk]=Створює додаток C++ до KTextEditor для виконання спеціальних дій над текстом у KWrite, Kate, KDevelop тощо.
 Comment[vi]=Tạo một phần cài cắm C++ KTextEditor để thực hiện các thao tác đặc biệt với văn bản trong KWrite, Kate, KDevelop, v.v.
 Comment[x-test]=xxGenerates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.xx
