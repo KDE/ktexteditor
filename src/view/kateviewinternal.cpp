@@ -4216,20 +4216,24 @@ void KateViewInternal::doDrag()
     const QFontMetricsF &fm = renderer()->currentFontMetrics();
     for (int l = startLine; l <= endLine; ++l) {
         w = std::max((int)fm.horizontalAdvance(doc()->line(l)), w);
-        h += renderer()->lineHeight();
+        if (l == endLine) {
+            h += renderer()->lineHeight() * (cache()->viewLine(endCur) + 1);
+        } else {
+            h += renderer()->lineHeight() * cache()->viewLineCount(l);
+        }
     }
     qreal scale = h > m_view->height() / 2 ? 0.75 : 1.0;
 
     // Calculate start x pos on start line
     int sX = 0;
     if (startLine == startCur.line()) {
-        sX = renderer()->cursorToX(cache()->textLayout(startCur), startCur, !view()->wrapCursor());
+        sX = renderer()->cursorToX(cache()->textLayout(startCur), startCur, false);
     }
 
     // Calculate end x pos on end line
     int eX = 0;
     if (endLine == endCur.line()) {
-        eX = renderer()->cursorToX(cache()->textLayout(endCur), endCur, !view()->wrapCursor());
+        eX = renderer()->cursorToX(cache()->textLayout(endCur), endCur, false);
     }
 
     // These are the occurunce highlights, the ones you get when you select a word
@@ -4245,7 +4249,7 @@ void KateViewInternal::doDrag()
     if (!pixmap.isNull()) {
         pixmap.setDevicePixelRatio(dpr);
         pixmap.fill(Qt::transparent);
-        renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, scale);
+        renderer()->paintSelection(&pixmap, startLine, sX, endLine, eX, cache()->viewWidth(), scale);
 
         if (view()->selection()) {
             // Tell the view to restore the highlights

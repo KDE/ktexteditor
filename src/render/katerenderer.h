@@ -406,7 +406,7 @@ public:
      * @param xEnd              end pos on @a endLine in pixels
      * @param scale             the amount of scaling to apply. Default is 1.0, negative values are not supported
      */
-    void paintSelection(QPaintDevice *d, int startLine, int xStart, int endLine, int xEnd, qreal scale = 1.0);
+    void paintSelection(QPaintDevice *d, int startLine, int xStart, int endLine, int xEnd, int viewWidth, qreal scale = 1.0);
 
 private:
     /**

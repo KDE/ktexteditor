@@ -1491,7 +1491,7 @@ void KateRenderer::setCaretOverrideColor(const QColor &color)
     m_caretOverrideColor = color;
 }
 
-void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, int endLine, int xEnd, qreal scale)
+void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, int endLine, int xEnd, int viewWidth, qreal scale)
 {
     if (!d || scale < 0.0) {
         return;
@@ -1523,13 +1523,13 @@ void KateRenderer::paintSelection(QPaintDevice *d, int startLine, int xStart, in
         // compute layout WITHOUT cache to not poison it + render it
         KateLineLayout lineLayout(*this);
         lineLayout.setLine(line, -1);
-        layoutLine(&lineLayout, -1 /* no wrap */, false /* no layout cache */);
+        layoutLine(&lineLayout, viewWidth, false /* no layout cache */);
         KateRenderer::PaintTextLineFlags flags;
         flags.setFlag(KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
         flags.setFlag(KateRenderer::SkipDrawLineSelection);
         paintTextLine(paint, &lineLayout, 0, 0, QRectF{}, nullptr, flags);
 
         // translate for next line
-        paint.translate(0, lineHeight);
+        paint.translate(0, lineHeight * lineLayout.viewLineCount());
     }
 }
