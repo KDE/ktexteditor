@@ -520,6 +520,28 @@ void KTextEditor::ViewPrivate::setupActions()
                  "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
         connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::cleanIndent);
 
+        a = ac->addAction(QStringLiteral("tools_convertTabsSpaces"));
+        a->setText(i18n("Convert Indentation to Spaces"));
+        connect(a, &QAction::triggered, this, [this] {
+            doc()->config()->setReplaceTabsDyn(true);
+            doc()->indent(doc()->documentRange(), 0);
+        });
+
+        a = ac->addAction(QStringLiteral("tools_convertSpacesTabs"));
+        a->setText(i18n("Convert Indentation to Tabs"));
+        connect(a, &QAction::triggered, this, [this] {
+            auto config = doc()->config();
+            if (config->replaceTabsDyn()) {
+                config->configStart();
+                config->setReplaceTabsDyn(false);
+                config->setTabWidth(config->indentationWidth());
+                config->configEnd();
+            } else {
+                config->setTabWidth(config->indentationWidth());
+            }
+            doc()->indent(doc()->documentRange(), 0);
+        });
+
         a = ac->addAction(QStringLiteral("tools_formatIndent"));
         a->setText(i18n("&Format Indentation"));
         a->setWhatsThis(i18n("Use this to auto indent the current line or block of text to its proper indent level."));
