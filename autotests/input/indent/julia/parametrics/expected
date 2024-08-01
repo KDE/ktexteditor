@@ -1,0 +1,3 @@
+test = SomeParametricType{Int,
+                          Float,
+                          AbstractVector}()

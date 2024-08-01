@@ -37,8 +37,6 @@ static void compareOutput(const QString &suffixFile, QJSEngine &engine, KTextEdi
         return value.toString() + u": "_s + value.property(u"stack"_s).toString();
     };
 
-    scriptTester.resetCounters();
-
     /*
      * execute
      */
@@ -53,7 +51,7 @@ static void compareOutput(const QString &suffixFile, QJSEngine &engine, KTextEdi
     /*
      * write counters and flush
      */
-    scriptTester.writeSummary();
+    scriptTester.writeAndResetCounters();
     scriptTester.stream() << '\n';
     scriptTester.stream().flush();
 
@@ -203,9 +201,8 @@ void ScriptTesterTest::testPrintExpression()
                                           .resultReplacement = u"<rep>"_s,
                                       },
                               },
-                              ScriptTester::Paths{},
+                              ScriptTester::JSPaths{},
                               ScriptTester::TestExecutionConfig{},
-                              ScriptTester::DiffCommand{},
                               ScriptTester::Placeholders{
                                   .cursor = u'|',
                                   .selectionStart = u'[',
@@ -228,8 +225,8 @@ void ScriptTesterTest::testPrintExpression()
         return u"(function(env, argv){"
                u"const TestFramework = this.loadModule('" JS_SCRIPTTESTER_DATA_DIR
                u"testframework.js');"
-               u"TestFramework.init(this, env, 2);"
-               u"var {lt, cmd, print, config, testCase, withInput} = TestFramework;"
+               u"var testFramework = new TestFramework.TestFramework(this, env);"
+               u"var print = testFramework.print.bind(testFramework);"
                u""_s
             + program + u"})"_s;
     };
@@ -241,17 +238,19 @@ void ScriptTesterTest::testPrintExpression()
                   CompareData{
                       .program = makeProgram(uR"(
         function foo() { return true; }
-        config({blockSelection: 0})
-        testCase('MyTest', () => {
-            cmd(foo, 'abc\ndef', 'abc\ndef|') // no error
-            cmd(foo, 'abc\ndef', 'abc\ndef|', { expected: 1 })
-            cmd(foo, 'abc', 'abc\ndef|', { expected: {a:42} })
-            config({virtualText: '@', blockSelection: 1})
-            cmd(foo, 'abcxxxxxxxxx|[\ndaa aaa\ndaaaa]aaaaaef', 'abc@@@|\nabc\ndef')
+        testFramework
+        .config({blockSelection: 0})
+        .testCase('MyTest', (ctx) => {
+            ctx
+            .cmd(foo, 'abc\ndef', 'abc\ndef|') // no error
+            .cmd(foo, 'abc\ndef', 'abc\ndef|', { expected: 1 })
+            .cmd(foo, 'abc', 'abc\ndef|', { expected: {a:42} })
+            .config({virtualText: '@', blockSelection: 1})
+            .cmd(foo, 'abcxxxxxxxxx|[\ndaa aaa\ndaaaa]aaaaaef', 'abc@@@|\nabc\ndef')
             ;
         });
     )"_s),
-                      .expectedOutput = uR"(<fileName>myfile</>:<lineNumber>5</>: <testName>MyTest</>: <error>Result differs
+                      .expectedOutput = uR"(<fileName>myfile</>:<lineNumber>7</>: <testName>MyTest</>: <error>Result differs
 <error>cmd `</><program>foo() === {expectedResult}</><error>`</><blockSelectionInfo> [blockSelection=0]</>:
 <labelInfo>  input:    </><result>abc</><rep>\n</><result>def</><cursor>|</>
 <labelInfo>  output:   </><result>abc</><rep>\n</><result>def</><cursor>|</>
@@ -260,7 +259,7 @@ void ScriptTesterTest::testPrintExpression()
   expected: <result>1</>
             <carret>^~~</>
 
-<fileName>myfile</>:<lineNumber>6</>: <testName>MyTest</>: <error>Output and Result differs
+<fileName>myfile</>:<lineNumber>8</>: <testName>MyTest</>: <error>Output and Result differs
 <error>cmd `</><program>foo() === {expectedResult}</><error>`</><blockSelectionInfo> [blockSelection=0]</>:
   input:    <result>abc</><cursor>|</>
   output:   <result>abc</><cursor>|</>
@@ -271,7 +270,7 @@ void ScriptTesterTest::testPrintExpression()
   expected: <result>{a: 42}</>
             <carret>^~~</>
 
-<fileName>myfile</>:<lineNumber>8</>: <testName>MyTest</>: <error>Output differs
+<fileName>myfile</>:<lineNumber>10</>: <testName>MyTest</>: <error>Output differs
 <error>cmd `</><program>foo()</><error>`</><blockSelectionInfo> [blockSelection=1]</>:
   input:    <result>abcxx</><blockSelection>[</><result><inSelection>xxxxxxx</><cursor><inSelection>|</><selection>]</><rep>↵</>
             <result>daa a</><blockSelection>[</><result><inSelection>aa</></><virtualText><inSelection>@@@@@</><blockSelection>]</><rep>↵</>
@@ -292,31 +291,32 @@ Success: <success>1</>  Failure: <error>3</>
 )"_s,
                   });
 
-    compareOutput(u"withInput"_s,
+    compareOutput(u"testCaseWithInput"_s,
                   engine,
                   scriptTester,
                   buffer,
                   CompareData{
                       .program = makeProgram(uR"(
         function foo() { return true; }
-        config({blockSelection: 0})
-        withInput('MyTest2', 'abc|', () => {
+        testFramework
+        .config({blockSelection: 0})
+        .testCaseWithInput('MyTest2', 'abc|', (ctx) => {
             print('print');
-            cmd(foo, TestFramework.EXPECTED_OUTPUT_AS_INPUT); // no error
-            cmd(foo, 'abc\ndef|');
-            cmd(foo, 'abc\ndef|', { expected: {a:42} });
-            lt(foo, 1);
+            ctx.cmd(foo, TestFramework.EXPECTED_OUTPUT_AS_INPUT); // no error
+            ctx.cmd(foo, 'abc\ndef|');
+            ctx.cmd(foo, 'abc\ndef|', { expected: {a:42} });
+            ctx.lt(foo, 1);
         });
     )"_s),
-                      .expectedOutput = uR"(<fileName>myfile</>:<lineNumber>4</><debugMsg>: </><debugMarker>PRINT:</><debugMsg> print</>
-<fileName>myfile</>:<lineNumber>6</>: <testName>MyTest2</>: <error>Output differs
+                      .expectedOutput = uR"(<fileName>myfile</>:<lineNumber>5</><debugMsg>: </><debugMarker>PRINT:</><debugMsg> print</>
+<fileName>myfile</>:<lineNumber>7</>: <testName>MyTest2</>: <error>Output differs
 <error>cmd `</><program>foo()</><error>`</><blockSelectionInfo> [blockSelection=0]</>:
   input:    <result>abc</><cursor>|</>
   output:   <result>abc</><cursor>|</>
   expected: <result>abc</><rep>\n</><result>def</><cursor>|</>
                <carret>^~~</>
 
-<fileName>myfile</>:<lineNumber>7</>: <testName>MyTest2</>: <error>Output and Result differs
+<fileName>myfile</>:<lineNumber>8</>: <testName>MyTest2</>: <error>Output and Result differs
 <error>cmd `</><program>foo() === {expectedResult}</><error>`</><blockSelectionInfo> [blockSelection=0]</>:
   input:    <result>abc</><cursor>|</>
   output:   <result>abc</><cursor>|</>
@@ -327,7 +327,7 @@ Success: <success>1</>  Failure: <error>3</>
   expected: <result>{a: 42}</>
             <carret>^~~</>
 
-<fileName>myfile</>:<lineNumber>8</>: <testName>MyTest2</>: <error>Result differs
+<fileName>myfile</>:<lineNumber>9</>: <testName>MyTest2</>: <error>Result differs
 <error>test `</><program>foo() < {expected}</><error>`</><blockSelectionInfo> [blockSelection=0]</>:
   result:   <result>true</>
   expected: <result>1</>

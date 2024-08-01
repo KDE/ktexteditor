@@ -225,9 +225,9 @@ public:
     };
 
     /**
-     * Folder path for javascript scripts and data test.
+     * Folder Path for javascript scripts.
      */
-    struct Paths {
+    struct JSPaths {
         /// Paths for \ref loadScript().
         QStringList scripts;
         /// Paths for \ref require() (KTextEditor JS API).
@@ -236,23 +236,15 @@ public:
         QStringList files;
         /// Paths for \ref loadModule().
         QStringList modules;
-        /// Base path for \ref testIndentFiles().
-        QString indentBaseDir;
     };
 
     struct TestExecutionConfig {
         /**
          * maximum number of tests that can fail before the framework
-         * returns a StopCaseError and execution stops.
+         * returns a StopCaseErrorand execution stops.
          * Negative value or 0 means infinity.
          */
         int maxError = 0;
-
-        /**
-         * When true, xcmd() and xtest() functions will always return a failure.
-         */
-        bool xCheckAsFailure = false;
-
         /**
          * A pattern include or exclude test.
          */
@@ -260,19 +252,10 @@ public:
         PatternType patternType = PatternType::Inactive;
     };
 
-    /**
-     * Diff command for \c testIndentFiles().
-     */
-    struct DiffCommand {
-        QString path;
-        QStringList args;
-    };
-
     explicit ScriptTester(QIODevice *output,
                           const Format &format,
-                          const Paths &paths,
+                          const JSPaths &paths,
                           const TestExecutionConfig &executionConfig,
-                          const DiffCommand &diffCmd,
                           Placeholders placeholders,
                           QJSEngine *engine,
                           DocumentPrivate *doc,
@@ -289,36 +272,13 @@ public:
 
     // KTextEditor API
     //@{
-    /// See \ref Paths.
+    /// See \ref JSPaths.
     Q_INVOKABLE QString read(const QString &file);
-    /// See \ref Paths.
+    /// See \ref JSPaths.
     Q_INVOKABLE void require(const QString &file);
     /// See \ref DebugOption.
     Q_INVOKABLE void debug(const QString &msg);
     //@}
-
-    // Keyboard
-    //@{
-    Q_INVOKABLE void type(const QString &str);
-    Q_INVOKABLE void enter();
-    //@}
-
-    // Utility function
-    //@{
-    Q_INVOKABLE void paste(const QString &str);
-    //@}
-
-    /**
-     * Test the indentation of all files in the \p dataDir folder.
-     * This folder must contain subfolders with \c origin and \c expected files.
-     * If the result is different, a file named \c actual will be written and
-     * the difference will be displayed.
-     * @param name name of test
-     * @param dataDir path of directory
-     * @param nthStack call stack line where to find test file name and line number
-     * @return true when the indentation matches the expected file.
-     */
-    Q_INVOKABLE bool testIndentFiles(const QString &name, const QString &dataDir, int nthStack, bool exitOnError);
 
     /**
      * Load a javascript module.
@@ -349,12 +309,7 @@ public:
     /**
      * Displays test information such as the number of successes or failures.
      */
-    void writeSummary();
-
-    /**
-     * Reset all counters.
-     */
-    void resetCounters();
+    void writeAndResetCounters();
 
     /**
      * @param name name of test
@@ -379,12 +334,12 @@ public:
     /**
      * Saves the last state of the configuration to restore it later.
      */
-    Q_INVOKABLE void pushConfig();
+    Q_INVOKABLE void saveConfig();
 
     /**
      * Restores the last saved configuration.
      */
-    Q_INVOKABLE void popConfig();
+    Q_INVOKABLE void restoreConfig();
 
     /**
      * Evaluates \p program and returns the result of the evaluation.
@@ -468,10 +423,9 @@ public:
     /**
      * Increment the success counter or the failure counter.
      * @param isSuccessNotAFailure \c true for the success counter, \c false for the failure counter
-     * @param xcheck Boolean: true for an expected failure
      * @return \p isSuccessNotAFailure
      */
-    Q_INVOKABLE bool incrementCounter(bool isSuccessNotAFailure, bool xcheck);
+    Q_INVOKABLE bool incrementCounter(bool isSuccessNotAFailure);
 
     /**
      * Increment the error counter.
@@ -544,9 +498,19 @@ public:
                                      const QString &expectedResult,
                                      int options);
 
+    struct EditorConfig {
+        QString syntax;
+        QString indentationMode;
+        int indentationWidth;
+        int tabWidth;
+        bool replaceTabs;
+        bool overrideMode;
+        bool indentPastedTest;
+    };
+
 private:
-    struct Replacements;
     struct TextItem;
+    struct Replacements;
 
     struct DocumentText {
         std::vector<TextItem> items;
@@ -563,7 +527,6 @@ private:
         int totalSelection = 0;
         //@}
         bool hasFormattingItems = false;
-        bool hasBlockSelectionItems = false;
         bool blockSelection = false;
 
         DocumentText();
@@ -585,12 +548,6 @@ private:
     };
 
     /**
-     * Init config of m_view and m_doc.
-     */
-    void initDocConfig();
-    void syncIndenter();
-
-    /**
      * Init m_view and m_doc.
      */
     void initInputDoc();
@@ -608,26 +565,6 @@ private:
 
     bool checkMultiCursorCompatibility(const DocumentText &doc, bool blockSelection, QString *err);
 
-    struct EditorConfig {
-        QString syntax;
-        QString indentationMode;
-        int indentationWidth;
-        int tabWidth;
-        bool replaceTabs;
-        bool autoBrackets;
-
-        bool updated;
-        bool inherited;
-    };
-
-    static EditorConfig makeEditorConfig();
-
-    struct Config {
-        Placeholders fallbackPlaceholders;
-        Placeholders placeholders;
-        EditorConfig editorConfig;
-    };
-
     QJSEngine *m_engine;
     DocumentPrivate *m_doc;
     ViewPrivate *m_view;
@@ -635,24 +572,22 @@ private:
     DocumentText m_output;
     DocumentText m_expected;
     Placeholders m_fallbackPlaceholders;
+    Placeholders m_savedFallbackPlaceholders;
     Placeholders m_defaultPlaceholders;
     Placeholders m_placeholders;
+    Placeholders m_savedPlaceholders;
     EditorConfig m_editorConfig;
+    EditorConfig m_savedEditorConfig;
     QTextStream m_stream;
     QString m_debugMsg;
     QString m_stringBuffer;
     Format m_format;
-    Paths m_paths;
-    std::vector<Config> m_configStack;
+    JSPaths m_paths;
     QMap<QString, QString> m_libraryFiles;
     TestExecutionConfig m_executionConfig;
-    DiffCommand m_diffCmd;
-    bool m_diffCmdLoaded = false;
     bool m_hasDebugMessage = false;
     int m_successCounter = 0;
     int m_failureCounter = 0;
-    int m_xSuccessCounter = 0;
-    int m_xFailureCounter = 0;
     int m_skipedCounter = 0;
     int m_errorCounter = 0;
     int m_breakOnErrorCounter = 0;

@@ -1,0 +1,4 @@
+if true
+    x = testarray[5:end]
+    z = 5
+end

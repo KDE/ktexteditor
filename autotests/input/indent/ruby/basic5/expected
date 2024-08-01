@@ -1,0 +1,15 @@
+# basic5.txt - access modifiers before `def`
+
+class MyClass
+  public def foo
+    puts "in foo"
+  end
+
+  protected def bar(x)
+    puts "in bar with #{x}"
+  end
+
+  private def bat y
+    puts "in bat with #{y}"
+  end
+end

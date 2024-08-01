@@ -58,7 +58,7 @@ var StatementStart = /^\s*(if|when|while|else|elsif|loop|for\b.*\b(loop|use)|beg
 
 function dbg() {
     if (debugMode) {
-        debug(Array.prototype.join.call(arguments, ' '));
+        debug.apply(this, arguments);
     }
 }
 

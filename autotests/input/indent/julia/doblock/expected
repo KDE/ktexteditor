@@ -1,0 +1,3 @@
+open("test.txt", "r") do f # testcomment abcde
+    read(f, String)
+end
