@@ -653,12 +653,24 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
             QRegion region(0, 0, pl.maxWidth, rangeptr.viewLineCount() * m_fontHeight);
 
             if (line == pl.firstline) {
-                region = region.subtracted(QRegion(0, 0, m_renderer->cursorToX(rangeptr.viewLine(0), pl.selectionRange.start()), m_fontHeight));
+                int l = rangeptr.viewLineForColumn(pl.selectionRange.start().column());
+                // clip viewlines above the selection
+                for (int vl = 0; vl < l; ++vl) {
+                    region = region.subtracted(QRegion(0, vl * m_fontHeight, pl.maxWidth, m_fontHeight));
+                }
+                region = region.subtracted(QRegion(0, 0, m_renderer->cursorToX(rangeptr.viewLine(l), pl.selectionRange.start()), m_fontHeight));
             }
 
             if (line == pl.lastline) {
-                int _x = m_renderer->cursorToX(rangeptr.viewLine(rangeptr.viewLineCount() - 1), pl.selectionRange.end());
-                region = region.subtracted(QRegion(_x, 0, pl.maxWidth - _x, m_fontHeight));
+                int vl = rangeptr.viewLineForColumn(pl.selectionRange.end().column());
+                int x = m_renderer->cursorToX(rangeptr.viewLine(vl), pl.selectionRange.end());
+                // clip the unnecessary portion of this line
+                region = region.subtracted(QRegion(x, (vl)*m_fontHeight, pl.maxWidth - x, m_fontHeight));
+                vl++;
+                // and the viewlines below
+                for (; vl < rangeptr.viewLineCount(); ++vl) {
+                    region = region.subtracted(QRegion(0, vl * m_fontHeight, pl.maxWidth, m_fontHeight));
+                }
             }
 
             painter.setClipRegion(region);
