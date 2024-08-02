@@ -3288,7 +3288,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
             // convert tabSmart into tabInsertsTab or tabIndents:
             if (tabHandling == KateDocumentConfig::tabSmart) {
                 // multiple lines selected
-                if (view()->selection() && !view()->selectionRange().onSingleLine()) {
+                if (view()->selection() && !view()->selectionRange().onSingleLine() && !view()->blockSelection()) {
                     tabHandling = KateDocumentConfig::tabIndents;
                 }
 
