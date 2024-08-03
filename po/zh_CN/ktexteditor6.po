@@ -6432,16 +6432,14 @@ msgstr ""
 "您可以配置是使用制表符还是使用空格缩进。"
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "缩进属性"
+msgstr ""
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "格式化缩进(&F)"
+msgstr ""
 
 #: view/kateview.cpp:546
 #, kde-format

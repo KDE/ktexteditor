@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-02 00:38+0000\n"
-"PO-Revision-Date: 2024-07-09 06:40+0200\n"
+"PO-Revision-Date: 2024-08-02 05:34+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6668,16 +6668,14 @@ msgstr ""
 "tabulatorji zamenjani ali uporabljeni kot presledki."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Lastnosti zamikanja"
+msgstr "Pretvori zamikanja v presledke"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "Oblikuj zamikanje"
+msgstr "Pretvori zamikanje v tabulatorje"
 
 #: view/kateview.cpp:546
 #, kde-format

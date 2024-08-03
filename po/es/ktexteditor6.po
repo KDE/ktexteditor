@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-02 00:38+0000\n"
-"PO-Revision-Date: 2024-07-09 12:12+0200\n"
+"PO-Revision-Date: 2024-08-02 17:43+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -6453,7 +6453,7 @@ msgstr "La tecla TAB produce sangrado."
 #, kde-format
 msgctxt "short translation please"
 msgid "Set the tab display width."
-msgstr "Fijar la anchura de las tabulaciones."
+msgstr "Definir la anchura de los tabuladores."
 
 #: variableeditor/variablelineedit.cpp:332
 #, kde-format
@@ -6761,16 +6761,14 @@ msgstr ""
 "con espacios."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Propiedades del sangrado"
+msgstr "Convertir sangrado en espacios"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Formatear sangrado"
+msgstr "Convertir sangrado en tabuladores"
 
 #: view/kateview.cpp:546
 #, kde-format
