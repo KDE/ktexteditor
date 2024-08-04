@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-02 00:38+0000\n"
-"PO-Revision-Date: 2024-07-14 12:34+0200\n"
+"PO-Revision-Date: 2024-08-03 11:31+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -6685,16 +6685,14 @@ msgstr ""
 "powinny być honorowane i użyte, czy też zastąpione spacjami."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Właściwości wcięć"
+msgstr "Przekształć wcięcia na odstępy"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "S&formatuj wcięcia"
+msgstr "Przekształć wcięcia na tabulatory"
 
 #: view/kateview.cpp:546
 #, kde-format

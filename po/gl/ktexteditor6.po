@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-02 00:38+0000\n"
-"PO-Revision-Date: 2024-07-09 19:38+0200\n"
+"PO-Revision-Date: 2024-08-03 12:21+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -6695,16 +6695,14 @@ msgstr ""
 "se quere usar tabulacións ou substituílos con espazos."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Propiedades do sangrado"
+msgstr "Converter o sangrado en espazos"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Formatar o sangrado"
+msgstr "Converter o sangrado en tabulacións"
 
 #: view/kateview.cpp:546
 #, kde-format

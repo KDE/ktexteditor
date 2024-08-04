@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-02 00:38+0000\n"
-"PO-Revision-Date: 2024-06-22 13:04+0100\n"
+"PO-Revision-Date: 2024-08-03 13:03+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -6637,16 +6637,14 @@ msgstr ""
 "and used or replaced with spaces, in the configuration dialogue."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "Indentation Properties"
+msgstr "Convert Indentation to Spaces"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "&Format Indentation"
+msgstr "Convert Indentation to Tabs"
 
 #: view/kateview.cpp:546
 #, kde-format
@@ -7014,24 +7012,18 @@ msgstr ""
 "existing text."
 
 #: view/kateview.cpp:787
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "Whitespaces"
+msgstr "Show Whitespace"
 
 #: view/kateview.cpp:790
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"If this option is ticked, the text lines will be wrapped at the view border "
-"on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"If this option is ticked, whitespaces in this document will be visible.<br /"
+"><br />This is only a view option, meaning the document will not be changed."
 
 #: view/kateview.cpp:794
 #, kde-format
@@ -7039,11 +7031,7 @@ msgid "&Dynamic Word Wrap"
 msgstr "&Dynamic Word Wrap"
 
 #: view/kateview.cpp:798
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
@@ -7051,7 +7039,7 @@ msgid ""
 msgstr ""
 "If this option is ticked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
-"will not changed."
+"will not be changed."
 
 #: view/kateview.cpp:802
 #, kde-format

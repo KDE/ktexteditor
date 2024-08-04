@@ -6434,12 +6434,12 @@ msgstr ""
 #: view/kateview.cpp:524
 #, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr ""
+msgstr "将缩进转换为空格"
 
 #: view/kateview.cpp:531
 #, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr ""
+msgstr "将缩进转换为 Tab 空格"
 
 #: view/kateview.cpp:546
 #, kde-format
