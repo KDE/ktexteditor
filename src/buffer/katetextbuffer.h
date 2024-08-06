@@ -418,7 +418,7 @@ private:
      * @param startBlock index of block from which we start to fix
      */
     KTEXTEDITOR_NO_EXPORT
-    void fixStartLines(int startBlock);
+    void fixStartLines(int startBlock, int value);
 
     /**
      * Balance the given block. Look if it is too small or too large.
@@ -547,6 +547,11 @@ private:
      * text history
      */
     TextHistory m_history;
+
+    /**
+     * List of starting lines of the blocks in m_blocks
+     */
+    std::vector<int> m_startLines;
 
     /**
      * List of blocks which contain the lines of this buffer

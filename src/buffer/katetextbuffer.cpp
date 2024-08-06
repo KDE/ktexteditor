@@ -125,9 +125,11 @@ void TextBuffer::clear()
     // kill all buffer blocks
     qDeleteAll(m_blocks);
     m_blocks.clear();
+    m_startLines.clear();
 
     // insert one block with one empty line
     m_blocks.push_back(newBlock);
+    m_startLines.push_back(0);
 
     // reset lines and last used block
     m_lines = 1;
@@ -154,7 +156,7 @@ TextLine TextBuffer::line(int line) const
     int blockIndex = blockForLine(line);
 
     // get line
-    return m_blocks.at(blockIndex)->line(line);
+    return m_blocks.at(blockIndex)->line(line - m_startLines[blockIndex]);
 }
 
 void TextBuffer::setLineMetaData(int line, const TextLine &textLine)
@@ -163,7 +165,7 @@ void TextBuffer::setLineMetaData(int line, const TextLine &textLine)
     int blockIndex = blockForLine(line);
 
     // get line
-    return m_blocks.at(blockIndex)->setLineMetaData(line, textLine);
+    return m_blocks.at(blockIndex)->setLineMetaData(line - m_startLines[blockIndex], textLine);
 }
 
 int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
@@ -230,7 +232,9 @@ QString TextBuffer::text() const
     // combine all blocks
     for (TextBlock *block : std::as_const(m_blocks)) {
         block->text(text);
+        text.append(QLatin1Char('\n'));
     }
+    text.chop(1); // remove last \n
 
     Q_ASSERT(size == text.size());
     return text;
@@ -339,13 +343,16 @@ void TextBuffer::unwrapLine(int line)
     int blockIndex = blockForLine(line);
 
     // is this the first line in the block?
-    bool firstLineInBlock = (line == m_blocks.at(blockIndex)->startLine());
+    const int blockStartLine = m_startLines[blockIndex];
+    const bool firstLineInBlock = line == blockStartLine;
 
     // let the block handle the unwrapLine
     // this can either lead to one line less in this block or the previous one
     // the previous one could even end up with zero lines
     // this call will trigger fixStartLines
-    m_blocks.at(blockIndex)->unwrapLine(line, (blockIndex > 0) ? m_blocks.at(blockIndex - 1) : nullptr, firstLineInBlock ? (blockIndex - 1) : blockIndex);
+
+    m_blocks.at(blockIndex)
+        ->unwrapLine(line - blockStartLine, (blockIndex > 0) ? m_blocks.at(blockIndex - 1) : nullptr, firstLineInBlock ? (blockIndex - 1) : blockIndex);
     --m_lines;
 
     // decrement index for later fixup, if we modified the block in front of the found one
@@ -464,24 +471,21 @@ int TextBuffer::blockForLine(int line) const
         b = m_blocks.size() - 1;
     }
 
-    auto block = m_blocks[b];
-    if (block->startLine() <= line && line < block->startLine() + block->lines()) {
+    if (m_startLines[b] <= line && line < m_startLines[b] + m_blocks[b]->lines()) {
         return b;
     }
 
-    if (block->startLine() > line) {
+    if (m_startLines[b] > line) {
         for (int i = b - 1; i >= 0; --i) {
-            auto block = m_blocks[i];
-            if (block->startLine() <= line && line < block->startLine() + block->lines()) {
+            if (m_startLines[i] <= line && line < m_startLines[i] + m_blocks[i]->lines()) {
                 return i;
             }
         }
     }
 
-    if (block->startLine() < line || (block->lines() == 0)) {
+    if (m_startLines[b] < line || (m_blocks[b]->lines() == 0)) {
         for (size_t i = b + 1; i < m_blocks.size(); ++i) {
-            auto block = m_blocks[i];
-            if (block->startLine() <= line && line < block->startLine() + block->lines()) {
+            if (m_startLines[i] <= line && line < m_startLines[i] + m_blocks[i]->lines()) {
                 return i;
             }
         }
@@ -491,24 +495,15 @@ int TextBuffer::blockForLine(int line) const
     return -1;
 }
 
-void TextBuffer::fixStartLines(int startBlock)
+void TextBuffer::fixStartLines(int startBlock, int value)
 {
     // only allow valid start block
     Q_ASSERT(startBlock >= 0);
-    Q_ASSERT(startBlock < (int)m_blocks.size());
-
-    // new start line for next block
-    TextBlock *block = m_blocks.at(startBlock);
-    int newStartLine = block->startLine() + block->lines();
-
+    Q_ASSERT(startBlock <= (int)m_startLines.size());
     // fixup block
-    for (size_t index = startBlock + 1; index < m_blocks.size(); ++index) {
-        // set new start line
-        block = m_blocks.at(index);
-        block->setStartLine(newStartLine);
-
-        // calculate next start line
-        newStartLine += block->lines();
+    for (auto it = m_startLines.begin() + startBlock, end = m_startLines.end(); it != end; ++it) {
+        // move start line by given value
+        *it += value;
     }
 }
 
@@ -523,9 +518,17 @@ void TextBuffer::balanceBlock(int index)
         int halfSize = blockToBalance->lines() / 2;
 
         // create and insert new block behind current one, already set right start line
+        int newBlockStartLine = m_startLines[index] + halfSize;
+
         TextBlock *newBlock = blockToBalance->splitBlock(halfSize);
         Q_ASSERT(newBlock);
         m_blocks.insert(m_blocks.begin() + index + 1, newBlock);
+        m_startLines.insert(m_startLines.begin() + index + 1, newBlockStartLine);
+
+        // adjust block indexes
+        for (auto it = m_blocks.begin() + index, end = m_blocks.end(); it != end; ++it) {
+            (*it)->setBlockIndex(index++);
+        }
 
         // split is done
         return;
@@ -553,6 +556,14 @@ void TextBuffer::balanceBlock(int index)
     // delete old block
     delete blockToBalance;
     m_blocks.erase(m_blocks.begin() + index);
+    m_startLines.erase(m_startLines.begin() + index);
+
+    for (auto it = m_blocks.begin() + index, end = m_blocks.end(); it != end; ++it) {
+        (*it)->setBlockIndex(index++);
+    }
+
+    Q_ASSERT(index == (int)m_blocks.size());
+    Q_ASSERT(m_blocks.size() == m_startLines.size());
 }
 
 void TextBuffer::debugPrint(const QString &title) const
@@ -593,9 +604,11 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
             delete block;
         }
         m_blocks.resize(1);
+        m_startLines.resize(1);
 
         // remove lines in first block
         m_blocks.back()->clearLines();
+        m_startLines.back() = 0;
         m_lines = 0;
 
         // reset error flags
@@ -637,7 +650,10 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
 
             // ensure blocks aren't too large
             if (m_blocks.back()->lines() >= BufferBlockSize) {
-                m_blocks.push_back(new TextBlock(this, m_blocks.back()->startLine() + m_blocks.back()->lines()));
+                int index = (int)m_blocks.size();
+                int startLine = m_blocks.back()->startLine() + m_blocks.back()->lines();
+                m_blocks.push_back(new TextBlock(this, index));
+                m_startLines.push_back(startLine);
             }
 
             // append line to last block

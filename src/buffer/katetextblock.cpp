@@ -11,9 +11,9 @@
 
 namespace Kate
 {
-TextBlock::TextBlock(TextBuffer *buffer, int startLine)
+TextBlock::TextBlock(TextBuffer *buffer, int index)
     : m_buffer(buffer)
-    , m_startLine(startLine)
+    , m_blockIndex(index)
 {
     // reserve the block size
     m_lines.reserve(BufferBlockSize);
@@ -29,33 +29,28 @@ TextBlock::~TextBlock()
     // it only is a hint for ranges for this block, not the storage of them
 }
 
-void TextBlock::setStartLine(int startLine)
+int TextBlock::startLine() const
 {
-    // allow only valid lines
-    Q_ASSERT(startLine >= 0);
-    Q_ASSERT(startLine < m_buffer->lines());
-
-    m_startLine = startLine;
+    return m_buffer->m_startLines[m_blockIndex];
 }
 
 TextLine TextBlock::line(int line) const
 {
     // right input
-    Q_ASSERT(line >= startLine());
-
+    Q_ASSERT(line < m_lines.size());
     // get text line, at will bail out on out-of-range
-    return m_lines.at(line - startLine());
+    return m_lines.at(line);
 }
 
 void TextBlock::setLineMetaData(int line, const TextLine &textLine)
 {
     // right input
-    Q_ASSERT(line >= startLine());
+    Q_ASSERT(line < m_lines.size());
 
     // set stuff, at will bail out on out-of-range
-    const QString originalText = m_lines.at(line - startLine()).text();
-    m_lines.at(line - startLine()) = textLine;
-    m_lines.at(line - startLine()).text() = originalText;
+    const QString originalText = m_lines.at(line).text();
+    m_lines.at(line) = textLine;
+    m_lines.at(line).text() = originalText;
 }
 
 void TextBlock::appendLine(const QString &textOfLine)
@@ -75,7 +70,7 @@ void TextBlock::text(QString &text) const
     // combine all lines
     for (size_t i = 0; i < m_lines.size(); ++i) {
         // not first line, insert \n
-        if (i > 0 || startLine() > 0) {
+        if (i > 0) {
             text.append(QLatin1Char('\n'));
         }
 
@@ -86,7 +81,7 @@ void TextBlock::text(QString &text) const
 void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesStartIndex)
 {
     // calc internal line
-    int line = position.line() - startLine();
+    const int line = position.line() - startLine();
 
     // get text, copy, we might invalidate the reference
     const QString text = m_lines.at(line).text();
@@ -94,6 +89,7 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
     // check if valid column
     Q_ASSERT(position.column() >= 0);
     Q_ASSERT(position.column() <= text.size());
+    Q_ASSERT(fixStartLinesStartIndex == m_blockIndex);
 
     // create new line and insert it
     m_lines.insert(m_lines.begin() + line + 1, TextLine());
@@ -123,7 +119,7 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
     // fix all start lines
     // we need to do this NOW, else the range update will FAIL!
     // bug 313759
-    m_buffer->fixStartLines(fixStartLinesStartIndex);
+    m_buffer->fixStartLines(fixStartLinesStartIndex + 1, 1);
 
     // notify the text history
     m_buffer->history().wrapLine(position);
@@ -192,9 +188,6 @@ void TextBlock::wrapLine(const KTextEditor::Cursor position, int fixStartLinesSt
 
 void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex)
 {
-    // calc internal line
-    line = line - startLine();
-
     // two possiblities: either first line of this block or later line
     if (line == 0) {
         // we need previous block with at least one line
@@ -216,13 +209,11 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
             m_lines[0].markAsModified(true);
         }
 
-        // patch startLine of this block
-        --m_startLine;
-
         // fix all start lines
         // we need to do this NOW, else the range update will FAIL!
         // bug 313759
-        m_buffer->fixStartLines(fixStartLinesStartIndex);
+        Q_ASSERT(fixStartLinesStartIndex + 1 == m_blockIndex);
+        m_buffer->fixStartLines(fixStartLinesStartIndex + 1, -1);
 
         // notify the text history in advance
         m_buffer->history().unwrapLine(startLine() + line, oldSizeOfPreviousLine);
@@ -310,7 +301,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
     // fix all start lines
     // we need to do this NOW, else the range update will FAIL!
     // bug 313759
-    m_buffer->fixStartLines(fixStartLinesStartIndex);
+    m_buffer->fixStartLines(fixStartLinesStartIndex + 1, -1);
 
     // notify the text history in advance
     m_buffer->history().unwrapLine(startLine() + line, oldSizeOfPreviousLine);
@@ -517,10 +508,10 @@ void TextBlock::debugPrint(int blockIndex) const
 TextBlock *TextBlock::splitBlock(int fromLine)
 {
     // half the block
-    int linesOfNewBlock = lines() - fromLine;
+    const int linesOfNewBlock = lines() - fromLine;
 
     // create and insert new block
-    TextBlock *newBlock = new TextBlock(m_buffer, startLine() + fromLine);
+    TextBlock *newBlock = new TextBlock(m_buffer, m_blockIndex + 1);
 
     // move lines
     newBlock->m_lines.reserve(linesOfNewBlock);
@@ -706,9 +697,10 @@ void TextBlock::updateRange(TextRange *range)
     const int startLine = range->startInternal().lineInternal();
     const int endLine = range->endInternal().lineInternal();
     const bool isSingleLine = startLine == endLine;
+    const int blockStartLine = this->startLine();
 
     // perhaps remove range and be done
-    if ((endLine < m_startLine) || (startLine >= (m_startLine + lines()))) {
+    if ((endLine < blockStartLine) || (startLine >= (blockStartLine + lines()))) {
         removeRange(range);
         return;
     }
@@ -716,7 +708,7 @@ void TextBlock::updateRange(TextRange *range)
     // The range is still a single-line range, and is still cached to the correct line.
     if (isSingleLine) {
         auto it = m_cachedLineForRanges.find(range);
-        if (it != m_cachedLineForRanges.end() && it.value() == startLine - m_startLine) {
+        if (it != m_cachedLineForRanges.end() && it.value() == startLine - blockStartLine) {
             return;
         }
     }
@@ -737,7 +729,7 @@ void TextBlock::updateRange(TextRange *range)
     }
 
     // The range is contained by a single line, put it into the line-cache
-    const int lineOffset = startLine - m_startLine;
+    const int lineOffset = startLine - blockStartLine;
 
     // enlarge cache if needed
     if (m_cachedRangesForLine.size() <= (size_t)lineOffset) {

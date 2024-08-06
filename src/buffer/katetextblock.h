@@ -40,7 +40,7 @@ public:
      * @param buffer parent text buffer
      * @param startLine start line of this block
      */
-    TextBlock(TextBuffer *buffer, int startLine);
+    TextBlock(TextBuffer *buffer, int blockIndex);
 
     /**
      * Destruct the text block
@@ -51,16 +51,12 @@ public:
      * Start line of this block.
      * @return start line of this block
      */
-    int startLine() const
-    {
-        return m_startLine;
-    }
+    KTEXTEDITOR_EXPORT int startLine() const;
 
-    /**
-     * Set start line of this block.
-     * @param startLine new start line of this block
-     */
-    void setStartLine(int startLine);
+    void setBlockIndex(int index)
+    {
+        m_blockIndex = index;
+    }
 
     /**
      * Retrieve a text line.
@@ -251,7 +247,7 @@ private:
      */
     const QVarLengthArray<TextRange *, 6> *cachedRangesForLine(int line) const
     {
-        line -= m_startLine;
+        line -= startLine();
         if (line >= 0 && (size_t)line < m_cachedRangesForLine.size()) {
             return &m_cachedRangesForLine[line];
         } else {
@@ -266,15 +262,15 @@ private:
     TextBuffer *m_buffer;
 
     /**
+     * The index of this block in TextBuffer::m_blocks
+     */
+    int m_blockIndex;
+
+    /**
      * Lines contained in this buffer.
      * We need no sharing, use STL.
      */
     std::vector<Kate::TextLine> m_lines;
-
-    /**
-     * Startline of this block
-     */
-    int m_startLine;
 
     /**
      * size of block i.e., number of QChars
