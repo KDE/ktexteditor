@@ -168,25 +168,25 @@ void TextBuffer::setLineMetaData(int line, const TextLine &textLine)
 
 int TextBuffer::cursorToOffset(KTextEditor::Cursor c) const
 {
-    if (!c.isValid() || c > document()->documentEnd()) {
+    if ((c.line() < 0) || (c.line() >= lines())) {
         return -1;
     }
 
     int off = 0;
-    for (auto block : m_blocks) {
-        if (block->startLine() + block->lines() < c.line()) {
-            off += block->blockSize();
-        } else {
-            int start = block->startLine();
-            int end = start + block->lines();
-            for (int line = start; line < end; ++line) {
-                if (line >= c.line()) {
-                    off += qMin(c.column(), block->lineLength(line));
-                    return off;
-                }
-                off += block->lineLength(line) + 1;
-            }
+    const int blockIndex = blockForLine(c.line());
+    for (auto it = m_blocks.begin(), end = m_blocks.begin() + blockIndex; it != end; ++it) {
+        off += (*it)->blockSize();
+    }
+
+    auto block = m_blocks[blockIndex];
+    int start = block->startLine();
+    int end = start + block->lines();
+    for (int line = start; line < end; ++line) {
+        if (line >= c.line()) {
+            off += qMin(c.column(), block->lineLength(line));
+            return off;
         }
+        off += block->lineLength(line) + 1;
     }
 
     Q_ASSERT(false);
