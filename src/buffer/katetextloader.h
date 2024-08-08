@@ -249,26 +249,19 @@ public:
 
                         // detect byte order marks & codec for byte order marks on first read
                         if (m_firstRead) {
-                            /**
-                             * if no codec given, do autodetection
-                             */
+                            // if no codec given, do autodetection
                             if (!m_converterState.isValid()) {
-                                /**
-                                 * first: try to get HTML header encoding, includes BOM handling
-                                 */
-                                m_converterState = QStringDecoder::decoderForHtml(m_buffer);
+                                // use KEncodingProber first, QStringDecoder::decoderForHtml does fallback to UTF-8
+                                KEncodingProber prober(m_proberType);
+                                prober.feed(QByteArrayView(m_buffer.data(), c));
 
-                                /**
-                                 * else: use KEncodingProber
-                                 */
-                                if (!m_converterState.isValid()) {
-                                    KEncodingProber prober(m_proberType);
-                                    prober.feed(m_buffer.constData(), c);
-
-                                    // we found codec with some confidence?
-                                    if (prober.confidence() > 0.5) {
-                                        m_converterState = QStringDecoder(prober.encoding().constData());
-                                    }
+                                // we found a codec with some confidence?
+                                if (const QStringDecoder decoder(prober.encoding().constData()); decoder.isValid() && (prober.confidence() > 0.5)) {
+                                    m_converterState = QStringDecoder(prober.encoding().constData());
+                                } else {
+                                    // try to get HTML encoding, will default to UTF-8
+                                    // see https://doc.qt.io/qt-6/qstringdecoder.html#decoderForHtml
+                                    m_converterState = QStringDecoder::decoderForHtml(m_buffer);
                                 }
 
                                 // no codec, no chance, encoding error, else remember the codec name
