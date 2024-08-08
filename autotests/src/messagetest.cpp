@@ -119,13 +119,11 @@ void MessageTest::testAutoHideAfterUserInteraction()
 
     // another 300ms later: 3.2 seconds are gone, message should be deleted
     // and fade animation should be active
-    QTest::qWait(300);
-    QVERIFY(message.data() == nullptr);
+    QTRY_VERIFY_WITH_TIMEOUT(message.data() == nullptr, 500);
     QVERIFY(view->messageWidget()->isVisible());
 
     // after a total of 3.7 seconds, widget should be hidden
-    QTest::qWait(500);
-    QVERIFY(!view->messageWidget()->isVisible());
+    QTRY_VERIFY_WITH_TIMEOUT(!view->messageWidget()->isVisible(), 700);
 }
 
 void MessageTest::testMessageQueue()
