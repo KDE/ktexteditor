@@ -1,0 +1,4 @@
+while true:
+    returnFunc()
+    myVar = 3
+    c = true

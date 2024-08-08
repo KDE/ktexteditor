@@ -1,0 +1,5 @@
+if True:
+    a = 1
+    # test comment
+
+    # test comment 2

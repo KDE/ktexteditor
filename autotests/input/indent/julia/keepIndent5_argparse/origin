@@ -1,0 +1,5 @@
+using ArgParse
+s = ArgParseSettings()
+@add_arg_table s begin
+    "arg1"
+        help = "helpstring"

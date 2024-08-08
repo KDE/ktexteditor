@@ -1,0 +1,6 @@
+int main(int argc, char const *argv[])
+{
+  const char * multilinebackslash = "\
+hello";
+  return 0;
+}

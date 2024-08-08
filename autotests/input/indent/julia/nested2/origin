@@ -1,0 +1,12 @@
+if x && y || z # abctestcomment
+    z = 1
+    a = Vector{Int}()
+    for i in 1:5
+        push!(a, i)
+        if i == 3
+            print("TEST")
+        end
+        while !testvar
+            sleep(1)
+        end
+        open("testfile_$i.txt", "r") do f

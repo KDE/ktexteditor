@@ -1,0 +1,34 @@
+# endless02
+
+class Base
+  extend Dry::Initializer
+
+  def self.call(...) = new(...).call
+
+  def call = raise NotImplementedError
+
+  def call() = :endless
+
+  def compact? =true
+
+  def expand   (  ts = Time.now )    = ts.year * (rand * 1000)
+
+  def foo(bar = "baz")
+    bar.upcase
+  end
+
+  def foo_blank bar = "baz"
+    bar.upcase
+  end
+
+  def foo_endless(bar = "baz") = bar.upcase
+
+  def width=(other)
+    @width = other
+  end
+
+  def height= other
+    @height = other
+  end
+
+end

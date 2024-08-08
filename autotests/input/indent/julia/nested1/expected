@@ -1,0 +1,14 @@
+if x && y || z # abctestcomment
+    z = 1
+    a = Vector{Int}()
+    for i in 1:5
+        push!(a, i)
+        if i == 3
+            print("TEST")
+        else
+            nothing
+        end
+        print(i)
+        print(i^2)
+    end
+end

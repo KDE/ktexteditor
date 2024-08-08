@@ -1,0 +1,4 @@
+/* foo
+ * bar */
+*buf = 0;
+int x;

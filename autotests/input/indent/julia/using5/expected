@@ -1,0 +1,5 @@
+using TestModule:
+    TestType1,
+    TestType2,
+    TestType3
+x = 1

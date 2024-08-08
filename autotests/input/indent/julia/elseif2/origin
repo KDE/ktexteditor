@@ -1,0 +1,4 @@
+if x && y || z # abctestcomment
+    z = 1
+elseif a == 2 || b > 1
+    z = 2
