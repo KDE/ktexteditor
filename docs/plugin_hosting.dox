@@ -69,7 +69,7 @@ a slot by the same name and signature in its parent QObject. This is what you ne
 illustrate the idea:
 
 \code
-class MyKTEMainWindow : public QObject() {
+class MyKTEMainWindow : public QObject {
     MyKTEMainWindow() {
         // create a dispatch object _as a child of this object_
         kte_win = new KTextEditor::MainWindow(this);
@@ -87,7 +87,7 @@ private:
     KTextEditor::MainWindow* kte_win;
 }
 
-class MyKTEApplication : public QObject() {
+class MyKTEApplication : public QObject {
     MyKTEApplicaiton() {
         // create a dispatch object _as a child of this object_
         kte_app = new KTextEditor::Application(this);
