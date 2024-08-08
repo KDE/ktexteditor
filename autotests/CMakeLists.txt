@@ -116,7 +116,6 @@ MACRO(KTEXTEDITOR_INDENT_TEST _testfile _testname)
             -fplaceholder
             ${CMAKE_CURRENT_SOURCE_DIR}/input/indent2/${_testfile}
     )
-    set_tests_properties(kateindenttest_${_testname} PROPERTIES TIMEOUT 10)
 ENDMACRO(KTEXTEDITOR_INDENT_TEST)
 
 # test different indenters sepearately to have smaller test chunks, that takes LONG
@@ -140,7 +139,6 @@ add_test(
         ${CMAKE_CURRENT_SOURCE_DIR}/input/commands/
         ${CMAKE_CURRENT_SOURCE_DIR}/input/scripting/
 )
-set_tests_properties(scripts_test PROPERTIES TIMEOUT 10)
 
 macro(ktexteditor_unit_test_offscreen testname)
     add_executable(${testname} src/${testname}.cpp ${ARGN})
