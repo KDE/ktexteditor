@@ -1,0 +1,4 @@
+lm(Response ~ Var1 +
+              Var2 +
+              Var3,
+   anotherargument

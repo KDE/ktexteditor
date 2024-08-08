@@ -1,0 +1,4 @@
+function some_function(param, param2)
+    a = 5
+    b = 7
+    c = true

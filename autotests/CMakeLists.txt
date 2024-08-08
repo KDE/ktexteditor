@@ -107,31 +107,33 @@ KTEXTEDITOR_ENCODING_TEST ("utf-8" "one-char-latin-15.txt")
 # latin15, but coincidentally contains utf8 bom. The "bom" should be treated as normal text
 KTEXTEDITOR_ENCODING_TEST ("ISO 8859-15" "latin15-with-utf8-bom.txt")
 
+# test executable for indentation
+add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/testutils.cpp)
+target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS} Qt6::Test)
+ecm_mark_as_test(kateindenttest)
+if(ENABLE_PCH)
+    target_precompile_headers(kateindenttest REUSE_FROM kte_test_pch)
+endif()
+
 # test macro for indentation tests
-MACRO(KTEXTEDITOR_INDENT_TEST _testfile _testname)
-    ADD_TEST (
-        NAME kateindenttest_${_testname}
-        COMMAND ktexteditor_script_tester
-            --indent-data-test ${CMAKE_CURRENT_SOURCE_DIR}/input/indent2/
-            -fplaceholder
-            ${CMAKE_CURRENT_SOURCE_DIR}/input/indent2/${_testfile}
-    )
+MACRO(KTEXTEDITOR_INDENT_TEST _testname)
+  ADD_TEST (NAME kateindenttest_${_testname} COMMAND kateindenttest ${OFFSCREEN_QPA} ${_testname})
 ENDMACRO(KTEXTEDITOR_INDENT_TEST)
 
 # test different indenters sepearately to have smaller test chunks, that takes LONG
-KTEXTEDITOR_INDENT_TEST ("python.js" "testPython")
-KTEXTEDITOR_INDENT_TEST ("julia.js" "testJulia")
-KTEXTEDITOR_INDENT_TEST ("cstyle.js" "testCstyle")
-KTEXTEDITOR_INDENT_TEST ("cppstyle.js" "testCppstyle")
-KTEXTEDITOR_INDENT_TEST ("cmake.js" "testCMake")
-KTEXTEDITOR_INDENT_TEST ("ruby.js" "testRuby")
-KTEXTEDITOR_INDENT_TEST ("haskell.js" "testHaskell")
-KTEXTEDITOR_INDENT_TEST ("latex.js" "testLatex")
-KTEXTEDITOR_INDENT_TEST ("pascal.js" "testPascal")
-KTEXTEDITOR_INDENT_TEST ("ada.js" "testAda")
-KTEXTEDITOR_INDENT_TEST ("xml.js" "testXml")
-KTEXTEDITOR_INDENT_TEST ("normal.js" "testNormal")
-KTEXTEDITOR_INDENT_TEST ("replicode.js" "testReplicode")
+KTEXTEDITOR_INDENT_TEST ("testPython")
+KTEXTEDITOR_INDENT_TEST ("testJulia")
+KTEXTEDITOR_INDENT_TEST ("testCstyle")
+KTEXTEDITOR_INDENT_TEST ("testCppstyle")
+KTEXTEDITOR_INDENT_TEST ("testCMake")
+KTEXTEDITOR_INDENT_TEST ("testRuby")
+KTEXTEDITOR_INDENT_TEST ("testHaskell")
+KTEXTEDITOR_INDENT_TEST ("testLatex")
+KTEXTEDITOR_INDENT_TEST ("testPascal")
+KTEXTEDITOR_INDENT_TEST ("testAda")
+KTEXTEDITOR_INDENT_TEST ("testXml")
+KTEXTEDITOR_INDENT_TEST ("testNormal")
+KTEXTEDITOR_INDENT_TEST ("testReplicode")
 
 add_test(
     NAME scripts_test

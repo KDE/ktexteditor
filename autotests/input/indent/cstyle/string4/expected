@@ -1,0 +1,9 @@
+int main(int argc, char const *argv[])
+{
+  const char * multilinestringliteral = R"(
+       bla
+       bla
+  )";
+  return 0;
+}
+// kate: hl C++;

@@ -1,0 +1,4 @@
+struct TestStruct
+    function TestSTruct()
+        print("Foo")
+        print(3)

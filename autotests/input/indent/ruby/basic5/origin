@@ -1,0 +1,4 @@
+# basic5.txt - access modifiers before `def`
+
+class MyClass
+end
