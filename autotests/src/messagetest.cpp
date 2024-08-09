@@ -102,18 +102,15 @@ void MessageTest::testAutoHideAfterUserInteraction()
     message->setPosition(Message::TopInView);
     message->setAutoHide(2000);
     QVERIFY(message->autoHideMode() == Message::AfterUserInteraction);
-
     doc.postMessage(message);
+    QTRY_VERIFY_WITH_TIMEOUT(view->messageWidget()->isVisible(), 2000);
 
-    QTest::qWait(1000);
-    QVERIFY(view->messageWidget()->isVisible());
-
-    // now trigger user interaction after 1 second
+    // now trigger user interaction
     view->insertText(QStringLiteral("Hello world"));
     view->setCursorPosition(Cursor(0, 5));
 
-    // should still be there after deleted after another 1.9 seconds
-    QTest::qWait(1900);
+    // should still be there after deleted after another 1.8 seconds
+    QTest::qWait(1800);
     QVERIFY(message.data() != nullptr);
     QVERIFY(view->messageWidget()->isVisible());
 
