@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:38+0000\n"
+"POT-Creation-Date: 2024-08-09 00:37+0000\n"
 "PO-Revision-Date: 2023-08-14 21:56+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1928,8 +1928,9 @@ msgstr "Editor-Schrift:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, kde-format
-msgid "Line Height Multiplier:"
+#, fuzzy, kde-format
+#| msgid "Line Height Multiplier:"
+msgid "&Line Height Multiplier:"
 msgstr "Zeilenhöhenmultiplikator:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
@@ -1962,8 +1963,9 @@ msgstr "Immer"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, kde-format
-msgid "Whitespace indicator size:"
+#, fuzzy, kde-format
+#| msgid "Whitespace indicator size:"
+msgid "Whitespace indicator si&ze:"
 msgstr "Größe der Leerraum-Hervorhebung:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
@@ -1974,8 +1976,9 @@ msgstr "Legt die Größe der Markierungen für die Hervorhebung fest."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, kde-format
-msgid "Show tab indicators:"
+#, fuzzy, kde-format
+#| msgid "Show tab indicators:"
+msgid "Show &tab indicators:"
 msgstr "Hervorhebung für Tabulatoren anzeigen:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
@@ -2058,51 +2061,42 @@ msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 "Zugehörige Klammer aufleuchten lassen, wenn Cursor zur anderen Klammer geht"
 
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
-#, kde-format
-msgid ""
-"If this is enabled, the editor will display vertical lines to help identify "
-"indent lines."
-msgstr ""
-"Ist diese Einstellung aktiv, zeigt der Editor senkrechte Linien an, die beim "
-"Erkennen von Einrückungsebenen helfen."
-
-#. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:248
-#, kde-format
-msgid "Show i&ndentation lines"
-msgstr "E&inrückungslinien anzeigen"
-
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:271
+#: dialogs/textareaappearanceconfigwidget.ui:261
 #, kde-format
 msgid "Counts:"
 msgstr "Anzahlen:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Wortanzahl in der Statusleiste anzeigen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Wortanzahl anzeigen"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Zeilenanzahl in der Statusleiste anzeigen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Zeilenanzahl anzeigen"
+
+#. i18n: ectx: property (text), widget (QLabel, label_25)
+#: dialogs/textareaappearanceconfigwidget.ui:304
+#, fuzzy, kde-format
+#| msgid "Fold first line"
+msgid "Fold first line:"
+msgstr "Erste Zeile ausblenden"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2119,38 +2113,32 @@ msgstr ""
 "der Lizenzinformationen, die sich normalerweise an Anfang einer \n"
 "Datei befinden, benutzt werden."
 
-#. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:320
-#, kde-format
-msgid "Fold first line"
-msgstr "Erste Zeile ausblenden"
-
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:340
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Dynamischer Zeilenumbruch:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Dynamischer Umbruch an Markierung für statischen Zeilenumbruch"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Wortgrenzen für dynamischen Umbruch ignorieren"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Anzeigen für d&ynamischen Zeilenumbruch:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:371
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
@@ -2158,19 +2146,21 @@ msgstr ""
 "werden sollen."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:394
-#, kde-format
-msgid "Indent wrapped lines:"
+#: dialogs/textareaappearanceconfigwidget.ui:391
+#, fuzzy, kde-format
+#| msgid "Indent wrapped lines:"
+msgid "I&ndent wrapped lines:"
 msgstr "Umbrochene Zeilen einrücken:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:411
-#, kde-format
-msgid "Don't indent lines wider than:"
+#: dialogs/textareaappearanceconfigwidget.ui:408
+#, fuzzy, kde-format
+#| msgid "Don't indent lines wider than:"
+msgid "&Don't indent lines wider than:"
 msgstr "Zeilen nicht einrücken, wenn länger als:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2191,10 +2181,27 @@ msgstr ""
 "nachfolgende umbrochene Zeilen nicht mehr vertikal ausgerichtet.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:430
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr " % der Ansichtsbreite"
+
+#. i18n: ectx: property (text), widget (QLabel, label_24)
+#: dialogs/textareaappearanceconfigwidget.ui:443
+#, fuzzy, kde-format
+#| msgid "Show i&ndentation lines"
+msgid "Show i&ndentation lines:"
+msgstr "E&inrückungslinien anzeigen"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
+#: dialogs/textareaappearanceconfigwidget.ui:453
+#, kde-format
+msgid ""
+"If this is enabled, the editor will display vertical lines to help identify "
+"indent lines."
+msgstr ""
+"Ist diese Einstellung aktiv, zeigt der Editor senkrechte Linien an, die beim "
+"Erkennen von Einrückungsebenen helfen."
 
 #: document/katebuffer.cpp:136
 #, kde-format

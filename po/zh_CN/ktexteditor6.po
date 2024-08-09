@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:38+0000\n"
+"POT-Creation-Date: 2024-08-09 00:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1809,8 +1809,9 @@ msgstr "编辑器字体："
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, kde-format
-msgid "Line Height Multiplier:"
+#, fuzzy, kde-format
+#| msgid "Line Height Multiplier:"
+msgid "&Line Height Multiplier:"
 msgstr "行高倍数："
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
@@ -1841,8 +1842,9 @@ msgstr "总是显示"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, kde-format
-msgid "Whitespace indicator size:"
+#, fuzzy, kde-format
+#| msgid "Whitespace indicator size:"
+msgid "Whitespace indicator si&ze:"
 msgstr "空白标识符大小："
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
@@ -1853,8 +1855,9 @@ msgstr "可见的高亮标记大小。"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, kde-format
-msgid "Show tab indicators:"
+#, fuzzy, kde-format
+#| msgid "Show tab indicators:"
+msgid "Show &tab indicators:"
 msgstr "显示 tab 空白标识符："
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
@@ -1928,49 +1931,42 @@ msgstr "如果启用，动态显示匹配的括号。"
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr "光标移动到其他成对括号时闪烁匹配的括号"
 
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
-#, kde-format
-msgid ""
-"If this is enabled, the editor will display vertical lines to help identify "
-"indent lines."
-msgstr "如果选中此项，编辑器将会显示垂直行帮助识别缩进行。"
-
-#. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:248
-#, kde-format
-msgid "Show i&ndentation lines"
-msgstr "显示缩进行(&N)"
-
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:271
+#: dialogs/textareaappearanceconfigwidget.ui:261
 #, kde-format
 msgid "Counts:"
 msgstr "计数："
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "显示/隐藏状态栏中的单词计数"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "显示字数统计"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "显示/隐藏状态栏中的行数"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "显示行数"
+
+#. i18n: ectx: property (text), widget (QLabel, label_25)
+#: dialogs/textareaappearanceconfigwidget.ui:304
+#, fuzzy, kde-format
+#| msgid "Fold first line"
+msgid "Fold first line:"
+msgstr "折叠首行"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -1984,56 +1980,52 @@ msgstr ""
 "当这个设置启用时，编辑器视图自动折叠在文档第一行开始的注释区域。\n"
 "这可以用于隐藏通常在文件开始出现的许可证。"
 
-#. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:320
-#, kde-format
-msgid "Fold first line"
-msgstr "折叠首行"
-
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:340
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "动态文字换行："
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "在静态换行标记处动态换行"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "动态换行时不遵循单词边界"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "动态文字换行标识符(&Y)："
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:371
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "选择何时显示动态自动换行标识符。"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:394
-#, kde-format
-msgid "Indent wrapped lines:"
+#: dialogs/textareaappearanceconfigwidget.ui:391
+#, fuzzy, kde-format
+#| msgid "Indent wrapped lines:"
+msgid "I&ndent wrapped lines:"
 msgstr "缩进已折行："
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:411
-#, kde-format
-msgid "Don't indent lines wider than:"
+#: dialogs/textareaappearanceconfigwidget.ui:408
+#, fuzzy, kde-format
+#| msgid "Don't indent lines wider than:"
+msgid "&Don't indent lines wider than:"
 msgstr "不要缩进，如果行宽大于："
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2050,10 +2042,25 @@ msgstr ""
 "的行来说，折行就不会再和第一行对齐。</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:430
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% 视图宽度"
+
+#. i18n: ectx: property (text), widget (QLabel, label_24)
+#: dialogs/textareaappearanceconfigwidget.ui:443
+#, fuzzy, kde-format
+#| msgid "Show i&ndentation lines"
+msgid "Show i&ndentation lines:"
+msgstr "显示缩进行(&N)"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
+#: dialogs/textareaappearanceconfigwidget.ui:453
+#, kde-format
+msgid ""
+"If this is enabled, the editor will display vertical lines to help identify "
+"indent lines."
+msgstr "如果选中此项，编辑器将会显示垂直行帮助识别缩进行。"
 
 #: document/katebuffer.cpp:136
 #, kde-format

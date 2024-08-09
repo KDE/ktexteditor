@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:38+0000\n"
+"POT-Creation-Date: 2024-08-09 00:37+0000\n"
 "PO-Revision-Date: 2014-09-18 23:44+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1981,7 +1981,7 @@ msgstr "Editor-Modulen"
 #: dialogs/textareaappearanceconfigwidget.ui:48
 #, fuzzy, kde-format
 #| msgid "Line Length Limit:"
-msgid "Line Height Multiplier:"
+msgid "&Line Height Multiplier:"
 msgstr "Gröttst Reeglängde:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
@@ -2017,7 +2017,7 @@ msgstr "Jümmers"
 #: dialogs/textareaappearanceconfigwidget.ui:122
 #, fuzzy, kde-format
 #| msgid "Whitespace Highlighting"
-msgid "Whitespace indicator size:"
+msgid "Whitespace indicator si&ze:"
 msgstr "Freerüüm rutheven"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
@@ -2030,7 +2030,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:166
 #, fuzzy, kde-format
 #| msgid "Show line modification markers"
-msgid "Show tab indicators:"
+msgid "Show &tab indicators:"
 msgstr "Reegännern wiesen"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
@@ -2106,53 +2106,44 @@ msgstr "Is dit anmaakt, warrt de tosamenhören Klemmen animeert."
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
-#, kde-format
-msgid ""
-"If this is enabled, the editor will display vertical lines to help identify "
-"indent lines."
-msgstr ""
-"Wenn anmaakt, wiest de Editor pielrecht Lienen, de bi't Opfinnen vun "
-"Inrücken hölpt."
-
-#. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:248
-#, kde-format
-msgid "Show i&ndentation lines"
-msgstr "I&nrücklienen wiesen"
-
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:271
+#: dialogs/textareaappearanceconfigwidget.ui:261
 #, kde-format
 msgid "Counts:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
 #, fuzzy, kde-format
 #| msgid "Not word boundary"
 msgid "Show word count"
 msgstr "Keen Woortgrenz"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show line count"
 msgstr "Reegn&ummern wiesen"
+
+#. i18n: ectx: property (text), widget (QLabel, label_25)
+#: dialogs/textareaappearanceconfigwidget.ui:304
+#, fuzzy, kde-format
+#| msgid "Fold First Line"
+msgid "Fold first line:"
+msgstr "Eerst Reeg infoolden"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2167,61 +2158,55 @@ msgstr ""
 "Reeg vun't Dokment anfangt, automaatsch tosamen. So laat sik\n"
 "Verlööfnisköpp utblennen, de normaal an'n Dateianfang staht."
 
-#. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:320
-#, fuzzy, kde-format
-#| msgid "Fold First Line"
-msgid "Fold first line"
-msgstr "Eerst Reeg infoolden"
-
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:340
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, fuzzy, kde-format
 #| msgid "&Dynamic Word Wrap"
 msgid "Dynamic Word Wrap:"
 msgstr "&Dünaamsch Reegümbrook"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, fuzzy, kde-format
 #| msgid "Enable static &word wrap"
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "&Fast Reegümbrook anmaken"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, fuzzy, kde-format
 #| msgid "Dynamic Word Wrap Indicators"
 msgid "D&ynamic word wrap indicators:"
 msgstr "Reegümbrook-Marken"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:371
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "Leggt fast, wannehr de Marken för dünaamsche Reegümbröök wiest warrt"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:394
+#: dialogs/textareaappearanceconfigwidget.ui:391
 #, fuzzy, kde-format
 #| msgid "Indentation Properties"
-msgid "Indent wrapped lines:"
+msgid "I&ndent wrapped lines:"
 msgstr "Inrückregeln"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:411
-#, kde-format
-msgid "Don't indent lines wider than:"
-msgstr ""
+#: dialogs/textareaappearanceconfigwidget.ui:408
+#, fuzzy, kde-format
+#| msgid "&Indentation width:"
+msgid "&Don't indent lines wider than:"
+msgstr "&Inrückbreed:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2242,10 +2227,27 @@ msgstr ""
 "Kant.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:430
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% vun de Textbreed"
+
+#. i18n: ectx: property (text), widget (QLabel, label_24)
+#: dialogs/textareaappearanceconfigwidget.ui:443
+#, fuzzy, kde-format
+#| msgid "Show i&ndentation lines"
+msgid "Show i&ndentation lines:"
+msgstr "I&nrücklienen wiesen"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
+#: dialogs/textareaappearanceconfigwidget.ui:453
+#, kde-format
+msgid ""
+"If this is enabled, the editor will display vertical lines to help identify "
+"indent lines."
+msgstr ""
+"Wenn anmaakt, wiest de Editor pielrecht Lienen, de bi't Opfinnen vun "
+"Inrücken hölpt."
 
 #: document/katebuffer.cpp:136
 #, kde-format

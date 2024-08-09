@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktexteditor\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:38+0000\n"
+"POT-Creation-Date: 2024-08-09 00:37+0000\n"
 "PO-Revision-Date: 2024-08-02 05:34+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1900,8 +1900,9 @@ msgstr "Pisava urejevalnika:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, kde-format
-msgid "Line Height Multiplier:"
+#, fuzzy, kde-format
+#| msgid "Line Height Multiplier:"
+msgid "&Line Height Multiplier:"
 msgstr "Multiplikator višine vrstice:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
@@ -1934,8 +1935,9 @@ msgstr "Vedno"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, kde-format
-msgid "Whitespace indicator size:"
+#, fuzzy, kde-format
+#| msgid "Whitespace indicator size:"
+msgid "Whitespace indicator si&ze:"
 msgstr "Velikost indikatorjev praznin:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
@@ -1946,8 +1948,9 @@ msgstr "Velikost vidnega označevalnika poudarjanja."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, kde-format
-msgid "Show tab indicators:"
+#, fuzzy, kde-format
+#| msgid "Show tab indicators:"
+msgid "Show &tab indicators:"
 msgstr "Pokaži označevalnike tabulatorjev:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
@@ -2030,51 +2033,42 @@ msgstr ""
 "Naj utripa ustrezni zaklepaj, kadar se kazalec premakne k drugemu paru "
 "oklepajev"
 
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
-#, kde-format
-msgid ""
-"If this is enabled, the editor will display vertical lines to help identify "
-"indent lines."
-msgstr ""
-"Če je to omogočeno, bo urejevalnik prikazoval navpične črte za lažjo "
-"prepoznavo zamaknjenih vrstic."
-
-#. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:248
-#, kde-format
-msgid "Show i&ndentation lines"
-msgstr "Pokaži črte zamikanja"
-
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:271
+#: dialogs/textareaappearanceconfigwidget.ui:261
 #, kde-format
 msgid "Counts:"
 msgstr "Števci:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr "Preklopi prikaz števila besed v vrstici stanja"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr "Pokaži število besed"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr "Preklopi/skrij prikaz vrstic v vrstici stanja"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, kde-format
 msgid "Show line count"
 msgstr "Pokaži število vrstic"
+
+#. i18n: ectx: property (text), widget (QLabel, label_25)
+#: dialogs/textareaappearanceconfigwidget.ui:304
+#, fuzzy, kde-format
+#| msgid "Fold first line"
+msgid "Fold first line:"
+msgstr "Zvij prvo vrstico"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2089,57 +2083,53 @@ msgstr ""
 "opomb, ki se začnejo v prvi vrstici dokumenta. To je uporabno za\n"
 "skritje glave z licenco, ki se ponavadi nahaja na začetku datoteke."
 
-#. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:320
-#, kde-format
-msgid "Fold first line"
-msgstr "Zvij prvo vrstico"
-
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:340
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, kde-format
 msgid "Dynamic Word Wrap:"
 msgstr "Dinamični prelom vrstice pri besedi:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, kde-format
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Dinamično prelomi pri statični oznaki preloma"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr "Ne upoštevajte meja besed za dinamično prelamljanje"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, kde-format
 msgid "D&ynamic word wrap indicators:"
 msgstr "Oznake dinamičnega preloma vrstice pri besedah:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:371
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, kde-format
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr ""
 "Izberite, kdaj naj bodo prikazane oznake dinamičnega prelamljanja vrstice."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:394
-#, kde-format
-msgid "Indent wrapped lines:"
+#: dialogs/textareaappearanceconfigwidget.ui:391
+#, fuzzy, kde-format
+#| msgid "Indent wrapped lines:"
+msgid "I&ndent wrapped lines:"
 msgstr "Zamikaj ovite vrstice:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:411
-#, kde-format
-msgid "Don't indent lines wider than:"
+#: dialogs/textareaappearanceconfigwidget.ui:408
+#, fuzzy, kde-format
+#| msgid "Don't indent lines wider than:"
+msgid "&Don't indent lines wider than:"
 msgstr "Ne zamikaj vrstic širših kot:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, no-c-format, kde-format
 msgid ""
 "<p>Enables the start of dynamically wrapped lines to be aligned vertically "
@@ -2158,10 +2148,27 @@ msgstr ""
 "zaslona, niso več navpično poravnane ob naslednjih prelomljenih vrsticah.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:430
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, no-c-format, kde-format
 msgid "% of View Width"
 msgstr "% širine prikaza"
+
+#. i18n: ectx: property (text), widget (QLabel, label_24)
+#: dialogs/textareaappearanceconfigwidget.ui:443
+#, fuzzy, kde-format
+#| msgid "Show i&ndentation lines"
+msgid "Show i&ndentation lines:"
+msgstr "Pokaži črte zamikanja"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
+#: dialogs/textareaappearanceconfigwidget.ui:453
+#, kde-format
+msgid ""
+"If this is enabled, the editor will display vertical lines to help identify "
+"indent lines."
+msgstr ""
+"Če je to omogočeno, bo urejevalnik prikazoval navpične črte za lažjo "
+"prepoznavo zamaknjenih vrstic."
 
 #: document/katebuffer.cpp:136
 #, kde-format

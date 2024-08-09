@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-02 00:38+0000\n"
+"POT-Creation-Date: 2024-08-09 00:37+0000\n"
 "PO-Revision-Date: 2019-09-29 12:28+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -1919,7 +1919,7 @@ msgstr "Модулҳо"
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
 #, kde-format
-msgid "Line Height Multiplier:"
+msgid "&Line Height Multiplier:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
@@ -1954,7 +1954,7 @@ msgstr "Ҳамеша"
 #: dialogs/textareaappearanceconfigwidget.ui:122
 #, fuzzy, kde-format
 #| msgid "Highlighting"
-msgid "Whitespace indicator size:"
+msgid "Whitespace indicator si&ze:"
 msgstr "Зерравшанӣ"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
@@ -1967,7 +1967,7 @@ msgstr ""
 #: dialogs/textareaappearanceconfigwidget.ui:166
 #, fuzzy, kde-format
 #| msgid "&Show tabulators"
-msgid "Show tab indicators:"
+msgid "Show &tab indicators:"
 msgstr "&Намоиши табуляторҳо"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
@@ -2042,53 +2042,43 @@ msgstr ""
 msgid "Flash matching bracket when cursor moves to other bracket in pair"
 msgstr ""
 
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:245
-#, fuzzy, kde-format
-msgid ""
-"If this is enabled, the editor will display vertical lines to help identify "
-"indent lines."
-msgstr ""
-"Мавриди фаъол сохтани ин интихобот, фосилотҳо дар аввал ва охири сатр низ "
-"ҳузф хоҳанд шуд."
-
-#. i18n: ectx: property (text), widget (QCheckBox, chkShowIndentationLines)
-#: dialogs/textareaappearanceconfigwidget.ui:248
-#, fuzzy, kde-format
-#| msgid "Show indentation lines"
-msgid "Show i&ndentation lines"
-msgstr "Намоиши хатҳои баробар"
-
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: dialogs/textareaappearanceconfigwidget.ui:271
+#: dialogs/textareaappearanceconfigwidget.ui:261
 #, kde-format
 msgid "Counts:"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:278
+#: dialogs/textareaappearanceconfigwidget.ui:268
 #, kde-format
 msgid "Show/hide word count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowWordCount)
-#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:258
+#: dialogs/textareaappearanceconfigwidget.ui:271 view/katestatusbar.cpp:258
 #, kde-format
 msgid "Show word count"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:288
+#: dialogs/textareaappearanceconfigwidget.ui:278
 #, kde-format
 msgid "Show/hide line count in status bar"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkShowLineCount)
-#: dialogs/textareaappearanceconfigwidget.ui:291 view/katestatusbar.cpp:255
+#: dialogs/textareaappearanceconfigwidget.ui:281 view/katestatusbar.cpp:255
 #, fuzzy, kde-format
 #| msgid "Show &Line Numbers"
 msgid "Show line count"
 msgstr "&Намоиши миқдори хатҳо"
+
+#. i18n: ectx: property (text), widget (QLabel, label_25)
+#: dialogs/textareaappearanceconfigwidget.ui:304
+#, fuzzy, kde-format
+#| msgid "Go to Line"
+msgid "Fold first line:"
+msgstr "Рав ба хати"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2100,62 +2090,56 @@ msgid ""
 "beginning of a file."
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QCheckBox, chkFoldFirstLine)
-#: dialogs/textareaappearanceconfigwidget.ui:320
-#, fuzzy, kde-format
-#| msgid "Go to Line"
-msgid "Fold first line"
-msgstr "Рав ба хати"
-
 #. i18n: ectx: property (text), widget (QCheckBox, cbxWordWrap)
-#: dialogs/textareaappearanceconfigwidget.ui:340
+#: dialogs/textareaappearanceconfigwidget.ui:337
 #, fuzzy, kde-format
 #| msgid "&Dynamic Word Wrap"
 msgid "Dynamic Word Wrap:"
 msgstr "&Гузарондани калимаҳои сарҳарақат"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAtStaticMarker)
-#: dialogs/textareaappearanceconfigwidget.ui:347
+#: dialogs/textareaappearanceconfigwidget.ui:344
 #, fuzzy, kde-format
 #| msgid "Hide Static &Word Wrap Marker"
 msgid "Wrap dynamically at static word wrap marker"
 msgstr "Пинҳон кардани маркери &гузарониши статикӣ"
 
 #. i18n: ectx: property (text), widget (QCheckBox, chkDynWrapAnywhere)
-#: dialogs/textareaappearanceconfigwidget.ui:354
+#: dialogs/textareaappearanceconfigwidget.ui:351
 #, kde-format
 msgid "Disregard word boundaries for dynamic wrapping"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators)
-#: dialogs/textareaappearanceconfigwidget.ui:361
+#: dialogs/textareaappearanceconfigwidget.ui:358
 #, fuzzy, kde-format
 #| msgid "Dynamic Word Wrap Indicators"
 msgid "D&ynamic word wrap indicators:"
 msgstr "Маркерҳои динамикӣ барои бардошта бурдани хатҳо"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, cmbDynamicWordWrapIndicator)
-#: dialogs/textareaappearanceconfigwidget.ui:371
+#: dialogs/textareaappearanceconfigwidget.ui:368
 #, fuzzy, kde-format
 #| msgid "Choose when the Dynamic Word Wrap Indicators should be displayed"
 msgid "Choose when the Dynamic Word Wrap Indicators should be displayed."
 msgstr "Ҷойгиршавии маркерҳои динамикӣ гузаронида шудаи сатрҳо"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: dialogs/textareaappearanceconfigwidget.ui:394
+#: dialogs/textareaappearanceconfigwidget.ui:391
 #, fuzzy, kde-format
 #| msgid "Indentation Rules"
-msgid "Indent wrapped lines:"
+msgid "I&ndent wrapped lines:"
 msgstr "Дастури фосила"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
-#: dialogs/textareaappearanceconfigwidget.ui:411
-#, kde-format
-msgid "Don't indent lines wider than:"
-msgstr ""
+#: dialogs/textareaappearanceconfigwidget.ui:408
+#, fuzzy, kde-format
+#| msgid "Indentation with Spaces"
+msgid "&Don't indent lines wider than:"
+msgstr "Бозгашти бо фосилот"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:427
+#: dialogs/textareaappearanceconfigwidget.ui:424
 #, fuzzy, no-c-format, kde-format
 #| msgid ""
 #| "<p>Enables the start of dynamically wrapped lines to be aligned "
@@ -2183,11 +2167,28 @@ msgstr ""
 "экранро гузаронад, амудиёна нахоҳад баробар шуд.</p>"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, sbDynamicWordWrapDepth)
-#: dialogs/textareaappearanceconfigwidget.ui:430
+#: dialogs/textareaappearanceconfigwidget.ui:427
 #, fuzzy, no-c-format, kde-format
 #| msgid "% of View Width"
 msgid "% of View Width"
 msgstr "% Фароҳи Намоиш"
+
+#. i18n: ectx: property (text), widget (QLabel, label_24)
+#: dialogs/textareaappearanceconfigwidget.ui:443
+#, fuzzy, kde-format
+#| msgid "Show indentation lines"
+msgid "Show i&ndentation lines:"
+msgstr "Намоиши хатҳои баробар"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
+#: dialogs/textareaappearanceconfigwidget.ui:453
+#, fuzzy, kde-format
+msgid ""
+"If this is enabled, the editor will display vertical lines to help identify "
+"indent lines."
+msgstr ""
+"Мавриди фаъол сохтани ин интихобот, фосилотҳо дар аввал ва охири сатр низ "
+"ҳузф хоҳанд шуд."
 
 #: document/katebuffer.cpp:136
 #, fuzzy, kde-format
