@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-09 00:37+0000\n"
-"PO-Revision-Date: 2024-08-02 08:01+0200\n"
+"PO-Revision-Date: 2024-08-09 07:54+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -1890,10 +1890,9 @@ msgstr "Editorns teckensnitt:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Radhöjdsmultiplikator:"
+msgstr "Radhöjdsmu&ltiplikator:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1925,10 +1924,9 @@ msgstr "Alltid"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Storlek på indikering av blanktecken:"
+msgstr "Storlek på indikering av &blanktecken:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1938,10 +1936,9 @@ msgstr "Storlek på den synliga markören."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Visa tabulatormarkörer:"
+msgstr "Visa &tabulatormarkörer:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2056,10 +2053,9 @@ msgstr "Visa antal rader"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Vik första raden"
+msgstr "Vik första raden:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2107,17 +2103,15 @@ msgstr "Välj när de dynamiska radbrytningsmarkörerna ska visas."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Indentera radbrutna rader:"
+msgstr "I&ndentera radbrutna rader:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Indentera inte rader längre än:"
+msgstr "In&dentera inte rader längre än:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2147,10 +2141,9 @@ msgstr "% av visningsbredd"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Visa i&ndenteringslinjer"
+msgstr "Visa i&ndenteringslinjer:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453

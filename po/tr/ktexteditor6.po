@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-09 00:37+0000\n"
-"PO-Revision-Date: 2024-08-02 14:12+0300\n"
+"PO-Revision-Date: 2024-08-09 14:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1894,10 +1894,9 @@ msgstr "Düzenleyici yazıtipi:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Satır yüksekliği çarpanı:"
+msgstr "&Satır yüksekliği çarpanı:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1929,10 +1928,9 @@ msgstr "Her zaman"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Boşluk göstergesi boyutu:"
+msgstr "Boşluk göstergesi &boyutu:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1942,10 +1940,9 @@ msgstr "Görünür vurgulama imleyicisinin boyutu."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Sekme göstergelerini göster:"
+msgstr "S&ekme göstergelerini göster:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2058,10 +2055,9 @@ msgstr "Satır sayısını göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "İlk satırı katla"
+msgstr "İlk satırı katla:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2110,17 +2106,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Kaydırılan satırları girintile:"
+msgstr "Kaydırılan satırları giri&ntile:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Şundan daha geniş satırları girintileme:"
+msgstr "Şundan daha geniş satırları &girintileme:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2151,10 +2145,9 @@ msgstr "% Görünüm Genişliği"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "G&irintileme satırlarını göster"
+msgstr "G&irintileme satırlarını göster:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-09 00:37+0000\n"
-"PO-Revision-Date: 2024-08-03 12:21+0200\n"
+"PO-Revision-Date: 2024-08-09 17:50+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1904,10 +1904,9 @@ msgstr "Tipo de letra do editor:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "Multiplicador da altura de liña:"
+msgstr "Multiplicador da altura de &liña:"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1939,10 +1938,9 @@ msgstr "Sempre"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "Tamaño dos indicadores de espazo en branco:"
+msgstr "Tamaño dos indicadores de espa&zo en branco:"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1952,10 +1950,9 @@ msgstr "Tamaño do marcador de realce visíbel."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "Amosar indicadores de tabulacións:"
+msgstr "Amosar indicadores de &tabulacións:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2071,10 +2068,9 @@ msgstr "Amosar o número de liñas."
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "Pregar a primeira liña."
+msgstr "Pregar a primeira liña:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2123,17 +2119,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "Sangrar as liñas con división visual:"
+msgstr "Sa&ngrar as liñas con división visual:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "Non sangrar as liñas de máis de:"
+msgstr "Non sangrar as liñas &de máis de:"
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2164,10 +2158,9 @@ msgstr "% da anchura da vista"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "Amosar liñas de &sangrado."
+msgstr "Amosar liñas de &sangrado:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
