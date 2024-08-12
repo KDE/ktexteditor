@@ -145,12 +145,12 @@ public:
     void debugPrint(int blockIndex) const;
 
     /**
-     * Split given block. A new block will be created and all lines starting from the given index will
+     * Split given block. All lines starting from @p fromLine will
      * be moved to it, together with the cursors belonging to it.
      * @param fromLine line from which to split
-     * @return new block containing the lines + cursors removed from this one
+     * @param newBlock The block to which the data will be moved after splitting
      */
-    TextBlock *splitBlock(int fromLine);
+    void splitBlock(int fromLine, TextBlock *newBlock);
 
     /**
      * Merge this block with given one, the given one must be a direct predecessor.

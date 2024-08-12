@@ -505,13 +505,10 @@ void TextBlock::debugPrint(int blockIndex) const
     }
 }
 
-TextBlock *TextBlock::splitBlock(int fromLine)
+void TextBlock::splitBlock(int fromLine, TextBlock *newBlock)
 {
     // half the block
     const int linesOfNewBlock = lines() - fromLine;
-
-    // create and insert new block
-    TextBlock *newBlock = new TextBlock(m_buffer, m_blockIndex + 1);
 
     // move lines
     newBlock->m_lines.reserve(linesOfNewBlock);
@@ -553,9 +550,6 @@ TextBlock *TextBlock::splitBlock(int fromLine)
         updateRange(range);
         newBlock->updateRange(range);
     }
-
-    // return the new generated block
-    return newBlock;
 }
 
 void TextBlock::mergeBlock(TextBlock *targetBlock)

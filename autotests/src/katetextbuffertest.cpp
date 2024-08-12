@@ -600,6 +600,24 @@ void KateTextBufferTest::lineLengthLimit()
     }
 }
 
+void KateTextBufferTest::testBlockSplittingWithMovingRanges()
+{
+    // construct an empty text buffer
+    KTextEditor::DocumentPrivate doc;
+    // Kate::TextBuffer &buffer = doc.buffer();
+    doc.setText(QStringLiteral("First line\nSecondLine\nThirdLine"));
+    auto range = doc.newMovingRange(KTextEditor::Range(1, 0, 1, 7));
+    QCOMPARE(doc.text(range->toRange()), QStringLiteral("SecondL"));
+
+    doc.editStart();
+    for (int i = 0; i < 128; ++i) {
+        doc.insertLine(1, QString());
+    }
+    doc.editEnd();
+
+    QCOMPARE(doc.text(range->toRange()), QStringLiteral("SecondL"));
+}
+
 #if HAVE_KAUTH
 void KateTextBufferTest::saveFileWithElevatedPrivileges()
 {

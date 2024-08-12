@@ -31,6 +31,7 @@ private Q_SLOTS:
     void nestedFoldingTest();
     void saveFileInUnwritableFolder();
     void lineLengthLimit();
+    void testBlockSplittingWithMovingRanges();
 
 #if HAVE_KAUTH
     void saveFileWithElevatedPrivileges();

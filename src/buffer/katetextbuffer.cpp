@@ -517,11 +517,9 @@ void TextBuffer::balanceBlock(int index)
         // half the block
         int halfSize = blockToBalance->lines() / 2;
 
-        // create and insert new block behind current one, already set right start line
-        int newBlockStartLine = m_startLines[index] + halfSize;
-
-        TextBlock *newBlock = blockToBalance->splitBlock(halfSize);
-        Q_ASSERT(newBlock);
+        // create and insert new block after current one, already set right start line
+        const int newBlockStartLine = m_startLines[index] + halfSize;
+        TextBlock *newBlock = new TextBlock(this, index + 1);
         m_blocks.insert(m_blocks.begin() + index + 1, newBlock);
         m_startLines.insert(m_startLines.begin() + index + 1, newBlockStartLine);
 
@@ -529,6 +527,8 @@ void TextBuffer::balanceBlock(int index)
         for (auto it = m_blocks.begin() + index, end = m_blocks.end(); it != end; ++it) {
             (*it)->setBlockIndex(index++);
         }
+
+        blockToBalance->splitBlock(halfSize, newBlock);
 
         // split is done
         return;
