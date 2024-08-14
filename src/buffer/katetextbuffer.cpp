@@ -226,13 +226,12 @@ QString TextBuffer::text() const
     for (auto b : m_blocks) {
         size += b->blockSize();
     }
-    size -= 1; // remove -1, last newline
     text.reserve(size);
+    size -= 1; // remove -1, last newline
 
     // combine all blocks
-    for (TextBlock *block : std::as_const(m_blocks)) {
+    for (TextBlock *block : m_blocks) {
         block->text(text);
-        text.append(QLatin1Char('\n'));
     }
     text.chop(1); // remove last \n
 
@@ -539,6 +538,15 @@ void TextBuffer::balanceBlock(int index)
     // if only one block, no chance to unite
     // same if this is first block, we always append to previous one
     if (index == 0) {
+        // remove the block if its empty
+        if (blockToBalance->lines() == 0) {
+            m_blocks.erase(m_blocks.begin());
+            m_startLines.erase(m_startLines.begin());
+            Q_ASSERT(m_startLines[0] == 0);
+            for (auto it = m_blocks.begin(), end = m_blocks.end(); it != end; ++it) {
+                (*it)->setBlockIndex(index++);
+            }
+        }
         return;
     }
 

@@ -618,6 +618,22 @@ void KateTextBufferTest::testBlockSplittingWithMovingRanges()
     QCOMPARE(doc.text(range->toRange()), QStringLiteral("SecondL"));
 }
 
+void KateTextBufferTest::testGetTextWithEmptyFirstBlock()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("First line\nSecondLine\nThirdLine"));
+    // add enough text so that we have at least 2 blocks
+    doc.editStart();
+    for (int i = 0; i < 128; ++i) {
+        doc.insertLine(1, QStringLiteral("asdf"));
+    }
+    doc.editEnd();
+    // remove enough text so that first block will have 0 lines
+    doc.removeText({0, 0, 80, 0});
+    // check if we have correct amount of text
+    QCOMPARE(doc.text().size(), 265);
+}
+
 #if HAVE_KAUTH
 void KateTextBufferTest::saveFileWithElevatedPrivileges()
 {

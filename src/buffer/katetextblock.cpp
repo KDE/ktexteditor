@@ -68,13 +68,9 @@ void TextBlock::clearLines()
 void TextBlock::text(QString &text) const
 {
     // combine all lines
-    for (size_t i = 0; i < m_lines.size(); ++i) {
-        // not first line, insert \n
-        if (i > 0) {
-            text.append(QLatin1Char('\n'));
-        }
-
-        text.append(m_lines.at(i).text());
+    for (const auto &line : m_lines) {
+        text.append(line.text());
+        text.append(QLatin1Char('\n'));
     }
 }
 

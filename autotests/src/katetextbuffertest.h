@@ -32,6 +32,7 @@ private Q_SLOTS:
     void saveFileInUnwritableFolder();
     void lineLengthLimit();
     void testBlockSplittingWithMovingRanges();
+    void testGetTextWithEmptyFirstBlock();
 
 #if HAVE_KAUTH
     void saveFileWithElevatedPrivileges();
