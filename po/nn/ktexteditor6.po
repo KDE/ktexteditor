@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-09 00:37+0000\n"
-"PO-Revision-Date: 2024-08-04 10:44+0200\n"
+"PO-Revision-Date: 2024-08-17 16:11+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -6819,15 +6819,13 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "Lagra dokumentet på disken, med eit namn du vel."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
 msgstr "Lagra som (ny &teiknkoding) …"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
 msgstr "Lagra &kopi som …"
