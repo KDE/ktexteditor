@@ -83,13 +83,13 @@ protected:
      * Return commands available for this mode.
      * Overwritten in sub classes to replace them, must be a stable reference!
      */
-    virtual const std::vector<Command> &commands() override;
+    const std::vector<Command> &commands() override;
 
     /**
      * Return motions available for this mode.
      * Overwritten in sub classes to replace them, must be a stable reference!
      */
-    virtual const std::vector<Motion> &motions() override;
+    const std::vector<Motion> &motions() override;
 
 public:
     /**
