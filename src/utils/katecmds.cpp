@@ -18,6 +18,7 @@
 
 #include <KLocalizedString>
 
+#include <QCollator>
 #include <QDateTime>
 #include <QRegularExpression>
 
@@ -605,16 +606,19 @@ bool KateCommands::Date::exec(KTextEditor::View *view, const QString &cmd, QStri
 KateCommands::EditingCommands *KateCommands::EditingCommands::s_instance = nullptr;
 
 KateCommands::EditingCommands::EditingCommands()
-    : KTextEditor::Command({QStringLiteral("uniq"), QStringLiteral("sortuniq")})
+    : KTextEditor::Command({
+        QStringLiteral("uniq"),
+        QStringLiteral("sortuniq"),
+        QStringLiteral("natsort"),
+    })
 {
 }
 
 QList<KateCommands::EditingCommands::EditingCommand> KateCommands::EditingCommands::allCommands()
 {
-    static QList<EditingCommand> cmds{
-        {.name = i18n("Remove Duplicate Lines"), .cmd = QStringLiteral("uniq")},
-        {.name = i18n("Remove Duplicates and Sort Text Alphabetically"), .cmd = QStringLiteral("sortuniq")},
-    };
+    static QList<EditingCommand> cmds{{.name = i18n("Remove Duplicate Lines"), .cmd = QStringLiteral("uniq")},
+                                      {.name = i18n("Remove Duplicates and Sort Text Alphabetically"), .cmd = QStringLiteral("sortuniq")},
+                                      {.name = i18n("Sort Text Naturally"), .cmd = QStringLiteral("natsort")}};
     return cmds;
 }
 
@@ -658,6 +662,14 @@ bool KateCommands::EditingCommands::exec(KTextEditor::View *view, const QString 
         if (it != lines.end()) {
             lines.erase(it, lines.end());
         }
+        apply(range, doc, lines);
+        return true;
+    } else if (cmd == QStringLiteral("natsort")) {
+        const auto [doc, range] = getDocAndRange();
+        QStringList lines = doc->textLines(range);
+        QCollator col;
+        col.setNumericMode(true);
+        std::sort(lines.begin(), lines.end(), col);
         apply(range, doc, lines);
         return true;
     }
