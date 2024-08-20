@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: katepart4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-09 00:37+0000\n"
-"PO-Revision-Date: 2024-02-10 00:07+0100\n"
+"PO-Revision-Date: 2024-08-20 00:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: completion/katecompletionmodel.cpp:144
 #, kde-format
@@ -266,10 +266,9 @@ msgstr "변경되거나 저장하지 않은 줄 강조"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: dialogs/bordersappearanceconfigwidget.ui:145
-#, fuzzy, kde-format
-#| msgid "Scrollbars"
+#, kde-format
 msgid "Scrollbars:"
-msgstr "스크롤바"
+msgstr "스크롤바:"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkScrollbarMarks)
 #: dialogs/bordersappearanceconfigwidget.ui:152
@@ -1282,11 +1281,10 @@ msgid "Closes the file, discarding its content."
 msgstr "파일을 닫고 내용을 삭제합니다."
 
 #: dialogs/katedialogs.cpp:1474
-#, fuzzy, kde-format
-#| msgid "&Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "&Save As…"
-msgstr "다른 이름으로 저장(&S)..."
+msgstr "다른 이름으로 저장(&S)…"
 
 #: dialogs/katedialogs.cpp:1476
 #, kde-format
@@ -1847,10 +1845,9 @@ msgstr "편집기 글꼴:"
 
 #. i18n: ectx: property (text), widget (QLabel, lblLineHeight)
 #: dialogs/textareaappearanceconfigwidget.ui:48
-#, fuzzy, kde-format
-#| msgid "Line Height Multiplier:"
+#, kde-format
 msgid "&Line Height Multiplier:"
-msgstr "줄 높이 배수:"
+msgstr "줄 높이 배수(&L):"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spbLineHeightMultiplier)
 #: dialogs/textareaappearanceconfigwidget.ui:58
@@ -1882,10 +1879,9 @@ msgstr "항상"
 
 #. i18n: ectx: property (text), widget (QLabel, lbMarkerDescription)
 #: dialogs/textareaappearanceconfigwidget.ui:122
-#, fuzzy, kde-format
-#| msgid "Whitespace indicator size:"
+#, kde-format
 msgid "Whitespace indicator si&ze:"
-msgstr "공백 표시기 크기:"
+msgstr "공백 표시기 크기(&Z):"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, sliSetMarkerSize)
 #: dialogs/textareaappearanceconfigwidget.ui:138
@@ -1895,10 +1891,9 @@ msgstr "강조 마커를 표시할 크기입니다."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: dialogs/textareaappearanceconfigwidget.ui:166
-#, fuzzy, kde-format
-#| msgid "Show tab indicators:"
+#, kde-format
 msgid "Show &tab indicators:"
-msgstr "탭 표시기 표시:"
+msgstr "탭 표시기 표시(&T):"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, chkShowTabs)
 #: dialogs/textareaappearanceconfigwidget.ui:176
@@ -2004,10 +1999,9 @@ msgstr "줄 수 표시"
 
 #. i18n: ectx: property (text), widget (QLabel, label_25)
 #: dialogs/textareaappearanceconfigwidget.ui:304
-#, fuzzy, kde-format
-#| msgid "Fold first line"
+#, kde-format
 msgid "Fold first line:"
-msgstr "첫 줄 접기"
+msgstr "첫 줄 접기:"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkFoldFirstLine)
 #: dialogs/textareaappearanceconfigwidget.ui:317
@@ -2054,17 +2048,15 @@ msgstr "동적 줄 바꿈 표시자를 표시할지 여부입니다."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: dialogs/textareaappearanceconfigwidget.ui:391
-#, fuzzy, kde-format
-#| msgid "Indent wrapped lines:"
+#, kde-format
 msgid "I&ndent wrapped lines:"
-msgstr "줄 바꿈이 적용된 줄 들여쓰기:"
+msgstr "줄 바꿈이 적용된 줄 들여쓰기(&N):"
 
 #. i18n: ectx: property (text), widget (QLabel, lblDynamicWordWrapIndicators_2)
 #: dialogs/textareaappearanceconfigwidget.ui:408
-#, fuzzy, kde-format
-#| msgid "Don't indent lines wider than:"
+#, kde-format
 msgid "&Don't indent lines wider than:"
-msgstr "다음보다 긴 줄 들여쓰지 않기:"
+msgstr "다음보다 긴 줄 들여쓰지 않기(&D): "
 
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, sbDynamicWordWrapDepth)
 #: dialogs/textareaappearanceconfigwidget.ui:424
@@ -2092,10 +2084,9 @@ msgstr "보기 폭의 %"
 
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 #: dialogs/textareaappearanceconfigwidget.ui:443
-#, fuzzy, kde-format
-#| msgid "Show i&ndentation lines"
+#, kde-format
 msgid "Show i&ndentation lines:"
-msgstr "들여쓰기 줄 표시(&N)"
+msgstr "들여쓰기 줄 표시(&N):"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, chkShowIndentationLines)
 #: dialogs/textareaappearanceconfigwidget.ui:453
@@ -2479,12 +2470,10 @@ msgid "Modes && Filetypes"
 msgstr "모드와 파일 형식"
 
 #: mode/katemodemenulist.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "Placeholder in search bar"
-#| msgid "Search..."
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Search…"
-msgstr "검색..."
+msgstr "검색…"
 
 #: mode/katemodemenulist.cpp:141
 #, kde-format
@@ -3868,12 +3857,10 @@ msgid "Spell check canceled."
 msgstr "맞춤법 검사가 취소되었습니다."
 
 #: spellcheck/spellcheckbar.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
+#, kde-format
 msgctxt "@info:progress"
 msgid "Spell checking in progress…"
-msgstr "맞춤법 검사 중..."
+msgstr "맞춤법 검사 중…"
 
 #: spellcheck/spellcheckbar.cpp:246 spellcheck/spellcheckbar.cpp:435
 #, kde-format
@@ -4098,11 +4085,10 @@ msgid "I&gnore All"
 msgstr "모두 무시(&G)"
 
 #: spellcheck/spellcheckdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Spelling (from Cursor)..."
+#, kde-format
 msgctxt "@action"
 msgid "Spelling (from Cursor)…"
-msgstr "맞춤법 검사(커서에서부터)..."
+msgstr "맞춤법 검사(커서에서부터)…"
 
 #: spellcheck/spellcheckdialog.cpp:54
 #, kde-format
@@ -4224,32 +4210,28 @@ msgid "S&trikeout"
 msgstr "취소선(&T)"
 
 #: syntax/katestyletreewidget.cpp:260
-#, fuzzy, kde-format
-#| msgid "Normal &Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Normal &Color…"
-msgstr "일반 색상(&C)..."
+msgstr "일반 색상(&C)…"
 
 #: syntax/katestyletreewidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Selected Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Selected Color…"
-msgstr "선택한 색상(&S)..."
+msgstr "선택한 색상(&S)…"
 
 #: syntax/katestyletreewidget.cpp:266
-#, fuzzy, kde-format
-#| msgid "&Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Background Color…"
-msgstr "배경 색상(&B)..."
+msgstr "배경색(&B)…"
 
 #: syntax/katestyletreewidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "S&elected Background Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "S&elected Background Color…"
-msgstr "선택한 배경 색상(&E)..."
+msgstr "선택한 배경 색상(&E)…"
 
 #: syntax/katestyletreewidget.cpp:275
 #, kde-format
@@ -4859,25 +4841,22 @@ msgid "&Theme:"
 msgstr "테마(&T):"
 
 #: syntax/katethemeconfig.cpp:1119
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Copy…"
-msgstr "복사"
+msgstr "복사(&C)…"
 
 #: syntax/katethemeconfig.cpp:1127
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Export…"
-msgstr "내보내기..."
+msgstr "내보내기…"
 
 #: syntax/katethemeconfig.cpp:1131
-#, fuzzy, kde-format
-#| msgid "Import..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Import…"
-msgstr "가져오기..."
+msgstr "가져오기…"
 
 #: syntax/katethemeconfig.cpp:1138
 #, kde-format
@@ -6402,12 +6381,10 @@ msgid "Indent/Tab: %1/%2"
 msgstr "들여쓰기/탭: %1/%2"
 
 #: view/katestatusbar.cpp:449 view/katestatusbar.cpp:475
-#, fuzzy, kde-format
-#| msgctxt "Language Section"
-#| msgid "Other"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Other…"
-msgstr "기타"
+msgstr "기타…"
 
 #: view/katestatusbar.cpp:477
 #, kde-format
@@ -6477,15 +6454,14 @@ msgid "Paste previously mouse selection contents"
 msgstr "이전에 복사하거나 잘라낸 선택 내용 붙여넣기"
 
 #: view/kateview.cpp:483
-#, fuzzy, kde-format
-#| msgid "Swap File Options"
+#, kde-format
 msgid "Copy File Location"
-msgstr "스왑 파일 설정"
+msgstr "파일 위치 복사"
 
 #: view/kateview.cpp:484
 #, kde-format
 msgid "Copy the current file name and line number"
-msgstr ""
+msgstr "현재 파일 이름과 줄 번호 복사"
 
 #: view/kateview.cpp:487
 #, kde-format
@@ -6555,16 +6531,14 @@ msgstr ""
 "가능합니다."
 
 #: view/kateview.cpp:524
-#, fuzzy, kde-format
-#| msgid "Indentation Properties"
+#, kde-format
 msgid "Convert Indentation to Spaces"
-msgstr "들여쓰기 옵션"
+msgstr "탭을 공백 문자로 변환"
 
 #: view/kateview.cpp:531
-#, fuzzy, kde-format
-#| msgid "&Format Indentation"
+#, kde-format
 msgid "Convert Indentation to Tabs"
-msgstr "들여쓰기 지정(&F)"
+msgstr "공백 문자를 탭으로 변환"
 
 #: view/kateview.cpp:546
 #, kde-format
@@ -6579,11 +6553,10 @@ msgid ""
 msgstr "텍스트의 현재 줄이나 블록을 올바른 들여쓰기 단계로 자동 정렬합니다."
 
 #: view/kateview.cpp:551
-#, fuzzy, kde-format
-#| msgid "Align On"
+#, kde-format
 msgctxt "@action"
 msgid "&Align On…"
-msgstr "정렬 기준"
+msgstr "정렬 기준(&A)…"
 
 #: view/kateview.cpp:553
 #, kde-format
@@ -6761,18 +6734,16 @@ msgid "Save the current document to disk, with a name of your choice."
 msgstr "현재 문서를 다른 이름으로 디스크에 저장합니다."
 
 #: view/kateview.cpp:683
-#, fuzzy, kde-format
-#| msgid "Save As with Encoding..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As with Encoding…"
-msgstr "다른 인코딩과 이름으로 저장..."
+msgstr "다른 인코딩과 이름으로 저장…"
 
 #: view/kateview.cpp:689
-#, fuzzy, kde-format
-#| msgid "Save &Copy As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save &Copy As…"
-msgstr "다른 이름으로 저장(&C)..."
+msgstr "다른 이름으로 저장(&C)…"
 
 #: view/kateview.cpp:690
 #, kde-format
@@ -6807,11 +6778,10 @@ msgid "Move downwards to the next modified line."
 msgstr "다음 수정된 줄로 이동합니다."
 
 #: view/kateview.cpp:709
-#, fuzzy, kde-format
-#| msgid "&Configure Editor..."
+#, kde-format
 msgctxt "@action"
 msgid "&Configure Editor…"
-msgstr "편집기 설정(&C)..."
+msgstr "편집기 설정(&C)…"
 
 #: view/kateview.cpp:711
 #, kde-format
@@ -6921,23 +6891,18 @@ msgid ""
 msgstr "입력한 문자열을 삽입할지, 아니면 기존 문자열에 덮어씌울지 선택합니다."
 
 #: view/kateview.cpp:787
-#, fuzzy, kde-format
-#| msgid "Whitespaces"
+#, kde-format
 msgid "Show Whitespace"
-msgstr "공백 문자"
+msgstr "공백 문자 표시"
 
 #: view/kateview.cpp:790
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, whitespaces in this document will be visible.<br /"
 "><br />This is only a view option, meaning the document will not be changed."
 msgstr ""
-"이 옵션이 선택되면 문자열 줄은 화면 경계에 맞게 둘러싸여집니다.<br /><br />"
-"이 옵션은 보기에만 영향을 주며 파일 내용은 변경되지 않습니다."
+"이 옵션을 선택하면 문서의 공백 문자를 표시합니다.<br /><br />보기 전용 옵션으"
+"로 문서 내용은 변경되지 않습니다."
 
 #: view/kateview.cpp:794
 #, kde-format
@@ -6945,18 +6910,14 @@ msgid "&Dynamic Word Wrap"
 msgstr "동적 줄 바꿈(&D)"
 
 #: view/kateview.cpp:798
-#, fuzzy, kde-format
-#| msgid ""
-#| "If this option is checked, the text lines will be wrapped at the view "
-#| "border on the screen.<br /><br />This is only a view option, meaning the "
-#| "document will not changed."
+#, kde-format
 msgid ""
 "If this option is checked, the text lines will be wrapped at the view border "
 "on the screen.<br /><br />This is only a view option, meaning the document "
 "will not be changed."
 msgstr ""
-"이 옵션이 선택되면 문자열 줄은 화면 경계에 맞게 둘러싸여집니다.<br /><br />"
-"이 옵션은 보기에만 영향을 주며 파일 내용은 변경되지 않습니다."
+"이 옵션을 선택하면 텍스트 줄을 화면 경계에 맞게 둘러쌉니다.<br /><br />이 옵"
+"션은 보기에만 영향을 주며 파일 내용은 변경되지 않습니다."
 
 #: view/kateview.cpp:802
 #, kde-format
@@ -7287,11 +7248,10 @@ msgid "Enable/disable automatic spell checking"
 msgstr "자동 맞춤법 검사 켬/끔"
 
 #: view/kateview.cpp:991
-#, fuzzy, kde-format
-#| msgid "Change dictionary"
+#, kde-format
 msgctxt "@action"
 msgid "Change Dictionary…"
-msgstr "사전 바꾸기"
+msgstr "사전 바꾸기…"
 
 #: view/kateview.cpp:992
 #, kde-format
@@ -7324,11 +7284,10 @@ msgstr ""
 "오."
 
 #: view/kateview.cpp:1009
-#, fuzzy, kde-format
-#| msgid "E&xport as HTML..."
+#, kde-format
 msgctxt "@action"
 msgid "E&xport as HTML…"
-msgstr "HTML로 내보내기(&X)..."
+msgstr "HTML로 내보내기(&X)…"
 
 #: view/kateview.cpp:1011
 #, kde-format
@@ -7787,11 +7746,10 @@ msgid "Copy"
 msgstr "복사"
 
 #: view/screenshotdialog.cpp:180
-#, fuzzy, kde-format
-#| msgid "Background Color..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Background Color…"
-msgstr "배경색..."
+msgstr "배경색…"
 
 #: view/screenshotdialog.cpp:182
 #, kde-format
@@ -7804,8 +7762,7 @@ msgid "Show Window Decorations"
 msgstr "창 장식 표시"
 
 #: view/screenshotdialog.cpp:188
-#, fuzzy, kde-format
-#| msgid "Take Screenshot of Selection"
+#, kde-format
 msgctxt "@title:window"
 msgid "Take Screenshot of Selection"
 msgstr "선택 영역의 스크린샷 찍기"
