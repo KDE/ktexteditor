@@ -7,6 +7,7 @@
 #include "katescriptaction.h"
 #include "kateabstractinputmode.h"
 #include "katecmd.h"
+#include "katecmds.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
@@ -126,6 +127,22 @@ void KateScriptActionMenu::repopulate()
 
             m_actions.append(a);
         }
+    }
+
+    KateCommands::EditingCommands editingCmds;
+    QMenu *m = m_view->actionCollection()->action(QStringLiteral("tools_scripts_Editing"))->menu();
+    for (const auto &cmd : editingCmds.allCommands()) {
+        auto a = new QAction(cmd.name);
+        connect(a, &QAction::triggered, this, [cmd = cmd.cmd, this] {
+            KTextEditor::Command *p = KateCmd::self()->queryCommand(cmd);
+            if (p) {
+                QString msg;
+                p->exec(m_view, cmd, msg);
+            }
+        });
+        m->addAction(a);
+        m_actions.append(a);
+        m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd.cmd, a);
     }
 
     // finally add the view to the xml factory again, if it initially was there

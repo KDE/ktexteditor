@@ -196,6 +196,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
         KateCommands::Date::self(),
         KateCommands::SedReplace::self(),
         KateCommands::Highlighting::self(),
+        KateCommands::EditingCommands::self(),
     };
 
     // global word completion model

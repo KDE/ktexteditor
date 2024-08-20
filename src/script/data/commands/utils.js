@@ -3,18 +3,10 @@ var katescript = {
     "license": "LGPL-2.1+",
     "revision": 12,
     "kate-version": "5.1",
-    "functions": ["sort", "sortuniq", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "duplicateSelection", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
+    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "duplicateSelection", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
         {   "function": "sort",
             "name": "Sort Selected Text Alphabetically",
-            "category": "Editing"
-        },
-        {   "function": "sortuniq",
-            "name": "Remove Duplicates and Sort Selected Text Alphabetically",
-            "category": "Editing"
-        },
-        {   "function": "uniq",
-            "name": "Remove Duplicate Lines",
             "category": "Editing"
         },
         {   "function": "rtrim",
@@ -76,36 +68,6 @@ require ("range.js");
 function sort()
 {
     each(function(lines){return lines.sort()});
-}
-
-function uniq()
-{
-    each(function(lines) {
-        var uniq_lines = [];
-        var seen = new Set();
-        for ( var i = 0; i < lines.length; ++i ) {
-            if (!seen.has(lines[i])) {
-                seen.add(lines[i]);
-                uniq_lines.push(lines[i]);
-            }
-        }
-        return uniq_lines;
-    });
-}
-
-function sortuniq()
-{
-    each(function(lines) {
-        var uniq_lines = [];
-        var seen = new Set();
-        for ( var i = 0; i < lines.length; ++i ) {
-            if (!seen.has(lines[i])) {
-                seen.add(lines[i]);
-                uniq_lines.push(lines[i]);
-            }
-        }
-        return uniq_lines.sort();
-    });
 }
 
 function natsort()

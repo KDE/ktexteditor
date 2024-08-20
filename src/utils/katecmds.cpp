@@ -601,3 +601,66 @@ bool KateCommands::Date::exec(KTextEditor::View *view, const QString &cmd, QStri
 }
 
 // END Date
+
+KateCommands::EditingCommands *KateCommands::EditingCommands::s_instance = nullptr;
+
+KateCommands::EditingCommands::EditingCommands()
+    : KTextEditor::Command({QStringLiteral("uniq"), QStringLiteral("sortuniq")})
+{
+}
+
+QList<KateCommands::EditingCommands::EditingCommand> KateCommands::EditingCommands::allCommands()
+{
+    static QList<EditingCommand> cmds{
+        {.name = i18n("Remove Duplicate Lines"), .cmd = QStringLiteral("uniq")},
+        {.name = i18n("Remove Duplicates and Sort Text Alphabetically"), .cmd = QStringLiteral("sortuniq")},
+    };
+    return cmds;
+}
+
+bool KateCommands::EditingCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
+{
+    auto getDocAndRange = [view]() -> std::pair<KTextEditor::Document *, KTextEditor::Range> {
+        KTextEditor::Range r = view->document()->documentRange();
+        if (view->selection()) {
+            return {view->document(), view->selectionRange()};
+        }
+        return {view->document(), r};
+    };
+
+    auto apply = [](KTextEditor::Range range, KTextEditor::Document *doc, const QStringList &lines) {
+        if (range == doc->documentRange()) {
+            doc->setText(lines);
+        } else {
+            doc->replaceText(range, lines);
+        }
+    };
+
+    if (cmd == QStringLiteral("uniq")) {
+        const auto [doc, range] = getDocAndRange();
+        const QStringList lines = doc->textLines(range);
+        QSet<QString> seenLines;
+        QStringList uniqueLines;
+        for (const auto &line : lines) {
+            auto it = seenLines.find(line);
+            if (it == seenLines.end()) {
+                seenLines.insert(line);
+                uniqueLines.push_back(line);
+            }
+        }
+        apply(range, doc, uniqueLines);
+        return true;
+    } else if (cmd == QStringLiteral("sortuniq")) {
+        const auto [doc, range] = getDocAndRange();
+        QStringList lines = doc->textLines(range);
+        std::sort(lines.begin(), lines.end());
+        auto it = std::unique(lines.begin(), lines.end());
+        if (it != lines.end()) {
+            lines.erase(it, lines.end());
+        }
+        apply(range, doc, lines);
+        return true;
+    }
+
+    return false;
+}

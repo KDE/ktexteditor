@@ -499,7 +499,7 @@ private:
     /**
      * internal commands
      */
-    std::array<KTextEditor::Command *, 5> m_cmds;
+    std::array<KTextEditor::Command *, 6> m_cmds;
 
     /**
      * script manager

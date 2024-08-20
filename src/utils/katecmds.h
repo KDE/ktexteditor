@@ -191,5 +191,35 @@ public:
     }
 };
 
+class EditingCommands : public KTextEditor::Command
+{
+public:
+    EditingCommands();
+
+    static EditingCommands *s_instance;
+    static EditingCommands *self()
+    {
+        if (!s_instance) {
+            s_instance = new EditingCommands;
+        }
+        return s_instance;
+    }
+
+    struct EditingCommand {
+        QString name;
+        QString cmd;
+    };
+
+    QList<EditingCommand> allCommands();
+
+    bool help(class KTextEditor::View *, const QString &, QString &) override
+    {
+        return true;
+    }
+
+    bool
+    exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+};
+
 } // namespace KateCommands
 #endif
