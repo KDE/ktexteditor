@@ -3,12 +3,8 @@ var katescript = {
     "license": "LGPL-2.1+",
     "revision": 12,
     "kate-version": "5.1",
-    "functions": ["sort", "moveLinesDown", "moveLinesUp", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "duplicateSelection", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
+    "functions": ["moveLinesDown", "moveLinesUp", "rtrim", "ltrim", "trim", "join", "rmblank", "alignon", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "duplicateSelection", "rewrap", "encodeURISelection", "decodeURISelection", "fsel", "bsel"],
     "actions": [
-        {   "function": "sort",
-            "name": "Sort Selected Text Alphabetically",
-            "category": "Editing"
-        },
         {   "function": "rtrim",
             "name": "Remove Trailing Spaces",
             "category": "Editing"
@@ -64,11 +60,6 @@ var katescript = {
 
 // required katepart js libraries
 require ("range.js");
-
-function sort()
-{
-    each(function(lines){return lines.sort()});
-}
 
 function rtrim()
 {

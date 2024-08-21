@@ -48,6 +48,7 @@ CommandMode::CommandMode(EmulatedCommandBar *emulatedCommandBar,
     cmds.push_back(AppCommands::self());
     cmds.push_back(SedReplace::self());
     cmds.push_back(BufferCommands::self());
+    cmds.push_back(KateCommands::EditingCommands::self());
 
     for (KateCommandLineScript *cmd : KateScriptManager::self()->commandLineScripts()) {
         cmds.push_back(cmd);

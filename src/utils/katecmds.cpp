@@ -610,15 +610,19 @@ KateCommands::EditingCommands::EditingCommands()
         QStringLiteral("uniq"),
         QStringLiteral("sortuniq"),
         QStringLiteral("natsort"),
+        QStringLiteral("sort"),
     })
 {
 }
 
 QList<KateCommands::EditingCommands::EditingCommand> KateCommands::EditingCommands::allCommands()
 {
-    static QList<EditingCommand> cmds{{.name = i18n("Remove Duplicate Lines"), .cmd = QStringLiteral("uniq")},
-                                      {.name = i18n("Remove Duplicates and Sort Text Alphabetically"), .cmd = QStringLiteral("sortuniq")},
-                                      {.name = i18n("Sort Text Naturally"), .cmd = QStringLiteral("natsort")}};
+    static QList<EditingCommand> cmds{
+        {.name = i18n("Remove Duplicate Lines"), .cmd = QStringLiteral("uniq")},
+        {.name = i18n("Remove Duplicates and Sort Text Alphabetically"), .cmd = QStringLiteral("sortuniq")},
+        {.name = i18n("Sort Text Naturally"), .cmd = QStringLiteral("natsort")},
+        {.name = i18n("Sort Selected Text Alphabetically"), .cmd = QStringLiteral("sort")},
+    };
     return cmds;
 }
 
@@ -670,6 +674,12 @@ bool KateCommands::EditingCommands::exec(KTextEditor::View *view, const QString 
         QCollator col;
         col.setNumericMode(true);
         std::sort(lines.begin(), lines.end(), col);
+        apply(range, doc, lines);
+        return true;
+    } else if (cmd == QStringLiteral("sort")) {
+        const auto [doc, range] = getDocAndRange();
+        QStringList lines = doc->textLines(range);
+        std::sort(lines.begin(), lines.end());
         apply(range, doc, lines);
         return true;
     }
