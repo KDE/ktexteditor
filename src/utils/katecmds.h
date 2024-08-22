@@ -212,10 +212,7 @@ public:
 
     QList<EditingCommand> allCommands();
 
-    bool help(class KTextEditor::View *, const QString &, QString &) override
-    {
-        return true;
-    }
+    bool help(class KTextEditor::View *, const QString &cmd, QString &msg) override;
 
     bool
     exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;

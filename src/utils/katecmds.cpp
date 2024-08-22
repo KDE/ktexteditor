@@ -686,3 +686,27 @@ bool KateCommands::EditingCommands::exec(KTextEditor::View *view, const QString 
 
     return false;
 }
+bool KateCommands::EditingCommands::help(class KTextEditor::View *, const QString &cmd, QString &msg)
+{
+    if (cmd == QStringLiteral("sort")) {
+        msg = i18n(
+            "<p>sort</p>"
+            "<p>Sort the selected text or whole document if there is no selection</p>");
+    } else if (cmd == QStringLiteral("uniq")) {
+        msg = i18n(
+            "<p>uniq</p>"
+            "<p>Remove duplicate lines from the selected text or whole document if there is no selection.</p>");
+    } else if (cmd == QStringLiteral("sortuniq")) {
+        msg = i18n(
+            "<p>sortuniq</p>"
+            "<p>Sort the selected text or whole document and then remove all duplicate lines.</p>");
+    } else if (cmd == QStringLiteral("natsort")) {
+        msg = i18n(
+            "<p>natsort</p>"
+            "<p>Sort the selected text or whole document in natural order.<br>Here is an example to show the difference to the normal sort "
+            "method:<br>sort(a10, a1, a2) => a1, a10, a2<br>natsort(a10, a1, a2) => a1, a2, a10</p>");
+    } else {
+        return false;
+    }
+    return true;
+}
