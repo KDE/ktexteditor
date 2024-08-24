@@ -717,6 +717,7 @@ KateRendererConfig::~KateRendererConfig() = default;
 namespace
 {
 const char KEY_FONT[] = "Text Font";
+const char KEY_FONT_FEATURES[] = "Text Font Features";
 const char KEY_COLOR_THEME[] = "Color Theme";
 const char KEY_WORD_WRAP_MARKER[] = "Word Wrap Marker";
 const char KEY_SHOW_INDENTATION_LINES[] = "Show Indentation Lines";
@@ -732,8 +733,23 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
-    // read font
-    setFont(config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont)));
+    // read font, including font features
+    auto font = config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont));
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+    const QStringList rawFeaturesList = config.readEntry(KEY_FONT_FEATURES, QStringList());
+    for (const QString &feature : rawFeaturesList) {
+        const auto parts = feature.split(QStringLiteral("="), Qt::SkipEmptyParts);
+        if (parts.length() == 2) {
+            const auto tag = QFont::Tag::fromString(parts[0]);
+            bool ok = false;
+            const int number = parts[1].toInt(&ok);
+            if (tag.has_value() && ok) {
+                font.setFeature(tag.value(), number);
+            }
+        }
+    }
+#endif
+    setFont(font);
 
     // setSchema will default to right theme
     setSchema(config.readEntry(KEY_COLOR_THEME, QString()));
@@ -756,7 +772,19 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
     // write generic entries
     writeConfigEntries(config);
 
-    config.writeEntry(KEY_FONT, baseFont());
+    // write font, including font features
+    const auto font = baseFont();
+    config.writeEntry(KEY_FONT, font);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+    const auto tags = font.featureTags();
+    QStringList features;
+    for (const auto &tag : tags) {
+        const QString name = QString::fromUtf8(tag.toString());
+        const quint32 value = font.featureValue(tag);
+        features.push_back(QStringLiteral("%1=%2").arg(name, QString::number(value)));
+    }
+    config.writeEntry(KEY_FONT_FEATURES, features);
+#endif
 
     config.writeEntry(KEY_COLOR_THEME, schema());
 
